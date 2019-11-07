@@ -1,5 +1,5 @@
 ---
-title: Instructies voor de Azure SQL Database-instantie groepen (preview) | Microsoft Docs
+title: Instructies voor de Azure SQL Database-instantie groepen (preview-versie)
 description: In dit artikel wordt beschreven hoe u Azure SQL Database-instantie groepen maakt en beheert (preview).
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5862a54c92de7395ce42865ae32d453e926048d8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 461de4da35905ed860fb2ed9d2c655b55b777683
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70294267"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689733"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Instructies voor Azure SQL Database-instantie groepen (preview)
 
@@ -28,7 +28,7 @@ In de volgende tabel ziet u de beschik bare bewerkingen met betrekking tot exemp
 
 |Opdracht|Azure Portal|PowerShell|
 |:---|:---|:---|
-|Instantie groep maken|Nee|Ja|
+|Instantie-pool maken|Nee|Ja|
 |Exemplaar groep bijwerken (beperkt aantal eigenschappen)|Nee |Ja |
 |Gebruik en eigenschappen van exemplaar groep controleren|Nee|Ja |
 |Exemplaar groep verwijderen|Nee|Ja|
@@ -41,7 +41,7 @@ In de volgende tabel ziet u de beschik bare bewerkingen met betrekking tot exemp
 
 Beschik bare [Power shell-opdrachten](https://docs.microsoft.com/powershell/module/az.sql/)
 
-|Cmdlet |Description |
+|Cmdlet |Beschrijving |
 |:---|:---|
 |[New-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Hiermee maakt u een Azure SQL Database exemplaar groep. |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Retourneert informatie over de Azure SQL-exemplaar groep. |
@@ -92,7 +92,7 @@ De volgende beperkingen zijn van toepassing op exemplaar groepen:
 
 - Alleen Algemeen en GEN5 zijn beschikbaar als open bare preview.
 - De groeps naam mag alleen kleine letters, cijfers en afbreek streepjes bevatten en mag niet beginnen met een koppel teken.
-- Gebruik `Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork`om de subnet-id op te halen.
+- Gebruik `Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork`om de subnet-ID op te halen.
 - Als u AHB (Azure Hybrid Benefit) wilt gebruiken, wordt dit toegepast op het niveau van de instantie groep. U kunt het licentie type instellen tijdens het maken van een groep of deze op elk gewenst moment bijwerken na het maken.
 
 > [!IMPORTANT]

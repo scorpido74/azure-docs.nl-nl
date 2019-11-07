@@ -1,5 +1,5 @@
 ---
-title: Problemen oplossen Azure SQL Data Warehouse | Microsoft Docs
+title: Problemen oplossen
 description: Problemen met Azure SQL Data Warehouse oplossen.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,21 +10,22 @@ ms.subservice: manage
 ms.date: 7/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a6a6fdf6e63bf8c063f8dd6f23ae380e9ce7b98d
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 2aa7926286be277c7ad0aa7054b4bd6fceb8229f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575505"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685396"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Problemen met Azure SQL Data Warehouse oplossen
 Dit artikel bevat een lijst met veelvoorkomende problemen met de probleem oplossing.
 
-## <a name="connecting"></a>Verbinding maken
+## <a name="connecting"></a>Mee
 | Probleem                                                        | Oplossing                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| De aanmelding is mislukt voor de gebruiker ' NT AUTHORITY\ANONYMOUS-aanmelding '. (Microsoft SQL Server, Error: 18456) | Deze fout treedt op wanneer een AAD-gebruiker probeert verbinding te maken met de hoofd database, maar geen gebruiker heeft in de master-data base.  U kunt dit probleem oplossen door de SQL Data Warehouse op te geven waarmee u verbinding wilt maken op het moment van de verbinding of door de gebruiker toe te voegen aan de hoofd database.  Zie het artikel over [beveiligings overzicht][Security overview] voor meer informatie. |
-| De server-principal ' MyUserName ' heeft geen toegang tot de data base ' Master ' in de huidige beveiligings context. Kan de standaard database van de gebruiker niet openen. De aanmelding is mislukt. De aanmelding is mislukt voor de gebruiker MyUserName. (Microsoft SQL Server, Error: 916) | Deze fout treedt op wanneer een AAD-gebruiker probeert verbinding te maken met de hoofd database, maar geen gebruiker heeft in de master-data base.  U kunt dit probleem oplossen door de SQL Data Warehouse op te geven waarmee u verbinding wilt maken op het moment van de verbinding of door de gebruiker toe te voegen aan de hoofd database.  Zie het artikel over [beveiligings overzicht][Security overview] voor meer informatie. |
+| Aanmelding mislukt voor gebruiker 'NT AUTHORITY\ANONYMOUS LOGON'. (Microsoft SQL Server, fout: 18456) | Deze fout treedt op wanneer een AAD-gebruiker die geen gebruiker heeft in de hoofddatabase probeert verbinding te maken met de hoofddatabase.  U kunt dit probleem oplossen door op het moment van de verbinding de SQL Data Warehouse op te geven waarmee u verbinding wilt maken, of door de gebruiker toe te voegen aan de hoofddatabase.  Zie het artikel over [beveiligings overzicht][Security overview] voor meer informatie. |
+| De server-principal 'MijnGebruikersnaam' heeft in de huidige beveiligingscontext geen toegang tot de hoofddatabase. Kan de standaarddatabase van de gebruiker niet openen. Aanmelden mislukt. Aanmelden is mislukt voor gebruiker 'MijnGebruikersnaam'. (Microsoft SQL Server, fout: 916) | Deze fout treedt op wanneer een AAD-gebruiker die geen gebruiker heeft in de hoofddatabase probeert verbinding te maken met de hoofddatabase.  U kunt dit probleem oplossen door op het moment van de verbinding de SQL Data Warehouse op te geven waarmee u verbinding wilt maken, of door de gebruiker toe te voegen aan de hoofddatabase.  Zie het artikel over [beveiligings overzicht][Security overview] voor meer informatie. |
 | CTAIP-fout                                                  | Deze fout kan optreden als er een aanmelding is gemaakt op de SQL Server-hoofd database, maar niet in de SQL Data Warehouse data base.  Als deze fout optreedt, bekijkt u het artikel overzicht van de [beveiliging][Security overview] .  In dit artikel wordt uitgelegd hoe u een aanmelding en gebruiker op Master maakt en hoe u een gebruiker maakt in de SQL Data Warehouse data base. |
 | Geblokkeerd door de firewall                                          | Azure SQL-data bases worden beveiligd door firewalls op server-en database niveau om ervoor te zorgen dat alleen bekende IP-adressen toegang hebben tot een Data Base. De firewalls zijn standaard beveiligd. Dit betekent dat u een expliciete en een IP-adres of bereik van adressen moet inschakelen voordat u verbinding kunt maken.  Als u uw firewall voor toegang wilt configureren, volgt u de stappen in de [Server firewall toegang configureren voor uw client-IP][Configure server firewall access for your client IP] in de instructies voor het [inrichten][Provisioning instructions]. |
 | Kan geen verbinding maken met het hulp programma of stuur programma                           | SQL Data Warehouse wordt aangeraden [SSMS][SSMS], [SSDT for Visual Studio][SSDT for Visual Studio]of [Sqlcmd][sqlcmd] te gebruiken om uw gegevens op te vragen. Zie [Stuur Programma's voor Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] en [verbinding maken met Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse] -artikelen voor meer informatie over Stuur Programma's en het maken van verbinding met SQL Data Warehouse. |
@@ -49,9 +50,9 @@ Dit artikel bevat een lijst met veelvoorkomende problemen met de probleem oploss
 ## <a name="system-management"></a>Systeem beheer
 | Probleem                                                        | Oplossing                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Msg 40847: Kan de bewerking niet uitvoeren omdat de server het toegestane quotum van de database transactie-eenheid 45000 overschrijdt. | Verminder de [DWU][DWU] van de data base die u probeert te maken of [vraag een quotum toename][request a quota increase]aan. |
+| Msg 40847: de bewerking kan niet worden uitgevoerd omdat de server het toegestane quotum van de data base-transactie eenheid van 45000 zou overschrijden. | Verminder de [DWU][DWU] van de data base die u probeert te maken of [vraag een quotum toename][request a quota increase]aan. |
 | Ruimte gebruik onderzoeken                              | Zie [tabel grootten][Table sizes] om inzicht te krijgen in het ruimte gebruik van uw systeem. |
-| Hulp bij het beheren van tabellen                                    | Zie het artikel [overzicht][Overview] voor meer informatie over het beheren van tabellen.  Dit artikel bevat ook koppelingen naar gedetailleerde onderwerpen, zoals [tabel gegevens typen][Data types], [het distribueren van een tabel][Distribute], [het indexeren][Index]van een tabel, het partitioneren van [een][Partition]tabel, het [onderhouden van tabel statistieken][Statistics] en [tijdelijke tabellen][Temporary]. |
+| Hulp bij het beheren van tabellen                                    | Zie het artikel [overzicht][Overview] voor meer informatie over het beheren van tabellen.  Dit artikel bevat ook koppelingen naar gedetailleerde onderwerpen, zoals [tabel gegevens typen][Data types], [het distribueren van een tabel][Distribute], [het indexeren][Index]van een tabel, het [partitioneren van een][Partition]tabel, het [onderhouden van tabel statistieken][Statistics] en [tijdelijke tabellen][Temporary]. |
 | De voortgangs balk voor transparent Data Encryption (TDE) wordt niet bijgewerkt in de Azure Portal | U kunt de status van TDE bekijken via [Power shell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption). |
 
 

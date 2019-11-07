@@ -1,5 +1,5 @@
 ---
-title: Overzicht van de ontwikkeling van toepassingen voor SQL Database | Microsoft Docs
+title: Overzicht van de ontwikkeling van toepassingen voor SQL Database
 description: Kom meer te weten over beschikbare verbindingsbibliotheken en aanbevolen procedures voor toepassingen die verbinding maken met SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 02/07/2019
-ms.openlocfilehash: 42fc73b5557fba91cc132a0abe8561f0a72bbb64
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 58f823aad157657de5445b1010a405af01c70171
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568868"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690643"
 ---
 # <a name="sql-database-application-development-overview"></a>Overzicht van het ontwikkelen van SQL Database toepassingen
 
@@ -50,12 +50,12 @@ Vermijd langlopende trans acties omdat een infra structuur of verbindings fout d
 
 Azure SQL Database is een Cloud service waar u mogelijk tijdelijke fouten verwacht die zich voordoen in de onderliggende infra structuur of in de communicatie tussen Cloud entiteiten. Hoewel Azure SQL Database bestendig is op het mislukken van de transitieve infra structuur, kunnen deze storingen invloed hebben op uw verbinding. Wanneer er een tijdelijke fout optreedt tijdens het verbinden met SQL Database, moet uw code [de aanroep opnieuw proberen](sql-database-connectivity-issues.md). Het wordt aanbevolen om voor logica voor opnieuw proberen uitstellogica te gebruiken zodat de SQL Database niet overbelast raakt door meerdere clients die tegelijk opnieuw proberen. Pogings logica is afhankelijk van de [fout berichten voor SQL database-client Programma's](sql-database-develop-error-messages.md).
 
-Voor meer informatie over het voorbereiden van geplande onderhouds gebeurtenissen in uw Azure SQL database raadpleegt u Azure-onderhouds [gebeurtenissen plannen in Azure SQL database](sql-database-planned-maintenance.md).
+Voor meer informatie over het voorbereiden van geplande onderhouds gebeurtenissen in uw Azure SQL database raadpleegt u [Azure-onderhouds gebeurtenissen plannen in Azure SQL database](sql-database-planned-maintenance.md).
 
 ## <a name="network-considerations"></a>Aandachtspunten voor netwerken
 
-- Zorg er op de computer die als host fungeert voor uw clientprogramma voor dat de firewall uitgaande TCP-communicatie toestaat via poort 1433.  Meer informatie: [Een Azure SQL database firewall configureren](sql-database-configure-firewall-settings.md).
-- Als uw client programma verbinding maakt met SQL Database terwijl uw client wordt uitgevoerd op een virtuele machine (VM) van Azure, moet u bepaalde poortbereiken openen op de VM. Meer informatie: [Poorten van meer dan 1433 voor ADO.NET 4,5 en SQL database](sql-database-develop-direct-route-ports-adonet-v12.md).
+- Zorg er op de computer die als host fungeert voor uw clientprogramma voor dat de firewall uitgaande TCP-communicatie toestaat via poort 1433.  Meer informatie: [een Azure SQL database firewall configureren](sql-database-configure-firewall-settings.md).
+- Als uw client programma verbinding maakt met SQL Database terwijl uw client wordt uitgevoerd op een virtuele machine (VM) van Azure, moet u bepaalde poortbereiken openen op de VM. Meer informatie: [poorten boven 1433 voor ADO.NET 4,5 en SQL database](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Client verbindingen met Azure SQL Database soms de proxy omzeilen en rechtstreeks communiceren met de data base. Andere poorten dan poort 1433 worden belangrijk. [Azure SQL database connectiviteits architectuur](sql-database-connectivity-architecture.md) en [poorten hoger dan 1433 voor ADO.NET 4,5 en SQL database](sql-database-develop-direct-route-ports-adonet-v12.md)voor meer informatie.
 - Zie [netwerk configuratie voor beheerde instanties](sql-database-howto-managed-instance.md#network-configuration)voor netwerk configuratie voor een beheerd exemplaar.
 

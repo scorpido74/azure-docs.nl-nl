@@ -1,5 +1,5 @@
 ---
-title: Bronnen voor elastische Pools schalen-Azure SQL Database | Microsoft Docs
+title: Bronnen voor elastische Pools schalen-Azure SQL Database
 description: Op deze pagina wordt de schaal van resources voor elastische Pools in Azure SQL Database beschreven.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
-ms.openlocfilehash: c96be7930a33185077134d051b49cba0695327e3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 812de89b43d1cb2bc7f9b5c5c619f3860344d5dd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568642"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690436"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Elastische pool-resources in Azure SQL Database schalen
 
@@ -47,9 +47,9 @@ De geschatte latentie voor het wijzigen van de servicelaag of het opnieuw schale
 
 |Servicelaag|Basis, afzonderlijke Data Base,</br>Standaard (S0-S1)|Algemene elastische pool,</br>Standard (S2-S12), </br>Grootschalige </br>Algemeen afzonderlijke data base of elastische pool|Premium of Bedrijfskritiek afzonderlijke data base of elastische pool|
 |:---|:---|:---|:---|
-|**Basis enkele data base</br> , standaard (S0-S1)**|&bull;&nbsp;Constante tijd latentie, onafhankelijk van gebruikte ruimte</br>&bull;&nbsp;Normaal gesp roken minder dan 5 minuten|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|
-|**Basic elastische pool </br>, standaard (S2-S12) </br>, grootschalige </br>, algemeen afzonderlijke data base of elastische pool**|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Constante tijd latentie, onafhankelijk van gebruikte ruimte</br>&bull;&nbsp;Normaal gesp roken minder dan 5 minuten|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|
-|**Premium of Bedrijfskritiek afzonderlijke data base of elastische pool**|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|
+|**Basis enkele data base,</br> Standard (S0-S1)**|&bull; &nbsp;constante tijd latentie onafhankelijk van gebruikte ruimte</br>&bull; &nbsp;doorgaans, minder dan 5 minuten|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|
+|**Basic elastische pool, </br>Standard (S2-S12), </br>grootschalige, </br>Algemeen afzonderlijke data base of elastische pool**|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;constante tijd latentie onafhankelijk van gebruikte ruimte</br>&bull; &nbsp;doorgaans, minder dan 5 minuten|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|
+|**Premium of Bedrijfskritiek afzonderlijke data base of elastische pool**|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|
 
 > [!NOTE]
 >
@@ -57,7 +57,7 @@ De geschatte latentie voor het wijzigen van de servicelaag of het opnieuw schale
 > - In het geval van het verplaatsen van een Data Base naar/van een elastische pool, is alleen de ruimte die wordt gebruikt door de data base van invloed op de latentie, niet de ruimte die wordt gebruikt door de elastische pool.
 >
 > [!TIP]
-> Zie voor het bewaken van bewerkingen in uitvoering: [Beheer bewerkingen met behulp van de SQL rest API](https://docs.microsoft.com/rest/api/sql/operations/list), [beheer bewerkingen met CLI](/cli/azure/sql/db/op), Bewaak [bewerkingen met behulp van T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) en deze twee Power shell-opdrachten: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) en [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Zie voor het controleren van bewerkingen in uitvoering: [bewerkingen beheren met behulp van de SQL rest API](https://docs.microsoft.com/rest/api/sql/operations/list), [bewerkingen beheren met CLI](/cli/azure/sql/db/op), [bewerkingen bewaken met T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) en deze twee Power shell-opdrachten: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) en [ Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Aanvullende overwegingen bij het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte
 
@@ -71,7 +71,7 @@ Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met
 ## <a name="change-elastic-pool-storage-size"></a>Opslag grootte van elastische pool wijzigen
 
 > [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie voor meer informatie, [bestandsruimte in Azure SQL Database beheren](sql-database-file-space-management.md).
+> In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
 
 ### <a name="vcore-based-purchasing-model"></a>Aankoopmodel op basis van vCore
 
@@ -83,7 +83,7 @@ Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met
 - De prijs van opslag voor een elastische pool is de opslag hoeveelheid vermenigvuldigd met de prijs voor de opslag eenheid van de servicelaag. Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
 
 > [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie voor meer informatie, [bestandsruimte in Azure SQL Database beheren](sql-database-file-space-management.md).
+> In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
 
 ### <a name="dtu-based-purchasing-model"></a>Op DTU gebaseerd inkoop model
 
@@ -92,7 +92,7 @@ Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met
 - De prijs van extra opslag voor een elastische pool is de extra opslag hoeveelheid vermenigvuldigd met de extra eenheids prijs voor opslag van de servicelaag. Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
 
 > [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie voor meer informatie, [bestandsruimte in Azure SQL Database beheren](sql-database-file-space-management.md).
+> In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

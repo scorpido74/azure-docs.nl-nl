@@ -1,5 +1,5 @@
 ---
-title: Gids voor de prestaties en schaal baarheid van de activiteit kopiëren in Azure Data Factory | Microsoft Docs
+title: De hand leiding voor de prestaties en schaal baarheid van de activiteit kopiëren in Azure Data Factory
 description: Meer informatie over de belangrijkste factoren die van invloed zijn op de prestaties van het verplaatsen van gegevens in Azure Data Factory wanneer u de Kopieer activiteit gebruikt.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: ba08bbdca059b3e14281a3c26827d07f7b196d1c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 701eaad8d36b352e946ae8d74204876b41ecb53d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930950"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678269"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Gids voor de prestaties en schaal baarheid van de Kopieer activiteit
 > [!div class="op_single_selector" title1="Selecteer de versie van Azure Data Factory die u gebruikt:"]
@@ -223,7 +223,7 @@ Als u de belasting wilt beheren op machines die uw gegevens archieven hosten, of
 
 Wanneer u gegevens uit een brongegevens archief naar een Sink-gegevens archief kopieert, kunt u ervoor kiezen om Blob-opslag te gebruiken als een tijdelijke faserings opslag. Fase ring is met name handig in de volgende gevallen:
 
-- **U wilt gegevens uit verschillende gegevens archieven opnemen in SQL Data Warehouse via Poly base.** SQL Data Warehouse gebruikt poly Base als mechanisme voor hoge door Voer om een grote hoeveelheid gegevens in SQL Data Warehouse te laden. De bron gegevens moeten zich in Blob Storage of Azure Data Lake Store bekomen en moeten aan aanvullende criteria voldoen. Wanneer u gegevens laadt vanuit een ander gegevens archief dan Blob Storage of Azure Data Lake Store, kunt u het kopiëren van gegevens met behulp van tussenliggende staging-Blobopslag activeren. In dat geval voert Azure Data Factory de vereiste gegevens transformaties uit om ervoor te zorgen dat het voldoet aan de vereisten van poly base. Vervolgens wordt poly base gebruikt voor het efficiënt laden van gegevens naar SQL Data Warehouse. Zie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)voor meer informatie.
+- **U wilt gegevens uit verschillende gegevens archieven opnemen in SQL Data Warehouse via Poly base.** SQL Data Warehouse gebruikt poly Base als mechanisme voor hoge door Voer om een grote hoeveelheid gegevens in SQL Data Warehouse te laden. De bron gegevens moeten zich in Blob Storage of Azure Data Lake Store bekomen en moeten aan aanvullende criteria voldoen. Wanneer u gegevens laadt vanuit een ander gegevens archief dan Blob Storage of Azure Data Lake Store, kunt u het kopiëren van gegevens met behulp van tussenliggende staging-Blobopslag activeren. In dat geval voert Azure Data Factory de vereiste gegevens transformaties uit om ervoor te zorgen dat het voldoet aan de vereisten van poly base. Vervolgens wordt poly base gebruikt voor het efficiënt laden van gegevens naar SQL Data Warehouse. Zie [PolyBase gebruiken om gegevens in Azure SQL Data Warehouse te laden](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) voor meer informatie.
 - **Soms duurt het even om een hybride gegevens verplaatsing (dat wil zeggen, kopiëren van een on-premises gegevens archief naar een gegevens archief in de Cloud) uit te voeren via een trage netwerk verbinding.** Om de prestaties te verbeteren, kunt u gefaseerde kopie gebruiken om de gegevens on-premises te comprimeren, zodat het minder tijd kost om gegevens te verplaatsen naar de faserings gegevens opslag in de Cloud. Vervolgens kunt u de gegevens in het faserings archief decomprimeren voordat u ze laadt in de doel gegevens opslag.
 - **U wilt geen andere poorten dan poort 80 en poort 443 openen in uw firewall vanwege het IT-beleid van het bedrijf.** Wanneer u bijvoorbeeld gegevens kopieert van een on-premises gegevens archief naar een Azure SQL Database sink of een Azure SQL Data Warehouse-sink, moet u uitgaande TCP-communicatie activeren op poort 1433 voor zowel Windows Firewall als uw bedrijfs firewall. In dit scenario kan een gefaseerde kopie gebruikmaken van de zelf-hostende Integration runtime om eerst gegevens te kopiëren naar een staging-opslag instantie van een BLOB via HTTP of HTTPS op poort 443. Vervolgens kunnen de gegevens worden geladen in SQL Database of SQL Data Warehouse vanuit de fase van het maken van Blob-opslag. In deze stroom hoeft u poort 1433 niet in te scha kelen.
 
@@ -241,12 +241,12 @@ Op dit moment kunt u geen gegevens kopiëren tussen twee gegevens archieven die 
 
 Configureer de instelling **enableStaging** in de Kopieer activiteit om op te geven of u wilt dat de gegevens in Blob Storage worden klaargezet voordat u deze in een doel gegevens archief laadt. Wanneer u **enableStaging** instelt op `TRUE`, geeft u de aanvullende eigenschappen op die in de volgende tabel worden weer gegeven. U moet ook een gekoppelde service voor het maken van een hand tekening voor gedeelde toegang met een opslag locatie voor Azure Storage of Storage gebruiken als u er geen hebt.
 
-| Eigenschap | Beschrijving | Standaardwaarde | Verplicht |
+| Eigenschap | Beschrijving | Standaardwaarde | Vereist |
 | --- | --- | --- | --- |
-| enableStaging |Geef op of u gegevens wilt kopiëren via een tijdelijke faserings opslag. |Onwaar |Nee |
-| linkedServiceName |Geef de naam op van een gekoppelde [opslag](connector-azure-blob-storage.md#linked-service-properties) -service die verwijst naar het exemplaar van de opslag die u gebruikt als een tijdelijke faserings opslag. <br/><br/> U kunt opslag niet gebruiken met een Shared Access Signature om gegevens te laden in SQL Data Warehouse via Poly base. U kunt deze gebruiken in alle andere scenario's. |N/A |Ja, wanneer **enableStaging** is ingesteld op True |
-| programmapad |Geef het pad op van de Blob-opslag waarvoor u de gefaseerde gegevens wilt opnemen. Als u geen pad opgeeft, maakt de service een container om tijdelijke gegevens op te slaan. <br/><br/> Geef alleen een pad op als u opslag gebruikt met een hand tekening voor gedeelde toegang of als u wilt dat tijdelijke gegevens zich op een specifieke locatie bevinden. |N/A |Nee |
-| enableCompression |Hiermee geeft u op of gegevens moeten worden gecomprimeerd voordat ze naar het doel worden gekopieerd. Deze instelling vermindert het volume van de gegevens die worden overgedragen. |Onwaar |Nee |
+| enableStaging |Geef op of u gegevens wilt kopiëren via een tijdelijke faserings opslag. |False |Nee |
+| linkedServiceName |Geef de naam op van een gekoppelde [opslag](connector-azure-blob-storage.md#linked-service-properties) -service die verwijst naar het exemplaar van de opslag die u gebruikt als een tijdelijke faserings opslag. <br/><br/> U kunt opslag niet gebruiken met een Shared Access Signature om gegevens te laden in SQL Data Warehouse via Poly base. U kunt deze gebruiken in alle andere scenario's. |N.v.t. |Ja, wanneer **enableStaging** is ingesteld op True |
+| programmapad |Geef het pad op van de Blob-opslag waarvoor u de gefaseerde gegevens wilt opnemen. Als u geen pad opgeeft, maakt de service een container om tijdelijke gegevens op te slaan. <br/><br/> Geef alleen een pad op als u opslag gebruikt met een hand tekening voor gedeelde toegang of als u wilt dat tijdelijke gegevens zich op een specifieke locatie bevinden. |N.v.t. |Nee |
+| enableCompression |Hiermee geeft u op of gegevens moeten worden gecomprimeerd voordat ze naar het doel worden gekopieerd. Deze instelling vermindert het volume van de gegevens die worden overgedragen. |False |Nee |
 
 >[!NOTE]
 > Als u een gefaseerde kopie gebruikt terwijl compressie is ingeschakeld, wordt de service-principal of MSI-verificatie voor de gekoppelde BLOB-hostservice niet ondersteund.
@@ -288,7 +288,7 @@ Er worden kosten in rekening gebracht op basis van twee stappen: de duur en het 
 * Wanneer u fase ring gebruikt tijdens een Cloud kopie, die gegevens uit een gegevens archief in de cloud kopieert naar een ander gegevens archief in de Cloud, wordt de [som van de Kopieer duur voor stap 1 en stap 2] x [eenheids prijs voor de Cloud kopie] in rekening gebracht.
 * Wanneer u fase ring gebruikt tijdens een hybride kopie, waarmee gegevens worden gekopieerd van een on-premises gegevens opslag naar een gegevens archief in de Cloud, wordt één fase van een zelf-hostende Integration runtime in rekening gebracht voor [Hybrid Copy duration] x [hybride kopie van eenheids prijs] + [duur van de Cloud kopiëren] x [prijs per eenheid voor Cloud Copy].
 
-## <a name="references"></a>Naslaginformatie
+## <a name="references"></a>Verwijzingen
 
 Hier volgen de prestaties en het afstemmen van verwijzingen voor een aantal ondersteunde gegevens archieven:
 

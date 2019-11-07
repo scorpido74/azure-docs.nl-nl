@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 7be0cfbe538d06da617049ac74cba60ff1b713e6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8c7da1b989546950bf61153e96193c0bab11d8ac
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791697"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603550"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Pacemaker instellen voor SUSE Linux Enterprise Server in azure
 
@@ -32,7 +32,7 @@ ms.locfileid: "72791697"
 [sles-nfs-guide]:high-availability-guide-suse-nfs.md
 [sles-guide]:high-availability-guide-suse.md
 
-Er zijn twee opties voor het instellen van een pacemaker-cluster in Azure. U kunt een afschermings agent gebruiken. Dit zorgt ervoor dat er een knoop punt kan worden gestart via de Azure-Api's of dat u een SBD-apparaat kunt gebruiken.
+Er zijn twee opties voor het instellen van een cluster Pacemaker in Azure. U kunt een afschermings agent gebruiken. Dit zorgt ervoor dat er een knoop punt kan worden gestart via de Azure-Api's of dat u een SBD-apparaat kunt gebruiken.
 
 Het SBD-apparaat vereist ten minste één extra virtuele machine die fungeert als iSCSI-doel server en een SBD-apparaat biedt. Deze iSCSI-doel servers kunnen echter worden gedeeld met andere pacemaker-clusters. Het voor deel van het gebruik van een SBD-apparaat is een snellere failover-tijd en als u gebruikmaakt van SBD-apparaten on-premises, hoeven er geen wijzigingen te worden aangebracht in de manier waarop u het pacemaker-cluster gebruikt. U kunt Maxi maal drie SBD-apparaten voor een pacemaker-cluster gebruiken om ervoor te zorgen dat een SBD-apparaat niet meer beschikbaar is, bijvoorbeeld tijdens het bijwerken van het besturings systeem van de iSCSI-doel server. Als u meer dan één SBD-apparaat per pacemaker wilt gebruiken, moet u ervoor zorgen dat u meerdere iSCSI-doel servers implementeert en een SBD verbindt vanaf elke iSCSI-doel server. We raden u aan een SBD-apparaat of drie te gebruiken. Pacemaker kan een cluster knooppunt niet automatisch afomheiningen als u alleen twee SBD-apparaten configureert en een van de knoop punten niet beschikbaar is. Als u een omheining wilt kunnen bereiken wanneer een iSCSI-doel server niet beschikbaar is, moet u drie SBD-apparaten gebruiken en daarom drie iSCSI-doel servers.
 
@@ -50,7 +50,7 @@ Volg deze stappen als u een SBD-apparaat voor omheining wilt gebruiken.
 
 ### <a name="set-up-iscsi-target-servers"></a>ISCSI-doel servers instellen
 
-U moet eerst de virtuele iSCSI-doel machines maken. iSCSI-doel servers kunnen worden gedeeld met meerdere pacemaker-clusters.
+U moet eerst de iSCSI-doel-virtuele machines maken. iSCSI-doel servers kunnen worden gedeeld met meerdere pacemaker-clusters.
 
 1. Implementeer nieuwe SLES 12 SP1 of hogere virtuele machines en maak er verbinding mee via SSH. De machines hoeven niet groot te zijn. De grootte van een virtuele machine, zoals Standard_E2s_v3 of Standard_D2s_v3, is voldoende. Zorg ervoor dat u Premium Storage gebruikt op de besturingssysteem schijf.
 
@@ -378,14 +378,15 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 
 1. **[2]** SSH-toegang inschakelen
 
-   <pre><code># insert the public key you copied in the last step into the authorized keys file on the second server
-   sudo vi /root/.ssh/authorized_keys
-   
+   <pre><code>
    sudo ssh-keygen
-
+   
    # Enter file in which to save the key (/root/.ssh/id_rsa): -> Press ENTER
    # Enter passphrase (empty for no passphrase): -> Press ENTER
    # Enter same passphrase again: -> Press ENTER
+   
+   # insert the public key you copied in the last step into the authorized keys file on the second server
+   sudo vi /root/.ssh/authorized_keys   
    
    # copy the public key
    sudo cat /root/.ssh/id_rsa.pub
@@ -442,14 +443,13 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 
 1. **[1]** cluster installeren
 
-   <pre><code>sudo ha-cluster-init
+   <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.
    # Do you want to continue anyway (y/n)? <b>y</b>
    # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
-   # Network address to bind to (e.g.: 192.168.1.0) [10.0.0.0] <b>Press ENTER</b>
-   # Multicast address (e.g.: 239.x.x.x) [239.232.97.43] <b>Press ENTER</b>
-   # Multicast port [5405] <b>Press ENTER</b>
+   # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
+   # Port for ring0 [5405] <b>Press ENTER</b>
    # SBD is already configured to use /dev/disk/by-id/scsi-36001405639245768818458b930abdf69;/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03;/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf - overwrite (y/n)? <b>n</b>
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
@@ -469,12 +469,12 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    <pre><code>sudo passwd hacluster
    </code></pre>
 
-1. **[A]** Configureer corosync om ander Trans Port te gebruiken en nodelist toe te voegen. Het cluster werkt anders niet.
+1. **[A]** corosync-instellingen aanpassen.  
 
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Voeg de volgende vetgedrukte inhoud toe aan het bestand als er geen of andere waarden zijn. Zorg ervoor dat u het token wijzigt in 30000 om het onderhoud van geheugen behoud toe te staan. Zie [dit artikel voor Linux][virtual-machines-linux-maintenance] of [Windows][virtual-machines-windows-maintenance]voor meer informatie. Zorg er ook voor dat u de para meter mcastaddr verwijdert.
+   Voeg de volgende vetgedrukte inhoud toe aan het bestand als er geen of andere waarden zijn. Zorg ervoor dat u het token wijzigt in 30000 om het onderhoud van geheugen behoud toe te staan. Zie [dit artikel voor Linux][virtual-machines-linux-maintenance] of [Windows][virtual-machines-windows-maintenance]voor meer informatie.
 
    <pre><code>[...]
      <b>token:          30000
@@ -486,20 +486,16 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
      interface { 
         [...] 
      }
-     <b>transport:      udpu</b>
-     # remove parameter mcastaddr
-     <b># mcastaddr: IP</b>
+     transport:      udpu
    } 
-   <b>nodelist {
+   nodelist {
      node {
-      # IP address of <b>prod-cl1-0</b>
       ring0_addr:10.0.0.6
      }
      node {
-      # IP address of <b>prod-cl1-1</b>
       ring0_addr:10.0.0.7
      } 
-   }</b>
+   }
    logging {
      [...]
    }

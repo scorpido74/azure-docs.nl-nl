@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen over Azure SQL Database grootschalige | Microsoft Docs
+title: Veelgestelde vragen over Azure SQL Database grootschalige
 description: Antwoorden op veelgestelde vragen klanten vragen over een Azure-SQL database in de grootschalige-service laag, meestal een grootschalige-data base genoemd.
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: dimitri-furman
+ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 379629cfe3c742bd247e02cdf7a891afab08107f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c7960ca4e2dc2e676bc8668981108ce0f8589c0d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496188"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687332"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Veelgestelde vragen over Azure SQL Database grootschalige
 

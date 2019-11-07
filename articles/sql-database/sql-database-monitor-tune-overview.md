@@ -1,5 +1,5 @@
 ---
-title: Bewaking en prestaties afstemmen-Azure SQL Database | Microsoft Docs
+title: Bewaking en prestaties afstemmen-Azure SQL Database
 description: Tips voor het afstemmen van de prestaties van Azure SQL Database door te evalueren en te verbeteren.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 5df9df1474489d7f1b1fb4e1089143cca63a3e42
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: c11112963ec82a0e53df156048495e7b5141bcb7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71935605"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687760"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Prestaties bewaken en afstemmen
 
@@ -33,10 +33,10 @@ Om ervoor te zorgen dat een Data Base zonder problemen wordt uitgevoerd, moet u 
 ## <a name="monitor-database-performance"></a>Databaseprestaties bewaken
 
 Als u de prestaties van een SQL database in azure wilt bewaken, moet u beginnen met het controleren van de resources die worden gebruikt ten opzichte van het prestatie niveau dat u hebt gekozen. Controleer de volgende bronnen:
- - **CPU-gebruik**: Controleer of de data base 100 procent van het CPU-gebruik gedurende lange tijd bereikt. Een hoog CPU-gebruik kan erop wijzen dat u query's moet identificeren en afstemmen die gebruikmaken van de meeste reken kracht. Met een hoog CPU-gebruik kan ook worden aangegeven dat de data base of het exemplaar moet worden bijgewerkt naar een hogere servicelaag. 
- - **Wacht statistieken**: Gebruik [sys. DM _os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) om te bepalen hoe lang query's wachten. Query's kunnen wachten op resources, wachten op wacht rijen of externe wacht tijden. 
+ - **CPU-gebruik**: Controleer of de data base gedurende een lange periode 100 procent van het CPU-gebruik bereikt. Een hoog CPU-gebruik kan erop wijzen dat u query's moet identificeren en afstemmen die gebruikmaken van de meeste reken kracht. Met een hoog CPU-gebruik kan ook worden aangegeven dat de data base of het exemplaar moet worden bijgewerkt naar een hogere servicelaag. 
+ - **Wacht statistieken**: gebruik [sys. DM _os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) om te bepalen hoe lang query's wachten. Query's kunnen wachten op resources, wachten op wacht rijen of externe wacht tijden. 
  - **Io-gebruik**: Controleer of de data base de i/o-limieten van de onderliggende opslag bereikt.
- - **Geheugen gebruik**: De hoeveelheid geheugen die beschikbaar is voor de data base of het exemplaar, is evenredig met het aantal vCores. Zorg ervoor dat het geheugen voldoende is voor de werk belasting. Pagina duur verwachting is een van de para meters die kunnen aangeven hoe snel de pagina's uit het geheugen worden verwijderd.
+ - **Geheugen gebruik**: de hoeveelheid geheugen die beschikbaar is voor de data base of het exemplaar, is evenredig met het aantal vCores. Zorg ervoor dat het geheugen voldoende is voor de werk belasting. Pagina duur verwachting is een van de para meters die kunnen aangeven hoe snel de pagina's uit het geheugen worden verwijderd.
 
 De Azure SQL Database-Service bevat hulpprogram ma's en bronnen om u te helpen bij het oplossen van mogelijke prestatie problemen. U kunt verkoop kansen identificeren om de query prestaties te verbeteren en te optimaliseren zonder resources te wijzigen door de aanbevelingen voor het [afstemmen van prestaties](sql-database-advisor.md)te controleren. 
 
@@ -67,14 +67,14 @@ Om prestatie problemen vast te stellen en op te lossen, begint u met het vinden 
 Een prestatie probleem in een workload kan worden veroorzaakt door een CPU-conflict (een aan de slag gerelateerde voor waarde) of afzonderlijke query's die wachten op iets (een voor waarde *met* *betrekking tot een wacht* tijd).
 
 Problemen met betrekking tot de uitvoering kunnen worden veroorzaakt door:
-- **Compilatie problemen**: SQL query Optimizer kan een suboptimaal plan produceren vanwege verouderde statistieken, een onjuiste schatting van het aantal te verwerken rijen of een onnauwkeurige schatting van het vereiste geheugen. Als u weet dat de query sneller is uitgevoerd in het verleden of op een ander exemplaar (een beheerd exemplaar of een SQL Server-exemplaar), vergelijkt u de werkelijke uitvoerings plannen om te zien of ze verschillend zijn. Probeer query hints toe te passen of de statistieken of indexen opnieuw samen te stellen om het betere plan te krijgen. Schakel automatische correctie van plannen in Azure SQL Database in om deze problemen automatisch te verhelpen.
-- **Uitvoerings problemen**: Als het query plan optimaal is, worden de resource limieten van de data base waarschijnlijk bereikt, zoals schrijf doorvoer in het logboek. Het is ook mogelijk dat er gefragmenteerde indexen worden gebruikt die opnieuw moeten worden opgebouwd. Er kunnen ook uitvoerings problemen optreden wanneer een groot aantal gelijktijdige query's dezelfde bronnen nodig heeft. *Wacht* problemen zijn doorgaans gerelateerd aan uitvoerings problemen, omdat de query's die niet efficiënt worden uitgevoerd, waarschijnlijk wachten op een aantal resources.
+- **Compilatie problemen**: SQL query Optimizer kan een suboptimaal plan veroorzaken vanwege verouderde statistieken, een onjuiste schatting van het aantal te verwerken rijen of een onnauwkeurige schatting van het vereiste geheugen. Als u weet dat de query sneller is uitgevoerd in het verleden of op een ander exemplaar (een beheerd exemplaar of een SQL Server-exemplaar), vergelijkt u de werkelijke uitvoerings plannen om te zien of ze verschillend zijn. Probeer query hints toe te passen of de statistieken of indexen opnieuw samen te stellen om het betere plan te krijgen. Schakel automatische correctie van plannen in Azure SQL Database in om deze problemen automatisch te verhelpen.
+- **Uitvoerings problemen**: als het query plan optimaal is, worden de resource limieten van de data base waarschijnlijk bereikt, zoals het door voeren van een schrijf bewerking in het logboek. Het is ook mogelijk dat er gefragmenteerde indexen worden gebruikt die opnieuw moeten worden opgebouwd. Er kunnen ook uitvoerings problemen optreden wanneer een groot aantal gelijktijdige query's dezelfde bronnen nodig heeft. *Wacht* problemen zijn doorgaans gerelateerd aan uitvoerings problemen, omdat de query's die niet efficiënt worden uitgevoerd, waarschijnlijk wachten op een aantal resources.
 
 Er kunnen problemen met de wacht worden veroorzaakt door:
-- **Blok keren**: Een query kan de vergren deling van objecten in de data base blok keren, terwijl andere gebruikers toegang proberen te krijgen tot dezelfde objecten. U kunt blokkerende query's identificeren met behulp van Dmv's-of controle hulpprogramma's.
-- **Io-problemen**: Query's kunnen wachten tot de pagina's naar de gegevens of logboek bestanden zijn geschreven. In dit geval controleert u de `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG`of `PAGEIOLATCH_*` wacht op de statistieken in de DMV.
-- **Problemen met Tempdb**: Als de werk belasting tijdelijke tabellen gebruikt of als er sprake is van TempDB in de plannen, hebben de query's mogelijk een probleem met TempDB-door voer. 
-- **Geheugen-gerelateerde problemen**: Als de werk belasting onvoldoende geheugen heeft, kan het verwachting van de pagina verloren gaan of kunnen de query's minder geheugen krijgen dan nodig is. In sommige gevallen worden met ingebouwde intelligentie in query Optimizer problemen met het geheugen opgelost.
+- **Blok keren**: een query kan de vergren deling van objecten in de Data Base bevatten terwijl andere gebruikers toegang proberen te krijgen tot dezelfde objecten. U kunt blokkerende query's identificeren met behulp van Dmv's-of controle hulpprogramma's.
+- **I/o-problemen**: query's kunnen wachten tot de pagina's naar de gegevens of logboek bestanden zijn geschreven. Controleer in dit geval de `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG`of `PAGEIOLATCH_*` wacht statistieken in de DMV.
+- **Problemen met Tempdb**: als de workload tijdelijke tabellen gebruikt of als er sprake is van tempdb-overloop in de plannen, hebben de query's mogelijk een probleem met de door Voer van tempdb. 
+- **Problemen met het geheugen**: als de werk belasting onvoldoende geheugen heeft, kan het verwachting van de pagina verloren gaan of kunnen de query's minder geheugen krijgen dan nodig is. In sommige gevallen worden met ingebouwde intelligentie in query Optimizer problemen met het geheugen opgelost.
  
 In de volgende secties wordt uitgelegd hoe u bepaalde soorten problemen kunt identificeren en oplossen.
 
@@ -105,7 +105,7 @@ Zie voor meer informatie over para meter-sniffing en query verwerking de [hand l
 
 Diverse tijdelijke oplossingen kunnen PSP-problemen oplossen. Elke tijdelijke oplossing heeft voor-en nadelen:
 
-- De query [](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) Hint RECOMPILE gebruiken bij elke uitvoering van de query. Deze tijdelijke oplossing verhandelt compilatie tijd en verhoogde CPU voor een betere plan kwaliteit. De `RECOMPILE` optie is vaak niet mogelijk voor werk belastingen die een hoge door Voer vereisen.
+- De query Hint [REcompile](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) gebruiken bij elke uitvoering van de query. Deze tijdelijke oplossing verhandelt compilatie tijd en verhoogde CPU voor een betere plan kwaliteit. De optie `RECOMPILE` is vaak niet mogelijk voor werk belastingen die een hoge door Voer vereisen.
 - Gebruik de query Hint [(Optimize for...)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) om de feitelijke parameter waarde te overschrijven met een typische parameter waarde die een plan produceert dat voldoende is voor de meeste mogelijkheden voor parameter waarden. Deze optie vereist een goed idee van de optimale parameter waarden en de bijbehorende plan kenmerken.
 - Gebruik de [optie (optimaliseren voor onbekende)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) query hint om de werkelijke parameter waarde te overschrijven en gebruik in plaats daarvan het gemiddelde van de dichtheids vector te gebruiken. U kunt dit ook doen door de binnenkomende parameter waarden vast te leggen in lokale variabelen en vervolgens de lokale variabelen binnen de predikaten te gebruiken in plaats van de para meters zelf te gebruiken. Voor deze oplossing moet de gemiddelde densiteit *goed genoeg*zijn.
 - Schakel para meter-sniffing volledig uit met behulp van de [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) -query hint.
@@ -118,7 +118,7 @@ Voor meer informatie over het oplossen van PSP-problemen raadpleegt u deze blog 
 
 - [Ik geur een para meter](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)
 - [Conor versus dynamische SQL versus procedures versus plan kwaliteit voor query's met para meters](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)
-- [Optimalisatie technieken voor SQL-query's in SQL Server: Parameter sniffing](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)
+- [Optimalisatie technieken voor SQL-query's in SQL Server: parameter sniffing](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)
 
 ### <a name="compile-activity-caused-by-improper-parameterization"></a>Compilatie activiteit veroorzaakt door onjuiste parameterisering
 
@@ -132,7 +132,7 @@ FROM t1 JOIN t2 ON t1.c1 = t2.c1
 WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
-In dit voor beeld `t1.c1` neemt `@p1`, maar `t2.c2` blijft GUID als letterlijke waarde. Als u in dit geval de waarde voor `c2`wijzigt, wordt de query behandeld als een andere query en wordt er een nieuwe compilatie uitgevoerd. Als u de compilaties in dit voor beeld wilt reduceren, zou u ook de GUID para meters.
+In dit voor beeld neemt `t1.c1` `@p1`, maar `t2.c2` blijft GUID als letterlijke waarde. Als u in dit geval de waarde voor `c2`wijzigt, wordt de query als een andere query behandeld en wordt er een nieuwe compilatie uitgevoerd. Als u de compilaties in dit voor beeld wilt reduceren, zou u ook de GUID para meters.
 
 Met de volgende query wordt het aantal query's per query-hash weer gegeven om te bepalen of een query juist is para meters:
 
@@ -175,13 +175,13 @@ Als u een RECOMPILE-Hint gebruikt, wordt er geen plan in de cache opgeslagen.
 
 Een hercompilatie (of nieuwe compilatie na verwijdering van de cache) kan nog steeds leiden tot het genereren van een query-uitvoerings plan dat identiek is aan het origineel. Wanneer het plan wordt gewijzigd ten opzichte van het vorige of oorspronkelijke abonnement, zijn deze toelichtingen waarschijnlijk:
 
-- **Gewijzigd fysiek ontwerp**: Nieuw gemaakte indexen hebben bijvoorbeeld effectiever betrekking op de vereisten van een query. De nieuwe indexen kunnen worden gebruikt voor een nieuwe compilatie als de query optimalisatie besluit dat het gebruik van die nieuwe index betrouwbaarder is dan het gebruik van de gegevens structuur die oorspronkelijk was geselecteerd voor de eerste versie van de uitvoering van de query.  Eventuele fysieke wijzigingen in de objecten waarnaar wordt verwezen, kunnen leiden tot een nieuwe plannings optie tijdens het compileren.
+- **Gewijzigd fysiek ontwerp**: nieuwe indexen maken bijvoorbeeld effectiever de vereisten van een query. De nieuwe indexen kunnen worden gebruikt voor een nieuwe compilatie als de query optimalisatie besluit dat het gebruik van die nieuwe index betrouwbaarder is dan het gebruik van de gegevens structuur die oorspronkelijk was geselecteerd voor de eerste versie van de uitvoering van de query.  Eventuele fysieke wijzigingen in de objecten waarnaar wordt verwezen, kunnen leiden tot een nieuwe plannings optie tijdens het compileren.
 
-- **Verschillen Server bron**: Wanneer een plan in het ene systeem verschilt van het plan in een ander systeem, kan de beschik baarheid van resources, zoals het aantal beschik bare processors, beïnvloeden welk plan wordt gegenereerd.  Als een systeem bijvoorbeeld meer processors heeft, kan een parallelle planning worden gekozen. 
+- **Verschillen in Server bronnen**: wanneer een plan in het ene systeem verschilt van het plan in een ander systeem, kan de beschik baarheid van resources, zoals het aantal beschik bare processors, invloed hebben op welk plan wordt gegenereerd.  Als een systeem bijvoorbeeld meer processors heeft, kan een parallelle planning worden gekozen. 
 
-- **Verschillende statistieken**: De statistieken die zijn gekoppeld aan de objecten waarnaar wordt verwezen, zijn mogelijk gewijzigd of kunnen afwijken van de statistieken van het oorspronkelijke systeem.  Als de statistieken veranderen en een hercompilatie plaatsvindt, gebruikt de query Optimizer de statistieken die beginnen wanneer ze zijn gewijzigd. De gegevens distributies en-frequenties van de herziene statistieken kunnen verschillen van die van de oorspronkelijke compilatie.  Deze wijzigingen worden gebruikt voor het maken van kardinaliteit. (*Schattingen van kardinaliteit* zijn het aantal rijen dat naar verwachting door de logische query structuur loopt.) Wijzigingen in de kardinaliteit kunnen ertoe leiden dat u verschillende fysieke Opera tors en gekoppelde orders van bewerkingen kunt kiezen.  Zelfs kleine wijzigingen in statistieken kunnen leiden tot een gewijzigd query-uitvoerings plan.
+- **Andere statistieken**: de statistieken die zijn gekoppeld aan de objecten waarnaar wordt verwezen, zijn mogelijk gewijzigd of kunnen afwijken van de statistieken van het oorspronkelijke systeem.  Als de statistieken veranderen en een hercompilatie plaatsvindt, gebruikt de query Optimizer de statistieken die beginnen wanneer ze zijn gewijzigd. De gegevens distributies en-frequenties van de herziene statistieken kunnen verschillen van die van de oorspronkelijke compilatie.  Deze wijzigingen worden gebruikt voor het maken van kardinaliteit. (*Schattingen van kardinaliteit* zijn het aantal rijen dat naar verwachting door de logische query structuur loopt.) Wijzigingen in de kardinaliteit kunnen ertoe leiden dat u verschillende fysieke Opera tors en gekoppelde orders van bewerkingen kunt kiezen.  Zelfs kleine wijzigingen in statistieken kunnen leiden tot een gewijzigd query-uitvoerings plan.
 
-- **Gewijzigde database compatibiliteits niveau of kardinaliteit Estimator-versie**:  Wijzigingen in het database compatibiliteits niveau kunnen nieuwe strategieën en functies inschakelen die kunnen leiden tot een ander uitvoerings plan voor query's.  Buiten het database compatibiliteits niveau kan een uitgeschakelde of ingeschakelde tracerings vlag 4199 of een gewijzigde status van het database bereik configuratie-QUERY_OPTIMIZER_HOTFIXES ook invloed hebben op de keuze van de query-uitvoerings plannen tijdens het compileren.  Tracerings vlaggen 9481 (geforceerd verouderd CE) en 2312 (standaard-CE forceren) zijn ook van invloed op het plan. 
+- Het **database compatibiliteits niveau of de Estimator-versie van de kardinaliteit is gewijzigd**: wijzigingen in het database compatibiliteits niveau kunnen nieuwe strategieën en functies mogelijk maken die kunnen leiden tot een ander uitvoerings plan voor query's.  Buiten het database compatibiliteits niveau kan een uitgeschakelde of ingeschakelde tracerings vlag 4199 of een gewijzigde status van het database bereik configuratie-QUERY_OPTIMIZER_HOTFIXES ook invloed hebben op de keuze van de query-uitvoerings plannen tijdens het compileren.  Tracerings vlaggen 9481 (geforceerd verouderd CE) en 2312 (standaard-CE forceren) zijn ook van invloed op het plan. 
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Probleem query's oplossen of meer resources opgeven
 
@@ -203,11 +203,11 @@ Als het query-uitvoerings plan niet anders is uitgevoerd, maar het CPU-gebruik i
 
 Het is niet altijd gemakkelijk om een wijziging van het werkbelasting volume te identificeren dat een CPU-probleem ondervindt. Houd rekening met de volgende factoren: 
 
-- **Gewijzigd resource gebruik**: Denk bijvoorbeeld aan een scenario waarbij het CPU-gebruik gedurende een lange periode is verhoogd tot 80 procent.  Het CPU-gebruik betekent alleen dat het werkbelasting volume is gewijzigd. Regressies in het query-uitvoerings plan en wijzigingen in de gegevens distributie kunnen ook bijdragen aan meer resource gebruik, zelfs als de toepassing dezelfde werk belasting uitvoert.
+- **Resource gebruik gewijzigd**: u kunt bijvoorbeeld een scenario gebruiken waarbij het CPU-gebruik gedurende een lange periode is verhoogd tot 80 procent.  Het CPU-gebruik betekent alleen dat het werkbelasting volume is gewijzigd. Regressies in het query-uitvoerings plan en wijzigingen in de gegevens distributie kunnen ook bijdragen aan meer resource gebruik, zelfs als de toepassing dezelfde werk belasting uitvoert.
 
-- **De weer gave van een nieuwe query**: Een toepassing kan op verschillende tijdstippen een nieuwe set query's aansturen.
+- **Het uiterlijk van een nieuwe query**: een toepassing kan op verschillende tijdstippen een nieuwe set query's aansturen.
 
-- **Een verhoging of afname van het aantal aanvragen**: Dit scenario is de meest duidelijke maat regel voor een werk belasting. Het aantal query's komt niet altijd overeen met meer resource gebruik. Deze metriek is echter nog steeds een significant signaal, ervan uitgaande dat andere factoren ongewijzigd blijven.
+- **Een verhoging of afname van het aantal aanvragen**: dit scenario is de meest duidelijke maat regel voor een werk belasting. Het aantal query's komt niet altijd overeen met meer resource gebruik. Deze metriek is echter nog steeds een significant signaal, ervan uitgaande dat andere factoren ongewijzigd blijven.
 
 ## <a name="waiting-related-performance-problems"></a>Problemen met betrekking tot de prestaties 
 

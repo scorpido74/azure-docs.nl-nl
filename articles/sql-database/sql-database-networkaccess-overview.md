@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database-en Data Warehouse-netwerk toegangs beheer | Microsoft Docs
+title: Netwerk toegangs beheer van Azure SQL Database en Data Warehouse
 description: Overzicht van netwerk toegangs beheer voor Azure SQL Database en Data Warehouse voor het beheren van toegang en het configureren van een enkele of gegroepeerde Data Base.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: b2c1f01e53cfe41b72e3e079059c66e4e2409012
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: deee668c3597047a5d5f0fd153626916c3fd8517
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703275"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687712"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Netwerk toegangs beheer van Azure SQL Database en Data Warehouse
 
@@ -81,14 +81,14 @@ Houd rekening met de volgende Azure-netwerk termen wanneer u Virtual Network Fir
 
 **Virtueel netwerk:** U kunt virtuele netwerken koppelen aan uw Azure-abonnement 
 
-**Subnetrouter** Een virtueel netwerk bevat **subnetten**. Alle Azure virtual machines (Vm's) die u hebt toegewezen aan subnetten. Eén subnet kan meerdere Vm's of andere reken knooppunten bevatten. Reken knooppunten die zich buiten uw virtuele netwerk bevinden, hebben geen toegang tot het virtuele netwerk tenzij u de beveiliging zo configureert dat toegang wordt toegestaan.
+**Subnet:** Een virtueel netwerk bevat **subnetten**. Alle Azure virtual machines (Vm's) die u hebt toegewezen aan subnetten. Eén subnet kan meerdere Vm's of andere reken knooppunten bevatten. Reken knooppunten die zich buiten uw virtuele netwerk bevinden, hebben geen toegang tot het virtuele netwerk tenzij u de beveiliging zo configureert dat toegang wordt toegestaan.
 
 **Service-eind punt Virtual Network:** Een [Virtual Network Service-eind punt] [VM-virtueel-netwerk-service-eind punten-overzicht-649d] is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. In dit artikel bent u geïnteresseerd in de type naam van **micro soft. SQL**, die verwijst naar de Azure-service met de naam SQL database.
 
 **Regel voor virtueel netwerk:** Een regel voor het virtuele netwerk voor uw SQL Database-Server is een subnet dat wordt vermeld in de toegangs beheer lijst (ACL) van uw SQL Database-Server. Het subnet moet de naam van het **micro soft. SQL** -type bevatten als u de toegangs beheer lijst voor uw SQL database wilt. Met een regel voor het virtuele netwerk krijgt uw SQL Database-Server de communicatie van elk knoop punt dat zich in het subnet bevindt, te accepteren.
 
 
-## <a name="ip-vs-virtual-network-firewall-rules"></a>IP versus Firewall regels voor Virtual Network
+## <a name="ip-vs-virtual-network-firewall-rules"></a>IP versus Virtual Network Firewall regels
 
 Met de firewall van Azure SQL Server kunt u IP-adresbereiken opgeven waarvan de communicatie in SQL Database wordt geaccepteerd. Deze aanpak is nauw keurig voor stabiele IP-adressen die zich buiten het particuliere Azure-netwerk bevinden. Virtuele machines (Vm's) in het particuliere Azure-netwerk zijn echter geconfigureerd met *dynamische* IP-adressen. Dynamische IP-adressen kunnen veranderen wanneer de virtuele machine opnieuw wordt opgestart en de op IP gebaseerde firewall regel ongeldig maken. Het is Folly om een dynamisch IP-adres op te geven in een firewall regel, in een productie omgeving.
 
@@ -107,7 +107,7 @@ Regels voor virtuele netwerken zijn eenvoudiger om de toegang tot stand te breng
 
 - Voor hulp bij het maken van verbinding met een Azure-SQL database van open-source of toepassingen van derden raadpleegt [u Quick Start code samples to SQL database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
 
-- Zie de **SQL-Data Base voor meer informatie over aanvullende poorten die u mogelijk moet openen: Buiten de VS binnen @ no__t-0 sectie van [poorten boven 1433 voor ADO.NET 4,5 en SQL database](sql-database-develop-direct-route-ports-adonet-v12.md)
+- Voor informatie over aanvullende poorten die u mogelijk moet openen, raadpleegt u de sectie **SQL database: buiten** bevindend in poorten van meer [dan 1433 voor ADO.NET 4,5 en SQL database](sql-database-develop-direct-route-ports-adonet-v12.md)
 
 - Zie [Azure SQL-connectiviteits architectuur](sql-database-connectivity-architecture.md) voor een overzicht van Azure SQL database connectiviteit
 

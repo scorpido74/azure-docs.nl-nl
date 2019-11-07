@@ -1,5 +1,5 @@
 ---
-title: Functie beperkingen voor Azure SQL Database | Microsoft Docs
+title: Functie beperkingen Azure SQL Database
 description: Dankzij de beperkingen van Azure SQL Database-functies wordt uw database beveiliging verbeterd door functies in uw data base te beperken die aanvallers kunnen gebruiken om toegang te krijgen tot informatie.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: f2fd6cb73428c69fbb27cb93377f851a4e06221d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: e9518065b2240d72698ed75f2fa8a7aed343b7bf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959137"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690058"
 ---
 # <a name="azure-sql-database-feature-restrictions"></a>Functie beperkingen Azure SQL Database
 
@@ -24,7 +24,7 @@ Een veelvoorkomende bron van SQL Server aanvallen is via webtoepassingen die toe
 
 ## <a name="enabling-feature-restrictions"></a>Functie beperkingen inschakelen
 
-Het inschakelen van de functie beperkingen wordt `sp_add_feature_restriction` als volgt gedaan met behulp van de opgeslagen procedure:
+Het inschakelen van functie beperkingen wordt als volgt uitgevoerd met behulp van de `sp_add_feature_restriction` opgeslagen procedure:
 
 ```sql
 EXEC sp_add_feature_restriction <feature>, <object_class>, <object_name>
@@ -32,14 +32,14 @@ EXEC sp_add_feature_restriction <feature>, <object_class>, <object_name>
 
 De volgende functies kunnen worden beperkt:
 
-| Functie          | Description |
+| Functie          | Beschrijving |
 |------------------|-------------|
-| N'ErrorMessages' | Wanneer dit is beperkt, worden alle gebruikers gegevens in het fout bericht gemaskeerd. Raadpleeg de [functie beperking voor fout berichten](#error-messages-feature-restriction) |
+| N'ErrorMessages' | Wanneer dit is beperkt, worden alle gebruikers gegevens in het fout bericht gemaskeerd. Zie [fout berichten functie beperking](#error-messages-feature-restriction) |
 | N'Waitfor'       | Wanneer dit is beperkt, wordt de opdracht direct zonder vertraging geretourneerd. Zie [waitfor-functie beperking](#waitfor-feature-restriction) |
 
-De waarde van `object_class` kan ofwel `N'User'` of `N'Role'` worden aangegeven `object_name` of de naam van een gebruikers naam of een rol in de data base is.
+De waarde van `object_class` kan `N'User'` of `N'Role'` zijn om aan te geven of `object_name` een gebruikers naam of een rolnaam in de data base is.
 
-In het volgende voor beeld worden alle fout berichten voor `MyUser` de gebruiker gemaskeerd:
+In het volgende voor beeld worden alle fout berichten voor gebruikers `MyUser` gemaskeerd:
 
 ```sql
 EXEC sp_add_feature_restriction N'ErrorMessages', N'User', N'MyUser'
@@ -47,13 +47,13 @@ EXEC sp_add_feature_restriction N'ErrorMessages', N'User', N'MyUser'
 
 ## <a name="disabling-feature-restrictions"></a>Functie beperkingen uitschakelen
 
-Het uitschakelen van de functie beperkingen wordt `sp_drop_feature_restriction` als volgt gedaan met behulp van de opgeslagen procedure:
+Het uitschakelen van de functie beperkingen wordt als volgt uitgevoerd met behulp van de `sp_drop_feature_restriction` opgeslagen procedure:
 
 ```sql
 EXEC sp_drop_feature_restriction <feature>, <object_class>, <object_name>
 ```
 
-In het volgende voor beeld wordt fout bericht maskering uitgeschakeld voor `MyUser`gebruiker:
+In het volgende voor beeld wordt fout bericht maskering uitgeschakeld voor gebruikers `MyUser`:
 
 ```sql
 EXEC sp_drop_feature_restriction N'ErrorMessages', N'User', N'MyUser'
@@ -61,13 +61,13 @@ EXEC sp_drop_feature_restriction N'ErrorMessages', N'User', N'MyUser'
 
 ## <a name="viewing-feature-restrictions"></a>Functie beperkingen weer geven
 
-De `sys.sql_feature_restrictions` weer gave bevat alle momenteel gedefinieerde functie beperkingen voor de data base. Het bevat de volgende kolommen:
+De weer gave `sys.sql_feature_restrictions` geeft alle momenteel gedefinieerde functie beperkingen voor de data base. Het bevat de volgende kolommen:
 
-| Kolomnaam | Gegevenstype | Description |
+| Kolom naam | Gegevenstype | Beschrijving |
 |-------------|-----------|-------------|
 | Klasse       | nvarchar (128) | Klasse van object waarop de beperking van toepassing is |
-| object      | nvarchar(256) | De naam van het object waarop de beperking van toepassing is |
-| traceren     | nvarchar (128) | Functie die is beperkt |
+| object      | nvarchar (256) | De naam van het object waarop de beperking van toepassing is |
+| Hulp     | nvarchar (128) | Functie die is beperkt |
 
 ## <a name="feature-restrictions"></a>Functie beperkingen
 
@@ -81,13 +81,13 @@ Overweeg een webtoepassing met een aanvraag in de vorm van:
 http://www.contoso.com/employee.php?id=1
 ```
 
-Die de volgende database query uitvoert:
+die de volgende database query uitvoert:
 
 ```sql
 SELECT Name FROM EMPLOYEES WHERE Id=$EmpId
 ```
 
-Als de waarde die wordt door `id` gegeven als de para meter voor de aanvraag van de webtoepassing, wordt gekopieerd om $EmpId te vervangen in de database query, kan een aanvaller de volgende aanvraag indienen:
+Als de waarde die wordt door gegeven als de `id` para meter voor de aanvraag van de webtoepassing is gekopieerd om $EmpId te vervangen in de database query, kan een aanvaller de volgende aanvraag indienen:
 
 ```html
 http://www.contoso.com/employee.php?id=1 AND CAST(DB_NAME() AS INT)=0
@@ -125,7 +125,7 @@ Arithmetic overflow error for data type ******, value = ******.
 
 ### <a name="waitfor-feature-restriction"></a>WAITFOR-functie beperking
 
-Een blinde SQL-injectie is wanneer een toepassing geen aanvaller met de resultaten van de geïnjecteerde SQL of met een fout bericht biedt, maar de aanvaller gegevens uit de data base kan afleiden door een voorwaardelijke query te maken waarin de twee voorwaardelijke vertakkingen Voer een andere hoeveelheid tijd in om uit te voeren. Door de reactie tijd te vergelijken, kan de aanvaller weten welke vertakking werd uitgevoerd en wordt er informatie over het systeem meer in rekening gebracht. De eenvoudigste variant van deze aanval gebruikt de `WAITFOR` instructie om de vertraging aan te brengen.
+Een blinde SQL-injectie is wanneer een toepassing geen aanvaller met de resultaten van de geïnjecteerde SQL of met een fout bericht biedt, maar de aanvaller gegevens uit de data base kan afleiden door een voorwaardelijke query te maken waarin de twee voorwaardelijke vertakkingen Voer een andere hoeveelheid tijd in om uit te voeren. Door de reactie tijd te vergelijken, kan de aanvaller weten welke vertakking werd uitgevoerd en wordt er informatie over het systeem meer in rekening gebracht. De eenvoudigste variant van deze aanval gebruikt de `WAITFOR`-instructie om de vertraging aan te brengen.
 
 Overweeg een webtoepassing met een aanvraag in de vorm van:
 
@@ -145,4 +145,4 @@ Als de waarde die wordt door gegeven als de id-para meter voor de aanvragen van 
 http://www.contoso.com/employee.php?id=1; IF SYSTEM_USER='sa' WAITFOR DELAY '00:00:05'
 ```
 
-En de query duurt vijf seconden als het `sa` account wordt gebruikt. Als `WAITFOR` functie beperking is uitgeschakeld in de data base, `WAITFOR` wordt de instructie genegeerd en wordt er geen informatie gelekt met behulp van deze aanval.
+En de query duurt vijf seconden als het `sa`-account werd gebruikt. Als `WAITFOR` functie beperking is uitgeschakeld in de data base, wordt de instructie `WAITFOR` genegeerd en wordt er geen informatie gelekt met behulp van deze aanval.

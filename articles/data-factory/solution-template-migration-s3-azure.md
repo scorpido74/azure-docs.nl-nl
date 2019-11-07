@@ -1,5 +1,5 @@
 ---
-title: Gegevens migreren van Amazon S3 naar Azure Data Lake Storage Gen2 met Azure Data Factory | Microsoft Docs
+title: Gegevens migreren van Amazon S3 naar Azure Data Lake Storage Gen2 met Azure Data Factory
 description: Informatie over het gebruik van een oplossings sjabloon voor het migreren van gegevens van Amazon S3 met behulp van een externe beheer tabel om een partitie lijst op te slaan in AWS S3 met Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2019
-ms.openlocfilehash: e4567d79b70fc18622e4a5e927031e9849b96e99
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: a8591762bf4e8eccd5e1b7d67538674feed720b9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092285"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684193"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Gegevens migreren van Amazon S3 naar Azure Data Lake Storage Gen2
 
@@ -73,7 +73,7 @@ De sjabloon bevat twee para meters:
 
     > [!NOTE]
     > De tabel naam is s3_partition_control_table.
-    > Het schema van de beheer tabel is PartitionPrefix en SuccessOrFailure, waarbij PartitionPrefix de voorvoegsel instelling in S3 is om de mappen en bestanden in Amazon S3 op naam te filteren. SuccessOrFailure is de status van het kopiëren van elke partitie: 0 betekent dat deze partitie niet is gekopieerd naar Azure en 1 betekent dat deze partitie naar Azure is gekopieerd.
+    > Het schema van de beheer tabel is PartitionPrefix en SuccessOrFailure, waarbij PartitionPrefix de voorvoegsel instelling in S3 is om de mappen en bestanden in Amazon S3 op naam te filteren. SuccessOrFailure is de status van het kopiëren van elke partitie: 0 betekent dat deze partitie niet gekopieerd naar Azure en 1 betekent dat deze partitie naar Azure is gekopieerd.
     > Er zijn vijf partities gedefinieerd in de controle tabel en de standaard status van het kopiëren van elke partitie is 0.
 
     ```sql

@@ -1,18 +1,18 @@
 ---
-title: Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
+title: Ondersteuning voor nood herstel van virtuele Hyper-V-machines naar Azure met Azure Site Recovery
 description: Een overzicht van de ondersteunde onderdelen en vereisten voor herstel na nood gevallen voor Hyper-V-VM'S naar Azure met Azure Site Recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: e34140f9e014cfd41b0c14e980ca74e4d07d0c85
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9af85d8d9b181d619d8895542f142708626649d1
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933847"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620839"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -91,26 +91,26 @@ Versneld netwerken | Nee | Nee
 
 ## <a name="hyper-v-host-storage"></a>Opslag voor Hyper-V-host
 
-**Storage** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
+**Opslag** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | --- 
-NFS | N.V.T. | N.V.T.
+NFS | N.v.t. | N.v.t.
 SMB 3.0 | Ja | Ja
 SAN (ISCSI) | Ja | Ja
 Meerdere paden (MPIO). Getest met:<br></br> Micro soft DSM, EMC PowerPath 5,7 SP4<br/><br/> EMC PowerPath-DSM voor CLARiiON | Ja | Ja
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM-gast opslag
 
-**Storage** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
+**Opslag** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | ---
-VMDK | N.V.T. | N.V.T.
+VMDK | N.v.t. | N.v.t.
 VHD/VHDX | Ja | Ja
 VM van de 2e generatie | Ja | Ja
 EFI/UEFI| Ja | Ja
 Gedeelde cluster schijf | Nee | Nee
 Versleutelde schijf | Nee | Nee
-NFS | N.V.T. | N.V.T.
+NFS | N.v.t. | N.v.t.
 SMB 3.0 | Nee | Nee
-RDM | N.V.T. | N.V.T.
+RDM | N.v.t. | N.v.t.
 Schijf > 1 TB | Ja, Maxi maal 4.095 GB | Ja, Maxi maal 4.095 GB
 Schijf: logische en fysieke sector van 4 KB | Niet ondersteund: gen 1/gen 2 | Niet ondersteund: gen 1/gen 2
 Schijf: 4 KB logische en 512 bytes fysieke sector | Ja |  Ja
@@ -132,7 +132,7 @@ Cool Storage | Nee | Nee
 Hot Storage| Nee | Nee
 Blok-blobs | Nee | Nee
 Versleuteling op rest (SSE)| Ja | Ja
-Premium-opslag | Ja | Ja
+Premium Storage | Ja | Ja
 Import/export-service | Nee | Nee
 Azure Storage-accounts waarvoor Firewall is ingeschakeld | Ja. Voor doel opslag en cache. | Ja. Voor doel opslag en cache.
 Opslag account wijzigen | Nee. Het Azure Storage-doel account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Schakel herstel na nood gevallen uit en vervolgens opnieuw in. | Nee

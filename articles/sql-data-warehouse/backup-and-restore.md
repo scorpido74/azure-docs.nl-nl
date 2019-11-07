@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse back-up en herstel-moment opnamen, geografisch redundant | Microsoft Docs
+title: 'Back-ups maken en herstellen: moment opnamen, geografisch redundant'
 description: Meer informatie over het werken met back-ups en herstellen in Azure SQL Data Warehouse. Gebruik Data Warehouse-back-ups om uw data warehouse te herstellen naar een herstel punt in de primaire regio. Gebruik geo-redundante back-ups om te herstellen naar een andere geografische regio.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 10/21/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cf6444b155830326f4876d2d65bcdaa5923fc35
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.custom: seo-lt-2019"
+ms.openlocfilehash: f37ca56f7875dcb6ab254a11b859c3e85f6a1dd0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72788816"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686148"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Back-ups maken en herstellen in Azure SQL Data Warehouse
 

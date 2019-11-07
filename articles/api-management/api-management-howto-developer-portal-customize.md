@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 62fb5552d86a802c3ba0213d99be2f91f21025e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472129"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620421"
 ---
 # <a name="access-and-customize-developer-portal"></a>De ontwikkelaars Portal openen en aanpassen
 
@@ -125,7 +125,7 @@ Als u uw portal en de meest recente wijzigingen beschikbaar wilt maken voor bezo
 
 ## <a name="visit-the-published-portal"></a>Ga naar de gepubliceerde Portal
 
-Nadat u de portal hebt gepubliceerd, kunt u deze openen op dezelfde URL als het deel venster beheer, bijvoorbeeld `https://contoso-api.portal.azure-api.net`. Open deze in een nieuw browser tabblad om het weer te geven als een externe bezoeker.
+Nadat u de portal hebt gepubliceerd, kunt u deze openen op dezelfde URL als het deel venster beheer, bijvoorbeeld `https://contoso-api.developer.azure-api.net`. Bekijk het in een afzonderlijke browser sessie (incognito/private Browse mode) als een externe gebruiker.
 
 ## <a name="next-steps"></a>Volgende stappen
 

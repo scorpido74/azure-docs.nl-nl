@@ -1,40 +1,40 @@
 ---
-title: Afbeeldingen sneller labelen met voorgestelde Tags
+title: Afbeeldingen sneller labelen met Smart Labeler
 titleSuffix: Azure Cognitive Services
-description: In deze hand leiding leert u hoe u aanbevolen tags kunt gebruiken om snel een groot aantal installatie kopieën te labelen wanneer u Custom Vision modellen wilt trainen.
+description: In deze hand leiding leert u hoe u Smart Labeler kunt gebruiken om voorgestelde Tags voor installatie kopieën te genereren. Zo kunt u een groot aantal installatie kopieën sneller labelen bij het trainen van een Custom Vision model.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 10/29/2019
 ms.author: pafarley
-ms.openlocfilehash: 06735240729fb2bfd21b87f592e143e9ceabb390
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 94ca47e6114e4f8c3485f6072facd07c25e4b96a
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753488"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647755"
 ---
-# <a name="label-images-faster-with-suggested-tags"></a>Afbeeldingen sneller labelen met voorgestelde Tags
+# <a name="label-images-faster-with-smart-labeler"></a>Afbeeldingen sneller labelen met Smart Labeler
 
-In deze hand leiding leert u hoe u de functie aanbevolen tags kunt gebruiken om snel een groot aantal installatie kopieën te labelen bij het trainen van een Custom Vision model. 
+In deze hand leiding leert u hoe u Smart Labeler kunt gebruiken om voorgestelde Tags voor installatie kopieën te genereren. Zo kunt u een groot aantal installatie kopieën sneller labelen bij het trainen van een Custom Vision model.
 
 Wanneer u afbeeldingen labelt voor een Custom Vision model, gebruikt de service de laatste getrainde iteratie van het model om de labels van niet-gelabelde afbeeldingen te voors pellen. Vervolgens worden deze voor spellingen als voorgestelde Tags weer gegeven op basis van de geselecteerde betrouwbaarheids drempel en Voorspellings onzekerheid. U kunt de suggesties vervolgens bevestigen of wijzigen en het proces van het hand matig coderen van de afbeeldingen voor training versnellen.
 
-## <a name="when-to-use-suggested-tags"></a>Wanneer moet u aanbevolen tags gebruiken?
+## <a name="when-to-use-smart-labeler"></a>Wanneer Smart Labeler gebruiken
 
 Houd de volgende beperkingen in acht:
 
 * U moet alleen voorgestelde Tags aanvragen voor installatie kopieën waarvan de inhoud eenmaal is getraind. U krijgt geen suggesties voor een nieuwe tag die u alleen aan het beginnen bent.
 
 > [!IMPORTANT]
-> De functie Aanbevolen Tags maakt gebruik van hetzelfde [prijs model](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) als normale voor spellingen. De eerste keer dat u voorgestelde labels voor een set met installatie kopieën triggert, worden de kosten voor Voorspellings aanroepen op dezelfde plaats in rekening gebracht. Daarna slaat de service gedurende 30 dagen de resultaten voor de geselecteerde installatie kopieën op in een Data Base. u kunt ze op elk gewenst moment binnen die periode openen. Na 30 dagen worden er kosten in rekening gebracht als u de voorgestelde Tags opnieuw aanvraagt.
+> De functie Smart Labeler maakt gebruik van hetzelfde [prijs model](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) als normale voor spellingen. De eerste keer dat u voorgestelde labels voor een set met installatie kopieën triggert, worden de kosten voor Voorspellings aanroepen op dezelfde plaats in rekening gebracht. Daarna slaat de service gedurende 30 dagen de resultaten voor de geselecteerde installatie kopieën op in een Data Base. u kunt ze op elk gewenst moment binnen die periode openen. Na 30 dagen worden er kosten in rekening gebracht als u de voorgestelde Tags opnieuw aanvraagt.
 
-## <a name="suggested-tags-workflow"></a>Werk stroom voorgestelde labels
+## <a name="smart-labeler-workflow"></a>Smart Labeler werk stroom
 
-De volgende stappen laten zien hoe u de functie aanbevolen tags gebruikt:
+De volgende stappen laten zien hoe u Smart Labeler gebruikt:
 
 1. Upload al uw trainings afbeeldingen naar uw Custom Vision-project.
 1. Label deel van uw gegevensset, waarbij u een gelijk aantal installatie kopieën voor elke tag kiest.
@@ -43,21 +43,21 @@ De volgende stappen laten zien hoe u de functie aanbevolen tags gebruikt:
 1. Start het trainings proces.
 1. Wanneer de training is voltooid, gaat u naar de weer gave zonder **Tags** en selecteert u de knop **voorgestelde labels ophalen** in het linkerdeel venster.
     > [!div class="mx-imgBorder"]
-    > de knop voorgestelde labels ![The wordt weer gegeven op het tabblad niet-gecodeerde afbeeldingen. ](./media/suggested-tags/suggested-tags-button.png)
-1. Selecteer de set installatie kopieën waarvoor u suggesties wilt. U moet alleen initiële label suggesties voor een deel van de niet-gecodeerde afbeeldingen ophalen. U krijgt betere label suggesties wanneer u dit proces doorloopt.
+    > ![de knop voorgestelde labels wordt weer gegeven onder het tabblad niet-gecodeerde afbeeldingen.](./media/suggested-tags/suggested-tags-button.png)
+1. In het pop-upvenster dat wordt weer gegeven, stelt u het aantal installatie kopieën in waarvoor u suggesties wilt. U moet alleen initiële label suggesties voor een deel van de niet-gecodeerde afbeeldingen ophalen. U krijgt betere label suggesties wanneer u dit proces doorloopt.
 1. Bevestig de voorgestelde Tags en los ze op.
     > [!TIP]
     > Afbeeldingen met voorgestelde Tags worden gesorteerd op de onzekerheid van de voor spelling (lagere waarden geven een hogere betrouw baarheid aan). U kunt de sorteer volgorde wijzigen met de optie **sorteren op onzekere** . Als u de volg orde op **hoog**instelt, kunt u de voor spellingen met hoge onzekerheid eerst corrigeren en vervolgens snel de onzekerheid bevestigen.
     * In afbeeldings classificatie projecten kunt u tags in batches selecteren en bevestigen. Filter de weer gave op een bepaalde voorgestelde tag, schakel de selectie van installatie kopieën die onjuist zijn gelabeld uit en bevestig de rest in een batch.
         > [!div class="mx-imgBorder"]
-        > ![Suggested Tags worden in batch modus voor IC met filters weer gegeven. ](./media/suggested-tags/ic-batch-mode.png)
+        > ![voorgestelde Tags worden in batch modus voor IC met filters weer gegeven.](./media/suggested-tags/ic-batch-mode.png)
 
         U kunt ook aanbevolen tags in de modus individuele afbeelding gebruiken door een afbeelding in de galerie te selecteren.
 
         ![Voorgestelde Tags worden weer gegeven in de modus voor afzonderlijke afbeeldingen voor IC.](./media/suggested-tags/ic-individual-image-mode.png)
     * In object detectie projecten worden batch bevestigingen niet ondersteund, maar u kunt nog steeds filteren en sorteren op voorgestelde Tags voor een meer gestructureerde label ervaring. Miniaturen van uw niet-gelabelde afbeeldingen tonen een overlay van selectie kaders die de locaties van voorgestelde Tags aangeven. Als u geen voorgesteld label filter selecteert, worden al uw niet-gelabelde afbeeldingen weer gegeven zonder dat de selectie vakjes worden bedekt.
         > [!div class="mx-imgBorder"]
-        > ![Suggested Tags worden weer gegeven in de batch modus voor OD met filters. ](./media/suggested-tags/od-batch-mode.png)
+        > ![voorgestelde Tags worden weer gegeven in de batch modus voor OD met filters.](./media/suggested-tags/od-batch-mode.png)
 
         Als u de tags voor object detectie wilt bevestigen, moet u deze Toep assen op elke afzonderlijke afbeelding in de galerie.
 

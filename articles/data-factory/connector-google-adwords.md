@@ -1,5 +1,5 @@
 ---
-title: Gegevens uit Google AdWords kopiëren met behulp van Azure Data Factory | Microsoft Docs
+title: Gegevens uit Google AdWords kopiëren met behulp van Azure Data Factory
 description: Meer informatie over het kopiëren van gegevens uit Google AdWords naar ondersteunde Sink-gegevens archieven door gebruik te maken van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 65bf1fa37ecb8d9e862b0e5042bed29470d750e1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: cc620e4dd7a84a85fb8d7bc8466a7a3fd116416e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935639"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680949"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Gegevens uit Google AdWords kopiëren met behulp van Azure Data Factory
 
@@ -45,7 +45,7 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 De volgende eigenschappen worden ondersteund voor Google AdWords-gekoppelde service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **GoogleAdWords** | Ja |
 | clientCustomerID | De klant-ID van de client van het AdWords-account waarvoor u rapport gegevens wilt ophalen.  | Ja |
@@ -57,7 +57,7 @@ De volgende eigenschappen worden ondersteund voor Google AdWords-gekoppelde serv
 | e-mail | De e-mail-ID van het service account die wordt gebruikt voor ServiceAuthentication en kan alleen worden gebruikt op zelf-hostende IR.  | Nee |
 | keyFilePath | Het volledige pad naar het. p12-sleutel bestand dat wordt gebruikt voor verificatie van het e-mail adres van het service account en kan alleen worden gebruikt op zelf-hostende IR.  | Nee |
 | trustedCertPath | Het volledige pad van het. pem-bestand met vertrouwde CA-certificaten voor het verifiëren van de server bij het maken van verbinding via SSL. Deze eigenschap kan alleen worden ingesteld wanneer SSL op zelf-hostende IR wordt gebruikt. De standaard waarde is het cacerts. pem-bestand dat met de IR is geïnstalleerd.  | Nee |
-| useSystemTrustStore | Hiermee geeft u op of u een CA-certificaat wilt gebruiken uit de systeem vertrouwens archief of vanuit een opgegeven PEM-bestand. De standaard waarde is False.  | Nee |
+| useSystemTrustStore | Hiermee geeft u op of u een CA-certificaat wilt gebruiken uit de systeem vertrouwens archief of vanuit een opgegeven PEM-bestand. De standaardwaarde is false.  | Nee |
 
 **Voorbeeld:**
 
@@ -101,7 +101,7 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 
 Als u gegevens wilt kopiëren uit Google AdWords, stelt u de eigenschap type van de gegevensset in op **GoogleAdWordsObject**. De volgende eigenschappen worden ondersteund:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **GoogleAdWordsObject** | Ja |
 | tableName | De naam van de tabel. | Nee (als "query" in activiteit bron is opgegeven) |
@@ -132,7 +132,7 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 Als u gegevens wilt kopiëren uit Google AdWords, stelt u het bron type in de Kopieer activiteit in op **GoogleAdWordsSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **GoogleAdWordsSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |

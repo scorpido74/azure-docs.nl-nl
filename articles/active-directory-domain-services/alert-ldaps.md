@@ -12,13 +12,13 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: iainfou
 ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 11/05/2019
 ms.locfileid: "71258055"
 ---
-# <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Bekende problemen: Waarschuwingen Secure LDAP in Azure Active Directory Domain Services
+# <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Bekende problemen: Secure LDAP waarschuwingen in Azure Active Directory Domain Services
 
 Toepassingen en services die gebruikmaken van Lightweight Directory Access Protocol (LDAP) om te communiceren met Azure Active Directory Domain Services (Azure AD DS) kunnen worden [geconfigureerd voor het gebruik van secure LDAP](tutorial-configure-ldaps.md). Er moet een geschikt certificaat en de vereiste netwerk poorten zijn geopend voor een goede werking van de beveiliging van LDAP.
 
@@ -48,7 +48,7 @@ De status van het beheerde domein van Azure AD DS wordt binnen twee uur automati
 > [!TIP]
 > TCP-poort 636 is niet de enige regel die nodig is om Azure AD DS soepel uit te voeren. Zie voor meer informatie de [Azure AD DS-netwerk beveiligings groepen en de vereiste poorten](network-considerations.md#network-security-groups-and-required-ports).
 
-## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Secure LDAP certificaat verloopt
+## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: het verlopen van Secure LDAP-certificaten
 
 ### <a name="alert-message"></a>Waarschuwings bericht
 

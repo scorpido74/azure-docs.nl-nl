@@ -1,5 +1,5 @@
 ---
-title: Rapport over uitgeschaalde Cloud databases (horizontale partitionering) | Microsoft Docs
+title: Rapport over uitgeschaalde Cloud databases (horizontale partitionering)
 description: Data base query's tussen meerdere data bases gebruiken om te rapporteren over verschillende data bases.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 4e896fae0d8459629c58dfd0bbdfbb32b90b1cac
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 1adc7757edc6d5abc50ed31ea2227711db60fcfe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264235"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690412"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Rapport over uitgeschaalde Cloud databases (preview-versie)
 
@@ -134,7 +134,7 @@ Zie [SQL database prijs](https://azure.microsoft.com/pricing/details/sql-databas
 * Zie aan de slag [met query's tussen data bases (verticaal partitioneren)](sql-database-elastic-query-getting-started-vertical.md)voor een verticaal gepartitioneerde zelf studie.
 * Zie query's [uitvoeren op verticaal gepartitioneerde gegevens](sql-database-elastic-query-vertical-partitioning.md) voor syntaxis-en voorbeeld query's voor verticaal gepartitioneerde gegevens)
 * Zie query's [uitvoeren in horizon taal gepartitioneerde gegevens](sql-database-elastic-query-horizontal-partitioning.md) voor syntaxis-en voorbeeld query's voor Horizon taal gepartitioneerde gegevens)
-* Zie [SP @ no__t-1execute \_remote](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die als Shards fungeren in een horizon taal partitie schema.
+* Zie [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die fungeren als Shards in een horizon taal partitie schema.
 
 
 <!--Image references-->

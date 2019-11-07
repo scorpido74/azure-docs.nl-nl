@@ -1,22 +1,22 @@
 ---
-title: On-premises gegevens gateway gebruiken voor Azure Virtual Network gegevens bronnen | Microsoft Docs
-description: Meer informatie over het configureren van een server voor het gebruik van een gateway voor gegevens bronnen op VNet.
+title: Azure Analysis Services configureren voor VNet-gegevens bronnen | Microsoft Docs
+description: Informatie over het configureren van een Azure Analysis Services-server voor het gebruik van een gateway voor gegevens bronnen op Azure Virtual Network (VNet).
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d1993996c0f982624d6976b50871fa8c4592e2f6
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 384f4c2ee3021678c530aa5c98eaf4dbfd661e95
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301214"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572266"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Gateway gebruiken voor gegevens bronnen op een Azure Virtual Network (VNet)
 
-In dit artikel wordt de **AlwaysUseGateway** -Server eigenschap voor het gebruik van gegevens bronnen op een [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md)beschreven.
+In dit artikel wordt de Azure Analysis Services eigenschap **AlwaysUseGateway** voor het gebruik van gegevens bronnen op een [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md)beschreven.
 
 ## <a name="server-access-to-vnet-data-sources"></a>Server toegang tot VNet-gegevens bronnen
 
@@ -29,7 +29,7 @@ Azure SQL Database beheerde exemplaar gegevens bronnen worden uitgevoerd in azur
 
 ## <a name="configure-alwaysusegateway-property"></a>Eigenschap AlwaysUseGateway configureren
 
-1. In SSMS > Server > **eigenschappen** > **Algemeen**selecteert u **de eigenschappen Geavanceerd (alle) weer geven**.
+1. Selecteer in SSMS > Server > **eigenschappen** > **Algemeen** **de optie Geavanceerde eigenschappen (alle) weer geven**.
 2. Selecteer **waar**in de **ASPaaS\AlwaysUseGateway**.
 
     ![Altijd gateway-eigenschap gebruiken](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)

@@ -1,5 +1,5 @@
 ---
-title: Aanbevelingen voor prestaties-Azure SQL Database | Microsoft Docs
+title: Aanbevelingen voor prestaties-Azure SQL Database
 description: Azure SQL Database biedt aanbevelingen voor uw SQL-data bases waarmee de prestaties van de huidige query kunnen worden verbeterd.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 08def3ac2fd94f01586bc690d867c04758b8856b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: de6ddd8886f8cadafa57724a5d5e33a3ba4e3c74
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569524"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691248"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Prestatie aanbevelingen voor SQL Database
 
@@ -37,7 +37,7 @@ Als u probeert de kolom met een automatisch gemaakte index te verwijderen, wordt
 
 Nadat de aanbeveling voor het maken van een index is toegepast, vergelijkt Azure SQL Database de prestaties van de query's met de basislijn prestaties. Als de nieuwe index betere prestaties heeft, wordt de aanbeveling als geslaagd gemarkeerd en is het impact rapport beschikbaar. Als de index geen prestaties heeft verbeterd, wordt deze automatisch hersteld. SQL Database gebruikt dit proces om ervoor te zorgen dat aanbevelingen de database prestaties verbeteren.
 
-Een aanbeveling voor het maken van een **index** heeft een uitstel beleid dat het Toep assen van de aanbeveling niet toestaat als het resource gebruik van een Data Base of groep hoog is. Het back-out-beleid houdt rekening met CPU, data IO, logboek-IO en beschik bare opslag. 
+Een aanbeveling voor het maken van een index heeft een **uitstel** beleid dat het Toep assen van de aanbeveling niet toestaat als het resource gebruik van een Data Base of groep hoog is. Het back-out-beleid houdt rekening met CPU, data IO, logboek-IO en beschik bare opslag. 
 
 Als CPU, data IO of logboek-IO hoger is dan 80% in de afgelopen 30 minuten, wordt de aanbeveling Create Index uitgesteld. Als de beschik bare opslag lager is dan 10% nadat de index is gemaakt, wordt de aanbeveling een fout status. Als, na een paar dagen, de automatische afstemming nog steeds meent dat de index nuttig zou zijn, wordt het proces opnieuw gestart. 
 
@@ -76,7 +76,7 @@ Aanbevelingen voor **schema problemen oplossen** wordt weer gegeven wanneer de S
 
 De aanbeveling schema probleem oplossen wordt weer gegeven wanneer de Azure SQL Database-service een afwijking van het aantal aan schema gerelateerde SQL-fouten op uw SQL database noteert. De volgende tabel bevat de fouten die betrekking hebben op schema problemen:
 
-| SQL-foutcode | Message |
+| SQL-fout code | Bericht |
 | --- | --- |
 | 201 |De procedure of functie*verwacht para meter*, maar deze is niet opgegeven. |
 | 207 |Ongeldige kolom naam *. |

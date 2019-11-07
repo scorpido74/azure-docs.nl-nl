@@ -1,5 +1,5 @@
 ---
-title: Richt lijnen voor het ontwerpen van gerepliceerde tabellen-Azure SQL Data Warehouse | Microsoft Docs
+title: Richt lijnen voor het ontwerpen van gerepliceerde tabellen
 description: Aanbevelingen voor het ontwerpen van gerepliceerde tabellen in uw Azure SQL Data Warehouse-schema. 
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c622edc6c3a37b2bc71323cf0e2c155f7aec6e33
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 18577cb729c9f17a112979cd1ebb763af38b9ca2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479319"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693057"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Ontwerp richtlijnen voor het gebruik van gerepliceerde tabellen in Azure SQL Data Warehouse
 Dit artikel bevat aanbevelingen voor het ontwerpen van gerepliceerde tabellen in uw SQL Data Warehouse schema. Gebruik deze aanbevelingen om de query prestaties te verbeteren door de verplaatsing van gegevens en de complexiteit van query's te verminderen.
@@ -42,7 +43,7 @@ Gerepliceerde tabellen werken goed voor dimensie tabellen in een ster schema. Di
 
 Overweeg het gebruik van een gerepliceerde tabel wanneer:
 
-- De tabel grootte op schijf is minder dan 2 GB, ongeacht het aantal rijen. Als u de grootte van een tabel wilt weten, kunt u de [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) - `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`opdracht gebruiken:. 
+- De tabel grootte op schijf is minder dan 2 GB, ongeacht het aantal rijen. Als u de grootte van een tabel wilt weten, kunt u de [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) -opdracht gebruiken: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
 - De tabel wordt gebruikt in samen voegingen waarvoor gegevens verplaatsing anders zou worden vereist. Bij het koppelen van tabellen die niet in dezelfde kolom worden gedistribueerd, zoals een hash-gedistribueerde tabel naar een Round-Robin tabel, is gegevens verplaatsing vereist om de query te volt ooien.  Als een van de tabellen klein is, overweeg dan een gerepliceerde tabel. In de meeste gevallen kunt u het beste gerepliceerde tabellen gebruiken in plaats van Round-Robin tabellen. Gebruik [sys. DM _pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)om bewerkingen voor gegevens verplaatsing in query plannen weer te geven.  De BroadcastMoveOperation is de gebruikelijke bewerking voor het verplaatsen van gegevens die kan worden verwijderd met behulp van een gerepliceerde tabel.  
  
 Gerepliceerde tabellen leveren mogelijk niet de beste query prestaties als:
@@ -95,7 +96,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 Voor een gerepliceerde tabel is geen verplaatsing van gegevens vereist voor samen voegingen omdat de volledige tabel al aanwezig is op elk reken knooppunt. Als de dimensie tabellen Round-Robin gedistribueerd zijn, kopieert een koppeling de dimensie tabel volledig naar elk reken knooppunt. Als u de gegevens wilt verplaatsen, bevat het query plan een bewerking met de naam BroadcastMoveOperation. Dit type verplaatsings bewerking voor gegevens vertraagt de query prestaties en wordt geëlimineerd door het gebruik van gerepliceerde tabellen. Als u de stappen in het query plan wilt weer geven, gebruikt u de weer gave [sys. DM _pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) system catalog. 
 
-In de volgende query op basis van het AdventureWorks-schema is `FactInternetSales` de tabel bijvoorbeeld een hash-distributie. De `DimDate` tabellen `DimSalesTerritory` en zijn kleinere dimensie tabellen. Met deze query wordt de totale omzet in Noord-Amerika voor boek jaar 2004 geretourneerd:
+In de volgende query op basis van het AdventureWorks-schema is de `FactInternetSales` tabel bijvoorbeeld een hash-distributie. De tabellen `DimDate` en `DimSalesTerritory` zijn kleinere dimensie tabellen. Met deze query wordt de totale omzet in Noord-Amerika voor boek jaar 2004 geretourneerd:
 
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
@@ -107,11 +108,11 @@ INNER JOIN dbo.DimSalesTerritory t
 WHERE d.FiscalYear = 2004
   AND t.SalesTerritoryGroup = 'North America'
 ```
-Er worden nieuwe en `DimDate` `DimSalesTerritory` afgeronde Robin tabellen gemaakt. Als gevolg hiervan heeft de query het volgende query plan getoond, dat meerdere bewerkingen voor het verplaatsen van de broadcast heeft: 
+`DimDate` en `DimSalesTerritory` als Round-Robin tabellen worden opnieuw gemaakt. Als gevolg hiervan heeft de query het volgende query plan getoond, dat meerdere bewerkingen voor het verplaatsen van de broadcast heeft: 
  
 ![Round Robin-query plan](media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg) 
 
-We maken `DimDate` en `DimSalesTerritory` als gerepliceerde tabellen opnieuw en voer de query opnieuw uit. Het resulterende query plan is veel korter en er wordt geen uitzending verplaatst.
+`DimDate` en `DimSalesTerritory` als gerepliceerde tabellen worden opnieuw gemaakt en de query wordt opnieuw uitgevoerd. Het resulterende query plan is veel korter en er wordt geen uitzending verplaatst.
 
 ![Gerepliceerd query plan](media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg) 
 
@@ -182,9 +183,9 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 Als u een gerepliceerde tabel wilt maken, gebruikt u een van de volgende instructies:
 
 - [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE als selecteren (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
-Zie gedistribueerde [tabellen](sql-data-warehouse-tables-distribute.md)voor een overzicht van gedistribueerde tabellen.
+Zie [gedistribueerde tabellen](sql-data-warehouse-tables-distribute.md)voor een overzicht van gedistribueerde tabellen.
 
 
 

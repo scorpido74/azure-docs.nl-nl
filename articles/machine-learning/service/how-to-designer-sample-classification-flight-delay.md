@@ -1,5 +1,5 @@
 ---
-title: 'Ontwerp voorbeeld #6: classificatie voor het voors pellen van de vlucht vertragingen'
+title: 'Designer: classificeren, vertragingen van de vlucht voors pellen'
 titleSuffix: Azure Machine Learning
 description: In dit artikel wordt beschreven hoe u een machine learning model bouwt om vlucht vertragingen te voors pellen met behulp van de ontwerper met slepen en neerzetten en aangepaste R-code.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 4b21ebffe8959809acc71fc09aff7e58873e10b8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 10b3b78b4878eeddf2f786fda90ab9709e4bd2b4
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515523"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647203"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>Voor beeld 6-classificatie: vertraging van de vlucht voors pellen met R
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -58,7 +58,7 @@ Een gegevensset vereist meestal een voor verwerking voordat deze kan worden gean
 
 De kolommen **Carrier**, **OriginAirportID**en **DestAirportID** worden opgeslagen als gehele getallen. Ze zijn echter categorische-kenmerken, gebruik de module **meta gegevens bewerken** om ze te converteren naar categorische.
 
-![bewerken-meta gegevens](media/how-to-ui-sample-classification-predict-flight-delay/edit-metadata.png)
+![edit-metadata](media/how-to-ui-sample-classification-predict-flight-delay/edit-metadata.png)
 
 Gebruik vervolgens de module **select columns** in dataset om uit te sluiten van de kolommen gegevensset, die mogelijk de volgende doel lekkages zijn: **DepDelay**, **DepDel15**, **ArrDelay**, **geannuleerd**, **jaar**. 
 

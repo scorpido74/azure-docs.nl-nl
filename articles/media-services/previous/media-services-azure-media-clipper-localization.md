@@ -1,44 +1,44 @@
 ---
-title: Azure Media Clipper lokalisatie configureren | Microsoft Docs
-description: Meer informatie over Azure Media Clipper ondersteunde talen en lokalisatieondersteuning voor
+title: Azure media Clipper-lokalisatie configureren | Microsoft Docs
+description: Meer informatie over ondersteunde talen en lokalisatie ondersteuning van Azure media Clipper
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: clip; subclip; code ring; media
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 41fd483a0b78619db6d018cf4b2ab7933a7c3031
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96ffdfe5e6b3e913bd5596dd624e35afcaecfabe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465793"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685024"
 ---
 # <a name="configure-localization"></a>Lokalisatie configureren 
 
-Azure Media Clipper is beschikbaar in 18 talen. Als u wilt de taal van de widget instellen, moet u definiëren de `language` parameter tijdens de initialisatie. In de gewenste taal code-tekenreeks doorgeven in de volgende lijst:
-- Chinees (Vereenvoudigd): zh-hans
-- Chinees (Traditioneel): zh-hant
-- Tsjechisch: cs
+Azure media Clipper is beschikbaar in 18 talen. Als u de taal van de widget wilt instellen, moet u de para meter `language` definiëren tijdens de initialisatie. Geef in de volgende lijst de gewenste teken reeks voor de taal code op:
+- Chinees (vereenvoudigd): zh-Hans
+- Chinees (traditioneel): zh-hant
+- Tsjechisch: CS
 - Nederlands, Vlaams: nl
-- Engels: nl
-- Frans: fr
+- Engels: en
+- Frans: FR
 - Duits: de
-- Hongaars: hu
-- Italiaans: het
-- Japans: ja
+- Hong aars: HU
+- Italiaans: it
+- Japans: Ja
 - Koreaans: ko
 - Pools: pl
 - Portugees (Brazilië): pt-br
 - Portugees (Portugal): pt-pt
 - Russisch: ru
 - Spaans: es
-- Zweeds: sv
+- Zweeds: SV
 - Turks: tr
 
-Als u een aangepaste woordenlijst instellen of uitbreiden van de standaard-woordenlijst, definieert u de `languages` of `extraLanguages` parameter, respectievelijk. Doorgeven in een aangepaste woordenlijst met de volgende JSON-indeling:
+Als u een woorden lijst voor een aangepaste taal wilt instellen of de standaard taal woordenlijst wilt uitbreiden, moet u respectievelijk de para meter `languages` of `extraLanguages` opgeven. Geef een aangepaste woorden lijst door met behulp van de volgende JSON-indeling:
 
 ```javascript
 {
@@ -50,7 +50,7 @@ Als u een aangepaste woordenlijst instellen of uitbreiden van de standaard-woord
 }
 ```
 
-Bijvoorbeeld, definieert het volgende voorbeeld de gelokaliseerde tekenreeksen in de Engelse:
+In het volgende voor beeld worden de gelokaliseerde Engelse teken reeksen gedefinieerd:
 
 ```javascript
 {
@@ -140,7 +140,7 @@ Bijvoorbeeld, definieert het volgende voorbeeld de gelokaliseerde tekenreeksen i
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende stappen voor het configureren van Azure Media Clipper:
-- [Het laden van assets in Azure Media Clipper](media-services-azure-media-clipper-load-assets.md)
-- [Aangepaste toetscombinaties configureren](media-services-azure-media-clipper-keyboard-shortcuts.md)
-- [Kniptaken uit de Clipper verzenden](media-services-azure-media-clipper-submit-job.md)
+Zie de volgende stappen voor het configureren van Azure media Clipper:
+- [Assets in azure media Clipper laden](media-services-azure-media-clipper-load-assets.md)
+- [Aangepaste sneltoetsen configureren](media-services-azure-media-clipper-keyboard-shortcuts.md)
+- [Knip taken verzenden vanuit de Clipper](media-services-azure-media-clipper-submit-job.md)

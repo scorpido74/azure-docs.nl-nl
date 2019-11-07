@@ -3,15 +3,15 @@ title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy gast configuratie gebruikt voor het controleren van instellingen binnen een Azure-machine.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/20/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: efe929a6ea38a8df7ad9fe37a92c181e3d409b25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 0e5592f629646db3132ffd65fd56b1a0d5d5be39
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464071"
+ms.locfileid: "73581429"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>De gast configuratie van Azure Policy begrijpen
 
@@ -121,30 +121,27 @@ Azure Policy maakt gebruik van de **complianceStatus** -eigenschap van de gast c
 > [!NOTE]
 > Het **DeployIfNotExists** -beleid is vereist voor het **AuditIfNotExists** -beleid om resultaten te retour neren. Zonder de **DeployIfNotExists**wordt met het **AuditIfNotExists** -beleid ' 0 van 0 ' resources weer gegeven als status.
 
-Alle ingebouwde beleids regels voor gast configuratie zijn opgenomen in een initiatief om de definities te groeperen voor gebruik in toewijzingen. Het ingebouwde initiatief met de naam *[Preview]: controleren wachtwoord beveiligings instellingen binnen Linux-en Windows-machines* bevat 18 beleids regels. Er zijn zes **DeployIfNotExists** -en **AuditIfNotExists** -paren voor Windows en drie paren voor Linux. De [beleids definitie](definition-structure.md#policy-rule) logica valideert dat alleen het doel besturingssysteem wordt geëvalueerd.
+Alle ingebouwde beleids regels voor gast configuratie zijn opgenomen in een initiatief om de definities te groeperen voor gebruik in toewijzingen. Het ingebouwde initiatief met de naam _\[Preview\]: wachtwoord beveiligings instellingen controleren binnen Linux-en Windows-machines_ bevat 18 beleids regels. Er zijn zes **DeployIfNotExists** -en **AuditIfNotExists** -paren voor Windows en drie paren voor Linux. De [beleids definitie](definition-structure.md#policy-rule) logica valideert dat alleen het doel besturingssysteem wordt geëvalueerd.
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>De instellingen van het besturings systeem controleren volgens de industrie basislijnen
 
-Een van de beschik bare initiatieven in Azure Policy biedt de mogelijkheid om de instellingen van het besturings systeem te controleren binnen virtuele machines na een basis lijn van micro soft.  De definitie, *[Preview]: controleren van Windows-vm's die niet overeenkomen met de basis instellingen van Azure Security* bevat een volledige set controle regels op basis van instellingen van Active Directory groepsbeleid.
+Een van de beschik bare initiatieven in Azure Policy biedt de mogelijkheid om de instellingen van het besturings systeem te controleren binnen virtuele machines na een basis lijn van micro soft. De definitie, _\[Preview\]: controleren van Windows-vm's die niet overeenkomen met de basis instellingen van Azure Security_ bevat een volledige set controle regels op basis van instellingen van Active Directory groepsbeleid.
 
-De meeste instellingen zijn beschikbaar als para meters.  Met deze functionaliteit kunt u aanpassen wat wordt gecontroleerd om het beleid uit te lijnen met de vereisten van uw organisatie, of om het beleid toe te wijzen aan gegevens van derden, zoals industriële regelgevende normen.
+De meeste instellingen zijn beschikbaar als para meters. Met deze functie kunt u bepalen wat er wordt gecontroleerd om het beleid uit te lijnen met de vereisten van uw organisatie, of om het beleid toe te wijzen aan gegevens van derden, zoals industriële regelgevende normen.
 
-Sommige para meters ondersteunen een bereik van gehele waarden.  Zo kan de maximale wachtwoord leeftijds parameter worden ingesteld met behulp van een bereik operator om flexibiliteit te bieden aan computer eigenaren.  U kunt controleren of de effectief groepsbeleid instelling die gebruikers nodig hebben om hun wacht woord te wijzigen, niet meer dan 70 dagen mag zijn, maar niet minder dan 1 dag.  Zoals beschreven in de info-bubble voor de para meter, stelt u de waarde in op ' 1, 70 ' om de juiste controle waarde te maken.
+Sommige para meters ondersteunen een bereik van gehele waarden. Zo kan de maximale wachtwoord leeftijds parameter worden ingesteld met behulp van een bereik operator om flexibiliteit te bieden aan computer eigenaren. U kunt controleren of de effectief groepsbeleid instelling die gebruikers nodig hebben om hun wacht woord te wijzigen, niet meer dan 70 dagen mag zijn, maar niet minder dan één dag. Zoals beschreven in de info-bubble voor de para meter, stelt u de waarde in op ' 1, 70 ' om dit bedrijfs beleid de juiste controle waarde te geven.
 
-Als u het beleid toewijst met behulp van een Azure Resource Manager dployment-sjabloon, kunt u een parameter bestand gebruiken om deze instellingen te beheren vanuit broncode beheer.
-Als u een hulp programma zoals Git gebruikt voor het beheren van wijzigingen in controle beleid met opmerkingen bij elke check-in, wordt door het document bewezen waarom een toewijzing in een uitzonde ring moet worden opgenomen met de verwachte waarde.
+Als u het beleid toewijst met behulp van een Azure Resource Manager-implementatie sjabloon, kunt u een parameter bestand gebruiken om deze instellingen te beheren vanuit broncode beheer. Het gebruik van een hulp programma zoals git voor het beheren van wijzigingen in controle beleid met opmerkingen bij elke check-in documenten bewijst dat een toewijzing een uitzonde ring moet zijn op de verwachte waarde.
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Configuraties Toep assen met behulp van gast configuratie
 
-Met de nieuwste functie van Azure Policy configureert u instellingen binnen machines.
-De definitie *configureren van de tijd zone op Windows-machines* brengt wijzigingen aan op de machine door de tijd zone te configureren.
+Met de nieuwste functie van Azure Policy configureert u instellingen binnen machines. De definitie _configureren van de tijd zone op Windows-machines_ brengt wijzigingen aan op de machine door de tijd zone te configureren.
 
-Bij het toewijzen van definities die beginnen met *configureren*, moet u ook de *vereisten voor definitie-implementatie toewijzen om gast configuratie beleid in te scha kelen op Windows-vm's.*
-U kunt deze definities in een initiatief combi neren, indien gewenst.
+Bij het toewijzen van definities die beginnen met _configureren_, moet u ook de _vereisten voor definitie-implementatie toewijzen om gast configuratie beleid in te scha kelen op Windows-vm's_. U kunt deze definities in een initiatief combi neren, indien gewenst.
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Beleids regels toewijzen aan computers buiten Azure
 
-Het beschik bare controle beleid voor gast configuratie omvat het resource type **micro soft. HybridCompute/machines** .  Alle computers die worden uitgevoerd op de Azure-Arc die zich binnen het bereik van de toewijzing bevinden, worden automatisch opgenomen.
+Het beschik bare controle beleid voor gast configuratie omvat het resource type **micro soft. HybridCompute/machines** . Computers die worden uitgevoerd op [Azure Arc voor servers](../../../azure-arc/servers/overview.md) die zich binnen het bereik van de beleids toewijzing bevinden, worden automatisch opgenomen.
 
 ### <a name="multiple-assignments"></a>Meerdere toewijzingen
 
@@ -152,8 +149,7 @@ Gast configuratie beleid biedt momenteel alleen ondersteuning voor het toewijzen
 
 ## <a name="built-in-resource-modules"></a>Ingebouwde resource modules
 
-Bij de installatie van de gast configuratie-uitbrei ding is de Power shell-module ' GuestConfiguration ' opgenomen in de meest recente versie van DSC-resource modules. Deze module kan vanuit de PowerShell Gallery worden gedownload met behulp van de koppeling hand matig downloaden van de module pagina [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/).
-De bestands indeling '. nupkg ' kan worden gewijzigd in '. zip ' om deze te decomprimeren en te controleren.
+Bij de installatie van de gast configuratie-uitbrei ding is de Power shell-module ' GuestConfiguration ' opgenomen in de meest recente versie van DSC-resource modules. Deze module kan vanuit de PowerShell Gallery worden gedownload met behulp van de koppeling hand matig downloaden van de module pagina [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/). De bestands indeling '. nupkg ' kan worden gewijzigd in '. zip ' om deze te decomprimeren en te controleren.
 
 ## <a name="client-log-files"></a>Client logboek bestanden
 

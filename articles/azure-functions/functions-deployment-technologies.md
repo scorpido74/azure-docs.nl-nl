@@ -1,21 +1,19 @@
 ---
 title: Implementatie technologieën in Azure Functions | Microsoft Docs
 description: Meer informatie over de verschillende manieren waarop u code kunt implementeren voor Azure Functions.
-services: functions
-documentationcenter: .net
 author: ColbyTresness
-manager: dariac
+manager: gwallace
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 4d32a652219d48a2cc101259ea6b76fbfa910821
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: ce8287626b390d6eac4a3461d928c24f515f4023
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674964"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576129"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Implementatie technologieën in Azure Functions
 
@@ -31,7 +29,7 @@ Azure Functions ondersteunt lokale ontwikkeling en hosting in Windows en Linux o
 
 Elk plan heeft verschillende gedragingen. Niet alle implementatie technologieën zijn beschikbaar voor elk van de Azure Functions. In het volgende diagram ziet u welke implementatie technologieën worden ondersteund voor elke combi natie van besturings systeem en hosting plan:
 
-| Implementatie technologie | Windows-verbruik | Windows Premium (preview-versie) | Windows toegewezen  | Linux-verbruik | Linux Premium (preview-versie) | Speciaal voor Linux |
+| Implementatie technologie | Windows-verbruik | Windows Premium | Windows toegewezen  | Linux-verbruik | Linux Premium | Speciaal voor Linux |
 |-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
 | Externe pakket-URL<sup>1</sup> |✔|✔|✔|✔|✔|✔|
 | Zip-implementatie |✔|✔|✔|✔|✔|✔|
@@ -46,7 +44,7 @@ Elk plan heeft verschillende gedragingen. Niet alle implementatie technologieën
 <sup>1</sup> implementatie technologie waarvoor [hand matige synchronisatie](#trigger-syncing)van de trigger is vereist.  
 <sup>2</sup> het bewerken van de portal is alleen ingeschakeld voor http-en timer triggers voor functies op Linux met behulp van Premium-en speciale abonnementen.
 
-## <a name="key-concepts"></a>Belangrijke concepten
+## <a name="key-concepts"></a>Belangrijkste concepten
 
 Enkele belang rijke concepten zijn essentieel om te weten hoe implementaties werken in Azure Functions.
 
@@ -86,7 +84,7 @@ Wanneer apps op afstand zijn gebouwd op Linux, worden ze [uitgevoerd vanuit het 
 
 Linux-functie-apps die worden uitgevoerd in het verbruiks abonnement, hebben geen SCM/kudu-site, waarmee de implementatie opties worden beperkt. Functie-apps in Linux die worden uitgevoerd in het verbruiks abonnement, bieden echter ondersteuning voor externe builds.
 
-##### <a name="dedicated-and-premium-preview-plans"></a>Speciale en Premium-abonnementen (preview-versie)
+##### <a name="dedicated-and-premium-plans"></a>Speciale en Premium-abonnementen
 
 Functie-apps die worden uitgevoerd op Linux in het [speciale (app service)-abonnement](functions-scale.md#app-service-plan) en het [Premium-abonnement](functions-scale.md#premium-plan) hebben ook een beperkte SCM/kudu-site.
 
@@ -183,13 +181,13 @@ In de portal-editor kunt u de bestanden in uw functie-app rechtstreeks bewerken 
 
 In de volgende tabel ziet u de besturings systemen en talen die ondersteuning bieden voor het bewerken van portals:
 
-| | Windows-verbruik | Windows Premium (preview-versie) | Windows toegewezen | Linux-verbruik | Linux Premium (preview-versie)| Speciaal voor Linux |
-|-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
+| | Windows-verbruik | Windows Premium | Windows toegewezen | Linux-verbruik | Linux Premium | Speciaal voor Linux |
+|-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
-| C#Schriften |✔|✔|✔| |✔<sup> \*</sup> |✔<sup> \*</sup>|
+| C#Schriften |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
 | F# | | | | | | |
 | Java | | | | | | |
-| JavaScript (Node.js) |✔|✔|✔| |✔<sup> \*</sup>|✔<sup> \*</sup>|
+| JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
 | Python (Preview) | | | | | | |
 | Power shell (preview-versie) |✔|✔|✔| | | |
 | Type script (node. js) | | | | | | |

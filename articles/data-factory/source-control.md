@@ -1,5 +1,5 @@
 ---
-title: Broncode beheer in Azure Data Factory | Microsoft Docs
+title: Broncode beheer in Azure Data Factory
 description: Meer informatie over het configureren van broncode beheer in Azure Data Factory
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: f3d443eed43cc1e131cd3dc47407ce2dfb023ce8
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 46c983fcf863c6948c6107b2213879c65396ed39
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326385"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684043"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Broncode beheer in Azure Data Factory
 
@@ -78,7 +78,7 @@ In het deel venster configuratie worden de volgende instellingen voor Azure opsl
 | **Azure opslag plaatsen-organisatie** | De naam van uw Azure opslag plaatsen-organisatie. U kunt de naam van uw Azure opslag plaatsen-organisatie vinden op `https://{organization name}.visualstudio.com`. U kunt [zich aanmelden bij uw Azure opslag plaatsen-organisatie](https://www.visualstudio.com/team-services/git/) om toegang te krijgen tot uw Visual Studio-profiel en uw opslag plaatsen en projecten te bekijken. | `<your organization name>` |
 | **ProjectName** | De naam van uw Azure opslag plaatsen-project. U kunt de naam van uw Azure opslag plaatsen-project vinden op `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
 | **Opslagplaats** | De naam van de opslag plaats van uw Azure opslag plaatsen-code. Azure opslag plaatsen-projecten bevatten Git-opslag plaatsen om uw bron code te beheren naarmate uw project groeit. U kunt een nieuwe opslag plaats maken of een bestaande opslag plaats gebruiken die al in uw project voor komt. | `<your Azure Repos code repository name>` |
-| **Collaboration Branch** | Uw Azure opslag plaatsen Collaboration-vertakking die wordt gebruikt voor het publiceren. Standaard is de @no__t 0. Wijzig deze instelling als u resources wilt publiceren vanuit een andere vertakking. | `<your collaboration branch name>` |
+| **Collaboration Branch** | Uw Azure opslag plaatsen Collaboration-vertakking die wordt gebruikt voor het publiceren. Standaard zijn de `master`. Wijzig deze instelling als u resources wilt publiceren vanuit een andere vertakking. | `<your collaboration branch name>` |
 | **Hoofdmap** | Uw hoofdmap in uw Azure opslag plaatsen Collaboration-vertakking. | `<your root folder name>` |
 | **Bestaande Data Factory-resources importeren in opslag plaats** | Hiermee geeft u op of bestaande data factory resources van het UX- **ontwerp canvas** in een Azure opslag plaatsen Git-opslag plaats moeten worden geïmporteerd. Schakel het selectie vakje in om uw data factory-resources te importeren in de bijbehorende Git-opslag plaats in JSON-indeling. Deze actie exporteert elke resource afzonderlijk (dat wil zeggen, de gekoppelde services en gegevens sets worden geëxporteerd naar afzonderlijke JSONs). Als dit selectie vakje niet is ingeschakeld, worden de bestaande resources niet geïmporteerd. | Geselecteerd (standaard) |
 | **Vertakking waarvoor de resource moet worden geïmporteerd** | Hiermee wordt aangegeven in welke vertakking de data factory resources (pijp lijnen, gegevens sets, gekoppelde services, enzovoort) worden geïmporteerd. U kunt resources importeren in een van de volgende vertakkingen: a. Samen werking b. Nieuwe c maken. Bestaande gebruiken |  |
@@ -106,7 +106,7 @@ Zie [uw Azure DevOps-organisatie verbinden met Azure Active Directory](/azure/de
 
 ## <a name="author-with-github-integration"></a>Auteur met GitHub-integratie
 
-Visual authoring met GitHub-integratie ondersteunt broncode beheer en samen werking voor werk op uw data factory-pijp lijnen. U kunt een data factory koppelen aan een GitHub-account opslagplaats voor broncode beheer, samen werking, versies. Eén GitHub-account kan meerdere opslag plaatsen bevatten, maar een GitHub-opslag plaats kan slechts worden gekoppeld aan één data factory. Als u geen GitHub-account of-opslag plaats hebt, volgt u [deze instructies](https://github.com/join) To uw resources te maken.
+Visual authoring met GitHub-integratie ondersteunt broncode beheer en samen werking voor werk op uw data factory-pijp lijnen. U kunt een data factory koppelen aan een GitHub-account opslagplaats voor broncode beheer, samen werking, versies. Eén GitHub-account kan meerdere opslag plaatsen bevatten, maar een GitHub-opslag plaats kan slechts worden gekoppeld aan één data factory. Als u geen GitHub-account of-opslag plaats hebt, volgt u [deze instructies](https://github.com/join) om uw resources te maken.
 
 De GitHub-integratie met Data Factory ondersteunt zowel open bare GitHub (dat wil zeggen, [https://github.com](https://github.com)) als github Enter prise. U kunt zowel open bare als persoonlijke GitHub-opslag plaatsen gebruiken met Data Factory zolang u lees-en schrijf machtigingen hebt voor de opslag plaats in GitHub.
 
@@ -143,7 +143,7 @@ In het deel venster configuratie worden de volgende instellingen voor de GitHub-
 | **Type opslag plaats** | Het type van de Azure opslag plaatsen code-opslag plaats. | GitHub |
 | **GitHub Enter prise gebruiken** | Selectie vakje om GitHub Enter prise te selecteren | selectie opheffen (standaard) |
 | **GitHub Enter prise-URL** | De basis-URL van de GitHub-onderneming. Bijvoorbeeld: https://github.mydomain.com. Alleen vereist als **use github Enter prise** is geselecteerd | `<your GitHub enterprise url>` |                                                           
-| **GitHub-account** | De naam van uw GitHub-account. Deze naam kan worden gevonden vanuit https: \//github. com/{account naam}/{repository naam}. Als u naar deze pagina navigeert, wordt u gevraagd om GitHub OAuth-referenties in te voeren voor uw GitHub-account. | `<your GitHub account name>` |
+| **GitHub-account** | De naam van uw GitHub-account. Deze naam kan worden gevonden vanuit https:\//github.com/{account name}/{repository name}. Als u naar deze pagina navigeert, wordt u gevraagd om GitHub OAuth-referenties in te voeren voor uw GitHub-account. | `<your GitHub account name>` |
 | **Naam van opslag plaats**  | De naam van de opslag plaats van uw GitHub-code. GitHub-accounts bevatten Git-opslag plaatsen voor het beheren van de bron code. U kunt een nieuwe opslag plaats maken of een bestaande opslag plaats gebruiken die al in uw account is. | `<your repository name>` |
 | **Collaboration Branch** | Uw GitHub-samenwerkings vertakking die wordt gebruikt voor het publiceren. Standaard is dit het hoofd. Wijzig deze instelling als u resources wilt publiceren vanuit een andere vertakking. | `<your collaboration branch>` |
 | **Hoofdmap** | Uw hoofdmap in uw GitHub-samenwerkings vertakking. |`<your root folder name>` |
@@ -180,13 +180,13 @@ Elke Azure opslag plaatsen Git-opslag plaats die is gekoppeld aan een data facto
 
 ![Een nieuwe vertakking maken](media/author-visually/new-branch.png)
 
-Wanneer u klaar bent om de wijzigingen van uw functie vertakking samen te voegen met uw vertakking voor samen werking, klikt u op de vervolg keuzelijst vertakking en selecteert u **pull-aanvraag maken**. Met deze actie gaat u naar Azure opslag plaatsen Git waar u pull-aanvragen kunt genereren, code beoordelingen moet uitvoeren en wijzigingen kunt samen voegen in uw samenwerkings vertakking. (`master` is de standaard waarde). U mag alleen publiceren naar de Data Factory-service vanuit uw vertakking voor samen werking. 
+Wanneer u klaar bent om de wijzigingen van uw functie vertakking samen te voegen met uw vertakking voor samen werking, klikt u op de vervolg keuzelijst vertakking en selecteert u **pull-aanvraag maken**. Met deze actie gaat u naar Azure opslag plaatsen Git waar u pull-aanvragen kunt genereren, code beoordelingen moet uitvoeren en wijzigingen kunt samen voegen in uw samenwerkings vertakking. (`master` is de standaard instelling). U mag alleen publiceren naar de Data Factory-service vanuit uw vertakking voor samen werking. 
 
 ![Een nieuwe pull-aanvraag maken](media/author-visually/create-pull-request.png)
 
 ### <a name="configure-publishing-settings"></a>Publicatie-instellingen configureren
 
-Voor het configureren van de publicatie vertakking-dat wil zeggen, de vertakking waar Resource Manager-sjablonen worden opgeslagen: Voeg een `publish_config.json`-bestand toe aan de hoofdmap in de collaboration-vertakking. Data Factory dit bestand leest, zoekt naar het veld `publishBranch` en maakt een nieuwe vertakking (als deze nog niet bestaat) met de waarde die u opgeeft. Vervolgens worden alle Resource Manager-sjablonen op de opgegeven locatie opgeslagen. Bijvoorbeeld:
+Voor het configureren van de publicatie vertakking-dat wil zeggen, de vertakking waar Resource Manager-sjablonen worden opgeslagen: Voeg een `publish_config.json` bestand toe aan de hoofdmap in de collaboration-vertakking. Data Factory dit bestand leest, zoekt naar het veld `publishBranch`en maakt een nieuwe vertakking (als deze nog niet bestaat) met de waarde die u opgeeft. Vervolgens worden alle Resource Manager-sjablonen op de opgegeven locatie opgeslagen. Bijvoorbeeld:
 
 ```json
 {
@@ -197,11 +197,11 @@ Voor het configureren van de publicatie vertakking-dat wil zeggen, de vertakking
 Wanneer u een nieuwe publicatie vertakking opgeeft, wordt Data Factory de vorige Publish-vertakking niet verwijderd. Als u de vorige Publish-vertakking extern wilt maken, moet u deze hand matig verwijderen.
 
 > [!NOTE]
-> Data Factory leest alleen het bestand `publish_config.json` wanneer het de fabriek laadt. Als u de fabriek al hebt geladen in de portal, vernieuwt u de browser om uw wijzigingen van kracht te laten worden.
+> Data Factory leest alleen het `publish_config.json` bestand wanneer het de fabriek laadt. Als u de fabriek al hebt geladen in de portal, vernieuwt u de browser om uw wijzigingen van kracht te laten worden.
 
 ### <a name="publish-code-changes"></a>Code wijzigingen publiceren
 
-Nadat u de wijzigingen aan de collaboration Branch hebt samengevoegd (`master` is de standaard instelling), klikt u op **publiceren** om de wijzigingen in de code in de hoofd vertakking hand matig te publiceren naar de Data Factory-service.
+Nadat u de wijzigingen hebt samengevoegd in de collaboration Branch (`master` de standaard instelling is), klikt u op **publiceren** om de wijzigingen in de code in de hoofd vertakking hand matig te publiceren naar de Data Factory-service.
 
 ![Wijzigingen publiceren in de Data Factory-Service](media/author-visually/publish-changes.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Gekoppelde services in Azure Data Factory | Microsoft Docs
+title: Gekoppelde services in Azure Data Factory
 description: Meer informatie over gekoppelde services in Data Factory. Gekoppelde services koppelen reken-en gegevens archieven aan data factory.
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 80e9cee0d973dc8575e9645c537b6b69fbeef700
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9dd81484d8afab66fcb76f8fccdea348ef6a34c4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137122"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681485"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Gekoppelde services in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1:](v1/data-factory-create-datasets.md)
+> * [Versie 1](v1/data-factory-create-datasets.md)
 > * [Huidige versie](concepts-datasets-linked-services.md)
 
 In dit artikel wordt beschreven wat gekoppelde services zijn, hoe ze worden gedefinieerd in JSON-indeling en hoe ze worden gebruikt in Azure Data Factory pijp lijnen.
@@ -61,12 +61,12 @@ Een gekoppelde service in Data Factory wordt als volgt gedefinieerd in JSON-inde
 
 In de volgende tabel worden de eigenschappen in de bovenstaande JSON beschreven:
 
-Eigenschap | Description | Vereist |
+Eigenschap | Beschrijving | Vereist |
 -------- | ----------- | -------- |
-name | De naam van de gekoppelde service. Zie [Azure Data Factory naamgevings regels](naming-rules.md). |  Ja |
-Type | Het type van de gekoppelde service. Bijvoorbeeld: Opslag (gegevens archief) of AzureBatch (Compute). Zie de beschrijving voor typeProperties. | Ja |
+naam | De naam van de gekoppelde service. Zie [Azure Data Factory naamgevings regels](naming-rules.md). |  Ja |
+type | Het type van de gekoppelde service. Bijvoorbeeld: opslag (Data Store) of AzureBatch (Compute). Zie de beschrijving voor typeProperties. | Ja |
 typeProperties | De type-eigenschappen verschillen voor elke gegevens opslag of compute. <br/><br/> Zie de tabel [type gegevensset](concepts-datasets-linked-services.md#dataset-type) in dit artikel voor de ondersteunde typen gegevens opslag en de type-eigenschappen ervan. Navigeer naar het gegevens archief connector artikel voor meer informatie over type-eigenschappen die specifiek zijn voor een gegevens archief. <br/><br/> Zie [gekoppelde services berekenen](compute-linked-services.md)voor de ondersteunde reken typen en de bijbehorende type-eigenschappen. | Ja |
-connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als niet is opgegeven, wordt de standaard Azure Integration Runtime. | Nee
+connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | Nee
 
 ## <a name="linked-service-example"></a>Voor beeld van gekoppelde service
 De volgende gekoppelde service is een Azure Storage gekoppelde service. U ziet dat het type is ingesteld op opslag. De type-eigenschappen voor de Azure Storage gekoppelde service omvatten een connection string. De Data Factory-service gebruikt deze connection string om tijdens de uitvoering verbinding te maken met het gegevens archief.
@@ -95,7 +95,7 @@ De volgende gekoppelde service is een Azure Storage gekoppelde service. U ziet d
 U kunt gekoppelde services maken met behulp van een van deze hulpprogram ma's of Sdk's: [.net API](quickstart-create-data-factory-dot-net.md), [power shell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager sjabloon en Azure Portal
 
 ## <a name="data-store-linked-services"></a>Gekoppelde services voor gegevens opslag
-U kunt de lijst met opgeslagen gegevens die worden ondersteund door Data Factory, vinden in het overzichts artikel van de [connector](copy-activity-overview.md#supported-data-stores-and-formats) . Klik op een gegevens Archief voor meer informatie over de ondersteunde verbindings eigenschappen.
+U kunt de lijst met opgeslagen gegevens die worden ondersteund door Data Factory, vinden in het [overzichts](copy-activity-overview.md#supported-data-stores-and-formats) artikel van de connector. Klik op een gegevens Archief voor meer informatie over de ondersteunde verbindings eigenschappen.
 
 ## <a name="compute-linked-services"></a>Gekoppelde services berekenen
 Referentie [berekenings omgevingen](compute-linked-services.md) die worden ondersteund voor meer informatie over de verschillende reken omgevingen waarmee u verbinding kunt maken vanuit uw Data Factory en van de verschillende configuraties.

@@ -1,18 +1,18 @@
 ---
 title: Asynchroon vernieuwen voor Azure Analysis Services modellen | Microsoft Docs
-description: Meer informatie over het asynchroon vernieuwen van code met behulp van REST API.
+description: Hierin wordt beschreven hoe u de Azure Analysis Services REST API gebruikt voor het coderen van asynchrone vernieuwing van model gegevens.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5fbb3f2cbc0e53ab1bc04d57b583802e26b92a60
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7c6fba10264939335cdef26f288973f8217f340b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147362"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573399"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchroon vernieuwen met de REST API
 
@@ -56,7 +56,7 @@ U kunt bijvoorbeeld de bewerking POST in de verzameling vernieuwen gebruiken om 
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
 Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory (OAuth 2)-token in de autorisatie-header en moeten voldoen aan de volgende vereisten:
 
@@ -110,7 +110,7 @@ CommitMode is gelijk aan partialBatch. Dit wordt gebruikt bij het uitvoeren van 
 > [!NOTE]
 > De Batch grootte is op het moment van schrijven de MaxParallelism-waarde, maar deze waarde zou kunnen veranderen.
 
-## <a name="get-refreshesrefreshid"></a>GET/refreshes/\<refreshId >
+## <a name="get-refreshesrefreshid"></a>/Refreshes/\<refreshId-> ophalen
 
 Als u de status van een vernieuwings bewerking wilt controleren, gebruikt u de bewerking GET bij de vernieuwings-ID. Hier volgt een voor beeld van de hoofd tekst van het antwoord. Als de bewerking wordt uitgevoerd, wordt de status **InProgress** geretourneerd.
 
@@ -160,7 +160,7 @@ Als u een lijst met historische vernieuwings bewerkingen voor een model wilt wee
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>/Refreshes/\<refreshId verwijderen >
+## <a name="delete-refreshesrefreshid"></a>/Refreshes/\<refreshId > verwijderen
 
 Als u een vernieuwings bewerking in voortgang wilt annuleren, gebruikt u de bewerking DELETE bij de ID vernieuwen.
 
@@ -207,7 +207,7 @@ Het code voorbeeld maakt gebruik van [Service-Principal](#service-principal) -ve
 Zie [Service-Principal maken-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) en [een Service-Principal toevoegen aan de rol Server beheerder](analysis-services-addservprinc-admins.md) voor meer informatie over het instellen van een Service-Principal en het toewijzen van de benodigde machtigingen in azure als. Nadat u de stappen hebt voltooid, voert u de volgende aanvullende stappen uit:
 
 1.  Zoek in het code voorbeeld naar **String Authority =...** , vervang **common** door de Tenant-id van uw organisatie.
-2.  Opmerking/Opmerking opheffen, zodat de klasse ClientCredential wordt gebruikt om het cred-object te instantiëren. Zorg ervoor dat de \<App-ID > en \<App sleutel > waarden worden geopend op een veilige manier of gebruik verificatie op basis van certificaten voor service-principals.
+2.  Opmerking/Opmerking opheffen, zodat de klasse ClientCredential wordt gebruikt om het cred-object te instantiëren. Zorg ervoor dat de \<App-ID > en de > waarden van \<app-sleutel op een veilige manier toegankelijk zijn of gebruik verificatie op basis van certificaten voor service-principals.
 3.  Voet het voorbeeld uit.
 
 

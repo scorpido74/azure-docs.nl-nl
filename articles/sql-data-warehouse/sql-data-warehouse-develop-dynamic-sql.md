@@ -1,5 +1,5 @@
 ---
-title: Dynamische SQL gebruiken in Azure SQL Data Warehouse | Microsoft Docs
+title: Dynamische SQL gebruiken
 description: Tips voor het gebruik van dynamische SQL in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: query
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4454b1d44d0be61dca8571e86c73e09a9527d1eb
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 87320128537a235e8047a2f826b0e59c08aef76b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479663"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692843"
 ---
 # <a name="dynamic-sql-in-sql-data-warehouse"></a>Dynamische SQL in SQL Data Warehouse
 Tips voor het gebruik van dynamische SQL in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: f51dbce3c251f4e89483d925ac657aac7eb928d8
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b23e844cb550a98328951bc6efae3c5039ff73bf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804069"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607543"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Definitie artefact in Azure Managed Applications weer geven
 
@@ -26,7 +26,7 @@ De weergave definitie artefact moet de naam **viewDefinition. json** hebben en o
 
 ## <a name="view-definition-schema"></a>Definitie schema weer geven
 
-Het bestand **viewDefinition. json** heeft slechts één `views` eigenschap op het hoogste niveau, wat een matrix met weer gaven is. Elke weer gave wordt weer gegeven in de gebruikers interface van de beheerde toepassing als een afzonderlijke menu opdracht in de inhouds opgave. Elke weer gave heeft een `kind` eigenschap waarmee het type weer gave wordt ingesteld. Deze moet worden ingesteld op een van de volgende waarden: [overzicht](#overview), [metrische gegevens](#metrics), [CustomResources](#custom-resources). Zie het huidige [JSON-schema voor viewDefinition. json](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)voor meer informatie.
+Het bestand **viewDefinition. json** heeft slechts één `views` eigenschap op het hoogste niveau, wat een matrix met weer gaven is. Elke weer gave wordt weer gegeven in de gebruikers interface van de beheerde toepassing als een afzonderlijke menu opdracht in de inhouds opgave. Elke weer gave heeft een `kind` eigenschap waarmee het type weer gave wordt ingesteld. Deze moet worden ingesteld op een van de volgende waarden: [overzicht](#overview), [metrische gegevens](#metrics), [CustomResources](#custom-resources), [Associations](#associations). Zie het huidige [JSON-schema voor viewDefinition. json](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)voor meer informatie.
 
 Voor beeld van JSON voor weergave definitie:
 
@@ -91,10 +91,18 @@ Voor beeld van JSON voor weergave definitie:
                     {"key": "properties.myProperty2", "displayName": "Property 2", "optional": true}
                 ]
             }
+        },
+        {
+            "kind": "Associations",
+            "properties": {
+                "displayName": "Test association resource type",
+                "version": "1.0.0",
+                "targetResourceType": "Microsoft.Compute/virtualMachines",
+                "createUIDefinition": { }
+            }
         }
     ]
 }
-
 ```
 
 ## <a name="overview"></a>Overzicht
@@ -119,7 +127,7 @@ Wanneer u deze weer gave in **viewDefinition. json**opgeeft, wordt de standaard 
 }
 ```
 
-|Eigenschap|Verplicht|Beschrijving|
+|Eigenschap|Vereist|Beschrijving|
 |---------|---------|---------|
 |koptekst|Nee|De koptekst van de pagina overzicht.|
 |description|Nee|De beschrijving van de beheerde toepassing.|
@@ -158,7 +166,7 @@ Met de weer gave metrieken kunt u gegevens verzamelen en samen voegen uit uw beh
 }
 ```
 
-|Eigenschap|Verplicht|Beschrijving|
+|Eigenschap|Vereist|Beschrijving|
 |---------|---------|---------|
 |displayName|Nee|De weer gegeven titel van de weer gave.|
 |versie|Nee|De versie van het platform waarmee de weer gave wordt weer gegeven.|
@@ -166,7 +174,7 @@ Met de weer gave metrieken kunt u gegevens verzamelen en samen voegen uit uw beh
 
 ### <a name="chart"></a>Grafiek
 
-|Eigenschap|Verplicht|Beschrijving|
+|Eigenschap|Vereist|Beschrijving|
 |---------|---------|---------|
 |displayName|Ja|De weer gegeven titel van de grafiek.|
 |chartType|Nee|De visualisatie die moet worden gebruikt voor deze grafiek. Standaard wordt een lijn diagram gebruikt. Ondersteunde grafiek typen: `Bar, Line, Area, Scatter`.|
@@ -174,9 +182,9 @@ Met de weer gave metrieken kunt u gegevens verzamelen en samen voegen uit uw beh
 
 ### <a name="metric"></a>Gegevens
 
-|Eigenschap|Verplicht|Beschrijving|
+|Eigenschap|Vereist|Beschrijving|
 |---------|---------|---------|
-|name|Ja|De naam van de metriek.|
+|naam|Ja|De naam van de metriek.|
 |aggregationType|Ja|Het aggregatie type dat moet worden gebruikt voor deze metriek. Ondersteunde aggregatie typen: `none, sum, min, max, avg, unique, percentile, count`|
 |naamruimte|Nee|Aanvullende informatie die moet worden gebruikt bij het bepalen van de juiste metrics-provider.|
 |resourceTagFilter|Nee|De resource Tags matrix (wordt gescheiden met `or` woord) waarvoor metrische gegevens worden weer gegeven. Is boven op het resource type filter.|
@@ -218,15 +226,15 @@ In deze weer gave kunt u GET-, PUT-, DELETE-en POST-bewerkingen uitvoeren voor u
 }
 ```
 
-|Eigenschap|Verplicht|Beschrijving|
+|Eigenschap|Vereist|Beschrijving|
 |---------|---------|---------|
 |displayName|Ja|De weer gegeven titel van de weer gave. De titel moet **uniek** zijn voor elke CustomResources-weer gave in uw **viewDefinition. json**.|
 |versie|Nee|De versie van het platform waarmee de weer gave wordt weer gegeven.|
 |resourceType|Ja|Het aangepaste resource type. Moet een **uniek** aangepast resource type van uw aangepaste provider zijn.|
-|Diapictogram|Nee|Het pictogram van de weer gave. Lijst met voorbeeld pictogrammen wordt gedefinieerd in het [JSON-schema](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
+|diapictogram|Nee|Het pictogram van de weer gave. Lijst met voorbeeld pictogrammen wordt gedefinieerd in het [JSON-schema](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
 |createUIDefinition|Nee|Maak een UI-definitie schema voor het maken van een aangepaste resource opdracht. Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md) voor een inleiding tot het maken van UI-definities.|
 |opdrachten|Nee|De matrix met aanvullende werkbalk knoppen van de weer gave CustomResources Zie [Commands](#commands).|
-|Kolommen|Nee|De matrix van kolommen van de aangepaste resource. Indien niet gedefinieerd, wordt de `name` kolom standaard weer gegeven. De kolom moet `"key"` en `"displayName"`hebben. Geef bij sleutel de sleutel van de eigenschap op die in een weer gave moet worden weer gegeven. Als genest, gebruikt u punt als scheidings teken, bijvoorbeeld `"key": "name"` of `"key": "properties.property1"`. Geef bij weergave naam de weergave naam op van de eigenschap die in een weer gave moet worden weer gegeven. U kunt ook een `"optional"` eigenschap opgeven. Als deze eigenschap is ingesteld op True, wordt de kolom standaard verborgen in een weer gave.|
+|kolommen|Nee|De matrix van kolommen van de aangepaste resource. Indien niet gedefinieerd, wordt de `name` kolom standaard weer gegeven. De kolom moet `"key"` en `"displayName"`hebben. Geef bij sleutel de sleutel van de eigenschap op die in een weer gave moet worden weer gegeven. Als genest, gebruikt u punt als scheidings teken, bijvoorbeeld `"key": "name"` of `"key": "properties.property1"`. Geef bij weergave naam de weergave naam op van de eigenschap die in een weer gave moet worden weer gegeven. U kunt ook een `"optional"` eigenschap opgeven. Als deze eigenschap is ingesteld op True, wordt de kolom standaard verborgen in een weer gave.|
 
 ![CustomResources](./media/view-definition/customresources.png)
 
@@ -247,12 +255,39 @@ Opdrachten is een matrix met aanvullende werkbalk knoppen die op de pagina worde
 }
 ```
 
-|Eigenschap|Verplicht|Beschrijving|
+|Eigenschap|Vereist|Beschrijving|
 |---------|---------|---------|
 |displayName|Ja|De weer gegeven naam van de opdracht knop.|
 |programmapad|Ja|De actie naam van de aangepaste provider. De actie moet worden gedefinieerd in **mainTemplate. json**.|
-|Diapictogram|Nee|Het pictogram van de opdracht knop. Lijst met voorbeeld pictogrammen wordt gedefinieerd in het [JSON-schema](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
+|diapictogram|Nee|Het pictogram van de opdracht knop. Lijst met voorbeeld pictogrammen wordt gedefinieerd in het [JSON-schema](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
 |createUIDefinition|Nee|Het definitie schema voor de gebruikers interface maken voor de opdracht. Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.|
+
+## <a name="associations"></a>lidkoppelingen
+
+`"kind": "Associations"`
+
+U kunt meerdere weer gaven van dit type definiëren. Met deze weer gave kunt u bestaande resources koppelen aan de beheerde toepassing via de aangepaste provider die u hebt gedefinieerd in **mainTemplate. json**. Zie [Preview-versie van Azure Custom providers](custom-providers-overview.md)voor een inleiding tot aangepaste providers.
+
+In deze weer gave kunt u bestaande Azure-resources uitbreiden op basis van de `targetResourceType`. Wanneer een resource wordt geselecteerd, wordt er een voorbereidings aanvraag voor de **open bare** aangepaste provider gemaakt, waarmee een neven effect kan worden toegepast op de resource. 
+
+```json
+{
+    "kind": "Associations",
+    "properties": {
+        "displayName": "Test association resource type",
+        "version": "1.0.0",
+        "targetResourceType": "Microsoft.Compute/virtualMachines",
+        "createUIDefinition": { }
+    }
+}
+```
+
+|Eigenschap|Vereist|Beschrijving|
+|---------|---------|---------|
+|displayName|Ja|De weer gegeven titel van de weer gave. De titel moet **uniek** zijn voor elke weer gave van koppelingen in uw **viewDefinition. json**.|
+|versie|Nee|De versie van het platform waarmee de weer gave wordt weer gegeven.|
+|targetResourceType|Ja|Het doel bron type. Dit is het resource type dat wordt weer gegeven voor de onboarding van resources.|
+|createUIDefinition|Nee|Maak een UI-definitie schema voor het maken van de koppelings bron opdracht. Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md) voor een inleiding tot het maken van UI-definities.|
 
 ## <a name="looking-for-help"></a>Zoeken naar Help
 

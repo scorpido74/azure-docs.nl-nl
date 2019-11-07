@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database configureren | Microsoft Docs
+title: Azure SQL Database configureren
 description: Meer informatie over het configureren en beheren van Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 98c522f3d2718691e32b4e78180027b69f28289f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ccdeb883dc9cf2cba499e45e25ff4706bb120463
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568018"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689871"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Azure SQL Database gebruiken
 
@@ -35,7 +35,7 @@ In deze sectie vindt u verschillende hand leidingen, scripts en uitleg die u kun
 - [SQL Data Sync](sql-database-sync-data.md)
 - [Data Sync-agent](sql-database-data-sync-agent.md)
 - [Schema wijzigingen repliceren](sql-database-update-sync-schema.md)
-- [Bewaken met OMS](sql-database-sync-monitor-oms.md)
+- [Controleren met OMS](sql-database-sync-monitor-oms.md)
 - [Aanbevolen procedures voor gegevens synchronisatie](sql-database-best-practices-data-sync.md)
 - [Problemen met gegevens synchronisatie oplossen](sql-database-troubleshoot-data-sync.md)
 

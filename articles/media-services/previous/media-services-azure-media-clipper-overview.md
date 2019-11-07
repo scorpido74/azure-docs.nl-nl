@@ -1,55 +1,55 @@
 ---
-title: Maak korte clips met Azure Media Clipper | Microsoft Docs
-description: Overzicht van Azure Media Clipper, een hulpprogramma voor het bouwen van mediaclips van assets
+title: Clips maken met Azure media Clipper | Microsoft Docs
+description: Overzicht van Azure media Clipper, een hulp programma voor het bouwen van media clips vanuit assets
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: clip; subclip; code ring; media
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 35f1f359b44af00000ccd9047673b80ca541d376
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51f85dffd48e451b477018ef20491f8619a30f25
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61243865"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685011"
 ---
-# <a name="create-clips-with-azure-media-clipper"></a>Maak korte clips met Azure Media Clipper 
+# <a name="create-clips-with-azure-media-clipper"></a>Clips maken met Azure media Clipper 
 
-Azure Media Clipper is een gratis JavaScript-bibliotheek waarmee webontwikkelaars om te voorzien van hun gebruikers een interface voor het maken van mediaclips. Dit hulpprogramma kan worden geïntegreerd in elke webpagina en bevat API's voor het laden van assets en kniptaken verzenden.
+Azure media Clipper is een gratis java script-bibliotheek waarmee webontwikkelaars hun gebruikers een interface kunnen bieden voor het maken van media clips. Dit hulp programma kan worden geïntegreerd in elke webpagina en biedt Api's voor het laden van assets en het verzenden van knip taken.
 
-Azure Media Clipper kunt u:
-- De vooraf slate Trim en na slate van live archieven 
-- Video hoogtepunten van AMS live-evenementen, live-archieven of fMP4 VOD bestanden opstellen 
-- Video's van meerdere bronnen samenvoegen 
-- Samenvatting korte clips van uw AMS-media-items maken 
-- Video's bijsnijden met frame nauwkeurigheid 
-- Dynamisch-manifestfilters genereren via de bestaande live en VOD activa met een nauwkeurigheid van de groep van afbeeldingen (GOP) 
-- Coderingstaken op basis van de activa in uw media services-account maken
+Met Azure media Clipper kunt u het volgende doen:
+- De voor-en achterlengte van Live-archieven bijsnijden 
+- Video-hooglichten opstellen van AMS Live-gebeurtenissen, Live-archieven of fMP4 VOD-bestanden 
+- Video's uit meerdere bronnen samen voegen 
+- Samenvattings clips maken op basis van uw AMS-media-assets 
+- Video's knippen met de nauw keurigheid van frames 
+- Dynamische manifest filters genereren op basis van bestaande Live-en VOD-assets met GOP terug-nauw keurigheid (Group-of-Pictures) 
+- Versleutelings taken maken op basis van de assets in uw Media Services-account
 
-Voor het aanvragen van nieuwe functies bieden ideeën of feedback wilt geven, verzenden naar [UserVoice voor Azure Media Services](https://aka.ms/amsvoice/). Als u hebt en specifieke problemen, vragen of zoeken naar fouten, verwijder de Media Services-team een lijn op amcinfo@microsoft.com.
+Als u nieuwe functies wilt aanvragen, ideeën of feedback wilt geven, dient u zich [voor Azure Media Services](https://aka.ms/amsvoice/)aan te bieden. Als u een of meer problemen ondervindt, vragen of fouten vindt, verwijdert u het Media Services team een regel op amcinfo@microsoft.com.
 
-De volgende afbeelding ziet u de interface Clipper: ![Azure Media Clipper](media/media-services-azure-media-clipper-overview/media-services-azure-media-clipper-interface.PNG)
+In de volgende afbeelding ziet u de Clipper-Interface: ![Azure media Clipper](media/media-services-azure-media-clipper-overview/media-services-azure-media-clipper-interface.PNG)
 
 ## <a name="release-notes"></a>Releaseopmerkingen
-Zie de volgende lijst voor het blogbericht Clipper, verschillende bekende problemen en het wijzigingenlogboek voor de nieuwste versie van de Clipper:
-- [Blogbericht](https://azure.microsoft.com/blog/azure-media-clipper/)
+Raadpleeg de volgende lijst voor het blog bericht van Clipper, verschillende bekende problemen en wijzigingen logboek voor de nieuwste versie van de Clipper:
+- [Blog bericht](https://azure.microsoft.com/blog/azure-media-clipper/)
 - [Lijst met bekende problemen](https://amp.azure.net/libs/amc/latest/docs/known_issues.html)
-- [Changelog](https://amp.azure.net/libs/amc/latest/docs/changelog.html)
+- [Wijzigingen logboek](https://amp.azure.net/libs/amc/latest/docs/changelog.html)
 
-## <a name="browser-support"></a>Browserondersteuning
-Azure Media Clipper is gebouwd met behulp van moderne HTML5-technologieën en ondersteunt de volgende browsers:
+## <a name="browser-support"></a>Browser ondersteuning
+Azure media Clipper is gebouwd met moderne HTML5-technologieën en biedt ondersteuning voor de volgende browsers:
 
-- Microsoft Edge 13+
-- Internet Explorer 11+
-- Chrome 54+
-- Safari 10+
-- Firefox meer dan 50
+- Micro soft Edge 13 +
+- Internet Explorer 11 +
+- Chrome 54 +
+- Safari 10 +
+- Firefox 50 +
 
 > [!NOTE]
-> Alleen HTML5 afspelen van stromen van Azure Media Services is momenteel niet ondersteund.
+> Alleen HTML5-afspelen van streams van Azure Media Services wordt momenteel ondersteund.
 
 ## <a name="language-support"></a>Taalondersteuning
 De widget Clipper is beschikbaar in de volgende 18 talen:
@@ -73,4 +73,4 @@ De widget Clipper is beschikbaar in de volgende 18 talen:
 - Turks
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u wilt aan de slag met Azure Media Clipper, lees de [aan de slag](media-services-azure-media-clipper-getting-started.md) artikel voor meer informatie over het implementeren van de widget.
+Lees [het artikel aan de slag voor](media-services-azure-media-clipper-getting-started.md) meer informatie over het implementeren van de widget om aan de slag te gaan met Azure media Clipper.

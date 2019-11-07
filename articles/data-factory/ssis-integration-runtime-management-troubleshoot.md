@@ -1,5 +1,5 @@
 ---
-title: Problemen met SSIS Integration Runtime Management in Azure Data Factory oplossen Microsoft Docs
+title: 'Problemen met SSIS Integration Runtime Management in Azure Data Factory oplossen '
 description: Dit artikel bevat richt lijnen voor probleem oplossing voor beheer problemen van SSIS Integration Runtime (SSIS IR)
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: d16267e104d753770dc40ce99b0f56e5c749b2d0
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3452fc2274eb646acb19c0e6a203ebadcb81cad5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752171"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684021"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Problemen met SSIS Integration Runtime Management in Azure Data Factory oplossen
 
@@ -105,7 +105,7 @@ Deze fout betekent dat de uitvoering van het aangepaste installatiescript (main.
 
 ### <a name="customsetupscripttimeout"></a>CustomSetupScriptTimeout
 
-Deze fout wijst op een time-out voor het uitvoeren van een script voor een aangepaste installatie. Zorg ervoor dat het script op de achtergrond kan worden uitgevoerd en dat er geen interactieve invoer nodig is, en zorg ervoor dat uw BLOB-container alleen de benodigde aangepaste Setup-bestanden bevat. Het is raadzaam om eerst het script op de lokale computer te testen. Controleer ook de logboeken voor de uitvoering van de aangepaste installatie in uw Blob-container. De maximale periode voor aangepaste installatie is 45 minuten voordat er een time-out optreedt. De maximale periode omvat de tijd voor het downloaden van alle bestanden uit uw container en het installeren ervan op SSIS IR. Als u een langere periode nodig hebt, dient u een ondersteuningsticket in.
+Deze fout wijst op een time-out voor het uitvoeren van een script voor een aangepaste installatie. Zorg ervoor dat het script op de achtergrond kan worden uitgevoerd en dat er geen interactieve invoer nodig is, en dat uw blobcontainer alleen de benodigde aangepaste installatiebestanden bevat. Het is raadzaam om het script eerst op de lokale computer te testen. Controleer ook de logboeken voor de uitvoering van de aangepaste installatie in uw Blob-container. De maximale periode voor aangepaste installatie is 45 minuten voordat er een time-out optreedt. De maximale periode omvat de tijd voor het downloaden van alle bestanden uit uw container en het installeren ervan op SSIS IR. Als u een langere periode nodig hebt, dient u een ondersteuningsticket in.
 
 ### <a name="customsetupscriptloguploadfailure"></a>CustomSetupScriptLogUploadFailure
 

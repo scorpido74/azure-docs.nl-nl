@@ -1,5 +1,5 @@
 ---
-title: Prestaties afstemmen met Azure SQL Data Warehouse geordende column store-index | Microsoft Docs
+title: Prestaties afstemmen met een geordende geclusterde column store-index
 description: Aanbevelingen en overwegingen die u moet weten wanneer u geordende geclusterde column store-index gebruikt om de query prestaties te verbeteren.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595373"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686005"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Prestaties afstemmen met een geordende geclusterde column store-index  
 
@@ -43,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> In een geordende CCI-tabel worden nieuwe gegevens die voortkomen uit DML of het laden van gegevens, niet automatisch gesorteerd.  Gebruikers kunnen het bestelde CCI opnieuw bouwen om alle gegevens in de tabel te sorteren.  In Azure SQL Data Warehouse is column store-index opnieuw opgebouwd een offline bewerking.  Voor een gepartitioneerde tabel is het opnieuw maken van één partitie per keer voltooid.  Gegevens in de partitie die opnieuw worden opgebouwd, zijn offline en zijn pas beschikbaar als het opnieuw opbouwen is voltooid voor die partitie. 
+> In een geordende CCI-tabel worden de nieuwe gegevens die voortkomen uit dezelfde batch DML of het laden van gegevens die worden geladen binnen die batch gesorteerd. er is geen algemene Sorteer bewerking voor alle gegevens in de tabel.  Gebruikers kunnen het bestelde CCI opnieuw bouwen om alle gegevens in de tabel te sorteren.  In Azure SQL Data Warehouse is column store-index opnieuw opgebouwd een offline bewerking.  Voor een gepartitioneerde tabel is het opnieuw maken van één partitie per keer voltooid.  Gegevens in de partitie die opnieuw worden opgebouwd, zijn offline en zijn pas beschikbaar als het opnieuw opbouwen is voltooid voor die partitie. 
 
 ## <a name="query-performance"></a>Queryprestaties
 
@@ -100,7 +101,7 @@ Hier volgt een voor beeld van een query prestatie vergelijking tussen CCI en bes
 
 Het aantal overlappende segmenten is afhankelijk van de grootte van de gegevens die moeten worden gesorteerd, het beschik bare geheugen en de maximale mate van parallellisme (MAXDOP) tijdens het maken van de geordende CCI. Hieronder vindt u opties voor het verminderen van segment overlap ping bij het maken van besteld CCI.
 
-- Gebruik de resource klasse xlargerc op een hogere DWU om meer geheugen voor het sorteren van gegevens toe te staan voordat de index Builder de gegevens in segmenten comprimeert.  Eenmaal in een index segment kan de fysieke locatie van de gegevens niet worden gewijzigd.  Er wordt geen sortering van gegevens binnen een segment of tussen segmenten.  
+- Gebruik de resource klasse xlargerc op een hogere DWU om meer geheugen voor het sorteren van gegevens toe te staan voordat de index Builder de gegevens in segmenten comprimeert.  Eenmaal in een index segment kan de fysieke locatie van de gegevens niet worden gewijzigd.  Er wordt geen gegevens gesorteerd binnen een segment of tussen segmenten.  
 
 - Maak een geordend CCI met MAXDOP = 1.  Elke thread die wordt gebruikt voor het bewerkte CCI maakt, werkt met een subset van gegevens en sorteert deze lokaal.  Er is geen algemene sorteer volgorde voor gegevens die door verschillende threads worden gesorteerd.  Het gebruik van parallelle threads kan de tijd verminderen voor het maken van een geordend CCI, maar er worden meer overlappende segmenten gegenereerd dan met behulp van één thread.  Op dit moment wordt de optie MAXDOP alleen ondersteund voor het maken van een geordende CCI-tabel met behulp van CREATE TABLE als SELECT-opdracht.  Het maken van een geordend CCI via CREATE INDEX of CREATE TABLE opdrachten biedt geen ondersteuning voor de optie MAXDOP. Bijvoorbeeld:
 
@@ -112,7 +113,7 @@ OPTION (MAXDOP 1);
 - Sorteer de gegevens vooraf op de sorteer sleutel (s) voordat u deze in Azure SQL Data Warehouse tabellen laadt.
 
 
-Hier volgt een voor beeld van een geordende CCI-tabel distributie met geen segment overlappende de bovenstaande aanbevelingen. De bestelde CCI-tabel wordt met behulp van MAXDOP 1 en xlargerc gemaakt in een DWU1000c-data base via CTAS uit een heap-tabel van 20 GB.  Het CCI bevindt zich op een kolom BIGINT zonder dubbele waarden.  
+Hier volgt een voor beeld van een geordende CCI-tabel distributie met geen segment overlappende de bovenstaande aanbevelingen. De geordende CCI-tabel wordt met behulp van MAXDOP 1 en xlargerc gemaakt in een DWU1000c-data base via CTAS uit een heap-tabel van 20 GB.  Het CCI bevindt zich op een kolom BIGINT zonder dubbele waarden.  
 
 ![Segment_No_Overlapping](media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 

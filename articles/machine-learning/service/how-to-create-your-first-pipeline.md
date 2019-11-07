@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 373713cc92379236385024beff201d16fbbfd4b5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: a092647f9772aafdf610ee9a5ba85ded17d50def
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497050"
+ms.locfileid: "73577706"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>machine learning-pijp lijnen maken en uitvoeren met Azure Machine Learning SDK
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,11 +37,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begin
 
 * Maak een [Azure machine learning-werk ruimte](how-to-manage-workspace.md) om al uw pijplijn resources te bevatten.
 
-* [Configureer uw ontwikkel omgeving](how-to-configure-environment.md) om de Azure machine learning SDK te installeren, of gebruik een [Azure machine learning Compute-exemplaar](concept-compute-instance.md) waarbij de SDK al is geïnstalleerd.
-
-> [!NOTE]
-> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**.
->Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken. 
+* [Configureer uw ontwikkel omgeving](how-to-configure-environment.md) om de Azure machine learning SDK te installeren, of gebruik een [Azure machine learning-notebook-VM](concept-azure-machine-learning-architecture.md#compute-instance) met de SDK die al is geïnstalleerd.
 
 Begin met het koppelen van uw werk ruimte:
 
@@ -90,7 +86,7 @@ def_blob_store.upload_files(
     overwrite=True)
 ```
 
-Een pijp lijn bestaat uit een of meer stappen. Een stap is een eenheid die wordt uitgevoerd op een compute-doel. Stappen kunnen gegevens bronnen verbruiken en tussenliggende gegevens produceren. Een stap kan gegevens zoals een model, een directory met model en afhankelijke bestanden of tijdelijke gegevens maken. Deze gegevens zijn vervolgens later in de pijp lijn beschikbaar voor andere stappen.
+Een pijp lijn bestaat uit een of meer stappen. Een stap is een eenheid die wordt uitgevoerd op een compute-doel. Stappen kunnen gegevens bronnen verbruiken en tussenliggende gegevens produceren. Een stap kunt maken, zoals een model, een map met het model en de afhankelijke bestanden of tijdelijke gegevens. Deze gegevens zijn vervolgens later in de pijp lijn beschikbaar voor andere stappen.
 
 ### <a name="configure-data-reference"></a>Gegevens referentie configureren
 

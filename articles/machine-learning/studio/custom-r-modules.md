@@ -1,6 +1,6 @@
 ---
 title: Aangepaste R-modules definiëren
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: In dit onderwerp wordt beschreven hoe u een aangepaste R Studio (klassiek) ontwerpt en implementeert. Hierin wordt uitgelegd wat aangepaste R-modules zijn en welke bestanden worden gebruikt om ze te definiëren.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 92a6e0fec07c5e90c1e64a8c4a9e7470cf9fd634
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dba1b092d9a12f189ce7b4a207c362cad2bf8858
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493178"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619484"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Aangepaste R-modules voor Azure Machine Learning Studio definiëren (klassiek)
 
@@ -167,7 +167,7 @@ Voor aangepaste R-modules moet de ID voor een zip-poort niet overeenkomen met de
 * De waarde van het kenmerk **id** van het **invoer** element mag niet langer zijn dan 64 tekens.
 * De waarde van het kenmerk **name** van het element **input** mag niet langer zijn dan 64 tekens.
 * De inhoud van het **beschrijvings** element mag niet langer zijn dan 128 tekens
-* De waarde van het kenmerk **type** van het element **input** moet *zip* of *DataTable*zijn.
+* De waarde van de **type** kenmerk van de **invoer** element moet *Zip* of *DataTable*.
 * De waarde van het kenmerk **isOptional** van het **input** -element is niet vereist (en is standaard *Onwaar* wanneer niet opgegeven); maar als deze waarde is opgegeven, moet deze *True* of *False*zijn.
 
 ### <a name="output-elements"></a>Uitvoer elementen

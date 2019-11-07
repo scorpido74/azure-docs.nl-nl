@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database mogelijkheden voor meerdere modellen | Microsoft Docs
+title: Azure SQL Database mogelijkheden voor meerdere modellen
 description: Met Azure SQL Database kunt u werken met meerdere gegevens modellen in dezelfde data base.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: e319daf322d688828c7d05d78dacd2359273223f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7156b9923c9cb98ae3dde143c98eb32a6eb11a9c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567129"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687725"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Mogelijkheden van meerdere modellen van Azure SQL Database
 
@@ -29,12 +29,12 @@ U kunt in de volgende gevallen gebruikmaken van mogelijkheden voor het gebruik v
 - U hebt een aantal informatie of structuren die beter passen voor NoSQL-modellen en u geen afzonderlijke NoSQL-Data Base wilt gebruiken.
 - Een meerderheid van uw gegevens is geschikt voor relationele modellen en u moet een deel van uw gegevens in NoSQL-stijl model leren.
 - U wilt gebruikmaken van de uitgebreide Transact-SQL-taal voor het opvragen en analyseren van relationele en NoSQL-gegevens en deze te integreren met een aantal hulpprogram ma's en toepassingen die SQL-taal kunnen gebruiken.
-- U wilt database functies, zoals [in-Memory technologieën](sql-database-in-memory.md) , Toep assen om de prestaties van uw analyse-of verwerking van uw NoSQL-gegevens strucutres te verbeteren, gebruik transactionele [replicatie](sql-database-managed-instance-transactional-replication.md) of [Lees bare replica's](sql-database-read-scale-out.md) om een kopie van uw gegevens te maken op de andere locatie en offload enkele analytische workloads van de primaire data base.
+- U wilt database functies, zoals [in-Memory technologieën](sql-database-in-memory.md) , Toep assen om de prestaties van uw analyse-of verwerking van uw NoSQL-gegevens strucutres te verbeteren, gebruik [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) of [Lees bare replica's](sql-database-read-scale-out.md) om een kopie van uw gegevens te maken op de andere locatie en offload enkele analytische workloads van de primaire data base.
 
 ## <a name="overview"></a>Overzicht
 
 Azure SQL biedt de volgende functies voor meerdere modellen:
-- Met [Graph-functies](#graph-features) kunt u uw gegevens weer geven als set van knoop punten en randen en kunt u standaard Transact-SQL- `MATCH` query's gebruiken met de grafiek operator voor het opvragen van de grafiek gegevens.
+- Met [grafische functies](#graph-features) kunt u uw gegevens weer geven als set van knoop punten en randen en kunt u standaard Transact-SQL-query's gebruiken met de Graph `MATCH`-operator om de grafiek gegevens op te vragen.
 - Met de [JSON-functies](#json-features) kunt u JSON-documenten in tabellen plaatsen, relationele gegevens TRANSFORMEREN naar JSON-documenten en vice versa. U kunt de standaard Transact-SQL-taal uitgebreid met JSON-functies voor het parseren van documenten en niet-geclusterde indexen, Column Store-indexen of tabellen die zijn geoptimaliseerd voor geheugen gebruiken om uw query's te optimaliseren.
 - Met [ruimtelijke functies](#spatial-features) kunt u geografische en geometrische gegevens opslaan, indexeren met behulp van ruimtelijke indexen en de gegevens ophalen met behulp van ruimtelijke query's.
 - Met [XML-functies](#xml-features) kunt u XML-gegevens in uw data base opslaan en indexeren en systeem eigen XQuery/XPath-bewerkingen gebruiken om met XML-gegevens te werken. Azure SQL database heeft een speciaal ingebouwde XML-query-engine waarmee XML-gegevens worden verwerkt.
@@ -74,7 +74,7 @@ Met Azure SQL Database kunt u eenvoudig met JSON-gegevens werken en uw data base
 
 ![JSON-functies](./media/sql-database-json-features/image_1.png)
 
-Als u JSON-tekst hebt, kunt u gegevens uit JSON extra heren of controleren of de JSON juist is ingedeeld met behulp van de ingebouwde functies [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)en [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx). Met de functie [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) kunt u de waarde in JSON-tekst bijwerken. Voor meer geavanceerde query's en analyse kunnen met [](https://msdn.microsoft.com/library/dn921885.aspx) de functie openjson een matrix van JSON-objecten worden omgezet in een set rijen. Een SQL-query kan worden uitgevoerd op de geretourneerde resultatenset. Ten slotte is er een [voor json](https://msdn.microsoft.com/library/dn921882.aspx) -component waarmee u gegevens kunt opmaken die in uw relationele tabellen zijn opgeslagen als JSON-tekst.
+Als u JSON-tekst hebt, kunt u gegevens uit JSON extra heren of controleren of de JSON juist is ingedeeld met behulp van de ingebouwde functies [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)en [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx). Met de functie [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) kunt u de waarde in JSON-tekst bijwerken. Voor meer geavanceerde query's en analyse kunnen met de functie [openjson](https://msdn.microsoft.com/library/dn921885.aspx) een matrix van JSON-objecten worden omgezet in een set rijen. Een SQL-query kan worden uitgevoerd op de geretourneerde resultatenset. Ten slotte is er een [voor json](https://msdn.microsoft.com/library/dn921882.aspx) -component waarmee u gegevens kunt opmaken die in uw relationele tabellen zijn opgeslagen als JSON-tekst.
 
 Zie [werken met JSON-gegevens in azure SQL database](sql-database-json-features.md)voor meer informatie.
 [JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) is kern SQL server data base-engine, zodat u hier meer informatie over de json-functie kunt vinden.
@@ -132,7 +132,7 @@ CREATE TABLE Collection (
 )
 ```
 
-U kunt deze structuur van de sleutel waarde aanpassen aan uw behoeften zonder beperkingen. Een voor beeld: de waarde kan een XML-document zijn `nvarchar(max)` in plaats van het type, als de waarde een JSON- `CHECK` document is, kunt u een beperking plaatsen die de geldigheid van JSON-inhoud verifieert. U kunt een wille keurig aantal waarden in verband met één sleutel in de extra kolommen plaatsen, berekende kolommen en indexen toevoegen om gegevens toegang te vereenvoudigen en te optimaliseren, de tabel definiëren als tabel met alleen geheugen/geoptimaliseerd schema voor betere prestaties, enzovoort.
+U kunt deze structuur van de sleutel waarde aanpassen aan uw behoeften zonder beperkingen. Een voor beeld: de waarde kan een XML-document zijn in plaats van `nvarchar(max)` type, als de waarde een JSON-document is, kunt u `CHECK` beperking plaatsen die de geldigheid van JSON-inhoud verifieert. U kunt een wille keurig aantal waarden in verband met één sleutel in de extra kolommen plaatsen, berekende kolommen en indexen toevoegen om gegevens toegang te vereenvoudigen en te optimaliseren, de tabel definiëren als tabel met alleen geheugen/geoptimaliseerd schema voor betere prestaties, enzovoort.
 
 Bekijk [hoe BWin in-Memory OLTP gebruikt om ongekende prestaties te bereiken en te schalen](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) voor de ASP.NET-cache oplossing die 1.200.000 batches per seconden heeft behaald, als voor beeld hoe relationeel model effectief kan worden gebruikt als een oplossing voor sleutel waarde-paar in proef.
 

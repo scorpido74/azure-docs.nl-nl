@@ -1,5 +1,5 @@
 ---
-title: Wereld wijd beschik bare Services ontwerpen met behulp van Azure SQL Database | Microsoft Docs
+title: Wereld wijd beschik bare Services ontwerpen met behulp van Azure SQL Database
 description: Meer informatie over het ontwerpen van toepassingen voor Maxi maal beschik bare Services met behulp van Azure SQL Database.
 keywords: herstel na nood geval in de Cloud, oplossingen voor herstel na nood gevallen, back-ups van app-gegevens, geo-replicatie, planning voor bedrijfs continuïteit
 services: sql-database
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: a79fa40568502a73194e467de2227d54931d0100
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 034d696fd8c9aae826d0bbc7e4d028cefad09840
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568951"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690717"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Wereld wijd beschik bare Services ontwerpen met behulp van Azure SQL Database
 
@@ -26,7 +26,7 @@ Wanneer u Cloud Services bouwt en implementeert met Azure SQL Database, gebruikt
 > [!NOTE]
 > Als u Premium-of Bedrijfskritiek-data bases en elastische Pools gebruikt, kunt u ze voor het maken van regionale storingen gebruiken door ze te converteren naar zone redundante implementatie configuratie. Zie [zone-redundante data bases](sql-database-high-availability.md).  
 
-## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Scenario 1: Twee Azure-regio's gebruiken voor bedrijfs continuïteit met minimale downtime
+## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Scenario 1: twee Azure-regio's gebruiken voor bedrijfs continuïteit met minimale downtime
 
 In dit scenario hebben de toepassingen de volgende kenmerken:
 
@@ -35,7 +35,7 @@ In dit scenario hebben de toepassingen de volgende kenmerken:
 * De weblaag en de gegevenslaag moeten co zijn om latentie en verkeers kosten te beperken
 * In het fundamenteel is uitval tijd een hoger bedrijfs risico voor deze toepassingen dan gegevens verlies
 
-In dit geval is de implementatie topologie van de toepassing geoptimaliseerd voor het afhandelen van regionale rampen wanneer alle toepassings onderdelen met elkaar moeten worden failover. In het onderstaande diagram ziet u deze topologie. Voor geografische redundantie worden de bronnen van de toepassing geïmplementeerd in regio A en B. De resources in regio B worden echter pas gebruikt als de regio A mislukt. Er wordt een failovergroep geconfigureerd tussen de twee regio's voor het beheren van de database connectiviteit, replicatie en failover. De webservice in beide regio's is geconfigureerd voor toegang tot de data base via de Read-Write listener  **&lt;failover-group-name&gt;. database.Windows.net** (1). Traffic Manager is ingesteld voor het gebruik van een [prioriteits routerings methode](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
+In dit geval is de implementatie topologie van de toepassing geoptimaliseerd voor het afhandelen van regionale rampen wanneer alle toepassings onderdelen met elkaar moeten worden failover. In het onderstaande diagram ziet u deze topologie. Voor geografische redundantie worden de bronnen van de toepassing geïmplementeerd in regio A en B. De resources in regio B worden echter pas gebruikt als de regio A mislukt. Er wordt een failovergroep geconfigureerd tussen de twee regio's voor het beheren van de database connectiviteit, replicatie en failover. De webservice in beide regio's is geconfigureerd voor toegang tot de data base via de listener voor lezen en schrijven **&lt;failover-groeps naam&gt;. database.Windows.net** (1). Traffic Manager is ingesteld voor het gebruik van een [prioriteits routerings methode](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
 
 > [!NOTE]
 > [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) wordt alleen in dit artikel gebruikt voor illustratie doeleinden. U kunt elke oplossing voor taak verdeling gebruiken die ondersteuning biedt voor een routerings methode met prioriteit.
@@ -101,7 +101,7 @@ Dit ontwerp patroon heeft verschillende **voor delen**:
 
 De **balans** is dat de toepassing in de modus alleen-lezen moet kunnen worden uitgevoerd.
 
-## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>Scenario 3: Herlocatie van de toepassing naar een andere geografie zonder gegevens verlies en bijna geen downtime
+## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>Scenario 3: herlocatie van de toepassing naar een andere geografie zonder gegevens verlies en bijna nul downtime
 
 In dit scenario heeft de toepassing de volgende kenmerken:
 
@@ -112,7 +112,7 @@ In dit scenario heeft de toepassing de volgende kenmerken:
 
 Om te voldoen aan deze vereisten moet worden gegarandeerd dat het gebruikers apparaat **altijd** verbinding maakt met de toepassing die is geïmplementeerd in dezelfde geografie voor de alleen-lezen bewerkingen, zoals het bladeren door gegevens, analyses, enzovoort. Overwegende dat de OLTP-bewerkingen in de **meeste tijd**worden verwerkt. Gedurende de tijd dat de OLTP-bewerkingen van de dag worden uitgevoerd, worden deze in dezelfde geografie verwerkt, maar gedurende de buitenste uren die ze in een andere Geografie kunnen verwerken. Als de activiteit van de eind gebruiker voornamelijk plaatsvindt tijdens de werk uren, kunt u de optimale prestaties voor de meeste gebruikers van de tijd garanderen. In het volgende diagram ziet u deze topologie.
 
-De resources van de toepassing moeten in elke geografie worden geïmplementeerd, waar u een substantiële gebruiks vraag hebt. Als uw toepassing bijvoorbeeld actief wordt gebruikt in de Verenigde Staten, moeten de Europese Unie en Zuid Azië-oost de toepassing worden geïmplementeerd in al deze geografische gebieden. De primaire data base moet dynamisch worden overgeschakeld van het ene geografie naar het volgende aan het einde van de werk uren. Deze methode wordt ' de zon volgen ' genoemd. De OLTP-werk belasting maakt altijd verbinding met de data base via de Read-Write-listener  **&lt;failover&gt;-group-name. database.Windows.net** (1). De alleen-lezen workload maakt rechtstreeks verbinding met de lokale data base met behulp van de server  **&lt;naam&gt;. database.Windows.net** (2) van de data baseserver. Traffic Manager is geconfigureerd met de [routerings methode voor prestaties](../traffic-manager/traffic-manager-configure-performance-routing-method.md). Hiermee zorgt u ervoor dat het apparaat van de eind gebruiker is verbonden met de webservice in de dichtstbijzijnde regio. Traffic manager moet worden ingesteld terwijl de eindpunt bewaking is ingeschakeld voor elk eind punt van de webservice (3).
+De resources van de toepassing moeten in elke geografie worden geïmplementeerd, waar u een substantiële gebruiks vraag hebt. Als uw toepassing bijvoorbeeld actief wordt gebruikt in de Verenigde Staten, moeten de Europese Unie en Zuid Azië-oost de toepassing worden geïmplementeerd in al deze geografische gebieden. De primaire data base moet dynamisch worden overgeschakeld van het ene geografie naar het volgende aan het einde van de werk uren. Deze methode wordt ' de zon volgen ' genoemd. De OLTP-werk belasting maakt altijd verbinding met de data base via de listener voor lezen en schrijven **&lt;failover-groep-naam&gt;. database.Windows.net** (1). De alleen-lezen workload maakt rechtstreeks verbinding met de lokale data base met behulp van het server eindpunt **&lt;server naam&gt;. database.Windows.net** (2). Traffic Manager is geconfigureerd met de [routerings methode voor prestaties](../traffic-manager/traffic-manager-configure-performance-routing-method.md). Hiermee zorgt u ervoor dat het apparaat van de eind gebruiker is verbonden met de webservice in de dichtstbijzijnde regio. Traffic manager moet worden ingesteld terwijl de eindpunt bewaking is ingeschakeld voor elk eind punt van de webservice (3).
 
 > [!NOTE]
 > De configuratie van de failovergroep definieert welke regio voor failover wordt gebruikt. Omdat de nieuwe primaire locatie zich in een andere geografie bevindt, resulteert de failover in langere latentie voor zowel OLTP-als alleen-lezen workloads totdat de betrokken regio weer online is.
@@ -143,12 +143,12 @@ De belangrijkste **voor delen** van dit ontwerp zijn:
 * De werk belasting van de toepassing lezen-schrijven heeft toegang tot gegevens in de dichtstbijzijnde regio tijdens de periode van de hoogste activiteit in elke Geografie
 * Omdat de toepassing wordt geïmplementeerd in meerdere regio's, kan het een verlies van een van de regio's belopen zonder aanzienlijke uitval tijd.
 
-Maar er zijn eenaantal voor afwegingen:
+Maar er zijn een aantal voor **afwegingen**:
 
 * Een regionale storing leidt ertoe dat de geografie wordt beïnvloed door langere latentie. Alleen werk belastingen met lees-en schrijf bewerkingen en alleen-lezen taken worden door de toepassing in een andere geografie bediend.
 * De alleen-lezen workloads moeten verbinding maken met een ander eind punt in elke regio.
 
-## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>Planning voor bedrijfs continuïteit: Kies een toepassings ontwerp voor herstel na nood geval in de Cloud
+## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>Planning voor bedrijfs continuïteit: Kies een toepassings ontwerp voor nood herstel in de Cloud
 
 Met uw specifieke strategie voor nood herstel in de cloud kunt u deze ontwerp patronen combi neren of uitbreiden om optimaal te voldoen aan de behoeften van uw toepassing.  Zoals eerder vermeld, is de strategie die u kiest, gebaseerd op de SLA die u aan uw klanten wilt aanbieden en de topologie voor de implementatie van de toepassing. Om u te helpen uw beslissing te nemen, vergelijkt de volgende tabel de keuzes op basis van Recovery Point Objective (RPO) en geschatte herstel tijd (ERT).
 

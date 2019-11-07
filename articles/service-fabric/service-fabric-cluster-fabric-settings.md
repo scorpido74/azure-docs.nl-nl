@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: d0d87b42232a19d6bcd3c225fb4a4f8f8b459350
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cf070e91d6f15e80f51242722a59918d1bc70696
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177788"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615556"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric cluster instellingen aanpassen
 In dit artikel worden de verschillende infrastructuur instellingen voor uw Service Fabric cluster beschreven die u kunt aanpassen. Voor clusters die worden gehost in azure, kunt u instellingen aanpassen via de [Azure Portal](https://portal.azure.com) of met behulp van een Azure Resource Manager sjabloon. Zie [de configuratie van een Azure-cluster upgraden](service-fabric-cluster-config-upgrade-azure.md)voor meer informatie. Voor zelfstandige clusters past u de instellingen aan door het bestand *ClusterConfig. json* bij te werken en een configuratie-upgrade uit te voeren op uw cluster. Zie [de configuratie van een zelfstandig cluster upgraden](service-fabric-cluster-config-upgrade-windows-server.md)voor meer informatie.
@@ -122,7 +122,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 | --- | --- | --- | --- |
 |PropertyGroup|KeyDoubleValueMap, standaard instelling is geen|Dynamisch|Bepaalt het aantal beschik bare knoop punten die nodig zijn om het cluster te defragmenteren door een percentage in het bereik [0,0-1,0] op te geven of het aantal lege knoop punten als getal > = 1,0 |
 
-## <a name="diagnostics"></a>Diagnostics
+## <a name="diagnostics"></a>Diagnostiek
 
 | **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
@@ -234,13 +234,12 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |QuorumLossWaitDuration |Tijd in seconden, de standaard waarde is MaxValue |Dynamisch|Geef een tijds duur in seconden op. Dit is de maximale duur waarvoor een partitie een status van quorum verlies mag hebben. Als de partitie na deze duur nog steeds in het quorum verloren is gegaan, de partitie wordt hersteld van quorum verlies door de replica's als verloren te beschouwen. Houd er rekening mee dat dit kan leiden tot gegevens verlies. |
 |ReconfigurationTimeLimit|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (300)|Dynamisch|Geef een tijds duur in seconden op. De tijds limiet voor opnieuw configureren; waarna een waarschuwings status rapport wordt gestart |
 |ReplicaRestartWaitDuration|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (60,0 \* 30)|Niet toegestaan|Geef een tijds duur in seconden op. Dit is de ReplicaRestartWaitDuration voor de FMService |
+| SeedNodeQuorumAdditionalBufferNodes | int, standaard is 0 | Dynamisch | De buffer van Seed-knoop punten die nodig zijn om in te stellen (samen met het quorum van Seed-knoop punten) FM mag een maximum van (totalNumSeedNodes-(seedNodeQuorum + SeedNodeQuorumAdditionalBufferNodes)) Seed-knoop punten toestaan om uit te scha kelen. |
 |StandByReplicaKeepDuration|Time span, standaard is gebruikelijk:: time span:: FromSeconds (3600.0 \* 24 \* 7)|Niet toegestaan|Geef een tijds duur in seconden op. Dit is de StandByReplicaKeepDuration voor de FMService |
 |TargetReplicaSetSize|Int, standaard is 7|Niet toegestaan|Dit is het doel aantal FM-replica's dat Windows Fabric blijft behouden. Een hogere waarde resulteert in een grotere betrouw baarheid van de FM-gegevens; met een kleine prestatie verhouding. |
 |UserMaxStandByReplicaCount |int, standaard waarde is 1 |Dynamisch|Het maximum aantal stand-by replica's dat door het systeem voor gebruikers Services wordt bewaard. |
 |UserReplicaRestartWaitDuration |Tijd in seconden, de standaard waarde is 60,0 \* 30 |Dynamisch|Geef een tijds duur in seconden op. Wanneer een persistente replica uitvalt. Windows Fabric wacht totdat de replica een back-up maakt voordat nieuwe vervangende replica's (waarvoor een kopie van de status nodig is) worden gemaakt. |
-|UserStandByReplicaKeepDuration |Tijd in seconden, standaard is 3600,0 \* 24 \* 7 |Dynamisch|Geef een tijds duur in seconden op. Wanneer een persistente replica van de status omlaag wordt weer gegeven; mogelijk is deze al vervangen. Deze timer bepaalt hoe lang de FM de stand-by replica houdt voordat deze wordt genegeerd. |
-|WaitForInBuildReplicaSafetyCheckTimeout|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (60 * 10)|Dynamisch|Geef een tijds duur in seconden op. Configuratie-item voor de optionele time-out voor de WaitForInBuildReplica-veiligheids controle. Deze configuratie definieert de time-out voor de WaitForInBuildReplica-veiligheids controle voor het deactiveren van knoop punten en upgrades. Deze veiligheids controle mislukt als aan een van de volgende voor waarden wordt voldaan:-er wordt een primaire gemaakt en de ft-doel replica is ingesteld op de grootte > 1-als de huidige replica in Build is en persistent is gemaakt. als dit de huidige primaire is en er een nieuwe replica wordt gebouwd, wordt deze controle overs Laan PED als de time-out verloopt, zelfs als een van de vorige voor waarden nog steeds waar is. |
-|WaitForReconfigurationSafetyCheckTimeout|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (60,0 * 10)|Dynamisch|Geef een tijds duur in seconden op. Configuratie-item voor de optionele time-out voor de WaitForReconfiguration-veiligheids controle. Deze configuratie definieert de time-out van de WaitForReconfiguration-veiligheids controle voor het deactiveren van knoop punten en upgrades. Deze veiligheids controle mislukt als de replica die wordt gecontroleerd deel uitmaakt van een partitie die wordt opnieuw geconfigureerd. De veiligheids controle wordt overgeslagen nadat deze time-out is verlopen, zelfs als de partitie nog steeds wordt opnieuw geconfigureerd.|
+|UserStandByReplicaKeepDuration |Tijd in seconden, de standaard waarde is 3600,0 \* 24 \* 7 |Dynamisch|Geef een tijds duur in seconden op. Wanneer een persistente replica van de status omlaag wordt weer gegeven; mogelijk is deze al vervangen. Deze timer bepaalt hoe lang de FM de stand-by replica houdt voordat deze wordt genegeerd. |
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
@@ -340,6 +339,8 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |ActivationRetryBackoffInterval |Tijd in seconden, standaard waarde is 5 |Dynamisch|Uitstel-interval bij elke activerings fout; Bij elke doorlopende activering wordt de activering door het systeem opnieuw geprobeerd tot de MaxActivationFailureCount. Het interval voor nieuwe pogingen bij elke poging is een product van een doorlopende activerings fout en het back-upinterval van de activering. |
 |ActivationTimeout| Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (180)|Dynamisch| Geef een tijds duur in seconden op. De time-out voor het activeren van toepassingen; deactiveren en upgraden. |
 |ApplicationHostCloseTimeout| Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (120)|Dynamisch| Geef een tijds duur in seconden op. Wanneer Fabric exit wordt gedetecteerd in een zelf geactiveerde processen; FabricRuntime sluit alle replica's in het hostproces proces van de gebruiker. Dit is de time-out voor het sluiten van de bewerking. |
+| CnsNetworkPluginCnmUrlPort | wstring, standaard is L "48080" | Statisch | URL-poort van Azure cnm API |
+| CnsNetworkPluginCnsUrlPort | wstring, standaard is L "10090" | Statisch | Azure CNS-URL-poort |
 |ContainerServiceArguments|teken reeks, standaard is '-H localhost: 2375-H npipe://'|Statisch|Service Fabric (SF) beheert docker daemon (met uitzonde ring van Windows-client computers zoals Win10). Met deze configuratie kan de gebruiker aangepaste argumenten opgeven die moeten worden door gegeven aan docker-daemon wanneer deze wordt gestart. Als er aangepaste argumenten zijn opgegeven, wordt Service Fabric geen ander argument aan docker-Engine door gegeven, met uitzonde ring van het argument--pidfile. Daarom moeten gebruikers niet het argument--pidfile opgeven als onderdeel van hun klant argumenten. De aangepaste argumenten moeten er ook voor zorgen dat docker daemon luistert naar de standaard naam pipe op Windows (of UNIX-domein socket in Linux), zodat de Service Fabric ermee kan communiceren.|
 |ContainerServiceLogFileMaxSizeInKb|int, standaard waarde is 32768|Statisch|De maximale bestands grootte van het logboek bestand dat wordt gegenereerd door docker-containers.  Alleen Windows.|
 |ContainerImageDownloadTimeout|int, aantal seconden, standaard waarde is 1200 (20 minuten)|Dynamisch|Aantal seconden voordat de installatie kopie naar een time-out kan worden gedownload.|
@@ -357,6 +358,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |DisableContainers|BOOL, default is FALSE|Statisch|Configuratie voor het uitschakelen van containers: wordt gebruikt in plaats van DisableContainerServiceStartOnContainerActivatorOpen. deze configuratie is afgeschaft |
 |DisableDockerRequestRetry|BOOL, default is FALSE |Dynamisch| SF communiceert standaard met DD (docker dameon) met een time-out van ' DockerRequestTimeout ' voor elke HTTP-aanvraag die ernaar wordt verzonden. Als DD niet binnen deze tijds periode reageert; EB verzendt de aanvraag opnieuw als de bewerking op het hoogste niveau nog steeds resterende tijd heeft.  Met Hyper-v-container; DD neemt soms veel tijd in beslag om de container te openen of te deactiveren. In dergelijke gevallen is de aanvraag een time-out van SF-perspectief en voert SF de bewerking opnieuw uit. Soms lijkt het alsof er meer belasting wordt toegevoegd aan DD. Met deze configuratie kunt u deze nieuwe poging uitschakelen en wachten op DD om te reageren. |
 |DnsServerListTwoIps | BOOL, default is FALSE | Statisch | Met deze vlaggen wordt de lokale DNS-server twee keer toegevoegd om tijdelijke problemen op te lossen. |
+| DoNotInjectLocalDnsServer | BOOL, default is FALSE | Statisch | Hiermee wordt voor komen dat de runtime het lokale IP-adres als DNS-server voor containers injecteert. |
 |EnableActivateNoWindow| BOOL, default is FALSE|Dynamisch| Het geactiveerde proces wordt zonder console op de achtergrond gemaakt. |
 |EnableContainerServiceDebugMode|BOOL, default is TRUE|Statisch|Logboek registratie voor docker-containers in-of uitschakelen.  Alleen Windows.|
 |EnableDockerHealthCheckIntegration|BOOL, default is TRUE|Statisch|Maakt integratie van docker status controle-gebeurtenissen mogelijk met Service Fabric systeem status rapport |
@@ -402,7 +404,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |PlacementConstraints | teken reeks, standaard instelling is |Statisch| De PlacementConstraints voor ImageStoreService. |
 |QuorumLossWaitDuration | Tijd in seconden, de standaard waarde is MaxValue |Statisch| Geef een tijds duur in seconden op. De QuorumLossWaitDuration voor ImageStoreService. |
 |ReplicaRestartWaitDuration | Tijd in seconden, de standaard waarde is 60,0 \* 30 |Statisch|Geef een tijds duur in seconden op. De ReplicaRestartWaitDuration voor ImageStoreService. |
-|StandByReplicaKeepDuration | Tijd in seconden, de standaard waarde is 3600,0 \* 2 |Statisch| Geef een tijds duur in seconden op. De StandByReplicaKeepDuration voor ImageStoreService. |
+|StandByReplicaKeepDuration | Tijd in seconden, standaard waarde is 3600,0 \* 2 |Statisch| Geef een tijds duur in seconden op. De StandByReplicaKeepDuration voor ImageStoreService. |
 |TargetReplicaSetSize | Int, standaard is 7 |Statisch|De TargetReplicaSetSize voor ImageStoreService. |
 
 ## <a name="ktllogger"></a>KtlLogger
@@ -649,14 +651,14 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 ## <a name="security"></a>Beveiliging
 | **Bepaalde** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|teken reeks, standaard instelling is|Statisch|AAD-certificaat eindpunt indeling, standaard-Azure-Commercial, opgegeven voor niet-standaard omgeving, zoals Azure Government "https: \//login. microsoftonline. VS/{0}/federationmetadata/2007-06/federationmetadata. xml" |
+|AADCertEndpointFormat|teken reeks, standaard instelling is|Statisch|AAD-certificaat eindpunt indeling, standaard-Azure-Commercial, opgegeven voor niet-standaard-omgeving, zoals Azure Government ' https:\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.XML ' |
 |AADClientApplication|teken reeks, standaard instelling is|Statisch|Systeem eigen client toepassings naam of ID die infrastructuur clients vertegenwoordigt |
 |AADClusterApplication|teken reeks, standaard instelling is|Statisch|Web-API-toepassings naam of-ID die het cluster vertegenwoordigt |
-|AADLoginEndpoint|teken reeks, standaard instelling is|Statisch|AAD-aanmeldings eindpunt, standaard-Azure-Commercial, opgegeven voor niet-standaard omgevingen, zoals Azure Government ' https: \//login. microsoftonline. VS ' |
+|AADLoginEndpoint|teken reeks, standaard instelling is|Statisch|AAD-aanmeldings eindpunt, standaard-Azure-Commercial, opgegeven voor niet-standaard omgevingen, zoals Azure Government ' https:\//login.microsoftonline.us ' |
 |AADTenantId|teken reeks, standaard instelling is|Statisch|Tenant-ID (GUID) |
 |AcceptExpiredPinnedClusterCertificate|BOOL, default is FALSE|Dynamisch|Vlag waarmee wordt aangegeven of verlopen cluster certificaten moeten worden geaccepteerd die zijn gedeclareerd door de vinger afdruk, alleen van toepassing is op cluster certificaten. zodat het cluster actief blijft. |
 |AdminClientCertThumbprints|teken reeks, standaard instelling is|Dynamisch|Vinger afdrukken van certificaten die worden gebruikt door clients in de rol Admin. Dit is een lijst met door komma's gescheiden namen. |
-|AADTokenEndpointFormat|teken reeks, standaard instelling is|Statisch|AAD-token-eind punt, standaard-Azure-Commercial, opgegeven voor niet-standaard omgeving, zoals Azure Government ' https: \//login. microsoftonline. VS/{0} ' |
+|AADTokenEndpointFormat|teken reeks, standaard instelling is|Statisch|AAD-token-eind punt, standaard-Azure-Commercial, opgegeven voor niet-standaard omgevingen, zoals Azure Government ' https:\//login.microsoftonline.us/{0}' |
 |AdminClientClaims|teken reeks, standaard instelling is|Dynamisch|Alle mogelijke claims die worden verwacht door beheerclients; dezelfde indeling als ClientClaims; deze lijst wordt intern toegevoegd aan ClientClaims. u hoeft ook niet dezelfde vermeldingen aan ClientClaims toe te voegen. |
 |AdminClientIdentities|teken reeks, standaard instelling is|Dynamisch|Windows-identiteiten van Fabric-clients in beheerdersrol; wordt gebruikt voor het autoriseren van bevoegde infrastructuur bewerkingen. Het is een door komma's gescheiden lijst. elk item is een domein account naam of groeps naam. Voor het gemak; het account waarmee Fabric. exe wordt uitgevoerd, wordt automatisch toegewezen aan de rol Admin. Daarom is groep ServiceFabricAdministrators. |
 |AppRunAsAccountGroupX509Folder|teken reeks, standaard waarde is/Home/sfuser/sfusercerts |Statisch|Map waar AppRunAsAccountGroup x509-certificaten en persoonlijke sleutels zich bevinden |
@@ -677,6 +679,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |DisableFirewallRuleForDomainProfile| BOOL, default is TRUE |Statisch| Hiermee wordt aangegeven of de firewall regel niet moet worden ingeschakeld voor het domein profiel |
 |DisableFirewallRuleForPrivateProfile| BOOL, default is TRUE |Statisch| Hiermee wordt aangegeven of de firewall regel niet moet worden ingeschakeld voor een persoonlijk profiel | 
 |DisableFirewallRuleForPublicProfile| BOOL, default is TRUE | Statisch|Hiermee wordt aangegeven of de firewall regel niet moet worden ingeschakeld voor een openbaar profiel |
+| EnforceLinuxMinTlsVersion | BOOL, default is FALSE | Dynamisch | Indien ingesteld op True; alleen TLS-versie 1.2 + wordt ondersteund.  Indien onwaar; oudere versies van TLS ondersteunen. Alleen van toepassing op Linux |
 |FabricHostSpn| teken reeks, standaard instelling is |Statisch| Principal-naam van de service FabricHost; Wanneer infrastructuur als één domein gebruiker (gMSA/domein gebruikers account) wordt uitgevoerd en FabricHost wordt uitgevoerd onder machine account. Het is de SPN van IPC listener voor FabricHost; Deze moet standaard leeg blijven omdat FabricHost wordt uitgevoerd onder een computer account |
 |IgnoreCrlOfflineError|BOOL, default is FALSE|Dynamisch|Of de CRL-offline fout moet worden genegeerd wanneer inkomende client certificaten worden gecontroleerd door de server zijde |
 |IgnoreSvrCrlOfflineError|BOOL, default is TRUE|Dynamisch|Hiermee wordt aangegeven of de CRL-offline fout moet worden genegeerd wanneer inkomende server certificaten door client zijde worden geverifieerd. de standaard waarde is True. Aanvallen met ingetrokken server certificaten vereisen compromissen van DNS; moeilijker dan met ingetrokken client certificaten. |
@@ -757,7 +760,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |PropertyWriteBatch |teken reeks, standaard instelling is "beheerder" |Dynamisch|Beveiligings configuraties voor het benoemen van schrijf bewerkingen voor eigenschappen. |
 |ProvisionApplicationType |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het inrichten van het toepassings type. |
 |ProvisionFabric |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het inrichten van MSI en/of cluster manifest. |
-|Query |teken reeks, standaard is ' beheerder\|\|gebruiker ' |Dynamisch| Beveiligings configuratie voor query's. |
+|Query’s uitvoeren |teken reeks, standaard is ' beheerder\|\|gebruiker ' |Dynamisch| Beveiligings configuratie voor query's. |
 |RecoverPartition |teken reeks, standaard instelling is "beheerder" | Dynamisch|Beveiligings configuratie voor het herstellen van een partitie. |
 |RecoverPartitions |teken reeks, standaard instelling is "beheerder" | Dynamisch|Beveiligings configuratie voor het herstellen van partities. |
 |RecoverServicePartitions |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het herstellen van service partities. |

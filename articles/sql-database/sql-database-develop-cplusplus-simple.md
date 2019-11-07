@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met SQL Database met behulp van C en C++ | Microsoft Docs
+title: Verbinding maken met SQL Database met behulp van C enC++
 description: Gebruik de voorbeeld code in deze Quick Start om een moderne toepassing samen te C++ stellen met en ondersteund door een krachtige relationele data base in de cloud met Azure SQL database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: c06a16071b1e22e7aa788ff5f15ce8afbf17da04
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fb6094ec418d2b212759bddd2c4d49c7e6193849
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568934"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690697"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Verbinding maken met SQL Database met behulp van C enC++
 
@@ -38,10 +38,10 @@ Azure heeft momenteel twee opties voor het hosten van SQL Server-workloads: Azur
 ## <a id="ODBC"></a>Technologieën voor gegevens toegang: ODBC en OLE DB
 Verbinding maken met Azure SQL DB is niet anders en er zijn momenteel twee manieren om verbinding te maken met data bases: ODBC (Open Data Base Connectivity) en OLE DB (object linking and Embedding data base). In de afgelopen jaren is micro soft afgestemd op [ODBC voor native relationele gegevens toegang](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/). ODBC is relatief eenvoudig en ook veel sneller dan OLE DB. Het enige voor behoud hier is dat ODBC een oude C-style-API gebruikt.
 
-## <a id="Create"></a>Stap 1:  Uw Azure SQL Database maken
+## <a id="Create"></a>Stap 1: uw Azure SQL Database maken
 Zie de [pagina](sql-database-single-database-get-started.md) aan de slag voor meer informatie over het maken van een voorbeeld database.  U kunt ook deze [korte video van twee minuten](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) volgen om een Azure-SQL database te maken met behulp van de Azure Portal.
 
-## <a id="ConnectionString"></a>Stap 2:  Verbindingstekenreeks ophalen
+## <a id="ConnectionString"></a>Stap 2: connection string ophalen
 Nadat uw Azure-SQL database is ingericht, moet u de volgende stappen uitvoeren om verbindings gegevens te bepalen en uw client-IP toe te voegen voor toegang tot de firewall.
 
 Ga in [Azure Portal](https://portal.azure.com/)naar uw Azure SQL database ODBC-Connection String met behulp van de **verbindings reeksen Data Base weer geven** die worden weer gegeven als onderdeel van de sectie Overzicht voor uw Data Base:
@@ -52,14 +52,14 @@ Ga in [Azure Portal](https://portal.azure.com/)naar uw Azure SQL database ODBC-C
 
 Kopieer de inhoud van de **ODBC (inclusief node. js) [SQL-verificatie]** teken reeks. We gebruiken deze teken reeks later om verbinding te C++ maken met de opdracht regel-interpreter van ODBC. Deze teken reeks bevat details zoals het stuur programma, de server en andere database verbindings parameters.
 
-## <a id="Firewall"></a>Stap 3:  Uw IP toevoegen aan de firewall
+## <a id="Firewall"></a>Stap 3: uw IP toevoegen aan de firewall
 Ga naar de sectie Firewall voor uw database server en voeg het [IP-adres van de client toe aan de firewall met behulp van de volgende stappen](sql-database-configure-firewall-settings.md) om ervoor te zorgen dat er een geslaagde verbinding kan worden gemaakt:
 
 ![AddyourIPWindow](./media/sql-database-develop-cplusplus-simple/ip.png)
 
 Op dit moment hebt u uw Azure SQL-data base geconfigureerd en kunt u verbinding maken vanuit C++ uw code.
 
-## <a id="Windows"></a>Stap 4: Verbinding maken vanaf een Windows CC++ /-toepassing
+## <a id="Windows"></a>Stap 4: verbinding maken vanaf een Windows CC++ /-toepassing
 U kunt eenvoudig verbinding maken met uw [Azure SQL-data base met behulp van ODBC in Windows met behulp van dit voor beeld](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29) dat is gebaseerd op Visual Studio. Het voor beeld implementeert een ODBC-opdracht regel programma dat kan worden gebruikt om verbinding te maken met onze Azure SQL-data base. In dit voor beeld wordt een DSN-bestand (data base source name File) gebruikt als een opdracht regel argument of de uitgebreide connection string die u eerder hebt gekopieerd uit de Azure Portal. Breng de eigenschappen pagina voor dit project en plak de connection string als een opdracht argument, zoals hier wordt weer gegeven:
 
 ![DSN-Propsfile](./media/sql-database-develop-cplusplus-simple/props.png)
@@ -74,9 +74,9 @@ U kunt ook een DSN-bestand maken met behulp van de wizard die wordt gestart wann
 
 ![DSN-bestand maken](./media/sql-database-develop-cplusplus-simple/datasource.png)
 
-Gefeliciteerd! U hebt nu verbinding gemaakt met Azure SQL met C++ en ODBC in Windows. U kunt ook door gaan met lezen om hetzelfde te doen voor Linux-platform.
+Gefeliciteerd. U hebt nu verbinding gemaakt met Azure SQL met C++ en ODBC in Windows. U kunt ook door gaan met lezen om hetzelfde te doen voor Linux-platform.
 
-## <a id="Linux"></a>Stap 5: Verbinding maken via een Linux CC++ /-toepassing
+## <a id="Linux"></a>Stap 5: verbinding maken via een Linux CC++ /-toepassing
 Als u het nieuws nog niet hebt gehoord, kunt u met Visual Studio nu ook C++ Linux-toepassingen ontwikkelen. Meer informatie over dit nieuwe scenario vindt u in [de C++ Visual for Linux Development](https://blogs.msdn.microsoft.com/vcblog/20../../visual-c-for-linux-development/) -blog. Als u voor Linux wilt bouwen, hebt u een externe computer nodig waarop uw Linux-distributie wordt uitgevoerd. Als u er nog geen hebt, kunt u snel een snelle set instellen met behulp van [virtuele Linux Azure-machines](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Voor deze zelf studie gaan we ervan uit dat u een Ubuntu 16,04 Linux-distributie hebt ingesteld. Deze stappen moeten ook van toepassing zijn op Ubuntu 15,10, Red Hat 6 en Red Hat 7.
@@ -119,7 +119,7 @@ Als de verbinding is geslaagd, ziet u nu de huidige database naam in de Linux-co
 
 ![Venster uitvoer Linux-console](./media/sql-database-develop-cplusplus-simple/linuxconsolewindow.png)
 
-Gefeliciteerd! U hebt de zelf studie voltooid en kunt nu verbinding maken met uw Azure SQL- C++ Data Base op Windows-en Linux-platforms.
+Gefeliciteerd. U hebt de zelf studie voltooid en kunt nu verbinding maken met uw Azure SQL- C++ Data Base op Windows-en Linux-platforms.
 
 ## <a id="GetSolution"></a>De volledige oplossing voor CC++ /zelf studie ophalen
 U kunt de GetStarted-oplossing vinden die alle voor beelden in dit artikel bevat op GitHub:
@@ -131,7 +131,7 @@ U kunt de GetStarted-oplossing vinden die alle voor beelden in dit artikel bevat
 * Bekijk het [overzicht](sql-database-develop-overview.md) van de SQL database-ontwikkeling
 * Meer informatie over de [ODBC API-verwijzing](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 * [Ontwerppatronen voor SaaS-toepassingen met meerdere tenants met behulp van Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * Bekijk alle [mogelijkheden van SQL Database](https://azure.microsoft.com/services/sql-database/)
 

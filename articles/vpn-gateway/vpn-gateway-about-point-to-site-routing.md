@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: anzaman
-ms.openlocfilehash: cb5969ccb4ee9780b597326a3811395c3b7d9971
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ced1bc647f93beec73b8101a952944f31e497658
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168470"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693225"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Over point-to-site-VPN-routering
 
@@ -32,7 +32,7 @@ Dit artikel bevat een aantal verschillende diagrammen. In elke sectie wordt een 
 
 De punt-naar-site-VPN-gateway verbinding in dit voor beeld is voor een VNet dat niet is verbonden of die is gekoppeld aan een ander virtueel netwerk (VNet1). In dit voor beeld hebben clients toegang tot VNet1.
 
-![geïsoleerd]vnet-Routing geïsoleerde vnet-(./media/vpn-gateway-about-point-to-site-routing/1.jpg "route ring")
+![geïsoleerd VNet-route ring](./media/vpn-gateway-about-point-to-site-routing/1.jpg "geïsoleerd VNet-route ring")
 
 ### <a name="address-space"></a>Adresruimte
 
@@ -44,7 +44,7 @@ De punt-naar-site-VPN-gateway verbinding in dit voor beeld is voor een VNet dat 
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Toegang
 
 * Windows-clients hebben toegang tot VNet1
 
@@ -56,7 +56,7 @@ In dit voor beeld is de punt-naar-site-VPN-gateway verbinding voor VNet1. VNet1 
 
 Clients die Windows gebruiken, hebben toegang tot rechtstreeks peered VNets, maar de VPN-client moet opnieuw worden gedownload als er wijzigingen zijn aangebracht in VNet-peering of de netwerk topologie. Niet-Windows-clients hebben toegang tot rechtstreeks peered VNets. Toegang is niet transitief en is beperkt tot alleen rechtstreeks peered VNets.
 
-![meerdere]peered VNets-(./media/vpn-gateway-about-point-to-site-routing/2.jpg "meerdere peered-VNets")
+![meerdere peered VNets](./media/vpn-gateway-about-point-to-site-routing/2.jpg "meerdere peered VNets")
 
 ### <a name="address-space"></a>Adres ruimte:
 
@@ -74,7 +74,7 @@ Clients die Windows gebruiken, hebben toegang tot rechtstreeks peered VNets, maa
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Toegang
 
 * Windows-clients hebben toegang tot VNet1, VNet2 en en vnet4, maar de VPN-client moet opnieuw worden gedownload om de topologie wijzigingen van kracht te laten worden.
 
@@ -102,7 +102,7 @@ Clients die gebruikmaken van Windows of een ander ondersteund besturings systeem
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 10.2.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Toegang
 
 * Windows-clients hebben alleen toegang tot VNet1
 
@@ -114,7 +114,7 @@ In dit voor beeld is de punt-naar-site-VPN-gateway verbinding voor VNet1. VNet1 
 
 Clients die gebruikmaken van Windows of een ander ondersteund besturings systeem, hebben toegang tot alle VNets die zijn verbonden met een site-naar-site-VPN-verbinding, maar routes naar verbonden VNets moeten hand matig worden toegevoegd aan de Windows-clients.
 
-![meerdere VNets en S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "meerdere VNETS en S2S BGP")
+![meerdere VNets en S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "meerdere VNets en S2S BGP")
 
 ### <a name="address-space"></a>Adresruimte
 
@@ -130,7 +130,7 @@ Clients die gebruikmaken van Windows of een ander ondersteund besturings systeem
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Toegang
 
 * Windows-clients hebben toegang tot VNet1, VNet2 en VNet3, maar routes naar VNet2 en VNet3 moeten hand matig worden toegevoegd.
 
@@ -142,7 +142,7 @@ In dit voor beeld is de punt-naar-site-VPN-gateway verbinding voor VNet1. VNet1 
 
 Windows-en niet-Windows-clients hebben alleen toegang tot VNet1.
 
-![route ring met een vnet en een filiaal](./media/vpn-gateway-about-point-to-site-routing/5.jpg "Routering met een vnet en een filiaal")
+![route ring met een VNet en een filiaal](./media/vpn-gateway-about-point-to-site-routing/5.jpg "route ring met een VNet en een filiaal")
 
 ### <a name="address-space"></a>Adresruimte
 
@@ -156,7 +156,7 @@ Windows-en niet-Windows-clients hebben alleen toegang tot VNet1.
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Toegang
 
 * Windows-clients hebben alleen toegang tot VNet1
 
@@ -168,7 +168,7 @@ In dit voor beeld is de punt-naar-site-VPN-gateway verbinding voor VNet1. VNet1 
 
 Windows-clients hebben toegang tot het VNet en het filiaal (site1), maar de routes naar site1 moeten hand matig worden toegevoegd aan de client. Niet-Windows-clients hebben toegang tot het VNet en de on-premises filialen.
 
-![Eén vnet en een filiaal (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "één vnet en een filiaal")
+![Eén VNet en een filiaal (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "Eén VNet en een filiaal")
 
 ### <a name="address-space"></a>Adresruimte
 
@@ -182,7 +182,7 @@ Windows-clients hebben toegang tot het VNet en het filiaal (site1), maar de rout
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Toegang
 
 * Windows-clients hebben toegang tot VNet1 en site1, maar routes naar site1 moeten hand matig worden toegevoegd.
 
@@ -195,7 +195,7 @@ In dit voor beeld is de punt-naar-site-VPN-gateway verbinding voor VNet1. VNet1 
 
 Alle clients hebben alleen toegang tot VNet1.
 
-Multi- ![VNET S2S en filialen](./media/vpn-gateway-about-point-to-site-routing/7.jpg "multi-vnet S2S en filialen")
+![Multi-VNet S2S en filialen](./media/vpn-gateway-about-point-to-site-routing/7.jpg "Multi-VNet S2S en filialen")
 
 ### <a name="address-space"></a>Adresruimte
 
@@ -209,11 +209,11 @@ Multi- ![VNET S2S en filialen](./media/vpn-gateway-about-point-to-site-routing/7
 
 ### <a name="routes-added"></a>Routes toegevoegd
 
-* Routes toegevoegde clients: 10.1.0.0/16, 192.168.0.0/24
+* Routes die zijn toegevoegd aan Windows-clients: 10.1.0.0/16, 192.168.0.0/24
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Toegang
 
 * De Windows-clients hebben alleen toegang tot VNet1
 
@@ -225,7 +225,7 @@ In dit voor beeld is de punt-naar-site-VPN-gateway verbinding voor VNet1. VNet1 
 
 Clients die Windows gebruiken, hebben toegang tot VNets en sites die zijn verbonden met een site-naar-site-VPN-verbinding, maar de routes naar VNet2, VNet3 en site1 moeten hand matig worden toegevoegd aan de client. Niet-Windows-clients hebben toegang tot VNets en sites die zijn verbonden met een site-naar-site-VPN-verbinding zonder hand matige tussen komst. De toegang is transitief en clients hebben toegang tot bronnen in alle verbonden VNets en sites (on-premises).
 
-Multi- ![VNET S2S en filialen](./media/vpn-gateway-about-point-to-site-routing/8.jpg "multi-vnet S2S en filialen")
+![Multi-VNet S2S en filialen](./media/vpn-gateway-about-point-to-site-routing/8.jpg "Multi-VNet S2S en filialen")
 
 ### <a name="address-space"></a>Adresruimte
 
@@ -239,11 +239,11 @@ Multi- ![VNET S2S en filialen](./media/vpn-gateway-about-point-to-site-routing/8
 
 ### <a name="routes-added"></a>Routes toegevoegd
 
-* Routes toegevoegde clients: 10.1.0.0/16, 192.168.0.0/24
+* Routes die zijn toegevoegd aan Windows-clients: 10.1.0.0/16, 192.168.0.0/24
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Toegang
 
 * De Windows-clients hebben toegang tot VNet1, VNet2, VNet3 en site1, maar routes naar VNet2, VNet3 en site1 moeten hand matig worden toegevoegd aan de client.
 

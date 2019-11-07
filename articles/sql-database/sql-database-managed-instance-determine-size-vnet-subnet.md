@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database beheerde instantie bepalen VNet/subnet-grootte | Microsoft Docs
+title: Azure SQL Database beheerde instantie bepalen VNet/subnet-grootte
 description: In dit onderwerp wordt beschreven hoe u de grootte berekent van het subnet waarin de Azure SQL Database beheerde exemplaren worden geïmplementeerd.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
-ms.openlocfilehash: 167e243b1fe4ea5ba9403ac3ca1fcea42f02f59a
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: fb0d79a82553349d5dad547a2d78a460301cbd6d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273559"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688117"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>De grootte van het VNet-subnet bepalen voor het beheerde exemplaar van Azure SQL Database
 
@@ -39,7 +39,7 @@ Als u van plan bent meerdere beheerde exemplaren in het subnet te implementeren 
 - Voor elk Algemeen-exemplaar zijn twee adressen nodig
 - Voor elk Bedrijfskritiek-exemplaar zijn vier adressen nodig
 
-**Voor beeld**: U bent van plan drie Algemeen en twee Bedrijfskritiek beheerde instanties te hebben. Dit betekent dat u 5 + 3 * 2 + 2 * 4 = 19 IP-adressen nodig hebt. Als IP-bereiken worden gedefinieerd in de macht van 2, hebt u het IP-bereik van 32 (2 ^ 5) IP-adressen nodig. Daarom moet u het subnet reserveren met subnetmasker/27.
+**Voor beeld**: u bent van plan drie algemeen en twee bedrijfskritiek Managed instances. Dit betekent dat u 5 + 3 * 2 + 2 * 4 = 19 IP-adressen nodig hebt. Als IP-bereiken worden gedefinieerd in de macht van 2, hebt u het IP-bereik van 32 (2 ^ 5) IP-adressen nodig. Daarom moet u het subnet reserveren met subnetmasker/27.
 
 > [!IMPORTANT]
 > De berekening die hierboven wordt weer gegeven, zal verouderd raken met verdere verbeteringen.

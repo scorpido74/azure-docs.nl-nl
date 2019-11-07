@@ -1,6 +1,6 @@
 ---
 title: Webservice gebruiken
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Zodra een machine learning-service is geïmplementeerd vanuit Azure Machine Learning Studio (klassiek), kan de REST-webservice worden gebruikt als een real-time aanvraag-antwoord service of als een batch-uitvoerings service.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: a5f73e9814adeb44c2838a1fd3bd9c9fd34d4de5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b955b274f3e96eab7e6075b0e966117c2871bbf8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493300"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671421"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Een Azure Machine Learning Studio-webservice (klassiek) gebruiken
 
@@ -24,7 +24,7 @@ Nadat u een Azure Machine Learning Studio (klassiek) voorspellend model als een 
 U vindt hier meer informatie over het maken en implementeren van een Machine Learning-webservice met behulp van Machine Learning Studio (klassiek):
 
 * Zie [uw eerste experiment maken](create-experiment.md)voor een zelf studie over het maken van een experiment in machine learning Studio (klassiek).
-* Zie [Deploy a machine learning web service](publish-a-machine-learning-web-service.md)(Engelstalig) voor meer informatie over het implementeren van een webservice.
+* Zie [Deploy a machine learning web service](deploy-a-machine-learning-web-service.md)(Engelstalig) voor meer informatie over het implementeren van een webservice.
 * Ga voor meer informatie over Machine Learning in het algemeen naar het [documentatie centrum van machine learning](https://azure.microsoft.com/documentation/services/machine-learning/).
 
 
@@ -32,12 +32,12 @@ U vindt hier meer informatie over het maken en implementeren van een Machine Lea
 ## <a name="overview"></a>Overzicht
 Met de Azure Machine Learning-webservice communiceert een externe toepassing met een Machine Learning werk stroom score model in realtime. Een aanroep van een Machine Learning-webservice retourneert Voorspellings resultaten naar een externe toepassing. Als u een aanroep van een Machine Learning-webservice wilt maken, geeft u een API-sleutel door die wordt gemaakt wanneer u een voor spelling implementeert. De Machine Learning-webservice is gebaseerd op REST, een populaire architectuur keuze voor webprogrammeer projecten.
 
-TKan Classic-versie van Azure Machine Learning Studio heeft twee soorten services:
+De klassieke versie van Azure Machine Learning Studio heeft twee soorten services:
 
 * Request-Response Service (RR'S): een laag latentie, uiterst schaal bare service die een interface biedt voor de stateless modellen die zijn gemaakt en geïmplementeerd vanuit de Machine Learning Studio (klassiek).
 * Batch Execution Service (BES): een asynchrone service die een batch voor gegevens records verlaagt.
 
-Zie [Deploy a machine learning web service](publish-a-machine-learning-web-service.md)(Engelstalig) voor meer informatie over machine learning Web Services.
+Zie [Deploy a machine learning web service](deploy-a-machine-learning-web-service.md)(Engelstalig) voor meer informatie over machine learning Web Services.
 
 ## <a name="get-an-authorization-key"></a>Een autorisatie sleutel ophalen
 Wanneer u uw experiment implementeert, worden de API-sleutels voor de webservice gegenereerd. U kunt de sleutels van verschillende locaties ophalen.

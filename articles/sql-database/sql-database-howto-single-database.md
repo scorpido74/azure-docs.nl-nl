@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database configureren-single | Microsoft Docs
+title: Azure SQL Database configureren-enkel
 description: Meer informatie over het configureren en beheren van Azure SQL Database-één data base
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 02/08/2019
-ms.openlocfilehash: 2117a811f977230dd9c9eecf6ea09b9b7deda3be
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 45e25641092fae36cd58a59400cea025f74cbc1f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568051"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689898"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Een enkele data base gebruiken in Azure SQL Database
 
@@ -42,13 +42,13 @@ In deze sectie vindt u verschillende hand leidingen, scripts en uitleg die u kun
 - [Schakel e-mail meldingen voor automatisch afstemmen](sql-database-automatic-tuning-email-notifications.md) in om informatie te krijgen over de aanbevelingen voor het afstemmen.
 - [Aanbevelingen voor prestaties Toep assen](sql-database-advisor-portal.md) en uw data base optimaliseren.
 - [Waarschuwingen maken](sql-database-insights-alerts-portal.md) voor het ontvangen van meldingen van Azure SQL database.
-- [Los problemen met de verbinding](sql-database-troubleshoot-common-connection-issues.md) op als u enkele verbindings problemen tussen de toepassingen en de data base ziet. U kunt ook [resource Health gebruiken om verbindings problemen op](sql-database-resource-health.md)te lossen.
+- [Los problemen met de verbinding](sql-database-troubleshoot-common-connection-issues.md) op als u enkele verbindings problemen tussen de toepassingen en de data base ziet. U kunt ook [resource Health gebruiken om verbindings problemen op te lossen](sql-database-resource-health.md).
 - [Bestands ruimte beheren](sql-database-file-space-management.md) om het gebruik van opslag in uw data base te controleren.
 
 ## <a name="query-distributed-data"></a>Een query uitvoeren op gedistribueerde gegevens
 
 - [Query's verticaal gepartitioneerde gegevens](sql-database-elastic-query-getting-started-vertical.md) over meerdere data bases.
-- [Rapport over](sql-database-elastic-query-horizontal-partitioning.md)een uitgeschaalde gegevenslaag.
+- [Rapport over een uitgeschaalde gegevenslaag](sql-database-elastic-query-horizontal-partitioning.md).
 - [Query's uitvoeren voor meerdere tabellen met verschillende schema's](sql-database-elastic-query-vertical-partitioning.md).
 
 ## <a name="elastic-database-jobs"></a>Taken voor Elastic Database

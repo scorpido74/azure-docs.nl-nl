@@ -14,14 +14,14 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: vinigam
-ms.openlocfilehash: ce59b46667f9139157a751d7d7b0205504d71ab0
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 831e75ba2d3f6af62496d437da3d1413dc612594
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695658"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686551"
 ---
-# <a name="traffic-analytics"></a>Verkeersanalyse
+# <a name="traffic-analytics"></a>Traffic Analytics
 
 Traffic Analytics is een Cloud oplossing die inzicht geeft in de activiteit van gebruikers en toepassingen in Cloud netwerken. Traffic Analytics analyseert Network Watcher-stroom logboeken voor netwerk beveiligings groepen (NSG) om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. Met Traffic Analytics kunt u het volgende doen:
 
@@ -45,15 +45,15 @@ Virtuele Azure-netwerken hebben NSG-stroom logboeken, die u informatie geven ove
 
 ## <a name="key-components"></a>Belangrijkste onderdelen
 
-- **Netwerk beveiligings groep (NSG)** : Bevat een lijst met beveiligings regels waarmee netwerk verkeer wordt toegestaan of geweigerd voor resources die zijn verbonden met een Azure-Virtual Network. NSG's kunnen worden gekoppeld aan subnetten, afzonderlijke virtuele machines (klassiek) of afzonderlijke netwerkinterfaces (NIC) die zijn gekoppeld aan VM’s (Resource Manager). Zie [overzicht van netwerk beveiligings groepen](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)voor meer informatie.
+- **Netwerk beveiligings groep (NSG)** : bevat een lijst met beveiligings regels waarmee netwerk verkeer wordt toegestaan of geweigerd voor resources die zijn verbonden met een Azure-Virtual Network. NSG's kunnen worden gekoppeld aan subnetten, afzonderlijke virtuele machines (klassiek) of afzonderlijke netwerkinterfaces (NIC) die zijn gekoppeld aan VM’s (Resource Manager). Zie [overzicht van netwerk beveiligings groepen](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)voor meer informatie.
 - **Stroom logboeken voor netwerk beveiligings groepen (NSG)** : Hiermee kunt u informatie weer geven over binnenkomend en IP-verkeer met behulp van een netwerk beveiligings groep. NSG-stroom logboeken worden geschreven in JSON-indeling en uitgaande en inkomende stromen per regel weer gegeven, de NIC waarop de stroom van toepassing is, vijf tuple informatie over de stroom (bron/doel-IP-adres, bron/doel poort en Protocol), en als het verkeer is toegestaan of geweigerd. Zie [NSG flow logs](network-watcher-nsg-flow-logging-overview.md)(Engelstalig) voor meer informatie over NSG-stroom Logboeken.
-- **Log Analytics**: Een Azure-service waarmee bewakings gegevens worden verzameld en de gegevens worden opgeslagen in een centrale opslag plaats. Deze gegevens kunnen gebeurtenissen, prestatie gegevens of aangepaste gegevens bevatten die via de Azure API worden geleverd. Na verzameling zijn de gegevens beschikbaar voor waarschuwingen, analyse en export. Het bewaken van toepassingen zoals netwerk prestatie meter en verkeers analyse zijn gebouwd op basis van Azure Monitor-Logboeken als basis. Zie [Azure monitor](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)-logboeken voor meer informatie.
-- **Log Analytics-werk ruimte**: Een exemplaar van Azure Monitor logboeken, waarbij de gegevens die betrekking hebben op een Azure-account, worden opgeslagen. Zie [een log Analytics-werk ruimte maken](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)voor meer informatie over log Analytics-werk ruimten.
-- **Network Watcher**: Een regionale service waarmee u voor waarden kunt bewaken en diagnosticeren op het niveau van een netwerk scenario in Azure. U kunt NSG-stroom Logboeken in-en uitschakelen met Network Watcher. Zie [Network Watcher](network-watcher-monitoring-overview.md)voor meer informatie.
+- **Log Analytics**: een Azure-service waarmee bewakings gegevens worden verzameld en de gegevens worden opgeslagen in een centrale opslag plaats. Deze gegevens kunnen gebeurtenissen, prestatie gegevens of aangepaste gegevens bevatten die via de Azure API worden geleverd. Na verzameling zijn de gegevens beschikbaar voor waarschuwingen, analyse en export. Het bewaken van toepassingen zoals netwerk prestatie meter en verkeers analyse zijn gebouwd op basis van Azure Monitor-Logboeken als basis. Zie [Azure monitor-logboeken](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)voor meer informatie.
+- **Log Analytics-werk ruimte**: een exemplaar van Azure monitor logboeken, waarbij de gegevens die betrekking hebben op een Azure-account, worden opgeslagen. Zie [een log Analytics-werk ruimte maken](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)voor meer informatie over log Analytics-werk ruimten.
+- **Network Watcher**: een regionale service waarmee u voor waarden kunt bewaken en diagnosticeren op het niveau van een netwerk scenario in Azure. U kunt NSG-stroom Logboeken in-en uitschakelen met Network Watcher. Zie [Network Watcher](network-watcher-monitoring-overview.md)voor meer informatie.
 
 ## <a name="how-traffic-analytics-works"></a>Hoe Traffic Analytics werkt
 
-Met Traffic Analytics worden de onbewerkte NSG-stroom logboeken onderzocht en worden gereduceerde logboeken vastgelegd door het samen voegen van algemene stromen onder hetzelfde bron-IP-adres, doel-IP-adres, doel poort en protocol. Bijvoorbeeld host 1 (IP-adres: 10.10.10.10) communiceren met host 2 (IP-adres: 10.10.20.10), 100 keer over een periode van 1 uur met behulp van poort (bijvoorbeeld 80) en protocol (bijvoorbeeld http). Het gereduceerde logboek heeft één vermelding, die host 1 & host 2 100 keer heeft gecommuniceerd gedurende een periode van 1 uur met behulp van poort *80* en protocol *http*, in plaats van 100 vermeldingen. Gereduceerde logboeken zijn verbeterd met informatie over geografie, beveiliging en topologie en worden vervolgens opgeslagen in een Log Analytics-werk ruimte. In de volgende afbeelding ziet u de gegevens stroom:
+Met Traffic Analytics worden de onbewerkte NSG-stroom logboeken onderzocht en worden gereduceerde logboeken vastgelegd door het samen voegen van algemene stromen onder hetzelfde bron-IP-adres, doel-IP-adres, doel poort en protocol. Bijvoorbeeld: host 1 (IP-adres: 10.10.10.10) die communiceert met host 2 (IP-adres: 10.10.20.10), 100 keer over een periode van 1 uur met behulp van poort (bijvoorbeeld 80) en protocol (bijvoorbeeld http). Het gereduceerde logboek heeft één vermelding, die host 1 & host 2 100 keer heeft gecommuniceerd gedurende een periode van 1 uur met behulp van poort *80* en protocol *http*, in plaats van 100 vermeldingen. Gereduceerde logboeken zijn verbeterd met informatie over geografie, beveiliging en topologie en worden vervolgens opgeslagen in een Log Analytics-werk ruimte. In de volgende afbeelding ziet u de gegevens stroom:
 
 ![Gegevens stroom voor de verwerking van NSG-stroom logboeken](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
@@ -63,7 +63,7 @@ U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteund
 
 * Canada - midden
 * US - west-centraal
-* East US
+* US - oost
 * US - oost 2
 * US - noord-centraal
 * US - zuid-centraal
@@ -75,7 +75,7 @@ U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteund
 * Europa - noord
 * Brazilië - zuid
 * Verenigd Koninkrijk West
-* Verenigd Koninkrijk Zuid
+* VK - zuid
 * Australië - oost
 * Australië - zuidoost
 * Azië - oost
@@ -86,13 +86,14 @@ U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteund
 * Japan - oost 
 * Japan - west
 * VS (overheid) - Virginia
+* China - oost 2
 
-## <a name="supported-regions-log-analytics-workspaces"></a>Ondersteunde regio's: Log Analytics-werkruimten
+## <a name="supported-regions-log-analytics-workspaces"></a>Ondersteunde regio's: Log Analytics werk ruimten
 
 De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 * Canada - midden
 * US - west-centraal
-* East US
+* US - oost
 * US - oost 2
 * US - zuid-centraal
 * US - west
@@ -101,7 +102,7 @@ De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 * Frankrijk - centraal
 * Europa - noord
 * Europa -west
-* Verenigd Koninkrijk Zuid
+* VK - zuid
 * Australië - oost
 * Australië - zuidoost
 * Azië - oost
@@ -110,6 +111,7 @@ De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 * India - centraal
 * Japan - oost
 * VS (overheid) - Virginia
+* China - oost 2
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -117,7 +119,7 @@ De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 
 Uw account moet lid zijn van een van de volgende ingebouwde Azure [-rollen](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json):
 
-|Implementatiemodel   | Role                   |
+|Implementatiemodel   | Rol                   |
 |---------          |---------               |
 |Resource Manager   | Eigenaar                  |
 |                   | Inzender            |
@@ -126,16 +128,16 @@ Uw account moet lid zijn van een van de volgende ingebouwde Azure [-rollen](../r
 
 Als uw account niet is toegewezen aan een van de ingebouwde rollen, moet dit worden toegewezen aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) waaraan de volgende acties zijn toegewezen op het abonnements niveau:
 
-- "Microsoft.Network/applicationGateways/read"
-- "Microsoft.Network/connections/read"
-- "Microsoft.Network/loadBalancers/read"
-- "Microsoft.Network/localNetworkGateways/read"
-- "Microsoft.Network/networkInterfaces/read"
-- "Microsoft.Network/networkSecurityGroups/read"
-- "Microsoft.Network/publicIPAddresses/read"
-- "Microsoft.Network/routeTables/read"
+- "Micro soft. Network/applicationGateways/lezen"
+- "Micro soft. netwerk/verbindingen/lezen"
+- "Micro soft. Network/loadBalancers/lezen"
+- "Micro soft. Network/localNetworkGateways/lezen"
+- "Micro soft. Network/networkInterfaces/lezen"
+- "Micro soft. Network/networkSecurityGroups/lezen"
+- "Micro soft. Network/publicIPAddresses/lezen"
+- "Micro soft. Network/routeTables/lezen"
 - "Micro soft. Network/virtualNetworkGateways/lezen"
-- "Microsoft.Network/virtualNetworks/read"
+- "Micro soft. Network/virtualNetworks/lezen"
 
 Zie [Veelgestelde vragen over Traffic Analytics](traffic-analytics-faq.md)voor informatie over het controleren van toegangs machtigingen voor gebruikers.
 
@@ -163,7 +165,7 @@ Registreer de Azure Insights-provider als deze nog niet is geregistreerd voor uw
 Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
-Als u nog geen Azure Storage account hebt om NSG-stroom logboeken op te slaan in, moet u een opslag account maken. U kunt een opslag account maken met behulp van de volgende opdracht. Voordat u de opdracht uitvoert, `<replace-with-your-unique-storage-account-name>` vervangt u door een naam die uniek is voor alle Azure-locaties, tussen 3-24 tekens lang, met alleen cijfers en kleine letters. U kunt ook de naam van de resource groep wijzigen, indien nodig.
+Als u nog geen Azure Storage account hebt om NSG-stroom logboeken op te slaan in, moet u een opslag account maken. U kunt een opslag account maken met behulp van de volgende opdracht. Voordat u de opdracht uitvoert, moet u `<replace-with-your-unique-storage-account-name>` vervangen door een naam die uniek is voor alle Azure-locaties, tussen 3-24 tekens lang, met alleen cijfers en kleine letters. U kunt ook de naam van de resource groep wijzigen, indien nodig.
 
 ```azurepowershell-interactive
 New-AzStorageAccount `
@@ -194,7 +196,7 @@ Selecteer de volgende opties, zoals wordt weer gegeven in de afbeelding:
 
     ![Selectie van opslag account, Log Analytics werk ruimte en Traffic Analytics-activering](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-Herhaal de vorige stappen voor andere Nsg's waarvoor u Traffic Analytics wilt inschakelen voor. Gegevens uit stroom logboeken worden verzonden naar de werk ruimte, dus zorg ervoor dat de lokale wetten en voor Schriften in uw land gegevens opslag toestaan in de regio waar de werk ruimte zich bevindt. Als u verschillende verwerkings intervallen voor verschillende Nsg's hebt ingesteld, worden de gegevens op verschillende tijdstippen verzameld. Bijvoorbeeld: U kunt ervoor kiezen om het verwerkings interval van 10 minuten voor kritieke VNETs en 1 uur voor niet-kritieke VNETs in te scha kelen.
+Herhaal de vorige stappen voor andere Nsg's waarvoor u Traffic Analytics wilt inschakelen voor. Gegevens uit stroom logboeken worden verzonden naar de werk ruimte, dus zorg ervoor dat de lokale wetten en voor Schriften in uw land gegevens opslag toestaan in de regio waar de werk ruimte zich bevindt. Als u verschillende verwerkings intervallen voor verschillende Nsg's hebt ingesteld, worden de gegevens op verschillende tijdstippen verzameld. Bijvoorbeeld: u kunt ervoor kiezen om het verwerkings interval van 10 minuten voor kritieke VNETs en 1 uur voor niet-kritieke VNETs in te scha kelen.
 
 U kunt ook Traffic Analytics configureren met de Power shell [-cmdlet Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) in azure PowerShell. Voer `Get-Module -ListAvailable Az` uit om de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
 
@@ -311,7 +313,7 @@ Enkele van de inzichten die u mogelijk wilt krijgen nadat Traffic Analytics voll
     ![Dash board overzicht virtuele netwerk distributie](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - De Virtual Network topologie toont het bovenste lint voor het selecteren van para meters, zoals een virtueel netwerk (tussen virtuele netwerk verbindingen/actief/inactief), externe verbindingen, actieve stromen en schadelijke stromen van het virtuele netwerk.
-- U kunt de Virtual Network topologie filteren op basis van abonnementen, werk ruimten, resource groepen en tijds interval. Aanvullende filters die u helpen bij het begrijpen van de stroom zijn: Stroom type (InterVNet, IntraVNET, enzovoort), stroom richting (inkomend, uitgaand), stroom status (toegestaan, geblokkeerd), VNETs (aangeduid en verbonden), verbindings type (peering of gateway-P2S en S2S), en NSG. Gebruik deze filters om te focussen op VNets die u gedetailleerd wilt bekijken.
+- U kunt de Virtual Network topologie filteren op basis van abonnementen, werk ruimten, resource groepen en tijds interval. Aanvullende filters die u inzicht geven in de stroom zijn: stroom type (InterVNet, IntraVNET, enzovoort), stroom richting (inkomend, uitgaand), stroom status (toegestaan, geblokkeerd), VNETs (aangeduid en verbonden), verbindings type (peering of gateway-P2S en S2S), en NSG. Gebruik deze filters om te focussen op VNets die u gedetailleerd wilt bekijken.
 - De Virtual Network topologie toont de distributie van verkeer naar een virtueel netwerk met betrekking tot stromen (toegestaan/geblokkeerd/inkomend/uitgaand/onschadelijk/kwaad aardig), toepassings protocol en netwerk beveiligings groepen, bijvoorbeeld:
 
     ![Topologie van virtueel netwerk overzicht van verkeer distributie en stroom Details](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)

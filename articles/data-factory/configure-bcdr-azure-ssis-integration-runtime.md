@@ -1,6 +1,6 @@
 ---
-title: Azure-SSIS-Integratieruntime configureren voor failover van de SQL-Database | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u de Azure-SSIS-Integratieruntime configureren met Azure SQL Database geo-replicatie en failover voor de SSISDB-database
+title: Azure-SSIS Integration Runtime voor SQL Database failover configureren
+description: In dit artikel wordt beschreven hoe u de Azure-SSIS Integration Runtime configureert met Azure SQL Database geo-replicatie en failover voor de SSISDB-data base
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -13,80 +13,80 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: f0612a688bb1e0fd79325b9a1f9b43731a210d10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e709a25c6c33a1fc80a110435035b1473d92681
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399244"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681396"
 ---
-# <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>De Azure-SSIS Integration Runtime met Azure SQL Database geo-replicatie en failover configureren
+# <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>De Azure-SSIS Integration Runtime configureren met Azure SQL Database geo-replicatie en failover
 
-In dit artikel wordt beschreven hoe u de Azure-SSIS-Integratieruntime configureren met Azure SQL Database geo-replicatie voor de SSISDB-database. Wanneer er een failover optreedt, kunt u ervoor zorgen dat de Azure-SSIS-IR met de secundaire database werken blijft.
+In dit artikel wordt beschreven hoe u de Azure-SSIS Integration Runtime configureert met Azure SQL Database geo-replicatie voor de SSISDB-data base. Wanneer een failover optreedt, kunt u ervoor zorgen dat de Azure-SSIS IR met de secundaire data base werkt.
 
-Zie voor meer informatie over geo-replicatie en failover voor SQL-Database [overzicht: Actieve geo-replicatie en automatische failover-groepen](../sql-database/sql-database-geo-replication-overview.md).
+Zie [overzicht: actieve geo-replicatie en groepen voor automatische failover](../sql-database/sql-database-geo-replication-overview.md)voor meer informatie over geo-replicatie en failover voor SQL database.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>Scenario 1: Azure-SSIS IR verwijst voor listener-eindpunt voor lezen / schrijven
+## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>Scenario 1-Azure-SSIS IR verwijst naar het listener-eind punt voor lezen/schrijven
 
 ### <a name="conditions"></a>Voorwaarden
 
-In deze sectie is van toepassing wanneer de volgende voorwaarden voldaan wordt:
+Deze sectie is van toepassing wanneer aan de volgende voor waarden wordt voldaan:
 
-- De Azure-SSIS-IR verwijst naar de lezen / schrijven-listener-eindpunt van de failovergroep.
+- De Azure-SSIS IR verwijst naar het Lees-en luister eindpunt van de failovergroep.
 
   EN
 
-- De SQL Database-server is *niet* geconfigureerd met de regel voor virtuele netwerken service-eindpunt.
+- De SQL Database-Server is *niet* geconfigureerd met de eindpunt regel van de virtuele netwerk service.
 
 ### <a name="solution"></a>Oplossing
 
-Wanneer een failover optreedt, is het transparant voor de Azure-SSIS-IR. De Azure-SSIS-IR wordt automatisch verbinding met de nieuwe primaire van de failovergroep.
+Wanneer een failover optreedt, is het transparant voor de Azure-SSIS IR. De Azure-SSIS IR maakt automatisch verbinding met de nieuwe primaire groep van de failovergroep.
 
-## <a name="scenario-2---azure-ssis-ir-is-pointing-to-primary-server-endpoint"></a>Scenario 2: Azure-SSIS IR verwijst naar het eindpunt van de primaire server
+## <a name="scenario-2---azure-ssis-ir-is-pointing-to-primary-server-endpoint"></a>Scenario 2-Azure-SSIS IR wijst het eind punt van de primaire server aan
 
 ### <a name="conditions"></a>Voorwaarden
 
-In deze sectie is van toepassing wanneer een van de volgende voorwaarden voldaan wordt:
+Deze sectie is van toepassing wanneer een van de volgende voor waarden waar is:
 
-- De Azure-SSIS-IR verwijst naar het eindpunt van de primaire server van de failovergroep. Dit eindpunt wordt gewijzigd wanneer een failover optreedt.
-
-  OF
-
-- De Azure SQL Database-server is geconfigureerd met de regel voor virtuele netwerken service-eindpunt.
+- De Azure-SSIS IR verwijst naar het primaire server eindpunt van de failovergroep. Dit eind punt wordt gewijzigd wanneer failover plaatsvindt.
 
   OF
 
-- De database-server is een SQL Database Managed Instance geconfigureerd met een virtueel netwerk.
+- De Azure SQL Database-Server is geconfigureerd met de eindpunt regel van de virtuele netwerk service.
+
+  OF
+
+- De database server is een SQL Database beheerd exemplaar dat is geconfigureerd met een virtueel netwerk.
 
 ### <a name="solution"></a>Oplossing
 
-Wanneer failover optreedt, hebt u het volgende doen:
+Als er een failover optreedt, moet u het volgende doen:
 
-1. Stoppen van de Azure-SSIS-IR.
+1. Stop de Azure-SSIS IR.
 
-2. De configuratie van de IR om te verwijzen naar de nieuwe primaire eindpunt en met een virtueel netwerk in de nieuwe regio.
+2. Configureer de IR zo dat deze verwijst naar het nieuwe primaire eind punt en naar een virtueel netwerk in de nieuwe regio.
 
-3. Opnieuw opstarten van de IR.
+3. Start de IR opnieuw op.
 
-De volgende secties beschrijven deze stappen nader uiteengezet.
+In de volgende secties worden deze stappen uitvoeriger beschreven.
 
 ### <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat u herstel na noodgevallen hebt ingeschakeld voor uw Azure SQL Database-server als de server een storing op hetzelfde moment heeft. Zie voor meer informatie, [overzicht van bedrijfscontinuïteit met Azure SQL Database](../sql-database/sql-database-business-continuity.md).
+- Zorg ervoor dat u herstel na nood geval hebt ingeschakeld voor uw Azure SQL Database Server als de server op hetzelfde moment een onderbreking heeft. Zie [overzicht van bedrijfs continuïteit met Azure SQL database](../sql-database/sql-database-business-continuity.md)voor meer informatie.
 
-- Als u een virtueel netwerk in de huidige regio gebruikt, moet u een ander virtueel netwerk in de nieuwe regio gebruiken om uw Azure-SSIS integratieruntime verbinding te maken. Zie voor meer informatie, [een Azure-SSIS integratieruntime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md).
+- Als u een virtueel netwerk in de huidige regio gebruikt, moet u een ander virtueel netwerk in de nieuwe regio gebruiken om verbinding te maken met uw Azure SSIS Integration runtime. Zie [een Azure-SSIS-integratie-runtime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md)voor meer informatie.
 
-- Als u een aangepaste installatie gebruikt, moet u mogelijk om voor te bereiden van een andere SAS-URI voor de blob-container waarin uw aangepaste setup-script en de bijbehorende bestanden, zodat deze blijven toegankelijk tijdens een storing. Zie voor meer informatie, [configureren van een aangepaste installatie op een Azure-SSIS integratieruntime](how-to-configure-azure-ssis-ir-custom-setup.md).
+- Als u een aangepaste installatie gebruikt, moet u mogelijk een andere SAS-URI voorbereiden voor de BLOB-container waarin uw aangepaste installatie script en de bijbehorende bestanden worden opgeslagen, zodat deze beschikbaar blijven tijdens een storing. Zie [een aangepaste installatie configureren voor een Azure-SSIS Integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md)voor meer informatie.
 
 ### <a name="steps"></a>Stappen
 
-Volg deze stappen voor uw Azure-SSIS IR stopt, de IR overschakelen naar een nieuwe regio en probeer het opnieuw.
+Volg deze stappen om uw Azure-SSIS IR te stoppen, de IR naar een nieuwe regio over te scha kelen en opnieuw te starten.
 
 1. Stop de IR in de oorspronkelijke regio.
 
-2. Roep de volgende opdracht uit in PowerShell om bij te werken van de IR met de nieuwe instellingen.
+2. Roep de volgende opdracht aan in Power shell om de IR bij te werken met de nieuwe instellingen.
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
@@ -97,40 +97,40 @@ Volg deze stappen voor uw Azure-SSIS IR stopt, de IR overschakelen naar een nieu
                     -SetupScriptContainerSasUri "new custom setup SAS URI"
     ```
 
-    Zie voor meer informatie over deze PowerShell-opdracht [maken van de Azure-SSIS integratieruntime in Azure Data Factory](create-azure-ssis-integration-runtime.md)
+    Zie [de Azure-SSIS Integration runtime maken in azure Data Factory](create-azure-ssis-integration-runtime.md) voor meer informatie over deze Power shell-opdracht.
 
-3. De IR opnieuw starten.
+3. Start de IR opnieuw.
 
-## <a name="scenario-3---attaching-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>Scenario 3: een bestaande SSISDB (SSIS-catalogus) koppelen aan een nieuwe Azure-SSIS-IR
+## <a name="scenario-3---attaching-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>Scenario 3: een bestaande SSISDB (SSIS-catalogus) koppelen aan een nieuwe Azure-SSIS IR
 
-Wanneer er zich een noodgeval ADF of Azure-SSIS IR in de huidige regio voordoet, kunt u uw SSISDB blijft werken met een nieuwe Azure-SSIS-IR in een nieuwe regio.
+Wanneer een ADF of Azure-SSIS IR nood geval in de huidige regio optreedt, kunt u ervoor zorgen dat uw SSISDB met een nieuwe Azure-SSIS IR in een nieuwe regio werkt.
 
 ### <a name="prerequisites"></a>Vereisten
 
-- Als u een virtueel netwerk in de huidige regio gebruikt, moet u een ander virtueel netwerk in de nieuwe regio gebruiken om uw Azure-SSIS integratieruntime verbinding te maken. Zie voor meer informatie, [een Azure-SSIS integratieruntime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md).
+- Als u een virtueel netwerk in de huidige regio gebruikt, moet u een ander virtueel netwerk in de nieuwe regio gebruiken om verbinding te maken met uw Azure SSIS Integration runtime. Zie [een Azure-SSIS-integratie-runtime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md)voor meer informatie.
 
-- Als u een aangepaste installatie gebruikt, moet u mogelijk om voor te bereiden van een andere SAS-URI voor de blob-container waarin uw aangepaste setup-script en de bijbehorende bestanden, zodat deze blijven toegankelijk tijdens een storing. Zie voor meer informatie, [configureren van een aangepaste installatie op een Azure-SSIS integratieruntime](how-to-configure-azure-ssis-ir-custom-setup.md).
+- Als u een aangepaste installatie gebruikt, moet u mogelijk een andere SAS-URI voorbereiden voor de BLOB-container waarin uw aangepaste installatie script en de bijbehorende bestanden worden opgeslagen, zodat deze beschikbaar blijven tijdens een storing. Zie [een aangepaste installatie configureren voor een Azure-SSIS Integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md)voor meer informatie.
 
 ### <a name="steps"></a>Stappen
 
-Volg deze stappen voor uw Azure-SSIS IR stopt, de IR overschakelen naar een nieuwe regio en probeer het opnieuw.
+Volg deze stappen om uw Azure-SSIS IR te stoppen, de IR naar een nieuwe regio over te scha kelen en opnieuw te starten.
 
-1. Opgeslagen procedure als u wilt maken die is gekoppeld aan SSISDB uitvoeren **\<new_data_factory_name\>** of  **\<new_integration_runtime_name\>** .
+1. Voer een opgeslagen procedure uit om SSISDB toe te voegen aan **\<new_data_factory_name\>** of **\<new_integration_runtime_name\>** .
    
   ```SQL
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
    ```
 
-2. Maak een nieuwe data factory met de naam **\<new_data_factory_name\>** in de nieuwe regio. Zie voor meer informatie, maken een data factory.
+2. Maak een nieuwe data factory met de naam **\<new_data_factory_name\>** in de nieuwe regio. Zie een data factory maken voor meer informatie.
 
      ```powershell
      Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
                          -Location "new region"`
                          -Name "<new_data_factory_name>"
      ```
-    Zie voor meer informatie over deze PowerShell-opdracht [maken van een Azure data factory met behulp van PowerShell](quickstart-create-data-factory-powershell.md)
+    Zie [een Azure-Data Factory maken met Power shell](quickstart-create-data-factory-powershell.md) voor meer informatie over deze Power shell-opdracht.
 
-3. Maak een nieuwe Azure-SSIS-IR met de naam **\<new_integration_runtime_name\>** in de nieuwe regio met Azure PowerShell.
+3. Maak met behulp van Azure PowerShell een nieuwe Azure-SSIS IR met de naam **\<new_integration_runtime_name\>** in de nieuwe regio.
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
@@ -150,16 +150,16 @@ Volg deze stappen voor uw Azure-SSIS IR stopt, de IR overschakelen naar een nieu
                                            -CatalogPricingTier $SSISDBPricingTier
     ```
 
-    Zie voor meer informatie over deze PowerShell-opdracht [maken van de Azure-SSIS integratieruntime in Azure Data Factory](create-azure-ssis-integration-runtime.md)
+    Zie [de Azure-SSIS Integration runtime maken in azure Data Factory](create-azure-ssis-integration-runtime.md) voor meer informatie over deze Power shell-opdracht.
 
-4. De IR opnieuw starten.
+4. Start de IR opnieuw.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Houd rekening met deze andere configuratieopties voor de Azure-SSIS-IR:
+Houd rekening met de volgende andere configuratie opties voor de Azure-SSIS IR:
 
-- [De Azure-SSIS Integration Runtime voor hoge prestaties configureren](configure-azure-ssis-integration-runtime-performance.md)
+- [De Azure-SSIS Integration Runtime configureren voor hoge prestaties](configure-azure-ssis-integration-runtime-performance.md)
 
 - [Instelling voor Azure-SSIS Integration Runtime aanpassen](how-to-configure-azure-ssis-ir-custom-setup.md)
 
-- [Enterprise-editie voor de Azure-SSIS-Integratieruntime inrichten](how-to-configure-azure-ssis-ir-enterprise-edition.md)
+- [De Enter prise-editie voor de Azure-SSIS Integration Runtime inrichten](how-to-configure-azure-ssis-ir-enterprise-edition.md)

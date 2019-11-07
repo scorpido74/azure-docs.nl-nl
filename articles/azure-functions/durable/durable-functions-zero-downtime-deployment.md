@@ -8,17 +8,21 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5e6e51d2a058f89a04a81800b81f3c316be4eab7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b47604f2c8703ba587e98d68dc30552e5944f562
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301488"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614504"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Geen downtime-implementatie voor Durable Functions
+
 Voor het [betrouw bare uitvoerings model](durable-functions-checkpointing-and-replay.md) van Durable functions moet de indeling deterministisch zijn, wat een extra uitdaging vormt om te overwegen bij het implementeren van updates. Wanneer een implementatie wijzigingen bevat in de hand tekeningen of Orchestrator-logica van de activiteit functie, mislukken in vlucht indelings instanties. Deze situatie is met name een probleem voor exemplaren van langlopende orchestrator, die uren of werk dagen kunnen Voorst Ellen.
 
 Om ervoor te zorgen dat deze fouten zich voordoen, moet u uw implementatie vertragen totdat alle actieve Orchestrator-instanties zijn voltooid, of ervoor zorgen dat alle actieve Orchestrator-instanties de bestaande versies van uw functies gebruiken. Zie voor meer informatie over versie beheer [versie beheer in Durable functions](durable-functions-versioning.md).
+
+> [!NOTE]
+> Dit artikel bevat richt lijnen voor functions-apps die zijn gericht Durable Functions 1. x. Het is nog niet bijgewerkt naar het account voor wijzigingen die zijn aangebracht in Durable Functions 2. x. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen extensies.
 
 In het volgende diagram worden de drie belangrijkste strategieën vergeleken om een time-outwaarde voor Durable Functions van nul te krijgen: 
 
@@ -29,6 +33,7 @@ In het volgende diagram worden de drie belangrijkste strategieën vergeleken om 
 | **[Toepassings routering](#application-routing)** | Een systeem dat geen tijd punten heeft wanneer er geen Orchestrations worden uitgevoerd, zoals degenen met meer dan 24 uur of met vaak overlappende integraties. | Behandelt nieuwe versies van systemen met doorlopende integraties die wijzigingen hebben onderlopen. | Vereist een intelligente toepassings router.<br/>Kan Maxi maal het aantal functie-apps dat door uw abonnement is toegestaan (standaard 100). |
 
 ## <a name="versioning"></a>Versiebeheer
+
 Definieer nieuwe versies van uw functies en verlaat de oude versies in uw functie-app. Zoals u kunt zien in het diagram, wordt de versie van een functie onderdeel van de naam. Omdat eerdere versies van functies behouden blijven, kunnen in-Flight-indelings instanties blijven verwijzen. Ondertussen worden aanvragen voor nieuwe Orchestrator-instanties aangeroepen voor de meest recente versie, die de functie Orchestration client kan verwijzen van een app-instelling.
 
 ![Strategie voor versie beheer](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
@@ -62,7 +67,7 @@ In het onderstaande diagram ziet u een voor beeld van de configuratie van implem
 
 De volgende JSON-fragmenten zijn voor beelden van de connection string instelling in het bestand host. json.
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>Functies 2,0
 
 ```json
 {
@@ -146,7 +151,7 @@ De router beheert de status van de versie van de code van uw app die wordt geïm
 
 ![Toepassings routering (de eerste keer)](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-De router stuurt implementatie-en indelings aanvragen naar de juiste functie-app op basis van de `version` die met de aanvraag is verzonden, waarbij de patch versie wordt genegeerd.
+De router stuurt implementatie-en indelings aanvragen naar de juiste functie-app op basis van het `version` dat met de aanvraag is verzonden, waarbij de patch versie wordt genegeerd.
 
 Wanneer u een nieuwe versie van uw app implementeert *zonder* een belang rijke wijziging, kunt u de patch versie verhogen. De router wordt geïmplementeerd op uw bestaande functie-app en verzendt aanvragen voor de oude en nieuwe versies van de code worden doorgestuurd naar dezelfde functie-app.
 

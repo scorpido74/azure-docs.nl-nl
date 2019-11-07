@@ -1,6 +1,6 @@
 ---
-title: Prestaties afstemmen met caches voor resultaat sets | Microsoft Docs
-description: Overzicht van de functies
+title: Prestaties afstemmen met de cache van resultaten sets
+description: Overzicht van de cache functie voor het instellen van resultaten voor Azure SQL Data Warehouse
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: 6dd3172dd9098db0cb7ec09e812eec65f717340a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 461320b9c3ed48176fb60fe695704c582edcd552
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163185"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692953"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Prestaties afstemmen met de cache van resultaten sets  
 Wanneer het in cache plaatsen van de resultatenset is ingeschakeld, slaat Azure SQL Data Warehouse query resultaten in de gebruikers database automatisch op voor herhaaldelijk gebruik.  Op deze manier kunnen volgende query's worden uitgevoerd om resultaten rechtstreeks uit de persistente cache te halen, zodat herberekening niet nodig is.   Caching van resultaten sets verbetert de query prestaties en vermindert het gebruik van reken resources.  Daarnaast gebruiken query's die in de cache opgeslagen resultaten zijn ingesteld geen gelijktijdigheids sleuven en worden dus niet met bestaande gelijktijdigheids limieten geteld. Voor de beveiliging hebben gebruikers alleen toegang tot de resultaten in de cache als ze dezelfde machtigingen voor gegevens toegang hebben als de gebruikers die de in de cache opgeslagen resultaten maken.  

@@ -1,5 +1,5 @@
 ---
-title: Excel verbinden met één data base in Azure SQL Database | Microsoft Docs
+title: Excel verbinden met één data base in Azure SQL Database
 description: Meer informatie over hoe u micro soft Excel verbindt met één data base in Azure SQL database. Gegevens importeren in Excel voor rapportage en gegevens verkenning.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 ms.date: 02/12/2019
-ms.openlocfilehash: 8711d8f7ebc00b2d0fa51ff9f420293e96766d1c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 603aa52aefc4c4d1200d433f7f73f6070849c8f7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569353"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691033"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Excel verbinden met één data base in Azure SQL database en een rapport maken
 
@@ -33,7 +33,7 @@ U hebt ook een kopie van Excel nodig. Dit artikel gebruikt [Microsoft Excel 2016
 1. Open Excel om het programme te verbinden met SQL Database, en maak een nieuwe werkmap of open een bestaande Excel-werkmap.
 2. Selecteer in de menu balk boven aan de pagina het tabblad **gegevens** , selecteer **gegevens ophalen**, selecteer uit Azure en selecteer vervolgens **uit Azure SQL database**. 
 
-   ![Gegevens bron selecteren: Verbinding maken tussen Excel en SQL database.](./media/sql-database-connect-excel/excel_data_source.png)
+   ![Selecteer gegevensbron: Excel verbinden met SQL Database.](./media/sql-database-connect-excel/excel_data_source.png)
 
    De wizard Gegevensverbinding wordt geopend.
 3. In het dialoogvenster **Verbinding maken met databaseserver** typt u de **servernaam** van de SQL Database die u wilt verbinden in het formulier <*servername*> **. database.windows.net**. Bijvoorbeeld **msftestserver.database.Windows.net**. Voer desgewenst de naam van uw data base in. Selecteer **OK** om het venster referenties te openen. 
@@ -45,7 +45,7 @@ U hebt ook een kopie van Excel nodig. Dit artikel gebruikt [Microsoft Excel 2016
    ![Typ de servernaam en aanmeldingsreferenties in](./media/sql-database-connect-excel/connect-to-server.png)
 
    > [!TIP]
-   > Afhankelijk van uw netwerkomgeving kunt u mogelijk geen verbinding maken of kan de verbinding worden verbroken als de SQL Database-server geen verkeer van het IP-adres van de client toestaat. Ga naar de [Azure-portal](https://portal.azure.com/), klik op SQL-servers, klik op uw server, klik op firewall onder instellingen en voeg uw client-IP-adres toe. Zie [Firewallinstellingen configureren](sql-database-configure-firewall-settings.md) voor meer informatie.
+   > Afhankelijk van uw netwerkomgeving kunt u mogelijk geen verbinding maken of kan de verbinding worden verbroken als de SQL Database-server geen verkeer van het IP-adres van de client toestaat. Ga naar de [Azure Portal](https://portal.azure.com/), klik op SQL-servers, klik op uw server, klik op firewall onder instellingen en voeg uw client-IP-adres toe. Zie [Firewallinstellingen configureren](sql-database-configure-firewall-settings.md) voor meer informatie.
 
 5. Selecteer in de **Navigator**de data base waarmee u wilt werken in de lijst, selecteer de tabellen of weer gaven waarmee u wilt werken (we hebben gekozen voor **vGetAllCategories**). Selecteer vervolgens **laden** om de gegevens uit uw Data Base naar uw Excel-werk blad te verplaatsen.
 
@@ -67,7 +67,7 @@ Nu u de verbinding tot stand hebt gebracht, hebt u verschillende opties voor het
 
 > [!TIP]
 > Als u andere Excel-werkmappen en-werk bladen wilt verbinden met de data base, selecteert u het tabblad **gegevens** en selecteert u **recente bronnen** om het dialoog venster **recente bronnen** te openen. Kies vervolgens de verbinding die u hebt gemaakt in de lijst en klik vervolgens op **openen**.
-> ![Het dialoog venster recente bronnen](media/sql-database-connect-excel/recent-connections.png)
+> het dialoog venster ![recente bronnen](media/sql-database-connect-excel/recent-connections.png)
 
 ## <a name="create-a-permanent-connection-using-odc-file"></a>Een permanente verbinding maken met het. ODC-bestand
 

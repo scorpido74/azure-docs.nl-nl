@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Health gebruiken voor het bewaken van de gezondheid van SQL Database | Microsoft Docs
-description: Azure Resource Health gebruiken voor het bewaken van de status van de SQL-Database, kunt u vaststellen en ondersteuning krijgen wanneer een Azure-probleem gevolgen heeft voor uw SQL-resources.
+title: Azure Resource Health gebruiken om SQL Database status te controleren
+description: Gebruik Azure Resource Health om SQL Database status te bewaken, helpt u bij het vaststellen en verkrijgen van ondersteuning wanneer een Azure-probleem van invloed is op uw SQL-resources.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -11,71 +11,71 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 02/26/2019
-ms.openlocfilehash: 1c2720d61c7b4ea918a3d0c1ff7f41984ea42c69
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 10ce2da8ae8bcd8a12f0972d437a84a37a8390b9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566914"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687502"
 ---
-# <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Resource Health oplossen met connectiviteit voor Azure SQL Database gebruiken
+# <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Resource Health gebruiken om verbinding met de Azure SQL Database op te lossen
 
 ## <a name="overview"></a>Overzicht
 
-[Resource Health](../service-health/resource-health-overview.md#get-started) voor SQL Database u bij het diagnosticeren en ondersteuning krijgen helpt wanneer een Azure-probleem gevolgen heeft voor uw SQL-resources. Het biedt u informatie over de huidige en eerdere status van uw resources en helpt u problemen verhelpen. Resource Health biedt technische ondersteuning als u hulp nodig heeft bij problemen met Azure-services.
+[Resource Health](../service-health/resource-health-overview.md#get-started) voor SQL database helpt u bij het vaststellen en verkrijgen van ondersteuning wanneer een Azure-probleem van invloed is op uw SQL-resources. Het biedt u informatie over de huidige en eerdere status van uw resources en helpt u problemen verhelpen. Resource Health biedt technische ondersteuning als u hulp nodig heeft bij problemen met Azure-services.
 
 ![Overzicht](./media/sql-database-resource-health/sql-resource-health-overview.jpg)
 
-## <a name="health-checks"></a>Statuscontroles
+## <a name="health-checks"></a>Status controles
 
-Resource Health bepaalt de status van uw SQL-resource door te controleren geslaagde en mislukte aanmeldingen aan de resource. Op dit moment controleert resourcestatus voor uw SQL-database alleen mislukte aanmeldpogingen bij vanwege een systeemfout is en niet gebruikersfout. De status van de resourcestatus wordt elke 1-2 minuten bijgewerkt.
+Resource Health bepaalt de status van uw SQL-resource door het slagen en mislukken van aanmeldingen bij de resource te controleren. Momenteel onderzoekt Resource Health voor uw SQL DB-resource alleen de aanmeldings fouten vanwege een systeem fout en geen gebruikers fout. De Resource Health status wordt elke 1-2 minuten bijgewerkt.
 
 ## <a name="health-states"></a>Statussen
 
 ### <a name="available"></a>Beschikbaar
 
-De status van **beschikbaar** betekent dat aanmeldingen storingen als gevolg van fouten in het bestandssysteem voor uw SQL-resource niet de resourcestatus heeft gedetecteerd.
+De status **beschikbaar** betekent dat resource Health geen mislukte aanmeldingen heeft gedetecteerd vanwege systeem fouten in uw SQL-resource.
 
 ![Beschikbaar](./media/sql-database-resource-health/sql-resource-health-available.jpg)
 
-### <a name="degraded"></a>Verminderd
+### <a name="degraded"></a>Verminderd beschikbaar
 
-De status **Gedegradeerd** betekent dat Resource Health een meerderheid aan geslaagde aanmeldingen, maar ook een aantal mislukte aanmeldingen, heeft gedetecteerd. Dit zijn de meest waarschijnlijke tijdelijke aanmeldingsfouten. Als u wilt de impact van problemen met verbindingen is veroorzaakt door tijdelijke aanmeldingsfouten voorkomen, implementeert u [logica voor opnieuw proberen](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) in uw code.
+De status **Gedegradeerd** betekent dat Resource Health een meerderheid aan geslaagde aanmeldingen, maar ook een aantal mislukte aanmeldingen, heeft gedetecteerd. Dit zijn de meest waarschijnlijke tijdelijke aanmeldings fouten. Als u de gevolgen van verbindings problemen die worden veroorzaakt door tijdelijke aanmeldings fouten wilt verminderen, implementeert u de [logica voor opnieuw proberen](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) in uw code.
 
-![Verminderd](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
+![Verminderd beschikbaar](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
 
 ### <a name="unavailable"></a>Niet beschikbaar
 
-De status van **niet beschikbaar** betekent dat de Resource Health consistente aanmeldingen bij de SQL-resource heeft gedetecteerd. Als uw resource in deze status voor een lange periode blijft, neem contact op met ondersteuning.
+De status **niet beschikbaar** betekent dat resource Health consistente aanmeldings fouten heeft gedetecteerd in uw SQL-resource. Als uw resource gedurende lange tijd in deze status blijft, neemt u contact op met de ondersteuning.
 
 ![Niet beschikbaar](./media/sql-database-resource-health/sql-resource-health-unavailable.jpg)
 
 ### <a name="unknown"></a>Onbekend
 
-De status van **onbekende** geeft aan dat Resource Health informatie over deze bron voor meer dan 10 minuten nog niet ontvangen. Deze status is niet een definitieve indicatie van de status van de resource, is maar het een belangrijk gegevenspunt in het proces voor het oplossen van problemen. Als de resource wordt uitgevoerd zoals verwacht, wordt de status van de resource op beschikbaar wijzigen na een paar minuten. Als u problemen met de resource ondervindt, kan de status onbekend voorstellen dat een gebeurtenis in het platform is die betrekking hebben op de resource.
+De status **onbekend** geeft aan dat resource Health meer dan tien minuten geen informatie over deze resource heeft ontvangen. Hoewel deze status geen definitieve indicatie is van de status van de resource, is het een belang rijk gegevens punt in het probleemoplossings proces. Als de resource op de verwachte manier wordt uitgevoerd, wordt de status van de resource na een paar minuten gewijzigd in beschikbaar. Als u problemen ondervindt met de resource, kan de onbekende status Voorst Ellen dat een gebeurtenis in het platform van invloed is op de resource.
 
 ![Onbekend](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
 
 ## <a name="historical-information"></a>Historische gegevens
 
-U kunt toegang tot maximaal 14 dagen van de geschiedenis van in de sectie van de geschiedenis van status van Resource Health. De sectie bevat ook de reden downtime (indien beschikbaar) voor de downtimes gerapporteerd door Resource Health. Azure laat momenteel de downtime voor uw SQL-database met een granulariteit van twee minuten. De werkelijke downtime is waarschijnlijk minder dan een minuut – gemiddelde 8s versie is.
+U hebt toegang tot de status geschiedenis van Maxi maal 14 dagen in het gedeelte status geschiedenis van Resource Health. De sectie bevat ook de downtime-reden (indien beschikbaar) voor de downtime die door Resource Health worden gerapporteerd. Momenteel wordt de downtime voor de SQL database-resource in Azure weergegeven met een granulariteit van twee minuten. De werkelijke downtime is waarschijnlijk minder dan een minuut. Het gemiddelde is 8 sec.
 
-### <a name="downtime-reasons"></a>Oorzaken downtime
+### <a name="downtime-reasons"></a>Oorzaken van uitval tijd
 
-Wanneer uw SQL-Database downtime optreedt, uitgevoerd om een reden vast te stellen. Wanneer deze beschikbaar is, wordt de reden downtime gerapporteerd in de sectie Geschiedenis van Resource Health. Redenen voor downtime worden doorgaans 30 minuten na een gebeurtenis gepubliceerd.
+Wanneer uw SQL Database downtime ondervindt, wordt de analyse uitgevoerd om een reden te bepalen. Wanneer beschikbaar, wordt de downtime-reden gerapporteerd in het gedeelte status geschiedenis van Resource Health. Redenen voor downtime worden doorgaans 30 minuten na een gebeurtenis gepubliceerd.
 
 #### <a name="planned-maintenance"></a>Gepland onderhoud
 
-De Azure-infrastructuur wordt periodiek uitgevoerd voor gepland onderhoud: upgraden van hardware of software-onderdelen in het datacenter. Terwijl de database onderhoud ondergaat, kan de SQL beëindigen van sommige bestaande verbindingen en de nieuwe weigeren. De mislukte aanmeldpogingen bij opgetreden tijdens het geplande onderhoud zijn gewoonlijk tijdelijk en [logica voor opnieuw proberen](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) helpt de impact te verminderen. Als u aanmeldingsfouten zich blijft voordoen, neem contact op met ondersteuning.
+De Azure-infra structuur voert periodiek gepland onderhoud uit op hardware-of software onderdelen in het Data Center. Terwijl de data base onderhoud ondergaat, kan SQL sommige bestaande verbindingen beëindigen en nieuwe weigeren. De aanmeldings fouten die zijn opgetreden tijdens gepland onderhoud zijn doorgaans tijdelijk en de [logica voor opnieuw proberen](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) vermindert de impact. Neem contact op met de ondersteuning als u aanmeldings fouten blijft ervaren.
 
 #### <a name="reconfiguration"></a>Herconfiguratie
 
-Wanneer worden beschouwd als tijdelijke omstandigheden, en van tijd tot tijd worden verwacht. Deze gebeurtenissen kunnen worden geactiveerd door load balancing- of software/hardwarestoringen. Productie met elke clienttoepassing die verbinding met een database in de cloud maakt moet een robuuste verbinding implementeren [logica voor opnieuw proberen](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors), zoals deze zou zodat deze situaties worden verminderd en over het algemeen de fouten transparant voor de eindgebruiker moet.
+Herconfiguraties worden beschouwd als tijdelijke omstandigheden en worden verwacht van tijd tot tijd. Deze gebeurtenissen kunnen worden geactiveerd door taak verdeling of software/hardwarestoringen. Bij elke client productie toepassing die verbinding maakt met een Cloud database, moet een robuuste logica voor verbindings [poging](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)worden geïmplementeerd, omdat deze de situatie zou kunnen verhelpen en de fouten doorgaans transparant moet maken voor de eind gebruiker.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Pogingslogica voor tijdelijke problemen](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)
+- Meer informatie over [logica voor opnieuw proberen voor tijdelijke fouten](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)
 - [SQL-verbindingsfouten opsporen, diagnose vaststellen en problemen oplossen](./sql-database-connectivity-issues.md)
-- Meer informatie over [Resource Health waarschuwingen configureren](../service-health/resource-health-alert-arm-template-guide.md)
-- Bekijk een overzicht van [Resource Health](../service-health/resource-health-overview.md)
-- [Resource Health Veelgestelde vragen](../service-health/resource-health-faq.md)
+- Meer informatie over het [configureren van resource Health-waarschuwingen](../service-health/resource-health-alert-arm-template-guide.md)
+- Een overzicht van [resource Health](../service-health/resource-health-overview.md) weer geven
+- [Veelgestelde vragen over Resource Health](../service-health/resource-health-faq.md)

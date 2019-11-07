@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 40718cdb12cbc46bf0587dfdc657ee06c090061b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/04/2019
+ms.openlocfilehash: c8891fc96e3e511e4127b4e114a45b5a865cf8eb
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598245"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603032"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Azure Database for MySQL prestaties bewaken met query Store
 
 **Van toepassing op:** Azure Database for MySQL 5,7
-
-> [!IMPORTANT]
-> Query Store is beschikbaar als preview-versie.
 
 De functie query Store in Azure Database for MySQL biedt een manier om query prestaties na verloop van tijd bij te houden. Query Store vereenvoudigt het oplossen van prestaties, omdat u snel de langste en meest tijdrovende query's kunt vinden. In de query Store wordt automatisch een geschiedenis van query's en runtime-statistieken vastgelegd en worden deze voor uw beoordeling bewaard. De gegevens worden op tijd Vensters gescheiden, zodat u de database gebruiks patronen kunt zien. Gegevens voor alle gebruikers, data bases en query's worden opgeslagen in de **MySQL** -schema database in het Azure database for MySQL-exemplaar.
 
@@ -107,7 +104,7 @@ De volgende opties zijn specifiek van toepassing op wacht statistieken.
 > [!NOTE]
 > Momenteel vervangt **query_store_capture_mode** deze configuratie, wat betekent dat zowel **query_store_capture_mode** als **query_store_wait_sampling_capture_mode** moeten worden ingeschakeld om ervoor te kunnen wachten op wacht statistieken. Als **query_store_capture_mode** is uitgeschakeld, worden de wacht tijden van de statistieken uitgeschakeld, omdat wacht tijden worden gebruikt voor de performance_schema ingeschakeld en de query_text vastgelegd door query Store.
 
-Gebruik de [Azure Portal](howto-server-parameters.md)  or [Azure cli](howto-configure-server-parameters-using-cli.md)  to een andere waarde voor een para meter op te halen of in te stellen.
+Gebruik de [Azure Portal](howto-server-parameters.md) of [Azure cli](howto-configure-server-parameters-using-cli.md) om een andere waarde voor een para meter op te halen of in te stellen.
 
 ## <a name="views-and-functions"></a>Weer gaven en functies
 
@@ -164,7 +161,7 @@ Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretour
 | `count_star` | bigint (20) | NO| Aantal wacht gebeurtenissen dat wordt voor bereid tijdens het interval voor de query |
 | `sum_timer_wait_ms` | double | NO| Totale wacht tijd (in milliseconden) van deze query tijdens het interval |
 
-### <a name="functions"></a>Functies
+### <a name="functions"></a>Functions
 
 | **Naam**| **Beschrijving** |
 |---|---|
@@ -174,7 +171,7 @@ Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretour
 
 ## <a name="limitations-and-known-issues"></a>Beperkingen en bekende problemen
 
-- Als op een MySQL-server de para meter `default_transaction_read_only` op, kan de query Store geen gegevens vastleggen.
+- Als op een MySQL-server de para meter `default_transaction_read_only` is ingeschakeld, kan de query Store geen gegevens vastleggen.
 - De functionaliteit voor het opslaan van query's kan worden onderbroken als er lange Unicode-query's worden aangetroffen (\> = 6000 bytes).
 - De Bewaar periode voor wacht statistieken is 24 uur.
 - Wacht statistieken gebruiken voor beeld om een fractie van gebeurtenissen vast te leggen. De frequentie kan worden gewijzigd met behulp van de para meter `query_store_wait_sampling_frequency`.

@@ -1,5 +1,5 @@
 ---
-title: Oplossingen voor nood herstel ontwerpen-Azure SQL Database | Microsoft Docs
+title: Oplossingen voor nood herstel ontwerpen-Azure SQL Database
 description: Meer informatie over het ontwerpen van uw Cloud oplossing voor herstel na nood gevallen door het juiste failover-patroon te kiezen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: ccdd2443254da065a15911f567577672492ddb4f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 535397dcf32a617038ab4bef4ec7aa227f4563b1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568880"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690646"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategieën voor herstel na nood gevallen voor toepassingen die gebruikmaken van SQL Database elastische Pools
 

@@ -1,5 +1,5 @@
 ---
-title: Query Performance Insight voor Azure SQL Database | Microsoft Docs
+title: Query Performance Insight voor Azure SQL Database
 description: De controle van de query prestaties identificeert de meeste CPU-verbruiks query's voor een Azure-SQL database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/03/2019
-ms.openlocfilehash: 659022f625604fe31c2ce47978d1132b20b7ffc8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eb6827669829dc7aeeb6758a07218a29955b3682
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567019"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687593"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight voor Azure SQL Database
 
@@ -27,7 +27,7 @@ Het beheren en afstemmen van de prestaties van relationele data bases maakt kenn
 * De mogelijkheid om in te zoomen op de details van een query om de query tekst en de geschiedenis van het resource gebruik weer te geven.
 * Aantekeningen die prestatie aanbevelingen van [SQL database Advisor](sql-database-advisor.md)weer geven.
 
-![Query Performance Insight](./media/sql-database-query-performance/opening-title.png)
+![Inzicht in queryprestaties](./media/sql-database-query-performance/opening-title.png)
 
 > [!TIP]
 > Voor eenvoudige prestatie bewaking met Azure SQL Database raden wij u aan Query Performance Insight. Noteer de product beperkingen die in dit artikel worden gepubliceerd. Voor geavanceerde controle van de database prestaties op schaal raden wij u aan [Azure SQL-analyse](../azure-monitor/insights/azure-sql.md). Het heeft ingebouwde intelligentie voor het oplossen van problemen met automatische prestaties. Voor het automatisch afstemmen van een aantal van de meest voorkomende prestatie problemen met de data base, is het raadzaam om automatisch af te [stemmen](sql-database-automatic-tuning.md).
@@ -52,13 +52,13 @@ U hebt de volgende machtigingen voor [toegangs beheer op basis van rollen](../ro
 Query Performance Insight is gemakkelijk te gebruiken:
 
 1. Open de [Azure Portal](https://portal.azure.com/) en zoek een Data Base die u wilt bekijken.
-2. Open in het menu aan de linkerkant de optie **intelligent prestaties** > **query Performance Insight**.
+2. Open in het menu aan de linkerkant de optie **intelligente prestaties** > **query Performance Insight**.
   
    ![Query Performance Insight in het menu](./media/sql-database-query-performance/tile.png)
 
 3. Bekijk op het eerste tabblad de lijst met belangrijkste query's in de resource.
 4. Selecteer een afzonderlijke query om de details ervan weer te geven.
-5. Open **intelligente prestatie** > **aanbevelingen** en controleer of er aanbevelingen voor prestaties beschikbaar zijn. Zie [SQL database Advisor](sql-database-advisor.md)voor meer informatie over ingebouwde prestatie aanbevelingen.
+5. Open **intelligente prestaties** > **prestatie aanbevelingen** en controleer of er aanbevelingen voor de prestaties beschikbaar zijn. Zie [SQL database Advisor](sql-database-advisor.md)voor meer informatie over ingebouwde prestatie aanbevelingen.
 6. Gebruik schuif regelaars of Zoom pictogrammen om het waargenomen interval te wijzigen.
 
    ![Prestatie dashboard](./media/sql-database-query-performance/performance.png)
@@ -83,7 +83,7 @@ Query Performance Insight worden standaard de vijf meest voorkomende query's van
    >
    > Voor een nauw keurigere vergelijking (Maxi maal één minuut) kunt u een aangepast DTU-gebruiks diagram maken:
    >
-   > 1. Selecteer **Azure SQL database** > **bewaking**in het Azure Portal.
+   > 1. Selecteer **Azure SQL Database** > **bewaking**in het Azure Portal.
    > 2. Selecteer **Metrische gegevens**.
    > 3. Selecteer **+ grafiek toevoegen**.
    > 4. Selecteer het DTU-percentage in de grafiek.
@@ -141,7 +141,7 @@ Query details weer geven:
    * In de tweede grafiek wordt de totale duur van de geselecteerde query weer gegeven.
    * Het onderste diagram toont het totale aantal uitvoeringen door de geselecteerde query.
 
-   ![Querydetails](./media/sql-database-query-performance/query-details.png)
+   ![Query Details](./media/sql-database-query-performance/query-details.png)
 
 3. U kunt ook schuif regelaars gebruiken, Zoom knoppen gebruiken of **instellingen** selecteren om aan te passen hoe query gegevens worden weer gegeven of om een ander tijds bereik te kiezen.
 
@@ -166,7 +166,7 @@ Langlopende query's identificeren:
    * **Max** . Hiermee zoekt u query's waarin de uitvoerings tijd het maximum is voor het hele observatie interval.
    * **Gem** vindt de gemiddelde uitvoerings tijd van alle uitvoeringen van query's en toont u de bovenste voor deze gemiddelden.
 
-   ![Queryduur](./media/sql-database-query-performance/top-duration.png)
+   ![Query duur](./media/sql-database-query-performance/top-duration.png)
 
 5. Selecteer de knop **ga >** om de aangepaste weer gave te bekijken.
 
@@ -175,7 +175,7 @@ Langlopende query's identificeren:
    >
    > Als u meer informatie wilt over het gebruik van data base-DTU met meer details (Maxi maal één minuut), kunt u een aangepaste grafiek maken in de Azure Portal:
    >
-   > 1. Selecteer **Azure SQL database** > **bewaking**.
+   > 1. Selecteer **Azure SQL Database** > **bewaking**.
    > 2. Selecteer **Metrische gegevens**.
    > 3. Selecteer **+ grafiek toevoegen**.
    > 4. Selecteer het DTU-percentage in de grafiek.
@@ -236,14 +236,14 @@ Het tweede geval treedt op wanneer query Store niet is ingeschakeld, of para met
 
 Er zijn twee typen Bewaar beleid:
 
-* **Grootte op basis van**: Als dit beleid is ingesteld op **automatisch**, worden de gegevens automatisch opgeschoond wanneer de maximale grootte wordt bereikt.
-* **Op basis van tijd**: Dit beleid is standaard ingesteld op 30 dagen. Als er geen ruimte meer is op de query opslag, worden de query gegevens ouder dan 30 dagen verwijderd.
+* **Op basis van grootte**: als dit beleid is ingesteld op **automatisch**, worden de gegevens automatisch opgeschoond wanneer de maximale grootte wordt bereikt.
+* **Op basis van tijd**: standaard is dit beleid ingesteld op 30 dagen. Als er geen ruimte meer is op de query opslag, worden de query gegevens ouder dan 30 dagen verwijderd.
 
 U kunt het vastleg beleid instellen op:
 
-* **Alle**: In query Store worden alle query's vastgelegd.
-* **Automatisch**: In het query archief worden niet-frequente query's en query's met een belang rijke compilatie-en uitvoerings duur genegeerd. De drempel waarden voor het aantal uitvoeringen, de compilatie duur en de runtime duur worden intern bepaald. Dit is de standaard optie.
-* **Geen**: De query Store stopt met het vastleggen van nieuwe query's, maar er worden nog steeds runtime statistieken voor al vastgelegde query's verzameld.
+* **Alle**: in query Store worden alle query's vastgelegd.
+* **Automatisch**: in query Store worden niet-frequente query's en query's met een onbeduidende compilatie-en uitvoerings duur genegeerd. De drempel waarden voor het aantal uitvoeringen, de compilatie duur en de runtime duur worden intern bepaald. Dit is de standaard optie.
+* **Geen**: de query Store stopt met het vastleggen van nieuwe query's, maar er worden nog steeds runtime statistieken voor al vastgelegde query's verzameld.
 
 U kunt het beste alle beleids regels instellen op **automatisch** en het opschonings beleid tot 30 dagen door de volgende opdrachten uit [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) of de Azure Portal uit te voeren. (Vervang `YourDB` door de naam van de data base.)
 

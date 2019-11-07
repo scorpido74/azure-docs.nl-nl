@@ -1,5 +1,5 @@
 ---
-title: Restore-in-time herstel van SQL Database-exemplaar Microsoft Docs
+title: Beheer van beheerde instance-in-time SQL Database
 description: Een SQL database in een beheerd exemplaar herstellen naar een eerder tijdstip.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 61249d8ac21c3bb698deb92e5f46a8998205ced9
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 44f99b6a5201e91e37ace0f5aa4c5c2eb8e3b1db
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529677"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687981"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Een SQL database in een beheerd exemplaar herstellen naar een eerder tijdstip
 
@@ -48,7 +48,7 @@ De volgende tabel toont scenario's voor herstel naar een bepaald tijdstip voor b
 
 |           |Bestaande Data Base naar hetzelfde beheerde exemplaar herstellen| Een bestaande data base herstellen naar een ander beheerd exemplaar|Verwijderde data base naar hetzelfde beheerde exemplaar herstellen|Verwijderde data base herstellen naar een ander beheerd exemplaar|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure-portal**| Ja|Nee |Nee|Nee|
+|**Azure Portal**| Ja|Nee |Nee|Nee|
 |**Azure CLI**|Ja |Ja |Nee|Nee|
 |**PowerShell**| Ja|Ja |Ja|Ja|
 
@@ -58,7 +58,7 @@ Een bestaande data base herstellen naar hetzelfde exemplaar met behulp van de Az
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
 2. Ga naar uw beheerde exemplaar en selecteer de data base die u wilt herstellen.
 3. Selecteer **herstellen** op de pagina Data Base:
 

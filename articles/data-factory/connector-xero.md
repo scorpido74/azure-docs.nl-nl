@@ -1,5 +1,5 @@
 ---
-title: Gegevens kopiëren van Xero met behulp van Azure Data Factory | Microsoft Docs
+title: Gegevens kopiëren van Xero met behulp van Azure Data Factory
 description: Meer informatie over het kopiëren van gegevens uit Xero naar ondersteunde Sink-gegevens archieven met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 59b9ecb7af53468dc18cf47d2e0510a48d07f925
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d52e536170c649cbc84b6c6dce92afb76ffe3125
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930961"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680008"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Gegevens kopiëren van Xero met behulp van Azure Data Factory
 
@@ -49,7 +49,7 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 De volgende eigenschappen worden ondersteund voor Xero gekoppelde service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **Xero** | Ja |
 | hostsite | Het eind punt van de Xero-server (`api.xero.com`).  | Ja |
@@ -95,7 +95,7 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 
 Als u gegevens van Xero wilt kopiëren, stelt u de eigenschap type van de gegevensset in op **XeroObject**. De volgende eigenschappen worden ondersteund:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **XeroObject** | Ja |
 | tableName | De naam van de tabel. | Nee (als "query" in activiteit bron is opgegeven) |
@@ -125,7 +125,7 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 Als u gegevens wilt kopiëren uit Xero, stelt u het bron type in de Kopieer activiteit in op **XeroSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **XeroSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Contacts"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |

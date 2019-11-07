@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een Azure SQL Database elastische pool toevoegen aan een failovergroep | Microsoft Docs'
+title: 'Zelf studie: een Azure SQL Database elastische pool toevoegen aan een failovergroep '
 description: Voeg een Azure SQL Database elastische pool toe aan een failovergroep met behulp van de Azure Portal, Power shell of Azure CLI.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 838bdd2aeba18ebeaa964cb329939931419c588c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 980740c4417d1085d7c367b172005b10ce828e0e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933403"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690500"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Zelf studie: een Azure SQL Database elastische pool toevoegen aan een failovergroep
 
@@ -386,7 +386,7 @@ In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power sh
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resource groep | 
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 ## <a name="full-script"></a>Volledige script
 
@@ -394,11 +394,11 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-elastic-pool-to-failover-group-az-ps.ps1 "Add elastic pool to a failover group")]
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewall regel voor een logische server. | 
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een nieuwe Azure SQL Database afzonderlijke data base. | 

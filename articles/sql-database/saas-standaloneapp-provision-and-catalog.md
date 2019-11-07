@@ -1,5 +1,5 @@
 ---
-title: Zelf studie voor multi tenant SaaS-Azure SQL Database | Microsoft Docs
+title: Multi tenant SaaS-zelf studie-Azure SQL Database
 description: Nieuwe tenants inrichten en catalogiseren met behulp van het patroon van de zelfstandige toepassing
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/24/2018
-ms.openlocfilehash: f9087ff33bccb54497ec8d781a47469553683d65
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: de1007aac3988f2ea78b9d1b7b1de19b862f196a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570275"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691953"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Nieuwe tenants inrichten en catalogiseren met behulp van de toepassing per Tenant SaaS-patroon
 
@@ -81,10 +81,10 @@ In deze taak leert u hoe u de catalogus inricht die wordt gebruikt voor het regi
 * **Richt de catalogus database** in met behulp van een Azure resource management-sjabloon. De data base wordt geïnitialiseerd door het importeren van een Bacpac-bestand.  
 * **Registreer de voor beelden van Tenant-apps** die u eerder hebt geïmplementeerd.  Elke Tenant wordt geregistreerd met behulp van een sleutel die is gemaakt op basis van een hash van de Tenant naam.  De naam van de Tenant wordt ook opgeslagen in een uitbreidings tabel in de catalogus.
 
-1. Open in Power shell ISE *. ..\Learning Modules\UserConfig.psm* en werk de **\<gebruikers\>** waarde bij naar de waarde die u hebt gebruikt bij het implementeren van de drie voorbeeld toepassingen.  **Sla het bestand**op.  
+1. Open in Power shell ISE *. ..\Learning Modules\UserConfig.psm* en werk de waarde van de **\<gebruiker\>** bij naar de waarde die u hebt gebruikt bij het implementeren van de drie voorbeeld toepassingen.  **Sla het bestand**op.  
 1. Open *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* in Power shell ISE en stel **$scenario = 1**in. Implementeer de Tenant catalogus en registreer de vooraf gedefinieerde tenants.
 
-1. Voeg een onderbrekings punt toe door de cursor ergens op de regel te `& $PSScriptRoot\New-Catalog.ps1`plaatsen met de tekst en druk vervolgens op **F9**.
+1. Voeg een onderbrekings punt toe door de cursor ergens op de regel te plaatsen met de tekst, `& $PSScriptRoot\New-Catalog.ps1`en druk vervolgens op **F9**.
 
     ![een onderbrekings punt instellen voor tracering](media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
@@ -97,14 +97,14 @@ Zodra het script is voltooid, bestaat de catalogus en worden alle voor beelden v
 
 Bekijk nu de resources die u hebt gemaakt.
 
-1. Open de [Azure Portal](https://portal.azure.com/) en blader door de resource groepen.  Open de **Wingtip-sa-Catalog-\<User\>**  Resource Group en noteer de catalogus server en de data base.
+1. Open de [Azure Portal](https://portal.azure.com/) en blader door de resource groepen.  Open de resource groep **Wingtip-sa-Catalog-\<gebruiker\>** en noteer de catalogus server en de data base.
 1. Open de data base in de portal en selecteer *Data Explorer* in het menu aan de linkerkant.  Klik op de opdracht login en voer het wacht woord in = **P\@ssword1**.
 
 
 1. Verken het schema van de *tenantcatalog* -data base.  
-   * De objecten in het `__ShardManagement` schema worden allemaal door de Elastic database-client bibliotheek verschaft.
-   * De `Tenants` tabel en `TenantsExtended` de weer gave zijn uitbrei dingen die in het voor beeld worden toegevoegd, en laten zien hoe u de catalogus kunt uitbreiden voor extra waarde.
-1. Voer de query `SELECT * FROM dbo.TenantsExtended`uit.          
+   * De objecten in het `__ShardManagement` schema worden allemaal door de Elastic Database-client bibliotheek verschaft.
+   * De `Tenants` tabel en `TenantsExtended` weer gave zijn uitbrei dingen die in het voor beeld worden toegevoegd, en laten zien hoe u de catalogus kunt uitbreiden voor extra waarde.
+1. Voer de query uit `SELECT * FROM dbo.TenantsExtended`.          
 
    ![Data Explorer](media/saas-standaloneapp-provision-and-catalog/data-explorer-tenantsextended.png)
 
@@ -124,7 +124,7 @@ In deze taak leert u hoe u één Tenant toepassing inricht. U gaat het volgende 
 
 1. Open *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* in Power shell ISE en stel **$scenario = 2**in. De Tenant catalogus implementeren en de vooraf gedefinieerde tenants registreren
 
-1. Voeg een onderbrekings punt toe aan het script door de cursor ergens op regel 49 te `& $PSScriptRoot\New-TenantApp.ps1`plaatsen met de tekst en druk vervolgens op **F9**.
+1. Voeg een onderbrekings punt in het script toe door de cursor ergens op regel 49 te plaatsen met de tekst `& $PSScriptRoot\New-TenantApp.ps1`en druk vervolgens op **F9**.
 1. Voer het script uit door op **F5**te drukken. 
 1.  Wanneer het uitvoeren van het script stopt bij het onderbrekings punt, drukt u op **F11** om het script New-Catalog. ps1 te Step into.
 1.  De uitvoering van het script traceren met behulp van de opties voor het menu fout opsporing, F10 en F11, om over te stappen of functies te noemen.
@@ -142,7 +142,7 @@ Vervolgens kunt u de nieuwe resources die zijn gemaakt in de Azure Portal inspec
 
 Wanneer u klaar bent met het verkennen van het voor beeld, verwijdert u alle resource groepen die u hebt gemaakt om de gekoppelde facturering te stoppen.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - Zie [ontwerp patronen voor SaaS-toepassingen met meerdere](saas-tenancy-app-design-patterns.md)tenants voor meer informatie over de SaaS-database toepassingen met meerdere tenants.
 

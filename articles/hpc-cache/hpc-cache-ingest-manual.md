@@ -1,19 +1,19 @@
 ---
-title: Gegevens opname van de preview-versie van de Azure HPC-cache-hand matig kopiëren
+title: Gegevens opname in de Azure HPC-cache-hand matig kopiëren
 description: CP-opdrachten gebruiken om gegevens te verplaatsen naar een Blob-opslag doel in azure HPC-cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 7e29cbd202b32897026bed074743de543d3fd587
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b2514eaaf70d13d3be63963f24ea7be99c4fbcce
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254464"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582288"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC-cache (preview) gegevens opname-hand matige Kopieer methode
+# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Gegevens opname van de Azure HPC-cache-hand matige Kopieer methode
 
 In dit artikel vindt u gedetailleerde instructies voor het hand matig kopiëren van gegevens naar een BLOB storage-container voor gebruik met de Azure HPC-cache. Er wordt gebruikgemaakt van parallelle bewerkingen met meerdere threads om de Kopieer snelheid te optimaliseren.
 
@@ -23,7 +23,7 @@ Lees voor meer informatie over het verplaatsen van gegevens naar Blob Storage vo
 
 U kunt hand matig een kopie met meerdere threads maken op een client door meer dan één Kopieer opdracht tegelijk op de achtergrond uit te voeren op basis van vooraf gedefinieerde sets van bestanden of paden.
 
-De Linux/UNIX-``cp``-opdracht bevat het argument ``-p`` om de eigendoms-en mtime-meta gegevens te behouden. Het toevoegen van dit argument aan de onderstaande opdrachten is optioneel. (Het toevoegen van het argument verhoogt het aantal bestandssysteem aanroepen dat vanaf de client naar het doel bestandssysteem wordt verzonden voor het wijzigen van meta gegevens.)
+De Linux/UNIX-``cp`` opdracht bevat het argument ``-p`` voor het behouden van de meta gegevens van eigendom en mtime. Het toevoegen van dit argument aan de onderstaande opdrachten is optioneel. (Het toevoegen van het argument verhoogt het aantal bestandssysteem aanroepen dat vanaf de client naar het doel bestandssysteem wordt verzonden voor het wijzigen van meta gegevens.)
 
 In dit eenvoudige voor beeld worden twee bestanden parallel gekopieerd:
 
@@ -31,13 +31,13 @@ In dit eenvoudige voor beeld worden twee bestanden parallel gekopieerd:
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-Na het geven van deze opdracht geeft de `jobs`-opdracht aan dat er twee threads worden uitgevoerd.
+Na het geven van deze opdracht geeft de `jobs` opdracht aan dat er twee threads worden uitgevoerd.
 
 ## <a name="copy-data-with-predictable-file-names"></a>Gegevens kopiëren met voorspel bare bestands namen
 
 Als uw bestands namen voorspelbaar zijn, kunt u expressies gebruiken om threads voor parallelle kopieën te maken. 
 
-Als uw directory bijvoorbeeld 1000 bestanden bevat die opeenvolgend zijn genummerd van `0001` naar `1000`, kunt u de volgende expressies gebruiken om tien parallelle threads te maken die elk 100 bestanden kopiëren:
+Als uw directory bijvoorbeeld 1000 bestanden bevat die opeenvolgend zijn genummerd van `0001` naar `1000`, kunt u de volgende expressies gebruiken om tien parallelle threads te maken die elk een kopie hebben van 100 bestanden:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -56,7 +56,7 @@ cp /mnt/source/file9* /mnt/destination1/
 
 Als de naamgevings structuur van het bestand niet voorspelbaar is, kunt u bestanden groeperen op mapnamen. 
 
-In dit voor beeld worden volledige mappen verzameld voor verzen ding naar ``cp`` opdrachten uitvoeren als achtergrond taken:
+In dit voor beeld worden volledige mappen verzameld voor verzen ding naar ``cp`` opdrachten die als achtergrond taken worden uitgevoerd:
 
 ```bash
 /root
@@ -138,7 +138,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 Houd rekening met de volgende aanbevelingen nadat u de bovenstaande benaderingen (meerdere kopieën per doel, meerdere-threads per client, meerdere clients per netwerk bron bestand systeem) hebt begrepen, en Ga als volgt te werk: bestands manifesten maken en deze vervolgens gebruiken met Copy opdrachten op meerdere clients.
 
-In dit scenario wordt de UNIX-``find``-opdracht gebruikt voor het maken van manifesten van bestanden of mappen:
+In dit scenario wordt de UNIX-``find`` opdracht gebruikt voor het maken van manifesten van bestanden of mappen:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d

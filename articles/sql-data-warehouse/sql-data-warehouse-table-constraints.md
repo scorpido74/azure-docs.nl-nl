@@ -1,5 +1,5 @@
 ---
-title: Primaire sleutel, refererende sleutel en unieke sleutel in Azure SQL Data Warehouse | Microsoft Docs
+title: Primaire, refererende en unieke sleutels
 description: Ondersteuning voor tabel beperkingen in Azure SQL Data Warehouse
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,18 +10,19 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: b02f219e549f2206f71c08c9d465b2bc05a6d526
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8f3102425c6f984df0f50bc05eeb6f9a5e66d3dd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310293"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685494"
 ---
 # <a name="primary-key-foreign-key-and-unique-key-in-azure-sql-data-warehouse"></a>Primaire sleutel, refererende sleutel en unieke sleutel in Azure SQL Data Warehouse
 
 Meer informatie over tabel beperkingen in Azure SQL Data Warehouse, waaronder primaire sleutel, refererende sleutel en unieke sleutel.
 
-## <a name="table-constraints"></a>Tabel beperkingen 
+## <a name="table-constraints"></a>Tabelbeperkingen 
 Azure SQL Data Warehouse ondersteunt deze tabel beperkingen: 
 - De primaire sleutel wordt alleen ondersteund als niet-geclusterd en niet afgedwongen worden gebruikt.    
 - EEN unieke beperking wordt alleen ondersteund als er geen afgedwongen wordt toegepast.   

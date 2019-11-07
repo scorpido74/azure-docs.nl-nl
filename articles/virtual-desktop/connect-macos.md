@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: fa61d69ae7aa650b6011696fd45d05ba20d2ac8b
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: dc980d60c1db684a47c38b3b8efceb08dd618838
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338711"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605809"
 ---
 # <a name="connect-with-the-macos-client"></a>Verbinding maken met de macOS-client
 
@@ -25,7 +25,7 @@ U kunt toegang krijgen tot virtuele bureau blad-resources van Windows vanaf uw m
 
 ## <a name="install-the-client"></a>De client installeren
 
-[Down load](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) en installeer de-client op uw macOS-apparaat om aan de slag te gaan.
+Als u aan de slag wilt gaan, [downloadt](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) u en installeert u de-client op uw macOS-apparaat.
 
 ## <a name="subscribe-to-a-feed"></a>Abonneren op een feed
 
@@ -35,7 +35,7 @@ Abonneren op een feed:
 
 1. Selecteer **feed toevoegen** op de hoofd pagina om verbinding te maken met de service en uw resources op te halen.
 2. Voer de URL voor de feed in. Dit kan een URL of e-mail adres zijn:
-   - Als u een URL gebruikt, gebruikt u de beheerder die u hebt ontvangen. Normaal gesp roken is <https://rdweb.wvd.microsoft.com>de URL.
+   - Als u een URL gebruikt, gebruikt u de beheerder die u hebt ontvangen. Normaal gesp roken is de URL <https://rdweb.wvd.microsoft.com>.
    - Als u e-mail wilt gebruiken, voert u uw e-mail adres in. Dit geeft de client de opdracht om te zoeken naar een URL die is gekoppeld aan uw e-mail adres als uw beheerder de server op die manier heeft geconfigureerd.
 3. Selecteer **Abonneren**.
 4. Meld u aan met uw gebruikers account wanneer u hierom wordt gevraagd.

@@ -1,19 +1,19 @@
 ---
-title: Azure-naar-Azure-replicatie architectuur in Azure Site Recovery | Microsoft Docs
-description: Dit artikel bevat een overzicht van de onderdelen en architectuur die worden gebruikt bij het instellen van herstel na nood gevallen tussen Azure-regio's voor Azure-Vm's, met behulp van de Azure Site Recovery-service.
+title: Architectuur van Azure naar Azure voor herstel na nood gevallen in Azure Site Recovery
+description: Overzicht van de architectuur die wordt gebruikt bij het instellen van herstel na nood gevallen tussen Azure-regio's voor Azure-Vm's, met behulp van de Azure Site Recovery-service.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: d415f303976ae454cb99f07e8d6e15e338e24d7d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e83c14e5ce337e8a3c4c119acc2397b98afd5b56
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231467"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621109"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architectuur voor herstel na noodgevallen van Azure naar Azure
 
@@ -59,7 +59,7 @@ U kunt doel resources als volgt beheren:
 
 
 
-## <a name="replication-policy"></a>Replicatiebeleid 
+## <a name="replication-policy"></a>Beleid voor replicatie 
 
 Wanneer u Azure VM-replicatie inschakelt, Site Recovery standaard een nieuw replicatie beleid maken met de standaard instellingen in de tabel.
 
@@ -97,13 +97,13 @@ In de volgende tabel worden verschillende soorten consistentie beschreven.
 
 ### <a name="crash-consistent"></a>Crash-consistent
 
-**Beschrijving** | **Details** | **Aanbeveling**
+**Beschrijving** | **Details** | **Advies**
 --- | --- | ---
 Een crash consistente moment opname legt gegevens vast die zich op de schijf bevonden toen de moment opname werd gemaakt. Het bevat niets in het geheugen.<br/><br/> Het bevat het equivalent van de gegevens op de schijf die aanwezig zouden zijn als de virtuele machine is vastgelopen of het netsnoer van de server is opgehaald op het moment dat de moment opname werd gemaakt.<br/><br/> Een crash consistent garandeert geen gegevens consistentie voor het besturings systeem of voor apps op de virtuele machine. | Met Site Recovery worden standaard crash consistente herstel punten in elke vijf minuten gemaakt. Deze instelling kan niet worden gewijzigd.<br/><br/>  | Vandaag kunnen de meeste apps goed worden hersteld met crash-consistente punten.<br/><br/> Crash-consistente herstel punten zijn doorgaans voldoende voor de replicatie van besturings systemen en apps, zoals DHCP-servers en afdruk servers.
 
 ### <a name="app-consistent"></a>App-consistent
 
-**Beschrijving** | **Details** | **Aanbeveling**
+**Beschrijving** | **Details** | **Advies**
 --- | --- | ---
 App-consistente herstel punten worden gemaakt op basis van app-consistente moment opnamen.<br/><br/> Een app-consistente moment opname bevat alle informatie in een crash consistente moment opname, plus alle gegevens in het geheugen en trans acties die worden uitgevoerd. | App-consistente moment opnamen gebruiken de Volume Shadow Copy Service (VSS):<br/><br/>   1) wanneer een moment opname wordt gestart, voert VSS een Kopieer bewerking voor het schrijven van kopieën uit op het volume.<br/><br/>   2) voordat de koeien wordt uitgevoerd, informeert VSS elke app op de computer die de geheugenresidente gegevens op schijf moet leegmaken.<br/><br/>   3) vervolgens kan de app back-up/herstel na nood gevallen (in dit geval Site Recovery) de momentopname gegevens lezen en door gaan. | App-consistente moment opnamen worden gemaakt op basis van de frequentie die u opgeeft. Deze frequentie moet altijd kleiner zijn dan de instelling voor het bewaren van herstel punten. Als u bijvoorbeeld de herstel punten behoudt met de standaard instelling van 24 uur, stelt u de frequentie in op minder dan 24 uur.<br/><br/>Ze zijn ingewik kelder en nemen meer tijd in beslag dan crash-consistente moment opnamen.<br/><br/> Ze zijn van invloed op de prestaties van apps die worden uitgevoerd op een virtuele machine die is ingeschakeld voor replicatie. 
 
@@ -145,7 +145,7 @@ Details van de vereisten voor netwerk connectiviteit vindt u in het [technisch d
 
 **Budgetoverboekingsregel** |  **Details** | **Servicetag**
 --- | --- | --- 
-HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met opslag accounts in de bron regio | Opslagpad. \<regio-name >.
+HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met opslag accounts in de bron regio | Opslagpad.\<regio-naam >.
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Active Directory (Azure AD).<br/><br/> Als Azure AD-adressen in de toekomst worden toegevoegd, moet u nieuwe NSG-regels (netwerk beveiligings groep) maken.  | AzureActiveDirectory
 HTTPS-uitgaand toestaan: poort 443 | Toegang tot [site Recovery eind punten](https://aka.ms/site-recovery-public-ips) toestaan die overeenkomen met de doel locatie. 
 
@@ -153,7 +153,7 @@ HTTPS-uitgaand toestaan: poort 443 | Toegang tot [site Recovery eind punten](htt
 
 **Budgetoverboekingsregel** |  **Details** | **Servicetag**
 --- | --- | --- 
-HTTPS-uitgaand toestaan: poort 443 | Sta bereiken toe die overeenkomen met opslag accounts in de doel regio. | Opslagpad. \<regio-name >.
+HTTPS-uitgaand toestaan: poort 443 | Sta bereiken toe die overeenkomen met opslag accounts in de doel regio. | Opslagpad.\<regio-naam >.
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure AD.<br/><br/> Als Azure AD-adressen in de toekomst worden toegevoegd, moet u nieuwe NSG-regels maken.  | AzureActiveDirectory
 HTTPS-uitgaand toestaan: poort 443 | Toegang tot [site Recovery eind punten](https://aka.ms/site-recovery-public-ips) toestaan die overeenkomen met de bron locatie. 
 

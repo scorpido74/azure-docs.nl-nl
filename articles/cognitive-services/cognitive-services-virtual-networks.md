@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 36e0742101203764a731dd2007d239593a500bfa
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ae3caa2d1f90bbbae1070d95d676eb206a361a0
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507922"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647353"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services virtuele netwerken configureren
 
@@ -24,7 +24,7 @@ Een toepassing die toegang heeft tot een Cognitive Services resource wanneer de 
 
 > [!IMPORTANT]
 > Als u firewall regels inschakelt voor uw Cognitive Services account, worden binnenkomende aanvragen voor gegevens standaard geblokkeerd. Voor het toestaan van aanvragen via moet aan een van de volgende voor waarden worden voldaan:
-> * De aanvraag moet afkomstig zijn van een service in een Azure Virtual Network (VNet) in de lijst met toegestane subnetten van het doel Cognitive Services account.
+> * De aanvraag moet afkomstig zijn van een service in een Azure Virtual Network (VNet) in de lijst met toegestane subnetten van het doel Cognitive Services account. Het eind punt van aanvragen die afkomstig zijn van VNet, moet worden ingesteld als het [aangepaste subdomein](cognitive-services-custom-subdomains.md) van uw Cognitive Services-account.
 > * Of de aanvraag moet afkomstig zijn uit een lijst met toegestane IP-adressen.
 >
 > Aanvragen die zijn geblokkeerd, zijn onder andere die van andere Azure-Services, van de Azure Portal, van de services logboek registratie en metrische gegevens, enzovoort.
@@ -49,7 +49,7 @@ Ondersteuning voor virtuele netwerken voor Cognitive Services is beperkt tot de 
 > * [Gaat](./face/index.yml)
 > * [Formulier herkenning](./form-recognizer/index.yml)
 > * [LUIS](./luis/index.yml)
-> * [Persoonlijkere](./personalizer/index.yml)
+> * [Personalizer](./personalizer/index.yml)
 > * [Tekstanalyse](./text-analytics/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>De standaard regel voor netwerk toegang wijzigen
@@ -372,7 +372,7 @@ U kunt IP-netwerk regels voor Cognitive Services resources beheren via de Azure 
     (Get-AzCognitiveServicesAccountNetworkRuleSet @parameters).IPRules
     ```
 
-1. Voeg een netwerk regel toe voor een afzonderlijk IP-adres.
+1. Voeg een regel voor een afzonderlijk IP-adres toe.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -427,7 +427,7 @@ U kunt IP-netwerk regels voor Cognitive Services resources beheren via de Azure 
         -g "myresourcegroup" -n "myaccount" --query ipRules
     ```
 
-1. Voeg een netwerk regel toe voor een afzonderlijk IP-adres.
+1. Voeg een regel voor een afzonderlijk IP-adres toe.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule add \

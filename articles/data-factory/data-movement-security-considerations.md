@@ -1,5 +1,5 @@
 ---
-title: Beveiligings overwegingen in Azure Data Factory | Microsoft Docs
+title: Beveiligings overwegingen in Azure Data Factory
 description: Hierin wordt de basis beveiligings infrastructuur beschreven die services voor gegevens verplaatsing in Azure Data Factory gebruiken om uw gegevens te beveiligen.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: ca5a98fb4fd0fd07cd0e2557840a2e0aed6901e5
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 15178fd0b5253b34f21030665a5835646c13b75d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285604"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675854"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Beveiligings overwegingen voor het verplaatsen van gegevens in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -46,7 +46,7 @@ Data Factory is gecertificeerd voor:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA-BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Ga naar het [vertrouwens centrum van micro soft](https://microsoft.com/en-us/trustcenter/default.aspx)als u geïnteresseerd bent in de naleving van Azure en hoe Azure een eigen infra structuur beveiligt. Voor de meest recente lijst met alle Azure compliance-aanbiedingen check- https://aka.ms/AzureCompliance.
+Ga naar het [vertrouwens centrum van micro soft](https://microsoft.com/en-us/trustcenter/default.aspx)als u geïnteresseerd bent in de naleving van Azure en hoe Azure een eigen infra structuur beveiligt. Voor de meest recente lijst met alle Azure-vereisten voor nalevings aanbod https://aka.ms/AzureCompliance.
 
 In dit artikel worden beveiligings overwegingen in de volgende twee scenario's voor het verplaatsen van gegevens besproken: 
 
@@ -97,7 +97,7 @@ Amazon S3 ondersteunt zowel client-als server versleuteling van gegevens in rust
 #### <a name="amazon-redshift"></a>Amazon Redshift
 Amazon Redshift ondersteunt cluster versleuteling voor Data-at-rest. Zie [Amazon Redshift data base Encryption](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)(Engelstalig) voor meer informatie. 
 
-#### <a name="salesforce"></a>Salesforce
+#### <a name="salesforce"></a>SalesForce
 Sales Force ondersteunt afschermings platform versleuteling waarmee alle bestanden, bijlagen en aangepaste velden kunnen worden versleuteld. Zie [Wat is de web server OAuth-verificatie stroom](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)? voor meer informatie.  
 
 ## <a name="hybrid-scenarios"></a>Hybride scenario's
@@ -136,7 +136,7 @@ Azure Virtual Network is een logische weer gave van uw netwerk in de Cloud. U ku
 
 De volgende tabel bevat een overzicht van de aanbevelingen voor het netwerk en zelf-hostende Integration runtime-configuratie op basis van verschillende combi Naties van bron-en doel locaties voor het verplaatsen van hybride gegevens.
 
-| Bron      | Bestemming                              | Netwerkconfiguratie                    | Installatie van integratieruntime                |
+| Bron      | Doel                              | Netwerkconfiguratie                    | Installatie van integratieruntime                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | On-premises | Virtuele machines en Cloud Services die zijn geïmplementeerd in virtuele netwerken | IPSec VPN (punt-naar-site of site-naar-site) | De zelf-hostende Integration runtime moet worden geïnstalleerd op een virtuele machine van Azure in het virtuele netwerk.  |
 | On-premises | Virtuele machines en Cloud Services die zijn geïmplementeerd in virtuele netwerken | ExpressRoute (persoonlijke peering)           | De zelf-hostende Integration runtime moet worden geïnstalleerd op een virtuele machine van Azure in het virtuele netwerk.  |

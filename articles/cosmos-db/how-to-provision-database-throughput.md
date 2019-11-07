@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 93961b44f1c0d063774395ab384cb84b1aa05d99
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 64a8bc9f4c9f5192dad22cb55cb4d2c4816d4fa5
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812498"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575144"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Door Voer in te richten op een data base in Azure Cosmos DB
 
@@ -21,7 +21,7 @@ In dit artikel wordt uitgelegd hoe u de door Voer inricht voor een data base in 
 
 ### <a id="portal-sql"></a>SQL (Core) API
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
 
@@ -68,12 +68,12 @@ await client.CreateDatabaseIfNotExistsAsync(
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
 ### <a id="dotnet-cassandra"></a>Cassandra-API
-
+Een vergelijk bare opdracht kan worden uitgevoerd via elk CQL-compatibel stuur programma. 
 ```csharp
 // Create a Cassandra keyspace and provision throughput of 400 RU/s
-session.Execute(CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400);
+session.Execute("CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400");
 ```
-
+ 
 ## <a name="next-steps"></a>Volgende stappen
 
 Raadpleeg de volgende artikelen voor meer informatie over ingerichte door Voer in Azure Cosmos DB:

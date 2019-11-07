@@ -1,39 +1,36 @@
 ---
-title: Bedreigingsinformatie van Azure Firewall filteren op basis van
-description: Meer informatie over Azure-Firewall threat intelligence filteren
+title: Azure Firewall op bedreigingen gebaseerd filteren
+description: Meer informatie over Azure Firewall Threat Intelligence-filtering
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 11/05/2019
 ms.author: victorh
-ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f6a60d7c29fc7e482e32233aa86d65a801e3f55c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194028"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582253"
 ---
-# <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Azure Firewall threat intelligence gebaseerd filteren - openbare Preview
+# <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall op bedreigingen gebaseerd filteren
 
-Filteren op basis van bedreigingsinformatie kan voor uw firewall worden ingeschakeld voor waarschuwingen over of het weigeren van verkeer van en naar bekende kwaadaardige IP-adressen en domeinen. De IP-adressen en domeinen zijn afkomstig uit de feed Bedreigingsinformatie van Microsoft. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) wordt gebruikt door bedreigingsinformatie van Microsoft en wordt gebruikt door meerdere services, met inbegrip van Azure Security Center.
+Filteren op basis van bedreigingsinformatie kan voor uw firewall worden ingeschakeld voor waarschuwingen over of het weigeren van verkeer van en naar bekende kwaadaardige IP-adressen en domeinen. De IP-adressen en domeinen zijn afkomstig uit de feed Bedreigingsinformatie van Microsoft. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) voorziet in micro soft Threat Intelligence en wordt gebruikt door meerdere services, waaronder Azure Security Center.
 
-![Firewall-bedreigingsinformatie](media/threat-intel/firewall-threat.png)
+![Firewall Threat Intelligence](media/threat-intel/firewall-threat.png)
 
-> [!IMPORTANT]
-> Threat intelligence filteren op basis van is momenteel in openbare preview en is voorzien van een Preview-versie service level agreement. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.  Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Als u op bedreigingen gebaseerd filteren hebt ingeschakeld, worden de bijbehorende regels verwerkt vóór een van de NAT-regels, netwerk regels of toepassings regels.
 
-Als threat intelligence gebaseerde filtering is ingeschakeld, worden de gekoppelde regels worden verwerkt voordat een van de NAT-regels, netwerkregels of regels voor application. Tijdens de Preview-versie, zijn alleen de hoogste betrouwbaarheid records zijn opgenomen.
+U kunt ervoor kiezen om alleen een waarschuwing te registreren wanneer een regel wordt geactiveerd, of u kunt de modus waarschuwing en weigeren kiezen.
 
-U kunt aan te melden een waarschuwing wanneer een regel wordt geactiveerd, of u kunt kiezen waarschuwing en weigeren modus.
+Op bedreigingen gebaseerd filteren is standaard ingeschakeld in de waarschuwings modus. U kunt deze functie niet uitschakelen of de modus wijzigen totdat de portal-interface beschikbaar is in uw regio.
 
-Standaard is threat intelligence gebaseerde filtering ingeschakeld in de modus voor waarschuwingen. Deze functie uitschakelen kan of de modus wijzigen totdat de interface van de portal beschikbaar in uw regio.
-
-![Informatie over bedreigingen op basis van filteren interface van de portal](media/threat-intel/threat-intel-ui.png)
+![Portal interface voor het filteren op basis van bedreigings informatie](media/threat-intel/threat-intel-ui.png)
 
 ## <a name="logs"></a>Logboeken
 
-Het volgende fragment in de logboekbestanden ziet u een geactiveerde regel:
+In het volgende logboek fragment wordt een regel geactiveerd weer gegeven:
 
 ```
 {
@@ -49,12 +46,12 @@ Het volgende fragment in de logboekbestanden ziet u een geactiveerde regel:
 
 ## <a name="testing"></a>Testen
 
-- **Uitgaande testen** -waarschuwingen voor uitgaand verkeer moet een zeldzame exemplaar, zoals betekent dit dat uw omgeving is aangetast. Om te werkt testen uitgaande waarschuwingen, test FQDN-naam is gemaakt die een waarschuwing wordt geactiveerd. Gebruik **testmaliciousdomain.eastus.cloudapp.azure.com** voor uw uitgaande tests.
+- **Uitgaande tests** : waarschuwingen voor uitgaand verkeer moeten een zeldzame gebeurtenis zijn, omdat het betekent dat uw omgeving is aangetast. Er is een test-FQDN gemaakt waarmee een waarschuwing wordt geactiveerd om te voor komen dat uitgaande waarschuwingen worden uitgevoerd. Gebruik **testmaliciousdomain.eastus.cloudapp.Azure.com** voor uw uitgaande tests.
 
-- **Inkomende testen** -u kunt verwachten om waarschuwingen te zien op het binnenkomende verkeer als DNAT regels zijn geconfigureerd op de firewall. Dit geldt zelfs als alleen specifieke bronnen zijn toegestaan voor de regel DNAT en verkeer anders is geweigerd. Firewall van Azure niet wordt gewaarschuwd voor alle bekende poort scanners; alleen op scanners waarvan bekend is dat ook via een schadelijke activiteiten.
+- **Inkomend testen** : u kunt verwachten dat er waarschuwingen worden weer geven voor binnenkomend verkeer als DNAT-regels zijn geconfigureerd op de firewall. Dit geldt ook als alleen specifieke bronnen zijn toegestaan in de DNAT-regel en verkeer anderszins wordt geweigerd. Azure Firewall geen waarschuwing voor alle bekende poort scanners. alleen op scanners waarvan bekend is dat ze ook schadelijke activiteiten kunnen uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure Firewall Log Analytics-voorbeelden](log-analytics-samples.md)
-- Meer informatie over het [implementeren en configureren van een Azure-Firewall](tutorial-firewall-deploy-portal.md)
-- Controleer de [Microsoft Security intelligence report](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)
+- Zie [Azure Firewall log Analytics](log-analytics-samples.md) -voor beelden
+- Meer informatie over het [implementeren en configureren van een Azure firewall](tutorial-firewall-deploy-portal.md)
+- Raadpleeg het [micro soft Security Intelligence-rapport](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)

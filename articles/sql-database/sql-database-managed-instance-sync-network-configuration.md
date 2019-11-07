@@ -1,5 +1,5 @@
 ---
-title: Azure App Service-netwerk configuratie synchroniseren | Microsoft Docs
+title: Azure App Service-netwerk configuratie synchroniseren
 description: In dit artikel wordt beschreven hoe u uw netwerk configuratie synchroniseert voor Azure App Service hosting abonnement.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 12/13/2018
-ms.openlocfilehash: 920851e33255b0bcb5b085c541ae636c5988be72
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e7263d6a7716caf9f53e8496c6fb02b6d17b5509
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567310"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687897"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>De netwerk configuratie voor het hosting abonnement voor Azure App Service synchroniseren
 
@@ -28,7 +28,7 @@ Voer hiervoor de volgende stappen uit:
 
 1. Ga naar uw web apps App Service plan.
 
-   ![App Service-plan](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
+   ![app service-plan](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
 
 2. Klik op **netwerken** en klik vervolgens op **Klik hier om te beheren**.
 

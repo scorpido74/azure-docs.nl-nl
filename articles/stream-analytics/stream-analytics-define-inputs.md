@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 8f64b3381f22c31b58604477260b5dae4b84d19a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: df111d605b7c05bcb934771b6063f2be04770ea9
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988270"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606466"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Gegevens streamen als invoer in Stream Analytics
 
@@ -129,7 +129,13 @@ Voor scenario's met grote hoeveel heden ongestructureerde gegevens die in de clo
 
 Logboek verwerking is een algemeen gebruikt scenario voor het gebruik van Blob Storage-invoer met Stream Analytics. In dit scenario zijn telemetriegegevens van een systeem vastgelegd en moeten ze worden geparseerd en verwerkt om zinvolle gegevens op te halen.
 
-De standaardtime Stamp van Blob Storage-gebeurtenissen in Stream Analytics is de tijds tempel van de laatste wijziging van de blob, die wordt `BlobLastModifiedUtcTime`. Als u de gegevens wilt verwerken als een stroom met behulp van een tijds tempel in de nettolading van de gebeurtenis, moet u het sleutel woord [time stamp by](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) gebruiken. Een Stream Analytics taak haalt gegevens uit Azure Blob Storage-invoer elke seconde op als het blobbestand beschikbaar is. Als het blobbestand niet beschikbaar is, is er een exponentiële uitstel met een maximale tijds vertraging van 90 seconden.
+De standaardtime Stamp van Blob Storage-gebeurtenissen in Stream Analytics is de tijds tempel van de laatste wijziging van de blob, die wordt `BlobLastModifiedUtcTime`. Als een BLOB wordt geüpload naar een opslag account op 13:00 en de Azure Stream Analytics-taak is gestart met de optie *nu* op 13:01, wordt de BLOB niet opgehaald als gewijzigd tijd buiten de uitvoerings periode van de taak valt.
+
+Als een BLOB wordt geüpload naar een container voor opslag accounts op 13:00 en de Azure Stream Analytics-taak is gestart met *aangepaste tijd* op 13:00 of eerder, wordt de BLOB opgehaald als gewijzigd tijd binnen de taak uitvoerings periode valt.
+
+Als een Azure Stream Analytics taak *nu* wordt gestart op 13:00 en er een BLOB wordt geüpload naar de container van het opslag account op 13:01, wordt de blob door Azure stream Analytics opgehaald.
+
+Als u de gegevens wilt verwerken als een stroom met behulp van een tijds tempel in de nettolading van de gebeurtenis, moet u het sleutel woord [time stamp by](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) gebruiken. Een Stream Analytics taak haalt gegevens uit Azure Blob Storage-invoer elke seconde op als het blobbestand beschikbaar is. Als het blobbestand niet beschikbaar is, is er een exponentiële uitstel met een maximale tijds vertraging van 90 seconden.
 
 Voor invoer in CSV-indeling is een veldnamenrij vereist om velden voor de gegevensset te definiëren. alle velden in de veldnamenrij moeten uniek zijn.
 
@@ -149,7 +155,7 @@ In de volgende tabel wordt elke eigenschap in de **nieuwe invoer** pagina in de 
 | **Opslagaccount** | De naam van het opslag account waarin de BLOB-bestanden zich bevinden. |
 | **Sleutel van het opslag account** | De geheime sleutel die is gekoppeld aan het opslag account. Deze optie wordt automatisch ingevuld tenzij u de optie selecteert om de Blob Storage-instellingen hand matig op te geven. |
 | **Verpakking** | De container voor de BLOB-invoer. Containers bieden een logische groepering voor blobs die zijn opgeslagen in de Microsoft Azure Blob service. Wanneer u een BLOB uploadt naar de Azure Blob Storage-service, moet u een container voor die BLOB opgeven. U kunt bestaande container **gebruiken** kiezen of **nieuwe maken** om een nieuwe container gemaakt te krijgen.|
-| **Patroon van pad** (optioneel) | Het bestandspad dat wordt gebruikt om de blobs in de opgegeven container te vinden. Binnen het pad kunt u een of meer exemplaren van de volgende drie variabelen opgeven: `{date}`, `{time}`of `{partition}`<br/><br/>Voor beeld 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Voor beeld 2: `cluster1/logs/{date}`<br/><br/>Het `*`-teken is geen toegestane waarde voor het voor voegsel van het pad. Alleen geldige <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-tekens</a> zijn toegestaan. Geen container namen of bestands namen bevatten. |
+| **Patroon van pad** (optioneel) | Het bestandspad dat wordt gebruikt om de blobs in de opgegeven container te vinden. Als u blobs wilt lezen uit de hoofdmap van de container, moet u geen patroon voor paden instellen. Binnen het pad kunt u een of meer exemplaren van de volgende drie variabelen opgeven: `{date}`, `{time}`of `{partition}`<br/><br/>Voor beeld 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Voor beeld 2: `cluster1/logs/{date}`<br/><br/>Het `*`-teken is geen toegestane waarde voor het voor voegsel van het pad. Alleen geldige <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-tekens</a> zijn toegestaan. Geen container namen of bestands namen bevatten. |
 | **Datum notatie** (optioneel) | Als u de datum variabele in het pad gebruikt, de datum notatie waarin de bestanden zijn geordend. Voorbeeld: `YYYY/MM/DD` |
 | **Tijd notatie** (optioneel) |  Als u de time-variabele in het pad gebruikt, de tijd notatie waarin de bestanden zijn ingedeeld. Momenteel wordt de enige ondersteunde waarde `HH` voor uren. |
 | **Serialisatie-indeling voor gebeurtenissen** | De serialisatie-indeling (JSON, CSV, AVRO of [Other (protobuf, XML, bedrijfs gegevens...)](custom-deserializer.md)) van de binnenkomende gegevens stroom.  Zorg ervoor dat de JSON-indeling wordt uitgelijnd met de specificatie en geen voorloop 0 voor decimale getallen bevat. |

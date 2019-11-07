@@ -1,5 +1,5 @@
 ---
-title: Een bestaand virtueel netwerk configureren voor Azure SQL Database Managed instance | Microsoft Docs
+title: Een bestaand virtueel netwerk voor Azure SQL Database beheerde instantie configureren
 description: In dit artikel wordt beschreven hoe u een bestaand virtueel netwerk en subnet configureert waarin u Azure SQL Database beheerde instantie kunt implementeren.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 01/15/2019
-ms.openlocfilehash: 509a08705d87e8f789e26ebbcec295a31f99f416
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0f6ababa9d25798f4b150c322d48d4c7af04a511
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567647"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689374"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Een bestaand virtueel netwerk voor Azure SQL Database beheerde instantie configureren
 
@@ -52,9 +52,9 @@ Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepar
 
 Het script bereidt het subnet voor in drie stappen:
 
-1. Subelementid Hiermee worden het geselecteerde virtuele netwerk en subnet voor beheerde exemplaar netwerk vereisten gevalideerd.
-2. Werkelijk De gebruiker ziet een set wijzigingen die moeten worden aangebracht om het subnet voor te bereiden voor de implementatie van beheerde exemplaren. Er wordt ook om toestemming gevraagd.
-3. Gebruiksklaar Hiermee configureert u het virtuele netwerk en subnet goed.
+1. Validate: Hiermee worden het geselecteerde virtuele netwerk en subnet voor beheerde instantie netwerk vereisten gevalideerd.
+2. Bevestigen: de gebruiker ziet een set wijzigingen die moeten worden aangebracht om het subnet voor te bereiden voor de implementatie van beheerde exemplaren. Er wordt ook om toestemming gevraagd.
+3. Voorbereiden: het virtuele netwerk en het subnet worden correct geconfigureerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

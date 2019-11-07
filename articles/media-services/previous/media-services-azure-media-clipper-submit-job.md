@@ -1,30 +1,30 @@
 ---
-title: Azure Media Clipper kniptaken verzenden | Microsoft Docs
-description: Stappen voor het indienen van kniptaken van Azure Media Clipper
+title: Knip taken voor Azure media Clipper verzenden | Microsoft Docs
+description: Stappen voor het verzenden van knip taken vanuit Azure media Clipper
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: clip; subclip; code ring; media
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: f0dc6879ccbb22dbebd57de98e4610cd593318db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 04d0d2bb8939c8036ec6817c58f9ac2fbb3acd72
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61242849"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684981"
 ---
-# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Kniptaken van Azure Media Clipper verzenden 
+# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Knip taken verzenden vanuit Azure media Clipper 
 
-Azure Media Clipper vereist een **submitSubclipCallback** methode om te worden geïmplementeerd voor het verwerken van knipsel taken verzenden. Deze functie is voor het implementeren van een HTTP POST van de uitvoer Clipper naar een webservice. Deze webservice is waar u de coderingstaak kunt indienen. De uitvoer van de Clipper is ofwel een Media Encoder Standard codering voorinstelling voor gerenderde taken of de nettolading van de REST-API voor dynamisch-manifestfilter aanroepen. Dit Pass Through-model is nodig omdat media services-accountreferenties niet beveiligd in de browser van de client zijn.
+Voor Azure media Clipper is een **submitSubclipCallback** -methode vereist die moet worden geïmplementeerd voor het verzenden van knip taken. Deze functie is voor het implementeren van een HTTP POST van de uitvoer van Clipper naar een webservice. Met deze webservice kunt u de coderings taak verzenden. De uitvoer van de Clipper is een Media Encoder Standard coderings voorinstelling voor gerenderde taken of de REST API Payload voor dynamische manifest filter-aanroepen. Dit Pass-Through-model is nodig omdat de referenties van het Media Services-account niet worden beveiligd in de browser van de client.
 
-De volgende reeksdiagram illustreert de werkstroom tussen de browserclient, uw web-service en Azure Media Services: ![Azure Media Clipper reeksdiagram](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)
+In het volgende sequentie diagram ziet u de werk stroom tussen de browser-client, uw web-service en Azure Media Services: ![diagram van Azure media Clipper](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)
 
-In het voorgaande diagram wordt de vier entiteiten zijn: de eindgebruiker de browser, de webservice, het CDN-eindpunt die als host fungeert voor de Clipper resources en Azure Media Services. Wanneer de gebruiker naar uw webpagina navigeert, wordt de pagina de Clipper JavaScript en CSS-resources vanaf de host CDN-eindpunt. De eindgebruiker configureert u de taak knippen of dynamisch-manifestfilter-aanroep voor het maken van hun browser. Wanneer de gebruiker de taak of filter aanroep voor het maken verzendt, hebt u de browser de nettolading van de taak aan een webservice die u moet implementeren. Deze webservice uiteindelijk de knippen-taak verzendt of filter maken van het aanroepen van Azure Media Services met behulp van uw media services-accountreferenties.
+In het voor gaande diagram zijn de vier entiteiten: de browser van de eind gebruiker, uw webservice, het CDN-eind punt dat als host fungeert voor de Clipper-resources en Azure Media Services. Wanneer de eind gebruiker naar uw webpagina navigeert, ontvangt de pagina de Java script-en CSS-resources van het host-CDN-eind punt. De eind gebruiker configureert de aanroep voor het maken van een knip taak of dynamische oproep van manifest filters vanuit de browser. Wanneer de eind gebruiker de taak of oproep voor het maken van filters verzendt, wordt de taak lading door de browser naar een webservice die u moet implementeren. Deze webservice verzendt uiteindelijk de knip taak of oproep voor het maken van filters naar Azure Media Services met de referenties van uw Media Services-account.
 
-Het volgende codevoorbeeld ziet u een voorbeeld van een **submitSubclipCallback** methode. In deze methode implementeert u het HTTP-bericht van de Media Encoder Standard vooraf ingestelde standaardcodering. Als het bericht voltooid is (**resultaat**), wordt de **belofte** is opgelost, anders wordt het bericht geweigerd met details van fouten.
+In het volgende code voorbeeld ziet u een voor beeld van een **submitSubclipCallback** -methode. In deze methode implementeert u het HTTP-bericht van de vooraf ingestelde Media Encoder Standard-Code ring. Als het bericht is voltooid (**resultaat**), wordt de **belofte** opgelost, anders wordt het item afgewezen met fout gegevens.
 
 ```javascript
 // Submit Subclip Callback
@@ -55,12 +55,12 @@ var subclipper = new subclipper({
     submitSubclipCallback: onSubmitSubclip,
 });
 ```
-De uitvoer van het verzenden van taken is de Media Encoder Standard voorinstelling voor encoding voor gerenderde taak of de nettolading van de REST-API voor dynamisch-manifestfilters.
+De uitvoer van het verzenden van taken is de Media Encoder Standard encoding-voor instelling voor een gerenderde taak of de REST API Payload voor dynamische manifest filters.
 
-## <a name="submitting-encoding-job-to-create-video"></a>Encoding-taak maken video verzenden
-U kunt een Media Encoder Standard encoding-taak voor het maken van een frame nauwkeurig videoclip indienen. Codering taak produceren video's weergegeven, een nieuwe gefragmenteerd MP4-bestand.
+## <a name="submitting-encoding-job-to-create-video"></a>De coderings taak voor het maken van video verzenden
+U kunt een Media Encoder Standard encoding-taak verzenden om een video clip met een frame nauw keurig te maken. De coderings taak produceert gerenderde Video's, een nieuw gefragmenteerd MP4-bestand.
 
-Het contract van de taak uitvoer voor de gerenderde knippen is een JSON-object met de volgende eigenschappen:
+Het taak uitvoer contract voor rendered uitknippad is een JSON-object met de volgende eigenschappen:
 
 ```json
 {
@@ -153,10 +153,10 @@ Het contract van de taak uitvoer voor de gerenderde knippen is een JSON-object m
 }
 ```
 
-Om in te voeren van de coderingstaak dienen Media Encoder Standard encoding-taak met de bijbehorende definitie. Zie dit artikel voor meer informatie over het indienen van codering taken met behulp van de [.NET SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard) of [REST-API](https://docs.microsoft.com/azure/media-services/media-services-rest-encode-asset).
+Als u de coderings taak wilt uitvoeren, moet u de Media Encoder Standard encoding-taak verzenden met de gekoppelde voor instelling. Raadpleeg dit artikel voor meer informatie over het verzenden van coderings taken met behulp van de [.NET SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard) of [rest API](https://docs.microsoft.com/azure/media-services/media-services-rest-encode-asset).
 
-## <a name="quickly-creating-video-clips-without-encoding"></a>Snel maken videoclips zonder te coderen
-Alternatief voor het maken van een coderingstaak, kunt u Azure Media Clipper dynamisch-manifestfilters maken. Filters hoeven niet te coderen en snel kunnen worden gemaakt wanneer er een nieuw activum wordt niet gemaakt. Het contract uitvoer voor een knippen filter is een JSON-object met de volgende eigenschappen:
+## <a name="quickly-creating-video-clips-without-encoding"></a>Snel video clips maken zonder code ring
+Als alternatief voor het maken van een coderings taak kunt u Azure media Clipper gebruiken om dynamische manifest filters te maken. Filters hoeven niet te worden gecodeerd en kunnen snel worden gemaakt, omdat er geen nieuwe Asset wordt gemaakt. Het uitvoer contract voor een filter knipsel is een JSON-object met de volgende eigenschappen:
 
 ```json
 {
@@ -229,4 +229,4 @@ Alternatief voor het maken van een coderingstaak, kunt u Azure Media Clipper dyn
 }
 ```
 
-Om in te dienen de REST-aanroep voor het maken van de dynamisch-manifestfilter, dienen de bijbehorende filter nettolading met behulp van de [REST-API](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest).
+Als u de REST-aanroep wilt indienen om een dynamisch manifest filter te maken, moet u de bijbehorende Payload verzenden met behulp van de [rest API](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest).

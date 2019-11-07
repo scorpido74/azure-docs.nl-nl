@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database resource limieten van vCore-één data base | Microsoft Docs
+title: Azure SQL Database resource limieten van vCore-één data base
 description: Op deze pagina worden enkele veelvoorkomende limieten voor vCore bronnen voor één data base in Azure SQL Database beschreven.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/04/2019
-ms.openlocfilehash: 55b0b28f3081cfe643645683a9773b4c97b9caef
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b3b55b3542eb0dd8c3c61d7a82c8ce2e9d271113
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495945"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686864"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resource limieten voor afzonderlijke data bases met behulp van het vCore-aankoop model
 
@@ -281,7 +281,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |vCores|7|8|9|10|16|24|
 |Geheugen (GB)|49|56|63|70|112|168|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|7|8|9,5|11|20|36|
+|OLTP-opslag in het geheugen (GB)|7|8|9.5|11|20|36|
 |Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale gegevens grootte (GB)|1024|1024|1024|1024|1024|1024|
 |Maximale logboek grootte (GB)|307|307|307|307|307|307|

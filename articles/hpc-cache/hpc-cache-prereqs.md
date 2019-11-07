@@ -1,19 +1,19 @@
 ---
-title: Vereisten voor Azure HPC-cache (preview-versie)
+title: Vereisten voor de Azure HPC-cache
 description: Vereisten voor het gebruik van Azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca7a12f45f8d907ee65df85e349883e4c14af47a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709960"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582149"
 ---
-# <a name="prerequisites-for-azure-hpc-cache-preview"></a>Vereisten voor de Azure HPC-cache (preview-versie)
+# <a name="prerequisites-for-azure-hpc-cache"></a>Vereisten voor de Azure HPC-cache
 
 Voordat u de Azure Portal gebruikt om een nieuwe Azure HPC-cache te maken, moet u ervoor zorgen dat uw omgeving aan deze vereisten voldoet.
 
@@ -22,7 +22,7 @@ Voordat u de Azure Portal gebruikt om een nieuwe Azure HPC-cache te maken, moet 
 Een betaald abonnement wordt aanbevolen.
 
 > [!NOTE]
-> Tijdens de preview-versie moet het Azure HPC-cache team uw abonnement toevoegen aan de lijst met toegang voordat het kan worden gebruikt voor het maken van een cache-exemplaar. Met deze procedure kunt u ervoor zorgen dat elke klant de reactie snelheid van hoge kwaliteit vanuit hun test caches ontvangt. Vul [dit formulier](https://aka.ms/onboard-hpc-cache) in om toegang aan te vragen.
+> Tijdens de eerste maanden van de GA-release moet het team van de Azure HPC-cache uw abonnement toevoegen aan de lijst met toegang voordat het kan worden gebruikt om een cache-exemplaar te maken. Met deze procedure kunt u ervoor zorgen dat elke klant de reactie snelheid van hoge kwaliteit vanuit hun caches ontvangt. Vul [dit formulier](https://aka.ms/onboard-hpc-cache) in om toegang aan te vragen.
 
 ## <a name="network-infrastructure"></a>Netwerk infrastructuur
 
@@ -58,7 +58,7 @@ Controleer deze aan de machtigingen gerelateerde vereisten voordat u begint met 
 
 * Het cache-exemplaar moet virtuele netwerk interfaces (Nic's) kunnen maken. De gebruiker die de cache maakt, moet voldoende bevoegdheden hebben in het abonnement om Nic's te maken.
 
-* Bij gebruik van Blob-opslag moet de Azure HPC-cache worden gemachtigd om toegang te krijgen tot uw opslag account. U kunt op rollen gebaseerd toegangs beheer (RBAC) gebruiken om de cache toegang te geven tot uw Blob-opslag. Er zijn twee rollen vereist: Inzender voor het opslag account en de gegevensfeed voor opslag-blobs. Volg de instructies in [opslag doelen toevoegen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) om de rollen toe te voegen.
+* Bij gebruik van Blob-opslag moet de Azure HPC-cache worden gemachtigd om toegang te krijgen tot uw opslag account. U kunt op rollen gebaseerd toegangs beheer (RBAC) gebruiken om de cache toegang te geven tot uw Blob-opslag. Er zijn twee rollen vereist: Inzender van het opslag account en de gegevensinzender voor opslag-blobs. Volg de instructies in [opslag doelen toevoegen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) om de rollen toe te voegen.
 
 ## <a name="storage-infrastructure"></a>Opslag infrastructuur
 
@@ -80,13 +80,13 @@ Maak het account en de container voordat u deze probeert toe te voegen als een o
 
 Als u een compatibel opslag account wilt maken, gebruikt u deze instellingen:
 
-* Nemen **Standard**
+* Prestaties: **standaard**
 * Soort account: **StorageV2 (algemeen gebruik v2)**
-* Replicat **Lokaal redundante opslag (LRS)**
-* Toegangs niveau (standaard): **hot**
+* Replicatie: **lokaal redundante opslag (LRS)**
+* Access-laag (standaard): **Hot**
 
 Het is een goed idee om een opslag account te gebruiken dat zich op dezelfde locatie bevinden als de cache.
-<!-- need to clarify location - same region or same resource group or same virtual network? -->
+<!-- clarify location - same region or same resource group or same virtual network? -->
 
 U moet ook de cache toepassing toegang geven tot uw Azure-opslag account. Volg de beschrijving in [opslag doelen toevoegen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) om de toegang tot de rechten van het opslag account in de cache van Access rollen en de gegevensinzender voor opslag-blobs te geven. Als u niet de eigenaar van het opslag account bent, laat u de eigenaar deze stap uitvoeren.
 

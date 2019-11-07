@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 0262be687b74ec1b97cb508f6da1b95cd5d7a533
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 639a3f89e470a832279add8d2ed7cf49441611f4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596922"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571788"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Veelgestelde vragen over Azure Security Center voor IoT  
 
@@ -66,11 +66,11 @@ Azure Security Center voor IoT-agent biedt een bedreigings dekking op apparaatni
 
 ## <a name="where-can-i-get-the-azure-security-center-for-iot-security-agent"></a>Waar kan ik de Azure Security Center voor IoT-beveiligings agent krijgen?
 
-De Azure Security Center voor IoT-beveiligings agent is open source en beschikbaar op GitHub in 32 bits en 64-bits Windows-en Linux https://github.com/Azure/Azure-Security-IoT -versies:.
+De Azure Security Center voor IoT-beveiligings agent is open source en beschikbaar op GitHub in 32 bits en 64-bits Windows-en Linux-versies: https://github.com/Azure/Azure-Security-IoT.
 
 ## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>Waar wordt de Azure Security Center voor IoT-agent geïnstalleerd? 
 
-Gedetailleerde informatie over de installatie en implementatie van de agent vindt u https://github.com/Azure/Azure-Security-IoT in github:.
+Gedetailleerde informatie over de installatie en agent implementatie vindt u in GitHub: https://github.com/Azure/Azure-IoT-Security.
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Wat zijn de afhankelijkheden en vereisten van de agent?
 
@@ -92,7 +92,7 @@ Azure Security Center voor IoT biedt Configureer bare scans van agents, gegevens
 
 Ja. De door agent verzonden gegevens worden meegeteld in uw IoT Hub-quotum. 
 
-## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Wat zijn de volgende stappen? Ik heb een agent geïnstalleerd en geen activiteiten of logboeken weer geven...
+## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Wat nu? Ik heb een agent geïnstalleerd en geen activiteiten of logboeken weer geven...
 
 1. Controleer of het [agent type past bij het aangewezen OS-platform van uw apparaat](how-to-deploy-agent.md)
 

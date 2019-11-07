@@ -1,5 +1,5 @@
 ---
-title: Rollen en machtigingen voor Azure Data Factory | Microsoft Docs
+title: Rollen en machtigingen voor Azure Data Factory
 description: Hierin worden de rollen en machtigingen beschreven die nodig zijn om gegevens fabrieken te maken en om met onderliggende resources te werken.
 ms.date: 11/5/2018
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 9df65322958bffd3182aaa8d734e8b29717d939d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f5b4cbc670a429a84f42be79adb00057656a5483
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142529"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681427"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen en machtigingen voor Azure Data Factory
 
@@ -46,7 +46,7 @@ Als u lid bent van de rol **Data Factory Inzender** , kunnen gebruikers het volg
 
 Zie [Data Factory rol Inzender](../role-based-access-control/built-in-roles.md#data-factory-contributor)voor meer informatie over deze rol.
 
-### <a name="resource-manager-template-deployment"></a>Sjabloonimplementatie van Resource Manager
+### <a name="resource-manager-template-deployment"></a>Implementatie van Resource Manager-sjabloon
 
 Met de rol **Data Factory Inzender** , op het niveau van de resource groep of hoger, kunnen gebruikers Resource Manager-sjablonen implementeren. Als gevolg hiervan kunnen leden van de rol Resource Manager-sjablonen gebruiken voor het implementeren van zowel gegevens fabrieken als hun onderliggende resources, inclusief gegevens sets, gekoppelde services, pijp lijnen, triggers en Integration Runtimes. Als u lidmaatschap van deze rol gebruikt, kan de gebruiker echter geen andere resources maken.
 
@@ -82,7 +82,7 @@ Hier volgen enkele voor beelden van hoe u met aangepaste rollen kunt profiteren:
 
 - Hiermee kan een gebruiker alleen de verbinding in een gekoppelde service testen
 
-    Maak een aangepaste rol met machtigingen voor de volgende acties: **Micro soft. DataFactory/fabrieken/getFeatureValue/lezen** en **micro soft. DataFactory/fabrieken/getDataPlaneAccess/lezen**. Wijs deze aangepaste rol toe aan de data factory resource voor de gebruiker.
+    Maak een aangepaste rol met machtigingen voor de volgende acties: **micro soft. DataFactory/factorions/getFeatureValue/Read** en **micro soft. DataFactory/factoryes/getDataPlaneAccess/lezen**. Wijs deze aangepaste rol toe aan de data factory resource voor de gebruiker.
 
 - Laat een gebruiker een data factory bijwerken vanuit Power shell of de SDK, maar niet in de Azure Portal.
 

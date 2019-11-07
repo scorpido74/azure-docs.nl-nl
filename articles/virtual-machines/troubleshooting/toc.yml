@@ -174,7 +174,7 @@
 - name: Opstartfouten
   href: boot-error-troubleshoot.md
   items:
-    - name: Azure Virtual Machine-opstartfout
+    - name: Grub Rescue
       href: troubleshoot-vm-boot-error.md
     - name: Diagnostische gegevens over opstarten
       href: boot-diagnostics.md

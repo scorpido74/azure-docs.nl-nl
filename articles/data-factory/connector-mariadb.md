@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren van MariaDB met Azure Data Factory | Microsoft Docs
-description: Leer hoe u gegevens kopiëren van MariaDB naar ondersteunde sink-gegevensopslag met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens kopiëren van MariaDB met behulp van Azure Data Factory
+description: Meer informatie over het kopiëren van gegevens uit MariaDB naar ondersteunde Sink-gegevens archieven met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b58617281094973e2705c34fdd4e4f6ccb2e8d8c
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 853d39545d099f43cd5769eadae974e20c977e53
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090139"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680731"
 ---
-# <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Gegevens kopiëren van MariaDB met Azure Data Factory
+# <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Gegevens kopiëren van MariaDB met behulp van Azure Data Factory
 
-In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in Azure Data Factory om gegevens te kopiëren van MariaDB. Dit is gebaseerd op de [overzicht kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit MariaDB te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
@@ -30,9 +30,9 @@ Deze MariaDB-connector wordt ondersteund voor de volgende activiteiten:
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
-U kunt gegevens uit MariaDB kopiëren naar een ondersteunde sink-gegevensopslag. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
+U kunt gegevens van MariaDB kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-Azure Data Factory biedt een ingebouwde stuurprogramma als connectiviteit wilt inschakelen, dus hoeft u stuurprogramma voor gebruik van deze connector handmatig installeren.
+Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelijk te maken. u hoeft dus niet hand matig een stuur programma te installeren met behulp van deze connector.
 
 Deze connector ondersteunt momenteel MariaDB van versie 10.0 10.2.
 
@@ -44,17 +44,17 @@ Deze connector ondersteunt momenteel MariaDB van versie 10.0 10.2.
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-De volgende secties bevatten meer informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten specifieke naar MariaDB-connector.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek zijn voor MariaDB-connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
 De volgende eigenschappen worden ondersteund voor MariaDB gekoppelde service:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **MariaDB** | Ja |
-| connectionString | Een ODBC-verbindingsreeks verbinding maken met MariaDB. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook wacht woord in azure Key Vault plaatsen en de `pwd` configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
-| connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
+| connectionString | Een ODBC-connection string om verbinding te maken met MariaDB. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook wacht woord in Azure Key Vault plaatsen en de `pwd` configuratie uit de connection string halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
 **Voorbeeld:**
 
@@ -108,9 +108,9 @@ De volgende eigenschappen worden ondersteund voor MariaDB gekoppelde service:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund voor MariaDB-gegevensset.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de MariaDB-gegevensset.
 
-Om gegevens te kopiëren van MariaDB, stel de eigenschap type van de gegevensset in **MariaDBTable**. Er is geen aanvullende typespecifieke-eigenschap in dit type gegevensset.
+Als u gegevens van MariaDB wilt kopiëren, stelt u de eigenschap type van de gegevensset in op **MariaDBTable**. Er is geen aanvullende typespecifieke eigenschap in dit type gegevensset.
 
 **Voorbeeld**
 
@@ -131,16 +131,16 @@ Om gegevens te kopiëren van MariaDB, stel de eigenschap type van de gegevensset
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door MariaDB-bron.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die door MariaDB-bron worden ondersteund.
 
 ### <a name="mariadb-as-source"></a>MariaDB als bron
 
-Om gegevens te kopiëren van MariaDB, stelt u het brontype in de kopieeractiviteit naar **MariaDBSource**. De volgende eigenschappen worden ondersteund in de kopieeractiviteit **bron** sectie:
+Als u gegevens wilt kopiëren uit MariaDB, stelt u het bron type in de Kopieer activiteit in op **MariaDBSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **MariaDBSource** | Ja |
-| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **MariaDBSource** | Ja |
+| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
 **Voorbeeld:**
 
@@ -180,4 +180,4 @@ Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer info
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

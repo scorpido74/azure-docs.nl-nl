@@ -1,5 +1,5 @@
 ---
-title: Gegevens kopiëren van en naar Oracle met behulp van Azure Data Factory | Microsoft Docs
+title: Gegevens kopiëren van en naar Oracle met behulp van Azure Data Factory
 description: Meer informatie over het kopiëren van gegevens van ondersteunde bron archieven naar een Oracle-data base of van Oracle naar ondersteunde Sink-archieven, met behulp van Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 24ff711fcd27d59c555a53a910065e19f7298131
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d8cbc7410f2b2bd525148cee9dc5b8ddbb756dff
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931062"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680507"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Oracle met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -67,10 +67,10 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 De gekoppelde Oracle-Service ondersteunt de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op **Oracle**. | Ja |
-| Verbindings | Hiermee geeft u de gegevens op die nodig zijn om verbinding te maken met het Oracle Database-exemplaar. <br/>Markeer dit veld als `SecureString` om het veilig op te slaan in Data Factory. U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) met meer informatie. <br><br>**Ondersteund verbindings type**: u kunt de **Oracle-sid** of **Oracle-Service naam** gebruiken om uw data base te identificeren:<br>-Als u SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;` gebruikt<br>-Als u de service naam gebruikt: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ja |
+| connectionString | Hiermee geeft u de gegevens op die nodig zijn om verbinding te maken met het Oracle Database-exemplaar. <br/>Markeer dit veld als `SecureString` om het veilig op te slaan in Data Factory. U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) met meer informatie. <br><br>**Ondersteund verbindings type**: u kunt de **Oracle-sid** of **Oracle-Service naam** gebruiken om uw data base te identificeren:<br>-Als u SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;` gebruikt<br>-Als u de service naam gebruikt: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ja |
 | connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
 >[!TIP]
@@ -178,11 +178,11 @@ Deze sectie bevat een lijst met eigenschappen die door de Oracle-gegevensset wor
 
 Als u gegevens wilt kopiëren van en naar Oracle, stelt u de eigenschap type van de gegevensset in op `OracleTable`. De volgende eigenschappen worden ondersteund.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de DataSet moet worden ingesteld op `OracleTable`. | Ja |
 | Schema | De naam van het schema. |Nee voor bron, ja voor Sink  |
-| Tabel | De naam van de tabel/weer gave. |Nee voor bron, ja voor Sink  |
+| tabel | De naam van de tabel/weer gave. |Nee voor bron, ja voor Sink  |
 | tableName | De naam van de tabel/weer gave met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik voor nieuwe werk belasting `schema` en `table`. | Nee voor bron, ja voor Sink |
 
 **Voorbeeld:**
@@ -217,7 +217,7 @@ In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door d
 
 Als u gegevens van Oracle wilt kopiëren, stelt u het bron type in de Kopieer activiteit in op `OracleSource`. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op `OracleSource`. | Ja |
 | oracleReaderQuery | Gebruik de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `"SELECT * FROM MyTable"`.<br>Wanneer u gepartitioneerde belasting inschakelt, moet u alle bijbehorende ingebouwde partitie parameters in uw query koppelen. Zie de sectie [parallelle kopie van Oracle](#parallel-copy-from-oracle) voor voor beelden. | Nee |
@@ -264,7 +264,7 @@ Als u gegevens van Oracle wilt kopiëren, stelt u het bron type in de Kopieer ac
 
 Als u gegevens wilt kopiëren naar Oracle, stelt u het sink-type in de Kopieer activiteit in op `OracleSink`. De volgende eigenschappen worden ondersteund in het gedeelte **sink** van de Kopieer activiteit.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op `OracleSink`. | Ja |
 | writeBatchSize | Hiermee worden gegevens in de SQL-tabel ingevoegd wanneer de buffer grootte `writeBatchSize`bereikt.<br/>Toegestane waarden zijn integer (aantal rijen). |Nee (de standaard waarde is 10.000) |
@@ -357,10 +357,10 @@ Wanneer u gegevens van en naar Oracle kopieert, zijn de volgende toewijzingen va
 | Oracle-gegevens type | Data Factory tussentijds gegevens type |
 |:--- |:--- |
 | MENU |Byte [] |
-| BLOBCACHE |Byte []<br/>(alleen ondersteund op Oracle 10g en hoger) |
+| BLOB |Byte []<br/>(alleen ondersteund op Oracle 10g en hoger) |
 | CHAR |Tekenreeks |
 | CLOB |Tekenreeks |
-| DATE |Datum/tijd |
+| DATE |DateTime |
 | FLOAT |Decimaal, teken reeks (als precisie > 28) |
 | GEHEELTALLIGE |Decimaal, teken reeks (als precisie > 28) |
 | OMVANG |Tekenreeks |
@@ -371,12 +371,12 @@ Wanneer u gegevens van en naar Oracle kopieert, zijn de volgende toewijzingen va
 | NVARCHAR2 |Tekenreeks |
 | UITGANG |Byte [] |
 | ROWID |Tekenreeks |
-| Neem |Datum/tijd |
+| Neem |DateTime |
 | TIJDS TEMPEL MET LOKALE TIJD ZONE |Tekenreeks |
 | TIJDS TEMPEL MET TIJD ZONE |Tekenreeks |
 | NIET-ONDERTEKEND GEHEEL GETAL |Aantal |
 | VARCHAR2 |Tekenreeks |
-| INDELING |Tekenreeks |
+| XML |Tekenreeks |
 
 > [!NOTE]
 > De gegevens typen INTERVAL jaar tot maand en INTERVAL dag tot seconde worden niet ondersteund.

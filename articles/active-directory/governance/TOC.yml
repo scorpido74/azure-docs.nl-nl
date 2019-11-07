@@ -84,6 +84,14 @@
               href: entitlement-management-request-access.md
     - name: Toegangsbeoordelingen
       items:
+        - name: Toegangspakketten
+          items:
+            - name: Een toegangsbeoordeling maken
+              href: entitlement-management-access-reviews-create.md
+            - name: Toegang beoordelen
+              href: entitlement-management-access-reviews-review-access.md
+            - name: Toegang beoordelen voor uzelf
+              href: entitlement-management-access-reviews-self-review.md
         - name: Groepen en apps
           items:
             - name: Een toegangsbeoordeling maken

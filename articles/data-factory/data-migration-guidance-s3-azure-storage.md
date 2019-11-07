@@ -1,5 +1,5 @@
 ---
-title: Gebruik Azure Data Factory om gegevens te migreren van Amazon S3 naar Azure Storage | Microsoft Docs
+title: Azure Data Factory gebruiken om gegevens te migreren van Amazon S3 naar Azure Storage
 description: Gebruik Azure Data Factory om gegevens te migreren van Amazon S3 naar Azure Storage.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 8/04/2019
-ms.openlocfilehash: 5f98cb29bd61c674ef7d7e6af781760fe81a5085
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4d4e0453105dacfbf35624a2a9acb9d5994f4dea
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177897"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675746"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory gebruiken om gegevens te migreren van Amazon S3 naar Azure Storage 
 
@@ -149,7 +149,7 @@ Dit is de geschatte prijs op basis van de bovenstaande hypo Thesen:
 - [Nieuwe en gewijzigde bestanden kopiëren op basis van LastModifiedDate](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
 - [Pagina met prijzen voor ADF](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
-## <a name="template"></a>Sjabloon
+## <a name="template"></a>Template
 
 Dit is de [sjabloon](solution-template-migration-s3-azure.md) waarmee u begint met het migreren van PETA bytes aan gegevens van honderden miljoenen bestanden van Amazon S3 naar Azure data Lake Storage Gen2.
 

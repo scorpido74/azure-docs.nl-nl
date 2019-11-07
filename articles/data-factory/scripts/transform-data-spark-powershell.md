@@ -1,5 +1,5 @@
 ---
-title: 'Power shell-script: gegevens transformeren in de Cloud met behulp van Data Factory | Microsoft Docs'
+title: 'Power shell-script: gegevens transformeren in de Cloud met behulp van Data Factory '
 description: Met dit Power shell-script worden gegevens in de Cloud getransformeerd door een Spark-programma uit te voeren op een Azure HDInsight Spark cluster.
 author: djpmsft
 ms.author: daperlov
@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/12/2017
-ms.openlocfilehash: 973efe90ea1da68e4c4e4b0dbbb4c191be18213d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 53f64103819476e4efe918bd7a7be4ee2a1bcca3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140883"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684321"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>Power shell-script: gegevens transformeren in de Cloud met behulp van Azure Data Factory
 
@@ -62,7 +62,7 @@ Met dit Power shell-voorbeeld script maakt u een pijp lijn waarmee gegevens in d
 
 ### <a name="upload-the-input-file"></a>Invoerbestand uploaden
 1. Maak een bestand met de naam **minecraftstory.txt** met wat tekst. In het Spark-programma wordt het aantal woorden in deze tekst geteld. 
-2. Maak een submap met de `inputfiles` naam in `spark` de map van de BLOB-container. 
+2. Maak een submap met de naam `inputfiles` in de map `spark` van de BLOB-container. 
 3. Upload de `minecraftstory.txt` naar de submap`inputfiles`. 
 
 ## <a name="sample-script"></a>Voorbeeldscript
@@ -90,13 +90,13 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Een data factory maken. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Maak een gegevensfactory. |
 | [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/set-Azdatafactoryv2linkedservice) | Hiermee maakt u een gekoppelde service in de data factory. Een gekoppelde service koppelt een gegevens archief of kan worden berekend op een data factory. |
 | [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/set-Azdatafactoryv2pipeline) | Hiermee maakt u een pijp lijn in de data factory. Een pijp lijn bevat een of meer activiteiten die een bepaalde bewerking uitvoeren. In deze pijp lijn transformeert een Spark-activiteit gegevens door een programma uit te voeren op een Azure HDInsight Spark cluster. |
 | [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/invoke-Azdatafactoryv2pipeline) | Hiermee maakt u een uitvoering voor de pijp lijn. Met andere woorden, de pijp lijn uitvoeren. |
 | [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | Haalt Details op over de uitvoering van de activiteit (uitvoering van de activiteit) in de pijp lijn. 
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen

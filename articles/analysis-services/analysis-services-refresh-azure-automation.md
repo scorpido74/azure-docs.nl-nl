@@ -1,17 +1,17 @@
 ---
 title: Azure Analysis Services modellen vernieuwen met Azure Automation | Microsoft Docs
-description: Meer informatie over het vernieuwen van code modellen met behulp van Azure Automation.
+description: In dit artikel wordt beschreven hoe u code model vernieuwt voor Azure Analysis Services met behulp van Azure Automation.
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: ed1634ef1009149dc2937174b20248eab9cd335f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294792"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572355"
 ---
 # <a name="refresh-with-azure-automation"></a>Vernieuwen met Azure Automation
 
@@ -21,7 +21,7 @@ In het voor beeld in dit artikel wordt gebruikgemaakt van de [Power shell sqlser
 
 Verderop in dit artikel vindt u een voor beeld van een Power shell-Runbook, dat laat zien hoe u een model vernieuwt.  
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
 Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory (OAuth 2)-token.  In het voor beeld in dit artikel wordt gebruikgemaakt van een service-principal (SPN) voor het verifiëren van Azure Analysis Services.
 
@@ -101,7 +101,7 @@ Dit kan als volgt worden geconfigureerd:
  
     ![Planning maken](./media/analysis-services-refresh-azure-automation/14.png)
 
-2. Klik op **planning** > **een nieuw schema maken**en vul de details in.
+2. Klik op **planning** > **een nieuw schema te maken**en vul de details in.
 
     ![Planning configureren](./media/analysis-services-refresh-azure-automation/15.png)
 
@@ -147,7 +147,7 @@ De **hoofd tekst** is een JSON-document dat de volgende eigenschappen moet bevat
 |Eigenschap  |Waarde  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |De naam van de Azure Analysis Services Data Base <br/> Voor beeld: AdventureWorksDB         |
-|**AnalysisServicesServer**     |De naam van de Azure Analysis Services-server. <br/> Voor beeld: https: \//westus. asazure. Windows. net/servers/mijn server/modellen/AdventureWorks/         |
+|**AnalysisServicesServer**     |De naam van de Azure Analysis Services-server. <br/> Voor beeld: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
 |**DatabaseRefreshType**     |Het type vernieuwing dat moet worden uitgevoerd. <br/> Voor beeld: volledig         |
 
 Voor beeld van JSON-hoofd tekst:

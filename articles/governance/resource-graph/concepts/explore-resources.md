@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: b92975e3fe73fb1c882bdfc4338fd8e169728e8b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 58eb5abc9a8857b81ada65c96eb7deaaa5cc5aeb
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387635"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622668"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Azure-resources verkennen met Resource Graph
 
@@ -40,7 +40,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ```
 
 > [!NOTE]
-> Met de cmdlet Azure PowerShell `Search-AzGraph` wordt standaard een **PSCustomObject** geretourneerd. Om ervoor te hebben dat de uitvoer er hetzelfde uitziet als wat door Azure CLI wordt geretourneerd, wordt de `ConvertTo-Json`-cmdlet gebruikt. De standaard waarde voor **diepte** is _2_. Als u deze instelt op _100_ , worden alle geretourneerde niveaus geconverteerd.
+> Met de cmdlet Azure PowerShell `Search-AzGraph` wordt standaard een **PSCustomObject** geretourneerd. Om ervoor te hebben dat de uitvoer er hetzelfde uitziet als wat wordt geretourneerd door Azure CLI, wordt de `ConvertTo-Json`-cmdlet gebruikt. De standaard waarde voor **diepte** is _2_. Als u deze instelt op _100_ , worden alle geretourneerde niveaus geconverteerd.
 
 De JSON-resultaten zijn vergelijkbaar met het volgende voor beeld:
 
@@ -312,6 +312,6 @@ Zie de [lijst virtuele machines met hun netwerk interface en openbaar IP-](../sa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [querytaal](query-language.md)
-- De taal die wordt gebruikt voor [Start query's](../samples/starter.md) weer geven
-- Zie Geavanceerd gebruik in [Geavanceerde query's](../samples/advanced.md)
+- Meer informatie over de [query taal](query-language.md).
+- Zie de taal die wordt gebruikt in [Start query's](../samples/starter.md).
+- Zie Geavanceerd gebruik in [Geavanceerde query's](../samples/advanced.md).

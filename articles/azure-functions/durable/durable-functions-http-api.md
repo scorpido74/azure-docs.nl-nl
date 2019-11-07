@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 094ae511337556ef0c67c86f6d8692cae005430a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: ad2b1b9236f88f99542f8705372af664cc299ee0
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033954"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614826"
 ---
 # <a name="http-api-reference"></a>HTTP API-verwijzing
 
@@ -22,13 +22,13 @@ De uitbrei ding Durable Functions maakt een reeks ingebouwde HTTP-Api's die kunn
 
 Voor alle HTTP-Api's die door de extensie worden geïmplementeerd, zijn de volgende para meters vereist. Het gegevens type van alle para meters is `string`.
 
-| Parameter        | Parametertype  | Description |
+| Parameter        | Parameter type  | Beschrijving |
 |------------------|-----------------|-------------|
-| **`taskHub`**    | Querytekenreeks    | De naam van de [taak hub](durable-functions-task-hubs.md). Indien niet opgegeven, wordt ervan uitgegaan dat de naam van de taak-hub van de huidige functie-app wordt gebruikt. |
-| **`connection`** | Querytekenreeks    | De **naam** van de Connection String voor het opslag account. Als deze niet wordt opgegeven, wordt aangenomen dat de standaard connection string voor de functie-app wordt gebruikt. |
-| **`systemKey`**  | Querytekenreeks    | De autorisatie sleutel die is vereist om de API aan te roepen. |
+| **`taskHub`**    | Query reeks    | De naam van de [taak hub](durable-functions-task-hubs.md). Indien niet opgegeven, wordt ervan uitgegaan dat de naam van de taak-hub van de huidige functie-app wordt gebruikt. |
+| **`connection`** | Query reeks    | De **naam** van de Connection String voor het opslag account. Als deze niet wordt opgegeven, wordt aangenomen dat de standaard connection string voor de functie-app wordt gebruikt. |
+| **`systemKey`**  | Query reeks    | De autorisatie sleutel die is vereist om de API aan te roepen. |
 
-`systemKey`is een autorisatie sleutel die automatisch wordt gegenereerd door de Azure Functions-host. Het geeft specifiek toegang tot de duurzame Api's voor taak uitbreidingen en kan op dezelfde manier worden beheerd als [andere autorisatie sleutels](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). U kunt url's genereren die de `taskHub`juiste `connection`waarden bevatten, en `systemKey` query teken reeks gebruiken met behulp van [Orchestrator client binding](durable-functions-bindings.md#orchestration-client) api's, `CreateCheckStatusResponse` zoals `CreateHttpManagementPayload` de api's en in .net, `createCheckStatusResponse` of de en `createHttpManagementPayload` Api's in Java script.
+`systemKey` is een autorisatie sleutel die automatisch door de Azure Functions-host wordt gegenereerd. Het geeft specifiek toegang tot de duurzame Api's voor taak uitbreidingen en kan op dezelfde manier worden beheerd als [andere autorisatie sleutels](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). U kunt Url's genereren die de juiste `taskHub`, `connection`en `systemKey` query teken reeks waarden bevatten met behulp van [Orchestrator client binding](durable-functions-bindings.md#orchestration-client) api's, zoals de api's `CreateCheckStatusResponse` en `CreateHttpManagementPayload` in .net, of de `createCheckStatusResponse`-en `createHttpManagementPayload`-Api's in Java script.
 
 In de volgende secties worden de specifieke HTTP-Api's beschreven die worden ondersteund door de uitbrei ding en worden voor beelden gegeven van hoe ze kunnen worden gebruikt.
 
@@ -58,7 +58,7 @@ POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld              | Parametertype  | Description |
+| Veld              | Parameter type  | Beschrijving |
 |--------------------|-----------------|-------------|
 | **`functionName`** | URL             | De naam van de Orchestrator-functie die moet worden gestart. |
 | **`instanceId`**   | URL             | Optionele para meter. De ID van het Orchestration-exemplaar. Als deze niet wordt opgegeven, begint de Orchestrator-functie met een wille keurige exemplaar-ID. |
@@ -68,8 +68,8 @@ Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, ev
 
 Er kunnen verschillende mogelijke status code waarden worden geretourneerd.
 
-* **HTTP 202 (geaccepteerd)** : De opgegeven Orchestrator-functie is gepland om te worden uitgevoerd. De `Location` antwoord header bevat een URL voor het navragen van de Orchestration-status.
-* **HTTP 400 (ongeldige aanvraag)** : De opgegeven Orchestrator-functie bestaat niet, de opgegeven exemplaar-ID is ongeldig of de aanvraag inhoud is geen geldige JSON.
+* **HTTP 202 (geaccepteerd)** : de opgegeven Orchestrator-functie is gepland om te worden uitgevoerd. De antwoord header `Location` bevat een URL voor het navragen van de Orchestration-status.
+* **HTTP 400 (ongeldige aanvraag)** : de opgegeven Orchestrator-functie bestaat niet, de opgegeven exemplaar-id is ongeldig of de aanvraag inhoud is geen geldige JSON.
 
 Hier volgt een voorbeeld aanvraag waarmee een `RestartVMs` Orchestrator-functie wordt gestart en die JSON-object Payload bevat:
 
@@ -86,7 +86,7 @@ Content-Length: 83
 
 De nettolading van de reactie voor de **HTTP 202-** cases is een JSON-object met de volgende velden:
 
-| Veld                       | Description                          |
+| Veld                       | Beschrijving                          |
 |-----------------------------|--------------------------------------|
 | **`id`**                    |De ID van het Orchestration-exemplaar. |
 | **`statusQueryGetUri`**     |De status-URL van het Orchestrator-exemplaar. |
@@ -97,7 +97,7 @@ De nettolading van de reactie voor de **HTTP 202-** cases is een JSON-object met
 
 Het gegevens type van alle velden is `string`.
 
-Hier volgt een voor beeld van een nettolading voor een Orchestrator- `abc123` exemplaar met als id (opgemaakt voor de Lees baarheid):
+Hier volgt een voor beeld van een nettolading voor een Orchestrator-exemplaar met `abc123` als ID (opgemaakt voor de Lees baarheid):
 
 ```http
 {
@@ -111,8 +111,8 @@ Hier volgt een voor beeld van een nettolading voor een Orchestrator- `abc123` ex
 
 Het HTTP-antwoord is bedoeld om compatibel te zijn met het *polling Consumer-patroon*. Het bevat ook de volgende belang rijke reactie headers:
 
-* **Locatie**: De URL van het status eindpunt. Deze URL bevat dezelfde waarde als het `statusQueryGetUri` veld.
-* **Opnieuw proberen na**: Het aantal seconden dat moet worden gewacht tussen polling bewerkingen. De standaardwaarde is `10`.
+* **Locatie**: de URL van het eind punt van de status. Deze URL bevat dezelfde waarde als het `statusQueryGetUri` veld.
+* **Opnieuw proberen na**: het aantal seconden dat moet worden gewacht tussen polling bewerkingen. De standaard waarde is `10`.
 
 Zie de documentatie over [http async-tracering](durable-functions-http-features.md#async-operation-tracking) voor meer informatie over het asynchrone HTTP polling-patroon.
 
@@ -148,37 +148,37 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld                   | Parametertype  | Description |
+| Veld                   | Parameter type  | Beschrijving |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL             | De ID van het Orchestration-exemplaar. |
-| **`showInput`**         | Querytekenreeks    | Optionele para meter. Als deze optie `false`is ingesteld op, wordt de functie-invoer niet opgenomen in de nettolading van het antwoord.|
-| **`showHistory`**       | Querytekenreeks    | Optionele para meter. Als deze is `true`ingesteld op, wordt de geschiedenis van de Orchestration-uitvoering opgenomen in de nettolading van de reactie.|
-| **`showHistoryOutput`** | Querytekenreeks    | Optionele para meter. Als deze optie `true`is ingesteld op, worden de functie-uitvoer opgenomen in de geschiedenis van de Orchestration-uitvoering.|
-| **`createdTimeFrom`**   | Querytekenreeks    | Optionele para meter. Hiermee wordt de lijst met geretourneerde exemplaren die zijn gemaakt op of na de opgegeven ISO8601-tijds tempel gefilterd.|
-| **`createdTimeTo`**     | Querytekenreeks    | Optionele para meter. Hiermee wordt de lijst met geretourneerde exemplaren die zijn gemaakt op of vóór de opgegeven ISO8601-tijds tempel gefilterd.|
-| **`runtimeStatus`**     | Querytekenreeks    | Optionele para meter. Hiermee wordt indien opgegeven de lijst met geretourneerde instanties gefilterd op basis van de runtime status. Zie het artikel [querying instances](durable-functions-instance-management.md) voor een lijst met mogelijke runtime status waarden. |
+| **`showInput`**         | Query reeks    | Optionele para meter. Als deze optie is ingesteld op `false`, wordt de functie-invoer niet opgenomen in de nettolading van het antwoord.|
+| **`showHistory`**       | Query reeks    | Optionele para meter. Als deze is ingesteld op `true`, wordt de geschiedenis van de Orchestration-uitvoering opgenomen in de nettolading van de reactie.|
+| **`showHistoryOutput`** | Query reeks    | Optionele para meter. Als deze optie is ingesteld op `true`, worden de functie-uitvoer opgenomen in de geschiedenis van de Orchestration-uitvoering.|
+| **`createdTimeFrom`**   | Query reeks    | Optionele para meter. Hiermee wordt de lijst met geretourneerde exemplaren die zijn gemaakt op of na de opgegeven ISO8601-tijds tempel gefilterd.|
+| **`createdTimeTo`**     | Query reeks    | Optionele para meter. Hiermee wordt de lijst met geretourneerde exemplaren die zijn gemaakt op of vóór de opgegeven ISO8601-tijds tempel gefilterd.|
+| **`runtimeStatus`**     | Query reeks    | Optionele para meter. Hiermee wordt indien opgegeven de lijst met geretourneerde instanties gefilterd op basis van de runtime status. Zie het artikel [querying instances](durable-functions-instance-management.md) voor een lijst met mogelijke runtime status waarden. |
 
 ### <a name="response"></a>Antwoord
 
 Er kunnen verschillende mogelijke status code waarden worden geretourneerd.
 
-* **HTTP 200 (OK)** : Het opgegeven exemplaar heeft de status voltooid.
-* **HTTP 202 (geaccepteerd)** : Het opgegeven exemplaar wordt uitgevoerd.
-* **HTTP 400 (ongeldige aanvraag)** : Het opgegeven exemplaar is mislukt of beëindigd.
-* **HTTP 404 (niet gevonden)** : Het opgegeven exemplaar bestaat niet of is niet gestart.
-* **HTTP 500 (interne server fout)** : Het opgegeven exemplaar is mislukt vanwege een onverwerkte uitzonde ring.
+* **HTTP 200 (OK)** : het opgegeven exemplaar bevindt zich in de status voltooid.
+* **HTTP 202 (geaccepteerd)** : het opgegeven exemplaar wordt uitgevoerd.
+* **HTTP 400 (ongeldige aanvraag)** : het opgegeven exemplaar is mislukt of is beëindigd.
+* **HTTP 404 (niet gevonden)** : het opgegeven exemplaar bestaat niet of is niet gestart.
+* **HTTP 500 (interne server fout)** : het opgegeven exemplaar is mislukt vanwege een onverwerkte uitzonde ring.
 
 De nettolading van de reactie voor de **http 200-** en **http 202** -CASEs is een JSON-object met de volgende velden:
 
-| Veld                 | Gegevenstype | Description |
+| Veld                 | Gegevenstype | Beschrijving |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | string    | De runtime status van het exemplaar. Waarden zijn onder andere *actief*, *in behandeling*, *mislukt*, *geannuleerd*, *beëindigd*, *voltooid*. |
-| **`input`**           | JSON      | De JSON-gegevens die worden gebruikt voor het initialiseren van het exemplaar. Dit veld is `null` als de `showInput` query teken reeks parameter is ingesteld `false`op.|
-| **`customStatus`**    | JSON      | De JSON-gegevens die worden gebruikt voor de aangepaste indelings status. Dit veld is `null` niet ingesteld. |
-| **`output`**          | JSON      | De JSON-uitvoer van het exemplaar. Dit veld is `null` een niet-voltooide status van het exemplaar. |
-| **`createdTime`**     | string    | Het tijdstip waarop het exemplaar is gemaakt. Maakt gebruik van ISO 8601 Extended-notatie. |
-| **`lastUpdatedTime`** | string    | Het tijdstip waarop het exemplaar het laatst is bewaard. Maakt gebruik van ISO 8601 Extended-notatie. |
-| **`historyEvents`**   | JSON      | Een JSON-matrix met de geschiedenis van de Orchestration-uitvoering. Dit veld is `null` tenzij de `showHistory` query teken reeks parameter is ingesteld `true`op. |
+| **`runtimeStatus`**   | tekenreeks    | De runtime status van het exemplaar. Waarden zijn onder andere *actief*, *in behandeling*, *mislukt*, *geannuleerd*, *beëindigd*, *voltooid*. |
+| **`input`**           | JSON      | De JSON-gegevens die worden gebruikt voor het initialiseren van het exemplaar. Dit veld wordt `null` als de `showInput` query teken reeks parameter is ingesteld op `false`.|
+| **`customStatus`**    | JSON      | De JSON-gegevens die worden gebruikt voor de aangepaste indelings status. Dit veld is `null` als het niet is ingesteld. |
+| **`output`**          | JSON      | De JSON-uitvoer van het exemplaar. Dit veld wordt `null` als het exemplaar niet de status voltooid heeft. |
+| **`createdTime`**     | tekenreeks    | Het tijdstip waarop het exemplaar is gemaakt. Maakt gebruik van ISO 8601 Extended-notatie. |
+| **`lastUpdatedTime`** | tekenreeks    | Het tijdstip waarop het exemplaar het laatst is bewaard. Maakt gebruik van ISO 8601 Extended-notatie. |
+| **`historyEvents`**   | JSON      | Een JSON-matrix met de geschiedenis van de Orchestration-uitvoering. Dit veld wordt `null` tenzij de `showHistory` query teken reeks parameter is ingesteld op `true`. |
 
 Hier volgt een voor beeld van een nettolading met de geschiedenis van de Orchestration-uitvoering en uitvoer van de activiteit (opgemaakt voor de Lees baarheid):
 
@@ -235,13 +235,13 @@ Hier volgt een voor beeld van een nettolading met de geschiedenis van de Orchest
 }
 ```
 
-Het **http 202-** antwoord bevat ook een **locatie** antwoord header die verwijst naar dezelfde URL als `statusQueryGetUri` het eerder genoemde veld.
+Het **HTTP 202-** antwoord bevat ook een **locatie** antwoord header die verwijst naar dezelfde URL als het `statusQueryGetUri` veld dat eerder is vermeld.
 
 ## <a name="get-all-instances-status"></a>Status van alle instanties ophalen
 
-U kunt ook een query uitvoeren op de status van alle instanties `instanceId` door de uit de aanvraag ' exemplaar status ophalen ' te verwijderen. In dit geval zijn de basis parameters hetzelfde als de Get-exemplaar status. Query reeks parameters voor filteren worden ook ondersteund.
+U kunt ook een query uitvoeren op de status van alle instanties door de `instanceId` te verwijderen uit de aanvraag status van exemplaar ophalen. In dit geval zijn de basis parameters hetzelfde als de Get-exemplaar status. Query reeks parameters voor filteren worden ook ondersteund.
 
-Een ding die u moet onthouden `connection` is `code` dat en is optioneel. Als u anonieme verificatie hebt voor de functie, `code` is dit niet vereist.
+Het enige wat u moet onthouden is dat `connection` en `code` optioneel zijn. Als u anonieme verificatie hebt voor de functie, is `code` niet vereist.
 Als u geen andere opslag connection string wilt gebruiken dan gedefinieerd in de app-instelling voor AzureWebJobsStorage, kunt u de teken reeks parameter voor de verbindings query veilig negeren.
 
 ### <a name="request"></a>Aanvraag
@@ -276,16 +276,16 @@ GET /runtime/webhooks/durableTask/instances?
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld                   | Parametertype  | Description |
+| Veld                   | Parameter type  | Beschrijving |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL             | De ID van het Orchestration-exemplaar. |
-| **`showInput`**         | Querytekenreeks    | Optionele para meter. Als deze optie `false`is ingesteld op, wordt de functie-invoer niet opgenomen in de nettolading van het antwoord.|
-| **`showHistory`**       | Querytekenreeks    | Optionele para meter. Als deze is `true`ingesteld op, wordt de geschiedenis van de Orchestration-uitvoering opgenomen in de nettolading van de reactie.|
-| **`showHistoryOutput`** | Querytekenreeks    | Optionele para meter. Als deze optie `true`is ingesteld op, worden de functie-uitvoer opgenomen in de geschiedenis van de Orchestration-uitvoering.|
-| **`createdTimeFrom`**   | Querytekenreeks    | Optionele para meter. Hiermee wordt de lijst met geretourneerde exemplaren die zijn gemaakt op of na de opgegeven ISO8601-tijds tempel gefilterd.|
-| **`createdTimeTo`**     | Querytekenreeks    | Optionele para meter. Hiermee wordt de lijst met geretourneerde exemplaren die zijn gemaakt op of vóór de opgegeven ISO8601-tijds tempel gefilterd.|
-| **`runtimeStatus`**     | Querytekenreeks    | Optionele para meter. Hiermee wordt indien opgegeven de lijst met geretourneerde instanties gefilterd op basis van de runtime status. Zie het artikel [querying instances](durable-functions-instance-management.md) voor een lijst met mogelijke runtime status waarden. |
-| **`top`**               | Querytekenreeks    | Optionele para meter. Hiermee wordt het aantal exemplaren dat door de query wordt geretourneerd, beperkt. |
+| **`showInput`**         | Query reeks    | Optionele para meter. Als deze optie is ingesteld op `false`, wordt de functie-invoer niet opgenomen in de nettolading van het antwoord.|
+| **`showHistory`**       | Query reeks    | Optionele para meter. Als deze is ingesteld op `true`, wordt de geschiedenis van de Orchestration-uitvoering opgenomen in de nettolading van de reactie.|
+| **`showHistoryOutput`** | Query reeks    | Optionele para meter. Als deze optie is ingesteld op `true`, worden de functie-uitvoer opgenomen in de geschiedenis van de Orchestration-uitvoering.|
+| **`createdTimeFrom`**   | Query reeks    | Optionele para meter. Hiermee wordt de lijst met geretourneerde exemplaren die zijn gemaakt op of na de opgegeven ISO8601-tijds tempel gefilterd.|
+| **`createdTimeTo`**     | Query reeks    | Optionele para meter. Hiermee wordt de lijst met geretourneerde exemplaren die zijn gemaakt op of vóór de opgegeven ISO8601-tijds tempel gefilterd.|
+| **`runtimeStatus`**     | Query reeks    | Optionele para meter. Hiermee wordt indien opgegeven de lijst met geretourneerde instanties gefilterd op basis van de runtime status. Zie het artikel [querying instances](durable-functions-instance-management.md) voor een lijst met mogelijke runtime status waarden. |
+| **`top`**               | Query reeks    | Optionele para meter. Hiermee wordt het aantal exemplaren dat door de query wordt geretourneerd, beperkt. |
 
 ### <a name="response"></a>Antwoord
 
@@ -346,7 +346,7 @@ Hier volgt een voor beeld van reactie payloads, inclusief de indelings status (o
 
 Als er meer resultaten bestaan, wordt in de reactie header een vervolg token geretourneerd.  De naam van de koptekst is `x-ms-continuation-token`.
 
-Als u de vervolg token waarde in de volgende aanvraag header instelt, kunt u de volgende pagina met resultaten ophalen. Dit is ook `x-ms-continuation-token`de naam van de aanvraag header.
+Als u de vervolg token waarde in de volgende aanvraag header instelt, kunt u de volgende pagina met resultaten ophalen. Deze naam van de aanvraag header wordt ook `x-ms-continuation-token`.
 
 ## <a name="purge-single-instance-history"></a>Geschiedenis van één exemplaar opschonen
 
@@ -374,7 +374,7 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld             | Parametertype  | Description |
+| Veld             | Parameter type  | Beschrijving |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | De ID van het Orchestration-exemplaar. |
 
@@ -382,14 +382,14 @@ Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, ev
 
 De volgende HTTP-status code waarden kunnen worden geretourneerd.
 
-* **HTTP 200 (OK)** : De exemplaar geschiedenis is verwijderd.
-* **HTTP 404 (niet gevonden)** : Het opgegeven exemplaar bestaat niet.
+* **HTTP 200 (OK)** : de exemplaar geschiedenis is verwijderd.
+* **HTTP 404 (niet gevonden)** : het opgegeven exemplaar bestaat niet.
 
 De nettolading van de reactie voor de **HTTP 200-** case is een JSON-object met het volgende veld:
 
-| Veld                  | Gegevenstype | Description |
+| Veld                  | Gegevenstype | Beschrijving |
 |------------------------|-----------|-------------|
-| **`instancesDeleted`** | integer   | Het aantal verwijderde exemplaren. Voor het geval van één exemplaar moet deze waarde altijd zijn `1`. |
+| **`instancesDeleted`** | geheel getal   | Het aantal verwijderde exemplaren. Voor het geval van één exemplaar moet deze waarde altijd worden `1`. |
 
 Hier volgt een voor beeld van een Payload-reactie (opgemaakt voor de Lees baarheid):
 
@@ -401,7 +401,7 @@ Hier volgt een voor beeld van een Payload-reactie (opgemaakt voor de Lees baarhe
 
 ## <a name="purge-multiple-instance-histories"></a>Meerdere exemplaar geschiedenissen verwijderen
 
-U kunt ook de geschiedenis en gerelateerde artefacten voor meerdere exemplaren binnen een taak hub verwijderen door de `{instanceId}` uit de aanvraag verwijderen van één exemplaar van de geschiedenis te verwijderen. Als u de instantie geschiedenis selectief wilt opschonen, gebruikt u dezelfde filters die in de aanvraag ' alle instanties ophalen ' worden beschreven.
+U kunt ook de geschiedenis en gerelateerde artefacten voor meerdere exemplaren binnen een taak hub verwijderen door de `{instanceId}` te verwijderen uit de aanvraag geschiedenis van één exemplaar opschonen. Als u de instantie geschiedenis selectief wilt opschonen, gebruikt u dezelfde filters die in de aanvraag ' alle instanties ophalen ' worden beschreven.
 
 ### <a name="request"></a>Aanvraag
 
@@ -431,11 +431,11 @@ DELETE /runtime/webhooks/durabletask/instances
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld                 | Parametertype  | Description |
+| Veld                 | Parameter type  | Beschrijving |
 |-----------------------|-----------------|-------------|
-| **`createdTimeFrom`** | Querytekenreeks    | Hiermee wordt de lijst met verwijderde exemplaren gefilterd die zijn gemaakt op of na de opgegeven ISO8601-tijds tempel.|
-| **`createdTimeTo`**   | Querytekenreeks    | Optionele para meter. Hiermee wordt de lijst met verwijderde exemplaren die zijn gemaakt op of vóór de opgegeven ISO8601-tijds tempel gefilterd.|
-| **`runtimeStatus`**   | Querytekenreeks    | Optionele para meter. Hiermee wordt indien opgegeven de lijst met verwijderde exemplaren gefilterd op basis van de runtime status. Zie het artikel [querying instances](durable-functions-instance-management.md) voor een lijst met mogelijke runtime status waarden. |
+| **`createdTimeFrom`** | Query reeks    | Hiermee wordt de lijst met verwijderde exemplaren gefilterd die zijn gemaakt op of na de opgegeven ISO8601-tijds tempel.|
+| **`createdTimeTo`**   | Query reeks    | Optionele para meter. Hiermee wordt de lijst met verwijderde exemplaren die zijn gemaakt op of vóór de opgegeven ISO8601-tijds tempel gefilterd.|
+| **`runtimeStatus`**   | Query reeks    | Optionele para meter. Hiermee wordt indien opgegeven de lijst met verwijderde exemplaren gefilterd op basis van de runtime status. Zie het artikel [querying instances](durable-functions-instance-management.md) voor een lijst met mogelijke runtime status waarden. |
 
 > [!NOTE]
 > Deze bewerking kan erg kostbaar zijn in termen van Azure Storage I/O als er veel rijen in de tabellen instanties en/of geschiedenis zijn. Meer informatie over deze tabellen vindt u in de documentatie over [prestaties en schaal baarheid in Durable functions (Azure functions)](durable-functions-perf-and-scale.md#instances-table) .
@@ -444,14 +444,14 @@ Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, ev
 
 De volgende HTTP-status code waarden kunnen worden geretourneerd.
 
-* **HTTP 200 (OK)** : De exemplaar geschiedenis is verwijderd.
-* **HTTP 404 (niet gevonden)** : Er zijn geen exemplaren gevonden die overeenkomen met de filter expressie.
+* **HTTP 200 (OK)** : de exemplaar geschiedenis is verwijderd.
+* **HTTP 404 (niet gevonden)** : er zijn geen instanties gevonden die overeenkomen met de filter expressie.
 
 De nettolading van de reactie voor de **HTTP 200-** case is een JSON-object met het volgende veld:
 
-| Veld                   | Gegevenstype | Description |
+| Veld                   | Gegevenstype | Beschrijving |
 |-------------------------|-----------|-------------|
-| **`instancesDeleted`**  | integer   | Het aantal verwijderde exemplaren. |
+| **`instancesDeleted`**  | geheel getal   | Het aantal verwijderde exemplaren. |
 
 Hier volgt een voor beeld van een Payload-reactie (opgemaakt voor de Lees baarheid):
 
@@ -487,7 +487,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld             | Parametertype  | Description |
+| Veld             | Parameter type  | Beschrijving |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | De ID van het Orchestration-exemplaar. |
 | **`eventName`**   | URL             | De naam van de gebeurtenis waarop het doel exemplaar van de Orchestrator-instantie wacht. |
@@ -497,12 +497,12 @@ Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, ev
 
 Er kunnen verschillende mogelijke status code waarden worden geretourneerd.
 
-* **HTTP 202 (geaccepteerd)** : De verhoogde gebeurtenis is geaccepteerd voor verwerking.
-* **HTTP 400 (ongeldige aanvraag)** : De inhoud van de aanvraag is niet `application/json` van het type of is geen geldige JSON.
-* **HTTP 404 (niet gevonden)** : Het opgegeven exemplaar is niet gevonden.
-* **HTTP 410 (verdwenen)** : Het opgegeven exemplaar is voltooid of mislukt en kan geen geactiveerde gebeurtenissen verwerken.
+* **HTTP 202 (geaccepteerd)** : de verhoogde gebeurtenis is geaccepteerd voor verwerking.
+* **HTTP 400 (ongeldige aanvraag)** : de inhoud van de aanvraag is niet van het type `application/json` of is geen geldige JSON.
+* **HTTP 404 (niet gevonden)** : het opgegeven exemplaar is niet gevonden.
+* **HTTP 410 (verdwenen)** : het opgegeven exemplaar is voltooid of mislukt en kan geen geactiveerde gebeurtenissen verwerken.
 
-Hier volgt een voorbeeld aanvraag waarmee de JSON-teken `"incr"` reeks wordt verzonden naar een instantie die wacht op een gebeurtenis **bewerking**met de naam:
+Hier volgt een voorbeeld aanvraag waarmee de JSON-teken reeks wordt verzonden `"incr"` naar een instantie die wacht op een gebeurtenis **bewerking**met de naam:
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -542,18 +542,18 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meter.
 
-| Veld             | Parametertype  | Description |
+| Veld             | Parameter type  | Beschrijving |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | De ID van het Orchestration-exemplaar. |
-| **`reason`**      | Querytekenreeks    | Optioneel. De reden voor het beëindigen van het Orchestrator-exemplaar. |
+| **`reason`**      | Query reeks    | Optioneel. De reden voor het beëindigen van het Orchestrator-exemplaar. |
 
 ### <a name="response"></a>Antwoord
 
 Er kunnen verschillende mogelijke status code waarden worden geretourneerd.
 
-* **HTTP 202 (geaccepteerd)** : De aanvraag voor het beëindigen is geaccepteerd voor verwerking.
-* **HTTP 404 (niet gevonden)** : Het opgegeven exemplaar is niet gevonden.
-* **HTTP 410 (verdwenen)** : Het opgegeven exemplaar is voltooid of mislukt.
+* **HTTP 202 (geaccepteerd)** : de aanvraag voor beëindigen is geaccepteerd voor verwerking.
+* **HTTP 404 (niet gevonden)** : het opgegeven exemplaar is niet gevonden.
+* **HTTP 410 (verdwenen)** : het opgegeven exemplaar is voltooid of mislukt.
 
 Hier volgt een voorbeeld aanvraag waarmee een actief exemplaar wordt beëindigd en een reden voor het uitvoeren van **fouten**wordt opgegeven:
 
@@ -591,18 +591,18 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meter.
 
-| Veld             | Parametertype  | Description |
+| Veld             | Parameter type  | Beschrijving |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | De ID van het Orchestration-exemplaar. |
-| **`reason`**      | Querytekenreeks    | Optioneel. De reden voor het terugspoelen van het Orchestration-exemplaar. |
+| **`reason`**      | Query reeks    | Optioneel. De reden voor het terugspoelen van het Orchestration-exemplaar. |
 
 ### <a name="response"></a>Antwoord
 
 Er kunnen verschillende mogelijke status code waarden worden geretourneerd.
 
-* **HTTP 202 (geaccepteerd)** : De aanvraag voor terugspoelen is geaccepteerd voor verwerking.
-* **HTTP 404 (niet gevonden)** : Het opgegeven exemplaar is niet gevonden.
-* **HTTP 410 (verdwenen)** : Het opgegeven exemplaar is voltooid of beëindigd.
+* **HTTP 202 (geaccepteerd)** : de aanvraag voor terugspoelen is geaccepteerd voor verwerking.
+* **HTTP 404 (niet gevonden)** : het opgegeven exemplaar is niet gevonden.
+* **HTTP 410 (verdwenen)** : het opgegeven exemplaar is voltooid of is beëindigd.
 
 Hier volgt een voorbeeld aanvraag voor het terugspoelen van een mislukt exemplaar en de reden van een **vast**:
 
@@ -633,14 +633,14 @@ POST /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld             | Parametertype  | Description |
+| Veld             | Parameter type  | Beschrijving |
 |-------------------|-----------------|-------------|
 | **`entityType`**  | URL             | Het type van de entiteit. |
 | **`entityKey`**   | URL             | De unieke naam van de entiteit. |
-| **`op`**          | Querytekenreeks    | Optioneel. De naam van de door de gebruiker gedefinieerde bewerking die moet worden aangeroepen. |
+| **`op`**          | Query reeks    | Optioneel. De naam van de door de gebruiker gedefinieerde bewerking die moet worden aangeroepen. |
 | **`{content}`**   | Inhoud van aanvraag | De nettolading van de JSON-indeling. |
 
-Hier volgt een voorbeeld aanvraag waarmee een door de gebruiker gedefinieerde "add"-bericht naar `Counter` een entiteit `steps`met de naam wordt verzonden. De inhoud van het bericht is de waarde `5`. Als de entiteit nog niet bestaat, wordt deze gemaakt door deze aanvraag:
+Hier volgt een voorbeeld aanvraag waarmee een door de gebruiker gedefinieerde "add"-bericht naar een `Counter` entiteit met de naam `steps`wordt verzonden. De inhoud van het bericht is de waarde `5`. Als de entiteit nog niet bestaat, wordt deze gemaakt door deze aanvraag:
 
 ```http
 POST /runtime/webhooks/durabletask/entities/Counter/steps?op=Add
@@ -653,9 +653,9 @@ Content-Type: application/json
 
 Deze bewerking heeft verschillende mogelijke reacties:
 
-* **HTTP 202 (geaccepteerd)** : De signaal bewerking is geaccepteerd voor asynchrone verwerking.
-* **HTTP 400 (ongeldige aanvraag)** : De aanvraag inhoud is niet van het `application/json`type, is geen geldige JSON of heeft een ongeldige `entityKey` waarde.
-* **HTTP 404 (niet gevonden)** : De opgegeven `entityType` is niet gevonden.
+* **HTTP 202 (geaccepteerd)** : de signaal bewerking is geaccepteerd voor asynchrone verwerking.
+* **HTTP 400 (ongeldige aanvraag)** : de inhoud van de aanvraag is niet van het type `application/json`, is geen geldige JSON of heeft een ongeldige `entityKey`-waarde.
+* **HTTP 404 (niet gevonden)** : de opgegeven `entityType` is niet gevonden.
 
 Een geslaagde HTTP-aanvraag bevat geen inhoud in het antwoord. Een mislukte HTTP-aanvraag kan fout informatie in JSON-indeling bevatten in de antwoord inhoud.
 
@@ -678,19 +678,19 @@ GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
 
 Deze bewerking heeft twee mogelijke antwoorden:
 
-* **HTTP 200 (OK)** : De opgegeven entiteit bestaat al.
-* **HTTP 404 (niet gevonden)** : Kan de opgegeven entiteit niet vinden.
+* **HTTP 200 (OK)** : de opgegeven entiteit bestaat.
+* **HTTP 404 (niet gevonden)** : de opgegeven entiteit is niet gevonden.
 
 Een geslaagd antwoord bevat de JSON-serialisatie status van de entiteit als de inhoud.
 
 ### <a name="example"></a>Voorbeeld
-In het volgende voor beeld van een HTTP-aanvraag wordt `Counter` de status `steps`van een bestaande entiteit met de naam:
+In het volgende voor beeld van een HTTP-aanvraag wordt de status van een bestaande `Counter` entiteit met de naam `steps`opgehaald:
 
 ```http
 GET /runtime/webhooks/durabletask/entities/Counter/steps
 ```
 
-Als de `Counter` entiteit simpelweg een aantal stappen bevat die zijn opgeslagen in `currentValue` een veld, kan de antwoord inhoud er als volgt uitzien (opgemaakt voor de Lees baarheid):
+Als de `Counter` entiteit simpelweg een aantal stappen bevat die zijn opgeslagen in een `currentValue` veld, kan de antwoord inhoud er als volgt uitzien (opgemaakt voor de Lees baarheid):
 
 ```json
 {

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f254ebe599e64f4c48a839d9defd57e0899138a5
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5e4645d0fbdcd8cd44bb5972cdc28ab7eaa2a681
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755781"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73642629"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden voor multi tenant-Azure Active Directory instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B
 
 Als u het aanmelden voor gebruikers van een specifieke Azure AD-organisatie wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant van de organisatie.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map gebruikt die de Azure AD-Tenant van uw organisatie bevat (bijvoorbeeld contoso.com). Selecteer het **filter Directory + abonnement** in het bovenste menu en kies vervolgens de map die uw Tenant bevat.
 1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 1. Selecteer **nieuwe registratie**.
@@ -57,10 +57,10 @@ U moet de toepassings sleutel opslaan die u hebt gemaakt in uw Azure AD B2C-Tena
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Onder **beleids regels**selecteert u **identiteits ervaring-Framework**.
 1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
-1. Kies voor **opties**`Manual`.
+1. Kies `Manual`voor **Opties**.
 1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `AADAppSecret`.  Het voor voegsel `B2C_1A_` wordt automatisch toegevoegd aan de naam van de sleutel wanneer deze wordt gemaakt, zodat de verwijzing in de XML in de volgende sectie wordt *B2C_1A_AADAppSecret*.
 1. Voer in het **geheim**uw client geheim in dat u eerder hebt vastgelegd.
-1. Selecteer voor **sleutel gebruik**`Signature`.
+1. Selecteer `Signature`voor **sleutel gebruik**.
 1. Selecteer **Maken**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
@@ -155,7 +155,7 @@ Nu hebt u uw beleid zodanig geconfigureerd dat Azure AD B2C weet hoe u kunt comm
 Op dit moment is de ID-provider ingesteld, maar is deze niet beschikbaar in de schermen voor aanmelden/aanmelden. Om het beschikbaar te maken, maakt u een kopie van een bestaande sjabloon gebruiker en wijzigt u deze zodat deze ook de Azure AD-ID-provider heeft.
 
 1. Open het bestand *TrustFrameworkBase. XML* van het Starter Pack.
-2. Zoek en kopieer de volledige inhoud van het **UserJourney** -element dat `Id="SignUpOrSignIn"` bevat.
+2. Zoek en kopieer de volledige inhoud van het **UserJourney** -element dat `Id="SignUpOrSignIn"`bevat.
 3. Open *TrustFrameworkExtensions. XML* en zoek het element **UserJourneys** . Als het element niet bestaat, voegt u er een toe.
 4. Plak de volledige inhoud van het **UserJourney** -element dat u hebt gekopieerd als onderliggend element van het onderdeel **UserJourneys** .
 5. Wijzig de naam van de gebruikers traject. Bijvoorbeeld `SignUpSignInContoso`.
@@ -175,7 +175,7 @@ Het element **ClaimsProviderSelection** is vergelijkbaar met een id-provider kno
 
 Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit geval is voor Azure AD B2C om te communiceren met Azure AD om een token te ontvangen. Koppel de knop aan een actie door het technische profiel voor uw Azure AD-claim provider te koppelen.
 
-1. Zoek de **OrchestrationStep** die `Order="2"` bevat in de reis van de gebruiker.
+1. Zoek de **OrchestrationStep** die `Order="2"` bevat in de gebruikers reis.
 2. Voeg het volgende **ClaimsExchange** -element toe om ervoor te zorgen dat u dezelfde waarde gebruikt voor de **id** die u hebt gebruikt voor **TargetClaimsExchangeId**:
 
     ```XML

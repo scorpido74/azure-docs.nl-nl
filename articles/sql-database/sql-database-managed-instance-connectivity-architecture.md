@@ -1,5 +1,5 @@
 ---
-title: Connectiviteits architectuur voor een beheerd exemplaar in Azure SQL Database | Microsoft Docs
+title: Connectiviteits architectuur voor een beheerd exemplaar in Azure SQL Database
 description: Meer informatie over Azure SQL Database beheerde instantie communicatie en connectiviteits architectuur, evenals hoe de onderdelen direct verkeer naar het beheerde exemplaar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 7e32cb302322f7a80154a3f2a246d7d4f1743c09
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 881f116988ae0c9a6a33c8454cd1e4012580bfab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249374"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688200"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Connectiviteits architectuur voor een beheerd exemplaar in Azure SQL Database
 
@@ -66,7 +66,7 @@ Laten we een diep gaande van de connectiviteits architectuur voor beheerde insta
 
 ![Connectiviteits architectuur van het virtuele cluster](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Clients maken verbinding met een beheerd exemplaar met behulp van een hostnaam met de notatie `<mi_name>.<dns_zone>.database.windows.net`. Deze hostnaam wordt omgezet in een privé-IP-adres, maar is geregistreerd in een open bare Domain Name System (DNS)-zone en kan openbaar worden omgezet. De `zone-id` wordt automatisch gegenereerd wanneer u het cluster maakt. Als een nieuw cluster als host fungeert voor een secundaire beheerde instantie, wordt de zone-ID gedeeld met het primaire cluster. Zie voor meer informatie [automatische failover-groepen gebruiken om transparante en gecoördineerde failover van meerdere data bases in te scha kelen](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
+Clients maken verbinding met een beheerd exemplaar met behulp van een hostnaam met het formulier `<mi_name>.<dns_zone>.database.windows.net`. Deze hostnaam wordt omgezet in een privé-IP-adres, maar is geregistreerd in een open bare Domain Name System (DNS)-zone en kan openbaar worden omgezet. De `zone-id` wordt automatisch gegenereerd wanneer u het cluster maakt. Als een nieuw cluster als host fungeert voor een secundaire beheerde instantie, wordt de zone-ID gedeeld met het primaire cluster. Zie voor meer informatie [automatische failover-groepen gebruiken om transparante en gecoördineerde failover van meerdere data bases in te scha kelen](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
 
 Dit privé-IP-adres maakt deel uit van de interne load balancer van het beheerde exemplaar. De load balancer stuurt verkeer naar de gateway van het beheerde exemplaar. Omdat meerdere beheerde instanties binnen hetzelfde cluster kunnen worden uitgevoerd, gebruikt de gateway de hostnaam van het beheerde exemplaar om verkeer om te leiden naar de juiste SQL engine-service.
 
@@ -96,7 +96,7 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="mandatory-inbound-security-rules"></a>Verplichte regels voor binnenkomende beveiliging
 
-| Naam       |Port                        |Protocol|Bron           |Bestemming|Bewerking|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Bewerking|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |beheer  |9000, 9003, 1438, 1440, 1452|TCP     |Alle              |MI-SUBNET  |Toestaan |
 |mi_subnet   |Alle                         |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -104,7 +104,7 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="mandatory-outbound-security-rules"></a>Verplichte uitgaande beveiligings regels
 
-| Naam       |Port          |Protocol|Bron           |Bestemming|Bewerking|
+| Naam       |Poort          |Protocol|Bron           |Doel|Bewerking|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -112,7 +112,7 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 > [!IMPORTANT]
 > Zorg ervoor dat er slechts één binnenkomende regel is voor poorten 9000, 9003, 1438, 1440, 1452 en één uitgaande regel voor poorten 80, 443, 12000. Het inrichten van beheerde instanties via Azure Resource Manager implementaties mislukt als de regels voor binnenkomend en uitgaand verkeer voor elke poort afzonderlijk zijn geconfigureerd. Als deze poorten zich in afzonderlijke regels bevinden, mislukt de implementatie met fout code `VnetSubnetConflictWithIntendedPolicy`
 
-\* MI-SUBNET verwijst naar het IP-adres bereik voor het subnet in de vorm 10. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.
+\* MI-SUBNET verwijst naar het IP-adres bereik voor het SUBNET in de vorm 10. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.
 
 > [!IMPORTANT]
 > Hoewel vereiste binnenkomende beveiligings regels verkeer toestaan van _een_ bron op poort 9000, 9003, 1438, 1440 en 1452, worden deze poorten beveiligd door een ingebouwde firewall. Zie [het adres van het beheer eindpunt bepalen](sql-database-managed-instance-find-management-endpoint-ip-address.md)voor meer informatie.
@@ -240,7 +240,7 @@ Met Service-aided subnet Configuration gebruiker bevindt zich volledig beheer va
 Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netwerk. Het subnet moet de volgende eigenschappen hebben:
 
 - **Toegewezen subnet:** Het subnet van het beheerde exemplaar kan geen andere Cloud service bevatten die eraan is gekoppeld en kan geen gateway-subnet zijn. Het subnet kan geen resource bevatten, maar het beheerde exemplaar, en u kunt later geen andere typen resources toevoegen in het subnet.
-- **Subnet-overdracht:** Het subnet van het beheerde exemplaar moet worden gedelegeerd naar `Microsoft.Sql/managedInstances`-resource provider.
+- **Subnet-overdracht:** Het subnet van het beheerde exemplaar moet worden overgedragen aan `Microsoft.Sql/managedInstances` resource provider.
 - **Netwerk beveiligings groep (NSG):** Een NSG moet worden gekoppeld aan het subnet van het beheerde exemplaar. U kunt een NSG gebruiken om de toegang tot het gegevens eindpunt van het beheerde exemplaar te beheren door verkeer te filteren op poort 1433 en poorten 11000-11999 wanneer het beheerde exemplaar is geconfigureerd voor omleidings verbindingen. De service voegt automatisch [regels](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) toe die vereist zijn om een ononderbroken stroom van beheer verkeer toe te staan.
 - Door de **gebruiker gedefinieerde route tabel (UDR):** Een UDR-tabel moet worden gekoppeld aan het subnet van het beheerde exemplaar. U kunt vermeldingen toevoegen aan de route tabel om verkeer met on-premises privé-IP-adresbereiken als bestemming te routeren via de gateway van het virtuele netwerk of het virtuele netwerk apparaat (NVA). Service voegt automatisch [vermeldingen](#user-defined-routes-with-service-aided-subnet-configuration) toe die vereist zijn voor het toestaan van een ononderbroken stroom van beheer verkeer.
 - **Service-eind punten:** Service-eind punten kunnen worden gebruikt voor het configureren van virtuele-netwerk regels voor opslag accounts die back-ups/audit logboeken bewaren.
@@ -251,7 +251,7 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte regels voor binnenkomende beveiliging met configuratie van geaidede subnetten 
 
-| Naam       |Port                        |Protocol|Bron           |Bestemming|Bewerking|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Bewerking|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |beheer  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI-SUBNET  |Toestaan |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI-SUBNET  |Toestaan |
@@ -261,7 +261,7 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte uitgaande beveiligings regels met een service-aided subnet-configuratie 
 
-| Naam       |Port          |Protocol|Bron           |Bestemming|Bewerking|
+| Naam       |Poort          |Protocol|Bron           |Doel|Bewerking|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -425,7 +425,7 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 |Mi-216-220-208-20-nexthop-Internet|216.220.208.0/20|Internet|
 ||||
 
-\* MI-SUBNET verwijst naar het IP-adres bereik voor het subnet in de vorm 10. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.
+\* MI-SUBNET verwijst naar het IP-adres bereik voor het SUBNET in de vorm 10. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -436,4 +436,4 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
   - Van de [Azure Portal](sql-database-managed-instance-get-started.md).
   - Met behulp van [Power shell](scripts/sql-database-create-configure-managed-instance-powershell.md).
   - Met behulp van [een Azure Resource Manager sjabloon](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
-  - Met behulp van [een Azure Resource Manager sjabloon (met behulp van JumpBox, met SSMS inbegrepen)](https://azure.microsoft.com/en-us/resources/templates/201-sqlmi-new-vnet-w-jumpbox/). 
+  - Met behulp van [een Azure Resource Manager sjabloon (met behulp van JumpBox, met SSMS inbegrepen)](https://azure.microsoft.com/resources/templates/201-sqlmi-new-vnet-w-jumpbox/). 

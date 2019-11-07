@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database voor beeld van multi tenant-app-Wingtip SaaS | Microsoft Docs
+title: Azure SQL Database voor beeld van multi tenant-app-Wingtip SaaS
 description: Meer informatie over het gebruik van een voor beeld van een multi tenant-toepassing die gebruikmaakt van Azure SQL Database, het Wingtip SaaS-voor beeld
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 16f4bb946af4720a327a8755c6bf9187f3b71ba6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1a4931a24802290e0e7e207f32528a1192fd880f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570350"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692058"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Inleiding tot een multi tenant SaaS-app die gebruikmaakt van het data base-per-Tenant patroon met SQL Database
 
@@ -39,7 +39,7 @@ Als u de zelf studies doorloopt en met de app werkt, kunt u zich richten op de S
 Nadat u de app hebt geïmplementeerd, moet u de volgende zelf studies voor het maken van de eerste implementatie verkennen. Deze zelf studies verkennen algemene SaaS-patronen die gebruikmaken van ingebouwde functies van SQL Database, Azure SQL Data Warehouse en andere Azure-Services. Zelf studies bevatten Power shell-scripts met gedetailleerde uitleg. De uitleg vereenvoudigt de inzichten en implementatie van dezelfde SaaS-beheer patronen in uw toepassingen.
 
 
-| Zelfstudie | Description |
+| Zelfstudie | Beschrijving |
 |:--|:--|
 | [Richt lijnen en tips voor het SQL Database voor beeld van multi tenant SaaS-apps](saas-tenancy-wingtip-app-guidance-tips.md) | Down load en voer Power shell-scripts uit om delen van de toepassing voor te bereiden. |
 |[De Wingtip SaaS-toepassing implementeren en verkennen](saas-dbpertenant-get-started-deploy.md)|  Implementeer en verken de Wingtip SaaS-toepassing met uw Azure-abonnement. |

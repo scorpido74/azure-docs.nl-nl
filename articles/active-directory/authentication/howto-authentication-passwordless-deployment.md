@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5aab9d8c2b7993598c602ae6b730baff06d807e1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 9b6f07e1dd8e9252d2b6e00b85a47ba2e19f8bd8
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151626"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603456"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Een authenticatie-implementatie met een wacht woord volt ooien
 
@@ -71,7 +71,7 @@ Met de verificatie methoden met een wacht woord van micro soft kunnen verschille
 
 Organisaties moeten voldoen aan de volgende vereisten voordat een implementatie met een wacht woord wordt gestart.
 
-| Vereisten | Authenticator-app | FIDO2-beveiligings sleutels |
+| Vereiste | Authenticator-app | FIDO2-beveiligings sleutels |
 | --- | --- | --- |
 | [Gecombineerde registratie voor Azure MFA en self-service voor wachtwoord herstel (SSPR)](howto-registration-mfa-sspr-combined.md) is ingeschakeld (preview-functie) | √ | √ |
 | [Gebruikers kunnen Azure MFA uitvoeren](howto-mfa-getstarted.md) | √ | √ |
@@ -84,7 +84,7 @@ Organisaties moeten voldoen aan de volgende vereisten voordat een implementatie 
 
 De vereisten voor Windows hello zijn zeer afhankelijk van of u implementeert in een on-premises, hybride of Cloud configuratie. Zie voor meer informatie de [volledige lijst met vereisten voor Windows hello voor bedrijven](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
-### <a name="azure-multi-factor-authentication"></a>Verificatie op basis van meerdere factoren van Azure
+### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
 Gebruikers registreren hun eigen methode als onderdeel van de Azure MFA-registratie stroom. Multi-factor Authentication met een gebruikers naam en wacht woord samen met een andere geregistreerde methode kan worden gebruikt als terugval voor het geval ze hun telefoon of beveiligings sleutel in sommige scenario's niet kunnen gebruiken.
 
@@ -93,7 +93,7 @@ Gebruikers registreren hun eigen methode als onderdeel van de Azure MFA-registra
 Met beveiligings sleutels kunt u toegang tot uw resources geven en moet u het beheer van deze fysieke apparaten plannen.
 
 1. Sleutel distributie: plan hoe u sleutels inricht in uw organisatie. Mogelijk hebt u een gecentraliseerd inrichtings proces of toestaan dat eind gebruikers FIDO 2,0-compatibele sleutels aanschaffen.
-1. Sleutel activering: eind gebruikers moeten de beveiligings sleutel zelf activeren. Eind gebruikers registreren hun beveiligings sleutels bij [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) en scha kelen de tweede factor (pincode of biometrische) in voor het eerste gebruik.
+1. Sleutel activering: eind gebruikers moeten de beveiligings sleutel zelf activeren. Eind gebruikers registreren hun beveiligings sleutels op [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) en scha kelen de tweede factor (pincode of biometrische) in voor het eerste gebruik.
 1. Uitschakelen van een sleutel: Hoewel de functionaliteit van de beveiligings sleutel zich in de preview-fase bevindt, is er geen manier om een sleutel van een gebruikers account te verwijderen. De gebruiker moet het verwijderen. Als een sleutel verloren of gestolen is:
    1. Verwijder de gebruiker uit een groep die is ingeschakeld voor verificatie zonder wacht woord.
    1. Controleer of de sleutel is verwijderd als verificatie methode.
@@ -110,15 +110,6 @@ Voor het inschakelen van Windows 10 sign in met behulp van FIDO2-beveiligings sl
    - Als de intune-implementatie niet mogelijk is, moeten beheerders een pakket op elke computer implementeren om de functionaliteit van de referentie provider in te scha kelen. De installatie van het pakket kan worden uitgevoerd met een van de volgende opties:
       - Groepsbeleid of System Center Configuration Manager (SCCM)
       - Lokale installatie op een Windows 10-computer
-- [Referentie provider inschakelen met groepsbeleid](howto-authentication-passwordless-security-key-windows.md#enable-with-group-policy)
-   - Alleen ondersteund voor hybride apparaten die zijn toegevoegd aan Azure AD.
-
-#### <a name="enable-on-premises-integration"></a>On-premises integratie inschakelen
-
-Volg de stappen in het artikel [wacht woordloze beveiligings sleutel inschakelen aanmelden bij on-premises resources (preview)](howto-authentication-passwordless-security-key-on-premises.md) om toegang tot on-premises resources mogelijk te maken.
-
-> [!IMPORTANT]
-> Deze stappen moeten ook worden uitgevoerd voor alle hybride Azure AD-apparaten die zijn toegevoegd aan het gebruik van FIDO2-beveiligings sleutels voor Windows 10-aanmelding.
 
 ### <a name="register-security-keys"></a>Beveiligings sleutels registreren
 
@@ -134,11 +125,11 @@ Er zijn geen extra kosten verbonden aan authenticatie zonder wacht woord, hoewel
 
 Houd rekening met de behoeften van uw bedrijf en de use cases voor elke verificatie methode. Selecteer vervolgens de methode die het beste bij uw behoeften past.
 
-### <a name="use-cases"></a>Use cases
+### <a name="use-cases"></a>Gebruiksvoorbeelden
 
 De volgende tabel bevat een overzicht van de use cases die tijdens dit project moeten worden geïmplementeerd.
 
-| Gebied | Beschrijving |
+| Onderwerp | Beschrijving |
 | --- | --- |
 | **Toegang** | Aanmelding zonder wacht woord is beschikbaar vanaf een zakelijk of persoonlijk apparaat binnen of buiten het bedrijfs netwerk. |
 | **Controle** | Gebruiks gegevens zijn beschikbaar voor beheerders die bijna in realtime kunnen worden gecontroleerd. <br> Gebruiks gegevens worden minstens elke 29 dagen naar bedrijfs systemen gedownload, of het hulp programma SIEM wordt gebruikt. |
@@ -285,7 +276,7 @@ Volg de stappen in het artikel, [Schakel wacht woordloze beveiligings sleutel aa
 | **Fout bericht**: er is vastgesteld dat deze browser of dit besturings systeem geen FIDO2-beveiligings sleutels ondersteunt. | Wacht woord-FIDO2 beveiligings apparaten kunnen alleen worden geregistreerd in ondersteunde browsers (micro soft Edge, Firefox versie 67) op Windows 10 versie 1809 of hoger. |
 | **Fout bericht**: voor uw bedrijfs beleid moet u een andere methode gebruiken om u aan te melden. | Controleren of beveiligings sleutels zijn ingeschakeld in de Tenant. |
 | Gebruiker kan mijn beveiligings sleutel niet beheren in Windows 10 versie 1809 | Versie 1809 vereist dat u de software voor beveiligings sleutel beheer gebruikt die wordt verschaft door de leverancier van de FIDO2-sleutel. Neem contact op met de leverancier voor ondersteuning. |
-| Ik denk dat mijn FIDO2-beveiligings sleutel defect is, hoe kan ik deze testen | Ga naar [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/), voer referenties in voor een test account, sluit de verdachte beveiligings sleutel aan, klik op de knop + rechtsboven in het scherm, klik op maken en ga door het aanmaak proces. Als dit scenario mislukt, is uw apparaat mogelijk defect. |
+| Ik denk dat mijn FIDO2-beveiligings sleutel defect is, hoe kan ik deze testen | Ga naar [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/), voer de referenties voor een test account in, sluit de verdachte beveiligings sleutel aan, Klik rechtsboven in het scherm op maken en ga door het aanmaak proces. Als dit scenario mislukt, is uw apparaat mogelijk defect. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

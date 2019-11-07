@@ -1,5 +1,5 @@
 ---
-title: Versneld database herstel-Azure SQL Database | Microsoft Docs
+title: Versneld database herstel-Azure SQL Database
 description: De Azure SQL Database heeft een nieuwe functie waarmee u snel en consistent database herstel, momentane trans actie terugdraaien en een agressieve afkap ping van Logboeken voor afzonderlijke data bases en gepoolde data bases in Azure SQL Database en data bases in Azure SQL-gegevens kunt maken. Uitslag.
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,12 +10,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: d516dc51a25cbef92ff9fa22012773507b528a99
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e66b3e6563d796cc7b59e82233bd1b22bc906c6e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569636"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691351"
 ---
 # <a name="accelerated-database-recovery"></a>Versneld database herstel
 
@@ -95,7 +95,7 @@ De vier belangrijkste onderdelen van ADR zijn:
 
 - **Permanente versie opslag (PVS)**
 
-  De permanente versie opslag is een nieuw SQL database engine mechanisme voor het persistent maken van de rijdefinities die in de data base zelf zijn gegenereerd in `tempdb` plaats van in de traditionele versie opslag. PVS maakt het isoleren van bronnen mogelijk en verbetert de beschik baarheid van Lees bare secundaire zones.
+  De permanente versie opslag is een nieuw SQL database engine-mechanisme voor het persistent maken van de rijdefinities die in de data base zelf zijn gegenereerd in plaats van de traditionele `tempdb` versie opslag. PVS maakt het isoleren van bronnen mogelijk en verbetert de beschik baarheid van Lees bare secundaire zones.
 
 - **Logische terugzet actie**
 

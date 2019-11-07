@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Azure SQL Data Warehouse-SSMS | Microsoft Docs
+title: Verbinden met SSMS
 description: Gebruik SQL Server Management Studio (SSMS) om verbinding te maken met en een query uit te Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b96896c0366c6fba2548480b166bdb9cf6ca692c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d5c903a24ea47cb152555330688dd0bc515c625b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575344"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692598"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Verbinding maken met SQL Data Warehouse met SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -36,7 +37,7 @@ Voor deze zelfstudie hebt u het volgende nodig:
 * SQL Server Management Studio (SSMS) is geïnstalleerd. [Installeer SSMS][Install SSMS] gratis als u dit nog niet hebt gedaan.
 * De volledig gekwalificeerde SQL-servernaam. Zie [Verbinding maken met SQL Data Warehouse][Connect to SQL Data Warehouse] om dit te vinden.
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Verbinding maken met uw SQL Data Warehouse
+## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Maak verbinding met uw SQL Data Warehouse
 1. Open SQL Server Management Studio.
 2. Open Objectverkenner. Selecteer hiervoor **File** > **Connect objectverkenner**.
    
@@ -48,12 +49,12 @@ Voor deze zelfstudie hebt u het volgende nodig:
    * **Server name** (Servernaam). Voer de eerder vastgestelde **servernaam** in.
    * **Authentication** (Verificatie). Selecteer **SQL Server Authentication** (SQL Server-verificatie) of **Active Directory Integrated Authentication** (Geïntegreerde Active Directory-verificatie).
    * **User Name** (Gebruikersnaam) en **Password** (Wachtwoord). Voer de gebruikersnaam en het wachtwoord in als u hierboven SQL Server-verificatie hebt geselecteerd.
-   * Klik op **Connect** (Verbinden).
+   * Klik op **Verbinden**.
 4. U kunt de Azure SQL-server uitvouwen als u deze wilt verkennen. U kunt de databases weergeven die aan de server zijn gekoppeld. Vouw AdventureWorksDW uit als u de tabellen in de voorbeelddatabase wilt zien.
    
     ![AdventureWorksDW verkennen][3]
 
-## <a name="2-run-a-sample-query"></a>2. Een voorbeeldquery uitvoeren
+## <a name="2-run-a-sample-query"></a>2. Voer een voorbeeld query uit
 Nu er een verbinding met uw database is ingesteld, gaat u een query schrijven.
 
 1. Klik met de rechtermuisknop op de database in SQL Server-objectverkenner.
@@ -65,7 +66,7 @@ Nu er een verbinding met uw database is ingesteld, gaat u een query schrijven.
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Voer de query uit. Als u dit wilt doen `Execute` , klikt of gebruikt u de `F5`volgende snelkoppeling:.
+4. Voer de query uit. Als u dit wilt doen, klikt u op `Execute` of gebruikt u de volgende snelkoppeling: `F5`.
    
     ![Query uitvoeren][5]
 5. Bekijk de resultaten van de query. In dit voorbeeld heeft de tabel FactInternetSales 60398 rijen.

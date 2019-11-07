@@ -1,5 +1,5 @@
 ---
-title: Gegevens kopiëren van Jira met behulp van Azure Data Factory | Microsoft Docs
+title: Gegevens kopiëren van Jira met behulp van Azure Data Factory
 description: Meer informatie over het kopiëren van gegevens uit Jira naar ondersteunde Sink-gegevens archieven met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: c48533175d21475a1c42eddc9dc6123f8e4050fb
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 277af8c0683897737fd5194aba68cd7be79d7dd7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935541"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680738"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory"></a>Gegevens kopiëren van Jira met behulp van Azure Data Factory
 
@@ -44,7 +44,7 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 De volgende eigenschappen worden ondersteund voor Jira gekoppelde service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **Jira** | Ja |
 | hostsite | Het IP-adres of de hostnaam van de Jira-service. (bijvoorbeeld jira.example.com)  | Ja |
@@ -81,7 +81,7 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 
 Als u gegevens van Jira wilt kopiëren, stelt u de eigenschap type van de gegevensset in op **JiraObject**. De volgende eigenschappen worden ondersteund:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **JiraObject** | Ja |
 | tableName | De naam van de tabel. | Nee (als "query" in activiteit bron is opgegeven) |
@@ -111,7 +111,7 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 Als u gegevens wilt kopiëren uit Jira, stelt u het bron type in de Kopieer activiteit in op **JiraSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **JiraSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |

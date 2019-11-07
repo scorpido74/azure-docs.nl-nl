@@ -1,5 +1,5 @@
 ---
-title: 'Voor beeld van Designer #1: regressie om prijs te voors pellen'
+title: 'Designer: prijs voors pellen (regressie)'
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het bouwen van een machine learning model voor het voors pellen van de prijs van een auto, zonder dat u een regel code hoeft te schrijven.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 14b9f5fd1459ebd3341218a4ada14b16ddb4853f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cdf2d0b632368a5a5bc24e092783c979f7c26bc
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515471"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647154"
 ---
 # <a name="sample-1---regression-predict-price"></a>Voor beeld 1-regressie: prijs voors pellen
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: d93c3599bb4a52a03d4ac436ca664ce6be1c55b9
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200825"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682210"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>De juiste VM-grootte voor uw Azure HDInsight-cluster selecteren
 
@@ -45,7 +45,7 @@ Virtuele-machine families in azure zijn geoptimaliseerd voor verschillende use c
 | [Geoptimaliseerde rekenkracht](../virtual-machines/linux/sizes-compute.md)        | F           | Hoge CPU-geheugenverhouding. Goed voor webservers met gemiddeld verkeer, netwerkapparatuur, batchprocessen en toepassingsservers.        |
 | [Geoptimaliseerd geheugen](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Hoge geheugen-naar-CPU-verhouding. Uiterst geschikt voor relationele-databaseservers, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
 
-- Zie [prijzen voor hdinsight](https://azure.microsoft.com/en-us/pricing/details/hdinsight/)voor meer informatie over de prijzen van beschik bare VM-exemplaren in de regio's die door hdinsight worden ondersteund.
+- Zie [prijzen voor hdinsight](https://azure.microsoft.com/pricing/details/hdinsight/)voor meer informatie over de prijzen van beschik bare VM-exemplaren in de regio's die door hdinsight worden ondersteund.
 
 ## <a name="cost-saving-vm-types-for-light-workloads"></a>Kosten besparing van VM-typen voor lichte workloads
 
@@ -53,14 +53,14 @@ Als er lichte verwerkings vereisten gelden, kan de [F-serie](https://azure.micro
 
 De volgende tabel beschrijft de cluster typen en knooppunt typen die kunnen worden gemaakt met de virtuele machines uit de Fsv2-serie.
 
-| Clustertype | Version | Werkknooppunt | Hoofdknooppunt | ZooKeeper-knooppunt |
+| Clustertype | Versie | Werkknooppunt | Hoofdknooppunt | ZooKeeper-knooppunt |
 |---|---|---|---|---|
-| Spark | Alles | F4 en hoger | nee | nee |
-| Hadoop | Alles | F4 en hoger | nee | nee |
-| Kafka | Alles | F4 en hoger | nee | nee |
-| HBase | Alles | F4 en hoger | nee | nee |
-| LLAP | Geblokkeerd | nee | nee | nee |
-| Storm | Geblokkeerd | nee | nee | nee |
+| Spark | Alle | F4 en hoger | nee | nee |
+| Hadoop | Alle | F4 en hoger | nee | nee |
+| Kafka | Alle | F4 en hoger | nee | nee |
+| HBase | Alle | F4 en hoger | nee | nee |
+| LLAP | geblokkeerd | nee | nee | nee |
+| Storm | geblokkeerd | nee | nee | nee |
 | ML-service | ALLEEN HDI 3,6 | F4 en hoger | nee | nee |
 
 Zie [VM-grootten](https://azure.microsoft.com/blog/f-series-vm-size/)van de f-serie voor een overzicht van de specificaties van elke SKU uit de f-serie.

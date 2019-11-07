@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Language Understanding (LUIS)-ontwerp-client bibliotheek voor python'
+title: 'Quick Start: Language Understanding (LUIS) de ontwerp-client bibliotheek voor python'
 titleSuffix: Azure Cognitive Services
-description: Ga aan de slag met de LUIS-client bibliotheek (Language Understanding) voor python. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.  Met Language Understanding (LUIS) kunt u aangepaste informatie over machine learning Toep assen op de conversatie van een gebruiker, tekst in natuurlijke taal om de algemene betekenis te voors pellen en relevante, gedetailleerde gegevens uit te voeren.
+description: Ga aan de slag met de LUIS-client bibliotheek voor python. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/07/2019
 ms.author: diberry
-ms.openlocfilehash: f8149372e0a96cda81ef38558ee0bcf87eb53bb3
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1b586af569a9406d7fe9fa3d05c198f62f32744f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258764"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672006"
 ---
-# <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Quickstart: Language Understanding (LUIS)-ontwerp-client bibliotheek voor python
+# <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Quick Start: Language Understanding (LUIS) de ontwerp-client bibliotheek voor python
 
 Ga aan de slag met de Language Understanding (LUIS)-ontwerp-client bibliotheek voor python. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.  Met Language Understanding (LUIS) kunt u aangepaste informatie over machine learning Toep assen op de conversatie van een gebruiker, tekst in natuurlijke taal om de algemene betekenis te voors pellen en relevante, gedetailleerde gegevens uit te voeren. 
 
@@ -28,7 +28,7 @@ Gebruik de Language Understanding (LUIS)-ontwerp-client bibliotheek voor python 
 * Voeg onderdelen, zoals een woordgroepen lijst, toe.
 * Train en publiceer een app.
 
-[Naslag informatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | voor de pypi-voor[beelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py) ([Source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [Authoring package)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | van de documentatie bibliotheek
+[Referentie documentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) van de bibliotheek | het [ontwerp pakket (pypi)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | voor [beelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -39,7 +39,7 @@ Gebruik de Language Understanding (LUIS)-ontwerp-client bibliotheek voor python 
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Uw Language Understanding-starter sleutel (LUIS) ophalen
 
-Haal uw [Start sleutel](luis-how-to-azure-subscription.md#starter-key)op en [Maak een omgevings variabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel, `LUIS_AUTHORING_KEY` met de naam en een omgevings variabele voor de regio `LUIS_REGION`van de sleutel,.
+Haal uw [Start sleutel](luis-how-to-azure-subscription.md#starter-key)op en [Maak een omgevings variabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel, met de naam `LUIS_AUTHORING_KEY` en een omgevings variabele voor de regio van de sleutel, `LUIS_REGION`.
 
 ### <a name="install-the-python-library-for-luis"></a>Installeer de python-bibliotheek voor LUIS
 
@@ -111,7 +111,7 @@ Gebruik het [model. Voeg de methode _intent toe](https://docs.microsoft.com/pyth
 
 Hoewel entiteiten niet vereist zijn, worden ze in de meeste apps gevonden. De entiteit extraheert informatie uit de utterance van de gebruiker, die nodig is om de bedoeling van de gebruiker te fullfilen. Er zijn verschillende typen [vooraf ontwikkelde](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-prebuilt-app-id--version-id--prebuilt-extractor-names--custom-headers-none--raw-false----operation-config-) en aangepaste entiteiten met hun eigen DTO-modellen (Data Transformation object).  Algemene vooraf gemaakte entiteiten die u wilt toevoegen aan uw app, zijn [Number](luis-reference-prebuilt-number.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), [geographyV2](luis-reference-prebuilt-geographyv2.md), [Ordinal](luis-reference-prebuilt-ordinal.md). 
 
-Met deze **add_entities** methode is `Location` een eenvoudige entiteit gemaakt met twee rollen `Class` , een eenvoudige entiteit `Flight` , een samengestelde entiteit en worden verschillende vooraf gemaakte entiteiten toegevoegd.
+Met deze methode **add_entities** maakt u een `Location` eenvoudige entiteit met twee rollen, een `Class` eenvoudige entiteit, een `Flight` samengestelde entiteit en voegt u verschillende vooraf gemaakte entiteiten toe.
 
 Het is belang rijk te weten dat entiteiten niet zijn gemarkeerd met een bedoeling. Ze kunnen en meestal worden toegepast op veel intenties. Alleen voor beelden van gebruikers uitingen zijn gemarkeerd voor een specifiek, enkelvoudig doel.
 
@@ -147,7 +147,7 @@ Publiceer de LUIS-app met de methode [app. publish](https://docs.microsoft.com/p
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit met `python` de opdracht in uw Quick Start-bestand.
+Voer de toepassing uit met de opdracht `python` in uw Quick Start-bestand.
 
 ```console
 python quickstart-file.py
@@ -158,7 +158,7 @@ python quickstart-file.py
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
-* [Azure-CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources) 
+* [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources) 
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -168,4 +168,4 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 * [Wat is de Language Understanding-API (LUIS)?](what-is-luis.md)
 * [Nieuwe functies](whats-new.md)
 * [Intenties](luis-concept-intent.md), [entiteiten](luis-concept-entity-types.md)en [voor beelden van uitingen](luis-concept-utterance.md)en [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py).
+* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py).

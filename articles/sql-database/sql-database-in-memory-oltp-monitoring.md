@@ -1,5 +1,5 @@
 ---
-title: XTP in-Memory-opslag controleren | Microsoft Docs
+title: XTP in-Memory-opslag controleren
 description: XTP in-Memory gebruiken om te schatten en te controleren, capaciteit; capaciteits fout 41823 oplossen
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 1c5a57f634c01cc42934a98decd8f392334dede6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d67a6d151f65252faab40f8f7289fe9e884eff17
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567987"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689811"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>OLTP-opslag in het geheugen controleren
 
@@ -36,7 +36,7 @@ Tabel-en tabel variabele rijen, evenals indexen, tellen bij de maximale grootte 
 U kunt in-Memory opslag gebruiken als percentage van de opslag limiet voor de berekenings grootte in de [Azure Portal](https://portal.azure.com/): 
 
 1. Ga op de Blade Data Base naar het vak resource gebruik en klik op bewerken.
-2. Selecteer de metrische `In-Memory OLTP Storage percentage`gegevens.
+2. Selecteer de metrische `In-Memory OLTP Storage percentage`.
 3. Als u een waarschuwing wilt toevoegen, klikt u op het vak resource gebruik om de Blade metrische gegevens te openen en klikt u vervolgens op waarschuwing toevoegen.
 
 U kunt ook de volgende query gebruiken om het gebruik van de opslag in het geheugen weer te geven:

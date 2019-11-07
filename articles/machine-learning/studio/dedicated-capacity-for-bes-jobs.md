@@ -1,6 +1,6 @@
 ---
 title: Azure Batch-service taken
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Overzicht van Azure Batch Services voor Machine Learning Studio (klassieke) taken. Met de verwerking van batch groepen kunt u groepen maken waarop u batch-taken kunt verzenden.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 1de7ad10a54c34595f69a543843097cee1377067
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a0e829f61117df25f8643301a0acdadeafd7c267
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493038"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684812"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Azure Batch-service voor Azure Machine Learning Studio (klassieke) taken
 
@@ -43,7 +43,7 @@ U maakt Pools door de bewerking groep maken aan te roepen op de URL van de groep
 
 U kunt elke nieuwe op Resource Manager gebaseerde webservice gebruiken, maar houd er rekening mee dat de facturering voor de taken wordt gefactureerd op basis van het facturerings plan dat aan die service is gekoppeld. U kunt het beste een webservice en een nieuw abonnement maken speciaal voor het uitvoeren van batch pool taken.
 
-Zie [een Azure machine learning-webservice implementeren](publish-a-machine-learning-web-service.md)voor meer informatie over het maken van webservices.
+Zie [een Azure machine learning-webservice implementeren](deploy-a-machine-learning-web-service.md)voor meer informatie over het maken van webservices.
 
 Zodra u een groep hebt gemaakt, verzendt u de BES-taak met de batch-aanvraag-URL voor de webservice. U kunt ervoor kiezen om deze naar een groep of naar klassieke batch verwerking te verzenden. Als u een taak wilt verzenden naar batch pool verwerking, voegt u de volgende para meter toe aan de hoofd tekst van de opdracht indienen:
 

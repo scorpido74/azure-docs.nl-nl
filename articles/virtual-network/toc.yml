@@ -39,6 +39,8 @@
       href: security-overview.md
     - name: Routering
       href: virtual-networks-udr-overview.md
+    - name: Servicetags
+      href: service-tags-overview.md
     - name: Service-eindpunten
       href: virtual-network-service-endpoints-overview.md
     - name: Beleid voor service-eindpunten
@@ -65,6 +67,8 @@
       href: ipv6-public-ip-address-prefix.md
     - name: DDoS-bescherming
       href: ddos-protection-overview.md
+    - name: Subnetextensie
+      href: subnet-extension.md
     - name: Interoperabiliteit van back-endconnectiviteit
       items:
         - name: Vooraf instellen en testen
@@ -297,6 +301,8 @@
           href: diagnose-network-routing-problem.md
         - name: Doorvoer testen
           href: virtual-network-bandwidth-testing.md
+        - name: Netwerklatentie van VM testen
+          href: virtual-network-test-latency.md
         - name: Kan virtuele netwerken niet verwijderen
           href: virtual-network-troubleshoot-cannot-delete-vnet.md
         - name: Problemen met connectiviteit van VM naar VM

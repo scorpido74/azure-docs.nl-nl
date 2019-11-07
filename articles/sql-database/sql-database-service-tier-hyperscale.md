@@ -1,5 +1,5 @@
 ---
-title: Overzicht van Azure SQL Database grootschalige | Microsoft Docs
+title: Overzicht van Azure SQL Database grootschalige
 description: In dit artikel wordt de grootschalige-servicelaag in het op vCore gebaseerde aankoop model beschreven in Azure SQL Database en wordt uitgelegd hoe dit verschilt van de Algemeen en Bedrijfskritiek service lagen.
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: dimitri-furman
+ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: db6e47b39b7ebe35a6c0fef42af53f91e96c363f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 38402d6ccf5c5582fff878ad60bf1c9fd4a07118
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496202"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687320"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -82,7 +82,7 @@ In tegens telling tot traditionele data base-engines die alle gegevens beheer fu
 
 In het volgende diagram ziet u de verschillende typen knoop punten in een grootschalige-Data Base:
 
-![architectuur](./media/sql-database-hyperscale/hyperscale-architecture.png)
+![architectuur](./media/sql-database-hyperscale/hyperscale-architecture2.png)
 
 Een grootschalige-Data Base bevat de volgende verschillende soorten onderdelen:
 
@@ -104,7 +104,7 @@ Azure Storage bevat alle gegevens bestanden in een Data Base. Pagina servers hou
 
 ## <a name="backup-and-restore"></a>Back-ups en herstellen
 
-Back-ups zijn gebaseerd op bestands momentopnamen en daarom zijn ze bijna direct. Met opslag-en Compute-schei ding kunt u de bewerking voor back-up/herstel naar de opslaglaag beperken om de verwerkings belasting van de primaire Compute replica te verminderen. Als gevolg hiervan is het maken van een back-up van de data base geen invloed op de prestaties van het primaire reken knooppunt. op dezelfde manier worden herstel bewerkingen uitgevoerd door terug te keren naar moment opnamen van bestanden. Dit is geen grootte van de gegevens bewerking. Herstellen is een constante tijd, en zelfs meerdere terabyte-data bases kunnen binnen enkele minuten worden hersteld in plaats van uren of dagen. Bij het maken van nieuwe data bases door een bestaande back-up te herstellen, wordt ook gebruikgemaakt van deze functie: het maken van database kopieën voor ontwikkelings-of test doeleinden, zelfs op terabyte-formaat databases, is doable binnen enkele minuten.
+Back-ups zijn gebaseerd op bestands momentopnamen en daarom zijn ze bijna direct. Met opslag-en Compute-schei ding kunt u de bewerking voor back-up/herstel naar de opslaglaag beperken om de verwerkings belasting van de primaire Compute replica te verminderen. Als gevolg hiervan is het maken van een back-up van de data base geen invloed op de prestaties van het primaire reken knooppunt. op dezelfde manier worden herstel bewerkingen uitgevoerd door terug te keren naar moment opnamen van bestanden. Dit is geen grootte van de gegevens bewerking. Herstellen is een constante tijd, en zelfs meerdere terabyte-data bases kunnen binnen enkele minuten worden hersteld in plaats van uren of dagen. Het maken van nieuwe data bases door het herstellen van een bestaande back-up maakt ook gebruik van deze functie: het maken van database kopieën binnen dezelfde logische server voor ontwikkelings-en test doeleinden, zelfs op terabyte-formaat databases, is doable binnen enkele minuten.
 
 ## <a name="scale-and-performance-advantages"></a>Schaal-en prestatie voordelen
 
@@ -169,7 +169,7 @@ De laag Azure SQL Database grootschalige is momenteel beschikbaar in de volgende
 - Australië - oost
 - Australië - zuidoost
 - Brazilië - zuid
-- Canada - centraal
+- Canada - midden
 - US - centraal
 - China - oost 2
 - China - noord 2
@@ -177,11 +177,11 @@ De laag Azure SQL Database grootschalige is momenteel beschikbaar in de volgende
 - US - oost
 - VS-Oost 2
 - Frankrijk - centraal
-- Japan - Oost
+- Japan - oost
 - Japan - west
 - Korea - centraal
 - Korea - zuid
-- VS - noord-centraal
+- US - noord-centraal
 - Europa - noord
 - Zuid-Afrika - noord
 - US - zuid-centraal

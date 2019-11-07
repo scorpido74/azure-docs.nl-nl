@@ -1,5 +1,5 @@
 ---
-title: Een FSLogix-profiel container maken voor een hostgroep met Azure NetApp Files in virtueel bureau blad van Windows-Azure
+title: FSLogix-profiel containers NetApp Windows virtueel bureau blad-Azure
 description: Een FSLogix-profiel container maken met behulp van Azure NetApp Files in Windows virtueel bureau blad.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 4e714b872ae43eb313efe549c77f5610342f430c
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 1f5d1050815961f51c2bb1cfce256b1ea37d3ac1
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311633"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605765"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Een FSLogix-profiel container maken voor een hostgroep met Azure NetApp Files
 
@@ -44,7 +44,7 @@ Voordat u een FSLogix-profiel container voor een hostgroep kunt maken, moet u he
 
 Als u aan de slag wilt gaan, moet u een Azure NetApp Files-account instellen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Zorg ervoor dat uw account Inzender-of beheerders machtigingen heeft.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Zorg ervoor dat uw account Inzender-of beheerders machtigingen heeft.
 
 2. Selecteer het **Azure Cloud shell pictogram** rechts van de zoek balk om Azure Cloud shell te openen.
 
@@ -134,7 +134,7 @@ Vervolgens moet u een nieuw volume maken.
     - Voor **virtueel netwerk**selecteert u een bestaand virtueel netwerk dat is verbonden met de domein controller in de vervolg keuzelijst.
     - Selecteer onder **subnet**de optie **nieuwe maken**. Houd er rekening mee dat dit subnet wordt gedelegeerd aan Azure NetApp Files.
 
-3.  Selecteer **volgende: Protocol \> @ no__t-2** om het tabblad Protocol te openen en uw volume Access-para meters te configureren.
+3.  Selecteer **volgende: protocol \>\>** om het tabblad Protocol te openen en uw volume toegangs parameters te configureren.
 
 ## <a name="configure-volume-access-parameters"></a>Volume toegangs parameters configureren
 
@@ -168,11 +168,11 @@ Deze sectie is gebaseerd op het [maken van een profiel container voor een hostgr
 
 6. Selecteer **Installeren**.
 
-7. Navigeer naar **C: \\Program files @ no__t-2FSLogix @ no__t-3Apps** om te bevestigen dat de agent is geïnstalleerd.
+7. Navigeer naar **C:\\programma bestanden\\FSLogix\\-apps** om te bevestigen dat de agent is geïnstalleerd.
 
 8. Voer in het menu Start **regedit** als Administrator uit.
 
-9. Navigeer naar **computer @ no__t-1HKEY_LOCAL_MACHINE @ no__t-2Software @ no__t-3FSLogix**.
+9. Navigeer naar **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
 
 10. Maak een sleutel met de naam **profielen**.
 
@@ -219,7 +219,7 @@ Deze sectie is gebaseerd op het [maken van een profiel container voor een hostgr
 
 5. Ga naar het tabblad **overzicht** en controleer of in de FSLogix-profiel container ruimte wordt gebruikt.
 
-6. Maak rechtstreeks verbinding met een VM-onderdeel van de hostgroep met Extern bureaublad en open de **bestanden Verkenner.** Ga vervolgens naar het **koppelingspad** (in het volgende voor beeld is het koppelingspad @no__t -1\\anf-SMB-3863.gt1107.onmicrosoft.com @ no__t-3ANF-vol).
+6. Maak rechtstreeks verbinding met een VM-onderdeel van de hostgroep met Extern bureaublad en open de **bestanden Verkenner.** Ga vervolgens naar het **koppelingspad** (in het volgende voor beeld is het pad van de koppeling \\\\ANF-SMB-3863.gt1107.onmicrosoft.com\\ANF vol).
 
    In deze map moet er een VHD (of VHDX) van het profiel staan, zoals in het volgende voor beeld.
 

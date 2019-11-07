@@ -1,5 +1,5 @@
 ---
-title: Gegevens van SAP ECC kopiëren met behulp van Azure Data Factory | Microsoft Docs
+title: Gegevens van SAP ECC kopiëren met behulp van Azure Data Factory
 description: Informatie over het kopiëren van gegevens van SAP ECC naar ondersteunde Sink-gegevens opslag met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: c2b9fcc3f75b8f310532978061c887776f007ff0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 526f85ca4b8854a36232c75a55847a73a8d372cc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089532"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680296"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Gegevens van SAP ECC kopiëren met behulp van Azure Data Factory
 
@@ -33,7 +33,7 @@ Deze SAP ECC-connector wordt ondersteund voor de volgende activiteiten:
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
-U kunt gegevens van SAP ECC kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevensarchieven die worden ondersteund als gegevensbronnen of PUT voor de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
+U kunt gegevens van SAP ECC kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bronnen of sinks op basis van de Kopieer activiteit.
 
 Deze SAP ECC-connector ondersteunt met name:
 
@@ -68,17 +68,17 @@ In het algemeen worden met SAP ECC entiteiten via OData-Services via SAP gateway
 
 De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van de Data Factory entiteiten die specifiek zijn voor de SAP ECC-connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
 De volgende eigenschappen worden ondersteund voor de SAP ECC-gekoppelde service:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| `type` | De `type` eigenschap moet worden ingesteld op `SapEcc`. | Ja |
+| `type` | De eigenschap `type` moet worden ingesteld op `SapEcc`. | Ja |
 | `url` | De URL van de SAP ECC OData-service. | Ja |
 | `username` | De gebruikers naam die wordt gebruikt om verbinding te maken met SAP ECC. | Nee |
 | `password` | Het Lees bare wacht woord dat wordt gebruikt om verbinding te maken met SAP ECC. | Nee |
-| `connectVia` | De [integratieruntime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u geen runtime opgeeft, wordt de standaard Azure Integration runtime gebruikt. | Nee |
+| `connectVia` | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u geen runtime opgeeft, wordt de standaard Azure Integration runtime gebruikt. | Nee |
 
 ### <a name="example"></a>Voorbeeld
 
@@ -107,11 +107,11 @@ De volgende eigenschappen worden ondersteund voor de SAP ECC-gekoppelde service:
 
 Zie [gegevens sets](concepts-datasets-linked-services.md)voor een volledige lijst met de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. De volgende sectie bevat een lijst met de eigenschappen die worden ondersteund door de SAP ECC-gegevensset.
 
-Als u gegevens wilt kopiëren uit SAP ECC, `type` stelt u de eigenschap van `SapEccResource`de gegevensset in op.
+Als u gegevens wilt kopiëren uit SAP ECC, stelt u de eigenschap `type` van de gegevensset in op `SapEccResource`.
 
 De volgende eigenschappen worden ondersteund:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | `path` | Pad van de SAP ECC OData-entiteit. | Ja |
 
@@ -140,13 +140,13 @@ Zie [pijp lijnen](concepts-pipelines-activities.md)voor een volledige lijst met 
 
 ### <a name="sap-ecc-as-a-source"></a>SAP ECC als een bron
 
-Als u gegevens wilt kopiëren uit SAP ECC, `type` stelt u de `source` eigenschap in het gedeelte van de `SapEccSource`Kopieer activiteit in op.
+Als u gegevens wilt kopiëren uit SAP ECC, stelt u de eigenschap `type` in het gedeelte `source` van de Kopieer activiteit in op `SapEccSource`.
 
-De volgende eigenschappen worden ondersteund in de `source` sectie Kopieer activiteit:
+De volgende eigenschappen worden ondersteund in de sectie `source` van de Kopieer activiteit:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| `type` | De `type` eigenschap van de `source` sectie van de Kopieer activiteit moet worden ingesteld `SapEccSource`op. | Ja |
+| `type` | De eigenschap `type` van de `source` sectie van de Kopieer activiteit moet zijn ingesteld op `SapEccSource`. | Ja |
 | `query` | De OData-query opties voor het filteren van de gegevens. Bijvoorbeeld:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>De SAP ECC-connector kopieert gegevens van de gecombineerde URL:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Zie [ODATA URL Components](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)(Engelstalig) voor meer informatie. | Nee |
 
 ### <a name="example"></a>Voorbeeld
@@ -185,7 +185,7 @@ De volgende eigenschappen worden ondersteund in de `source` sectie Kopieer activ
 
 Wanneer u gegevens van SAP ECC kopieert, worden de volgende toewijzingen gebruikt vanuit OData-gegevens typen voor SAP ECC-gegevens om Azure Data Factory tussenliggende gegevens typen. Zie [schema en gegevens type toewijzingen](copy-activity-schema-and-type-mapping.md)voor meer informatie over hoe de Kopieer activiteit het bron schema en het gegevens type aan de Sink koppelt.
 
-| OData-gegevens type | Data Factory tussentijdse gegevenstype |
+| OData-gegevens type | Data Factory tussentijds gegevens type |
 |:--- |:--- |
 | `Edm.Binary` | `String` |
 | `Edm.Boolean` | `Bool` |

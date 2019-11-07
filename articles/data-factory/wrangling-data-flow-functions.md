@@ -1,5 +1,5 @@
 ---
-title: Wrangling voor gegevens stromen in Azure Data Factory | Microsoft Docs
+title: Wrangling voor gegevens stromen in Azure Data Factory
 description: Een overzicht van de beschik bare wrangling-functies voor gegevens stromen in Azure Data Factory
 author: djpmsft
 ms.author: daperlov
@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 73ad0b39e119a9ef33fa1fa595ddcc47f61ae163
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3274641f7b118e13b3ed727f609ce7471fd66b54
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518552"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682293"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformatie functies in wrangling-gegevens stroom
 

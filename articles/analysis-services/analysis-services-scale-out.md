@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services scale-out | Microsoft Docs
-description: Azure Analysis Services servers repliceren met scale-out
+description: Azure Analysis Services servers repliceren met scale-out. Client query's kunnen vervolgens worden verdeeld over meerdere query replica's in een scale-out-query groep.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: af1a0db397510014301a58aea7238b695a6c0740
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1b40238dfc579e42d0389ae14fdea4b5692ede06
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146440"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572591"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Uitschalen van Azure Analysis Services
 
@@ -30,7 +30,7 @@ Ongeacht het aantal query replica's in een query groep, worden de verwerkings we
 
 Wanneer u uitschaalt, kan het tot vijf minuten duren voordat nieuwe query replica's incrementeel worden toegevoegd aan de query groep. Wanneer alle nieuwe query replica's actief zijn, worden nieuwe client verbindingen verdeeld over alle resources in de query groep. Bestaande client verbindingen worden niet gewijzigd ten opzichte van de resource waarmee ze momenteel zijn verbonden. Bij het schalen in worden alle bestaande client verbindingen met een bron van de query groep die uit de query groep wordt verwijderd, beëindigd. Clients kunnen opnieuw verbinding maken met een resterende resource in de query groep.
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>Hoe werkt het?
 
 Wanneer u de eerste keer scale-out configureert, worden model databases op uw primaire server *automatisch* gesynchroniseerd met nieuwe replica's in een nieuwe query groep. Automatische synchronisatie wordt slechts één keer uitgevoerd. Tijdens automatische synchronisatie worden de gegevens bestanden van de primaire server (versleuteld op rest in Blob Storage) gekopieerd naar een tweede locatie, ook versleuteld op rest in Blob Storage. Replica's in de query groep worden vervolgens *gehydrateerd* met gegevens uit de tweede set bestanden. 
 
@@ -44,9 +44,9 @@ Wanneer u een volgende uitschaal bewerking uitvoert, bijvoorbeeld het aantal rep
 
 * Synchronisatie is ook toegestaan wanneer er geen replica's in de query groep zijn. Als u opschalen van nul naar een of meer replica's met nieuwe gegevens van een verwerkings bewerking op de primaire server, voert u de synchronisatie eerst uit zonder replica's in de query groep en vervolgens scale-out. Bij het synchroniseren van wordt geen redundante Hydration van de zojuist toegevoegde replica's voor komen.
 
-* Wanneer u een model database van de primaire server verwijdert, wordt deze niet automatisch verwijderd uit replica's in de query groep. U moet een synchronisatie bewerking uitvoeren met behulp van de Power shell [-opdracht Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) die het bestand/de s voor die data base verwijdert uit de gedeelde Blob-opslag locatie van de replica en vervolgens de model database op de replica's verwijdert. in de query groep. Als u wilt bepalen of een model database bestaat voor replica's in de query pool, maar niet op de primaire server, moet u ervoor zorgen dat de **afzonderlijke verwerkings server van de query groep** is ingesteld op **Ja**. Gebruik vervolgens SSMS om verbinding te maken met de primaire server met behulp van de kwalificatie `:rw` om te zien of de data base bestaat. Maak vervolgens verbinding met replica's in de query groep door verbinding te maken zonder de `:rw`-kwalificatie om te zien of dezelfde data base ook bestaat. Als de data base bestaat in replica's in de query groep, maar niet op de primaire server, voert u een synchronisatie bewerking uit.   
+* Wanneer u een model database van de primaire server verwijdert, wordt deze niet automatisch verwijderd uit replica's in de query groep. U moet een synchronisatie bewerking uitvoeren met behulp van de Power shell [-opdracht Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) die het bestand/de s voor die data base verwijdert uit de gedeelde Blob-opslag locatie van de replica en vervolgens de model database op de replica's verwijdert. in de query groep. Als u wilt bepalen of een model database bestaat voor replica's in de query pool, maar niet op de primaire server, moet u ervoor zorgen dat de **afzonderlijke verwerkings server van de query groep** is ingesteld op **Ja**. Gebruik vervolgens SSMS om verbinding te maken met de primaire server met behulp van de `:rw` kwalificatie om te controleren of de data base bestaat. Maak vervolgens verbinding met replica's in de query groep door verbinding te maken zonder de `:rw` kwalificatie om te zien of dezelfde data base ook bestaat. Als de data base bestaat in replica's in de query groep, maar niet op de primaire server, voert u een synchronisatie bewerking uit.   
 
-* Bij het wijzigen van de naam van een Data Base op de primaire server is er een extra stap die nodig is om ervoor te zorgen dat de data base correct is gesynchroniseerd met replica's. Nadat u de naam hebt gewijzigd, voert u een synchronisatie uit met behulp van de opdracht [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) en geeft u de para meter `-Database` op met de oude database naam. Deze synchronisatie verwijdert de data base en bestanden met de oude naam uit een of meer replica's. Voer vervolgens een andere synchronisatie uit met de para meter `-Database` met de naam van de nieuwe data base. Bij de tweede synchronisatie wordt de data base met de nieuwe naam gekopieerd naar de tweede set bestanden en worden eventuele replica's gehydrateerd. Deze synchronisaties kunnen niet worden uitgevoerd met behulp van de opdracht model synchroniseren in de portal.
+* Bij het wijzigen van de naam van een Data Base op de primaire server is er een extra stap die nodig is om ervoor te zorgen dat de data base correct is gesynchroniseerd met replica's. Nadat u de naam hebt gewijzigd, voert u een synchronisatie uit met behulp van de opdracht [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) met de para meter `-Database` op te geven met de oude database naam. Deze synchronisatie verwijdert de data base en bestanden met de oude naam uit een of meer replica's. Voer vervolgens een andere synchronisatie uit met de para meter `-Database` met de naam van de nieuwe data base. Bij de tweede synchronisatie wordt de data base met de nieuwe naam gekopieerd naar de tweede set bestanden en worden eventuele replica's gehydrateerd. Deze synchronisaties kunnen niet worden uitgevoerd met behulp van de opdracht model synchroniseren in de portal.
 
 ### <a name="separate-processing-from-query-pool"></a>Afzonderlijke verwerking van de query pool
 
@@ -107,7 +107,7 @@ Gebruik de **synchronisatie** bewerking.
 Retour status codes:
 
 
-|Coderen  |Beschrijving  |
+|Code  |Beschrijving  |
 |---------|---------|
 |-1     |  Ongeldig       |
 |0     | Repliceren        |
@@ -128,7 +128,7 @@ Als u synchronisatie wilt uitvoeren, gebruikt u [Sync-AzAnalysisServicesInstance
 
 Als u het aantal query replica's wilt instellen, gebruikt u [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Geef de optionele para meter `-ReadonlyReplicaCount` op.
 
-Als u de verwerkings server van de query groep wilt scheiden, gebruikt u [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Geef de optionele para meter `-DefaultConnectionMode` op om `Readonly` te gebruiken.
+Als u de verwerkings server van de query groep wilt scheiden, gebruikt u [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Geef de optionele para meter `-DefaultConnectionMode` op om `Readonly`te gebruiken.
 
 Zie [een Service-Principal gebruiken met de module AZ. AnalysisServices](analysis-services-service-principal.md#azmodule)voor meer informatie.
 
@@ -138,7 +138,7 @@ Op de overzichts pagina van de server bevinden zich twee server namen. Als u nog
 
 Voor client verbindingen van eind gebruikers, zoals Power BI Desktop, Excel en aangepaste apps, gebruikt u **Server naam**. 
 
-Voor SSMS, Visual Studio en verbindings reeksen in Power shell, Azure function-apps en AMO, gebruikt u de naam van de **beheer server**. De naam van de beheer server bevat een speciale kwalificatie van het `:rw` (lezen/schrijven). Alle verwerkings bewerkingen worden uitgevoerd op de beheer server (primair).
+Voor SSMS, Visual Studio en verbindings reeksen in Power shell, Azure function-apps en AMO, gebruikt u de naam van de **beheer server**. De naam van de beheer server bevat een speciale `:rw`-kwalificatie (lezen/schrijven). Alle verwerkings bewerkingen worden uitgevoerd op de beheer server (primair).
 
 ![Server namen](media/analysis-services-scale-out/aas-scale-out-name.png)
 
@@ -148,13 +148,13 @@ U kunt de prijs categorie wijzigen op een server met meerdere replica's. Dezelfd
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
-**Probleem:** Fout bij het ophalen **van gebruikers kan server ' \<Name van de server > ' instance ' niet vinden in de verbindings modus ' readonly '.**
+**Probleem:** Fout bij het ophalen **van gebruikers kan de\<naam van de server niet vinden > instantie in de verbindings modus readonly.**
 
-**Oplossing:** Wanneer u de **afzonderlijke verwerking van de verwerkings server van de optie query groep** selecteert, worden client verbindingen die gebruikmaken van de standaard Connection String (zonder `:rw`) omgeleid naar de query pool-replica's. Als replica's in de query groep nog niet online zijn omdat de synchronisatie nog niet is voltooid, kunnen omgeleide client verbindingen mislukken. Als u mislukte verbindingen wilt voor komen, moeten er ten minste twee servers in de query groep aanwezig zijn bij het uitvoeren van een synchronisatie. Elke server wordt afzonderlijk gesynchroniseerd, terwijl anderen online blijven. Als u de verwerkings server niet in de query groep hebt tijdens de verwerking, kunt u deze verwijderen uit de groep voor verwerking en deze vervolgens opnieuw toevoegen aan de groep nadat de verwerking is voltooid, maar vóór de synchronisatie. Gebruik geheugen-en QPU-metrische gegevens om de synchronisatie status te bewaken.
+**Oplossing:** Wanneer u de **afzonderlijke verwerkings server selecteert in de optie query groep** , worden client verbindingen die gebruikmaken van de standaard Connection String (zonder `:rw`) omgeleid naar de query pool-replica's. Als replica's in de query groep nog niet online zijn omdat de synchronisatie nog niet is voltooid, kunnen omgeleide client verbindingen mislukken. Als u mislukte verbindingen wilt voor komen, moeten er ten minste twee servers in de query groep aanwezig zijn bij het uitvoeren van een synchronisatie. Elke server wordt afzonderlijk gesynchroniseerd, terwijl anderen online blijven. Als u de verwerkings server niet in de query groep hebt tijdens de verwerking, kunt u deze verwijderen uit de groep voor verwerking en deze vervolgens opnieuw toevoegen aan de groep nadat de verwerking is voltooid, maar vóór de synchronisatie. Gebruik geheugen-en QPU-metrische gegevens om de synchronisatie status te bewaken.
 
 
 
 ## <a name="related-information"></a>Gerelateerde informatie
 
-[Metrische Server gegevens](analysis-services-monitor.md)  bewaken  
+De [metrische gegevens van de server bewaken](analysis-services-monitor.md)   
 [Azure Analysis Services beheren](analysis-services-manage.md) 

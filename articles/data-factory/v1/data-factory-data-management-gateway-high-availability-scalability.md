@@ -1,6 +1,6 @@
 ---
-title: Hoge beschikbaarheid met data management gateway in Azure Data Factory | Microsoft Docs
-description: Dit artikel wordt uitgelegd hoe kunt u een data management gateway uitschalen door toevoeging van meer knooppunten en schaal omhoog door het aantal gelijktijdige taken die kunnen worden uitgevoerd op een knooppunt.
+title: Hoge Beschik baarheid met Data Management Gateway in Azure Data Factory
+description: In dit artikel wordt uitgelegd hoe u een Data Management Gateway kunt schalen door meer knoop punten toe te voegen en omhoog te schalen door het aantal gelijktijdige taken te verhogen dat op een knoop punt kan worden uitgevoerd.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -13,250 +13,250 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 08e7341bfd1c384e41e6d3f1bd7810552899849a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3428019fe23e3f206e763249a18e7774bab149b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60488630"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682703"
 ---
-# <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway - hoge beschikbaarheid en schaalbaarheid (Preview)
+# <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway-hoge Beschik baarheid en schaal baarheid (preview-versie)
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [zelf-hostende integratieruntime in](../create-self-hosted-integration-runtime.md). 
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [zelf-hostende Integration runtime in](../create-self-hosted-integration-runtime.md). 
 
 
-Dit artikel helpt u bij het configureren van oplossing met hoge beschikbaarheid en schaalbaarheid met Data Management Gateway / integratie.    
+Dit artikel helpt u bij het configureren van een oplossing met hoge Beschik baarheid en schaal baarheid met Data Management Gateway/integratie.    
 
 > [!NOTE]
-> In dit artikel wordt ervan uitgegaan dat u al bekend met de basisprincipes van Integration Runtime (eerdere Data Management Gateway bent). Als u niet het geval is, Zie [Data Management Gateway](data-factory-data-management-gateway.md).
+> In dit artikel wordt ervan uitgegaan dat u al bekend bent met de basis principes van Integration Runtime (eerder Data Management Gateway). Als dat niet het geval is, raadpleegt u [Data Management Gateway](data-factory-data-management-gateway.md).
 > 
-> **Deze preview-functie is officieel ondersteund op Data Management Gateway versie 2.12.xxxx.x en hoger**. Zorg ervoor dat u versie 2.12.xxxx.x of hoger. Download de nieuwste versie van Data Management Gateway [hier](https://www.microsoft.com/download/details.aspx?id=39717).
+> **Deze preview-functie wordt officieel ondersteund in Data Management Gateway versie 2.12. xxxx. x en hoger**. Zorg ervoor dat u versie 2.12. xxxx. x of hoger gebruikt. Down load [hier](https://www.microsoft.com/download/details.aspx?id=39717)de nieuwste versie van Data Management Gateway.
 
 ## <a name="overview"></a>Overzicht
-U kunt data management gateways die zijn geïnstalleerd op meerdere on-premises machines met een enkele logische gateway vanuit de portal koppelen. Deze machines heten **knooppunten**. U kunt maximaal hebben **vier knooppunten** die zijn gekoppeld aan een logische gateway. De voordelen van meerdere knooppunten (on-premises machines met de gateway is geïnstalleerd) voor een logische gateway zijn:  
+U kunt Data Management gateways die zijn geïnstalleerd op meerdere on-premises machines koppelen aan één logische gateway vanuit de portal. Deze computers worden **knoop punten**genoemd. U kunt Maxi maal **vier knoop punten** koppelen aan een logische gateway. De voor delen van het gebruik van meerdere knoop punten (on-premises machines met Gateway geïnstalleerd) voor een logische gateway zijn:  
 
-- Prestaties van de verplaatsing van gegevens tussen on-premises en cloud gegevensarchieven.  
-- Als een van de knooppunten uitgeschakeld voor een of andere reden wordt, zijn andere knooppunten nog steeds beschikbaar voor het verplaatsen van de gegevens. 
-- Als een van de knooppunten offline worden gehaald voor onderhoud moet, zijn andere knooppunten nog steeds beschikbaar voor het verplaatsen van de gegevens.
+- Verbeter de prestaties van het verplaatsen van gegevens tussen on-premises en gegevens opslag in de Cloud.  
+- Als een van de knoop punten om een of andere reden niet meer wordt weer gegeven, zijn er nog andere knoop punten beschikbaar voor het verplaatsen van de gegevens. 
+- Als een van de knoop punten offline moet worden genomen voor onderhoud, zijn er nog andere knoop punten beschikbaar voor het verplaatsen van de gegevens.
 
-U kunt ook het aantal **gelijktijdige verkeer taken** die kunnen worden uitgevoerd op een knooppunt de mogelijkheid om gegevens te verplaatsen tussen on-premises en cloud kan worden uitgebreid gegevensarchieven. 
+U kunt ook het aantal **gelijktijdige taken voor gegevens verplaatsing** configureren dat kan worden uitgevoerd op een knoop punt om de mogelijkheid te schalen om gegevens te verplaatsen tussen on-premises en gegevens archieven in de Cloud. 
 
-Met behulp van de Azure-portal, kunt u de status van deze knooppunten die u u bij het beslissen of u helpt wilt toevoegen of verwijderen van een knooppunt uit het logische gateway bewaken. 
+Met behulp van de Azure Portal kunt u de status van deze knoop punten bewaken, zodat u kunt beslissen of u een knoop punt wilt toevoegen aan of verwijderen uit de logische gateway. 
 
 ## <a name="architecture"></a>Architectuur 
-Het volgende diagram biedt een overzicht van de architectuur van schaalbaarheid en beschikbaarheid-functie van de Data Management Gateway: 
+In het volgende diagram vindt u een overzicht van de architectuur van de functie voor schaal baarheid en beschik baarheid van de Data Management Gateway: 
 
-![Data Management Gateway - hoge beschikbaarheid en schaalbaarheid](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-high-availability-and-scalability.png)
+![Data Management Gateway-hoge Beschik baarheid en schaal baarheid](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-high-availability-and-scalability.png)
 
-Een **logische gateway** is de gateway die u aan een data factory in Azure portal toevoegt. Eerder kon u slechts één on-premises Windows-computer koppelen met Data Management Gateway is geïnstalleerd met een logische gateway. Deze on-premises machine van de gateway heet een knooppunt. Nu u maximaal kunt koppelen **vier fysieke knooppunten** met een logische gateway. Een logische gateway met meerdere knooppunten heet een **meerdere knooppunten gateway**.  
+Een **logische gateway** is de gateway die u toevoegt aan een Data Factory in het Azure Portal. Eerder kunt u slechts één on-premises Windows-machine koppelen met Data Management Gateway geïnstalleerd met een logische gateway. Deze on-premises gateway computer wordt een knoop punt genoemd. U kunt nu Maxi maal **vier fysieke knoop punten** koppelen aan een logische gateway. Een logische gateway met meerdere knoop punten wordt een **multi-knoop punt gateway**genoemd.  
 
-Alle deze knooppunten zijn **active**. Ze allemaal kunnen worden verwerkt gegevens verkeer taken voor het verplaatsen van gegevens tussen on-premises en cloud gegevensarchieven. Een van de knooppunten fungeren als de functie voor berichtverzending- en werkrollen. Andere knooppunten in de groepen zijn worker-knooppunten. Een **dispatcher** knooppunt haalt gegevens verkeer taken/taken van de cloudservice en verzendt ze naar de worker-knooppunten (inclusief zelf). Een **worker** knooppunt wordt uitgevoerd gegevens verkeer taken voor het verplaatsen van gegevens tussen on-premises en cloud gegevensarchieven. Alle knooppunten zijn werknemers. Slechts één knooppunt kan worden verzending- en werkrollen.    
+Al deze knoop punten zijn **actief**. Ze kunnen gegevens verplaatsings taken verwerken om gegevens te verplaatsen tussen on-premises en gegevens opslag in de Cloud. Een van de knoop punten fungeert als zowel de verzender als de werk nemer. Andere knoop punten in de groepen zijn worker-knoop punten. Een **dispatcher** -knoop punt haalt taken/taken voor gegevens verplaatsing op uit de Cloud service en verzendt deze naar werk knooppunten (waaronder zichzelf). Een **worker** -knoop punt voert gegevens verplaatsings taken uit om gegevens te verplaatsen tussen on-premises en gegevens opslag in de Cloud. Alle knoop punten zijn werk nemers. Er kan slechts één knoop punt worden verzonden en worker.    
 
-U kan doorgaans begint met één knooppunt en **uitschalen** meer knooppunten als de bestaande knooppunten worden overspoeld met het laden van de verplaatsing van gegevens toevoegen. U kunt ook **omhoog schalen** de mogelijkheid voor het verplaatsen van gegevens van een gateway-knooppunt door het aantal gelijktijdige taken die mogen worden uitgevoerd op het knooppunt. Deze mogelijkheid is ook beschikbaar met één knooppunt gateway (zelfs als de functie voor schaalbaarheid en beschikbaarheid is niet ingeschakeld). 
+U kunt normaal gesp roken beginnen met één knoop punt en uitschalen om meer knoop punten toe te voegen, omdat het bestaande knoop punt (en) **verouderd** blijven met de belasting voor het verplaatsen van gegevens. U kunt ook de capaciteit van gegevens verplaatsing van een gateway knooppunt **opschalen** door het aantal gelijktijdige taken dat op het knoop punt mag worden uitgevoerd, te verhogen. Deze mogelijkheid is ook beschikbaar met een gateway met één knoop punt (zelfs wanneer de functie voor schaal baarheid en beschik baarheid niet is ingeschakeld). 
 
-Een gateway met meerdere knooppunten houdt u de referenties van de gegevensopslag gesynchroniseerd voor alle knooppunten. Als er een probleem met de netwerkverbinding van knooppunt-naar-knooppunt, kunnen de referenties zijn niet gesynchroniseerd. Wanneer u referenties voor een on-premises-gegevensarchief dat gebruikmaakt van een gateway hebt ingesteld, worden er opgeslagen referenties op het knooppunt verzender/werknemer. De functie voor berichtverzending knooppunt wordt gesynchroniseerd met andere worker-knooppunten. Dit proces staat bekend als **referenties synchronisatie**. Het communicatiekanaal tussen knooppunten kan worden **versleutelde** door een openbare SSL/TLS-certificaat. 
+Een gateway met meerdere knoop punten houdt de referenties van het gegevens archief synchroon op alle knoop punten. Als er sprake is van een verbindings probleem tussen knoop punten, zijn de referenties mogelijk niet synchroon. Wanneer u referenties instelt voor een on-premises gegevens opslag die gebruikmaakt van een gateway, slaat de referenties op het knoop punt dispatcher/worker op. Het dispatcher-knoop punt wordt gesynchroniseerd met andere worker-knoop punten. Dit proces wordt synchronisatie van **referenties**genoemd. Het communicatie kanaal tussen knoop punten kan worden **versleuteld** met een openbaar SSL/TLS-certificaat. 
 
-## <a name="set-up-a-multi-node-gateway"></a>Instellen van een gateway met meerdere knooppunten
-In deze sectie wordt ervan uitgegaan dat u hebt doorlopen in de volgende twee artikelen of bekend bent met concepten in deze artikelen: 
+## <a name="set-up-a-multi-node-gateway"></a>Een gateway met meerdere knoop punten instellen
+In deze sectie wordt ervan uitgegaan dat u de volgende twee artikelen hebt door lopen of dat u bekend bent met de concepten in deze artikelen: 
 
 - [Data Management Gateway](data-factory-data-management-gateway.md) -biedt een gedetailleerd overzicht van de gateway.
-- [Gegevens verplaatsen tussen on-premises en cloud gegevensarchieven](data-factory-move-data-between-onprem-and-cloud.md) -bevat een overzicht met stapsgewijze instructies voor het gebruik van een gateway met een enkel knooppunt.  
+- [Gegevens verplaatsen tussen on-premises en Cloud gegevens archieven](data-factory-move-data-between-onprem-and-cloud.md) : bevat een overzicht met stapsgewijze instructies voor het gebruik van een gateway met een enkel knoop punt.  
 
 > [!NOTE]
-> Voordat u een data management gateway op een on-premises Windows-computer installeert, Zie vereisten die worden vermeld [het belangrijkste artikel](data-factory-data-management-gateway.md#prerequisites).
+> Zie vereisten die worden vermeld in [het hoofd artikel](data-factory-data-management-gateway.md#prerequisites)voordat u een Data Management-Gateway installeert op een on-premises Windows-computer.
 
-1. In de [scenario](data-factory-move-data-between-onprem-and-cloud.md#create-gateway), inschakelen tijdens het maken van een logische gateway, de **hoge beschikbaarheid en schaalbaarheid** functie. 
+1. In de [Stapsgewijze instructies](data-factory-move-data-between-onprem-and-cloud.md#create-gateway)bij het maken van een logische gateway, schakelt u de functie voor **maximale beschik baarheid & schaal baarheid** in. 
 
-    ![Data Management Gateway - inschakelen hoge beschikbaarheid en schaalbaarheid](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-enable-high-availability-scalability.png)
-2. In de **configureren** pagina, gebruikt u een **snelle installatie van** of **handmatige installatie** koppelen aan een gateway installeren op het eerste knooppunt (een on-premises Windows-computer).
+    ![Data Management Gateway-hoge Beschik baarheid en schaal baarheid inschakelen](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-enable-high-availability-scalability.png)
+2. Op de pagina **configureren** gebruikt u de koppeling **snelle installatie** of **hand matige installatie** om een gateway te installeren op het eerste knoop punt (een on-premises Windows-machine).
 
-    ![Data Management Gateway - uitdrukkelijk of handmatige installatie](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-express-manual-setup.png)
+    ![Data Management Gateway-Express of hand matige installatie](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-express-manual-setup.png)
 
     > [!NOTE]
-    > Als u de snelle installatie-optie gebruikt, wordt de communicatie knooppunt-naar-knooppunt uitgevoerd zonder versleuteling. Naam van het knooppunt is hetzelfde als de naam van de machine. Gebruik de handmatige installatie als de communicatie tussen knooppunten moet worden versleuteld of u wilt de knooppuntnaam van een van uw keuze op te geven. Knooppuntnamen kunnen niet later worden bewerkt.
-3. Als u ervoor kiest **snelle installatie**
+    > Als u de optie snelle installatie gebruikt, wordt de communicatie tussen knoop punten uitgevoerd zonder versleuteling. De naam van het knoop punt is hetzelfde als de naam van de computer. Gebruik hand matige installatie als de communicatie tussen knoop punten moet worden versleuteld of als u een knooppunt naam wilt opgeven van uw keuze. Knooppunt namen kunnen niet later worden bewerkt.
+3. Als u **snelle installatie** kiest
     1. U ziet het volgende bericht nadat de gateway is geïnstalleerd:
 
-        ![Data Management Gateway - snelle installatie geslaagd](media/data-factory-data-management-gateway-high-availability-scalability/express-setup-success.png)
-    2. Data Management Configuration Manager starten voor de gateway door [deze instructies](data-factory-data-management-gateway.md#configuration-manager). U ziet de gatewaynaam van de, naam van het knooppunt, status, enzovoort.
+        ![Data Management Gateway-snelle installatie geslaagd](media/data-factory-data-management-gateway-high-availability-scalability/express-setup-success.png)
+    2. Start Gegevensbeheer Configuration Manager voor de gateway door [deze instructies](data-factory-data-management-gateway.md#configuration-manager)te volgen. U ziet de naam van de gateway, de naam van het knoop punt, de status, enzovoort.
 
-        ![Data Management Gateway - installatie is geslaagd](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
-4. Als u ervoor kiest **handmatige installatie**:
-    1. Download het installatiepakket van het Microsoft Download Center, worden gateway installeren op uw computer worden uitgevoerd.
-    2. Gebruik de **verificatiesleutel** uit de **configureren** pagina om de gateway te registreren.
+        ![Data Management Gateway-installatie voltooid](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
+4. Als u **hand matig instellen**kiest:
+    1. Down load het installatie pakket van het micro soft Download centrum en voer het uit om de gateway op uw computer te installeren.
+    2. Gebruik de **verificatie sleutel** van de pagina **configureren** om de gateway te registreren.
     
-        ![Data Management Gateway - installatie is geslaagd](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-authentication-key.png)
-    3. In de **nieuwe gateway-knooppunt** pagina, kunt u een aangepaste bieden **naam** naar de gateway-knooppunt. Naam van het knooppunt is standaard hetzelfde als de naam van de machine.    
+        ![Data Management Gateway-installatie voltooid](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-authentication-key.png)
+    3. Op de pagina **Nieuw gateway knooppunt** kunt u een aangepaste **naam** opgeven voor het gateway-knoop punt. De naam van het knoop punt is standaard hetzelfde als de naam van de computer.    
 
-        ![Data Management Gateway - naam opgeven](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-name.png)
-    4. In de volgende pagina kunt u kiezen of u wilt **versleuteling inschakelen voor communicatie van knooppunt-naar-knooppunt**. Klik op **overslaan** om uit te schakelen codering (standaard).
+        ![Data Management Gateway: Geef een naam op](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-name.png)
+    4. Op de volgende pagina kunt u kiezen of u **versleuteling wilt inschakelen voor communicatie tussen knoop**punten. Klik op **overs Laan** om versleuteling uit te scha kelen (standaard).
 
-        ![Data Management Gateway - versleuteling inschakelen](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-node-encryption.png)  
+        ![Data Management Gateway-versleuteling inschakelen](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-node-encryption.png)  
     
         > [!NOTE]
-        > Wijzigen van de versleutelingsmodus wordt alleen ondersteund wanneer u een knooppunt één gateway in de logische gateway. Als u wilt de versleutelingsmodus wijzigen wanneer een gateway meerdere knooppunten heeft, de volgende stappen uitvoeren: het verwijderen van alle knooppunten, met uitzondering van één knooppunt, de versleutelingsmodus wijzigen en vervolgens de knooppunten opnieuw toevoegen.
+        > Het wijzigen van de versleutelings modus wordt alleen ondersteund als u één gateway-knoop punt in de logische gateway hebt. Als u de versleutelings modus wilt wijzigen wanneer een gateway meerdere knoop punten heeft, voert u de volgende stappen uit: Verwijder alle knoop punten, met uitzonde ring van één knoop punt, wijzig de versleutelings modus en voeg de knoop punten opnieuw toe.
         > 
-        > Zie [TLS/SSL-certificaatvereisten](#tlsssl-certificate-requirements) sectie voor een lijst van de vereisten voor het gebruik van een TLS/SSL-certificaat. 
-    5. Nadat de gateway is geïnstalleerd, klikt u op Configuration Manager starten:
+        > Zie de sectie met [TLS/SSL-certificaat vereisten](#tlsssl-certificate-requirements) voor een lijst met vereisten voor het gebruik van een TLS/SSL-certificaat. 
+    5. Nadat de gateway is geïnstalleerd, klikt u op Start Configuration Manager:
     
-        ![Handmatige installatie - launch configuration manager](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)   
-    6. ziet u de Data Management Gateway Configuration Manager op het knooppunt (on-premises Windows computer), waarin connectiviteitsstatus **gatewaynaam**, en **knooppuntnaam**.  
+        ![Hand matige installatie-Configuration Manager starten](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)   
+    6. u ziet Data Management Gateway Configuration Manager op het knoop punt (on-premises Windows-machine), waarin de status van de verbinding, de **Gateway naam**en de naam van het **knoop punt**worden weer gegeven.  
 
-        ![Data Management Gateway - installatie is geslaagd](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
+        ![Data Management Gateway-installatie voltooid](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
 
         > [!NOTE]
-        > Als u de gateway op een Azure VM inricht, kunt u [deze Azure Resource Manager-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-mutiple-vms-with-data-management-gateway). Met dit script maakt een logische gateway, stelt u de virtuele machines met Data Management Gateway-software is geïnstalleerd en registreert deze met de logische gateway. 
-6. Start in Azure portal, de **Gateway** pagina: 
-    1. Klik op de pagina data factory start in de portal, **gekoppelde Services**.
+        > Als u de gateway op een virtuele Azure-machine inricht, kunt u [deze Azure Resource Manager sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-mutiple-vms-with-data-management-gateway)gebruiken. Met dit script maakt u een logische gateway, stelt u Vm's in waarop Data Management Gateway software is geïnstalleerd en registreert u deze bij de logische gateway. 
+6. Start de pagina **Gateway** in azure portal: 
+    1. Klik op de start pagina van data factory in de portal op **gekoppelde services**.
     
         ![Startpagina van de gegevensfactory](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png)
-    2. Selecteer de **gateway** om te zien de **Gateway** pagina:
+    2. Selecteer de **Gateway** om de pagina **Gateway** weer te geven:
     
         ![Startpagina van de gegevensfactory](media/data-factory-data-management-gateway-high-availability-scalability/linked-services-gateway.png)
-    4. U ziet de **Gateway** pagina:   
+    4. U ziet de pagina **Gateway** :   
 
-        ![Gateway met één knooppunt weergeven](media/data-factory-data-management-gateway-high-availability-scalability/gateway-first-node-portal-view.png) 
-7. Klik op **knooppunt toevoegen** op de werkbalk om een knooppunt toevoegen aan de logische gateway. Als u van plan bent te gebruiken van snelle installatie, voert u deze stap van de on-premises computer die als een knooppunt wordt toegevoegd aan de gateway. 
+        ![Gateway met een weer gave met één knoop punt](media/data-factory-data-management-gateway-high-availability-scalability/gateway-first-node-portal-view.png) 
+7. Klik op **knoop punt toevoegen** op de werk balk om een knoop punt toe te voegen aan de logische gateway. Als u van plan bent snelle installatie te gebruiken, voert u deze stap uit vanaf de on-premises computer die wordt toegevoegd als een knoop punt aan de gateway. 
 
-    ![Data Management Gateway - knooppuntmenu toevoegen](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png)
-8. Stappen zijn vergelijkbaar met het instellen van het eerste knooppunt. De Configuration Manager-UI kunt u de naam van het knooppunt wordt ingesteld als u de handmatige installatie-optie kiezen: 
+    ![Data Management Gateway-menu knoop punt toevoegen](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png)
+8. De stappen zijn vergelijkbaar met het instellen van het eerste knoop punt. Met de Configuration Manager gebruikers interface kunt u de naam van het knoop punt instellen als u de optie hand matige installatie kiest: 
 
-    ![Configuration Manager - tweede gateway installeren](media/data-factory-data-management-gateway-high-availability-scalability/install-second-gateway.png)
-9. Nadat de gateway is geïnstalleerd op het knooppunt, wordt het volgende scherm weergegeven in het hulpprogramma Configuration Manager:  
+    ![Configuration Manager-tweede gateway installeren](media/data-factory-data-management-gateway-high-availability-scalability/install-second-gateway.png)
+9. Nadat de gateway is geïnstalleerd op het knoop punt, wordt het volgende scherm weer gegeven in het hulp programma Configuration Manager:  
 
-    ![Configuration Manager - installatie tweede gateway geslaagd](media/data-factory-data-management-gateway-high-availability-scalability/second-gateway-installation-successful.png)
-10. Als u opent de **Gateway** pagina in de portal ziet u twee gatewayknooppunten nu: 
+    ![Configuration Manager-tweede gateway installeren is voltooid](media/data-factory-data-management-gateway-high-availability-scalability/second-gateway-installation-successful.png)
+10. Als u de **Gateway** pagina in de portal opent, ziet u nu twee gateway knooppunten: 
 
-    ![Gateway met twee knooppunten in de portal](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
-11. Als u wilt verwijderen van een gateway-knooppunt, klikt u op **knooppunt verwijderen** op de werkbalk en selecteer het knooppunt dat u wilt verwijderen, en klik vervolgens op **verwijderen** via de werkbalk. Deze actie wordt het geselecteerde knooppunt van de groep verwijderd. Houd er rekening mee dat deze actie niet de data management gateway-software wordt verwijderd uit het knooppunt (on-premises Windows-computer). Gebruik **programma's toevoegen of verwijderen** in het Configuratiescherm op de on-premises naar de gateway verwijderen. Wanneer u de gateway van het knooppunt verwijdert, wordt deze automatisch verwijderd in de portal.   
+    ![Gateway met twee knoop punten in de portal](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
+11. Als u een gateway knooppunt wilt verwijderen, klikt u op **knoop punt verwijderen** op de werk balk, selecteert u het knoop punt dat u wilt verwijderen en klikt u vervolgens op **verwijderen** op de werk balk. Met deze actie wordt het geselecteerde knoop punt uit de groep verwijderd. Houd er rekening mee dat met deze actie de Data Management Gateway-software niet wordt verwijderd van het knoop punt (on-premises Windows-machine). Gebruik **Program ma's installeren of verwijderen** in het configuratie scherm op de on-premises om de gateway te verwijderen. Wanneer u de gateway uit het knoop punt verwijdert, wordt deze automatisch verwijderd uit de portal.   
 
-## <a name="upgrade-an-existing-gateway"></a>Upgrade van een bestaande gateway
-U kunt een upgrade uitvoeren van een bestaande gateway voor het gebruik van de functie voor hoge beschikbaarheid en schaalbaarheid. Deze functie werkt alleen met knooppunten met de data management gateway van versie > = 2.12.xxxx. U kunt zien dat de versie van data management gateway is geïnstalleerd op een computer in de **Help** tabblad van Data Management Gateway Configuratiebeheer. 
+## <a name="upgrade-an-existing-gateway"></a>Een bestaande gateway bijwerken
+U kunt een bestaande gateway bijwerken voor gebruik van de functie hoge Beschik baarheid en schaal baarheid. Deze functie werkt alleen met knoop punten die de Data Management Gateway van versie > = 2.12. xxxx hebben. U kunt de versie van de Data Management gateway die op een computer is geïnstalleerd, bekijken op het tabblad **Help** van de Data Management Gateway Configuration Manager. 
 
-1. De gateway op de on-premises machine naar de nieuwste versie bijwerken door de volgende door te downloaden en uitvoeren van een MSI-bestand setup-pakket uit de [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Zie [installatie](data-factory-data-management-gateway.md#installation) sectie voor meer informatie.  
-2. Navigeer naar de Azure-portal. Start de **Data Factory-pagina** van uw gegevensfactory. Klik op de tegel van de gekoppelde services om te starten de **gekoppelde servicepagina**. Selecteer de gateway om te starten de **pagina gateway**. Klik op en schakel **Preview-functie** zoals wordt weergegeven in de volgende afbeelding: 
+1. Werk de gateway op de on-premises machine bij naar de meest recente versie door de volgende MSI-installatie pakket te downloaden en uit te voeren vanuit het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=39717). Zie de sectie [installatie](data-factory-data-management-gateway.md#installation) voor meer informatie.  
+2. Navigeer naar het Azure Portal. Start de **Data Factory-pagina** voor uw Data Factory. Klik op de tegel gekoppelde services om de **pagina gekoppelde services**te starten. Selecteer de gateway om de **Gateway pagina**te starten. Klik en Schakel **Preview-functie** in, zoals wordt weer gegeven in de volgende afbeelding: 
 
-    ![Data Management Gateway - preview-functie inschakelen](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png)   
-2. Zodra de preview-functie is ingeschakeld in de portal, sluit u alle pagina's. Open de **pagina gateway** om te zien van de nieuwe preview-gebruikersinterface (UI).
+    ![Data Management Gateway-preview-functie inschakelen](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png)   
+2. Zodra de preview-functie is ingeschakeld in de portal, sluit u alle pagina's. Open de **pagina gateway** opnieuw om de nieuwe preview-gebruikers interface (UI) weer te geven.
  
-    ![Data Management Gateway - inschakelen preview-functie geslaagd](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview-success.png)
+    ![Data Management Gateway-een preview-functie inschakelen](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview-success.png)
 
-    ![Data Management Gateway - voorbeeld-UI](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview.png)
+    ![Gebruikers interface van Data Management Gateway-preview](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview.png)
 
     > [!NOTE]
-    > Naam van het eerste knooppunt is tijdens de upgrade is de naam van de machine. 
-3. Voeg nu een knooppunt toe. In de **Gateway** pagina, klikt u op **knooppunt toevoegen**.  
+    > Tijdens de upgrade is de naam van het eerste knoop punt de naam van de computer. 
+3. Voeg nu een knoop punt toe. Klik op de pagina **Gateway** op **knoop punt toevoegen**.  
 
-    ![Data Management Gateway - knooppuntmenu toevoegen](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png)
+    ![Data Management Gateway-menu knoop punt toevoegen](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png)
 
-    Volg de instructies uit de vorige sectie voor het instellen van het knooppunt. 
+    Volg de instructies in de vorige sectie om het knoop punt in te stellen. 
 
 ### <a name="installation-best-practices"></a>Best practices voor installatie
 
-- Energiebeheerschema op de hostcomputer voor de gateway zodanig configureren dat de machine sluimerstand niet. Als de hostmachine in de slaapstand, wordt de gateway niet reageert op gegevensaanvragen.
-- Back-up van het certificaat dat is gekoppeld aan de gateway.
-- Zorg ervoor dat alle knooppunten zijn vergelijkbare configuratie voor de ideale prestaties (aanbevolen). 
-- Voeg ten minste twee knooppunten voor hoge beschikbaarheid.  
+- Configureer het energiebeheer schema op de hostcomputer voor de gateway, zodat de computer niet in de sluimer stand wordt gezet. Als de hostmachine in de slaap stand wordt gezet, reageert de gateway niet op gegevens aanvragen.
+- Maak een back-up van het certificaat dat is gekoppeld aan de gateway.
+- Zorg ervoor dat alle knoop punten een vergelijk bare configuratie hebben (aanbevolen) voor optimale prestaties. 
+- Voeg ten minste twee knoop punten toe om hoge Beschik baarheid te garanderen.  
 
 ### <a name="tlsssl-certificate-requirements"></a>Vereisten voor TLS/SSL-certificaat
-Hier volgen de vereisten voor het TLS/SSL-certificaat dat wordt gebruikt voor het beveiligen van communicatie tussen de integration runtime-knooppunten:
+Hier volgen de vereisten voor het TLS/SSL-certificaat dat wordt gebruikt voor het beveiligen van de communicatie tussen de knoop punten van Integration runtime:
 
-- Het certificaat moet een openbaar vertrouwde X509 v3-certificaat. U wordt aangeraden dat u gebruik van certificaten die zijn uitgegeven door een openbare (derde) certificeringsinstantie (CA).
-- Elk knooppunt voor integration runtime moet dit certificaat, evenals de client-computer waarop de toepassing Referentiebeheer vertrouwen. 
+- Het certificaat moet een openbaar vertrouwd x509 v3-certificaat zijn. U wordt aangeraden certificaten te gebruiken die zijn uitgegeven door een open bare certificerings instantie (CA) van derden.
+- Elk knoop punt voor Integration runtime moet dit certificaat vertrouwen, evenals de client computer waarop de toepassing Credential Manager wordt uitgevoerd. 
   > [!NOTE]
-  > Toepassing Referentiebeheer wordt gebruikt bij het instellen van beveiligde referentie van de Wizard kopiëren / Azure Portal. En dit kan zijn van een computer in hetzelfde netwerk bevinden als de on-premises geactiveerde / persoonlijke gegevensopslag.
-- Jokertekens certificaten worden ondersteund. Als uw FQDN-naam is **node1.domain.contoso.com**, kunt u * **. domain.contoso.com** als onderwerpnaam van het certificaat.
-- SAN-certificaten worden niet aanbevolen, omdat alleen het laatste item van de alternatieve namen voor onderwerpen worden gebruikt en alle andere worden genegeerd vanwege een beperking. Bijvoorbeeld u hebt een SAN-certificaat waarvan SAN zijn **node1.domain.contoso.com** en **node2.domain.contoso.com**, kunt u dit certificaat alleen gebruiken op de machine waarvan FQDN **node2.domain.contoso.com**.
-- Ondersteunt sleutelgrootte ondersteund door Windows Server 2012 R2 voor SSL-certificaten.
-- Het certificaat met CNG sleutels worden niet ondersteund.
+  > Credential Manager-toepassing wordt gebruikt bij het veilig instellen van de referentie van de wizard kopiëren/Azure Portal. En dit kan worden gestart vanaf elke computer binnen hetzelfde netwerk als de on-premises/persoonlijke gegevens opslag.
+- Joker tekens worden ondersteund. Als de FQDN-naam **node1.domain.contoso.com**is, kunt u * **. domain.contoso.com** als onderwerpnaam van het certificaat gebruiken.
+- SAN-certificaten worden niet aanbevolen omdat alleen het laatste item van de alternatieve namen voor het onderwerp wordt gebruikt en alle andere worden genegeerd vanwege de huidige beperking. Bijvoorbeeld u hebt een SAN-certificaat waarvan het SAN **node1.domain.contoso.com** en **node2.domain.contoso.com**is. u kunt dit certificaat alleen gebruiken op de computer waarvan de FQDN **node2.domain.contoso.com**is.
+- Ondersteunt elke sleutel grootte die wordt ondersteund door Windows Server 2012 R2 voor SSL-certificaten.
+- Certificaten met CNG-sleutels worden niet ondersteund.
 
-#### <a name="faq-when-would-i-not-enable-this-encryption"></a>Veelgestelde vragen: Wanneer kan ik deze versleuteling niet inschakelen?
-Versleuteling is ingeschakeld kunt toevoegen bepaalde daarom kosten verbonden aan de infrastructuur (die eigenaar is openbaar certificaat) kunt u overslaan inschakelen van versleuteling in de volgende gevallen:
-- Als de integratieruntime wordt uitgevoerd in een vertrouwd netwerk of een netwerk met transparante versleuteling, zoals IP per seconde Omdat deze communicatie kanaal alleen is beperkt in uw vertrouwde netwerk, moet u mogelijk aanvullende versleuteling.
-- Wanneer de integratieruntime wordt niet uitgevoerd in een productieomgeving. Zo kunt u TLS/SSL-certificaat kosten verminderen.
+#### <a name="faq-when-would-i-not-enable-this-encryption"></a>Veelgestelde vragen: wanneer kan ik deze versleuteling niet inschakelen?
+Als u versleuteling inschakelt, kunt u bepaalde kosten toevoegen aan uw infra structuur (openbaar certificaat), dus u kunt het inschakelen van versleuteling in de onderstaande gevallen overs Laan:
+- Wanneer de Integration runtime wordt uitgevoerd op een vertrouwd netwerk of een netwerk met transparante versleuteling, zoals IP/SEC. Omdat deze kanaal communicatie alleen binnen uw vertrouwde netwerk beperkt is, hebt u mogelijk geen extra versleuteling nodig.
+- Wanneer de Integration runtime niet wordt uitgevoerd in een productie omgeving. Dit kan helpen bij het verminderen van de kosten van TLS/SSL-certificaten.
 
 
-## <a name="monitor-a-multi-node-gateway"></a>Een gateway met meerdere knooppunten controleren
-### <a name="multi-node-gateway-monitoring"></a>Bewaking van meerdere knooppunten gateway
-U kunt de near-real-time-momentopname van Resourcegebruik (CPU, geheugen, network(in/out), enzovoort) op elk knooppunt, samen met de status van de gateway-knooppunten weergeven in de Azure-portal. 
+## <a name="monitor-a-multi-node-gateway"></a>Een gateway met meerdere knoop punten bewaken
+### <a name="multi-node-gateway-monitoring"></a>Gateway bewaking met meerdere knoop punten
+In de Azure Portal kunt u bijna realtime een moment opname van het resource gebruik (CPU, geheugen, netwerk (in/uit), enzovoort) op elk knoop punt samen met de status van Gateway knooppunten weer geven. 
 
-![Data Management Gateway - bewaking van meerdere knooppunten](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
+![Data Management Gateway-bewaking van meerdere knoop punten](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
 
-U kunt inschakelen **geavanceerde instellingen** in de **Gateway** pagina voor geavanceerde metrische gegevens, zoals **netwerk**(in/uit), **rollen en referentiestatus**, dit is handig bij het opsporen van gatewayproblemen, en **gelijktijdige taken** (actief / beperken) die kan worden gewijzigd / gewijzigde dienovereenkomstig tijdens het afstemmen van prestaties. De volgende tabel bevat beschrijvingen van de kolommen in de **Gatewayknooppunten** lijst:  
+U kunt **Geavanceerde instellingen** inschakelen op de **pagina gateway** om geavanceerde metrische gegevens weer te geven, zoals **netwerk**(in/uitgaand), **functie & referentie status**, wat nuttig is in fout opsporing van gateway problemen en **gelijktijdige taken** (uitvoeren/beperken ) die dienovereenkomstig kan worden gewijzigd/gewijzigd tijdens het afstemmen van de prestaties. De volgende tabel bevat beschrijvingen van de kolommen in de lijst met **Gateway knooppunten** :  
 
-Bewaking van eigenschap | Description
+Bewakings eigenschap | Beschrijving
 :------------------ | :---------- 
-Name | De naam van de logische-gateway en de knooppunten die zijn gekoppeld aan de gateway.  
-Status | De status van de logische-gateway en de gateway-knooppunten. Voorbeeld: Online/Offline/Limited/etc. Zie voor meer informatie over deze statussen [gatewaystatus](#gateway-status) sectie. 
-Version | Toont de versie van de logische gateway en de gateway-knooppunt. De versie van de logische gateway wordt bepaald op basis van de versie van het merendeel van de knooppunten in de groep. Als er knooppunten met verschillende versies in de logische gateway-instellingen, alleen de knooppunten met het versienummer hetzelfde als de functie logische gateway correct zijn. Anderen in de beperkte modus zijn en moeten handmatig worden bijgewerkt (alleen als automatisch bijwerken is mislukt). 
-Beschikbaar geheugen | Beschikbaar geheugen op een gateway-knooppunt. Deze waarde is een momentopname van een bijna realtime. 
-CPU-gebruik | CPU-gebruik van een gateway-knooppunt. Deze waarde is een momentopname van een bijna realtime. 
-Netwerken (In/uit) | Het netwerkgebruik van een gateway-knooppunt. Deze waarde is een momentopname van een bijna realtime. 
-Gelijktijdige taken (actief / beperken) | Het aantal taken of taken die worden uitgevoerd op elk knooppunt. Deze waarde is een momentopname van een bijna realtime. Limiet geeft aan dat het maximum aantal gelijktijdige taken voor elk knooppunt. Deze waarde is gedefinieerd op basis van de machinegrootte. U kunt de limiet voor gelijktijdige taakuitvoering in geavanceerde scenario's kan worden uitgebreid verhogen waar CPU / geheugen / netwerk wordt benut, maar de activiteiten zijn een time-out opgetreden. Deze mogelijkheid is ook beschikbaar met één knooppunt gateway (zelfs als de functie voor schaalbaarheid en beschikbaarheid is niet ingeschakeld). Zie voor meer informatie, [overwegingen met betrekking tot schalen](#scale-considerations) sectie. 
-Rol | Er zijn twee soorten rollen – Dispatcher- en werkrollen. Alle knooppunten zijn werknemers, wat betekent dat ze kunnen allemaal worden gebruikt voor het uitvoeren van taken. Er is slechts één functie voor berichtverzending knooppunt, die wordt gebruikt voor het ophalen van taken/taken uit cloudservices en ze verzenden naar verschillende worker-knooppunten (inclusief zelf). 
+Naam | De naam van de logische gateway en knoop punten die zijn gekoppeld aan de gateway.  
+Status | Status van de logische gateway en de gateway knooppunten. Voor beeld: online/offline/beperkt/etc. Zie de sectie [Gateway status](#gateway-status) voor meer informatie over deze statussen. 
+Versie | Hier wordt de versie van de logische gateway en elk gateway knooppunt weer gegeven. De versie van de logische gateway wordt bepaald op basis van de versie van de knoop punten in de groep. Als er knoop punten met verschillende versies in de installatie van de logische gateway zijn, hebben alleen de knoop punten met hetzelfde versie nummer als de logische gateway goed functioneren. Andere bevinden zich in de beperkte modus en moeten hand matig worden bijgewerkt (alleen als de automatische update mislukt). 
+Beschikbaar geheugen | Beschikbaar geheugen op een gateway-knoop punt. Deze waarde is een bijna realtime moment opname. 
+CPU-gebruik | CPU-gebruik van een gateway knooppunt. Deze waarde is een bijna realtime moment opname. 
+Netwerken (in/uit) | Netwerk gebruik van een gateway-knoop punt. Deze waarde is een bijna realtime moment opname. 
+Gelijktijdige taken (uitvoeren/beperken) | Aantal taken of taken dat op elk knoop punt wordt uitgevoerd. Deze waarde is een bijna realtime moment opname. De limiet is het maximale aantal gelijktijdige taken voor elk knoop punt. Deze waarde wordt gedefinieerd op basis van de grootte van de machine. U kunt de limiet verhogen voor het opschalen van gelijktijdige taak uitvoering in geavanceerde scenario's, waarbij CPU/geheugen/netwerk wordt gebruikt, maar activiteiten een time-out hebben. Deze mogelijkheid is ook beschikbaar met een gateway met één knoop punt (zelfs wanneer de functie voor schaal baarheid en beschik baarheid niet is ingeschakeld). Zie sectie [Scale-overwegingen](#scale-considerations) voor meer informatie. 
+Rol | Er zijn twee soorten rollen: dispatcher en worker. Alle knoop punten zijn werk nemers, wat betekent dat ze allemaal kunnen worden gebruikt om taken uit te voeren. Er is slechts één dispatcher-knoop punt, dat wordt gebruikt om taken/taken uit te geven vanuit Cloud Services en deze te verzenden naar verschillende werk knooppunten (waaronder zichzelf). 
 
-![Data Management Gateway - geavanceerde controle van meerdere knooppunten](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-advanced.png)
+![Data Management Gateway-geavanceerde bewaking van meerdere knoop punten](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-advanced.png)
 
-### <a name="gateway-status"></a>Gatewaystatus
+### <a name="gateway-status"></a>Gateway status
 
-De volgende tabel bevat de mogelijke statussen van een **gateway-knooppunt**: 
+De volgende tabel bevat mogelijke statussen van een **Gateway knooppunt**: 
 
-Status  | Opmerkingen /-scenario 's
+Status  | Opmerkingen/Scenario's
 :------- | :------------------
-Online | Knooppunt is verbonden met Data Factory-service.
-Offline | Knooppunt is offline.
-Upgraden | Het knooppunt wordt automatisch bijgewerkt.
-Beperkt | Vanwege een probleem met de netwerkverbinding. Kan worden veroorzaakt door HTTP-poort 8050 probleem, service bus-connectiviteitsprobleem of synchronisatieprobleem in de referentie. 
-Inactief | Er is een knooppunt in een van de configuratie van andere knooppunten van de meeste andere configuratie.<br/><br/> Een knooppunt mag inactief zijn als er geen verbinding met andere knooppunten. 
+Online | Het knoop punt dat is verbonden met Data Factory service.
+Breken | Het knoop punt is offline.
+Abonnement | Het knoop punt wordt automatisch bijgewerkt.
+Beperkt | Vanwege een connectiviteits probleem. Wordt mogelijk veroorzaakt door een probleem met de HTTP-poort 8050, het connectiviteits probleem van de service bus of het probleem met de synchronisatie van referenties. 
+Inactieve | Het knoop punt bevindt zich in een configuratie die verschilt van de configuratie van andere hoofd knooppunten.<br/><br/> Een knoop punt kan inactief zijn wanneer er geen verbinding kan worden gemaakt met andere knoop punten. 
 
 
-De volgende tabel bevat de mogelijke statussen van een **logische gateway**. Status van de gateway, is afhankelijk van de status van de gateway-knooppunten. 
+De volgende tabel bevat mogelijke statussen van een **logische gateway**. De status van de gateway is afhankelijk van de status van de gateway-knoop punten. 
 
 Status | Opmerkingen
 :----- | :-------
-Moet worden geregistreerd | Kan geen knooppunt is nog geregistreerd bij deze logische gateway
-Online | Gateway-knooppunten zijn online
-Offline | Kan geen knooppunt in de online status.
-Beperkt | Niet alle knooppunten in deze gateway zijn in orde. Deze status is een waarschuwing dat een bepaald knooppunt is mogelijk niet beschikbaar. <br/><br/>Kan worden veroorzaakt door synchronisatieprobleem in de referentie op knooppunt verzender/werknemer. 
+Registratie vereist | Er is nog geen knoop punt geregistreerd voor deze logische gateway
+Online | Gateway knooppunten zijn online
+Breken | Geen knoop punt in online status.
+Beperkt | Niet alle knoop punten in deze gateway hebben de status in orde. Deze status is een waarschuwing dat een deel van het knoop punt mogelijk niet beschikbaar is. <br/><br/>Kan worden veroorzaakt door een probleem met de referenties voor de verzender/het worker-knoop punt. 
 
-### <a name="pipeline-activities-monitoring"></a>Pijplijn / activiteiten controleren
-De Azure portal biedt een pijplijn bewaken met gedetailleerde knooppunt gedetailleerde gegevens. Deze geeft bijvoorbeeld welke activiteiten die worden uitgevoerd op welk knooppunt. Deze informatie kan nuttig zijn bij het begrijpen van prestatieproblemen met op een bepaald knooppunt, bijvoorbeeld vanwege een netwerkbeperking van het. 
+### <a name="pipeline-activities-monitoring"></a>Bewaking van pijp lijn/activiteiten
+De Azure Portal biedt een pipeline-bewakings ervaring met gedetailleerde Details over knooppunt niveau. Het laat bijvoorbeeld zien welke activiteiten er zijn uitgevoerd op welk knoop punt. Deze informatie kan nuttig zijn bij het vaststellen van prestatie problemen op een bepaald knoop punt, vanwege netwerk beperking. 
 
-![Data Management Gateway - bewaking voor pijplijnen van meerdere knooppunten](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-pipelines.png)
+![Data Management Gateway-bewaking van meerdere knoop punten voor pijp lijnen](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-pipelines.png)
 
-![Data Management Gateway - details van de pijplijn](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-pipeline-details.png)
+![Data Management Gateway-pijplijn Details](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-pipeline-details.png)
 
-## <a name="scale-considerations"></a>Overwegingen voor schalen
+## <a name="scale-considerations"></a>Schaal overwegingen
 
 ### <a name="scale-out"></a>Uitschalen
-Wanneer de **beschikbare geheugen laag is** en de **CPU-gebruik is hoog**, een nieuw knooppunt toevoegen helpt u scale-out van de belasting tussen computers. Als de activiteiten zijn mislukken vanwege een time-out of gateway-knooppunt offline, is het handig als u een knooppunt aan de gateway toevoegt.
+Wanneer het **beschik bare geheugen laag is** en het **CPU-gebruik hoog is**, kan het toevoegen van een nieuw knoop punt het laden van de belasting over machines opschalen. Als er een fout optreedt in het mislukken van de activiteiten omdat een time-out of gateway knooppunt offline is, is het handig als u een knoop punt aan de gateway toevoegt.
  
 ### <a name="scale-up"></a>Omhoog schalen
-Als het beschikbare geheugen en CPU niet goed worden gebruikt, maar de inactieve capaciteit 0 is, moet u omhoog schalen door het aantal gelijktijdige taken die kunnen worden uitgevoerd op een knooppunt. U kunt ook omhoog schalen wanneer activiteiten zijn time-outs opgetreden omdat de gateway overbelast is. Zoals weergegeven in de volgende afbeelding, kunt u de maximale capaciteit voor een knooppunt verhogen. Het is raadzaam om te beginnen met verdubbelen.  
+Wanneer het beschik bare geheugen en de CPU niet goed worden gebruikt, maar de niet-actieve capaciteit 0 is, moet u omhoog schalen door het aantal gelijktijdige taken dat op een knoop punt kan worden uitgevoerd, te verhogen. Het kan ook zijn dat u wilt opschalen wanneer activiteiten uitvallen omdat de gateway overbelast is. Zoals in de volgende afbeelding wordt weer gegeven, kunt u de maximale capaciteit voor een knoop punt verhogen. We raden u aan om te beginnen met.  
 
-![Data Management Gateway - overwegingen voor schalen](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-scale-considerations.png)
-
-
-## <a name="known-issuesbreaking-changes"></a>Bekende problemen/belangrijke wijzigingen
-
-- U kunt op dit moment maximaal vier fysieke gateway-knooppunten voor één logische gateway hebben. Als u meer dan vier knooppunten voor betere prestaties, stuur een e-mail naar [ DMGHelp@microsoft.com ](mailto:DMGHelp@microsoft.com).
-- U registreren een gateway-knooppunt opnieuw met de verificatiesleutel uit een andere logische gateway overschakelen van de huidige logische gateway niet. Om te opnieuw te registreren, de gateway van het knooppunt verwijderen en opnieuw installeren van de gateway registreren bij de verificatiesleutel voor de logische gateway. 
-- Als HTTP-proxy vereist voor alle gatewayknooppunten van uw is, de proxy in diahost.exe.config en diawp.exe.config instellen en de server manager gebruiken om te controleren of dat alle knooppunten dezelfde diahost.exe.config en diawip.exe.config hebben. Zie [proxy-instellingen configureren](data-factory-data-management-gateway.md#configure-proxy-server-settings) sectie voor meer informatie. 
-- Als u wilt wijzigen versleutelingsmodus voor de communicatie van knooppunt-naar-knooppunt in Gateway Configuration Manager, verwijdert u alle knooppunten in de portal, met uitzondering van een. Vervolgens voegt u knooppunten opnieuw na het wijzigen van de versleutelingsmodus.
-- Gebruik een officiële SSL-certificaat als u kiest voor het versleutelen van het communicatiekanaal van knooppunt-naar-knooppunt. Zelf-ondertekend certificaat mogelijk problemen met de netwerkverbinding zoals hetzelfde certificaat kan niet worden vertrouwd in certificeren lijst met op andere computers. 
-- U kunt een gateway-knooppunt aan een logische gateway niet registreren bij versie van het knooppunt lager dan de versie van de logische gateway is. Alle knooppunten van de logische gateway verwijderen uit de portal zodat u kunt een lagere versie node(downgrade) registreren deze. Als u alle knooppunten van een logische gateway verwijdert, handmatig installeren en registreren van nieuwe knooppunten met die logische gateway. Snelle installatie wordt in dit geval niet ondersteund.
-- U kunt snelle installatie niet gebruiken met de installatie van de knooppunten met een bestaande logische gateway, namelijk is nog steeds gebruik van cloudreferenties. U kunt controleren waarbij de referenties van de Gateway Configuration Manager op het tabblad instellingen worden opgeslagen.
-- U kunt snelle installatie niet gebruiken met de installatie van de knooppunten met een bestaande logische gateway, die knooppunt-naar-knooppunt versleuteling ingeschakeld is. Als de versleutelingsmodus instellen, moet certificaten handmatig toe te voegen, is snelle installatie niet meer een optie. 
-- Een bestandskopie van on-premises omgeving, moet u niet gebruiken \\localhost of C:\files meer sinds localhost of een lokaal station mogelijk niet meer toegankelijk via alle knooppunten. In plaats daarvan gebruik \\ServerName\files bestanden locatie op te geven.
+![Data Management Gateways schalen](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-scale-considerations.png)
 
 
-## <a name="rolling-back-from-the-preview"></a>Het terugdraaien van een van de Preview-versie 
-Om terug te draaien van de Preview-versie, verwijdert u alle knooppunten maar één knooppunt. Het maakt niet uit welke knooppunten verwijderd, maar zorg ervoor dat u ten minste één knooppunt hebt in de logische gateway. U kunt een knooppunt verwijderen door het verwijderen van de gateway op de computer of met behulp van de Azure-portal. In de Azure-portal in de **Data Factory** pagina, klikt u gekoppelde services om te starten op de **gekoppelde services** pagina. Selecteer de gateway om te starten de **Gateway** pagina. In de Gateway-pagina ziet u de knooppunten die zijn gekoppeld aan de gateway. De pagina kunt u een knooppunt verwijderen uit de gateway.
+## <a name="known-issuesbreaking-changes"></a>Bekende problemen/verbrekings wijzigingen
+
+- Op dit moment kunt u Maxi maal vier fysieke gateway knooppunten hebben voor één logische gateway. Als u meer dan vier knoop punten nodig hebt om prestatie redenen, stuurt u een e-mail bericht naar [DMGHelp@microsoft.com](mailto:DMGHelp@microsoft.com).
+- U kunt een gateway knooppunt met de verificatie sleutel van een andere logische gateway niet opnieuw registreren om over te scha kelen van de huidige logische gateway. Als u zich opnieuw wilt registreren, verwijdert u de gateway uit het knoop punt, installeert u de gateway opnieuw en registreert u deze met de verificatie sleutel voor de andere logische gateway. 
+- Als HTTP-proxy is vereist voor alle gateway knooppunten, stelt u de proxy in diahost. exe. config en diawp. exe. config in en gebruikt u Server beheer om ervoor te zorgen dat alle knoop punten dezelfde diahost. exe. config en diawip. exe. config hebben. Zie de sectie [proxy-instellingen configureren](data-factory-data-management-gateway.md#configure-proxy-server-settings) voor meer informatie. 
+- Als u de versleutelings modus voor communicatie tussen knoop punten in de gateway Configuration Manager wilt wijzigen, verwijdert u alle knoop punten in de portal, met uitzonde ring van één. Voeg vervolgens de knoop punten terug nadat u de versleutelings modus hebt gewijzigd.
+- Gebruik een officieel SSL-certificaat als u ervoor kiest het communicatie kanaal tussen knoop punten te versleutelen. Zelfondertekend certificaat kan verbindings problemen veroorzaken omdat hetzelfde certificaat mogelijk niet wordt vertrouwd in de certificerings instantie lijst op andere computers. 
+- U kunt een gateway knooppunt niet registreren bij een logische gateway wanneer de versie van het knoop punt lager is dan de versie van de logische gateway. Verwijder alle knoop punten van de logische gateway uit de portal, zodat u een lagere versie van het knoop punt (downgrade) kunt registreren. Als u alle knoop punten van een logische Gateway verwijdert, installeert en registreert u de nieuwe knoop punten hand matig op die logische gateway. Snelle installatie wordt in dit geval niet ondersteund.
+- U kunt geen snelle installatie gebruiken om knoop punten te installeren op een bestaande logische gateway, die nog steeds Cloud referenties gebruikt. U kunt controleren waar de referenties worden opgeslagen vanaf de gateway Configuration Manager op het tabblad instellingen.
+- U kunt geen snelle installatie gebruiken om knoop punten te installeren op een bestaande logische gateway, waarvoor versleuteling van knoop punt naar knoop punt is ingeschakeld. Als het instellen van de versleutelings modus hand matig certificaten moet toevoegen, is snelle installatie niet meer een optie. 
+- Voor het kopiëren van bestanden vanuit een on-premises omgeving moet u \\localhost of C:\files niet meer gebruiken omdat localhost of lokaal station mogelijk niet toegankelijk is via alle knoop punten. Gebruik in plaats daarvan \\ServerName\files om de locatie van de bestanden op te geven.
+
+
+## <a name="rolling-back-from-the-preview"></a>Terugdraaien vanuit de preview 
+Als u de preview-versie wilt herstellen, verwijdert u alle knoop punten, maar één knoop punt. Het maakt niet uit welke knoop punten u verwijdert, maar zorg ervoor dat u ten minste één knoop punt in de logische gateway hebt. U kunt een knoop punt verwijderen door de gateway op de computer of door de Azure Portal te gebruiken. Klik in de Azure Portal op de pagina **Data Factory** op gekoppelde services om de pagina **gekoppelde services** te starten. Selecteer de gateway om de **Gateway** pagina te starten. Op de pagina gateway kunt u de knoop punten zien die zijn gekoppeld aan de gateway. Op de pagina kunt u een knoop punt verwijderen van de gateway.
  
-Nadat u hebt verwijderd, klikt u op **preview-functies** in de dezelfde Azure portal-pagina, en schakel de preview-functie. U hebt uw gateway naar één knooppunt algemene beschikbaarheid (algemene beschikbaarheid)-gateway opnieuw instellen.
+Klik na het verwijderen op **Preview-functies** op dezelfde Azure portal pagina en schakel de preview-functie uit. U hebt de gateway opnieuw ingesteld op één knoop punt GA (algemene Beschik baarheid).
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de volgende artikelen:
+Bekijk de volgende artikelen:
 - [Data Management Gateway](data-factory-data-management-gateway.md) -biedt een gedetailleerd overzicht van de gateway.
-- [Gegevens verplaatsen tussen on-premises en cloud gegevensarchieven](data-factory-move-data-between-onprem-and-cloud.md) -bevat een overzicht met stapsgewijze instructies voor het gebruik van een gateway met een enkel knooppunt. 
+- [Gegevens verplaatsen tussen on-premises en Cloud gegevens archieven](data-factory-move-data-between-onprem-and-cloud.md) : bevat een overzicht met stapsgewijze instructies voor het gebruik van een gateway met een enkel knoop punt. 

@@ -11,18 +11,20 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: 08f78e4945b612a92d372c832490c380d3749811
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cab6eb38459a632f1e7bd1a21e6a7251d33f683
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487521"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647423"
 ---
 # <a name="machine-learned-features"></a>Door de machine geleerde functies 
 
 In machine learning is een *functie* een onderscheiding van eigenschappen of kenmerken van gegevens die uw systeem observeert & meer informatie. In Language Understanding (LUIS) wordt een functie beschreven en uitgelegd wat belang rijk is voor uw intentie en entiteiten.
 
-## <a name="features-in-language-understanding"></a>Functies in Language Understanding
+In de [Preview-Luis-Portal](https://preview.luis.ai)zijn functies _descriptors_ , omdat ze worden gebruikt om de intentie of entiteit te _beschrijven_ .  
+
+## <a name="features-_descriptors_-in-language-understanding"></a>Functies (_descriptors_) in language Understanding
 
 Functies, ook wel descriptors genoemd, beschrijven aanwijzingen om Language Understanding te helpen bij het identificeren van het voor beeld uitingen. Functies zijn onder andere: 
 

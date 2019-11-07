@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor-Logboeken gebruiken met een SQL Database app voor meerdere tenants | Microsoft Docs
+title: Azure Monitor-Logboeken gebruiken met een SQL Database app voor meerdere tenants
 description: Azure Monitor-logboeken instellen en gebruiken met een SaaS-app met meerdere tenants Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: 6b9b2239cfdf0f214ed2f2b179978fe2828d1be3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d7b568424d5e33c19efc9d9d9c21d0023459b6c7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570509"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692145"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>Azure Monitor-logboeken instellen en gebruiken met een SaaS-app met meerdere tenants SQL Database
 
@@ -47,7 +47,7 @@ OMS-werkruimten worden nu aangeduid als Log Analytics-werkruimten. Log Analytics
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>Diagnostische gegevens over prestaties maken door een werk belasting op uw tenants te simuleren 
 
-1. Open in de Power shell ISE *. WingtipTicketsSaaS-MultiTenantDb-master\\learning modules\\prestaties bewaking en beheer\\demo-PerformanceMonitoringAndManagement. ps1. \\* Laat dit script open omdat u tijdens deze zelf studie mogelijk verschillende scenario's voor het genereren van de belasting wilt uitvoeren.
+1. Open in de Power shell ISE *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\prestaties bewaken en beheren\\demo-PerformanceMonitoringAndManagement. ps1*. Laat dit script open omdat u tijdens deze zelf studie mogelijk verschillende scenario's voor het genereren van de belasting wilt uitvoeren.
 1. Als u dit nog niet hebt gedaan, moet u een batch tenants inrichten om de bewakings context interessanter te maken. Dit proces duurt enkele minuten.
 
    a. Stel **$DemoScenario = 1** _in om een batch met tenants in te richten_.
@@ -68,7 +68,7 @@ De Wingtip tickets SaaS multi tenant-database scripts en toepassings bron code z
 
 Azure Monitor is een afzonderlijke service die moet worden geconfigureerd. Met Azure Monitor logboeken worden logboek gegevens, telemetrie en metrieken in een Log Analytics-werk ruimte verzameld. Net als andere resources in azure moet er een Log Analytics-werk ruimte worden gemaakt. De werk ruimte hoeft niet te worden gemaakt in dezelfde resource groep als de toepassingen die worden bewaakt. Dit is vaak het meest zinvol. Voor de Wingtip tickets-app gebruikt u één resource groep om ervoor te zorgen dat de werk ruimte met de toepassing wordt verwijderd.
 
-1. Open in de Power shell ISE *. \\\\\\WingtipTicketsSaaS-MultiTenantDb-Master learning modules prestaties bewaken en beheren\\log Analytics demo-LogAnalytics. ps1. \\*
+1. Open in de Power shell ISE *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\prestaties bewaken en beheren\\Log Analytics\\demo-LogAnalytics. ps1*.
 1. Druk op F5 om het script uit te voeren.
 
 U kunt nu Azure Monitor-Logboeken openen in de Azure Portal. Het duurt enkele minuten om telemetrie te verzamelen in de Log Analytics-werk ruimte en om het zichtbaar te maken. Hoe langer u de systeem verzameling diagnostische gegevens verlaat, hoe interessanter de ervaring is. 
@@ -78,11 +78,11 @@ U kunt nu Azure Monitor-Logboeken openen in de Azure Portal. Het duurt enkele mi
 
 In deze oefening opent u Log Analytics werk ruimte in de Azure Portal om de telemetrie te bekijken die is verzameld voor de data bases en groepen.
 
-1. Blader naar de [Azure-portal](https://portal.azure.com). Selecteer **alle services** om log Analytics-werk ruimte te openen. Zoek vervolgens naar Log Analytics.
+1. Blader naar [Azure Portal](https://portal.azure.com). Selecteer **alle services** om log Analytics-werk ruimte te openen. Zoek vervolgens naar Log Analytics.
 
    ![Log Analytics-werk ruimte openen](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
-1. Selecteer de werk ruimte _met de&lt;naam&gt;wtploganalytics-gebruiker_.
+1. Selecteer de werk ruimte _met de naam wtploganalytics-&lt;gebruiker&gt;_ .
 
 1. Selecteer **overzicht** om de oplossing log Analytics te openen in de Azure Portal.
 
@@ -93,7 +93,7 @@ In deze oefening opent u Log Analytics werk ruimte in de Azure Portal om de tele
 
 1. Selecteer de tegel **Azure SQL-analyse** om deze te openen.
 
-    ![Overzichtstegel](media/saas-dbpertenant-log-analytics/overview.png)
+    ![Overzichts tegel](media/saas-dbpertenant-log-analytics/overview.png)
 
 1. De weer gaven in de oplossing schuiven zijwaarts, met hun eigen interne schuif balk aan de onderkant. Vernieuw de pagina als dat nodig is.
 
@@ -128,7 +128,7 @@ In deze oefening opent u Log Analytics werk ruimte in de Azure Portal om de tele
 
 1. Ga terug naar de werk ruimte Log Analytics en selecteer **OMS-Portal** om de werk ruimte daar te openen.
 
-    ![Log Analytics-werkruimte](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+    ![Log Analytics werk ruimte](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
 In de werk ruimte Log Analytics kunt u het logboek en de metrische gegevens verder verkennen. 
 
@@ -149,7 +149,7 @@ In deze zelfstudie hebt u het volgende geleerd:
 
 Probeer de [zelf studie voor Tenant-analyses](saas-dbpertenant-log-analytics.md).
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Aanvullende zelf studies die voortbouwen op de initiële Wingtip tickets SaaS data base-per-Tenant toepassings implementatie](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Azure Monitor-logboeken](../azure-monitor/insights/azure-sql.md)

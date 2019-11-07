@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8ce4565a2df3ad5f144508010265c1029a6856d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 411710280a631d341adeb55bc4b587a613ee3c4c
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468858"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643624"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Aan de slag met aangepast beleid in Azure Active Directory B2C
 
@@ -73,7 +73,7 @@ U moet deze twee toepassingen in uw Azure AD B2C-Tenant slechts eenmaal registre
 
 ### <a name="register-the-identityexperienceframework-application"></a>De IdentityExperienceFramework-toepassing registreren
 
-Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidige **toepassingen** gebruiken of onze nieuwe **Preview-ervaring (Unified app-registraties)** . Meer [informatie over de preview-ervaring](https://aka.ms/b2cappregintro).
+Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidige **toepassingen** gebruiken of onze nieuwe **Preview-ervaring (Unified app-registraties)** . [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
 
 #### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
 

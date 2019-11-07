@@ -1,6 +1,6 @@
 ---
-title: Gegevens verplaatsen van ODBC-gegevensopslag | Microsoft Docs
-description: Meer informatie over het verplaatsen van gegevens uit de ODBC-gegevensopslag met Azure Data Factory.
+title: Gegevens verplaatsen vanuit ODBC-gegevens archieven
+description: Meer informatie over het verplaatsen van gegevens uit ODBC-gegevens archieven met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,69 +13,69 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 885fb18e6f582caba2e90bbe3f535b9c763aff85
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 62847746ddf6f2f2f244df34ac340f54d271ff7a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839345"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666844"
 ---
-# <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Verplaatsen van gegevens van ODBC-gegevensopslag met Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory-service die u gebruikt:"]
-> * [Versie 1:](data-factory-odbc-connector.md)
+# <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Gegevens van ODBC-gegevens archieven verplaatsen met behulp van Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+> * [Versie 1](data-factory-odbc-connector.md)
 > * [Versie 2 (huidige versie)](../connector-odbc.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [ODBC-connector in V2](../connector-odbc.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [ODBC-Connector in v2](../connector-odbc.md).
 
 
-In dit artikel wordt uitgelegd hoe u de Kopieeractiviteit in Azure Data Factory gebruiken om gegevens te verplaatsen uit een on-premises ODBC-gegevensopslag. Dit is gebaseerd op de [activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) artikel een algemeen overzicht van de verplaatsing van gegevens met de kopieeractiviteit geeft.
+In dit artikel wordt uitgelegd hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te verplaatsen van een on-premises ODBC-gegevens archief. Het is gebaseerd op het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , dat een algemeen overzicht geeft van de verplaatsing van gegevens met de Kopieer activiteit.
 
-U kunt gegevens uit een ODBC-gegevensopslag kopiëren naar een ondersteunde sink-gegevensopslag. Zie voor een lijst met gegevensarchieven die worden ondersteund als sink voor de kopieeractiviteit, de [ondersteunde gegevensarchieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabel. Data factory ondersteunt momenteel alleen gegevens te verplaatsen van een ODBC-gegevensopslag naar andere gegevensarchieven, maar niet voor het verplaatsen van gegevens uit andere gegevensarchieven naar een ODBC-gegevensopslag.
+U kunt gegevens uit een ODBC-gegevens archief kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als sinks op basis van de Kopieer activiteit. Data Factory biedt momenteel alleen ondersteuning voor het verplaatsen van gegevens van een ODBC-gegevens archief naar andere gegevens archieven, maar niet voor het verplaatsen van gegevens van andere gegevens archieven naar een ODBC-gegevens archief.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="enabling-connectivity"></a>Verbindingen inschakelen
-Data Factory-service ondersteunt een verbinding met on-premises ODBC-bronnen met behulp van de Data Management Gateway. Zie [om gegevens te verplaatsen tussen on-premises locaties en cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel voor meer informatie over Data Management Gateway en stapsgewijze instructies over het instellen van de gateway. De gateway gebruiken om te verbinden met een ODBC-gegevensopslag, zelfs als deze wordt gehost in een Azure IaaS-VM.
+## <a name="enabling-connectivity"></a>Connectiviteit inschakelen
+Data Factory-service ondersteunt het maken van verbinding met on-premises ODBC-bronnen met behulp van de Data Management Gateway. Zie [gegevens verplaatsen tussen on-premises locaties en een Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel voor meer informatie over Data Management Gateway en stapsgewijze instructies voor het instellen van de gateway. De gateway gebruiken om verbinding te maken met een ODBC-gegevens archief, zelfs als deze wordt gehost in een Azure IaaS-VM.
 
-U kunt de gateway installeren op de dezelfde on-premises computer of de Azure-VM als de ODBC-gegevensopslag. We raden echter aan dat u de gateway installeert op een afzonderlijke computer/Azure IaaS VM om bronconflicten te voorkomen en voor betere prestaties. Wanneer u de gateway op een afzonderlijke computer installeert, is de machine moet toegang hebben tot de computer met de ODBC-gegevensopslag.
+U kunt de gateway op dezelfde on-premises computer of de virtuele Azure-machine installeren als het ODBC-gegevens archief. We raden u echter aan de gateway te installeren op een afzonderlijke machine/Azure IaaS VM om te voor komen dat de bron conflicten en de prestaties verbeteren. Wanneer u de gateway op een afzonderlijke computer installeert, moet de computer toegang hebben tot de computer met het ODBC-gegevens archief.
 
-Naast de Data Management Gateway moet u ook het ODBC-stuurprogramma voor de gegevensopslag op de gatewaycomputer installeren.
+Naast het Data Management Gateway moet u ook het ODBC-stuur programma voor het gegevens archief op de gateway computer installeren.
 
 > [!NOTE]
-> Zie [oplossen van problemen met gateway](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) voor tips over het oplossen van de verbindingsgateway/problemen met betrekking tot.
+> Zie problemen [met gateway problemen oplossen](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) voor tips over het oplossen van problemen met verbinding/gateway.
 
 ## <a name="getting-started"></a>Aan de slag
-U kunt een pijplijn maken met een kopieeractiviteit die gegevens van een ODBC-gegevensopslag verplaatst met behulp van verschillende hulpprogramma's / API's.
+U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een ODBC-gegevens archief met behulp van verschillende hulpprogram ma's/Api's.
 
-De eenvoudigste manier om een pijplijn te maken is met de **Kopieerwizard**. Zie [zelfstudie: Een pijplijn maken met de Wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snel overzicht van het maken van een pijplijn met behulp van de wizard kopiëren.
+De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sjabloon**, **.NET API**, en **REST-API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
-Of u de hulpprogramma's of API's gebruikt, kunt u de volgende stappen uit voor het maken van een pijplijn die gegevens van een brongegevensarchief naar een sink-gegevensopslag verplaatst uitvoeren:
+Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
-1. Maak **gekoppelde services** opgeslagen om invoer- en gegevens te koppelen aan uw data factory.
-2. Maak **gegevenssets** te vertegenwoordigen invoer- en uitvoergegevens voor de kopieerbewerking.
-3. Maak een **pijplijn** met een kopieeractiviteit waarmee een gegevensset als invoer en een gegevensset als uitvoer.
+1. Maak **gekoppelde services** om invoer-en uitvoer gegevens archieven te koppelen aan uw Data Factory.
+2. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven.
+3. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt.
 
-Wanneer u de wizard gebruikt, worden de JSON-definities voor deze Data Factory-entiteiten (gekoppelde services, gegevenssets en de pijplijn) automatisch voor u gemaakt. Wanneer u hulpprogramma's / API's (met uitzondering van de .NET API), kunt u deze Data Factory-entiteiten definiëren met behulp van de JSON-indeling. Zie voor een voorbeeld met JSON-definities voor Data Factory-entiteiten die worden gebruikt om gegevens te kopiëren uit een ODBC-gegevensopslag, [JSON-voorbeeld: Gegevens kopiëren van ODBC-gegevensopslag naar Azure Blob](#json-example-copy-data-from-odbc-data-store-to-azure-blob) sectie van dit artikel.
+Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's/Api's (met uitzonde ring van .NET API) gebruikt, definieert u deze Data Factory entiteiten met behulp van de JSON-indeling. Zie [JSON-voor beeld: gegevens kopiëren van ODBC-gegevens archief naar een Azure-Blob](#json-example-copy-data-from-odbc-data-store-to-azure-blob) in dit artikel voor een voor beeld met JSON-definities voor Data Factory entiteiten die worden gebruikt voor het kopiëren van gegevens uit een ODBC-gegevens archief.
 
-De volgende secties bevatten meer informatie over JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek voor ODBC-gegevensopslag:
+De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor het ODBC-gegevens archief:
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
-De volgende tabel bevat de beschrijving voor JSON-elementen die specifiek zijn voor ODBC gekoppelde service.
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifiek zijn voor een ODBC-gekoppelde service.
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OnPremisesOdbc** |Ja |
-| connectionString |Het niet-access-referentie-gedeelte van de verbindingsreeks en een optionele versleutelde referentie. Zie de voorbeelden in de volgende secties. <br/><br/>U kunt de verbindingsreeks opgeven met een patroon zoals `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, of gebruik de systeem-DSN (gegevensbronnaam) u op de gatewaycomputer met instellen `"DSN=<name of the DSN>;"` (u moet nog steeds opgeven het gedeelte van de referentie in de gekoppelde service dienovereenkomstig). |Ja |
-| credential |De access-referentie-gedeelte van de verbindingsreeks die is opgegeven in de indeling van de eigenschap / waarde-specifieke stuurprogramma's. Voorbeeld: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Nee |
-| authenticationType |Het type verificatie gebruikt voor verbinding met de ODBC-gegevensopslag. Mogelijke waarden zijn: Anonieme en Basic. |Ja |
-| userName |Geef de gebruikersnaam op als u basisverificatie gebruikt. |Nee |
-| password |Geef het wachtwoord voor het gebruikersaccount dat u hebt opgegeven voor de gebruikersnaam. |Nee |
-| gatewayName |De naam van de gateway die de Data Factory-service gebruiken moet voor verbinding met de ODBC-gegevensopslag. |Ja |
+| connectionString |Het referentie deel voor niet-toegang van de connection string en een optionele versleutelde referentie. Zie de voor beelden in de volgende secties. <br/><br/>U kunt de connection string met een patroon als `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`opgeven, of de systeem-DSN (gegevens bron naam) gebruiken die u hebt ingesteld op de gateway computer met `"DSN=<name of the DSN>;"` (u moet nog steeds het referentie deel opgeven in de gekoppelde service). |Ja |
+| referenties |Het deel van de toegangs referentie van de connection string dat is opgegeven in de eigenschaps waarde-indeling van het stuur programma. Voor beeld: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Nee |
+| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met het ODBC-gegevens archief. Mogelijke waarden zijn: anoniem en basis. |Ja |
+| Gebruikers |Geef de gebruikers naam op als u basis verificatie gebruikt. |Nee |
+| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
+| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het ODBC-gegevens archief. |Ja |
 
-### <a name="using-basic-authentication"></a>Met behulp van basisverificatie
+### <a name="using-basic-authentication"></a>Basis verificatie gebruiken
 
 ```json
 {
@@ -94,8 +94,8 @@ De volgende tabel bevat de beschrijving voor JSON-elementen die specifiek zijn v
     }
 }
 ```
-### <a name="using-basic-authentication-with-encrypted-credentials"></a>Met behulp van basisverificatie wordt gebruikt met de versleutelde referenties
-Kunt u de referenties met behulp van versleutelen de [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) cmdlet (versie 1.0 van Azure PowerShell) of [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0,9 of een eerdere versie van Azure PowerShell).
+### <a name="using-basic-authentication-with-encrypted-credentials"></a>Basis verificatie met versleutelde referenties gebruiken
+U kunt de referenties versleutelen met de cmdlet [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) (1,0 versie van Azure PowerShell) of [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0,9 of een eerdere versie van de Azure PowerShell).
 
 ```json
 {
@@ -113,7 +113,7 @@ Kunt u de referenties met behulp van versleutelen de [New-AzDataFactoryEncryptVa
 }
 ```
 
-### <a name="using-anonymous-authentication"></a>Met behulp van anonieme verificatie
+### <a name="using-anonymous-authentication"></a>Anonieme verificatie gebruiken
 
 ```json
 {
@@ -133,42 +133,42 @@ Kunt u de referenties met behulp van versleutelen de [New-AzDataFactoryEncryptVa
 ```
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
-Zie voor een volledige lijst van de secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets maken](data-factory-create-datasets.md) artikel. Secties, zoals de structuur, beschikbaarheid en het beleid van een gegevensset JSON zijn vergelijkbaar voor alle typen van gegevensset (Azure SQL, Azure-blob, Azure-tabel, enz.).
+Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
 
-De **typeProperties** sectie verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevensarchief. De typeProperties sectie voor de gegevensset van het type **RelationalTable** (waaronder ODBC-gegevensset) heeft de volgende eigenschappen
+De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie typeProperties voor de gegevensset van het type **RelationalTable** (inclusief ODBC-gegevensset) heeft de volgende eigenschappen:
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| tableName |Naam van de tabel in de ODBC-gegevensopslag. |Ja |
+| tableName |De naam van de tabel in het ODBC-gegevens archief. |Ja |
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
-Zie voor een volledige lijst van de secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen maken](data-factory-create-pipelines.md) artikel. Eigenschappen zoals naam, beschrijving, invoer en uitvoer tabellen en beleidsregels zijn beschikbaar voor alle soorten activiteiten.
+Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleids regels zijn beschikbaar voor alle typen activiteiten.
 
-Eigenschappen die beschikbaar zijn in de **typeProperties** sectie van de activiteit aan de andere kant variëren met elk activiteitstype. Ze verschillen voor de kopieeractiviteit, afhankelijk van de typen van bronnen en sinks.
+De eigenschappen die beschikbaar zijn in de **typeProperties** -sectie van de activiteit, verschillen per type activiteit. Voor kopieer activiteiten zijn ze afhankelijk van de typen bronnen en Sinks.
 
-In de kopieeractiviteit, wanneer de gegevensbron van het type **RelationalSource** (waaronder ODBC), de volgende eigenschappen zijn beschikbaar in de sectie typeProperties:
+Wanneer de bron van het type **RelationalSource** (inclusief ODBC) is in Kopieer activiteit, zijn de volgende eigenschappen beschikbaar in de sectie typeProperties:
 
-| Eigenschap | Description | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| query |De aangepaste query gebruiken om gegevens te lezen. |SQL-query-tekenreeks. Bijvoorbeeld: Selecteer * uit MyTable. |Ja |
+| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: Select * from MyTable. |Ja |
 
 
-## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON-voorbeeld: Gegevens kopiëren van ODBC-gegevensopslag naar Azure Blob
-In dit voorbeeld bevat JSON-definities die u gebruiken kunt voor het maken van een pijplijn met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Het laat zien hoe gegevens kopiëren van een ODBC-gegevensbron naar een Azure Blob-opslag. Echter gegevens kunnen worden gekopieerd naar een van de vermelde sinks [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) met behulp van de Kopieeractiviteit in Azure Data Factory.
+## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van ODBC-gegevens archief naar een Azure-Blob
+Dit voor beeld bevat JSON-definities die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). U ziet hoe u gegevens van een ODBC-bron naar een Azure-Blob Storage kopieert. Gegevens kunnen echter worden gekopieerd naar de [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) opgegeven sinks met behulp van de Kopieer activiteit in azure Data Factory.
 
-Het voorbeeld heeft de volgende data factory-entiteiten:
+Het voor beeld heeft de volgende data factory entiteiten:
 
 1. Een gekoppelde service van het type [OnPremisesOdbc](#linked-service-properties).
-2. Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Invoer [gegevensset](data-factory-create-datasets.md) van het type [RelationalTable](#dataset-properties).
-4. Uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. Een [pijplijn](data-factory-create-pipelines.md) met de Kopieeractiviteit die gebruikmaakt van [RelationalSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+2. Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [RelationalTable](#dataset-properties).
+4. Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+5. Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [RelationalSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Het voorbeeld worden gegevens gekopieerd van de resultaten van een query in een ODBC-gegevensarchief naar een blob elk uur. De JSON-eigenschappen die in deze voorbeelden worden beschreven in de secties na de voorbeelden.
+In het voor beeld worden gegevens gekopieerd van een query resultaat in een ODBC-gegevens archief elk uur naar een blob. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
 
-Instellen als eerste stap van de data management gateway. De instructies vindt u in de [om gegevens te verplaatsen tussen on-premises locaties en cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel.
+De eerste stap is het instellen van de Data Management Gateway. De instructies bevinden zich in het [verplaatsen van gegevens tussen on-premises locaties en Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikelen.
 
-**ODBC-gekoppelde service** in dit voorbeeld wordt de basisverificatie. Zie [ODBC gekoppelde service](#linked-service-properties) sectie voor verschillende soorten verificatie die u kunt gebruiken.
+**Gekoppelde ODBC-service** In dit voor beeld wordt de basis verificatie gebruikt. Zie de sectie [ODBC-gekoppelde service](#linked-service-properties) voor verschillende typen verificatie die u kunt gebruiken.
 
 ```json
 {
@@ -202,11 +202,11 @@ Instellen als eerste stap van de data management gateway. De instructies vindt u
 }
 ```
 
-**ODBC-invoergegevensset**
+**Gegevensset voor ODBC-invoer**
 
-Het voorbeeld wordt ervan uitgegaan dat u hebt een tabel 'MyTable' gemaakt in een ODBC-database en een kolom met de naam 'timestampcolumn' voor time series-gegevens bevat.
+In het voor beeld wordt ervan uitgegaan dat u in een ODBC-Data Base een tabel ' MyTable ' hebt gemaakt en een kolom bevat met de naam ' timestampcolumn ' voor tijdreeks gegevens.
 
-Instellen van "extern": "true" informeert de Data Factory-service dat de dataset bevindt zich buiten de data factory en niet door een activiteit in de data factory gemaakt wordt.
+Als u ' Extern ' instelt, informeert de Data Factory-service dat de gegevensset extern is voor de data factory en wordt deze niet geproduceerd door een activiteit in de data factory.
 
 ```json
 {
@@ -234,7 +234,7 @@ Instellen van "extern": "true" informeert de Data Factory-service dat de dataset
 
 **Azure Blob-uitvoergegevensset**
 
-Gegevens worden geschreven naar een nieuwe blob elk uur (frequentie: uur en interval: 1). Het pad naar de map voor de blob wordt dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Pad naar de map wordt gebruikt voor jaar, maand, dag en uur onderdelen van de begintijd.
+Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interval: 1). Het mappad voor de BLOB wordt dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt delen van het jaar, de maand, de dag en het uur van de begin tijd.
 
 ```json
 {
@@ -292,9 +292,9 @@ Gegevens worden geschreven naar een nieuwe blob elk uur (frequentie: uur en inte
 }
 ```
 
-**Kopieeractiviteit in een pijplijn met ODBC-gegevensbron (RelationalSource) en Blob-sink (BlobSink)**
+**Kopieer activiteit in een pijp lijn met een ODBC-bron (RelationalSource) en BLOB-Sink (BlobSink)**
 
-De pijplijn bevat een Kopieeractiviteit die is geconfigureerd voor het gebruik van deze gegevenssets voor invoer en uitvoer en is gepland voor elk uur uitgevoerd. In de pijplijn-JSON-definitie heeft de **bron** type is ingesteld op **RelationalSource** en **sink** type is ingesteld op **BlobSink**. De SQL-query die is opgegeven voor de **query** eigenschap selecteert u de gegevens in het afgelopen uur te kopiëren.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van deze invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **RelationalSource** en het **sink** -type is ingesteld op **BlobSink**. Met de SQL-query die is opgegeven voor de **query** -eigenschap worden de gegevens in het afgelopen uur geselecteerd om te kopiëren.
 
 ```json
 {
@@ -341,32 +341,32 @@ De pijplijn bevat een Kopieeractiviteit die is geconfigureerd voor het gebruik v
     }
 }
 ```
-### <a name="type-mapping-for-odbc"></a>Toewijzing van het type voor ODBC
-Zoals vermeld in de [activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) artikel kopieeractiviteit wordt uitgevoerd automatisch typeconversies van typen gegevensbronnen met sink-type met de volgende methode voor verificatie in twee stappen:
+### <a name="type-mapping-for-odbc"></a>Type toewijzing voor ODBC
+Zoals vermeld in het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) voert Kopieer activiteit automatisch type conversies uit van bron typen naar Sink-typen met de volgende twee stappen:
 
-1. Systeemeigen brontypen converteren naar .NET-type
-2. .NET-type converteren naar systeemeigen sink-type
+1. Converteren van systeem eigen bron typen naar .NET-type
+2. Converteren van .NET-type naar systeem eigen Sink-type
 
-Bij het verplaatsen van gegevens van ODBC-gegevensopslag, ODBC-gegevenstypen worden toegewezen aan .NET-typen, zoals vermeld in de [ODBC Gegevenstypetoewijzingen](https://msdn.microsoft.com/library/cc668763.aspx) onderwerp.
+Bij het verplaatsen van gegevens uit ODBC-gegevens archieven worden ODBC-gegevens typen toegewezen aan .NET-typen zoals vermeld in het onderwerp [ODBC-gegevens type toewijzingen](https://msdn.microsoft.com/library/cc668763.aspx) .
 
-## <a name="map-source-to-sink-columns"></a>Kaartbron met sink-kolommen
-Zie voor meer informatie over het toewijzen van kolommen in de brongegevensset naar kolommen in de sink-gegevensset, [toewijzing van kolommen in Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen
+Zie [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in de bron-gegevensset aan kolommen in Sink-gegevensset.
 
-## <a name="repeatable-read-from-relational-sources"></a>Herhaalbare lezen van relationele bronnen
-Bij het kopiëren van gegevens van relationele gegevens worden opgeslagen, houd er rekening mee om te voorkomen dat ongewenste resultaten herhaalbaarheid. In Azure Data Factory, kunt u een segment handmatig opnieuw. U kunt ook beleid voor opnieuw proberen voor een gegevensset configureren zodat een segment wordt opnieuw uitgevoerd wanneer een fout optreedt. Wanneer een segment wordt opnieuw uitgevoerd in beide gevallen, moet u om ervoor te zorgen dat de dezelfde gegevens worden gelezen ongeacht hoe vaak een segment wordt uitgevoerd. Zie [Repeatable leesrechten voor relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Herhaal bare Lees bewerking van relationele bronnen
+Houd bij het kopiëren van gegevens uit relationele gegevens archieven de Herhaal baarheid in de hand om onbedoelde resultaten te voor komen. In Azure Data Factory kunt u een segment hand matig opnieuw uitvoeren. U kunt ook beleid voor opnieuw proberen voor een gegevensset configureren zodat een segment opnieuw wordt uitgevoerd wanneer er een fout optreedt. Wanneer een segment op een van beide manieren opnieuw wordt uitgevoerd, moet u ervoor zorgen dat dezelfde gegevens worden gelezen, ongeacht het aantal keren dat een segment wordt gestart. Zie [Herhaal bare Lees bewerking van relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="troubleshoot-connectivity-issues"></a>Verbindingsproblemen oplossen
-Voor het oplossen van problemen met verbindingen, gebruikt u de **Diagnostics** tabblad van **Data Management Gateway Configuratiebeheer**.
+## <a name="troubleshoot-connectivity-issues"></a>Verbindings problemen oplossen
+Gebruik het tabblad **Diagnostische gegevens** van **Data Management Gateway Configuration Manager**om verbindings problemen op te lossen.
 
-1. Start **Data Management Gateway Configuratiebeheer**. U kunt uitvoeren "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe" rechtstreeks (of) zoeken voor **Gateway** op een koppeling naar **Microsoft Data Management Gateway** de toepassing zoals wordt weergegeven in de volgende afbeelding.
+1. Start **Data Management Gateway Configuration Manager**. U kunt ' C:\Program Files\Microsoft Gegevensbeheer Gateway\1.0\Shared\ConfigManager.exe ' direct uitvoeren (of) zoek naar **Gateway** om een koppeling naar een **micro soft data management gateway** -toepassing te vinden, zoals wordt weer gegeven in de volgende afbeelding.
 
-    ![Search-gateway](./media/data-factory-odbc-connector/search-gateway.png)
-2. Schakel over naar de **Diagnostics** tabblad.
+    ![Gateway zoeken](./media/data-factory-odbc-connector/search-gateway.png)
+2. Schakel over naar het tabblad **Diagnostische gegevens** .
 
-    ![Diagnostische gegevens van gateway](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
-3. Selecteer de **type** opslaan van gegevens (gekoppelde service).
-4. Geef **verificatie** en voer **referenties** (of) Voer **verbindingsreeks** die wordt gebruikt voor het verbinding maken met het gegevensarchief.
-5. Klik op **verbinding testen** voor het testen van de verbinding met het gegevensarchief.
+    ![Diagnostische gegevens van de gateway](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
+3. Selecteer het **type** gegevens archief (gekoppelde service).
+4. **Verificatie** opgeven en **referenties** invoeren (of) Geef **Connection String** op die wordt gebruikt om verbinding te maken met het gegevens archief.
+5. Klik op **verbinding testen** om de verbinding met het gegevens archief te testen.
 
-## <a name="performance-and-tuning"></a>Prestaties en afstemmen
-Zie [prestaties kopiëren en Afstemmingshandleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed prestaties van de verplaatsing van gegevens (Kopieeractiviteit) in Azure Data Factory en de verschillende manieren om te optimaliseren.
+## <a name="performance-and-tuning"></a>Prestaties en afstemming
+Zie [Kopieer activiteit prestaties & afstemmings handleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory en verschillende manieren om deze te optimaliseren.

@@ -6,16 +6,16 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: b3e7ff18dddeaeb1a42d69b9ed57d163410fbfa1
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7176cddae6affd19df4fe418afcf420f92d624ab
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329230"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579794"
 ---
 # <a name="smart-contract-integration-patterns"></a>Integratiepatronen voor slimme contracten
 
@@ -194,17 +194,17 @@ In het proces wordt een patroon weer gegeven:
 -   IoT Hub ontvangt de berichten en evalueert de berichten op basis van routes die zijn ingesteld voor het controleren van de inhoud van het bericht. *Rapporteert de sensor een Tempe ratuur groter dan 50 graden?*
 -   De IoT Hub stuurt berichten die voldoen aan de criteria aan een gedefinieerd Service Bus voor de route.
 -   Een logische app of andere code luistert naar de Service Bus die IoT Hub voor de route heeft ingesteld.
--   Met de logische app of andere code wordt het bericht opgehaald en getransformeerd naar een bekende indeling.
+-   De logische app of andere code haalt het bericht op en transformeert het naar een bekend formaat.
 -   Het getransformeerde bericht, nu in een standaard indeling, wordt verzonden naar de Service Bus voor Azure Block Chain Workbench.
 -   Azure Block Chain Workbench is geabonneerd op gebeurtenissen van de Service Bus en haalt het bericht op.
 -   Azure Block Chain Workbench initieert een aanroep van het groot boek, waarbij gegevens van het externe systeem naar een specifiek contract worden verzonden.
 -   Na ontvangst van het bericht evalueert het contract de gegevens en kan de status worden gewijzigd op basis van het resultaat van deze evaluatie, bijvoorbeeld voor een hoge Tempe ratuur, wijzigt u de status in *niet-naleving*.
 
-## <a name="data-integration"></a>Data-integratie
+## <a name="data-integration"></a>Gegevensintegratie
 
 Azure Block Chain Workbench biedt naast REST en op berichten gebaseerde API ook toegang tot een SQL-data base die is gevuld met de meta gegevens van de toepassing en het contract, evenals transactionele gegevens uit gedistribueerde groot boeken.
 
-![Data-integratie](./media/integration-patterns/data-integration.png)
+![Gegevensintegratie](./media/integration-patterns/data-integration.png)
 
 De gegevens integratie is bekend:
 

@@ -1,5 +1,5 @@
 ---
-title: Voorwaardelijke Splits Transform in Azure Data Factory stroom voor het toewijzen van gegevens | Microsoft Docs
+title: Voorwaardelijke Splits Transform in Azure Data Factory gegevens stroom toewijzen
 description: Gegevens in verschillende stromen splitsen met behulp van de Conditional Split trans formatie in Azure Data Factory toewijzing van gegevens stroom
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 2d794714f27340e8886843988b6c075dd8d3366e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9ace415aa725a82d8feda5702d25d7e5ff9875d9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72527404"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676816"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Voorwaardelijke Splits Transform in toewijzing van gegevens stroom
 
@@ -42,7 +42,7 @@ Gebruik de opbouw functie voor de data flow-expressie om een expressie voor de S
 
 ### <a name="example"></a>Voorbeeld
 
-Het onderstaande voor beeld is een Conditional Split-trans formatie met de naam `SplitByYear` die in de binnenkomende stream `CleanData` neemt. Deze trans formatie heeft twee gesplitste voor waarden `year < 1960` en `year > 1980`. `disjoint` is onwaar, omdat de gegevens worden verplaatst naar de eerste overeenkomende voor waarde. Elke rij die overeenkomt met de eerste voor waarde, gaat naar uitvoer stroom `moviesBefore1960`. Alle resterende rijen die overeenkomen met de tweede voor waarde, gaan naar uitvoer stroom `moviesAFter1980`. Alle andere rijen stromen via de standaard stroom `AllOtherMovies`.
+Het onderstaande voor beeld is een Conditional Split-trans formatie met de naam `SplitByYear` die in de binnenkomende stream `CleanData`neemt. Deze trans formatie heeft twee gesplitste voor waarden `year < 1960` en `year > 1980`. `disjoint` is onwaar, omdat de gegevens worden verplaatst naar de eerste overeenkomende voor waarde. Elke rij die overeenkomt met de eerste voor waarde, gaat naar uitvoer stroom `moviesBefore1960`. Alle resterende rijen die overeenkomen met de tweede voor waarde, gaan naar uitvoer stroom `moviesAFter1980`. Alle andere rijen stromen via de standaard stroom `AllOtherMovies`.
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 

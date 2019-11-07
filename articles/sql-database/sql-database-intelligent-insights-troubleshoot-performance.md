@@ -1,5 +1,5 @@
 ---
-title: Problemen met Azure SQL Database prestaties oplossen met Intelligent Insights | Microsoft Docs
+title: Problemen met de Azure SQL Database prestaties oplossen met Intelligent Insights
 description: Intelligent Insights helpt u bij het oplossen van problemen met de Azure SQL Database prestatie.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: f884b39db92f44f7cff938e0ac4b9c2e22dc36cb
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: fef1ed386dbf3acccc09b9bba743b6b33492da0e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262195"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689712"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Problemen met de Azure SQL Database prestaties oplossen met Intelligent Insights
 
@@ -108,9 +108,9 @@ U kunt query's met betrekking tot de Clerks optimaliseren of verwijderen met het
 
 U kunt de werk belasting ook verminderen door deze te optimaliseren of te verdelen over meerdere data bases. Of u kunt uw werk belasting verdelen over meerdere data bases. Als deze oplossingen niet mogelijk zijn, kunt u overwegen de prijs categorie van uw SQL database-abonnement te verg Roten om de hoeveelheid geheugen bronnen die beschikbaar zijn voor de data base te verg Roten.
 
-Zie [geheugen subsidies Meditation voor aanvullende suggesties voor probleem oplossing: De verwarrende SQL Server Memory Consumer met veel](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/)namen.
+Zie [geheugen subsidies Meditation: de verwarrende SQL Server Memory Consumer met veel namen](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/)voor aanvullende suggesties voor probleem oplossing.
 
-## <a name="locking"></a>Vergrendelen
+## <a name="locking"></a>Vergren delen
 
 ### <a name="what-is-happening"></a>Wat gebeurt er
 
@@ -226,7 +226,7 @@ Dit Detecteer bare prestatie patroon duidt op een prestatie voorwaarde voor de D
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 
-In het diagnostische logboek worden de details van tempDB-conflicten in de geheugen uitvoer uitgevoerd. U kunt de informatie als uitgangs punt gebruiken voor het oplossen van problemen. Er zijn twee dingen die u kunt uitvoeren om dit soort conflicten op te lossen en de door Voer van de totale werk belasting te verg Roten: U kunt de tijdelijke tabellen niet meer gebruiken. U kunt ook tabellen gebruiken die zijn geoptimaliseerd voor geheugen. 
+In het diagnostische logboek worden de details van tempDB-conflicten in de geheugen uitvoer uitgevoerd. U kunt de informatie als uitgangs punt gebruiken voor het oplossen van problemen. Er zijn twee dingen die u kunt uitvoeren om dit soort conflicten op te lossen en de door Voer van de totale werk belasting te verg Roten: u kunt stoppen met het gebruik van de tijdelijke tabellen. U kunt ook tabellen gebruiken die zijn geoptimaliseerd voor geheugen. 
 
 Zie [Inleiding tot tabellen die zijn geoptimaliseerd voor geheugen](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)voor meer informatie. 
 
@@ -320,7 +320,7 @@ Als u de prijs categorie hebt gereduceerd en daarom de Dtu's beschikbaar is voor
 
 Ga naar Azure SQL-analyse om Intelligent Insights via de Azure Portal. Probeer de waarschuwing voor binnenkomende prestaties te vinden en selecteer deze. Bepaal wat er gebeurt op de pagina detecties. Bekijk de verstrekte analyse van de hoofd oorzaak van het probleem, query tekst, trends in query tijd en incident evolutie. Probeer het probleem op te lossen met behulp van de Intelligent Insights aanbeveling om het prestatie probleem te verhelpen. 
 
-[![Stroom diagram voor problemen oplossen](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
+[stroom diagram voor het oplossen van problemen ![](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
 
 > [!TIP]
 > Selecteer het stroom diagram om een PDF-versie te downloaden.

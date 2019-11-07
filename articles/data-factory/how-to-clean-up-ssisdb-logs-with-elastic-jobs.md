@@ -1,6 +1,6 @@
 ---
-title: Opschonen van Logboeken SSISDB met Azure-taken voor Elastic Database | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u voor het opschonen van Logboeken van de SSISDB met behulp van taken voor Elastic Database van Azure voor het activeren van de opgeslagen procedure die voor dit doel bestaat
+title: 'SSISDB-logboeken opschonen met Azure Elastic Database-taken '
+description: In dit artikel wordt beschreven hoe u SSISDB-logboeken opschoont met behulp van Azure taak voor Elastic Database om de opgeslagen procedure te activeren die voor dit doel bestaat
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,30 +12,30 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 1afc40bd601c06def57ae59797d31a5edf4095bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0697addb14894855f554c1d82f59f3798e63d03b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61345554"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674741"
 ---
-# <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Opschonen van de SSISDB-logboeken met Azure-taken voor Elastic Database
+# <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>SSISDB-logboeken opschonen met Azure Elastic Database-taken
 
-In dit artikel wordt beschreven hoe u Azure-taken voor elastische Database gebruiken voor het activeren van de opgeslagen procedure opschonen van Logboeken voor de SQL Server Integration Services-catalogusdatabase `SSISDB`.
+In dit artikel wordt beschreven hoe u Azure Elastic Database-taken kunt gebruiken om de opgeslagen procedure te activeren waarmee logboeken worden opgeschoond voor de SQL Server Integration Services catalogus database, `SSISDB`.
 
-Taken voor elastic Database is een Azure-service waarmee u eenvoudig automatiseren en taken uitvoeren op een database of een groep databases. U kunt plannen, uitvoeren en bewaken van deze taken met behulp van de Azure portal, Transact-SQL, PowerShell of REST-API's. Gebruik de elastische Database-taken voor het activeren van de opgeslagen procedure voor logboek opschonen eenmalig of volgens een schema. U kunt de schema-interval op basis van Resourcegebruik SSISDB om te voorkomen dat zware databasebelasting.
+Elastic Database-taken is een Azure-service waarmee u eenvoudig taken kunt automatiseren en uitvoeren op een Data Base of een groep data bases. U kunt deze taken plannen, uitvoeren en bewaken met behulp van de Azure Portal, Transact-SQL, Power shell of REST-Api's. Gebruik de taak Elastic Database om de opgeslagen procedure voor het eenmalig of volgens een logboek te activeren. U kunt het plannings interval kiezen op basis van het resource gebruik van SSISDB om te voor komen dat de data base wordt geladen.
 
-Zie voor meer informatie, [beheren van groepen van databases met taken voor Elastic Database](../sql-database/elastic-jobs-overview.md).
+Zie [groepen met data bases beheren met Elastic database Jobs](../sql-database/elastic-jobs-overview.md)voor meer informatie.
 
-De volgende secties wordt beschreven hoe u voor het activeren van de opgeslagen procedure `[internal].[cleanup_server_retention_window_exclusive]`, waarbij SSISDB-logboeken die zich buiten de bewaarperiode instellen door de beheerder worden verwijderd.
+In de volgende secties wordt beschreven hoe u de opgeslagen procedure `[internal].[cleanup_server_retention_window_exclusive]`kunt activeren, waarmee u SSISDB-logboeken verwijdert die zich buiten het Bewaar venster bevinden dat door de beheerder is ingesteld.
 
-## <a name="clean-up-logs-with-power-shell"></a>Opschonen van logboeken met Power Shell
+## <a name="clean-up-logs-with-power-shell"></a>Logboeken opschonen met Power shell
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-De volgende PowerShell-voorbeeldscripts maakt een nieuwe elastische taak voor het activeren van de opgeslagen procedure voor SSISDB logboek opschonen. Zie voor meer informatie, [maken van een agent voor elastische taken met behulp van PowerShell](../sql-database/elastic-jobs-powershell.md).
+De volgende Power shell-voorbeeld scripts maken een nieuwe elastische taak om de opgeslagen procedure voor het opschonen van SSISDB-logboeken te activeren. Zie [een elastische-taak agent maken met behulp van Power shell](../sql-database/elastic-jobs-powershell.md)voor meer informatie.
 
-### <a name="create-parameters"></a>Maak parameters
+### <a name="create-parameters"></a>Para meters maken
 
 ``` powershell
 # Parameters needed to create the Job Database
@@ -65,7 +65,7 @@ $IntervalCount = $(Read-Host "Please enter the detailed interval value in the gi
 $StartTime = (Get-Date)
 ```
 
-### <a name="trigger-the-cleanup-stored-procedure"></a>Activeert de opschoning opgeslagen procedure
+### <a name="trigger-the-cleanup-stored-procedure"></a>De opgeslagen procedure voor opschonen activeren
 
 ```powershell
 # Install the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
@@ -157,13 +157,13 @@ Write-Output "Start the execution schedule of the stored procedure for SSISDB lo
 $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $IntervalCount -StartTime $StartTime -Enable
 ```
 
-## <a name="clean-up-logs-with-transact-sql"></a>Opschonen van logboeken met behulp van Transact-SQL
+## <a name="clean-up-logs-with-transact-sql"></a>Logboeken opschonen met Transact-SQL
 
-Het volgende voorbeeld Transact-SQL-scripts maakt een nieuwe elastische taak voor het activeren van de opgeslagen procedure voor SSISDB logboek opschonen. Zie voor meer informatie, [gebruik Transact-SQL (T-SQL) maken en beheren van taken voor Elastic Database](../sql-database/elastic-jobs-tsql.md).
+De volgende Transact-SQL-voorbeeld scripts maken een nieuwe elastische taak om de opgeslagen procedure voor het opschonen van SSISDB-logboeken te activeren. Zie [Transact-SQL (T-SQL) gebruiken om Elastic database taken te maken en te beheren](../sql-database/elastic-jobs-tsql.md)voor meer informatie.
 
-1. Maak of Identificeer een lege S0 of hoger van Azure SQL Database om te worden van de Database van de taak SSISDBCleanup. Maak vervolgens een Agent voor elastische taken in de [Azure-portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent).
+1. Een lege S0 of een hogere Azure SQL Database maken of identificeren als de SSISDBCleanup-taak database. Maak vervolgens een elastische taak agent in het [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent).
 
-2. In de Project-Database, maakt u een referentie voor de taak SSISDB logboek opschonen. Deze referentie wordt gebruikt om verbinding maken met de SSISDB-database voor het opschonen van de logboeken.
+2. Maak in de taak database een referentie voor de opschoon taak SSISDB logboek. Deze referentie wordt gebruikt om verbinding te maken met uw SSISDB-data base om de logboeken op te schonen.
 
     ```sql
     -- Connect to the job database specified when creating the job agent
@@ -174,7 +174,7 @@ Het volgende voorbeeld Transact-SQL-scripts maakt een nieuwe elastische taak voo
     CREATE DATABASE SCOPED CREDENTIAL SSISDBLogCleanupCred WITH IDENTITY = 'SSISDBLogCleanupUser', SECRET = '<EnterStrongPasswordHere>'; 
     ```
 
-3. Definieer de doelgroep waarop de SSISDB-database waarvoor u wilt uitvoeren van de opschoning opgeslagen procedure bevat.
+3. Definieer de doel groep die de SSISDB-Data Base bevat waarvoor u de opgeslagen procedure voor opschonen wilt uitvoeren.
 
     ```sql
     -- Connect to the job database 
@@ -191,7 +191,7 @@ Het volgende voorbeeld Transact-SQL-scripts maakt een nieuwe elastische taak voo
     SELECT * FROM jobs.target_groups WHERE target_group_name = 'SSISDBTargetGroup';
     SELECT * FROM jobs.target_group_members WHERE target_group_name = 'SSISDBTargetGroup';
     ```
-4. Juiste machtigingen voor de SSISDB-database. De SSISDB catalog moet de juiste machtigingen voor de opgeslagen procedure voor het uitvoeren van SSISDB logboek opschonen is. Zie voor gedetailleerde instructies [aanmeldingen beheren](../sql-database/sql-database-manage-logins.md).
+4. Verleen de juiste machtigingen voor de SSISDB-data base. De SSISDB-catalogus moet de juiste machtigingen hebben voor de opgeslagen procedure om de SSISDB-logboek opruiming te kunnen uitvoeren. Zie [aanmeldingen beheren](../sql-database/sql-database-manage-logins.md)voor meer informatie.
 
     ```sql
     -- Connect to the master database in the target server including SSISDB 
@@ -201,7 +201,7 @@ Het volgende voorbeeld Transact-SQL-scripts maakt een nieuwe elastische taak voo
     CREATE USER SSISDBLogCleanupUser FROM LOGIN SSISDBLogCleanupUser;
     GRANT EXECUTE ON internal.cleanup_server_retention_window_exclusive TO SSISDBLogCleanupUser
     ```
-5. De taak maken en toevoegen van een taakstap voor het activeren van de uitvoering van de opgeslagen procedure voor SSISDB logboek opschonen.
+5. Maak de taak en voeg een taak stap toe om de uitvoering van de opgeslagen procedure voor het opschonen van SSISDB-logboeken te activeren.
 
     ```sql
     --Connect to the job database 
@@ -214,9 +214,9 @@ Het volgende voorbeeld Transact-SQL-scripts maakt een nieuwe elastische taak voo
     @credential_name='SSISDBLogCleanupCred',
     @target_group_name='SSISDBTargetGroup'
     ```
-6. Voordat u doorgaat, controleert u dat de bewaarperiode juist is ingesteld. Logboeken van de SSISDB buiten het venster worden verwijderd en kunnen niet worden hersteld.
+6. Voordat u doorgaat, moet u ervoor zorgen dat het Bewaar venster op de juiste wijze is ingesteld. SSISDB-logboeken buiten het venster worden verwijderd en kunnen niet worden hersteld.
 
-   Vervolgens kunt u de taak onmiddellijk om te beginnen met SSISDB logboek opschonen uitvoeren.
+   Vervolgens kunt u de taak onmiddellijk uitvoeren om te beginnen met het opruimen van SSISDB-Logboeken.
 
     ```sql
     --Connect to the job database 
@@ -228,7 +228,7 @@ Het volgende voorbeeld Transact-SQL-scripts maakt een nieuwe elastische taak voo
     select @je
     select * from jobs.job_executions where job_execution_id = @je
     ```
-7. (Optioneel) plannen taakuitvoeringen SSISDB logboeken buiten de bewaarperiode volgens een schema verwijderen. Een vergelijkbaar instructie gebruiken om bij te werken, de taakparameters.
+7. U kunt eventueel taak uitvoeringen plannen om SSISDB-logboeken te verwijderen buiten het Bewaar venster volgens een schema. Gebruik een vergelijk bare instructie om de taak parameters bij te werken.
 
     ```sql
     --Connect to the job database 
@@ -241,15 +241,15 @@ Het volgende voorbeeld Transact-SQL-scripts maakt een nieuwe elastische taak voo
     @schedule_end_time='<EnterProperEndTimeForSchedule>'
     ```
 
-## <a name="monitor-the-cleanup-job-in-the-azure-portal"></a>Monitor voor de taak opschonen in Azure portal
+## <a name="monitor-the-cleanup-job-in-the-azure-portal"></a>De opschoon taak in de Azure Portal bewaken
 
-U kunt de uitvoering van de taak opschonen in Azure portal controleren. Voor elke uitvoering ziet u de status, begintijd en eindtijd van de taak.
+U kunt de uitvoering van de opschoon taak in de Azure Portal bewaken. Voor elke uitvoering ziet u de status, de begin tijd en de eind tijd van de taak.
 
-![Monitor voor de taak opschonen in Azure portal](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png)
+![De opschoon taak in de Azure Portal bewaken](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png)
 
-## <a name="monitor-the-cleanup-job-with-transact-sql"></a>Monitor voor de taak opschonen met Transact-SQL
+## <a name="monitor-the-cleanup-job-with-transact-sql"></a>De opschoon taak bewaken met Transact-SQL
 
-U kunt ook de Transact-SQL gebruiken om de uitvoeringsgeschiedenis van de taak opschonen weer te geven.
+U kunt ook Transact-SQL gebruiken om de uitvoerings geschiedenis van de opschoon taak weer te geven.
 
 ```sql
 --Connect to the job database 
@@ -264,8 +264,8 @@ ORDER BY start_time DESC
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor het beheer en controle van taken met betrekking tot de Azure-SSIS Integration Runtime. De Azure-SSIS IR is de runtime-engine voor SSIS-pakketten die zijn opgeslagen in de SSISDB in Azure SQL Database.
+Raadpleeg de volgende artikelen voor beheer-en bewakings taken die betrekking hebben op de Azure-SSIS Integration Runtime. De Azure-SSIS IR is de runtime-engine voor SSIS-pakketten die zijn opgeslagen in SSISDB in Azure SQL Database.
 
 -   [De Azure-SSIS-integratieruntime opnieuw configureren](manage-azure-ssis-integration-runtime.md)
 
--   [De Azure-SSIS integratieruntime bewaken](monitor-integration-runtime.md#azure-ssis-integration-runtime).
+-   [Bewaak de Azure SSIS Integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).

@@ -1,5 +1,5 @@
 ---
-title: Gebruikers gegevens beheren die zijn gevonden in een Azure Security Center onderzoek | Microsoft Docs
+title: Gebruikers gegevens beheren die zijn gevonden in een Azure Security Center onderzoek
 description: " Meer informatie over het beheren van gebruikers gegevens die zijn gevonden in de onderzoek functie van Azure Security Center. "
 services: operations-management-suite
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 8b6bde69f233fee9fe20b260e392966298f13a9a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 059ca2a26e50128d6bc4313dad9f995e97c06378
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202034"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686402"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Gebruikers gegevens beheren die zijn gevonden in een Azure Security Center onderzoek
 Dit artikel bevat informatie over het beheren van de gebruikers gegevens die worden gevonden in de onderzoek functie van Azure Security Center. Onderzoek gegevens worden opgeslagen in [Azure monitor logboeken](../log-analytics/log-analytics-overview.md) en beschikbaar gesteld in Security Center. Het beheren van gebruikers gegevens omvat de mogelijkheid om gegevens te verwijderen of te exporteren.
@@ -35,24 +35,24 @@ Een Security Center gebruiker de rol van lezer, eigenaar, Inzender of account be
 
 Zie [ingebouwde rollen voor op rollen gebaseerd toegangs beheer voor Azure](../role-based-access-control/built-in-roles.md) voor meer informatie over de rollen lezer, eigenaar en Inzender. Zie [beheerders van Azure-abonnementen](../billing/billing-add-change-azure-subscription-administrator.md) voor meer informatie over de rol account beheerder.
 
-## <a name="deleting-personal-data"></a>Het verwijderen van persoonlijke gegevens
+## <a name="deleting-personal-data"></a>Persoonlijke gegevens verwijderen
 Een Security Center gebruiker aan wie de rol van eigenaar, bijdrager of account beheerder is toegewezen, kan de onderzoek gegevens verwijderen.
 
-Als u een onderzoek wilt verwijderen, kunt u `DELETE` een aanvraag indienen bij de Azure Resource Manager rest API:
+Als u een onderzoek wilt verwijderen, kunt u een `DELETE` aanvraag indienen bij de Azure Resource Manager REST API:
 
 ```HTTP
 DELETE
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/security/incidents/{incidentName}
 ```
 
-U `incidentName` kunt de invoer vinden door alle incidenten te vermelden `GET` met behulp van een aanvraag:
+U kunt de `incidentName` invoer vinden door alle incidenten te vermelden met behulp van een `GET` aanvraag:
 
 ```HTTP
 GET
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/security/incidents
 ```
 
-## <a name="exporting-personal-data"></a>Exporteren van persoonlijke gegevens
+## <a name="exporting-personal-data"></a>Persoonlijke gegevens exporteren
 Een Security Center gebruiker aan wie de rol van eigenaar, bijdrager of account beheerder is toegewezen, kan de onderzoek gegevens exporteren. Als u onderzoek gegevens wilt exporteren, gaat u naar het tabblad **entiteiten** om de relevante informatie te kopiëren en plakken.
 
 ## <a name="next-steps"></a>Volgende stappen

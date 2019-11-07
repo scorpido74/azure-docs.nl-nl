@@ -1,5 +1,5 @@
 ---
-title: Richt lijnen voor het ontwerpen van gedistribueerde tabellen-Azure SQL Data Warehouse | Microsoft Docs
+title: Richt lijnen voor het ontwerpen van gedistribueerde tabellen
 description: Aanbevelingen voor het ontwerpen van op hash gedistribueerde en Round Robin gedistribueerde tabellen in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4b322415592a7202387cb6776d2c040cda765b27
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f05e732e11fb9cd88d4671528d551c68e448a8d7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479355"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685475"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Richt lijnen voor het ontwerpen van gedistribueerde tabellen in Azure SQL Data Warehouse
 Aanbevelingen voor het ontwerpen van op hash gedistribueerde en Round Robin gedistribueerde tabellen in Azure SQL Data Warehouse.
@@ -112,8 +113,8 @@ Om de juiste query resultaat query's te verkrijgen, kunnen gegevens van het ene 
 
 Als u de verplaatsing van gegevens wilt minimaliseren, selecteert u een distributie kolom die:
 
-- Wordt gebruikt in `JOIN` `GROUP BY` ,,`OVER`, en -`HAVING`componenten. `DISTINCT` Wanneer twee grote feiten tabellen veelvuldig samen voegen, worden de query prestaties verbeterd wanneer u beide tabellen op een van de samenvoegings kolommen distribueert.  Wanneer een tabel niet wordt gebruikt in samen voegingen, kunt u overwegen om de tabel te distribueren in een kolom `GROUP BY` die regel matig voor komt in de component.
-- Wordt *niet* gebruikt in `WHERE` -componenten. Hierdoor kan de query worden beperkt zodat deze niet op alle distributies kan worden uitgevoerd. 
+- Wordt gebruikt in `JOIN`-, `GROUP BY`-, `DISTINCT`-, `OVER`-en `HAVING`-componenten. Wanneer twee grote feiten tabellen veelvuldig samen voegen, worden de query prestaties verbeterd wanneer u beide tabellen op een van de samenvoegings kolommen distribueert.  Wanneer een tabel niet wordt gebruikt in samen voegingen, kunt u overwegen om de tabel te distribueren in een kolom die regel matig voor komt in de `GROUP BY`-component.
+- Wordt *niet* gebruikt in `WHERE`-componenten. Hierdoor kan de query worden beperkt zodat deze niet op alle distributies kan worden uitgevoerd. 
 - Is *geen* datum kolom. WHERE-componenten worden vaak op datum gefilterd.  Als dit gebeurt, kan alle verwerking alleen op enkele distributies worden uitgevoerd.
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Wat te doen wanneer geen van de kolommen een goede distributie kolom is
@@ -217,6 +218,6 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 Als u een gedistribueerde tabel wilt maken, gebruikt u een van de volgende instructies:
 
 - [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE als selecteren (Azure SQL Data Warehouse](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

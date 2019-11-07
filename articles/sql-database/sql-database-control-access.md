@@ -1,5 +1,5 @@
 ---
-title: Verlenen van toegang tot Azure SQL Database en SQL Data Warehouse | Microsoft Docs
+title: Toegang verlenen tot Azure SQL Database en SQL Data Warehouse
 description: Meer informatie over het verlenen van toegang tot Microsoft Azure SQL Database en SQL Data Warehouse.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: 1292dbf43b5246fe3da95ead4d5d9113b4bc84f9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c115cd7e4d531bfdc7ddbacd4f6eff2a892ea3c3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569032"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690750"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Toegangs beheer Azure SQL Database en SQL Data Warehouse
 
@@ -50,7 +50,7 @@ Gebruikersaccounts kunnen worden gemaakt in de hoofddatabase en kunnen machtigin
 
 Als best practice moet uw toepassing een specifiek account gebruiken om te verifiëren. Op deze manier kunt u de machtigingen die aan de toepassing worden verleend, beperken en het risico op schadelijke activiteiten verminderen in het geval uw toepassingscode kwetsbaar is voor SQL-injectieaanvallen. U wordt aanbevolen om een [ingesloten databasegebruiker](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) te maken, zodat uw app zich rechtstreeks bij de database kan verifiëren. 
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>Autorisatie
 
 Autorisatie verwijst naar wat een gebruiker kan doen binnen een Azure SQL Database. Dit wordt bepaald door de [rollidmaatschappen](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) en [objectmachtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) voor de database van uw gebruikersaccount. Het wordt aanbevolen om gebruikers de minimaal benodigde bevoegdheden te verlenen. Het serverbeheerdersaccount waarmee u verbinding maakt is lid van db_owner, die geautoriseerd is om alle bewerkingen binnen de database uit te voeren. Gebruik dit account voor het implementeren van schema-updates en andere beheerbewerkingen. Gebruik het 'ApplicationUser'-account met beperktere machtigingen om vanuit van uw toepassing verbinding te maken met de database met de minste bevoegdheden die nodig zijn voor uw toepassing. Zie [Aanmeldingen beheren](sql-database-manage-logins.md) voor meer informatie.
 

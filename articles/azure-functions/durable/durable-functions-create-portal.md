@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: b765e7a03f84211d4a86c4242e9484b3517c95f9
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 238969b320608c08491c3d3e85870d57f41c1589
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933567"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614966"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions maken met behulp van de Azure Portal
 
@@ -36,7 +36,7 @@ De functie-app die is gemaakt, maakt standaard gebruik van versie 2. x van de Az
 
 ## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Het NPM-pakket met duurzame functies installeren (alleen Java script)
 
-Als u Java script-Durable functions maakt, moet u het [ `durable-functions` NPM-pakket](https://www.npmjs.com/package/durable-functions)installeren.
+Als u Java script-Durable Functions maakt, moet u het [`durable-functions` NPM-pakket](https://www.npmjs.com/package/durable-functions)installeren.
 
 1. Selecteer de naam van uw functie-app, gevolgd door **platform functies**, en **Geavanceerde Hulpprogram ma's (kudu)** .
 
@@ -46,19 +46,19 @@ Als u Java script-Durable functions maakt, moet u het [ `durable-functions` NPM-
 
    ![Console voor fout opsporing kudu](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-3. De structuur van de bestands directory van de functie-app moet worden weer gegeven. Navigeer naar de map `site/wwwroot`. Van daaruit kunt u een `package.json` bestand uploaden door het te slepen en neer te zetten in het venster van de bestands directory. Hieronder ziet `package.json` u een voor beeld:
+3. De structuur van de bestands directory van de functie-app moet worden weer gegeven. Navigeer naar de map `site/wwwroot`. Van daaruit kunt u een `package.json` bestand uploaden door het te slepen en neer te zetten in het venster van de bestands directory. Hieronder ziet u een voor beeld `package.json`:
 
     ```json
     {
       "dependencies": {
-        "durable-functions": "^1.1.2"
+        "durable-functions": "^1.3.1"
       }
     }
     ```
 
    ![Kudu upload package. json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-4. Nadat uw `package.json` is geüpload, voert u `npm install` de opdracht uit vanuit de kudu-console voor externe uitvoering.
+4. Nadat uw `package.json` is geüpload, voert u de `npm install` opdracht uit vanuit de kudu-console voor externe uitvoering.
 
    ![Kudu uitvoeren NPM installeren](./media/durable-functions-create-portal/kudu-npm-install.png)
 
@@ -72,17 +72,17 @@ Als u Java script-Durable functions maakt, moet u het [ `durable-functions` NPM-
 
     ![De Quick Start-pagina 'Meer sjablonen kiezen' van Functions](./media/durable-functions-create-portal/add-first-function.png)
 
-1. Typ `durable` in het zoek veld en kies vervolgens de sjabloon **Durable functions http-starter** .
+1. Typ `durable` in het zoek veld en kies vervolgens de **Durable functions HTTP-starter-** sjabloon.
 
 1. Wanneer u hierom wordt gevraagd, selecteert u **installeren** om de Azure DurableTask-extensie voor alle afhankelijkheden in de functie-app te installeren. U hoeft de extensie slechts één keer te installeren voor een functie-app geven. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
 
     ![Binding-extensies installeren](./media/durable-functions-create-portal/install-durabletask-extension.png)
 
-1. Wanneer de installatie is voltooid, kunt u de nieuwe `HttpStart` functie een naam en kies **maken**. De functie die wordt gemaakt, wordt gebruikt om de indeling te starten.
+1. Nadat de installatie is voltooid, voert u de nieuwe functie `HttpStart` uit en kiest u **maken**. De functie die wordt gemaakt, wordt gebruikt om de indeling te starten.
 
-1. Maak een andere functie in de functie-app, dit keer door gebruik te maken van de **Durable functions Orchestrator** -sjabloon. Geef een naam op voor de `HelloSequence`nieuwe Orchestration-functie.
+1. Maak een andere functie in de functie-app, dit keer door gebruik te maken van de **Durable functions Orchestrator** -sjabloon. Geef uw nieuwe Orchestration-functie een naam `HelloSequence`.
 
-1. Maak een derde functie met `Hello` de naam met behulp van de sjabloon **Durable functions activiteit** .
+1. Maak een derde functie met de naam `Hello` met behulp van de sjabloon **Durable functions activiteit** .
 
 ## <a name="test-the-durable-function-orchestration"></a>De functie voor de integratie van duurzame functies testen
 
@@ -94,7 +94,7 @@ Als u Java script-Durable functions maakt, moet u het [ `durable-functions` NPM-
     curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-    In dit voor beeld `{your-function-app-name}` is het domein de naam van de functie-app. Het antwoord bericht bevat een aantal URI-eind punten die u kunt gebruiken om de uitvoering te controleren en te beheren. dit ziet er als volgt uit:
+    In dit voor beeld is `{your-function-app-name}` het domein dat de naam is van de functie-app. Het antwoord bericht bevat een aantal URI-eind punten die u kunt gebruiken om de uitvoering te controleren en te beheren. dit ziet er als volgt uit:
 
     ```json
     {  
@@ -106,7 +106,7 @@ Als u Java script-Durable functions maakt, moet u het [ `durable-functions` NPM-
     }
     ```
 
-1. Roep de `statusQueryGetUri` URI van het eind punt aan en u ziet de huidige status van de duurzame functie. deze kan er als volgt uitzien:
+1. Roep de URI van het `statusQueryGetUri`-eind punt aan en u ziet de huidige status van de duurzame functie. deze kan er als volgt uitzien:
 
     ```json
         {
@@ -118,7 +118,7 @@ Als u Java script-Durable functions maakt, moet u het [ `durable-functions` NPM-
         }
     ```
 
-1. Ga door met `statusQueryGetUri` het aanroepen van het eind punt totdat de status is gewijzigd in **voltooid**en er een antwoord wordt weer geven, zoals in het volgende voor beeld:
+1. Ga door met het aanroepen van het `statusQueryGetUri`-eind punt totdat de status is gewijzigd in **voltooid**en er een antwoord wordt weer geven zoals in het volgende voor beeld:
 
     ```json
     {

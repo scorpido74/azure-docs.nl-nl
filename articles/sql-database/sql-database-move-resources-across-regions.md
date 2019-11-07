@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database resources naar een andere regio verplaatsen | Microsoft Docs
+title: Azure SQL Database resources verplaatsen naar een andere regio
 description: Meer informatie over het verplaatsen van uw Azure SQL Database, een elastische Azure SQL-groep of een Azure SQL Managed instance naar een andere regio.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 2158d4120445de4c62461fb89555a1b73bc1e2b4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9e7cd6cb338de1d029d38ef08693a7b52f7cf15c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567157"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687773"
 ---
 # <a name="how-to-move-azure-sql-resources-to-another-region"></a>Azure SQL-resources verplaatsen naar een andere regio
 
@@ -69,17 +69,17 @@ Dit artikel bevat een algemene werk stroom voor het verplaatsen van resources na
 
 U kunt periodiek [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) aanroepen om de replicatie van uw data bases van de bron naar het doel te bewaken. Het uitvoer object van `Get-AzSqlDatabaseFailoverGroup` bevat een eigenschap voor de **Replication State**: 
    - **Replication State = 2** (CATCH_UP) geeft aan dat de data base is gesynchroniseerd en veilig kan worden uitgevoerd. 
-   - **Replication State = 0** (SEEDing) geeft aan dat de data base nog niet is geseedd en een poging tot failover mislukt. 
+   - **Replication State = 0** (seeding) geeft aan dat de data base nog niet is geseedd en een poging tot failover mislukt. 
 
 ### <a name="test-synchronization"></a>Synchronisatie testen
 
-Zodra **Replication State** is `2`, maakt u verbinding met elke Data Base of subset van data bases `<fog-name>.secondary.database.windows.net` met behulp van het secundaire eind punt en voert u een query uit op de data bases om te zorgen voor connectiviteit, juiste beveiligings configuratie en gegevens replicat. 
+Zodra **Replication State** is `2`, maakt u verbinding met elke Data Base of subset van data bases met behulp van het secundaire eind punt `<fog-name>.secondary.database.windows.net` en voert u een query uit op de data bases om de connectiviteit, de juiste beveiligings configuratie en gegevens replicatie te garanderen. 
 
 ### <a name="initiate-the-move"></a>De verplaatsing initiëren
 
-1. Maak verbinding met de doel server met behulp `<fog-name>.secondary.database.windows.net`van het secundaire eind punt.
+1. Maak verbinding met de doel server met behulp van het secundaire eind punt `<fog-name>.secondary.database.windows.net`.
 1. Gebruik [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) om te scha kelen naar het secundaire beheerde exemplaar als primair met volledige synchronisatie. Deze bewerking kan slagen of worden teruggezet. 
-1. Controleer of de opdracht is voltooid door te gebruiken `nslook up <fog-name>.secondary.database.windows.net` om te controleren of de DNS CNAME-vermelding verwijst naar het IP-adres van de doel regio. Als de switch-opdracht mislukt, wordt de CNAME niet bijgewerkt. 
+1. Controleer of de opdracht is voltooid met behulp van `nslook up <fog-name>.secondary.database.windows.net` om te controleren of de DNS CNAME-vermelding verwijst naar het IP-adres van de doel regio. Als de switch-opdracht mislukt, wordt de CNAME niet bijgewerkt. 
 
 ### <a name="remove-the-source-databases"></a>De bron databases verwijderen
 
@@ -121,17 +121,17 @@ Zodra de verplaatsing is voltooid, verwijdert u de resources in de bron regio om
 
 U kunt periodiek [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) aanroepen om de replicatie van uw data bases van de bron naar het doel te bewaken. Het uitvoer object van `Get-AzSqlDatabaseFailoverGroup` bevat een eigenschap voor de **Replication State**: 
    - **Replication State = 2** (CATCH_UP) geeft aan dat de data base is gesynchroniseerd en veilig kan worden uitgevoerd. 
-   - **Replication State = 0** (SEEDing) geeft aan dat de data base nog niet is geseedd en een poging tot failover mislukt. 
+   - **Replication State = 0** (seeding) geeft aan dat de data base nog niet is geseedd en een poging tot failover mislukt. 
 
 ### <a name="test-synchronization"></a>Synchronisatie testen
  
-Zodra **Replication State** is `2`, maakt u verbinding met elke Data Base of subset van data bases `<fog-name>.secondary.database.windows.net` met behulp van het secundaire eind punt en voert u een query uit op de data bases om te zorgen voor connectiviteit, juiste beveiligings configuratie en gegevens replicat. 
+Zodra **Replication State** is `2`, maakt u verbinding met elke Data Base of subset van data bases met behulp van het secundaire eind punt `<fog-name>.secondary.database.windows.net` en voert u een query uit op de data bases om de connectiviteit, de juiste beveiligings configuratie en gegevens replicatie te garanderen. 
 
 ### <a name="initiate-the-move"></a>De verplaatsing initiëren
  
-1. Maak verbinding met de doel server met behulp `<fog-name>.secondary.database.windows.net`van het secundaire eind punt.
+1. Maak verbinding met de doel server met behulp van het secundaire eind punt `<fog-name>.secondary.database.windows.net`.
 1. Gebruik [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) om te scha kelen naar het secundaire beheerde exemplaar als primair met volledige synchronisatie. Deze bewerking kan slagen of worden teruggezet. 
-1. Controleer of de opdracht is voltooid door te gebruiken `nslook up <fog-name>.secondary.database.windows.net` om te controleren of de DNS CNAME-vermelding verwijst naar het IP-adres van de doel regio. Als de switch-opdracht mislukt, wordt de CNAME niet bijgewerkt. 
+1. Controleer of de opdracht is voltooid met behulp van `nslook up <fog-name>.secondary.database.windows.net` om te controleren of de DNS CNAME-vermelding verwijst naar het IP-adres van de doel regio. Als de switch-opdracht mislukt, wordt de CNAME niet bijgewerkt. 
 
 ### <a name="remove-the-source-elastic-pools"></a>De elastische bron Pools verwijderen
  
@@ -168,17 +168,17 @@ Maak een failovergroep tussen elk bron exemplaar en het bijbehorende doel exempl
 
 U kunt periodiek [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) aanroepen om de replicatie van uw data bases van de bron naar het doel te bewaken. Het uitvoer object van `Get-AzSqlDatabaseFailoverGroup` bevat een eigenschap voor de **Replication State**: 
    - **Replication State = 2** (CATCH_UP) geeft aan dat de data base is gesynchroniseerd en veilig kan worden uitgevoerd. 
-   - **Replication State = 0** (SEEDing) geeft aan dat de data base nog niet is geseedd en een poging tot failover mislukt. 
+   - **Replication State = 0** (seeding) geeft aan dat de data base nog niet is geseedd en een poging tot failover mislukt. 
 
 ### <a name="test-synchronization"></a>Synchronisatie testen
 
-Zodra **Replication State** is `2`, maakt u verbinding met elke Data Base of subset van data bases `<fog-name>.secondary.database.windows.net` met behulp van het secundaire eind punt en voert u een query uit op de data bases om te zorgen voor connectiviteit, juiste beveiligings configuratie en gegevens replicat. 
+Zodra **Replication State** is `2`, maakt u verbinding met elke Data Base of subset van data bases met behulp van het secundaire eind punt `<fog-name>.secondary.database.windows.net` en voert u een query uit op de data bases om de connectiviteit, de juiste beveiligings configuratie en gegevens replicatie te garanderen. 
 
 ### <a name="initiate-the-move"></a>De verplaatsing initiëren 
 
-1. Maak verbinding met de doel server met behulp `<fog-name>.secondary.database.windows.net`van het secundaire eind punt.
+1. Maak verbinding met de doel server met behulp van het secundaire eind punt `<fog-name>.secondary.database.windows.net`.
 1. Gebruik [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) om te scha kelen naar het secundaire beheerde exemplaar als primair met volledige synchronisatie. Deze bewerking kan slagen of worden teruggezet. 
-1. Controleer of de opdracht is voltooid door te gebruiken `nslook up <fog-name>.secondary.database.windows.net` om te controleren of de DNS CNAME-vermelding verwijst naar het IP-adres van de doel regio. Als de switch-opdracht mislukt, wordt de CNAME niet bijgewerkt. 
+1. Controleer of de opdracht is voltooid met behulp van `nslook up <fog-name>.secondary.database.windows.net` om te controleren of de DNS CNAME-vermelding verwijst naar het IP-adres van de doel regio. Als de switch-opdracht mislukt, wordt de CNAME niet bijgewerkt. 
 
 ### <a name="remove-the-source-managed-instances"></a>De door de bron beheerde instanties verwijderen
 Zodra de verplaatsing is voltooid, verwijdert u de resources in de bron regio om onnodige kosten te voor komen. 

@@ -9,23 +9,23 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 8707aa55c1126af6a7fb2812d4c7314f031209d0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0436a0898f27d3059069ce2df1fdfb143a98f325
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597481"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601805"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Veelgestelde vragen over Azure Databricks
 
 In dit artikel vindt u een overzicht van de belangrijkste vragen die u mogelijk hebt gerelateerd aan Azure Databricks. Ook vindt u hier enkele veelvoorkomende problemen die u mogelijk hebt tijdens het gebruik van Databricks. Zie [Wat is Azure Databricks](what-is-azure-databricks.md)voor meer informatie. 
 
 ## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>Kan ik Azure Key Vault gebruiken om sleutels/geheimen op te slaan die moeten worden gebruikt in Azure Databricks?
-Ja. U kunt Azure Key Vault gebruiken om sleutels/geheimen op te slaan voor gebruik met Azure Databricks. Zie [Azure Key Vault-ondersteunde bereiken](https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html#akv-ss)voor meer informatie.
+Ja. U kunt Azure Key Vault gebruiken om sleutels/geheimen op te slaan voor gebruik met Azure Databricks. Zie [Azure Key Vault-ondersteunde bereiken](/azure/databricks/security/secrets/secret-scopes)voor meer informatie.
 
 
 ## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Kan ik virtuele netwerken van Azure gebruiken met Databricks?
-Ja. U kunt een Azure Virtual Network (VNET) gebruiken met Azure Databricks. Zie [deploying Azure Databricks in uw Azure Virtual Network](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html)voor meer informatie.
+Ja. U kunt een Azure Virtual Network (VNET) gebruiken met Azure Databricks. Zie [deploying Azure Databricks in uw Azure Virtual Network](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)voor meer informatie.
 
 ## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>Hoe kan ik toegang tot Azure Data Lake Storage vanuit een notebook? 
 
@@ -34,7 +34,7 @@ Volg deze stappen:
 1. Wijs de benodigde machtigingen toe aan de Service-Principal in Data Lake Storage.
 1. Gebruik de referenties van de Service-Principal in het notitie blok om toegang te krijgen tot een bestand in Data Lake Storage.
 
-Zie [Azure data Lake Storage gebruiken met Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html)voor meer informatie.
+Zie [Azure data Lake Storage gebruiken met Azure Databricks](/azure/databricks/data/data-sources/azure/azure-datalake.html)voor meer informatie.
 
 ## <a name="fix-common-problems"></a>Veelvoorkomende problemen oplossen
 
@@ -67,7 +67,7 @@ Hier volgen enkele oplossingen voor dit probleem:
 
 * Deze fout kan ook optreden als de naam van uw e-mail domein is toegewezen aan meerdere directory's in azure AD. U kunt dit probleem omzeilen door een nieuwe gebruiker te maken in de map met het abonnement met uw Databricks-werk ruimte.
 
-    a. Ga in de Azure Portal naar Azure AD. Selecteer **gebruikers en groepen**  > **een gebruiker toe te voegen**.
+    a. Ga in de Azure Portal naar Azure AD. Selecteer **gebruikers en groepen** > **een gebruiker toe te voegen**.
 
     b. Voeg een gebruiker toe met een `@<tenant_name>.onmicrosoft.com`-e-mail in plaats van `@<your_domain>` e-mail adres. U kunt deze optie vinden in **aangepaste domeinen**onder Azure AD in de Azure Portal.
     
@@ -82,7 +82,7 @@ Hier volgen enkele oplossingen voor dit probleem:
 
 #### <a name="solution"></a>Oplossing
 
-Als u de werk ruimte niet hebt gemaakt en u als gebruiker bent toegevoegd, neemt u contact op met de persoon die de werk ruimte heeft gemaakt. Deze persoon kunt u toevoegen met behulp van de Azure Databricks-beheer console. Zie voor instructies [gebruikers toevoegen en beheren](https://docs.azuredatabricks.net/administration-guide/admin-settings/users.html). Als u de werk ruimte hebt gemaakt en deze fout blijft staan, kunt u proberen om de **werk ruimte initialiseren** opnieuw te selecteren in de Azure Portal.
+Als u de werk ruimte niet hebt gemaakt en u als gebruiker bent toegevoegd, neemt u contact op met de persoon die de werk ruimte heeft gemaakt. Deze persoon kunt u toevoegen met behulp van de Azure Databricks-beheer console. Zie voor instructies [gebruikers toevoegen en beheren](/azure/databricks/administration-guide/users-groups/users). Als u de werk ruimte hebt gemaakt en deze fout blijft staan, kunt u proberen om de **werk ruimte initialiseren** opnieuw te selecteren in de Azure Portal.
 
 ### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Probleem: het starten van de Cloud provider bij het instellen van het cluster (PublicIPCountLimitReached)
 

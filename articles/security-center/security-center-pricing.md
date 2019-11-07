@@ -1,5 +1,5 @@
 ---
-title: Voer een upgrade uit naar de Standard-laag van Security Center voor verbeterde beveiliging | Microsoft Docs
+title: Prijzen van Azure Security Center lagen
 description: In dit artikel vindt u informatie over de prijzen voor Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 43ae34b946fada4d27c6843dbb8c3f9511aefd81
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 0c3fdc48d9b3bc77b629d4d6f1da081d70658c88
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520786"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664248"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Voer een upgrade uit naar de Standard-laag van Security Center voor verbeterde beveiliging
 Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor werkbelastingen die worden uitgevoerd in Azure, on-premises en in andere clouds. Het biedt zicht baarheid en controle over hybride Cloud werkbelastingen, actieve beveiligingen die uw bloot stelling aan bedreigingen verminderen en intelligente detectie om u te helpen bij het snel zich ontwikkelen van Cyber aanvallen.
@@ -54,7 +54,7 @@ De laag standaard ophalen:
 Security Center biedt verbeterde beveiliging en bedreigings beveiliging voor uw hybride Cloud werkbelastingen, waaronder:
 
 - **Hybride beveiliging** : krijg een uniforme weer gave van beveiliging in al uw on-premises en Cloud werkbelastingen. Pas het beveiligings beleid toe en evalueer voortdurend de beveiliging van uw hybride Cloud werkbelastingen om te zorgen voor naleving van de beveiligings standaarden. Verzamel, zoek en analyseer beveiligings gegevens van meerdere bronnen, inclusief firewalls en andere partner oplossingen.
-- **Geavanceerde detectie van bedreigingen** : Gebruik geavanceerde analyses en de Microsoft intelligent Security Graph om een rand te krijgen over het ontwikkelen van Cyber aanvallen.  Maak gebruik van de ingebouwde gedragsanalyses en machine learning om aanvallen en zero-day exploits te identificeren. Controleer netwerken, computers en cloudservices op inkomende aanvallen en activiteiten na het schenden van de beveiliging. Stroomlijn het onderzoek met interactieve hulpprogramma's en contextuele bedreigingsinformatie.
+- **Geavanceerde detectie van bedreigingen** : Gebruik geavanceerde analyses en de Microsoft intelligent Security Graph om een rand te krijgen over het ontwikkelen van Cyber aanvallen. Maak gebruik van de ingebouwde gedragsanalyses en machine learning om aanvallen en zero-day exploits te identificeren. Controleer netwerken, computers en cloudservices op inkomende aanvallen en activiteiten na het schenden van de beveiliging. Stroomlijn het onderzoek met interactieve hulpprogramma's en contextuele bedreigingsinformatie.
 - **Toegangs-en toepassings besturings elementen** : blok keer malware en andere ongewenste toepassingen door machine learning aanbevolen white list-aanbevelingen toe te passen die zijn afgestemd op uw specifieke workloads. Verminder de kwets baarheid van het netwerk met Just-in-time, gecontroleerde toegang tot beheer poorten op Azure-Vm's. Dit vermindert de bloot stelling aan brute kracht en andere netwerk aanvallen aanzienlijk.
 - **Beveiligings functies voor containers** : Profiteer van beveiligings beheer en real-time detectie van bedreigingen in uw container omgevingen. Wanneer u de bron van de container registers inschakelt, kan het tot 12hrs duren totdat alle functies zijn ingeschakeld.
 

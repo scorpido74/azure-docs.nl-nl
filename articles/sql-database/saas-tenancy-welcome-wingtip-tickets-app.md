@@ -1,5 +1,5 @@
 ---
-title: Welkom bij Wingtips app-Azure SQL Database | Microsoft Docs
+title: 'Welkom bij Wingtips app-Azure SQL Database '
 description: Meer informatie over data base-pacht modellen en over de voor beeld-Wingtips SaaS-toepassing voor Azure SQL Database in de cloud omgeving.
 keywords: zelfstudie sql-database
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: ca534d3ffcfd1d4caeb9cf755934a846fafae26e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6b8cb9bed2f5fdd0b246e73c84731081d0f2e41e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570101"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691822"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>De SaaS-toepassing Wingtip tickets
 

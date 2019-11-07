@@ -1,5 +1,5 @@
 ---
-title: Poorten van meer dan 1433 voor SQL Database | Microsoft Docs
+title: Poorten boven 1433 voor SQL Database
 description: Client verbindingen van ADO.NET naar Azure SQL Database kunnen de proxy overs Laan en rechtstreeks communiceren met de data base via andere poorten dan 1433.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 04/03/2019
-ms.openlocfilehash: a39cfd1981041c807a91a08c198378d238f0846e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 38ab3b6b0c64ad17311d15fd12e7625e8aa728ce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568908"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690684"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Poorten boven 1433 voor ADO.NET 4,5
 
@@ -30,11 +30,11 @@ In dit onderwerp wordt het Azure SQL Database verbindings gedrag voor clients be
 
 Voor verbindingen met Azure SQL Database moet u eerst vragen of uw client programma *buiten* of *binnen* de Azure-Cloud grens wordt uitgevoerd. In de subsecties worden twee veelvoorkomende scenario's besproken.
 
-### <a name="outside-client-runs-on-your-desktop-computer"></a>*Deel* Client wordt uitgevoerd op uw desktop computer
+### <a name="outside-client-runs-on-your-desktop-computer"></a>*Buiten:* Client wordt uitgevoerd op uw desktop computer
 
 Poort 1433 is de enige poort die moet worden geopend op de desktop computer die als host fungeert voor uw SQL Database-client toepassing.
 
-### <a name="inside-client-runs-on-azure"></a>*Inside* Client wordt uitgevoerd op Azure
+### <a name="inside-client-runs-on-azure"></a>*Binnen:* Client wordt uitgevoerd op Azure
 
 Wanneer de-client wordt uitgevoerd binnen de grens van de Azure-Cloud, wordt gebruikgemaakt van wat we een *directe route* kunnen aanroepen om te communiceren met de SQL database-server. Nadat een verbinding tot stand is gebracht, omvatten verdere interacties tussen de client en data base geen Azure SQL Database gateway.
 
@@ -83,6 +83,6 @@ Deze sectie verduidelijkt de monikers die verwijzen naar de product versies. Er 
 * [Lijst met TDS-protocol versies](https://www.freetds.org/userguide/tdshistory.htm)
 * [Overzicht van SQL Database ontwikkeling](sql-database-develop-overview.md)
 * [Azure SQL Database firewall](sql-database-firewall-configure.md)
-* [Procedure: Firewallinstellingen voor SQL Database configureren](sql-database-configure-firewall-settings.md)
+* [Procedure: Firewall-instellingen configureren op SQL Database](sql-database-configure-firewall-settings.md)
 
 

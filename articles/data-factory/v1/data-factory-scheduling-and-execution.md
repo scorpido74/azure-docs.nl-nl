@@ -1,5 +1,5 @@
 ---
-title: Plannen en uitvoeren met Data Factory | Microsoft Docs
+title: Plannen en uitvoeren met Data Factory
 description: Meer informatie over plannings-en uitvoerings aspecten van Azure Data Factory toepassings model.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6ea8a03f45a3655c5761e0011876c6232b5bf36b
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 15a2d6ae5d8b80468ffcdd00d60b1f36843ed677
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135291"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666134"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Planning en uitvoering Data Factory
 > [!NOTE]
@@ -41,7 +41,7 @@ Zie het artikel [pipelines maken](data-factory-create-pipelines.md) voor meer in
 
 
 ## <a name="specify-schedule-for-an-activity"></a>Schema voor een activiteit opgeven
-Het is niet de pijp lijn die wordt uitgevoerd. Het zijn de activiteiten in de pijp lijn die worden uitgevoerd in de algehele context van de pijp lijn. U kunt een terugkerend schema voor een activiteit opgeven met behulp van de scheduler-sectie van de JSON van de activiteit. U kunt bijvoorbeeld een activiteit zodanig plannen dat elk uur als volgt wordt uitgevoerd:  
+Het is niet de pijp lijn die wordt uitgevoerd. Het zijn de activiteiten in de pijp lijn die worden uitgevoerd in de algehele context van de pijp lijn. U kunt een terugkerend schema voor een activiteit opgeven met behulp van de **scheduler** -sectie van de JSON van de activiteit. U kunt bijvoorbeeld een activiteit zodanig plannen dat elk uur als volgt wordt uitgevoerd:  
 
 ```json
 "scheduler": {
@@ -59,7 +59,7 @@ De **scheduler** -eigenschap voor een activiteit is optioneel. Als u deze eigens
 ## <a name="specify-schedule-for-a-dataset"></a>Schema voor een gegevensset opgeven
 Een activiteit in een Data Factory pijp lijn kan nul of meer invoer **gegevens sets** hebben en een of meer uitvoer gegevens sets produceren. Voor een activiteit kunt u de uitgebracht opgeven waarop de invoer gegevens beschikbaar zijn of de uitvoer gegevens worden geproduceerd met behulp van de sectie **Beschik baarheid** in de definitie van de gegevensset. 
 
-De **frequentie** in het gedeelte **Beschik baarheid** specificeert de tijds eenheid. De toegestane waarden voor de frequentie zijn: Minuut, uur, dag, week en maand. De eigenschap **interval** in het gedeelte Beschik baarheid geeft een vermenigvuldigings factor voor frequentie op. Bijvoorbeeld: als de frequentie is ingesteld op dag en interval is ingesteld op 1 voor een uitvoer gegevensset, worden de uitvoer gegevens dagelijks geproduceerd. Als u de frequentie opgeeft als minuut, raden we u aan het interval in te stellen op ten minste 15. 
+De **frequentie** in het gedeelte **Beschik baarheid** specificeert de tijds eenheid. De toegestane waarden voor de frequentie zijn: minuut, uur, dag, week en maand. De eigenschap **interval** in het gedeelte Beschik baarheid geeft een vermenigvuldigings factor voor frequentie op. Bijvoorbeeld: als de frequentie is ingesteld op dag en interval is ingesteld op 1 voor een uitvoer gegevensset, worden de uitvoer gegevens dagelijks geproduceerd. Als u de frequentie opgeeft als minuut, raden we u aan het interval in te stellen op ten minste 15. 
 
 In het volgende voor beeld zijn de invoer gegevens elk uur beschikbaar en worden de uitvoer gegevens elk uur geproduceerd (`"frequency": "Hour", "interval": 1`). 
 
@@ -115,7 +115,7 @@ In het volgende voor beeld zijn de invoer gegevens elk uur beschikbaar en worden
 }
 ```
 
-Op dit moment wordt **het schema door de uitvoer gegevensset**gestuurd. Met andere woorden, het schema dat is opgegeven voor de uitvoer gegevensset wordt gebruikt voor het uitvoeren van een activiteit tijdens runtime. Daarom moet u een uitvoer gegevensset maken, zelfs als de activiteit geen uitvoer produceert. Als er voor de activiteit geen invoer nodig is, kunt u het maken van de invoergegevensset overslaan. 
+Op dit moment wordt **het schema door de uitvoer gegevensset gestuurd**. Met andere woorden, het schema dat is opgegeven voor de uitvoer gegevensset wordt gebruikt voor het uitvoeren van een activiteit tijdens runtime. Daarom moet u een uitvoer gegevensset maken, zelfs als de activiteit geen uitvoer produceert. Als er voor de activiteit geen invoer nodig is, kunt u het maken van de invoergegevensset overslaan. 
 
 In de volgende pijplijn definitie wordt de **scheduler** -eigenschap gebruikt om schema op te geven voor de activiteit. Deze eigenschap is optioneel. Op dit moment moet het schema voor de activiteit overeenkomen met het schema dat is opgegeven voor de uitvoer gegevensset.
  
@@ -170,9 +170,9 @@ Elke gegevens eenheid die wordt verbruikt of geproduceerd door een uitvoering va
 
 Het diagram toont de gegevens segmenten per uur voor de gegevensset invoer en uitvoer. Het diagram toont drie invoer segmenten die gereed zijn om te worden verwerkt. De 10-11 uur-activiteit wordt uitgevoerd en produceert het 10-11 AM-uitvoer segment. 
 
-U hebt toegang tot het tijds interval dat is gekoppeld aan het huidige segment in de JSON van de gegevensset met behulp van variabelen: [Slice start](data-factory-functions-variables.md#data-factory-system-variables) en [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables). Op dezelfde manier kunt u toegang krijgen tot het tijds interval dat is gekoppeld aan een activiteiten venster met behulp van de WindowStart en WindowEnd. Het schema van een activiteit moet overeenkomen met het schema van de uitvoer gegevensset voor de activiteit. Daarom zijn de waarden slice start en SliceEnd gelijk aan respectievelijk WindowStart-en WindowEnd-waarden. Zie [Data Factory functies en systeem variabelen](data-factory-functions-variables.md#data-factory-system-variables) artikelen voor meer informatie over deze variabelen.  
+U kunt toegang krijgen tot het tijds interval dat is gekoppeld aan het huidige segment in de JSON van de gegevensset met behulp van variabelen: [slice start](data-factory-functions-variables.md#data-factory-system-variables) en [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables). Op dezelfde manier kunt u toegang krijgen tot het tijds interval dat is gekoppeld aan een activiteiten venster met behulp van de WindowStart en WindowEnd. Het schema van een activiteit moet overeenkomen met het schema van de uitvoer gegevensset voor de activiteit. Daarom zijn de waarden slice start en SliceEnd gelijk aan respectievelijk WindowStart-en WindowEnd-waarden. Zie [Data Factory functies en systeem variabelen](data-factory-functions-variables.md#data-factory-system-variables) artikelen voor meer informatie over deze variabelen.  
 
-U kunt deze variabelen gebruiken voor verschillende doel einden in de JSON van de activiteit. U kunt ze bijvoorbeeld gebruiken om gegevens te selecteren uit de invoer-en uitvoer gegevens sets die de tijdreeks gegevens weer geven (bijvoorbeeld: 8 tot 9 uur). In dit voor beeld wordt ook **WindowStart** en **WindowEnd** gebruikt om relevante gegevens voor een uitvoering van een activiteit te selecteren en deze te kopiëren naar een blob met de juiste **FolderPath**. De **FolderPath** is para meters voor een afzonderlijke map voor elk uur.  
+U kunt deze variabelen gebruiken voor verschillende doel einden in de JSON van de activiteit. U kunt ze bijvoorbeeld gebruiken om gegevens te selecteren uit invoer-en uitvoer gegevens sets die de tijdreeks gegevens weer geven (bijvoorbeeld: 8 AM tot 9 uur). In dit voor beeld wordt ook **WindowStart** en **WindowEnd** gebruikt om relevante gegevens voor een uitvoering van een activiteit te selecteren en deze te kopiëren naar een blob met de juiste **FolderPath**. De **FolderPath** is para meters voor een afzonderlijke map voor elk uur.  
 
 In het vorige voor beeld is het schema dat is opgegeven voor de invoer-en uitvoer gegevens sets hetzelfde (elk uur). Als de invoer gegevensset voor de activiteit beschikbaar is op een andere frequentie, zegt u elke 15 minuten. de activiteit die deze uitvoer gegevensset produceert, wordt slechts één keer per uur uitgevoerd als de uitvoer gegevensset die het activiteiten schema aanstuurt. Zie [model gegevens sets met verschillende frequenties](#model-datasets-with-different-frequencies)voor meer informatie.
 
@@ -182,16 +182,16 @@ U hebt het gebruik van frequentie-en interval eigenschappen gezien in het gedeel
 ### <a name="dataset-availability"></a>Beschik baarheid van gegevensset 
 In de volgende tabel worden de eigenschappen beschreven die u kunt gebruiken in het gedeelte **Beschik baarheid** :
 
-| Eigenschap | Description | Vereist | Standaard |
+| Eigenschap | Beschrijving | Vereist | Standaard |
 | --- | --- | --- | --- |
-| frequency |Hiermee geeft u de tijds eenheid voor de segment productie van gegevensset op.<br/><br/><b>Ondersteunde frequentie</b>: Minuut, uur, dag, week, maand |Ja |N.v.t. |
-| interval |Hiermee geeft u een vermenigvuldigings factor voor frequentie<br/><br/>"Frequentie x-interval" bepaalt hoe vaak het segment wordt geproduceerd.<br/><br/>Als u wilt dat de gegevensset op elk uur wordt gesegmenteerd, stelt u de <b>frequentie</b> in op <b>uur</b>en het <b>interval</b> in op <b>1</b>.<br/><br/><b>Opmerking</b>: Als u frequentie opgeeft als minuut, raden we u aan het interval in te stellen op een waarde van niet minder dan 15 |Ja |N.v.t. |
-| style |Hiermee geeft u op of het segment moet worden geproduceerd aan het begin/einde van het interval.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Als de frequentie is ingesteld op month en style is ingesteld op EndOfInterval, wordt het segment gemaakt op de laatste dag van de maand. Als de stijl is ingesteld op StartOfInterval, wordt het segment gegenereerd op de eerste dag van de maand.<br/><br/>Als de frequentie is ingesteld op dag en stijl is ingesteld op EndOfInterval, wordt het segment gemaakt in het afgelopen uur van de dag.<br/><br/>Als de frequentie is ingesteld op uur en de stijl is ingesteld op EndOfInterval, wordt het segment aan het einde van het uur geproduceerd. Bijvoorbeeld, voor een segment voor 1 uur – 2 uur, het segment wordt geproduceerd op 2 uur. |Nee |EndOfInterval |
-| anchorDateTime |Definieert de absolute positie in de tijd die door scheduler wordt gebruikt om segment grenzen van het gegevensset te berekenen. <br/><br/><b>Opmerking</b>: Als de AnchorDateTime datum delen heeft die nauw keuriger zijn dan de frequentie, worden de gedetailleerde onderdelen genegeerd. <br/><br/>Als het <b>interval</b> bijvoorbeeld <b>elk uur</b> is (frequentie: uur en interval: 1) en de <b>AnchorDateTime</b> bevatten <b>minuten en seconden</b>, worden de <b>minuten en seconden</b> delen van de AnchorDateTime genegeerd. |Nee |01/01/0001 |
-| offset |Tijds duur waarmee het begin en einde van alle segmenten van de gegevensset worden verschoven. <br/><br/><b>Opmerking</b>: Als zowel anchorDateTime als offset zijn opgegeven, is het resultaat de gecombineerde werk tijd. |Nee |N.v.t. |
+| frequency |Hiermee geeft u de tijds eenheid voor de segment productie van gegevensset op.<br/><br/><b>Ondersteunde frequentie</b>: minuut, uur, dag, week, maand |Ja |N.v.t. |
+| interval |Hiermee geeft u een vermenigvuldigings factor voor frequentie<br/><br/>"Frequentie x-interval" bepaalt hoe vaak het segment wordt geproduceerd.<br/><br/>Als u wilt dat de gegevensset op elk uur wordt gesegmenteerd, stelt u de <b>frequentie</b> in op <b>uur</b>en het <b>interval</b> in op <b>1</b>.<br/><br/><b>Opmerking</b>: als u een frequentie opgeeft als minuut, raden we u aan het interval in te stellen op niet minder dan 15 |Ja |N.v.t. |
+| stijlen |Hiermee geeft u op of het segment moet worden geproduceerd aan het begin/einde van het interval.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Als de frequentie is ingesteld op month en style is ingesteld op EndOfInterval, wordt het segment gemaakt op de laatste dag van de maand. Als de stijl is ingesteld op StartOfInterval, wordt het segment gegenereerd op de eerste dag van de maand.<br/><br/>Als de frequentie is ingesteld op dag en stijl is ingesteld op EndOfInterval, wordt het segment gemaakt in het afgelopen uur van de dag.<br/><br/>Als de frequentie is ingesteld op uur en de stijl is ingesteld op EndOfInterval, wordt het segment aan het einde van het uur geproduceerd. Bijvoorbeeld, voor een segment voor 1 uur – 2 uur, het segment wordt geproduceerd op 2 uur. |Nee |EndOfInterval |
+| anchorDateTime |Definieert de absolute positie in de tijd die door scheduler wordt gebruikt om segment grenzen van het gegevensset te berekenen. <br/><br/><b>Opmerking</b>: als de AnchorDateTime datum delen heeft die nauw keuriger zijn dan de frequentie, worden de gedetailleerde onderdelen genegeerd. <br/><br/>Als het <b>interval</b> bijvoorbeeld <b>elk uur</b> is (frequentie: uur en interval: 1) en de <b>AnchorDateTime</b> <b>minuten en seconden</b>bevat, worden de <b>minuten en seconden</b> delen van de AnchorDateTime genegeerd. |Nee |01/01/0001 |
+| offset |Tijds duur waarmee het begin en einde van alle segmenten van de gegevensset worden verschoven. <br/><br/><b>Opmerking</b>: als zowel anchorDateTime als offset zijn opgegeven, is het resultaat de gecombineerde werk tijd. |Nee |N.v.t. |
 
 ### <a name="offset-example"></a>offset-voor beeld
-Standaard worden op basis van`"frequency": "Day", "interval": 1`12 uur UTC-tijd (middernacht) dagelijks () segmenten gestart. Als u wilt dat de begin tijd 6 uur UTC-tijd in plaats daarvan instelt, stelt u de verschuiving in zoals weer gegeven in het volgende code fragment: 
+Standaard beginnen segmenten van de dag (`"frequency": "Day", "interval": 1`) om 12 uur UTC-tijd (middernacht). Als u wilt dat de begin tijd 6 uur UTC-tijd in plaats daarvan instelt, stelt u de verschuiving in zoals weer gegeven in het volgende code fragment: 
 
 ```json
 "availability":
@@ -202,7 +202,7 @@ Standaard worden op basis van`"frequency": "Day", "interval": 1`12 uur UTC-tijd 
 }
 ```
 ### <a name="anchordatetime-example"></a>anchorDateTime-voor beeld
-In het volgende voor beeld wordt de gegevensset elke 23 uur gemaakt. Het eerste segment begint op het tijdstip dat is opgegeven door de anchorDateTime, die is `2017-04-19T08:00:00` ingesteld op (UTC-tijd).
+In het volgende voor beeld wordt de gegevensset elke 23 uur gemaakt. Het eerste segment begint op het tijdstip dat is opgegeven door de anchorDateTime, die is ingesteld op `2017-04-19T08:00:00` (UTC-tijd).
 
 ```json
 "availability":    
@@ -226,11 +226,11 @@ De volgende gegevensset is een maandelijkse gegevensset en wordt geproduceerd op
 ```
 
 ### <a name="dataset-policy"></a>Beleid voor gegevensset
-Voor een gegevensset kan een validatie beleid worden gedefinieerd waarmee wordt aangegeven hoe de gegevens die door een segment bewerking worden gegenereerd, kunnen worden gevalideerd voordat deze gereed zijn voor gebruik. In dergelijke gevallen, nadat het segment is voltooid, wordt de status van het uitvoer segment gewijzigd in wachtend met een substatus van **validatie**. Nadat de segmenten zijn gevalideerd, wordt de segment status gewijzigd in **gereed**. Als er een gegevens segment is gemaakt maar de validatie niet heeft door lopen, worden er geen activiteit uitgevoerd voor downstream-segmenten die afhankelijk zijn van dit segment. [Pijp lijnen bewaken en beheren](data-factory-monitor-manage-pipelines.md) bedekt de verschillende statussen van gegevens segmenten in Data Factory.
+Voor een gegevensset kan een validatie beleid worden gedefinieerd waarmee wordt aangegeven hoe de gegevens die door een segment bewerking worden gegenereerd, kunnen worden gevalideerd voordat deze gereed zijn voor gebruik. In dergelijke gevallen, nadat het segment is voltooid, wordt de status van het uitvoer segment gewijzigd in **wachtend** met een substatus van **validatie**. Nadat de segmenten zijn gevalideerd, wordt de segment status gewijzigd in **gereed**. Als er een gegevens segment is gemaakt maar de validatie niet heeft door lopen, worden er geen activiteit uitgevoerd voor downstream-segmenten die afhankelijk zijn van dit segment. [Pijp lijnen bewaken en beheren](data-factory-monitor-manage-pipelines.md) bedekt de verschillende statussen van gegevens segmenten in Data Factory.
 
 De **beleids** sectie in de definitie van de gegevensset definieert de criteria of de voor waarde waaraan de segmenten van de gegevensset moeten voldoen. In de volgende tabel worden de eigenschappen beschreven die u kunt gebruiken in de sectie **beleid** :
 
-| Beleidsnaam | Description | Toegepast op | Vereist | Standaard |
+| Policy Name | Beschrijving | Toegepast op | Vereist | Standaard |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | Valideert dat de gegevens in een **Azure-Blob** voldoen aan de minimale grootte vereisten (in mega bytes). |Azure Blob |Nee |N.v.t. |
 | minimumRows | Valideert dat de gegevens in een **Azure-SQL database** of een **Azure-tabel** het minimum aantal rijen bevatten. |<ul><li>Azure SQL Database</li><li>Azure Table</li></ul> |Nee |N.v.t. |
@@ -263,18 +263,18 @@ De **beleids** sectie in de definitie van de gegevensset definieert de criteria 
 
 Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor meer informatie over deze eigenschappen en voor beelden. 
 
-## <a name="activity-policies"></a>Activiteitbeleid
+## <a name="activity-policies"></a>Activiteiten beleid
 Beleids regels zijn van invloed op het runtime gedrag van een activiteit, in het bijzonder wanneer het segment van een tabel wordt verwerkt. De volgende tabel bevat de details.
 
-| Eigenschap | Toegestane waarden | Default Value | Description |
+| Eigenschap | Toegestane waarden | Standaard waarde | Beschrijving |
 | --- | --- | --- | --- |
-| concurrency van taken |Integer <br/><br/>Maximum waarde: 10 |1 |Aantal gelijktijdige uitvoeringen van de activiteit.<br/><br/>Hiermee wordt het aantal uitvoeringen van parallelle activiteit bepaald dat op verschillende segmenten kan plaatsvinden. Als een activiteit bijvoorbeeld een grote set beschik bare gegevens moet door lopen, kan de gegevens verwerking worden versneld met een grotere gelijktijdige waarde. |
+| gelijktijdigheid |Geheel getal <br/><br/>Maximum waarde: 10 |1 |Aantal gelijktijdige uitvoeringen van de activiteit.<br/><br/>Hiermee wordt het aantal uitvoeringen van parallelle activiteit bepaald dat op verschillende segmenten kan plaatsvinden. Als een activiteit bijvoorbeeld een grote set beschik bare gegevens moet door lopen, kan de gegevens verwerking worden versneld met een grotere gelijktijdige waarde. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Bepaalt de volg orde van de gegevens segmenten die worden verwerkt.<br/><br/>Als u bijvoorbeeld 2 segmenten hebt (één op 4 p.m. en een andere op tot 17:00 uur), en beide in behandeling zijn. Als u de executionPriorityOrder instelt op NewestFirst, wordt het segment op 5 PM eerst verwerkt. Op dezelfde manier als u de executionPriorityORder instelt op OldestFIrst, wordt het segment op 4 uur verwerkt. |
-| retry |Integer<br/><br/>De maximale waarde mag 10 zijn |0 |Aantal nieuwe pogingen voordat de gegevens verwerking voor het segment als mislukt wordt gemarkeerd. Voor het uitvoeren van de activiteit voor een gegevens segment wordt opnieuw geprobeerd tot het opgegeven aantal nieuwe pogingen. De nieuwe poging wordt zo snel mogelijk na de fout uitgevoerd. |
-| timeout |TimeSpan |00:00:00 |Time-out voor de activiteit. Voorbeeld: 00:10:00 (impliceert een time-out van 10 minuten)<br/><br/>Als er geen waarde is opgegeven of 0, is de time-out oneindig.<br/><br/>Als de verwerkings tijd van de gegevens op een segment de time-outwaarde overschrijdt, wordt deze geannuleerd en probeert het systeem de verwerking opnieuw uit te voeren. Het aantal nieuwe pogingen is afhankelijk van de eigenschap retry. Als er een time-out optreedt, wordt de status ingesteld op out. |
-| delay |TimeSpan |00:00:00 |Geef de vertraging op voordat de gegevens verwerking van het segment wordt gestart.<br/><br/>De uitvoering van activiteit voor een gegevens segment wordt gestart nadat de vertraging voorbij de verwachte uitvoerings tijd ligt.<br/><br/>Voorbeeld: 00:10:00 (impliceert vertraging van 10 minuten) |
-| longRetry |Integer<br/><br/>Maximum waarde: 10 |1 |Het aantal lange nieuwe pogingen voordat de segment uitvoering is mislukt.<br/><br/>longRetry-pogingen zijn gespatieerd door longRetryInterval. Als u dus een tijd tussen nieuwe pogingen wilt opgeven, gebruikt u longRetry. Als zowel een nieuwe poging als een longRetry wordt opgegeven, bevat elke longRetry-poging nieuwe pogingen en het maximum aantal pogingen * longRetry.<br/><br/>Als we bijvoorbeeld de volgende instellingen in het activiteiten beleid hebben:<br/>Voeren 3<br/>LongRetry 2<br/>longRetryInterval: 01:00:00<br/><br/>Stel dat er slechts één segment moet worden uitgevoerd (status is in afwachting) en dat de uitvoering van de activiteit elke keer mislukt. In eerste instantie zou er drie opeenvolgende uitvoerings pogingen kunnen worden uitgevoerd. Na elke poging zou de segment status opnieuw proberen. Nadat de eerste 3 pogingen zijn voltooid, wordt de segment status LongRetry.<br/><br/>Na een uur (dat wil zeggen longRetryInteval waarde), is er een andere set van drie opeenvolgende uitvoerings pogingen. Daarna zou de status van het segment mislukken en worden er geen nieuwe pogingen gedaan. Daarom zijn er in totaal 6 pogingen gedaan.<br/><br/>Als de uitvoering is geslaagd, zou de segment status gereed zijn en worden er geen nieuwe pogingen meer geprobeerd.<br/><br/>longRetry kan worden gebruikt in situaties waar afhankelijke gegevens op niet-deterministische tijden arriveren of de algehele omgeving Flaky is waaronder gegevens verwerking plaatsvindt. In dergelijke gevallen is het mogelijk dat er een nieuwe poging wordt gedaan om het opnieuw te proberen na een tijds interval, waardoor de gewenste uitvoer wordt bereikt.<br/><br/>Woord van voorzichtig: Stel geen hoge waarden in voor longRetry of longRetryInterval. Een hogere waarde impliceert meestal andere systeem problemen. |
-| longRetryInterval |TimeSpan |00:00:00 |De vertraging tussen nieuwe pogingen |
+| retry |Geheel getal<br/><br/>De maximale waarde mag 10 zijn |0 |Aantal nieuwe pogingen voordat de gegevens verwerking voor het segment als mislukt wordt gemarkeerd. Voor het uitvoeren van de activiteit voor een gegevens segment wordt opnieuw geprobeerd tot het opgegeven aantal nieuwe pogingen. De nieuwe poging wordt zo snel mogelijk na de fout uitgevoerd. |
+| timeout |Duur |00:00:00 |Time-out voor de activiteit. Voor beeld: 00:10:00 (impliceert een time-out van 10 minuten)<br/><br/>Als er geen waarde is opgegeven of 0, is de time-out oneindig.<br/><br/>Als de verwerkings tijd van de gegevens op een segment de time-outwaarde overschrijdt, wordt deze geannuleerd en probeert het systeem de verwerking opnieuw uit te voeren. Het aantal nieuwe pogingen is afhankelijk van de eigenschap retry. Als er een time-out optreedt, wordt de status ingesteld op out. |
+| spoedig |Duur |00:00:00 |Geef de vertraging op voordat de gegevens verwerking van het segment wordt gestart.<br/><br/>De uitvoering van activiteit voor een gegevens segment wordt gestart nadat de vertraging voorbij de verwachte uitvoerings tijd ligt.<br/><br/>Voor beeld: 00:10:00 (impliceert vertraging van 10 minuten) |
+| longRetry |Geheel getal<br/><br/>Maximum waarde: 10 |1 |Het aantal lange nieuwe pogingen voordat de segment uitvoering is mislukt.<br/><br/>longRetry-pogingen zijn gespatieerd door longRetryInterval. Als u dus een tijd tussen nieuwe pogingen wilt opgeven, gebruikt u longRetry. Als zowel een nieuwe poging als een longRetry wordt opgegeven, bevat elke longRetry-poging nieuwe pogingen en het maximum aantal pogingen * longRetry.<br/><br/>Als we bijvoorbeeld de volgende instellingen in het activiteiten beleid hebben:<br/>Opnieuw proberen: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Stel dat er slechts één segment moet worden uitgevoerd (status is in afwachting) en dat de uitvoering van de activiteit elke keer mislukt. In eerste instantie zou er drie opeenvolgende uitvoerings pogingen kunnen worden uitgevoerd. Na elke poging zou de segment status opnieuw proberen. Nadat de eerste 3 pogingen zijn voltooid, wordt de segment status LongRetry.<br/><br/>Na een uur (dat wil zeggen longRetryInteval waarde), is er een andere set van drie opeenvolgende uitvoerings pogingen. Daarna zou de status van het segment mislukken en worden er geen nieuwe pogingen gedaan. Daarom zijn er in totaal 6 pogingen gedaan.<br/><br/>Als de uitvoering is geslaagd, zou de segment status gereed zijn en worden er geen nieuwe pogingen meer geprobeerd.<br/><br/>longRetry kan worden gebruikt in situaties waar afhankelijke gegevens op niet-deterministische tijden arriveren of de algehele omgeving Flaky is waaronder gegevens verwerking plaatsvindt. In dergelijke gevallen is het mogelijk dat er een nieuwe poging wordt gedaan om het opnieuw te proberen na een tijds interval, waardoor de gewenste uitvoer wordt bereikt.<br/><br/>Woord van voorzichtig: Stel geen hoge waarden in voor longRetry of longRetryInterval. Een hogere waarde impliceert meestal andere systeem problemen. |
+| longRetryInterval |Duur |00:00:00 |De vertraging tussen nieuwe pogingen |
 
 Zie het artikel [pijp lijnen](data-factory-create-pipelines.md) voor meer informatie. 
 
@@ -284,7 +284,7 @@ U kunt de begin datum voor de pijp lijn in het verleden instellen. Wanneer u dit
 U kunt back-gevulde gegevens segmenten zo configureren dat ze parallel worden verwerkt door de eigenschap **gelijktijdigheids** in het gedeelte **beleid** van de JSON van de activiteit in te stellen. Deze eigenschap bepaalt het aantal uitvoeringen van parallelle activiteit dat kan plaatsvinden op verschillende segmenten. De standaard waarde voor de gelijktijdigheids eigenschap is 1. Daarom wordt er standaard één segment verwerkt op een tijdstip. De maximum waarde is 10. Wanneer een pijp lijn een grote set beschik bare gegevens moet door lopen, kan de gegevens verwerking worden versneld met een grotere gelijktijdige waarde. 
 
 ## <a name="rerun-a-failed-data-slice"></a>Een gegevens segment met fout opnieuw uitvoeren
-Als er een fout optreedt tijdens het verwerken van een gegevens segment, kunt u nagaan waarom de verwerking van een segment is mislukt met behulp van Azure Portal-Blades of door de app te controleren en te beheren. Zie [pijp lijnen bewaken en beheren met Azure Portal Blades](data-factory-monitor-manage-pipelines.md) of de bewakings- [en beheer-app](data-factory-monitor-manage-app.md) voor meer informatie.
+Als er een fout optreedt tijdens het verwerken van een gegevens segment, kunt u nagaan waarom de verwerking van een segment is mislukt met behulp van Azure Portal-Blades of door de app te controleren en te beheren. Zie [pijp lijnen bewaken en beheren met Azure Portal Blades](data-factory-monitor-manage-pipelines.md) of de [bewakings-en beheer-app](data-factory-monitor-manage-app.md) voor meer informatie.
 
 Bekijk het volgende voor beeld, waarin twee activiteiten worden weer gegeven. Activiteit1 en activiteit 2. Activiteit1 verbruikt een segment van Dataset1 en produceert een segment van Dataset2, dat wordt gebruikt als invoer door Activiteit2 om een segment van de laatste gegevensset te produceren.
 
@@ -323,14 +323,14 @@ Zie de sectie opeenvolgend kopiëren in de bijlage voor een voor beeld.
 ## <a name="model-datasets-with-different-frequencies"></a>Model gegevens sets met verschillende frequenties
 In de voor beelden zijn de frequenties voor invoer-en uitvoer gegevens sets en het venster activiteiten schema hetzelfde. Bij sommige scenario's is het mogelijk om uitvoer te produceren met een frequentie die afwijkt van de frequentie van een of meer invoer waarden. Data Factory ondersteunt het model leren van deze scenario's.
 
-### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>Voor beeld 1: Een dagelijks uitvoer rapport maken voor invoer gegevens die elk uur beschikbaar zijn
+### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>Voor beeld 1: een dagelijks uitvoer rapport maken voor invoer gegevens die elk uur beschikbaar zijn
 Denk na over een scenario waarin u de invoer meet gegevens van Sens oren elk uur in Azure Blob-opslag hebt beschikbaar. U wilt een dagelijks geaggregeerd rapport maken met statistieken zoals het gemiddelde, het maximum en het minimum voor de dag met [Data Factory Hive-activiteit](data-factory-hive-activity.md).
 
 U kunt dit scenario als volgt model leren met Data Factory:
 
 **Invoer gegevensset**
 
-De invoer bestanden per uur worden in de map voor de opgegeven dag verwijderd. De beschik baarheid voor invoer is ingesteld op **uur** (frequentie: Uur, interval: 1).
+De invoer bestanden per uur worden in de map voor de opgegeven dag verwijderd. De beschik baarheid voor invoer is ingesteld op **uur** (frequentie: uur, interval: 1).
 
 ```json
 {
@@ -359,7 +359,7 @@ De invoer bestanden per uur worden in de map voor de opgegeven dag verwijderd. D
 ```
 **Uitvoer gegevensset**
 
-Er wordt elke dag een uitvoer bestand gemaakt in de map van de dag. De beschik baarheid van de uitvoer is ingesteld op **dag** (frequentie: Dag en interval: 1).
+Er wordt elke dag een uitvoer bestand gemaakt in de map van de dag. De beschik baarheid van de uitvoer is ingesteld op **dag** (frequentie: Day en interval: 1).
 
 ```json
 {
@@ -443,7 +443,7 @@ In het volgende diagram ziet u het scenario van een weergave punt van de gegeven
 
 Het uitvoer segment voor elke dag is afhankelijk van 24 uur segmenten van een invoer-gegevensset. Data Factory deze afhankelijkheden automatisch berekent door de invoer gegevens segmenten te bepalen die binnen dezelfde periode vallen als het uitvoer segment dat moet worden geproduceerd. Als een van de 24 invoer segmenten niet beschikbaar is, Data Factory wacht totdat het invoer segment gereed is voordat de dagelijkse activiteit wordt uitgevoerd.
 
-### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>Voor beeld 2: Afhankelijkheid opgeven met expressies en Data Factory functies
+### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>Voor beeld 2: afhankelijkheid opgeven met expressies en Data Factory functies
 Laten we eens kijken naar een ander scenario. Stel dat u een Hive-activiteit hebt waarmee twee invoer gegevens sets worden verwerkt. Een van de gebruikers heeft dagelijks nieuwe gegevens, maar een daarvan krijgt elke week nieuwe gegevens. Stel dat u een koppeling wilt maken tussen de twee invoer en elke dag een uitvoer produceert.
 
 De eenvoudige benadering waarin Data Factory automatisch de juiste invoer segmenten afgeeft om te verwerken door af te stemmen op de tijds periode van het uitvoer gegevens segment, werkt niet.
@@ -510,9 +510,9 @@ Input2 is de Azure-Blob die wekelijks wordt bijgewerkt.
 }
 ```
 
-**Uitvoer Azure-Blob**
+**Uitvoer: Azure-Blob**
 
-Er wordt elke dag een uitvoer bestand gemaakt in de map voor de dag. De beschik baarheid van uitvoer is ingesteld op **dag** (frequentie: Dag, interval: 1).
+Er wordt elke dag een uitvoer bestand gemaakt in de map voor de dag. De beschik baarheid van uitvoer is ingesteld op **dag** (frequentie: Day, interval: 1).
 
 ```json
 {
@@ -604,7 +604,7 @@ Het is mogelijk om meerdere Kopieer bewerkingen achter elkaar op een sequentieve
 
 Bestand copyactivity1
 
-Invoer: Sets. Uitvoer: Dataset2.
+Invoer: gegevensset. Uitvoer: Dataset2.
 
 CopyActivity2
 
@@ -703,7 +703,7 @@ Invoer: Dataset1. Uitvoer: Dataset2.
 
 CopyActivity2
 
-Invoer Dataset3, Dataset2. Uitvoer: Dataset4.
+Invoer: Dataset3, Dataset2. Uitvoer: Dataset4.
 
 ```json
 {

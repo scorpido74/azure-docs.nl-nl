@@ -1,6 +1,6 @@
 ---
-title: Onderbreken, hervatten, schalen met rest-opslag in Azure SQL Data Warehouse | Microsoft Docs
-description: Compute-kracht in SQL Data Warehouse via REST API's beheren.
+title: Onderbreken, hervatten, schalen met REST-Api's
+description: Beheer de reken kracht in Azure SQL Data Warehouse via REST Api's.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,18 +10,19 @@ ms.subservice: implement
 ms.date: 03/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5b8652a0b08b426e708a909ff988e51eee9c0821
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f72b3fd1024a68a6f48d2e9e676fc7ca23bf2a4f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476076"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686051"
 ---
-# <a name="rest-apis-for-azure-sql-data-warehouse"></a>REST-API's voor Azure SQL datawarehouse
-REST-API's voor het beheren van compute in Azure SQL Data Warehouse.
+# <a name="rest-apis-for-azure-sql-data-warehouse"></a>REST-Api's voor Azure SQL Data Warehouse
+REST-Api's voor het beheren van Compute in Azure SQL Data Warehouse.
 
 ## <a name="scale-compute"></a>De schaal van Compute aanpassen
-Als u wilt wijzigen van de datawarehouse-eenheden, gebruikt u de [maken of bijwerken Database](/rest/api/sql/databases/createorupdate) REST-API. Het volgende voorbeeld wordt de datawarehouse-eenheden naar DW1000 voor de database MySQLDW, die wordt gehost op de server MijnServer. De server zich in een Azure-resourcegroep met de naam ResourceGroup1.
+Als u de Data Warehouse-eenheden wilt wijzigen, gebruikt u de REST API [Data Base maken of bijwerken](/rest/api/sql/databases/createorupdate) . In het volgende voor beeld worden de Data Warehouse-eenheden ingesteld op DW1000 voor de data base-MySQLDW, die wordt gehost op server mijnserver. De server bevindt zich in een Azure-resource groep met de naam ResourceGroup1.
 
 ```
 PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -34,41 +35,41 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-## <a name="pause-compute"></a>De rekencapaciteit onderbreken
+## <a name="pause-compute"></a>Compute onderbreken
 
-Als u wilt onderbreken van een database, gebruikt u de [Database onderbreken](/rest/api/sql/databases/pause) REST-API. Het volgende voorbeeld wordt een database met de naam die wordt gehost op een server met de naam Server01 Database02 onderbroken. De server zich in een Azure-resourcegroep met de naam ResourceGroup1.
+Gebruik de [pause data base](/rest/api/sql/databases/pause) rest API om een Data Base te onderbreken. In het volgende voor beeld wordt een Data Base met de naam Database02 die wordt gehost op een server met de naam Server01, onderbroken. De server bevindt zich in een Azure-resource groep met de naam ResourceGroup1.
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
 ```
 
-## <a name="resume-compute"></a>De rekencapaciteit hervatten
+## <a name="resume-compute"></a>Compute hervatten
 
-Voor het starten van een database, gebruikt u de [hervatten Database](/rest/api/sql/databases/resume) REST-API. Het volgende voorbeeld wordt een database met de naam die wordt gehost op een server met de naam Server01 Database02 gestart. De server zich in een Azure-resourcegroep met de naam ResourceGroup1. 
+Als u een Data Base wilt starten, gebruikt u de REST API [Data Base hervatten](/rest/api/sql/databases/resume) . In het volgende voor beeld wordt een Data Base met de naam Database02 gehost op een server met de naam Server01. De server bevindt zich in een Azure-resource groep met de naam ResourceGroup1. 
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1
 ```
 
-## <a name="check-database-state"></a>Controleer de databasestatus van de
+## <a name="check-database-state"></a>Database status controleren
 
 > [!NOTE]
-> Controleer op dit moment status van de database ONLINE kan retourneren, terwijl de database de online werkstroom, wat resulteert in verbindingsfouten wordt voltooid. Mogelijk moet u een 2-3 minuten vertraging in uw toepassingscode toevoegen als u deze API-aanroep voor het activeren van verbindingspogingen.
+> Momenteel kan de status van de data base ONLINE worden geretourneerd terwijl de data base de online werk stroom voltooit, wat resulteert in verbindings fouten. Mogelijk moet u een vertraging van 2 tot 3 minuten toevoegen aan de toepassings code als u deze API-aanroep gebruikt om verbindings pogingen te activeren.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01 HTTP/1.1
 ```
 
-## <a name="get-maintenance-schedule"></a>Onderhoudsplanning ophalen
-Controleer de onderhoudsplanning die is ingesteld voor een datawarehouse. 
+## <a name="get-maintenance-schedule"></a>Onderhouds planning ophalen
+Controleer het onderhouds schema dat is ingesteld voor een Data Warehouse. 
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
 
 ```
 
-## <a name="set-maintenance-schedule"></a>Onderhoudsplanning instellen
-Instellen en bijwerken van een planning maintnenance op een bestaande datawarehouse.
+## <a name="set-maintenance-schedule"></a>Onderhouds planning instellen
+Een maintnenance-schema instellen en bijwerken op een bestaand Data Warehouse.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -94,5 +95,5 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie, [compute beheren](sql-data-warehouse-manage-compute-overview.md).
+Zie [Compute beheren](sql-data-warehouse-manage-compute-overview.md)voor meer informatie.
 

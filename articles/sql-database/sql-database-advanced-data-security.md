@@ -1,5 +1,5 @@
 ---
-title: Geavanceerde gegevens beveiliging-Azure SQL Database | Microsoft Docs
+title: Geavanceerde gegevens beveiliging-Azure SQL Database
 description: Meer informatie over de functionaliteit voor het detecteren en classificeren van gevoelige gegevens, het beheren van uw database problemen en het opsporen van afwijkende activiteiten die kunnen wijzen op een bedreiging voor uw Azure-SQL database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: 40e556b5d0fe22629eeca9a088d10ea5fc9b95ac
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: ce9cfa7e4b08dac878de52ba9765bcc204ed8196
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965489"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691293"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Geavanceerde gegevens beveiliging voor Azure SQL Database
 

@@ -1,5 +1,5 @@
 ---
-title: Reken resource beheren in Azure SQL Data Warehouse | Microsoft Docs
+title: Reken resource beheren
 description: Meer informatie over de mogelijkheden voor het uitbreiden van prestaties in Azure SQL Data Warehouse. Uitschalen door Dwu's aan te passen of door de kosten te verlagen door het Data Warehouse te onderbreken.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: f0935ccc4c4274bfab0c589ef158d4ea0bef455c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f93996d834ab805f2228543a833c4ce601042dc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575320"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692633"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Compute in Azure SQL Data Warehouse beheren
 Meer informatie over het beheren van reken bronnen in Azure SQL Data Warehouse. Lagere kosten door het Data Warehouse te onderbreken of het Data Warehouse te schalen om te voldoen aan de prestatie vereisten. 
@@ -32,7 +33,7 @@ Als u een schaal bewerking wilt uitvoeren, wordt door SQL Data Warehouse eerst a
 
 De volgende tabel laat zien hoe het aantal distributies per Compute-knoop punt verandert naarmate de Data Warehouse-eenheden worden gewijzigd.  DWU6000 biedt 60 Compute-knoop punten en behaalt veel hogere query prestaties dan DWU100. 
 
-| Datawarehouse-eenheden  | \#van reken knooppunten | \#distributies per knoop punt |
+| Datawarehouse-eenheden  | \# van reken knooppunten | \# van distributies per knoop punt |
 | ---- | ------------------ | ---------------------------- |
 | 100  | 1                  | 60                           |
 | 200  | 2                  | 30                           |
@@ -92,7 +93,7 @@ Wanneer u een Data Warehouse hervat:
 
 Als u uw data warehouse altijd toegankelijk wilt maken, kunt u overwegen om het te schalen naar de kleinste grootte in plaats van te onderbreken. 
 
-Raadpleeg de [Azure Portal](pause-and-resume-compute-portal.md)of [Power shell](pause-and-resume-compute-powershell.md) -Quick starts voor instructies voor onderbreken en hervatten. U kunt ook de PAUSE- [rest API](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) of de hervattings [rest API](sql-data-warehouse-manage-compute-rest-api.md#resume-compute)gebruiken.
+Raadpleeg de [Azure Portal](pause-and-resume-compute-portal.md)of [Power shell](pause-and-resume-compute-powershell.md) -Quick starts voor instructies voor onderbreken en hervatten. U kunt ook de [pause-rest API](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) of de [hervattings rest API](sql-data-warehouse-manage-compute-rest-api.md#resume-compute)gebruiken.
 
 ## <a name="drain-transactions-before-pausing-or-scaling"></a>Transacties stoppen voor onderbreken of schalen
 We raden aan om bestaande trans acties te volt ooien voordat u een pauze of schaal bewerking initieert.
@@ -102,7 +103,7 @@ Wanneer u uw SQL Data Warehouse onderbreekt of schaalt, worden uw query’s acht
 Zie ook [informatie over trans acties](sql-data-warehouse-develop-transactions.md)en het [optimaliseren van trans acties](sql-data-warehouse-develop-best-practices-transactions.md).
 
 ## <a name="automating-compute-management"></a>Reken beheer automatiseren
-Zie COMPUTE- [functies beheren met Azure functions](manage-compute-with-azure-functions.md)voor het automatiseren van de bewerkingen voor Compute management.
+Zie [Compute-functies beheren met Azure functions](manage-compute-with-azure-functions.md)voor het automatiseren van de bewerkingen voor Compute management.
 
 Het kan enkele minuten duren voordat elk van de bewerkingen scale-out, Pause en resume is voltooid. Als u automatisch wilt schalen, onderbreken of hervatten, wordt u aangeraden logica te implementeren om ervoor te zorgen dat bepaalde bewerkingen zijn voltooid voordat u doorgaat met een andere actie. Door de status van het Data Warehouse via verschillende eind punten te controleren, kunt u automatisering van dergelijke bewerkingen op de juiste manier implementeren. 
 

@@ -1,5 +1,5 @@
 ---
-title: Opslag opties voor FSLogix-profiel containers in virtueel bureau blad van Windows-Azure
+title: Container voor opslag FSLogix-profiel Windows virtueel bureau blad-Azure
 description: Opties voor het opslaan van uw FSLogix-profiel voor Windows virtueel bureau blad op Azure Storage.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: fc869bc0c52a54044cbc095cd20f0395e590c852
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3577b459a1b6612d24346428512cfbc509515f52
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332820"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607411"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Opslag opties voor FSLogix-profiel containers in virtueel bureau blad van Windows
 
@@ -38,9 +38,9 @@ De volgende tabel bevat een vergelijking van de opslag oplossingen Azure Storage
 
 |Functies|Azure Files|Azure NetApp Files|Storage Spaces Direct|
 |--------|-----------|------------------|---------------------|
-|Access|Cloud, on-premises en hybride (Azure-bestands synchronisatie)|Cloud, on-premises (via ExpressRoute)|Cloud, on-premises|
-|Backup|Integratie van Azure backup snap shot|Moment opnamen Azure NetApp Files|Integratie van Azure backup snap shot|
-|Beveiliging en compliance|[Alle door Azure ondersteunde certificaten](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO voltooid|[Alle door Azure ondersteunde certificaten](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
+|Toegang|Cloud, on-premises en hybride (Azure-bestands synchronisatie)|Cloud, on-premises (via ExpressRoute)|Cloud, on-premises|
+|Back-up maken|Integratie van Azure backup snap shot|Moment opnamen Azure NetApp Files|Integratie van Azure backup snap shot|
+|Veiligheid en naleving|[Alle door Azure ondersteunde certificaten](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO voltooid|[Alle door Azure ondersteunde certificaten](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Integratie van Azure Active Directory|Azure Active Directory en Azure Active Directory Domain Services|[Azure Active Directory Domain Services en systeem eigen Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Alleen systeem eigen Active Directory-of Azure Active Directory Domain Services-ondersteuning|
 
 Als u uw opslag methode hebt gekozen, raadpleegt u de [prijzen voor Windows virtueel bureau blad](https://azure.microsoft.com/pricing/details/virtual-desktop/) voor informatie over onze prijs plannen.

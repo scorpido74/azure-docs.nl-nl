@@ -1,5 +1,5 @@
 ---
-title: SaaS-patronen met meerdere tenants-Azure SQL Database | Microsoft Docs
+title: 'SaaS-patronen met meerdere tenants-Azure SQL Database '
 description: Meer informatie over de vereisten en algemene gegevens architectuur patronen voor SaaS-database toepassingen (multi tenant software as a Service) die worden uitgevoerd in de Azure-cloud omgeving.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8cbf0e45ac368f0d2dd1678984bd14392452e63a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ecbcf2cdfea2714e46d0c9cff4066befabddeeb8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570187"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691927"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Multitenancy-patronen voor SaaS-data base met meerdere tenants
 
@@ -32,8 +32,8 @@ Bij het retour neren van huren ontvangt elke Tenant toegang tot uw SaaS-toepassi
 
 Het term *pacht-model* verwijst naar de manier waarop tenants opgeslagen gegevens zijn ingedeeld:
 
-- *Enkel pacht:* &nbsp; Elke Data Base slaat gegevens op uit slechts één Tenant.
-- *Multitenancy:* &nbsp; Elke Data Base slaat gegevens op uit meerdere afzonderlijke tenants (met mechanismen voor het beveiligen van de privacy van gegevens).
+- *Enkel pacht:* &nbsp; elke data base gegevens van slechts één Tenant opslaat.
+- Multitenancy *:* &nbsp; elke data base gegevens opslaat uit meerdere afzonderlijke tenants (met mechanismen voor het beveiligen van de privacy van gegevens).
 - Er zijn ook Hybrid pacht-modellen beschikbaar.
 
 ## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. Het juiste pacht-model kiezen
@@ -46,9 +46,9 @@ In het algemeen heeft het pacht-model geen invloed op de werking van een toepass
     - Opslag in samen voeging.
     - Werklast.
 
-- **Tenant isolatie:** &nbsp; Gegevens isolatie en prestaties (of de werk belasting van een Tenant invloed heeft op andere).
+- **Tenant isolatie:** &nbsp; gegevens isolatie en-prestaties (of de werk belasting van een Tenant invloed heeft op andere).
 
-- **Kosten per Tenant:** &nbsp; Database kosten.
+- **Kosten per Tenant:** kosten voor de&nbsp; data base.
 
 - **Complexiteit van de ontwikkeling:**
     - Wijzigingen in het schema.
@@ -60,7 +60,7 @@ In het algemeen heeft het pacht-model geen invloed op de werking van een toepass
     - Een Tenant herstellen.
     - Herstel na noodgevallen.
 
-- **Aanpassings mogelijkheden**&nbsp; Eenvoudige ondersteuning van schema aanpassingen die specifiek zijn voor een Tenant of Tenant.
+- **Aanpassings mogelijkheden:** &nbsp; gemakkelijker schema aanpassingen te ondersteunen die specifiek zijn voor een Tenant of Tenant.
 
 De pacht-discussie is gericht op de *gegevenslaag.*  Houd echter rekening met de laag van de *toepassingslaag* .  De toepassingslaag wordt behandeld als een monolithische-entiteit.  Als u de toepassing verdeelt in veel kleine onderdelen, kan uw keuze van het pacht-model veranderen.  U kunt sommige onderdelen anders behandelen dan andere met betrekking tot de pacht en de opslag technologie of het gebruikte platform.
 
@@ -92,7 +92,7 @@ Net als bij het patroon van de zelfstandige app biedt het gebruik van data bases
 
 Met data base-per-Tenant kan het schema voor een of meer afzonderlijke tenants eenvoudig worden gerealiseerd.  De leverancier van de toepassing moet procedures ontwerpen voor het zorgvuldig beheren van schema aanpassingen op schaal.
 
-#### <a name="elastic-pools"></a>Elastische pools
+#### <a name="elastic-pools"></a>Pools voor Elastic Database
 
 Wanneer data bases in dezelfde resource groep worden geïmplementeerd, kunnen ze worden gegroepeerd in elastische Pools.  De groepen bieden een kosteneffectieve manier om resources te delen in veel data bases.  Deze groeps optie is goed koper dan vereist dat elke Data Base groot genoeg is om te voldoen aan de gebruiks pieken die het ondervindt.  Hoewel gepoolde data bases toegang tot resources delen, kunnen ze nog steeds een hoge mate van prestaties isoleren.
 
@@ -125,9 +125,9 @@ Een ander beschikbaar patroon is het opslaan van veel tenants in een Data Base m
 
 #### <a name="tenant-isolation-is-sacrificed"></a>Tenant isolatie wordt gedood
 
-*Gegevens*&nbsp; Een multi tenant-data base bewaart per onechte Tenant isolatie.  De gegevens van meerdere tenants worden samen in één data base opgeslagen.  Zorg er tijdens de ontwikkeling voor dat query's nooit gegevens van meer dan één Tenant beschikbaar maken.  SQL Database ondersteunt [beveiliging op rijniveau][docu-sql-svr-db-row-level-security-947w], wat kan afdwingen dat de gegevens die door een query zijn geretourneerd, binnen het bereik van één Tenant vallen.
+*Gegevens:* het&nbsp; van een multi tenant-data base bewaart noodzakelijkerwijze Tenant isolatie.  De gegevens van meerdere tenants worden samen in één data base opgeslagen.  Zorg er tijdens de ontwikkeling voor dat query's nooit gegevens van meer dan één Tenant beschikbaar maken.  SQL Database ondersteunt [beveiliging op rijniveau][docu-sql-svr-db-row-level-security-947w], wat kan afdwingen dat de gegevens die door een query zijn geretourneerd, binnen het bereik van één Tenant vallen.
 
-*Bezig*&nbsp; Een multi tenant-data base deelt reken-en opslag resources over alle tenants.  De hele data base kan worden bewaakt om ervoor te zorgen dat deze acceptabel wordt uitgevoerd.  Het Azure-systeem heeft echter geen ingebouwde manier om het gebruik van deze resources door een afzonderlijke Tenant te controleren of te beheren.  Daarom heeft de multi tenant-Data Base een groter risico op het ontstaan van ruiserende neighbors, waarbij de werk belasting van een overactieve Tenant invloed heeft op de prestatie ervaring van andere tenants in dezelfde data base.  Extra bewaking op toepassings niveau kan prestaties op Tenant niveau bewaken.
+*Verwerken:* &nbsp; een multi tenant-data base berekenings-en opslag resources delen in alle tenants.  De hele data base kan worden bewaakt om ervoor te zorgen dat deze acceptabel wordt uitgevoerd.  Het Azure-systeem heeft echter geen ingebouwde manier om het gebruik van deze resources door een afzonderlijke Tenant te controleren of te beheren.  Daarom heeft de multi tenant-Data Base een groter risico op het ontstaan van ruiserende neighbors, waarbij de werk belasting van een overactieve Tenant invloed heeft op de prestatie ervaring van andere tenants in dezelfde data base.  Extra bewaking op toepassings niveau kan prestaties op Tenant niveau bewaken.
 
 #### <a name="lower-cost"></a>Lagere kosten
 
@@ -135,7 +135,7 @@ In het algemeen hebben multi tenant-data bases de laagste kosten per Tenant.  De
 
 Twee varianten van een model voor multi tenant-data bases worden in de volgende stappen beschreven, waarbij het Shard multi tenant-model het meest flexibel en schaalbaar is.
 
-## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Multi tenant-app met één multi tenant-data base
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>ls. Multi tenant-app met één multi tenant-data base
 
 Het eenvoudigste multi tenant-database patroon maakt gebruik van één Data Base voor het hosten van gegevens voor alle tenants.  Naarmate er meer tenants worden toegevoegd, wordt de data base omhoog geschaald met meer opslag-en reken resources.  Deze schaal kan allemaal nodig zijn, hoewel er altijd een limiet voor een ultieme schaal is.  Lang voordat deze limiet is bereikt, wordt de data base lastig te beheren.
 
@@ -165,7 +165,7 @@ Afhankelijk van de gebruikte sharding-aanpak kunnen er aanvullende beperkingen w
 
 Shard multi tenant-data bases kunnen in elastische Pools worden geplaatst.  Over het algemeen is het zo dat veel tenants met één Tenant in een pool rendabel zijn, omdat er in een paar data bases met meerdere tenants een aantal pachters zijn.  Multi tenant-data bases zijn handig wanneer er sprake is van een groot aantal relatief inactieve tenants.
 
-## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>H. Model voor de multi tenant-data base hybride Shard
+## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>HxBxD. Model voor de multi tenant-data base hybride Shard
 
 In het hybride model hebben alle data bases de Tenant-id in hun schema.  De data bases zijn allemaal geschikt om meer dan één Tenant op te slaan en de data bases kunnen worden Shard.  In het schema gevoel zijn ze dus alle data bases met meerdere tenants.  In de praktijk kunnen sommige van deze data bases slechts één Tenant bevatten.  Ongeacht het aantal tenants dat in een bepaalde data base is opgeslagen, heeft geen invloed op het database schema.
 
@@ -175,7 +175,7 @@ U kunt op elk gewenst moment een bepaalde Tenant verplaatsen naar een eigen mult
 
 Het hybride model schijnt wanneer er grote verschillen zijn tussen de resource behoeften van Identificeer bare groepen tenants.  Stel bijvoorbeeld dat tenants die deel uitmaken van een gratis proef versie, niet kunnen worden gegarandeerd op hetzelfde hoge prestatie niveau als bij het abonneren van tenants.  Het beleid kan voor tenants in de gratis proef versie worden opgeslagen in een multi tenant-data base die wordt gedeeld door alle tenants van de gratis proef versie.  Wanneer een gratis proef versie van een Tenant zich abonneert op de Basic-servicelaag, kan de Tenant worden verplaatst naar een andere data base met meerdere tenants die mogelijk minder tenants hebben.  Een abonnee die betaalt voor de Premium-servicelaag, kan worden verplaatst naar de eigen nieuwe Data Base met één Tenant.
 
-#### <a name="pools"></a>Groepen
+#### <a name="pools"></a>Pools
 
 In dit hybride model kunnen de data bases met één Tenant voor Subscriber-tenants in resource groepen worden geplaatst om de database kosten per Tenant te verlagen.  Dit gebeurt ook in het model data base-per Tenant.
 
@@ -185,12 +185,12 @@ De volgende tabel bevat een overzicht van de verschillen tussen de belangrijkste
 
 | Meting | Zelfstandige app | Database-per-tenant | Shard multi tenant |
 | :---------- | :------------- | :------------------ | :------------------- |
-| Schalen | Gemiddeld<br />1-100s | Zeer hoog<br />1-100, per 10.000 | Onbeperkt<br />1-1, 000, per 10.000 |
+| Schalen | Middelgroot<br />1-100 | Zeer hoog<br />1-100, per 10.000 | Onbeperkt<br />1-1, 000, per 10.000 |
 | Tenant isolatie | Zeer hoog | Hoog | Gebrek behalve voor één Tenant (die zich alleen in een MT-Data Base bevindt). |
 | Database kosten per Tenant | Hogesnelheidsnet het formaat voor pieken. | Gebrek gebruikte groepen. | Laagst, voor kleine tenants in MT Db's. |
 | Prestaties bewaken en beheren | Alleen per Tenant | Aggregatie + per Tenant | Vatting Hoewel dit per Tenant geldt, is dat alleen voor singles. |
 | Complexiteit van ontwikkeling | Laag | Laag | Drager vanwege sharding. |
-| Operationele complexiteit | Laag-hoog. Afzonderlijk eenvoudig, complex op schaal. | Low-Medium. Patronen herkennen de complexiteit op schaal. | Laag-hoog. Het beheer van afzonderlijke tenants is complex. |
+| Operationele complexiteit | Laag-hoog. Afzonderlijk eenvoudig, complex op schaal. | Laag medium. Patronen herkennen de complexiteit op schaal. | Laag-hoog. Het beheer van afzonderlijke tenants is complex. |
 | &nbsp; ||||
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 4f06e423c6dcc561ef8e51c33f24cd9f88a681b5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1848f7230ed189f139a223020f08db150295132d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935894"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647488"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Snelstartgids: Face client library voor .NET
 
@@ -29,7 +29,7 @@ Gebruik de face-client bibliotheek voor .NET voor het volgende:
 * [Een gezicht identificeren](#identify-a-face)
 * [Een moment opname maken voor gegevens migratie](#take-a-snapshot-for-data-migration)
 
-[Referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)  | -[bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face)  | [pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)  | -voor[beelden](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
+[Referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1) | -voor [beelden](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -144,9 +144,17 @@ Bij de laatste detectie bewerking worden een [FaceClient](https://docs.microsoft
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
-In dit geval detecteert de `DetectFaceExtract`-methode gezichten in drie van de afbeeldingen bij de opgegeven URL en maakt een lijst met [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) -objecten in het programma geheugen. De lijst met [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) -waarden geeft aan welke functies moeten worden geëxtraheerd. Zie de voorbeeld code op [github](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs) voor meer informatie over de code die deze gegevens op een intuïtieve manier kan afdrukken.
+### <a name="get-detected-face-objects"></a>Gedetecteerde face-objecten ophalen
+
+In het volgende code blok detecteert de `DetectFaceExtract`-methode gezichten in drie van de afbeeldingen bij de opgegeven URL en maakt een lijst met [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) -objecten in programma geheugen. De lijst met [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) -waarden geeft aan welke functies moeten worden geëxtraheerd. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
+
+### <a name="display-detected-face-data"></a>Gedetecteerde gezichts gegevens weer geven
+
+De rest van de methode `DetectFaceExtract` parseert en drukt de kenmerk gegevens af voor elk gedetecteerd gezicht. Elk kenmerk moet afzonderlijk worden opgegeven in de oorspronkelijke gezichts detectie-API-aanroep (in de [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) -lijst). De volgende code verwerkt elk kenmerk, maar u zult waarschijnlijk slechts één of enkele gebruiken.
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
 
 ## <a name="find-similar-faces"></a>Vergelijkbare gezichten zoeken
 

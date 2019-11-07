@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 05bae18d35eafc47eddc7c1450eb06af5bbe5562
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: e1bb84c142fb24086cf6c11a7b1070bdd29ae3f2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497194"
+ms.locfileid: "73581287"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Automatische machine learning experimenten maken, verkennen en implementeren met Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -104,7 +104,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
     Selecteer **Volgende**.
 
-1. Selecteer op het **taak type en het instellingen** formulier het taak type: classificatie, regressie of prognose. 
+1. Selecteer op het **taak type en het instellingen** formulier het taak type: classificatie, regressie of prognose. Zie [taak typen definiëren](how-to-define-task-type.md) voor meer informatie.
 
     1. Voor classificatie kunt u ook diep gaande informatie inschakelen die wordt gebruikt voor tekst featurizations.
 
@@ -141,7 +141,7 @@ Type distributie| In-line waarde van het aantal typen in een kolom. Nullen zijn 
 Type|Het type van de kolom is afgeleid. Mogelijke waarden zijn: teken reeksen, booleans, datums en decimalen.
 Min.| Minimum waarde van de kolom. Er worden geen lege items weer gegeven voor functies waarvan het type geen inherente ordening (bijvoorbeeld Boole-waarden) heeft.
 Max.| De maximum waarde van de kolom. 
-Aantal| Totaal aantal ontbrekende en niet-ontbrekende vermeldingen in de kolom.
+Count| Totaal aantal ontbrekende en niet-ontbrekende vermeldingen in de kolom.
 Niet-ontbrekend aantal| Het aantal vermeldingen in de kolom die niet ontbreken. Lege teken reeksen en fouten worden beschouwd als waarden, zodat ze niet bijdragen aan het aantal niet-ontbrekende items.
 Quantiles| Geschatte waarden bij elke quantile om een idee te geven van de distributie van de gegevens.
 Gemiddelde| Reken kundige gemiddelde of gemiddelde van de kolom.
@@ -205,12 +205,17 @@ Automatische ML helpt u bij het implementeren van het model zonder code te schri
 
     Veld| Waarde
     ----|----
-    Implementatie naam| Voer een unieke naam in voor uw implementatie.
-    Beschrijving van implementatie| Voer een beschrijving in om beter te kunnen identificeren waarvoor deze implementatie is.
-    Score script| Genereer of upload uw eigen score bestand automatisch. Meer [informatie over Score script](how-to-deploy-and-where.md#script).
-    Omgevings script| Automatisch genereren of uploaden van uw eigen omgevings bestand.
+    Naam| Voer een unieke naam in voor uw implementatie.
+    Beschrijving| Voer een beschrijving in om beter te kunnen identificeren waarvoor deze implementatie is.
+    Reken type| Selecteer het type eind punt dat u wilt implementeren: *Azure Kubernetes service (AKS)* of *Azure container instance (ACI)* .
+    Naam| *Is alleen van toepassing op AKS:* Selecteer de naam van het AKS-cluster waarnaar u wilt implementeren.
+    Authenticatie inschakelen | Selecteer deze optie om verificatie op basis van tokens of sleutel toe te staan.
+    Aangepaste implementatie-assets gebruiken| Schakel deze functie in als u uw eigen score script en omgevings bestand wilt uploaden. Meer [informatie over Score scripts](how-to-deploy-and-where.md#script).
+
     >[!Important]
     > Bestands namen moeten minder dan 32 tekens lang zijn en moeten beginnen en eindigen met een alfanumerieke teken reeks. Kan streepjes, onderstrepings tekens, punten en alfanumerieken bevatten. Spaties zijn niet toegestaan.
+
+    Het menu *Geavanceerd* biedt standaard implementatie functies, zoals de instellingen voor gegevens verzameling en het gebruik van resources. Als u deze standaard waarden wilt overschrijven, doet u dit in dit menu.
 
 1. Selecteer **Implementeren**. Het volt ooien van de implementatie kan ongeveer 20 minuten duren.
 

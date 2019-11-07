@@ -1,5 +1,5 @@
 ---
-title: Continue integratie en levering in Azure Data Factory | Microsoft Docs
+title: Continue integratie en levering in Azure Data Factory
 description: Leer hoe u doorlopende integratie en levering kunt gebruiken om Data Factory pijp lijnen van de ene omgeving (ontwikkeling, test, productie) naar een andere te verplaatsen.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: ff1d34852890a8d5005153ebdfa2fa0f9749d129
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7c5c1e91e97087bf28b03629659e5194f67c22b3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030615"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680035"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Continue integratie en levering (CI/CD) in Azure Data Factory
 
@@ -122,7 +122,7 @@ Hieronder vindt u een hand leiding voor het instellen van een Azure pipelines-re
 
     f.  Selecteren **...** in het **veld sjabloon parameters.** om het parameter bestand te kiezen. Kies het juiste bestand, afhankelijk van of u een kopie hebt gemaakt of gebruikmaakt van het standaard bestand *ARMTemplateParametersForFactory. json*.
 
-    g.  Selecteren **...** Naast het veld **para meters van sjabloon negeren** voert u de gegevens voor de doel Data Factory in. Voer de geheime naam tussen dubbele aanhalings tekens in voor referenties die afkomstig zijn van sleutel kluis. Als de naam van het geheim bijvoorbeeld `cred1` is, voert u `"$(cred1)"`for de waarde in.
+    g.  Selecteren **...** Naast het veld **para meters van sjabloon negeren** voert u de gegevens voor de doel Data Factory in. Voer de geheime naam tussen dubbele aanhalings tekens in voor referenties die afkomstig zijn van sleutel kluis. Als de naam van het geheim bijvoorbeeld `cred1`, voert u `"$(cred1)"`in als waarde.
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -335,14 +335,14 @@ Onder deze omstandigheden kunt u de standaard parameterisering-sjabloon overschr
 
 Hier volgen enkele richt lijnen die u kunt gebruiken wanneer u het bestand met aangepaste para meters ontwerpt. Het bestand bestaat uit een sectie voor elk entiteits type: trigger, pijp lijn, gekoppelde service, gegevensset, Integration runtime, enzovoort.
 * Voer het pad naar de eigenschap in onder het relevante entiteits type.
-* Wanneer u een eigenschaps naam instelt op ' \* ' ', geeft u aan dat u alle eigenschappen daaronder wilt para meters (alleen naar het eerste niveau, niet recursief). U kunt hier ook eventuele uitzonde ringen opgeven.
-* Wanneer u de waarde van een eigenschap instelt als een teken reeks, geeft u aan dat u de eigenschap wilt para meters. Gebruik de notatie @ no__t-0.
-   *  `<action>` @ no__t-1can een van de volgende tekens zijn:
-      * `=` @ no__t-1means behoud de huidige waarde als de standaard waarde voor de para meter.
-      * `-` @ no__t-1means niet de standaard waarde voor de para meter.
-      * `|` @ no__t-1is een speciaal geval voor geheimen van Azure Key Vault voor verbindings reeksen of sleutels.
-   * `<name>` @ no__t-1is de naam van de para meter. Als deze leeg is, wordt de naam van de eigenschap gebruikt. Als de waarde begint met een `-`-teken, wordt de naam Inge kort. @No__t-0 wordt bijvoorbeeld Inge kort tot `AzureStorage1_connectionString`.
-   * `<stype>` @ no__t-1is het type para meter. Als @ no__t-0 @ no__t-1is leeg is, is het standaard type `string`. Ondersteunde waarden: `string`, `bool`, `number`, `object` en `securestring`.
+* Wanneer u een eigenschaps naam instelt op '\*' ', geeft u aan dat u alle eigenschappen daaronder wilt para meters (alleen naar het eerste niveau, niet recursief). U kunt hier ook eventuele uitzonde ringen opgeven.
+* Wanneer u de waarde van een eigenschap instelt als een teken reeks, geeft u aan dat u de eigenschap wilt para meters. Gebruik de notatie `<action>:<name>:<stype>`.
+   *  `<action>` kan een van de volgende tekens zijn:
+      * `=` houdt in dat de huidige waarde wordt ingesteld als de standaard waarde voor de para meter.
+      * bij `-` wordt niet de standaard waarde voor de para meter bewaard.
+      * `|` is een speciaal geval voor geheimen van Azure Key Vault voor verbindings reeksen of sleutels.
+   * `<name>` de naam van de para meter. Als deze leeg is, wordt de naam van de eigenschap gebruikt. Als de waarde begint met een `-`-teken, wordt de naam Inge kort. `AzureStorage1_properties_typeProperties_connectionString` zou bijvoorbeeld worden inge kort tot `AzureStorage1_connectionString`.
+   * `<stype>` is het type para meter. Als `<stype>` leeg is, is het standaard type `string`. Ondersteunde waarden: `string`, `bool`, `number`, `object` en `securestring`.
 * Wanneer u een matrix opgeeft in het definitie bestand, geeft u aan dat de overeenkomende eigenschap in de sjabloon een matrix is. Data Factory doorloopt alle objecten in de matrix met behulp van de definitie die is opgegeven in het Integration Runtime-object van de matrix. Het tweede object, een teken reeks, wordt de naam van de eigenschap, die wordt gebruikt als de naam voor de para meter voor elke iteratie.
 * Het is niet mogelijk een definitie te hebben die specifiek is voor een resource-exemplaar. Elke wille keurige definitie is van toepassing op alle resources van dat type.
 * Standaard zijn alle beveiligde teken reeksen, zoals Key Vault geheimen en beveiligde teken reeksen, zoals verbindings reeksen, sleutels en tokens, para meters.
@@ -423,18 +423,18 @@ Hieronder volgt een uitleg van de manier waarop de bovenstaande sjabloon is same
 
 #### <a name="triggers"></a>Triggers
 
-* Onder `typeProperties` zijn twee eigenschappen para meters. De eerste is `maxConcurrency`, die is opgegeven om een standaard waarde te hebben en is van het type @ no__t-1. Deze heeft de standaard parameter naam `<entityName>_properties_typeProperties_maxConcurrency`.
+* Onder `typeProperties` zijn twee eigenschappen para meters. De eerste is `maxConcurrency`, die is opgegeven om een standaard waarde te hebben en is van het type`string`. Deze heeft de standaard parameter naam `<entityName>_properties_typeProperties_maxConcurrency`.
 * De eigenschap `recurrence` is ook para meters. Hieronder worden alle eigenschappen op dat niveau opgegeven om para meters te worden ingesteld als teken reeksen, met standaard waarden en parameter namen. Een uitzonde ring is de eigenschap `interval`, die als para meters is aangestuurd als het nummer type en met de parameter naam met `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Op dezelfde manier is de eigenschap `freq` een teken reeks en wordt de para meter in de vorm van een teken reeks. De eigenschap `freq` is echter para meters zonder standaard waarde. De naam is inge kort en achtervoegsel. Bijvoorbeeld `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
 * Gekoppelde services zijn uniek. Omdat gekoppelde services en gegevens sets een breed scala van typen hebben, kunt u type-specifieke aanpassing opgeven. In dit voor beeld worden alle gekoppelde services van het type `AzureDataLakeStore`, een specifieke sjabloon toegepast en voor alle andere sjablonen (via \*) wordt een andere sjabloon toegepast.
 * De eigenschap `connectionString` wordt ingesteld als een `securestring`-waarde, heeft geen standaard waarde en heeft een kortere parameter naam die wordt gebruikt in plaats van `connectionString`.
-* De eigenschap `secretAccessKey` heeft een `AzureKeyVaultSecret` (bijvoorbeeld in een gekoppelde service van @no__t 2). De para meter wordt automatisch ingesteld als een Azure Key Vault geheim en opgehaald uit de geconfigureerde sleutel kluis. U kunt ook de sleutel kluis zelf para meters.
+* De eigenschap `secretAccessKey` gebeurt in een `AzureKeyVaultSecret` (bijvoorbeeld in een `AmazonS3` gekoppelde service). De para meter wordt automatisch ingesteld als een Azure Key Vault geheim en opgehaald uit de geconfigureerde sleutel kluis. U kunt ook de sleutel kluis zelf para meters.
 
 #### <a name="datasets"></a>Gegevenssets
 
-* Hoewel het type-specifieke aanpassing beschikbaar is voor gegevens sets, kan de configuratie worden opgegeven zonder expliciet een @no__t configuratie op -0-niveau. In het bovenstaande voor beeld zijn alle eigenschappen van de gegevensset onder `typeProperties` para meters.
+* Hoewel typespecifieke aanpassing beschikbaar is voor gegevens sets, kan de configuratie worden opgegeven zonder expliciet een configuratie op het \*niveau te hebben. In het bovenstaande voor beeld zijn alle eigenschappen van de gegevensset onder `typeProperties` para meters.
 
 ### <a name="default-parameterization-template"></a>Standaard parameterisering-sjabloon
 

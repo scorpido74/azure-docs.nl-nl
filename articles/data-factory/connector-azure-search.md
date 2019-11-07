@@ -1,5 +1,5 @@
 ---
-title: Gegevens kopiëren naar zoek index met behulp van Azure Data Factory | Microsoft Docs
+title: Gegevens kopiëren naar zoek index met behulp van Azure Data Factory
 description: Meer informatie over het pushen of kopiëren van gegevens naar een Azure search-index met behulp van de Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 703dcb5fee0c31328eee91c9673e62653d7aa698
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: f4e9e9f66d9bf1fecd4565d5eb469703e7a83d0d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286336"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681190"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Gegevens kopiëren naar een Azure Search-index met behulp van Azure Data Factory
 
@@ -41,7 +41,7 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 De volgende eigenschappen worden ondersteund voor Azure Search gekoppelde service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **AzureSearch** | Ja |
 | url | De URL voor de Azure Search-service. | Ja |
@@ -79,7 +79,7 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 
 De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens naar Azure Search:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **AzureSearchIndex** | Ja |
 | indexName | De naam van de Azure Search index. Data Factory maakt de index niet. De index moet bestaan in Azure Search. | Ja |
@@ -111,7 +111,7 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 Als u gegevens wilt kopiëren naar Azure Search, stelt u het bron type in de Kopieer activiteit in op **AzureSearchIndexSink**. De volgende eigenschappen worden ondersteund in het gedeelte **sink** van de Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **AzureSearchIndexSink** | Ja |
 | WriteBehavior | Hiermee geeft u op of u wilt samen voegen of vervangen wanneer een document al aanwezig is in de index. Zie de [eigenschap WriteBehavior](#writebehavior-property).<br/><br/>Toegestane waarden zijn: **samen voegen** (standaard) en **uploaden**. | Nee |
@@ -173,7 +173,7 @@ In de volgende tabel wordt aangegeven of een Azure Search gegevens type wordt on
 | Tekenreeks | J |
 | Int32 | J |
 | Int64 | J |
-| Dubbelklik | J |
+| Double-waarde | J |
 | Booleaans | J |
 | DataTimeOffset | J |
 | Teken reeks matrix | N |

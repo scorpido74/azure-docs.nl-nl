@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 41a626ba602ad33f22c3ea4acc39dd4f3438cbd0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: eb4f607672c39d45b7791ccaeeb6f7cff9393cb9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935688"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571020"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>De Azure IoT-extensie voor de Azure CLI installeren en gebruiken
 
@@ -62,7 +62,7 @@ Als u de Azure IoT-extensie voor Azure CLI wilt gebruiken, hebt u het volgende n
     > [!NOTE]
     > Tijdens de open bare preview zijn IoT-Plug en Play-functies alleen beschikbaar voor IoT-hubs die zijn gemaakt in de regio's **VS-centraal**, **Europa-Noord**en **Japan-Oost** .
 
-- Een apparaat dat is geregistreerd in uw IoT-hub. U kunt de volgende Azure cli-opdracht gebruiken om een apparaat te registreren. Vervang de `{YourIoTHubName}` `{YourDeviceID}` tijdelijke aanduidingen door uw waarden.
+- Een apparaat dat is geregistreerd in uw IoT-hub. U kunt de volgende Azure CLI-opdracht gebruiken om een apparaat te registreren. Zorg er daarom voor dat u de `{YourIoTHubName}` en `{YourDeviceID}` tijdelijke aanduidingen vervangt door de waarden:
 
     ```cmd/sh
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -88,7 +88,7 @@ Alle interfaces weer geven die zijn geregistreerd door een IoT-Plug en Play appa
 az iot dt list-interfaces --hub-name {YourIoTHubName} --device-id {YourDeviceID}
 ```
 
-#### <a name="properties"></a>properties
+#### <a name="properties"></a>Eigenschappen
 
 Alle eigenschappen en eigenschaps waarden weer geven voor een interface op een apparaat:
 
@@ -126,31 +126,31 @@ Alle opdrachten weer geven voor een interface op een apparaat:
 az iot dt list-commands --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
 ```
 
-Zonder de `--repo-login` para meter gebruikt deze opdracht de open bare model opslagplaats.
+Zonder de para meter `--repo-login` wordt met deze opdracht de open bare model opslagplaats gebruikt.
 
 Een opdracht aanroepen:
 
 ```cmd/sh
-az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --command-name {CommandName} --command-payload {CommandPayload or FilePath}
+az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --cn {CommandName} --command-payload {CommandPayload or FilePath}
 ```
 
-#### <a name="telemetry"></a>Telemetrie
+#### <a name="digital-twin-events"></a>Digitale dubbele gebeurtenissen
 
-Bewaak alle IoT Plug en Play telemetrie van een specifiek apparaat en interface naar het **$Default** Event hub-eind punt:
+Bewaak alle IoT Plug en Play digitale dubbele gebeurtenissen van een specifiek apparaat en een specifieke interface naar de **$Default** Event hub consumenten groep:
 
 ```cmd/sh
-az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
+az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID}
 ```
 
-Bewaak alle IoT Plug en Play telemetrie van een specifiek apparaat en een specifieke interface naar een specifieke consumenten groep:
+Bewaak alle IoT Plug en Play digitale dubbele gebeurtenissen van een specifiek apparaat en een specifieke interface naar een specifieke consumenten groep:
 
 ```cmd/sh
-az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString} --consumer-group {YourConsumerGroup}
+az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --consumer-group {YourConsumerGroup}
 ```
 
 ### <a name="manage-interfaces-in-a-model-repository"></a>Interfaces in een model opslagplaats beheren
 
-De volgende opdrachten gebruiken de open bare IoT Plug en Play-model opslagplaats. Als u een bedrijfs model opslagplaats wilt gebruiken, `--login` voegt u het argument toe met uw model opslagplaats Connection String.
+De volgende opdrachten gebruiken de open bare IoT Plug en Play-model opslagplaats. Als u een bedrijfs model opslagplaats wilt gebruiken, voegt u het `--login` argument toe aan uw model opslagplaats connection string.
 
 Interfaces in de open bare IoT-Plug en Play model opslagplaats weer geven:
 
@@ -190,7 +190,7 @@ Alleen micro soft-partners kunnen interfaces publiceren naar de open bare model 
 
 ### <a name="manage-device-capability-models-in-a-model-repository"></a>Hulp modellen voor apparaten beheren in een model opslagplaats
 
-De volgende opdrachten gebruiken de open bare IoT Plug en Play-model opslagplaats. Als u een bedrijfs model opslagplaats wilt gebruiken, `--login` voegt u het argument toe met uw model opslagplaats Connection String.
+De volgende opdrachten gebruiken de open bare IoT Plug en Play-model opslagplaats. Als u een bedrijfs model opslagplaats wilt gebruiken, voegt u het `--login` argument toe aan uw model opslagplaats connection string.
 
 Geef een overzicht van de mogelijkheden van apparaten in de IoT Plug en Play Public model-opslag plaats:
 

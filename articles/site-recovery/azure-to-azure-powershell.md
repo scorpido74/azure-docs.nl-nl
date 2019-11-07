@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery - instellingen en testen van herstel na noodgevallen voor Azure-machines met behulp van Azure PowerShell | Microsoft Docs
-description: Meer informatie over het instellen van herstel na noodgevallen voor Azure-machines met Azure Site Recovery met behulp van Azure PowerShell.
+title: Herstel na nood gevallen voor Azure-Vm's met Azure PowerShell en Azure Site Recovery
+description: Meer informatie over het instellen van herstel na nood gevallen voor virtuele Azure-machines met Azure Site Recovery met behulp van Azure PowerShell.
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -8,33 +8,33 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: fe74080387f76b858f60c5285a98c9b67f051449
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: aa91725daf36113334849dd15dd01b6ce6ed4389
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671888"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621080"
 ---
-# <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Instellen van herstel na noodgevallen voor Azure-machines met behulp van Azure PowerShell
+# <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Herstel na nood geval instellen voor virtuele Azure-machines met Azure PowerShell
 
 
-In dit artikel ziet u hoe u kunt instellen en testen herstel na noodgevallen voor Azure-machines met behulp van Azure PowerShell.
+In dit artikel ziet u hoe u herstel na nood gevallen voor virtuele Azure-machines kunt instellen en testen met behulp van Azure PowerShell.
 
 In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > - Maak een Recovery Services-kluis.
-> - De kluiscontext instellen voor de PowerShell-sessie.
-> - Bereid de kluis om te beginnen met het repliceren van virtuele machines van Azure.
-> - Netwerktoewijzingen maken.
-> - Opslagaccounts voor het repliceren van virtuele machines te maken.
-> - Virtuele Azure-machines repliceren naar een regio voor herstel na noodgevallen.
-> - Een testfailover uitvoeren, te valideren, en failovertest opschonen.
-> - Failover naar de recovery-regio.
+> - Stel de kluis context in voor de Power shell-sessie.
+> - Bereid de kluis voor op het repliceren van virtuele Azure-machines.
+> - Netwerk toewijzingen maken.
+> - Maak opslag accounts om virtuele machines naar te repliceren.
+> - Virtuele Azure-machines repliceren naar een herstel regio voor herstel na nood gevallen.
+> - Een testfailover uitvoeren, de testfailover valideren en de testfailover opschonen.
+> - Failover naar de herstel regio.
 
 > [!NOTE]
-> Niet alle scenario mogelijkheden die beschikbaar zijn via de portal is mogelijk beschikbaar via Azure PowerShell. Enkele van de scenario-mogelijkheden die momenteel niet ondersteund via Azure PowerShell zijn:
-> - De mogelijkheid om op te geven dat alle schijven in een virtuele machine zonder expliciet opgeven van elke schijf van de virtuele machine moeten worden gerepliceerd.  
+> Niet alle scenario mogelijkheden die beschikbaar zijn via de portal, zijn mogelijk beschikbaar via Azure PowerShell. Enkele van de scenario mogelijkheden die momenteel niet worden ondersteund via Azure PowerShell zijn:
+> - De mogelijkheid om op te geven dat alle schijven in een virtuele machine moeten worden gerepliceerd zonder dat elke schijf van de virtuele machine expliciet hoeft te worden opgegeven.  
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -44,7 +44,7 @@ In deze zelfstudie leert u procedures om het volgende te doen:
 Voordat u begint:
 - Zorg ervoor dat u inzicht hebt in de [architectuur en onderdelen voor dit scenario](azure-to-azure-architecture.md).
 - Raadpleeg de [ondersteuningsvereisten](azure-to-azure-support-matrix.md) voor alle onderdelen.
-- U hebt de Azure PowerShell `Az` module. Als u wilt installeren of upgraden van Azure PowerShell, volgt u deze [handleiding voor het installeren en configureren van Azure PowerShell](/powershell/azure/install-az-ps).
+- U hebt de module Azure PowerShell `Az`. Als u Azure PowerShell moet installeren of upgraden, volgt u deze [hand leiding voor het installeren en configureren van Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>Meld u aan bij uw Microsoft Azure-abonnement
 
@@ -53,15 +53,15 @@ Meld u aan bij uw Azure-abonnement met de cmdlet Connect-AzAccount
 ```azurepowershell
 Connect-AzAccount
 ```
-Selecteer uw Azure-abonnement. Gebruik de cmdlet Get-AzSubscription om te profiteren van de lijst met Azure-abonnementen hebt. Selecteer het Azure-abonnement om te werken met behulp van de Select-AzSubscription-cmdlet.
+Selecteer uw Azure-abonnement. Gebruik de cmdlet Get-AzSubscription om de lijst met Azure-abonnementen weer te geven waartoe u toegang hebt. Selecteer het Azure-abonnement waarmee u wilt werken met de cmdlet Select-AzSubscription.
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
-## <a name="get-details-of-the-virtual-machines-to-be-replicated"></a>Details van de virtuele machines worden gerepliceerd ophalen
+## <a name="get-details-of-the-virtual-machines-to-be-replicated"></a>Details ophalen van de virtuele machine (s) die moeten worden gerepliceerd
 
-In het voorbeeld in dit artikel wordt een virtuele machine in de regio VS-Oost worden gerepliceerd naar en hersteld in de regio VS-West 2. De virtuele machine wordt gerepliceerd, is een virtuele machine met een besturingssysteemschijf en één gegevensschijf. De naam van de virtuele machine die in het voorbeeld is AzureDemoVM.
+In het voor beeld in dit artikel wordt een virtuele machine in de regio VS-Oost gerepliceerd naar en hersteld in de regio vs West 2. De virtuele machine die wordt gerepliceerd, is een virtuele machine met een besturingssysteem schijf en één gegevens schijf. De naam van de virtuele machine die in het voor beeld wordt gebruikt, is AzureDemoVM.
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -86,7 +86,7 @@ ProvisioningState  : Succeeded
 StorageProfile     : {ImageReference, OsDisk, DataDisks}
 ```
 
-Schijfdetails van de ophalen voor de schijven van de virtuele machine. Details van schijf wordt gebruikt later bij het starten van replicatie voor de virtuele machine.
+Haal de schijf Details op voor de schijven van de virtuele machine. Schijf Details worden later gebruikt bij het starten van de replicatie voor de virtuele machine.
 
 ```azurepowershell
 $OSDiskVhdURI = $VM.StorageProfile.OsDisk.Vhd
@@ -95,14 +95,14 @@ $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
-Maak een resourcegroep waarin u wilt maken van de Recovery Services-kluis.
+Maak een resource groep waarin u de Recovery Services kluis wilt maken.
 
 > [!IMPORTANT]
-> * De Recovery services-kluis en de virtuele machines die wordt beveiligd, moeten zich in verschillende Azure-locaties.
-> * De resourcegroep van de Recovery services-kluis en de virtuele machines die wordt beveiligd, moet zich in verschillende Azure-locaties.
-> * De Recovery services-kluis en de resourcegroep waartoe deze behoort, kunnen zich in dezelfde Azure-locatie.
+> * De Recovery Services-kluis en de virtuele machines die worden beveiligd, moeten zich op verschillende Azure-locaties bevinden.
+> * De resource groep van de Recovery Services-kluis en de virtuele machines die worden beveiligd, moeten zich op verschillende Azure-locaties bevinden.
+> * De Recovery Services-kluis en de resource groep waartoe deze behoort, kunnen zich op dezelfde Azure-locatie bevindt.
 
-In het voorbeeld in dit artikel is de virtuele machine die wordt beveiligd in de regio VS-Oost. De herstelregio geselecteerd voor herstel na noodgevallen is de regio VS-West 2. De recovery services-kluis en de resourcegroep van de kluis zijn beide in de herstelregio (VS-West 2)
+In het voor beeld in dit artikel bevindt de virtuele machine die wordt beveiligd, zich in de regio VS-Oost. De geselecteerde herstel regio voor herstel na nood gevallen is de regio vs-West 2. De Recovery Services-kluis en de resource groep van de kluis bevinden zich in de herstel regio (VS-West 2)
 
 ```azurepowershell
 #Create a resource group for the recovery services vault in the recovery Azure region
@@ -116,7 +116,7 @@ Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
 
-Maak een Recovery services-kluis. In het voorbeeld hieronder een Recovery Services-kluis met de naam a2aDemoRecoveryVault wordt gemaakt in de regio VS-West 2.
+Maak een Recovery Services-kluis. In het voor beeld hieronder wordt een Recovery Services kluis gemaakt met de naam a2aDemoRecoveryVault in de regio vs West 2.
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
@@ -133,10 +133,10 @@ ResourceGroupName : a2ademorecoveryrg
 SubscriptionId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
-## <a name="set-the-vault-context"></a>De kluiscontext instellen
+## <a name="set-the-vault-context"></a>De kluis context instellen
 
 
-Stel de context van de kluis voor gebruik in de PowerShell-sessie. Nadat deze is ingesteld, de volgende Azure Site Recovery-bewerkingen in de PowerShell-sessie worden uitgevoerd in de context van de geselecteerde kluis.
+Stel de kluis context in voor gebruik in de Power shell-sessie. Eenmaal ingesteld, worden volgende Azure Site Recovery bewerkingen in de Power shell-sessie uitgevoerd in de context van de geselecteerde kluis.
 
  ```azurepowershell
 #Setting the vault context.
@@ -154,7 +154,7 @@ a2aDemoRecoveryVault a2ademorecoveryrg Microsoft.RecoveryServices Vaults
 Remove-Item -Path $Vaultsettingsfile.FilePath
 ```
 
-U kunt de context van de kluis naar de zojuist gemaakte kluis instellen voor een Azure-naar-Azure-migratie: 
+Voor een migratie van Azure naar Azure kunt u de kluis context instellen op de zojuist gemaakte kluis: 
 
 ```azurepowershell
 
@@ -163,17 +163,17 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 ```
 
-## <a name="prepare-the-vault-to-start-replicating-azure-virtual-machines"></a>De kluis om te beginnen met het repliceren van virtuele Azure-machines voorbereiden
+## <a name="prepare-the-vault-to-start-replicating-azure-virtual-machines"></a>De kluis voorbereiden om virtuele Azure-machines te repliceren
 
-### <a name="create-a-site-recovery-fabric-object-to-represent-the-primary-source-region"></a>Een Site Recovery-infrastructuur-object om weer te geven van de regio van de primaire (bron) maken
+### <a name="create-a-site-recovery-fabric-object-to-represent-the-primary-source-region"></a>Een Site Recovery Fabric-object maken om de primaire (bron) regio aan te duiden
 
-De fabric-object in de kluis vertegenwoordigt een Azure-regio. Het primaire fabric-object is gemaakt om weer te geven van de Azure-regio die deel uitmaken van virtuele machines die wordt beveiligd op de kluis op. In het voorbeeld in dit artikel is de virtuele machine die wordt beveiligd in de regio VS-Oost.
+Het Fabric-object in de kluis vertegenwoordigt een Azure-regio. Het primaire Fabric-object wordt gemaakt om de Azure-regio weer te geven waartoe de virtuele machines behoren die met de kluis worden beveiligd. In het voor beeld in dit artikel bevindt de virtuele machine die wordt beveiligd, zich in de regio VS-Oost.
 
-- Slechts één fabric object kan per regio worden gemaakt.
-- Als u Site Recovery-replicatie voor een virtuele machine in Azure portal eerder hebt ingeschakeld, maakt Site Recovery automatisch een fabric-object. Als een object fabric voor een regio bestaat, kunt u een nieuw wachtwoord kan niet maken.
+- Er kan slechts één Fabric-object per regio worden gemaakt.
+- Als u eerder Site Recovery replicatie voor een virtuele machine in de Azure Portal hebt ingeschakeld, maakt Site Recovery automatisch een Fabric-object. Als er voor een regio een Fabric-object bestaat, kunt u geen nieuwe maken.
 
 
-Voordat u begint, houd er rekening mee dat Site Recovery-bewerkingen asynchroon worden uitgevoerd. Wanneer u een bewerking hebt gestart, wordt een Azure Site Recovery-taak wordt verzonden en wordt een taak voor het bijhouden van object wordt geretourneerd. De taak voor het bijhouden van object gebruiken om op te halen van de meest recente status voor de taak (Get-ASRJob) en het controleren van de status van de bewerking.
+Houd er rekening mee dat Site Recovery bewerkingen asynchroon worden uitgevoerd voordat u begint. Wanneer u een bewerking initieert, wordt een Azure Site Recovery taak verzonden en wordt een taak tracking object geretourneerd. Gebruik het object voor taak tracering om de meest recente status voor de taak (Get-ASRJob) op te halen en om de status van de bewerking te controleren.
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -191,11 +191,11 @@ Write-Output $TempASRJob.State
 
 $PrimaryFabric = Get-AsrFabric -Name "A2Ademo-EastUS"
 ```
-Als u virtuele machines van Azure-regio's bij dezelfde kluis worden beveiligd, moet u één fabric-object voor elke bron Azure-regio maken.
+Als virtuele machines uit meerdere Azure-regio's worden beveiligd met dezelfde kluis, maakt u één Fabric-object voor elke Azure-bron regio.
 
-### <a name="create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>Maken van een Site Recovery-infrastructuur-object om weer te geven van de herstelregio
+### <a name="create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>Een Site Recovery Fabric-object maken om de herstel regio aan te duiden
 
-De recovery-infrastructuur-object vertegenwoordigt het herstel van Azure-locatie. Virtuele machines worden gerepliceerd naar en hersteld (in het geval van een failover) de herstelregio vertegenwoordigd door de recovery-infrastructuur. Het herstel van Azure-regio die wordt gebruikt in dit voorbeeld is VS-West 2.
+Het Recovery Fabric-object vertegenwoordigt de Azure-herstel locatie. Virtuele machines worden gerepliceerd naar en teruggezet naar (in het geval van een failover) de herstel regio die wordt vertegenwoordigd door de herstel infrastructuur. De Azure-regio voor herstel die in dit voor beeld wordt gebruikt, is vs-West 2.
 
 ```azurepowershell
 #Create Recovery ASR fabric
@@ -214,9 +214,9 @@ $RecoveryFabric = Get-AsrFabric -Name "A2Ademo-WestUS"
 
 ```
 
-### <a name="create-a-site-recovery-protection-container-in-the-primary-fabric"></a>Een Site Recovery-beveiliging-container maken in de primaire-infrastructuur
+### <a name="create-a-site-recovery-protection-container-in-the-primary-fabric"></a>Een Site Recovery-beveiligings container maken in de primaire infra structuur
 
-De beveiligingscontainer is een container die wordt gebruikt om gerepliceerde items binnen een infrastructuur te groeperen.
+De beveiligings container is een container die wordt gebruikt om gerepliceerde items binnen een infra structuur te groeperen.
 
 ```azurepowershell
 #Create a Protection container in the primary Azure region (within the Primary fabric)
@@ -232,7 +232,7 @@ Write-Output $TempASRJob.State
 
 $PrimaryProtContainer = Get-ASRProtectionContainer -Fabric $PrimaryFabric -Name "A2AEastUSProtectionContainer"
 ```
-### <a name="create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>Een Site Recovery-beveiliging-container maken in de recovery-infrastructuur
+### <a name="create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>Een Site Recovery-beveiligings container maken in de herstel infrastructuur
 
 ```azurepowershell
 #Create a Protection container in the recovery Azure region (within the Recovery fabric)
@@ -268,9 +268,9 @@ Write-Output $TempASRJob.State
 
 $ReplicationPolicy = Get-ASRPolicy -Name "A2APolicy"
 ```
-### <a name="create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>Een toewijzing van beveiligingscontainer tussen de primaire en beveiligingscontainer maken
+### <a name="create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>Een toewijzing van een beveiligings container maken tussen de primaire en herstel beveiligings container
 
-Een toewijzing van beveiligingscontainer wijst de primaire beveiliging-container met een beveiligingscontainer herstel en beleid voor replicatie. Maak een toewijzing voor elke replicatiebeleid dat u gebruikt voor het repliceren van virtuele machines tussen twee container beveiliging.
+Een toewijzing van een beveiligings container wijst de primaire beveiligings container toe aan een herstel beveiligings container en een replicatie beleid. Maak een toewijzing voor elk replicatie beleid dat u gebruikt voor het repliceren van virtuele machines tussen een beveiligings container paar.
 
 ```azurepowershell
 #Create Protection container mapping between the Primary and Recovery Protection Containers with the Replication policy
@@ -288,9 +288,9 @@ Write-Output $TempASRJob.State
 $EusToWusPCMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
 ```
 
-### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>Maken van een toewijzing van beveiligingscontainer voor failback (omgekeerde replicatie na een failover)
+### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>Een beveiligings container toewijzing maken voor failback (omgekeerde replicatie na een failover)
 
-Na een failover, wanneer u klaar bent om te worden overgebracht naar de virtuele machine terug naar de oorspronkelijke Azure-regio u failback. Failback-proces, de virtuele machine is omgekeerde gerepliceerd van de mislukte via regio naar de oorspronkelijke regio. Omgekeerde replicatie overschakelen de rollen van de oorspronkelijke regio en de herstelregio. De oorspronkelijke regio wordt nu de nieuwe herstelregio en wat oorspronkelijk was de herstelregio nu wordt de primaire regio. De toewijzing van beveiligingscontainer voor omgekeerde replicatie geeft de geschakelde rollen van de oorspronkelijke en recovery-regio's.
+Wanneer u een failover hebt uitgevoerd en u klaar bent om de virtuele machine waarvoor failover is uitgevoerd, weer naar de oorspronkelijke Azure-regio te brengen, wordt u failback uitgevoerd. Voor failback wordt de virtuele machine waarvoor een failover is uitgevoerd, omgekeerd gerepliceerd van de regio voor een failover naar de oorspronkelijke regio. Voor omgekeerde replicatie, de rollen van de oorspronkelijke regio en de herstel regio-switch. De oorspronkelijke regio wordt nu de nieuwe herstel regio en de aanvankelijke herstel regio wordt nu de primaire regio. De toewijzing van de beveiligings container voor omgekeerde replicatie vertegenwoordigt de geschakelde rollen van de oorspronkelijke en herstel regio's.
 
 ```azurepowershell
 #Create Protection container mapping (for failback) between the Recovery and Primary Protection Containers with the Replication policy
@@ -306,16 +306,16 @@ while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStart
 Write-Output $TempASRJob.State
 ```
 
-## <a name="create-cache-storage-accounts-and-target-storage-accounts"></a>Cache-opslagaccount (s) en doel-opslagaccount (s) maken
+## <a name="create-cache-storage-accounts-and-target-storage-accounts"></a>Cache-opslag account (s) en het doel-opslag account (s) maken
 
-Een cache-opslagaccount is een standaard opslagaccount in dezelfde Azure-regio als de virtuele machine wordt gerepliceerd. De cache-opslagaccount wordt gebruikt voor het opslaan van replicatiewijzigingen tijdelijk, voordat de wijzigingen worden verplaatst naar de Azure-regio van het herstel. (Maar hoeven niet) kunt u verschillende cacheopslagaccounts voor de verschillende schijven van een virtuele machine opgeven.
+Een cache-opslag account is een standaard opslag account in dezelfde Azure-regio als de virtuele machine die wordt gerepliceerd. Het cache-opslag account wordt gebruikt voor het tijdelijk bewaren van replicatie wijzigingen voordat de wijzigingen worden verplaatst naar de Azure-regio voor herstel. U kunt ervoor kiezen om (maar hoeft niet) verschillende cache opslag accounts voor de verschillende schijven van een virtuele machine op te geven.
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
 $EastUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
 ```
 
-Voor virtuele machines **niet met behulp van beheerde schijven**, het doelopslagaccount is het opslagaccount (s) in de herstelregio waarnaar de schijven van de virtuele machine worden gerepliceerd. Het doelopslagaccount is een standard storage-account of een premium storage-account. Selecteer het type opslagaccount dat vereist is op basis van de veranderingssnelheid van gegevens (i/o schrijven tarief) voor de schijven en de Azure Site Recovery ondersteunde verloop limieten voor het opslagtype.
+Voor virtuele machines die **geen beheerde schijven gebruiken**, is het doel opslag account de opslag account (s) in de herstel regio waarnaar schijven van de virtuele machine worden gerepliceerd. Het doel opslag account kan een Standard-opslag account of een Premium Storage-account zijn. Selecteer het type opslag account dat is vereist op basis van de waarde voor het wijzigen van de gegevens (i/o-schrijf snelheden) voor de schijven en de Azure Site Recovery ondersteunde verloop limieten voor het opslag type.
 
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account
@@ -323,11 +323,11 @@ $WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -Res
 
 ```
 
-## <a name="create-network-mappings"></a>Netwerktoewijzingen maken
+## <a name="create-network-mappings"></a>Netwerk toewijzingen maken
 
-Virtuele netwerken in de primaire regio een netwerktoewijzing toegewezen aan virtuele netwerken in de herstelregio voor. De netwerktoewijzing Hiermee geeft u het Azure-netwerk in de herstelregio, die een virtuele machine in het primaire virtuele netwerk failover naar moeten. Een virtueel Azure-netwerk kan worden toegewezen aan slechts één Azure virtueel netwerk in een herstelregio voor.
+Een netwerk toewijzing wijst virtuele netwerken in de primaire regio toe aan virtuele netwerken in de herstel regio. Met de netwerk toewijzing wordt het virtuele Azure-netwerk opgegeven in de herstel regio, die een virtuele machine in het primaire virtuele netwerk moet failover naar. Een virtueel Azure-netwerk kan worden toegewezen aan slechts één virtueel Azure-netwerk in een herstel regio.
 
-- Een Azure-netwerk maken in de herstelregio voor de failover
+- Een virtueel Azure-netwerk in de herstel regio maken voor failover naar
 
    ```azurepowershell
     #Create a Recovery Network in the recovery region
@@ -337,7 +337,7 @@ Virtuele netwerken in de primaire regio een netwerktoewijzing toegewezen aan vir
 
     $WestUSRecoveryNetwork = $WestUSRecoveryVnet.Id
    ```
-- Ophalen van de primaire virtuele netwerk (het vnet waarmee de virtuele machine is verbonden met)
+- Het primaire virtuele netwerk (het vnet waarmee de virtuele machine is verbonden) ophalen
    ```azurepowershell
     #Retrieve the virtual network that the virtual machine is connected to
 
@@ -359,7 +359,7 @@ Virtuele netwerken in de primaire regio een netwerktoewijzing toegewezen aan vir
     # Extract the resource ID of the Azure virtual network the nic is connected to from the subnet ID
     $EastUSPrimaryNetwork = (Split-Path(Split-Path($PrimarySubnet.Id))).Replace("\","/")  
    ```
-- De netwerktoewijzing tussen de primaire virtuele netwerk en het virtuele herstelnetwerk maken
+- Netwerk toewijzing maken tussen het primaire virtuele netwerk en het virtuele netwerk voor herstel
    ```azurepowershell
     #Create an ASR network mapping between the primary Azure virtual network and the recovery Azure virtual network
     $TempASRJob = New-ASRNetworkMapping -AzureToAzure -Name "A2AEusToWusNWMapping" -PrimaryFabric $PrimaryFabric -PrimaryAzureNetworkId $EastUSPrimaryNetwork -RecoveryFabric $RecoveryFabric -RecoveryAzureNetworkId $WestUSRecoveryNetwork
@@ -374,7 +374,7 @@ Virtuele netwerken in de primaire regio een netwerktoewijzing toegewezen aan vir
     Write-Output $TempASRJob.State
 
    ```
-- Netwerktoewijzing voor de omgekeerde richting (failback) maken
+- Netwerk toewijzing maken voor de omgekeerde richting (failback)
     ```azurepowershell
     #Create an ASR network mapping for failback between the recovery Azure virtual network and the primary Azure virtual network
     $TempASRJob = New-ASRNetworkMapping -AzureToAzure -Name "A2AWusToEusNWMapping" -PrimaryFabric $RecoveryFabric -PrimaryAzureNetworkId $WestUSRecoveryNetwork -RecoveryFabric $PrimaryFabric -RecoveryAzureNetworkId $EastUSPrimaryNetwork
@@ -389,9 +389,9 @@ Virtuele netwerken in de primaire regio een netwerktoewijzing toegewezen aan vir
     Write-Output $TempASRJob.State
     ```
 
-## <a name="replicate-azure-virtual-machine"></a>Virtuele Azure-machines repliceren
+## <a name="replicate-azure-virtual-machine"></a>Virtuele Azure-machine repliceren
 
-Virtuele machine van Azure met repliceren **beheerde schijven**.
+Repliceer de virtuele Azure-machine met **Managed disks**.
 
 ```azurepowershell
 
@@ -428,7 +428,7 @@ $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -N
 
 ```
 
-Virtuele machine van Azure met repliceren **niet-beheerde schijven**.
+Repliceer de virtuele Azure-machine met niet- **beheerde schijven**.
 
 ```azurepowershell
 #Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
@@ -460,13 +460,13 @@ while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStart
 Write-Output $TempASRJob.State
 ```
 
-Zodra de begin-replicatiebewerking is gelukt, worden gegevens van virtuele machines wordt gerepliceerd naar de herstelregio voor.
+Zodra de bewerking voor het starten van de replicatie is voltooid, worden de gegevens van de virtuele machine gerepliceerd naar de herstel regio.
 
-Het replicatieproces wordt gestart door een kopie van de replicerende schijven van de virtuele machine in de herstelregio in eerste instantie seeding. Deze fase wordt de fase van de initiële replicatie genoemd.
+Het replicatie proces wordt gestart door eerst een kopie van de replicerende schijven van de virtuele machine in het herstel gebied te seeden. Deze fase wordt de initiële replicatie fase genoemd.
 
-Nadat de eerste replicatie is voltooid, wordt replicatie naar de differentiële synchronisatiefase verplaatst. Op dit moment de virtuele machine is beveiligd en een testfailover kan erop worden uitgevoerd. De replicatiestatus van het gerepliceerde item voor de virtuele machine gaat naar de status 'Beveiligd' nadat de initiële replicatie is voltooid.
+Zodra de initiële replicatie is voltooid, gaat de replicatie over naar de differentiële synchronisatie fase. Op dit moment wordt de virtuele machine beveiligd en kan er een testfailover worden uitgevoerd. De replicatie status van het gerepliceerde item van de virtuele machine wordt verplaatst naar de status ' beveiligd ' nadat de initiële replicatie is voltooid.
 
-De replicatiestatus en de replicatiestatus voor de virtuele machine met het ophalen van details van de replicatie wordt beveiligd item overeenkomt met het bewaken.
+Controleer de replicatie status en de replicatie status voor de virtuele machine door Details van het met replicatie beveiligde item corresponderende items op te halen.
 ```azurepowershell
  Get-ASRReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
@@ -476,9 +476,9 @@ FriendlyName ProtectionState ReplicationHealth
 AzureDemoVM  Protected       Normal           
 ```
 
-## <a name="perform-a-test-failover-validate-and-cleanup-test-failover"></a>Een testfailover uitvoeren, te valideren, en failovertest opschonen
+## <a name="perform-a-test-failover-validate-and-cleanup-test-failover"></a>Een testfailover uitvoeren, een testfailover valideren en een failovertest opschonen
 
-Wanneer replicatie voor de virtuele machine een beveiligde status bereikt heeft, kan een testfailover worden uitgevoerd op de virtuele machine (op het item beveiligd replicatie van de virtuele machine.)
+Zodra de replicatie voor de virtuele machine een beveiligde status heeft bereikt, kan een testfailover worden uitgevoerd op de virtuele machine (op het met de replicatie beveiligde item van de virtuele machine).
 
 ```azurepowershell
 #Create a separate network for test failover (not connected to my DR network)
@@ -489,7 +489,7 @@ Add-AzVirtualNetworkSubnetConfig -Name "default" -VirtualNetwork $TFOVnet -Addre
 $TFONetwork= $TFOVnet.Id
 ```
 
-Testfailover uitvoeren.
+Voer een testfailover uit.
 ```azurepowershell
 $ReplicationProtectedItem = Get-ASRReplicationProtectedItem -FriendlyName "AzureDemoVM" -ProtectionContainer $PrimaryProtContainer
 
@@ -498,7 +498,7 @@ $TFOJob = Start-ASRTestFailoverJob -ReplicationProtectedItem $ReplicationProtect
 
 ```
 
-Wachten op voor de testfailover te voltooien.
+Wacht tot de bewerking testfailover is voltooid.
 ```azurepowershell
 Get-ASRJob -Job $TFOJob
 ```
@@ -522,9 +522,9 @@ AllowedActions   :
 Tasks            : {Prerequisites check for test failover, Create test virtual machine, Preparing the virtual machine, Start the virtual machine}
 Errors           : {}
 ```
-Zodra de test-failover-taak voltooid is, kunt u verbinding maken met de virtuele machine failover testen en valideren van de testfailover.
+Zodra de testfailover is voltooid, kunt u verbinding maken met de virtuele machine waarvoor de test is mislukt en de testfailover valideren.
 
-Zodra het testen is voltooid op de virtuele machine failover testen, test u opschonen van de testexemplaar op basis van het opruimen van de failoverbewerking. Deze bewerking wordt de test-kopie van de virtuele machine die is gemaakt door de testfailover verwijderd.
+Wanneer het testen is voltooid voor de virtuele machine waarvoor de test is mislukt, moet u de test kopie opschonen door de bewerking voor het opschonen van de failovertest te starten. Met deze bewerking wordt de test kopie van de virtuele machine verwijderd die is gemaakt door de testfailover.
 
 ```azurepowershell
 $Job_TFOCleanup = Start-ASRTestFailoverCleanupJob -ReplicationProtectedItem $ReplicationProtectedItem
@@ -539,7 +539,7 @@ Succeeded
 
 ## <a name="failover-to-azure"></a>Failover naar Azure
 
-Failover uit van de virtuele machine naar een specifiek herstelpunt.
+Een failover van de virtuele machine naar een specifiek herstel punt.
 
 ```azurepowershell
 $RecoveryPoints = Get-ASRRecoveryPoint -ReplicationProtectedItem $ReplicationProtectedItem
@@ -567,7 +567,7 @@ $Job_Failover.State
 Succeeded
 ```
 
-Nadat de failover is mislukt, kunt u de failoverbewerking doorvoeren.
+Als failover is uitgevoerd, kunt u de failoverbewerking door voeren.
 ```azurepowershell
 $CommitFailoverJOb = Start-ASRCommitFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem
 
@@ -594,9 +594,9 @@ Tasks            : {Prerequisite check, Commit}
 Errors           : {}
 ```
 
-## <a name="reprotect-and-failback-to-source-region"></a>Opnieuw beveiligen en failback naar de bronregio
+## <a name="reprotect-and-failback-to-source-region"></a>Opnieuw beveiligen en failback naar bron regio
 
-Wanneer u bent klaar om terug te gaan naar de oorspronkelijke regio beveiligd omgekeerde replicatie starten voor de replicatie na een failover item met de cmdlet Update-AzRecoveryServicesAsrProtectionDirection.
+Wanneer u klaar bent om terug te gaan naar de oorspronkelijke regio, start u na een failover de omgekeerde replicatie voor het beveiligde replicatie-item met behulp van de cmdlet Update-AzRecoveryServicesAsrProtectionDirection.
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
@@ -609,7 +609,7 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 -ProtectionContainerMapping $RecoveryProtContainer -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.Id
 ```
 
-Zodra opnieuw beveiligen voltooid is, kunt u failover in omgekeerde richting (VS West op VS-Oost) en failback naar de regio van de gegevensbron kunt starten.
+Zodra het opnieuw beveiligen is voltooid, kunt u een failover initiëren in omgekeerde richting (VS-West naar VS-Oost) en failback naar de bron regio.
 
 ## <a name="disable-replication"></a>Replicatie uitschakelen
 
@@ -620,4 +620,4 @@ Remove-ASRReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Weergave de [Azure Site Recovery PowerShell-referentie](https://docs.microsoft.com/powershell/module/az.RecoveryServices) voor meer informatie over hoe u kunt andere taken uitvoert zoals herstelplannen maken en testen van failover van plannen voor herstel via PowerShell.
+Bekijk de [Azure site Recovery Power shell-referentie](https://docs.microsoft.com/powershell/module/az.RecoveryServices) voor meer informatie over hoe u andere taken kunt uitvoeren, zoals het maken van herstel plannen en het testen van de failover van herstel plannen via Power shell.

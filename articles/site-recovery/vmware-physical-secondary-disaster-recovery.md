@@ -1,19 +1,19 @@
 ---
-title: Herstel na nood geval instellen voor virtuele VMware-machines of fysieke servers naar een secundaire site met Azure Site Recovery | Microsoft Docs
+title: Herstel na nood geval voor virtuele VMware-machines/fysieke servers naar een secundaire site met Azure Site Recovery
 description: Meer informatie over het instellen van herstel na nood gevallen van virtuele VMware-machines of fysieke Windows-en Linux-servers naar een secundaire site met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: a87abfdd70db07e4310dc6a39a280e12f664d03b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972099"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620523"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Herstel na nood gevallen instellen voor on-premises virtuele VMware-machines of fysieke servers naar een secundaire site
 
@@ -29,8 +29,8 @@ Het Azure Site Recovery scenario voor replicatie tussen on-premises VMware-of fy
 
 Tijdens 2018 en 2019 worden er twee updates uitgebracht: 
 
--   Update 7: Hiermee worden problemen met de netwerk configuratie en naleving opgelost, en wordt TLS 1,2-ondersteuning geboden.
--   Update 8: Voegt ondersteuning toe voor Linux-besturings systemen RHEL/CentOS 7.3/7,4/7.5 en voor SUSE 12
+-   Update 7: lost problemen met de netwerk configuratie en naleving op en biedt ondersteuning voor TLS 1,2.
+-   Update 8: voegt ondersteuning toe voor Linux-besturings systemen RHEL/CentOS 7.3/7,4/7.5 en voor SUSE 12
 
 Na update 8 worden er geen verdere updates uitgebracht. Er wordt beperkte hotfix-ondersteuning geboden voor de besturings systemen die zijn toegevoegd in update 8 en probleem oplossingen op basis van de beste poging.
 
@@ -40,7 +40,7 @@ Azure Site Recovery blijft innoveren door VMware-en Hyper-V-klanten een naadloze
 Als alternatief kunt u het beste herstel na nood gevallen instellen voor on-premises VMware-Vm's en fysieke machines door ze te repliceren naar Azure. Doe dit als volgt:
 
 1.  Bekijk de onderstaande snelle vergelijking. Voordat u on-premises machines kunt repliceren, moet u controleren of ze voldoen aan de [vereisten](./vmware-physical-azure-support-matrix.md#replicated-machines) voor replicatie naar Azure. Als u virtuele VMware-machines repliceert, raden we u aan de [richt lijnen voor capaciteits planning](./site-recovery-plan-capacity-vmware.md)te controleren en het [Deployment planner-hulp programma](./site-recovery-deployment-planner.md) uit te voeren op identiteits vereisten en om de compatibiliteit te controleren.
-2.  Nadat u de Deployment Planner hebt uitgevoerd, kunt u replicatie configureren: o voor VMware-Vm's, volgt u deze zelf studies om [Azure](./tutorial-prepare-azure.md)voor te bereiden, [uw on-premises VMware-omgeving voor](./vmware-azure-tutorial-prepare-on-premises.md)te bereiden en [herstel na nood](./vmware-azure-tutorial-prepare-on-premises.md)geval in te stellen.
+2.  Nadat u de Deployment Planner hebt uitgevoerd, kunt u replicatie configureren: o voor VMware-Vm's, volgt u deze zelf studies om Azure voor te [bereiden](./tutorial-prepare-azure.md), [uw on-premises VMware-omgeving voor te bereiden](./vmware-azure-tutorial-prepare-on-premises.md)en [herstel na nood](./vmware-azure-tutorial-prepare-on-premises.md)geval in te stellen.
 o voor fysieke computers, volgt u deze [zelf studie](./physical-azure-disaster-recovery.md).
 3.  Nadat de computers zijn gerepliceerd naar Azure, kunt u een [nood herstel analyse](./site-recovery-test-failover-to-azure.md) uitvoeren om te controleren of alles werkt zoals verwacht.
 
@@ -50,11 +50,11 @@ o voor fysieke computers, volgt u deze [zelf studie](./physical-azure-disaster-r
 --|--|--
 **Vereiste onderdelen** |Mobility service op gerepliceerde machines. On-premises configuratie server, proces server, Master doel server. Tijdelijke proces server in azure voor failback.|Mobility-service, proces server, configuratie server en hoofd doel
 **Configuratie en indeling** |Recovery Services kluis in de Azure Portal | VContinuum gebruiken 
-**Bijgewerkt** |Schijf (Windows en Linux) |Volume-Windows<br> Disk-Linux
+**Bijgewerkt** |Schijf (Windows en Linux) |Volume-Windows<br> Schijf-Linux
 **Gedeeld schijf cluster** |Niet ondersteund|Ondersteund
 **Limieten voor gegevens verloop (gemiddeld)** |10 MB/s gegevens per schijf<br> 25MB/s gegevens per VM<br> [Meer informatie](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | > 10 MB/s gegevens per schijf  <br> > 25 MB/s gegevens per VM
 **Controle** |Van Azure Portal|Van CX (configuratie server)
-**Ondersteunings matrix** | [Klik hier voor meer informatie](./vmware-physical-azure-support-matrix.md)|[Met ASR Scout compatibele matrix downloaden](https://aka.ms/asr-scout-cm)
+**Ondersteunings matrix** | [Klik hier voor details](./vmware-physical-azure-support-matrix.md)|[Met ASR Scout compatibele matrix downloaden](https://aka.ms/asr-scout-cm)
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -81,51 +81,51 @@ Installeer de updates als volgt:
 >De versie van de update van de bestanden van de Scout-onderdelen kan niet hetzelfde zijn in het bestand Update. zip. De oudere versie geeft aan dat het onderdeel sinds de vorige update van deze update niet is gewijzigd.
 
 Down load het bestand [Update](https://aka.ms/asr-scout-update7) . zip en de upgrade configuratie bestanden voor [MySQL en PHP](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade) . Het bestand Update. zip bevat alle binaire bestanden voor binaire bestanden en cumulatieve upgrades van de volgende onderdelen: 
-- InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015.tar.gz
-- RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz
-- InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
-- InMage_CX_TP_8.0.1.0_Windows_GA_26Feb2015_release.exe
-- CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe
-- InMage_PI_8.0.1.0_Windows_GA_26Feb2015_release.exe
-- InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe
-- InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe
-- InMage_UA_8.0.7.0_OL5-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_OL5-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_OL6-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_OL6-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_RHEL5-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_RHEL5-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_RHEL6-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_RHEL7-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP1-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP1-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP2-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP2-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP3-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP3-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP4-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP4-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-64_GA_04Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP1-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP1-64_GA_04Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP2-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP2-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP3-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
+- InMage_ScoutCloud_RX_ 8.0.1.0 _RHEL6-64_GA_02Mar2015. tar. gz
+- RX_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. tar. gz
+- InMage_CX_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
+- InMage_CX_TP_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
+- CX_Windows_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. exe
+- InMage_PI_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
+- InMage_Scout_vContinuum_MT_ 8.0.7.0 _Windows_GA_27Dec2018_release. exe
+- InMage_UA_ 8.0.7.0 _Windows_GA_27Dec2018_release. exe
+- InMage_UA_ 8.0.7.0 _OL5-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _OL5-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _OL6-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _OL6-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _RHEL5-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _RHEL5-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _RHEL6-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _RHEL6-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _RHEL7-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP1-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP1-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP2-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP2-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP3-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP3-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP4-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP4-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-64_GA_04Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP1-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP1-64_GA_04Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP2-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP2-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP3-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP3-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP4-64_GA_03Dec2018_release. tar. gz
   1. Pak de zip-bestanden uit.
   2. **RX-server**: Kopieer **rx_ 8.0.7.0 _ga_update_7_2965621_28dec18. tar. gz** naar de RX-server en pak het uit. Voer in de uitgepakte map **/install**uit.
   3. **Configuratie server en proces server**: Kopieer **cx_windows_ 8.0.7.0 _ga_update_7_2965621_28dec18. exe** naar de configuratie server en de proces server. Dubbel klik om het uit te voeren.<br>
-  4. **Windows-hoofddoel server**: Als u de Unified agent wilt bijwerken, kopieert u **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe** naar de server. Dubbel klik erop om het uit te voeren. Hetzelfde bestand kan ook worden gebruikt voor een nieuwe installatie. Dezelfde Unified agent update is ook van toepassing op de bron server.
+  4. **Windows-hoofddoel server**: als u de Unified agent wilt bijwerken, kopieert u **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe** naar de server. Dubbel klik erop om het uit te voeren. Hetzelfde bestand kan ook worden gebruikt voor een nieuwe installatie. Dezelfde Unified agent update is ook van toepassing op de bron server.
   De update hoeft niet te worden toegepast op het hoofd doel dat is voor bereid met **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** , omdat dit nieuw ga-installatie programma is met alle laatste wijzigingen.
-  5. **vContinuum-server**:  Kopieer **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** naar de server.  Zorg ervoor dat u de vContinuum-wizard hebt gesloten. Dubbel klik op het bestand om het uit te voeren.
-  6. **Doel server van Linux-Master**: Als u de Unified agent wilt bijwerken, kopieert u **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** naar de Linux-hoofddoel server en pakt u deze uit. Voer in de uitgepakte map **/install**uit.
-  7. **Windows-bron server**: Als u de Unified agent wilt bijwerken, kopieert u **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe** naar de bron server. Dubbel klik op het bestand om het uit te voeren. 
-  8. **Linux-bron server**: Als u de Unified agent wilt bijwerken, kopieert u de bijbehorende versie van het Unified agent-bestand naar de Linux-server en pakt u het uit. Voer in de uitgepakte map **/install**uit.  Voorbeeld: Voor RHEL 6,7 64-bits server kopieert u **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** naar de server en pakt u deze uit. Voer in de uitgepakte map **/install**uit.
+  5. **vContinuum-server**: Kopieer **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** naar de server.  Zorg ervoor dat u de vContinuum-wizard hebt gesloten. Dubbel klik op het bestand om het uit te voeren.
+  6. **Linux-hoofddoel server**: als u de Unified agent wilt bijwerken, kopieert u **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** naar de Linux-hoofddoel server en pakt u deze uit. Voer in de uitgepakte map **/install**uit.
+  7. **Windows-bron server**: als u de Unified agent wilt bijwerken, kopieert u **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe** naar de bron server. Dubbel klik op het bestand om het uit te voeren. 
+  8. **Linux-bron server**: als u de Unified agent wilt bijwerken, kopieert u de bijbehorende versie van het Unified agent-bestand naar de Linux-server en pakt u het uit. Voer in de uitgepakte map **/install**uit.  Voor beeld: voor RHEL 6,7 64-bits server kopieert u **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** naar de server en pakt u deze uit. Voer in de uitgepakte map **/install**uit.
   9. Na de upgrade van de configuratie server, de proces server en de RX-server met de bovengenoemde installatie Programma's, moet de PHP-en MySQL-bibliotheken hand matig worden bijgewerkt met de stappen die worden beschreven in sectie 7,4 van de [hand leiding voor snelle installatie](https://aka.ms/asr-scout-quick-install-guide).
 
 ## <a name="enable-replication"></a>Replicatie inschakelen
@@ -151,10 +151,10 @@ Scout update 7 is een volledig installatie programma dat kan worden gebruikt voo
 * TLS v 1.2-ondersteuning
 
 #### <a name="bug-and-security-fixes"></a>Problemen met bug en beveiliging
-* Vaste Windows-cluster/zelfstandige machines hebben een onjuiste IP-configuratie bij herstel/DR-analyse.
-* Vaste Soms wordt een schijf bewerking voor het V2V-cluster mislukt.
+* Opgelost: Windows-cluster/zelfstandige machines hebben een onjuiste IP-configuratie bij herstel/DR-analyse.
+* Opgelost: soms wordt een schijf bewerking voor het V2V-cluster mislukt.
 * Opgelost: de wizard vContinuum raakt vastgelopen tijdens de herstel fase als het hoofd doel Windows Server 2016 is
-* Vaste MySQL-beveiligings problemen worden verholpen door MySQL naar versie 5.7.23 te upgraden
+* Opgelost: MySQL-beveiligings problemen worden verholpen door MySQL te upgraden naar versie 5.7.23
 
 #### <a name="manual-upgrade-for-php-and-mysql-on-csps-and-rx"></a>Hand matige upgrade voor PHP en MySQL op CS, PS en RX
 Het PHP-script platform moet worden bijgewerkt naar versie 7.2.10 op de configuratie server, de proces server en de RX-server.
@@ -172,7 +172,7 @@ Scout update 6 is een cumulatieve update. Het bevat alle correcties van update 1
 * Er is ondersteuning toegevoegd voor de bron Windows Server 2016
 * Er is ondersteuning toegevoegd voor de volgende Linux-besturings systemen:
     - Red Hat Enterprise Linux (RHEL) 6,9
-    - CentOS 6.9
+    - CentOS 6,9
     - Oracle Linux 5,11
     - Oracle Linux 6,8
 * Er is ondersteuning toegevoegd voor VMware Center 6,5
@@ -183,23 +183,23 @@ Installeer de updates als volgt:
 >De versie van de update van de bestanden van de Scout-onderdelen kan niet hetzelfde zijn in het bestand Update. zip. De oudere versie geeft aan dat het onderdeel sinds de vorige update van deze update niet is gewijzigd.
 
 Down load het bestand [Update](https://aka.ms/asr-scout-update6) . zip. Het bestand bevat de volgende onderdelen: 
-- RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz
-- CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe
-- UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
-- UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
-- vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-- UA update4-bits voor RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_\<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
+- RX_ 8.0.4.0 _GA_Update_4_8725872_16Sep16. tar. gz
+- CX_Windows_ 8.0.6.0 _GA_Update_6_13746667_18Sep17. exe
+- UA_Windows_ 8.0.5.0 _GA_Update_5_11525802_20Apr17. exe
+- UA_RHEL6-64_ 8.0.4.0 _GA_Update_4_9035261_26Sep16. tar. gz
+- vCon_Windows_ 8.0.6.0 _GA_Update_6_11525767_21Sep17. exe
+- UA update4 bits voor RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_\<Linux OS > _ 8.0.4.0 _GA_Update_4_9035261_26Sep16. tar. gz
   1. Pak de zip-bestanden uit.
   2. **RX-server**: Kopieer **rx_ 8.0.4.0 _ga_update_4_8725872_16sep16. tar. gz** naar de RX-server en pak het uit. Voer in de uitgepakte map **/install**uit.
   3. **Configuratie server en proces server**: Kopieer **cx_windows_ 8.0.6.0 _ga_update_6_13746667_18sep17. exe** naar de configuratie server en de proces server. Dubbel klik om het uit te voeren.<br>
-  4. **Windows-hoofddoel server**: Als u de Unified agent wilt bijwerken, kopieert u **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe** naar de server. Dubbel klik erop om het uit te voeren. Dezelfde Unified agent update is ook van toepassing op de bron server. Als de bron niet is bijgewerkt naar Update 4, moet u de Unified agent bijwerken.
+  4. **Windows-hoofddoel server**: als u de Unified agent wilt bijwerken, kopieert u **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe** naar de server. Dubbel klik erop om het uit te voeren. Dezelfde Unified agent update is ook van toepassing op de bron server. Als de bron niet is bijgewerkt naar Update 4, moet u de Unified agent bijwerken.
   De update hoeft niet te worden toegepast op het hoofd doel dat is voor bereid met **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** , omdat dit nieuw ga-installatie programma is met alle laatste wijzigingen.
-  5. **vContinuum-server**:  Kopieer **vcon_windows_ 8.0.6.0 _ga_update_6_11525767_21sep17. exe** naar de server.  Zorg ervoor dat u de vContinuum-wizard hebt gesloten. Dubbel klik op het bestand om het uit te voeren.
+  5. **vContinuum-server**: Kopieer **vcon_windows_ 8.0.6.0 _ga_update_6_11525767_21sep17. exe** naar de server.  Zorg ervoor dat u de vContinuum-wizard hebt gesloten. Dubbel klik op het bestand om het uit te voeren.
   De update hoeft niet te worden toegepast op het hoofd doel dat is voor bereid met **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** , omdat dit nieuw ga-installatie programma is met alle laatste wijzigingen.
-  6. **Doel server van Linux-Master**: Als u de Unified agent wilt bijwerken, kopieert u **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** naar de hoofddoel server en pakt u deze uit. Voer in de uitgepakte map **/install**uit.
-  7. **Windows-bron server**: Als u de Unified agent wilt bijwerken, kopieert u **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe** naar de bron server. Dubbel klik op het bestand om het uit te voeren. 
+  6. **Linux-hoofddoel server**: als u de Unified agent wilt bijwerken, kopieert u **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** naar de hoofddoel server en pakt u deze uit. Voer in de uitgepakte map **/install**uit.
+  7. **Windows-bron server**: als u de Unified agent wilt bijwerken, kopieert u **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe** naar de bron server. Dubbel klik op het bestand om het uit te voeren. 
   U hoeft de update 5-agent niet op de bron server te installeren als deze al is bijgewerkt naar Update 4 of bron agent is geïnstalleerd met het meest recente base-installatie programma **inmage_ua_ 8.0.1.0 _windows_ga_28sep2017_release. exe**.
-  8. **Linux-bron server**: Als u de Unified agent wilt bijwerken, kopieert u de bijbehorende versie van het Unified agent-bestand naar de Linux-server en pakt u het uit. Voer in de uitgepakte map **/install**uit.  Voorbeeld: Voor RHEL 6,7 64-bits server kopieert u **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** naar de server en pakt u deze uit. Voer in de uitgepakte map **/install**uit.
+  8. **Linux-bron server**: als u de Unified agent wilt bijwerken, kopieert u de bijbehorende versie van het Unified agent-bestand naar de Linux-server en pakt u het uit. Voer in de uitgepakte map **/install**uit.  Voor beeld: voor RHEL 6,7 64-bits server kopieert u **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** naar de server en pakt u deze uit. Voer in de uitgepakte map **/install**uit.
 
 
 > [!NOTE]
@@ -231,7 +231,7 @@ Scout Update 5 is een cumulatieve update. Het bevat alle oplossingen van update 
     * Vast: cluster beveiliging op één knoop punt mislukt vanwege niet-overeenkomende SCSI-problemen. 
     * Vast-opnieuw beveiligen van de P2V Windows-cluster server mislukt als de doel cluster schijven aanwezig zijn. 
     
-* Vaste Als de geselecteerde hoofddoel server zich niet op dezelfde ESXi-server bevindt als de beveiligde bron machine (tijdens de doorstuur beveiliging), wordt tijdens de beveiliging van failback de verkeerde hoofddoel server opgehaald tijdens het herstel van de failback en wordt het herstel bewerking mislukt.
+* Opgelost: tijdens failback-beveiliging, als de geselecteerde hoofddoel server zich niet op dezelfde ESXi-server bevindt als de beveiligde bron machine (tijdens de doorstuur beveiliging), haalt vContinuum de verkeerde hoofddoel server op tijdens het herstel van de failback en de herstel bewerking bewerking mislukt.
 
 > [!NOTE]
 > * De P2V-cluster oplossingen zijn alleen van toepassing op fysieke MSCS-clusters die recent zijn beveiligd met Site Recovery Scout Update 5. Als u de cluster oplossingen op beveiligde P2V MSCS-clusters met oudere updates wilt installeren, volgt u de stappen in sectie 12 van de [release opmerkingen van site Recovery Scout](https://aka.ms/asr-scout-release-notes).
@@ -266,7 +266,7 @@ Scout update 4 is een cumulatieve update. Dit omvat alle oplossingen van update 
 * Er zijn aanvullende controles en logboeken toegevoegd, voor wijzigingen in de netwerk configuratie tijdens het uitvoeren van een failover en nood herstel analyse.
 * Een oplossing voor een probleem waardoor Bewaar informatie niet aan de configuratie server moet worden gemeld.  
 * Voor fysieke clusters is een oplossing voor een probleem waardoor het formaat van het volume wordt gewijzigd in de vContinuum-wizard bij het verkleinen van het bron volume.
-* Een oplossing voor een probleem met de cluster beveiliging die is mislukt met de volgende fout: De schijf handtekening is niet gevonden, wanneer de cluster schijf een PRDM-schijf is.
+* Een oplossing voor een probleem met de cluster beveiliging die is mislukt met de fout: ' kan de schijf handtekening niet vinden ', als de cluster schijf een PRDM-schijf is.
 * Een oplossing voor een crash van een cxps-Transport Server, veroorzaakt door een out-of-Range-uitzonde ring.
 * De kolommen Server naam en IP-adres kunnen nu worden verkleind op de pagina **push installatie** van de wizard vContinuum.
 * Uitbrei dingen voor RX API:
@@ -309,17 +309,17 @@ Met update 3 worden de volgende problemen opgelost:
   * CentOS 6 update 7
 * De configuratie server en RX-consoles tonen nu meldingen voor het paar dat in de bitmapmodus gaat.
 * De volgende beveiligings oplossingen zijn toegevoegd in RX:
-    * Autorisatie overs Laan via manipulatie van para meters: Beperkte toegang tot niet-toepasselijke gebruikers.
-    * Aanvraag vervalsing op meerdere sites: Het concept van het pagina-token is geïmplementeerd en wordt wille keurig voor elke pagina gegenereerd. Dit betekent dat er slechts één aanmeldings exemplaar is voor dezelfde gebruiker en dat de pagina niet kan worden vernieuwd. In plaats daarvan wordt omgeleid naar het dash board.
-    * Kwaad aardig bestand uploaden: Bestanden zijn beperkt tot specifieke extensies: z, AIFF, ASF, AVI, BMP, CSV, doc, docx, FLA, FLV, GIF, gz, gzip, JPEG, JPG, log, Mid, MOV, MP3, MP4, mpc, MPEG, MPG, ODS, ODT, PDF, PNG, PPT, PPTX, pxd, Qt, RAM, RAR, RM, RMI, rmvb, RTF, dit SDC, SITD, SWF , sxc, sxw, tar, tgz, TIF, TIFF, txt, VSD, WAV, WMA, WMV, xls, xlsx, XML en zip.
-    * Permanente cross-site scripting: Er zijn invoer validaties toegevoegd.
+    * Autorisatie overs Laan via manipulatie van para meters: beperkte toegang tot niet-toepasselijke gebruikers.
+    * Aanvraag vervalsing op meerdere sites: het concept van het pagina-token is geïmplementeerd en wordt wille keurig voor elke pagina gegenereerd. Dit betekent dat er slechts één aanmeldings exemplaar is voor dezelfde gebruiker en dat de pagina niet kan worden vernieuwd. In plaats daarvan wordt omgeleid naar het dash board.
+    * Schadelijke bestanden uploaden: bestanden zijn beperkt tot specifieke extensies: z, AIFF, ASF, AVI, BMP, CSV, doc, docx, FLA, FLV, GIF, gz, gzip, JPEG, JPG, log, Mid, MOV, MP3, MP4, mpc, MPEG, MPG, ODS, ODT, PDF, PNG, PPT, PPTX, pxd, Qt, RAM, RAR, RM, RMI, rmvb, RTF , dit SDC, SITD, SWF, sxc, sxw, tar, tgz, TIF, TIFF, txt, VSD, WAV, WMA, WMV, xls, xlsx, XML en zip.
+    * Permanente cross-site scripting: er zijn invoer validaties toegevoegd.
 
 ### <a name="azure-site-recovery-scout-801-update-2-update-03dec15"></a>Azure Site Recovery Scout 8.0.1 update 2 (update 03Dec15)
 
 Correcties in update 2 zijn onder andere:
 
-* **Configuratie server**: Problemen die voor komen dat de 31 dagen gratis meter functie werkt zoals verwacht, wanneer de configuratie server is geregistreerd bij Azure Site Recovery kluis.
-* **Unified agent**: Oplossing voor een probleem in update 1 dat heeft geleid tot de update niet wordt geïnstalleerd op de hoofddoel server tijdens de upgrade van versie 8,0 naar 8.0.1.
+* **Configuratie server**: problemen waardoor de gratis meter functie voor 31 dagen niet werkt zoals verwacht, wanneer de configuratie server is geregistreerd bij Azure site Recovery kluis.
+* **Unified agent**: oplossing voor een probleem in update 1 waardoor de update niet wordt geïnstalleerd op de hoofddoel server tijdens de upgrade van versie 8,0 naar 8.0.1.
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 update 1
 Update 1 bevat de volgende fout oplossingen en nieuwe functies:

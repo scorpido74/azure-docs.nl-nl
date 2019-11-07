@@ -1,5 +1,5 @@
 ---
-title: Split-Merge-beveiligings configuratie | Microsoft Docs
+title: Beveiligings configuratie splitsen en samen voegen
 description: Stel x409-certificaten in voor versleuteling met de Split/Merge-service voor Elastic scale.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: ada794807f980854c203b56874e452713ecef6ea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98d645fc76010d96bc016a63b4882979f3489698
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568348"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690145"
 ---
 # <a name="split-merge-security-configuration"></a>Beveiligings configuratie splitsen en samen voegen
 
@@ -33,12 +33,12 @@ Certificaten worden op twee manieren geconfigureerd.
 
 Certificaten kunnen worden verkregen van open bare certificerings instanties (Ca's) of van de [Windows-certificaat service](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Dit zijn de voorkeurs methoden voor het verkrijgen van certificaten.
 
-Als deze opties niet beschikbaar zijn, kunt u zelfondertekende **certificaten**genereren.
+Als deze opties niet beschikbaar zijn, kunt u **zelfondertekende certificaten**genereren.
 
 ## <a name="tools-to-generate-certificates"></a>Hulpprogram ma's voor het genereren van certificaten
 
-* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [Makecert. exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [Pvk2pfx. exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>De hulpprogram ma's uitvoeren
 
@@ -47,7 +47,7 @@ Als deze opties niet beschikbaar zijn, kunt u zelfondertekende **certificaten**g
     Als deze is geïnstalleerd, gaat u naar:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* Haal de WDK op [uit Windows 8,1: Kits en hulpprogram ma's downloaden](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Ontvang de WDK van [Windows 8,1: down load kits en hulpprogram ma's](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Het SSL-certificaat configureren
 
@@ -120,7 +120,7 @@ Met de standaard configuratie wordt alle toegang tot het HTTP-eind punt geweiger
 Met de standaard configuratie is alle toegang tot het HTTPS-eind punt toegestaan. Deze instelling kan verder worden beperkt.
 
 ### <a name="changing-the-configuration"></a>De configuratie wijzigen
-De groep regels voor toegangs beheer die van toepassing zijn op en eind punt worden geconfigureerd in de  **\<EndpointAcls >** sectie in het **Service configuratie bestand**.
+De groep regels voor toegangs beheer die van toepassing zijn op en eind punt worden geconfigureerd in **\<de EndpointAcls >** sectie van het **Service configuratie bestand**.
 
 ```xml
 <EndpointAcls>
@@ -129,7 +129,7 @@ De groep regels voor toegangs beheer die van toepassing zijn op en eind punt wor
 </EndpointAcls>
 ```
 
-De regels in een toegangs beheer groep worden geconfigureerd in \<de AccessControl name = "" > sectie van het service configuratie bestand. 
+De regels in een toegangs beheer groep worden geconfigureerd in een \<AccessControl name = "" > gedeelte van het service configuratie bestand. 
 
 De indeling wordt uitgelegd in de documentatie over netwerk Access Control lijsten.
 Als u bijvoorbeeld alleen Ip's wilt toestaan in het bereik 100.100.0.0 om toegang te krijgen tot het HTTPS-eind punt, ziet de regels er als volgt uit:

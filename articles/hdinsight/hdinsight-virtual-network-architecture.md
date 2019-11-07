@@ -2,17 +2,17 @@
 title: Azure HDInsight Virtual Network-architectuur
 description: Meer informatie over de bronnen die beschikbaar zijn wanneer u een HDInsight-cluster maakt in een Azure-Virtual Network.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: 340974201d62f97669db442f4a95439a6ac90a5e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.date: 10/31/2019
+ms.openlocfilehash: 0a1139f7bf1711a5f6d980e67a8a9027bfd3af52
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960631"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665328"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight Virtual Network-architectuur
 
@@ -22,11 +22,11 @@ In dit artikel worden de resources beschreven die aanwezig zijn wanneer u een HD
 
 Azure HDInsight-clusters hebben verschillende typen virtuele machines of knoop punten. Elk knooppunt type speelt een rol in de werking van het systeem. De volgende tabel bevat een overzicht van deze knooppunt typen en hun rollen in het cluster.
 
-| type | Description |
+| Type | Beschrijving |
 | --- | --- |
 | Hoofdknooppunt |  Voor alle cluster typen, met uitzonde ring van Apache Storm, hosten de hoofd knooppunten de processen die de uitvoering van de gedistribueerde toepassing beheren. Het hoofd knooppunt is ook het knoop punt dat u kunt SSHen en uitvoeren van toepassingen die vervolgens worden gecoördineerd om te worden uitgevoerd op de cluster resources. Het aantal hoofd knooppunten is vastgesteld op twee voor alle cluster typen. |
 | ZooKeeper-knoop punt | Zookeeper coördineert taken tussen de knoop punten die gegevens verwerking uitvoeren. Het geeft ook de leider van het hoofd knooppunt en houdt bij welk hoofd knooppunt een specifieke Master service uitvoert. Het aantal ZooKeeper-knoop punten is op drie opgelost. |
-| Werkknooppunt | Hiermee worden de knoop punten aangeduid die de functionaliteit voor gegevens verwerking ondersteunen. Werk knooppunten kunnen worden toegevoegd aan of verwijderd uit het cluster om de capaciteit van de computer te schalen en de kosten te beheren. |
+| Worker-knoop punt | Hiermee worden de knoop punten aangeduid die de functionaliteit voor gegevens verwerking ondersteunen. Werk knooppunten kunnen worden toegevoegd aan of verwijderd uit het cluster om de capaciteit van de computer te schalen en de kosten te beheren. |
 | R Server Edge-knoop punt | Het knoop punt R Server Edge vertegenwoordigt het knoop punt dat u kunt SSHen en uitvoeren van toepassingen die vervolgens worden gecoördineerd voor uitvoering op de cluster resources. Een Edge-knoop punt neemt niet deel aan de gegevens analyse binnen het cluster. Dit knoop punt fungeert ook als host voor R Studio Server, zodat u R-toepassingen kunt uitvoeren met behulp van een browser. |
 | Regio knooppunt | Voor het HBase-cluster type voert het regio-knoop punt (ook wel een gegevens knooppunt genoemd) de regio server uit. Regio servers fungeren en beheren een deel van de gegevens die worden beheerd door HBase. Regio knooppunten kunnen worden toegevoegd aan of verwijderd uit het cluster om de capaciteit van de computer te schalen en de kosten te beheren.|
 | Nimbus-knoop punt | Voor het Storm-cluster type biedt het Nimbus-knoop punt vergelijk bare functionaliteit als het hoofd knooppunt. Het Nimbus-knoop punt wijst taken toe aan andere knoop punten in een cluster via Zookeeper, die de uitvoering van Storm-topologieën coördineert. |
@@ -45,8 +45,8 @@ De volgende tabel bevat een overzicht van de negen cluster knooppunten die worde
 | Resourcetype | Nummer aanwezig | Details |
 | --- | --- | --- |
 |Hoofdknooppunt | twee |    |
-|ZooKeeper-knooppunt | drie | |
-|Werkknooppunt | twee | Dit aantal kan variëren afhankelijk van de configuratie van het cluster en het schalen. Er zijn mini maal drie worker-knoop punten nodig voor Apache Kafka.  |
+|Zookeeper-knooppunt | drie | |
+|Worker-knoop punt | twee | Dit aantal kan variëren afhankelijk van de configuratie van het cluster en het schalen. Er zijn mini maal drie worker-knoop punten nodig voor Apache Kafka.  |
 |Gateway-knooppunt | twee | Gateway knooppunten zijn virtuele Azure-machines die zijn gemaakt op Azure, maar die niet zichtbaar zijn in uw abonnement. Neem contact op met de ondersteuning als u deze knoop punten opnieuw moet opstarten. |
 
 De volgende netwerk bronnen worden automatisch gemaakt in het virtuele netwerk dat wordt gebruikt met HDInsight:
@@ -61,17 +61,17 @@ De volgende netwerk bronnen worden automatisch gemaakt in het virtuele netwerk d
 
 U kunt op drie manieren toegang krijgen tot uw HDInsight-cluster:
 
-- Een HTTPS-eind punt buiten het virtuele netwerk `CLUSTERNAME.azurehdinsight.net`op.
-- Een SSH-eind punt voor rechtstreekse verbinding met de `CLUSTERNAME-ssh.azurehdinsight.net`hoofd knooppunt op.
-- Een HTTPS-eind punt in het `CLUSTERNAME-int.azurehdinsight.net`virtuele netwerk. U ziet de "-int" in deze URL. Dit eind punt wordt omgezet naar een privé-IP-adres in dat virtuele netwerk en is niet toegankelijk via het open bare Internet.
+- Een HTTPS-eind punt buiten het virtuele netwerk op `CLUSTERNAME.azurehdinsight.net`.
+- Een SSH-eind punt voor rechtstreekse verbinding met de hoofd knooppunt bij `CLUSTERNAME-ssh.azurehdinsight.net`.
+- Een HTTPS-eind punt in het virtuele netwerk `CLUSTERNAME-int.azurehdinsight.net`. U ziet de "-int" in deze URL. Dit eind punt wordt omgezet naar een privé-IP-adres in dat virtuele netwerk en is niet toegankelijk via het open bare Internet.
 
 Deze drie eind punten krijgen elk een load balancer.
 
 Open bare IP-adressen worden ook gegeven aan de twee eind punten die de verbinding van buiten het virtuele netwerk toestaan.
 
-1. Er wordt één openbaar IP-adres toegewezen aan de load balancer voor de Fully Qualified Domain Name (FQDN) die moet worden gebruikt om verbinding te `CLUSTERNAME.azurehdinsight.net`maken met het cluster via internet.
-1. Het tweede open bare IP-adres wordt gebruikt voor de domein naam `CLUSTERNAME-ssh.azurehdinsight.net`SSH only.
+1. Er wordt één openbaar IP-adres toegewezen aan de load balancer voor de Fully Qualified Domain Name (FQDN) die moet worden gebruikt om verbinding te maken met het cluster via internet `CLUSTERNAME.azurehdinsight.net`.
+1. Het tweede open bare IP-adres wordt gebruikt voor de domein naam alleen SSH `CLUSTERNAME-ssh.azurehdinsight.net`.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Binnenkomend verkeer naar HDInsight-clusters in een virtueel netwerk met een persoonlijk eind punt beveiligen](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
+- [Binnenkomend verkeer naar HDInsight-clusters in een virtueel netwerk met een persoonlijk eind punt beveiligen](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)

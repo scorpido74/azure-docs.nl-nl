@@ -1,5 +1,5 @@
 ---
-title: DNS-alias voor Azure SQL Database | Microsoft Docs
+title: DNS-alias voor Azure SQL Database
 description: Uw toepassingen kunnen verbinding maken met een alias voor de naam van uw Azure SQL Database-Server. Ondertussen kunt u de SQL Database de alias punten naar elke wille keurige manier wijzigen, om het testen te vergemakkelijken.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 5d37b41fa7b51871f9ce1b21c62de1f9ab7f3b82
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: c3681e882fea3e8e36472c8e540db0255cd654bb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058563"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692282"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>DNS-alias voor Azure SQL Database
 
@@ -92,10 +92,10 @@ Een code voorbeeld van Power shell-cmdlets die wordt gebruikt voor het beheren v
 
 De cmdlets die in het code voorbeeld worden gebruikt, zijn de volgende:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Hiermee maakt u een nieuwe DNS-alias in het Azure SQL Database-service systeem. De alias verwijst naar Azure SQL Database Server 1.
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Alle DNS-aliassen ophalen en weer geven die zijn toegewezen aan SQL DB server 1.
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Hiermee wijzigt u de naam van de server waarop de alias is geconfigureerd om te verwijzen naar, van Server 1 naar SQL DB Server 2.
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Verwijder de DNS-alias van SQL DB-Server 2, met behulp van de naam van de alias.
+- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): maakt een nieuwe DNS-alias in het Azure SQL database-service systeem. De alias verwijst naar Azure SQL Database Server 1.
+- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): alle DNS-aliassen ophalen en weer geven die zijn toegewezen aan SQL DB-server 1.
+- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): wijzigt de server naam waarmee de alias is geconfigureerd, van Server 1 naar SQL DB Server 2.
+- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Verwijder de DNS-alias uit SQL DB-Server 2, met behulp van de naam van de alias.
 
 ## <a name="limitations-during-preview"></a>Beperkingen tijdens de preview
 
@@ -104,7 +104,7 @@ Momenteel heeft een DNS-alias de volgende beperkingen:
 - *Vertraging van Maxi maal twee minuten:* Het duurt Maxi maal twee minuten voordat een DNS-alias wordt bijgewerkt of verwijderd.
   - Ongeacht de korte vertraging stopt de alias direct met het verwijzen naar client verbindingen met de verouderde server.
 - *DNS-zoek opdracht:* De enige gezaghebbende manier om te controleren naar welke server een gegeven DNS-alias verwijst, is door een [DNS-zoek opdracht](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup)uit te voeren.
-- _Het controleren van tabellen wordt niet ondersteund:_ U kunt geen DNS-alias gebruiken op een Azure SQL Database Server waarvoor *tabel controle* is ingeschakeld voor een Data Base.
+- Het _controleren van tabellen wordt niet ondersteund:_ U kunt geen DNS-alias gebruiken op een Azure SQL Database Server waarvoor *tabel controle* is ingeschakeld voor een Data Base.
   - De tabel controle is afgeschaft.
   - We raden u aan om over te stappen op de [controle van blobs](sql-database-auditing.md).
 

@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 34f5daaf074e011176610caed883cef9d1dbb2ea
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 49c55b580abdaea6c876a0fac4e7dd4e73d496af
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152034"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643833"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Een Azure Data Explorer-cluster en-data base maken met behulp van een Azure Resource Manager sjabloon
 
@@ -24,7 +24,7 @@ ms.locfileid: "73152034"
 > * [Python](create-cluster-database-python.md)
 > * [ARM-sjabloon](create-cluster-database-resource-manager.md)
 
-Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster. Daarna maakt u een of meer databases in het cluster. De volgende stap is het opnemen (laden) van gegevens in een database, zodat u er query's op kunt uitvoeren. 
+Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster. Daarna maakt u een of meer databases in het cluster. De volgende stap is het opnemen (laden) van gegevens in een database, zodat u er query's op kunt uitvoeren. 
 
 In dit artikel maakt u een Azure Data Explorer-cluster en-data base met behulp van een [Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-overview.md). In het artikel wordt beschreven hoe u definieert welke resources worden geïmplementeerd en hoe u para meters definieert die worden opgegeven wanneer de implementatie wordt uitgevoerd. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen. Zie [Azure Resource Manager sjablonen ontwerpen](/azure/azure-resource-manager/resource-group-authoring-templates)voor meer informatie over het maken van sjablonen. Zie [resource typen micro soft. Kusto](/azure/templates/microsoft.kusto/allversions)voor de JSON-syntaxis en-eigenschappen die in een sjabloon moeten worden gebruikt.
 
@@ -104,11 +104,11 @@ U kunt de Azure Resource Manager-sjabloon implementeren met [behulp van de Azure
 
 1. Als u een cluster en Data Base wilt maken, gebruikt u de volgende knop om de implementatie te starten. Klik met de rechtermuisknop en selecteer **In nieuw venster openen**, zodat u de rest van de stappen in dit artikel kunt volgen.
 
-    [![Implementeren in Azure](media/create-cluster-database-resource-manager/deploybutton.png)](https://github.com/Azure/azure-quickstart-templates/blob/master/101-kusto-cluster-database/azuredeploy.json)
+    [![Implementeren in Azure](media/create-cluster-database-resource-manager/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-kusto-cluster-database%2Fazuredeploy.json)
 
     Als u op de knop **Implementeren in Azure** klikt, wordt u naar de Azure-portal geleid om een implementatieformulier in te vullen.
 
-    ![Implementatie in Azure](media/create-cluster-database-resource-manager/deploy-2-azure.png)
+    ![Implementeren in Azure](media/create-cluster-database-resource-manager/deploy-2-azure.png)
 
     U kunt [de sjabloon in de Azure Portal bewerken en implementeren](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) met behulp van het formulier.
 

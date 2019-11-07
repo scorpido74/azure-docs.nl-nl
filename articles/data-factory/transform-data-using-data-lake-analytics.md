@@ -1,6 +1,6 @@
 ---
-title: Gegevens transformeren met behulp van U-SQL-script - Azure | Microsoft Docs
-description: Meer informatie over verwerken of transformeren door het U-SQL-scripts uitvoeren op Azure Data Lake Analytics compute-service.
+title: Gegevens transformeren met U-SQL-script-Azure
+description: Meer informatie over het verwerken of transformeren van gegevens door U-SQL-scripts uit te voeren op Azure Data Lake Analytics compute-service.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,54 +12,54 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
-ms.openlocfilehash: d5b074fcf182bcc9bf4dc17ba21215d27e13cbdd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53fb6773becff9f76c9658171965fbd148e94bc8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60888432"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683872"
 ---
-# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Gegevens transformeren met U-SQL-scripts uitgevoerd op Azure Data Lake Analytics 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory-service die u gebruikt:"]
-> * [Versie 1:](v1/data-factory-usql-activity.md)
+# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Gegevens transformeren door U-SQL-scripts uit te voeren op Azure Data Lake Analytics 
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+> * [Versie 1](v1/data-factory-usql-activity.md)
 > * [Huidige versie](transform-data-using-data-lake-analytics.md)
 
-Een pijplijn in een Azure data factory worden gegevens in gekoppelde storage-services met behulp van gekoppelde compute services verwerkt. Het bevat een reeks activiteiten waarbij elke activiteit uitvoert voor een specifieke verwerking. In dit artikel beschrijft de **Data Lake Analytics U-SQL-activiteit** die wordt uitgevoerd een **U-SQL** script op een **Azure Data Lake Analytics** compute gekoppelde service. 
+Met een pijp lijn in een Azure-data factory worden gegevens verwerkt in gekoppelde opslag Services met behulp van gekoppelde Compute-Services. Het bevat een reeks activiteiten waarbij elke activiteit een specifieke verwerkings bewerking uitvoert. In dit artikel wordt de **Data Lake Analytics u-SQL-activiteit** beschreven waarmee een **U-SQL** -script wordt uitgevoerd op een gekoppelde service van **Azure data Lake Analytics** compute. 
 
-Een Azure Data Lake Analytics-account maken voordat u een pijplijn maakt met een Data Lake Analytics U-SQL-activiteit. Zie voor meer informatie over Azure Data Lake Analytics, [aan de slag met Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
+Maak een Azure Data Lake Analytics-account voordat U een pijp lijn maakt met een Data Lake Analytics U-SQL-activiteit. Zie aan de [slag met Azure data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)voor meer informatie over Azure data Lake Analytics.
 
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics gekoppelde service
-U maakt een **Azure Data Lake Analytics** gekoppelde service om te koppelen van een Azure Data Lake Analytics compute-service aan een Azure data factory. De Data Lake Analytics U-SQL-activiteit in de pijplijn verwijst naar deze gekoppelde service. 
+U maakt een **Azure data Lake Analytics** gekoppelde service om een Azure data Lake Analytics compute-service aan een Azure Data Factory te koppelen. De Data Lake Analytics U-SQL-activiteit in de pijp lijn verwijst naar deze gekoppelde service. 
 
-De volgende tabel bevat beschrijvingen van de algemene eigenschappen in de JSON-definitie gebruikt. 
+De volgende tabel bevat beschrijvingen van de algemene eigenschappen die in de JSON-definitie worden gebruikt. 
 
-| Eigenschap                 | Description                              | Vereist                                 |
+| Eigenschap                 | Beschrijving                              | Vereist                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **type**                 | De eigenschap type moet worden ingesteld op: **AzureDataLakeAnalytics**. | Ja                                      |
-| **accountName**          | Azure Data Lake Analytics-accountnaam.  | Ja                                      |
+| **accountName**          | Azure Data Lake Analytics account naam.  | Ja                                      |
 | **dataLakeAnalyticsUri** | Azure Data Lake Analytics-URI.           | Nee                                       |
-| **subscriptionId**       | Azure-abonnement-ID                    | Nee                                       |
+| **Abonnements**       | Azure-abonnements-ID                    | Nee                                       |
 | **resourceGroupName**    | Naam van Azure-resourcegroep                | Nee                                       |
 
 ### <a name="service-principal-authentication"></a>Verificatie van service-principal
-De Azure Data Lake Analytics gekoppelde service is een service-principal-verificatie verbinding maken met de Azure Data Lake Analytics-service. Voor het gebruik van service-principal verificatie, de Toepassingsentiteit van een registreren in Azure Active Directory (Azure AD) en de toegang tot zowel de Data Lake Analytics en de Data Lake Store wordt verleend. Zie voor gedetailleerde stappen [Service-naar-serviceverificatie](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Noteer de volgende waarden, die u gebruikt voor het definiëren van de gekoppelde service:
+Voor de Azure Data Lake Analytics gekoppelde service is een Service-Principal-verificatie vereist om verbinding te maken met de Azure Data Lake Analytics-service. Als u Service-Principal-verificatie wilt gebruiken, registreert u een toepassings entiteit in Azure Active Directory (Azure AD) en verleent u deze toegang tot zowel de Data Lake Analytics als de Data Lake Store die wordt gebruikt. Zie [service-to-service-verificatie](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)voor gedetailleerde stappen. Noteer de volgende waarden, die u gebruikt om de gekoppelde service te definiëren:
 
 * Toepassings-id
-* Toepassingssleutel 
+* Toepassings sleutel 
 * Tenant-id
 
-Service principal toestemming voor het gebruik van uw Azure Data Lake Anatlyics geven de [Wizard gebruiker toevoegen](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#add-a-new-user).
+Ken Service-Principal machtigingen toe aan uw Azure Data Lake Anatlyics met behulp van de [wizard gebruiker toevoegen](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#add-a-new-user).
 
-Gebruik verificatie van service-principal door de volgende eigenschappen op te geven:
+Gebruik Service-Principal-verificatie door de volgende eigenschappen op te geven:
 
-| Eigenschap                | Description                              | Vereist |
+| Eigenschap                | Beschrijving                              | Vereist |
 | :---------------------- | :--------------------------------------- | :------- |
-| **servicePrincipalId**  | Opgeven van de toepassing client-ID.     | Ja      |
-| **servicePrincipalKey** | Geef de sleutel van de toepassing.           | Ja      |
-| **tenant**              | De tenantgegevens (domain name of tenant-ID) opgeven in uw toepassing zich bevindt. U kunt het ophalen van de muis in de rechterbovenhoek van de Azure-portal. | Ja      |
+| **servicePrincipalId**  | Geef de client-ID van de toepassing op.     | Ja      |
+| **servicePrincipalKey** | Geef de sleutel van de toepassing op.           | Ja      |
+| **tenant**              | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja      |
 
-**Voorbeeld: Service-principal verificatie**
+**Voor beeld: Service-Principal-verificatie**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -85,10 +85,10 @@ Gebruik verificatie van service-principal door de volgende eigenschappen op te g
 }
 ```
 
-Zie voor meer informatie over de gekoppelde service, [gekoppelde services berekenen](compute-linked-services.md).
+Zie [gekoppelde services berekenen](compute-linked-services.md)voor meer informatie over de gekoppelde service.
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-activiteit
-De volgende JSON-fragment definieert een pijplijn met een Data Lake Analytics U-SQL-activiteit. De definitie van de activiteit bevat een verwijzing naar de Azure Data Lake Analytics gekoppelde service die u eerder hebt gemaakt. Voor het uitvoeren van een Data Lake Analytics U-SQL-script, dient de Data Factory het script dat u hebt opgegeven met de Data Lake Analytics, en de vereiste invoer en uitvoer is gedefinieerd in het script voor Data Lake Analytics worden opgehaald en uitgevoerd. 
+Het volgende JSON-code fragment definieert een pijp lijn met een Data Lake Analytics U-SQL-activiteit. De definitie van de activiteit bevat een verwijzing naar de Azure Data Lake Analytics gekoppelde service die u eerder hebt gemaakt. Als u een Data Lake Analytics U-SQL-script wilt uitvoeren, Data Factory verzendt u het script dat u hebt opgegeven voor de Data Lake Analytics en worden de vereiste invoer en uitvoer in het script gedefinieerd voor Data Lake Analytics om op te halen en uit te voeren. 
 
 ```json
 {
@@ -115,25 +115,25 @@ De volgende JSON-fragment definieert een pijplijn met een Data Lake Analytics U-
 }
 ```
 
-De volgende tabel beschrijft de namen en beschrijvingen van eigenschappen die specifiek voor deze activiteit zijn. 
+In de volgende tabel worden namen en beschrijvingen van eigenschappen beschreven die specifiek zijn voor deze activiteit. 
 
-| Eigenschap            | Description                              | Vereist |
+| Eigenschap            | Beschrijving                              | Vereist |
 | :------------------ | :--------------------------------------- | :------- |
-| name                | Naam van de activiteit in de pijplijn     | Ja      |
+| naam                | Naam van de activiteit in de pijp lijn     | Ja      |
 | description         | Tekst die beschrijft wat de activiteit doet.  | Nee       |
-| type                | Voor Data Lake Analytics U-SQL-activiteit, het activiteitstype is **DataLakeAnalyticsU SQL**. | Ja      |
-| linkedServiceName   | Azure Data Lake Analytics gekoppelde Service. Zie voor meer informatie over deze gekoppelde service, [gekoppelde services berekenen](compute-linked-services.md) artikel.  |Ja       |
-| scriptPath          | Pad naar map met de U-SQL-script. Naam van het bestand is hoofdlettergevoelig. | Ja      |
-| scriptLinkedService | Gekoppelde service die is gekoppeld aan de **Azure Data Lake Store** of **Azure Storage** waarin het script aan de data factory | Ja      |
-| degreeOfParallelism | Het maximale aantal knooppunten dat tegelijk wordt gebruikt voor het uitvoeren van de taak. | Nee       |
-| prioriteit            | Hiermee bepaalt u welke taken uit in de wachtrij moeten worden geselecteerd moeten eerst worden uitgevoerd. Des te lager het nummer, hoe hoger de prioriteit. | Nee       |
-| parameters          | Parameters moeten worden doorgegeven in de U-SQL-script.    | Nee       |
-| runtimeVersion      | Runtime-versie van de U-SQL-engine te gebruiken. | Nee       |
-| compilationMode     | <p>Compilatiemodus van U-SQL. Moet een van deze waarden: **Semantische:** Alleen uitvoeren semantische controles en nodig bevestigingen, **volledige:** Uitvoeren van de volledige compilatie, met inbegrip van syntaxiscontrole, optimalisatie, genereren van code, enz., **SingleBox:** De volledige compilatie, met TargetType instelling SingleBox uitvoeren. Als u een waarde voor deze eigenschap niet opgeeft, betekent dit dat de server de optimale compilatiemodus bepaalt. | Nee |
+| type                | Voor Data Lake Analytics U-SQL-activiteit is het type activiteit **DataLakeAnalyticsU-SQL**. | Ja      |
+| linkedServiceName   | Gekoppelde service aan Azure Data Lake Analytics. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service.  |Ja       |
+| scriptPath          | Pad naar de map die het U-SQL-script bevat. De naam van het bestand is hoofdletter gevoelig. | Ja      |
+| scriptLinkedService | Gekoppelde service waarmee de **Azure data Lake Store** of **Azure Storage** die het script bevat, wordt gekoppeld aan de Data Factory | Ja      |
+| degreeOfParallelism | Het maximum aantal knoop punten dat tegelijkertijd wordt gebruikt om de taak uit te voeren. | Nee       |
+| priority            | Hiermee wordt bepaald welke taken uit de wachtrij moeten worden geselecteerd om eerst te worden uitgevoerd. Hoe lager het getal, des te hoger de prioriteit. | Nee       |
+| parameters          | Para meters die moeten worden door gegeven aan het U-SQL-script.    | Nee       |
+| runtimeVersion      | Runtime versie van de U-SQL-engine die moet worden gebruikt. | Nee       |
+| compilationMode     | <p>De compilatie modus van U-SQL. Moet een van de volgende waarden zijn: **semantisch:** alleen semantische controles en nood zakelijke Sanity controles uitvoeren, **volledig:** de volledige compilatie uitvoeren, met inbegrip van de syntaxis controle, optimalisatie, het genereren van code, enzovoort, **SingleBox:** volledig uitvoeren compilatie met de instelling target type ingesteld op SingleBox. Als u geen waarde opgeeft voor deze eigenschap, bepaalt de server de optimale compilatie modus. | Nee |
 
-Zie [SearchLogProcessing.txt](#sample-u-sql-script) voor de script-definitie. 
+Zie [SearchLogProcessing. txt](#sample-u-sql-script) voor de script definitie. 
 
-## <a name="sample-u-sql-script"></a>Voorbeeld van een U-SQL script
+## <a name="sample-u-sql-script"></a>Voor beeld van een U-SQL-script
 
 ```
 @searchlog =
@@ -162,12 +162,12 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-In bovenstaande voorbeeld van een script, de invoer en uitvoer naar het script is gedefinieerd in  **\@in** en  **\@uit** parameters. De waarden voor  **\@in** en  **\@uit** parameters in de U-SQL-script worden doorgegeven dynamisch door Data Factory met behulp van het gedeelte 'parameters'. 
+In het voor beeld van een script wordt de invoer en uitvoer naar het script gedefinieerd in **\@in** en **\@out out** -para meters. De waarden voor **\@in** en **\@out** -para meters in het U-SQL-script worden dynamisch door Data Factory door gegeven met behulp van de sectie para meters. 
 
-U kunt ook andere eigenschappen zoals degreeOfParallelism en prioriteit opgeven in de pijplijndefinitie van de voor de taken die worden uitgevoerd op de Azure Data Lake Analytics-service.
+U kunt ook andere eigenschappen, zoals degreeOfParallelism en prioriteit, opgeven in de pijplijn definitie voor de taken die worden uitgevoerd op de Azure Data Lake Analytics-service.
 
 ## <a name="dynamic-parameters"></a>Dynamische parameters
-In het definitie van de pijplijn voorbeeld worden in en uit parameters toegewezen met vastgelegde waarden. 
+In de definitie van de voorbeeld pijplijn worden in-en uitpara meters toegewezen met in code vastgelegde waarden. 
 
 ```json
 "parameters": {
@@ -176,7 +176,7 @@ In het definitie van de pijplijn voorbeeld worden in en uit parameters toegeweze
 }
 ```
 
-Het is mogelijk in plaats daarvan dynamische parameters gebruiken. Bijvoorbeeld: 
+U kunt in plaats daarvan dynamische para meters gebruiken. Bijvoorbeeld: 
 
 ```json
 "parameters": {
@@ -185,16 +185,16 @@ Het is mogelijk in plaats daarvan dynamische parameters gebruiken. Bijvoorbeeld:
 }
 ```
 
-In dit geval invoerbestanden worden nog steeds opgehaald uit de map /datalake/input en uitvoerbestanden worden gegenereerd in de map /datalake/output. De bestandsnamen zijn dynamisch op basis van de begintijd wordt doorgegeven in de pijplijn wordt geactiveerd.  
+In dit geval worden er nog steeds invoer bestanden uit de map/datalake/input verzameld en worden er uitvoer bestanden gegenereerd in de map/datalake/output. De bestands namen zijn dynamisch op basis van de start tijd van het venster die wordt door gegeven wanneer de pijp lijn wordt geactiveerd.  
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen waarin wordt uitgelegd hoe het transformeren van gegevens op andere manieren: 
+Raadpleeg de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere manieren transformeert: 
 
 * [Hive-activiteit](transform-data-using-hadoop-hive.md)
 * [Pig-activiteit](transform-data-using-hadoop-pig.md)
 * [MapReduce-activiteit](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop-streamingactiviteit](transform-data-using-hadoop-streaming.md)
+* [Hadoop streaming-activiteit](transform-data-using-hadoop-streaming.md)
 * [Spark-activiteit](transform-data-using-spark.md)
 * [.NET aangepaste activiteit](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning Batch Execution-activiteit](transform-data-using-machine-learning.md)
-* [Opgeslagen procedureactiviteit](transform-data-using-stored-procedure.md)
+* [Activiteit voor batch uitvoering Machine Learning](transform-data-using-machine-learning.md)
+* [Opgeslagen procedure activiteit](transform-data-using-stored-procedure.md)

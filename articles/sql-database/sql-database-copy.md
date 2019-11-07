@@ -1,5 +1,5 @@
 ---
-title: Een Azure-SQL database kopiëren | Microsoft Docs
+title: Een Azure-SQL database kopiëren
 description: Een transactioneel consistente kopie maken van een bestaande Azure-SQL database op dezelfde server of op een andere server.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 09/04/2019
-ms.openlocfilehash: de56e66046bb61ac31c1842ae6ce7a9c6720760d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d49896d8088ae1352cb2785d061cde6c8647cb89
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934208"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690803"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Een transactioneel consistente kopie van een Azure-SQL database kopiëren
 
@@ -86,22 +86,22 @@ Als u een kopie van een Data Base wilt annuleren, moet u de volgende rollen hebb
    
 Als u het kopiëren van de data base met Azure Portal wilt beheren, hebt u ook de volgende machtigingen nodig:
 
-&nbsp;&nbsp; Microsoft.resources/&nbsp; abonnementen/resources/lezen   
-&nbsp;&nbsp; Microsoft.resources/&nbsp; abonnementen/bronnen/schrijven   
-&nbsp;&nbsp; Microsoft.resources&nbsp; /implementaties/lezen   
-&nbsp;&nbsp; Microsoft.resources&nbsp; /implementaties/schrijven   
-&nbsp;&nbsp; Microsoft.resources/implementaties&nbsp; /operationstatuses/lezen    
+&nbsp; &nbsp; &nbsp; micro soft. resources/abonnementen/resources/lezen   
+&nbsp; &nbsp; &nbsp; micro soft. resources/abonnementen/Resources/schrijven   
+&nbsp; &nbsp; &nbsp; micro soft. resources/implementaties/lezen   
+&nbsp; &nbsp; &nbsp; micro soft. resources/implementaties/schrijven   
+&nbsp; &nbsp; &nbsp; micro soft. resources/implementaties/operationstatuses/lezen    
 
 Als u de bewerkingen wilt zien onder implementaties in de resource groep op de portal, bewerkingen in meerdere resource providers, waaronder SQL-bewerkingen, hebt u de volgende extra RBAC-rollen nodig: 
 
-&nbsp;&nbsp; Microsoft.resources/abonnementen/ResourceGroups/implementaties&nbsp; /bewerkingen/lezen   
-&nbsp;&nbsp; Microsoft.resources/abonnementen/ResourceGroups/implementaties&nbsp; /operationstatuses/lezen
+&nbsp; &nbsp; &nbsp; micro soft. resources/abonnementen/ResourceGroups/implementaties/Operations/lezen   
+&nbsp; &nbsp; &nbsp; micro soft. resources/abonnementen/ResourceGroups/implementaties/operationstatuses/lezen
 
 
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Een Data Base kopiëren met behulp van Transact-SQL
 
-Meld u aan bij de hoofd database met de principal-aanmelding op server niveau of de aanmelding waarmee de data base is gemaakt die u wilt kopiëren. Om het kopiëren van de data base te volt ooien, moeten aanmeldingen die niet de principal op server niveau zijn, lid zijn van de DBManager-rol. Zie aanmeldingen [beheren](sql-database-manage-logins.md)voor meer informatie over aanmeldingen en het maken van een verbinding met de server.
+Meld u aan bij de hoofd database met de principal-aanmelding op server niveau of de aanmelding waarmee de data base is gemaakt die u wilt kopiëren. Om het kopiëren van de data base te volt ooien, moeten aanmeldingen die niet de principal op server niveau zijn, lid zijn van de DBManager-rol. Zie [aanmeldingen beheren](sql-database-manage-logins.md)voor meer informatie over aanmeldingen en het maken van een verbinding met de server.
 
 Begin met het kopiëren van de bron database met de instructie [Create Data](https://msdn.microsoft.com/library/ms176061.aspx) base. Als u deze instructie uitvoert, wordt het kopiëren van de data base gestart. Omdat het kopiëren van een Data Base een asynchroon proces is, wordt de instructie CREATE data base geretourneerd voordat het kopiëren van de data base is voltooid.
 
@@ -159,5 +159,5 @@ Zie [Azure SQL database-beveiliging beheren na nood herstel](sql-database-geo-re
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie aanmeldingen [beheren](sql-database-manage-logins.md) en [Azure SQL database-beveiliging beheren na nood herstel](sql-database-geo-replication-security-config.md)voor meer informatie over aanmeldingen.
+* Zie [aanmeldingen beheren](sql-database-manage-logins.md) en [Azure SQL database-beveiliging beheren na nood herstel](sql-database-geo-replication-security-config.md)voor meer informatie over aanmeldingen.
 * Zie [de data base exporteren naar een BACPAC](sql-database-export.md)om een Data Base te exporteren.

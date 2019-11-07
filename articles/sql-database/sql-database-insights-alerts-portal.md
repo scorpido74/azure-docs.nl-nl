@@ -1,5 +1,5 @@
 ---
-title: Waarschuwingen en meldingen instellen met behulp van Azure Portal | Microsoft Docs
+title: Waarschuwingen en meldingen instellen met behulp van Azure Portal
 description: Gebruik de Azure Portal om SQL Database-waarschuwingen te maken, waarmee meldingen of automatisering kan worden geactiveerd wanneer aan de opgegeven voor waarden wordt voldaan.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/02/2018
-ms.openlocfilehash: 3103b556098d0b9ccbfca7348ab70c183a69753d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: d68055bc64ea36bd3ad024123a8d5b7b239858dc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262234"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689744"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Waarschuwingen voor Azure SQL Database en Data Warehouse maken met behulp van Azure Portal
 
@@ -34,12 +34,12 @@ U kunt een waarschuwing ontvangen op basis van metrische bewakings gegevens voor
 U kunt een waarschuwing configureren om het volgende te doen wanneer deze wordt geactiveerd:
 
 * e-mail meldingen verzenden naar de service beheerder en mede beheerders
-* e-mail verzenden naar extra e-mail berichten die u opgeeft.
+* E-mail verzenden naar extra e-mail berichten die u opgeeft.
 * een webhook aanroepen
 
 U kunt informatie over waarschuwings regels configureren en ophalen met behulp van
 
-* [Azure-portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
 * [opdracht regel interface (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
@@ -50,7 +50,7 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
    
      ![Bewaking](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **ALLEEN SQL DW**: Klik op de **DWU-gebruiks** grafiek. **Klassieke waarschuwingen weer geven** selecteren
+   - **Alleen SQL DW**: Klik op de **DWU-gebruiks** grafiek. **Klassieke waarschuwingen weer geven** selecteren
 
 3. Selecteer de knop **metrische waarschuwing toevoegen (klassiek)** en vul de velden in.
    
@@ -58,7 +58,7 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 4. Geef uw waarschuwings regel een **naam** en kies een **Beschrijving**die ook in e-mail meldingen wordt weer gegeven.
 5. Selecteer de **metrische gegevens** die u wilt bewaken en kies vervolgens een voor **waarde** en **drempel** waarde voor de metriek. Kies ook de tijds **periode** waaraan de metrische regel moet voldoen voordat de waarschuwing wordt geactiveerd. Als u bijvoorbeeld de periode ' PT5M ' gebruikt en uw waarschuwing zoekt naar een CPU van meer dan 80%, wordt de waarschuwing geactiveerd wanneer de **gemiddelde** CPU gedurende vijf minuten meer dan 80% is geweest. Zodra de eerste trigger plaatsvindt, wordt deze opnieuw geactiveerd wanneer de gemiddelde CPU onder 80% meer dan vijf minuten is. De CPU-meting vindt elke 1 minuut plaats. Raadpleeg de onderstaande tabel voor ondersteunde tijd Vensters en het samenvoegings type dat elke waarschuwing gebruikt: niet alle waarschuwingen gebruiken de gemiddelde waarde.   
 6. **E-mail eigenaren controleren...** als u wilt dat beheerders en mede beheerders een e-mail ontvangen wanneer de waarschuwing wordt geactiveerd.
-7. Als u wilt dat extra e-mails een melding ontvangen wanneer de waarschuwing wordt geactiveerd, voegt u deze toe in het veld **extra beheerder e-mail (s)** . Meerdere e-mail berichten scheiden met punt komma's *:\@e-mail contoso. com;\@email2 contoso.com*
+7. Als u wilt dat extra e-mails een melding ontvangen wanneer de waarschuwing wordt geactiveerd, voegt u deze toe in het veld **extra beheerder e-mail (s)** . Scheid meerdere e-mail berichten met een punt komma ( *e-mail adres\@contoso. com; email2\@contoso.com* )
 8. Plaats een geldige URI in het veld **webhook** als u wilt dat deze wordt aangeroepen wanneer de waarschuwing wordt geactiveerd.
 9. Selecteer **OK** wanneer u klaar bent om de waarschuwing te maken.   
 
@@ -74,37 +74,37 @@ Zodra u een waarschuwing hebt gemaakt, kunt u deze selecteren en:
 
 ## <a name="sql-database-alert-values"></a>SQL Database waarschuwings waarden
 
-| Resourcetype | Naam van meetwaarde | Beschrijvende naam | Aggregatietype | Venster minimale waarschuwings tijd|
+| Resourcetype | Metrische naam | Beschrijvende naam | Aggregatie type | Venster minimale waarschuwings tijd|
 | --- | --- | --- | --- | --- |
-| SQL-database | cpu_percent | Processorpercentage | Average | 5 minuten |
-| SQL-database | physical_data_read_percent | Percentage gegevens-IO | Average | 5 minuten |
-| SQL-database | log_write_percent | Percentage logboek-IO | Average | 5 minuten |
+| SQL-database | cpu_percent | CPU-percentage | Average | 5 minuten |
+| SQL-database | physical_data_read_percent | Gegevens-I/O-percentage | Average | 5 minuten |
+| SQL-database | log_write_percent | Logboek-IO-percentage | Average | 5 minuten |
 | SQL-database | dtu_consumption_percent | DTU-percentage | Average | 5 minuten |
 | SQL-database | opslag | Totale database grootte | Maximum | 30 minuten |
 | SQL-database | connection_successful | Geslaagde verbindingen | Totaal | 10 minuten |
 | SQL-database | connection_failed | Mislukte verbindingen | Totaal | 10 minuten |
 | SQL-database | blocked_by_firewall | Geblokkeerd door de firewall | Totaal | 10 minuten |
-| SQL-database | Constateer | Deadlocks | Totaal | 10 minuten |
+| SQL-database | Constateer | Impassen | Totaal | 10 minuten |
 | SQL-database | storage_percent | Databaseomvangpercentage | Maximum | 30 minuten |
 | SQL-database | xtp_storage_percent | Percentage OLTP-opslag in het geheugen (preview-versie) | Average | 5 minuten |
-| SQL-database | workers_percent | Percentage werkrollen | Average | 5 minuten |
+| SQL-database | workers_percent | Percentage werk nemers | Average | 5 minuten |
 | SQL-database | sessions_percent | Percentage sessies | Average | 5 minuten |
 | SQL-database | dtu_limit | DTU-limiet | Average | 5 minuten |
 | SQL-database | dtu_used | DTU gebruikt | Average | 5 minuten |
 ||||||
-| Elastische pool | cpu_percent | Processorpercentage | Average | 10 minuten |
-| Elastische pool | physical_data_read_percent | Percentage gegevens-IO | Average | 10 minuten |
-| Elastische pool | log_write_percent | Percentage logboek-IO | Average | 10 minuten |
+| Elastische pool | cpu_percent | CPU-percentage | Average | 10 minuten |
+| Elastische pool | physical_data_read_percent | Gegevens-I/O-percentage | Average | 10 minuten |
+| Elastische pool | log_write_percent | Logboek-IO-percentage | Average | 10 minuten |
 | Elastische pool | dtu_consumption_percent | DTU-percentage | Average | 10 minuten |
 | Elastische pool | storage_percent | Opslag percentage | Average | 10 minuten |
-| Elastische pool | workers_percent | Percentage werkrollen | Average | 10 minuten |
+| Elastische pool | workers_percent | Percentage werk nemers | Average | 10 minuten |
 | Elastische pool | eDTU_limit | eDTU-limiet | Average | 10 minuten |
 | Elastische pool | storage_limit | Opslag limiet | Average | 10 minuten |
 | Elastische pool | eDTU_used | eDTU gebruikt | Average | 10 minuten |
 | Elastische pool | storage_used | Gebruikte opslag | Average | 10 minuten |
 ||||||               
-| SQL Data Warehouse | cpu_percent | Processorpercentage | Average | 10 minuten |
-| SQL Data Warehouse | physical_data_read_percent | Percentage gegevens-IO | Average | 10 minuten |
+| SQL Data Warehouse | cpu_percent | CPU-percentage | Average | 10 minuten |
+| SQL Data Warehouse | physical_data_read_percent | Gegevens-I/O-percentage | Average | 10 minuten |
 | SQL Data Warehouse | connection_successful | Geslaagde verbindingen | Totaal | 10 minuten |
 | SQL Data Warehouse | connection_failed | Mislukte verbindingen | Totaal | 10 minuten |
 | SQL Data Warehouse | blocked_by_firewall | Geblokkeerd door de firewall | Totaal | 10 minuten |

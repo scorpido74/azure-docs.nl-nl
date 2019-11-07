@@ -1,24 +1,24 @@
 ---
 title: Log Analytics Veelgestelde vragen | Microsoft Docs
-description: Antwoorden op veelgestelde vragen over de Azure Log Analytics-service.
+description: Antwoorden op veelgestelde vragen over de logboek analyse service van Azure Monitor.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 11/13/2018
-ms.openlocfilehash: e3ebb87a7a5f6200d860c1c79591719c32313e11
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 11/01/2019
+ms.openlocfilehash: 9eb921fc8ea19486db0fc3311764931f09e11464
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932218"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579315"
 ---
 # <a name="log-analytics-faq"></a>Veelgestelde vragen over Log Analytics
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Deze veelgestelde vragen over micro soft vindt u in Microsoft Azure een lijst met veelgestelde vraag over Log Analytics. Als u nog meer vragen hebt over Log Analytics, gaat u naar het [discussie forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) en plaatst u uw vragen. Wanneer een vraag regel matig wordt gesteld, voegen we deze toe aan dit artikel zodat het snel en eenvoudig kan worden gevonden.
+Deze veelgestelde vragen over micro soft is een lijst met veelgestelde vragen over de Azure Monitor Log Analytics werk ruimte. Als u nog meer vragen hebt over Log Analytics, gaat u naar het [discussie forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) en plaatst u uw vragen. Wanneer een vraag regel matig wordt gesteld, voegen we deze toe aan dit artikel zodat het snel en eenvoudig kan worden gevonden.
 
 
 ## <a name="new-logs-experience"></a>Nieuwe logboeken
@@ -62,10 +62,12 @@ A: als u de VM-logboeken wilt weer geven, moet u beschikken over de machtiging l
 
 A: om toegang te krijgen tot een werk ruimte in azure, moet u de Azure-machtigingen hebben toegewezen. Er zijn enkele gevallen waarin u mogelijk niet de juiste toegangs machtigingen hebt. In deze gevallen moet uw beheerder u machtigingen verlenen in Azure. Zie OMS- [Portal naar Azure verplaatsen](oms-portal-transition.md) voor meer informatie.
 
-### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>V. Waarom kan ik het weer geven van de ontwerp weergave niet zien in Logboeken? 
+### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>V. Waarom kan ik het weer geven van de ontwerp weergave niet zien in Logboeken?
+
 A: View Designer is alleen beschikbaar in Logboeken voor gebruikers die zijn toegewezen met Inzender machtigingen of hoger.
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>V. Kan ik nog steeds de analyse Portal buiten Azure gebruiken?
+
 A. Ja, de pagina Logboeken in Azure en de portal Advanced Analytics zijn gebaseerd op dezelfde code. Log Analytics wordt geïntegreerd als een functie in Azure Monitor om een meer Unified monitoring-ervaring te bieden. U kunt nog steeds toegang krijgen tot de analyse Portal met behulp van de URL: https:\/\/Portal. loganalytics. io/abonnementen/{subscriptionId}/ResourceGroups/{resourceGroupName}/werk ruimten/{workspacenaam}.
 
 
@@ -105,29 +107,6 @@ De teken reeks die is bijgewerkt naar *OMS* is opgenomen in een Management Pack.
 
 A: Nee. Log Analytics is een schaal bare Cloud service die grote hoeveel heden gegevens verwerkt en opslaat. 
 
-### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>V. Hoe kan ik problemen oplossen als Log Analytics niet langer gegevens verzamelt?
-
-A: voor een abonnement en een werk ruimte die is gemaakt vóór 2 april 2018 en die zich in de *gratis* prijs categorie bevindt, wordt het verzamelen van gegevens voor de rest van de dag gestopt als er meer dan 500 MB aan gegevens worden verzonden. Het bereiken van de dagelijkse limiet is een gemeen schappelijke reden dat Log Analytics het verzamelen van gegevens niet meer of gegevens lijkt te missen.  
-
-Log Analytics maakt een gebeurtenis van het type *heartbeat* en kan worden gebruikt om te bepalen of het verzamelen van gegevens is gestopt. 
-
-Voer de volgende query uit in de zoek opdracht om te controleren of u de dagelijkse limiet bereikt en ontbrekende gegevens: `Heartbeat | summarize max(TimeGenerated)`
-
-Voer de volgende query uit om een specifieke computer te controleren: `Heartbeat | where Computer=="contosovm" | summarize max(TimeGenerated)`
-
-Wanneer het verzamelen van gegevens stopt, worden er, afhankelijk van het geselecteerde tijds bereik, geen gevonden records weer gegeven.   
-
-De volgende tabel beschrijft de redenen waarom het verzamelen van gegevens wordt gestopt en een aanbevolen actie om het verzamelen van gegevens te hervatten:
-
-| Gegevens verzameling voor de reden stopt                       | Gegevens verzameling hervatten |
-| -------------------------------------------------- | ----------------  |
-| De limiet voor gratis gegevens is bereikt<sup>1</sup>       | Wacht tot de volgende maand voor het automatisch opnieuw opstarten van de verzameling is of<br> Overschakelen naar een betaalde prijs categorie |
-| Het Azure-abonnement bevindt zich in een onderbroken staat vanwege: <br> De gratis proef versie is beëindigd <br> Azure Pass is verlopen <br> De maandelijkse bestedings limiet is bereikt (bijvoorbeeld op een MSDN-of Visual Studio-abonnement)                          | Converteren naar een betaald abonnement <br> Converteren naar een betaald abonnement <br> Limiet verwijderen of wachten tot de limiet is ingesteld |
-
-<sup>1</sup> als uw werk ruimte zich in de *gratis* prijs categorie bevindt, bent u beperkt tot het verzenden van 500 MB aan gegevens per dag naar de service. Wanneer u de dagelijkse limiet bereikt, stopt het verzamelen van gegevens tot de volgende dag. Gegevens die worden verzonden terwijl het verzamelen van gegevens is gestopt, worden niet geïndexeerd en kunnen niet worden doorzocht. Wanneer het verzamelen van gegevens wordt hervat, vindt verwerking alleen plaats voor nieuwe gegevens die worden verzonden. 
-
-Log Analytics gebruikt UTC-tijd en elke dag begint om middernacht UTC. Als de werk ruimte de dagelijkse limiet bereikt, worden er tijdens het eerste uur van de volgende UTC-dag de verwerking hervat.
-
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>V. Hoe kan ik een melding ontvangen wanneer het verzamelen van gegevens wordt gestopt?
 
 A: gebruik de stappen in [een nieuwe logboek waarschuwing maken om een](../../azure-monitor/platform/alerts-metric.md) melding te ontvangen wanneer het verzamelen van gegevens wordt gestopt.
@@ -147,6 +126,7 @@ Wanneer u de waarschuwing maakt wanneer het verzamelen van gegevens wordt gestop
 Geef een bestaande of maak een nieuwe [actie groep](../../azure-monitor/platform/action-groups.md) op, zodat wanneer de logboek waarschuwing overeenkomt met de criteria, u een melding ontvangt als er al meer dan 15 minuten een heartbeat ontbreekt.
 
 ## <a name="configuration"></a>Configuratie
+
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>V. Kan ik de naam wijzigen van de tabel/BLOB-container die wordt gebruikt voor het lezen van Azure Diagnostics (WAD)?
 
 A. Nee, het is momenteel niet mogelijk om te lezen uit een wille keurige tabel of container in azure Storage.
@@ -180,7 +160,7 @@ A: als u het meest recente update pakket bijwerkt en Management Packs importeert
 
 ### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>V: hoe kan ik controleren of een agent kan communiceren met Log Analytics?
 
-A: om ervoor te zorgen dat de agent kan communiceren met OMS, gaat u naar: configuratie scherm, beveiligings & instellingen, **micro soft Monitoring Agent**.
+A: om ervoor te zorgen dat de agent kan communiceren met de Log Analytics-werk ruimte, gaat u naar: configuratie scherm, beveiligings & instellingen, **micro soft Monitoring Agent**.
 
 Ga naar het tabblad **Azure log Analytics (OMS)** en zoek naar een groen vinkje. Een groen vinkje geeft aan dat de agent kan communiceren met de Azure-service.
 
@@ -188,7 +168,7 @@ Een geel waarschuwings pictogram geeft aan dat de agent communicatie problemen o
 
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>V: Hoe kan ik stopt een agent met communiceren met Log Analytics?
 
-A: Verwijder in System Center Operations Manager de computer uit de lijst met OMS beheerde computers. Operations Manager werkt de configuratie van de agent bij naar Log Analytics niet meer. Voor agents die rechtstreeks zijn verbonden met Log Analytics, kunt u voor komen dat ze communiceren via: configuratie scherm, beveiligings & instellingen, **micro soft Monitoring Agent**.
+A: Verwijder in System Center Operations Manager de computer uit de lijst Log Analytics beheerde computers. Operations Manager werkt de configuratie van de agent bij naar Log Analytics niet meer. Voor agents die rechtstreeks zijn verbonden met Log Analytics, kunt u voor komen dat ze communiceren via: configuratie scherm, beveiligings & instellingen, **micro soft Monitoring Agent**.
 Verwijder onder **Azure log Analytics (OMS)** alle weer gegeven werk ruimten.
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>V: Waarom krijg ik een fout melding wanneer ik mijn werk ruimte probeer te verplaatsen van het ene Azure-abonnement naar het andere?
@@ -212,11 +192,11 @@ A: u moet ETAG toevoegen in de hoofd tekst van de API of de eigenschappen van de
 
 ## <a name="agent-data"></a>Agent gegevens
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>V. Hoeveel gegevens kan ik via de agent verzenden naar Log Analytics? Is er een maximum hoeveelheid gegevens per klant?
-A. Met het gratis abonnement wordt een dagelijks limiet van 500 MB per werk ruimte ingesteld. De Standard-en Premium-abonnementen hebben geen limiet voor de hoeveelheid gegevens die worden geüpload. Als Cloud service is Log Analytics ontworpen om automatisch te schalen om het volume van een klant te verwerken, zelfs als het per dag terabytes is.
+A. Er is geen limiet voor de hoeveelheid gegevens die wordt geüpload. deze is gebaseerd op de prijs optie die u hebt geselecteerd: capaciteits reservering of betalen naar gebruik. Een Log Analytics-werk ruimte is ontworpen om automatisch te schalen om het volume van een klant te verwerken, zelfs als het per dag terabytes is. Zie [prijs informatie](https://azure.microsoft.com/pricing/details/monitor/)voor meer informatie.
 
 De Log Analytics-agent is ontworpen om ervoor te zorgen dat deze een geringe footprint heeft. Het gegevens volume is afhankelijk van de oplossingen die u inschakelt. U kunt gedetailleerde informatie vinden op het gegevens volume en de uitsplitsing per oplossing bekijken op de pagina [gebruik](../../azure-monitor/platform/data-usage.md) .
 
-Voor meer informatie kunt u een blog van een [klant](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) lezen waarin de resultaten worden weer gegeven nadat u het resource gebruik (footprint) van de OMS-agent hebt geëvalueerd.
+Voor meer informatie kunt u een blog van een [klant](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) lezen waarin de resultaten worden weer gegeven nadat u het resource gebruik (footprint) van de log Analytics-agent hebt geëvalueerd.
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>V. Hoeveel netwerk bandbreedte wordt gebruikt door de micro soft Management Agent (MMA) bij het verzenden van gegevens naar Log Analytics?
 
@@ -230,7 +210,7 @@ A. De hoeveelheid gegevens die per agent wordt verzonden, is afhankelijk van:
 * Het aantal logboeken en prestatie meter items dat wordt verzameld
 * Het gegevens volume in de logboeken
 
-De prijs categorie gratis is een goede manier om meerdere servers uit te scha kelen en het typische gegevens volume te meten. Het algehele gebruik wordt op de [gebruiks](../../azure-monitor/platform/data-usage.md) pagina weer gegeven.
+Het algehele gebruik wordt op de [gebruiks](../../azure-monitor/platform/data-usage.md) pagina weer gegeven.
 
 Voor computers waarop de WireData-agent kan worden uitgevoerd, gebruikt u de volgende query om te zien hoeveel gegevens er worden verzonden:
 
@@ -239,4 +219,5 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Aan de [slag met log Analytics](../../azure-monitor/overview.md) om meer te weten te komen over log Analytics en binnen enkele minuten aan de slag te gaan.
+
+Aan de [slag met Azure monitor](../../azure-monitor/overview.md) om meer te weten te komen over log Analytics en binnen enkele minuten aan de slag te gaan.

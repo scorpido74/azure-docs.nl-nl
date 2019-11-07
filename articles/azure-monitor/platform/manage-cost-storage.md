@@ -11,20 +11,23 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 11/05/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 1480418a70166887e7327452d407f78c2c992378
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: ae49a84dba01047d85ea0dbb854d1a7a59318567
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597308"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647662"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken
 
 > [!NOTE]
 > In dit artikel wordt beschreven hoe u uw kosten voor Azure Monitor-logboeken begrijpt en beheert. Een verwant artikel, het [bewaken van het gebruik en de geschatte kosten](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) , beschrijft het weer geven van het gebruik en de geschatte kosten in meerdere Azure-bewakings functies voor verschillende prijs modellen.
+
+> [!NOTE]
+> Alle prijzen en kosten die in dit artikel worden weer gegeven, zijn alleen bedoeld als voor beeld. 
 
 Azure Monitor-Logboeken is ontworpen voor het schalen en ondersteunen van het verzamelen, indexeren en opslaan van enorme hoeveel heden gegevens per dag vanuit elke bron in uw onderneming of die in Azure is geïmplementeerd.  Hoewel dit een primair stuur programma voor uw organisatie is, is de kosten efficiëntie uiteindelijk het onderliggende stuur programma. Daarom is het belang rijk te weten dat de kosten van een Log Analytics werk ruimte alleen gebaseerd zijn op het volume van verzamelde gegevens, dat ook afhankelijk is van het geselecteerde plan en hoe lang u ervoor hebt gekozen om gegevens op te slaan die zijn gegenereerd op basis van uw verbonden bronnen.  
 
@@ -38,17 +41,18 @@ De standaard prijs voor Log Analytics is een model voor **betalen naar gebruik**
   - Aantal bewaakte Vm's
   - Type gegevens die worden verzameld van elke bewaakte VM 
   
-Naast het model voor betalen naar gebruik, hebben we **capaciteits reserveringen** voor log Analytics geïntroduceerd waarmee u Maxi maal 25% kunt besparen op basis van de betalen naar gebruik-prijs. Met de prijzen voor capaciteits reservering kunt u een reserve ring kopen vanaf 100 GB per dag. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief. Meer [informatie](https://azure.microsoft.com/pricing/details/monitor/) over log Analytics prijzen voor betalen per gebruik en capaciteits reservering. 
+Naast het betalen naar gebruik-model is Log Analytics **capaciteits reserverings** lagen waarmee u Maxi maal 25% kunt besparen op basis van de betalen naar gebruik-prijs. Met de prijzen voor capaciteits reservering kunt u een reserve ring kopen vanaf 100 GB per dag. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief. De lagen voor capaciteits reservering hebben een toezeggings periode van 31 dagen. Tijdens de toezeggings periode kunt u overschakelen naar een reserverings tier van een hoger niveau (waardoor de dag van 31 dagen opnieuw wordt opgestart), maar u kunt niet teruggaan naar betalen naar gebruik of naar een reserverings laag met een lagere capaciteit totdat de toezeggings periode is verstreken geïnstalleerd. 
+Meer [informatie](https://azure.microsoft.com/pricing/details/monitor/) over log Analytics prijzen voor betalen per gebruik en capaciteits reservering. 
 
-Houd er rekening mee dat sommige oplossingen, zoals [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/) en [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/), hun eigen prijs model hebben. 
+Houd er ook rekening mee dat sommige oplossingen, zoals [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/) en [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/), hun eigen prijs model hebben. 
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>Schatting van de kosten voor het beheren van uw omgeving 
 
-Als u Azure Monitor-logboeken nog niet gebruikt, kunt u de [Azure monitor prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=monitor) gebruiken om de kosten van het gebruik van log Analytics te schatten. Begin met het invoeren van ' Azure Monitor ' in het zoekvak en klik op de resulterende Azure Monitor tegel. Schuif omlaag in de pagina naar Azure Monitor en selecteer Log Analytics in de vervolg keuzelijst Type.  Hier kunt u het aantal Vm's en de GB aan gegevens opgeven die u naar verwachting van elke VM wilt verzamelen. Typcially 1 tot 3 GB aan gegevens maand wordt opgenomen van een typische Azure VM. Als u Azure Monitor logboeken al evalueert, kunt u uw gegevens statistieken uit uw eigen omgeving gebruiken. Hieronder vindt u informatie over het bepalen [van het aantal bewaakte vm's](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-nodes-sending-data) en het [volume van de gegevens die in uw werk ruimte worden](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)opgenomen. 
+Als u Azure Monitor-logboeken nog niet gebruikt, kunt u de [Azure monitor prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=monitor) gebruiken om de kosten van het gebruik van log Analytics te schatten. Begin met het invoeren van ' Azure Monitor ' in het zoekvak en klik op de resulterende Azure Monitor tegel. Schuif omlaag in de pagina naar Azure Monitor en selecteer Log Analytics in de vervolg keuzelijst Type.  Hier kunt u het aantal Vm's en de GB aan gegevens opgeven die u naar verwachting van elke VM wilt verzamelen. Doorgaans is 1 tot 3 GB gegevens maand opgenomen van een typische Azure-VM. Als u Azure Monitor logboeken al evalueert, kunt u uw gegevens statistieken uit uw eigen omgeving gebruiken. Hieronder vindt u informatie over het bepalen [van het aantal bewaakte vm's](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-nodes-sending-data) en het [volume van de gegevens die in uw werk ruimte worden](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)opgenomen. 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Inzicht in uw gebruik en geschatte kosten
 
-Als u Azure Monitor-logboeken nu gebruikt, is het eenvoudig om te begrijpen wat de kosten waarschijnlijk zijn op basis van recente gebruiks patronen. Gebruik hiervoor **log Analytics gebruik en geschatte kosten** om het gegevens gebruik te controleren en analyseren. Hier wordt weer gegeven hoeveel gegevens er door elke oplossing worden verzameld, hoeveel gegevens er worden bewaard en een schatting van uw kosten op basis van de hoeveelheid gegevens die wordt opgenomen en een extra Bewaar periode van meer dan het inbegrepen bedrag.
+Als u Azure Monitor-logboeken nu gebruikt, is het eenvoudig om te begrijpen wat de kosten waarschijnlijk zijn op basis van recente gebruiks patronen. Gebruik hiervoor **log Analytics gebruik en geschatte kosten** om het gegevens gebruik te controleren en analyseren. Hier ziet u hoeveel gegevens worden verzameld door elke oplossing, hoeveel gegevens er worden bewaard en een schatting van uw kosten op basis van de hoeveelheid gegevens die wordt opgenomen en een extra Bewaar periode van meer dan het inbegrepen bedrag.
 
 ![Gebruik en geraamde kosten](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
 
@@ -64,50 +68,32 @@ Log Analytics kosten worden toegevoegd aan uw Azure-factuur. U kunt de details v
 
 Azure biedt een groot aantal handige functies in de hub [Azure Cost Management en facturering](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Zo kunt u met de functionaliteit ' cost analysis ' uw uitgaven voor Azure-resources weer geven. Door een filter toe te voegen op resource type (aan micro soft. operationalinsights/Workspace voor Log Analytics), kunt u uw uitgaven bijhouden.
 
-Meer informatie over uw gebruik kan worden verkregen door [uw gebruik te downloaden van Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). In het gedownloade werk blad kunt u het gebruik per Azure-resource (bijvoorbeeld Log Analytics-werk ruimte) per dag bekijken. In dit Excel-werk blad kunt u het gebruik van uw Log Analytics-werk ruimten vinden door eerst te filteren op de kolom meter categorie om "inzichten en analyse" weer te geven (gebruikt door enkele van de verouderde prijs categorieën) en "Log Analytics" en vervolgens een filter toe te voegen aan het exemplaar De ID-kolom bevat de naam van de werk ruimte. Het gebruik wordt weer gegeven in de kolom verbruikte hoeveelheid en de eenheid voor elk item wordt weer gegeven in de kolom eenheid.  Meer informatie is beschikbaar om u te helpen [uw Microsoft Azure factuur te begrijpen](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
+Meer informatie over uw gebruik kan worden verkregen door het [gebruik van het Azure portal te downloaden](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). In het gedownloade werk blad kunt u het gebruik per Azure-resource (bijvoorbeeld Log Analytics-werk ruimte) per dag bekijken. In dit Excel-werk blad kunt u het gebruik van uw Log Analytics-werk ruimten vinden door eerst te filteren op de kolom meter categorie om "inzichten en analyse" weer te geven (gebruikt door enkele van de verouderde prijs categorieën) en "Log Analytics" en vervolgens een filter toe te voegen aan het exemplaar De ID-kolom bevat de naam van de werk ruimte. Het gebruik wordt weer gegeven in de kolom verbruikte hoeveelheid en de eenheid voor elk item wordt weer gegeven in de kolom eenheid.  Meer informatie is beschikbaar om u te helpen [uw Microsoft Azure factuur te begrijpen](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
 
-## <a name="manage-your-maximum-daily-data-volume"></a>Uw maximale dagelijkse gegevens volume beheren
+## <a name="changing-pricing-tier"></a>Prijs categorie wijzigen
 
-U kunt een dagelijks CAP configureren en de dagelijkse opname voor uw werk ruimte beperken, maar zorg ervoor dat uw doel niet kan worden bereikt door de dagelijkse limiet te gebruiken.  Anders verliest u gegevens voor de rest van de dag, wat van invloed kan zijn op andere Azure-Services en-oplossingen waarvan de functionaliteit afhankelijk is van actuele gegevens die beschikbaar zijn in de werk ruimte.  Als gevolg hiervan wordt de mogelijkheid geboden om waarschuwingen te bekijken en te ontvangen wanneer de status van bronnen met ondersteunende IT-Services worden beïnvloed.  Het dagelijks kapje is bedoeld om te worden gebruikt als een manier om de onverwachte toename van het gegevens volume van uw beheerde resources te beheren en binnen uw limiet te blijven, of wanneer u niet-geplande kosten voor uw werk ruimte wilt beperken.  
+Als u de Log Analytics prijs categorie van uw werk ruimte wilt wijzigen, 
 
-Wanneer de dagelijkse limiet is bereikt, stopt het verzamelen van factureer bare gegevens typen voor de rest van de dag. Er wordt een waarschuwings banner boven aan de pagina weer gegeven voor de geselecteerde Log Analytics-werk ruimte en er wordt een bewerkings gebeurtenis verzonden naar de *bewerkings* tabel onder **LogManagement** categorie. Het verzamelen van gegevens wordt hervat nadat het tijdstip waarop de tijd opnieuw is ingesteld onder *dagelijkse limiet is ingesteld op*. We raden u aan een waarschuwings regel te definiëren op basis van deze bewerkings gebeurtenis, die is geconfigureerd om te worden gewaarschuwd wanneer de dagelijkse gegevens limiet is bereikt. 
+1. In de Azure Portal opent u het **gebruik en de geschatte kosten** van uw werk ruimte waar u een lijst ziet van elk van de prijs categorieën die beschikbaar zijn voor deze werk ruimte.
+
+2. Bekijk de geschatte kosten voor voor elke prijs categorie. Deze schatting is gebaseerd op het gebruik van de afgelopen 31 dagen, dus deze kosten raming is afhankelijk van de laatste 31 dagen die representatief is voor uw typische gebruik. In het onderstaande voor beeld ziet u hoe, op basis van de gegevens patronen van de afgelopen 31 dagen, deze werk ruimte minder kost in de betalen naar gebruik-laag (#1) vergeleken met de 100 GB/dagen capaciteit reserverings tier (#2).  
+
+    ![Prijscategorieën](media/manage-cost-storage/pricing-tier-estimated-costs.png)
+
+3. Als u de prijs categorie hebt gecontroleerd op basis van de laatste 31 dagen van gebruik, klikt u op **selecteren**.  
+
+U kunt [de prijs categorie ook instellen via Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) met behulp van de `sku` para meter (`pricingTier` in de sjabloon Azure Resource Manager). 
+
+## <a name="legacy-pricing-tiers"></a>Verouderde prijs Categorieën
+
+Abonnementen die een Log Analytics werk ruimte hebben of Application Insights resource vóór 2 april 2018 zijn gekoppeld aan een Enterprise Agreement die zijn gestart vóór 1 februari 2019, blijven toegang hebben tot het gebruik van de verouderde prijs Categorieën: **gratis**, **Zelfstandig (per GB)** en **per knoop punt (OMS)** .  Voor werk ruimten in de gratis prijs categorie geldt een dagelijkse gegevens opname van 500 MB (met uitzonde ring van beveiligings gegevens typen die worden verzameld door Azure Security Center) en de Bewaar periode van gegevens is beperkt tot 7 dagen. De gratis prijs categorie is alleen bedoeld voor evaluatie doeleinden. Werk ruimten in de zelfstandige of per knooppunt prijs categorie hebben een door de gebruiker geconfigureerde Bewaar periode van Maxi maal twee jaar. 
+
+Werk ruimten die zijn gemaakt vóór 2016 april hebben ook toegang tot de oorspronkelijke **Standard** -en **Premium** -prijs categorieën die respectievelijk 30 en 365 dagen zijn bewaard. Nieuwe werk ruimten kunnen niet worden gemaakt in de prijs categorie **Standard** of **Premium** , en als een werk ruimte uit deze lagen wordt verplaatst, kan deze niet meer worden teruggezet. 
+
+[Hier](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces)vindt u meer informatie over de beperkingen van de prijs categorie.
 
 > [!NOTE]
-> Het dagelijks kapje stopt niet het verzamelen van gegevens uit Azure Security Center, met uitzonde ring van werk ruimten waarin Azure Security Center is geïnstalleerd vóór 19 juni 2017. 
-
-### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse gegevens limiet moet worden gedefinieerd
-
-Bekijk [log Analytics gebruik en de geschatte kosten](usage-estimated-costs.md) om inzicht te krijgen in de trend van de gegevens opname en wat het dagelijkse volume Cap is dat moet worden gedefinieerd. U moet er rekening mee houden, omdat u uw resources niet kunt bewaken nadat de limiet is bereikt. 
-
-### <a name="set-the-daily-cap"></a>Het dagelijks kapje instellen
-
-In de volgende stappen wordt beschreven hoe u een limiet kunt configureren voor het beheren van de hoeveelheid gegevens die Log Analytics werk ruimte wordt opgenomen per dag.  
-
-1. Selecteer in de werkruimte in het linkerdeelvenster **Gebruik en geschatte kosten**.
-2. Klik op het tabblad **gebruik en geschatte kosten** voor de geselecteerde werk ruimte op **gegevens volume beheer** vanaf de bovenkant van de pagina. 
-3. Dagelijks Cap is standaard **uitgeschakeld** **: Klik op om het in te** scha kelen en stel de gegevens volume limiet in GB/dag in.
-
-    ![Gegevens limiet Log Analytics configureren](media/manage-cost-storage/set-daily-volume-cap-01.png)
-
-### <a name="alert-when-daily-cap-reached"></a>Waarschuwen wanneer de dagelijkse limiet is bereikt
-
-Hoewel we een visuele hint presen teren in de Azure Portal als aan de drempel waarde voor gegevens limiet is voldaan, wordt dit gedrag niet noodzakelijkerwijs uitgelijnd op de manier waarop u operationele problemen beheert die onmiddellijke aandacht vereisen.  Als u een waarschuwings melding wilt ontvangen, kunt u in Azure Monitor een nieuwe waarschuwings regel maken.  Zie [waarschuwingen maken, weer geven en beheren](alerts-metric.md)voor meer informatie.
-
-Om aan de slag te gaan, zijn dit de aanbevolen instellingen voor de waarschuwing:
-
-- Doel: Selecteer uw Log Analytics resource
-- Gezocht 
-   - Signaal naam: aangepaste zoek opdracht in Logboeken
-   - Zoek query: bewerking | Wat is een overschrijding van Details
-   - Gebaseerd op: aantal resultaten
-   - Voor waarde: groter dan
-   - Drempel waarde: 0
-   - Periode: 5 (minuten)
-   - Frequentie: 5 (minuten)
-- Naam van waarschuwings regel: dagelijkse gegevens limiet bereikt
-- Ernst: waarschuwing (Ernst 1)
-
-Zodra een waarschuwing is gedefinieerd en de limiet is bereikt, wordt er een waarschuwing geactiveerd en wordt de reactie uitgevoerd die is gedefinieerd in de actie groep. Dit kan uw team op de hoogte stellen via e-mail en SMS-berichten, of acties automatiseren met webhooks, Automation-runbooks of [integreren met een externe ITSM-oplossing](itsmc-overview.md#create-itsm-work-items-from-azure-alerts). 
+> Als u de rechten wilt gebruiken die afkomstig zijn van het aanschaffen van OMS E1 Suite, OMS E2-Suite of OMS-invoeg toepassing voor System Center, kiest u de prijs categorie Log Analytics *per knoop punt* .
 
 ## <a name="change-the-data-retention-period"></a>De Bewaar periode voor gegevens wijzigen
 
@@ -117,7 +103,7 @@ In de volgende stappen wordt beschreven hoe u kunt configureren hoe lang logboek
 
 Als u de standaard retentie voor uw werk ruimte wilt instellen, 
  
-1. Selecteer in de Azure Portal in uw werk ruimte **verbruik en geschatte kosten** in het linkerdeel venster.
+1. Selecteer in de Azure Portal in uw werk ruimte de optie **gebruik en geschatte kosten** in het linkerdeel venster.
 2. Klik op bovenaan de pagina **Gebruik en geschatte kosten** op **Gegevensvolumebeheer**.
 3. Verplaats in het deel venster de schuif regelaar om het aantal dagen te verhogen of te verlagen en klik vervolgens op **OK**.  Als u zich in de laag *gratis* bevindt, kunt u de Bewaar periode voor gegevens niet wijzigen en moet u upgraden naar de laag betaald om deze instelling te kunnen beheren.
 
@@ -170,48 +156,48 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 > [!NOTE]
 > Het instellen van de Bewaar periode voor afzonderlijke gegevens typen kan worden gebruikt om de kosten voor het bewaren van gegevens te verlagen.  Voor gegevens die vanaf oktober 2019 worden verzameld (als deze functie is uitgebracht) vermindert u de retentie voor sommige gegevens typen in de loop van de tijd om uw Bewaar kosten te verlagen.  Voor de gegevens die u eerder hebt verzameld, is het instellen van een lagere Bewaar periode voor een afzonderlijk type geen invloed op de kosten voor de Bewaar periode.  
 
-## <a name="legacy-pricing-tiers"></a>Verouderde prijs Categorieën
+## <a name="manage-your-maximum-daily-data-volume"></a>Uw maximale dagelijkse gegevens volume beheren
 
-Abonnementen die een Log Analytics werk ruimte hebben of Application Insights resource vóór 2 april 2018 zijn gekoppeld aan een Enterprise Agreement die zijn gestart vóór 1 februari 2019, blijven toegang hebben tot het gebruik van de verouderde prijs Categorieën: **gratis**, **Zelfstandig (per GB)** en **per knoop punt (OMS)** .  Voor werk ruimten in de gratis prijs categorie geldt een dagelijkse gegevens opname van 500 MB (met uitzonde ring van beveiligings gegevens typen die worden verzameld door Azure Security Center) en de Bewaar periode van gegevens is beperkt tot 7 dagen. De gratis prijs categorie is alleen bedoeld voor evaluatie doeleinden. Werk ruimten in de zelfstandige of per knooppunt prijs categorie hebben een door de gebruiker geconfigureerde Bewaar periode van Maxi maal twee jaar. 
+U kunt een dagelijks CAP configureren en de dagelijkse opname voor uw werk ruimte beperken, maar zorg ervoor dat uw doel niet kan worden bereikt door de dagelijkse limiet te gebruiken.  Anders verliest u gegevens voor de rest van de dag, wat van invloed kan zijn op andere Azure-Services en-oplossingen waarvan de functionaliteit afhankelijk is van actuele gegevens die beschikbaar zijn in de werk ruimte.  Als gevolg hiervan wordt de mogelijkheid geboden om waarschuwingen te bekijken en te ontvangen wanneer de status van bronnen met ondersteunende IT-Services worden beïnvloed.  Het dagelijks kapje is bedoeld om te worden gebruikt als een manier om de onverwachte toename van het gegevens volume van uw beheerde resources te beheren en binnen uw limiet te blijven, of wanneer u niet-geplande kosten voor uw werk ruimte wilt beperken.  
 
-Werk ruimten die zijn gemaakt vóór 2016 april hebben ook toegang tot de oorspronkelijke **Standard** -en **Premium** -prijs categorieën die respectievelijk 30 en 365 dagen zijn bewaard. Nieuwe werk ruimten kunnen niet worden gemaakt in de prijs categorie **Standard** of **Premium** , en als een werk ruimte uit deze lagen wordt verplaatst, kan deze niet meer worden teruggezet. 
-
-[Hier](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces)vindt u meer informatie over de beperkingen van de prijs categorie.
+Wanneer de dagelijkse limiet is bereikt, stopt het verzamelen van factureer bare gegevens typen voor de rest van de dag. Er wordt een waarschuwings banner boven aan de pagina weer gegeven voor de geselecteerde Log Analytics-werk ruimte en er wordt een bewerkings gebeurtenis verzonden naar de *bewerkings* tabel onder **LogManagement** categorie. Het verzamelen van gegevens wordt hervat nadat het tijdstip waarop de tijd opnieuw is ingesteld onder *dagelijkse limiet is ingesteld op*. We raden u aan een waarschuwings regel te definiëren op basis van deze bewerkings gebeurtenis, die is geconfigureerd om te worden gewaarschuwd wanneer de dagelijkse gegevens limiet is bereikt. 
 
 > [!NOTE]
-> Als u de rechten wilt gebruiken die afkomstig zijn van het aanschaffen van OMS E1 Suite, OMS E2-Suite of OMS-invoeg toepassing voor System Center, kiest u de prijs categorie Log Analytics *per knoop punt* .
+> Het dagelijks kapje stopt niet het verzamelen van gegevens uit Azure Security Center, met uitzonde ring van werk ruimten waarin Azure Security Center is geïnstalleerd vóór 19 juni 2017. 
 
+### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse gegevens limiet moet worden gedefinieerd
 
-## <a name="changing-pricing-tier"></a>Prijs categorie wijzigen
+Bekijk [log Analytics gebruik en de geschatte kosten](usage-estimated-costs.md) om inzicht te krijgen in de trend van de gegevens opname en wat het dagelijkse volume Cap is dat moet worden gedefinieerd. U moet er rekening mee houden, omdat u uw resources niet kunt bewaken nadat de limiet is bereikt. 
 
-Als uw Log Analytics-werk ruimte toegang heeft tot verouderde prijs categorieën, kunt u scha kelen tussen verouderde prijs Categorieën:
+### <a name="set-the-daily-cap"></a>Het dagelijks kapje instellen
 
-1. In de Azure Portal, in het deel venster Log Analytics abonnementen, selecteert u een werk ruimte.
+In de volgende stappen wordt beschreven hoe u een limiet kunt configureren voor het beheren van de hoeveelheid gegevens die Log Analytics werk ruimte wordt opgenomen per dag.  
 
-2. Selecteer in het deel venster werk ruimte onder **Algemeen**de **prijs categorie**.  
+1. Selecteer in de werkruimte in het linkerdeelvenster **Gebruik en geschatte kosten**.
+2. Klik op het tabblad **gebruik en geschatte kosten** voor de geselecteerde werk ruimte op **gegevens volume beheer** vanaf de bovenkant van de pagina. 
+3. Dagelijks Cap is standaard **uitgeschakeld** **: Klik op om het in te** scha kelen en stel de gegevens volume limiet in GB/dag in.
 
-3. Selecteer onder **prijs categorie**een prijs categorie en klik vervolgens op **selecteren**.  
-    ![Selected prijs plan ](media/manage-cost-storage/workspace-pricing-tier-info.png)
+    ![Gegevens limiet Log Analytics configureren](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
-U kunt [de prijs categorie ook instellen via Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) met behulp van de para meter `sku` (`pricingTier` in de arm-sjabloon). 
+### <a name="alert-when-daily-cap-reached"></a>Waarschuwen wanneer de dagelijkse limiet is bereikt
 
-## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Problemen oplossen waarom Log Analytics geen gegevens meer verzamelt
+Hoewel we een visuele hint presen teren in de Azure Portal als aan de drempel waarde voor gegevens limiet is voldaan, wordt dit gedrag niet noodzakelijkerwijs uitgelijnd op de manier waarop u operationele problemen beheert die onmiddellijke aandacht vereisen.  Als u een waarschuwings melding wilt ontvangen, kunt u in Azure Monitor een nieuwe waarschuwings regel maken.  Zie [waarschuwingen maken, weer geven en beheren](alerts-metric.md)voor meer informatie.
 
-Als u zich in de prijs categorie verouderde gratis bevindt en meer dan 500 MB aan gegevens op een dag hebt verzonden, stopt het verzamelen van gegevens voor de rest van de dag. Het bereiken van de dagelijkse limiet is een gemeen schappelijke reden dat Log Analytics het verzamelen van gegevens niet meer of gegevens lijkt te missen.  Log Analytics maakt een gebeurtenis van het type bewerking wanneer het verzamelen van gegevens wordt gestart en gestopt. Voer de volgende query uit in de zoek opdracht om te controleren of u de dagelijkse limiet bereikt en ontbrekende gegevens: 
+Om aan de slag te gaan, zijn dit de aanbevolen instellingen voor de waarschuwing:
 
-```kusto
-Operation | where OperationCategory == 'Data Collection Status'
-```
+- Doel: Selecteer uw Log Analytics resource
+- Gezocht 
+   - Signaal naam: aangepaste zoek opdracht in Logboeken
+   - Zoek query: bewerking | Wat is een overschrijding van Details
+   - Gebaseerd op: aantal resultaten
+   - Voor waarde: groter dan
+   - Drempel waarde: 0
+   - Periode: 5 (minuten)
+   - Frequentie: 5 (minuten)
+- Naam van waarschuwings regel: dagelijkse gegevens limiet bereikt
+- Ernst: waarschuwing (Ernst 1)
 
-Wanneer het verzamelen van gegevens stopt, wordt de OperationStatus **waarschuwing**. Wanneer het verzamelen van gegevens wordt gestart, is de OperationStatus **voltooid**. De volgende tabel beschrijft de redenen waarom het verzamelen van gegevens wordt gestopt en een aanbevolen actie om het verzamelen van gegevens te hervatten:  
-
-|Reden voor verzamelen stopt| Oplossing| 
-|-----------------------|---------|
-|De dagelijkse limiet van de verouderde gratis prijs categorie is bereikt |Wacht tot de volgende dag voor het automatisch opnieuw opstarten van de verzameling of de prijs categorie is gewijzigd.|
-|Het dagelijkse kapje van uw werk ruimte is bereikt|Wacht tot de verzameling automatisch opnieuw wordt opgestart of verhoog de dagelijkse gegevens volume limiet die wordt beschreven in het maximale dagelijkse gegevens volume beheren. De tijd voor het opnieuw instellen van de dagelijkse limiet wordt weer gegeven op de pagina **gegevens volume beheer** . |
-|Het Azure-abonnement bevindt zich in een onderbroken staat vanwege:<br> De gratis proef versie is beëindigd<br> Azure Pass is verlopen<br> De maandelijkse bestedings limiet is bereikt (bijvoorbeeld op een MSDN-of Visual Studio-abonnement)|Converteren naar een betaald abonnement<br> Limiet verwijderen of wachten tot de limiet is ingesteld|
-
-Als u een melding wilt ontvangen wanneer het verzamelen van gegevens wordt gestopt, gebruikt u de stappen in de waarschuwing *dagelijkse gegevens Cap maken* om een melding te ontvangen wanneer het verzamelen van gegevens wordt gestopt. Gebruik de stappen die worden beschreven in [een actie groep maken](action-groups.md) om een e-mail, webhook of runbook-actie voor de waarschuwings regel te configureren. 
+Zodra een waarschuwing is gedefinieerd en de limiet is bereikt, wordt er een waarschuwing geactiveerd en wordt de reactie uitgevoerd die is gedefinieerd in de actie groep. Dit kan uw team op de hoogte stellen via e-mail en SMS-berichten, of acties automatiseren met webhooks, Automation-runbooks of [integreren met een externe ITSM-oplossing](itsmc-overview.md#create-itsm-work-items-from-azure-alerts). 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Het oplossen van problemen met een hoger gebruik dan verwacht
 
@@ -300,7 +286,7 @@ Voor een overzicht van het aantal **factureer bare** gebeurtenissen dat per comp
 union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| summarize eventCount=count() by computerName  | sort by count_ nulls last
+| summarize eventCount=count() by computerName  | sort by eventCount nulls last
 ```
 
 Als u aantallen wilt zien voor factureer bare gegevens typen die gegevens verzenden naar een specifieke computer, gebruikt u:
@@ -332,7 +318,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
 ```
 
-Als `subscriptionId` wordt gewijzigd in `resourceGroup`, wordt het factureer bare opgenomen gegevens volume door de Azure-resource groep weer gegeven. 
+Als `subscriptionId` naar `resourceGroup` wordt gewijzigd, wordt het factureer bare opgenomen gegevens volume per Azure-resource groep weer gegeven. 
 
 
 > [!NOTE]
@@ -479,6 +465,25 @@ Wanneer u een waarschuwing ontvangt, gebruikt u de stappen in de volgende sectie
 ## <a name="data-transfer-charges-using-log-analytics"></a>Kosten voor gegevens overdracht met behulp van Log Analytics
 
 Bij het verzenden van gegevens naar Log Analytics kunnen kosten voor de gegevens bandbreedte worden berekend. Zoals beschreven op de [pagina met prijzen voor Azure-band breedte](https://azure.microsoft.com/pricing/details/bandwidth/), wordt gegevens overdracht tussen Azure-Services in twee regio's in rekening gebracht als uitgaande gegevens overdracht tegen het normale tarief. Inkomende gegevens overdracht is gratis. Deze kosten zijn echter zeer klein (aantal%) vergeleken met de kosten voor Log Analytics gegevens opname. Als gevolg van het beheer van de kosten voor Log Analytics moet u zich richten op uw opgenomen gegevens volume, en wij hebben richt lijnen om die [hier](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)te helpen begrijpen.   
+
+
+## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Problemen oplossen waarom Log Analytics geen gegevens meer verzamelt
+
+Als u zich in de prijs categorie verouderde gratis bevindt en meer dan 500 MB aan gegevens op een dag hebt verzonden, stopt het verzamelen van gegevens voor de rest van de dag. Het bereiken van de dagelijkse limiet is een gemeen schappelijke reden dat Log Analytics het verzamelen van gegevens niet meer of gegevens lijkt te missen.  Log Analytics maakt een gebeurtenis van het type bewerking wanneer het verzamelen van gegevens wordt gestart en gestopt. Voer de volgende query uit in de zoek opdracht om te controleren of u de dagelijkse limiet bereikt en ontbrekende gegevens: 
+
+```kusto
+Operation | where OperationCategory == 'Data Collection Status'
+```
+
+Wanneer het verzamelen van gegevens stopt, wordt de OperationStatus **waarschuwing**. Wanneer het verzamelen van gegevens wordt gestart, is de OperationStatus **voltooid**. De volgende tabel beschrijft de redenen waarom het verzamelen van gegevens wordt gestopt en een aanbevolen actie om het verzamelen van gegevens te hervatten:  
+
+|Reden voor verzamelen stopt| Oplossing| 
+|-----------------------|---------|
+|De dagelijkse limiet van de verouderde gratis prijs categorie is bereikt |Wacht tot de volgende dag voor het automatisch opnieuw opstarten van de verzameling of de prijs categorie is gewijzigd.|
+|Het dagelijkse kapje van uw werk ruimte is bereikt|Wacht tot de verzameling automatisch opnieuw wordt opgestart of verhoog de dagelijkse gegevens volume limiet die wordt beschreven in het maximale dagelijkse gegevens volume beheren. De tijd voor het opnieuw instellen van de dagelijkse limiet wordt weer gegeven op de pagina **gegevens volume beheer** . |
+|Het Azure-abonnement bevindt zich in een onderbroken staat vanwege:<br> De gratis proef versie is beëindigd<br> Azure Pass is verlopen<br> De maandelijkse bestedings limiet is bereikt (bijvoorbeeld op een MSDN-of Visual Studio-abonnement)|Converteren naar een betaald abonnement<br> Limiet verwijderen of wachten tot de limiet is ingesteld|
+
+Als u een melding wilt ontvangen wanneer het verzamelen van gegevens wordt gestopt, gebruikt u de stappen in de waarschuwing *dagelijkse gegevens Cap maken* om een melding te ontvangen wanneer het verzamelen van gegevens wordt gestopt. Gebruik de stappen die worden beschreven in [een actie groep maken](action-groups.md) om een e-mail, webhook of runbook-actie voor de waarschuwings regel te configureren. 
 
 ## <a name="limits-summary"></a>Limieten overzicht
 

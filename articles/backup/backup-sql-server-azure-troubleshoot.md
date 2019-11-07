@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: c456dfec72f98dc4ae06f1d7d5d9fb461182d579
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: e4683547a7c305da3d3a3bc7a7d6a50f21ad46f2
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018985"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614403"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problemen met SQL Server database back-up oplossen met behulp van Azure Backup
 
@@ -21,7 +21,7 @@ Dit artikel bevat informatie over het oplossen van problemen met SQL Server-data
 
 Zie [over SQL Server back-up in azure vm's](backup-azure-sql-database.md#feature-consideration-and-limitations)voor meer informatie over het back-upproces en de beperkingen.
 
-## <a name="sql-server-permissions"></a>SQL Server-machtigingen
+## <a name="sql-server-permissions"></a>SQL Server machtigingen
 
 Als u de beveiliging voor een SQL Server Data Base op een virtuele machine wilt configureren, moet u de **AzureBackupWindowsWorkload** -extensie op die virtuele machine installeren. Als u de fout **UserErrorSQLNoSysadminMembership**krijgt, betekent dit dat uw SQL Server-exemplaar niet over de vereiste back-upmachtigingen beschikt. Volg de stappen in [set VM permissions](backup-azure-sql-database.md#set-vm-permissions)om deze fout op te lossen.
 
@@ -29,10 +29,9 @@ Als u de beveiliging voor een SQL Server Data Base op een virtuele machine wilt 
 
 ### <a name="backup-type-unsupported"></a>Het back-uptype wordt niet ondersteund
 
-| Severity | Description | Mogelijke oorzaken | Aanbevolen actie |
+| Severity | Beschrijving | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|---|
 | Waarschuwing | De huidige instellingen voor deze data base bieden geen ondersteuning voor bepaalde back-uptypen die aanwezig zijn in het bijbehorende beleid. | <li>Alleen een volledige database back-upbewerking kan worden uitgevoerd op de hoofd database. U kunt geen differentiële back-up of transactie logboek back-up maken. </li> <li>Voor alle data bases in het eenvoudige herstel model is het maken van back-ups van transactie logboeken niet toegestaan.</li> | Wijzig de data base-instellingen zodanig dat alle back-uptypen in het beleid worden ondersteund. Of wijzig het huidige beleid zodat alleen de ondersteunde back-uptypen worden vermeld. Anders worden de niet-ondersteunde back-uptypen overgeslagen tijdens de geplande back-up of mislukt de back-uptaak voor ad hoc-back-ups.
-
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -81,9 +80,9 @@ Als u de beveiliging voor een SQL Server Data Base op een virtuele machine wilt 
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| Herstellen is mislukt, omdat de database niet offline kan worden gezet. | Wanneer u een herstel bewerking uitvoert, moet de doel database offline worden gezet. Azure Backup kunt deze gegevens niet offline zetten. | Gebruik de aanvullende details in het menu Azure Portal fouten om de hoofd oorzaken te beperken. Zie de [SQL Server-documentatie](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms)voor meer informatie. |
+| Herstellen is mislukt, omdat de database niet offline kan worden gezet. | Wanneer u een herstel bewerking uitvoert, moet de doel database offline worden gezet. Azure Backup kunt deze gegevens niet offline zetten. | Gebruik de aanvullende details in het menu Azure Portal fouten om de hoofd oorzaken te beperken. Raadpleeg de [SQL Server-documentatie](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) voor meer informatie. |
 
-###  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
+### <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
@@ -94,7 +93,6 @@ Als u de beveiliging voor een SQL Server Data Base op een virtuele machine wilt 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
 | De logboekback-up die is gebruikt voor herstel bevat bulksgewijs geregistreerde wijzigingen. Deze kan niet worden gebruikt om op een willekeurig tijdstip te stoppen volgens de SQL-richtlijnen. | Wanneer een Data Base zich in de herstel modus met meerdere logboeken bevindt, kunnen de gegevens tussen een bulksgewijs geregistreerde trans actie en de volgende logboek transactie niet worden hersteld. | Kies een ander tijdstip voor herstel. [Meer informatie](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105)).
-
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -124,20 +122,19 @@ Als u de beveiliging voor een SQL Server Data Base op een virtuele machine wilt 
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-De bewerking is geblokkeerd omdat u de limiet hebt bereikt van het aantal bewerkingen dat binnen 24 uur is toegestaan. | Wanneer u de Maxi maal toegestane limiet hebt bereikt voor een bewerking binnen een periode van 24 uur, wordt deze fout weer geleverd. <br> Bijvoorbeeld: Als u de limiet hebt bereikt voor het aantal back-uptaken dat per dag kan worden geactiveerd, en u een back-up wilt configureren voor een nieuw item, wordt deze fout weer geven. | Normaal gesp roken wordt de bewerking na 24 uur opnieuw geprobeerd om dit probleem op te lossen. Als het probleem zich blijft voordoen, kunt u contact opnemen met micro soft ondersteuning voor hulp.
+De bewerking is geblokkeerd omdat u de limiet hebt bereikt van het aantal bewerkingen dat binnen 24 uur is toegestaan. | Wanneer u de Maxi maal toegestane limiet hebt bereikt voor een bewerking binnen een periode van 24 uur, wordt deze fout weer geleverd. <br> Bijvoorbeeld: als u de limiet hebt bereikt van het aantal back-uptaken configureren dat per dag kan worden geactiveerd en u een back-up wilt configureren voor een nieuw item, wordt deze fout weer geven. | Normaal gesp roken wordt de bewerking na 24 uur opnieuw geprobeerd om dit probleem op te lossen. Als het probleem zich blijft voordoen, kunt u contact opnemen met micro soft ondersteuning voor hulp.
 
 ### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-De bewerking is geblokkeerd omdat de kluis de maximum limiet heeft bereikt voor dergelijke bewerkingen die zijn toegestaan in een periode van 24 uur. | Wanneer u de Maxi maal toegestane limiet hebt bereikt voor een bewerking binnen een periode van 24 uur, wordt deze fout weer geleverd. Deze fout treedt doorgaans op in het geval van schaal bewerkingen, zoals het wijzigen van beleid of automatische beveiliging. In tegens telling tot in het geval van CloudDosAbsoluteLimitReached is het niet veel wat u kunt doen om deze status op te lossen, Azure Backup service de bewerkingen intern opnieuw probeert uit te voeren voor alle betreffende items.<br> Bijvoorbeeld: Als u een groot aantal gegevens bronnen hebt die zijn beveiligd met een beleid en u het beleid probeert te wijzigen, worden de beveiligings taken voor elk van de beveiligde items geactiveerd en kan de maximum limiet voor dergelijke bewerkingen per dag worden bereikt.| Azure Backup service wordt deze bewerking na 24 uur automatisch opnieuw uitgevoerd. 
-
+De bewerking is geblokkeerd omdat de kluis de maximum limiet heeft bereikt voor dergelijke bewerkingen die zijn toegestaan in een periode van 24 uur. | Wanneer u de Maxi maal toegestane limiet hebt bereikt voor een bewerking binnen een periode van 24 uur, wordt deze fout weer geleverd. Deze fout treedt meestal op wanneer er op schaal bewerkingen worden uitgevoerd, zoals het wijzigen van beleid of automatische beveiliging. In tegens telling tot in het geval van CloudDosAbsoluteLimitReached is het niet veel wat u kunt doen om deze status op te lossen, Azure Backup service de bewerkingen intern opnieuw probeert uit te voeren voor alle betreffende items.<br> Als er bijvoorbeeld sprake is van een groot aantal gegevens bronnen dat wordt beveiligd met een beleid en u het beleid probeert te wijzigen, worden de beveiligings taken voor elk van de beveiligde items geactiveerd en kan de maximum limiet voor dergelijke bewerkingen per dag worden bereikt.| Azure Backup service wordt deze bewerking na 24 uur automatisch opnieuw uitgevoerd.
 
 ## <a name="re-registration-failures"></a>Fouten bij opnieuw registreren
 
 Controleer op een of meer van de volgende symptomen voordat u de bewerking opnieuw registreren start:
 
-* Alle bewerkingen (zoals back-up, herstel en configuratie back-up) mislukken op de virtuele machine met een van de volgende fout codes: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
+* Alle bewerkingen (zoals back-up, herstel en configuratie back-up) mislukken op de virtuele machine met een van de volgende fout codes: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent** , **WorkloadExtensionDidntDequeueMsg**.
 * Het gebied voor de **back-upstatus** van het back-upitem kan **niet worden bereikt**. Regel alle andere oorzaken die kunnen resulteren in dezelfde status:
 
   * Onvoldoende machtigingen voor het uitvoeren van back-upbewerkingen op de VM  
@@ -150,14 +147,14 @@ Controleer op een of meer van de volgende symptomen voordat u de bewerking opnie
 
 Deze symptomen kunnen om een of meer van de volgende redenen optreden:
 
-* Er is een extensie verwijderd uit de portal. 
+* Er is een extensie verwijderd uit de portal.
 * Een uitbrei ding van het **configuratie scherm** op de virtuele machine is verwijderd onder het **verwijderen of wijzigen van een programma**.
 * De virtuele machine is terug in de tijd teruggezet via een in-place schijf herstel bewerking.
 * De virtuele machine is afgesloten gedurende een langere periode, waardoor de configuratie van de uitbrei ding is verlopen.
 * De virtuele machine is verwijderd en een andere virtuele machine is gemaakt met dezelfde naam en in dezelfde resource groep als de verwijderde VM.
 * Een van de knoop punten van de beschikbaarheids groep heeft de volledige back-upconfiguratie niet ontvangen. Dit kan gebeuren wanneer de beschikbaarheids groep is geregistreerd bij de kluis of wanneer er een nieuw knoop punt wordt toegevoegd.
 
-In de voor gaande scenario's wordt u aangeraden een bewerking voor het opnieuw registreren van de virtuele machine te activeren. Deze optie is alleen beschikbaar via Power shell.
+In de voor gaande scenario's wordt u aangeraden een bewerking voor het opnieuw registreren van de virtuele machine te activeren. Zie [hier](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup) voor instructies over het uitvoeren van deze taak in Power shell.
 
 ## <a name="size-limit-for-files"></a>Maximale grootte voor bestanden
 
@@ -185,9 +182,10 @@ Als de teken reeks grootte van de inhoud groter is dan 20.000 bytes, worden de d
 
 ### <a name="override-the-default-target-restore-file-path"></a>Het pad van het standaard doel bestand voor terugzetten overschrijven
 
-U kunt het pad voor het terugzetten van het doel bestand overschrijven tijdens de herstel bewerking door een JSON-bestand met de toewijzing van het database bestand te plaatsen in het pad naar de doel-herstellen. Maak een `database_name.json` bestand en plaats het op de locatie *C:\Program Files\Azure workload Backup\bin\plugins\SQL*.
+U kunt het pad voor het terugzetten van het doel bestand overschrijven tijdens de herstel bewerking door een JSON-bestand met de toewijzing van het database bestand te plaatsen in het pad naar de doel-herstellen. Maak een `database_name.json`-bestand en plaats het op de locatie *C:\Program Files\Azure workload Backup\bin\plugins\SQL*.
 
 De inhoud van het bestand moet de volgende indeling hebben:
+
 ```json
 [
   {
@@ -227,7 +225,6 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
                 INNER JOIN sys.databases db ON db.database_id = mf.database_id
                 WHERE db.name = N'<Database Name>'"
   ```
-
 
 Dit bestand moet worden geplaatst voordat u de herstel bewerking kunt activeren.
 

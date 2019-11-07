@@ -1,5 +1,5 @@
 ---
-title: SQL Database herstel na nood gevallen | Microsoft Docs
+title: Herstel na nood gevallen SQL Database
 description: Informatie over het herstellen van een Data Base van een regionale Data Center-storing of het mislukken van de Azure SQL Database actieve geo-replicatie en mogelijkheden voor geo-herstel.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
-ms.openlocfilehash: 95814805d0bcb2532c09f4f68c6b8d97c3b8c6a5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bc4968541c29e3bf18eb4caca2abe648d17342a4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568831"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690598"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Een Azure SQL Database of failover naar een secundaire herstellen
 
@@ -24,7 +24,7 @@ Azure SQL Database biedt de volgende mogelijkheden voor het herstellen van een s
 
 - [Actieve Geo-replicatie](sql-database-active-geo-replication.md)
 - [Groepen voor automatische failover](sql-database-auto-failover-group.md)
-- [Geo-restore](sql-database-recovery-using-backups.md#point-in-time-restore)
+- [Geo-herstel](sql-database-recovery-using-backups.md#point-in-time-restore)
 - [Zone-redundante data bases](sql-database-high-availability.md)
 
 Zie [bedrijfs continuïteit](sql-database-business-continuity.md)voor meer informatie over scenario's voor bedrijfs continuïteit en de functies die deze scenario's ondersteunen.
@@ -89,7 +89,7 @@ Als de downtime van uw toepassing niet leidt tot bedrijfs aansprakelijkheid, kun
 
 Als u geo-herstel gebruikt om een storing te herstellen, moet u ervoor zorgen dat de verbinding met de nieuwe data bases juist is geconfigureerd zodat de normale toepassings functie kan worden hervat. Dit is een controle lijst met taken voor het voorbereiden van uw herstelde database productie.
 
-### <a name="update-connection-strings"></a>Verbindingsreeksen bijwerken
+### <a name="update-connection-strings"></a>Verbindings reeksen bijwerken
 
 Omdat de herstelde data base zich op een andere server bevindt, moet u de connection string van de toepassing bijwerken zodat deze naar die server verwijst.
 
@@ -97,7 +97,7 @@ Zie voor meer informatie over het wijzigen van verbindings reeksen de juiste ont
 
 ### <a name="configure-firewall-rules"></a>Firewall regels configureren
 
-U moet ervoor zorgen dat de firewall regels die zijn geconfigureerd op de server en op de data base overeenkomen met die zijn geconfigureerd op de primaire server en de primaire data base. Zie voor meer informatie, [het: Firewall instellingen (Azure SQL Database)](sql-database-configure-firewall-settings.md)configureren.
+U moet ervoor zorgen dat de firewall regels die zijn geconfigureerd op de server en op de data base overeenkomen met die zijn geconfigureerd op de primaire server en de primaire data base. Zie [How to: Configure Firewall Settings (Azure SQL database) (Engelstalig)](sql-database-configure-firewall-settings.md)voor meer informatie.
 
 ### <a name="configure-logins-and-database-users"></a>Aanmeldingen en database gebruikers configureren
 

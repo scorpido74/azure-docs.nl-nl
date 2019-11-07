@@ -11,14 +11,38 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 353e0478172ed03cde848d8c5127d2ee41724963
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b40df5878d08b222d145531bfdad1e30b2fe989d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481250"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647400"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
+
+## <a name="speech-sdk-180-2019-november-release"></a>Speech SDK 1.8.0:2019-november release
+
+**Nieuwe functies**
+*   Er is een FromHost ()-API toegevoegd om gebruik te vereenvoudigen met on-premises containers en soevereine Clouds.
+*   Automatische bron Taaldetectie toegevoegd voor spraak herkenning (in Java en C++)
+*   Er is een SourceLanguageConfig-object toegevoegd voor spraak herkenning, dat wordt gebruikt om de verwachte C++bron talen op te geven (in Java en)
+*   KeywordRecognizer ondersteuning voor Windows (UWP), Android en iOS is toegevoegd via de Nuget-en Unity-pakketten
+*   De Java-API voor externe conversaties is toegevoegd aan de conversatie transcriptie in asynchrone batches.
+
+**Wijzigingen afbreken**
+*   De functionaliteit van de conversatie-transcriber is verplaatst onder de naam ruimte micro soft. CognitiveServices. speech. transcriptie.
+*   Een deel van de audio transcriber-methoden worden verplaatst naar de nieuwe conversatie klasse.
+*   Ondersteuning voor verloren voor 32-bits (ARMv7 en x86) iOS 
+
+**Oplossingen voor oplossingen**
+*   Corrigeren voor vastlopen als lokale KeywordRecognizer wordt gebruikt zonder een geldige abonnements sleutel voor spraak Services
+
+**Voorbeelden**
+*   Xamarin-voor beeld voor KeywordRecognizer
+*   Unit-voor beeld voor KeywordRecognizer
+*   C++en Java-voor beelden voor automatische bron Taaldetectie.
+
+
 ## <a name="speech-sdk-170-2019-september-release"></a>Speech SDK 1.7.0:2019-release van september
 
 **Nieuwe functies**
@@ -37,7 +61,6 @@ ms.locfileid: "73481250"
 *   Er is een probleem opgelost met UUIDs die niet uniek zijn in sommige verbindings eigenschappen
 *   Enkele waarschuwingen over de specificaties van nulwaarden in de SWIFT-bindingen zijn opgelost (hiervoor zijn mogelijk kleine code wijzigingen vereist)
 *   Er is een fout opgelost waardoor WebSocket-verbindingen zonder problemen kunnen worden gesloten onder netwerk belasting
-*   iOS: ondersteuning voor arm7s-architectuur
 *   Er is een probleem opgelost in Android dat soms resulteert in dubbele indruk-Id's die worden gebruikt door DialogServiceConnector
 *   Verbeteringen in de stabiliteit van verbindingen tussen multi-turn-interacties en de rapportage van fouten (via geannuleerde gebeurtenissen) wanneer deze zich voordoen met DialogServiceConnector
 *   DialogServiceConnector-sessie start nu op juiste wijze gebeurtenissen, zoals bij het aanroepen van ListenOnceAsync () tijdens een actieve StartKeywordRecognitionAsync ()

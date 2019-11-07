@@ -1,5 +1,5 @@
 ---
-title: Gegevens van Teradata-Vantage kopiëren met behulp van Azure Data Factory | Microsoft Docs
+title: Gegevens van Teradata-Vantage kopiëren met behulp van Azure Data Factory
 description: Met de Teradata-connector van de Data Factory-service kunt u gegevens kopiëren van een Teradata-Vantage naar gegevens archieven die door Data Factory worden ondersteund als Sinks.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 923e248ff7b793d5187faeabdbf073ca90d9efc2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4074c50aa17bf804696060134e37055a18bd0137
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930973"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680092"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Gegevens van Teradata-Vantage kopiëren met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -64,10 +64,10 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 De gekoppelde Teradata-service ondersteunt de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op **Teradata**. | Ja |
-| Verbindings | Hiermee geeft u de gegevens op die nodig zijn om verbinding te maken met het Teradata-exemplaar. Raadpleeg de volgende voor beelden.<br/>U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md) met meer informatie. | Ja |
+| connectionString | Hiermee geeft u de gegevens op die nodig zijn om verbinding te maken met het Teradata-exemplaar. Raadpleeg de volgende voor beelden.<br/>U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md) met meer informatie. | Ja |
 | gebruikersnaam | Geef een gebruikers naam op om verbinding te maken met Teradata. Van toepassing wanneer u Windows-verificatie gebruikt. | Nee |
 | wachtwoord | Geef een wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. U kunt er ook voor kiezen om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). <br>Is van toepassing wanneer u Windows-verificatie gebruikt of een verwijzing naar een wacht woord in Key Vault voor basis verificatie. | Nee |
 | connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Ja |
@@ -151,11 +151,11 @@ Deze sectie bevat een lijst met eigenschappen die door de Teradata-gegevensset w
 
 Als u gegevens wilt kopiëren uit Teradata, worden de volgende eigenschappen ondersteund:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de DataSet moet worden ingesteld op `TeradataTable`. | Ja |
 | database | De naam van het Teradata-exemplaar. | Nee (als "query" in activiteit bron is opgegeven) |
-| Tabel | De naam van de tabel in het Teradata-exemplaar. | Nee (als "query" in activiteit bron is opgegeven) |
+| tabel | De naam van de tabel in het Teradata-exemplaar. | Nee (als "query" in activiteit bron is opgegeven) |
 
 **Voorbeeld:**
 
@@ -205,7 +205,7 @@ Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Ter
 
 Als u gegevens wilt kopiëren uit Teradata, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op `TeradataSource`. | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `"SELECT * FROM MyTable"`.<br>Wanneer u gepartitioneerde belasting inschakelt, moet u alle bijbehorende ingebouwde partitie parameters in uw query koppelen. Zie de sectie [parallelle kopie van Teradata](#parallel-copy-from-teradata) voor voor beelden. | Nee (als de tabel in de gegevensset is opgegeven) |
@@ -307,9 +307,9 @@ Wanneer u gegevens uit Teradata kopieert, zijn de volgende toewijzingen van toep
 | ByteInt |Int16 |
 | char |Tekenreeks |
 | CLOB |Tekenreeks |
-| Datum |Datum/tijd |
+| Date |DateTime |
 | Komma |Komma |
-| Dubbelklik |Dubbelklik |
+| Double-waarde |Double-waarde |
 | Afbeelding |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Geheel getal |Int32 |
 | Interval dag |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
@@ -325,17 +325,17 @@ Wanneer u gegevens uit Teradata kopieert, zijn de volgende toewijzingen van toep
 | Interval seconde |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Interval jaar |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Interval jaar tot maand |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Aantal |Dubbelklik |
+| Aantal |Double-waarde |
 | Periode (datum) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Periode (tijd) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Periode (tijd met tijd zone) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Periode (tijds tempel) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Periode (tijds tempel met tijd zone) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | SmallInt |Int16 |
-| Tijd |Duur |
+| Time |Duur |
 | Tijd met tijd zone |Duur |
-| Tijdstempel |Datum/tijd |
-| Tijds tempel met tijd zone |Datum/tijd |
+| Tijdstempel |DateTime |
+| Tijds tempel met tijd zone |DateTime |
 | VarByte |Byte [] |
 | VarChar |Tekenreeks |
 | VarGraphic |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |

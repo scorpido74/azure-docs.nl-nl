@@ -1,5 +1,5 @@
 ---
-title: "Zelf studie: over taxi's-gegevens in New York laden voor Azure SQL Data Warehouse | Microsoft Docs"
+title: "Zelf studie: over taxi's-gegevens voor New York laden"
 description: In de zelf studie worden Azure Portal en SQL Server Management Studio voor het laden van nieuwe over taxi's-gegevens van een globale Azure-Blob naar Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2e799d84aee9ba4d3bfb00ddfad358c9b90c3d59
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5bf1a600bf57ecb598aac485e11f3618dda7244e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482404"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686090"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Zelf studie: over taxi's-gegevens voor New York laden in Azure SQL Data Warehouse
 
@@ -44,7 +45,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Een lege SQL Data Warehouse maken
 
-Een Azure SQL Data Warehouse wordt gemaakt met een gedefinieerde set [reken resources](memory-and-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-features.md). 
+Er wordt een Azure SQL Data Warehouse gemaakt met een gedefinieerde set [Compute resources] geheugen-gelijktijdigheids limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-features.md). 
 
 Volg deze stappen om een leeg SQL Data Warehouse te maken. 
 

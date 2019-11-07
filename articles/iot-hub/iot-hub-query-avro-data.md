@@ -1,68 +1,68 @@
 ---
-title: Avro-gegevens op te vragen met behulp van Azure Data Lake Analytics | Microsoft Docs
-description: Eigenschappen van de hoofdtekst van bericht gebruiken voor het doorsturen van telemetrie van apparaten naar Blob-opslag en de Avro-indeling gegevens die worden geschreven naar Blob-opslag op te vragen.
+title: Query's uitvoeren op Avro-gegevens met behulp van Azure Data Lake Analytics | Microsoft Docs
+description: Gebruik eigenschappen van bericht hoofdtekst om apparaat-telemetrie te routeren naar Blob-opslag en de Avro-indelings gegevens op te vragen die worden geschreven naar de Blob-opslag.
 author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 84e1dd77c6e873dc2facb5126bbddf795192b60d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257748"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605624"
 ---
-# <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Avro-gegevens opvragen met behulp van Azure Data Lake Analytics
+# <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Query's uitvoeren op Avro-gegevens met behulp van Azure Data Lake Analytics
 
-In dit artikel wordt beschreven hoe u Avro-gegevens voor het efficiënt te routeren van berichten van Azure IoT Hub met Azure-services op te vragen. [Message Routing](iot-hub-devguide-messages-d2c.md) kunt u voor het filteren van gegevens met behulp van uitgebreide query's op basis van eigenschappen van berichten, hoofdtekst van het bericht apparaat apparaatdubbel-tags en apparaatdubbeleigenschappen. Zie voor meer informatie over de mogelijkheden bij het controleren van het bericht routering, het artikel over [message routing querysyntaxis](iot-hub-devguide-routing-query-syntax.md).
+In dit artikel wordt beschreven hoe u Avro-gegevens doorzoekt om berichten van Azure IoT Hub efficiënt te routeren naar Azure-Services. Met [bericht routering](iot-hub-devguide-messages-d2c.md) kunt u gegevens filteren met uitgebreide query's op basis van bericht eigenschappen, bericht tekst, dubbele Tags voor apparaten en dubbele eigenschappen van het apparaat. Zie het artikel over de query [syntaxis voor bericht routering](iot-hub-devguide-routing-query-syntax.md)voor meer informatie over de mogelijkheden voor het uitvoeren van Query's in bericht routering.
 
-De uitdaging is dat wanneer u Azure IoT Hub routeert berichten naar Azure Blob-opslag, standaard IoT-Hub schrijft de inhoud in Avro-indeling, die zowel een eigenschap van de hoofdtekst van bericht als een berichteigenschap is. De Avro-indeling wordt niet gebruikt voor alle andere eindpunten. Hoewel de Avro-indeling ideaal voor het behoud van gegevens en het bericht is, is een uitdaging om te gebruiken om gegevens te doorzoeken. Ter vergelijking: JSON- of CSV-indeling, het is veel eenvoudiger is voor het opvragen van gegevens. IoT Hub biedt nu ondersteuning voor het schrijven van gegevens naar Blob-opslag in JSON, evenals AVRO.
+De uitdaging is dat toen Azure IoT Hub berichten naar Azure Blob-opslag stuurt, standaard IoT Hub de inhoud in de Avro-indeling schrijft, met zowel een eigenschap bericht hoofdtekst als een bericht eigenschap. De Avro-indeling wordt niet gebruikt voor andere eind punten. Hoewel de Avro-indeling geweldig is voor gegevens-en bericht behoud, is het een uitdaging om deze te gebruiken om gegevens op te vragen. De JSON-of CSV-indeling is in vergelijking veel gemakkelijker voor het uitvoeren van query's op gegevens. IoT Hub ondersteunt nu het schrijven van gegevens naar Blob Storage in JSON en in AVRO.
 
-Zie voor meer informatie, [met behulp van Azure Blob Storage als een eindpunt in Routering](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+Zie [Azure Storage gebruiken als een eind punt voor route ring](iot-hub-devguide-messages-d2c.md#azure-storage)voor meer informatie.
 
-Voor het adres van de behoeften van niet-relationele big data en indelingen en strijden tegen deze uitdaging, kunt u veel van de big data-patronen voor zowel transformeren en schalen van gegevens. Een van de patronen 'betalen per query', is Azure Data Lake Analytics, wat het hoofdonderwerp van dit artikel. Hoewel u kunt eenvoudig de query worden uitgevoerd in Hadoop- of andere oplossingen, Data Lake Analytics is vaak beter geschikt zijn voor deze benadering 'betalen per query'.
+U kunt veel van de Big Data-patronen gebruiken voor het transformeren en schalen van gegevens, zodat u niet-relationele vereisten en indelingen voor Big data hoeft op te lossen en deze uitdaging te verhelpen. Een van de patronen, ' betalen per query ', is Azure Data Lake Analytics, de focus van dit artikel. Hoewel u de query eenvoudig kunt uitvoeren in Hadoop of andere oplossingen, is Data Lake Analytics vaak beter geschikt voor deze methode ' betalen per gebruik '.
 
-Er is een 'extractor' voor Avro in U-SQL. Zie voor meer informatie, [U-SQL-Avro voorbeeld](https://github.com/Azure/usql/tree/master/Examples/AvroExamples).
+Er is een ' Extractor ' voor Avro in U-SQL. Zie [voor beeld van U-SQL Avro](https://github.com/Azure/usql/tree/master/Examples/AvroExamples)voor meer informatie.
 
-## <a name="query-and-export-avro-data-to-a-csv-file"></a>Query's uitvoeren en Avro-gegevens exporteren naar een CSV-bestand
+## <a name="query-and-export-avro-data-to-a-csv-file"></a>Avro-gegevens opvragen en exporteren naar een CSV-bestand
 
-In deze sectie maakt u Avro-gegevens op te vragen en exporteren naar een CSV-bestand in Azure Blob-opslag, hoewel u eenvoudig de gegevens in andere opslagplaatsen of gegevensarchieven kan plaatsen.
+In deze sectie gaat u een query uitvoeren op Avro-gegevens en deze exporteren naar een CSV-bestand in Azure Blob-opslag, hoewel u de gegevens in andere opslag plaatsen of gegevens archieven eenvoudig kunt opslaan.
 
-1. Instellen van Azure IoT Hub gegevens routeren naar een Azure Blob storage-eindpunt met behulp van een eigenschap in de berichttekst berichten te selecteren.
+1. Azure IoT Hub instellen om gegevens te routeren naar een Azure Blob Storage-eind punt met behulp van een eigenschap in de hoofd tekst van het bericht om berichten te selecteren.
 
-   ![De sectie "Aangepaste eindpunten"](./media/iot-hub-query-avro-data/query-avro-data-1a.png)
+   ![De sectie Aangepaste eind punten](./media/iot-hub-query-avro-data/query-avro-data-1a.png)
 
-   ![De regels voor doorsturen](./media/iot-hub-query-avro-data/query-avro-data-1b.png)
+   ![De routerings regels](./media/iot-hub-query-avro-data/query-avro-data-1b.png)
 
-   Zie voor meer informatie over instellingen van routes en aangepaste eindpunten [voor een IoT-hub-berichtroutering](iot-hub-create-through-portal.md#message-routing-for-an-iot-hub).
+   Zie [bericht routering voor een IOT-hub](iot-hub-create-through-portal.md#message-routing-for-an-iot-hub)voor meer informatie over instellingen voor routes en aangepaste eind punten.
 
-2. Zorg ervoor dat uw apparaat de codering, inhoudstype en benodigde gegevens in de eigenschappen of de berichttekst, waarnaar wordt verwezen in de productdocumentatie heeft. Wanneer u deze kenmerken in Device Explorer, weergeven zoals hier wordt weergegeven, kunt u controleren of ze correct zijn ingesteld.
+2. Zorg ervoor dat uw apparaat beschikt over de code ring, het inhouds type en de benodigde gegevens in de eigenschappen of de hoofd tekst van het bericht, zoals verwezen in de product documentatie. Wanneer u deze kenmerken in Device Explorer bekijkt, zoals hier wordt weer gegeven, kunt u controleren of ze juist zijn ingesteld.
 
-   ![Het deelvenster gegevens van Event Hub](./media/iot-hub-query-avro-data/query-avro-data-2.png)
+   ![Het deel venster Event hub-gegevens](./media/iot-hub-query-avro-data/query-avro-data-2.png)
 
-3. Instellen van een Azure Data Lake Store-exemplaar en een Data Lake Analytics-exemplaar. Azure IoT Hub niet gerouteerd naar een Data Lake Store-exemplaar, maar een exemplaar van Data Lake Analytics is een vereist.
+3. Stel een Azure Data Lake Store-exemplaar en een Data Lake Analytics-exemplaar in. Azure IoT Hub stuurt geen route naar een Data Lake Store exemplaar, maar een Data Lake Analytics exemplaar vereist.
 
-   ![Data Lake Store en Data Lake Analytics-instanties](./media/iot-hub-query-avro-data/query-avro-data-3.png)
+   ![Data Lake Store-en Data Lake Analytics-instanties](./media/iot-hub-query-avro-data/query-avro-data-3.png)
 
-4. In Data Lake Analytics, Azure Blob-opslag te configureren als een aanvullende store, de Blob-opslag waarmee gegevens naar Azure IoT Hub worden doorgestuurd.
+4. In Data Lake Analytics configureert u Azure Blob Storage als een extra archief, dezelfde Blob-opslag die door Azure IoT Hub wordt doorgestuurd naar gegevens.
 
-   ![Het deelvenster "Gegevensbronnen"](./media/iot-hub-query-avro-data/query-avro-data-4.png)
+   ![Het deel venster gegevens bronnen](./media/iot-hub-query-avro-data/query-avro-data-4.png)
 
-5. Zoals beschreven in de [U-SQL-Avro voorbeeld](https://github.com/Azure/usql/tree/master/Examples/AvroExamples), moet u vier DLL-bestanden. Deze bestanden uploaden naar een locatie in uw Data Lake Store-exemplaar.
+5. Zoals beschreven in het [u-SQL Avro-voor beeld](https://github.com/Azure/usql/tree/master/Examples/AvroExamples)hebt u vier dll-bestanden nodig. Upload deze bestanden naar een locatie in uw Data Lake Store-exemplaar.
 
-   ![Vier geladen DLL-bestanden](./media/iot-hub-query-avro-data/query-avro-data-5.png)
+   ![Vier geüploade DLL-bestanden](./media/iot-hub-query-avro-data/query-avro-data-5.png)
 
-6. Maak een U-SQL-project in Visual Studio.
+6. Maak in Visual Studio een U-SQL-project.
 
-   ! Maken van een U-SQL-project](./media/iot-hub-query-avro-data/query-avro-data-6.png)
+   ! Een U-SQL-project maken] (./Media/IOT-hub-query-Avro-data/query-Avro-data-6.png)
 
-7. Plak de inhoud van het volgende script in het zojuist gemaakte bestand. Wijzigen van de drie gemarkeerde secties: uw Data Lake Analytics-account, de bijbehorende DLL-bestandspaden en het juiste pad voor uw opslagaccount.
+7. Plak de inhoud van het volgende script in het bestand dat u zojuist hebt gemaakt. Wijzig de drie gemarkeerde secties: uw Data Lake Analytics-account, de bijbehorende DLL-bestands paden en het juiste pad voor uw opslag account.
 
-   ![De drie secties om te worden gewijzigd](./media/iot-hub-query-avro-data/query-avro-data-7a.png)
+   ![De drie secties die moeten worden gewijzigd](./media/iot-hub-query-avro-data/query-avro-data-7a.png)
 
-   De werkelijke U-SQL-script voor eenvoudige uitvoer naar een CSV-bestand:
+   Het daad werkelijke U-SQL-script voor eenvoudige uitvoer naar een CSV-bestand:
 
     ```sql
         DROP ASSEMBLY IF EXISTS [Avro];
@@ -129,15 +129,15 @@ In deze sectie maakt u Avro-gegevens op te vragen en exporteren naar een CSV-bes
         OUTPUT @cnt TO @output_file USING Outputters.Text(); 
     ```
 
-    Het Data Lake Analytics heeft vijf minuten om uit te voeren van het volgende script, dat is beperkt tot 10 Analytics units en 177 bestanden wordt verwerkt. Het resultaat wordt weergegeven in de uitvoer van CSV-bestand dat wordt weergegeven in de volgende afbeelding:
+    Het duurde Data Lake Analytics vijf minuten om het volgende script uit te voeren. Dit is beperkt tot 10 analytische eenheden en verwerkte bestanden van 177. Het resultaat wordt weer gegeven in de CSV-bestands uitvoer die wordt weer gegeven in de volgende afbeelding:
 
-    ![Resultaten van de uitvoer naar CSV-bestand](./media/iot-hub-query-avro-data/query-avro-data-7b.png)
+    ![Resultaten van de uitvoer naar het CSV-bestand](./media/iot-hub-query-avro-data/query-avro-data-7b.png)
 
-    ![Uitvoer geconverteerd naar een CSV-bestand](./media/iot-hub-query-avro-data/query-avro-data-7c.png)
+    ![De uitvoer is geconverteerd naar een CSV-bestand](./media/iot-hub-query-avro-data/query-avro-data-7c.png)
 
-    Voor het parseren van de JSON, verder met stap 8.
+    Als u de JSON wilt parseren, gaat u door naar stap 8.
 
-8. De meeste IoT-berichten zijn in JSON-bestand-indeling. Door de volgende regels toe te voegen, kunt u het bericht in een JSON-bestand, waarmee u de component WHERE toevoegen en voert u alleen de benodigde gegevens parseren.
+8. De meeste IoT-berichten hebben een JSON-bestands indeling. Door de volgende regels toe te voegen, kunt u het bericht parseren in een JSON-bestand. Hiermee kunt u de WHERE-component toevoegen en alleen de benodigde gegevens uitvoeren.
 
     ```sql
        @jsonify =
@@ -163,16 +163,16 @@ In deze sectie maakt u Avro-gegevens op te vragen en exporteren naar een CSV-bes
         OUTPUT @cnt TO @output_file USING Outputters.Text();
     ```
 
-    De uitvoer geeft aan een kolom voor elk item in de `SELECT` opdracht.
+    In de uitvoer wordt een kolom weer gegeven voor elk item in de opdracht `SELECT`.
 
-    ![Uitvoer van een kolom voor elk item](./media/iot-hub-query-avro-data/query-avro-data-8.png)
+    ![Uitvoer met een kolom voor elk item](./media/iot-hub-query-avro-data/query-avro-data-8.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u query's Avro-gegevens om efficiënt te routeren van berichten van Azure IoT Hub met Azure-services.
+In deze zelf studie hebt u geleerd hoe u Avro-gegevens kunt opvragen om berichten van Azure IoT Hub efficiënt te routeren naar Azure-Services.
 
-Zie voor meer voorbeelden van volledige end-to-end-oplossingen die gebruikmaken van IoT Hub, de [documentatie voor IoT-oplossingsversnellers Azure](/azure/iot-accelerators).
+Zie de [documentatie van Azure IOT Solution Accelerators](/azure/iot-accelerators)voor voor beelden van complete end-to-end-oplossingen die gebruikmaken van IOT hub.
 
-Zie voor meer informatie over het ontwikkelen van oplossingen met IoT Hub, de [Ontwikkelaarshandleiding voor IoT Hub](iot-hub-devguide.md).
+Raadpleeg de [IOT hub ontwikkelaars handleiding](iot-hub-devguide.md)voor meer informatie over het ontwikkelen van oplossingen met IOT hub.
 
-Zie voor meer informatie over berichtroutering in IoT Hub, [berichten verzenden en ontvangen met IoT Hub](iot-hub-devguide-messaging.md).
+Zie [berichten verzenden en ontvangen met IOT hub](iot-hub-devguide-messaging.md)voor meer informatie over bericht routering in IOT hub.

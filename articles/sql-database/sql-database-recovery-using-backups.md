@@ -1,5 +1,5 @@
 ---
-title: Een Azure-SQL database herstellen vanuit een back-up | Microsoft Docs
+title: Een Azure-SQL database herstellen vanuit een back-up
 description: Meer informatie over tijdstippen herstellen, waarmee u een Azure-SQL database kunt terugdraaien tot 35 dagen.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: b858776d8309be94a0dd64f994a9e34e589d3c49
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 799926eeb6a508ea04b879231625cf321e95d043
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750466"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687534"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Een Azure-SQL database herstellen met behulp van automatische database back-ups
 
-Azure SQL Database back-ups worden standaard opgeslagen in Blob-opslag met geo-replicatie (RA-GRS-opslag type). De volgende opties zijn beschikbaar voor database herstel met behulp van [Automatische database back-ups](sql-database-automated-backups.md). U kunt het volgende doen:
+Azure SQL Database back-ups worden standaard opgeslagen in Blob-opslag met geo-replicatie (RA-GRS-opslag type). De volgende opties zijn beschikbaar voor database herstel met behulp van [Automatische database back-ups](sql-database-automated-backups.md). U kunt:
 
 - Een nieuwe Data Base op dezelfde SQL Database Server maken, hersteld naar een bepaald tijdstip binnen de Bewaar periode.
 - Maak een Data Base op dezelfde SQL Database-Server die is hersteld naar de verwijderings tijd voor een verwijderde data base.
@@ -60,7 +60,7 @@ Er is geen ingebouwde methode om de volledige server te herstellen. Zie [Azure S
 > [!IMPORTANT]
 > Als u wilt herstellen met behulp van geautomatiseerde back-ups, moet u lid zijn van de rol SQL Server Inzender in het abonnement of de eigenaar van het abonnement zijn. Zie [RBAC: ingebouwde rollen](../role-based-access-control/built-in-roles.md)voor meer informatie. U kunt herstellen met behulp van de Azure Portal, Power shell of de REST API. U kunt Transact-SQL niet gebruiken.
 
-## <a name="point-in-time-restore"></a>Herstel naar een bepaald tijdstip
+## <a name="point-in-time-restore"></a>Terugzetten naar eerder tijdstip
 
 U kunt een zelfstandige, gepoolde of exemplaar database herstellen naar een eerder tijdstip met behulp van de Azure Portal, [Power shell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)of de [rest API](https://docs.microsoft.com/rest/api/sql/databases). De aanvraag kan een servicelaag of reken grootte voor de herstelde data base opgeven. Zorg ervoor dat u voldoende resources hebt op de server waarop u de Data Base wilt herstellen. Wanneer dit is voltooid, wordt door de herstel bewerking een nieuwe data base gemaakt op dezelfde server als de oorspronkelijke data base. De herstelde data base wordt in rekening gebracht tegen normale tarieven, op basis van de servicelaag en de reken grootte. Er worden geen kosten in rekening gebracht totdat het herstellen van de data base is voltooid.
 
@@ -227,7 +227,7 @@ Een enkele of gegroepeerde Data Base herstellen met behulp van de REST API:
 | [REST (createMode = herstel)](https://docs.microsoft.com/rest/api/sql/databases) |Hiermee herstelt u een Data Base. |
 | [Database status van maken of bijwerken ophalen](https://docs.microsoft.com/rest/api/sql/operations) |Retourneert de status tijdens een herstel bewerking. |
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 #### <a name="single-azure-sql-database"></a>Eén Azure-SQL database
 

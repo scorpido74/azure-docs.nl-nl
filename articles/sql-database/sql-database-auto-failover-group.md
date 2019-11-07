@@ -1,5 +1,5 @@
 ---
-title: Failover-groepen-Azure SQL Database | Microsoft Docs
+title: Failover-groepen-Azure SQL Database
 description: Groeps beleidsobjecten voor automatische failover is een SQL Database functie waarmee u replicatie en automatische/gecoördineerde failover kunt beheren van een groep data bases op een SQL Database Server of alle data bases in het beheerde exemplaar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 10/23/2019
-ms.openlocfilehash: bb47f0d2e02ce5cd055ebaae2e2a2f33ce77cd43
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 70c8bb618cd25c21d6cc59dde305fff113ffe22f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901405"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691160"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 
@@ -46,7 +46,7 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
   Een failovergroep is een benoemde groep data bases die wordt beheerd door een enkele SQL Database Server of binnen één beheerd exemplaar en waarvoor een failover kan worden uitgevoerd als een eenheid naar een andere regio voor het geval alle of enkele primaire data bases niet beschikbaar zijn vanwege een storing in de primaire regio. Bij het maken van beheerde exemplaren bevat een failovergroep alle gebruikers databases in het exemplaar en kan er slechts één failovergroep op een exemplaar worden geconfigureerd.
   
   > [!IMPORTANT]
-  > De naam van de failovergroep moet globaal uniek zijn binnen het `.database.windows.net`-domein.
+  > De naam van de failovergroep moet globaal uniek zijn binnen het `.database.windows.net` domein.
 
 - **SQL Database-servers**
 
@@ -115,7 +115,7 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
 
 - **Respijt periode met gegevens verlies**
 
-  Omdat de primaire en secundaire data bases worden gesynchroniseerd met asynchrone replicatie, kan de failover leiden tot gegevens verlies. U kunt het beleid voor automatische failover aanpassen zodat de tolerantie van uw toepassing wordt aangepast aan gegevens verlies. Door `GracePeriodWithDataLossHours` te configureren, kunt u bepalen hoe lang het systeem wacht voordat de failover wordt gestart, waardoor gegevens verlies waarschijnlijk wordt veroorzaakt.
+  Omdat de primaire en secundaire data bases worden gesynchroniseerd met asynchrone replicatie, kan de failover leiden tot gegevens verlies. U kunt het beleid voor automatische failover aanpassen zodat de tolerantie van uw toepassing wordt aangepast aan gegevens verlies. Door `GracePeriodWithDataLossHours`te configureren, kunt u bepalen hoe lang het systeem wacht voordat de failover wordt gestart, waardoor gegevens verlies waarschijnlijk wordt veroorzaakt.
 
 - **Meerdere failover-groepen**
 
@@ -157,11 +157,11 @@ Houd bij het ontwerpen van een service met bedrijfs continuïteit de volgende al
 
 - **Listener voor read-write gebruiken voor OLTP-workload**
 
-  Bij het uitvoeren van OLTP-bewerkingen, gebruikt u `<fog-name>.database.windows.net` als de URL van de server en worden de verbindingen automatisch omgeleid naar de primaire. Deze URL wordt niet gewijzigd na de failover. Opmerking voor de failover moet de DNS-record worden bijgewerkt, zodat de client verbindingen alleen worden omgeleid naar de nieuwe primaire server nadat de DNS-cache van de client is vernieuwd.
+  Bij het uitvoeren van OLTP-bewerkingen, gebruikt u `<fog-name>.database.windows.net` als de server-URL en worden de verbindingen automatisch naar de primaire verbinding geleid. Deze URL wordt niet gewijzigd na de failover. Opmerking voor de failover moet de DNS-record worden bijgewerkt, zodat de client verbindingen alleen worden omgeleid naar de nieuwe primaire server nadat de DNS-cache van de client is vernieuwd.
 
 - **Alleen-lezen-listener gebruiken voor alleen-lezen werk belasting**
 
-  Als u een logisch geïsoleerde alleen-lezen werk belasting hebt die tolerant is voor bepaalde verouderde gegevens, kunt u de secundaire data base in de toepassing gebruiken. Voor alleen-lezen sessies gebruikt u `<fog-name>.secondary.database.windows.net` als de server-URL en wordt de verbinding automatisch naar het secundaire adres gestuurd. U wordt ook aangeraden om in connection string Lees opzet aan te geven met behulp van `ApplicationIntent=ReadOnly`. Als u er zeker van wilt zijn dat de workload alleen-lezen opnieuw verbinding kan maken na een failover of als de secundaire server offline gaat, moet u de `AllowReadOnlyFailoverToPrimary`-eigenschap van het failover-beleid configureren. 
+  Als u een logisch geïsoleerde alleen-lezen werk belasting hebt die tolerant is voor bepaalde verouderde gegevens, kunt u de secundaire data base in de toepassing gebruiken. Voor alleen-lezen sessies gebruikt u `<fog-name>.secondary.database.windows.net` als de server-URL en wordt de verbinding automatisch omgeleid naar de secundaire. U wordt ook aangeraden om in connection string Lees intentie op te geven met behulp van `ApplicationIntent=ReadOnly`. Als u er zeker van wilt zijn dat de workload alleen-lezen opnieuw verbinding kan maken na een failover of als de secundaire server offline gaat, moet u de eigenschap `AllowReadOnlyFailoverToPrimary` van het failover-beleid configureren. 
 
 - **Voor bereidingen voor prestatie vermindering**
 
@@ -172,7 +172,7 @@ Houd bij het ontwerpen van een service met bedrijfs continuïteit de volgende al
 
 - **Voorbereiden op gegevens verlies**
 
-  Als er een storing wordt gedetecteerd, wacht SQL op de door `GracePeriodWithDataLossHours` opgegeven periode. De standaard waarde is 1 uur. Als u geen gegevens verlies kunt veroorloven, moet u `GracePeriodWithDataLossHours` instellen op een voldoende groot getal, zoals 24 uur. Gebruik hand matige failover van de groep om een failback uit te geven van de secundaire naar de primaire.
+  Als er een storing wordt gedetecteerd, wacht SQL op de periode die u hebt opgegeven door `GracePeriodWithDataLossHours`. De standaard waarde is 1 uur. Als u geen gegevens verlies kunt veroorloven, moet u `GracePeriodWithDataLossHours` instellen op een voldoende groot getal, zoals 24 uur. Gebruik hand matige failover van de groep om een failback uit te geven van de secundaire naar de primaire.
 
   > [!IMPORTANT]
   > Elastische Pools met 800 of minder Dtu's en meer dan 250-data bases die gebruikmaken van geo-replicatie, kunnen problemen ondervinden, inclusief langere, geplande failovers en verminderde prestaties.  Deze problemen treden waarschijnlijk vaker op voor het schrijven van intensieve workloads, wanneer geo-replicatie-eind punten op grote schaal worden gescheiden door geografie, of wanneer meerdere secundaire eind punten worden gebruikt voor elke Data Base.  Symptomen van deze problemen worden aangegeven wanneer de geo-replicatie vertraging na verloop van tijd toeneemt.  Deze vertraging kan worden bewaakt met behulp van [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Als deze problemen optreden, zijn de mogelijke oplossingen het verhogen van het aantal groeps Dtu's of het verminderen van het aantal geo-gerepliceerde data bases in dezelfde groep.
@@ -192,7 +192,7 @@ Als uw toepassing gebruikmaakt van een beheerd exemplaar als gegevenslaag, volgt
 
 - **Het secundaire exemplaar maken in dezelfde DNS-zone als het primaire exemplaar**
 
-  Om ervoor te zorgen dat een niet-onderbroken connectiviteit met het primaire exemplaar na een failover wordt gegarandeerd, moeten de primaire en secundaire exemplaren zich in dezelfde DNS-zone bevindt. Hiermee wordt gegarandeerd dat hetzelfde multi-Domain (SAN)-certificaat kan worden gebruikt voor het verifiëren van de client verbindingen met een van de twee exemplaren in de failovergroep. Wanneer uw toepassing gereed is voor productie-implementatie, maakt u een secundair exemplaar in een andere regio en zorgt u ervoor dat de DNS-zone wordt gedeeld met het primaire exemplaar. U kunt dit doen door een optionele `DNS Zone Partner`-para meter op te geven met behulp van de Azure Portal, Power shell of de REST API. 
+  Om ervoor te zorgen dat een niet-onderbroken connectiviteit met het primaire exemplaar na een failover wordt gegarandeerd, moeten de primaire en secundaire exemplaren zich in dezelfde DNS-zone bevindt. Hiermee wordt gegarandeerd dat hetzelfde multi-Domain (SAN)-certificaat kan worden gebruikt voor het verifiëren van de client verbindingen met een van de twee exemplaren in de failovergroep. Wanneer uw toepassing gereed is voor productie-implementatie, maakt u een secundair exemplaar in een andere regio en zorgt u ervoor dat de DNS-zone wordt gedeeld met het primaire exemplaar. U kunt dit doen door een `DNS Zone Partner` optionele para meter op te geven met behulp van de Azure Portal, Power shell of de REST API. 
 
 > [!IMPORTANT]
 > Het eerste exemplaar dat in het subnet wordt gemaakt, bepaalt de DNS-zone voor alle volgende instanties in hetzelfde subnet. Dit betekent dat twee exemplaren van hetzelfde subnet geen deel kunnen uitmaken van verschillende DNS-zones.   
@@ -237,7 +237,7 @@ Als uw toepassing gebruikmaakt van een beheerd exemplaar als gegevenslaag, volgt
 
 - **Voorbereiden op gegevens verlies**
 
-  Als er een storing wordt gedetecteerd, wordt door SQL automatisch een failover voor lezen/schrijven geactiveerd als er geen gegevens verloren zijn op het beste van de kennis. Anders wordt gewacht op de periode die u hebt opgegeven door `GracePeriodWithDataLossHours`. Als u `GracePeriodWithDataLossHours` hebt opgegeven, moet u worden voor bereid op gegevens verlies. Over het algemeen is het voor de beschik baarheid van Azure van belang. Als u geen gegevens verlies kunt veroorloven, moet u toegevoegd instellen op een voldoende groot getal, zoals 24 uur.
+  Als er een storing wordt gedetecteerd, wordt door SQL automatisch een failover voor lezen/schrijven geactiveerd als er geen gegevens verloren zijn op het beste van de kennis. Anders wordt gewacht op de periode die u hebt opgegeven door `GracePeriodWithDataLossHours`. Als u `GracePeriodWithDataLossHours`hebt opgegeven, moet u voor bereid zijn op gegevens verlies. Over het algemeen is het voor de beschik baarheid van Azure van belang. Als u geen gegevens verlies kunt veroorloven, moet u toegevoegd instellen op een voldoende groot getal, zoals 24 uur.
 
   De DNS-update van de listener voor lezen-schrijven gebeurt onmiddellijk nadat de failover is gestart. Deze bewerking resulteert niet in gegevens verlies. Het proces van het wisselen van database rollen kan echter tot vijf minuten duren onder normale omstandigheden. Totdat de data bases in het nieuwe primaire exemplaar zijn voltooid, hebben ze nog steeds het kenmerk alleen-lezen. Als failover wordt gestart met behulp van Power shell, is de gehele bewerking synchroon. Als het wordt gestart met behulp van de Azure Portal, wordt in de gebruikers interface de voltooiings status weer geven. Als deze is gestart met behulp van de REST API, gebruikt u het polling mechanisme van de standaard Azure Resource Manager om te controleren of het is voltooid.
 

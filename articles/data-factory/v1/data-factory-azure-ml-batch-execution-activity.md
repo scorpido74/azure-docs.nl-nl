@@ -1,5 +1,5 @@
 ---
-title: Voorspellende gegevens pijplijnen maken met behulp van Azure Data Factory | Microsoft Docs
+title: Voorspellende gegevens pijplijnen maken met behulp van Azure Data Factory
 description: Hierin wordt beschreven hoe u voorspellende pijp lijnen maakt met behulp van Azure Data Factory en Azure Machine Learning
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: e7c48c1d91ae08be29531f4a99ea75ab7a928f34
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: eba5df587d6bd6dda6083314cfb94836c6669393
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140488"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683149"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Voorspellende pijp lijnen maken met behulp van Azure Machine Learning en Azure Data Factory
 
@@ -74,13 +74,13 @@ U gebruikt Azure Data Factory om gegevens verplaatsing en-verwerking te organise
 
       ![Batch-URI](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
 
-### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Scenario: Experimenten met invoer/uitvoer van webservices die verwijzen naar gegevens in Azure Blob Storage
+### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Scenario: experimenten met behulp van invoer/uitvoer van de webservice die verwijst naar gegevens in Azure Blob Storage
 In dit scenario maakt de Azure Machine Learning-webservice voor spellingen met behulp van gegevens uit een bestand in een Azure Blob-opslag en slaat de Voorspellings resultaten op in de Blob-opslag. De volgende JSON definieert een Data Factory pijp lijn met een AzureMLBatchExecution-activiteit. De-activiteit heeft de gegevensset **DecisionTreeInputBlob** als invoer en **DecisionTreeResultBlob** als uitvoer. De **DecisionTreeInputBlob** wordt door gegeven als invoer voor de webservice met behulp van de JSON-eigenschap **webserviceinputactivity** . De **DecisionTreeResultBlob** wordt door gegeven als een uitvoer naar de webservice met behulp van de JSON-eigenschap **webServiceOutputs** .
 
 > [!IMPORTANT]
 > Als de webservice meerdere invoer heeft, gebruikt u de eigenschap **webServiceInputs** in plaats van **webserviceinputactivity**te gebruiken. Zie de sectie [meerdere invoer](#web-service-requires-multiple-inputs) voor een voor beeld van het gebruik van de eigenschap webServiceInputs.
 >
-> Gegevens sets waarnaar wordt verwezen door de eigenschappen **webserviceinputactivity**/**webServiceInputs** en **webServiceOutputs** (in **typeProperties**) moeten ook worden opgenomen in de activiteit **invoer** en **uitvoer**.
+> Gegevens sets waarnaar wordt verwezen door de **webserviceinputactivity** -/**webServiceInputs** en **WebServiceOutputs** -eigenschappen (in **typeProperties**) moeten ook worden opgenomen in de activiteit **invoer** en **uitvoer**.
 >
 > In uw Azure Machine Learning Studio-experiment hebben de invoer-en uitvoer poorten voor de web-service en de globale para meters standaard namen ("input1", "input2") die u kunt aanpassen. De namen die u gebruikt voor de instellingen webServiceInputs, webServiceOutputs en globalParameters moeten exact overeenkomen met de namen in de experimenten. U kunt de nettolading van de voorbeeld aanvraag bekijken op de Help-pagina voor het uitvoeren van batch uitvoering voor uw Azure Machine Learning Studio-eind punt om de verwachte toewijzing te controleren.
 >
@@ -192,7 +192,7 @@ We raden u aan om door te gaan [met het bouwen van uw eerste pijp lijn met Data 
     }
     ```
 
-    Als het CSV-bestand geen veldnamenrij bevat, ziet u mogelijk de volgende fout: **Fout in activiteit: Fout bij het lezen van de teken reeks. Onverwacht token: StartObject. Pad, regel 1, positie 1**.
+    Als het CSV-bestand niet de veldnamenrij bevat, ziet u mogelijk de volgende fout: **fout in activiteit: fout bij het lezen van de teken reeks. Onverwacht token: start object. Pad, regel 1, positie 1**.
 3. De **uitvoer** Azure Data Factory **gegevensset**maken. In dit voor beeld wordt gepartitioneerd voor het maken van een uniek uitvoerpad voor elke uitvoering van een segment. Zonder partitioneren zou de activiteit het bestand overschrijven.
 
     ```JSON
@@ -234,7 +234,7 @@ We raden u aan om door te gaan [met het bouwen van uw eerste pijp lijn met Data 
       }
     }
     ```
-4. Een **gekoppelde service** maken van het type: **AzureMLLinkedService**, die de API-sleutel en de URL voor de model batch uitvoering levert.
+4. Maak een **gekoppelde service** van het type: **AzureMLLinkedService**, die de API-sleutel en de URL voor de model batch uitvoering levert.
 
     ```JSON
     {
@@ -308,7 +308,7 @@ We raden u aan om door te gaan [met het bouwen van uw eerste pijp lijn met Data 
       >
       >
 
-### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scenario: Experimenten met behulp van Reader/Writer-modules om te verwijzen naar gegevens in verschillende opslag ruimten
+### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scenario: experimenten met behulp van Reader/Writer modules om te verwijzen naar gegevens in verschillende opslag ruimten
 Een ander algemeen scenario bij het maken van Azure Machine Learning Studio experimenten is het gebruik van de modules lezer en Writer. De module lezer wordt gebruikt om gegevens te laden in een experiment en de module schrijver is het opslaan van gegevens van uw experimenten. Zie de onderwerpen over [lezer](https://msdn.microsoft.com/library/azure/dn905997.aspx) en [Writer](https://msdn.microsoft.com/library/azure/dn905984.aspx) in de MSDN-bibliotheek voor meer informatie over de modules lezer en Writer.
 
 Wanneer u de modules lezer en Writer gebruikt, is het verstandig om een para meter voor de webservice te gebruiken voor elke eigenschap van deze modules voor lezer/Writer. Met deze web-para meters kunt u de waarden tijdens runtime configureren. U kunt bijvoorbeeld een experiment maken met een lees module die gebruikmaakt van een Azure SQL Database: XXX.database.windows.net. Nadat de webservice is geïmplementeerd, wilt u de gebruikers van de webservice in staat stellen een andere Azure-SQL Server met de naam YYY.database.windows.net op te geven. U kunt een webservice-para meter gebruiken om deze waarde te kunnen configureren.
@@ -347,7 +347,7 @@ U kunt ook [Data Factory-functies](data-factory-functions-variables.md) gebruike
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>Een lezers module gebruiken om gegevens te lezen uit meerdere bestanden in Azure Blob
 Big Data-pijp lijnen met activiteiten als varken en Hive kunnen een of meer uitvoer bestanden maken zonder uitbrei dingen. Wanneer u bijvoorbeeld een externe Hive-tabel opgeeft, kunnen de gegevens voor de externe Hive-tabel worden opgeslagen in Azure Blob Storage met de volgende naam 000000_0. U kunt de module lezer in een experiment gebruiken om meerdere bestanden te lezen en ze gebruiken voor voor spellingen.
 
-Wanneer u de module lezer in een Azure Machine Learning experiment gebruikt, kunt u Azure Blob als invoer opgeven. De bestanden in de Azure Blob-opslag kunnen de uitvoer bestanden zijn (bijvoorbeeld: 000000_0) die worden geproduceerd door een Pig-en Hive-script dat wordt uitgevoerd op HDInsight. Met de lezers module kunt u bestanden (zonder extensies) lezen door het **pad naar de container, map/BLOB te**configureren. Het **pad naar de container** verwijst naar de container en de **map/BLOB** wijst naar de map die de bestanden bevat, zoals wordt weer gegeven in de volgende afbeelding. Het sterretje, \*) **geeft aan dat alle bestanden in de container/map (dat wil zeggen, data-aggregateddata/Year = 2014/maand-6/\*)** als onderdeel van het experiment worden gelezen.
+Wanneer u de module lezer in een Azure Machine Learning experiment gebruikt, kunt u Azure Blob als invoer opgeven. De bestanden in de Azure Blob-opslag kunnen de uitvoer bestanden zijn (bijvoorbeeld: 000000_0) die worden geproduceerd door een Pig-en Hive-script dat wordt uitgevoerd op HDInsight. Met de lezers module kunt u bestanden (zonder extensies) lezen door het **pad naar de container, map/BLOB te**configureren. Het **pad naar de container** verwijst naar de container en de **map/BLOB** wijst naar de map die de bestanden bevat, zoals wordt weer gegeven in de volgende afbeelding. Het sterretje dat \*) **geeft aan dat alle bestanden in de container/map (dat wil zeggen, data-aggregateddata/Year = 2014/maand-6/\*)** als onderdeel van het experiment worden gelezen.
 
 ![Eigenschappen van Azure Blob](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -404,7 +404,7 @@ Wanneer u de module lezer in een Azure Machine Learning experiment gebruikt, kun
 
 In het bovenstaande JSON-voor beeld:
 
-* De geïmplementeerde Azure Machine Learning-webservice gebruikt een lezer en een schrijver-module voor het lezen/schrijven van gegevens van/naar een Azure SQL Database. Deze webservice bevat de volgende vier para meters:  Database server naam, database naam, Server gebruikers accountnaam en wacht woord voor Server gebruikers account.
+* De geïmplementeerde Azure Machine Learning-webservice gebruikt een lezer en een schrijver-module voor het lezen/schrijven van gegevens van/naar een Azure SQL Database. Deze webservice bevat de volgende vier para meters: database server naam, database naam, Server gebruikers accountnaam en wacht woord voor Server gebruikers account.
 * De **begin** -en **eind** datum moeten de [ISO-indeling](https://en.wikipedia.org/wiki/ISO_8601)hebben. Bijvoorbeeld: 2014-10-14T16:32:41Z. De **eind** tijd is optioneel. Als u geen waarde opgeeft voor de eigenschap **End** , wordt deze berekend als '**Start + 48 uur '.** Als u de pijplijn voor onbepaalde tijd wilt uitvoeren, geeft u **9999-09-09** op als waarde voor de eigenschap **end**. Zie de [naslaginformatie voor JSON-scriptverwerking](https://msdn.microsoft.com/library/dn835050.aspx) voor meer informatie over de JSON-eigenschappen.
 
 ### <a name="other-scenarios"></a>Andere scenario's
@@ -628,7 +628,7 @@ U kunt ook [Data Factory-functies](data-factory-functions-variables.md) gebruike
 >
 
 ## <a name="see-also"></a>Zie ook
-* [Blog bericht van Azure: Aan de slag met Azure Data Factory en Azure Machine Learning](https://azure.microsoft.com/blog/getting-started-with-azure-data-factory-and-azure-machine-learning-4/)
+* [Azure blog post: aan de slag met Azure Data Factory en Azure Machine Learning](https://azure.microsoft.com/blog/getting-started-with-azure-data-factory-and-azure-machine-learning-4/)
 
 [adf-build-1st-pipeline]: data-factory-build-your-first-pipeline.md
 

@@ -1,6 +1,6 @@
 ---
 title: Implementatie en verbruik
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: U kunt Azure Machine Learning Studio (klassiek) gebruiken om machine learning werk stromen en modellen als webservices te implementeren. Deze webservices kunnen vervolgens worden gebruikt voor het aanroepen van de machine learning modellen van toepassingen via internet om voor spellingen in realtime of in batch modus uit te voeren.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: bf169a9b7064bd83caf0c9f8ec6dd6dd55894d67
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 47cd04615919fcc9db757ed4b9e8fd06eb297592
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493018"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684822"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Webservices Azure Machine Learning Studio (klassiek): implementatie en verbruik
 
@@ -31,8 +31,8 @@ De Studio-Portal en de Microsoft Azure Machine Learning web services-Portal help
 
 De volgende koppelingen bevatten algemene informatie over het implementeren van een nieuwe webservice:
 
-* Zie [een nieuwe webservice implementeren](publish-a-machine-learning-web-service.md)voor een overzicht van het implementeren van een nieuwe webservice op basis van Azure Resource Manager.
-* Zie [een Azure machine learning-webservice implementeren](publish-a-machine-learning-web-service.md)voor een overzicht van het implementeren van een webservice.
+* Zie [een nieuwe webservice implementeren](deploy-a-machine-learning-web-service.md)voor een overzicht van het implementeren van een nieuwe webservice op basis van Azure Resource Manager.
+* Zie [een Azure machine learning-webservice implementeren](deploy-a-machine-learning-web-service.md)voor een overzicht van het implementeren van een webservice.
 * Voor een volledig overzicht van het maken en implementeren van een webservice, begint u met [zelf studie 1: krediet risico voors pellen](tutorial-part1-credit-risk.md).
 * Zie voor specifieke voor beelden voor het implementeren van een webservice:
 
@@ -87,13 +87,13 @@ Raadpleeg de volgende artikelen en voorbeeld code voor aanvullende informatie:
 
 U kunt uw webservice testen vanuit de Azure Machine Learning-webservices Portal. Dit omvat het testen van de aanvraag-antwoord service (RR'S) en BES-interfaces (batch Execution Service).
 
-* [Een nieuwe webservice implementeren](publish-a-machine-learning-web-service.md)
-* [Een Azure Machine Learning-webservice implementeren](publish-a-machine-learning-web-service.md)
+* [Een nieuwe webservice implementeren](deploy-a-machine-learning-web-service.md)
+* [Een Azure Machine Learning-webservice implementeren](deploy-a-machine-learning-web-service.md)
 * [Zelf studie 3: een model voor krediet Risico's implementeren](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Vanuit Excel
 
-U kunt een Excel-sjabloon downloaden die de webservice gebruikt:
+U kunt een Excel-sjabloon die de webservice verbruikt downloaden:
 
 * [Een Azure Machine Learning-webservice gebruiken vanuit Excel](consuming-from-excel.md)
 * [Excel-invoeg toepassing voor Azure Machine Learning-webservices](excel-add-in-for-web-services.md)

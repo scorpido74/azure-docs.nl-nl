@@ -1,5 +1,5 @@
 ---
-title: Partitioneren van tabellen in Azure SQL Data Warehouse | Microsoft Docs
+title: Tabellen partitioneren
 description: Aanbevelingen en voor beelden voor het gebruik van tabel partities in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 6791ff2f2a9719a19d2c9abc4ff480435de7bb00
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 7ec313094a9ebc05f966e0c49f44284909ca778f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477088"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685416"
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>Partitioneren van tabellen in SQL Data Warehouse
 Aanbevelingen en voor beelden voor het gebruik van tabel partities in Azure SQL Data Warehouse.
@@ -36,10 +37,10 @@ Partitioneren kan ook worden gebruikt om de query prestaties te verbeteren. Een 
 ## <a name="sizing-partitions"></a>Grootte van partities aanpassen
 Hoewel partitioneren kan worden gebruikt om de prestaties van bepaalde scenario's te verbeteren, kan het maken van een tabel met **te veel** partities in bepaalde omstandigheden de prestaties nadelig beïnvloeden.  Deze problemen zijn vooral van toepassing op geclusterde column Store-tabellen. Voor partitionering is het belang rijk te weten wanneer u partitioneren gebruikt en het aantal partities dat moet worden gemaakt. Er is geen harde regel om te bepalen hoeveel partities te vaak zijn. Dit is afhankelijk van uw gegevens en het aantal partities dat u tegelijkertijd laadt. Een geslaagd partitie schema is doorgaans tien tot honderden partities, geen duizenden.
 
-Wanneer u partities maakt voor geclusterde **Column Store** -tabellen, is het belang rijk om te bepalen hoeveel rijen bij elke partitie horen. Voor optimale compressie en prestaties van geclusterde column Store-tabellen, is mini maal 1.000.000 rijen per distributie en partitie nodig. Voordat partities worden gemaakt, splitst SQL Data Warehouse elke tabel al op in 60 gedistribueerde data bases. Elke partitie die is toegevoegd aan een tabel, is een aanvulling op de distributies die zijn gemaakt achter de schermen. Als in dit voor beeld de tabel sales feiten 36 maandelijkse partities bevat, en u hebt aangegeven dat SQL Data Warehouse 60-distributies heeft, moet de tabel verkoop feiten 60.000.000 rijen per maand of 2.100.000.000 rijen bevatten wanneer alle maanden worden ingevuld. Als een tabel minder dan het aanbevolen minimum aantal rijen per partitie bevat, kunt u overwegen minder partities te gebruiken om het aantal rijen per partitie te verg Roten. Zie het artikel [indexeren](sql-data-warehouse-tables-index.md) , dat query's bevat waarmee de kwaliteit van de cluster-column Store-indexen kan worden beoordeeld voor meer informatie.
+Wanneer u partities maakt voor **geclusterde column Store** -tabellen, is het belang rijk om te bepalen hoeveel rijen bij elke partitie horen. Voor optimale compressie en prestaties van geclusterde column Store-tabellen, is mini maal 1.000.000 rijen per distributie en partitie nodig. Voordat partities worden gemaakt, splitst SQL Data Warehouse elke tabel al op in 60 gedistribueerde data bases. Elke partitie die is toegevoegd aan een tabel, is een aanvulling op de distributies die zijn gemaakt achter de schermen. Als in dit voor beeld de tabel sales feiten 36 maandelijkse partities bevat, en u hebt aangegeven dat SQL Data Warehouse 60-distributies heeft, moet de tabel verkoop feiten 60.000.000 rijen per maand of 2.100.000.000 rijen bevatten wanneer alle maanden worden ingevuld. Als een tabel minder dan het aanbevolen minimum aantal rijen per partitie bevat, kunt u overwegen minder partities te gebruiken om het aantal rijen per partitie te verg Roten. Zie het artikel [indexeren](sql-data-warehouse-tables-index.md) , dat query's bevat waarmee de kwaliteit van de cluster-column Store-indexen kan worden beoordeeld voor meer informatie.
 
 ## <a name="syntax-differences-from-sql-server"></a>Syntaxis verschillen ten opzichte van SQL Server
-SQL Data Warehouse introduceert een manier om partities te definiëren die eenvoudiger zijn dan SQL Server. Het partitioneren van functies en schema's wordt niet gebruikt in SQL Data Warehouse omdat ze zich in SQL Server bevinden. In plaats daarvan hoeft u alleen de gepartitioneerde kolom en de grens punten aan te duiden. De syntaxis van partitionering kan enigszins afwijken van SQL Server, de basis concepten zijn hetzelfde. SQL Server en SQL Data Warehouse ondersteunen één partitie kolom per tabel, die partities kan bevatten. Zie gepartitioneerde [tabellen en indexen](/sql/relational-databases/partitions/partitioned-tables-and-indexes)voor meer informatie over partitioneren.
+SQL Data Warehouse introduceert een manier om partities te definiëren die eenvoudiger zijn dan SQL Server. Het partitioneren van functies en schema's wordt niet gebruikt in SQL Data Warehouse omdat ze zich in SQL Server bevinden. In plaats daarvan hoeft u alleen de gepartitioneerde kolom en de grens punten aan te duiden. De syntaxis van partitionering kan enigszins afwijken van SQL Server, de basis concepten zijn hetzelfde. SQL Server en SQL Data Warehouse ondersteunen één partitie kolom per tabel, die partities kan bevatten. Zie [gepartitioneerde tabellen en indexen](/sql/relational-databases/partitions/partitioned-tables-and-indexes)voor meer informatie over partitioneren.
 
 In het volgende voor beeld wordt de instructie [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) gebruikt voor het partitioneren van de tabel FactInternetSales in de kolom OrderDateKey:
 
@@ -115,7 +116,7 @@ SQL Data Warehouse ondersteunt het splitsen van partities, samen voegen en scha 
 Als u wilt scha kelen tussen partities tussen twee tabellen, moet u ervoor zorgen dat de partities worden uitgelijnd op de respectievelijke grenzen en dat de tabel definities overeenkomen. Als er geen controle beperkingen beschikbaar zijn voor het afdwingen van het bereik van waarden in een tabel, moet de bron tabel dezelfde partitie grenzen bevatten als de doel tabel. Als de grenzen van de partitie niet hetzelfde zijn, mislukt de partitie-switch omdat de meta gegevens van de partitie niet worden gesynchroniseerd.
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>Een partitie splitsen die gegevens bevat
-De meest efficiënte methode voor het splitsen van een partitie die al gegevens bevat, is `CTAS` het gebruik van een-instructie. Als de gepartitioneerde tabel een geclusterde column Store is, moet de tabel partitie leeg zijn voordat deze kan worden gesplitst.
+De meest efficiënte methode voor het splitsen van een partitie die al gegevens bevat, is het gebruik van een `CTAS`-instructie. Als de gepartitioneerde tabel een geclusterde column Store is, moet de tabel partitie leeg zijn voordat deze kan worden gesplitst.
 
 In het volgende voor beeld wordt een gepartitioneerde column Store-tabel gemaakt. Er wordt één rij in elke partitie ingevoegd:
 
@@ -147,7 +148,7 @@ INSERT INTO dbo.FactInternetSales
 VALUES (1,20000101,1,1,1,1,1,1);
 ```
 
-Met de volgende query wordt het aantal rijen gezocht met `sys.partitions` behulp van de catalogus weergave:
+Met de volgende query wordt het aantal rijen gezocht met behulp van de catalogus weergave `sys.partitions`:
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -172,7 +173,7 @@ ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 
 Msg 35346, niveau 15, status 1, regel 44 SPLIT van de instructie ALTER PARTITION is mislukt omdat de partitie niet leeg is. Alleen lege partities kunnen worden gesplitst wanneer een column store-index in de tabel voor komt. Overweeg om de column store-index uit te scha kelen voordat u de instructie ALTER PARTITION geeft en bouw vervolgens de column store-index opnieuw op nadat ALTER PARTITION is voltooid.
 
-U kunt echter gebruiken `CTAS` om een nieuwe tabel te maken om de gegevens op te slaan.
+U kunt `CTAS` echter gebruiken om een nieuwe tabel te maken om de gegevens op te slaan.
 
 ```sql
 CREATE TABLE dbo.FactInternetSales_20000101
@@ -198,7 +199,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-U kunt de gegevens het beste uitlijnen met de nieuwe partitie grenzen met `CTAS`en de gegevens vervolgens weer omzetten in de hoofd tabel.
+U kunt het beste de gegevens uitlijnen op de nieuwe partitie grenzen met `CTAS`en vervolgens de gegevens weer omzetten in de hoofd tabel.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -226,7 +227,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Nieuwe gegevens laden in partities die gegevens in één stap bevatten
-Het laden van gegevens in partities met partitie wisseling is een handige manier om nieuwe gegevens in een tabel te plaatsen die niet zichtbaar zijn voor gebruikers de switch in de nieuwe gegevens.  Het kan lastig zijn om te omgaan met de vergren deling van de vergrendelings conflicten die zijn gekoppeld aan het overschakelen van de partitie.  Als u de bestaande gegevens in een partitie wilt verwijderen, `ALTER TABLE` moet u hiervoor een vereiste gebruiken om de gegevens te deactiveren.  Daarna was `ALTER TABLE` een andere nood zakelijk om te scha kelen in de nieuwe gegevens.  In SQL Data Warehouse wordt de `TRUNCATE_TARGET` optie in de `ALTER TABLE` opdracht ondersteund.  Met `TRUNCATE_TARGET` de`ALTER TABLE` opdracht worden bestaande gegevens in de partitie overschreven met nieuwe gegevens.  Hieronder ziet u een voor beeld `CTAS` waarin wordt gebruikt om een nieuwe tabel te maken met de bestaande gegevens, nieuwe gegevens in te voegen en vervolgens alle gegevens weer te scha kelen in de doel tabel, waarbij de bestaande gegevens worden overschreven.
+Het laden van gegevens in partities met partitie wisseling is een handige manier om nieuwe gegevens in een tabel te plaatsen die niet zichtbaar zijn voor gebruikers de switch in de nieuwe gegevens.  Het kan lastig zijn om te omgaan met de vergren deling van de vergrendelings conflicten die zijn gekoppeld aan het overschakelen van de partitie.  Als u de bestaande gegevens in een partitie wilt verwijderen, moet u een `ALTER TABLE` gebruiken om de gegevens over te scha kelen.  Vervolgens is een andere `ALTER TABLE` vereist om de nieuwe gegevens te scha kelen.  In SQL Data Warehouse wordt de `TRUNCATE_TARGET` optie ondersteund in de `ALTER TABLE` opdracht.  Met `TRUNCATE_TARGET` met de `ALTER TABLE` opdracht worden bestaande gegevens in de partitie overschreven met nieuwe gegevens.  Hieronder ziet u een voor beeld waarin `CTAS` wordt gebruikt om een nieuwe tabel te maken met de bestaande gegevens, nieuwe gegevens in te voegen en vervolgens alle gegevens weer te scha kelen in de doel tabel, waarbij de bestaande gegevens worden overschreven.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -251,7 +252,7 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
 ```
 
 ### <a name="table-partitioning-source-control"></a>Broncode beheer voor tabel partities
-Als u wilt voor komen dat  uw tabel wordt geroestd in uw broncode beheer systeem, kunt u de volgende aanpak overwegen:
+Als u wilt voor komen dat uw tabel wordt **geroestd** in uw broncode beheer systeem, kunt u de volgende aanpak overwegen:
 
 1. De tabel maken als een gepartitioneerde tabel, maar zonder partitie waarden
 
@@ -275,7 +276,7 @@ Als u wilt voor komen dat  uw tabel wordt geroestd in uw broncode beheer systeem
     ;
     ```
 
-1. `SPLIT`de tabel als onderdeel van het implementatie proces:
+1. `SPLIT` de tabel als onderdeel van het implementatie proces:
 
     ```sql
      -- Create a table containing the partition boundaries

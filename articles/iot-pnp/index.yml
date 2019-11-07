@@ -1,39 +1,74 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie over IoT Plug en Play (preview)
+summary: Met IoT Plug en Play (preview) kunt u een apparaatmodel definiëren waarmee cloudoplossingen uw apparaat automatisch kunnen begrijpen en ermee werken, zonder dat u apparaatcode hoeft te schrijven.
 metadata:
-  title: 'Documentatie over IoT Plug en Play (preview): zelfstudies, API-naslag | Microsoft Docs'
-  description: 'Meer informatie over het gebruik van IoT Plug en Play met behulp van zelfstudies, API-naslaginformatie, video''s en overige documentatie.'
-  author: dominicbetts
-  manager: philmea
-  ms.service: iot-pnp
+  title: Documentatie over IoT Plug en Play (preview)
+  description: Met IoT Plug en Play (preview) kunt u een apparaatmodel definiëren waarmee cloudoplossingen uw apparaat automatisch kunnen begrijpen en ermee werken, zonder dat u apparaatcode hoeft te schrijven.
   services: iot-pnp
+  ms.service: iot-pnp
   ms.topic: landing-page
-  ms.date: 07/23/2019
+  author: dominicbetts
   ms.author: dobett
-abstract:
-  description: 'Meer informatie over het gebruik van IoT Plug en Play (preview) voor het definiëren van een apparaatmodel waarmee cloudoplossingen uw apparaat automatisch kunnen begrijpen en ermee werken, zonder dat u apparaatcode hoeft te schrijven. Aan de hand van zelfstudies, API-naslaginformatie, video''s en overige documentatie leert u apparaten verbinden met cloudoplossingen, zoals Azure IoT Central of partnertoepassingen.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video-thumb-pnp-introduction.png
-      width: 250
-    title: 'Inleiding tot IoT Plug en Play. (11:54)'
-    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player'
-    width: 250
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Meer informatie over <a href="quickstart-create-pnp-device">het gebruik van een model voor apparaatondersteuning om een apparaat te maken</a>.
-      - type: paragraph
-        text: Meer informatie over <a href="quickstart-connect-pnp-device-solution">hoe u een apparaat verbindt met uw oplossing</a>.
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-pnp-visual-studio-code">Een apparaat maken met Visual Studio Code</a>
-          - html: <a href="tutorial-build-device-certification">Een apparaat bouwen dat gereed is voor certificering</a>
-          - html: <a href="tutorial-certification-test">Uw apparaat certificeren</a>
+  manager: philmea
+  ms.date: 10/31/2019
+  ms.openlocfilehash: 442b9c5028ef899329912fa9d21ce780437d7970
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73570179"
+landingContent:
+- title: Info over IoT Plug en Play
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is IoT Plug en Play?
+      url: overview-iot-plug-and-play.md
+  - linkListType: video
+    links:
+    - text: Inleiding tot IoT Plug en Play
+      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player
+- title: Apparaten ontwikkelen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een voorbeeldapparaat verbinden met IoT Hub
+      url: quickstart-connect-pnp-device.md
+    - text: Een voorbeeldapparaat verbinden met IoT Central
+      url: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Mogelijkheidsmodel voor apparaten gebruiken om een apparaat te maken
+      url: quickstart-create-pnp-device.md
+  - linkListType: tutorial
+    links:
+    - text: Een apparaatondersteuningsprofiel maken en testen met Visual Studio Code
+      url: tutorial-pnp-visual-studio-code.md
+    - text: Een apparaat bouwen dat gereed is voor certificering
+      url: tutorial-build-device-certification.md
+    - text: Uw apparaat certificeren
+      url: tutorial-certification-test.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure IoT Tools voor Visual Studio Code gebruiken
+      url: howto-develop-with-vs-vscode.md
+    - text: Onboarding uitvoeren naar de Azure Certified for IoT-portal
+      url: howto-onboard-portal.md
+  - linkListType: concept
+    links:
+    - text: Algemene interfaces
+      url: concepts-common-interfaces.md
+- title: Oplossingen bouwen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Interactie met een apparaat dat met uw oplossing is verbonden
+      url: quickstart-connect-pnp-device-solution.md
+  - linkListType: concept
+    links:
+    - text: Modeldetectie
+      url: concepts-model-discovery.md
+    - text: Algemene interfaces
+      url: concepts-common-interfaces.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verbinding maken met apparaten vanuit de oplossing
+      url: howto-develop-solution.md

@@ -1,5 +1,5 @@
 ---
-title: Rapportage over uitgeschaalde Cloud databases | Microsoft Docs
+title: Rapportage over uitgeschaalde Cloud databases
 description: elastische query's instellen via horizontale partities
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 1416cbdc29d355e2ed83737140b46306de734127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37b19cd86cd13dd2bdc8b3a38abf61898b81d01b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568575"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690382"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Rapportage over uitgeschaalde Cloud databases (preview-versie)
 
@@ -54,7 +54,7 @@ De referentie wordt gebruikt door de elastische query om verbinding te maken met
     [;]
 
 > [!NOTE]
-> Zorg ervoor dat de *'\<gebruikers\>naam '* geen achtervoegsel *\@' servername* ' bevat.
+> Zorg ervoor dat de *'\<username\>'* geen achtervoegsel voor *'\@servername '* bevat.
 
 ## <a name="12-create-external-data-sources"></a>1,2 externe gegevens bronnen maken
 
@@ -136,17 +136,17 @@ Externe tabellen verwijderen:
 
 ### <a name="remarks"></a>Opmerkingen
 
-De component\_gegevens bron definieert de externe gegevens bron (een Shard-toewijzing) die wordt gebruikt voor de externe tabel.  
+De component DATA\_SOURCE definieert de externe gegevens bron (een Shard-toewijzing) die wordt gebruikt voor de externe tabel.  
 
-De component\_schema naam en\_object naam wijzen de definitie van de externe tabel toe aan een tabel in een ander schema. Als u dit weglaat, wordt ervan uitgegaan dat het schema van het externe object "dbo" is en de naam ervan wordt aangenomen dat deze identiek is aan de naam van de externe tabel die wordt gedefinieerd. Dit is handig als de naam van uw externe tabel al is opgenomen in de Data Base waarin u de externe tabel wilt maken. Stel dat u een externe tabel wilt definiëren voor een geaggregeerde weer gave van catalogus weergaven of Dmv's in de geschaalde gegevenslaag. Omdat catalogus weergaven en Dmv's al lokaal bestaan, kunt u de namen niet gebruiken voor de definitie van de externe tabel. Gebruik in plaats daarvan een andere naam en gebruik de naam van de catalogus weergave of de DMV in de\_component schema naam en/\_of object naam. (Zie het onderstaande voor beeld.)
+De SCHEMA-\_naam en OBJECT-\_naam component wijzen de definitie van de externe tabel toe aan een tabel in een ander schema. Als u dit weglaat, wordt ervan uitgegaan dat het schema van het externe object "dbo" is en de naam ervan wordt aangenomen dat deze identiek is aan de naam van de externe tabel die wordt gedefinieerd. Dit is handig als de naam van uw externe tabel al is opgenomen in de Data Base waarin u de externe tabel wilt maken. Stel dat u een externe tabel wilt definiëren voor een geaggregeerde weer gave van catalogus weergaven of Dmv's in de geschaalde gegevenslaag. Omdat catalogus weergaven en Dmv's al lokaal bestaan, kunt u de namen niet gebruiken voor de definitie van de externe tabel. Gebruik in plaats daarvan een andere naam en gebruik de naam van de catalogus weergave of de DMV in het SCHEMA\_NAME en/of OBJECT\_NAME-componenten. (Zie het onderstaande voor beeld.)
 
 De distributie component geeft de gegevens distributie op die voor deze tabel wordt gebruikt. De query processor maakt gebruik van de informatie in de distributie component om de meest efficiënte query plannen te maken.
 
 1. **Shard** betekent dat gegevens Horizon taal zijn gepartitioneerd over de data bases. De partitie sleutel voor de gegevens distributie is de para meter **< sharding_column_name >** .
 2. **Gerepliceerd** betekent dat identieke kopieën van de tabel aanwezig zijn op elke Data Base. Het is uw verantwoordelijkheid om ervoor te zorgen dat de replica's identiek zijn in de data bases.
-3. **Round\_Robin** betekent dat de tabel horizon taal is gepartitioneerd met behulp van een toepassings afhankelijke distributie methode.
+3. **ROUND\_Robin** betekent dat de tabel horizon taal is gepartitioneerd met behulp van een toepassings afhankelijke distributie methode.
 
-**Referentie gegevenslaag**: De externe tabel DDL verwijst naar een externe gegevens bron. De externe gegevens bron bevat een Shard-toewijzing waarmee de externe tabel wordt voorzien van de informatie die nodig is om alle data bases in uw gegevenslaag te vinden.
+**Referentie gegevenslaag**: de externe tabel verwijst DDL naar een externe gegevens bron. De externe gegevens bron bevat een Shard-toewijzing waarmee de externe tabel wordt voorzien van de informatie die nodig is om alle data bases in uw gegevenslaag te vinden.
 
 ### <a name="security-considerations"></a>Beveiligingsoverwegingen
 
@@ -175,16 +175,16 @@ De volgende query voert een drieweg-samen voeging uit tussen magazijnen, orders 
     group by w_id, o_c_id
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Opgeslagen procedure voor externe T-SQL-uitvoering:\_SP execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Opgeslagen procedure voor externe T-SQL-uitvoering: SP\_execute_remote
 
-Met elastische query's wordt ook een opgeslagen procedure geïntroduceerd waarmee direct toegang tot de Shards wordt geboden. De opgeslagen procedure heet [\_extern uitvoeren \_](https://msdn.microsoft.com/library/mt703714) en kan worden gebruikt om externe opgeslagen procedures of T-SQL-code uit te voeren op de externe data bases. Hierbij worden de volgende para meters gebruikt:
+Met elastische query's wordt ook een opgeslagen procedure geïntroduceerd waarmee direct toegang tot de Shards wordt geboden. De opgeslagen procedure heet [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714) en kan worden gebruikt om externe opgeslagen procedures of t-SQL-code uit te voeren op de externe data bases. Hierbij worden de volgende para meters gebruikt:
 
-* Naam van de gegevens bron (nvarchar): De naam van de externe gegevens bron van het type RDBMS.
-* Query (nvarchar): De T-SQL-query die op elke Shard moet worden uitgevoerd.
-* Parameter declaratie (nvarchar)-optioneel: Teken reeks met definities van gegevens typen voor de para meters die worden gebruikt in de query parameter (zoals sp_executesql).
-* Lijst met parameter waarden-optioneel: Een door komma's gescheiden lijst met parameter waarden (zoals sp_executesql).
+* Naam van de gegevens bron (nvarchar): de naam van de externe gegevens bron van het type RDBMS.
+* Query (nvarchar): de T-SQL-query die moet worden uitgevoerd op elke Shard.
+* Parameter declaratie (nvarchar)-optioneel: string met definities van gegevens typen voor de para meters die worden gebruikt in de query parameter (zoals sp_executesql).
+* Lijst met parameter waarden-optioneel: door Komma's gescheiden lijst met parameter waarden (zoals sp_executesql).
 
-De extern\_uitvoeren op afstand maakt gebruik van de externe gegevens bron die in de aanroep parameters is opgegeven om de opgegeven T-SQL-instructie uit te voeren op de externe data bases.\_ De referentie van de externe gegevens bron wordt gebruikt om verbinding te maken met de shardmap manager-data base en de externe data bases.  
+De SP\_Execute\_Remote gebruikt de externe gegevens bron die in de aanroep parameters is opgegeven voor het uitvoeren van de opgegeven T-SQL-instructie voor de externe data bases. De referentie van de externe gegevens bron wordt gebruikt om verbinding te maken met de shardmap manager-data base en de externe data bases.  
 
 Voorbeeld:
 
@@ -211,7 +211,7 @@ Gebruik reguliere SQL Server verbindings reeksen om uw toepassing, uw BI-en gege
 * Zie aan de slag [met query's tussen data bases (verticaal partitioneren)](sql-database-elastic-query-getting-started-vertical.md)voor een verticaal gepartitioneerde zelf studie.
 * Zie query's [uitvoeren op verticaal gepartitioneerde gegevens](sql-database-elastic-query-vertical-partitioning.md) voor syntaxis-en voorbeeld query's voor verticaal gepartitioneerde gegevens)
 * Zie aan de slag [met elastische query's voor horizontale partitionering (sharding)](sql-database-elastic-query-getting-started.md)voor een zelf studie over horizontale partitionering (sharding).
-* Zie [extern\_ uitvoeren\_van SP](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die fungeren als Shards in een horizon taal partitie schema.
+* Zie [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die fungeren als Shards in een horizon taal partitie schema.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png

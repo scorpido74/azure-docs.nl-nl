@@ -1,5 +1,5 @@
 ---
-title: Beveiligings overwegingen voor het verplaatsen van gegevens in Azure Data Factory | Microsoft Docs
+title: Beveiligings overwegingen voor het verplaatsen van gegevens in Azure Data Factory
 description: Meer informatie over het beveiligen van gegevens verplaatsing in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b425db761375c705d3c810002234a937bac46d78
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7f18505e02c5d65d21e93759eb5da480c20e2eb3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610165"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682625"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory-beveiligings overwegingen voor gegevens verplaatsing
 
@@ -50,13 +50,13 @@ In dit artikel worden beveiligings overwegingen in de volgende twee scenario's v
 
 ## <a name="cloud-scenarios"></a>Cloud scenario's
 ### <a name="securing-data-store-credentials"></a>Referenties voor gegevens opslag beveiligen
-Azure Data Factory beschermt uw referenties voor uw gegevens Archief door ze te versleutelen met behulp van **certificaten die door micro soft worden beheerd**. Deze certificaten worden elke **twee jaar** geroteerd (inclusief verlenging van het certificaat en de migratie van referenties). Deze versleutelde referenties worden veilig opgeslagen in een **Azure Storage beheerd door Azure Data Factory beheer Services**. Raadpleeg [Azure Storage Security Overview](../../security/fundamentals/storage-overview.md)(Engelstalig) voor meer informatie over Azure Storage beveiliging.
+Azure Data Factory beschermt uw referenties voor uw gegevens Archief door ze te **versleutelen** met behulp van **certificaten die door micro soft worden beheerd**. Deze certificaten worden elke **twee jaar** geroteerd (inclusief verlenging van het certificaat en de migratie van referenties). Deze versleutelde referenties worden veilig opgeslagen in een **Azure Storage beheerd door Azure Data Factory beheer Services**. Raadpleeg [Azure Storage Security Overview](../../security/fundamentals/storage-overview.md)(Engelstalig) voor meer informatie over Azure Storage beveiliging.
 
 ### <a name="data-encryption-in-transit"></a>Gegevens versleuteling tijdens overdracht
 Als de gegevens opslag in de Cloud HTTPS of TLS ondersteunt, worden alle gegevens overdrachten tussen services voor gegevens verplaatsing in Data Factory en een gegevens archief in de Cloud via Secure Channel HTTPS of TLS.
 
 > [!NOTE]
-> Alle verbindingen met **Azure SQL database** en **Azure SQL Data Warehouse** vereisen altijd VERSLEUTELING (SSL/TLS) wanneer gegevens onderweg naar en van de Data Base worden verzonden. Bij het ontwerpen van een pijp lijn met behulp van een JSON -editor, voegt u de versleutelings eigenschap toe en stelt u deze in op **true** in de **Connection String**. Wanneer u de [wizard kopiëren](data-factory-azure-copy-wizard.md)gebruikt, wordt deze eigenschap standaard ingesteld door de wizard. Voor **Azure Storage**kunt u **https** gebruiken in de Connection String.
+> Alle verbindingen met **Azure SQL database** en **Azure SQL Data Warehouse** vereisen altijd VERSLEUTELING (SSL/TLS) wanneer gegevens onderweg naar en van de Data Base worden verzonden. Bij het ontwerpen van een pijp lijn met behulp van een JSON-editor, voegt u de **versleutelings** eigenschap toe en stelt u deze in op **true** in de **Connection String**. Wanneer u de [wizard kopiëren](data-factory-azure-copy-wizard.md)gebruikt, wordt deze eigenschap standaard ingesteld door de wizard. Voor **Azure Storage**kunt u **https** gebruiken in de Connection String.
 
 ### <a name="data-encryption-at-rest"></a>Versleuteling van inactieve gegevens
 Sommige gegevens archieven ondersteunen de versleuteling van gegevens in rust. U wordt aangeraden om het mechanisme voor gegevens versleuteling in te scha kelen voor deze gegevens archieven. 
@@ -127,7 +127,7 @@ Virtueel netwerk is een logische weer gave van uw netwerk in de Cloud. U kunt ee
 
 De volgende tabel bevat een overzicht van de aanbevelingen voor de netwerk-en gateway configuratie op basis van verschillende combi Naties van bron-en doel locaties voor het verplaatsen van hybride gegevens.
 
-| Source | Bestemming | Netwerkconfiguratie | Gateway instellen |
+| Bron | Doel | Netwerkconfiguratie | Gateway instellen |
 | ------ | ----------- | --------------------- | ------------- | 
 | On-premises | Virtuele machines en Cloud Services die zijn geïmplementeerd in virtuele netwerken | IPSec VPN (punt-naar-site of site-naar-site) | De gateway kan on-premises of op een virtuele Azure-machine (VM) in VNet worden geïnstalleerd | 
 | On-premises | Virtuele machines en Cloud Services die zijn geïmplementeerd in virtuele netwerken | ExpressRoute (persoonlijke peering) | De gateway kan on-premises of op een virtuele Azure-machine worden geïnstalleerd in VNet | 
@@ -150,7 +150,7 @@ In een onderneming wordt een **bedrijfs firewall** uitgevoerd op de centrale rou
 
 De volgende tabel bevat de **uitgaande poort** -en domein vereisten voor de **bedrijfs firewall**.
 
-| Domeinnamen | Uitgaande poorten | Description |
+| Domein namen | Uitgaande poorten | Beschrijving |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Vereist door de gateway om verbinding te maken met Services voor gegevens verplaatsing in Data Factory |
 | `*.core.windows.net` | 443 | Wordt gebruikt door de gateway om verbinding te maken met Azure Storage account wanneer u de functie voor [gefaseerd kopiëren](data-factory-copy-activity-performance.md#staged-copy) gebruikt. | 
@@ -163,7 +163,7 @@ De volgende tabel bevat de **uitgaande poort** -en domein vereisten voor de **be
 
 De volgende tabel bevat de **Binnenkomende poort** vereisten voor de **Windows Firewall**.
 
-| Poorten voor inkomend verkeer | Description | 
+| Poorten voor inkomend verkeer | Beschrijving | 
 | ------------- | ----------- | 
 | 8050 (TCP) | Vereist door de Credential Manager-toepassing om veilig referenties in te stellen voor on-premises gegevens archieven op de gateway. | 
 
@@ -182,14 +182,14 @@ Voor de volgende gegevens archieven in de Cloud is white list van het IP-adres v
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-**Produkt** Kan de gateway worden gedeeld tussen verschillende gegevens fabrieken?
-**Antwoord** Deze functie wordt nog niet ondersteund. We zijn hier druk mee bezig.
+**Vraag:** Kan de gateway worden gedeeld tussen verschillende gegevens fabrieken?
+**Antwoord:** Deze functie wordt nog niet ondersteund. We zijn hier druk mee bezig.
 
-**Produkt** Wat zijn de poort vereisten voor het werken met de gateway?
-**Antwoord** Gateway maakt HTTP-verbindingen voor het openen van Internet. De **uitgaande poorten 443 en 80** moeten voor de gateway worden geopend om deze verbinding te kunnen maken. Open de **Binnenkomende poort 8050** alleen op computer niveau (niet op het niveau van de bedrijfs firewall) voor de toepassing referentie beheer. Als Azure SQL Database of Azure SQL Data Warehouse als bron/doel wordt gebruikt, moet u ook **1433** -poort openen. Zie de sectie [firewall configuraties en white list IP-adressen](#firewall-configurations-and-whitelisting-ip-address-of gateway) voor meer informatie. 
+**Vraag:** Wat zijn de poort vereisten voor het werken met de gateway?
+**Antwoord:** Gateway maakt HTTP-verbindingen voor het openen van Internet. De **uitgaande poorten 443 en 80** moeten voor de gateway worden geopend om deze verbinding te kunnen maken. Open de **Binnenkomende poort 8050** alleen op computer niveau (niet op het niveau van de bedrijfs firewall) voor de toepassing referentie beheer. Als Azure SQL Database of Azure SQL Data Warehouse als bron/doel wordt gebruikt, moet u ook **1433** -poort openen. Zie de sectie [firewall configuraties en white list IP-adressen](#firewall-configurations-and-whitelisting-ip-address-of gateway) voor meer informatie. 
 
-**Produkt** Wat zijn de certificaat vereisten voor de gateway?
-**Antwoord** Voor de huidige gateway is een certificaat vereist dat door de Credential Manager-toepassing wordt gebruikt voor het veilig instellen van referenties voor het gegevens archief. Dit certificaat is een zelfondertekend certificaat dat is gemaakt en geconfigureerd door de gateway-installatie. U kunt in plaats daarvan uw eigen TLS/SSL-certificaat gebruiken. Zie voor meer informatie klikt u op de sectie voor [het toepassings beheer van referenties](#click-once-credentials-manager-app) . 
+**Vraag:** Wat zijn de certificaat vereisten voor de gateway?
+**Antwoord:** Voor de huidige gateway is een certificaat vereist dat door de Credential Manager-toepassing wordt gebruikt voor het veilig instellen van referenties voor het gegevens archief. Dit certificaat is een zelfondertekend certificaat dat is gemaakt en geconfigureerd door de gateway-installatie. U kunt in plaats daarvan uw eigen TLS/SSL-certificaat gebruiken. Zie voor meer informatie klikt u op de sectie voor [het toepassings beheer van referenties](#click-once-credentials-manager-app) . 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie voor meer informatie over de prestaties van de Kopieer activiteit [Kopieer activiteit prestaties en afstemmings handleiding](data-factory-copy-activity-performance.md).

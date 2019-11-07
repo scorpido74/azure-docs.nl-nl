@@ -1,5 +1,5 @@
 ---
-title: Nieuwe tenants inrichten in een multi tenant-app die gebruikmaakt van Azure SQL Database | Microsoft Docs
+title: Nieuwe tenants inrichten in een app voor meerdere tenants die gebruikmaakt van Azure SQL Database
 description: Meer informatie over het inrichten en catalogiseren van nieuwe tenants in een Azure SQL Database multi tenant SaaS-app
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: b5a996fe6be5aa839b78b6693accac9b1000cef8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f0f1ebd8b2ef719a9556b6b20f6685d1da493263
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570419"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692109"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Meer informatie over het inrichten van nieuwe tenants en registreren in de catalogus
 
@@ -77,11 +77,11 @@ De SaaS-scripts van Wingtip tickets en de bron code van de toepassing zijn besch
 
 Als u wilt weten hoe de toepassing Wingtip tickets nieuwe Tenant inrichting implementeert, voegt u een onderbrekings punt toe en volgt u de werk stroom terwijl u een Tenant inricht.
 
-1. Open in de Power shell-ISE... \\Learning modules\\ProvisionAndCatalogdemo-ProvisionAndCatalog\\ _. ps1_ en stel de volgende para meters in:
+1. Open in de Power shell-ISE\\learning modules\\ProvisionAndCatalog\\_demo-ProvisionAndCatalog. ps1_ en stel de volgende para meters in:
 
    * **$TenantName** = de naam van de nieuwe venue (bijvoorbeeld *Bushwillow Blues*).
    * **$VenueType** = een van de vooraf gedefinieerde typen locaties: _blauw, classicalmusic, dans, jazz, Judo, Motor Racing, multifunctioneel, Opera, rockmusic, voetbal_.
-   * $DemoScenario = **1**, *inrichten voor één Tenant*.
+   * Richt = **1**$DemoScenario *één Tenant*in.
 
 2. Als u een onderbrekings punt wilt toevoegen, plaatst u de cursor ergens op de regel met de tekst *Nieuw-Tenant*. Druk vervolgens op F9.
 
@@ -105,7 +105,7 @@ U hoeft deze werk stroom niet expliciet te volgen. Hierin wordt uitgelegd hoe u 
 * **Configuratie Details ophalen.** Neem deel aan de Get-configuratie met behulp van F11 en Bekijk hoe de app-configuratie is opgegeven. Resource namen en andere app-specifieke waarden worden hier gedefinieerd. Wijzig deze waarden pas wanneer u bekend bent met de scripts.
 * **Het object Catalog ophalen.** Stap voor Get-Catalog, waarmee een catalogus object wordt samengesteld en geretourneerd dat wordt gebruikt in het script op een hoger niveau. Deze functie maakt gebruik van Shard-beheer functies die worden geïmporteerd uit **AzureShardManagement. psm1**. Het catalogus object bestaat uit de volgende elementen:
 
-   * $catalogServerFullyQualifiedName gemaakt met behulp van de Standard-stam plus uw gebruikers naam: _Catalog\>-\<User. data base. Windows .net_.
+   * $catalogServerFullyQualifiedName is samengesteld met behulp van de Standard-stam plus uw gebruikers naam: _catalogus-\<gebruiker\>. data base. Windows .net_.
    * $catalogDatabaseName wordt opgehaald uit de configuratie *tenantcatalog*.
    * Het object $shardMapManager wordt geïnitialiseerd uit de catalogusdatabase.
    * Het object $shardMap wordt geïnitialiseerd uit de shard map _tenantcatalog_ in de catalogusdatabase. Een catalogus object bestaat uit en wordt geretourneerd. Deze wordt gebruikt in het script op een hoger niveau.
@@ -135,9 +135,9 @@ Nadat het inrichten is voltooid, keert de uitvoering terug naar het oorspronkeli
 
 In deze oefening worden een batch van 17 tenants ingericht. U wordt aangeraden deze batch tenants in te richten voordat u andere zelf studies voor Wingtip tickets SaaS-Data Base kunt starten. Er zijn meer dan slechts een paar data bases waarmee u kunt werken.
 
-1. Open in de Power shell-ISE... \\Learning modules\\ProvisionAndCatalogdemo-ProvisionAndCatalog\\ *. ps1*. Wijzig de *$DemoScenario* para meter in 3:
+1. \\open in de Power shell ISE-learning modules\\ProvisionAndCatalog\\*demo-ProvisionAndCatalog. ps1*. Wijzig de *$DemoScenario* para meter in 3:
 
-   * $DemoScenario = **3**, *een batch met tenants inrichten*.
+   * U kunt **$DemoScenario** = **3** *een batch met tenants inrichten*.
 2. Druk op F5 om het script uit te voeren.
 
 Met het script worden verschillende tenants tegelijk ingericht. Er wordt gebruikgemaakt van een [Azure Resource Manager sjabloon](../azure-resource-manager/resource-manager-template-walkthrough.md) waarmee de batch wordt beheerd en de inrichting van elke Data Base wordt overgedragen aan een gekoppelde sjabloon. Door op deze manier sjablonen in te zetten, kan Azure Resource Manager als broker optreden voor het inrichtingsproces voor het script. De sjabloon voorziet in parallelle data bases en verwerkings pogingen, indien nodig. Het script is idempotent, dus als het mislukt of stopt om een wille keurige reden, voert u het opnieuw uit.
@@ -154,9 +154,9 @@ Met het script worden verschillende tenants tegelijk ingericht. Er wordt gebruik
 
 Andere inrichtings patronen die niet in deze zelf studie zijn opgenomen:
 
-**Data bases vooraf inrichten**: Het vooraf inrichtings patroon exploiteert het feit dat data bases in een elastische pool geen extra kosten toevoegen. Facturering is voor de elastische pool, niet voor de data bases. Niet-actieve data bases nemen geen resources in beslag. Door data bases vooraf in te richten in een pool en ze toe te wijzen wanneer dat nodig is, kunt u de tijd beperken om tenants toe te voegen. Het aantal vooraf ingerichte data bases kan zo nodig worden aangepast om een buffer te houden die geschikt is voor de verwachte inrichtings frequentie.
+**Provisioning data bases**: het vooraf inrichtings patroon exploiteert het feit dat data bases in een elastische pool geen extra kosten toevoegen. Facturering is voor de elastische pool, niet voor de data bases. Niet-actieve data bases nemen geen resources in beslag. Door data bases vooraf in te richten in een pool en ze toe te wijzen wanneer dat nodig is, kunt u de tijd beperken om tenants toe te voegen. Het aantal vooraf ingerichte data bases kan zo nodig worden aangepast om een buffer te houden die geschikt is voor de verwachte inrichtings frequentie.
 
-**Automatische inrichting**: In het patroon voor automatisch inrichten, worden de servers, Pools en data bases automatisch door een inrichtings service ingericht. Als u wilt, kunt u previsioning-data bases in elastische Pools insluiten. Als data bases uit bedrijf worden genomen en verwijderd, kunnen hiaten in elastische Pools worden gevuld door de inrichtings service. Een dergelijke service kan eenvoudig of complex zijn, zoals het afhandelen van inrichting in meerdere geographs en het instellen van geo-replicatie voor nood herstel. 
+**Automatische inrichting**: in het automatisch inrichtings patroon, indien nodig, worden servers, Pools en data bases automatisch ingericht met een inrichtings service. Als u wilt, kunt u previsioning-data bases in elastische Pools insluiten. Als data bases uit bedrijf worden genomen en verwijderd, kunnen hiaten in elastische Pools worden gevuld door de inrichtings service. Een dergelijke service kan eenvoudig of complex zijn, zoals het afhandelen van inrichting in meerdere geographs en het instellen van geo-replicatie voor nood herstel. 
 
 Met het patroon voor automatische inrichting, verzendt een client toepassing of script een inrichtings aanvraag naar een wachtrij die moet worden verwerkt door de inrichtings service. Vervolgens wordt de service gecontroleerd om de voltooiing te bepalen. Als vooraf inrichten wordt gebruikt, worden aanvragen snel afgehandeld. De service richt een vervangende Data Base op de achtergrond.
 
@@ -173,7 +173,7 @@ In deze zelfstudie hebt u het volgende geleerd:
 
 Probeer de [zelf studie voor prestatie bewaking](saas-dbpertenant-performance-monitoring.md).
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * Aanvullende [zelf studies die voortbouwen op de Wingtip tickets SaaS data base-per-Tenant toepassing](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Clientbibliotheek voor Elastic Database](sql-database-elastic-database-client-library.md)
