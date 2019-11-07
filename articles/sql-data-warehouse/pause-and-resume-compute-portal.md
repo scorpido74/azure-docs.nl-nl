@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: De berekening onderbreken en hervatten in Azure SQL Data Warehouse-Azure Portal | Microsoft Docs'
+title: 'Quick Start: Compute & Resume-Azure Portal '
 description: Gebruik de Azure Portal om Compute in Azure SQL Data Warehouse te onderbreken om kosten op te slaan. Hervat de compute wanneer u klaar bent om het Data Warehouse te gebruiken.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,22 +10,23 @@ ms.subservice: manage
 ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 46fb1fc6455cd35d8bb1eaf0a1b7ee499f5c1caf
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 14f66f71948f75a723c9fdbed7490d54c2c3e2b2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574886"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692996"
 ---
-# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Quickstart: De berekening onderbreken en hervatten voor een Azure SQL Data Warehouse in het Azure Portal
+# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Quick Start: de berekening onderbreken en hervatten voor een Azure SQL Data Warehouse in het Azure Portal
 
-Gebruik de Azure Portal om Compute in Azure SQL Data Warehouse te onderbreken om kosten op te slaan. [Hervat](sql-data-warehouse-manage-compute-overview.md) de compute wanneer u klaar bent om het Data Warehouse te gebruiken.
+Gebruik de Azure Portal om Compute in Azure SQL Data Warehouse te onderbreken om kosten op te slaan. [Hervat de compute](sql-data-warehouse-manage-compute-overview.md) wanneer u klaar bent om het Data Warehouse te gebruiken.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -43,7 +44,7 @@ Volg deze stappen om een SQL Data Warehouse te onderbreken.
 
     ![Online berekenen](media/pause-and-resume-compute-portal/compute-online.png)
 
-4. Klik op de knop PAUSE om het Data Warehouse te onderbreken. 
+4. Klik op de knop **pause** om het Data Warehouse te onderbreken. 
 5. Er wordt een bevestigings vraag weer gegeven waarin u wordt gevraagd of u wilt door gaan. Klik op **Ja**.
 6. Wacht even en u ziet dan dat de **status** is **onderbroken**.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure-portal: Azure SQL Database doorzoeken met de queryeditor | Microsoft Docs'
+title: 'Azure Portal: query-Azure SQL Database met query-editor '
 description: Leer hoe u verbinding maakt met SQL Database in Azure Portal door gebruik te maken van de SQL-queryeditor. Voer daarna Transact-SQL-instructies (T-SQL) uit om query's uit te voeren voor gegevens en om gegevens te bewerken.
 keywords: verbinding maken met sql database, azure portal, portal, queryeditor
 services: sql-database
@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 10/24/2019
-ms.openlocfilehash: 433f2a190cf24a7e59dcd1d5a5aba0d3aa4e8588
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 75882b13341c7fc373de141ba12f8806cb106906
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492185"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690922"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Quick Start: de SQL-query-editor van Azure Portal gebruiken om verbinding te maken en gegevens op te vragen
 

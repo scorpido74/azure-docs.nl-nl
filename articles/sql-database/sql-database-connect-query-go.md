@@ -1,5 +1,5 @@
 ---
-title: Go gebruiken om een query uit te voeren op een Azure SQL-database | Microsoft Docs
+title: Ga naar query Azure SQL Database
 description: Gebruik Go om een programma te maken dat is verbonden met een Azure SQL-database en gebruik Transact-SQL-instructies om gegevens te doorzoeken en te wijzigen.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: David-Engel
 ms.author: craigg
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
-ms.openlocfilehash: baa43a93ff0c1e814478bdc195b2fd525d4dbbf3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 510f5e0fe62043d592306d2d689174c0d87e129d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569257"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690951"
 ---
-# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Quickstart: Golang gebruiken om een query uit te voeren op een Azure SQL-database
+# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Quick Start: Golang gebruiken om een query uit te zoeken op een Azure-SQL database
 
 In deze quickstart gebruikt u de programmeertaal [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) om verbinding te maken met een Azure SQL-database. Voer vervolgens Transact-SQL-instructies uit om query's uit te voeren voor gegevens en om gegevens te bewerken. [Golang](https://golang.org/) is een open-sourceprogrammeertaal waarmee u op een simpele manier eenvoudige, betrouwbare en efficiënte software kunt maken.  
 
@@ -44,15 +44,15 @@ Voor deze zelfstudie hebt u het volgende nodig:
 
 - Golang en verwante software geïnstalleerd voor uw besturingssysteem:
 
-  - **MacOS**: Installeer Homebrew en Golang. Zie [stap 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
-  - **Ubuntu**:  Installeer Golang. Zie [stap 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
+  - **MacOS**: Installeer homebrew en Golang. Zie [stap 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
+  - **Ubuntu**: Golang installeren. Zie [stap 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
   - **Windows**: Installeer Golang. Zie [stap 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
 
-## <a name="get-sql-server-connection-information"></a>SQL Server-verbindingsgegevens ophalen
+## <a name="get-sql-server-connection-information"></a>Verbindingsgegevens voor SQL Server ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 2. Navigeer naar de pagina **SQL-database** of **Met SQL beheerde exemplaren**.
 

@@ -1,5 +1,5 @@
 ---
-title: PHP gebruiken om een query uit te voeren op een Azure SQL-database | Microsoft Docs
+title: PHP gebruiken om een query uit te zoeken op Azure SQL database
 description: PHP gebruiken om een programma te maken dat is verbonden met een Azure SQL-database, en een query op deze database uitvoeren met behulp van T-SQL-instructies.
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 02/12/2019
-ms.openlocfilehash: a7da65438ffd7db6c43cf2ede7cc52378af056f1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c1c576becc0390a2cb0dfb083755be4e7c772c59
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569226"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690938"
 ---
-# <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Snelstartgids: PHP gebruiken om een query uit te voeren voor een Azure SQL-database
+# <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Snelstart: PHP gebruiken om een query uit te voeren voor een Azure SQL-database
 
 In dit artikel ziet u hoe u [PHP](https://php.net/manual/en/intro-whatis.php) gebruikt om verbinding te maken met een Azure SQL-database. Vervolgens kunt u T-SQL-instructies gebruiken om een query uit te voeren voor de gegevens.
 
@@ -49,11 +49,11 @@ Zorg dat u aan de volgende vereisten voldoet als u dit voorbeeld wilt uitvoeren:
 
   - **Windows**: installeer PHP voor IIS Express en Chocolatey, en installeer vervolgens het ODBC-stuurprogramma en SQLCMD. Zie [Stap 1.2 en 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
 
-## <a name="get-sql-server-connection-information"></a>SQL Server-verbindingsgegevens ophalen
+## <a name="get-sql-server-connection-information"></a>Verbindingsgegevens voor SQL Server ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 2. Navigeer naar de pagina **SQL-database** of **Met SQL beheerde exemplaren**.
 
@@ -108,4 +108,4 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
 
 - [Problemen melden of vragen stellen](https://github.com/Microsoft/msphpsql/issues)
 
-- [Voorbeeld van pogingslogica: Flexibel verbinding maken met SQL via PHP](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
+- [Voorbeeld logica voor opnieuw proberen: flexibel verbinding maken met SQL via PHP](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)

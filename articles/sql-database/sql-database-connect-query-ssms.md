@@ -1,5 +1,5 @@
 ---
-title: "SSMS: Verbinding maken en query's uitvoeren op gegevens in Azure SQL-database | Microsoft Docs"
+title: "SSMS: verbinding maken met gegevens in een Azure-SQL database en er query's op uitvoeren "
 description: Ontdek hoe u verbinding maakt met SQL Database in Azure met behulp van SQL Server Management Studio (SSMS). Voer vervolgens T-SQL-instructies (Transact-SQL) uit om query's uit te voeren voor gegevens en om gegevens te bewerken.
 keywords: verbinding maken met SQL-database,Sql Server Management Studio
 services: sql-database
@@ -12,14 +12,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 0a08ee9d38065b0dff13f68a7b5473aa93787cf5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0744b8bc8e3582a23802d87424bba9f92bf43073
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569189"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690898"
 ---
-# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Snelstartgids: SQL Server Management Studio gebruiken om verbinding te maken en query's uit te voeren op een Azure SQL-database
+# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Snelstartgids: SQL Server Management Studio gebruiken om verbinding te maken met een Azure-SQL database
 
 In deze Quick Start gebruikt u [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) om verbinding te maken met een Azure SQL database. Vervolgens gaat u Transact-SQL-instructies uitvoeren om gegevens op te vragen, in te voegen, bij te werken en te verwijderen. U kunt SSMS gebruiken voor het beheren van een SQL-infrastructuur, van SQL Server tot SQL Database voor Microsoft Windows.  
 
@@ -38,17 +38,17 @@ Een Azure SQL-database. U kunt een van deze quickstarts gebruiken om een databas
   |||Adventure Works herstellen of importeren vanuit [BACPAC](sql-database-import.md) -bestand vanuit [github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
 
   > [!IMPORTANT]
-  > De scripts in dit artikel zijn geschreven voor gebruik met de Adventure Works-database. Met een beheerd exemplaar moet u de Adventure Works-database importeren in een exemplaardatabase of de scripts in dit artikel wijzigen zodat deze de Wide World Importers-database gebruiken.
+  > De scripts in dit artikel zijn geschreven voor gebruik met de Adventure Works-database. Met een beheerd exemplaar moet u de Adventure Works-database importeren in een exemplaardatabase of de scripts in dit artikel wijzigen voor gebruik van de Wide World Importers-database.
 
 ## <a name="install-the-latest-ssms"></a>De nieuwste SSMS installeren
 
 Voordat u begint, moet u ervoor zorgen dat u de laatste [SSMS][ssms-install-latest-84g]hebt geïnstalleerd.
 
-## <a name="get-sql-server-connection-information"></a>SQL Server-verbindingsgegevens ophalen
+## <a name="get-sql-server-connection-information"></a>Verbindingsgegevens voor SQL Server ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 2. Navigeer naar de pagina **SQL-database** of **Met SQL beheerde exemplaren**.
 
@@ -66,11 +66,11 @@ In SMSS maakt u verbinding met uw Azure SQL Database-server.
 
 2. Voer de volgende informatie in:
 
-   | Instelling      | Voorgestelde waarde    | Description |
+   | Instelling      | Voorgestelde waarde    | Beschrijving |
    | ------------ | ------------------ | ----------- |
    | **Servertype** | Database-engine | Vereiste waarde. |
    | **Servernaam** | De volledig gekwalificeerde servernaam | Dit moet er ongeveer als volgt uitzien: **mijnnieuweserver20170313.database.windows.net**. |
-   | **Verificatie** | SQL Server-verificatie | In deze zelfstudie wordt gebruik gemaakt van SQL-verificatie. |
+   | **Authenticatie** | SQL Server-verificatie | In deze zelfstudie wordt gebruik gemaakt van SQL-verificatie. |
    | **Aanmelding** | Gebruikers-id voor het beheerdersaccount voor de server | De gebruikers-id van het serverbeheerdersaccount dat wordt gebruikt voor het maken van de server. |
    | **Wachtwoord** | Het wachtwoord voor het serverbeheerdersaccount | Het wachtwoord van het serverbeheerdersaccount dat wordt gebruikt voor het maken van de server. |
    ||||
@@ -110,7 +110,7 @@ Voer deze Transact-SQL \[SELECT](https://msdn.microsoft.com/library/ms189499.asp
 
 Voer deze Transact-SQL [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-code uit om een nieuw product te maken in de tabel `SalesLT.Product`.
 
-1. Vervang de vorige query door deze.
+1. Vervang de vorige query door de volgende.
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -135,7 +135,7 @@ Voer deze Transact-SQL [INSERT](https://msdn.microsoft.com/library/ms174335.aspx
 
 ## <a name="view-the-result"></a>Het resultaat weergeven
 
-1. Vervang de vorige query door deze.
+1. Vervang de vorige query door de volgende.
 
    ```sql
    SELECT * FROM [SalesLT].[Product]
@@ -150,7 +150,7 @@ Voer deze Transact-SQL [INSERT](https://msdn.microsoft.com/library/ms174335.aspx
 
 Voer deze [Update](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL-code uit om het nieuwe product te wijzigen.
 
-1. Vervang de vorige query door deze.
+1. Vervang de vorige query door de volgende.
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -164,7 +164,7 @@ Voer deze [Update](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQ
 
 Voer deze Transact-SQL [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-code uit om uw nieuwe product te verwijderen.
 
-1. Vervang de vorige query door deze.
+1. Vervang de vorige query door de volgende.
 
    ```sql
    DELETE FROM [SalesLT].[Product]

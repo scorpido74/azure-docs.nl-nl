@@ -1,5 +1,5 @@
 ---
-title: Een door HTTP geactiveerde functie maken in azure
+title: Een HTTP-geactiveerde python-functie maken in azure
 description: Informatie over hoe u met de Azure Functions Core Tools en de Azure CLI uw eerste Python-functie maakt in Azure.
 author: ggailey777
 ms.author: glenga
@@ -9,14 +9,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: f2602e5a13f83090291656e7062c74c245bc6568
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 791348088d909785b36934c3b9a2ae00fc0acbb7
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693353"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622035"
 ---
-# <a name="create-an-http-triggered-function-in-azure"></a>Een door HTTP geactiveerde functie maken in azure
+# <a name="create-an-http-triggered-python-function-in-azure"></a>Een HTTP-geactiveerde python-functie maken in azure
 
 In dit artikel leest u hoe u opdracht regel Programma's kunt gebruiken om een python-project te maken dat wordt uitgevoerd in Azure Functions. U maakt ook een functie die wordt geactiveerd door een HTTP-aanvraag. Ten slotte publiceert u uw project om te worden uitgevoerd als een [serverloze functie](functions-scale.md#consumption-plan) in Azure.
 
@@ -59,7 +59,7 @@ py -m venv .venv
 .venv\scripts\activate
 ```
 
-Nu u de virtuele omgeving hebt geactiveerd, voert u de resterende opdrachten uit. Als u van de virtuele omgeving wilt profiteren, voert u `deactivate` uit.
+Nu u de virtuele omgeving hebt geactiveerd, voert u de resterende opdrachten uit. Als u van de virtuele omgeving wilt profiteren, voert u `deactivate`uit.
 
 ## <a name="create-a-local-functions-project"></a>Een project met lokale functies maken
 
@@ -105,7 +105,7 @@ Met deze opdrachten maakt u een submap met de naam _http trigger_. Het bevat de 
 
     Elke binding vereist een richting, type en een unieke naam. De HTTP-trigger heeft een invoer binding van het type [`httpTrigger`](functions-bindings-http-webhook.md#trigger) en de uitvoer binding van het type [`http`](functions-bindings-http-webhook.md#output).
 
-* *\_ \_init \_ \_. py*: script bestand dat uw door http geactiveerde functie is. U ziet dat dit script een standaard `main()` heeft. HTTP-gegevens van de trigger worden door gegeven aan de functie met behulp van de `req` met de naam `binding parameter`. De `req`, die is gedefinieerd in function. json, is een instantie van de [klasse Azure. functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). 
+* *\_\_init\_\_. py*: script bestand dat uw door http geactiveerde functie is. U ziet dat dit script een standaard `main()`heeft. HTTP-gegevens van de trigger worden door gegeven aan de functie met behulp van de `req` met de naam `binding parameter`. De `req`, die is gedefinieerd in function. json, is een instantie van de [klasse Azure. functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). 
 
     Het retour object, gedefinieerd als `$return` in *Function. json*, is een instantie van de [klasse Azure. functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Zie [Azure functions HTTP-triggers en-bindingen](functions-bindings-http-webhook.md)voor meer informatie.
 

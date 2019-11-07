@@ -1,6 +1,6 @@
 ---
 title: 'Snelstartgids: een Data science-experiment maken'
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Deze quickstart over machine learning leidt u door een eenvoudig gegevenswetenschappelijk experiment. We voorspellen de prijs van een auto met behulp van een regressiealgoritme.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: c95954bbe96b947312a952ebaab4e6bfc2b2f5a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 99cc453387ed32c4d7cbba31c1fec2ff24a8255f
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493288"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621881"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Quick Start: uw eerste proef versie van data Science maken in Azure Machine Learning Studio (klassiek)
 

@@ -1,26 +1,23 @@
 ---
-title: Een Azure lente-Cloud toepassing starten met behulp van de Azure Portal
+title: 'Snelstartgids: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal'
 description: Implementeer een voorbeeld toepassing in de Azure lente-Cloud met behulp van de Azure Portal.
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 10/04/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 87826b4c898f67873c2ec8188b934abd467c8a5b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
-ms.translationtype: MT
+ms.date: 11/4/2019
+ms.author: jeconnoc
+ms.openlocfilehash: ab2950ed85d2409cd81ea562ec977c0eee2f6bab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162811"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693132"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Snelstartgids: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal
 
 Met Azure lente Cloud kunt u eenvoudig lente-Cloud toepassingen uitvoeren op Azure.
 
-In deze Quick start ziet u hoe u een bestaande lente-Cloud toepassing kunt implementeren in Azure. [Hier volgt een koppeling](https://github.com/Azure-Samples/PiggyMetrics) naar de voorbeeld toepassings code die in deze zelf studie wordt gebruikt. Wanneer u klaar bent, is de beschik bare voorbeeld toepassing online en kan deze worden beheerd via de Azure Portal.
+In deze Quick start ziet u hoe u een bestaande lente-Cloud toepassing kunt implementeren in Azure.  De voorbeeld toepassings code die in deze zelf studie wordt gebruikt, is te vinden in onze [github samples-opslag plaats](https://github.com/Azure-Samples/PiggyMetrics). Wanneer u klaar bent, is de beschik bare voorbeeld toepassing online en kan deze worden beheerd via de Azure Portal.
 
 In deze Quick Start leert u het volgende:
 
@@ -34,7 +31,7 @@ In deze Quick Start leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 >[!Note]
-> Zorg ervoor dat uw Azure-abonnement toegang heeft tot de Azure lente-Cloud voordat u begint met deze Snelstartgids.  Als preview-service vragen we klanten om aan ons te bellen zodat we uw abonnement kunnen toevoegen aan onze acceptatie lijst.  Als u de mogelijkheden van Azure lente Cloud wilt verkennen, vult u de [Azure lente-Cloud (private preview)-rente formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u)in en verzendt u deze. Hoewel Azure lente-Cloud in preview is, biedt micro soft beperkte ondersteuning zonder een SLA.  Raadpleeg deze [Veelgestelde vragen](https://azure.microsoft.com/support/faq/)over ondersteuning voor meer informatie over ondersteuning tijdens previews.
+> Azure lente Cloud wordt momenteel aangeboden als een open bare preview. Met open bare preview-aanbiedingen kunnen klanten experimenteren met nieuwe functies vóór hun officiële release.  Open bare preview-functies en-services zijn niet bedoeld voor gebruik in productie omgevingen.  Voor meer informatie over ondersteuning tijdens previews, kunt u een [ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)bestand.
 
 >[!TIP]
 > Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren.  Het heeft algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd, met inbegrip van de nieuwste versies van Git, JDK, maven en de Azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u uw [Azure Cloud shell](https://shell.azure.com) vanuit shell.Azure.com.  [Lees onze documentatie](../cloud-shell/overview.md) voor meer informatie over Azure Cloud shell.
@@ -52,16 +49,14 @@ Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 Installeer de Azure veer Cloud-extensie voor de Azure CLI met behulp van de volgende opdracht
 
 ```Azure CLI
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Een service-exemplaar inrichten op het Azure Portal
 
-1. Open in een webbrowser [deze koppeling naar Azure lente Cloud in de Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=AppPlatformExtension#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/Azure%20Spring%20Cloud).
+1. Open in een webbrowser [deze koppeling naar Azure lente Cloud in de Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform).
 
-    ![Scherm opname van ASC-Portal](media/spring-cloud-quickstart-launch-app-portal/goto-portal.png)
-
-1. Selecteer **Azure veer Cloud** om naar de overzichts pagina te gaan. Selecteer vervolgens de knop **maken** om aan de slag te gaan.
+1. Selecteer **Azure veer Cloud** om naar de overzichts pagina te gaan. Selecteer de knop **maken** om aan de slag te gaan.
 
 1. Vul het formulier in, waarbij u rekening moet houden met de volgende richt lijnen:
     - Service naam: Geef de naam van uw service-exemplaar op.  De naam moet tussen 4 en 32 tekens lang zijn en mag alleen kleine letters, cijfers en afbreek streepjes bevatten.  Het eerste teken van de service naam moet een letter zijn en het laatste teken moet een letter of een cijfer zijn.
@@ -77,26 +72,28 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 
 1. In de sectie **standaard opslagplaats** stelt u de **URI** in op ' https\://github.com/azure-samples/piggymetrics ', stelt u een **Label** in op ' config ' en selecteert u **Toep assen** om uw wijzigingen op te slaan.
 
-    ![Scherm opname van ASC-Portal](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![Scherm opname van ASC-Portal](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Micro service-toepassingen bouwen en implementeren
 
-1. Open een opdracht venster en voer de volgende opdracht uit om de opslag plaats van de voor beeld-app te klonen op uw lokale computer.
+1. Open een [Azure-Cloud shell](https://shell.azure.com) en kloon de opslag plaats van de voor beeld-app naar uw lokale computer.  Hier maken we eerst een tijdelijke map met de naam `source-code` voordat ze de app klonen.
 
-    ```cli
+    ```azurecli
+    mkdir source-code
+    cd source-code
     git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-1. Bouw het project door de onderstaande opdracht uit te voeren.
+1. Bouw het gekloonde pakket.
 
-    ```cli
-    cd PiggyMetrics
+    ```azurecli
+    cd piggymetrics
     mvn clean package -DskipTests
     ```
 
 1. Meld u aan bij Azure CLI en stel uw actieve abonnement in.
 
-    ```cli
+    ```azurecli
     # Login to Azure CLI
     az login
 
@@ -123,7 +120,7 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 
 1. Maak na hetzelfde patroon een `account-service`-en `auth-service`-toepassing en implementeer de JAR-bestanden.
 
-    ```cli
+    ```azurecli
     az spring-cloud app create -n account-service
     az spring-cloud app deploy -n account-service --jar-path ./account-service/target/account-service.jar
     az spring-cloud app create -n auth-service
@@ -135,8 +132,10 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Een openbaar eind punt toewijzen aan de gateway
 
 1. Open het tabblad **apps** in het menu aan de linkerkant.
-2. Selecteer de `gateway`-toepassing om de pagina **overzicht** weer te geven.
-3. Selecteer **domein toewijzen** om een openbaar eind punt toe te wijzen aan de gateway. Dit kan een paar minuten duren.
+
+1. Selecteer de `gateway` toepassing om de **overzichts** pagina weer te geven.
+
+1. Selecteer **domein toewijzen** om een openbaar eind punt toe te wijzen aan de gateway. Dit kan een paar minuten duren.
 
     ![Scherm opname van ASC-Portal](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 
@@ -147,7 +146,7 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u de volgende zaken geleerd:
+In deze snelstartgids hebt u de volgende zaken geleerd:
 
 > [!div class="checklist"]
 > * Een service-exemplaar inrichten
