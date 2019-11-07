@@ -1,5 +1,5 @@
 ---
-title: 'Azure Security Center Snelstartgids: Azure Stack virtuele machines onboarden naar Security Center | Microsoft Docs'
+title: Azure Stack virtuele machines onboarden naar Azure Security Center
 description: In deze Quick start ziet u hoe u de Azure Monitor-, update-en configuratie beheer-extensie van de virtuele machine kunt inrichten op een Azure Stack virtuele machines.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: fiseraci
-ms.openlocfilehash: 1772fd34a2d79b725b2b5ccaa66adb0b251b7e1d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c186dcb2d7d7d423f5c001bdb4d3f3503beebd9c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202847"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686525"
 ---
-# <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>Quickstart:  De Azure Stack virtuele machines onboarden naar Security Center
+# <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Quick Start: uw Azure Stack virtuele machines onboarden naar Security Center
 Nadat u uw Azure-abonnement hebt voor bereid, kunt u Security Center voor het beveiligen van uw virtuele machines die worden uitgevoerd op Azure Stack door de extensie van de virtuele machine voor **Azure monitor, update en Configuration Management** toe te voegen vanuit de Azure stack Commerce.
 
 In deze Quick start ziet u hoe u de **Azure monitor-, update-en configuratie beheer-** extensie voor virtuele machines op een virtuele machine kunt toevoegen (Linux en Windows worden beide ondersteund) die worden uitgevoerd op Azure stack.
@@ -36,7 +36,7 @@ U moet een Azure-abonnement hebben op de Standard-laag van Security Center voord
 1. Meld u aan bij de [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 2. Ga naar het **Microsoft Azure**-menu en selecteer **Security Center**. **Security Center - Overzicht** wordt geopend. 
 
-   ![Overzicht van Security Center][2]
+   ![Security Center-overzicht][2]
 
 3. Selecteer in het hoofdmenu van Security Center de optie **Aan de slag**.
 4. Selecteer het tabblad **Aan de slag**.
@@ -69,7 +69,7 @@ U moet nu de extensie van de virtuele machine **Azure monitor, update en configu
 > Als u de **Azure monitor-, update-en configuratie beheer** extensie die wordt vermeld in uw Marketplace niet ziet, kunt u contact opnemen met uw Azure stack-operator om deze beschikbaar te maken.
 
 6. Plak de **werk ruimte-id** en **werkruimte sleutel (primaire sleutel)** die u in het klad blok hebt gekopieerd in de vorige procedure op de Blade **extensie configuratie installeren** .
-7.  Klik op **OK**wanneer u klaar bent met het opgeven van de benodigde configuratie-instellingen.
+7. Klik op **OK**wanneer u klaar bent met het opgeven van de benodigde configuratie-instellingen.
 8. Zodra de installatie van de extensie is voltooid, wordt de status weer gegeven als **inrichting geslaagd**. Het kan een uur duren voordat de virtuele machine wordt weer gegeven in de Security Center Portal.
 
 Zie [Windows-computers verbinden](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)voor meer informatie over het installeren en configureren van de agent voor Windows.
@@ -100,7 +100,7 @@ De uitbrei ding verwijderen:
 In deze Quick Start hebt u de Azure Monitor-, update-en configuratie beheer uitbreiding ingericht op een virtuele machine die wordt uitgevoerd op Azure Stack. Voor meer informatie over het gebruik van Security Center gaat u verder met de zelfstudie voor het configureren van een beveiligingsbeleid en het beoordelen van de beveiliging van uw resources.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Beveiligingsbeleid opstellen en beoordelen](tutorial-security-policy.md)
+> [Zelfstudie: Beveiligingsbeleidsregels opstellen en beoordelen](tutorial-security-policy.md)
 
 <!--Image references-->
 [2]: ./media/quick-onboard-windows-computer/overview.png

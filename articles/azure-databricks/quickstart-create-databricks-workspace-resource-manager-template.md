@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: c55de6b437755f46df8d95a8ee461c0671a52cff
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3af9c5e728bd119ce6c5546c8dc6556967cd1eda
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791534"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606110"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Snelstart: Een Spark-taak uitvoeren op Azure Databricks met de Resource Manager-sjabloon
 
@@ -27,7 +27,7 @@ In deze Quick Start gebruikt u een Azure Resource Manager sjabloon om een Azure 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+Meld u aan bij de [Azure Portal](https://portal.azure.com). 
 
 > [!Note]
 > Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
@@ -81,7 +81,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van de Re
 
    Selecteer **Cluster maken**. Zodra het cluster wordt uitgevoerd, kunt u notitieblokken koppelen aan het cluster en Spark-taken uitvoeren.
 
-Zie [Een Spark-cluster maken in Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html) voor meer informatie over het maken van clusters.
+Zie [Een Spark-cluster maken in Azure Databricks](/azure/databricks/user-guide/clusters/create) voor meer informatie over het maken van clusters.
 
 ## <a name="run-a-spark-sql-job"></a>Een Spark SQL-taak uitvoeren
 
@@ -126,7 +126,7 @@ Voer de volgende taken uit om een notitieblok in Databricks te maken. Configuree
      Zie [Toegangssleutels beheren voor uw opslagaccount](../storage/common/storage-account-manage.md#access-keys) voor instructies over het ophalen van de toegangssleutel voor uw opslagaccount.
 
    > [!NOTE]
-   > U kunt ook Azure Data Lake Store met een Spark-cluster in Azure Databricks gebruiken. Zie [Data Lake Store met Azure Databricks gebruiken](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) voor instructies.
+   > U kunt ook Azure Data Lake Store met een Spark-cluster in Azure Databricks gebruiken. Zie [Data Lake Store met Azure Databricks gebruiken](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html) voor instructies.
 
 4. Voer een SQL-instructie uit om een tijdelijke tabel te maken met gegevens uit het JSON-voorbeeldgegevensbestand, **small_radio_json.json**. Vervang in het volgende codefragment de tijdelijke aanduidingen voor waarden door de containernaam en de naam van het opslagaccount. Plak het codefragment in een lege codecel in het notitieblok en druk op Shift+Enter. In het codefragment duidt `path` de locatie aan van het voorbeeld-JSON-bestand dat u hebt geüpload naar uw Azure Storage-account.
 
@@ -142,7 +142,7 @@ Voer de volgende taken uit om een notitieblok in Databricks te maken. Configuree
 
    Zodra de opdracht is voltooid, hebt u alle gegevens van het JSON-bestand als een tabel in het Databricks-cluster.
 
-   De magic-opdracht in de taal `%sql` stelt u in staat u SQL-code uit te voeren vanuit het notitieblok, zelfs als het notitieblok van een ander type is. Zie [Talen combineren in een notitieblok](https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook) voor meer informatie.
+   De magic-opdracht in de taal `%sql` stelt u in staat u SQL-code uit te voeren vanuit het notitieblok, zelfs als het notitieblok van een ander type is. Zie [Talen combineren in een notitieblok](/azure/databricks/notebooks/index) voor meer informatie.
 
 5. Laten we eens een momentopname bekijken van de voorbeeld-JSON-gegevens om een beter begrip te krijgen van de query die u uitvoert. Plak het volgende codefragment in de codecel en druk op **Shift+Enter**.
 
@@ -170,7 +170,7 @@ Voer de volgende taken uit om een notitieblok in Databricks te maken. Configuree
    * Stel **Waarden** in op **niveau**.
    * Stel **Aggregatie** in op **AANTAL**.
 
-   Klik op **Apply** (Toepassen).
+   Klik op **Toepassen**.
 
 9. De uitvoer toont de visuele weergave zoals de volgende schermafbeelding laat zien:
 
@@ -186,7 +186,7 @@ Als u het cluster niet handmatig beëindigt, stopt het cluster automatisch, op v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een Spark-cluster in Azure Databricks gemaakt en een Spark-taak met gegevens in Azure Storage uitgevoerd. U kunt ook zoeken op [Spark gegevensbronnen](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) voor meer informatie over het importeren van gegevens uit andere gegevensbronnen in Azure Databricks. U kunt ook kijken naar de Resource Manager-sjabloon om een [Azure Databricks-werkruimte met aangepast VNET-adres te maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address). Zie de sjabloonverwijzing [Microsoft.Databricks/workspaces](/azure/templates/microsoft.databricks/workspaces) voor de JSON-syntaxis en eigenschappen die u kunt gebruiken in een sjabloon.
+In dit artikel hebt u een Spark-cluster in Azure Databricks gemaakt en een Spark-taak met gegevens in Azure Storage uitgevoerd. U kunt ook zoeken op [Spark gegevensbronnen](/azure/databricks/data/data-sources/index.html) voor meer informatie over het importeren van gegevens uit andere gegevensbronnen in Azure Databricks. U kunt ook kijken naar de Resource Manager-sjabloon om een [Azure Databricks-werkruimte met aangepast VNET-adres te maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address). Zie de sjabloonverwijzing [Microsoft.Databricks/workspaces](/azure/templates/microsoft.databricks/workspaces) voor de JSON-syntaxis en eigenschappen die u kunt gebruiken in een sjabloon.
 
 Ga naar het volgende artikel voor informatie over het uitvoeren van een ETL-bewerking (Extraction, Transformation, and Loading) met behulp van Azure Databricks.
 

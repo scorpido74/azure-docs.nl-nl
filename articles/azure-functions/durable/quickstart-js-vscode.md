@@ -11,20 +11,22 @@ ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: glenga
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: b47e828f3b8d760594cb04ba40ceaa7248050c52
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 1a1586124a1cfb05f2b7c4e9c3b0070170447b96
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933476"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614575"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Uw eerste duurzame functie maken in JavaScript
 
 *Durable Functions* is een extensie van [Azure Functions](../functions-overview.md) waarmee u stateful functies kunt schrijven in een serverloze omgeving. Met de extensie worden status, controlepunten en het opnieuw opstarten voor u beheerd.
 
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
+
 In dit artikel leert u hoe u de Azure Functions-extensie van Visual Studio Code kunt gebruiken om lokaal een duurzame ‘Hallo wereld’-functie te maken en te testen.  Met deze functie worden aanroepen naar andere functies ingedeeld en aan elkaar gekoppeld. Vervolgens publiceert u de functiecode op Azure.
 
-![Duurzame functie uitvoeren in Azure](./media/quickstart-js-vscode/functions-vs-code-complete.png)
+![Durable Function uitvoeren in Azure](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -56,7 +58,7 @@ We gaan nu de drie functies maken die u nodig hebt om aan de slag te gaan met Du
 
 Maak eerst een HTTP-geactiveerde functie waarmee de indeling voor een duurzame functie wordt gestart.
 
-1. In *Azure: Functions*, kiest u het pictogram **functie maken** .
+1. Klik op het pictogram **functie maken** vanuit *Azure: functions*.
 
     ![Een functie maken](./media/quickstart-js-vscode/create-function.png)
 
@@ -74,7 +76,7 @@ U hebt nu een ingangspunt gemaakt in de duurzame functie. Nu gaan we een orchest
 
 Nu gaan we een Orchestrator maken om de activiteit functies te coördineren.
 
-1. In *Azure: Functions*, kiest u het pictogram **functie maken** .
+1. Klik op het pictogram **functie maken** vanuit *Azure: functions*.
 
     ![Een functie maken](./media/quickstart-js-vscode/create-function.png)
 
@@ -88,7 +90,7 @@ Er is een orchestrator toegevoegd om de activiteitsfuncties te coördineren. Nu 
 
 Nu gaan we een activiteit functie maken om het werk van de oplossing daad werkelijk uit te voeren.
 
-1. In *Azure: Functions*, kiest u het pictogram **functie maken** .
+1. Klik op het pictogram **functie maken** vanuit *Azure: functions*.
 
     ![Een functie maken](./media/quickstart-js-vscode/create-function.png)
 
@@ -102,14 +104,14 @@ Nu zijn alle benodigde onderdelen toegevoegd voor het starten van een indeling e
 
 Met Azure Functions Core-hulpprogramma's kunt u een Azure Functions-project uitvoeren op uw lokale ontwikkelcomputer. De eerste keer dat u een functie vanuit Visual Studio Code start, wordt u gevraagd deze hulpprogramma's te installeren.
 
-1. Start op een Windows-computer de Azure Storage-emulator en zorg ervoor dat de eigenschap **AzureWebJobsStorage** van *Local. settings. json* is ingesteld `UseDevelopmentStorage=true`op.
+1. Start op een Windows-computer de Azure Storage-emulator en zorg ervoor dat de eigenschap **AzureWebJobsStorage** van *Local. settings. json* is ingesteld op `UseDevelopmentStorage=true`.
 
     Zorg ervoor dat de eigenschap **AzureWebJobsSecretStorageType** van local. settings. json is ingesteld op `files`voor Storage emulator 5,8. Op een Mac-of Linux-computer moet u de eigenschap **AzureWebJobsStorage** instellen op de Connection String van een bestaand Azure Storage-account. Later in dit artikel maakt u een opslagaccount.
 
 2. U kunt de functie testen door een onderbrekingspunt in de functiecode in te stellen en op F5 te drukken om het functie-appproject te starten. De uitvoer van Core Tools wordt weergegeven in het deelvenster **Terminal**. Als dit de eerste keer is dat u Durable Functions gebruikt, wordt de Durable Functions-extensie geïnstalleerd. Het bouwen kan enkele seconden duren.
 
     > [!NOTE]
-    > Voor JavaScript Durable Functions is versie **1.7.0** of hoger van de extensie **Microsoft.Azure.WebJobs.Extensions.DurableTask** vereist. Voer de volgende opdracht uit vanuit de hoofdmap van uw Azure Functions-app om de Durable Functions-extensie te installeren`func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
+    > Voor JavaScript Durable Functions is versie **1.7.0** of hoger van de extensie **Microsoft.Azure.WebJobs.Extensions.DurableTask** vereist. Voer de volgende opdracht uit vanuit de hoofdmap van uw Azure Functions-app om de Durable Functions extensie te installeren `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
 
 3. Kopieer het URL-eindpunt van de door HTTP getriggerde functie in het deelvenster **Terminal**.
 
@@ -121,7 +123,7 @@ Met Azure Functions Core-hulpprogramma's kunt u een Azure Functions-project uitv
 
    De reactie is het eerste resultaat van de HTTP-functie waarmee wordt aangegeven dat de orchestrator is gestart. Dit is nog niet het eindresultaat van de orchestrator. De reactie bevat enkele nuttige URL's. Maar eerst gaan we de status van de orchestrator opvragen.
 
-6. Kopieer de URL-waarde `statusQueryGetUri` voor en plak deze in de adres balk van de browser en voer de aanvraag uit. U kunt postman ook blijven gebruiken om de GET-aanvraag uit te geven.
+6. Kopieer de URL-waarde voor `statusQueryGetUri` en plak deze in de adres balk van de browser en voer de aanvraag uit. U kunt postman ook blijven gebruiken om de GET-aanvraag uit te geven.
 
    De aanvraag voert een query uit op het orchestrator-exemplaar voor de status. U moet een eindige reactie krijgen, waarin wordt weer gegeven dat het exemplaar is voltooid en dat de uitvoer of resultaten van de duurzame functie bevat. Het ziet er als volgt uit: 
 

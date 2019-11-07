@@ -1,28 +1,27 @@
 ---
 title: 'Snelstart: Een virtuele Linux-machine maken op de Azure Portal | Microsoft Docs'
-description: In deze snelstartgids leert u hoe u de Azure Portal  gebruikt om een virtuele Linux-machine te maken
+description: In deze Quick Start leert u hoe u de Azure Portal kunt gebruiken om een virtuele Linux-machine te maken.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 8/20/2019
+ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0c05eb59c42700394f755f226405f16a47edc73c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dbe8e43122fb7fa00129dec0d9961bd70e5a784
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091556"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693295"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Quickstart: Een virtuele Linux-machine maken in de Azure Portal
+# <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Snelstart: Een virtuele Linux-machine maken op de Azure Portal
 
 Virtuele Azure-machines (VM's) kunnen gemaakt worden via Azure Portal. De Azure Portal is een gebruikers interface op basis van een browser voor het maken van Azure-resources. In deze Quick start ziet u hoe u de Azure Portal gebruikt voor het implementeren van een virtuele Linux-machine (VM) met Ubuntu 18,04 LTS. Wanner u uw virtuele machine in actie wilt zien, voert u ook SSH voor de virtuele machine uit en installeert u de NGINX-webserver.
 
@@ -35,13 +34,13 @@ U hebt een SSH-sleutelpaar nodig om deze snelstart te volgen. Als u al een SSH-s
 Open een bash-shell en gebruik [ssh-keygen](https://www.ssh.com/ssh/keygen/) om een SSH-sleutelpaar te maken. Als u geen een bash-shell op uw lokale computer hebt, kunt u de [Azure Cloud Shell](https://shell.azure.com/bash) gebruiken.
 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Selecteer in het menu boven aan de pagina het `>_` pictogram om Cloud shell te openen.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Selecteer in het menu boven aan de pagina het `>_` pictogram om Cloud Shell te openen.
 1. Zorg ervoor dat de Cloud shell **bash** in de linkerbovenhoek aangeeft. Als het Power shell is, gebruikt u de vervolg keuzelijst om **bash** te selecteren en selecteert u **bevestigen** dat u wilt overschakelen naar de bash-shell.
 1. Typ `ssh-keygen -t rsa -b 2048` om de SSH-sleutel te maken. 
 1. U wordt gevraagd een bestand op te geven waarin het sleutel paar moet worden opgeslagen. Druk op **Enter** om op te slaan op de standaard locatie, die wordt weer gegeven tussen vier Kante haken. 
 1. U wordt gevraagd om een wachtwoordzin in te voeren. U kunt een wachtwoordzin voor uw SSH-sleutel typen of op **Enter** drukken om zonder een wachtwoordzin door te gaan.
-1. Met `ssh-keygen` de opdracht worden open bare en persoonlijke sleutels gegenereerd met de `id_rsa` standaard naam `~/.ssh directory`van in de. Met de opdracht wordt het volledige pad naar de openbare sleutel geretourneerd. Gebruik het pad naar de open bare sleutel om de inhoud `cat` ervan weer te geven door te typen. `cat ~/.ssh/id_rsa.pub`
+1. Met de `ssh-keygen` opdracht worden open bare en persoonlijke sleutels gegenereerd met de standaard naam van `id_rsa` in de `~/.ssh directory`. Met de opdracht wordt het volledige pad naar de openbare sleutel geretourneerd. Gebruik het pad naar de open bare sleutel om de inhoud ervan weer te geven met `cat` door `cat ~/.ssh/id_rsa.pub`te typen.
 1. Kopieer de uitvoer van deze opdracht en sla deze ergens op om deze later in dit artikel te gebruiken. Dit is uw open bare sleutel en u hebt deze nodig bij het configureren van uw beheerders account om u aan te melden bij uw VM.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -50,15 +49,14 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com) als u dat nog niet he
 
 ## <a name="create-virtual-machine"></a>Virtuele machine maken
 
-1. Kies in de linkerbovenhoek van de Azure-portal **Een resource maken**.
-
-1. Selecteer in **populaire** **Ubuntu Server 18,04 LTS**.
-
-1. Zorg ervoor dat op het tabblad **Basis** onder **Projectgegevens** het juiste abonnement is geselecteerd, en kies **Nieuwe maken** onder **Resourcegroep**. Typ *myResourceGroup* voor de naam van de resource groep en kies vervolgens **OK**. 
+1. Typ **virtuele machines** in de zoek opdracht.
+1. Selecteer onder **Services**de optie **virtuele machines**.
+1. Selecteer op de pagina **virtuele machines** de optie **toevoegen**. De pagina **een virtuele machine maken** wordt geopend.
+1. Zorg ervoor dat op het tabblad **Basics** onder **Projectgegevens** het juiste abonnement is geselecteerd, en kies **Nieuwe maken** om een nieuwe resourcegroep te maken. Typ *myResourceGroup* voor de naam. *. 
 
     ![Een nieuwe resourcegroep maken voor uw VM](./media/quick-create-portal/project-details.png)
 
-1. Typ onder **Exemplaardetails** *myVM* als **Naam van de virtuele machine** en kies *US - oost* als de **Regio**. Houd voor de rest de standaardinstellingen aan.
+1. Typ *myVM* voor de naam van de **virtuele machine**onder Details van het **exemplaar**, kies *VS-oost* voor uw **regio**en kies *Ubuntu 18,04 LTS* voor uw **installatie kopie**. Houd voor de rest de standaardinstellingen aan.
 
     ![Sectie Exemplaardetails](./media/quick-create-portal/instance-details.png)
 
@@ -91,7 +89,7 @@ Maak een SSH-verbinding met de VM.
     ssh azureuser@10.111.12.123
     ```
 
-3. Met dezelfde bash-shell die u hebt gebruikt om uw SSH-sleutel paar te maken (u kunt de Cloud shell `>_` opnieuw openen door opnieuw https://shell.azure.com/bash) te selecteren of naar te gaan, plakt u de opdracht SSH-verbinding in de shell om een SSH-sessie te maken.
+3. Met dezelfde bash-shell die u hebt gebruikt om uw SSH-sleutel paar te maken (u kunt de Cloud Shell opnieuw openen door `>_` opnieuw te selecteren of naar https://shell.azure.com/bash)te gaan, plakt u de opdracht SSH-verbinding in de shell om een SSH-sessie te maken.
 
 ## <a name="install-web-server"></a>Webserver installeren
 

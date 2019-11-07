@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: De berekening onderbreken en hervatten in Azure SQL Data Warehouse-Power shell | Microsoft Docs'
+title: 'Quick Start: Compute & Resume-Power shell '
 description: Gebruik Power shell om de reken kracht in Azure SQL Data Warehouse te onderbreken om kosten op te slaan. Hervat de compute wanneer u klaar bent om het Data Warehouse te gebruiken.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,14 +10,15 @@ ms.subservice: manage
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: da9c3d42919bba6ce04fc54bafc2fb5d245379f5
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 2ad83e51a11e08373f2132e861ec1c8f3ac20458
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306091"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686012"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Quickstart: De compute in Azure SQL Data Warehouse onderbreken en hervatten met Azure PowerShell
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Quick Start: de berekening onderbreken en hervatten in Azure SQL Data Warehouse met Azure PowerShell
 
 Gebruik Power shell om de reken kracht in Azure SQL Data Warehouse te onderbreken om kosten op te slaan. [Hervat de compute](sql-data-warehouse-manage-compute-overview.md) wanneer u klaar bent om het Data Warehouse te gebruiken.
 
@@ -55,7 +56,7 @@ Zoek de databasenaam, de servernaam en de resourcegroep op voor het datawarehous
 
 Volg deze stappen om de locatiegegevens voor uw datawarehouse op te zoeken.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Klik op de linkerpagina in Azure Portal op **SQL-databases**.
 3. Selecteer **mySampleDataWarehouse** op de pagina **SQL-databases**. De datawarehouse wordt geopend.
 

@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 246bd7935bf5aaaae569e589e4efa0ea7d39c90a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d5ac23da7b4460211100f1140c24f6ed28ab3e39
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821156"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584350"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Snelstart: maak uw eerste geautomatiseerde werkstroom met Azure Logic Apps - Azure-portal
 
@@ -24,7 +24,7 @@ In deze snelstart leert u uw eerste geautomatiseerde werkstroom bouwen met [Azur
 
 ![Voor beeld van een logische app-werk stroom op hoog niveau](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Voor het uitvoeren van deze quickstart hebt u een e-mailaccount nodig van een provider die wordt ondersteund door Logic Apps, zoals Outlook van Office 365, Outlook.com en Gmail. Voor andere providers [kunt u hier de lijst met connectors bekijken](https://docs.microsoft.com/connectors/). Deze logische app maakt gebruik van een Office 365 Outlook-account. Als u een ander e-mailaccount gebruikt, zijn de algemene stappen hetzelfde, maar ziet de gebruikersinterface er misschien iets anders uit.
+Als u deze Snelstartgids wilt volgen, hebt u een e-mail account nodig van een provider die wordt ondersteund door Azure Logic Apps, zoals Office 365 Outlook, Outlook.com of Gmail. Voor andere providers [kunt u hier de lijst met connectors bekijken](https://docs.microsoft.com/connectors/). Deze logische app maakt gebruik van een Office 365 Outlook-account. Als u een ander e-mail account gebruikt, zijn de algemene stappen hetzelfde, maar uw gebruikers interface kan enigszins verschillen.
 
 Als u nog geen abonnement op Azure hebt, [meld u dan nu aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
@@ -42,20 +42,20 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
 
    ![Nieuwe logische app toevoegen](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
-1. Onder **Logische app maken** geeft u informatie op over uw logische app zoals hier wordt weergegeven. Wanneer u klaar bent, selecteert u **maken**.
+1. Geef in het deel venster logische app Details op over uw logische app, zoals hieronder wordt weer gegeven. Wanneer u klaar bent, selecteert u **maken**.
 
    ![Geef details op voor de nieuwe logische app](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **Naam** | <*Logic-app-name*> | De naam van de logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt ' mijn-eerste logica-app ' gebruikt. |
+   | **Naam** | <*Logic-app-naam*> | De naam van de logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) mag bevatten. In dit voor beeld wordt ' mijn-eerste logica-app ' gebruikt. |
    | **Abonnement** | <*Azure-subscription-name*> | De naam van uw Azure-abonnement |
-   | **Resourcegroep** | <*Azure-resource-group-name* > | De naam voor de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) die wordt gebruikt om verwante resources te organiseren. In dit voor beeld wordt ' My-First-LA-RG ' gebruikt. |
+   | **Resourcegroep** | <*Azure-resource-group-name*> | De naam voor de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) die wordt gebruikt om verwante resources te organiseren. In dit voor beeld wordt ' My-First-LA-RG ' gebruikt. |
    | **Locatie** | <*Azure-regio*> | De regio waar u de gegevens van uw logische app opslaat. In dit voor beeld wordt ' West US ' gebruikt. |
    | **Log Analytics** | Uit | Behoud de instelling **Uit** voor het vastleggen van diagnostische gegevens. |
    ||||
 
-1. Nadat Azure uw app heeft geïmplementeerd, selecteert u op de Azure-werk balk **meldingen**  > **gaat u naar de resource** voor uw geïmplementeerde logische app.
+1. Nadat Azure uw app heeft geïmplementeerd, selecteert u op de Azure-werk balk **meldingen** > **gaat u naar de resource** voor uw geïmplementeerde logische app.
 
    ![Ga naar de zojuist gemaakte logische app-resource](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
@@ -65,15 +65,15 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
 
    ![Lege sjabloon voor logische app selecteren](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
-Vervolgens voegt u een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) toe die wordt geactiveerd zodra er een nieuw RSS-feeditem wordt weergegeven. Elke logische app moet beginnen met een trigger, die wordt geactiveerd wanneer er een bepaalde gebeurtenis plaatsvindt of wanneer er aan een bepaalde voorwaarde is voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-engine een exemplaar van een logische app dat wordt gestart en de werkstroom uitvoert.
+Vervolgens voegt u een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) toe die wordt geactiveerd zodra er een nieuw RSS-feeditem wordt weergegeven. Elke logische app moet beginnen met een trigger, die wordt geactiveerd wanneer er een bepaalde gebeurtenis plaatsvindt of wanneer er aan een bepaalde voorwaarde is voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Azure Logic Apps-Engine een exemplaar van een logische app waarmee de werk stroom wordt gestart en uitgevoerd.
 
 <a name="add-rss-trigger"></a>
 
 ## <a name="check-rss-feed-with-a-trigger"></a>RSS-feed controleren met een trigger
 
-1. Selecteer in de ontwerp functie voor logische apps, onder het zoekvak, de optie **alle**.
+1. Selecteer in de **ontwerp functie voor logische apps**, onder het zoekvak, de optie **alle**.
 
-1. Typ `rss` in het zoekvak. Selecteer in de lijst triggers deze trigger: **Wanneer een item in de feed wordt gepubliceerd**
+1. Typ `rss` in het zoekvak. Selecteer in de lijst triggers deze trigger: **Wanneer een item in de feed wordt gepubliceerd**.
 
    ![De trigger ' wanneer een feed-item wordt gepubliceerd ' selecteren](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
@@ -100,7 +100,7 @@ Uw logische app is nu live, maar kan alleen de RSS-feed controleren. Daarom gaat
 
 ## <a name="send-email-with-an-action"></a>E-mail versturen bij een actie
 
-Voeg nu een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) waardoor een e-mail wordt verzonden zodra een nieuw item in de RSS-feed wordt weergegeven.
+Voeg nu een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) toe waarmee een e-mail bericht wordt verzonden wanneer een nieuw item in de RSS-feed wordt weer gegeven.
 
 1. Selecteer **nieuwe stap**onder de trigger **Wanneer een feed-item wordt gepubliceerd** .
 
@@ -121,7 +121,7 @@ Voeg nu een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) waa
 
 1. In de actie **Een e-mail verzenden** geeft u de gegevens op die u in het e-mailbericht wilt opnemen.
 
-   1. Voer het e-mailadres van de ontvanger in het vak **Aan** in. Voor testdoeleinden kunt u uw eigen e-mailadres gebruiken.
+   1. Voer het e-mailadres van de ontvanger in het vak **Aan** in. Voor test doeleinden kunt u uw e-mail adres gebruiken.
 
       Negeer voorlopig de lijst **Dynamische inhoud toevoegen** die wordt weergegeven. Wanneer u in bepaalde invoervakken klikt, wordt deze lijst geopend met alle beschikbare parameters uit de vorige stap die u als invoer in uw werkstroom kunt opnemen.
 
@@ -162,7 +162,7 @@ Dit is een voorbeeld van een e-mailbericht dat deze logische app verzendt.
 
 ![Voorbeeld bericht verzonden wanneer het nieuwe RSS-feed-item wordt weer gegeven](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
-Technisch gezien wordt, als bij controle van de RSS-feed nieuwe items worden aangetroffen, de trigger geactiveerd en maakt de Logic Apps-engine een exemplaar van de werkstroom van uw logische app die de acties in de werkstroom uitvoert. Als de trigger geen nieuwe items vindt, wordt deze niet geactiveerd en wordt het instantiëren van de werkstroom overgeslagen.
+Technisch gezien, wanneer de trigger de RSS-feed controleert en nieuwe items vindt, wordt de trigger geactiveerd en maakt de Azure Logic Apps-Engine een exemplaar van de werk stroom van uw logische app waarmee de acties in de werk stroom worden uitgevoerd. Als de trigger geen nieuwe items vindt, wordt deze niet geactiveerd en wordt het instantiëren van de werkstroom overgeslagen.
 
 Gefeliciteerd, u hebt nu uw eerste logische app gemaakt en uitgevoerd met de Azure Portal.
 

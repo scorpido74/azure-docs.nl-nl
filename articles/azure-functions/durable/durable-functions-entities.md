@@ -7,22 +7,22 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: overview
-ms.date: 08/31/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e3a83730e47686e9d4757f057d2e8da4629fdd7a
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 1a9ad16d6ecd7e75848ca1ea56e6238ee3b29c2d
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312133"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614953"
 ---
-# <a name="entity-functions-preview"></a>Entiteit functies (preview-versie)
+# <a name="entity-functions"></a>Entiteit functies
 
 Met entiteits functies worden bewerkingen gedefinieerd voor het lezen en bijwerken van kleine stukjes status, ook wel *duurzame entiteiten*genoemd. Net als Orchestrator functions zijn entiteits functies functies met een speciaal trigger type, *entiteits trigger*. In tegens telling tot Orchestrator-functies, beheren entiteits functies de status van een entiteit expliciet, in plaats van impliciet de status te bepalen via de controle stroom.
 Entiteiten bieden een manier om toepassingen te schalen door het werk te verdelen over een groot aantal entiteiten, elk met een zeer grote status.
 
 > [!NOTE]
-> Entiteits functies en gerelateerde functionaliteit zijn alleen beschikbaar in Durable Functions 2,0 en hoger. Entiteits functies zijn momenteel beschikbaar als open bare preview.
+> Entiteits functies en gerelateerde functionaliteit zijn alleen beschikbaar in Durable Functions 2,0 en hoger.
 
 ## <a name="general-concepts"></a>Algemene concepten
 
@@ -58,9 +58,9 @@ Een **syntaxis op basis van een functie** waarbij entiteiten worden weer gegeven
 
 Een **op klassen gebaseerde syntaxis** waarbij entiteiten en bewerkingen worden vertegenwoordigd door klassen en methoden. Deze syntaxis produceert eenvoudiger lees bare code en maakt het mogelijk om bewerkingen op een type veilige manier te activeren. De op klassen gebaseerde syntaxis is slechts een smalle laag bovenop de syntaxis op basis van functies, zodat beide varianten door elkaar kunnen worden gebruikt in dezelfde toepassing.
 
-### <a name="example-function-based-syntax"></a>Voor beeld: syntaxis op basis van een functie
+### <a name="example-function-based-syntax---c"></a>Voor beeld: syntaxis op basis van een functie-C#
 
-De volgende code is een voor beeld van een eenvoudige *teller* -entiteit die is geïmplementeerd als een duurzame functie. Deze functie definieert drie bewerkingen, `add`, `reset` en `get`, die allemaal werken met een gehele status.
+De volgende code is een voor beeld van een eenvoudige *teller* -entiteit die is geïmplementeerd als een duurzame functie. Met deze functie worden drie bewerkingen, `add`, `reset`en `get`gedefinieerd, die allemaal werken met een gehele status.
 
 ```csharp
 [FunctionName("Counter")]
@@ -83,9 +83,9 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 Zie [syntaxis op basis van functies](durable-functions-dotnet-entities.md#function-based-syntax)voor meer informatie over de syntaxis van de functie en hoe u deze kunt gebruiken.
 
-### <a name="example-class-based-syntax"></a>Voor beeld: op klasse gebaseerde syntaxis
+### <a name="example-class-based-syntax---c"></a>Voor beeld: op klasse gebaseerde syntaxis-C#
 
-Het volgende voor beeld is een equivalente implementatie van de entiteit @no__t 0 met behulp van klassen en methoden.
+Het volgende voor beeld is een equivalente implementatie van de `Counter` entiteit met klassen en methoden.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -109,6 +109,45 @@ public class Counter
 De status van deze entiteit is een object van het type `Counter`, dat een veld bevat waarin de huidige waarde van de teller wordt opgeslagen. Als u dit object in de opslag ruimte wilt behouden, wordt het geserialiseerd en gedeserialiseerd door de [JSON.net](https://www.newtonsoft.com/json) -bibliotheek. 
 
 Zie [entity branches definiëren](durable-functions-dotnet-entities.md#defining-entity-classes)voor meer informatie over de op klassen gebaseerde syntaxis en hoe u deze kunt gebruiken.
+
+### <a name="example-javascript-entity"></a>Voor beeld: Java script-entiteit
+
+Duurzame entiteiten zijn beschikbaar in Java script vanaf versie **1.3.0** van het NPM-pakket van `durable-functions`. De volgende code is de entiteit *teller* die is geïmplementeerd als een duurzame functie die is geschreven in Java script.
+
+**function. json**
+```json
+{
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+**index. js**
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
 
 ## <a name="accessing-entities"></a>Toegang tot entiteiten
 
@@ -145,6 +184,16 @@ public static Task Run(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    await context.df.signalEntity(entityId, "add", 1);
+};
+```
+
 De term *Signal* geeft aan dat de aanroep van de entiteits-API in één richting en asynchroon is. Het is niet mogelijk dat een *client functie* weet wanneer de entiteit de bewerking heeft verwerkt. De client functie kan ook geen resultaat waarden of uitzonde ringen observeren. 
 
 ### <a name="example-client-reads-an-entity-state"></a>Voor beeld: client leest de status van een entiteit
@@ -163,6 +212,16 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    return context.df.readEntityState(entityId);
+};
+```
+
 Entiteits status query's worden verzonden naar het duurzame opslag archief en retour neren de laatst *persistente* status van de entiteit. Deze status is altijd een ' toegezegde ' status, dat wil zeggen dat het nooit een tijdelijke tussenliggende status is die wordt aangenomen in het midden van het uitvoeren van een bewerking. Het is echter mogelijk dat deze status is verlopen ten opzichte van de status in het geheugen van de entiteit. Alleen indelingen kunnen de in-memory status van een entiteit lezen, zoals wordt beschreven in de volgende sectie.
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>Voor beeld: Orchestration signalen en aanroepen van een entiteit
@@ -176,7 +235,7 @@ public static async Task Run(
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
 
-   // Two-way call to the entity which returns a value - awaits the response
+    // Two-way call to the entity which returns a value - awaits the response
     int currentValue = await context.CallEntityAsync<int>(entityId, "Get");
     if (currentValue < 10)
     {
@@ -184,6 +243,21 @@ public static async Task Run(
         context.SignalEntity(entityId, "Add", 1);
     }
 }
+```
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    const entityId = new df.EntityId("Counter", "myCounter");
+
+    // Two-way call to the entity which returns a value - awaits the response
+    currentValue = yield context.df.callEntity(entityId, "get");
+    if (currentValue < 10) {
+        // One-way signal to the entity which updates the value - does not await a response
+        yield context.df.signalEntity(entityId, "add", 1);
+    }
+});
 ```
 
 Alleen indelingen kunnen het aanroepen van entiteiten en het verkrijgen van een reactie zijn, wat een retour waarde of een uitzonde ring kan zijn. Met client functies die gebruikmaken van de [client binding](durable-functions-bindings.md#entity-client) kunnen alleen entiteiten worden *gesignaleerd* .
@@ -198,87 +272,38 @@ We kunnen bijvoorbeeld het bovenstaande voor beeld van de meter entiteit wijzige
 
 ```csharp
    case "add":
+        var currentValue = ctx.GetState<int>();
         var amount = ctx.GetInput<int>();
         if (currentValue < 100 && currentValue + amount >= 100)
         {
             ctx.SignalEntity(new EntityId("MonitorEntity", ""), "milestone-reached", ctx.EntityKey);
         }
-        currentValue += amount;
+
+        ctx.SetState(currentValue + amount);
         break;
 ```
 
-Het volgende code fragment laat zien hoe u de geïnjecteerde service kunt opnemen in uw entiteits klasse.
-
-```csharp
-public class HttpEntity
-{
-    private readonly HttpClient client;
-
-    public HttpEntity(IHttpClientFactory factory)
-    {
-        this.client = factory.CreateClient();
-    }
-
-    public async Task<int> GetAsync(string url)
-    {
-        using (var response = await this.client.GetAsync(url))
-        {
-            return (int)response.StatusCode;
+```javascript
+    case "add":
+        const amount = context.df.getInput();
+        if (currentValue < 100 && currentValue + amount >= 100) {
+            const entityId = new df.EntityId("MonitorEntity", "");
+            context.df.signalEntity(entityId, "milestone-reached", context.df.instanceId);
         }
-    }
-
-    // The function entry point must be declared static
-    [FunctionName(nameof(HttpEntity))]
-    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
-        => ctx.DispatchAsync<HttpEntity>();
-}
+        context.df.setState(currentValue + amount);
+        break;
 ```
-
-> [!NOTE]
-> In tegens telling tot het gebruik van constructor-injectie in reguliere .NET-Azure Functions, *moet* de toegangs punt methode functions voor op klassen gebaseerde entiteiten worden gedeclareerd `static`. Het declareren van een niet-statisch functie-ingangs punt kan conflicten veroorzaken tussen de normale Azure Functions voor object initialisatie en de initialisatie functie voor het object van duurzame entiteiten.
-
-### <a name="bindings-in-entity-classes-net"></a>Bindingen in entity classes (.NET)
-
-In tegens telling tot reguliere functies hebben entity class-methoden geen directe toegang tot invoer-en uitvoer bindingen. In plaats daarvan moeten bindings gegevens worden vastgelegd in de declaratie van de invoer punt functie en vervolgens worden door gegeven aan de methode `DispatchAsync<T>`. Objecten die worden door gegeven aan `DispatchAsync<T>` worden automatisch door gegeven aan de constructor van de entiteits klasse als een argument.
-
-In het volgende voor beeld ziet u hoe een `CloudBlobContainer`-verwijzing van de [BLOB-invoer binding](../functions-bindings-storage-blob.md#input) beschikbaar kan worden gemaakt voor een entiteit op basis van een klasse.
-
-```csharp
-public class BlobBackedEntity
-{
-    private readonly CloudBlobContainer container;
-
-    public BlobBackedEntity(CloudBlobContainer container)
-    {
-        this.container = container;
-    }
-
-    // ... entity methods can use this.container in their implementations ...
-    
-    [FunctionName(nameof(BlobBackedEntity))]
-    public static Task Run(
-        [EntityTrigger] IDurableEntityContext context,
-        [Blob("my-container", FileAccess.Read)] CloudBlobContainer container)
-    {
-        // passing the binding object as a parameter makes it available to the
-        // entity class constructor
-        return context.DispatchAsync<BlobBackedEntity>(container);
-    }
-}
-```
-
-Zie de documentatie voor [Azure functions triggers en bindingen](../functions-triggers-bindings.md) voor meer informatie over bindingen in azure functions.
 
 ## <a name="entity-coordination"></a>Entiteits coördinatie
 
 Het kan voor komen dat u bewerkingen tussen meerdere entiteiten moet coördineren. In een bank toepassing kunt u bijvoorbeeld entiteiten hebben die individuele Bank rekeningen vertegenwoordigen. Wanneer u fondsen van het ene naar het andere account overbrengt, moet u ervoor zorgen dat het _bron_ account voldoende fondsen heeft en dat de updates van de _bron_ -en _doel_ accounts op een transactioneel consistente manier worden uitgevoerd.
 
-### <a name="example-transfer-funds"></a>Voor beeld: fondsen overdragen
+### <a name="example-transfer-funds-c"></a>Voor beeld: overdracht fondsenC#()
 
-Met de volgende voorbeeld code worden fondsen tussen twee _account_ entiteiten overgedragen met behulp van een Orchestrator-functie. Voor het coördineren van entiteits updates is het gebruik van de methode `LockAsync` vereist voor het maken van een _kritieke sectie_ in de indeling:
+Met de volgende voorbeeld code worden fondsen tussen twee _account_ entiteiten overgedragen met behulp van een Orchestrator-functie. Voor het coördineren van entiteits updates moet u de `LockAsync` methode gebruiken om een _kritieke sectie_ in de indeling te maken:
 
 > [!NOTE]
-> Voor het gemak wordt in dit voor beeld de entiteit `Counter` die eerder is gedefinieerd, opnieuw gebruikt. In een echte toepassing is het echter beter om in plaats daarvan een meer gedetailleerde `BankAccount`-entiteit te definiëren.
+> Voor het gemak wordt in dit voor beeld de eerder gedefinieerde `Counter` entiteit opnieuw gebruikt. In een echte toepassing is het echter beter om in plaats daarvan een meer gedetailleerde `BankAccount` entiteit te definiëren.
 
 ```csharp
 // This is a method called by an orchestrator function
@@ -320,21 +345,21 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-In .NET, `LockAsync` retourneert een `IDisposable` die de kritieke sectie afbreekt wanneer deze wordt verwijderd. Dit resultaat `IDisposable` kan worden gebruikt in combi natie met een `using`-blok om een syntactische weer gave van de sectie kritiek te krijgen.
+In .NET retourneert `LockAsync` een `IDisposable` die de kritieke sectie afbreekt wanneer deze wordt verwijderd. Dit `IDisposable` resultaat kan worden gebruikt in combi natie met een `using` blok om een syntactische weer gave van de sectie kritiek te krijgen.
 
-In het vorige voor beeld heeft een Orchestrator-functie fondsen van een _bron_ entiteit overgezet naar een _doel_ entiteit. De `LockAsync`-methode heeft zowel de _bron_ -als de _doel_ account entiteit vergrendeld. Deze vergren deling heeft gezorgd dat geen enkele andere client de status van een van de accounts kan opvragen of wijzigen, totdat de indelings logica de _sectie kritiek_ heeft verlaten aan het einde van de `using`-instructie. Zo voor komt u de mogelijkheid om te scha assen van het _bron_ account.
+In het vorige voor beeld heeft een Orchestrator-functie fondsen van een _bron_ entiteit overgezet naar een _doel_ entiteit. De `LockAsync` methode heeft de _bron_ -en _doel_ account-entiteiten vergrendeld. Deze vergren deling heeft gezorgd dat een andere client de status van een van de accounts niet kan opvragen of wijzigen, totdat de indelings logica het _kritieke gedeelte_ aan het einde van de `using`-instructie heeft verlaten. Dit gedrag voor komt dat de mogelijkheid van _overkomsten_ van het bron account kan worden verwisseld.
 
 > [!NOTE] 
 > Wanneer een indeling wordt beëindigd (normaal of met een fout), worden alle kritieke secties die worden uitgevoerd impliciet beëindigd en worden alle vergren delingen vrijgegeven.
 
 ### <a name="critical-section-behavior"></a>Gedrag van kritieke secties
 
-Met de methode `LockAsync` wordt een _kritieke sectie_ in een indeling gemaakt. Deze _essentiële secties_ kunnen voor komen dat andere indelingen overlappende wijzigingen aanbrengen in een opgegeven set entiteiten. Intern verzendt de `LockAsync`-API ' Lock '-bewerkingen naar de entiteiten en worden geretourneerd wanneer het antwoord bericht ' lock verworven ' van elk van deze entiteiten wordt ontvangen. Zowel *vergren delen* als *ontgrendelen* zijn ingebouwde bewerkingen die door alle entiteiten worden ondersteund.
+Met de methode `LockAsync` maakt u een _kritieke sectie_ in een indeling. Deze _essentiële secties_ kunnen voor komen dat andere indelingen overlappende wijzigingen aanbrengen in een opgegeven set entiteiten. Intern verzendt de `LockAsync`-API ' Lock '-bewerkingen naar de entiteiten en worden geretourneerd wanneer het antwoord bericht ' lock verworven ' van elk van deze entiteiten wordt ontvangen. Zowel *vergren delen* als *ontgrendelen* zijn ingebouwde bewerkingen die door alle entiteiten worden ondersteund.
 
 Er zijn geen bewerkingen van andere clients toegestaan voor een entiteit terwijl deze een vergrendelde status heeft. Dit gedrag zorgt ervoor dat er slechts één Orchestrator-exemplaar tegelijk een entiteit kan vergren delen. Als een aanroeper probeert een bewerking aan te roepen voor een entiteit terwijl deze is vergrendeld door een indeling, wordt die bewerking geplaatst in een *wachtrij voor bewerkingen in behandeling*. Er worden geen bewerkingen uitgevoerd totdat de vergren deling is vrijgegeven.
 
 > [!NOTE] 
-> Dit wijkt enigszins af van synchronisatie primitieven die worden gebruikt in de meeste programmeer talen, zoals de instructie @no__t- C#0 in. In C#moet de instructie @no__t 1 bijvoorbeeld worden gebruikt door alle threads om te zorgen voor de juiste synchonization in meerdere threads. Voor entiteiten is het echter niet vereist dat alle bellers expliciet een entiteit _vergren delen_ . Als een beller een entiteit vergrendelt, worden alle andere bewerkingen op die entiteit geblokkeerd en achter deze vergren deling in de wachtrij geplaatst.
+> Dit wijkt enigszins af van synchronisatie primitieven die worden gebruikt in de meeste programmeer talen, zoals de `lock` C#-instructie in. In C#moet bijvoorbeeld de `lock`-instructie door alle threads worden gebruikt om de juiste synchonization voor meerdere threads te garanderen. Voor entiteiten is het echter niet vereist dat alle bellers expliciet een entiteit _vergren delen_ . Als een beller een entiteit vergrendelt, worden alle andere bewerkingen op die entiteit geblokkeerd en achter deze vergren deling in de wachtrij geplaatst.
 
 Vergren delingen op entiteiten zijn duurzaam, zodat ze behouden blijven, zelfs als het uitvoeren van het proces wordt gerecycled. Vergren delingen worden intern persistent gemaakt als onderdeel van de duurzame status van een entiteit.
 
@@ -350,7 +375,7 @@ In tegens telling tot vergrendelings primitieve op laag niveau in de meeste prog
 * Kritieke secties kunnen niet dezelfde entiteit aanroepen met meerdere parallelle aanroepen.
 * Met kritieke secties kunnen alleen entiteiten worden gesignaleerd die niet zijn vergrendeld.
 
-Eventuele schendingen van deze regels veroorzaken een runtime-fout (zoals een `LockingRulesViolationException` in .NET), die een bericht bevat waarin wordt uitgelegd welke regel is verbroken.
+Eventuele schendingen van deze regels veroorzaken een runtime-fout (zoals een `LockingRulesViolationException` in .NET) met een bericht waarin wordt uitgelegd welke regel is verbroken.
 
 ## <a name="comparison-with-virtual-actors"></a>Vergelijking met virtuele Actors
 

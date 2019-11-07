@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een werk stroom uitvoeren'
+title: 'Snelstartgids: een werk stroom uitvoeren-Microsoft Genomics'
 description: In de snelstartgids wordt uitgelegd hoe u invoergegevens kunt laden in Azure Blob Storage en een werkstroom kunt uitvoeren via de service Microsoft Genomics.
 services: genomics
 author: grhuynh
@@ -8,14 +8,14 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.openlocfilehash: e7c90cc0ce85f2a90cc2ddc2cd086fd2626f4d96
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 5a84c5a8af4d11f3ff2a03c228475154f98b8744
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248528"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606123"
 ---
-# <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Snelstart: een werkstroom uitvoeren via de Microsoft Genomics-service
+# <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Snelstartgids: een werkstroom uitvoeren via de service Microsoft Genomics
 
 In deze snelstartgids wordt uitgelegd hoe u invoergegevens kunt laden in Azure Blob Storage en een werkstroom kunt uitvoeren via de service Microsoft Genomics. Microsoft Genomics is een schaalbare, veilige service voor secundaire analyse waarbij genomen snel kunnen worden verwerkt. Hierbij wordt begonnen met onbewerkte leesbewerkingen en worden vervolgens uitgelijnde leesbewerkingen en variant-aanroepen geproduceerd. 
 
@@ -30,7 +30,7 @@ Zie [Wat is Microsoft Genomics?](overview-what-is-genomics.md) voor meer informa
 
 Ga voor het maken van een Microsoft Genomics-account naar [Azure Portal](https://portal.azure.com/#create/Microsoft.Genomics). Als u nog geen Azure-abonnement hebt, maakt u er een voordat u een Microsoft Genomics-account maakt. 
 
-![Microsoft Genomics in Azure Portal](./media/quickstart-run-genomics-workflow-portal/genomics-create-blade.png "Microsoft Genomics in Azure Portal")
+![Microsoft Genomics op Azure Portal](./media/quickstart-run-genomics-workflow-portal/genomics-create-blade.png "Microsoft Genomics op Azure Portal")
 
 
 
@@ -47,7 +47,7 @@ Configureer uw Genomics-account met de volgende informatie, zoals weergegeven in
 
 
 U kunt in de bovenste menubalk op Meldingen klikken om het implementatieproces te controleren.
-![Microsoft Genomics-meldingen](./media/quickstart-run-genomics-workflow-portal/genomics-notifications-box.png "Microsoft Genomics-meldingen")
+![Microsoft Genomics meldingen](./media/quickstart-run-genomics-workflow-portal/genomics-notifications-box.png "Microsoft Genomics-meldingen ")
 
 
 
@@ -90,13 +90,13 @@ U kunt deze pakketten installeren met `pip`, `easy_install` of via de standaard 
 Download het configuratiebestand in uw Genomics-account om de client voor Microsoft Genomics te testen. Navigeer naar uw Genomics-account door links bovenin op **Alle services** te klikken, te filteren en Genomics-accounts te selecteren.
 
 
-![In Azure Portal filteren op Microsoft Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "In Azure Portal filteren op Microsoft Genomics")
+![Filter voor Microsoft Genomics op Azure Portal](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "Filter voor Microsoft Genomics op Azure Portal")
 
 
 
 Selecteer het Genomics-account dat u zojuist hebt gemaakt, ga naar **Toegangssleutels** en download het configuratiebestand.
 
-![Configuratiebestand downloaden vanaf Microsoft Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-mygenomicsaccount-box.png "Configuratiebestand downloaden vanaf Microsoft Genomics")
+![Down load het configuratie bestand van Microsoft Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-mygenomicsaccount-box.png "Down load het configuratie bestand van Microsoft Genomics")
 
 
 Test of de Python-client voor Microsoft Genomics werkt met de volgende opdracht
@@ -110,7 +110,7 @@ msgen list -f “<full path where you saved the config file>”
 De service Microsoft Genomics verwacht dat invoeren worden opgeslagen als blok-blobs in een Azure-opslagaccount. Ook schrijft de service uitvoerbestanden als blok-blobs naar een door de gebruiker opgegeven container in een Azure-opslagaccount. De invoeren en uitvoeren kunnen zich in verschillende opslagaccounts bevinden.
 Als u uw gegevens al in een Azure-opslagaccount hebt, hoeft u alleen ervoor te zorgen dat deze zich op dezelfde locatie bevinden als uw Genomics-account. Anders worden er uitvoerkosten gemaakt wanneer de Genomics-service wordt uitgevoerd. Als u nog geen Microsoft Azure Storage-account hebt, dient u er een te maken en uw gegevens te uploaden. U vindt [hier](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) meer informatie over Azure Storage-accounts, met inbegrip van wat een opslagaccount is en welke services het biedt. Ga naar [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM ) om een Microsoft Azure Storage-account te maken.  
 
-![Blade maken opslag](./media/quickstart-run-genomics-workflow-portal/genomics-storage-create-blade.png "Blade maken opslag")
+![Blade opslag maken](./media/quickstart-run-genomics-workflow-portal/genomics-storage-create-blade.png "Blade opslag maken")
 
 Configureer uw Storage-account met de volgende informatie, zoals weergegeven in de vorige afbeelding. Gebruik de meeste van de standaardopties voor een opslagaccount en geef alleen op dat het account blob-opslag is en niet algemeen. Blob-opslag kan twee tot vijf keer sneller zijn voor downloads en uploads.  Het standaard implementatie model, Azure Resource Manager, wordt aanbevolen.  
 
@@ -121,8 +121,8 @@ Configureer uw Storage-account met de volgende informatie, zoals weergegeven in 
  |Resourcegroep       | MyResourceGroup       |  U kunt dezelfde resourcegroep als voor uw Genomics-account gebruiken. Zie [Naamgevingsregels](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) voor geldige resourcegroepnamen. |
  |Naam van opslagaccount         | MyStorageAccount     |Kies een unieke account-id. Zie [Naamgevingsregels](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) voor geldige namen. |
  |Locatie                  | US - west 2                  | Gebruik dezelfde locatie als de locatie van uw Genomics-account om uitvoerkosten te verminderen en latentie te beperken.  | 
- |Prestaties                  | Standard                   | Standard is de standaardinstelling. Zie [Kennismaking met Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) voor meer informatie over standaard- en premium-opslagaccounts.    |
- |Soort account       | Blob-opslag       |  Blob-opslag kan twee tot vijf keer sneller zijn dan algemeen gebruik voor downloads en uploads. |
+ |Prestaties                  | Standard                   | Standard is de standaardinstelling. Zie [Kennismaking met Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) voor meer informatie over standaard en premium opslagaccounts.    |
+ |Soort account       | Blob Storage       |  Blob-opslag kan twee tot vijf keer sneller zijn dan algemeen gebruik voor downloads en uploads. |
  |Replicatie                  | Lokaal redundante opslag                  | Lokaal redundante opslag repliceert uw gegevens in het datacenter in de regio waarin u uw opslagaccount hebt gemaakt. Zie [Azure Storage-replicatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy) voor meer informatie.    |
  |Toegangslaag                  | Warm                   | De toegangslaag Hot geeft aan dat de objecten in het opslagaccount regelmatig worden gebruikt.    |
 
@@ -149,7 +149,7 @@ Als u een werkstroom wilt uitvoeren via de service Microsoft Genomics, bewerkt u
 Open het bestand config.txt dat u van uw Genomics-account hebt gedownload. De gedeeltes die u dient op te geven zijn de abonnementssleutel en de zes items onderaan, de naam van het opslagaccount, de sleutel en de naam van de container voor zowel invoer als uitvoer. U kunt deze informatie vinden door in de portal naar **Toegangssleutels** voor uw opslagaccount te navigeren of rechtstreeks vanuit Azure Storage Explorer.  
 
 
-![Config Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "Config Genomics")
+![Genomics-configuratie](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "Genomics-configuratie")
 
 
 Als u GATK4 wilt uitvoeren, stelt u de para meter `process_name` in op `gatk4`.

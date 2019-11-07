@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 10/23/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f6c98a67394db8028901f3f1f8e799af4c7a8c5f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d68ac0a1b6a66482a85f7ab79840099a34c731c2
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898899"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615540"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Klanten en gedelegeerde resources weer geven en beheren
 
@@ -30,6 +30,9 @@ Houd er rekening mee dat in het bovenste gedeelte van de pagina **mijn klanten**
 Selecteer **klanten** aan de linkerkant van de pagina **mijn klanten** om klant gegevens weer te geven.
 
 Voor elke klant ziet u de naam van de klant, de klant-ID (Tenant-ID) en de aanbieding die aan de afspraak is gekoppeld. In de kolom **delegaties** ziet u het aantal gedelegeerde abonnementen en/of het aantal gedelegeerde resource groepen.
+
+> [!IMPORTANT]
+> Als u een overdracht wilt zien, moeten gebruikers beschikken over de rol van [lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (of een andere ingebouwde rol die lezers toegang bevat) in het voorbereidings proces.
 
 Met filters boven aan de pagina kunt u uw klant gegevens sorteren en groeperen of filteren op specifieke klanten, aanbiedingen of tref woorden.
 

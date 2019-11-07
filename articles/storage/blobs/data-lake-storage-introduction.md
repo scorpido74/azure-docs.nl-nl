@@ -8,12 +8,12 @@ ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d843e288297db656cca6e2a07f2e1f3322ebfa89
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 99863f68c20a2f95dfc744e13a977bf3ccbbf639
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299648"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580430"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Inleiding tot Azure Data Lake Storage Gen2
 
@@ -43,7 +43,7 @@ In het verleden moesten cloud-gebaseerde analyses in het gedrang komen op het ge
 
 -   **Rendabel: data Lake Storage Gen2**biedt goedkope opslag capaciteit en-trans acties. Naarmate de volledige levens cyclus van gegevens overgaat, wijzigen de facturerings tarieven de kosten tot een minimum via ingebouwde functies zoals [Azure Blob Storage-levens cyclus](storage-lifecycle-management-concepts.md).
 
--   **Geoptimaliseerd stuur programma**: het ABFS-stuur programma is speciaal voor Big Data Analytics [geoptimaliseerd](data-lake-storage-abfs-driver.md) . De bijbehorende REST Api's worden geoppereerd via het eind punt `dfs.core.windows.net`.
+-   **Geoptimaliseerd stuur programma**: het ABFS-stuur programma is speciaal voor Big Data Analytics [geoptimaliseerd](data-lake-storage-abfs-driver.md) . De bijbehorende REST Api's worden geoppereerd via het eindpunt `dfs.core.windows.net`.
 
 ### <a name="scalability"></a>Schaalbaarheid
 
@@ -75,7 +75,7 @@ Verschillende open source-platforms ondersteunen Data Lake Storage Gen2. Deze pl
 
 | Platform |  Ondersteunde versie (s) | Meer informatie |
 | --- | --- | --- |
-| [HDInsight](https://azure.microsoft.com/services/hdinsight/) | 3.6 + | [Wat zijn de Apache Hadoop onderdelen en versies die beschikbaar zijn in HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fstorm%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+| [HDInsight](https://azure.microsoft.com/services/hdinsight/) | 3.6 + | [Wat zijn de Apache Hadoop-onderdelen en versies die beschikbaar met HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fstorm%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 | [Hadoop](https://hadoop.apache.org/) | 3,2 + | [Archief met Apache Hadoop releases](https://hadoop.apache.org/release.html) |
 | [Cloudera](https://www.cloudera.com/) | 6.1 + | [Opmerkingen bij de release van Cloudera Enter prise 6. x](https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_release_notes.html) |
 | [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1 + | [Databricks Runtime versies](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
@@ -83,7 +83,7 @@ Verschillende open source-platforms ondersteunen Data Lake Storage Gen2. Deze pl
 
 ## <a name="supported-azure-services"></a>Ondersteunde Azure-Services
 
-Data Lake Storage Gen2 ondersteunt verschillende Azure-Services die u kunt gebruiken om gegevens op te nemen, analyses uit te voeren en visuele weer gaven te maken. Zie [Azure data Lake Storage integreren met Azure-Services](data-lake-store-integrate-with-azure-services.md)voor een lijst met ondersteunde Azure-Services.
+Data Lake Storage Gen2 ondersteunt verschillende Azure-Services die u kunt gebruiken om gegevens op te nemen, analyses uit te voeren en visuele weer gaven te maken. Zie [Azure data Lake Storage integreren met Azure-Services](data-lake-storage-integrate-with-azure-services.md)voor een lijst met ondersteunde Azure-Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -92,4 +92,4 @@ In de volgende artikelen worden enkele van de belangrijkste concepten beschreven
 - [Hiërarchische naam ruimte](data-lake-storage-namespace.md)
 - [Een opslagaccount maken](data-lake-storage-quickstart-create-account.md)
 - [Toegang tot meerdere protocollen op Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)
-- [Azure data Lake Storage integreren met Azure-Services](data-lake-store-integrate-with-azure-services.md);
+- [Azure data Lake Storage integreren met Azure-Services](data-lake-storage-integrate-with-azure-services.md);
