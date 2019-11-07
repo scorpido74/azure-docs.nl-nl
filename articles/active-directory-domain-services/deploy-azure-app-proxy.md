@@ -1,131 +1,127 @@
 ---
 title: Azure AD-toepassingsproxy implementeren voor Azure AD Domain Services | Microsoft Docs
-description: Azure-AD-toepassingsproxy op Azure Active Directory Domain Services beheerde domeinen gebruiken
+description: Meer informatie over het bieden van beveiligde toegang tot interne toepassingen voor externe werk nemers door het implementeren en configureren van Azure Active Directory-toepassingsproxy in een Azure Active Directory Domain Services beheerd domein
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 11/6/2019
 ms.author: iainfou
-ms.openlocfilehash: 80c3b2120a617e5c4c0f8de252b9436753fea011
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c0fcb8c2c5f9afa7fabe2ffa63a715ec24aa4a26
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754406"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720497"
 ---
-# <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure-AD-toepassingsproxy implementeren op een Azure AD Domain Services beheerd domein
-Azure Active Directory (AD)-toepassings proxy helpt u externe werk nemers te ondersteunen door on-premises toepassingen te publiceren voor toegang via internet. Met Azure AD Domain Services kunt u nu oudere toepassingen die on-premises worden uitgevoerd, verplaatsen naar Azure-infrastructuur services. U kunt deze toepassingen vervolgens publiceren met behulp van de Azure-AD-toepassingsproxy om veilige externe toegang te bieden aan gebruikers in uw organisatie.
+# <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD-toepassingsproxy implementeren voor beveiligde toegang tot interne toepassingen in een Azure AD Domain Services beheerd domein
 
-Als u geen ervaring hebt met Azure AD-toepassingsproxy, kunt u meer informatie over deze functie vinden in het volgende artikel: [veilige externe toegang bieden tot on-premises toepassingen](../active-directory/manage-apps/application-proxy.md).
+Met Azure AD Domain Services (Azure AD DS) kunt u verouderde toepassingen die on-premises worden uitgevoerd, optillen naar Azure. Azure Active Directory-toepassings proxy (AD) helpt u vervolgens externe werk nemers te ondersteunen door de interne toepassingen die deel uitmaken van een Azure AD DS beheerd domein veilig te publiceren zodat ze via internet kunnen worden benaderd.
+
+Als u geen ervaring hebt met de Azure-AD-toepassingsproxy en meer informatie wilt, raadpleegt u [veilige externe toegang tot interne toepassingen bieden](../active-directory/manage-apps/application-proxy.md).
+
+Dit artikel laat u zien hoe u een Azure AD-toepassingsproxy-connector kunt maken en configureren om beveiligde toegang te bieden tot toepassingen in een door Azure AD DS beheerd domein.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Voor het uitvoeren van de taken die in dit artikel worden vermeld, hebt u het volgende nodig:
 
-1. Een geldig **Azure-abonnement**.
-2. Een **Azure AD-Directory** : gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
-3. Een **Azure AD Premium licentie** is vereist voor het gebruik van de Azure AD-toepassingsproxy.
-4. **Azure AD Domain Services** moet zijn ingeschakeld voor de Azure AD-adres lijst. Als u dit nog niet hebt gedaan, volgt u alle taken die in de aan de slag- [hand leiding](tutorial-create-instance.md)worden beschreven.
+U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
-<br>
+* Een actief Azure-abonnement.
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
+    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+    * Een **Azure AD Premium licentie** is vereist voor het gebruik van de Azure AD-toepassingsproxy.
+* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
+    * Als dat nodig is, kunt [u een Azure Active Directory Domain Services-exemplaar maken en configureren][create-azure-ad-ds-instance].
 
-## <a name="task-1---enable-azure-ad-application-proxy-for-your-azure-ad-directory"></a>Taak 1: Azure AD-toepassingsproxy inschakelen voor uw Azure AD-adres lijst
-Voer de volgende stappen uit om Azure AD-toepassingsproxy in te scha kelen voor uw Azure AD-adres lijst.
+## <a name="create-a-domain-joined-windows-vm"></a>Een aan een domein gekoppelde Windows-VM maken
 
-1. Meld u aan als beheerder in de [Azure-portal](https://portal.azure.com).
+Als u verkeer wilt door sturen naar toepassingen die in uw omgeving worden uitgevoerd, installeert u het onderdeel Azure AD-toepassingsproxy-connector. Deze Azure AD-toepassingsproxy-connector moet worden geïnstalleerd op Windows Server virtual machines (VM) die zijn gekoppeld aan het beheerde domein van Azure AD DS. Voor sommige toepassingen kunt u meerdere servers implementeren waarop elke connector is geïnstalleerd. Deze implementatie optie biedt meer Beschik baarheid en helpt zwaarere verificatie belasting te verwerken.
 
-2. Klik op **Azure Active Directory** om het overzicht van mappen weer te geven. Klik op **bedrijfs toepassingen**.
+De virtuele machine waarop de Azure AD-toepassingsproxy-connector wordt uitgevoerd, moet zich op dezelfde of een peered virtueel netwerk Bewaar u Azure AD DS hebt ingeschakeld. De virtuele machines die vervolgens worden gehost op de toepassingen die u publiceert met behulp van de toepassings proxy, moeten ook worden geïmplementeerd op hetzelfde virtuele Azure-netwerk.
 
-3. Klik op **toepassings proxy**.
+Voer de volgende stappen uit om een virtuele machine voor de Azure AD-toepassingsproxy-connector te maken:
 
-4. Als u de connector wilt downloaden, klikt u op de knop **connector** .
+1. [Een aangepaste organisatie-eenheid maken](create-ou.md). U kunt machtigingen voor het beheren van deze aangepaste organisatie-eenheid overdragen aan gebruikers binnen het Azure AD DS beheerde domein. De Vm's voor Azure AD-toepassingsproxy en die uw toepassingen uitvoeren, moeten deel uitmaken van de aangepaste organisatie-eenheid, niet de standaard-organisatie-eenheid voor *Aad DC-computers* .
+1. [Domein: Voeg de virtuele machines samen][create-join-windows-vm], zowel de computer die de Azure AD-toepassingsproxy-connector uitvoert, en de computers die uw toepassingen uitvoeren, naar het beheerde Azure AD DS-domein. Maak deze computer accounts in de aangepaste organisatie-eenheid uit de vorige stap.
 
-5. Ga naar de download pagina en accepteer de licentie voorwaarden en de privacyverklaring en klik op de knop **downloaden** .
+## <a name="download-the-azure-ad-application-proxy-connector"></a>De Azure AD-toepassingsproxy-connector downloaden
 
-    ![Downloaden bevestigen](./media/app-proxy/app-proxy-enabled-confirm-download.png)
+Voer de volgende stappen uit om de Azure AD-toepassingsproxy-connector te downloaden. Het installatie bestand dat u downloadt, wordt in de volgende sectie gekopieerd naar uw app proxy-VM.
 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met een gebruikers account met *beheerders* machtigingen voor ondernemingen in azure AD.
+1. Zoek en selecteer **Azure Active Directory** bovenaan de portal en kies vervolgens **bedrijfs toepassingen**.
+1. Selecteer **toepassings proxy** in het menu aan de linkerkant. Als u uw eerste connector wilt maken en app-proxy wilt inschakelen, selecteert u de koppeling om **een connector te downloaden**.
+1. Accepteer de licentie voorwaarden en de privacyverklaring op de download pagina en selecteer vervolgens **voor waarden accepteren & downloaden**.
 
-## <a name="task-2---provision-domain-joined-windows-servers-to-deploy-the-azure-ad-application-proxy-connector"></a>Taak 2: Windows-servers die lid zijn van een domein inrichten voor het implementeren van de Azure AD-toepassingsproxy-connector
-U hebt virtuele Windows Server-machines die lid zijn van een domein waarop u de Azure AD-toepassingsproxy-connector kunt installeren. Voor sommige toepassingen kunt u ervoor kiezen om meerdere servers in te richten waarop de connector is geïnstalleerd. Deze implementatie optie biedt meer Beschik baarheid en helpt zwaarere verificatie belasting te verwerken.
+    ![De Azure AD-app proxy connector downloaden](./media/app-proxy/download-app-proxy-connector.png)
 
-Richt de connector servers in op hetzelfde virtuele netwerk (of een verbonden/gekoppeld virtueel netwerk), waarin u uw door Azure AD Domain Services beheerd domein hebt ingeschakeld. Op dezelfde manier moeten de servers die als host fungeren voor de toepassingen die u publiceert via de toepassings proxy, worden geïnstalleerd op hetzelfde virtuele Azure-netwerk.
+## <a name="install-and-register-the-azure-ad-application-proxy-connector"></a>De Azure AD-toepassingsproxy-connector installeren en registreren
 
-Voor het inrichten van connector servers, volgt u de taken die worden beschreven in het artikel [een virtuele Windows-machine toevoegen aan een beheerd domein](active-directory-ds-admin-guide-join-windows-vm.md).
+Wanneer een virtuele machine gereed is om te worden gebruikt als Azure AD-toepassingsproxy-connector, kopieert u het installatie bestand dat u hebt gedownload van de Azure Portal en voert u het uit.
 
+1. Kopieer het installatie bestand voor de Azure AD-toepassingsproxy-connector naar uw VM.
+1. Voer het installatie bestand uit, zoals *AADApplicationProxyConnectorInstaller. exe*. Ga akkoord met de licentie voorwaarden van de software.
+1. Tijdens de installatie wordt u gevraagd de connector te registreren bij de toepassings proxy in uw Azure AD-adres lijst.
+   * Geef de referenties voor een globale beheerder op in uw Azure AD-adres lijst. De referenties van de globale beheerder van Azure AD kunnen afwijken van uw Azure-referenties in de portal
 
-## <a name="task-3---install-and-register-the-azure-ad-application-proxy-connector"></a>Taak 3: de Azure AD-toepassingsproxy-connector installeren en registreren
-Eerder hebt u een virtuele Windows Server-machine ingericht en gekoppeld aan het beheerde domein. In deze taak installeert u de Azure AD-toepassingsproxy-connector op deze virtuele machine.
+        > [!NOTE]
+        > Het globale beheerders account dat wordt gebruikt voor het registreren van de connector, moet behoren tot dezelfde map als waarin u de Application proxy-service inschakelt.
+        >
+        > Als het Azure AD-domein bijvoorbeeld *contoso.com*is, moet de globale beheerder worden `admin@contoso.com` of een andere geldige alias in dat domein.
 
-1. Kopieer het installatie pakket van de connector naar de virtuele machine waarop u de Azure AD Web Application proxy-connector installeert.
+   * Als verbeterde beveiliging van Internet Explorer is ingeschakeld voor de virtuele machine waarop u de connector installeert, wordt het registratie scherm mogelijk geblokkeerd. Als u toegang wilt toestaan, volgt u de instructies in het fout bericht of schakelt u de verbeterde beveiliging van Internet Explorer uit tijdens het installatie proces.
+   * Zie [problemen met toepassings proxy oplossen](../active-directory/manage-apps/application-proxy-troubleshoot.md)als de registratie van de connector mislukt.
+1. Aan het einde van de installatie wordt een notitie weer gegeven voor omgevingen met een uitgaande proxy. Als u de Azure AD-toepassingsproxy-connector wilt configureren om te werken via de uitgaande proxy, voert u het meegeleverde script uit, zoals `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`.
+1. Op de pagina Toepassings proxy in de Azure Portal wordt de nieuwe connector weer gegeven met de status *actief*, zoals wordt weer gegeven in het volgende voor beeld:
 
-2. Voer **AADApplicationProxyConnectorInstaller. exe** uit op de virtuele machine. Ga akkoord met de licentie voorwaarden van de software.
-
-    ![Voor waarden accepteren voor installatie](./media/app-proxy/app-proxy-install-connector-terms.png)
-3. Tijdens de installatie wordt u gevraagd de connector te registreren bij de toepassings proxy van uw Azure AD-adres lijst.
-   * Geef uw **Azure AD-toepassings beheerders referenties**op. De Tenant van de toepassings beheerder kan afwijken van uw Microsoft Azure referenties.
-   * Het beheerders account dat wordt gebruikt om de connector te registreren, moet behoren tot dezelfde map waar u de Application proxy-service hebt ingeschakeld. Als het Tenant domein bijvoorbeeld contoso.com is, moet de beheerder worden admin@contoso.com of een andere geldige alias in dat domein.
-   * Als verbeterde beveiliging van Internet Explorer is ingeschakeld voor de server waarop u de connector installeert, wordt het registratie scherm mogelijk geblokkeerd. Volg de instructies in het fout bericht om toegang toe te staan. Zorg ervoor dat de verbeterde beveiliging van Internet Explorer is uitgeschakeld.
-   * Zie [Troubleshoot Application Proxy](../active-directory/manage-apps/application-proxy-troubleshoot.md) (Engelstalig) als de registratie van de connector niet lukt.
-
-     ![Connector geïnstalleerd](./media/app-proxy/app-proxy-connector-installed.png)
-4. Voer de probleem oplosser voor Azure AD-toepassingsproxy-connector uit om ervoor te zorgen dat de connector goed werkt. U ziet een geslaagd rapport nadat u de probleem Oplosser hebt uitgevoerd.
-
-    ![Probleem Oplosser geslaagd](./media/app-proxy/app-proxy-connector-troubleshooter.png)
-5. De zojuist geïnstalleerde connector wordt weer gegeven op de pagina Toepassings proxy in uw Azure AD-adres lijst.
-
-    ![In de Azure Portal ziet de geïnstalleerde connector er als beschikbaar uit](./media/app-proxy/app-proxy-connector-page.png)
+    ![De nieuwe Azure AD-toepassingsproxy-connector wordt weer gegeven als actief in de Azure Portal](./media/app-proxy/connected-app-proxy.png)
 
 > [!NOTE]
-> U kunt ervoor kiezen om connectors op meerdere servers te installeren om te zorgen voor hoge Beschik baarheid voor het verifiëren van toepassingen die zijn gepubliceerd via de Azure-AD-toepassingsproxy. Voer dezelfde stappen uit om de connector te installeren op andere servers die zijn gekoppeld aan uw beheerde domein.
+> Om hoge Beschik baarheid te bieden voor toepassingen die worden geverifieerd via de Azure AD-toepassingsproxy, kunt u connectors op meerdere Vm's installeren. Herhaal de stappen in de vorige sectie om de connector te installeren op andere servers die zijn toegevoegd aan het Azure AD DS beheerde domein.
+
+## <a name="enable-resource-based-kerberos-constrained-delegation"></a>Op resources gebaseerde Kerberos-beperkte delegatie inschakelen
+
+Als u eenmalige aanmelding wilt gebruiken voor uw toepassingen met geïntegreerde Windows-verificatie (IWA), geeft u de Azure AD-toepassingsproxy connectors toestemming om gebruikers te imiteren en tokens namens hen te verzenden en ontvangen. Als u deze machtigingen wilt verlenen, configureert u Kerberos-beperkte delegering (KCD) voor de connector om toegang te krijgen tot bronnen in het door Azure AD DS beheerde domein. Aangezien u geen domein beheerders rechten hebt in een door Azure AD DS beheerd domein, kunnen traditionele KCD op account niveau niet worden geconfigureerd in een beheerd domein. Gebruik in plaats daarvan KCD op basis van resources.
+
+Zie [Configure Kerberos-beperkte delegering (KCD) in azure Active Directory Domain Services](deploy-kcd.md)voor meer informatie.
+
+> [!NOTE]
+> U moet zijn aangemeld bij een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant om de volgende Power shell-cmdlets uit te voeren.
 >
->
+> De computer accounts voor de virtuele machine van de app-connector en toepassings-Vm's moeten zich in een aangepaste OE bevinden, waar u machtigingen hebt voor het configureren van op resources gebaseerde KCD. U kunt geen op resources gebaseerde KCD configureren voor een computer account in de container ingebouwde *Aad DC-computers* .
+
+Gebruik [Get-ADComputer][Get-ADComputer] om de instellingen op te halen voor de computer waarop de Azure AD-toepassingsproxy-connector is geïnstalleerd. Voer de volgende cmdlets uit vanaf de virtuele machine voor het beheer van het domein en u bent aangemeld als gebruikers account dat lid is van de groep *Azure AD DC-Administrators* .
+
+In het volgende voor beeld wordt informatie opgehaald over het computer account met de naam *appproxy.contoso.com*. Geef uw eigen computer naam op voor de Azure AD-toepassingsproxy-VM die u in de vorige stappen hebt geconfigureerd.
+
+```powershell
+$ImpersonatingAccount = Get-ADComputer -Identity appproxy.contoso.com
+```
+
+Gebruik de Power shell-cmdlet [set-ADComputer][Set-ADComputer] voor elke toepassings server waarop de apps achter Azure worden uitgevoerd AD-toepassingsproxy voor het configureren van KCD op basis van een resource. In het volgende voor beeld worden de Azure AD-toepassingsproxy-connector machtigingen verleend voor het gebruik van de *appserver.contoso.com* -computer:
+
+```powershell
+Set-ADComputer appserver.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+```
+
+Als u meerdere Azure AD-toepassingsproxy-connectors implementeert, moet u op resources gebaseerde KCD configureren voor elk connector exemplaar.
 
 ## <a name="next-steps"></a>Volgende stappen
-U hebt de Azure-AD-toepassingsproxy ingesteld en geïntegreerd met uw Azure AD Domain Services beheerd domein.
 
-* **Uw toepassingen migreren naar Azure virtual machines:** U kunt uw toepassingen van on-premises servers omhoog en omlaag verplaatsen naar virtuele Azure-machines die zijn gekoppeld aan uw beheerde domein. Zo kunt u de kosten voor de infra structuur van on-premises servers weghalen.
+Met Azure AD-toepassingsproxy geïntegreerd met Azure AD DS kunt u toepassingen publiceren zodat gebruikers er toegang toe hebben. Zie [toepassingen publiceren met Azure AD-toepassingsproxy](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)voor meer informatie.
 
-* **Toepassingen publiceren met Azure AD-toepassingsproxy:** Publiceer toepassingen die worden uitgevoerd op uw virtuele Azure-machines met behulp van de Azure AD-toepassingsproxy. Zie [toepassingen publiceren met Azure AD-toepassingsproxy](../active-directory/manage-apps/application-proxy-publish-azure-portal.md) voor meer informatie
-
-
-## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>Implementatie Opmerking: Publiceer IWA-toepassingen (Integrated Windows Authentication) met Azure AD-toepassingsproxy
-Schakel eenmalige aanmelding in voor uw toepassingen met geïntegreerde Windows-verificatie (IWA) door toepassings proxy connectors toestemming te verlenen voor het imiteren van gebruikers en het verzenden en ontvangen van tokens namens hen. Configureer Kerberos-beperkte delegering (KCD) voor de connector om de vereiste machtigingen te verlenen voor toegang tot bronnen op het beheerde domein. Gebruik het op bronnen gebaseerde KCD-mechanisme voor beheerde domeinen voor een betere beveiliging.
-
-
-### <a name="enable-resource-based-kerberos-constrained-delegation-for-the-azure-ad-application-proxy-connector"></a>Op resources gebaseerde Kerberos-beperkte delegering inschakelen voor de Azure AD-toepassingsproxy-connector
-De Azure-toepassing proxy connector moet worden geconfigureerd voor Kerberos-beperkte delegering (KCD), zodat deze gebruikers op het beheerde domein kan imiteren. U hebt geen domein beheerders rechten op een Azure AD Domain Services beheerd domein. **Traditionele KCD op account niveau kunnen daarom niet worden geconfigureerd in een beheerd domein**.
-
-Gebruik op resources gebaseerde KCD zoals beschreven in dit [artikel](deploy-kcd.md).
-
-> [!NOTE]
-> U moet lid zijn van de groep AAD DC Administrators om het beheerde domein te beheren met AD Power shell-cmdlets.
->
->
-
-Gebruik de Power shell-cmdlet Get-ADComputer om de instellingen op te halen voor de computer waarop de Azure AD-toepassingsproxy-connector is geïnstalleerd.
-```powershell
-$ConnectorComputerAccount = Get-ADComputer -Identity contoso-proxy.contoso.com
-```
-
-Vervolgens gebruikt u de cmdlet Set-ADComputer om KCD op basis van resources in te stellen voor de bron server.
-```powershell
-Set-ADComputer contoso-resource.contoso.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
-```
-
-Als u meerdere connectors voor toepassings proxy hebt geïmplementeerd op uw beheerde domein, moet u op resources gebaseerde KCD configureren voor elk van deze connector exemplaren.
-
-
-## <a name="related-content"></a>Gerelateerde inhoud
-* [Azure AD Domain Services aan de slag-hand leiding](tutorial-create-instance.md)
-* [Beperkte Kerberos-delegering configureren voor een beheerd domein](deploy-kcd.md)
-* [Overzicht van beperkte Kerberos-overdracht](https://technet.microsoft.com/library/jj553400.aspx)
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[create-join-windows-vm]: join-windows-vm.md
+[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[Get-ADComputer]: /powershell/module/addsadministration/get-adcomputer
+[Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer

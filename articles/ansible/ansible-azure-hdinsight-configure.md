@@ -1,6 +1,6 @@
 ---
 title: 'Zelf studie: een cluster configureren in azure HDInsight met behulp van Ansible'
-description: Meer informatie over het gebruik van Ansible voor het maken en wijzigen van een Azure HDInsight
+description: Meer informatie over hoe u Ansible kunt gebruiken om een Azure HDInsight-cluster te configureren, te verg Roten of te verkleinen en te verwijderen
 keywords: ansible, azure, devops, bash, Playbook, Apache Hadoop, hdinsight
 ms.topic: tutorial
 ms.service: ansible
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: ad17e6ff4cbf5b583e3a4be410847c1349c9edce
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: ce4723a9dbe952f0112b7e24c3e361fd2f414374
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241955"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614410"
 ---
 # <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Zelf studie: een cluster configureren in azure HDInsight met behulp van Ansible
 
@@ -144,7 +144,7 @@ Het kan enkele minuten duren voordat het maken van het exemplaar is voltooid.
 
 Nadat het cluster is gemaakt, is de enige instelling die u kunt wijzigen het aantal worker-knoop punten. 
 
-De Playbook-code in deze sectie verhoogt het aantal worker-knoop punten door `target_instance_count` in `workernode` bij te werken.
+De Playbook-code in deze sectie verhoogt het aantal worker-knoop punten door `target_instance_count` in `workernode`bij te werken.
 
 ```yml
 - name: Resize cluster
@@ -355,7 +355,7 @@ In deze sectie voert u de Playbook uit om verschillende functies te testen die i
 Voordat u de Playbook uitvoert, moet u de volgende wijzigingen aanbrengen:
 - Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ resource_group_name }}` door de naam van uw resource groep.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook hdinsight.yml
@@ -379,7 +379,7 @@ Sla de volgende code op als `cleanup.yml`:
         state: absent
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

@@ -1,22 +1,22 @@
 ---
-title: Gebeurtenisgegevens migreren naar SQL Data Warehouse - Azure Event Hubs | Microsoft Docs
-description: In deze zelfstudie leest u hoe u gegevens uit uw Event Hub vastlegt in een SQL Data Warehouse met behulp van een Azure-functie die wordt geactiveerd door een Event Grid.
+title: 'Zelf studie: gebeurtenis gegevens migreren naar SQL Data Warehouse-Azure Event Hubs'
+description: 'Zelf studie: deze zelf studie laat zien hoe u gegevens van uw Event Hub kunt vastleggen in een SQL data warehouse met behulp van een Azure-functie die wordt geactiveerd door een event grid.'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 90a17839afdddb4d6ad8abfa57963b4c76b100ed
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 92c414afbb8121eb03353c79dfe3a51e0cfa7ec0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604289"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718882"
 ---
-# <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Vastgelegde Event Hub-gegevens migreren naar een SQL Data Warehouse met behulp van Event Grid en Azure Functions
+# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Zelf studie: vastgelegde Event Hubs gegevens migreren naar een SQL Data Warehouse met behulp van Event Grid en Azure Functions
 
 Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) is de eenvoudigste manier om automatisch gestreamde gegevens in Event Hubs te verzenden naar een Azure Blob Storage of Azure Data Lake Store. U kunt de gegevens vervolgens verwerken en verzenden naar andere opslagdoelen van uw keuze, zoals SQL Data Warehouse of Cosmos DB. In deze zelfstudie leest u hoe u gegevens uit uw Event Hub vastlegt in een SQL Data Warehouse met behulp van een Azure-functie die wordt geactiveerd door een [Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
 
@@ -68,7 +68,7 @@ In de volgende secties vindt u Azure CLI- en Azure PowerShell-opdrachten voor he
 
 Het duurt even voordat alle Azure-artefacten zijn gemaakt met deze scripts. Wacht totdat het script is voltooid voordat u doorgaat. Als de implementatie mislukt, verwijdert u de resourcegroep, lost u het gerapporteerde probleem op en voert u de opdracht opnieuw uit. 
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 Voer de volgende opdrachten uit om de sjabloon te implementeren met Azure CLI:
 
 ```azurecli-interactive
@@ -106,7 +106,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="publish-code-to-the-functions-app"></a>Code publiceren naar de Functions-app
 
-1. Open de oplossing *EventHubsCaptureEventGridDemo.sln* in Visual Studio 2019.
+1. Open de oplossing *EventHubsCaptureEventGridDemo. SLN* in Visual Studio 2019.
 
 1. Klik in Solution Explorer met de rechtermuisknop op *FunctionEGDWDumper* en selecteer **Publish**.
 

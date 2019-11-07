@@ -1,6 +1,6 @@
 ---
-title: Voorbeelden van de integratie van Azure Service Bus met Event Grid | Microsoft Docs
-description: In dit artikel vindt u voorbeelden van de integratie van Service Bus-berichten met Event Grid.
+title: 'Zelf studie: Azure Service Bus voor voor beelden van Event Grid-integratie'
+description: 'Zelf studie: in dit artikel vindt u voor beelden van de integratie van Service Bus Messa ging en Event Grid.'
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: f31e014cf242675577bedd29a3a79332ede32bf5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: d3f523bbc0236536734f21870474492a61532ada
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304240"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719019"
 ---
-# <a name="respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Reageren op Azure Service Bus gebeurtenissen die via Azure Event Grid worden ontvangen met behulp van Azure Functions en Azure Logic Apps
+# <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Zelf studie: reageren op Azure Service Bus gebeurtenissen die via Azure Event Grid worden ontvangen met behulp van Azure Functions en Azure Logic Apps
 In deze zelf studie leert u hoe u kunt reageren op Azure Service Bus gebeurtenissen die via Azure Event Grid worden ontvangen met behulp van Azure Functions en Azure Logic Apps. Voer de volgende stappen uit:
  
 - Maak een test-Azure-functie voor het opsporen van fouten en het weer geven van de eerste stroom van gebeurtenissen vanuit het Event Grid.
@@ -35,7 +35,7 @@ Nadat u de Service Bus, Event Grid, Azure Functions en Logic Apps artefacten heb
 3. Controleer of de functie of logische app die is geabonneerd op de gebeurtenis, de gebeurtenis heeft ontvangen. 
 
 ## <a name="create-a-service-bus-namespace"></a>Een Service Bus-naamruimte maken
-Volg de instructies in deze zelf studie: [Snelstart: Gebruik de Azure Portal om een service bus onderwerp en abonnementen aan het onderwerp](service-bus-quickstart-topics-subscriptions-portal.md) te maken om de volgende taken uit te voeren:
+Volg de instructies in deze zelf studie: [Quick Start: gebruik de Azure Portal om een service bus onderwerp en abonnementen aan het onderwerp te maken](service-bus-quickstart-topics-subscriptions-portal.md) om de volgende taken uit te voeren:
 
 - Maak een **Premium** -service bus naam ruimte. 
 - Haal de connection string op. 
@@ -65,7 +65,7 @@ Voordat u het volledige scenario doorloopt, stelt u ten minste een kleine test f
 Voer vervolgens de volgende stappen uit: 
 
 
-# <a name="azure-functions-v2tabv2"></a>[Azure Functions V2](#tab/v2)
+# <a name="azure-functions-v2tabv2"></a>[Azure Functions v2](#tab/v2)
 
 1. Vouw **functies** in de structuur weergave uit en selecteer de functie. Vervang de code voor de functie door de volgende code: 
 
@@ -194,7 +194,7 @@ Voer de volgende stappen uit om een Azure Event Grid-abonnement te maken:
 2. Selecteer **+ gebeurtenis abonnement** op de werk balk. 
 3. Voer op de pagina **gebeurtenis abonnement maken** de volgende stappen uit:
     1. Voer een **naam** in voor het abonnement. 
-    2. Selecteer  een webhook voor het **type eind punt**. 
+    2. Selecteer een **webhook** voor het **type eind punt**. 
 
         ![Service Bus-Event Grid-abonnement](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
     3. Kies **een eind punt selecteren**, plak de functie-URL en selecteer vervolgens **selectie bevestigen**. 
@@ -280,7 +280,7 @@ Verbind een logische app met Azure Service Bus en Azure Event Grid door de volge
     3. Selecteer bij **resource naam**uw service bus naam ruimte. 
     4. Selecteer **nieuwe para meter toevoegen**en selecteer **achtervoegsel filter**. 
     5. Voer bij **achtervoegsel filter**de naam in van het tweede service bus-onderwerp-abonnement. 
-        ![Logic Apps Designer: gebeurtenis configureren](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
+        ![Logic Apps Designer-gebeurtenis](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png) configureren
 6. Selecteer **+ nieuwe stap** in de ontwerp functie en voer de volgende stappen uit:
     1. Zoeken naar **Service Bus**.
     2. Selecteer **Service Bus** in de lijst. 
@@ -288,10 +288,10 @@ Verbind een logische app met Azure Service Bus en Azure Event Grid door de volge
     4. Selecteer **berichten ophalen uit een onderwerp-abonnement (Peek-vergren delen)** . 
 
         ![Logic Apps Designer: de actie berichten ophalen](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
-    5. Voer een **naam in voor de verbinding**. Bijvoorbeeld: **Ontvang berichten van het onderwerp-abonnement**en selecteer de naam ruimte service bus. 
+    5. Voer een **naam in voor de verbinding**. Bijvoorbeeld: **berichten van het onderwerp-abonnement ophalen**en de naam ruimte service bus selecteren. 
 
         ![Logic Apps Designer: Selecteer de Service Bus naam ruimte](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
-    6. Selecteer **RootManageSharedAccessKey**.
+    6. selecteer **RootManageSharedAccessKey**.
 
         ![Logic Apps Designer: Selecteer de gedeelde toegangs sleutel](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
     7. Selecteer **Maken**. 

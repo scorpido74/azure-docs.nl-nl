@@ -2,18 +2,18 @@
 title: Een zoek index maken in de Azure Portal
 titleSuffix: Azure Cognitive Search
 description: Gebruik de wizard gegevens importeren om uw eerste zoek index in azure Cognitive Search te maken, te laden en op te vragen.
-author: lobrien
+author: HeidiSteen
 manager: nitinme
-ms.author: laobri
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 502177519c0e66baa7ae9c1de18a7b41bceb054a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 366986f989fdd8d76b1707451c2a7cca2aa554cf
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791241"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719969"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Quick Start: een Azure Cognitive Search-index maken in de Azure Portal
 > [!div class="op_single_selector"]
@@ -150,7 +150,7 @@ U zou nu een zoekindex moeten hebben die klaar is om query’s uit te voeren met
 > De volgende stappen worden op 6m08s getoond in de [overzichts video van Azure Cognitive Search](https://channel9.msdn.com/Events/Connect/2016/138).
 >
 
-1. Klik op **Search explorer** in de opdrachtbalk.
+1. Klik op **Search explorer** in de werkbalk.
 
    ![Opdracht Search Explorer](media/search-get-started-portal/search-explorer-cmd.png)
 

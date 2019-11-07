@@ -6,14 +6,17 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: d646187627d74810a846d7126562e2e796c5c9f7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e9f9e812d5463f0a503b100780f9b988e43f748d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512806"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720267"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Visualisatie van de afhankelijkheid van agents instellen voor evaluatie
+
+> [!NOTE]
+> Als u deze functie nog niet ziet in de Azure Migrate Portal, loopt u vast. Deze wordt in de volgende week weer gegeven.
 
 In dit artikel wordt beschreven hoe u afhankelijkheids toewijzing zonder agent instelt in Azure Migrate: Server evaluatie. Deze functie is momenteel beschikbaar als preview-versie voor VMware-machines die zijn gedetecteerd met een Azure Migrate apparaat. 
 

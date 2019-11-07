@@ -3,6 +3,7 @@ title: Een in-Store-Analytics-toepassing maken in azure IoT Central | Microsoft 
 description: In deze zelf studie ziet u hoe u een retail-toepassing in-Store Analytics maakt in IoT Central. U maakt deze en past deze toe en voegt sensor apparaten toe.
 services: iot-central
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.custom:
 - iot-storeAnalytics-checkout
@@ -10,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: 0d586aaab4fc87bb671e67152cf66e9fb1447504
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a662201823808c9e2e34e9210096cb081e1b9430
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495175"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615315"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Zelf studie: een in-Store Analytics-toepassing maken in azure IoT Central
 

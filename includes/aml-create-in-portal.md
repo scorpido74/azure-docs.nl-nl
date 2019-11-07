@@ -9,18 +9,18 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 11/04/2019
-ms.openlocfilehash: d49a84f26453a6a7b2ff6d7f419fbc53ad8b98ba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ccd3e6129f4a061eacf83a1f4e70174c697480f
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476027"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73633643"
 ---
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van de referenties voor uw Azure-abonnement.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met behulp van de referenties voor uw Azure-abonnement.
 
 1. Selecteer in de linkerbovenhoek van Azure Portal **+ een resource maken**.
 
-      ![Een nieuwe resource maken](media/aml-create-in-portal/portal-create-resource.png)
+    ![Een nieuwe resource maken](media/aml-create-in-portal/create-workspace.gif)
 
 1. Gebruik de zoek balk om **machine learning**te vinden.
 

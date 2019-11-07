@@ -1,22 +1,22 @@
 ---
-title: 'Power shell-voor beeld: een beheerd exemplaar maken in Azure SQL Database | Microsoft Docs'
+title: 'Sjabloon voorbeeld: een beheerd exemplaar maken in Azure SQL Database'
 description: Azure PowerShell voorbeeld script voor het maken van een beheerd exemplaar in Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: ''
+ms.custom: seo-dt-2019
 ms.devlang: PowerShell
 ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 5a60e8efad41c94deeedd545e6e0c1c96ff04e25
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: be6aa73fe72568e9762e5b7249bedc2e8c7d3bf7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569729"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691439"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>Power shell met Azure Resource Manager sjabloon gebruiken om een beheerd exemplaar in Azure SQL Database te maken
 

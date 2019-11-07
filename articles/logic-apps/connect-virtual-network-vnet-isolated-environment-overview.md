@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 07/26/2019
-ms.openlocfilehash: 5d42b9fc2dfd7cbee230b65f7d9844c9e7332147
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 11/06/2019
+ms.openlocfilehash: adb89c04a83bbfbd5bddd5c23b0fa88019a88991
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680508"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721382"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Toegang tot Azure Virtual Network resources vanuit Azure Logic Apps met behulp van integratie service omgevingen (ISEs)
 
@@ -28,9 +28,9 @@ Nadat u uw ISE hebt gemaakt, kunt u uw ISE als de logische app of de locatie van
 
 Uw logische app kan nu rechtstreeks toegang krijgen tot systemen die zich binnen of verbonden zijn met uw virtuele netwerk door gebruik te maken van een van de volgende items:
 
-* Een **ISE**-gelabelde connector voor dat systeem, zoals SQL Server
+* Een **ISE**-gelabelde connector voor dat systeem
 * Een **kern**, ingebouwde trigger of actie, zoals de http-trigger of actie
-* een aangepaste connector
+* Een aangepaste connector
 
 In dit overzicht vindt u meer informatie over hoe een ISE uw Logic apps en integratie accounts direct toegang geeft tot uw virtuele Azure-netwerk en de verschillen tussen een ISE en de Global Logic Apps-service vergelijkt.
 
@@ -51,7 +51,7 @@ Logic apps in een ISE bieden dezelfde gebruikers ervaringen en vergelijk bare mo
 * Azure Blob Storage, File Storage en Table Storage
 * Azure-wacht rijen, Azure Service Bus, Azure Event Hubs en IBM MQ
 * FTP en SFTP-SSH
-* SQL Server, SQL Data Warehouse Azure Cosmos DB
+* SQL Server, Azure SQL Data Warehouse Azure Cosmos DB
 * AS2, X12 en EDIFACT
 
 Het verschil tussen ISE en niet-ISE-connectors bevindt zich op de locaties waar de triggers en acties worden uitgevoerd:
@@ -92,6 +92,7 @@ Zie [Logic apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps/
 Wanneer u uw ISE maakt, kunt u kiezen of u interne of Externe toegangs punten wilt gebruiken. Deze eind punten bepalen of de aanvraag of webhook triggers op Logic apps in uw ISE kan ontvangen van buiten uw virtuele netwerk. Deze eind punten zijn ook van invloed op de toegang tot invoer en uitvoer in de geschiedenis van de run Logic-app.
 
 * **Intern**: privé-eind punten die aanroepen naar Logic apps in uw ISE plus toegang tot invoer en uitvoer in de uitvoerings geschiedenis alleen *vanuit uw virtuele netwerk*
+
 * **Externe**: open bare eind punten die aanroepen naar Logic apps in uw ISE plus toegang tot invoer en uitvoer in de uitvoerings geschiedenis *van buiten uw virtuele netwerk*
 
 > [!IMPORTANT]
@@ -103,15 +104,20 @@ Wanneer u uw ISE maakt, kunt u kiezen of u interne of Externe toegangs punten wi
 
 Voor on-premises systemen die zijn verbonden met een virtueel Azure-netwerk, wordt een ISE in dat netwerk geïnjecteerd zodat uw Logic apps rechtstreeks toegang hebben tot deze systemen met behulp van een van deze items:
 
-* ISE-versie connector voor dat systeem, bijvoorbeeld SQL Server
 * HTTP-actie
+
+* ISE-gelabelde connector voor dat systeem
+
+  > [!IMPORTANT]
+  > Als u Windows-verificatie met de SQL Server-connector wilt gebruiken, moet u de [on-premises gegevens gateway](../logic-apps/logic-apps-gateway-install.md)gebruiken. De SQL Server-connector biedt geen ondersteuning voor Windows-verificatie voor een logische app in een ISE.
+
 * Aangepaste connector
 
   * Als u aangepaste connectors hebt die de on-premises gegevens gateway nodig hebben en u deze connectors buiten een ISE hebt gemaakt, kunnen logische apps in een ISE ook deze connectors gebruiken.
   
   * Aangepaste connectors die zijn gemaakt in een ISE werken niet met de on-premises gegevens gateway. Deze connectors hebben echter rechtstreeks toegang tot on-premises gegevens bronnen die zijn verbonden met het virtuele netwerk dat als host fungeert voor de ISE. Logic apps in een ISE hebben daarom waarschijnlijk niet de gegevens gateway nodig bij het communiceren met deze resources.
 
-Voor on-premises systemen die niet zijn verbonden met een virtueel netwerk of geen ISE-connectors hebben, moet u eerst [de on-premises gegevens gateway instellen](../logic-apps/logic-apps-gateway-install.md) voordat uw Logic apps verbinding met deze systemen kunnen maken.
+Voor on-premises systemen die niet zijn verbonden met een virtueel netwerk of geen ISE-labled-connectors hebben, moet u eerst [de on-premises gegevens gateway instellen](../logic-apps/logic-apps-gateway-install.md) voordat uw Logic apps verbinding met deze systemen kunnen maken.
 
 <a name="create-integration-account-environment"></a>
 

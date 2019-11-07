@@ -1,21 +1,21 @@
 ---
-title: Gegevensstreamen met Azure Event Hubs met behulp van het Kafka-Protocol | Microsoft Docs
-description: Dit artikel bevat informatie over het streamen naar Azure Event Hubs met behulp van het Kafka-protocol en API's.
+title: 'Quick Start: gegevensstreamen met Azure Event Hubs met behulp van het Kafka-Protocol'
+description: "Snelstartgids: in dit artikel vindt u informatie over het streamen naar Azure Event Hubs met het Kafka-protocol en Api's."
 services: event-hubs
 author: ShubhaVijayasarathy
 ms.author: shvija
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 05/06/2019
-ms.openlocfilehash: ebe3dc39cf135f09c084a8325d380b9bc9ef48dc
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/05/2019
+ms.openlocfilehash: 2222345054982799f9f9e0b84961271a3cc04ddf
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554968"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717820"
 ---
-# <a name="data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Gegevensstreamen met Event Hubs met behulp van het Kafka-Protocol
+# <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Quick Start: gegevensstreaming met Event Hubs met behulp van het Kafka-Protocol
 Deze snelstart laat zien hoe u kunt streamen naar Event Hubs waarvoor Kafka is ingeschakeld zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. U leert hoe u uw producenten kunt gebruiken en consumenten met Event Hubs waarvoor Kafka is ingeschakeld, kunnen praten met slechts een configuratiewijziging in uw toepassingen. Azure Event Hubs ondersteunt [Apache Kafka versie 1.0.](https://kafka.apache.org/10/documentation.html)
 
 > [!NOTE]

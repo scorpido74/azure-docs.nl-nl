@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: bb33f7f2ec917e9ae168a013a8775ec4f551848d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cd2eff7e3fafc1a6f3418a1f86629cfb1584e89
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475015"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641756"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Zelf studie: toegang verlenen tot een ASP.NET-Web-API met behulp van Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ Voer de stappen en vereisten in de [zelf studie uit: Schakel verifiëren in een 
 
 Web-API-resources moeten worden geregistreerd in uw tenant voordat deze in staat zijn om beveiligde resourceaanvragen door clienttoepassingen die een toegangstoken aanbieden, kunnen accepteren en erop kunnen reageren.
 
-Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidige **toepassingen** gebruiken of onze nieuwe **Preview-ervaring (Unified app-registraties)** . Meer [informatie over de preview-ervaring](https://aka.ms/b2cappregintro).
+Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidige **toepassingen** gebruiken of onze nieuwe **Preview-ervaring (Unified app-registraties)** . [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
 
 #### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
 

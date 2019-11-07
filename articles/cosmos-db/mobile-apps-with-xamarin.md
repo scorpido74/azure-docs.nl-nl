@@ -1,20 +1,20 @@
 ---
-title: Mobiele toepassingen maken met Xamarin en Azure Cosmos DB
-description: Een zelfstudie waarmee u een Xamarin iOS-, Android- of Forms-toepassing maakt met behulp van Azure Cosmos DB. Azure Cosmos DB is een snelle clouddatabase op wereldwijde schaal voor mobiele apps.
+title: 'Zelf studie: mobiele toepassingen bouwen met Xamarin en Azure Cosmos DB'
+description: 'Zelf studie: een zelf studie voor het maken van een Xamarin iOS-, Android-of Forms-toepassing met behulp van Azure Cosmos DB. Azure Cosmos DB is een snelle clouddatabase op wereldwijde schaal voor mobiele apps.'
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 4a9c0fe09bee553f53c90c9833922746aad35d14
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 40f7de4b4feb2b312705238abd30402edb635ea9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615078"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720884"
 ---
-# <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Mobiele toepassingen maken met Xamarin en Azure Cosmos DB
+# <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Zelf studie: mobiele toepassingen bouwen met Xamarin en Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -45,7 +45,7 @@ Azure Cosmos DB biedt de volgende belangrijke mogelijkheden voor ontwikkelaars v
 In de volgende zelfstudie leest u hoe u een mobiele toepassing bouwt met Xamarin en Azure Cosmos DB. U vindt de volledige broncode voor de zelfstudie op [Xamarin en Azure Cosmos DB op GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin).
 
 ### <a name="get-started"></a>Aan de slag
-U kunt eenvoudig aan de slag met Azure Cosmos DB. Ga naar Azure Portal en maak een nieuw Azure Cosmos DB-account. Klik op het tabblad **Snel starten**. Download het takenlijstvoorbeeld van Xamarin Forms dat al met uw Azure Cosmos DB-account is verbonden. 
+U kunt eenvoudig aan de slag met Azure Cosmos DB. Ga naar Azure Portal en maak een nieuw Azure Cosmos DB-account. Klik op het tabblad **Quick Start** . down load het voor beeld van een taken lijst Xamarin-formulieren dat al is verbonden met uw Azure Cosmos DB-account. 
 
 ![Azure Cosmos DB Snel starten voor mobiele apps](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
 

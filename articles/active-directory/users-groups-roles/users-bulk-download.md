@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd0829afca05058892d3a0ceeb50c9955d792dc3
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: d106e803fdef4f054b7e4717ba59a43359d1d68a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72517057"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720300"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Een lijst met gebruikers (preview) downloaden in Azure Active Directory Portal
 
@@ -31,8 +31,9 @@ Als u de lijst met gebruikers wilt downloaden vanuit het Azure AD-beheer centrum
 ## <a name="to-download-a-list-of-users"></a>Een lijst met gebruikers downloaden
 
 1. [Meld u aan bij uw Azure AD-organisatie](https://aad.portal.azure.com) met een Administrator-account van de gebruiker in de organisatie.
-1. Selecteer in azure AD **gebruikers** > **gebruikers downloaden**.
-1. Selecteer op de pagina **gebruikers downloaden** de optie **Start** om een CSV-bestand met gebruikers profiel eigenschappen te ontvangen. Als er fouten zijn, kunt u het bestand met resultaten downloaden en weer geven op de pagina resultaten van bulk bewerking. Het bestand bevat de reden voor elke fout.
+2. Navigeer naar Azure Active Directory > gebruikers. Selecteer vervolgens de gebruikers die u wilt opnemen in de down load door het vak in de linkerkolom naast elke gebruiker te tikken. Opmerking: op dit moment is het niet mogelijk om alle gebruikers te selecteren die u wilt exporteren. Elk item moet afzonderlijk worden geselecteerd.
+3. Selecteer in azure AD **gebruikers** > **gebruikers te downloaden**.
+4. Selecteer op de pagina **gebruikers downloaden** de optie **Start** om een CSV-bestand met gebruikers profiel eigenschappen te ontvangen. Als er fouten zijn, kunt u het bestand met resultaten downloaden en weer geven op de pagina resultaten van bulk bewerking. Het bestand bevat de reden voor elke fout.
 
    ![Selecteer waar u de lijst wilt opnemen met de gebruikers die u wilt downloaden](./media/users-bulk-download/bulk-download.png)
 
@@ -44,21 +45,21 @@ Als u de lijst met gebruikers wilt downloaden vanuit het Azure AD-beheer centrum
    - displayName
    - surname
    - mail
-   - GivenName
+   - givenName
    - Id
    - User type
-   - JobTitle
+   - jobTitle
    - department
    - Manager
-   - AccountEnabled
+   - accountEnabled
    - usageLocation
    - streetAddress
    - state
-   - Regio
+   - regio
    - physicalDeliveryOfficeName
    - city
    - Code
-   - TelephoneNumber
+   - telephoneNumber
    - provider
    - authenticationPhoneNumber
    - authenticationAlternativePhoneNumber

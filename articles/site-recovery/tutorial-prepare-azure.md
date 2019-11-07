@@ -1,5 +1,5 @@
 ---
-title: Azure voorbereiden voor herstel na nood gevallen van on-premises machines met Azure Site Recovery
+title: Azure voorbereiden voor on-premises nood herstel met Azure Site Recovery
 description: Informatie over het voorbereiden van Azure op herstel na noodgevallen van on-premises machines met Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 32aa2c8f4c97f247bfcff5fc82a3f810b8005591
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ec668fac087773001ca401eefb5ca8bc10ea2b8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488550"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620600"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Azure-resources voorbereiden op herstel na noodgevallen van on-premises machines
+# <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Azure voorbereiden voor on-premises herstel na nood gevallen naar Azure
 
 In dit artikel wordt beschreven hoe u Azure-resources en-onderdelen voorbereidt, zodat u herstel na nood gevallen van on-premises VMware-Vm's, virtuele Hyper-V-machines of fysieke Windows/Linux-servers naar Azure kunt instellen met behulp van de [Azure site Recovery](site-recovery-overview.md) -service.
 

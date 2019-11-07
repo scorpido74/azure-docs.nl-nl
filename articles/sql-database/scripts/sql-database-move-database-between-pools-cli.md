@@ -1,5 +1,5 @@
 ---
-title: CLI-voorbeeld - Azure SQL-database verplaatsen naar elastische SQL-groep | Microsoft Docs
+title: CLI-voor beeld-Azure SQL database-groep voor elastische SQL-groepen verplaatsen
 description: Voorbeeld van Azure CLI-script voor het verplaatsen van een SQL-database naar een elastische SQL-groep
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 166643231e9f98cc3b8205bf0e9a8bb949ffbc3b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d974685040d2a5759ca7719e82be02a7ec8950c5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569878"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691591"
 ---
 # <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>Een Azure SQL-database verplaatsen naar een elastische SQL-groep met de CLI
 
@@ -51,7 +51,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | Hiermee maakt u een elastische pool. |
 | [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | Hiermee maakt u een individuele database of een andere database in een elastische pool. |
 | [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) | Hiermee worden database-eigenschappen bijgewerkt of worden databasegegevens verplaatst naar, uit of tussen elastische pools. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

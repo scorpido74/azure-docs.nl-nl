@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Offline migreren van SQL Server naar een individuele of pooldatabase in Azure SQL Database met behulp van Azure Database Migration Service | Microsoft Docs'
-description: Lees hoe u een offline migratie uitvoert van on-premises SQL Server naar een individuele of pooldatabase in Azure SQL Database met behulp van de Azure Database Migration Service.
+title: 'Zelf studie: Azure Database Migration Service gebruiken om offline te migreren van SQL Server naar een enkele/gegroepeerde Data base in Azure SQL Database | Microsoft Docs'
+description: Meer informatie over het migreren van SQL Server on-premises naar een enkele data base of gegroepeerde Data base in Azure SQL Database offline door gebruik te maken van Azure Database Migration Service.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -10,25 +10,25 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 09/22/2019
-ms.openlocfilehash: 7e5b4a3cb04215504c4fd4fd1ebfcbcbe8c3f9f8
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.date: 11/05/2019
+ms.openlocfilehash: 46d5754d046284ae42da91c2eb08bfe709e7e372
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179102"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582359"
 ---
-# <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>Zelfstudie: SQL Server offline migreren naar een individuele of pooldatabase in Azure SQL Database met behulp van DMS
+# <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>Zelf studie: SQL Server naar een enkele data base of gegroepeerde Data base in Azure SQL Database offline migreren met behulp van DMS
 
-U kunt de Azure Database Migration Service gebruiken voor het migreren van de databases van een on-premises SQL Server-exemplaar naar [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). In deze zelfstudie migreert u de database **Adventureworks2012**, hersteld van een on-premises exemplaar van SQL Server 2016 (of hoger), naar een individuele of pooldatabase in Azure SQL Database met behulp van de Azure Database Migration Service.
+U kunt Azure Database Migration Service gebruiken om de data bases te migreren van een on-premises SQL Server instantie naar [Azure SQL database](https://docs.microsoft.com/azure/sql-database/). In deze zelf studie migreert u de **Adventureworks2012** -data base die is hersteld naar een on-premises exemplaar van SQL Server 2016 (of hoger) naar een enkele data base of gegroepeerde Data base in Azure SQL database met behulp van Azure database Migration service.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 >
 > - Uw on-premises database evalueren met behulp van de Data Migration Assistant.
 > - Het voorbeeldschema migreren met behulp van de Data Migration Assistant.
-> - De Azure-portal gebruiken om een Azure Database Migration Service-exemplaar te maken.
-> - Een migratieproject maken met behulp van de Azure Database Migration Service.
+> - Maak een instantie van Azure Database Migration Service.
+> - Een migratie project maken met behulp van Azure Database Migration Service.
 > - De migratie uitvoeren.
 > - De migratie controleren.
 > - Een migratierapport downloaden.
@@ -49,7 +49,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
     > Als u SQL Server Integration Services (SSIS) gebruikt en de catalogusdatabase voor uw SSIS-projecten/-pakketten (SSISDB) wilt migreren van SQL Server naar Azure SQL Database, wordt de doel-SSISDB automatisch namens u gemaakt en beheerd wanneer u SSIS in Azure Data Factory (ADF) inricht. Zie het artikel [Pakketten van SQL Server Integration Services migreren naar Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages) voor meer informatie over het migreren van SSIS-pakketten.
   
 - Download en installeer de [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 of hoger.
-- Een Azure Virtual Network (VNet) maken voor de Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-connectiviteit met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Voor meer informatie over het maken van een VNet raadpleegt u de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)en met name de Quick Start-artikelen met stapsgewijze Details.
+- Een Azure Virtual Network (VNet) maken voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-connectiviteit met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Voor meer informatie over het maken van een VNet raadpleegt u de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)en met name de Quick Start-artikelen met stapsgewijze Details.
 
     > [!NOTE]
     > Als u tijdens de VNet-installatie gebruikmaakt van ExpressRoute met Network-peering voor micro soft, voegt u de volgende service- [eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) toe aan het subnet waarin de service wordt ingericht:
@@ -57,14 +57,16 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
     > - Opslag eindpunt
     > - Service Bus-eind punt
     >
-    > Deze configuratie is nood zakelijk omdat de Azure Database Migration Service geen verbinding met internet heeft.
+    > Deze configuratie is nood zakelijk omdat Azure Database Migration Service geen verbinding met internet heeft.
+    >
+    >Als u geen site-naar-site-verbinding hebt tussen het on-premises netwerk en Azure of als er beperkte band breedte voor de site-naar-site-verbinding is, kunt u overwegen Azure Database Migration Service te gebruiken in de hybride modus (preview). De hybride modus maakt gebruik van een on-premises migratie medewerker samen met een exemplaar van Azure Database Migration Service dat in de Cloud wordt uitgevoerd. Als u een exemplaar van Azure Database Migration Service in de hybride modus wilt maken, raadpleegt u het artikel [een exemplaar van Azure database Migration service maken in de hybride modus met behulp van de Azure Portal](https://aka.ms/dms-hybrid-create).
 
-- Zorg ervoor dat de regels van uw VNet-netwerkbeveiligingsgroep niet de volgende poorten voor inkomende communicatie naar Azure Database Migration Service blokkeren: 443, 53, 9354, 445, 12000. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG-verkeer van Azure VNet.
+- Zorg ervoor dat de regels van uw VNet-netwerk beveiligings groep niet de volgende binnenkomende communicatie poorten blok keren naar Azure Database Migration Service: 443, 53, 9354, 445, 12000. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG-verkeer van Azure VNet.
 - Configureer uw [Windows Firewall voor toegang tot de database-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-- Open uw Windows-firewall voor toegang voor de Azure Database Migration Service tot de SQL Server-bron, die standaard TCP-poort 1433 gebruikt.
-- Als u meerdere benoemde SQL Server-exemplaren uitvoert met behulp van dynamische poorten, kunt u desgewenst de SQL Browser Service inschakelen en toegang tot de UDP-poort 1434 via uw firewalls toestaan, zodat de Azure Database Migration Service verbinding kan maken met een benoemd exemplaar op uw bronserver.
-- Wanneer u een firewallapparaat gebruikt voor de brondatabase(s), moet u mogelijk firewallregels toevoegen om voor de Azure Database Migration Service toegang tot de brondatabase(s) voor de migratie toe te staan.
-- Maak een [IP-firewallregel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) op serverniveau voor de Azure SQL Database-server om voor de Azure Database Migration Service toegang tot de doeldatabase toe te staan. Geef het subnet bereik op van het VNet dat voor de Azure Database Migration Service wordt gebruikt.
+- Open uw Windows Firewall om Azure Database Migration Service toegang te geven tot de bron SQL Server, die standaard TCP-poort 1433 is.
+- Als u meerdere benoemde exemplaren van SQL Server met dynamische poorten uitvoert, kunt u de SQL Browser-service inschakelen en toegang tot UDP-poort 1434 toestaan via uw firewalls zodat Azure Database Migration Service verbinding kan maken met een benoemd exemplaar in uw bron naam.
+- Wanneer u een firewall apparaat voor uw bron database (s) gebruikt, moet u mogelijk firewall regels toevoegen om Azure Database Migration Service toegang te geven tot de bron database (s) voor de migratie.
+- Maak een IP- [firewall regel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) op server niveau voor de Azure SQL database-server om Azure database Migration service toegang tot de doel databases toe te staan. Geef het subnet-bereik van het VNet op dat wordt gebruikt voor Azure Database Migration Service.
 - Zorg ervoor dat de referenties waarmee verbinding wordt gemaakt met het SQL Server-bronexemplaar [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql)-machtigingen hebben.
 - Zorg ervoor dat de referenties waarmee verbinding wordt gemaakt met het Azure SQL Database-doelexemplaar CONTROL DATABASE-machtiging hebben op de Azure SQL-doeldatabases.
 
@@ -125,7 +127,7 @@ Voer de volgende stappen uit om het **AdventureWorks2012** -schema te migreren n
 
     ![Details Data Migration Assistant Bronverbinding](media/tutorial-sql-server-to-azure-sql/dma-source-connect.png)
 
-6. Selecteer **Volgende** onder **Verbinding maken met doelserver**, geef de details van de doel-verbinding voor de Azure SQL-database op, selecteer **Verbinden** en selecteer vervolgens de **AdventureWorksAzure**-database die u vooraf heeft ingericht in Azure SQL-database.
+6. Selecteer **volgende**onder **verbinding maken met doel server**de doel verbindings gegevens voor de Azure SQL database, selecteer **verbinding maken**en selecteer vervolgens de **AdventureWorksAzure** -data base die u vooraf hebt ingericht in Azure SQL Enddatabase.
 
     ![Details Data Migration Assistant-doelverbinding](media/tutorial-sql-server-to-azure-sql/dma-target-connect.png)
 
@@ -149,7 +151,7 @@ Voer de volgende stappen uit om het **AdventureWorks2012** -schema te migreren n
 
    ![Portal-abonnementen weergeven](media/tutorial-sql-server-to-azure-sql/portal-select-subscription1.png)
 
-2. Selecteer het abonnement waarin u het Azure Database Migration Service-exemplaar wilt maken en selecteer vervolgens **Resourceproviders**.
+2. Selecteer het abonnement waarin u het exemplaar van Azure Database Migration Service wilt maken en selecteer vervolgens **resource providers**.
 
     ![Resourceproviders weergeven](media/tutorial-sql-server-to-azure-sql/portal-select-resource-provider.png)
 
@@ -169,11 +171,11 @@ Voer de volgende stappen uit om het **AdventureWorks2012** -schema te migreren n
   
 3. Geef in het scherm **Migratieservice maken** een naam op voor de service, het abonnement en een nieuwe of bestaande resourcegroep.
 
-4. Selecteer het abonnement waarin u het Azure Database Migration Service-exemplaar wilt maken.
+4. Selecteer de locatie waarin u het exemplaar van Azure Database Migration Service wilt maken.
 
 5. Selecteer een bestaand VNet of maak een nieuw account.
 
-    Het VNet biedt de Azure Database Migration Service toegang tot de bron-SQL Server en het doel Azure SQL Database exemplaar.
+    Het VNet biedt Azure Database Migration Service toegang tot de bron-SQL Server en het doel Azure SQL Database exemplaar.
 
     Zie het artikel [een virtueel netwerk maken met behulp van de Azure Portal](https://aka.ms/DMSVnet)voor meer informatie over het maken van een VNet in de Azure Portal.
 
@@ -191,11 +193,11 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
 1. Selecteer in de Azure-portal **Alle diensten**, zoek naar Azure Database Migration Service, en selecteer vervolgens **Azure Database Migration Service**.
 
-     ![Zoek alle exemplaren van de Azure Database Migration Service](media/tutorial-sql-server-to-azure-sql/dms-search.png)
+     ![Alle exemplaren van Azure Database Migration Service zoeken](media/tutorial-sql-server-to-azure-sql/dms-search.png)
 
 2. Zoek in het scherm **Azure Database Migration service** naar de naam van de Azure Database Migration Service-instantie die u hebt gemaakt en selecteer vervolgens het exemplaar.
 
-    ![Zoek uw exemplaar van de Azure Database Migration Service](media/tutorial-sql-server-to-azure-sql/dms-instance-search.png)
+    ![Zoek uw exemplaar van Azure Database Migration Service](media/tutorial-sql-server-to-azure-sql/dms-instance-search.png)
 
 3. Selecteer + **Nieuw migratieproject**.
 4. Geef in het scherm **Nieuw migratieproject** een naam op voor het project in het tekstvak **bronservertype**, selecteer **SQL Server**, selecteer in het tekstvak **doelserver type** **Azure SQL Database**, en kies vervolgens **Type activiteit kiezen**, selecteer **Offline gegevensmigratie**.
@@ -230,15 +232,15 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
 2. Selecteer **Opslaan**, en klik vervolgens in het scherm **Toewijzen aan doeldatabases**, wijs de bron- en de doeldatabase voor de migratie toe.
 
-    Als de doeldatabase de naam van de dezelfde database als de bron-database bevat, wordt in de Azure Database Migration Service de doeldatabase standaard geselecteerd.
+    Als de doel database dezelfde database naam als de bron database bevat Azure Database Migration Service de doel database standaard geselecteerd.
 
     ![Toewijzen aan doeldatabases](media/tutorial-sql-server-to-azure-sql/dms-map-targets-activity2.png)
 
 3. Selecteer **Opslaan**in het scherm **Tabellen selecteren**, vouw de tabellenlijst uit en controleer de lijst met betrokken velden.
 
-    Houd er rekening mee dat de Azure Database Migration Service automatisch alle lege brontabellen selecteert die aanwezig zijn op het doel-Azure SQL Database-exemplaar. Als u tabellen wilt terug migreren die al gegevens bevatten, moet u expliciet de tabellen op deze blade selecteren.
+    Houd er rekening mee dat Azure Database Migration Service automatisch alle lege bron tabellen selecteert die voor komen op het doel Azure SQL Database exemplaar. Als u tabellen wilt terug migreren die al gegevens bevatten, moet u expliciet de tabellen op deze blade selecteren.
 
-    ![Tabellen selecteren](media/tutorial-sql-server-to-azure-sql/dms-configure-setting-activity2.png)
+    ![Selecteer tabellen](media/tutorial-sql-server-to-azure-sql/dms-configure-setting-activity2.png)
 
 4. Selecteer **Opslaan**in het scherm **Migratieoverzicht**, geef in het tekstvak **Activiteitennaam** een naam op voor de migratieactiviteit.
 
@@ -268,9 +270,9 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
 3. Controleer de doel-database(s) op de doel-Azure SQL Database-server.
 
-### <a name="additional-resources"></a>Aanvullende resources
+### <a name="additional-resources"></a>Aanvullende bronnen
 
-- [SQL-migratie met behulp van Azure Data Migration Service (DMS)](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587) hands-on lab.
+- [SQL-migratie met behulp van de Azure Data Migration service](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587) -praktijk op Lab.
 - Zie het artikel [Bekende problemen met en tijdelijke oplossingen voor online migraties naar Azure SQL Database](known-issues-azure-sql-online.md) voor informatie over bekende problemen en beperkingen bij het uitvoeren van online migraties naar Azure SQL Database.
-- Zie het artikel [Wat is de Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview) voor informatie over de Azure Database Migration Service.
+- Zie het artikel [Wat is er Azure database Migration service?](https://docs.microsoft.com/azure/dms/dms-overview)voor informatie over Azure database Migration service.
 - Zie het artikel [Wat is de service Azure SQL Database?](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview) voor informatie over Azure SQL Database.

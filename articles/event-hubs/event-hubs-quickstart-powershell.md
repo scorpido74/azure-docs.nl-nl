@@ -1,5 +1,5 @@
 ---
-title: Een event hub maken met behulp van PowerShell - Azure Event Hubs | Microsoft Docs
+title: 'Snelstartgids: een Event Hub maken met behulp van Power shell-Azure Event Hubs'
 description: In deze snelstart wordt beschreven hoe u een event hub maakt met behulp van Azure PowerShell en vervolgens gebeurtenissen verzendt en ontvangt met behulp van .NET Standard SDK.
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -9,16 +9,16 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: b3847f798fde8702d6d95450c68fbfbca4c97f9d
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 2a88fe340037c31a71cb34181682095f31400c36
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604467"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720608"
 ---
-# <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Snelstartgids: Een event hub maken met behulp van Azure PowerShell
+# <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Snelstart: Een event hub maken met behulp van Azure PowerShell
 
 Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs.
 
@@ -69,7 +69,7 @@ Gefeliciteerd! U hebt Azure PowerShell gebruikt om een ​​Event Hubs-naamruim
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u de Event Hubs-naamruimte gemaakt en voorbeeldtoepassingen gebruikt om gebeurtenissen te verzenden en ontvangen vanuit uw Event Hub. Zie voor stapsgewijze instructies voor het verzenden van gebeurtenissen naar (of) gebeurtenissen ontvangen van een event hub, de **verzenden en ontvangen van gebeurtenissen** zelfstudies: 
+In dit artikel hebt u de Event Hubs-naamruimte gemaakt en voorbeeldtoepassingen gebruikt om gebeurtenissen te verzenden en ontvangen vanuit uw Event Hub. Voor stapsgewijze instructies voor het verzenden van gebeurtenissen naar (of) het ontvangen van gebeurtenissen van een Event Hub, raadpleegt u de zelf studies voor het **verzenden en ontvangen van gebeurtenissen** : 
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)

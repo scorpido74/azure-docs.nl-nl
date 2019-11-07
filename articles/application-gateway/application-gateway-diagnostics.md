@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 7b9cbd4e84f60b42e8eb6cb250a9b25f398fd4a0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9e1fe0e5bae462715a8cb2950cca100f0f409325
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176449"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718725"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-end status-en Diagnostische logboeken voor Application Gateway
 
@@ -38,7 +38,7 @@ Het status rapport van de back-end weerspiegelt de uitvoer van de Application Ga
 
 ### <a name="view-back-end-health-through-the-portal"></a>Status van de back-end weer geven via de portal
 
-In de portal wordt de status van de back-end automatisch ontvangen. In een bestaande toepassings gateway selecteert u **bewaking** > **back-end status**. 
+In de portal wordt de status van de back-end automatisch ontvangen. In een bestaande toepassings gateway selecteert u **bewaking** > **back-end Health**. 
 
 Elk lid van de back-end-pool wordt op deze pagina vermeld (of het nu een NIC, IP of FQDN-naam is). De naam van de back-end, de poort, de HTTP-instellingen voor de back-end en de integriteits status worden weer gegeven. Geldige waarden voor de integriteits status zijn **in orde**, **beschadigd**en **onbekend**.
 
@@ -112,11 +112,11 @@ U hebt drie opties voor het opslaan van uw logboeken:
 
 Activiteitenlogboekregistratie is automatisch ingeschakeld voor elke Resource Manager-resource. U moet logboek registratie van toegang en prestaties inschakelen om te beginnen met het verzamelen van de gegevens die beschikbaar zijn via deze logboeken. Als u logboek registratie wilt inschakelen, gebruikt u de volgende stappen:
 
-1. Noteer de resource-ID van uw opslagaccount waar de logboekgegevens worden opgeslagen. Deze waarde heeft de indeling:/Subscriptions/\<subscriptionId \>/resourceGroups/\<resource groeps naam \>/providers/Microsoft.Storage/storageAccounts/\<storage account naam \>. U kunt elk opslagaccount in uw abonnement gebruiken. U kunt de Azure-portal gebruiken om deze informatie te vinden.
+1. Noteer de resource-ID van uw opslagaccount waar de logboekgegevens worden opgeslagen. Deze waarde heeft de indeling:/Subscriptions/\<subscriptionId\>/resourceGroups/\<resource groep name\>/providers/Microsoft.Storage/storageAccounts/\<Storage account name\>. U kunt elk opslagaccount in uw abonnement gebruiken. U kunt de Azure-portal gebruiken om deze informatie te vinden.
 
     ![Portal: Resource-ID voor opslag account](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. Noteer de resource-ID van uw toepassings gateway waarvoor logboek registratie is ingeschakeld. Deze waarde heeft de indeling:/Subscriptions/\<subscriptionId \>/resourceGroups/\<resource groeps naam \>/providers/Microsoft.Network/applicationGateways/\<application gateway naam \>. U kunt de portal gebruiken om deze informatie te vinden.
+2. Noteer de resource-ID van uw toepassings gateway waarvoor logboek registratie is ingeschakeld. Deze waarde heeft de indeling:/Subscriptions/\<subscriptionId\>/resourceGroups/\<resource groep name\>/providers/Microsoft.Network/applicationGateways/\<Application Gateway name\>. U kunt de portal gebruiken om deze informatie te vinden.
 
     ![Portal: Resource-ID voor toepassings gateway](./media/application-gateway-diagnostics/diagnostics2.png)
 
@@ -213,7 +213,7 @@ Voor Application Gateway en WAF v2 bevatten de logboeken nog iets meer informati
 |httpVersion     | HTTP-versie van de aanvraag.        |
 |receivedBytes     | Grootte van ontvangen pakket, in bytes.        |
 |sentBytes| Grootte van het verzonden pakket, in bytes.|
-|timeTaken| De tijds duur (in milliseconden) die nodig is voor het verwerken van een aanvraag en het antwoord op verzen ding. Dit wordt berekend als het interval van de tijd dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt naar het tijdstip waarop de bewerking voor het verzenden van het antwoord is voltooid. Het is belang rijk te weten dat het veld voor de duur doorgaans de tijd bevat dat de aanvraag-en antwoord pakketten via het netwerk onderweg zijn. |
+|timeTaken| De tijds duur (in **seconden**) die nodig is voor het verwerken van een aanvraag en het antwoord op verzen ding. Dit wordt berekend als het interval van de tijd dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt naar het tijdstip waarop de bewerking voor het verzenden van het antwoord is voltooid. Het is belang rijk te weten dat het veld voor de duur doorgaans de tijd bevat dat de aanvraag-en antwoord pakketten via het netwerk onderweg zijn. |
 |sslEnabled| Hiermee wordt aangegeven of communicatie met de back-endservers gebruik maakt van SSL. Geldige waarden zijn in-en uitgeschakeld.|
 |sslCipher| Coderings suite wordt gebruikt voor SSL-communicatie (als SSL is ingeschakeld).|
 |sslProtocol| SSL/TLS-protocol dat wordt gebruikt (als SSL is ingeschakeld).|
@@ -263,7 +263,7 @@ Het prestatie logboek wordt alleen gegenereerd als u het hebt ingeschakeld op el
 |requestCount     | Aantal geleverde aanvragen.        |
 |Periode | De gemiddelde latentie (in milliseconden) van aanvragen van het exemplaar naar de back-end die de aanvragen verzendt. |
 |failedRequestCount| Aantal mislukte aanvragen.|
-|vracht| Gemiddelde door Voer sinds het laatste logboek, gemeten in bytes per seconde.|
+|Doorvoer| Gemiddelde door Voer sinds het laatste logboek, gemeten in bytes per seconde.|
 
 ```json
 {

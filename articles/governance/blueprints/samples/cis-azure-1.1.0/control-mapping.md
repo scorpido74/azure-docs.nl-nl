@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/01/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 64af398ec4829a0336294b33fef102392b9a4099
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6549cf030772d805b063510b9931968027639511
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163872"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583143"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Aanbevelings toewijzing van het CIS-voor beeld van het DIS Microsoft Azure fundament-benchmarks
 
@@ -356,13 +356,13 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de toewijzing van het besturings element van CIS Microsoft Azure Stichtings-benchmarks hebt bekeken, gaat u naar het volgende artikel voor meer informatie over de blauw druk of gaat u naar Azure Policy in de Azure Portal om het initiatief toe te wijzen:
+Nu u de beheer toewijzing van de CIS Microsoft Azure Stichtings-benchmark blauw drukken hebt bekeken, gaat u naar de volgende artikelen voor meer informatie over de blauw druk of gaat u naar Azure Policy in de Azure Portal om het initiatief toe te wijzen:
 
 > [!div class="nextstepaction"]
-> [CIS Microsoft Azure Stichting-benchmark blauw druk-overzicht](./index.md)
-> [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
+> [Cis Microsoft Azure stichtings-benchmark blauw druk-overzicht](./index.md)
+> [CIS Microsoft Azure Stichtings bebenchmarks blauw druk-stappen implementeren](./deploy.md)
 
-Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
+Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

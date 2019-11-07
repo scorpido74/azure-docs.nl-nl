@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 98ebc8d9408d937730643056f65c3d8011c1fdc4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: ecad41097786a40f7c605a686f085136856c950a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493404"
+ms.locfileid: "73581594"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -171,18 +171,21 @@ In dit experiment wordt **VotingEnsemble** beschouwd als het beste model, op bas
 
 1. Selecteer de knop **beste model implementeren** in de linkerbenedenhoek.
 
-1. Vul het deel venster **beste model implementeren** als volgt in:
+1. Vul het deel venster **een model implementeren** als volgt in:
 
     Veld| Waarde
     ----|----
     Implementatie naam| mijn-automl-implementeren
     Beschrijving van implementatie| Mijn eerste geautomatiseerde machine learning-experiment implementatie
-    Score script| Automatisch genereren
-    Omgevings script| Automatisch genereren
+    Reken type | Azure Compute-instantie (ACI) selecteren
+    Authenticatie inschakelen| Scha. 
+    Aangepaste implementaties gebruiken| Scha. Hiermee staat u toe dat het standaard stuurprogrammabestand (Score script) en het omgevings bestand automatisch worden gegenereerd. 
     
+    In dit voor beeld gebruiken we de standaard instellingen in het menu *Geavanceerd* . 
+
 1. Selecteer **Implementeren**.  
 
-    In het deel venster **Aanbevolen model** wordt een bericht over een geslaagde implementatie weer gegeven onder **status implementeren** wanneer de implementatie is voltooid. Selecteer periodiek **vernieuwen** om de implementatie status te controleren.
+    Boven aan het scherm **uitvoeren** wordt een groen bericht weer gegeven. in het deel venster **Aanbevolen model** verschijnt een status bericht onder status van **implementatie**. Selecteer periodiek **vernieuwen** om de implementatie status te controleren.
     
 U hebt nu een Operational web service voor het genereren van voor spellingen. 
 

@@ -1,5 +1,5 @@
 ---
-title: Stapsgewijs een tabel kopiëren met behulp van Azure Data Factory | Microsoft Docs
+title: 'Stapsgewijs een tabel kopiëren met behulp van Azure Data Factory '
 description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee gegevens uit een Azure SQL-database stapsgewijs worden gekopieerd naar Azure Blob Storage.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 3626e68c8cedfdd2d22f47cd92d6e7c4b8b5d180
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: a446574f0a6b2b18959f1a3c3e9a02a0a97e9f6b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806444"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683372"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Stapsgewijs gegevens uit een Azure SQL-database laden in Azure Blob Storage
 In deze zelfstudie maakt u een Azure-gegevensfactory met een pijplijn waarmee deltagegevens uit een tabel in een Azure SQL-database worden geladen naar Azure Blob Storage. 
@@ -25,13 +25,13 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Bereid de gegevensopslag voor om de grenswaarde in op te slaan.
-> * Een data factory maken.
+> * Maak een gegevensfactory.
 > * Maak gekoppelde services. 
 > * Bron-, sink- en grenswaardegegevenssets maken.
 > * Maak een pijplijn.
 > * Voer de pijplijn uit.
-> * De pijplijnuitvoering controleert. 
-> * Resultaten controleren
+> * Controleer de pijplijnuitvoering. 
+> * Resultaat controleren
 > * Voeg meer gegevens toe aan de bron.
 > * Voer de pijplijn opnieuw uit.
 > * Controleer de tweede pijplijnuitvoering.
@@ -146,10 +146,10 @@ WHERE [TableName] = @TableName
 END
 ```
 
-## <a name="create-a-data-factory"></a>Data factory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
-2. Selecteer in het menu links de optie **een resource** > **Analytics** > -**Data Factory**maken: 
+2. Selecteer in het menu aan de linkerkant **een resource maken** > **Analytics** > **Data Factory**: 
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -167,8 +167,8 @@ END
         Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/resource-group-overview.md) voor meer informatie.  
 6. Selecteer **V2** als de **versie**.
 7. Selecteer de **locatie** voor de gegevensfactory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
-8. Klik op **Create**.      
-9. Na het aanmaken ziet u de pagina **Data Factory** zoals weergegeven in de afbeelding.
+8. Klik op **Maken**.      
+9. Wanneer de gegevensfactory is gemaakt, ziet u de pagina **Gegevensfactory** zoals wordt weergegeven in de afbeelding.
    
    ![Startpagina van de gegevensfactory](./media/doc-common-process/data-factory-home-page.png)
 10. Klik op de tegel **Author & Monitor** om de gebruikersinterface (UI) van Azure Data Factory te openen in een afzonderlijk tabblad.
@@ -195,7 +195,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     1. Voer **AzureSqlDatabaseLinkedService** in als **Naam**. 
     2. Selecteer uw Azure SQL-server als **Servernaam**
     3. Selecteer de **naam van uw data base** in de vervolg keuzelijst. 
-    4. Voer het**wacht woord**voor de **gebruikers naam** & in. 
+    4. Voer uw **gebruikers naam** in & **wacht woord**. 
     5. Als u de verbinding met de Azure SQL-database wilt testen, klikt u op **Verbinding testen**.
     6. Klik op **Voltooien**.
     7. Controleer of **AzureSqlDatabaseLinkedService** is geselecteerd voor de **gekoppelde service**.
@@ -212,7 +212,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
 12. Ga in het venster Eigenschappen voor de tweede **opzoekactiviteit** naar het tabblad **Instellingen** en klik op **Nieuw**. U maakt een gegevensset om te verwijzen naar de brontabel met de nieuwe grenswaarde (maximumwaarde van LastModifyTime). 
 
 13. Selecteer in het venster **nieuwe gegevensset** de optie **Azure SQL database**en klik op **door gaan**. 
-14. Voer in het venster **set Properties** **Source dataset** in als **name**. Selecteer **AzureSqlDatabaseLinkedService** als **Gekoppelde service**.
+14. Voer in het venster **set Properties** **Source dataset** in als **name**. Selecteer **AzureSqlDatabaseLinkedService** bij **Linked service**.
 15. Selecteer **[dbo].[data_source_table]** als Tabel. Verderop in de zelfstudie geeft u een query op voor deze gegevensset. De query heeft voorrang op de tabel die u in deze stap opgeeft.
 16. Selecteer **Finish**. 
 17. Ga naar de pijplijneditor door op het pijplijntabblad bovenaan te klikken of door in de structuurweergave aan de linkerkant op de naam van de pijplijn te klikken. Bevestig in het venster Eigenschappen voor de **opzoekactiviteit** dat **SourceDataset** is geselecteerd in het veld **Brongegevensset**. 
@@ -230,7 +230,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     ![Opzoekactiviteiten verbinden met kopieeractiviteit](./media/tutorial-incremental-copy-portal/connection-lookups-to-copy.png)
 21. Selecteer de **kopieeractiviteit** en controleer of de eigenschappen voor de activiteit worden weergegeven in het venster **Eigenschappen**. 
 
-22. Ga naar het tabblad **Bron** in het venster **Eigenschappen** en voer de volgende stappen uit:
+22. Ga naar **Source** in het venster **Properties** en voer de volgende stappen uit:
 
     1. Selecteer **SourceDataset** in het veld **Brongegevensset**. 
     2. Selecteer **Query** in het veld **Query gebruiken**. 
@@ -249,13 +249,13 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
 26. Voer de volgende stappen uit in het venster **nieuwe gekoppelde service (Azure Blob Storage)** : 
 
     1. Voer **AzureStorageLinkedService** in als **Naam**. 
-    2. Selecteer uw Azure Storage-account bij **Storage account name**.
+    2. Selecteer uw Azure Storage-account als **naam van het opslagaccount**.
     3. Test de verbinding en klik vervolgens op **volt ooien**. 
 
 27. Controleer in het venster **set Properties** of **AzureStorageLinkedService** is geselecteerd voor **gekoppelde service**. Selecteer vervolgens **Voltooien**.
 28. Ga naar het tabblad **verbinding** van SinkDataset en voer de volgende stappen uit:
     1. Voer voor **het veld bestandspad** **adftutorial/incrementalcopy**in. **adftutorial** is de naam van de blob-container en **incrementalcopy** is de naam van de map. In dit fragment wordt ervan uitgegaan dat u een blobcontainer hebt met de naam adftutorial in uw Blob-opslag. Maak de container als deze bestaat niet of stel deze in op de naam van een bestaande container. Als de uitvoermap **incrementalcopy** niet bestaat, wordt deze automatisch gemaakt in Azure Data Factory. U kunt ook de knop **Bladeren** voor het **bestandspad** gebruiken om naar een map in een blob-container te navigeren.
-    2. Voor het **bestand** gedeelte van het **veld bestandspad** selecteert u **dynamische inhoud toevoegen [Alt + P]** en voert `@CONCAT('Incremental-', pipeline().RunId, '.txt')`u vervolgens in het geopende venster in. Selecteer vervolgens **Voltooien**. De bestandsnaam wordt dynamisch gegenereerd met behulp van de expressie. Elke pijplijnuitvoering heeft een unieke id. De kopieeractiviteit gebruikt de run-id om de bestandsnaam te genereren. 
+    2. Voor het **bestand** deel van het **veld bestandspad** selecteert u **dynamische inhoud toevoegen [Alt + P]** en voert u vervolgens `@CONCAT('Incremental-', pipeline().RunId, '.txt')`in het geopende venster. Selecteer vervolgens **Voltooien**. De bestandsnaam wordt dynamisch gegenereerd met behulp van de expressie. Elke pijplijnuitvoering heeft een unieke id. De kopieeractiviteit gebruikt de run-id om de bestandsnaam te genereren. 
 
 28. Ga naar de **pijplijneditor** door op het pijplijntabblad bovenaan te klikken of door in de structuurweergave aan de linkerkant op de naam van de pijplijn te klikken. 
 29. Vouw in de **Activiteiten**-werkset de optie **Algemeen** uit. Gebruik vervolgens slepen-en-neerzetten om de **opgeslagen-procedureactiviteit** uit de **Activiteiten**-werkset te verplaatsen naar het ontwerpoppervlak voor pijplijnen. **Verbind** de groene uitvoer (geslaagd) van de **kopieeractiviteit** met de **opgeslagen-procedureactiviteit**. 
@@ -264,12 +264,12 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
 
 25. Ga naar het tabblad **SQL-account** en selecteer **AzureSqlDatabaseLinkedService** voor **gekoppelde service**. 
 
-26. Ga naar het tabblad **Opgeslagen procedure** en voer de volgende stappen uit: 
+26. Open het tabblad **Stored Procedure** en voer de volgende stappen uit: 
 
     1. Selecteer **usp_write_watermark** als naam van de **opgeslagen procedure**. 
     2. Als u waarden wilt opgeven voor de opgeslagen-procedureparameters, klikt u op **Importparameter** en voert u de volgende waarden voor de parameters in: 
 
-        | Name | Type | Value | 
+        | Naam | Type | Waarde | 
         | ---- | ---- | ----- | 
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Tekenreeks | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
@@ -345,7 +345,7 @@ PersonID | Name | LastModifytime
 
 
 ## <a name="trigger-another-pipeline-run"></a>Een andere pijplijnuitvoering activeren
-1. Ga naar het tabblad **Bewerken**. Klik op de pijplijn in de structuurweergave als deze niet is geopend in de ontwerper. 
+1. Ga naar het tabblad **bewerken** . Klik op de pijp lijn in de structuur weergave als deze niet is geopend in de ontwerp functie. 
 
 2. Klik op **trigger toevoegen** op de werk balk en klik op **nu activeren**. 
 
@@ -383,13 +383,13 @@ In deze zelfstudie hebt u de volgende stappen uitgevoerd:
 
 > [!div class="checklist"]
 > * Bereid de gegevensopslag voor om de grenswaarde in op te slaan.
-> * Een data factory maken.
+> * Maak een gegevensfactory.
 > * Maak gekoppelde services. 
 > * Bron-, sink- en grenswaardegegevenssets maken.
 > * Maak een pijplijn.
 > * Voer de pijplijn uit.
-> * De pijplijnuitvoering controleert. 
-> * Resultaten controleren
+> * Controleer de pijplijnuitvoering. 
+> * Resultaat controleren
 > * Voeg meer gegevens toe aan de bron.
 > * Voer de pijplijn opnieuw uit.
 > * Controleer de tweede pijplijnuitvoering.

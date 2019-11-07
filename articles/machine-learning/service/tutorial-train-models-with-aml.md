@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd215e754b7e72c9ac424a53015955332068558e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 4d16c07bf42c99b905868cb956d82e8723da61d6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493564"
+ms.locfileid: "73581529"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Zelf studie: classificatie modellen van een installatie kopie trainen met MNIST-gegevens en scikit-informatie met behulp van Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begin
 * Voltooi de [zelf studie: Ga aan de slag met het maken van uw eerste ml-experiment](tutorial-1st-experiment-sdk-setup.md) tot:
     * Een werkruimte maken
     * Kopieer de notebooks van de zelf studies naar uw map in de werk ruimte.
-    * Maak een cloud-gebaseerd reken exemplaar.
+    * Een VM op basis van een virtuele notebook maken.
 
 * Open in de map gekloonde **zelf studies** de notebook **IMG-classificatie-part1-training. ipynb** . 
 

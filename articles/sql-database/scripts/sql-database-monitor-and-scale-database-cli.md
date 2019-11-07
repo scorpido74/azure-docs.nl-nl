@@ -1,5 +1,5 @@
 ---
-title: 'Azure CLI-voorbeeldscript: een Azure SQL-database controleren en schalen | Microsoft Docs'
+title: CLI-voor beeld-monitor-Scale-één Azure-SQL database
 description: Azure CLI-voorbeeldscript voor het controleren en schalen van één Azure SQL-database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 9468f5d631dd713c9e131c63de824c5e552178e3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 96a27d5bfc76c78688d6b6b2a02c988dde764248
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569912"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691603"
 ---
 # <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>CLI gebruiken voor het controleren en schalen van één Azure SQL-database
 
@@ -53,7 +53,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
 | [az sql db show-usage](https://docs.microsoft.com/cli/azure/sql#az-sql-show-usage) | Toont de gebruikte grootte voor een individuele of pooldatabase. |
 | [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) | Hiermee worden database-eigenschappen (zoals de servicelaag of de rekenkracht) bijgewerkt of wordt een database verplaatst naar, uit of tussen elastische pools. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen

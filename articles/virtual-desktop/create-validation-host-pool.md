@@ -1,5 +1,5 @@
 ---
-title: Een Windows-hostgroep voor virtueel bureau blad maken om service-updates te valideren-Azure
+title: Service-updates voor de hostgroep voor Windows Virtual Desktop-Azure
 description: Een groep met validatie-hosts maken om service-updates te bewaken voordat updates voor productie worden uitgevoerd.
 services: virtual-desktop
 author: Heidilohr
@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: c294bb41afae1257add0c96a9f77adad3f871849
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: fd8be170f0f4388ee711881dde16923b9547f21f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676681"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606920"
 ---
-# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Zelfstudie: Een hostpool voor het valideren van service-updates maken
+# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Zelf studie: een hostgroep maken om service-updates te valideren
 
 Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows-Tenant omgevingen voor virtueel bureau blad. Voordat u hostgroepen in uw productie omgeving implementeert, raden we u ten zeerste aan een groep met validatie-hosts te maken. Updates worden eerst toegepast op groepen met validatie-hosts, zodat u service-updates kunt bewaken voordat deze naar uw productie omgeving worden uitgevouwen. Zonder een validatie groep detecteert u mogelijk geen wijzigingen die fouten introduceren. Dit kan leiden tot uitval tijd voor gebruikers in uw productie omgeving.
 
@@ -34,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ## <a name="create-your-host-pool"></a>Uw hostgroep maken
 
 U kunt een hostgroep maken door de instructies in een van deze artikelen te volgen:
-- [Zelfstudie: Een hostgroep maken met Azure Marketplace @ no__t-0
+- [Zelf studie: een hostgroep maken met Azure Marketplace](create-host-pools-azure-marketplace.md)
 - [Een hostgroep met een Azure Resource Manager-sjabloon maken](create-host-pools-arm-template.md)
 - [Een hostgroep maken met Power shell](create-host-pools-powershell.md)
 

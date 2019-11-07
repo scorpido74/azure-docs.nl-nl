@@ -1,5 +1,5 @@
 ---
-title: PowerShell-voorbeeldsynchronisatie tussen SQL Database en SQL Server on-premises | Microsoft Docs
+title: 'Power shell-voor beeld: synchroniseren tussen SQL Database en SQL Server on-premises'
 description: Azure PowerShell-voorbeeldscript om te synchroniseren tussen een Azure SQL-database en een on-premises SQL Server-database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 54e459d1dbb4102cbd57f4e42572b4710d9899b2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 74821911994f189ae77d84468d75ccc134ba8db6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569793"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691497"
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>PowerShell gebruiken om te synchroniseren tussen een SQL-database en een on-premises SQL Server-database
 
@@ -394,12 +394,12 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
 
 -   Overzicht: [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync](../sql-database-sync-data.md)
 -   Data Sync instellen
-    - In de portal - [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](../sql-database-get-started-sql-data-sync.md)
+    - In de portal: [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](../sql-database-get-started-sql-data-sync.md)
     - Met PowerShell
         -  [PowerShell gebruiken om meerdere Azure SQL-databases te synchroniseren](sql-database-sync-data-between-sql-databases.md)
 -   Data Sync-agent: [Data Sync-agent voor Azure SQL Data Sync](../sql-database-data-sync-agent.md)
 -   Best practices: [Best practices voor Azure SQL Data Sync](../sql-database-best-practices-data-sync.md)
--   SQL Data Sync controleren [met Azure monitor](../sql-database-sync-monitor-oms.md) -logboeken
+-   SQL Data Sync controleren [met Azure monitor-logboeken](../sql-database-sync-monitor-oms.md)
 -   Problemen oplossen: [Problemen met Azure SQL Data Sync oplossen](../sql-database-troubleshoot-data-sync.md)
 -   Het synchronisatieschema bijwerken
     -   Met Transact-SQL: [De replicatie van schemawijzigingen in Azure SQL Data Sync automatiseren](../sql-database-update-sync-schema.md)

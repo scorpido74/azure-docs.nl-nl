@@ -1,22 +1,22 @@
 ---
-title: Aangepaste gebeurtenissen verzenden naar opslagwachtrij - Event Grid, Azure CLI
-description: Gebruik Azure Event Grid en Azure CLI om een onderwerp te publiceren en u te abonneren op deze gebeurtenis. Er wordt een opslagwachtrij gebruikt voor het eindpunt.
+title: 'Snelstartgids: aangepaste gebeurtenissen verzenden naar een opslag wachtrij-Event Grid, Azure CLI'
+description: 'Snelstartgids: gebruik Azure Event Grid en Azure CLI om een onderwerp te publiceren en u te abonneren op deze gebeurtenis. Er wordt een opslagwachtrij gebruikt voor het eindpunt.'
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 01/07/2019
+ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 9d1d9caccac0fcdeb4e1d2dae40e677f36de40ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44ffa570cfda39c186966866ee5755ab090083a5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170266"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721449"
 ---
-# <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Snelstart: Aangepaste gebeurtenissen naar Azure Queue Storage routeren met behulp van Azure CLI en Event Grid
+# <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Snelstartgids: aangepaste gebeurtenissen naar Azure Queue-opslag door sturen met Azure CLI en Event Grid
 
 Azure Event Grid is een gebeurtenisservice voor de cloud. Azure Queue Storage is een van de ondersteunde gebeurtenis-handlers. In dit artikel gebruikt u de Azure CLI om een aangepast onderwerp te maken, u op het aangepaste onderwerp te abonneren en de gebeurtenis te activeren om het resultaat weer te geven. U verstuurt de gebeurtenissen naar de opslagwachtrij.
 
@@ -67,7 +67,7 @@ az storage queue create --name $queuename --account-name $storagename
 
 ## <a name="subscribe-to-a-custom-topic"></a>Abonneren op een aangepast onderwerp
 
-U abonneert u op een aangepast onderwerp om Event Grid te laten weten welke gebeurtenissen u wilt traceren. In het volgende voorbeeld ziet u hoe u zich abonneert op het aangepaste onderwerp dat u hebt gemaakt, en hoe de resource-id van de opslagwachtrij wordt doorgegeven voor het eindpunt. Met Azure CLI geeft u de opslag-id van Queue door als het eindpunt. Het eindpunt heeft deze indeling:
+U abonneert u op een aangepast onderwerp om Event Grid welke gebeurtenissen u wilt bijhouden. In het volgende voor beeld wordt een abonnement genomen op het aangepaste onderwerp dat u hebt gemaakt en wordt de resource-ID van de wachtrij opslag voor het eind punt door gegeven. Met Azure CLI geeft u de opslag-id van Queue door als het eindpunt. Het eindpunt heeft deze indeling:
 
 `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/queueservices/default/queues/<queue-name>`
 

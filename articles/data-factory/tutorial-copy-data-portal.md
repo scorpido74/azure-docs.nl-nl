@@ -1,5 +1,5 @@
 ---
-title: Een data factory-pijplijn maken met Azure Portal | Microsoft Docs
+title: De Azure Portal gebruiken om een data factory pijp lijn te maken
 description: Deze zelfstudie bevat stapsgewijze instructies voor het maken van een data factory met een pijplijn met behulp van Azure Portal. De pijplijn gebruikt de kopieeractiviteit om gegevens vanuit Azure Blob-opslag naar een SQL database te kopiëren.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 9a2ad8070c0406446f53c1bcaa6d341cdca0bb2a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ba348cdd478b1d66d7b7286ba0a54adfd98137e2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140717"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683619"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Gegevens kopiëren van Azure Blob-opslag naar een SQL database met Azure Data Factory
 In deze zelfstudie maakt u een data factory met behulp van de Azure Data Factory-gebruikersinterface. Met de pijplijn in deze data factory worden gegevens gekopieerd van Azure Blob-opslag naar een SQL database. Het configuratiepatroon in deze zelfstudie geldt voor het kopiëren van een gegevensarchief op basis van bestanden naar een relationeel gegevensarchief. Zie de tabel [Ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die worden ondersteund als bron en als sink.
@@ -27,7 +27,7 @@ In deze zelfstudie maakt u een data factory met behulp van de Azure Data Factory
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Maak een gegevensfactory.
 > * Een pijplijn met kopieeractiviteit maken.
 > * De uitvoering van de pijplijn testen.
 > * De pijplijn handmatig activeren.
@@ -70,19 +70,19 @@ Voer nu de volgende stappen uit om uw blobopslag en SQL database voor te bereide
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. Geef Azure-services toegang tot SQL Server. Zorg ervoor dat **Toegang tot Azure-services toestaan** is **ingeschakeld** voor SQL Server, zodat Data Factory gegevens naar SQL Server kan schrijven. Om deze instelling te controleren en in te scha kelen, gaat u naar de > overzicht van Azure SQL Server > Set Server Firewall > Stel de optie **toegang tot Azure-Services toestaan** **in op aan**.
+1. Geef Azure-services toegang tot de SQL-server. Zorg ervoor dat **Toegang tot Azure-services toestaan** is **ingeschakeld** voor SQL Server, zodat Data Factory gegevens naar SQL Server kan schrijven. Om deze instelling te controleren en in te scha kelen, gaat u naar de > overzicht van Azure SQL Server > Set Server Firewall > Stel de optie **toegang tot Azure-Services toestaan** **in op aan**.
 
-## <a name="create-a-data-factory"></a>Data factory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 In deze stap maakt u een data factory en start u de Data Factory-gebruikersinterface om een pijplijn te maken in de data factory. 
 
 1. Open **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
-2. Selecteer in het menu links de optie **een resource** > **Analytics** > -**Data Factory**maken: 
+2. Selecteer in het menu aan de linkerkant **een resource maken** > **Analytics** > **Data Factory**: 
   
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 3. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in bij **Naam**. 
  
-   De naam van de Azure-gegevensfactory moet *wereldwijd uniek* zijn. Als u een foutbericht ontvangt dat betrekking heeft op de waarde die bij de naam is ingevuld, voert u een andere naam in voor de data factory. (bijvoorbeeld Uwnaamadftutorialdatafactory). Zie [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+   De naam van de Azure-gegevensfactory moet *wereldwijd uniek* zijn. Als u een foutbericht ontvangt dat betrekking heeft op de waarde die bij de naam is ingevuld, voert u een andere naam in voor de data factory. (bijvoorbeeld Uwnaamadftutorialdatafactory). Zie [Data Factory naming rules](naming-rules.md) (Naamgevingsregels Data Factory) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
         
      ![Nieuwe data factory](./media/doc-common-process/name-not-available-error.png)
 4. Selecteer het Azure-**abonnement** waarin u de data factory wilt maken. 
@@ -116,11 +116,11 @@ In deze zelfstudie begint u met het maken van de pijplijn. Vervolgens maakt u ge
 
 1. Vouw in het dialoog venster **activiteiten** de categorie **verplaatsen en transformeren** uit en sleep de **gegevens kopiëren** activiteit van het vak naar het ontwerp oppervlak voor pijp lijnen. Geef **CopyFromBlobToSql** op bij **Naam**.
 
-    ![Activiteit kopiëren](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
+    ![Kopieeractiviteit](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
 
 ### <a name="configure-source"></a>Bron configureren
 
-1. Ga naar het tabblad **Bron**. Selecteer **+Nieuw** om een brongegevensset te maken. 
+1. Ga naar het tabblad **bron** . Selecteer **+ Nieuw** om een bron-gegevensset te maken. 
 
 1. Selecteer in het dialoog venster **nieuwe gegevensset** de optie **Azure Blob Storage**en selecteer vervolgens **door gaan**. De brongegevens bevinden zich in een blobopslag, daarom selecteert u **Azure Blob-opslag** voor de brongegevensset. 
 
@@ -146,7 +146,7 @@ In deze zelfstudie begint u met het maken van de pijplijn. Vervolgens maakt u ge
 
 1. In het dialoog venster **nieuwe gegevensset** voert u in het zoekvak de invoer ' SQL ' in om de connectors te filteren, selecteert u **Azure SQL database**en selecteert u vervolgens **door gaan**. In deze zelfstudie kopieert u gegevens naar een SQL database. 
 
-1. Voer in het dialoog venster **set** -eigenschappen **OutputSqlDataset** in als naam. Klik naast het tekstvak **Gekoppelde service** op **+Nieuw**. Een gegevensset moet worden gekoppeld aan een gekoppelde service. De gekoppelde service beschikt over de verbindingsreeks die door Data Factory wordt gebruikt om tijdens runtime een verbinding met de SQL-database tot stand te brengen. De dataset geeft informatie over de container, map en het bestand (optioneel) met de brongegevens. 
+1. Voer in het dialoog venster **set** -eigenschappen **OutputSqlDataset** in als naam. Klik naast het tekstvak **Gekoppelde service** op **+Nieuw**. Een gegevensset moet worden gekoppeld aan een gekoppelde service. De gekoppelde service beschikt over de verbindingsreeks die door Data Factory wordt gebruikt om tijdens de uitvoering verbinding te maken met de SQL database. De dataset geeft informatie over de container, map en het bestand (optioneel) met de brongegevens. 
       
 1. Voer in het dialoog venster **nieuwe gekoppelde service (Azure SQL database)** de volgende stappen uit: 
 
@@ -158,7 +158,7 @@ In deze zelfstudie begint u met het maken van de pijplijn. Vervolgens maakt u ge
 
     d. Voer bij **Gebruikersnaam** de naam van de gebruiker in.
 
-    e. Voer bij **Wachtwoord** het wachtwoord voor de gebruiker in.
+    e. Geef bij **Wachtwoord** het wachtwoord van de gebruiker op.
 
     f. Als u de verbinding wilt testen, selecteert u **Verbinding testen**.
 
@@ -252,7 +252,7 @@ In dit schema maakt u een planningstrigger voor de pijplijn. De trigger voert de
 Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in een blobopslag. U hebt geleerd hoe u: 
 
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Maak een gegevensfactory.
 > * Een pijplijn met kopieeractiviteit maken.
 > * De uitvoering van de pijplijn testen.
 > * De pijplijn handmatig activeren.

@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager-sjablonen voor SQL Database | Microsoft Docs
+title: Azure Resource Manager sjablonen voor SQL Database
 description: Gebruik sjablonen van Azure Resource Manager voor het maken en configureren van Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: c501bed9220c08013d44836066e46df92cf69eaa
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 2bd9b110b5ea416bacc8896da8ca514b50f958ce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037438"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687472"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure Resource Manager-sjablonen voor Azure SQL Database
 

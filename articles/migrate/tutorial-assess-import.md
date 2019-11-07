@@ -7,14 +7,17 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 86d61dbd75363f68ee4651bfb36f940810909c00
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 856f7f7735435579ac14918ee8026f27b222773e
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501846"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715510"
 ---
 # <a name="assess-servers-using-imported-data"></a>Servers beoordelen met behulp van geïmporteerde gegevens
+
+> [!NOTE]
+> Als u deze functie nog niet ziet in de Azure Migrate Portal, loopt u vast. Deze wordt in de volgende week weer gegeven.
 
 In dit artikel wordt uitgelegd hoe u on-premises servers kunt beoordelen met [Azure migrate: Server evaluatie](migrate-services-overview.md#azure-migrate-server-assessment-tool)door meta gegevens van de server te importeren met CSV. Bij deze evaluatie methode hoeft u het Azure Migrate apparaat niet in te stellen om een evaluatie te maken. Dit is handig als: 
 

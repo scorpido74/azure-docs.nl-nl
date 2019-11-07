@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 10/25/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8741a9a362a10dfdb0150c9dc0dfddeed54594a7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497432"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716595"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: modellen beheren, implementeren en bewaken met Azure Machine Learning
 
@@ -126,7 +126,7 @@ Zie [modellen implementeren](how-to-deploy-and-where.md)voor meer informatie.
 Micro soft Power BI ondersteunt het gebruik van machine learning modellen voor gegevens analyse. Zie [Azure machine learning integration in Power bi (preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)voor meer informatie.
 
 
-## <a name="monitor-ml-applications-for-operational-and-ml-related-issues"></a>Bewaak ML-toepassingen voor operationele en ML gerelateerde problemen
+## <a name="monitor-for-operational--ml-issues"></a>Controleren op problemen met operationele & ML
 
 Met bewaking kunt u begrijpen welke gegevens worden verzonden naar uw model en welke voor spellingen worden geretourneerd.
 
@@ -135,7 +135,7 @@ Deze informatie helpt u inzicht te krijgen in het gebruik van uw model. De verza
 Zie [How to Enable model Data Collection](how-to-enable-data-collection.md)(Engelstalig) voor meer informatie.
 
 
-## <a name="capture-an-end-to-end-audit-trail-of-the-ml-lifecycle"></a>Een end-to-end-audittrail vastleggen voor de levens cyclus van ML
+## <a name="audit-trail-of-the-ml-lifecycle"></a>Audittrail van de levens cyclus van ML
 
 Azure ML biedt u de mogelijkheid om het end-to-end-audittrail van al uw ML-assets bij te houden. Specifiek:
 
@@ -144,7 +144,7 @@ Azure ML biedt u de mogelijkheid om het end-to-end-audittrail van al uw ML-asset
 - In de geschiedenis van Azure ML run wordt een moment opname van de code, gegevens en reken kracht opgeslagen waarmee een model kan worden getraind.
 - In het REGI ster van Azure ML-model worden alle meta gegevens vastgelegd die aan uw model zijn gekoppeld (waarbij experiment wordt getraind, waar het wordt geïmplementeerd als de implementaties in orde zijn).
 
-## <a name="automate-the-end-to-end-ml-lifecycle"></a>De end-to-end ML levenscyclus automatiseren 
+## <a name="automate-the-ml-lifecycle"></a>De levens cyclus van ML automatiseren 
 
 U kunt GitHub en Azure-pijp lijnen gebruiken om een doorlopend integratie proces te maken dat een model traint. Wanneer een gegevens wetenschapper een wijziging in de Git-opslag plaats voor een project controleert, wordt in een typisch scenario een trainings uitvoering gestart. De resultaten van de uitvoering kunnen vervolgens worden gecontroleerd om de prestatie kenmerken van het getrainde model te bekijken. U kunt ook een pijp lijn maken die het model als een webservice implementeert.
 
@@ -157,8 +157,18 @@ Voor meer informatie over het gebruik van Azure-pijp lijnen met Azure Machine Le
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [hoe en waar u modellen kunt implementeren](how-to-deploy-and-where.md) met Azure machine learning. Zie [zelf studie: een classificatie model voor een installatie kopie implementeren in azure container instances](tutorial-deploy-models-with-aml.md)voor een voor beeld van de implementatie.
+Meer informatie over het lezen en verkennen van de volgende resources:
 
-Meer informatie over het maken [van een continue integratie en implementatie van ml-modellen met Azure-pijp lijnen](/azure/devops/pipelines/targets/azure-machine-learning). 
++ [Hoe & implementeren van modellen](how-to-deploy-and-where.md) met Azure machine learning
 
-Meer informatie over het maken van client toepassingen en-services die [een model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md).
++ [Zelf studie: een classificatie model voor een installatie kopie implementeren in ACI](tutorial-deploy-models-with-aml.md).
+
++ [End-to-end MLOps-voor beelden opslag plaats](https://github.com/microsoft/MLOps)
+
++ [CI/CD van ML modellen met Azure-pijp lijnen](/azure/devops/pipelines/targets/azure-machine-learning)
+
++ Clients maken die [een geïmplementeerd model gebruiken](how-to-consume-web-service.md)
+
++ [Machine learning at scale](/architecture/data-guide/big-data/machine-learning-at-scale) (Machine learning op schaal)
+
++ [Azure AI-referentie architecturen & best practices rep](https://github.com/microsoft/AI)

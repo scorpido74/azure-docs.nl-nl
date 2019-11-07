@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Service Bus wacht rijen gebruiken met python'
-description: Meer informatie over het gebruik van Azure Service Bus wachtrijen van python.
+title: 'Snelstartgids: Azure Service Bus wacht rijen gebruiken met python'
+description: 'Quick Start: informatie over het gebruik van Azure Service Bus wachtrijen van python.'
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
@@ -11,18 +11,18 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 69ae02ea7c0c04312dd4e64125c80384172c6528
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 4319299eabb57451e3a25a69196a63094f66ab9b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72438112"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721639"
 ---
-# <a name="tutorial-use-azure-service-bus-queues-with-python"></a>Zelf studie: Azure Service Bus wacht rijen gebruiken met python
+# <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Snelstartgids: Azure Service Bus wacht rijen gebruiken met python
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
@@ -68,7 +68,7 @@ sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
 Zie [Azure service bus python-documentatie](/python/api/overview/azure/servicebus?view=azure-python)voor meer informatie.
 
 ## <a name="send-messages-to-a-queue"></a>Berichten verzenden naar een wachtrij
-Als u een bericht wilt verzenden naar een Service Bus wachtrij, roept uw toepassing de `send`-methode aan voor het object `ServiceBusClient`.
+Als u een bericht wilt verzenden naar een Service Bus wachtrij, wordt de methode `send` door de toepassing aangeroepen op het `ServiceBusClient`-object.
 
 In het volgende voor beeld ziet u hoe u een test bericht naar de wachtrij met de naam `taskqueue` verzendt met behulp van `send_queue_message`:
 
@@ -89,7 +89,7 @@ Service Bus-wachtrijen ondersteunen een maximale berichtgrootte van 256 kB in de
 Zie [Azure service bus python-documentatie](/python/api/overview/azure/servicebus?view=azure-python)voor meer informatie.
 
 ## <a name="receive-messages-from-a-queue"></a>Berichten van een wachtrij ontvangen
-Er worden berichten van een wachtrij ontvangen met behulp van de `get_receiver`-methode voor het `ServiceBusService`-object:
+Er worden berichten van een wachtrij ontvangen met behulp van de methode `get_receiver` op het `ServiceBusService`-object:
 
 ```python
 from azure.servicebus import QueueClient, Message

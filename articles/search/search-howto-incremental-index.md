@@ -1,7 +1,7 @@
 ---
-title: Incrementele indexering van verrijkte inhoud op basis van wijzigingen instellen
+title: Incrementele indexering (preview) voor het bijhouden van wijzigingen op basis van verrijkte inhoud instellen
 titleSuffix: Azure Cognitive Search
-description: Schakel het bijhouden van wijzigingen in en behoud de status van verrijkte inhoud voor beheerde verwerking in een cognitieve vaardigheidset.
+description: Schakel het bijhouden van wijzigingen in en behoud de status van verrijkte inhoud voor beheerde verwerking in een cognitieve vaardigheidset. Deze functie is momenteel beschikbaar als openbare preview-versie.
 author: vkurpad
 manager: eladz
 ms.author: vikurpad
@@ -9,24 +9,21 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ac082d6ecb6624dc0d5bc0ab927ff8b91ebdabce
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 74631ee3167c65e59fbd05f53fe5327d1b532dba
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512182"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719942"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Incrementele indexering van verrijkte documenten instellen in azure Cognitive Search
+
+> [!IMPORTANT] 
+> Incrementele indexering is momenteel beschikbaar als open bare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen portal-of .NET SDK-ondersteuning.
 
 In dit artikel wordt beschreven hoe u status en caching toevoegt aan verrijkte documenten die worden verplaatst via een Azure Cognitive Search-verrijkings pijplijn, zodat u documenten stapsgewijs kunt indexeren vanuit een van de ondersteunde gegevens bronnen. Een vaardig heden is standaard stateless en het wijzigen van een deel van de samen stelling vereist een volledige herinstallatie van de Indexeer functie. Met incrementele indexering kan de Indexeer functie bepalen welke delen van de pijp lijn zijn gewijzigd, de bestaande verrijkingen voor ongewijzigde delen opnieuw gebruiken en verrijkingen worden herzien voor de stappen die gewijzigd kunnen worden. Inhoud in de cache wordt geplaatst in Azure Storage.
 
 Als u niet bekend bent met het instellen van Indexeer functies, start u met [Indexeer functie-overzicht](search-indexer-overview.md) en gaat u verder met [vaardig heden](cognitive-search-working-with-skillsets.md) voor meer informatie over verrijkings pijplijnen. Zie [Incrementeel indexeren](cognitive-search-incremental-indexing-conceptual.md)voor meer achtergrond informatie over de belangrijkste concepten.
-
-Incrementeel indexeren is geconfigureerd met behulp van de [Search rest API-Version = 2019-05 -06-preview](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations).
-
-> [!NOTE]
-> Deze functie is nog niet beschikbaar in de portal en moet worden gebruikt via een programma.
->
 
 ## <a name="modify-an-existing-indexer"></a>Een bestaande Indexeer functie wijzigen
 

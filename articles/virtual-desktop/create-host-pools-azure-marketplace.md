@@ -1,5 +1,5 @@
 ---
-title: Een Windows-hostgroep voor virtueel bureau blad maken met behulp van Azure Marketplace-Azure
+title: Windows-hostgroep voor virtueel bureau blad Azure Marketplace-Azure
 description: Een Windows-hostgroep voor virtueel bureau blad maken met behulp van Azure Marketplace.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 76cb2e0378cc7a005232304174c1de887adfe387
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: e5be2490ebf756c030e6a53b226f91c49c7bccaf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482223"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605590"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Zelf studie: een hostgroep maken met behulp van Azure Marketplace
 
@@ -73,7 +73,9 @@ Voor de Blade **virtuele machines configureren** :
 Voor de Blade instellingen van de **virtuele machine** :
 
 >[!NOTE]
-> Als u uw Vm's lid maakt van een Azure Active Directory Domain Services-omgeving (Azure AD DS), moet u ervoor zorgen dat uw domein deelname ook lid is van de [groep Aad DC-Administrators](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group).
+> Als u uw Vm's lid maakt van een Azure Active Directory Domain Services-omgeving (Azure AD DS), moet u ervoor zorgen dat uw domein lid wordt van de [groep Aad DC-Administrators](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group).
+>
+> Het account moet ook deel uitmaken van de Azure AD DS beheerde domein-of Azure AD-Tenant accounts van externe mappen die zijn gekoppeld aan uw Azure AD-Tenant, kan niet correct worden geverifieerd tijdens het proces voor het samen voegen van het domein. 
 
 1. Voor **installatie kopie bron**selecteert u de bron en voert u de juiste informatie in voor het vinden ervan en hoe u deze kunt opslaan. Als u ervoor kiest geen Managed disks te gebruiken, selecteert u het opslag account dat het. VHD-bestand bevat.
 2. Voer de user principal name en het wacht woord in voor het domein account dat wordt toegevoegd aan de virtuele machines in het Active Directory domein. Dezelfde gebruikers naam en hetzelfde wacht woord worden als een lokaal account op de virtuele machines gemaakt. U kunt deze lokale accounts later opnieuw instellen.

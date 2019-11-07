@@ -1,5 +1,5 @@
 ---
-title: Gegevens van SQL Server naar Blob Storage kopiëren met behulp van Azure Data Factory | Microsoft Docs
+title: Gegevens kopiëren van SQL Server naar Blob-opslag met behulp van Azure Data Factory
 description: Meer informatie over het kopiëren van gegevens uit een on-premises gegevensopslag naar de cloud met behulp van de zelf-hostende Integration Runtime in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: abnarain
-ms.openlocfilehash: c86f5f053c285b099b7c3575c890b108f2de8742
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 09768e3b9bd1c2e6c9d4a5dbe95bb270b07266c0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140676"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683532"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Gegevens van een on-premises SQL-serverdatabase naar Azure Blob Storage kopiëren
 In deze zelfstudie gebruikt u de gebruikersinterface (UI) van Azure Data Factory om een pijplijn voor een data factory te maken waarmee gegevens worden gekopieerd van een on-premises SQL Server-database naar Azure Blob-opslag. U gaat een zelf-hostende Integration Runtime maken en gebruiken. Deze verplaatst gegevens van on-premises gegevensarchieven en gegevensarchieven in de cloud en omgekeerd.
@@ -27,13 +27,13 @@ In deze zelfstudie gebruikt u de gebruikersinterface (UI) van Azure Data Factory
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Maak een gegevensfactory.
 > * Een zelf-hostende Integration Runtime maken.
 > * Gekoppelde services maken voor SQL Server en Azure Storage. 
 > * Gegevenssets maken voor SQL Server en Azure Blob.
 > * Een pijplijn maakt met een kopieeractiviteit om de gegevens te verplaatsen.
-> * Een pijplijnuitvoering starten.
-> * De pijplijnuitvoering controleert.
+> * Start een pijplijnuitvoering.
+> * Controleer de pijplijnuitvoering.
 
 ## <a name="prerequisites"></a>Vereisten
 ### <a name="azure-subscription"></a>Azure-abonnement
@@ -103,17 +103,17 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
 
 1. Houd het venster **Container** voor **adftutorial** geopend. U gaat hiermee aan het einde van deze zelfstudie de uitvoer controleren. In Data Factory wordt automatisch in deze container de uitvoermap gemaakt, zodat u er zelf geen hoeft te maken.
 
-## <a name="create-a-data-factory"></a>Data factory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 In deze stap maakt u een data factory en start u de Data Factory-gebruikersinterface om een pijplijn te maken in de data factory. 
 
 1. Open de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
-1. Selecteer in het menu links de optie **een resource** > **Analytics** > -**Data Factory**maken:
+1. Selecteer in het menu aan de linkerkant **een resource maken** > **Analytics** > **Data Factory**:
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in bij **Naam**. 
 
-   De naam van de data factory moet *wereldwijd uniek* zijn. Als het volgende foutbericht wordt weergegeven voor het naamveld, wijzigt u de naam van de data factory (bijvoorbeeld uwnaamADFTutorialDataFactory). Zie [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+   De naam van de data factory moet *wereldwijd uniek* zijn. Als het volgende foutbericht wordt weergegeven voor het naamveld, wijzigt u de naam van de data factory (bijvoorbeeld uwnaamADFTutorialDataFactory). Zie [Data Factory naming rules](naming-rules.md) (Naamgevingsregels Data Factory) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 
    ![Naam nieuwe data factory](./media/doc-common-process/name-not-available-error.png)
 
@@ -143,7 +143,7 @@ In deze stap maakt u een data factory en start u de Data Factory-gebruikersinter
 
 1. Voer op het tabblad **Algemeen** onder in het venster **Eigenschappen** de **naam** **SQLServerToBlobPipeline**in.
 
-   ![Naam van de pijplijn](./media/tutorial-hybrid-copy-portal/pipeline-name.png)
+   ![Naam pijplijn](./media/tutorial-hybrid-copy-portal/pipeline-name.png)
 
 1. Vouw in het dialoog venster **activiteiten** het onderdeel **& trans formatie verplaatsen**uit. Gebruik slepen en neerzetten om de activiteit **Kopiëren** naar het ontwerpoppervlak van de pijplijn te verplaatsen. Stel de naam van de activiteit in op **CopySqlServerToAzureBlobActivity**.
 
@@ -206,10 +206,10 @@ In deze stap maakt u een data factory en start u de Data Factory-gebruikersinter
 
     a. Controleer of **AzureStorageLinkedService** is geselecteerd bij **Gekoppelde service**.
   
-    b. Voerin bestandspad **adftutorial/fromonprem** in voor het onderdeel **container/Directory** . Als de uitvoermap niet bestaat in de container adftutorial, wordt de uitvoermap automatisch gemaakt door Data Factory.
+    b. Voer **in bestandspad** **adftutorial/fromonprem** in voor het onderdeel **container/Directory** . Als de uitvoermap niet bestaat in de container adftutorial, wordt de uitvoermap automatisch gemaakt door Data Factory.
     
     c. Selecteer voor het **Bestands** onderdeel **dynamische inhoud toevoegen**.
-    ![dynamische expressie voor het omzetten van de bestands naam](./media/tutorial-hybrid-copy-portal/file-name.png)
+    ![dynamische expressie voor het oplossen van bestands naam](./media/tutorial-hybrid-copy-portal/file-name.png)
 
     d. Voeg `@CONCAT(pipeline().RunId, '.txt')`toe en selecteer vervolgens **volt ooien**. Met deze actie wordt de naam van het bestand gewijzigd in PipelineRunID. txt. 
 
@@ -227,7 +227,7 @@ Selecteer **trigger toevoegen** op de werk balk voor de pijp lijn en selecteer *
 
 ## <a name="monitor-the-pipeline-run"></a>De pijplijnuitvoering controleren.
 
-1. Ga naar het tabblad **Controleren**. U ziet de pijplijn die u handmatig hebt geactiveerd in de vorige stap. 
+1. Ga naar het tabblad **monitor** . U ziet de pijp lijn die u hand matig hebt geactiveerd in de vorige stap. 
 
     ![Pijplijnuitvoeringen controleren](./media/tutorial-hybrid-copy-portal/pipeline-runs.png)
 1. Uitvoeringen van activiteiten die aan de pijplijn zijn gekoppeld, kunt u bekijken door de koppeling **Uitvoeringen van activiteiten weergeven** in de kolom **Actions** te selecteren. U ziet alleen uitvoeringen van activiteiten omdat er slechts één activiteit in de pijp lijn is. Selecteer de koppeling **Details** (pictogram van een bril) in de kolom **Acties** om details over de kopieerbewerking te zien. Als u wilt terugkeren naar de weer gave pijplijn uitvoeringen, selecteert u **pijp lijnen** bovenaan.
@@ -240,13 +240,13 @@ De uitvoermap *fromonprem* wordt automatisch door de pijplijn gemaakt in de `adf
 Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in Blob Storage. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Maak een gegevensfactory.
 > * Een zelf-hostende Integration Runtime maken.
 > * Gekoppelde services maakt voor SQL Server en Storage. 
 > * Gegevenssets maakt voor SQL Server en Blob Storage.
 > * Een pijplijn maakt met een kopieeractiviteit om de gegevens te verplaatsen.
-> * Een pijplijnuitvoering starten.
-> * De pijplijnuitvoering controleert.
+> * Start een pijplijnuitvoering.
+> * Controleer de pijplijnuitvoering.
 
 Zie [Ondersteunde gegevensopslagexemplaren](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslagexemplaren die worden ondersteund door Data Factory.
 

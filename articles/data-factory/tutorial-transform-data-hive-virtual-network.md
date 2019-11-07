@@ -1,5 +1,5 @@
 ---
-title: Gegevens in een virtueel Azure-netwerk transformeren met behulp van Hive | Microsoft Docs
+title: 'Gegevens transformeren met behulp van Hive in azure Virtual Network '
 description: Deze zelfstudie biedt stapsgewijze instructies voor het transformeren van gegevens met behulp van Hive-activiteit in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,22 +11,22 @@ ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 667835605cfaf4fced10b07f05028bcfa11f64da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 263eb243ea45963757c50aa031cc17e318d70d98
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60336106"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683307"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Gegevens in een virtueel Azure-netwerk transformeren met behulp van Hive-activiteit in Azure Data Factory
 In deze zelfstudie gebruikt u Azure PowerShell om een Data Factory-pijplijn te maken waarmee gegevens worden getransformeerd met behulp van Hive-activiteit in een HDInsight-cluster in een virtueel Azure-netwerk (VNet). In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een data factory maken. 
+> * Maak een gegevensfactory. 
 > * Een zelf-hostende integratieruntime maken en installeren.
-> * Gekoppelde services maken en implementeren.
+> * Gekoppelde services maakt en implementeert.
 > * Een pijplijn die Hive-activiteit bevat, maken en implementeren.
-> * Een pijplijnuitvoering starten.
+> * Start een pijplijnuitvoering.
 > * De pijplijnuitvoering controleren. 
 > * De uitvoer controleren. 
 
@@ -37,7 +37,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - **Een Azure Storage-account**. U maakt een Hive-script en uploadt dit script naar de Azure-opslag. De uitvoer van het Hive-script wordt opgeslagen in dit opslagaccount. In dit voorbeeld gebruikt het HDInsight-cluster dit Azure Storage-account als primaire opslag. 
-- **Een virtueel Azure-netwerk.** Als u geen virtueel Azure-netwerk hebt, maakt u er een door [deze instructies](../virtual-network/quick-create-portal.md) te volgen. In dit voorbeeld bevindt HDInsight zich in een virtueel Azure-netwerk. Hier volgt een voorbeeldconfiguratie van een virtueel Azure-netwerk. 
+- **Een virtueel Azure-netwerk.** Als u geen virtueel Azure-netwerk hebt, maakt u er een door [deze instructies](../virtual-network/quick-create-portal.md) te volgen. In dit voorbeeld bevindt HDInsight zich in een virtueel Azure-netwerk. Hier volgt een voorbeeldconfiguratie van Azure Virtual Network. 
 
     ![Virtueel netwerk maken](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
 - **HDInsight-cluster.** Maak een HDInsight-cluster en koppel dit aan het virtuele netwerk dat u in de vorige stap hebt gemaakt, door de instructies in dit artikel te volgen: [Azure HDInsight uitbreiden met behulp van een virtueel Azure-netwerk](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Hier volgt een voorbeeldconfiguratie van HDInsight in een virtueel netwerk. 
@@ -69,7 +69,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
   
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 
 1. Stel de naam van de resourcegroup in. Als onderdeel van deze zelfstudie gaat u een resourcegroep maken. U kunt echter ook een bestaande resourcegroep gebruiken als u dat wilt. 
@@ -91,7 +91,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. Start **PowerShell**. Houd Azure PowerShell geopend tot het einde van deze snelstartgids. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren. Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
+2. Start **PowerShell**. Houd Azure PowerShell geopend tot het einde van deze snelstartgids. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren. Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 
     Voer de volgende opdracht uit en geef de gebruikersnaam en het wachtwoord op waarmee u zich aanmeldt bij Azure Portal:
         
@@ -108,7 +108,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```  
-3. De resourcegroep maken: ADFTutorialResourceGroup, als deze nog niet bestaat in het abonnement. 
+3. Maak de resourcegroep ADFTutorialResourceGroup, als deze nog niet bestaat in het abonnement. 
 
     ```powershell
     New-AzResourceGroup -Name $resourceGroupName -Location "East Us" 
@@ -134,7 +134,7 @@ In deze sectie maakt u een zelf-hostende integratieruntime en koppelt u deze aan
    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted
    ```
     Met deze opdracht maakt u een logische registratie van de zelf-hostende integratieruntime. 
-2. Gebruik PowerShell om verificatiesleutels op te halen voor het registreren van de zelf-hostende integratieruntime. Kopieer een van de sleutels voor het registreren van de zelf-hostende integratieruntime.
+2. Gebruik PowerShell om verificatiesleutels op te halen voor het registreren van de zelf-hostende integratieruntime. Kopieer een van de sleutels voor het registreren van de zelf-hostende Integration Runtime.
 
    ```powershell
    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName | ConvertTo-Json
@@ -152,11 +152,11 @@ In deze sectie maakt u een zelf-hostende integratieruntime en koppelt u deze aan
 3. Maak een Azure VM en koppel deze aan hetzelfde virtuele netwerk dat het HDInsight-cluster bevat. Zie [Virtuele machines maken](../virtual-network/quick-create-portal.md#create-virtual-machines) voor meer informatie. Koppel ze aan een virtueel Azure-netwerk. 
 4. Download de [zelf-hostende integratieruntime](https://www.microsoft.com/download/details.aspx?id=39717) op de virtuele Azure-machine. Gebruik de in de vorige stap verkregen verificatiesleutel om de zelf-hostende integratieruntime handmatig te registreren. 
 
-   ![Integratieruntime registreren](media/tutorial-transform-data-using-hive-in-vnet/register-integration-runtime.png)
+   ![Integration Runtime registreren](media/tutorial-transform-data-using-hive-in-vnet/register-integration-runtime.png)
 
-   U ziet het volgende bericht wanneer de zelf-hostende Integration Runtime is geregistreerd: ![Registratie is voltooid](media/tutorial-transform-data-using-hive-in-vnet/registered-successfully.png)
+   U ziet het volgende bericht wanneer de zelf-hostende integratieruntime is geregistreerd: ![Geregistreerd](media/tutorial-transform-data-using-hive-in-vnet/registered-successfully.png)
 
-   Wanneer het knooppunt is verbonden met de cloudservice, ziet u de volgende pagina: ![Knooppunt is verbonden](media/tutorial-transform-data-using-hive-in-vnet/node-is-connected.png)
+   Wanneer het knooppunt is verbonden met de cloudservice, ziet u de volgende pagina: ![Knooppunt is verbonden](media/tutorial-transform-data-using-hive-in-vnet/node-is-connected.png).
 
 ## <a name="author-linked-services"></a>Gekoppelde services maken
 
@@ -222,7 +222,7 @@ Werk de waarden voor de volgende eigenschappen bij in de definitie van de gekopp
 
 - **userName**. Gebruikersnaam voor de clusteraanmelding die u hebt opgegeven toen u het cluster maakte. 
 - **password**. Het wachtwoord voor de gebruiker.
-- **clusterUri**. Geef de URL van uw HDInsight-cluster in de volgende indeling: `https://<clustername>.azurehdinsight.net`.  In dit artikel wordt ervan uitgegaan dat u via internet toegang hebt tot het cluster. U kunt bijvoorbeeld verbinding met het cluster maken op `https://clustername.azurehdinsight.net`. Dit adres maakt gebruik van de openbare gateway. Deze is niet beschikbaar als u NSG's (netwerkbeveiligingsgroepen) of door de gebruiker gedefinieerde routes hebt gebruikt om de toegang via internet te beperken. U moet het virtuele Azure-netwerk zo configureren dat de URL kan worden omgezet in het privé-IP-adres van de gateway die wordt gebruikt door HDInsight. Zo zorgt u ervoor dat Data Factory taken kan verzenden naar HDInsight-clusters in het virtuele Azure-netwerk.
+- **clusterUri**. Geef de URL van uw HDInsight-cluster op in de volgende indeling: `https://<clustername>.azurehdinsight.net`.  In dit artikel wordt ervan uitgegaan dat u via internet toegang hebt tot het cluster. U kunt bijvoorbeeld verbinding met het cluster maken op `https://clustername.azurehdinsight.net`. Dit adres maakt gebruik van de openbare gateway. Deze is niet beschikbaar als u NSG's (netwerkbeveiligingsgroepen) of door de gebruiker gedefinieerde routes hebt gebruikt om de toegang via internet te beperken. U moet het virtuele Azure-netwerk zo configureren dat de URL kan worden omgezet in het privé-IP-adres van de gateway die wordt gebruikt door HDInsight. Zo zorgt u ervoor dat Data Factory taken kan verzenden naar HDInsight-clusters in het virtuele Azure-netwerk.
 
   1. Open in Azure Portal het virtuele netwerk waarin het HDInsight-cluster zich bevindt. Open de netwerkinterface met de naam die begint met `nic-gateway-0`. Noteer het bijbehorende privé IP-adres. Bijvoorbeeld: 10.6.0.15. 
   2. Als het virtuele Azure-netwerk een DNS-server heeft, werkt u de DNS-record bij zodat de URL van het HDInsight-cluster `https://<clustername>.azurehdinsight.net` kan worden omgezet in `10.6.0.15`. Dit is de aanbevolen methode. Als u geen DNS-server in het virtuele Azure-netwerk hebt, kunt u dit tijdelijk oplossen door het hostbestand (C:\Windows\System32\drivers\etc) te bewerken van alle VM's die als knooppunten van Integration Runtime (zelf-hostend) zijn geregistreerd. Dit doet u door een vermelding toe te voegen, zoals deze: 
@@ -281,7 +281,7 @@ In deze stap maakt u een nieuwe pijplijn met een Hive-activiteit. Met deze activ
 Houd rekening met de volgende punten:
 
 - **scriptPath** verwijst naar het pad naar het Hive-script in het Azure Storage-account dat u hebt gebruikt voor MyStorageLinkedService. Het pad is hoofdlettergevoelig.
-- **Output** is een argument dat wordt gebruikt in het Hive-script. Gebruik de indeling van `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` om dit argument te laten verwijzen naar een bestaande map in de Azure-opslag. Het pad is hoofdlettergevoelig. 
+- **Uitvoer** is een argument dat wordt gebruikt in het Hive-script. Gebruik de indeling van `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` om dit argument te laten verwijzen naar een bestaande map in de Azure-opslag. Het pad is hoofdlettergevoelig. 
 
 Ga naar de map waarin u de JSON-bestanden hebt gemaakt, en voer de volgende opdracht uit om een pijplijn te implementeren: 
 
@@ -292,7 +292,7 @@ Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName
 
 ## <a name="start-the-pipeline"></a>De pijplijn starten 
 
-1. Een pijplijnuitvoering starten. Ook wordt de id voor de pijplijnuitvoering vastgelegd voor toekomstige controle.
+1. Start een pijplijnuitvoering. Ook wordt de id voor de pijplijnuitvoering vastgelegd voor toekomstige controle.
 
     ```powershell
     $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
@@ -325,7 +325,7 @@ Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName
     $result.Error -join "`r`n"
     ```
 
-   Hier volgt een voorbeeld van de voorbeelduitvoering:
+   Hier volgt een voorbeeld van de voorbeelduitvoer:
 
     ```json
     Pipeline run status: In Progress
@@ -397,11 +397,11 @@ Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName
 In deze zelfstudie hebt u de volgende stappen uitgevoerd: 
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken. 
+> * Maak een gegevensfactory. 
 > * Een zelf-hostende integratieruntime maken en installeren.
-> * Gekoppelde services maken en implementeren.
+> * Gekoppelde services maakt en implementeert.
 > * Een pijplijn die Hive-activiteit bevat, maken en implementeren.
-> * Een pijplijnuitvoering starten.
+> * Start een pijplijnuitvoering.
 > * De pijplijnuitvoering controleren. 
 > * De uitvoer controleren. 
 

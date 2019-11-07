@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus wacht rijen gebruiken met Java
-description: Informatie over het gebruiken van Service Bus-wachtrijen in Azure Code voorbeelden geschreven in Java.
+title: 'Snelstartgids: Azure Service Bus wacht rijen gebruiken met Java'
+description: 'Quick Start: informatie over het gebruik van Service Bus wachtrijen in Azure. Code voorbeelden geschreven in Java.'
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -11,18 +11,19 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 19cfd2c5dd4229e4687fcb1a3286509c9b768d7a
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: bb51f30a69294cd78d0664a5bdae70c969da1972
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155509"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721702"
 ---
-# <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Azure Service Bus-wacht rijen gebruiken met Java om berichten te verzenden en te ontvangen
+# <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Snelstartgids: Azure Service Bus-wacht rijen gebruiken met Java om berichten te verzenden en te ontvangen
+
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 In deze zelf studie leert u hoe u Java-toepassingen kunt maken om berichten te verzenden naar en berichten van een Azure Service Bus wachtrij te ontvangen. 
 
@@ -44,7 +45,7 @@ Zorg ervoor dat u de [Azure SDK voor Java][Azure SDK for Java] hebt geïnstallee
 
 ![Microsoft Azure bibliotheken voor Java toevoegen aan uw eclips-project](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
-Voeg de volgende `import` -instructies toe aan de bovenkant van het Java-bestand:
+Voeg de volgende `import`-instructies toe aan het begin van het Java-bestand:
 
 ```java
 // Include the following imports to use Service Bus APIs
@@ -125,7 +126,7 @@ Omdat Service Bus het bericht heeft gemarkeerd als verbruikt, wordt het bericht 
 
 In de **PeekLock** -modus wordt ontvangen een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of het op een betrouw bare manier voor toekomstige verwerking opslaat), wordt de tweede fase van het ontvangst proces voltooid door het **verwijderen** van een bericht aan te roepen. Als Service Bus de aanroep **verwijderen** ziet, wordt het bericht gemarkeerd als verbruikt en wordt het uit de wachtrij verwijderd.
 
-In het volgende voor beeld ziet u hoe berichten kunnen worden ontvangen en verwerkt met behulp van de **PeekLock** -modus (niet de standaard modus). In het onderstaande voor beeld ziet u een oneindige lus en worden berichten `TestQueue`verwerkt die binnenkomen in onze:
+In het volgende voor beeld ziet u hoe berichten kunnen worden ontvangen en verwerkt met behulp van de **PeekLock** -modus (niet de standaard modus). In het onderstaande voor beeld ziet u een oneindige lus en worden berichten verwerkt die binnenkomen in onze `TestQueue`:
 
 ```java
     public void run() throws Exception {

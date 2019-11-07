@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 145ab994bbd2ac2445947968ccdeadbb730eb76a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 16066ceeb7196bb181d144cc9529d6db627ed828
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476119"
+ms.locfileid: "73582520"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Azure Machine Learning verkennen met Jupyter-notebooks
 
@@ -24,7 +24,7 @@ Het [voor beeld Azure machine learning-notitie blokken](https://github.com/azure
 
 In dit artikel wordt beschreven hoe u toegang kunt krijgen tot de opslag plaats vanuit de volgende omgevingen:
 
-- [Reken instantie Azure Machine Learning](#notebookvm)
+- [VM van Azure Machine Learning-notebook](#notebookvm)
 - [Uw eigen notebook server meenemen](#byo)
 - [Data Science Virtual Machine](#dsvm)
 
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe u toegang kunt krijgen tot de opslag plaats 
 > Zodra u de opslag plaats hebt gekloond, vindt u de notitie blokken voor zelf **studies** in de mappen map en specifieke notitie blokken in de map **How-to-use-azureml** .
 
 <a name="notebookvm"></a>
-## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Voor beelden van Azure Machine Learning Reken instantie ophalen
+## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>Voor beelden van Azure Machine Learning notebook-VM ophalen
 
 De eenvoudigste manier om aan de slag te gaan met de voor beelden is het volt ooien van de [zelf studie: Setup-omgeving en-werk ruimte](tutorial-1st-experiment-sdk-setup.md). Zodra u klaar bent, hebt u een vooraf geladen notebook server met de SDK en de voor beeld-opslag plaats. Geen down loads of installatie vereist.
 

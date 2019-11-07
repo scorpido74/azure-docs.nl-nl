@@ -1,5 +1,5 @@
 ---
-title: Gegevens kopiëren met behulp van het hulpprogramma Azure Copy Data | Microsoft Docs
+title: Gegevens kopiëren met behulp van het hulp programma Azure Gegevens kopiëren
 description: Maak een Azure-data factory aan en gebruik vervolgens het hulpprogramma Copy Data om gegevens uit Azure Blob Storage te kopiëren naar een SQL Database.
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: a99f319c25613f811b48923c734b77b135b677bc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 4646d7429dc4b3286f6af8861eaf7f1e6e27a760
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827940"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683599"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Gegevens kopiëren van Azure Blob Storage naar een SQL-database met behulp van het hulpprogramma Copy Data
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
-> * [Versie 1:](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Versie 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](tutorial-copy-data-tool.md)
 
 In deze zelfstudie gebruikt u Azure Portal om een gegevensfactory te maken. Vervolgens gebruikt u het hulp programma Gegevens kopiëren om een pijp lijn te maken waarmee gegevens worden gekopieerd van Azure Blob-opslag naar een SQL database.
@@ -30,15 +30,15 @@ In deze zelfstudie gebruikt u Azure Portal om een gegevensfactory te maken. Verv
 
 In deze zelfstudie voert u de volgende stappen uit:
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Maak een gegevensfactory.
 > * Het hulpprogramma Copy Data gebruiken om een pijplijn te maken.
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure-abonnement**: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-* **Azure-opslagaccount**: Gebruik blobopslag als de _bron_-gegevensopslag. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md).
-* **Azure SQL Database**: Gebruik een SQL-database als de _sink_-gegevensopslag. Als u geen SQL-database hebt, raadpleegt u de instructies in [Een SQL Database maken](../sql-database/sql-database-get-started-portal.md).
+* **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+* **Azure-opslagaccount**: Blob Storage als het _brongegevensarchief_ gebruiken. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md).
+* **Azure SQL Database**: een SQL-database als de _sink-gegevensopslag_ gebruiken. Als u geen SQL-database hebt, raadpleegt u de instructies in [Een SQL Database maken](../sql-database/sql-database-get-started-portal.md).
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Een blob en een SQL-tabel maken
 
@@ -73,9 +73,9 @@ Bereid uw Blob-opslag en de SQL-database voor voor gebruik tijdens de zelfstudie
 
 2. Geef Azure-services toegang tot de SQL-server. Controleer of de instelling **Toegang tot Azure-services toestaan** is ingeschakeld voor uw server waarop SQL Database wordt uitgevoerd. Met deze instelling kan Data Factory gegevens naar uw database-instantie schrijven. Om deze instelling te controleren en in te scha kelen, gaat u naar de > overzicht van Azure SQL Server > Set Server Firewall > Stel de optie **toegang tot Azure-Services toestaan** **in op aan**.
 
-## <a name="create-a-data-factory"></a>Data factory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
-1. Selecteer in het menu links de optie **een resource** > **Analytics** > -**Data Factory**maken:
+1. Selecteer in het menu aan de linkerkant **een resource maken** > **Analytics** > **Data Factory**:
     
     ![Nieuwe data factory maken](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in bij **Naam**.
@@ -163,13 +163,13 @@ Bereid uw Blob-opslag en de SQL-database voor voor gebruik tijdens de zelfstudie
 1. Controleer of de gegevens zijn opgenomen in de tabel **emp** in uw SQL-database.
 
 
-1. Selecteer het tabblad **Auteur** aan de linkerkant om over te schakelen naar de bewerkingsmodus. U kunt de gekoppelde services, gegevenssets en pijplijnen die zijn gemaakt met het hulpprogramma, bijwerken met behulp van de editor. Bekijk [de Azure Portal-versie van deze tutorial](tutorial-copy-data-portal.md) voor details over het bewerken van entiteiten in de Data Factory-UI.
+1. Selecteer het tabblad **Auteur** aan de linkerkant om over te schakelen naar de bewerkingsmodus. U kunt de gekoppelde services, gegevenssets en pijplijnen die zijn gemaakt met het hulpprogramma, bijwerken met behulp van de editor. Bekijk [de Azure Portal-versie van deze zelfstudie](tutorial-copy-data-portal.md) voor details over het bewerken van entiteiten in de Data Factory-UI.
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit voorbeeld kopieert de pijplijn gegevens vanuit Blob Storage naar een SQL-database. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Maak een gegevensfactory.
 > * Het hulpprogramma Copy Data gebruiken om een pijplijn te maken.
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 

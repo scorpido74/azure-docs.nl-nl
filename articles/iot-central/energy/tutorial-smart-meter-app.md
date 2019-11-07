@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 06b4fe3b716f2252f064a5b36fcde7dd7198db2d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c7bb35e7de6400a0fad13845a3faa38ad21b6de7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026740"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581242"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Zelf studie: de sjabloon voor het bewakings programma voor slimme meters maken en door lopen 
 
@@ -33,7 +33,7 @@ Als u geen abonnement hebt, [maakt u een account voor een gratis proef versie](h
 - Geen
 - Azure-abonnement wordt aanbevolen, maar is niet vereist voor het uitproberen
 
-## <a name="create-a-smart-meter-monitoring-app"></a>Een app voor het bewaken van slimme meters maken 
+## <a name="create-a-smart-meter-monitoring-app"></a>Een app maken om slimme meters te bewaken 
 
 U kunt deze toepassing in drie eenvoudige stappen maken:
 
@@ -41,8 +41,8 @@ U kunt deze toepassing in drie eenvoudige stappen maken:
 
 2. Selecteer tabblad **energie** en klik op **app maken** onder toepassing tegel voor **slimme meter bewaking** .
 
-    [!div class="mx-imgBorder"]
-    ![build-app](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
+    > [!div class="mx-imgBorder"]
+    > ![build-app](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
     
 
 3. Bij het maken van de **app** wordt het **nieuwe toepassings** formulier geopend. Vul de gevraagde gegevens in, zoals wordt weer gegeven in de afbeelding hieronder:
@@ -72,25 +72,25 @@ Adatum is een fictief energie bedrijf dat slimme meters bewaakt en beheert. Op h
 * Het totale energie verbruik bijhouden voor planning en facturerings doeleinden
 * Opdracht-en controle bewerkingen, zoals reconnect meter en firmware versie bijwerken. In de sjabloon worden met de opdracht knoppen de mogelijke functionaliteiten weer gegeven en worden geen echte opdrachten verzonden. 
 
-[!div class="mx-imgBorder"]
-![dash board voor slimme meter bewaking](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
+> [!div class="mx-imgBorder"]
+> ![dash board voor slimme meter bewaking](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
 
 ### <a name="devices"></a>Apparaten
 De app bevat een voor beeld van een Smart meter apparaat. U kunt de details van het apparaat bekijken door te klikken op het tabblad **apparaten** .
 
-[!div class="mx-imgBorder"]
-apparaten met ![slimme meter](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
+> [!div class="mx-imgBorder"]
+> apparaten met ![slimme meter](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
 
 Klik op de koppeling voor beeld van apparaat **SM0123456789** om de details van het apparaat weer te geven. U kunt de Beschrijf bare eigenschappen van het apparaat bijwerken op de pagina **Eigenschappen bijwerken** en de bijgewerkte waarden in het dash board visualiseren.
 
-[!div class="mx-imgBorder"]
-eigenschappen van slimme meter ![](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
+> [!div class="mx-imgBorder"]
+> eigenschappen van slimme meter ![](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
 
 ### <a name="device-template"></a>Apparaatprofiel
 Klik op het tabblad **device templates** om het apparaat model voor slimme meters weer te geven. Het model heeft een vooraf gedefinieerde interface voor gegevens, eigenschappen, opdrachten en weer gaven.
 
-[!div class="mx-imgBorder"]
-Device-sjablonen voor ![Smart meter](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
+> [!div class="mx-imgBorder"]
+> Device-sjablonen voor ![Smart meter](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen

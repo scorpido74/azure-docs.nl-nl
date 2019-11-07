@@ -6,16 +6,16 @@ ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
-ms.openlocfilehash: 79219b9405f76e7044a4d403b37ba2f1545dfbea
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 780dbf02fbdb0a607f29c710da9a6320a8626f7b
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501888"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643760"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Zelf studie: tag governance met Azure Policy beheren
 
-[Labels](../../../azure-resource-manager/resource-group-using-tags.md) zijn een belang rijk onderdeel van het organiseren van uw Azure-resources in een taxonomie. Bij het volgen van de [Aanbevolen procedures voor het beheer](/azure/architecture/cloud-adoption/ready/considerations/name-and-tag#metadata-tags)van labels kunnen Tags de basis vormen voor het Toep assen van uw bedrijfs beleid met Azure Policy of het [bijhouden van kosten met Cost Management](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
+[Labels](../../../azure-resource-manager/resource-group-using-tags.md) zijn een belang rijk onderdeel van het organiseren van uw Azure-resources in een taxonomie. Bij het volgen van de [Aanbevolen procedures voor het beheer](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)van labels kunnen Tags de basis vormen voor het Toep assen van uw bedrijfs beleid met Azure Policy of het [bijhouden van kosten met Cost Management](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
 Ongeacht hoe of waarom u tags gebruikt, is het belang rijk dat u deze Tags snel kunt toevoegen, wijzigen en verwijderen in uw Azure-resources.
 
 Het [wijzigings](../concepts/effects.md#modify) effect van Azure Policy is ontworpen om u te helpen bij het beheer van labels, ongeacht de fase van het resource governance waarin u zich bevindt. **Wijzigen** helpt bij het volgende:

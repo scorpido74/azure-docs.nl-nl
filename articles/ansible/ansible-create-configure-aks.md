@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: 9b70a9c364768322a3eae6ef5b92c87b6839c540
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 11/04/2019
+ms.openlocfilehash: b0839cf418cd30f62623e046960c32d41537609a
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242093"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614385"
 ---
 # <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Zelf studie: Azure Kubernetes service (AKS)-clusters configureren in azure met behulp van Ansible
 
@@ -54,7 +54,8 @@ Sla het volgende playbook op als `azure_create_aks.yml`:
     ssh_key: "your_ssh_key"
     client_id: "your_client_id"
     client_secret: "your_client_secret"
-  tasks:
+    aks_version: aks_version
+tasks:
   - name: Create resource group
     azure_rm_resourcegroup:
       name: "{{ resource_group }}"
@@ -65,6 +66,7 @@ Sla het volgende playbook op als `azure_create_aks.yml`:
       location: "{{ location }}"
       resource_group: "{{ resource_group }}"
       dns_prefix: "{{ aks_name }}"
+      kubernetes_version: "{{aks_version}}"
       linux_profile:
         admin_username: "{{ username }}"
         ssh_key: "{{ ssh_key }}"
@@ -81,11 +83,12 @@ Sla het volgende playbook op als `azure_create_aks.yml`:
 
 Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
 
-- De eerste sectie in `tasks` definieert een resource groep met de naam `myResourceGroup` binnen de locatie van de `eastus`.
-- De tweede sectie binnen `tasks` definieert een AKS-cluster met de naam `myAKSCluster` binnen de resource groep `myResourceGroup`.
+- De eerste sectie in `tasks` definieert een resource groep met de naam `myResourceGroup` binnen de `eastus` locatie.
+- In het tweede gedeelte van `tasks` wordt een AKS-cluster met de naam `myAKSCluster` in de resource groep `myResourceGroup` gedefinieerd.
 - Voor de tijdelijke aanduiding `your_ssh_key` voert u uw openbare RSA-sleutel in in de indeling met één regel, beginnend met 'ssh-rsa' (zonder aanhalingstekens).
+- Gebruik de opdracht [AZ AKS Get-verse](/cli/azure/aks?view=azure-cli-latest#az-aks-get-versions) voor de tijdelijke aanduiding `aks_version`.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook azure_create_aks.yml
@@ -111,7 +114,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 
 ## <a name="scale-aks-nodes"></a>AKS-knooppunten schalen
 
-Het voorbeeld-playbook in de vorige sectie definieert twee knooppunten. U kunt het aantal knoop punten aanpassen door de `count`-waarde in het `agent_pool_profiles`-blok te wijzigen.
+Het voorbeeld-playbook in de vorige sectie definieert twee knooppunten. U kunt het aantal knoop punten aanpassen door de `count` waarde in het blok `agent_pool_profiles` te wijzigen.
 
 Sla het volgende playbook op als `azure_configure_aks.yml`:
 
@@ -150,7 +153,7 @@ Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
 
 - Voor de tijdelijke aanduiding `your_ssh_key` voert u uw openbare RSA-sleutel in in de indeling met één regel, beginnend met 'ssh-rsa' (zonder aanhalingstekens).
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook azure_configure_aks.yml
@@ -193,7 +196,7 @@ Sla het volgende playbook op als `azure_delete_aks.yml`:
       state: absent
   ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook azure_delete_aks.yml

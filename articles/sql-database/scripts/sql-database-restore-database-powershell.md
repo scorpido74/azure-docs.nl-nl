@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell-voorbeeld: back-up herstellen van een Azure SQL-database | Microsoft Docs'
+title: 'Power shell-voor beeld: Restore-Backup-Azure SQL database'
 description: Azure PowerShell voorbeeld script om een Azure SQL-Data Base te herstellen naar een eerder tijdstip vanuit automatische back-ups
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: 8a34e2607a957f9af3756818bce9b2dd77541e85
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: da4236e138bd75237ca10b85dc1586fecd1cece4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569857"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691550"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>Power shell gebruiken om één Azure SQL-Data Base te herstellen naar een eerder tijdstip
 
@@ -46,14 +46,14 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die één database of elastische pool host. |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die een individuele database of elastische pool host. |
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een database op een SQL Database-server als een zelfstandige of een pooldatabase. |
 [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) | Hiermee wordt een geografisch redundante back-up van een zelfstandige of pooldatabase opgehaald. |
 | [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) | Hiermee wordt een zelfstandige of pooldatabase hersteld. |
 |[Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase) | Hiermee wordt een zelfstandige of Azure SQL-pooldatabase verwijderd. |
 | [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Hiermee haalt u een verwijderde zelfstandige of pooldatabase op die u kunt herstellen. |
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

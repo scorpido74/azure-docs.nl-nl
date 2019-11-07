@@ -1,7 +1,7 @@
 ---
 title: 'Train SVD-aanbeveling: module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de Train SVD Aanbevelener-module in Azure Machine Learning service om een Bayesiaanse-aanbeveling te trainen met het SVD-algoritme.
+description: Meer informatie over het gebruik van de Train SVD Aanbevelener-module in de Azure Machine Learning-service om een Bayesiaanse-aanbeveling te trainen met behulp van het algoritme SVD.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,55 +9,46 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 3b86d77470a4f3d4fe5b005e562a8adae21f8bc7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2019b752ab224abc244e471de3d427a77f7ed93a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515666"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716901"
 ---
 # <a name="train-svd-recommender"></a>Train SVD-aanbeveling
 
-In dit artikel wordt beschreven hoe u de module **Train SVD adviseering** gebruikt in azure machine learning Designer (preview). Met deze module kunt u een aanbevelings model trainen op basis van het algoritme voor **SVD** (ontleding met één waarde).  
+In dit artikel wordt beschreven hoe u de module Train SVD Adviseering gebruikt in Azure Machine Learning Designer (preview). Met deze module kunt u een aanbevelings model trainen op basis van het algoritme voor de ontleding van één waarde (SVD).  
 
-De **Train SVD aanbevelener** -module leest een gegevensset van de beoordeling van de gebruikers items. Er wordt een getrainde SVD-aanbeveling geretourneerd. U kunt het getrainde model vervolgens gebruiken om beoordelingen te voors pellen of aanbevelingen te genereren met behulp van de module [Score SVD aanbevelen](score-svd-recommender.md) .  
+De Train SVD Aanbevelener-module leest een gegevensset van de beoordeling van de gebruikers items. Er wordt een getrainde SVD-aanbeveling geretourneerd. U kunt het getrainde model vervolgens gebruiken om beoordelingen te voors pellen of aanbevelingen te genereren met behulp van de module [Score SVD aanbevelen](score-svd-recommender.md) .  
 
 
   
 ## <a name="more-about-recommendation-models-and-the-svd-recommender"></a>Meer informatie over aanbevelings modellen en de SVD-aanbeveling  
 
-Het belangrijkste doel van een aanbevelings systeem is het aanbevelen van een of meer *items* aan *gebruikers* van het systeem. Voor beelden van een item kunnen een film, een restaurant, een boek of een nummer zijn. Een gebruiker kan een persoon, een groep personen of een andere entiteit met voorkeurs instellingen voor item zijn.  
+Het belangrijkste doel van een aanbevelings systeem is het aanbevelen van een of meer *items* aan *gebruikers* van het systeem. Voor beelden van een item zijn mogelijk een film, een restaurant, een boek of een nummer. Een gebruiker kan een persoon, een groep personen of een andere entiteit met voorkeurs instellingen voor item zijn.  
 
-Er zijn twee belang rijke benaderingen voor aanbevolen systemen. 
+Er zijn twee belang rijke benaderingen voor aanbevolen systemen: 
 
-+ De eerste is de **op inhoud gebaseerde** benadering, waarmee u functies voor zowel gebruikers als items kunt gebruiken. Gebruikers kunnen worden beschreven door eigenschappen zoals leeftijd en geslacht, en items kunnen worden beschreven door eigenschappen als auteur en fabrikant. Typische voor beelden van systemen met aanbeveling op basis van inhoud zijn te vinden op de sociale matchmaking-sites. 
-+ De tweede benadering is het **samen werken met filters**, waarbij alleen id's van de gebruikers en de items worden gebruikt en impliciete informatie over deze entiteiten wordt opgehaald uit een (sparse) matrix met beoordelingen van de gebruikers aan de items. We hebben meer informatie over een gebruiker van de items die ze hebben geclassificeerd en van andere gebruikers die dezelfde items hebben geclassificeerd.  
++ Een **op inhoud gebaseerde** benadering maakt gebruik van functies voor zowel gebruikers als items. Gebruikers kunnen worden beschreven op basis van eigenschappen zoals leeftijd en geslacht. Items kunnen worden beschreven door eigenschappen als auteur en fabrikant. U vindt typische voor beelden van aanbevelingen op basis van inhoud op sociale matchmaking-sites. 
++ Voor **samen werking filteren** worden alleen id's van de gebruikers en de items gebruikt. Het ontvangt impliciete informatie over deze entiteiten van een (sparse) matrix met beoordelingen van de gebruikers aan de items. We hebben informatie over een gebruiker van de items die ze hebben geclassificeerd en van andere gebruikers die dezelfde items hebben geclassificeerd.  
 
-De SVD-aanbevolen code gebruikt id's van de gebruikers en de items, en een matrix met beoordelingen van de gebruikers aan de items. Het is een **samen werkende aanbeveling**. 
+De SVD-aanbevolen code gebruikt id's van de gebruikers en de items, en een matrix met beoordelingen van de gebruikers aan de items. Het is een *samen werkende aanbeveling*. 
 
 Voor meer informatie over de SVD-aanbeveling raadpleegt u de relevante Research Paper: [matrix factorization technieken voor aanbevolen systemen](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf).
 
 
 ## <a name="how-to-configure-train-svd-recommender"></a>Advies van Train SVD configureren  
 
-+ [De trainings gegevens voorbereiden](#prepare-data)
-+ [Het model trainen](#train-the-model)
-
 ### <a name="prepare-data"></a>Gegevens voorbereiden
 
-Voordat u probeert de module te gebruiken, is het essentieel dat uw gegevens de indeling hebben die wordt verwacht door het aanbevelings model. Er is een opleidings gegevensverzameling van de beoordeling van de **gebruiker-item classificatie** vereist.
+Voordat u de module gebruikt, moeten de invoer gegevens de indeling hebben die het aanbevelings model verwacht. Er is een opleidings gegevensverzameling van de beoordeling van de gebruiker-item classificatie vereist.
 
-#### <a name="required-dataset-of-user-item-ratings"></a>Vereiste gegevensset van gebruiker-item-classificaties
-
-Het is belang rijk dat de invoer gegevens die worden gebruikt voor de training het juiste type gegevens in de juiste indeling bevatten: 
-
-+ De eerste kolom moet gebruikers-id's bevatten.
-+ De tweede kolom moet item-id's bevatten.
++ De eerste kolom bevat gebruikers-id's.
++ De tweede kolom bevat item-id's.
 + De derde kolom bevat de classificatie voor het combi neren van gebruikers items. Classificatie waarden moeten numeriek type zijn.  
 
-                                                                                                                                                                                                           
-
-De gegevensset van de **restaurant classificaties** in azure machine learning Designer (Klik op **opgeslagen gegevens sets** en vervolgens voor **beelden**) toont de verwachte indeling:
+De gegevensset voor **restaurant classificaties** in azure machine learning Designer (Selecteer **opgeslagen gegevens sets** en vervolgens voor **beelden**) toont de verwachte indeling:
 
 |Naam|placeID|rating|
 |------------|-------------|------------|
@@ -68,21 +59,21 @@ In dit voor beeld kunt u zien dat één gebruiker twee afzonderlijke restaurants
 
 ### <a name="train-the-model"></a>Het model trainen
 
-1.  Voeg de module **Train SVD adviseering** toe aan uw pijp lijn in de ontwerp functie en verbind deze met de trainings gegevens.  
+1.  Voeg de module Train SVD Adviseering toe aan uw pijp lijn in de ontwerp functie en verbind deze met de trainings gegevens.  
    
-2.  Voor het **aantal factoren**typt u het nummer waarmee het aantal factoren wordt aangegeven dat moet worden gebruikt met aanbevolen.  
+2.  Geef voor **aantal factoren**het aantal factoren op dat met de aanbevolen code moet worden gebruikt.  
     
-    Elke factor meet de hoeveelheid die de gebruiker aan het item heeft gekoppeld. Het aantal factoren is ook de dimensionaliteit van de latente factor ruimte. Met het aantal gebruikers en de toename van het item is het beter om een groter aantal factoren in te stellen. Als het aantal echter te groot is, kunnen de prestaties verminderen.
+    Elke factor meet de hoeveelheid van de gebruiker met betrekking tot het item. Het aantal factoren is ook de dimensionaliteit van de latente factor ruimte. Wanneer het aantal gebruikers en items toeneemt, is het beter om een groter aantal factoren in te stellen. Maar als het aantal te groot is, kunnen de prestaties verloren.
     
-3.  **Aantal iteraties van aanbevelings algoritmen**geeft aan hoe vaak de invoer gegevens moeten worden verwerkt door de algoritme. Hoe hoger dit aantal, des te nauw keuriger de voor spellingen; de training gaat echter trager. De standaard waarde is 30.
+3.  Het **aantal iteraties van aanbevelings algoritmen** geeft aan hoe vaak de invoer gegevens moeten worden verwerkt door de algoritme. Hoe hoger dit aantal, hoe nauw keuriger de voor spellingen zijn. Een hoger nummer betekent echter een tragere training. De standaard waarde is 30.
 
-4.  Voor het **leer tempo**typt u een getal tussen 0,0 en 2,0 dat de stap grootte tijdens het leren definieert.
+4.  Voer voor het **leer tempo**een getal in tussen 0,0 en 2,0 dat de stap grootte voor Learning definieert.
 
-    Het leer tempo bepaalt de grootte van de stap die bij elke herhaling moet worden uitgevoerd. Als de grootte van de stap te groot is, is het mogelijk dat u de optimale oplossing kunt overschrijden. Als de grootte van de stap te klein is, neemt de training meer tijd in beslag op de beste oplossing. 
+    Het leer tempo bepaalt de grootte van de stap bij elke iteratie. Als de grootte van de stap te groot is, is het mogelijk dat u de optimale oplossing kunt overschrijden. Als de grootte van de stap te klein is, is de training langer nodig om de beste oplossing te vinden. 
   
 5.  Voer de pijplijn uit.  
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor de Azure machine learning-service. 

@@ -1,5 +1,5 @@
 ---
-title: PowerShell-voorbeeld van actieve geo-replicatie voor een gegroepeerde Azure SQL-database | Microsoft Docs
+title: Power shell-voor beeld-actieve geo-replicatie-gepoolde Azure-SQL database
 description: Azure PowerShell-voorbeeldscript voor het instellen van actieve geo-replicatie voor een pooldatabase in Azure SQL Database en het uitvoeren van een failover.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 940262c7235b61023adf547ea6ee4db9be1ee28c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3ff5d41c8d37745cbb06dbb98b5ce6e9b6a19ed4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569758"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691481"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>PowerShell gebruiken voor het configureren van actieve geo-replicatie voor een pooldatabase in Azure SQL Database
 
@@ -47,7 +47,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
 | [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Hiermee maakt u een elastische pool. |
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee wordt een enkele of pooldatabase gemaakt. |
@@ -56,7 +56,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)| Hiermee haalt u een of meer databases op. |
 | [Set-AzSqlDatabaseSecondary](/powershell/module/az.sql/set-azsqldatabasesecondary)| Hiermee wordt overgeschakeld op een secundaire database als primaire om de failover te initiëren.|
 | [Get-AzSqlDatabaseReplicationLink](/powershell/module/az.sql/get-azsqldatabasereplicationlink) | Hiermee haalt u de geo-replicatiekoppelingen tussen een Azure SQL Database en een resourcegroep of SQL Server op. |
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen

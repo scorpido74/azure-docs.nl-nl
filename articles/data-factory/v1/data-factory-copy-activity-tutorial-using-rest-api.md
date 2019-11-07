@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: REST-API gebruiken voor het maken van een Azure Data Factory-pijplijn | Microsoft Docs'
+title: 'Zelf studie: REST API gebruiken om een Azure Data Factory pijp lijn te maken '
 description: In deze zelfstudie gebruikt u REST API om een Azure Data Factory-pijplijn te maken met een kopieeractiviteit om gegevens uit een Azure-blobopslag naar een Azure SQL-database te kopiëren.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1f9cead45066fb7bf4a96332710fdd8f3cd5a094
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 860b2f20b4ffda0a1a588ed5d5893ad2c0521a43
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146215"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682835"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Zelfstudie: REST-API gebruiken voor het maken van een Azure Data Factory-pijplijn 
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "73146215"
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-sjabloon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
-> * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+> * [.NET-API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
 > 
 
@@ -360,7 +360,7 @@ Houd rekening met de volgende punten:
      Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](data-factory-naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 * Als u Data Factory-exemplaren wilt maken, moet u bijdrager/beheerder zijn van het Azure-abonnement
 * De naam van de gegevensfactory wordt in de toekomst mogelijk geregistreerd als DNS-naam en wordt daarmee ook voor iedereen zichtbaar.
-* Als u de foutmelding **Dit abonnement is niet geregistreerd voor gebruik van de naamruimte Microsoft.DataFactory** ontvangt, voert u een van de volgende stappen uit en probeert u opnieuw te publiceren: 
+* Als u de foutmelding **This subscription is not registered to use namespace Microsoft.DataFactory** ontvangt, voert u een van de volgende stappen uit en probeert u opnieuw te publiceren: 
   
   * Voer in Azure PowerShell de volgende opdracht uit om de Data Factory-provider te registreren: 
 

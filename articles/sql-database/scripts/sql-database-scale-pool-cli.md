@@ -1,5 +1,5 @@
 ---
-title: CLI-voorbeeld - Elastische SQL-groep schalen naar Azure SQL Database | Microsoft Docs
+title: In het CLI-voor beeld wordt een elastische SQL-pool geschaald-Azure SQL Database
 description: Voorbeeld van Azure CLI-script voor het schalen van een elastische pool naar Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: b378bef296f7cf6546887bcf760a4e14ed66a385
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0494ab163e7fb7e8ea93cf255837bfda2d7b1570
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569828"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691544"
 ---
 # <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Een elastische pool schalen naar Azure SQL Database met CLI
 
@@ -51,7 +51,7 @@ Dit script maakt gebruik van de volgende opdrachten voor het maken van een resou
 | [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | Hiermee maakt u een elastische pool. |
 | [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | Maakt een enkelvoudige of pooldatabase. |
 | [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update) | Hiermee wordt een elastische pool bijgewerkt, in dit geval door het wijzigen van het toegewezen aantal eDTU's. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

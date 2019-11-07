@@ -1,26 +1,24 @@
 ---
 title: 'Versleuteling: op rest met door de klant beheerde sleutels in Azure Key Vault (preview)'
 titleSuffix: Azure Cognitive Search
-description: Aanvulling op server-side encryptie over indexen en synoniemen in azure Cognitive Search via sleutels die u in Azure Key Vault maakt en beheert.
+description: Aanvulling op server-side encryptie over indexen en synoniemen in azure Cognitive Search via sleutels die u in Azure Key Vault maakt en beheert. Deze functie is momenteel beschikbaar als openbare preview-versie.
 manager: nitinme
 author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 94c9d94edb9a9ca3f6117bd43ab9cefe1dad52a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1521abfa327c69648b38f02d1d6313baa369f304
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794359"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721746"
 ---
 # <a name="content-encryption-of-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Inhouds versleuteling van Azure Cognitive Search met door de klant beheerde sleutels in Azure Key Vault
 
-> [!Note]
-> Versleuteling met door de klant beheerde sleutels is een preview-versie en is niet bedoeld voor productie gebruik. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. U kunt ook de .NET SDK versie 8,0-Preview gebruiken.
->
-> Deze functie is niet beschikbaar voor gratis services. U moet een factureer bare zoek service gebruiken die is gemaakt op of na 2019-01-01. Er zijn op dit moment geen portal-ondersteuning.
+> [!IMPORTANT] 
+> Ondersteuning voor versleuteling-at-rest is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) en [.net SDK versie 8,0-Preview](search-dotnet-sdk-migration-version-9.md) biedt deze functie. Er is momenteel geen ondersteuning voor de portal.
 
 Standaard versleutelt Azure Cognitive Search gebruikers inhoud op rest met door [service beheerde sleutels](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models). U kunt standaard versleuteling aanvullen met een extra versleutelings laag met behulp van sleutels die u in Azure Key Vault maakt en beheert. Dit artikel begeleidt u stapsgewijs door de stappen.
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 8aafc1caf44e6a937fc53801f2fa34157dc9eab5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3df1a0430983b52d8a791acabbd03efe19055697
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501587"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721767"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelf studie: prijs van auto Mobile voors pellen met de ontwerp functie (preview)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -59,11 +59,11 @@ Als u een Azure Machine Learning-werk ruimte hebt met een **Enter prise-editie**
 
 1. Selecteer **eenvoudig te gebruiken vooraf gedefinieerde modules**.
 
-1. Selecteer de standaard pijplijn naam **pijp lijn gemaakt-aan** aan de bovenkant van het canvas en wijzig deze in iets wat nuttig is. Bijvoorbeeld **' prijs voorspelling voor auto Mobile '** . De naam hoeft niet uniek te zijn.
+1. Selecteer de naam van de standaard pijplijn, de **pijp lijn is gemaakt op..** . boven aan het canvas en wijzig de naam in iets wat nuttig is. Bijvoorbeeld **' prijs voorspelling voor auto Mobile '** . De naam hoeft niet uniek te zijn.
 
 ## <a name="import-data"></a>Gegevens importeren
 
-Er zijn verschillende voorbeeld gegevens sets die zijn opgenomen in de ontwerp functie waarmee u kunt experimenteren. Voor deze zelf studie gebruikt u de voor beeld-gegevensset **prijs gegevens (onbewerkt)** . 
+Er zijn verschillende voorbeeld gegevens sets die zijn opgenomen in de ontwerp functie waarmee u kunt experimenteren. Gebruik voor deze zelf studie **Auto Mobile price data (RAW)** . 
 
 1. Links van het pijplijn canvas is een palet met gegevens sets en modules. Selecteer **gegevens sets** en bekijk vervolgens de sectie voor **beelden** om de beschik bare voorbeeld gegevens sets weer te geven.
 
@@ -89,17 +89,17 @@ U kunt de gegevens visualiseren om inzicht te krijgen in de gegevensset die u ga
 
 ## <a name="prepare-data"></a>Gegevens voorbereiden
 
-Gegevens sets vereisen doorgaans een voor verwerking vóór de analyse. Mogelijk hebt u enkele ontbrekende waarden gezien tijdens het visualiseren van de gegevensset. Deze ontbrekende waarden moeten worden opgeschoond, zodat de gegevens correct kunnen worden geanalyseerd. U verwijdert kolommen met veel ontbrekende waarden en verwijdert afzonderlijke rijen met ontbrekende waarden.
+Gegevens sets vereisen doorgaans een voor verwerking vóór de analyse. Mogelijk hebt u enkele ontbrekende waarden gezien bij het controleren van de gegevensset. Deze ontbrekende waarden moeten worden gereinigd zodat het model de gegevens op de juiste wijze kan analyseren.
 
 ### <a name="remove-a-column"></a>Een kolom verwijderen
 
 Wanneer u een model traint, moet u iets doen over de gegevens die ontbreken. In deze gegevensset ontbreken de **genormaliseerde-verliezen** kolom veel waarden, dus sluit die kolom van het model af.
 
-1. Selecteer de kolommen met gegevens waarmee u wilt werken. Typ **in** het zoekvak boven aan het palet om de module **select columns in dataset** te vinden.
+1. Voer in het zoekvak boven aan het palet **selecteren** in om de module **select columns in dataset** te vinden.
 
 1. Klik en sleep de module **kolommen in gegevensset selecteren** op het canvas. Verwijder de module onder de module DataSet.
 
-1. Verbind de gegevensset die u eerder hebt toegevoegd aan de module **select columns in dataset** door te klikken en slepen. Sleep vanuit de uitvoer poort van de gegevensset, de kleine cirkel aan de onderkant van de gegevensset op het canvas, naar de invoer poort van **geselecteerde kolommen in gegevensset**, die de kleine cirkel boven aan de module vormt.
+1. Verbind de gegevensset **Auto Mobile price data (RAW)** met de **optie select columns in dataset**. Sleep vanuit de uitvoer poort van de gegevensset, de kleine cirkel aan de onderkant van de gegevensset op het canvas, naar de invoer poort van **geselecteerde kolommen in gegevensset**, die de kleine cirkel boven aan de module vormt.
 
     > [!TIP]
     > U maakt een stroom met gegevens via uw pijp lijn wanneer u de uitvoer poort van een module verbindt met een andere invoer poort.
@@ -125,7 +125,7 @@ Wanneer u een model traint, moet u iets doen over de gegevens die ontbreken. In 
 
 1. Selecteer de module **select columns in dataset** . 
 
-1. Selecteer in de **Eigenschappen** **para meters** > **Opmerking** en voer ' normale verliezen uitsluiten ' in.
+1. Selecteer in het deel venster **Eigenschappen** de optie **para meters** > **Opmerking** en voer ' normale verliezen uitsluiten ' in.
 
 ### <a name="clean-missing-data"></a>Ontbrekende gegevens opschonen
 
@@ -134,13 +134,13 @@ Uw gegevensset heeft nog steeds ontbrekende waarden na het verwijderen van de ko
 > [!TIP]
 > Het schoonmaken van de ontbrekende waarden van invoer gegevens is een vereiste voor het gebruik van de meeste modules in de ontwerp functie.
 
-1. Typ **clean** in het zoekvak om de module **clean Missing Data** te vinden.
+1. Voer **schone** in het zoekvak in om de module **clean Missing Data** te vinden.
 
 1. Sleep de module **clean Missing Data** naar het pijp lijn-canvas en verbind deze met de module **select columns in dataset** . 
 
 1. Selecteer in het deel venster Eigenschappen de optie **hele rij verwijderen** onder **reinigings modus**.
 
-1. In het deel venster Eigenschappen voert u ' rijen met ontbrekende waarden verwijderen ' in. in het vak **Opmerking** .  
+1. Voer in het vak deel venster met eigenschappen de **tekst** ' rijen met ontbrekende waarde verwijderen ' in.  
 
     De pijp lijn moet er nu ongeveer als volgt uitzien:
     
@@ -148,7 +148,7 @@ Uw gegevensset heeft nog steeds ontbrekende waarden na het verwijderen van de ko
 
 ## <a name="train-a-machine-learning-model"></a>Een machine learning model trainen
 
-Nu de gegevens zijn voor verwerking, kunt u een voorspellend model maken. U gebruikt uw gegevens om het model te trainen. Vervolgens test u het model om te zien hoe de prijzen kunnen worden voor speld.
+Nu de gegevens zijn verwerkt, kunt u een voorspellend model trainen.
 
 ### <a name="select-an-algorithm"></a>Een algoritme selecteren
 
@@ -158,33 +158,33 @@ Omdat u de prijs wilt voors pellen, wat een getal is, kunt u een regressie algor
 
 ### <a name="split-the-data"></a>De gegevens splitsen
 
-Gebruik uw gegevens voor de training van het model en het testen door de gegevens te splitsen in twee afzonderlijke gegevens sets.
+Splits uw gegevens in twee afzonderlijke gegevens sets om het model te trainen en te testen.
 
-1. Typ **Split data** in het zoekvak om de module **Split data** te vinden en deze te verbinden met de poort links van de module **clean Missing Data** .
+1. Voer **Split data** in het zoekvak in om de module **Split data** te vinden en deze te verbinden met de poort links van de module **clean Missing Data** .
 
 1. Selecteer de module **Split data** .
 
 1. Stel in het deel venster Eigenschappen het **gedeelte van de rijen in de eerste uitvoer gegevensset** in op 0,7.
 
-    Hiermee worden 70 procent van de gegevens gesplitst om het model te trainen en wordt 30 procent voor het testen teruggestuurd.
+    Hiermee splitst u 70 procent van de gegevens om het model te trainen en 30 procent voor het testen ervan.
 
-1. In het deel venster Eigenschappen voert u ' Splits de gegevensset in de Trainingsset (0,7) en test set (0,3) ' in. in het vak **Opmerking** .
+1. In het vak eigenschappen **Opmerking** voert u "Splits de gegevensset in de Trainingsset (0,7) en test set (0,3) in."
 
 ### <a name="train-the-model"></a>Het model trainen
 
-Train het model door het een set gegevens te geven die de prijs bevat. Het model scant de gegevens en zoekt naar correlaties tussen de functies van een auto en de prijs.
+Train het model door het een set gegevens te geven die de prijs bevat. Het model scant de gegevens en zoekt naar correlaties tussen de functies van een auto en de prijs voor het bouwen van een model.
 
 1. Als u het leer algoritme wilt selecteren, wist u het zoekvak van het module palet.
 
 1. Vouw **machine learning algoritmen**uit.
     
-    Er worden verschillende categorieën weergegeven die kunnen worden gebruikt om de machine learning-algoritmen te initialiseren.
+    Hiermee worden verschillende categorieën modules weer gegeven die u kunt gebruiken voor het initialiseren van leer algoritmen.
 
-1. Selecteer voor deze pijp lijn **regressie** > **lineaire regressie** en sleep deze naar het pijplijn doek.
+1. Selecteer **regressie** > **lineaire regressie** en sleep deze naar het pijp lijn-canvas.
 
 1. Zoek de module **Train model** en sleep deze naar het pijp lijn-canvas. 
 
-1. Koppel de uitvoer van de module Linear Regression aan de linkerkant van de module Train model.
+1. Koppel de uitvoer van de module **Linear Regression** aan de linkerkant van de module **Train model** .
 
 1. Verbind de resultaten van de trainings gegevens (links poort) van de module **gesplitste gegevens** met de juiste invoer van de module **Train model** .
 
@@ -194,7 +194,9 @@ Train het model door het een set gegevens te geven die de prijs bevat. Het model
 
 1. Selecteer in het deel venster Eigenschappen de optie **kolom kiezer bewerken** .
 
-1. Vouw in het dialoog venster **Label kolom** de vervolg keuzelijst uit en selecteer **kolom namen**. Voer in het tekstvak de **prijs**in. Prijs is de waarde die uw model gaat voors pellen.
+1. Vouw in het dialoog venster **Label kolom** de vervolg keuzelijst uit en selecteer **kolom namen**. 
+
+1. Voer in het tekstvak de **prijs**in. Prijs is de waarde die uw model gaat voors pellen.
 
     Uw pijp lijn moet er als volgt uitzien:
 
@@ -202,13 +204,13 @@ Train het model door het een set gegevens te geven die de prijs bevat. Het model
 
 ## <a name="evaluate-a-machine-learning-model"></a>Een machine learning model evalueren
 
-Nu u het model hebt getraind met 70 procent van uw gegevens, kunt u het gebruiken om de andere 30 procent van de gegevens te scoren om te zien hoe goed uw model functioneert.
+Nadat u uw model hebt getraind met 70 procent van de gegevens, kunt u het gebruiken om de andere 30 procent te scoren om te zien hoe goed uw model functioneert.
 
-1. Typ **score model** in het zoekvak om de module **score model** te vinden en sleep de module naar het pijp lijn papier. 
+1. Voer **score model** in het zoekvak in om de module **score model** te vinden en sleep de module naar het pijp lijn papier. 
 
 1. Koppel de uitvoer van de module **Train model** aan de linker invoer poort van het **score model**. Koppel de test gegevens uitvoer (rechter poort) van de module **Split data** aan de juiste invoer poort van het **score model**.
 
-1. Typ **Evaluate** in het zoekvak om het **evaluatie model** te vinden en sleep de module naar het pijp lijn-canvas. 
+1. Voer **Evaluate** in het zoekvak in om het **Evalueer model** te vinden en sleep de module naar het pijp lijn-canvas. 
 
 1. Koppel de uitvoer van de module **score model** aan de linker invoer van het **Evaluate-model**. 
 
@@ -224,15 +226,17 @@ Nu u het model hebt getraind met 70 procent van uw gegevens, kunt u het gebruike
 
 Nadat de uitvoering is voltooid, kunt u de resultaten van de pijplijn uitvoering bekijken. 
 
-1. Bekijk de uitvoer van de module **score model** door de module **score model** te selecteren.
+1. Selecteer de module **score model** om de uitvoer ervan weer te geven.
 
-1. Selecteer in het deel venster **Eigenschappen** de optie **uitvoer** > **visualiseren**. De uitvoer bevat de voorspelde waarden voor de prijs en de bekende waarden uit de testgegevens.
+1. Selecteer in het deel venster **Eigenschappen** de optie **uitvoer** > **visualiseren**.
+
+    Hier vindt u de voorspelde prijzen en de werkelijke prijzen van de test gegevens.
 
     ![Scherm afbeelding van de uitvoer visualisatie die de kolom ' gescoorde label ' markeert](./media/ui-tutorial-automobile-price-train-score/score-result.png)
 
-1. Bekijk de uitvoer van de module **Evaluate model** door de module **score model** te selecteren.
+1. Selecteer de module **Evaluate model** om de uitvoer ervan weer te geven.
 
-1. Selecteer in het deel venster **Eigenschappen** de optie **uitvoer** > **visualiseren**en selecteer vervolgens **visualiseren**.
+1. Selecteer in het deel venster **Eigenschappen** de optie **uitvoer** > **visualiseren**.
 
 De volgende statistieken worden weer gegeven voor uw model:
 
@@ -242,7 +246,7 @@ De volgende statistieken worden weer gegeven voor uw model:
 * **Relative Squared Error**: het gemiddelde aan gekwadrateerde fouten ten opzichte van het gekwadrateerde verschil tussen de werkelijke waarden en het gemiddelde van alle werkelijke waarden.
 * **Determinatie coëfficiënt**: ook wel bekend als R-kwadraat, is dit een statistische waarde die aangeeft hoe goed een model past bij de gegevens.
 
-Voor elk van de foutstatistieken geldt: hoe kleiner hoe beter. Een kleine waarde geeft aan dat de voorspelling dichter bij de werkelijke waarde ligt. Voor een coëfficiënt van de bepaling is de waarde één (1,0), hoe beter de voor spellingen.
+Voor elk van de foutstatistieken geldt: hoe kleiner hoe beter. Een kleinere waarde geeft aan dat de voor spellingen dichter bij de werkelijke waarden liggen. Voor de coëfficiënt van de bepaling is de waarde een (1,0), hoe beter de voor spellingen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -250,12 +254,12 @@ Voor elk van de foutstatistieken geldt: hoe kleiner hoe beter. Een kleine waarde
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deel één van deze zelf studie hebt u de volgende stappen uitgevoerd:
+In deel één van deze zelf studie hebt u de volgende taken uitgevoerd:
 
-* Een pijp lijn gemaakt
+* Een pijplijn maken
 * De gegevens voorbereiden
-* Het model is getraind
-* Het model wordt gescoord en geëvalueerd
+* Het model trainen
+* Het model beoordelen en evalueren
 
 In deel twee leert u hoe u uw model implementeert als een real-time-eind punt.
 

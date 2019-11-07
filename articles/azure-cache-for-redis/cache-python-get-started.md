@@ -1,6 +1,6 @@
 ---
 title: 'Snelstartgids: een python-app maken die gebruikmaakt van Azure cache voor redis'
-description: In deze snelstart leert u een Python-app te maken die gebruikmaakt van Azure Cache voor Redis
+description: In deze Quick Start leert u hoe u een python-app maakt die gebruikmaakt van Azure cache voor redis.
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -12,17 +12,17 @@ ms.devlang: python
 ms.topic: quickstart
 ms.tgt_pltfrm: cache
 ms.workload: tbd
-ms.date: 05/11/2018
+ms.date: 11/05/2019
 ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 5367896c931bf7c5f52b0874d49ede2fc78614ab
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8cb5a47e884400f09111c6e40b387deea4fb158e
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435519"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720305"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Snelstartgids: een python-app maken die gebruikmaakt van Azure cache voor redis
 
@@ -33,31 +33,26 @@ In dit artikel neemt u Azure-cache op voor redis in een python-app om toegang te
 - Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 - [Python 2 of 3](https://www.python.org/downloads/)
 
-## <a name="create-an-azure-cache-for-redis-on-azure"></a>Azure Cache voor Redis maken op Azure
+## <a name="create-an-azure-cache-for-redis-instance"></a>Een instantie van Azure Cache voor Redis maken
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 ## <a name="install-redis-py"></a>Redis-py installeren
 
-[Redis-py](https://github.com/andymccurdy/redis-py) is een Python-interface voor Azure Cache voor Redis. Gebruik het hulpprogramma voor Python-pakketten, *pip*, om het redis-py-pakket te installeren. 
+[Redis-py](https://github.com/andymccurdy/redis-py) is een Python-interface voor Azure Cache voor Redis. Gebruik het hulp programma Python-pakketten, *PIP*, om het *redis-py-* pakket te installeren vanaf een opdracht prompt. 
 
-In het volgende voor beeld wordt *PIP3* voor Python3 gebruikt om het redis-py-pakket in Windows 10 te installeren met behulp van een Visual Studio 2019-opdracht prompt voor ontwikkel aars die wordt uitgevoerd met verhoogde beheerders bevoegdheden.
-
-```python
-    pip3 install redis
-```
+In het volgende voor beeld gebruikt *PIP3* voor python 3 om *redis-py* op Windows 10 te installeren vanaf een opdracht prompt van de beheerder.
 
 ![Installeer de redis-py Python-interface naar Azure cache voor redis](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
-
 ## <a name="read-and-write-to-the-cache"></a>Lezen en schrijven naar de cache
 
-Voer Python uit en test met behulp van de cache vanaf de opdrachtregel. Vervang `<Your Host Name>` en `<Your Access Key>` door de waarden voor uw Azure Cache voor Redis-instantie. 
+Voer python uit vanaf de opdracht regel en test uw cache met behulp van de volgende code. Vervang `<Your Host Name>` en `<Your Access Key>` door de waarden uit uw Azure-cache voor redis-exemplaar. De hostnaam is van het formulier *\<DNS-naam >. redis. cache. Windows. net*.
 
 ```python
 >>> import redis
->>> r = redis.StrictRedis(host='<Your Host Name>.redis.cache.windows.net',
+>>> r = redis.StrictRedis(host='<Your Host Name>',
         port=6380, db=0, password='<Your Access Key>', ssl=True)
 >>> r.set('foo', 'bar')
 True
@@ -66,18 +61,16 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> Voor redis-versie is 3,0 of hoger, wordt de SSL-certificaat controle afgedwongen. ssl_ca_certs moet expliciet worden ingesteld wanneer verbinding wordt gemaakt met redis. In het geval van RH Linux kunt u ssl_ca_certs vinden in de certificaat module "/etc/PKI/TLS/certs/ca-Bundle.CRT".
+> Voor Azure cache voor redis versie 3,0 of hoger wordt de SSL-certificaat controle afgedwongen. ssl_ca_certs moet expliciet worden ingesteld bij het maken van verbinding met Azure cache voor redis. Ssl_ca_certs bevindt zich in de */etc/PKI/TLS/certs/ca-Bundle.CRT* -certificaat module voor RedHat Linux.
 
-## <a name="create-a-python-script"></a>Een Python-script maken
+## <a name="create-a-python-sample-app"></a>Een python-voor beeld-app maken
 
-Maak een nieuw script-tekstbestand met de naam *PythonApplication1.py*.
-
-Voer het volgende script voor *PythonApplication1.py* uit en sla het bestand op. Dit script zal de toegang tot de cache testen. Vervang `<Your Host Name>` en `<Your Access Key>` door de waarden voor uw Azure Cache voor Redis-instantie. 
+Maak een nieuw tekst bestand, voeg het volgende script toe en sla het bestand op als *PythonApplication1.py*. Vervang `<Your Host Name>` en `<Your Access Key>` door de waarden uit uw Azure-cache voor redis-exemplaar. De hostnaam is van het formulier *\<DNS-naam >. redis. cache. Windows. net*.
 
 ```python
 import redis
 
-myHostname = "<Your Host Name>.redis.cache.windows.net"
+myHostname = "<Your Host Name>"
 myPassword = "<Your Access Key>"
 
 r = redis.StrictRedis(host=myHostname, port=6380,
@@ -98,36 +91,28 @@ for c in result:
     print("id : " + c['id'] + ", addr : " + c['addr'])
 ```
 
-Voer het script uit met behulp van Python.
+Voer *PythonApplication1.py* uit met python. Als het goed is, ziet u de resultaten zoals in het volgende voor beeld:
 
-![Python-script uitvoeren om de cache toegang in azure cache te testen voor redis](./media/cache-python-get-started/cache-python-completed.png)
-
+![Python-script uitvoeren om de cache toegang te testen](./media/cache-python-get-started/cache-python-completed.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u verder wilt gaan met de volgende zelfstudie, kunt u de resources die in deze snelstart zijn gemaakt behouden en opnieuw gebruiken.
-
-Als u niet verder wilt met de snelstart, kunt u de Azure-resources verwijderen die in deze snelstart zijn gemaakt om kosten te voorkomen. 
+Als u klaar bent met de Azure-resource groep en de resources die u in deze Quick Start hebt gemaakt, kunt u ze verwijderen om kosten te voor komen.
 
 > [!IMPORTANT]
-> Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle bijbehorende resources worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
->
+> Het verwijderen van een resource groep is onomkeerbaar en de resource groep en alle resources hierin worden definitief verwijderd. Als u uw Azure-cache hebt gemaakt voor redis-exemplaar in een bestaande resource groep die u wilt blijven gebruiken, kunt u alleen de cache verwijderen door **verwijderen** te selecteren op de pagina **overzicht** van cache. 
 
-Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer **Resourcegroepen**.
+De resource groep en de bijbehorende Redis Cache voor Azure-exemplaar verwijderen:
 
-Voer in het tekstvak **filteren op naam...** de naam van de resource groep in. In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Selecteer in de lijst met resultaten van de resource groep de optie **...** en vervolgens de **resource groep verwijderen**.
-
-![Uw Snelstartgids-resource groep voor Azure cache verwijderen voor redis](./media/cache-web-app-howto/delete-your-resource-group-for-azure-cache-for-redis.png)
-
-U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Voer de naam van de resource groep in om te bevestigen en selecteer **verwijderen**.
-
-Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
+1. Zoek en selecteer in het [Azure Portal](https://portal.azure.com) **resource groepen**.
+1. In het tekstvak **filteren op naam** voert u de naam in van de resource groep die uw cache-exemplaar bevat en selecteert u deze in de zoek resultaten. 
+1. Selecteer **Resourcegroep verwijderen** op de pagina van de resourcegroep.
+1. Typ de naam van de resource groep en selecteer vervolgens **verwijderen**.
+   
+   ![De resource groep voor Azure cache voor redis verwijderen](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
 > [Maak een eenvoudige ASP.NET-web-app die gebruikmaakt van Azure Cache voor Redis.](./cache-web-app-howto.md)
 
-<!--Image references-->
-[1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png
-[2]: ./media/cache-python-get-started/redis-cache-cache-create.png

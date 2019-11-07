@@ -1,5 +1,5 @@
 ---
-title: Een Azure SQL Database-elastische-taakagent maken met PowerShell | Microsoft Docs
+title: 'Een Azure SQL Database elastische taak agent maken met behulp van Power shell '
 description: Ontdek hoe u een elastische-taakagent maakt met behulp van PowerShell.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 0d64bd150a43666679253f8244d80411e25dfdcd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 80f9db2d11c875d9be9bef225c04e3e90f3d0ff8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935044"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692247"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Een elastische-taakagent maken met behulp van PowerShell
 
@@ -70,7 +70,7 @@ Get-Module Az.Sql
 
 Voor het maken van een Elastic Jobs-agent is een database (S0 of hoger) vereist om te gebruiken als [taakdatabase](sql-database-job-automation-overview.md#job-database). 
 
-*Het onderstaande script maakt een nieuwe resourcegroep, server en database voor gebruik als de taakdatabase. In het onderstaande script wordt ook een tweede server met twee lege data bases gemaakt om taken uit te voeren.*
+*In het onderstaande script maakt u een nieuwe resource groep, server en Data Base voor gebruik als de taak database. In het onderstaande script wordt ook een tweede server met twee lege data bases gemaakt om taken uit te voeren.*
 
 Elastic Jobs heeft geen specifieke naamgevingsvereisten, zodat u elke naamgevingsconventie kunt gebruiken die u wilt, zolang deze maar voldoet aan de [Azure-vereisten](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
@@ -215,7 +215,7 @@ $JobCred = $JobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 Een [doelgroep](sql-database-job-automation-overview.md#target-group) definieert een verzameling van een of meer databases waarop een taakstap wordt uitgevoerd. 
 
-In het volgende fragment worden twee doelgroepen gemaakt: *ServerGroup* en *ServerGroupExcludingDb2*. *ServerGroup* zijn alle databases die bestaan ​​op de server op het moment van uitvoering, en *ServerGroupExcludingDb2* alle databases op de server, behalve *TargetDb2*:
+Met het volgende codefragment worden twee doelgroepen gemaakt: *ServerGroup*en *ServerGroupExcludingDb2*. *ServerGroup* zijn alle databases die bestaan ​​op de server op het moment van uitvoering, en *ServerGroupExcludingDb2* alle databases op de server, behalve *TargetDb2*:
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -289,7 +289,7 @@ $JobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 
 De volgende tabel bevat de mogelijke statussen voor taak uitvoering:
 
-|Status|Description|
+|Status|Beschrijving|
 |:---|:---|
 |**Toegevoegd** | De taak uitvoering is zojuist gemaakt en wordt nog niet uitgevoerd.|
 |**InProgress** | De taak wordt momenteel uitgevoerd.|
@@ -297,7 +297,7 @@ De volgende tabel bevat de mogelijke statussen voor taak uitvoering:
 |**Geslaagd** | De taak uitvoering is voltooid.|
 |**SucceededWithSkipped** | De taak uitvoering is voltooid, maar sommige onderliggende items zijn overgeslagen.|
 |**Mislukt** | De taak uitvoering is mislukt en de pogingen zijn uitgeput.|
-|**TimedOut** | Er is een time-out opgetreden voor de taak uitvoering.|
+|**Out** | Er is een time-out opgetreden voor de taak uitvoering.|
 |**Geannuleerd** | De taak uitvoering is geannuleerd.|
 |**Overgeslagen** | De taak uitvoering is overgeslagen omdat een andere uitvoering van dezelfde taak stap al werd uitgevoerd op hetzelfde doel.|
 |**WaitingForChildJobExecutions** | De uitvoering van de taak wacht op het volt ooien van de onderliggende uitvoeringen.|

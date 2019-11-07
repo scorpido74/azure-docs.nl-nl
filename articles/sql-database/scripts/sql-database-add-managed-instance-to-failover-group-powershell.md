@@ -1,5 +1,5 @@
 ---
-title: Power shell-voor beeld-Failovergroep-Azure SQL Database beheerd exemplaar | Microsoft Docs
+title: Power shell-voor beeld-Failovergroep-Azure SQL Database beheerd exemplaar
 description: Azure PowerShell voorbeeld script voor het maken van een Azure SQL Database beheerde instantie, voegt u deze toe aan een failovergroep en testfailover.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: f753dbce66c8db9c4098e716725f0a63fc68d4f7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e50877f6f3194885b139683fe865144384716b48
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956290"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691759"
 ---
 # <a name="use-powershell-to-add-an-azure-sql-database-managed-instance-to-a-failover-group"></a>Power shell gebruiken om een door Azure SQL Database beheerd exemplaar toe te voegen aan een failovergroep 
 
@@ -42,7 +42,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

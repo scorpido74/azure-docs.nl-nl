@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: be639a67f70ab40f8d7dcc0f3793cbbd4a2ec4a3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e2ea934140322a13f07a90f4246bacd3f9dbe6c9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436807"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721091"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Containers met een grote partitie sleutel maken
 
@@ -71,7 +71,8 @@ De grote partitie sleutels worden ondersteund met de volgende minimum versies va
 |.Net     |    1,18     |
 |Java-synchronisatie     |   2.4.0      |
 |Java async   |  2.5.0        |
-| REST-API | versie hoger dan `2017-05-03` met behulp van de `x-ms-version`-aanvraag header.|
+| REST API | de versie is hoger dan `2017-05-03` met behulp van de `x-ms-version` aanvraag header.|
+| Resource Manager-sjabloon | versie 2 met behulp van de eigenschap `"version":2` binnen het `partitionKey`-object. |
 
 Op dit moment kunt u geen containers met een grote partitie sleutel gebruiken in Power BI en Azure Logic Apps. U kunt containers gebruiken zonder een grote partitie sleutel van deze toepassingen.
 

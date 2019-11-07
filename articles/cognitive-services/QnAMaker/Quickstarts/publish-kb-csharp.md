@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Knowledge Base publiceren, REST, C# -QnA Maker'
+title: 'Snelstartgids: Knowledge Base publiceren, REST, C# -QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Deze REST-snelstartgids voor C# helpt u bij het publiceren van uw knowledge base, waarbij de meest recente versie van de geteste knowledge base naar een specifieke Azure Search-index wordt gepusht die de gepubliceerde knowledge base vertegenwoordigt. Hiermee wordt ook een eindpunt gemaakt dat kan worden aangeroepen in uw toepassing of chatbot.
+description: Deze C# op rest gebaseerde Snelstartgids publiceert uw Knowledge Base en maakt een eind punt dat kan worden aangeroepen in uw toepassing of chat-bot.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,19 +11,19 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 2b2c2ed43a229d929353767b229f8331b49a0e46
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 8bb1b87e5df92605192a60c49a11f1995449d255
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802905"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721160"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Snelstartgids: Een knowledge base publiceren in QnA Maker met behulp van C#
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Snelstart: Een knowledge base publiceren in QnA Maker met behulp van C#
 
-In deze REST-quickstart wordt beschreven hoe u programmatisch uw KB (knowledge base ) kunt publiceren. Door te publiceren wordt de nieuwste versie van de knowledge base verstuurd naar een specifieke Azure Search-index en wordt er een eindpunt gemaakt dat kan worden aangeroepen in uw toepassing of chatbot.
+In deze op REST gebaseerde quickstart wordt beschreven hoe u programmatisch uw KB (knowledge base ) kunt publiceren. Door te publiceren wordt de nieuwste versie van de knowledge base verstuurd naar een specifieke Azure Search-index en wordt er een eindpunt gemaakt dat kan worden aangeroepen in uw toepassing of chatbot.
 
 In deze snelstart worden QnA Maker-API's aangeroepen:
-* [Publiceren](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): voor deze API zijn er geen gegevens in de hoofdtekst van de aanvraag nodig.
+* [Publiceren](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) - voor deze API zijn geen gegevens in de hoofdtekst van de aanvraag nodig.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,7 +33,7 @@ In deze snelstart worden QnA Maker-API's aangeroepen:
 
     ![Id voor knowledge base in QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Als u nog geen knowledge base hebt, kunt u een voorbeeldexemplaar maken om te gebruiken met deze snelstartgids: [Een nieuwe knowledge base maken](create-new-kb-csharp.md).
+    Als u nog geen knowledge base hebt, kunt u een voorbeeldexemplaar maken om te gebruiken met deze snelstart: [Een nieuwe knowledge base maken](create-new-kb-csharp.md).
 
 > [!NOTE] 
 > Het bestand of de bestanden van de volledige oplossing zijn beschikbaar in de GitHub-opslagplaats [**Azure-Samples/cognitive-services-qnamaker-csharp**](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
@@ -41,7 +41,7 @@ In deze snelstart worden QnA Maker-API's aangeroepen:
 ## <a name="create-knowledge-base-project"></a>Een project met knowledge base maken
 
 1. Open Visual Studio 2019 Community Edition.
-1. Maak een nieuw **console-app (.net core)-** project en noem `QnaMakerQuickstart`het project. Accepteer de standaardwaarden voor de overige instellingen.
+1. Maak een nieuw **console-app (.net core)-** project en geef het project de naam `QnaMakerQuickstart`. Accepteer de standaardwaarden voor de overige instellingen.
 
 ## <a name="add-required-dependencies"></a>Vereiste afhankelijkheden toevoegen
 
@@ -76,4 +76,4 @@ Zodra uw knowledge base is gepubliceerd, kunt u deze opvragen van het eindpunt m
 Nadat de knowledge base is gepubliceerd, moet u ervoor zorgen dat via de [eindpunt-URL een antwoord wordt gegenereerd](../Tutorials/create-publish-answer.md#generating-an-answer). 
 
 > [!div class="nextstepaction"]
-> [Naslaginformatie over REST API voor QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [Naslaginformatie over REST-API voor QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)

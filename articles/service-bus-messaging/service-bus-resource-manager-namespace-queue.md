@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus naam ruimte en wachtrij maken met Azure Resource Manager sjabloon | Microsoft Docs
-description: Een Service Bus naam ruimte en een wachtrij maken met Azure Resource Manager sjabloon
+title: 'Snelstartgids: Azure Service Bus naam ruimte en wachtrij maken met Azure Resource Manager sjabloon'
+description: 'Snelstartgids: een Service Bus naam ruimte en een wachtrij maken met Azure Resource Manager sjabloon'
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
 ms.service: service-bus-messaging
 ms.devlang: tbd
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 1c6a4202b944b2eb95008964eb1040f176645334
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 40aeff225cfa6d499ebdfae6736e0684b2a27244
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482388"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718791"
 ---
-# <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Een Service Bus naam ruimte en een wachtrij maken met behulp van een Azure Resource Manager sjabloon
+# <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Snelstartgids: een Service Bus naam ruimte en een wachtrij maken met behulp van een Azure Resource Manager sjabloon
 
 In dit artikel wordt beschreven hoe u een Azure Resource Manager sjabloon gebruikt waarmee een Service Bus naam ruimte en een wachtrij binnen die naam ruimte wordt gemaakt. In het artikel wordt uitgelegd hoe u kunt opgeven welke resources worden geïmplementeerd en hoe para meters moeten worden gedefinieerd die worden opgegeven wanneer de implementatie wordt uitgevoerd. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen.
 
@@ -130,7 +130,7 @@ Zie [naam ruimten](/azure/templates/microsoft.servicebus/namespaces) en [wacht r
 New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
 ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 azure config mode arm

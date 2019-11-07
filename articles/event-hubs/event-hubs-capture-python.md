@@ -1,6 +1,6 @@
 ---
-title: Opgenomen gegevens lezen uit python-app-Azure Event Hubs | Microsoft Docs
-description: Scripts die gebruikmaken van de Azure python SDK om de functie voor het vastleggen van Event Hubs te demonstreren.
+title: 'Snelstartgids: vastgelegde gegevens van python-app lezen-Azure Event Hubs'
+description: 'Quick Start: scripts die gebruikmaken van de Azure python SDK om de functie voor het vastleggen van Event Hubs te demonstreren.'
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,18 +11,18 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 10/10/2019
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 354964e1b66b55dcccd9b5674f011f8c5a38a1c5
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ade4aa79b2de005bfecd7a5882f06cb491ea4e6d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428955"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717844"
 ---
-# <a name="event-hubs-capture-walkthrough-python"></a>Overzicht van het vastleggen van Event Hubs: python
+# <a name="quickstart-event-hubs-capture-walkthrough-python"></a>Snelstartgids: overzicht van het vastleggen van Event Hubs: python
 
 Capture is een functie van Azure Event Hubs. U kunt vastleggen gebruiken om automatisch de streaming-gegevens in uw Event Hub te leveren naar een Azure Blob Storage-account van uw keuze. Deze mogelijkheid maakt het eenvoudig om batch verwerking uit te voeren op realtime streaming-gegevens. In dit artikel wordt beschreven hoe u Event Hubs Capture kunt gebruiken met python. Zie [gebeurtenissen vastleggen via Azure Event hubs][Overview of Event Hubs Capture]voor meer informatie over het vastleggen van Event hubs.
 
@@ -40,7 +40,7 @@ In dit scenario kunt u het volgende doen:
 
 - Python 3,4 of hoger, met `pip` geïnstalleerd en bijgewerkt.
   
-- Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+- Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
   
 - Een actieve Event Hubs naam ruimte en Event Hub, gemaakt door de instructies te volgen op [Quick Start: een event hub maken met Azure Portal](event-hubs-create.md). Noteer uw naam ruimte en Event Hub namen die u later in dit overzicht kunt gebruiken. 
   
@@ -54,7 +54,7 @@ In dit scenario kunt u het volgende doen:
 
 Maak een opslag account en een container die moeten worden gebruikt voor de opname. 
 
-1. Meld u aan bij de [Azure-portal][Azure portal].
+1. Meld u aan bij de [Azure Portal][Azure portal].
 2. Selecteer in de linkernavigatiebalk **opslag accounts**en selecteer in het scherm **opslag accounts** de optie **toevoegen**.
 3. Selecteer een abonnement en resource groep in het scherm voor het maken van het opslag account en geef het opslag account een naam. U kunt de andere selecties standaard laten staan. Selecteer **controleren + maken**, Controleer de instellingen en selecteer vervolgens **maken**. 
    
@@ -78,7 +78,7 @@ Met dit script worden 200 gebeurtenissen naar uw Event Hub verzonden. De gebeurt
 
 1. Open uw favoriete python-editor, zoals [Visual Studio code][Visual Studio Code].
 2. Maak een nieuw bestand met de naam *Sender.py*. 
-3. Plak de volgende code in *Sender.py*. Vervang uw eigen waarden door de Event Hubs \<namespace >, \<AccessKeyName >, \<primary sleutel waarde > en \<eventhub >.
+3. Plak de volgende code in *Sender.py*. Vervang uw eigen waarden door de Event Hubs \<naam ruimte >, \<AccessKey >, \<primaire-sleutel waarde > en \<eventhub->.
    
    ```python
    import uuid
@@ -106,7 +106,7 @@ Met dit script worden 200 gebeurtenissen naar uw Event Hub verzonden. De gebeurt
 Met dit script worden de vastgelegde bestanden gelezen en wordt voor elk van uw apparaten een bestand gemaakt om alleen de gegevens voor dat apparaat te schrijven.
 
 1. Maak een nieuw bestand met de naam *capturereader.py*in de python-editor. 
-2. Plak de volgende code in *capturereader.py*. Vervang uw opgeslagen waarden door uw \<storageaccount >, de toegangs sleutel voor \<storage-account > en \<storagecontainer >.
+2. Plak de volgende code in *capturereader.py*. Vervang uw opgeslagen waarden door voor uw \<Storage account >, \<toegangs sleutel voor het opslag account > en \<storagecontainer->.
    
    ```python
    import os
@@ -162,7 +162,7 @@ Met dit script worden de vastgelegde bestanden gelezen en wordt voor elk van uw 
    pip install avro-python3
    ```
    
-   Als u een eerdere versie van `azure-storage` of `azure` hebt, moet u mogelijk de `--upgrade` optie gebruiken.
+   Als u een eerdere versie van `azure-storage` of `azure`hebt, moet u mogelijk de `--upgrade` optie gebruiken.
    
    Mogelijk moet u ook de volgende opdracht uitvoeren. Het is niet nodig om deze opdracht uit te voeren op de meeste systemen. 
    

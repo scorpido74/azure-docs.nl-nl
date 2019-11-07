@@ -1,25 +1,24 @@
 ---
 title: Werken met projecties in een kennis archief (preview-versie)
 titleSuffix: Azure Cognitive Search
-description: Sla uw verrijkte gegevens op en vorm ze van de AI-verrijkings pijplijn voor gebruik in andere scenario's dan zoeken in volledige tekst.
+description: Sla uw verrijkte gegevens op in een Data Base van de AI-verrijkings pijp lijn naar een kennis Archief voor gebruik in andere scenario's dan zoeken in volledige tekst. Het kennis archief is momenteel beschikbaar als open bare preview.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8e6c285e8917c4224e2007c565d5ac5447b20853
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: bb6af4be232810c1f5d135e459238e2e4f2cd5d8
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790006"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720034"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Werken met projecties in een Knowledge Store in azure Cognitive Search
 
-> [!Note]
-> Het kennis archief is een preview-versie en is niet bedoeld voor productie gebruik. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
->
+> [!IMPORTANT] 
+> Het kennis archief is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
 
 Azure Cognitive Search maakt inhouds verrijking mogelijk via ingebouwde cognitieve vaardig heden en aangepaste vaardig heden als onderdeel van het indexeren. Verrijkingen voegen structuur toe aan uw documenten en maakt effectiever zoeken. In veel gevallen zijn de verrijkte documenten handig voor andere scenario's dan zoeken, zoals voor kennis analyse.
 

@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/22/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 16fa44c5fa0b674fe27e2ec8e2dc8e640742ec63
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: b5d05e37d9abb5b38fa5b5722c7f60d5f508a755
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565785"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579378"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>Een web-app maken die gebruikmaakt van de service SignalR en GitHub-verificatie
 
@@ -30,10 +30,72 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 Dit script maakt gebruik van de extensie *signalr* voor Azure CLI. Voer de volgende opdracht uit om de extensie *signalr* voor Azure CLI te installeren voordat u dit voorbeeldscript gaat gebruiken:
 
 ```azurecli-interactive
-az extension add -n signalr
-```
+#!/bin/bash
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-signalr/create-signalr-with-app-service-github-oauth/create-signalr-with-app-service-github-oauth.sh "Create a new SignalR Service and Web App configured to use SignalR, GitHub OAuth, and local Git repository deployment source.")]
+#========================================================================
+#=== Update these values based on your desired deployment username    ===
+#=== and password.                                                    ===
+#========================================================================
+deploymentUser=<Replace with your desired username>
+deploymentUserPassword=<Replace with your desired password>
+
+#========================================================================
+#=== Update these values based on your GitHub OAuth App registration. ===
+#========================================================================
+GitHubClientId=<Replace with your GitHub OAuth app Client ID>
+GitHubClientSecret=<Replace with your GitHub OAuth app Client Secret>
+
+
+# Generate a unique suffix for the service name
+let randomNum=$RANDOM*$RANDOM
+
+# Generate unique names for the SignalR service, resource group, 
+# app service, and app service plan
+SignalRName=SignalRTestSvc$randomNum
+#resource name must be lowercase
+mySignalRSvcName=${SignalRName,,}
+myResourceGroupName=$SignalRName"Group"
+myWebAppName=SignalRTestWebApp$randomNum
+myAppSvcPlanName=$myAppSvcName"Plan"
+
+# Create resource group 
+az group create --name $myResourceGroupName --location eastus
+
+# Create the Azure SignalR Service resource
+az signalr create \
+  --name $mySignalRSvcName \
+  --resource-group $myResourceGroupName \
+  --sku Standard_S1 \
+  --unit-count 1 \
+  --service-mode Default
+
+# Create an App Service plan.
+az appservice plan create --name $myAppSvcPlanName --resource-group $myResourceGroupName --sku FREE
+
+# Create the Web App
+az webapp create --name $myWebAppName --resource-group $myResourceGroupName --plan $myAppSvcPlanName  
+
+# Get the SignalR primary connection string
+primaryConnectionString=$(az signalr key list --name $mySignalRSvcName \
+  --resource-group $myResourceGroupName --query primaryConnectionString -o tsv)
+
+#Add an app setting to the web app for the SignalR connection
+az webapp config appsettings set --name $myWebAppName --resource-group $myResourceGroupName \
+  --settings "Azure:SignalR:ConnectionString=$primaryConnectionString" 
+
+#Add app settings to use with GitHub authentication
+az webapp config appsettings set --name $myWebAppName --resource-group $myResourceGroupName \
+  --settings "GitHubClientId=$GitHubClientId" 
+az webapp config appsettings set --name $myWebAppName --resource-group $myResourceGroupName \
+  --settings "GitHubClientSecret=$GitHubClientSecret" 
+
+# Add the desired deployment user name and password
+az webapp deployment user set --user-name $deploymentUser --password $deploymentUserPassword
+
+# Configure Git deployment and note the deployment URL in the output
+az webapp deployment source config-local-git --name $myWebAppName --resource-group $myResourceGroupName \
+  --query [url] -o tsv
+```
 
 Noteer de naam die wordt gegenereerd voor de nieuwe resourcegroep. Deze naam wordt weergegeven in de uitvoer. U hebt deze naam nodig als u later alle groepsresources wilt verwijderen.
 

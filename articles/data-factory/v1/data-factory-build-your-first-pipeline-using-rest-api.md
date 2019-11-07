@@ -1,5 +1,5 @@
 ---
-title: Uw eerste gegevensfactory bouwen (REST) | Microsoft Docs
+title: Uw eerste data factory bouwen (REST)
 description: In deze zelfstudie maakt u een Azure Data Factory-voorbeeldpijplijn met behulp van de Data Factory-REST API.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: da62b07b03aea94749f1d0a332d52790a06635ce
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7644bac01784ea795f24b967223b0eb37354ca87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162546"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682965"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Zelfstudie: uw eerste Azure-gegevensfactory bouwen met de Data Factory-REST API
 > [!div class="op_single_selector"]
@@ -320,7 +320,7 @@ Houd rekening met de volgende punten:
   3. Voer de volgende twee opdrachten uit voor het aanroepen van de REST API om de gegevensfactory te maken en de resultaten van de bewerking af te drukken.
 * Als u Data Factory-exemplaren wilt maken, moet u bijdrager/beheerder zijn van het Azure-abonnement
 * De naam van de gegevensfactory wordt in de toekomst mogelijk geregistreerd als DNS-naam en wordt daarmee ook voor iedereen zichtbaar.
-* Als u de foutmelding **Dit abonnement is niet geregistreerd voor gebruik van de naamruimte Microsoft.DataFactory** ontvangt, voert u een van de volgende stappen uit en probeert u opnieuw te publiceren:
+* Als u de foutmelding **This subscription is not registered to use namespace Microsoft.DataFactory** ontvangt, voert u een van de volgende stappen uit en probeert u opnieuw te publiceren:
 
   * Voer in Azure PowerShell de volgende opdracht uit om de Data Factory-provider te registreren:
 
@@ -337,7 +337,7 @@ Houd rekening met de volgende punten:
 Voordat u een pijplijn maakt, moet u eerst enkele Data Factory-entiteiten maken. U maakt eerst gekoppelde services om gegevensopslag/berekeningen te koppelen aan uw gegevensopslag, vervolgens definieert u welke invoer- en uitvoergegevenssets de gegevens in de gekoppelde gegevensopslag vertegenwoordigen.
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
-In deze stap koppelt u uw Azure Storage-account en een on-demand Azure HDInsight-cluster aan uw gegevensfactory. Het Azure Storage-account bevat de in- en uitvoergegevens van de pijplijn in dit voorbeeld. De gekoppelde HDInsight-service wordt gebruikt om een Hive-script uit te voeren dat is opgegeven in de activiteit van de pijplijn in dit voorbeeld.
+In deze stap koppelt u uw Azure-opslagaccount en een on-demand Azure HDInsight-cluster aan uw gegevensfactory. Het Azure Storage-account bevat de in- en uitvoergegevens van de pijplijn in dit voorbeeld. De gekoppelde HDInsight-service wordt gebruikt om een Hive-script uit te voeren dat is opgegeven in de activiteit van de pijplijn in dit voorbeeld.
 
 ### <a name="create-azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service maken
 In deze stap koppelt u uw Azure-opslagaccount aan uw gegevensfactory. Bij deze zelfstudie gebruikt u hetzelfde Azure Storage-account om invoer- en uitvoergegevens en het HQL-scriptbestand op te slaan.

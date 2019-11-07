@@ -1,25 +1,24 @@
 ---
 title: Inleiding tot kennis archief (preview-versie)
 titleSuffix: Azure Cognitive Search
-description: Verrijkte documenten naar Azure Storage verzenden waar u verrijkte documenten in azure Cognitive Search en in andere toepassingen kunt weer geven, wijzigen en gebruiken.
+description: Verrijkte documenten naar Azure Storage verzenden waar u verrijkte documenten in azure Cognitive Search en in andere toepassingen kunt weer geven, wijzigen en gebruiken. Deze functie is beschikbaar als open bare preview.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e6d20a1eca7a6b3281e33d8534ab3456e79ccdf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a1c6f2d869d8d7ad865005ebd319beac56bdbacd
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485079"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720090"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Inleiding tot kennis winkels in azure Cognitive Search
 
-> [!Note]
-> Het kennis archief is een preview-versie en is niet bedoeld voor productie gebruik. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
->
+> [!IMPORTANT] 
+> Het kennis archief is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
 
 Knowledge Store is een functie van Azure Cognitive Search die de uitvoer van een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) persistent maakt voor latere analyses of andere downstream-verwerking. Een *verrijkt document* is de uitvoer van een pijp lijn, gemaakt op basis van inhoud die is geëxtraheerd, gestructureerd en geanalyseerd met behulp van AI-processen. In een Standard AI-pijp lijn zijn verrijkte documenten onwaar, die alleen tijdens het indexeren worden gebruikt en vervolgens worden verwijderd. In het kennis archief worden verrijkte documenten bewaard. 
 
@@ -147,11 +146,11 @@ De Indexeer functies en vaardig heden die u ophaalt en verrijkt of transformeert
 
 Er zijn slechts twee Api's die nodig zijn voor het maken van een kennis archief (vaardig heden maken en Indexeer functie maken). Andere Api's worden gebruikt als-is.
 
-| Object | REST-API | Beschrijving |
+| Object | REST API | Beschrijving |
 |--------|----------|-------------|
 | Gegevens bron | [Gegevensbron maken](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Een bron voor het identificeren van een externe Azure-gegevens bron die bron gegevens levert die worden gebruikt voor het maken van verrijkte documenten.  |
 | vaardig heden | [Vaardig heden maken (API-Version = 2019-05 -06-preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Een resource coördineert het gebruik van [ingebouwde vaardig heden](cognitive-search-predefined-skills.md) en [aangepaste cognitieve vaardig heden](cognitive-search-custom-skill-interface.md) die in een verrijkings pijplijn worden gebruikt tijdens het indexeren. Een vakkennisset heeft een `knowledgeStore` definitie als onderliggend element. |
-| TabIndex | [Index maken](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Een schema dat een zoek index uitdrukt. Velden in de index toewijzing naar velden in bron gegevens of in velden die worden geproduceerd tijdens de verrijkings fase (bijvoorbeeld een veld voor organisatie namen die zijn gemaakt door entiteits herkenning). |
+| index | [Index maken](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Een schema dat een zoek index uitdrukt. Velden in de index toewijzing naar velden in bron gegevens of in velden die worden geproduceerd tijdens de verrijkings fase (bijvoorbeeld een veld voor organisatie namen die zijn gemaakt door entiteits herkenning). |
 | Indexeer functie | [Indexeer functie maken (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Een resource waarmee onderdelen worden gedefinieerd die worden gebruikt tijdens de indexering: een gegevens bron, een vaardig heden, veld koppelingen van bron-en intermediair gegevens structuren naar doel index en de index zelf. Het uitvoeren van de Indexeer functie is de trigger voor gegevens opname en verrijking. De uitvoer is een zoek index op basis van het index schema, gevuld met bron gegevens, verrijkt via vaardig heden.  |
 
 ### <a name="physical-composition-of-a-knowledge-store"></a>Fysieke samen stelling van een kennis archief

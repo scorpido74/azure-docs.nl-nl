@@ -1,7 +1,7 @@
 ---
 title: Merk detectie-Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Concepten met betrekking tot merk/logo detectie met behulp van de Computer Vision-API.
+description: In dit artikel wordt een gespecialiseerde modus voor object detectie beschreven. merk-en/of logo detectie met behulp van de Computer Vision-API.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: c3a80cbdd166f77681665ee3675c1a71ce3a9bd6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 117beca1284f28c75c1ac772425423f732b8a236
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967095"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718629"
 ---
 # <a name="detect-popular-brands-in-images"></a>Populaire merken detecteren in installatie kopieën
 
@@ -74,7 +74,7 @@ In sommige gevallen haalt de merk detector zowel de logo afbeelding als de stijl
 
 ## <a name="use-the-api"></a>De API gebruiken
 
-De functie voor merk detectie maakt deel uit van de API voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . U kunt deze API aanroepen via een systeem eigen SDK of via REST-aanroepen. Neem `Brands` in de query parameter **visualFeatures** op. Wanneer u vervolgens het volledige JSON-antwoord krijgt, parseert u de teken reeks voor de inhoud `"brands"` van de sectie.
+De functie voor merk detectie maakt deel uit van de API voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . U kunt deze API aanroepen via een systeem eigen SDK of via REST-aanroepen. Neem `Brands` op in de query parameter **visualFeatures** . Wanneer u vervolgens het volledige JSON-antwoord krijgt, parseert u de teken reeks voor de inhoud van de sectie `"brands"`.
 
-* [Snelstart: Computer Vision .NET SDK](./quickstarts-sdk/csharp-sdk.md)
-* [Snelstart: Een afbeelding analyseren (REST API)](./quickstarts/csharp-analyze.md)
+* [Snelstartgids: Computer Vision .NET SDK](./quickstarts-sdk/csharp-sdk.md)
+* [Quick Start: een afbeelding analyseren (REST API)](./quickstarts/csharp-analyze.md)

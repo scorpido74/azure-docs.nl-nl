@@ -10,18 +10,18 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/21/2019
+ms.date: 11/05/2019
 ms.author: juliako
-ms.openlocfilehash: 3f065f77c6843b135554e61f5887655114571b08
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 128513c3af5ce6c0853b63d86959e4c3c35de93c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750253"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685107"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Zelf studie: een extern bestand coderen op basis van URL en de video-REST streamen
 
-Met Azure Media Services kunt u mediabestanden coderen in indelingen die kunnen worden afgespeeld met een groot aantal verschillende browsers en apparaten. Zo kunt u bijvoorbeeld inhoud streamen in de indelingen Apple HLS of MPEG DASH. Voordat u gaat streamen, moet u uw digitale mediabestand van hoge kwaliteit coderen. Zie [Coderen](encoding-concept.md) voor richtlijnen voor codering.
+Met Azure Media Services kunt u mediabestanden coderen in indelingen die kunnen worden afgespeeld met een groot aantal verschillende browsers en apparaten. Zo kunt u bijvoorbeeld inhoud streamen in de indelingen Apple HLS of MPEG DASH. Voordat u gaat streamen, moet u uw digitale mediabestand van hoge kwaliteit coderen. Zie [Encoding](encoding-concept.md) voor richtlijnen voor codering.
 
 In deze zelfstudie leert u hoe u met behulp van REST een bestand kunt coderen en de video kunt streamen met Azure Media Services. 
 
@@ -30,8 +30,8 @@ In deze zelfstudie leert u hoe u met behulp van REST een bestand kunt coderen en
 In deze zelfstudie ontdekt u hoe u:    
 
 > [!div class="checklist"]
-> * Een Media Services-account kunt maken
-> * Toegang kunt krijgen tot de Media Services API
+> * Een Media Services-account maken
+> * Toegang krijgen tot de Media Services API
 > * Postman-bestanden downloaden
 > * Postman configureren
 > * Aanvragen verzenden met behulp van Postman
@@ -215,7 +215,7 @@ U kunt een ingebouwde EncoderNamedPreset gebruiken of aangepaste voorinstellinge
 
 Een [taak](https://docs.microsoft.com/rest/api/media/jobs) is de eigenlijke aanvraag aan Media Services om de gemaakte **transformatie** toe te passen op een bepaalde invoervideo of audio-inhoud. De **taak** bevat informatie zoals de locatie van de invoervideo en de locatie voor de uitvoer.
 
-In dit voor beeld is de invoer van de taak gebaseerd op een HTTPS-URL (https: \//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/).
+In dit voor beeld is de invoer van de taak gebaseerd op een HTTPS-URL (https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/).
 
 1. Selecteer in het linkerdeel venster van de Postman-app de optie code ring en analyse.
 2. Selecteer vervolgens Create or Update Job.
@@ -248,9 +248,9 @@ In dit voor beeld is de invoer van de taak gebaseerd op een HTTPS-URL (https: \/
         }
         ```
 
-De taak neemt enige tijd in beslag en wanneer deze is voltooid, wordt u hiervan op de hoogte gesteld. Als u de voortgang van de taak wilt zien, kunt u het best Event Grid gebruiken. Dit is ontworpen voor hoge beschikbaarheid, consistente prestaties en dynamische schaalbaarheid. Met Event Grid kunnen uw apps luisteren naar en reageren op gebeurtenissen uit vrijwel alle Azure-services, evenals aangepaste bronnen. Eenvoudige, op HTTP gebaseerde reactieve gebeurtenisafhandeling maakt het mogelijk om efficiënte oplossingen te bouwen met behulp van intelligente filtering en routering van gebeurtenissen.  Zie [Gebeurtenissen routeren naar een aangepast eindpunt](job-state-events-cli-how-to.md).
+De taak neemt enige tijd in beslag en wanneer deze is voltooid, wordt u hiervan op de hoogte gesteld. Als u de voortgang van de taak wilt zien, kunt u het best Event Grid gebruiken. Dit is ontworpen voor hoge beschikbaarheid, consistente prestaties en dynamische schaalbaarheid. Met Event Grid kunnen uw apps luisteren naar en reageren op gebeurtenissen uit vrijwel alle Azure-services, evenals aangepaste bronnen. Eenvoudige, op HTTP gebaseerde reactieve gebeurtenisafhandeling maakt het mogelijk om efficiënte oplossingen te bouwen met intelligente filtering en routering van gebeurtenissen.  Zie [Gebeurtenissen routeren naar een aangepast eindpunt](job-state-events-cli-how-to.md).
 
-De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **Wordt geannuleerd** en **Geannuleerd** wanneer het annuleren is voltooid.
+De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **wordt geannuleerd** en **geannuleerd** wanneer het annuleren is voltooid.
 
 #### <a name="job-error-codes"></a>Foutcodes in taak
 
@@ -258,34 +258,36 @@ Zie [Foutcodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 
 ### <a name="create-a-streaming-locator"></a>Een streaming-locator te maken
 
-Wanneer de coderingstaak is voltooid, gaat u in de volgende stap de video in de uitvoer**asset** beschikbaar maken voor weergave door clients. U kunt dit doen in twee stappen: maak eerst een [streaming-locator](https://docs.microsoft.com/rest/api/media/streaminglocators) en bouw vervolgens de streaming-URL's die clients kunnen gebruiken. 
+Wanneer de coderingstaak is voltooid, gaat u in de volgende stap de video in de uitvoer**asset** beschikbaar maken voor weergave door clients. U kunt dit doen in twee stappen: maak eerst een [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) en bouw vervolgens de streaming-URL's die clients kunnen gebruiken. 
 
-Het proces van het maken van een **streaming-locator** wordt publiceren genoemd. De **streaming-locator** is standaard onmiddellijk geldig nadat u de API-aanroepen hebt gemaakt en totdat deze wordt verwijderd, tenzij u de optionele start- en eindtijden configureert. 
+Het proces voor het maken van een streaming-Locator wordt publicatie genoemd. De streaming-Locator is standaard onmiddellijk geldig nadat u de API-aanroepen hebt uitgevoerd en de laatste keer totdat deze is verwijderd, tenzij u de optionele begin-en eind tijden configureert. 
 
-Wanneer u een [streaming-Locator](https://docs.microsoft.com/rest/api/media/streaminglocators)maakt, moet u de gewenste **StreamingPolicyName**opgeven. In dit voor beeld moet u de inhoud-de-Clear-(of niet-versleutelde) streamen. Daarom wordt het vooraf gedefinieerde beleid ' Predefined_ClearStreamingOnly ' voor het wissen van duidelijke gegevens gebruikt.
+Bij het maken van een [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) moet u de gewenste **StreamingPolicyName** opgeven. In dit voor beeld moet u de inhoud-de-Clear-(of niet-versleutelde) streamen. Daarom wordt het vooraf gedefinieerde beleid ' Predefined_ClearStreamingOnly ' voor het wissen van duidelijke gegevens gebruikt.
 
 > [!IMPORTANT]
 > Wanneer u een aangepast [streamingbeleid](https://docs.microsoft.com/rest/api/media/streamingpolicies) gebruikt, moet u een beperkte set met dergelijke beleidsregels ontwerpen voor uw Media Service-account, en deze opnieuw gebruiken voor de StreamingLocators wanneer dezelfde versleutelingsopties en protocollen nodig zijn. 
 
-Uw Media Service-account heeft een quotum voor het aantal **streaming-beleidsvermeldingen**. U hoeft geen nieuw **streaming-beleid** te maken voor elke **streaming-locator**.
+Uw Media Service-account heeft een quotum voor het aantal **streaming-beleidsvermeldingen**. Het is niet mogelijk om voor elke streaming-Locator een nieuw **streaming-beleid** te maken.
 
-1. Selecteer in het linkerdeel venster van de Postman-app ' streaming-beleid '.
-2. Selecteer vervolgens Create a Streaming Locator.
+1. Selecteer in het linkerdeel venster van de Postman-app ' streaming-beleid en Locators '.
+2. Selecteer vervolgens ' een streaming-Locator maken (wissen) '.
 3. Druk op **Verzenden**.
 
     * De volgende **PUT**-bewerking wordt verzonden.
 
         ```
-        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName?api-version={{api-version}}
         ```
     * De bewerking heeft de volgende hoofdtekst:
 
         ```json
         {
-            "properties":{
-            "assetName": "{{assetName}}",
-            "streamingPolicyName": "{{streamingPolicyName}}"
-            }
+          "properties": {
+            "streamingPolicyName": "Predefined_ClearStreamingOnly",
+            "assetName": "testAsset1",
+            "contentKeys": [],
+            "filters": []
+         }
         }
         ```
 

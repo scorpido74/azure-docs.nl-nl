@@ -1,5 +1,5 @@
 ---
-title: Power shell-voor beeld van controle en geavanceerde beveiliging tegen bedreigingen-Azure SQL Database | Microsoft Docs
+title: Power shell-voor beeld van controle en geavanceerde beveiliging tegen bedreigingen-Azure SQL Database
 description: Azure PowerShell voorbeeld script voor het configureren van controle en geavanceerde beveiliging tegen bedreigingen in een Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: carlrab, vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: f9ef894f4c4d1d0ad0ab43b538c984f9cf5b2d01
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 1dee8031b00e7d291844790fb86efd4d00075d87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816683"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691740"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>Power shell gebruiken voor het configureren van SQL Database controle en geavanceerde bedreigingen beveiliging
 
@@ -46,13 +46,13 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die één database of elastische pool host. |
-| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een enkele database of elastische pool. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die een individuele database of elastische pool host. |
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Maakt een individuele database of elastische pool. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Hiermee maakt u een opslagaccount. |
 | [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseauditing) | Hiermee wordt het controlebeleid voor een database ingesteld. |
 | [Set-AzSqlDatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | Hiermee stelt u een geavanceerd beveiligings beleid voor bedreigingen in voor een Data Base. |
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen

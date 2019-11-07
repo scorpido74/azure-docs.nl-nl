@@ -1,37 +1,42 @@
 ---
-title: Verbinding maken met een kennis archief met Power BI
+title: Verbinding maken met een kennis archief (preview) met Power BI
 titleSuffix: Azure Cognitive Search
-description: Verbind een Azure Cognitive Search Knowledge Store met Power BI voor analyse en onderzoek.
+description: Verbind een Azure Cognitive Search Knowledge Store (preview) met Power BI voor analyse en onderzoek.
 author: lisaleib
 manager: nitinme
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 03f28cb40708b7ec77a0a342b5ec1b6faeaa8e3b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 7b12f0f14003389d36e2df5bcffe7828c135cf2b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485149"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715486"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Verbinding maken met een kennis archief met Power BI
 
-> [!Note]
-> Het kennis archief is in Preview en mag niet worden gebruikt in de productie omgeving. De portal en [Search rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
->
+> [!IMPORTANT] 
+> Het kennis archief is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
 
 In dit artikel leert u hoe u verbinding kunt maken met een kennis archief en hoe u deze kunt verkennen met behulp van Power Query in de Power BI Desktop-app. U kunt sneller aan de slag met sjablonen of een aangepast dash board maken.
 
-## <a name="prerequisites"></a>Vereisten
++ Volg de stappen in [een kennis archief maken in de Azure Portal](knowledge-store-create-portal.md) of [maak een Azure Cognitive Search Knowledge Store door rest te gebruiken](knowledge-store-create-rest.md) om het voor beeld van het kennis archief te maken dat wordt gebruikt in dit overzicht. U hebt ook de naam nodig van het Azure Storage-account dat u hebt gebruikt om het kennis archief te maken, samen met de toegangs sleutel van de Azure Portal.
 
 + [Power BI Desktop installeren](https://powerbi.microsoft.com/downloads/)
 
-+ U hebt een kennis archief nodig met een projectie in azure Table Storage. U hebt ook de naam nodig van het Azure Storage-account dat wordt gebruikt om het kennis archief te maken, samen met de toegangs sleutel van de Azure Portal.
+## <a name="sample-power-bi-template---azure-portal-only"></a>Voor beeld-Power BI sjabloon-alleen Azure Portal
 
-Als u wilt werken met een voor beeld van een Knowledge Store, volgt u de instructies voor het [maken van een kennis archief](knowledge-store-create-portal.md).
+Als u [uw kennis archief hebt gemaakt met behulp van de Azure Portal](knowledge-store-create-portal.md), kunt u het voor beeld van de [Azure Cognitive Search Power bi-sjabloon](https://github.com/Azure-Samples/cognitive-search-templates) gebruiken om Power bi visualisaties weer te geven en te experimenteren. Deze sjabloon kan ook worden gedownload wanneer u de wizard **gegevens importeren** stapsgewijs doorloopt.
 
-## <a name="create-a-custom-report"></a>Een aangepast rapport maken
+De voorbeeld sjabloon voert automatisch de installatie stappen uit die in de rest van dit artikel worden beschreven. Als u echter de REST API hebt gebruikt om uw kennis archief te maken, kunt u de sjabloon overs Laan en de resterende secties in dit artikel gebruiken om uw kennis archief te koppelen aan Power BI. Begin met [verbinden met Power bi](#connect-with-power-bi).
+
+De voorbeeld sjabloon bevat verschillende visualisaties, zoals WordCloud en Network Navigator. Voor sommige visualisaties in de sjabloon, zoals het kaarten overzicht en de entiteit-Graph-viewer, worden geen gegevens weer gegeven voor het voor beeld van het kennis archief dat is gemaakt in [een kennis archief maken in de Azure Portal](knowledge-store-create-portal.md). Dit komt omdat er in de wizard **gegevens importeren** slechts een subset van de AI-verrijkingen beschikbaar is.
+
+![Voor beeld van Azure Cognitive Search Power BI sjabloon](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Voor beeld Power BI sjabloon")
+
+## <a name="connect-with-power-bi"></a>Verbinden met Power BI
 
 1. Start Power BI Desktop en klik op **gegevens ophalen**.
 

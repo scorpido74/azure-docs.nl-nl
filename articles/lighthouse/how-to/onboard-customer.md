@@ -4,15 +4,15 @@ description: Meer informatie over hoe u een klant kunt vrijmaken voor het beheer
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 10/29/2019
+ms.date: 11/6/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: a96093c71658f53e372cbccb72b96da3ae4e593b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
-ms.translationtype: HT
+ms.openlocfilehash: 259a0b1b278588ef2237622d61a89fe02e5c004c
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615490"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721393"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 
@@ -123,7 +123,7 @@ Voor het onboarden van uw klant moet u een [Azure Resource Manager](https://docs
 
 Als u het abonnement van een klant wilt opzeggen, gebruikt u de juiste Azure Resource Manager-sjabloon die we hebben opgegeven in onze voor [beelden opslag plaats](https://github.com/Azure/Azure-Lighthouse-samples/), samen met een bijbehorend parameter bestand dat u wijzigt zodat dit overeenkomt met uw configuratie en uw autorisaties definieert. Er worden afzonderlijke sjablonen gegeven, afhankelijk van of u een volledig abonnement, een resource groep of meerdere resource groepen in een abonnement hebt voor bereid. We bieden ook een sjabloon die kan worden gebruikt voor klanten die een beheerde service aanbieding hebben gekocht die u naar Azure Marketplace hebt gepubliceerd, als u uw abonnement (en) op deze manier wilt vrijgeven.
 
-|**Als u dit wilt onboarden**  |**Deze Azure Resource Manager sjabloon gebruiken**  |**En dit parameter bestand wijzigen** |
+|Als u dit wilt onboarden  |Deze Azure Resource Manager sjabloon gebruiken  |En dit parameter bestand wijzigen |
 |---------|---------|---------|
 |Abonnement   |[delegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
 |Resourcegroep   |[rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
@@ -187,15 +187,18 @@ In het volgende voor beeld ziet u het bestand **delegatedResourceManagement. par
     }
 }
 ```
-De laatste autorisatie in bovenstaand voor beeld voegt een **principalId** toe aan de rol voor gebruikers toegang (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). Wanneer u deze rol toewijst, moet u de eigenschap **delegatedRoleDefinitionIds** en een of meer ingebouwde rollen toevoegen. De gebruiker die in deze autorisatie is gemaakt, kan deze ingebouwde rollen toewijzen aan [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Houd er rekening mee dat er geen andere machtigingen zijn gekoppeld aan de rol beheerder van gebruikers toegang voor deze gebruiker.
+De laatste autorisatie in bovenstaand voor beeld voegt een **principalId** toe aan de rol voor gebruikers toegang (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). Wanneer u deze rol toewijst, moet u de eigenschap **delegatedRoleDefinitionIds** en een of meer ingebouwde rollen toevoegen. De gebruiker die in deze autorisatie is gemaakt, kan deze ingebouwde rollen toewijzen aan [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), wat vereist is om [beleid te implementeren dat kan worden hersteld](deploy-policy-remediation.md). Geen enkele andere machtigingen die normaal gesp roken zijn gekoppeld aan de rol beheerder van gebruikers toegang, zijn van toepassing op deze gebruiker.
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>De Azure Resource Manager-sjablonen implementeren
 
-Zodra u het parameter bestand hebt bijgewerkt, moet de klant de resource beheer sjabloon in de Tenant van de klant implementeren als implementatie op abonnements niveau. Er is een afzonderlijke implementatie nodig voor elk abonnement dat u wilt voorbereiden op het beheer van Azure-gedelegeerde resources (of voor elk abonnement dat resource groepen bevat die u wilt voorbereiden).
+Zodra u het parameter bestand hebt bijgewerkt, moet de klant de Azure Resource Manager-sjabloon in de Tenant van de klant implementeren als implementatie op abonnements niveau. Er is een afzonderlijke implementatie nodig voor elk abonnement dat u wilt voorbereiden op het beheer van Azure-gedelegeerde resources (of voor elk abonnement dat resource groepen bevat die u wilt voorbereiden).
+
+Omdat dit een implementatie op abonnements niveau is, kan deze niet worden gestart in de Azure Portal. De implementatie kan worden uitgevoerd met behulp van Power shell of Azure CLI, zoals hieronder wordt weer gegeven.
 
 > [!IMPORTANT]
 > De implementatie moet worden uitgevoerd door een niet-gast account in de Tenant van de klant die de [ingebouwde rol](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) van de eigenaar heeft voor het abonnement (of de resource groepen bevat die worden uitgevoerd). Als u alle gebruikers wilt zien die het abonnement kunnen delegeren, kan een gebruiker in de Tenant van de klant het abonnement selecteren in de Azure Portal, **toegangs beheer openen (IAM)** en [alle gebruikers met de rol eigenaar weer geven](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
+### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -246,6 +249,9 @@ In de Tenant van de service provider:
 1. Navigeer naar de [pagina mijn klanten](view-manage-customers.md).
 2. Selecteer **klanten**.
 3. Bevestig dat u de abonnement/abonnementen kunt zien met de naam van de aanbieding die u in de Resource Manager-sjabloon hebt opgenomen.
+
+> [!IMPORTANT]
+> Als u het gedelegeerde abonnement in [mijn klanten](view-manage-customers.md)wilt zien, moeten gebruikers in de Tenant van de service provider beschikken over de rol van [lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (of een andere ingebouwde rol die lezers toegang bevat) wanneer het abonnement voor Azure is voor bereid gedelegeerd resource beheer.
 
 In de Tenant van de klant:
 

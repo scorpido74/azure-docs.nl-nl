@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: dae708a417a1bf8ca4b118f218e353a28e5675c1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 721f730aa78be39b91f7d8368655dbbd5878903b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684956"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716690"
 ---
 # <a name="how-azure-machine-learning-differs-from-ml-studio-classic"></a>Hoe Azure Machine Learning verschilt van ML Studio (klassiek)
 
@@ -37,10 +37,10 @@ Hier volgt een snelle vergelijking.
 
 ||  Azure Machine Learning Designer|Studio (klassiek) |
 |---| --- | --- |
-||Designer is beschikbaar als preview-versie, Azure Machine Learning GA|Algemeen beschikbaar (GA) | 
+||De ontwerp functie is beschikbaar als preview-versie, Azure Machine Learning GA|Algemeen beschikbaar (GA) | 
 |Interface slepen en neerzetten| Ja | Ja|
 |Probeer| Schalen met Compute target|Schaal (10 GB training data Limit) | 
-|Modules voor Interface|  Veel populaire modules|Allerlei |
+|Modules voor Interface| [Veel populaire modules](algorithm-module-reference/module-reference.md) | Allerlei |
 |Doelen van de trainings compute| AML Compute (GPU/CPU)|Eigen reken doel, alleen CPU|
 |Berekenings doelen afstellen| Azure Kubernetes-service voor realtime-interferentie <br/>AML-Compute voor batch-deinterferentie|De indeling van de oorspronkelijke webservice, niet aanpasbaar | 
 |ML-pijp lijn| Pijplijn ontwerpen <br/> gepubliceerde pijp lijn <br/> Pijplijn eindpunt <br/> [Meer informatie over ML-pijp lijn](service/concept-ml-pipelines.md)|Niet ondersteund | 
@@ -48,14 +48,13 @@ Hier volgt een snelle vergelijking.
 |Model| De standaard indeling, verschillende zijn afhankelijk van de trainings taak|Een eigen, niet-draag bare indeling.| 
 |Automatische model training|Nog niet in de ontwerp functie, maar mogelijk via de interface en Sdk's.| Nee | 
 
-## <a name="get-started-with-azure-machine-learning-designer"></a>Aan de slag met Azure Machine Learning Designer
+## <a name="get-started-with-azure-machine-learning"></a>Aan de slag met Azure Machine Learning
 
 De volgende bronnen kunnen u helpen aan de slag te gaan met Azure Machine Learning
 
 - Lees het [Azure machine learning overzicht](service/tutorial-first-experiment-automated-ml.md) 
 
 - [Maak uw eerste Design pijp lijn](service/tutorial-designer-automobile-price-train-score.md) om automatische prijzen te voors pellen.
-
 
 ![Voor beeld van Azure Machine Learning Designer](service/media/concept-ml-pipelines/designer-drag-and-drop.gif)
 

@@ -4,19 +4,19 @@ description: Hierin wordt beschreven hoe u een Azure Migrate project maakt en ee
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: bd119956ced79b73b0376fe4530c9eafaf870238
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: a4e66175b20552e632702cb2ba46d0ae6c0956d4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934167"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720240"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Voor de eerste keer een evaluatie-/migratiehulpprogramma toevoegen
 
 In dit artikel wordt beschreven hoe u voor de eerste keer een hulp programma voor beoordeling of migratie toevoegt aan een [Azure migrate](migrate-overview.md) project.  
-Azure Migrate biedt een centrale hub voor het bijhouden van detectie, evaluatie en migratie van uw on-premises apps en werk belastingen, en persoonlijke/open bare Cloud-Vm's naar Azure. De hub biedt Azure Migrate-hulpprogram ma's voor evaluatie en migratie, en voor de [aanbiedingen](migrate-services-overview.md#isv-integration) van onafhankelijke software leveranciers (ISV) van derden. 
+Azure Migrate biedt een centrale hub voor het bijhouden van detectie, evaluatie en migratie van uw on-premises apps en werk belastingen, en persoonlijke/open bare Cloud-Vm's naar Azure. De hub biedt Azure Migrate tools voor evaluatie en migratie, evenals andere hulpprogram ma's en ISV- [aanbiedingen](migrate-services-overview.md#isv-integration) (Independent Software Vendor). 
 
 ## <a name="create-a-project-and-add-a-tool"></a>Een project maken en een hulp programma toevoegen
 
@@ -50,7 +50,7 @@ Stel een nieuw Azure Migrate project in een Azure-abonnement in en voeg een hulp
     Japan  | Japan-Oost of Japan-West
     Verenigd Koninkrijk | UK-zuid of UK-west
     Verenigde Staten | VS-midden, VS-West 2
-    Canada | Canada - midden
+    Canada | Canada - centraal
     India  | India centraal of India-Zuid
     Australië | Australië-Zuidoost
 
@@ -66,8 +66,8 @@ Stel een nieuw Azure Migrate project in een Azure-abonnement in en voeg een hulp
     > [!NOTE]
     > Wanneer u een project maakt, moet u ten minste één hulp programma voor evaluatie of migratie toevoegen.
 
-5. Voeg in **hulp programma voor beoordeling selecteren**een evaluatie hulpprogramma toe. Als u geen beoordelings programma nodig hebt, selecteert u **overs Laan een evaluatie programma toevoegen voor nu** > **volgende**. 
-2. Voeg in **hulp programma voor migratie het selectie vakje**een migratie hulpprogramma toe zoals vereist. Als**u momenteel geen**hulp programma voor migratie nodig hebt, selecteert u >  **overs Laan nu een migratie programma toevoegen**.
+5. Voeg in **hulp programma voor beoordeling selecteren**een evaluatie hulpprogramma toe. Als u geen beoordelings programma nodig hebt, selecteert u **overs Laan om nu een evaluatie tool toe te voegen** > **volgende**. 
+2. Voeg in **hulp programma voor migratie het selectie vakje**een migratie hulpprogramma toe zoals vereist. Als u momenteel geen hulp programma voor migratie nodig hebt, selecteert u **overs Laan om nu een migratie hulpmiddel toe te voegen** > **volgende**.
 3. Controleer de instellingen in **hulp middelen voor beoordeling en toevoegen**en klik op **hulp middelen toevoegen**.
 
 Nadat u het project hebt gemaakt, kunt u extra hulp middelen selecteren voor de evaluatie en migratie van servers en werk belastingen, data bases en web-apps.

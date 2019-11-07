@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: cherylmc
-ms.openlocfilehash: f4241b2ace2d7c86e1ed9036ca6d1da4a59eb61f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 704dcd6335766a6058de4e520b8dcbca0d304c9d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517525"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721469"
 ---
 # <a name="configure-a-vpn-client-for-p2s-vpn-connections-azure-ad-authentication-preview"></a>Een VPN-client configureren voor P2S VPN-verbindingen: Azure AD-verificatie (preview-versie)
 
@@ -20,7 +20,7 @@ Dit artikel helpt u bij het configureren van een VPN-client om verbinding te mak
 
 ## <a name="profile"></a>Werken met client profielen
 
-Als u verbinding wilt maken, moet u een VPN-client profiel configureren op elke computer die verbinding wil maken met het VNet. U kunt een client profiel maken op een computer, het exporteren en vervolgens importeren naar extra computers.
+Als u verbinding wilt maken, moet u de Azure VPN-CLient [downloaden](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) en een VPN-client profiel configureren op elke computer die verbinding wil maken met het VNet. U kunt een client profiel maken op een computer, het exporteren en vervolgens importeren naar extra computers.
 
 ### <a name="cert"></a>Een client profiel op basis van een certificaat maken
 

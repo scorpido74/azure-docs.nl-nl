@@ -1,7 +1,7 @@
 ---
 title: Een model Custom Vision Service testen en opnieuw trainen
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het testen van een installatie kopie en het gebruik ervan om het model te trainen.
+description: In dit artikel wordt uitgelegd hoe u een installatie kopie kunt testen en deze vervolgens gebruikt om uw model in de Custom Vision-service te trainen.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 3f78f0b992581a44b030387f1bd0e37664df4cfd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c6ed8869f6d33609381a42fd22d728e9e5542802
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560906"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721195"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Een model testen en opnieuw trainen met Custom Vision Service
 
@@ -39,7 +39,7 @@ U kunt deze test installatie kopie nu toevoegen aan uw model en vervolgens uw mo
 
 Gebruik de volgende stappen om de installatie kopie te gebruiken die u eerder voor de training hebt ingediend:
 
-1. Als u afbeeldingen wilt weer geven die zijn verzonden naar de classificatie, opent u de  [webpagina Custom Vision](https://customvision.ai) en selecteert u het tabblad voor spellingen.
+1. Als u afbeeldingen wilt weer geven die zijn verzonden naar de classificatie, opent u de [webpagina Custom Vision](https://customvision.ai) en selecteert u het tabblad voor __spellingen__ .
 
     ![Afbeelding van het tabblad voor spellingen](./media/test-your-model/predictions-tab.png)
 
@@ -51,7 +51,7 @@ Gebruik de volgende stappen om de installatie kopie te gebruiken die u eerder vo
     > [!TIP]
     > Installatie kopieën worden gerangschikt, zodat de installatie kopieën die de meeste winst naar de classificatie kunnen halen bovenaan staan. Als u een andere sorteer volgorde wilt selecteren, gebruikt u de sectie __sorteren__ .
 
-    Als u een afbeelding wilt toevoegen aan uw trainings gegevens, selecteert u de afbeelding, selecteert u het label en selecteert u vervolgens __opslaan en sluiten__. De afbeelding wordt verwijderd uit  de voor spellingen en toegevoegd aan de trainings afbeeldingen. U kunt deze weer geven door het tabblad __trainings afbeeldingen__ te selecteren.
+    Als u een afbeelding wilt toevoegen aan uw trainings gegevens, selecteert u de afbeelding, selecteert u het label en selecteert u vervolgens __opslaan en sluiten__. De afbeelding wordt verwijderd uit de voor __spellingen__ en toegevoegd aan de trainings afbeeldingen. U kunt deze weer geven door het tabblad __trainings afbeeldingen__ te selecteren.
 
     ![Afbeelding van de pagina labelen](./media/test-your-model/tag-image.png)
 

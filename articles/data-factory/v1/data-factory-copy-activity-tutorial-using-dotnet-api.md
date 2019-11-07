@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: een pijplijn maken met Copy Activity in .NET API | Microsoft Docs'
+title: 'Zelfstudie: een pijplijn maken met de kopieeractiviteit in .NET API '
 description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn met Copy Activity. Hiervoor gebruikt u .NET API.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6291540363b2fbafa8f4747dc9f58a39164f3cbe
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 27bfebf35e2ba2f732068913682e1d16063a1da5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140297"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682893"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Zelfstudie: een pijplijn maken met de kopieeractiviteit in .NET API
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "70140297"
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-sjabloon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
-> * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+> * [.NET-API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
 > Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u de [zelfstudie over kopieeractiviteiten](../quickstart-create-data-factory-dot-net.md). 
@@ -41,7 +41,7 @@ Een pijplijn kan meer dan één activiteit hebben. Ook kunt u twee activiteiten 
 > [!NOTE] 
 > Zie [Naslaginformatie over de .NET API voor Data Factory](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) voor volledige documentatie over .NET API voor Data Factory.
 > 
-> In de gegevenspijplijn in deze zelfstudie worden gegevens van een brongegevensarchief gekopieerd naar een doelgegevensarchief. Meer informatie over het transformeren van gegevens met behulp van Azure Data Factory vindt u in [Zelfstudie: een pijplijn bouwen om gegevens te transformeren met een Hadoop-cluster](data-factory-build-your-first-pipeline.md).
+> In de gegevenspijplijn in deze zelfstudie worden gegevens van een brongegevensarchief gekopieerd naar een doelgegevensarchief. Zie [Zelfstudie: een pijplijn maken om gegevens te transformeren met een Hadoop-cluster](data-factory-build-your-first-pipeline.md) voor meer informatie over het transformeren van gegevens met Azure Data Factory.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -119,7 +119,7 @@ U moet na deze stappen beschikken over de volgende vier waarden:
 * Toepassings-id
 * Wachtwoord (opgegeven in de eerste opdracht)
 
-## <a name="walkthrough"></a>Walkthrough
+## <a name="walkthrough"></a>Kennismaking
 1. Maak met behulp van Visual Studio 2012/2013/2015 een C# .NET-consoletoepassing.
    1. Open **Visual Studio** 2012/2013/2015.
    2. Klik op **File**, houd de muisaanwijzer op **New** en klik op **Project**.
@@ -234,7 +234,7 @@ U moet na deze stappen beschikken over de volgende vier waarden:
 
     U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze zelfstudie gebruikt u niet een willekeurige compute-service, zoals Azure HDInsight of Azure Data Lake Analytics. U gebruikt twee gegevensarchieven van het type Azure Storage (bron) en Azure SQL Database (doel). 
 
-    Daarom maakt u twee gekoppelde services met de naam AzureStorageLinkedService en AzureSqlLinkedService van de typen AzureStorage en AzureSqlDatabase.  
+    Daarom maakt u twee gekoppelde services met de naam AzureStorageLinkedService en AzureSqlLinkedService van het type: AzureStorage en AzureSqlDatabase.  
 
     De AzureStorageLinkedService koppelt uw Azure-opslagaccount aan de gegevensfactory. Dit opslagaccount is het account waarin u een container hebt gemaakt en gegevens hebt geüpload als onderdeel van de [vereisten](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 9. Voeg de volgende code die een **gekoppelde Azure SLQ-service** maakt toe aan de methode **Main**.

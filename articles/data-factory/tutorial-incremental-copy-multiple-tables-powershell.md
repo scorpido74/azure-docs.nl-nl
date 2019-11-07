@@ -1,5 +1,5 @@
 ---
-title: Incrementeel meerdere tabellen kopiëren met behulp van Azure Data Factory | Microsoft Docs
+title: 'Incrementeel meerdere tabellen kopiëren met behulp van Azure Data Factory '
 description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee wijzigingsgegevens incrementeel uit meerdere tabellen van een lokale Microsoft SQL Server worden gekopieerd naar een Azure SQL-database.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: b7de8b164fcd818fba1f999ea7b67f11de646ccd
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b841acf45c20320fada895f20dfc4065837d5add
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533235"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683403"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Incrementeel gegevens uit meerdere tabellen in SQL Server naar een Azure SQL-database kopiëren
 In deze zelfstudie maakt u een Azure Data Factory met een pijplijn waarmee wijzigingsgegevens uit meerdere tabellen van een lokale SQL-server naar een Azure SWL-database worden gekopieerd.    
@@ -25,11 +25,11 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Bereid de bron- en doelserver gegevensopslag voor.
-> * Een gegevensfactory maakt.
+> * Maak een gegevensfactory.
 > * Een zelf-hostende Integration Runtime maken.
 > * De Integration Runtime installeren. 
 > * Maak gekoppelde services. 
-> * Maak bron-, sink- en grenswaardegegevenssets.
+> * Bron-, sink- en grenswaardegegevenssets maken.
 > * Maken, starten en controleren van een pijplijn.
 > * Bekijk de resultaten.
 > * Gegevens in brontabellen toevoegen of bijwerken.
@@ -228,7 +228,7 @@ END
 ### <a name="azure-powershell"></a>Azure PowerShell
 Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/azurerm/install-azurerm-ps).
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 1. Definieer een variabele voor de naam van de resourcegroep die u later gaat gebruiken in PowerShell-opdrachten. Kopieer de tekst van de volgende opdracht naar PowerShell, geef tussen dubbele aanhalingstekens een naam op voor de [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en voer de opdracht uit. Een voorbeeld is `"adfrg"`. 
    
     ```powershell
@@ -335,7 +335,7 @@ In deze stap gaat u uw on-premises SQL Server-database aan de data factory koppe
     > [!IMPORTANT]
     > - Selecteer de juiste sectie op basis van de verificatie die u gebruikt om verbinding te maken met SQL Server.
     > - Vervang de &lt;naam> van de integration runtime door de naam van uw integration runtime.
-    > - Vervang &lt;servername>, &lt;databasename>, &lt;username> en &lt;password> door de waarden van uw SQL Server-exemplaar voordat u het bestand opslaat.
+    > - Vervang &lt;servername>, &lt;databasename>,&lt; username> en&lt; password> door de waarden van uw SQL Server-exemplaar voordat u het bestand opslaat.
     > - Als u een slash wilt gebruiken (`\`) in de naam van uw gebruikersaccount of server, moet u het escapeteken (`\`) gebruiken. Een voorbeeld is `mydomain\\myuser`.
 
 1. Voer in Power shell de volgende cmdlet uit om over te scha kelen naar de map C:\ADFTutorials\IncCopyMultiTableTutorial.
@@ -360,7 +360,7 @@ In deze stap gaat u uw on-premises SQL Server-database aan de data factory koppe
     ```
 
 ### <a name="create-the-sql-database-linked-service"></a>De gekoppelde SQL-databaseservice maken
-1. Maak een JSON-bestand met de naam **AzureSQLDatabaseLinkedService. json** in de map C:\ADFTutorials\IncCopyMultiTableTutorial met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang &lt;servername &gt;, &lt;database name &gt;, &lt;user name &gt; en &lt;password &gt; met de naam van uw SQL Server-Data Base, de naam van uw data base, gebruikers naam en wacht woord voordat u het bestand opslaat. 
+1. Maak een JSON-bestand met de naam **AzureSQLDatabaseLinkedService. json** in de map C:\ADFTutorials\IncCopyMultiTableTutorial met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang &lt;servername&gt;, &lt;database naam&gt;, &lt;gebruikers naam&gt;en &lt;wachtwoord&gt; met de naam van uw SQL Server-Data Base, naam van uw data base, gebruikers naam en wacht woord voordat u het bestand opslaat. 
 
     ```json
     {  
@@ -794,7 +794,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De **for
 
 ## <a name="monitor-the-pipeline"></a>De pijplijn bewaken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **Alle services**, zoek met het trefwoord *gegevensfactory's* en selecteer **Gegevensfactory's**. 
 
@@ -803,7 +803,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De **for
 1. Selecteer op de pagina **Data Factory** de optie **Author & monitor** om Azure Data Factory op een afzonderlijk tabblad te starten.
 
 1. Selecteer op de pagina **aan de slag** de optie **monitor** aan de linkerkant. 
-![Pipeline uitgevoerd ](media/doc-common-process/get-started-page-monitor-button.png)    
+![pijplijn wordt uitgevoerd](media/doc-common-process/get-started-page-monitor-button.png)    
 
 1. U kunt alle pijplijnactiviteiten en hun status zien. Let erop dat in het volgende voorbeeld de status van de pijplijnactiviteit **Geslaagd** is. U kunt parameters controleren die zijn doorgegeven aan de pijplijn door de koppeling in de kolom **Parameters** te selecteren. Als er een fout is opgetreden, ziet u een koppeling in de kolom **Fout**.
 
@@ -959,11 +959,11 @@ In deze zelfstudie hebt u de volgende stappen uitgevoerd:
 
 > [!div class="checklist"]
 > * Bereid de bron- en doelserver gegevensopslag voor.
-> * Een gegevensfactory maakt.
+> * Maak een gegevensfactory.
 > * Een zelf-hostende integration runtime (IR) maken.
 > * De Integration Runtime installeren.
 > * Maak gekoppelde services. 
-> * Maak bron-, sink- en grenswaardegegevenssets.
+> * Bron-, sink- en grenswaardegegevenssets maken.
 > * Maken, starten en controleren van een pijplijn.
 > * Bekijk de resultaten.
 > * Gegevens in brontabellen toevoegen of bijwerken.

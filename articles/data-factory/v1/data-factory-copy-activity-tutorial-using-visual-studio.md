@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een pijplijn maken met de kopieeractiviteit in Visual Studio | Microsoft Docs'
+title: 'Zelfstudie: een pijplijn maken met de kopieeractiviteit in Visual Studio '
 description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn met een kopieeractiviteit. Hiervoor gebruikt u Visual Studio.
 services: data-factory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 934effe585b85075a80eede4236258d4a428b9ce
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 3d14b4a821f91486c396d5dae516d3a545c02321
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836572"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682873"
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Zelfstudie: Een pijplijn maken met de kopieeractiviteit in Visual Studio
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Zelfstudie: een pijplijn maken met de kopieeractiviteit in Visual Studio
 > [!div class="op_single_selector"]
 > * [Overzicht en vereisten](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [De wizard Kopiëren](data-factory-copy-data-wizard-tutorial.md)
@@ -29,7 +29,7 @@ ms.locfileid: "67836572"
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-sjabloon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
-> * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+> * [.NET-API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
 > 
 
@@ -43,7 +43,7 @@ In deze zelfstudie maakt u een pijplijn met één activiteit erin: kopieeractivi
 Een pijplijn kan meer dan één activiteit hebben. Ook kunt u twee activiteiten koppelen (de ene activiteit na de andere laten uitvoeren) door de uitvoergegevensset van één activiteit in te stellen als invoergegevensset voor een andere activiteit. Zie [Meerdere activiteiten in een pijplijn](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) voor meer informatie.
 
 > [!NOTE] 
-> In de gegevenspijplijn in deze zelfstudie worden gegevens van een brongegevensarchief gekopieerd naar een doelgegevensarchief. Meer informatie over het transformeren van gegevens met behulp van Azure Data Factory vindt u in [Zelfstudie: een pijplijn bouwen om gegevens te transformeren met een Hadoop-cluster](data-factory-build-your-first-pipeline.md).
+> In de gegevenspijplijn in deze zelfstudie worden gegevens van een brongegevensarchief gekopieerd naar een doelgegevensarchief. Zie [Zelfstudie: een pijplijn maken om gegevens te transformeren met een Hadoop-cluster](data-factory-build-your-first-pipeline.md) voor meer informatie over het transformeren van gegevens met Azure Data Factory.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -54,12 +54,12 @@ Een pijplijn kan meer dan één activiteit hebben. Ook kunt u twee activiteiten 
 3. De volgende zaken moeten op uw computer zijn geïnstalleerd: 
    * Visual Studio 2013 of Visual Studio 2015
    * Download de Azure SDK voor Visual Studio 2013 of Visual Studio 2015. Ga naar de [Azure-downloadpagina](https://azure.microsoft.com/downloads/) en klik in het gedeelte **.NET** op **VS 2013** of **VS 2015**.
-   * Download de nieuwste Azure Data Factory-invoegtoepassing voor Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) of [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). U kunt de invoegtoepassing ook bijwerken door de volgende stappen uit te voeren: Klik in het menu op **Extra** -> **Extensies en updates** -> **Online** -> **Visual Studio-galerie** -> **Microsoft Azure Data Factory-hulpprogramma's voor Visual Studio** -> **Bijwerken**.
+   * Download de nieuwste Azure Data Factory-invoegtoepassing voor Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) of [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). U kunt de invoegtoepassing ook als volgt bijwerken: klik in het menu op **Extra** -> **Extensies en updates** -> **Online** -> **Visual Studio-galerie** -> **Microsoft Azure Data Factory-hulpprogramma's voor Visual Studio** -> **Bijwerken**.
 
 ## <a name="steps"></a>Stappen
 Hier volgen de stappen die u uitvoert als onderdeel van deze zelfstudie:
 
-1. **Gekoppelde services** maken in de gegevensfactory. In deze stap maakt u twee gekoppelde services van de typen: Azure Storage en Azure SQL Database. 
+1. **Gekoppelde services** maken in de gegevensfactory. In deze stap maakt u twee gekoppelde services van het type: Azure Storage en Azure SQL Database. 
     
     De AzureStorageLinkedService koppelt uw Azure-opslagaccount aan de gegevensfactory. U hebt een container gemaakt en gegevens naar dit opslagaccount geüpload als onderdeel van de [vereisten](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
 
@@ -86,7 +86,7 @@ Hier volgen de stappen die u uitvoert als onderdeel van deze zelfstudie:
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze zelfstudie gebruikt u niet een willekeurige compute-service, zoals Azure HDInsight of Azure Data Lake Analytics. U gebruikt twee gegevensarchieven van het type Azure Storage (bron) en Azure SQL Database (doel). 
 
-Daarvoor maakt u twee gekoppelde services van de typen: AzureStorage en AzureSqlDatabase.  
+Daarom maakt u twee gekoppelde services van het type: Azure Storage en AzureSqlDatabase.  
 
 De gekoppelde Azure Storage-service koppelt uw Azure-opslagaccount aan de gegevensfactory. Dit opslagaccount is het account waarin u een container hebt gemaakt en gegevens hebt geüpload als onderdeel van de [vereisten](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
 
@@ -164,7 +164,7 @@ Hier kunt u de term 'tabellen' gebruiken in plaats van 'gegevenssets'. Een tabel
    ``` 
     De volgende tabel bevat beschrijvingen van de JSON-eigenschappen die in het codefragment worden gebruikt:
 
-    | Eigenschap | Description |
+    | Eigenschap | Beschrijving |
     |:--- |:--- |
     | type | De eigenschap type wordt ingesteld op **AzureBlob**, omdat de gegevens zich in een Azure-blobopslag bevinden. |
     | linkedServiceName | Deze eigenschap verwijst naar de **AzureStorageLinkedService** die u eerder hebt gemaakt. |
@@ -212,7 +212,7 @@ In deze stap maakt u een uitvoergegevensset met de naam **OutputDataset**. Deze 
     ```
     De volgende tabel bevat beschrijvingen van de JSON-eigenschappen die in het codefragment worden gebruikt:
 
-    | Eigenschap | Description |
+    | Eigenschap | Beschrijving |
     |:--- |:--- |
     | type | De eigenschap type wordt ingesteld op **AzureSqlTable** omdat gegevens naar een tabel in een Azure SQL-database worden gekopieerd. |
     | linkedServiceName | Deze eigenschap verwijst naar de **AzureSqlLinkedService** die u eerder hebt gemaakt. |
@@ -330,7 +330,7 @@ In deze stap publiceert u Data Factory-entiteiten (gekoppelde services, gegevens
 
 Houd rekening met de volgende punten: 
 
-* Als de volgende foutmelding wordt weergegeven: 'Dit abonnement is niet geregistreerd voor het gebruik van de naamruimte Microsoft.DataFactory', een van de volgende handelingen uit en probeer opnieuw te publiceren: 
+* Als u de foutmelding 'This subscription is not registered to use namespace Microsoft.DataFactory' ontvangt, voert u een van de volgende stappen uit en probeert u opnieuw te publiceren: 
   
   * Voer in Azure PowerShell de volgende opdracht uit om de Data Factory-provider te registreren. 
 
@@ -346,7 +346,7 @@ Houd rekening met de volgende punten:
 * De naam van de gegevensfactory wordt in de toekomst mogelijk geregistreerd als DNS-naam en wordt daarmee ook voor iedereen zichtbaar.
 
 > [!IMPORTANT]
-> Voor het maken van Data Factory-exemplaren, moet u een beheerder/co-beheerder van het Azure-abonnement
+> Als u Data Factory exemplaren wilt maken, moet u een beheerder/mede beheerder zijn van het Azure-abonnement
 
 ## <a name="monitor-pipeline"></a>De pijplijn bewaken
 Navigeer naar de startpagina van uw gegevensfactory:
@@ -373,7 +373,7 @@ In deze zelfstudie hebt u een Azure-gegevensfactory gemaakt om gegevens te kopi�
 3. U hebt **gegevenssets** gemaakt waarin de invoer- en uitvoergegevens van pijplijnen worden beschreven.
 4. U hebt een **pijplijn** gemaakt met een **kopieeractiviteit** met **BlobSource** als bron en **SqlSink** als sink. 
 
-Zie voor meer informatie over het gebruik van een HDInsight Hive-activiteit om gegevens te transformeren met behulp van Azure HDInsight-cluster, [zelfstudie: Uw eerste pijplijn voor het transformeren van gegevens met behulp van Hadoop-cluster maken](data-factory-build-your-first-pipeline.md).
+Zie [zelf studie: uw eerste pijp lijn maken om gegevens te transformeren met een Hadoop-cluster](data-factory-build-your-first-pipeline.md)voor meer informatie over het gebruik van een hdinsight Hive-activiteit voor het transformeren van gegevens met behulp van een Azure hdinsight-cluster.
 
 U kunt twee activiteiten koppelen (de ene activiteit na de andere laten uitvoeren) door de uitvoergegevensset van één activiteit in te stellen als invoergegevensset voor een andere activiteit. Zie [Planning en uitvoering in Data Factory](data-factory-scheduling-and-execution.md) voor gedetailleerde informatie. 
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 10813600621293e9f559129230193f81ea0c505a
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 2ac9e8b8d0635eceb7d4f85ad867b102f7d064f5
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161520"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585171"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Toegang tot een leslokaallab in Azure Lab Services
 In dit artikel wordt beschreven hoe u zich registreert bij een leslokaal Lab, alle lessen bekijkt die u kunt openen, een virtuele machine in het Lab wilt starten/stoppen en verbinding kunt maken met de virtuele machine. 
@@ -69,7 +69,7 @@ In deze sectie wordt uitgelegd hoe een student via RDP verbinding kan maken met 
     ![Microsoft Extern bureaublad](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
 1. Installeer de meest recente versie van Microsoft Extern bureaublad. 
 
-### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>Stap 2: Toegang tot de virtuele machine vanaf uw Mac met RDP
+### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>Stap 2: toegang tot de virtuele machine vanaf uw Mac met RDP
 1. Open het **RDP** -bestand dat op uw computer is gedownload met **Microsoft extern bureaublad** geïnstalleerd. Het moet beginnen met het maken van verbinding met de virtuele machine. 
 
     ![Verbinding maken met de virtuele machine](../media/how-to-use-classroom-lab/connect-linux-vm.png)
@@ -83,7 +83,7 @@ In deze sectie wordt uitgelegd hoe een student via RDP verbinding kan maken met 
 
     ![VM](../media/how-to-use-classroom-lab/vm-ui.png)
 
-## <a name="progress-bar"></a>Voortgangsbalk 
+## <a name="progress-bar"></a>Voortgangs balk 
 De voortgangs balk op de tegel toont het aantal uren dat is gebruikt voor het aantal aan u toegewezen [quota-uren](how-to-configure-student-usage.md#set-quotas-for-users) . Deze tijd is de extra tijd die aan u is toegewezen, naast de geplande tijd voor het lab. De kleur van de voortgangs balk en de tekst onder de voortgangs balk varieert per van de volgende scenario's:
 
 - Als een klasse wordt uitgevoerd (binnen de planning van de klasse), wordt de voortgangs balk grijs weer gegeven om aan te geven dat de quota uren niet worden gebruikt. 
@@ -107,7 +107,7 @@ Als u zich voor de labs registreert, kunt u alle leslokaallabs weergeven door de
 2. Meld u aan bij de service met het gebruikersaccount waarmee u zich hebt geregistreerd voor het lab. 
 3. Controleer of u alle labs ziet waarvoor u toegangsrechten hebt. 
 
-    ![Alle labs weergeven](../media/how-to-use-classroom-lab/all-labs.png)
+    ![Alle labs weergeven](../media/how-to-manage-classroom-labs/all-labs.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen

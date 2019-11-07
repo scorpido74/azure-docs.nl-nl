@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 683ea55bdc9eb878f7bcbe832d5364d50a6b23e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501181"
+ms.locfileid: "73572156"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Een SSL-certificaat in Azure App Service toevoegen
 
@@ -65,6 +65,7 @@ Voor het beveiligen van een aangepast domein in een SSL-binding gelden aanvullen
 
 Het gratis door App Service beheerde certificaat is een zet-sleutel oplossing voor het beveiligen van uw aangepaste DNS-naam in App Service. Het is een volledig functioneel SSL-certificaat dat wordt beheerd door App Service en automatisch wordt vernieuwd. Het gratis certificaat wordt geleverd met de volgende beperkingen:
 
+- Ondersteunt geen joker tekens.
 - Biedt geen ondersteuning voor niet-geblote domeinen.
 - Kan niet worden geëxporteerd.
 
@@ -281,7 +282,7 @@ Klik op **Uploaden**.
 
 ![Openbaar certificaat uploaden in App Service](./media/configure-ssl-certificate/upload-public-cert.png)
 
-Nadat het certificaat is geüpload, kopieert u de vinger afdruk van het certificaat en raadpleegt [u het certificaat toegankelijk maken](configure-ssl-certificate-in-code.md#load-the-certificate).
+Nadat het certificaat is geüpload, kopieert u de vinger afdruk van het certificaat en raadpleegt [u het certificaat toegankelijk maken](configure-ssl-certificate-in-code.md#make-the-certificate-accessible).
 
 ## <a name="manage-app-service-certificates"></a>App Service certificaten beheren
 
@@ -359,7 +360,7 @@ U kunt nu het App Service certificaat verwijderen. Selecteer **overzicht** > **v
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 

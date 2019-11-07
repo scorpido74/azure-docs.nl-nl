@@ -1,5 +1,5 @@
 ---
-title: Power shell-voor beeld-Failovergroep-Azure SQL Database afzonderlijke data base | Microsoft Docs
+title: Power shell-voor beeld-Failovergroep-Azure SQL Database afzonderlijke data base
 description: Azure PowerShell voorbeeld script om een Azure SQL Database afzonderlijke Data Base te maken, deze toe te voegen aan een failovergroep en failover te testen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 1f975eb11e546a0ece862ac239ac4321ed8e4110
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7315f747fb7319521b25e2eb6e7af72449867888
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570084"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691783"
 ---
 # <a name="use-powershell-to-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Power shell gebruiken om een Azure SQL Database afzonderlijke data base toe te voegen aan een failovergroep 
 
@@ -46,7 +46,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewall regel voor een logische server. | 
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een nieuwe Azure SQL Database afzonderlijke data base. | 

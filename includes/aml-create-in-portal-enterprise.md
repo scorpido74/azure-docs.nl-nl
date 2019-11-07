@@ -9,24 +9,24 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/04/2019
-ms.openlocfilehash: 8b333dbd043ea0a0fe6fb1042e255e7e9c07ade5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c1f4b3d60c0b8af96d851ce54c2aac57c76335a7
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493456"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73633648"
 ---
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van de referenties voor uw Azure-abonnement. 
 
 1. Selecteer in de linkerbovenhoek van Azure Portal **+ een resource maken**.
 
-      ![Een nieuwe resource maken](media/aml-create-in-portal/portal-create-resource.png)
+      ![Een nieuwe resource maken](media/aml-create-in-portal/create-workspace.gif)
 
-1. Gebruik de zoek balk om **machine learning service-werk ruimte**te vinden.
+1. Gebruik de zoek balk om **machine learning**te vinden.
 
-1. Selecteer **machine learning service-werk ruimte**.
+1. Selecteer **machine learning**.
 
-1. Selecteer in het deel venster **machine learning service werkruimte** de optie **maken** om te beginnen.
+1. Selecteer in het deel venster **machine learning** de optie **maken** om te beginnen.
 
 1. Geef de volgende informatie op om uw nieuwe werk ruimte te configureren:
 

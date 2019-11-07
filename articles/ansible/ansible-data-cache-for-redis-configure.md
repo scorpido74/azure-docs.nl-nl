@@ -1,6 +1,6 @@
 ---
 title: 'Zelf studie: caches in azure cache configureren voor redis met behulp van Ansible'
-description: Meer informatie over het gebruik van Ansible voor het maken, schalen en opnieuw opstarten van Azure cache voor redis
+description: Meer informatie over het gebruik van Ansible voor het maken, schalen, opnieuw opstarten en toevoegen van een firewall regel aan Azure cache voor redis
 keywords: ansible, azure, devops, bash, Playbook, cache, redis
 ms.topic: tutorial
 ms.service: ansible
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 92592dffb3a9094ae74328e8819cafc9469c2ac7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 95b42bc9539c36a533eb528c3c26ade89e99290b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241798"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614370"
 ---
 # <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Zelf studie: caches in azure cache configureren voor redis met behulp van Ansible
 
@@ -244,7 +244,7 @@ In deze sectie voert u de Playbook uit om verschillende functies te testen die i
 
 Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ resource_group_name }}` door de naam van uw resource groep.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook rediscache.yml
@@ -343,7 +343,7 @@ Sla de volgende code op als `cleanup.yml`:
 
 Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ resource_group_name }}` door de naam van uw resource groep.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

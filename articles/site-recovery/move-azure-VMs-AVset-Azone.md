@@ -1,6 +1,5 @@
 ---
-title: Azure IaaS-VM's als aan een zone vastgemaakte VM's verplaatsen naar een andere Azure-regio met behulp van de Azure Site Recovery-service | Microsoft Docs
-description: Azure Site Recovery gebruiken om Azure IaaS-VM's als aan een zone vastgemaakte VM's te verplaatsen naar een andere Azure-regio.
+title: Vm's verplaatsen naar een Azure-regio met beschikbaarheids zones met behulp van Azure Site Recovery
 services: site-recovery
 author: rajani-janaki-ram
 ms.service: site-recovery
@@ -8,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: a9e8ddcca727c4c457e4d92a880fb0cafe5ca6f8
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: c9513ca38c665a53bc14f284e87a1cc01035d135
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375728"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693181"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Virtuele Azure-machines verplaatsen naar beschikbaarheidszones
 Beschikbaarheidszones in azure helpen bij het beveiligen van uw toepassingen en gegevens van data centers. Elke beschikbaarheidszone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerk. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's. De fysieke schei ding van Beschikbaarheidszones binnen een regio helpt bij het beveiligen van toepassingen en gegevens van data centers. Met Beschikbaarheidszones biedt Azure een SLA (Service Level Agreement) van 99,99% voor de uptime van virtuele machines (Vm's). Beschikbaarheidszones worden ondersteund in regio's selecteren, zoals vermeld in [Wat zijn Beschikbaarheidszones in azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region).
@@ -86,11 +85,11 @@ De volgende stappen helpen u bij het gebruik van Azure Site Recovery om de repli
 
 1. Selecteer in het Azure Portal **virtuele machines**en selecteer de virtuele machine die u naar Beschikbaarheidszones wilt verplaatsen.
 2. Selecteer in **Bewerkingen** de optie **Herstel na noodgeval**.
-3. Selecteer in**doel regio**voor **nood herstel** > configureren de doel regio waarnaar u wilt repliceren. Zorg ervoor dat deze regio Beschikbaarheidszones [ondersteunt](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region) .
+3. Selecteer in **Noodherstel configureren** > **Doelregio** de doelregio waarnaar u wilt repliceren. Zorg ervoor dat deze regio Beschikbaarheidszones [ondersteunt](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region) .
 
     ![Selectie van doel regio](media/azure-vms-to-zones/enable-rep-1.PNG)
 
-4. Selecteer **Volgende: Geavanceerde instellingen**.
+4. Selecteer **volgende: geavanceerde instellingen**.
 5. Kies de juiste waarden voor het doel abonnement, de doel-VM-resource groep en het virtuele netwerk.
 6. Kies in het gedeelte **Beschik baarheid** de beschikbaarheids zone waarnaar u de virtuele machine wilt verplaatsen. 
    > [!NOTE]
@@ -115,8 +114,8 @@ Nadat de replicatietaak is voltooid, kunt u de replicatiestatus controleren, de 
 2. Selecteer het pictogram **testfailover** .
 3. Selecteer in **failover testen**het herstel punt dat u voor de failover wilt gebruiken:
 
-   - **Laatst verwerkt**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door de Site Recovery-service. Het tijdstempel wordt weergegeven. Met deze optie wordt er geen tijd besteed aan het verwerken van gegevens, zodat er sprake is van een lage RTO (Recovery Time Objective).
-   - **Laatste toepassingsconsistente punt**: met deze optie wordt er een failover uitgevoerd van alle VM's naar het laatste toepassingsconsistente herstelpunt. Het tijdstempel wordt weergegeven.
+   - **Laatst verwerkte**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door de Site Recovery-service. Het tijdstempel wordt weergegeven. Met deze optie wordt er geen tijd besteed aan het verwerken van gegevens, zodat er sprake is van een lage RTO (Recovery Time Objective).
+   - **Laatste toepassingsconsistente punt**: met deze optie wordt er een failover uitgevoerd van alle VM’s naar het laatste toepassingsconsistente herstelpunt. Het tijdstempel wordt weergegeven.
    - **Aangepast**: selecteer een herstelpunt.
 
 3. Selecteer het Azure-doeltestnetwerk waar u de Azure VM's naartoe wilt verplaatsen om de configuratie te testen. 
@@ -125,7 +124,7 @@ Nadat de replicatietaak is voltooid, kunt u de replicatiestatus controleren, de 
     > We raden u aan om een afzonderlijk Azure VM-netwerk te gebruiken voor de test fout en niet het productie netwerk in de doel regio waarin u de Vm's wilt verplaatsen.
 
 4. Selecteer **OK**om te beginnen met het testen van de verplaatsing. Als u de voortgang wilt bijhouden, selecteert u de virtuele machine om de eigenschappen ervan te openen. U kunt ook de taak **testfailover** selecteren in de kluis naam > **instellingen** > **taken** > **site Recovery taken**.
-5. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in Azure Portal > **Virtuele machines**. Controleer of de VM draait, de juiste grootte heeft en aangesloten is op het juiste netwerk.
+5. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in de Azure Portal > **Virtuele machines**. Controleer of de VM draait, de juiste grootte heeft en aangesloten is op het juiste netwerk.
 6. Als u de virtuele machine wilt verwijderen die is gemaakt als onderdeel van het testen van de verplaatsing, selecteert u **testfailover opschonen** voor het gerepliceerde item. Leg in **Notities** eventuele opmerkingen over de test vast en sla deze op.
 
 ## <a name="move-to-the-target-region-and-confirm"></a>Ga naar de doel regio en bevestig

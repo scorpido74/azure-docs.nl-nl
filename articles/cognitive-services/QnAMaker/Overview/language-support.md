@@ -1,7 +1,7 @@
 ---
 title: Taal ondersteuning-QnA Maker
 titleSuffix: Azure Cognitive Services
-description: De taal van een Knowledge Base is van invloed op de mogelijkheid van QnA Maker om vragen en antwoorden van bronnen automatisch uit te pakken, evenals de relevantie van de resultaten QnA Maker als reactie op gebruikers query's. Een lijst met cultuur, natuurlijke talen die door QnA Maker worden ondersteund voor uw Knowledge Base. Maak geen talen in dezelfde Knowledge Base.
+description: Een lijst met cultuur, natuurlijke talen die door QnA Maker worden ondersteund voor uw Knowledge Base. Maak geen talen in dezelfde Knowledge Base.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: f4f7fffdde7d103271fa667bbab11c09ebc54825
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285873"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720999"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Taal ondersteuning voor een QnA Maker resource en kennis bases
 

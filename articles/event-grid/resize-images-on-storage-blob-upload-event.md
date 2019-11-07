@@ -1,6 +1,6 @@
 ---
-title: Formaat van geüploade afbeeldingen automatisch wijzigen met Azure Event Grid | Microsoft Docs
-description: U kunt instellen dat Azure Event Grid wordt geactiveerd als er blobs worden geüpload in Azure Storage. Dit is handig om afbeeldingsbestanden naar Azure Storage die worden geüpload naar Azure Storage te verzenden naar andere services, zoals Azure Functions, voor het aanpassen van het formaat en andere verbeteringen.
+title: 'Zelf studie: Azure Event Grid gebruiken om het formaat van geüploade afbeeldingen te automatiseren'
+description: 'Zelf studie: het Azure Event Grid kan in Azure Storage worden geactiveerd voor BLOB-uploads. Dit is handig om afbeeldingsbestanden naar Azure Storage die worden geüpload naar Azure Storage te verzenden naar andere services, zoals Azure Functions, voor het aanpassen van het formaat en andere verbeteringen.'
 services: event-grid, functions
 author: spelluru
 manager: jpconnoc
@@ -9,17 +9,17 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/29/2019
+ms.date: 11/05/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: c09e2cd812dd34976218ff71036734466943e8cd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4359ce859e3fbe270785c3cf4bbc673e71d19799
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "69623878"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718215"
 ---
-# <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Zelfstudie: Formaat van geüploade afbeeldingen automatisch wijzigen met Event Grid
+# <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Zelf studie: het formaat van geüploade afbeeldingen automatisch wijzigen met behulp van Event Grid
 
 [Azure Event Grid](overview.md) is een gebeurtenisservice voor de cloud. Met Event Grid kunt u abonnementen nemen op gebeurtenissen die worden gegenereerd door Azure-services of resources van derden.  
 
@@ -54,7 +54,7 @@ In deze zelfstudie leert u het volgende:
 
 Vereisten voor het voltooien van deze zelfstudie:
 
-U moet de vorige zelfstudie over blobopslag hebben voltooid: [Upload afbeeldings gegevens in de Cloud met Azure Storage][previous-tutorial].
+U moet de vorige zelf studie over het Blob-opslag hebben voltooid: [afbeeldings gegevens uploaden in de Cloud met Azure Storage][previous-tutorial].
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -233,9 +233,9 @@ Een gebeurtenisabonnement geeft aan welke door de provider gegenereerde gebeurte
     
     ![Een gebeurtenisabonnement maken voor de functie in Azure Portal](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
-    | Instelling      | Voorgestelde waarde  | Description                                        |
+    | Instelling      | Voorgestelde waarde  | Beschrijving                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name** | imageresizersub | De naam voor het nieuwe gebeurtenisabonnement. | 
+    | **Naam** | imageresizersub | De naam voor het nieuwe gebeurtenisabonnement. | 
     | **Onderwerptype** |  Opslagaccounts | Kies de provider voor de gebeurtenissen van het opslagaccount. | 
     | **Abonnement** | Uw Azure-abonnement | Uw huidige Azure-abonnement is standaard geselecteerd.   |
     | **Resourcegroep** | myResourceGroup | Selecteer **Bestaande gebruiken** en kies de resourcegroep die u in deze zelfstudie hebt gebruikt.  |
@@ -266,13 +266,13 @@ Zodra de geüploade afbeelding is verdwenen, ziet u een kopie van de geüploade 
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
 
-Klik op **Bestand kiezen**, selecteer een bestand en klik op **Afbeelding uploaden**. Als het uploaden is voltooid, wordt in de browser een pagina weergegeven dat het uploaden is geslaagd. Klik op de koppeling om terug te keren naar de startpagina. Een kopie van de geüploade afbeelding wordt weergegeven in het gebied **Gegenereerde miniaturen**. (Als de afbeelding niet meteen wordt weergegeven, laadt u de pagina opnieuw.) Het formaat van deze afbeelding werd gewijzigd door de functie, waarna de afbeelding werd toegevoegd aan de container *thumbnails* en gedownload door de webclient.
+Klik op **Bestand kiezen**, selecteer een bestand en klik op **Afbeelding uploaden**. Als het uploaden is voltooid, wordt in de browser een pagina weergegeven dat het uploaden is geslaagd. Klik op de koppeling om terug te keren naar de startpagina. Een kopie van de geüploade afbeelding wordt weergegeven in het gebied **Gegenereerde miniaturen**. (Als de afbeelding niet eerst wordt weer gegeven, laadt u de pagina opnieuw.) Het formaat van deze afbeelding is gewijzigd door de functie, is toegevoegd aan de container *miniaturen* en gedownload door de webclient.
 
 ![Gepubliceerde web-app in de browser](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-Klik op **Bestand kiezen**, selecteer een bestand en klik op **Afbeelding uploaden**. Als het uploaden is voltooid, wordt in de browser een pagina weergegeven dat het uploaden is geslaagd. Klik op de koppeling om terug te keren naar de startpagina. Een kopie van de geüploade afbeelding wordt weergegeven in het gebied **Gegenereerde miniaturen**. (Als de afbeelding niet meteen wordt weergegeven, laadt u de pagina opnieuw.) Het formaat van deze afbeelding werd gewijzigd door de functie, waarna de afbeelding werd toegevoegd aan de container *thumbnails* en gedownload door de webclient.
+Klik op **Bestand kiezen**, selecteer een bestand en klik op **Afbeelding uploaden**. Als het uploaden is voltooid, wordt in de browser een pagina weergegeven dat het uploaden is geslaagd. Klik op de koppeling om terug te keren naar de startpagina. Een kopie van de geüploade afbeelding wordt weergegeven in het gebied **Gegenereerde miniaturen**. (Als de afbeelding niet eerst wordt weer gegeven, laadt u de pagina opnieuw.) Het formaat van deze afbeelding is gewijzigd door de functie, is toegevoegd aan de container *miniaturen* en gedownload door de webclient.
 
 ![Gepubliceerde web-app in de browser](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 

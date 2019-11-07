@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus-onderwerpen en-abonnementen gebruiken met Java
-description: Gebruik Service Bus onderwerpen en abonnementen in Azure.
+title: 'Snelstartgids: Azure Service Bus-onderwerpen en-abonnementen gebruiken met Java'
+description: 'Snelstartgids: gebruik Service Bus onderwerpen en abonnementen in Azure.'
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -11,18 +11,18 @@ ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: affd62bd7cae0103b7d2510022fc12a66d26c865
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 8a721d929ff89fd644c78296ae54cee757bf9610
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155593"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719999"
 ---
-# <a name="use-service-bus-topics-and-subscriptions-with-java"></a>Service Bus-onderwerpen en-abonnementen gebruiken met Java
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Snelstartgids: Service Bus-onderwerpen en-abonnementen gebruiken met Java
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
@@ -31,7 +31,7 @@ In deze Snelstartgids schrijft u Java-code voor het verzenden van berichten naar
 ## <a name="prerequisites"></a>Vereisten
 
 1. Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt uw [voor delen voor Visual Studio of MSDN Subscriber](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) activeren of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Volg de stappen in [de Snelstartgids: Gebruik de Azure Portal om een service bus onderwerp en abonnementen aan het onderwerp](service-bus-quickstart-topics-subscriptions-portal.md) te maken om de volgende taken uit te voeren:
+2. Volg de stappen in de [Snelstartgids: gebruik de Azure Portal om een service bus onderwerp en abonnementen aan het onderwerp te maken](service-bus-quickstart-topics-subscriptions-portal.md) om de volgende taken uit te voeren:
     1. Maak een Service Bus **naam ruimte**.
     2. Haal de **Connection String**op.
     3. Maak een **onderwerp** in de naam ruimte.
@@ -47,9 +47,9 @@ U moet ook de volgende potten toevoegen aan het Java-build-pad:
 
 - gson-2.6.2. jar
 - Commons-CLI-1.4. jar
-- proton-j-0.21.0.jar
+- Proton-j-0.21.0. jar
 
-Voeg een klasse toe met een **hoofd** methode en voeg vervolgens de volgende `import` instructies toe boven aan het Java-bestand:
+Voeg een klasse toe met een **hoofd** methode en voeg vervolgens de volgende `import`-instructies toe boven aan het Java-bestand:
 
 ```java
 import com.google.gson.reflect.TypeToken;
@@ -69,7 +69,7 @@ import org.apache.commons.cli.DefaultParser;
 Werk de methode **Main** bij om een **TopicClient** -object te maken en roep een hulp methode aan waarmee asynchroon voorbeeld berichten naar het onderwerp service bus worden verzonden.
 
 > [!NOTE] 
-> - Vervang `<NameOfServiceBusNamespace>` door de naam van uw service bus-naam ruimte. 
+> - Vervang `<NameOfServiceBusNamespace>` door de naam van uw Service Bus naam ruimte. 
 > - Vervang `<AccessKey>` door de toegangs sleutel voor uw naam ruimte.
 
 ```java

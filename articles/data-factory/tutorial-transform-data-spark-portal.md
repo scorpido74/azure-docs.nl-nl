@@ -1,5 +1,5 @@
 ---
-title: Gegevens transformeren met behulp van Spark in Azure Data Factory | Microsoft Docs
+title: 'Gegevens transformeren met behulp van Spark in Azure Data Factory '
 description: Deze zelfstudie biedt stapsgewijze instructies voor het transformeren van gegevens met behulp van een Spark-activiteit in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: d13e0b95d57e3063292319961d5e1138f994076e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b0df6264eb38cbbacd5f624b634eea5f742adbc7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812274"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683321"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Gegevens transformeren in de cloud met behulp van een Spark-activiteit in Azure Data Factory
 In deze zelfstudie gebruikt u Azure Portal om een pijplijn voor Azure Data Factory te maken. Deze pijplijn transformeert gegevens met behulp van een Spark-activiteit en een gekoppelde Azure HDInsight-service op aanvraag. 
@@ -24,10 +24,10 @@ In deze zelfstudie gebruikt u Azure Portal om een pijplijn voor Azure Data Facto
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een data factory maken. 
+> * Maak een gegevensfactory. 
 > * Een pijplijn maken die een Spark-activiteit gebruikt.
 > * Een pijplijnuitvoering activeren.
-> * De pijplijnuitvoering controleert.
+> * Controleer de pijplijnuitvoering.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
@@ -81,7 +81,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 1. Maak in de map **spark** een submap met de naam **inputfiles**. 
 1. Upload het bestand **minecraftstory.txt** naar de submap **inputfiles**. 
 
-## <a name="create-a-data-factory"></a>Data factory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 1. Selecteer **Nieuw** in het menu links, selecteer **Gegevens en analyses** en selecteer vervolgens **Data Factory**. 
@@ -104,7 +104,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 1. Selecteer **V2** als **Versie**.
 1. Selecteer voor **Locatie** een locatie voor de data factory. 
 
-   Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensarchieven (zoals Azure Storage en Azure SQL Database) en berekeningen (zoals Azure HDInsight) die Data Factory gebruikt, kunnen zich in andere regio's bevinden.
+   Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensarchieven (zoals Azure Storage en Azure SQL Database) en berekeningen (zoals Azure HDInsight) die Data Factory gebruikt, kunnen zich in andere regio's bevinden.
 
 1. Selecteer **Maken**.
 
@@ -212,7 +212,7 @@ Selecteer **trigger toevoegen** op de werk balk en selecteer **nu activeren**.
 
 ## <a name="monitor-the-pipeline-run"></a>De pijplijnuitvoering controleren.
 
-1. Ga naar het tabblad **Controleren**. Controleer of u een pijplijnuitvoering ziet. Het duurt ongeveer 20 minuten om een Spark-cluster te maken. 
+1. Ga naar het tabblad **monitor** . Controleer of er een pijplijn uitvoering wordt weer geven. Het duurt ongeveer 20 minuten om een Spark-cluster te maken. 
    
 1. Selecteer regelmatig **Vernieuwen** om de status van de pijplijnuitvoering te controleren. 
 
@@ -245,10 +245,10 @@ Het bestand moet elk woord uit het invoertekstbestand bevatten, plus het aantal 
 De pijplijn in dit voorbeeld transformeert gegevens met behulp van een Spark-activiteit en een gekoppelde HDInsight-service op aanvraag. U hebt geleerd hoe u: 
 
 > [!div class="checklist"]
-> * Een data factory maken. 
+> * Maak een gegevensfactory. 
 > * Een pijplijn maken die een Spark-activiteit gebruikt.
 > * Een pijplijnuitvoering activeren.
-> * De pijplijnuitvoering controleert.
+> * Controleer de pijplijnuitvoering.
 
 Ga naar de volgende zelfstudie voor informatie over het transformeren van gegevens door een Hive-script uit te voeren in een Azure HDInsight-cluster in een virtueel netwerk: 
 

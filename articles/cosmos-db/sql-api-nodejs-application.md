@@ -1,22 +1,22 @@
 ---
-title: 'Zelfstudie: Een Node.js-web-app bouwen met behulp van JavaScript SDK voor het beheren van Azure Cosmos DB SQL API-gegevens'
+title: 'Zelfstudie: Een Node.js-web-app bouwen met JavaScript SDK voor het beheren van Azure Cosmos DB SQL API-gegevens'
 description: In deze zelfstudie over Node.js wordt uitgelegd hoe u Microsoft Azure Cosmos DB gebruikt voor het opslaan van en de toegang tot gegevens van een Node.js Express-webtoepassing die wordt gehost op de Web Apps-functie van Microsoft Azure App Service.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 0f410e06e1f5b9ae3b5319c4ff63f9632a2159dc
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8390520320566907e8aaef709a085a71e8c8e4d6
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989438"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720823"
 ---
-# <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Zelfstudie: Een Node.js-web-app bouwen met behulp van de JavaScript SDK voor het beheren van een SQL API-account in Azure Cosmos DB 
+# <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Zelf studie: een node. js-web-app maken met behulp van de Java script SDK voor het beheren van een SQL-API-account in Azure Cosmos DB 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -51,7 +51,7 @@ Voordat u de instructies in dit artikel uitvoert, moet u beschikken over de volg
 * Installeer [Git][Git] op uw lokale werk station.
 
 ## <a name="_Toc395637761"></a>Een Azure Cosmos DB-account maken
-Begin met het maken van een Azure Cosmos DB-account. Als u al een account hebt of de Azure Cosmos DB-emulator gebruikt voor deze zelfstudie, kunt u direct doorgaan naar [Stap 2: Een nieuwe Node.js-toepassing maken](#_Toc395783178).
+Begin met het maken van een Azure Cosmos DB-account. Als u al een account hebt of de Azure Cosmos DB-emulator gebruikt voor deze zelfstudie, kunt u direct doorgaan naar [Stap 2: een nieuwe Node.js-toepassing maken](#_Toc395783178).
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -93,7 +93,7 @@ Laten we eens kijken hoe u het Express-framework gebruikt om een eenvoudig Hallo
 
 Het bestand **package.json** is een van de bestanden die zijn gemaakt in de hoofdmap van het project. Dit bestand bevat een lijst met aanvullende modules die u nodig hebt voor uw Node.js-toepassing. Wanneer u deze toepassing implementeert in Azure, wordt dit bestand gebruikt om te bepalen welke modules ter ondersteuning van de toepassing in Azure moeten worden geïnstalleerd. Installeer nog twee pakketten voor deze zelfstudie.
 
-1. Installeer de  **\@Azure/Cosmos-** module via NPM. 
+1. Installeer de **\@Azure/Cosmos-** module via NPM. 
 
    ```bash
    npm install @azure/cosmos

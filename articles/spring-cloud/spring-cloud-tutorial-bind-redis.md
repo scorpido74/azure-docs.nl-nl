@@ -1,22 +1,19 @@
 ---
 title: Azure-cache binden voor redis aan uw Azure lente-Cloud toepassing | Microsoft Docs
 description: Meer informatie over hoe u Azure-cache kunt binden voor redis aan uw Azure lente-Cloud toepassing
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: d8fa31207baecc80674fb11b492927800676b8a2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.topic: tutorial
+ms.date: 10/31/2019
+ms.author: jeconnoc
+ms.openlocfilehash: a901e4194909df85f53799d5937515e42ea87a69
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038942"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607579"
 ---
-# <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>Zelfstudie: Azure-Services binden aan uw Azure lente-Cloud toepassing: Azure Cache voor Redis
+# <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>Zelf studie: Azure-Services binden aan uw Azure veer Cloud-toepassing: Azure cache voor redis
 
 Met Azure lente Cloud kunt u de geselecteerde Azure-Services automatisch koppelen aan uw toepassingen, in plaats van de Spring boot-toepassing hand matig te configureren. In dit artikel wordt beschreven hoe u uw toepassing verbindt met Azure cache voor redis.
 
@@ -26,14 +23,7 @@ Met Azure lente Cloud kunt u de geselecteerde Azure-Services automatisch koppele
 * Een Azure-cache voor redis service-exemplaar
 * Azure lente-Cloud extensie voor Azure CLI
 
-Als dat nodig is, installeert u de Azure veer Cloud-extensie voor de Azure CLI met behulp van de volgende opdracht:
-
-```azurecli
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
-```
-
->[!TIP]
-> Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren.  Het heeft algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd, met inbegrip van de nieuwste versies van Git, JDK, maven en de Azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u uw [Azure Cloud shell](https://shell.azure.com) vanuit shell.Azure.com.  [Lees onze documentatie](../cloud-shell/overview.md) voor meer informatie over Azure Cloud shell.
+Als u geen geïmplementeerd Azure veer Cloud-exemplaar hebt, volgt u de stappen in deze [Snelstartgids](spring-cloud-quickstart-launch-app-portal.md) om uw eerste lente-Cloud-app te implementeren.
 
 ## <a name="bind-azure-cache-for-redis"></a>Azure-cache binden voor redis
 
@@ -45,7 +35,7 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
         <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
     </dependency>
     ```
-1. @No__t-0-eigenschappen, indien aanwezig, in het `application.properties`-bestand verwijderen
+1. Verwijder `spring.redis.*` eigenschappen, indien aanwezig, in het `application.properties` bestand
 
 1. Werk de huidige implementatie bij met `az spring-cloud app update` of maak een nieuwe implementatie met behulp van `az spring-cloud app deployment create`.
 

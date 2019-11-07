@@ -1,21 +1,24 @@
 ---
-title: Tekst vertaling cognitieve vaardigheid
+title: Tekst vertaling cognitieve vaardigheid (preview-versie)
 titleSuffix: Azure Cognitive Search
-description: Evalueert tekst en retourneert voor elke record tekst die wordt vertaald naar de opgegeven doel taal in een AI-verrijkings pijplijn in azure Cognitive Search.
+description: Evalueert tekst en retourneert voor elke record tekst die wordt vertaald naar de opgegeven doel taal in een AI-verrijkings pijplijn in azure Cognitive Search. Deze vaardigheid is momenteel beschikbaar als open bare preview.
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2405fe67b39e016e64efb1b36cc551a00a338fc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7c42c9033fac057c12426726a96ae6079f3080da
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791862"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715413"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Tekst vertaling cognitieve vaardigheid
+
+> [!IMPORTANT] 
+> Deze vaardigheid is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
 
 De **tekst Vertaal** vaardigheid evalueert tekst en retourneert voor elke record de tekst die wordt vertaald naar de opgegeven doel taal. Deze vaardigheid maakt gebruik van de [Translator text-API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) beschikbaar in cognitive Services.
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cf48426f14eb1ea5004b23da594194fa9828a112
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: 8945ccef1dd44570f4f59c7c91c2fe05b222c5bb
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303458"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576931"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Zoeken naar nuttige plaatsen in de buurt met behulp van Azure Maps
 
@@ -30,7 +30,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 <a id="createaccount"></a>
 
@@ -39,8 +39,8 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 Voer de volgende stappen uit om een nieuw Maps-account te maken:
 
 1. Klik in de linkerbovenhoek van [Azure Portal](https://portal.azure.com) op **Een resource maken**.
-2. Typ **Maps** in het vak *Marketplace doorzoeken*.
-3. Selecteer **Toewijzingen** in de *Resultaten*. Klik op de knop **Maken** die onder de kaart wordt weergegeven.
+2. Typ *Maps* in het vak **Marketplace doorzoeken**.
+3. Selecteer *Toewijzingen* in de **Resultaten**. Klik op de knop **Maken** die onder de kaart wordt weergegeven.
 4. Voer de volgende waarden in op de pagina **Azure Kaarten-account maken**:
     * Het *Abonnement* dat u wilt gebruiken voor dit account.
     * De naam van de *Resourcegroep* voor dit account. U kunt kiezen om een *Nieuwe* of *Bestaande* resourcegroep te gebruiken.
@@ -161,7 +161,7 @@ De Map Control-API is een handige clientbibliotheek waarmee u Maps eenvoudig kun
     });
     ```
 
-   In dit code segment wordt een `ready`-gebeurtenis toegevoegd aan de kaart, die wordt geactiveerd wanneer de kaart resources zijn geladen en de kaart gereed is om te worden geopend. In de gebeurtenis-handler voor de toewijzing `ready` wordt een gegevens bron gemaakt om resultaat gegevens op te slaan. Er wordt een symboollaag gemaakt en aan de gegevensbron gekoppeld. Deze laag geeft aan hoe de resultaatgegevens in de gegevensbron moeten worden weergegeven, in dit geval met een donkerblauw speldpictogram dat is gecentreerd over de resultatencoördinaat en dat andere pictogrammen de mogelijkheid biedt te overlappen. De laag van het resultaat wordt toegevoegd aan de kaart lagen.
+   In deze code segmenteert u een `ready` gebeurtenis wordt toegevoegd aan de kaart, die wordt geactiveerd wanneer de kaart resources zijn geladen en de kaart gereed is om te worden geopend. In de gebeurtenis-handler voor toewijzings `ready` wordt een gegevens bron gemaakt om resultaat gegevens op te slaan. Er wordt een symboollaag gemaakt en aan de gegevensbron gekoppeld. Deze laag geeft aan hoe de resultaatgegevens in de gegevensbron moeten worden weergegeven, in dit geval met een donkerblauw speldpictogram dat is gecentreerd over de resultatencoördinaat en dat andere pictogrammen de mogelijkheid biedt te overlappen. De laag van het resultaat wordt toegevoegd aan de kaart lagen.
 
 <a id="usesearch"></a>
 
@@ -171,7 +171,7 @@ In deze sectie wordt uitgelegd hoe u de Maps- [API](https://docs.microsoft.com/r
 
 ### <a name="service-module"></a>Servicemodule
 
-1. In de gebeurtenis-handler voor de toewijzing `ready` moet u de URL van de zoek service maken door de volgende Java script-code toe te voegen.
+1. Maak in de gebeurtenis-handler voor de kaart `ready` de URL van de zoek service door de volgende Java script-code toe te voegen.
 
     ```JavaScript
    // Use SubscriptionKeyCredential with a subscription key
@@ -184,9 +184,9 @@ In deze sectie wordt uitgelegd hoe u de Maps- [API](https://docs.microsoft.com/r
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   Met de `SubscriptionKeyCredential` wordt een `SubscriptionKeyCredentialPolicy` gemaakt voor het verifiëren van HTTP-aanvragen om te Azure Maps met de abonnements sleutel. De `atlas.service.MapsURL.newPipeline()` neemt in het `SubscriptionKeyCredential`-beleid en maakt een [pijplijn](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) instantie. De `searchURL` vertegenwoordigt een URL voor het Azure Maps van [Zoek](https://docs.microsoft.com/rest/api/maps/search) bewerkingen.
+   De `SubscriptionKeyCredential` maakt een `SubscriptionKeyCredentialPolicy` voor het verifiëren van HTTP-aanvragen om te Azure Maps met de abonnements sleutel. De `atlas.service.MapsURL.newPipeline()` neemt in het `SubscriptionKeyCredential` beleid en maakt een [pijplijn](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) instantie. De `searchURL` vertegenwoordigt een URL voor het Azure Maps van [Zoek](https://docs.microsoft.com/rest/api/maps/search) bewerkingen.
 
-2. Voeg vervolgens het volgende scriptblok toe om de zoekquery te maken. Hierin wordt de service Fuzzy zoeken gebruikt, een basiszoek-API van de Search Service. Via de service Fuzzy zoeken wordt de meeste fuzzy invoer verwerkt, zoals adressen, plaatsen en nuttige plaatsen. Met deze code wordt gezocht naar benzine stations in de buurt binnen de opgegeven straal van de opgegeven breedte graad en lengte graad. Een verzameling geojson-functies uit het antwoord wordt vervolgens geëxtraheerd met behulp van de methode `geojson.getFeatures()` en toegevoegd aan de gegevens bron, die automatisch resulteert in de gegevens die worden weer gegeven op de kaart via de laag van het symbool. In het laatste deel van het script wordt de cameraweergave van de kaarten weergegeven met behulp van het selectiekader van de resultaten met behulp van de eigenschap [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) van Maps.
+2. Voeg vervolgens het volgende scriptblok toe om de zoekquery te maken. Hierin wordt de service Fuzzy zoeken gebruikt, een basiszoek-API van de Search Service. Via de service Fuzzy zoeken wordt de meeste fuzzy invoer verwerkt, zoals adressen, plaatsen en nuttige plaatsen. Met deze code wordt gezocht naar benzine stations in de buurt binnen de opgegeven straal van de opgegeven breedte graad en lengte graad. Een verzameling geojson-functies uit het antwoord wordt vervolgens geëxtraheerd met behulp van de `geojson.getFeatures()` methode en toegevoegd aan de gegevens bron, waardoor automatisch de gegevens worden weer gegeven op de kaart via de laag van het symbool. In het laatste deel van het script wordt de cameraweergave van de kaarten weergegeven met behulp van het selectiekader van de resultaten met behulp van de eigenschap [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) van Maps.
 
     ```JavaScript
     var query =  'gasoline-station';
@@ -229,7 +229,7 @@ Op dit moment kunnen op de pagina MapSearch de locaties worden weergegeven van n
 
 De kaart die we tot nu toe hebben gemaakt, is uitsluitend gebaseerd op de gegevens voor lengtegraad/breedtegraad voor de zoekresultaten. Als u kijkt naar de onbewerkte JSON die door de service Maps Search wordt geretourneerd, ziet u echter dat deze aanvullende informatie over elk tankstation bevat, inclusief de naam en het adres. U kunt die gegevens opnemen in de kaart met behulp van interactieve pop-upvakken.
 
-1. Voeg de volgende regels code toe in de gebeurtenis-handler voor de toewijzing `ready` na de code voor het opvragen van de fuzzy Search-service. Hiermee wordt een exemplaar van een pop-upvenster gemaakt en een mouse-overgebeurtenis toegevoegd aan de symboollaag.
+1. Voeg de volgende regels code toe in de gebeurtenis-handler `ready` toewijzen na de code om een query uit te zoeken naar de fuzzy Search-service. Hiermee wordt een exemplaar van een pop-upvenster gemaakt en een mouse-overgebeurtenis toegevoegd aan de symboollaag.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.
@@ -239,7 +239,7 @@ De kaart die we tot nu toe hebben gemaakt, is uitsluitend gebaseerd op de gegeve
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    De API-`*atlas.Popup` biedt een informatie venster dat is verankerd op de vereiste positie op de kaart. 
+    De API-`*atlas.Popup` biedt een informatie venster dat is gekoppeld aan de vereiste positie op de kaart. 
 
 2. Voeg de volgende code in de functie `GetMap` toe om de muis aanwijzer op resultaat informatie in de pop-up weer te geven.
 
@@ -251,13 +251,16 @@ De kaart die we tot nu toe hebben gemaakt, is uitsluitend gebaseerd op de gegeve
         var position = e.shapes[0].getCoordinates();
 
         //Create HTML from properties of the selected result.
-        var html = ['<div style="padding:5px"><div><b>', p.poi.name,
-            '</b></div><div>', p.address.freeformAddress,
-            '</div><div>', position[1], ', ', position[0], '</div></div>'];
+        var html = `
+          <div style="padding:5px">
+            <div><b>${p.poi.name}</b></div>
+            <div>${p.address.freeformAddress}</div>
+            <div>${position[1]}, ${position[0]}</div>
+          </div>`;
 
         //Update the content and position of the popup.
         popup.setPopupOptions({
-            content: html.join(''),
+            content: html,
             position: position
         });
 
@@ -272,7 +275,7 @@ De kaart die we tot nu toe hebben gemaakt, is uitsluitend gebaseerd op de gegeve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een account van Azure Maps maken

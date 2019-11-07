@@ -1,19 +1,19 @@
 ---
-title: Een HPC-cache van Azure maken (preview)
+title: Een HPC-cache van Azure maken
 description: Een Azure HPC-cache-exemplaar maken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 7052b88a24ff5353656a71a7bfb044922ae1415c
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 1b9d2d3c46aab2096dd9208e0bea7f7776c0e429
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709985"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582710"
 ---
-# <a name="create-an-azure-hpc-cache-preview"></a>Een HPC-cache van Azure maken (preview)
+# <a name="create-an-azure-hpc-cache"></a>Een HPC-cache van Azure maken
 
 Gebruik de Azure Portal om uw cache te maken.
 
@@ -23,7 +23,7 @@ Gebruik de Azure Portal om uw cache te maken.
 
 ![scherm afbeelding van de pagina project details in Azure Portal](media/hpc-cache-create-basics.png)
 
-Selecteer in **Project Details**het abonnement en de resource groep die als host moet fungeren voor de cache. Zorg ervoor dat het abonnement wordt weer gegeven in de lijst met [toegangs voorbeelden](hpc-cache-prereqs.md#azure-subscription) .
+Selecteer in **Project Details**het abonnement en de resource groep die als host moet fungeren voor de cache. Zorg ervoor dat het abonnement op de [toegangs](hpc-cache-prereqs.md#azure-subscription) lijst staat.
 
 Stel in **service Details**de naam van de cache en de andere kenmerken in:
 

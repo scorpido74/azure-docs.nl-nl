@@ -1,24 +1,24 @@
 ---
-title: Gebeurtenissen verzenden en ontvangen met python-Azure Event Hubs
-description: In dit scenario ziet u hoe u python-scripts maakt en uitvoert waarmee gebeurtenissen worden verzonden naar of ontvangen van Azure Event Hubs.
+title: 'Quick Start: gebeurtenissen verzenden en ontvangen met python-Azure Event Hubs'
+description: 'Snelstartgids: in dit overzicht ziet u hoe u python-scripts maakt en uitvoert waarmee gebeurtenissen worden verzonden naar of ontvangen van Azure Event Hubs.'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core
-ms.topic: article
-ms.date: 10/11/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 330a7f5dc325c707b5be7ce9f9b3242a1d4c9547
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9b6c3fb03f696f4142721284a14001eb51153a77
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428895"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720545"
 ---
-# <a name="send-and-receive-events-with-event-hubs-using-python"></a>Gebeurtenissen verzenden en ontvangen met Event Hubs met behulp van python
+# <a name="quickstart-send-and-receive-events-with-event-hubs-using-python"></a>Snelstartgids: gebeurtenissen verzenden en ontvangen met Event Hubs met behulp van python
 
-Azure Event Hubs is een Big data streaming-platform en Event opname-service waarmee miljoenen gebeurtenissen per seconde kunnen worden ontvangen en verwerkt. Event Hubs kunt gebeurtenissen, gegevens of telemetrie van gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden getransformeerd en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [azure Event hubs](event-hubs-about.md) en [functies en terminologie in azure Event hubs](event-hubs-features.md)voor meer informatie over Event hubs.
+Azure Event Hubs is een Big data streaming-platform en Event opname-service waarmee miljoenen gebeurtenissen per seconde kunnen worden ontvangen en verwerkt. Event Hubs kunt gebeurtenissen, gegevens of telemetrie van gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [azure Event hubs](event-hubs-about.md) en [functies en terminologie in azure Event hubs](event-hubs-features.md)voor meer informatie over Event hubs.
 
 Deze Quick Start laat zien hoe u python-toepassingen maakt waarmee gebeurtenissen worden verzonden naar en ontvangen van een Event Hub. 
 
@@ -29,7 +29,7 @@ Deze Quick Start laat zien hoe u python-toepassingen maakt waarmee gebeurtenisse
 
 Voor het voltooien van deze snelstart moet aan de volgende vereisten worden voldaan:
 
-- Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+- Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 - Een actieve Event Hubs naam ruimte en Event Hub, gemaakt door de instructies te volgen op [Quick Start: een event hub maken met Azure Portal](event-hubs-create.md). Noteer de naam ruimte en de namen van de Event Hub die u later in dit overzicht kunt gebruiken. 
 - De naam van de gedeelde toegangs sleutel en de waarde van de primaire sleutel voor uw Event Hubs naam ruimte. Haal de naam en waarde van de toegangs sleutel op door de instructies te volgen op [Get Connection String](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). De standaard naam van de toegangs sleutel is **RootManageSharedAccessKey**. Kopieer de sleutel naam en de primaire-sleutel waarde die u later in dit overzicht wilt gebruiken. 
 - Python 3,4 of hoger, met `pip` geïnstalleerd en bijgewerkt.
@@ -48,7 +48,7 @@ Een python-toepassing maken die gebeurtenissen naar een Event Hub verzendt:
 
 1. Open uw favoriete python-editor, zoals [Visual Studio code](https://code.visualstudio.com/)
 2. Maak een nieuw bestand met de naam *Send.py*. Met dit script worden 100 gebeurtenissen naar uw Event Hub verzonden.
-3. Plak de volgende code in *Send.py*, waarbij u de Event hubs \<namespace >, \<eventhub >, \<AccessKeyName > en \<primary sleutel waarde > met uw waarden vervangt: 
+3. Plak de volgende code in *Send.py*en vervang de Event hubs \<naam ruimte >, \<eventhub >, \<accesskeynaam > en \<primaire sleutel waarde > met uw waarden: 
    
    ```python
    import sys
@@ -111,7 +111,7 @@ Gefeliciteerd! U hebt nu berichten verzonden naar een Event Hub.
 Een python-toepassing maken die gebeurtenissen ontvangt van een Event Hub:
 
 1. Maak een bestand met de naam *recv.py*in uw python-editor.
-2. Plak de volgende code in *recv.py*, waarbij u de Event hubs \<namespace >, \<eventhub >, \<AccessKeyName > en \<primary sleutel waarde > met uw waarden vervangt: 
+2. Plak de volgende code in *recv.py*en vervang de Event hubs \<naam ruimte >, \<eventhub >, \<accesskeynaam > en \<primaire sleutel waarde > met uw waarden: 
    
    ```python
    import os

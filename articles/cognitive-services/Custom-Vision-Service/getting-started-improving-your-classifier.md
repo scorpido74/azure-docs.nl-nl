@@ -1,7 +1,7 @@
 ---
 title: Uw Classifier-Custom Vision Service verbeteren
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over hoe u de kwaliteit van uw classificatie kunt verbeteren.
+description: In dit artikel leert u hoe het aantal, de kwaliteit en de verscheidenheid aan gegevens de kwaliteit van uw classificatie in de Custom Vision-service kunnen verbeteren.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: d71c750185589fd488df70b63fd48e9e674ee3dc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561051"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718543"
 ---
 # <a name="how-to-improve-your-classifier"></a>Uw classificatie verbeteren
 
@@ -53,11 +53,11 @@ Zorg ervoor dat u installatie kopieën gebruikt die representatief zijn voor wat
 
 U kunt dit probleem oplossen door diverse installatie kopieën te gebruiken om ervoor te zorgen dat uw classificatie goed kan worden gegeneraliseerd. Hieronder vindt u enkele manieren waarop u uw training kunt instellen:
 
-* __Achtergrondbitmap__ Geef afbeeldingen van uw object voor de verschillende achtergronden op. Foto's in natuurlijke contexten zijn beter dan Foto's voor neutrale achtergronden, aangezien ze meer informatie over de classificatie bieden.
+* __Achtergrond:__ Geef afbeeldingen van uw object voor de verschillende achtergronden op. Foto's in natuurlijke contexten zijn beter dan Foto's voor neutrale achtergronden, aangezien ze meer informatie over de classificatie bieden.
 
     ![Afbeelding van achtergrond voorbeelden](./media/getting-started-improving-your-classifier/background.png)
 
-* __Verlichting__ Bied installatie kopieën met een variabele verlichting (die wordt gemaakt met Flash, hoge bloot stelling enzovoort), met name als de installatie kopieën die worden gebruikt voor de voor spelling, een andere belichting hebben. Het is ook handig om installatie kopieën te gebruiken met een variërende intensiteit, kleur Toon en helderheid.
+* __Verlichting:__ Bied installatie kopieën met een variabele verlichting (die wordt gemaakt met Flash, hoge bloot stelling enzovoort), met name als de installatie kopieën die worden gebruikt voor de voor spelling, een andere belichting hebben. Het is ook handig om installatie kopieën te gebruiken met een variërende intensiteit, kleur Toon en helderheid.
 
     ![Afbeelding van belichtings voorbeelden](./media/getting-started-improving-your-classifier/lighting.png)
 
@@ -65,11 +65,11 @@ U kunt dit probleem oplossen door diverse installatie kopieën te gebruiken om e
 
     ![Afbeelding van grootte voorbeelden](./media/getting-started-improving-your-classifier/size.png)
 
-* __Camera hoek:__ Geef installatie kopieën op die zijn gemaakt met verschillende camera hoeken. Als al uw Foto's moeten worden genomen met vaste camera's (zoals surveillance camera's), moet u er ook voor zorgen dat u een ander label toewijst aan elk regel matig object, om te voor komen&mdash;dat niet-verwante objecten worden geïnterpreteerd (zoals lampposts). Als de sleutel functie.
+* __Camera hoek:__ Geef installatie kopieën op die zijn gemaakt met verschillende camera hoeken. Als al uw Foto's moeten worden uitgevoerd met vaste camera's (zoals surveillance camera's), moet u er ook voor zorgen dat u een ander label toewijst aan elk regel matig object, om te voor komen dat niet-gerelateerde objecten (zoals lampposts) worden geïnterpreteerd&mdash;interpreteert. sleutel functie.
 
     ![Afbeelding van hoek voorbeelden](./media/getting-started-improving-your-classifier/angle.png)
 
-* __Stijlen__ Geef afbeeldingen van verschillende stijlen van dezelfde klasse op (bijvoorbeeld verschillende variëteiten van hetzelfde fruit). Als u echter objecten van zeer verschillende stijlen hebt (zoals Mickey Mouse versus een Real-Life muis), raden we u aan ze als afzonderlijke klassen aan te duiden, zodat ze beter hun afzonderlijke functies vertegenwoordigen.
+* __Stijl:__ Geef afbeeldingen van verschillende stijlen van dezelfde klasse op (bijvoorbeeld verschillende variëteiten van hetzelfde fruit). Als u echter objecten van zeer verschillende stijlen hebt (zoals Mickey Mouse versus een Real-Life muis), raden we u aan ze als afzonderlijke klassen aan te duiden, zodat ze beter hun afzonderlijke functies vertegenwoordigen.
 
     ![Afbeelding van stijl voorbeelden](./media/getting-started-improving-your-classifier/style.png)
 
@@ -86,13 +86,13 @@ Op een bepaald moment in uw project moet u mogelijk negatieve voor _beelden_ toe
 
 Wanneer u de classificatie van de afbeelding gebruikt of test door installatie kopieën naar het Voorspellings eindpunt te verzenden, slaat de Custom Vision-service deze installatie kopieën op. U kunt ze vervolgens gebruiken om het model te verbeteren.
 
-1. Als u afbeeldingen wilt weer geven die zijn verzonden naar de classificatie, opent u de [webpagina Custom Vision](https://customvision.ai), gaat u naar  uw project en selecteert u het tabblad voor spellingen. In de standaard weergave worden afbeeldingen van de huidige herhaling weer gegeven. U kunt de vervolg keuzelijst __iteratie__ gebruiken om afbeeldingen weer te geven die zijn verzonden tijdens vorige iteraties.
+1. Als u afbeeldingen wilt weer geven die zijn verzonden naar de classificatie, opent u de [webpagina Custom Vision](https://customvision.ai), gaat u naar uw project en selecteert u het tabblad voor __spellingen__ . In de standaard weergave worden afbeeldingen van de huidige herhaling weer gegeven. U kunt de vervolg keuzelijst __iteratie__ gebruiken om afbeeldingen weer te geven die zijn verzonden tijdens vorige iteraties.
 
     ![scherm afbeelding van het tabblad voor spellingen met afbeeldingen in de weer gave](./media/getting-started-improving-your-classifier/predictions.png)
 
 2. Beweeg de muis aanwijzer over een afbeelding om de labels te zien die zijn voor speld door de classificatie. Afbeeldingen worden gesorteerd, zodat de meeste verbeteringen van de classificatie worden weer gegeven. Als u een andere sorteer methode wilt gebruiken, maakt u een selectie in het gedeelte __sorteren__ . 
 
-    Als u een afbeelding wilt toevoegen aan uw bestaande trainings gegevens, selecteert u de installatie kopie, stelt u de juiste code (s) in en klikt u op __opslaan en sluiten__. De afbeelding wordt verwijderd uit de  voor spellingen en toegevoegd aan de set trainings afbeeldingen. U kunt deze weer geven door het tabblad __trainings afbeeldingen__ te selecteren.
+    Als u een afbeelding wilt toevoegen aan uw bestaande trainings gegevens, selecteert u de installatie kopie, stelt u de juiste code (s) in en klikt u op __opslaan en sluiten__. De afbeelding wordt verwijderd uit de voor __spellingen__ en toegevoegd aan de set trainings afbeeldingen. U kunt deze weer geven door het tabblad __trainings afbeeldingen__ te selecteren.
 
     ![Afbeelding van de pagina labelen](./media/getting-started-improving-your-classifier/tag.png)
 

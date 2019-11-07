@@ -1,6 +1,6 @@
 ---
-title: Gebeurtenissen ontvangen met behulp van Apache Storm-Azure Event Hubs | Microsoft Docs
-description: In dit artikel vindt u informatie over het ontvangen van gebeurtenissen van Azure Event Hubs met behulp van Apache Storm.
+title: 'Quick Start: gebeurtenissen ontvangen met Apache Storm-Azure Event Hubs'
+description: 'Snelstartgids: in dit artikel vindt u informatie over het ontvangen van gebeurtenissen van Azure Event Hubs met behulp van Apache Storm.'
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,18 +11,18 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: java
 ms.devlang: multiple
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: eaa461dd0c4ef6bd9ed0ae4379a710ee100929d2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 90293da07d3a7ef1c32e5f82d35198d4ffa536b1
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800191"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717607"
 ---
-# <a name="receive-events-from-event-hubs-using-apache-storm"></a>Gebeurtenissen ontvangen van Event Hubs met behulp van Apache Storm
+# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Quick Start: gebeurtenissen ontvangen van Event Hubs met behulp van Apache Storm
 
 [Apache Storm](https://storm.incubator.apache.org) is een gedistribueerd real-time berekenings systeem dat betrouw bare verwerking van niet-gebonden gegevens stromen vereenvoudigt. In deze sectie wordt beschreven hoe u een Azure Event Hubs Storm Spout gebruikt voor het ontvangen van gebeurtenissen van Event Hubs. Met Apache Storm kunt u gebeurtenissen splitsen over meerdere processen die worden gehost in verschillende knoop punten. De Event Hubs-integratie met Storm vereenvoudigt het verbruik van gebeurtenissen door de voortgang van de Zookeeper-installatie van Storm te verbeteren, zodat u permanente controle punten en parallelle ontvangst van Event Hubs kunt beheren.
 

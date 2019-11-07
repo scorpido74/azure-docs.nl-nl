@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell-voorbeeld: een elastische pool bewaken en schalen in Azure SQL Database | Microsoft Docs'
+title: Power shell-voor beeld-monitor-Scale-elastische pool-Azure SQL Database
 description: Microsoft Azure PowerShell-voorbeeldscript voor het bewaken en schalen van een elastische pool in Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 4d096600e57d3ca94a7c32547bd546bfdbeb9487
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6ab361b67741f2b96f593d04dafbabe355fc9121
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569942"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691617"
 ---
 # <a name="use-powershell-to-monitor-and-scale-an-elastic-pool-in-azure-sql-database"></a>Gebruik PowerShell voor het bewaking en schalen van een elastische pool in Azure SQL Database
 
@@ -46,15 +46,15 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
- [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die één database of elastische pool host. |
+ [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die een individuele database of elastische pool host. |
 | [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Hiermee maakt u een elastische pool. |
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Maakt een individuele database of database in een elastische pool. |
 | [Get-AzMetric](/powershell/module/az.monitor/get-azmetric) | Toont de gebruikte grootte voor een database.|
 | [Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule) | Hiermee voegt u een waarschuwingsregel op basis van metrische gegevens in, of werkt u deze bij. |
 | [Set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool) | Hiermee werkt u eigenschappen van elastische pools bij |
 | [Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule) | Hiermee stelt u een waarschuwingsregel in om automatisch DTU's in de toekomst te bewaken. |
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen

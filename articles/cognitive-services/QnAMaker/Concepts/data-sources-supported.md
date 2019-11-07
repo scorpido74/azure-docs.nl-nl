@@ -1,7 +1,7 @@
 ---
 title: Ondersteunde gegevens bronnen-QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker worden automatisch de vraag antwoord paren geëxtraheerd uit semi-gestructureerde inhoud zoals Veelgestelde vragen, product handleidingen, richt lijnen, ondersteunings documenten en beleids regels die zijn opgeslagen als webpagina's, PDF-bestanden of MS Word-document bestanden. Inhoud kan ook worden toegevoegd aan de Knowledge Base vanuit gestructureerde QnA-inhouds bestanden.
+description: QnA Maker haalt automatisch de vraag antwoord paren op die zijn opgeslagen als webpagina's, PDF-bestanden of MS Word-document bestanden of gestructureerde QnA-inhouds bestanden.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 39746032fd012de8e0868c3bc7f810cd8e780b68
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: a1fcc1bec5db3ad64dc045cf5e1a449fce808132
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176374"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721219"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Gegevens bronnen voor QnA Maker inhoud
 

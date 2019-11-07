@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcc704e7027903a1ede14c787a64c35d6b5fd9c0
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1d8caafe312c123a9d572e9a5f4c5cf64a05f7ea
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373463"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721038"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Wachtwoord hash-synchronisatie implementeren met Azure AD Connect Sync
 In dit artikel vindt u informatie die u nodig hebt om uw gebruikers wachtwoorden te synchroniseren vanuit een on-premises Active Directory-exemplaar naar een op de cloud gebaseerde Azure Active Directory (Azure AD)-exemplaar.
@@ -32,7 +32,7 @@ Als u uw wacht woord wilt synchroniseren, haalt Azure AD Connect Sync uw wacht w
 
 De werkelijke gegevens stroom van het synchronisatie proces voor wachtwoord hash is vergelijkbaar met de synchronisatie van gebruikers gegevens. Wacht woorden worden echter vaker gesynchroniseerd dan het standaard venster voor adreslijst synchronisatie voor andere kenmerken. Het synchronisatie proces voor wacht woord-hash wordt elke twee minuten uitgevoerd. U kunt de frequentie van dit proces niet wijzigen. Wanneer u een wacht woord synchroniseert, wordt het bestaande Cloud wachtwoord overschreven.
 
-De eerste keer dat u de functie voor het synchroniseren van wacht woord-hashes inschakelt, voert het een initiële synchronisatie uit van de wacht woorden van alle gebruikers in het bereik. U kunt niet expliciet een subset van gebruikers wachtwoorden definiëren die u wilt synchroniseren.
+De eerste keer dat u de functie voor het synchroniseren van wacht woord-hashes inschakelt, voert het een initiële synchronisatie uit van de wacht woorden van alle gebruikers in het bereik. U kunt niet expliciet een subset van gebruikers wachtwoorden definiëren die u wilt synchroniseren. Als er echter meerdere connectors zijn, is het mogelijk om wachtwoord hash-synchronisatie uit te scha kelen voor sommige connectors, maar niet voor andere met de cmdlet [set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) .
 
 Wanneer u een on-premises wacht woord wijzigt, wordt het bijgewerkte wacht woord gesynchroniseerd, meestal binnen een paar minuten.
 Met de functie voor synchronisatie van wacht woord-hashes worden mislukte synchronisatie pogingen automatisch opnieuw geprobeerd. Als er een fout optreedt tijdens een poging om een wacht woord te synchroniseren, wordt er een fout geregistreerd in de logboeken.
@@ -102,15 +102,15 @@ Als u de functie EnforceCloudPasswordPolicyForPasswordSyncedUsers wilt inschakel
 
 `Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers  $true`
 
-Als deze functie is ingeschakeld, gaat Azure AD niet naar elke gesynchroniseerde gebruiker om de `DisablePasswordExpiration`-waarde uit het kenmerk PasswordPolicies te verwijderen. In plaats daarvan wordt de waarde ingesteld op `None` tijdens de volgende wachtwoord synchronisatie voor elke gebruiker wanneer ze hun wacht woord wijzigen in on-premises AD.  
+Als deze functie is ingeschakeld, gaat Azure AD niet naar elke gesynchroniseerde gebruiker om de `DisablePasswordExpiration` waarde uit het kenmerk PasswordPolicies te verwijderen. In plaats daarvan wordt de waarde ingesteld op `None` tijdens de volgende wachtwoord synchronisatie voor elke gebruiker wanneer ze hun wacht woord vervolgens wijzigen in on-premises AD.  
 
-Het is raadzaam om EnforceCloudPasswordPolicyForPasswordSyncedUsers in te scha kelen voordat u wachtwoord-hash-synchronisatie inschakelt, zodat de eerste synchronisatie van wacht woord-hashes de `DisablePasswordExpiration`-waarde niet toevoegt aan het kenmerk PasswordPolicies voor de gebruikers.
+Het is raadzaam om EnforceCloudPasswordPolicyForPasswordSyncedUsers in te scha kelen voordat u wachtwoord-hash-synchronisatie inschakelt, zodat de eerste synchronisatie van wacht woord-hashes de `DisablePasswordExpiration` waarde niet toevoegt aan het kenmerk PasswordPolicies voor de gebruikers.
 
 Het standaard wachtwoord beleid voor Azure AD vereist dat gebruikers elke 90 dagen hun wacht woord wijzigen. Als uw beleid in AD ook 90 dagen is, moeten de twee beleids regels overeenkomen. Als het AD-beleid echter niet 90 dagen is, kunt u het Azure AD-wachtwoord beleid bijwerken zodat dit overeenkomt met behulp van de set-MsolPasswordPolicy Power shell-opdracht.
 
 Azure AD biedt ondersteuning voor een afzonderlijk beleid voor wachtwoord verloop per geregistreerd domein.
 
-Voor behoud: als er gesynchroniseerde accounts zijn die niet-verlopende wacht woorden moeten hebben in azure AD, moet u de `DisablePasswordExpiration`-waarde expliciet toevoegen aan het kenmerk PasswordPolicies van het gebruikers object in azure AD.  U kunt dit doen door de volgende opdracht uit te voeren.
+Voor behoud: als er gesynchroniseerde accounts zijn die niet-verlopende wacht woorden moeten hebben in azure AD, moet u de `DisablePasswordExpiration` waarde expliciet toevoegen aan het kenmerk PasswordPolicies van het gebruikers object in azure AD.  U kunt dit doen door de volgende opdracht uit te voeren.
 
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 

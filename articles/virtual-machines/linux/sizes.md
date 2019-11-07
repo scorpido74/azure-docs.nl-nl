@@ -12,27 +12,27 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/08/2019
+ms.date: 11/06/2019
 ms.author: jonbeck
-ms.openlocfilehash: 034d322b31b2704e5f9351912f46c2b0ccb0e8b8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 468ae6f249f21f04681d56c660d03a8cd7806634
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100813"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719084"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Grootten voor virtuele Linux-machines in azure
 In dit artikel worden de beschik bare grootten en opties voor de virtuele machines van Azure beschreven die u kunt gebruiken om uw Linux-apps en-workloads uit te voeren. Het biedt ook overwegingen bij de implementatie om te weten wanneer u van plan bent deze resources te gebruiken. Dit artikel is ook beschikbaar voor [virtuele Windows-machines](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 
-| type                     | Grootten           |    Description       |
+| Type                     | Grootten           |    Beschrijving       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Algemeen doel](sizes-general.md)          | B, Dsv3, Dv3, Dasv3, Dav3, DSv2, dv2, Av2, DC  | Evenwichtige CPU-geheugenverhouding. Ideaal voor testen en ontwikkelen, kleine tot middelgrote databases en webservers met weinig of gemiddeld verkeer. |
 | [Geoptimaliseerde rekenkracht](sizes-compute.md)        | Fsv2           | Hoge CPU-geheugenverhouding. Goed voor webservers met gemiddeld verkeer, netwerkapparatuur, batchprocessen en toepassingsservers.        |
 | [Geoptimaliseerd geheugen](sizes-memory.md)         | Esv3, Ev3, Easv3, Eav3, Mv2, M, DSv2, dv2  | Hoge geheugen-naar-CPU-verhouding. Uiterst geschikt voor relationele-databaseservers, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
 | [Geoptimaliseerde opslag](sizes-storage.md)        | Lsv2                | Hoge schijf doorvoer en IO ideaal voor Big Data, SQL, NoSQL data bases, data warehousing en grote transactionele data bases.  |
 | [GPU](sizes-gpu.md)            | NC, NCv2, NCv3, ND, NDv2 (preview), NV, NVv3  | Gespecialiseerde virtuele machines gericht op zware grafische rendering en video bewerking, en model training en demijnen (ND) met diep gaande lessen. Beschikbaar met één of meerdere Gpu's.       |
-| [Krachtig rekenvermogen](sizes-hpc.md) | HB, HC,  H | Onze snelste en krachtigste CPU-virtuele machines met optionele netwerkinterfaces (RDMA) voor hoge doorvoer. |
+| [Krachtig rekenvermogen](sizes-hpc.md) | HB, HC, H | Onze snelste en krachtigste CPU-virtuele machines met optionele netwerkinterfaces (RDMA) voor hoge doorvoer. |
 
 <br>
 
@@ -42,7 +42,7 @@ In dit artikel worden de beschik bare grootten en opties voor de virtuele machin
 - Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
 
 
-## <a name="rest-api"></a>REST-API
+## <a name="rest-api"></a>REST API
 
 Zie het volgende voor informatie over het gebruik van de REST API om te zoeken naar VM-grootten:
 
@@ -56,7 +56,7 @@ Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij he
 
 ## <a name="benchmark-scores"></a>Benchmarkscores
 
-Meer informatie over reken prestaties voor Linux-Vm's met behulp van de coopmerking- [benchmark scores](compute-benchmark-scores.md).
+Meer informatie over reken prestaties voor Linux-Vm's met behulp van de [Coopmerking-benchmark scores](compute-benchmark-scores.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

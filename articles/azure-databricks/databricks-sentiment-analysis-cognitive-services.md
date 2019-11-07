@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 9070c19c668529fac5edea5b4d233361043de16d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 12e6d292779d497d907bb68eece3fc2338f072fd
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469541"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602068"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Zelfstudie: Sentimentanalyse voor streaming-gegevens met behulp van Azure Databricks
 
@@ -640,4 +640,5 @@ In deze zelfstudie hebt u geleerd hoe u Azure Databricks kunt gebruiken om gegev
 Ga verder met de volgende zelfstudie voor informatie over het uitvoeren van machine learning-taken met behulp van Azure Databricks.
 
 > [!div class="nextstepaction"]
->[Machine Learning met behulp van Azure Databricks](https://docs.azuredatabricks.net/applications/machine-learning/index.html)
+>[Machine Learning met behulp van Azure Databricks](/azure/databricks/applications/machine-learning/mllib/decision-trees)
+

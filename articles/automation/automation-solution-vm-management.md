@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: bobbytreed
 ms.author: robreed
-ms.date: 05/21/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 15036b33e637953de7dc12100468d3dd8570f775
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d7a43ee2ed8719df2c38d00c9a50811c6d5ea70d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376099"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718682"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>VM's buiten bedrijfsuren starten/stoppen oplossing in Azure Automation
 
@@ -35,7 +35,7 @@ De volgende beperkingen zijn van toepassing op de huidige oplossing:
 - Deze oplossing is beschikbaar in Azure en AzureGov voor elke regio die ondersteuning biedt voor een Log Analytics-werk ruimte, een Azure Automation-account en waarschuwingen. AzureGov-regio's bieden momenteel geen ondersteuning voor e-mail functionaliteit.
 
 > [!NOTE]
-> Als u de oplossing gebruikt voor klassieke Vm's, worden alle Vm's opeenvolgend per Cloud service verwerkt. Virtuele machines worden nog steeds parallel verwerkt in verschillende Cloud Services.
+> Als u de oplossing gebruikt voor klassieke Vm's, worden alle Vm's opeenvolgend per Cloud service verwerkt. Virtuele machines worden nog steeds parallel verwerkt in verschillende Cloud Services. Als u meer dan 20 Vm's per Cloud service hebt, raden we u aan meerdere planningen te maken met het bovenliggende runbook **ScheduledStartStop_Parent** en 20 vm's per schema op te geven. Geef in de schema-eigenschappen als een lijst met door komma's gescheiden waarden VM-namen op in de para meter **VMList** . Als de Automation-taak voor deze oplossing meer dan drie uur wordt uitgevoerd, wordt deze tijdelijk ongedaan gemaakt of gestopt volgens de limiet voor de [billijke share](automation-runbook-execution.md#fair-share) .
 >
 > Azure Cloud Solution Provider-abonnementen (Azure CSP) ondersteunen alleen het Azure Resource Manager model, niet-Azure Resource Manager services zijn niet beschikbaar in het programma. Wanneer de oplossing starten/stoppen wordt uitgevoerd, kunnen er fouten optreden omdat deze cmdlets bevat voor het beheren van klassieke resources. Zie [beschik bare Services in CSP-abonnementen](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)voor meer informatie over CSP. Als u een CSP-abonnement gebruikt, moet u de variabele [**External_EnableClassicVMs**](#variables) wijzigen in **False** na de implementatie.
 
@@ -45,17 +45,17 @@ De volgende beperkingen zijn van toepassing op de huidige oplossing:
 
 De runbooks voor deze oplossing werken met een [uitvoeren als-account van Azure](automation-create-runas-account.md). Het run as-account is de voorkeurs verificatie methode, omdat deze gebruikmaakt van certificaat verificatie in plaats van een wacht woord dat regel matig verloopt of kan worden gewijzigd.
 
-Het is raadzaam om een afzonderlijk Automation-account te gebruiken voor de oplossing VM starten/stoppen. Dit komt doordat de versies van Azure-modules regel matig worden bijgewerkt en de para meters ervan kunnen veranderen. De oplossing voor het starten/stoppen van de VM is niet bijgewerkt op dezelfde uitgebracht zodat deze mogelijk niet werkt met nieuwere versies van de cmdlets die worden gebruikt. Het is raadzaam module-updates in een test Automation-account te testen voordat u ze importeert in uw productie Automation-account.
+U wordt aangeraden een afzonderlijk Automation-account te gebruiken voor de oplossing VM starten/stoppen. Dit komt doordat de versies van Azure-modules regel matig worden bijgewerkt en de para meters ervan kunnen veranderen. De oplossing voor het starten/stoppen van de VM is niet bijgewerkt op dezelfde uitgebracht zodat deze mogelijk niet werkt met nieuwere versies van de cmdlets die worden gebruikt. U wordt ook aangeraden de module-updates in een test Automation-account te testen voordat u ze importeert in uw productie Automation-account (s).
 
 ### <a name="permissions-needed-to-deploy"></a>Machtigingen die nodig zijn om te implementeren
 
 Er zijn bepaalde machtigingen die een gebruiker nodig heeft om de Vm's voor het starten/stoppen van virtuele machines te implementeren. Deze machtigingen verschillen als u een vooraf gemaakt Automation-account en Log Analytics werk ruimte gebruikt of tijdens de implementatie nieuwe maakt. Als u een bijdrager aan het abonnement en een globale beheerder in uw Azure Active Directory-Tenant bent, hoeft u de volgende machtigingen niet te configureren. Als u deze rechten niet hebt of een aangepaste rol wilt configureren, raadpleegt u de onderstaande machtigingen.
 
-#### <a name="pre-existing-automation-account-and-log-analytics-account"></a>Al het Automation-account en het Log Analytics-account
+#### <a name="pre-existing-automation-account-and-log-analytics-workspace"></a>Bestaand Automation-account en Log Analytics werk ruimte
 
-Voor het implementeren van de oplossing voor het starten/stoppen van Vm's buiten kantoor uren naar een Automation-account en Log Analytics de gebruiker die de oplossing implementeert, de volgende machtigingen vereist voor de **resource groep**. Zie [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md)voor meer informatie over rollen.
+Voor het implementeren van de oplossing voor het starten/stoppen van Vm's buiten kantoor uren naar een bestaand Automation-account en Log Analytics werk ruimte, moeten de gebruiker die de oplossing implementeert de volgende machtigingen voor de **resource groep**hebben. Zie [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md)voor meer informatie over rollen.
 
-| Machtiging | Scope|
+| Machtiging | Bereik|
 | --- | --- |
 | Micro soft. Automation/automationAccounts/lezen | Resourcegroep |
 | Micro soft. Automation/automationAccounts/Varia bles/-schrijven | Resourcegroep |
@@ -78,13 +78,13 @@ Voor het implementeren van de oplossing voor het starten/stoppen van Vm's buiten
 
 #### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Nieuw Automation-account en een nieuwe Log Analytics-werk ruimte
 
-Voor het implementeren van de oplossing voor het starten/stoppen van Vm's buiten kantoor uren naar een nieuw Automation-account en Log Analytics werk ruimte de gebruiker die de oplossing implementeert, moet de in de voor gaande sectie gedefinieerde machtigingen en de volgende machtigingen hebben:
+Voor het implementeren van de oplossing voor het starten/stoppen van Vm's buiten kantoor uren naar een nieuw Automation-account en Log Analytics werk ruimte moet de gebruiker die de oplossing implementeert, de in de voor gaande sectie gedefinieerde machtigingen en de volgende machtigingen hebben:
 
-- Co-beheerder op abonnement: dit is alleen nodig voor het maken van het klassieke uitvoeren als-account als u klassieke Vm's wilt beheren. [Klassieke runas-accounts](automation-create-standalone-account.md#classic-run-as-accounts) worden niet meer standaard gemaakt.
-- Deel uitmaken van de ontwikkelaars functie van de [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) - **toepassing** . Zie [machtigingen voor het configureren van run as-accounts](manage-runas-account.md#permissions)voor meer informatie over het configureren van uitvoeren als-accounts.
+- Co-beheerder van het abonnement: het is alleen nodig om het klassieke uitvoeren als-account te maken als u klassieke Vm's wilt beheren. [Klassieke runas-accounts](automation-create-standalone-account.md#classic-run-as-accounts) worden niet meer standaard gemaakt.
+- Een lid van de rol ontwikkelaar van [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **toepassing** . Zie [machtigingen voor het configureren van run as-accounts](manage-runas-account.md#permissions)voor meer informatie over het configureren van uitvoeren als-accounts.
 - Inzender voor het abonnement of de volgende machtigingen.
 
-| Machtiging |Scope|
+| Machtiging |Bereik|
 | --- | --- |
 | Micro soft. Authorization/Operations/Read | Abonnement|
 | Micro soft. Authorization/permissions/Read |Abonnement|
@@ -120,7 +120,7 @@ Voer de volgende stappen uit om de VM's buiten bedrijfsuren starten/stoppen oplo
    - Selecteer een **abonnement** om te koppelen door te selecteren in de vervolg keuzelijst als de standaard instelling is geselecteerd.
    - Voor **resource groep**kunt u een nieuwe resource groep maken of een bestaande selecteren.
    - Selecteer een **locatie**. Momenteel zijn de enige beschik bare locaties **Australië-Zuidoost**, **Canada-centraal**, **Centraal-India**, VS- **Oost**, **Japan-Oost**, Zuidoost- **Azië**, **UK-Zuid**, **Europa-West**en **VS-West 2** .
-   - Selecteer een **prijscategorie**. Kies de optie **per GB (zelfstandig)** . Azure Monitor-logboeken heeft [prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) bijgewerkt en de laag per GB is de enige optie.
+   - Selecteer een **prijscategorie**. Kies de optie **per GB (zelfstandig)** . Azure Monitor-logboeken hebben bijgewerkte [prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) en de laag per GB is de enige optie.
 
    > [!NOTE]
    > Bij het inschakelen van oplossingen worden slechts bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werkruimte aan een Automation-Account.
@@ -281,7 +281,7 @@ De volgende tabel bevat de variabelen die zijn gemaakt in uw Automation-account.
 
 In alle scenario's zijn de **External_Start_ResourceGroupNames**-, **External_Stop_ResourceGroupNames**-en **External_ExcludeVMNames** -variabelen nodig voor het doel van vm's, met uitzonde ring van het leveren van een door komma's gescheiden lijst met virtuele machines voor de **AutoStop_CreateAlert_Parent**-, **SequencedStartStop_Parent**-en **ScheduledStartStop_Parent** -runbooks. Dat wil zeggen dat uw virtuele machines zich in doel resource groepen moeten bevinden om te starten en te stoppen. De logica werkt op vergelijk bare wijze als het Azure-beleid. in dat doel kunt u het abonnement of de resource groep richten en acties laten overnemen door nieuw gemaakte Vm's. Op deze manier wordt voor komen dat u een afzonderlijke planning moet onderhouden voor elke VM en het beheer begint en stopt op schaal.
 
-### <a name="schedules"></a>Schema's
+### <a name="schedules"></a>Planningen
 
 De volgende tabel bevat een overzicht van de standaard schema's die zijn gemaakt in uw Automation-account. U kunt ze wijzigen of uw eigen aangepaste schema's maken. Standaard zijn alle schema's uitgeschakeld, met uitzonde ring van **Scheduled_StartVM** en **Scheduled_StopVM**.
 
@@ -318,7 +318,7 @@ Met Automation worden twee typen records gemaakt in de werk ruimte Log Analytics
 |SourceSystem | Hiermee wordt het bronsysteem voor de verzonden gegevens opgegeven. Voor Automation is de waarde OpsManager|
 |StreamType | Hiermee wordt het type gebeurtenis opgegeven. Mogelijke waarden zijn:<br>- Uitgebreid<br>- Uitvoer<br>- Fout<br>- Waarschuwing|
 |SubscriptionId | Hiermee wordt de abonnements-id van de taak opgegeven.
-|Tijd | Datum en tijd van uitvoering van de runbooktaak.|
+|Time | Datum en tijd van uitvoering van de runbooktaak.|
 
 ### <a name="job-streams"></a>Taakstromen
 
@@ -337,7 +337,7 @@ Met Automation worden twee typen records gemaakt in de werk ruimte Log Analytics
 |RunbookName | De naam van het runbook.|
 |SourceSystem | Hiermee wordt het bronsysteem voor de verzonden gegevens opgegeven. Voor Automation is de waarde OpsManager.|
 |StreamType | Het type taakstroom. Mogelijke waarden zijn:<br>-Voortgang<br>- Uitvoer<br>- Waarschuwing<br>- Fout<br>- Foutopsporing<br>- Uitgebreid|
-|Tijd | Datum en tijd van uitvoering van de runbooktaak.|
+|Time | Datum en tijd van uitvoering van de runbooktaak.|
 
 Wanneer u een zoek opdracht in het logboek uitvoert waarmee categorie records van **JobLogs** of **JobStreams**worden geretourneerd, kunt u de weer gave **JobLogs** of **JobStreams** selecteren, waarin een reeks tegels wordt weer gegeven met een overzicht van de updates die worden geretourneerd door de zoek opdracht.
 
@@ -345,7 +345,7 @@ Wanneer u een zoek opdracht in het logboek uitvoert waarmee categorie records va
 
 De volgende tabel bevat voorbeeldzoekopdrachten in logboeken voor taakrecords die worden verzameld met deze oplossing.
 
-|Query | Beschrijving|
+|Query’s uitvoeren | Beschrijving|
 |----------|----------|
 |Taken zoeken voor runbook ScheduledStartStop_Parent die zijn voltooid | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |Taken zoeken voor runbook SequencedStartStop_Parent die zijn voltooid | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
@@ -422,7 +422,7 @@ Voer de volgende stappen uit om de oplossing te verwijderen:
 1. Selecteer in uw Automation-account, onder **gerelateerde resources**, de optie **gekoppelde werk ruimte**.
 1. Selecteer **Ga naar werk ruimte**.
 1. Onder **Algemeen**selecteert u **oplossingen**. 
-1. Selecteer op de pagina **oplossingen** de oplossing **Start-Stop-VM [werk ruimte]** . Selecteer op de pagina **VMManagementSolution [workspace]** in het menu **verwijderen**.<br><br> ![Delete VM-beheer oplossing @ no__t-1
+1. Selecteer op de pagina **oplossingen** de oplossing **Start-Stop-VM [werk ruimte]** . Selecteer op de pagina **VMManagementSolution [workspace]** in het menu **verwijderen**.<br><br> ![verwijderen van de oplossing voor VM-beheer](media/automation-solution-vm-management/vm-management-solution-delete.png)
 1. Bevestig in het venster **oplossing verwijderen** dat u de oplossing wilt verwijderen.
 1. Terwijl de informatie wordt gecontroleerd en de oplossing wordt verwijderd, kunt u de voortgang bijhouden onder **meldingen** in het menu. U keert terug naar de pagina **oplossingen** nadat het proces voor het verwijderen van de oplossing wordt gestart.
 

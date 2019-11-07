@@ -1,18 +1,18 @@
 ---
-title: 'Zelfstudie: Azure Analysis Services-beheerder en -gebruikersrollen configureren | Microsoft Docs'
-description: Informatie over het configureren van Azure Analysis Services-rollen.
+title: Zelf studie-Azure Analysis Services rollen configureren | Microsoft Docs
+description: Meer informatie over het configureren van Azure Analysis Services beheerders-en gebruikers rollen met behulp van de Azure Portal of SQL Server Management Studio.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: b70d1502985a1ffc0ebdf6fcb487cda3992d1c19
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3abcfe61f365c3c96dfb6b8eb2ca6cc9e5d3797e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294428"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572375"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Zelfstudie: Serverbeheerder- en gebruikersrollen configureren
 
@@ -52,7 +52,7 @@ Voor de resterende taken gebruikt u SSMS voor het maken van verbinding met en he
 
 1. Klik in SSMS > **Objectverkenner** op **Verbinding maken** > **Analysis Services**.
 
-    ![Connect](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
+    ![Verbinding maken](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
 2. In het dialoogvenster **Verbinden met server** plakt u in **Servernaam** de servernaam die u hebt gekopieerd uit de portal. In **Verificatie** kiest u **Active Directory Universal met ondersteuning voor MFA**, voert u uw gebruikersaccount en drukt vervolgens op **Verbinden**.
    

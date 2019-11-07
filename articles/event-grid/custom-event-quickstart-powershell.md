@@ -1,22 +1,22 @@
 ---
-title: Aangepaste gebeurtenissen verzenden naar het webeindpunt - Event Grid, PowerShell
-description: Gebruik Azure Event Grid en PowerShell om een aangepast onderwerp te publiceren en u op gebeurtenissen voor dat onderwerp te abonneren. De gebeurtenissen worden verwerkt door een web-app.
+title: 'Snelstartgids: aangepaste gebeurtenissen verzenden naar web endpoint-Event Grid, Power shell'
+description: 'Snelstartgids: gebruik Azure Event Grid en Power shell om een aangepast onderwerp te publiceren en u te abonneren op gebeurtenissen voor dat onderwerp. De gebeurtenissen worden verwerkt door een web-app.'
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 12/07/2018
+ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: fa703defdda17a69aec99d3fbe479e9867781d68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc92e0cf579bc008fdb09c9cbb576d8cac0191cb
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66155977"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721431"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>Snelstartgids: Aangepaste gebeurtenissen naar het webeindpunt routeren met behulp van PowerShell en Event Grid
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>Snelstartgids: aangepaste gebeurtenissen naar een webeindpunt door sturen met Power shell en Event Grid
 
 Azure Event Grid is een gebeurtenisservice voor de cloud. In dit artikel gebruikt u Azure PowerShell om een aangepast onderwerp te maken, u op het onderwerp te abonneren, en de gebeurtenis te activeren om het resultaat weer te geven. Normaal gesproken verzendt u gebeurtenissen naar een eindpunt dat de gebeurtenisgegevens verwerkt en vervolgens in actie komt. Ter vereenvoudiging van dit artikel stuurt u hier de gebeurtenissen echter naar een web-app die de berichten verzamelt en weergeeft.
 

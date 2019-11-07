@@ -1,5 +1,5 @@
 ---
-title: Uw eerste gegevensfactory bouwen (Azure Portal) | Microsoft Docs
+title: Uw eerste data factory bouwen (Azure Portal)
 description: In deze zelfstudie maakt u een Azure Data Factory-voorbeeldpijplijn met behulp van de Data Factory-editor in Azure Portal.
 services: data-factory
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: b60f6adf6c13bc86fb4c4604dda7d4b92963b7ca
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 012b13c440b8d0873e387c7d185803dc07852bf7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140577"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683023"
 ---
-# <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Zelfstudie: uw eerste data factory bouwen met behulp van de Azure-portal
+# <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Zelfstudie: uw eerste data factory bouwen met Azure Portal
 > [!div class="op_single_selector"]
 > * [Overzicht en vereisten](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
@@ -28,17 +28,17 @@ ms.locfileid: "70140577"
 
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Azure Data Factory, die algemeen beschikbaar is. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Quickstart: Een gegevensfactory maken met behulp van Data Factory](../quickstart-create-data-factory-dot-net.md).
+> Dit artikel is van toepassing op versie 1 van Azure Data Factory, die algemeen beschikbaar is. Als u de huidige versie van de Data Factory-service gebruikt,raadpleegt u [snelstart: een gegevensfactory maken met Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 > [!WARNING]
-> De JSON-editor in azure portal voor het ontwerpen & het implementeren van ADF v1-pijp lijnen wordt uitgeschakeld op 31 juli 2019. Na 31 juli 2019 kunt u de [Power shell](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)-cmdlets van ADF v1, [ADF v1 .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet), [ADF v1 rest api's](https://docs.microsoft.com/rest/api/datafactory/) gebruiken om te schrijven & uw ADF v1-pijp lijnen te maken.
+> De JSON-editor in azure portal voor het ontwerpen & het implementeren van ADF v1-pijp lijnen wordt uitgeschakeld op 31 juli 2019. Na 31 juli 2019 kunt u de [Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)van ADF v1, [ADF v1 .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet), [ADF v1 rest api's](https://docs.microsoft.com/rest/api/datafactory/) gebruiken om te schrijven & uw ADF v1-pijp lijnen te maken.
 
 In dit artikel leert u hoe u [Azure Portal](https://portal.azure.com/) gebruikt om uw eerste data factory te maken. Als u de zelfstudie wilt volgen met andere hulpprogramma's/SDK's, selecteert u een van de opties uit de vervolgkeuzelijst. 
 
 De pijplijn in deze zelfstudie heeft één activiteit, namelijk een Azure HDInsight Hive-activiteit. Deze activiteit voert een Hive-script uit op een HDInsight-cluster dat invoergegevens transformeert om uitvoergegevens te produceren. De pijplijn is gepland on één keer per maand tussen de opgegeven begin- en eindtijd te worden uitgevoerd. 
 
 > [!NOTE]
-> Met de gegevenspijplijn in deze zelfstudie worden invoergegevens getransformeerd in uitvoergegevens. Zie voor meer informatie over het kopiëren van gegevens met behulp van Data Factory [Zelfstudie: Gegevens kopiëren vanuit Azure Blob Storage naar Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Met de gegevenspijplijn in deze zelfstudie worden invoergegevens getransformeerd in uitvoergegevens. Zie [Tutorial: Copy data from Azure Blob storage to Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Zelfstudie: gegevens met Azure Data Factory kopiëren van Azure Blob Storage naar SQL Database) voor een zelfstudie over het kopiëren van gegevens met Data Factory.
 > 
 > Een pijplijn kan meer dan één activiteit hebben. Ook kunt u twee activiteiten koppelen (de ene activiteit na de andere laten uitvoeren) door de uitvoergegevensset van één activiteit in te stellen als invoergegevensset voor een andere activiteit. Zie [Planning en uitvoering in Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) voor meer informatie.
 
@@ -47,12 +47,12 @@ Lees het [Zelfstudieoverzicht](data-factory-build-your-first-pipeline.md) en vol
 
 Dit artikel biedt geen conceptueel overzicht van de Data Factory-service. Lees voor meer informatie over de service [Inleiding tot Azure Data Factory](data-factory-introduction.md).  
 
-## <a name="create-a-data-factory"></a>Data factory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 Een gegevensfactory kan één of meer pijplijnen hebben. Een pijplijn kan één of meer activiteiten bevatten. Een voorbeeld is een kopieeractiviteit die gegevens kopieert van een brongegevensarchief naar een doelgegevensarchief. Een ander voorbeeld is een HDInsight Hive-activiteit die een Hive-script uitvoert dat invoergegevens omzet om uitvoergegevens te produceren. 
 
 Volg deze stappen om een data factory te maken:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Selecteer **Nieuw** > **Gegevens en analyses** > **Data Factory**.
 
@@ -82,7 +82,7 @@ Volg deze stappen om een data factory te maken:
    > Als u Data Factory-exemplaren wilt maken, moet u lid zijn van de rol [Inzender Data Factory](../../role-based-access-control/built-in-roles.md#data-factory-contributor) op abonnements-/resourcegroepniveau.
    >
    >
-1. Op het dashboard ziet u de volgende tegel met de status: **Data factory implementeren**:    
+1. Op het dashboard ziet u de volgende tegel met de status: **Data Factory implementeren**:    
 
    ![Status Data factory implementeren](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
 
@@ -125,7 +125,7 @@ In deze stap koppelt u een on-demand HDInsight-cluster aan uw gegevensfactory. H
 
 1. Selecteer in de Data Factory Editor **Meer** > **Opnieuw berekenen** > **On-demand HDInsight-cluster**.
 
-    ![Opnieuw berekenen](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
+    ![Nieuwe berekening](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
 
 1. Kopieer het onderstaande codefragment en plak het in het venster Draft-1. Het JSON-codefragment bevat de eigenschappen die worden gebruikt om het on-demand HDInsight-cluster te maken.
 
@@ -147,7 +147,7 @@ In deze stap koppelt u een on-demand HDInsight-cluster aan uw gegevensfactory. H
 
     De volgende tabel bevat beschrijvingen van de JSON-eigenschappen die in het codefragment worden gebruikt.
 
-   | Eigenschap | Description |
+   | Eigenschap | Beschrijving |
    |:--- |:--- |
    | clusterSize |Geeft de grootte van het HDInsight-cluster aan. |
    | timeToLive | Geeft aan hoelang het HDInsight-cluster inactief moet zijn voordat het wordt verwijderd. |
@@ -208,16 +208,16 @@ In deze stap maakt u gegevenssets die de invoer- en uitvoergegevens voor Hive-ve
     ```
     De volgende tabel bevat beschrijvingen van de JSON-eigenschappen die in het codefragment worden gebruikt.
 
-   | Eigenschap | Genest onder | Description |
+   | Eigenschap | Genest onder | Beschrijving |
    |:--- |:--- |:--- |
-   | Type | properties |De eigenschap type wordt ingesteld op **AzureBlob**, omdat de gegevens zich in de blobopslag bevinden. |
-   | linkedServiceName | format |Deze eigenschap verwijst naar AzureStorageLinkedService, die u eerder hebt gemaakt. |
+   | type | properties |De eigenschap type wordt ingesteld op **AzureBlob**, omdat de gegevens zich in de blobopslag bevinden. |
+   | linkedServiceName | Formatteer |Deze eigenschap verwijst naar AzureStorageLinkedService, die u eerder hebt gemaakt. |
    | folderPath | typeProperties | Deze eigenschap verwijst naar de blobcontainer en de map die de blobs voor invoer bevat. | 
    | fileName | typeProperties |Deze eigenschap is optioneel. Als u deze eigenschap niet opgeeft, worden alle bestanden uit folderPath gekozen. In deze zelfstudie wordt alleen het input.log-bestand verwerkt. |
-   | Type | format |Omdat de logboekbestanden tekstbestanden zijn, gebruikt u **TextFormat**. |
-   | columnDelimiter | format |De kolommen in de logboekbestanden worden gescheiden door een komma (`,`). |
+   | type | Formatteer |Omdat de logboekbestanden tekstbestanden zijn, gebruikt u **TextFormat**. |
+   | columnDelimiter | Formatteer |De kolommen in de logboekbestanden worden gescheiden door een komma (`,`). |
    | frequency/interval | availability |Als frequency wordt ingesteld op **Month** en de interval **1** is, betekent dit dat de invoersegmenten één keer per maand beschikbaar worden gemaakt. |
-   | extern | properties | Deze eigenschap wordt ingesteld op **true** als de invoergegevens niet worden gegenereerd door deze pijplijn. In deze zelfstudie wordt het bestand input.log niet gegenereerd door deze pijplijn. Daarom is de eigenschap ingesteld op **true**. |
+   | external | properties | Deze eigenschap wordt ingesteld op **true** als de invoergegevens niet worden gegenereerd door deze pijplijn. In deze zelfstudie wordt het bestand input.log niet gegenereerd door deze pijplijn. Daarom is de eigenschap ingesteld op **true**. |
 
     Zie [Azure Blob-connectoren](data-factory-azure-blob-connector.md#dataset-properties) voor meer informatie over deze JSON-eigenschappen.
 
@@ -394,7 +394,7 @@ In deze stap maakt u uw eerste pijplijn met een HDInsight Hive-activiteit. Het i
 
     ![Informatie van het gegevenssegment](./media/data-factory-build-your-first-pipeline-using-editor/data-slice-details.png)
 
-1. Selecteer een uitvoering in de lijst **Uitvoeringen van activiteit** om er meer informatie over te bekijken. (In dit scenario is het een Hive-activiteit.) De informatie wordt weergegeven op de blade **Details uitvoering van activiteit**.   
+1. Selecteer een uitvoering in de lijst **Uitvoeringen van activiteit** om er meer informatie over te bekijken. (In dit scenario is het een Hive-activiteit.) De informatie wordt weer gegeven op de Blade **Details uitvoering van activiteit** .   
 
     ![Venster Details uitvoering van activiteit](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-blade.png)    
 
@@ -424,7 +424,7 @@ U kunt de app Bewaking en beheer ook gebruiken om uw pijplijnen te bewaken. Voor
 ## <a name="summary"></a>Samenvatting
 In deze zelfstudie hebt u een data factory gemaakt voor het verwerken van gegevens. Dit hebt u gedaan door een Hive-script uit te voeren op een HDInsight Hadoop-cluster. U hebt de Data Factory Editor in Azure Portal gebruikt om het volgende te doen:  
 
-* Een data factory maken.
+* Maak een gegevensfactory.
 * Twee gekoppelde services maken:
    * Een gekoppelde Storage-service om te koppelen aan de blobopslag die de invoer-/uitvoerbestanden van de data factory bevat.
    * Een gekoppelde on-demand HDInsight-service om te koppelen aan een on-demand HDInsight Hadoop-cluster van de data factory. Data Factory maakt op tijd een HDInsight Hadoop-cluster om invoergegevens te verwerken en uitvoergegevens te produceren.
@@ -432,10 +432,10 @@ In deze zelfstudie hebt u een data factory gemaakt voor het verwerken van gegeve
 * Een pijplijn maken met een HDInsight Hive-activiteit.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u een pijplijn gemaakt met een transformatieactiviteit (HDInsight-activiteit) waarvoor een Hive-script wordt uitgevoerd op een on-demand HDInsight-cluster. Voor informatie over hoe u een kopieeractiviteit gebruikt om gegevens vanuit blobopslag naar een SQL-datebase te kopiëren, raadpleegt u [Tutorial: Copy data from Blob storage to SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Zelfstudie: gegevens kopiëren vanuit blobopslag naar SQL Database).
+In dit artikel hebt u een pijplijn gemaakt met een transformatieactiviteit (HDInsight-activiteit) waarvoor een Hive-script wordt uitgevoerd op een on-demand HDInsight-cluster. Voor informatie over hoe u een kopieeractiviteit gebruikt om gegevens vanuit blobopslag naar een SQL datebase te kopiëren, raadpleegt u [Tutorial: Copy data from Blob storage to SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Zelfstudie: gegevens kopiëren vanuit blobopslag naar een SQL Database).
 
 ## <a name="see-also"></a>Zie ook
-| Onderwerp | Description |
+| Onderwerp | Beschrijving |
 |:--- |:--- |
 | [Pijplijnen](data-factory-create-pipelines.md) |Met behulp van dit artikel krijgt u inzicht in de pijplijnen en activiteiten in Data Factory en in de wijze waarop u deze kunt gebruiken om end-to-end gegevensgestuurde werkstromen te maken voor uw scenario of bedrijf. |
 | [Gegevenssets](data-factory-create-datasets.md) |Op basis van dit artikel krijgt u inzicht in de gegevenssets in Data Factory. |

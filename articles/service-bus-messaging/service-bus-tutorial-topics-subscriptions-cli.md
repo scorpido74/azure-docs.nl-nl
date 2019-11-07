@@ -1,24 +1,24 @@
 ---
-title: 'Zelfstudie: Het voorraadassortiment van een detailhandelsbedrijf bijwerken via het publiceren van/abonneren op kanalen en via onderwerpfilters met Azure CLI | Microsoft Docs'
-description: In deze zelfstudie leert u hoe u berichten naar een onderwerp en abonnement kunt versturen en ervan kunt ontvangen, en hoe u filterregels kunt gebruiken en toevoegen met behulp van Azure CLI.
+title: 'Zelf studie: Retail voorraad assortiment bijwerken met behulp van de kanalen voor publiceren/abonneren en de onderwerps filters met Azure CLI'
+description: 'Zelf studie: in deze zelf studie leert u hoe u berichten kunt verzenden en ontvangen van een onderwerp en een abonnement en hoe u filter regels kunt toevoegen en gebruiken met behulp van Azure CLI'
 services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.author: spelluru
-ms.date: 09/22/2018
+ms.date: 11/05/2019
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: e55c8c6a579489c8ed5a13ccb93f0e72c286ab13
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0bd0d8eb8abe6f320f73e35b1e3b08e1d8dc1de3
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991945"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718925"
 ---
-# <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Zelfstudie: voorraad bijwerken met behulp van CLI en onderwerpen/abonnementen
+# <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Zelfstudie: Voorraad bijwerken met behulp van CLI en onderwerpen/abonnementen
 
-Microsoft Azure Service Bus is een multitenant-cloudberichtenservice waarmee u gegevens kunt versturen tussen toepassingen en services. Met asynchrone bewerkingen krijgt u flexibele Brokered Messaging, samen met gestructureerde FIFO-messaging (first in, first out) en mogelijkheden voor publiceren/abonneren. In deze zelfstudie leert u hoe u onderwerpen en abonnementen van Service Bus-onderwerpen kunt gebruiken in een scenario met detailhandelvoorraad, waarbij gebruik wordt gemaakt van Azure CLI en Java om kanalen te publiceren/abonneren.
+Microsoft Azure Service Bus is een multitenant-cloudberichtenservice waarmee u gegevens kunt versturen tussen toepassingen en services. Asynchrone bewerkingen bieden flexibele, Brokered Messaging, samen met gestructureerde FIFO-berichtenuitwisseling (first in, first out) en mogelijkheden voor publiceren/abonneren. In deze zelfstudie leert u hoe u onderwerpen en abonnementen van Service Bus-onderwerpen kunt gebruiken in een scenario met detailhandelvoorraad, waarbij gebruik wordt gemaakt van Azure CLI en Java om kanalen te publiceren/abonneren.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -39,7 +39,7 @@ Als u nog geen abonnement op Azure hebt, kunt u een [gratis account][] maken voo
 Als u een Service Bus-app wilt ontwikkelen met behulp van Java, moet het volgende zijn geïnstalleerd:
 
 - [Java Development Kit](https://aka.ms/azure-jdks), de nieuwste versie.
-- [Azure-CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI](https://docs.microsoft.com/cli/azure)
 - [Apache Maven](https://maven.apache.org), versie 3.0 of hoger.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -122,11 +122,11 @@ connectionString=$(az servicebus namespace authorization-rule keys list \
    --query primaryConnectionString --output tsv)
 ```
 
-Wanneer de laatste opdracht is uitgevoerd, kopieert en plakt u de verbindingstekenreeks en de naam van de wachtrij die u hebt geselecteerd naar een tijdelijke locatie, zoals Kladblok. U hebt deze nodig in de volgende stap.
+Wanneer de laatste opdracht is uitgevoerd, kopieert en plakt u de verbindingstekenreeks en de naam van de wachtrij die u hebt geselecteerd naar een tijdelijke locatie, zoals Kladblok. U hebt deze gegevens nodig in de volgende stap.
 
 ## <a name="create-filter-rules-on-subscriptions"></a>Filterregels voor abonnementen maken
 
-Nadat de naamruimte en onderwerp/abonnementen zijn ingericht en u over de benodigde referenties beschikt, bent u klaar om filterregels voor de abonnementen te maken, en kunt u vervolgens berichten verzenden en ontvangen. U kunt de code in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) controleren.
+Nadat de naamruimte en onderwerp/abonnementen zijn ingericht en u over de benodigde referenties beschikt, bent u klaar om filterregels voor de abonnementen te maken, en kunt u vervolgens berichten verzenden en ontvangen. U kunt de code controleren in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
 
 ## <a name="send-and-receive-messages"></a>Berichten verzenden en ontvangen
 
@@ -326,7 +326,7 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 ```
 
 > [!NOTE]
-> U kunt Service Bus-resources beheren [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). De Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtentiteiten op een eenvoudige manier te beheren. Het hulpprogramma biedt geavanceerde functies zoals import/export-functionaliteit of de mogelijkheid om te testen, onderwerp, wachtrijen, abonnementen, relayservices, notification hubs en gebeurtenissen hubs. 
+> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -335,7 +335,7 @@ In deze zelfstudie hebt u resources ingericht met behulp van Azure CLI en vervol
 > [!div class="checklist"]
 > * Een Service Bus-onderwerp en een of meer abonnementen voor dat onderwerp maken met Azure Portal
 > * Onderwerpfilters toevoegen met .NET-code
-> * Twee berichten met verschillende inhoud maken
+> * Twee berichten met verschillende inhoud maken.
 > * De berichten verzenden en controleren of ze zijn ontvangen in de verwachte abonnementen
 > * Berichten ontvangen van de abonnementen
 

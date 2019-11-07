@@ -1,5 +1,5 @@
 ---
-title: Uw eerste gegevensfactory bouwen (Resource Manager-sjabloon) | Microsoft Docs
+title: Uw eerste data factory bouwen (Resource Manager-sjabloon)
 description: In deze zelfstudie maakt u een Azure Data Factory-voorbeeldpijplijn op basis van een Azure Resource Manager-sjabloon.
 services: data-factory
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: c4ff0f28f4f0058d388e3b2f9c753737fb6ee0d4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bc433fbd6117a6aded28e19d2f8b48d594ff5ad6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140505"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683040"
 ---
-# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Zelfstudie: Uw eerste Azure-data factory maken met behulp van een Azure Resource Manager-sjabloon
+# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Zelfstudie: bouw uw eerste Azure-gegevensfactory op basis van een Azure Resource Manager-sjabloon
 > [!div class="op_single_selector"]
 > * [Overzicht en vereisten](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
@@ -28,16 +28,16 @@ ms.locfileid: "70140505"
 > 
  
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Quickstart: een gegevensfactory maken met Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [snelstart: een gegevensfactory maken met Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 In dit artikel gebruikt u een Azure Resource Manager-sjabloon om uw eerste Azure-gegevensfactory te maken. Als u de zelfstudie wilt volgen met andere hulpprogramma's/SDK's, selecteert u een van de opties uit de vervolgkeuzelijst.
 
-De pijplijn in deze zelfstudie heeft één activiteit: **HDInsight Hive-activiteit**. Deze activiteit voert een Hive-script uit op een Azure HDInsight-cluster dat invoergegevens transformeert om uitvoergegevens te produceren. De pijplijn is gepland on één keer per maand tussen de opgegeven begin- en eindtijd te worden uitgevoerd. 
+De pijplijn in deze zelfstudie heeft één activiteit: **HDInsight-componentactiviteit**. Deze activiteit voert een Hive-script uit op een Azure HDInsight-cluster dat invoergegevens transformeert om uitvoergegevens te produceren. De pijplijn is gepland on één keer per maand tussen de opgegeven begin- en eindtijd te worden uitgevoerd. 
 
 > [!NOTE]
-> Met de gegevenspijplijn in deze zelfstudie worden invoergegevens getransformeerd in uitvoergegevens. Meer informatie over het kopiëren van gegevens met behulp van Azure Data Factory vindt u in [Tutorial: Copy data from Blob storage to SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Zelfstudie: gegevens kopiëren vanuit blobopslag naar SQL Database).
+> Met de gegevenspijplijn in deze zelfstudie worden invoergegevens getransformeerd in uitvoergegevens. Zie [Zelfstudie: gegevens kopiëren van Blob Storage naar SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor informatie over het kopiëren van gegevens met Azure Data Factory.
 > 
-> De pijplijn in deze zelfstudie heeft maar één activiteit van het type: HDInsightHive. Een pijplijn kan meer dan één activiteit hebben. Ook kunt u twee activiteiten koppelen (de ene activiteit na de andere laten uitvoeren) door de uitvoergegevensset van één activiteit in te stellen als invoergegevensset voor een andere activiteit. Zie [Planning en uitvoering in Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) voor meer informatie. 
+> De pijplijn in deze zelfstudie heeft maar één activiteit van het type: HDInsight-componentactiviteit. Een pijplijn kan meer dan één activiteit hebben. Ook kunt u twee activiteiten koppelen (de ene activiteit na de andere laten uitvoeren) door de uitvoergegevensset van één activiteit in te stellen als invoergegevensset voor een andere activiteit. Zie [Planning en uitvoering in Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) voor meer informatie. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -49,7 +49,7 @@ De pijplijn in deze zelfstudie heeft één activiteit: **HDInsight Hive-activite
 
 ## <a name="in-this-tutorial"></a>In deze zelfstudie
 
-| Entiteit | Description |
+| Entiteit | Beschrijving |
 | --- | --- |
 | Een gekoppelde Azure Storage-service |Koppelt uw Azure Storage-account aan de gegevensfactory. Het Azure Storage-account bevat de in- en uitvoergegevens van de pijplijn in dit voorbeeld. |
 | Een gekoppelde HDInsight-service op aanvraag |Koppelt een HDInsight-cluster op aanvraag aan de gegevensfactory. Het cluster wordt automatisch voor u gemaakt om gegevens te verwerken en wordt verwijderd nadat de verwerking is voltooid. |
@@ -261,7 +261,7 @@ Maak een JSON-bestand met de naam **ADFTutorialARM.json** in de map **C:\ADFGetS
 ```
 
 > [!NOTE]
-> Een ander voorbeeld van een Resource Manager-sjabloon voor het maken van een Azure-gegevensfactory vindt u in [Zelfstudie: Met behulp van een Azure Resource Manager-sjabloon een pijplijn maken met een kopieerbewerking](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md).  
+> In [Tutorial: Create a pipeline with Copy Activity using an Azure Resource Manager template](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md) (Zelfstudie: met behulp van een Azure Resource Manager-sjabloon een pijplijn maken met een kopieerbewerking) vindt u een ander voorbeeld van een Resource Manager-sjabloon voor het maken van een Azure-gegevensfactory.  
 > 
 > 
 
@@ -615,11 +615,11 @@ Hier volgt een Resource Manager-voorbeeldsjabloon voor het op de achtergrond mak
     ]
 }
 ```
-Met deze sjabloon maakt u een data factory met de naam GatewayUsingArmDF, met een gateway met de naam: GatewayUsingARM. 
+Met deze sjabloon maakt u een gegevensfactory met de naam GatewayUsingArmDF, met een gateway met de naam GatewayUsingARM. 
 
 ## <a name="see-also"></a>Zie ook
 
-| Onderwerp | Description |
+| Onderwerp | Beschrijving |
 |:--- |:--- |
 | [Pijplijnen](data-factory-create-pipelines.md) |Met behulp van dit artikel krijgt u inzicht in de pijplijnen en activiteiten in Azure Data Factory en in de wijze waarop u deze kunt gebruiken om end-to-end gegevensgestuurde werkstromen te maken voor uw scenario of bedrijf. |
 | [Gegevenssets](data-factory-create-datasets.md) |Op basis van dit artikel krijgt u inzicht in de gegevenssets in Azure Data Factory. |

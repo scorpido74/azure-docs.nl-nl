@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: 9462d9c807f8300d65e8e5a3e997ebc858342a97
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 3bccae7c0e45f21609a5a67d20811240648570d4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514479"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719141"
 ---
 VM-grootten voor algemeen gebruik bieden evenwichtige verhouding tussen CPU en geheugen. Ideaal voor testen en ontwikkelen, kleine tot middelgrote databases en webservers met weinig of gemiddeld verkeer. Dit artikel bevat informatie over het aantal Vcpu's, gegevens schijven en Nic's en de opslag doorvoer voor grootten in deze groepering.
 
@@ -29,7 +29,7 @@ VM-grootten voor algemeen gebruik bieden evenwichtige verhouding tussen CPU en g
 
   Voor beelden van use-cases van de D-serie zijn zakelijke toepassingen, relationele data bases, caching in het geheugen en analyse.
 
-- De da-serie en de Dasv3-serie zijn nieuwe grootten die gebruikmaken van de 2.35 GHz EPYC<sup>TM</sup> 7452V-processor van AMD in een configuratie met meerdere threads met maxi maal 256 GB L3-cache van 8 GB aan de L3-cache tot elke 8 kernen die de klant opties verhogen voor het uitvoeren van hun algemene werk belastingen voor het doel. De da-serie en de Dasv3-serie hebben dezelfde geheugen-en schijf configuraties als de D & Dsv3-serie.
+- De Dav4-serie en de Dasv4-serie zijn nieuwe grootten die gebruikmaken van de 2.35 GHz EPYC<sup>TM</sup> 7452-processor van AMD in een configuratie met meerdere threads met maxi maal 256 GB L3-cache van 8 GB aan de L3-cache tot elke 8 kernen die de klant opties verhogen voor het uitvoeren van hun algemene werk belastingen voor het doel. De Dav4-serie en de Dasv4-serie hebben dezelfde geheugen-en schijf configuraties als de D & Dsv3-serie.
   
 ## <a name="b-series"></a>B-serie
 
@@ -42,7 +42,7 @@ De beproefde virtuele machines uit de B-serie zijn ideaal voor werk belastingen 
 Voor beelden van use cases zijn: ontwikkelings-en test servers, webservers met weinig verkeer, kleine data bases, micro Services, servers voor het controleren van concepten, build-servers.
 
 
-| Grootte             | vCPU  | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Basis CPU-prestaties van VM | Maximale CPU-prestaties van VM | Eerste tegoeden | Tegoeden per uur | Maximum aantal gestorte tegoeden | Maximaal aantal gegevensschijven | Max. door Voer in cache en tijdelijke opslag: IOPS/MBps | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximale aantal NIC's |          
+| Grootte             | vCPU  | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Basis CPU-prestaties van VM | Maximale CPU-prestaties van VM | Eerste tegoeden | Tegoeden per uur | Maximum aantal gestorte tegoeden | Max. aantal gegevensschijven | Max. door Voer in cache en tijdelijke opslag: IOPS/MBps | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Max. aantal NIC's |          
 |---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
 | Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | 5%                   | 100%                   | 30                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
 | Standard_B1s  | 1           | 1              | 4                          | 10%                   | 100%                   | 30                   | 6                  | 144            | 2                        | 400/10                                  | 320/10                                  | 2  |
@@ -65,10 +65,10 @@ Premium Storage: ondersteund
 
 Premium Storage caching: ondersteund
 
-Dsv3-serie grootten worden uitgevoerd op Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met Intel Turbo Boost Technology 2,0 en Premium Storage gebruiken. De grootten van de Dsv3-serie bieden een combinatie van vCPU, geheugen en tijdelijke opslag voor de meeste productiewerkbelastingen.
+Dsv3-serie grootten worden uitgevoerd op Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met Intel Turbo Boost Technology 2,0 en Premium Storage gebruiken. De Dsv3-serie biedt een combinatie van vCPU, geheugen en tijdelijke opslag voor de meeste productieworkloads.
 
 
-| Grootte             | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximaal aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+| Grootte             | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
 | Standard_D2s_v3  | 2      | 8           | 16             | 4              | 4000/32 (50)                                                       | 3200/48                                | 2 / 1000                                   |
 | Standard_D4s_v3  | 4      | 16          | 32             | 8              | 8000/64 (100)                                                      | 6400/96                                | 2 / 2000                                   |
@@ -80,25 +80,28 @@ Dsv3-serie grootten worden uitgevoerd op Intel® Xeon® 8171M 2.1 GHz (Skylake),
 
 <sup>1</sup> Dsv3-serie VM-functie Intel® Hyper-Threading-technologie
 
-## <a name="dasv3-series-preview"></a>Dasv3-serie (preview-versie)
+## <a name="dasv4-series"></a>Dasv4-serie
+
+ACU: 230-260
 
 Premium Storage: ondersteund
 
 Premium Storage caching: ondersteund
 
-Groottes van de Dasv3-serie zijn gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een gestimuleerde Fmax van 3.35 GHz kan bereiken en Premium-opslag gebruiken. De grootte van de Dasv3-serie biedt een combi natie van vCPU, geheugen en tijdelijke opslag voor de meeste productiewerk belastingen.
+De grootte van de Dasv4-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een hogere maximum frequentie van 3.35 GHz kan bereiken en Premium SSD kan gebruiken. De grootte van de Dasv4-serie biedt een combi natie van vCPU, geheugen en tijdelijke opslag voor de meeste productiewerk belastingen.
 
-[Klik hier om u aan te melden voor de preview-versie](http://aka.ms/azureamdpreview).
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (MBps) |
+|-----|-----|-----|-----|-----|-----|-----|-----|
+| Standard_D2as_v4|2|8|16|4|4000/32 (50)|3200/48|2 / 1000 |
+| Standard_D4as_v4|4|16|32|8|8000/64 (100)|6400/96|2 / 2000 |
+| Standard_D8as_v4|8|32|64|16|16000/128 (200)|12800/192|4 / 4000 |
+| Standard_D16as_v4|16|64|128|32|32000/255 (400)|25600/384|8 / 8000 |
+| Standard_D32as_v4|32|128|256|32|64000/510 (800)|51200/768|8 / 16000 |
+| Standard_D48as_v4 <sup>**</sup>|48|192|384|32| | | 
+| Standard_D64as_v4 <sup>**</sup>|64|256|512|32| | | 
+| Standard_D96as_v4 <sup>**</sup>|96|384|768|32| | | 
 
-| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB |
-|---|---|---|---|
-| Standard_D2as_v3  | 2  | 8   | 16  |
-| Standard_D4as_v3  | 4  | 16  | 32  |
-| Standard_D8as_v3  | 8  | 32  | 64  |
-| Standard_D16as_v3 | 16 | 64  | 128 |
-| Standard_D32as_v3 | 32 | 128 | 256 |
-| Standard_D48as_v3 | 48 | 192 | 384 |
-| Standard_D64as_v3 | 64 | 256 | 512 |
+<sup>**</sup> Deze grootten zijn beschikbaar als preview-versie.  Als u geïnteresseerd bent in het proberen van deze grotere grootten, meldt u zich aan bij [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
 
 ## <a name="dv3-series-sup1sup"></a>Dv3-serie <sup>1</sup>
 
@@ -113,7 +116,7 @@ Dv3-serie grootten worden uitgevoerd op Intel® Xeon® 8171M 2.1 GHz (Skylake), 
 Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium Storage-schijven wilt gebruiken, gebruik dan de Dsv3-grootten. De prijs- en factureringsmeters voor de Dsv3-grootten zijn gelijk aan die van de Dv3-serie. 
 
 
-| Grootte            | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximaal aantal gegevensschijven | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Max. aantal NIC's/netwerkbandbreedte |
+| Grootte            | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Max. aantal NIC's/netwerkbandbreedte |
 |-----------------|-----------|-------------|----------------|----------------|----------------------------------------------------------|------------------------------|
 | Standard_D2_v3  | 2         | 8           | 50             | 4              | 3000/46/23                                               | 2 / 1000                    |
 | Standard_D4_v3  | 4         | 16          | 100            | 8              | 6000/93/46                                               | 2 / 2000                    |
@@ -125,25 +128,28 @@ Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als
 
 <sup>1</sup> Dv3-serie VM-functie Intel® Hyper-Threading-technologie
 
-## <a name="dav3-series-preview"></a>Dav3-serie (preview-versie)
+## <a name="dav4-series"></a>Dav4-serie
+
+ACU: 230-260
 
 Premium Storage: niet ondersteund
 
 Premium Storage caching: niet ondersteund
 
-De grootte van de Dav3-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een gestimuleerde Fmax van 3.35 GHz kan bereiken. De grootte van de Dav3-serie biedt een combi natie van vCPU, geheugen en tijdelijke opslag voor de meeste productiewerk belastingen. Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium Storage-schijven wilt gebruiken, gebruikt u de Dasv3-grootten. De prijs-en facturerings meters voor Dasv3-grootten zijn gelijk aan die van de Dav3-serie.
+De grootte van de Dav4-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een maximale maximum frequentie van 3.35 GHz kan bereiken. De grootte van de Dav4-serie biedt een combi natie van vCPU, geheugen en tijdelijke opslag voor de meeste productiewerk belastingen. Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium SSD wilt gebruiken, gebruikt u de Dasv4-grootten. De prijs-en facturerings meters voor Dasv4-grootten zijn gelijk aan die van de Dav4-serie.
 
-[Klik hier om u aan te melden voor de preview-versie](http://aka.ms/azureamdpreview).
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Maximum aantal Nic's/verwachte netwerk bandbreedte (MBps) |
+|-----|-----|-----|-----|-----|-----|-----|
+| Standard_D2a_v4 |  2  | 8  | 50  | 4  | 3000 / 46 / 23   | 2 / 1000 |
+| Standard_D4a_v4 |  4  | 16 | 100 | 8  | 6000 / 93 / 46   | 2 / 2000 |
+| Standard_D8a_v4 |  8  | 32 | 200 | 16 | 12.000 / 187 / 93 | 4 / 4000 |
+| Standard_D16a_v4|  16 | 64 | 400 |32  | 24.000 / 375 / 187 |8 / 8000 |
+| Standard_D32a_v4|  32 | 128| 800 | 32 | 48.000 / 750 / 375 |8 / 16000 |
+| Standard_D48a_v4 <sup>**</sup> | 48 | 192| 1200 | 32 | | |
+| Standard_D64a_v4 <sup>**</sup> | 64 | 256 | 1600 | 32 | | |
+| Standard_D96a_v4 <sup>**</sup> | 96 | 384 | 2400 | 32 | | |
 
-| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB |
-|---|---|---|---|
-| Standard_D2a_v3  | 2  | 8   | 50   |
-| Standard_D4a_v3  | 4  | 16  | 100  |
-| Standard_D8a_v3  | 8  | 32  | 200  |
-| Standard_D16a_v3 | 16 | 64  | 400  |
-| Standard_D32a_v3 | 32 | 128 | 800  |
-| Standard_D48a_v3 | 48 | 192 | 1200 |
-| Standard_D64a_v3 | 64 | 256 | 1600 |
+<sup>**</sup> Deze grootten zijn beschikbaar als preview-versie.  Als u geïnteresseerd bent in het proberen van deze grotere grootten, meldt u zich aan bij [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
 
 ## <a name="dsv2-series"></a>DSv2-serie
 
@@ -155,7 +161,7 @@ Premium Storage caching: ondersteund
 
 DSv2-serie grootten worden uitgevoerd op Intel® Xeon® 8171M 2.1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met Intel Turbo Boost Technology 2,0 en Premium Storage gebruiken.
 
-| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximaal aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1_v2 |1 |3,5 |7 |4 |4000/32 (43) |3200/48 |2 / 750 |
 | Standard_DS2_v2 |2 |7 |14 |8 |8000/64 (86) |6400/96 |2 / 1500 |
@@ -163,7 +169,7 @@ DSv2-serie grootten worden uitgevoerd op Intel® Xeon® 8171M 2.1 GHz (Skylake) 
 | Standard_DS4_v2 |8 |28 |56 |32 |32000/256 (344) |25600/384 |8 / 6000 |
 | Standard_DS5_v2 |16 |56 |112 |64 |64000/512 (688) |51200/768 |8 / 12000 |
 
-## <a name="dv2-series"></a>Dv2-reeksen
+## <a name="dv2-series"></a>Dv2-serie
 
 ACU: 210-250
 
@@ -173,7 +179,7 @@ Premium Storage caching: niet ondersteund
 
 DSv2-serie grootten worden uitgevoerd op Intel® Xeon® 8171M 2.1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met Intel Turbo Boost Technology 2,0.
 
-| Grootte           | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Maximaal aantal gegevensschijven | Door Voer: IOPS | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+| Grootte           | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Max. aantal gegevensschijven | Door Voer: IOPS | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
 | Standard_D1_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 4              | 4 x 500            | 2 / 750                                      |
 | Standard_D2_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 8              | 8 x 500            | 2 / 1500                                     |
@@ -209,7 +215,7 @@ Premium Storage caching: ondersteund
 
 
 
-| Grootte          | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximaal aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+| Grootte          | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
 | Standard_DC2s | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                          | 3200/48                                  | 2 / 1500                                     |
 | Standard_DC4s | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                          | 6400/96                                  | 2 / 3000                                     |

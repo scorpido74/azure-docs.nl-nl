@@ -1,5 +1,5 @@
 ---
-title: Een enkelvoudige of pooldatabase beveiligen in Azure SQL Database | Microsoft Docs
+title: Een enkele of gegroepeerde Data base in Azure SQL Database beveiligen
 description: Een zelf studie waarin u leert hoe u een enkele of gegroepeerde Data base in Azure SQL Database kunt beveiligen met betips over technieken en functies.
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,14 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 44fd49c391f4c6cddf24e3fddd7fa85a0d5ea4f2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231187"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687431"
 ---
-# <a name="tutorial-secure-a-single-or-pooled-database"></a>Zelfstudie: Een enkelvoudige of pooldatabase beveiligen
+# <a name="tutorial-secure-a-single-or-pooled-database"></a>Zelf studie: een enkele of gegroepeerde Data Base beveiligen
 
 In deze zelfstudie leert u het volgende:
 
@@ -117,7 +117,7 @@ Zorg ervoor dat u het juiste beheerde Azure Active Directory-domein gebruikt. Se
 
 De Azure AD-beheerder instellen:
 
-1. Selecteer in de Azure-portal **Active Directory-beheerder** op de pagina **SQL-server**. Selecteer vervolgens **Beheerder instellen**.
+1. In Azure Portal selecteert u op de pagina **SQL server** **Active Directory beheerder**. Selecteer vervolgens **beheerder instellen**.
 
     ![active directory selecteren](./media/sql-database-security-tutorial/admin-settings.png)  
 
@@ -229,7 +229,7 @@ Ga als volgt te werk om een beveiligde verbindingsreeks te kopiëren:
 
     ![ADO.NET-verbindingsreeks](./media/sql-database-security-tutorial/connection.png)
 
-## <a name="enable-security-features"></a>Beveiligingsfuncties inschakelen
+## <a name="enable-security-features"></a>Beveiligingsfuncties in te schakelen
 
 Azure SQL Database biedt beveiligingsfuncties die toegankelijk zijn met behulp van de Azure-portal. Deze functies zijn beschikbaar voor zowel de database als de server, behalve gegevensmaskering, wat alleen beschikbaar is op de database. Zie voor meer informatie deze artikelen over [Advanced Data Security](sql-database-advanced-data-security.md), [controle](sql-database-auditing.md), [dynamische gegevensmaskering](sql-database-dynamic-data-masking-get-started.md) en [transparante gegevensversleuteling](transparent-data-encryption-azure-sql.md).
 
@@ -250,7 +250,7 @@ U schakelt Advanced Data Security als volgt in:
 
    1. Selecteer **AAN** onder **Advanced Data Security** om de functie in te schakelen. Kies een opslagaccount om de evaluaties van beveiligingsproblemen in op te slaan. Selecteer vervolgens **Opslaan**.
 
-      ![Navigatiedeelvenster](./media/sql-database-security-tutorial/threat-settings.png)
+      ![Navigatievenster](./media/sql-database-security-tutorial/threat-settings.png)
 
       U kunt ook e-mailberichten configureren voor het ontvangen van beveiligingswaarschuwingen, opslaggegevens en detectie van typen bedreigingen.
 

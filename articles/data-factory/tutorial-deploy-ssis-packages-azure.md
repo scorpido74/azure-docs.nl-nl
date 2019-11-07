@@ -1,5 +1,5 @@
 ---
-title: De Azure SSIS Integration runtime inrichten | Microsoft Docs
+title: De Azure SSIS Integration runtime inrichten
 description: Informatie over het inrichten van de Azure-SSIS-integratieruntime in Azure Data Factory, zodat u SSIS-pakketten in Azure kunt implementeren en uitvoeren.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 62b11fbf19c803d54c699d3a59454677ac3423f1
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 14871aa790bd94dbd23dea30c8a229eac7945c75
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326082"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683565"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>De Azure SSIS Integration runtime inrichten in Azure Data Factory
 
@@ -27,14 +27,14 @@ Deze zelf studie bevat stappen voor het gebruik van de Azure Portal om een Azure
 - Het uitvoeren van pakketten die worden geïmplementeerd in de SSIS-catalogus (SSISDB) die wordt gehost door een Azure SQL Database-Server of een beheerd exemplaar (project implementatie model).
 - Het uitvoeren van pakketten die zijn geïmplementeerd in bestands systemen, bestands shares of Azure Files (pakket implementatie model). 
 
-Nadat een Azure-SSIS IR is ingericht, kunt u de vertrouwde hulpprogram ma's gebruiken om uw pakketten in azure te implementeren en uit te voeren. Deze hulpprogram ma's omvatten SQL Server Data Tools, SQL Server Management Studio en opdracht regel Programma's zoals `dtinstall`, `dtutil` en `dtexec`.
+Nadat een Azure-SSIS IR is ingericht, kunt u de vertrouwde hulpprogram ma's gebruiken om uw pakketten in azure te implementeren en uit te voeren. Deze hulpprogram ma's omvatten SQL Server Data Tools, SQL Server Management Studio en opdracht regel Programma's zoals `dtinstall`, `dtutil`en `dtexec`.
 
 Zie [Overzicht van integratieruntime in Azure-SSIS](concepts-integration-runtime.md#azure-ssis-integration-runtime) voor algemene informatie over een Azure-SSIS IR.
 
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maakt.
+> * Maak een gegevensfactory.
 > * Een Azure-SSIS-integratieruntime inrichten.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -60,7 +60,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 > [!NOTE]
 > Zie [Data Factory en SSIS IR-Beschik baarheid per regio](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all)voor een lijst met Azure-regio's waarin Data Factory en een Azure-SSIS IR op dit moment beschikbaar zijn. 
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 Als u uw data factory via de Azure Portal wilt maken, volgt u de stapsgewijze instructies in [een Data Factory maken via de gebruikers interface](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory). Selecteer **in dat geval vastmaken aan dash board** om snelle toegang toe te staan nadat het is gemaakt. 
 
@@ -112,7 +112,7 @@ Nadat uw data factory is gemaakt, opent u de pagina overzicht in de Azure Portal
 
    g. Selecteer voor **Bespaar geld**de Azure Hybrid Benefit optie voor de Integration runtime: **Ja** of **Nee**. Selecteer **Ja** als u uw eigen SQL Server licentie met Software Assurance wilt gebruiken om kosten besparingen met hybride gebruik te voor komen. 
 
-   h. Selecteer **Next**. 
+   h. Selecteer **Volgende**. 
 
 1. Voer op de pagina **SQL-instellingen** de volgende stappen uit. 
 
@@ -158,7 +158,7 @@ Nadat uw data factory is gemaakt, opent u de pagina overzicht in de Azure Portal
    
    d. Selecteer het selectie vakje **zelf-hostende Integration runtime als proxy voor uw Azure-SSIS Integration runtime instellen** om te kiezen of u een zelf-hostende IR wilt configureren als proxy voor uw Azure-SSIS IR. Zie [een zelf-hostende IR instellen als proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)voor meer informatie.   
 
-1. Selecteer **Next**. 
+1. Selecteer **Volgende**. 
 
 1. Controleer op de pagina **samen vatting** alle inrichtings instellingen, blad wijzer de aanbevolen documentatie koppelingen en selecteer **volt ooien** om het maken van de Integration runtime te starten. 
 
@@ -181,11 +181,11 @@ Nadat uw data factory is gemaakt, opent u de pagina overzicht in de Azure Portal
 
 Als u SSISDB gebruikt, kunt u uw pakketten erin implementeren en deze uitvoeren op de Azure-SSIS IR met behulp van SQL Server Data Tools of SQL Server Management Studio hulpprogram ma's. Deze hulpprogram ma's maken verbinding met uw database server via het server-eind punt: 
 
-- Voor een Azure SQL Database-Server met een persoonlijk eind punt, wordt de indeling van het server-eind punt `<server name>.database.windows.net`.
+- Voor een Azure SQL Database-Server met een persoonlijk eind punt, wordt de indeling van het server eindpunt `<server name>.database.windows.net`.
 - Voor een beheerd exemplaar met een persoonlijk eind punt is de indeling van het server eindpunt `<server name>.<dns prefix>.database.windows.net`.
 - Voor een beheerd exemplaar met een openbaar eind punt is de indeling van het server eindpunt `<server name>.public.<dns prefix>.database.windows.net,3342`. 
 
-Als u SSISDB niet gebruikt, kunt u uw pakketten implementeren in bestands systemen, bestands shares of Azure Files. U kunt deze vervolgens uitvoeren op de Azure-SSIS IR met behulp van de `dtinstall`, `dtutil` en `dtexec` opdracht regel Programma's. Zie [SSIS-pakketten implementeren](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)voor meer informatie. 
+Als u SSISDB niet gebruikt, kunt u uw pakketten implementeren in bestands systemen, bestands shares of Azure Files. U kunt deze vervolgens uitvoeren op de Azure-SSIS IR met behulp van de opdracht regel Programma's `dtinstall`, `dtutil`en `dtexec`. Zie [SSIS-pakketten implementeren](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)voor meer informatie. 
 
 In beide gevallen kunt u uw geïmplementeerde pakketten ook uitvoeren op het Azure-SSIS IR met behulp van de activiteit SSIS-pakket uitvoeren in Data Factory pijp lijnen. Zie [de uitvoering van SSIS-pakketten aanroepen als een eerste klasse Data Factory-activiteit](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)voor meer informatie.
 

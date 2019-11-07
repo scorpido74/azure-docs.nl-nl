@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 524bc3b2650ad7b435cba6b6b9d4084ffa5cf96c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932682"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569645"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Een IoT Plug en Play preview-apparaat bouwen dat gereed is voor certificering
 
@@ -35,7 +35,7 @@ Voor deze zelfstudie hebt u het volgende nodig:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [Azure IOT-Hulpprogram ma's voor VS code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) -uitbreidings pakket
 
-U hebt ook het IOT Plug en Play-apparaat nodig dat u in [de Quick Start maakt: Gebruik een mogelijkheidsprofiel voor het maken van een apparaat](quickstart-create-pnp-device.md).
+U hebt ook het IoT Plug en Play-apparaat nodig dat u in de Quick Start maakt [: gebruik een mogelijkheidsprofiel om een apparaat te maken](quickstart-create-pnp-device.md).
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Een mogelijkheidsprofiel en interfaces opslaan
 
@@ -58,9 +58,9 @@ Als u het certificerings proces wilt door geven, moet u de **apparaatgegevens** 
 ```
 
 > [!NOTE]
-> Als u de [Snelstartgids hebt voltooid: Gebruik een mogelijkheidsprofiel om een apparaat](quickstart-create-pnp-device.md)te maken, u hebt al de **apparaatgegevens** interface in uw model opgenomen.
+> Als u de Snelstartgids hebt voltooid [: een Mogelijkheidsprofiel gebruiken om een apparaat te maken](quickstart-create-pnp-device.md), hebt u de **apparaatgegevens** interface al opgenomen in uw model.
 
-Als u de **apparaatgegevens** interface wilt toevoegen aan het model van uw apparaat, voegt u `implements` de interface-id toe aan de eigenschap van het mogelijkheidsprofiel:
+Als u de **apparaatgegevens** interface wilt toevoegen aan het model van uw apparaat, voegt u de interface-id toe aan de eigenschap `implements` van het mogelijkheidsprofiel:
 
 ```json
 {
@@ -111,26 +111,17 @@ Als u het apparaat wilt certificeren, moet het inrichten via de [Azure IOT Devic
 
 1. Kies **ANSI C** als taal.
 
-1. Kies **cmake project** als uw project type.
-
 1. Kies **via DPS (Device Provisioning Service) symmetrische sleutel** als verbindings methode.
+
+1. Kies **cmake project in Windows** of **cmake project op Linux** als project sjabloon, afhankelijk van het besturings systeem van uw apparaat.
 
 1. VS code opent een nieuw venster met gegenereerde code stub-bestanden.
 
-1. Open `main.c`, vul de **dpsIdScope**, **sasKey**en **registratie** die u hebt voor bereid. U kunt deze informatie ophalen via de certificerings Portal. Zie [verbinding maken en testen van uw IoT Plug en Play-apparaat](tutorial-certification-test.md#connect-and-discover-interfaces)voor meer informatie.
+1. Nadat u de code hebt gemaakt, voert u de DPS-referenties (**DPS-ID-bereik**, **symmetrische sleutel van DPS**, **apparaat-id**) in als para meters voor de toepassing. Zie [uw IOT-Plug en Play apparaat verbinden en testen](tutorial-certification-test.md#connect-and-discover-interfaces)om de referenties op te halen uit de certificerings Portal.
 
-    ```c
-    // TODO: Specify DPS scope ID if you intend on using DPS / IoT Central.
-    static const char *dpsIdScope = "[DPS Id Scope]";
-    
-    // TODO: Specify symmetric keys if you intend on using DPS / IoT Central and symmetric key based auth.
-    static const char *sasKey = "[DPS symmetric key]";
-    
-    // TODO: specify your device registration ID
-    static const char *registrationId = "[device registration Id]";
+    ```cmd/sh
+    .\your_pnp_app.exe [DPS ID Scope] [DPS symmetric key] [device ID]
     ```
-
-1. Sla het bestand op.
 
 ### <a name="implement-standard-interfaces"></a>Standaard interfaces implementeren
 

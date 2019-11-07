@@ -1,5 +1,5 @@
 ---
-title: 'Azure-snelstart: Een event hub maken met behulp van Azure Portal | Microsoft Docs'
+title: 'Azure-Snelstartgids: een Event Hub maken met behulp van de Azure Portal'
 description: In deze snelstart leert u hoe u een Azure event hub maakt met behulp van Azure Portal en vervolgens gebeurtenissen verzendt en ontvangt met behulp van .NET Standard SDK.
 services: event-hubs
 documentationcenter: ''
@@ -8,16 +8,16 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/23/2019
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 15b2b5863f5b78bd24ffd8cbd55b9914f52e32a1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 209bdb919a505e55bdfb8868d556fa1ad08db2fe
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072800"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717944"
 ---
-# <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Snelstartgids: Een event hub maken met behulp van Azure Portal
+# <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Snelstart: Een event hub maken met behulp van Azure Portal
 Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs.
 
 In deze snelstart maakt u een Event Hub met behulp van de [Azure-portal](https://portal.azure.com).
@@ -34,7 +34,7 @@ Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
 Een resourcegroep is een logische verzameling Azure-resources. Alle resources worden geïmplementeerd en beheerd in een resourcegroep. Een resourcegroep maken:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Kik in het linkernavigatievenster op **Resourcegroepen**. Klik vervolgens op **Toevoegen**.
 
    ![Resourcegroepen - Knop Toevoegen](./media/event-hubs-quickstart-portal/resource-groups1.png)
@@ -60,7 +60,7 @@ Een Event Hubs-naamruimte biedt een unieke scopingcontainer, waarnaar wordt verw
    ![Knop Toevoegen](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
 4. Voer op de pagina **Naamruimte maken** de volgende stappen uit:
     1. Voer een naam in voor de naamruimte. In het systeem wordt onmiddellijk gecontroleerd of de naam beschikbaar is.
-    2. Kies de prijscategorie (Basic of Standard).
+    2. Kies de prijs categorie (Basic of Standard).
     3. Selecteer het **abonnement** waarin u de naamruimte wilt maken.
     4. Selecteer een **locatie** voor de naamruimte.
     5. Selecteer **Maken**. U moet een paar minuten wachten voordat het systeem de resources volledig heeft ingericht.
@@ -92,7 +92,7 @@ Gefeliciteerd! U hebt de portal gebruikt om een ​​Event Hubs-naamruimte en e
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een resourcegroep, een Event Hubs-naamruimte en een Event Hub gemaakt. Zie voor stapsgewijze instructies voor het verzenden van gebeurtenissen naar (of) gebeurtenissen ontvangen van een event hub, de **verzenden en ontvangen van gebeurtenissen** zelfstudies: 
+In dit artikel hebt u een resourcegroep, een Event Hubs-naamruimte en een Event Hub gemaakt. Voor stapsgewijze instructies voor het verzenden van gebeurtenissen naar (of) het ontvangen van gebeurtenissen van een Event Hub, raadpleegt u de zelf studies voor het **verzenden en ontvangen van gebeurtenissen** : 
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)

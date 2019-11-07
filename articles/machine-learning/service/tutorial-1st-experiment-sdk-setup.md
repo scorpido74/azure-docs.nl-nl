@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 891615ea301348b83124823b10403964d394c224
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 59844c5989abb03bbe5134c83c9653290c17d0a9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475988"
+ms.locfileid: "73582481"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Zelf studie: aan de slag met het maken van uw eerste ML-experiment met de python-SDK
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ In deze zelfstudie hebt u:
 > [!div class="checklist"]
 > * Maak een [Azure machine learning-werkruimte](concept-workspace.md) voor gebruik in de volgende zelf studie.
 > * Kopieer de notebooks van de zelf studies naar uw map in de werk ruimte.
-> * Maak een Cloud Compute-instantie met Azure Machine Learning python SDK geïnstalleerd en vooraf geconfigureerd.
+> * Maak een cloud-gebaseerde Notebook-VM met Azure Machine Learning python SDK geïnstalleerd en vooraf geconfigureerd.
 
 
 Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
@@ -79,7 +79,7 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
     
 1. Selecteer de **zelf studie-1ste experiment-SDK-Train. ipynb-** bestand in de map **zelf studies** .
 
-1. Selecteer op de bovenste balk een reken instantie die u wilt gebruiken om het notitie blok uit te voeren. Deze Vm's zijn vooraf geconfigureerd met [Alles wat u nodig hebt om Azure machine learning uit te voeren](concept-compute-instance.md#contents). U kunt een virtuele machine selecteren die wordt gemaakt door een gebruiker van uw werk ruimte. 
+1. Selecteer op de bovenste balk een werk blad-VM die u wilt gebruiken om het notitie blok uit te voeren. Deze Vm's zijn vooraf geconfigureerd met alles wat u nodig hebt om Azure Machine Learning uit te voeren. U kunt een virtuele machine selecteren die wordt gemaakt door een gebruiker van uw werk ruimte. 
 
 1. Als er geen Vm's worden gevonden, selecteert u **+ Compute toevoegen** om de virtuele machine te maken.
 
@@ -89,9 +89,6 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
 
 1. Zodra de virtuele machine beschikbaar is, wordt deze weer gegeven op de bovenste werk balk.  U kunt het notitie blok nu uitvoeren met de optie **alle uitvoeren** op de werk balk of door **SHIFT + ENTER** te gebruiken in de code cellen van het notitie blok.
 
-> [!NOTE]
-> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**.
->Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken.  U kunt een notebook-VM of een reken instantie gebruiken om uw notitie blok uit te voeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

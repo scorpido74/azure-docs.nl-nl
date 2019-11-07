@@ -1,5 +1,5 @@
 ---
-title: Gegevens transformeren met behulp van Spark in Azure Data Factory | Microsoft Docs
+title: 'Gegevens transformeren met behulp van Spark in Azure Data Factory '
 description: Deze zelfstudie biedt stapsgewijze instructies voor het transformeren van gegevens met behulp van Spark-activiteit in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,22 +11,22 @@ ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 7c7b2b75bdf8aa2be0ea9dd2b60453c2480fc1d2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 06ec56e9e86069bd23a032aa289ea7391db04538
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813431"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683294"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Gegevens transformeren in de cloud met behulp van Spark-activiteit in Azure Data Factory
 In deze zelfstudie gebruikt u Azure PowerShell om een Data Factory-pijplijn te maken waarmee gegevens worden getransformeerd met behulp van Spark-activiteit en een gekoppelde HDInsight-service op aanvraag. In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een data factory maken. 
+> * Maak een gegevensfactory. 
 > * Gekoppelde services maakt en implementeert.
 > * Een pijplijn maakt en implementeert. 
-> * Een pijplijnuitvoering starten.
-> * De pijplijnuitvoering controleert.
+> * Start een pijplijnuitvoering.
+> * Controleer de pijplijnuitvoering.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -73,7 +73,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ### <a name="upload-the-input-file"></a>Invoerbestand uploaden
 1. Maak een bestand met de naam **minecraftstory.txt** met wat tekst. In het Spark-programma wordt het aantal woorden in deze tekst geteld. 
-2. Maak in de map `spark` een submap met de naam `inputfiles`. 
+2. Maak in de map `inputfiles` een submap met de naam `spark`. 
 3. Upload de `minecraftstory.txt` naar de submap`inputfiles`. 
 
 ## <a name="author-linked-services"></a>Gekoppelde services maken
@@ -182,7 +182,7 @@ Houd rekening met de volgende punten:
 - entryFilePath verwijst naar het bestand WordCount_Spark.py in de submap script van de map spark. 
 
 
-## <a name="create-a-data-factory"></a>Data factory maken 
+## <a name="create-a-data-factory"></a>Een data factory maken 
 U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. Nu gaan we een gegevensfactory maken en de gekoppelde service en JSON-pijplijnbestanden implementeren met behulp van PowerShell-cmdlets. Voer de volgende PowerShell-opdrachten één voor één: 
 
 1. Stel één voor één de variabelen in.
@@ -192,7 +192,7 @@ U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. N
     $resourceGroupName = "ADFTutorialResourceGroup" 
     ```
 
-    **Naam data factory. De naam moet wereldwijd uniek zijn.** 
+    **Data Factory naam. Moet globaal uniek zijn** 
     ```powershell
     $dataFactoryName = "MyDataFactory09102017"
     ```
@@ -201,7 +201,7 @@ U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. N
     ```powershell
     $pipelineName = "MySparkOnDemandPipeline" # Name of the pipeline
     ```
-2. Start **PowerShell**. Houd Azure PowerShell geopend tot het einde van deze snelstartgids. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren. Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
+2. Start **PowerShell**. Houd Azure PowerShell geopend tot het einde van deze snelstartgids. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren. Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 
     Voer de volgende opdracht uit en geef de gebruikersnaam en het wachtwoord op waarmee u zich aanmeldt bij Azure Portal:
         
@@ -218,7 +218,7 @@ U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. N
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```  
-3. De resourcegroep maken: ADFTutorialResourceGroup. 
+3. Maak de resourcegroep ADFTutorialResourceGroup. 
 
     ```powershell
     New-AzResourceGroup -Name $resourceGroupName -Location "East Us" 
@@ -252,7 +252,7 @@ U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. N
     
 ## <a name="start-and-monitor-a-pipeline-run"></a>Een pijplijnuitvoering starten en controleren  
 
-1. Een pijplijnuitvoering starten. Ook wordt de id voor de pijplijnuitvoering vastgelegd voor toekomstige controle.
+1. Start een pijplijnuitvoering. Ook wordt de id voor de pijplijnuitvoering vastgelegd voor toekomstige controle.
 
     ```powershell
     $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName  
@@ -336,11 +336,11 @@ U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. N
 Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in een Azure Blob-opslag. U hebt geleerd hoe u: 
 
 > [!div class="checklist"]
-> * Een gegevensfactory maakt. 
+> * Maak een gegevensfactory. 
 > * Gekoppelde services maakt en implementeert.
 > * Een pijplijn maakt en implementeert. 
-> * Een pijplijnuitvoering starten.
-> * De pijplijnuitvoering controleert.
+> * Start een pijplijnuitvoering.
+> * Controleer de pijplijnuitvoering.
 
 Ga naar de volgende zelfstudie voor informatie over het transformeren van gegevens door een Hive-script uit te voeren in een Azure HDInsight-cluster in een virtueel netwerk. 
 

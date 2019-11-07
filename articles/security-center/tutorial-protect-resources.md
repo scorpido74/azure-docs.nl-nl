@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie voor Azure Security Center: uw resources beveiligen met Azure Security Center | Microsoft Docs'
+title: Zelf studie voor toegang tot & besturings elementen-Azure Security Center
 description: Deze zelf studie laat zien hoe u een just-in-time-VM-toegangs beleid en een toepassings beheer beleid configureert.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: 8cb07f3447e50528a94811f33a2142086f698586
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 4b40b7c6f755eb2107a09b1b881ea33fa2187f29
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996341"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686328"
 ---
-# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Zelfstudie: Uw resources beveiligen met Azure Security Center
+# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Zelfstudie: uw resources beveiligen met Azure Security Center
 Security Center beperkt de blootstelling aan bedreigingen met behulp van toegangs- en toepassingsbesturingselementen om schadelijke activiteiten te blokkeren. Met Just-in-time (JIT) virtuele machine (VM) wordt de bloot stelling aan aanvallen beperkt doordat u permanente toegang tot virtuele machines kunt weigeren. U biedt in plaats daarvan beheerde en gecontroleerde toegang tot VM's, alleen wanneer dat nodig is. Besturingselementen voor adaptieve toepassingen helpen u om VM's beter te beschermen tegen malware door te beheren welke toepassingen op uw VM's kunnen worden uitgevoerd. Security Center maakt gebruik van machine learning om de processen te analyseren die op de virtuele machine worden uitgevoerd. Ook helpt het u op basis van deze informatie regels voor opname in de whitelist toe te passen.
 
 In deze zelfstudie leert u het volgende:
@@ -29,8 +29,6 @@ In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 > * Een just-in-time-VM-toegangs beleid configureren
 > * Een toepassingsbeheerbeleid configureren
-
-Als u nog geen Azure-abonnement hebt, maak dan een [gratis account](https://azure.microsoft.com/pricing/free-trial/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 Om de functies in deze zelfstudie te doorlopen, moet u zich in de Standard-prijscategorie van Security Center bevinden. U kunt Security Center Standard kosteloos proberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie. In de snelstartgids [Onboard your Azure subscription to Security Center Standard](security-center-get-started.md) (Uw Azure-abonnement registreren voor Security Center Standard) wordt u begeleid bij het upgraden naar Standard.
@@ -74,7 +72,7 @@ Met Besturingselementen voor adaptieve toepassingen kunt u een set toepassingen 
 
 1. Ga terug naar het hoofdmenu van Security Center. Selecteer onder **GEAVANCEERDE CLOUDBEVEILIGING** de optie **Besturingselementen voor adaptieve toepassingen**.
 
-   ![Besturingselementen voor adaptieve toepassingen][3]
+   ![Adaptieve toepassingsbesturingselementen][3]
 
    De sectie **Resourcegroepen** bevat drie tabbladen:
 
@@ -86,17 +84,17 @@ Met Besturingselementen voor adaptieve toepassingen kunt u een set toepassingen 
 
    ![Aanbevelingen voor toepassingsbeheer][4]
 
-3. Selecteer een resourcegroep om de optie **Regels voor toepassingsbeheer maken** te openen. Bekijk in **VM's selecteren** de lijst met aanbevolen virtuele machines en schakel alle virtuele machines uit waarop u geen toepassingsbeheer wilt toepassen. Bekijk in **Processen selecteren voor de regels voor opname in de whitelist** de lijst met aanbevolen toepassingen en schakel alle toepassingen uit waarop u geen toepassingsbeheer wilt toepassen. De lijst bevat:
+3. Selecteer een resourcegroep om de optie **Regels voor toepassingsbeheer maken** te openen. Bekijk in **VM's selecteren** de lijst met aanbevolen VM's en schakel alle VM’s waarop u geen toepassingsbeheer wilt toepassen uit. Bekijk in **Processen selecteren voor de regels voor opname in de whitelist** de lijst met aanbevolen toepassingen en schakel alle toepassingen uit waarop u geen toepassingsbeheer wilt toepassen. De lijst bevat:
 
    - **NAAM**: het volledige toepassingspad
    - **PROCESSEN**: hoeveel toepassingen zich binnen elk pad bevinden
-   - **ALGEMEEN**: 'Ja' geeft aan dat deze processen zijn uitgevoerd op de meeste virtuele machines in deze resourcegroep
+   - **ALGEMEEN**: 'ja' geeft aan dat deze processen zijn uitgevoerd op de meeste virtuele machines in deze resourcegroep
    - **EXPLOITEERBAAR**: er wordt een waarschuwingspictogram weergegeven als de toepassingen door een aanvaller kunnen worden gebruikt om opname in de whitelist met toepassingen te omzeilen. U wordt aanbevolen om deze toepassingen te controleren voordat ze worden goedgekeurd.
 
 4. Selecteer **Maken** nadat u uw selecties hebt gemaakt.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze snelstartgids. Als u de volgende snelstartgidsen en zelfstudies ook wilt doornemen, blijf dan de prijscategorie Standard gebruiken en houd automatische inrichting ingeschakeld. Als u niet wilt doorgaan of wilt terugkeren naar de laag gratis:
+Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze snelstartgids. Als u van plan bent om verder te gaan met de volgende Quick starts en zelf studies, kunt u door gaan met het uitvoeren van de Standard-laag en automatische inrichting ingeschakeld houden. Als u niet wilt doorgaan of wilt terugkeren naar de laag gratis:
 
 1. Ga terug naar het hoofdmenu van Security Center en selecteer **Beveiligingsbeleid**.
 2. Selecteer het abonnement of het beleid dat u wilt terugzetten op Gratis. **Beveiligingsbeleid** wordt geopend.
@@ -125,7 +123,7 @@ In deze zelfstudie hebt u geleerd hoe u blootstelling aan bedreigingen kunt bepe
 Ga naar de volgende zelfstudie voor meer informatie over het reageren op beveiligingsincidenten.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Reageren op beveiligingsincidenten](tutorial-security-incident.md)
+> [Zelfstudie: reageren op beveiligingsincidenten](tutorial-security-incident.md)
 
 <!--Image references-->
 [1]: ./media/tutorial-protect-resources/just-in-time-vm-access.png

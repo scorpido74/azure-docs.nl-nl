@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: 90111325677e1bdd12a03081ad7513a34f68fd40
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044145"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718742"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Bedrijfs continuïteit en herstel na nood gevallen (BCDR): gekoppelde Azure-regio's
 
@@ -29,30 +29,30 @@ Afbeelding 1: Azure-regionale paren
 | Geografie | Gekoppelde regio's |  |
 |:--- |:--- |:--- |
 | Azië |Azië - oost |Azië - zuidoost |
-| Australië |Australië Oost |Australië Zuidoost |
+| Australië |Australië - oost |Australië - zuidoost |
 | Australië |Australië - centraal |Australië - centraal 2 |
-| Brazilië |Brazilië - Zuid |VS - zuid-centraal |
-| Canada |Canada-Midden |Canada-Oost |
-| China |China - noord |China - oost|
+| Brazilië |Brazilië - zuid |US - zuid-centraal |
+| Canada |Canada - centraal |Canada - oost |
+| China |China - noord |China East|
 | China |China - noord 2 |China - oost 2|
 | Europa |Europa - noord (Ierland) |Europa - west (Nederland) |
 | Frankrijk |Frankrijk - centraal|Frankrijk - zuid|
 | Duitsland |Duitsland - centraal |Duitsland - noordoost |
 | India |India - centraal |India - zuid |
 | India |India - west |India - zuid |
-| Japan |Japan - Oost |Japan - West |
-| Korea |Korea - centraal |Korea (Zuid) |
+| Japan |Japan - Oost |Japan - west |
+| Korea |Korea - centraal |Korea - zuid |
 | Noord-Amerika |VS - oost |VS - west |
-| Noord-Amerika |VS - oost 2 |VS - centraal |
-| Noord-Amerika |VS - noord-centraal |VS - zuid-centraal |
-| Noord-Amerika |VS - west 2 |VS - west-centraal 
+| Noord-Amerika |US - oost 2 |US - centraal |
+| Noord-Amerika |VS - noord-centraal |US - zuid-centraal |
+| Noord-Amerika |US - west 2 |VS - west-centraal 
 | Zuid-Afrika | Zuid-Afrika - noord | Zuid-Afrika - west
-| VK |VK - west |VK - zuid |
+| VK |Verenigd Koninkrijk West |VK - zuid |
 | Verenigde Arabische Emiraten | VAE - noord | VAE - centraal
 | Amerikaans Ministerie van defensie |US DoD - oost |US DoD - centraal |
-| Amerikaanse overheid |US Gov - Arizona |US Gov - Texas |
-| Amerikaanse overheid |US Gov - Iowa |US Gov - Virginia |
-| Amerikaanse overheid |US Gov - Virginia |US Gov - Texas |
+| Amerikaanse overheid |VS (overheid) - Arizona |VS (overheid) - Texas |
+| Amerikaanse overheid |US Gov - Iowa |VS (overheid) - Virginia |
+| Amerikaanse overheid |VS (overheid) - Virginia |VS (overheid) - Texas |
 
 Tabel 1-toewijzing van Azure regionale paren
 
@@ -75,7 +75,7 @@ Afbeelding 2: hypothetisch Azure regionaal paar
 ## <a name="cross-region-activities"></a>Activiteiten tussen regio's
 Zoals bedoeld in afbeelding 2.
 
-![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (IaaS)** : u moet extra reken resources vooraf inrichten om ervoor te zorgen dat resources beschikbaar zijn in een andere regio tijdens een nood geval. Zie voor meer informatie [Azure tolerante technische richt lijnen](resiliency/resiliency-technical-guidance.md).
+![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (IaaS)** : u moet extra reken resources vooraf inrichten om ervoor te zorgen dat resources beschikbaar zijn in een andere regio tijdens een nood geval. Zie voor meer informatie [Azure tolerante technische richt lijnen](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md).
 
 ![Storage-](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** : als u beheerde schijven gebruikt, kunt u meer informatie vinden over [Cross-Region back-ups](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) met Azure backup en hoe u virtuele machines van de ene naar de andere regio [repliceert](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) met Azure site Recovery. Als u opslag accounts gebruikt, wordt de geo-redundante opslag (GRS) standaard geconfigureerd wanneer een Azure Storage-account wordt gemaakt. Met GRS worden uw gegevens automatisch drie keer binnen de primaire regio gerepliceerd, en drie keer in de gekoppelde regio. Zie [Azure Storage redundantie opties](storage/common/storage-redundancy.md)voor meer informatie.
 

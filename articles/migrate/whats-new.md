@@ -4,15 +4,15 @@ description: Biedt een overzicht van de service Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 10/22/2019
+ms.date: 11/06/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1ecd15b36b677e65eadbe4e979925723c9eedd51
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af9305aafc3a77df9d7c4cffa65f6c61c53ad8a4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498422"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715391"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Wat is er nieuw in Azure Migrate
 
@@ -22,7 +22,12 @@ ms.locfileid: "73498422"
 
 ## <a name="update-november-2019"></a>Update (november 2019)
 
+
+
 Er zijn een aantal nieuwe functies toegevoegd aan Azure Migrate:
+
+> [!NOTE]
+> Als u nog enkele van deze functies in de Azure Migrate Portal ziet, loopt u vast. Deze worden in de volgende week weer gegeven.
 
 - **Fysieke server beoordeling**. De evaluatie van on-premises fysieke servers wordt nu ondersteund, naast de fysieke server migratie die al wordt ondersteund.
 - **Evaluatie op basis van import**. De evaluatie van computers die gebruikmaken van meta gegevens en prestatie gegevens die zijn opgenomen in een CSV-bestand, wordt nu ondersteund.
@@ -30,6 +35,13 @@ Er zijn een aantal nieuwe functies toegevoegd aan Azure Migrate:
 - **Visualisatie zonder agent**: u hoeft geen agents meer expliciet te installeren voor de visualisatie van afhankelijkheden. Zowel zonder agent als op basis van een agent worden nu ondersteund.
 - **Virtueel bureau blad**: gebruik ISV-hulpprogram ma's om on-premises Virtual Desktop Infrastructure (VDI) te beoordelen en migreren naar Windows Virtual Desktop in Azure.
 - **Web-app**: de Azure app Service Migration Assistant, die wordt gebruikt voor het evalueren en migreren van web-apps, is nu geïntegreerd in azure Migrate.
+
+Er zijn nieuwe hulpprogram ma's voor evaluatie en migratie toegevoegd aan Azure Migrate:
+
+- **Rackware**: biedt Cloud migratie.
+- **Overbelasting:** aanbiedings beoordeling.
+
+Meer [informatie](migrate-services-overview.md) over het gebruik van hulpprogram MA'S en ISV-aanbiedingen voor evaluatie en migratie in azure Migrate.
 
 ## <a name="release-version-july-2019"></a>Release versie (juli 2019)
 

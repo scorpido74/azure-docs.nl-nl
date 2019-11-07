@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Knowledge Base publiceren, REST, python-QnA Maker'
+title: 'Snelstartgids: Knowledge Base publiceren, REST, python-QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Deze Python REST-snelstartgids helpt u bij het publiceren van uw knowledge base, waarbij de meest recente versie van de geteste knowledge base naar een specifieke Azure Search-index wordt gepusht die de gepubliceerde knowledge base vertegenwoordigt. Hiermee wordt ook een eindpunt gemaakt dat kan worden aangeroepen in uw toepassing of chatbot.
+description: Met deze python REST-gebaseerde Snelstartgids publiceert u uw Knowledge Base en maakt u een eind punt dat kan worden aangeroepen in uw toepassing of chat-bot.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,19 +11,19 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 09523bb6c9c8a58f5f7bd102d2ac30ad77f28d1c
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 6ca13f29d2201bd29bda934ed4be169bcddf58de
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840192"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720946"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Snelstartgids: Een knowledge base in QnA Maker publiceren met behulp van Python
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Snelstart: Een knowledge base in QnA Maker publiceren met behulp van Python
 
-In deze REST-quickstart wordt beschreven hoe u programmatisch uw KB (knowledge base ) kunt publiceren. Door te publiceren wordt de nieuwste versie van de knowledge base verstuurd naar een specifieke Azure Search-index en wordt er een eindpunt gemaakt dat kan worden aangeroepen in uw toepassing of chatbot.
+In deze op REST gebaseerde quickstart wordt beschreven hoe u programmatisch uw KB (knowledge base ) kunt publiceren. Door te publiceren wordt de nieuwste versie van de knowledge base verstuurd naar een specifieke Azure Search-index en wordt er een eindpunt gemaakt dat kan worden aangeroepen in uw toepassing of chatbot.
 
 Deze Snelstartgids roept QnA Maker REST Api's aan:
-* [Publiceren](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): voor deze API zijn er geen gegevens in de hoofdtekst van de aanvraag nodig.
+* [Publiceren](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) - voor deze API zijn geen gegevens in de hoofdtekst van de aanvraag nodig.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,7 +33,7 @@ Deze Snelstartgids roept QnA Maker REST Api's aan:
 
     ![Id voor knowledge base in QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Als u nog geen knowledge base hebt, kunt u een voorbeeldexemplaar maken om te gebruiken met deze snelstartgids: [Een nieuwe knowledge base maken.](../how-to/create-knowledge-base.md)
+    Als u nog geen knowledge base hebt, kunt u een voorbeeldexemplaar maken om te gebruiken met deze snelstart: [Een nieuwe knowledge base maken](../how-to/create-knowledge-base.md).
 
 > [!NOTE] 
 > Het bestand of de bestanden van de volledige oplossing zijn beschikbaar in de GitHub-opslagplaats [**Azure-Samples/cognitive-services-qnamaker-python**](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
@@ -44,13 +44,13 @@ Maak een bestand met de naam `publish-kb-3x.py`.
 
 ## <a name="add-the-required-dependencies"></a>De vereiste afhankelijkheden toevoegen
 
-Voeg aan het begin van `publish-kb-3x.py` de volgende regels toe om de nodige afhankelijkheden aan het project toe te voegen:
+Voeg bovenaan `publish-kb-3x.py` de volgende regels toe om de nodige afhankelijkheden aan het project toe te voegen:
 
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=1-1 "Add the required dependencies")]
 
 ## <a name="add-required-constants"></a>Vereiste constanten toevoegen
 
-Voeg na de bovenstaande vereiste afhankelijkheden de vereiste constanten toe voor toegang tot QnA Maker. Vervang de waarden door uw eigen waarden.
+Voeg de vereiste constanten toe voor toegang tot QnA Maker na de bovenstaande vereiste afhankelijkheden. Vervang de waarden door uw eigen waarden.
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=5-15 "Add the required constants")]
 
@@ -79,6 +79,6 @@ python publish-kb-3x.py
 Nadat de knowledge base is gepubliceerd, moet u ervoor zorgen dat via de [eindpunt-URL een antwoord wordt gegenereerd](../Tutorials/create-publish-answer.md#generating-an-answer). 
 
 > [!div class="nextstepaction"]
-> [Naslaginformatie over REST API voor QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [Naslaginformatie over REST-API voor QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)
 
 [Overzicht van QnA Maker](../Overview/overview.md)

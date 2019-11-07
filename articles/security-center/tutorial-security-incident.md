@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center-zelfstudie - Reageren op beveiligingsincidenten | Microsoft Docs
+title: Zelf studie incident respons-Azure Security Center
 description: Azure Security Center-zelfstudie - Reageren op beveiligingsincidenten
 services: security-center
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 11c2543de2b5456d253e7e905065eea14810877a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: cd3f99fe82c9a8e5e760aa3be3bed1ad5d9bd5e9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200608"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663645"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Zelfstudie: Reageren op beveiligingsincidenten
 Security Center analyseert voortdurend de werkbelasting van uw hybride cloud met behulp van geavanceerde analysen en bedreigingsinformatie, om u te waarschuwen voor schadelijke activiteiten. Bovendien kunt u waarschuwingen van andere beveiligingsproducten en -services integreren in Security Center en aangepaste waarschuwingen maken op basis van uw eigen indicatoren of informatiebronnen. Wanneer een waarschuwing is gegenereerd, moet onmiddellijk actie worden ondernomen om het probleem te onderzoeken en te herstellen. In deze zelfstudie leert u het volgende:
@@ -66,7 +66,7 @@ Security Center biedt een overkoepelend overzicht van alle beveiligingswaarschuw
 
 1. Selecteer in het hoofdmenu van Security Center onder **DETECTIE** de optie **Beveiligingswaarschuwingen**:
 
-   ![Beveiligingswaarschuwingen](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
+   ![Beveiligingswaarschuwingen](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
 2. Klik in de lijst met waarschuwingen op een beveiligingsincident, dus een verzameling waarschuwingen, voor meer informatie over dit incident. **Veiligheidsincident gedetecteerd** wordt geopend.
 

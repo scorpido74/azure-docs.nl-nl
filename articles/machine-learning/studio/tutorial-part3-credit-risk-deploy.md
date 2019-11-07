@@ -1,6 +1,6 @@
 ---
 title: "Zelf studie 3: een model voor krediet Risico's implementeren"
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Een gedetailleerde zelf studie waarin wordt getoond hoe u een predictive analytics oplossing kunt maken voor een beoordeling van een credit risico in de klassieke versie van Azure Machine Learning Studio. Deze zelfstudie is deel drie van een driedelige serie. U ontdek hierin hoe u een model implementeert als webservice.
 keywords: credit risk, predictive analytics solution,risk assessment, deploy, web service
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 34b0e783b3655aba52cc3d40957b63dd3b0e03b9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0f4ee6cfebcb5edb38b1cc7a11b070dab5d2098c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492523"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619016"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Zelf studie 3: een model voor krediet Risico's implementeren-Azure Machine Learning Studio (klassiek)
 

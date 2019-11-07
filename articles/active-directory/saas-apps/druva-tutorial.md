@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Druva | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Druva | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Druva.
 services: active-directory
 documentationCenter: na
@@ -8,212 +8,177 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: ab92b600-1fea-4905-b1c7-ef8e4d8c495c
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f034a206ca114b484bd29c72d8e53f9ae5aa498
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16b23ef246561d052935642c323c2d830e21cbe7
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103692"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "73570190"
 ---
-# <a name="tutorial-integrate-druva-with-azure-active-directory"></a>Zelfstudie: Druva integreren met Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Druva
 
-In deze zelfstudie leert u hoe u Druva integreert met Azure Active Directory (Azure AD). Wanneer u Druva met Azure AD integreert, kunt u het volgende doen:
+In deze zelf studie leert u hoe u Druva integreert met Azure Active Directory (Azure AD). Wanneer u Druva integreert met Azure AD, kunt u het volgende doen:
 
-* Beheren in Azure AD die toegang tot druva nodig heeft.
-* Kunnen uw gebruikers worden automatisch aangemeld druva nodig met hun Azure AD-accounts.
-* Beheer uw accounts in één centrale locatie - Azure portal.
+* Controle in azure AD die toegang heeft tot Druva.
+* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Druva met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie voor meer informatie over de integratie van de SaaS-app met Azure AD, [wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om te beginnen, hebt u de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, krijgt u de gratis proefversie van één maand [hier](https://azure.microsoft.com/pricing/free-trial/).
-* Ingeschakeld abonnement Druva eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Druva-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie hebt u configureren en testen van Azure AD-eenmalige aanmelding in een testomgeving. Druva ondersteunt door **SP** en **IDP** geïnitieerde eenmalige aanmelding
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+
+* Druva ondersteunt SSO die door **SP en IDP** is geïnitieerd
+
+> [!NOTE]
+> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
 
 ## <a name="adding-druva-from-the-gallery"></a>Druva uit de galerie toevoegen
 
 Om de integratie van Druva in Azure Active Directory te configureren, moet u Druva uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het navigatiedeelvenster links in de **Azure Active Directory** service.
-1. Navigeer naar **bedrijfstoepassingen** en selecteer vervolgens **alle toepassingen**.
-1. Nieuwe toepassing toevoegen, selecteert u **nieuwe toepassing**.
-1. In de **toevoegen vanuit de galerie** sectie, typt u **Druva** in het zoekvak in.
-1. Selecteer **Druva** van resultaten van het deelvenster en vervolgens de app toevoegen. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** **Druva** in het zoekvak.
+1. Selecteer **Druva** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
+## <a name="configure-and-test-azure-ad-single-sign-on-for-druva"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor Druva
 
-Configureren en testen van Azure AD-eenmalige aanmelding met Druva met behulp van een testgebruiker met de naam **Britta Simon**. Voor eenmalige aanmelding om te werken, moet u een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Druva vast te stellen.
+Azure AD SSO met Druva configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Druva.
 
-Als u wilt configureren en testen van Azure AD-eenmalige aanmelding met druva nodig, voert u de volgende bouwstenen:
+Als u Azure AD SSO wilt configureren en testen met Druva, voltooit u de volgende bouw stenen:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-sso)**  : als u wilt dat uw gebruikers kunnen deze functie gebruiken.
-2. **[Configureren van SSO Druva](#configure-druva-sso)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Testgebruiker voor Druva maken](#create-druva-test-user)** : als u een tegenhanger van Britta Simon in Druva wilt hebben die is gekoppeld aan de Azure Active Directory-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-sso)**  : als u wilt controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[DRUVA SSO configureren](#configure-druva-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    * **[Maak een Druva-test gebruiker](#create-druva-test-user)** -om een equivalent van B. Simon in Druva te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD-eenmalige aanmelding configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Druva** toepassingspagina integratie, vinden de **beheren** sectie en selecteer **eenmalige aanmelding**.
-1. Op de **selecteert u een methode voor eenmalige aanmelding** pagina, selecteert u **SAML**.
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, klikt u op het pictogram voor bewerken/pen voor **SAML-basisconfiguratie** om de instellingen te bewerken.
+1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **Druva** de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
-   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
-
-1. Op de **SAML-basisconfiguratie** sectie, als u wilt configureren van de toepassing in **IDP** gestart modus wordt de gebruiker heeft geen een stap uitvoeren omdat de app al vooraf geïntegreerd in Azure is.
+1. In de sectie **SAML-basisconfiguratie** als u wilt de toepassing in **IDP**-gestart modus configureren, hoeft de gebruiker geen stappen uit te voeren omdat de app al vooraf geïntegreerd is in Azure.
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL: `https://login.druva.com/login`
+    In het tekstvak **Aanmeldings-URL** typt u een URL: `https://login.druva.com/api/commonlogin/samlconsume`
 
-1. De Druva-toepassing verwacht dat SAML-asserties een specifieke indeling hebben. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken** op de integratiepagina van de toepassing-beheren. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op de knop **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
+1. Klik op **Opslaan**.
 
-    ![image](common/edit-attribute.png)
+1. De Druva-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-1. Bewerk in het gedeelte **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** de claims met het **pictogram Bewerken** of voeg de claims toe door met **Nieuwe claim toevoegen** het kenmerk van het SAML-token te configureren, zoals wordt weergegeven in de bovenstaande afbeelding. Hierna voert u de volgende stappen uit:
+    ![image](common/default-attributes.png)
 
-    | Name | Bronkenmerk|
+1. Daarnaast verwacht Druva toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
+
+    | Naam | Bronkenmerk|
     | ------------------- | -------------------- |
-    | insync\_auth\_token |Voer de door het token gegenereerde waarde in |
+    | emailAddress | gebruiker. e-mail adres |
+    | druva_auth_token | SSO-token gegenereerd door de DCP-beheer console, zonder aanhalings tekens.  Bijvoorbeeld: X-XXXXX-XXXX-S-A-M-P-L-E + TXOXKXEXNX =. Azure plaatst automatisch aanhalings tekens rond het verificatie token. |
 
-    a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
-    b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
+    ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-    c. Laat **Naamruimte** leeg.
+1. Op de sectie **Druva instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
-    d. Selecteer Bron bij **Kenmerk**.
-
-    e. Typ de kenmerkwaarde voor die rij in de lijst met **bronkenmerken**.
-
-    f. Klik op **OK**.
-
-    g. Klik op **Opslaan**.
-
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, in de **SAML-handtekeningcertificaat** sectie, zoeken **certificaat (Base64)** en selecteer **downloaden** voor het downloaden van het certificaat en sla deze op uw computer.
-
-   ![De link om het certificaat te downloaden](common/certificatebase64.png)
-
-1. Op de **Druva instellen** sectie, kopieert u de juiste URL's op basis van uw behoeften.
-
-   ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
-
-### <a name="configure-druva-sso"></a>Druva eenmalige aanmelding configureren
-
-1. In een ander browservenster aanmelden bij uw bedrijf Druva site als beheerder.
-
-1. Ga naar **Beheren \> Instellingen**.
-
-    ![Settings](./media/druva-tutorial/ic795091.png "Settings")
-
-1. Voer in het dialoogvenster Instellingen voor eenmalige aanmelding de volgende stappen uit:
-
-    ![Instellingen voor eenmalige aanmelding](./media/druva-tutorial/ic795092.png "Instellingen voor eenmalige aanmelding")
-
-    a. Plak in het tekstvak **Aanmeldings-URL van ID-provier** de waarde van de **Aanmeldings-URL** in die u hebt gekopieerd uit de Azure Portal.
-
-    b. Plak in het tekstvak **Afmeldings-URL van ID-provier** de waarde van de **Afmeldings-URL** in die u hebt gekopieerd uit het Azure Portal
-
-    c. Open uw base-64 gecodeerde certificaat in Kladblok, kopieer de inhoud ervan naar het klembord en plak deze naar het tekstvak **Certificaat ID-provider**
-
-    d. Om de pagina **Instellingen** te openen, klikt u op **Opslaan**.
-
-1. Op de pagina **Instellingen** klikt u op **SSO-token genereren**.
-
-    ![Settings](./media/druva-tutorial/ic795093.png "Settings")
-
-1. Voer in het dialoogvenster **Verificatietoken voor eenmalige aanmelding** de volgende stappen uit:
-
-    ![SSO-token](./media/druva-tutorial/ic795094.png "SSO-token")
-
-    a. Klik op **Kopiëren**, plak de gekopieerde waarde in het **Waarde**-tekstvak in de sectie **Kenmerk toevoegen** in de Azure Portal.
-
-    b. Klik op **Sluiten**.
+    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in Azure portal Britta Simon genoemd.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal, **Azure Active Directory**, selecteer **gebruikers**, en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. In de **gebruiker** eigenschappen als volgt te werk:
-   1. Voer in het veld **Naam** `Britta Simon` in.  
-   1. In de **gebruikersnaam** en voer de username@companydomain.extension. Bijvoorbeeld `BrittaSimon@contoso.com`.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan druva nodig.
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Druva.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
 1. Selecteer in de lijst met toepassingen **Druva**.
-1. Zoek in de pagina overzicht van de app, de **beheren** sectie en selecteer **gebruikers en groepen**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in de **toevoegen toewijzing** dialoogvenster.
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
     ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. In de **gebruikers en groepen** dialoogvenster, selecteer **Britta Simon** uit de lijst met gebruikers, klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
-1. Als u een waarde voor de rol in het SAML-verklaring verwacht de **rol selecteren** dialoogvenster, selecteer de juiste rol voor de gebruiker in de lijst en klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+
+## <a name="configure-druva-sso"></a>Druva SSO configureren
+
+1. Meld u in een ander webbrowser venster als beheerder aan bij uw Druva-bedrijfs site.
+
+1. Klik op het logo van de Druva in de linkerbovenhoek en klik vervolgens op **Druva Cloud instellingen**.
+
+    ![Instellingen](./media/druva-tutorial/ic795091.png "Instellingen")
+
+1. Klik op het tabblad **eenmalige aanmelding** op **bewerken**.
+
+    ![Instellingen voor eenmalige aanmelding](./media/druva-tutorial/ic795092.png "Instellingen voor eenmalige aanmelding")
+
+1. Voer de volgende stappen uit op de pagina **instellingen voor eenmalige aanmelding bewerken** :
+
+    ![Instellingen voor eenmalige aanmelding](./media/druva-tutorial/ic795095.png "Instellingen voor eenmalige aanmelding")
+
+    1. Plak in het tekstvak **Aanmeldings-URL van ID-provier** de waarde van de **Aanmeldings-URL** in die u hebt gekopieerd uit de Azure Portal.
+
+    1. Open uw base-64 gecodeerde certificaat in Kladblok, kopieer de inhoud ervan naar het klembord en plak deze naar het tekstvak **Certificaat ID-provider**
+
+       > [!NOTE]
+       > Als u eenmalige aanmelding voor beheerders wilt inschakelen, selecteert u **beheerders meldt zich aan bij Druva Cloud via SSO-provider** en **staat u failsafe toegang tot Druva Cloud Administrators (aanbevolen)** selectie vakjes toe. Druva raadt aan om failsafe in te scha kelen **voor beheerders** , zodat ze toegang hebben tot de DCP-console in het geval van storingen in IDP. Ook kunnen de beheerders het SSO-en DCP-wacht woord gebruiken om toegang te krijgen tot de DCP-console.
+
+    1. Klik op **Opslaan**. Hierdoor is de toegang tot Druva-Cloud platform via SSO mogelijk.
 
 ### <a name="create-druva-test-user"></a>Druva-testgebruiker maken
 
-Als u wilt dat Azure AD-gebruikers kunnen zich aanmelden bij druva nodig, moeten ze worden ingericht voor druva nodig. In het geval van Druva is de inrichting een handmatige taak.
+In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in Druva. Druva biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Druva, wordt er een nieuwe gemaakt na verificatie.
 
-**Voer de volgende stappen uit om de gebruikersinrichting te configureren:**
+## <a name="test-sso"></a>SSO testen
 
-1. Aanmelden bij uw **Druva** bedrijf site als administrator.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-1. Ga naar **Beheren \> Gebruikers**.
+Wanneer u op de tegel Druva in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Druva waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-    ![Gebruikers beheren](./media/druva-tutorial/ic795097.png "Gebruikers beheren")
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-1. Klik op **Nieuwe maken**.
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-    ![Gebruikers beheren](./media/druva-tutorial/ic795098.png "Gebruikers beheren")
-
-1. In het dialoogvenster Nieuwe gebruiker maken voert u de volgende stappen uit:
-
-    ![Nieuwe gebruiker maken](./media/druva-tutorial/ic795099.png "Nieuwe gebruiker maken")
-
-    a. In de **e-mailadres** tekstvak, voer het e-mailadres van gebruiker, zoals **brittasimon\@contoso.com**.
-
-    b. Voer in het tekstvak **Volledige naam** de volledige naam van de gebruiker in, bijvoorbeeld **Britta Simon**.
-
-    c. Klik op **Gebruiker maken**.
-
-> [!NOTE]
-> U kunt alle andere door Druva geleverde hulpprogramma's of API's voor Druva-gebruikersaccounts gebruiken voor het inrichten van gebruikersaccounts van Azure Active Directory.
-
-### <a name="test-sso"></a>Test eenmalige aanmelding
-
-Wanneer u de tegel Druva in het toegangsvenster selecteert, moet u worden automatisch aangemeld bij de druva nodig waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
-
-## <a name="additional-resources"></a>Aanvullende resources
-
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Probeer Druva met Azure AD](https://aad.portal.azure.com/)

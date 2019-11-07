@@ -1,5 +1,5 @@
 ---
-title: Stapsgewijs een tabel kopiëren met behulp van Azure Data Factory | Microsoft Docs
+title: 'Stapsgewijs een tabel kopiëren met behulp van Azure Data Factory '
 description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee gegevens uit een Azure SQL-database stapsgewijs worden gekopieerd naar Azure Blob Storage.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 604b859bc144331550db9b71e6b216e35fd2d88a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bb1ddbddfb2e06f394ac2f57b10e18893879b51b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140609"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683345"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Stapsgewijs gegevens uit een Azure SQL-database laden in Azure Blob Storage
 In deze zelfstudie maakt u een Azure-gegevensfactory met een pijplijn waarmee deltagegevens uit een tabel in een Azure SQL-database worden geladen naar Azure Blob Storage. 
@@ -25,12 +25,12 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Bereid de gegevensopslag voor om de grenswaarde in op te slaan.
-> * Een data factory maken.
+> * Maak een gegevensfactory.
 > * Maak gekoppelde services. 
 > * Bron-, sink- en grenswaardegegevenssets maken.
 > * Maak een pijplijn.
 > * Voer de pijplijn uit.
-> * De pijplijnuitvoering controleert. 
+> * Controleer de pijplijnuitvoering. 
 
 ## <a name="overview"></a>Overzicht
 Hier volgt de diagramoplossing op hoog niveau: 
@@ -145,7 +145,7 @@ WHERE [TableName] = @TableName
 END
 ```
 
-## <a name="create-a-data-factory"></a>Data factory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 1. Definieer een variabele voor de naam van de resourcegroep die u later gaat gebruiken in PowerShell-opdrachten. Kopieer de tekst van de volgende opdracht naar PowerShell, geef tussen dubbele aanhalingstekens een naam op voor de [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en voer de opdracht uit. Een voorbeeld is `"adfrg"`. 
    
      ```powershell
@@ -189,14 +189,14 @@ Houd rekening met de volgende punten:
     ```
 
 * Als u Data Factory-exemplaren wilt maken, moet het gebruikersaccount waarmee u zich bij Azure aanmeldt, lid zijn van de rollen Inzender of Eigenaar, of moet dit een beheerder van het Azure-abonnement zijn.
-* Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Storage, SQL Database, enzovoort) en berekeningen (Azure HDInsight, enzovoort) die worden gebruikt door de data factory, kunnen zich in andere regio's bevinden.
+* Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Storage, SQL Database, enzovoort) en berekeningen (Azure HDInsight, enzovoort) die worden gebruikt door de data factory, kunnen zich in andere regio's bevinden.
 
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze sectie maakt u gekoppelde services in uw opslagaccount en de SQL-database. 
 
 ### <a name="create-a-storage-linked-service"></a>Een gekoppelde Storage-service maken
-1. Maak een JSON-bestand met de naam AzureStorageLinkedService.json in de map C:\ADF folder met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang `<accountName>` en `<accountKey>` door de naam en sleutel van uw opslagaccount voordat u het bestand opslaat.
+1. Maak een JSON-bestand met de naam AzureStorageLinkedService.json in de map C:\ADF folder met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang `<accountName>` en `<accountKey>` door de naam en sleutel van uw opslag account voordat u het bestand opslaat.
 
     ```json
     {
@@ -230,7 +230,7 @@ U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en co
     ```
 
 ### <a name="create-a-sql-database-linked-service"></a>Een gekoppelde SQL Database-service maken
-1. Maak een JSON-bestand met de naam AzureSQLDatabaseLinkedService.json in de map C:\ADF folder met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang voordat u het bestand opslaat &lt;server&gt;, &lt;database&gt;, &lt;user id&gt; en &lt;password&gt; door de naam van uw server, database, gebruikers-id en wachtwoord. 
+1. Maak een JSON-bestand met de naam AzureSQLDatabaseLinkedService.json in de map C:\ADF folder met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang &lt;server&gt;, &lt;data base&gt;, &lt;gebruikers-id&gt;en &lt;wachtwoord&gt; met de naam van uw server, Data Base, gebruikers-ID en wacht woord voordat u het bestand opslaat. 
 
     ```json
     {
@@ -728,12 +728,12 @@ In deze zelfstudie hebt u de volgende stappen uitgevoerd:
 
 > [!div class="checklist"]
 > * Bereid de gegevensopslag voor om de grenswaarde in op te slaan. 
-> * Een data factory maken.
+> * Maak een gegevensfactory.
 > * Maak gekoppelde services. 
 > * Bron-, sink- en grenswaardegegevenssets maken.
 > * Maak een pijplijn.
 > * Voer de pijplijn uit.
-> * De pijplijnuitvoering controleert. 
+> * Controleer de pijplijnuitvoering. 
 
 In deze zelfstudie heeft de pijplijn gegevens uit één tabel in een SQL-database naar een Blob-opslag gekopieerd. Ga door naar de volgende zelfstudie voor meer informatie over het kopiëren van gegevens uit meerdere tabellen in een on-premises SQL Server-database naar een SQL-database. 
 

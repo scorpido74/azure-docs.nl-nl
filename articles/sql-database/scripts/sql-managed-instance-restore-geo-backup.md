@@ -1,5 +1,5 @@
 ---
-title: Power shell-voor beeld geo-backup herstellen-Azure SQL Database | Microsoft Docs
+title: Power shell-voor beeld geo-backup-Azure SQL Database herstellen
 description: Azure PowerShell voorbeeld script om een Azure SQL Managed instance-data base te herstellen vanuit een geografisch redundante back-up.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: b6ad93d3b711726edd6891e5f6da2c8eef99d531
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9de8819e82db12cb5625a449e4ea5bf2f028a44d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569706"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691412"
 ---
 # <a name="use-powershell-to-restore-a-managed-instance-database-to-another-geo-region"></a>Power shell gebruiken om een Data Base van een beheerd exemplaar te herstellen naar een andere geo-regio
 
@@ -73,10 +73,10 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/New-AzResourceGroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/New-AzResourceGroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [Get-AzSqlInstanceDatabaseGeoBackup](/powershell/module/az.sql/Get-AzSqlInstanceDatabaseGeoBackup) | Hiermee maakt u een geografisch redundante back-up van de data base van het beheerde exemplaar. |
 | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | Hiermee maakt u een Data Base op een beheerd exemplaar van geo-back-up. |
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

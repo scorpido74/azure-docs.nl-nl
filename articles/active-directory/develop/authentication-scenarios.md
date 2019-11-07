@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3d87ab57a5cf3bcd768a28f7867dac37371570b
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 1ab2180c54f07ff5009e2c57d8522f2eb0b81aad
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200362"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718382"
 ---
 # <a name="authentication-basics"></a>Basisbeginselen van verificatie
 
@@ -53,7 +53,7 @@ Azure AD biedt ook Azure Active Directory B2C, zodat organisaties zich kunnen aa
 
 ### <a name="security-tokens"></a>Beveiligings tokens
 
-Beveiligings tokens bevatten informatie over gebruikers en apps. Azure AD maakt gebruik van JSon-tokens (JWTs) die claims bevatten. Een claim biedt bevestigingen over één entiteit naar een andere. Toepassingen kunnen claims gebruiken voor verschillende taken, zoals:
+Beveiligings tokens bevatten informatie over gebruikers en apps. Azure AD maakt gebruik van JSON-tokens (JWTs) die claims bevatten. Een claim biedt bevestigingen over één entiteit naar een andere. Toepassingen kunnen claims gebruiken voor verschillende taken, zoals:
 
 * Het token valideren
 * De Directory Tenant van de houder identificeren
@@ -83,7 +83,7 @@ Toepassingen kunnen gebruikers zelf aanmelden of zich aanmelden bij een id-provi
 Als een id-provider weet dat een gebruiker toegang heeft tot een bepaalde app, moeten zowel de gebruiker als de toepassing zijn geregistreerd bij de ID-provider. Wanneer u uw toepassing registreert bij Azure AD, geeft u een identiteits configuratie op voor uw toepassing, zodat deze kan worden geïntegreerd met Azure AD. Door de app te registreren, kunt u het volgende doen:
 
 - Pas de huis stijl van uw toepassing aan in het dialoog venster voor aanmelden. Dit is belang rijk omdat dit de eerste ervaring is die een gebruiker heeft met uw app.
-- Bepaal of u gebruikers alleen wilt laten aanmelden als ze tot uw organisatie behoren. Dit is één Tenant toepassing. Of sta gebruikers toe om zich aan te melden met een werk-of school account. Dit is een toepassing met meerdere tenants. U kunt ook persoonlijke micro soft-accounts of een sociaal account van een gekoppelde, Google, enzovoort toestaan.
+- Bepaal of u gebruikers alleen wilt laten aanmelden als ze tot uw organisatie behoren. Dit is één Tenant toepassing. Of sta gebruikers toe om zich aan te melden met een werk-of school account. Dit is een toepassing met meerdere tenants. U kunt ook persoonlijke micro soft-accounts of een sociaal account van LinkedIn, Google, enzovoort toestaan.
 - machtigingen voor het bereik van aanvragen. U kunt bijvoorbeeld het bereik ' gebruiker. read ' aanvragen, dat toestemming geeft om het profiel van de aangemelde gebruiker te lezen.
 - Definieer bereiken waarmee de toegang tot uw web-API wordt gedefinieerd. Wanneer een app toegang wil krijgen tot uw API, moet dit doorgaans machtigingen aanvragen voor de bereiken die u definieert.
 - deel een geheim met Azure AD om de identiteit van de app aan Azure AD te bewijzen.  Dit is van belang voor het geval dat de app een vertrouwelijke client toepassing is. Een vertrouwelijke client toepassing is een toepassing die referenties veilig kan bevatten. Er is een vertrouwde back-end-server nodig om de referenties op te slaan.
@@ -98,8 +98,9 @@ Het micro soft Identity-platform:
 * Bevat alle gegevens die nodig zijn voor de ondersteuning van verificatie tijdens runtime.
 * Bevat alle gegevens om te bepalen welke resources een app nodig heeft voor toegang en onder welke omstandigheden een bepaalde aanvraag moet worden afgehandeld.
 * Biedt een infra structuur voor het implementeren van app-inrichting in de Tenant van de app-ontwikkelaar en op elke andere Azure AD-Tenant.
+* Verwerkt de toestemming van de gebruiker tijdens de tijd van de token aanvraag en vereenvoudigt de dynamische inrichting van apps op tenants
 
-Verwerk de toestemming van de gebruiker tijdens de tijd van de token aanvraag en vereenvoudigt het dynamisch inrichten van apps via tenants toestemming is het proces van een resource-eigenaar die toestemming verleent aan een client toepassing voor toegang tot beveiligde bronnen, onder specifieke machtigingen, op naam van de resource-eigenaar. Het micro soft Identity-platform:
+Toestemming is het proces van een resource-eigenaar die toestemming verleent voor een client toepassing om toegang te krijgen tot beveiligde bronnen, onder specifieke machtigingen, namens de eigenaar van de resource. Het micro soft Identity-platform:
 
 * Stelt gebruikers en beheerders in staat om de app dynamisch toestemming te geven of weigeren om resources namens hen te gebruiken.
 * Stelt beheerders in staat om te beslissen wat apps mogen doen, welke gebruikers gebruik mogen maken van specifieke apps en hoe de directoryresources kunnen worden benaderd.

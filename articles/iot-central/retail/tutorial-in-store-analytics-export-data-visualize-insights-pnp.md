@@ -3,6 +3,7 @@ title: Gegevens exporteren en inzichten visualiseren in azure IoT Central | Micr
 description: In deze zelf studie leert u hoe u gegevens exporteert uit IoT Central en inzichten kunt visualiseren in een Power BI dash board.
 services: iot-central
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.custom:
 - iot-storeAnalytics-checkout
@@ -10,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 10/22/2019
-ms.openlocfilehash: 913a87df47121c18fcd4f83aa8d5a24b4041ce19
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cf1c6e926b2406d960762a9d597b28a17f6c316
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495132"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615286"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Zelf studie: gegevens exporteren uit Azure IoT Central en inzichten in Power BI visualiseren
 

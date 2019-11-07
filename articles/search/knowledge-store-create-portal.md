@@ -1,25 +1,24 @@
 ---
-title: Een kennis archief maken in de Azure Portal
+title: Een kennis archief maken (preview) in de Azure Portal
 titleSuffix: Azure Cognitive Search
-description: Gebruik de wizard gegevens importeren om een kennis archief te maken dat wordt gebruikt voor het behouden van verrijkte inhoud. Verbinding maken met een kennis Archief voor analyse van andere apps of verrijkte inhoud verzenden naar downstream-processen.
+description: Gebruik de wizard gegevens importeren om een kennis archief te maken dat wordt gebruikt voor het behouden van verrijkte inhoud. Verbinding maken met een kennis Archief voor analyse van andere apps of verrijkte inhoud verzenden naar downstream-processen. Deze functie is momenteel beschikbaar als openbare preview-versie.
 author: lisaleib
 manager: nitinme
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 689b5aa0cd8a5fb310925b2c52baeec6860af0d5
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: HT
+ms.openlocfilehash: 56053a942604a6f1cb935e6bddcae85ffc5a9e54
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607086"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720105"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Snelstartgids: een Azure Cognitive Search-kennis archief maken in de Azure Portal
 
-> [!Note]
-> Het kennis archief is in Preview en mag niet worden gebruikt in de productie omgeving. Zowel de Azure Portal als de [zoek rest API versie 2019-05-06-preview](search-api-preview.md) bieden deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
->
+> [!IMPORTANT] 
+> Het kennis archief is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. 
 
 Het kennis archief is een functie van Azure Cognitive Search die de uitvoer van een cognitieve vaardig heden-pijp lijn voor volgende analyses of downstream-verwerking persistent maakt. 
 

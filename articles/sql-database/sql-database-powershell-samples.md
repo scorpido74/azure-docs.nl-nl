@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-scriptvoorbeelden voor SQL Database | Microsoft Docs
+title: Azure PowerShell script voorbeelden voor SQL Database
 description: Azure PowerShell-scriptvoorbeelden waarmee u Azure SQL Database-servers, elastische pools, databases en firewalls kunt maken en beheren.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 27b4a6f5614b79b2e9d8f3730441d702f2d7cc77
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 17b3d23f90f77a3db68644e76edf340284daa801
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933265"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687652"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure PowerShell-voorbeelden voor Azure SQL Database
 

@@ -1,5 +1,5 @@
 ---
-title: CLI-voorbeeld - Een Azure SQL-database maken | Microsoft Docs
+title: CLI-voor beeld-een Azure-SQL database maken
 description: Gebruik dit Azure CLI-voorbeeldscript voor het maken van een SQL-database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: f6051c5c83f43f20e453b5f87aabb1a80d7a0487
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: aa13e5f245a34387eee5fae48c896163cc2f7c4a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569987"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691700"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>CLI gebruiken om één Azure SQL-database te maken en een firewallregel te configureren
 
@@ -47,10 +47,10 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Hiermee maakt u een SQL Database-server die één database of elastische pool host. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Hiermee maakt u een SQL Database-server die een individuele database of elastische pool host. |
 | [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Hiermee wordt een firewall-regel gemaakt om toegang te verlenen tot alle individuele databases en elastische pools op de SQL Database-server vanuit het ingevoerde IP-adresbereik. |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Maakt één database of elastische pool. |
-| [az group delete](/cli/azure/resource#az-resource-delete) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Maakt een individuele database of elastische pool. |
+| [az group delete](/cli/azure/resource#az-resource-delete) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

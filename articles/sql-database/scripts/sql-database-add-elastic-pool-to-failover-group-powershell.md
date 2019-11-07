@@ -1,5 +1,5 @@
 ---
-title: Power shell-voor beeld-Failovergroep-Azure SQL Database elastische pool | Microsoft Docs
+title: Power shell-voor beeld-Failovergroep Azure SQL Database elastische pool
 description: Azure PowerShell voorbeeld script om een Azure SQL Database elastische pool te maken, deze toe te voegen aan een failovergroep en failover te testen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 098752397bbd51bb271230dfa9d95683ad9141dd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a8c9b7dbddba59408808e1c33de045ad0b7ffd7a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956283"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691788"
 ---
 # <a name="use-powershell-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Power shell gebruiken om een Azure SQL Database elastische pool toe te voegen aan een failovergroep 
 
@@ -42,11 +42,11 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewall regel voor een logische server. | 
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een nieuwe Azure SQL Database afzonderlijke data base. | 

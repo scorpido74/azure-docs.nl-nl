@@ -1,5 +1,5 @@
 ---
-title: Voor beelden van Jupyter-notebooks met behulp van een NOAA-geopende gegevensset
+title: Voor beelden van Jupyter-notebooks met NOAA-gegevens
 titleSuffix: Azure Open Datasets
 description: Gebruik voor beelden van Jupyter-notebooks voor Azure open-gegevens sets voor meer informatie over het laden van open gegevens sets en het gebruik ervan om voorbeeld gegevens te verrijken. Technieken zijn het gebruik van Spark en Pandas voor het verwerken van gegevens.
 ms.service: open-datasets
@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
-ms.openlocfilehash: 2ccdb7adcae40d22a36fbfb47fba6e4c87b3349a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 8b96a35db91a282be1fb5e4c6143e6bd0a0203f2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496571"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606144"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Voor beelden van Jupyter-notebooks laten zien hoe gegevens kunnen worden verrijkt met open gegevens sets 
 In het voor beeld Jupyter-notebooks voor Azure open gegevens sets kunt u zien hoe u open gegevens sets laadt en hoe u deze gebruikt voor het verrijken van demo gegevens Technieken zijn het gebruik van Apache Spark en Pandas voor het verwerken van gegevens.
@@ -40,6 +40,6 @@ In het voor beeld Jupyter-notebooks voor Azure open gegevens sets kunt u zien ho
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Zelf studie: regressie modellen met automatische machine learning en een open gegevensset](tutorial-opendatasets-automl.md)
+* [Zelf studie: regressie modellen met automatische machine learning en een open gegevensset](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Python-SDK voor open gegevens sets](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Azure open data sets Catalog](https://azure.microsoft.com/services/open-datasets/catalog/)

@@ -1,22 +1,22 @@
 ---
-title: Aangepaste gebeurtenissen verzenden naar het webeindpunt - Event Grid, Azure Portal
-description: Gebruik Azure Event Grid en Azure Portal om een aangepast onderwerp te publiceren en u op gebeurtenissen voor dat onderwerp te abonneren. De gebeurtenissen worden verwerkt door een web-app.
+title: 'Snelstartgids: aangepaste gebeurtenissen verzenden naar web endpoint-Event Grid, Azure Portal'
+description: 'Snelstartgids: gebruik Azure Event Grid en Azure Portal om een aangepast onderwerp te publiceren en u te abonneren op gebeurtenissen voor dat onderwerp. De gebeurtenissen worden verwerkt door een web-app.'
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 03/27/2019
+ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: afb53ed013af6cd1db2f6ff3d25c350aa2b4f1e8
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 398e63ec9a8b9e1b16d8ffcee538351fc6572de9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638554"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720787"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Snelstartgids: Aangepaste gebeurtenissen routeren naar het webeindpunt met behulp van Azure Portal en Event Grid
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Snelstartgids: aangepaste gebeurtenissen naar een webeindpunt door sturen met de Azure Portal en Event Grid
 
 Azure Event Grid is een gebeurtenisservice voor de cloud. In dit artikel gebruikt u Azure Portal om een aangepast onderwerp te maken, u op het aangepaste onderwerp te abonneren, en de gebeurtenis te activeren om het resultaat weer te geven. Normaal gesproken verzendt u gebeurtenissen naar een eindpunt dat de gebeurtenisgegevens verwerkt en vervolgens in actie komt. Ter vereenvoudiging van dit artikel stuurt u hier de gebeurtenissen echter naar een web-app die de berichten verzamelt en weergeeft.
 
@@ -80,7 +80,7 @@ U abonneert u op een Event Grid-onderwerp om Event Grid te laten weten welke geb
    ![Gebeurtenisabonnement toevoegen](./media/custom-event-quickstart-portal/new-event-subscription.png)
 2. Voer op de pagina **gebeurtenis abonnement maken** de volgende stappen uit:
     1. Voer een **naam** in voor het gebeurtenis abonnement.
-    3. Selecteer een webhook voor het **type eind punt**. 
+    3. Selecteer een **webhook** voor het **type eind punt**. 
     4. Kies **een eind punt selecteren**. 
 
        ![Waarden opgeven voor gebeurtenisabonnement](./media/custom-event-quickstart-portal/provide-subscription-values.png)
@@ -100,16 +100,16 @@ Nu gaan we een gebeurtenis activeren om te zien hoe het bericht via Event Grid n
 Het eerste voorbeeld maakt gebruik van Azure CLI. In dit voorbeeld worden de URL en de sleutel voor het aangepaste onderwerp, plus de voorbeeldgegevens van de gebeurtenis opgehaald. Gebruik de naam van het aangepaste onderwerp voor `<topic name>`. Hiermee worden voorbeeldgebeurtenisgegevens gemaakt. Het element `data` van de JSON is de nettolading van de gebeurtenis. Elke juist opgemaakte JSON kan in dit veld worden ingevoerd. U kunt het onderwerpveld ook gebruiken voor geavanceerd routeren en filteren. CURL is een hulpprogramma waarmee HTTP-aanvragen worden verzonden.
 
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 1. Selecteer **Cloud shell**In het Azure Portal. Selecteer **bash** in de linkerbovenhoek van het Cloud shell-venster. 
 
     ![Cloud Shell-bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
-1. Voer de volgende opdracht uit om het **eind punt** voor het onderwerp op te halen: Nadat u de opdracht hebt gekopieerd en geplakt, werkt u de onderwerpnaam en de naam van de **resource groep** bij voordat u de opdracht uitvoert. 
+1. Voer de volgende opdracht uit om het **eind punt** voor het onderwerp op te halen: nadat u de opdracht hebt gekopieerd en geplakt, werkt u de **onderwerpnaam** en de naam van de **resource groep** bij voordat u de opdracht uitvoert. 
 
     ```azurecli
     endpoint=$(az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv)
     ```
-2. Voer de volgende opdracht uit om de **sleutel** voor het aangepaste onderwerp op te halen: Nadat u de opdracht hebt gekopieerd en geplakt, werkt u de onderwerpnaam en de naam van de **resource groep** bij voordat u de opdracht uitvoert. 
+2. Voer de volgende opdracht uit om de **sleutel** op te halen voor het aangepaste onderwerp: nadat u de opdracht hebt gekopieerd en geplakt, werkt u de **onderwerpnaam** en de naam van de **resource groep** bij voordat u de opdracht uitvoert. 
 
     ```azurecli
     key=$(az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv)
@@ -128,8 +128,8 @@ Het eerste voorbeeld maakt gebruik van Azure CLI. In dit voorbeeld worden de URL
 ### <a name="azure-powershell"></a>Azure PowerShell
 In het tweede voorbeeld wordt PowerShell gebruikt om gelijksoortige stappen uit te voeren.
 
-1. Selecteer in de Azure Portal **Cloud shell** (ga https://shell.azure.com/) naar. Selecteer **Power shell** in de linkerbovenhoek van het venster Cloud shell. Zie de **Cloud shell** venster afbeelding voor beeld in de sectie Azure cli.
-2. Stel de volgende variabelen in. Nadat u elke opdracht hebt gekopieerd en geplakt, werkt u de onderwerpnaam en de naam van de **resource groep** bij voordat u de opdracht uitvoert:
+1. Selecteer in de Azure Portal **Cloud shell** (Ga ook naar https://shell.azure.com/). Selecteer **Power shell** in de linkerbovenhoek van het venster Cloud shell. Zie de **Cloud shell** venster afbeelding voor beeld in de sectie Azure cli.
+2. Stel de volgende variabelen in. Nadat u elke opdracht hebt gekopieerd en geplakt, werkt u de **onderwerpnaam** en de naam van de **resource groep** bij voordat u de opdracht uitvoert:
 
     ```powershell
     $resourceGroupName = <resource group name>

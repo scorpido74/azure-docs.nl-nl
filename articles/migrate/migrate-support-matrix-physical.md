@@ -7,16 +7,19 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 56e49ab60733c9c0a813ca6e46712bcd8052a2ef
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 902e89305aa24e8cbb6d2dd84d6a61c710d11637
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518149"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715372"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Ondersteunings matrix voor de evaluatie en migratie van fysieke servers
 
 U kunt de [Azure migrate-service](migrate-overview.md) gebruiken voor het beoordelen en migreren van machines naar de Microsoft Azure Cloud. In dit artikel vindt u een overzicht van de ondersteunings instellingen en beperkingen voor het beoordelen en migreren van on-premises fysieke servers.
+
+> [!NOTE]
+> Als hier functies worden vermeld die u nog niet ziet in de Azure Migrate Portal, loopt u vast. Deze worden in de volgende week weer gegeven.
 
 
 ## <a name="physical-server-scenarios"></a>Scenario's voor fysieke servers

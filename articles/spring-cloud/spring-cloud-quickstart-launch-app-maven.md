@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 440dac3ff26c838458f91e453e2c62fc0953d4f6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: cb6032938379b632b743827153c61fd3e18c1cfe
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686185"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721596"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Snelstartgids: een Azure lente-Cloud-app starten met de Maven-invoeg toepassing
 
@@ -27,7 +27,8 @@ In deze Quick Start leert u het volgende:
 > * Een openbaar eind punt toewijzen voor uw toepassing
 
 >[!Note]
-> > Azure lente Cloud wordt momenteel aangeboden als een open bare preview. Met open bare preview-aanbiedingen kunnen klanten experimenteren met nieuwe functies vóór hun officiële release.  Open bare preview-functies en-services zijn niet bedoeld voor gebruik in productie omgevingen.  Voor meer informatie over ondersteuning tijdens previews, kunt u een [ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)bestand.
+> Azure lente Cloud wordt momenteel aangeboden als een open bare preview. Met open bare preview-aanbiedingen kunnen klanten experimenteren met nieuwe functies vóór hun officiële release.  Open bare preview-functies en-services zijn niet bedoeld voor gebruik in productie omgevingen.  Raadpleeg voor meer informatie over ondersteuning tijdens previews onze [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) of bestand a [ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) voor meer informatie.
+
 
 >[!TIP]
 > Azure Cloud Shell is een gratis interactieve shell die u kunt gebruiken om de opdrachten in dit artikel uit te voeren. Het heeft algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd, met inbegrip van de nieuwste versies van Git, de Java Development Kit (JDK), maven en de Azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u [Azure Cloud shell](https://shell.azure.com). Zie [overzicht van Azure Cloud shell](../cloud-shell/overview.md)voor meer informatie.

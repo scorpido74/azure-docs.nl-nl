@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: een pijplijn maken met een Resource Manager-sjabloon | Microsoft Docs'
+title: 'Zelf studie: een pijp lijn maken met de Resource Manager-sjabloon '
 description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn met behulp van een Azure Resource Manager-sjabloon. Met deze pijplijn worden gegevens vanuit een Azure-blobopslag gekopieerd naar een Azure SQL-database.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 311f2b6f6f974476aa3c33e668e173ced0274f71
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a4f1c2d128e41e13a6e57732e8f97ff4c250d0a1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140326"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682910"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Zelfstudie: een Azure Resource Manager-sjabloon gebruiken voor het maken van een Data Factory-pijplijn om gegevens te kopiëren 
 > [!div class="op_single_selector"]
@@ -28,20 +28,20 @@ ms.locfileid: "70140326"
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-sjabloon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
-> * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+> * [.NET-API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
 
 > [!NOTE]
 > Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u de [zelfstudie over kopieeractiviteiten](../quickstart-create-data-factory-dot-net.md). 
 
-In deze zelfstudie wordt uitgelegd hoe u een Azure Resource Manager-sjabloon maakt om een Azure-gegevensfactory te maken. In de gegevenspijplijn in deze zelfstudie worden gegevens van een brongegevensarchief gekopieerd naar een doelgegevensarchief. Er worden geen invoergegevens mee getransformeerd in uitvoergegevens. Meer informatie over het transformeren van gegevens met behulp van Azure Data Factory vindt u in [Zelfstudie: een pijplijn bouwen om gegevens te transformeren met een Hadoop-cluster](data-factory-build-your-first-pipeline.md).
+In deze zelfstudie wordt uitgelegd hoe u een Azure Resource Manager-sjabloon maakt om een Azure-gegevensfactory te maken. In de gegevenspijplijn in deze zelfstudie worden gegevens van een brongegevensarchief gekopieerd naar een doelgegevensarchief. Er worden geen invoergegevens mee getransformeerd in uitvoergegevens. Zie [Zelfstudie: een pijplijn maken om gegevens te transformeren met een Hadoop-cluster](data-factory-build-your-first-pipeline.md) voor meer informatie over het transformeren van gegevens met Azure Data Factory.
 
 In deze zelfstudie maakt u een pijplijn met één activiteit erin: kopieeractiviteit. De kopieeractiviteit in Data Factory kopieert gegevens uit een ondersteund gegevensarchief naar een ondersteund sinkgegevensarchief. Zie [Ondersteunde gegevensarchieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die worden ondersteund als bron en als sink. De activiteit wordt mogelijk gemaakt door een wereldwijd beschikbare service waarmee gegevens veilig, betrouwbaar en schaalbaar kunnen worden gekopieerd tussen verschillende gegevensarchieven. Zie het artikel [Activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) voor meer informatie over kopieeractiviteiten.
 
 Een pijplijn kan meer dan één activiteit hebben. Ook kunt u twee activiteiten koppelen (de ene activiteit na de andere laten uitvoeren) door de uitvoergegevensset van één activiteit in te stellen als invoergegevensset voor een andere activiteit. Zie [Meerdere activiteiten in een pijplijn](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) voor meer informatie. 
 
 > [!NOTE] 
-> In de gegevenspijplijn in deze zelfstudie worden gegevens van een brongegevensarchief gekopieerd naar een doelgegevensarchief. Meer informatie over het transformeren van gegevens met behulp van Azure Data Factory vindt u in [Zelfstudie: een pijplijn bouwen om gegevens te transformeren met een Hadoop-cluster](data-factory-build-your-first-pipeline.md). 
+> In de gegevenspijplijn in deze zelfstudie worden gegevens van een brongegevensarchief gekopieerd naar een doelgegevensarchief. Zie [Zelfstudie: een pijplijn maken om gegevens te transformeren met een Hadoop-cluster](data-factory-build-your-first-pipeline.md) voor meer informatie over het transformeren van gegevens met Azure Data Factory. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -54,7 +54,7 @@ Een pijplijn kan meer dan één activiteit hebben. Ook kunt u twee activiteiten 
 ## <a name="in-this-tutorial"></a>In deze zelfstudie
 In deze zelfstudie maakt u een gegevensfactory met de volgende Data Factory-entiteiten:
 
-| Entiteit | Description |
+| Entiteit | Beschrijving |
 | --- | --- |
 | Een gekoppelde Azure Storage-service |Koppelt uw Azure Storage-account aan de gegevensfactory. Azure Storage is de brongegevensopslag en Azure SQL-database de opvanggegevensopslag voor de kopieerbewerking in de handleiding. Het geeft de opslagaccount aan die de invoergegevens voor de kopieerbewerking bevat. |
 | Een gekoppelde Azure SQL Database-service |Koppelt uw Azure SQL-database aan de gegevensfactory. Het geeft de Azure SQL-database aan die de uitvoergegevens voor de kopieerbewerking bevat. |

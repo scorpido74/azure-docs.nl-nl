@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 1186fec8d50d7e986d1c613cd96f741c34ca181a
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.date: 11/05/2019
+ms.openlocfilehash: 65e9e6235fd974a7731fa5e86322793f1b680ad9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372620"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721307"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Meer informatie over Digital Apparaatdubbels-object modellen en ruimtelijke Intelligence-grafiek
 
@@ -23,7 +23,7 @@ Digital Apparaatdubbels-object modellen beschrijven domein-specifieke concepten,
 
 Met Digital Apparaatdubbels-object modellen en een Ontology op locatie kunt u een _ruimtelijke grafiek_vullen. Ruimtelijke grafieken zijn virtuele voors tellingen van de vele relaties tussen ruimten, apparaten en personen die relevant zijn voor een IoT-oplossing. Dit diagram toont een voor beeld van een ruimtelijke grafiek die gebruikmaakt van de Ontology van een slimme build.
 
-[![Digital Apparaatdubbels ruimtelijk Graph-gebouw](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
+[![Digital Apparaatdubbels ruimtelijke Graph built](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
 
 Het ruimtelijke diagram brengt spaties, apparaten, Sens oren en gebruikers samen. Elk wordt aan elkaar gekoppeld op een manier die de echte wereld modelt. In dit voor beeld heeft de locatie 43 vier etages, elk met veel verschillende gebieden. Gebruikers zijn gekoppeld aan hun werk station en hebben toegang tot delen van de grafiek. Een beheerder heeft de rechten om wijzigingen aan te brengen in de ruimtelijke grafiek, terwijl een bezoeker rechten heeft om bepaalde bouw gegevens te bekijken.
 
@@ -31,7 +31,7 @@ Het ruimtelijke diagram brengt spaties, apparaten, Sens oren en gebruikers samen
 
 Digital Apparaatdubbels-object modellen ondersteunen deze hoofd categorieën van objecten:
 
-- **Ruimten** zijn virtuele of fysieke locaties, bijvoorbeeld `Tenant`, `Customer`, `Region` en `Venue`.
+- **Ruimten** zijn virtuele of fysieke locaties, bijvoorbeeld `Tenant`, `Customer`, `Region`en `Venue`.
 - **Apparaten** zijn virtuele machines of fysieke onderdelen, bijvoorbeeld `AwesomeCompany Device` en `Raspberry Pi 3`.
 - **Sens oren** zijn objecten die gebeurtenissen detecteren, bijvoorbeeld `AwesomeCompany Temperature Sensor` en `AwesomeCompany Presence Sensor`.
 - **Gebruikers** identificeren inzittenden en hun kenmerken.
@@ -39,11 +39,11 @@ Digital Apparaatdubbels-object modellen ondersteunen deze hoofd categorieën van
 Andere categorieën objecten zijn:
 
 - **Resources** zijn gekoppeld aan een ruimte en vertegenwoordigen doorgaans Azure-resources die worden gebruikt door objecten in de ruimtelijke grafiek, bijvoorbeeld `IoTHub`.
-- **Blobs** zijn gekoppeld aan objecten (zoals spaties, apparaten, Sens oren en gebruikers). Ze worden gebruikt als bestanden met MIME-type en meta gegevens, bijvoorbeeld `maps`, `pictures` en `manuals`.
-- **Uitgebreide typen** zijn uitbreid bare opsommingen die entiteiten uitbreiden met specifieke kenmerken, bijvoorbeeld `SpaceType` en `SpaceSubtype`.
-- **Ontologies** vertegenwoordigen een set uitgebreide typen, bijvoorbeeld `Default`, `Building`, `BACnet` en `EnergyGrid`.
+- **Blobs** zijn gekoppeld aan objecten (zoals spaties, apparaten, Sens oren en gebruikers). Ze worden gebruikt als bestanden met MIME-type en meta gegevens, bijvoorbeeld `maps`, `pictures`en `manuals`.
+- **Uitgebreide typen** zijn uitbreid bare opsommingen waarmee entiteiten worden uitgebreid met specifieke kenmerken, bijvoorbeeld `SpaceType` en `SpaceSubtype`.
+- **Ontologies** vertegenwoordigen een set uitgebreide typen, bijvoorbeeld `Default`, `Building`, `BACnet`en `EnergyGrid`.
 - **Eigenschaps sleutels en-waarden** zijn aangepaste kenmerken van ruimten, apparaten, Sens oren en gebruikers. Ze kunnen worden gebruikt in combi natie met ingebouwde kenmerken, bijvoorbeeld `DeltaProcessingRefreshTime` als sleutel en `10` als waarde.
-- **Rollen** zijn sets machtigingen die zijn toegewezen aan gebruikers en apparaten in de ruimtelijke grafiek, bijvoorbeeld `Space Administrator`, `User Administrator` en `Device Administrator`.
+- **Rollen** zijn sets machtigingen die zijn toegewezen aan gebruikers en apparaten in de ruimtelijke grafiek, bijvoorbeeld `Space Administrator`, `User Administrator`en `Device Administrator`.
 - **Roltoewijzingen** zijn de koppeling tussen een rol en een object in de ruimtelijke grafiek. U kunt bijvoorbeeld een gebruiker of een Service-Principal machtigen voor het beheren van een ruimte in het ruimtelijke diagram.
 - **Beveiligings sleutel archieven** bieden de beveiligings sleutels voor alle apparaten in de hiërarchie onder een bepaald ruimte-object, zodat het apparaat veilig kan communiceren met Digital apparaatdubbels.
 - Met door de **gebruiker gedefinieerde functies** (udf's) kunnen aanpas bare Sens-metrie-verwerking binnen de ruimtelijke grafiek worden toegestaan. Een UDF kan bijvoorbeeld:
@@ -52,7 +52,7 @@ Andere categorieën objecten zijn:
   - Meta gegevens koppelen aan een ruimte.
   - Meldingen verzenden wanneer wordt voldaan aan vooraf gedefinieerde voor waarden. Op dit moment kunnen Udf's worden geschreven in Java script.
 - **Matchers** zijn objecten die bepalen welke udf's worden uitgevoerd voor een gegeven telemetrie-bericht.
-- **Eind punten** zijn de locaties waar telemetrie-berichten en digitale apparaatdubbels-gebeurtenissen kunnen worden gerouteerd, bijvoorbeeld `Event Hub`, `Service Bus` en `Event Grid`.
+- **Eind punten** zijn de locaties waar telemetrie-berichten en digitale apparaatdubbels-gebeurtenissen kunnen worden gerouteerd, bijvoorbeeld `Event Hub`, `Service Bus`en `Event Grid`.
 
 ## <a name="spatial-intelligence-graph"></a>Grafiek voor ruimtelijke intelligentie
 
@@ -85,7 +85,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
  De volledige URL-indeling wordt weer gegeven in deze afbeelding.
 
-[![Digital Apparaatdubbels-Portal beheer-API](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
+[![Digital Apparaatdubbels Portal Management API](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
 
 Ga naar de preview-versie van Azure Digital Apparaatdubbels Management Api's alvast voor meer informatie over het gebruik van ruimtelijke Intelligence-grafieken.
 

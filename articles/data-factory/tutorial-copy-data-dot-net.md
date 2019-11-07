@@ -1,5 +1,5 @@
 ---
-title: Gegevens kopiëren van Azure Blob Storage naar SQL Database | Microsoft Docs
+title: 'Gegevens kopiëren van Azure-Blob Storage naar SQL Database '
 description: Deze zelfstudie bevat stapsgewijze instructies voor het kopiëren van gegevens uit Azure Blob Storage naar Azure SQL Database.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 49b5b03356790bd45b2ad29897a57b746af1abe1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 96b1e5a9633ee141fd4aa369468a8866d87f27f2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140688"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683645"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Gegevens met Azure Data Factory kopiëren van Azure Blob Storage naar SQL Database
 
@@ -25,12 +25,12 @@ In deze zelfstudie maakt u een data factory met een pijplijn die gegevens kopiee
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een data factory maken
+> * Maak een gegevensfactory.
 > * Gekoppelde Azure Storage- en Azure SQL Database-services maken.
 > * Gegevenssets voor Azure Blob Storage en Azure SQL Database maken.
 > * Een pijplijn met een kopieeractiviteit maken
-> * Een pijplijnuitvoering starten
-> * De uitvoering van de pijplijn en van de activiteit controleren
+> * Start een pijplijnuitvoering.
+> * De uitvoering van de pijplijn en van de activiteit controleren.
 
 In deze zelfstudie wordt .NET SDK gebruikt. U kunt andere methoden gebruiken voor interactie met Azure Data Factory. Kijk voor voorbeelden onder 'Quickstarts'.
 
@@ -38,11 +38,11 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Een Azure Storage-account**. U gebruikt de blob-opslag als **bron**-gegevensopslag. Als u geen Azure-opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) om een account te maken.
-* **Azure SQL-database**. U gebruikt de database als **sink**-gegevensopslag. Als u geen Azure SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) om een database te maken.
+* **Een Azure Storage-account**. U gebruikt de blob-opslag als **bron**-gegevensopslag. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) voor de stappen voor het maken van een account.
+* **Azure SQL-database**. U gebruikt de database als **sink**-gegevensopslag. Als u geen Azure SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) voor de stappen voor het maken van een account.
 * **Visual Studio** 2015, of 2017. De procedures in dit artikel zijn gebaseerd op Visual Studio 2017.
 * **Download en installeer [Azure .NET SDK](https://azure.microsoft.com/downloads/)** .
-* **Maak een toepassing in Azure Active Directory** aan de hand van [deze instructie](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Noteer de volgende waarden voor gebruik in latere stappen: **toepassings-id**, **verificatiesleutel** en **tenant-id**. Wijs de toepassing toe aan de rol **Inzender** door de instructies in het eerder genoemde artikel te volgen.
+* **Maak een toepassing in Azure Active Directory** aan de hand van [deze instructie](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Noteer de volgende waarden voor gebruik in latere stappen: **toepassings-id**, **verificatiesleutel** en **tenant-id**. Wijs de toepassing toe aan de rol '**Inzender**' door de instructies in hetzelfde artikel te volgen.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Een blob en een SQL-tabel maken
 
@@ -119,7 +119,7 @@ Maak met behulp van Visual Studio 2015/2017 een C# .NET-consoletoepassing.
     ```
 
     
-2. Voeg de volgende code toe aan de methode **Main** waarmee variabelen worden ingesteld. Vervang de plaatsaanduidingen door uw eigen waarden. Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
+2. Voeg de volgende code toe aan de methode **Main** waarmee variabelen worden ingesteld. Vervang de plaatsaanduidingen door uw eigen waarden. Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 
     ```csharp
     // Set variables
@@ -160,7 +160,7 @@ Maak met behulp van Visual Studio 2015/2017 een C# .NET-consoletoepassing.
     var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
     ```
 
-## <a name="create-a-data-factory"></a>Data factory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 Voeg de volgende code toe aan de methode **Main** om een **data factory** te maken.
 
@@ -518,11 +518,11 @@ Press any key to exit...
 Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in een Azure Blob-opslag. U hebt geleerd hoe u: 
 
 > [!div class="checklist"]
-> * Een data factory maken
+> * Maak een gegevensfactory.
 > * Gekoppelde Azure Storage- en Azure SQL Database-services maken.
 > * Gegevenssets voor Azure Blob Storage en Azure SQL Database maken.
 > * Een pijplijn met een kopieeractiviteit maken
-> * Een pijplijnuitvoering starten
+> * Start een pijplijnuitvoering.
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 
 

@@ -1,5 +1,5 @@
 ---
-title: On-premises gegevens kopiëren met behulp van het hulpprogramma Azure Copy Data | Microsoft Docs
+title: On-premises gegevens kopiëren met behulp van het hulp programma Azure Gegevens kopiëren
 description: Maak een Azure-gegevensfactory en gebruik vervolgens het hulpprogramma Copy Data om gegevens uit een on-premises SQL Server-database te kopiëren naar Azure Blob-opslag.
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 04/09/2018
 ms.author: abnarain
-ms.openlocfilehash: cbefc274e4ebb65f61769a7931dbed305acffe2f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3b9c9371d947b0193f93b8084fbaaf66e3253997
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617549"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683544"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Gegevens uit een on-premises SQL-serverdatabase naar Azure Blob-opslag kopiëren met behulp van het hulpprogramma Copy Data.
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1:](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Versie 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](tutorial-hybrid-copy-data-tool.md)
 
 In deze zelfstudie gebruikt u Azure Portal om een gegevensfactory te maken. Vervolgens gebruikt u het hulpprogramma Copy Data om een pijplijn te maken waarmee gegevens uit een on-premises SQL Server-database worden gekopieerd naar Azure Blob Storage.
@@ -31,7 +31,7 @@ In deze zelfstudie gebruikt u Azure Portal om een gegevensfactory te maken. Verv
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Maak een gegevensfactory.
 > * Het hulpprogramma Copy Data gebruiken om een pijplijn te maken.
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 
@@ -105,15 +105,15 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
 1. Houd het venster **Container** voor **adftutorial** geopend. U kunt deze gebruiken om de uitvoer aan het einde van de zelf studie te controleren. In Data Factory wordt automatisch in deze container de uitvoermap gemaakt, zodat u er zelf geen hoeft te maken.
 
 
-## <a name="create-a-data-factory"></a>Data factory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
-1. Selecteer in het menu aan de linkerkant **+ een resource** > **Analytics** > -**Data Factory**maken. 
+1. Selecteer in het menu aan de linkerkant **+ een resource maken** > **Analytics** > **Data Factory**. 
   
    ![Nieuwe data factory maken](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in bij **Naam**. 
 
-   De naam van de data factory moet *wereldwijd uniek* zijn. Als het volgende foutbericht wordt weergegeven voor het naamveld, wijzigt u de naam van de data factory (bijvoorbeeld uwnaamADFTutorialDataFactory). Zie [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+   De naam van de data factory moet *wereldwijd uniek* zijn. Als het volgende foutbericht wordt weergegeven voor het naamveld, wijzigt u de naam van de data factory (bijvoorbeeld uwnaamADFTutorialDataFactory). Zie [Data Factory naming rules](naming-rules.md) (Naamgevingsregels Data Factory) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 
    ![Naam nieuwe data factory](./media/doc-common-process/name-not-available-error.png)
 1. Selecteer het Azure-**abonnement** waarin u de data factory wilt maken. 
@@ -140,7 +140,7 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
    ![Pagina Aan de slag](./media/doc-common-process/get-started-page.png)
 
 1. Typ op de pagina **Eigenschappen** van het hulpprogramma Copy Data **CopyFromOnPremSqlToAzureBlobPipeline** bij **Taaknaam**. Selecteer vervolgens **Volgende**. Met het hulpprogramma Copy Data wordt een pijplijn gemaakt met de naam die u opgeeft in dit veld. 
-  ![Taak naam](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
+  ![taak naam](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
 
 1. Klik op de pagina **Brongegevensarchief** op **Nieuwe verbinding maken**. 
 
@@ -234,7 +234,7 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
 Met de pijplijn in dit voorbeeld worden gegevens uit een on-premises SQL Server-database gekopieerd naar Blob Storage. U hebt geleerd hoe u: 
 
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Maak een gegevensfactory.
 > * Het hulpprogramma Copy Data gebruiken om een pijplijn te maken.
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 

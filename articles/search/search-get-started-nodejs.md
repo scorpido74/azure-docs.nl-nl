@@ -2,19 +2,19 @@
 title: "Snelstartgids: een zoek index maken in node. js met REST-Api's"
 titleSuffix: Azure Cognitive Search
 description: Voor beeld van node. js voor Azure Cognitive Search, waarin wordt uitgelegd hoe u een Java script maakt, gegevens laadt en er query's op uitvoert.
-author: lobrien
+author: HeidiSteen
 manager: nitinme
-ms.author: laobri
+ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 20a5af5ac7163c182ea01a9a9442d3c99614442d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8b7308b5289ba747dba90716b495ca1ba6afb209
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787430"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719986"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Snelstartgids: een Azure Cognitive Search-index maken in node. js met REST-Api's
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ Aanroepen naar de service vereisen een URL-eind punt en een toegangs sleutel voo
 
 1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en haal de naam van uw zoek service op in de pagina **overzicht** van de zoek service. U kunt uw service naam bevestigen door de URL van het eind punt te controleren. Als uw eind punt-URL is `https://mydemo.search.windows.net`, wordt uw service naam `mydemo`.
 
-2. In **instellingen** > **sleutels**, een beheerders sleutel ophalen voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+2. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
     Haal ook de query sleutel op. Het is een best practice voor het uitgeven van query aanvragen met alleen-lezen toegang.
 
@@ -680,7 +680,7 @@ Voer het programma uit met `node index.js`. In aanvulling op de vorige stappen w
 
 In het voor beeld wordt gebruikgemaakt van een kleine hoeveelheid Hotel gegevens, voldoende om de basis beginselen van het maken en doorzoeken van een Azure Cognitive Search-index te demonstreren.
 
-De **AzureSearchClient** -klasse kapselt de configuratie, url's en Basic HTTP-aanvragen voor de zoek service in. Het bestand **index. js** laadt de configuratie gegevens voor de Azure Cognitive Search-service, de Hotel gegevens die worden geüpload voor indexering en, in de `run` functie, orders en voert de verschillende bewerkingen uit.
+De **AzureSearchClient** -klasse kapselt de configuratie, url's en Basic HTTP-aanvragen voor de zoek service in. Het bestand **index. js** laadt de configuratie gegevens voor de Azure Cognitive Search-service, de Hotel gegevens die worden geüpload voor indexering en, in de bijbehorende `run` functie, orders en voert de verschillende bewerkingen uit.
 
 Het algemene gedrag van de `run` functie bestaat uit het verwijderen van de Azure Cognitive Search index als deze bestaat, de index te maken, gegevens toe te voegen en enkele query's uit te voeren.  
 

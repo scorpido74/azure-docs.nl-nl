@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 10/15/2019
 ms.author: aahi
-ms.openlocfilehash: 04d788160f1bdfd772f48b40b35f6db54cbf87b7
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 67d6bb0bf880de0b4bf6878128e2ed27e130b18d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554786"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719004"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>Snelstartgids: anomalie detectie client bibliotheek voor .NET
 
@@ -26,7 +26,7 @@ Gebruik de anomalie detectie-client bibliotheek voor .NET voor het volgende:
 * Anomalieën in uw time series-gegevensset detecteren, als een batch-aanvraag
 * De afwijkings status van het laatste gegevens punt in uw tijd reeks detecteren
 
-[Bibliotheek referentie documentatie](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview)  | [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector)  | [pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/)  | [code voorbeelden](https://github.com/Azure-Samples/anomalydetector)
+[Bibliotheek referentie documentatie](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | [code voorbeelden](https://github.com/Azure-Samples/anomalydetector)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -111,9 +111,9 @@ Down load de voorbeeld gegevens voor deze Quick Start van [github](https://githu
 
 Deze tijdreeks gegevens worden opgemaakt als een CSV-bestand en worden verzonden naar de anomalie detector-API.
 
-Maak een nieuwe methode om te lezen in de time series-gegevens en voeg deze toe aan een [aanvraag](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request?view=azure-dotnet-preview) object. @No__t_0 aanroepen met het bestandspad en een lijst met [punt](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.point?view=azure-dotnet-preview) objecten maken en nieuwe regel tekens verwijderen. Pak de waarden uit en scheid de datestamp van de numerieke waarde en voeg ze toe aan een nieuw `Point`-object. 
+Maak een nieuwe methode om te lezen in de time series-gegevens en voeg deze toe aan een [aanvraag](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request?view=azure-dotnet-preview) object. `File.ReadAllLines()` aanroepen met het bestandspad en een lijst met [punt](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.point?view=azure-dotnet-preview) objecten maken en nieuwe regel tekens verwijderen. Pak de waarden uit en scheid de datestamp van de numerieke waarde en voeg ze toe aan een nieuw `Point`-object. 
 
-Maak een `Request`-object met de reeks punten en `Granularity.Daily` voor de [granulariteit](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) (of periodiciteit) van de gegevens punten.
+Maak een `Request` object met de punten reeks en `Granularity.Daily` voor de [granulariteit](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) (of periodiciteit) van de gegevens punten.
 
 [!code-csharp[load the time series data file](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=GetSeriesFromFile)]
 
@@ -143,12 +143,6 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
-
-U kunt ook de volgende Cloud shell-opdracht uitvoeren om de resource groep en de bijbehorende resources te verwijderen. Dit kan een paar minuten duren. 
-
-```azurecli-interactive
-az group delete --name example-anomaly-detector-resource-group
-```
 
 ## <a name="next-steps"></a>Volgende stappen
 

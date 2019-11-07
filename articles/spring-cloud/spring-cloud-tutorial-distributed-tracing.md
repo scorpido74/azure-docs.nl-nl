@@ -1,22 +1,19 @@
 ---
-title: 'Zelfstudie: Gedistribueerde tracering gebruiken met Azure lente-Cloud | Microsoft Docs'
+title: 'Zelf studie: gedistribueerde tracering gebruiken met Azure lente Cloud | Microsoft Docs'
 description: Meer informatie over het gebruik van de gedistribueerde tracering van Lente Clouds via Azure-toepassing Insights
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 95aae47bddffd102c5d6d6dac67f22e6777cc3e7
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: a9d2100103cdd5858d0d58cf6ef77a6ccac3745f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038935"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607553"
 ---
-# <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>Zelfstudie: Gedistribueerde tracering gebruiken met Azure veer Cloud
+# <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>Zelf studie: gedistribueerde tracering met Azure lente-Cloud gebruiken
 
 De gedistribueerde traceer hulpprogram ma's van de lente-Cloud bieden eenvoudige fout opsporing en controle van complexe problemen. Azure lente Cloud integreert de toonaangevende [Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) met de [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) van Azure om krachtige gedistribueerde tracerings mogelijkheden te bieden vanuit de Azure Portal.
 

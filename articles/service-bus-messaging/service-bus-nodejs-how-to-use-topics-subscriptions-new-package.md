@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus-onderwerpen en-abonnementen gebruiken met node. js | Microsoft Docs
-description: Meer informatie over het gebruik van Service Bus-onderwerpen en-abonnementen in azure vanuit een node. js-app.
+title: 'Snelstartgids: Azure Service Bus-onderwerpen en-abonnementen gebruiken met node. js'
+description: 'Snelstartgids: informatie over het gebruik van Service Bus-onderwerpen en abonnementen in azure vanuit een node. js-app.'
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,22 +11,22 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: f927274e1e866a9cba72330280316cc5ee7d8047
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: fa6f40eba02ffe171dc521f952e0d00fc35fc7e6
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178062"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721660"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Service Bus-onderwerpen en-abonnementen gebruiken met node. js en het Azure/service-bus-pakket
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Snelstartgids: Service Bus-onderwerpen en-abonnementen gebruiken met node. js en het Azure/service-bus-pakket
 > [!div class="op_multi_selector" title1="Programmeertaal" title2="Node. js pakket"]
 > - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
 > - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
-In deze zelf studie leert u hoe u een node. js-programma kunt schrijven om berichten naar een Service Bus onderwerp te verzenden en berichten van een Service Bus-abonnement te ontvangen met behulp van het nieuwe [@azure/service-bus-](https://www.npmjs.com/package/@azure/service-bus) pakket. Dit pakket maakt gebruik van het snellere [AMQP 1,0-protocol](service-bus-amqp-overview.md) , terwijl het oudere [Azure-SB-](https://www.npmjs.com/package/azure-sb) pakket wordt gebruikt [Service Bus rest runtime-api's](/rest/api/servicebus/service-bus-runtime-rest). De voor beelden zijn geschreven in Java script.
+In deze zelf studie leert u hoe u een node. js-programma kunt schrijven om berichten naar een Service Bus onderwerp te verzenden en berichten van een Service Bus-abonnement te ontvangen met behulp van het nieuwe [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) pakket. Dit pakket maakt gebruik van het snellere [AMQP 1,0-protocol](service-bus-amqp-overview.md) , terwijl het oudere [Azure-SB-](https://www.npmjs.com/package/azure-sb) pakket wordt gebruikt [Service Bus rest runtime-api's](/rest/api/servicebus/service-bus-runtime-rest). De voor beelden zijn geschreven in Java script.
 
 ## <a name="prerequisites"></a>Vereisten
 - Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt de [voor delen](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) van uw MSDN-abonnee activeren of zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
@@ -34,7 +34,7 @@ In deze zelf studie leert u hoe u een node. js-programma kunt schrijven om beric
 
 > [!NOTE]
 > - In deze zelf studie wordt gebruikgemaakt van voor beelden die u kunt kopiëren en uitvoeren met behulp van [Nodejs](https://nodejs.org/). Zie [een node. js-toepassing maken en implementeren op een Azure-website](../app-service/app-service-web-get-started-nodejs.md)of [node. js-Cloud service met behulp van Windows Power shell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)voor instructies over het maken van een node. js-toepassing.
-> - Het nieuwe pakket voor [@no__t 1](https://www.npmjs.com/package/@azure/service-bus) biedt nog geen ondersteuning voor het maken van topcis en abonnementen. Gebruik het [@azure/arm-servicebus-](https://www.npmjs.com/package/@azure/arm-servicebus) pakket als u ze programmatisch wilt maken.
+> - Het nieuwe [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) -pakket biedt nog geen ondersteuning voor het maken van topcis en abonnementen. Gebruik het [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) -pakket als u ze programmatisch wilt maken.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Node Package Manager (NPM) gebruiken om het pakket te installeren
 Als u het NPM-pakket voor Service Bus wilt installeren, opent u een opdracht prompt met `npm` in het bijbehorende pad. Wijzig de map in de map waar u de voor beelden wilt maken en voer vervolgens deze opdracht uit.
@@ -85,11 +85,11 @@ Interactie met een Service Bus onderwerp begint met het instantiëren van de kla
     });
     ```
 3. Voer in de bovenstaande code de connection string en de naam van uw onderwerp in.
-4. Voer vervolgens de opdracht `node send.js` uit in een opdracht prompt om dit bestand uit te voeren. 
+4. Voer vervolgens de opdracht `node send.js` in een opdracht prompt uit om dit bestand uit te voeren. 
 
 Gefeliciteerd! U hebt zojuist berichten verzonden naar een Service Bus wachtrij.
 
-Berichten bevatten enkele standaard eigenschappen, zoals `label` en `messageId`, die u tijdens het verzenden kunt instellen. Als u aangepaste eigenschappen wilt instellen, gebruikt u de `userProperties`. Dit is een JSON-object dat sleutel-waardeparen van uw aangepaste gegevens kan bevatten.
+Berichten bevatten enkele standaard eigenschappen, zoals `label`, en `messageId` die u kunt instellen tijdens het verzenden. Als u aangepaste eigenschappen wilt instellen, gebruikt u de `userProperties`. Dit is een JSON-object dat sleutel-waardeparen van uw aangepaste gegevens kan bevatten.
 
 Service Bus-onderwerpen ondersteunen een maximale grootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). Er is geen limiet voor het aantal berichten dat in een onderwerp wordt bewaard, maar er is een limiet voor de totale grootte van de berichten in een onderwerp. De grootte van het onderwerp wordt gedefinieerd tijdens het maken, met een bovengrens van 5 GB. Zie [Service Bus quota's](service-bus-quotas.md)voor meer informatie over quota's.
 
@@ -128,11 +128,11 @@ Interactie met een Service Bus-abonnement begint bij het instantiëren van de kl
     });
     ```
 3. Voer in de bovenstaande code de connection string en namen in van uw onderwerp en abonnement.
-4. Voer vervolgens de opdracht `node receiveMessages.js` uit in een opdracht prompt om dit bestand uit te voeren.
+4. Voer vervolgens de opdracht `node receiveMessages.js` in een opdracht prompt uit om dit bestand uit te voeren.
 
 Gefeliciteerd! U hebt zojuist berichten ontvangen van een Service Bus-abonnement.
 
-De methode [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) neemt in een `ReceiveMode`. Dit is een enum met waarden [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) en [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Vergeet niet om [uw berichten](message-transfers-locks-settlement.md#settling-receive-operations) af te rekenen als u de `PeekLock`-modus gebruikt met een van de `complete()`-, `abandon()`-, `defer()` of `deadletter()`-methoden in het bericht.
+De methode [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) neemt in een `ReceiveMode`. Dit is een enum met waarden [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) en [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Vergeet niet om [uw berichten](message-transfers-locks-settlement.md#settling-receive-operations) af te rekenen als u de `PeekLock` modus gebruikt met behulp van `complete()`, `abandon()`, `defer()`of `deadletter()` methoden in het bericht.
 
 ## <a name="subscription-filters-and-actions"></a>Abonnements filters en-acties
 Service Bus biedt ondersteuning voor [filters en acties op abonnementen](topic-filters.md), waarmee u de inkomende berichten kunt filteren op een abonnement en de eigenschappen van deze kunnen bewerken.

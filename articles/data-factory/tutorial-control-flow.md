@@ -1,5 +1,5 @@
 ---
-title: Vertakking in Azure Data Factory-pijplijn | Microsoft Docs
+title: 'Vertakking in Azure Data Factory pijp lijn '
 description: Leer de stroom van gegevens in Azure Data Factory beheren door activiteiten te vertakken en te koppelen.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 9/27/2019
-ms.openlocfilehash: d8ea5a507cc110c92bb74491c3376f7b671638d9
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 0a7e5f56fe71c174c78f1363e403ae41a2ec90a6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176007"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683675"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Activiteiten vertakken en koppelen in een Data Factory-pijplijn
 
@@ -29,7 +29,7 @@ Deze afbeelding biedt een overzicht van het scenario:
 Deze zelf studie laat zien hoe u de volgende taken kunt uitvoeren:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken
+> * Een data factory maken
 > * Een gekoppelde Azure Storage-service maken
 > * Een Azure Blob-gegevensset maken
 > * Een pijplijn met een kopieeractiviteit en een webactiviteit maken
@@ -77,7 +77,7 @@ Een C# .net-console toepassing maken:
 
 ### <a name="install-nuget-packages"></a>NuGet-pakketten installeren
 
-1. Selecteer **extra** > **NuGet package manager** > **Package Manager-console**.
+1. Selecteer **Hulpprogram ma's** > **NuGet package manager** > **Package Manager-console**.
 1. Voer in **Package Manager Console** de volgende opdrachten uit om pakketten te installeren. Raadpleeg het [pakket micro soft. Azure. Management. DataFactory nuget](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) voor meer informatie.
 
    ```powershell
@@ -144,9 +144,9 @@ Een C# .net-console toepassing maken:
    var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
    ```
 
-### <a name="create-a-data-factory"></a>Een gegevensfactory maken
+### <a name="create-a-data-factory"></a>Een data factory maken
 
-1. Voeg een `CreateOrUpdateDataFactory`-methode toe aan uw *Program.cs* -bestand:
+1. Voeg een `CreateOrUpdateDataFactory` methode toe aan uw *Program.cs* -bestand:
 
    ```csharp
    static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
@@ -179,7 +179,7 @@ Een C# .net-console toepassing maken:
 
 ## <a name="create-an-azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service maken
 
-1. Voeg een `StorageLinkedServiceDefinition`-methode toe aan uw *Program.cs* -bestand:
+1. Voeg een `StorageLinkedServiceDefinition` methode toe aan uw *Program.cs* -bestand:
 
    ```csharp
    static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
@@ -211,7 +211,7 @@ In deze sectie maakt u twee gegevens sets: een voor de bron en een voor de sink.
 
 Voeg een methode toe waarmee een *Azure Blob-gegevensset*wordt gemaakt. Zie [Eigenschappen van Azure Blob-gegevensset](connector-azure-blob-storage.md#dataset-properties)voor meer informatie over ondersteunde eigenschappen en Details.
 
-Voeg een `SourceBlobDatasetDefinition`-methode toe aan uw *Program.cs* -bestand:
+Voeg een `SourceBlobDatasetDefinition` methode toe aan uw *Program.cs* -bestand:
 
 ```csharp
 static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -238,7 +238,7 @@ Let op het gebruik van para meters voor de *FolderPath*. `sourceBlobContainer` i
 
 ### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Een gegevensset maken voor een Sink Azure-Blob
 
-1. Voeg een `SourceBlobDatasetDefinition`-methode toe aan uw *Program.cs* -bestand:
+1. Voeg een `SourceBlobDatasetDefinition` methode toe aan uw *Program.cs* -bestand:
 
    ```csharp
    static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -754,7 +754,7 @@ Press any key to exit...
 In deze zelf studie hebt u de volgende taken doorstaan:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken
+> * Een data factory maken
 > * Een gekoppelde Azure Storage-service maken
 > * Een Azure Blob-gegevensset maken
 > * Een pijplijn met een kopieeractiviteit en een webactiviteit maken

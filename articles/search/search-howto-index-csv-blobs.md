@@ -1,7 +1,7 @@
 ---
-title: CSV-blobs indexeren met Azure Cognitive Search BLOB-Indexer
+title: CSV-blobs indexeren met behulp van de delimitedText-verwerkings modus (preview)
 titleSuffix: Azure Cognitive Search
-description: CSV-blobs in Azure Blob-opslag verkennen voor Zoek opdrachten in volledige tekst met behulp van een Azure Cognitive Search-index. Indexeer functies automatiseren gegevens opname voor geselecteerde gegevens bronnen, zoals Azure Blob-opslag.
+description: Pak CSV-bestand uit vanuit Azure Blob-opslag met behulp van de delimitedText-verwerkings modus, momenteel beschikbaar als open bare preview.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 18d0eb704deba80bf83b5cae0a598f47181700f7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4edeb8d535504c305319aad35637bb1b09f65984
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793786"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719248"
 ---
-# <a name="how-to-index-csv-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Het indexeren van CSV-blobs met behulp van een BLOB-Indexeer functie in azure Cognitive Search 
+# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Het indexeren van CSV-blobs met behulp van de delimitedText-verwerkings modus en BLOB-Indexeer functies in azure Cognitive Search 
 
-> [!Note]
-> de delimitedText-verwerkings modus is een preview-versie en is niet bedoeld voor productie gebruik. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
->
+> [!IMPORTANT] 
+> De delimitedText-verwerkings modus is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is momenteel geen portal-of .NET SDK-ondersteuning.
 
 Standaard parseert [Azure Cognitive Search BLOB-indexering](search-howto-indexing-azure-blob-storage.md) gescheiden tekst-blobs als één tekst segment. Met blobs die CSV-gegevens bevatten, wilt u echter vaak elke regel in de BLOB behandelen als een afzonderlijk document. Als u bijvoorbeeld de volgende tekst met scheidings tekens wilt, kunt u deze in twee documenten parseren, elk met de velden ' id ', ' datePublished ' en ' Tags ': 
 
@@ -28,7 +27,7 @@ Standaard parseert [Azure Cognitive Search BLOB-indexering](search-howto-indexin
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-In dit artikel vindt u informatie over het parseren van CSV-blobs met een Azure Cognitive Search BLOB indexerby instellen van de `delimitedText`-parserings modus. 
+In dit artikel leert u hoe u CSV-blobs kunt parseren met een Azure Cognitive Search BLOB-indexer door de `delimitedText`-verwerkings modus in te stellen. 
 
 > [!NOTE]
 > Volg de aanbevelingen voor de configuratie van de Indexeer functie in [een-op-veel-indexering](search-howto-index-one-to-many-blobs.md) om meerdere zoek documenten uit één Azure-Blob af te voeren.

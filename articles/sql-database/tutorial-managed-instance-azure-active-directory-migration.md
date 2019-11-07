@@ -1,5 +1,5 @@
 ---
-title: SQL Server on-premises Windows-gebruikers en-groepen migreren naar Azure SQL Database beheerde instantie met de syntaxis van T-SQL DDL | Microsoft Docs
+title: SQL Server on-premises Windows-gebruikers en-groepen migreren naar Azure SQL Database beheerd exemplaar met behulp van de syntaxis van T-SQL DDL
 description: Meer informatie over het migreren van SQL Server on-premises Windows-gebruikers en-groepen naar een beheerd exemplaar
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: b27c9991fd86334c87806772cbd641dd72aad1f6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 079d684b56625b8327a94a1bfef222cb93572bd3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163966"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686742"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Zelf studie: SQL Server on-premises Windows-gebruikers en-groepen migreren naar Azure SQL Database beheerd exemplaar met behulp van de syntaxis van T-SQL DDL
 
@@ -214,9 +214,12 @@ Volg onze [Snelstartgids: een Data Base herstellen naar een beheerd exemplaar](s
 
 ## <a name="part-4-migrate-users-to-managed-instance"></a>Deel 4: gebruikers migreren naar een beheerd exemplaar
 
+> [!NOTE]
+> De Azure AD-beheerder voor de functionaliteit van het beheerde exemplaar na het maken is gewijzigd. Zie voor meer informatie [nieuwe Azure AD-beheer functionaliteit voor mi](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi).
+
 Voer de opdracht ALTER USER uit om het migratie proces voor een beheerd exemplaar te volt ooien.
 
-1. Meld u aan bij uw beheerde exemplaar met behulp van het SQL-beheerders account voor het beheerde exemplaar. Maak vervolgens uw Azure AD-aanmelding in het beheerde exemplaar met de volgende syntaxis. Zie voor meer informatie [zelf studie: beheerde exemplaar beveiliging in Azure SQL database met behulp van Azure ad server-principals (aanmeldingen)](sql-database-managed-instance-aad-security-tutorial.md).
+1. Meld u aan bij uw beheerde exemplaar met behulp van het Azure AD-beheerders account voor een beheerd exemplaar. Maak vervolgens uw Azure AD-aanmelding in het beheerde exemplaar met de volgende syntaxis. Zie voor meer informatie [zelf studie: beheerde exemplaar beveiliging in Azure SQL database met behulp van Azure ad server-principals (aanmeldingen)](sql-database-managed-instance-aad-security-tutorial.md).
 
     ```sql
     use master 

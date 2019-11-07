@@ -1,21 +1,21 @@
 ---
-title: 'ASP.NET Core MVC-zelf studie voor Azure Cosmos DB: Webtoepassingsontwikkeling'
+title: 'ASP.NET Core MVC-zelf studie voor Azure Cosmos DB: Web Application Development'
 description: ASP.NET Core MVC-zelf studie voor het maken van een MVC-webtoepassing met behulp van Azure Cosmos DB. U slaat JSON-en Access-gegevens op uit een TODO-app die wordt gehost op Azure App Service-ASP NET core MVC-zelf studie stap voor stap.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 09/24/2019
+ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: abff58be25a23c783f476dc849e0d6fa97e9eed2
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 1cfb7718c55920d817e1f87407fa1af590e9f006
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299350"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720908"
 ---
-# <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Zelfstudie: Een ASP.NET Core MVC-webtoepassing met Azure Cosmos DB ontwikkelen met behulp van .NET SDK
+# <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Zelf studie: een ASP.NET Core MVC-webtoepassing ontwikkelen met Azure Cosmos DB met behulp van .NET SDK
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -54,9 +54,9 @@ Voordat u de instructies in dit artikel volgt, moet u ervoor zorgen dat u over d
 
 Alle scherm opnamen in dit artikel zijn afkomstig uit micro soft Visual Studio Community 2019. Als u een andere versie gebruikt, komen uw schermen en opties mogelijk niet geheel overeen. De oplossing zou moeten werken als u aan de vereisten voldoet.
 
-## <a name="create-an-azure-cosmos-account"></a>Stap 1: Een Azure Cosmos-account maken
+## <a name="create-an-azure-cosmos-account"></a>Stap 1: een Azure Cosmos-account maken
 
-Begin met het maken van een Azure Cosmos-account. Als u al een Azure Cosmos DB SQL-API-account hebt of als u de Azure Cosmos DB-emulator gebruikt, [gaat u verder met stap 2: Maak een nieuwe ASP.NET MVC-](#create-a-new-mvc-application)toepassing.
+Begin met het maken van een Azure Cosmos-account. Als u al een Azure Cosmos DB SQL-API-account hebt of als u de Azure Cosmos DB-emulator gebruikt, gaat u verder met [stap 2: een nieuwe ASP.NET MVC-toepassing maken](#create-a-new-mvc-application).
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -64,7 +64,7 @@ Begin met het maken van een Azure Cosmos-account. Als u al een Azure Cosmos DB S
 
 In de volgende sectie maakt u een nieuwe ASP.NET Core MVC-toepassing.
 
-## <a name="create-a-new-mvc-application"></a>Stap 2: Een nieuwe ASP.NET Core MVC-toepassing maken
+## <a name="create-a-new-mvc-application"></a>Stap 2: een nieuwe ASP.NET Core MVC-toepassing maken
 
 1. Open Visual Studio en selecteer **een nieuw project maken**.
 
@@ -78,7 +78,7 @@ In de volgende sectie maakt u een nieuwe ASP.NET Core MVC-toepassing.
 
    Visual Studio maakt een lege MVC-toepassing.
 
-1. Selecteer **debug** > **Start Debugging** of F5 om uw ASP.NET-toepassing lokaal uit te voeren.
+1. Selecteer **fout opsporing** > **fout opsporing starten** of op F5 om uw ASP.NET-toepassing lokaal uit te voeren.
 
 ## <a name="add-nuget-packages"></a>Stap 3: Azure Cosmos DB NuGet-pakket aan het project toevoegen
 
@@ -92,19 +92,19 @@ Nu we de meeste van de ASP.NET Core MVC-Framework code hebben die we nodig hebbe
 
    Visual Studio downloadt en installeert het Azure Cosmos DB-pakket en de bijbehorende afhankelijkheden.
 
-   U kunt ook de **Package Manager-console** gebruiken om het NuGet-pakket te installeren. Hiertoe selecteert u **tools** > **NuGet package manager** > **Package Manager console**. Typ achter de prompt de volgende opdracht:
+   U kunt ook de **Package Manager-console** gebruiken om het NuGet-pakket te installeren. Hiertoe selecteert u **Tools** > **NuGet package manager** > **Package Manager console**. Typ achter de prompt de volgende opdracht:
 
    ```ps
    Install-Package Microsoft.Azure.Cosmos
    ```
   
-## <a name="set-up-the-mvc-application"></a>Stap 4: De ASP.NET Core MVC-toepassing instellen
+## <a name="set-up-the-mvc-application"></a>Stap 4: de ASP.NET Core MVC-toepassing instellen
 
 Nu gaan we de modellen, de weer gaven en de controllers toevoegen aan deze MVC-toepassing.
 
 ### <a name="add-a-model"></a> Een model toevoegen
 
-1. Klik in **Solution Explorer**met de rechter muisknop op de map **modellen** en selecteer**klasse** **toevoegen** > .
+1. In **Solution Explorer**klikt u met de rechter muisknop op de map **modellen** en selecteert u > **klasse** **toevoegen** .
 
 1. Geef in **Nieuw item toevoegen**een naam op voor de nieuwe klasse *item.cs* en selecteer **toevoegen**.
 
@@ -112,7 +112,7 @@ Nu gaan we de modellen, de weer gaven en de controllers toevoegen aan deze MVC-t
 
    [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs)]
 
-Azure Cosmos DB gebruikt JSON om gegevens te verplaatsen en op te slaan. U kunt het `JsonProperty` kenmerk gebruiken om te bepalen hoe JSON wordt geserializd en objecten worden gedeserialiseerd. De `Item` klasse demonstreert het `JsonProperty` kenmerk. Met deze code bepaalt u de indeling van de naam van de eigenschap die naar JSON gaat. De naam van de .NET-eigenschap `Completed`wordt ook gewijzigd.
+Azure Cosmos DB gebruikt JSON om gegevens te verplaatsen en op te slaan. U kunt het kenmerk `JsonProperty` gebruiken om te bepalen hoe JSON-serialisatie en objecten worden gedeserialiseerd. De klasse `Item` demonstreert het kenmerk `JsonProperty`. Met deze code bepaalt u de indeling van de naam van de eigenschap die naar JSON gaat. De naam van de .NET-eigenschap `Completed`wordt ook gewijzigd.
 
 ### <a name="add-views"></a>Weergaven toevoegen
 
@@ -124,9 +124,9 @@ Vervolgens gaan we de volgende drie weer gaven maken.
 
 #### <a name="AddItemIndexView"></a>Een weergave voor een lijst met items toevoegen
 
-1. Klik in **Solution Explorer**met de rechter muisknop op de map **views** en selecteer**nieuwe map** **toevoegen** > . Geef *de map een*naam.
+1. Klik in **Solution Explorer**met de rechter muisknop op de map **Views** en selecteer > **nieuwe map** **toevoegen** . Geef *de map een*naam.
 
-1. Klik met de rechter muisknop op de map met het lege **item** en selecteer vervolgens**weer gave** **toevoegen** > .
+1. Klik met de rechter muisknop op de map met het lege **item** en selecteer vervolgens > **weer gave** **toevoegen** .
 
 1. Geef in de **weer gave MVC toevoegen**de volgende waarden op:
 
@@ -145,7 +145,7 @@ Als u klaar bent, opent Visual Studio het *cshtml* -bestand dat wordt gemaakt. U
 
 Maak een nieuwe weergave om items te maken, vergelijkbaar met hoe u een weergave hebt gemaakt voor het weergeven van items, door de volgende stappen te volgen:
 
-1. In **Solution Explorer**klikt u nogmaals met de rechter muisknop op de map **item** en selecteert u**weer gave** **toevoegen** > .
+1. In **Solution Explorer**klikt u nogmaals met de rechter muisknop op de map **item** en selecteert u > **weer gave** **toevoegen** .
 
 1. Breng de volgende wijzigingen aan in de **weer gave MVC toevoegen**:
 
@@ -159,7 +159,7 @@ Maak een nieuwe weergave om items te maken, vergelijkbaar met hoe u een weergave
 
 En tot slot voegt u een weergave voor het bewerken van items toe met de volgende stappen:
 
-1. Klik in het **Solution Explorer**met de rechter muisknop op de map **item** en selecteer**weer gave** **toevoegen** > .
+1. Klik in het **Solution Explorer**met de rechter muisknop op de map **item** en selecteer **toevoegen** > **weer geven**.
 
 1. Breng de volgende wijzigingen aan in de **weer gave MVC toevoegen**:
 
@@ -173,7 +173,7 @@ Nadat u deze stappen hebt uitgevoerd, sluit u alle *cshtml* -documenten in Visua
 
 ### <a name="add-a-controller"></a>Een controller toevoegen
 
-1. Klik in **Solution Explorer**met de rechter muisknop op de map **controllers** en selecteer**controller** **toevoegen** > .
+1. Klik in **Solution Explorer**met de rechter muisknop op de map **Controllers** en selecteer > **controller** **toevoegen** .
 
 1. Selecteer in **steigers toevoegen**de optie **MVC-controller-leeg** en selecteer **toevoegen**.
 
@@ -187,19 +187,19 @@ Nadat u deze stappen hebt uitgevoerd, sluit u alle *cshtml* -documenten in Visua
 
 Het kenmerk **ValidateAntiForgeryToken** wordt hier gebruikt om deze toepassing te beschermen tegen aanvallen via aanvraagvervalsing op meerdere sites. Uw weer gaven werken ook met dit anti-vervalsing token. Zie voor [komen van CSRF-aanvallen (cross-site request vervalsing) in ASP.NET MVC-toepassing][Preventing Cross-Site Request Forgery]voor meer informatie en voor beelden. De broncode op [GitHub][GitHub] beschikt over de volledige implementatie.
 
-We gebruiken ook het kenmerk **Bind** voor de methodeparameter om u te beschermen tegen over-postingaanvallen. Zie [Zelfstudie: Implementeer ruwe functionaliteit met de Entity Framework in ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC].
+We gebruiken ook het kenmerk **Bind** voor de methodeparameter om u te beschermen tegen over-postingaanvallen. Zie [zelf studie: een ruwe functionaliteit implementeren met de Entity Framework in ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC]voor meer informatie.
 
-## <a name="connect-to-cosmosdb"></a>Stap 5: Verbinding maken met Azure Cosmos DB
+## <a name="connect-to-cosmosdb"></a>Stap 5: verbinding maken met Azure Cosmos DB
 
 Nu u de standaard MVC-dingen hebt gemaakt, kunt u de code toevoegen om verbinding te maken met Azure Cosmos DB en ruwe bewerkingen uit te voeren.
 
 ### <a name="perform-crud-operations"></a>RUWE bewerkingen uitvoeren op de gegevens
 
-Eerst voegen we een klasse toe die de logica bevat voor het maken van verbinding met en het gebruik van Azure Cosmos DB. Voor deze zelf studie wordt deze logica ingekapseld in een klasse `CosmosDBService` met de naam en een interface met de naam. `ICosmosDBService` Deze service voert de ruwe bewerkingen uit. Ook worden de bewerkingen voor Feeding gelezen, zoals het weer geven van onvolledige items, het maken, bewerken en verwijderen van de items.
+Eerst voegen we een klasse toe die de logica bevat voor het maken van verbinding met en het gebruik van Azure Cosmos DB. Voor deze zelf studie wordt deze logica ingekapseld in een klasse met de naam `CosmosDBService` en een interface met de naam `ICosmosDBService`. Deze service voert de ruwe bewerkingen uit. Ook worden de bewerkingen voor Feeding gelezen, zoals het weer geven van onvolledige items, het maken, bewerken en verwijderen van de items.
 
-1. Klik in **Solution Explorer**met de rechter muisknop op uw project en selecteer**nieuwe map** **toevoegen** > . Geef de map *Services*een naam.
+1. Klik in **Solution Explorer**met de rechter muisknop op uw project en selecteer > **nieuwe map** **toevoegen** . Geef de map *Services*een naam.
 
-1. Klik met de rechter muisknop op de map **Services** en selecteer**klasse** **toevoegen** > . Noem de nieuwe klasse *CosmosDBService* en selecteer **toevoegen**.
+1. Klik met de rechter muisknop op de map **Services** en selecteer > **klasse** **toevoegen** . Noem de nieuwe klasse *CosmosDBService* en selecteer **toevoegen**.
 
 1. Vervang de inhoud van *CosmosDBService.cs* door de volgende code:
 
@@ -260,7 +260,7 @@ Als u de toepassing wilt testen op uw lokale computer, gebruikt u de volgende st
 
 1. Nadat u de app hebt getest, selecteert u CTRL + F5 om de fout opsporing van de app te stoppen. U kunt de app nu implementeren.
 
-## <a name="deploy-the-application-to-azure"></a>Stap 7: De toepassing implementeren
+## <a name="deploy-the-application-to-azure"></a>Stap 7: de toepassing implementeren
 
 Nu de volledige toepassing correct werkt met Azure Cosmos DB, kunt u de web-app implementeren in Azure App Service.  
 

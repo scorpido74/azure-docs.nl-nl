@@ -1,6 +1,6 @@
 ---
-title: Service Bus wachtrijen gebruiken met PHP | Microsoft Docs
-description: Informatie over het gebruiken van Service Bus-wachtrijen in Azure Code voorbeelden geschreven in PHP.
+title: 'Snelstartgids: Service Bus wachtrijen gebruiken met PHP'
+description: 'Quick Start: informatie over het gebruik van Service Bus wachtrijen in Azure. Code voorbeelden geschreven in PHP.'
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -11,17 +11,17 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: d958202ee42b1edec5e1b65c120536c656823ecf
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: d576c269f4178c7543327c6b75f46f5487d7a205
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147243"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719184"
 ---
-# <a name="how-to-use-service-bus-queues-with-php"></a>Service Bus wachtrijen gebruiken met PHP
+# <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Snelstartgids: Service Bus wachtrijen gebruiken met PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 In deze zelf studie leert u hoe u PHP-toepassingen kunt maken om berichten te verzenden naar en berichten van een Service Bus wachtrij te ontvangen. 
@@ -54,7 +54,7 @@ Ga als volgt te werk om de Service Bus-wachtrij-Api's te gebruiken:
 1. Verwijs naar het autoloader-bestand met behulp van de [require_once][require_once] -instructie.
 2. Verwijs naar alle klassen die u kunt gebruiken.
 
-In het volgende voor beeld ziet u hoe u het autoloader-bestand `ServicesBuilder` opneemt en naar de klasse verwijst.
+In het volgende voor beeld ziet u hoe u het autoloader-bestand opneemt en verwijst naar de `ServicesBuilder`-klasse.
 
 > [!NOTE]
 > In dit voor beeld (en andere voor beelden in dit artikel) wordt ervan uitgegaan dat u de PHP-client bibliotheken voor Azure hebt geïnstalleerd via Composer. Als u de bibliotheken hand matig of als een peer-pakket hebt geïnstalleerd, moet u verwijzen naar het autoloader-bestand **WindowsAzure. php** .
@@ -66,7 +66,7 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-In de onderstaande voor beelden wordt `require_once` de instructie altijd weer gegeven, maar alleen de klassen waarnaar het voor beeld moet worden uitgevoerd, worden verwezen.
+In de onderstaande voor beelden wordt de `require_once`-instructie altijd weer gegeven, maar alleen de klassen waarnaar het voor beeld moet worden uitgevoerd, worden verwezen.
 
 ## <a name="set-up-a-service-bus-connection"></a>Een Service Bus verbinding instellen
 Als u een Service Bus-client wilt instantiëren, moet u eerst een geldig connection string in deze indeling hebben:
@@ -75,9 +75,9 @@ Als u een Service Bus-client wilt instantiëren, moet u eerst een geldig connect
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-Waar `Endpoint` bevindt zich doorgaans `[yourNamespace].servicebus.windows.net`in de indeling.
+Waar `Endpoint` doorgaans van de indeling `[yourNamespace].servicebus.windows.net`.
 
-Als u een Azure-serviceclient wilt maken, moet u `ServicesBuilder` de-klasse gebruiken. U kunt:
+Als u een Azure-serviceclient wilt maken, moet u de klasse `ServicesBuilder` gebruiken. U kunt:
 
 * Geef het connection string rechtstreeks door aan het bestand.
 * Gebruik de **CloudConfigurationManager (CCM)** om meerdere externe bronnen voor de Connection String te controleren:
@@ -97,9 +97,9 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 ```
 
 ## <a name="create-a-queue"></a>Een wachtrij maken
-U kunt beheer bewerkingen uitvoeren voor service bus wachtrijen via de `ServiceBusRestProxy` -klasse. Een `ServiceBusRestProxy` object wordt samengesteld via de `ServicesBuilder::createServiceBusService` fabrieks methode met een geschikte Connection String die de token machtigingen voor het beheer van de sleutel bevat.
+U kunt beheer bewerkingen uitvoeren voor Service Bus wachtrijen via de `ServiceBusRestProxy`-klasse. Een `ServiceBusRestProxy`-object wordt samengesteld via de `ServicesBuilder::createServiceBusService` Factory-methode met een geschikte connection string die de token machtigingen inkapselt om het te beheren.
 
-In het volgende voor beeld ziet u hoe `ServiceBusRestProxy` u een `ServiceBusRestProxy->createQueue` aanroepen maakt om een `myqueue` wachtrij te `MySBNamespace` maken met de naam in een service naam ruimte:
+In het volgende voor beeld ziet u hoe u een `ServiceBusRestProxy` maakt en `ServiceBusRestProxy->createQueue` aanroept om een wachtrij met de naam `myqueue` in een `MySBNamespace` service naam ruimte te maken:
 
 ```php
 require_once 'vendor/autoload.php';
@@ -128,12 +128,12 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> U kunt de `listQueues` methode voor `ServiceBusRestProxy` objecten gebruiken om te controleren of een wachtrij met een opgegeven naam al bestaat in een naam ruimte.
+> U kunt de methode `listQueues` op `ServiceBusRestProxy`-objecten gebruiken om te controleren of een wachtrij met een opgegeven naam al bestaat in een naam ruimte.
 > 
 > 
 
 ## <a name="send-messages-to-a-queue"></a>Berichten verzenden naar een wachtrij
-Als u een bericht wilt verzenden naar een service bus wachtrij, wordt de `ServiceBusRestProxy->sendQueueMessage` methode door uw toepassing aangeroepen. De volgende code laat zien hoe u een bericht verzendt naar `myqueue` de wachtrij die eerder in `MySBNamespace` de service naam ruimte is gemaakt.
+Als u een bericht wilt verzenden naar een Service Bus wachtrij, wordt de `ServiceBusRestProxy->sendQueueMessage`-methode door uw toepassing aangeroepen. De volgende code laat zien hoe u een bericht verzendt naar de `myqueue` wachtrij die eerder is gemaakt binnen de naam ruimte van de `MySBNamespace`-service.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -169,11 +169,11 @@ Service Bus-wachtrijen ondersteunen een maximale berichtgrootte van 256 kB in de
 
 ## <a name="receive-messages-from-a-queue"></a>Berichten van een wachtrij ontvangen
 
-De beste manier om berichten uit een wachtrij te ontvangen, is door `ServiceBusRestProxy->receiveQueueMessage` een methode te gebruiken. Berichten kunnen in twee verschillende modi worden ontvangen: [*ReceiveAndDelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode) en [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). **PeekLock** is de standaardmodus.
+De beste manier om berichten uit een wachtrij te ontvangen is met behulp van een `ServiceBusRestProxy->receiveQueueMessage` methode. Berichten kunnen in twee verschillende modi worden ontvangen: [*ReceiveAndDelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode) en [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). **PeekLock** is de standaardmodus.
 
 Wanneer u de [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) -modus gebruikt, ontvangt u een eenmalige bewerking. dat wil zeggen, wanneer Service Bus een lees aanvraag voor een bericht in een wachtrij ontvangt, wordt het bericht gemarkeerd als verbruikt en wordt het naar de toepassing geretourneerd. De [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode)-modus is het eenvoudigste model en werkt het beste voor scenario's waarin een toepassing het niet verwerken van een bericht bij een fout kan tolereren. Neem bijvoorbeeld een scenario waarin de consument de ontvangstaanvraag uitgeeft en het systeem vervolgens vastloopt voordat de aanvraag wordt verwerkt. Omdat Service Bus het bericht als verbruikt heeft gemarkeerd, wordt het bericht dat voor het vastlopen is verbruikt, overgeslagen wanneer de toepassing opnieuw wordt gestart en opnieuw bezig is met het uitvoeren van berichten.
 
-In de standaard [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) -modus wordt een bericht ontvangen van een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Wanneer Service Bus een aanvraag ontvangt, wordt het volgende bericht weer gegeven dat moet worden gebruikt, wordt dit vergrendeld om te voor komen dat andere gebruikers het ontvangen, en wordt het vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of het op betrouw bare wijze opslaat voor toekomstige verwerking), wordt de tweede fase van het ontvangst proces voltooid `ServiceBusRestProxy->deleteMessage`door het ontvangen bericht door te geven aan. Als Service Bus de `deleteMessage` oproep ziet, wordt het bericht gemarkeerd als verbruikt en wordt het uit de wachtrij verwijderd.
+In de standaard [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) -modus wordt een bericht ontvangen van een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Wanneer Service Bus een aanvraag ontvangt, wordt het volgende bericht weer gegeven dat moet worden gebruikt, wordt dit vergrendeld om te voor komen dat andere gebruikers het ontvangen, en wordt het vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of op betrouw bare wijze is opgeslagen voor toekomstige verwerking), wordt de tweede fase van het ontvangst proces voltooid door het ontvangen bericht door te geven aan `ServiceBusRestProxy->deleteMessage`. Als Service Bus de `deleteMessage` oproep ziet, wordt het bericht gemarkeerd als verbruikt en wordt het uit de wachtrij verwijderd.
 
 In het volgende voor beeld ziet u hoe u een bericht ontvangt en verwerkt met behulp van de [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) -modus (de standaard modus).
 
@@ -217,11 +217,11 @@ catch(ServiceException $e){
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Het vastlopen van de toepassing en onleesbare berichten afhandelen
 
-Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvanger toepassing het bericht om de een of andere reden niet kan verwerken, kan de `unlockMessage` methode op het ontvangen bericht worden aangeroepen (in plaats van de `deleteMessage` methode). Dit leidt ertoe dat Service Bus het bericht in de wachtrij ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen, ofwel door dezelfde verbruiks toepassing of door een andere consumerende toepassing.
+Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvangende toepassing het bericht om de een of andere reden niet kan verwerken, kan de methode `unlockMessage` worden aangeroepen op het ontvangen bericht (in plaats van de `deleteMessage` methode). Dit leidt ertoe dat Service Bus het bericht in de wachtrij ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen, ofwel door dezelfde verbruiks toepassing of door een andere consumerende toepassing.
 
 Er is ook een time-out gekoppeld aan een bericht dat in de wachtrij is vergrendeld. als de toepassing het bericht niet kan verwerken voordat de time-out van de vergren deling verloopt (bijvoorbeeld als de toepassing vastloopt), wordt het bericht automatisch door Service Bus ontgrendeld en wordt het beschikbaar om opnieuw te worden ontvangen.
 
-In het geval dat de toepassing vastloopt na het verwerken van het bericht `deleteMessage` , maar voordat de aanvraag is verzonden, wordt het bericht opnieuw aan de toepassing bezorgd wanneer het opnieuw wordt gestart. Dit wordt vaak *ten minste eenmaal* verwerken genoemd; dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt, maar in bepaalde situaties kan hetzelfde bericht opnieuw worden bezorgd. Als het scenario dubbele verwerking niet kan verdragen, wordt het aanbevolen om aanvullende logica toe te voegen aan toepassingen voor het afhandelen van dubbele bericht bezorging. Dit wordt vaak bereikt met de `getMessageId` methode van het bericht, dat constant blijft tijdens bezorgings pogingen.
+In het geval dat de toepassing vastloopt na het verwerken van het bericht, maar voordat de `deleteMessage` aanvraag wordt uitgegeven, wordt het bericht opnieuw aan de toepassing geleverd wanneer het opnieuw wordt gestart. Dit wordt vaak *ten minste eenmaal* verwerken genoemd; dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt, maar in bepaalde situaties kan hetzelfde bericht opnieuw worden bezorgd. Als het scenario dubbele verwerking niet kan verdragen, wordt het aanbevolen om aanvullende logica toe te voegen aan toepassingen voor het afhandelen van dubbele bericht bezorging. Dit wordt vaak bereikt met behulp van de `getMessageId` methode van het bericht, dat constant blijft tijdens bezorgings pogingen.
 
 > [!NOTE]
 > U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 

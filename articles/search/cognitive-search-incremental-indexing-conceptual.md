@@ -1,25 +1,24 @@
 ---
 title: Inleiding tot incrementele indexering (preview-versie)
 titleSuffix: Azure Cognitive Search
-description: Configureer uw AI-verrijkings pijplijn om uw gegevens te laten voldoen aan de uiteindelijke consistentie van het verwerken van updates voor vaardig heden, vaardig heden, Indexeer functies of gegevens bronnen.
+description: Configureer uw AI-verrijkings pijplijn om uw gegevens te laten voldoen aan de uiteindelijke consistentie van het verwerken van updates voor vaardig heden, vaardig heden, Indexeer functies of gegevens bronnen. Deze functie is momenteel beschikbaar als open bare preview
 manager: nitinme
 author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ea3bcfc25040f09b6871d85412ac64061ec2f9e8
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 94ce056185ff6a804521bf583ac4f6ffaa513fb0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73549118"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715432"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Wat is incrementele indexering in azure Cognitive Search?
 
-> [!Note]
-> Incrementele indexering is een preview-versie en is niet bedoeld voor productie gebruik. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen portal-of .NET SDK-ondersteuning.
->
+> [!IMPORTANT] 
+> Incrementele indexering is momenteel beschikbaar als open bare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen portal-of .NET SDK-ondersteuning.
 
 Incrementeel indexeren is een nieuwe functie van Azure Cognitive Search waarmee caching en status worden toegevoegd aan verrijkte inhoud in een cognitieve vaardigheids, waarmee u de verwerking en het opnieuw verwerken van afzonderlijke stappen in een verrijkings pijplijn kunt controleren. Dit houdt niet alleen uw monetaire investering in de verwerking, maar is ook een efficiënter systeem. Wanneer structuren en inhoud in de cache zijn opgeslagen, kan een Indexeer functie bepalen welke vaardig heden zijn gewijzigd en alleen de aangepaste vaardig heden uitvoeren. 
 

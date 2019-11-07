@@ -17,8 +17,6 @@
       href: quick-create-cli.md
 - name: Zelfstudies
   items:
-    - name: Web Application Firewall inschakelen
-      href: application-gateway-web-application-firewall-portal.md
     - name: Beveiligen met SSL
       href: create-ssl-portal.md
     - name: Meerdere sites hosten
@@ -127,12 +125,6 @@
           items:
             - name: SSL-beleid configureren
               href: application-gateway-configure-ssl-policy-powershell.md
-    - name: Web Application Firewall configureren
-      items:
-        - name: Azure PowerShell
-          href: tutorial-restrict-web-traffic-powershell.md
-        - name: Azure-CLI
-          href: tutorial-restrict-web-traffic-cli.md
     - name: Inkomend verkeer voor AKS
       items:
         - name: Instellen met bestaande Application Gateway

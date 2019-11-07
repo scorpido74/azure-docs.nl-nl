@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
-ms.date: 05/02/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d653d1cd719ac59bf6c98bee588c41858052bc61
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 34ff3f9704b9c84a7daddcfd14fb9cd3e990f794
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489856"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716507"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Uw Machine Learning service werkruimte gegevens exporteren of verwijderen 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -243,17 +243,16 @@ Verwijder afzonderlijke assets in de ontwerp functie waar u uw experiment hebt g
 
 1. Selecteer in de lijst het concept van de afzonderlijke pijp lijn dat u wilt verwijderen.
 
-1. Selecteer aan de onderkant **verwijderen**.
+1. Selecteer **Verwijderen**.
 
-## <a name="unregister-data-in-the-designer"></a>Registratie van gegevens in de ontwerp functie opheffen
+### <a name="delete-datasets-in-the-designer"></a>Gegevens sets verwijderen in de ontwerp functie
+
+Als u gegevens sets in de ontwerp functie wilt verwijderen, gebruikt u de Azure Portal of Storage Explorer om naar verbonden opslag accounts te gaan en de gegevens sets daar te verwijderen. Bij het opheffen van de registratie van gegevens sets in de ontwerp functie wordt alleen het referentie punt in de opslag verwijderd. 
+
+## <a name="export-data-in-the-designer"></a>Gegevens exporteren in de ontwerp functie
 
 In de ontwerp functie waar u uw experiment hebt gemaakt, exporteert u de gegevens die u hebt toegevoegd:
 
 1. Selecteer aan de linkerkant **gegevens sets**.
 
-
-
     ![Gegevens downloaden](media/how-to-export-delete-data.md/unregister-dataset.png)
-
-1. Selecteer de afzonderlijke gegevensset in de lijst en klik op registratie ongedaan maken
-

@@ -1,19 +1,17 @@
 ---
 title: Uw configuratie server instellen in azure lente Cloud | Microsoft Docs
 description: In deze zelf studie leert u hoe u een lente-Cloud configuratie server kunt instellen voor uw Azure lente-Cloud op de Azure Portal
-services: spring-cloud
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.reviewer: jeconnoc
-ms.author: v-vasuke
-author: v-vasuke
+ms.author: jeconnoc
+author: jpconnock
 ms.date: 10/18/2019
-ms.openlocfilehash: 3a091c22f49ec31029a1808c10e675a4d0960fb4
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 6cf7b4a52ba3a7dbda5fa3fa558c4b68d09f4eb2
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177893"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646714"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-for-your-service"></a>Zelf studie: een lente Cloud configuratie server instellen voor uw service
 
@@ -49,12 +47,12 @@ Bovendien zijn sommige Configureer bare eigenschappen alleen beschikbaar voor so
 
 Wanneer u een open bare opslag plaats gebruikt, zijn uw Configureer bare eigenschappen beperkter.
 
-Hieronder vindt u alle Configureer bare eigenschappen die worden gebruikt voor het instellen van de open bare `Git`-opslag plaats.
+Alle Configureer bare eigenschappen die worden gebruikt voor het instellen van de opslag plaats Public `Git`, worden hieronder weer gegeven.
 
 > [!NOTE]
 > Het gebruik van een koppel teken (-) om woorden te scheiden is de enige naamgevings Conventie die momenteel wordt ondersteund. U kunt bijvoorbeeld `default-label`gebruiken, maar niet `defaultLabel`.
 
-| Eigenschap        | Verplicht | Functie                                                      |
+| Eigenschap        | Vereist | Functie                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | `yes`    | De `uri` van de `Git` opslag plaats die wordt gebruikt als back-end van de configuratie server, moet worden gestart met `http://`, `https://`, `git@`of `ssh://`. |
 | `default-label` | `no`     | Het standaard label van de `Git` opslag plaats moet de `branch name`, `tag name`of `commit-id` van de opslag plaats zijn. |
@@ -64,12 +62,12 @@ Hieronder vindt u alle Configureer bare eigenschappen die worden gebruikt voor h
 
 ### <a name="private-repository-with-ssh-authentication"></a>Privé-opslag plaats met SSH-verificatie
 
-Alle Configureer bare eigenschappen die worden gebruikt voor het instellen van een persoonlijke `Git` opslagplaats met `Ssh` worden hieronder weer gegeven.
+Alle Configureer bare eigenschappen die worden gebruikt voor het instellen van een persoonlijke `Git`-opslag plaats met `Ssh`, worden hieronder weer gegeven.
 
 > [!NOTE]
 > Het gebruik van een koppel teken (-) om woorden te scheiden is de enige naamgevings Conventie die momenteel wordt ondersteund. U kunt bijvoorbeeld `default-label`gebruiken, maar niet `defaultLabel`.
 
-| Eigenschap                   | Verplicht | Functie                                                      |
+| Eigenschap                   | Vereist | Functie                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
 | `uri`                      | `yes`    | De `uri` van de `Git` opslag plaats die wordt gebruikt als back-end van de configuratie server, moet worden gestart met `http://`, `https://`, `git@`of `ssh://`. |
 | `default-label`            | `no`     | Het standaard label van de `Git` opslag plaats moet de `branch name`, `tag name`of `commit-id` van de opslag plaats zijn. |
@@ -88,7 +86,7 @@ Alle Configureer bare eigenschappen die worden gebruikt voor het instellen van e
 > [!NOTE]
 > Het gebruik van een koppel teken (-) om woorden te scheiden is de enige naamgevings Conventie die momenteel wordt ondersteund. Gebruik bijvoorbeeld `default-label` niet `defaultLabel`.
 
-| Eigenschap        | Verplicht | Functie                                                      |
+| Eigenschap        | Vereist | Functie                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | `yes`    | De `uri` van de `Git` opslag plaats die wordt gebruikt als back-end van de configuratie server, moet worden gestart met `http://`, `https://`, `git@`of `ssh://`. |
 | `default-label` | `no`     | Het standaard label van de `Git` opslag plaats moet de `branch name`, `tag name`of `commit-id` van de opslag plaats zijn. |
@@ -106,11 +104,11 @@ Hieronder vindt u alle Configureer bare eigenschappen die worden gebruikt om Git
 > [!NOTE]
 > Het gebruik van een koppel teken (-) om woorden te scheiden is de enige naamgevings Conventie die momenteel wordt ondersteund. Gebruik bijvoorbeeld `default-label` niet `defaultLabel`.
 
-| Eigenschap                           | Verplicht         | Functie                                                      |
+| Eigenschap                           | Vereist         | Functie                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | `no`             | Een toewijzing die bestaat uit de instellingen voor een `Git` opslag plaats met een bepaalde naam. |
 | `repos."uri"`                      | `yes` op `repos` | De `uri` van de `Git` opslag plaats die wordt gebruikt als back-end van de configuratie server, moet worden gestart met `http://`, `https://`, `git@`of `ssh://`. |
-| `repos."name"`                     | `yes` op `repos` | Een naam voor het identificeren van één `Git` opslagplaats, alleen __vereist__ als `repos` bestaat. Bijvoorbeeld `team-A`, `team-B`. |
+| `repos."name"`                     | `yes` op `repos` | Een naam voor het identificeren van één `Git` opslagplaats, alleen __vereist__ als `repos` bestaat. Bijvoorbeeld van boven, `team-A`, `team-B`. |
 | `repos."pattern"`                  | `no`             | Een matrix met teken reeksen die wordt gebruikt om een toepassings naam te vinden. Gebruik voor elk patroon de `{application}/{profile}` notatie met Joker tekens. |
 | `repos."default-label"`            | `no`             | Het standaard label van de `Git` opslag plaats moet de `branch name`, `tag name`of `commit-id` van de opslag plaats zijn. |
 | `repos."search-paths`"             | `no`             | Een matrix met teken reeksen die worden gebruikt voor het zoeken in submappen van de `Git` opslag plaats. |
@@ -137,7 +135,7 @@ Nu u uw configuratie bestanden hebt opgeslagen in een opslag plaats, moet u er e
 
 #### <a name="default-repository"></a>Standaard opslagplaats
 
-* Open bare opslag plaats: plak in de sectie **standaard opslagplaats** de URI van de opslag plaats in de sectie **URI** en zorg ervoor dat de **verificatie** -instelling **openbaar**is. Klik vervolgens op **Toep assen** om te volt ooien. 
+* Open bare opslag plaats: plak de URI van de opslag plaats in de sectie **URI** in de sectie **standaard opslagplaats** .  Stel het **Label** in op `config`. Zorg ervoor dat de **verificatie** -instelling **openbaar**is en selecteer vervolgens **Toep assen** om te volt ooien. 
 
 * Privé-opslag plaats: Azure lente-Cloud ondersteunt basis verificatie op basis van wacht woord/tokens en SSH.
 

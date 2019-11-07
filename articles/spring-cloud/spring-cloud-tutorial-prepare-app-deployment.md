@@ -1,22 +1,19 @@
 ---
 title: Een lente toepassing voorbereiden voor implementatie in azure lente Cloud | Microsoft Docs
 description: In deze Quick Start hebt u een Java lente-toepassing voor bereid voor implementatie.
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 98d9f3f656cff84cec8d223ed535255157155bd2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: 6c3048fd27c3d3d4fdba0841fb4ab21bd10e15fe
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039005"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721248"
 ---
-# <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Zelfstudie: Een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud
+# <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Zelf studie: een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud
 
 Deze Quick Start laat zien hoe u een bestaande Java-toepassing voor de cloud kunt voorbereiden voor implementatie in azure lente-Cloud.  Een goede configuratie van Azure veer Cloud biedt krachtige services voor het bewaken, schalen en bijwerken van uw lente-Cloud toepassing. 
 
@@ -93,27 +90,27 @@ In de volgende tabel ziet u de juiste versies van de bron-app voor Spring boot/l
 
 Spring boot-versie | Lente-Cloud versie | Azure lente-Cloud versie
 ---|---|---
-2,0. x | Finchley. RELEASE | 2.0.0-MOMENT OPNAME
-2.1. x | Greenwich. RELEASE | 2.1.0-MOMENT OPNAME
+2,0. x | Finchley. RELEASE | 2,0. x
+2.1. x | Greenwich. RELEASE | 2.1. x
 
-Neem dit fragment op in uw `pom.xml` met de juiste Azure lente-Cloud versie in de ' dependency ':
+Neem een van de onderstaande fragmenten op in uw `pom.xml`.  Selecteer het fragment waarvan de versie overeenkomt met die van uw eigen.
 
+### <a name="version-20x"></a>Versie 2.0. x:
 ```xml
-    <repositories>
-        <repository>
-            <id>nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    
-    <dependency>
+<dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
-    </dependency>
+        <version>2.0.0</version>
+</dependency>
+```
+
+### <a name="version-21x"></a>Versie 2.1. x:
+```xml
+<dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+        <version>2.1.0</version>
+</dependency>
 ```
 
 ## <a name="other-required-dependencies"></a>Andere vereiste afhankelijkheden

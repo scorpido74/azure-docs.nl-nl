@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: raynew
-ms.openlocfilehash: 18032250bc5c321d638ad46204738f49f1a0c744
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 90b1250009e6efdb2f8cb9351fe270c8324cc77a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480139"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715482"
 ---
 # <a name="azure-migrate-support-matrix"></a>Ondersteunings matrix Azure Migrate
 
@@ -34,20 +34,30 @@ De tabel bevat een overzicht van de ondersteunde detectie-, evaluatie-en migrati
 **Implementatie** | **Details** 
 --- | --- 
 **App-specifieke detectie** | U kunt apps, rollen en functies ontdekken die worden uitgevoerd op virtuele VMware-machines. Deze functie is momenteel beperkt tot detectie. De evaluatie bevindt zich momenteel op het niveau van de computer. We bieden nog geen app, rol of functie-specifieke evaluatie. 
-**On-premises evaluatie** | Beoordeling van on-premises workloads en gegevens die worden uitgevoerd op virtuele VMware-machines en virtuele Hyper-V-machines. Evalueer het gebruik van Azure Migrate server-evaluatie en-Microsoft Data Migration Assistant (DMA) en hulpprogram ma's van derden die Cloudamize, cohuur tech en Turbonomic server bevatten.
-**Migratie van on-premises naar Azure** | Migreer werk belastingen en gegevens die worden uitgevoerd op fysieke servers, virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers en virtuele machines in de Cloud naar Azure. Migreer met Azure Migrate server assessment en Azure Database Migration Service (DMS) en gebruik hulpprogram ma's van derden die Carbonite en CorentTech bevatten.
+**On-premises evaluatie** | Evalueer on-premises workloads en gegevens die worden uitgevoerd op virtuele VMware-machines, virtuele Hyper-V-machines en fysieke servers. Evalueer het gebruik van Azure Migrate server assessment en Microsoft Data Migration Assistant (DMA), evenals andere hulpprogram ma's en ISV-aanbiedingen.
+**Migratie van on-premises naar Azure** | Migreer werk belastingen en gegevens die worden uitgevoerd op fysieke servers, virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers en virtuele machines in de Cloud naar Azure. Migreer met Azure Migrate server-evaluatie en-Azure Database Migration Service (DMS) en ook andere hulpprogram ma's en ISV-aanbiedingen.
 
-De ondersteuning van specifieke hulp middelen wordt als volgt samenvatten.
 
-**Hulpprogramma** | **Beoordeling/migratie** | **Details**
+## <a name="supported-tools"></a>Ondersteunde hulpprogram ma's
+
+Specifieke ondersteuning van het hulp programma wordt in de tabel samenvatten.
+
+**Hulpprogramma** | **Vast** | **Migreren** 
 --- | --- | ---
-Evaluatie van Azure Migrate-server | Beoordeling | Probeer de server evaluatie voor [Hyper-V](tutorial-prepare-hyper-v.md) en [VMware](tutorial-prepare-vmware.md)uit.
-Cloudamize | Beoordeling | [Meer informatie](https://www.cloudamize.com/platform#tab-0).
-CorentTech | Beoordeling | [Meer informatie](https://www.corenttech.com/).
-Turbonomic | Beoordeling | [Meer informatie](https://turbonomic.com/solutions/technologies/azure-cloud/).
-Migratie van Azure Migrate server | Migratie | Probeer de server migratie voor [Hyper-V](tutorial-migrate-hyper-v.md) en [VMware](tutorial-migrate-vmware.md)uit.
-Carbonite | Migratie | [Meer informatie](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure).
-CorentTech | Migratie | [Meer informatie](https://www.corenttech.com/).
+Evaluatie van Azure Migrate-server | Evalueer [virtuele VMware-machines](tutorial-prepare-vmware.md), [virtuele Hyper-V-machines](tutorial-prepare-hyper-v.md)en [fysieke servers](tutorial-prepare-physical.md). |  Niet beschikbaar (NA)
+Migratie van Azure Migrate server | N.v.t. | Migreer [VMware-vm's](tutorial-migrate-vmware.md), [virtuele Hyper-V-machines](tutorial-migrate-hyper-v.md)en [fysieke servers](tutorial-migrate-physical-virtual-machines.md).
+[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | N.v.t. | Migreer VMware-Vm's, virtuele Hyper-V-machines, fysieke servers, open bare Cloud werkbelastingen. 
+[Cloudamize](https://www.cloudamize.com/platform#tab-0)| Evalueer virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers, werk belastingen voor de open bare Cloud. | N.v.t.
+[Cohuur technologie](https://go.microsoft.com/fwlink/?linkid=2084928) | Evalueer en migreer VMware-Vm's, Hyper-V-Vm's, fysieke servers, open bare Cloud werkbelastingen. |  Migreer VMware-Vm's, virtuele Hyper-V-machines, fysieke servers, open bare Cloud werkbelastingen.
+[Apparaat 42](https://go.microsoft.com/fwlink/?linkid=2097158) | Evalueer virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers, werk belastingen voor de open bare Cloud.| N.v.t.
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | On-premises SQL Server data bases evalueren. | N.v.t.
+[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | Migrate SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. | N.v.t.
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Virtual Desktop Infrastructure (VDI) evalueren | N.v.t.
+[Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | Bewaak virtuele VMWare-machines, Hyper-V-Vm's, xen-Vm's, fysieke machines, werk stations (inclusief VDI), open bare Cloud werkbelastingen | N.v.t.
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | N.v.t. | Virtuele VMWare-machines migreren, virtuele Hyper-V-machines, xen-Vm's, KVM-Vm's, fysieke machines, open bare Cloud werkbelastingen 
+[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | Evalueer virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers, werk belastingen voor de open bare Cloud. | N.v.t.
+[UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | Evalueer virtuele VMware-machines, Hyper-V-Vm's, fysieke servers, open bare Cloud werkbelastingen en SQL Server data bases. | N.v.t.
+[Webapp Migration Assistant](https://appmigration.microsoft.com/) | Web-apps evalueren | Web-apps migreren.
 
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate projecten
