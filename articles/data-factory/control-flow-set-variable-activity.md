@@ -1,5 +1,5 @@
 ---
-title: Variabele activiteit instellen in Azure Data Factory | Microsoft Docs
+title: Variabele activiteit instellen in Azure Data Factory
 description: Meer informatie over het gebruik van de activiteit variabele instellen om de waarde in te stellen van een bestaande variabele die in een Data Factory pijp lijn is gedefinieerd
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: cfe6dd63234a7750fe01614d6f1b38bb7cce1adb
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 2589e56d3170b235f31d07f902eb75c749e8573f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142446"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679307"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Variabele activiteit instellen in Azure Data Factory
 
@@ -25,12 +25,12 @@ Gebruik de activiteit variabele instellen om de waarde in te stellen van een bes
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-Eigenschap | Description | Vereist
+Eigenschap | Beschrijving | Vereist
 -------- | ----------- | --------
-name | De naam van de activiteit in de pijp lijn | Ja
+naam | De naam van de activiteit in de pijp lijn | Ja
 description | Tekst die beschrijft wat de activiteit doet | nee
-Type | Type activiteit is SetVariable | ja
-value | Waarde van de teken reeks of expressie object die wordt gebruikt om de opgegeven variabele in te stellen | ja
+type | Type activiteit is SetVariable | ja
+waarde | Waarde van de teken reeks of expressie object die wordt gebruikt om de opgegeven variabele in te stellen | ja
 variableName | Naam van de variabele die wordt ingesteld door deze activiteit | ja
 
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 31d7299b0c14b35aad7a29c875630d8a7fa4827e
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d8d5ecd64ba689dc9cce342513702d8359038162
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200586"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682262"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Capaciteits planning voor HDInsight-clusters
 
@@ -31,13 +31,13 @@ De belangrijkste vragen om de capaciteits planning te vragen zijn:
 
 De Azure-regio bepaalt waar uw cluster fysiek is ingericht. Voor een minimale latentie van lees-en schrijf bewerkingen moet het cluster zich in de buurt van uw gegevens bevinden.
 
-HDInsight is beschikbaar in veel Azure-regio's. Zie [producten beschikbaar per regio](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=hdinsight/)om de dichtstbijzijnde regio te vinden.
+HDInsight is beschikbaar in veel Azure-regio's. Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=hdinsight)om de dichtstbijzijnde regio te vinden.
 
 ## <a name="choose-storage-location-and-size"></a>Opslag locatie en-grootte kiezen
 
 ### <a name="location-of-default-storage"></a>Locatie van standaard opslag
 
-De standaard opslag, een Azure Storage account of Azure Data Lake Storage, moet zich op dezelfde locatie bestaan als uw cluster. Azure Storage is beschikbaar op alle locaties. Data Lake Storage Gen1 is beschikbaar in sommige regio's: Bekijk de huidige [Data Lake Storage Beschik baarheid](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage).
+De standaard opslag, een Azure Storage account of Azure Data Lake Storage, moet zich op dezelfde locatie bestaan als uw cluster. Azure Storage is beschikbaar op alle locaties. Data Lake Storage Gen1 is beschikbaar in sommige regio's: Bekijk de huidige [Data Lake Storage Beschik baarheid](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
 
 ### <a name="location-of-existing-data"></a>Locatie van bestaande gegevens
 
@@ -94,7 +94,7 @@ Soms kunnen er fouten optreden vanwege de parallelle uitvoering van meerdere toe
 
 Nadat u de VM-grootte,-schaal en-type van het doel cluster hebt bepaald, controleert u de huidige limieten voor quotum capaciteit van uw abonnement. Wanneer u een quotum limiet bereikt, kunt u mogelijk geen nieuwe clusters implementeren of bestaande clusters uitschalen door meer werk knooppunten toe te voegen. De enige quotum limiet is het quotum voor CPU-kernen dat voor elk abonnement bestaat op het niveau van de regio. Het is bijvoorbeeld mogelijk dat uw abonnement 30 kern limieten heeft in de regio VS-Oost. Als u een quota verhoging wilt aanvragen, voert u de volgende stappen uit:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 1. Selecteer **Help en ondersteuning** aan de linkerkant van de pagina.
 1. Selecteer **Nieuwe ondersteuningsaanvraag**.
 1. Selecteer op de pagina **nieuwe ondersteunings aanvraag** , onder tabblad **basis beginselen** , de volgende opties:

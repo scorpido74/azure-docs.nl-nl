@@ -1,5 +1,5 @@
 ---
-title: Gegevens fabrieken bewaken met behulp van Azure Monitor | Microsoft Docs
+title: Gegevens fabrieken bewaken met behulp van Azure Monitor
 description: Meer informatie over het gebruik van Azure Monitor om/Azure Data Factory-pijp lijnen te bewaken door Diagnostische logboeken in te scha kelen met informatie van Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 6f5472e42b7ef43123698f01ee76fb0e691aa45e
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 67709ef96ffb8190812d625c04cd9749c0ebb900
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827803"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684616"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Gegevens fabrieken melden en bewaken met behulp van Azure Monitor
 
@@ -49,7 +49,7 @@ Diagnostische instellingen gebruiken voor het configureren van Diagnostische log
 * Ze geven aan waar Diagnostische logboeken worden verzonden. Voor beelden zijn onder andere een Azure-opslag account, een Azure Event Hub of controle Logboeken.
 * Ze geven aan welke logboek categorieën worden verzonden.
 * Ze geven op hoe lang elke logboek categorie moet worden bewaard in een opslag account.
-* Een bewaarperiode van nul dagen betekent dat Logboeken altijd worden bewaard. Anders kan de waarde een wille keurig aantal dagen van 1 tot en met 2.147.483.647 zijn.
+* Een Bewaar periode van nul dagen houdt in dat Logboeken permanent worden bewaard. Anders kan de waarde een wille keurig aantal dagen van 1 tot en met 2.147.483.647 zijn.
 * Als het Bewaar beleid is ingesteld, maar logboeken opslaat in een opslag account is uitgeschakeld, heeft het Bewaar beleid geen effect. Dit probleem kan bijvoorbeeld optreden wanneer alleen de opties Event Hubs of controle logboeken zijn geselecteerd.
 * Bewaar beleid wordt per dag toegepast. De grens tussen dagen vindt plaats om middernacht Coordinated Universal Time (UTC). Aan het einde van de dag worden logboeken van dagen die het Bewaar beleid overschrijden, verwijderd. Als u bijvoorbeeld een Bewaar beleid van één dag hebt, wordt aan het begin van de huidige datum de logboeken van vóór gisteren verwijderd.
 
@@ -67,8 +67,8 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>Headers
 
 * Vervang `{api-version}` door `2016-09-01`.
-* Vervang `{resource-id}` door de id van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/manage-resource-groups-portal.md) voor meer informatie.
-* Stel de `Content-Type` koptekst in `application/json`op.
+* Vervang `{resource-id}` door de ID van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/manage-resource-groups-portal.md) voor meer informatie.
+* Stel de `Content-Type`-header in op `application/json`.
 * Stel de autorisatie-header in op het JSON-webtoken dat u hebt ontvangen van Azure Active Directory (Azure AD). Zie [verificatie aanvragen](../active-directory/develop/authentication-scenarios.md)voor meer informatie.
 
 ##### <a name="body"></a>Hoofdtekst
@@ -112,18 +112,18 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | --- | --- | --- |
 | **storageAccountId** |Tekenreeks | De resource-ID van het opslag account waarnaar u Diagnostische logboeken wilt verzenden. |
-| **Servicebusruleid kunnen** |Tekenreeks | De service bus-regel-ID van de service bus-naam ruimte waarin u Event Hubs wilt maken voor het streamen van Diagnostische logboeken. De regel-ID heeft de `{service bus resource ID}/authorizationrules/{key name}`indeling.|
+| **Servicebusruleid kunnen** |Tekenreeks | De service bus-regel-ID van de service bus-naam ruimte waarin u Event Hubs wilt maken voor het streamen van Diagnostische logboeken. De regel-ID heeft de indeling `{service bus resource ID}/authorizationrules/{key name}`.|
 | **workspaceId** | Complex type | Een matrix met metrische tijd korrels en het Bewaar beleid. De waarde van deze eigenschap is leeg. |
 |**metrics**| Parameter waarden van de pijplijn uitvoering worden door gegeven aan de aangeroepen pijp lijn| Een JSON-object waarmee parameter namen worden toegewezen aan argument waarden. |
 | **hout**| Complex type| De naam van een diagnostische logboek categorie voor een resource type. Als u de lijst met diagnostische logboek categorieën voor een resource wilt ophalen, voert u de bewerking Diagnostische instellingen ophalen uit. |
-| **Categorie**| Tekenreeks| Een matrix met logboek categorieën en het Bewaar beleid. |
-| **timeGrain** | Tekenreeks | De granulatie van metrische gegevens, die worden vastgelegd in de ISO 8601-duur notatie. De waarde van de eigenschap `PT1M`moet een minuut zijn. |
-| **ingeschakeld**| Boolean-waarde | Hiermee wordt aangegeven of de verzameling van de categorie metrisch of logboek is ingeschakeld voor deze resource. |
+| **rubriek**| Tekenreeks| Een matrix met logboek categorieën en het Bewaar beleid. |
+| **timeGrain** | Tekenreeks | De granulatie van metrische gegevens, die worden vastgelegd in de ISO 8601-duur notatie. De waarde van de eigenschap moet `PT1M`zijn, die één minuut aangeeft. |
+| **ingeschakeld**| Booleaans | Hiermee wordt aangegeven of de verzameling van de categorie metrisch of logboek is ingeschakeld voor deze resource. |
 | **retentionPolicy**| Complex type| Hierin wordt het Bewaar beleid voor een metrische of logboek categorie beschreven. Deze eigenschap wordt alleen gebruikt voor opslag accounts. |
-|**resterende**| Int| Het aantal dagen dat de metrische gegevens of logboeken moeten worden bewaard. Als de waarde van de eigenschap 0 is, worden de logboeken permanent bewaard. Deze eigenschap wordt alleen gebruikt voor opslag accounts. |
+|**resterende**| integer| Het aantal dagen dat de metrische gegevens of logboeken moeten worden bewaard. Als de waarde van de eigenschap 0 is, worden de logboeken permanent bewaard. Deze eigenschap wordt alleen gebruikt voor opslag accounts. |
 
 ##### <a name="response"></a>Antwoord
 
@@ -188,8 +188,8 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>Headers
 
 * Vervang `{api-version}` door `2016-09-01`.
-* Vervang `{resource-id}` door de id van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/manage-resource-groups-portal.md) voor meer informatie.
-* Stel de `Content-Type` koptekst in `application/json`op.
+* Vervang `{resource-id}` door de ID van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/manage-resource-groups-portal.md) voor meer informatie.
+* Stel de `Content-Type`-header in op `application/json`.
 * Stel de autorisatie-header in op een JSON-webtoken dat u hebt ontvangen van Azure AD. Zie [verificatie aanvragen](../active-directory/develop/authentication-scenarios.md)voor meer informatie.
 
 ##### <a name="response"></a>Antwoord
@@ -287,21 +287,21 @@ Zie [Diagnostische instellingen](https://docs.microsoft.com/rest/api/monitor/dia
 }
 ```
 
-| Eigenschap | Type | Description | Voorbeeld |
+| Eigenschap | Type | Beschrijving | Voorbeeld |
 | --- | --- | --- | --- |
 | **Niveau** |Tekenreeks | Het niveau van de diagnostische Logboeken. Stel de waarde van de eigenschap in op 4 voor de logboeken voor de uitvoering van de activiteit. | `4` |
-| **correlationId** |Tekenreeks | De unieke ID voor het bijhouden van een bepaalde aanvraag. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **tijd** | Tekenreeks | De tijd van de gebeurtenis in de UTC-notatie `YYYY-MM-DDTHH:MM:SS.00000Z`time span. | `2017-06-28T21:00:27.3534352Z` |
+| **Correlatie** |Tekenreeks | De unieke ID voor het bijhouden van een bepaalde aanvraag. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **tegelijk** | Tekenreeks | De tijd van de gebeurtenis in de UTC-notatie time span `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
 |**activityRunId**| Tekenreeks| De ID van de uitvoering van de activiteit. | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |**pipelineRunId**| Tekenreeks| De ID van de pijplijn uitvoering. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|**ResourceId**| Tekenreeks | De ID die is gekoppeld aan de Data Factory-resource. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**Categorie**| Tekenreeks | De categorie van de diagnostische Logboeken. Stel de waarde van de `ActivityRuns`eigenschap in op. | `ActivityRuns` |
-|**afvlakking**| Tekenreeks | Het niveau van de diagnostische Logboeken. Stel de waarde van de `Informational`eigenschap in op. | `Informational` |
-|**OperationName**| Tekenreeks | De naam van de activiteit met de status. Als de activiteit de heartbeat start is, is `MyActivity -`de waarde van de eigenschap. Als de activiteit de end heartbeat is, is `MyActivity - Succeeded`de waarde van de eigenschap. | `MyActivity - Succeeded` |
+|**resourceId**| Tekenreeks | De ID die is gekoppeld aan de Data Factory-resource. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**rubriek**| Tekenreeks | De categorie van de diagnostische Logboeken. Stel de eigenschaps waarde in op `ActivityRuns`. | `ActivityRuns` |
+|**afvlakking**| Tekenreeks | Het niveau van de diagnostische Logboeken. Stel de eigenschaps waarde in op `Informational`. | `Informational` |
+|**operationName**| Tekenreeks | De naam van de activiteit met de status. Als de activiteit de heartbeat start is, wordt de waarde van de eigenschap `MyActivity -`. Als de activiteit de end heartbeat is, wordt de waarde van de eigenschap `MyActivity - Succeeded`. | `MyActivity - Succeeded` |
 |**pipelineName**| Tekenreeks | De naam van de pijp lijn. | `MyPipeline` |
 |**activityName**| Tekenreeks | De naam van de activiteit. | `MyActivity` |
 |**start**| Tekenreeks | De begin tijd van de activiteit wordt uitgevoerd met de UTC-notatie time span. | `2017-06-26T20:55:29.5007959Z`|
-|**endsystemen**| Tekenreeks | De eind tijd van de activiteit wordt uitgevoerd met de UTC-notatie time span. Als in het diagnostische logboek wordt aangegeven dat een activiteit is gestart, maar nog niet is beëindigd `1601-01-01T00:00:00Z`, is de waarde van de eigenschap. | `2017-06-26T20:55:29.5007959Z` |
+|**endsystemen**| Tekenreeks | De eind tijd van de activiteit wordt uitgevoerd met de UTC-notatie time span. Als in het diagnostische logboek wordt aangegeven dat een activiteit is gestart, maar nog niet is beëindigd, wordt de waarde van de eigenschap `1601-01-01T00:00:00Z`. | `2017-06-26T20:55:29.5007959Z` |
 
 #### <a name="pipeline-run-log-attributes"></a>Pijp lijn-kenmerken van Logboeken uitvoeren
 
@@ -333,20 +333,20 @@ Zie [Diagnostische instellingen](https://docs.microsoft.com/rest/api/monitor/dia
 }
 ```
 
-| Eigenschap | Type | Description | Voorbeeld |
+| Eigenschap | Type | Beschrijving | Voorbeeld |
 | --- | --- | --- | --- |
 | **Niveau** |Tekenreeks | Het niveau van de diagnostische Logboeken. Stel de waarde van de eigenschap in op 4 voor de logboeken voor de uitvoering van de activiteit. | `4` |
-| **correlationId** |Tekenreeks | De unieke ID voor het bijhouden van een bepaalde aanvraag. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **tijd** | Tekenreeks | De tijd van de gebeurtenis in de UTC-notatie `YYYY-MM-DDTHH:MM:SS.00000Z`time span. | `2017-06-28T21:00:27.3534352Z` |
+| **Correlatie** |Tekenreeks | De unieke ID voor het bijhouden van een bepaalde aanvraag. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **tegelijk** | Tekenreeks | De tijd van de gebeurtenis in de UTC-notatie time span `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
 |**runId**| Tekenreeks| De ID van de pijplijn uitvoering. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|**ResourceId**| Tekenreeks | De ID die is gekoppeld aan de Data Factory-resource. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**Categorie**| Tekenreeks | De categorie van de diagnostische Logboeken. Stel de waarde van de `PipelineRuns`eigenschap in op. | `PipelineRuns` |
-|**afvlakking**| Tekenreeks | Het niveau van de diagnostische Logboeken. Stel de waarde van de `Informational`eigenschap in op. | `Informational` |
-|**OperationName**| Tekenreeks | De naam van de pijp lijn samen met de status. Nadat de pijplijn uitvoering is voltooid, is `Pipeline - Succeeded`de waarde van de eigenschap. | `MyPipeline - Succeeded`. |
+|**resourceId**| Tekenreeks | De ID die is gekoppeld aan de Data Factory-resource. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**rubriek**| Tekenreeks | De categorie van de diagnostische Logboeken. Stel de eigenschaps waarde in op `PipelineRuns`. | `PipelineRuns` |
+|**afvlakking**| Tekenreeks | Het niveau van de diagnostische Logboeken. Stel de eigenschaps waarde in op `Informational`. | `Informational` |
+|**operationName**| Tekenreeks | De naam van de pijp lijn samen met de status. Nadat de uitvoering van de pijp lijn is voltooid, wordt de waarde van de eigenschap `Pipeline - Succeeded`. | `MyPipeline - Succeeded`. |
 |**pipelineName**| Tekenreeks | De naam van de pijp lijn. | `MyPipeline` |
 |**start**| Tekenreeks | De begin tijd van de activiteit wordt uitgevoerd met de UTC-notatie time span. | `2017-06-26T20:55:29.5007959Z`. |
-|**endsystemen**| Tekenreeks | De eind tijd van de activiteit wordt uitgevoerd met de UTC-notatie time span. Als in het diagnostische logboek wordt aangegeven dat een activiteit is gestart, maar nog niet is `1601-01-01T00:00:00Z`beëindigd, is de waarde van de eigenschap.  | `2017-06-26T20:55:29.5007959Z` |
-|**status**| Tekenreeks | De laatste status van de pijplijn uitvoering. Mogelijke eigenschaps waarden `Succeeded` zijn `Failed`en. | `Succeeded`|
+|**endsystemen**| Tekenreeks | De eind tijd van de activiteit wordt uitgevoerd met de UTC-notatie time span. Als in het diagnostische logboek wordt aangegeven dat een activiteit is gestart, maar nog niet is beëindigd, wordt de waarde van de eigenschap `1601-01-01T00:00:00Z`.  | `2017-06-26T20:55:29.5007959Z` |
+|**hebben**| Tekenreeks | De laatste status van de pijplijn uitvoering. Mogelijke eigenschaps waarden zijn `Succeeded` en `Failed`. | `Succeeded`|
 
 #### <a name="trigger-run-log-attributes"></a>Logboek kenmerken van de trigger-uitvoer
 
@@ -377,21 +377,21 @@ Zie [Diagnostische instellingen](https://docs.microsoft.com/rest/api/monitor/dia
 
 ```
 
-| Eigenschap | Type | Description | Voorbeeld |
+| Eigenschap | Type | Beschrijving | Voorbeeld |
 | --- | --- | --- | --- |
 | **Niveau** |Tekenreeks | Het niveau van de diagnostische Logboeken. Stel de waarde van de eigenschap in op 4 voor de logboeken voor de uitvoering van de activiteit. | `4` |
-| **correlationId** |Tekenreeks | De unieke ID voor het bijhouden van een bepaalde aanvraag. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **tijd** | Tekenreeks | De tijd van de gebeurtenis in de UTC-notatie `YYYY-MM-DDTHH:MM:SS.00000Z`time span. | `2017-06-28T21:00:27.3534352Z` |
+| **Correlatie** |Tekenreeks | De unieke ID voor het bijhouden van een bepaalde aanvraag. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **tegelijk** | Tekenreeks | De tijd van de gebeurtenis in de UTC-notatie time span `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
 |**triggerId**| Tekenreeks| De ID van de trigger uitvoering. | `08587023010602533858661257311` |
-|**ResourceId**| Tekenreeks | De ID die is gekoppeld aan de Data Factory-resource. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**Categorie**| Tekenreeks | De categorie van de diagnostische Logboeken. Stel de waarde van de `PipelineRuns`eigenschap in op. | `PipelineRuns` |
-|**afvlakking**| Tekenreeks | Het niveau van de diagnostische Logboeken. Stel de waarde van de `Informational`eigenschap in op. | `Informational` |
-|**OperationName**| Tekenreeks | De naam van de trigger met de eind status, die aangeeft of de trigger is geactiveerd. Als de heartbeat is geslaagd, is `MyTrigger - Succeeded`de waarde van de eigenschap. | `MyTrigger - Succeeded` |
+|**resourceId**| Tekenreeks | De ID die is gekoppeld aan de Data Factory-resource. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**rubriek**| Tekenreeks | De categorie van de diagnostische Logboeken. Stel de eigenschaps waarde in op `PipelineRuns`. | `PipelineRuns` |
+|**afvlakking**| Tekenreeks | Het niveau van de diagnostische Logboeken. Stel de eigenschaps waarde in op `Informational`. | `Informational` |
+|**operationName**| Tekenreeks | De naam van de trigger met de eind status, die aangeeft of de trigger is geactiveerd. Als de heartbeat is geslaagd, is de waarde van de eigenschap `MyTrigger - Succeeded`. | `MyTrigger - Succeeded` |
 |**triggerName**| Tekenreeks | De naam van de trigger. | `MyTrigger` |
-|**Trigger type**| Tekenreeks | Het type van de trigger. Mogelijke eigenschaps waarden `Manual Trigger` zijn `Schedule Trigger`en. | `ScheduleTrigger` |
+|**Trigger type**| Tekenreeks | Het type van de trigger. Mogelijke eigenschaps waarden zijn `Manual Trigger` en `Schedule Trigger`. | `ScheduleTrigger` |
 |**triggerEvent**| Tekenreeks | Het gebeurtenis van de trigger. | `ScheduleTime - 2017-07-06T01:50:25Z` |
 |**start**| Tekenreeks | De begin tijd van de trigger die wordt geactiveerd in timeas UTC-notatie. | `2017-06-26T20:55:29.5007959Z`|
-|**status**| Tekenreeks | De uiteindelijke status die aangeeft of de trigger is geactiveerd. Mogelijke eigenschaps waarden `Succeeded` zijn `Failed`en. | `Succeeded`|
+|**hebben**| Tekenreeks | De uiteindelijke status die aangeeft of de trigger is geactiveerd. Mogelijke eigenschaps waarden zijn `Succeeded` en `Failed`. | `Succeeded`|
 
 ### <a name="log-analytics-schema"></a>Log Analytics schema
 
@@ -401,14 +401,14 @@ Log Analytics neemt het schema over van monitor met de volgende uitzonde ringen:
 * Er is geen kolom van het niveau.
 * De dynamische kolom ' Eigenschappen ' wordt bewaard als het volgende dynamische JSON-BLOB-type.
 
-    | Azure Monitor kolom | Log Analytics kolom | type |
+    | Azure Monitor kolom | Log Analytics kolom | Type |
     | --- | --- | --- |
     | $. Properties. UserProperties | UserProperties | Dynamisch |
     | $. Properties. Aantekeningen | Aantekeningen | Dynamisch |
     | $. Properties. Ingevoerd | Invoer | Dynamisch |
-    | $. Properties. Uitvoer | Output | Dynamisch |
-    | $. Properties. Fout. error code | ErrorCode | int |
-    | $. Properties. Fout. Message | ErrorMessage | string |
+    | $. Properties. Uitvoer | Uitvoer | Dynamisch |
+    | $. Properties. Fout. error code | Code | int |
+    | $. Properties. Fout. Message | errorMessage | tekenreeks |
     | $. Properties. Optreedt | Fout | Dynamisch |
     | $. Properties. Voorgangers dikwijls werden | Voorgangers dikwijls werden | Dynamisch |
     | $. Properties. Instellen | Parameters | Dynamisch |
@@ -448,11 +448,11 @@ Bekijk de volgende video voor een inleiding en demonstratie van zeven minuten vo
 
 Diagnostische instellingen voor uw data factory maken of toevoegen.
 
-1. Ga in de portal naar monitor. Instellingen voor**Diagnostische** **instellingen selecteren.**  > 
+1. Ga in de portal naar monitor. Selecteer **instellingen** > **Diagnostische instellingen**.
 
 1. Selecteer de data factory waarvoor u een diagnostische instelling wilt instellen.
 
-1. Als er geen instellingen zijn op de geselecteerde data factory, wordt u gevraagd een instelling te maken. Selecteer **diagnostische gegevens inschakelen**.
+1. Als er geen instellingen zijn op de geselecteerde data factory, wordt u gevraagd een instelling te maken. Selecteer **Diagnostische gegevens inschakelen**.
 
    ![Een diagnostische instelling maken als er geen instellingen zijn](media/data-factory-monitor-oms/monitor-oms-image1.png)
 
@@ -469,7 +469,7 @@ Diagnostische instellingen voor uw data factory maken of toevoegen.
 Na enkele ogen blikken wordt de nieuwe instelling weer gegeven in de lijst met instellingen voor deze data factory. Diagnostische logboeken worden naar die werk ruimte gestreamd zodra er nieuwe gebeurtenis gegevens worden gegenereerd. Maxi maal 15 minuten kan verstrijken tussen het moment dat een gebeurtenis wordt verzonden en wanneer deze wordt weer gegeven in Log Analytics.
 
 * In de _resource-specifieke_ modus, Diagnostische logboeken van Azure Data Factory flow in _ADFPipelineRun_-, _ADFTriggerRun_-en _ADFActivityRun_ -tabellen
-* In de _Diagnostische_ modus van Azure stroomt Diagnostische logboeken in _AzureDiagnostics_ -tabel
+* In de _diagnostische modus van Azure_ worden diagnostische logboeken geplaatst in de tabel _AzureDiagnostics_
 
 > [!NOTE]
 > Omdat een Azure-logboek tabel niet meer dan 500 kolommen kan bevatten, raden we u ten zeerste aan de resource-specifieke modus te selecteren. Zie [log Analytics bekende beperkingen](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics)voor meer informatie.
@@ -517,7 +517,7 @@ U kunt de voor gaande metrische gegevens visualiseren, de query's achter deze me
 
 ## <a name="alerts"></a>Waarschuwingen
 
-Meld u aan bij de Azure Portal en selecteer **monitor** > **waarschuwingen** om waarschuwingen te maken.
+Meld u aan bij de Azure Portal en selecteer > **waarschuwingen** **controleren** om waarschuwingen te maken.
 
 ![Waarschuwingen in het menu van de portal](media/monitor-using-azure-monitor/alerts_image3.png)
 
@@ -525,7 +525,7 @@ Meld u aan bij de Azure Portal en selecteer **monitor** > **waarschuwingen** om 
 
 1. Selecteer **+ nieuwe waarschuwings regel** om een nieuwe waarschuwing te maken.
 
-    ![Nieuwe waarschuwingsregel](media/monitor-using-azure-monitor/alerts_image4.png)
+    ![Nieuwe waarschuwings regel](media/monitor-using-azure-monitor/alerts_image4.png)
 
 1. Definieer de waarschuwings voorwaarde.
 
@@ -540,7 +540,7 @@ Meld u aan bij de Azure Portal en selecteer **monitor** > **waarschuwingen** om 
 
 1. Definieer de details van de waarschuwing.
 
-    ![Waarschuwingsdetails](media/monitor-using-azure-monitor/alerts_image8.png)
+    ![Meldingsdetails](media/monitor-using-azure-monitor/alerts_image8.png)
 
 1. Definieer de actie groep.
 

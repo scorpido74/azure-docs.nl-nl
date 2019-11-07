@@ -1,5 +1,5 @@
 ---
-title: SSIS-migratie met Azure SQL Database Managed instance als de data base-werkbelasting bestemming | Microsoft Docs
+title: SSIS-migratie met Azure SQL Database Managed instance als de werk belasting bestemming van de data base
 description: SSIS-migratie met Azure SQL Database Managed instance als de werkbelasting bestemming voor de data base.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: c1bb056909641ad0b8654e84f35c4fbd5b38db82
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 6ea9134085812b99d59ad64aa2c9ec1b2ff827d9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968521"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684395"
 ---
 # <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>SSIS-migratie met Azure SQL Database Managed instance als de werk belasting bestemming van de data base
 
@@ -33,11 +33,11 @@ SSISDB-migratie kan worden uitgevoerd met behulp van DMS, zoals beschreven in he
 
 Azure SQL Database beheerde instantie heeft een systeem eigen, eersteklas scheduler, net als SQL Server Agent on-premises.  Omdat er nog geen migratie hulpprogramma voor SSIS-taken beschikbaar is, moeten deze worden gemigreerd van SQL Server Agent on-premises naar Azure SQL Database beheerde exemplaar agent via scripts/hand matig kopiëren.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
 - [Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
-- [Azure Database migratieservice](https://docs.microsoft.com/azure/dms/dms-overview)
+- [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview)
 - [Netwerktopologieën voor het Azure SQL Database van beheerde-exemplaar migraties met behulp van DMS](https://docs.microsoft.com/azure/dms/resource-network-topologies)
 - [SSIS-pakketten migreren naar een door Azure SQL Database beheerd exemplaar](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
 

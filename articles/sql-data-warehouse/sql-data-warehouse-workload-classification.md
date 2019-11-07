@@ -1,6 +1,6 @@
 ---
-title: Classificatie voor Azure SQL Data Warehouse | Microsoft Docs
-description: Richtlijnen voor het gebruik van bestandsclassificatie voor het beheren van de urgentie van een gelijktijdigheid van taken en rekenresources voor query's in Azure SQL Data Warehouse.
+title: Workloadclassificatie
+description: Richt lijnen voor het gebruik van classificatie voor het beheren van gelijktijdigheids-, urgentie-en reken resources voor query's in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,62 +10,63 @@ ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4988d284bed46a918f85eec8d7b4a5b89fc6549e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 15ca4b9fe3c40b7bf49d86464858747642e3cb5a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588493"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685383"
 ---
-# <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL Data Warehouse workload classificatie
+# <a name="azure-sql-data-warehouse-workload-classification"></a>Classificatie van Azure SQL Data Warehouse werk belasting
 
-In dit artikel wordt uitgelegd dat het proces van SQL Data Warehouse workload classificatie van het toewijzen van een resourceklasse en urgentie op binnenkomende aanvragen.
+In dit artikel wordt uitgelegd wat het SQL Data Warehouse werk belasting classificatie proces is van het toewijzen van een resource klasse en belang rijk voor inkomende aanvragen.
 
 ## <a name="classification"></a>Classificatie
 
 > [!Video https://www.youtube.com/embed/QcCRBAhoXpM]
 
-Workload management classificatie kunt werkbelasting beleid moet worden toegepast op aanvragen via het toewijzen van [resourceklassen](resource-classes-for-workload-management.md#what-are-resource-classes) en [belang](sql-data-warehouse-workload-importance.md).
+Met de classificatie van werkbelasting beheer kunnen werkbelasting beleid worden toegepast op aanvragen via het toewijzen van [resource klassen](resource-classes-for-workload-management.md#what-are-resource-classes) en het [belang](sql-data-warehouse-workload-importance.md).
 
-Er zijn veel manieren om te classificeren datawarehousing-workloads, is de eenvoudigste en meest voorkomende classificatie laden en query's uitvoeren. Laden van gegevens met insert, update en delete-instructies.  U de gegevens opvragen met selecteert. Een datawarehouse-oplossing hebben vaak een beleid voor werkbelasting voor de load-activiteit, zoals het toewijzen van een hogere resourceklasse met meer resources. Een beleid voor verschillende werkbelastingen kan toepassen op query's, zoals een lagere prioriteit ten opzichte van voor het laden van activiteiten.
+Hoewel er veel manieren zijn om werk belastingen voor gegevens opslag te classificeren, wordt de eenvoudigste en meest voorkomende classificatie geladen en query. U laadt gegevens met de instructies INSERT, update en DELETE.  U kunt een query uitvoeren op de gegevens met behulp van selecteren. Een oplossing voor gegevens opslag heeft vaak een werkbelasting beleid voor het laden van activiteiten, zoals het toewijzen van een hogere resource klasse met meer resources. Een ander werkbelasting beleid kan van toepassing zijn op query's, zoals lagere urgentie ten opzichte van laad activiteiten.
 
-U kunt ook uw workloads laden en query subclassify. Subclassificatie biedt u meer controle over uw workloads. Querywerkbelastingen kunnen bijvoorbeeld bestaan uit de kubus wordt vernieuwd, dashboard query's of ad-hocquery's. U kunt elk van deze query-workloads met een andere resource-klassen of instellingen van belang te classificeren. Belasting kan ook profiteren van subclassificatie. Grote transformaties kunnen worden toegewezen aan grotere resourceklassen. Hogere prioriteit kan worden gebruikt om ervoor te zorgen sleutel verkoopgegevens loader voordat weergegevens of een sociale gegevensfeed.
+U kunt ook de werk belasting voor laden en query's onderverdelen. Subclassificatie geeft u meer controle over uw workloads. Query werkbelastingen kunnen bijvoorbeeld bestaan uit kubus vernieuwingen, dashboard query's of ad-hoc query's. U kunt elk van deze query-workloads classificeren met verschillende bron klassen of belang rijke instellingen. Loading kan ook profiteren van subclassificatie. Grote trans formaties kunnen worden toegewezen aan grotere resource klassen. Een hogere urgentie kan worden gebruikt om ervoor te zorgen dat de gegevens van de belangrijkste omzet loader zijn vóór weer gegevens of een sociale gegevensfeed.
 
-Niet alle instructies zijn geclassificeerd als ze niet bronnen nodig of moet van belang zijn voor de uitvoering van invloed zijn op.  DBCC-opdrachten, BEGIN en COMMIT ROLLBACK TRANSACTION-instructies zijn niet ingedeeld.
+Niet alle instructies worden geclassificeerd omdat ze geen bronnen nodig hebben of belang rijk moeten zijn om de uitvoering te beïnvloeden.  DBCC-opdrachten, BEGIN-, doorvoer-en ROLLBACK-transactie overzichten worden niet geclassificeerd.
 
-## <a name="classification-process"></a>Classificatieproces
+## <a name="classification-process"></a>Classificatie proces
 
-Classificatie in SQL Data Warehouse vandaag wordt bereikt door het toewijzen van gebruikers aan een rol heeft een bijbehorende resourceklasse toegewezen met behulp van die [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). De mogelijkheid om aan te geven van een aanmelding met een resourceklasse aanvragen is beperkt met deze functie. Een uitgebreidere methode voor de classificatie is nu beschikbaar met de [WERKBELASTING classificatie maken](/sql/t-sql/statements/create-workload-classifier-transact-sql) syntaxis.  Met de volgende syntaxis kunnen gebruikers van SQL Data Warehouse belang en een resourceklasse toewijzen aan aanvragen.  
+De classificatie in SQL Data Warehouse wordt vandaag bereikt door gebruikers toe te wijzen aan een rol waaraan een bijbehorende resource klasse is toegewezen met behulp van [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). De mogelijkheid om aanvragen te kenmerken buiten een aanmelding bij een resource klasse is beperkt met deze mogelijkheid. Een rijkere methode voor classificatie is nu beschikbaar met de [classificatie syntaxis CREATE WORKLOAD](/sql/t-sql/statements/create-workload-classifier-transact-sql) .  Met deze syntaxis SQL Data Warehouse gebruikers prioriteit en een resource klasse aan aanvragen toewijzen.  
 
 > [!NOTE]
-> Classificatie wordt geëvalueerd op basis van per aanvraag. Anders kunnen meerdere aanvragen in één sessie worden geclassificeerd.
+> De classificatie wordt per aanvraag geëvalueerd. Meerdere aanvragen in één sessie kunnen op verschillende manieren worden geclassificeerd.
 
-## <a name="classification-precedence"></a>Prioriteit van classificatie
+## <a name="classification-precedence"></a>Classificatie prioriteit
 
-Als onderdeel van het classificatieproces voor is prioriteit om te bepalen welke resourceklasse is toegewezen. Classificatie op basis van een databasegebruiker heeft voorrang op lidmaatschap van de rol. Als u een classificatie waarbij een gebruiker van de gebruiker a database wordt toegewezen aan de bronklasse mediumrc maken. Vervolgens worden de RoleA databaserol (van die gebruiker a is een lid) toegewezen aan de bronklasse largerc. De classificatie die een gebruiker van de database wordt toegewezen aan de bronklasse mediumrc voorrang krijgt boven de classificatie die de databaserol RoleA wordt toegewezen aan de bronklasse largerc.
+Als onderdeel van het classificatie proces is de prioriteit van kracht om te bepalen welke resource klasse is toegewezen. Classificatie op basis van een database gebruiker heeft voor rang op het lidmaatschap van de rol. Als u een classificatie maakt waarmee de GebruikerA-data base wordt toegewezen aan de resource klasse mediumrc. Wijs vervolgens de Rola-databaserol (van welke GebruikerA lid is) toe aan de resource klasse largerc. De classificatie die de database gebruiker toewijst aan de resource klasse mediumrc, heeft voor rang op de classificatie die de Rola-databaserol toewijst aan de largerc-resource klasse.
 
-Als een gebruiker lid is van meerdere functies met verschillende resourceklassen toegewezen of in meerdere classificaties overeenkomen, krijgt de gebruiker de toewijzing van de hoogste resource-klasse.  Dit gedrag is consistent zijn met bestaande toewijzingsgedrag van de resource-klasse.
+Als een gebruiker lid is van meerdere rollen met verschillende resource klassen die zijn toegewezen aan of overeenkomen met meerdere classificaties, krijgt de gebruiker de hoogste toewijzing van resource klassen.  Dit gedrag is consistent met het bestaande gedrag van de toewijzing van resource klassen.
 
 ## <a name="system-classifiers"></a>Systeem classificaties
 
-Classificatie van de werkbelasting heeft system belasting classificaties. De classificaties system bestaande rollidmaatschappen van de resource-klasse worden toegewezen aan resource klasse resourcetoewijzingen met normale prioriteit. Systeem classificaties kunnen niet worden verwijderd. Als u system classificaties, kunt u uitvoeren de onder de query:
+Classificatie van werk belasting heeft classificaties van systeemwerk belasting. De classificaties van het systeem wijzen bestaande lidmaatschappen van resource klassen toe aan resource toewijzingen van resource klassen met normale urgentie. Systeem classificaties kunnen niet worden verwijderd. Als u systeem classificaties wilt weer geven, kunt u de onderstaande query uitvoeren:
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <= 12
 ```
 
-## <a name="mixing-resource-class-assignments-with-classifiers"></a>Resource met een combinatie van toewijzingen van de klasse met classificaties
+## <a name="mixing-resource-class-assignments-with-classifiers"></a>Resource klassen toewijzingen combi neren met classificaties
 
-Systeem classificaties gemaakt namens bieden een eenvoudige manier om te migreren naar classificatie van de werkbelasting. Met behulp van de rol van klassetoewijzingen resource met classificatie prioriteit, kan leiden tot misclassification voordat u begint te maken van nieuwe classificaties met urgentie.
+Systeem classificaties die namens u zijn gemaakt, bieden een eenvoudig pad om te migreren naar de classificatie van werk belastingen. Met de toewijzings prioriteit van resource klassen kunt u leiden tot een misclassificatie wanneer u begint met het maken van nieuwe classificaties die belang rijk zijn.
 
 Houd rekening met het volgende scenario:
 
-- Een bestaande datawarehouse heeft een databasegebruiker die dbauser aan de resourceklasserol largerc toegewezen. De toewijzing van de resource-klasse is met sp_addrolemember uitgevoerd.
-- Het datawarehouse is nu bijgewerkt met beheer van de werkbelasting.
-- Als u wilt testen van de syntaxis van de nieuwe classificatie, heeft de databaserol DBARole (dit DBAUser is een lid van), een classificatie voor hen deze toe te wijzen aan mediumrc en hoge urgentie hebt gemaakt.
-- Wanneer DBAUser zich aanmeldt en een query wordt uitgevoerd, wordt de query worden toegewezen aan largerc. Omdat een gebruiker, hebben voorrang boven het lidmaatschap van een rol.
+- Een bestaand Data Warehouse heeft een database gebruiker DBAUser toegewezen aan de resource klasse largerc. De toewijzing van de resource klasse is gemaakt met sp_addrolemember.
+- Het Data Warehouse wordt nu bijgewerkt met werkbelasting beheer.
+- Als u de nieuwe classificatie syntaxis wilt testen, heeft de databaserol DBARole (waarvan DBAUser lid is), een classificatie gemaakt waarmee ze worden toegewezen aan mediumrc en hoge urgentie.
+- Wanneer DBAUser zich aanmeldt en een query uitvoert, wordt de query toegewezen aan largerc. Omdat een gebruiker voor rang heeft op een rollidmaatschap.
 
-Ter vereenvoudiging van het oplossen van problemen misclassification, raden wij dat u resource-klassetoewijzingen rol verwijderen bij het maken van classificaties van de werkbelasting.  De onderstaande code retourneert bestaande resource rollidmaatschappen klasse.  Voer [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) geretourneerd voor de lidnaam van elk van de bijbehorende resourceklasse.
+Om het oplossen van problemen met een fout te vereenvoudigen, raden we u aan om resource klasse-roltoewijzingen te verwijderen tijdens het maken van de werk belasting classificaties.  De onderstaande code retourneert bestaande lidmaatschappen van resource klassen.  Voer [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) uit voor elke lidnaam die wordt geretourneerd door de bijbehorende resource klasse.
 
 ```sql
 SELECT  r.name AS [Resource Class]
@@ -81,7 +82,7 @@ sp_droprolemember ‘[Resource Class]’, membername
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over het maken van een classificatie van de [WERKBELASTING classificatie maken (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
-- Zie de Quick Start voor het maken van een classificatie van de werkbelasting [maken van een classificatie van de werkbelasting](quickstart-create-a-workload-classifier-tsql.md).
-- Zie de artikelen met procedures voor [configureren werkbelasting belang](sql-data-warehouse-how-to-configure-workload-importance.md) en hoe u [beheren en controleren van beheer van de werkbelasting](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
-- Zie [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) om query's en het belang toegewezen weer te geven.
+- Zie de [classificatie werk belasting maken (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)voor meer informatie over het maken van een classificatie.  
+- Zie de Snelstartgids voor het maken van een classificatie van werk belastingen [een classificatie van werk belasting maken](quickstart-create-a-workload-classifier-tsql.md).
+- Zie de artikelen met procedures voor het [configureren van de urgentie van werk belastingen](sql-data-warehouse-how-to-configure-workload-importance.md) en het [beheren en bewaken van workload Management](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- Zie [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) voor het weer geven van query's en de prioriteit die is toegewezen.

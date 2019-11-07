@@ -1,5 +1,5 @@
 ---
-title: Een virtueel netwerk maken voor het beheerde exemplaar van Azure SQL Database | Microsoft Docs
+title: Een virtueel netwerk maken voor Azure SQL Database beheerde instantie
 description: In dit artikel wordt beschreven hoe u een virtueel netwerk maakt waarmee u Azure SQL Database beheerde instantie kunt implementeren.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 2fd4055f1a2ec7b5b29d1a303f1c9ac3260f4cca
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ae18671000a2bfd3bedef7805ba5db964fe0cf95
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958472"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688167"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Een virtueel netwerk maken voor Azure SQL Database beheerde instantie
 
@@ -43,7 +43,7 @@ De eenvoudigste manier om een virtueel netwerk te maken en te configureren, is d
 
 1. Meld u aan bij Azure Portal.
 
-2. Selecteer de **implementeren in Azure** knop:
+2. Selecteer de knop **implementeren naar Azure** :
 
    <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="https://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
 

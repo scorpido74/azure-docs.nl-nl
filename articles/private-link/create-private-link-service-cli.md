@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: c67d2cd4e90b2fa61a4d95e89a68c888a6e1fe3f
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 57ab18c8dfffb6994983179f434491b97589ebda
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273634"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693244"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Een persoonlijke koppelings service maken met behulp van Azure CLI
 In dit artikel wordt beschreven hoe u een persoonlijke koppelings service maakt in azure met behulp van Azure CLI.
@@ -62,7 +62,7 @@ Een statustest controleert alle exemplaren van de virtuele machines om ervoor te
 
 ### <a name="create-a-load-balancer-rule"></a>Een load balancer-regel maken
 
-Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) de regel *myHTTPRule* voor het luisteren naar poort 80 in de front-endgroep *myFrontEnd* en het verzenden van netwerkverkeer met gelijke taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
+Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-groep om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met *az network lb rule create* de regel [myHTTPRule](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) voor het luisteren naar poort 80 in de front-endgroep *myFrontEnd* en het verzenden van netwerkverkeer met gelijke taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -104,11 +104,11 @@ az network private-link-service create \
 ```
 Noteer de service-ID van de persoonlijke koppeling nadat deze is gemaakt. U hebt dit later nodig voor het aanvragen van een verbinding met deze service.  
  
-In deze fase is uw persoonlijke koppelings service gemaakt en is deze klaar om het verkeer te ontvangen. Het bovenstaande voor beeld is alleen om te demonstreren hoe u een persoonlijke koppelings service maakt met behulp van Azure CLI.  De load balancer back-end-Pools of een toepassing op de back-endservers voor het Luis teren naar het verkeer is niet geconfigureerd. Als u end-to-end verkeers stromen wilt zien, kunt u het beste uw toepassing achter uw Standard Load Balancer configureren.  
+In deze fase is uw persoonlijke koppelings service gemaakt en is deze klaar om het verkeer te ontvangen. Het bovenstaande voor beeld is alleen om te demonstreren hoe u een persoonlijke koppelings service maakt met behulp van Azure CLI.  De load balancer back-end-Pools of een toepassing op de back-endservers voor het Luis teren naar het verkeer is niet geconfigureerd. Als u end-to-end verkeers stromen wilt zien, wordt u ten zeerste aangeraden uw toepassing achter uw Standard Load Balancer te configureren.  
  
 Vervolgens laten we zien hoe u deze service kunt toewijzen aan een persoonlijk eind punt in een ander virtueel netwerk met behulp van Azure CLI. Het voor beeld is beperkt tot het maken van het persoonlijke eind punt en het verbinden met de persoonlijke koppelings service die hierboven is gemaakt met behulp van Azure CLI. Daarnaast kunt u virtuele machines in het virtuele netwerk maken voor het verzenden en ontvangen van verkeer naar het persoonlijke eind punt.        
  
-## <a name="private-endpoints"></a>Privé-eindpunten
+## <a name="private-endpoints"></a>Privé-eind punten
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken 
 Maak een virtueel netwerk met [AZ Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create). In dit voor beeld wordt een virtueel netwerk gemaakt met de naam *myPEVNet* in de resource groep met de naam *myResourcegroup*: 
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>Het subnet maken 
-Maak een subnet in een virtueel netwerk met [AZ Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create). In dit voor beeld wordt een subnet met de naam *mySubnet* gemaakt in het virtuele netwerk met de naam *myPEVnet* in de resource groep met de naam *myResourcegroup*: 
+Maak een subnet in een virtueel netwerk met [AZ Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create). In dit voor beeld maakt u een subnet met de naam *mySubnet* in het virtuele netwerk met de naam *myPEVnet* in de resource groep met de naam *myResourcegroup*: 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -151,7 +151,7 @@ az network private-endpoint create \
 --connection-name myPEConnectingPLS \
 --location westcentralus 
 ```
-U kunt de *privé-verbinding-resource-id* ophalen met `az network private-link-service show` behulp van de service private link. De ID ziet er als volgt uit:   
+U kunt de naam van de *resource-id van de privé-verbinding* ophalen met `az network private-link-service show` op de privé koppelings service. De ID ziet er als volgt uit:   
 /subscriptions/subID/resourceGroups/*resourcegroupname*/providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
  
 ## <a name="show-private-link-service-connections"></a>Verbindingen met de persoonlijke koppelings service weer geven 

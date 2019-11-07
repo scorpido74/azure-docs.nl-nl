@@ -1,5 +1,5 @@
 ---
-title: Migreren naar de nieuwe Elastic Database-taken | Microsoft Docs
+title: 'Migreren naar de nieuwe Elastic Database-taken '
 description: Migreer naar de nieuwe Elastic Database-taken.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 9fa3444244cbd51c3f14abcfef5212a366cadbd2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2cba7ecb4be500a8f7007c8da009e03e6f33dfde
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550551"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692276"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>Migreren naar de nieuwe taak voor Elastic Database
 
@@ -138,7 +138,7 @@ function Migrate-Credentials ($agent) {
 }
 ```
 
-Als u uw referenties wilt migreren, voert u de volgende opdracht uit `$agent` door in het Power shell-object van eerdere versie door te geven.
+Als u uw referenties wilt migreren, voert u de volgende opdracht uit door door gegeven in het `$agent` Power shell-object van eerdere versies.
 
 ```powershell
 Migrate-Credentials $agent
@@ -368,7 +368,7 @@ function Setup-TargetGroup ($tgName, $agent) {
 
 Als u uw doelen (servers, data bases en aangepaste verzamelingen) wilt migreren naar uw nieuwe taak database, voert u de cmdlet **migrate-TargetGroups** uit om het volgende te doen:
 
-- Hoofd niveau doelen die servers en data bases zijn, worden gemigreerd naar een nieuwe doel groep\<met de\>naam \<"(\>servername, DATABASENAME) die alleen het hoofd niveau doel bevat.
+- Hoofd niveau doelen die servers en data bases zijn, worden gemigreerd naar een nieuwe doel groep met de naam (\<servername\>, \<DATABASENAME\>), die alleen het hoofd niveau doel bevat.
 - Een aangepaste verzameling wordt gemigreerd naar een nieuwe doel groep die alle onderliggende doelen bevat.
 
 ```powershell
@@ -564,7 +564,7 @@ function Setup-JobStep ($newJob, $job) {
 
 Als u uw taken, taak inhoud, taak triggers en taak planningen wilt migreren naar de nieuwe data base van de elastische taak agent, voert u de cmdlet **migrate Jobs** uit in uw agent.
 
-- Taken met meerdere triggers met verschillende planningen worden onderverdeeld in meerdere taken met het naamgevings schema\<:\> "\<jobName (\>Scheduler)".
+- Taken met meerdere triggers met verschillende schema's zijn onderverdeeld in meerdere taken met het naamgevings schema: '\<jobName\> (\<scheduler\>) '.
 - De inhoud van de taak wordt naar een taak gemigreerd door een standaard taak stap met de naam JobStep toe te voegen met de bijbehorende opdracht tekst.
 - Taken zijn standaard uitgeschakeld, zodat u ze kunt valideren voordat u ze inschakelt.
 

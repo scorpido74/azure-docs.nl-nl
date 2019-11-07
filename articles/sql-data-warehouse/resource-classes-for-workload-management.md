@@ -1,5 +1,5 @@
 ---
-title: Resource klassen voor workload Management in Azure SQL Data Warehouse | Microsoft Docs
+title: Resource klassen voor workload Management
 description: Richt lijnen voor het gebruik van resource klassen voor het beheren van gelijktijdigheid en reken resources voor query's in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/04/2019
+ms.date: 11/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5ef95faf162a6774e42b7cf258515757fdc9c7eb
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035074"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685921"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Werkbelasting beheer met resource klassen in Azure SQL Data Warehouse
 
@@ -35,7 +36,7 @@ Er zijn twee typen resource klassen:
 
 Resource klassen gebruiken gelijktijdigheids sleuven om het Resource verbruik te meten.  [Gelijktijdigheids sleuven](#concurrency-slots) worden verderop in dit artikel beschreven.
 
-- Zie [geheugen en gelijktijdigheids limieten](memory-and-concurrency-limits.md#concurrency-maximums)voor het weer geven van het resource gebruik voor de resource klassen.
+- Zie [geheugen en gelijktijdigheids limieten] geheugen-gelijktijdigheids limits.md) als u het resource gebruik voor de resource klassen wilt weer geven.
 - Als u de resource klasse wilt aanpassen, kunt u de query uitvoeren onder een andere gebruiker of [het lidmaatschap van de resource klasse van de huidige gebruiker wijzigen](#change-a-users-resource-class) .
 
 ### <a name="static-resource-classes"></a>Statische resource klassen
@@ -68,9 +69,9 @@ De geheugen toewijzing voor elke bron klasse is als volgt, **ongeacht het servic
 
 | Resourceklasse | Percentage geheugen | Min. aantal gelijktijdige Query's |
 |:--------------:|:-----------------:|:----------------------:|
-| smallrc        | 3%                | 32                     |
+| smallrc        | 3D                | 32                     |
 | mediumrc       | 10%               | 10                     |
-| largerc        | 22%               | 4                      |
+| largerc        | 21               | 4                      |
 | xlargerc       | 70%               | 1                      |
 
 ### <a name="default-resource-class"></a>Standaard resource klasse
@@ -92,13 +93,13 @@ Resource klassen zijn ontworpen om de prestaties te verbeteren voor gegevens beh
 
 Deze bewerkingen zijn onderworpen aan resource klassen:
 
-- INSERT-SELECT, UPDATE, DELETE
+- INVOEGEN-SELECTEREN, BIJWERKEN, VERWIJDEREN
 - SELECTEREN (bij het opvragen van gebruikers tabellen)
 - ALTER INDEX-Rebuild of reorganiseren
 - ALTER TABLE REBUILD
 - CREATE INDEX
 - EEN GECLUSTERDE COLUMN STORE-INDEX MAKEN
-- CREATE TABLE AS SELECT (CTAS)
+- CREATE TABLE ALS SELECTEREN (CTAS)
 - Gegevens laden
 - Gegevens verplaatsings bewerkingen die worden uitgevoerd door de gegevens verplaatsings service (DMS)
 
@@ -249,7 +250,7 @@ EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;
 Met de volgende instructie maakt u Tabel1 die in de voor gaande voor beelden wordt gebruikt.
 `CREATE TABLE Table1 (a int, b varchar(50), c decimal (18,10), d char(10), e varbinary(15), f float, g datetime, h date);`
 
-### <a name="stored-procedure-definition"></a>Definitie van de opgeslagen procedure
+### <a name="stored-procedure-definition"></a>Definitie van opgeslagen procedure
 
 ```sql
 -------------------------------------------------------------------------------
@@ -331,7 +332,7 @@ SELECT 'DW100c' AS DWU,4 AS max_queries,4 AS max_slots,1 AS slots_used_
     SELECT 'DW30000c', 128, 1200, 36, 120, 264, 840, 1, 2, 4, 8, 16, 32, 64, 128 
 )
 -- Creating workload mapping to their corresponding slot consumption and default memory grant.
-,map
+,map  
 AS
 (
   SELECT CONVERT(varchar(20), 'SloDWGroupSmall') AS wg_name, slots_used_smallrc AS slots_used FROM alloc WHERE DWU = @DWU
@@ -580,7 +581,7 @@ SELECT  CASE
 GO
 ```
 
-## <a name="next-step"></a>Volgende stap
+## <a name="next-steps"></a>Volgende stappen
 
 Zie [een Data Base beveiligen in SQL Data Warehouse][Secure a database in SQL Data Warehouse]voor meer informatie over het beheren van database gebruikers en beveiliging. Zie [geheugen optimalisaties voor column Store-compressie](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)voor meer informatie over hoe grotere resource klassen de geclusterde column store-index kwaliteit kunnen verbeteren.
 

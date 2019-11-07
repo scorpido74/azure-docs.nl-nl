@@ -1,5 +1,5 @@
 ---
-title: Prestaties afstemmen met Azure SQL Data Warehouse gerealiseerde weer gaven | Microsoft Docs
+title: Prestaties afstemmen met gerealiseerde weer gaven
 description: Aanbevelingen en overwegingen die u moet kennen wanneer u gerealiseerde weer gaven gebruikt om de query prestaties te verbeteren.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 593841ac95c4c6f17f33a8d35d6b3f83a6db1124
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c1cfd3b4c365a04c3d4704f37e4ed4177fa74619
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338908"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692985"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weer gaven 
 De gerealiseerde weer gaven in Azure SQL Data Warehouse bieden een lage onderhouds methode voor complexe analytische query's om snelle prestaties te krijgen zonder dat er query's worden gewijzigd. In dit artikel vindt u de algemene richt lijnen voor het gebruik van gerealiseerde weer gaven.
@@ -37,7 +38,7 @@ De meeste vereisten voor een standaard weergave zijn nog steeds van toepassing o
 |Definitie weergeven                 | Opgeslagen in azure Data Warehouse.              | Opgeslagen in azure Data Warehouse.    
 |Inhoud weer geven                    | Elke keer dat de weer gave wordt gebruikt, gegenereerd.   | Vooraf verwerkt en opgeslagen in azure Data Warehouse tijdens het maken van de weer gave. Bijgewerkt wanneer gegevens worden toegevoegd aan de onderliggende tabellen.                                             
 |Gegevensvernieuwing                    | Altijd bijgewerkt                               | Altijd bijgewerkt                          
-|Snelheid om weergave gegevens op te halen uit complexe query's     | trage                                         | Snel  
+|Snelheid om weergave gegevens op te halen uit complexe query's     | Trage                                         | Snel  
 |Extra opslag                   | Nee                                           | Ja                             
 |Syntaxis                          | WEER GAVE MAKEN                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN           
      

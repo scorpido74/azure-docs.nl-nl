@@ -1,5 +1,5 @@
 ---
-title: Trans acties gebruiken in Azure SQL Data Warehouse | Microsoft Docs
+title: Trans acties gebruiken
 description: Tips voor het implementeren van trans acties in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f00f8a25d0abf3af6d76b372b44145546a79879
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 09fc0f7cee38f799322a1914848a5176e9a223a1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479614"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692785"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Trans acties in SQL Data Warehouse gebruiken
 Tips voor het implementeren van trans acties in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
@@ -38,39 +39,39 @@ In de onderstaande tabel zijn de volgende veronderstellingen aangebracht:
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | Cap per distributie (GB) | Aantal distributies | MAXIMALE transactie grootte (GB) | Aantal rijen per distributie | Maximum aantal rijen per trans actie |
 | --- | --- | --- | --- | --- | --- |
-| DW100c |1 |60 |60 |4,000,000 |240,000,000 |
-| DW200c |1.5 |60 |90 |6,000,000 |360,000,000 |
-| DW300c |2.25 |60 |135 |9,000,000 |540,000,000 |
-| DW400c |3 |60 |180 |12,000,000 |720,000,000 |
-| DW500c |3.75 |60 |225 |15,000,000 |900,000,000 |
-| DW1000c |7.5 |60 |450 |30,000,000 |1,800,000,000 |
-| DW1500c |11.25 |60 |675 |45,000,000 |2,700,000,000 |
-| DW2000c |15 |60 |900 |60,000,000 |3,600,000,000 |
+| DW100c |1 |60 |60 |4\.000.000 |240.000.000 |
+| DW200c |1.5 |60 |90 |6,000,000 |360.000.000 |
+| DW300c |2,25 |60 |135 |9\.000.000 |540.000.000 |
+| DW400c |3 |60 |180 |12.000.000 |720.000.000 |
+| DW500c |3,75 |60 |225 |15.000.000 |900.000.000 |
+| DW1000c |7,5 |60 |450 |30.000.000 |1\.800.000.000 |
+| DW1500c |11,25 |60 |675 |45.000.000 |2\.700.000.000 |
+| DW2000c |15 |60 |900 |60.000.000 |3\.600.000.000 |
 | DW2500c |18,75 |60 |1125 |75.000.000 |4\.500.000.000 |
-| DW3000c |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
+| DW3000c |22,5 |60 |1\.350 |90.000.000 |5\.400.000.000 |
 | DW5000c |37,5 |60 |2\.250 |150.000.000 |9\.000.000.000 |
-| DW6000c |45 |60 |2,700 |180,000,000 |10,800,000,000 |
+| DW6000c |45 |60 |2\.700 |180.000.000 |10.800.000.000 |
 | DW7500c |56,25 |60 |3\.375 |225.000.000 |13.500.000.000 |
 | DW10000c |75 |60 |4\.500 |300,000,000 |18.000.000.000 |
 | DW15000c |112,5 |60 |6\.750 |450.000.000 |27.000.000.000 |
-| DW30000c |225 |60 |13.500 |900,000,000 |54.000.000.000 |
+| DW30000c |225 |60 |13.500 |900.000.000 |54.000.000.000 |
 
 ## <a name="gen1"></a>Gen1
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | Cap per distributie (GB) | Aantal distributies | MAXIMALE transactie grootte (GB) | Aantal rijen per distributie | Maximum aantal rijen per trans actie |
 | --- | --- | --- | --- | --- | --- |
-| DW100 |1 |60 |60 |4,000,000 |240,000,000 |
-| DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |
-| DW300 |2.25 |60 |135 |9,000,000 |540,000,000 |
-| DW400 |3 |60 |180 |12,000,000 |720,000,000 |
-| DW500 |3.75 |60 |225 |15,000,000 |900,000,000 |
-| DW600 |4.5 |60 |270 |18,000,000 |1,080,000,000 |
-| DW1000 |7.5 |60 |450 |30,000,000 |1,800,000,000 |
-| DW1200 |9 |60 |540 |36,000,000 |2,160,000,000 |
-| DW1500 |11.25 |60 |675 |45,000,000 |2,700,000,000 |
-| DW2000 |15 |60 |900 |60,000,000 |3,600,000,000 |
-| DW3000 |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
-| DW6000 |45 |60 |2,700 |180,000,000 |10,800,000,000 |
+| DW100 |1 |60 |60 |4\.000.000 |240.000.000 |
+| DW200 |1.5 |60 |90 |6,000,000 |360.000.000 |
+| DW300 |2,25 |60 |135 |9\.000.000 |540.000.000 |
+| DW400 |3 |60 |180 |12.000.000 |720.000.000 |
+| DW500 |3,75 |60 |225 |15.000.000 |900.000.000 |
+| DW600 |4,5 |60 |270 |18.000.000 |1\.080.000.000 |
+| DW1000 |7,5 |60 |450 |30.000.000 |1\.800.000.000 |
+| DW1200 |9 |60 |540 |36.000.000 |2\.160.000.000 |
+| DW1500 |11,25 |60 |675 |45.000.000 |2\.700.000.000 |
+| DW2000 |15 |60 |900 |60.000.000 |3\.600.000.000 |
+| DW3000 |22,5 |60 |1\.350 |90.000.000 |5\.400.000.000 |
+| DW6000 |45 |60 |2\.700 |180.000.000 |10.800.000.000 |
 
 De limiet voor de transactie grootte wordt toegepast per trans actie of bewerking. Het wordt niet toegepast op alle gelijktijdige trans acties. Elke trans actie is daarom toegestaan om deze hoeveelheid gegevens naar het logboek te schrijven. 
 
@@ -86,7 +87,7 @@ Als u de hoeveelheid gegevens die naar het logboek moet worden geschreven, wilt 
 SQL Data Warehouse maakt gebruik van de functie XACT_STATE () om een mislukte trans actie te rapporteren met de waarde-2. Deze waarde betekent dat de trans actie is mislukt en alleen is gemarkeerd voor terugdraaien.
 
 > [!NOTE]
-> Het gebruik van-2 door de functie XACT_STATE om een mislukte trans actie aan te duiden, vertegenwoordigt een ander gedrag voor SQL Server. SQL Server gebruikt de waarde-1 om een niet-doorvoer bare trans actie weer te geven. SQL Server kunt een aantal fouten binnen een trans actie verdragen zonder dat het als niet-doorvoerbaar moet worden gemarkeerd. Er kan `SELECT 1/0` bijvoorbeeld een fout optreden, maar geen trans actie geforceerd worden uitgevoerd. Met SQL Server wordt ook lees bewerkingen in de niet-doorvoer bare trans actie toegestaan. Met SQL Data Warehouse kunt u dit echter niet doen. Als er een fout optreedt in een SQL Data Warehouse trans actie, wordt er automatisch de status-2 ingevoerd en kunt u geen verdere SELECT-instructies meer maken totdat de instructie weer is teruggedraaid. Het is daarom belang rijk om te controleren of de toepassings code XACT_STATE () gebruikt, aangezien u mogelijk code wijzigingen moet aanbrengen.
+> Het gebruik van-2 door de functie XACT_STATE om een mislukte trans actie aan te duiden, vertegenwoordigt een ander gedrag voor SQL Server. SQL Server gebruikt de waarde-1 om een niet-doorvoer bare trans actie weer te geven. SQL Server kunt een aantal fouten binnen een trans actie verdragen zonder dat het als niet-doorvoerbaar moet worden gemarkeerd. `SELECT 1/0` zou bijvoorbeeld een fout veroorzaken, maar een trans actie niet in een niet-doorgevoerde status afdwingen. Met SQL Server wordt ook lees bewerkingen in de niet-doorvoer bare trans actie toegestaan. Met SQL Data Warehouse kunt u dit echter niet doen. Als er een fout optreedt in een SQL Data Warehouse trans actie, wordt er automatisch de status-2 ingevoerd en kunt u geen verdere SELECT-instructies meer maken totdat de instructie weer is teruggedraaid. Het is daarom belang rijk om te controleren of de toepassings code XACT_STATE () gebruikt, aangezien u mogelijk code wijzigingen moet aanbrengen.
 > 
 > 
 
@@ -130,7 +131,7 @@ SELECT @xact_state AS TransactionState;
 
 De voor gaande code bevat het volgende fout bericht:
 
-Msg 111233, niveau 16, status 1, regel 1 111233; De huidige trans actie is afgebroken en alle openstaande wijzigingen zijn teruggedraaid. Oorzaak: Een trans actie in een alleen-terugdraai status is niet expliciet teruggedraaid voor een DDL-, DML-of SELECT-instructie.
+Msg 111233, niveau 16, status 1, regel 1 111233; De huidige trans actie is afgebroken en alle openstaande wijzigingen zijn teruggedraaid. Oorzaak: een trans actie in een alleen-herstel status is niet expliciet teruggedraaid vóór een DDL-, DML-of SELECT-instructie.
 
 U krijgt geen uitvoer van de ERROR_ *-functies.
 
@@ -175,7 +176,7 @@ Het verwachte gedrag wordt nu in acht genomen. De fout in de trans actie wordt b
 
 Alle wijzigingen die zijn gewijzigd, zijn dat het terugdraaien van de trans actie moet plaatsvinden voordat de fout gegevens in het blok CATCH worden gelezen.
 
-## <a name="errorline-function"></a>De functie Error_Line ()
+## <a name="error_line-function"></a>De functie Error_Line ()
 Het is ook een goed idee dat SQL Data Warehouse de functie ERROR_LINE () niet implementeert of ondersteunt. Als u dit in uw code hebt, moet u deze verwijderen om te voldoen aan SQL Data Warehouse. Gebruik in plaats daarvan query labels in uw code om gelijkwaardige functionaliteit te implementeren. Zie het artikel [Label](sql-data-warehouse-develop-label.md) voor meer informatie.
 
 ## <a name="using-throw-and-raiserror"></a>THROW en////////

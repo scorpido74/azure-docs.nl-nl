@@ -1,5 +1,5 @@
 ---
-title: Meerdere SQL-data bases beheren met elastische Pools-Azure | Microsoft Docs
+title: Meerdere SQL-data bases beheren met elastische Pools-Azure
 description: 'Meerdere SQL-data bases beheren en schalen: honderden en duizenden-gebruik elastische Pools. Eén prijs voor resources die u kunt distribueren waar nodig.'
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 68bb68b47ca240d6c20153af3ed4b0eb42475282
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876407"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690456"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastische Pools helpen u bij het beheren en schalen van meerdere Azure SQL-data bases
 
@@ -101,7 +101,7 @@ In dit voorbeeld wordt geen rekening gehouden met het gebruik van andere databas
 
 Een groot verschil tussen het piek- en gemiddelde gebruik van een database geeft langere perioden van laag gebruik en korte perioden hoog gebruik aan. Dit gebruikspatroon is ideaal voor het delen van resources met meerdere databases. Een database zou een geschikte kandidaat voor een groep kunnen zijn als het piekgebruik ongeveer 1,5 keer groter is dan het gemiddelde gebruik.
 
-**Voor beeld van een op DTU gebaseerd inkoop model**: Een S3-database die piekt tot 100 DTU's en gemiddeld 67 DTU's of minder gebruikt, is een goede kandidaat voor het delen van eDTU's in een groep. Ook een S1-database die piekt tot 20 DTU's en gemiddeld 13 DTU's of minder gebruikt, is een goede kandidaat voor een groep.
+**Op DTU gebaseerd inkoop model voor beeld**: een S3-data base die piekt tot 100 dtu's en gemiddeld 67 dtu's of minder is een goede kandidaat voor het delen van edtu's in een pool. Ook een S1-database die piekt tot 20 DTU's en gemiddeld 13 DTU's of minder gebruikt, is een goede kandidaat voor een groep.
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>Hoe kan ik de juiste pool grootte kiezen
 
@@ -116,11 +116,11 @@ Als u het hulpprogramma niet kunt gebruiken, kunnen de volgende stappen u helpen
 
 1. U moet als volgt een schatting maken van de Edtu's-of vCores die nodig zijn voor de groep:
 
-   Voor op DTU gebaseerd inkoop model: MAX(<*Totaal aantal DB's* X *gemiddelde DTU-gebruik per DB*>,<br>  
+   Voor op DTU gebaseerd inkoop model: MAX (<*Totaal aantal db's* X *gemiddeld DTU-gebruik per DB*->,<br>  
    <*aantal gelijktijdig piekende databases* X *piek-DTU-gebruik per DB*)
 
-   Voor op vCore gebaseerd inkoop model: MAX (<*totale aantal db's* X- *VCore gebruik per DB*->,<br>  
-   <*Aantal gelijktijdig gepiekde db's* X *piek vCore gebruik per data base*)
+   Voor op vCore gebaseerd inkoop model: MAX (<*totale aantal db's* X *gemiddeld VCore gebruik per DB*->,<br>  
+   <*aantal gelijktijdig gepiekd db's* X- *vCore gebruik per data base*)
 
 2. Schat hoeveel opslagruimte de groep nodig heeft door het aantal bytes op te tellen dat nodig is voor alle databases in de groep. Bepaal daarna hoe groot de eDTU-groep moet zijn om aan deze hoeveelheid opslag te voldoen.
 3. Neem voor het op DTU gebaseerde aankoop model meer van de eDTU-schattingen uit stap 1 en stap 2. Neem voor het op vCore gebaseerde aankoop model de vCore-schatting uit stap 1.
@@ -143,7 +143,7 @@ Pooldatabases ondersteunen in het algemeen dezelfde [bedrijfscontinuïteitsfunct
 
   Herstel naar een bepaald tijdstip maakt gebruik van automatische database back-ups om een data base in een groep te herstellen naar een specifiek tijdstip. Zie [Herstel naar een bepaald tijdstip](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-- **Geo-restore**
+- **Geo-herstel**
 
   Geo-Restore biedt de standaard herstel optie wanneer een Data Base niet beschikbaar is vanwege een incident in de regio waarin de data base wordt gehost. Zie [Restore an Azure SQL Database or failover to a secondary](sql-database-disaster-recovery.md) (Een Azure SQL Database of herstellen of een failover uitvoeren naar een secundaire server)
 
@@ -159,7 +159,7 @@ Er zijn twee manieren waarop u een elastische pool kunt maken in de Azure Portal
 2. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over elastische Pools weer geven door **Details weer geven** te selecteren op de tegel **data bases** .
 3. Selecteer in de tegel **data bases** de optie **elastische groep** in de vervolg keuzelijst **resource type** en selecteer vervolgens **maken**:
 
-   ![Elastische pool maken](./media/sql-database-elastic-pool/create-elastic-pool.png)
+   ![Een pool voor Elastic Database maken](./media/sql-database-elastic-pool/create-elastic-pool.png)
 
 
 1. U kunt ook een elastische pool maken door te navigeren naar een bestaande Azure SQL-Server en op **+ nieuwe pool** te klikken om een groep rechtstreeks op die server te maken.

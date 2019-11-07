@@ -1,5 +1,5 @@
 ---
-title: Naslag informatie voor beheer-API'S voor Azure SQL Database Managed instance | Microsoft Docs
+title: Beheer-API-verwijzing voor Azure SQL Database beheerde instantie
 description: Meer informatie over het maken en beheren van Azure SQL Database Managed instances.
 services: sql-database
 ms.service: sql-database
@@ -11,22 +11,22 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 6bbba3910315be39d9fca81b95083f32ebd60e64
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bdc17dd11269bafa271f69ec001f8dcad484b7b8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567599"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688186"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Naslag informatie over beheerde API voor beheerde instanties van Azure SQL Database
 
 U kunt Azure SQL Database beheerde exemplaren maken en beheren met behulp van de Azure Portal, Power shell, Azure CLI, REST API en Transact-SQL. In dit artikel vindt u een overzicht van de functies en API die u kunt gebruiken om een beheerd exemplaar te maken en te configureren.
 
-## <a name="azure-portal-create-a-managed-instance"></a>Azure Portal: Een beheerd exemplaar maken
+## <a name="azure-portal-create-a-managed-instance"></a>Azure Portal: een beheerd exemplaar maken
 
-Voor een Snelstartgids waarin wordt getoond hoe u een Azure SQL database beheerd exemplaar maakt, [raadpleegt u Quick Start: Een door Azure SQL Database beheerd exemplaar](sql-database-managed-instance-get-started.md)maken.
+Zie [Quick Start: Create a Azure SQL database Managed instance](sql-database-managed-instance-get-started.md)(Engelstalig) voor een Snelstartgids waarmee u kunt zien hoe u een Azure SQL database beheerd exemplaar maakt.
 
-## <a name="powershell-create-and-manage-managed-instances"></a>PowerShell: Beheerde instanties maken en beheren
+## <a name="powershell-create-and-manage-managed-instances"></a>Power shell: beheerde instanties maken en beheren
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -35,9 +35,9 @@ Voor een Snelstartgids waarin wordt getoond hoe u een Azure SQL database beheerd
 Als u beheerde exemplaren met Azure PowerShell wilt maken en beheren, gebruikt u de volgende Power shell-cmdlets. Als u Power shell wilt installeren of upgraden, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps).
 
 > [!TIP]
-> Zie [Quick start script voor voorbeeld scripts van Power shell: Maak een door Azure SQL beheerd exemplaar met](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/)een Power shell-bibliotheek.
+> Zie voor voor beelden van Power shell-scripts [Quick start script: Azure SQL Managed instance maken met Power shell-bibliotheek](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 |[New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Hiermee maakt u een Azure SQL Database beheerd exemplaar |
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Retourneert informatie over Azure SQL Managed instance|
@@ -48,14 +48,14 @@ Als u beheerde exemplaren met Azure PowerShell wilt maken en beheren, gebruikt u
 |[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Hiermee verwijdert u een Data Base van een Azure SQL Managed data base-exemplaar|
 |[Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)|Hiermee wordt een Data Base-exemplaar van Azure SQL Managed data base hersteld|
 
-## <a name="azure-cli-create-and-manage-managed-instances"></a>Azure CLI: Beheerde instanties maken en beheren
+## <a name="azure-cli-create-and-manage-managed-instances"></a>Azure CLI: beheerde instanties maken en beheren
 
 Als u beheerde exemplaren wilt maken en beheren met [Azure cli](/cli/azure), gebruikt u de volgende [Azure cli SQL Managed instance](/cli/azure/sql/mi) -opdrachten. Gebruik de [Cloud Shell](/azure/cloud-shell/overview) om de CLI in uw browser uit te voeren of [installeer](/cli/azure/install-azure-cli) de CLI op macOS, Linux of Windows.
 
 > [!TIP]
 > Zie [werken met SQL Managed instance met Azure cli](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)voor een Snelstartgids van Azure cli.
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 |[AZ SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Hiermee maakt u een beheerd exemplaar|
 |[AZ SQL mi List](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Beschik bare beheerde instanties weer geven|
@@ -67,25 +67,25 @@ Als u beheerde exemplaren wilt maken en beheren met [Azure cli](/cli/azure), geb
 |[AZ SQL DEELB Restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Een beheerde data base herstellen|
 |[AZ SQL DEELB Delete](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|Hiermee verwijdert u een beheerde data base|
 
-## <a name="transact-sql-create-and-manage-instance-databases"></a>Transact-SQL: Exemplaar databases maken en beheren
+## <a name="transact-sql-create-and-manage-instance-databases"></a>Transact-SQL: instantie databases maken en beheren
 
 Als u exemplaar database wilt maken en beheren nadat het beheerde exemplaar is gemaakt, gebruikt u de volgende T-SQL-opdrachten. U kunt deze opdrachten geven met behulp van de Azure Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio) [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is). [Visual Studio code](https://code.visualstudio.com/docs)of andere Program ma's waarmee verbinding kan worden gemaakt met een Azure SQL database server en Transact-SQL-opdrachten kunnen worden door gegeven.
 
 > [!TIP]
-> Zie Quick start voor meer informatie [over het configureren en verbinding maken met een beheerd exemplaar met behulp van SQL Server Management Studio in micro soft Windows. Azure VM configureren om verbinding te maken met een Azure SQL Database Managed Instance](sql-database-managed-instance-configure-vm.md) en [quickstart: Een punt-naar-site-verbinding configureren naar een beheerd exemplaar voor Azure SQL Database van on-premises](sql-database-managed-instance-configure-p2s.md).
+> Voor Quick starts die aangeven dat u een beheerd exemplaar moet configureren en er verbinding mee moet maken met behulp van SQL Server Management Studio in micro soft Windows, Zie [Quick Start: Azure VM configureren om verbinding te maken met een Azure SQL database beheerd exemplaar](sql-database-managed-instance-configure-vm.md) en [Quick Start: Configureer een punt-naar-site-verbinding met een Azure SQL Database beheerde instantie van on-premises](sql-database-managed-instance-configure-p2s.md).
 > [!IMPORTANT]
 > U kunt een beheerd exemplaar niet maken of verwijderen met behulp van Transact-SQL.
 
-| Opdracht | Description |
+| Opdracht | Beschrijving |
 | --- | --- |
 |[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Hiermee maakt u een nieuwe Data Base voor een beheerd exemplaar. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Hiermee wijzigt u een Azure SQL Managed instance-data base.|
 
-## <a name="rest-api-create-and-manage-managed-instances"></a>REST API: Beheerde instanties maken en beheren
+## <a name="rest-api-create-and-manage-managed-instances"></a>REST API: beheerde instanties maken en beheren
 
 Als u beheerde exemplaren wilt maken en beheren, gebruikt u deze REST API aanvragen.
 
-| Opdracht | Description |
+| Opdracht | Beschrijving |
 | --- | --- |
 |[Beheerde instanties: maken of bijwerken](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|Hiermee wordt een beheerd exemplaar gemaakt of bijgewerkt.|
 |[Beheerde instanties-verwijderen](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|Hiermee verwijdert u een beheerd exemplaar.|

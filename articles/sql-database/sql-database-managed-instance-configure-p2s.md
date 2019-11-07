@@ -1,5 +1,5 @@
 ---
-title: Een beheerd P2S-Azure SQL Database-exemplaar configureren | Microsoft Docs
+title: 'Een beheerd P2S-Azure SQL Database-exemplaar configureren '
 description: Verbinding maken met een Azure SQL Database beheerd exemplaar met behulp van SQL Server Management Studio met behulp van een punt-naar-site-verbinding vanaf een on-premises client computer.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 3ba5190050d45385ad17a87f6dce88ffd601e83d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b3a0ce28c4a936e185ac5f07ba3810c93f4c866
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567682"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689410"
 ---
-# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Quickstart: Een punt-naar-site-verbinding met een door Azure SQL Database beheerd exemplaar van on-premises configureren
+# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Snelstartgids: een punt-naar-site-verbinding naar een door Azure SQL Database beheerd exemplaar van on-premises configureren
 
 In deze Quick start ziet u hoe u via een punt-naar-site verbinding maakt met behulp van [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) van een on-premises client computer via een Azure SQL database Managed instance. Zie [about Point-to-site VPN](../vpn-gateway/point-to-site-about.md) (Engelstalig) voor meer informatie over punt-naar-site-verbindingen
 
@@ -63,7 +63,7 @@ Voor deze snelstartgids geldt het volgende:
 
 ## <a name="create-a-vpn-connection-to-your-managed-instance"></a>Een VPN-verbinding maken met uw beheerde exemplaar
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Open de resource groep waarin u de gateway van het virtuele netwerk hebt gemaakt en open vervolgens de bron van de virtuele netwerk gateway.
 3. Selecteer **punt-naar-site-configuratie** en selecteer vervolgens **VPN-client downloaden**.
 
@@ -92,11 +92,11 @@ Voor deze snelstartgids geldt het volgende:
 
     ![VPN-verbinding](./media/sql-database-managed-instance-configure-p2s/vpn-connection-succeeded.png)  
 
-## <a name="use-ssms-to-connect-to-the-managed-instance"></a>SSMS gebruiken voor verbinding met het beheerde exemplaar
+## <a name="use-ssms-to-connect-to-the-managed-instance"></a>SSMS gebruiken om verbinding te maken met het beheerde exemplaar
 
 1. Open SQL Server Management Studio (SSMS) op de on-premises client computer.
-2. In de **verbinding maken met Server** dialoogvenster vak, voer de volledig gekwalificeerde **hostnaam** voor uw beheerde exemplaar in de **servernaam** vak.
-3. Selecteer **SQL Server-verificatie**, Geef uw gebruikersnaam en wachtwoord en selecteer vervolgens **Connect**.
+2. In het dialoog venster **verbinding maken met server** geeft u de volledig gekwalificeerde **hostnaam** voor uw beheerde exemplaar op in het vak **Server naam** .
+3. Selecteer **SQL Server verificatie**, geef uw gebruikers naam en wacht woord op en selecteer vervolgens **verbinding maken**.
 
     ![ssms verbinden](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 

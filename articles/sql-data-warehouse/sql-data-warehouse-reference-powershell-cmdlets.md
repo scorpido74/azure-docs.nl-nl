@@ -1,6 +1,6 @@
 ---
-title: PowerShell-cmdlets voor Azure SQL Data Warehouse
-description: De bovenste PowerShell-cmdlets voor Azure SQL Data Warehouse met inbegrip van hoe u een database pauzeren en hervatten niet vinden.
+title: PowerShell-cmdlets
+description: Zoek de top Power shell-cmdlets voor Azure SQL Data Warehouse, inclusief het onderbreken en hervatten van een Data Base.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,21 +10,22 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 095e66c6c5f75a27b1f0231dfe8cabfd4d741d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b36a64bb82449ace7acc1de0b3c2bc7c5efebe70
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205177"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685555"
 ---
-# <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>PowerShell-cmdlets en REST-API's voor SQL Data Warehouse
-Veel SQL Data Warehouse-beheertaken kunnen worden beheerd met behulp van Azure PowerShell-cmdlets of REST-API's.  Hieronder volgen enkele voorbeelden van het gebruik van PowerShell-opdrachten voor het automatiseren van algemene taken in uw SQL Data Warehouse.  Zie het artikel voor enkele goede voorbeelden van de REST [beheren schaalbaarheid met REST][Manage scalability with REST].
+# <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Power shell-cmdlets en REST-Api's voor SQL Data Warehouse
+Veel SQL Data Warehouse beheer taken kunnen worden beheerd met behulp van Azure PowerShell-cmdlets of REST-Api's.  Hieronder ziet u enkele voor beelden van het gebruik van Power shell-opdrachten voor het automatiseren van algemene taken in uw SQL Data Warehouse.  Zie het artikel [schaal baarheid met rest beheren][Manage scalability with REST]voor een aantal goede rest-voor beelden.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-started-with-azure-powershell-cmdlets"></a>Aan de slag met Azure PowerShell-cmdlets
 1. Open Windows PowerShell.
-2. Voer deze opdrachten om te melden met de Azure Resource Manager en selecteer uw abonnement op de PowerShell-prompt.
+2. Voer bij de Power shell-prompt deze opdrachten uit om u aan te melden bij de Azure Resource Manager en selecteer uw abonnement.
    
     ```powershell
     Connect-AzAccount
@@ -32,13 +33,13 @@ Veel SQL Data Warehouse-beheertaken kunnen worden beheerd met behulp van Azure P
     Select-AzSubscription -SubscriptionName "MySubscription"
     ```
 
-## <a name="pause-sql-data-warehouse-example"></a>Voorbeeld van onderbreken SQL datawarehouse
-Onderbreken van een database met de naam 'Database02' die wordt gehost op een server met de naam "Server01."  De server zich in een Azure-resourcegroep met de naam "ResourceGroup1."
+## <a name="pause-sql-data-warehouse-example"></a>SQL Data Warehouse voor beeld onderbreken
+Een Data Base met de naam ' Database02 ' onderbreken die wordt gehost op een server met de naam ' Server01 '.  De server bevindt zich in een Azure-resource groep met de naam ' ResourceGroup1 '.
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
-Een Variant in dit voorbeeld geeft de opgehaalde object [stand-by-AzSqlDatabase][Suspend-AzSqlDatabase].  Als gevolg hiervan is de database is onderbroken. De laatste opdracht toont de resultaten.
+Een variant, in dit voor beeld wordt het opgehaalde object door sluizen naar [suspend-AzSqlDatabase][Suspend-AzSqlDatabase].  Als gevolg hiervan wordt de data base onderbroken. Met de laatste opdracht worden de resultaten weer gegeven.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -46,14 +47,14 @@ $resultDatabase = $database | Suspend-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="start-sql-data-warehouse-example"></a>Start SQL datawarehouse-voorbeeld
-Hervatten van een database met de naam 'Database02' die wordt gehost op een server met de naam "Server01." De server is opgenomen in een resourcegroep met de naam "ResourceGroup1."
+## <a name="start-sql-data-warehouse-example"></a>Start SQL Data Warehouse-voor beeld
+Hervat de bewerking van een Data Base met de naam ' Database02 ' die wordt gehost op een server met de naam ' Server01 '. De server bevindt zich in een resource groep met de naam ' ResourceGroup1 '.
 
 ```Powershell
 Resume-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-Een Variant dit voorbeeld wordt een database met de naam 'Database02' van een server met de naam 'Server01' die is opgenomen in een resourcegroep met de naam "ResourceGroup1." Deze geeft het opgehaalde object [hervatten AzSqlDatabase][Resume-AzSqlDatabase].
+In dit voor beeld wordt een Data Base met de naam ' Database02 ' opgehaald van een server met de naam ' Server01 ' die is opgenomen in een resource groep met de naam ' ResourceGroup1 '. Dit pipet het opgehaalde object om [AzSqlDatabase te hervatten][Resume-AzSqlDatabase].
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -61,12 +62,12 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 ```
 
 > [!NOTE]
-> Houd er rekening mee dat als uw server foo.database.Windows.NET "foo" Als de - servernaam in de PowerShell-cmdlets gebruiken.
+> Als uw server foo.database.windows.net is, gebruikt u Foo als de-server naam in de Power shell-cmdlets.
 > 
 > 
 
-## <a name="other-supported-powershell-cmdlets"></a>Andere ondersteunde PowerShell-cmdlets
-Deze PowerShell-cmdlets worden ondersteund met Azure SQL Data Warehouse.
+## <a name="other-supported-powershell-cmdlets"></a>Andere ondersteunde Power shell-cmdlets
+Deze Power shell-cmdlets worden ondersteund met Azure SQL Data Warehouse.
 
 * [Get-AzSqlDatabase][Get-AzSqlDatabase]
 * [Get-AzSqlDeletedDatabaseBackup][Get-AzSqlDeletedDatabaseBackup]
@@ -80,12 +81,12 @@ Deze PowerShell-cmdlets worden ondersteund met Azure SQL Data Warehouse.
 * [Suspend-AzSqlDatabase][Suspend-AzSqlDatabase]
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer voorbeelden van PowerShell:
+Zie voor meer Power shell-voor beelden:
 
-* [Maken van een SQL Data Warehouse met behulp van PowerShell][Create a SQL Data Warehouse using PowerShell]
-* [Database terugzetten][Database restore]
+* [Een SQL Data Warehouse maken met behulp van Power shell][Create a SQL Data Warehouse using PowerShell]
+* [Data base terugzetten][Database restore]
 
-Zie voor andere taken die kunnen worden geautomatiseerd met PowerShell, [Azure SQL Database-Cmdlets][Azure SQL Database Cmdlets]. Houd er rekening mee dat niet alle Azure SQL Database-cmdlets voor Azure SQL Data Warehouse worden ondersteund.  Zie voor een lijst met taken die kan worden geautomatiseerd met REST [bewerkingen voor Azure SQL Database][Operations for Azure SQL Database].
+Zie [Azure SQL database-cmdlets][Azure SQL Database Cmdlets]voor andere taken die kunnen worden geautomatiseerd met Power shell. Houd er rekening mee dat niet alle Azure SQL Database-cmdlets voor Azure SQL Data Warehouse worden ondersteund.  Zie [bewerkingen voor Azure SQL database][Operations for Azure SQL Database]voor een lijst met taken die kunnen worden geautomatiseerd met rest.
 
 <!--Image references-->
 

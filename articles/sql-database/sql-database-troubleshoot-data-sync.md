@@ -1,5 +1,5 @@
 ---
-title: Problemen met Azure SQL Data Sync oplossen | Microsoft Docs
+title: 'Problemen met Azure SQL Data Sync oplossen '
 description: Meer informatie over het oplossen van veelvoorkomende problemen met Azure SQL Data Sync.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: f1345c7de3ef56473b8ebd16cea20cfe76f0380e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 31cf2693ba33461f38ea6361bf2ca8b688f177ff
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566276"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686904"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Problemen met SQL Data Sync oplossen
 
@@ -39,7 +39,7 @@ Zie [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met
 
 - [Ik zie een aanzienlijke vermindering van de prestaties](#sync-perf)
 
-- [Dit bericht wordt weer gegeven: "Kan de waarde Null niet invoegen in de \<kolom kolom >. Null-waarden zijn niet toegestaan voor de kolom. Wat betekent dit en hoe kan ik het probleem oplossen?](#sync-nulls)
+- [Ik zie dit bericht: ' kan de waarde NULL niet invoegen in de kolom \<kolom >. Null-waarden zijn niet toegestaan voor de kolom. Wat betekent dit en hoe kan ik het probleem oplossen?](#sync-nulls)
 
 - [Hoe worden kring verwijzingen verwerkt met gegevens synchronisatie? Dat wil zeggen, wanneer dezelfde gegevens worden gesynchroniseerd in meerdere synchronisatie groepen en blijven veranderen als resultaat?](#sync-circ)
 
@@ -104,7 +104,7 @@ Uw prestaties worden aanzienlijk verminderd, mogelijk op het punt waar u de gebr
 
 - **Oplossing**. De beste oplossing is voor komen. Zorg ervoor dat uw synchronisatie groepen geen kring verwijzingen bevatten. Een rij die is gesynchroniseerd door één synchronisatie groep kan niet worden gesynchroniseerd met een andere synchronisatie groep.
 
-### <a name="sync-nulls"></a>Dit bericht wordt weer gegeven: "Kan de waarde Null niet invoegen in de \<kolom kolom >. Null-waarden zijn niet toegestaan voor de kolom. Wat betekent dit en hoe kan ik het probleem oplossen? 
+### <a name="sync-nulls"></a>Ik zie dit bericht: ' kan de waarde NULL niet invoegen in de kolom \<kolom >. Null-waarden zijn niet toegestaan voor de kolom. Wat betekent dit en hoe kan ik het probleem oplossen? 
 Dit fout bericht geeft aan dat een van de volgende twee problemen heeft plaatsgevonden:
 -  Een tabel heeft geen primaire sleutel. U kunt dit probleem oplossen door een primaire sleutel toe te voegen aan alle tabellen die u synchroniseert.
 -  Er is een WHERE-component in uw CREATE INDEX-instructie. Met gegevens synchronisatie wordt deze voor waarde niet verwerkt. U kunt dit probleem oplossen door de component WHERE te verwijderen of de wijzigingen hand matig door te voeren voor alle data bases. 
@@ -193,7 +193,7 @@ De poging om een synchronisatie groep te verwijderen, is mislukt. Een van de vol
 
 - **Oplossing**. Meld u aan bij het gebruikers account voor aanmelding bij een service aan de gebruiker:
 
-  1. Ga naar **Start** > **configuratie scherm** >  > **systeem beheer** > van lokale**beleids**gebruikersRightsManagementvanhet > lokale beveiligings beleid.
+  1. Ga naar **Start** > **configuratie scherm** > **beheer programma's** > **lokaal beveiligings beleid** > **lokaal beleid** > **gebruikers Rights Management**.
   1. Selecteer **Aanmelden als een service**.
   1. Voeg in het dialoog venster **Eigenschappen** het gebruikers account toe.
   1. Selecteer **Apply** en vervolgens **OK**.
@@ -201,13 +201,13 @@ De poging om een synchronisatie groep te verwijderen, is mislukt. Een van de vol
 
 ### <a name="setup-date"></a>De status van een Data Base is verouderd
 
-- **Oorzaak**. SQL Data Sync verwijdert data bases die gedurende 45 dagen of langer offline zijn van de service (geteld vanaf het moment dat de data base offline werd gezet). Als een Data Base gedurende 45 dagen offline is en weer online komt, is de status verouderd.
+- **Oorzaak**. SQL Data Sync verwijdert data bases die gedurende 45 dagen of langer offline zijn van de service (geteld vanaf het moment dat de data base offline werd gezet). Als een Data Base gedurende 45 dagen offline is en weer online komt, is de status **verouderd**.
 
-- **Oplossing**. U kunt een verouderde status voor komen door ervoor te zorgen dat er geen data bases meer dan 45 dagen offline gaan.
+- **Oplossing**. U kunt een **verouderde** status voor komen door ervoor te zorgen dat er geen data bases meer dan 45 dagen offline gaan.
 
-  Als de status van een Database verouderd is:
+  Als de status van een Data Base **verouderd**is:
 
-  1. Verwijder de data base met een verouderde status uit de synchronisatie groep.
+  1. Verwijder de data base met een **verouderde** status uit de synchronisatie groep.
   1. Voeg de Data Base weer toe aan de synchronisatie groep.
 
   > [!WARNING]
@@ -217,9 +217,9 @@ De poging om een synchronisatie groep te verwijderen, is mislukt. Een van de vol
 
 - **Oorzaak**. Als een of meer wijzigingen niet van toepassing zijn voor de gehele Bewaar periode van 45 dagen, kan een synchronisatie groep verouderd raken.
 
-- **Oplossing**. Als u een verouderde status voor een synchronisatie groep wilt voor komen, controleert u de resultaten van uw synchronisatie taken in de geschiedenis Viewer regel matig. Onderzoek en los eventuele wijzigingen op die niet van toepassing zijn.
+- **Oplossing**. Als u een **verouderde** status voor een synchronisatie groep wilt voor komen, controleert u de resultaten van uw synchronisatie taken in de geschiedenis Viewer regel matig. Onderzoek en los eventuele wijzigingen op die niet van toepassing zijn.
 
-  Als de status van een synchronisatie groepverouderd is, verwijdert u de synchronisatie groep en maakt u deze opnieuw.
+  Als de status van een synchronisatie groep **verouderd**is, verwijdert u de synchronisatie groep en maakt u deze opnieuw.
 
 ### <a name="setup-delete2"></a>Een synchronisatie groep kan niet binnen drie minuten na het verwijderen of stoppen van de agent worden verwijderd
 
@@ -243,13 +243,13 @@ Voor meer informatie over SQL Data Sync raadpleegt u:
 
 -   Overzicht: [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync](sql-database-sync-data.md)
 -   Data Sync instellen
-    - In de portal - [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-database-get-started-sql-data-sync.md)
+    - In de portal: [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-database-get-started-sql-data-sync.md)
     - Met PowerShell
         -  [PowerShell gebruiken om meerdere Azure SQL-databases te synchroniseren](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell gebruiken om te synchroniseren tussen een Azure SQL-database en een on-premises database](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Data Sync-agent: [Data Sync-agent voor Azure SQL Data Sync](sql-database-data-sync-agent.md)
 -   Best practices: [Best practices voor Azure SQL Data Sync](sql-database-best-practices-data-sync.md)
--   SQL Data Sync controleren [met Azure monitor](sql-database-sync-monitor-oms.md) -logboeken
+-   SQL Data Sync controleren [met Azure monitor-logboeken](sql-database-sync-monitor-oms.md)
 -   Het synchronisatieschema bijwerken
     -   Met Transact-SQL: [De replicatie van schemawijzigingen in Azure SQL Data Sync automatiseren](sql-database-update-sync-schema.md)
     -   Met PowerShell: [PowerShell gebruiken voor het bijwerken van het synchronisatieschema in een bestaande synchronisatiegroep](scripts/sql-database-sync-update-schema.md)

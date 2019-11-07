@@ -1,5 +1,5 @@
 ---
-title: Gegevens afhankelijke route ring met Azure SQL Database | Microsoft Docs
+title: Gegevens afhankelijke route ring met Azure SQL Database
 description: De ShardMapManager-klasse gebruiken in .NET-Apps voor gegevens afhankelijke route ring, een functie van Shard-data bases in Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3f0ce4f3bdf3159e991bfd72590882dfa7412ee3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 319f2744cd437aea51a05592cd7a26f8b58fe761
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568492"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690287"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Gegevens afhankelijke route ring gebruiken om een query naar de juiste data base te routeren
 
@@ -53,7 +53,7 @@ Als een toepassing de Shard-kaart zelf niet bewerkt, moeten de referenties die i
 
 ## <a name="call-the-openconnectionforkey-method"></a>De methode OpenConnectionForKey aanroepen
 
-De **methode ShardMap. OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) retourneert een verbinding die gereed is voor het uitgeven van opdrachten aan de juiste data base op basis van de waarde van de **sleutel** parameter. Shard-gegevens worden in de cache opgeslagen door de **ShardMapManager**, dus voor deze aanvragen is het niet mogelijk om een database zoekactie te maken op basis van de **globale Shard** -toewijzings database.
+De **methode ShardMap. OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) retourneert een verbinding die gereed is voor het uitgeven van opdrachten aan de juiste data base op basis van de waarde van de **sleutel** parameter. Shard-gegevens worden in de cache opgeslagen door de **ShardMapManager**, dus voor deze aanvragen is het niet mogelijk om een database zoekactie te maken op basis van de **globale Shard-toewijzings** database.
 
 ```Java
 // Syntax:

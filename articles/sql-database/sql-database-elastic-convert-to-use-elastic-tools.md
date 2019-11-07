@@ -1,5 +1,5 @@
 ---
-title: Bestaande data bases migreren om uit te schalen | Microsoft Docs
+title: Bestaande data bases migreren om uit te schalen
 description: Shard-data bases converteren om Elastic data base-hulpprogram ma's te gebruiken door een Shard-toewijzings beheer te maken
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 2d6d5c51cb381c089633ba010a1d64c8486ddcd8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b88c56872408a7ffe127a4e96d2313301d44c892
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568728"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690527"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Bestaande data bases migreren om uit te schalen
 Beheer eenvoudig uw bestaande uitgeschaalde Shard-data bases met behulp van Azure SQL Database data base-hulpprogram ma's (zoals de [Elastic database-client bibliotheek](sql-database-elastic-database-client-library.md)). Converteer eerst een bestaande set data bases om de [Shard-kaart Manager](sql-database-elastic-scale-shard-map-management.md)te gebruiken. 
@@ -59,7 +59,7 @@ Nadat u hebt gemaakt, kunt u het Shard-toewijzings beheer ophalen met deze cmdle
 ## <a name="step-2-create-the-shard-map"></a>Stap 2: de Shard-kaart maken
 Selecteer het type Shard-toewijzing dat u wilt maken. De keuze is afhankelijk van de database architectuur: 
 
-1. Eén Tenant per data base (Zie de verklarende [woorden lijst](sql-database-elastic-scale-glossary.md)) voor meer informatie. 
+1. Eén Tenant per data base (Zie de [verklarende woorden lijst](sql-database-elastic-scale-glossary.md)) voor meer informatie. 
 2. Meerdere tenants per data base (twee typen):
    1. Lijst toewijzing
    2. Toewijzing van bereik
@@ -97,10 +97,10 @@ Als u dit toewijzings patroon wilt gebruiken, moeten de Tenant-ID-waarden doorlo
     -RangeShardMapName 'RangeShardMap' 
     -ShardMapManager $ShardMapManager 
 
-### <a name="option-3-list-mappings-on-an-individual-database"></a>Optie 3: Toewijzingen weer geven voor een afzonderlijke data base
+### <a name="option-3-list-mappings-on-an-individual-database"></a>Optie 3: toewijzingen weer geven voor een afzonderlijke data base
 Voor het instellen van dit patroon moet u ook een lijst overzicht maken, zoals wordt weer gegeven in stap 2, optie 1.
 
-## <a name="step-3-prepare-individual-shards"></a>Stap 3: Afzonderlijke Shards voorbereiden
+## <a name="step-3-prepare-individual-shards"></a>Stap 3: een afzonderlijke Shards voorbereiden
 Voeg elke Shard (data base) toe aan het Shard-toewijzings beheer. Hierdoor worden de afzonderlijke data bases voor het opslaan van toewijzings gegevens voor bereid. Voer deze methode uit op elke Shard.
 
     Add-Shard 
@@ -110,7 +110,7 @@ Voeg elke Shard (data base) toe aan het Shard-toewijzings beheer. Hierdoor worde
     # The $ShardMap is the shard map created in step 2.
 
 
-## <a name="step-4-add-mappings"></a>Stap 4: Toewijzingen toevoegen
+## <a name="step-4-add-mappings"></a>Stap 4: toewijzingen toevoegen
 Het toevoegen van toewijzingen is afhankelijk van het type Shard-toewijzing dat u hebt gemaakt. Als u een lijst toewijzing hebt gemaakt, voegt u lijst toewijzingen toe. Als u een bereik toewijzing hebt gemaakt, voegt u bereik toewijzingen toe.
 
 ### <a name="option-1-map-the-data-for-a-list-mapping"></a>Optie 1: de gegevens voor een lijst toewijzing toewijzen
@@ -153,11 +153,11 @@ Nadat u de installatie hebt voltooid, kunt u beginnen met het gebruik van de Ela
 ## <a name="next-steps"></a>Volgende stappen
 Down load de Power shell [-scripts van Azure SQL DB-Elastic database-hulpprogram ma's voor scripts](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
-De hulpprogram ma's bevinden zich ook op GitHub: [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools).
+De hulpprogram ma's bevinden zich ook in GitHub: [Azure/Elastic-db-tools](https://github.com/Azure/elastic-db-tools).
 
 Gebruik het hulp programma voor splitsen en samen voegen om gegevens van of naar een model met meerdere tenants te verplaatsen naar één Tenant model. Zie het [hulp programma splitsing samen voegen](sql-database-elastic-scale-get-started.md).
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 Zie voor informatie over algemene gegevensarchitectuurpatronen van multitenant software as a service (SaaS)-databasetoepassingen, [Ontwerppatronen voor multitenant SaaS-toepassingen met Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
 ## <a name="questions-and-feature-requests"></a>Vragen en functie aanvragen

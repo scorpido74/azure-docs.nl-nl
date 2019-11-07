@@ -1,6 +1,6 @@
 ---
-title: Voorbereiden van de doelomgeving voor VMware-replicatie naar Azure | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u uw doel-Azure-omgeving voor VMware-VM-replicatie naar Azure voorbereiden.
+title: Het replicatie doel voor de VMware-VM voorbereiden in Azure Site Recovery
+description: In dit artikel wordt beschreven hoe u uw doel-Azure-omgeving voorbereidt voor de replicatie van virtuele VMware-machines naar Azure.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -8,37 +8,37 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/03/2019
 ms.author: mayg
-ms.openlocfilehash: e75d4b1701944e206fcf6ded2dcb6d1e1fbc77cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c721234f2e1d806d51d31f3466e441bf8360f6b8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723783"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693165"
 ---
-# <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>Voorbereiden van de doelomgeving voor herstel na noodgevallen van virtuele VMware-machines of fysieke servers naar Azure
+# <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>De doel omgeving voorbereiden voor herstel na nood gevallen van virtuele VMware-machines of fysieke servers naar Azure
 
-In dit artikel wordt beschreven hoe u uw doel-Azure-omgeving om te beginnen met het repliceren van virtuele VMware-machines of fysieke servers naar Azure voorbereiden.
+In dit artikel wordt beschreven hoe u uw doel-Azure-omgeving voorbereidt om virtuele VMware-machines of fysieke servers te repliceren naar Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het artikel wordt ervan uitgegaan dat:
-- U kunt een Recovery Services-kluis hebt gemaakt op [Azure-portal](https://portal.azure.com "Azure-portal") Bescherm uw bronmachines
-- U hebt ingesteld van uw on-premises omgeving voor het repliceren van de bron [virtuele VMware-machines](vmware-azure-set-up-source.md) of [fysieke servers](physical-azure-set-up-source.md) naar Azure.
+In het artikel wordt ervan uitgegaan:
+- U hebt een Recovery Services kluis gemaakt op [Azure Portal](https://portal.azure.com "Azure Portal") om uw bron machines te beveiligen
+- U hebt uw on-premises omgeving ingesteld voor het repliceren van de [virtuele VMware-machines](vmware-azure-set-up-source.md) of [fysieke servers](physical-azure-set-up-source.md) naar Azure.
 
 ## <a name="prepare-target"></a>Doel voorbereiden
 
-Na het voltooien van de **stap 1: Selecteer beveiligingsdoel** en **stap 2: Bron voorbereiden**, gaat u naar **stap 3: Doel**
+Na het volt ooien van de **stap 1: beveiligings doel selecteren** en **stap 2: bron voorbereiden**, gaat u naar **stap 3: doel**
 
 ![Doel voorbereiden](./media/vmware-azure-set-up-target/prepare-target-vmware-to-azure.png)
 
-1. **Abonnement:** Selecteer het abonnement dat u wilt repliceren van uw virtuele machines of fysieke servers naar in de vervolgkeuzelijst.
-2. **Implementatiemodel:** Selecteer het implementatiemodel (klassiek of Resource Manager)
+1. **Abonnement:** Selecteer in de vervolg keuzelijst het abonnement waarnaar u de virtuele machines of fysieke servers wilt repliceren.
+2. **Implementatie model:** Het implementatie model selecteren (klassiek of Resource Manager)
 
-Op basis van het gekozen implementatiemodel, wordt een validatie uitgevoerd om ervoor te zorgen dat u ten minste één virtueel netwerk in het doelabonnement te repliceren en failover, uw virtuele machine of fysieke server hebt.
+Op basis van het gekozen implementatie model wordt een validatie uitgevoerd om ervoor te zorgen dat u ten minste één virtueel netwerk hebt in het doel abonnement om uw virtuele machine of fysieke server naar te repliceren en er een failover voor uit te voeren.
 
-Nadat de validatie is voltooid, klikt u op OK om door te gaan met de volgende stap.
+Zodra de validaties zijn voltooid, klikt u op OK om naar de volgende stap te gaan.
 
-Als u een virtueel netwerk hebt, kunt u maken door te klikken op de **+ netwerk** knop aan de bovenkant van de pagina.
+Als u geen virtueel netwerk hebt, kunt u er een maken door te klikken op de knop **+ netwerk** boven aan de pagina.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Replicatie-instellingen configureren](vmware-azure-set-up-replication.md).
+[Configureer de replicatie-instellingen](vmware-azure-set-up-replication.md).

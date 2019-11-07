@@ -1,5 +1,5 @@
 ---
-title: Client bibliotheek voor Elastic Data Base gebruiken met dapper | Microsoft Docs
+title: Client bibliotheek voor Elastic Data Base gebruiken met dapper
 description: Client bibliotheek voor Elastic Data Base gebruiken met dapper.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 1eafb123014effad9daca89dc1b852367d9cbbf1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b1fa6ab046845e2fd95e8d4b5611ca2f5d12562
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568264"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690096"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Client bibliotheek voor Elastic Data Base gebruiken met dapper
 Dit document is bedoeld voor ontwikkel aars die gebruikmaken van dapper om toepassingen te bouwen, maar u wilt ook [Elastic data base-hulp middelen gebruiken](sql-database-elastic-scale-introduction.md) om toepassingen te maken die sharding implementeren om hun gegevenslaag te schalen.  Dit document illustreert de wijzigingen in dapper toepassingen die nodig zijn voor de integratie met Elastic data base-hulpprogram ma's. Onze nadruk ligt op het samen stellen van het Elastic data base Shard management en gegevens afhankelijke route ring met dapper. 
 
-**Voorbeeld code**: [Hulpprogram ma's voor Elastic Data Base voor Azure SQL database-dapper-integratie](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
+**Voorbeeld code**: [hulpprogram ma's voor Elastic data base voor Azure SQL database-dapper-integratie](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
 
 Het integreren van **dapper** en **DapperExtensions** met de Elastic data base-client bibliotheek voor Azure SQL database is eenvoudig. Uw toepassingen kunnen gegevens afhankelijke route ring gebruiken door het maken en openen van nieuwe [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) -objecten te wijzigen om de [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) -aanroep van de [client bibliotheek](https://msdn.microsoft.com/library/azure/dn765902.aspx)te gebruiken. Hierdoor worden wijzigingen in uw toepassing beperkt tot alleen nieuwe verbindingen gemaakt en geopend. 
 
@@ -48,9 +48,9 @@ In plaats van de traditionele manier om verbindingen voor dapper te maken, moet 
 ### <a name="requirements-for-dapper-integration"></a>Vereisten voor dapper-integratie
 Wanneer u werkt met de client bibliotheek voor Elastic data base en de dapper-Api's, wilt u de volgende eigenschappen behouden:
 
-* **Uitschalen**: We willen data bases toevoegen aan of verwijderen uit de gegevenslaag van de Shard-toepassing, indien nodig voor de capaciteits vereisten van de toepassing. 
-* **Consistentie**: Omdat de toepassing is uitgeschaald met sharding, moet u gegevens afhankelijke route ring uitvoeren. We willen hiervoor de gegevensafhankelijke routerings mogelijkheden van de bibliotheek gebruiken. In het bijzonder wilt u de verificatie-en consistentie garanties behouden die worden geboden door verbindingen die zijn gebrokerd via de Shard-toewijzings beheer om beschadiging of onjuiste query resultaten te voor komen. Dit zorgt ervoor dat verbindingen met een gegeven shardlet worden geweigerd of worden gestopt als (bijvoorbeeld) de shardlet momenteel is verplaatst naar een andere Shard met behulp van Split/Merge-Api's.
-* **Object toewijzing**: We willen het gemak behouden van de toewijzingen die door dapper worden verschaft om te vertalen tussen klassen in de toepassing en de onderliggende database structuren. 
+* **Uitschalen**: we willen data bases toevoegen aan of verwijderen uit de gegevenslaag van de Shard-toepassing, indien nodig voor de capaciteits vereisten van de toepassing. 
+* **Consistentie**: omdat de toepassing is uitgeschaald met sharding, moet u gegevens afhankelijke route ring uitvoeren. We willen hiervoor de gegevensafhankelijke routerings mogelijkheden van de bibliotheek gebruiken. In het bijzonder wilt u de verificatie-en consistentie garanties behouden die worden geboden door verbindingen die zijn gebrokerd via de Shard-toewijzings beheer om beschadiging of onjuiste query resultaten te voor komen. Dit zorgt ervoor dat verbindingen met een gegeven shardlet worden geweigerd of worden gestopt als (bijvoorbeeld) de shardlet momenteel is verplaatst naar een andere Shard met behulp van Split/Merge-Api's.
+* **Object toewijzing**: we willen het gemak behouden van de toewijzingen die door dapper worden verschaft om te vertalen tussen klassen in de toepassing en de onderliggende database structuren. 
 
 De volgende sectie bevat richt lijnen voor deze vereisten voor toepassingen die zijn gebaseerd op **dapper** en **DapperExtensions**.
 
@@ -103,7 +103,7 @@ Query's werken op dezelfde manier als u de verbinding voor het eerst opent met [
             }
     }
 
-Houd er rekening mee dat met behulp van blok keren met het DDR-verbindings bereik alle database bewerkingen binnen het blok worden uitgevoerd op het ene Shard waar tenantId1 wordt bewaard. De query retourneert alleen blogs die zijn opgeslagen op de huidige Shard, maar niet voor de query's die zijn opgeslagen op een andere Shards. 
+Houd er rekening mee dat met **behulp** van blok keren met het DDR-verbindings bereik alle database bewerkingen binnen het blok worden uitgevoerd op het ene Shard waar tenantId1 wordt bewaard. De query retourneert alleen blogs die zijn opgeslagen op de huidige Shard, maar niet voor de query's die zijn opgeslagen op een andere Shards. 
 
 ## <a name="data-dependent-routing-with-dapper-and-dapperextensions"></a>Gegevens afhankelijke route ring met dapper en DapperExtensions
 Dapper wordt geleverd met een ecosysteem van extra uitbrei dingen, waardoor de data base meer gemak en abstractie kan bieden bij het ontwikkelen van database toepassingen. DapperExtensions is een voor beeld. 
@@ -136,7 +136,7 @@ En dit is het code voorbeeld voor de query:
     }
 
 ### <a name="handling-transient-faults"></a>Tijdelijke fouten verwerken
-Het micro soft-programma voor patronen & practices heeft het [toepassings blok voor de tijdelijke fout afhandeling](https://msdn.microsoft.com/library/hh680934.aspx) gepubliceerd om toepassings ontwikkelaars te helpen bij het afhandelen van veelvoorkomende problemen met de tijdelijke situatie tijdens het uitvoeren in de Cloud. Zie [voor meer informatie Perseverance, geheim van alle Triumphs: Het toepassings blok](https://msdn.microsoft.com/library/dn440719.aspx)voor de tijdelijke fout verwerking gebruiken.
+Het micro soft-programma voor patronen & practices heeft het [toepassings blok voor de tijdelijke fout afhandeling](https://msdn.microsoft.com/library/hh680934.aspx) gepubliceerd om toepassings ontwikkelaars te helpen bij het afhandelen van veelvoorkomende problemen met de tijdelijke situatie tijdens het uitvoeren in de Cloud. Zie [Perseverance, geheim van alle Triumphs: het toepassings blok voor de tijdelijke fout afhandeling gebruiken](https://msdn.microsoft.com/library/dn440719.aspx)voor meer informatie.
 
 Het code voorbeeld is afhankelijk van de tijdelijke fout bibliotheek om te beveiligen tegen tijdelijke fouten. 
 

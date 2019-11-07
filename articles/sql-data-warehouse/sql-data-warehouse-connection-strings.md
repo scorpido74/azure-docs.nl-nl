@@ -1,5 +1,5 @@
 ---
-title: Verbindings reeksen voor Azure SQL Data Warehouse | Microsoft Docs
+title: Verbindingsreeksen
 description: Verbindings reeksen voor SQL Data Warehouse
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,15 +10,16 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: afc8dbfa0bc1b1ad37e5f1a0f290c42998ed1e4b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: dc2f03978e219a6fbbf3918bef4c44c072d60610
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68479705"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692874"
 ---
 # <a name="connection-strings-for-azure-sql-data-warehouse"></a>Verbindings reeksen voor Azure SQL Data Warehouse
-U kunt verbinding maken met SQL Data Warehouse met verschillende toepassings protocollen, zoals [ADO.net][ADO.NET], [ODBC][ODBC], [php][PHP] en [JDBC][JDBC]. Hieronder ziet u enkele voor beelden van verbindings reeksen voor elk protocol.  U kunt ook de Azure Portal gebruiken om uw connection string te bouwen.  Als u uw connection string wilt bouwen met behulp van de Azure Portal, gaat u naar de Blade data base en klikt u onder Essentials op *database verbindings reeksen weer geven*.
+U kunt verbinding maken met SQL Data Warehouse met verschillende toepassings protocollen, zoals [ADO.net][ADO.NET], [ODBC][ODBC], [php][PHP] en [JDBC][JDBC]. Hieronder ziet u enkele voor beelden van verbindings reeksen voor elk protocol.  U kunt ook de Azure Portal gebruiken om uw connection string te bouwen.  Als u uw connection string wilt bouwen met behulp van de Azure Portal, gaat u naar de Blade data base en klikt u onder *Essentials* op *database verbindings reeksen weer geven*.
 
 ## <a name="sample-adonet-connection-string"></a>Voor beeld van ADO.NET connection string
 ```csharp

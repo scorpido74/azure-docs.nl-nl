@@ -1,5 +1,5 @@
 ---
-title: Schema toewijzing in de Kopieer activiteit | Microsoft Docs
+title: Schematoewijzing in kopieeractiviteit
 description: Meer informatie over de manier waarop Kopieer activiteiten in Azure Data Factory kaarten en gegevens typen van bron gegevens worden toegewezen om gegevens te sinken bij het kopiëren van gegevens.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: b705123dc6492466c30b3c1ddaf4b330b0d684a1
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: ed0823930b819661baf384d51478547cb2e0eccf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272263"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678140"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schematoewijzing in kopieeractiviteit
 
@@ -33,7 +33,7 @@ Kolom toewijzing wordt toegepast bij het kopiëren van gegevens van bron naar si
 
 ### <a name="explicit-mapping"></a>Expliciete toewijzing
 
-U kunt opgeven welke kolommen u wilt toewijzen in de eigenschap Copy `translator` activity->  ->  `mappings` . In het volgende voor beeld wordt een Kopieer activiteit in een pijp lijn gedefinieerd om gegevens van gescheiden tekst te kopiëren naar Azure SQL Database.
+U kunt opgeven welke kolommen u wilt toewijzen in de eigenschap Copy activity-> `translator` -> `mappings`. In het volgende voor beeld wordt een Kopieer activiteit in een pijp lijn gedefinieerd om gegevens van gescheiden tekst te kopiëren naar Azure SQL Database.
 
 ```json
 {
@@ -86,26 +86,26 @@ U kunt opgeven welke kolommen u wilt toewijzen in de eigenschap Copy `translator
 }
 ```
 
-De volgende eigenschappen worden ondersteund onder `translator`  ->  `mappings` ->-object `source` met `sink`en:
+De volgende eigenschappen worden ondersteund onder `translator` -> object `mappings`-> met `source` en `sink`:
 
-| Eigenschap | Description                                                  | Vereist |
+| Eigenschap | Beschrijving                                                  | Vereist |
 | -------- | ------------------------------------------------------------ | -------- |
-| nam     | De naam van de bron-of sink-kolom.                           | Ja      |
-| ordinal  | Kolom index. Begin met 1. <br>Toep assen en vereist voor het gebruik van gescheiden tekst zonder header-lijn. | Nee       |
-| path     | De expressie JSON-pad voor elk veld dat moet worden uitgepakt of toegewezen. Toep assen op hiërarchische gegevens, bijvoorbeeld MongoDB/REST.<br>Voor velden onder het hoofd object begint het JSON-pad met root $; voor velden binnen de door `collectionReference` eigenschap gekozen matrix wordt het JSON-pad gestart vanuit het matrix element. | Nee       |
+| naam     | De naam van de bron-of sink-kolom.                           | Ja      |
+| rang telwoord  | Kolom index. Begin met 1. <br>Toep assen en vereist voor het gebruik van gescheiden tekst zonder header-lijn. | Nee       |
+| programmapad     | De expressie JSON-pad voor elk veld dat moet worden uitgepakt of toegewezen. Toep assen op hiërarchische gegevens, bijvoorbeeld MongoDB/REST.<br>Voor velden onder het hoofd object begint het JSON-pad met root $; voor velden in de matrix die worden gekozen door `collectionReference` eigenschap, begint het JSON-pad vanuit het matrix element. | Nee       |
 | type     | Data Factory tussentijds gegevens type van de kolom Source of sink. | Nee       |
-| culture  | Cultuur van de kolom Source of sink. <br>Toep assen wanneer type `Datetime` of `Datetimeoffset`is. De standaardwaarde is `en-us`. | Nee       |
-| format   | Indelings teken reeks die moet worden gebruikt `Datetime` wanneer `Datetimeoffset`type of is. Raadpleeg de [aangepaste datum-en tijd notatie teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) voor het opmaken van DateTime. | Nee       |
+| culturele  | Cultuur van de kolom Source of sink. <br>Toep assen wanneer het type `Datetime` of `Datetimeoffset`is. De standaardwaarde is `en-us`. | Nee       |
+| Formatteer   | Indelings teken reeks die moet worden gebruikt als het type `Datetime` of `Datetimeoffset`is. Raadpleeg de [aangepaste datum-en tijd notatie teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) voor het opmaken van DateTime. | Nee       |
 
-De volgende eigenschappen worden ondersteund onder `translator`  ->  `mappings` naast object met `source` en `sink`:
+De volgende eigenschappen worden ondersteund onder `translator` -> `mappings` naast object met `source` en `sink`:
 
-| Eigenschap            | Description                                                  | Vereist |
+| Eigenschap            | Beschrijving                                                  | Vereist |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | Wordt alleen ondersteund als hiërarchische gegevens, zoals MongoDB/REST, bron is.<br>Als u gegevens wilt sequentieel en wilt ophalen uit de objecten **in een matrix veld** met hetzelfde patroon en converteren naar per rij per object, geeft u het JSON-pad van die matrix op om meerdere aanvragen uit te voeren. | Nee       |
 
 ### <a name="alternative-column-mapping"></a>Alternatieve kolom toewijzing
 
-U kunt de > `translator`  ->  `columnMappings` van de Kopieer activiteit opgeven om toe te wijzen tussen gegevens in tabel vorm. In dit geval is de sectie ' Structure ' vereist voor de invoer-en uitvoer gegevens sets. Kolom toewijzing ondersteunt het **toewijzen van alle of subset kolommen in de bron gegevensset ' structuur ' op alle kolommen in de Sink-gegevensset ' Structure**'. Hieronder vindt u fout voorwaarden die resulteren in een uitzonde ring:
+U kunt een Kopieer activiteit-> `translator` -> `columnMappings` opgeven om te koppelen tussen gegevens in tabel vorm. In dit geval is de sectie ' Structure ' vereist voor de invoer-en uitvoer gegevens sets. Kolom toewijzing ondersteunt het **toewijzen van alle of subset kolommen in de bron gegevensset ' structuur ' op alle kolommen in de Sink-gegevensset ' Structure**'. Hieronder vindt u fout voorwaarden die resulteren in een uitzonde ring:
 
 * Het query resultaat van de brongegevens opslag heeft geen kolom naam die is opgegeven in de sectie structuur van de invoer gegevensset.
 * Het sink-gegevens archief (als met een vooraf gedefinieerd schema) heeft geen kolom naam die is opgegeven in de sectie ' Structure ' van de uitvoer gegevensset.
@@ -160,7 +160,7 @@ In dit voor beeld heeft de uitvoer gegevensset een structuur en verwijst deze na
 }
 ```
 
-De volgende JSON definieert een Kopieer activiteit in een pijp lijn. De kolommen van de bron die is toegewezen aan de kolommen in Sink met behulp van de eigenschap **Translator** -> **columnMappings** .
+De volgende JSON definieert een Kopieer activiteit in een pijp lijn. De kolommen van de bron die is toegewezen aan de kolommen in Sink met behulp van de eigenschap **translator** -> **columnMappings** .
 
 ```json
 {
@@ -199,12 +199,12 @@ Als u de syntaxis van `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name
 
 ### <a name="alternative-schema-mapping"></a>Alternatieve schema toewijzing
 
-U kunt een Kopieer activiteit-> `translator`  ->  `schemaMapping` opgeven om toe te wijzen tussen hiërarchische gegevens en tabellaire gegevens in tabel vorm, zoals kopiëren van MongoDb/rest naar tekst bestand en kopiëren van Oracle naar de API van Azure Cosmos DB voor MongoDb. De volgende eigenschappen worden ondersteund in de sectie `translator` Kopieer activiteit:
+U kunt Kopieer activiteit-> `translator` -> `schemaMapping` in te stellen tussen hiërarchische gegevens en gegevens in tabel vorm, zoals kopiëren van MongoDB/REST naar tekst bestand en kopiëren van Oracle naar Azure Cosmos DB API voor MongoDB. De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit `translator`:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van het conversie programma Copy activity moet worden ingesteld op: **TabularTranslator** | Ja |
-| schemaMapping | Een verzameling sleutel-waardeparen, die de toewijzings relatie vertegenwoordigt **van de bron aan de Sink-zijde**.<br/>- **Sleutel:** geeft bron aan. Voor **tabel bron**geeft u de naam van de kolom op zoals gedefinieerd in de structuur van de gegevensset. voor een **hiërarchische bron**geeft u de JSON-padexpressie op voor elk veld dat u wilt uitpakken en toewijzen.<br>- **Waarde:** vertegenwoordigt sink. Voor de **tabellaire Sink**geeft u de naam van de kolom op zoals gedefinieerd in de structuur van de gegevensset. voor **hiërarchische Sink**geeft u de JSON-padexpressie op voor elk veld dat u wilt uitpakken en toewijzen. <br>In het geval van hiërarchische gegevens, voor velden onder hoofd object, begint JSON-pad met root $; voor velden binnen de door `collectionReference` eigenschap gekozen matrix wordt het JSON-pad gestart vanuit het matrix element.  | Ja |
+| schemaMapping | Een verzameling sleutel-waardeparen, die de toewijzings relatie vertegenwoordigt **van de bron aan de Sink-zijde**.<br/>- **sleutel:** vertegenwoordigt de bron. Voor **tabel bron**geeft u de naam van de kolom op zoals gedefinieerd in de structuur van de gegevensset. voor een **hiërarchische bron**geeft u de JSON-padexpressie op voor elk veld dat u wilt uitpakken en toewijzen.<br>- **waarde:** vertegenwoordigt sink. Voor de **tabellaire Sink**geeft u de naam van de kolom op zoals gedefinieerd in de structuur van de gegevensset. voor **hiërarchische Sink**geeft u de JSON-padexpressie op voor elk veld dat u wilt uitpakken en toewijzen. <br>In het geval van hiërarchische gegevens, voor velden onder hoofd object, begint JSON-pad met root $; voor velden in de matrix die worden gekozen door `collectionReference` eigenschap, begint het JSON-pad vanuit het matrix element.  | Ja |
 | collectionReference | Als u gegevens wilt sequentieel en wilt ophalen uit de objecten **in een matrix veld** met hetzelfde patroon en converteren naar per rij per object, geeft u het JSON-pad van die matrix op om meerdere aanvragen uit te voeren. Deze eigenschap wordt alleen ondersteund wanneer hiërarchische gegevens bron is. | Nee |
 
 **Voor beeld: kopiëren van MongoDB naar Oracle:**
@@ -283,23 +283,23 @@ U vindt de toewijzing tussen systeem eigen type en tussentijds type in de sectie
 
 ### <a name="supported-data-types"></a>Ondersteunde gegevens typen
 
-Data Factory ondersteunt de volgende tussenliggende gegevens typen: U kunt de onderstaande waarden opgeven bij het configureren van type gegevens in de configuratie van de [gegevensset-structuur](concepts-datasets-linked-services.md#dataset-structure-or-schema) :
+Data Factory ondersteunt de volgende tussenliggende gegevens typen: u kunt de onderstaande waarden opgeven bij het configureren van type-informatie in de configuratie van de [gegevensset-structuur](concepts-datasets-linked-services.md#dataset-structure-or-schema) :
 
-* Byte[]
-* Boolean-waarde
+* Byte []
+* Booleaans
 * Datetime
-* Datetimeoffset
-* Decimal
-* Double
-* Guid
+* Date time offset
+* Komma
+* Double-waarde
+* GUID
 * Int16
 * Int32
 * Int64
-* Single
+* Enkelvoudig
 * Tekenreeks
-* Timespan
+* Periode
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de andere artikelen van de Kopieeractiviteit:
+Zie de andere artikelen over Kopieer activiteiten:
 
-- [Overzicht kopieeractiviteit](copy-activity-overview.md)
+- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)

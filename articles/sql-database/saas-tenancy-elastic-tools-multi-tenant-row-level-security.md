@@ -1,5 +1,5 @@
 ---
-title: Multi tenant-apps met hulpprogram ma's voor beveiliging op rijniveau en elastische data base | Microsoft Docs
+title: "Multi tenant-apps met hulpprogram ma's voor beveiliging op rijniveau en elastische data base "
 description: Gebruik hulpprogram ma's voor elastische data bases met beveiliging op rijniveau om een toepassing met een zeer schaal bare gegevenslaag te bouwen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 996d4e2ba62c06992b0433fd255800ba8cea0af3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4d3f25a6e234c3d3dfd878aaae68cf58684f2fac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570176"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691862"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Multi tenant-toepassingen met Elastic data base-hulpprogram ma's en beveiliging op rijniveau
 
@@ -40,7 +40,7 @@ Het doel is de client bibliotheek voor Elastic data base te gebruiken die [afhan
 
 - Visual Studio (2012 of hoger) gebruiken
 - Drie Azure SQL-data bases maken
-- Voorbeeld project downloaden: [Elastische DB-Hulpprogram Ma's voor Azure SQL-Shards voor meerdere tenants](https://go.microsoft.com/?linkid=9888163)
+- Voorbeeld project downloaden: [elastische DB-Hulpprogram ma's voor Azure SQL-Shards voor meerdere tenants](https://go.microsoft.com/?linkid=9888163)
   - Vul de gegevens in voor uw data bases aan het begin van **Program.cs**
 
 Dit project breidt het uit dat wordt beschreven in [elastische DB-Hulpprogram ma's voor Azure SQL-Entity Framework-integratie](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) door ondersteuning toe te voegen voor multi tenant Shard-data bases. Het project bouwt een eenvoudige console toepassing voor het maken van blogs en berichten. Het project bevat vier tenants, plus twee Shard-data bases met meerdere tenants. Deze configuratie wordt in het voor gaande diagram geïllustreerd.
@@ -53,18 +53,18 @@ Bouw en voer de toepassing uit. Dit voert Boots traps uit van de Elastic data ba
 
 U ziet dat de beveiliging op rijniveau nog niet is ingeschakeld in de Shard-data bases, maar bij elk van deze tests wordt een probleem weer gegeven: tenants kunnen de blogs zien die niet bij hen horen en de toepassing kan niet worden gebruikt om een blog voor de verkeerde Tenant in te voegen. In de rest van dit artikel wordt beschreven hoe u deze problemen oplost door Tenant isolatie af te dwingen met beveiliging op rijniveau. Er zijn twee stappen:
 
-1. **Toepassingslaag**: Wijzig de toepassings code zodanig dat altijd de huidige TenantId in de sessie\_context wordt ingesteld na het openen van een verbinding. Het voorbeeld project stelt de TenantId op deze manier al in.
-2. **Gegevenslaag**: Een beveiligings beleid voor beveiliging op rijniveau maken in elke Shard-data base om rijen te filteren op\_basis van de TenantId die is opgeslagen in de sessie context. Maak een beleid voor elk van uw Shard-data bases, anders worden rijen in multi tenant Shards niet gefilterd.
+1. **Toepassingslaag**: Wijzig de toepassings code zodanig dat altijd de huidige TenantId wordt ingesteld in de sessie\_context na het openen van een verbinding. Het voorbeeld project stelt de TenantId op deze manier al in.
+2. **Gegevenslaag**: Maak een beveiligings beleid op rijniveau in elke Shard-data base om rijen te filteren op basis van de TenantId die is opgeslagen in de sessie-\_context. Maak een beleid voor elk van uw Shard-data bases, anders worden rijen in multi tenant Shards niet gefilterd.
 
-## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1. Toepassingslaag: TenantId instellen in de sessie\_context
+## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1. gegevenslaagtoepassing: TenantId instellen in de sessie-\_CONTEXT
 
-Eerst maakt u verbinding met een Shard-data base met behulp van de gegevens afhankelijke routerings-Api's van de client bibliotheek voor Elastic data base. De toepassing moet de data base die TenantId gebruikt de verbinding nog wel laten weten. In de TenantId wordt het beveiligings beleid voor RIJNIVEAU vermeld, welke rijen moeten worden gefilterd als onderdeel van andere tenants. Sla de huidige TenantId op in [de\_sessie context](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) van de verbinding.
+Eerst maakt u verbinding met een Shard-data base met behulp van de gegevens afhankelijke routerings-Api's van de client bibliotheek voor Elastic data base. De toepassing moet de data base die TenantId gebruikt de verbinding nog wel laten weten. In de TenantId wordt het beveiligings beleid voor RIJNIVEAU vermeld, welke rijen moeten worden gefilterd als onderdeel van andere tenants. Sla de huidige TenantId op in de [sessie\_context](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) van de verbinding.
 
-Een alternatief voor sessie\_context is het gebruik [van\_context info](https://docs.microsoft.com/sql/t-sql/functions/context-info-transact-sql). Maar sessie\_context is een betere optie. Sessie\_context is gemakkelijker te gebruiken. het retourneert standaard Null en sleutel-waardeparen ondersteunt.
+Een alternatief voor sessie-\_CONTEXT is het gebruik van [context\_info](https://docs.microsoft.com/sql/t-sql/functions/context-info-transact-sql). Maar sessie\_CONTEXT is een betere optie. SESSIE-\_CONTEXT is gemakkelijker te gebruiken. het retourneert standaard NULL en sleutel-waardeparen ondersteunt.
 
 ### <a name="entity-framework"></a>Entity Framework
 
-Voor toepassingen die gebruikmaken van Entity Framework, is de eenvoudigste manier om de\_sessie context in te stellen binnen de ElasticScaleContext-onderdrukking die wordt beschreven in [gegevens afhankelijke route ring met EF DbContext](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext). Maak en voer een SqlCommand uit waarmee TenantId in de sessie\_context wordt ingesteld op de shardingKey die voor de verbinding is opgegeven. Ga vervolgens terug naar de Connection Broker via gegevens afhankelijke route ring. Op deze manier hoeft u slechts eenmaal code te schrijven om de sessie\_context in te stellen.
+Voor toepassingen die gebruikmaken van Entity Framework, is de eenvoudigste manier om de sessie\_CONTEXT in te stellen binnen de ElasticScaleContext onderdrukking die wordt beschreven in [gegevens afhankelijke route ring met EF DbContext](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext). Maak en voer een SqlCommand uit waarmee TenantId in de sessie\_CONTEXT wordt ingesteld op de shardingKey die voor de verbinding is opgegeven. Ga vervolgens terug naar de Connection Broker via gegevens afhankelijke route ring. Op deze manier hoeft u slechts eenmaal code te schrijven om de sessie\_CONTEXT in te stellen.
 
 ```csharp
 // ElasticScaleContext.cs
@@ -122,7 +122,7 @@ public static SqlConnection OpenDDRConnection(
 // ...
 ```
 
-Nu wordt de\_sessie context automatisch ingesteld met de opgegeven TenantId wanneer ElasticScaleContext wordt aangeroepen:
+Nu wordt de CONTEXT van de sessie-\_automatisch ingesteld met de opgegeven TenantId wanneer ElasticScaleContext wordt aangeroepen:
 
 ```csharp
 // Program.cs
@@ -146,7 +146,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 
 ### <a name="adonet-sqlclient"></a>ADO.NET SqlClient
 
-Voor toepassingen die gebruikmaken van ADO.NET SqlClient maakt u een wrapper-functie rondom methode ShardMap. OpenConnectionForKey. Laat de wrapper automatisch TenantId instellen in de\_sessie context naar de huidige TenantId voordat een verbinding wordt geretourneerd. Om ervoor te zorgen\_dat de sessie context altijd is ingesteld, moet u alleen verbindingen openen met deze wrapper-functie.
+Voor toepassingen die gebruikmaken van ADO.NET SqlClient maakt u een wrapper-functie rondom methode ShardMap. OpenConnectionForKey. Laat de wrapper automatisch TenantId instellen in de sessie\_CONTEXT voor de huidige TenantId voordat een verbinding wordt geretourneerd. Om ervoor te zorgen dat sessie\_CONTEXT altijd is ingesteld, moet u alleen verbindingen openen met deze wrapper-functie.
 
 ```csharp
 // Program.cs
@@ -212,20 +212,20 @@ All blogs for TenantId {0} (using ADO.NET SqlClient):", tenantId4);
 
 ```
 
-## <a name="2-data-tier-create-row-level-security-policy"></a>2. Gegevenslaag: Beveiligings beleid op rijniveau maken
+## <a name="2-data-tier-create-row-level-security-policy"></a>2. gegevenslaag: beveiligings beleid op rijniveau maken
 
 ### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>Een beveiligings beleid maken voor het filteren van de rijen waartoe elke Tenant toegang heeft
 
-Nu de toepassing de sessie\_context instelt met de huidige TenantId vóór het uitvoeren van een query, kan een beveiligings beleid in rijniveau query's filteren en rijen met een andere TenantId uitsluiten.
+Nu de toepassing sessie\_CONTEXT instelt met de huidige TenantId vóór het uitvoeren van een query, kan een beveiligings beleid voor beveiliging tegen query's worden gefilterd en rijen met een andere TenantId uitsluiten.
 
 Beveiliging op rijniveau wordt geïmplementeerd in Transact-SQL. Een door de gebruiker gedefinieerde functie definieert de toegangs logica en een beveiligings beleid koppelt deze functie aan een wille keurig aantal tabellen. Voor dit project:
 
-1. De functie controleert of de toepassing is verbonden met de data base en of de tenantid die is opgeslagen in de\_sessie context overeenkomt met de tenantid van een bepaalde rij.
+1. De functie controleert of de toepassing is verbonden met de data base en of de TenantId die is opgeslagen in de sessie\_CONTEXT overeenkomt met de TenantId van een bepaalde rij.
     - De toepassing is verbonden in plaats van een andere SQL-gebruiker.
 
 2. Met een FILTER predicaat kunnen rijen die voldoen aan het TenantId-filter worden door gegeven voor SELECT-, UPDATE-en DELETE-query's.
     - Een BLOCK-predikaat voor komt dat rijen die het filter mislukken, worden ingevoegd of bijgewerkt.
-    - Als er\_geen sessie context is ingesteld, retourneert de functie Null en zijn er geen rijen zichtbaar of kunnen ze worden ingevoegd.
+    - Als er geen sessie\_CONTEXT is ingesteld, retourneert de functie NULL en zijn er geen rijen zichtbaar of kunnen ze worden ingevoegd.
 
 Als u beveiliging op rijniveau op alle Shards wilt inschakelen, voert u de volgende T-SQL uit met behulp van Visual Studio (SSDT), SSMS of het Power shell-script dat is opgenomen in het project. Of als u Elastic Database- [taken](elastic-jobs-overview.md)gebruikt, kunt u de uitvoering van deze T-SQL automatiseren op alle Shards.
 
@@ -268,7 +268,7 @@ GO
 
 ### <a name="add-default-constraints-to-automatically-populate-tenantid-for-inserts"></a>Standaard beperkingen toevoegen om TenantId automatisch in te vullen voor inserts
 
-U kunt een standaard beperking op elke tabel plaatsen om de TenantId automatisch te vullen met de waarde die momenteel is\_opgeslagen in de sessie context bij het invoegen van rijen. Hier volgt een voor beeld.
+U kunt een standaard beperking op elke tabel plaatsen om de TenantId automatisch te vullen met de waarde die momenteel is opgeslagen in de sessie\_CONTEXT bij het invoegen van rijen. Hier volgt een voor beeld.
 
 ```sql
 -- Create default constraints to auto-populate TenantId with the
@@ -301,14 +301,14 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 ```
 
 > [!NOTE]
-> Als u de standaard beperkingen voor een Entity Framework project gebruikt, wordt het aanbevolen dat u de TenantId-kolom *niet* in uw EF-gegevens model opneemt. Deze aanbeveling is omdat Entity Framework query's automatisch standaard waarden opgeven waarmee de standaard beperkingen die zijn gemaakt in T-SQL die gebruikmaken\_van sessie context, worden overschreven.
+> Als u de standaard beperkingen voor een Entity Framework project gebruikt, wordt het aanbevolen dat u de TenantId-kolom *niet* in uw EF-gegevens model opneemt. Deze aanbeveling is omdat Entity Framework query's automatisch standaard waarden opgeven die de standaard beperkingen overschrijven die zijn gemaakt in T-SQL die gebruikmaken van sessie\_CONTEXT.
 > Als u standaard beperkingen in het voorbeeld project wilt gebruiken, moet u bijvoorbeeld TenantId verwijderen uit DataClasses.cs (en add-Migration uitvoeren in de Package Manager-console) en T-SQL gebruiken om ervoor te zorgen dat het veld alleen in de database tabellen voor komt. Op deze manier levert EF automatisch onjuiste standaard waarden op bij het invoegen van gegevens.
 
 ### <a name="optional-enable-a-superuser-to-access-all-rows"></a>Beschrijving Een *super gebruiker* in staat stellen om toegang te krijgen tot alle rijen
 
 Sommige toepassingen willen mogelijk een *super gebruiker* maken die toegang heeft tot alle rijen. Een super gebruiker kan rapportage over alle tenants op alle Shards inschakelen. Of een super gebruiker kan Split-Merge-bewerkingen uitvoeren op Shards waarbij het verplaatsen van Tenant rijen tussen data bases is vereist.
 
-Als u een beheerder wilt inschakelen, maakt u een nieuwe`superuser` SQL-gebruiker (in dit voor beeld) in elke Shard-data base. Wijzig vervolgens het beveiligings beleid met een nieuwe predicaat functie waarmee deze gebruiker toegang kan krijgen tot alle rijen. Een dergelijke functie wordt nu gegeven.
+Als u een beheerder wilt inschakelen, maakt u in elke Shard-Data Base een nieuwe SQL-gebruiker (`superuser` in dit voor beeld). Wijzig vervolgens het beveiligings beleid met een nieuwe predicaat functie waarmee deze gebruiker toegang kan krijgen tot alle rijen. Een dergelijke functie wordt nu gegeven.
 
 ```sql
 -- New predicate function that adds superuser logic.
@@ -340,14 +340,14 @@ GO
 
 ### <a name="maintenance"></a>Onderhoud
 
-- **Nieuwe Shards toevoegen**: Voer het T-SQL-script uit om beveiliging op rijniveau in te scha kelen voor elke nieuwe Shards, anders worden query's op deze Shards niet gefilterd.
-- **Nieuwe tabellen toevoegen**: Voeg een FILTER en een predikaat blok keren toe aan het beveiligings beleid op alle Shards wanneer een nieuwe tabel wordt gemaakt. Anders worden query's voor de nieuwe tabel niet gefilterd. Deze toevoeging kan worden geautomatiseerd met behulp van een DDL-trigger, zoals wordt beschreven in [beveiliging op rijniveau automatisch Toep assen op nieuw gemaakte tabellen (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx).
+- **Nieuwe Shards toevoegen**: Voer het T-SQL-script uit om beveiliging op rijniveau in te scha kelen voor een nieuwe Shards, anders worden query's op deze Shards niet gefilterd.
+- **Nieuwe tabellen toevoegen**: Voeg een filter en een PREDIKAAT blok keren toe aan het beveiligings beleid op alle Shards wanneer een nieuwe tabel wordt gemaakt. Anders worden query's voor de nieuwe tabel niet gefilterd. Deze toevoeging kan worden geautomatiseerd met behulp van een DDL-trigger, zoals wordt beschreven in [beveiliging op rijniveau automatisch Toep assen op nieuw gemaakte tabellen (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx).
 
 ## <a name="summary"></a>Samenvatting
 
 Hulpprogram ma's voor elastische data bases en beveiliging op rijniveau kunnen samen worden gebruikt om de gegevenslaag van een toepassing uit te schalen met ondersteuning voor zowel multi tenant als single-tenant Shards. Multi tenant-Shards kunnen worden gebruikt om gegevens efficiënter op te slaan. Deze efficiëntie wordt uitgesp roken wanneer een groot aantal tenants slechts enkele rijen met gegevens bevat. Shards met één Tenant kunnen Premium-tenants ondersteunen die strenge prestaties en isolatie vereisten hebben. Zie [beveiliging op rijniveau][rls]voor meer informatie.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Wat is een elastische Azure-groep?](sql-database-elastic-pool.md)
 - [Uitbreiden met Azure SQL Database](sql-database-elastic-scale-introduction.md)

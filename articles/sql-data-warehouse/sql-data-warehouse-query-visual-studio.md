@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Azure SQL Data Warehouse - VSTS| Microsoft Docs
-description: Query’s uitvoeren bij SQL Data Warehouse met Visual Studio.
+title: Verbinding maken met VSTS
+description: Query Azure SQL Data Warehouse met Visual Studio.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e6c3de1714d363eb1481bcea5f470d04125b96b9
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e2d37b2d71f605077903197d25b5da2803e34ad3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575309"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685569"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Verbinding maken met SQL Data Warehouse met Visual Studio en SSDT
 > [!div class="op_single_selector"]
@@ -36,7 +37,7 @@ Voor deze zelfstudie hebt u het volgende nodig:
 * SSDT voor Visual Studio. Als u Visual Studio hebt, hebt u dit waarschijnlijk al. Voor installatie-instructies en -opties raadpleegt u [Visual Studio en SSDT installeren][Installing Visual Studio and SSDT].
 * De volledig gekwalificeerde SQL-servernaam. Zie [Verbinding maken met SQL Data Warehouse][Connect to SQL Data Warehouse] om dit te vinden.
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Verbinding maken met uw SQL Data Warehouse
+## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Maak verbinding met uw SQL Data Warehouse
 1. Open Visual Studio 2019.
 2. Open SQL Server-objectverkenner. Daartoe selecteert u **View** > **SQL Server Object Explorer**.
    
@@ -51,12 +52,12 @@ Voor deze zelfstudie hebt u het volgende nodig:
    * **Server name** (Servernaam). Voer de eerder vastgestelde **servernaam** in.
    * **Authentication** (Verificatie). Selecteer **SQL Server Authentication** (SQL Server-verificatie) of **Active Directory Integrated Authentication** (Geïntegreerde Active Directory-verificatie).
    * **User Name** (Gebruikersnaam) en **Password** (Wachtwoord). Voer de gebruikersnaam en het wachtwoord in als u hierboven SQL Server-verificatie hebt geselecteerd.
-   * Klik op **Connect** (Verbinden).
+   * Klik op **Verbinden**.
 5. U kunt de Azure SQL-server uitvouwen als u deze wilt verkennen. U kunt de databases weergeven die aan de server zijn gekoppeld. Vouw AdventureWorksDW uit als u de tabellen in de voorbeelddatabase wilt zien.
    
     ![AdventureWorksDW verkennen][4]
 
-## <a name="2-run-a-sample-query"></a>2. Een voorbeeldquery uitvoeren
+## <a name="2-run-a-sample-query"></a>2. Voer een voorbeeld query uit
 Nu er een verbinding met uw database is ingesteld, gaat u een query schrijven.
 
 1. Klik met de rechtermuisknop op de database in SQL Server-objectverkenner.

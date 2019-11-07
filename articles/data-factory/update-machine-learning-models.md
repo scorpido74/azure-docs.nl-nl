@@ -1,5 +1,5 @@
 ---
-title: machine learning modellen bijwerken met behulp van Azure Data Factory | Microsoft Docs
+title: machine learning modellen bijwerken met behulp van Azure Data Factory
 description: Hierin wordt beschreven hoe u voorspellende pijp lijnen maakt met behulp van Azure Data Factory en machine learning
 services: data-factory
 documentationcenter: ''
@@ -11,22 +11,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 56d0ce6668c1077b99c980c2bc5b16998a3a41c1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3313c9c362a9b82cf7ed8db63479aaa5cf0c777e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140528"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683240"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Azure Machine Learning modellen bijwerken met resource activiteit bijwerken
 Dit artikel vormt een aanvulling op het belangrijkste Azure Data Factory-Azure Machine Learning-integratie artikel: [Maak voorspellende pijp lijnen met behulp van Azure machine learning en Azure Data Factory](transform-data-using-machine-learning.md). Als u dit nog niet hebt gedaan, raadpleegt u het hoofd artikel voordat u dit artikel leest.
 
 ## <a name="overview"></a>Overzicht
-Als onderdeel van het proces van inzet Azure Machine Learning modellen wordt uw model getraind en opgeslagen. U vervolgens worden gebruikt om een voorspellende webservice te maken. De webservice kan vervolgens worden gebruikt in web sites, dashboards en mobiele apps.
+Als onderdeel van het proces van inzet Azure Machine Learning modellen wordt uw model getraind en opgeslagen. Vervolgens gebruikt u het om een voorspellende webservice te maken. De webservice kan vervolgens worden gebruikt in websites, Dash boards en mobiele apps.
 
-U maakt gebruik van Machine Learning modellen zijn doorgaans niet statisch. Zodra er nieuwe gegevens beschikbaar is of wanneer de gebruiker van de API hun eigen gegevens is moet het model opnieuw worden getraind. Raadpleeg [een machine learning model opnieuw trainen](../machine-learning/machine-learning-retrain-machine-learning-model.md) voor meer informatie over het opnieuw trainen van een model in azure machine learning.
+Modellen die u maakt met behulp van Machine Learning zijn doorgaans niet statisch. Wanneer er nieuwe gegevens beschikbaar zijn of wanneer de consumer van de API hun eigen gegevens heeft, moet het model opnieuw worden getraind. Raadpleeg [een machine learning model opnieuw trainen](../machine-learning/machine-learning-retrain-machine-learning-model.md) voor meer informatie over het opnieuw trainen van een model in azure machine learning.
 
-Opnieuw trainen kan vaak optreden. Met de activiteit batch-uitvoering en update resource kunt u het Azure Machine Learning model opnieuw trainen en de voorspellende webservice bijwerken met behulp van Data Factory.
+Het opnieuw trainen kan regel matig worden uitgevoerd. Met de activiteit batch-uitvoering en update resource kunt u het Azure Machine Learning model opnieuw trainen en de voorspellende webservice bijwerken met behulp van Data Factory.
 
 In de volgende afbeelding ziet u de relatie tussen training en voorspellende webservices.
 
@@ -56,11 +56,11 @@ In het volgende JSON-code fragment wordt een Azure Machine Learning batch uitvoe
 }
 ```
 
-| Eigenschap                      | Description                              | Vereist |
+| Eigenschap                      | Beschrijving                              | Vereist |
 | :---------------------------- | :--------------------------------------- | :------- |
-| name                          | Naam van de activiteit in de pijp lijn     | Ja      |
+| naam                          | Naam van de activiteit in de pijp lijn     | Ja      |
 | description                   | Tekst die beschrijft wat de activiteit doet.  | Nee       |
-| Type                          | Voor Azure Machine Learning bron activiteit bijwerken is het type activiteit **AzureMLUpdateResource**. | Ja      |
+| type                          | Voor Azure Machine Learning bron activiteit bijwerken is het type activiteit **AzureMLUpdateResource**. | Ja      |
 | linkedServiceName             | Azure Machine Learning gekoppelde service die de eigenschap updateResourceEndpoint bevat. | Ja      |
 | trainedModelName              | De naam van de getrainde model module in het web service-experiment dat moet worden bijgewerkt | Ja      |
 | trainedModelLinkedServiceName | De naam van Azure Storage gekoppelde service die het ilearner-bestand bewaart dat door de update bewerking is geüpload | Ja      |
@@ -70,8 +70,8 @@ In het volgende JSON-code fragment wordt een Azure Machine Learning batch uitvoe
 
 Het hele proces van inzet het opnieuw trainen van een model en het bijwerken van de voorspellende webservices omvat de volgende stappen:
 
-- Roep de **training-webservice** aan met behulp van de **batch Execution-activiteit**. Het aanroepen van een trainings-webservice is hetzelfde als het aanroepen van een voorspellende webservice die wordt beschreven in voorspellende [pijp lijnen maken met behulp van Azure machine learning en Data Factory batch Execution-activiteit](transform-data-using-machine-learning.md). De uitvoer van de training-webservice is een iLearner-bestand dat u kunt gebruiken om de voorspellende webservice bij te werken.
-- Roep het **resource-eind punt** voor het bijwerken van de voorspellende **webservice** aan met de **activiteit resource bijwerken** om de webservice bij te werken met het nieuwe getrainde model.
+- Roep de **training-webservice** aan met behulp van de **batch Execution-activiteit**. Het aanroepen van een trainings-webservice is hetzelfde als het aanroepen van een voorspellende webservice die wordt beschreven in [voorspellende pijp lijnen maken met behulp van Azure machine learning en Data Factory batch Execution-activiteit](transform-data-using-machine-learning.md). De uitvoer van de training-webservice is een iLearner-bestand dat u kunt gebruiken om de voorspellende webservice bij te werken.
+- Roep het **resource-eind punt** voor het bijwerken van de **voorspellende webservice** aan met de **activiteit resource bijwerken** om de webservice bij te werken met het nieuwe getrainde model.
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning gekoppelde service
 
@@ -92,10 +92,10 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 U kunt in de URL waarden ophalen voor de plaatsings houders bij het uitvoeren van een query op de webservice op de [Portal Azure machine learning](https://services.azureml.net/)-webservices.
 
-Voor het nieuwe type update resource-eind punt is Service-Principal-verificatie vereist. Als u Service-Principal-verificatie wilt gebruiken, registreert u een toepassings entiteit in Azure Active Directory (Azure AD) en geeft u deze de rol **Inzender** of **eigenaar** van het abonnement of de resource groep waarvan de webservice deel uitmaakt. De Zie [Service-Principal maken en machtigingen toewijzen om Azure-resources te beheren](../active-directory/develop/howto-create-service-principal-portal.md). Noteer de volgende waarden, die u gebruikt voor het definiëren van de gekoppelde service:
+Voor het nieuwe type update resource-eind punt is Service-Principal-verificatie vereist. Als u Service-Principal-verificatie wilt gebruiken, registreert u een toepassings entiteit in Azure Active Directory (Azure AD) en geeft u deze de rol **Inzender** of **eigenaar** van het abonnement of de resource groep waarvan de webservice deel uitmaakt. De Zie [Service-Principal maken en machtigingen toewijzen om Azure-resources te beheren](../active-directory/develop/howto-create-service-principal-portal.md). Noteer de volgende waarden, die u gebruikt om de gekoppelde service te definiëren:
 
 - Toepassings-id
-- Toepassingssleutel
+- Toepassings sleutel
 - Tenant-id
 
 Hier volgt een voor beeld van een gekoppelde service definitie:
@@ -127,7 +127,7 @@ Hier volgt een voor beeld van een gekoppelde service definitie:
 Het volgende scenario bevat meer informatie. Het bevat een voor beeld voor het opnieuw trainen en bijwerken van Azure Machine Learning Studio-modellen van een Azure Data Factory-pijp lijn.
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Voorbeeld: Een Azure Machine Learning model opnieuw trainen en bijwerken
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Voor beeld: een Azure Machine Learning model opnieuw trainen en bijwerken
 
 Deze sectie bevat een voorbeeld pijplijn die gebruikmaakt van de **Azure machine learning Studio batch Execution-activiteit** om een model opnieuw te trainen. De pijp lijn gebruikt ook de **activiteit resource van Azure machine learning Studio update** om het model bij te werken in de Score-webservice. De sectie bevat ook JSON-fragmenten voor alle gekoppelde services, gegevens sets en pijp lijnen in het voor beeld.
 
@@ -169,8 +169,8 @@ Het volgende JSON-code fragment definieert een Azure Machine Learning gekoppelde
 
 In **Azure machine learning Studio**gaat u als volgt te werk om waarden op te halen voor **mlEndpoint** en **apiKey**:
 
-1. Klik op webservices in het menu links.
-2. Klik op de **training-webservice** in de lijst met webservices.
+1. Klik op **WEBservices** in het menu links.
+2. Klik op de training-webservice in de lijst met **webservices** .
 3. Klik op Kopiëren naast tekstvak **API-sleutel** . Plak de sleutel in het klem bord in de Data Factory JSON-editor.
 4. Klik in de **Azure machine learning Studio**op **batch-uitvoerings** koppeling.
 5. Kopieer de **aanvraag-URI** uit de sectie **Request** en plak deze in de Data Factory JSON-editor.
