@@ -1,5 +1,5 @@
 ---
-title: Persoonlijke koppeling voor Azure SQL Database en het Data Warehouse | Microsoft Docs
+title: Persoonlijke koppeling voor Azure SQL Database en het Data Warehouse
 description: Overzicht van de functie privé-eind punt
 author: rohitnayakmsft
 ms.author: rohitna
@@ -7,12 +7,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: 3adcccde89823f865535c9e1350ac4c3e541eef6
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: a056c4beeeb05886d4b4ed492a05d1963372b366
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71066261"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687607"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Persoonlijke koppeling voor Azure SQL Database en het Data Warehouse (preview-versie)
 
@@ -60,16 +60,16 @@ Zodra de netwerk beheerder het persoonlijke eind punt (PE) heeft gemaakt, kan de
 
     - (1) Selecteer de verbindingen met het privé-eind punt in het linkerdeel venster
     - (2) toont een lijst met alle privé-eindpunt verbindingen (PECs)
-    - (3) overeenkomend persoonlijk eind punt (PE) dat is gemaakt ![Screenshot van alle PECs @ no__t-1
+    - (3) het bijbehorende persoonlijke eind punt (PE) dat is gemaakt ![scherm afbeelding van alle PECs][3]
 
 1. Selecteer een individuele PEC uit de lijst door deze te selecteren.
-![Screenshot geselecteerde PEC @ no__t-1
+![scherm afbeelding geselecteerde PEC][6]
 
 1. De SQL-beheerder kan kiezen voor het goed keuren of afwijzen van een PEC en optioneel een antwoord op een korte tekst toevoegen.
-![Screenshot van PEC-goed keuring @ no__t-1
+Scherm afbeelding van de goed keuring van PEC ![][4]
 
 1. Na goed keuring of weigering wordt in de lijst de juiste staat en de antwoord tekst weer gegeven.
-![Screenshot van alle PECs na goed keuring @ no__t-1
+Scherm opname ![van alle PECs na goed keuring][5]
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Cases van een persoonlijke koppeling gebruiken voor Azure SQL Database 
 

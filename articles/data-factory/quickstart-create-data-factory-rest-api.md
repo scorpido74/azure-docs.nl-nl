@@ -1,5 +1,5 @@
 ---
-title: Een Azure data factory maken met behulp van REST-API | Microsoft Docs
+title: Een Azure-data factory maken met behulp van REST API
 description: Maak een Azure data factory om gegevens te kopiëren van de ene locatie in Azure Blob Storage naar de andere.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 4668a9a012b2e379d532091deec832d5f99dd1fc
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 1145490ba5e48216e25a094cbbced3da7b07c701
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990632"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684461"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Snelstartgids: een Azure data factory en pijp lijn maken met behulp van de REST API
 
@@ -37,7 +37,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * **Azure-abonnement**. Als u geen abonnement hebt, kunt u een [gratis proefaccount](https://azure.microsoft.com/pricing/free-trial/) maken.
-* **Een Azure Storage-account**. U gebruikt de blob-opslag als gegevensopslag voor **bron** en **sink**. Als u geen Azure-opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) om een account te maken.
+* **Een Azure Storage-account**. U gebruikt de blob-opslag als gegevensopslag voor **bron** en **sink**. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) voor de stappen voor het maken van een account.
 * Maak een **blob-container** in Blob Storage, maak een **invoermap** in de container en upload een aantal bestanden naar de map. U kunt hulpprogramma's zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gebruiken om verbinding te maken met Azure Blob Storage, een blob-container te maken, een invoerbestand te uploaden en het uitvoerbestand te controleren.
 * Installeer **Azure PowerShell**. Volg de instructies in [How to install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Azure PowerShell installeren en configureren). Deze snelstartgids maakt gebruik van PowerShell om REST-API-aanroepen aan te roepen.
 * **Maak een toepassing in Azure Active Directory** aan de hand van [deze instructie](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Noteer de volgende waarden die u in latere stappen gebruikt: **toepassings-id**, **clientSecrets**en **Tenant-id**. Wijs de toepassing toe aan de rol '**Inzender**'.
@@ -88,7 +88,7 @@ $authHeader = @{
 }
 ```
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 Voer de volgende opdrachten uit om een data factory te maken:
 

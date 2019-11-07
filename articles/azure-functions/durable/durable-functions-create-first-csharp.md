@@ -8,22 +8,24 @@ manager: jeconnoc
 keywords: azure-functies, functies, gebeurtenisverwerking, berekenen, architectuur zonder server
 ms.service: azure-functions
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1579a4dfbab1ec9d9aa6bb3995bd88d948d6d5e2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 563412fbc5e8d9af3c399b1f75696053549143c4
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933974"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615013"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Uw eerste Durable Function maken in C\#
 
 *Durable Functions* is een extensie van [Azure Functions](../functions-overview.md) waarmee u stateful functies kunt schrijven in een serverloze omgeving. Met de extensie worden status, controlepunten en het opnieuw opstarten voor u beheerd.
 
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
+
 In dit artikel leert u hoe u met Visual Studio 2019 lokaal een ' Hallo wereld ' duurzame functie kunt maken en testen.  Met deze functie organiseert en koppelt u aanroepen naar andere functies. Vervolgens publiceert u de functiecode op Azure. Deze hulpprogram ma's zijn beschikbaar als onderdeel van de Azure Development-workload in Visual Studio 2019.
 
-![Duurzame functie uitvoeren in Azure](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
+![Durable Function uitvoeren in Azure](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,7 +43,7 @@ De Azure Functions-sjabloon maakt een project dat kan worden gepubliceerd in een
 
 1. Selecteer **Nieuw** > **Project** in het menu **Bestand** in Visual Studio.
 
-1. In het dialoog venster **een nieuw project toevoegen** zoekt `functions`, kiest u de sjabloon **Azure functions** en selecteert u **volgende**. 
+1. In het dialoog venster **een nieuw project toevoegen** zoekt u naar `functions`, kiest u de **Azure functions** sjabloon en selecteert u **volgende**. 
 
     ![Het dialoogvenster Nieuw project om een functie in Visual Studio te maken](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
@@ -51,9 +53,9 @@ De Azure Functions-sjabloon maakt een project dat kan worden gepubliceerd in een
 
     ![Een nieuw dialoog venster voor Azure Functions toepassing maken in Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
-    | Instelling      | Voorgestelde waarde  | Description                      |
+    | Instelling      | Voorgestelde waarde  | Beschrijving                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **Versie** | Azure Functions 2.x <br />(.NET Core) | Hiermee wordt een functieproject gemaakt dat gebruikmaakt van versie 2.x van de runtime van Azure Functions, die ondersteuning biedt voor .NET Core. Azure Functions 1.x ondersteunt .NET Framework. Zie [Een versie kiezen voor de runtime van Azure Functions](../functions-versions.md) voor meer informatie.   |
+    | **Versie** | Azure Functions 2,0 <br />(.NET Core) | Hiermee maakt u een functie project dat gebruikmaakt van versie 2,0 runtime van Azure Functions, dat .NET core ondersteunt. Azure Functions 1,0 ondersteunt de .NET Framework. Zie [Een versie kiezen voor de runtime van Azure Functions](../functions-versions.md) voor meer informatie.   |
     | **Sjabloon** | Leeg | Hiermee wordt een lege functie-app gemaakt. |
     | **Opslagaccount**  | Opslagemulator | Een opslagaccount is vereist voor het statusbeheer van Durable Functions. |
 
@@ -73,12 +75,15 @@ In de volgende stappen wordt een sjabloon gebruikt om de code van de Durable Fun
 
     ![Durable sjabloon selecteren](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 
+> [!NOTE]
+> Met deze sjabloon wordt momenteel een duurzame functie gemaakt met een oudere 1. x-versie van de uitbrei ding. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor informatie over het upgraden naar de nieuwere versie van 2. x van Durable functions.
+
 Er wordt een nieuwe Durable Function toegevoegd aan de app.  Open het nieuwe CS-bestand om de inhoud te bekijken. Deze Durable Function is een eenvoudig voorbeeld van het koppelen van functies met behulp van de volgende methoden:  
 
-| Methode | FunctionName | Description |
+| Methode | FunctionName | Beschrijving |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Hiermee beheert u de Durable-indeling. In dit geval wordt de indeling gestart, wordt er een lijst gemaakt en wordt het resultaat van drie functieaanroepen aan de lijst toegevoegd.  Wanneer de drie functieaanroepen zijn voltooid, wordt de lijst geretourneerd. |
-| **`SayHello`** | `<file-name>_Hello` | De functie geeft 'Hello' als resultaat. Dit is de functie die de bedrijfslogica bevat die wordt ingedeeld. |
+| **`SayHello`** | `<file-name>_Hello` | De functie geeft 'Hello' als resultaat. Het is de functie die de bedrijfs logica bevat die wordt georchestrator. |
 | **`HttpStart`** | `<file-name>_HttpStart` | Een [door HTTP geactiveerde functie](../functions-bindings-http-webhook.md) die een exemplaar van de indeling start en een reactie voor de controlestatus retourneert. |
 
 Nu u uw functieproject en een Durable Function hebt gemaakt, kunt u deze testen op uw lokale computer.
@@ -101,7 +106,7 @@ Met Azure Functions Core-hulpprogramma's kunt u een Azure Functions-project uitv
 
 4. Kopieer de URL-waarde voor `statusQueryGetUri`, plak deze in de adresbalk van de browser en voer de aanvraag uit.
 
-    De aanvraag voert een query uit op het orchestrator-exemplaar voor de status. U moet uiteindelijk een reactie krijgen die lijkt op de volgende.  Dit laat zien dat het exemplaar is voltooid en dat het de uitvoer of resultaten van de Durable Function bevat.
+    De aanvraag voert een query uit op het orchestrator-exemplaar voor de status. U moet uiteindelijk een reactie krijgen die lijkt op de volgende.  In deze uitvoer ziet u dat het exemplaar is voltooid en dat de uitvoer of resultaten van de duurzame functie zijn opgenomen.
 
     ```json
     {
@@ -114,8 +119,8 @@ Met Azure Functions Core-hulpprogramma's kunt u een Azure Functions-project uitv
             "Hello Seattle!",
             "Hello London!"
         ],
-        "createdTime": "2018-11-08T07:07:40Z",
-        "lastUpdatedTime": "2018-11-08T07:07:52Z"
+        "createdTime": "2019-11-02T07:07:40Z",
+        "lastUpdatedTime": "2019-11-02T07:07:52Z"
     }
     ```
 

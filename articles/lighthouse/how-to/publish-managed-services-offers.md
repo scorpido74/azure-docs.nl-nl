@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 10105d06e48a727e71ea5cb03f2ffceb589df50a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4b2ce1253fd4421b36105fdbae68c6e89173a3c6
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595262"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615466"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Een managed services-aanbod publiceren naar Azure Marketplace
 
@@ -52,9 +52,11 @@ Wanneer u klaar bent, selecteert u **Opslaan**. U bent nu klaar om door te gaan 
 
 Elke aanbieding moet een of meer abonnementen hebben (ook wel Sku's genoemd). U kunt meerdere plannen toevoegen om verschillende functie sets tegen verschillende prijzen te ondersteunen of om een specifiek abonnement voor een beperkt publiek van specifieke klanten aan te passen. Klanten kunnen de plannen weer geven die voor hen beschikbaar zijn onder de bovenliggende aanbieding.
 
-Selecteer in de sectie plannen voor elk plan dat u wilt maken, het **nieuwe plan**. Voer vervolgens een **plan-id**in. Deze ID mag alleen kleine letters, streepjes en onderstrepings tekens bevatten, met een maximum van 50 tekens. De plan-ID is mogelijk zichtbaar voor klanten op plaatsen als in product-Url's en facturerings rapporten. Zodra u de aanbieding hebt gepubliceerd, kunt u deze waarde niet meer wijzigen.
+Selecteer in de sectie plannen de optie **nieuw plan**. Voer vervolgens een **plan-id**in. Deze ID mag alleen kleine letters, streepjes en onderstrepings tekens bevatten, met een maximum van 50 tekens. De plan-ID is mogelijk zichtbaar voor klanten op plaatsen als in product-Url's en facturerings rapporten. Zodra u de aanbieding hebt gepubliceerd, kunt u deze waarde niet meer wijzigen.
 
-Voer vervolgens de volgende secties uit in de sectie **Details van abonnement** :
+### <a name="plan-details"></a>Details van plan
+
+Voer de volgende secties uit in de sectie **Plan Details** :
 
 |Veld  |Beschrijving  |
 |---------|---------|
@@ -64,27 +66,36 @@ Voer vervolgens de volgende secties uit in de sectie **Details van abonnement** 
 |**Facturerings model**     | Er zijn twee facturerings modellen die hier worden weer gegeven, maar u moet **Bring your own License** voor aanbiedingen voor beheerde services kiezen. Dit betekent dat u uw klanten rechtstreeks factureert voor kosten met betrekking tot deze aanbieding, en micro soft brengt geen kosten in rekening.   |
 |**Is dit een privé abonnement?**     | Hiermee wordt aangegeven of de SKU privé of openbaar is. De standaard waarde is **Nee** (openbaar). Als u deze selectie verlaat, is uw abonnement niet beperkt tot specifieke klanten (of een bepaald aantal klanten). Nadat u een openbaar abonnement hebt gepubliceerd, kunt u dit later niet meer wijzigen in persoonlijk. Als u dit plan alleen beschikbaar wilt maken voor specifieke klanten, selecteert u **Ja**. Wanneer u dit doet, moet u de klanten identificeren door hun abonnement-Id's op te geven. Deze kunnen worden ingevoerd op één (voor Maxi maal 10 abonnementen) of door een CSV-bestand (voor Maxi maal 20.000 abonnementen) te uploaden. Zorg ervoor dat u hier uw eigen abonnementen opneemt, zodat u de aanbieding kunt testen en valideren. Zie voor meer informatie [persoonlijke sku's en abonnementen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  |
 
-Ten slotte vult u de sectie **manifest Details** in. Hiermee maakt u een manifest met autorisatie-informatie voor het beheren van klant resources. De gegevens die u hier opgeeft, zijn nodig voor het onboarden van uw klanten voor het beheer van de gedelegeerde resources van Azure. Zoals hierboven vermeld, worden deze machtigingen toegepast op elke klant die het plan inkoop, dus als u de toegang tot een specifieke klant wilt beperken, moet u een privé-abonnement publiceren voor hun exclusieve gebruik.
+### <a name="manifest-details"></a>Details van manifest
 
-- Geef eerst een **versie** op voor het manifest. Gebruik de indeling *n. n. n* (bijvoorbeeld 1.2.5).
-- Voer vervolgens uw **Tenant-id**in. Dit is een GUID die is gekoppeld aan de Azure Active Directory Tenant-ID van uw organisatie (dat wil zeggen, de Tenant waarmee u werkt om de resources van uw klanten te beheren). Als u dit niet hebt, kunt u het vinden door over te grenzen van de account naam in de rechter bovenhoek van de Azure Portal of door te klikken op **overschakelen naar een andere map**. 
-- Voeg ten slotte een of meer **autorisatie** vermeldingen toe aan uw abonnement. Autorisaties definiëren de entiteiten die toegang hebben tot resources en abonnementen voor klanten die het abonnement hebben gekocht. U moet deze informatie opgeven om toegang te krijgen tot resources namens de klant met behulp van Azure delegated resource management.
-  Geef voor elke autorisatie het volgende op. U kunt vervolgens zo vaak als nodig **nieuwe autorisatie** selecteren om meer gebruikers/roldefinities toe te voegen.
+Vul de sectie **manifest Details** in voor uw abonnement. Hiermee maakt u een manifest met autorisatie-informatie voor het beheren van klant resources. Deze informatie is vereist om Azure delegated resource management in te scha kelen.
+
+> [!NOTE]
+> Zoals hierboven vermeld, worden de gebruikers en rollen in uw **autorisatie** vermeldingen toegepast op elke klant die het plan heeft gekocht. Als u de toegang tot een specifieke klant wilt beperken, moet u een privé-abonnement publiceren voor hun exclusieve gebruik.
+
+Geef eerst een **versie** op voor het manifest. Gebruik de indeling *n. n. n* (bijvoorbeeld 1.2.5).
+
+Voer vervolgens uw **Tenant-id**in. Dit is een GUID die is gekoppeld aan de Azure Active Directory Tenant-ID van uw organisatie (dat wil zeggen, de Tenant waarmee u werkt om de resources van uw klanten te beheren). Als u dit niet hebt, kunt u het vinden door over te grenzen van de account naam in de rechter bovenhoek van de Azure Portal of door te klikken op **overschakelen naar een andere map**.
+
+Voeg ten slotte een of meer **autorisatie** vermeldingen toe aan uw abonnement. Autorisaties definiëren de entiteiten die toegang hebben tot resources en abonnementen voor klanten die het plan hebben gekocht, en rollen toewijzen die specifieke toegangs niveaus verlenen. Zie [tenants, rollen en gebruikers in azure Lighthouse-scenario's](../concepts/tenants-users-roles.md)voor meer informatie over ondersteunde rollen.
+
+Voor elke **autorisatie**moet u het volgende opgeven. U kunt vervolgens zo vaak als nodig **nieuwe autorisatie** selecteren om meer gebruikers en roldefinities toe te voegen.
+
   - **Azure AD-object-id**: de Azure ad-id van een gebruiker, gebruikers groep of toepassing waaraan bepaalde machtigingen worden toegekend (zoals beschreven in de roldefinitie) voor de resources van uw klanten.
   - **Weergave naam van Azure AD-object**: een beschrijvende naam om de klant te helpen het doel van deze autorisatie te begrijpen. De klant krijgt deze naam te zien bij het delegeren van resources.
-  - **Roldefinitie**: Selecteer een van de beschik bare ingebouwde Azure AD-rollen in de lijst. Met deze rol bepaalt u de machtigingen die de gebruiker in het veld ID van het **Azure AD-object** heeft op de resources van uw klanten. Zie [ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)voor meer informatie over deze rollen.
-  - **Toewijs bare rollen**: dit is alleen vereist als u gebruikers toegangs beheerder hebt geselecteerd in de **roldefinitie** voor deze autorisatie. Als dat het geval is, moet u hier een of meer toewijs bare rollen toevoegen. De gebruiker in het **object-ID-veld van Azure AD** kan deze **toewijs bare rollen** toewijzen aan [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Houd er rekening mee dat er geen andere machtigingen zijn gekoppeld aan de rol beheerder van gebruikers toegang voor deze gebruiker. Als u hier niet een of meer rollen selecteert, wordt er door uw inzending geen certificering door gegeven. (Als u geen beheerder voor gebruikers toegang hebt geselecteerd voor de roldefinitie van deze gebruiker, heeft dit veld geen effect.)
+  - **Roldefinitie**: Selecteer een van de beschik bare ingebouwde Azure AD-rollen in de lijst. Met deze rol bepaalt u de machtigingen die de gebruiker in het veld ID van het **Azure AD-object** heeft op de resources van uw klanten. Zie voor beschrijvingen van deze rollen [ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) en [functie ondersteuning voor Azure delegated resource management](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)
+  - **Toewijs bare rollen**: dit is alleen vereist als u gebruikers toegangs beheerder hebt geselecteerd in de **roldefinitie** voor deze autorisatie. Als dat het geval is, moet u hier een of meer toewijs bare rollen toevoegen. De gebruiker in het **object-ID-veld van Azure AD** kan deze **toewijs bare rollen** toewijzen aan [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), wat vereist is om [beleid te implementeren dat kan worden hersteld](deploy-policy-remediation.md). Houd er rekening mee dat er geen andere machtigingen zijn gekoppeld aan de rol beheerder van gebruikers toegang voor deze gebruiker. Als u hier niet een of meer rollen selecteert, wordt er door uw inzending geen certificering door gegeven. (Als u geen beheerder voor gebruikers toegang hebt geselecteerd voor de roldefinitie van deze gebruiker, heeft dit veld geen effect.)
 
 > [!TIP]
-> In de meeste gevallen moet u machtigingen toewijzen aan een Azure AD-gebruikers groep of Service-Principal, in plaats van aan een reeks afzonderlijke gebruikers accounts. Hiermee kunt u toegang voor afzonderlijke gebruikers toevoegen of verwijderen zonder dat u het plan hoeft bij te werken en opnieuw te publiceren wanneer uw toegangs vereisten veranderen.
+> In de meeste gevallen moet u machtigingen toewijzen aan een Azure AD-gebruikers groep of Service-Principal, in plaats van aan een reeks afzonderlijke gebruikers accounts. Hiermee kunt u toegang voor afzonderlijke gebruikers toevoegen of verwijderen zonder dat u het plan hoeft bij te werken en opnieuw te publiceren wanneer uw toegangs vereisten veranderen. Zie voor aanvullende aanbevelingen [tenants, rollen en gebruikers in azure Lighthouse-scenario's](../concepts/tenants-users-roles.md).
 
-Wanneer u klaar bent met het toevoegen van plannen, selecteert u **Opslaan**en gaat u verder naar de sectie **Marketplace** .
+Zodra u de gegevens hebt voltooid, kunt u een **nieuw plan** selecteren, net zo vaak als nodig is om extra plannen te maken. Wanneer u klaar bent, selecteert u **Opslaan**en gaat u verder met de sectie **Marketplace** .
 
 ## <a name="provide-marketplace-text-and-images"></a>Tekst en afbeeldingen voor Marketplace opgeven
 
 In het gedeelte **Marketplace** kunt u de tekst en afbeeldingen opgeven die klanten kunnen zien in azure Marketplace en de Azure Portal.
 
-Geef informatie op over de volgende velden in het **overzichts** gedeelte:
+Vul de volgende velden in in het gedeelte **overzicht** :
 
 |Veld  |Beschrijving  |
 |---------|---------|
@@ -128,7 +139,7 @@ Nadat u deze gegevens hebt toegevoegd, selecteert u **opslaan.**
 
 ## <a name="publish-your-offer"></a>Uw aanbieding publiceren
 
-Zodra u tevreden bent over alle gegevens die u hebt ingevoerd, is de volgende stap het publiceren van de aanbieding naar Azure Marketplace. Selecteer de knop **publiceren** om het proces van het live-aanbod te initiëren. Zie voor meer informatie over dit proces [Azure Marketplace publiceren en AppSource-aanbiedingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
+Zodra u alle secties hebt voltooid, is de volgende stap het publiceren van de aanbieding op Azure Marketplace. Selecteer de knop **publiceren** om het proces van het live-aanbod te initiëren. Zie voor meer informatie over dit proces [Azure Marketplace publiceren en AppSource-aanbiedingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
 
 ## <a name="the-customer-onboarding-process"></a>Het onboarding-proces van de klant
 

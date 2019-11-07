@@ -10,14 +10,14 @@ ms.topic: quickstart
 description: Ontwikkeling van team Kubernetes met containers en micro Services op Azure
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 15833294e1dd5b75251ad54fa1f33bc4ed5e2c20
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 9bdd52f2c120d338859259b046f7f4b97bbc4eed
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035157"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585200"
 ---
-# <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Quickstart: Team ontwikkeling op Kubernetes met behulp van Azure dev Spaces
+# <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Snelstartgids: team ontwikkeling op Kubernetes met behulp van Azure dev Spaces
 
 In deze handleiding leert u het volgende:
 
@@ -29,9 +29,9 @@ In deze handleiding leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+- Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 - [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
-- [Helm 2,13 of hoger is geïnstalleerd](https://github.com/helm/helm/blob/master/docs/install.md).
+- [Helm 2,13 of hoger is geïnstalleerd][helm-installed].
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Een Azure Kubernetes service-cluster maken
 
@@ -118,7 +118,7 @@ reservationengine  1/1    1           1          4m32s
 users              1/1    1           1          4m32s
 ```
 
-Nadat de voorbeeld toepassing op uw cluster is geïnstalleerd en u ontwikkelaars ruimten hebt ingeschakeld in uw cluster, gebruikt u de `azds list-uris` opdracht om de Url's voor de voorbeeld toepassing weer te geven in *dev* die momenteel is geselecteerd.
+Nadat de voorbeeld toepassing op uw cluster is geïnstalleerd en omdat er ontwikkel ruimten zijn ingeschakeld op uw cluster, gebruikt u de opdracht `azds list-uris` om de Url's voor de voorbeeld toepassing weer te geven in *dev* die momenteel is geselecteerd.
 
 ```cmd
 $ azds list-uris
@@ -167,7 +167,7 @@ http://azureuser2.s.dev.gateway.fedcab0987.eus.azds.io/         Available
 
 Controleer of de Url's die worden weer gegeven door de `azds list-uris` opdracht het voor voegsel *azureuser2. s. dev* hebben. Met dit voor voegsel wordt bevestigd dat de huidige geselecteerde ruimte *azureuser2*is. Dit is een onderliggend element van *dev*.
 
-Ga naar de *bikesharingweb* -service voor de dev */azureuser2 dev-* ruimte door de open bare URL te openen via de `azds list-uris`-opdracht. In het bovenstaande voor beeld is de open bare URL voor de *bikesharingweb* -service `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`. Selecteer *Aurelia Briggs (klant)* als de gebruiker. Controleer of de tekst *Hi Aurelia Briggs | Meld* u aan de bovenkant aan.
+Ga naar de *bikesharingweb* -service voor de dev */azureuser2 dev-* ruimte door de open bare URL te openen via de `azds list-uris` opdracht. In het bovenstaande voor beeld is de open bare URL voor de *bikesharingweb* -service `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`. Selecteer *Aurelia Briggs (klant)* als de gebruiker. Controleer of de tekst *Hi Aurelia Briggs | Meld* u aan de bovenkant aan.
 
 ## <a name="update-code"></a>Code bijwerken
 
@@ -183,7 +183,7 @@ Sla de wijzigingen op en sluit het bestand.
 
 ## <a name="build-and-run-the-updated-bikesharingweb-service-in-the-devazureuser2-dev-space"></a>De bijgewerkte bikesharingweb-service bouwen en uitvoeren in de ontwikkel ruimte *dev/azureuser2*
 
-Ga naar de *BikeSharingWeb/* -map en voer de opdracht `azds up` uit.
+Ga naar de *BikeSharingWeb/* map en voer de opdracht `azds up` uit.
 
 ```cmd
 $ cd ../BikeSharingWeb/
@@ -199,7 +199,7 @@ Service 'bikesharingweb' port 80 (http) is available at http://localhost:54256
 
 Met deze opdracht wordt de *bikesharingweb* -service in de ontwikkel ruimte *dev/azureuser2* gemaakt en uitgevoerd. Deze service wordt uitgevoerd naast de *bikesharingweb* -service die wordt uitgevoerd in *dev* en wordt alleen gebruikt voor aanvragen met het URL-voor voegsel *azureuser2. s* . Zie [hoe Azure dev Spaces werkt en is geconfigureerd](how-dev-spaces-works.md)voor meer informatie over de werking van route ring tussen bovenliggende en onderliggende ontwikkel ruimten.
 
-Ga naar de *bikesharingweb* -service voor de dev */azureuser2 dev-* ruimte door de open bare URL te openen die wordt weer gegeven in de uitvoer van de opdracht `azds up`. Selecteer *Aurelia Briggs (klant)* als de gebruiker. Controleer of de bijgewerkte tekst in de rechter bovenhoek wordt weer geven. Mogelijk moet u de pagina vernieuwen of de cache van de browser wissen als u deze wijziging niet meteen ziet.
+Ga naar de *bikesharingweb* -service voor de dev */azureuser2 dev-* ruimte door de open bare URL te openen die wordt weer gegeven in de uitvoer van de `azds up` opdracht. Selecteer *Aurelia Briggs (klant)* als de gebruiker. Controleer of de bijgewerkte tekst in de rechter bovenhoek wordt weer geven. Mogelijk moet u de pagina vernieuwen of de cache van de browser wissen als u deze wijziging niet meteen ziet.
 
 ![De voorbeeld toepassing is bijgewerkt door Azure dev Spaces fiets delen](media/quickstart-team-development/bikeshare-update.png)
 
@@ -208,7 +208,7 @@ Ga naar de *bikesharingweb* -service voor de dev */azureuser2 dev-* ruimte door 
 
 ## <a name="verify-other-dev-spaces-are-unchanged"></a>Controleren of andere ontwikkel ruimten ongewijzigd zijn
 
-Als de `azds up`-opdracht nog steeds wordt uitgevoerd, drukt u op *CTRL + c*.
+Als de `azds up` opdracht nog steeds wordt uitgevoerd, drukt u op *CTRL + c*.
 
 ```cmd
 $ azds list-uris --all
@@ -239,5 +239,5 @@ Ontdek hoe Azure Dev Spaces u kan helpen om complexere apps te ontwikkelen binne
 > [!div class="nextstepaction"]
 > [Werken met meerdere containers en teamontwikkeling](multi-service-nodejs.md)
 
-
+[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
 [supported-regions]: about.md#supported-regions-and-configurations

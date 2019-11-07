@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 5/31/2019
+ms.date: 11/05/2019
 ms.author: victorh
-ms.openlocfilehash: b30b96e6ae931e0df41b60e16f04127e82a068ad
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: a51276cd54a88c5e566afef0d06673f14b5862cf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469756"
+ms.locfileid: "73572038"
 ---
 # <a name="what-is-azure-application-gateway"></a>Wat is Azure Application Gateway?
 
@@ -47,11 +47,11 @@ De Application Gateway-VIP op Standard_v2 of WAF_v2 SKU ondersteunt alleen een s
 
 ## <a name="web-application-firewall"></a>Web Application Firewall
 
-Web Application Firewall (WAF) is een functie van Application Gateway die gecentraliseerde beveiliging van uw webtoepassingen tegen algemene aanvallen en beveiligingsproblemen biedt. WAF is gebaseerd op regels van de [OWASP (open Web Application Security project) kern regel sets](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (alleen WAF_v2), 3,0 en 2.2.9. 
+Web Application firewall (WAF) is een service waarmee uw webtoepassingen gecentraliseerd worden beschermd tegen veelvoorkomende aanvallen en beveiligings problemen. WAF is gebaseerd op regels van de [OWASP (open Web Application Security project) kern regel sets](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (alleen WAF_v2), 3,0 en 2.2.9. 
 
 Webtoepassingen zijn in toenemende mate het doel van aanvallen die gebruikmaken van veelvoorkomende bekende beveiligingsproblemen. Veelvoorkomende aanvallen zijn hierbij onder andere aanvallen met SQL-injecties en aanvallen via scripting op meerdere sites. Het kan een hele uitdaging zijn om dergelijke aanvallen in toepassingscode te voorkomen en dit kan tevens veel onderhoud, patching en controle vereisen op meerdere lagen van de toepassingstopologie. Een gecentraliseerde firewall voor webtoepassingen maakt het beveiligingsbeheer veel eenvoudiger en biedt toepassingsbeheerders meer veiligheid tegen bedreigingen of aanvallen. Een WAF-oplossing kan ook sneller reageren op een beveiligingsrisico door een patch voor een bekend beveiligingsprobleem toe te passen op een centrale locatie in plaats van elke afzonderlijke webtoepassing te beveiligen. Bestaande toepassingsgateways kunnen eenvoudig worden geconverteerd naar een toepassingsgateway met Web Application Firewall.
 
-Zie [Web Application firewall (WAF) in Application Gateway](https://docs.microsoft.com/azure/application-gateway/waf-overview)voor meer informatie.
+Zie [Wat is Azure Web Application firewall?](../web-application-firewall/overview.md)voor meer informatie.
 
 ## <a name="ingress-controller-for-aks"></a>Ingangs controller voor AKS
 Met Application Gateway ingangs controller (AGIC) kunt u Application Gateway gebruiken als binnenkomend verkeer voor een [Azure Kubernetes service-cluster (AKS)](https://azure.microsoft.com/services/kubernetes-service/) . 

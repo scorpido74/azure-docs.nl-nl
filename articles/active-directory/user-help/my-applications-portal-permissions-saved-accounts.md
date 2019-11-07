@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70a0e65b3c73e05af08c69fde55542e803691515
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9fa8bc27f014b794059f30a62d47f298096df2f1
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178114"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573805"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-preview-portal"></a>Toepassings machtigingen bewerken of intrekken in de portal mijn apps (preview-versie)
 
@@ -49,10 +49,10 @@ Nadat u app-machtigingen en opgeslagen accounts in de portal **mijn apps** hebt 
 
 - Organiseer uw apps in de verschillende categorieën die door uw organisatie zijn gemaakt en verschaft. Zie [werk ruimten openen en gebruiken in de portal mijn apps (preview)](my-applications-portal-workspaces.md)voor meer informatie.
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="related-articles"></a>Verwante artikelen
 
-- [Werk uw profiel en account gegevens](myprofile-portal-overview.md)bij. Instructies voor het bijwerken van uw persoonlijke gegevens die worden weer gegeven op de portal **Mijn profiel** (preview-versie).
+- [Werk uw profiel en account gegevens](my-account-portal-overview.md)bij. Instructies voor het bijwerken van uw persoonlijke gegevens die worden weer gegeven op de portal **Mijn profiel** (preview-versie).
 
-- [Beheer uw organisaties](myprofile-portal-organizations-page.md). Instructies voor het weer geven en beheren van de gegevens van uw organisatie op de pagina **organisaties** van de portal **Mijn profiel** .
+- [Beheer uw organisaties](my-account-portal-organizations-page.md). Instructies voor het weer geven en beheren van de gegevens van uw organisatie op de pagina **organisaties** van de portal **Mijn profiel** .
 
-- [Uw verbonden apparaten beheren](myprofile-portal-devices-page.md). Instructies voor het beheren van de apparaten waarmee u verbinding hebt met behulp van uw werk-of school account op de pagina **apparaten** van de portal **Mijn profiel** .
+- [Uw verbonden apparaten beheren](my-account-portal-devices-page.md). Instructies voor het beheren van de apparaten waarmee u verbinding hebt met behulp van uw werk-of school account op de pagina **apparaten** van de portal **Mijn profiel** .

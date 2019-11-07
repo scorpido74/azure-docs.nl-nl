@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: De schaal van rekenkracht vergroten in Azure SQL Data Warehouse - Azure portal | Microsoft Docs'
+title: 'Snelstartgids: scale Compute-Azure Portal '
 description: Rekenkracht uitschalen in Azure SQL Data Warehouse in Azure Portal. De schaal van rekenkracht vergroten voor betere prestaties of de schaal juist verkleinen om kosten te besparen.
 services: sql-data-warehouse
 author: Antvgski
@@ -10,22 +10,23 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4197d7a4724199f8c42fc09a6d1ed18af46cc4f8
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 59d929165ac9618d68707e2f13741e7bbba7b37f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575357"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685960"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Quickstart: Rekenkracht uitschalen in Azure SQL Data Warehouse in de Azure-portal
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Snelstart: rekenkracht uitschalen in Azure SQL Data Warehouse in Azure Portal
 
-Rekenkracht uitschalen in Azure SQL Data Warehouse in Azure Portal. [Vergroot de schaal van Compute](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties of verklein de schaal juist om kosten te besparen. 
+Rekenkracht uitschalen in Azure SQL Data Warehouse in Azure Portal. [Schaal rekenkracht uit](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties of verklein de schaal om kosten te besparen. 
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -36,7 +37,7 @@ U kunt een eigen datawarehouse schalen. U kunt ook [Quickstart: maken en verbind
 
 ## <a name="scale-compute"></a>De schaal van Compute aanpassen
 
-Compute-resources van SQL Data Warehouse kunnen worden geschaald door het aantal warehouse-eenheden te vergroten of verkleinen. Met behulp van de quickstart [maken en verbinden - portal] (create-data-warehouse-portal.md) is **mySampleDataWarehouse** gemaakt en vervolgens gestart met 400 DWU's. In de volgende stappen wordt het aantal DWU's voor **mySampleDataWarehouse** aangepast.
+Compute-resources van SQL Data Warehouse kunnen worden geschaald door het aantal warehouse-eenheden te vergroten of verkleinen. Met behulp van de quickstart [maken en verbinden - portal] (create-data-warehouse-portal.md) is **mySampleDataWarehouse** gemaakt en vervolgens gestart met 400 DWU's. In de volgende stappen wordt het aantal DWU’s voor **mySampleDataWarehouse** aangepast.
 
 DWU’s wijzigen:
 
@@ -50,7 +51,7 @@ DWU’s wijzigen:
 
     ![Schuifregelaar verplaatsen](media/quickstart-scale-compute-portal/scale-dwu.png)
 
-3. Klik op **Opslaan**. Er wordt een bevestigingsbericht weergegeven. Klik op **Ja** om te bevestigen of **Nee** om te annuleren.
+3. Klik op **Opslaan**. Er verschijnt een bevestigingsbericht. Klik op **Ja** om te bevestigen of **Nee** om te annuleren.
 
     ![Op Opslaan klikken](media/quickstart-scale-compute-portal/confirm-change.png)
 

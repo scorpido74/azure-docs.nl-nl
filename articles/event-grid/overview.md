@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 117c74eac1e234f84af6be2d275637d7b8f4e2a7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 03cf8eb2036a9670dbc75e3efb55e52a70de5c54
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794015"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607266"
 ---
 # <a name="what-is-azure-event-grid"></a>Wat is Azure Event Grid?
 
@@ -53,10 +53,10 @@ Zie [gebeurtenis-handlers](event-handlers.md) voor meer informatie over de mogel
 * [Azure Functions](event-handlers.md#azure-functions)
 * [Event Hubs](event-handlers.md#event-hubs)
 * [Hybride verbindingen](event-handlers.md#hybrid-connections)
-* [Logic Apps](event-handlers.md#logic-apps)
+* [Logische apps](event-handlers.md#logic-apps)
 * [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Queue Storage](event-handlers.md#queue-storage)
-* [Service Bus](event-handlers.md#service-bus-queue-preview) (preview-versie)
+* [Service Bus](event-handlers.md#service-bus-queue)
 * [WebHooks](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Concepten
@@ -100,9 +100,9 @@ Event Grid verbindt gegevensbronnen en gebeurtenis-handlers. Gebruik Event Grid 
 
 ![De automatisering van bewerkingen](./media/overview/Ops_automation.png)
 
-Met Event Grid kunt u sneller automatiseren en makkelijker beleid afdwingen. U kunt bijvoorbeeld met Event Grid een melding sturen naar Azure Automation wanneer er een virtuele machine of SQL-database wordt gemaakt. Gebruik de gebeurtenissen om automatisch te controleren of serviceconfiguraties compatibel zijn, metagegevens aan te bieden aan tools voor bewerkingen, virtuele machines te taggen of werkitems te archiveren.
+Met Event Grid kunt u sneller automatiseren en gemakkelijker beleid afdwingen. U kunt bijvoorbeeld met Event Grid een melding sturen naar Azure Automation wanneer er een virtuele machine of SQL-database wordt gemaakt. Gebruik de gebeurtenissen om automatisch te controleren of serviceconfiguraties compatibel zijn, metagegevens aan te bieden aan tools voor bewerkingen, virtuele machines te taggen of werkitems te archiveren.
 
-### <a name="application-integration"></a>Integratie van applicaties
+### <a name="application-integration"></a>Integratie van toepassingen
 
 ![Integratie van toepassingen met Azure](./media/overview/app_integration.png)
 

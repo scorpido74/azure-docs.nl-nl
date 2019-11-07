@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8cc75fde348d070a19d1987d1403c63e8e6d2278
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: c2aa393f04a8db470dd8b739c0ed003477df0221
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286631"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615421"
 ---
 # <a name="azure-delegated-resource-management"></a>Meer informatie over gedelegeerd resourcebeheer
 
@@ -23,7 +23,7 @@ Azure delegated resource management is een van de belangrijkste onderdelen van A
 Met het gedelegeerde resource beheer van Azure kunt u resources van de ene Tenant naar een andere Tenant maken. Hierdoor kunnen geautoriseerde gebruikers in één Azure Active Directory (Azure AD)-Tenant beheer bewerkingen uitvoeren in verschillende Azure AD-tenants die deel uitmaken van hun klanten. Service providers kunnen zich aanmelden bij hun eigen Azure AD-Tenant en hebben toestemming om te werken in gedelegeerde klant abonnementen en resource groepen. Hierdoor kunnen ze beheer bewerkingen uitvoeren namens hun klanten, zonder dat ze zich hoeven aan te melden bij elke afzonderlijke klant Tenant.
 
 > [!NOTE]
-> Azure delegated resource management kan ook worden gebruikt binnen een onderneming met meerdere Azure AD-tenants, om het beheer van meerdere tenants te vereenvoudigen.
+> Azure delegated resource management kan ook worden gebruikt [binnen een onderneming met meerdere Azure AD-tenants](enterprise.md) , om het beheer van meerdere tenants te vereenvoudigen.
 
 Met Azure delegated resource management kunnen geautoriseerde gebruikers rechtstreeks in de context van een klant abonnement werken zonder dat ze een account in de Tenant van de klant hebben of mede-eigenaar zijn van de Tenant van de klant. Ze kunnen ook [alle gedelegeerde klant abonnementen weer geven en beheren op de pagina nieuwe **mijn klanten** ](../how-to/view-manage-customers.md) in de Azure Portal.
 
