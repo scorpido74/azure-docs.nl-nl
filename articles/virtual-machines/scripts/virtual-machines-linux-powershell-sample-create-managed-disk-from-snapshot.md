@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 75a84bb3fe5cd2f090c440f6e6a7e9df2381e209
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: be763f2df9352cafaedcd5c80a60c48e919d3f1c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299389"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749940"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>Een beheerde schijf maken met PowerShell op basis van een momentopname
 
@@ -27,7 +27,7 @@ Met dit script maakt u een beheerde schijf op basis van een momentopname. Gebrui
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -35,7 +35,7 @@ Met dit script maakt u een beheerde schijf op basis van een momentopname. Gebrui
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten om een beheerde schijf te maken op basis van een momentopname. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten om een beheerde schijf te maken op basis van een momentopname. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
