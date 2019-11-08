@@ -1,5 +1,5 @@
 ---
-title: Open bare eind punten van beveiligd beheerd exemplaar-Azure SQL Database beheerd exemplaar
+title: Open bare eind punten voor beveiligde beheerde exemplaren
 description: Open bare eind punten veilig gebruiken in azure met een beheerd exemplaar
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: 3d97eb16ee2a8b3203b187dca7b2a17974473098
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6dfeab3530445f8f9a102f47039d15b04fdf134a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687944"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821743"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Een Azure SQL Database beheerd exemplaar veilig met open bare eind punten gebruiken
 

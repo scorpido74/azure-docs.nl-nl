@@ -1,6 +1,6 @@
 ---
 title: Een echte apparaat toevoegen aan een Azure IoT Central-toepassing | Microsoft Docs
-description: Als operator kunt u een nieuw apparaat toevoegen aan uw Azure IoT Central-toepassing.
+description: Meer informatie over het toevoegen en configureren van een echt apparaat in uw Azure IoT Central-toepassing. U kunt ook meer te weten komen over de code in uw echte apparaat.
 author: sandeeppujar
 ms.author: sandeepu
 ms.date: 08/23/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 1f7afde7a5c4f3553cde40e4b179d056b8caee9b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fce5be4d059d7b3698f1e76a4ec6ff46c4ce3c0b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956206"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824614"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Zelfstudie: een nieuw apparaat toevoegen aan uw Azure IoT Central-toepassing
 
@@ -344,7 +344,7 @@ U kunt nu de client code uitvoeren en zien hoe deze communiceert met uw IoT Cent
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="nextstepaction"]
 > * Een nieuw echt apparaat toevoegen

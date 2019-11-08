@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: ccab7e59eaa925df4ba46447cef458111dc7e60a
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c4f51adbcaa5e5b750169f53a1333544365fd4f3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869571"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825502"
 ---
 # <a name="marketplace-metering-service-apis---faq"></a>Service-API's voor Marketplace-meting - Veelgestelde vragen
 
@@ -47,7 +48,7 @@ Een gebruiks gebeurtenis die wordt verzonden naar het Marketplace-platform wordt
 
 ### <a name="can-you-get-a-list-of-all-saas-subscriptions-including-active-and-unsubscribed-subscriptions"></a>Kunt u een lijst met alle SaaS-abonnementen, waaronder actieve en niet-geabonneerde abonnementen, ophalen?
 
-Ja, wanneer u de `GET /saas/subscriptions` API aanroept, bevat een lijst met alle SaaS-abonnementen. In het veld Status in het antwoord voor elk SaaS-abonnement wordt vastgelegd of het abonnement actief of afgemeld is. De aanroep naar List-abonnementen retourneert Maxi maal 100 abonnementen op het moment.
+Ja, wanneer u de API van `GET /saas/subscriptions` aanroept, bevat een lijst met alle SaaS-abonnementen. In het veld Status in het antwoord voor elk SaaS-abonnement wordt vastgelegd of het abonnement actief of afgemeld is. De aanroep naar List-abonnementen retourneert Maxi maal 100 abonnementen op het moment.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,42 +1,43 @@
 ---
 title: Marketplace-aanbiedingen publiceren | Azure Marketplace
-description: Publiceren van aanbiedingen op Azure en AppSource marktplaatsen, met behulp van de Cloud Partner-Portal
+description: Aanbiedingen publiceren op de Azure-en AppSource-markt plaatsen met behulp van de Cloud Partner-portal
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/12/2019
 ms.author: pabutler
-ms.openlocfilehash: b0121be4aecffe46c9440e62372e17ac7993163c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e77f0994f604f3a7365f1ed1ddb9191a2510883a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943524"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826745"
 ---
-# <a name="publish-azure-marketplace-and-appsource-offers"></a>Azure Marketplace en AppSource aanbiedingen publiceren
+# <a name="publish-azure-marketplace-and-appsource-offers"></a>Azure Marketplace-en AppSource-aanbiedingen publiceren
 
-Nadat u alle details van de aanbieding hebt ingevuld, is het tijd om uw aanbieding publiceren, en neem deze 'live' op Azure Marketplace. Er zijn een aantal fasen doorlopen van de aanbieding. Zorg ervoor dat zowel uw marketinginhoud en uw technische zaken die voldoen aan de kwaliteitsvereisten, Azure Certified en live gaan op de website.  Het volgende diagram illustreert het publicatieproces algemene aanbieding.  Dit proces verschilt enigszins tussen de verschillende typen.
+Zodra u alle details van de aanbieding hebt ingevuld, is het tijd om uw aanbieding te publiceren en live op Azure Marketplace te zetten. Er zijn enkele fasen die de aanbieding doorloopt. Zorg ervoor dat zowel uw marketing inhoud als uw technische middelen voldoen aan de kwaliteits vereisten, om Azure Certified te zijn en live te gaan op de website.  Het volgende diagram illustreert het publicatie proces voor algemene aanbiedingen.  Dit proces verschilt enigszins tussen de verschillende typen aanbiedingen.
 
-![algemene werkstroom voor het publiceren van de aanbieding](./media/publish-flow.png)
-
-
-## <a name="publishing-process"></a>Publicatieproces
-
-Gebruik de volgende stappen voor het publiceren van uw aanbieding.
-
-1. Klik op **publiceren** onder de **Editor** tab om het publicatieproces te starten.
-2. Onder de **Status** tabblad ziet u de **Publishing stappen** in stroomdiagram vorm.  Dit formulier ook geeft de huidige status van uw aanbieding en gemelde problemen.
-3. Als u controleren of alles er goed uitziet en goed werkt in de Preview-versie, bent u klaar om live te gaan. Klik op **Go Live** onder de **Status** tabblad en Microsoft gaat uw aanbieding in productie en op de juiste marketplace. Normaal gesproken go live duurt enkele uren.
-
-Op enig moment gedurende het publicatieproces, kunt u ook Meld u aan en klikt u op de **alle biedt** tabblad om de meest recente status voor het gebruik van uw aanbiedingen. U kunt op rechtstreeks op de status van uw aanbieding en bekijk de details voor waar uw aanbieding in het publicatieproces is.
+![algemene stroom voor het publiceren van aanbiedingen](./media/publish-flow.png)
 
 
-## <a name="canceling-the-publishing-request"></a>Het publicatieverzoek annuleren
+## <a name="publishing-process"></a>Publicatie proces
 
-U kunt start het proces van de publicatie en een nodig voor het annuleren van uw aanvraag. U kunt alleen een aanvraag voor publicatie annuleren nadat de aanvraag publiceren bereikt de *Publisher Afmelden* stap. Als u wilt annuleren, klikt u op **publiceren annuleren**. Hiermee stelt u de publicatiestatus op stap 1 en als u wilt publiceren, moet u klikken op **publiceren** en volg de stappen in de **Status** tabblad.
+Gebruik de volgende stappen om uw aanbieding te publiceren.
+
+1. Klik op **publiceren** onder het tabblad **Editor** om het publicatie proces te starten.
+2. Op het tabblad **status** ziet u de **publicatie stappen** in stroom diagram.  Dit formulier bevat ook de huidige status van uw aanbieding en er zijn problemen gerapporteerd.
+3. Nadat u hebt gecontroleerd of alles juist is en goed werkt in de preview-versie, bent u klaar om live te gaan. Klik op **Live go** op het tabblad **status** en micro soft levert uw aanbod voor productie en op de juiste Marketplace. Normaal gesp roken duurt het enkele uren.
+
+Op elk moment in het publicatie proces kunt u zich ook aanmelden en op het tabblad **alle aanbiedingen** klikken om de meest recente status voor uw aanbiedingen te bekijken. U kunt direct op de status van uw aanbieding klikken en de Details bekijken van de plaats waar uw aanbieding in het publicatie proces staat.
+
+
+## <a name="canceling-the-publishing-request"></a>De publicatie aanvraag annuleren
+
+U kunt het publicatie proces starten en u moet uw aanvraag annuleren. U kunt een publicatie aanvraag alleen annuleren als de publicatie aanvraag de *Publisher-afmeldings* stap heeft bereikt. Klik op **Publiceren annuleren**om te annuleren. De publicatie status wordt opnieuw ingesteld op stap 1 en u moet opnieuw publiceren op **publiceren** en de stappen op het tabblad **status** volgen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Tijdens het publicatieproces, dit is handig voor het bewaken van de [status van het voorstel](./cpp-view-status-offer.md) totdat de aanbieding live meteen. 
+Tijdens het publicatie proces is het handig om de status van het [aanbod](./cpp-view-status-offer.md) te controleren totdat de aanbieding live gaat. 

@@ -1,22 +1,22 @@
 ---
-title: Data base migreren van SQL Server-exemplaar naar door Azure SQL Database beheerd exemplaar
+title: Migreren van SQL Server naar een beheerd exemplaar
 description: Meer informatie over het migreren van een Data Base van SQL Server-exemplaar naar een door Azure SQL Database beheerd exemplaar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: migration
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 228b22d9d283fe8c23cbf7a82036b7f3782cbf25
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 802dfa7e3b2d0b9deac957662ac1e7604d085fd9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73688006"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828079"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migratie van SQL Server naar Azure SQL Database beheerde instantie
 
@@ -68,7 +68,7 @@ De basis lijn voor prestaties is een set para meters zoals gemiddeld/Maxi maal C
 Enkele van de para meters die u moet meten op uw SQL Server-exemplaar zijn: 
 - [Controleer het CPU-gebruik op uw SQL Server-exemplaar](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) en noteer het gemiddelde en maximum CPU-gebruik.
 - [Controleer het geheugen gebruik op uw SQL Server-exemplaar](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) en bepaal de hoeveelheid geheugen die wordt gebruikt door verschillende onderdelen, zoals de buffer groep, de plannings cache, de column-Store-groep, [in-Memory OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017), enzovoort. Bovendien moet u de gemiddelde en piek waarden voor het prestatie meter item page Life verwachting geheugen vinden.
-- Controleer het gebruik van de schijf-i/o op het bron SQL Server exemplaar met de [sys. DM _io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) -weer gave of [prestatie meter items](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage).
+- Controleer het gebruik van de schijf-i/o op de bron SQL Server instantie met [sys. dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) -weer gave of [prestatie meter items](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage).
 - Controleer de werk belasting-en query prestaties of uw SQL Server-exemplaar door dynamische beheer weergaven of query Store te controleren als u migreert van SQL Server 2016 + versie. Bepaal de gemiddelde duur en het CPU-gebruik van de belangrijkste query's in uw workload om ze te vergelijken met de query's die worden uitgevoerd op het beheerde exemplaar.
 
 > [!Note]

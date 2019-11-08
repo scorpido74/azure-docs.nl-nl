@@ -7,13 +7,13 @@ ms.service: logic-apps
 ms.topic: include
 ms.author: estfan
 ms.custom: include file
-ms.date: 05/15/2018
-ms.openlocfilehash: d60d7727e0674298fa6da7e7330221318da23efd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/08/2019
+ms.openlocfilehash: 0be29f6f541aa58e57eb665ebaf29e35f42865e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161661"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826327"
 ---
 * Als u Azure SQL Database gebruikt, volgt u de stappen onder [verbinding maken met Azure SQL database](#connect-azure-sql-db).
 
@@ -44,7 +44,9 @@ Wanneer de SQL-trigger of actie u vraagt om verbindings gegevens, voert u de vol
 
 ### <a name="connect-to-sql-server"></a>Verbinding maken met SQL Server
 
-Wanneer de SQL-trigger of actie u vraagt om verbindings gegevens, voert u de volgende stappen uit om zowel triggers als acties te gebruiken. Voordat u begint, moet u er echter voor zorgen dat u [uw on-premises gegevens gateway](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)al hebt ingesteld. Anders wordt uw gateway niet weer gegeven in de lijst met gateways wanneer u de verbinding maakt.
+Wanneer de SQL-trigger of actie u vraagt om verbindings gegevens, voert u de volgende stappen uit om zowel triggers als acties te gebruiken. Voor scenario's waarbij u de [on-premises gegevens gateway](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-install) op een lokale computer installeert en [de Azure data gateway-resource maakt](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection), moet u eerst deze vereisten volt ooien. Anders wordt uw gateway bron niet weer gegeven in de lijst met gateways wanneer u de verbinding maakt.
+
+Als u Windows-verificatie wilt gebruiken met de SQL Server-connector in een [Integration service Environment (ISE)](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview), gebruikt u ook de niet-ISE-versie van de connector en de on-premises gegevens gateway. De ISE-label versie biedt geen ondersteuning voor Windows-verificatie.
 
 1. Maak voor de **verbindings naam**een naam voor de verbinding.
 

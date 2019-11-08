@@ -1,5 +1,5 @@
 ---
-title: 'Een back-up terugzetten naar Azure SQL Database beheerde instantie '
+title: Een back-up naar een beheerd exemplaar herstellen
 description: Herstel een back-up van de database voor een beheerd exemplaar voor Azure SQL Database met behulp van SSMS.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: ce112628c94c235b028331db5c37ba2b56458044
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 37f7366d6622356017e458fb8f893b0be0851335
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73688049"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825697"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Snelstartgids: een Data Base herstellen naar een beheerd exemplaar
 
@@ -86,10 +86,10 @@ Volg in SSMS deze stappen om de Wide World Importers-database te herstellen naar
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-7. Wanneer de herstel bewerking is voltooid, bekijkt u de data base in Objectverkenner. U kunt controleren of het terugzetten van de data base is voltooid met behulp van de [sys. DM _operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) -weer gave.
+7. Wanneer de herstel bewerking is voltooid, bekijkt u de data base in Objectverkenner. U kunt controleren of het terugzetten van de data base is voltooid met behulp van de [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) -weer gave.
 
 > [!NOTE]
-> De bewerking voor het terugzetten van de data base is asynchroon en genereerden. Mogelijk wordt er een fout SQL Server Management Studio als de verbinding wordt verbroken of een time-out verloopt. Azure SQL Database blijft de Data Base op de achtergrond herstellen, en u kunt de voortgang van de herstel bewerking volgen met de [sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) -en [sys. DM _operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) -weer gaven.
+> De bewerking voor het terugzetten van de data base is asynchroon en genereerden. Mogelijk wordt er een fout SQL Server Management Studio als de verbinding wordt verbroken of een time-out verloopt. Azure SQL Database blijft de Data Base op de achtergrond herstellen, en u kunt de voortgang van de herstel bewerking volgen met de weer gaven [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) en [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) .
 > In sommige fasen van het herstel proces ziet u een unieke id in plaats van de werkelijke database naam in de systeem weergaven. Meer informatie over [de verschillen in](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement)het gedrag van de `RESTORE`-instructie.
 
 ## <a name="next-steps"></a>Volgende stappen

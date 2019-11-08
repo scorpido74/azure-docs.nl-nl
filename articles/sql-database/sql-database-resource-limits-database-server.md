@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Server-Resource limieten
+title: Server Resource limieten
 description: In dit artikel vindt u een overzicht van de limieten voor de Azure SQL Database-Server bronnen voor afzonderlijke data bases en elastische Pools. Het bevat ook informatie over wat er gebeurt wanneer deze resource limieten worden bereikt of overschreden.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 04/18/2019
-ms.openlocfilehash: b358e69df1df579e91a9098c120c7e6b4e3f2ead
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 907fc89c0d9af01865037f650c407edd97e96645
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687495"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821144"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Resource limieten voor Azure SQL Database Server SQL Database
 
@@ -88,7 +88,7 @@ Wanneer er logboek records worden gegenereerd, wordt elke bewerking geëvalueerd
 
 De werkelijke generatie tarieven voor logboek registratie die tijdens de uitvoering zijn opgelegd, kunnen ook worden beïnvloed door de feedback mechanismen, waardoor de toegestane logboek tarieven tijdelijk worden verminderd zodat het systeem kan stabiliseren. Beheer van de ruimte van het logboek bestand, voor komen dat de logboek ruimte wordt gebruikt en de replicatie mechanismen voor beschikbaarheids groepen kunnen de algehele systeem limieten tijdelijk verlagen. 
 
-De verkeers vormgeving van de logboek frequentie wordt geoppereerd via de volgende wacht typen (beschikbaar in de [sys. DM _db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) dmv):
+De verkeers vormgeving van de logboek frequentie wordt geoppereerd via de volgende wacht typen (beschikbaar in de [sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) dmv):
 
 | Wacht type | Opmerkingen |
 | :--- | :--- |

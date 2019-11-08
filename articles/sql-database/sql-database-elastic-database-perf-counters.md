@@ -1,26 +1,26 @@
 ---
-title: Prestatie meter items maken om de prestaties van Shard-toewijzings beheer bij te houden
+title: Prestatie meter items voor het bijhouden van Shard-toewijzings beheer
 description: Prestatie meter items ShardMapManager-klasse en gegevens afhankelijke route ring
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: seoapril2019
+ms.custom: seoapril2019, seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
-ms.openlocfilehash: ae7666113bd3a4bdb595a8312fdb25007d4ed2c3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: de481dad9dd39b301a21142c67b1baf2209f76e2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568671"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823902"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Prestatie meter items maken om de prestaties van Shard-toewijzings beheer bij te houden
 
-Prestatie meter items worden gebruikt voor het bijhouden van de prestaties van [gegevens afhankelijke route](sql-database-elastic-scale-data-dependent-routing.md) bewerkingen. Deze prestatie meter items zijn toegankelijk in de prestatie meter, onder de Elastic Database: Shard beheer categorie.
+Prestatie meter items worden gebruikt voor het bijhouden van de prestaties van [gegevens afhankelijke route](sql-database-elastic-scale-data-dependent-routing.md) bewerkingen. Deze items zijn toegankelijk in de prestatie meter, onder de categorie ' Elastic Database: Shard Management '.
 
 U kunt de prestaties van een [Shard-kaart beheer](sql-database-elastic-scale-shard-map-management.md)vastleggen, met name bij het gebruik van [gegevens afhankelijke route ring](sql-database-elastic-scale-data-dependent-routing.md). Tellers worden gemaakt met methoden van de klasse micro soft. Azure. SqlDatabase. ElasticScale. client.  
 
@@ -29,8 +29,8 @@ U kunt de prestaties van een [Shard-kaart beheer](sql-database-elastic-scale-sha
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De gebruiker moet lid zijn van de lokale groep Administrators op de computer die als host voor de toepassing fungeert om de prestatie categorie en prestatie meter items te maken.  
-* Als u een exemplaar van een prestatie meter item wilt maken en de tellers wilt bijwerken, moet de gebruiker lid zijn van de groep Administrators of **prestatie meter gebruikers** .
+* De gebruiker moet lid zijn van de lokale groep **Administrators** op de computer die als host voor de toepassing fungeert om de prestatie categorie en prestatie meter items te maken.  
+* Als u een exemplaar van een prestatie meter item wilt maken en de tellers wilt bijwerken, moet de gebruiker lid zijn van de groep **Administrators** of **prestatie meter gebruikers** .
 
 ## <a name="create-performance-category-and-counters"></a>Prestatie categorie en tellers maken
 
@@ -41,12 +41,12 @@ Als u de items wilt maken, roept u de methode CreatePerformanceCategoryAndCounte
 U kunt [Dit](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) Power shell-script ook gebruiken om de-methode uit te voeren.
 Met de-methode worden de volgende prestatie meter items gemaakt:  
 
-* **Toewijzingen in cache**: Het aantal toewijzingen in de cache voor de Shard-kaart.
-* **DDR-bewerkingen per seconde**: Frequentie van gegevens afhankelijke routerings bewerkingen voor de Shard-kaart. Dit item wordt bijgewerkt wanneer een aanroep van [OpenConnectionForKey ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) resulteert in een geslaagde verbinding met de doel-Shard.
-* **Treffers in cache voor toewijzingen per seconde**: Verhouding van geslaagde cache opzoek bewerkingen voor toewijzingen in de Shard-toewijzing.
-* **Missers in de cache voor het opzoeken van toewijzingen per seconde**: Verhouding van mislukte opzoek bewerkingen in de cache voor toewijzingen in de Shard-toewijzing.
-* **Toewijzingen toegevoegd of bijgewerkt in cache per seconde**: De snelheid waarmee toewijzingen worden toegevoegd of bijgewerkt in de cache voor de Shard-toewijzing.
-* **Toewijzingen verwijderd uit cache/SEC**: De snelheid waarmee toewijzingen worden verwijderd uit de cache voor de Shard-kaart.
+* **Toewijzingen in de cache**: het aantal toewijzingen in de cache voor de Shard-kaart.
+* **DDR-bewerkingen per seconde**: frequentie van gegevens afhankelijke route ring bewerkingen voor de Shard-kaart. Dit item wordt bijgewerkt wanneer een aanroep van [OpenConnectionForKey ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) resulteert in een geslaagde verbinding met de doel-Shard.
+* **Treffers voor het opzoeken van de opzoek cache per seconde**: frequentie van geslaagde cache opzoek bewerkingen voor toewijzingen in de Shard-toewijzing.
+* Missers in de cache voor het opzoeken van de **toewijzingen per seconde**: de frequentie van mislukte opzoek bewerkingen in de cache voor toewijzingen in de Shard-toewijzing.
+* **Toewijzingen die zijn toegevoegd of bijgewerkt in de cache per seconde**: de snelheid waarmee toewijzingen worden toegevoegd of bijgewerkt in de cache voor de Shard-toewijzing.
+* **Toewijzingen verwijderd uit cache/SEC**: snelheid waarmee toewijzingen worden verwijderd uit de cache voor de Shard-toewijzing.
 
 Prestatie meter items worden gemaakt voor elke Shard-kaart in de cache per proces.  
 

@@ -1,5 +1,5 @@
 ---
-title: Werken met JSON-gegevens in Azure SQL Database
+title: Werken met JSON-gegevens
 description: Met Azure SQL Database kunt u gegevens in de JavaScript Object Notation (JSON)-notatie parseren, opvragen en opmaken.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 01/15/2019
-ms.openlocfilehash: 2fe760e3792b5540b18946fd9dbcc5d571b50ee9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689655"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819942"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Aan de slag met JSON-functies in Azure SQL Database
 Met Azure SQL Database kunt u gegevens parseren en opvragen die worden weer gegeven in de indeling van JavaScript Object Notation [(JSON)](https://www.json.org/) en uw relationele gegevens exporteren als JSON-tekst. De volgende JSON-scenario's zijn beschikbaar in Azure SQL Database:
@@ -141,9 +141,9 @@ set Data = JSON_MODIFY(Data, '$.Price', 60)
 where Id = 1
 ```
 
-De functie JSON_VALUE haalt een waarde op uit JSON-tekst die is opgeslagen in de gegevens kolom. Deze functie maakt gebruik van een Java script-soortgelijk pad om te verwijzen naar een waarde in JSON-tekst die moet worden geëxtraheerd. De geëxtraheerde waarde kan worden gebruikt in elk deel van een SQL-query.
+Met de functie JSON_VALUE wordt een waarde geëxtraheerd uit JSON-tekst die is opgeslagen in de gegevens kolom. Deze functie maakt gebruik van een Java script-soortgelijk pad om te verwijzen naar een waarde in JSON-tekst die moet worden geëxtraheerd. De geëxtraheerde waarde kan worden gebruikt in elk deel van een SQL-query.
 
-De functie JSON_QUERY is vergelijkbaar met JSON_VALUE. In tegens telling tot JSON_VALUE haalt deze functie een complex SubObject op, zoals matrices of objecten die in JSON-tekst zijn geplaatst.
+De functie JSON_QUERY is vergelijkbaar met JSON_VALUE. In tegens telling tot JSON_VALUE haalt deze functie complexe subobjecten op, zoals matrices of objecten die in JSON-tekst worden geplaatst.
 
 Met de functie JSON_MODIFY kunt u het pad opgeven van de waarde in de JSON-tekst die moet worden bijgewerkt, evenals een nieuwe waarde die de oude overschrijft. Op deze manier kunt u JSON-tekst eenvoudig bijwerken zonder de volledige structuur opnieuw te parseren.
 

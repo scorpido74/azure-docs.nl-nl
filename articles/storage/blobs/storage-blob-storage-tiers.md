@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 5ba2255cfe0d5c4220ec2215ac837649af1ba896
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4593ee875f98e2c9f2f9406f8b9d4146e06a573d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521183"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825448"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob-opslag: dynamische, koele en archief toegangs lagen
 
@@ -59,7 +59,7 @@ De laag voor coole toegang heeft lagere opslag kosten en hogere toegangs kosten 
 
 ## <a name="archive-access-tier"></a>Archive-toegangslaag
 
-De toegangs laag voor het archief heeft de laagste opslag kosten. Maar het heeft een hogere kosten voor het ophalen van gegevens vergeleken met de warme en coole lagen. Het ophalen van gegevens in de archief laag kan enkele uren duren. Gegevens moeten gedurende ten minste 180 dagen in de archief laag worden geplaatst of moeten worden onderhevig aan de kosten voor vroegtijdige verwijdering.
+De toegangs laag voor het archief heeft de laagste opslag kosten. Maar het heeft een hogere kosten voor het ophalen van gegevens vergeleken met de warme en coole lagen. Het ophalen van gegevens in de archief laag kan enkele uren duren. Gegevens moeten gedurende ten minste 180 dagen in de archief laag blijven of onderhevig zijn aan de kosten voor een vroege verwijdering.
 
 Hoewel een BLOB zich in archief opslag bevindt, zijn de BLOB-gegevens offline en kunnen ze niet worden gelezen, gekopieerd, overschreven of gewijzigd. U kunt geen moment opnamen maken van een BLOB in archief opslag. De BLOB-meta gegevens blijven echter online en beschikbaar, zodat u de BLOB en de bijbehorende eigenschappen kunt weer geven. De enige geldige bewerkingen voor blobs in archief zijn GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier en DeleteBlob.
 

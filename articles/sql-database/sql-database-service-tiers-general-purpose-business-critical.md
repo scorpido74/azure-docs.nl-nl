@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL Database-algemeen gebruik en bedrijfs kritiek '
+title: Ggeneral doel en bedrijfs kritiek
 description: In het artikel worden de algemene doel stellingen en bedrijfskritische service lagen in het op vCore gebaseerde inkoop model besproken.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/01/2019
-ms.openlocfilehash: c6af083c4b3d16fa695da0ccc968c90b5480b6c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 85b610969f9e5e85d014f89b90cfd862731aaf0c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687265"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821082"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Service lagen Azure SQL Database
 
@@ -78,7 +78,7 @@ De volgende factoren zijn van invloed op de hoeveelheid opslag die wordt gebruik
 > [!IMPORTANT]
 > Er worden kosten in rekening gebracht voor de totale opslag ruimte die is toegewezen voor MDF-en LDF-bestanden.
 
-Gebruik [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql)om de huidige totale grootte van uw MDF-en LDF-bestanden te controleren. Gebruik [sys. database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql)om de huidige grootte van de afzonderlijke MDF-en LDF-bestanden te bewaken.
+Gebruik [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql)om de huidige totale grootte van uw MDF-en LDF-bestanden te bewaken. Als u de huidige grootte van de afzonderlijke MDF-en LDF-bestanden wilt bewaken, gebruikt u [sys. database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql).
 
 > [!IMPORTANT]
 > In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.

@@ -1,5 +1,5 @@
 ---
-title: Batch verwerking gebruiken om de prestaties van Azure SQL Database-toepassingen te verbeteren
+title: Batch verwerking gebruiken om de prestaties van toepassingen te verbeteren
 description: In het onderwerp wordt beschreven hoe u met batch-database bewerkingen de snelheid en schaal baarheid van uw Azure SQL Database-toepassingen aanzienlijk verbetert. Hoewel deze batch technieken voor een SQL Server Data Base werken, is de focus van het artikel op Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 3d18f5b77d08a55bd06656a72cbc02c040b6f127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 175ba6b4e65b4a6e276dbfb586e210027a6cd9b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566252"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822422"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Batch verwerking gebruiken om de prestaties van SQL Database-toepassingen te verbeteren
 
@@ -124,7 +124,7 @@ In het vorige voor beeld ziet u dat u een lokale trans actie kunt toevoegen aan 
 
 Zie [lokale trans acties in ADO.net](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions)voor meer informatie over trans acties in ADO.net.
 
-### <a name="table-valued-parameters"></a>Tabelwaardeparameter
+### <a name="table-valued-parameters"></a>tabelwaardeparameter
 
 Para meters voor tabel waarden ondersteunen door de gebruiker gedefinieerde tabel typen als para meters in Transact-SQL-instructies, opgeslagen procedures en functies. Met deze batch techniek voor client zijde kunt u meerdere rijen met gegevens binnen de tabelwaardeparameter verzenden. Als u para meters met tabel waarden wilt gebruiken, moet u eerst een tabel type definiëren. Met de volgende Transact-SQL-instructie maakt u een tabel type met de naam **MyTableType**.
 
@@ -167,7 +167,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-In het vorige voor beeld voegt het **SqlCommand** -object rijen uit een tabelwaardeparameter,  **\@TestTvp**. Het eerder gemaakte **DataTable** -object wordt toegewezen aan deze para meter met de methode **SqlCommand. para meters. add** . Als u de invoeging in één gesprek inschakelt, neemt de prestaties aanzienlijk toe tijdens opeenvolgende invoegingen.
+In het vorige voor beeld voegt het object **SqlCommand** rijen uit een tabelwaardeparameter, **\@TestTvp**. Het eerder gemaakte **DataTable** -object wordt toegewezen aan deze para meter met de methode **SqlCommand. para meters. add** . Als u de invoeging in één gesprek inschakelt, neemt de prestaties aanzienlijk toe tijdens opeenvolgende invoegingen.
 
 Als u het vorige voor beeld verder wilt verbeteren, gebruikt u een opgeslagen procedure in plaats van een op tekst gebaseerde opdracht. Met de volgende Transact-SQL-opdracht maakt u een opgeslagen procedure die de **SimpleTestTableType** -para meter voor de tabel waarde gebruikt.
 
@@ -291,7 +291,7 @@ De volgende resultaten van ad hoc tests geven de prestaties van dit type instruc
 
 Deze benadering kan iets sneller zijn voor batches die minder dan 100 rijen zijn. Hoewel de verbetering klein is, is deze techniek een andere optie die goed kan werken in uw specifieke toepassings scenario.
 
-### <a name="dataadapter"></a>DataAdapter
+### <a name="dataadapter"></a>Data
 
 Met de klasse **Data adapter** kunt u een object **DataSet** wijzigen en vervolgens de wijzigingen verzenden als insert-, update-en delete-bewerkingen. Als u de **Data adapter** op deze manier gebruikt, is het belang rijk te weten dat afzonderlijke aanroepen voor elke afzonderlijke bewerking worden uitgevoerd. U kunt de prestaties verbeteren door de eigenschap **UpdateBatchSize** te gebruiken voor het aantal bewerkingen dat per keer moet worden ingebatcheerd. Zie [batch bewerkingen uitvoeren met behulp van data adapters](https://msdn.microsoft.com/library/aadf8fk2.aspx)voor meer informatie.
 
@@ -321,11 +321,11 @@ Afhankelijk van uw architectuur kan batch verwerking gebruikmaken van een balans
 
 Als gevolg van deze balans, moet u het type bewerkingen evalueren dat u batcheert. Batch is agressief (grotere batches en langere tijd Vensters) met gegevens die minder kritiek zijn.
 
-### <a name="batch-size"></a>Batchgrootte
+### <a name="batch-size"></a>Batch grootte
 
 In onze tests is het niet handig om grote batches te verbreken in kleinere segmenten. Dit leidt er vaak toe dat deze indeling langzamer presteert dan het verzenden van één grote batch. Denk bijvoorbeeld aan een scenario waarin u 1000 rijen wilt invoegen. In de volgende tabel ziet u hoe lang het duurt om de para meters met tabel waarden te gebruiken om 1000 rijen in te voegen in kleinere batches.
 
-| Batchgrootte | Iteraties | Tabelwaardeparameter (MS) |
+| Batch grootte | Iteraties | Tabelwaardeparameter (MS) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |
@@ -376,7 +376,7 @@ Als u parallelle uitvoering wilt gebruiken, kunt u het maximum aantal werkthread
 
 Typische richt lijnen voor de prestaties van de Data Base zijn ook van invloed op batch verwerking. Zo worden de prestaties voor tabellen met een grote primaire sleutel of een groot aantal niet-geclusterde indexen gereduceerd.
 
-Als de tabelwaardeparameter para meters een opgeslagen procedure gebruiken, kunt u de opdracht **set Count aan** aan het begin van de procedure gebruiken. Deze instructie onderdrukt het retour neren van het aantal beïnvloede rijen in de procedure. Bij onze tests had het gebruik van set- **AANTALARG** echter geen effect of verminderde prestaties. De test opgeslagen procedure is eenvoudig met één opdracht **Invoegen** uit de tabelwaardeparameter. Het is mogelijk dat complexere opgeslagen procedures van deze instructie profiteren. Maar stel dat het toevoegen **van set** -tellingen aan aan uw opgeslagen procedure automatisch betere prestaties verbetert. Als u wilt weten wat het effect is, test u uw opgeslagen procedure met en zonder de instructie **set Count on** .
+Als de tabelwaardeparameter para meters een opgeslagen procedure gebruiken, kunt u de opdracht **set Count aan** aan het begin van de procedure gebruiken. Deze instructie onderdrukt het retour neren van het aantal beïnvloede rijen in de procedure. Bij onze tests had het gebruik van set- **AANTALARG** echter geen effect of verminderde prestaties. De test opgeslagen procedure is eenvoudig met één opdracht **Invoegen** uit de tabelwaardeparameter. Het is mogelijk dat complexere opgeslagen procedures van deze instructie profiteren. Maar stel dat het toevoegen **van set-tellingen** aan aan uw opgeslagen procedure automatisch betere prestaties verbetert. Als u wilt weten wat het effect is, test u uw opgeslagen procedure met en zonder de instructie **set Count on** .
 
 ## <a name="batching-scenarios"></a>Scenario's voor batch verwerking
 
@@ -484,7 +484,7 @@ Als u deze buffer klasse wilt gebruiken, maakt de toepassing een statisch NavHis
 
 ### <a name="master-detail"></a>Hoofd Details
 
-Para meters met tabel waarden zijn handig voor eenvoudige INVOEG scenario's. Het kan echter lastiger zijn om batch toevoegingen te maken die meer dan een tabel omvatten. Het scenario ' hoofd/detail ' is een goed voor beeld. De hoofd tabel bevat de primaire entiteit. Een of meer detail tabellen bevatten meer gegevens over de entiteit. In dit scenario afdwingen refererende-sleutel relaties de relatie van gegevens met een unieke hoofd entiteit. Overweeg een vereenvoudigde versie van een PurchaseOrder-tabel en de bijbehorende OrderDetail-tabel. Met de volgende Transact-SQL wordt de PurchaseOrder-tabel gemaakt met vier kolommen: OrderID, order datum, KlantId en status.
+Para meters met tabel waarden zijn handig voor eenvoudige INVOEG scenario's. Het kan echter lastiger zijn om batch toevoegingen te maken die meer dan een tabel omvatten. Het scenario ' hoofd/detail ' is een goed voor beeld. De hoofd tabel bevat de primaire entiteit. Een of meer detail tabellen bevatten meer gegevens over de entiteit. In dit scenario afdwingen refererende-sleutel relaties de relatie van gegevens met een unieke hoofd entiteit. Overweeg een vereenvoudigde versie van een PurchaseOrder-tabel en de bijbehorende OrderDetail-tabel. Met de volgende Transact-SQL wordt de PurchaseOrder-tabel gemaakt met vier kolommen: OrderID, order date, KlantId en status.
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrder](
@@ -580,7 +580,7 @@ JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
 GO
 ```
 
-In dit voor beeld slaat de lokaal @IdentityLink gedefinieerde tabel de werkelijke waarden voor OrderID van de zojuist ingevoegde rijen. Deze order-id's verschillen van de tijdelijke waarden voor OrderID in de @orders para @details meters en tabelwaardeparameter. Daarom verbindt de @IdentityLink tabel vervolgens de waarden voor de OrderID van de @orders para meter naar de werkelijke waarden van de order-waarde voor de nieuwe rijen in de tabel PurchaseOrder. Na deze stap kan de @IdentityLink tabel de details van de order gemakkelijker invoegen met de huidige OrderID die voldoet aan de beperking van de refererende sleutel.
+In dit voor beeld slaat de lokaal gedefinieerde @IdentityLink tabel de werkelijke waarden van de order-waarde van de zojuist ingevoegde rijen. Deze order-id's verschillen van de tijdelijke waarden voor OrderID in de @orders en @details para meters met tabel waarden. Daarom verbindt de @IdentityLink-tabel vervolgens de waarden voor de OrderID van de para meter @orders met de werkelijke waarden van de order-waarde voor de nieuwe rijen in de tabel PurchaseOrder. Nadat deze stap is uitgevoerd, kan de @IdentityLink tabel de details van de order gemakkelijker invoegen met de huidige OrderID die voldoet aan de beperking van de refererende sleutel.
 
 Deze opgeslagen procedure kan worden gebruikt vanuit code of vanuit andere Transact-SQL-aanroepen. Zie de sectie para meters voor tabel waarden in dit artikel voor een code voorbeeld. In de volgende Transact-SQL wordt uitgelegd hoe u de sp_InsertOrdersBatch aanroept.
 
@@ -635,7 +635,7 @@ CREATE TYPE EmployeeTableType AS TABLE
 GO
 ```
 
-Maak vervolgens een opgeslagen procedure of schrijf code die gebruikmaakt van de instructie MERGe om de update uit te voeren en in te voegen. In het volgende voor beeld wordt de instructie merge gebruikt voor een tabelwaardeparameter @employees,, van het type EmployeeTableType. De inhoud van de @employees tabel wordt hier niet weer gegeven.
+Maak vervolgens een opgeslagen procedure of schrijf code die gebruikmaakt van de instructie MERGe om de update uit te voeren en in te voegen. In het volgende voor beeld wordt de instructie MERGe gebruikt voor een tabelwaardeparameter, @employees, van het type EmployeeTableType. De inhoud van de tabel @employees wordt hier niet weer gegeven.
 
 ```sql
 MERGE Employee AS target

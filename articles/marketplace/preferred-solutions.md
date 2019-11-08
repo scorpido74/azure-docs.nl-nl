@@ -1,19 +1,20 @@
 ---
-title: Azure Marketplace en AppSource voorkeur oplossingen
-description: Overzicht van gewenste oplossingen in de Marketplace en hoe ze worden geselecteerd
+title: Voorkeurs oplossingen van Azure Marketplace en AppSource
+description: Overzicht van voorkeurs oplossingen in Marketplace en hoe deze zijn geselecteerd
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: ellacroi
-ms.openlocfilehash: 225ed171599e3f822fc869c97a1c7d91f9107b1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c481d7781ff35623655b472dbcfae6d50ada40a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779797"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827830"
 ---
-# <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Gewenste oplossingen in Azure Marketplace en AppSource
+# <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Aanbevolen oplossingen in azure Marketplace en AppSource
 
-Bij voorkeur een Microsoft-oplossing is een cloudtoepassing geselecteerd voor de kwaliteit, prestaties en kunnen de klantbehoeften adres in een bepaalde industrie verticale of oplossing. Een team van Microsoft-experts valideert oplossingen van partners met specifieke bewezen competenties en mogelijkheden. Deze oplossingen worden vermeld in onze cloud-marketplace-storefronts, Azure Marketplace en AppSource, evenals in Azure portal. Gewenste oplossingen in AppSource kunnen worden gedetecteerd door de bedrijfstak verticalen. Gewenste oplossingen op Azure Marketplace en de Azure-portal kunnen worden gevonden in de Oplossingscategorieën horizontaal.
+Een micro soft-voorkeurs oplossing is een Cloud toepassing die is geselecteerd voor de kwaliteit, de prestaties en de mogelijkheid om klant behoeften in een bepaalde branche verticaal of oplossings gebied aan te pakken. Een team van micro soft-experts valideert oplossingen van partners met specifieke bewezen vaardig heden en mogelijkheden. Deze oplossingen worden aanbevolen in onze Cloud marktplaatsen, Azure Marketplace en AppSource, maar ook in de Azure Portal. De aanbevolen oplossingen op AppSource kunnen worden gedetecteerd door branche verticaal. De aanbevolen oplossingen op Azure Marketplace en de Azure Portal kunnen worden gedetecteerd in horizontale oplossings categorieën.

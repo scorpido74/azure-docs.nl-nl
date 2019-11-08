@@ -1,5 +1,5 @@
 ---
-title: 'Verbinding maken tussen client-VM-Azure SQL Database beheerd exemplaar '
+title: VIRTUELE client-beheerde instantie verbinden
 description: Verbinding maken met een Azure SQL Database beheerd exemplaar met behulp van SQL Server Management Studio van een virtuele machine van Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: fb45df869bc9ecbe6584837894844c29bafa6223
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a455607b1459ebc9e37b1df70b454feea76d1f2f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689388"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822779"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Snelstartgids: Azure VM configureren om verbinding te maken met een door Azure SQL Database beheerd exemplaar
 
@@ -46,7 +46,7 @@ Met de volgende stappen maakt u een nieuw subnet in het Managed instance VNet, z
 
    | Instelling| Voorgestelde waarde | Beschrijving |
    | ---------------- | ----------------- | ----------- |
-   | **Naam** | Een geldige naam|Zie [Naming conventions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Naamgevingsconventies) voor geldige namen.|
+   | **Naam** | Een geldige naam|Zie [Naming conventions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) (Naamgevingsconventies) voor geldige namen.|
    | **Adresbereik (CIDR-blok)** | Een geldig bereik | De standaard waarde is geschikt voor deze Quick Start.|
    | **Netwerkbeveiligingsgroep** | Geen | De standaard waarde is geschikt voor deze Quick Start.|
    | **Routetabel** | Geen | De standaard waarde is geschikt voor deze Quick Start.|
@@ -78,10 +78,10 @@ De eenvoudigste manier om een virtuele client machine met alle benodigde hulppro
    | **Abonnement** | Een geldig abonnement | Moet een abonnement zijn waarin u gemachtigd bent om nieuwe resources te maken. |
    | **Resourcegroep** |De resource groep die u hebt opgegeven in de Snelstartgids voor een [beheerd exemplaar maken](sql-database-managed-instance-get-started.md) .|Deze resource groep moet het VNet zijn.|
    | **Locatie** | De locatie voor de resource groep | Deze waarde wordt ingevuld op basis van de geselecteerde resource groep. |
-   | **Naam van de virtuele machine**  | Een geldige naam | Zie [Naming conventions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Naamgevingsconventies) voor geldige namen.|
-   |**Gebruikers naam beheerder**|Een geldige gebruikers naam|Zie [Naming conventions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Naamgevingsconventies) voor geldige namen. Maak geen gebruik van 'serverbeheerder' aangezien dit een rol is die op serverniveau is gereserveerd.<br>U gebruikt deze gebruikers naam telkens wanneer u [verbinding maakt met de virtuele machine](#connect-to-virtual-machine).|
+   | **Naam van de virtuele machine**  | Een geldige naam | Zie [Naming conventions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) (Naamgevingsconventies) voor geldige namen.|
+   |**Gebruikers naam beheerder**|Een geldige gebruikers naam|Zie [Naming conventions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) (Naamgevingsconventies) voor geldige namen. Maak geen gebruik van 'serverbeheerder' aangezien dit een rol is die op serverniveau is gereserveerd.<br>U gebruikt deze gebruikers naam telkens wanneer u [verbinding maakt met de virtuele machine](#connect-to-virtual-machine).|
    |**Wachtwoord**|Een geldig wachtwoord|Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>U gebruikt dit wacht woord telkens wanneer u [verbinding maakt met de virtuele machine](#connect-to-virtual-machine).|
-   | **Grootte van virtuele machine** | Een geldige grootte | De standaard waarde in deze sjabloon van **Standard_B2s** is voldoende voor deze Quick Start. |
+   | **Grootte van virtuele machine** | Een geldige grootte | De standaard instelling in deze sjabloon van **Standard_B2s** is voldoende voor deze Quick Start. |
    | **Locatie**|[resourceGroup (). locatie].| Wijzig deze waarde niet. |
    | **Virtual Network naam**|Het virtuele netwerk waarin u het beheerde exemplaar hebt gemaakt.|
    | **Subnetnaam**|De naam van het subnet dat u in de vorige procedure hebt gemaakt| Kies niet het subnet waarin u het beheerde exemplaar hebt gemaakt.|

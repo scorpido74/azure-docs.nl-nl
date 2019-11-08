@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 27c21171c2a53cb739215dcae070b94c8610a490
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9331f13bd85d9df0d47f8fa9d0964974764691f7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880931"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815104"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault toevoegen aan uw web-app met behulp van Visual Studio Connected Services
 
@@ -33,7 +33,7 @@ Voor meer informatie over de wijzigingen die verbonden services in uw project ma
 
 Voordat u begint, moet u ervoor zorgen dat u bent aangemeld bij Visual Studio. Meld u aan met hetzelfde account dat u gebruikt voor uw Azure-abonnement. Open vervolgens een ASP.NET-4.7.1 of hoger of ASP.NET Core 2,0-webproject en voer de volgende stappen uit:
 
-1. In **Solution Explorer** kiest u **Connected Service** > **Toevoegen**.
+1. Klik in **Solution Explorer**met de rechter muisknop op het project waaraan u de sleutel kluis ondersteuning wilt toevoegen en kies > **verbonden service** **toevoegen** .
    De Connected Service-pagina wordt weergegeven met services die u aan uw project kunt toevoegen.
 1. Kies in het menu met beschik bare Services **beveiligde geheimen met Azure Key Vault**.
 
@@ -65,9 +65,9 @@ Nu kunt u toegang krijgen tot uw geheimen in code. De volgende stappen verschill
 
 ## <a name="access-your-secrets-in-code"></a>Toegang tot uw geheimen in code
 
-1. Klik in Solution Explorer met de rechter muisknop op uw project en selecteer **NuGet-pakketten beheren**. Zoek en installeer deze twee NuGet-pakketten op het tabblad **Bladeren** : [Micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) en [micro soft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)de sleutel kluis.
+1. Klik in Solution Explorer met de rechter muisknop op uw project en selecteer **NuGet-pakketten beheren**. Op het tabblad **Bladeren** zoekt en installeert u deze twee NuGet-pakketten: [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) en [micro soft. Azure. sleutel kluis](https://www.nuget.org/packages/Microsoft.Azure.KeyVault).
 
-1. Selecteer het `Program.cs` tabblad en vervang de programma klasse door de volgende code:
+1. Selecteer het tabblad `Program.cs` en vervang de programma klasse door de volgende code:
 
    ```csharp
     public class Program
@@ -99,8 +99,8 @@ Nu kunt u toegang krijgen tot uw geheimen in code. De volgende stappen verschill
     }
    ```
 
-1. Vervolgens opent `About.cshtml.cs` u het bestand en schrijft u de volgende code:
-   1. Voeg een verwijzing toe `Microsoft.Extensions.Configuration` naar met behulp van de volgende instructie:
+1. Open vervolgens `About.cshtml.cs` bestand en schrijf de volgende code:
+   1. Voeg een verwijzing naar `Microsoft.Extensions.Configuration` toe met behulp van de volgende instructie:
 
        ```csharp
        using Microsoft.Extensions.Configuration
@@ -115,7 +115,7 @@ Nu kunt u toegang krijgen tot uw geheimen in code. De volgende stappen verschill
        }
        ```
 
-   1. Werk de `OnGet` methode bij. Werk de waarde van de tijdelijke aanduiding die hier wordt weer gegeven bij met de geheime naam die u in de bovenstaande opdrachten hebt gemaakt.
+   1. Werk de `OnGet`-methode bij. Werk de waarde van de tijdelijke aanduiding die hier wordt weer gegeven bij met de geheime naam die u in de bovenstaande opdrachten hebt gemaakt.
 
        ```csharp
        public void OnGet()
@@ -143,17 +143,17 @@ In deze sectie worden de exacte wijzigingen in een ASP.NET-project geïdentifice
 
 Van invloed op het project bestand .NET-verwijzingen en NuGet-pakket verwijzingen.
 
-| type | Referentie |
+| Type | Naslaginformatie |
 | --- | --- |
-| NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
+| NuGet | Micro soft. AspNetCore. AzureKeyVault. HostingStartup |
 
 ### <a name="added-files-for-aspnet-core"></a>Toegevoegde bestanden voor ASP.NET Core
 
-- `ConnectedService.json`toegevoegd, waarmee een aantal informatie over de verbonden service provider, de versie en een koppeling naar de documentatie worden vastgelegd.
+- `ConnectedService.json` toegevoegd, waarmee gegevens over de verbonden service provider, de versie en een koppeling naar de documentatie worden vastgelegd.
 
 ### <a name="project-file-changes-for-aspnet-core"></a>Wijzigingen in het project bestand voor ASP.NET Core
 
-- Het ItemGroup en `ConnectedServices.json` het bestand van de verbonden services zijn toegevoegd.
+- Het ItemGroup-en `ConnectedServices.json`-bestand van de verbonden services zijn toegevoegd.
 
 ### <a name="launchsettingsjson-changes-for-aspnet-core"></a>wijzigingen in launchsettings. json voor ASP.NET Core
 
@@ -177,18 +177,18 @@ In deze sectie worden de exacte wijzigingen in een ASP.NET-project geïdentifice
 
 ### <a name="added-references-for-aspnet-framework"></a>Er zijn verwijzingen toegevoegd voor ASP.NET Framework
 
-Heeft betrekking op het project bestand .net `packages.config` -verwijzingen en (NuGet references).
+Heeft betrekking op het project bestand .NET-verwijzingen en `packages.config` (NuGet references).
 
-| type | Referentie |
+| Type | Naslaginformatie |
 | --- | --- |
-| .NET; NuGet | Microsoft.Azure.KeyVault |
-| .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |
-| .NET; NuGet | Microsoft.Rest.ClientRuntime |
-| .NET; NuGet | Microsoft.Rest.ClientRuntime.Azure |
+| NET NuGet | Micro soft. Azure. sleutel kluis |
+| NET NuGet | Micro soft. Azure. WebKey |
+| NET NuGet | Microsoft.Rest.ClientRuntime |
+| NET NuGet | Microsoft.Rest.ClientRuntime.Azure |
 
 ### <a name="added-files-for-aspnet-framework"></a>Bestanden toegevoegd voor ASP.NET Framework
 
-- `ConnectedService.json`toegevoegd, waarmee een aantal informatie over de verbonden service provider, de versie en een koppeling naar de documentatie wordt vastgelegd.
+- `ConnectedService.json` toegevoegd, waarmee gegevens over de verbonden service provider, de versie en een koppeling naar de documentatie worden vastgelegd.
 
 ### <a name="project-file-changes-for-aspnet-framework"></a>Wijzigingen in het project bestand voor ASP.NET Framework
 

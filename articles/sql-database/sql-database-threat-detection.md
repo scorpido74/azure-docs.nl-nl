@@ -1,5 +1,5 @@
 ---
-title: Geavanceerde beveiliging tegen bedreigingen configureren-Azure SQL Database
+title: Geavanceerde bedreigingen beveiliging configureren
 description: Geavanceerde bedreigings beveiliging detecteert afwijkende database activiteiten die potentiële beveiligings dreigingen voor de data base in één data base of elastische pool aangeven.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: 8a6d40f37dec3488009a702d52d6437cd345717b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8eb8e4fccc17fe31def671cf6e8edb19d867b244
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686955"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822510"
 ---
 # <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>Geavanceerde beveiliging tegen bedreigingen Azure SQL Database voor één of gegroepeerde Data bases
 

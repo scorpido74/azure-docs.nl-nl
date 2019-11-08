@@ -8,14 +8,14 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 663ef16511269dd61a6567d6570f3445b7da6447
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 030401623a61e7fcff40187f522309255482647f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804238"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824823"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-eind punten aanroepen met behulp van Azure Logic Apps
 
@@ -25,7 +25,7 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde ht
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* De URL voor het Swagger-bestand dat het doel-REST-eind punt beschrijft
+* De URL voor het Swagger-bestand (niet OpenAPI) dat het doel REST-eind punt beschrijft
 
   Normaal gesp roken moet het REST-eind punt voldoen aan deze criteria om de connector te laten werken:
 
@@ -45,7 +45,7 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde ht
 
 Deze ingebouwde trigger verzendt een HTTP-aanvraag naar een URL voor een Swagger-bestand waarin een REST API wordt beschreven en een antwoord wordt geretourneerd dat de inhoud van het bestand bevat.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
 
 1. Voer op de ontwerp functie in het zoekvak ' Swagger ' in als uw filter. Selecteer in de lijst **Triggers** de **http + Swagger-** trigger.
 
@@ -81,7 +81,7 @@ Deze ingebouwde trigger verzendt een HTTP-aanvraag naar een URL voor een Swagger
 
 Deze ingebouwde actie maakt een HTTP-aanvraag voor de URL voor het Swagger-bestand waarin een REST API wordt beschreven en retourneert een antwoord met daarin de inhoud van dat bestand.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
 
 1. Selecteer **nieuwe stap**onder de stap waar u de http + Swagger-actie wilt toevoegen.
 

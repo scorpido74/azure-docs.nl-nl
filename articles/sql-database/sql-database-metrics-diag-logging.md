@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database metrische gegevens en logboek registratie van diagnostische gegevens
+title: Registratie van metrische gegevens en diagnostische gegevens
 description: Meer informatie over het inschakelen van diagnostische gegevens in Azure SQL Database voor het opslaan van informatie over resource gebruik en statistieken over het uitvoeren van query's.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: 6c2040a223b7ec33b05ee3c8b3c65bad031aa3c2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d51acaff89c2a8589b6b524c112c11f9c4f18220
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687792"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821774"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrische gegevens en logboek registratie van diagnostische gegevens
 
@@ -261,7 +261,7 @@ Geef de resource-ID van de werk ruimte \<$WSID\> als een para meter bij het uitv
     PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
     ```
 
-   Vervang \<subID\> met de abonnements-ID, \<RG_NAME\> met de naam van de resource groep en \<WS_NAME\> met de naam van de werk ruimte.
+   Vervang \<subID\> door de abonnements-ID \<RG_NAME\> met de naam van de resource groep en \<WS_NAME\> met de naam van de werk ruimte.
 
 ### <a name="azure-cli"></a>Azure-CLI
 

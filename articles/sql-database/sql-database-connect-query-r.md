@@ -1,5 +1,5 @@
 ---
-title: R met Machine Learning Services gebruiken om een query uit te Azure SQL Database
+title: R met Machine Learning Services gebruiken om een query uit te zoeken
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: In dit artikel leest u hoe u een R-script gebruikt met Azure SQL Database Machine Learning Services om verbinding te maken met een Azure-SQL database en query's uit te voeren met behulp van Transact-SQL-instructies.
 services: sql-database
@@ -13,14 +13,14 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: ff38346a9b3bd14db51383c116240b030d3ee42a
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: a54b538247f81ea3bb0ea70a2af374158bd9e2ff
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514860"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826978"
 ---
-# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Quickstart: Met R met Machine Learning Services een query uitvoeren op een Azure SQL database (preview-versie)
+# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Snelstartgids: met R met Machine Learning Services een query uitvoeren op een Azure SQL database (preview-versie)
 
 In deze Quick start ziet u hoe u met behulp van [R](https://www.r-project.org/) met Machine Learning Services verbinding maakt met een Azure SQL database en hoe u Transact-SQL-instructies gebruikt om gegevens op te vragen. Machine Learning Services is een functie van Azure SQL Database die wordt gebruikt voor het uitvoeren van een Data Base-R-script. Zie [Azure SQL Database Machine Learning Services met R (preview)](sql-database-machine-learning-services-overview.md)voor meer informatie.
 
@@ -66,25 +66,25 @@ Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
 - De nieuwste [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). U kunt R-scripts uitvoeren met andere database beheer-of query hulpprogramma's, maar in deze Snelstartgids gebruikt u SSMS.
 
-## <a name="get-sql-server-connection-information"></a>SQL Server-verbindingsgegevens ophalen
+## <a name="get-sql-server-connection-information"></a>Verbindingsgegevens voor SQL Server ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 2. Navigeer naar de pagina **SQL-database** of **Met SQL beheerde exemplaren**.
 
-3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren**.
+3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erop en selecteert u het pictogram **Kopiëren**.
 
 ## <a name="create-code-to-query-your-sql-database"></a>Code maken om query's uit te voeren op uw SQL-database
 
 1. Open **SQL Server Management Studio** en maak verbinding met de SQL-database.
 
-   Als u hulp nodig hebt bij het [maken van verbinding, raadpleegt u Quick Start: SQL Server Management Studio gebruiken om verbinding te maken en query's uit te voeren op een Azure SQL database](sql-database-connect-query-ssms.md).
+   Als u hulp nodig hebt bij het verbinding maken, raadpleegt u [Quick Start: SQL Server Management Studio gebruiken om verbinding te maken met een Azure-SQL database](sql-database-connect-query-ssms.md).
 
-1. Geef het volledige R-script door aan de opgeslagen procedure [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
+1. Geef het volledige R-script door aan de opgeslagen [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) -procedure.
 
-   Het script wordt door gegeven via `@script` het argument. Alles binnen het `@script` argument moet een geldige R-code zijn.
+   Het script wordt door gegeven via het argument `@script`. Alles binnen het `@script` argument moet een geldige R-code zijn.
    
    >[!IMPORTANT]
    >Voor de code in dit voorbeeld worden de voorbeeldgegevens gebruikt van AdventureWorksLT, die u als bron kunt kiezen bij het maken van uw database. Als in uw database andere gegevens staan, kunt u tabellen uit uw eigen database gebruiken in de SELECT-query. 
@@ -101,7 +101,7 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
 
 ## <a name="run-the-code"></a>De code uitvoeren
 
-1. Voer de opgeslagen procedure [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) uit.
+1. Voer de opgeslagen [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) -procedure uit.
 
 1. Controleer of de bovenste 20 categorie/product rijen worden geretourneerd in het venster **berichten** .
 

@@ -1,5 +1,5 @@
 ---
-title: Een openbaar eind punt-Azure SQL Database beheerd exemplaar configureren
+title: Openbaar met een eind punt beheerd exemplaar configureren
 description: Meer informatie over het configureren van een openbaar eind punt voor een beheerd exemplaar
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 6f953e4c549619a30564bdb061e98761474174c3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a35176770a3100a288ad3da52cd89870e0110f63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687960"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828034"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Open bare eind punt in Azure SQL Database beheerde instantie configureren
 
@@ -90,7 +90,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. Ga terug naar de resource groep die uw beheerde exemplaar bevat. De naam van de **netwerk beveiligings groep** die hierboven wordt vermeld, wordt weer gegeven. Selecteer de naam om naar de configuratie pagina voor de netwerk beveiligings groep te gaan.
 
-1. Selecteer het tabblad **binnenkomende beveiligings regels** en voeg een regel **toe** met een hogere prioriteit dan de **deny_all_inbound** -regel met de volgende instellingen: </br> </br>
+1. Selecteer het tabblad **binnenkomende beveiligings regels** en voeg een regel **toe** met een hogere prioriteit dan de **deny_all_inbound** regel met de volgende instellingen: </br> </br>
 
     |Instelling  |Voorgestelde waarde  |Beschrijving  |
     |---------|---------|---------|
@@ -100,7 +100,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**Poortbereiken van doel**     |3342         |Doel poort van bereik tot 3342, wat het open bare TDS-eind punt van het beheerde exemplaar is |
     |**Protocol**     |TCP         |Beheerd exemplaar gebruikt TCP-protocol voor TDS |
     |**Actie**     |Toestaan         |Binnenkomend verkeer naar een beheerd exemplaar via het open bare eind punt toestaan |
-    |**Prioriteit**     |1300         |Zorg ervoor dat deze regel een hogere prioriteit heeft dan de **deny_all_inbound** -regel |
+    |**Prioriteit**     |1300         |Zorg ervoor dat deze regel een hogere prioriteit heeft dan de **deny_all_inbound** regel |
 
     ![Mi-NSG-rules. png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
 
@@ -110,7 +110,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>Het open bare endpoint van het beheerde exemplaar verkrijgen connection string
 
 1. Ga naar de configuratie pagina voor SQL Managed instance die is ingeschakeld voor openbaar eind punt. Selecteer het tabblad **verbindings reeksen** onder de configuratie- **instellingen** .
-1. Houd er rekening mee dat de hostnaam van het open bare eind punt de notatie < mi_name > bevat. **Public**. < dns_zone >. data base. Windows. net en de poort die voor de verbinding wordt gebruikt, is 3342.
+1. Houd er rekening mee dat de hostnaam van het open bare eind punt de indeling < mi_name > bevat. **Public**. < dns_zone >. data base. Windows. net en de poort die voor de verbinding wordt gebruikt, is 3342.
 
     ![Mi-Public-endpoint-Conn-string. png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

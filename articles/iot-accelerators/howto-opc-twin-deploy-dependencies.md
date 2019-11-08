@@ -1,6 +1,6 @@
 ---
 title: OPC-dubbele Cloud afhankelijkheden implementeren in azure | Microsoft Docs
-description: OPC-dubbele Azure-afhankelijkheden implementeren.
+description: In dit artikel wordt beschreven hoe u de OPC dubbele Azure-afhankelijkheden implementeert die nodig zijn om lokale ontwikkeling en fout opsporing uit te voeren.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: cb07899b51280cff8613d637640c0da23debbc8e
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 231d1efa02ec80e8ad56a8895d4262d774480111
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016516"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824100"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>Afhankelijkheden implementeren voor lokale ontwikkeling
 
@@ -38,7 +38,7 @@ In dit artikel wordt uitgelegd hoe u alleen de services van het Azure-platform i
 
 ## <a name="troubleshooting-deployment-failures"></a>Implementatie fouten oplossen
 
-### <a name="resource-group-name"></a>Resourcegroepnaam
+### <a name="resource-group-name"></a>Naam van de resourcegroep
 
 Zorg ervoor dat u een korte en eenvoudige naam voor de resource groep gebruikt.  De naam wordt ook gebruikt om resources te noemen, omdat deze moeten voldoen aan de vereisten voor resource naamgeving.  
 

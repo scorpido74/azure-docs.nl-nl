@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen over beheerde exemplaren van SQL Database
+title: Veelgestelde vragen over beheerdere exemplaren
 description: Veelgestelde vragen over SQL Database beheerde exemplaren
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 214b35cf5b56dcfc268ee26e8ca892b7814c2547
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 34ffcd63879920c3c744deb4cf0b28684081dc25
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73688110"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825736"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over SQL Database beheerde exemplaren
 

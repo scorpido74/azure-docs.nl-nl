@@ -1,5 +1,5 @@
 ---
-title: Een enkele of gegroepeerde Azure-SQL database exporteren naar een BACPAC-bestand
+title: Eén of gegroepeerde Data Base exporteren naar een BACPAC-bestand
 description: Een Azure-SQL database exporteren naar een BACPAC-bestand met behulp van de Azure Portal
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: f3f6071d42d77ffa07dd27080b1bc18d7bbc6952
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b96d2e69b757774afe177341caffe2f3cbf00e2b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690083"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823455"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Een Azure-SQL database exporteren naar een BACPAC-bestand
 
@@ -32,7 +32,7 @@ Wanneer u een Data Base voor archivering wilt exporteren of als u wilt overstapp
 
   - Uw reken grootte tijdelijk verhogen.
   - Stopt alle Lees-en schrijf activiteiten tijdens het exporteren.
-  - Gebruik een [geclusterde index](https://msdn.microsoft.com/library/ms190457.aspx) met niet-Null-waarden voor alle grote tabellen. Zonder geclusterde indexen kan een export mislukken als deze langer duurt dan 6-12 uur. Dit komt doordat de export service een tabel scan moet volt ooien om een volledige tabel te kunnen exporteren. Een goede manier om te bepalen of uw tabellen zijn geoptimaliseerd voor exporteren, is door **DBCC SHOW_STATISTICS** uit te voeren en ervoor te zorgen dat de *RANGE_HI_KEY* niet null is en dat de waarde van de eigenschap goed is gedistribueerd. Zie [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx)voor meer informatie.
+  - Gebruik een [geclusterde index](https://msdn.microsoft.com/library/ms190457.aspx) met niet-Null-waarden voor alle grote tabellen. Zonder geclusterde indexen kan een export mislukken als deze langer duurt dan 6-12 uur. Dit komt doordat de export service een tabel scan moet volt ooien om een volledige tabel te kunnen exporteren. Een goede manier om te bepalen of uw tabellen zijn geoptimaliseerd voor exporteren, is door **DBCC SHOW_STATISTICS** uit te voeren en ervoor te zorgen dat de *RANGE_HI_KEY* niet null is en dat de waarde van de tabel goed is gedistribueerd. Zie [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx)voor meer informatie.
 
 > [!NOTE]
 > BACPACs zijn niet bedoeld om te worden gebruikt voor back-up-en herstel bewerkingen. Azure SQL Database maakt automatisch back-ups voor elke gebruikers database. Zie [overzicht van bedrijfs continuïteit](sql-database-business-continuity.md) en [SQL database back-ups](sql-database-automated-backups.md)voor meer informatie.

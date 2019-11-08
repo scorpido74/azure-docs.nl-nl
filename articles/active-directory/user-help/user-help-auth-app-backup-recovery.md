@@ -1,5 +1,5 @@
 ---
-title: Back-ups maken en herstellen met Microsoft Authenticator-app-Azure Active Directory | Microsoft Docs
+title: Back-ups maken en herstellen met de Microsoft Authenticator-app-Azure AD
 description: Meer informatie over het maken van een back-up en het herstellen van uw account referenties met behulp van de app Microsoft Authenticator.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 08/22/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b4e45fbe6533832765e90e5cf244f0dcbcf0b72
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 2404dd443c1e3ede1d3ad5a81888e9f805edb810
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035132"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820263"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Back-ups maken en account referenties herstellen met de app Microsoft Authenticator
 
@@ -125,7 +125,7 @@ Er zijn een aantal redenen waarom uw back-up mogelijk niet beschikbaar is:
 
 Nu u een back-up hebt gemaakt en uw account referenties hebt hersteld naar uw nieuwe apparaat, kunt u de app Microsoft Authenticator blijven gebruiken om uw identiteit te verifiëren. Zie [Aanmelden bij uw accounts met behulp van de app Microsoft Authenticator](user-help-sign-in.md)voor meer informatie.
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="related-articles"></a>Verwante artikelen
 
 - [Wat is de Microsoft Authenticator-app?](user-help-auth-app-overview.md)
 

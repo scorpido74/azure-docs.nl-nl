@@ -1,6 +1,6 @@
 ---
 title: Chat IoT Central weer geven/verbergen in azure | Microsoft Docs
-description: Als gebruiker leert u hoe u chat kunt weer geven en verbergen.
+description: In dit artikel wordt beschreven hoe u chat kunt weer geven en verbergen in uw IoT Central-toepassing. U kunt live chat gebruiken om toegang te krijgen tot technische ondersteuning.
 author: v-krghan
 ms.author: v-krghan
 ms.date: 08/23/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8e1ad4f7f3f41d521b32ba5d92fa13c4f1c4ab9b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d861a5d1da6ebc9cedbe2dff764cd5b6e7dd04e1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952210"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827408"
 ---
 # <a name="toggle-live-chat"></a>Live chat in-/uitschakelen
 

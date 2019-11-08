@@ -1,22 +1,22 @@
 ---
-title: 'Snelstartgids: Azure Blob Storage-client bibliotheek voor Java SDK V8'
-description: Maak een opslagaccount en een container in object(Blob)-opslag. Gebruik vervolgens de Azure Storage-client bibliotheek voor Java SDK V8 om een BLOB te uploaden naar Azure Storage, een BLOB te downloaden en de blobs in een container weer te geven.
+title: 'Snelstartgids: Azure Blob Storage-client bibliotheek V8 voor Java'
+description: Maak een opslagaccount en een container in object(Blob)-opslag. Gebruik vervolgens de Azure Storage-client bibliotheek V8 voor Java om een BLOB te uploaden naar Azure Storage, een BLOB te downloaden en de blobs in een container weer te geven.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 10/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 404599ade960d43ef2cb86777fb41701ce96e11b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a6c4380e44d705e551bc96746a809c57aa02ac5b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609123"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825376"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-for-java-sdk-v8"></a>Snelstartgids: Azure Blob Storage-client bibliotheek voor Java SDK V8
+# <a name="quickstart-azure-blob-storage-client-library-v8-for-java"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V8 voor Java
 
-Ga aan de slag met de Azure Blob Storage-client bibliotheek voor Java. Azure Blob Storage is de object opslag oplossing van micro soft voor de Cloud. Volg de stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
+Ga aan de slag met de Azure Blob Storage-client bibliotheek V8 voor Java. Azure Blob Storage is de object opslag oplossing van micro soft voor de Cloud. Volg de stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
 
 Gebruik de Azure Blob Storage-client bibliotheek voor Java voor het volgende:
 

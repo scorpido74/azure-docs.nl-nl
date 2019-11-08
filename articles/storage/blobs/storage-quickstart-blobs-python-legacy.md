@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: een BLOB maken in Azure Blob-opslag met python'
-description: In deze snelstart maakt u een opslagaccount en een container in object(blob)-opslag. Vervolgens gebruikt u de opslagclientbibliotheek voor Python om een blob in Azure Storage te uploaden, een blob te downloaden en de blobs in een container te vermelden.
+title: 'Snelstartgids: Azure Blob Storage-client bibliotheek v 2.1 voor python'
+description: In deze snelstart maakt u een opslagaccount en een container in object(blob)-opslag. Vervolgens gebruikt u de Storage-client bibliotheek v 2.1 voor python om een BLOB te uploaden naar Azure Storage, een BLOB te downloaden en de blobs in een container weer te geven.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/11/2019
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 8a3f8b5f8944552c92ac5a1c1d5fb2eabffad2c9
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 606c7d1fd012052a22afeef906bbe9df4c63a76b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608741"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825284"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-in-azure-blob-storage-with-python"></a>Quick Start: blobs uploaden, downloaden en vermelden in Azure Blob-opslag met python
+# <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>Snelstartgids: Azure Blob Storage-client bibliotheek v 2.1 voor python
 
 In dit artikel gebruikt u python voor het uploaden, downloaden en weer geven van blok-blobs in een container in Azure Blob Storage. Blobs zijn simpelweg objecten die grote hoeveel heden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en gegevens archivering. Blobs in Azure Storage verschillen van bestands shares, schema's met minder tabellen en berichten wachtrijen.  Zie [Inleiding tot Azure Storage](/azure/storage/common/storage-introduction)voor meer informatie.
 
@@ -97,8 +97,8 @@ In het voorbeeld programma wordt een test bestand gemaakt in de map *documenten*
 
 1. Voordat u doorgaat, gaat u naar de map *documenten* en controleert u op de twee bestanden.
 
-    * *QuickStart_\<universele id\>*
-    * *QuickStart_\<Universele unieke id\>_DOWNLOADED*
+    * *QuickStart_\<Universele unieke id's\>*
+    * *QuickStart_\<Universele unieke id's\>_DOWNLOADED*
 
 1. Als u ze opent, ziet u dat ze hetzelfde zijn.
 
@@ -145,7 +145,7 @@ Blob-opslag ondersteunt blok-blobs, toevoeg-blobs en pagina-blobs. Blok-blobs ku
 
 Als u een bestand naar een blob wilt uploaden, hebt u het volledige bestandspad nodig. U verkrijgt dit door de naam van de map en de bestandsnaam op uw lokale schijf samen te voegen. Daarna kunt u het bestand met de methode `create_blob_from_path` uploaden naar het opgegeven pad. 
 
-Met de voorbeeld code wordt een lokaal bestand gemaakt dat door het systeem wordt gebruikt voor het uploaden en downloaden. Sla het bestand op dat door het systeem wordt geüpload als *full_path_to_file* en de naam van de BLOB als *local_file_name*. In dit voor beeld wordt het bestand geüpload naar de container met de naam `quickstartblobs`:
+Met de voorbeeld code wordt een lokaal bestand gemaakt dat door het systeem wordt gebruikt voor het uploaden en downloaden. het bestand wordt opgeslagen als *full_path_to_file* en de naam van de blob als *local_file_name*. In dit voor beeld wordt het bestand geüpload naar de container met de naam `quickstartblobs`:
 
 ```python
 # Create a file in Documents to test the upload and download.

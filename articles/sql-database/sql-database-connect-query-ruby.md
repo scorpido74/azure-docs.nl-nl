@@ -1,5 +1,5 @@
 ---
-title: Ruby gebruiken om een query uit te Azure SQL Database
+title: Ruby gebruiken om een query uit te zoeken
 description: In dit onderwerp ziet u hoe u Ruby gebruikt om een programma te maken dat is verbonden met een Azure SQL-database, en hoe u een query voor deze database uitvoert met behulp van Transact-SQL-instructies.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: ecfdfa8930858eb02e993688a3ea1a78d2d7fe5f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4bef55b049ee542efdb9d72d13fa196c989c75ec
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690902"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826930"
 ---
 # <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Snelstart: Ruby gebruiken om een query uit te voeren voor een Azure SQL-database
 

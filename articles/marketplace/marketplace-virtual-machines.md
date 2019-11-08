@@ -1,41 +1,42 @@
 ---
-title: Publicatiehandleiding voor voor Azure Marketplace Virtual Machine-aanbieding
-description: Dit artikel beschrijft de vereisten voor het publiceren van een virtuele machine en een gratis proefversie van de software te worden geïmplementeerd vanaf de Marketplace.
+title: De virtuele machine biedt een publicatie handleiding voor Azure Marketplace
+description: In dit artikel worden de vereisten beschreven voor het publiceren van een virtuele machine en een gratis proef versie van een software die vanuit Marketplace kan worden geïmplementeerd.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: ccb6fc9c522e8d05d0184fc5e248d070efb9921d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f2047501b6c57b2bb98ff7e3c56498417644324
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937727"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818981"
 ---
-# <a name="virtual-machine-offer-publishing-guide"></a>Publicatiehandleiding voor virtuele Machine-aanbieding
+# <a name="virtual-machine-offer-publishing-guide"></a>Publicatie handleiding voor de virtuele machine-aanbieding
 
-Installatiekopieën van virtuele machines vormen een van de manieren voor het publiceren van een oplossing op Azure Marketplace. Deze handleiding gebruiken om informatie over de systeemvereisten voor deze aanbieding. 
+Installatie kopieën van virtuele machines zijn een van de belangrijkste manieren om een oplossing te publiceren in azure Marketplace. Gebruik deze hand leiding om inzicht te krijgen in de vereisten voor deze aanbieding. 
 
-Dit zijn de transactie-aanbiedingen die zijn geïmplementeerd en worden gefactureerd via de Marketplace. De aanroep naar de actie die door een gebruiker is "Nu downloaden."
+Dit zijn transactie aanbiedingen die worden geïmplementeerd en gefactureerd via Marketplace. De aanroep van een actie die een gebruiker ziet is ' nu ophalen '.
 
 ## <a name="free-trial"></a>Gratis proefversie 
 
-U kunt ervoor zorgen dat gebruikers voor het testen van uw aanbieding door het openen van softwarelicenties beperkte termijn bij het gebruik van het factureringsmodel doen om uw eigen licentie (BYOL). Hieronder vindt u de vereisten voor het implementeren van deze aanbieding. 
+U kunt ervoor zorgen dat gebruikers uw aanbieding testen door gebruik te maken van beperkte termijn software licenties wanneer u het BYOL-facturerings model (uw eigen licentie) gebruikt. Hieronder vindt u de vereisten voor het implementeren van deze aanbieding. 
 
 |Vereisten  |Details  |
 |---------|---------|
-|Gratis proefperiode is afgelopen en evaluatiesoftware     |   Uw klanten kunnen uw app gratis uitproberen gedurende een beperkte periode. Opmerking moet een licentie of abonnement betalen voor uw aanbod, zijn uw klanten. Uw klanten zijn niet vereist om te betalen voor de onderliggende Microsoft eigen product of service. Alle opties voor proefversie worden geïmplementeerd naar uw Azure-abonnement. Hebt u enige controle van de kosten optimaliseren en het beheer. U kunt een gratis proefversie of interactieve demo. Ongeacht wat u kiest moet uw gratis proefversie bieden klanten een vooraf bepaalde hoeveelheid tijd om te proberen uw aanbieding zonder extra kosten.|
-|Eenvoudig kunnen worden geconfigureerd, kant-en-klare oplossing    |  Uw app moet zijn eenvoudig en snel te configureren en instellen.       |
-|Beschikbaarheid / uptime    |    Uw SaaS-app of -platform moet een uptime van ten minste 99,9% hebben.     |
-|Azure Active Directory     |    Uw aanbieding moet toestaan dat Azure Active Directory (Azure AD) voor federatieve eenmalige aanmelding (SSO) (Azure AD federatieve SSO) met toestemming ingeschakeld.     |
+|Gratis proef periode en proef ervaring     |   Uw klanten kunnen uw app gedurende een beperkte periode gratis uitproberen. Uw klanten zijn verplicht om licenties of abonnements kosten te betalen voor uw aanbieding. Uw klanten hoeven niet te betalen voor het onderliggende product of de onderhouds dienst van micro soft. Alle opties voor de proef versie worden geïmplementeerd in uw Azure-abonnement. U hebt uitsluitend de controle over de kosten optimalisatie en het beheer. U kunt kiezen voor een gratis proef versie of een interactieve demo. Wat u ook kiest, uw gratis proef versie moet klanten een vooraf ingestelde tijds duur bieden om uw aanbieding zonder extra kosten te kunnen proberen.|
+|Eenvoudig Configureer bare, kant-en-klare oplossing    |  Uw app moet eenvoudig zijn en snel worden geconfigureerd en ingesteld.       |
+|Beschik baarheid/uptime    |    Uw SaaS-app of-platform moet een uptime van ten minste 99,9% hebben.     |
+|Azure Active Directory     |    Uw aanbieding moet Azure Active Directory (Azure AD) federatieve eenmalige aanmelding (SSO) (eenmalige aanmelding) (Azure AD Federated SSO) toestaan waarvoor toestemming is ingeschakeld.     |
 
 ## <a name="test-drive"></a>Test Drive
 
-Een of meer virtuele machines via infrastructuur-as-a-service (IaaS) of software-as-a-service (SaaS)-apps te implementeren. Een voordeel van test drive publicatieoptie is de geautomatiseerde inrichting van een virtuele machine of de gehele oplossing onder leiding van een partner gehoste rondleiding. Een test uit biedt een evaluatie zonder extra kosten voor uw klant. De klant hoeft niet te worden van een bestaande Azure-klant contact opnemen met de proefversie. 
+U implementeert een of meer virtuele machines via Infrastructure-as-a-Service (IaaS) of SaaS-apps (Software-as-a-Service). Een voor deel van de test drive publicatie optie is de geautomatiseerde inrichting van een virtuele machine of volledige oplossing, onder geleid door een door een partner gehoste rond leiding. Een test drive biedt een evaluatie zonder extra kosten voor uw klant. Uw klant hoeft geen bestaande Azure-klant te zijn om te kunnen samen werken met de proef ervaring. 
 
-Neem contact op met ons op [amp testdrive](mailto:amp-testdrive@microsoft.com) aan de slag. 
+Neem contact met ons op op [amp-Testdrive](mailto:amp-testdrive@microsoft.com) om aan de slag te gaan. 
 
 |Vereisten  |Details |
 |---------|---------|
@@ -43,34 +44,34 @@ Neem contact op met ons op [amp testdrive](mailto:amp-testdrive@microsoft.com) a
 
 ## <a name="interactive-demo"></a>Interactieve demo
 
-U kunt een begeleide ervaring van uw oplossing opgeven voor uw klanten met behulp van een interactieve demonstratie. Het voordeel van interactieve demo optie publiceren is dat u een proefversie ervaring bieden zonder ingewikkelde inrichting van uw complexe oplossing. 
+U geeft een begeleide ervaring van uw oplossing aan uw klanten door gebruik te maken van een interactieve demonstratie. Het voor deel van interactieve demo-publicatie optie is dat u een proef ervaring hebt zonder gecompliceerde inrichting van uw complexe oplossing. 
 
-## <a name="virtual-machine-offer"></a>Virtuele Machine-aanbieding
+## <a name="virtual-machine-offer"></a>Aanbieding van de virtuele machine
 
-Het type van de aanbieding virtuele machine gebruiken wanneer u een virtueel apparaat voor het abonnement is gekoppeld aan uw klant implementeert. VM's zijn volledig ingeschakeld met behulp van betalen per gebruik of bring-your-own-license (BYOL)-licentiemodellen commerce. Microsoft als host fungeert voor de commercetransactie en uw klant namens u kosten in rekening gebracht. U profiteren van de voordelen van het gebruik van de gewenste betaling relatie tussen de klant en Microsoft, zoals een Enterprise-overeenkomsten.
+Gebruik het type virtuele machine-aanbieding wanneer u een virtueel apparaat implementeert op het abonnement dat is gekoppeld aan uw klant. Vm's zijn volledig geschikt voor het gebruik van BYOL-licentie modellen (betalen per gebruik of uw eigen licentie). Micro soft host de commerce trans actie en factureert uw klant namens u. U krijgt het voor deel van het gebruik van de voorkeurs betalings relatie tussen uw klant en micro soft, inclusief alle Enter prise-overeenkomsten.
 
 > [!NOTE]
-> Op dit moment kunnen de monetaire toezeggingen die zijn gekoppeld aan een Enterprise Agreement worden gebruikt voor het gebruik van uw virtuele machine van Azure, maar niet op basis van uw kosten voor softwarelicenties.  
+> Op dit moment kunnen de monetaire toezeg gingen die zijn gekoppeld aan een Enterprise Agreement, worden gebruikt voor het Azure-gebruik van uw virtuele machine, maar niet op basis van de kosten voor software licenties.  
 > 
 > [!NOTE]
-> U zijn kunt de detectie en implementatie van uw virtuele machine naar een specifieke set van klanten beperken door de installatiekopie van het publiceren en prijzen als een persoonlijke aanbieding. Persoonlijke aanbiedingen Ontgrendel de mogelijkheid voor u exclusieve aanbiedingen maken voor uw dichtstbijzijnde klanten en bieden van aangepaste software en de voorwaarden. De aangepaste voorwaarden kunnen u een verscheidenheid aan scenario's, waaronder deals onder leiding van een veld met speciale prijzen en voorwaarden, evenals vroege toegang tot beperkte versie van de software te markeren. Persoonlijke aanbiedingen inschakelen u kunt specifieke prijzen bieden of producten voor een beperkt aantal klanten door het maken van een nieuwe SKU met de gegevens.  
-> *   Voor meer informatie over het privé-aanbiedingen gaat u naar de persoonlijke aanbiedingen op Azure Marketplace-pagina te vinden op [azure.microsoft.com/blog/private-offers-on-azure-marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
+> U kunt de detectie en implementatie van uw virtuele machine beperken tot een specifieke set klanten door de installatie kopie en prijzen als een persoonlijke aanbieding te publiceren. Persoonlijke aanbiedingen bieden u de mogelijkheid om exclusieve aanbiedingen voor uw dichtstbijzijnde klanten te maken en om aangepaste software en voor waarden te leveren. Met de aangepaste voor waarden kunt u een groot aantal scenario's markeren, met inbegrip van veld LED-deals met gespecialiseerde prijzen en voor waarden, en vroegtijdige toegang tot beperkte release software. Met persoonlijke aanbiedingen kunt u specifieke prijzen of producten aan een beperkt aantal klanten geven door een nieuwe SKU te maken met deze gegevens.  
+> *   Voor meer informatie over persoonlijke aanbiedingen gaat u naar de pagina met persoonlijke aanbiedingen op Azure Marketplace op [Azure.Microsoft.com/blog/private-offers-on-Azure-Marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
 
 | Vereiste | Details |  
 |:--- |:--- | 
-| Facturering en betaling naar gebruik | Uw virtuele machine moet ondersteunen BYOL of betalen per gebruik maandelijkse facturering. |  
-| Azure-compatibele virtuele harde schijf (VHD) | Virtuele machines moeten worden gebouwd op Windows of Linux. <ul> <li>Zie voor meer informatie over het maken van een Linux VHD [op Azure onderschreven Linux-distributies](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Zie voor meer informatie over het maken van een Windows VHD [maken van een Azure-compatibele VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |  
+| Facturering en meting | Uw virtuele machine moet de facturering per maand BYOL of betalen naar gebruik ondersteunen. |  
+| Azure-compatibele virtuele harde schijf (VHD) | Vm's moeten zijn gebouwd op Windows of Linux. <ul> <li>Zie [Linux-distributies die zijn goedgekeurd op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)voor meer informatie over het maken van een virtuele Linux-harde schijf.</li> <li>Zie [een virtuele harde schijf maken die compatibel is met Azure](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)voor meer informatie over het maken van een Windows VHD.</li> </ul> |  
 
 >[!Note]
->Cloud Solution Providers (CSP) partner kanaal aanmelden is nu beschikbaar.  Raadpleeg [Cloud Solution Providers](./cloud-solution-providers.md) voor meer informatie over marketingcontactpersonen van uw aanbieding via de Microsoft CSP partner kanalen.
+>Opt-in voor Cloud Solution Providers (CSP)-partner kanaal is nu beschikbaar.  Raadpleeg [Cloud Solution Providers](./cloud-solution-providers.md) voor meer informatie over het marketing gebruik van uw aanbieding via de micro soft CSP-partner kanalen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Als u dit nog niet hebt gedaan, 
 
-- [Registreren](https://azuremarketplace.microsoft.com/sell) in de marketplace.
+- [Registreer](https://azuremarketplace.microsoft.com/sell) u in de Marketplace.
 
-Als u bent geregistreerd en het maken van een nieuwe aanbieding of werken aan een bestaande resourcegroep
+Als u bent geregistreerd en een nieuwe aanbieding maakt of aan een bestaand item werkt,
 
-- [Meld u aan bij de Cloud Partner-Portal](https://cloudpartner.azure.com) maken of uitvoeren van uw aanbieding.
-- Zie [virtuele machine-aanbieding](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer) voor meer informatie.
+- [Meld u aan bij Cloud Partner-Portal](https://cloudpartner.azure.com) om uw aanbieding te maken of te volt ooien.
+- Zie [aanbieding van de virtuele machine](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer) voor meer informatie.

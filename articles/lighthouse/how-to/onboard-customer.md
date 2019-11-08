@@ -4,15 +4,15 @@ description: Meer informatie over hoe u een klant kunt vrijmaken voor het beheer
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 11/6/2019
+ms.date: 11/7/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 259a0b1b278588ef2237622d61a89fe02e5c004c
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 1d5e9c44fe7669a89c52d2ac14299c2687f11dc5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721393"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827239"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 
@@ -52,7 +52,7 @@ Uw Tenant-ID kan worden gezien door de muis aanwijzer over de naam van uw accoun
 Select-AzSubscription <subscriptionId>
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -90,7 +90,7 @@ Als u autorisaties wilt definiëren, moet u de ID-waarden weten voor elke gebrui
 (Get-AzRoleDefinition -Name '<roleName>').id
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -218,7 +218,7 @@ New-AzDeployment -Name <deploymentName> `
                  -Verbose
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -270,7 +270,7 @@ In de Tenant van de klant:
 Get-AzContext
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -291,7 +291,7 @@ In het onderstaande voor beeld ziet u een toewijzing waarmee de rol van de **reg
         { 
             "principalId": "cfa7496e-a619-4a14-a740-85c5ad2063bb", 
             "principalIdDisplayName": "MSP Operators", 
-            "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c" 
+            "roleDefinitionId": "91c1777a-f3dc-4fae-b103-61d183457e46" 
         } 
     ] 
 ```
@@ -320,7 +320,7 @@ Get-AzManagedServicesAssignment -Scope "/subscriptions/{delegatedSubscriptionId}
 Remove-AzManagedServicesAssignment -ResourceId "/subscriptions/{delegatedSubscriptionId}/providers/Microsoft.ManagedServices/registrationAssignments/{assignmentGuid}"
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell

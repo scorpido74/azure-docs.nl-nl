@@ -1,5 +1,5 @@
 ---
-title: 'SaaS-patronen met meerdere tenants-Azure SQL Database '
+title: SaaS-patronen met meerdere tenants
 description: Meer informatie over de vereisten en algemene gegevens architectuur patronen voor SaaS-database toepassingen (multi tenant software as a Service) die worden uitgevoerd in de Azure-cloud omgeving.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: ecbcf2cdfea2714e46d0c9cff4066befabddeeb8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ad7bd660ee685b490fb79c7e63fd3c5fce557977
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691927"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822065"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Multitenancy-patronen voor SaaS-data base met meerdere tenants
 
@@ -135,7 +135,7 @@ In het algemeen hebben multi tenant-data bases de laagste kosten per Tenant.  De
 
 Twee varianten van een model voor multi tenant-data bases worden in de volgende stappen beschreven, waarbij het Shard multi tenant-model het meest flexibel en schaalbaar is.
 
-## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>ls. Multi tenant-app met één multi tenant-data base
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>Ls. Multi tenant-app met één multi tenant-data base
 
 Het eenvoudigste multi tenant-database patroon maakt gebruik van één Data Base voor het hosten van gegevens voor alle tenants.  Naarmate er meer tenants worden toegevoegd, wordt de data base omhoog geschaald met meer opslag-en reken resources.  Deze schaal kan allemaal nodig zijn, hoewel er altijd een limiet voor een ultieme schaal is.  Lang voordat deze limiet is bereikt, wordt de data base lastig te beheren.
 

@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: c28469e15841e2675c20868b74cf044159c4e9ca
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2962f6c5032ba317f9eb8f10c2abddb566aad904
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259180"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825506"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Uw commerciële Marketplace-account beheren in het partner centrum 
 
@@ -48,14 +49,14 @@ Account instellingen bevindt zich in de rechter bovenhoek van uw [dash board voo
 ![Het menu account instellingen in het partner centrum](./media/dashboard-developer-settings.png)
 
 Binnen de **account instellingen**kunt u uw volgende weer geven:
-- **Account Details**: Account type en account status
-- **Uitgevers-id's**: Verkoper-ID, gebruikers-ID, uitgevers-ID, Azure AD-tenants, enzovoort.
-- **Contact gegevens**: Weergave naam van de uitgever, de naam van de contact persoon, de e-mail, het telefoon nummer en het adres
-- **Financiële gegevens**: Status uitbetalings account, BTW-profiel en afbetalings blokkering
-- **Apparaten**: Alle test apparaten die aan uw account zijn gekoppeld
-- **Tracking-guid's**: Alle tracerings-GUID'S die aan uw account zijn gekoppeld
+- **Account Details**: account type en account status
+- **Uitgevers-id's**: verkopers-id, gebruikers-id, uitgevers-id, Azure AD-tenants, enzovoort.
+- **Contact gegevens**: de weergave naam van de uitgever, de naam van de contact persoon, de e-mail, het telefoon nummer en het adres
+- **Financiële details**: uitbetalings account, BTW-profiel en status uitbetalings blokkering
+- **Apparaten**: alle test apparaten die aan uw account zijn gekoppeld
+- **Tracking-guid's**: alle tracerings-guid's die aan uw account zijn gekoppeld
 
-### <a name="account-details"></a>Accountdetails
+### <a name="account-details"></a>Account gegevens
 
 In het gedeelte account details ziet u basis informatie, zoals uw **account type** (bedrijf of individu) en de **verificatie status** van uw account. Tijdens uw account verificatie worden in deze instellingen elke vereiste stap weer gegeven, waaronder e-mail verificatie, werkgelegenheids verificatie en zakelijke verificatie. U kunt uw e-mail adres hier ook bijwerken en de verificatie zo nodig opnieuw verzenden. 
 
@@ -84,7 +85,7 @@ Als u uw account voor betaling wilt instellen, moet u **uw micro soft-account ko
 
 Nu uw micro soft-account is gekoppeld, moet u het volgende doen om een uitbetalings account toe te voegen:
 - **Kies een betalings wijze**: Bank account of PayPal
-- **Betalings gegevens toevoegen**: Dit kan onder andere het kiezen van een account type (controle of besparing) zijn, waarbij de naam van de account houder, het account nummer en het route nummer, het facturerings adres, het telefoon nummer of het e-mail adres van PayPal worden ingevoerd. \* Zie [PayPal-info](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)voor meer informatie over het gebruik van PayPal als uw betalings methode voor uw account en om te bepalen of het wordt ondersteund in uw markt regio.
+- **Betalings gegevens toevoegen**: dit kan onder andere het kiezen van een account type (controleren of sparen), de naam van de account houder, het account nummer en het route nummer, het facturerings adres, het telefoon nummer of het e-mail adres van PayPal opgeven. \* Zie [PayPal-info](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)voor meer informatie over het gebruik van PayPal als uw betalings methode voor uw account en om te bepalen of het wordt ondersteund in uw markt regio.
 
 > [!IMPORTANT]
 > Het wijzigen van uw uitbetalings account kan uw betalingen vertragen met Maxi maal één betalings cyclus. Deze vertraging treedt op omdat de account wijziging moet worden gecontroleerd, net zoals bij de eerste instelling van het uitbetalings account. U ontvangt nog steeds voor het volledige bedrag nadat uw account is geverifieerd. alle betalingen die moeten worden uitgevoerd voor de huidige betalings cyclus, worden toegevoegd aan de volgende betaling.  
@@ -339,9 +340,9 @@ Een gloed nieuwe Azure AD-Tenant maken met uw partner centrum-account:
 
 1.  Selecteer op de pagina **tenants** (onder **account instellingen**) **een nieuwe Azure AD-Tenant maken**.
 2. Voer de Directory-informatie in voor uw nieuwe Azure AD:
-    - **Domein naam**: De unieke naam die we gebruiken voor uw Azure AD-domein, samen met '. onmicrosoft.com '. Als u bijvoorbeeld ' voor beeld ' hebt ingevoerd, zou uw Azure AD-domein ' example.onmicrosoft.com ' zijn.
-    - **E-mail adres van contact persoon**: Een e-mail adres waar wij contact met u kunnen opnemen over uw account, indien nodig.
-    - **Informatie over gebruikers account van globale beheerder**: De voor naam, achternaam, gebruikers naam en het wacht woord die u wilt gebruiken voor het nieuwe account van de globale beheerder.
+    - **Domein naam**: de unieke naam die we gebruiken voor uw Azure AD-domein, samen met '. onmicrosoft.com '. Als u bijvoorbeeld ' voor beeld ' hebt ingevoerd, zou uw Azure AD-domein ' example.onmicrosoft.com ' zijn.
+    - **Contact opnemen met e-mail**: een e-mail adres waar wij zo nodig contact met u kunnen opnemen over uw account.
+    - **Gebruikers account van globale beheerder**: de voor naam, achternaam, gebruikers naam en het wacht woord die u wilt gebruiken voor het nieuwe account van de globale beheerder.
 3. Selecteer **maken** om de nieuwe domein-en account gegevens te bevestigen.
 4. Meld u aan met uw nieuwe gebruikers naam en wacht woord voor de globale beheerder van Azure AD om [gebruikers toe te voegen en te beheren](#manage-users).
 

@@ -1,38 +1,39 @@
 ---
-title: Instellingen voor een aanbieding van Power BI-App biedt | Azure Marketplace
-description: Instellingen van de aanbieding voor een Power BI-App-aanbieding voor Microsoft AppSource-marketplace configureren.
+title: Aanbiedings instellingen voor een Power BI app-aanbieding | Azure Marketplace
+description: Configureer aanbiedings instellingen voor een Power BI app-aanbieding voor de Microsoft AppSource Marketplace.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: be2c2b4f5d9461aa0fdc6dde89931ed4b6418ced
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca326b10a0707d5e4b1a5f05dccc303c9ec28269
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943466"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822668"
 ---
-# <a name="power-bi-apps-offer-settings-tab"></a>Power BI-Apps bieden instellingen tabblad
+# <a name="power-bi-apps-offer-settings-tab"></a>Tabblad instellingen van Power BI-apps-aanbod
 
-Wanneer u opent de **nieuwe aanbieding** pagina voor service-apps, ziet u eerst de **instellingen bieden** tabblad. U opgeven de primaire id's en de naam voor uw aanbod op dit tabblad. Een sterretje (*) geeft aan dat een vereist veld.
+Wanneer u de **nieuwe aanbiedings** pagina voor service-apps opent, ziet u eerst het tabblad Instellingen voor de **aanbieding** . U geeft de primaire id's en de naam voor uw aanbieding op dit tabblad. Een asterisk (*) geeft een vereist veld aan.
 
 ![Tabblad voor aanbiedingsinstellingen](./media/offer-settings-tab.png)
 
 
-## <a name="offer-settings-fields"></a>Velden van aanbod-instellingen 
+## <a name="offer-settings-fields"></a>Velden voor aanbiedings instellingen 
 
-Op de **instellingen bieden** tabblad, moet u gegevens invoeren in de volgende vereiste velden. Verplichte velden zijn indicted met een asterisk (*).
+Op het tabblad Instellingen voor de **aanbieding** moet u gegevens invoeren in de volgende vereiste velden. Vereiste velden worden gedicteerd door een asterisk (*).
 
-|  Veld        |  Description                                                               |
+|  Veld        |  Beschrijving                                                               |
 |---------------|----------------------------------------------------------------------------|
-| **Aanbiedings-ID\***  | Een unieke id (binnen het uitgeverprofiel van een) voor de aanbieding. Deze id in URL's voor product, Azure Resource Manager-sjablonen, zichtbaar zijn en facturering rapporten. De maximale lengte is 50 tekens. Mag alleen kleine letters, alfanumerieke tekens en streepjes (-). Deze mag niet eindigen met een streepje. Deze id kan niet worden gewijzigd nadat een aanbieding live meteen. Als u Contoso publiceert een aanbieding met aanbiedings-ID `sample-SvcApp`, de aanbieding is de AppSource-URL toegewezen `https://appsource.microsoft.com/marketplace/apps/contoso.sample-SvcApp`.      |
-| **Publisher\*** | De unieke id van uw organisatie in [AppSource](https://appsource.microsoft.com). Alle uw aanbiedingen moeten worden gekoppeld aan uw uitgever-ID. Deze waarde kan niet worden gewijzigd nadat de aanbieding is opgeslagen.                         |
-| **Naam\***      | Een weergavenaam voor uw aanbieding. Deze naam wordt weergegeven in AppSource en in de Cloud Partner-Portal. De maximale lengte is 50 tekens. Gebruik een merk-naam die wordt herkend voor uw product. Hier de naam van uw organisatie niet worden opgenomen, tenzij de app op de markt met die naam gebracht wordt. Wanneer u deze aanbieding op andere websites en publicaties, gebruikt u dezelfde naam in alle publicaties.    <br/>Als u een aanbieding tijdens de preview-periode voor Power BI-Apps vrijgeven, voegt u de tekenreeks `(Preview)` aan het einde van de naam van uw toepassing, als volgt: `Sample Scv App (Preview)`. |
+| **Aanbiedings-ID\***  | Een unieke id (binnen een Publisher-profiel) voor de aanbieding. Deze id is zichtbaar in product-Url's, Azure Resource Manager sjablonen en facturerings rapporten. De maximale lengte is 50 tekens. De naam mag alleen kleine letters en streepjes (-) bevatten. Het mag niet eindigen met een streepje. Deze id kan niet worden gewijzigd nadat een aanbieding Live is. Als contoso een aanbieding publiceert met een aanbiedings-ID `sample-SvcApp`, wordt de AppSource-URL `https://appsource.microsoft.com/marketplace/apps/contoso.sample-SvcApp`toegewezen aan de aanbieding.      |
+| **Uitgever\*** | De unieke id van uw organisatie in [AppSource](https://appsource.microsoft.com). Al uw aanbiedingen moeten worden gekoppeld aan uw uitgevers-ID. Deze waarde kan niet worden gewijzigd nadat de aanbieding is opgeslagen.                         |
+| **Naam\***      | Een weergave naam voor uw aanbieding. Deze naam wordt weer gegeven in AppSource en op de Cloud Partner-portal. De maximale lengte is 50 tekens. Gebruik een merk naam die herkenbaar is voor uw product. Neem hier de naam van uw organisatie niet op, tenzij de app met die naam in de handel is. Als u deze aanbieding op andere websites en publicaties levert, gebruikt u dezelfde naam in alle publicaties.    <br/>Als u een aanbieding vrijgeeft tijdens de preview-periode voor Power BI-apps, voegt u de teken reeks `(Preview)` toe aan het einde van de naam van uw toepassing, zoals: `Sample Scv App (Preview)`. |
 |     |     |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Klik op het volgende tabblad moet u opgeven [technische info](./cpp-technical-info-tab.md) voor uw aanbieding.
+Op het volgende tabblad kunt u [technische gegevens](./cpp-technical-info-tab.md) voor uw aanbieding opgeven.

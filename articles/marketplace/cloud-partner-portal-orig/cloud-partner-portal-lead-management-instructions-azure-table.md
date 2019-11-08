@@ -4,15 +4,16 @@ description: Beheer van leads in azure-tabel opslag configureren.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: pabutler
-ms.openlocfilehash: a53ed93813215655c4a165faa0bce36d9249e8e6
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 21105d72ccd288faf0fed58019e67afe2e1c9d01
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227901"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825274"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>Instructies voor het beheer van de Table-opslag
 
@@ -31,7 +32,7 @@ In dit artikel wordt beschreven hoe u Azure Table Storage configureert om verkoo
 
     Zie Quick Start- [zelf studies](https://docs.microsoft.com/azure/storage/)voor meer informatie over opslag accounts. Zie [prijzen voor Azure Storage](https://azure.microsoft.com/pricing/details/storage/)voor informatie over prijzen.
 
-1. Wacht tot uw opslag account is ingericht, wat doorgaans enkele minuten in beslag neemt. Ga vervolgens naar het account vanaf de start pagina van de Azure Portal: Selecteer **alle resources** of **alle resources** in het navigatie deel venster weer geven.
+1. Wacht tot uw opslag account is ingericht, wat doorgaans enkele minuten in beslag neemt. Ga vervolgens naar het account vanaf de start pagina van de Azure Portal: Selecteer **alle resources** of **alle resources** in het navigatie deel venster.
 
     ![Toegang tot uw Azure Storage-account](./media/cloud-partner-portal-lead-management-instructions-azure-table/azure-storage-access.png)
 
@@ -49,7 +50,7 @@ U kunt [Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/) of e
 
 ## <a name="use-microsoft-flow-with-table-storage-optional"></a>Microsoft Flow gebruiken met tabel opslag (*optioneel*)
 
-U kunt [Microsoft flow](https://docs.microsoft.com/flow/) gebruiken om automatisch meldingen te verzenden wanneer een lead wordt toegevoegd aan de tabel opslag. Als u geen Microsoft Flow account hebt, meldt u [zich aan voor een gratis account](https://flow.microsoft.com/).
+U kunt [Microsoft flow](https://docs.microsoft.com/flow/) gebruiken om automatisch meldingen te verzenden wanneer een lead wordt toegevoegd aan de tabel opslag. Als u geen Microsoft Flow account hebt, [meldt u zich aan voor een gratis account](https://flow.microsoft.com/).
 
 ### <a name="lead-notification-example"></a>Voor beeld van lead meldingen
 
@@ -84,7 +85,7 @@ In dit voor beeld ziet u hoe u een basis stroom maakt. De stroom verzendt automa
     ![Het tijds interval voor ophalen instellen](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getpast-time.png)
 
     >[!TIP] 
-    >U kunt de stroom op elk gewenst moment controleren om te controleren of elke stap correct is geconfigureerd: Selecteer **stroom controle** in de menu balk van de stroom.
+    >U kunt de stroom op elk gewenst moment controleren om te controleren of elke stap correct is geconfigureerd: Selecteer **flow check** in de menu balk van de stroom.
 
 In de volgende reeks stappen maakt u verbinding met uw opslag tabel en stelt u de verwerkings logica in voor het verwerken van nieuwe leads.
 
@@ -96,7 +97,7 @@ In de volgende reeks stappen maakt u verbinding met uw opslag tabel en stelt u d
 
      ![Kies een aangepaste waarde voor de Azure-tabel naam](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **Filter query**: Wanneer u dit veld selecteert, wordt het pictogram **laatste tijd ophalen** weer gegeven in een pop-upvenster. Selecteer **vorige tijd** als u deze waarde wilt gebruiken als tijds tempel om de query te filteren. U kunt ook de volgende functie in het veld plakken:
+   - **Filter query**: wanneer u dit veld selecteert, wordt het pictogram **laatste tijd ophalen** weer gegeven in een pop-upvenster. Selecteer **vorige tijd** als u deze waarde wilt gebruiken als tijds tempel om de query te filteren. U kunt ook de volgende functie in het veld plakken:
    
       `CreatedTime Timestamp gt datetime'@{body('Get_past_time')}'` 
 
@@ -132,8 +133,8 @@ In de volgende reeks stappen maakt u verbinding met uw opslag tabel en stelt u d
    1. Voer in het venster **een E-mail verzenden** gegevens in de volgende velden in:
 
       - **Om**: een e-mail adres voor iedereen die de melding ontvangt.
-      - **Onderwerp**: een onderwerp voor het e-mail bericht. Bijvoorbeeld: *Nieuwe leads.*
-      - **Hoofd**tekst: de tekst die u in elk e-mail bericht wilt toevoegen (optioneel). Plak `body('Get_entities')?['value']` ook als een functie om lead gegevens in te voegen.
+      - **Onderwerp**: een onderwerp voor het e-mail bericht. Bijvoorbeeld: *nieuwe leads!*
+      - **Hoofd**tekst: de tekst die u in elk e-mail bericht wilt toevoegen (optioneel). Plak ook in `body('Get_entities')?['value']` als een functie om lead gegevens in te voegen.
 
         >[!NOTE] 
         >U kunt aanvullende statische of dynamische gegevens punten invoegen in de hoofd tekst van het e-mail bericht.
@@ -144,7 +145,7 @@ In de volgende reeks stappen maakt u verbinding met uw opslag tabel en stelt u d
 
     In de volgende afbeelding ziet u een voor beeld van hoe de uiteindelijke stroom eruit moet zien.
 
-    [![Laatste stroom reeks](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
+    [de laatste stroom volgorde ![](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
 
     (*Selecteer de afbeelding om deze te verg Roten.* )
 

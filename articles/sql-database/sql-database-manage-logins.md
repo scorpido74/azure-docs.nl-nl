@@ -1,5 +1,5 @@
 ---
-title: Azure SQL-aanmeldingen en-gebruikers
+title: Aanmeldingen en gebruikers
 description: Meer informatie over SQL Database en SQL Data Warehouse beveiligings beheer, in het bijzonder hoe u de beveiliging van database toegang en-aanmelding kunt beheren via het hoofd account op server niveau.
 keywords: sql-databasebeveiliging,beheer databasebeveiliging,aanmeldingsbeveiliging,databasebeveiliging,databasetoegang
 services: sql-database
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/26/2019
-ms.openlocfilehash: 501df95b80bd651020fa044970f6bc701959a6a5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a33c653199ae21b551acadfb4503eae029ddc5e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689473"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822827"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Database toegang beheren en verlenen aan SQL Database en SQL Data Warehouse
 
@@ -140,7 +140,7 @@ In eerste instantie kan slechts een van de beheerders of de eigenaar van de data
 GRANT ALTER ANY USER TO Mary;
 ```
 
-Als u meer gebruikers volledige controle over de Data Base wilt geven, maakt u ze lid van de vaste **databaserol db_owner** .
+Als u meer gebruikers volledige controle over de Data Base wilt geven, maakt u ze lid van de **db_owner** vaste databaserol.
 
 Gebruik de `ALTER ROLE`-instructie in Azure SQL Database.
 
@@ -148,7 +148,7 @@ Gebruik de `ALTER ROLE`-instructie in Azure SQL Database.
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-Gebruik [exec sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)in Azure SQL Data Warehouse.
+Gebruik in Azure SQL Data Warehouse [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql).
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
 ```

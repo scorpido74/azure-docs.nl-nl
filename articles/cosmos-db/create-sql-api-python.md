@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 92175e3b9776f90bd50e356a700b2a2d475c8a85
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 82426c0093550864b421d7acc35780c4173895a8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602461"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824730"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Snelstartgids: een python-toepassing bouwen met een Azure Cosmos DB SQL-API-account
 
@@ -39,7 +39,7 @@ In deze Quick Start wordt versie 4 van de [python-SDK](https://pypi.org/project/
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Python 3,6](https://www.python.org/downloads/), met het `python` uitvoer bare bestand dat beschikbaar is in uw `PATH`.
+* [Python 3.6 +](https://www.python.org/downloads/), met het `python` uitvoer bare bestand dat beschikbaar is in uw `PATH`.
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Python-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview) (Engelstalig)
 
@@ -154,7 +154,7 @@ De volgende codefragmenten zijn allemaal afkomstig uit het bestand `cosmos_get_s
 5. Voer de volgende opdracht uit om het azure-cosmos-pakket te installeren. 
 
     ```python
-    pip3 install azure-cosmos==4.0.0b5
+    pip install --pre azure-cosmos
     ```
 
     Als u een foutmelding krijgt over geweigerde toegang bij het installeren van azure-cosmos, dient u [VS Code als beheerder uit te voeren](https://stackoverflow.com/questions/37700536/visual-studio-code-terminal-how-to-run-a-command-with-administrator-rights).

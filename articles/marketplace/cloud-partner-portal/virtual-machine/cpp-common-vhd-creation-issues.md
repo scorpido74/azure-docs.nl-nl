@@ -4,16 +4,17 @@ description: Veelgestelde vragen over het maken van virtuele harde schijven en g
 services: Azure Marketplace
 author: HannibalSII
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/02/2018
 ms.author: hascipio
 ms.reviewer: v-divte; v-miclar
-ms.openlocfilehash: bb7e62138dbefdd8ff4933ef10602986a5da2bf6
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1d4224d8f1f735ecef3d4551e3032b916e81dc3c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875002"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826615"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Veelvoorkomende problemen tijdens het maken van de VHD (FAQ)
 
@@ -67,7 +68,7 @@ Ja, indien gehost op Azure.  Azure wijst een unieke id toe met de naam de unieke
 
 ## <a name="in-a-vm-how-do-you-manage-the-custom-script-extension-in-the-startup-task"></a>Hoe beheert u in een virtuele machine de aangepaste script extensie in de opstart taak?
 
-In het volgende artikel wordt beschreven hoe u de aangepaste script extensie gebruikt met behulp van de module Azure PowerShell, Azure Resource Manager sjablonen en Details voor probleem oplossing op Windows-systemen: [Aangepaste script extensie voor Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
+In het volgende artikel wordt beschreven hoe u de aangepaste script extensie gebruikt met behulp van de module Azure PowerShell, Azure Resource Manager sjablonen en Details oplossen van problemen met Windows-systemen: [aangepaste script extensie voor Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
 
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Worden 32-bits toepassingen of services ondersteund in azure Marketplace?
@@ -80,7 +81,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 - [Ondersteuning van Microsoft-serversoftware voor virtuele Microsoft Azure-machines](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 
 
-## <a name="every-time-i-try-to-create-an-image-from-my-vhds-i-get-the-error-vhd-is-already-registered-with-image-repository-as-the-resource-in-powershell-i-did-not-create-any-image-before-nor-did-i-find-any-image-with-this-name-in-azure-how-do-i-resolve-this-issue"></a>Telkens wanneer ik een installatie kopie van mijn vhd's probeer te maken, krijg ik de `.VHD is already registered with image repository as the resource` fout in Power shell. Ik heb geen installatie kopie gemaakt vóór en ik heb een installatie kopie met deze naam in azure gevonden. Hoe kan ik dit probleem oplossen?
+## <a name="every-time-i-try-to-create-an-image-from-my-vhds-i-get-the-error-vhd-is-already-registered-with-image-repository-as-the-resource-in-powershell-i-did-not-create-any-image-before-nor-did-i-find-any-image-with-this-name-in-azure-how-do-i-resolve-this-issue"></a>Telkens wanneer ik een installatie kopie van mijn Vhd's probeer te maken, krijg ik de fout `.VHD is already registered with image repository as the resource` in Power shell. Ik heb geen installatie kopie gemaakt vóór en ik heb een installatie kopie met deze naam in azure gevonden. Hoe kan ik dit probleem oplossen?
 
 Dit probleem treedt meestal op als de gebruiker een virtuele machine heeft ingericht op basis van een VHD waarop deze is vergrendeld.  Controleer of er geen VM is toegewezen van deze VHD en voer de bewerking opnieuw uit.  Als dit probleem zich blijft voordoen, opent u een ondersteunings ticket, zoals wordt beschreven in [ondersteuning voor Cloud Partner-Portal](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal). 
 

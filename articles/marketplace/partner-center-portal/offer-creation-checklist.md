@@ -5,16 +5,17 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 66c28039f9126ed9e3f56c3ac15b1b3d82279b64
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 1643a1e309ecc2bcfc440e3553fcffef54cfb038
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036380"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824626"
 ---
-# <a name="saas-offer-creation-checklist"></a>Controle lijst voor het maken van SaaS-aanbiedingen
+# <a name="saas-offer-creation-checklist"></a>Controlelijst voor SaaS-aanbieding maken
 
 Het proces voor het maken van SaaS-aanbiedingen leidt u door meerdere pagina's. Hier vindt u de details die u op elke pagina kunt opgeven, met koppelingen voor meer informatie over elk item.
 
@@ -42,7 +43,7 @@ De eerste informatie die u moet opgeven, is een ID en alias voor uw aanbieding.
 
 | **Veld naam**    | **Opmerkingen**   |  
 | :---------------- | :-----------| 
-| Aanbiedings-id  | Vereist, kan niet worden gewijzigd na het maken. Maxi maal 50 tekens en mag alleen bestaan uit kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. |
+| Aanbiedings-ID  | Vereist, kan niet worden gewijzigd na het maken. Maxi maal 50 tekens en mag alleen bestaan uit kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. |
 | Aanbiedings alias  | Vereist. |
 
 ## <a name="offer-setup-page"></a>Pagina aanbieding instellen
@@ -52,13 +53,13 @@ Op de pagina aanbieding instellen kunt u kiezen uit verschillende kanalen en ver
 | **Veld naam**    | **Opmerkingen**   | 
 | :---------------- | :-----------|  
 | Wilt u door micro soft verkopen?  | Vereist. Standaard: Ja |
-| Hoe wilt u dat potentiële klanten met de aanbieding kunnen communiceren? (Actie aanroepen)  | Vereist als niet wordt verkocht via micro soft. Standaard: Gratis proef versie, opties: ' Nu downloaden ', ' gratis proef versie ', ' contact met mij opnemen '. |
+| Hoe wilt u dat potentiële klanten met de aanbieding kunnen communiceren? (Actie aanroepen)  | Vereist als niet wordt verkocht via micro soft. Standaard: gratis proef versie, opties: ' nu downloaden ', ' gratis proef versie ', ' contact met mij opnemen '. |
 | URL van proef versie  | Vereist als ' gratis proef versie ' is geselecteerd, als de manier waarop klanten moeten communiceren met de aanbieding. |
 | Aanbiedings-URL  | Vereist als ' nu ophalen ' is geselecteerd, als de manier waarop klanten moeten communiceren met de aanbiedings vermelding |
-| Kanalen  | Optioneel. Standaard: U hebt geen gekozen voor het CSP-kanaal (reseller).  |
-| Test Drive | Optioneel. Standaard: Er is geen test drive ingeschakeld.  |
-| Type van het test station | Vereist als een test drive is ingeschakeld. Standaard: Geen geselecteerd. Opties: Azure Resource Manager, Dynamics 365 voor bedrijven Central, Dynamics 365 voor klant betrokkenheid, Dynamics 365 voor Operations, Logic app, Power BI.  |
-| Lead beheer-verbinding maken met een CRM-systeem | Vereist als er wordt verkocht via micro soft, of als een aanbieding wordt aangeboden als ' contact met mij opnemen '. Standaard: er is geen CRM-systeem verbonden. CRM-opties: Azure-tabel, Azure-Blob, Dynamics CRM Online, HTTPs-eind punt, Marketo, Sales Force  |
+| Kanalen  | Optioneel. Standaard: geen gekozen voor het CSP-kanaal (reseller).  |
+| Test Drive | Optioneel. Standaard: er is geen test drive ingeschakeld.  |
+| Type van het test station | Vereist als een test drive is ingeschakeld. Standaard: geen geselecteerd. Opties: Azure Resource Manager, Dynamics 365 voor bedrijven Central, Dynamics 365 voor klant betrokkenheid, Dynamics 365 voor Operations, Logic app, Power BI.  |
+| Lead beheer-verbinding maken met een CRM-systeem | Vereist als er wordt verkocht via micro soft, of als een aanbieding wordt aangeboden als ' contact met mij opnemen '. Standaard: er is geen CRM-systeem verbonden. CRM-opties: Azure Table, Azure-Blob, Dynamics CRM Online, HTTPs-eind punt, Marketo, Sales Force  |
 
 ## <a name="properties-page"></a>De pagina Eigenschappen
 
@@ -66,9 +67,9 @@ Op de pagina eigenschappen definieert u de categorieën en industrieën die word
 
 | **Veld naam**    | **Opmerkingen**   | 
 | :---------------- | :-----------|  
-| Categorie en subcategorie | Vereist 1 en Maxi maal 3. Standaard: Geen geselecteerd. |
-| Industrieën en subbranches | Optioneel. Maxi maal 2 L1-industrieën en Maxi maal 2 subbranches binnen elke L1-industrie, standaard: Niets geselecteerd |
-| App-versie  | Optioneel. Standaard: Geen. |
+| Categorie en subcategorie | Vereist 1 en Maxi maal 3. Standaard: geen geselecteerd. |
+| Industrieën en subbranches | Optioneel. Maxi maal 2 L1-industrieën en Maxi maal 2 subbranches binnen elke L1-industrie, standaard: geen geselecteerd |
+| App-versie  | Optioneel. Standaard: geen. |
 | Standaard contract gebruiken  | Optioneel. Standaard: niet geselecteerd.  | |
 | Gebruiksvoorwaarden  | Vereist als het standaard contract niet is geselecteerd.  |
 
@@ -78,9 +79,9 @@ De pagina met de vermelding bevat de tekst en afbeeldingen die klanten zien wann
 
 | **Veld naam**    | **Opmerkingen**   |
 | :---------------- | :-----------| 
-| Name  | Vereist, Maxi maal 50 tekens. |
+| Naam  | Vereist, Maxi maal 50 tekens. |
 | Samenvatting  | Vereist, Maxi maal 100 tekens. | 
-| Description  | Vereist, Maxi maal 3000 tekens. |
+| Beschrijving  | Vereist, Maxi maal 3000 tekens. |
 | Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
 | Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
 | Sleutelwoorden zoeken  | Optioneel, aanbevolen, Maxi maal 3 tref woorden. |
@@ -89,7 +90,7 @@ De pagina met de vermelding bevat de tekst en afbeeldingen die klanten zien wann
 | Titel van handige koppelingen + URL  | Optioneel. |
 | Titel van ondersteunende documenten + bestand  | Vereist, min 1 en Maxi maal 3. Moet PDF-bestands indeling zijn. |
 | Schermopnamen  | Vereist, min 1 scherm afbeelding en maximum 5; vier of meer aanbevolen. Moet 1280 X 720 zijn in PNG-indeling. |
-| Winkel logo's (klein, normaal, groot, breed, held)  | Klein (48 X 48) en groot (216 X 216) vereist; andere grootten zijn optioneel, maar aanbevolen: Gemiddeld (90 x 90), breed (255 x 115), held (815 x 290). Moet de PNG-indeling hebben. |
+| Winkel logo's (klein, normaal, groot, breed, held)  | Klein (48 X 48) en groot (216 X 216) vereist; andere formaten optioneel, maar aanbevolen: gemiddeld (90 x 90), breed (255 x 115), held (815 x 290). Moet de PNG-indeling hebben. |
 | Video's naam + URL + miniatuur  | Optioneel, aanbevolen, Maxi maal 4 Video's. De miniatuur moet 1280 x 720 zijn in PNG-indeling. Video moet worden gehost in YouTube of Vimeo. |
 | Contacts (CSP-programma, techniek, ondersteuning)  | Technische hulp en ondersteuning vereist (naam, e-mail adres en telefoon nummer); CSP-programma contact opnemen optioneel, maar aanbevolen. |
 | Ondersteunings-URL  | Vereist. |
@@ -137,11 +138,11 @@ Op de pagina prijzen en beschik baarheid plannen kunt u de bedrijfs kenmerken, d
 | **Veld naam**    | **Opmerkingen**   | 
 | :---------------- | :-----------| 
 | Beschik baarheid van de markt  | Vereist, min 1 en Max. 141. |
-| Prijsmodel  | Vereist. Standaard: Vast. Opties: Vast aantal, per gebruiker. |
+| Prijsmodel  | Vereist. Standaard: vast aantal. Opties: vast aantal, per gebruiker. |
 | Minimum-en maximum aantal stoelen  | Optioneel: alleen beschikbaar als het prijs model op basis van de Seat is geselecteerd. |
-| Facturerings termijn  | Vereist. Standaard: Keren. Opties: Maandelijks, jaarlijks. |
+| Facturerings termijn  | Vereist. Standaard: maandelijks. Opties: maandelijks, jaarlijks. |
 | Prijs  | Vereist USD per maand, als de maandelijkse facturerings periode is geselecteerd. of USD per jaar als de jaarlijkse facturerings periode is geselecteerd. |
-| Doel groep plannen  | Optioneel. Standaard: Openbaar abonnement. Opties: Openbaar, privé op Tenant-ID |
+| Doel groep plannen  | Optioneel. Standaard: openbaar abonnement. Opties: openbaar, privé op Tenant-ID |
 | Doel groep voor beperkt abonnement (Tenant-ID + beschrijving)  | Vereist als privé plan is geselecteerd. Min 1 en Maxi maal 10 Tenant-Id's, indien hand matig ingevoerd. Maxi maal 20000 als CSV-bestand wordt geïmporteerd. |
 
 ## <a name="test-drive-listing-page"></a>Lijst pagina test station
@@ -150,8 +151,8 @@ Deze optie is alleen beschikbaar als u een test drive voor uw aanbieding aanbied
 
 | **Veld naam**    | **Opmerkingen**   | 
 | :---------------- | :-----------| 
-| Description  | Vereist. |
-| Hand matige naam en bestand van de gebruiker  | Vereist, Maxi maal 1 document. Moet PDF-indeling zijn. |
+| Beschrijving  | Vereist. |
+| Hand matige naam en bestand van de gebruiker  | Vereist, Maxi maal 1 document. moet PDF-indeling hebben. |
 | Video naam, URL + miniatuur  | Optioneel, aanbevolen. De miniatuur moet 533 x 324 zijn in JPGP-of PNG-indeling. Video moet worden gehost in YouTube of Vimeo. |
 
 ## <a name="review-and-publish-page"></a>Pagina controleren en publiceren
