@@ -247,6 +247,8 @@
                   href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Gebeurtenisverwerking
           href: storage-blob-event-overview.md
+        - name: Feed wijzigen
+          href: storage-blob-change-feed.md
         - name: Functies voor pagina-blobs
           href: storage-blob-pageblob-overview.md
         - name: Statische websites
@@ -374,6 +376,8 @@
           href: storage-custom-domain-name.md
         - name: Gebeurtenissen routeren naar een aangepast eindpunt
           href: storage-blob-event-quickstart.md
+        - name: Logboeken voor wijzigingenfeeds verwerken
+          href: storage-blob-change-feed-how-to.md
         - name: Blob-opslag doorzoeken met Azure Search
           href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Gegevens overdragen
@@ -432,24 +436,24 @@
           href: /cli/azure/storage
         - name: .NET
           items:
-            - name: 'Blobs, Queues en Files'
-              href: /dotnet/api/overview/azure/storage/client
+            - name: Blobs (versie 12.x)
+              href: /dotnet/api/azure.storage.blobs
             - name: Gegevensverplaatsing
               href: /dotnet/api/microsoft.azure.storage.datamovement
             - name: Opslagresourceprovider
               href: /dotnet/api/overview/azure/storage/management
         - name: Java
           items:
-            - name: 'Blobs, Queues en Files (versie 12.x - preview)'
-              href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
-            - name: 'Blobs, Queues en Files (versie 8)'
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+            - name: Blobs (versie 12.x)
+              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
+            - name: Blobs (versie 8.x)
+              href: /java/api/com.microsoft.azure.storage.blob
             - name: Opslagresourceprovider
               href: /java/api/overview/azure/storage/management
-        - name: Node.js
-          href: /javascript/api/overview/azure/storage
-        - name: Python
-          href: /python/api/overview/azure/storage
+        - name: JavaScript (versie 12.x)
+          href: /javascript/api/@azure/storage-blob/?view=azure-node-preview
+        - name: Python (versie 12.x)
+          href: /python/api/azure-storage-blob/
         - name: REST
           items:
             - name: 'Blobs, wachtrijen, tabellen en bestanden'
@@ -737,20 +741,24 @@
           href: /cli/azure/storage
         - name: .NET
           items:
-            - name: 'Blobs, wachtrijen, tabellen en bestanden'
-              href: /dotnet/api/overview/azure/storage/client
+            - name: Blobs (versie 12.x)
+              href: /dotnet/api/azure.storage.blobs
             - name: Gegevensverplaatsing
               href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: Resource Manager
+            - name: Opslagresourceprovider
               href: /dotnet/api/overview/azure/storage/management
         - name: Java
           items:
-            - name: 'Blobs, Queues en Files (versie 12.x - preview)'
-              href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
-            - name: 'Blobs, Queues en Files (versie 8)'
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+            - name: Blobs (versie 12.x)
+              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
+            - name: Blobs (versie 8.x)
+              href: /java/api/com.microsoft.azure.storage.blob
             - name: Opslagresourceprovider
               href: /java/api/overview/azure/storage/management
+        - name: JavaScript (versie 12.x)
+          href: /javascript/api/@azure/storage-blob/?view=azure-node-preview
+        - name: Python (versie 12.x)
+          href: /python/api/azure-storage-blob/
         - name: REST
           items:
             - name: 'Blobs, wachtrijen, tabellen en bestanden'

@@ -107,6 +107,8 @@
           href: sql-reference-data.md
         - name: Verifiëren met beheerde identiteit - Blobuitvoer
           href: blob-output-managed-identity.md
+        - name: Verifiëren met beheerde identiteit - Power BI
+          href: powerbi-output-managed-identity.md
     - name: Oplossingen bouwen
       items:
         - name: Twitter-sentimentanalyse

@@ -39,7 +39,7 @@
           href: container-registry-tutorial-deploy-update.md
 - name: Concepten
   items:
-    - name: Container Registry-SKU's
+    - name: Containerregister-SKU's en -limieten
       href: container-registry-skus.md
     - name: 'Registers, opslagplaatsen en installatiekopieën'
       href: container-registry-concepts.md
@@ -75,8 +75,6 @@
               href: container-registry-retention-policy.md
             - name: Automatisch tags en manifesten leegmaken (preview)
               href: container-registry-auto-purge.md
-        - name: Een klassiek register upgraden
-          href: container-registry-upgrade.md
         - name: ACR-webhooks gebruiken
           href: container-registry-webhook.md
         - name: Opslagplaatsen voor Helm-grafieken (preview)
