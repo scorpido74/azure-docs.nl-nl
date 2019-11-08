@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: eadfc4e302f4445e8e0d5105aeac4361328cb259
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 8b1e716e482c49ceba0c600aaba30fe276bdb74d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715455"
+ms.locfileid: "73748002"
 ---
 # <a name="about-azure-migrate"></a>Over Azure Migrate
 
@@ -44,16 +44,16 @@ Naast de systeem eigen Azure-hulpprogram ma's, kan Azure Migrate worden geïnteg
 
 **ISV** | **Functie**
 --- | ---
-[Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Migreren
-[Cloudamize](https://www.cloudamize.com/platform) | Evalueren 
-[Cohuur technologie](https://www.corenttech.com/AzureMigrate/) | Beoordelen en migreren
-[Apparaat 42](https://docs.device42.com/) | Evalueren
-[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Evalueren
-[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Migreren
-[Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Evalueren
-[UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Evalueren
+[Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Servers migreren
+[Cloudamize](https://www.cloudamize.com/platform) | Servers beoordelen
+[Cohuur technologie](https://www.corenttech.com/AzureMigrate/) | Servers beoordelen en migreren
+[Apparaat 42](https://docs.device42.com/) | Servers beoordelen
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | VDI beoordelen
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Servers migreren
+[Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Servers beoordelen
+[UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Servers en data bases beoordelen
 
-## <a name="tool-integration"></a>Integratie van hulp programma
+## <a name="azure-tool-integration"></a>Integratie van Azure-hulpprogram ma's
 
 De tabel bevat een overzicht van andere hulpprogram ma's die in Azure Migrate zijn geïntegreerd.
 
@@ -112,7 +112,7 @@ Azure Migrate integreert met de Azure Database Migration Service (DMS) om on-pre
 ## <a name="movere"></a>Movere
 
  
-De verhuis wagen is een SaaS-platform dat business intelligence verbetert door nauw keurig volledige IT-omgevingen binnen één dag te presen teren. Naarmate organisaties groeien, wijzigen en digitaal optimaliseren, biedt de oplossing ondernemingen met het vertrouwen dat ze nodig hebben om inzicht te hebben in hun omgeving, ongeacht het platform, de toepassing of de geografie. De aandrijf periode is door micro soft [verworven](https:/azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools) en wordt niet meer verkocht als een zelfstandige aanbieding.  De verhuis wagen is beschikbaar via de micro soft-oplossing voor de evaluatie van oplossingen en Cloud economie. [Meer informatie](https://www.movere.io) over indrijfen. Als u vragen hebt, verzendt u deze naar: movereq@microsoft.com of neemt u contact op met uw micro soft-vertegenwoordiger.
+De verhuis wagen is een SaaS-platform dat business intelligence verbetert door nauw keurig volledige IT-omgevingen binnen één dag te presen teren. Naarmate organisaties groeien, wijzigen en digitaal optimaliseren, biedt de oplossing ondernemingen met het vertrouwen dat ze nodig hebben om inzicht te hebben in hun omgeving, ongeacht het platform, de toepassing of de geografie. De aandrijf periode is door micro soft [verworven](https://azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools/) en wordt niet meer verkocht als een zelfstandige aanbieding.  De verhuis wagen is beschikbaar via de micro soft-oplossing voor de evaluatie van oplossingen en Cloud economie. [Meer informatie](https://www.movere.io) over indrijfen. Als u vragen hebt, verzendt u deze naar: movereq@microsoft.com of neemt u contact op met uw micro soft-vertegenwoordiger.
 
 We raden u aan om ook Azure Migrate, onze ingebouwde migratie service, te bekijken. Azure Migrate biedt een centrale hub om uw migratie naar de cloud te vereenvoudigen. De hub biedt uitgebreide ondersteuning voor verschillende werk belastingen, zoals fysieke en virtuele servers, data bases en toepassingen. End-to-end-zicht baarheid maakt het eenvoudig om de voortgang te volgen tijdens de detectie, evaluatie en migratie. Met zowel Azure-als partner-ISV-hulpprogram ma's die zijn ingebouwd, is Azure Migrate ook voorzien van een uitgebreide reeks functies, waaronder de detectie van virtuele en fysieke servers, het op prestaties gebaseerde formaat, kosten planning, op import gebaseerde beoordelingen en toepassingen zonder agent afhankelijkheids analyse. Als u op zoek bent naar deskundige hulp om aan de slag te gaan, heeft micro soft een ervaren [Azure expert managed service provider](https://azure.microsoft.com/partners) om u over de reis te leiden. Bekijk de [Azure migrate-website](https://azure.microsoft.com/services/azure-migrate/). 
  

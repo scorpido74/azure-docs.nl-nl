@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: c927ef071dec6e87e82a9634ccfc7097f2f187e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 362662cb6ac9b0535a0e762e5c484b31dcc009a6
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502063"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796099"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Quick Start: een console-app bouwen met de .net v4 SDK voor het beheren van Azure Cosmos DB SQL-API-account resources.
 
@@ -33,6 +33,8 @@ Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Mic
 * Voorbeeld gegevens toevoegen aan de container
 * Query’s uitvoeren voor de gegevens 
 * De database verwijderen
+
+ | pakket voor de [bron code](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/v4) van de bibliotheek [(NuGet)](https://www.nuget.org/packages/Azure.Cosmos)
 
 ## <a name="prerequisites"></a>Vereisten
 

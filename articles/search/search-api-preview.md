@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: dff6473fd01fc2d41c5bb100eefd583afe4175b0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 24e16942410c72640628bd4120d05a85e68de993
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496485"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720025"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>REST API voor Azure Cognitive Search Service-versie 2019-05-06-preview
 
@@ -25,20 +25,27 @@ In dit artikel wordt de `api-version=2019-05-06-Preview` versie van de zoek serv
 
 ## <a name="new-in-2019-05-06-preview"></a>Nieuw in 2019-05-06-preview
 
-[* * Incrementele indexering](cognitive-search-incremental-indexing-conceptual.md) is een nieuwe modus voor het indexeren waarmee status en caching worden toegevoegd, zodat u de bestaande uitvoer opnieuw kunt gebruiken wanneer de definities van gegevens, Indexeer functie en vaardigheidset ongewijzigd zijn. Deze functie is alleen van toepassing op verrijkingen via een cognitieve vaardigheidset.
++ [Incrementeel indexeren](cognitive-search-incremental-indexing-conceptual.md) is een nieuwe modus voor het indexeren waarmee de status en de cache worden toegevoegd aan een vaardig heden, zodat u de bestaande uitvoer opnieuw kunt gebruiken als de bron gegevens, de indexer en de definities van vaardig heden ongewijzigd blijven. Deze functie is alleen van toepassing op verrijkingen die een cognitieve vaardigheidset hebben gedefinieerd.
 
-Het [**kennis archief**](knowledge-store-concept-intro.md) is een nieuwe bestemming van een AI-gebaseerde verrijkings pijplijn. Naast een index kunt u nu gevulde gegevens structuren behouden die zijn gemaakt tijdens het indexeren in azure Storage. U beheert de fysieke structuren van uw gegevens door middel van elementen in een vaardig heden, met inbegrip van hoe gegevens worden gevormd, of gegevens worden opgeslagen in tabel opslag of Blob Storage en of er meerdere weer gaven zijn.
++ [Cosmos DB Indexeer functie](search-howto-index-cosmosdb.md) ondersteunt MongoDb API, Gremlin api en Cassandra-API.
 
-Door de [**klant beheerde versleutelings sleutels**](search-security-manage-encryption-keys.md) voor versleuteling aan de service zijde zijn ook een nieuwe preview-functie. Naast de ingebouwde versleutelings-op-rest die door micro soft wordt beheerd, kunt u een extra laag versleuteling Toep assen waarbij u de enige eigenaar van de sleutels bent.
++ [Azure data Lake Storage Gen2 Indexeer functie](search-howto-index-azure-data-lake-storage.md) kan inhoud en meta gegevens indexeren vanuit data Lake Storage Gen2.
 
-## <a name="other-preview-features"></a>Andere preview-functies
++ [Document extractie (preview)](cognitive-search-skill-document-extraction.md) is een cognitieve vaardigheid die wordt gebruikt tijdens het indexeren, waarmee u de inhoud van een bestand kunt extra heren uit een vakkennisset. Het kraken van documenten is eerder voorgekomen voordat de vaardig heden werden uitgevoerd. Als u deze vaardigheid hebt toegevoegd, kunt u deze bewerking ook uitvoeren binnen de vaardig heden-uitvoering.
+
++ [Tekst omzetting (preview)](cognitive-search-skill-text-translation.md) is een cognitieve vaardigheid die wordt gebruikt tijdens het indexeren waarmee tekst wordt geëvalueerd en, voor elke record, de tekst wordt omgezet in de opgegeven doel taal.
+
++ Het [kennis archief](knowledge-store-concept-intro.md) is een nieuwe bestemming van een AI-gebaseerde verrijkings pijplijn. De fysieke gegevens structuur bevindt zich in Azure Blob Storage en Azure Table Storage, en wordt gemaakt en ingevuld wanneer u een Indexeer functie uitvoert met een bijgevoegde cognitieve vaardigheids. De definitie van een kennis archief zelf is opgegeven in een definitie van een vakkennisset. In de definitie van het kennis archief beheert u de fysieke structuur van uw gegevens door middel van *projectie* -elementen die bepalen hoe gegevens worden gevormd, of gegevens worden opgeslagen in tabel opslag of Blob-opslag en of er meerdere weer gaven zijn.
+
++ Door de [klant beheerde versleutelings sleutels](search-security-manage-encryption-keys.md) voor versleuteling aan de service zijde zijn ook een nieuwe preview-functie. Naast de ingebouwde versleutelings-op-rest die door micro soft wordt beheerd, kunt u een extra laag versleuteling Toep assen waarbij u de enige eigenaar van de sleutels bent.
+
+## <a name="earlier-preview-features"></a>Eerdere preview-functies
 
 Functies die worden aangekondigd in eerdere previews zijn nog steeds beschikbaar in de open bare preview. Als u een API aanroept met een eerdere preview API-versie, kunt u deze versie blijven gebruiken of overschakelen naar `2019-05-06-Preview` zonder wijzigingen in het verwachte gedrag.
 
 + [moreLikeThis-query parameter](search-more-like-this.md) zoekt documenten die relevant zijn voor een specifiek document. Deze functie heeft eerdere voor beelden. 
-* Het [indexeren van CSV-blobs](search-howto-index-csv-blobs.md) maakt één document per regel, in plaats van één document per tekst-blob.
-* [MONGODB API-ondersteuning voor Cosmos DB Indexeer functies](search-howto-index-cosmosdb.md) is beschikbaar in de preview-versie.
 
++ Het [indexeren van CSV-blobs](search-howto-index-csv-blobs.md) maakt één document per regel, in plaats van één document per tekst-blob.
 
 ## <a name="how-to-call-a-preview-api"></a>Een preview-API aanroepen
 
