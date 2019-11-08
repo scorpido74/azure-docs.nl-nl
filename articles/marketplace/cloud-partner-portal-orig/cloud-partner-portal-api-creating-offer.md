@@ -1,35 +1,36 @@
 ---
-title: Maken of wijzigen van een aanbieding | Azure Marketplace
-description: API voor een nieuwe maken of bijwerken en de bestaande aanbieding.
+title: Een aanbieding maken of wijzigen | Azure Marketplace
+description: API voor het maken van een nieuwe of bijgewerkte en bestaande aanbieding.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 55f6aa60c836d55333e1c5b02a44114b91df822d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bfb9cfbe2c63caafef8487015f42a05b98afa29c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935525"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819724"
 ---
-<a name="create-or-modify-an-offer"></a>Maken of wijzigen van een aanbieding
+<a name="create-or-modify-an-offer"></a>Een aanbieding maken of wijzigen
 =========================
 
-Deze aanroep updates van een bepaalde aanbieding binnen de naamruimte van de uitgever of maakt u een nieuwe aanbieding.
+Met deze oproep wordt een specifieke aanbieding binnen de naam ruimte van de uitgever bijgewerkt of wordt een nieuwe aanbieding gemaakt.
 
   `PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31`
 
 
-<a name="uri-parameters"></a>URI-parameters
+<a name="uri-parameters"></a>URI-para meters
 --------------
 
 |  **Naam**         |  **Beschrijving**                      |  **Gegevenstype**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  Uitgever-ID, bijvoorbeeld `contoso` |   String |
-| offerId           |  Aanbiedings-id                     |   String        |
-| api-version       |  Meest recente versie van de API            |   Date           |
+| publisherId       |  Uitgevers-id, bijvoorbeeld `contoso` |   Tekenreeks |
+| OfferId           |  Aanbiedings-id                     |   Tekenreeks        |
+| API-versie       |  Nieuwste versie van de API            |   Date           |
 |  |  |  |
 
 <a name="header"></a>Header
@@ -42,10 +43,10 @@ Deze aanroep updates van een bepaalde aanbieding binnen de naamruimte van de uit
 |  |  |
 
 
-<a name="body-example"></a>Voorbeeld van de hoofdtekst
+<a name="body-example"></a>Voor beeld van tekst
 ------------
 
-Het volgende voorbeeld wordt een aanbieding met offerID van `contosovirtualmachine`.
+In het volgende voor beeld wordt een aanbieding gemaakt met offerID van `contosovirtualmachine`.
 
 ### <a name="request"></a>Aanvraag
 
@@ -239,23 +240,23 @@ Het volgende voorbeeld wordt een aanbieding met offerID van `contosovirtualmachi
 ```
 
 > [!NOTE]
-> Voor het wijzigen van deze aanbieding, Voeg een **If-Match** header ingesteld op * op de bovenstaande aanvraag. De hoofdtekst van de dezelfde aanvraag gebruiken als hierboven, maar de waarden naar wens wijzigen. 
+> Als u deze aanbieding wilt wijzigen, voegt u een **if-match-** header toe aan * op de bovenstaande aanvraag. Gebruik dezelfde hoofd tekst als hierboven, maar wijzig de waarden naar wens. 
 
 
-### <a name="response-status-codes"></a>Antwoord-statuscodes
+### <a name="response-status-codes"></a>Antwoord status codes
 
-| **Code**  |  **Beschrijving**                                                                            |
+| **Gecodeerd**  |  **Beschrijving**                                                                            |
 | --------  |  ---------------                                                                            |
 |  200      | `OK`. De aanvraag is verwerkt en de aanbieding is gewijzigd.           |
 |  201      | `Created`. De aanvraag is verwerkt en de aanbieding is gemaakt.   |
-|  400      | `Bad/Malformed request`. De antwoordtekst voor fout kan bevatten meer informatie.            |
-|  403      | `Forbidden`. De client heeft geen toegang tot de opgegeven naamruimte.                     |
-|  404      | `Not found`. De entiteit waarnaar wordt verwezen door de client bestaat niet.                           |
-|  412      | De server voldoet niet aan een van de voorwaarden die de aanvrager in de aanvraag opgegeven. De client moet de ETag die is verzonden met de aanvraag controleren. |
+|  400      | `Bad/Malformed request`. De hoofd tekst van het fout bericht kan meer informatie geven.            |
+|  403      | `Forbidden`. De client heeft geen toegang tot de aangevraagde naam ruimte.                     |
+|  404      | `Not found`. De entiteit waarnaar wordt verwezen door de client, bestaat niet.                           |
+|  412      | De server voldoet niet aan een van de voor waarden die de aanvrager in de aanvraag heeft opgegeven. De client moet controleren of de ETAG met de aanvraag is verzonden. |
 |  |  |
 
 
 <a name="uploading-artifacts"></a>Artefacten uploaden
 -------------------
 
-Artefacten, zoals afbeeldingen en logo's, moeten worden gedeeld door te uploaden naar een toegankelijke locatie op Internet en vervolgens, inclusief de afzonderlijke als een URI in de PUT-aanvraag, zoals in het bovenstaande voorbeeld. Het systeem detecteert dat deze bestanden niet aanwezig in de Azure marketplace-opslag zijn en deze bestanden naar storage downloaden.  Als gevolg hiervan, ziet u dat de URL van een Azure marketplace-service voor deze bestanden wordt geretourneerd door toekomstige GET-aanvragen.
+Artefacten, zoals afbeeldingen en logo's, moeten worden gedeeld door ze te uploaden naar een toegankelijke locatie op het web en vervolgens als een URI in de PUT-aanvraag, zoals in het bovenstaande voor beeld. Het systeem detecteert dat deze bestanden niet aanwezig zijn in de Azure Marketplace-opslag en downloaden deze bestanden niet naar opslag.  Als gevolg hiervan zult u merken dat toekomstige GET-aanvragen een URL voor de Azure Marketplace-service retour neren voor deze bestanden.

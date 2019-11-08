@@ -1,5 +1,5 @@
 ---
-title: Instellingen voor twee ledige verificatie beheren-Azure Active Directory | Microsoft Docs
+title: Uw instellingen voor twee ledige verificatie beheren-Azure AD
 description: Meer informatie over het wijzigen van de beveiligings verificatie methode in relatie tot twee ledige verificatie.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ed7d812a9c1cba356277a4454234531ce8d41ef
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4c402e0992a3a04d674477bc9dd19e0181fd6775
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616149"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805263"
 ---
 # <a name="manage-your-two-factor-verification-method-settings"></a>De instellingen voor de verificatie methode met twee factoren beheren
 
@@ -87,9 +87,9 @@ U kunt nieuwe telefoon nummers toevoegen of bestaande nummers bijwerken op de pa
 
 ### <a name="to-change-your-phone-numbers"></a>Telefoon nummers wijzigen
 
-1. Werk in de sectie **Hoe wilt u reageren?** van de pagina **aanvullende beveiligings verificatie** de telefoon nummer gegevens voor uw **telefoon** voor authenticatie (uw primaire mobiele apparaat) en uw **zakelijke telefoon**.
+1. Werk in de sectie **Hoe wilt u reageren?** van de pagina **aanvullende beveiligings verificatie** de telefoon nummer gegevens voor uw **telefoon voor authenticatie** (uw primaire mobiele apparaat) en uw **zakelijke telefoon**.
 
-2. Schakel het selectie vakje naast de optie **alternatieve telefoon** voor authenticatie in en typ in een secundair telefoon nummer waar u tekst berichten of telefoon gesprekken kunt ontvangen als u geen toegang hebt tot uw primaire apparaat.
+2. Schakel het selectie vakje naast de optie **alternatieve telefoon voor authenticatie** in en typ in een secundair telefoon nummer waar u tekst berichten of telefoon gesprekken kunt ontvangen als u geen toegang hebt tot uw primaire apparaat.
 
 3. Selecteer **Opslaan**.
 

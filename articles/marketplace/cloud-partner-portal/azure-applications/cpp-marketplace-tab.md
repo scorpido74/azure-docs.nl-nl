@@ -4,19 +4,20 @@ description: Op het tabblad Marketplace kunt u marketing assets voor een Azure-t
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: b5d54e4c6744675da0dea5b095590b71df6d2641
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 967b66a67d51b3a79bcf930ce977af48acc3dd63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962865"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827563"
 ---
 # <a name="azure-application-marketplace-tab"></a>Tabblad Azure Application Marketplace
 
-Op het tabblad Marketplace kunt u uw Azure-toepassing beschrijven en marketing middelen aanbieden. Dit tabblad bevat de volgende formulieren: Overzicht, marketing artefacten, Lead beheer en juridisch.
+Op het tabblad Marketplace kunt u uw Azure-toepassing beschrijven en marketing middelen aanbieden. Dit tabblad bevat de volgende formulieren: overzicht, marketing artefacten, Lead beheer en juridisch.
 
 ## <a name="overview-form"></a>Overzichts formulier
 
@@ -26,12 +27,12 @@ Het overzichts formulier bevat de vereiste en optionele velden die worden weer g
 
 In de volgende tabel worden de instellingen beschreven die moeten worden gebruikt voor het maken van een winkel voor de aanbieding.   De velden die zijn toegevoegd met een sterretje zijn vereist.
 
-|      Veld         |    Description    |
+|      Veld         |    Beschrijving    |
 |  ---------------   |  ---------------  |
-| **Hoofd\***        | De titel van de aanbieding. Deze wordt duidelijk weer gegeven in de Marketplace. De maximale lengte is 50 tekens. |
+| **Titel\***        | De titel van de aanbieding. Deze wordt duidelijk weer gegeven in de Marketplace. De maximale lengte is 50 tekens. |
 | **Overzicht\***      | Korte samen vatting van de aanbieding. De maximale lengte is 100 tekens.           |
-| **Lange samen vatting\*** | Een langere samen vatting van de aanbieding (hoewel deze mogelijk hetzelfde is als de samen vatting). De maximale lengte is 256 tekens.           |
-| **Beschrijvingen\***  | De beschrijving van de aanbieding. De maximale lengte is 3000 tekens. Eenvoudige HTML-opmaak is toegestaan, &lt;zoals&gt;p &lt;,&gt;em &lt;,&gt;ul &lt;,&gt;Li ,&lt;OL&gt; en header tags.  |
+| **\* van lange samen vatting** | Een langere samen vatting van de aanbieding (hoewel deze mogelijk hetzelfde is als de samen vatting). De maximale lengte is 256 tekens.           |
+| **Beschrijving\***  | De beschrijving van de aanbieding. De maximale lengte is 3000 tekens. Eenvoudige HTML-opmaak is toegestaan, zoals &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;Li&gt;, &lt;OL&gt; en header-tags.  |
 | **Marketing-id\*** | Een unieke URL om aan deze aanbieding te koppelen, bevat doorgaans de naam van uw organisatie en de oplossing, maximale lengte van 50 tekens. Kies een korte, beschrijvende marketing-id voor uw service. Dit wordt gebruikt in Url's voor Marketplace voor deze aanbieding. Als uw uitgevers-ID bijvoorbeeld ' Contoso ' is en uw marketing-id ' sampleApp ' is, wordt de URL voor uw aanbieding in azure Marketplace https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
 | **Preview-abonnement-Id's\*** | Voeg toe van een tot 100-abonnement-id's van de Previewers. Deze op wit vermelde abonnementen hebben toegang tot uw aanbieding terwijl deze beschikbaar is in de preview-versie nadat deze is gepubliceerd, voordat deze live gaat.          |
 | **Nuttige koppelingen**    | U kunt eventueel ook koppelingen naar verschillende bronnen geven voor gebruikers van uw aanbieding, zoals ondersteuning, Documentatie, forums, enzovoort.  Het is raadzaam om ten minste één koppeling naar uw documentatie toe te voegen.            |
@@ -47,13 +48,13 @@ Het formulier marketing artefacten bevat de vereiste en optionele velden die wor
 
 In de volgende tabel worden de marketing artefacten beschreven.
 
-|      Veld         |    Description    |
+|      Veld         |    Beschrijving    |
 |  ---------------   |  ---------------  |
-| **Geringe\***        | Klein logo: 40x40 pixels in PNG-indeling     |
-| **Drager\***       | Gemiddeld logo: 90x90 pixels in PNG-indeling    |
-| **Lange\***        | Groot logo: 115x115 pixels in PNG-indeling   |
-| **Organisatiebreed\***         | Breed logo: 255x115 pixels in PNG-indeling    |
-| **Hero**           | Optionele held-logo: 815x290 pixels in PNG-indeling. **Opmerking:** Het held pictogram kan niet worden verwijderd nadat het is geüpload. |
+| **Kleine\***        | Klein logo: 40x40 pixels in PNG-indeling     |
+| **Medium\***       | Gemiddeld logo: 90x90 pixels in PNG-indeling    |
+| **Grote\***        | Groot logo: 115x115 pixels in PNG-indeling   |
+| **Brede\***         | Breed logo: 255x115 pixels in PNG-indeling    |
+| **Hero**           | Optionele held logo: 815x290 pixels in PNG-indeling. **Opmerking:** Het held pictogram kan niet worden verwijderd nadat het is geüpload. |
 | **Scherm afbeeldingen (max. 5)** |        Scherm afbeeldingen worden weer gegeven op de pagina met product gegevens. Ze zijn een goede manier om visueel te communiceren wat uw app doet en hoe het werkt. U kunt bijvoorbeeld architectuur diagrammen weer geven of voorbeeld illustraties gebruiken. Scherm afbeeldingen zijn optioneel en u bent beperkt tot 5 per SKU. Een scherm afbeelding toevoegen:<ul><li>Selecteer **+ scherm opname toevoegen** om het scherm afbeeldings venster te openen</li><li>**Naam** : Voer een naam/titel in (maximale lengte van 100 tekens.)</li><li>**Upload** : Upload de installatie kopie. Het moet de PNG-indeling hebben en de grootte is 533 x 324 pixels.</li></ul>           |
 | **Video toevoegen**      | Optioneel, Video's worden weer gegeven op de pagina met product gegevens. Ze zijn een goede manier om visueel te communiceren wat uw toepassing doet en hoe het werkt. Een video toevoegen: <ul><li>Selecteer **+ video toevoegen** om het video venster te openen</li><li>**Naam** : Voer een naam/titel in (maximale lengte van 100 tekens.)</li><li>**Koppeling** : Voer de URL in voor de site die als host fungeert voor de video (YouTube of Vimeo)</li><li>**Miniatuur** : een miniatuur uploaden. Het moet de PNG-indeling hebben en de grootte is 533 x 324 pixels.</li></ul>          |
 |  |  |
@@ -114,19 +115,19 @@ Het formulier Lead beheer bevat een optioneel veld voor het configureren van het
 ![Doel van lead beheer selecteren](./media/azureapp-marketplace-leadmgmt.png)
 
 >[!TIP]
->Selecteer het informatie pictogram om dit bericht te bekijken: "Selecteer het systeem waar uw leads worden opgeslagen. Meer informatie over hoe u [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) verbinding mee maakt met uw CRM-systeem. "
+>Selecteer het informatie pictogram om dit bericht te bekijken: ' Selecteer het systeem waarop uw leads worden opgeslagen. Meer informatie over hoe u [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) verbinding mee maakt met uw CRM-systeem. "
 
 Zie [leads van klanten configureren](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)voor meer informatie.
 
 
-## <a name="legal"></a>Juridisch
+## <a name="legal"></a>Juridische informatie
 
 Gebruik het juridische formulier om de juridische documentatie op te geven die is vereist voor elke aanbieding.
 
 Geef de volgende informatie op:
 
-- **URL\* van privacybeleid** : Geef een koppeling op naar het privacybeleid van uw app.
-- **Gebruiksvoorwaarden\***  : Voer de gebruiks voorwaarden in voor uw app. Klanten moeten deze voor waarden accepteren voordat ze uw app kunnen proberen.
+- **URL van privacybeleid\*** : Geef een koppeling op naar het privacybeleid van uw app.
+- **Gebruiksvoorwaarden\*** : Voer de gebruiks voorwaarden in voor uw app. Klanten moeten deze voor waarden accepteren voordat ze uw app kunnen proberen.
 
 ![Juridisch formulier](./media/azureapp-marketplace-legal.png)
 

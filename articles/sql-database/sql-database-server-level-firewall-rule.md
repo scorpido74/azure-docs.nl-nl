@@ -1,5 +1,5 @@
 ---
-title: Een firewallregel op serverniveau maken - Azure SQL Database| Microsoft Docs
+title: Een serverfirewallregel maken
 description: Een firewallregel maken op SQL Database-serverniveau voor enkele en pooldatabases
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 27b554159fca2043fbd0c853e260a66294c10387
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: ff2508952b75bad88ff8ff92388c20ba52f50f42
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162301"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818262"
 ---
-# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Quickstart: Een firewallregel op serverniveau maken voor uw individuele en pooldatabases met behulp van de Azure-portal
+# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Quick Start: een firewall regel op server niveau maken voor één en gepoolde data bases met behulp van de Azure Portal
 
 Deze quickstart beschrijft hoe u een [firewallregel op serverniveau](sql-database-firewall-configure.md) maakt voor individuele en pooldatabases in Azure SQL Database met behulp van de Azure-portal, zodat u verbinding kunt maken met databaseservers, individuele databases en elastische pools en de bijbehorende databases. Een firewallregel is vereist om verbinding te maken vanaf andere Azure-resources en vanaf on-premises bronnen.
 
@@ -28,7 +28,7 @@ Deze quickstart gebruikt de resources die zijn gemaakt in [Create a single datab
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Een IP-firewallregel op serverniveau maken
 

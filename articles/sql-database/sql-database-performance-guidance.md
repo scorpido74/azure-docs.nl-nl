@@ -1,5 +1,5 @@
 ---
-title: Richt lijnen voor het afstemmen van Azure SQL Database prestaties
+title: Richtlijnen voor het afstemmen van prestaties
 description: Meer informatie over het gebruik van aanbevelingen om uw Azure SQL Database query prestaties hand matig af te stemmen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 971b35838f370f31d6e2d2da06dfdbced2fafb02
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6e42911d05f387ea47b56b913e9a1868100c1b3c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687672"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821366"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>De prestaties van de query in Azure SQL Database hand matig afstemmen
 
@@ -120,7 +120,7 @@ Nadat de SELECT-instructie is gemaakt, wordt er een ander plan gekozen, waarbij 
 
 ![Een query plan met gecorrigeerde indexen](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
 
-Het belangrijkste inzicht is dat de i/o-capaciteit van een gedeeld, grondstoffen systeem meer beperkt is dan dat van een dedicated server machine. Er is een Premium-fout opgetreden bij het minimaliseren van onnodige IO om Maxi maal te profiteren van het systeem in de DTU van elke reken grootte van de Azure SQL Database Service lagen. De juiste mogelijkheden voor het ontwerpen van fysieke data bases kunnen de latentie van afzonderlijke query's aanzienlijk verbeteren, de door Voer van gelijktijdige aanvragen die per schaal eenheid worden verwerkt, verbeteren en de kosten die nodig zijn om aan de query te voldoen, minimaliseren. Voor meer informatie over de ontbrekende index Dmv's raadpleegt u [sys. DM _db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+Het belangrijkste inzicht is dat de i/o-capaciteit van een gedeeld, grondstoffen systeem meer beperkt is dan dat van een dedicated server machine. Er is een Premium-fout opgetreden bij het minimaliseren van onnodige IO om Maxi maal te profiteren van het systeem in de DTU van elke reken grootte van de Azure SQL Database Service lagen. De juiste mogelijkheden voor het ontwerpen van fysieke data bases kunnen de latentie van afzonderlijke query's aanzienlijk verbeteren, de door Voer van gelijktijdige aanvragen die per schaal eenheid worden verwerkt, verbeteren en de kosten die nodig zijn om aan de query te voldoen, minimaliseren. Voor meer informatie over de ontbrekende index Dmv's raadpleegt u [sys. dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
 
 ### <a name="query-tuning-and-hinting"></a>Verfijning van query's en hints
 
@@ -214,7 +214,7 @@ In het tweede gedeelte van het voor beeld wordt een query Hint gebruikt om te ge
 
 ![Afstemmen van query's met behulp van een query Hint](./media/sql-database-performance-guidance/query_tuning_3.png)
 
-U kunt het effect zien in de tabel **sys. resource_stats** (er is een vertraging van de tijd dat u de test uitvoert en wanneer de gegevens in de tabel worden ingevuld). Voor dit voor beeld wordt deel 1 uitgevoerd tijdens het 22:25:00-tijd venster en deel 2 uitgevoerd om 22:35:00. In het vorige tijd venster werden meer resources in dat tijd venster gebruikt dan in een later stadium (vanwege verbeteringen in de plan efficiëntie).
+U kunt het effect in de tabel **sys. resource_stats** zien (er is een vertraging van de tijd dat u de test uitvoert en wanneer de gegevens in de tabel worden ingevuld). Voor dit voor beeld wordt deel 1 uitgevoerd tijdens het 22:25:00-tijd venster en deel 2 uitgevoerd om 22:35:00. In het vorige tijd venster werden meer resources in dat tijd venster gebruikt dan in een later stadium (vanwege verbeteringen in de plan efficiëntie).
 
 ```sql
 SELECT TOP 1000 *

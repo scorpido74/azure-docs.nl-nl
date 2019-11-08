@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: jamwall
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.openlocfilehash: c0f3fba389f9cb6f55ac5bf7bb81475fa8244cbf
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 53d6b5b43a028d552c95c58aebf7268353621759
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195248"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827886"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Ondersteuning voor het Commercial Marketplace-programma in Partner Center
 
@@ -26,7 +27,7 @@ Micro soft biedt ondersteuning voor een groot aantal producten en services. Het 
 
 1. Meld u met uw werk account aan bij het [commerciële Marketplace-programma op partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) . (Als u dit nog niet hebt gedaan, moet u [een partner centrum-account maken](./create-account.md).)
 
-1. Selecteer in het bovenste menu aan de rechter kant van de pagina het ondersteunings pictogram. 
+1. Selecteer in het bovenste menu aan de rechter kant van de pagina het **ondersteunings** pictogram. 
  
    ![Ondersteunings pictogram](./media/commercial-marketplace-support.png)
 
@@ -38,15 +39,15 @@ Micro soft biedt ondersteuning voor een groot aantal producten en services. Het 
 
 1. Selecteer **[Community-Forum voor Marketplace-partners](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** om uw vragen te beantwoorden door gebruik te maken van de kennis van andere micro soft-Publishers. 
 
-1. Selecteer **[extra Help](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)** om een nieuw ticket voor een ondersteunings **aanvraag** te openen. 
+1. Selecteer **[extra Help](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)** om een nieuw ticket voor een **ondersteunings aanvraag** te openen. 
 
 ## <a name="how-to-open-a-support-ticket"></a>Een ondersteunings ticket openen
 
 Als u **extra hulp** selecteert in het menu commerciële Marketplace-ondersteuning in het partner centrum, wordt u doorgestuurd naar de pagina Microsoft ondersteuning voor bedrijven. Er worden verschillende vervolg keuzemenu's weer geven. De eerste paar vervolg keuzemenu's worden automatisch ingevuld. Voor Marketplace-ondersteuning identificeert u de product familie als **Cloud en Online Services**, het product als **Marketplace-Uitgever**en de product versie als **Marketplace-publicatie**. Wijzig deze vooraf gevulde vervolg menu selecties niet. 
 
-- **Selecteer een categorie die het probleem het beste beschrijft**: Kies de categorie die het beste kan worden uitgelijnd met uw vraag of probleem. Als u een categorie selecteert, wordt er een extra vervolg keuzemenu weer gegeven waarin u wordt gevraagd het probleem op te lossen dat het beste uw probleem beschrijft.
+- **Selecteer een categorie die het probleem het beste beschrijft**: Kies de categorie die het beste overeenkomt met uw vraag of probleem. Als u een categorie selecteert, wordt er een extra vervolg keuzemenu weer gegeven waarin u wordt gevraagd het probleem op te lossen dat het beste uw probleem beschrijft.
 
-- **Selecteer een probleem dat het beste het probleem beschrijft**: Kies het probleem in de weer gegeven opties die het beste overeenkomt met uw probleem. Afhankelijk van het probleem kan een nieuwe sectie worden weer gegeven met de melding ' Hier vindt u informatie die u kan helpen ' met koppelingen die relevant zijn voor uw probleem. Bekijk deze koppelingen voordat u de knop **volgende** selecteert om te zien of uw vraag of probleem is opgelost.
+- **Selecteer een probleem dat het beste het probleem beschrijft**: Kies het probleem in de vermelde opties die het beste overeenkomt met uw probleem. Afhankelijk van het probleem kan een nieuwe sectie worden weer gegeven met de melding ' Hier vindt u informatie die u kan helpen ' met koppelingen die relevant zijn voor uw probleem. Bekijk deze koppelingen voordat u de knop **volgende** selecteert om te zien of uw vraag of probleem is opgelost.
 
 Als u de knop **volgende** selecteert, wordt u omgeleid naar de pagina met details van het **probleem** . 
 
@@ -62,7 +63,7 @@ In de sectie **probleem Details** wordt uitgelegd wat u hulp nodig hebt bij.
 
 #### <a name="select-a-support-plan"></a>Een ondersteuningsplan selecteren
 
-In het gedeelte ondersteunings **plan** is geen informatie vereist. Selecteer **Volgende**. 
+In het gedeelte **ondersteunings plan** is geen informatie vereist. Selecteer **Volgende**. 
 
 #### <a name="select-the-severity-of-your-issue"></a>Selecteer de ernst van het probleem
 
@@ -73,7 +74,7 @@ In het gedeelte **Ernst** is geen informatie vereist. Selecteer **Volgende**.
 Controleer in de sectie **contact gegevens** of de naam, het telefoon nummer en het e-mail adres van uw primaire contact persoon juist zijn. 
 - Deze informatie bijwerken als u iets ziet dat onjuist is
 - U kunt indien gewenst andere contact personen van uw bedrijf toevoegen aan deze ondersteunings aanvraag
-- Selecteer **Volgende**
+- Selecteer **Volgende**.
 
 #### <a name="review-and-submit-your-support-request"></a>Uw ondersteunings aanvraag controleren en verzenden
 
@@ -83,9 +84,9 @@ Controleer de informatie over de ondersteunings aanvraag in het gedeelte **beoor
 
 ## <a name="track-your-existing-support-requests"></a>Uw bestaande ondersteunings aanvragen bijhouden 
 
-Ga naar de ondersteunings pagina voor [commerciële Marketplace](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)om uw ondersteunings aanvraag bij te houden. 
+Ga naar de [ondersteunings pagina voor commerciële Marketplace](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)om uw ondersteunings aanvraag bij te houden. 
 
-Selecteer op de bovenste blauwe menu balk naast ' ondersteuning voor bedrijven ' de koppeling ondersteunings **aanvragen** . 
+Selecteer op de bovenste blauwe menu balk naast ' ondersteuning voor bedrijven ' de koppeling **ondersteunings aanvragen** . 
 
 Bekijk alle open en gesloten ondersteunings aanvragen in de sectie **micro soft Professional Support** . 
 

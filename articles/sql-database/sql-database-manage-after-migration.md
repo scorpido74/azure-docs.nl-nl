@@ -1,5 +1,5 @@
 ---
-title: Afzonderlijke en gepoolde data bases beheren na migratie-Azure SQL Database
+title: Afzonderlijke en gepoolde data bases beheren na migratie
 description: Meer informatie over het beheren van uw data base na migratie naar Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: d92b4b99e6ae6a7a07174e59d7cf3c9766c0eabf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689538"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818968"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nieuwe DBA in de Cloud: het beheren van uw afzonderlijke en gegroepeerde Data bases in Azure SQL Database
 
@@ -272,7 +272,7 @@ Vanuit deze grafiek kunt u ook waarschuwingen per resource configureren. Met dez
 
 #### <a name="dynamic-management-views"></a>Dynamische beheer weergaven
 
-U kunt een query uitvoeren op de dynamische beheer weergave [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) voor het retour neren van de geschiedenis van de statistieken van het Resource verbruik van het afgelopen uur en de [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) -catalogus weergave om de afgelopen 14 dagen geschiedenis te retour neren.
+U kunt een query uitvoeren op de weer gave [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) Dynamic Management om de geschiedenis van de gegevens over het verbruik van de resource te retour neren van het afgelopen uur en de [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) -catalogus weergave om de afgelopen 14 dagen geschiedenis te retour neren.
 
 #### <a name="query-performance-insight"></a>Inzicht in queryprestaties
 
@@ -292,7 +292,7 @@ Uw aanpak voor het oplossen van problemen met prestaties kan aanzienlijk profite
 
 Bij het oplossen van problemen is het belang rijk om te bepalen of het nu alleen de toepassing of de data base is die er een back-up van maakt, wat invloed heeft op de prestaties van uw toepassing. Vaak ligt het prestatie probleem in de toepassingslaag. Dit kan de architectuur of het gegevens toegangs patroon zijn. Stel dat u een intensieve-toepassing hebt die gevoelig is voor netwerk latentie. In dit geval gaat uw toepassing in, omdat er veel korte aanvragen worden teruggestuurd tussen de toepassing en de server en op een gelaste netwerk. deze retours worden snel opgeteld. U kunt in dit geval [batch query's](sql-database-performance-guidance.md#batch-queries)gebruiken om de prestaties te verbeteren. Door batches te gebruiken, kunt u op een enorme manier uw aanvragen verwerken in een batch. Zo kunt u de retour latentie verminderen en de prestaties van uw toepassingen verbeteren.
 
-Daarnaast kunt u de dynamische beheer weergaven [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) en [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) controleren om inzicht te krijgen in het CPU-, i/o-en geheugen gebruik, als u een degradatie van de algehele prestaties van uw data base ziet. Uw prestaties zijn mogelijk van invloed op uw data base geen resources. Het kan zijn dat u de berekenings grootte en/of de servicelaag moet wijzigen op basis van de groeiende en verkleinde belasting vereisten.
+Daarnaast kunt u, als u een degradatie van de algehele prestaties van uw data base ziet, u de dynamische beheer weergaven [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) en [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) bewaken om inzicht te krijgen in het CPU-, i/o-en geheugen gebruik. Uw prestaties zijn mogelijk van invloed op uw data base geen resources. Het kan zijn dat u de berekenings grootte en/of de servicelaag moet wijzigen op basis van de groeiende en verkleinde belasting vereisten.
 
 Zie voor een uitgebreide set aanbevelingen voor het afstemmen van prestatie problemen: [uw data base afstemmen](sql-database-performance-guidance.md#tune-your-database).
 

@@ -1,5 +1,5 @@
 ---
-title: 'VS code: verbinding maken en gegevens opvragen in Azure SQL Database '
+title: VS code gebruiken om verbinding te maken en query's uit te zoeken
 description: Ontdek hoe u verbinding maakt met SQL Database in Azure met behulp van Visual Studio Code. Voer daarna Transact-SQL-instructies (T-SQL) uit om query's uit te voeren voor gegevens en om gegevens te bewerken.
 keywords: verbinding maken met sql-database
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 20de97e9da7fc70e6712aedb76352db1b5748192
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 28b35f273783b2e4d0b8f59c5bc5be384b933ba2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690875"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826894"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Snelstartgids: Visual Studio code gebruiken om verbinding te maken en een Azure SQL Database te zoeken
 
@@ -109,7 +109,7 @@ Gebruik Visual Studio Code om verbinding te maken met uw Azure SQL Database-serv
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Servernaam** | De volledig gekwalificeerde servernaam | Dit moet er ongeveer als volgt uitzien: **mijnnieuweserver20170313.database.windows.net**. |
    | **Databasenaam** | mySampleDatabase | De database waarmee verbinding moet worden gemaakt. |
-   | **Authenticatie** | SQL-aanmelding| In deze zelfstudie wordt gebruik gemaakt van SQL-verificatie. |
+   | **Verificatie** | SQL-aanmelding| In deze zelfstudie wordt gebruik gemaakt van SQL-verificatie. |
    | **Gebruikersnaam** | Gebruikersnaam | De gebruikersnaam van het serverbeheerdersaccount dat wordt gebruikt voor het maken van de server. |
    | **Wachtwoord (SQL-aanmelding)** | Wachtwoord | Het wachtwoord van het serverbeheerdersaccount dat wordt gebruikt voor het maken van de server. |
    | **Wachtwoord opslaan?** | Ja of nee | Selecteer **Ja** als u het wachtwoord niet elke keer wilt invoeren. |

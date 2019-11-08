@@ -1,22 +1,22 @@
 ---
-title: Azure SQL Database DTU-resource beperkt enkele data bases | Microsoft Docs
+title: DTU-resource beperkt enkele data bases
 description: Op deze pagina worden enkele veelvoorkomende DTU-resource limieten voor afzonderlijke data bases in Azure SQL Database beschreven.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 37cda6dec3f98a195e704808244656f3182b4c2a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3fb021c06369d1f37dad83b3f9b27e039ddf8b5e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520995"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811290"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>Resource limieten voor afzonderlijke data bases met behulp van het DTU-aankoop model
 
@@ -43,7 +43,7 @@ In de volgende tabellen ziet u de beschik bare resources voor één data base in
 | Maximaal aantal gelijktijdige sessies | 300 |
 |||
 
-### <a name="standard-service-tier"></a>Standard-serviceniveau
+### <a name="standard-service-tier"></a>Servicelaag Standard
 
 | **Reken grootte** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|

@@ -1,5 +1,5 @@
 ---
-title: Vergelijking van Azure SQL Database-functies
+title: Vergelijking van functies
 description: In dit artikel worden de functies vergeleken van SQL Server die beschikbaar zijn in verschillende soorten Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 7f0e4237a8400faf95af728665e8ee61daaab3bb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bfb44a44967c474da319c574307c7c289b28648e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690019"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807813"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database functies
 

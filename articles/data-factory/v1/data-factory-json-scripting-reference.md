@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: bade2e7ac53277b2e23e8cf6847cc30940cd4819
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b72be7026b0b8077cf5bf9f775d10fd03edd9118
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666818"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815643"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Naslag informatie voor JSON-script Azure Data Factory
 > [!NOTE]
@@ -50,8 +50,8 @@ In de volgende tabel worden de eigenschappen in de JSON-definitie van de pijp li
 | naam | Naam van de pijplijn. Geef een naam op die de actie vertegenwoordigt die de activiteit of pijp lijn heeft geconfigureerd<br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken (\_)</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', '\\'</li></ul> |Ja |
 | description |Tekst waarin wordt beschreven waarvoor de activiteit of pijp lijn wordt gebruikt | Nee |
 | activities | Bevat een lijst met activiteiten. | Ja |
-| start |De begin datum/-tijd voor de pijp lijn. Moet de [ISO-indeling](https://en.wikipedia.org/wiki/ISO_8601)hebben. Bijvoorbeeld: 2014-10-14T16:32:41. <br/><br/>Het is mogelijk om een lokale tijd op te geven, bijvoorbeeld een EST-tijd. Hier volgt een voor beeld: `2016-02-27T06:00:00**-05:00`, dat is 6 AM EST.<br/><br/>Met de eigenschappen Start en end geeft u de actieve periode voor de pijp lijn op. Uitvoer segmenten worden alleen geproduceerd in deze actieve periode. |Nee<br/><br/>Als u een waarde voor de eigenschap end opgeeft, moet u een waarde voor de eigenschap Start opgeven.<br/><br/>De begin-en eind tijd kunnen beide leeg zijn om een pijp lijn te maken. U moet beide waarden opgeven om een actieve periode in te stellen voor het uitvoeren van de pijp lijn. Als u geen begin-en eind tijden opgeeft bij het maken van een pijp lijn, kunt u ze later instellen met de cmdlet Set-AzDataFactoryPipelineActivePeriod. |
-| endsystemen |Eind datum-tijd voor de pijp lijn. Indien opgegeven moet de ISO-indeling hebben. Bijvoorbeeld: 2014-10-14T17:32:41 <br/><br/>Het is mogelijk om een lokale tijd op te geven, bijvoorbeeld een EST-tijd. Hier volgt een voor beeld: `2016-02-27T06:00:00**-05:00`, dat is 6 AM EST.<br/><br/>Als u de pijp lijn voor onbepaalde tijd wilt uitvoeren, geeft u 9999-09-09 op als de waarde voor de eigenschap End. |Nee <br/><br/>Als u een waarde voor de eigenschap Start opgeeft, moet u een waarde voor de eigenschap End opgeven.<br/><br/>Zie opmerkingen voor de eigenschap **Start** . |
+| start |De begin datum/-tijd voor de pijp lijn. Moet de [ISO-indeling](https://en.wikipedia.org/wiki/ISO_8601)hebben. Bijvoorbeeld: 2014-10-14T16:32:41. <br/><br/>Het is mogelijk om een lokale tijd op te geven, bijvoorbeeld een EST-tijd. Hier volgt een voor beeld: `2016-02-27T06:00:00**-05:00`, dat is 6 uur EST.<br/><br/>Met de eigenschappen Start en end geeft u de actieve periode voor de pijp lijn op. Uitvoer segmenten worden alleen geproduceerd in deze actieve periode. |Nee<br/><br/>Als u een waarde voor de eigenschap end opgeeft, moet u een waarde voor de eigenschap Start opgeven.<br/><br/>De begin-en eind tijd kunnen beide leeg zijn om een pijp lijn te maken. U moet beide waarden opgeven om een actieve periode in te stellen voor het uitvoeren van de pijp lijn. Als u geen begin-en eind tijden opgeeft bij het maken van een pijp lijn, kunt u ze later instellen met de cmdlet Set-AzDataFactoryPipelineActivePeriod. |
+| endsystemen |Eind datum-tijd voor de pijp lijn. Indien opgegeven moet de ISO-indeling hebben. Bijvoorbeeld: 2014-10-14T17:32:41 <br/><br/>Het is mogelijk om een lokale tijd op te geven, bijvoorbeeld een EST-tijd. Hier volgt een voor beeld: `2016-02-27T06:00:00**-05:00`, dat is 6 uur EST.<br/><br/>Als u de pijp lijn voor onbepaalde tijd wilt uitvoeren, geeft u 9999-09-09 op als de waarde voor de eigenschap End. |Nee <br/><br/>Als u een waarde voor de eigenschap Start opgeeft, moet u een waarde voor de eigenschap End opgeven.<br/><br/>Zie opmerkingen voor de eigenschap **Start** . |
 | isPaused |Als deze eigenschap is ingesteld op True, wordt de pijp lijn niet uitgevoerd. Standaard waarde = false. U kunt deze eigenschap gebruiken om in of uit te scha kelen. |Nee |
 | pipelineMode |De methode voor het plannen van uitvoeringen voor de pijp lijn. Toegestane waarden zijn: gepland (standaard), eenmalige.<br/><br/>' Gepland ' geeft aan dat de pijp lijn wordt uitgevoerd op een opgegeven tijds interval op basis van de actieve periode (begin-en eind tijd). ' Eenmalige ' geeft aan dat de pijp lijn slechts één keer wordt uitgevoerd. Eenmalige-pijp lijnen kunnen op dit moment niet worden gewijzigd of bijgewerkt. Zie [eenmalige-pijp lijn](data-factory-create-pipelines.md#onetime-pipeline) voor meer informatie over de instelling van eenmalige. |Nee |
 | expirationTime |De duur van de periode na het maken van de pijp lijn, en deze moet ingericht blijven. Als het geen actieve, mislukte of uitgevoerde uitvoeringen heeft, wordt de pijp lijn automatisch verwijderd zodra de verloop tijd is bereikt. |Nee |
@@ -356,7 +356,7 @@ Tenzij er een gegevensset wordt geproduceerd door Azure Data Factory, moet deze 
 
 | Naam | Beschrijving | Vereist | Standaard waarde |
 | --- | --- | --- | --- |
-| dataDelay |Tijd om de controle over de beschik baarheid van de externe gegevens voor het opgegeven segment te vertragen. Als de gegevens bijvoorbeeld elk uur beschikbaar zijn, is de controle om te zien of de externe gegevens beschikbaar zijn en kan het bijbehorende segment worden uitgesteld met behulp van dataDelay.<br/><br/>Is alleen van toepassing op de huidige tijd.  Als het bijvoorbeeld 1:00 PM nu is en deze waarde 10 minuten is, begint de validatie om 1:10 PM.<br/><br/>Deze instelling heeft geen invloed op segmenten in het verleden (segmenten met eind tijd segment + dataDelay < nu) worden zonder vertraging verwerkt.<br/><br/>Er moet een tijd van meer dan 23:59 uur worden opgegeven met de `day.hours:minutes:seconds`-indeling. Als u bijvoorbeeld 24 uur wilt opgeven, gebruikt u 24:00:00 niet. gebruik in plaats daarvan 1,00:00:00. Als u 24:00:00 gebruikt, wordt dit beschouwd als 24 dagen (24.00:00:00). Geef voor 1 dag en 4 uur 1:04:00:00 op. |Nee |0 |
+| dataDelay |Tijd om de controle over de beschik baarheid van de externe gegevens voor het opgegeven segment te vertragen. Als de gegevens bijvoorbeeld elk uur beschikbaar zijn, is de controle om te zien of de externe gegevens beschikbaar zijn en kan het bijbehorende segment worden uitgesteld met behulp van dataDelay.<br/><br/>Is alleen van toepassing op de huidige tijd.  Als het bijvoorbeeld 1:00 PM nu is en deze waarde 10 minuten is, begint de validatie om 1:10 PM.<br/><br/>Deze instelling heeft geen invloed op segmenten in het verleden (segmenten met eind tijd segment + dataDelay < nu) worden zonder vertraging verwerkt.<br/><br/>Er moet een tijd van meer dan 23:59 uur worden opgegeven met de `day.hours:minutes:seconds` indeling. Als u bijvoorbeeld 24 uur wilt opgeven, gebruikt u 24:00:00 niet. gebruik in plaats daarvan 1,00:00:00. Als u 24:00:00 gebruikt, wordt dit beschouwd als 24 dagen (24.00:00:00). Geef voor 1 dag en 4 uur 1:04:00:00 op. |Nee |0 |
 | retryInterval |De wacht tijd tussen een storing en de volgende nieuwe poging. Als een poging mislukt, wordt de volgende poging na retryInterval. <br/><br/>Als deze 1:00 PM nu is, beginnen we met de eerste try. Als de duur voor het volt ooien van de eerste validatie controle 1 minuut is en de bewerking is mislukt, is de volgende nieuwe poging om 1:00 + 1 min (duur) + 1 min (interval voor opnieuw proberen) = 1:02 PM. <br/><br/>Voor segmenten in het verleden is er geen vertraging. De nieuwe poging vindt direct plaats. |Nee |00:01:00 (1 minuut) |
 | retryTimeout |De time-out voor elke nieuwe poging.<br/><br/>Als deze eigenschap is ingesteld op 10 minuten, moet de validatie binnen tien minuten worden voltooid. Als het langer dan tien minuten duurt om de validatie uit te voeren, treedt er een time-out op voor de poging.<br/><br/>Als alle pogingen voor de validatie een time-out hebben, wordt het segment gemarkeerd als out. |Nee |00:10:00 (10 minuten) |
 | maximumRetry |Aantal keer dat er moet worden gecontroleerd op de beschik baarheid van de externe gegevens. De toegestane maximum waarde is 10. |Nee |3 |
@@ -378,7 +378,7 @@ Klik op de koppeling voor de winkel waarin u bent geïnteresseerd om de JSON-sch
 | &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL Database](#azure-sql-database) |
 | &nbsp; |[Azure SQL Data Warehouse](#azure-sql-data-warehouse) |
-| &nbsp; |[Azure Search](#azure-search) |
+| &nbsp; |[Azure Cognitive Search](#azure-cognitive-search) |
 | &nbsp; |[Azure Table storage](#azure-table-storage) |
 | **Databases** |[Amazon Redshift](#amazon-redshift) |
 | &nbsp; |[IBM DB2](#ibm-db2) |
@@ -1279,15 +1279,15 @@ Als u gegevens naar Azure SQL Data Warehouse kopieert, stelt u het **sink-type**
 
 Zie [Azure SQL Data Warehouse connector](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) -artikel voor meer informatie.
 
-## <a name="azure-search"></a>Azure Search
+## <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
 ### <a name="linked-service"></a>Gekoppelde service
-Als u een Azure Search gekoppelde service wilt definiëren, stelt u het **type** van de gekoppelde service in op **AzureSearch**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
+Als u een gekoppelde Azure Cognitive Search-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **AzureSearch**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
 | Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
-| url | De URL voor de Azure Search-service. | Ja |
-| sleutel | De beheerders sleutel voor de Azure Search-service. | Ja |
+| url | URL voor de zoek service. | Ja |
+| sleutel | De beheerders sleutel voor de zoek service. | Ja |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -1304,15 +1304,15 @@ Als u een Azure Search gekoppelde service wilt definiëren, stelt u het **type**
 }
 ```
 
-Zie [Azure Search connector](data-factory-azure-search-connector.md#linked-service-properties) -artikel voor meer informatie.
+Zie het artikel over [Azure Cognitive Search-connector](data-factory-azure-search-connector.md#linked-service-properties) voor meer informatie.
 
 ### <a name="dataset"></a>Gegevensset
-Als u een Azure Search gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **AzureSearchIndex**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
+Als u een Azure Cognitive Search-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **AzureSearchIndex**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
 | Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
 | type | De eigenschap type moet worden ingesteld op **AzureSearchIndex**.| Ja |
-| indexName | De naam van de Azure Search index. Data Factory maakt de index niet. De index moet bestaan in Azure Search. | Ja |
+| indexName | De naam van de zoek index. Data Factory maakt de index niet. De index moet bestaan in azure Cognitive Search. | Ja |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -1333,15 +1333,15 @@ Als u een Azure Search gegevensset wilt definiëren, stelt u het **type** van de
 }
 ```
 
-Zie [Azure Search connector](data-factory-azure-search-connector.md#dataset-properties) -artikel voor meer informatie.
+Zie het artikel over [Azure Cognitive Search-connector](data-factory-azure-search-connector.md#dataset-properties) voor meer informatie.
 
-### <a name="azure-search-index-sink-in-copy-activity"></a>Index Sink Azure Search in Kopieer activiteit
-Als u gegevens naar een Azure Search index kopieert, stelt u het **sink-type** van de Kopieer activiteit in op **AzureSearchIndexSink**en geeft u de volgende eigenschappen op in de sectie **sink** :
+### <a name="azure-cognitive-search-index-sink-in-copy-activity"></a>Index Sink van Azure Cognitive Search in Kopieer activiteit
+Als u gegevens naar een zoek index kopieert, stelt u het **sink-type** van de Kopieer activiteit in op **AzureSearchIndexSink**en geeft u de volgende eigenschappen op in de sectie **sink** :
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Hiermee geeft u op of u wilt samen voegen of vervangen wanneer een document al aanwezig is in de index. | Samen voegen (standaard)<br/>Uploaden| Nee |
-| writeBatchSize | Hiermee worden gegevens geüpload naar de Azure Search-index wanneer de buffer grootte writeBatchSize bereikt. | 1 tot en met 1.000. De standaard waarde is 1000. | Nee |
+| writeBehavior | Hiermee geeft u op of u wilt samen voegen of vervangen wanneer een document al aanwezig is in de index. | samen voegen (standaard)<br/>Uploaden| Nee |
+| writeBatchSize | Uploadt gegevens in de zoek index wanneer de buffer grootte writeBatchSize bereikt. | 1 tot en met 1.000. De standaard waarde is 1000. | Nee |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -1386,7 +1386,7 @@ Als u gegevens naar een Azure Search index kopieert, stelt u het **sink-type** v
 }
 ```
 
-Zie [Azure Search connector](data-factory-azure-search-connector.md#copy-activity-properties) -artikel voor meer informatie.
+Zie het artikel over [Azure Cognitive Search-connector](data-factory-azure-search-connector.md#copy-activity-properties) voor meer informatie.
 
 ## <a name="azure-table-storage"></a>Azure-tabelopslag
 
@@ -1536,7 +1536,7 @@ Als u gegevens naar Azure Table Storage kopieert, stelt u het **sink-type** van 
 | azureTableDefaultPartitionKeyValue |Standaard waarde voor de partitie sleutel die door de Sink kan worden gebruikt. |Een teken reeks waarde. |Nee |
 | azureTablePartitionKeyName |Geef de naam op van de kolom waarvan de waarden worden gebruikt als partitie sleutels. Als u niets opgeeft, wordt AzureTableDefaultPartitionKeyValue gebruikt als partitie sleutel. |Een kolom naam. |Nee |
 | azureTableRowKeyName |Geef de naam van de kolom op waarvan de kolom waarden worden gebruikt als rijdefinitie. Als u deze niet opgeeft, gebruikt u een GUID voor elke rij. |Een kolom naam. |Nee |
-| azureTableInsertType |De modus om gegevens in de Azure-tabel in te voegen.<br/><br/>Met deze eigenschap bepaalt u of bestaande rijen in de uitvoer tabel met overeenkomende partitie-en rijlabels hun waarden vervangen of samengevoegd hebben. <br/><br/>Zie entiteit [invoegen of samen voegen](https://msdn.microsoft.com/library/azure/hh452241.aspx) en onderwerpen over [entiteiten invoegen of vervangen](https://msdn.microsoft.com/library/azure/hh452242.aspx) voor meer informatie over hoe deze instellingen (samen voegen en vervangen) werken. <br/><br> Deze instelling is van toepassing op het niveau van de rij, niet op het tabel niveau, en geen van beide opties verwijdert rijen in de uitvoer tabel die niet voor komen in de invoer. |Samen voegen (standaard)<br/>vervangen |Nee |
+| azureTableInsertType |De modus om gegevens in de Azure-tabel in te voegen.<br/><br/>Met deze eigenschap bepaalt u of bestaande rijen in de uitvoer tabel met overeenkomende partitie-en rijlabels hun waarden vervangen of samengevoegd hebben. <br/><br/>Zie entiteit [invoegen of samen voegen](https://msdn.microsoft.com/library/azure/hh452241.aspx) en onderwerpen over [entiteiten invoegen of vervangen](https://msdn.microsoft.com/library/azure/hh452242.aspx) voor meer informatie over hoe deze instellingen (samen voegen en vervangen) werken. <br/><br> Deze instelling is van toepassing op het niveau van de rij, niet op het tabel niveau, en geen van beide opties verwijdert rijen in de uitvoer tabel die niet voor komen in de invoer. |samen voegen (standaard)<br/>vervangen |Nee |
 | writeBatchSize |Hiermee worden gegevens in de Azure-tabel ingevoegd wanneer de writeBatchSize of writeBatchTimeout wordt bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 10000) |
 | writeBatchTimeout |Hiermee worden gegevens in de Azure-tabel ingevoegd wanneer de writeBatchSize of writeBatchTimeout wordt bereikt |duur<br/><br/>Voor beeld: "00:20:00" (20 minuten) |Nee (standaard waarde voor standaard time-outwaarde voor Storage-client 90 sec) |
 
@@ -1706,7 +1706,7 @@ Als u een gekoppelde IBM DB2-service wilt definiëren, stelt u het **type** van 
 | --- | --- | --- |
 | server |Naam van de DB2-Server. |Ja |
 | database |Naam van de DB2-Data Base. |Ja |
-| Schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |Nee |
+| schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |Nee |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de DB2-Data Base. Mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
 | gebruikersnaam |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |Nee |
 | wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
@@ -1822,7 +1822,7 @@ Als u een gekoppelde MySQL-service wilt definiëren, stelt u het **type** van de
 | --- | --- | --- |
 | server |De naam van de MySQL-server. |Ja |
 | database |De naam van de MySQL-data base. |Ja |
-| Schema |De naam van het schema in de data base. |Nee |
+| schema |De naam van het schema in de data base. |Nee |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de MySQL-data base. Mogelijke waarden zijn: `Basic`. |Ja |
 | Gebruikers |Geef de gebruikers naam op om verbinding te maken met de MySQL-data base. |Ja |
 | wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven. |Ja |
@@ -2113,7 +2113,7 @@ Als u een gekoppelde PostgreSQL-service wilt definiëren, stelt u het **type** v
 | --- | --- | --- |
 | server |De naam van de PostgreSQL-server. |Ja |
 | database |De naam van de PostgreSQL-data base. |Ja |
-| Schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |Nee |
+| schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |Nee |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de PostgreSQL-data base. Mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
 | gebruikersnaam |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |Nee |
 | wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
@@ -2340,7 +2340,7 @@ Als u een SAP HANA gekoppelde service wilt definiëren, stelt u het **type** van
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-server | De naam van de server waarop het SAP HANA-exemplaar zich bevindt. Als uw server gebruikmaakt van een aangepaste poort, geeft u `server:port` op. | tekenreeks | Ja
+server | De naam van de server waarop het SAP HANA-exemplaar zich bevindt. Als uw server gebruikmaakt van een aangepaste poort, geeft u `server:port`op. | tekenreeks | Ja
 authenticationType | Type verificatie. | tekenreeksexpressie. "Basic" of "Windows" | Ja
 gebruikersnaam | Naam van de gebruiker die toegang heeft tot de SAP-server | tekenreeks | Ja
 wachtwoord | Het wachtwoord voor de gebruiker. | tekenreeks | Ja
@@ -2671,7 +2671,7 @@ Als u een gekoppelde Sybase-service wilt definiëren, stelt u het **type** van d
 | --- | --- | --- |
 | server |De naam van de Sybase-server. |Ja |
 | database |De naam van de Sybase-data base. |Ja |
-| Schema |De naam van het schema in de data base. |Nee |
+| schema |De naam van het schema in de data base. |Nee |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de Sybase-data base. Mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
 | gebruikersnaam |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |Nee |
 | wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
@@ -2976,7 +2976,7 @@ Als u gegevens uit Cassandra kopieert, stelt u het **bron type** van de Kopieer 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-92-query of CQL-query. Zie [CQL Reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)(Engelstalig). <br/><br/>Wanneer u SQL query gebruikt, geeft u de naam van de **spatie op. tabel naam** voor de tabel die u wilt doorzoeken. |Nee (als TableName en Keys op gegevensset zijn gedefinieerd). |
-| consistencyLevel |Het consistentie niveau geeft aan hoeveel replica's moeten reageren op een lees aanvraag voordat gegevens worden geretourneerd naar de client toepassing. Cassandra controleert het opgegeven aantal replica's voor gegevens om te voldoen aan de Lees aanvraag. |EEN, TWEE, DRIE, QUORUM, ALLE, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Zie [gegevens consistentie configureren](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) voor meer informatie. |Nee. De standaard waarde is één. |
+| consistencyLevel |Het consistentie niveau geeft aan hoeveel replica's moeten reageren op een lees aanvraag voordat gegevens worden geretourneerd naar de client toepassing. Cassandra controleert het opgegeven aantal replica's voor gegevens om te voldoen aan de Lees aanvraag. |EEN, TWEE, DRIE, QUORUM, ALLE, LOCAL_QUORUM, EACH_QUORUM LOCAL_ONE. Zie [gegevens consistentie configureren](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) voor meer informatie. |Nee. De standaard waarde is één. |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -3874,7 +3874,7 @@ Als u een gekoppelde SFTP-service wilt definiëren, stelt u het **type** van de 
 
 #### <a name="example-using-basic-authentication"></a>Voor beeld: basis verificatie gebruiken
 
-Als u basis verificatie wilt gebruiken, stelt u `authenticationType` in als `Basic` en geeft u de volgende eigenschappen op, naast de SFTP-connector algemene versies die zijn geïntroduceerd in de laatste sectie:
+Als u basis verificatie wilt gebruiken, stelt u `authenticationType` in als `Basic`en geeft u de volgende eigenschappen op, naast de SFTP-connector algemene versies die in de laatste sectie zijn geïntroduceerd:
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
@@ -3923,13 +3923,13 @@ Als u basis verificatie wilt gebruiken, stelt u `authenticationType` in als `Bas
 
 #### <a name="using-ssh-public-key-authentication"></a>**Verificatie met open bare SSH-sleutel gebruiken:**
 
-Als u basis verificatie wilt gebruiken, stelt u `authenticationType` in als `SshPublicKey` en geeft u de volgende eigenschappen op, naast de SFTP-connector algemene versies die zijn geïntroduceerd in de laatste sectie:
+Als u basis verificatie wilt gebruiken, stelt u `authenticationType` in als `SshPublicKey`en geeft u de volgende eigenschappen op, naast de SFTP-connector algemene versies die in de laatste sectie zijn geïntroduceerd:
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | gebruikersnaam |Gebruiker die toegang heeft tot de SFTP-server |Ja |
-| privateKeyPath | Geef een absoluut pad naar het bestand met de persoonlijke sleutel op waartoe de gateway toegang kan hebben. | Geef het `privateKeyPath` of `privateKeyContent` op. <br><br> Alleen Toep assen bij het kopiëren van gegevens van een on-premises SFTP-server. |
-| privateKeyContent | Een geserialiseerde teken reeks met de inhoud van de persoonlijke sleutel. De wizard kopiëren kan het persoonlijke sleutel bestand lezen en de inhoud van de persoonlijke sleutel automatisch extra heren. Als u een andere tool/SDK gebruikt, gebruikt u in plaats daarvan de eigenschap privateKeyPath. | Geef het `privateKeyPath` of `privateKeyContent` op. |
+| privateKeyPath | Geef een absoluut pad naar het bestand met de persoonlijke sleutel op waartoe de gateway toegang kan hebben. | Geef het `privateKeyPath` of de `privateKeyContent`op. <br><br> Alleen Toep assen bij het kopiëren van gegevens van een on-premises SFTP-server. |
+| privateKeyContent | Een geserialiseerde teken reeks met de inhoud van de persoonlijke sleutel. De wizard kopiëren kan het persoonlijke sleutel bestand lezen en de inhoud van de persoonlijke sleutel automatisch extra heren. Als u een andere tool/SDK gebruikt, gebruikt u in plaats daarvan de eigenschap privateKeyPath. | Geef het `privateKeyPath` of de `privateKeyContent`op. |
 | passPhrase | Geef de wachtwoordzin/het wacht woord op voor het ontsleutelen van de persoonlijke sleutel als het sleutel bestand wordt beveiligd door een wachtwoordzin. | Ja als het persoonlijke-sleutel bestand is beveiligd door een wachtwoordzin. |
 
 ```json
@@ -4078,7 +4078,7 @@ Als u een gekoppelde HTTP-service wilt definiëren, stelt u het **type** van de 
 | encryptedCredential | Versleutelde referentie voor toegang tot het HTTP-eind punt. Automatisch gegenereerd wanneer u de verificatie gegevens configureert in de wizard kopiëren of in het pop-updialoogvenster van de ClickOnce. | Nee. Alleen Toep assen bij het kopiëren van gegevens van een on-premises HTTP-server. |
 
 #### <a name="example-using-basic-digest-or-windows-authentication"></a>Voor beeld: Basic, Digest of Windows-verificatie gebruiken
-Stel `authenticationType` in als `Basic`, `Digest` of `Windows` en geef de volgende eigenschappen op, naast de algemene HTTP-connectors die hierboven zijn geïntroduceerd:
+Stel `authenticationType` in als `Basic`, `Digest`of `Windows`en geef de volgende eigenschappen op, naast de algemene HTTP-connectors die hierboven zijn geïntroduceerd:
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
@@ -4102,15 +4102,15 @@ Stel `authenticationType` in als `Basic`, `Digest` of `Windows` en geef de volge
 
 #### <a name="example-using-clientcertificate-authentication"></a>Voor beeld: met behulp van ClientCertificate-verificatie
 
-Als u basis verificatie wilt gebruiken, stelt u `authenticationType` in als `ClientCertificate` en geeft u de volgende eigenschappen op, naast de algemene HTTP-connectors die hierboven zijn geïntroduceerd:
+Als u basis verificatie wilt gebruiken, stelt u `authenticationType` in als `ClientCertificate`en geeft u de volgende eigenschappen op naast de HTTP-connector algemene waarden die hierboven zijn geïntroduceerd:
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| embeddedCertData | De met base64 gecodeerde inhoud van binaire gegevens van het PFX-bestand (Personal Information Exchange). | Geef het `embeddedCertData` of `certThumbprint` op. |
-| certThumbprint | De vinger afdruk van het certificaat dat is geïnstalleerd op het certificaat archief van uw gateway computer. Alleen Toep assen bij het kopiëren van gegevens uit een on-premises HTTP-bron. | Geef het `embeddedCertData` of `certThumbprint` op. |
+| embeddedCertData | De met base64 gecodeerde inhoud van binaire gegevens van het PFX-bestand (Personal Information Exchange). | Geef het `embeddedCertData` of de `certThumbprint`op. |
+| certThumbprint | De vinger afdruk van het certificaat dat is geïnstalleerd op het certificaat archief van uw gateway computer. Alleen Toep assen bij het kopiëren van gegevens uit een on-premises HTTP-bron. | Geef het `embeddedCertData` of de `certThumbprint`op. |
 | wachtwoord | Het wacht woord dat is gekoppeld aan het certificaat. | Nee |
 
-Als u `certThumbprint` gebruikt voor verificatie en het certificaat is geïnstalleerd in het persoonlijke archief van de lokale computer, moet u de Lees machtiging verlenen aan de Gateway Service:
+Als u `certThumbprint` gebruikt voor verificatie en het certificaat is geïnstalleerd in het persoonlijke archief van de lokale computer, moet u de machtiging lezen verlenen aan de Gateway Service:
 
 1. Start micro soft Management Console (MMC). Voeg de module **certificaten** toe die gericht is op de **lokale computer**.
 2. Vouw **certificaten**uit, **persoonlijk**en klik op **certificaten**.
@@ -4705,7 +4705,7 @@ Als u gegevens uit Sales Force kopieert, stelt u het **bron type** van de Kopiee
 ```
 
 > [!IMPORTANT]
-> Het gedeelte ' __c ' van de API-naam is vereist voor een aangepast object.
+> Het onderdeel __c van de API-naam is vereist voor een aangepast object.
 
 Zie het artikel [Sales Force-connector](data-factory-salesforce-connector.md#copy-activity-properties) voor meer informatie.
 
@@ -4837,7 +4837,7 @@ De volgende tabel bevat beschrijvingen voor de eigenschappen die worden gebruikt
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op **HDInsightOnDemand**. |Ja |
-| clusterSize |Aantal werk-en gegevens knooppunten in het cluster. Het HDInsight-cluster wordt gemaakt met 2 hoofd knooppunten, samen met het aantal worker-knoop punten dat u voor deze eigenschap opgeeft. De knoop punten hebben een grootte van Standard_D3 met vier kernen, dus een cluster knooppunt van 4 heeft 24 kernen (4\*4 = 16 kernen voor worker-knoop punten, plus 2\*4 = 8 kernen voor hoofd knooppunten). Zie op [Linux gebaseerde Hadoop-clusters maken in HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) voor meer informatie over de Standard_D3-laag. |Ja |
+| clusterSize |Aantal werk-en gegevens knooppunten in het cluster. Het HDInsight-cluster wordt gemaakt met 2 hoofd knooppunten, samen met het aantal worker-knoop punten dat u voor deze eigenschap opgeeft. De knoop punten zijn van grootte Standard_D3 met 4 kern geheugens. een cluster van 4 worker-knoop punten neemt dus 24 kernen (4\*4 = 16 kernen voor werk knooppunten, plus 2\*4 = 8 kernen voor hoofd knooppunten). Zie op [Linux gebaseerde Hadoop-clusters maken in HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) voor meer informatie over de Standard_D3-laag. |Ja |
 | timetolive |De toegestane tijd niet-actief voor het HDInsight-cluster op aanvraag. Hiermee geeft u op hoe lang het HDInsight-cluster op aanvraag actief blijft na voltooiing van een uitvoering van een activiteit als er geen andere actieve taken in het cluster zijn.<br/><br/>Als bijvoorbeeld het uitvoeren van een activiteit zes minuten duurt en timetolive is ingesteld op 5 minuten, blijft het cluster 5 minuten na de 6 minuten van verwerking van de uitvoering van de activiteit actief. Als er een andere uitvoering van de activiteit wordt uitgevoerd met het venster van 6 minuten, wordt deze verwerkt door hetzelfde cluster.<br/><br/>Het maken van een HDInsight-cluster op aanvraag is een dure bewerking (kan enige tijd duren). Gebruik deze instelling daarom zo nodig om de prestaties van een data factory te verbeteren door opnieuw gebruik te maken van een on-demand HDInsight-cluster.<br/><br/>Als u timetolive waarde instelt op 0, wordt het cluster verwijderd zodra de activiteit wordt uitgevoerd. Als u daarentegen een hoge waarde instelt, kan het cluster onnodig onbeschikbaar blijven als gevolg van hoge kosten. Daarom is het belang rijk dat u de juiste waarde instelt op basis van uw behoeften.<br/><br/>Meerdere pijp lijnen kunnen hetzelfde exemplaar van het HDInsight-cluster op aanvraag delen als de waarde van de eigenschap timetolive op de juiste wijze is ingesteld |Ja |
 | versie |De versie van het HDInsight-cluster. Zie [ondersteunde HDInsight-versies in azure Data Factory](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory)voor meer informatie. |Nee |
 | linkedServiceName |Azure Storage gekoppelde service die moet worden gebruikt door het cluster op aanvraag om gegevens op te slaan en te verwerken. <p>Op dit moment kunt u geen HDInsight-cluster op aanvraag maken dat gebruikmaakt van een Azure Data Lake Store als opslag. Als u de resultaat gegevens van HDInsight-verwerking in een Azure Data Lake Store wilt opslaan, gebruikt u een Kopieer activiteit om de gegevens van de Azure-Blob Storage naar de Azure Data Lake Store te kopiëren.</p>  | Ja |
@@ -5234,7 +5234,7 @@ U kunt de volgende eigenschappen opgeven in een Hadoop streaming-activiteit JSON
 | --- | --- |
 | toewijzing | De naam van het uitvoer bare toewijzings programma. In het voor beeld is Cat. exe het uitvoer bare toewijzings programma.|
 | reductier | De naam van het uitvoer bare bestand voor de verkleinings groep. In het voor beeld is wc. exe het uitvoer bare bestand van de reducer. |
-| input | Invoer bestand (inclusief locatie) voor de toewijzing. In het voor beeld: `"wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt"`: adfsample is de BLOB-container, example/data/Gutenberg is de map en DaVinci. txt de blob. |
+| input | Invoer bestand (inclusief locatie) voor de toewijzing. In het voor beeld: `"wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt"`: adfsample is de BLOB-container, example/data/Gutenberg is de map en DaVinci. txt is de blob. |
 | output | Uitvoer bestand (inclusief locatie) voor de verkorter. De uitvoer van de Hadoop streaming-taak wordt geschreven naar de locatie die is opgegeven voor deze eigenschap. |
 | filePaths | Paden voor de uitvoer bare bestanden Mapper en reducer. In het voor beeld: ' adfsample/example/apps/WC. exe ', adfsample is de BLOB-container, voor beeld/apps is de map en WC. exe is het uitvoer bare bestand. |
 | fileLinkedService | Azure Storage gekoppelde service die de Azure-opslag vertegenwoordigt die de bestanden bevat die zijn opgegeven in de sectie filePath. |

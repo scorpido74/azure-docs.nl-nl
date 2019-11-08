@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f0fa86cc3de9f8c183d7b7a24fb03d02204adc17
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 38dcfe04473e8d2fbd81614908adef9636c44b19
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076145"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812862"
 ---
 # <a name="co-sell-state-codes"></a>Status codes co-sell
 
@@ -31,8 +32,8 @@ Gebruik, indien van toepassing, deze codes om informatie over de staat/provincie
 | Connecticut                         | VS-CT     |
 | Delaware                            | VS-DE     |
 | Florida                             | VS-FL     |
-| Georgia                             | VS-GA     |
-| Hawaii                              | VS-HOOG     |
+| Georgië                             | VS-GA     |
+| Hawaï                              | VS-HOOG     |
 | Idaho                               | US-ID     |
 | Illinois                            | US-IL     |
 | Indiana                             | VS-IN     |
@@ -41,7 +42,7 @@ Gebruik, indien van toepassing, deze codes om informatie over de staat/provincie
 | Kentucky                            | VS-KY     |
 | Louisiana                           | VS-LA     |
 | Maine                               | VS     |
-| Maryland                            | US-MD     |
+| Mary land                            | US-MD     |
 | Massachusetts                       | VS-MA     |
 | Michigan                            | VS-MI     |
 | Minnesota                           | VS-MN     |
@@ -50,9 +51,9 @@ Gebruik, indien van toepassing, deze codes om informatie over de staat/provincie
 | Montana                             | VS-MT     |
 | Nebraska                            | VS-NE     |
 | Nevada                              | VS-NV     |
-| New Hampshire                       | VS-NH     |
-| New Jersey                          | VS-NJ     |
-| New Mexico                          | VS-NM     |
+| Nieuwe Hampshire                       | VS-NH     |
+| Nieuwe Jersey                          | VS-NJ     |
+| Nieuwe Mexico                          | VS-NM     |
 | New York                            | VS-NY     |
 | North Carolina                      | US-NC     |
 | North Dakota                        | VS-ND     |
@@ -60,23 +61,23 @@ Gebruik, indien van toepassing, deze codes om informatie over de staat/provincie
 | Oklahoma                            | VS-OK     |
 | Oregon                              | VS-OF     |
 | Pennsylvania                        | VS-PA     |
-| Rhode Island                        | VS-RI     |
-| South Carolina                      | VS-SC     |
-| South Dakota                        | VS-SD     |
+| Rhode-eiland                        | VS-RI     |
+| Zuid-Carolina                      | VS-SC     |
+| Zuid-Dakota                        | VS-SD     |
 | Tennessee                           | VS-TN     |
 | Texas                               | VS-TX     |
 | Utah                                | US-UT     |
 | Vermont                             | VS-VT     |
 | Virginia                            | VS-VA     |
 | Washington                          | VS-WA     |
-| West Virginia                       | VS-WV     |
+| West-Virginia                       | VS-WV     |
 | Wisconsin                           | VS-WI     |
 | Wyoming                             | VS-WY     |
-| District of Columbia                | VS-DC     |
+| District van Columbia                | VS-DC     |
 | Amerikaans-Samoa                      | US-AS     |
 | Guam                                | US-GU     |
 | Noordelijke Marianen            | US-MP     |
-| Porto Rico                         | US-PR     |
+| Puerto Rico                         | US-PR     |
 | Amerikaanse ondergeschikte afgelegen eilanden | VS-UM    |
 |Amerikaanse Maagdeneilanden                 | VS-VI     |
 

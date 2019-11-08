@@ -1,5 +1,5 @@
 ---
-title: Kennisgeving van migratie van Gateway verkeer voor Azure SQL Database
+title: Kennisgeving van migratie van Gateway verkeer
 description: Artikel geeft gebruikers informatie over de migratie van IP-adressen van Azure SQL Database gateways
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 37c6c8e0f26d0281c3f6e76cb891fe14eb2ef04e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fe35dc4c22f3852934cde0d6f33084b56266d514
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690003"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807691"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database verkeer migratie naar nieuwere gateways
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database resource limieten-beheerd exemplaar
+title: Resource limieten-beheerd exemplaar
 description: Dit artikel bevat een overzicht van de Azure SQL Database resource limieten voor beheerde exemplaren.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: 723704b6b81aacf086ff42b02c32259d0e2f1c6d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 08e378c4b5f6d8e17ac67a80401edf69611c0a13
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687914"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823342"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Overzicht Azure SQL Database limieten voor beheerde exemplaar bronnen
 
@@ -65,7 +65,7 @@ Het beheerde exemplaar heeft twee service lagen: [Algemeen](sql-database-service
 
 | **Functie** | **Algemeen** | **Bedrijfskritiek** |
 | --- | --- | --- |
-| Aantal vCores-\* | Gen4:8, 16, 24<br/>GEN5:4, 8, 16, 24, 32, 40, 64, 80 | Gen4:8, 16, 24 <br/> GEN5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Same aantal vCores is toegewezen voor alleen-lezen query's. |
+| Aantal vCores-\* | Gen4:8, 16, 24<br/>GEN5:4, 8, 16, 24, 32, 40, 64, 80 | Gen4:8, 16, 24 <br/> GEN5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*hetzelfde aantal vCores is toegewezen voor alleen-lezen query's. |
 | Maxi maal geheugen | Gen4:56 GB-168 GB (7GB/vCore)<br/>GEN5:20,4 GB-408 GB (5,1 GB/vCore)<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. | Gen4:56 GB-168 GB (7GB/vCore)<br/>GEN5:20,4 GB-408 GB (5,1 GB/vCore) voor lees-en schrijf query's<br/>+ extra 20,4 GB-408 GB (5,1 GB/vCore) voor alleen-lezen query's.<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. |
 | Maximale opslag grootte van exemplaar (gereserveerd) | -2 TB voor 4 vCores (alleen GEN5)<br/>-8 TB voor andere grootten | Gen4:1 TB <br/> GEN5 <br/>-1 TB voor 4, 8, 16 vCores<br/>-2 TB voor 24 vCores<br/>-4 TB voor 32, 40, 64, 80 vCores |
 | Maximale databasegrootte | Tot momenteel beschik bare instantie grootte (Maxi maal 2 TB-8 TB afhankelijk van het aantal vCores). | Maxi maal beschik bare instantie grootte (Maxi maal 1 TB-4 TB, afhankelijk van het aantal vCores). |
@@ -84,7 +84,7 @@ Het beheerde exemplaar heeft twee service lagen: [Algemeen](sql-database-service
 
 > [!NOTE]
 > - De **momenteel beschik bare opslag grootte voor instanties** is het verschil tussen de gereserveerde exemplaar grootte en de gebruikte opslag ruimte.
-> - De grootte van de gegevens en het logboek bestand in de gebruikers-en systeem databases zijn opgenomen in de opslag grootte van het exemplaar, vergeleken met de maximale opslag grootte. Gebruik de <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> -systeem weergave om de totale hoeveelheid gebruikte ruimte te bepalen op basis van data bases. Fouten logboeken worden niet persistent gemaakt en zijn niet opgenomen in de grootte. Back-ups worden niet opgenomen in de opslag grootte.
+> - De grootte van de gegevens en het logboek bestand in de gebruikers-en systeem databases zijn opgenomen in de opslag grootte van het exemplaar, vergeleken met de maximale opslag grootte. Gebruik <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> systeem weergave om de totale hoeveelheid gebruikte ruimte te bepalen op basis van data bases. Fouten logboeken worden niet persistent gemaakt en zijn niet opgenomen in de grootte. Back-ups worden niet opgenomen in de opslag grootte.
 > - De door Voer en IOPS op Algemeen laag zijn ook afhankelijk van de [Bestands grootte](#file-io-characteristics-in-general-purpose-tier) die niet expliciet wordt beperkt door een beheerd exemplaar.
 > - U kunt een andere Lees bare replica maken in een andere Azure-regio met behulp van groepen voor automatische failover.
 > - Het maximum aantal IOPS is afhankelijk van de bestands indeling en de distributie van de werk belasting. Als u bijvoorbeeld een versie van 7 x 1GB maakt met Maxi maal 5K IOPS per en 7 kleine bestanden (kleiner dan 128 GB) met 500 IOPS per exemplaar, kunt u 38500 IOPS per instantie (7x5000 + 7x500) verkrijgen als uw werk belasting alle bestanden kan gebruiken. Houd er rekening mee dat een bepaalde hoeveelheid IOPS ook wordt gebruikt voor automatische back-ups.
@@ -142,7 +142,7 @@ De volgende tabel bevat de **standaard regionale limieten** voor ondersteunde ab
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional en MSDN Platforms|2|32|
 
-\* in het plannen van implementaties moet u rekening houden met het feit dat de service tier van Bedrijfskritiek (BC) vier (4) keer zoveel vCore capaciteit nodig heeft dan de servicelaag van Algemeen (GP). Bijvoorbeeld: 1 GP vCore = 1 vCore-eenheid en 1 BC vCore = 4 vCore-eenheden. Als u de verbruiks analyse wilt vereenvoudigen met de standaard limieten, bekijkt u de vCore-eenheden in alle subnetten in de regio waarin beheerde exemplaren worden geïmplementeerd en vergelijkt u de resultaten met de limieten van de exemplaar eenheid voor uw abonnements type. De limiet voor het **maximum aantal vCore-eenheden** is van toepassing op elk abonnement in een regio. Er is geen limiet per afzonderlijke subnetten, behalve dat de som van alle vCores die in meerdere subnetten zijn geïmplementeerd, kleiner of gelijk moet zijn aan het **maximum aantal vCore-eenheden**.
+\* bij het plannen van implementaties moet u rekening houden met het feit dat de service tier van Bedrijfskritiek (BC) vier (4) keer zoveel vCore capaciteit nodig heeft dan de servicelaag van Algemeen (GP). Bijvoorbeeld: 1 GP vCore = 1 vCore-eenheid en 1 BC vCore = 4 vCore-eenheden. Als u de verbruiks analyse wilt vereenvoudigen met de standaard limieten, bekijkt u de vCore-eenheden in alle subnetten in de regio waarin beheerde exemplaren worden geïmplementeerd en vergelijkt u de resultaten met de limieten van de exemplaar eenheid voor uw abonnements type. De limiet voor het **maximum aantal vCore-eenheden** is van toepassing op elk abonnement in een regio. Er is geen limiet per afzonderlijke subnetten, behalve dat de som van alle vCores die in meerdere subnetten zijn geïmplementeerd, kleiner of gelijk moet zijn aan het **maximum aantal vCore-eenheden**.
 
 \*\* grotere subnet-en vCore-limieten zijn beschikbaar in de volgende regio's: Australië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, Europa-west, VS-West 2.
 
@@ -178,7 +178,7 @@ Het proces voor het verkrijgen van een groter quotum initiëren:
 
 5. Klik op **Volgende**.
 6. Voer op het tabblad contact gegevens voor de nieuwe ondersteunings aanvraag de voor Keurs methode voor contact personen (e-mail adres of telefoon nummer) en de contact gegevens in.
-7. Klik op **Maken**.
+7. Klik op **Create**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

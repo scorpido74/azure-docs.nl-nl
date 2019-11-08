@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 37b19cd86cd13dd2bdc8b3a38abf61898b81d01b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 79abaade22fc107fa4c848607ff48232eeeb58ad
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690382"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823765"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Rapportage over uitgeschaalde Cloud databases (preview-versie)
 
@@ -142,7 +142,7 @@ De SCHEMA-\_naam en OBJECT-\_naam component wijzen de definitie van de externe t
 
 De distributie component geeft de gegevens distributie op die voor deze tabel wordt gebruikt. De query processor maakt gebruik van de informatie in de distributie component om de meest efficiënte query plannen te maken.
 
-1. **Shard** betekent dat gegevens Horizon taal zijn gepartitioneerd over de data bases. De partitie sleutel voor de gegevens distributie is de para meter **< sharding_column_name >** .
+1. **Shard** betekent dat gegevens Horizon taal zijn gepartitioneerd over de data bases. De partitie sleutel voor de gegevens distributie is de **< sharding_column_name >** para meter.
 2. **Gerepliceerd** betekent dat identieke kopieën van de tabel aanwezig zijn op elke Data Base. Het is uw verantwoordelijkheid om ervoor te zorgen dat de replica's identiek zijn in de data bases.
 3. **ROUND\_Robin** betekent dat de tabel horizon taal is gepartitioneerd met behulp van een toepassings afhankelijke distributie methode.
 

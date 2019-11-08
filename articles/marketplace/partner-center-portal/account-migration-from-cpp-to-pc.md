@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 6887430cad06ad33434f0f01e741979014b4558b
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: f8644a2aa989b7013cbbd64e8a8194bc08f40251
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219569"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813108"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Account migratie van Cloud Partner-portal naar het partner centrum
 
@@ -35,9 +36,9 @@ Klik op de banner om uw account migratie proces te starten. U wordt verwacht de 
 
 1. E-mail adres van werk: <br> <br> In de meeste gevallen meldt u zich aan met het e-mail adres dat u gebruikt om u aan te melden bij CPP. In bepaalde gevallen moet een ander e-mail adres worden gebruikt:
 
-    * Microsoft-account: Als het CPP-account een Microsoft-account is, voert u een geldige werk-e-mail in die is gekoppeld aan de Tenant waarvoor de Microsoft Partner Network-ID (MPN) is geregistreerd. Zie [registreren voor Microsoft Partner Network programma](#sign-up-for-microsoft-partner-network-program)voor meer informatie.
+    * Microsoft-account: als het CPP-account een Microsoft-account is, voert u een geldige werk-e-mail in die is gekoppeld aan de Tenant waarvoor de Microsoft Partner Network-ID (MPN) is geregistreerd. Zie [registreren voor Microsoft Partner Network programma](#sign-up-for-microsoft-partner-network-program)voor meer informatie.
 
-    * Niet-overeenkomende tenants: Als uw zakelijke e-mail adres niet hoort bij de Tenant die is gekoppeld aan de Microsoft Partner Network-ID die is opgegeven in uw CPP-account, wordt een fout bericht weer gegeven. Als u deze fout wilt verplaatsen, voert u een e-mail adres in dat is gekoppeld aan de Tenant. Er wordt een fout bericht weer gegeven met de naam van de Tenant.
+    * Niet-overeenkomende tenants: als uw zakelijke e-mail adres niet hoort bij de Tenant die is gekoppeld aan de Microsoft Partner Network-ID die is opgegeven in uw CPP-account, wordt er een fout weer gegeven. Als u deze fout wilt verplaatsen, voert u een e-mail adres in dat is gekoppeld aan de Tenant. Er wordt een fout bericht weer gegeven met de naam van de Tenant.
 
 2. Registreren voor Microsoft Partner Network programma
 
@@ -71,7 +72,7 @@ Volg de onderstaande instructies voor specifieke informatie over wat u moet doen
     * Voor certificering of hercertificering moet uw app de nieuwste versie van het Business Applications-platform ondersteunen.
     * Zodra uw app is goedgekeurd, ontvangt u een e-mail bericht om terug te keren naar de aanbieding en selecteert u Live maken zodat de aanbieding Live kan worden op Microsoft AppSource.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 Neem lid van de wekelijkse [Dynamics ISV-Community](https://aka.ms/DynamicsISV-CommunityCall) voor ondersteuning en updates.
 

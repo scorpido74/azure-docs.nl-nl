@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL Database-aankoop modellen '
+title: Aankoopmodellen
 description: Meer informatie over de inkoop modellen die beschikbaar zijn voor Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 48537ec4c62410565d32350b1e3a11bbc7a2ca6e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: be223245c634b8e38dc5e4c89df4c265c22c0b57
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687557"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821267"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Kiezen tussen de vCore en de DTU-aankoop modellen
 
@@ -125,7 +125,7 @@ U kunt extra Edtu's toevoegen aan een bestaande pool zonder uitval tijd van de d
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Het aantal Dtu's bepalen dat nodig is voor een workload
 
-Als u een bestaande on-premises of SQL Server werk belasting van virtuele machine naar Azure SQL Database wilt migreren, gebruikt u de [DTU-reken machine](https://dtucalculator.azurewebsites.net/) om het aantal benodigde dtu's te benaderen. Gebruik voor een bestaande Azure SQL Database workload [query-prestatie inzichten](sql-database-query-performance.md) om inzicht te krijgen in uw database verbruik (dtu's) en krijg meer inzicht in het optimaliseren van uw werk belasting. Met de dynamische beheer weergave [sys. DM _db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) (DMV) kunt u het Resource verbruik voor het afgelopen uur weer geven. In de catalogus weergave [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) wordt het Resource verbruik voor de afgelopen 14 dagen weer gegeven, maar een lagere betrouw baarheid van gemiddelden van vijf minuten.
+Als u een bestaande on-premises of SQL Server werk belasting van virtuele machine naar Azure SQL Database wilt migreren, gebruikt u de [DTU-reken machine](https://dtucalculator.azurewebsites.net/) om het aantal benodigde dtu's te benaderen. Gebruik voor een bestaande Azure SQL Database workload [query-prestatie inzichten](sql-database-query-performance.md) om inzicht te krijgen in uw database verbruik (dtu's) en krijg meer inzicht in het optimaliseren van uw werk belasting. Met de weer gave [sys. dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) dynamische beheer weergave (DMV) kunt u het Resource verbruik voor het afgelopen uur weer geven. In de catalogus weergave [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) wordt het Resource verbruik voor de afgelopen 14 dagen weer gegeven, maar een lagere betrouw baarheid van gemiddelden van vijf minuten.
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Workloads die profiteren van een elastische groep resources
 

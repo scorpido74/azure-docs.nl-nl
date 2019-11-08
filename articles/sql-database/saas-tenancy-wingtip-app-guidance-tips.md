@@ -1,22 +1,22 @@
 ---
-title: 'Richt lijnen voor het SQL Database voor beeld van multi tenant-apps-Wingtip SaaS '
+title: Voor beeld van multi tenant-app-Wingtip SaaS
 description: Bevat stappen en richt lijnen voor het installeren en uitvoeren van de voor beeld-multi tenant toepassing die gebruikmaakt van Azure SQL Database, het SaaS-voor beeld van Wingtip tickets.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 9258e1e8219300c47e77ea8164e54edd5855bb39
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3589310ff93aca3cec735d6b2f1609ee3d1d2e68
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691808"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825782"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Algemene richt lijnen voor het werken met Wingtip tickets voor beelden van SaaS-apps
 

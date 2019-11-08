@@ -1,5 +1,5 @@
 ---
-title: Een geografisch gedistribueerde Azure SQL database-oplossing implementeren | Microsoft Docs
+title: Een geografisch gedistribueerde oplossing implementeren
 description: Meer informatie over het configureren van uw Azure SQL database en-toepassing voor failover naar een gerepliceerde data base en de testfailover.
 services: sql-database
 ms.service: sql-database
@@ -11,21 +11,21 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 4a21fe3ed15d1dc2550f6863611b27d2b36c5c51
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 51380d312c778380602c64cac766b050511cf994
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568102"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810927"
 ---
-# <a name="tutorial-implement-a-geo-distributed-database"></a>Zelfstudie: Een geografisch gedistribueerde database implementeren
+# <a name="tutorial-implement-a-geo-distributed-database"></a>Zelf studie: een geografisch gedistribueerde data base implementeren
 
 Configureer een Azure-SQL database en-toepassing voor failover naar een externe regio en test een failover-plan. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > - Een [failovergroep](sql-database-auto-failover-group.md) maken
 > - Een Java-toepassing uitvoeren om een query uit te voeren op een Azure-SQL database
-> - Failover testen
+> - Testfailover
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -101,7 +101,7 @@ Voer het volgende script uit om een failovergroep te maken:
        -FailoverGroupName $myfailovergroupname
    ```
 
-Geo-replicatie-instellingen kunnen ook worden gewijzigd in de Azure portal door uw data base te selecteren en vervolgens **instellingen** > **geo-replicatie**te kiezen.
+Geo-replicatie-instellingen kunnen ook worden gewijzigd in de Azure Portal door uw data base te selecteren en vervolgens **instellingen** > **geo-replicatie**.
 
 ![Geo-replicatie-instellingen](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
@@ -123,7 +123,7 @@ Geo-replicatie-instellingen kunnen ook worden gewijzigd in de Azure portal door 
 
 1. Open met uw favoriete editor het bestand *pom. XML* in de projectmap.
 
-1. Voeg het micro soft JDBC-stuur programma voor SQL Server afhankelijkheid `dependency` toe door de volgende sectie toe te voegen. De afhankelijkheid moet in de grotere `dependencies` sectie worden geplakt.
+1. Voeg het micro soft JDBC-stuur programma voor SQL Server afhankelijkheid toe door de volgende `dependency` sectie toe te voegen. De afhankelijkheid moet in de sectie groter `dependencies` worden geplakt.
 
    ```xml
    <dependency>
@@ -133,7 +133,7 @@ Geo-replicatie-instellingen kunnen ook worden gewijzigd in de Azure portal door 
    </dependency>
    ```
 
-1. Geef de Java-versie op door `properties` de sectie toe `dependencies` te voegen na de sectie:
+1. Geef de Java-versie op door de sectie `properties` toe te voegen na de sectie `dependencies`:
 
    ```xml
    <properties>
@@ -142,7 +142,7 @@ Geo-replicatie-instellingen kunnen ook worden gewijzigd in de Azure portal door 
    </properties>
    ```
 
-1. Ondersteuning voor manifest bestanden door de `build` sectie toe te `properties` voegen na de sectie:
+1. Ondersteuning voor manifest bestanden door de sectie `build` toe te voegen na de sectie `properties`:
 
    ```xml
    <build>
@@ -296,7 +296,7 @@ Geo-replicatie-instellingen kunnen ook worden gewijzigd in de Azure portal door 
    ...
    ```
 
-## <a name="test-failover"></a>Failover testen
+## <a name="test-failover"></a>Testfailover
 
 Voer de volgende scripts uit om een failover te simuleren en Bekijk de resultaten van de toepassing. U ziet dat sommige invoegen en selecteren mislukken tijdens de database migratie.
 
@@ -336,7 +336,7 @@ In deze zelf studie hebt u een Azure-SQL database en-toepassing geconfigureerd v
 > [!div class="checklist"]
 > - Een failover-groep met geo-replicatie maken
 > - Een Java-toepassing uitvoeren om een query uit te voeren op een Azure-SQL database
-> - Failover testen
+> - Testfailover
 
 Ga verder met de volgende zelf studie over het migreren met behulp van DMS.
 

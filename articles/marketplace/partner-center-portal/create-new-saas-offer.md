@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: da6fee7158344d331c6c2a68f0fab1b13cc3a291
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9eb283f538759f9591add4b04462de151f2cb014
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934106"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825552"
 ---
 # <a name="create-a-new-saas-offer"></a>Een nieuwe SaaS-aanbieding maken
 
@@ -58,9 +59,9 @@ De pagina overzicht van de **aanbieding** bevat:
 
 - Het menu overzicht van de **aanbieding** bevat een lijst met koppelingen voor het uitvoeren van bewerkingen op deze aanbieding. Deze lijst met bewerkingen wordt gewijzigd op basis van de selectie die u voor uw aanbieding maakt.  
     - Als de aanbieding een concept is-concept verwijderen 
-    - Als de aanbieding Live is: verkoop aanbieding stoppen 
-    - Als de aanbieding in preview is: go-live 
-    - Als u de uitgever niet hebt voltooid, kunt u Publiceren annuleren
+    - Als het aanbod een live-stop verkoop aanbod is 
+    - Als de aanbieding in Preview-Live staat 
+    - Als u de uitgever niet hebt voltooid, kunt u de publicatie annuleren
 
 ## <a name="offer-setup"></a>Installatie van aanbieding
 
@@ -239,19 +240,19 @@ Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, kunt u HTML-
 
 1. Als u alinea's wilt maken, moet u `<p>` toevoegen aan de Begging van de tekst en `</p>` aan het einde toevoegen.
 
-    **Voor beeld**: 
+    **Voorbeeld**: 
 
     `<p>` dit is mijn eerste alinea. `</p>` <br>
-    `<p>` is dit de tweede alinea. `</p>` <br>
+    `<p>` dit is mijn tweede alinea. `</p>` <br>
 
     Het bovenstaande ziet er als volgt uit:
 
     <p> Dit is mijn eerste alinea. </p>
     <p> Dit is mijn tweede alinea. </p>
 
-1. Als u een **lijst met opsommings tekens**wilt toevoegen aan items, plaatst u de tekst in de onderstaande `<li>`-Tags. U kunt meer items met opsommings tekens kopiëren en plakken (items tussen de Tags `<li>` en `</li>`) binnen de Tags `<ul>` en `</ul>`. Zorg ervoor dat u de `<ul></ul>` toevoegt. 
+1. Als u een **lijst met opsommings tekens**wilt toevoegen aan items, plaatst u de tekst in de `<li>` tags hieronder. U kunt meer items met opsommings tekens (items tussen de `<li>` en `</li>` Tags) binnen de labels `<ul>` en `</ul>` kopiëren en plakken. Zorg ervoor dat u de `<ul></ul>`toevoegt. 
 
-    **Voor beeld**:
+    **Voorbeeld**:
 
     ```
     <ul> 
@@ -268,7 +269,7 @@ Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, kunt u HTML-
         <li> Voeg hier tekst toe </li> 
     </ul> 
 
-1. Als u de inhoud vet wilt weer **gegeven** , voegt u `<b>` toe aan het begin van de tekst die u wilt vet en voegt u `</b>` toe aan het einde van de tekst die u wilt vet weer gegeven. 
+1. Voeg `<b>` **toe aan het** begin van de tekst die u wilt vet en voeg `</b>` toe aan het einde van de tekst die u wilt vet weer gegeven. 
 
     **Voor beeld**: `<b>` gratis proef versie `</b>`
     
@@ -278,9 +279,9 @@ Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, kunt u HTML-
 
 1. Als u **regel einden** wilt toevoegen tussen uw inhoud, voegt u `<br>` toe vóór de inhoud die u op een nieuwe regel wilt starten. Als u een ruimte wilt houden en wilt controleren of inhoud op een nieuwe regel begint, voegt u `<br><br>` toe vóór de inhoud. 
 
-    **Voor beeld**:
+    **Voorbeeld**:
 
-    Dit is een tekst regel. `<br>` dit is een tekst regel die wordt gestart op een nieuwe regel. `<br><br>` is dit een regel waarmee twee regels worden gestart. 
+    Dit is een tekst regel. `<br>` dit is een tekst regel die wordt gestart op een nieuwe regel. `<br><br>` dit is een regel waarmee twee regels worden gestart. 
 
     Het bovenstaande ziet er als volgt uit:
 
@@ -288,7 +289,7 @@ Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, kunt u HTML-
 
 1. Als u de **tekst**groter wilt maken, kiest u eerst hoe groot de tekst moet zijn. Gebruik de onderstaande voor beelden. Nadat u de grootte van de tekst hebt geselecteerd, voegt u de bijbehorende `<H*></H*>`-tags toe aan het begin en het einde van de tekst. 
 
-    **Voor beeld**:
+    **Voorbeeld**:
 
     `<h1>`dit is Kop 1`</h1>` <br>
     `<h2>`dit is Kop 2`</h2>` <br>
@@ -351,7 +352,7 @@ Het tabblad **technische configuratie** definieert de technische details (URL-pa
 
 - **URL van de landings pagina** (vereist): Definieer de site-URL waar klanten op worden gegrond na het verkrijgen van uw aanbieding van de Marketplace. Deze URL is het eind punt dat een token ontvangt wanneer een klant wordt doorgestuurd naar de pagina. Dit token kan worden uitgewisseld voor inrichtings gegevens met behulp van de oplossing in de fulfillment-Api's. Deze gegevens en andere personen die u verzamelt, kunnen worden gebruikt als onderdeel van een klant-interactieve webpagina die in uw ervaring is gemaakt om de registratie te volt ooien en hun aankoop te activeren.
 
-- **Verbindings-webhook** (vereist): voor alle asynchrone gebeurtenissen die micro soft namens de klant moet verzenden (bijvoorbeeld: Saas-abonnement is ongeldig), moet u een verbindings-webhook opgeven. Als u nog geen webhooksysteem hebt, is de eenvoudigste configuratie een HTTP-eindpunt logische app waarmee wordt geluisterd naar gebeurtenissen die erop worden geplaatst en deze vervolgens op de juiste wijze afhandelen (bijvoorbeeld https: \//Prod-1westus. Logic. Azure. com: 443/work ). Zie [werk stromen aanroepen, activeren of nesten met HTTP-eind punten in Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)voor meer informatie.
+- **Verbindings-webhook** (vereist): voor alle asynchrone gebeurtenissen die micro soft namens de klant moet verzenden (bijvoorbeeld: Saas-abonnement is ongeldig), moet u een verbindings-webhook opgeven. Als u nog geen webhooksysteem hebt, is de eenvoudigste configuratie een HTTP-eindpunt logische app waarmee wordt geluisterd naar gebeurtenissen die erop worden geplaatst en deze vervolgens op de juiste wijze afhandelen (bijvoorbeeld https:\//prod-1westus.logic.azure.com:443/work). Zie [werk stromen aanroepen, activeren of nesten met HTTP-eind punten in Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)voor meer informatie.
 
 - **Azure AD-Tenant-id** (vereist): in azure Portal moet u [een Azure Active Directory (AD)-app maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) zodat we kunnen valideren dat de verbinding tussen de twee services zich achter een geverifieerde communicatie bevindt. Als u de [Tenant-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)wilt vinden, gaat u naar uw Azure Active Directory en selecteert u **Eigenschappen**. vervolgens zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
 
@@ -367,8 +368,8 @@ Zodra u een abonnement hebt gemaakt, ziet u de namen, Id's, prijs modellen, Besc
 
 **Acties** die beschikbaar zijn in het **plan overzicht** variëren afhankelijk van de huidige status van uw abonnement en kunnen het volgende omvatten:
 
-- Als de plan status **concept** is: concept verwijderen
-- Als de plan status **Live** is: verkoop plan stoppen of persoonlijke doel groep synchroniseren
+- Als de plan status **concept** is-concept verwijderen
+- Als de plan status **Live** -stop verkoop plan is of persoonlijke doel groep synchroniseren
 
 **Nieuw plan maken** (mini maal één abonnement voor degenen die via micro soft willen verkopen)
 
@@ -437,7 +438,7 @@ Selecteer de frequentie waarmee klanten de vermelde prijs moeten betalen. Er moe
 - **Prijs**: USD per maand of USD per jaar
 
 Prijzen die in de lokale valuta zijn ingesteld (USD = Verenigde Staten dollar), worden omgezet in de lokale valuta van alle geselecteerde markten met de huidige wissel koersen die beschikbaar zijn tijdens de installatie. Valideer deze prijzen vóór de publicatie door het prijs werk blad te exporteren en de prijs op elke markt te bekijken. Als u aangepaste prijzen wilt instellen op een afzonderlijke markt, wijzigt en importeert u de prijs informatie in het werk blad. U bent verantwoordelijk voor het valideren van deze prijzen en de eigenaar van deze instellingen.
-*\*You moeten uw prijs wijzigingen eerst opslaan om de export van prijs gegevens in te scha kelen.*
+*\*U moet uw prijs wijzigingen eerst opslaan om het exporteren van prijs gegevens in te scha kelen.*
 
 Controleer uw prijzen zorgvuldig voordat u deze publiceert. er zijn enkele beperkingen voor wat er kan worden gewijzigd nadat een plan is gepubliceerd:
 
@@ -483,9 +484,9 @@ Zodra u alle vereiste delen van de aanbieding hebt voltooid, selecteert u **publ
 Als dit de eerste keer is dat u deze aanbieding publiceert, kunt u het volgende doen:
 
 - Bekijk de voltooiings status voor elke sectie van de aanbieding.
-    - *Niet gestart* : geeft aan dat de sectie niet is geraken en moet worden voltooid.
+    - *Niet gestart* : de sectie is niet gerakend en moet worden voltooid.
     - *Onvolledig* : de sectie bevat fouten die moeten worden hersteld of waarvoor meer informatie moet worden verstrekt. Ga terug naar de sectie (s) en werk deze bij.
-    - *Voltooid* – betekent dat de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er geen fouten zijn. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
+    - *Voltooid* : de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er zijn geen fouten. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
 - Geef test instructies op het certificerings team om ervoor te zorgen dat uw app correct wordt getest, naast eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app.
 - Verzend de aanbieding voor publicatie door **verzenden**te selecteren. We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Ga terug naar het partner centrum en selecteer **Go-Live** voor de aanbieding om uw aanbieding te publiceren naar het open bare (of als u een privé-aanbieding naar de persoonlijke doel groep hebt).
 

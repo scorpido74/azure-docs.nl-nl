@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een door SQL Database beheerd exemplaar toevoegen aan een failovergroep'
+title: 'Zelf studie: een beheerd exemplaar toevoegen aan een failovergroep'
 description: Meer informatie over het configureren van een failovergroep voor uw Azure SQL Database Managed instance.
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 4df68fb59ad5e40df3edaea59958e32c03fdb2e6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 85d2e58d35ef233fda7c724f85152fc74bd11189
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933317"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826843"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Zelf studie: een door SQL Database beheerd exemplaar toevoegen aan een failovergroep
 
@@ -1104,7 +1104,7 @@ In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power sh
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add managed instance to a failover group")]
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

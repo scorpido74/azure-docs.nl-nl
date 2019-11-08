@@ -1,40 +1,41 @@
 ---
-title: Azure-aanbieding toepassingsinstellingen | Azure Marketplace
-description: Configureer de instellingen van de aanbieding voor een aanbieding van Azure-toepassing.
+title: Instellingen voor de Azure-toepassings aanbieding | Azure Marketplace
+description: Configureer de aanbiedings instellingen voor een Azure-toepassings aanbieding.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 789b783629b3cc3528eba1883b21051604cf6e14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5e00f77ffeec61fb4fee4b4e8eb72b7c7ed1077
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942935"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827528"
 ---
-# <a name="azure-application-offer-settings-tab"></a>Tabblad van de instellingen bieden Azure-toepassing
+# <a name="azure-application-offer-settings-tab"></a>Tabblad instellingen van Azure-toepassings aanbieding
 
-In dit artikel wordt beschreven hoe u de instellingen van de aanbieding voor een Azure-toepassing configureren.
+In dit artikel wordt beschreven hoe u de instellingen voor de aanbieding configureert voor een Azure-toepassing.
 
-De **Azure-toepassingen > nieuwe aanbieding** pagina wordt geopend met de focus op de **instellingen bieden** tabblad. Een sterretje (*) toegevoegd aan de naam van het veld geeft aan dat dit is verplicht.
+De pagina **Azure-toepassingen > nieuw aanbod** wordt geopend met de focus op het tabblad instellingen van de **aanbieding** . Een asterisk (*) die wordt toegevoegd aan de veld naam geeft aan dat deze vereist is.
 
-![Aanbieding identiteit formulier](./media/azureapp-offer-settings-tab.png)
+![Identiteits formulier aanbieding](./media/azureapp-offer-settings-tab.png)
 
-## <a name="offer-identity-settings"></a>Instellingen voor de identiteiten bieden
+## <a name="offer-identity-settings"></a>Identiteits instellingen van aanbod
 
-Onder **identiteit bieden**, moet u gegevens voor de velden die in de volgende tabel worden beschreven.  
+Onder **identiteit van aanbod**moet u informatie opgeven voor de velden die in de volgende tabel worden beschreven.  
 
-|    Veld         |       Description                                                            |
+|    Veld         |       Beschrijving                                                            |
 |  ---------       |     ---------------                                                          |
-| **Aanbiedings-ID\***       | Een unieke id (binnen het uitgeverprofiel van een) voor de aanbieding. Deze id is zichtbaar in de URL's en inzichten Productrapporten. Het heeft een maximale lengte van 50 tekens en kleine letters, alfanumerieke tekens en streepjes (-) kunt gebruiken. (De id mag niet eindigen met een streepje.) **Opmerking:** Dit veld kan niet worden gewijzigd nadat een aanbieding live meteen. <br> Bijvoorbeeld, als Contoso een aanbieding met publiceert aanbiedings-ID **voorbeeldcontainer**, heeft deze de URL van de Azure Marketplace toegewezen `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-container?tab=Overview`. |
-| **Uitgevers-ID\***     | De unieke id van uw organisatie in de Azure Marketplace. Alle uw aanbiedingen moeten worden gekoppeld aan uw uitgever-ID. Deze waarde kan niet worden gewijzigd nadat een van de aanbieding is opgeslagen. |
-| **Naam\***          | De weergavenaam voor uw aanbieding. Deze naam wordt weergegeven in de Azure Marketplace en in de Cloud Partner-Portal. De naam mag maximaal 50 tekens bevatten. Wordt u aangeraden een herkenbare naam voor uw product. Neem de naam van uw organisatie niet, tenzij dat is hoe uw product wordt verkocht. Als u deze aanbieding in andere websites en publicaties worden marketing, zorgt u ervoor dat de naam precies hetzelfde voor alle publicaties is. |
+| **Aanbiedings-ID\***       | Een unieke id (binnen een Publisher-profiel) voor de aanbieding. Deze id is zichtbaar in product-Url's en inzichten rapporten. De naam mag Maxi maal 50 tekens lang zijn en kan kleine letters en streepjes (-) bevatten. (De id mag niet eindigen met een streepje.) **Opmerking:** Dit veld kan niet worden gewijzigd nadat een aanbieding Live is. <br> Als contoso bijvoorbeeld een aanbieding met de voor **beeld-container**voor de AANBIEDINGS-id publiceert, wordt de URL van de Azure Marketplace toegewezen `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-container?tab=Overview`. |
+| **Uitgevers-ID\***     | De unieke id van uw organisatie in azure Marketplace. Al uw aanbiedingen moeten worden gekoppeld aan uw uitgevers-ID. Deze waarde kan niet worden gewijzigd nadat de aanbieding is opgeslagen. |
+| **Naam\***          | De weergave naam voor uw aanbieding. Deze naam wordt weer gegeven in de Azure Marketplace en in de Cloud Partner-portal. De naam mag maximaal 50 tekens bevatten. We raden u aan om een herken bare merk naam voor uw product te gebruiken. Neem de naam van uw organisatie niet op, tenzij u het product in de handel brengt. Als u dit aanbod in de handel wilt brengen in andere websites en publicaties, moet u ervoor zorgen dat de naam precies hetzelfde is in alle publicaties. |
 |  |  |
 
-Selecteer **opslaan** uw instellingen bieden op te slaan.
+Selecteer **Opslaan** om de instellingen voor uw aanbieding op te slaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de [SKU's](./cpp-skus-tab.md) tabblad configureren van de SKU's voor uw aanbieding.
+Gebruik het tabblad [sku's](./cpp-skus-tab.md) voor het configureren van de sku's voor uw aanbieding.

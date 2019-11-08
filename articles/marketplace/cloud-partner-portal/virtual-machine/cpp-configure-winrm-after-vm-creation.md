@@ -1,64 +1,65 @@
 ---
-title: Configureren van WinRM na het maken van virtuele Azure-machine | Azure Marketplace
-description: Hoe het configureren van Windows Remote Management (WinRM) na het maken van een virtuele machine van Azure worden gehost.
+title: WinRM configureren na het maken van virtuele Azure-machines | Azure Marketplace
+description: Hierin wordt uitgelegd hoe u WinRM (Windows Remote Management) configureert na het maken van een virtuele machine die door Azure wordt gehost.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: pabutler
-ms.openlocfilehash: 4a4248efcfda76dfd8907069e167fdfa144d0365
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae5a55c6d640852cbd873bc6b36e502b5fe17165
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938521"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817941"
 ---
-# <a name="configure-winrm-after-virtual-machine-creation"></a>Configureren van WinRM na het maken van virtuele machines
+# <a name="configure-winrm-after-virtual-machine-creation"></a>WinRM configureren na het maken van de virtuele machine
 
-In dit artikel wordt uitgelegd hoe het configureren van een bestaande Azure gehoste virtuele machine (VM) om in te schakelen WinRM via HTTPS.  Deze configuratie is van toepassing alleen op Windows gebaseerde virtuele machines en het volgende proces voor verificatie in twee stappen vereist:
+In dit artikel wordt uitgelegd hoe u een bestaande, door Azure gehoste virtuele machine (VM) configureert om WinRM via HTTPS in te scha kelen.  Deze configuratie is alleen van toepassing op Vm's op basis van Windows en vereist het volgende proces in twee stappen:
 
-1. Netwerkverkeer via de poort voor de WinRM via HTTPS-protocol inschakelen.  U configureert deze instelling voor uw virtuele machine in Azure portal.
-2. Configureer de virtuele machine om in te schakelen WinRM door het uitvoeren van de opgegeven PowerShell-scripts.
+1. Schakel poort verkeer in voor het WinRM via HTTPS-protocol.  U configureert deze instelling voor uw virtuele machine in de Azure Portal.
+2. Configureer de virtuele machine om WinRM in te scha kelen door de opgegeven Power shell-scripts uit te voeren.
 
 
-## <a name="enabling-port-traffic"></a>Inschakelen van netwerkverkeer via de poort
+## <a name="enabling-port-traffic"></a>Poort verkeer inschakelen
 
-De WinRM via HTTPS-protocol gebruikt poort 5896, die niet standaard op de vooraf geconfigureerde Windows VM's die worden aangeboden via Azure Marketplace is ingeschakeld. Als wilt inschakelen dit protocol, gebruikt u de volgende stappen uit in een nieuwe regel toevoegen aan de netwerkbeveiligingsgroep (NSG) met de [Azure-portal](https://portal.azure.com).  Zie voor meer informatie over nsg's [beveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/security-overview).
+Het WinRM via HTTPS-protocol gebruikt poort 5896, die niet standaard is ingeschakeld op vooraf geconfigureerde Windows-Vm's die worden aangeboden op de Azure Marketplace. Als u dit protocol wilt inschakelen, gebruikt u de volgende stappen om een nieuwe regel toe te voegen aan de netwerk beveiligings groep (NSG) met de [Azure Portal](https://portal.azure.com).  Zie voor meer informatie over Nsg's [beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview).
 
-1.  Navigeer naar de blade **virtuele machines >**   <*vm-naam*>   **> Instellingen/netwerken**.
-2.  Klik op de naam van de NSG (in dit voorbeeld **testvm11002**) om de eigenschappen ervan weer te geven:
+1.  Ga naar de Blade **virtuele machines >**   <*vm-naam*>   **> instellingen/netwerken**.
+2.  Klik op de naam van de NSG (in dit voor beeld **testvm11002**) om de eigenschappen weer te geven:
 
-    ![Network security-groepseigenschappen](./media/nsg-properties.png)
+    ![Eigenschappen van netwerk beveiligings groep](./media/nsg-properties.png)
  
-3. Onder **instellingen**, selecteer **inkomende beveiligingsregels** om deze blade weer te geven.
-4. Klik op **+ toevoegen** te maken van een nieuwe regel met de naam `WinRM_HTTPS` voor TCP-poort 5986.
+3. Selecteer bij **instellingen**de optie **regels voor binnenkomende beveiliging** om deze Blade weer te geven.
+4. Klik op **+ toevoegen** om een nieuwe regel te maken met de naam `WinRM_HTTPS` voor TCP-poort 5986.
 
-    ![Inkomende beveiligingsregel toevoegen](./media/nsg-new-rule.png)
+    ![Regel voor inkomende netwerk beveiliging toevoegen](./media/nsg-new-rule.png)
 
-5. Klik op **OK** wanneer u bent klaar waarden opgeven.  De lijst met regels voor binnenkomende beveiliging moet de volgende nieuwe vermeldingen bevatten.
+5. Klik op **OK** wanneer u klaar bent met het leveren van waarden.  De lijst met binnenkomende beveiligings regels moet de volgende nieuwe vermeldingen bevatten.
 
-    ![Lijst met regels voor binnenkomende network security](./media/nsg-new-inbound-listing.png)
+    ![Lijst met regels voor inkomende netwerk beveiliging](./media/nsg-new-inbound-listing.png)
 
 
-## <a name="configure-vm-to-enable-winrm"></a>Virtuele machine om in te schakelen WinRM configureren 
+## <a name="configure-vm-to-enable-winrm"></a>VM configureren voor het inschakelen van WinRM 
 
-Gebruik de volgende stappen uit om te schakelen en de functie Windows Extern beheer configureren op uw Windows-VM.   
+Gebruik de volgende stappen om de Windows-functie voor extern beheer op uw Windows-VM in te scha kelen en te configureren.   
 
-1. Een extern bureaublad verbinding met uw VM wordt gehost op Azure.  Zie voor meer informatie, [hoe u verbinding maken met en meld u aan met een Azure-machine waarop Windows wordt uitgevoerd](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon).  De resterende stappen wordt uitgevoerd op de virtuele machine.
-2. De volgende bestanden worden gedownload en deze opslaan naar een map op de virtuele machine:
-    - [ConfigureWinRM.ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/ConfigureWinRM.ps1)
-    - [makecert.exe](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/makecert.exe)
-    - [winrmconf.cmd](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/winrmconf.cmd)
-3. Open de **PowerShell-Console** met verhoogde bevoegdheden (**als Administrator uitvoeren**). 
-4. Voer de volgende opdracht, waarbij u de vereiste parameter opgeeft: de volledig gekwalificeerde domeinnaam (FQDN) voor uw virtuele machine: <br/>
+1. Een Extern bureaublad verbinding maken met uw door Azure gehoste VM.  Zie [verbinding maken en aanmelden bij een virtuele Azure-machine met Windows](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon)voor meer informatie.  De resterende stappen worden uitgevoerd op uw VM.
+2. Down load de volgende bestanden en sla deze op in een map op uw virtuele machine:
+    - [ConfigureWinRM. ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/ConfigureWinRM.ps1)
+    - [Makecert. exe](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/makecert.exe)
+    - [winrmconf. cmd](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/winrmconf.cmd)
+3. Open de **Power shell-console** met verhoogde bevoegdheden (**als administrator uitvoeren**). 
+4. Voer de volgende opdracht uit, waarbij u de vereiste para meter opgeeft: de Fully Qualified Domain Name (FQDN) voor uw VM: <br/>
    `ConfigureWinRM.ps1 <vm-domain-name>`
 
-    ![PowerShell-configuratiescript 1](./media/powershell-file1.png)
+    ![Power shell-configuratie script 1](./media/powershell-file1.png)
 
-    Met dit script is afhankelijk van de andere twee bestanden worden in dezelfde map.
+    Dit script is afhankelijk van de andere twee bestanden die zich in dezelfde map bevindt.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u WinRM hebt geconfigureerd, bent u klaar om te [implementeren van uw VM op basis van de bijbehorende VHD's](./cpp-deploy-vm-vhd.md).
+Zodra u WinRM hebt geconfigureerd, bent u klaar om [uw VM te implementeren vanaf de bijbehorende](./cpp-deploy-vm-vhd.md)samenstellende vhd's.

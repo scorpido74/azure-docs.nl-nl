@@ -1,5 +1,5 @@
 ---
-title: XEvent-gebeurtenis bestands code voor SQL Database
+title: XEvent-gebeurtenis bestands code
 description: Biedt Power shell en Transact-SQL voor een code voorbeeld van twee fasen die het gebeurtenis bestand doel in een uitgebreide gebeurtenis op Azure SQL Database demonstreren. Azure Storage is een vereist onderdeel van dit scenario.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 03/12/2019
-ms.openlocfilehash: ea5c90433a4d2928e5fb88df149631c80df9dacf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3b1e8881b2e2004a94064e472690ee40414ea02d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686834"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822388"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Doel code van gebeurtenis bestand voor uitgebreide gebeurtenissen in SQL Database
 

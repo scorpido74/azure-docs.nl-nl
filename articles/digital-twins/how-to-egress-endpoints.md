@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959116"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822258"
 ---
 # <a name="egress-and-endpoints"></a>Uitgangen en eind punten
 
@@ -23,7 +23,7 @@ Gebeurtenissen worden doorgestuurd naar eind punten volgens de vooraf gedefiniee
 
 Raadpleeg voor meer informatie over gebeurtenissen, route ring en gebeurtenis typen [routerings gebeurtenissen en berichten in azure Digital apparaatdubbels](./concepts-events-routing.md).
 
-## <a name="events"></a>Events
+## <a name="events"></a>Gebeurtenissen
 
 Gebeurtenissen worden verzonden door IoT-objecten (zoals apparaten en Sens oren) voor verwerking door Azure Message en Event brokers. Gebeurtenissen worden gedefinieerd door de volgende [Azure Event grid gebeurtenis schema verwijzing](../event-grid/event-schema.md).
 
@@ -47,23 +47,23 @@ Gebeurtenissen worden verzonden door IoT-objecten (zoals apparaten en Sens oren)
 }
 ```
 
-| Kenmerk | type | Description |
+| Kenmerk | Type | Beschrijving |
 | --- | --- | --- |
-| id | string | De unieke id voor de gebeurtenis. |
-| subject | string | Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp. |
-| data | object | Gebeurtenis gegevens die specifiek zijn voor de resource provider. |
-| eventType | string | Een van de geregistreerde gebeurtenis typen voor deze gebeurtenis bron. |
-| eventTime | string | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
-| dataVersion | string | De schema versie van het gegevens object. De uitgever definieert de schema versie. |
-| metadataVersion | string | De schema versie van de meta gegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid levert deze waarde. |
-| topic | string | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid levert deze waarde. |
+| id | tekenreeks | De unieke id voor de gebeurtenis. |
+| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp. |
+| gegevens | object | Gebeurtenis gegevens die specifiek zijn voor de resource provider. |
+| Type | tekenreeks | Een van de geregistreerde gebeurtenis typen voor deze gebeurtenis bron. |
+| eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
+| dataVersion | tekenreeks | De schema versie van het gegevens object. De uitgever definieert de schema versie. |
+| metadataVersion | tekenreeks | De schema versie van de meta gegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid levert deze waarde. |
+| onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid levert deze waarde. |
 
 Voor meer informatie over het Event Grid-gebeurtenis schema:
 
 - Raadpleeg de [Naslag informatie over het Azure Event grid-gebeurtenis schema](../event-grid/event-schema.md).
-- Lees de [Naslag informatie voor Azure EventGrid node. js SDK EventGridEvent](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest).
+- Lees de [Naslag informatie voor Azure EventGrid node. js SDK EventGridEvent](https://docs.microsoft.com/javascript/api/@azure/eventgrid/eventgridevent?view=azure-node-latest).
 
-## <a name="event-types"></a>Gebeurtenistypen
+## <a name="event-types"></a>Gebeurtenis typen
 
 De typen gebeurtenissen classificeren de aard van de gebeurtenis en worden ingesteld **in het veld** type. Beschik bare gebeurtenis typen vindt u in de volgende lijst:
 
@@ -87,10 +87,10 @@ De gebeurtenis indelingen voor elk gebeurtenis type worden verder beschreven in 
 - KeyStore
 - Rapport
 - RoleDefinition
-- Sensor
+- Sensoren
 - SensorBlobMetadata
 - SensorExtendedProperty
-- Spatiebalk
+- Ruimte
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
@@ -122,7 +122,7 @@ De gebeurtenis indelingen voor elk gebeurtenis type worden verder beschreven in 
 }
 ```
 
-| Value | Vervangen door |
+| Waarde | Vervangen door |
 | --- | --- |
 | YOUR_TOPIC_NAME | De naam van het aangepaste onderwerp |
 
@@ -153,7 +153,7 @@ De gebeurtenis indelingen voor elk gebeurtenis type worden verder beschreven in 
 }
 ```
 
-| Value | Vervangen door |
+| Waarde | Vervangen door |
 | --- | --- |
 | YOUR_TOPIC_NAME | De naam van het aangepaste onderwerp |
 
@@ -188,7 +188,7 @@ De gebeurtenis indelingen voor elk gebeurtenis type worden verder beschreven in 
 }
 ```
 
-| Value | Vervangen door |
+| Waarde | Vervangen door |
 | --- | --- |
 | YOUR_TOPIC_NAME | De naam van het aangepaste onderwerp |
 
@@ -223,7 +223,7 @@ De gebeurtenis indelingen voor elk gebeurtenis type worden verder beschreven in 
 }
 ```
 
-| Value | Vervangen door |
+| Waarde | Vervangen door |
 | --- | --- |
 | YOUR_TOPIC_NAME | De naam van het aangepaste onderwerp |
 
@@ -268,7 +268,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Vervangen door |
+    | Waarde | Vervangen door |
     | --- | --- |
     | YOUR_NAMESPACE | De naam ruimte van uw eind punt |
     | YOUR_PRIMARY_KEY | De primaire connection string gebruikt voor verificatie |
@@ -291,7 +291,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Vervangen door |
+    | Waarde | Vervangen door |
     | --- | --- |
     | YOUR_PRIMARY_KEY | De primaire connection string gebruikt voor verificatie|
     | YOUR_SECONDARY_KEY | De secundaire connection string gebruikt voor verificatie |
@@ -313,7 +313,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Vervangen door |
+    | Waarde | Vervangen door |
     | --- | --- |
     | YOUR_NAMESPACE | De naam ruimte van uw eind punt |
     | YOUR_PRIMARY_KEY | De primaire connection string gebruikt voor verificatie |
@@ -334,7 +334,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Vervangen door |
+    | Waarde | Vervangen door |
     | --- | --- |
     | YOUR_NAMESPACE | De naam ruimte van uw eind punt |
     | YOUR_PRIMARY_KEY | De primaire connection string gebruikt voor verificatie |

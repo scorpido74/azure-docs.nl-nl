@@ -4,15 +4,16 @@ description: Hierin wordt uitgelegd hoe u een virtuele machine registreert vanui
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: c27605d2f9b87a9d4ba3d2326c0ce7ad437d3441
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4adc6f716050e2d792e0a5c022972e4340d2846a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240985"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823115"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Certificaten maken voor Azure Key Vault
 
@@ -32,7 +33,7 @@ U kunt een nieuwe of een bestaande Azure-resource groep gebruiken voor dit werk.
 
 Bewerk en voer het volgende Azure Power shell-script uit om het certificaat bestand (. pfx) in een lokale map te maken.  U moet de waarden vervangen voor de volgende para meters:
 
-|  **Parameter**        |   **Beschrijving**                                                               |
+|  **Bepaalde**        |   **Beschrijving**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$certroopath` | Lokale map waarin het. pfx-bestand moet worden opgeslagen  |
 | `$location`    | Een van de standaard geografische locaties van Azure  |
@@ -76,9 +77,9 @@ Bewerk en voer het volgende Azure Power shell-script uit om het certificaat best
 
 ## <a name="create-the-key-vault"></a>De sleutel kluis maken
 
-Kopieer de inhoud van de [sjabloon voor de sleutel kluis implementatie](./cpp-key-vault-deploy-template.md) naar een bestand op uw lokale computer. (in het onderstaande voorbeeld script is `C:\certLocation\keyvault.json`deze resource.)  Bewerk en voer het volgende Azure Power shell-script uit om een Azure Key Vault-exemplaar en de gekoppelde resource groep te maken.  U moet de waarden vervangen voor de volgende para meters:
+Kopieer de inhoud van de [sjabloon voor de sleutel kluis implementatie](./cpp-key-vault-deploy-template.md) naar een bestand op uw lokale computer. (in het onderstaande voorbeeld script is deze resource `C:\certLocation\keyvault.json`.)  Bewerk en voer het volgende Azure Power shell-script uit om een Azure Key Vault-exemplaar en de gekoppelde resource groep te maken.  U moet de waarden vervangen voor de volgende para meters:
 
-|  **Parameter**        |   **Beschrijving**                                                               |
+|  **Bepaalde**        |   **Beschrijving**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$postfix`            | Wille keurige numerieke teken reeks toegevoegd aan implementatie-id's                     |
 | `$rgName`             | Te maken naam van de Azure-resource groep (RG)                                        |
@@ -205,7 +206,7 @@ U kunt de certificaten in het pfx-bestand nu opslaan in de nieuwe sleutel kluis 
             echo $certpassword
             $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
             $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
-            $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
+            $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
             $objAzureKeyVaultSecret=Set-AzureKeyVaultSecret -VaultName $kvname -Name "ISVSecret$postfix" -SecretValue $secret
             echo $objAzureKeyVaultSecret.Id 
     

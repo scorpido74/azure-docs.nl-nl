@@ -1,38 +1,39 @@
 ---
-title: Maak een advies aanbieding | Azure Marketplace
-description: Een Azure- of Dynamics 365 advies service-aanbieding maken in de Cloud Partner-Portal voor Azure Marketplace.
+title: Een advies aanbieding maken | Azure Marketplace
+description: Maak een Azure-of Dynamics 365 consulting-service aanbieding in het Cloud Partner-portal voor Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pabutler
-ms.openlocfilehash: 09b9dce8e30ed3ba5ad0bac58929cd2c6d71793c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0cea0810300db1448540f58aa25b5f3197080d0e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942836"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818157"
 ---
 # <a name="create-a-consulting-offer"></a>Een advies aanbieding maken
 
-In dit artikel wordt beschreven hoe u maken en publiceren van een advies service-aanbieding.
+In dit artikel wordt beschreven hoe u een advies service-aanbod maakt en publiceert.
 
 ## <a name="define-your-offer"></a>Uw aanbieding definiëren
 
-Definieer uw verpakte advies serviceaanbieding. Richt u op de vaste bereik, vaste duur, geschatte vaste prijs (of gratis) en voornamelijk presale gebaseerde aanbiedingen voor één klant. Selecteer herhaalbare verpakte engagements die populaire en geldig is op het nieuwe bedrijf stimuleren voor u.
+Definieer uw ingepakte advies service-aanbieding. Richt u op vaste Scope, vaste duur, geschatte vaste prijs (of gratis), en voornamelijk preverkoop gerichte aanbiedingen voor één klant. Selecteer Herhaal bare verpakte afspraken die populair en effectief zijn bij het aansturen van nieuwe zaken voor u.
 
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
-Volg deze stappen voor het maken van een nieuwe aanbieding.
-1. Selecteer in het hoofdmenu van de Cloud Partner-Portal, **nieuwe aanbieding**.
-1. Op de **nieuwe aanbieding** in het menu **adviesservice**.
+Volg deze stappen om een nieuwe aanbieding te maken.
+1. Selecteer in het hoofd menu van de Cloud Partner-portal **nieuwe aanbieding**.
+1. Selecteer in het menu **nieuwe aanbieding** de optie **Consulting Service**.
 
     ![Een nieuwe advies service-aanbieding maken](media/cppselectnewconsultingoffer.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De **nieuwe aanbieding** pagina voor het advies type van de service-aanbieding een set met tabbladen en velden die u gebruiken biedt om een nieuwe aanbieding maken. De volgende artikelen wordt uitgelegd hoe u het tabblad voor het definiëren van de instellingen van de aanbieding en storefront details voor de nieuwe aanbieding:
+De **nieuwe aanbiedings** pagina voor het type advies service-aanbod bevat een reeks tabbladen en formulier velden die u gebruikt om een nieuwe aanbieding te maken. In de volgende artikelen wordt uitgelegd hoe u het tabblad gebruiken om de instellingen voor de aanbieding en de details van de winkel voor uw nieuwe aanbieding te definiëren:
 
--   [Aanbieding instellingen definiëren](./cpp-consulting-service-define-offer-settings.md)
--   [Voer storefront details en of u wilt publiceren in Azure Marketplace of AppSource](./cpp-consulting-service-storefront-details.md)
+-   [Aanbiedings instellingen definiëren](./cpp-consulting-service-define-offer-settings.md)
+-   [Voer Details van de winkel in en geef aan of u wilt publiceren in azure Marketplace of op AppSource](./cpp-consulting-service-storefront-details.md)

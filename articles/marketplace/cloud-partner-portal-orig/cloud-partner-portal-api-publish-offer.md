@@ -4,31 +4,32 @@ description: API voor het publiceren van de opgegeven aanbieding.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 117a4e5e238e754524ff813ce25ebc1105e2153c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7ad8086c417cf1f14d9116fa4abcb0a88030922
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64934984"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819644"
 ---
 <a name="publish-an-offer"></a>Een aanbieding publiceren
 ================
 
-Start het publicatieproces voor de opgegeven aanbieding. Deze aanroep is een langdurige bewerking.
+Start het publicatie proces voor de opgegeven aanbieding. Deze aanroep is een langlopende bewerking.
 
   `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/publish?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI-parameters
+<a name="uri-parameters"></a>URI-para meters
 --------------
 
 |  **Naam**      |    **Beschrijving**                               |  **Gegevenstype** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | Uitgever-ID, bijvoorbeeld `contoso`      |   String       |
-|  offerId       | Aanbiedings-id                                 |   String       |
-|  api-version   | Meest recente versie van de API                        |   Date         |
+|  publisherId   | Uitgevers-id, bijvoorbeeld `contoso`      |   Tekenreeks       |
+|  OfferId       | Aanbiedings-id                                 |   Tekenreeks       |
+|  API-versie   | Nieuwste versie van de API                        |   Date         |
 |  |  |
 
 
@@ -42,7 +43,7 @@ Start het publicatieproces voor de opgegeven aanbieding. Deze aanroep is een lan
 |  |  |
 
 
-<a name="body-example"></a>Voorbeeld van de hoofdtekst
+<a name="body-example"></a>Voor beeld van tekst
 ------------
 
 ### <a name="request"></a>Aanvraag
@@ -56,11 +57,11 @@ Start het publicatieproces voor de opgegeven aanbieding. Deze aanroep is een lan
   }
 ```
 
-### <a name="request-body-properties"></a>Eigenschappen van de aanvraag hoofdtekst
+### <a name="request-body-properties"></a>Eigenschappen van aanvraag hoofdtekst
 
 |  **Naam**               |   **Beschrijving**                                                                                 |
 |  ---------------------  | ------------------------------------------------------------------------------------------------- |
-|  e-mailmeldingen    | Door komma's gescheiden lijst met e-mailadressen om te worden geïnformeerd over de voortgang van de publicatiebewerking. |
+|  melding-e-mail berichten    | Een door komma's gescheiden lijst met e-mail adressen die moeten worden geïnformeerd over de voortgang van de publicatie bewerking. |
 |  |  |
 
 
@@ -73,16 +74,16 @@ Start het publicatieproces voor de opgegeven aanbieding. Deze aanroep is een lan
 
 |  **Naam**             |    **Waarde**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
-| Operation-Location    | De URL die kan worden doorzocht om te bepalen van de huidige status van de bewerking.    |
+| Bewerkings locatie    | URL waarop een query kan worden uitgevoerd om de huidige status van de bewerking te bepalen.    |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Antwoord-statuscodes
+### <a name="response-status-codes"></a>Antwoord status codes
 
-| **Code** |  **Beschrijving**                                                                                                                           |
+| **Gecodeerd** |  **Beschrijving**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
-| 202   | `Accepted` -De aanvraag is geaccepteerd. Het antwoord bevat een locatie die kan worden gebruikt voor het bijhouden van de bewerking die is gestart. |
-| 400   | `Bad/Malformed request` -De antwoordtekst voor fout kan bevatten meer informatie.                                                               |
-| 422   | `Un-processable entity` -Geeft aan dat de entiteit moet worden gepubliceerd niet valideren.                                                        |
-| 404   | `Not found` -De entiteit die is opgegeven door de client bestaat niet.                                                                              |
+| 202   | `Accepted`-de aanvraag is geaccepteerd. Het antwoord bevat een locatie die kan worden gebruikt voor het bijhouden van de bewerking die wordt gestart. |
+| 400   | `Bad/Malformed request`: de hoofd tekst van het fout bericht bevat mogelijk meer informatie.                                                               |
+| 422   | `Un-processable entity`-geeft aan dat de validatie van de entiteit die moet worden gepubliceerd, is mislukt.                                                        |
+| 404   | `Not found`-de entiteit die is opgegeven door de client, bestaat niet.                                                                              |
 |  |  |

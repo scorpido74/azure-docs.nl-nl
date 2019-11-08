@@ -1,5 +1,5 @@
 ---
-title: Een BLOB maken in Azure Storage voor node. js
+title: 'Quick Start: client bibliotheek voor Azure Blob Storage v2 voor Java script'
 description: Maak een opslagaccount en een container in object(Blob)-opslag. Gebruik vervolgens de Azure Storage-client bibliotheek voor node. js v2 om een BLOB te uploaden naar Azure Storage, een BLOB te downloaden en de blobs in een container weer te geven.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 8d0afc5a224e752bdd745ab4df0473a134b4180b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 12078300b36412a1507991507a39654acdeb7c69
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609097"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825351"
 ---
-# <a name="upload-download-and-list-blobs-using-the-client-library-for-nodejs"></a>Blobs uploaden, downloaden en vermelden met behulp van de client bibliotheek voor node. js
+# <a name="quickstart-azure-blob-storage-client-library-v2-for-javascript"></a>Quick Start: client bibliotheek voor Azure Blob Storage v2 voor Java script
 
 In deze hand leiding vindt u informatie over het gebruik van de client bibliotheek voor node. js v2 om blobs te uploaden, te downloaden en weer te geven met Azure Blob Storage.
 

@@ -4,15 +4,16 @@ description: Hierin wordt uitgelegd hoe u een virtuele machine die wordt gehost 
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 1270dff0bcb8de117247a454ab9c144250cfb17c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ce7fe49b07dc250a9f56ff73229e347b997f0cc0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880347"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824498"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>De door Azure gehoste VM configureren
 
@@ -43,7 +44,7 @@ Voor Linux-distributies worden updates meestal gedownload en geïnstalleerd via 
 
 ## <a name="perform-additional-security-checks"></a>Aanvullende beveiligings controles uitvoeren
 
-U moet een hoog beveiligings niveau voor uw oplossings installatie kopieën in de Azure Marketplace onderhouden.  Het volgende artikel bevat een controle lijst met beveiligings configuraties en-procedures om u te helpen bij het doel: [Beveiligings aanbevelingen voor installatie kopieën van Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Sommige van deze aanbevelingen zijn specifiek voor installatie kopieën op basis van Linux, maar zijn het meest van toepassing op elke VM-installatie kopie. 
+U moet een hoog beveiligings niveau voor uw oplossings installatie kopieën in de Azure Marketplace onderhouden.  Het volgende artikel bevat een controle lijst met beveiligings configuraties en-procedures om u te helpen in dit doel: [beveiligings aanbevelingen voor installatie kopieën van Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Sommige van deze aanbevelingen zijn specifiek voor installatie kopieën op basis van Linux, maar zijn het meest van toepassing op elke VM-installatie kopie. 
 
 
 ## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Aangepaste configuratie en geplande taken uitvoeren
@@ -76,8 +77,8 @@ Het volgende proces in twee stappen generaliseert een Linux-VM en implementeert 
 1.  Maak verbinding met uw virtuele Linux-machine met behulp van een SSH-client.
 2.  Typ de volgende opdracht in het SSH-venster: <br/>
     `sudo waagent -deprovision+user`
-3.  Typ `y` om door te gaan. (U kunt de `-force` para meter aan de vorige opdracht toevoegen om deze bevestigings stap te voor komen.)
-4.  Nadat de opdracht is voltooid, typt `exit` u om de SSH-client te sluiten.
+3.  Typ `y` om door te gaan. (U kunt de para meter `-force` toevoegen aan de vorige opdracht om deze bevestigings stap te voor komen.)
+4.  Nadat de opdracht is voltooid, typt u `exit` om de SSH-client te sluiten.
 
 <!-- TD: I need to add meat and/or references to the following steps -->
 #### <a name="capture-the-image"></a>De installatie kopie vastleggen
@@ -89,8 +90,8 @@ Het volgende proces in twee stappen generaliseert een Linux-VM en implementeert 
 
 Het maken van kopieën van VM is vaak handig voor back-ups, testen, aangepaste failover of taak verdeling, om verschillende configuraties van een oplossing te bieden, enzovoort. Zie voor informatie over het dupliceren en downloaden van een primaire VHD, voor het maken van een onbeheerde kloon:
 
-- Virtuele Linux-machine: [Een Linux-VHD downloaden vanuit Azure](../../../virtual-machines/linux/download-vhd.md)
-- Windows-VM: [Een Windows-VHD downloaden vanuit Azure](../../../virtual-machines/windows/download-vhd.md)
+- Linux-VM: [down load een Linux-VHD van Azure](../../../virtual-machines/linux/download-vhd.md)
+- Windows-VM: [een Windows-VHD downloaden vanuit Azure](../../../virtual-machines/windows/download-vhd.md)
 
 
 ## <a name="next-steps"></a>Volgende stappen

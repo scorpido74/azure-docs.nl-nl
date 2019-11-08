@@ -4,19 +4,20 @@ description: Stapsgewijze hand leiding en publicatie van controle lijsten voor h
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: keithcharlie
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: f9ff6e19a0f0091cb5b831279eee90727bbb89fd
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: c213bbcb3c7859aa4718916aafab970b3ffd4613
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742264"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813029"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-toepassingen bieden een publicatie gids
 
-SaaS-toepassingen kunnen op Marketplace worden gepubliceerd met drie verschillende aanroepen naar actie: ' Neem contact op met mij ', ' nu proberen ' en ' nu downloaden '. In deze hand leiding worden deze drie opties beschreven, met inbegrip van de vereisten voor elk. 
+SaaS-toepassingen kunnen op Marketplace worden gepubliceerd met drie verschillende aanroepen naar actie: ' contact opnemen ', ' nu proberen ' en ' nu downloaden '. In deze hand leiding worden deze drie opties beschreven, met inbegrip van de vereisten voor elk. 
 
 ## <a name="offer-overview"></a>Overzicht van aanbieding  
 
@@ -27,13 +28,13 @@ SaaS-toepassingen zijn beschikbaar in azure-winkel in de volgende tabel bevat ee
 | AppSource | Ja (contact opnemen) | Ja (PowerBI/Dynamics) |
 | Azure Marketplace | Nee | Ja (SaaS-apps) |   
 
-**Orderverzamellijst**  De optie voor het publiceren van aanbiedingen bestaat uit een aanbiedings type voor contact personen en wordt gebruikt wanneer een proef abonnement of een deelname op transactie niveau niet haalbaar is. Het voor deel van deze benadering is dat uitgevers met een oplossing in de markt direct leads ontvangen die kunnen worden omgezet in deals om uw bedrijf te verg Roten.  
+**Lijst:**  De optie voor het publiceren van aanbiedingen bestaat uit een aanbiedings type voor contact personen en wordt gebruikt wanneer een proef abonnement of een deelname op transactie niveau niet haalbaar is. Het voor deel van deze benadering is dat uitgevers met een oplossing in de markt direct leads ontvangen die kunnen worden omgezet in deals om uw bedrijf te verg Roten.  
 **Proef versie/trans actie:**  De klant heeft de mogelijkheid om rechtstreeks een proef versie voor uw oplossing te kopen of aan te vragen. Het bieden van een proef ervaring verhoogt het engagement niveau voor klanten en stelt klanten in staat om uw oplossing te verkennen voordat u deze koopt. Als u een proef ervaring hebt, hebt u een betere kans op promotie in de-winkel en verwacht u meer en uitgebreidere leads van klant afspraken. Tests moeten ten minste voor de duur van de proef periode gratis ondersteuning bevatten.  
 
 | SaaS-apps bieden | Zakelijke vereisten | Technische vereisten |  
 | --- | --- | --- |  
 | **Contact opnemen** | Ja | Nee |  
-| **PowerBI / Dynamics** | Ja | Ja (Azure AD-integratie) |  
+| **PowerBI/Dynamics** | Ja | Ja (Azure AD-integratie) |  
 | **SaaS-apps**| Ja | Ja (Azure AD-integratie) |     
 
 ## <a name="saas-list"></a>SaaS-lijst
@@ -115,7 +116,7 @@ Als u al Azure AD ondersteunt, doet u het volgende:
 Als u geen ervaring hebt met Azure AD Federated SSO, doet u het volgende: 
 1.  Registreer uw toepassing in de Azure Portal
 2.  Ontwikkel SSO met Azure AD met behulp van [OpenID Connect Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) of [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
-3.  Schakel de ondersteunings functie voor meerdere multitenancy in AAD in om meer specifieke informatie te verkrijgen met een proef versie met [](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)één klik.  
+3.  Schakel de ondersteunings functie voor meerdere multitenancy in AAD in om meer specifieke informatie te verkrijgen met een proef versie met één [klik.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)  
 
 **Gebruik voor toepassing met één Tenant een van de volgende opties:**  
 * Gebruikers toevoegen aan uw directory als gast gebruikers met behulp van [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
@@ -133,7 +134,7 @@ Micro soft fungeert als host voor de commerce-trans actie. Micro soft factureert
 | Vereiste | Details |  
 |:--- |:--- |  
 |Facturering en meting | Uw aanbieding is geprijsd op basis van het prijs model dat u hebt geselecteerd voor publicatie (vast tarief of per gebruiker).  Als u gebruikmaakt van het model voor vaste kosten, kunt u eventueel extra dimensies opnemen die worden gebruikt om klanten in rekening te brengen voor gebruik dat niet in het vast tarief is opgenomen. |  
-|Heffing | Uw aanbieding wordt op elk gewenst moment geannuleerd door de klant. |  
+|Opzegging | Uw aanbieding wordt op elk gewenst moment geannuleerd door de klant. |  
 |Pagina transactie overloop | U host een Azure-landings pagina voor co-branding, waar gebruikers hun SaaS-service account kunnen maken en beheren. |   
 | API voor abonnementen | U maakt een service beschikbaar die kan communiceren met het SaaS-abonnement om een gebruikers account en een service plan te maken, bij te werken en te verwijderen. Essentiële wijzigingen in de API moeten binnen 24 uur worden ondersteund. Wijzigingen van niet-kritieke API'S worden periodiek vrijgegeven. |  
 

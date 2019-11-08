@@ -1,48 +1,49 @@
 ---
-title: Ondersteuning voor instellingen voor een Azure Containers-installatiekopie | Azure Marketplace
-description: Configureer instellingen voor de ondersteuning voor een Azure-container.
+title: Ondersteunings instellingen voor een installatie kopie van Azure containers | Azure Marketplace
+description: Ondersteunings instellingen configureren voor een Azure-container.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 71436d7ee82d9e5162780719d9a7a063fa903c6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 144512683e6afa643639ba12b071e2a3ed7e01bd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942585"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823096"
 ---
-# <a name="container-support-tab"></a>Tabblad voor ondersteuning van container
+# <a name="container-support-tab"></a>Tabblad ondersteuning voor container
 
-Gebruik de **ondersteunen** tabblad van de **nieuwe aanbieding** pagina voor technische en gebruiker bronnen voor ondersteuning van uw aanbieding.  De volgende invoer gebieden vindt u in het formulier voor ondersteuning: **Neem contact op met technische**, **klantondersteuning**, en **ondersteuning voor URL's**. Een sterretje (*) toegevoegd aan de naam van het veld geeft aan dat dit is verplicht.
-
-
-## <a name="support-form-fields"></a>Ondersteuning voor formuliervelden
-
-Geef de vereiste gegevens voor de velden contact op met de technische en klantondersteuning.
+Gebruik het tabblad **ondersteuning** van de **nieuwe aanbiedings** pagina om technische en gebruikers ondersteunings bronnen voor uw aanbieding te bieden.  In het formulier ondersteuning vindt u de volgende invoer gebieden: **technische contact persoon**, **klant ondersteuning**en **ondersteunings-url's**. Een asterisk (*) die wordt toegevoegd aan de veld naam geeft aan dat deze vereist is.
 
 
-### <a name="engineering-contact"></a>Technische contactpersoon
+## <a name="support-form-fields"></a>Formulier velden ondersteunen
 
-Neem contact op met de Engineering is de technische contactpersoon tussen uw organisatie en Microsoft. Verplichte velden zijn indicted met een asterisk (*).
+Geef de vereiste informatie op voor de velden technische contact persoon en klant ondersteuning.
 
-- **Naam\***  -naam van de persoon of groep die als technische/technische ondersteuning fungeert.
-- **E-mailbericht\***  -e-mailadres van deze technische contactpersoon.
-- **Telefoon\***  -telefoonnummer voor technische ondersteuning.
+
+### <a name="engineering-contact"></a>Technische contact persoon
+
+De technische contact persoon is het technisch contact tussen uw organisatie en micro soft. Vereiste velden worden gedicteerd door een asterisk (*).
+
+- **Name\*** : de naam van de persoon of groep die fungeert als technische/technische ondersteuning.
+- **E-mail\*** -e-mail adres van deze technische contact persoon.
+- **Telefoon\*** -telefoon nummer voor technische ondersteuning.
 
 
 ### <a name="customer-support"></a>Klantondersteuning
 
-Contact opnemen met Customer Support ontvangt ondersteuningstickets geopend door klanten in Azure.  Verplichte velden zijn indicted met een asterisk (*).
+De contact persoon klant ondersteuning ontvangt ondersteunings tickets die zijn geopend door klanten in Azure.  Vereiste velden worden gedicteerd door een asterisk (*).
 
-- **Naam\***  -naam van de persoon of groep die als de klantondersteuning fungeert.
-- **E-mailbericht\***  -e-mailadres van deze contactpersoon voor ondersteuning.
-- **Telefoon\***  -telefoonnummer voor klantenondersteuning.
+- **Name\*** : de naam van de persoon of groep die fungeert als klant ondersteuning.
+- **E-mail\*** : e-mail adres van deze ondersteunings contact persoon.
+- **Telefoon\*** -telefoon nummer voor klant ondersteuning.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u klaar bent met het verstrekken van ondersteuningsinformatie, kunt u [uw aanbieding publiceren](./cpp-publish-offer.md). 
+Nadat u de ondersteunings informatie hebt opgegeven, bent u klaar om [uw aanbieding te publiceren](./cpp-publish-offer.md). 
 

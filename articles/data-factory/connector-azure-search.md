@@ -12,44 +12,44 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: f4e9e9f66d9bf1fecd4565d5eb469703e7a83d0d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ffdde571bbd2ae967003c520b09349ea9dcff414
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681190"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806075"
 ---
-# <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Gegevens kopiëren naar een Azure Search-index met behulp van Azure Data Factory
+# <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Gegevens kopiëren naar een Azure Cognitive Search-index met behulp van Azure Data Factory
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](v1/data-factory-azure-search-connector.md)
 > * [Huidige versie](connector-azure-search.md)
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren naar Azure Search index. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren naar Azure Cognitive Search index. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
-U kunt gegevens uit elk ondersteund brongegevens archief kopiëren naar Azure Search index. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
+U kunt gegevens uit elk ondersteund brongegevens archief kopiëren naar de zoek index. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
 ## <a name="getting-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor Azure Search-connector.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor Azure Cognitive Search-connector.
 
 ## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor Azure Search gekoppelde service:
+De volgende eigenschappen worden ondersteund voor de gekoppelde Azure Cognitive Search-service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **AzureSearch** | Ja |
-| url | De URL voor de Azure Search-service. | Ja |
-| sleutel | De beheerders sleutel voor de Azure Search-service. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| url | URL voor de zoek service. | Ja |
+| sleutel | De beheerders sleutel voor de zoek service. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
 > [!IMPORTANT]
-> Wanneer u gegevens uit een gegevens archief in de Cloud naar Azure Search index kopieert, moet u in Azure Search gekoppelde service een Azure Integration Runtime met een expliciete regio in connactVia. Stel de regio in als uw Azure Search zich bevindt. Meer informatie vindt u in [Azure Integration runtime](concepts-integration-runtime.md#azure-integration-runtime).
+> Wanneer u gegevens uit een gegevens archief in de Cloud naar de zoek index kopieert, moet u in azure Cognitive Search gekoppelde service een Azure Integration Runtime met een expliciete regio in connactVia. Stel de regio in op de locatie waar uw zoek service zich bevindt. Meer informatie vindt u in [Azure Integration runtime](concepts-integration-runtime.md#azure-integration-runtime).
 
 **Voorbeeld:**
 
@@ -75,14 +75,14 @@ De volgende eigenschappen worden ondersteund voor Azure Search gekoppelde servic
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die door Azure Search DataSet worden ondersteund.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. In deze sectie vindt u een lijst met eigenschappen die door Azure Cognitive Search DataSet worden ondersteund.
 
-De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens naar Azure Search:
+De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens naar Azure Cognitive Search:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **AzureSearchIndex** | Ja |
-| indexName | De naam van de Azure Search index. Data Factory maakt de index niet. De index moet bestaan in Azure Search. | Ja |
+| indexName | De naam van de zoek index. Data Factory maakt de index niet. De index moet bestaan in azure Cognitive Search. | Ja |
 
 **Voorbeeld:**
 
@@ -96,7 +96,7 @@ De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens naa
         },
         "schema": [],
         "linkedServiceName": {
-            "referenceName": "<Azure Search linked service name>",
+            "referenceName": "<Azure Cognitive Search linked service name>",
             "type": "LinkedServiceReference"
         }
    }
@@ -105,21 +105,21 @@ De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens naa
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die door Azure Search bron worden ondersteund.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die door Azure Cognitive Search Source worden ondersteund.
 
-### <a name="azure-search-as-sink"></a>Azure Search als Sink
+### <a name="azure-cognitive-search-as-sink"></a>Azure Cognitive Search als Sink
 
-Als u gegevens wilt kopiëren naar Azure Search, stelt u het bron type in de Kopieer activiteit in op **AzureSearchIndexSink**. De volgende eigenschappen worden ondersteund in het gedeelte **sink** van de Kopieer activiteit:
+Als u gegevens wilt kopiëren naar Azure Cognitive Search, stelt u het bron type in de Kopieer activiteit in op **AzureSearchIndexSink**. De volgende eigenschappen worden ondersteund in het gedeelte **sink** van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **AzureSearchIndexSink** | Ja |
-| WriteBehavior | Hiermee geeft u op of u wilt samen voegen of vervangen wanneer een document al aanwezig is in de index. Zie de [eigenschap WriteBehavior](#writebehavior-property).<br/><br/>Toegestane waarden zijn: **samen voegen** (standaard) en **uploaden**. | Nee |
-| writeBatchSize | Hiermee worden gegevens geüpload naar de Azure Search-index wanneer de buffer grootte writeBatchSize bereikt. Zie de [eigenschap WriteBatchSize](#writebatchsize-property) voor meer informatie.<br/><br/>Toegestane waarden zijn: integer 1 tot 1.000; de standaard waarde is 1000. | Nee |
+| writeBehavior | Hiermee geeft u op of u wilt samen voegen of vervangen wanneer een document al aanwezig is in de index. Zie de [eigenschap WriteBehavior](#writebehavior-property).<br/><br/>Toegestane waarden zijn: **samen voegen** (standaard) en **uploaden**. | Nee |
+| writeBatchSize | Uploadt gegevens in de zoek index wanneer de buffer grootte writeBatchSize bereikt. Zie de [eigenschap WriteBatchSize](#writebatchsize-property) voor meer informatie.<br/><br/>Toegestane waarden zijn: integer 1 tot 1.000; de standaard waarde is 1000. | Nee |
 
 ### <a name="writebehavior-property"></a>Eigenschap WriteBehavior
 
-AzureSearchSink upsert bij het schrijven van gegevens. Met andere woorden, wanneer u een document schrijft en de document sleutel al aanwezig is in de index van de Azure Search, Azure Search het bestaande document bijwerken in plaats van een conflict uitzondering uit te voeren.
+AzureSearchSink upsert bij het schrijven van gegevens. Met andere woorden, wanneer u een document schrijft en de document sleutel al in de zoek index bestaat, werkt Azure Cognitive Search het bestaande document bij in plaats van een conflict uitzondering uit te voeren.
 
 De AzureSearchSink biedt de volgende twee upsert-gedragingen (met behulp van AzureSearch SDK):
 
@@ -130,7 +130,7 @@ Het standaard gedrag is **samen voegen**.
 
 ### <a name="writebatchsize-property"></a>Eigenschap WriteBatchSize
 
-Azure Search-service ondersteunt het schrijven van documenten als een batch. Een batch kan 1 tot 1.000 acties bevatten. Een actie behandelt één document om de upload/samenvoeg bewerking uit te voeren.
+Azure Cognitive Search service ondersteunt het schrijven van documenten als een batch. Een batch kan 1 tot 1.000 acties bevatten. Een actie behandelt één document om de upload/samenvoeg bewerking uit te voeren.
 
 **Voorbeeld:**
 
@@ -147,7 +147,7 @@ Azure Search-service ondersteunt het schrijven van documenten als een batch. Een
         ],
         "outputs": [
             {
-                "referenceName": "<Azure Search output dataset name>",
+                "referenceName": "<Azure Cognitive Search output dataset name>",
                 "type": "DatasetReference"
             }
         ],
@@ -166,9 +166,9 @@ Azure Search-service ondersteunt het schrijven van documenten als een batch. Een
 
 ## <a name="data-type-support"></a>Ondersteuning voor gegevens typen
 
-In de volgende tabel wordt aangegeven of een Azure Search gegevens type wordt ondersteund.
+In de volgende tabel wordt aangegeven of een Azure Cognitive Search-gegevens type wordt ondersteund.
 
-| Azure Search gegevens type | Ondersteund in Azure Search Sink |
+| Azure Cognitive Search-gegevens type | Ondersteund in azure Cognitive Search Sink |
 | ---------------------- | ------------------------------ |
 | Tekenreeks | J |
 | Int32 | J |
@@ -179,7 +179,7 @@ In de volgende tabel wordt aangegeven of een Azure Search gegevens type wordt on
 | Teken reeks matrix | N |
 | GeographyPoint | N |
 
-Momenteel worden andere gegevens typen, zoals complex type, niet ondersteund. Zie [ondersteunde gegevens typen (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)voor een volledige lijst met Azure Search ondersteund gegevens type.
+Momenteel worden andere gegevens typen, zoals complex type, niet ondersteund. Zie [ondersteunde gegevens typen (azure Cognitive Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)voor een volledige lijst met ondersteunde gegevens typen van Azure Cognitive Search.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [ondersteunde gegevens archieven](copy-activity-overview.md##supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

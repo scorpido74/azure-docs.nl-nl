@@ -1,19 +1,20 @@
 ---
 title: Uw publicatie optie bepalen in azure Marketplace | Azure Marketplace
-description: In dit artikel beschrijft de criteria voor in aanmerking te komen en publiceren vereisten partners probeert te begrijpen hoe u apps publiceren naar de Azure Marketplace.
+description: In dit artikel worden de criteria voor geschiktheid en de publicatie vereisten beschreven die willen weten hoe u apps publiceert op de Azure Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 8a06573e6bcb2d5a6c6c97ad19e168f9c71aaa13
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 43ca74faadf7890f1274afc4905af79237918f4a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308224"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827807"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Publicatiehandleiding op type aanbieding
 
@@ -46,6 +47,6 @@ Ten slotte raadpleegt u [**Azure AD-vereisten**](https://docs.microsoft.com/azur
 
 ## <a name="next-steps"></a>Volgende stappen
 
-*   Bekijk de vereisten voor geschiktheid in de opties voor publiceren door de sectie type aanbieding voor het voltooien van de selectie en configuratie van uw aanbieding.
-*   Bekijk de publishing patronen door webwinkel voor voorbeelden van hoe uw oplossing wordt toegewezen aan een aanbiedingtype en de configuratie.
+*   Bekijk de geschiktheids vereisten in de sectie publicatie opties per aanbiedings type om de selectie en configuratie van uw aanbieding te volt ooien.
+*   Bekijk de publicatie patronen per winkel voor voor beelden van hoe uw oplossing is gekoppeld aan een type en configuratie van een aanbieding.
 

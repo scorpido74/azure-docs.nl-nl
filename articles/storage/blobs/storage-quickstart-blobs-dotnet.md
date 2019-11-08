@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: fa3eb39ff7ac0df6856fc9fd9e07d720a306fa85
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 18f4053a2f8b1b5c880b46cf6eeb46c0dbf97f15
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607638"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825401"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V12 voor .NET
 
@@ -30,6 +30,8 @@ Gebruik de Azure Blob Storage-client bibliotheek V12 voor .NET voor het volgende
 * Een container verwijderen
 
 [API-referentie documentatie](/dotnet/api/azure.storage.blobs) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/12.0.0) | -voor [beelden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -270,7 +272,7 @@ string downloadFilePath = localFilePath.Replace(".txt", "DOWNLOAD.txt");
 Console.WriteLine("\nDownloading blob to\n\t{0}\n", downloadFilePath);
 
 // Download the blob's contents and save it to a file
-BlobDownloadInfo download = await blob.DownloadAsync();
+BlobDownloadInfo download = await blobClient.DownloadAsync();
 
 using FileStream downloadFileStream = File.OpenWrite(downloadFilePath);
 await download.Content.CopyToAsync(downloadFileStream);

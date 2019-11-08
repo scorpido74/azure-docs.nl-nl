@@ -1,5 +1,5 @@
 ---
-title: De replicatie van schema wijzigingen in Azure SQL Data Sync automatiseren
+title: De replicatie van schema wijzigingen in SQL Data Sync automatiseren
 description: Meer informatie over het automatiseren van de replicatie van schema wijzigingen in Azure SQL Data Sync.
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
-ms.openlocfilehash: 01cc82a2ada1f4ac8f26b223b7168b2cca157793
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 639901975bbb66b9f410bea297d9e48cd96d6d1b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686879"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822433"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>De replicatie van schema wijzigingen in Azure SQL Data Sync automatiseren
 
@@ -84,7 +84,7 @@ INSERT INTO SchemaChanges (SqlStmt, Description)
 
 De trigger voegt een record in de tabel schema wijzigingen bijhouden toe voor elke opdracht ALTER TABLE. In dit voor beeld wordt een filter toegevoegd om te voor komen dat wijzigingen in het schema worden gerepliceerd die zijn gemaakt onder schema **DataSync**, omdat dit het meest waarschijnlijk is gedaan door de Data Sync-Service. Voeg meer filters toe als u alleen bepaalde typen schema wijzigingen wilt repliceren.
 
-U kunt ook meer triggers toevoegen om andere typen schema wijzigingen te repliceren. Maak bijvoorbeeld CREATE_PROCEDURE-, ALTER_PROCEDURE-en DROP_PROCEDURE-triggers om wijzigingen in opgeslagen procedures te repliceren.
+U kunt ook meer triggers toevoegen om andere typen schema wijzigingen te repliceren. Maak bijvoorbeeld CREATE_PROCEDURE, ALTER_PROCEDURE en DROP_PROCEDURE triggers om wijzigingen in opgeslagen procedures te repliceren.
 
 ### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Een trigger maken op andere eind punten om schema wijzigingen tijdens het invoegen toe te passen
 

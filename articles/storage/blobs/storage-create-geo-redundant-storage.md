@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een maximaal beschikbare toepassing bouwen met Blob-opslag - Azure Storage'
+title: 'Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob Storage-Azure Storage'
 description: Geografisch redundante opslag met leestoegang gebruiken om uw toepassingsgegevens maximaal beschikbaar te maken
 services: storage
 author: tamram
@@ -10,14 +10,14 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 3302402ae791ac17b8ac09ab91b061a558eb7c75
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: c010b1acbf1b8f0a05ffda05bddfd8a9145dee8d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390366"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825433"
 ---
-# <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Zelfstudie: Een maximaal beschikbare toepassing bouwen met Blob-opslag
+# <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob Storage
 
 Deze zelfstudie is deel één van een serie. In deze zelfstudie leert u hoe u uw toepassingsgegevens maximaal beschikbaar maakt in Azure.
 
@@ -30,7 +30,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 In deel 1 van de reeks leert u het volgende:
 
 > [!div class="checklist"]
-> * Create a storage account
+> * Een opslagaccount maken
 > * De verbindingsreeks instellen
 > * De consoletoepassing uitvoeren
 
@@ -58,9 +58,9 @@ Vereisten voor het voltooien van deze zelfstudie:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Een opslagaccount maken
 
 Een opslagaccount biedt een unieke naamruimte voor het opslaan en openen van uw Azure Storage-gegevensobjecten.
 
@@ -71,16 +71,16 @@ Volg deze stappen om een account voor geografisch redundante opslag met leestoeg
 3. Selecteer **Storage-account: Blob, File, Table, Queue** onder **Aanbevolen**.
 4. Vul het formulier voor het opslagaccount in met de informatie uit de volgende afbeelding en selecteer **Maken**:
 
-   | Instelling       | Voorgestelde waarde | Description |
+   | Instelling       | Voorgestelde waarde | Beschrijving |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Name** | mystorageaccount | Een unieke naam voor uw opslagaccount |
+   | **Naam** | mystorageaccount | Een unieke naam voor uw opslagaccount |
    | **Implementatiemodel** | Resource Manager  | Resource Manager bevat de nieuwste functies.|
    | **Type account** | StorageV2 | Zie [Typen opslagaccounts](../common/storage-introduction.md#types-of-storage-accounts) voor meer informatie over de verschillende typen accounts |
    | **Prestaties** | Standard | Standard is voldoende voor het voorbeeldscenario. |
    | **Replicatie**| Geografisch redundante opslag met leestoegang (RA-GRS) | Dit is nodig om het voorbeeld te laten werken. |
    |**Abonnement** | uw abonnement |Zie [Abonnementen](https://account.azure.com/Subscriptions) voor meer informatie over uw abonnementen. |
-   |**ResourceGroup** | myResourceGroup |Zie [Naming conventions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
-   |**Location** | East US | Kies een locatie. |
+   |**ResourceGroup** | myResourceGroup |Zie [Naming conventions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
+   |**Locatie** | US - oost | Kies een locatie. |
 
 ![opslagaccount maken](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
@@ -112,13 +112,13 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 ---
 
-## <a name="configure-the-sample"></a>Voorbeeld configureren
+## <a name="configure-the-sample"></a>Het voorbeeld configureren
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 In de toepassing moet u de verbindingsreeks voor uw opslagaccount opgeven. U kunt deze verbindingsreeks opslaan in een omgevingsvariabele op de lokale computer waarop de toepassing wordt uitgevoerd. Volg een van de onderstaande voorbeelden afhankelijk van uw besturingssysteem voor het maken van de omgevingsvariabele.
 
-Ga in Azure Portal naar uw opslagaccount. Selecteer bij **Instellingen** in uw opslagaccount de optie **Toegangssleutels**. Kopieer de **verbindingsreeks** uit de primaire of secundaire sleutel. Voer een van de volgende opdrachten uit op basis van uw besturings systeem \<en\> Vervang yourconnectionstring door uw werkelijke Connection String. Met deze opdracht slaat u een omgevingsvariabele naar de lokale machine op. In Windows is de omgevingsvariabele pas beschikbaar wanneer u de **opdrachtprompt** of shell die u gebruikt opnieuw laadt.
+Ga in Azure Portal naar het nieuwe opslagaccount. Selecteer bij **Instellingen** in uw opslagaccount de optie **Toegangssleutels**. Kopieer de **verbindingsreeks** uit de primaire of secundaire sleutel. Voer een van de volgende opdrachten uit op basis van uw besturings systeem en vervang \<yourconnectionstring\> door de daad werkelijke connection string. Met deze opdracht slaat u een omgevingsvariabele naar de lokale machine op. In Windows is de omgevingsvariabele pas beschikbaar wanneer u de **opdrachtprompt** of shell die u gebruikt opnieuw laadt.
 
 ### <a name="linux"></a>Linux
 
@@ -136,7 +136,7 @@ setx storageconnectionstring "<yourconnectionstring>"
 
 In de toepassing moet u de referenties van uw opslag account opgeven. U kunt deze informatie opslaan in omgevings variabelen op de lokale computer waarop de toepassing wordt uitgevoerd. Volg een van de onderstaande voor beelden, afhankelijk van uw besturings systeem, om de omgevings variabelen te maken.
 
-Ga in Azure Portal naar uw opslagaccount. Selecteer bij **Instellingen** in uw opslagaccount de optie **Toegangssleutels**. Plak de **naam van het opslag account** en de **sleutel** waarden in de volgende opdrachten \<en\> Vervang de\> tijdelijke aanduidingen youraccountname en \<youraccountkey. Met deze opdracht worden de omgevings variabelen opgeslagen op de lokale computer. In Windows is de omgevingsvariabele pas beschikbaar wanneer u de **opdrachtprompt** of shell die u gebruikt opnieuw laadt.
+Ga in Azure Portal naar het nieuwe opslagaccount. Selecteer bij **Instellingen** in uw opslagaccount de optie **Toegangssleutels**. Plak de **naam van het opslag account** en de **sleutel** waarden in de volgende opdrachten, waarbij u de \<youraccountname\> en \<youraccountkey\> tijdelijke aanduidingen vervangt. Met deze opdracht worden de omgevings variabelen opgeslagen op de lokale computer. In Windows is de omgevingsvariabele pas beschikbaar wanneer u de **opdrachtprompt** of shell die u gebruikt opnieuw laadt.
 
 ### <a name="linux"></a>Linux
 
@@ -154,7 +154,7 @@ setx accountkey "<youraccountkey>"
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
-Als u dit voor beeld wilt uitvoeren, moet u de referenties van uw `.env.example` opslag account toevoegen aan het bestand `.env`en de naam vervolgens wijzigen in.
+Als u dit voor beeld wilt uitvoeren, moet u de referenties van uw opslag account toevoegen aan het `.env.example`-bestand en de naam vervolgens wijzigen in `.env`.
 
 ```
 AZURE_STORAGE_ACCOUNT_NAME=<replace with your storage account name>
@@ -163,7 +163,7 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 U kunt deze informatie vinden in de Azure Portal door te navigeren naar uw opslag account en **toegangs sleutels** te selecteren in de sectie **instellingen** .
 
-Installeer de vereiste afhankelijkheden. Hiertoe opent u een opdracht prompt, navigeert u naar de map voor beeld en `npm install`voert u vervolgens in.
+Installeer de vereiste afhankelijkheden. Hiertoe opent u een opdracht prompt, navigeert u naar de map voor beeld en voert u vervolgens `npm install`in.
 
 ---
 
@@ -173,7 +173,7 @@ Installeer de vereiste afhankelijkheden. Hiertoe opent u een opdracht prompt, na
 
 Druk in Visual Studio op **F5** of selecteer **Start** om foutopsporing van de toepassing te starten. Visual Studio herstelt automatisch ontbrekende NuGet-pakketten als dit zo is geconfigureerd. Ga naar [Installing and reinstalling packages with package restore](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview) (Pakketten installeren en opnieuw installeren met pakketherstel) voor meer informatie.
 
-Er wordt een consolevenster geopend en de toepassing wordt gestart. De toepassing uploadt de afbeelding **HelloWorld.png** vanuit de oplossing naar het opslagaccount. De toepassing controleert of de afbeelding is gerepliceerd naar het secundaire RA-GRS-eindpunt. Daarna wordt de afbeelding maximaal 999 keer gedownload. Elke leesbewerking wordt voorgesteld door een **P** of een **S**. **P** staat voor het primaire eindpunt en **S** voor het secundaire eindpunt.
+Er wordt een consolevenster geopend en de toepassing wordt gestart. De toepassing uploadt de afbeelding **HelloWorld.png** vanuit de oplossing naar het opslagaccount. De toepassing controleert of de afbeelding is gerepliceerd naar het secundaire RA-GRS-eindpunt. Daarna wordt de afbeelding maximaal 999 keer gedownload. Elke Lees bewerking wordt weer gegeven door een **P** of **S**. Waarbij **P** staat voor het primaire eind punt en **S** staat voor het secundaire eind punt.
 
 ![Console-app die wordt uitgevoerd](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -181,7 +181,7 @@ In de voorbeeldcode wordt de taak `RunCircuitBreakerAsync` in het bestand `Progr
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Als u de toepassing wilt uitvoeren op een terminal of opdrachtprompt, gaat u naar de map **circuitbreaker.py** en voert u `python circuitbreaker.py` in. De toepassing uploadt de afbeelding **HelloWorld.png** vanuit de oplossing naar het opslagaccount. De toepassing controleert of de afbeelding is gerepliceerd naar het secundaire RA-GRS-eindpunt. Daarna wordt de afbeelding maximaal 999 keer gedownload. Elke leesbewerking wordt voorgesteld door een **P** of een **S**. **P** staat voor het primaire eindpunt en **S** voor het secundaire eindpunt.
+Als u de toepassing wilt uitvoeren op een terminal of opdrachtprompt, gaat u naar de map **circuitbreaker.py** en voert u `python circuitbreaker.py` in. De toepassing uploadt de afbeelding **HelloWorld.png** vanuit de oplossing naar het opslagaccount. De toepassing controleert of de afbeelding is gerepliceerd naar het secundaire RA-GRS-eindpunt. Daarna wordt de afbeelding maximaal 999 keer gedownload. Elke Lees bewerking wordt weer gegeven door een **P** of **S**. Waarbij **P** staat voor het primaire eind punt en **S** staat voor het secundaire eind punt.
 
 ![Console-app die wordt uitgevoerd](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -189,12 +189,12 @@ In de voorbeeldcode wordt de methode `run_circuit_breaker` in het bestand `circu
 
 De functie Opnieuw van het opslagobject is ingesteld op een lineair beleid voor nieuwe pogingen. De functie Opnieuw bepaalt of een aanvraag opnieuw moet worden geprobeerd en geeft het aantal seconden op dat moet worden gewacht voordat opnieuw wordt geprobeerd de aanvraag uit te voeren. Stel de waarde van **retry\_to\_secondary** in op True als de aanvraag bij een volgende poging worden uitgevoerd naar het secundaire eindpunt als de eerste aanvraag naar het primaire eindpunt is mislukt. In de voorbeeldtoepassing is een aangepast beleid voor nieuwe pogingen gedefinieerd in de functie `retry_callback` van het opslagobject.
 
-Vóór het downloaden wordt de functie [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) en [Response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) voor het Service object gedefinieerd. Deze functies definiëren gebeurtenis-handlers die worden geactiveerd wanneer een download is voltooid of wanneer een download is mislukt en opnieuw wordt uitgevoerd.
+Vóór het downloaden wordt de functie Service object [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) en [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) gedefinieerd. Deze functies definiëren gebeurtenis-handlers die worden geactiveerd wanneer een download is voltooid of wanneer een download is mislukt en opnieuw wordt uitgevoerd.
 
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
-Als u het voor beeld wilt uitvoeren, opent u een opdracht prompt, navigeert u naar `node index.js`de map voor beeld en voert u vervolgens in.
+Als u het voor beeld wilt uitvoeren, opent u een opdracht prompt, navigeert u naar de map voor beeld en voert u vervolgens `node index.js`in.
 
 In het voor beeld wordt een container gemaakt in uw Blob Storage-account, wordt **HelloWorld. png** geüpload naar de container en wordt herhaaldelijk gecontroleerd of de container en de installatie kopie zijn gerepliceerd naar de secundaire regio. Na de replicatie wordt u gevraagd om **D** of **Q** (gevolgd door Enter) in te voeren om te downloaden of af te sluiten. De uitvoer moet er ongeveer uitzien als in het volgende voor beeld:
 

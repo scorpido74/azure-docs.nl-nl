@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a244e4f7ac406fecd4c053b39a5e9a9cb6ecab2c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 54b59cfecbbba6b71cf301aa4872892825d4b675
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105502"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827935"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Facturering met data limieten met behulp van Marketplace-meet service
 
@@ -23,7 +24,7 @@ Met de Marketplace-meet service kunt u SaaS-aanbiedingen (Software-as-a-Service)
 Om een SaaS-aanbieding te kunnen gebruiken, moet deze:
 
 * Voldoen aan de vereisten van de aanbieding voor een [verkoop via micro soft-aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft) , zoals beschreven in [een SaaS-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer).
-* Integreer met de [SaaS](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) -fulfillment-api's voor klanten om uw aanbieding in te richten en er verbinding mee te maken.  
+* Integreer met de [SaaS-fulfillment-api's](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) voor klanten om uw aanbieding in te richten en er verbinding mee te maken.  
 * Worden geconfigureerd voor het prijs model voor **vaste kosten** voor het opladen van klanten voor uw service.  Dimensies zijn een optionele uitbrei ding voor het prijs model voor vaste tarieven. 
 * Integreer met de [api's van de Marketplace-meet service](./marketplace-metering-service-apis.md) om micro soft te informeren over factureer bare gebeurtenissen.
 
@@ -72,9 +73,9 @@ Facturerings dimensies worden gedeeld in alle abonnementen voor een aanbieding. 
 
 De kenmerken die de dimensie zelf definiëren, worden verdeeld over alle abonnementen voor een aanbieding.  Voordat u de aanbieding publiceert, is een wijziging in deze kenmerken van de context van een plan van invloed op de dimensie definitie voor alle plannen.  Zodra u de aanbieding hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt.  Deze kenmerken zijn:
 
-* ID
-* Name
-* Maateenheid
+* Id
+* Naam
+* Meeteenheid
 
 De andere kenmerken van een dimensie zijn specifiek voor elk plan en kunnen verschillende waarden hebben van plan tot plan.  Voordat u het abonnement publiceert, kunt u deze waarden bewerken. Dit geldt alleen voor dit abonnement.  Zodra u het abonnement hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt.  Deze kenmerken zijn:
 
@@ -102,9 +103,9 @@ Omdat een dimensie die wordt gebruikt met de Marketplace-meet service, een goed 
   
 Zodra een aanbieding is gepubliceerd met een dimensie, kunnen de details van het aanbod niveau voor die dimensie niet meer worden gewijzigd:
 
-* ID
-* Name
-* Maateenheid
+* Id
+* Naam
+* Meeteenheid
 
 Zodra een plan is gepubliceerd, kunnen de details op plan niveau niet meer worden gewijzigd:
 
@@ -130,7 +131,7 @@ Volg de onderstaande stappen om uw ondersteunings ticket in te dienen:
 1. Ga naar de [ondersteunings pagina](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). De eerste paar vervolg keuzemenu's worden automatisch ingevuld. Voor Marketplace-ondersteuning identificeert u de product familie als **Cloud en Online Services**, het product als **Marketplace-Uitgever**.  Wijzig de vooraf gevulde vervolg menu selecties niet.
 2. Selecteer **Live offer Management**onder ' Selecteer de product versie '.
 3. Kies onder Selecteer een categorie die het probleem het beste beschrijft " **SaaS-apps**.
-4. Selecteer in het gedeelte Selecteer een probleem dat het beste het probleem beschrijft de optie gefactureerd **Factureren**.
+4. Selecteer in het gedeelte Selecteer een probleem dat het beste het probleem beschrijft de optie **gefactureerd factureren**.
 5. Als u de knop **volgende** selecteert, wordt u omgeleid naar de pagina met details van het **probleem** , waar u meer informatie kunt invoeren over uw probleem.
 
 Zie [ondersteuning voor het programma voor commerciële Marketplace in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support) voor meer ondersteunings opties voor Publisher.

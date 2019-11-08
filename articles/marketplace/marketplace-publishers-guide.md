@@ -4,15 +4,16 @@ description: Een overzicht van de Azure Marketplace en Microsoft AppSource voor 
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fba9c481ad9b3da1eb0dd5d8a4ff2499240a8cfa
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962612"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826482"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Publicatie handleiding voor Azure Marketplace en AppSource
 
@@ -30,7 +31,7 @@ Deze hand leiding bevat de volgende onderwerpen:
 
 Deze hand leiding bevat technische en zakelijke informatie over de stappen die u moet nemen voordat u uw toepassingen en services vermeldt. Gebruik de inhouds opgave om naar verschillende secties van de hand leiding te gaan en rechtstreeks naar de belangrijkste onderwerpen te gaan.
 
-Als u vragen hebt over Azure Marketplace en AppSource, kunt u ons een bericht sturen onder **probleem type** > **Marketplace voor onboarding**.  Het team voor de voor bereiding van Marketplace-uitgevers is blij om te helpen! 
+Als u vragen hebt over Azure Marketplace en AppSource, kunt u ons een bericht sturen onder **probleem Type** > **Marketplace-onboarding**.  Het team voor de voor bereiding van Marketplace-uitgevers is blij om te helpen! 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>Voor delen van deelname aan Marketplace 
 
@@ -56,11 +57,11 @@ Krijg inzicht in de prestaties van uw aanbiedingen via de inzichten en analyses 
 
 Nieuwe aanbiedingen in de Marketplace komen in aanmerking voor een verscheidenheid aan gratis voor delen, zodat partners hun bedrijf op Marketplace kunnen verg Roten. Deze voor delen vallen in de volgende categorieën: 
 
-*   Documentatie Alles wat u nodig hebt om uw toepassing gereed te laten zijn voor Lance ring. Van technische ondersteuning, toepassings ontwerp en architectuur ontwerp tot Azure-tegoed voor ontwikkeling en testen. 
+*   Technisch: alles wat u nodig hebt om uw toepassing gereed te laten zijn voor Lance ring. Van technische ondersteuning, toepassings ontwerp en architectuur ontwerp tot Azure-tegoed voor ontwikkeling en testen. 
 
-*   Co-marketing: Alles wat u nodig hebt om uw aanbieding te starten. Krijg toegang tot gratis micro Soft Go-to-Market-start beginselen zodat u uw oplossing kunt starten en promoten. U kunt ook in aanmerking komen voor aanvullende micro soft-marketing campagne en mogelijkheden om te worden aangeboden in de Marketplace.
+*   Co-marketing: alles wat u nodig hebt om uw aanbieding te starten. Krijg toegang tot gratis micro Soft Go-to-Market-start beginselen zodat u uw oplossing kunt starten en promoten. U kunt ook in aanmerking komen voor aanvullende micro soft-marketing campagne en mogelijkheden om te worden aangeboden in de Marketplace.
 
-*   Co-Sell: Begin of Versnel uw reis om te verkopen met micro soft via Marketplace. Krijg toegang tot Program ma's en ondersteuning om gezamenlijke omzet te stimuleren met micro soft-teams.
+*   Samen verkopen: begin of Versnel uw reis om te verkopen met micro soft via Marketplace. Krijg toegang tot Program ma's en ondersteuning om gezamenlijke omzet te stimuleren met micro soft-teams.
 
 Nadat u [uw oplossing](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) naar Marketplace hebt verzonden, neemt het voorbereidings team contact met u op om uw publicatie ervaring te ondersteunen.  Zie [een partner centrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) voor meer informatie.
 

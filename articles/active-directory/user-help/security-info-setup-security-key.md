@@ -1,5 +1,5 @@
 ---
-title: Beveiligings gegevens instellen voor het gebruik van een beveiligings sleutel (preview)-Azure Active Directory | Microsoft Docs
+title: Beveiligings gegevens (preview-versie) instellen voor een beveiligings sleutel-Azure AD
 description: Uw beveiligings gegevens instellen om uw identiteit te verifiëren met behulp van een snelle FIDO2-beveiligings sleutel (Identity online).
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47ae7de87efd787b7d3cba14a33688c4b29637e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160702"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803792"
 ---
-# <a name="set-up-security-info-to-use-a-security-key-preview"></a>Beveiligings gegevens voor het gebruik van een beveiligings sleutel instellen (preview-versie)
+# <a name="set-up-security-info-preview-for-a-security-key"></a>Beveiligings gegevens (preview) instellen voor een beveiligings sleutel
 
 U kunt beveiligings sleutels gebruiken als een aanmeldings methode zonder wacht woord binnen uw organisatie. Een beveiligings sleutel is een fysiek apparaat dat wordt gebruikt met een unieke pincode om u aan te melden bij uw werk-of school account. Omdat voor beveiligings sleutels het fysieke apparaat moet worden gebruikt en wat alleen u weet, wordt dit beschouwd als een sterkere verificatie methode dan een gebruikers naam en wacht woord.
 
@@ -80,7 +80,7 @@ U moet uw beveiligings sleutel maken en deze een unieke pincode geven voordat u 
 
     U keert terug naar het vak **uw nieuwe aanmeldings methode instellen** .
 
-7. Selecteer **Next**.
+7. Selecteer **Volgende**.
 
 8. Ga terug naar de pagina **beveiligings gegevens** , typ een naam die u later voor uw nieuwe beveiligings sleutel gaat herkennen en selecteer **volgende**.
 

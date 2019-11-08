@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: 0241af88d30d47233d972bcb3e7c58ef8de12d6e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1e39126324de486d118f808b37672c9fd08af711
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648249"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822764"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Zelf studie: LUIS-app bouwen om de bedoelingen van de gebruiker te bepalen
 
@@ -205,4 +205,4 @@ Nadat LUIS de JSON-reactie heeft geretourneerd, is LUIS klaar met deze aanvraag.
 In deze zelf studie hebt u een LUIS-app gemaakt, worden er gemaakte intenties, een voor beeld van een uitingen toegevoegd aan elke intentie, het toegevoegde voor beeld uitingen aan de geen intentie, getraind, gepubliceerd en getest op het eind punt. Dit zijn de basisstappen voor het compileren van een LUIS-model. 
 
 > [!div class="nextstepaction"]
-> [Vooraf gemaakte intents en entiteiten aan deze app toevoegen](luis-tutorial-prebuilt-intents-entities.md)
+> [Vooraf gemaakte intents en entiteiten aan deze app toevoegen](tutorial-machine-learned-entity.md)

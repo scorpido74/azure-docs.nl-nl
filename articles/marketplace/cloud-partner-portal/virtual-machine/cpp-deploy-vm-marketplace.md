@@ -1,49 +1,50 @@
 ---
-title: Een VM implementeren vanaf de Azure Marketplace
-description: Wordt uitgelegd hoe u een virtuele machine implementeren vanuit een vooraf geconfigureerde virtuele machine van Azure Marketplace.
+title: Een virtuele machine implementeren vanuit Azure Marketplace
+description: Hierin wordt uitgelegd hoe u een virtuele machine implementeert vanuit een vooraf geconfigureerde virtuele machine in azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 482840f5e611bc2d8092add2822a0ed5b2c8f883
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2888d7643fd4f624634dc2ec520bec6e753382f1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938701"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816829"
 ---
-# <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>Een virtuele machine implementeren vanuit Azure Marketplace
+# <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>Een virtuele machine implementeren vanuit de Azure Marketplace
 
-In dit artikel wordt uitgelegd hoe u een vooraf geconfigureerde virtuele machine (VM) van een Azure Marketplace, met behulp van de opgegeven Azure PowerShell-script te implementeren.  Met dit script wordt ook aangegeven dat de WinRM HTTP en HTTPS-eindpunten op de virtuele machine.  Het script is vereist dat u nog een certificaat geüpload naar Azure Key Vault, hebt zoals beschreven in [certificaten voor Azure Key Vault maken](./cpp-create-key-vault-cert.md). 
+In dit artikel wordt uitgelegd hoe u een vooraf geconfigureerde virtuele machine (VM) implementeert vanuit een Azure Marketplace, met behulp van het meegeleverde Azure PowerShell script.  Met dit script worden ook de WinRM-HTTP-en HTTPS-eind punten op de virtuele machine weer gegeven.  Het script vereist dat u al een certificaat hebt geüpload naar Azure Key Vault, zoals beschreven in [certificaten voor Azure Key Vault maken](./cpp-create-key-vault-cert.md). 
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="vm-deployment-template"></a>VM-sjabloon voor implementatie
+## <a name="vm-deployment-template"></a>VM-implementatie sjabloon
 
-De quickstart-sjabloon voor virtuele machine van Azure-implementatie, is beschikbaar als de bestanden online [azuredeploy.json](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json).  Deze bevat de volgende parameters:
+De Snelstartgids Azure VM-implementatie sjabloon is beschikbaar als online bestand [azuredeploy. json](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json).  Het bevat de volgende para meters:
 
-|  **Parameter**        |   **Beschrijving**                                 |
+|  **Bepaalde**        |   **Beschrijving**                                 |
 |  -------------        |   ---------------                                 |
-| newStorageAccountName | Naam van het storage-account                       |
-| dnsNameForPublicIP    | DNS-naam voor het openbare IP-adres. Moet een kleine letter.    |
-| adminUserName         | De gebruikersnaam van beheerder                          |
-| adminPassword         | Het wachtwoord van beheerder                          |
-| imagePublisher        | Installatiekopie-uitgever                                   |
-| imageOffer            | Installatiekopie-aanbieding                                       |
-| imageSKU              | Installatiekopie-SKU                                         |
+| newStorageAccountName | De naam van het opslag account                       |
+| dnsNameForPublicIP    | De DNS-naam voor het open bare IP-adres. Moet een kleine letter zijn.    |
+| adminUserName         | Gebruikers naam van beheerder                          |
+| adminPassword         | Wacht woord van beheerder                          |
+| imagePublisher        | Uitgever van installatie kopie                                   |
+| imageOffer            | Aanbieding van installatie kopie                                       |
+| imageSKU              | Afbeeldings-SKU                                         |
 | vmSize                | Grootte van de virtuele machine                                    |
 | vmName                | Naam van de virtuele machine                                    |
-| vaultName             | Naam van de key vault                             |
-| vaultResourceGroup    | Resourcegroep van de key vault                   |
-| certificateUrl        | URL voor het certificaat, met inbegrip van versie in Key Vault, bijvoorbeeld  `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
+| vaultName             | De naam van de sleutel kluis                             |
+| vaultResourceGroup    | Resource groep van de sleutel kluis                   |
+| certificateUrl        | URL voor het certificaat, inclusief versie in de sleutel kluis, bijvoorbeeld `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 |  |  |
 
 
-## <a name="deployment-script"></a>Script voor implementatie
+## <a name="deployment-script"></a>Implementatie script
 
-De volgende Azure PowerShell-script bewerken en uitvoeren als de opgegeven Azure Marketplace VM wilt implementeren.
+Bewerk het volgende Azure PowerShell script en voer het uit om de opgegeven Azure Marketplace-VM te implementeren.
 
 ```powershell
 
@@ -54,4 +55,4 @@ New-AzResourceGroupDeployment -Name "dplvm$postfix" -ResourceGroupName "$rgName"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Wanneer u een vooraf geconfigureerde virtuele machine hebt geïmplementeerd, kunt u configureren en toegang tot de oplossingen en services die deze bevat of gebruikt voor verdere ontwikkeling. 
+Wanneer u een vooraf geconfigureerde virtuele machine hebt geïmplementeerd, kunt u de oplossingen en services die deze bevat configureren en openen, of deze gebruiken voor verdere ontwikkeling. 

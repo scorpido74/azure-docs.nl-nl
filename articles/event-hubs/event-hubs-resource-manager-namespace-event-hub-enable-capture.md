@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 804ef04f0066a8b8dd9df82aef03fcfc32d7cb43
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5d980cefa5aa953a3fb9683adb589bf202e73250
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343721"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826300"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Een naamruimte maken met Event Hub en Capture inschakelen met behulp van een sjabloon
 
@@ -27,17 +27,17 @@ In dit artikel wordt beschreven hoe u een Azure Resource Manager-sjabloon gebrui
 
 Ook wordt uitgelegd hoe u kunt opgeven dat gebeurtenissen worden vastgelegd in Azure Storage-blobs of in een Azure Data Lake Store, op basis van de bestemming die u kiest.
 
-Zie [Azure Resource Manager-sjablonen samenstellen][Authoring Azure Resource Manager templates] voor meer informatie over het maken van sjablonen. Zie [Microsoft.EventHub resource types](/azure/templates/microsoft.eventhub/allversions) (Microsoft.EventHub-resourcetypen) voor de JSON-syntaxis en eigenschappen die u kunt gebruiken in een sjabloon.
+Zie [Azure Resource Manager sjablonen ontwerpen][Authoring Azure Resource Manager templates]voor meer informatie over het maken van sjablonen. Zie [Microsoft.EventHub resource types](/azure/templates/microsoft.eventhub/allversions) (Microsoft.EventHub-resourcetypen) voor de JSON-syntaxis en eigenschappen die u kunt gebruiken in een sjabloon.
 
-Zie [Naming Conventions][Azure Resources naming conventions] (Naamgevingsconventies) voor meer informatie over de patronen en procedures voor naamgevingsconventies van Azure Resources.
+Zie [Azure resources-naamgevings conventies][Azure Resources naming conventions]voor meer informatie over patronen en procedures voor naamgevings regels voor Azure-resources.
 
 Voor de volledige-sjablonen klikt u op de volgende GitHub-koppelingen:
 
-- [Event hub and enable Capture to Storage template][Event Hub and enable Capture to Storage template] 
-- [Event hub and enable Capture to Azure Data Lake Store template][Event Hub and enable Capture to Azure Data Lake Store template]
+- [Event hub en het vastleggen van de opslag sjabloon inschakelen][Event Hub and enable Capture to Storage template] 
+- [Event hub en vastleggen van Azure Data Lake Store sjabloon inschakelen][Event Hub and enable Capture to Azure Data Lake Store template]
 
 > [!NOTE]
-> Om te controleren op de meest recente sjablonen, gaat u naar de galerie [Azure-snelstartsjablonen][Azure Quickstart Templates] en zoekt u naar Event Hubs.
+> Als u de meest recente sjablonen wilt controleren, gaat u naar de galerie met [Azure Quick Start sjablonen][Azure Quickstart Templates] en zoekt u naar Event hubs.
 > 
 > 
 
@@ -439,6 +439,6 @@ U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
-[Azure Resources naming conventions]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
+[Azure Resources naming conventions]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
 [Event hub and enable Capture to Storage template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture
 [Event hub and enable Capture to Azure Data Lake Store template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture-for-adls

@@ -4,20 +4,21 @@ description: In dit artikel worden de geschiktheids criteria en de publicatie ve
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: e23a83ab3a5b110f74ab4ac203dfc020e8920c24
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d56b83c8bd9a71ac30112f9e77a97ed8ab61a137
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285979"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825977"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Consulting Services voor Azure Marketplace en AppSource
 Consulting Services in azure Marketplace en AppSource biedt micro soft partners het doel om klanten met services te verbinden om hun gebruik van Azure-en bedrijfs doelstellingen te ondersteunen en uit te breiden. 
 
-Azure Marketplace en AppSource bieden ondersteuning voor de lijst met advies diensten van System Integrator (SI)-partners van micro soft. het doel is de services voor kwaliteits advies te bieden zodat klanten verbinding kunnen maken met de deskundige services die ze nodig hebben. Klanten helpen bij het beoordelen, evalueren en implementeren van de juiste oplossingen en implementaties die u helpen bij de doel stellingen en doel stellingen van hun bedrijf.  
+Azure Marketplace en AppSource bieden ondersteuning voor de lijst met consulting service aanbiedingen van System Integrator (SI)-partners van micro soft-het doel is de services voor kwaliteits advies te bieden zodat klanten verbinding kunnen maken met de deskundige services die ze nodig hebben. Klanten helpen bij het beoordelen, evalueren en implementeren van de juiste oplossingen en implementaties die u helpen bij de doel stellingen en doel stellingen van hun bedrijf.  
 
 Deze consulting-service aanbiedingen zijn klant gerichte afspraken. Uitgevers hebben de mogelijkheid om het vermeldings type te bepalen, met een vast bereik en een vaste duur, hetzij vaste prijzen of gratis, en een gedefinieerde agenda met resultaten voor de klant te hebben. Leads worden ontvangen via een melding in het CRM-systeem van de partner en zijn gericht op klanten binnen 48 uur. 
 
@@ -150,7 +151,7 @@ Voorbeelden:
 
 Wanneer u de beschrijving van de aanbieding bekijkt en samen vattingen van aanbiedingen, worden de volgende criteria toegepast op het team:
 
-|Type aanbieding  |Verplicht |Aanbevolen  |
+|Type aanbieding  |Vereist |Aanbevolen  |
 |---------|---------|---------|
 |**Evaluatie**    |   Neem een gedetailleerde agenda voor evaluaties van meerdere dagen of meerdere weken op en geef aan welk product de klant kan verwachten      |    Optimaliseer uw aanbod overzicht met de tref woorden van uw belangrijkste zoek machines     |
 |**Briefing**    |   Stel in welk product de klant kan verwachten. Onthoud dat er persoonlijke informatie moet worden aangeboden. Als u een virtuele service levert, kiest u een ander type aanbieding    |  Optimaliseer uw aanbod overzicht met de tref woorden van uw belangrijkste zoek machines       |

@@ -11,14 +11,14 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: 53a190a611af42f0eaca8d4348d1d066d3d4f9e4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f95798241084efdb91993a5add52f84a8a6dc1ec
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584406"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814807"
 ---
-# <a name="train-with-datasets-preview-in-azure-machine-learning"></a>Train met gegevens sets (preview) in Azure Machine Learning
+# <a name="train-with-datasets-in-azure-machine-learning"></a>Train met gegevens sets in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel vindt u informatie over de twee manieren waarop u [Azure machine learning gegevens sets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) in de externe experiment-training kunt gebruiken zonder dat u zich zorgen hoeft te maken over verbindings reeksen of gegevens paden.
@@ -40,7 +40,7 @@ Als u gegevens sets wilt maken en trainen, hebt u het volgende nodig:
 * De [Azure machine learning SDK voor python is geïnstalleerd](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), waaronder het pakket met de azureml-gegevens sets.
 
 > [!Note]
-> Voor sommige klassen van gegevensset (preview) gelden afhankelijkheden voor het pakket [met de azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . Voor Linux-gebruikers worden deze klassen alleen ondersteund in de volgende distributies: Red Hat Enterprise Linux, Ubuntu, Fedora en CentOS.
+> Voor sommige verzamelings klassen zijn afhankelijkheden van het pakket voor [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . Voor Linux-gebruikers worden deze klassen alleen ondersteund in de volgende distributies: Red Hat Enterprise Linux, Ubuntu, Fedora en CentOS.
 
 ## <a name="option-1-use-datasets-directly-in-training-scripts"></a>Optie 1: gegevens sets rechtstreeks in trainings scripts gebruiken
 
@@ -82,7 +82,7 @@ Een [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml
 Deze code maakt een Gene riek Estimator-object, `est`, dat aangeeft
 
 * Een script Directory voor uw scripts. Alle bestanden in deze map worden naar de clusterknooppunten geüpload voor uitvoering.
-* Het trainings script *train_titanic. py*.
+* Het trainings script, *train_titanic. py*.
 * De invoer gegevensset voor training, `titanic`.
 * Het reken doel voor het experiment.
 * De omgevings definitie voor het experiment.

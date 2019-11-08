@@ -1,6 +1,6 @@
 ---
 title: IoT Central beheren vanuit Azure PowerShell | Microsoft Docs
-description: IoT Central beheren vanuit Azure PowerShell.
+description: In dit artikel wordt beschreven hoe u uw IoT Central-toepassingen maakt en beheert via Azure PowerShell.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 269b8a6c2a90884b060b4fb916b77af919a63a63
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eadc021335488bed1f236d3728acca245be7d71e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953341"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806650"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>IoT Central beheren vanuit Azure PowerShell
 
@@ -70,7 +70,7 @@ Het script maakt eerst een resource groep in de regio VS-Oost voor de toepassing
 |Naam              |De naam van de toepassing in de Azure Portal. |
 |Subdomein         |Het subdomein in de URL van de toepassing. In het voor beeld is de toepassings-URL https://mysubdomain.azureiotcentral.com. |
 |Sku               |Op dit moment is de enige waarde **S1** (Standard-laag). Zie [prijzen voor Azure IOT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
-|Sjabloon          | De toepassings sjabloon die moet worden gebruikt. Zie de volgende tabel voor meer informatie: |
+|Template          | De toepassings sjabloon die moet worden gebruikt. Zie de volgende tabel voor meer informatie: |
 |DisplayName       |De naam van de toepassing, zoals deze wordt weer gegeven in de gebruikers interface. |
 
 **Toepassings sjablonen**

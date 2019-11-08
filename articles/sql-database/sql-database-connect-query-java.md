@@ -1,5 +1,5 @@
 ---
-title: Java gebruiken om een query uit te Azure SQL Database
+title: Java gebruiken om query's uit te zoeken
 description: Laat zien hoe u Java gebruikt om een programma te maken dat is verbonden met een Azure SQL-database, en hoe u deze database doorzoekt met behulp van T-SQL-instructies.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ ms.author: andrela
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
-ms.openlocfilehash: 8940e13dcc6d6287984ba1cc7c7510768b4e232f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6d4d9353e29a29b0cd6db7575e49a00a213355d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624087"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827051"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>Quickstart: Java gebruiken om verbinding te maken met en een query uit te brengen op een Azure-SQL database
+# <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>Snelstartgids: Java gebruiken om verbinding te maken met en een query uit te brengen op een Azure-SQL database
 
 In dit artikel ziet u hoe u [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) gebruikt om verbinding te maken met een Azure SQL-database. Vervolgens kunt u T-SQL-instructies gebruiken om een query uit te voeren voor de gegevens.
 
@@ -39,7 +39,7 @@ Zorg dat u aan de volgende vereisten voldoet als u dit voorbeeld wilt uitvoeren:
   |||Adventure Works herstellen of importeren vanuit [BACPAC](sql-database-import.md) -bestand vanuit [github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   
   > [!IMPORTANT]
-  > De scripts in dit artikel zijn geschreven voor gebruik met de Adventure Works-database. Met een beheerd exemplaar moet u de Adventure Works-database importeren in een exemplaardatabase of de scripts in dit artikel wijzigen zodat deze de Wide World Importers-database gebruiken.
+  > De scripts in dit artikel zijn geschreven voor gebruik met de Adventure Works-database. Met een beheerd exemplaar moet u de Adventure Works-database importeren in een exemplaardatabase of de scripts in dit artikel wijzigen voor gebruik van de Wide World Importers-database.
 
 - U moet aan Java verwante software hebben geïnstalleerd voor het besturingssysteem:
 
@@ -49,11 +49,11 @@ Zorg dat u aan de volgende vereisten voldoet als u dit voorbeeld wilt uitvoeren:
 
   - **Windows**: installeer Java, en installeer vervolgens Maven. Zie [Stap 1.2 en 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).
 
-## <a name="get-sql-server-connection-information"></a>SQL Server-verbindingsgegevens ophalen
+## <a name="get-sql-server-connection-information"></a>Verbindingsgegevens voor SQL Server ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 2. Selecteer **SQL-data bases** of open de pagina **SQL Managed instances** .
 

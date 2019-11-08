@@ -1,5 +1,5 @@
 ---
-title: 'VNet-eind punten en-regels voor één en gegroepeerde Data bases in Azure SQL '
+title: VNet-eind punten en-regels voor één en gepoolde data bases
 description: Een subnet markeren als Virtual Network Service-eind punt. Vervolgens wordt het eind punt als een virtuele-netwerk regel voor de toegangs beheer lijst van uw Azure SQL Database. U SQL Database vervolgens communicatie accepteren van alle virtuele machines en andere knoop punten in het subnet.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: e1f8ab6725c58d9e1f15f88e6d2465ab88df79e2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f171181aa56287561aba3159f5039f70165dc8ab
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686912"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807514"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Service-eind punten en-regels voor virtuele netwerken gebruiken voor database servers
 

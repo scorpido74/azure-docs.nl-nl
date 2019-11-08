@@ -4,15 +4,16 @@ description: In dit artikel wordt uitgelegd hoe u een SaaS-aanbieding maakt en b
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: b1ec40485e775b7e50b5f7d82014aef77f14fb3e
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 4c73a59352422626ec3c6012607009995479d0cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025277"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816609"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS-fulfillment-Api's, versie 2 
 
@@ -29,9 +30,9 @@ Azure SaaS beheert de volledige levens cyclus van een SaaS-abonnements aankoop. 
 
 De volgende tabel geeft een lijst van de inrichtings statussen voor een SaaS-abonnement, met inbegrip van een beschrijving en sequentie diagram voor elke (indien van toepassing). 
 
-#### <a name="provisioning"></a>Inrichting
+#### <a name="provisioning"></a>Inrichten
 
-Wanneer een klant een aankoop initieert, ontvangt de partner deze informatie in een autorisatie code op een klant-interactieve webpagina die gebruikmaakt van een URL-para meter. Een voor beeld is `https://contoso.com/signup?token=..`, terwijl de URL van de landings pagina in het partner centrum `https://contoso.com/signup` is. De autorisatie code kan worden gevalideerd en uitgewisseld voor de details van de inrichtings service door de API voor het oplossen van conflicten aan te roepen.  Wanneer een SaaS-service is ingericht, verzendt deze een activerings aanroep om aan te geven dat de uitvoering is voltooid en dat de klant kan worden gefactureerd. 
+Wanneer een klant een aankoop initieert, ontvangt de partner deze informatie in een autorisatie code op een klant-interactieve webpagina die gebruikmaakt van een URL-para meter. Een voor beeld is `https://contoso.com/signup?token=..`, terwijl de URL van de landings pagina in het partner centrum `https://contoso.com/signup`is. De autorisatie code kan worden gevalideerd en uitgewisseld voor de details van de inrichtings service door de API voor het oplossen van conflicten aan te roepen.  Wanneer een SaaS-service is ingericht, verzendt deze een activerings aanroep om aan te geven dat de uitvoering is voltooid en dat de klant kan worden gefactureerd. 
 
 In het volgende diagram ziet u de volg orde van API-aanroepen voor een inrichtings scenario.  
 
@@ -70,7 +71,7 @@ Deze status geeft aan dat de betaling van een klant niet is ontvangen. Op basis 
 Abonnementen bereiken deze status als reactie op een expliciete aanvraag van een klant of op niet-betaalde contributie. De verwachting van de partner is dat de gegevens van de klant worden bewaard voor herstel op aanvraag voor een bepaald aantal dagen en vervolgens worden verwijderd. 
 
 
-## <a name="api-reference"></a>API-referentie
+## <a name="api-reference"></a>API-verwijzing
 
 In deze sectie worden de *API* voor SaaS-abonnementen en *Operations API*gedocumenteerd.  De waarde van de para meter `api-version` voor Api's van versie 2 is `2018-08-31`.  
 
@@ -160,7 +161,7 @@ De API voor abonnementen ondersteunt de volgende HTTPS-bewerkingen: **Get**, **p
 
 Een lijst met alle SaaS-abonnementen voor een uitgever.
 
-##### <a name="getbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Ontvang<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
+##### <a name="getbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Ophalen<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -212,7 +213,7 @@ Reactie Payload voor de model-API:<br>
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "isFreeTrial": "true", // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.
+          "isFreeTrial": "true", // true - the customer subscription is currently in free trial, false - the customer subscription is not currently in free trial.
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
       }
   ],
@@ -250,7 +251,7 @@ En voor echte API: <br>
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "isFreeTrial": true, // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.(optional field – default false)
+          "isFreeTrial": true, // true - the customer subscription is currently in free trial, false - the customer subscription is not currently in free trial.(optional field - default false)
           "isTest": false, //indicating whether the current subscription is a test asset
           "sandboxType": "None", // Possible Values: None, Csp (Csp sandbox purchase)
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
@@ -280,7 +281,7 @@ Interne server fout.
 
 Hiermee wordt het opgegeven SaaS-abonnement opgehaald. Gebruik deze aanroep om licentie gegevens op te halen en informatie te plannen.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Ontvang<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`
+##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Ophalen<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -320,7 +321,7 @@ Response Body:
           },
         "allowedCustomerOperations": ["Read"], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
         "sessionMode": "None", // Dry Run indicates all transactions run as Test-Mode in the commerce stack
-        "isFreeTrial": "true", // true – customer subscription is currently in free trial, false – customer subscription is not currently in free trial.
+        "isFreeTrial": "true", // true - customer subscription is currently in free trial, false - customer subscription is not currently in free trial.
         "status": "Subscribed", // Indicates the status of the operation.
           "term": { //This gives the free trial term start and end date
             "startDate": "2019-05-31",
@@ -351,7 +352,7 @@ Interne server fout.<br>
 
 Gebruik deze aanroep om te achterhalen of er privé-of open bare aanbiedingen voor de huidige uitgever zijn.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Ontvang<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
+##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Ophalen<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -645,7 +646,7 @@ De operations API ondersteunt de volgende patch-en Get-bewerkingen.
 
 Geeft een lijst van openstaande bewerkingen voor de huidige uitgever. 
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Ontvang<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
+##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Ophalen<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -709,7 +710,7 @@ Interne server fout.
 
 Hiermee kan de uitgever de status van de opgegeven geactiveerde async-bewerking (zoals `Subscribe`, `Unsubscribe`, `ChangePlan`of `ChangeQuantity`) volgen.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Ontvang<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Ophalen<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -839,7 +840,7 @@ De uitgever moet een webhook in deze SaaS-service implementeren om gebruikers pr
   "id": "<this is a GUID operation id, you can call operations API with this to get status>",
   "activityId": "<this is a Guid correlation id>",
   "subscriptionId": "<Guid to uniquely identify this resource>",
-  "publisherId": "<this is the publisher’s name>",
+  "publisherId": "<this is the publisher's name>",
   "offerId": "<this is the offer name>",
   "planId": "<this is the plan id>",
   "quantity": "<the number of seats, will be null if not per-seat saas offer>",

@@ -1,6 +1,6 @@
 ---
 title: Een OPC-dubbele module implementeren in een bestaand Azure-project | Microsoft Docs
-description: Het Toep assen van OPC, twee tot een bestaand project.
+description: In dit artikel wordt beschreven hoe u OPC twee kunt implementeren in een bestaand project. U kunt ook leren hoe u implementatie fouten oplost.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 74b502a37081c729c5e33a0db7dc7f26cb44774b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972286"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824125"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>OPC van twee tot een bestaand project implementeren
 
@@ -52,11 +52,11 @@ cd azure-iiot-components
 
    De uitvoer bevat de URL van het open bare eind punt. 
 
-3. Zodra het script is voltooid, selecteert u of u het `.env` bestand wilt opslaan.  U hebt het `.env` omgevings bestand nodig als u verbinding wilt maken met het Cloud-eind punt met behulp van hulpprogram ma's zoals de console of modules implementeren voor ontwikkeling en fout opsporing.
+3. Zodra het script is voltooid, selecteert u of u het `.env` bestand wilt opslaan.  U hebt het `.env`-omgevings bestand nodig als u verbinding wilt maken met het Cloud-eind punt met behulp van hulpprogram ma's zoals de console of modules implementeren voor ontwikkeling en fout opsporing.
 
 ## <a name="troubleshooting-deployment-failures"></a>Implementatie fouten oplossen
 
-### <a name="resource-group-name"></a>Resourcegroepnaam
+### <a name="resource-group-name"></a>Naam van de resourcegroep
 
 Zorg ervoor dat u een korte en eenvoudige naam voor de resource groep gebruikt.  De naam wordt ook gebruikt om resources te noemen, omdat deze moeten voldoen aan de vereisten voor resource naamgeving.  
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: d6bf0f788f7c71a55a4c3667023d8b1d9f571baf
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 4f577e6497e853d9b75f81b5da4f7121064a9d07
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820976"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826343"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Problemen met Azure-cache oplossen voor redis-outs
 
@@ -34,7 +34,7 @@ In deze sectie vindt u informatie over het oplossen van problemen met de time-ou
 
 ## <a name="redis-server-patching"></a>Redis-server patches
 
-Met Azure cache voor redis worden de server software regel matig bijgewerkt als onderdeel van de beheerde service-functionaliteit. Deze [patching](cache-failover.md) -activiteit vindt grotendeels achter de scène plaats. Tijdens de failovers wanneer er redis-server knooppunten worden bijgewerkt, kunnen redis-clients die zijn verbonden met deze knoop punten, tijdelijke time-outs ondervinden als verbindingen tussen deze knoop punten worden overgeschakeld. Zie [hoe een failover invloed heeft op mijn client toepassing](cache-failover.md#how-does-a-failover-impact-my-client-application) voor meer informatie over welke neven effecten patches kunnen hebben op uw toepassing en hoe u de verwerking van patch gebeurtenissen kunt verbeteren.
+Met Azure cache voor redis worden de server software regel matig bijgewerkt als onderdeel van de beheerde service-functionaliteit. Deze [patching](cache-failover.md) -activiteit vindt grotendeels achter de scène plaats. Tijdens de failovers wanneer er redis-server knooppunten worden bijgewerkt, kunnen redis-clients die zijn verbonden met deze knoop punten, tijdelijke time-outs ondervinden als verbindingen tussen deze knoop punten worden overgeschakeld. Bekijk [hoe een failover van invloed is op mijn client toepassing](cache-failover.md#how-does-a-failover-affect-my-client-application) voor meer informatie over welke neven effecten patches kunnen hebben voor uw toepassing en hoe u de verwerking van patch gebeurtenissen kunt verbeteren.
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>Uitzonde ringen voor stack Exchange. redis-out
 

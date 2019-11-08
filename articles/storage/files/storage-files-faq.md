@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 6fecd143055da2829ac49cee4f50d448a37a6e1b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6526f27177b5fb8640deb5302d8cb3aa4acf1a97
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514883"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824280"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Veelgestelde vragen over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -98,7 +98,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="afs-conflict-resolution"></a>**Als hetzelfde bestand op ongeveer hetzelfde moment op twee servers wordt gewijzigd, wat gebeurt er dan?**  
     Azure File Sync maakt gebruik van een eenvoudige strategie voor conflict oplossing: wijzigingen in bestanden die op twee servers tegelijk worden gewijzigd, worden bewaard. De meest recent geschreven wijziging behoudt de oorspronkelijke bestands naam. Het oudere bestand heeft de computer ' Bron ' en het conflict nummer dat is toegevoegd aan de naam. Deze is gebaseerd op deze taxonomie: 
    
-    \<FileNameWithoutExtension \> - \<MachineName \> \[ -# \]. \<ext \>  
+    \<FileNameWithoutExtension\>-\<MachineName\>\[-#-\].\<ext\>  
 
     Het eerste conflict van CompanyReport. docx wordt bijvoorbeeld CompanyReport-CentralServer. docx als CentralServer de locatie is waar de oudere schrijf bewerking plaatsvond. Het tweede conflict zou de naam CompanyReport-CentralServer-1. docx hebben. Azure File Sync ondersteunt 100-conflict bestanden per bestand. Zodra het maximum aantal conflict bestanden is bereikt, kan het bestand niet worden gesynchroniseerd totdat het aantal conflict bestanden kleiner is dan 100.
 
@@ -131,15 +131,15 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
   * Desktop. ini
   * duims. db
   * ehthumbs. db
-  * ~$ \*. \*
+  * ~$\*.\*
   * \*. LACCDB
   * \*. tmp
-  * 635D02A9D91C401B97884B82B3BCDAEA. \*
+  * 635D02A9D91C401B97884B82B3BCDAEA.\*
 
     De volgende mappen worden ook standaard uitgesloten:
 
   * \System-Volume gegevens
-  * \$RECYCLE. DOCKOPSLAGLOCATIE
+  * \$RECYCLEn. DOCKOPSLAGLOCATIE
   * \SyncShareState
 
 * <a id="afs-os-support"></a>
@@ -174,7 +174,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
     Azure Files biedt twee extra manieren om toegangs beheer te beheren:
 
-    - U kunt Shared Access signatures (SAS) gebruiken voor het genereren van tokens met specifieke machtigingen en die geldig zijn voor een opgegeven tijds interval. U kunt bijvoorbeeld een token genereren met alleen-lezen toegang tot een specifiek bestand met een verval datum van 10 minuten. Iedereen die beschikt over het token terwijl het token geldig is heeft alleen-lezen toegang tot dat bestand voor die tien minuten. De sleutels voor gedeelde toegangs handtekeningen worden momenteel alleen ondersteund via de REST API of in client bibliotheken. U moet de Azure-bestands share via SMB koppelen met behulp van de sleutels voor het opslag account.
+    - U kunt Shared Access signatures (SAS) gebruiken voor het genereren van tokens met specifieke machtigingen en die geldig zijn voor een opgegeven tijds interval. U kunt bijvoorbeeld een token genereren met alleen-lezen toegang tot een specifiek bestand met een verval datum van 10 minuten. Iedereen die beschikt over het token terwijl het token geldig is heeft alleen-lezen toegang tot dat bestand voor die tien minuten. Sleutels voor gedeelde toegangs handtekeningen worden alleen ondersteund via de REST API of in client bibliotheken. U moet de Azure-bestands share via SMB koppelen met behulp van de sleutels voor het opslag account.
 
     - Azure File Sync behoudt en repliceert alle discretionaire Acl's, of DACL'S, (of Active Directory of lokaal) naar alle server eindpunten die worden gesynchroniseerd. Omdat Windows Server al kan worden geverifieerd met Active Directory, is Azure File Sync een efficiënte optie voor stop-gap totdat volledige ondersteuning voor verificatie op basis van Active Directory en ACL-ondersteuning arriveert.
     
@@ -243,7 +243,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
     Hier vindt u meer informatie over de verschillende manieren waarop u de [tijdelijke oplossing poort 445 kunt blok keren](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked). Azure Files staat alleen verbindingen toe met behulp van SMB 3,0 (met ondersteuning voor versleuteling) van buiten de regio of het Data Center. Het SMB 3,0-protocol heeft veel beveiligings functies geïntroduceerd, waaronder Channel Encryption, die zeer veilig zijn voor gebruik via internet. Het is echter mogelijk dat poort 445 is geblokkeerd vanwege historische oorzaken van beveiligings problemen die in lagere SMB-versies zijn aangetroffen. In het ideale geval moet de poort alleen worden geblokkeerd voor SMB 1,0-verkeer en moet SMB 1,0 worden uitgeschakeld op alle clients.
 
 * <a id="expressroute-not-required"></a>
- moet**Ik Azure ExpressRoute gebruiken om verbinding te maken met Azure files of om Azure File Sync on-premises te gebruiken?**  
+moet **Ik Azure ExpressRoute gebruiken om verbinding te maken met Azure files of om Azure File Sync on-premises te gebruiken?**  
 
     Nee. ExpressRoute is niet vereist voor toegang tot een Azure-bestands share. Als u on-premises een Azure-bestands share koppelt, is het vereist dat poort 445 (TCP uitgaand) is geopend voor Internet toegang (dit is de poort die door SMB wordt gebruikt om te communiceren). Als u Azure File Sync gebruikt, is de vereiste poort 443 (TCP uitgaand) voor HTTPS-toegang (geen SMB vereist). U *kunt* ExpressRoute echter gebruiken met een van deze toegangs opties.
 
@@ -252,7 +252,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
     U kunt de bestands share koppelen met behulp van het SMB-protocol als poort 445 (TCP uitgaand) is geopend en de client het SMB 3,0-protocol ondersteunt (bijvoorbeeld als u Windows 10 of Windows Server 2016 gebruikt). Als poort 445 wordt geblokkeerd door het beleid van uw organisatie of door uw Internet provider, kunt u Azure File Sync gebruiken om toegang te krijgen tot uw Azure-bestands share.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Back-up maken
 * <a id="backup-share"></a>
 **Hoe kan ik een back-up maken van mijn Azure-bestands share?**  
     U kunt [moment opnamen van periodieke shares](storage-snapshots-files.md) gebruiken voor beveiliging tegen onbedoeld verwijderen. U kunt ook AzCopy, Robocopy of een back-upprogramma van derden gebruiken dat een back-up kan maken van een gekoppelde bestands share. Azure Backup biedt back-up van Azure Files. Meer informatie over het [maken van back-ups van Azure-bestands shares per Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-files).
@@ -277,7 +277,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
     Ja. Azure Files kunnen Maxi maal 200 share-moment opnamen worden bewaard. Share-moment opnamen tellen niet mee voor het share quotum, dus er is geen limiet per deel voor de totale ruimte die wordt gebruikt door alle moment opnamen van shares. De limieten van het opslag account zijn nog steeds van toepassing. Na 200 moment opnamen delen, moet u oudere moment opnamen verwijderen om nieuwe share-moment opnamen te maken.
 
 * <a id="snapshot-cost"></a>
- hoeveel**moment opnamen delen kosten?**  
+hoeveel **moment opnamen delen kosten?**  
     Standaard kosten voor trans acties en standaard opslag zijn van toepassing op de moment opname. Moment opnamen zijn incrementeel. De basis momentopname is de share zelf. Alle volgende moment opnamen worden incrementeel gegenereerd en worden alleen het verschil van de vorige moment opname opgeslagen. Dit betekent dat de Delta wijzigingen die in de factuur worden weer gegeven, mini maal zijn als het verloop van de workload mini maal is. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor de prijs informatie voor Standard Azure files. Vandaag de manier om te kijken naar de grootte van de moment opname van de share, wordt de gefactureerde capaciteit vergeleken met de gebruikte capaciteit. Er wordt aan gewerkt om de rapportage te verbeteren.
 
 * <a id="ntfs-acls-snaphsots"></a>
@@ -332,7 +332,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
     Als de bestands share en de virtuele machine zich in dezelfde Azure-regio bevinden, worden er geen extra kosten in rekening gebracht voor het verkeer tussen de bestands share en de virtuele machine. Als de bestands share en de virtuele machine zich in verschillende regio's bevinden, wordt het verkeer tussen hen in rekening gebracht als externe band breedte.
 
 * <a id="share-snapshot-price"></a>
- hoeveel**moment opnamen delen kosten?**  
+hoeveel **moment opnamen delen kosten?**  
      Tijdens de preview-periode worden er geen kosten in rekening gebracht voor de capaciteit van de share momentopname. De standaard opslag voor uitgaand verkeer en de transactie kosten zijn van toepassing. Na algemene Beschik baarheid worden abonnementen in rekening gebracht voor capaciteit en trans acties op moment opnamen van shares.
      
      Moment opnamen van shares zijn incrementeel. De moment opname van de basis share is de share zelf. Alle volgende moment opnamen van de share zijn incrementeel en slaan alleen het verschil op van de vorige moment opname van de share. Er worden alleen kosten in rekening gebracht voor de gewijzigde inhoud. Als u een share met 100 GiB van gegevens hebt, maar slechts 5 GiB is gewijzigd sinds de laatste share-moment opname, verbruikt de moment opname van de share slechts 5 extra GiB en wordt 105 GiB gefactureerd. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/files/)voor meer informatie over kosten voor trans acties en standaard uitgaand verkeer.
@@ -374,7 +374,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
 * <a id="rest-rename"></a>
 **is er een bewerking voor naam wijzigen in de rest API?**  
-    Op dit moment niet.
+    Momenteel niet.
 
 * <a id="nested-shares"></a>
 **kan ik geneste shares instellen? Met andere woorden, een share onder een share?**  

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database voor beeld van multi tenant-app-Wingtip SaaS
+title: Voor beeld van multi tenant-app-Wingtip SaaS
 description: Meer informatie over het gebruik van een voor beeld van een multi tenant-toepassing die gebruikmaakt van Azure SQL Database, het Wingtip SaaS-voor beeld
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 1a4931a24802290e0e7e207f32528a1192fd880f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 46cdcd5f768278dbc729f48e450c68a63be604be
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692058"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822166"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Inleiding tot een multi tenant SaaS-app die gebruikmaakt van het data base-per-Tenant patroon met SQL Database
 

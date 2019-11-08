@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: b88c56872408a7ffe127a4e96d2313301d44c892
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7d4eab7546a488bf2d4ede8f7c71143e823ba493
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690527"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823937"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Bestaande data bases migreren om uit te schalen
 Beheer eenvoudig uw bestaande uitgeschaalde Shard-data bases met behulp van Azure SQL Database data base-hulpprogram ma's (zoals de [Elastic database-client bibliotheek](sql-database-elastic-database-client-library.md)). Converteer eerst een bestaande set data bases om de [Shard-kaart Manager](sql-database-elastic-scale-shard-map-management.md)te gebruiken. 

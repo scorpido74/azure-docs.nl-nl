@@ -1,20 +1,20 @@
 ---
-title: Blobs uploaden, downloaden, weergeven en verwijderen met behulp van Azure Storage v10 SDK voor JavaScript
-description: Containers maken, uploaden en verwijderen in Node.js met behulp van Azure Storage
+title: 'Snelstartgids: Azure Blob Storage-client bibliotheek V10 toevoegen voor Java script'
+description: Blobs en containers maken, uploaden en verwijderen in node. js met de Azure Storage-client bibliotheek V10 toevoegen voor Java script
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/24/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f8c7de63f2bd4b7329e8ae6a53123c9c1ea035af
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: b909da5da0d7352d4086222fe0411ac37668bd92
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240432"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825327"
 ---
-# <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Quickstart: Blobs uploaden, downloaden, weergeven en verwijderen met behulp van Azure Storage v10 SDK voor JavaScript
+# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V10 toevoegen voor Java script
 
 In deze snelstart leert u hoe u de [Azure Storage v10 SDK voor JavaScript](https://github.com/Azure/azure-sdk-for-js) kunt gebruiken in Node.js om blobs te uploaden, downloaden, weergeven en verwijderen en containers te beheren.
 
@@ -203,7 +203,7 @@ Net als bij de container, bestaat de blok-blob nog niet. De variabele *blockBlob
 
 ### <a name="using-the-aborter-class"></a>De Aborter-klasse gebruiken
 
-Aanvragen van de API kunnen zo worden ingesteld dat deze na een bepaalde periode een time-out bereiken. De *Aborter*-klasse is verantwoordelijk voor het beheren van hoe time-outs van aanvragen worden verwerkt. De volgende code maakt een context waarin een reeks aanvragen 30 minuten krijgen om te worden uitgevoerd.
+Aanvragen van de API kunnen zo worden ingesteld dat deze na een bepaalde periode een time-out bereiken. De *Afbrekings* klasse is verantwoordelijk voor het beheren van de time-out van aanvragen. Met de volgende code wordt een context gemaakt waarbij een set aanvragen 30 minuten wordt gegeven.
 
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 77659fdf93947cfbaa0daa322dccf4e9cb1a41fa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3911d4e780e993fdd1c2945b34cd683d47fb884a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844712"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827276"
 ---
 # <a name="use-the-azure-maps-services-module"></a>De Azure Maps Services-module gebruiken
 
@@ -23,7 +23,7 @@ De Azure Maps Web-SDK biedt een *Services-module*. Deze module is een helper-bib
 
 1. Maak een nieuw HTML-bestand.
 1. Laad de Azure Maps Services-module. U kunt deze op twee manieren laden:
-    - Gebruik de wereld wijd gehoste Azure Content Delivery Network-versie van de module Azure Maps Services. Voeg een script verwijzing toe aan `<head>` het element van het bestand:
+    - Gebruik de wereld wijd gehoste Azure Content Delivery Network-versie van de module Azure Maps Services. Voeg een script verwijzing toe naar het `<head>`-element van het bestand:
 
         ```html
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
@@ -33,7 +33,7 @@ De Azure Maps Web-SDK biedt een *Services-module*. Deze module is een helper-bib
     
         > **NPM Azure-Maps installeren-rest**
     
-        Voeg vervolgens een script verwijzing toe aan het `<head>` element van het bestand:
+        Voeg vervolgens een script verwijzing toe naar het `<head>`-element van het bestand:
 
          ```html
         <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
@@ -124,7 +124,7 @@ De Azure Maps Web-SDK biedt een *Services-module*. Deze module is een helper-bib
 
     Zie [verificatie met Azure Maps](azure-maps-authentication.md)voor meer informatie.
 
-1. In de volgende code wordt de nieuw gemaakte Azure Search service-URL-client gebruikt voor het geocoderen van een adres: "1 micro soft Way, Redmond, WA". De code gebruikt de `searchAddress` functie en geeft de resultaten weer als een tabel in de hoofd tekst van de pagina.
+1. De volgende code maakt gebruik van de zojuist gemaakte Azure Maps Search service URL-client naar Geocode a address: "1 micro soft Way, Redmond, WA". De code gebruikt de functie `searchAddress` en geeft de resultaten weer als een tabel in de hoofd tekst van de pagina.
 
     ```javascript
     // Search for "1 microsoft way, redmond, wa".
@@ -160,7 +160,7 @@ De Azure Maps Web-SDK biedt een *Services-module*. Deze module is een helper-bib
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="De Services-module gebruiken" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Bekijk de pen <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>met behulp van de services</a> -<a href='https://codepen.io/azuremaps'>@azuremaps</a>module door Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+Bekijk de pen <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>met behulp van de Services-module</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Volgende stappen

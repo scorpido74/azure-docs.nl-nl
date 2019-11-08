@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6ed04c875140f3ecd14eff31829e931efbe84ea2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: bbaec55666b877e1d9343d8b80ea44a189c0c5b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606651"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806110"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen van de AI-verrijkings pijplijn in azure Cognitive Search
 
@@ -63,6 +63,8 @@ De Indexeer functie kan geen vaardigheid uitvoeren in de vaardig heden.
 
 | Reden | Voorbeeld | Bewerking |
 | --- | --- | --- |
+| Een veld bevat een term die te groot is | Een term in uw document is groter dan de [limiet van 32 KB](search-limits-quotas-capacity.md#api-request-limits) | U kunt deze beperking vermijden door ervoor te zorgen dat het veld niet is geconfigureerd als filterbaar, facetable of sorteerbaar.
+| Het document is te groot om te worden geïndexeerd | Een document is groter dan de [maximale grootte](search-limits-quotas-capacity.md#api-request-limits) van de API-aanvraag | [Grote gegevens sets indexeren](search-howto-large-index.md)
 | Problemen met de tijdelijke verbinding | Er is een tijdelijke fout opgetreden. Probeer het later opnieuw. | Af en toe zijn er onverwachte verbindings problemen. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
 | Mogelijke product bug | Er is een onverwachte fout opgetreden. | Dit duidt op een onbekende klasse fout. Dit kan betekenen dat er een product fout is opgetreden. Neem een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) op om hulp te krijgen. |
 | Er is een fout opgetreden tijdens de uitvoering van een kwalificatie | (Van vaardigheid samen voegen) Een of meer offset waarden zijn ongeldig en kunnen niet worden geparseerd. Items zijn ingevoegd aan het einde van de tekst | Gebruik de informatie in het fout bericht om het probleem op te lossen. Voor dit soort storingen moet actie worden uitgevoerd. |
@@ -114,6 +116,7 @@ Het document is gelezen en verwerkt, maar de Indexeer functie kan het niet toevo
 | --- | --- | --- |
 | Een term in uw document is groter dan de [limiet van 32 KB](search-limits-quotas-capacity.md#api-request-limits) | Een veld bevat een term die te groot is | U kunt deze beperking vermijden door ervoor te zorgen dat het veld niet is geconfigureerd als filterbaar, facetable of sorteerbaar.
 | Een document is groter dan de [maximale grootte](search-limits-quotas-capacity.md#api-request-limits) van de API-aanvraag | Het document is te groot om te worden geïndexeerd | [Grote gegevens sets indexeren](search-howto-large-index.md)
+| Het document bevat te veel objecten in de verzameling | Een verzameling in uw document overschrijdt het [maximum aantal elementen voor alle complexe verzamelings limieten](search-limits-quotas-capacity.md#index-limits) | We raden u aan de grootte van de complexe verzameling in het document onder de limiet te verminderen en gebruik van hoge opslag te voor komen.
 | Er is een probleem opgetreden bij het maken van verbinding met de doel index (die blijft bestaan na nieuwe pogingen), omdat de service wordt uitgevoerd onder andere belasting, zoals het uitvoeren van query's of het indexeren. | Kan geen verbinding maken met update-index. De zoek service wordt zwaar belast. | [De zoek service omhoog schalen](search-capacity-planning.md)
 | De zoek service wordt bijgewerkt voor service-updates of bevindt zich in het midden van de herconfiguratie van een topologie. | Kan geen verbinding maken met update-index. De zoek service is momenteel niet beschikbaar en de zoek service gaat naar een overgang. | Service configureren met ten minste 3 replica's voor een Beschik baarheid van 99,9% per [Sla-documentatie](https://azure.microsoft.com/support/legal/sla/search/v1_0/)
 | Fout in de onderliggende Compute/Networking-Resource (zeldzaam) | Kan geen verbinding maken met update-index. Er is een onbekende fout opgetreden. | Indexeer functies zodanig configureren dat [ze worden uitgevoerd volgens een](search-howto-schedule-indexers.md) mislukte status.

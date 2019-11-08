@@ -1,5 +1,5 @@
 ---
-title: Een Azure-SQL database uitschalen
+title: Een Data Base uitschalen
 description: De ShardMapManager-client bibliotheek voor Elastic Data Base gebruiken
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: d704e22dcd9ce4442ed16ae901c9c447fc025ebd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8175563d8c1c2ec59b4195b2ede06f6e1dbf8556
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690167"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823563"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Data bases uitschalen met Shard-toewijzings beheer
 
@@ -59,7 +59,7 @@ Elastisch schalen ondersteunt de volgende typen als sharding-sleutels:
 | byte []  |byte [] |
 | datum/tijd | tijdstempel |
 | duur | Hebben|
-| Date time offset |offsetdatetime |
+| date time offset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>Lijst-en bereik Shard Maps
 

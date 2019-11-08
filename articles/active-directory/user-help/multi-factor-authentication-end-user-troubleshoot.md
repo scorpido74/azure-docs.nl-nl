@@ -1,5 +1,5 @@
 ---
-title: Veelvoorkomende problemen met twee ledige verificatie oplossen-Azure Active Directory | Microsoft Docs
+title: Veelvoorkomende problemen met twee ledige verificatie oplossen-Azure AD
 description: Meer informatie over mogelijke oplossingen voor enkele veelvoorkomende problemen met twee ledige verificatie.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.date: 10/28/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb510755e7cc163af8ff0cb2c8699e1d2dd04d7f
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: f8d226d61f4b67541a6991fef3a435b4cfff500f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043227"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805307"
 ---
 # <a name="troubleshoot-common-two-factor-verification-problems"></a>Veelvoorkomende problemen met twee ledige verificatie oplossen
 
@@ -104,7 +104,7 @@ Als u twee ledige verificatie met uw werk-of school account gebruikt (bijvoorbee
 
 Als u deze stappen hebt uitgevoerd, maar nog steeds problemen ondervindt, neemt u contact op met de Help Desk voor ondersteuning.
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="related-articles"></a>Verwante artikelen
 
 - [De instellingen voor de verificatie methode met twee factoren beheren](multi-factor-authentication-end-user-manage-settings.md)
 

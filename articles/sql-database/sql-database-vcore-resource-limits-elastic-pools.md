@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL Database resource limieten voor vCore: elastische Pools | Microsoft Docs'
+title: 'vCore-resource limieten: elastische Pools'
 description: Op deze pagina worden enkele algemene limieten voor vCore bronnen voor elastische Pools in Azure SQL Database beschreven.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 65c2bfe4d79f5b7d468999143524b96b60f0efaf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f356b9d248ac9c5f0bcfaaeeb37b43d958eaa528
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495997"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822364"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Resource limieten voor elastische Pools met behulp van het vCore-aankoop model
 
@@ -226,7 +226,7 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Geheugen (GB)|81,6|91,8|102|122,4|163,2|204|
 |Maximumaantal databases per pool|100|100|100|100|100|100|
 |Column Store-ondersteuning|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
-|OLTP-opslag in het geheugen (GB)|7|8|9,5|11|20|36|
+|OLTP-opslag in het geheugen (GB)|7|8|9.5|11|20|36|
 |Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale gegevens grootte (GB)|650|650|650|650|1024|1024|
 |Maximale logboek grootte (GB)|195|195|195|195|307|307|
@@ -340,7 +340,7 @@ Als alle vCores van een elastische pool bezet zijn, ontvangt elke data base in d
 De volgende tabel beschrijft de eigenschappen voor gepoolde data bases.
 
 > [!NOTE]
-> De resource limieten van afzonderlijke data bases in elastische Pools zijn in het algemeen hetzelfde als voor afzonderlijke data bases buiten Pools met dezelfde reken grootte. Zo is het maximum aantal gelijktijdige werk rollen voor een GP_Gen4_1-data base 200 werk nemers. Het maximum aantal gelijktijdige werk rollen voor een data base in een GP_Gen4_1-groep is dus ook 200 werk nemers. Opmerking: het totale aantal gelijktijdige werk rollen in de GP_Gen4_1-groep is 210.
+> De resource limieten van afzonderlijke data bases in elastische Pools zijn in het algemeen hetzelfde als voor afzonderlijke data bases buiten Pools met dezelfde reken grootte. Zo is het maximum aantal gelijktijdige werk rollen voor een GP_Gen4_1-data base 200 werk nemers. Daarom is het maximum aantal gelijktijdige werk rollen voor een data base in een GP_Gen4_1 groep ook 200 werk nemers. Opmerking: het totale aantal gelijktijdige werk rollen in GP_Gen4_1 pool is 210.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |

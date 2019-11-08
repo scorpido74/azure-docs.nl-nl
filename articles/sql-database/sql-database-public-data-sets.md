@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: dc8b2a00882abc2e88b357d5778eaf96ec71b1bd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687582"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821287"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Open bare gegevens sets voor testen en prototypen
 
@@ -42,7 +42,7 @@ Blader door deze lijst met open bare gegevens sets voor gegevens die u kunt gebr
 | [Taxi's-gegevens New York City](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Taxi records bevatten velden voor het vastleggen van ophaal-en dropoff-datums/-tijden, ophaal-en dropoff-locaties, reis afstanden, geclassificeerde tarieven, betalings typen en door het stuur programma gemelde passagiers aantallen." | Gegevens sets bevinden zich per maand in CSV-bestanden. |
 | [Gegevens sets van micro soft Research-"data wetenschappen voor onderzoek"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Meerdere gegevens sets voor menselijke-computer interactie, audio/video, gegevens analyse/informatie ophalen, georuimtelijk/locatie, natuurlijke taal verwerking en Robotics/computer visie. | Gegevens sets bevinden zich in verschillende indelingen, gezipte down loads. |
 | [Open bare genoom gegevens](https://www.completegenomics.com/public-data/) | "Een gevarieerde gegevensset van hele menselijke genoom is gratis beschikbaar voor openbaar gebruik om een genoom onderzoek te verbeteren..." De provider, het volt ooien van genomics, is een privé onderneming. | Gegevens sets, na extractie, bevinden zich in de UNIX-tekst indeling. Er zijn ook analyse hulpprogramma's beschikbaar. |
-| [Gegevens uit de Science data-Cloud openen](https://www.opensciencedatacloud.org/) | "De open Science data Cloud biedt de weten schappelijke community met bronnen voor het opslaan, delen en analyseren van terabyte en PETA byte weten schappelijke gegevens sets."| Gegevens sets bevinden zich in verschillende indelingen. |
+| [Gegevens uit de Science data-Cloud openen](https://www.opensciencedatacloud.org/projects/) | "De open Science data Cloud biedt de weten schappelijke community met bronnen voor het opslaan, delen en analyseren van terabyte en PETA byte weten schappelijke gegevens sets."| Gegevens sets bevinden zich in verschillende indelingen. |
 | [Global klimaat data-WorldClim](https://worldclim.org/) | "WorldClim is een set wereld wijde klimaat lagen (gridded klimaat gegevens) met een ruimtelijke resolutie van ongeveer 1 km2. Deze gegevens kunnen worden gebruikt voor toewijzings-en ruimtelijke modellen. " | Deze bestanden bevatten georuimtelijke gegevens. Zie [gegevens indeling](https://worldclim.org/formats1)voor meer informatie. |
 | [Gegevens over de menselijke samenleving: het GDELT-project](https://www.gdeltproject.org/data.html) | "Het GDELT-project is de grootste, meest uitgebreide en beste open data base van de menselijke samenleving die ooit heeft gemaakt." | De onbewerkte gegevens bestanden hebben de CSV-indeling. |
 | [Adverteren Klik op Voorspellings gegevens voor machine learning van Criteo](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "De grootste, voorheen gepubliceerde ML-gegevensset." Zie voor meer informatie [de Criteo van 1 TB op de gegevensset prediction](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |

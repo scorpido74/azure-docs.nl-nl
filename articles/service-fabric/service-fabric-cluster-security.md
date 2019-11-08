@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: atsenthi
-ms.openlocfilehash: 6ee7c71a66488e9636752676d68a79fdfaf855cb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cf808bef75a73cef6e8c17045506f29fabf3b52e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599827"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819447"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Beveiligings scenario's voor Service Fabric cluster
-Een Azure Service Fabric-cluster is een bron waarvan u eigenaar bent. Het is uw verantwoordelijkheid om uw clusters te beveiligen om te voor komen dat onbevoegde gebruikers verbinding kunnen maken. Een beveiligd cluster is vooral belang rijk wanneer u werk belastingen voor productie op het cluster uitvoert. Hoewel het mogelijk is om een niet-beveiligd cluster te maken, kunnen anonieme gebruikers met de Cluster beheer eindpunten aan het open bare Internet verbinden. Niet-beveiligde clusters worden niet ondersteund voor productie werkbelastingen. 
+Een Azure Service Fabric-cluster is een bron waarvan u eigenaar bent. Het is uw verantwoordelijkheid om uw clusters te beveiligen om te voor komen dat onbevoegde gebruikers verbinding kunnen maken. Een beveiligd cluster is vooral belang rijk wanneer u werk belastingen voor productie op het cluster uitvoert. Het is mogelijk om een niet-beveiligd cluster te maken, maar als het cluster beheer eindpunten voor het open bare internet beschikbaar stelt, kunnen anonieme gebruikers er verbinding mee maken. Niet-beveiligde clusters worden niet ondersteund voor productie werkbelastingen. 
 
 Dit artikel bevat een overzicht van beveiligings scenario's voor Azure-clusters en zelfstandige clusters en de verschillende technologieën die u kunt gebruiken om ze te implementeren:
 
@@ -47,7 +47,7 @@ Zie [een cluster instellen met behulp van een Azure Resource Manager sjabloon](s
 Zie voor meer informatie over het instellen van certificaat beveiliging in een cluster voor een zelfstandig Windows Server-cluster [een zelfstandige cluster in Windows beveiligen met behulp van X. 509-certificaten](service-fabric-windows-cluster-x509-security.md).
 
 ### <a name="node-to-node-windows-security"></a>Windows-beveiliging van knoop punt naar knoop punt
-Zie [een zelfstandige cluster in Windows beveiligen](service-fabric-windows-cluster-windows-security.md)met behulp van Windows-beveiliging voor meer informatie over het instellen van Windows-beveiliging voor een zelfstandig Windows Server-cluster.
+Zie [een zelfstandige cluster in Windows beveiligen met behulp van Windows-beveiliging](service-fabric-windows-cluster-windows-security.md)voor meer informatie over het instellen van Windows-beveiliging voor een zelfstandig Windows Server-cluster.
 
 ## <a name="client-to-node-security"></a>Beveiliging van client naar knoop punt
 Bij client-naar-knoop punt-beveiliging worden clients geverifieerd en wordt de communicatie tussen een client en afzonderlijke knoop punten in het cluster beveiligd. Met dit type beveiliging kunt u ervoor zorgen dat alleen geautoriseerde gebruikers toegang hebben tot het cluster en de toepassingen die op het cluster worden geïmplementeerd. Clients worden geïdentificeerd aan de hand van hun beveiligings referenties voor Windows of hun beveiligings referenties voor het certificaat.
@@ -57,7 +57,7 @@ Bij client-naar-knoop punt-beveiliging worden clients geverifieerd en wordt de c
 Clusters die worden uitgevoerd op Azure en zelfstandige clusters waarop Windows wordt uitgevoerd, kunnen gebruikmaken van [certificaat beveiliging](https://msdn.microsoft.com/library/ff649801.aspx) of [Windows-beveiliging](https://msdn.microsoft.com/library/ff649396.aspx).
 
 ### <a name="client-to-node-certificate-security"></a>Client-naar-knoop punt certificaat beveiliging
-Stel de client-naar-knoop punt certificaat beveiliging in wanneer u het cluster maakt, in de Azure Portal, met behulp van een resource manager-sjabloon of met behulp van een zelfstandige JSON-sjabloon. Als u het certificaat wilt maken, geeft u een client certificaat voor de beheerder of een gebruikers certificaat op. Als best practice moeten de client certificaten van de client en de gebruiker die u opgeeft, afwijken van de primaire en secundaire certificaten die u opgeeft voor [beveiliging](#node-to-node-security)tussen knoop punten. Standaard worden de cluster certificaten voor de beveiliging van knoop punten toegevoegd aan de lijst met toegestane client beheerders certificaten.
+Stel de client-naar-knoop punt certificaat beveiliging in wanneer u het cluster maakt, in de Azure Portal, met behulp van een resource manager-sjabloon of met behulp van een zelfstandige JSON-sjabloon. Als u het certificaat wilt maken, geeft u een client certificaat voor de beheerder of een gebruikers certificaat op. Als best practice moeten de client certificaten van de client en de gebruiker die u opgeeft, afwijken van de primaire en secundaire certificaten die u opgeeft voor [beveiliging](#node-to-node-security)tussen knoop punten. Cluster certificaten hebben dezelfde rechten als client beheerders certificaten. Ze moeten echter alleen worden gebruikt door het cluster en niet door gebruikers met beheerders rechten als beveiligings best practice.
 
 Clients die verbinding maken met het cluster met behulp van het beheerders certificaat, hebben volledige toegang tot beheer mogelijkheden. Clients die verbinding maken met het cluster met behulp van het client certificaat alleen-lezen gebruiker hebben alleen lees toegang tot beheer mogelijkheden. Deze certificaten worden gebruikt voor de RBAC die verderop in dit artikel wordt beschreven.
 
@@ -83,7 +83,7 @@ Voor Service Fabric clusters die zijn geïmplementeerd in een openbaar netwerk d
 Als u Windows Server 2012 R2 en Windows Active Directory, kunt u voor zelfstandige Windows Server-clusters het beste Windows-beveiliging gebruiken met door groepen beheerde service accounts. Gebruik anders Windows-beveiliging met Windows-accounts.
 
 ## <a name="role-based-access-control-rbac"></a>RBAC (op rollen gebaseerd toegangsbeheer)
-U kunt toegangs beheer gebruiken om de toegang tot bepaalde cluster bewerkingen voor verschillende groepen gebruikers te beperken. Dit helpt het cluster beter te beveiligen. Twee typen toegangs beheer worden ondersteund voor clients die verbinding maken met een cluster: Beheerdersrol en gebruikersrol.
+U kunt toegangs beheer gebruiken om de toegang tot bepaalde cluster bewerkingen voor verschillende groepen gebruikers te beperken. Dit helpt het cluster beter te beveiligen. Twee typen toegangs beheer worden ondersteund voor clients die verbinding maken met een cluster: beheerdersrol en gebruikersrol.
 
 Gebruikers aan wie de beheerdersrol is toegewezen, hebben volledige toegang tot beheer mogelijkheden, waaronder lees-en schrijf mogelijkheden. Gebruikers aan wie de gebruikersrol is toegewezen, hebben standaard alleen lees toegang tot beheer mogelijkheden (bijvoorbeeld query mogelijkheden). Ze kunnen ook toepassingen en services omzetten.
 
@@ -112,7 +112,7 @@ Het certificaat moet voldoen aan de volgende vereisten:
 
 Enkele andere zaken die u moet overwegen:
 
-* Het veld **onderwerp** kan meerdere waarden hebben. Elke waarde wordt voorafgegaan door een initialisatie om het waardetype aan te geven. Normaal gesp roken is de initialisatie **CN** (voor *algemene naam*); bijvoorbeeld: **CN = www\.-contoso.com**. 
+* Het veld **onderwerp** kan meerdere waarden hebben. Elke waarde wordt voorafgegaan door een initialisatie om het waardetype aan te geven. Normaal gesp roken is de initialisatie **CN** (voor *algemene naam*); bijvoorbeeld: **CN = www\.contoso.com**. 
 * Het veld **onderwerp** kan leeg zijn. 
 * Als het optionele veld **alternatieve naam voor onderwerp** is ingevuld, moet het de algemene naam van het certificaat en één vermelding per San bevatten. Deze worden ingevoerd als **DNS-naam** waarden. Zie [een alternatieve naam voor een onderwerp toevoegen aan een beveiligd LDAP-certificaat](https://support.microsoft.com/kb/931351)voor meer informatie over het genereren van certificaten die san's hebben.
 * De waarde van het veld **beoogde doel einden** van het certificaat moet een geschikte waarde bevatten, zoals **Server verificatie** of **client verificatie**.

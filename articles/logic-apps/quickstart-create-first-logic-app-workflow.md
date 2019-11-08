@@ -1,6 +1,6 @@
 ---
 title: Uw eerste geautomatiseerde werk stroom maken-Azure Logic Apps
-description: 'Snelstartgids: uw eerste geautomatiseerde taak bouwen met behulp van Azure Logic Apps voor systeem integratie en EAI-oplossingen (Enter prise Application Integration)'
+description: 'Snelstartgids: uw eerste geautomatiseerde werk stroom bouwen met behulp van Azure Logic Apps voor systeem integratie en EAI-oplossingen (Enter prise Application Integration)'
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,20 +11,20 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: d5ac23da7b4460211100f1140c24f6ed28ab3e39
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b6222747e352f446dab33314729f7f697e328909
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584350"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824909"
 ---
-# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Snelstart: maak uw eerste geautomatiseerde werkstroom met Azure Logic Apps - Azure-portal
+# <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Snelstartgids: uw eerste werk stroom maken met behulp van Azure Logic Apps-Azure Portal
 
-In deze snelstart leert u uw eerste geautomatiseerde werkstroom bouwen met [Azure Logic Apps](../logic-apps/logic-apps-overview.md). In dit artikel maakt u een logische app waarmee de RSS-feed van een website regelmatig wordt gecontroleerd op nieuwe items. Als er nieuwe items bestaan, stuurt de logische app een e-mail voor elk item. Wanneer u bent klaar, ziet uw logische app eruit als deze werkstroom op hoog niveau:
+In deze Quick Start worden de basis concepten geïntroduceerd van het maken van uw eerste werk stroom met behulp van [Azure Logic apps](../logic-apps/logic-apps-overview.md), zoals het maken van een lege logische app, het toevoegen van een trigger en een actie, en het testen van uw logische app. In deze Quick Start maakt u een logische app waarmee de RSS-feed van een website regel matig wordt gecontroleerd op nieuwe items. Als er nieuwe items bestaan, stuurt de logische app een e-mail voor elk item. Wanneer u bent klaar, ziet uw logische app eruit als deze werkstroom op hoog niveau:
 
 ![Voor beeld van een logische app-werk stroom op hoog niveau](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Als u deze Snelstartgids wilt volgen, hebt u een e-mail account nodig van een provider die wordt ondersteund door Azure Logic Apps, zoals Office 365 Outlook, Outlook.com of Gmail. Voor andere providers [kunt u hier de lijst met connectors bekijken](https://docs.microsoft.com/connectors/). Deze logische app maakt gebruik van een Office 365 Outlook-account. Als u een ander e-mail account gebruikt, zijn de algemene stappen hetzelfde, maar uw gebruikers interface kan enigszins verschillen.
+Voor dit scenario hebt u een e-mail account nodig van een service die wordt ondersteund door Azure Logic Apps, zoals Office 365 Outlook, Outlook.com of Gmail. [Raadpleeg de lijst met connectors hier](https://docs.microsoft.com/connectors/)voor andere ondersteunde e-mail services. In dit voor beeld gebruikt de logische app Office 365 Outlook. Als u een andere e-mail service gebruikt, zijn de algemene stappen hetzelfde, maar uw gebruikers interface kan enigszins verschillen.
 
 Als u nog geen abonnement op Azure hebt, [meld u dan nu aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
@@ -42,7 +42,7 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
 
    ![Nieuwe logische app toevoegen](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
-1. Geef in het deel venster logische app Details op over uw logische app, zoals hieronder wordt weer gegeven. Wanneer u klaar bent, selecteert u **maken**.
+1. Geef in het deel venster **logische app** Details op over uw logische app, zoals hieronder wordt weer gegeven. Wanneer u klaar bent, selecteert u **maken**.
 
    ![Geef details op voor de nieuwe logische app](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
@@ -69,11 +69,11 @@ Vervolgens voegt u een [trigger](../logic-apps/logic-apps-overview.md#logic-app-
 
 <a name="add-rss-trigger"></a>
 
-## <a name="check-rss-feed-with-a-trigger"></a>RSS-feed controleren met een trigger
+## <a name="add-the-rss-trigger"></a>De RSS-trigger toevoegen
 
 1. Selecteer in de **ontwerp functie voor logische apps**, onder het zoekvak, de optie **alle**.
 
-1. Typ `rss` in het zoekvak. Selecteer in de lijst triggers deze trigger: **Wanneer een item in de feed wordt gepubliceerd**.
+1. Voer in het zoekvak `rss` in om de RSS-connector te vinden. Selecteer in de lijst triggers de trigger **Wanneer een feed-item wordt gepubliceerd** .
 
    ![De trigger ' wanneer een feed-item wordt gepubliceerd ' selecteren](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
@@ -90,7 +90,7 @@ Vervolgens voegt u een [trigger](../logic-apps/logic-apps-overview.md#logic-app-
 
    Het interval en de frequentie bepalen samen de planning van de trigger voor uw logische app. Deze logische app controleert de feed elke minuut.
 
-1. Als u de details van de trigger voorlopig wilt verbergen, klikt u in de titelbalk van de trigger.
+1. Als u de details van de trigger voorlopig wilt samen vouwen, klikt u in de titel balk van de trigger.
 
    ![De shape Logic app samen vouwen om details te verbergen](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
@@ -98,7 +98,7 @@ Vervolgens voegt u een [trigger](../logic-apps/logic-apps-overview.md#logic-app-
 
 Uw logische app is nu live, maar kan alleen de RSS-feed controleren. Daarom gaat u nu een actie toevoegen die reageert wanneer de trigger wordt geactiveerd.
 
-## <a name="send-email-with-an-action"></a>E-mail versturen bij een actie
+## <a name="add-the-send-email-action"></a>De actie ' e-mail verzenden ' toevoegen
 
 Voeg nu een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) toe waarmee een e-mail bericht wordt verzonden wanneer een nieuw item in de RSS-feed wordt weer gegeven.
 
@@ -108,7 +108,7 @@ Voeg nu een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) toe
 
 1. Onder **Kies een actie** en het zoekvak, selecteert u **alle**.
 
-1. Typ `send an email` in het zoekvak. Selecteer in de lijst met acties de actie 'een e-mail verzenden' voor de gewenste e-mailprovider.
+1. Voer in het zoekvak `send an email` in om connectors te vinden die deze actie aanbieden. Selecteer in de lijst acties de actie ' een e-mail verzenden ' voor de e-mail service die u wilt gebruiken. In dit voor beeld wordt de Office 365 Outlook-Connector gebruikt, die de actie **een E-mail verzenden** heeft.
 
    ![Selecteer de actie ' een e-mail verzenden ' voor Office 365 Outlook](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
@@ -117,7 +117,15 @@ Voeg nu een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) toe
    * Voor werk- of schoolaccounts van Azure selecteert u Outlook van Office 365.
    * Selecteer Outlook.com voor persoonlijke Microsoft-accounts.
 
-1. Als u naar uw referenties wordt gevraagd, meldt u zich aan bij uw e-mailaccount zodat Logic Apps een verbinding met uw e-mailaccount kan maken.
+1. Als uw geselecteerde e-mail Connector u vraagt om uw identiteit te verifiëren, voltooit u die stap nu om een verbinding tot stand te brengen tussen uw logische app en uw e-mail service.
+
+   > [!NOTE]
+   > In dit specifieke voor beeld moet u uw identiteit hand matig verifiëren. Connectors waarvoor verificatie is vereist, verschillen echter in de verificatie typen die ze ondersteunen. U hebt ook opties voor het instellen van de manier waarop u de verificatie wilt afhandelen. Wanneer u bijvoorbeeld Azure Resource Manager sjablonen gebruikt voor implementatie, kunt u invoer para meters en beveiligen die u vaak of eenvoudig wilt wijzigen, zoals verbindings gegevens. Zie de volgende onderwerpen voor meer informatie:
+   >
+   > * [Sjabloon parameters voor implementatie](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
+   > * [OAuth-verbindingen autoriseren](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)
+   > * [Toegang verifiëren met beheerde identiteiten](../logic-apps/create-managed-service-identity.md)
+   > * [Verbindingen voor implementatie van logische apps verifiëren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)
 
 1. In de actie **Een e-mail verzenden** geeft u de gegevens op die u in het e-mailbericht wilt opnemen.
 

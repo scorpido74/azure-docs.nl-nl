@@ -1,22 +1,22 @@
 ---
-title: Power shell-TDE-Protector draaien-Azure SQL Database | Microsoft Docs
+title: TDE-Protector draaien-Power shell
 description: Meer informatie over het roteren van de Transparent Data Encryption-Protector (TDE) voor een Azure SQL-Server.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 464ea73d9b3d7116205377600ffccee13a9e2dcb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5bfcacb9348940e0b36947f6e4e0d27839de35bb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566048"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824684"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>De Transparent Data Encryption-Protector (TDE) draaien met Power shell
 
@@ -94,6 +94,6 @@ Hand matige rotatie van de sleutel maakt gebruik van de cmdlets [add-AzKeyVaultK
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- In het geval van een beveiligings risico leert u hoe u een mogelijk aangetast TDE-Protector kunt verwijderen: [Een mogelijk beschadigde sleutel verwijderen](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
+- In het geval van een beveiligings risico leert u hoe u een mogelijk aangetast TDE-Protector verwijdert: [een mogelijk versleutelde code verwijderen](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
 
-- Aan de slag met Azure Key Vault-integratie en Bring Your Own Key ondersteuning voor TDE: [TDE inschakelen met uw eigen sleutel vanuit Key Vault met behulp van Power shell](transparent-data-encryption-byok-azure-sql-configure.md)
+- Aan de slag met Azure Key Vault-integratie en Bring Your Own Key ondersteuning voor TDE: [Schakel TDe met behulp van uw eigen sleutel in Key Vault met behulp van Power shell](transparent-data-encryption-byok-azure-sql-configure.md)

@@ -1,50 +1,51 @@
 ---
-title: Azure Marketplace en AppSource uitgeverprofiel beheren
-description: Azure Marketplace en AppSource uitgeverprofiel beheren
+title: Azure Marketplace en AppSource Publisher-profiel beheren
+description: Azure Marketplace en AppSource Publisher-profiel beheren
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 manager: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: pabutler
-ms.openlocfilehash: a72259e1deb97ca0256de5bfd3b2f6c78d92e3c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9e8e73d18ec0c2a7334fbb5521e89ead4334cc7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935345"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826355"
 ---
-# <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>'Azure Marketplace' en 'AppSource' uitgeverprofiel beheren
+# <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>Het Publisher-profiel ' Azure Marketplace ' en ' AppSource ' beheren
 
-Dit document is een stapsgewijze instructies voor het weergeven en beheren van gebruikers aan uw profiel geregistreerd uitgever.
+Dit document bevat een overzicht van het weer geven en beheren van gebruikers voor uw geregistreerde Publisher-profiel.
 
-Op dit moment zijn opgelost, kunt u de stappen om te worden van een uitgever Azure Marketplace en AppSource hebt voltooid. Het uitgeverprofiel is geregistreerd op de **[Cloud Partner-Portal](https://cloudpartner.azure.com/)** goedkeuring van uw partner-aanvraag te volgen. Uw uitgeverprofiel van toepassing op alle aanbiedingen en SKU's van het account dat wordt gebruikt tijdens de registratie van de partner gepubliceerd.
+Op dit moment hebt u de stappen voltooid om een Azure Marketplace-en AppSource-uitgever te worden. Het Publisher-profiel is geregistreerd op de **[Cloud Partner-Portal](https://cloudpartner.azure.com/)** volgende goed keuring van uw partner aanvraag. Uw Publisher-profiel is van toepassing op alle aanbiedingen en Sku's die worden gepubliceerd op basis van het account dat wordt gebruikt tijdens de registratie van de partner.
 
-Als u uw bedrijf nog niet hebt geregistreerd als een cloudpartner, Zie [aan de slag met de cloud partner-portal](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal).
+Zie [aan de slag met de Cloud Partner Portal](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal)als u uw bedrijf nog niet hebt geregistreerd als een Cloud partner.
 
-**Uitgeverprofiel**: Uw profiel publisher onderscheidt van uw bedrijf op de Azure Marketplace en AppSource. Deze bestaat uit uw uitgevers-ID, de weergavenaam en de eigenaar email(s). Een goed beheerde profiel wordt uw zichtbaarheid verbeteren en kunnen gebruikers marketplace eenvoudig identificeren en selecteren van een juiste aanbieding.
+**Publisher-profiel**: uw Publisher-profiel onderscheidt uw bedrijf op Azure Marketplace en AppSource. Het bestaat uit de uitgevers-ID, weergave naam en de e-mail (s) van de eigenaar. Met een goed beheerd profiel wordt uw zicht baarheid verbeterd en kunnen gebruikers met Marketplace eenvoudig een passende aanbieding identificeren en selecteren.
 
 > [!NOTE]
-> De uitgevers-ID en de geregistreerde eigenaar e-mailadres niet meer worden bewerkt wanneer u uw eerste aanbieding publiceren. U kunt echter uw profiel bekijken en bewerken van de weergavenaam van de uitgever van de Cloud Partner-Portal.
+> Je uitgever-ID en de e-mail adres van de geregistreerde eigenaar zijn niet bewerkbaar zodra je de eerste aanbieding hebt gepubliceerd. U kunt uw profiel echter bekijken en de weergave naam van de uitgever bewerken vanuit het Cloud Partner-portal.
 
 <!-- Dummy comment added to suppress MD linter warning -->
 
 > [!NOTE]
-> Gebruikers (auteurs en eigenaren) toevoegen aan uw profiel voor publiceren in de sectie gebruikers op het navigatiedeelvenster links in de sectie gebruikers van de cloud partner-portal'
+> Voeg gebruikers (mede werkers en eigen aren) toe aan het publicatie profiel vanuit de sectie gebruikers in het navigatie deel venster aan de linkerkant van het gedeelte gebruikers van de Cloud Partner Portal.
 
-**Weergeven en beheren van uw profiel publisher**, in de rechterbovenhoek menubalk, klikt u op de **Publisher profieltabblad**.
+**Als u uw Publisher-profiel wilt weer geven en beheren**, klikt u in de bovenste menu balk op het tabblad van het **Publisher-profiel**.
 
-![Uitgever profiel tabblad - uitgeverprofiel](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofilenew.png)
+![Profiel tabblad van de Publisher-Publisher-profiel](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofilenew.png)
 
-![Details van het Publisher - profielgegevens van uitgever](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledetails.png)
+![Profiel Details van de uitgever-Details van het Publisher-profiel](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledetails.png)
 
-**Koppel uw Dev Center-Account**: U kunt ook uw bestaande Dev Center-account koppelen aan uw uitgeverprofiel in de Cloud Partner-Portal.
-Eerst aanmelden bij de portal met hetzelfde e-mailadres gebruikt voor het registreren van uw Dev Center-account. Vervolgens weergegeven uw profielpagina publisher uw Dev Center accountstatus, Dev Center-account e-mailadres eigenaar en Dev Center-accountnaam.
+**Uw ontwikkelaars centrum-account koppelen**: u kunt uw bestaande ontwikkelaars centrum-account ook koppelen aan uw Publisher-profiel op het Cloud Partner-Portal.
+Meld u eerst aan bij de portal met hetzelfde e-mail adres dat u hebt gebruikt om uw ontwikkelaars centrum-account te registreren. Op de Publisher-profiel pagina worden de account status van het ontwikkelaars centrum, het e-mail adres van de eigenaar van het ontwikkelaars centrum en het ontwikkelaars centrum-account weer gegeven.
 
 >[!NOTE]
->Dev Center-Account de registratie is verplicht voor publicatie betaalde marktplaats SKU's.
+>De registratie van het ontwikkelaars centrum-account is verplicht voor het publiceren van betaalde Market Place-Sku's.
 
-Als u geen een [Developer Center-Account](./cloud-partner-portal-dev-center-accounts-registration.md), kunt u een account maken. Voeg het geregistreerde e-mailadres als een eigenaar zijn in de Cloud Partner-Portal voor uw aanbieding. Een eigenaar kunt alleen het geregistreerde e-mailadres toevoegen aan uw publicatieprofiel van de **gebruiker** sectie. Vervolgens aanmelden bij de portal met hetzelfde e-mailadres en uw Dev Center-account koppelen.
+Als u geen [ontwikkelaars centrum-account](./cloud-partner-portal-dev-center-accounts-registration.md)hebt, kunt u een account maken. Voeg vervolgens het geregistreerde e-mail adres toe als eigenaar van de Cloud Partner-portal voor uw aanbieding. Een eigenaar kan het geregistreerde e-mail adres alleen toevoegen aan uw publicatie profiel vanuit het gedeelte **gebruiker** . Meld u vervolgens aan bij de portal met hetzelfde e-mail adres en koppel uw ontwikkelaars centrum-account.
 
-![Details van het Publisher - uitgever profielbeschrijving](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledescription.png)
+![Profiel Details van de uitgever-beschrijving van het Publisher-profiel](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledescription.png)

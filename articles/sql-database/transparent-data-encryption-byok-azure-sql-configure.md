@@ -1,22 +1,22 @@
 ---
-title: 'Power shell en CLI: Schakel SQL-TDE in met Azure Key Vault uw eigen sleutel te halen Azure SQL Database '
+title: SQL-TDE met Azure Key Vault inschakelen
 description: Meer informatie over het configureren van een Azure SQL Database en een Data Warehouse om Transparent Data Encryption (TDE) te gebruiken voor versleuteling-at-rest met behulp van Power shell of CLI.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 232f38b239090356ae3ad1a70b522188f6ab6a4f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8668718f33cff1ebc0c8e159c0edcae41de3ad75
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686757"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821693"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>Power shell en CLI: Transparent Data Encryption met door de klant beheerde sleutel inschakelen vanuit Azure Key Vault
 

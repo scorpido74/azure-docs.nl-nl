@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5a65ee27d5175887b7bf0d9146afa025e665657c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0654916b344cf47cf9942b883d62d392c0552979
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488404"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818936"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Grenzen voor uw LUIS-model en-sleutels
 LUIS heeft verschillende grens gebieden. De eerste is de [model grens](#model-boundaries), waarmee de intenties, entiteiten en functies in Luis worden beheerd. Het tweede gebied is [quotum limieten](#key-limits) op basis van het sleutel type. Een derde gebied met grenzen is de [toetscombinatie voor het beheren van de Luis](#keyboard-controls) -website. Een vierde gebied is de [wereld wijde toewijzing](luis-reference-regions.md) tussen de Luis-ontwerp website en de Luis- [eindpunt](luis-glossary.md#endpoint) api's. 
@@ -35,7 +35,7 @@ Als uw app de limieten en grenzen van het LUIS-model overschrijdt, kunt u overwe
 | Externe entiteiten | geen limieten |
 | [Intents][intents]|500 per toepassing: 499 aangepaste intenties en de vereiste _geen_ intentie.<br>[Op verzen ding gebaseerde](https://aka.ms/dispatch-tool) toepassing heeft corresponderende 500-verzend bronnen.|
 | [Entiteiten weer geven](./luis-concept-entity-types.md) | Bovenliggend item: 50, onderliggend: 20.000 items. Canonieke naam is * standaard teken Max. Synoniemen waarden hebben geen beperking voor lengte. |
-| Door [machines geleerde entiteiten + rollen](./luis-concept-entity-types.md):<br> werken<br>Simple<br>entiteits rol|Een limiet van 100 bovenliggende entiteiten of 330 entiteiten, afhankelijk van het aantal gebruikers dat het eerst voor komt. Een rol telt als een entiteit voor het doel van deze grens. Een voor beeld is een samen stelling met een eenvoudige entiteit, die twee rollen heeft: 1 composiet + 1 eenvoudige + 2 rollen = 4 van de 330 entiteiten.|
+| Door [machines geleerde entiteiten + rollen](./luis-concept-entity-types.md):<br> werken<br>Simple<br>entiteits rol|Een limiet van 100 bovenliggende entiteiten of 330 entiteiten, afhankelijk van het aantal gebruikers dat het eerst voor komt. Een rol telt als een entiteit voor het doel van deze grens. Een voor beeld is een samen stelling met een eenvoudige entiteit, die twee rollen heeft: 1 composiet + 1 eenvoudige + 2 rollen = 4 van de 330 entiteiten.<br>Subonderdelen kunnen Maxi maal vijf niveaus worden genest.|
 |Model als onderdeel| Het maximum aantal modellen dat kan worden gebruikt als een descriptor (functie) voor een specifiek model om 10 modellen te zijn. Het maximum aantal woordgroepen lijsten dat als een descriptor (functie) voor een specifiek model wordt gebruikt, is 10 woordgroepen lijsten.|
 | [Preview-dynamische lijst entiteiten](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 lijsten met een eindpunt aanvraag van ongeveer 1 KB per query|
 | [Daarin](luis-concept-patterns.md)|500 patronen per toepassing.<br>De maximale lengte van het patroon is 400 tekens.<br>3 patroon. alle entiteiten per patroon<br>Maxi maal 2 geneste optionele teksten in het patroon|
@@ -61,7 +61,7 @@ Het volgende moet uniek zijn in een LUIS-app:
 
 * Versie naam
 * bedoeling
-* Vennootschap
+* vennootschap
 * rolls
 
 Het volgende moet uniek zijn binnen het bereik dat wordt toegepast:
@@ -74,7 +74,7 @@ Gebruik niet de volgende tekens in de volgende namen.
 
 |Object|Tekens uitsluiten|
 |--|--|
-|De namen van intentie, entiteit en rollen|`:`<br>`$`|
+|De namen van intentie, entiteit en rollen|`:`<br>`$` <br> `&`|
 |Versie naam|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
 ## <a name="key-usage"></a>Sleutel gebruik

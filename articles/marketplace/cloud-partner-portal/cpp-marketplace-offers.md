@@ -4,15 +4,16 @@ description: Aanbiedingen van de Azure-en AppSource-markt plaatsen maken en behe
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 746b1b51d593b21bdf85bca4eeb75c135196093a
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: f1e561e84daed6c24ca0d9b7832af3d975082e25
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962860"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818763"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure en AppSource Marketplace biedt
 
@@ -34,7 +35,7 @@ Het proces voor het maken van een nieuwe aanbieding verschilt veel van de aanbie
 
 ## <a name="test-drive"></a>Test Drive
 
-*Test drive* is een Marketplace-functie waarmee klanten een demonstratie optie voor ' try voor u kopen ' bieden voor elke aanbieding die is ingeschakeld.  De capaciteit van het test station is beperkt tot de volgende subset met aanbiedings typen: [Azure-toepassingen](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 voor klant betrokkenheid](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 voor Financiën en bewerkingen](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS-toepassingen](./saas-app/cpp-saas-offer.md)en [virtuele machines](./virtual-machine/cpp-virtual-machine-offer.md).  Voor deze functie moet de uitgever een sjabloon voor het testen van een station maken, aangepast voor de aanbieding.  Zie de sectie [test station](./test-drive/what-is-test-drive.md)voor meer informatie.
+*Test drive* is een Marketplace-functie waarmee klanten een demonstratie optie voor ' try voor u kopen ' bieden voor elke aanbieding die is ingeschakeld.  De capaciteit van het test station is beperkt tot de volgende subset van aanbiedings typen: [Azure-toepassingen](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 voor klant betrokkenheid](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 voor Financiën en bewerkingen](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS toepassingen](./saas-app/cpp-saas-offer.md)en [virtuele machines](./virtual-machine/cpp-virtual-machine-offer.md).  Voor deze functie moet de uitgever een sjabloon voor het testen van een station maken, aangepast voor de aanbieding.  Zie de sectie [test station](./test-drive/what-is-test-drive.md)voor meer informatie.
 
 U kunt door de bestaande Marketplace-aanbiedingen bladeren die een test drive demonstratie hebben door het [test drive-filter](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive)toe te passen. 
 
@@ -43,11 +44,11 @@ U kunt door de bestaande Marketplace-aanbiedingen bladeren die een test drive de
 
 De volgende tabel geeft een lijst van de huidige aanbiedings typen die door de [Cloud Partner-Portal](https://cloudpartner.azure.com)worden ondersteund.  Voor elk aanbiedings type wordt een lijst weer gegeven met de Marketplace ('s) waar de aanbieding kan worden vermeld, evenals een algemene beschrijving van de technologie van de aanbod oplossing.
 
-|                Type aanbieding                |  Marketplace  |   Description                                                           |
+|                Type aanbieding                |  Marketplace  |   Beschrijving                                                           |
 |                ----------                |  -----------  |   -----------                                                           |
 | [Azure-toepassing](./azure-applications/cpp-azure-app-offer.md) | Azure | De oplossing bestaat uit een of meer virtuele machines (Vm's), optionele aangepaste Azure-code, geïmplementeerd via een Azure Resource Manager-sjabloon.  De implementatie kan door de klant worden door middel van een oplossings sjabloon of worden beheerd door de uitgever. Dit type wordt gebruikt om meer flexibiliteit te bieden dan het geleverde type voor de virtuele machine.  |
 | [Consulting Service](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | zowel | Micro soft-bevoegde consultants kunnen hun domeingebonden Services vermelden op Azure Marketplace of AppSource.  Hun expertise helpt klanten bij het beoordelen van hun problemen en het maken en implementeren van de juiste oplossingen om te voldoen aan de doel stellingen van hun bedrijf.  |
-| [Container](./containers/cpp-containers-offer.md)  | Azure | De oplossing is een docker-container installatie kopie die is ingericht als een Kubernetes service of Azure container instances. |
+| [Verpakking](./containers/cpp-containers-offer.md)  | Azure | De oplossing is een docker-container installatie kopie die is ingericht als een Kubernetes service of Azure container instances. |
 | [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Een pakket dat deze Enter prise resource planning (ERP) en het beheer systeem voor bedrijven uitbreidt. |
 | [Dynamics 365 voor klant betrokkenheid](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Een pakket dat dit CRM-systeem (Customer Resource Management) uitbreidt via de modules Sales, service, project service en Field Service  |
 | [Dynamics 365 voor Financiën en bewerkingen](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Een pakket dat deze ERP-service (Enter prise resource planning) uitbreidt die ondersteuning biedt voor geavanceerde Financiën, bedrijfs activiteiten, productie en supply chain management |

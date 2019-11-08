@@ -1,5 +1,5 @@
 ---
-title: Aanbevelingen voor prestaties Toep assen-Azure SQL Database
+title: Prestatie-aanbevelingen toepassen
 description: Gebruik de Azure Portal om prestatie aanbevelingen te vinden waarmee de prestaties van uw Azure SQL Database kunnen worden geoptimaliseerd.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 24a590a80e768bba2e9b102bdf200e0cd96858f8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5462a03accb3420b3f0fcec4624734c8f6d68859
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691288"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811595"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Aanbevelingen voor prestaties zoeken en Toep assen
 
@@ -105,7 +105,7 @@ U kunt de Azure SQL Database zo instellen dat aanbevelingen automatisch worden g
     ![Aanbevolen indexen](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Houd er rekening mee dat de optie **DROP_INDEX** is momenteel niet compatibel met toepassingen die gebruikmaken van partitie-switches en index hints. 
+> Houd er rekening mee dat **DROP_INDEX** optie momenteel niet compatibel is met toepassingen die gebruikmaken van partitie switches en index hints. 
 >
 
 Wanneer u de gewenste configuratie hebt geselecteerd, klikt u op Toep assen.

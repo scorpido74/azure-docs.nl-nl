@@ -1,5 +1,5 @@
 ---
-title: Beveiligings gegevens (preview) instellen om tekst berichten te gebruiken-Azure Active Directory | Microsoft Docs
+title: Beveiligings gegevens (preview-versie) voor tekst berichten instellen-Azure AD
 description: Je beveiligings gegevens instellen om je identiteit te verifiëren met behulp van tekst berichten en je mobiele apparaat.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3544094da72c1c0f854f3d02a34f8540ad2f784
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5a4be99a84964b7a55448692385d027262ecfec3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160886"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803841"
 ---
 # <a name="set-up-security-info-preview-to-use-text-messaging"></a>Beveiligings gegevens (preview) instellen om tekst berichten te gebruiken
 
@@ -94,7 +94,7 @@ Als u wilt dat tekst berichten de standaard methode zijn die wordt gebruikt wann
 
     ![Methode kiezen voor standaard aanmelding](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
-    De standaard methode voor het aanmelden bij het aanwijzen van wijzigingen in de **telefoon tekst ( *_your_phone_number_* )** .
+    De standaard methode voor het aanmelden wordt gewijzigd in **telefoon tekst ( *_your_phone_number_* )** .
 
 ## <a name="additional-security-info-methods"></a>Aanvullende beveiligings gegevens methoden
 

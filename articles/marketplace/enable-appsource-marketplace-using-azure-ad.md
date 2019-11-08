@@ -5,15 +5,16 @@ services: Azure, AppSource, Marketplace, Compute, Storage, Networking, Blockchai
 author: qianw211
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: pabutler
-ms.openlocfilehash: 0b68687a2bbaa817f2776757ccab9571638c0fd5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 9423263270313659017b16a5e34511e7ef385af5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876006"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825893"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Een AppSource- en Azure Marketplace-vermelding inschakelen met behulp van Azure Active Directory
 
@@ -35,12 +36,12 @@ De verschillende [aanbiedings opties en aanbiedings typen](https://docs.microsof
 | **Aanbiedings type**    | **Is Azure AD SSO vereist?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | Contact opnemen | Proefversie | Test Drive | Handelen |
-| Virtuele Machine | N/A | Nee | Nee | Nee |
-| Azure-apps (oplossings sjabloon)  | N/A | N/A | N/A | N/A |
-| Beheerde apps  | N/A | N/A | N/A | Nee |
+| Virtuele machine | N.v.t. | Nee | Nee | Nee |
+| Azure-apps (oplossings sjabloon)  | N.v.t. | N.v.t. | N.v.t. | N.v.t. |
+| Beheerde apps  | N.v.t. | N.v.t. | N.v.t. | Nee |
 | SaaS  | Nee | Ja | Ja | Ja |
-| Containers  | N/A | N/A | N/A | Nee |
-| Advies Services  | Nee | N/A | N/A | N/A |
+| Containers  | N.v.t. | N.v.t. | N.v.t. | Nee |
+| Advies Services  | Nee | N.v.t. | N.v.t. | N.v.t. |
 
 Zie voor meer informatie over SaaS technische vereisten de [hand leiding voor SaaS-toepassingen](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)die u publiceert.
 

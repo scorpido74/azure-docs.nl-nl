@@ -4,15 +4,16 @@ description: Vereisten voor het beheren van Azure Marketplace-accounts op de Clo
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 09bf8479921c9bd55b98e835a19ea995fa37e20b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: b0a9f312ba78e148a573064b81ff1f52fbd85c03
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720069"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826675"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Vereisten voor het beheren van accounts op het Cloud Partner-portal 
 
@@ -33,14 +34,14 @@ De volgende tabel bevat de stappen die nodig zijn voor het volledig registreren 
 
 |                   Stap                   |  Resulterende registratie of resource                     |
 |                  ------                  |  -----------------------------------                    |
-| 1. Registreren in Microsoft Partner Network |  Een Microsoft Partner Network-ID voor uw organisatie |
-| 2. Een Microsoft-account maken *           |  Een geverifieerde Microsoft-account, eindigend @live.comop @outlook.com, enzovoort. |
-| 3. Het registratie formulier voor Marketplace verzenden | Een uitgevers account op het Cloud Partner-portal      |
-| 4. Aanmelden bij Cloud Partner-portal        | Instantie voor het maken en publiceren van aanbiedingen, het beheren van gebruikers, het verzamelen van metrische gegevens voor Marketplace, enzovoort. |
-| 5. Registreren in het micro soft Developer Center * | Een geverifieerd ontwikkelaars centrum-account; bevoegdheid om Marketplace-trans acties uit te voeren  |
+| 1. Registreer u in Microsoft Partner Network |  Een Microsoft Partner Network-ID voor uw organisatie |
+| 2. Maak een Microsoft-account *           |  Een geverifieerde Microsoft-account, eindigend op @outlook.com, @live.com, enzovoort. |
+| 3. het registratie formulier voor Marketplace verzenden | Een uitgevers account op het Cloud Partner-portal      |
+| 4. Meld u aan Cloud Partner-portal        | Instantie voor het maken en publiceren van aanbiedingen, het beheren van gebruikers, het verzamelen van metrische gegevens voor Marketplace, enzovoort. |
+| 5. registreren bij micro soft Developer Center * | Een geverifieerd ontwikkelaars centrum-account; bevoegdheid om Marketplace-trans acties uit te voeren  |
 |   |   |
 
-\*Deze stappen zijn vereist voor aanbiedingen van Azure Marketplace-trans acties, maar worden nadrukkelijk aanbevolen voor alle aanbiedingen.  Zodra u een Microsoft-account hebt ingesteld en u zich hebt geregistreerd als een micro soft-ontwikkelaar, hebt u toegang tot extra micro soft-klanten en-bronnen voor ontwikkel aars, evenals optionele partner aanbiedingen.  
+\* deze stappen zijn vereist voor Azure Marketplace-aanbiedingen, maar worden het Maxi maal aanbevolen voor alle aanbiedingen.  Zodra u een Microsoft-account hebt ingesteld en u zich hebt geregistreerd als een micro soft-ontwikkelaar, hebt u toegang tot extra micro soft-klanten en-bronnen voor ontwikkel aars, evenals optionele partner aanbiedingen.  
 
 
 ## <a name="next-steps"></a>Volgende stappen

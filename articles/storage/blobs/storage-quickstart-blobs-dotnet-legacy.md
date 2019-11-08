@@ -7,16 +7,16 @@ ms.date: 07/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0433f3faf0a62a4cf4fb103aaad1b810c623e9d8
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ee95ccd30d0f2eddcca7327dc4e5b60a3efe7e64
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608755"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825404"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-for-net"></a>Snelstartgids: Azure Blob Storage-client bibliotheek voor .NET
+# <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V11 voor .NET
 
-Ga aan de slag met de Azure Blob Storage-client bibliotheek voor .NET. Azure Blob Storage is de object opslag oplossing van micro soft voor de Cloud. Volg de stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
+Ga aan de slag met de Azure Blob Storage-client bibliotheek V11 voor .NET. Azure Blob Storage is de object opslag oplossing van micro soft voor de Cloud. Volg de stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
 
 Gebruik de Azure Blob Storage-client bibliotheek voor .NET voor het volgende:
 

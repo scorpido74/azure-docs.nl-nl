@@ -1,74 +1,75 @@
 ---
-title: Azure uitproberen van de toepassing-aanbieding | Azure Marketplace
-description: Klik hier voor meer informatie over het configureren van test drive voor de aanbieding van Azure-toepassing op Azure Marketplace.
+title: Azure-toepassing aanbieding test drive | Azure Marketplace
+description: Test drive voor Azure-toepassing aanbieding configureren op de Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 42e533cdcedfb47a46934f77714d61a640a8d7d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3855c600fe35c37ac15783995551a769e00532be
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942869"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826117"
 ---
-# <a name="azure-applications-test-drive-tab"></a>Azure-toepassingen Test Drive-tabblad
+# <a name="azure-applications-test-drive-tab"></a>Het tabblad test station van Azure-toepassingen
 
-Gebruik het tabblad Test Drive voor een proefversie van uw klanten.
+Gebruik het tabblad test drive om uw klanten een proef ervaring te bieden.
 
-## <a name="test-drive-benefits"></a>Voordelen van Test Drive
+## <a name="test-drive-benefits"></a>Schijf voordelen testen
 
-Het maken van een evaluatieversie voor uw klanten is een aanbevolen procedure om te controleren of dat ze met vertrouwen kunnen kopen. Test Drive is van de proefversie opties die beschikbaar is, de meest effectief bij het genereren van hoge kwaliteit potentiële klanten en hogere conversie van deze leads.
+Het maken van een proef ervaring voor uw klanten is een best practice om ervoor te zorgen dat ze met vertrouwen kunnen kopen. Van de beschik bare proef opties is het testen van het station het meest effectief bij het genereren van leads van hoge kwaliteit en een verhoogde conversie van deze leads.
 
-Daardoor kunnen klanten met een praktische, zelfgestuurd evaluatieversie van de belangrijke functies en voordelen, gedemonstreerd in een implementatiescenario voor het werkelijke van uw product.
+Het biedt klanten een praktijk gerichte, zelf-begeleide proef versie van de belangrijkste functies en voor delen van uw product, zoals wordt getoond in een scenario voor een implementatie.
 
-## <a name="how-a-test-drive-works"></a>De werking van een test uit
+## <a name="how-a-test-drive-works"></a>Hoe een test drive werkt
 
-Een potentiële klant wordt gezocht en detecteert de toepassing op de Marketplace. De klant zich heeft aangemeld en gaat akkoord met de gebruiksvoorwaarden. Op dit moment ontvangt de klant uw vooraf geconfigureerde omgeving om te proberen voor een vast aantal uren, terwijl u een zeer gekwalificeerde lead te ontvangen. Zie voor meer informatie, [wat is Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+Een potentiële klant zoekt en detecteert uw toepassing op Marketplace. De klant meldt zich aan en gaat akkoord met de gebruiks voorwaarden. Op dit moment ontvangt de klant uw vooraf geconfigureerde omgeving om een vast aantal uur te proberen, terwijl u een zeer gekwalificeerde potentiële Lead krijgt om te volgen. Zie [Wat is een test station?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive) voor meer informatie.
 
-## <a name="setting-up-a-test-drive"></a>Instellen van een test uit
+## <a name="setting-up-a-test-drive"></a>Instellen van een test drive
 
-Gebruik de volgende stappen uit het inschakelen en configureren van een test uit.
+Gebruik de volgende stappen om een test drive in te scha kelen en te configureren.
 
-### <a name="to-enable-a-test-drive"></a>Een test uit inschakelen:
+### <a name="to-enable-a-test-drive"></a>Een test drive inschakelen:
 
-1. Onder **nieuwe aanbieding**, selecteer de **Test Drive** tabblad.
-2. Onder **Test Drive**, selecteer **Ja** voor **inschakelen van een Test Drive**.
+1. Selecteer onder **nieuwe aanbieding**het tabblad **test station** .
+2. Onder **test drive**selecteert u **Ja** voor **een test station inschakelen**.
 
-   ![Een test uit te schakelen](./media/managed-app-enable-testdrive.png)
+   ![Een test drive inschakelen](./media/managed-app-enable-testdrive.png)
 
-### <a name="to-configure-a-test-drive"></a>Het configureren van een test uit:
+### <a name="to-configure-a-test-drive"></a>Een test drive configureren:
 
-Nadat u een test uit inschakelt, moet u de volgende formulieren voor het instellen van test drive invullen:
+Nadat u een test drive hebt ingeschakeld, vult u de volgende formulieren in om de test drive in te stellen:
   
  - Details
  - Technische configuratie
- - Abonnementsgegevens van Test Drive-implementatie
+ - Details van implementatie abonnement testen
 
-De volgende schermopname ziet u alle Test Drive-formulieren. Een sterretje (*) toegevoegd aan de naam van het veld geeft aan dat dit is verplicht. 
+In de volgende scherm opname worden alle formulieren van het test station weer gegeven. Een asterisk (*) die wordt toegevoegd aan de veld naam geeft aan dat deze vereist is. 
 
-![Configureren van een test uit](./media/managed-app-configure-testdrive.png)
+![Een test drive configureren](./media/managed-app-configure-testdrive.png)
 
-De volgende tabel beschrijft de velden die vereist zijn voor het instellen van test drive voor uw beheerde toepassing.  De velden die zijn toegevoegd met een sterretje zijn vereist.
+De volgende tabel beschrijft de vereiste velden voor het instellen van de test drive voor uw beheerde toepassing.  De velden die zijn toegevoegd met een sterretje zijn vereist.
 
-|      Veld         |  Description      |
+|      Veld         |  Beschrijving      |
 |  ---------------   |  ---------------  |
-| **Beschrijving\***  |  Wat kan worden uitgevoerd op uw Test Drive wordt beschreven. U kunt eenvoudige HTML-codes gebruiken om deze beschrijving. Bijvoorbeeld, &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;, en koppen.                |
-| **Gebruikershandleiding\***  |  Een gebruiker handmatig die uw klanten gebruiken kunnen om te zien hoe Test Drive uploaden. Dit document moet een PDF-bestand.    |
-| **Test Drive Demo Video** |  Een optionele video-overzicht van uw Test Drive. Een klant kan deze video kunt bekijken voordat ze een test uitvoeren. Geef een URL naar de video op YouTube of Vimeo. Als u selecteert **+ Video toevoegen**, wordt u gevraagd om de volgende informatie te geven:<ul><li>Name</li><li>URL</li><li>Miniatuur (in PNG-indeling hebben, 533 x 324 pixels)</li></ul>  |
-| **exemplaren\***      | Hoeveel exemplaren u wilt configureren, in welke regio('s), en hoe snel uw klanten de Test Drive krijgen. Zie voor meer informatie, [het publiceren van een Test Drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive).           |
-| **Test Drive duur (uren)\*** | Voer een geheel getal voor het aantal uren. Het toegestane bereik ligt tussen 1 en 999 liggen. |
-| **Test Drive ARM-sjabloon\***     | Upload een gecomprimeerd bestand (.zip) met uw Azure Resource Manager-sjablonen voor uw app. Zie voor meer informatie, [Azure Resource Manager Test Drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive). |
-| **Toegang tot informatie\***          | Toegang tot informatie opgeven nadat de wordt de Test Drive van uw klant. Bijvoorbeeld, een URL voor toegang tot het station test en meld u informatie. . U kunt eenvoudige HTML-codes gebruiken om deze beschrijving. Bijvoorbeeld, &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;, en koppen. |
-| **Azure-abonnement-Id\***       | Dit verleent toegang tot Azure-services en de Azure-portal. Het abonnement is waarbij Resourcegebruik wordt gerapporteerd, en services worden in rekening gebracht. Als u nog een afzonderlijke Azure-abonnement hebt voor de Test Drives alleen, maakt u een abonnement.  |
-| **Azure AD Tenant Id\***          | Geef een bestaande Tenant in Azure Active Directory of een tenant voor deze test drive maken.  |
-| **Azure AD App Id\***             | Maak en registreer een nieuwe toepassing. Microsoft gebruikt deze toepassing voor het uitvoeren van bewerkingen op uw Test Drive-exemplaar.  |
-| **Azure AD-App-sleutel\***            | Maak een verificatiesleutel voor de app en plak deze in dit veld.   |
+| **Beschrijving\***  |  Beschrijf wat er op uw test station kan worden uitgevoerd. U kunt basis-HTML-tags gebruiken om deze beschrijving op te maken. U kunt bijvoorbeeld &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;Li&gt;, &lt;OL&gt;en koppen.                |
+| **Gebruikers handleiding\***  |  Upload een gebruikers handleiding die uw klanten kunnen gebruiken om de ervaring van het test station te door lopen. Dit document moet een PDF-bestand zijn.    |
+| **Demo video testen** |  Een optionele video-overzicht van uw test station. Een klant kan deze video bekijken voordat ze een test drive nemen. Geef een URL naar de video op YouTube of Vimeo. Als u **+ video toevoegen**selecteert, wordt u gevraagd de volgende gegevens op te geven:<ul><li>Naam</li><li>URL</li><li>Miniatuur (in PNG-indeling, 533 x 324 pixels)</li></ul>  |
+| **Instanties\***      | Configureer het aantal instanties dat u wilt, in welke regio (en) en hoe snel uw klanten het test station kunnen verkrijgen. Zie [een test station publiceren](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive)voor meer informatie.           |
+| **Duur van test drive (uren)\*** | Voer een geheel getal in voor het aantal uren. Het toegestane bereik is 1 tot en met 999. |
+| **\* van ARM-sjabloon testen**     | Upload een gecomprimeerd bestand (. zip) met uw Azure Resource Manager sjablonen voor uw app. Zie [Azure Resource Manager test station](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)voor meer informatie. |
+| **Toegangs gegevens\***          | Geef de toegangs gegevens op nadat de klant het test station heeft opgehaald. Bijvoorbeeld een URL voor toegang tot de test drive en onderteken informatie. . U kunt basis-HTML-tags gebruiken om deze beschrijving op te maken. U kunt bijvoorbeeld &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;Li&gt;, &lt;OL&gt;en koppen. |
+| **Azure-abonnements-id\***       | Hiermee wordt toegang verleend aan Azure-Services en de Azure Portal. In het abonnement wordt het resource gebruik gerapporteerd en de services worden gefactureerd. Als u nog geen apart Azure-abonnement voor test stations hebt, maakt u een abonnement.  |
+| **Azure AD-Tenant-id\***          | Geef een bestaande Tenant op in Azure Active Directory of maak een Tenant voor deze test drive.  |
+| **Azure AD-app-id\***             | Een nieuwe toepassing maken en registreren. Micro soft gebruikt deze toepassing voor het uitvoeren van bewerkingen op uw exemplaar van het test station.  |
+| **Azure AD-app sleutel\***            | Maak een verificatie sleutel voor de app en plak deze in dit veld.   |
 |  |  |
 
-Nadat u de vereiste gegevens hebt opgegeven, selecteert u **opslaan** instellen van test drive voltooid.
+Nadat u alle vereiste gegevens hebt opgegeven, selecteert u **Opslaan** om het instellen van de test drive te volt ooien.
 
 
 ## <a name="next-steps"></a>Volgende stappen

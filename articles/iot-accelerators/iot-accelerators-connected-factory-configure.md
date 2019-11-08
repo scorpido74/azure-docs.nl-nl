@@ -1,6 +1,6 @@
 ---
-title: Configureren van de verbonden Factory-topologie - Azure | Microsoft Docs
-description: Klik hier voor meer informatie over het configureren van de topologie van een oplossingsverbetering voor verbonden Factory.
+title: De Connected Factory-topologie configureren-Azure | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u de Connected Factory Solution Accelerator met de bijbehorende topologie kunt configureren.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,64 +8,64 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3ddbf5832424cdafad2c29254f51754203c7f079
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428324"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820119"
 ---
-# <a name="configure-the-connected-factory-solution-accelerator"></a>De oplossingsversneller voor verbonden Factory configureren
+# <a name="configure-the-connected-factory-solution-accelerator"></a>De Connected Factory Solution Accelerator configureren
 
-De oplossingsversneller voor verbonden Factory ziet u een gesimuleerde dashboard voor het fictieve bedrijf Contoso. Dit bedrijf heeft fabrieken op talloze globale locaties wereldwijd.
+De Connected Factory Solution Accelerator toont een gesimuleerd dash board voor een fictief bedrijf contoso. Dit bedrijf heeft fabrieken in diverse wereld wijde locaties.
 
-In dit artikel maakt gebruik van Contoso als voorbeeld voor het beschrijven van de topologie van een oplossing voor verbonden Factory configureren.
+In dit artikel wordt contoso als voor beeld gebruikt om te beschrijven hoe u de topologie van een verbonden fabrieks oplossing kunt configureren.
 
-## <a name="simulated-factories-configuration"></a>Configuratie van de gesimuleerde factory 's
+## <a name="simulated-factories-configuration"></a>Configuratie gesimuleerde fabrieken
 
-Elke Contoso-fabriek heeft productielijnen die bestaan uit drie stations. Elk station is een echte OPC UA-server met een specifieke functie:
+Elke contoso fabriek heeft productie lijnen die bestaan uit drie stations. Elk station is een echte OPC UA-server met een specifieke rol:
 
-* Assembly-station
-* Testen van station
-* Verpakkingsstation
+* Assembly station
+* Test station
+* Verpakkings station
 
-Deze OPC UA-servers hebt OPC UA-knooppunten en [OPC Publisher](overview-opc-publisher.md) verzendt de waarden van deze knooppunten naar verbonden Factory. Dit omvat:
+Deze OPC UA-servers hebben OPC UA-knoop punten en [OPC Publisher](overview-opc-publisher.md) verzendt de waarden van deze knoop punten naar verbonden Factory. Dit omvat:
 
-* De huidige operationele status, zoals de huidige energieverbruik.
-* Productie-informatie, zoals het aantal producten die worden geproduceerd.
+* Huidige operationele status, zoals het huidige energie verbruik.
+* Productie-informatie, zoals het aantal geproduceerde producten.
 
-U kunt het dashboard gebruiken om te zoomen op de topologie van de factory Contoso uit een algemeen overzicht omlaag naar een weergave van de op stationsniveau. Het dashboard van Connected Factory kunt:
+U kunt het dash board gebruiken om in te zoomen op de contoso-fabrieks topologie vanuit een globale weer gave naar een weer gave op het niveau van het station. Het Connected Factory-dash board maakt het volgende mogelijk:
 
-* De visualisatie van de OEE en KPI's cijfers voor elke laag in de topologie.
-* De visualisatie van de huidige waarden van OPC UA-knooppunten in de stations.
-* De aggregatie van de OEE en KPI's cijfers van het niveau van het station op globaal niveau.
-* De visualisatie van waarschuwingen en acties uit te voeren als de waarden voor specifieke drempelwaarden bereiken.
+* De visualisatie van OEE-en KPI-cijfers voor elke laag in de topologie.
+* De visualisatie van huidige waarden van OPC UA-knoop punten in de stations.
+* De aggregatie van de OEE-en KPI-cijfers van het niveau station naar het globale niveau.
+* De visualisatie van waarschuwingen en acties die moeten worden uitgevoerd als waarden specifieke drempels bereiken.
 
-## <a name="connected-factory-topology"></a>Verbonden Factory-topologie
+## <a name="connected-factory-topology"></a>Topologie Connected Factory
 
-De topologie van de fabrieken productielijnen en stations zijn hiërarchisch:
+De topologie van fabrieken, productie lijnen en stations is hiërarchisch:
 
-* Het globale niveau bevat factory knooppunten als onderliggende items.
-* De fabrieken hebben productielijn knooppunten als onderliggende items.
-* De productielijnen hebben station knooppunten als onderliggende items.
-* De stations (OPC UA-servers) hebben OPC UA-knooppunten als onderliggende items.
+* Het globale niveau heeft fabrieks knooppunten als onderliggende knoop punten.
+* De fabrieken hebben productie regel knooppunten als onderliggende knoop punten.
+* De productie lijnen hebben station knooppunten als onderliggende knoop punten.
+* De stations (OPC UA-servers) hebben OPC UA-knoop punten als onderliggend niveau.
 
-Elk knooppunt in de topologie bevat een gemeenschappelijke set eigenschappen die bepalen:
+Elk knoop punt in de topologie heeft een gemeen schappelijke set eigenschappen die het volgende definiëren:
 
-* Een unieke id voor de topologie-knooppunt.
+* Een unieke id voor het topologie knooppunt.
 * Een naam.
 * Een beschrijving.
 * Een afbeelding.
-* De onderliggende objecten van het knooppunt topologie.
-* Minimum-, doel- en maximumwaarden voor OEE en KPI's cijfers en de waarschuwing acties uit te voeren.
+* De onderliggende elementen van het topologie knooppunt.
+* Minimum, doel en maximum waarden voor OEE en KPI-cijfers en de waarschuwings acties die moeten worden uitgevoerd.
 
-## <a name="topology-configuration-file"></a>Topologie-configuratiebestand
+## <a name="topology-configuration-file"></a>Topologie configuratie bestand
 
-Als u wilt de eigenschappen die worden vermeld in de vorige sectie hebt geconfigureerd de verbonden Factory-oplossing maakt gebruik van een configuratiebestand genaamd [ContosoTopologyDescription.json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
+Voor het configureren van de eigenschappen die worden vermeld in de vorige sectie, maakt de oplossing Connected Factory gebruik van een configuratie bestand met de naam [ContosoTopologyDescription. json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
 
-U kunt dit bestand vinden in de broncode van de oplossing in de `WebApp/Contoso/Topology` map.
+U kunt dit bestand vinden in de bron code van de oplossing in de map `WebApp/Contoso/Topology`.
 
-Het volgende codefragment toont een overzicht van de `ContosoTopologyDescription.json` configuratiebestand:
+Het volgende code fragment toont een overzicht van het `ContosoTopologyDescription.json` configuratie bestand:
 
 ```json
 {
@@ -85,237 +85,237 @@ Het volgende codefragment toont een overzicht van de `ContosoTopologyDescription
 }
 ```
 
-De algemene eigenschappen van `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`, en `<station_configuration>` zijn:
+De algemene eigenschappen van `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`en `<station_configuration>` zijn:
 
-* **Naam** (type string)
+* **Naam** (type teken reeks)
 
-  Definieert een beschrijvende naam, die moet worden slechts één voor het knooppunt topologie om weer te geven in het dashboard.
+  Definieert een beschrijvende naam, die slechts één woord mag zijn voor het topologie knooppunt dat in het dash board wordt weer gegeven.
 
-* **Beschrijving** (type string)
+* **Beschrijving** (type teken reeks)
 
-  Hierin wordt beschreven in het knooppunt topologie in meer detail.
+  Beschrijft het knoop punt van de topologie in meer detail.
 
-* **Afbeelding** (type string)
+* **Afbeelding** (type teken reeks)
 
-  Het pad naar een installatiekopie in de WebApp-oplossing om weer te geven wanneer de informatie over de topologie-knooppunt in het dashboard wordt weergegeven.
+  Het pad naar een installatie kopie in de WebApp-oplossing die moet worden weer gegeven wanneer informatie over het topologie knooppunt wordt weer gegeven in het dash board.
 
 * **OeeOverall**, **OeePerformance**, **OeeAvailability**, **OeeQuality**, **Kpi1**, **Kpi2** (type `<performance_definition>`)
 
-  Deze eigenschappen definiëren minimum, doel en maximale waarden van de operationele afbeelding die wordt gebruikt om waarschuwingen te genereren. Deze eigenschappen worden ook de acties uit te voeren als er een waarschuwing wordt gedetecteerd.
+  Met deze eigenschappen worden de minimale, doel-en maximale waarden gedefinieerd van het operationele afbeelding dat wordt gebruikt voor het genereren van waarschuwingen. Met deze eigenschappen worden ook de acties gedefinieerd die moeten worden uitgevoerd als er een waarschuwing wordt gedetecteerd.
 
-De `<factory_configuration>` en `<production_line_configuration>` items hebben een eigenschap:
+De items `<factory_configuration>` en `<production_line_configuration>` hebben de volgende eigenschap:
 
-* **GUID** (type string)
+* **GUID** (type teken reeks)
 
-  Unieke identificatie van het knooppunt topologie.
+  Hiermee wordt het topologie knooppunt uniek geïdentificeerd.
 
 `<factory_configuration>` heeft een eigenschap:
 
 * **Locatie** (type `<location_definition>`)
 
-  Hiermee geeft u op waar de factory zich bevindt.
+  Hiermee geeft u op waar de fabriek zich bevindt.
 
 `<station_configuration>` heeft eigenschappen:
 
-* **OpcUri** (type string)
+* **OpcUri** (type teken reeks)
 
-  Deze eigenschap moet worden ingesteld op de URI van de OPC UA van OPC UA-server.
-  Omdat de waarde moet globaal uniek zijn door OPC UA-specificatie, wordt deze eigenschap wordt gebruikt om het knooppunt van de topologie station te identificeren.
+  Deze eigenschap moet worden ingesteld op de OPC UA-toepassings-URI van de OPC UA-server.
+  Omdat het globaal uniek moet zijn door de OPC UA-specificatie, wordt deze eigenschap gebruikt om het knoop punt van de station-topologie te identificeren.
 
-* **OpcNodes**, die een matrix met OPC UA-knooppunten zijn (type `<opc_node_description>`)
+* **OpcNodes**: een matrix met OPC UA-knoop punten (type `<opc_node_description>`)
 
 `<location_definition>` heeft eigenschappen:
 
-* **Plaats** (type string)
+* **City** (type teken reeks)
 
-  Naam van plaats die het dichtst bij de locatie
+  De naam van de plaats die het dichtst bij de locatie ligt
 
-* **Land/regio** (type string)
+* **Land** (type teken reeks)
 
   Land van de locatie
 
-* **Breedtegraad** (type double)
+* **Latitude** (type Double)
 
-  Breedtegraad van de locatie
+  De breedte graad van de locatie
 
-* **Lengtegraad** (type double)
+* **Lengte graad** (type Double)
 
-  Lengtegraad van de locatie
+  De lengte graad van de locatie
 
 `<performance_definition>` heeft eigenschappen:
 
-* **Minimale** (type double)
+* **Minimum** (type Double)
 
-  Laagste drempel de waarde kunt bereiken. Als de huidige waarde lager dan deze drempelwaarde is, wordt een waarschuwing gegenereerd.
+  Onderste drempel waarde kan worden bereikt. Als de huidige waarde lager is dan deze drempel, wordt er een waarschuwing gegenereerd.
 
-* **Doel** (type double)
+* **Doel** (type Double)
 
-  Ideaal doelwaarde.
+  Ideale doel waarde.
 
-* **Maximale** (type double)
+* **Maximum** (type Double)
 
-  Hoogste drempel de waarde kunt bereiken. Als de huidige waarde hoger dan deze drempelwaarde is, wordt een waarschuwing gegenereerd.
+  Bovenste drempel waarde kan worden bereikt. Als de huidige waarde hoger is dan deze drempel, wordt er een waarschuwing gegenereerd.
 
 * **MinimumAlertActions** (type `<alert_action>`)
 
-  Definieert de set acties die kunnen worden uitgevoerd als reactie op een minimale waarschuwing.
+  Hiermee wordt de set acties gedefinieerd die als reactie op een minimale waarschuwing kan worden beschouwd.
 
 * **MaximumAlertActions** (type `<alert_action>`)
 
-  Definieert de set acties die kunnen worden uitgevoerd als reactie op een waarschuwing voor een maximale.
+  Hiermee wordt de set acties gedefinieerd die als reactie op een maximum waarschuwing kan worden beschouwd.
 
 `<alert_action`> heeft eigenschappen:
 
-* **Type** (type string)
+* **Type** (teken reeks)
 
-  Het type van de actie bij waarschuwing. De volgende typen zijn bekend:
+  Het type van de waarschuwings actie. De volgende typen zijn bekend:
 
-  * **AcknowledgeAlert**: de status van de waarschuwing naar bevestigde moet wijzigen.
-  * **CloseAlert**: alle oudere waarschuwingen van hetzelfde type moeten niet meer worden weergegeven in het dashboard.
-  * **CallOpcMethod**: een OPC UA-methode moet worden aangeroepen.
-  * **OpenWebPage**: een browservenster moet worden geopend met aanvullende contextuele informatie.
+  * **AcknowledgeAlert**: de status van de waarschuwing moet worden gewijzigd in bevestigd.
+  * **CloseAlert**: alle oudere waarschuwingen van hetzelfde type mogen niet meer worden weer gegeven in het dash board.
+  * **CallOpcMethod**: u moet een OPC UA-methode aanroepen.
+  * Open **webpagina**: er moet een browser venster worden geopend met aanvullende contextuele informatie.
 
-* **Beschrijving** (type string)
+* **Beschrijving** (type teken reeks)
 
-  Beschrijving van de actie die wordt weergegeven in het dashboard.
+  Beschrijving van de actie die in het dash board wordt weer gegeven.
 
-* **Parameter** (type string)
+* **Para meter** (type teken reeks)
 
-  Parameters die zijn vereist voor het uitvoeren van de actie. De waarde is afhankelijk van het actietype.
+  Vereiste para meters voor het uitvoeren van de actie. De waarde is afhankelijk van het actie type.
 
-  * **AcknowledgeAlert**: Er is geen parameter die is vereist.
-  * **CloseAlert**: Er is geen parameter die is vereist.
-  * **CallOpcMethod**: het knooppunt informatie en de parameters van de OPC UA-methode aan te roepen in de indeling "NodeId van bovenliggend knooppunt, NodeId van methode om aan te roepen, URI van de OPC UA-server."
-  * **OpenWebPage**: de URL om weer te geven in het browservenster.
+  * **AcknowledgeAlert**: er is geen para meter vereist.
+  * **CloseAlert**: er is geen para meter vereist.
+  * **CallOpcMethod**: de knooppunt gegevens en-para meters van de OPC UA-methode voor het aanroepen van de indeling "NodeId van bovenliggend knoop punt, NodeId van methode om aan te roepen, URI van de OPC UA-server."
+  * **Openwebpagina**: de URL die in het browser venster moet worden weer gegeven.
 
-`<opc_node_description>` bevat informatie over OPC UA-knooppunten in een station (OPC UA-server). Knooppunten die geen bestaande OPC UA-knooppunten vertegenwoordigen, maar die worden gebruikt als opslag gebruiken in de berekeningslogica van Connected Factory zijn ook geldig. Het heeft de volgende eigenschappen:
+`<opc_node_description>` bevat informatie over OPC UA-knoop punten in een station (OPC UA-server). Knoop punten die geen bestaande OPC UA-knoop punten vertegenwoordigen, maar worden gebruikt als opslag in de berekenings logica van verbonden Factory zijn ook geldig. Het heeft de volgende eigenschappen:
 
-* **NodeId** (type string)
+* **NodeId** (type teken reeks)
 
-  Adres van de OPC UA-knooppunt in het station (OPC UA-server van)-adresruimte. Syntaxis moet zoals opgegeven in de OPC UA-specificatie voor een NodeId.
+  Adres van het OPC UA-knoop punt in de adres ruimte van het station (OPC UA-server). De syntaxis moet worden opgegeven in de OPC UA-specificatie voor een NodeId.
 
-* **Symbolische naam** (type string)
+* **Symbolische** (type teken reeks)
 
-  De naam moet worden weergegeven in het dashboard wanneer de waarde van deze OPC UA-knooppunt wordt weergegeven.
+  De naam die moet worden weer gegeven in het dash board wanneer de waarde van dit OPC UA-knoop punt wordt weer gegeven.
 
-* **Relevantie** (matrix van het typetekenreeks)
+* **Relevantie** (matrix van het type teken reeks)
 
-  Hiermee wordt aangegeven waarvoor berekening van de OEE- of KPI de waarde van de OPC UA-knooppunt is van belang. Elk matrixelement kan een van de volgende waarden zijn:
+  Geeft aan dat de waarde van het OPC UA-knoop punt voor de berekening van OEE of KPI relevant is. Elk matrix element kan een van de volgende waarden hebben:
 
-  * **OeeAvailability_Running**: de waarde is van belang voor berekening van de beschikbaarheid van OEE is.
-  * **OeeAvailability_Fault**: de waarde is van belang voor berekening van de beschikbaarheid van OEE is.
-  * **OeePerformance_Ideal**: de waarde is van belang voor berekening van de OEE-prestaties en is meestal een constante waarde.
-  * **OeePerformance_Actual**: de waarde is van belang voor berekening van de OEE-prestaties.
-  * **OeeQuality_Good**: de waarde is van belang voor berekening van de OEE-kwaliteit is.
-  * **OeeQuality_Bad**: de waarde is van belang voor berekening van de OEE-kwaliteit is.
-  * **Kpi1**: de waarde is van belang voor berekening van KPI1.
-  * **Kpi2**: de waarde is van belang voor berekening van KPI2.
+  * **OeeAvailability_Running**: de waarde is relevant voor de berekening van de beschik BAARHEID van OEE.
+  * **OeeAvailability_Fault**: de waarde is relevant voor de berekening van de beschik BAARHEID van OEE.
+  * **OeePerformance_Ideal**: de waarde is relevant voor de berekening van de prestaties van OEE en is doorgaans een constante waarde.
+  * **OeePerformance_Actual**: de waarde is relevant voor de berekening van de prestaties van OEE.
+  * **OeeQuality_Good**: de waarde is relevant voor de berekening van de OEE kwaliteit.
+  * **OeeQuality_Bad**: de waarde is relevant voor de berekening van de OEE kwaliteit.
+  * **Kpi1**: de waarde is relevant voor de berekening van Kpi1.
+  * **Kpi2**: de waarde is relevant voor de berekening van Kpi2.
 
-* **OpCode** (type string)
+* **Opcode** (type teken reeks)
 
-  Geeft aan hoe de waarde van de OPC UA-knooppunt in Time Series Insight-query's en OEE-/ KPI-berekeningen worden verwerkt. Elke query Time Series Insight is bedoeld voor een specifieke periode, die is een parameter van de query en biedt een resultaat. De OpCode bepaalt hoe het resultaat wordt berekend en kan een van de volgende waarden:
+  Hiermee wordt aangegeven hoe de waarde van het OPC UA-knoop punt wordt verwerkt in time series Insight-query's en OEE/KPI-berekeningen. Elke time series Insight-query streeft naar een specifieke time span, een para meter van de query en levert een resultaat op. De opcode bepaalt hoe het resultaat wordt berekend en kan een van de volgende waarden hebben:
 
-  * **Diff**: verschil tussen het laatste en de eerste waarde in de periode.
-  * **Gem.** : het gemiddelde van alle waarden in de periode.
-  * **Som**: de som van alle waarden in de periode.
-  * **Laatste**: op dit moment niet gebruikt.
-  * **Aantal**: het aantal waarden in de periode.
-  * **Maximale**: de maximale waarde in de periode.
-  * **Min**: de minimale waarde in de periode.
-  * **Const**: het resultaat is de waarde gespecificeerd door de eigenschap ConstValue.
-  * **SubMaxMin**: het verschil tussen het maximale en de minimale waarde.
-  * **TimeSpan**: het interval.
+  * **Diff**: verschil tussen de laatste en de eerste waarde in de time span.
+  * **Gem**: het gemiddelde van alle waarden in de time span.
+  * **Sum**: de som van alle waarden in de time span.
+  * **Laatst**: momenteel niet gebruikt.
+  * **Aantal**: het aantal waarden in de time span.
+  * **Max**: de maximale waarde in de time span.
+  * **Min**: de minimale waarde in de time span.
+  * **Const**: het resultaat is de waarde die is opgegeven door de eigenschap ConstValue.
+  * **SubMaxMin**: het verschil tussen de maximale en de minimale waarde.
+  * **Time span**: de time span.
 
-* **Eenheden** (type string)
+* **Eenheden** (type teken reeks)
 
-  Definieert een eenheid van de waarde om weer te geven in het dashboard.
+  Definieert een eenheid van de waarde die in het dash board wordt weer gegeven.
 
-* **Zichtbaar** (het type boolean)
+* **Visible** (type Boole)
 
-  Bepaalt of de waarde moet worden weergegeven in het dashboard.
+  Hiermee wordt bepaald of de waarde in het dash board moet worden weer gegeven.
 
-* **ConstValue** (type double)
+* **ConstValue** (type Double)
 
-  Als de **OpCode** is **Const**, dan is deze eigenschap de waarde van het knooppunt.
+  Als de **opcode** wordt **Const**, is deze eigenschap de waarde van het knoop punt.
 
-* **Minimale** (type double)
+* **Minimum** (type Double)
 
-  Als de huidige waarde onder deze waarde valt, wordt klikt u vervolgens een minimale waarschuwing gegenereerd.
+  Als de huidige waarde onder deze waarde valt, wordt er een minimale waarschuwing gegenereerd.
 
-* **Maximale** (type double)
+* **Maximum** (type Double)
 
-  Als de huidige waarde boven deze waarde genereert, wordt klikt u vervolgens een maximale waarschuwing gegenereerd.
+  Als de huidige waarde boven deze waarde komt, wordt er een maximum waarschuwing gegenereerd.
 
 * **MinimumAlertActions** (type `<alert_action>`)
 
-  Definieert de set acties die kunnen worden uitgevoerd als reactie op een minimale waarschuwing.
+  Hiermee wordt de set acties gedefinieerd die als reactie op een minimale waarschuwing kan worden beschouwd.
 
 * **MaximumAlertActions** (type `<alert_action>`)
 
-  Definieert de set acties die kunnen worden uitgevoerd als reactie op een waarschuwing voor een maximale.
+  Hiermee wordt de set acties gedefinieerd die als reactie op een maximum waarschuwing kan worden beschouwd.
 
-Op het niveau van het station, ziet u ook **simulatie** objecten. Deze objecten zijn alleen gebruikt voor het configureren van de verbonden Factory-simulatie en moeten niet worden gebruikt voor het configureren van een echte topologie.
+Op het niveau van de stations ziet u ook **simulatie** objecten. Deze objecten worden alleen gebruikt voor het configureren van de verbonden Factory-simulatie en mogen niet worden gebruikt voor het configureren van een echte topologie.
 
-## <a name="how-the-configuration-data-is-used-at-runtime"></a>Hoe de configuratiegegevens wordt gebruikt tijdens runtime
+## <a name="how-the-configuration-data-is-used-at-runtime"></a>Hoe de configuratie gegevens tijdens runtime worden gebruikt
 
-Alle eigenschappen die in het configuratiebestand gebruikt kunnen worden gegroepeerd in verschillende categorieën, afhankelijk van hoe ze worden gebruikt. Deze categorieën zijn:
+Alle eigenschappen die in het configuratie bestand worden gebruikt, kunnen in verschillende categorieën worden gegroepeerd, afhankelijk van hoe ze worden gebruikt. Deze categorieën zijn:
 
-### <a name="visual-appearance"></a>Visuele weergave
+### <a name="visual-appearance"></a>Visuele weer gave
 
-De eigenschappen in deze categorie definiëren het uiterlijk van de verbonden Factory-dashboard. Voorbeelden zijn:
+Met de eigenschappen in deze categorie wordt het uiterlijk van het Connected Factory-dash board gedefinieerd. Voorbeelden zijn:
 
-* Name
-* Description
-* Image
-* Location
+* Naam
+* Beschrijving
+* Installatiekopie
+* Locatie
 * Eenheden
-* Zichtbaar
+* Gezien
 
-### <a name="internal-topology-tree-addressing"></a>Topologie van de interne structuur adressering
+### <a name="internal-topology-tree-addressing"></a>Interne topologie structuur
 
-De Web-App onderhoudt de woordenlijst van een interne gegevens met gegevens van alle knooppunten van de topologie. De eigenschappen **Guid** en **OpcUri** als sleutels worden gebruikt voor toegang tot deze woordenlijst en moet uniek zijn.
+De WebApp onderhoudt een intern data dictionary met informatie over alle topologie knooppunten. De eigenschappen **GUID** en **OpcUri** worden gebruikt als sleutels voor toegang tot deze woorden lijst en moeten uniek zijn.
 
-### <a name="oeekpi-computation"></a>OEE-/ KPI-berekening
+### <a name="oeekpi-computation"></a>OEE/KPI-berekening
 
-De OEE-/ KPI-afbeeldingen voor de verbonden Factory-simulatie bestaan parameters door:
+De OEE/KPI-cijfers voor de verbonden Factory-simulatie zijn para meters voor:
 
-* De OPC UA-knooppunt-waarden moeten worden opgenomen in de berekening.
-* Hoe de afbeelding wordt berekend van de telemetriewaarden.
+* De waarde van het OPC UA-knoop punt dat moet worden opgenomen in de berekening.
+* Hoe de afbeelding wordt berekend op basis van de telemetrie-waarden.
 
-Verbonden Factory's worden de OEE-formules gebruikt zoals gepubliceerd door de [ http://www.oeefoundation.org ](http://www.oeefoundation.org).
+Verbonden Factory maakt gebruik van de OEE-formules zoals gepubliceerd door de [http://www.oeefoundation.org](http://www.oeefoundation.org).
 
-Objecten van de OPC UA-knooppunt in stations inschakelen voor gebruik in de berekening van de OEE-/ KPI-tagging. De **relevantie** eigenschap wordt aangegeven voor welke OEE-/ KPI-afbeelding de waarde van de OPC UA-knooppunt moet worden gebruikt. De **OpCode** eigenschap definieert hoe de waarde in de berekening is opgenomen.
+OPC UA-knooppunt objecten in stations maken labels mogelijk voor gebruik in de OEE/KPI-berekening. De eigenschap **relevantie** geeft aan waarvoor OEE/KPI de waarde van het OPC UA-knoop punt moet worden gebruikt. De eigenschap **opcode** definieert hoe de waarde wordt opgenomen in de berekening.
 
 ### <a name="alert-handling"></a>Afhandeling van waarschuwingen
 
-Verbonden Factory ondersteunt een mechanisme voor eenvoudige minimum/maximum aantal op basis van een drempelwaarde voor het genereren van waarschuwingen. Er zijn een aantal vooraf gedefinieerde acties die u in reactie op deze waarschuwingen configureren kunt. Dit mechanisme beheren van de volgende eigenschappen:
+Verbonden Factory ondersteunt een mechanisme voor het genereren van een eenvoudige minimale/maximale drempel waarde voor het optellen van waarschuwingen. Er zijn een aantal vooraf gedefinieerde acties die u kunt configureren als reactie op deze waarschuwingen. De volgende eigenschappen bepalen dit mechanisme:
 
 * Maximum
 * Minimum
 * MaximumAlertActions
 * MinimumAlertActions
 
-## <a name="correlating-to-telemetry-data"></a>Aan de telemetriegegevens te correleren
+## <a name="correlating-to-telemetry-data"></a>Correleren met telemetrie-gegevens
 
-Voor bepaalde bewerkingen, zoals het visualiseren van de laatste waarde of query's van Time Series Insight, maakt de Web-App moet een adresschema gebruiken voor de opgenomen telemetriegegevens. De telemetrie die verzonden naar verbonden Factory moet ook worden opgeslagen in interne gegevensstructuur. De twee eigenschappen voor het inschakelen van deze bewerkingen zijn op station (OPC UA-server) en OPC UA-knooppunt:
+Voor bepaalde bewerkingen, zoals het visualiseren van de laatste waarde of het maken van Time Series Insight-query's, heeft de WebApp een adresserings schema nodig voor de opgenomen telemetriegegevens. De telemetrie die naar een verbonden Factory wordt verzonden, moet ook worden opgeslagen in interne gegevens structuren. De twee eigenschappen die deze bewerkingen inschakelen, bevinden zich op station (OPC UA-server) en het OPC UA-knooppunt niveau:
 
 * **OpcUri**
 
-  Identificeert vandaan (unieke) OPC UA-server de telemetrie. Deze eigenschap wordt in de opgenomen berichten verzonden als **ApplicationUri**.
+  Identificeert (wereld wijd uniek) de OPC UA-server van de telemetrie. In de opgenomen berichten wordt deze eigenschap verzonden als **sorteert ze**.
 
 * **NodeId**
 
-  Geeft de knooppuntwaarde in de OPC UA-server. Moet de indeling van de eigenschap zijn zoals opgegeven in de OPC UA-specificatie. Deze eigenschap wordt in de opgenomen berichten verzonden als **NodeId**.
+  Hiermee wordt de knooppunt waarde in de OPC UA-server geïdentificeerd. De indeling van de eigenschap moet zijn opgegeven in de OPC UA-specificatie. In de opgenomen berichten wordt deze eigenschap verzonden als **NodeId**.
 
-Zie [wat OPC Publisher is](overview-opc-publisher.md) voor meer informatie over hoe de telemetrische gegevens die worden is opgenomen in de verbonden Factory.
+Zie [Wat is OPC Publisher](overview-opc-publisher.md) voor meer informatie over hoe de telemetriegegevens worden opgenomen in verbonden Factory.
 
-## <a name="example-how-kpi1-is-calculated"></a>Voorbeeld: Hoe KPI1 wordt berekend
+## <a name="example-how-kpi1-is-calculated"></a>Voor beeld: hoe KPI1 wordt berekend
 
-De configuratie in de `ContosoTopologyDescription.json` bestand bepaalt hoe de OEE-/ KPI-afbeeldingen worden berekend. Het volgende voorbeeld laat zien hoe de eigenschappen in dit bestand de berekening van KPI1 beheren.
+De configuratie in het `ContosoTopologyDescription.json`-bestand bepaalt hoe OEE/KPI-cijfers worden berekend. In het volgende voor beeld ziet u hoe de eigenschappen in dit bestand de berekening van KPI1 bepalen.
 
-In de verbonden Factory KPI1 wordt gebruikt voor het meten van het aantal producten is in het afgelopen uur. Elk station (OPC UA-server) in de verbonden Factory-simulatie biedt een OPC UA-knooppunt (`NodeId: "ns=2;i=385"`), waarmee u de telemetrie voor het berekenen van deze KPI.
+In Connected Factory KPI1 wordt gebruikt om het aantal geproduceerde producten in het afgelopen uur te meten. Elk station (OPC UA-server) in de verbonden Factory-simulatie biedt een OPC UA-knoop punt (`NodeId: "ns=2;i=385"`) dat de telemetrie biedt om deze KPI te berekenen.
 
-De configuratie voor deze OPC UA-knooppunt lijkt op het volgende codefragment:
+De configuratie voor dit OPC UA-knoop punt ziet eruit als in het volgende code fragment:
 
 ```json
 {
@@ -326,18 +326,18 @@ De configuratie voor deze OPC UA-knooppunt lijkt op het volgende codefragment:
 },
 ```
 
-Deze configuratie kunt query's naar de telemetriewaarden van dit knooppunt met Time Series Insights. De Time Series Insights-query worden opgehaald:
+Met deze configuratie kunt u query's uitvoeren op de telemetrie-waarden van dit knoop punt met behulp van Time Series Insights. De Time Series Insights query haalt het volgende op:
 
 * Het aantal waarden.
 * De minimale waarde.
 * De maximale waarde.
 * Het gemiddelde van alle waarden.
-* De som van alle waarden voor alle unieke **OpcUri** (**ApplicationUri**), **NodeId** -paren in een bepaalde periode.
+* De som van alle waarden voor alle unieke **OpcUri** (**sorteert ze**), **NodeId** -paren in een bepaalde time span.
 
-Een kenmerk van de **NumberOfManufactureredProducts** knooppuntwaarde is dat alleen toeneemt. Voor het berekenen van het aantal producten in de timespan verbonden Factory maakt gebruik van de **OpCode** **SubMaxMin**. De berekening worden de minimale waarde aan het begin van het interval en de maximale waarde aan het einde van de timespan opgehaald.
+Een kenmerk van de waarde van het knoop punt **NumberOfManufactureredProducts** is dat deze alleen wordt verhoogd. Voor het berekenen van het aantal producten dat in de time span wordt geproduceerd, gebruikt de verbonden Factory de **opcode** - **SubMaxMin**. De berekening haalt de minimum waarde op aan het begin van de time span en de maximum waarde aan het einde van de time span.
 
-De **OpCode** configureert u de berekeningslogica voor het berekenen van het resultaat van het verschil tussen de maximale en minimale waarde in de configuratie. De resultaten worden vervolgens onder tot het hoogste niveau (wereldwijde) doen samengevoegd en weergegeven in het dashboard.
+Met de **opcode** in de configuratie wordt de berekenings logica geconfigureerd voor het berekenen van het resultaat van het verschil met de maximum-en minimum waarde. Deze resultaten worden vervolgens onder elkaar verzameld naar het hoofd niveau (globaal) en weer gegeven in het dash board.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Een aanbevolen volgende stap is te leren hoe u [aanpassen van de oplossing voor verbonden Factory](iot-accelerators-connected-factory-customize.md).
+Een voorgestelde volgende stap is informatie over [het aanpassen van de oplossing Connected Factory](iot-accelerators-connected-factory-customize.md).

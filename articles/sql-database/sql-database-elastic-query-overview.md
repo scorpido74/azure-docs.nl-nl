@@ -1,5 +1,5 @@
 ---
-title: Overzicht van elastische query's Azure SQL Database
+title: Overzicht van elastische query's
 description: Met elastische query's kunt u een Transact-SQL-query uitvoeren die meerdere data bases omspant.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 07/01/2019
-ms.openlocfilehash: 08c191742425c448618db255491c709130df33a1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9566ac7169144d984f9200734c99eb10368b3142
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690360"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823741"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Overzicht van elastische query's Azure SQL Database (preview-versie)
 
@@ -138,7 +138,7 @@ Elastische query's zijn opgenomen in de kosten van Azure SQL Database-data bases
 * Het uitvoeren van uw eerste elastische query kan tot een paar minuten duren op de Standard-servicelaag. Deze tijd is nodig om de functionaliteit voor elastische query's te laden. het laden van prestaties verbetert met hogere service lagen en reken grootten.
 * Het uitvoeren van scripts voor externe gegevens bronnen of externe tabellen vanuit SSMS of SSDT wordt nog niet ondersteund.
 * Import/export voor SQL DB biedt nog geen ondersteuning voor externe gegevens bronnen en externe tabellen. Als u importeren/exporteren moet gebruiken, verwijdert u deze objecten voordat u deze exporteert en maakt u ze na het importeren opnieuw.
-* Elastische query's bieden momenteel alleen ondersteuning voor alleen-lezen toegang tot externe tabellen. U kunt echter volledige T-SQL-functionaliteit gebruiken voor de Data Base waarin de externe tabel is gedefinieerd. Dit kan handig zijn om bijvoorbeeld tijdelijke resultaten te blijven gebruiken. Selecteer bijvoorbeeld < column_list > in < local_table >, of om opgeslagen procedures te definiëren voor de elastische query database die naar externe tabellen verwijzen.
+* Elastische query's bieden momenteel alleen ondersteuning voor alleen-lezen toegang tot externe tabellen. U kunt echter volledige T-SQL-functionaliteit gebruiken voor de Data Base waarin de externe tabel is gedefinieerd. Dit kan handig zijn om bijvoorbeeld tijdelijke resultaten te blijven gebruiken, bijvoorbeeld < column_list > te selecteren in < local_table >, of om opgeslagen procedures te definiëren voor de elastische query database die naar externe tabellen verwijzen.
 * Met uitzonde ring van nvarchar (max) worden LOB-typen (met inbegrip van ruimtelijke typen) niet ondersteund in externe tabel definities. Als tijdelijke oplossing kunt u een weer gave maken voor de externe data base waarmee het LOB-type wordt omgezet in nvarchar (max), uw externe tabel definiëren via de weer gave in plaats van de basis tabel en deze vervolgens weer omzetten in het oorspronkelijke LOB-type in uw query's.
 * Kolommen van het gegevens type nvarchar (max) in de resultatenset geavanceerde batch verwerking uitschakelen die wordt gebruikt in de implementatie van elastische Query's en kan invloed hebben op de prestaties van de query voor een orde van omvang, of zelfs twee bestellingen van grootte in niet-canonieke situaties waarbij grote hoeveelheid niet-geaggregeerde gegevens worden overgebracht als resultaat van een query.
 * Kolom statistieken over externe tabellen worden momenteel niet ondersteund. Tabel statistieken worden ondersteund, maar moeten hand matig worden gemaakt.

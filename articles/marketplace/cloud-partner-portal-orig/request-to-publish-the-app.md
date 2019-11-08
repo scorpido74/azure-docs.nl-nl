@@ -1,30 +1,31 @@
 ---
-title: Verzoek tot publicatie van de toepassing
+title: Aanvraag voor het publiceren van de toepassing
 description: .
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: e272d051af6070007bcebc0f697d2854cd721497
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9558e7684fa8ab742319890940800da85daa1706
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943584"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814760"
 ---
-# <a name="request-to-publish-the-app"></a>Verzoek tot publicatie van de app.
+# <a name="request-to-publish-the-app"></a>Aanvraag voor het publiceren van de app
 
-![Klik hier om te publiceren](./media/CRMScreenShot18.png)
+![Klik om te publiceren](./media/CRMScreenShot18.png)
 
-1. Klik op de knop publiceren als u wilt uw aanbieding bij ons team voor certificering indienen. U moet mogelijk zijn om de status van uw aanbieding op het tabblad Status weer te geven.
+1. Klik op de knop publiceren om uw aanbieding naar ons certificerings team te verzenden. U kunt de status van uw aanbieding bekijken op het tabblad status.
 
-![Publicatie Status controleren](./media/CRMScreenShot19.png)
+![Publicatie status controleren](./media/CRMScreenShot19.png)
 
-## <a name="republish-the-app"></a>De app publiceren
+## <a name="republish-the-app"></a>De app opnieuw publiceren
 
- Als u nodig hebt om een aanvraag om opnieuw te publiceren van een app te doen, klikt u eerst op de knop Annuleren publiceren op het tabblad Status (als de aanvraag niet langer actief is, slaat u deze stap). Maak de wijzigingen voor de app, de aanbieding dienovereenkomstig bijwerken en klik op de knop publiceren opnieuw indienen. # Speciale overwegingen voor Microsoft Dynamics 365 Business Edition Houd er rekening mee dat oplossingen voor Microsoft Dynamics 365 Business-edities worden onderworpen aan aanvullende controles tijdens de certificering om te controleren of de Business Edition-limieten worden gerespecteerd. De limieten van de Business Edition worden hier beschreven. # Hulp. Als u problemen ondervindt, kunt u een ondersteuningsticket zich aanmelden door te klikken op de in de rechterbovenhoek en gaan.
+ Als u een aanvraag voor het opnieuw publiceren van een app wilt maken, klikt u eerst op de knop Publish annuleren onder het tabblad Status (als de aanvraag niet langer actief is, slaat u deze stap over). Breng uw wijzigingen aan in de app, werk de aanbieding dienovereenkomstig bij en klik vervolgens op de knop publiceren om deze opnieuw in te dienen. Aantal speciale overwegingen voor micro soft Dynamics 365 Business Edition de oplossingen die zijn gebouwd voor micro soft Dynamics 365 Business-edities worden tijdens de certificering extra controles uitgevoerd om te garanderen dat de Business Edition-limieten worden gevolgd. De limieten voor de Business Edition worden hier beschreven. # Help opvragen. Als u problemen ondervindt, kunt u een ondersteunings ticket vastleggen door in de rechter bovenhoek te klikken en naar te gaan.
 
-![De toepassing opnieuw te publiceren](./media/CRMScreenShot20.png)
+![De toepassing opnieuw publiceren](./media/CRMScreenShot20.png)

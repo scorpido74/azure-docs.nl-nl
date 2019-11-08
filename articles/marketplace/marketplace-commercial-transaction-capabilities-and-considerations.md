@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Transact Offer Type
 author: yijenj
 manager: nuno costa
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: f6f409c42c7ffa5639315e71ff565f9c672e227c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 9aa41e63c275737874d57ba016e297a64f3eb124
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279747"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823006"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Mogelijkheden en overwegingen voor commerciële Marketplace-trans acties
 
@@ -59,15 +60,15 @@ Voor SaaS-apps moet de uitgever rekening met de gebruiks kosten voor Azure-infra
 
 Afhankelijk van de gebruikte transactie optie kunnen de software licentie kosten van de uitgever als volgt worden weer gegeven:  
 
-* Gratis: Geen kosten voor software licenties. 
+* Gratis: er worden geen kosten in rekening gebracht voor software licenties. 
 
-* Bring Your Own License (BYOL): Alle toepasselijke kosten voor software licenties worden rechtstreeks beheerd tussen de uitgever en de klant. Micro soft passeert alleen de gebruiks kosten voor Azure-infra structuur. (Alleen Virtual Machines en Azure-toepassingen.)
+* Bring Your Own License (BYOL): eventuele toepasselijke kosten voor software licenties worden rechtstreeks beheerd tussen de uitgever en de klant. Micro soft passeert alleen de gebruiks kosten voor Azure-infra structuur. (Alleen Virtual Machines en Azure-toepassingen.)
 
-* Pay-as-you-go: Kosten voor software licenties worden gepresenteerd als een prijs per uur, per kern (vCPU), op basis van de gebruikte Azure-infra structuur. Dit geldt alleen voor Virtual Machines en Azure-toepassingen.
+* Betalen naar gebruik: de kosten voor software licenties worden gepresenteerd als een prijs per uur, per kern (vCPU) op basis van de gebruikte Azure-infra structuur. Dit geldt alleen voor Virtual Machines en Azure-toepassingen.
 
-* • Abonnements prijzen: Kosten voor software licenties worden weer gegeven als maandelijks of jaarlijks, terugkerend bedrag in rekening gebracht als een vast tarief of per seat. Dit is alleen van toepassing op SaaS-apps en Azure-toepassingen: beheerde apps.
+* • Abonnements prijzen: de kosten voor software licenties worden weer gegeven als maandelijks of jaarlijks, terugkerende kosten als een vast tarief of per seat. Dit is alleen van toepassing op SaaS-apps en door Azure toepassingen beheerde apps.
 
-* Gratis proef versie van software: Geen kosten voor software licenties gedurende 30 dagen of 90 dagen.
+* Gratis proef versie: er worden gedurende 30 dagen of 90 dagen geen kosten in rekening gebracht voor software licenties.
 
 ### <a name="free-and-bring-your-own-license-byol-pricing"></a>Gratis en BYOL-prijzen (uw eigen licentie)
 
@@ -93,7 +94,7 @@ Met deze optie kunnen hogere of lagere prijzen worden gemaakt dan voor de openba
 
 ### <a name="examples"></a>Voorbeelden
 
-**Pay-As-You-Go** 
+**Betalen per gebruik** 
 
 * Als u de optie betalen naar gebruik inschakelt, hebt u de volgende kosten structuur.
 
@@ -141,8 +142,8 @@ Deze optie moet worden geconfigureerd om via micro soft te worden verkocht en ka
 
 |Micro soft-facturen  | $100,00 per maand  |
 |---------|---------|
-|Micro soft betaalt u 80% van uw licentie kosten <br> \*Micro soft betaalt u 90% van de licentie kosten voor alle gekwalificeerde SaaS-apps   |   $80,00 per maand <br> \*$90,00 per maand    |
-|Micro soft bewaart 20% van de licentie kosten <br> \*Micro soft houdt 10% van de licentie kosten voor alle gekwalificeerde SaaS-apps.  |  $20,00 per maand <br> \*$10,00     |
+|Micro soft betaalt u 80% van uw licentie kosten <br> \* micro soft betaalt u 90% van de licentie kosten voor alle gekwalificeerde SaaS-apps   |   $80,00 per maand <br> \* $90,00 per maand    |
+|Micro soft bewaart 20% van de licentie kosten <br> \* micro soft 10% van de licentie kosten houdt voor alle gekwalificeerde SaaS-apps.  |  $20,00 per maand <br> \* $10,00     |
 
 * **Lagere kosten voor Marketplace-service:** Voor bepaalde SaaS-producten die u op onze commerciële Marketplace publiceert, verlaagt micro soft de service kosten voor Marketplace van 20% (zoals beschreven in de overeenkomst voor micro soft Publisher) tot 10%.  Om uw product in aanmerking te komen, moet u ten minste één van uw producten door micro soft worden aangewezen als een voor bereiding op het IP-adres of door de IP-mede-verkoop prioriteit. Om dit gereduceerde service-tarief voor de Marketplace voor de maand te ontvangen, moet aan de voor waarden worden voldaan ten minste vijf (5) werk dagen vóór het einde van de vorige kalender maand. Lagere kosten voor Marketplace-service zijn niet van toepassing op Vm's, beheerde apps of andere producten die beschikbaar worden gesteld via onze commerciële Marketplace.  Dit lagere tarief voor Marketplace-Services is beschikbaar voor gekwalificeerde aanbiedingen, met licentie kosten die door micro soft zijn verzameld tussen 1 mei 2019 en 30 juni 2020.  Na deze periode wordt de service kosten voor de Marketplace teruggebracht naar de normale hoeveelheid.
 
@@ -162,13 +163,13 @@ Klanten kunnen ook betalen met een credit card en een maandelijkse factuur. In d
 
 Als de klant bijvoorbeeld gebruikmaakt van een credit card:
 
-|Description    |    Date  |
+|Beschrijving    |    Date  |
 |----------|----------|
 |Bestel periode   | 15 augustus 2018-aug 30, 2018 |
 |Einde van de term (maand)   | 30 augustus 2018 |
 |Factuur datum | 1 Sept 2018 |
 |Betalings datum van klant | 1 Sept 2018 |
-|Borg periode (alleen voor credit cards, 30 dagen) | Sept 1 september 2018 – september 30, 2018 |
+|Borg periode (alleen voor credit cards, 30 dagen) | Sept 1 september 2018-september 30, 2018 |
 |Begin van verzamelings periode | 1 Sept 2018 |
 |Einde van de verzamelings periode (Maxi maal 30 dagen) | Sept 30, 2018 |
 |Berekenings datum van betaling (maandelijks op de 15e) | Okt 1, 2018 |
@@ -176,7 +177,7 @@ Als de klant bijvoorbeeld gebruikmaakt van een credit card:
 
 Als de klant wordt gekocht met een Enterprise Agreement:
 
-| Description |    Date  |
+| Beschrijving |    Date  |
 |----------|----------|
 |Bestel periode | 15 augustus 2018-aug 30, 2018 |
 |Einde van de term (kwar taal) | Sept 30, 2018 |
@@ -233,11 +234,11 @@ De optie voor het publiceren van Transact is alleen beschikbaar voor gebruik met
 
 U kunt kiezen uit gratis, uw eigen licentie of betalen per gebruik-prijs modellen en aanwezig als Sku's die zijn gedefinieerd op het niveau van de aanbieding. Op de Azure-factuur van de klant presenteert micro soft de licentie kosten van de uitgever software afzonderlijk van de onderliggende kosten voor Azure-infra structuur. Kosten voor Azure-infra structuur worden aangestuurd door het gebruik van de uitgever software.
 
-**Azure-toepassingen: Oplossings sjabloon of beheerde app** 
+**Azure-toepassingen: oplossings sjabloon of beheerde app** 
 
 U moet een of meer virtuele machines inrichten en de som van de prijzen van de virtuele machine ophalen. Voor beheerde apps in één abonnement kan een maandelijks abonnement met een vaste frequentie worden geselecteerd als het prijs model in plaats van de prijzen van de virtuele machine. In sommige gevallen worden gebruiks kosten voor Azure-infra structuur door gegeven aan de klant, onafhankelijk van software licentie kosten, maar op hetzelfde factuur overzicht. Als u echter een beheerde app-aanbieding voor ISV-infrastructuur kosten configureert, worden de Azure-resources gefactureerd aan de uitgever en ontvangt de klant een vast bedrag dat de kosten van infra structuur, software licenties en beheer Services omvat.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk de vereisten voor geschiktheid in de opties voor publiceren door de sectie type aanbieding voor het voltooien van de selectie en configuratie van uw aanbieding.
-* Bekijk de publishing patronen door webwinkel voor voorbeelden van hoe uw oplossing wordt toegewezen aan een aanbiedingtype en de configuratie.
+* Bekijk de geschiktheids vereisten in de sectie publicatie opties per aanbiedings type om de selectie en configuratie van uw aanbieding te volt ooien.
+* Bekijk de publicatie patronen per winkel voor voor beelden van hoe uw oplossing is gekoppeld aan een type en configuratie van een aanbieding.

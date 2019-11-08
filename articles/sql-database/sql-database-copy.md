@@ -1,5 +1,5 @@
 ---
-title: Een Azure-SQL database kopiëren
+title: Een database kopiëren
 description: Een transactioneel consistente kopie maken van een bestaande Azure-SQL database op dezelfde server of op een andere server.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 09/04/2019
-ms.openlocfilehash: d49896d8088ae1352cb2785d061cde6c8647cb89
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ebf63d14a8fb883158d1ac3e0a8f3d6658920aa7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690803"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826658"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Een transactioneel consistente kopie van een Azure-SQL database kopiëren
 
@@ -137,7 +137,7 @@ U kunt de stappen in de vorige sectie gebruiken om uw Data Base naar een SQL Dat
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>De voortgang van de Kopieer bewerking bewaken
 
-Bewaak het kopieer proces door een query uit te geven op de weer gaven sys. data bases en sys. DM _database_copies. Terwijl het kopiëren wordt uitgevoerd, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **kopiëren**.
+Bewaak het kopieer proces door een query uit te geven op de weer gaven sys. data bases en sys. dm_database_copies. Terwijl het kopiëren wordt uitgevoerd, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **kopiëren**.
 
 * Als het kopiëren mislukt, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **verdacht**. Voer de instructie DROP uit op de nieuwe data base en probeer het later opnieuw.
 * Als het kopiëren is voltooid, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **online**. Het kopiëren is voltooid en de nieuwe Data Base is een reguliere data base die onafhankelijk van de bron database kan worden gewijzigd.

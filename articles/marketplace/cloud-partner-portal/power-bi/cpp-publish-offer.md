@@ -1,59 +1,60 @@
 ---
-title: Power BI-App-aanbieding publiceren | Azure Marketplace
-description: Een Power BI-App-aanbieding op marketplace, Microsoft AppSource publiceren.
+title: Power BI app-aanbieding publiceren | Azure Marketplace
+description: Publiceer een Power BI-app-aanbieding op de Microsoft AppSource Marketplace.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: pabutler
-ms.openlocfilehash: aae23feaf1cc5887de061414af985ef16070546b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 324be960bd2d22623763ca3e24b99be92ff04174
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943183"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826042"
 ---
-# <a name="publish-a-power-bi-app-offer"></a>Een Power BI-App-aanbieding publiceren
+# <a name="publish-a-power-bi-app-offer"></a>Een Power BI-app-aanbieding publiceren
 
-De laatste stap is nadat u hebt een aanbieding gedefinieerd in de Cloud Partner-Portal en de bijbehorende technische activa gemaakt om in te dienen de aanbieding voor publicatie. Dit proces wordt gestart in het linkerdeelvenster van de **nieuwe aanbieding** venster **publiceren**. Zie voor meer informatie, [aanbiedingen publiceren op Azure Marketplace en AppSource](../manage-offers/cpp-publish-offer.md).
+De laatste stap, nadat u een aanbieding in de Cloud Partner-portal hebt gedefinieerd en de gekoppelde technische activa hebt gemaakt, is het aanbieden van de aanbieding voor publicatie. Als u dit proces wilt starten, selecteert u in het linkerdeel venster van het venster **nieuwe aanbieding** de optie **publiceren**. Zie [Azure Marketplace en AppSource-aanbiedingen publiceren](../manage-offers/cpp-publish-offer.md)voor meer informatie.
 
 
-## <a name="publishing-steps"></a>Publiceren stappen
+## <a name="publishing-steps"></a>Publicatie stappen
 
-Dit zijn de belangrijkste stappen in het publicatieproces:
+Dit zijn de belangrijkste stappen in het publicatie proces:
 
-![Aanbieding publiceren processtappen voor Power BI-App](./media/publishing-process-steps.png)
+![Proces stappen voor het publiceren van Power BI app-aanbieding](./media/publishing-process-steps.png)
 
-Deze tabel elke stap wordt beschreven en vindt u de geschatte tijd:
+In deze tabel vindt u een beschrijving van elke stap en de geschatte voltooiings tijd:
 
-|   Publiceren stap            |   Time     |   Description                                                                  |
+|   Publicatie stap            |   Time     |   Beschrijving                                                                  |
 | --------------------         |------------| ----------------                                                               |
-| Valideer de vereisten       | 15 minuten     | Biedt informatie en bieden instellingen worden gevalideerd.                            |
-| Certificering                | 1-7 dagen   | Het Team van Power BI-certificering analyseert uw aanbieding. Het team wordt uw Power BI-app uitgevoerd via een handmatige verificatie testen door de app via de installatie van de opgegeven URL te installeren. Primaire validaties worden uitgevoerd als onderdeel van het app-certificeringsproces (Zie verderop in dit document).         |
-| Verpakking                    | \< 1 uur  | Technische activa van de aanbieding zijn verpakt voor gebruik door de klant.                        |
-| Registratie van de potentiële klant genereren | \< 1 uur  | Potentiële klanten systemen zijn geconfigureerd en geïmplementeerd.                                      |
-| Aftekening van de uitgever            | \-         | U voltooien een uiteindelijke controle en de bevestiging voordat de aanbieding live meteen. U hebt nu ook een koppeling om een voorbeeld van uw aanbieding. Nadat u tevreden bent met het uiterlijk van de Preview-versie, selecteert u **Go Live** op de **Status** tabblad. Hierdoor wordt een aanvraag verzonden naar het onboarding-team om uw Apps weer op AppSource weer te geven.    |
-| Live                         | \< 3 uur | Uw aanbieding wordt nu openbaar ('live') op AppSource en klanten kunnen uw app kunt weergeven en deze implementeren in hun Power BI-abonnementen. U ontvangt ook een e-mail ter bevestiging. In de rechterkolom op de **alle aanbiedingen** tabblad ziet u de status van alle uw aanbiedingen. Op de **Status** tabblad ziet u de gedetailleerde publicatiestatus flow voor uw aanbieding. |
+| Vereisten valideren       | 15 minuten     | De aanbiedings gegevens en aanbiedings instellingen worden gevalideerd.                            |
+| Certificering                | 1-7 dagen   | Het Power BI-certificerings team analyseert uw aanbieding. Het team voert uw Power BI-app uit via een hand matige verificatie test door de app te installeren via de meegeleverde installatie-URL. Primaire validaties worden uitgevoerd als onderdeel van het app-certificerings proces (verderop in dit document beschreven).         |
+| Verpakking                    | \< 1 uur  | De technische activa van de aanbieding zijn verpakt voor gebruik door de klant.                        |
+| Registratie lead genereren | \< 1 uur  | Lead systemen worden geconfigureerd en geïmplementeerd.                                      |
+| Publisher-aftekening            | \-         | U voltooit de laatste beoordeling en bevestiging voordat de aanbieding live gaat. U hebt nu ook een koppeling om uw aanbieding te bekijken. Wanneer u tevreden bent met het uiterlijk van uw preview, selecteert u **Live** kijken op het tabblad **status** . Hiermee verzendt u een aanvraag naar het voorbereidings team om uw app op AppSource weer te geven.    |
+| Live                         | \< 3 uur | Uw aanbieding is nu openbaar vermeld (' live ') op AppSource en klanten kunnen uw app bekijken en implementeren in hun Power BI-abonnementen. U ontvangt ook een bevestigings-e-mail. In de rechter kolom op het tabblad **alle aanbiedingen** kunt u de status van al uw aanbiedingen bekijken. Op het tabblad **status** ziet u de gedetailleerde publicatie stroom status voor uw aanbieding. |
 |   |   |
 
-Toestaan dat maximaal acht dagen voor dit proces is voltooid. Nadat u deze publiceren stappen doorloopt, uw aanbieding van Power BI-App wordt weergegeven in de [AppSource](https://appsource.microsoft.com/marketplace/apps?product=power-bi%20) sectie voor Power BI-apps.
+Maxi maal acht dagen toestaan dat dit proces is voltooid. Nadat u deze publicatie stappen hebt door lopen, wordt uw Power BI-app-aanbieding weer gegeven in de sectie [AppSource](https://appsource.microsoft.com/marketplace/apps?product=power-bi%20) Power bi apps.
 
 
-### <a name="app-certification-process"></a>App-certificeringsproces
+### <a name="app-certification-process"></a>App-certificerings proces
 
-Het Microsoft-voorbereidingsteam maakt gebruik van dit proces voor het valideren van uw inzending voor de aanbieding Power BI-App:
+Het micro soft-voorbereidings team gebruikt dit proces om uw Power BI voor het indienen van de app-aanbieding te valideren:
 
-1. Bekijk de juridische documenten en help-koppelingen.
-2. Valideer de contactgegevens voor ondersteuning.
-3. Het installatieprogramma-URL gebruiken om te controleren of de juiste installatie.
-4. Scan de app voor malware en andere schadelijke inhoud.
-5. Verifieer dat de weergegeven inhoud overeenkomt met de beschrijving van de app.
-6. Controleer of de app-gerelateerde bewerkingen werken zoals verwacht in Power BI. Het team van rapporten en dashboards met voorbeeldgegevens wordt geopend, maakt verbinding met aangepaste gegevensbronnen, vernieuwen van gegevens, enzovoort.
+1. Bekijk juridische documenten en Help-koppelingen.
+2. De contact gegevens voor ondersteuning valideren.
+3. Gebruik de installatie-URL om de juiste installatie te controleren.
+4. Scan de app op malware en andere schadelijke inhoud.
+5. Controleer of de weer gegeven inhoud overeenkomt met de beschrijving van de app.
+6. Controleer of aan de app gerelateerde bewerkingen werken zoals verwacht in Power BI. Het team opent rapporten en dash boards met voorbeeld gegevens, maakt verbinding met aangepaste gegevens bronnen, vernieuwt gegevens, enzovoort.
 
-Het Team certificering biedt feedback als ze problemen vinden.  Zie voor meer informatie over vereisten voor Power BI-Apps, de [documentatie voor Power BI-app](https://go.microsoft.com/fwlink/?linkid=2028636).
+Het certificerings team geeft feedback als er problemen zijn gevonden.  Zie de [documentatie van Power bi app](https://go.microsoft.com/fwlink/?linkid=2028636)voor meer informatie over Power bi app-vereisten.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Het is raadzaam dat u regelmatig bewaken van uw app in de [AppSource-marketplace](https://appsource.microsoft.com).  U moet ook gebruiken de [verkoper Insights](../../cloud-partner-portal-orig/si-getting-started.md) functie van de [Cloud Partner-Portal](https://cloudpartner.azure.com/#insights) om inzichten over uw marketplace-klanten en het gebruik van de app te krijgen. Ten slotte kunt u [bijwerken van uw aanbieding](./cpp-update-existing-offer.md).
+U wordt aangeraden uw app regel matig te controleren in de [AppSource Marketplace](https://appsource.microsoft.com).  U moet ook de functie voor de [verkoop inzichten](../../cloud-partner-portal-orig/si-getting-started.md) van de [Cloud Partner-Portal](https://cloudpartner.azure.com/#insights) gebruiken om inzicht te krijgen in uw Marketplace-klanten en het gebruik van apps. Ten slotte kunt u [uw aanbieding bijwerken](./cpp-update-existing-offer.md).

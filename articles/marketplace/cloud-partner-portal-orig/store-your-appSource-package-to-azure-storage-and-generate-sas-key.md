@@ -1,59 +1,60 @@
 ---
-title: Store van uw pakket AppSource naar Azure storage en het genereren van een URL met SAS-sleutel
-description: Details van de stappen die nodig zijn om te uploaden en beveiligen van een pakket met AppSource.
+title: Uw AppSource-pakket opslaan in azure Storage en een URL genereren met SAS-sleutel
+description: Meer informatie over de stappen die nodig zijn om een AppSource-pakket te uploaden en te beveiligen.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pabutler
-ms.openlocfilehash: ac77767aee2dcde33f4266e1d2d09c49dcf5f8a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f1a09244697a6771ad1b499f3d7c36eb7297067
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943284"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827656"
 ---
-<a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>Store van uw pakket AppSource naar Azure storage en het genereren van een URL met SAS-sleutel
+<a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>Uw AppSource-pakket opslaan in azure Storage en een URL genereren met SAS-sleutel
 =============================================================================
 
-Voor het onderhouden van beveiliging van uw bestanden, moeten alle partners hun AppSource-pakketbestand opslaan in een Azure blob storage-account en een SAS-sleutel gebruiken om deze te delen. Het pakketbestand wordt opgehaald uit uw Azure-opslaglocatie voor certificering en deze gebruikt voor proefversies van AppSource.
+Om de beveiliging van uw bestanden te behouden, moeten alle partners hun AppSource-pakket bestand opslaan in een Azure Blob-opslag account en een SAS-sleutel gebruiken om het te delen. Het pakket bestand wordt opgehaald van uw Azure-opslag locatie voor certificering en kan worden gebruikt voor AppSource-experimenten.
 
-Gebruik de volgende stappen voor het uploaden van uw pakket naar blob-opslag:
+Gebruik de volgende stappen om uw pakket te uploaden naar Blob Storage:
 
-1. Ga naar <https://azure.microsoft.com> en maak een gratis proefversie of gefactureerd-account.
+1. Ga naar <https://azure.microsoft.com> en maak een gratis proef-of gefactureerd account.
 
-2. Meld u aan bij [Azure-portal](https://portal.azure.com/).
+2. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-3. Een nieuw Opslagaccount maken door te klikken op **+ nieuw** en Ga naar de **gegevens en opslag** account.
+3. Maak een nieuw opslag account door op **+ Nieuw** te klikken en naar het gegevens-en **opslag** account te gaan.
 
-   ![Gegevens en opslag-blade op Microsoft Azure Portal](media/CRMScreenShot7.png)
+   ![Blade gegevens en opslag op Microsoft Azure Portal](media/CRMScreenShot7.png)
 
-4. Voer een **naam** en **resourcegroep** een naam geven en klik op **maken** knop.
+4. Voer een **naam** en naam voor de **resource groep** in en klik op de knop **maken** .
 
-   ![Storage-account maken in Microsoft Azure Portal](media/CRMScreenShot8.png)
+   ![Opslag account maken op Microsoft Azure Portal](media/CRMScreenShot8.png)
 
-5. Navigeer naar uw nieuwe resourcegroep en een nieuwe blobcontainer maken.
+5. Navigeer naar de zojuist gemaakte resource groep en maak een nieuwe BLOB-container.
 
-   ![Pakket uploaden als blob met behulp van Microsoft Azure Portal](media/CRMScreenShot9.png)
+   ![Pakket uploaden als blob met Microsoft Azure Portal](media/CRMScreenShot9.png)
 
-6. Als u hebt nog niet gedaan, downloadt en installeert de Microsoft [Azure Storage Explorer](https://storageexplorer.com/).
+6. Als u dit nog niet hebt gedaan, downloadt en installeert u de micro soft- [Azure Storage Explorer](https://storageexplorer.com/).
 
-7. Storage Explorer openen en gebruiken van het pictogram verbinding maken met uw Azure storage-account.
+7. Open Storage Explorer en gebruik het pictogram om verbinding te maken met uw Azure Storage-account.
 
-8. Navigeer naar de blob-container die u hebt gemaakt en klik op **uploaden** uw pakket zip-bestand toe te voegen.
+8. Ga naar de BLOB-container die u hebt gemaakt en klik op **uploaden** om uw pakket zip-bestand toe te voegen.
 
-   ![Uploaden met behulp van Microsoft Storage Explorer-pakket](media/CRMScreenShot10.png)
+   ![Pakket uploaden met behulp van micro soft Storage Explorer](media/CRMScreenShot10.png)
 
-9. Klik met de rechtermuisknop op uw bestand en selecteer **Shared Access Signature ophalen**.
+9. Klik met de rechter muisknop op het bestand en selecteer **Shared Access Signature ophalen**.
 
-   ![Handtekening voor gedeelde toegang van een Azure-bestand ophalen](media/CRMScreenShot11.png)
+   ![Gedeelde toegangs handtekening van een Azure-bestand ophalen](media/CRMScreenShot11.png)
 
-10. Wijzig de **verlooptijd** als u wilt de SAS activeren voor een maand, klikt u vervolgens op **maken**.
+10. Wijzig de **verloop tijd** zodat de SAS gedurende een maand actief is en klik vervolgens op **maken**.
 
-    ![De SAS-vervaldatum van een Azure-bestand wijzigen](media/CRMScreenShot12.png)
+    ![De verval datum van SAS van een Azure-bestand wijzigen](media/CRMScreenShot12.png)
 
-11. Kopieer het veld-URL en bewaar het voor later. U moet deze URL invoeren bij het maken van de bijbehorende aanbieding. 
+11. Kopieer het URL-veld en sla het op voor later. Als u het gekoppelde aanbod maakt, moet u deze URL invoeren. 
 
-    ![Kopieer de SAS-URL van een Azure-bestand](media/CRMScreenShot13.png)
+    ![De SAS-URL van een Azure-bestand kopiëren](media/CRMScreenShot13.png)
 

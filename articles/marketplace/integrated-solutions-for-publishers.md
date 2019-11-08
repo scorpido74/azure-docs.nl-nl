@@ -4,15 +4,16 @@ description: Geïntegreerde oplossingen in azure Marketplace en Microsoft AppSou
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 8bffb2c71f5e07499338ea32e0c064392af81684
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: eaba5612221e712ad5b14f10876e083729970fde
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71706314"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818567"
 ---
 # <a name="publish-an-integrated-solution"></a>Een geïntegreerde oplossing publiceren
 
@@ -40,7 +41,7 @@ Bekijk [deze video](https://aka.ms/AA5qos4)voor een overzicht van het geïntegre
     * Integratie van toepassingen
     * Beheer van toepassings levenscyclus
     * Cloud platform
-    * Gegevensanalyse
+    * Data Analytics
     * Datacenter
     * Data Platform
     * DevOps
@@ -61,11 +62,11 @@ Nadat uw aannamen zijn goedgekeurd, gebruikt u de gekoppelde programma bronnen o
 1. Voltooi de belangrijkste zakelijke en technische discussies in een workshop-indeling voor het definiëren van de oplossing en de integratie benadering. 
 
     Uw bespreking over de oplossing moet de volgende punten omvatten:
-    * Scope
+    * Bereik
     * Doel klanten
     * Waardevoorstel
     * Prijzen
-    * Licenties
+    * Licentieverlening
     * Voorwaarden
     * Ondersteunings benadering
     * Marketing activiteiten
@@ -74,7 +75,7 @@ Nadat uw aannamen zijn goedgekeurd, gebruikt u de gekoppelde programma bronnen o
 
     Uw bespreking over de integratie benadering moet de volgende punten omvatten: 
     * Integratie punten
-    * Oplossingsarchitectuur
+    * Architectuur voor de oplossing
     * Authentication
     * Gebruikersinterface
     * Bewaking
@@ -86,7 +87,7 @@ Nadat uw aannamen zijn goedgekeurd, gebruikt u de gekoppelde programma bronnen o
 
     * [Discussie gids voor bedrijfs beslissingen workshop](https://aka.ms/AA5qicx)
     * [Discussie gids technisch besluit workshop](https://aka.ms/AA5qid1)
-    * [Quickstart-video: Zakelijke en technische workshops @ no__t-0
+    * [Quick Start-video: zakelijke en technische workshops](https://aka.ms/AA5qos9)
 
 1. Identificeer een project manager tussen partners voor het plannen van het project plan en de tijd lijn die u hebt ontwikkeld in de zakelijke en technische workshops.
 

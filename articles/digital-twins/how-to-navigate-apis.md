@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/27/2019
-ms.openlocfilehash: 5df8bb0ba0323692bddf94ae2888e8fcf1ad24a9
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: b0c3d72085e008524811f479ccbdeec013e26c4c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063273"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822250"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Azure Digital Apparaatdubbels Management-Api's gebruiken
 
@@ -116,4 +116,4 @@ Meer informatie over enkele veelvoorkomende API-query patronen vindt u in [het o
 
 Lees [hoe u Digital Apparaatdubbels Swagger kunt gebruiken](./how-to-use-swagger.md)voor meer informatie over uw API-eind punten.
 
-Als u de OData-syntaxis en beschik bare vergelijkings operatoren wilt bekijken, leest u [odata-vergelijkings operatoren in azure Search](../search/search-query-odata-comparison-operators.md)
+Als u de OData-syntaxis en beschik bare vergelijkings operatoren wilt bekijken, leest u [odata-vergelijkings operatoren in Azure Cognitive Search](../search/search-query-odata-comparison-operators.md)

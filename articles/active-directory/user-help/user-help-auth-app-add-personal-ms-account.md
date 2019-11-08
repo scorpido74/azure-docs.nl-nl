@@ -1,5 +1,5 @@
 ---
-title: Voeg uw persoonlijke micro soft-accounts toe aan de app-Azure Active Directory van Microsoft Authenticator | Microsoft Docs
+title: Een persoonlijke Microsoft-account toevoegen aan een verificator-app-Azure AD
 description: Hoe u uw persoonlijke micro soft-accounts, zoals Outlook.com of Xbox LIVE, toevoegt aan de Microsoft Authenticator-app voor twee ledige verificatie.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf4629ca97abc5d4ce508f7078f4691467ba249
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9ca01aad76bfbeba0cf56be8ee74287a79f6346e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616086"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820241"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>Uw persoonlijke micro soft-accounts toevoegen
 
@@ -57,7 +57,7 @@ U kunt uw persoonlijke Microsoft-account toevoegen door eerst twee ledige verifi
 
 3. Kies op de pagina **account toevoegen** de optie **persoonlijk account**.
 
-4. Meld u aan bij uw persoonlijke account, gebruik het juiste e-mail adres alain@outlook.com(zoals), en kies vervolgens **volgende**.
+4. Meld u aan bij uw persoonlijke account, met behulp van het juiste e-mail adres (zoals alain@outlook.com), en kies vervolgens **volgende**.
 
     >[!Note]
     >Als u geen persoonlijke Microsoft-account hebt, kunt u hier een maken.

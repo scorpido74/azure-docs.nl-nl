@@ -1,5 +1,5 @@
 ---
-title: Uw niet-micro soft-accounts toevoegen aan de app-Azure Active Directory van Microsoft Authenticator | Microsoft Docs
+title: Een niet-Microsoft-account toevoegen aan een verificator-app-Azure AD
 description: Hoe u uw niet-micro soft-accounts, zoals voor Google, Facebook of GitHub, toevoegt aan de app Microsoft Authenticator voor twee ledige verificatie.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1521d2b3d47667466636a1ac15f107826e40942
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 62d866e9bf543577887ee99173a52202fcfec632
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942932"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803666"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Uw niet-micro soft-accounts toevoegen
 
@@ -45,7 +45,7 @@ Voeg uw Google-account toe door twee ledige verificatie in te scha kelen en het 
 
 ### <a name="turn-on-two-factor-verification"></a>Twee ledige verificatie inschakelen
 
-1. Ga https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome op uw computer naar, selecteer **aan de slag**en controleer uw identiteit.
+1. Ga op uw computer naar https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome, selecteer **aan de slag**en controleer uw identiteit.
 
 2. Volg de stappen op de pagina om verificatie in twee stappen voor uw persoonlijke Google-account in te scha kelen.
 
@@ -187,7 +187,7 @@ Voeg uw Amazon-account toe door twee ledige verificatie in te scha kelen en het 
 
 10. Typ op de pagina **een verificatie methode voor back-ups toevoegen** op uw computer de 6-cijferige verificatie code van uw back-upverificatie methode voor uw Amazon-account en selecteer vervolgens **code verifiëren en door gaan**.
 
-11. Bepaal op de pagina **bijna klaar** of u uw computer een vertrouwd apparaat moet maken en selecteer **vervolgens ontvangen. Schakel verificatie**in twee stappen in.
+11. Bepaal op de pagina **bijna klaar** of u uw computer een vertrouwd apparaat moet maken en selecteer vervolgens **ontvangen. Schakel verificatie in twee stappen in**.
 
     De pagina **Geavanceerde beveiligings instellingen** wordt weer gegeven, met daarin de bijgewerkte gegevens over twee ledige verificatie.
 

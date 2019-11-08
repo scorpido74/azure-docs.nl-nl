@@ -1,6 +1,6 @@
 ---
-title: OPC Publisher - Azure configureren | Microsoft Docs
-description: OPC Publisher configureren
+title: OPC-Uitgever configureren-Azure | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u OPC Publisher kunt configureren voor het opgeven van gegevens wijzigingen van de OPC UA-knoop punten, OPC UA-gebeurtenissen die moeten worden gepubliceerd en ook de telemetrie-indeling.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
@@ -8,34 +8,34 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: bccab4dde5e17ec30a0b8c5e36dd78bdd1bdff93
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 0db00f670dfcc526d3fc34d41ce731df4c6573ec
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605727"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824149"
 ---
 # <a name="configure-opc-publisher"></a>OPC Publisher configureren
 
-OPC Publisher om op te geven, kunt u configureren:
+U kunt OPC Publisher configureren om het volgende op te geven:
 
-- De OPC UA-knooppunt gegevens-wijzigingen te publiceren.
-- De OPC UA-gebeurtenissen te publiceren.
+- De gegevens van het OPC UA-knoop punt worden gewijzigd in publiceren.
+- De OPC UA-gebeurtenissen die moeten worden gepubliceerd.
 - De telemetrie-indeling.
 
-U kunt OPC Publisher met behulp van configuratiebestanden of methodeaanroepen configureren.
+U kunt OPC Publisher configureren met configuratie bestanden of met behulp van methode aanroepen.
 
 ## <a name="use-configuration-files"></a>Configuratiebestanden gebruiken
 
-Deze sectie beschrijft opties voor het configureren van OPC UA-knooppunt publiceren met-configuratiebestanden.
+In deze sectie worden de opties beschreven voor het configureren van OPC UA-knoop punten publiceren met configuratie bestanden.
 
-### <a name="use-a-configuration-file-to-configure-publishing-data-changes"></a>Gebruik een configuratiebestand om te publiceren gegevenswijzigingen configureren
+### <a name="use-a-configuration-file-to-configure-publishing-data-changes"></a>Een configuratie bestand gebruiken om wijzigingen in de publicatie gegevens te configureren
 
-Er is de eenvoudigste manier om het configureren van de OPC UA-knooppunten te publiceren met een configuratiebestand. De indeling van het configuratiebestand wordt gedocumenteerd in [publishednodes.json](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/publishednodes.json) in de opslagplaats.
+De eenvoudigste manier om de OPC UA-knoop punten te configureren om te publiceren is met een configuratie bestand. De indeling van het configuratie bestand wordt beschreven in [publishednodes. json](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/publishednodes.json) in de opslag plaats.
 
-De syntaxis van de configuratie-bestand is gewijzigd na verloop van tijd. OPC Publisher leest oude indelingen, maar die ze converteert naar de nieuwste indeling wanneer deze actief de configuratie blijft.
+De syntaxis van het configuratie bestand is gewijzigd na verloop van tijd. OPC Publisher leest nog steeds oude indelingen, maar zet ze om in de meest recente indeling wanneer de configuratie persistent wordt gemaakt.
 
-Het volgende voorbeeld ziet u de indeling van het configuratiebestand:
+In het volgende voor beeld ziet u de indeling van het configuratie bestand:
 
 ```json
 [
@@ -54,11 +54,11 @@ Het volgende voorbeeld ziet u de indeling van het configuratiebestand:
 ]
 ```
 
-### <a name="use-a-configuration-file-to-configure-publishing-events"></a>Gebruik een configuratiebestand om te publiceren gebeurtenissen configureren
+### <a name="use-a-configuration-file-to-configure-publishing-events"></a>Een configuratie bestand gebruiken voor het configureren van publicatie gebeurtenissen
 
-Voor het publiceren van OPC UA-gebeurtenissen, moet u het bestand met dezelfde configuratie als gegevens worden gewijzigd voor gebruiken.
+Als u OPC UA-gebeurtenissen wilt publiceren, gebruikt u hetzelfde configuratie bestand als voor gegevens wijzigingen.
 
-Het volgende voorbeeld laat zien hoe het configureren van publicatie van gebeurtenissen die worden gegenereerd door de [SimpleEvents server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/SimpleEvents/Server). De server SimpleEvents vindt u de [OPC Foundation opslagplaats](https://github.com/OPCFoundation/UA-.NETStandard) is:
+In het volgende voor beeld ziet u hoe u een publicatie configureert voor gebeurtenissen die worden gegenereerd door de [SimpleEvents-server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/SimpleEvents/Server). De SimpleEvents-server kan worden gevonden in de [OPC Foundation-opslag plaats](https://github.com/OPCFoundation/UA-.NETStandard) :
 
 ```json
 [
@@ -110,24 +110,24 @@ Het volgende voorbeeld laat zien hoe het configureren van publicatie van gebeurt
 ]
 ```
 
-## <a name="use-method-calls"></a>Methodeaanroepen gebruiken
+## <a name="use-method-calls"></a>Methode aanroepen gebruiken
 
-Deze sectie beschrijft de methodeaanroepen die kunt u het configureren van OPC Publisher.
+In deze sectie wordt beschreven hoe u de methode aanroepen kunt gebruiken om OPC Publisher te configureren.
 
-### <a name="configure-using-opc-ua-method-calls"></a>Configureren met behulp van OPC UA-methodeaanroepen
+### <a name="configure-using-opc-ua-method-calls"></a>Configureren met behulp van OPC UA-methode aanroepen
 
-OPC Publisher bevat een OPC UA-Server, die kunnen worden geopend op poort 62222. Als de hostnaam **publisher**, en vervolgens de eindpunt-URI is: `opc.tcp://publisher:62222/UA/Publisher`.
+OPC Publisher bevat een OPC UA-server, die toegankelijk is via poort 62222. Als de hostnaam **Uitgever**is, is de URI van het eind punt: `opc.tcp://publisher:62222/UA/Publisher`.
 
-Dit eindpunt bevat de volgende vier methoden:
+Met dit eind punt worden de volgende vier methoden getoond:
 
 - PublishNode
 - UnpublishNode
 - GetPublishedNodes
-- IoT HubDirectMethod
+- IoT-HubDirectMethod
 
-### <a name="configure-using-iot-hub-direct-method-calls"></a>Configureren met behulp van IoT-Hub rechtstreekse methodeaanroepen
+### <a name="configure-using-iot-hub-direct-method-calls"></a>Configureren met IoT Hub directe methode aanroepen
 
-OPC Publisher worden geïmplementeerd voor de volgende rechtstreekse methodeaanroepen voor IoT-Hub:
+OPC Publisher implementeert de volgende IoT Hub directe methode aanroepen:
 
 - PublishNodes
 - UnpublishNodes
@@ -140,13 +140,13 @@ OPC Publisher worden geïmplementeerd voor de volgende rechtstreekse methodeaanr
 - ExitApplication
 - GetInfo
 
-De indeling van de JSON-nettolading van de methode aanvragen en antwoorden zijn gedefinieerd in [opcpublisher/HubMethodModel.cs](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/HubMethodModel.cs).
+De indeling van de JSON-payload van de methode-aanvraag en-antwoorden worden gedefinieerd in [opcpublisher/HubMethodModel. cs](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/HubMethodModel.cs).
 
-Als u een onbekende methode op de module aanroepen, reageert met een tekenreeks met de tekst van dat de methode is niet geïmplementeerd. U kunt een onbekende methode aanroepen als een manier om te pingen van de module.
+Als u een onbekende methode aanroept in de module, reageert deze met een teken reeks die aangeeft dat de methode niet is geïmplementeerd. U kunt een onbekende methode aanroepen als een manier om de module te pingen.
 
-### <a name="configure-username-and-password-for-authentication"></a>Gebruikersnaam en wachtwoord voor verificatie configureren
+### <a name="configure-username-and-password-for-authentication"></a>Gebruikers naam en wacht woord voor authenticatie configureren
 
-De verificatiemodus kan worden ingesteld via een IoT-Hub rechtstreekse methodeaanroepen. De nettolading mag de eigenschap **OpcAuthenticationMode** en de gebruikersnaam en het wachtwoord:
+De verificatie modus kan worden ingesteld via een IoT Hub directe methode aanroepen. De payload moet de eigenschap **OpcAuthenticationMode** en de gebruikers naam en het wacht woord bevatten:
 
 ```csharp
 {
@@ -158,7 +158,7 @@ De verificatiemodus kan worden ingesteld via een IoT-Hub rechtstreekse methodeaa
 }
 ```
 
-Het wachtwoord is versleuteld door de IoT Hub Workload-Client en die zijn opgeslagen in de configuratie van de uitgever. Als u wilt wijzigen verificatie op anoniem, gebruikt u de methode met de nettolading van de volgende:
+Het wacht woord wordt versleuteld door de IoT Hub workload-client en opgeslagen in de configuratie van de uitgever. Als u de verificatie wilt wijzigen in anoniem, gebruikt u de methode met de volgende Payload:
 
 ```csharp
 {
@@ -168,25 +168,25 @@ Het wachtwoord is versleuteld door de IoT Hub Workload-Client en die zijn opgesl
 }
 ```
 
-Als de **OpcAuthenticationMode** eigenschap is niet ingesteld in de nettolading van, de verificatie-instellingen in de configuratie ongewijzigd blijven.
+Als de eigenschap **OpcAuthenticationMode** niet is ingesteld in de payload, blijven de verificatie-instellingen ongewijzigd in de configuratie.
 
 ## <a name="configure-telemetry-publishing"></a>Telemetrie-publicatie configureren
 
-Wanneer OPC Publisher een melding van een wijziging in de waarde in een gepubliceerde knooppunt ontvangt, genereert deze een opgemaakte JSON-bericht dat wordt verzonden naar IoT Hub.
+Als de OPC-uitgever een melding ontvangt van een waarde die in een gepubliceerd knoop punt wordt gewijzigd, wordt een bericht in JSON-indeling gegenereerd dat naar IoT Hub wordt verzonden.
 
-U kunt de inhoud van dit JSON opgemaakte bericht met behulp van een configuratiebestand configureren. Als er is geen configuratiebestand wordt opgegeven met de `--tc` optie, een standaardconfiguratie wordt gebruikt die compatibel is met de [oplossingsverbetering voor verbonden factory](https://github.com/Azure/azure-iot-connected-factory).
+U kunt de inhoud van dit bericht in JSON-indeling configureren met behulp van een configuratie bestand. Als er geen configuratie bestand is opgegeven met de optie `--tc`, wordt er een standaard configuratie gebruikt die compatibel is met de [Connected Factory Solution Accelerator](https://github.com/Azure/azure-iot-connected-factory).
 
-Als OPC Publisher is geconfigureerd voor berichten batchgewijs, bent worden ze verzonden als een geldige JSON-matrix.
+Als OPC Publisher is geconfigureerd voor batch berichten, worden ze verzonden als een geldige JSON-matrix.
 
 De telemetrie is afgeleid van de volgende bronnen:
 
-- De configuratie van de OPC Publisher knooppunten voor het knooppunt
-- De **MonitoredItem** object van de OPC UA-stack OPC Publisher hebt waarvoor u een melding.
-- Het argument doorgegeven aan dit bericht vindt u informatie over het wijzigen van de waarde data.
+- De OPC-knooppunt configuratie voor het knoop punt
+- Het **MonitoredItem** -object van de OPC UA-stack waarvoor OPC-uitgever een melding heeft ontvangen.
+- Het argument dat aan deze melding is door gegeven, waarmee details over de wijziging van de gegevens waarde worden verstrekt.
 
-De telemetrie die wordt geplaatst in het opgemaakte JSON-bericht is een aantal belangrijke eigenschappen van deze objecten. Als u meer eigenschappen, die u wilt wijzigen van de codebasis OPC Publisher.
+De telemetrie die in het bericht JSON-indeling wordt geplaatst, is een selectie van belang rijke eigenschappen van deze objecten. Als u meer eigenschappen nodig hebt, moet u de OPC Publisher code base wijzigen.
 
-De syntaxis van het configuratiebestand is als volgt:
+De syntaxis van het configuratie bestand is als volgt:
 
 ```json
 // The configuration settings file consists of two objects:
@@ -380,4 +380,4 @@ De syntaxis van het configuratiebestand is als volgt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu hebt u geleerd hoe het configureren van OPC Publisher, de voorgestelde volgende stap is te leren hoe u [uitvoeren OPC Publisher](howto-opc-publisher-run.md).
+Nu u hebt geleerd hoe u OPC Publisher kunt configureren, kunt u het beste de volgende stap leren hoe u [OPC Publisher kunt uitvoeren](howto-opc-publisher-run.md).

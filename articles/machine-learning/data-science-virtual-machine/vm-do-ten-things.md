@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 75a685dc90db9133ee9bc5d52d046246270ea32a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dc8a870d692108f3a33b89a1c3826d421dfd1f63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497604"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824387"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tien dingen die u kunt doen op de Windows-Data Science Virtual Machine
 
@@ -365,7 +365,7 @@ De gegevens worden als een gegevens frame gelezen:
 ![Scherm afbeelding van de eerste 10 rijen met gegevens](./media/vm-do-ten-things/IPNB_data_readin.PNG)
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
-Azure Data Lake Storage is een grootschalige-opslag plaats voor big data analytische werk belastingen en compatibel is met Hadoop Distributed File System (HDFS). Het werkt met Hadoop, Spark en Azure Data Lake Analytics. In deze sectie leert u hoe u gegevens kunt verplaatsen naar Azure Data Lake Storage en hoe u een analyse uitvoert met behulp van Azure Data Lake Analytics.
+Azure Data Lake Storage is een grootschalige-opslag plaats voor big data analytische werk belastingen en compatibel is met Hadoop Distributed File System (HDFS). Het werkt met Hadoop, Spark- en Azure Data Lake Analytics. In deze sectie leert u hoe u gegevens kunt verplaatsen naar Azure Data Lake Storage en hoe u een analyse uitvoert met behulp van Azure Data Lake Analytics.
 
 #### <a name="prerequisites"></a>Vereisten
 
@@ -826,7 +826,7 @@ Gebruik de volgende vereiste stappen om toegang te krijgen tot Azure Cosmos DB v
 
 1. De Azure Cosmos DB python SDK is al geïnstalleerd op de DSVM. Voer ```pip install pydocumentdb --upgrade``` uit vanaf een opdracht prompt om het bij te werken.
 2. Maak een Azure Cosmos DB-account en-data base via de [Azure Portal](https://portal.azure.com).
-3. Down load het hulp programma voor gegevens migratie van Azure Cosmos DB van het [micro soft Download centrum](https://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) en pak het uit naar een gewenste map.
+3. Down load het hulp programma voor gegevens migratie van Azure Cosmos DB van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=53595) en pak het uit naar een gewenste map.
 4. Importeer JSON-gegevens (Volcano-gegevens) die zijn opgeslagen in een [open bare BLOB](https://cahandson.blob.core.windows.net/samples/volcano.json) in azure Cosmos DB met de volgende opdracht parameters voor het hulp programma voor migratie. (Gebruik dtui. exe in de map waarin u het hulp programma voor gegevens migratie Azure Cosmos DB hebt geïnstalleerd.) Voer de bron-en doel locatie in met de volgende para meters:
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`

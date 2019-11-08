@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met Azure SQL database auditing
+title: Aan de slag met auditing
 description: Azure SQL database-controle gebruiken om database gebeurtenissen in een audit logboek bij te houden.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 9a154e677a7308553bbef16837efae39006d3dae
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 65d092b36ed0e339a77bb423f24079caae38ab84
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691191"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821975"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL Database Auditing
 
@@ -225,7 +225,7 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
 - Zie de naslag informatie over de [indeling van BLOB-controle logboeken](https://go.microsoft.com/fwlink/?linkid=829599)voor meer informatie over de logboek indeling, de hiërarchie van de opslag map en naam conventies.
 
     > [!IMPORTANT]
-    > Met Azure SQL Database audit worden 4000 tekens gegevens opgeslagen voor teken velden in een controle record. Wanneer de **instructie** of de **data_sensitivity_information** -waarden die zijn geretourneerd door een Controleer bare actie meer dan 4000 tekens bevatten, worden alle gegevens na de eerste 4000 tekens **afgekapt en niet gecontroleerd**.
+    > Met Azure SQL Database audit worden 4000 tekens gegevens opgeslagen voor teken velden in een controle record. Wanneer de **instructie** of de **data_sensitivity_information** waarden die zijn geretourneerd door een Controleer bare actie meer dan 4000 tekens bevatten, worden alle gegevens na de eerste 4000 tekens **afgekapt en niet gecontroleerd**.
 
 - Audit logboeken worden geschreven om **blobs toe te voegen** in een Azure Blob-opslag op uw Azure-abonnement:
   - **Premium Storage** wordt momenteel **niet ondersteund** door toevoeg-blobs.

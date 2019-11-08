@@ -1,64 +1,65 @@
 ---
-title: In de cloud Solution Providers | Azure Marketplace
-description: Uitgevers kunnen nu hun aanbiedingen via Microsoft CSP partner kanaal verkopen
+title: Cloud solution providers | Azure Marketplace
+description: Uitgevers kunnen nu hun aanbiedingen verkopen via het micro soft CSP-partner kanaal
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 0b47e5af0b0656cac4962c1007e999508f58a9e5
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 80f871301bbb67def3635b8beb3705ac99b88bda
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150947"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826050"
 ---
 # <a name="cloud-solution-providers"></a>Providers van cloudoplossingen
 
-Software-aanbiedingen kunnen bereiken miljoenen gekwalificeerde klanten van Microsoft geleverd door partners in het programma Cloud Solution Provider (CSP), naast de beschikbaarheid van aanbiedingen via [van Microsoft web storefronts](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
+Software aanbiedingen kunnen miljoenen gekwalificeerde micro soft-klanten bereiken die worden geleverd door partners in het CSP-programma (Cloud Solution Provider), naast de open bare Beschik baarheid van aanbiedingen via [de webwinkels van micro soft](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
 
-Uitgevers aanbiedingen voor beschikbaarheid configureren in het CSP-programma op een opt-in-basis (standaard is uitgesloten), voor een nieuwe aanbieding of een bestaande oplossingen zodat partners te verkopen van uw producten maken gebundeld voor klanten.
+Uitgevers configureren aanbiedingen voor Beschik baarheid in het CSP-programma, op basis van een opt-in (standaard wordt uitgesloten), voor een nieuwe aanbieding of een bestaande, waardoor partners uw producten kunnen verkopen en gebundelde oplossingen voor klanten kan maken.
 
-Uitgevers zijn verantwoordelijk voor het bieden van ondersteuning voor probleemoplossing aan eindgebruikers merken en voor het ontwikkelen van een mechanisme voor CSP-partners en/of klanten contact met u opnemen voor ondersteuning. Het is aanbevolen procedures voor het bieden van CSP-partners met documentatie voor de gebruiker, training, en service health/onderbrekingsmeldingen (indien van toepassing), zodat de CSP-partners zijn geschikt voor laag 1-ondersteuningsaanvragen van klanten.
+Uitgevers zijn verantwoordelijk voor het verstrekken van ondersteuning voor eind gebruikers en voor het bieden van een mechanisme voor CSP-partners en/of klanten om contact met u op te nemen voor ondersteuning. Het is de aanbevolen procedures om CSP-partners te voorzien van de gebruikers documentatie, training en service status/uitval meldingen (indien van toepassing), zodat CSP-partners zijn ingericht om ondersteunings aanvragen voor Tier 1 van klanten af te handelen.
 
-De volgende tabel ziet u aanbiedingstypen en prijzen modellen die u zich aan het CSP-programma meldt kunnen:
+De volgende tabel toont de typen aanbieding en prijs modellen die kunnen worden gekozen voor het CSP-programma:
 
-| **Type aanbieding**    | **BYOL**  |  **Gratis** | **BETALEN PER GEBRUIK**   |
+| **Aanbiedings type**    | **BYOL**  |  **Gratis** | **PAYG**   |
 | :---------------- | :---------|:----------|:-----------|
 | VM's  | Ja | Ja | Ja |
-| Containers | N/A | Ja | N/A |
-| Oplossingssjablonen | N/A | Ja | N/A |
-| Managed Applications | N/A | Ja | Ja |
-| Software-as-a-Service (SaaS) | N/A | Ja | Ja |
+| Containers | N.v.t. | Ja | N.v.t. |
+| Oplossings sjablonen | N.v.t. | Ja | N.v.t. |
+| Managed Applications | N.v.t. | Ja | Ja |
+| Software-as-a-Service (SaaS) | N.v.t. | Ja | Ja |
 |   |   |   |
 
-## <a name="how-to-configure-an-offering"></a>Het configureren van een aanbieding
+## <a name="how-to-configure-an-offering"></a>Een aanbieding configureren
 
-De CSP-programma aanmelden instelling is geconfigureerd in de ervaring van Partner Center of Cloud Partner-Portal een aanbieding maken. ([Meer informatie over de veranderende publisher-ervaring. ](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293))
+De instelling voor het CSP-programma opt-in is geconfigureerd in het partner centrum of de ervaring Cloud Partner-portal aanbieding maken. (Meer[informatie over het wijzigen van Publisher-ervaring.](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293))
 
-In de Cloud Partner-Portal, is deze waarde ingesteld op het tabblad Marketplace of een webwinkel. In de Partner Center, is deze waarde ingesteld op het tabblad aanbieding setup onder instellingen.
+In Cloud Partner-portal wordt deze ingesteld op het tabblad Marketplace of winkel. In partner centrum wordt deze ingesteld op het tabblad installatie van de aanbieding onder installatie Details.
 
-![CSP aanmelden ervaring in CPP](media/marketplace-publishers-guide/csp-opt-in.png)
+![CSP-opt-in-ervaring in CPP](media/marketplace-publishers-guide/csp-opt-in.png)
 
-Zoals hieronder, wordt weergegeven in de Partner Center, uitgevers kunnen ervoor kiezen om hun aanbiedingen beschikbaar zijn in het CSP-programma te maken door het selectievakje **mijn aanbieding beschikbaar maken in het CSP-programma**.
+Zoals hieronder wordt weer gegeven, kunnen uitgevers in het partner centrum zich aanmelden om hun aanbiedingen beschikbaar te maken in het CSP-programma door het selectie vakje in te scha kelen, **mijn aanbod beschikbaar te stellen in het CSP-programma**.
 
-![CSP aanmelden ervaring in Partnercentrum](media/marketplace-publishers-guide/pc-csp-opt-in.png)
+![Aanmeldings ervaring voor CSP in partner centrum](media/marketplace-publishers-guide/pc-csp-opt-in.png)
 
-## <a name="sharing-sales-and-support-materials-with-csp-partners"></a>Verkoop en ondersteuning voor materiaal delen met CSP-partners
+## <a name="sharing-sales-and-support-materials-with-csp-partners"></a>Verkoop-en ondersteunings materiaal delen met CSP-partners
 
-Om in te schakelen partners in het programma Cloud Solution Provider zo efficiënt mogelijke vertegenwoordigen van uw aanbieding en neem contact op met uw organisatie, indienen van verkoop en ondersteuning van materialen die beschikbaar zijn voor de wederverkopers. Deze resources wordt niet blootgesteld aan klanten in de marketplace-storefronts.
+Als u partners in het Cloud Solution Provider-programma zo effectief mogelijk wilt maken voor uw aanbieding en samen werken met uw organisatie, moet u verkoop-en ondersteunings materialen verzenden die beschikbaar zijn voor de wederverkopers. Deze resources worden niet blootgesteld aan klanten in de Marketplace-winkel.
 
-Zoals hieronder wordt weergegeven in de Cloud Partner-Portal, kunnen uitgevers een URL op die als host fungeert voor relevante marketingmateriaal en contactgegevens van kanaal naar het CSP-kanaal invoeren:
+Zoals hieronder wordt weer gegeven, kunnen uitgevers in Cloud Partner-portal een URL invoeren die als host fungeert voor relevante marketing materialen en kanaal contact gegevens naar het CSP-kanaal:
 
-![CSP verwante informatie](media/marketplace-publishers-guide/cpp-csp-information.png)
+![Informatie over CSP-onderpand](media/marketplace-publishers-guide/cpp-csp-information.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de [Azure Marketplace en AppSource Uitgevershandleiding voor](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) pagina.
+Ga naar de pagina [met Publisher-hand leiding voor Azure Marketplace en AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) .
 
-Voor meer informatie over marketplace GTM services, gaat u naar [Go-to-market services](https://partner.microsoft.com/reach-customers/gtm).
+Voor meer informatie over Marketplace GTM Services gaat u naar [Go-to-Market-Services](https://partner.microsoft.com/reach-customers/gtm).
 
-Aanmelden bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/), of de [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) voor SaaS-aanbiedingen, maken en configureren uw aanbieding.
+Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/), of het [partner centrum](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) voor SaaS-aanbiedingen, om uw aanbieding te maken en te configureren.
 
 ---

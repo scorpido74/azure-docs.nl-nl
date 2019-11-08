@@ -1,37 +1,38 @@
 ---
-title: Gelijktijdigheidsbeheer | Azure Marketplace
-description: Gelijktijdigheid besturingselement strategieën voor het publiceren van API's van Cloud-Partner-Portal.
+title: Gelijktijdigheids beheer | Azure Marketplace
+description: Strategieën voor gelijktijdigheids beheer voor de Cloud Partner-portal Publishing-Api's.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 8cdcfd84a2f3bd4f920b97392255237db173cbf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e2f8922d42e40d14338f06be983d3913b20859d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935605"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819749"
 ---
-# <a name="concurrency-control"></a>Gelijktijdigheid beheren
+# <a name="concurrency-control"></a>Gelijktijdigheids beheer
 
-Voor elke aanroep naar de Cloud Partner-Portal publiceren van API's moet expliciet opgeven welke gelijktijdigheid-strategie voor toegangsbeheer te gebruiken. Fout voor de **If-Match** header zal resulteren in reactie op een HTTP-fout 400-fout. We bieden twee strategieën voor het besturingselement voor gelijktijdigheid van taken.
+Elke aanroep van de Cloud Partner-portal Publishing-Api's moet expliciet bepalen welke gelijktijdigheids beheer strategie u wilt gebruiken. Als de header **if-match** niet kan worden opgegeven, resulteert dit in een HTTP 400-fout reactie. We bieden twee strategieën voor gelijktijdigheids beheer.
 
--   **Optimistische** -de client voor het uitvoeren van de update wordt gecontroleerd of de gegevens is gewijzigd nadat deze de gegevens voor het laatst hebt gelezen.
--   **Laatste een wins** -gegevens, ongeacht of een andere toepassing wordt gewijzigd sinds de laatste tijd gelezen rechtstreeks worden bijgewerkt door de client.
+-   **Optimistische** -de client die de update uitvoert, controleert of de gegevens zijn gewijzigd sinds de laatste keer dat de gegevens zijn gelezen.
+-   **Laatste één WINS** : de client werkt de gegevens rechtstreeks bij, ongeacht of deze zijn gewijzigd sinds de laatste Lees tijd.
 
-<a name="optimistic-concurrency-workflow"></a>Optimistische gelijktijdigheid-werkstroom
+<a name="optimistic-concurrency-workflow"></a>Optimistische gelijktijdigheids werk stroom
 -------------------------------
 
-U wordt aangeraden de optimistische gelijktijdigheid-strategie, met de volgende werkstroom gebruiken om te waarborgen dat geen onverwachte wijzigingen zijn aangebracht in uw resources.
+We raden u aan de optimistische gelijktijdigheids strategie met de volgende werk stroom te gebruiken om te garanderen dat er geen onverwachte bewerkingen worden uitgevoerd op uw resources.
 
-1.  Een entiteit met behulp van de API's worden opgehaald. Het antwoord bevat een ETag-waarde die aangeeft van de momenteel opgeslagen versie van de entiteit (op het moment van het antwoord).
-2.  Op het moment van bijwerken, kunt u deze dezelfde ETag-waarde bevatten in de verplichte **If-Match** aanvraagheader.
-3.  De API vergelijkt de ETag-waarde ontvangen in de aanvraag met de huidige ETag-waarde van de entiteit in een atomic-transacties.
-    *   Als de ETag-waarden verschillend zijn, de API retourneert een `412 Precondition Failed` HTTP-antwoord. Deze fout geeft aan dat een van beide een ander proces de entiteit is bijgewerkt sinds het laatste in de client worden opgehaald, of dat de ETag-waarde die is opgegeven in de aanvraag is onjuist.
-    *  Als de ETag-waarden hetzelfde zijn, of de **If-Match** header bevat het sterretje jokerteken (`*`), de API de aangevraagde bewerking wordt uitgevoerd. De API-bewerking werkt ook de opgeslagen ETag-waarde van de entiteit.
+1.  Een entiteit ophalen met behulp van de Api's. Het antwoord bevat een ETag-waarde waarmee de momenteel opgeslagen versie van de entiteit (op het moment van de reactie) wordt geïdentificeerd.
+2.  Neem op het moment van de update dezelfde ETag-waarde op in de aanvraag header verplichte **if-match** .
+3.  De API vergelijkt de ETag-waarde die in de aanvraag is ontvangen met de huidige ETag-waarde van de entiteit in een Atomic-trans actie.
+    *   Als de ETag-waarden verschillen, retourneert de API een `412 Precondition Failed` HTTP-antwoord. Deze fout geeft aan dat de entiteit door een ander proces is bijgewerkt sinds de client de laatste keer is opgehaald, of dat de ETag-waarde die is opgegeven in de aanvraag, onjuist is.
+    *  Als de ETag-waarden hetzelfde zijn of als de header **if-match** het Joker teken asterisk (`*`) bevat, voert de API de aangevraagde bewerking uit. Met de API-bewerking wordt ook de opgeslagen ETag-waarde van de entiteit bijgewerkt.
 
 
 > [!NOTE]
-> Het jokerteken (*) op te geven de **If-Match** header resulteert in de API met behulp van de laatste één wins gelijktijdigheid-strategie. In dit geval de ETag-vergelijking wordt niet uitgevoerd en de resource wordt bijgewerkt zonder de controles. 
+> Het opgeven van het Joker teken (*) in de **if-match-** header resulteert in de API met de laatste-één-WINS-strategie voor gelijktijdigheid. In dit geval wordt de ETag-vergelijking niet uitgevoerd en wordt de resource zonder controles bijgewerkt. 

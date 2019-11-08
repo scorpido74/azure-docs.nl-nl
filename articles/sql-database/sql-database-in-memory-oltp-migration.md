@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: 82b24b51a103d31bf20bbb7a9fc304095be523d5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0f10936867c101c07cc8d29d68dc45021bfad1b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689835"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810294"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>In-Memory OLTP gebruiken om de prestaties van uw toepassing in SQL Database te verbeteren
 
@@ -94,7 +94,7 @@ Deze migratie optie gebruiken:
    
    * Klik in SSMS met de rechter muisknop op het knoop punt van de tabel.
    * Klik op **script tabel als** > **maken om te** > **Nieuw query venster**.
-3. Voeg met (MEMORY_OPTIMIZED = aan) in het Script-venster toe aan de CREATE TABLE-instructie.
+3. Voeg in het Script-venster met (MEMORY_OPTIMIZED = aan) toe aan de CREATE TABLE-instructie.
 4. Als er een geclusterde index is, wijzigt u deze in niet-geclusterde.
 5. Wijzig de naam van de bestaande tabel met behulp van SP_RENAME.
 6. Maak de nieuwe voor het geheugen geoptimaliseerde kopie van de tabel door uw bewerkte CREATE TABLE-script uit te voeren.

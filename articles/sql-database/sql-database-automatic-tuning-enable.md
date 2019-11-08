@@ -1,5 +1,5 @@
 ---
-title: Automatisch afstemmen inschakelen voor Azure SQL Database
+title: Automatisch instellen inschakelen
 description: U kunt het automatisch afstemmen op uw Azure SQL Database eenvoudig inschakelen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 52e3dd01446a6292c3404f14bd8ebfb32aa00dd6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0abf4bb015be52a10178423a566433b87127a167
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691126"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821915"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Automatisch afstemmen inschakelen om query's te bewaken en de prestaties van de werk belasting te verbeteren
 
@@ -41,7 +41,7 @@ Als u automatisch afstemmen op Azure SQL Database logische **Server**wilt inscha
 ![Server](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Houd er rekening mee dat de optie **DROP_INDEX** op dit moment niet compatibel is met toepassingen die gebruikmaken van partitie-switches en index hints en niet in deze gevallen mogen worden ingeschakeld. Het verwijderen van niet-gebruikte indexen wordt niet ondersteund voor Premium-en Bedrijfskritiek-service lagen.
+> Houd er rekening mee dat **DROP_INDEX** optie op dit moment niet compatibel is met toepassingen die gebruikmaken van partitie-switches en index hints en niet in deze gevallen mogen worden ingeschakeld. Het verwijderen van niet-gebruikte indexen wordt niet ondersteund voor Premium-en Bedrijfskritiek-service lagen.
 >
 
 Selecteer de opties voor automatisch afstemmen die u wilt inschakelen en selecteer **Toep assen**.
@@ -54,7 +54,7 @@ Meer informatie over het gebruik van REST API om automatisch afstemmen op een se
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Automatisch afstemmen inschakelen voor een afzonderlijke data base
 
-Met de Azure SQL Database kunt u de automatische afstemmings configuratie voor elke Data Base afzonderlijk opgeven. Op het niveau van de Data Base kunt u ervoor kiezen om de automatische afstemmings configuratie over te nemen van de bovenliggende server, "Azure defaults" of de configuratie niet overnemen. De standaard waarden van Azure worden ingesteld op FORCE_LAST_GOOD_PLAN, CREATE_INDEX is ingeschakeld en DROP_INDEX is uitgeschakeld.
+Met de Azure SQL Database kunt u de automatische afstemmings configuratie voor elke Data Base afzonderlijk opgeven. Op het niveau van de Data Base kunt u ervoor kiezen om de automatische afstemmings configuratie over te nemen van de bovenliggende server, "Azure defaults" of de configuratie niet overnemen. De standaard waarden van Azure worden ingesteld op FORCE_LAST_GOOD_PLAN is ingeschakeld, CREATE_INDEX is ingeschakeld en DROP_INDEX is uitgeschakeld.
 
 > [!TIP]
 > De algemene aanbeveling is de configuratie voor automatisch afstemmen op **server niveau** te beheren, zodat dezelfde configuratie-instellingen automatisch kunnen worden toegepast op elke Data Base. Configureer automatisch afstemmen voor een afzonderlijke Data Base alleen als u die data base andere instellingen moet hebben dan andere de instellingen overnemen van dezelfde server.
@@ -68,7 +68,7 @@ Individuele instellingen voor automatisch afstemmen kunnen afzonderlijk worden g
 
 ![Database](./media/sql-database-automatic-tuning-enable/database.png)
 
-Houd er rekening mee dat de optie DROP_INDEX op dit moment niet compatibel is met toepassingen die gebruikmaken van partitie-switches en index hints en niet in deze gevallen mogen worden ingeschakeld.
+Houd er rekening mee dat DROP_INDEX optie op dit moment niet compatibel is met toepassingen die gebruikmaken van partitie-switches en index hints en niet in deze gevallen mogen worden ingeschakeld.
 
 Wanneer u de gewenste configuratie hebt geselecteerd, klikt u op **Toep assen**.
 

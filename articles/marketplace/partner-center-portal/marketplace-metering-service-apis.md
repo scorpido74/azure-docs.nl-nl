@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 35e6c61a8e8537035d70323c85dfc7a76f87cbcd
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 36ca95191e0e6422bd93360b98243393acad8147
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869558"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825477"
 ---
 # <a name="marketplace-metering-service-apis"></a>Service-API's voor Marketplace-meting
 
@@ -20,7 +21,7 @@ Met de gebruiks gebeurtenis-API kunt u gebruiks gebeurtenissen voor een specifie
 
 ## <a name="usage-event"></a>Gebruiks gebeurtenis
 
-**POST**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Post**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -30,11 +31,11 @@ Met de gebruiks gebeurtenis-API kunt u gebruiks gebeurtenissen voor een specifie
 
 *Aanvraag headers:*
 
-| Inhouds type       | `application/json`    |
+| inhouds type       | `application/json`    |
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers. |
 | `x-ms-correlationid` | Unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
-| `authorization`   | [Het JWT-Bearer-token (JSON Web token) ophalen.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Opmerking: Bij het maken van de http- `Bearer` aanvraag, voor voegsel voor het token dat is verkregen van de koppeling waarnaar wordt verwezen. |
+| `authorization`   | [Het JWT-Bearer-token (JSON Web token) ophalen.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Opmerking: bij het maken van de HTTP-aanvraag, voor voegsel `Bearer` aan het token dat is verkregen van de koppeling waarnaar wordt verwezen. |
 
 *Schot*
 
@@ -48,7 +49,7 @@ Met de gebruiks gebeurtenis-API kunt u gebruiks gebeurtenissen voor een specifie
 }
 ```
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Antwoorden
 
 Code: 200<br>
 OK 
@@ -95,7 +96,7 @@ Ongeldige aanvraag, ontbrekende of ongeldige gegevens verschaft of verlopen
 ```
 
 Code: 409<br>
-Er is een conflict opgetreden bij het ontvangen van de gebruiks oproep voor de resource-ID van het gebruik en het daad werkelijke gebruik dat al bestaat. Het antwoord `additionalInfo` bevat een veld met informatie over het geaccepteerde bericht.
+Er is een conflict opgetreden bij het ontvangen van de gebruiks oproep voor de resource-ID van het gebruik en het daad werkelijke gebruik dat al bestaat. Het antwoord bevat `additionalInfo` veld dat informatie over het geaccepteerde bericht bevat.
 
 ```json
 {
@@ -120,7 +121,7 @@ Met de gebeurtenis-API voor batch gebruik kunt u gebruiks gebeurtenissen voor me
 >[!Note]
 >U kunt meerdere SaaS-aanbiedingen registreren in de commerciële Marketplace van micro soft. Elke geregistreerde SaaS-aanbieding heeft een unieke Azure AD-toepassing die is geregistreerd voor verificatie-en autorisatie doeleinden. De gebeurtenissen die in batch worden gegenereerd, moeten deel uitmaken van aanbiedingen met dezelfde Azure AD-toepassing op het moment van de registratie van de aanbieding.
 
-**POST:** `https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
+**Post:** `https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -130,11 +131,11 @@ Met de gebeurtenis-API voor batch gebruik kunt u gebruiks gebeurtenissen voor me
 
 *Aanvraag headers:*
 
-| Inhouds type       | `application/json`       |
+| inhouds type       | `application/json`       |
 | ------------------ | ------ |
 | `x-ms-requestid`     | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en gegeven in de antwoord headers. |
 | `x-ms-correlationid` | Unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en gegeven in de antwoord headers. |
-| `authorization`      | [Het JWT-Bearer-token (JSON Web token) ophalen.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Opmerking: Bij het maken van de http- `Bearer` aanvraag, voor voegsel voor het token dat is verkregen van de koppeling waarnaar wordt verwezen.  |
+| `authorization`      | [Het JWT-Bearer-token (JSON Web token) ophalen.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Opmerking: bij het maken van de HTTP-aanvraag, voor voegsel `Bearer` aan het token dat is verkregen van de koppeling waarnaar wordt verwezen.  |
 
 *Schot*
 ```json
@@ -157,7 +158,7 @@ Met de gebeurtenis-API voor batch gebruik kunt u gebruiks gebeurtenissen voor me
   ]
 }
 ```
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Antwoorden
 
 Code: 200<br>
 OK
@@ -192,9 +193,9 @@ OK
 }
 ```
 
-Beschrijving van de status code waarnaar wordt `BatchUsageEvent` verwezen in de API-reactie:
+Beschrijving van de status code waarnaar wordt verwezen in de `BatchUsageEvent` API-reactie:
 
-| Statuscode  | Description |
+| Statuscode  | Beschrijving |
 | ---------- | -------------------- |
 | `Accepted` | Geaccepteerde code. |
 | `Expired` | Verlopen gebruik. |
@@ -235,4 +236,4 @@ De gebruiker is niet gemachtigd om deze aanroep uit te voeren
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie [SaaS-data limiet](./saas-metered-billing.md)voor gefactureerd.
+Zie voor meer informatie [SaaS-data limiet voor gefactureerd](./saas-metered-billing.md).

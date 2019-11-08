@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 manager: evansma
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 525bcc0ba148c4cb3e679dee1209953e4a3d87b6
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: b036f7f7455d265849db3c0b82a21471ed1a902c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501295"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822626"
 ---
 # <a name="support-for-the-marketplace"></a>Ondersteuning voor Marketplace  
 Hier volgt een lijst met ondersteunings opties voor Marketplace.  
@@ -26,24 +27,24 @@ Open een ticket met ondersteuning voor micro soft [Marketplace-Uitgever](https:/
 
 ## <a name="partner-center-or-cloud-partner-portal"></a>Partner centrum of Cloud Partner-portal  
 
-| Ondersteunings kanaal | Description | Beschikbaarheid |  
+| Ondersteunings kanaal | Beschrijving | Beschikbaarheid |  
 |:--- |:--- |:--- |  
 | Ga voor meer informatie naar de pagina een incident maken op [Marketplace-ondersteuning](https://go.microsoft.com/fwlink/?linkid=844975)</li> </ul> | Ondersteuning voor Partner Center of Cloud Partner-portal. | Ondersteuning wordt geboden tussen 06.00 18:00 uur PST. |  
 
-## <a name="technical"></a>Technisch  
+## <a name="technical"></a>Documentatie  
 
-| Ondersteunings kanaal | Description |  
+| Ondersteunings kanaal | Beschrijving |  
 |:--- |:--- |  
-| MSDN-Forums: Marketplace bevindt zich op [Social.MSDN.Microsoft.com/forums/Azure/Home?Forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Het forum voor micro soft Developer Network. |  
-| Stack Overflow: Azure bevindt zich op [stackoverflow.com/questions/Tagged/Azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow omgeving om oplossingen te verkrijgen en vragen te stellen over alles wat met Azure Marketplace te maken heeft.<ul> <li>Stack Overflow: Azure Marketplace bevindt zich op [stackoverflow.com/questions/Tagged/Azure-Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow: Azure Resource Manager bevindt zich op [stackoverflow.com/questions/Tagged/Azure-Resource-Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: Virtual Machines op Azure op [stackoverflow.com/questions/Tagged/Azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow: Containers op Azure bevinden zich op [stackoverflow.com/search?q=Azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
+| MSDN-Forums: marketplace bevindt zich op [Social.MSDN.Microsoft.com/forums/Azure/Home?Forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Het forum voor micro soft Developer Network. |  
+| Stack Overflow: Azure bevindt zich op [stackoverflow.com/questions/Tagged/Azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow omgeving om oplossingen te verkrijgen en vragen te stellen over alles wat met Azure Marketplace te maken heeft.<ul> <li>Stack Overflow: Azure Marketplace bevindt zich op [stackoverflow.com/questions/Tagged/Azure-Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow: Azure Resource Manager bevindt zich op [stackoverflow.com/questions/Tagged/Azure-Resource-Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: Virtual Machines op Azure op [stackoverflow.com/questions/Tagged/Azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow: containers op Azure bevinden zich op [stackoverflow.com/search?q=Azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 
 ## <a name="marketing-resources"></a>Marketing Resources  
 
-| Ondersteunings kanaal | Description | Beschikbaarheid |  
+| Ondersteunings kanaal | Beschrijving | Beschikbaarheid |  
 |:--- |:--- |:--- |  
-| E-mail:[cosell@microsoft.com](mailto:cosell@microsoft.com) | Ondersteuning voor voorbereidings processen en vragen met betrekking tot het programma voor gezamenlijk verkopen. | Op basis van de Pacific time zone. |  
-| E-mail:[gtm@microsoft.com](mailto:gtm@microsoft.com) | Ondersteuning voor GTM-voor delen en programma vragen. | Kantoor uren bevinden zich in de zone Pacific time. |  
-| E-mail:[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Antwoorden op vragen over het gebruik van Azure-logo's en-huis stijl. |  |  
+| E-mail: [cosell@microsoft.com](mailto:cosell@microsoft.com) | Ondersteuning voor voorbereidings processen en vragen met betrekking tot het programma voor gezamenlijk verkopen. | Op basis van de Pacific time zone. |  
+| E-mail: [gtm@microsoft.com](mailto:gtm@microsoft.com) | Ondersteuning voor GTM-voor delen en programma vragen. | Kantoor uren bevinden zich in de zone Pacific time. |  
+| E-mail: [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Antwoorden op vragen over het gebruik van Azure-logo's en-huis stijl. |  |  
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,5 +1,5 @@
 ---
-title: XEvent ring-buffer code voor SQL Database
+title: XEvent ring-buffer code
 description: Biedt een voor beeld van de Transact-SQL-code die eenvoudig en snel kan worden gemaakt door gebruik te maken van het ring buffer doel, in Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 8fd04cac394f05a9db18e84117a8647c1a17ba30
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7adffac045ddb2ba369993b1b805e3ce2304fb38
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686807"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822313"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Doel code ring buffer voor uitgebreide gebeurtenissen in SQL Database
 
@@ -27,7 +27,7 @@ U wilt een volledig code voorbeeld voor de eenvoudigste snelle manier om informa
 Dit onderwerp bevat een voor beeld van een Transact-SQL-code die:
 
 1. Hiermee maakt u een tabel met gegevens om te demonstreren.
-2. Hiermee maakt u een sessie voor een bestaande Extended Event, namelijk **sqlserver. SQL _statement_starting**.
+2. Hiermee maakt u een sessie voor een bestaande uitgebreide gebeurtenis, namelijk **sqlserver. sql_statement_starting**.
    
    * De gebeurtenis is beperkt tot SQL-instructies die een bepaalde update teken reeks bevatten: **instructie like% update tabEmployee%** .
    * Hiermee wordt de uitvoer van de gebeurtenis verzonden naar een doel van het type ring buffer, te weten **package0. ring_buffer**.
@@ -35,7 +35,7 @@ Dit onderwerp bevat een voor beeld van een Transact-SQL-code die:
 4. Hiermee wordt een aantal eenvoudige SQL UPDATE-instructies beschreven.
 5. Hiermee wordt een SQL SELECT-instructie uitgegeven om gebeurtenis uitvoer van de ring buffer op te halen.
    
-   * **sys. DM _xe_database_session_targets** en andere dynamische beheer weergaven (dmv's) zijn gekoppeld.
+   * **sys. dm_xe_database_session_targets** en andere dynamische beheer weergaven (dmv's) zijn gekoppeld.
 6. Hiermee stopt u de gebeurtenis sessie.
 7. De ring buffer doel neerzetten om de resources vrij te geven.
 8. De gebeurtenis sessie en de demo tabel weglaten.
@@ -56,8 +56,8 @@ Dit onderwerp bevat een voor beeld van een Transact-SQL-code die:
 
 Met een zeer kleine wijziging kan het volgende voor beeld van een ring buffer worden uitgevoerd op Azure SQL Database of Microsoft SQL Server. Het verschil is de aanwezigheid van het knoop punt ' _database ' in de naam van sommige dynamische beheer weergaven (Dmv's), die worden gebruikt in de component FROM in stap 5. Bijvoorbeeld:
 
-* sys. DM _xe<strong>_database</strong>_session_targets
-* sys. DM _xe_session_targets
+* sys. dm_xe<strong>_database</strong>_session_targets
+* sys. dm_xe_session_targets
 
 &nbsp;
 

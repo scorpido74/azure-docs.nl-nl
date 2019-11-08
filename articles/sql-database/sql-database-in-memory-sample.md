@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database in-Memory-voor beeld
+title: Voor beeld in het geheugen
 description: Probeer Azure SQL Database in-Memory technologieën met OLTP en column Store-voor beeld.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 8526236afdb0a312879cb3c1635a7fd85985278f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e7e7fc44d5f8b46a66c698d3a33ceeab5b8625c4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689815"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810331"
 ---
 # <a name="in-memory-sample"></a>Voor beeld in het geheugen
 
@@ -100,7 +100,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
 ```
 
 
-**Systeem eigen, gecompileerde, opgeslagen procedure**: u kunt tabel saleslt. USP _insertsalesorder_inmem controleren met een query in de catalogus weergave:
+**Systeem eigen, gecompileerde, opgeslagen procedure**: u kunt tabel saleslt. usp_InsertSalesOrder_inmem inspecteren met een query in de catalogus weergave:
 
 
 ```sql
@@ -168,7 +168,7 @@ end
 ```
 
 
-Als u de *_ondisk* -versie van het vorige T-SQL-script voor ostress. exe wilt maken, vervangt u beide exemplaren van de subtekenreeks *_inmem* door *_ondisk*. Deze vervangingen zijn van invloed op de namen van tabellen en opgeslagen procedures.
+Als u de *_ondisk* versie van het vorige T-SQL-script voor ostress. exe wilt maken, vervangt u beide exemplaren van de *_inmem* subtekenreeks door *_ondisk*. Deze vervangingen zijn van invloed op de namen van tabellen en opgeslagen procedures.
 
 
 ### <a name="install-rml-utilities-and-ostress"></a>RML-hulpprogram ma's en-`ostress` installeren
@@ -236,10 +236,10 @@ Als `ostress.exe` is voltooid, wordt de uitvoerings duur als laatste uitvoer reg
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-_ondisk-then-rerun"></a>Opnieuw instellen, bewerken voor *_ondisk*en opnieuw uitvoeren
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>Opnieuw instellen, bewerken voor *_ondisk*en vervolgens opnieuw uitvoeren
 
 
-Nadat u het resultaat van de *_inmem* -uitvoering hebt, voert u de volgende stappen uit om de *_ondisk* uit te voeren:
+Nadat u het resultaat van de *_inmem* uitvoeren hebt, voert u de volgende stappen uit om de *_ondisk* uit te voeren:
 
 
 1. Stel de data base opnieuw in door de volgende opdracht uit te voeren in SSMS om alle gegevens te verwijderen die zijn ingevoegd door de vorige uitvoering:
@@ -294,7 +294,7 @@ Voor realtime analyses van een OLTP-werk belasting is het vaak het beste om een 
 #### <a name="key-tables-and-columnstore-indexes"></a>Sleutel tabellen en column Store-indexen
 
 
-- dbo. FactResellerSalesXL_CCI is een tabel met een geclusterde column store-index met geavanceerde compressie op het *gegevens* niveau.
+- dbo. FactResellerSalesXL_CCI is een tabel met een geclusterde column store-index, die een geavanceerde compressie heeft op het *gegevens* niveau.
 
 - dbo. FactResellerSalesXL_PageCompressed is een tabel die een equivalente reguliere geclusterde index heeft, die alleen op *pagina* niveau wordt gecomprimeerd.
 

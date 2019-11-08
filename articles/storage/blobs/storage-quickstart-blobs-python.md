@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0851ee9061fcb01a5e007f0cc4989d6a3febc665
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 397464a70164ef06642a991fb8470ddfa2922647
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605154"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809929"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V12 voor python
 
@@ -30,6 +30,8 @@ Gebruik de Azure Blob Storage-client bibliotheek voor het volgende:
 * Een container verwijderen
 
 [API-referentie documentatie](/python/api/azure-storage-blob) | [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [pakket (Python-pakket index)](https://pypi.org/project/azure-storage-blob/) | voor [beelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -188,7 +190,7 @@ Kies een naam voor de nieuwe container. De onderstaande code voegt een UUID-waar
 > [!IMPORTANT]
 > Containernamen moeten uit kleine letters bestaan. Zie [Containers, blobs en metagegevens een naam geven en hiernaar verwijderen](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) voor meer informatie over de naamgeving van containers en blobs.
 
-Maak een instantie van de klasse [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) door de methode [from_connection_string](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#from-connection-string-conn-str--credential-none----kwargs-) aan te roepen. Vervolgens roept u de [create_container](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#create-container-name--metadata-none--public-access-none----kwargs-) -methode aan om de container in uw opslag account te maken.
+Maak een instantie van de klasse [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) door de [from_connection_string](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#from-connection-string-conn-str--credential-none----kwargs-) -methode aan te roepen. Vervolgens roept u de methode [create_container](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#create-container-name--metadata-none--public-access-none----kwargs-) aan om de container in uw opslag account te maken.
 
 Voeg deze code toe aan het einde van het `try` blok:
 
@@ -208,8 +210,8 @@ container_client = blob_service_client.create_container(container_name)
 Het volgende code fragment:
 
 1. Hiermee maakt u een tekst bestand in de lokale map.
-1. Hiermee wordt een verwijzing naar een [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient) -object opgehaald door de methode [Get_blob_client](/python/api/azure-storage-blob/azure.storage.blob.containerclient#get-blob-client-blob--snapshot-none-) op de [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) aan te roepen vanuit de sectie [een container maken](#create-a-container) .
-1. Hiermee wordt het lokale tekst bestand geüpload naar de BLOB door de methode [upload_blob](/python/api/azure-storage-blob/azure.storage.blob.blobclient#upload-blob-data--blob-type--blobtype-blockblob---blockblob----length-none--metadata-none----kwargs-) aan te roepen.
+1. Hiermee wordt een verwijzing naar een [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient) -object opgehaald door de methode [get_blob_client](/python/api/azure-storage-blob/azure.storage.blob.containerclient#get-blob-client-blob--snapshot-none-) aan te roepen in de [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) van de sectie [Create a container](#create-a-container) .
+1. Hiermee wordt het lokale tekst bestand geüpload naar de BLOB door de [upload_blob](/python/api/azure-storage-blob/azure.storage.blob.blobclient#upload-blob-data--blob-type--blobtype-blockblob---blockblob----length-none--metadata-none----kwargs-) methode aan te roepen.
 
 Voeg deze code toe aan het einde van het `try` blok:
 
@@ -236,7 +238,7 @@ with open(upload_file_path, "rb") as data:
 
 ### <a name="list-the-blobs-in-a-container"></a>De blobs in een container in een lijst weergeven
 
-Vermeld de blobs in de container door de methode [list_blobs](/python/api/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-) aan te roepen. In dit geval is er slechts één BLOB aan de container toegevoegd, zodat de vermelding in de lijst alleen die ene BLOB retourneert.
+Vermeld de blobs in de container door de [list_blobs](/python/api/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-) methode aan te roepen. In dit geval is er slechts één BLOB aan de container toegevoegd, zodat de vermelding in de lijst alleen die ene BLOB retourneert.
 
 Voeg deze code toe aan het einde van het `try` blok:
 
@@ -251,7 +253,7 @@ for blob in blob_list:
 
 ### <a name="download-blobs"></a>Blobs downloaden
 
-Down load de eerder gemaakte BLOB door de methode [download_blob](/python/api/azure-storage-blob/azure.storage.blob.blobclient#download-blob-offset-none--length-none----kwargs-) aan te roepen. De voorbeeld code voegt het achtervoegsel ' downloaden ' toe aan de naam van het bestand, zodat u beide bestanden in het lokale bestands systeem kunt zien.
+Down load de eerder gemaakte BLOB door de [download_blob](/python/api/azure-storage-blob/azure.storage.blob.blobclient#download-blob-offset-none--length-none----kwargs-) methode aan te roepen. De voorbeeld code voegt het achtervoegsel ' downloaden ' toe aan de naam van het bestand, zodat u beide bestanden in het lokale bestands systeem kunt zien.
 
 Voeg deze code toe aan het einde van het `try` blok:
 
@@ -267,7 +269,7 @@ with open(download_file_path, "wb") as download_file:
 
 ### <a name="delete-a-container"></a>Een container verwijderen
 
-Met de volgende code wordt de resources opgeschoond die de app heeft gemaakt door de volledige container te verwijderen met de methode [delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) . U kunt ook de lokale bestanden verwijderen, indien gewenst.
+Met de volgende code wordt de resources opgeschoond die de app heeft gemaakt door de volledige container te verwijderen met behulp van de [delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) methode. U kunt ook de lokale bestanden verwijderen, indien gewenst.
 
 De app wordt gepauzeerd voor gebruikers invoer door `input()` aan te roepen voordat de blob, container en lokale bestanden worden verwijderd. Dit is een goede kans om te controleren of de resources daad werkelijk zijn gemaakt, voordat ze worden verwijderd.
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database in-Memory technologieën
+title: In-Memory technologieën
 description: Azure SQL Database in-Memory technologieën worden de prestaties van transactionele en analytische workloads aanzienlijk verbeterd.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: 7ee643c10c61368ee91692cbddf326ba488f81e6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: de60712451d4c2e8a7d931f7a09352f55be05694
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689786"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810264"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Prestaties optimaliseren met in-Memory technologieën in SQL Database
 
@@ -82,7 +82,7 @@ De OLTP-technologie in het geheugen biedt extreem snelle bewerkingen voor gegeve
 
 - Voor het **geheugen geoptimaliseerde rowstore** -indeling, waarbij elke rij een afzonderlijk geheugen object is. Dit is een klassieke OLTP-indeling in het geheugen die is geoptimaliseerd voor de hoge prestaties van OLTP-workloads. Er zijn twee typen tabellen die zijn geoptimaliseerd voor geheugen die kunnen worden gebruikt in de rowstore-indeling die is geoptimaliseerd voor geheugen:
   - *Duurzame tabellen* (SCHEMA_AND_DATA) waarbij de rijen in het geheugen worden bewaard na het opnieuw opstarten van de server. Dit type tabellen gedraagt zich als een traditionele rowstore-tabel met de extra voor delen van in-Memory optimalisaties.
-  - *Niet-duurzame tabellen* (SCHEMA_ONLY) waarbij de rijen niet worden bewaard na opnieuw opstarten. Dit type tabel is bedoeld voor tijdelijke gegevens (bijvoorbeeld vervangen van tijdelijke tabellen) of tabellen waarin u snel gegevens moet laden voordat u deze naar een andere persistente tabel verplaatst (dat wil zeggen faserings tabellen genoemd).
+  - *Niet-duurzame tabellen* (SCHEMA_ONLY) waarin de rijen niet worden bewaard na opnieuw opstarten. Dit type tabel is bedoeld voor tijdelijke gegevens (bijvoorbeeld vervangen van tijdelijke tabellen) of tabellen waarin u snel gegevens moet laden voordat u deze naar een andere persistente tabel verplaatst (dat wil zeggen faserings tabellen genoemd).
 - **Met geheugen geoptimaliseerde column Store-** indeling waarbij gegevens in een kolom indeling worden ingedeeld. Deze structuur is ontworpen voor HTAP-scenario's waarin u analytische query's moet uitvoeren op dezelfde gegevens structuur waar de OLTP-werk belasting wordt uitgevoerd.
 
 > [!Note]

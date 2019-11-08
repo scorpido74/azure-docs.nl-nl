@@ -1,39 +1,40 @@
 ---
-title: Rondleiding door de Azure Cloud Partner Portal | Azure Marketplace
-description: Overzicht van de gebruikerservaring van de Cloud Partner-Portal voor Azure Marketplace.
+title: Rond leiding door Azure Cloud Partner-portal | Azure Marketplace
+description: Overzicht van de gebruikers ervaring van de Cloud Partner-portal voor Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: pabutler
-ms.openlocfilehash: b0bf7af9b81025202c2fffa2a264982c9986e10b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85ddf2e2141ad77321710ad03e4d7f67572f3688
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943412"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821469"
 ---
-# <a name="cloud-partner-portal-tour"></a>Rondleiding door de cloud Partner Portal
+# <a name="cloud-partner-portal-tour"></a>Cloud Partner-portal rond leiding
 
-In dit artikel bevat een inleiding tot de [Cloud Partner-Portal](https://cloudpartner.azure.com): de inhoud, navigatiemechanismen en functionaliteit.   Deze portal kan geregistreerde partners nieuwe aanbiedingen maken en beheren van bestaande aanbiedingen voor de [Azure Marketplace](https://azuremarketplace.microsoft.com) en [AppSource-Marketplace](https://azuremarketplace.microsoft.com).  De Cloud Partner-Portal is alleen toegankelijk voor geregistreerde partners; Zie voor meer informatie, [geworden van een Cloud-Marketplace-uitgever](https://docs.microsoft.com/azure/marketplace/become-publisher).
+Dit artikel bevat een inleiding tot de [Cloud Partner-Portal](https://cloudpartner.azure.com): de inhoud, navigatie mechanismen en functionaliteit.   Met deze portal kunnen geregistreerde partners nieuwe aanbiedingen maken en bestaande aanbiedingen voor [Azure Marketplace](https://azuremarketplace.microsoft.com) en [AppSource Marketplace](https://azuremarketplace.microsoft.com)beheren.  De Cloud Partner-portal is alleen toegankelijk voor geregistreerde partners. Zie [een Cloud Marketplace-uitgever worden](https://docs.microsoft.com/azure/marketplace/become-publisher)voor meer informatie.
 
-[![Cloud Partner-Portal weergeven profielpagina](./media/portal-window_001a.png)](./media/portal-window_001b.png#lightbox)
-<br/>   (*Klikt u op de afbeelding om deze te vergroten.* )
+[![Cloud Partner-portal weer gave van profiel pagina](./media/portal-window_001a.png)](./media/portal-window_001b.png#lightbox)
+<br/>   (*Klik op afbeelding om te verg Roten.* )
 
 
-## <a name="section-contents"></a>Inhoudsopgave
+## <a name="section-contents"></a>Inhoud van sectie
 
-Na de uitleg over de [navigatie](./cpp-portal-navigation.md) mechanismen van de portal bespreken we de primaire vermeldingen in het navigatiedeelvenster links in het betreffende artikel: 
-- [Nieuwe aanbieding](./cpp-new-offer-menu.md) kunnen gebruikers te maken van nieuwe aanbiedingen van het opgegeven type.
-- [Alle aanbiedingen](./cpp-all-offers-page.md) pagina kan partners weergeven alle verzonden biedt en enkele van hun primaire kenmerken. 
-- [Goedkeuringen](./cpp-approvals-page.md) pagina kan partners om de op dat moment goedgekeurde aanbiedingen weer te geven.
-- [Alle uitgevers](./cpp-all-publishers-page.md) pagina geeft een lijst van alle de huidige geregistreerde cloud partner-uitgevers.
-- [Gebruikers](./cpp-users-page.md) pagina geeft een lijst van alle huidige-gebruikersaccounts die zijn gekoppeld aan geregistreerde cloud-partners.
-- [Geschiedenis](./cpp-history-page.md) pagina geeft een lijst van de aanbieding publiceren en de wijzigingsopties gebeurtenissen voor alle uitgevers. 
-- [Insights](./cpp-insights-page.md) pagina bevat de verschillende dashboards die deel uitmaken van de *verkoper Insights* functie van deze portal.
+Nadat u de [Navigatie](./cpp-portal-navigation.md) mechanismen van de portal hebt uitgelegd, worden de primaire vermeldingen in het linkernavigatievenster in het bijbehorende artikel gecontroleerd: 
+- Met het menu [nieuwe aanbieding](./cpp-new-offer-menu.md) kunnen gebruikers nieuwe aanbiedingen maken van het opgegeven type.
+- Met [de pagina alle aanbiedingen](./cpp-all-offers-page.md) kunnen partners alle ingediende aanbiedingen en enkele van hun primaire kenmerken weer geven. 
+- Met de pagina [goed keuringen](./cpp-approvals-page.md) kunnen partners alle momenteel goedgekeurde aanbiedingen weer geven.
+- [Alle uitgevers](./cpp-all-publishers-page.md) pagina bevat alle geregistreerde uitgevers van Cloud partners.
+- Pagina [gebruikers](./cpp-users-page.md) bevat een lijst met alle huidige gebruikers accounts die zijn gekoppeld aan geregistreerde Cloud partners.
+- Op de [geschiedenis](./cpp-history-page.md) pagina worden de gebeurtenissen voor het publiceren en wijzigen van aanbiedingen voor alle uitgevers weer gegeven. 
+- [Inzichten](./cpp-insights-page.md) pagina bevat de verschillende Dash boards die de functie voor het *verkopen van verkopers* van deze portal omvatten.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Het volgende artikel, [Cloud Partner Portal navigatie](./cpp-portal-navigation.md), onderzoekt de verschillende navigeerbare mechanismen beschikbaar op de site.
+In het volgende artikel, [Cloud Partner-Portal navigatie](./cpp-portal-navigation.md), worden de verschillende navigatie mechanismen onderzocht die beschikbaar zijn op de site.

@@ -1,39 +1,40 @@
 ---
-title: Technische informatie voor een aanbieding van Power BI-App | Azure Marketplace
-description: Technische informatie velden voor de aanbieding van een Power BI-App configureren voor de Microsoft AppSource-Marketplace.
+title: Technische informatie voor een Power BI-app-aanbieding | Azure Marketplace
+description: Configureer technische informatie velden voor een Power BI app-aanbieding voor de Microsoft AppSource Marketplace.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 15f4e2a76724a70c15411dea767cc9bc433e4d4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02c98e38f26fff73d02dc4c2b838ad3428cd2996
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943218"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819037"
 ---
-# <a name="power-bi-apps-technical-info-tab"></a>Power BI-Apps technische Info tabblad
+# <a name="power-bi-apps-technical-info-tab"></a>Tabblad Power BI apps-technische informatie
 
-Op de **nieuwe aanbieding** pagina, gebruikt u de **technische Info** tabblad voor de Power BI-installatieprogramma pakket-URL's en andere informatie die u wilt valideren van de nieuwe aanbieding.  Bij de eerste release, worden alle Power BI-apps zijn gratis en zijn beschikbaar voor downloaden van AppSource. U kunt geen voorraadeenheden (SKU's) voor dit aanbiedingtype definiëren als gevolg hiervan.
+Op de pagina **nieuwe aanbieding** kunt u op het tabblad **technische informatie** de Power bi Installer-pakket-URL opgeven en andere informatie die u nodig hebt om de nieuwe aanbieding te valideren.  Voor de eerste release zijn alle Power BI-apps gratis en kunnen ze worden gedownload via AppSource. Daarom kunt u geen Sku's (Stock-Keeping Units) definiëren voor dit aanbiedings type.
 
-![Het tabblad technische gegevens](./media/technical-info-tab.png)
+![Het tabblad technische informatie](./media/technical-info-tab.png)
 
 
-## <a name="technical-info-fields"></a>Technische informatie velden 
+## <a name="technical-info-fields"></a>Velden met technische informatie 
 
-Op de **technische Info** tabblad, vul de velden in de volgende tabel beschreven. Een sterretje (*) aan het einde van een veldlabel betekent dat het veld vereist is.
+Op het tabblad **technische informatie** vult u de velden in die in de volgende tabel worden beschreven. Een asterisk (*) aan het einde van een veld label geeft aan dat het veld vereist is.
 
-|        Veld          |  Description                                                                 |
+|        Veld          |  Beschrijving                                                                 |
 |    ---------------    |  ----------------------------------------------------------------------------|
-| **URL van installatieprogramma\***     | Wanneer u de app publiceren en het niveau naar productie verhogen, genereert Power BI deze URL.  Zie voor meer informatie, [publiceren van apps met dashboards en rapporten in Power BI](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
-|  **Validatie-instructies**  |  Als u wilt, voegt u instructies (maximaal 3.000 tekens) om u te helpen bij het validatieteam van Microsoft configureren, verbinden en test uw app. Typische configuratie-instellingen, accounts, parameters of andere gegevens die kan worden gebruikt voor het testen van de optie verbinding maken met gegevens bevatten. Deze informatie is alleen zichtbaar voor de validatieteam en het wordt enkel gebruikt voor validatie doeleinden.  |
-| **Deze app gemaakt als een Power BI-inhoudspakket?** | Dit veld wordt op dit moment alleen intern gebruikt. Laat de standaardinstelling van **Nee**. Als u de instelling te wijzigen **Ja**, kunt u het publicatieproces stoppen.  |  
+| **URL van installatie programma\***     | Deze URL wordt door Power BI gegenereerd wanneer u de app publiceert en promoveert naar productie.  Zie [apps publiceren met Dash boards en rapporten in Power bi](https://docs.microsoft.com/power-bi/service-create-distribute-apps)voor meer informatie.  |
+|  **Validatie-instructies**  |  Indien gewenst, voegt u instructies toe (Maxi maal 3.000 tekens) om het micro soft-validatie team te helpen bij het configureren, verbinden en testen van uw app. Bevatten typische configuratie-instellingen, accounts, para meters of andere informatie die kan worden gebruikt voor het testen van de optie gegevens verbinding maken. Deze informatie is alleen zichtbaar voor het validatie team en wordt alleen gebruikt voor validatie doeleinden.  |
+| **Is deze app gemaakt als een Power BI inhouds pakket?** | Dit veld wordt momenteel alleen intern gebruikt. Wijzig de standaard instelling **Nee**. Als u de instelling wijzigt in **Ja**, kunt u het publicatie proces stoppen.  |  
 |  |  |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Op de [Storefront Details](./cpp-storefront-details-tab.md) tabblad, marketing- en juridische informatie voor uw app.
+Geef op het tabblad Details van de [winkel](./cpp-storefront-details-tab.md) marketing en juridische informatie op voor uw app.
 

@@ -1,33 +1,34 @@
 ---
-title: Publiceren controlelijst voor AppSource | Azure Marketplace
-description: Publiceren controlelijst voor AppSource.
+title: Controle lijst voor publicatie voor AppSource | Azure Marketplace
+description: Publicatie lijst voor AppSource.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7df88c941c1d42bc4a49e391fa3d64273237bd08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a40816604df510eb66d6ea7bccbe86f8c327406
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937586"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822643"
 ---
-# <a name="publishing-checklist-for-appsource"></a>Publiceren controlelijst voor AppSource  
+# <a name="publishing-checklist-for-appsource"></a>Controle lijst voor publicatie voor AppSource  
 
-Controleer de vereiste onderdelen voordat u start het publicatieproces.  
+Controleer de vereiste onderdelen voordat u het publicatie proces start.  
 
-De volgende artefacten zijn vereist om uw app op AppSource te publiceren.  
+De volgende artefacten zijn vereist voor het publiceren van uw app op AppSource.  
 
 ## <a name="checklist"></a>Controlelijst  
 
-| Type aanbieding | Type aanbieding | Artefacten publiceren |   
+| Type vermelding | Type aanbieding | Publicatie artefact |   
 |:--- |:--- |:--- |  
-| Lijst | Consulting Services | <table> <tr><th>StoreFront Details</th></tr> <tr><td>Naam van de aanbieding (200 tekens)</td></tr> <tr><td>Beschrijving (2000 tekens)</td></tr> <tr><td>MPN-id</td></tr> <tr><td>Beschikbaarheid van het land/regio</td></tr> <tr><td>Van toepassing branches, categorieën en Zoektrefwoorden</td></tr> <tr><td>Schermafbeeldingen (1280 x 720; maximaal 5)</td></tr> <tr><td>Marketing-documenten (maximaal 3)</td></tr> <tr><td>Bestemming leiden</td></tr> <tr><td>Bedrijfslogo (48 x 48, 216 x 216)</td></tr> <tr><td>Competenties</td></tr> <tr><td>Overzichtsvideo product (optioneel)</td></tr> </table> |  
+| Lijst | Consulting Service | <table> <tr><th>Details van de winkel</th></tr> <tr><td>Naam van aanbieding (200 tekens)</td></tr> <tr><td>Beschrijving (2.000 tekens)</td></tr> <tr><td>MPN-id</td></tr> <tr><td>Beschik baarheid land/regio</td></tr> <tr><td>Toepasselijke branches, categorieën en zoek woorden</td></tr> <tr><td>Scherm afbeeldingen (1280x720; maximum 5)</td></tr> <tr><td>Marketing documenten (Maxi maal 3)</td></tr> <tr><td>Doel van de lead</td></tr> <tr><td>Bedrijfs logo's (48x48, 216x216)</td></tr> <tr><td>Competenties</td></tr> <tr><td>Video over product overzicht (optioneel)</td></tr> </table> |  
 
 ## <a name="next-steps"></a>Volgende stappen
-*   Ga naar de [Azure Marketplace en AppSource Uitgevershandleiding voor](./marketplace-publishers-guide.md) pagina.  
+*   Ga naar de pagina [met Publisher-hand leiding voor Azure Marketplace en AppSource](./marketplace-publishers-guide.md) .  
 
 ---

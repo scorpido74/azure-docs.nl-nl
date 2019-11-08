@@ -1,68 +1,69 @@
 ---
-title: Beheren van gebruikers in de Cloud Partner-Portal | Azure Marketplace
-description: Beheren van gebruikers in de cloud partner-portal
+title: Gebruikers beheren op Cloud Partner-portal | Azure Marketplace
+description: Gebruikers beheren in de Cloud Partner Portal
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 manager: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 21c49ad0d73721dd204a7a3899d11cf10d43521b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4dc9fdf94ba6311f1b59c61ec686628a728e2510
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942097"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826642"
 ---
-# <a name="managing-users-on-the-cloud-partner-portal"></a>Beheren van gebruikers in de Cloud Partner-Portal
+# <a name="managing-users-on-the-cloud-partner-portal"></a>Gebruikers beheren op het Cloud Partner-portal
 
-De [Cloud Partner-Portal](https://cloudpartner.azure.com) kunt u gebruikers met toegang op basis van rollen toevoegen aan de virtuele machine-aanbiedingen. Zo kunt u de toegang en machtigingen beheren terwijl meerdere mensen op aanbiedingen werken.
+Met de [Cloud Partner-Portal](https://cloudpartner.azure.com) kunt u gebruikers toevoegen met op rollen gebaseerde toegang tot aanbiedingen van virtuele machines. Het helpt bij het beheren van toegang en machtigingen terwijl meerdere mensen aan aanbiedingen werken.
 
-## <a name="add-users-and-assign-roles"></a>Gebruikers toevoegen en toewijzen van rollen 
+## <a name="add-users-and-assign-roles"></a>Gebruikers toevoegen en rollen toewijzen 
 
-Gebruik de volgende stappen gebruikers kunt toevoegen en toewijzen van rollen voor het publiceren van de aanbieding.
+Gebruik de volgende stappen om gebruikers toe te voegen en rollen toe te wijzen voor het publiceren van aanbiedingen.
 
-1. Klik op de **gebruikers** tabblad in het navigatiedeelvenster links.
+1. Klik op het tabblad **gebruikers** in het navigatie deel venster aan de linkerkant.
 
     ![Tabblad gebruikers](./media/userstab.png)
 
 
-2. Klik op **gebruiker toevoegen**.
+2. Klik op **Add User**.
 
     ![Gebruiker toevoegen selecteren](./media/adduser.png)
 
 
-3. Typ de e-mailadres van de gebruiker en selecteer een roltoewijzing.  U kunt de nieuwe gebruiker als 'eigenaar' of 'Inzender' toevoegen.
+3. Typ het e-mail adres van de gebruiker en selecteer een roltoewijzing.  U kunt de nieuwe gebruiker toevoegen als ' eigenaar ' of ' Inzender '.
 
-    **e-mailbericht**: De e-mailadressen van de teamleden die werkt over het publiceren van de aanbieding toevoegen. Microsoft-accounts (zoals Outlook, Hotmail en Live) en organisatie-id's worden ondersteund.
+    **E-mail**: Voeg de e-mail adressen toe van de team leden die werken met het publiceren van de aanbieding. Micro soft-accounts (Outlook, Hotmail en live) en organisatie-Id's worden ondersteund.
 
-    - Een 'groep team/e-alias/beveiligingsgroep toevoegen ' ter bescherming tegen de persoon die de organisatie heeft verlaten.
-    - Zorg ervoor dat e-id's opgegeven in de Cloud Partner-Portal voor alle communicatie van Microsoft worden bewaakt.
+    - Voeg een e-mail alias/beveiligings groep voor team/groep toe om te beschermen tegen de persoon die de organisatie verlaat.
+    - Zorg ervoor dat de e-mail-Id's die op het Cloud Partner-portal worden gegeven, worden bewaakt voor elke communicatie van micro soft.
     
     ![Rol toewijzen](./media/assignrole.png)
 
-    **Rol**: Raadpleeg de onderstaande tabel voor het identificeren van het type van de juiste rol.
+    **Rol**: Raadpleeg de onderstaande tabel om het juiste type gebruikersrol te identificeren.
 
-    ![Het niveau van rollen](./media/roleaccesslevel.png)
+    ![Niveau van rol](./media/roleaccesslevel.png)
 
-    Alleen eigenaars hebben toegang tot de Azure-betalingen en Azure-klant tabbladen in [verkoper Insights](../../cloud-partner-portal-orig/si-getting-started.md).
+    Alleen eigen aars hebben toegang tot de tabbladen Azure-uitbetalingen en Azure-klanten in de [verkoop inzichten](../../cloud-partner-portal-orig/si-getting-started.md).
 
 
-4. Selecteer de naam van de uitgever die u wilt toevoegen aan de nieuwe gebruiker en klik vervolgens op toevoegen om toevoeging van de gebruiker te voltooien.
+4. Selecteer de naam van de uitgever die u aan de nieuwe gebruiker wilt toevoegen en klik vervolgens op toevoegen om de gebruikers toevoeging te volt ooien.
 
     > [!NOTE]
-    > "Namen van de uitgevers" waarvoor uw e-mailadres wordt toegevoegd als een eigenaar of bijdrager worden weergegeven in de vervolgkeuzelijst van **Publisher** voor selectie.
+    > De naam van de uitgever waarvoor uw e-mail adres is toegevoegd als eigenaar of mede werker wordt weer gegeven in de vervolg keuzelijst van **Publisher** voor selectie.
 
 
-    ![Rol - Selecteer publisher toe te wijzen](./media/assignselectpublisher.png)
+    ![Rol toewijzen: Selecteer Uitgever](./media/assignselectpublisher.png)
 
 
 ## <a name="delete-an-existing-user"></a>Een bestaande gebruiker verwijderen
 
-Als u wilt verwijderen van een bestaande gebruiker, zoeken naar hun e-mailadres in de **gebruikers** tabblad, en druk vervolgens op de **verwijderen** knop aan de rechterkant.
+Als u een bestaande gebruiker wilt verwijderen, zoekt u naar hun e-mail op het tabblad **gebruikers** en drukt u op de knop **verwijderen** aan de rechter kant.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt ook de portal gebruiken om [publisher-profielen beheren](./cpp-manage-publisher-profile.md).
+U kunt de portal ook gebruiken voor het [beheren van Publisher-profielen](./cpp-manage-publisher-profile.md).

@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: a092647f9772aafdf610ee9a5ba85ded17d50def
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3dc439c352bb3e6e56fae4b83d783da94720bfe1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577706"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818403"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>machine learning-pijp lijnen maken en uitvoeren met Azure Machine Learning SDK
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -114,7 +114,7 @@ output_data1 = PipelineData(
 
 ## <a name="set-up-compute-target"></a>Reken doel instellen
 
-In Azure Machine Learning verwijst de term computes__ (of __reken doel__) naar de computers of clusters die de reken stappen in uw machine learning pijp lijn uitvoeren.   Zie [Compute-doelen voor model training](how-to-set-up-training-targets.md) voor een volledige lijst met Compute-doelen en hoe u deze kunt maken en koppelen aan uw werk ruimte.  Het proces voor het maken en of koppelen van een reken doel is hetzelfde, ongeacht of u een model traint of een pijplijn stap uitvoert. Nadat u het reken doel hebt gemaakt en gekoppeld, gebruikt u het `ComputeTarget`-object in de [pijplijn stap](#steps).
+In Azure Machine Learning verwijst de term computes__ (of __reken doel__) naar de computers of clusters die de reken stappen in uw machine learning-pijp lijn uitvoeren.   Zie [Compute-doelen voor model training](how-to-set-up-training-targets.md) voor een volledige lijst met Compute-doelen en hoe u deze kunt maken en koppelen aan uw werk ruimte.  Het proces voor het maken en of koppelen van een reken doel is hetzelfde, ongeacht of u een model traint of een pijplijn stap uitvoert. Nadat u het reken doel hebt gemaakt en gekoppeld, gebruikt u het `ComputeTarget`-object in de [pijplijn stap](#steps).
 
 > [!IMPORTANT]
 > Het uitvoeren van beheer bewerkingen op Compute-doelen wordt niet ondersteund vanuit externe taken. Omdat machine learning-pijp lijnen worden verzonden als een externe taak, mag u geen beheer bewerkingen gebruiken op reken doelen vanuit de pijp lijn.
@@ -166,7 +166,7 @@ Als u Azure Databricks als een reken doel wilt koppelen, geeft u de volgende inf
 
 * __Databricks Compute name__: de naam die u wilt toewijzen aan deze Compute-resource.
 * __Naam van de Databricks-werk ruimte__: de naam van de Azure Databricks-werk ruimte.
-* __Databricks-toegangs token__: het toegangs token dat wordt gebruikt voor het verifiëren van Azure Databricks. Als u een toegangs token wilt genereren, raadpleegt u het [verificatie](https://docs.azuredatabricks.net/api/latest/authentication.html) document.
+* __Databricks-toegangs token__: het toegangs token dat wordt gebruikt voor het verifiëren van Azure Databricks. Als u een toegangs token wilt genereren, raadpleegt u het [verificatie](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) document.
 
 De volgende code laat zien hoe u Azure Databricks als reken doel koppelt aan de Azure Machine Learning SDK:
 
@@ -279,7 +279,7 @@ trainStep = PythonScriptStep(
 )
 ```
 
-Eerdere resultaten opnieuw gebruiken (`allow_reuse`) is een belang rijke methode voor het gebruik van pijp lijnen in een samenwerkings omgeving, omdat overbodige herstarts minder flexibel zijn. Hergebruik is het standaard gedrag wanneer de SCRIPT_NAME, invoer en de para meters van een stap hetzelfde blijven. Wanneer de uitvoer van de stap opnieuw wordt gebruikt, wordt de taak niet verzonden naar de compute, in plaats daarvan zijn de resultaten van de vorige uitvoering onmiddellijk beschikbaar voor de uitvoering van de volgende stap. Als `allow_reuse` is ingesteld op False, wordt tijdens de uitvoering van de pijp lijn altijd een nieuwe uitvoering gegenereerd voor deze stap. 
+Eerdere resultaten opnieuw gebruiken (`allow_reuse`) is een belang rijke methode voor het gebruik van pijp lijnen in een samenwerkings omgeving, omdat overbodige herstarts minder flexibel zijn. Hergebruik is het standaard gedrag wanneer de script_name, invoer en de para meters van een stap hetzelfde blijven. Wanneer de uitvoer van de stap opnieuw wordt gebruikt, wordt de taak niet verzonden naar de compute, in plaats daarvan zijn de resultaten van de vorige uitvoering onmiddellijk beschikbaar voor de uitvoering van de volgende stap. Als `allow_reuse` is ingesteld op False, wordt tijdens de uitvoering van de pijp lijn altijd een nieuwe uitvoering gegenereerd voor deze stap. 
 
 Nadat u de stappen hebt gedefinieerd, bouwt u de pijp lijn met behulp van enkele of al deze stappen.
 
@@ -437,7 +437,7 @@ U kunt deze opnieuw inschakelen met `p.enable()`. Zie referentie [PublishedPipel
 
 Om het gedrag van uw pijp lijnen te optimaliseren en aan te passen, kunt u enkele dingen doen om in de cache te plaatsen en opnieuw te gebruiken. U kunt bijvoorbeeld het volgende kiezen:
 + **Schakel de standaard hergebruik van de uitvoering van de stap uit** door `allow_reuse=False` in te stellen tijdens de definitie van de [stap](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py). Hergebruik is essentieel voor het gebruik van pijp lijnen in een samenwerkings omgeving omdat het elimineren van overbodige uitvoeringen flexibiliteit biedt. U kunt het echter niet opnieuw gebruiken.
-+ **Breid hashing verder uit met het script**, om ook een absoluut pad of relatieve paden naar de bronmap te gebruiken voor andere bestanden en mappen met behulp van de `hash_paths=['<file or directory']` 
++ **Breid hashing verder uit met het script**, om ook een absoluut pad of relatieve paden naar de source_directory toe te voegen aan andere bestanden en mappen met behulp van de `hash_paths=['<file or directory']` 
 + **Het opnieuw genereren van uitvoer afdwingen voor alle stappen in een uitvoering** met `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
 `allow_reuse` voor stappen is standaard ingeschakeld en alleen het hoofd script bestand wordt gehasht. Als het script voor een gegeven stap hetzelfde blijft (`script_name`, invoer en de para meters), wordt de uitvoer van een vorige uitvoering van de stap opnieuw gebruikt, wordt de taak niet verzonden naar de compute en worden de resultaten van de vorige uitvoering onmiddellijk beschikbaar voor de volgende stap.  

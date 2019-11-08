@@ -1,5 +1,5 @@
 ---
-title: App-wacht woorden instellen op de pagina beveiligings gegevens (preview)-Azure Active Directory | Microsoft Docs
+title: App-wacht woorden maken in beveiligings gegevens (preview)-Azure AD
 description: Automatische gegenereerde wacht woorden (app-wacht woorden) instellen voor gebruik met een niet-browser-app of een app die geen ondersteuning biedt voor twee ledige verificatie in uw organisatie. Dit app-wacht woord is gescheiden van een normaal wacht woord en kan worden ingesteld op de pagina met beveiligings gegevens.
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: eb26d90772fc9e3e3e506946363c76cf02e6b2ef
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915983"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820331"
 ---
-# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>App-wacht woorden beheren via de pagina met beveiligings gegevens (preview)
+# <a name="create-app-passwords-from-your-security-info-preview-page"></a>App-wacht woorden maken op de pagina met beveiligings gegevens (preview)
 
 Bepaalde apps, zoals Outlook 2010, bieden geen ondersteuning voor verificatie in twee stappen. Dit gebrek aan ondersteuning betekent dat als u verificatie in twee stappen in uw organisatie gebruikt, de app niet werkt. Om dit probleem op te lossen, kunt u een automatisch gegenereerd wacht woord maken voor gebruik met elke niet-browser-app, gescheiden van uw normale wacht woord.
 
@@ -46,7 +46,7 @@ Als u verificatie in twee stappen gebruikt met uw werk-of school account en de b
 
 ### <a name="to-create-a-new-app-password"></a>Een nieuw app-wacht woord maken
 
-1. Meld u aan bij uw werk-of school account en ga vervolgens https://myprofile.microsoft.com/ naar de pagina.
+1. Meld u aan bij uw werk-of school account en ga vervolgens naar de pagina met https://myprofile.microsoft.com/.
 
     ![Mijn profiel pagina, met gemarkeerde koppelingen voor beveiligings gegevens](media/security-info/securityinfo-myprofile-page.png)
 

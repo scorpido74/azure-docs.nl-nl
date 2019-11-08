@@ -1,5 +1,5 @@
 ---
-title: Visual Studio met .NET gebruiken en C# query's uitvoeren op Azure SQL database
+title: Visual Studio met .NET gebruiken en C# query's uitvoeren
 description: Gebruik Visual Studio om een C#-toepassing te maken die is verbonden met een Azure SQL-database en query's uitvoert op deze database met behulp van Transact-SQL-instructies.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 42b7f553d88e130e0958bd38e4e5ff308b74e81f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b9bc7d077acd3e6e3716cf0a012205e6de54a4b7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690977"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827060"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Snelstartgids: .NET en C# in Visual Studio gebruiken om verbinding te maken met een Azure-SQL database en een query uit te zoeken
 

@@ -1,22 +1,23 @@
 ---
-title: Azure SQL Database-en SQL Data Warehouse connectiviteits architectuur
+title: Connectiviteits architectuur
 description: In dit document wordt de architectuur van Azure SQL-connectiviteit uitgelegd voor database verbindingen vanuit Azure of van buiten Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: fasttrack-edit
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.devlang: ''
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: d414276e081407af8ea21ebcbd96909d34455a22
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2140216a27d9c903495da4f7b43f6fdfda62591e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690860"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826915"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architectuur van Azure SQL-connectiviteit
 
@@ -96,7 +97,7 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Azië - zuidoost      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | VAE - centraal          | 20.37.72.64        |
 | VAE - noord            | 65.52.248.0        |
-| VK - zuid             | 51.140.184.11      |
+| Verenigd Koninkrijk Zuid             | 51.140.184.11      |
 | Verenigd Koninkrijk West              | 51.141.8.11        |
 | US - west-centraal      | 13.78.145.25       |
 | Europa -west          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |

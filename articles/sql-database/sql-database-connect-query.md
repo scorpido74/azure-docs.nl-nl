@@ -1,5 +1,5 @@
 ---
-title: Quick starts voor Azure SQL Database verbinding en Query's
+title: Quick starts voor verbinding en Query's
 description: In deze snelstartgidsen voor Azure SQL Database wordt beschreven hoe u verbinding maakt met een Azure SQL-database en vervolgens een query uitvoert.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: e7ddd5449b7a12b8586b0c1675690a9cebab57b8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 647bdcf5c8c49b5c942419c78155ed4f61c848bb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690832"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826881"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>Quick starts: Azure SQL Database verbinding maken en query's uitvoeren
 
@@ -59,7 +59,7 @@ U kunt verschillende bibliotheken en frameworks gebruiken om verbinding te maken
 
 De volgende tabel bevat connectiviteitsbibliotheken of *stuurprogramma's* die clienttoepassingen kunnen gebruiken vanuit een groot aantal talen om verbinding te maken met en gebruik te maken van SQL Server on-premises of in de cloud. U kunt deze gebruiken in Linux, Windows of Docker en om verbinding te maken met Azure SQL Database en Azure SQL Data Warehouse. 
 
-| Taal | Platform | Aanvullende bronnen | Downloaden | Aan de slag |
+| Taal | Platform | Aanvullende bronnen | Download | Aan de slag |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Microsoft ADO.NET voor SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [Downloaden](https://www.microsoft.com/net/download/) | [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [Microsoft JDBC-stuurprogramma voor SQL Server](https://msdn.microsoft.com/library/mt484311.aspx) | [Downloaden](https://go.microsoft.com/fwlink/?linkid=852460) |  [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)

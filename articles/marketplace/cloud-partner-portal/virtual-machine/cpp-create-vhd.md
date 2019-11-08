@@ -1,77 +1,78 @@
 ---
-title: Een Azure-compatibele VHD maken voor de Azure Marketplace
-description: Wordt uitgelegd hoe u een VHD voor een virtuele machine-aanbieding maken in de Azure Marketplace.
+title: Een Azure-compatibele VHD maken voor Azure Marketplace
+description: Hierin wordt uitgelegd hoe u een VHD maakt voor een aanbieding van een virtuele machine in azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pabutler
-ms.openlocfilehash: a47d16108d98c5449d57d1db4892bffcead7e5f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 37fecb8100ec40ace02960a4f3390420a8bfc735
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072610"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816802"
 ---
-# <a name="create-an-azure-compatible-vhd"></a>Een Azure-compatibele VHD maken
+# <a name="create-an-azure-compatible-vhd"></a>Een virtuele harde schijf maken die compatibel is met Azure
 
-Dit artikel vindt u de stappen die zijn vereist voor het maken van een virtuele harde schijf (VHD) voor de aanbieding van een virtuele machine (VM) in de Azure Marketplace.  Dit omvat ook aanbevolen procedures voor diverse aspecten, zoals met behulp van de Remote Desktop Protocol (RDP), het selecteren van een grootte voor de virtuele machine, de meest recente Windows-updates te installeren en generaliseren van de VHD-installatiekopie.  De volgende secties voornamelijk gericht op windows gebaseerde VHD's; Zie voor meer informatie over het maken van VHD's op basis van Linux [Linux op door Azure onderschreven distributies](../../../virtual-machines/linux/endorsed-distros.md). 
+In dit artikel worden de stappen beschreven die nodig zijn voor het maken van een virtuele harde schijf (VHD) voor een virtuele machine (VM)-aanbieding in de Azure Marketplace.  Het bevat ook aanbevolen procedures voor verschillende aspecten, zoals het gebruik van de Remote Desktop Protocol (RDP), het selecteren van een grootte voor de virtuele machine, het installeren van de meest recente Windows-updates en het generaliseren van de VHD-installatie kopie.  De volgende secties zijn voornamelijk gericht op Vhd's met Windows. Zie [Linux op distributies die zijn goedgekeurd door Azure](../../../virtual-machines/linux/endorsed-distros.md)voor meer informatie over het maken van op Linux gebaseerde virtuele harde schijven. 
 
 > [!WARNING]
-> Het is raadzaam dat u Volg de instructies in dit onderwerp om Azure te gebruiken om een VM met een vooraf geconfigureerde, onderschreven besturingssysteem te maken.  Als dit niet compatibel met uw oplossing is, is het mogelijk te maken en configureren van een on-premises virtuele machine met behulp van een goedgekeurde besturingssysteem.  U kunt vervolgens configureren en voorbereiden voor upload, zoals beschreven in [voorbereiden van een Windows VHD of VHDX te uploaden naar Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+> U wordt aangeraden de instructies in dit onderwerp te volgen om Azure te gebruiken voor het maken van een virtuele machine met een vooraf geconfigureerd, goedgekeurd besturings systeem.  Als deze niet compatibel is met uw oplossing, kunt u een on-premises VM maken en configureren met behulp van een goedgekeurd besturings systeem.  U kunt deze vervolgens configureren en voorbereiden voor het uploaden, zoals wordt beschreven in [een Windows-VHD of VHDX voorbereiden om te uploaden naar Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
 
 
-## <a name="select-an-approved-base"></a>Selecteer een goedgekeurde base
-Het besturingssysteem VHD voor uw VM-installatiekopie moet worden gebaseerd op een Azure goedgekeurde basisinstallatiekopie met Windows Server of SQL Server.
-Om te beginnen een VM maken van een van de volgende installatiekopieën te vinden op de Microsoft Azure portal:
+## <a name="select-an-approved-base"></a>Selecteer een goedgekeurde basis
+De VHD van het besturings systeem voor uw VM-installatie kopie moet gebaseerd zijn op een door Azure goedgekeurde basis installatie kopie die Windows Server of SQL Server bevat.
+Als u wilt beginnen, maakt u een virtuele machine op basis van een van de volgende installatie kopieën, die zich bevindt op de Microsoft Azure-portal:
 
--   Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
--   [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
--   [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
+-   Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 data center](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Data Center](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
+-   [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enter prise, Standard, web)
+-   [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enter prise, Standard, web)
 
 > [!TIP]
-> Als u van de huidige Azure-portal of PowerShell gebruikmaakt, worden Windows Server-installatiekopieën gepubliceerd op 8 September 2014 en hoger goedgekeurd.
+> Als u de huidige Azure Portal of Power shell gebruikt, worden installatie kopieën van Windows Server die zijn gepubliceerd op 8 september 2014 en later goedgekeurd.
 
-U kunt ook biedt Azure een scala aan goedgekeurde Linux-distributies.  Zie voor een huidige lijst [Linux op door Azure onderschreven distributies](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+Azure biedt ook een aantal goedgekeurde Linux-distributies.  Zie voor een actuele lijst [Linux op distributies die zijn goedgekeurd door Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 
 
-## <a name="create-vm-in-the-azure-portal"></a>Virtuele machine maken in Azure portal 
+## <a name="create-vm-in-the-azure-portal"></a>Een virtuele machine maken in de Azure Portal 
 
-In de Microsoft [Azure-portal](https://ms.portal.azure.com/), maken van de basisinstallatiekopie met behulp van de volgende stappen uit.
+Maak in de micro soft- [Azure Portal](https://ms.portal.azure.com/)de basis installatie kopie met behulp van de volgende stappen.
 
-1. Meld u aan bij de portal met het Microsoft-account voor het Azure-abonnement dat u wilt publiceren van uw VM-aanbieding.
-2. Maak een nieuwe resourcegroep en geef uw **groepsnaam voor Accountresources**, **abonnement**, en **resourcegroeplocatie**.  Zie voor meer richtlijnen [-resourcegroepen beheren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
-3. Klik op **virtuele machines** in de menubalk linksboven om weer te geven van de pagina met details van virtuele machines. 
-4. In deze nieuwe pagina, klikt u op **+ toevoegen** om weer te geven de **Compute** blade.  Als u het VM-type niet op het eerste scherm ziet, u kunt zoeken naar de naam van de basis-VM, bijvoorbeeld:
+1. Meld u aan bij de portal met de Microsoft-account voor het Azure-abonnement waarvoor u uw VM-aanbieding wilt publiceren.
+2. Maak een nieuwe resource groep en geef de locatie van de **resource groep**, het **abonnement**en de **resource groep**op.  Zie [resource groepen beheren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)voor meer informatie.
+3. Klik op **virtuele machines** in de linker menu balk om de pagina Details van virtuele machines weer te geven. 
+4. Klik op deze nieuwe pagina op **+ toevoegen** om de Blade **rekender** weer te geven.  Als u het VM-type niet ziet op het eerste scherm, kunt u zoeken naar de naam van de basis-VM, bijvoorbeeld:
 
-    ![COMPUTE-blade van de nieuwe virtuele machine](./media/publishvm_014.png)
+    ![Reken blad van nieuwe VM](./media/publishvm_014.png)
 
-5. Nadat u de installatiekopie van het juiste virtuele hebt geselecteerd, geeft u de volgende waarden:
-   * Op de **basisbeginselen** blade, voer een **naam** voor de virtuele machine, tussen 1-15 alfanumerieke tekens. (In dit voorbeeld wordt `DemoVm009`.)
-   * Voer een **gebruikersnaam** en een sterk **wachtwoord**, die worden gebruikt om te maken van een lokaal account op de virtuele machine.  (Hier `adminUser` wordt gebruikt.)  Het wachtwoord moet 8 tot 123 tekens lang zijn en aan drie van de vier volgende complexiteitsvereisten voldoen: ten minste één kleine letter, één hoofdletter, één cijfer en één speciaal teken. Zie voor meer informatie, [gebruikersnaam en wachtwoord vereisten](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm).
-   * Selecteer de resourcegroep die u hebt gemaakt (hier `DemoResourceGroup`).
-   * Selecteer een Azure-Datacenter **locatie** (hier `West US`).
-   * Klik op **OK** deze waarden worden opgeslagen. 
+5. Nadat u de juiste virtuele installatie kopie hebt geselecteerd, geeft u de volgende waarden op:
+   * Voer op de Blade **basis beginselen** een **naam** in voor de virtuele machine, tussen 1-15 alfanumerieke tekens. (In dit voor beeld wordt `DemoVm009`gebruikt.)
+   * Voer een **gebruikers naam** en een sterk **wacht woord**in die worden gebruikt voor het maken van een lokaal account op de virtuele machine.  (Hier wordt `adminUser` gebruikt.)  Het wacht woord moet 8-123 tekens lang zijn en aan drie van de vier volgende complexiteits vereisten voldoen: één kleine letter, één hoofd letter, één cijfer en één speciaal teken. Zie [vereisten voor gebruikers naam en wacht woord](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm)voor meer informatie.
+   * Selecteer de resource groep die u hebt gemaakt (hier `DemoResourceGroup`).
+   * Selecteer een **locatie** van een Azure-Data Center (hier `West US`).
+   * Klik op **OK** om deze waarden op te slaan. 
 
-6. Selecteer de grootte van de virtuele machine te implementeren met behulp van de volgende aanbevelingen:
-   * Als u van plan de VHD bent op locatie ontwikkelen, is de grootte niet van belang. Overweeg het gebruikt van een van de kleinere VM's.
+6. Selecteer de grootte van de virtuele machine die u wilt implementeren met behulp van de volgende aanbevelingen:
+   * Als u van plan bent om de VHD on-premises te ontwikkelen, is de grootte niet van belang. Overweeg het gebruikt van een van de kleinere VM's.
    * Als u van plan bent de installatiekopie in Azure te ontwikkelen, kunt u het gebruik van een van de aanbevolen VM-groottes voor de geselecteerde installatiekopie overwegen.
-   * Raadpleeg voor informatie over de prijzen, de **aanbevolen Prijscategorieën** selector weergegeven op de portal. De drie aanbevolen groottes die is geleverd door de uitgever worden weergegeven. (Hier is de uitgever van Microsoft.)
+   * Voor prijs informatie raadpleegt u de **Aanbevolen prijs categorie** selecteren die wordt weer gegeven op de portal. De drie aanbevolen grootten worden weer gegeven die door de uitgever worden ondersteund. (Dit is de uitgever van micro soft.)
 
-   ![Blade grootte van de nieuwe virtuele machine](./media/publishvm_015.png)
+   ![De Blade van de nieuwe VM aanpassen](./media/publishvm_015.png)
 
-7. In de **instellingen** blade, stel de **gebruik beheerde schijf** optie naar **geen**.  Hiermee kunt u de nieuwe VHD handmatig beheren. (De **instellingen** blade kunt u andere wijziging wijzigen ook de opslag- en netwerkopties, bijvoorbeeld selecteren **Premium (SSD)** in **schijftype**.)  Klik op **OK** om door te gaan.
+7. Stel op de Blade **instellingen** de optie **Managed Disk gebruiken** in op **Nee**.  Hierdoor kunt u de nieuwe VHD hand matig beheren. (Met de Blade **instellingen** kunt u ook andere wijzigingen in de opslag-en netwerk opties wijzigen, bijvoorbeeld het selecteren van **Premium (SSD)** in **schijf type**.)  Klik op **OK** om door te gaan.
 
-    ![De instellingenblade van de nieuwe virtuele machine](./media/publishvm_016.png)
+    ![De Blade instellingen van de nieuwe VM](./media/publishvm_016.png)
 
 8. Klik op **Samenvatting** om uw keuzes te bekijken. Als u het bericht **Validatie geslaagd** ziet, klikt u op **OK**.
 
-    ![Blade samenvatting van de nieuwe virtuele machine](./media/publishvm_017.png)
+    ![Blade samen vatting van nieuwe VM](./media/publishvm_017.png)
 
-Azure begint met het inrichten van de virtuele machine die u hebt opgegeven.  U kunt de voortgang volgen door te klikken op **virtuele Machines** tabblad links.  Nadat deze is gemaakt, wordt de status gewijzigd naar **met**.  Op dat moment kunt u [verbinding maken met de virtuele machine](./cpp-connect-vm.md).
+Azure begint met het inrichten van de virtuele machine die u hebt opgegeven.  U kunt de voortgang volgen door op **virtual machines** tabblad aan de linkerkant te klikken.  Nadat deze is gemaakt, wordt de status gewijzigd in **actief**.  Op dat moment kunt u [verbinding maken met de virtuele machine](./cpp-connect-vm.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u problemen bij het maken van uw nieuwe Azure op basis van VHD optreden, Raadpleeg [veelvoorkomende problemen tijdens het maken van VHD](./cpp-common-vhd-creation-issues.md).  Anders vervolgens moet u [verbinding maken met de virtuele machines](./cpp-connect-vm.md) u hebt gemaakt in Azure. 
+Als u problemen ondervindt bij het maken van uw nieuwe VHD op basis van Azure, raadpleegt u [algemene problemen tijdens het maken](./cpp-common-vhd-creation-issues.md)van de VHD.  Anders moet u eerst [verbinding maken met de virtuele machines](./cpp-connect-vm.md) die u in azure hebt gemaakt. 

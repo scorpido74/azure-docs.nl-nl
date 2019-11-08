@@ -4,19 +4,20 @@ description: 'Go-to-Market-Services: micro soft-bronnen die uitgevers kunnen geb
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 6ae761b9558a0d6c1b663c1202bc560382c7b0b6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7b563cd90ec3e46dfd2d4420b728cd6f69df40eb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752373"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818653"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Uw voor delen voor commerciële Marketplace
 
-U hebt gepubliceerd op Marketplace. u wilt nu uw aanbieding bekijken. We bieden u de voor delen – verkoop, technisch en marketing: u moet de groei van uw aanbieding versnellen.
+U hebt gepubliceerd op Marketplace. u wilt nu uw aanbieding bekijken. We bieden u de voor delen: verkoop, technisch en marketing: u moet de groei van uw aanbieding versnellen.
 
 Wanneer u met uw aanbieding aan de slag gaat, neemt het Marketplace bene fits-team contact met u op voor uw in aanmerking komende voor delen. De voor delen van Marketplace-beloningen worden berekend op basis van uw commerciële Marketplace-betrokkenheid en verkoop. Hoe meer u in beslag gaat, hoe meer u terugkeert.
 
@@ -44,7 +45,7 @@ De stappen om aan de slag te gaan zijn eenvoudig:
 2. Het team bereikt de aanbieding ' eigenaar ' of ' primaire contact persoon ' per Marketplace. Het is een best practice om een individu of een alias in te voeren die u regel matig controleert: berichten die worden verzonden naar aliassen, zoals info@company.com vaak verloren gaan.
 
 >[!Note]
->Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in Cloud Partner-portal of in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd. <br> <br> Als u de eigenaar niet kunt bepalen of als de eigenaar uw bedrijf heeft verlaten, kunt u op https://aka.ms/marketplacepublishersupport een ondersteunings ticket genereren.
+>Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in Cloud Partner-portal of in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd. <br> <br> Als u de eigenaar niet kunt bepalen of als de eigenaar uw bedrijf heeft verlaten, kunt u op https://aka.ms/marketplacepublishersupporteen ondersteunings ticket genereren.
 
 Het bereik van de activiteiten die voor u beschikbaar zijn, wordt uitgebreid naarmate u uw aanbiedingen in de Marketplace verg root. Alle vermeldingen ontvangen een basis niveau van optimalisatie aanbevelingen en promotie als onderdeel van een eigen e-mail van resources en aanbevolen procedures.
 

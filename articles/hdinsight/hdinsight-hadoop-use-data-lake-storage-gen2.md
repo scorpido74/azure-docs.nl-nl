@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f6bee53268ea99e99d79e218eaf7a5ae9fcb1d05
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: d8e23188aa07b1b271c3adc7c5550b18c0c60977
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104465"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827688"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters
 
@@ -36,7 +36,7 @@ Als u een HDInsight-cluster wilt maken dat gebruikmaakt van Data Lake Storage Ge
 
 Maak een door de gebruiker toegewezen beheerde identiteit als u deze nog niet hebt. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Klik linksboven op **een resource maken**.
 1. Typ door de **gebruiker toegewezen** in het zoekvak en klik op door de **gebruiker toegewezen beheerde identiteit**.
 1. Klik op **Create**.
@@ -51,19 +51,19 @@ Zie [beheerde identiteiten in azure hdinsight](hdinsight-managed-identities.md)v
 
 Een Azure Data Lake Storage Gen2-opslagaccount maken. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Klik linksboven op **een resource maken**.
 1. Typ **opslag** in het zoekvak en klik op **opslag account**.
 1. Klik op **Create**.
 1. In het scherm **opslag account maken** :
     1. Selecteer de juiste abonnement en resource groep.
-    1. Voer een naam in voor uw Data Lake Storage Gen2-account. Zie [naamgevings conventies voor Azure-resources](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage)voor meer informatie over naamgevings regels voor opslag accounts.
+    1. Voer een naam in voor uw Data Lake Storage Gen2-account. Zie [naamgevings conventies voor Azure-resources](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#storage)voor meer informatie over naamgevings regels voor opslag accounts.
     1. Klik op het tabblad **Geavanceerd** .
     1. Klik op **ingeschakeld** naast **hiërarchische naam ruimte** onder **Data Lake Storage Gen2**.
     1. Klik op **Controleren + maken**.
-    1. Klik op **Maken**
+    1. Klik op **Maken**.
 
-Voor meer informatie over andere opties tijdens het maken van een opslag [account raadpleegt u Quick Start: Maak een Azure Data Lake Storage Gen2 Storage-](../storage/blobs/data-lake-storage-quickstart-create-account.md)account.
+Zie [Quick Start: een Azure data Lake Storage Gen2 Storage-account maken](../storage/blobs/data-lake-storage-quickstart-create-account.md)voor meer informatie over andere opties tijdens het maken van een opslag account.
 
 ![Scherm opname van het maken van een opslag account in de Azure Portal](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
 
@@ -100,7 +100,7 @@ Wijs de beheerde identiteit toe aan de rol van de eigenaar van de **opslag-BLOB*
 
 U kunt [een voorbeeld sjabloon bestand downloaden](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) en [een voor beeld-parameter bestand downloaden](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). Voordat u de sjabloon en het Azure CLI-code fragment hieronder gebruikt, vervangt u de volgende tijdelijke aanduidingen door de juiste waarden:
 
-| Tijdelijke aanduiding | Description |
+| Tijdelijke aanduiding | Beschrijving |
 |---|---|
 | `<SUBSCRIPTION_ID>` | De ID van uw Azure-abonnement |
 | `<RESOURCEGROUPNAME>` | De resource groep waar u het nieuwe cluster en opslag account wilt maken. |
@@ -116,7 +116,7 @@ In het onderstaande code fragment worden de volgende eerste stappen uitgevoerd:
 1. Hiermee maakt u een nieuwe resource groep voor de nieuwe implementatie activiteiten. 
 1. Hiermee maakt u een door de gebruiker toegewezen beheerde identiteit.
 1. Hiermee wordt een extensie toegevoegd aan de Azure CLI om functies voor Data Lake Storage Gen2 te gebruiken.
-1. Hiermee maakt u een nieuw data Lake Storage Gen2-account `--hierarchical-namespace true` met behulp van de vlag. 
+1. Hiermee maakt u een nieuw Data Lake Storage Gen2-account met behulp van de `--hierarchical-namespace true` vlag. 
 
 ```azurecli
 az login

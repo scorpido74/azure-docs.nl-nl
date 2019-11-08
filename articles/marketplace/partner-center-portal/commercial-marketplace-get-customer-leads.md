@@ -4,15 +4,16 @@ description: Klanten leads in commerciële Marketplace configureren.
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: 31dcc8c1e35b627b231dbe2a62998c8514d05a20
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7ead8dee12d4376e6e1058b84a25b91c021a937c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902648"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812656"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Leads van klanten van uw Marketplace-aanbieding
 
@@ -48,11 +49,11 @@ Hier vindt u plaatsen waar een lead wordt gegenereerd:
 
 ## <a name="understand-lead-data"></a>Informatie over leads
 
-Elke lead die u ontvangt tijdens het klant verwervings proces heeft gegevens in specifieke velden. Het eerste veld dat moet worden gezocht, is `LeadSource` het veld met de volgende notatie: | **Aanbieding**voor de bron actie.
+Elke lead die u ontvangt tijdens het klant verwervings proces heeft gegevens in specifieke velden. Het eerste veld dat moet worden uitgecheckt, is het `LeadSource` veld met de volgende indeling: **bron actie** | **aanbieding**.
 
-**Bronnen**: De waarde voor dit veld wordt ingevuld op basis van de Marketplace die de lead heeft gegenereerd. Mogelijke waarden zijn `"AzureMarketplace"`, `"AzurePortal"`en `"AppSource (SPZA)"`.
+**Bronnen**: de waarde voor dit veld wordt ingevuld op basis van de Marketplace die de lead heeft gegenereerd. Mogelijke waarden zijn `"AzureMarketplace"`, `"AzurePortal"`en `"AppSource (SPZA)"`.
 
-**Acties**: De waarde voor dit veld wordt ingevuld op basis van de actie die de klant heeft ondernomen op de Marketplace, waardoor de lead werd gegenereerd. 
+**Acties**: de waarde voor dit veld wordt ingevuld op basis van de actie die de klant heeft ondernomen op de Marketplace, waardoor de lead werd gegenereerd. 
 
 Mogelijke waarden zijn:
 
@@ -62,9 +63,9 @@ Mogelijke waarden zijn:
 - ' Maken ': deze actie bevindt zich alleen in de Azure Portal en wordt gegenereerd wanneer een klant uw aanbieding aan hun account koopt.
 - "StartTestDrive": deze actie geldt alleen voor test stations en wordt gegenereerd wanneer een klant hun test drive start.
 
-**Aanbiedingen**: Mogelijk hebt u meerdere aanbiedingen op Marketplace. De waarde voor dit veld wordt ingevuld op basis van de aanbieding die de lead heeft gegenereerd. De uitgevers-ID en aanbiedings-ID worden beide in dit veld verzonden en zijn de waarden die u hebt ingevoerd tijdens het publiceren van de aanbieding naar de Marketplace.
+**Aanbiedingen**: mogelijk hebt u meerdere aanbiedingen op Marketplace. De waarde voor dit veld wordt ingevuld op basis van de aanbieding die de lead heeft gegenereerd. De uitgevers-ID en aanbiedings-ID worden beide in dit veld verzonden en zijn de waarden die u hebt ingevoerd tijdens het publiceren van de aanbieding naar de Marketplace.
 
-In de volgende voor beelden worden voorbeeld waarden in de `publisherid.offerid`verwachte indeling weer gegeven: 
+In de volgende voor beelden ziet u voorbeeld waarden in de verwachte indeling `publisherid.offerid`: 
 
 1. `checkpoint.check-point-r77-10sg-byol`
 1. `bitnami.openedxcypress`
@@ -74,13 +75,13 @@ In de volgende voor beelden worden voorbeeld waarden in de `publisherid.offerid`
 
 De gegevens van de klant worden verzonden via meerdere velden. In het volgende voor beeld ziet u de klant gegevens die zijn opgenomen in een lead.
 
-- Voor Letterlijk
-- Naam Smith
-- E-mail: jsmith\@Microsoft.com
-- Telefoons 1234567890
-- Land/regio: VS
-- Bedrijfs Microsoft
-- Hoofd CTO
+- Voor naam: John
+- LastName: Smit
+- E-mail: jsmith\@microsoft.com
+- Telefoon: 1234567890
+- Land: VS
+- Bedrijf: micro soft
+- Titel: CTO
 
 >[!Note]
 >Niet alle gegevens in het vorige voor beeld zijn altijd beschikbaar voor elke lead. Omdat u leads van meerdere stappen krijgt, zoals vermeld in de sectie leads van klanten, is de beste manier om de leads af te handelen en de opvolging van de records te personaliseren. Op deze manier krijgt elke klant een passend bericht en maakt u een unieke relatie.
@@ -104,7 +105,7 @@ Het antwoord is afhankelijk van het type aanbieding dat u publiceert. SaaS en Dy
 
 ### <a name="how-can-i-find-the-test-lead"></a>Hoe kan ik de test lead vinden?
 
-`“MSFT_TEST”` Zoek naar de doel locatie van de lead, hier volgt een voor beeld van een test lead van micro soft:
+Zoek naar `"MSFT_TEST"` in uw lead doel, hier volgt een voor beeld van een test lead van micro soft:
 
 ```
 company = MSFT_TEST_636573304831318844
@@ -141,7 +142,7 @@ U kunt toegang krijgen tot de lead gegevens die zijn opgeslagen in de Azure-tabe
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>Ik heb Azure Table als mijn lead bestemming geconfigureerd, kan ik een melding ontvangen wanneer een nieuwe lead door Marketplace wordt verzonden?
 
-Ja, volg de instructies voor het instellen van een micro soft flow waarmee een e-mail bericht wordt verzonden als een lead wordt toegevoegd aan [](./commercial-marketplace-lead-management-instructions-azure-table.md)de Azure-tabel in de documentatie.
+Ja, volg de instructies voor het instellen van een micro soft flow waarmee een e-mail bericht wordt verzonden als een lead wordt toegevoegd aan de Azure-tabel in [de documentatie.](./commercial-marketplace-lead-management-instructions-azure-table.md)
 
 ### <a name="i-have-configured-salesforce-as-my-lead-destination-why-cant-i-find-the-leads"></a>Ik heb Sales Force geconfigureerd als mijn lead-doel waarom kan ik de leads niet vinden?
 

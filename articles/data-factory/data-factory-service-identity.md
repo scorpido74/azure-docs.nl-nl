@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 437d1e13bfb0831bb3ece26f761cef4f5e2e0c6f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d8f65bef669e21af96ffe86319602ca5d1eea2c1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676989"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822717"
 ---
 # <a name="managed-identity-for-data-factory"></a>Beheerde identiteit voor Data Factory
 
@@ -26,7 +26,7 @@ Dit artikel helpt u te begrijpen wat de beheerde identiteit is voor Data Factory
 
 ## <a name="overview"></a>Overzicht
 
-Bij het maken van een data factory kan een beheerde identiteit worden gemaakt, samen met het maken van de fabriek. De beheerde identiteit is een beheerde toepassing die is geregistreerd in de Azure activity-map en vertegenwoordigt deze specifieke data factory.
+Bij het maken van een data factory kan een beheerde identiteit worden gemaakt, samen met het maken van de fabriek. De beheerde identiteit is een beheerde toepassing die is geregistreerd bij Azure Active Directory, en vertegenwoordigt deze specifieke data factory.
 
 Beheerde identiteit voor Data Factory voor delen de volgende functies:
 
@@ -136,7 +136,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-managed-identity-using-sdk"></a>Beheerde identiteit genereren met behulp van SDK
 
-Roep de data factory-functie create_or_update aan met id = New FactoryIdentity (). Voorbeeld code met behulp van .NET:
+Roep de data factory-create_or_update functie aan met identiteit = New FactoryIdentity (). Voorbeeld code met behulp van .NET:
 
 ```csharp
 Factory dataFactory = new Factory

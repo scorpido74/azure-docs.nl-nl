@@ -1,6 +1,6 @@
 ---
-title: Externe bewaking oplossingsverbetering FAQ - Azure | Microsoft Docs
-description: Veelgestelde vragen over oplossingsverbetering voor externe controle
+title: Veelgestelde vragen over Solution Accelerator voor externe controle-Azure | Microsoft Docs
+description: In dit artikel worden de veelgestelde vragen over de Accelerators voor externe controle oplossingen beantwoord.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,45 +8,45 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 746d21c7ff4d5b939eea7690193ac07425b4001c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c410ac7f41adb623a7198320a1edced097778569
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447904"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826236"
 ---
-# <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Veelgestelde vragen over oplossingsverbetering voor externe controle
+# <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Veelgestelde vragen over oplossings versneller voor externe controle
 
-Zie ook de algemene [Veelgestelde vragen over](iot-accelerators-faq.md).
+Zie ook de algemene [Veelgestelde vragen](iot-accelerators-faq.md).
 
-### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Hoeveel kost het de nieuwe oplossing voor externe controle inrichten?
+### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Wat kost het om de nieuwe oplossing voor externe controle in te richten?
 
-De nieuwe oplossingsverbetering biedt twee opties voor implementatie:
+De nieuwe oplossings versneller biedt twee implementatie opties:
 
-* Een *basic* optie die is ontworpen voor ontwikkelaars die willen voor lagere kosten voor ontwikkeling of klanten wilt bouwen, een demo's of concepttest.
-* Een *standard* optie die is ontworpen voor ondernemingen willen implementeren van een infrastructuur gereed is voor productie.
+* Een *basis* optie die is ontworpen voor ontwikkel aars die op zoek zijn naar lagere ontwikkelings kosten of klanten die op zoek zijn naar een demonstratie of concept.
+* Een *standaard* optie die is ontworpen voor bedrijven die een infra structuur willen implementeren die gereed is voor productie.
 
-### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>Hoe kan ik dat ik en houd de kosten laag terwijl ik mijn oplossing ontwikkelen?
+### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>Hoe kan ik ervoor zorgen dat mijn kosten actief blijven terwijl ik mijn oplossing ontwikkel?
 
-Naast het leveren van twee gedifferentieerde implementaties, heeft de nieuwe oplossing voor externe controle een instelling als u wilt in- of uitschakelen van de gesimuleerde apparaten op aanvraag. Uitschakelen van de simulatie van vermindert de gegevens die zijn opgenomen in de oplossing en dus de totale kosten.
+Naast het leveren van twee gedifferentieerde implementaties, heeft de nieuwe oplossing voor controle op afstand een instelling om alle gesimuleerde apparaten op aanvraag in of uit te scha kelen. Door de simulatie uit te scha kelen, vermindert u de gegevens die in de oplossing zijn opgenomen en dus de totale kosten.
 
-### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Wat is het verschil tussen de basic en standard-implementatie-opties? Hoe bepaal ik tussen de twee implementatieopties?
+### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Wat is het verschil tussen de opties basis en standaard implementatie? Hoe kan ik kiezen tussen de twee implementatie opties?
 
-Elke Implementatieoptie reageert op verschillende behoeften. De eenvoudige implementatie is ontworpen om aan de slag en ontwikkel PoC en kleine testfases. Het biedt een gestroomlijnde architectuur met de minimaal benodigde resources en lagere kosten. De standaardimplementatie is ontworpen om te ontwikkelen en aanpassen van een oplossing gereed is voor productie, en biedt een implementatie met de elementen die nodig zijn om te profiteren van die. Voor de betrouwbaarheid en schaal, microservices voor toepassingen worden gebouwd als Docker-containers en geïmplementeerd met behulp van een orchestrator (Kubernetes standaard). De orchestrator is verantwoordelijk voor het implementeren, schalen en beheren van de toepassing. U moet een optie op basis van uw huidige behoeften. U kunt een, de andere of een combinatie van beide, afhankelijk van de projectfase van uw.
+Elke implementatie optie reageert op verschillende behoeften. De basis implementatie is ontworpen om aan de slag te gaan en een haalbaarheids test en kleine Pilots te ontwikkelen. Het biedt een gestroomlijnde architectuur met de mini maal benodigde bronnen en lagere kosten. De standaard implementatie is ontworpen voor het bouwen en aanpassen van een oplossing die gereed is voor productie, en biedt een implementatie met de benodigde elementen om dat te realiseren. Voor betrouw baarheid en schaal worden toepassings micro Services gebouwd als docker-containers en geïmplementeerd met behulp van een Orchestrator (standaard Kubernetes). De orchestrator is verantwoordelijk voor het implementeren, schalen en beheren van de toepassing. Kies een optie op basis van uw huidige behoeften. U kunt een van beide gebruiken, of een combi natie van beide, afhankelijk van uw project fase.
 
-### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Hoe configureer ik een dynamische kaart op het dashboard?
+### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Hoe kan ik een dynamische toewijzing op het dash board configureren?
 
-Zie voor meer informatie, [Upgrade kaart sleutel om te zien van apparaten op een dynamische kaart](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map).
+Zie [Update toewijzings sleutel voor het weer geven van apparaten op een dynamische kaart](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map)voor meer informatie.
 
-### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Waar vind ik informatie over de vorige versie van de oplossing voor externe controle
+### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Waar vind ik informatie over de vorige versie van de oplossing voor bewaking op afstand?
 
-De vorige versie van de oplossingsverbetering voor externe controle was bekend als de IoT Suite vooraf geconfigureerde oplossing voor externe controle. U vindt de gearchiveerde documentatie op [ https://docs.microsoft.com/previous-versions/azure/iot-suite/ ](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
+De vorige versie van de oplossing voor controle op afstand van externe bewaking heette de IoT Suite vooraf geconfigureerde oplossing voor externe controle. U kunt de gearchiveerde documentatie vinden op [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
 
 ### <a name="next-steps"></a>Volgende stappen
 
 U kunt ook enkele van de andere functies en mogelijkheden van de IoT-oplossingsversnellers bekijken:
 
-* [Verken de mogelijkheden van de oplossingsverbetering voor externe controle](quickstart-remote-monitoring-deploy.md)
+* [Bekijk de mogelijkheden van de oplossings versneller voor externe controle](quickstart-remote-monitoring-deploy.md)
 * [Een overzicht van de oplossingsversneller voor Predictief onderhoud](iot-accelerators-predictive-overview.md)
-* [Verbonden Factory oplossingsversnellers implementeren](quickstart-connected-factory-deploy.md)
-* [Fundamentele IoT-beveiliging](/azure/iot-fundamentals/iot-security-ground-up)
+* [Connected Factory Solution Accelerator implementeren](quickstart-connected-factory-deploy.md)
+* [IoT-beveiliging vanaf de grond](/azure/iot-fundamentals/iot-security-ground-up)

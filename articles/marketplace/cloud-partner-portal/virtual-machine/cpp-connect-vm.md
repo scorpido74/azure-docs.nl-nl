@@ -1,70 +1,71 @@
 ---
-title: Verbinding maken met uw Microsoft Azure op basis van virtuele machine | Azure Marketplace
-description: Wordt uitgelegd hoe u verbinding maken met de nieuwe virtuele machine is gemaakt op Azure.
+title: Verbinding maken met uw virtuele machine op basis van Microsoft Azure | Azure Marketplace
+description: Hierin wordt uitgelegd hoe u verbinding maakt met de nieuwe virtuele machine die is gemaakt in Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: ca002a77fd7252466f604b995af949b54694bc8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 256952d06e8b417be9ab2bc3c6c8c6857d50e2ea
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938584"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817376"
 ---
-# <a name="connect-to-your-azure-based-virtual-machine"></a>Verbinding maken met uw virtuele machine van Azure
+# <a name="connect-to-your-azure-based-virtual-machine"></a>Verbinding maken met uw virtuele machine op basis van Azure
 
-In dit artikel wordt uitgelegd hoe u verbinding maken met en meld u aan de virtuele machines (VM's) die u hebt gemaakt in Azure.  Nadat u verbinding hebt gemaakt, kunt u werken met de virtuele machine als u lokaal zijn aangemeld bij de host-server. 
+In dit artikel wordt uitgelegd hoe u verbinding maakt met en hoe u zich aanmeldt bij de virtuele machines (Vm's) die u hebt gemaakt in Azure.  Zodra u verbinding hebt gemaakt, kunt u met de virtuele machine werken alsof u lokaal bent aangemeld bij de hostserver. 
 
-## <a name="connect-to-a-windows-based-vm"></a>Verbinding maken met een Windows-VM
+## <a name="connect-to-a-windows-based-vm"></a>Verbinding maken met een VM op basis van Windows
 
-U gebruikt de extern bureaublad-client verbinding maken met de virtuele machine wordt gehost in Azure op basis van Windows.  De meeste versies van Windows bevatten systeemeigen ondersteuning voor remote desktop protocol (RDP).  Voor andere virtuele machines, vindt u meer informatie over de clients in [extern bureaublad-clients](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients).  
+U gebruikt de extern bureau blad-client om verbinding te maken met de op Windows gebaseerde VM die op Azure wordt gehost.  De meeste versies van Windows bevatten systeem eigen ondersteuning voor Remote Desktop Protocol (RDP).  Voor andere computers kunt u meer informatie vinden over clients in [extern bureaublad-clients](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients).  
 
-Het volgende artikel wordt uitgelegd hoe u de ingebouwde ondersteuning voor Windows-RDP verbinding maken met uw virtuele machine: [Hoe u verbinding maken met en meld u aan een virtuele Azure-machine waarop Windows wordt uitgevoerd bij](../../../virtual-machines/windows/connect-logon.md).  
+In het volgende artikel vindt u informatie over het gebruik van de ingebouwde Windows RDP-ondersteuning om verbinding te maken met uw VM: [verbinding maken en aanmelden bij een virtuele machine van Azure waarop Windows wordt uitgevoerd](../../../virtual-machines/windows/connect-logon.md).  
 
 >[!TIP]
-> Krijgt u mogelijk waarschuwingen tijdens het proces zo dat het RDP-bestand van een onbekende uitgever is of dat de referenties van de gebruiker kunnen niet worden geverifieerd.  Het is veilig negeren van deze waarschuwingen.
+> U kunt tijdens het proces beveiligings waarschuwingen ontvangen, bijvoorbeeld dat het RDP-bestand van een onbekende uitgever is of dat uw gebruikers referenties niet kunnen worden geverifieerd.  Het is veilig om deze waarschuwingen te negeren.
 
 
-## <a name="connect-to-a-linux-based-vm"></a>Verbinding maken met een Linux-VM
+## <a name="connect-to-a-linux-based-vm"></a>Verbinding maken met een op Linux gebaseerde VM
 
-Verbind de VM op basis van Linux, moet u een secure shell (SSH)-protocol-client.  Deze beschrijving wordt gebruik van de gratis [PuTTY](https://www.ssh.com/ssh/putty/) SHH-terminal.
+Als u verbinding wilt maken met de op Linux gebaseerde VM, hebt u een SSH-client (Secure Shell Protocol) nodig.  Deze bespreking maakt gebruik van de gratis [putty](https://www.ssh.com/ssh/putty/) shh-Terminal.
 
-1. In de **virtuele machines** blade van de [Azure-portal](https://ms.portal.azure.com), selecteer de virtuele machine die u wilt verbinden.  
-2. **Start** de virtuele machine als deze niet al wordt uitgevoerd.
-3. Klik op de naam van de virtuele machine en opent de **overzicht** pagina.
-4. Houd er rekening mee de openbare IP-adres en DNS-naam van uw virtuele machine.  (Als deze waarden niet zijn ingesteld, dan u moet [een netwerkinterface maken](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)
+1. Selecteer op de Blade **virtuele machines** van de [Azure Portal](https://ms.portal.azure.com)de virtuele machine waarmee u verbinding wilt maken.  
+2. **Start** de virtuele machine als deze nog niet wordt uitgevoerd.
+3. Klik op de naam van de virtuele machine om de pagina **overzicht** te openen.
+4. Noteer het open bare IP-adres en de DNS-naam van uw virtuele machine.  (Als deze waarden niet zijn ingesteld, moet u [een netwerk interface maken](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)
 
-   ![Overzicht van VM-instellingen](./media/publishvm_019.png)
+   ![VM-overzichts instellingen](./media/publishvm_019.png)
  
-5. Open de PuTTY-toepassing.  
-6. Voer het IP-adres of de DNS-naam van uw virtuele machine in het dialoogvenster PuTTY-configuratie. 
+5. Open de PuTTy-toepassing.  
+6. Voer in het dialoog venster PuTTy-configuratie het IP-adres of de DNS-naam van uw virtuele machine in. 
 
-   ![Instellingen voor puTTY terminal](./media/publishvm_020.png)
+   ![PuTTy-Terminal instellingen](./media/publishvm_020.png)
  
-7. Klik op **Open** een PuTTY terminal te openen.  
-8. Wanneer u wordt gevraagd, voert u de accountnaam en het wachtwoord van uw Linux-VM-account. 
+7. Klik op **openen** om een putty-Terminal te openen.  
+8. Wanneer u hierom wordt gevraagd, voert u de account naam en het wacht woord in van uw Linux-VM-account. 
 
-   Als u verbindingsproblemen ondervindt, raadpleegt u de documentatie van uw SSH-client, bijvoorbeeld [hoofdstuk 10: Veelvoorkomende foutberichten](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors).
+   Als u verbindings problemen ondervindt, raadpleegt u de documentatie voor uw SSH-client, bijvoorbeeld [hoofd stuk 10: algemene fout berichten](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors).
 
-Zie voor meer informatie, waaronder het toevoegen van een bureaublad met een ingerichte Linux-VM, [installeren en configureren van extern bureaublad verbinding maken met een Linux-VM in Azure](../../../virtual-machines/linux/use-remote-desktop.md).
+Zie [extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure](../../../virtual-machines/linux/use-remote-desktop.md)voor meer informatie, zoals het toevoegen van een bureau blad aan een ingerichte Linux VM.
 
 
-## <a name="stop-unused-vms"></a>Niet-gebruikte virtuele machines stoppen
-Azure-facturen voor de virtuele machine die als host fungeert als een virtuele machine wordt uitgevoerd *of niet-actieve*.  Daarom is het aanbevolen om te stoppen van virtuele machines die op dit moment niet worden gebruikt.  Bijvoorbeeld, testen, back-up, of buiten gebruik gestelde VM's zijn kandidaten voor afsluiten. Als u wilt een virtuele machine afsluit, kunt u de volgende stappen uitvoeren:
+## <a name="stop-unused-vms"></a>Ongebruikte Vm's stoppen
+Azure-facturen voor VM-hosting wanneer een virtuele machine wordt uitgevoerd *of niet actief*is.  Daarom is het best practice om Vm's te stoppen die momenteel niet worden gebruikt.  Testen, back-ups of buiten gebruik gestelde Vm's zijn bijvoorbeeld kandidaten voor het afsluiten. Voer de volgende stappen uit om een virtuele machine af te sluiten:
 
-1. Op de **virtuele machines** blade, selecteer de virtuele machine die u wilt stoppen. 
-2. Klik in de werkbalk aan de bovenkant van de pagina op de **stoppen** knop.
+1. Selecteer op de Blade **virtuele machines** de virtuele machine die u wilt stoppen. 
+2. Klik in de werk balk aan de bovenkant van de pagina op de knop **stoppen** .
 
    ![Een VM stoppen](./media/publishvm_018.png)
 
-Azure gestopt snel de virtuele machine in een proces genaamd *toewijzing is opgeheven*, die niet alleen het besturingssysteem op de virtuele machine wordt afgesloten, maar kunnen ook de hardware- en netwerkbronnen die eerder zijn ingericht voor deze.
+Azure stopt snel de virtuele machine in een proces met de naam *detoewijzing*, waardoor niet alleen het besturings systeem op de virtuele machine wordt afgesloten, maar ook de hardware en netwerk bronnen die eerder zijn ingericht, worden vrijgegeven.
 
-Als u een gestopte virtuele machine later opnieuw te activeren wilt, selecteert u deze en klikt u op de **Start** knop.
+Als u later een gestopt VM opnieuw wilt activeren, selecteert u deze en klikt u op de knop **starten** .
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u extern verbonden zijn, bent u klaar om te [configureren van uw virtuele machine](./cpp-configure-vm.md).
+Nadat u extern bent verbonden, bent u klaar om [uw virtuele machine te configureren](./cpp-configure-vm.md).

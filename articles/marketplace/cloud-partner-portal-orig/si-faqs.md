@@ -4,15 +4,16 @@ description: Veelgestelde vragen over de functie voor de verkoop inzichten van d
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 059ec175a48cdcdec6214a6581452ec0536bf566
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b015d21005448d24d24923ba424a10a4af0d47b1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030450"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821601"
 ---
 <a name="seller-insights-faq"></a>Veelgestelde vragen over verkopers inzichten
 ===================
@@ -29,7 +30,7 @@ De definities van de metrische waarden in het transactie bestand vindt u in het 
 <a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>Bekijk klant gegevens van trans acties waarvoor ik betaald ben
 -------------------------------------------------------------
 
-Nadat u uw trans acties hebt gedownload vanuit de uitzonderings module, zoekt u de kolom met de **status uitbetaling**en past u het filter toe op alleen de waarde ' betaald uit ' weer te geven. De volgende kolommen worden weer gegeven met de details van de klant: **Bedrijfs naam**, **klant-e-mail**, klant **land**, **klant status**en **Post code**van de klant.
+Nadat u uw trans acties hebt gedownload vanuit de uitzonderings module, zoekt u de kolom met de **status uitbetaling**en past u het filter toe op alleen de waarde ' betaald uit ' weer te geven. De volgende kolommen worden weer gegeven met de klant Details: **Bedrijfs naam**, **klant-e-mail**, **klant land**, **klant status**en **Post code**van de klant.
 
 
 <a name="calculate-my-open-accounts-receivable"></a>Mijn openstaande debiteuren te berekenen

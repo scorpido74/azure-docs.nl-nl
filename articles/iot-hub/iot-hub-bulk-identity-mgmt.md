@@ -6,18 +6,18 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/11/2019
+ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 32c7a2a79c8d6a35008255b3c117f20d04ad7749
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3b498911999e224003710eced8e0c34989672800
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927409"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809187"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub apparaat-id's in bulk importeren en exporteren
 
-Elke IoT-hub beschikt over een id-REGI ster dat u kunt gebruiken voor het maken van resources per apparaat in de service. Met het id-REGI ster kunt u ook de toegang tot de eind punten van het apparaat beheren. In dit artikel wordt beschreven hoe u apparaat-id's in bulk kunt importeren en exporteren naar een identiteits register.
+Elke IoT-hub beschikt over een id-REGI ster dat u kunt gebruiken voor het maken van resources per apparaat in de service. Met het id-REGI ster kunt u ook de toegang tot de eind punten van het apparaat beheren. In dit artikel wordt beschreven hoe u apparaat-id's in bulk kunt importeren en exporteren naar een identiteits register. Zie [een IOT hub klonen](iot-hub-how-to-clone.md)om C# een werkend voor beeld in te bekijken en te leren hoe u deze mogelijkheid kunt gebruiken bij het klonen van een hub naar een andere regio.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -421,7 +421,11 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u bulk bewerkingen kunt uitvoeren op het id-REGI ster in een IoT-hub. Volg deze koppelingen voor meer informatie over het beheren van Azure IoT Hub:
+In dit artikel hebt u geleerd hoe u bulk bewerkingen kunt uitvoeren op het id-REGI ster in een IoT-hub. Veel van deze bewerkingen, met inbegrip van het verplaatsen van apparaten van de ene hub naar een andere, worden gebruikt in de [sectie apparaten beheren die zijn geregistreerd bij de IOT-hub van het klonen van een IOT hub](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub). 
+
+Er is een werk voorbeeld aan het kloon artikel gekoppeld. Dit bevindt zich in de C# IOT-voor beelden op deze pagina: [Azure C#IOT-voor beelden voor ](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/), waarbij het project wordt ImportExportDevicesSample. U kunt het voor beeld downloaden en het uitproberen. Er zijn instructies in het artikel [een IOT hub klonen](iot-hub-how-to-clone.md) .
+
+Raadpleeg de volgende artikelen voor meer informatie over het beheren van Azure IoT Hub:
 
 * [IoT Hub metrische gegevens](iot-hub-metrics.md)
 * [IoT Hub logboeken](iot-hub-monitor-resource-health.md)

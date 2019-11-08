@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database beveiliging configureren voor nood herstel
+title: Beveiliging voor nood herstel configureren
 description: Meer informatie over de beveiligings overwegingen voor het configureren en beheren van beveiliging na het herstellen van een Data Base of een failover naar een secundaire server.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 3c08ba1a37d7b0d16042d6496c27e0de8d070b75
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d628583168883276e67d9e2f2fcafdce292769e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689967"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807500"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database beveiliging configureren en beheren voor geo-herstel of failover
 
@@ -58,7 +58,7 @@ Alleen de server beheerder of een lid van de **rol Login Manager** -serverrol ka
     FROM [sys].[sql_logins]
     WHERE [type_desc] = 'SQL_Login'
 
-Alleen een lid van de databaserol db_owner, de dbo-gebruiker of de server beheerder kan alle data base-gebruikers principals in de primaire data base bepalen.
+Alleen een lid van de db_owner databaserol, de dbo-gebruiker of de server beheerder kan alle data base-gebruikers principals in de primaire data base bepalen.
 
     SELECT [name], [sid]
     FROM [sys].[database_principals]
@@ -68,7 +68,7 @@ Alleen een lid van de databaserol db_owner, de dbo-gebruiker of de server beheer
 
 Door de uitvoer van de query's uit de vorige sectie te vergelijken en te voldoen aan de Sid's, kunt u de aanmelding van de server toewijzen aan de database gebruiker. Aanmeldingen met een database gebruiker met een overeenkomende SID hebben gebruikers toegang tot die data base als de gebruikers-principal van de data base.
 
-De volgende query kan worden gebruikt om alle gebruikers-principals en hun Sid's in een-Data Base weer te geven. Deze query kan alleen worden uitgevoerd door een lid van de databaserol db_owner of de server beheerder.
+De volgende query kan worden gebruikt om alle gebruikers-principals en hun Sid's in een-Data Base weer te geven. Deze query kan alleen worden uitgevoerd door een lid van de db_owner databaserol of de server beheerder.
 
     SELECT [name], [sid]
     FROM [sys].[database_principals]

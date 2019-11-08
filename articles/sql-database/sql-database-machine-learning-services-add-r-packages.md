@@ -1,5 +1,5 @@
 ---
-title: Een R-pakket toevoegen aan Azure SQL Database Machine Learning Services (preview-versie)
+title: Een R-pakket toevoegen aan Machine Learning Services (preview-versie)
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: In dit artikel wordt uitgelegd hoe u een R-pakket installeert dat nog niet is geïnstalleerd in Azure SQL Database Machine Learning Services (preview).
 services: sql-database
@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
-ms.openlocfilehash: f82408a6aaa7cf3a492f3036a6db5d8666b6f160
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: ce85f45d823df42e70af53824e175968439621d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598049"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819871"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Een R-pakket toevoegen aan Azure SQL Database Machine Learning Services (preview-versie)
 
@@ -70,7 +70,7 @@ In het volgende voor beeld installeert u het **[lijm](https://cran.r-project.org
 
 ### <a name="install-sqlmlutils"></a>**Sqlmlutils** installeren
 
-1. Down load het meest recente **sqlmlutils** zip https://github.com/Microsoft/sqlmlutils/tree/master/R/dist -bestand van op de lokale computer. U hoeft het bestand niet uit te pakken.
+1. Down load het meest recente **sqlmlutils** zip-bestand van https://github.com/Microsoft/sqlmlutils/tree/master/R/dist naar uw lokale computer. U hoeft het bestand niet uit te pakken.
 
 1. Open een **opdracht prompt** en voer de volgende opdrachten uit om **RODBCext** en **sqlmlutils** te installeren op uw lokale computer. Vervang het volledige pad naar het **sqlmlutils** zip-bestand dat u hebt gedownload (in het voor beeld wordt ervan uitgegaan dat het bestand zich in de map documenten bevindt).
     

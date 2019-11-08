@@ -1,5 +1,5 @@
 ---
-title: Controle van beheerde exemplaren Azure SQL Database
+title: Controle van beheerde exemplaren
 description: Meer informatie over hoe u aan de slag gaat met Azure SQL Database Managed instance auditing met behulp van T-SQL
 services: sql-database
 ms.service: sql-database
@@ -13,12 +13,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 915d804cd3ae67848b4b9aa2f50fb5f1b4f1f092
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 41d632b145a7187dd0aeaab740cd8546a3955e7f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689425"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818996"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Aan de slag met Azure SQL Database Managed instance auditing
 
@@ -229,7 +229,7 @@ De belangrijkste verschillen tussen controles in data bases in Azure SQL Databas
 
 XEvent-controle in een beheerd exemplaar ondersteunt Azure Blob-opslag doelen. Bestands-en Windows-logboeken worden **niet ondersteund**.
 
-De belangrijkste verschillen in de syntaxis van de `CREATE AUDIT` voor de controle van Azure Blob-opslag zijn:
+De belangrijkste verschillen in de `CREATE AUDIT` syntaxis voor de controle van Azure Blob-opslag zijn:
 
 - Er wordt een nieuwe syntaxis `TO URL` opgegeven, waarmee u de URL kunt opgeven van de Azure Blob Storage-container waar de `.xel` bestanden worden geplaatst.
 - Er wordt een nieuwe syntaxis `TO EXTERNAL MONITOR` gegeven om zelfs hub-en Azure Monitor-logboeken te kunnen doelen.

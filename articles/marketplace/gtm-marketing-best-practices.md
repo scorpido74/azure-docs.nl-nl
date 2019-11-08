@@ -1,27 +1,28 @@
 ---
-title: Go-To-Market Services - best practices voor Marketing | Azure
-description: Go-To-Market Services - in deze sectie worden marketing aanbevolen procedures beschreven voor uitgevers van Azure Marketplace
+title: Go-to-Market-Services-best practices voor marketing | Azure
+description: 'Go-to-Market-Services: in deze sectie worden aanbevolen procedures voor de marketing van uitgevers van Azure Marketplace beschreven'
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 6/24/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4df5a94aebd91fc6941acbec149a5fde98d7f760
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5d2c6ce8682e24d981457ea8fc804ff04e226750
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441724"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823953"
 ---
 # <a name="marketing-best-practices"></a>Best practices voor marketing
 
-Een geoptimaliseerde marketplace-vermelding en go-to-market-campagnes kunnen u helpen de groei van uw klant overname versnellen en kunt spelen dus een belangrijke rol in uw strategie voor zakelijke cloud- en engine. Aan de slag met de lijst met aanbiedingen, bieden klanten proefversies en verbinding maken met Microsoft-klanten en de partnercommunity. Download de [AppSource & Azure Marketplace marketing handleiding met aanbevolen procedures](https://aka.ms/marketplacebestpractices) voor meer informatie over hoe u optimaal gebruikmaken van uw online marketingactiviteiten.
+Een geoptimaliseerd Marketplace-overzicht en go-to-Market-campagnes kunnen u helpen bij het versnellen van de verwervings groei van uw klant en kunnen dus een belang rijke rol spelen in uw bedrijfs strategie en-engine in de Cloud. Bereid u voor op het aanbieden van aanbiedingen, het bieden van proef versies van klanten en het maken van verbinding met klanten van micro soft en de partner community. Down load de AppSource-gids voor de [marketing best practice van Azure Marketplace &](https://aka.ms/marketplacebestpractices) voor meer informatie over hoe u uw online marketing activiteiten optimaal kunt benutten.
 
 **Volgende stappen**
 
-Voor meer informatie over marketplace GTM services, gaat u naar [Go-to-market services](https://partner.microsoft.com/reach-customers/gtm).
+Voor meer informatie over Marketplace GTM Services gaat u naar [Go-to-Market-Services](https://partner.microsoft.com/reach-customers/gtm).
 
-Aanmelden bij de [Cloud Partner-Portal](https://cloudpartner.azure.com) maken en configureren uw aanbieding.
+Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com) om uw aanbieding te maken en te configureren.
 
 ---

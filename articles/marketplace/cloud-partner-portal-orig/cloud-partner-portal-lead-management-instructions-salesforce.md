@@ -1,34 +1,35 @@
 ---
-title: Beheer van leads voor Salesforce configureren | Azure Marketplace
-description: Leadbeheer configureren op Salesforce voor klanten van Azure Marketplace.
+title: Beheer van leads voor Sales Force configureren | Azure Marketplace
+description: Configureer het beheer van leads voor Sales Force voor Azure Marketplace-klanten.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 0be5cd84e9ed8314584b5cea064b5c0241db1ab5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa1bfdcd172b17f88f6acf14a9d9b80e13767da8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935106"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827712"
 ---
-# <a name="configure-lead-management-for-salesforce"></a>Beheer van leads voor Salesforce configureren
+# <a name="configure-lead-management-for-salesforce"></a>Beheer van leads voor Sales Force configureren
 
-In dit artikel wordt beschreven hoe u uw Salesforce-systeem voor het afhandelen van verkoopleads instellen.
+In dit artikel wordt beschreven hoe u uw Sales Force-systeem zo kunt instellen dat verkoop leads worden afgehandeld.
 
-1. Aanmelden bij Salesforce.
+1. Meld u aan bij Sales Force.
 2. Selecteer **Setup**.
-    ![SalesForce-instellingen](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce1.png)
+    Setup van ![Sales Force](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce1.png)
 
-3. Vouw de **bouwen** menu **aanpassen/Leads/Web-naar-Lead**.
-    ![SalesForce Web voor Lead](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce2.png)
+3. Vouw het menu **Build** uit om **/leads/Web-to-lead**aan te passen.
+    ![Sales Force-](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce2.png) voor webtoepassingen
 
-4. Op **Web potentiële klant Setup**, selecteer **formulier van de Web-naar-leads maken**.
-    ![SalesForce-formulier maken](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce3.png)
+4. Selecteer op de **pagina Web**-to-lead instellen de optie **Web-naar-lead-formulier maken**.
+    ![Sales Force-formulier maken](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce3.png)
 
-5. Op **maken van een formulier Web potentiële klant**, selecteer **genereren** ![Salesforce genereren](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce4.png)
+5. Selecteer in **een web-naar-lead-formulier maken**![Sales **Force genereren](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce4.png)**
 
-6. Kopieer de OID in het voorbeeld en sla deze. Plakt u de OID in de **Object-id** veld in de Cloud Partner-Portal.
-![SalesForce-get OID](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce5.png)
+6. Kopieer de OID in het voor beeld en sla deze op. Plak de OID in het veld **object-id** op het Cloud Partner-Portal.
+![Sales Force Get OID](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce5.png)

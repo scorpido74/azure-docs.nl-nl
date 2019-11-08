@@ -1,5 +1,5 @@
 ---
-title: Een failovergroep voor Azure SQL Database configureren
+title: Een failovergroep configureren
 description: Meer informatie over het configureren van een groep voor automatische failover voor een Azure SQL Database afzonderlijke Data Base, een elastische pool en een beheerd exemplaar met behulp van de Azure Portal, AZ CLI en Power shell.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 626677ef9444e0ad99fd3678e23bdeec62fd920c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fb9ee2378679c420a7675856ec95e60f6ae1d14f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933396"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827140"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Een failovergroep voor Azure SQL Database configureren
 
 In dit onderwerp leert u hoe u een [groep voor automatische failover](sql-database-auto-failover-group.md) configureert voor een Azure SQL database afzonderlijke Data Base, een elastische pool en een beheerd exemplaar met behulp van de Azure portal of Power shell. 
 
-## <a name="single-database"></a>Afzonderlijke database
+## <a name="single-database"></a>Individuele database
 Maak de failovergroep en voeg er een toe aan een enkele data base met behulp van de Azure Portal of Power shell.
 
 ### <a name="prerequisites"></a>Vereisten

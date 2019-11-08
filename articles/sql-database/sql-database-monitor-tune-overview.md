@@ -1,5 +1,5 @@
 ---
-title: Bewaking en prestaties afstemmen-Azure SQL Database
+title: Prestaties bewaken en afstemmen
 description: Tips voor het afstemmen van de prestaties van Azure SQL Database door te evalueren en te verbeteren.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: c11112963ec82a0e53df156048495e7b5141bcb7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e77af00dc3352af3265da90685e58b34c96bee81
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687760"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825160"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Prestaties bewaken en afstemmen
 
@@ -34,7 +34,7 @@ Om ervoor te zorgen dat een Data Base zonder problemen wordt uitgevoerd, moet u 
 
 Als u de prestaties van een SQL database in azure wilt bewaken, moet u beginnen met het controleren van de resources die worden gebruikt ten opzichte van het prestatie niveau dat u hebt gekozen. Controleer de volgende bronnen:
  - **CPU-gebruik**: Controleer of de data base gedurende een lange periode 100 procent van het CPU-gebruik bereikt. Een hoog CPU-gebruik kan erop wijzen dat u query's moet identificeren en afstemmen die gebruikmaken van de meeste reken kracht. Met een hoog CPU-gebruik kan ook worden aangegeven dat de data base of het exemplaar moet worden bijgewerkt naar een hogere servicelaag. 
- - **Wacht statistieken**: gebruik [sys. DM _os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) om te bepalen hoe lang query's wachten. Query's kunnen wachten op resources, wachten op wacht rijen of externe wacht tijden. 
+ - **Wacht statistieken**: gebruik [sys. dm_os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) om te bepalen hoe lang query's wachten. Query's kunnen wachten op resources, wachten op wacht rijen of externe wacht tijden. 
  - **Io-gebruik**: Controleer of de data base de i/o-limieten van de onderliggende opslag bereikt.
  - **Geheugen gebruik**: de hoeveelheid geheugen die beschikbaar is voor de data base of het exemplaar, is evenredig met het aantal vCores. Zorg ervoor dat het geheugen voldoende is voor de werk belasting. Pagina duur verwachting is een van de para meters die kunnen aangeven hoe snel de pagina's uit het geheugen worden verwijderd.
 
@@ -91,11 +91,11 @@ Als u een probleem hebt met betrekking tot prestaties, is het doel om het precie
 - Gebruik de [Azure Portal](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal) om het CPU-percentage gebruik te bewaken.
 - Gebruik de volgende [dmv's](sql-database-monitoring-with-dmvs.md):
 
-  - De [sys. DM _db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) dmv retourneert CPU, I/O en geheugen verbruik voor een SQL database. Er bestaat één rij voor elk interval van 15 seconden, zelfs als er geen activiteit in de data base is. Historische gegevens worden één uur bewaard.
-  - [Sys. resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) dmv retourneert het CPU-gebruik en de opslag gegevens voor Azure SQL database. De gegevens worden verzameld en samengevoegd in intervallen van vijf minuten.
+  - De [sys. dm_db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) dmv retourneert CPU, I/O en geheugen verbruik voor een SQL database. Er bestaat één rij voor elk interval van 15 seconden, zelfs als er geen activiteit in de data base is. Historische gegevens worden één uur bewaard.
+  - De [sys. resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) dmv retourneert het CPU-gebruik en de opslag gegevens voor Azure SQL database. De gegevens worden verzameld en samengevoegd in intervallen van vijf minuten.
 
 > [!IMPORTANT]
-> Zie [CPU-prestatie problemen identificeren](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues)voor informatie over het oplossen van problemen met CPU-gebruik voor T-SQL-query's die gebruikmaken van de sys. DM _db_resource_stats en sys. resource_stats dmv's.
+> Zie [CPU-prestatie problemen identificeren](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues)voor informatie over het oplossen van problemen met CPU-gebruik voor T-SQL-query's die gebruikmaken van de dmv's sys. dm_db_resource_stats en sys. resource_stats.
 
 ### <a name="ParamSniffing"></a>Query's met PSP-problemen
 
@@ -108,7 +108,7 @@ Diverse tijdelijke oplossingen kunnen PSP-problemen oplossen. Elke tijdelijke op
 - De query Hint [REcompile](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) gebruiken bij elke uitvoering van de query. Deze tijdelijke oplossing verhandelt compilatie tijd en verhoogde CPU voor een betere plan kwaliteit. De optie `RECOMPILE` is vaak niet mogelijk voor werk belastingen die een hoge door Voer vereisen.
 - Gebruik de query Hint [(Optimize for...)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) om de feitelijke parameter waarde te overschrijven met een typische parameter waarde die een plan produceert dat voldoende is voor de meeste mogelijkheden voor parameter waarden. Deze optie vereist een goed idee van de optimale parameter waarden en de bijbehorende plan kenmerken.
 - Gebruik de [optie (optimaliseren voor onbekende)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) query hint om de werkelijke parameter waarde te overschrijven en gebruik in plaats daarvan het gemiddelde van de dichtheids vector te gebruiken. U kunt dit ook doen door de binnenkomende parameter waarden vast te leggen in lokale variabelen en vervolgens de lokale variabelen binnen de predikaten te gebruiken in plaats van de para meters zelf te gebruiken. Voor deze oplossing moet de gemiddelde densiteit *goed genoeg*zijn.
-- Schakel para meter-sniffing volledig uit met behulp van de [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) -query hint.
+- Schakel para meter-sniffing helemaal uit met behulp van de query Hint [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) .
 - Gebruik de [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) -query hint om hercompilaties in de cache te voor komen. Bij deze tijdelijke oplossing wordt ervan uitgegaan dat het goed gang bare plan al in de cache staat. U kunt ook automatische statistieken voor updates uitschakelen om de kans te verkleinen dat het goede plan wordt verwijderd en er wordt een nieuw, beschadigd plan gecompileerd.
 - Dwing het plan expliciet met behulp van de query Hint [use plan](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) door de query opnieuw te schrijven en de hint in de query tekst toe te voegen. Of stel een specifiek plan in met behulp van query Store of door [automatisch afstemmen](sql-database-automatic-tuning.md)in te scha kelen.
 - Vervang de ene procedure door een geneste set procedures die elk kan worden gebruikt op basis van voorwaardelijke logica en de bijbehorende parameter waarden.
@@ -181,7 +181,7 @@ Een hercompilatie (of nieuwe compilatie na verwijdering van de cache) kan nog st
 
 - **Andere statistieken**: de statistieken die zijn gekoppeld aan de objecten waarnaar wordt verwezen, zijn mogelijk gewijzigd of kunnen afwijken van de statistieken van het oorspronkelijke systeem.  Als de statistieken veranderen en een hercompilatie plaatsvindt, gebruikt de query Optimizer de statistieken die beginnen wanneer ze zijn gewijzigd. De gegevens distributies en-frequenties van de herziene statistieken kunnen verschillen van die van de oorspronkelijke compilatie.  Deze wijzigingen worden gebruikt voor het maken van kardinaliteit. (*Schattingen van kardinaliteit* zijn het aantal rijen dat naar verwachting door de logische query structuur loopt.) Wijzigingen in de kardinaliteit kunnen ertoe leiden dat u verschillende fysieke Opera tors en gekoppelde orders van bewerkingen kunt kiezen.  Zelfs kleine wijzigingen in statistieken kunnen leiden tot een gewijzigd query-uitvoerings plan.
 
-- Het **database compatibiliteits niveau of de Estimator-versie van de kardinaliteit is gewijzigd**: wijzigingen in het database compatibiliteits niveau kunnen nieuwe strategieën en functies mogelijk maken die kunnen leiden tot een ander uitvoerings plan voor query's.  Buiten het database compatibiliteits niveau kan een uitgeschakelde of ingeschakelde tracerings vlag 4199 of een gewijzigde status van het database bereik configuratie-QUERY_OPTIMIZER_HOTFIXES ook invloed hebben op de keuze van de query-uitvoerings plannen tijdens het compileren.  Tracerings vlaggen 9481 (geforceerd verouderd CE) en 2312 (standaard-CE forceren) zijn ook van invloed op het plan. 
+- Het **database compatibiliteits niveau of de Estimator-versie van de kardinaliteit is gewijzigd**: wijzigingen in het database compatibiliteits niveau kunnen nieuwe strategieën en functies mogelijk maken die kunnen leiden tot een ander uitvoerings plan voor query's.  Buiten het database compatibiliteits niveau kan een uitgeschakelde of ingeschakelde tracerings vlag 4199 of een gewijzigde status van de database bereik configuratie QUERY_OPTIMIZER_HOTFIXES ook van invloed zijn op het uitvoerings plan van de query tijdens het compileren.  Tracerings vlaggen 9481 (geforceerd verouderd CE) en 2312 (standaard-CE forceren) zijn ook van invloed op het plan. 
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Probleem query's oplossen of meer resources opgeven
 
@@ -216,15 +216,15 @@ Als u zeker weet dat het prestatie probleem niet is gerelateerd aan het hoge CPU
 Deze methoden worden vaak gebruikt om de hoogste categorieën van wacht typen weer te geven:
 
 - Gebruik [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) om gedurende een bepaalde periode wacht statistieken voor elke query te vinden. In query Store worden wachtende typen gecombineerd in wachtende categorieën. U kunt de toewijzing van wachtende Categorieën vinden door te wachten op typen in [sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
-- Gebruik [sys. DM _db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) om informatie te retour neren over alle wacht tijden die zijn aangetroffen door threads die tijdens de bewerking worden uitgevoerd. U kunt deze geaggregeerde weer gave gebruiken om prestatie problemen vast te stellen met Azure SQL Database en ook met specifieke query's en batches.
-- Gebruik [sys. DM _os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) om informatie te retour neren over de wachtrij met taken die wachten op een bepaalde resource.
+- Gebruik [sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) om informatie te retour neren over alle wacht tijden die zijn aangetroffen door threads die worden uitgevoerd tijdens de bewerking. U kunt deze geaggregeerde weer gave gebruiken om prestatie problemen vast te stellen met Azure SQL Database en ook met specifieke query's en batches.
+- Gebruik [sys. dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) om informatie te retour neren over de wachtrij met taken die op een bepaalde resource wachten.
 
 In scenario's met een hoge CPU worden in de query Store-en wait-statistieken mogelijk geen CPU-gebruik weer gegeven als:
 
 - Query's met een hoog CPU-verbruik worden nog steeds uitgevoerd.
 - De query's met een hoog CPU-verbruik worden uitgevoerd tijdens een failover.
 
-Dmv's die query Store bijhouden en wachten op statistieken tonen alleen resultaten voor voltooide en time-out query's. Er worden geen gegevens weer gegeven voor de instructies die momenteel worden uitgevoerd tot de instructies zijn voltooid. Gebruik de dynamische beheer weergave [sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) voor het bijhouden van query's die momenteel worden uitgevoerd en de bijbehorende werk tijd.
+Dmv's die query Store bijhouden en wachten op statistieken tonen alleen resultaten voor voltooide en time-out query's. Er worden geen gegevens weer gegeven voor de instructies die momenteel worden uitgevoerd tot de instructies zijn voltooid. Gebruik de dynamische beheer weergave [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) voor het bijhouden van query's die momenteel worden uitgevoerd en de bijbehorende werk tijd.
 
 In het diagram aan het begin van dit artikel ziet u dat de meest voorkomende wacht tijden zijn:
 
