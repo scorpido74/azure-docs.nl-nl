@@ -7,13 +7,13 @@ ms.custom: include file
 ms.topic: include
 author: sgilley
 ms.author: sgilley
-ms.date: 10/22/2019
-ms.openlocfilehash: 5a66212122745d0f4426e48e9487e9d674cec53f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/06/2019
+ms.openlocfilehash: 66f5c72fcabb62e21f0110cb981b7271244c0648
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489982"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799793"
 ---
 >[!IMPORTANT]
 >U kunt de resources die u hebt gemaakt als vereisten voor andere Azure Machine Learning zelf studies en artikelen met instructies gebruiken.
@@ -28,32 +28,22 @@ Als u niet van plan bent om iets te gebruiken dat u hebt gemaakt, verwijdert u d
 
 1. Selecteer in de lijst de resource groep die u hebt gemaakt.
 
-1. Selecteer de knop met het weglatings teken ( **...** ) aan de rechter kant van het venster.
-
 1. Selecteer **Resourcegroep verwijderen**.
 
 Als u de resource groep verwijdert, worden ook alle resources die u in de ontwerp functie hebt gemaakt, verwijderd.  
 
-### <a name="delete-only-the-compute-target"></a>Alleen het reken doel verwijderen
-
-Het reken doel dat u hier hebt gemaakt, wordt *automatisch geschaald* naar nul knoop punten wanneer het niet wordt gebruikt. Dit is om de kosten te minimaliseren. Als u het berekenings doel wilt verwijderen, voert u de volgende stappen uit:
-
-1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com).
-
-    ![Het reken doel verwijderen](./media/aml-ui-cleanup/delete-compute-target.png)
-
-1. Selecteer de resource in het gedeelte **berekenen** van uw werk ruimte.
-
-1. Selecteer **Verwijderen**.
-
 ### <a name="delete-individual-assets"></a>Afzonderlijke assets verwijderen
 
 In de ontwerp functie waar u uw experiment hebt gemaakt, verwijdert u afzonderlijke assets door ze te selecteren en vervolgens de knop **verwijderen** te selecteren.
+
+Het reken doel dat u hier hebt gemaakt, wordt *automatisch geschaald* naar nul knoop punten wanneer het niet wordt gebruikt. Dit is om de kosten te minimaliseren. Als u het berekenings doel wilt verwijderen, voert u de volgende stappen uit:
 
 ![Assets verwijderen](./media/aml-ui-cleanup/delete-asset.png)
 
 U kunt de registratie van gegevens sets ongedaan maken in uw werk ruimte door elke gegevensset te selecteren en **registratie verwijderen**te selecteren.
 
 ![Registratie van gegevensset opheffen](./media/aml-ui-cleanup/unregister-dataset.png)
+
+Als u een gegevensset wilt verwijderen, gaat u naar het opslag account met behulp van de Azure Portal of de Storage Explorer en verwijdert u de desbetreffende activa hand matig.
 
 
