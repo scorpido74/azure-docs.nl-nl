@@ -1,6 +1,6 @@
 ---
 title: Azure-quickstart - Een back-up van een VM maken met PowerShell
-description: Lees hoe u een back-up van virtuele machines maakt via Azure PowerShell
+description: In deze Quick Start leert u hoe u een back-up van uw virtuele Azure-machines maakt met behulp van de module Azure PowerShell.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: ea4f982409f339487cd570230ebbb75682f409ec
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 268cac453ed68903c73b597ffeff2569c13e9db7
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874604"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747078"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Een back-up van een virtuele machine maken in Azure met PowerShell
 
-De [Azure POWERSHELL AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) -module wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdracht regel of in scripts. 
+De [Azure POWERSHELL AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) -module wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdracht regel of in scripts.
 
 [Azure backup](backup-overview.md) maakt back-ups van on-premises machines en apps en Azure-vm's. In dit artikel wordt beschreven hoe u een back-up van een virtuele machine van Azure maakt met de module AZ. U kunt ook een back-up maken van een VM met behulp van de [Azure cli](quick-backup-vm-cli.md)of in de [Azure Portal](quick-backup-vm-portal.md).
 
@@ -35,12 +35,12 @@ Voor deze Quick start is de Azure PowerShell AZ module version 1.0.0 of hoger ve
     ```powershell
     Connect-AzAccount
     ```
+
 2. De eerste keer dat u Azure Backup gebruikt, moet u als volgt de Azure Recovery service-provider registreren in uw abonnement met [REGI ster-AzResourceProvider](/powershell/module/az.Resources/Register-azResourceProvider):
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -53,7 +53,6 @@ Bij het maken van de kluis:
 - Azure Backup beheert automatisch de opslag voor back-ups van gegevens. De kluis maakt standaard gebruik van [geo-redundante opslag (GRS)](../storage/common/storage-redundancy-grs.md). Geo-redundantie zorgt ervoor dat back-ups van gegevens worden gerepliceerd naar een secundaire Azure-regio en honderden kilo meters van de primaire regio worden verwijderd.
 
 Maak nu een kluis:
-
 
 1. Gebruik de [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) om de kluis te maken:
 
@@ -72,11 +71,12 @@ Maak nu een kluis:
     ```
 
 3. Wijzig de opslag redundantie configuratie (LRS/GRS) van de kluis met [set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty), als volgt:
-    
+
     ```powershell
     Get-AzRecoveryServicesVault `
         -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesBackupProperty -BackupStorageRedundancy LocallyRedundant/GeoRedundant
     ```
+
     > [!NOTE]
     > Opslag redundantie kan alleen worden gewijzigd als er geen back-upitems zijn die zijn beveiligd met de kluis.
 
@@ -85,7 +85,7 @@ Maak nu een kluis:
 U kunt back-up voor een virtuele Azure-machine inschakelen en een back-upbeleid opgeven.
 
 - Het beleid definieert wanneer back-ups worden uitgevoerd en hoe lang de herstel punten moeten worden bewaard die door de back-ups worden gemaakt.
-- In het standaard beveiligings beleid wordt één keer per dag een back-up uitgevoerd en worden de gemaakte herstel punten gedurende 30 dagen bewaard. U kunt dit standaard beleid gebruiken om uw virtuele machine snel te beveiligen. 
+- In het standaard beveiligings beleid wordt één keer per dag een back-up uitgevoerd en worden de gemaakte herstel punten gedurende 30 dagen bewaard. U kunt dit standaard beleid gebruiken om uw virtuele machine snel te beveiligen.
 
 Schakel back-up als volgt in:
 
@@ -112,7 +112,8 @@ Back-ups worden uitgevoerd volgens de planning die is opgegeven in het back-upbe
 - Na de eerste back-up worden met elke back-uptaak incrementele herstel punten gemaakt.
 - Incrementele herstelpunten zijn efficiënt qua opslag en tijd aangezien ze alleen wijzigingen bevatten die sinds de laatste back-up zijn doorgevoerd.
 
-Als u een ad hoc-back-up wilt uitvoeren, gebruikt u de [back-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem). 
+Als u een ad hoc-back-up wilt uitvoeren, gebruikt u de [back-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
+
 - U geeft een container op in de kluis die uw back-upgegevens bevat met [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer).
 - Elke VM voor back-up wordt als een item beschouwd. Als u een back-uptaak wilt starten, haalt u informatie op over de virtuele machine met [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
 
@@ -134,7 +135,6 @@ Voer een ad hoc-back-uptaak als volgt uit:
 
 2. Mogelijk moet u Maxi maal 20 minuten wachten, omdat de eerste back-uptaak een volledig herstel punt maakt. Controleer de taak zoals beschreven in de volgende procedure.
 
-
 ## <a name="monitor-the-backup-job"></a>Uitvoering van back-uptaak volgen
 
 1. Voer [Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) uit om de taak status te controleren.
@@ -142,7 +142,8 @@ Voer een ad hoc-back-uptaak als volgt uit:
     ```powershell
     Get-AzRecoveryservicesBackupJob
     ```
-    Uitvoer is vergelijkbaar met het volgende voor beeld, waarin de taak wordtweer gegeven als InProgress:
+
+    Uitvoer is vergelijkbaar met het volgende voor beeld, waarin de taak wordt weer gegeven als **InProgress**:
 
     ```output
     WorkloadName   Operation         Status       StartTime              EndTime                JobID
@@ -153,10 +154,10 @@ Voer een ad hoc-back-uptaak als volgt uit:
 
 2. Wanneer de taak status **voltooid**is, wordt de virtuele machine beveiligd en is er een volledig herstel punt opgeslagen.
 
-
 ## <a name="clean-up-the-deployment"></a>De implementatie opschonen
 
 Als u een back-up van de virtuele machine niet meer nodig hebt, kunt u deze opschonen.
+
 - Als u de virtuele machine opnieuw wilt proberen te herstellen, slaat u de opschoon bewerking over.
 - Als u een bestaande virtuele machine hebt gebruikt, kunt u de laatste [Remove-AzResourceGroup-](/powershell/module/az.resources/remove-azresourcegroup) cmdlet overs Laan om de resource groep en de VM op locatie te laten staan.
 
@@ -169,10 +170,9 @@ Remove-AzRecoveryServicesVault -Vault $vault
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een Recovery Services-kluis gemaakt, de beveiliging op een VM ingeschakeld en het eerste herstelpunt gemaakt. 
+In deze quickstart hebt u een Recovery Services-kluis gemaakt, de beveiliging op een VM ingeschakeld en het eerste herstelpunt gemaakt.
 
 - [Meer informatie over](tutorial-backup-vm-at-scale.md) het maken van een back-up van virtuele machines in de Azure Portal.
 - [Meer informatie over hoe](tutorial-restore-disk.md) u een virtuele machine snel kunt herstellen
