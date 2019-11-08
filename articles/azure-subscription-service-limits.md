@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 71e4b62ddcb3f144b49b99e6ba95a47971d3f4bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f9fe540611b1b773867e1f92439e13df91ad4bd3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476904"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818361"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnement en servicelimieten, quota's en beperkingen
 Dit document bevat enkele van de meest voorkomende Microsoft Azure limieten, ook wel quota's genoemd. Dit document geldt momenteel niet voor alle Azure-Services. De lijst wordt na verloop van tijd uitgebreid en bijgewerkt om meer services te kunnen behandelen.
@@ -48,6 +48,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [Automatisering](#automation-limits)
 * [Azure Cache voor Redis](#azure-cache-for-redis-limits)
 * [Azure Cloud Services](#azure-cloud-services-limits)
+* [Azure Cognitive Search](#azure-cognitive-search-limits)
 * [Azure Cognitive Services](#azure-cognitive-services-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
@@ -60,7 +61,6 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#azure-monitor-limits)
 * [Azure Policy](#azure-policy-limits)
-* [Azure Search](#azure-search-limits)
 * [Azure signalerings service](#azure-signalr-service-limits)
 * [Een back-up maken](#backup-limits)
 * [Batch](#batch-limits)
@@ -130,7 +130,7 @@ Zie [Resource Manager-aanvragen beperken](resource-manager-request-limits.md)voo
 [!INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 #### <a name="virtual-machines-limits---azure-resource-manager"></a>Virtual Machines limieten-Azure Resource Manager
-De volgende limieten gelden wanneer u Azure Resource Manager-en Azure-resource groepen gebruikt. Limieten die niet zijn gewijzigd met Azure Resource Manager worden niet weer gegeven. Zie de vorige tabel voor deze limieten.
+De volgende limieten gelden wanneer u Azure Resource Manager-en Azure-resource groepen gebruikt.
 
 [!INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
@@ -264,13 +264,13 @@ De volgende tabel bevat de limieten voor Azure BizTalk Services.
 ### <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB limieten
 Zie [limieten in azure Cosmos DB](cosmos-db/concepts-limits.md)voor Azure Cosmos DB limieten.
 
-### <a name="azure-database-for-mysql"></a>Azure Database voor MySQL
+### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 Zie [beperkingen in azure database for MySQL](mysql/concepts-limits.md)voor Azure database for MySQL limieten.
 
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 Zie [beperkingen in azure database for PostgreSQL](postgresql/concepts-limits.md)voor Azure database for PostgreSQL limieten.
 
-### <a name="azure-search-limits"></a>Azure Search limieten
+### <a name="azure-cognitive-search-limits"></a>Limieten voor Azure-Cognitive Search
 Prijs categorieën bepalen de capaciteit en limieten van uw zoek service. Lagen zijn onder andere:
 
 * **Gratis** multi tenant-service, gedeeld met andere Azure-abonnees, is bedoeld voor evaluatie-en kleine ontwikkelings projecten.
@@ -285,7 +285,7 @@ Prijs categorieën bepalen de capaciteit en limieten van uw zoek service. Lagen 
 
 [!INCLUDE [azure-search-limits-per-service](../includes/azure-search-limits-per-service.md)]
 
-Zie [service limieten in azure Search](search/search-limits-quotas-capacity.md)voor meer informatie over de limieten op een meer gedetailleerd niveau, zoals de document grootte, query's per seconde, sleutels, aanvragen en antwoorden.
+Zie [service limieten in Azure Cognitive Search](search/search-limits-quotas-capacity.md)voor meer informatie over de limieten op een meer gedetailleerd niveau, zoals de document grootte, query's per seconde, sleutels, aanvragen en antwoorden.
 
 ### <a name="media-services-limits"></a>Media Services limieten
 [!INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]

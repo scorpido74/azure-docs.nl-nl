@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 0e4daaa3417ce349111fbc811be36a4615058c76
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c20fc2142718d3cc49d4b80c6a5e22e26a350335
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791728"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824869"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hoge Beschik baarheid voor NFS op Azure Vm's op SUSE Linux Enterprise Server
 
@@ -94,7 +94,7 @@ De NFS-server gebruikt een specifieke virtuele hostnaam en virtuele IP-adressen 
 * Test poort
   * Poort 61000 voor NW1
   * Poort 61001 voor NW2
-* Loadbalancing-regels
+* Taakverdelings regels (als u basis load balancer gebruikt)
   * 2049 TCP voor NW1
   * 2049 UDP voor NW1
   * 2049 TCP voor NW2
@@ -136,51 +136,91 @@ U moet eerst de virtuele machines voor dit NFS-cluster maken. Daarna maakt u een
    SLES for SAP-toepassingen 12 SP3 (BYOS) wordt gebruikt  
    Selecteer een Beschikbaarheidsset die u eerder hebt gemaakt  
 1. Voeg één gegevens schijf voor elk SAP-systeem toe aan beide virtuele machines.
-1. Een Load Balancer maken (intern)  
-   1. De frontend-IP-adressen maken
-      1. IP-adres 10.0.0.4 voor NW1
-         1. Open de load balancer, selecteer de frontend-IP-adres groep en klik op toevoegen
-         1. Voer de naam van de nieuwe front-end-IP-adres groep in (bijvoorbeeld **NW1-** front-end)
-         1. Stel de toewijzing in op statisch en voer het IP-adres in (bijvoorbeeld **10.0.0.4**)
-         1. Klik op OK
-      1. IP-adres 10.0.0.5 voor NW2
-         * Herhaal de bovenstaande stappen voor NW2
-   1. De back-end-Pools maken
-      1. Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het NFS-cluster voor NW1
-         1. Open de load balancer, selecteer back-endservers en klik op toevoegen
-         1. Voer de naam van de nieuwe back-end-groep in (bijvoorbeeld **NW1-back-end**)
-         1. Klik op een virtuele machine toevoegen
-         1. Selecteer de Beschikbaarheidsset die u eerder hebt gemaakt
-         1. De virtuele machines van het NFS-cluster selecteren
-         1. Klik op OK
-      1. Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het NFS-cluster voor NW2
-         * Herhaal de bovenstaande stappen voor het maken van een back-end-groep voor NW2
-   1. De status tests maken
-      1. Poort 61000 voor NW1
-         1. Open de load balancer, selecteer status controles en klik op toevoegen
-         1. Voer de naam van de nieuwe status test in (bijvoorbeeld **NW1-HP**)
-         1. TCP als protocol selecteren, poort 610**00**, interval 5 en drempel waarde voor onjuiste status 2 gebruiken
-         1. Klik op OK
-      1. Poort 61001 voor NW2
-         * Herhaal de bovenstaande stappen voor het maken van een status test voor NW2
-   1. Loadbalancing-regels
-      1. 2049 TCP voor NW1
+1. Maak een Load Balancer (intern). [Standaard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)worden aanbevolen.  
+   1. Volg deze instructies voor het maken van een standaard Load Balancer:
+      1. De frontend-IP-adressen maken
+         1. IP-adres 10.0.0.4 voor NW1
+            1. Open de load balancer, selecteer de frontend-IP-adres groep en klik op toevoegen
+            1. Voer de naam van de nieuwe front-end-IP-adres groep in (bijvoorbeeld **NW1-** front-end)
+            1. Stel de toewijzing in op statisch en voer het IP-adres in (bijvoorbeeld **10.0.0.4**)
+            1. Klik op OK
+         1. IP-adres 10.0.0.5 voor NW2
+            * Herhaal de bovenstaande stappen voor NW2
+      1. De back-end-Pools maken
+         1. Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het NFS-cluster voor NW1
+            1. Open de load balancer, selecteer back-endservers en klik op toevoegen
+            1. Voer de naam van de nieuwe back-end-groep in (bijvoorbeeld **NW1-back-end**)
+            1. Virtual Network selecteren
+            1. Klik op een virtuele machine toevoegen
+            1. Selecteer de virtuele machines van het NFS-cluster en de bijbehorende IP-adressen.
+            1. Klik op Toevoegen.
+         1. Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het NFS-cluster voor NW2
+            * Herhaal de bovenstaande stappen voor het maken van een back-end-groep voor NW2
+      1. De status tests maken
+         1. Poort 61000 voor NW1
+            1. Open de load balancer, selecteer status controles en klik op toevoegen
+            1. Voer de naam van de nieuwe status test in (bijvoorbeeld **NW1-HP**)
+            1. TCP als protocol selecteren, poort 610**00**, interval 5 en drempel waarde voor onjuiste status 2 gebruiken
+            1. Klik op OK
+         1. Poort 61001 voor NW2
+            * Herhaal de bovenstaande stappen voor het maken van een status test voor NW2
+      1. Taakverdelings regels
          1. Open de load balancer, selecteer taakverdelings regels en klik op toevoegen
-         1. Voer de naam in van de nieuwe load balancer regel (bijvoorbeeld **NW1-lb-2049**)
-         1. Selecteer het frontend-IP-adres, de back-end-pool en de status test die u eerder hebt gemaakt (bijvoorbeeld **NW1-front-end**)
-         1. Behoud protocol **TCP**, voer poort **2049** in
+         1. Voer de naam in van de nieuwe load balancer regel (bijvoorbeeld **NW1-lb**)
+         1. Selecteer het frontend-IP-adres, de back-end-pool en de status test die u eerder hebt gemaakt (bijvoorbeeld **NW1-frontend**. **NW1-backend** en **NW1-HP**)
+         1. Selecteer **ha-poorten**.
          1. Time-out voor inactiviteit tot 30 minuten verhogen
          1. **Zorg ervoor dat zwevend IP-adressen zijn ingeschakeld**
          1. Klik op OK
-      1. 2049 UDP voor NW1
-         * Herhaal de bovenstaande stappen voor poort 2049 en UDP voor NW1
-      1. 2049 TCP voor NW2
-         * Herhaal de bovenstaande stappen voor poort 2049 en TCP voor NW2
-      1. 2049 UDP voor NW2
-         * Herhaal de bovenstaande stappen voor poort 2049 en UDP voor NW2
+         * Herhaal de bovenstaande stappen om de taakverdelings regel voor NW2 te maken
+   1. Als uw scenario basis load balancer vereist, volgt u deze instructies:
+      1. De frontend-IP-adressen maken
+         1. IP-adres 10.0.0.4 voor NW1
+            1. Open de load balancer, selecteer de frontend-IP-adres groep en klik op toevoegen
+            1. Voer de naam van de nieuwe front-end-IP-adres groep in (bijvoorbeeld **NW1-** front-end)
+            1. Stel de toewijzing in op statisch en voer het IP-adres in (bijvoorbeeld **10.0.0.4**)
+            1. Klik op OK
+         1. IP-adres 10.0.0.5 voor NW2
+            * Herhaal de bovenstaande stappen voor NW2
+      1. De back-end-Pools maken
+         1. Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het NFS-cluster voor NW1
+            1. Open de load balancer, selecteer back-endservers en klik op toevoegen
+            1. Voer de naam van de nieuwe back-end-groep in (bijvoorbeeld **NW1-back-end**)
+            1. Klik op een virtuele machine toevoegen
+            1. Selecteer de Beschikbaarheidsset die u eerder hebt gemaakt
+            1. De virtuele machines van het NFS-cluster selecteren
+            1. Klik op OK
+         1. Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het NFS-cluster voor NW2
+            * Herhaal de bovenstaande stappen voor het maken van een back-end-groep voor NW2
+      1. De status tests maken
+         1. Poort 61000 voor NW1
+            1. Open de load balancer, selecteer status controles en klik op toevoegen
+            1. Voer de naam van de nieuwe status test in (bijvoorbeeld **NW1-HP**)
+            1. TCP als protocol selecteren, poort 610**00**, interval 5 en drempel waarde voor onjuiste status 2 gebruiken
+            1. Klik op OK
+         1. Poort 61001 voor NW2
+            * Herhaal de bovenstaande stappen voor het maken van een status test voor NW2
+      1. Taakverdelings regels
+         1. 2049 TCP voor NW1
+            1. Open de load balancer, selecteer taakverdelings regels en klik op toevoegen
+            1. Voer de naam in van de nieuwe load balancer regel (bijvoorbeeld **NW1-lb-2049**)
+            1. Selecteer het frontend-IP-adres, de back-end-pool en de status test die u eerder hebt gemaakt (bijvoorbeeld **NW1-front-end**)
+            1. Behoud protocol **TCP**, voer poort **2049** in
+            1. Time-out voor inactiviteit tot 30 minuten verhogen
+            1. **Zorg ervoor dat zwevend IP-adressen zijn ingeschakeld**
+            1. Klik op OK
+         1. 2049 UDP voor NW1
+            * Herhaal de bovenstaande stappen voor poort 2049 en UDP voor NW1
+         1. 2049 TCP voor NW2
+            * Herhaal de bovenstaande stappen voor poort 2049 en TCP voor NW2
+         1. 2049 UDP voor NW2
+            * Herhaal de bovenstaande stappen voor poort 2049 en UDP voor NW2
+
+> [!Note]
+> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)voor meer informatie over het bezorgen van uitgaande verbindingen.  
 
 > [!IMPORTANT]
-> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. TCP _timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
+> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
 
 ### <a name="create-pacemaker-cluster"></a>Een pacemaker-cluster maken
 

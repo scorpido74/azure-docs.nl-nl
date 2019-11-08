@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/26/2019
+ms.date: 11/07/2019
 ms.author: aahi
-ms.openlocfilehash: 8c5df8461c74d48c0712ab1947e29813e7e1ea3f
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 0f16c687f9816e99e05c2495a05596bd988ca9d2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032681"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827322"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Wat is Text Analytics-API?
 
@@ -25,7 +25,7 @@ De API maakt deel uit van [Azure Cognitive Services](https://docs.microsoft.com/
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-Tekst analyse kan verschillende dingen betekenen, maar in Cognitive Services biedt de Text Analytics-API vier typen analyse zoals hieronder wordt beschreven. U kunt deze functies gebruiken met de [rest API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/), of een client bibliotheek voor [.net](quickstarts/csharp.md), [python](quickstarts/python-sdk.md), [node. js](quickstarts/nodejs-sdk.md), [Go](quickstarts/go-sdk.md)of [ruby](quickstarts/ruby-sdk.md).
+Tekst analyse kan verschillende dingen betekenen, maar in Cognitive Services biedt de Text Analytics-API vier typen analyse zoals hieronder wordt beschreven. U kunt deze functies gebruiken met de [rest API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/), of de [client bibliotheek](quickstarts/text-analytics-sdk.md).
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 Gebruik [sentiment Analysis](how-tos/text-analytics-how-to-sentiment-analysis.md) om erachter te komen welke klanten uw merk of onderwerp denken door onbewerkte tekst te analyseren op aanwijzingen over positieve of negatieve sentiment. Deze API retourneert een gevoelsscore tussen 0 en 1 voor elk document, waarbij 1 het meest positief is.<br /> De analysemodellen zijn vooraf getraind met behulp van een uitgebreide hoofdtekst en natuurlijke-taaltechnologieën van Microsoft. Voor [geselecteerde talen](text-analytics-supported-languages.md) kan de API elke onbewerkte tekst die u opgeeft analyseren en beoordelen en de resultaten direct doorgeven aan de aanroepende toepassing.
@@ -83,7 +83,7 @@ Deze sectie is voor betere zichtbaarheid verplaatst naar een afzonderlijk artike
 
 Alle eindpunten van de Text Analytics-API accepteren onbewerkte tekstgegevens. De huidige limiet is 5120 tekens per document. Als u grotere documenten moet analyseren, kunt u deze splitsen in een aantal kleinere documenten.
 
-| Limiet | Value |
+| Limiet | Waarde |
 |------------------------|---------------|
 | Maximale grootte van één document | 5120 tekens, zoals wordt gemeten door [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
 | Maximale grootte van de hele aanvraag | 1 MB |
@@ -110,7 +110,7 @@ De Text Analytics-API maakt gebruik van Unicode-codering voor tekstweergave en h
 
 + [Maak een Azure-resource](../cognitive-services-apis-create-account.md) voor Text Analytics om een sleutel en eind punt voor uw toepassingen op te halen.
 
-+ [Snelstart](quickstarts/csharp.md) is een overzicht van de REST API-aanroepen die zijn geschreven in C#. Informatie over het indienen van tekst, het kiezen van een analyse en het bekijken van de resultaten met minimale code. Als u wilt, kunt u in plaats daarvan beginnen met de [python-Snelstartgids](quickstarts/python.md) .
++ Gebruik de [Snelstartgids](quickstarts/text-analytics-sdk.md) om API-aanroepen te verzenden. Informatie over het indienen van tekst, het kiezen van een analyse en het bekijken van de resultaten met minimale code.
 
 + Bekijk [wat er nieuw is in de Text Analytics-API](whats-new.md) voor informatie over nieuwe releases en functies.
 

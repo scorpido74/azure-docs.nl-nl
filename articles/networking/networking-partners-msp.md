@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 089d54a2aae288511a283dfb28b03efa34c33b53
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
-ms.translationtype: HT
+ms.openlocfilehash: 3151d72c0e74e7eb694ef2bdd5737f65992fe905
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715439"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824368"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informatie over MSP-partners voor Azure-netwerken
 
@@ -28,7 +28,7 @@ Klanten kunnen MSP-Managed Services-aanbiedingen kopen op de Azure Marketplace o
 
 Gebruik de koppelingen in deze sectie voor meer informatie over beheerde Cloud netwerk services die worden aangeboden door Azure Networking MSP-partners. Als uw Cloud Network Services-partner niet wordt vermeld in de onderstaande sectie, laat u de provider contact met ons opnemen. Ze kunnen contact met ons opnemen door een e-mail naar ManagedVirtualWAN@microsoft.comte sturen. 
 
-| **MSP** | **Transformatie Services voor Cloud netwerken** | **Beheerde ExpressRoute** | **Beheerd virtueel WAN** | **Beheerde firewall** |**Rand berekening beheerde netwerk** |
+| **MSP** | **Transformatie Services voor Cloud netwerken** | **Beheerde ExpressRoute** | **Beheerd virtueel WAN** | **Beheerde netwerk beveiligings Services** |**Rand berekening beheerde netwerk** |
 | ---| ---| ---| ---| ---| ---|
 |[Amdocs](https://www.amdocs.com/)|||||Ja|
 |[ANT groep UK](https://www.ans.co.uk/)|Ja|Ja||||
@@ -50,7 +50,7 @@ Gebruik de koppelingen in deze sectie voor meer informatie over beheerde Cloud n
 |[Oncore Cloud Services]( https://www.oncore.cloud/services/ue-for-expressroute/)|Ja|Ja||||
 |[Orixcom]( https://www.orixcom.com/cloud-solutions/)|Ja|Ja||||
 |[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)|Ja|Ja||||
-|[Tata-communicatie](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)|Ja|Ja||||
+|[Tata-communicatie](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)|Ja|Ja|Ja|Ja||
 |[TCTS](https://www.tatacommunications-ts.com/index.php)|Ja|Ja|Ja|||
 |[Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)|Ja||||Ja|
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)|Ja|Ja|Ja|||

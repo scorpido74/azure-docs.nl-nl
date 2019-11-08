@@ -1,7 +1,7 @@
 ---
-title: Gegevens drift (preview-versie) detecteren op AKS-implementaties
+title: Gegevens drift detecteren in AKS-implementaties
 titleSuffix: Azure Machine Learning
-description: Spoor gegevens drift op in azure Kubernetes-Service geïmplementeerde modellen in Azure Machine Learning.
+description: Gegevens drift (preview) detecteren in azure Kubernetes-Service geïmplementeerde modellen in Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: eddfddc994482bcb6e60604703e7f306fee9c32b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9ac1c5cb25d6b2ad396c2caed74942988a723a0e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574321"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824261"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Gegevens drift (preview) detecteren voor modellen die zijn geïmplementeerd in azure Kubernetes service (AKS)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -152,7 +152,7 @@ drift_figures = datadrift.show(with_details=True)
 
 ## <a name="schedule-data-drift-scans"></a>Scans van gegevens drift plannen 
 
-Wanneer u de functie voor gegevens drift detectie inschakelt, wordt een DataDriftDetector uitgevoerd op de opgegeven geplande frequentie. Als de datadrift_coefficient de opgegeven `drift_threshold`bereikt, wordt een e-mail bericht verzonden bij elke geplande uitvoering. 
+Wanneer u de functie voor gegevens drift detectie inschakelt, wordt een DataDriftDetector uitgevoerd op de opgegeven geplande frequentie. Als de datadrift_coefficient de opgegeven `drift_threshold`bereikt, wordt bij elke geplande uitvoering een e-mail verzonden. 
 
 ```python
 datadrift.enable_schedule()
@@ -189,6 +189,8 @@ Wanneer gegevens drift een negatieve invloed heeft op de prestaties van uw geïm
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie de [Azure ml data drift-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/azure-ml-datadrift.ipynb)voor een volledig voor beeld van het gebruik van gegevens drift. In deze Jupyter Notebook ziet u hoe u met behulp van een [Azure open-gegevensset](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) een model traint om het weer te voors pellen, deze te implementeren op AKS en te controleren op gegevens drift. 
+* Zie de [Azure ml data drift-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/drift-on-aks.ipynb)voor een volledig voor beeld van het gebruik van gegevens drift. In deze Jupyter Notebook ziet u hoe u met behulp van een [Azure open-gegevensset](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) een model traint om het weer te voors pellen, deze te implementeren op AKS en te controleren op gegevens drift. 
+
+* Gegevens drift detecteren met [DataSet-monitors](how-to-monitor-datasets.md).
 
 * We stellen uw vragen, opmerkingen of suggesties enorm op prijs naarmate de gegevens worden verplaatst naar de algemene Beschik baarheid. Gebruik de knop product feedback hieronder. 

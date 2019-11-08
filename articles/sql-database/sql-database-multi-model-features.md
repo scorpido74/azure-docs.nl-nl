@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database mogelijkheden voor meerdere modellen
+title: Mogelijkheden voor meerdere modellen
 description: Met Azure SQL Database kunt u werken met meerdere gegevens modellen in dezelfde data base.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: 7156b9923c9cb98ae3dde143c98eb32a6eb11a9c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2e8519fa8d96b7fe016b9da4ba84ce481a57d94e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687725"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802817"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Mogelijkheden van meerdere modellen van Azure SQL Database
 
@@ -29,7 +29,7 @@ U kunt in de volgende gevallen gebruikmaken van mogelijkheden voor het gebruik v
 - U hebt een aantal informatie of structuren die beter passen voor NoSQL-modellen en u geen afzonderlijke NoSQL-Data Base wilt gebruiken.
 - Een meerderheid van uw gegevens is geschikt voor relationele modellen en u moet een deel van uw gegevens in NoSQL-stijl model leren.
 - U wilt gebruikmaken van de uitgebreide Transact-SQL-taal voor het opvragen en analyseren van relationele en NoSQL-gegevens en deze te integreren met een aantal hulpprogram ma's en toepassingen die SQL-taal kunnen gebruiken.
-- U wilt database functies, zoals [in-Memory technologieën](sql-database-in-memory.md) , Toep assen om de prestaties van uw analyse-of verwerking van uw NoSQL-gegevens strucutres te verbeteren, gebruik [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) of [Lees bare replica's](sql-database-read-scale-out.md) om een kopie van uw gegevens te maken op de andere locatie en offload enkele analytische workloads van de primaire data base.
+- U wilt database functies, zoals [in-Memory technologieën](sql-database-in-memory.md) , Toep assen om de prestaties van uw analyse of verwerking van uw NoSQL-gegevens structuren te verbeteren, gebruik [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) of [Lees bare replica's](sql-database-read-scale-out.md) om een kopie van uw gegevens te maken op de andere locatie en offload enkele analytische workloads van de primaire data base.
 
 ## <a name="overview"></a>Overzicht
 
@@ -38,7 +38,7 @@ Azure SQL biedt de volgende functies voor meerdere modellen:
 - Met de [JSON-functies](#json-features) kunt u JSON-documenten in tabellen plaatsen, relationele gegevens TRANSFORMEREN naar JSON-documenten en vice versa. U kunt de standaard Transact-SQL-taal uitgebreid met JSON-functies voor het parseren van documenten en niet-geclusterde indexen, Column Store-indexen of tabellen die zijn geoptimaliseerd voor geheugen gebruiken om uw query's te optimaliseren.
 - Met [ruimtelijke functies](#spatial-features) kunt u geografische en geometrische gegevens opslaan, indexeren met behulp van ruimtelijke indexen en de gegevens ophalen met behulp van ruimtelijke query's.
 - Met [XML-functies](#xml-features) kunt u XML-gegevens in uw data base opslaan en indexeren en systeem eigen XQuery/XPath-bewerkingen gebruiken om met XML-gegevens te werken. Azure SQL database heeft een speciaal ingebouwde XML-query-engine waarmee XML-gegevens worden verwerkt.
-- [Sleutel-](#key-value-pairs) waardeparen worden niet expliciet ondersteund als speciale functies omdat de sleutel waarde Parijs kan worden gemodelleerd als tabellen met twee kolommen.
+- [Sleutel-](#key-value-pairs) waardeparen worden niet expliciet ondersteund als speciale functies omdat sleutel-waardeparen kunnen worden gemodelleerd als tabellen met twee kolommen.
 
   > [!Note]
   > U kunt JSON Path-expressie, XQuery/XPath-expressies, ruimtelijke functies en Graph-query-expressies in dezelfde Transact-SQL-query gebruiken om toegang te krijgen tot gegevens die u in de Data Base hebt opgeslagen. Daarnaast kan elk hulp programma of elke programmeer taal waarmee Transact-SQL-query's kunnen worden uitgevoerd, deze query-interface ook gebruiken om toegang te krijgen tot gegevens van meerdere modellen. Dit is het belangrijkste verschil ten opzichte van de data bases met meerdere modellen, zoals [Azure Cosmos DB](/azure/cosmos-db/) die speciale API bieden voor verschillende gegevens modellen.
@@ -68,7 +68,7 @@ Er is niets wat een grafiek database kan bereiken. Dit kan niet worden bereikt m
 
 Met Azure SQL Database kunt u gegevens parseren en opvragen die worden weer gegeven in de indeling van JavaScript Object Notation [(JSON)](https://www.json.org/) en uw relationele gegevens exporteren als JSON-tekst.
 
-JSON is een populaire gegevens indeling die wordt gebruikt voor het uitwisselen van gegevens in moderne web-en mobiele toepassingen. JSON wordt ook gebruikt voor het opslaan van semi-gestructureerde gegevens in logboek bestanden of in NoSQL-data bases zoals [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Veel REST-webservices retour neren resultaten die zijn opgemaakt als JSON-tekst of accepteren gegevens die zijn opgemaakt als JSON. De meeste Azure-Services, zoals [Azure Search](https://azure.microsoft.com/services/search/), [Azure Storage](https://azure.microsoft.com/services/storage/)en [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hebben rest-eind punten die JSON retour neren of gebruiken.
+JSON is een populaire gegevens indeling die wordt gebruikt voor het uitwisselen van gegevens in moderne web-en mobiele toepassingen. JSON wordt ook gebruikt voor het opslaan van semi-gestructureerde gegevens in logboek bestanden of in NoSQL-data bases zoals [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Veel REST-webservices retour neren resultaten die zijn opgemaakt als JSON-tekst of accepteren gegevens die zijn opgemaakt als JSON. De meeste Azure-Services, zoals [Azure Cognitive Search](https://azure.microsoft.com/services/search/), [Azure Storage](https://azure.microsoft.com/services/storage/)en [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hebben rest-eind punten die JSON retour neren of gebruiken.
 
 Met Azure SQL Database kunt u eenvoudig met JSON-gegevens werken en uw data base integreren met moderne services. Azure SQL Database biedt de volgende functies voor het werken met JSON-gegevens:
 

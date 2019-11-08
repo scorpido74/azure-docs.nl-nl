@@ -1,22 +1,23 @@
 ---
-title: '& Classificatie Azure SQL Database en SQL Data Warehouse voor gegevens detectie'
+title: Gegevensdetectie en -classificatie
 description: Classificatie van Azure SQL Database en gegevens detectie &
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.devlang: ''
 ms.topic: conceptual
 author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 9bcb8ce69a65892109702f0f0a409310945b6781
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2767b1b5603baa311d480109988d66dd136297ab
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690764"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808072"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>& Classificatie Azure SQL Database en SQL Data Warehouse voor gegevens detectie
 
@@ -123,7 +124,7 @@ Zodra het beleid voor de hele Tenant is gedefinieerd, kunt u door gaan met de cl
 
 ## <a id="subheading-3"></a>Toegang tot gevoelige gegevens controleren
 
-Een belang rijk aspect van het gegevens beveiligings model is de mogelijkheid om toegang tot gevoelige gegevens te bewaken. [Azure SQL database controle](sql-database-auditing.md) is uitgebreid met een nieuw veld in het audit logboek met de naam *data_sensitivity_information*, waarmee de gevoeligheids classificaties (labels) worden geregistreerd van de werkelijke gegevens die door de query zijn geretourneerd.
+Een belang rijk aspect van het gegevens beveiligings model is de mogelijkheid om toegang tot gevoelige gegevens te bewaken. [Azure SQL database controle](sql-database-auditing.md) is uitgebreid met een nieuw veld in het controle logboek met de naam *data_sensitivity_information*, dat de gevoeligheids classificaties (labels) registreert van de werkelijke gegevens die door de query zijn geretourneerd.
 
 ![Audit logboek](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
@@ -161,6 +162,8 @@ U kunt Power shell gebruiken om alle aanbevolen kolommen op te halen in een Azur
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
 - [Get-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
+- [Enable-AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/en-us/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
+- [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/en-us/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
 ### <a name="powershell-cmdlets-for-managed-instance"></a>Power shell-cmdlets voor een beheerd exemplaar
 
@@ -168,6 +171,8 @@ U kunt Power shell gebruiken om alle aanbevolen kolommen op te halen in een Azur
 - [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
 - [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
 - [Get-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
+- [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/en-us/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
+- [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/en-us/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
 ## <a name="permissions"></a>Machtigingen
 

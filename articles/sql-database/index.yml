@@ -1,206 +1,140 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure SQL Database
+summary: Azure SQL Database is een relationele Database-as-a-Service (DBaaS) op basis van de nieuwste stabiele versie van Microsoft SQL Server.
 metadata:
-  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: 'Documentatie voor Azure SQL Database - zelfstudies, API-verwijzing'
+  title: Documentatie voor Azure SQL Database - zelfstudies, API-verwijzing
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
-  author: stevestein
-  manager: craigg
   ms.service: sql-database
   ms.subservice: service
   ms.tgt_pltfrm: na
-  ms.devlang: null
-  ms.topic: overview
-  ms.date: 09/09/2019
+  ms.devlang: 
+  ms.topic: landing-page
+  author: stevestein
   ms.author: sstein
-abstract:
-  description: 'Azure SQL Database is een relationele database als een service (DBaaS) voor algemeen gebruik, op basis van de nieuwste stabiele versie van Microsoft SQL Server Database Engine. SQL Database is een krachtige, betrouwbare en veilige clouddatabase die u kunt gebruiken om gegevensgestuurde toepassingen en websites te bouwen in de programmeertaal van uw keuze, zonder dat u hiervoor infrastructuur hoeft te beheren. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u SQL Database gebruikt.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png'
-      width: 250
-    title: 'Maak een SQL-database in Azure. (3:12)'
-    href: 'https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/'
-    width: 250
-sections:
-  - title: Concepten
-    items:
-      - type: paragraph
-        text: 'Maak kennis met de belangrijkste voordelen van Platform-as-a-Service-databases, en met de aankoopmodellen en servicelagen die u kunt gebruiken om een configuratie met een optimale prijs/prestatie-verhouding in te richten.'
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/sql-database/sql-database-technical-overview
-            html: '<p>Een PaaS-database die altijd wordt uitgevoerd met de nieuwste stabiele versie van SQL Server Database Engine en een bijgewerkt besturingssysteem met 99,99% beschikbaarheid.</p>'
-            image:
-              src: media/index/i_managed.svg
-            title: Overzicht
-          - href: /azure/sql-database/sql-database-service-tiers
-            html: <p>Een op maat gemaakte prijs-prestatieverhouding met flexibele servicelagen die uiteenlopen van $ 5/maand tot krachtige databases met 80 cores.</p>
-            image:
-              src: media/index/i_perftier.svg
-            title: Prijsmodellen
-          - href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
-            html: <p>Kies de servicelaag en cloudarchitectuur die het beste voldoen aan uw behoeften of optimaal aansluiten bij de infrastructuur die u in uw on-premises omgeving gebruikt.</p>
-            image:
-              src: media/index/gear.svg
-            title: Servicelagen
-          - href: /azure/sql-database/sql-database-scalability-index
-            html: '<p>Afhankelijk van de mate waarin u de prestaties van uw toepassing wilt verbeteren, kunt u uw databases eenvoudig omhoog schalen, omlaag schalen of sharden.</p>'
-            image:
-              src: media/index/i_scale.svg
-            title: Schaalbaarheid
-          - href: /azure/sql-database/sql-database-paas
-            html: '<p>Ingebouwde hoge beschikbaarheid, automatische back-ups en geo-replicatie zorgen ervoor dat onderhoudsbewerkingen of fouten in de infrastructuur of hardware uw bedrijf niet platleggen.</p>'
-            image:
-              src: media/index/i_intelligence.svg
-            title: Platform als een Service
-          - href: /azure/sql-database/sql-database-security-index
-            html: '<p>Beveilig uw database met Azure AD-verificatie, virtuele netwerken, firewalls en Always Encrypted-verbindingen. Identificeer bedreigingen en beveiligingsproblemen dankzij ingebouwde beveiliging.</p>'
-            image:
-              src: media/index/i_security.svg
-            title: Geavanceerde beveiliging
-  - title: Implementatiemodellen
-    items:
-      - type: paragraph
-        text: 'Kies het implementatiemodel dat aansluit bij uw behoeften: een individuele database is de beste keuze voor nieuwe, moderne cloudtoepassingen, in een elastische pool host u gemakkelijk een groot aantal databases, en een beheerd exemplaar biedt een hoge mate van compatibiliteit met SQL Server en maakt eenvoudige migratie naar de cloud mogelijk.'
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: /azure/sql-database/sql-database-single-index
-            html: <p>Gebruik een individuele database die wordt beheerd door een SQL Database-server voor uw SaaS-toepassingen en microservices waarvoor een individuele database met voorspelbare prestaties nodig is.</p>
-            image:
-              src: media/index/i_db.svg
-            title: Individuele database
-          - href: /azure/sql-database/sql-database-elastic-pool
-            html: '<p>Elastische pools in SQL Database zijn eenvoudige, kosteneffectieve oplossingen voor het beheren en schalen van meerdere databases die een verschillend en onvoorspelbaar verbruik hebben.</p>'
-            image:
-              src: media/index/i_elasticpool.svg
-            title: Pools voor Elastic Database
-          - href: /azure/sql-database/sql-database-managed-instance-index
-            html: '<p>Gebruik het beheerde exemplaar om een volledig beheerde SQL Server-database-engine-instantie in te richten die wordt gehost in de Azure-cloud, waarbij er geen of slechts minimale wijzigingen in de databasecode nodig zijn voor migratie vanuit on-premises databases.</p>'
-            image:
-              src: media/index/i_mi.svg
-            title: Beheerd exemplaar
-          - href: /azure/sql-database/sql-database-instance-pools
-            html: <p>Gebruik pools met beheerde exemplaren als een eenvoudige en kosteneffectieve oplossing om meerdere beheerde exemplaren te implementeren die resources delen en snel schalen.</p>
-            image:
-              src: media/index/i-instancepools.svg
-            title: Instantie-pool
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Met Azure SQL Database kunt u eenvoudig basisbeheertaken uitvoeren met de Azure-portal, Azure CLI en Azure PowerShell. Leer aan de hand van de volgende beknopte voorbeelden hoe u algemene beheertaken uitvoert:'
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/portal.svg
-            title: Azure Portal
-          - image:
-              src: media/index/cli.svg
-            title: Azure-CLI
-          - image:
-              src: media/index/logo_powershell.svg
-            title: PowerShell
-          - image:
-              src: media/index/logo_arm.svg
-            title: Azure Resource Manager-sjabloon
-        rows:
-          - title: Individuele database maken
-            values:
-              - href: /azure/sql-database/sql-database-single-database-get-started
-              - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
-              - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
-              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create'
-          - title: Elastische pool maken
-            values:
-              - href: /azure/sql-database/sql-database-elastic-pool-manage
-              - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
-              - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
-              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create'
-          - title: Beheerd exemplaar maken
-            values:
-              - href: /azure/sql-database/sql-database-managed-instance-get-started
-              - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
-              - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
-              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
-          - title: Instantie-pool maken
-            values:
-              - href: null
-              - href: null
-              - href: '/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool'
-              - href: null
-  - title: Zelfstudies met stapsgewijze instructies en trainingsmateriaal
-    items:
-      - type: paragraph
-        text: 'Meer informatie over het maken, beheren en migreren van databases met SQL Database'
-      - type: list
-        style: ordered
-        items:
-          - html: Ga na of <a href="/azure/sql-database/sql-database-paas-vs-sql-server-iaas">SQL Server op VM (IaaS) of Azure SQL Database (PaaS) de juiste keuze is voor uw workload</a>.
-          - html: Ontdek <a href="/azure/sql-database/sql-database-features">welke functies er in Azure SQL Database worden ondersteund en wat de verschillen in gedrag zijn</a>.
-          - html: Ga met behulp van onze quickstarts aan de slag met een <a href="/azure/sql-database/sql-database-single-database-quickstart-guide">individuele database</a> en een <a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">beheerd exemplaar</a>.
-          - html: Het schema voor een nieuwe individuele database maken en ontwerpen met behulp van <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> of <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
-          - html: 'Migreer een bestaande database naar Azure met een <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">systeemeigen SQL Server-back-upbestand</a>, de <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a> of <a href="/azure/sql-database/sql-database-import">door een BACPAC-bestand te importeren</a>.'
-          - html: <a href="/azure/sql-database/sql-database-security-tutorial">Uw SQL-database beveiligen</a>
-          - html: Distribueer uw gegevens wereldwijd met behulp van een <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geografisch gedistribueerde database</a>.
-          - html: Maak kennis met <a href="/azure/sql-database/sql-database-release-notes">nieuwe functies in Azure SQL Database</a>.
-  - title: Uw vaardigheden ontwikkelen met Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Een Azure SQL-database inrichten om toepassingsgegevens op te slaan
-            href: /learn/modules/provision-azure-sql-db/
-            image:
-              src: /learn/achievements/provision-azure-sql-db.svg
-              href: /learn/modules/provision-azure-sql-db/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-sql-database">Meer interactief leren...</a>
-  - title: Gratis Pluralsight-videotraining
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Ontwikkelen met .NET op Azure
-            href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Zoek scripts om algemene taken te beheren.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
-          - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure-CLI</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: '<p><a href="/powershell/module/Az.Sql/">Azure PowerShell</a></p><p><a href="/powershell/module/elasticdatabasejobs/#elasticdatabasejobs">Azure PowerShell (elastische database)</a></p><p><a href="/cli/azure/sql">Azure-CLI</a></p>'
-          - title: Talen
-            html: '<p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p><p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p><p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p><p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p><p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p><p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/sql/">Naslaginformatie over REST-API</a></p>
-          - title: SQL Server-hulpprogramma's
-            html: '<p><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server-hulpprogramma''s</a></p><p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p><p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p><p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p><p><a href="https://msdn.microsoft.com/library/ms162773.aspx">sqlcmd</a></p><p><a href="https://docs.microsoft.com/sql/tools/sqlpackage">SqlPackage</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">Pakket met SQL Database-beheerbibliotheek</a></p>'
-          - title: SQL Server-stuurprogramma's
-            html: '<p><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server-stuurprogramma''s</a></p><p><a href="/sql/connect/ado-net/microsoft-ado-net-sql-server">ADO.NET</a></p><p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p><p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>'
+  ms.date: 10/30/2019
+  ms.openlocfilehash: 815eebac3cc4a09f7f73bd639fc36cfd17de9ada
+  ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 10/31/2019
+  ms.locfileid: "73242822"
+landingContent:
+- title: Over SQL Database
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is SQL Database?
+      url: sql-database-technical-overview.md
+    - text: Welke SQL Database-optie moet ik kiezen?
+      url: sql-database-paas-vs-sql-server-iaas.md
+    - text: Aanschafmogelijkheden
+      url: sql-database-purchase-models.md
+    - text: Servicelagen
+      url: sql-database-service-tiers-general-purpose-business-critical.md
+  - linkListType: concept
+    links:
+    - text: Schaalbaarheid
+      url: sql-database-scalability-index.yml
+    - text: Platform als een Service
+      url: sql-database-paas-index.yml
+    - text: Geavanceerde beveiliging
+      url: sql-database-security-overview.md
+- title: Implementatiemodellen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Individuele database
+      url: sql-database-single-index.yml
+    - text: Pools voor Elastic Database
+      url: sql-database-elastic-pool.md
+    - text: Beheerd exemplaar
+      url: sql-database-managed-instance-index.yml
+    - text: Exemplaargroepen
+      url: sql-database-instance-pools.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Quickstart voor een individuele database
+      url: sql-database-single-database-quickstart-guide.md
+    - text: Quickstart voor beheerd exemplaar
+      url: sql-database-managed-instance-quickstart-guide.md
+    - text: Quickstart voor exemplaarpools
+      url: sql-database-instance-pools-how-to.md
+- title: Migreren naar Azure SQL Database
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Welke SQL Database-optie moet ik kiezen?
+      url: sql-database-paas-vs-sql-server-iaas.md
+    - text: Migreren naar SQL-database
+      url: sql-database-single-database-migrate.md
+    - text: Migreren naar beheerd SQL-exemplaar
+      url: sql-database-managed-instance-migrate.md
+- title: Een database ontwerpen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een database ontwerpen met SQL Server Management Studio (SSMS)
+      url: sql-database-design-first-database.md
+    - text: Een databaseprogramma ontwerpen in een app
+      url: sql-database-design-first-database-csharp.md
+  - linkListType: reference
+    links:
+    - text: Azure-CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST-API
+      url: https://docs.microsoft.com/rest/api/sql/
+- title: Een query in een database uitvoeren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Query's uitvoeren met SQL Server Management Studio (SSMS)
+      url: sql-database-connect-query-ssms.md
+    - text: Query's uitvoeren met Azure Data Studio
+      url: https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database
+  - linkListType: reference
+    links:
+    - text: Transact-SQL-verwijzing (T-SQL)
+      url: https://docs.microsoft.com/sql/t-sql/language-reference
+    - text: SSMS downloaden en installeren
+      url: https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio downloaden en installeren
+      url: https://docs.microsoft.com/sql/azure-data-studio/download
+- title: SQL Database-beveiliging
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Beveiligingsoverzicht
+      url: sql-database-security-overview.md
+    - text: Firewall-regels
+      url: sql-database-firewall-configure.md
+  - linkListType: architecture
+    links:
+    - text: Controleren
+      url: sql-database-auditing.md
+    - text: Advanced Data Security
+      url: sql-database-advanced-data-security.md
+- title: Bedrijfscontinuïteit en herstel na noodgevallen (BCDR)
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Bedrijfscontinuïteit
+      url: sql-database-business-continuity.md
+    - text: Hoge beschikbaarheid
+      url: sql-database-high-availability.md
+    - text: Databaseback-ups
+      url: sql-database-automated-backups.md
+- title: API-verwijzing
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure-CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST-API
+      url: https://docs.microsoft.com/rest/api/sql/

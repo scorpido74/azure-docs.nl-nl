@@ -1,5 +1,5 @@
 ---
-title: Versneld database herstel-Azure SQL Database
+title: Versneld databaseherstel
 description: De Azure SQL Database heeft een nieuwe functie waarmee u snel en consistent database herstel, momentane trans actie terugdraaien en een agressieve afkap ping van Logboeken voor afzonderlijke data bases en gepoolde data bases in Azure SQL Database en data bases in Azure SQL-gegevens kunt maken. Uitslag.
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,12 +10,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: e66b3e6563d796cc7b59e82233bd1b22bc906c6e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: eff81693ff4c34dc00f66e9e5ea22e56d3ff9d77
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691351"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808088"
 ---
 # <a name="accelerated-database-recovery"></a>Versneld database herstel
 
@@ -99,11 +99,11 @@ De vier belangrijkste onderdelen van ADR zijn:
 
 - **Logische terugzet actie**
 
-  Logische herverteren is het asynchrone proces dat verantwoordelijk is voor het uitvoeren van ongedaan maken op basis van een op rijniveau gebaseerde, direct terugdraaiende trans actie en ongedaan maken voor alle bewerkingen met een versie.
+  Logische herverteren is het asynchrone proces dat verantwoordelijk is voor het uitvoeren van ongedaan maken op basis van een op rijniveau gebaseerde, direct terugdraaiende trans actie en ongedaan maken voor alle bewerkingen met een versie. Logische terugzet actie wordt uitgevoerd door:
 
-  - Houdt alle afgebroken trans acties bij
-  - Voert terugdraaien uit met PVS voor alle gebruikers transacties
-  - Hiermee worden alle vergren delingen direct na de trans actie afgebroken
+  - Alle afgebroken trans acties bijhouden en deze onzichtbaar maken voor andere trans acties. 
+  - Terugdraai actie uitvoeren met behulp van PVS voor alle gebruikers transacties in plaats van het transactie logboek fysiek te scannen en wijzigingen een voor een ongedaan te maken.
+  - Alle vergren delingen direct na het afbreken van de trans actie worden vrijgegeven. Omdat het afbreken vereist dat wijzigingen in het geheugen worden gemarkeerd, is het proces zeer efficiënt en kunnen vergren delingen gedurende een lange periode niet worden bewaard.
 
 - **sLog**
 

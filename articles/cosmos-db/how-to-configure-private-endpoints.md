@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 254c2645d842a6f6a2eaaeca2369b93a81e1a8cd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 34b54459629560ba80e6a38d10edbab32ea44778
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681683"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820161"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account (preview-versie)
 
@@ -129,6 +129,41 @@ $subnet = $virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.N
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $ResourceGroupName -Name $PrivateEndpointName -Location "westcentralus" -Subnet  $subnet -PrivateLinkServiceConnection $privateEndpointConnection
 ```
 
+### <a name="integrate-the-private-endpoint-with-private-dns-zone"></a>Het persoonlijke eind punt integreren met een privé-DNS-zone
+
+Nadat u het persoonlijke eind punt hebt gemaakt, kunt u het integreren met een privé-DNS-zone met behulp van het volgende PowerSehll-script:
+
+```azurepowershell-interactive
+Import-Module Az.PrivateDns
+$zoneName = "privatelink.documents.azure.com"
+$zone = New-AzPrivateDnsZone -ResourceGroupName $ResourceGroupName `
+  -Name $zoneName
+
+$link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName $ResourceGroupName `
+  -ZoneName $zoneName `
+  -Name "myzonelink" `
+  -VirtualNetworkId $virtualNetwork.Id  
+ 
+$pe = Get-AzPrivateEndpoint -Name $PrivateEndpointName `
+  -ResourceGroupName $ResourceGroupName
+
+$networkInterface = Get-AzResource -ResourceId $pe.NetworkInterfaces[0].Id `
+  -ApiVersion "2019-04-01"
+ 
+foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
+foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
+Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
+$recordName = $fqdn.split('.',2)[0] 
+$dnsZone = $fqdn.split('.',2)[1] 
+New-AzPrivateDnsRecordSet -Name $recordName `
+  -RecordType A -ZoneName $zoneName  `
+  -ResourceGroupName $ResourceGroupName -Ttl 600 `
+  -PrivateDnsRecords (New-AzPrivateDnsRecordConfig `
+  -IPv4Address $ipconfig.properties.privateIPAddress)  
+}
+}
+```
+
 ### <a name="fetch-the-private-ip-addresses"></a>De privé-IP-adressen ophalen
 
 Nadat het persoonlijke eind punt is ingericht, kunt u een query uitvoeren op de IP-adressen en de FQDN-toewijzingen met behulp van het volgende Power shell-script:
@@ -206,7 +241,7 @@ U kunt een persoonlijke koppeling instellen door een persoonlijk eind punt te ma
 
 ### <a name="define-the-template-parameters-file"></a>Het sjabloon parameter bestand definiëren
 
-Maak een parameter bestand voor de sjabloon en geef het de naam ' PrivateEndpoint_parameters. json '. Voeg de volgende code toe aan het parameter bestand:
+Maak een parameter bestand voor de sjabloon en geef het de naam PrivateEndpoint_parameters. json. Voeg de volgende code toe aan het parameter bestand:
 
 ```json
 {
@@ -295,9 +330,9 @@ Nadat de sjabloon is geïmplementeerd, worden de privé-IP-adressen in het subne
 
 ## <a name="configure-custom-dns"></a>Aangepaste DNS configureren
 
-Tijdens de preview-versie van persoonlijke koppelingen moet u een privé-DNS gebruiken in het subnet waar het persoonlijke eind punt is gemaakt. En configureer de eind punten zodanig dat elk particulier IP-adres wordt toegewezen aan een DNS-vermelding (Zie de eigenschap ' FQDN-namen ' in het antwoord hierboven hierboven).
+U moet een privé-DNS gebruiken in het subnet waar het persoonlijke eind punt is gemaakt. En configureer de eind punten zodanig dat elk particulier IP-adres wordt toegewezen aan een DNS-vermelding (Zie de eigenschap ' FQDN-namen ' in het antwoord hierboven hierboven).
 
-Wanneer u het persoonlijke eind punt maakt, kunt u het integreren met een privé-DNS-zone in Azure. Als u uw privé-eind punt niet integreert met een particuliere DNS-zone in Azure en u in plaats daarvan een aangepaste DNS gebruikt, moet u uw DNS configureren om een nieuwe DNS-record toe te voegen voor het privé-IP-adres dat overeenkomt met de nieuwe regio.
+Wanneer u het persoonlijke eind punt maakt, kunt u het integreren met een privé-DNS-zone in Azure. Als u uw privé-eind punt niet integreert met een particuliere DNS-zone in Azure en u in plaats daarvan een aangepaste DNS gebruikt, moet u uw DNS configureren om DNS-records toe te voegen voor alle privé-IP-adressen die zijn gereserveerd voor het persoonlijke eind punt.
 
 ## <a name="firewall-configuration-with-private-link"></a>Firewall configuratie met persoonlijke koppeling
 
@@ -339,19 +374,19 @@ DNS-records in de privé-DNS-zone worden niet automatisch verwijderd wanneer een
 
 De volgende beperkingen zijn van toepassing wanneer u de privé koppeling met een Azure Cosmos-account gebruikt:
 
+* Ondersteuning voor persoonlijke koppelingen voor Azure Cosmos-accounts en VNETs is alleen beschikbaar in bepaalde regio's. Zie de sectie [beschik bare regio's](../private-link/private-link-overview.md#availability) van het artikel over een persoonlijke koppeling voor een lijst met ondersteunde regio's. Het **VNET en het Azure Cosmos-account moeten zich in de ondersteunde regio's bezien om een persoonlijk eind punt te kunnen maken**.
+
 * Wanneer u persoonlijke koppelingen met een Azure Cosmos-account gebruikt via verbinding via directe modus, kunt u alleen TCP-protocol gebruiken. Het HTTP-protocol wordt nog niet ondersteund
 
 * Wanneer u de API van Azure Cosmos DB gebruikt voor MongoDB-accounts, wordt het persoonlijke eind punt alleen ondersteund voor accounts op Server versie 3,6 (dat wil zeggen accounts die gebruikmaken van het eind punt in de notatie `*.mongo.cosmos.azure.com`). Privé koppeling wordt niet ondersteund voor accounts op Server versie 3,2 (dat wil zeggen accounts die gebruikmaken van het eind punt in de indeling `*.documents.azure.com`). Als u een persoonlijke koppeling wilt gebruiken, moet u oude accounts migreren naar de nieuwe versie.
 
 * Wanneer u de API van Azure Cosmos DB gebruikt voor MongoDB-accounts die een persoonlijke koppeling hebben, kunt u geen hulp middelen gebruiken zoals Robo 3T gebruiken, Studio 3T gebruiken, Mongoose etc. Het eind punt kan alleen ondersteuning bieden voor persoonlijke koppelingen als de para meter appName =<account name> is opgegeven. Bijvoorbeeld: replicaset = globaldb & appName = mydbaccountname. Omdat deze hulpprogram ma's de naam van de app in het connection string niet door geven aan de service, kunt u geen persoonlijke koppeling gebruiken. U hebt echter nog steeds toegang tot deze accounts met SDK-Stuur Programma's met 3,6-versie.
 
-* Ondersteuning voor persoonlijke koppelingen voor Azure Cosmos-accounts en VNETs is alleen beschikbaar in bepaalde regio's. Zie de sectie [beschik bare regio's](../private-link/private-link-overview.md#availability) van het artikel over een persoonlijke koppeling voor een lijst met ondersteunde regio's. Het **VNET en het Azure Cosmos-account moeten zich in de ondersteunde regio's bezien om een persoonlijk eind punt te kunnen maken**.
-
 * Een virtueel netwerk kan niet worden verplaatst of verwijderd als het een persoonlijke koppeling bevat.
 
 * Een Azure Cosmos-account kan niet worden verwijderd als het is gekoppeld aan een persoonlijk eind punt.
 
-* Er kan geen failover worden uitgevoerd voor een Azure Cosmos-account naar een regio die niet is toegewezen aan alle persoonlijke eind punten die eraan zijn gekoppeld. Zie regio's toevoegen of verwijderen in de vorige sectie voor meer informatie.
+* Er kan geen failover worden uitgevoerd voor een Azure Cosmos-account naar een regio die niet is toegewezen aan alle persoonlijke eind punten die aan het account zijn gekoppeld. Zie regio's toevoegen of verwijderen in de vorige sectie voor meer informatie.
 
 * Aan een netwerk beheerder moet ten minste de machtiging ' */PrivateEndpointConnectionsApproval ' zijn toegewezen in het bereik van de Azure Cosmos-account door een beheerder om automatisch goedgekeurde privé-eind punten te maken.
 
