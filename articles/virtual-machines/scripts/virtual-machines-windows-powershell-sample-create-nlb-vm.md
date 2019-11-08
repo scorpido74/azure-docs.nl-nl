@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2238f223f22ee43e7afd8b5162fb16cb16a2adf4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 92f437a175228ab75287bdbcf6da31b2786bcbd4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090759"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748725"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>Zorgen voor verkeer met gelijke taakverdeling tussen maximaal beschikbare virtuele machines
 
@@ -30,7 +30,7 @@ Met dit voorbeeldscript maakt u alles wat nodig is voor het uitvoeren van versch
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -50,7 +50,7 @@ In dit script worden de volgende opdrachten gebruikt om de implementatie te make
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Hiermee maakt u een subnetconfiguratie. Deze configuratie wordt gebruikt bij het maken van het virtueel netwerk. |
 | [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) | Hiermee maakt u een virtueel netwerk. |
 | [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres. |
@@ -68,7 +68,7 @@ In dit script worden de volgende opdrachten gebruikt om de implementatie te make
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Hiermee maakt u een virtuele machine. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep en alle daarin opgenomen resources. |
 
-U kunt de virtuele machines ook maken met uw eigen aangepaste beheerde installatie kopie. In de VM-configuratie, `Set-AzVMSourceImage` voor het `-Id` gebruik `-VM` van de para `-PublisherName`meters `-Skus`en in `-Version`plaats van, `-Offer`, en.
+U kunt de virtuele machines ook maken met uw eigen aangepaste beheerde installatie kopie. In de VM-configuratie kunt u voor `Set-AzVMSourceImage` de para meters `-Id` en `-VM` gebruiken in plaats van `-PublisherName`, `-Offer`, `-Skus`en `-Version`.
 
 Het maken van de VM-configuratie zou bijvoorbeeld het volgende zijn:
 

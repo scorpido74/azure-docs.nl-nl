@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: f693a80726c9185bbd75d5fb99eb7e5f3ccad987
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: ccd29952693ecbc1db5927d5deabae874b6e9933
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493502"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796698"
 ---
 # <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Bouwen & een Azure Machine Learning pijp lijn voor batch scores gebruiken
 
@@ -480,7 +480,7 @@ Als u de pijp lijn vanuit het REST-eind punt wilt uitvoeren, hebt u een OAuth2-v
 
 Voor Service-Principal-verificatie is het maken van een *app-registratie* in *Azure Active Directory*vereist. Eerst genereert u een client geheim en verleent u vervolgens uw Service Principal *Role toegang* tot uw machine learning-werk ruimte. Gebruik de klasse [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) om uw verificatie stroom te beheren. 
 
-Zowel `InteractiveLoginAuthentication` als `ServicePrincipalAuthentication` nemen over van `AbstractAuthentication`. In beide gevallen gebruikt u de functie `get_authentication_header()` op dezelfde manier om de header op te halen:
+Zowel [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) als `ServicePrincipalAuthentication` nemen over van `AbstractAuthentication`. In beide gevallen gebruikt u de functie [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) op dezelfde manier om de header op te halen:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
@@ -522,7 +522,7 @@ RunDetails(published_pipeline_run).show()
 
 Vul deze sectie niet in als u andere zelf studies van Azure Machine Learning wilt uitvoeren.
 
-### <a name="stop-the-compute-instance"></a>Het reken exemplaar stoppen
+### <a name="stop-the-notebook-vm"></a>De VM van het notebook stoppen
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
