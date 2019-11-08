@@ -7,18 +7,20 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 44a2b0feab19d042de58359a7ea13814415e6c9e
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 5fc9463d5f5ea15f08378d4a0245174a366fa2b9
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129550"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747477"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Back-ups maken van Azure-bestandsshares en deze terugzetten
+
 In dit artikel wordt uitgelegd hoe u met Azure Portal back-ups kunt maken van [Azure-bestandsshares](../storage/files/storage-files-introduction.md) en deze kunt herstellen.
 
 In deze handleiding leert u het volgende:
 > [!div class="checklist"]
+>
 > * Een Recovery Services-kluis configureren om een back-up te maken van Azure-bestanden
 > * Een back-uptaak op aanvraag uitvoeren om een herstelpunt te maken
 > * Een of meer bestanden herstellen vanaf een herstelpunt
@@ -27,22 +29,24 @@ In deze handleiding leert u het volgende:
 > * Back-upgegevens verwijderen
 
 ## <a name="prerequisites"></a>Vereisten
+
 Voordat u een back-up van een Azure-bestandsshare probeert te maken, moet u nagaan of deze zich in een van de [ondersteunde typen opslagaccounts](backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview) bevindt. Zodra u dit hebt bevestigd, kunt u uw bestandsshares beveiligen.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Beperkingen voor het maken van back-ups van Azure-bestandsshares in de preview-versie
+
 Back-up voor Azure-bestandsshares is in preview. Azure-bestandsshares worden ondersteund voor de accounts voor algemeen gebruik v1 en v2. De volgende back-upscenario's worden niet ondersteund voor Azure-bestandsshares:
-- Ondersteuning voor het maken van back-ups van Azure-bestands shares in opslag accounts met [zone redundant Storage](../storage/common/storage-redundancy-zrs.md) (ZRS) replicatie is momenteel beperkt tot [deze regio's](backup-azure-files-faq.md#in-which-geos-can-i-back-up-azure-file-shares-).
-- Er is geen CLI beschikbaar voor het beveiligen van Azure Files met behulp van Azure Backup.
-- Azure Backup ondersteunt momenteel het configureren van geplande eenmalige back-ups van Azure-bestands shares.
-- Het maximumaantal geplande back-ups per dag is één.
-- Het maximumaantal on-demand back-ups per dag is vier.
-- Gebruik [resourcevergrendelingen](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) voor het opslagaccount om per ongeluk verwijderen van back-ups uit de Recovery Services-kluis te voorkomen.
-- Verwijder geen momentopnamen die met Azure Backup zijn gemaakt. Het verwijderen van momentopnamen kan leiden tot het verlies van herstelpunten en/of herstelfouten.
-- Verwijder geen bestandsshares die zijn beveiligd met Azure Backup. Met de huidige oplossing worden alle moment opnamen verwijderd die zijn gemaakt door Azure Backup zodra de bestands share is verwijderd, waardoor alle herstel punten verloren gaan.
 
-
+* Ondersteuning voor het maken van back-ups van Azure-bestands shares in opslag accounts met [zone redundant Storage](../storage/common/storage-redundancy-zrs.md) (ZRS) replicatie is momenteel beperkt tot [deze regio's](backup-azure-files-faq.md#in-which-geos-can-i-back-up-azure-file-shares).
+* Er is geen CLI beschikbaar voor het beveiligen van Azure Files met behulp van Azure Backup.
+* Azure Backup ondersteunt momenteel het configureren van geplande eenmalige back-ups van Azure-bestands shares.
+* Het maximumaantal geplande back-ups per dag is één.
+* Het maximumaantal on-demand back-ups per dag is vier.
+* Gebruik [resourcevergrendelingen](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) voor het opslagaccount om per ongeluk verwijderen van back-ups uit de Recovery Services-kluis te voorkomen.
+* Verwijder geen momentopnamen die met Azure Backup zijn gemaakt. Het verwijderen van momentopnamen kan leiden tot het verlies van herstelpunten en/of herstelfouten.
+* Verwijder geen bestandsshares die zijn beveiligd met Azure Backup. Met de huidige oplossing worden alle moment opnamen verwijderd die zijn gemaakt door Azure Backup zodra de bestands share is verwijderd, waardoor alle herstel punten verloren gaan.
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Back-up voor Azure-bestandsshare configureren
+
 In deze zelfstudie wordt ervan uitgegaan dat u al een Azure-bestandsshare hebt gemaakt. Ga als volgt te werk om een back-up van uw Azure-bestandsshare te maken:
 
 1. Maak een Recovery Services-kluis in dezelfde regio als waarin de bestandsshare zich bevindt. Als u al een kluis hebt, opent u de overzichtspagina van uw kluis en klikt u op **Back-up**.
@@ -74,6 +78,7 @@ In deze zelfstudie wordt ervan uitgegaan dat u al een Azure-bestandsshare hebt g
     Wanneer er een back-upbeleid is ingesteld, wordt er een momentopname van de bestandsshares genomen op het geplande tijdstip en wordt het herstelpunt gedurende de gekozen periode bewaard.
 
 ## <a name="create-an-on-demand-backup"></a>Een back-up op aanvraag maken
+
 Misschien wilt u zo nu en dan een momentopname van of herstelpunt voor een back-up maken buiten de tijden die zijn vastgelegd in het back-upbeleid. Een veelvoorkomend moment voor het genereren van een back-up op aanvraag, is vlak nadat u het back-upbeleid hebt geconfigureerd. Afhankelijk van de planning in het back-upbeleid, kan het uren of dagen duren totdat er een momentopname wordt gemaakt. Als u uw gegevens wilt beschermen totdat het back-upbeleid actief wordt, start u een back-up op aanvraag. Het maken van een back-up op aanvraag is vaak vereist voordat u geplande wijzigingen aanbrengt aan uw bestands shares.
 
 ### <a name="to-create-an-on-demand-backup"></a>Een back-up op aanvraag maken
@@ -97,11 +102,13 @@ Misschien wilt u zo nu en dan een momentopname van of herstelpunt voor een back-
 5. Klik op **OK** om de back-uptaak op aanvraag te bevestigen.
 
 ## <a name="restore-from-backup-of-azure-file-share"></a>Herstellen vanuit back-up van Azure-bestandsshare
+
 Als u een volledige bestandsshare of afzonderlijke bestanden of mappen van een herstelpunt wilt herstellen, leest u over Back-upitem in het vorige gedeelte. Kies **Share herstellen** om een volledige bestandsshare vanaf een gewenst moment te herstellen. Selecteer in de lijst met herstelpunten die wordt weergegeven een herstelpunt dat uw huidige bestandsshare kan overschrijven of dat de bestandsshare naar een alternatieve bestandsshare in dezelfde regio kan herstellen.
 
    ![Klik op Back-up om de Azure-bestandsshare aan de kluis te koppelen](./media/backup-file-shares/select-restore-location.png)
 
 ## <a name="restore-individual-files-or-folders-from-backup-of-azure-file-shares"></a>Afzonderlijke bestanden of mappen terugzetten vanuit een back-up van Azure-bestandsshares
+
 Azure Backup biedt de mogelijkheid om naar een herstelpunt te bladeren binnen Azure Portal. Klik op de pagina Back-upitem op Bestandsherstel en kies uit de lijst met herstelpunten om een bestand of map te herstellen. Selecteer het Hersteldoel en klik op **Bestand selecteren** om door het herstelpunt te bladeren. Selecteer het bestand of de map en klik op **Herstellen**.
 
    ![Klik op Back-up om de Azure-bestandsshare aan de kluis te koppelen](./media/backup-file-shares/restore-individual-files-folders.png)
@@ -109,11 +116,12 @@ Azure Backup biedt de mogelijkheid om naar een herstelpunt te bladeren binnen Az
 ## <a name="manage-azure-file-share-backups"></a>Back-ups van Azure-bestandsshares beheren
 
 U kunt verschillende beheertaken voor back-ups van bestandsshares uitvoeren op de pagina **Back-uptaken**, met inbegrip van:
-- [Taken bewaken](backup-azure-files.md#monitor-jobs)
-- [Een nieuw beleid maken](backup-azure-files.md#create-a-new-policy)
-- [De beveiliging voor een bestandsshare stoppen](backup-azure-files.md#stop-protecting-an-azure-file-share)
-- [De beveiliging voor een bestandsshare hervatten](backup-azure-files.md#resume-protection-for-azure-file-share)
-- [Back-upgegevens verwijderen](backup-azure-files.md#delete-backup-data)
+
+* [Taken bewaken](backup-azure-files.md#monitor-jobs)
+* [Een nieuw beleid maken](backup-azure-files.md#create-a-new-policy)
+* [De beveiliging voor een bestandsshare stoppen](backup-azure-files.md#stop-protecting-an-azure-file-share)
+* [De beveiliging voor een bestandsshare hervatten](backup-azure-files.md#resume-protection-for-azure-file-share)
+* [Back-upgegevens verwijderen](backup-azure-files.md#delete-backup-data)
 
 ### <a name="monitor-jobs"></a>Taken controleren
 
@@ -121,7 +129,7 @@ U kunt de voortgang van alle taken bijhouden op de pagina **Back-uptaken**.
 
 De pagina **Back-uptaken** openen:
 
-- Open de Recovery Services-kluis die u wilt controleren en klik in het menu Recovery Services-kluis op **Taken** en vervolgens op **Back-uptaken**.
+* Open de Recovery Services-kluis die u wilt controleren en klik in het menu Recovery Services-kluis op **Taken** en vervolgens op **Back-uptaken**.
 
    ![Selecteer de taak die u wilt controleren](./media/backup-file-shares/open-backup-jobs.png)
 
@@ -135,7 +143,7 @@ U kunt vanuit **Back-upbeleid** van de Recovery Services-kluis een nieuw beleid 
 
 Het bestaande back-upbeleid weergeven:
 
-- Open de gewenste Recovery Services-kluis en klik in het menu Recovery Services-kluis op **Back-upbeleid**. Alle back-upbeleidsregels worden vermeld.
+* Open de gewenste Recovery Services-kluis en klik in het menu Recovery Services-kluis op **Back-upbeleid**. Alle back-upbeleidsregels worden vermeld.
 
    ![Selecteer de taak die u wilt controleren](./media/backup-file-shares/list-of-backup-policies.png)
 
@@ -154,8 +162,8 @@ Een nieuw back-upbeleid maken:
 
 Als u wilt stoppen met het beveiligen van een Azure-bestandsshare, wordt u gevraagd of u de herstelpunten wilt bewaren. Er zijn twee manieren om het beveiligen van Azure-bestandsshares te stoppen:
 
-- Alle toekomstige back-uptaken stoppen en alle herstelpunten verwijderen
-- Alle toekomstige back-uptaken stoppen maar de herstelpunten behouden
+* Alle toekomstige back-uptaken stoppen en alle herstelpunten verwijderen
+* Alle toekomstige back-uptaken stoppen maar de herstelpunten behouden
 
 Mogelijk zijn er kosten verbonden aan het blijven opslaan van de herstelpunten, aangezien de onderliggende momentopnamen die zijn gemaakt door Azure Backup worden behouden. Het voordeel van het bewaren van de herstelpunten is dat u de bestandsshare later kunt herstellen indien gewenst. Bekijk de prijsgegevens voor informatie over de kosten voor het behouden van de herstelpunten. Als u alle herstelpunten verwijdert, kunt u de bestandsshare niet terugzetten.
 
@@ -194,6 +202,8 @@ U kunt de back-up van een bestands share verwijderen tijdens de taak back-up sto
 Bij de volgende procedure wordt ervan uitgegaan dat de back-uptaak voor de virtuele machine is gestopt. Nadat de back-uptaak is gestopt, zijn de opties Back-up hervatten en Back-upgegevens verwijderen beschikbaar in het dashboard Back-upitem. Klik op Back-upgegevens verwijderen en typ de naam van de bestandsshare om het verwijderen te bevestigen. Geef desgewenst een reden voor verwijdering of een opmerking op.
 
 ## <a name="see-also"></a>Zie ook
+
 Zie voor meer informatie over Azure-bestands shares.
-- [Vragen over back-ups maken van Azure-bestandsshares](backup-azure-files-faq.md)
-- [Problemen oplossen met back-ups maken van Azure-bestandsshares](troubleshoot-azure-files.md)
+
+* [Vragen over back-ups maken van Azure-bestandsshares](backup-azure-files-faq.md)
+* [Problemen oplossen met back-ups maken van Azure-bestandsshares](troubleshoot-azure-files.md)

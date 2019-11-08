@@ -4,17 +4,18 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/23/2019
-ms.openlocfilehash: 3a6807cc204a5f8a6957bb03cf4dcbaf3611c17c
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: b9f84385e49fcf5f101b7ce642b0a82e3a4b9388
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148399"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799803"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Verifiëren bij Azure Active Directory
 
 > [!IMPORTANT]
-> Momenteel ondersteunen **alleen** de Computer Vision-API, Face-API, Text Analytics-API en insluitende lezer verificatie met behulp van Azure Active Directory (Aad).
+> 1. Momenteel worden **alleen** de Computer Vision-API, Face-API, Text Analytics-API, insluitende lezer, formulier herkenning, afwijkings detectie en alle Bing-services ondersteund, met uitzonde ring van Bing aangepaste zoekopdrachten ondersteuning voor verificatie met behulp van Azure Active Directory (Aad).
+> 2. AAD-verificatie moet altijd worden gebruikt in combi natie met aangepaste subdomeinnaam van uw Azure-resource. [Regionale eind punten](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) bieden geen ondersteuning voor Aad-verificatie.
 
 In de vorige secties laten we u zien hoe u met Azure Cognitive Services kunt verifiëren met behulp van een single-service of een sleutel van een abonnement op meerdere services. Hoewel deze sleutels een snel en eenvoudig pad bieden om de ontwikkeling te starten, vallen ze op korter complexe scenario's waarvoor op rollen gebaseerd toegangs beheer is vereist. Laten we eens kijken wat u nodig hebt om te verifiëren met behulp van Azure Active Directory (AAD).
 
@@ -22,7 +23,7 @@ In de volgende secties gebruikt u de Azure Cloud Shell-omgeving of de Azure CLI 
 
 ### <a name="create-a-resource-with-a-custom-subdomain"></a>Een resource maken met een aangepast subdomein
 
-De eerste stap is het maken van een aangepast subdomein.
+De eerste stap is het maken van een aangepast subdomein. Als u een bestaande Cognitive Services resource zonder aangepaste subdomeinnaam wilt gebruiken, volgt u de instructies in [Cognitive Services aangepaste subdomeinen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#how-does-this-impact-existing-resources) om het aangepaste subdomein voor uw resource in te scha kelen.
 
 1. Begin met het openen van de Azure Cloud Shell. [Selecteer vervolgens een abonnement](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description):
 
@@ -74,7 +75,7 @@ Nu u een aangepast subdomein hebt dat aan uw resource is gekoppeld, moet u een r
    New-AzRoleAssignment -ObjectId <SERVICE_PRINCIPAL_OBJECTID> -Scope <ACCOUNT_ID> -RoleDefinitionName "Cognitive Services User"
    ```
 
-### <a name="sample-request"></a>Voorbeeld van een aanvraag
+### <a name="sample-request"></a>Voorbeeld aanvraag
 
 In dit voor beeld wordt een wacht woord gebruikt voor het verifiëren van de Service-Principal. Het gegeven token wordt vervolgens gebruikt om de Computer Vision-API aan te roepen.
 
