@@ -1,30 +1,30 @@
 ---
-title: Een kennis archief met Storage Explorer weer geven
+title: Een kennis archief (preview) weer geven met Storage Explorer
 titleSuffix: Azure Cognitive Search
-description: Bekijk en analyseer een Azure Cognitive Search Knowledge Store met de Storage Explorer van Azure Portal.
+description: Bekijk en analyseer een Azure Cognitive Search Knowledge Store met de Storage Explorer van Azure Portal. Het kennis archief is momenteel beschikbaar als open bare preview.
 manager: nitinme
 author: lisaleib
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9ba11b69a51a5bc563764a7e75189bed67cb2ac6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: e3ea879a419aa14d3a6693e23f4f120aca8d9d51
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484992"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720063"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Een kennis archief met Storage Explorer weer geven
 
-> [!Note]
-> Het kennis archief is in Preview en mag niet worden gebruikt in de productie omgeving. De portal en [Search rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
->
+> [!IMPORTANT] 
+> Het kennis archief is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
+
 In dit artikel leert u hoe u verbinding kunt maken met een kennis archief en hoe u deze kunt verkennen met behulp van Storage Explorer in de Azure Portal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Volg de stappen in [een kennis archief maken in azure Portal](knowledge-store-create-portal.md) om het voor beeld-kennis archief te maken dat wordt gebruikt in dit overzicht.
++ Volg de stappen in [een kennis archief maken in azure Portal](knowledge-store-create-portal.md) of [maak een Azure Cognitive Search Knowledge Store door rest te gebruiken](knowledge-store-create-rest.md) om het voor beeld van een kennis archief te maken dat wordt gebruikt in dit overzicht.
 
 + U hebt ook de naam nodig van het Azure Storage-account dat u hebt gebruikt om het kennis archief te maken, samen met de toegangs sleutel van de Azure Portal.
 

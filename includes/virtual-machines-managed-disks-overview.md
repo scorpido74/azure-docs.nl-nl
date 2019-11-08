@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f041381534dfe59036ce1b9d91792f9e78d0dace
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7ceff623c6559ef5e929d6d5bff9e07cca9039d2
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522657"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796290"
 ---
 ## <a name="benefits-of-managed-disks"></a>Voor delen van beheerde schijven
 
@@ -33,7 +33,7 @@ Beheerde schijven zijn geïntegreerd met beschikbaarheids sets om ervoor te zorg
 
 ### <a name="integration-with-availability-zones"></a>Integratie met Beschikbaarheidszones
 
-Managed disks biedt ondersteuning voor [Beschikbaarheidszones](../articles/availability-zones/az-overview.md). Dit is een aanbieding met hoge Beschik baarheid die uw toepassingen beschermt tegen Data Center-fouten. Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's. Met beschikbaarheidszones biedt Azure de beste uptime SLA voor VM’s van de branche, van 99,99%.
+Beheerde schijven ondersteunen [Beschikbaarheidszones](../articles/availability-zones/az-overview.md), een aanbieding met hoge Beschik baarheid die uw toepassingen beschermt tegen Data Center-fouten. Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's. Met beschikbaarheidszones biedt Azure de beste uptime SLA voor VM’s van de branche, van 99,99%.
 
 ### <a name="azure-backup-support"></a>Ondersteuning voor Azure Backup
 
@@ -55,7 +55,7 @@ Beheerde schijven bieden twee verschillende soorten versleuteling. De eerste is 
 
 ### <a name="server-side-encryption"></a>Versleuteling aan de serverzijde
 
-[Azure server-side Encryption](../articles/storage/common/storage-service-encryption.md) biedt versleuteling-at-rest en beveiligt uw gegevens om te voldoen aan de verplichtingen van de beveiliging en naleving van uw organisatie. Versleuteling aan de server zijde is standaard ingeschakeld voor alle beheerde schijven, moment opnamen en installatie kopieën in alle regio's waar beheerde schijven beschikbaar zijn. Ga naar de [pagina met Managed disks Veelgestelde vragen](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) voor meer informatie.
+[Azure server-side Encryption](../articles/virtual-machines/windows/disk-encryption.md) biedt versleuteling-at-rest en beveiligt uw gegevens om te voldoen aan de verplichtingen van de beveiliging en naleving van uw organisatie. Versleuteling aan de server zijde is standaard ingeschakeld voor alle beheerde schijven, moment opnamen en installatie kopieën in alle regio's waar beheerde schijven beschikbaar zijn. U kunt Azure toestaan uw sleutels voor u te beheren, dit zijn door het platform beheerde sleutels, of u kunt de sleutels zelf beheren. Dit zijn door de klant beheerde sleutels (preview). Ga naar de [pagina met Managed disks Veelgestelde vragen](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) voor meer informatie.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -85,7 +85,7 @@ Elke VM bevat een tijdelijke schijf, die geen beheerde schijf is. De tijdelijke 
 
 Een moment opname van een beheerde schijf is een alleen-lezen, crash consistente volledige kopie van een beheerde schijf die standaard wordt opgeslagen als standaard beheerde schijf. Met moment opnamen kunt u op elk moment een back-up maken van uw beheerde schijven. Deze moment opnamen bestaan onafhankelijk van de bron schijf en kunnen worden gebruikt om nieuwe beheerde schijven te maken. 
 
-Moment opnamen worden gefactureerd op basis van de gebruikte grootte. Als u bijvoorbeeld een moment opname maakt van een beheerde schijf met een ingerichte capaciteit van 64 GiB en de daad werkelijke gebruikte gegevens grootte van 10 GiB, wordt die moment opname alleen gefactureerd voor de gebruikte gegevens grootte van 10 GiB. U kunt de gebruikte grootte van uw moment opnamen zien door het Azure- [gebruiks rapport](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill)te bekijken. Als de gebruikte gegevens grootte van een moment opname bijvoorbeeld 10 GiB is, wordt in het **dagelijks** gebruiks rapport 10 GiB/(31 dagen) = 0,3226 weer gegeven als de verbruikte hoeveelheid.
+Moment opnamen worden gefactureerd op basis van de gebruikte grootte. Als u bijvoorbeeld een moment opname maakt van een beheerde schijf met een ingerichte capaciteit van 64 GiB en de daad werkelijke gebruikte gegevens grootte van 10 GiB, wordt die moment opname alleen gefactureerd voor de gebruikte gegevens grootte van 10 GiB. U kunt de gebruikte grootte van uw moment opnamen zien door het Azure- [gebruiks rapport](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)te bekijken. Als de gebruikte gegevens grootte van een moment opname bijvoorbeeld 10 GiB is, wordt in het **dagelijks** gebruiks rapport 10 GiB/(31 dagen) = 0,3226 weer gegeven als de verbruikte hoeveelheid.
 
 Raadpleeg de volgende bronnen voor meer informatie over het maken van moment opnamen voor beheerde schijven:
 
