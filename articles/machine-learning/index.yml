@@ -2,7 +2,7 @@
 title: Documentatie voor Azure Machine Learning
 summary: Azure Machine Learning biedt webinterfaces en SDK's zodat u uw machine learning-modellen en pijplijnen op schaal snel kunt trainen en implementeren. Gebruik deze mogelijkheden via open-source Python-frameworks, zoals PyTorch, TensorFlow en scikit-learn.
 metadata:
-  title: Documentatie voor Machine Learning - Azure
+  title: Documentatie voor Azure Machine Learning
   description: Azure Machine Learning biedt webinterfaces en SDK's om u in de gelegenheid te stellen uw machine learning-modellen en pijplijnen op schaal snel te trainen en implementeren. Gebruik deze mogelijkheden via open-source Python-frameworks, zoals PyTorch, TensorFlow en scikit-learn.
   services: machine-learning
   ms.service: machine-learning
@@ -12,12 +12,12 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 10/29/2019
-  ms.openlocfilehash: 3459782fc0cad6767889d7377fcbfeaf00e99b1e
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: c6b0b67f206ec335a5e30098dd75b7e71db5770f
+  ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73580646"
+  ms.lasthandoff: 11/08/2019
+  ms.locfileid: "73828115"
 landingContent:
 - title: Aan de slag met Azure ML
   linkLists:
@@ -97,7 +97,9 @@ landingContent:
       url: service/how-to-consume-web-service.md
     - text: Batchvoorspelling
       url: service/how-to-run-batch-predictions.md
-- title: Naslagdocumenten bekijken
+    - text: Voorbeelden van volledige scenario's (GitHub)
+      url: https://github.com/microsoft/MLOps
+- title: Referentiedocumenten raadplegen
   linkLists:
   - linkListType: reference
     links:
@@ -109,3 +111,7 @@ landingContent:
       url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
     - text: Algoritmen en modules voor ontwerper
       url: algorithm-module-reference/module-reference.md
+    - text: REST-API
+      url: https://docs.microsoft.com/rest/api/azureml/
+    - text: AI-referentiearchitecturen (GitHub)
+      url: https://github.com/Microsoft/AI

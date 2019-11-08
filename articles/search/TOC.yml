@@ -119,7 +119,7 @@
           href: search-security-trimming-for-azure-search.md
         - name: Filteren op AAD-identiteiten
           href: search-security-trimming-for-azure-search-with-aad.md
-        - name: Versleutelingssleutels beheren (preview)
+        - name: Versleutelingssleutels beheren
           href: search-security-manage-encryption-keys.md
     - name: Ontwikkeling
       items:
@@ -253,7 +253,7 @@
           href: cognitive-search-concept-troubleshooting.md
         - name: Documentatielinks
           href: cognitive-search-resources-documentation.md
-        - name: Knowledge Store (preview)
+        - name: Knowledge Store
           items:
             - name: Maken met behulp van REST en Postman
               href: knowledge-store-create-rest.md
@@ -277,7 +277,7 @@
           href: query-simple-syntax.md
         - name: Volledige Lucene-querysyntaxis
           href: query-lucene-syntax.md
-        - name: moreLikeThis (preview)
+        - name: Queryparameter moreLikeThis
           href: search-more-like-this.md
     - name: Filters toepassen
       items:

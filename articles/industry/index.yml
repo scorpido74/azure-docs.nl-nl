@@ -1,0 +1,53 @@
+### YamlMime:Hub
+title: Documentatie voor Industry for Azure
+summary: Ontdek hoe u Azure kunt gebruiken om oplossingen te ontwikkelen voor veelvoorkomende gebruiksgevallen in uw branche.
+brand: azure
+metadata:
+  title: Documentatie voor Industry for Azure
+  description: Ontdek hoe u Azure kunt gebruiken om oplossingen te ontwikkelen voor veelvoorkomende gebruiksgevallen in uw branche.
+  ms.service: azure-industry
+  ms.topic: hub-page
+  ms.collection: collection
+  author: DCtheGeek
+  ms.author: dacoulte
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 2777093db7486f17cf19b45db08bbd0168a4e2a8
+  ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 11/07/2019
+  ms.locfileid: "73797071"
+highlightedContent:
+  items:
+  - title: Azure FarmBeats
+    itemType: overview
+    url: ./agriculture/overview.md
+  - title: Communityforum
+    itemType: concept
+    url: https://aka.ms/FarmBeatsMSDN
+  - title: UserVoice (feedback)
+    itemType: get-started
+    url: https://aka.ms/FarmBeatsForum
+productDirectory:
+  title: Gebieden voor branchespecifieke oplossingen
+  items:
+  - title: Azure FarmBeats
+    imageSrc: ../media/index/industry-agriculture-farmbeats.svg
+    summary: Hiermee bouwt u snel digitale landbouwoplossingen in de cloud.
+    url: ./agriculture/overview.md
+  - title: Financiële dienstverlening
+    imageSrc: ../media/index/industry-financial.png
+    summary: Oplossingen en gebruiksgevallen voor de financiële dienstverlening.
+    url: /azure/industry-marketing/financial/
+  - title: Services voor gezondheidszorg en biowetenschappen
+    imageSrc: ../media/index/industry-health.png
+    summary: Oplossingen en gebruiksgevallen voor gezondheidszorg en biowetenschappen.
+    url: /azure/industry-marketing/health/
+  - title: Productie
+    imageSrc: ../media/index/industry-manufacturing.png
+    summary: Oplossingen en gebruiksgevallen voor de productiesector.
+    url: /azure/industry-marketing/manufacturing/
+  - title: Retail
+    imageSrc: ../media/index/industry-retail.png
+    summary: Oplossingen en gebruiksgevallen voor de retailsector.
+    url: /azure/industry-marketing/retail/

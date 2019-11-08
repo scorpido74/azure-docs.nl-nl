@@ -1,0 +1,40 @@
+- name: Overzicht
+  items:
+    - name: Wat is FarmBeats?
+      href: overview.md
+- name: Zelfstudies
+  expanded: true
+  items:
+    - name: Een kaart van de bodemvochtigheid genereren
+      href: generate-soil-moisture-map.md
+    - name: Historische telemetriegegevens opnemen
+      href: ingest-historical-telemetry-data.md
+- name: Concepten
+  items:
+    - name: Integratiepatronen
+      href: integration-patterns.md
+    - name: Partnerintegratie voor sensoren
+      href: sensor-partner-integration.md
+    - name: Partnerintegratie voor afbeeldingen
+      href: imagery-partner-integration.md
+- name: Handleidingen
+  items:
+    - name: FarmBeats implementeren
+      href: prepare-for-deployment.md
+    - name: Een boerderij beheren
+      href: manage-farms.md
+    - name: Sensorgegevens ophalen
+      href: get-sensor-data-from-sensor-partner.md
+    - name: Kaarten genereren
+      href: generate-maps.md
+    - name: Regels configureren en waarschuwingen beheren
+      href: configure-rules-alerts.md
+    - name: Door drones verzamelde afbeeldingen ophalen
+      href: get-drone-imagery.md
+- name: Problemen oplossen
+  items:
+    - name: Problemen met FarmBeats oplossen
+      href: troubleshoot-project-farmbeats.md
+- name: Naslaginformatie
+  items: null
+  href: references-for-farmbeats.md
