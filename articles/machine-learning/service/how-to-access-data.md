@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 08094469da87a6aae31acac599f8422487c10d28
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b76d8f25cfb8bd1dfda43c8383a538f8cf9769b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580740"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818460"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Toegang tot gegevens in azure Storage-services
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -183,7 +183,7 @@ De para meter `target_path` is de locatie van de lokale map waarnaar de gegevens
 ## <a name="access-your-data-during-training"></a>Toegang tot uw gegevens tijdens de training
 
 > [!IMPORTANT]
-> Het gebruik van [Azure machine learning gegevens sets (preview)](how-to-create-register-datasets.md) is de nieuwe aanbevolen manier om toegang te krijgen tot uw gegevens in training. Gegevens sets bieden functies waarmee tabellaire gegevens worden geladen in Panda-of Spark-data frame en de mogelijkheid om bestanden te downloaden of te koppelen van een wille keurige indeling vanuit Azure Blob, Azure file, Azure Data Lake gen 1, Azure Data Lake gen 2, Azure SQL, Azure PostgreSQL. Meer informatie over [het trainen van gegevens sets](how-to-train-with-datasets.md).
+> Het gebruik van [Azure machine learning gegevens sets](how-to-create-register-datasets.md) is de nieuwe aanbevolen manier om uw gegevens in de training te benaderen. Gegevens sets bieden functies waarmee tabellaire gegevens worden geladen in Panda-of Spark-data frame en de mogelijkheid om bestanden te downloaden of te koppelen van een wille keurige indeling vanuit Azure Blob, Azure file, Azure Data Lake gen 1, Azure Data Lake gen 2, Azure SQL, Azure PostgreSQL. Meer informatie over [het trainen van gegevens sets](how-to-train-with-datasets.md).
 
 De volgende tabel bevat de methoden die het reken doel vertellen hoe de gegevens opslag worden gebruikt tijdens de uitvoering. 
 

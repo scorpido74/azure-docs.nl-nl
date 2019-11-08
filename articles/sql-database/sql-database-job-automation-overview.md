@@ -1,5 +1,5 @@
 ---
-title: Azure SQL-taak automatisering
+title: Automatisering van taken
 description: Gebruik Taakautomatisering voor het uitvoeren van Transact-SQL-scripts (T-SQL) in een set van een of meer Azure SQL-databases
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: bbef299271618dc672daea17249f29866e75c430
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c2548bb4537d17a3dab94d5476c743e2a70faad0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689673"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810094"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Beheertaken automatiseren met behulp van databasetaken
 
@@ -263,7 +263,7 @@ Elke taakstap bevat een uit te voeren T-SQL-script, een of meer doelgroepen waar
 
 Het resultaat van de stappen van een taak op elke doeldatabase wordt gedetailleerd geregistreerd en scriptuitvoer kan worden vastgelegd in een opgegeven tabel. U kunt een database opgeven om de resultaatgegevens van een taak vast te leggen.
 
-#### <a name="job-history"></a>Taakgeschiedenis
+#### <a name="job-history"></a>Jobgeschiedenis
 
 De taakgeschiedenis wordt opgeslagen in de *taakdatabase*. Met een systeemopschoontaak wordt uitvoergeschiedenis verwijderd die ouder is dan 45 dagen. Als u geschiedenis wilt verwijderen die nog geen 45 dagen oud is, roept u de procedure **sp_purge_history** in de *taakdatabase* aan.
 

@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, IoT Edge
 author: qianw211
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: pabutler
-ms.openlocfilehash: 54369e0f2c943c146d186605833198253b960022
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: db501c34a4418bc7b08b19105a9b28585288f877
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949525"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823073"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modules
 
@@ -76,7 +77,7 @@ De belangrijkste technische vereisten voor een IoT Edge module, zodat IT kan wor
 
 ## <a name="documentation-and-resources"></a>Documentatie en bronnen
 
-[Maak een IOT Edge module-aanbieding](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) : de stappen voor het publiceren van een nieuwe IOT Edge module-aanbieding met de portal voor Cloud Publishing.
+[Maak een IOT Edge module-aanbod](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) : de stappen voor het publiceren van een nieuwe IOT Edge module-aanbieding met de portal voor Cloud Publishing.
 
 ## <a name="next-steps"></a>Volgende stappen
 

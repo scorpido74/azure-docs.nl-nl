@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 3b1fa6ab046845e2fd95e8d4b5611ca2f5d12562
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 83d24d45d7628a2e02068c8757fa6568d6d3fc37
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690096"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823479"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Client bibliotheek voor Elastic Data Base gebruiken met dapper
 Dit document is bedoeld voor ontwikkel aars die gebruikmaken van dapper om toepassingen te bouwen, maar u wilt ook [Elastic data base-hulp middelen gebruiken](sql-database-elastic-scale-introduction.md) om toepassingen te maken die sharding implementeren om hun gegevenslaag te schalen.  Dit document illustreert de wijzigingen in dapper toepassingen die nodig zijn voor de integratie met Elastic data base-hulpprogram ma's. Onze nadruk ligt op het samen stellen van het Elastic data base Shard management en gegevens afhankelijke route ring met dapper. 

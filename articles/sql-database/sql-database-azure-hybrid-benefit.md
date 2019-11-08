@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database-Azure Hybrid Benefit
+title: Azure Hybrid Benefit
 description: Gebruik bestaande SQL Server licenties voor SQL Database kortingen.
 services: sql-database
 ms.service: sql-database
@@ -9,18 +9,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/08/2019
-ms.openlocfilehash: 9a09f7aec4966c02ccfa2101f4359c510ae8b111
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 17252f6544ee56647315dc44ace4db3e3abe9726
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691100"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821877"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
 In de ingerichte Compute-laag van het op vCore gebaseerde aankoop model kunt u uw bestaande licenties uitwisselen voor kortings tarieven op SQL Database met behulp van [Azure Hybrid Benefit voor SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Met dit voor deel van Azure kunt u tot wel 30% besparen op Azure SQL Database met behulp van uw on-premises SQL Server licenties met Software Assurance.
 
-![Koers](./media/sql-database-service-tiers/pricing.png)
+![koers](./media/sql-database-service-tiers/pricing.png)
 
 
 ## <a name="choose-a-license-model"></a>Een licentie model kiezen

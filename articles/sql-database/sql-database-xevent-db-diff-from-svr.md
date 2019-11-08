@@ -1,5 +1,5 @@
 ---
-title: Uitgebreide gebeurtenissen in SQL Database
+title: Uitgebreide gebeurtenissen
 description: Hierin worden uitgebreide gebeurtenissen (XEvents) in Azure SQL Database beschreven en wordt uitgelegd hoe gebeurtenis sessies enigszins afwijken van gebeurtenis sessies in Microsoft SQL Server.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 64cfcd9451416a6eb35301268b285bd00cf0cad4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cab5b5baf318eb9eadc398ce525e0de716d0df2d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686780"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822304"
 ---
 # <a name="extended-events-in-sql-database"></a>Uitgebreide gebeurtenissen in SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -97,23 +97,23 @@ Azure SQL Database heeft [dynamische beheer weergaven (dmv's)](https://msdn.micr
 
 | Naam van DMV | Beschrijving |
 |:--- |:--- |
-| **sys. DM _xe_database_session_event_actions** |Hiermee wordt informatie over gebeurtenis sessie acties geretourneerd. |
-| **sys. DM _xe_database_session_events** |Retourneert informatie over sessie gebeurtenissen. |
-| **sys. DM _xe_database_session_object_columns** |Toont de configuratie waarden voor objecten die aan een sessie zijn gebonden. |
-| **sys. DM _xe_database_session_targets** |Retourneert informatie over sessie doelen. |
-| **sys. DM _xe_database_sessions** |Retourneert een rij voor elke gebeurtenis sessie die binnen het bereik van de huidige data base valt. |
+| **sys. dm_xe_database_session_event_actions** |Hiermee wordt informatie over gebeurtenis sessie acties geretourneerd. |
+| **sys. dm_xe_database_session_events** |Retourneert informatie over sessie gebeurtenissen. |
+| **sys. dm_xe_database_session_object_columns** |Toont de configuratie waarden voor objecten die aan een sessie zijn gebonden. |
+| **sys. dm_xe_database_session_targets** |Retourneert informatie over sessie doelen. |
+| **sys. dm_xe_database_sessions** |Retourneert een rij voor elke gebeurtenis sessie die binnen het bereik van de huidige data base valt. |
 
 In Microsoft SQL Server worden vergelijk bare catalogus weergaven benoemd zonder het *\_database* gedeelte van de naam, zoals:
 
-- **sys. DM _xe_sessions**, in plaats van naam<br/>**sys. DM _xe_database_sessions**.
+- **sys. dm_xe_sessions**, in plaats van naam<br/>**sys. dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Gemeen schappelijk Dmv's voor beide
 Voor uitgebreide gebeurtenissen zijn er extra Dmv's die gemeen schappelijk zijn voor zowel Azure SQL Database als Microsoft SQL Server:
 
-- **sys. DM _xe_map_values**
-- **sys. DM _xe_object_columns**
-- **sys. DM _xe_objects**
-- **sys. DM _xe_packages**
+- **sys. dm_xe_map_values**
+- **sys. dm_xe_object_columns**
+- **sys. dm_xe_objects**
+- **sys. dm_xe_packages**
 
   <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
@@ -186,7 +186,7 @@ Als er een fout bericht wordt weer gegeven met de melding dat er een geheugen ma
 
 Het **gebeurtenis bestand** doel kan netwerk latentie of storingen ondervinden tijdens het persistent maken van gegevens naar Azure Storage blobs. Andere gebeurtenissen in SQL Database worden mogelijk vertraagd wanneer er wordt gewacht tot de netwerk communicatie is voltooid. Deze vertraging kan uw werk belasting vertragen.
 
-- U kunt dit prestatie risico beperken door de optie **EVENT_RETENTION_MODE** in te stellen op **NO_EVENT_LOSS** in uw gebeurtenis sessie definities.
+- Als u dit prestatie risico wilt beperken, moet u de **EVENT_RETENTION_MODE** optie voor het **NO_EVENT_LOSS** in de definities van de gebeurtenis sessie niet instellen.
 
 ## <a name="related-links"></a>Verwante koppelingen
 

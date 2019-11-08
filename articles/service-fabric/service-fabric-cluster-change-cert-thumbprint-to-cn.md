@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2019
 ms.author: atsenthi
-ms.openlocfilehash: 3618339349d618b371a40d3b37ebc30192c067ca
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 25aaad02cf8c90c67e87d49553a02cacf033281f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764829"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819477"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Wijzig het cluster van de vinger afdruk van het certificaat in de algemene naam
 Er kunnen niet twee certificaten dezelfde vinger afdruk hebben, waardoor de rollover van het cluster certificaat of het beheer lastig wordt. Meerdere certificaten kunnen echter dezelfde algemene naam of hetzelfde onderwerp hebben.  Schakelen tussen een geïmplementeerd cluster vanuit vingerafdrukken voor certificaten naar het gebruik van gewone namen voor certificaten maakt het beheer van certificaten veel eenvoudiger. In dit artikel wordt beschreven hoe u een actief Service Fabric cluster bijwerkt om de algemene naam van het certificaat te gebruiken in plaats van de vinger afdruk van het certificaat.
@@ -128,7 +128,7 @@ Open vervolgens het sjabloon bestand in een tekst editor en maak drie updates te
 
     U kunt ook overwegen om de *certificateThumbprint*te verwijderen. er wordt mogelijk niet meer naar verwezen in de Resource Manager-sjabloon.
 
-2. In de resource **micro soft. Compute/virtualMachineScaleSets** werkt u de extensie van de virtuele machine bij voor het gebruik van de algemene naam in certificaat instellingen in plaats van de vinger afdruk.  In->**instellingen**->->voor eigenschappenvanvirtualMachineProfileextensionProfile-extensiescertificaattoevoegen->-> `"commonNames": ["[parameters('certificateCommonName')]"],` en verwijderen `"thumbprint": "[parameters('certificateThumbprint')]",`.
+2. In de resource **micro soft. Compute/virtualMachineScaleSets** werkt u de extensie van de virtuele machine bij voor het gebruik van de algemene naam in certificaat instellingen in plaats van de vinger afdruk.  In **virtualMachineProfile**->**extensionProfile**->**uitbrei dingen**->**Eigenschappen**->**instellingen**->**certificaat**, `"commonNames": ["[parameters('certificateCommonName')]"],` toevoegen en `"thumbprint": "[parameters('certificateThumbprint')]",`verwijderen.
     ```json
         "virtualMachineProfile": {
         "extensionProfile": {
@@ -188,6 +188,8 @@ Open vervolgens het sjabloon bestand in een tekst editor en maak drie updates te
             },
         ...
     ```
+
+Zie [het cluster wijzigen van de vinger afdruk van een certificaat in een algemene naam](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn) voor meer informatie.
 
 ## <a name="deploy-the-updated-template"></a>De bijgewerkte sjabloon implementeren
 Implementeer de bijgewerkte sjabloon opnieuw nadat u de wijzigingen hebt aangebracht.

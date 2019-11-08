@@ -1,6 +1,6 @@
 ---
 title: NLP-Cognitive Services gebruiken om gesp rekken te verrijken
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Cognitive Services biedt twee services voor de verwerking van natuurlijke taal, Language Understanding en QnA Maker, elk met een ander doel. Begrijpen wanneer u elke service gebruikt en hoe ze elkaar in de compliment hebben.
 author: diberry
 ms.author: diberry
@@ -8,12 +8,12 @@ manager: nitinme
 ms.topic: conceptual
 ms.service: cognitive-services
 ms.date: 08/01/2019
-ms.openlocfilehash: f293f57f4a98e822aa1c3950614ba5a186f9751d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 32159b37d3d1a8609181d81dc1a73f27177adb85
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816923"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818200"
 ---
 # <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>Cognitive Services met natuurlijke taal verwerking (NLP) gebruiken voor het verrijken bot-conversaties
 
@@ -35,13 +35,13 @@ Als uw chat-bot de tekst `How do I get to the Human Resources building on the Se
 
 |Service|Client toepassing bepaalt|
 |--|--|
-|LUIS|**Hiermee wordt de bedoeling** van de tekst van de gebruiker bepaald: de service retourneert niet het antwoord op de vraag. Deze tekst wordt bijvoorbeeld geclassificeerd als overeenkomend `FindLocation` met het doel.<br>|
+|LUIS|**Hiermee wordt de bedoeling** van de tekst van de gebruiker bepaald: de service retourneert niet het antwoord op de vraag. Deze tekst wordt bijvoorbeeld geclassificeerd als overeenkomend met de `FindLocation` intentie.<br>|
 |QnA Maker|**Retourneert het antwoord op de vraag** van een aangepaste Knowledge Base. Deze tekst wordt bijvoorbeeld bepaald als een vraag met het statische tekst antwoord van `Get on the #9 bus and get off at Franklin street`.|
 |||
 
 ## <a name="when-do-you-use-luis"></a>Wanneer gebruikt u LUIS? 
 
-Gebruik LUIS als u de bedoeling van de utterance wilt weten als onderdeel van een proces in de chat-bot. Als u doorgaat met de voorbeeld `How do I get to the Human Resources building on the Seattle North campus?`tekst,, wanneer u weet dat de gebruiker zich kan bezig houden met het vinden van een locatie, kunt u de details van de utterance (die is opgetrokken met entiteiten) door geven aan een andere service, zoals een Transport Server, om het antwoord te krijgen. 
+Gebruik LUIS als u de bedoeling van de utterance wilt weten als onderdeel van een proces in de chat-bot. Als u doorgaat met de voorbeeld tekst, `How do I get to the Human Resources building on the Seattle North campus?`, wanneer u weet dat de gebruiker de bedoeling is om een locatie te vinden, kunt u de details van de utterance (met entiteiten opgetrokken) door geven aan een andere service, zoals een Transport Server, om het antwoord te krijgen. 
 
 U hoeft LUIS en QnA Maker niet te combi neren om intentie te bepalen. 
 
@@ -51,7 +51,7 @@ U kunt de twee services voor deze utterance combi neren als de chat-bot de tekst
 
 Gebruik QnA Maker wanneer u een statische Knowledge Base van antwoorden hebt. Deze kennis database is aangepast aan uw behoeften, die u hebt gemaakt met documenten zoals Pdf's en Url's. 
 
-U kunt door gaan met het `How do I get to the Human Resources building on the Seattle North campus?`voor beeld utterance,, de tekst verzenden als een query naar uw gepubliceerde QnA Maker-service en het beste antwoord ontvangen. 
+U kunt door gaan met het voor beeld utterance, `How do I get to the Human Resources building on the Seattle North campus?`, de tekst verzenden als een query naar uw gepubliceerde QnA Maker-service en het beste antwoord ontvangen. 
 
 U hoeft LUIS en QnA Maker niet te combi neren om het antwoord op de vraag te bepalen.
 
@@ -63,7 +63,7 @@ Als u uw QnA Maker Knowledge Base bouwt, maar u weet dat het onderwerp domein wo
 
 Uw client toepassing moet zowel LUIS als QnA Maker reacties op scores bewaken. Als de Score van QnA Maker onder een bepaalde drempel waarde ligt, gebruikt u de intentie en entiteits gegevens die zijn geretourneerd door LUIS om de informatie over te brengen naar een service van derden.
 
-U kunt door gaan met de `How do I get to the Human Resources building on the Seattle North campus?`voorbeeld tekst, dus dat QnA Maker een lage betrouwbaarheids Score retourneert. Gebruik het intentie resultaat van Luis `FindLocation` en alle geëxtraheerde entiteiten, `Human Resources building` zoals en `Seattle North campus`, om deze gegevens naar een toewijzings-of zoek service voor een ander antwoord te verzenden. 
+Als u doorgaat met de voorbeeld tekst, `How do I get to the Human Resources building on the Seattle North campus?`, veronderstelt u dat QnA Maker een lage betrouwbaarheids Score retourneert. Gebruik het doel dat is geretourneerd door LUIS, `FindLocation` en alle geëxtraheerde entiteiten, zoals `Human Resources building` en `Seattle North campus`, om deze gegevens naar een toewijzings-of zoek service voor een ander antwoord te verzenden. 
 
 U kunt dit antwoord van derden voor validatie weer geven aan de gebruiker. Zodra u de goed keuring van de gebruiker hebt, kunt u terugkeren naar QnA Maker om de informatie toe te voegen om uw kennis te verg Roten. 
 

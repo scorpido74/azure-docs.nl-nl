@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00d0067fe51efef8efffe31860e16f4530adf3ac
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 1ae2f87a3719853f4a91cb8ba801be6d578597d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972372"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825686"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>Een CloudSimple-Privécloud verkleinen
 
@@ -30,7 +30,7 @@ Voor het verkleinen van een Privécloud moet aan de volgende voor waarden worden
 
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="shrink-a-private-cloud"></a>Een Privécloud verkleinen
+## <a name="shrink-a-private-cloud"></a>Een privécloud verkleinen
 
 1. [Toegang tot de CloudSimple-Portal](access-cloudsimple-portal.md).
 
@@ -53,6 +53,10 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 8. Klik op **verzenden** om de privécloud te verkleinen.
 
 Het verkleinen van de Privécloud wordt gestart.  U kunt de voortgang in taken bewaken.  Het verkleinings proces kan enkele uren duren, afhankelijk van de gegevens, die opnieuw moeten worden gesynchroniseerd op vSAN.
+
+> [!NOTE]
+> Als u een privécloud verkleint door de laatste of het enige cluster in het Data Center te verwijderen, wordt het Data Center niet verwijderd.  
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,5 +1,5 @@
 ---
-title: Beveiligings gegevens (preview) instellen om uw e-mail adres te gebruiken-Azure Active Directory | Microsoft Docs
+title: Beveiligings gegevens (preview) instellen om e-mail te gebruiken-Azure AD
 description: Uw beveiligings gegevens instellen om uw identiteit te verifiëren met behulp van uw e-mail adres.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8f5590cb528082a73cbdf92850218993a1a6b95
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a025005065174d5a6ca5fca27ee06ebb036b7b1d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161012"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820349"
 ---
 # <a name="set-up-security-info-preview-to-use-your-email-address"></a>Beveiligings gegevens instellen (preview) om uw e-mail adres te gebruiken
 

@@ -1,5 +1,5 @@
 ---
-title: Een Azure-SQL database herstellen vanuit een back-up
+title: Een Data Base herstellen vanuit een back-up
 description: Meer informatie over tijdstippen herstellen, waarmee u een Azure-SQL database kunt terugdraaien tot 35 dagen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 799926eeb6a508ea04b879231625cf321e95d043
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ba961547bc46b0746997ea95ddd14f1a6d1d8a23
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687534"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821214"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Een Azure-SQL database herstellen met behulp van automatische database back-ups
 

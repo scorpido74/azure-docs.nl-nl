@@ -4,15 +4,16 @@ description: Een overzicht van de verschillende onderwerpen met betrekking tot h
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: pabutler
-ms.openlocfilehash: a89921d4b5ec25bc0c924646d3bd41aecf3e8d9c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 047ffd983cecd9f9bd971ee3f97e15734d14ce66
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67870929"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813281"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>Lead beheer voor Cloud Marketplace
 
@@ -32,15 +33,15 @@ Als u leads wilt ophalen, is lead management connector op de Cloud Partner-porta
 
 Hier vindt u stapsgewijze instructies voor het verbinden van elk van de mogelijke lead doelen:
 
-**Dynamics CRM Online** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) voor instructies over het configureren van Dynamics CRM Online voor het ophalen van leads.
+**Dynamics CRM online** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) voor instructies over het configureren van Dynamics CRM Online voor het ophalen van leads.
 
-**Marketo**[Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) voor de instructies voor het instellen van de configuratie van de marketo-lead om leads op te halen. - 
+**Marketo** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) voor instructies voor het instellen van de configuratie van de marketo-lead om leads op te halen.
 
-**Sales Force** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) voor instructies voor het instellen van uw Sales Force-exemplaar om leads op te halen.
+**Sales force** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) voor instructies voor het instellen van uw Sales Force-exemplaar voor het verkrijgen van leads.
 
-**Azure-tabel** : [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) voor de instructies voor het instellen van uw Azure Storage-account om leads in een Azure-tabel op te halen.
+**Azure table** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) voor instructies voor het instellen van uw Azure Storage-account voor het ophalen van leads in een Azure-tabel.
 
-**Https-eind punt** : [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) voor de instructies voor het instellen van uw https-eind punt om leads op te halen.
+**Https-eind punt** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) voor de instructies voor het instellen van uw https-eind punt om leads op te halen.
 
 Zodra u uw lead doel correct hebt geconfigureerd en op uw aanbieding hebt geklikt op publiceren, zullen we de verbinding valideren en u een test lead sturen. Wanneer u de aanbieding bekijkt voordat u live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding te verkrijgen in de preview-omgeving. Het is belang rijk om ervoor te zorgen dat uw lead instellingen up-to-date blijven, zodat u geen leads kwijtraakt. Zorg er dus voor dat u deze verbindingen bijwerkt wanneer iets aan uw kant is gewijzigd.
 
@@ -53,7 +54,7 @@ Zodra de technische installatie is ingesteld, moet u deze leads opnemen in uw hu
 
 ## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Veelvoorkomende fouten bij de configuratie van de lead tijdens het publiceren op de Cloud Partner-Portal 
 
-**Kan de lead niet opslaan in Dynamics CRM. Controleer de instellingen van het Dynamics CRM-account. LastCRMError: Kan niet aanmelden bij Dynamics CRM, LastCRMException:** 
+**Kan de lead niet opslaan in Dynamics CRM. Controleer de instellingen van het Dynamics CRM-account. LastCRMError: kan niet aanmelden bij Dynamics CRM, LastCRMException:** 
 
 > Als O365-verificatie is geselecteerd, controleert u of het gebruikers account en het wacht woord geldig zijn. Als AAD is geselecteerd, controleert u of de Tenant-ID, toepassings-ID en sleutel van de toepassing geheim overeenkomen met wat er is ingesteld voor AAD. Volg de instructies [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics). Als de gebruikers naam of het wacht woord van het account geldig is, controleert u of het toegang heeft tot Dynamics 365 en of er een licentie is toegewezen (stap 11-15 als u Azure Active Directory of beveiligings instellingen gebruikt als u een Office-gebruiker gebruikt). 
 
@@ -62,27 +63,27 @@ Zodra de technische installatie is ingesteld, moet u deze leads opnemen in uw hu
 
 > De toepassing/gebruiker mist een of meer beveiligings rollen om de lead schrijver te Microsoft Marketplace. Volg de stappen 11-15 als u Azure Active Directory of beveiligings instellingen gebruikt als u [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)een Office-gebruiker gebruikt.
 
-**Kan de potentiële klant niet opslaan in Dynamics CRM met AAD. Uitzonde ring:: De Tenant is niet gevonden. Dit exemplaar kan zich voordoen als er geen actieve abonnementen voor de Tenant zijn.**  
+**Kan de potentiële klant niet opslaan in Dynamics CRM met AAD. Uitzonde ring:: de Tenant is niet gevonden. Dit exemplaar kan zich voordoen als er geen actieve abonnementen voor de Tenant zijn.**  
 
-> De map-id die is opgenomen in de sectie Lead beheer is geen geldige map. U kunt de Directory-id ophalen op basis van de instructies bij stap 2 (onder [](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) Azure Active Directory 
+> De map-id die is opgenomen in de sectie Lead beheer is geen geldige map. U kunt de Directory-id ophalen op [basis van de](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) instructies bij stap 2 (onder Azure Active Directory 
 
 **Kan de lead niet opslaan in Dynamics CRM. LastCRMError: SecLib:: RetrievePrivilegeForUser is mislukt-er zijn geen rollen aan de gebruiker toegewezen.**  
 
-> Oplossing: Wijs de beveiligingsrol toe aan Microsoft Marketplace lead schrijver. Volg de [instructies in](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) de beveiligings instellingen. 
+> Oplossing: wijs de beveiligingsrol toe aan Microsoft Marketplace lead Writer. Volg de [instructies in](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) de beveiligings instellingen. 
 
-**Kan de potentiële klant niet opslaan in Dynamics CRM met AAD. Uitzonde ring:: De toepassing met de id is niet gevonden in de map** 
+**Kan de potentiële klant niet opslaan in Dynamics CRM met AAD. Uitzonde ring:: de toepassing met de id is niet gevonden in de map** 
 
 > De toepassings-id die is opgenomen in de sectie Lead beheer is geen geldige map. Haal de Directory-id op op basis van de instructies in stap 8 (onder Azure Active Directory van [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**Kan de potentiële klant niet opslaan in Dynamics CRM met AAD. Uitzonde ring:: De aangevraagde Tenant-id is niet geldig en is geen geldige externe domein indeling** 
+**Kan de potentiële klant niet opslaan in Dynamics CRM met AAD. Uitzonde ring:: de aangevraagde Tenant-id is ongeldig en heeft geen geldige indeling voor een extern domein** 
 
 > De map-id die is opgenomen in de sectie Lead beheer is geen geldige map. Haal de Directory-id op op basis van de instructies bij stap 2 (onder Azure Active Directory van [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**Kan de potentiële klant niet opslaan in Dynamics CRM met AAD. Uitzonde ring:: Fout bij het valideren van referenties.: Er is een ongeldig client geheim gegeven.** 
+**Kan de potentiële klant niet opslaan in Dynamics CRM met AAD. Uitzonde ring:: fout bij het valideren van referenties.: er is een ongeldig client geheim gegeven.** 
 
-> Oplossing: Meld u aan bij Azure Portal, Controleer of de toepassings sleutel overeenkomt met wat er in de Cloud Partner-portal. Genereer een wacht woord op basis van de instructie bij stap 10 (onder Azure Active Directory [](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
+> Oplossing: Meld u aan bij Azure Portal, Controleer of de toepassings sleutel overeenkomt met wat er in de Cloud Partner-portal. Genereer een wacht woord op [basis van de](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)instructie bij stap 10 (onder Azure Active Directory). 
 
-**Kan de lead niet opslaan in Dynamics CRM. LastCRMError: Er is een time-out opgetreden voor het aanvraag kanaal tijdens het wachten op een antwoord na 00:02:00. Verhoog de time-outwaarde die is door gegeven aan de aanroep naar request of verhoog de SendTimeout-waarde voor de binding. De tijd die aan deze bewerking wordt toegewezen, heeft mogelijk een deel van een langere time-out.**  
+**Kan de lead niet opslaan in Dynamics CRM. LastCRMError: er is een time-out opgetreden voor het aanvraag kanaal tijdens het wachten op een antwoord na 00:02:00. Verhoog de time-outwaarde die is door gegeven aan de aanroep naar request of verhoog de SendTimeout-waarde voor de binding. De tijd die aan deze bewerking wordt toegewezen, heeft mogelijk een deel van een langere time-out.**  
 
 > Oplossing: Meld u aan bij Cloud Partner-portal, Controleer de details van de winkel > > doel locatie van de lead > > URL, Controleer of het een geldig dynamisch CRM-exemplaar is
 
@@ -95,7 +96,7 @@ Leads zijn klanten die uw producten implementeren via Marketplace. Of uw product
 
 **Waar kan ik hulp krijgen bij het instellen van mijn lead bestemming?** 
 
-U kunt hier documentatie vinden: [Haal leads voor klanten](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) op of dien een ondersteunings ticket in via aka.MS/marketplacepublishersupport Select offer type en lead management. 
+U kunt hier documentatie vinden: [leads van klanten ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) of een ondersteunings ticket verzenden via aka.MS/marketplacepublishersupport Select offer type en lead management. 
 
 
 
@@ -113,7 +114,7 @@ Nadat u uw aanbieding hebt ingesteld en het doel van de lead, publiceert u uw aa
 **Hoe kan ik de test lead vinden?**
 
 
-Zoek naar ' MSFT_TEST ' in de doel locatie van de lead: Hier volgt een voor beeld van een lead gegevens 
+Zoek naar ' MSFT_TEST ' in de doel locatie van de lead. Hier volgt een voor beeld van lead gegevens: 
 
 bedrijf = MSFT_TEST_636573304831318844 
 
@@ -121,7 +122,7 @@ land = US
 
 Beschrijving = MSFT_TEST_636573304831318844 
 
-e-mail =MSFT_TEST_636573304831318844@test.com
+e-mail = MSFT_TEST_636573304831318844@test.com
 
 Encoding = UTF-8 
 
@@ -131,7 +132,7 @@ first_name = MSFT_TEST_636573304831318844
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \<Naam van aanbieding > 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 |\<aanbiedings naam > 
 
 OID = 00Do0000000ZHog 
 
@@ -143,32 +144,32 @@ titel = MSFT_TEST_636573304831318844
 
 **Ik heb een live aanbieding, maar ik zie geen leads?**
 
-Elke lead heeft gegevens die worden door gegeven in velden in het geselecteerde doel van de lead, de leads krijgen de volgende indeling: **Source-Action|Offer** 
+Elke lead heeft gegevens die worden door gegeven in velden in uw geselecteerde doel bestemming, de leads krijgen de volgende indeling: **bron actie | Aanbieding** 
 
   *Beperken*
 
-    “AzureMarketplace”, 
-    “AzurePortal”, 
-    “TestDrive”,  
-    “SPZA” (acronym for AppSource) 
+    "AzureMarketplace", 
+    "AzurePortal", 
+    "TestDrive",  
+    "SPZA" (acronym for AppSource) 
 
   *Regelen*
 
-    “INS” – Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
-    “PLT” – Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
+    "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
+    "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
 
-    “DNC” – Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
+    "DNC" - Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
 
-    “Create” – This is inside Azure Portal only and is whenever a customer purchases your offer to their account. 
+    "Create" - This is inside Azure Portal only and is whenever a customer purchases your offer to their account. 
 
-    “StartTestDrive” – This is for Test Drives only and is whenever a customer starts their test drive. 
+    "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
 
 
   *Over*
 
-    “checkpoint.check-point-r77-10sg-byol”, 
-    “bitnami.openedxcypress”, 
-    “docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a” 
+    "checkpoint.check-point-r77-10sg-byol", 
+    "bitnami.openedxcypress", 
+    "docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a" 
 
  
 

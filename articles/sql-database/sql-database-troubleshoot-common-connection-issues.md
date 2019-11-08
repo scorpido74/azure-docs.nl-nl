@@ -1,5 +1,5 @@
 ---
-title: Algemene verbindingsfouten oplossen Azure SQL-database
+title: Veelvoorkomende verbindings problemen oplossen
 description: Stappen voor het identificeren en oplossen van algemene verbindings fouten voor Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ manager: dcscontentpm
 ms.author: daleche
 ms.reviewer: jrasnik
 ms.date: 01/25/2019
-ms.openlocfilehash: cd0ab6d89d88c594d283dc0718c0f58ebb98bf43
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: dc58e495256bff9521eb6567736700f5ffcd6e4f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090804"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822464"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Verbindings problemen met Azure SQL Database oplossen
 
@@ -85,7 +85,7 @@ Als de toepassing permanent geen verbinding kan maken met Azure SQL Database, du
 * [Zoek in de documentatie op Microsoft Azure](https://azure.microsoft.com/search/documentation/)
 * [De meest recente updates voor de Azure SQL Database-service weer geven](https://azure.microsoft.com/updates/?service=sql-database)
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 * [Overzicht van SQL Database ontwikkeling](sql-database-develop-overview.md)
 * [Algemene richt lijnen voor het afhandelen van tijdelijke fouten](../best-practices-retry-general.md)
 * [Verbindings bibliotheken voor SQL Database en SQL Server](sql-database-libraries.md)

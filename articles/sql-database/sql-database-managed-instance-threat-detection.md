@@ -1,5 +1,5 @@
 ---
-title: Geavanceerde beveiliging tegen bedreigingen configureren-Azure SQL Database beheerd exemplaar
+title: Geavanceerde beveiliging tegen bedreigingen configureren-beheerd exemplaar
 description: Geavanceerde bedreigingen beveiliging detecteert afwijkende database activiteiten die potentiële beveiligings dreigingen aan de data base in een beheerd exemplaar aangeven.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 8e419031c34a693bac7ab9f9825c24576e80ba14
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 69292a934af8b8777f11ab58ed3fe306abf8b408
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687875"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822554"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-database-managed-instance"></a>Geavanceerde beveiliging tegen bedreigingen configureren in Azure SQL Database beheerde instantie
 

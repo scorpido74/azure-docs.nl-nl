@@ -14,16 +14,16 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/21/2019
+ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 0335f5c71f99e6c7a90ce920c25e6bb7e9b4a08f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 452ccfc796fcd2a390c7380f4c6b2ced2057dc3b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211944"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822356"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar iOS met Azure Notification Hubs
 
@@ -31,8 +31,7 @@ ms.locfileid: "71211944"
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
 > * [Swift](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
 
-
-In deze zelfstudie gebruikt u Azure Notification Hubs om pushmeldingen te verzenden naar een iOS-toepassing. U maakt een lege iOS-app die pushmeldingen ontvangt met de [Apple Push Notification Service (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1).
+In deze zelf studie gebruikt u Azure Notification Hubs om Push meldingen naar een iOS-toepassing te verzenden. U maakt een lege iOS-app die pushmeldingen ontvangt met de [Apple Push Notification Service (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1).
 
 In deze zelfstudie voert u de volgende stappen uit:
 
@@ -45,14 +44,16 @@ In deze zelfstudie voert u de volgende stappen uit:
 > * Testpushmeldingen verzenden
 > * Controleren of uw app meldingen ontvangt
 
-De volledige code voor deze zelfstudie vindt u [op GitHub](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples). 
+De volledige code voor deze zelf studie vindt u [op github](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een actief Azure-account. Als u geen account hebt, kunt u binnen een paar minuten een [gratis Azure-account](https://azure.microsoft.com/free) maken.
+Voor het voltooien van deze zelfstudie moet aan de volgende vereisten worden voldaan:
+
+* Een actief Azure-account. Als u geen account hebt, kunt u [een gratis Azure-account maken](https://azure.microsoft.com/free).
 * [Windows Azure Messaging Framework]
 * Meest recente versie van [Xcode]
-* Een apparaat dat compatibel is met iOS 10 (of een hogere versie)
+* Een apparaat dat compatibel is met iOS-versie 10 (of hoger)
 * [Apple Developer Program](https://developer.apple.com/programs/)-lidmaatschap
   
   > [!NOTE]
@@ -88,20 +89,20 @@ Het voltooien van deze zelfstudie is een vereiste voor alle andere Notification 
 
    - Integratie via Cocoapods
 
-     Voeg de volgende afhankelijkheden toe `podfile` aan uw app voor het toevoegen van Azure notification hubs SDK.
+     Voeg de volgende afhankelijkheden toe aan uw `podfile` zodat u Azure Notification Hubs SDK in uw app kunt toevoegen.
 
      ```ruby
      pod 'AzureNotificationHubs-iOS'
      ```
 
-     Voer `pod install` uit om uw zojuist gedefinieerde pod te installeren en `.xcworkspace`open uw.
+     Voer `pod install` uit om uw zojuist gedefinieerde pod te installeren en open uw `.xcworkspace`.
 
      > [!NOTE]
-     > Als ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` er een fout optreedt tijdens de uitvoering `pod install`, voert `pod repo update` u uit om het nieuwste verschil te verkrijgen uit de Cocoapods-opslag `pod install`plaats en vervolgens uit te voeren.
+     > Als er een fout wordt weer geven zoals **[!] Kan geen specificatie voor AzureNotificationHubs-iOS vinden** tijdens het uitvoeren van `pod install`, voer `pod repo update` uit om het nieuwste verschil op te halen uit de Cocoapods-opslag plaats en voer `pod install`uit.
 
    - Integratie via Carthage
 
-     Voeg de volgende afhankelijkheden toe `Cartfile` aan uw app voor het toevoegen van Azure notification hubs SDK.
+     Voeg de volgende afhankelijkheden toe aan uw `Cartfile` zodat u Azure Notification Hubs SDK in uw app kunt toevoegen.
 
      ```ruby
      github "Azure/azure-notificationhubs-ios"
@@ -129,8 +130,8 @@ Het voltooien van deze zelfstudie is een vereiste voor alle andere Notification 
     #ifndef HubInfo_h
     #define HubInfo_h
 
-        #define HUBNAME @"<Enter the name of your hub>"
-        #define HUBLISTENACCESS @"<Enter your DefaultListenSharedAccess connection string"
+    #define HUBNAME @"<Enter the name of your hub>"
+    #define HUBLISTENACCESS @"<Enter your DefaultListenSharedAccess connection string"
 
     #endif /* HubInfo_h */
     ```
@@ -142,11 +143,11 @@ Het voltooien van deze zelfstudie is een vereiste voor alle andere Notification 
     #import <UserNotifications/UserNotifications.h>
     #import "HubInfo.h"
     ```
+
 8. Voeg afhankelijk van uw iOS-versie in uw bestand `AppDelegate.m` de volgende code toe aan de `didFinishLaunchingWithOptions`-methode. Deze code registreert uw apparaatingang met APNs:
 
     ```objc
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |
-        UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
 
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
@@ -155,21 +156,21 @@ Het voltooien van deze zelfstudie is een vereiste voor alle andere Notification 
 9. Voeg in hetzelfde bestand de volgende methoden toe:
 
     ```objc
-        - (void) application:(UIApplication *) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
-        SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:HUBLISTENACCESS
-                                    notificationHubPath:HUBNAME];
+    (void) application:(UIApplication *) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
+     SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:HUBLISTENACCESS
+                                 notificationHubPath:HUBNAME];
 
-        [hub registerNativeWithDeviceToken:deviceToken tags:nil completion:^(NSError* error) {
-            if (error != nil) {
-                NSLog(@"Error registering for notifications: %@", error);
-            }
-            else {
-                [self MessageBox:@"Registration Status" message:@"Registered"];
-            }
-        }];
-        }
+     [hub registerNativeWithDeviceToken:deviceToken tags:nil completion:^(NSError* error) {
+         if (error != nil) {
+             NSLog(@"Error registering for notifications: %@", error);
+         }
+         else {
+             [self MessageBox:@"Registration Status" message:@"Registered"];
+         }
+     }];
+     }
 
-    -(void)MessageBox:(NSString *) title message:(NSString *)messageText
+    (void)MessageBox:(NSString *) title message:(NSString *)messageText
     {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:messageText preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -183,9 +184,9 @@ Het voltooien van deze zelfstudie is een vereiste voor alle andere Notification 
 10. Voeg in hetzelfde bestand de volgende methode toe om een **UIAlert** weer te geven als de melding is ontvangen terwijl de app actief is:
 
     ```objc
-    - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
-        NSLog(@"%@", userInfo);
-        [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
+    (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
+      NSLog(@"%@", userInfo);
+      [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
     }
     ```
 
@@ -193,7 +194,7 @@ Het voltooien van deze zelfstudie is een vereiste voor alle andere Notification 
 
 ## <a name="send-test-push-notifications"></a>Testpushmeldingen verzenden
 
-U kunt ontvangst van meldingen in uw app testen met de optie *Test verzenden* in [Azure-portal]. Er wordt dan een pushmelding als test naar uw apparaat verzonden.
+U kunt ontvangst van meldingen in uw app testen met de optie *Test verzenden* in [Azure Portal]. Er wordt dan een pushmelding als test naar uw apparaat verzonden.
 
 ![Azure Portal - Test verzenden][30]
 
@@ -207,7 +208,7 @@ Als u pushmeldingen op iOS wilt testen, moet u de app implementeren op een fysie
 
     ![De registratie van pushmeldingen in iOS-apps testen][33]
 
-2. Vervolgens verstuurt u als test een pushmelding vanuit [Azure-portal], zoals in de vorige sectie wordt beschreven.
+2. Vervolgens verstuurt u als test een pushmelding vanuit [Azure Portal], zoals in de vorige sectie wordt beschreven.
 
 3. De pushmelding wordt verzonden naar alle apparaten die zijn geregistreerd voor het ontvangen van meldingen van de specifieke Notification Hub.
 
@@ -248,4 +249,4 @@ In dit eenvoudige voorbeeld hebt u pushmeldingen uitgezonden naar al uw geregist
 [Azure Notification Hubs Notify Users for iOS with .NET backend]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 [Local and Push Notification Programming Guide]: https://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
-[Azure-portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

@@ -1,41 +1,42 @@
 ---
 title: Windows Remote Management via HTTPS voor Azure | Azure Marketplace
-description: Wordt uitgelegd hoe u een virtuele machine wordt gehost op Azure, op basis van Windows configureren zodat deze kan op afstand worden beheerd met PowerShell.
+description: In dit artikel wordt uitgelegd hoe u een door Azure gehoste, op Windows gebaseerde VM configureert zodat deze extern kan worden beheerd met Power shell.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pabutler
-ms.openlocfilehash: fb661a2705d437d1f40ceebcad7e759c2a78540f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e159bd9b57b26c99afd590d6a9f2153dba2a205
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938229"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808426"
 ---
 # <a name="windows-remote-management-over-https"></a>Windows Remote Management via HTTPS
 
-In deze sectie wordt uitgelegd hoe u een virtuele machine wordt gehost op Azure, op basis van Windows configureren zodat deze kan worden beheerd en geïmplementeerd op afstand met PowerShell.  De doel-VM moet een Windows Remote Management (WinRM) HTTPS-eindpunt beschikbaar maken zodat externe communicatie van PowerShell.  Zie voor meer informatie over PowerShell voor externe toegang, [externe opdrachten uitgevoerd](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6).  Zie voor meer informatie over WinRM [Windows Remote Management](https://docs.microsoft.com/windows/desktop/WinRM/portal).
+In deze sectie wordt uitgelegd hoe u een door Azure gehoste, op Windows gebaseerde VM configureert zodat deze extern kan worden beheerd en geïmplementeerd met Power shell.  Om externe communicatie met Power shell in te scha kelen, moet de doel-VM een HTTPS-eind punt voor Windows Remote Management (WinRM) beschikbaar stellen.  Zie [externe opdrachten uitvoeren](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6)voor meer informatie over communicatie met Power shell.  Zie [Windows Remote Management](https://docs.microsoft.com/windows/desktop/WinRM/portal)(Engelstalig) voor meer informatie over WinRM.
 
-Als u een virtuele machine met een van de 'klassieke' Azure methoden hebt gemaakt, de Azure Service Manager-Portal of de afgeschafte [Azure Service Management API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))— en vervolgens wordt deze automatisch geconfigureerd met een WinRM-eindpunt.  Echter als u een virtuele machine maken met behulp van een van de volgende 'moderne' Azure nadert, en vervolgens uw virtuele machine wordt *niet* worden geconfigureerd voor WinRM via HTTPS.  
+Als u een VM hebt gemaakt met behulp van een van de ' klassieke ' Azure-benaderingen, ofwel de Azure Service Manager portal of de afgeschafte [Azure-Service Management-API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100)), wordt deze automatisch geconfigureerd met een WinRM-eind punt.  Als u echter een VM maakt met behulp van een van de volgende ' moderne ' Azure-benaderingen, wordt uw virtuele machine *niet* geconfigureerd voor WINRM via https.  
 
-- Met behulp van de [Azure-portal](https://portal.azure.com/), meestal van een goedgekeurde base, zoals beschreven in de sectie [een Azure-compatibele VHD maken](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd)
-- [Met behulp van de Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
-- Met behulp van de Azure PowerShell of Azure CLI-opdrachtshell.  Zie voor voorbeelden van [Quick Start: Een Windows-machine maken in Azure met PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) en [Quick Start: Een virtuele Linux-machine maken met de Azure-CLI](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli).
+- Het gebruik van de [Azure Portal](https://portal.azure.com/), doorgaans vanuit een goedgekeurde basis, zoals beschreven in de sectie [een Azure-compatibele VHD maken](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd)
+- [De Azure Resource Manager sjablonen gebruiken](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
+- De Azure PowerShell-of Azure CLI-opdracht shell gebruiken.  Zie [Quick Start: een virtuele Windows-machine maken in azure met Power shell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) en [Snelstartgids: een virtuele Linux-machine maken met de Azure cli](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli).
 
-Dit eindpunt WinRM is ook vereist om uit te voeren van het hulpprogramma Certification kit voor de voorbereiding op de virtuele machine, zoals beschreven in [certificeren van uw VM-installatiekopie](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-certify-vm).
+Dit WinRM-eind punt is ook vereist voor het uitvoeren van de Certification Tool Kit voor het voorbereiden van de virtuele machine, zoals wordt beschreven in [certificeren van uw VM-installatie kopie](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-certify-vm).
 
-Daarentegen, doorgaans Linux-VM's worden op afstand worden beheerd met behulp van [Azure CLI](https://docs.microsoft.com/cli/azure) of Linux-opdrachten van een SSH-console.  Azure biedt ook diverse alternatieve methoden voor [scripts uitvoeren in uw Linux-VM](https://docs.microsoft.com/azure/virtual-machines/linux/run-scripts-in-vm).  Voor complexere scenario's zijn een aantal oplossingen voor integratie en automatisering beschikbaar voor Windows of Linux gebaseerde virtuele machines.
+Virtuele Linux-machines worden daarentegen extern beheerd met behulp van [Azure cli](https://docs.microsoft.com/cli/azure) -of Linux-opdrachten vanuit een SSH-console.  Azure biedt ook verschillende alternatieve methoden voor [het uitvoeren van scripts in uw Linux-VM](https://docs.microsoft.com/azure/virtual-machines/linux/run-scripts-in-vm).  Voor complexere scenario's zijn er een aantal automatiserings-en integratie oplossingen beschikbaar voor Vm's op basis van Windows of Linux.
 
 
 ## <a name="configure-and-deploy-with-winrm"></a>Configureren en implementeren met WinRM
 
-De WinRM-eindpunt voor een windows-gebaseerde VM kan worden geconfigureerd tijdens de twee verschillende stadia van de ontwikkeling ervan:
+Het WinRM-eind punt voor een VM op basis van Windows kan worden geconfigureerd tijdens twee verschillende fasen van de ontwikkeling:
 
-- Tijdens het maken van-tijdens de implementatie van een virtuele machine naar een bestaande VHD.  Dit is de aanpak van voorkeur voor de nieuwe aanbiedingen.  Deze aanpak is vereist voor het maken van een Azure-certificaat met behulp van Azure Resource Manager-sjablonen is opgegeven, en die wordt uitgevoerd aangepaste PowerShell-scripts. 
-- Na de implementatie - op een bestaande virtuele machine die wordt gehost op Azure.  Gebruik deze methode als u al een VM-oplossing op Azure is geïmplementeerd, hebt en venster extern beheer inschakelen voor deze.  Deze aanpak vereist handmatige wijzigingen in de Azure-portal en de uitvoering van een script op de doel-VM. 
+- Tijdens het maken: tijdens de implementatie van een virtuele machine naar een bestaande VHD.  Dit is de aanbevolen benadering voor nieuwe aanbiedingen.  Voor deze benadering moet u een Azure-certificaat maken met behulp van de geleverde Azure Resource Manager sjablonen, en aangepaste Power shell-scripts uitvoeren. 
+- Na de implementatie: op een bestaande virtuele machine die wordt gehost op Azure.  Gebruik deze methode als u al een VM-oplossing hebt geïmplementeerd in azure, en hiervoor het venster extern beheer moet inschakelen.  Deze aanpak vereist hand matige wijzigingen in de Azure Portal en de uitvoering van een script op de doel-VM. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u een nieuwe virtuele machine maakt, kunt u WinRM tijdens inschakelen [implementatie van uw virtuele machine van de VHD's](./cpp-deploy-vm-vhd.md).  Anders kan WinRM worden ingeschakeld in een bestaande virtuele machine  
+Als u een nieuwe virtuele machine maakt, kunt u WinRM inschakelen tijdens [de implementatie van uw virtuele machine vanaf de vhd's](./cpp-deploy-vm-vhd.md).  Zo niet, dan kan WinRM worden ingeschakeld in een bestaande virtuele machine  

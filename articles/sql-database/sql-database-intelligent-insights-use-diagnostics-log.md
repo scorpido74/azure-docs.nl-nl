@@ -1,5 +1,5 @@
 ---
-title: Diagnostische logboeken voor Intelligent Insights prestaties-Azure SQL Database
+title: Diagnostische logboeken van Intelligent Insights prestatie
 description: Intelligent Insights biedt een diagnostisch logboek van Azure SQL Database prestatie problemen
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 86381f5670f09b5e6a215793dc1ea4eab7ecbb8e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9ed2cc8bfb10d916218417a7dd27010638d2a927
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689693"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810285"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Het logboek voor diagnostische gegevens over het Intelligent Insights-Azure SQL Database gebruiken
 
@@ -42,7 +42,7 @@ De Issue Identification-eigenschap (issueId_d) biedt een manier om prestatie pro
 
 Samen met de probleem-ID rapporteert het diagnostische Logboeken het start (intervalStartTime_t) en het eind (intervalEndTme_t) tijds tempels van de specifieke gebeurtenis gerelateerd aan een probleem dat wordt gerapporteerd in het diagnostische logboek.
 
-De eigenschap elastische groep (elasticPoolName_s) geeft aan met welke elastische pool de Data Base een probleem behoort. Als de data base geen deel uitmaakt van een elastische pool, heeft deze eigenschap geen waarde. De Data Base waarin een probleem is gedetecteerd, wordt vermeld in de eigenschap data base name (databaseName_s).
+De eigenschap elastische groep (elasticPoolName_s) geeft aan aan welke elastische pool de data base met een probleem behoort. Als de data base geen deel uitmaakt van een elastische pool, heeft deze eigenschap geen waarde. De Data Base waarin een probleem is gedetecteerd, wordt vermeld in de eigenschap data base name (databaseName_s).
 
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp

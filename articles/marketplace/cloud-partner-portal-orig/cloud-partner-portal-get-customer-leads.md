@@ -1,118 +1,119 @@
 ---
-title: Leads klant configureren | Azure Marketplace
-description: Leads klant in de Cloud Partner-Portal configureren.
+title: Leads van klanten configureren | Azure Marketplace
+description: Klanten leads configureren in de Cloud Partner-portal.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: c3e483a33d986eff767b3529e30208319ad90b23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 312e172321c25248f1b0801bdbccf71762319989
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64934988"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818812"
 ---
 <a name="get-customer-leads"></a>Leads klant ophalen
 ==================
 
-In dit artikel wordt uitgelegd hoe u leads klant met behulp van de Cloud Partner-Portal maken. U kunt deze leads verbinden met uw CRM-systeem en integreren in uw verkooppijplijn.
+In dit artikel wordt uitgelegd hoe u leads voor klanten maakt met behulp van de Cloud Partner-portal. U kunt deze leads verbinden met uw CRM-systeem en ze integreren in uw verkoop pijplijn.
 
-## <a name="leads"></a>Leads
+## <a name="leads"></a>Leiders
 
-Leads zijn klanten die geïnteresseerd bent in of implementeert uw producten uit de [Azure Marketplace](https://azuremarketplace.microsoft.com/) of [AppSource](https://appsource.microsoft.com).
+Leads zijn klanten die geïnteresseerd zijn in of implementeren uw producten vanuit de [Azure Marketplace](https://azuremarketplace.microsoft.com/) of via [AppSource](https://appsource.microsoft.com).
 
 ### <a name="azure-marketplace"></a>Azure Marketplace
 
-1.  Klant heeft een 'Test Drive' van uw aanbieding. Test Drives zijn versneld u de mogelijkheid voor het delen van uw bedrijf direct met potentiële klanten zonder alle barrières voor post. Alle Test Drives een lead genereren voor een klant die graag bij het product voor meer informatie. Meer informatie over Test Drives op [Azure Marketplace Test Drive](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf).
+1.  De klant neemt een ' test station ' van uw aanbieding. Test stations zijn een versnelde kans om uw bedrijf direct te delen met potentiële klanten, zonder dat u daarvoor belemmeringen hoeft te doen. Alle test stations genereren een lead voor een klant die geïnteresseerd is in het proberen van uw product om meer te weten te komen. Meer informatie over test stations op [Azure Marketplace-test station](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf).
 
-    ![Voorbeelden van Marketplace test drive](./media/cloud-partner-portal-get-customer-leads/test-drive-offer.png)
+    ![Voor beelden van Marketplace-test drive](./media/cloud-partner-portal-get-customer-leads/test-drive-offer.png)
  
 
 <!-- -->
 
-1. Klant instemt met het delen van hun gegevens na het selecteren van de 'Nu ophalen'. Deze lead is een **belang voor de eerste** lead, waar we informatie over de klant die is uitgedrukt belang bij het ophalen van uw product delen. De lead is de bovenkant van de trechter overname.
+1. De klant heeft toestemming om hun gegevens te delen na het selecteren van ' nu ophalen '. Deze lead is een **eerste geïnteresseerde** lead, waar we informatie delen over de klant die geïnteresseerd is in het ophalen van uw product. De lead is de bovenkant van de verwervings trechter.
 
-   ![Deze optie nu ophalen](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
+   ![Optie nu downloaden](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
 
-1. Klant 'Aankoop' selecteert de [Azure Portal](https://portal.azure.com/) om op te halen van het product. Deze lead is een **active** lead, waar we informatie over een klant die is begonnen met het implementeren van uw product delen.
+1. Klant selecteert kopen in [Azure Portal](https://portal.azure.com/) om uw product te verkrijgen. Deze lead is een **actieve** lead, waar we informatie delen over een klant die is begonnen met het implementeren van uw product.
 
-   ![Aankoopoptie](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
+   ![Aankoop optie](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
 
 
 ### <a name="appsource"></a>AppSource
 
-1.  Klant heeft een 'Test Drive' voor uw aanbieding. Test Drives zijn versneld u de mogelijkheid voor het delen van uw bedrijf direct met potentiële klanten zonder alle barrières voor post. Alle Test Drives, wordt een potentiële klant van een klant die geïnteresseerd gegenereerd bij het product voor meer informatie. Meer informatie over Test Drives op [AppSource Test Drive](https://appsource.microsoft.com/blogs/want-to-try-an-app-take-a-test-drive).
+1.  De klant nam een ' test station ' voor uw aanbieding. Test stations zijn een versnelde kans om uw bedrijf direct te delen met potentiële klanten, zonder dat u daarvoor belemmeringen hoeft te doen. Alle test stations genereren een lead van een klant die geïnteresseerd is in het proberen van uw product om meer te weten te komen. Meer informatie over test stations op [AppSource-test station](https://appsource.microsoft.com/blogs/want-to-try-an-app-take-a-test-drive).
 
-    ![Voorbeeld van test drive](./media/cloud-partner-portal-get-customer-leads/test-drive-offer-2.png)
+    ![Voor beeld van test station](./media/cloud-partner-portal-get-customer-leads/test-drive-offer-2.png)
 
-2.  Klant instemt met het delen van hun gegevens na het selecteren van de 'Nu ophalen'. Deze lead is een **belang voor de eerste** lead, waar we informatie over klant wie uitdrukking belang bij het ophalen van uw product delen. De lead is de bovenkant van de trechter overname.
+2.  De klant heeft toestemming om hun gegevens te delen na het selecteren van ' nu ophalen '. Deze lead is een **eerste geïnteresseerde** lead, waar we informatie delen over de klant die geïnteresseerd is in het ophalen van uw product. De lead is de bovenkant van de verwervings trechter.
 
-      ![Deze optie nu ophalen](./media/cloud-partner-portal-get-customer-leads/get-it-now-button-2.png)
+      ![Optie nu downloaden](./media/cloud-partner-portal-get-customer-leads/get-it-now-button-2.png)
 
 
-3.  Klant selecteert 'Contact opnemen' op uw aanbieding. Deze lead is een **active** lead, waar we informatie over een klant die vraagt om te worden gevolgd door informatie over uw product delen.
+3.  Klant selecteert contact met mij op uw aanbieding. Deze lead is een **actieve** lead, waar we informatie delen over een klant die vraagt om te worden opgevolgd over uw product.
 
-    ![Contact opnemen met een optie](./media/cloud-partner-portal-get-customer-leads/contact-me-image.png)
+    ![Optie contact opnemen](./media/cloud-partner-portal-get-customer-leads/contact-me-image.png)
 
-<a name="lead-data"></a>Gegevens van potentiële klanten
+<a name="lead-data"></a>Lead gegevens
 ---------
 
-Elke lead u tijdens het inkoopproces voor de klant ontvangt heeft gegevens in specifieke velden. Omdat u leads van meerdere stappen ontvangt, is de beste manier voor het afhandelen van de leads dubbele ongedaan maken en aanpassen van de communityleden reageert. Op deze manier elke klant is het ophalen van een toepasselijk bericht en maakt u een unieke relatie.
+Elke lead die u ontvangt tijdens het klant verwervings proces heeft gegevens in specifieke velden. Omdat u leads van meerdere stappen krijgt, is het de beste manier om de leads af te handelen en de opvolging te personaliseren. Op deze manier krijgt elke klant een passend bericht en maakt u een unieke relatie.
 
-### <a name="lead-source"></a>Bron van potentiële klanten
+### <a name="lead-source"></a>Bron van lead
 
-De indeling voor een bron van leads is **bron**-**actie** |  **bieden**
+De indeling voor een bron van een lead is **bron**-**actie** |  **aanbieding**
 
-**Bronnen**: "AzureMarketplace", "AzurePortal", "TestDrive" en "AppSource (SPZA)"
+**Bronnen**: "AzureMarketplace", "AzurePortal", "TestDrive" en "APPSOURCE (SPZA)"
 
 **Acties**:
-- "Modules'--de installatie. Deze actie is op Azure Marketplace of AppSource wanneer een klant uw product koopt.
-- "PLT"--staat voor de Partner geleid proefversie. Deze actie is op AppSource wanneer een klant maakt gebruik van de contactpersoon me optie.
-- "DNC"--geen contact opnemen. Deze actie is op AppSource wanneer een Partner die cross vermeld op de pagina van uw app is wordt aangevraagd contact met u worden opgenomen. We delen de hoofden up dat deze klant cross is vermeld in uw app, maar niet hoeven te worden bereikt.
-- 'Maken'--deze actie is alleen in de Azure-Portal en wordt gegenereerd wanneer een klant uw aanbieding aan hun account aanschaft.
-- "StartTestDrive"--deze actie is voor alleen voor Test-stations en wordt gegenereerd wanneer een klant de test drive wordt gestart.
+- ' INS '--installatie. Deze actie bevindt zich op Azure Marketplace of AppSource wanneer een klant uw product koopt.
+- "PLT": staat voor een partner-LED-proef versie. Deze actie is op AppSource wanneer een klant de optie contact opnemen gebruikt.
+- "DNC"--geen contact opnemen. Deze actie bevindt zich op AppSource wanneer een partner die op de pagina van uw app staat, wordt gevraagd om contact met u op te nemen. De koppen worden gedeeld die deze klant heeft door gegeven aan uw app, maar er hoeven geen contact mee te worden gemaakt.
+- ' Maken ': deze actie bevindt zich alleen in de Azure Portal en wordt gegenereerd wanneer een klant uw aanbieding aan hun account aanschaft.
+- "StartTestDrive": deze actie geldt alleen voor test stations en wordt gegenereerd wanneer een klant hun test drive start.
 
 **Aanbiedingen**
 
-De volgende voorbeelden ziet u de unieke id's die zijn toegewezen aan een publisher en een bepaalde aanbieding: checkpoint.check-punt-r77-10sg-byol bitnami.openedxcypress en docusign.3701c77e-1cfa - 4c 56-91e6-3ed0b622145a.
+In de volgende voor beelden worden unieke id's weer gegeven die zijn toegewezen aan een uitgever en een specifieke aanbieding: controle punt. Check-Point-r77-10sg-byol, BitNami. openedxcypress en docusign. 3701c77e-1cfa-4c56-91e6-3ed0b622145a.
 
 
-### <a name="customer-info"></a>Klantgegevens
+### <a name="customer-info"></a>Klant gegevens
 
-De velden in het volgende voorbeeld worden de klantgegevens die opgenomen in een lead weergeven.
-- Voornaam: John
-- Achternaam: Smith
-- E-mailadres: jsmith\@microsoft.com
+In de velden in het volgende voor beeld worden de klant gegevens weer gegeven die zijn opgenomen in een lead.
+- Voor naam: John
+- LastName: Smit
+- E-mail: jsmith\@microsoft.com
 - Telefoon: 1234567890
-- Land/regio: VS
-- Bedrijf: Microsoft
+- Land: VS
+- Bedrijf: micro soft
 - Titel: CTO
 
 >[!Note]
->Niet alle gegevens in het vorige voorbeeld is altijd beschikbaar voor elke lead.
+>Niet alle gegevens in het vorige voor beeld zijn altijd beschikbaar voor elke lead.
 
-Er wordt actief gewerkt aan het verbeteren van de leads, dus als er een veld dat u hier niet wordt weergegeven, maar wilt hebben, neem [Stuur ons uw feedback](mailto:AzureMarketOnboard@microsoft.com).
+We werken actief aan het verbeteren van leads, dus als er een gegevens veld is dat u hier niet ziet, maar graag [uw feedback wilt ontvangen](mailto:AzureMarketOnboard@microsoft.com).
 
-<a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>Hoe u verbinding met uw CRM-systeem met de Cloud Partner-Portal
+<a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>Verbinding maken met uw CRM-systeem met de Cloud Partner-portal
 ------------------------------------------------------------
 
-Om te beginnen met het ophalen van leads, hebben we onze leiden Management-connector gebouwd op de Cloud Partner-Portal zodat u gemakkelijk in uw CRM-gegevens kunt aansluiten, en we zorgt ervoor dat de verbinding voor u. U kunt nu eenvoudig gebruikmaken van de leads die worden gegenereerd door de marketplace zonder een belangrijke technische inspanningen om te integreren met een extern systeem.
+Om leads te kunnen ophalen, hebben we onze lead management-connector op de Cloud Partner-portal gebouwd, zodat u eenvoudig uw CRM-gegevens kunt koppelen en de verbinding voor u wordt gemaakt. U kunt nu eenvoudig gebruikmaken van de leads die door Marketplace worden gegenereerd zonder een belang rijke engineering-inspanning om te integreren met een extern systeem.
 
-![Potentiële klanten management-connector](./media/cloud-partner-portal-get-customer-leads/lead-management-connector.png)
+![Connector voor lead beheer](./media/cloud-partner-portal-get-customer-leads/lead-management-connector.png)
 
-We kunnen schrijven leads in tal van CRM-systemen of rechtstreeks naar een Azure Storage-tabel waarbij u de leads kunt beheren maar u wilt. Elk van de volgende koppelingen vindt u instructies voor het verbinden met mogelijk lead doelen:
+We kunnen leads naar een groot aantal CRM-systemen schrijven of rechtstreeks naar een Azure Storage tabel waar u de leads kunt beheren. Elk van de volgende koppelingen bevat instructies voor het maken van verbinding met mogelijke lead doelen:
 
--   [Dynamics CRM Online](./cloud-partner-portal-lead-management-instructions-dynamics.md) om op te halen van de instructies voor het configureren van Dynamics CRM Online voor het ophalen van leads.
--   [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md) om op te halen van de instructies voor het instellen van de configuratie van Marketo leiden om op te halen van leads.
--    [SalesForce](./cloud-partner-portal-lead-management-instructions-salesforce.md) voor instructies voor het instellen van uw Salesforce-exemplaar om op te halen van leads.
--    [Azure-tabel](./cloud-partner-portal-lead-management-instructions-azure-table.md) om op te halen van de instructies voor het instellen van uw Azure storage-account voor het ophalen van leads in een Azure-tabel.
--   [HTTPS-eindpunt](./cloud-partner-portal-lead-management-instructions-https.md) om op te halen van de instructies voor het instellen van uw Https-eindpunt om op te halen van leads.
+-   [Dynamics CRM Online](./cloud-partner-portal-lead-management-instructions-dynamics.md) voor instructies over het configureren van Dynamics CRM Online voor het ophalen van leads.
+-   [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md) om de instructies voor het instellen van de marketo-lead configuratie op te halen om leads te verkrijgen.
+-    [Sales Force](./cloud-partner-portal-lead-management-instructions-salesforce.md) om instructies te krijgen voor het instellen van uw Sales Force-exemplaar om leads te verkrijgen.
+-    [Azure-tabel](./cloud-partner-portal-lead-management-instructions-azure-table.md) voor de instructies voor het instellen van uw Azure Storage-account om leads in een Azure-tabel op te halen.
+-   [Https-eind punt](./cloud-partner-portal-lead-management-instructions-https.md) voor de instructies voor het instellen van uw https-eind punt om leads op te halen.
 
-Nadat u de bestemming lead configureren en publiceren van uw aanbieding, we valideren van de verbinding en sturen u een lead test. Wanneer u de aanbieding bekijken voordat u live gaan, kunt u ook de potentiële klant verbinding testen door bij het ophalen van de aanbieding zelf in de preview-omgeving. Het is belangrijk om ervoor te zorgen dat uw recente lead instellingen blijven zodat u toch nog de leads, dus zorg ervoor dat u deze verbindingen bijwerken wanneer er iets is gewijzigd op uw eindgebruikers.
+Nadat u uw lead bestemming hebt geconfigureerd en uw aanbieding hebt gepubliceerd, wordt de verbinding gevalideerd en ontvangt u een test lead. Wanneer u de aanbieding bekijkt voordat u live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding te verkrijgen in de preview-omgeving. Het is belang rijk om ervoor te zorgen dat uw lead instellingen up-to-date blijven, zodat u geen leads kwijtraakt. Zorg er dus voor dat u deze verbindingen bijwerkt wanneer iets aan uw kant is gewijzigd.
 
 <a name="what-next"></a>Wat nu?
 ----------
 
-Zodra de technische instellen ingesteld is, moet u deze leads opnemen in uw huidige verkoop en marketing strategie en operationele processen. Er zijn we zeer geïnteresseerd in uw inzicht in uw totale verkoop worden verwerkt en u wilt werken nauw samen met u op het bieden van leads van hoge kwaliteit en voldoende gegevens bijdragen aan uw succes. We stellen uw feedback over hoe we kunt optimaliseren en verbeteren van de leads sturen we u met extra gegevens om u te helpen deze klanten geslaagd. Laat het ons weten als u geïnteresseerd bent in [feedback geven](mailto:AzureMarketOnboard@microsoft.com) en suggesties om in te schakelen van uw verkoopteam meer successen te behalen met Marketplace leidt.
+Zodra de technische installatie is ingesteld, moet u deze leads opnemen in uw huidige verkoop & marketing strategie en operationele processen. We zijn zeer geïnteresseerd in een beter inzicht in uw algehele verkoop proces en willen nauw keurig samen werken met leads van hoge kwaliteit en voldoende gegevens om u te laten slagen. We stellen uw feedback op de manier waarop we u kunnen helpen bij het optimaliseren en verbeteren van de leads die wij u met aanvullende gegevens sturen om deze klanten succesvol te maken. Laat het ons weten als u geïnteresseerd bent in [feedback](mailto:AzureMarketOnboard@microsoft.com) en suggesties zodat uw verkoop team succes voller kan maken met leads in de Marketplace.

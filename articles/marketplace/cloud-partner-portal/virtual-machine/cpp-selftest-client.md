@@ -4,15 +4,16 @@ description: Een self-test-client maken voor het vooraf valideren van een instal
 services: Azure, Marketplace, Cloud Partner Portal, Virtual Machine
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pabutler
-ms.openlocfilehash: 46923ecd33a054a36aa6900a415d0b563e5afff0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fc62875873f38630e592c79aebd6a138665ed6e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163255"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809213"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Een zelf test-client maken om een installatie kopie van een virtuele Azure-machine vooraf te valideren
 
@@ -68,7 +69,7 @@ In de volgende tabel worden de API-velden beschreven.
 |  DNSName           |  De DNS-naam van de virtuele machine die u wilt testen    |
 |  Gebruiker              |  Gebruikers naam voor aanmelding bij de virtuele machine         |
 |  Wachtwoord          |  Wacht woord voor aanmelding bij de virtuele machine          |
-|  Besturingssysteem                |  Het besturings systeem van de virtuele machine: een `Linux` of `Windows`          |
+|  OS                |  Het besturings systeem van de virtuele machine: een `Linux` of `Windows`          |
 |  PortNo            |  Open het poort nummer om verbinding te maken met de virtuele machine. Het poort nummer is doorgaans `22` voor Linux en `5986` voor Windows.          |
 |  |  |
 
@@ -99,7 +100,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" -Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 In de volgende scherm opname ziet u een voor beeld van het aanroepen van de API in Power shell.
@@ -109,7 +110,7 @@ In de volgende scherm opname ziet u een voor beeld van het aanroepen van de API 
 In het vorige voor beeld kunt u de JSON ophalen en parseren om de volgende details op te halen:
 
 ```powershell
-$testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
+$testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
 
   Write-Host "OSName: $($testresult.OSName)"
   Write-Host "OSVersion: $($testresult.OSVersion)"
@@ -144,7 +145,7 @@ Voer de volgende stappen uit om de API aan te roepen in Power shell:
 Het volgende code voorbeeld toont een Power shell-aanroep van de API.
 
 ```powershell
-$accesstoken = “Get token for your Client AAD App”
+$accesstoken = "Get token for your Client AAD App"
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $accesstoken")
 $Body = @{
@@ -156,7 +157,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" -Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 
@@ -167,7 +168,7 @@ In de volgende scherm opname ziet u een voor beeld van het aanroepen van de API 
 In het vorige voor beeld kunt u de JSON ophalen en parseren om de volgende details op te halen:
 
 ```powershell
-$testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
+$testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
 
   Write-Host "OSName: $($testresult.OSName)"
   Write-Host "OSVersion: $($testresult.OSVersion)"
@@ -219,7 +220,7 @@ In de volgende scherm opname ziet u de JSON-resultaten van de krul aanroep.
 
 Gebruik de volgende stappen om de Azure AD-Tenant te kiezen waar u uw toepassing wilt maken.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Selecteer in de bovenste menu balk uw account en kies in de lijst met mappen de Active Directory Tenant waar u de toepassing wilt registreren. Of selecteer het pictogram voor het adres van de map en het **abonnement** om het globale abonnements filter weer te geven. In de volgende scherm opname ziet u een voor beeld van dit filter.
 
    ![Het abonnements filter selecteren](./media/stclient-subscription-filter.png)
@@ -247,7 +248,7 @@ Gebruik de volgende stappen om de client-app te registreren.
 
    - **Naam** : Voer een beschrijvende naam in voor de app. Bijvoorbeeld ' SelfTestClient '.
    - **Toepassings type** : Selecteer **Web-app/API**
-   - **Aanmeldings-URL** : type ' https:\//isvapp.azurewebsites.net/selftest-VM '
+   - **Aanmeldings-URL** -type "https:\//isvapp.azurewebsites.net/selftest-VM"
 
 4. Selecteer **Maken**.
 5. Kopieer de **toepassings-id**onder **app-registraties** of **geregistreerde app**.
@@ -377,7 +378,7 @@ Als u Auth0 wilt stellen voor tokens voor een van uw geautoriseerde toepassingen
 
 ```powershell
 $clientId = "Application Id of AD Client APP";
-$clientSecret = "Secret Key of AD Client APP “
+$clientSecret = "Secret Key of AD Client APP "
 $audience = "https://management.core.windows.net";
 $authority = "https://login.microsoftonline.com/common/oauth2/token"
 $grantType = "client_credentials";
@@ -397,8 +398,8 @@ $token.AccessToken
 Geef het token door aan de zelf test-API met behulp van de volgende code in de autorisatie-header:
 
 ```powershell
-$redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
-$accesstoken = ‘place your token here’
+$redirectUri = 'https://isvapp.azurewebsites.net/selftest-vm'
+$accesstoken = 'place your token here'
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $accesstoken")

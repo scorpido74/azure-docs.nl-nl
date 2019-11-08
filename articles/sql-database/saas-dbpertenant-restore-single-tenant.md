@@ -1,22 +1,22 @@
 ---
-title: Een Azure-SQL database herstellen in een multi tenant SaaS-app
+title: Een Data Base herstellen in een multi tenant SaaS-app
 description: Meer informatie over het herstellen van de SQL database van één Tenant na het per ongeluk verwijderen van gegevens
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 12/04/2018
-ms.openlocfilehash: 0719fc5482e583218d42e808a4d94045a497f33c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a54e8e5629f6f8ad688b6fe11bbf50fc038095bf
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692105"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818531"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Eén Tenant herstellen met een SaaS-toepassing met een Data Base per Tenant
 
@@ -99,7 +99,7 @@ Met deze oefening wordt de contoso hal-Data Base op een bepaald moment teruggeze
 
 Het script herstelt de Tenant database naar een tijdstip voordat u de gebeurtenis hebt verwijderd. De data base is hersteld naar een nieuwe Data Base met de naam _ContosoConcertHall\_Old_. De meta gegevens van de catalogus die in deze herstelde data base bestaan, worden verwijderd en vervolgens wordt de data base aan de catalogus toegevoegd met behulp van een sleutel die is gemaakt van de *ContosoConcertHall\_oude* naam.
 
-Met het demo script wordt de pagina gebeurtenissen voor deze nieuwe Tenant database in uw browser geopend. Noteer de URL ```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old``` op deze pagina gegevens uit de herstelde data base worden weer gegeven, waarbij *_OLD* wordt toegevoegd aan de naam.
+Met het demo script wordt de pagina gebeurtenissen voor deze nieuwe Tenant database in uw browser geopend. Noteer de URL ```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old``` op deze pagina gegevens uit de herstelde data base worden weer gegeven, waarbij *_OLD* aan de naam wordt toegevoegd.
 
 Schuif de gebeurtenissen in de browser om te bevestigen dat de gebeurtenis die in de vorige sectie is verwijderd, is hersteld.
 

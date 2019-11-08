@@ -1,22 +1,22 @@
 ---
-title: Door de klant beheerde transparante gegevens versleuteling (TDE)-Azure SQL Database | Microsoft Docs
+title: Door de klant beheerde transparante gegevens versleuteling (TDE)
 description: Bring Your Own Key-ondersteuning (BYOK) voor Transparent Data Encryption (TDE) met Azure Key Vault voor SQL Database en Data Warehouse. TDE met BYOK overview, voor delen, hoe het werkt, overwegingen en aanbevelingen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 11/04/2019
-ms.openlocfilehash: 49ffed06936f8de2aed6d34ed83fca9e71ac0daf
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 3ae5403c2313bc1d2f271aeba9d4a99d9a0c5db7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615707"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822285"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutel
 

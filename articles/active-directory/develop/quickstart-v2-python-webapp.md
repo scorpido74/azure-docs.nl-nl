@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 254a1fd8644015de33855e13f78ab122d28f1e35
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d9349391ad9af1a4ec1c84b586f825f3f7632ff8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817123"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815755"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Snelstartgids: aanmelden toevoegen met micro soft aan een Python-web-app
 
@@ -42,7 +42,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 
 > [!div renderon="docs"]
 >
-> ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
+> ## <a name="register-and-download-your-quickstart-app"></a>De snelstart-app registreren en downloaden
 >
 > U hebt twee opties om uw Quick Start-toepassing te starten: Express (optie 1) en hand matig (optie 2)
 >
@@ -60,7 +60,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > Volg deze stappen om de toepassing te registreren en de registratiegegevens van de app handmatig toe te voegen aan uw oplossing:
 >
 > 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-> 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
+> 1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
 > 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
@@ -74,6 +74,13 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 >      - Selecteer een sleutel duur van **in één jaar**.
 >      - Wanneer u op **toevoegen**klikt, wordt de waarde van de sleutel weer gegeven.
 >      - Kopieer de waarde van de sleutel. U hebt dit later nodig.
+> 1. De sectie **API-machtigingen** selecteren
+>
+>      - Klik op de knop **een machtiging toevoegen** en vervolgens op
+>      - Zorg ervoor dat het tabblad **micro soft-api's** is geselecteerd
+>      - Klik in de sectie *veelgebruikte micro soft-api's* op **Microsoft Graph**
+>      - Controleer in de sectie **gedelegeerde machtigingen** of de juiste machtigingen zijn ingeschakeld: **User. ReadBasic. all**. Gebruik het zoekvak als dat nodig is.
+>      - Selecteer de knop **machtigingen toevoegen**
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >
@@ -83,9 +90,10 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 >
 > 1. Voeg een antwoord-URL toe als `http://localhost:5000/getAToken`.
 > 1. Maak een client geheim.
+> 1. Voeg de Microsoft Graph-API user. ReadBasic. alle gedelegeerde machtigingen toe.
 >
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Deze wijziging voor mij maken]()
+> > [Breng deze wijzigingen voor mij aan]()
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Al geconfigureerd](media/quickstart-v2-aspnet-webapp/green-check.png) Uw toepassing is al geconfigureerd met dit kenmerk
 
@@ -126,24 +134,24 @@ AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
    python app.py
    ```
    > [!IMPORTANT]
-   > Deze quickstarttoepassing gebruikt een clientgeheim om zichzelf te identificeren als vertrouwelijke client. Omdat het clientgeheim als platte tekst aan uw projectbestanden wordt toegevoegd, wordt u om veiligheidsredenen aangeraden een certificaat te gebruiken in plaats van een clientgeheim voordat u de toepassing als productietoepassing beschouwt. Zie [deze instructies](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-certificate-credentials)voor meer informatie over het gebruik van een certificaat.
+   > Deze quickstarttoepassing gebruikt een clientgeheim om zichzelf te identificeren als vertrouwelijke client. Omdat het clientgeheim als platte tekst aan uw projectbestanden wordt toegevoegd, wordt u om veiligheidsredenen aangeraden een certificaat te gebruiken in plaats van een clientgeheim voordat u de toepassing als productietoepassing beschouwt. Zie [deze instructies](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)voor meer informatie over het gebruik van een certificaat.
 
-   ## <a name="more-information"></a>Meer informatie
+## <a name="more-information"></a>Meer informatie
 
-   ### <a name="getting-msal"></a>MSAL ophalen
-   MSAL is de bibliotheek die wordt gebruikt voor het aanmelden van gebruikers en het aanvragen van tokens die worden gebruikt voor toegang tot een API die wordt beveiligd door het micro soft Identity-platform.
-   U kunt MSAL python toevoegen aan uw toepassing met behulp van PIP.
+### <a name="getting-msal"></a>MSAL ophalen
+MSAL is de bibliotheek die wordt gebruikt voor het aanmelden van gebruikers en het aanvragen van tokens die worden gebruikt voor toegang tot een API die wordt beveiligd door het micro soft Identity-platform.
+U kunt MSAL python toevoegen aan uw toepassing met behulp van PIP.
 
-   ```Shell
-   pip install msal
-   ```
+```Shell
+pip install msal
+```
 
-   ### <a name="msal-initialization"></a>MSAL initialiseren
-   U kunt de verwijzing toevoegen aan MSAL python door de volgende code toe te voegen aan de bovenkant van het bestand waarin u MSAL gaat gebruiken:
+### <a name="msal-initialization"></a>MSAL initialiseren
+U kunt de verwijzing toevoegen aan MSAL python door de volgende code toe te voegen aan de bovenkant van het bestand waarin u MSAL gaat gebruiken:
 
-   ```Python
-   import msal
-   ```
+```Python
+import msal
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

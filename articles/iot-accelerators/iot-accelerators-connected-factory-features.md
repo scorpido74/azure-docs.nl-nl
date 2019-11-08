@@ -1,6 +1,6 @@
 ---
-title: Verbonden Factory-oplossing functies - Azure | Microsoft Docs
-description: Een overzicht van de functies van de verbonden Factory vooraf geconfigureerde oplossing.
+title: Functies van de oplossing Connected Factory-Azure | Microsoft Docs
+description: In dit artikel wordt een overzicht gegeven van de functies van de vooraf geconfigureerde oplossing Connected Factory, zoals Cloud dashboard, regels en waarschuwingen.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,28 +8,28 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 2a11640959a8c7fdd0d238aba92698eb47934969
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080454"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820110"
 ---
-# <a name="what-is-connected-factory-iot-solution-accelerator"></a>Wat is verbonden Factory IoT-oplossingsversnellers?
+# <a name="what-is-connected-factory-iot-solution-accelerator"></a>Wat is de verbonden Factory IoT-oplossings versneller?
 
-Verbonden Factory is een implementatie van Microsoft Azure industriële IoT-referentiearchitectuur, verpakt als op de open-source oplossing. U kunt deze gebruiken als uitgangspunt voor een commercieel product. U kunt een vooraf gemaakte versie van de verbonden Factory-oplossing implementeren in uw Azure-abonnement van [Azure IoT-oplossingsversnellers](https://www.azureiotsolutions.com/#solutions/types/CF).
+Connected Factory is een implementatie van de Azure Industrial IoT-referentie architectuur van micro soft, verpakt als een open-source oplossing. U kunt deze gebruiken als uitgangs punt voor een commercieel product. U kunt een vooraf ontwikkelde versie van de oplossing Connected Factory implementeren in uw Azure-abonnement van [Azure IOT-oplossings Accelerators](https://www.azureiotsolutions.com/#solutions/types/CF).
 
-![Dashboard van oplossing voor verbonden Factory](./media/iot-accelerators-connected-factory-features/dashboard.png)
+![Dash board Connected Factory-oplossing](./media/iot-accelerators-connected-factory-features/dashboard.png)
 
-De oplossingsversneller voor verbonden Factory [code is beschikbaar op GitHub](https://github.com/Azure/azure-iot-connected-factory).
+De Connected Factory Solution Accelerator [code is beschikbaar op github](https://github.com/Azure/azure-iot-connected-factory).
 
 Verbonden Factory bevat de volgende functies:
 
 ## <a name="industrial-device-interoperability"></a>Interoperabiliteit van industriële apparaten
 
 - Maak verbinding met industriële activa met een OPC UA-interface.
-- Gebruik de gesimuleerde productielijnen (met OPC UA-servers in Docker-containers) om te zien van live telemetrie van deze.
-- Blader door het model van de OPC UA informatie van de OPC UA-servers uit een cloud-dashboard.
+- Gebruik de gesimuleerde productie lijnen (actieve OPC UA-servers in docker-containers) om live-telemetrie hiervan te bekijken.
+- Blader door het OPC UA-informatie model van de OPC UA-servers vanuit een Cloud dashboard.
 
 ## <a name="remote-management"></a>Extern beheer
 
@@ -38,31 +38,31 @@ Verbonden Factory bevat de volgende functies:
 
 ## <a name="cloud-dashboard"></a>Clouddashboard
 
-- Telemetrie previews rechtstreeks in een cloud-dashboard weergeven.
+- Bekijk de voor beelden van telemetrie rechtstreeks in een Cloud dashboard.
 - Geef trends in de telemetriegegevens weer en maak correlaties met het Time Series Insights Explorer-dashboard.
-- Berekende algemene Equipment Efficiency (OEE) en Key Performance Indicators (KPI's) in een cloud-dashboard zien.
-- Weergave industriële activa hiërarchieën in een boomstructuur-topologie, maar ook op een interactieve kaart.
-- Weergeven, erkent en waarschuwingen uit een cloud-dashboard sluiten.
+- Zie berekende algemene efficiëntie van apparatuur (OEE) en Key Performance Indica tors (Kpi's) van een Cloud dashboard.
+- Bekijk de hiërarchieën van industriële activa in een boom topologie en op een interactieve kaart.
+- Waarschuwingen weer geven, erkennen en sluiten vanuit een Cloud dashboard.
 
 ## <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-- [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) is gebouwd voor het opslaan, visualiseren en query's van grote hoeveelheden gegevens van de time series. Verbonden Factory maakt gebruik van deze service.
-- Verbonden Factory's kan worden geïntegreerd met deze service waarmee u uitgebreide, in realtime analyse van de apparaatgegevens van uw uitvoeren.
+- [Azure time series Insights](../time-series-insights/time-series-insights-overview.md) is gemaakt voor het opslaan, visualiseren en opvragen van grote hoeveel heden gegevens in de tijd reeks. Connected Factory maakt gebruik van deze service.
+- Connected Factory integreert met deze service, zodat u de gegevens van uw apparaten dieper kunt analyseren.
 
 ## <a name="rules-and-alerts"></a>Regels en waarschuwingen
 
-[Regels op basis van een drempelwaarde voor waarschuwingen configureren](iot-accelerators-connected-factory-configure.md).
+[Regels op basis van drempel waarden configureren voor waarschuwingen](iot-accelerators-connected-factory-configure.md).
 
 ## <a name="end-to-end-security"></a>End-to-end beveiliging
 
 - Configureer beveiligingsmachtigingen voor gebruikers met op rollen gebaseerd toegangsbeheer (RBAC).
-- End-to-end versleuteling is geïmplementeerd met behulp van de OPC UA-verificatie (met behulp van X.509-certificaten), evenals de beveiligingstokens.
+- End-to-end-versleuteling wordt geïmplementeerd met behulp van de OPC UA-verificatie (met behulp van X. 509-certificaten) en beveiligings tokens.
 
-## <a name="customizability"></a>Aanpassingsmogelijkheden
+## <a name="customizability"></a>Aanpassings mogelijkheden
 
-- De oplossing om te voldoen aan specifieke zakelijke behoeften aanpassen.
-- Volledige oplossing-broncode is beschikbaar op GitHub. Zie de [vooraf geconfigureerde oplossing voor verbonden Factory](https://github.com/Azure/azure-iot-connected-factory) opslagplaats.
+- Pas de oplossing aan om te voldoen aan specifieke bedrijfs vereisten.
+- Volledige bron code van de oplossing die beschikbaar is op GitHub. Zie de [vooraf geconfigureerde](https://github.com/Azure/azure-iot-connected-factory) opslag plaats voor oplossingen van de verbonden Factory.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de oplossingsverbetering voor verbonden Factory, de snelstartgids [een cloud-gebaseerde oplossing voor het beheren van mijn industriële IoT-apparaten proberen](quickstart-connected-factory-deploy.md).
+Voor meer informatie over de Connected Factory Solution Accelerator raadpleegt u de Quick [Start een Cloud oplossing voor het beheren van mijn industriële IOT-apparaten](quickstart-connected-factory-deploy.md).

@@ -1,5 +1,5 @@
 ---
-title: Uw groeps gegevens bijwerken vanuit de portal mijn apps-Azure Active Directory | Microsoft Docs
+title: Uw groeps gegevens bijwerken op de portal mijn apps-Azure AD
 description: Meer informatie over het weer geven en bijwerken van uw groeps gegevens, zoals het weer geven van de groepen waarvan u de eigenaar bent, het maken van nieuwe groepen, het weer geven van de groepen waartoe u al lid bent en het koppelen van groepen waarvan u nog geen deel uitmaakt.
 services: active-directory
 author: eross-msft
@@ -13,16 +13,16 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a11b43d040dec838de350c23614ae42b6756ec6e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: aa251ee361af12ecf3fef3c7cd437fa06c1cea52
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383179"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803926"
 ---
-# <a name="update-your-groups-info-from-the-my-apps-portal"></a>Uw groeps gegevens bijwerken vanuit de portal mijn apps
+# <a name="update-your-groups-info-on-the-my-apps-portal"></a>Uw groeps gegevens bijwerken op de portal mijn apps
 
-U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account  gegevens bij te werken, om uw groeps gegevens te bekijken en uit te voeren  **toegangs beoordelingen** voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
+U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en uit te voeren  **toegangs beoordelingen** voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -41,7 +41,7 @@ Als uw beheerder u toestemming heeft gegeven om de tegel **groepen** weer te gev
 
 1. Meld u aan bij uw werk-of school account.
 
-2. Open uw webbrowser en ga naar https://myapps.microsoft.com of gebruik de koppeling die door uw organisatie wordt weer gegeven. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Open uw webbrowser en ga naar https://myapps.microsoft.comof gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
@@ -85,7 +85,7 @@ Als uw beheerder u toestemming heeft gegeven om de tegel **groepen** weer te gev
 
         - **Office 365.** Biedt mogelijkheden voor samenwerking door leden toegang te geven tot een gedeeld postvak, agenda, bestanden, SharePoint-site en meer. Deze optie geeft u ook de mogelijkheid om mensen buiten uw organisatie toegang te geven tot de groep.
 
-    - **Naam van de groep.** Voeg een naam voor de groep toe, iets wat u moet onthouden en dat klinkt logisch.
+    - **Groeps naam.** Voeg een naam voor de groep toe, iets wat u moet onthouden en dat klinkt logisch.
 
     - **Groeps beschrijving (optioneel).** Voeg een optionele beschrijving toe aan uw groep.
 
@@ -101,7 +101,7 @@ Nadat u een groep hebt gemaakt, kunt u de details ervan bewerken, inclusief het 
 
 ### <a name="to-edit-your-details"></a>Uw gegevens bewerken
 
-1. Selecteer de groep die u wilt bewerken op de pagina **groepen** en selecteer vervolgens **Details bewerken** op de *&lt;pagina group_name&gt;* .
+1. Selecteer de groep die u wilt bewerken op de pagina **groepen** en selecteer vervolgens **Details bewerken** op de pagina *&lt;group_name&gt;* .
 
     Het vak **Details bewerken** wordt weer gegeven en u kunt de informatie bijwerken die u hebt toegevoegd tijdens de eerste keer dat u de groep hebt gemaakt.
 
@@ -113,7 +113,7 @@ U kunt leden toevoegen aan of verwijderen uit een van uw eigen groepen.
 
 ### <a name="to-add-or-remove-a-member"></a>Een lid toevoegen of verwijderen
 
-1. Selecteer de groep waaraan u leden wilt toevoegen en selecteer **+** vervolgens op de *&lt;pagina group_name.&gt;*
+1. Selecteer de groep waaraan u leden wilt toevoegen en selecteer vervolgens **+** op de pagina *&lt;group_name&gt;* .
 
     ![Een groepslid toevoegen met +-teken gemarkeerd](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
@@ -123,7 +123,7 @@ U kunt leden toevoegen aan of verwijderen uit een van uw eigen groepen.
 
     Er wordt een uitnodiging verzonden naar het nieuwe lid om aan de slag te gaan met de apps van de organisatie.
 
-3. Als u per ongeluk een lid hebt toegevoegd of als een lid uw organisatie heeft verlaten, kunt u het lid verwijderen door **lid verwijderen** naast de naam van het lid op de  *&lt;pagina&gt; group_name* te selecteren.
+3. Als u per ongeluk een lid hebt toegevoegd, of als een lid uw organisatie heeft verlaten, kunt u het lid verwijderen door **lid verwijderen** naast de naam van het lid op de pagina *&lt;group_name&gt;* te selecteren.
 
     ![Een lid verwijderen, waarbij de Verwijder koppeling is gemarkeerd](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
@@ -147,7 +147,7 @@ U kunt uw eigen groepen op elk gewenst moment verwijderen. Als u echter een groe
 
 ### <a name="to-delete-the-group"></a>De groep verwijderen
 
-1. Selecteer de groep die u definitief wilt verwijderen en selecteer vervolgens **groep verwijderen** op de *&lt;pagina group_name&gt;* .
+1. Selecteer de groep die u definitief wilt verwijderen en selecteer vervolgens **groep verwijderen** op de pagina *&lt;group_name&gt;* .
 
     ![< pagina Group_name > met de koppeling groep verwijderen gemarkeerd](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 
@@ -161,7 +161,7 @@ U kunt lid worden van een bestaande groep van de pagina **groepen** .
 
 ### <a name="to-join-or-leave-a-group"></a>Om lid te worden van een groep of deze te verlaten
 
-1. Selecteer op de pagina **groepen** de optie **groep samen voegen** in het gedeelte groepen die ik bevindt.
+1. Selecteer op de pagina **groepen** de optie **groep samen voegen** in het gedeelte **groepen die ik bevindt** .
 
     De pagina **lid worden van groepen** wordt weer gegeven.
 

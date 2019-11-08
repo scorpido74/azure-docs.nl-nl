@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database-servers
+title: Servers
 description: Meer informatie over Azure SQL Database servers en het beheer ervan.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 8ebe08f37255743578cbc3dd44f7d84d79b9d17a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a3ad3314b8a18ec6a63b5d51bc7d8b3f9d7a6260
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687407"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818291"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL Database servers en hun beheer
 
@@ -153,7 +153,7 @@ Gebruik de volgende T-SQL-opdrachten om Azure SQL Server, data bases en firewall
 |[ALTER data base (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Hiermee wijzigt u een Azure SQL Data Warehouse.|
 |[DROP data base (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Hiermee verwijdert u een Data Base.|
 |[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor een Azure-SQL database of een Azure SQL Data Warehouse. Als u bent aangemeld bij de hoofd database in een Azure SQL Database-Server, wordt er informatie over alle data bases geretourneerd. Voor Azure SQL Data Warehouse moet u verbinding hebben met de hoofd database.|
-|[sys. DM _db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Retourneert CPU, i/o en geheugen verbruik voor een Azure SQL Database-data base. Er bestaat één rij voor elke 15 seconden, zelfs als er geen activiteit in de data base is.|
+|[sys. dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Retourneert CPU, i/o en geheugen verbruik voor een Azure SQL Database-data base. Er bestaat één rij voor elke 15 seconden, zelfs als er geen activiteit in de data base is.|
 |[sys. resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Retourneert het CPU-gebruik en de opslag gegevens voor een Azure SQL Database. De gegevens worden binnen een interval van vijf minuten verzameld en geaggregeerd.|
 |[sys. database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Bevat statistieken voor SQL Database database connectiviteits gebeurtenissen, met een overzicht van geslaagde en mislukte database verbindingen. |
 |[sys. event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Hiermee worden geslaagde Azure SQL Database database verbindingen, verbindings fouten en deadlocks geretourneerd. U kunt deze informatie gebruiken om uw database activiteit bij SQL Database bij te houden of problemen op te lossen.|

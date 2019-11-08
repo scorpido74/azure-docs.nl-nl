@@ -4,15 +4,16 @@ description: Beheer van leads voor Azure-tabel configureren.
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 7151be3ac9f55825fd2e9dde35c9afda6a30726a
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 9b24e6eb714c531b49ba08591bf4ed33d0f10101
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902635"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812342"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Beheer van leads configureren met behulp van een Azure-tabel
 
@@ -106,7 +107,7 @@ In de volgende reeks stappen maakt u verbinding met uw Azure-tabel en stelt u de
 
             ![Azure Table-entiteiten ophalen.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-        * *Filter query* – Selecteer dit veld en plak deze functie in het veld:`Timestamp gt datetime'@{body('Get_past_time')}'`
+        * *Filter query* : Selecteer dit veld en plak deze functie in het veld: `Timestamp gt datetime'@{body('Get_past_time')}'`
 
             ![Azure Table Get entities-filter Querry.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
@@ -118,7 +119,7 @@ In de volgende reeks stappen maakt u verbinding met uw Azure-tabel en stelt u de
 
 14. Selecteer in het venster **voor waarde** het veld **een waarde kiezen** en selecteer vervolgens **expressie** in het pop-upvenster.
 
-15. In `length(body('Get_entities')?['value'])` het ***FX*** -veld plakken. Selecteer **OK** om deze functie toe te voegen. 
+15. Plak `length(body('Get_entities')?['value'])` in het ***FX*** -veld. Selecteer **OK** om deze functie toe te voegen. 
 
 16. Het instellen van de voor waarde volt ooien:
     1. Selecteer ' is groter dan ' in de vervolg keuzelijst.
@@ -145,8 +146,8 @@ In de volgende stappen gaat u de actie instellen die moet worden uitgevoerd op b
 19. Geef in het **Office 365 Outlook** -venster informatie op voor de volgende velden:
 
     1. Voer een e-mail adres **in** voor iedereen die deze melding ontvangt.
-    1. **Onderwerp** : Geef een onderwerp op voor het e-mail bericht. Bijvoorbeeld: Nieuwe leads.
-    1. **Hoofd** tekst: Voeg de tekst toe die u in elk e-mail bericht wilt toevoegen (optioneel) en plak `body('Get_entities')?['value']`deze in de hoofd tekst.
+    1. **Onderwerp** : Geef een onderwerp op voor het e-mail bericht. Bijvoorbeeld: nieuwe leads!
+    1. **Hoofd** tekst: Voeg de tekst toe die u in elk e-mail bericht wilt toevoegen (optioneel) en plak deze in de hoofd tekst `body('Get_entities')?['value']`.
 
     >[!Note]
     >U kunt aanvullende statische of dynamische gegevens punten invoegen naar de hoofd tekst van deze e-mail.

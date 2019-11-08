@@ -1,9 +1,10 @@
 ---
-title: Azure SQL Database en Azure SQL Data Warehouse IP-firewall regels
+title: IP-firewall regels
 description: Configureer IP-firewall regels op server niveau voor een SQL database of SQL Data Warehouse firewall. Toegang beheren en IP-firewall regels op database niveau configureren voor één of gegroepeerde Data Base.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 52566dbc60c3c2fd532891ab4f7d3461f9d77557
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 668744121c41a6e4797bc335b2736c8b31d87a41
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690047"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807934"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database en Azure SQL Data Warehouse IP-firewall regels
 
@@ -166,7 +167,7 @@ EXECUTE sp_set_firewall_rule @name = N'ContosoFirewallRule',
    @start_ip_address = '192.168.1.1', @end_ip_address = '192.168.1.10'
 ```
 
-Als u een IP-firewall regel op server niveau wilt verwijderen, voert u de opgeslagen procedure *sp_delete_firewall_rule* uit. In het volgende voor beeld wordt de regel *ContosoFirewallRule*verwijderd:
+Als u een IP-firewall regel op server niveau wilt verwijderen, voert u de opgeslagen *sp_delete_firewall_rule* procedure uit. In het volgende voor beeld wordt de regel *ContosoFirewallRule*verwijderd:
 
 ```sql
 EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'

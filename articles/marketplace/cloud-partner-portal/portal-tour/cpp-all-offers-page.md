@@ -1,31 +1,32 @@
 ---
-title: Alle pagina biedt voor Azure Marketplace
-description: Overzicht van alle biedt pagina in de Cloud Partner-Portal voor Azure Marketplace.
+title: Pagina met alle aanbiedingen voor Azure Marketplace
+description: Overzicht van de pagina alle aanbiedingen in de Cloud Partner-portal voor Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pabutler
-ms.openlocfilehash: d674cc154dd46704051c3c75ca2589dfd7a9ca4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb67ac44ee73d4d8074b577b2157f5846f451210
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942138"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821591"
 ---
 # <a name="all-offers-page"></a>Pagina voor Alle aanbiedingen
 
-De [ **alle aanbiedingen** ](https://cloudpartner.azure.com/#alloffers) pagina kan partners om een lijst met gemaakte aanbiedingen, met inbegrip van hun naam, het type, de uitgever en de huidige status weer te geven.  U kunt een tekenreeks om de resultaten te filteren.   Het statusgebied aan de onderkant van de pagina weergegeven aantal statistische functie en pagina, en kunt u navigeren tussen de lijst met pagina's. Een aanbieding in deze lijst te selecteren, wordt deze aanbieding weergegeven in de bijbehorende aanbieding-editor. 
+Op de pagina [**alle aanbiedingen**](https://cloudpartner.azure.com/#alloffers) kunnen partners een lijst met gemaakte aanbiedingen weer geven, met inbegrip van de naam, het type, de uitgever en de huidige status.  U kunt een teken reeks opgeven om de resultaten te filteren.   In het status gebied onder aan de pagina worden aggregatie-en pagina aantallen weer gegeven, en kunt u tussen lijst pagina's navigeren. Als u een aanbieding in deze lijst selecteert, wordt de aanbieding in de bijbehorende aanbiedings editor weer gegeven. 
 
 
-## <a name="example-page"></a>Voorbeeldpagina
+## <a name="example-page"></a>Voorbeeld pagina
 
-De volgende afbeelding toont de **alle aanbiedingen** pagina gefilterd op de tekenreeks `Contoso`.
+De volgende afbeelding toont de pagina **alle aanbiedingen** die is gefilterd op de teken reeks `Contoso`.
 
 ![Pagina voor Alle aanbiedingen](./media/all-offers-page1.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Het volgende navigatie menubalk item wordt weergegeven een [pagina goedkeuringen](./cpp-approvals-page.md), welke een lijst met goedgekeurde aanbiedingen.  Goedgekeurde aanbiedingen zijn al gepubliceerd of dit moment wordt gepubliceerd.
+In het volgende navigatie menu op de [pagina wordt een goed keuring](./cpp-approvals-page.md)weer gegeven, waarin goedgekeurde aanbiedingen worden weer gegeven.  Goedgekeurde aanbiedingen zijn al gepubliceerd of worden gepubliceerd.

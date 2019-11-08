@@ -1,5 +1,5 @@
 ---
-title: Uw profiel en account gegevens bijwerken vanuit de portal mijn apps-Azure Active Directory | Microsoft Docs
+title: Uw profiel en account bijwerken in de portal mijn apps-Azure AD
 description: Meer informatie over het bijwerken van uw profiel en uw werk-of school accountgegevens, zoals het wijzigen van uw wacht woord, het inschakelen van wacht woord opnieuw instellen, het bijwerken van uw beveiligings verificatie methoden, het weer geven van de gebruiks voorwaarden van uw organisatie en het afmelden van overal waar u bent aangemeld met uw werk-of school account.
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40cf8e16e08db67c36009435758db36797518d96
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4416b35d2e2204cec2a9ffe2f50e92983d6204c0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160764"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820385"
 ---
-# <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>Uw profiel en account gegevens bijwerken vanuit de portal mijn apps
+# <a name="update-your-profile-and-account-info-on-the-my-apps-portal"></a>Uw profiel-en account gegevens bijwerken op de portal mijn apps
 
 U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en uit te voeren  **toegangs beoordelingen** voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
 

@@ -1,22 +1,22 @@
 ---
-title: "Analytics-query's uitvoeren op Tenant databases met behulp van Azure SQL Data Warehouse "
+title: Analytics-query's uitvoeren op Tenant databases
 description: Cross-Tenant Analytics-query's met behulp van gegevens die zijn geëxtraheerd uit Azure SQL Database, SQL Data Warehouse, Azure Data Factory of Power BI.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: f4a89029d7ed90f1a2406dcf0f8046a1c651353f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4791cd3a6b6f72c5d9ee4ca828d66b0d361f356c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691871"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816770"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Bekijk SaaS Analytics met Azure SQL Database, SQL Data Warehouse, Data Factory en Power BI
 
@@ -103,8 +103,8 @@ In de Objectverkenner:
 1. Vouw het knoop punt data bases uit en Bekijk de lijst met Tenant databases.
 1. Vouw de *catalogus-dpt-&lt;gebruiker&gt;-* server uit.
 1. Controleer of u de Analytics Store ziet met de volgende objecten:
-    1. Tabellen **raw_Tickets**, **raw_Customers**, **raw_Events** en **raw_Venues** bevatten onbewerkte gegevens uit de Tenant-data bases.
-    1. De ster schema tabellen zijn **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**en **dim_Dates**.
+    1. Tabellen **raw_Tickets**, **raw_Customers**, **raw_Events** en **raw_Venues** onbewerkte gegevens uit de Tenant databases bevatten.
+    1. De tabellen in het ster schema zijn **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**en **dim_Dates**.
     1. De opgeslagen procedure **sp_transformExtractedData** wordt gebruikt om de gegevens te transformeren en te laden in de ster-schema tabellen.
 
 ![DWtables](media/saas-tenancy-tenant-analytics/DWtables.JPG)
@@ -143,7 +143,7 @@ Ga op de pagina overzicht naar het tabblad **Auteur** in het linkerdeel venster 
 
 De drie geneste pijp lijnen zijn: SQLDBToDW, DBCopy en TableCopy.
 
-**Pijp lijn 1-SQLDBToDW** zoekt de namen van de Tenant databases op die zijn opgeslagen in de catalogus database (tabel naam: [__ShardManagement]. [ ShardsGlobal]) en voor elke Tenant database voert de **DBCopy** -pijp lijn uit. Na voltooiing wordt het meegeleverde **sp_TransformExtractedData** -schema voor opgeslagen procedures uitgevoerd. Met deze opgeslagen procedure worden de geladen gegevens in de faserings tabellen getransformeerd en worden de ster-schema tabellen ingevuld.
+**Pijp lijn 1-SQLDBToDW** zoekt de namen van de Tenant databases op die zijn opgeslagen in de catalogus database (tabel naam: [__ShardManagement]. [ ShardsGlobal]) en voor elke Tenant database voert de **DBCopy** -pijp lijn uit. Wanneer het is voltooid, wordt het gegeven **sp_TransformExtractedData** opgeslagen procedure schema uitgevoerd. Met deze opgeslagen procedure worden de geladen gegevens in de faserings tabellen getransformeerd en worden de ster-schema tabellen ingevuld.
 
 **Pijp lijn 2-DBCopy** zoekt de namen van de bron tabellen en kolommen op uit een configuratie bestand dat is opgeslagen in Blob Storage.  De **TableCopy** -pijp lijn wordt vervolgens uitgevoerd voor elk van de vier tabellen: TicketFacts, CustomerFacts, EventFacts en VenueFacts. De **[foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** -activiteit wordt parallel uitgevoerd voor alle 20 data bases. Bij ADF kunnen Maxi maal 20 loop-iteraties parallel worden uitgevoerd. Overweeg meerdere pijp lijnen te maken voor meer data bases.    
 
@@ -158,7 +158,7 @@ Met betrekking tot de drie gekoppelde services zijn er drie gegevens sets die ve
 ### <a name="data-warehouse-pattern-overview"></a>Overzicht van het Data Warehouse-patroon
 SQL Data Warehouse wordt gebruikt als de analytische opslag voor het uitvoeren van aggregatie op de gegevens van de Tenant. In dit voor beeld wordt poly base gebruikt voor het laden van gegevens in SQL Data Warehouse. Onbewerkte gegevens worden in faserings tabellen geladen die een identiteits kolom hebben voor het bijhouden van rijen die zijn getransformeerd naar de ster-schema tabellen. De volgende afbeelding toont het laad patroon: ![loadingpattern](media/saas-tenancy-tenant-analytics/loadingpattern.JPG)
 
-Langzaam veranderende dimensie (SCD) type 1 dimensie tabellen worden gebruikt in dit voor beeld. Elke dimensie heeft een surrogaat sleutel die is gedefinieerd met behulp van een identiteits kolom. Als best practice is de datum dimensie tabel vooraf ingevuld om tijd te besparen. Voor de andere dimensie tabellen, een CREATE TABLE als selecteren... (CTAS) wordt gebruikt voor het maken van een tijdelijke tabel die de bestaande gewijzigde en niet-gewijzigde rijen bevat, samen met de surrogaat sleutels. Dit wordt gedaan met IDENTITY_INSERT = ON. Nieuwe rijen worden vervolgens ingevoegd in de tabel met IDENTITY_INSERT = uit. Voor een gemakkelijk terugdraaien wordt de naam van de bestaande dimensie tabel gewijzigd en wordt de naam van de tijdelijke tabel gewijzigd in de nieuwe dimensie tabel. Voor elke uitvoering wordt de oude dimensie tabel verwijderd.
+Langzaam veranderende dimensie (SCD) type 1 dimensie tabellen worden gebruikt in dit voor beeld. Elke dimensie heeft een surrogaat sleutel die is gedefinieerd met behulp van een identiteits kolom. Als best practice is de datum dimensie tabel vooraf ingevuld om tijd te besparen. Voor de andere dimensie tabellen, een CREATE TABLE als selecteren... (CTAS) wordt gebruikt voor het maken van een tijdelijke tabel die de bestaande gewijzigde en niet-gewijzigde rijen bevat, samen met de surrogaat sleutels. Dit wordt gedaan met IDENTITY_INSERT = op. Nieuwe rijen worden vervolgens ingevoegd in de tabel met IDENTITY_INSERT = uit. Voor een gemakkelijk terugdraaien wordt de naam van de bestaande dimensie tabel gewijzigd en wordt de naam van de tijdelijke tabel gewijzigd in de nieuwe dimensie tabel. Voor elke uitvoering wordt de oude dimensie tabel verwijderd.
 
 Dimensie tabellen worden vóór de feiten tabel geladen. Deze volg orde zorgt ervoor dat alle dimensies waarnaar wordt verwezen al bestaan voor elk nakomend feit. Wanneer de feiten worden geladen, wordt de bedrijfs sleutel voor elke overeenkomende dimensie vergeleken en worden de bijbehorende surrogaat sleutels aan elk feit toegevoegd.
 

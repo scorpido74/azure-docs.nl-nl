@@ -4,15 +4,16 @@ description: Overzicht van het bijhouden van het gebruik van de klant voor Azure
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: c077b93b887482dda5ae127bb3dbaec71b2ea11b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c84f5538d2f553a713b52aa795a10acddac9aff8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260086"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819890"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Gebruikskenmerken van klanten van Azure-partners
 
@@ -22,9 +23,9 @@ Micro soft biedt nu een methode om partners te helpen bij het bijhouden van Azur
 
 Als micro soft-partner kunt u Azure-gebruik koppelen aan Azure-resources die u onder de naam van een klant inricht. U kunt de koppeling vormen via Azure Marketplace, de Quick Start-opslag plaats, persoonlijke GitHub-opslag plaatsen en één-op-een-klant afspraak. De toewijzing van klant gebruik ondersteunt drie implementatie opties:
 
-- Azure Resource Manager sjablonen: Partners kunnen Resource Manager-sjablonen gebruiken om de Azure-Services te implementeren om de software van de partner uit te voeren. Partners kunnen een resource manager-sjabloon maken om de infra structuur en configuratie van hun Azure-oplossing te definiëren. Met een resource manager-sjabloon kunnen u en uw klanten uw oplossing gedurende de hele levens cyclus implementeren. U kunt erop vertrouwen dat uw resources in een consistente staat worden geïmplementeerd.
-- Azure Resource Manager-Api's: Partners kunnen de Resource Manager-Api's rechtstreeks aanroepen voor het implementeren van een resource manager-sjabloon of voor het genereren van de API-aanroepen om direct Azure-Services in te richten.
-- Terraform Partners kunnen Cloud orchestrator, zoals terraform, gebruiken voor het implementeren van een resource manager-sjabloon of het rechtstreeks implementeren van Azure-Services.
+- Azure Resource Manager sjablonen: partners kunnen Resource Manager-sjablonen gebruiken om de Azure-Services te implementeren om de software van de partner uit te voeren. Partners kunnen een resource manager-sjabloon maken om de infra structuur en configuratie van hun Azure-oplossing te definiëren. Met een resource manager-sjabloon kunnen u en uw klanten uw oplossing gedurende de hele levens cyclus implementeren. U kunt erop vertrouwen dat uw resources in een consistente staat worden geïmplementeerd.
+- Azure Resource Manager-Api's: partners kunnen de Resource Manager-Api's rechtstreeks aanroepen voor het implementeren van een resource manager-sjabloon of voor het genereren van de API-aanroepen om direct Azure-Services in te richten.
+- Terraform: partners kunnen Cloud orchestrator, zoals terraform, gebruiken voor het implementeren van een resource manager-sjabloon of het rechtstreeks implementeren van Azure-Services.
 
 Toewijzing van klant gebruik is voor nieuwe implementatie en biedt geen ondersteuning voor het coderen van bestaande resources die al zijn geïmplementeerd.
 
@@ -40,7 +41,7 @@ Zie voor meer informatie over het maken en publiceren van oplossings sjablonen.
 
 * [Maak en implementeer uw eerste Resource Manager-sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 * [Azure-toepassing aanbieding](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer).
-* Video: [Oplossings sjablonen en beheerde toepassingen voor Azure Marketplace bouwen](https://channel9.msdn.com/Events/Build/2018/BRK3603).
+* Video: [oplossings sjablonen en beheerde toepassingen voor Azure Marketplace bouwen](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
 
 ## <a name="add-a-guid-to-your-template"></a>Een GUID toevoegen aan de sjabloon
@@ -99,7 +100,7 @@ Als u de toewijzing van klant gebruik wilt inschakelen, neemt u bij het ontwerpe
 > [!Note]
 > De indeling van de teken reeks is belang rijk. Als het **PID-** voor voegsel niet is opgenomen, is het niet mogelijk om de gegevens op te vragen. Andere Sdk's volgen verschillend. Voor het implementeren van deze methode raadpleegt u de ondersteuning en traceer benadering voor uw voor Keurs-Azure-SDK.
 
-#### <a name="example-the-python-sdk"></a>Voorbeeld: De python-SDK
+#### <a name="example-the-python-sdk"></a>Voor beeld: de python-SDK
 
 Gebruik het **configuratie** kenmerk voor python. U kunt het kenmerk alleen toevoegen aan een User agent. Hier volgt een voorbeeld:
 
@@ -127,9 +128,9 @@ Zie [Azure SDK voor Go](https://docs.microsoft.com/azure/go/)voor meer informati
 
 ## <a name="use-terraform"></a>Terraform gebruiken
 
-De ondersteuning voor terraform is beschikbaar via de 1.21.0-versie van Azure [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019)provider:.  Deze ondersteuning is van toepassing op alle partners die hun oplossing implementeren via terraform, en alle resources die zijn geïmplementeerd en gemeten door de Azure-provider (versie 1.21.0 of hoger).
+De ondersteuning voor terraform is beschikbaar via de 1.21.0-versie van Azure provider: [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019).  Deze ondersteuning is van toepassing op alle partners die hun oplossing implementeren via terraform, en alle resources die zijn geïmplementeerd en gemeten door de Azure-provider (versie 1.21.0 of hoger).
 
-Azure provider voor terraform heeft een nieuw optioneel veld met de naam [*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id) toegevoegd, waarin u de tracerings-GUID opgeeft die u voor uw oplossing gebruikt. De waarde van dit veld kan ook worden gebrond op basis van de omgevings variabele *ARM_PARTNER_ID* .
+Azure provider voor terraform heeft een nieuw optioneel veld met de naam [*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id) toegevoegd, waarin u de tracerings-GUID opgeeft die u voor uw oplossing gebruikt. De waarde van dit veld kan ook worden gebrond op basis van de variabele *ARM_PARTNER_ID* omgeving.
 
 ```
 provider "azurerm" {
@@ -137,7 +138,7 @@ provider "azurerm" {
           client_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
           ……
           # new stuff for ISV attribution
-          partner_id = “xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
+          partner_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
 ```
 Partners die hun implementatie willen verkrijgen via terraform bijgehouden door de toewijzing van klant gebruik, moeten het volgende doen:
 
@@ -240,21 +241,21 @@ Kies bijgehouden sjabloon in de keuze lijst van het type partner koppeling om he
 
 ## <a name="notify-your-customers"></a>Uw klanten op de hoogte stellen
 
-Partners moeten hun klanten informeren over implementaties die gebruikmaken van de toewijzing van klant gebruik. Micro soft rapporteert het Azure-gebruik dat is gekoppeld aan deze implementaties aan de partner. De volgende voor beelden bevatten inhoud die u kunt gebruiken om uw klanten op de hoogte te stellen van deze implementaties. Vervang \<in de voor beelden partner > door de naam van uw bedrijf. Partners moeten ervoor zorgen dat de melding wordt uitgelijnd met hun privacy-en verzamelings beleid voor gegevens, waaronder opties voor klanten die moeten worden uitgesloten van het bijhouden van wijzigingen.
+Partners moeten hun klanten informeren over implementaties die gebruikmaken van de toewijzing van klant gebruik. Micro soft rapporteert het Azure-gebruik dat is gekoppeld aan deze implementaties aan de partner. De volgende voor beelden bevatten inhoud die u kunt gebruiken om uw klanten op de hoogte te stellen van deze implementaties. Vervang in de voor beelden \<PARTNER > door de naam van uw bedrijf. Partners moeten ervoor zorgen dat de melding wordt uitgelijnd met hun privacy-en verzamelings beleid voor gegevens, waaronder opties voor klanten die moeten worden uitgesloten van het bijhouden van wijzigingen.
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Melding voor implementaties van Resource Manager-sjablonen
 
-Wanneer u deze sjabloon implementeert, kan micro soft de installatie van \<partner > software identificeren met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden https://www.microsoft.com/trustcenter op.
+Wanneer u deze sjabloon implementeert, kan micro soft de installatie van \<PARTNER > software identificeren met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden op https://www.microsoft.com/trustcenter.
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>Melding voor SDK-of API-implementaties
 
-Wanneer u partner \<> software implementeert, kan micro soft de installatie van \<partner > software identificeren met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden https://www.microsoft.com/trustcenter op.
+Wanneer u \<PARTNER > software implementeert, kan micro soft de installatie van \<PARTNER > software identificeren met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden op https://www.microsoft.com/trustcenter.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
 Er zijn twee ondersteunings kanalen, afhankelijk van de problemen die u ondervindt.
 
-Als u problemen ondervindt in het partner centrum, zoals het weer geven van het rapport voor het gebruik van de klant en u zich hebt aangemeld, maakt u hier een ondersteunings aanvraag met het ondersteunings team van partner Center:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
+Als u problemen ondervindt in het partner centrum, zoals het weer geven van het rapport voor de toewijzing van klant gebruik of het aanmelden, maakt u een ondersteunings aanvraag met het partner centrum-ondersteunings team: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
@@ -262,7 +263,7 @@ Als u hulp nodig hebt bij het voorbereiden van de Marketplace en/of de toewijzin
 
 1. Ga naar de [ondersteunings pagina](https://go.microsoft.com/fwlink/?linkid=844975).
 
-1. Onder **probleem type**selecteert u **Marketplace**-onboarding.
+1. Onder **probleem type**selecteert u **Marketplace-onboarding**.
 
 1. Kies de **categorie** voor uw probleem:
 
@@ -288,7 +289,7 @@ U kunt ook technische richt lijnen ontvangen van een technische consultant van m
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Een technische consultatie aanvraag indienen
 
-1. Bezoek [https://aka.ms/TechnicalJourney](https://aka.ms/TechnicalJourney).
+1. Ga naar [https://aka.ms/TechnicalJourney](https://aka.ms/TechnicalJourney).
 1. Selecteer Cloud infrastructuur en-beheer en er wordt een nieuwe pagina geopend om de technische reis te bekijken.
 1. Klik onder implementatie services op de knop een aanvraag indienen
 1. Meld u aan met uw MSA (MPN-account) of uw AAD (partner dashboard account). op basis van uw aanmeldings referenties wordt een online aanvraag formulier geopend:
@@ -297,9 +298,9 @@ U kunt ook technische richt lijnen ontvangen van een technische consultant van m
     * Voer een titel en de beschrijving van het probleem in (Geef zo veel mogelijk details op).
 1. Klik op verzenden
 
-Bekijk stap-voor-stap instructies met scherm afbeeldingen [https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions)op.
+Bekijk stap-voor-stap-instructies met scherm afbeeldingen op [https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions).
 
-### <a name="whats-next"></a>Volgende stap
+### <a name="whats-next"></a>Volgend onderwerp
 
 U kunt contact opnemen met een technische consultant van micro soft-partners om een oproep naar uw behoeften te stellen.
 
@@ -331,7 +332,7 @@ Het formulier GUID-Generator van Azure Storage is gegarandeerd een GUID van de v
 
 **Kan ik een persoonlijke, aangepaste VHD voor een oplossings sjabloon aanbieding in azure Marketplace gebruiken?**
 
-Nee, dat kan niet. De installatie kopie van de virtuele machine moet afkomstig zijn van de Azure [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)Marketplace, zie:.
+Nee, dat kan niet. De installatie kopie van de virtuele machine moet afkomstig zijn van Azure Marketplace, zie: [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines).
 
 U kunt een VM-aanbieding in Marketplace maken met behulp van uw aangepaste VHD en markeren als privé, zodat niemand deze kan zien. Ga vervolgens naar deze virtuele machine in uw oplossings sjabloon.
 

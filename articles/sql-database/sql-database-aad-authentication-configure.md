@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory-verificatie configureren-SQL
+title: Azure Active Directory-verificatie configureren
 description: Informatie over het maken van verbinding met SQL Database, een beheerd exemplaar en SQL Data Warehouse met behulp van Azure Active Directory-verificatie-na het configureren van Azure AD.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 11/06/2019
-ms.openlocfilehash: d23fcb781f5eddd71d5ddce9344d988d2e323611
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 48334d8ce266ddcc92e4d2b27634db3d8c9f1bc9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691384"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816798"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory verificatie met SQL configureren en beheren
 
@@ -46,7 +46,7 @@ Zie [Uw on-premises identiteiten integreren met Azure Active Directory](../activ
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>Een Azure AD-beheerder maken voor Azure SQL Server
 
-Elke Azure SQL-Server (die als host fungeert voor een SQL Database of SQL Data Warehouse) begint met één beheerders account van de server die de beheerder is van de volledige Azure SQL-Server. Er moet een tweede SQL Server-beheerder worden gemaakt die een Azure AD-account is. Deze principal is gemaakt als een Inge sloten database gebruiker in de hoofd database. Als Administrators zijn de accounts van de server beheerder lid van de rol **db_owner** in elke gebruikers database en voeren ze elke gebruikers database in als de **dbo** -gebruiker. Zie [data bases en aanmeldingen beheren in Azure SQL database](sql-database-manage-logins.md)voor meer informatie over de beheerders accounts van de server.
+Elke Azure SQL-Server (die als host fungeert voor een SQL Database of SQL Data Warehouse) begint met één beheerders account van de server die de beheerder is van de volledige Azure SQL-Server. Er moet een tweede SQL Server-beheerder worden gemaakt die een Azure AD-account is. Deze principal is gemaakt als een Inge sloten database gebruiker in de hoofd database. Als Administrators zijn de accounts van de server beheerder lid van de **db_owner** rol in elke gebruikers database en voeren ze elke gebruikers database in als de **dbo** -gebruiker. Zie [data bases en aanmeldingen beheren in Azure SQL database](sql-database-manage-logins.md)voor meer informatie over de beheerders accounts van de server.
 
 Bij het gebruik van Azure Active Directory met geo-replicatie moet de Azure Active Directory-beheerder worden geconfigureerd voor zowel de primaire als de secundaire server. Als een server geen Azure Active Directory-beheerder heeft, Azure Active Directory aanmeldingen en gebruikers een ' kan geen verbinding maken ' op de server fout.
 
@@ -161,7 +161,7 @@ De volgende tabel bevat een overzicht van de functionaliteit voor de open bare p
 | Azure AD-aanmeldings beheer voor MI tijdens de open bare preview | GA-functionaliteit voor Azure AD-beheerder voor MI |
 | --- | ---|
 | Gedraagt zich op een vergelijk bare manier als Azure AD-beheerder voor SQL Database, waarmee Azure AD-verificatie mogelijk is, maar de Azure AD-beheerder kan geen Azure AD-of SQL-aanmeldingen in de hoofd database voor MI maken. | De Azure AD-beheerder heeft sysadmin-machtigingen en kan AAD-en SQL-aanmeldingen maken in de hoofd database voor MI. |
-| Is niet aanwezig in de server_principals-weer gave van sys. | Is aanwezig in de server_principals-weer gave van sys. |
+| Is niet aanwezig in de sys. server_principals weer gave | Is aanwezig in de weer gave sys. server_principals |
 | Hiermee kunnen individuele Azure AD-gast gebruikers worden ingesteld als Azure AD-beheerder voor MI. Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](../active-directory/b2b/add-users-administrator.md)voor meer informatie. | U moet een Azure AD-groep maken met gast gebruikers als leden om deze groep in te stellen als een Azure AD-beheerder voor MI. Zie [Azure AD Business to Business Support](sql-database-ssms-mfa-authentication.md#azure-ad-business-to-business-support)(Engelstalig) voor meer informatie. |
 
 Als best practice voor bestaande Azure AD-beheerders voor MI gemaakt vóór GA en nog steeds met behulp van post GA, stel de Azure AD-beheerder opnieuw in met Azure Portal de optie beheerder verwijderen en beheerder instellen voor dezelfde Azure AD-gebruiker of-groep.
@@ -279,7 +279,7 @@ Gebruik de Power shell-opdracht Get-Help voor meer informatie over elk van deze 
 
 ### <a name="powershell-examples-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Power shell-voor beelden voor Azure SQL Database en Azure SQL Data Warehouse
 
-Met het volgende script wordt een Azure AD-Beheerders groep met de naam **DBA_Group** (object-id `40b79501-b343-44ed-9ce7-da4c8cc7353f`) ingericht voor de **demo_server** -server in een resource groep met de naam **groep-23**:
+Met het volgende script wordt een Azure AD-Beheerders groep met de naam **DBA_Group** (object-id `40b79501-b343-44ed-9ce7-da4c8cc7353f`) ingericht voor de **demo_server** server in een resource groep met de naam **groep-23**:
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
@@ -361,7 +361,7 @@ Als u een Inge sloten database gebruiker op basis van Azure AD wilt maken (met u
 CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
 ```
 
-*Azure_AD_principal_name* kan het User Principal name van een Azure AD-gebruiker of de weergave naam voor een Azure AD-groep.
+*Azure_AD_principal_name* kan de User Principal name van een Azure AD-gebruiker of de weergave naam voor een Azure AD-groep zijn.
 
 **Voor beelden:** Een Inge sloten database gebruiker maken die een Azure AD Federated-of beheerde domein gebruiker vertegenwoordigt:
 

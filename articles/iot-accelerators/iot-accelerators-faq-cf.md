@@ -1,6 +1,6 @@
 ---
-title: Verbonden Factory-oplossing FAQ - Azure | Microsoft Docs
-description: Veelgestelde vragen over de oplossingsverbetering voor verbonden Factory
+title: Veelgestelde vragen over Connected Factory-oplossingen-Azure | Microsoft Docs
+description: In dit artikel worden de veelgestelde vragen over de Connected Factory Solution Accelerator beantwoord. Het bevat koppelingen naar de GitHub-opslag plaats.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,75 +8,75 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: ed429d923cad2c715621990c146d4cf3a23e7bca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c84452ff71fa34a65b2e56ec753b68bf551c7e35
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447927"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826281"
 ---
-# <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Veelgestelde vragen over verbonden Factory-oplossingsversnellers
+# <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Veelgestelde vragen over de oplossings versneller Connected Factory
 
-Zie ook de algemene [Veelgestelde vragen over](iot-accelerators-faq.md) voor IoT-oplossingsversnellers.
+Zie ook de algemene [Veelgestelde vragen](iot-accelerators-faq.md) over IOT-oplossings versnellers.
 
-### <a name="where-can-i-find-the-source-code-for-the-solution-accelerator"></a>Waar vind ik de broncode voor de oplossingsversnellers?
+### <a name="where-can-i-find-the-source-code-for-the-solution-accelerator"></a>Waar kan ik de bron code voor de oplossings versneller vinden?
 
-De broncode wordt opgeslagen in de volgende GitHub-opslagplaats:
+De bron code wordt opgeslagen in de volgende GitHub-opslag plaats:
 
-* [Verbonden Factory-oplossingsversnellers](https://github.com/Azure/azure-iot-connected-factory)
+* [De oplossingsversneller voor verbonden factory's](https://github.com/Azure/azure-iot-connected-factory)
 
-### <a name="what-is-opc-ua"></a>Wat is de OPC UA?
+### <a name="what-is-opc-ua"></a>Wat is OPC UA?
 
-OPC Unified architectuur (UA), uitgebracht in 2008, is een platform-onafhankelijke, servicegeoriënteerde interoperabiliteit standard. OPC UA wordt gebruikt door verschillende industriële systemen en apparaten, zoals de bedrijfstak van pc's, plc's en sensoren. OPC UA integreert de functionaliteit van de OPC-klassieke specificaties in één uitbreidbaar framework met ingebouwde beveiliging. Er is een standaard die wordt aangedreven door de OPC Foundation. De [OPC Foundation](https://opcfoundation.org/) is een niet-voor-profitorganisatie die meer dan 440 leden. Het doel van de organisatie, is met OPC-specificaties om interoperabiliteit van meerdere leveranciers, meerdere platforms, veilige en betrouwbare via mogelijk te maken:
+OPC Unified Architecture (UA), uitgebracht in 2008, is een platform onafhankelijke, service gerichte interoperabiliteits standaard. OPC UA wordt gebruikt door verschillende industriële systemen en apparaten, zoals industriële Pc's, PLCs en Sens oren. OPC UA integreert de functionaliteit van de standaard OPC-specificaties in één uitbreidbaar Framework met ingebouwde beveiliging. Het is een standaard die wordt aangedreven door de OPC Foundation. De [OPC-basis](https://opcfoundation.org/) is een organisatie zonder winst oogmerk met meer dan 440 leden. Het doel van de organisatie is de OPC-specificaties te gebruiken om multi-vendor, meerdere platformen, veilige en betrouw bare interoperabiliteit mogelijk te maken via:
 
 * Infrastructuur
 * Specificaties
 * Technologie
 * Processen
 
-### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Waarom Microsoft OPC UA kiezen voor de oplossingsverbetering voor verbonden Factory?
+### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Waarom heeft micro soft OPC UA gekozen voor de oplossings versneller Connected Factory?
 
-Microsoft heeft ervoor gekozen OPC UA omdat het een open platform met niet-geheime, onafhankelijke, branche herkend en bewezen standaard. Het is een vereiste voor Industrie 4.0 (RAMI4.0) reference architecture oplossingen ervoor te zorgen dat de interoperabiliteit tussen een breed scala aan productieprocessen en apparatuur. Microsoft ziet vraag van klanten om Industrie 4.0-oplossingen te bouwen. Ondersteuning voor OPC UA verlaagt de drempel voor klanten om hun doelstellingen te realiseren en biedt direct bedrijfswaarde toe.
+Micro soft koos OPC UA omdat het een open, niet-eigendom, onafhankelijk, door de branche herkend en bewezen standaard is. Het is een vereiste voor industrie 4,0 (RAMI 4.0) referentie architectuur oplossingen om interoperabiliteit te garanderen tussen een groot aantal productie processen en apparatuur. Micro soft ziet vraag van haar klanten om industrie 4,0-oplossingen te bouwen. Ondersteuning voor OPC UA helpt de barrière te verlagen zodat klanten hun doel stellingen kunnen bereiken en direct bedrijfs waarde kunnen leveren.
 
-### <a name="how-do-i-add-a-public-ip-address-to-the-simulation-vm"></a>Hoe voeg ik een openbaar IP-adres aan de simulatie VM?
+### <a name="how-do-i-add-a-public-ip-address-to-the-simulation-vm"></a>Hoe kan ik een openbaar IP-adres aan de simulatie-VM toevoegen?
 
-U hebt twee opties voor het toevoegen van het IP-adres:
+U hebt twee opties om het IP-adres toe te voegen:
 
-* Gebruik de PowerShell-script `Simulation/Factory/Add-SimulationPublicIp.ps1` in de [opslagplaats](https://github.com/Azure/azure-iot-connected-factory). Als een parameter doorgeven in de implementatienaam van uw. Gebruik voor een lokale implementatie `<your username>ConnFactoryLocal`. Het script af te drukken om het IP-adres van de virtuele machine.
+* Gebruik het Power shell-script `Simulation/Factory/Add-SimulationPublicIp.ps1` in de [opslag plaats](https://github.com/Azure/azure-iot-connected-factory). Geef uw implementatie naam als een para meter door. Gebruik `<your username>ConnFactoryLocal`voor een lokale implementatie. Het script drukt het IP-adres van de virtuele machine af.
 
-* Zoek in de Azure-portal, de resourcegroep van uw implementatie. Met uitzondering van een lokale implementatie is de resourcegroep de naam die u hebt opgegeven als oplossing of implementatie. Voor een lokale implementatie met behulp van de build-script, is de naam van de resourcegroep `<your username>ConnFactoryLocal`. Voeg nu een nieuwe **openbaar IP-adres** resource naar de resourcegroep.
+* Zoek in de Azure Portal de resource groep van uw implementatie. Met uitzonde ring van een lokale implementatie heeft de resource groep de naam die u hebt opgegeven als oplossing of implementatie naam. De naam van de resource groep is `<your username>ConnFactoryLocal`voor een lokale implementatie met behulp van het opbouw script. Voeg nu een nieuwe **open bare IP-adres** bron toe aan de resource groep.
 
 > [!NOTE]
-> In beide gevallen, zorg ervoor dat u de meest recente patches installeren door de instructies te volgen op de [Ubuntu website](https://wiki.ubuntu.com/Security/Upgrades). De installatie up-to-date te houden voor, zolang uw virtuele machine toegankelijk via een openbaar IP-adres is.
+> Zorg ervoor dat u de meest recente patches installeert met behulp van de instructies op de [Ubuntu-website](https://wiki.ubuntu.com/Security/Upgrades). Zorg ervoor dat de installatie up-to-date blijft, zolang uw virtuele machine toegankelijk is via een openbaar IP-adres.
 
-### <a name="how-do-i-remove-the-public-ip-address-to-the-simulation-vm"></a>Hoe kan ik het openbare IP-adres aan de simulatie VM verwijderen?
+### <a name="how-do-i-remove-the-public-ip-address-to-the-simulation-vm"></a>Wilt u het open bare IP-adres Hoe kan ik verwijderen naar de simulatie-VM?
 
-U hebt twee opties voor het verwijderen van het IP-adres:
+U hebt twee opties om het IP-adres te verwijderen:
 
-* Gebruik het PowerShell-script Simulation/Factory/Remove-SimulationPublicIp.ps1 van de [opslagplaats](https://github.com/Azure/azure-iot-connected-factory). Als een parameter doorgeven in de implementatienaam van uw. Gebruik voor een lokale implementatie `<your username>ConnFactoryLocal`. Het script af te drukken om het IP-adres van de virtuele machine.
+* Gebruik het Power shell-script simulatie/Factory/Remove-SimulationPublicIp. ps1 van de [opslag plaats](https://github.com/Azure/azure-iot-connected-factory). Geef uw implementatie naam als een para meter door. Gebruik `<your username>ConnFactoryLocal`voor een lokale implementatie. Het script drukt het IP-adres van de virtuele machine af.
 
-* Zoek in de Azure-portal, de resourcegroep van uw implementatie. Met uitzondering van een lokale implementatie is de resourcegroep de naam die u hebt opgegeven als oplossing of implementatie. Voor een lokale implementatie met behulp van de build-script, is de naam van de resourcegroep `<your username>ConnFactoryLocal`. Nu verwijderen de **openbaar IP-adres** -resource in de resourcegroep.
+* Zoek in de Azure Portal de resource groep van uw implementatie. Met uitzonde ring van een lokale implementatie heeft de resource groep de naam die u hebt opgegeven als oplossing of implementatie naam. De naam van de resource groep is `<your username>ConnFactoryLocal`voor een lokale implementatie met behulp van het opbouw script. Verwijder nu de **open bare IP-adres** resource uit de resource groep.
 
-### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>Hoe meld ik me aan de simulatie VM?
+### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>Hoe kan ik meldt u zich aan bij de simulatie-VM?
 
-Aanmelden bij de virtuele machine van de simulatie wordt alleen ondersteund als u de oplossing met behulp van het PowerShell-script hebt geïmplementeerd `build.ps1` in de [opslagplaats](https://github.com/Azure/azure-iot-connected-factory).
+Het aanmelden bij de simulatie-VM wordt alleen ondersteund als u uw oplossing hebt geïmplementeerd met behulp van het Power shell-script `build.ps1` in de [opslag plaats](https://github.com/Azure/azure-iot-connected-factory).
 
-Als u de oplossing van www.azureiotsolutions.com hebt geïmplementeerd, kunt u zich niet aanmelden bij de virtuele machine. U kunt zich niet in, omdat het wachtwoord wordt willekeurig gegenereerd en u deze niet herstellen.
+Als u de oplossing van www.azureiotsolutions.com hebt geïmplementeerd, kunt u zich niet aanmelden bij de VM. U kunt zich niet aanmelden, omdat het wacht woord wille keurig is gegenereerd en u het niet opnieuw kunt instellen.
 
-1. Een openbaar IP-adres toevoegen aan de virtuele machine. Zie [hoe voeg ik een openbaar IP-adres toe aan de simulatie VM?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
-1. Maak een SSH-sessie met uw virtuele machine met behulp van het IP-adres van de virtuele machine.
-1. De gebruikersnaam te gebruiken is: `docker`.
-1. Het wachtwoord moet worden gebruikt, is afhankelijk van de versie die u gebruikt om te implementeren:
-    * Voor oplossingen die zijn geïmplementeerd met behulp van het script build.ps1 vóór 1 juni 2017, het wachtwoord is: `Passw0rd`.
-    * Voor oplossingen die zijn geïmplementeerd met behulp van het script build.ps1 na 1 juni 2017, vindt u het wachtwoord in de `<name of your deployment>.config.user` bestand. Het wachtwoord wordt opgeslagen de **VmAdminPassword** instelling. Het wachtwoord willekeurig gegenereerd tijdens de implementatie, tenzij u opgeeft met behulp van de `build.ps1` parameter script `-VmAdminPassword`
+1. Voeg een openbaar IP-adres toe aan de virtuele machine. Zie [Hoe kan ik een openbaar IP-adres toevoegen aan de simulatie-VM?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
+1. Maak een SSH-sessie met uw virtuele machine met het IP-adres van de virtuele machine.
+1. De gebruikers naam die moet worden gebruikt is: `docker`.
+1. Het wacht woord dat moet worden gebruikt, is afhankelijk van de versie die u hebt gebruikt om te implementeren:
+    * Voor oplossingen die zijn geïmplementeerd met het script build. ps1 vóór 1 juni 2017, is het wacht woord: `Passw0rd`.
+    * Voor oplossingen die zijn geïmplementeerd met het script build. ps1 na 1 juni 2017, kunt u het wacht woord vinden in het `<name of your deployment>.config.user`-bestand. Het wacht woord wordt opgeslagen in de **VmAdminPassword** -instelling. Het wacht woord wordt op wille keurige tijdstippen gegenereerd tijdens de implementatie, tenzij u het opgeeft met de para meter `build.ps1` script `-VmAdminPassword`
 
-### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Hoe ik stoppen en starten van alle docker-processen in de simulatie VM?
+### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Hoe kan ik alle docker-processen in de simulatie-VM stoppen en starten?
 
-1. Aanmelden bij de simulatie VM. Zie [hoe meld ik me aan de simulatie VM?](#how-do-i-sign-in-to-the-simulation-vm)
-1. Om te zien welke containers actief zijn, worden uitgevoerd: `docker ps`.
-1. Als u wilt beëindigen alle simulatie containers, worden uitgevoerd: `./stopsimulation`.
-1. Alle containers van de simulatie starten:
-    * Exporteren van een shell-variabele met de naam van de **IOTHUB_CONNECTIONSTRING**. Gebruik de waarde van de **IotHubOwnerConnectionString** instellen in de `<name of your deployment>.config.user` bestand. Bijvoorbeeld:
+1. Meld u aan bij de simulatie-VM. Zie [Hoe kan ik aanmelden bij de simulatie-VM?](#how-do-i-sign-in-to-the-simulation-vm)
+1. Voer de volgende handelingen uit om te controleren welke containers actief zijn: `docker ps`.
+1. Als u alle simulatie containers wilt stoppen, voert u de volgende handelingen uit: `./stopsimulation`.
+1. Alle simulatie containers starten:
+    * Exporteer een shell-variabele met de naam **IOTHUB_CONNECTIONSTRING**. Gebruik de waarde van de instelling **IotHubOwnerConnectionString** in het bestand `<name of your deployment>.config.user`. Bijvoorbeeld:
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -84,93 +84,93 @@ Als u de oplossing van www.azureiotsolutions.com hebt geïmplementeerd, kunt u z
 
     * Voer `./startsimulation` uit.
 
-### <a name="how-do-i-update-the-simulation-in-the-vm"></a>Hoe kan ik de simulatie in de virtuele machine bijwerken?
+### <a name="how-do-i-update-the-simulation-in-the-vm"></a>Wilt u de simulatie in de VM Hoe kan ik bijwerken?
 
-Als u wijzigingen in de simulatie aangebracht hebt, kunt u het PowerShell-script `build.ps1` in de [opslagplaats](https://github.com/Azure/azure-iot-connected-factory) met behulp van de `updatedimulation` opdracht. Met dit script alle onderdelen van de simulatie is gebaseerd, stopt de simulatie in de virtuele machine, uploadt, wordt geïnstalleerd en deze wordt gestart.
+Als u wijzigingen in de simulatie hebt aangebracht, kunt u het Power shell-script `build.ps1` gebruiken in de [opslag plaats](https://github.com/Azure/azure-iot-connected-factory) met behulp van de `updatedimulation` opdracht. Met dit script worden alle simulatie onderdelen gebouwd, wordt de simulatie van de VM gestopt, worden de werk last geüpload, geïnstalleerd en gestart.
 
-### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>Hoe vind ik de verbindingsreeks van de IoT-hub die is gebruikt door de oplossing?
+### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>Hoe kan ik de connection string van de IoT-hub die wordt gebruikt door mijn oplossing?
 
-Als u uw oplossing met geïmplementeerd de `build.ps1` script in de [opslagplaats](https://github.com/Azure/azure-iot-connected-factory), de verbindingsreeks is de waarde van **IotHubOwnerConnectionString** in de `<name of your deployment>.config.user` bestand.
+Als u uw oplossing hebt geïmplementeerd met het `build.ps1` script in de [opslag plaats](https://github.com/Azure/azure-iot-connected-factory), is de Connection String de waarde van **IotHubOwnerConnectionString** in het `<name of your deployment>.config.user`-bestand.
 
-U vindt hier ook de connection string met behulp van de Azure portal. Zoek in de IoT Hub-resource in de resourcegroep van uw implementatie, instellingen voor connection strings.
+U kunt de connection string ook vinden met behulp van de Azure Portal. Zoek de connection string-instellingen op in de resource groep van uw implementatie IoT Hub.
 
-### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>Welke IoT Hub-apparaten maakt gebruik van de verbonden Factory-simulatie?
+### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>Welke IoT Hub-apparaten wordt met de verbonden Factory-simulatie gebruikt?
 
-De simulatie zelf registreert de volgende apparaten:
+Met de simulatie zelf registreert u de volgende apparaten:
 
-* proxy.beijing.corp.contoso
-* proxy.capetown.corp.contoso
-* proxy.mumbai.corp.contoso
-* proxy.munich0.corp.contoso
-* proxy.rio.corp.contoso
-* proxy.seattle.corp.contoso
-* publisher.beijing.corp.contoso
-* publisher.capetown.corp.contoso
-* publisher.mumbai.corp.contoso
-* publisher.munich0.corp.contoso
-* publisher.rio.corp.contoso
-* publisher.seattle.corp.contoso
+* proxy. Beijing. Corp. contoso
+* proxy. Capetown. Corp. contoso
+* proxy. Mumbai. Corp. contoso
+* proxy. munich0. Corp. contoso
+* proxy. Rio. Corp. contoso
+* proxy. Seattle. Corp. contoso
+* Publisher. Peking. Corp. contoso
+* Publisher. Capetown. Corp. contoso
+* Publisher. Mumbai. Corp. contoso
+* Publisher. munich0. Corp. contoso
+* Publisher. Rio. Corp. contoso
+* Publisher. Seattle. Corp. contoso
 
-Met behulp van de [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) of [de IoT-extensie voor Azure CLI](https://github.com/Azure/azure-iot-cli-extension) hulpprogramma, kunt u controleren welke apparaten zijn geregistreerd bij de IoT-hub die van uw oplossing gebruikmaakt. Apparaat als explorer wilt gebruiken, moet u de verbindingsreeks voor de IoT-hub in uw implementatie. Voor het gebruik van de IoT-extensie voor Azure CLI, moet u de naam van uw IoT-Hub.
+Met behulp van de [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) of [de IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension) kunt u controleren welke apparaten zijn geregistreerd bij de IOT-hub die door uw oplossing wordt gebruikt. Als u Device Explorer wilt gebruiken, hebt u de connection string voor de IoT-hub nodig in uw implementatie. Als u de IoT-extensie voor Azure CLI wilt gebruiken, hebt u uw IoT Hub naam nodig.
 
-### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Hoe vind ik logboekgegevens uit de onderdelen van de simulatie?
+### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Hoe kan ik logboek gegevens ophalen uit de simulatie onderdelen?
 
-Alle onderdelen in de simulatie wordt informatie naar de logboekbestanden moet vastleggen. Deze bestanden kunnen worden gevonden in de virtuele machine in de map `home/docker/Logs`. Als u wilt de logboeken kunt ophalen, kunt u het PowerShell-script `Simulation/Factory/Get-SimulationLogs.ps1` in de [opslagplaats](https://github.com/Azure/azure-iot-connected-factory).
+Alle onderdelen in de simulatie logboek gegevens in naar logboek bestanden. Deze bestanden vindt u in de map `home/docker/Logs`van de virtuele machine. Als u de logboeken wilt ophalen, kunt u het Power shell-script `Simulation/Factory/Get-SimulationLogs.ps1` gebruiken in de [opslag plaats](https://github.com/Azure/azure-iot-connected-factory).
 
-Met dit script moet zich aanmelden bij de virtuele machine. Mogelijk moet u referenties opgeven voor de aanmelding. Zie [hoe meld ik me aan de virtuele machine van de simulatie?](#how-do-i-sign-in-to-the-simulation-vm) te vinden van de referenties.
+Dit script moet zich aanmelden bij de VM. Mogelijk moet u referenties opgeven voor de aanmelding. Zie [Hoe kan ik meld u aan bij de simulatie-VM](#how-do-i-sign-in-to-the-simulation-vm) om de referenties te vinden.
 
-Het script voegt/Hiermee verwijdert u een openbaar IP-adres aan de virtuele machine, als deze nog geen een en wordt deze verwijderd. Het script worden alle logboekbestanden geplaatst in een archief en het archief downloadt naar uw ontwikkelwerkstation.
+Met het script wordt een openbaar IP-adres toegevoegd aan of verwijderd uit de virtuele machine, als deze nog niet is gemaakt en verwijderd. Het script plaatst alle logboek bestanden in een archief en downloadt het archief naar uw ontwikkel werkstation.
 
-U kunt ook aanmelden bij de virtuele machine via SSH en controleren van de logboekbestanden tijdens runtime.
+Meld u aan bij de virtuele machine via SSH en Inspecteer de logboek bestanden tijdens runtime.
 
-### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Hoe kan ik controleren als de simulatie gegevens naar de cloud verzendt?
+### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Hoe kan ik controleren of de simulatie gegevens verzendt naar de Cloud?
 
-Met de [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) of de [-gebeurtenissen van Azure IoT CLI-extensie controleren](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) opdracht, kunt u de gegevens die worden verzonden naar IoT Hub van bepaalde apparaten controleren. Voor het gebruik van deze hulpprogramma's, moet u weten de verbindingsreeks voor de IoT-hub in uw implementatie. Zie [hoe vind ik uit de verbindingsreeks van de IoT-hub die is gebruikt door de oplossing?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Met de [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) -of [Azure IOT cli-uitbreidings monitor-gebeurtenis](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) opdracht kunt u de gegevens die naar IOT hub worden verzonden, inspecteren vanaf bepaalde apparaten. Als u deze hulpprogram ma's wilt gebruiken, moet u de connection string voor de IoT-hub in uw implementatie weten. Zie [Hoe kan ik de Connection String van de IOT-hub die wordt gebruikt door mijn oplossing vinden?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
-Controleer de gegevens die worden verzonden door een van de uitgever-apparaten:
+Inspecteer de gegevens die worden verzonden door een van de uitgevers-apparaten:
 
-* publisher.beijing.corp.contoso
-* publisher.capetown.corp.contoso
-* publisher.mumbai.corp.contoso
-* publisher.munich0.corp.contoso
-* publisher.rio.corp.contoso
-* publisher.seattle.corp.contoso
+* Publisher. Peking. Corp. contoso
+* Publisher. Capetown. Corp. contoso
+* Publisher. Mumbai. Corp. contoso
+* Publisher. munich0. Corp. contoso
+* Publisher. Rio. Corp. contoso
+* Publisher. Seattle. Corp. contoso
 
-Als er geen gegevens worden verzonden naar IoT Hub, is er een probleem met de simulatie. Als een eerste stap voor analyse, moet u de logboekbestanden van de onderdelen van de simulatie analyseren. Zie [hoe vind ik logboekgegevens uit de onderdelen van de simulatie?](#how-can-i-get-log-data-from-the-simulation-components) Probeer vervolgens om te stoppen en starten van de simulatie en als er nog steeds geen gegevens verzonden zijn, werkt u de simulatie volledig. Zie [hoe kan ik de simulatie in de virtuele machine bijwerken?](#how-do-i-update-the-simulation-in-the-vm)
+Als er geen gegevens worden weer gegeven die naar IoT Hub worden verzonden, is er een probleem met de simulatie. Als eerste analyse stap moet u de logboek bestanden van de simulatie onderdelen analyseren. Zie [Hoe kan ik logboek gegevens ophalen uit de simulatie onderdelen?](#how-can-i-get-log-data-from-the-simulation-components) Probeer vervolgens de simulatie te stoppen en te starten. als er nog steeds geen gegevens worden verzonden, moet u de simulatie volledig bijwerken. Zie [Hoe kan ik de simulatie in de VM bijwerken?](#how-do-i-update-the-simulation-in-the-vm)
 
-### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Hoe kan ik een interactieve kaart inschakelen in Mijn oplossing voor verbonden Factory?
+### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Hoe kan ik een interactieve kaart in mijn verbonden fabrieks oplossing inschakelen?
 
-Als u wilt een interactieve kaart in uw oplossing voor verbonden Factory's inschakelen, moet u een Azure kaarten-account hebben.
+Als u een interactieve kaart in uw verbonden fabrieks oplossing wilt inschakelen, moet u een Azure Maps-account hebben.
 
-Bij het implementeren van [www.azureiotsolutions.com](https://www.azureiotsolutions.com), het implementatieproces wordt een Azure kaarten-account toegevoegd aan de resourcegroep met de solution accelerator-services.
+Bij het implementeren vanuit [www.azureiotsolutions.com](https://www.azureiotsolutions.com)voegt het implementatie proces een Azure Maps-account toe aan de resource groep die de services voor de oplossings versneller bevat.
 
-Wanneer u implementeert met behulp van de `build.ps1` script in de verbonden Factory GitHub-opslagplaats van de omgevingsvariabele `$env:MapApiQueryKey` in het venster bouwen aan de [sleutel van uw Azure kaarten-account](../azure-maps/how-to-manage-account-keys.md). De interactieve kaart wordt automatisch ingeschakeld.
+Wanneer u implementeert met behulp van het `build.ps1` script in de GitHub-opslag plaats Connect, stelt u de omgevings `$env:MapApiQueryKey` variabele in het venster build in op de [sleutel van uw Azure Maps-account](../azure-maps/how-to-manage-account-keys.md). De interactieve toewijzing wordt vervolgens automatisch ingeschakeld.
 
-U kunt ook een accountsleutel voor Azure-kaarten toevoegen aan uw oplossingenaccelerator na de implementatie. Navigeer naar de Azure-portal en toegang tot de resource App Service in uw verbonden Factory-implementatie. Navigeer naar **toepassingsinstellingen**, waar u een sectie vinden **toepassingsinstellingen**. Stel de **MapApiQueryKey** naar de [sleutel van uw Azure kaarten-account](../azure-maps/how-to-manage-account-keys.md). Sla de instellingen op en navigeer vervolgens naar **overzicht** en de App-Service opnieuw.
+U kunt na de implementatie ook een Azure Maps account sleutel toevoegen aan uw oplossings versneller. Ga naar de Azure Portal en open de App Service resource in uw verbonden fabrieks implementatie. Ga naar **Toepassings instellingen**, waar u een sectie **Toepassings instellingen**vindt. Stel de **MapApiQueryKey** in op de [sleutel van uw Azure Maps-account](../azure-maps/how-to-manage-account-keys.md). Sla de instellingen op en navigeer vervolgens naar **overzicht** en start de app service opnieuw.
 
-### <a name="how-do-i-create-an-azure-maps-account"></a>Hoe maak ik een Azure kaarten-account?
+### <a name="how-do-i-create-an-azure-maps-account"></a>Hoe kan ik een Azure Maps-account maken?
 
-Zie, [over het beheren van uw Azure kaarten-account en sleutels](../azure-maps/how-to-manage-account-keys.md).
+Zie [hoe u uw Azure Maps-account en-sleutels beheert](../azure-maps/how-to-manage-account-keys.md).
 
-### <a name="how-to-obtain-your-azure-maps-account-key"></a>Het ophalen van de sleutel van uw Azure-kaarten-account
+### <a name="how-to-obtain-your-azure-maps-account-key"></a>De sleutel van uw Azure Maps-account verkrijgen
 
-Zie, [over het beheren van uw Azure kaarten-account en sleutels](../azure-maps/how-to-manage-account-keys.md).
+Zie [hoe u uw Azure Maps-account en-sleutels beheert](../azure-maps/how-to-manage-account-keys.md).
 
-### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Hoe schakel de interactieve kaart lokaal opsporen van fouten?
+### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Hoe kan ik de interactieve kaart inschakelen tijdens het lokaal debuggen?
 
-Als u wilt de interactieve kaart inschakelen tijdens de foutopsporing lokaal, stel de waarde van de instelling `MapApiQueryKey` in de bestanden `local.user.config` en `<yourdeploymentname>.user.config` in de hoofdmap van uw implementatie met de waarde van de **querysleutel** u gekopieerd eerder.
+Als u de interactieve kaart wilt inschakelen terwijl u lokaal fouten opspoort, stelt u de waarde van de instelling `MapApiQueryKey` in de bestanden `local.user.config` en `<yourdeploymentname>.user.config` in de hoofdmap van uw implementatie in op de waarde van de **query sleutel** die u eerder hebt gekopieerd.
 
-### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>Hoe gebruik ik een andere installatiekopie op de startpagina van Mijn dashboard?
+### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>Hoe kan ik een andere afbeelding gebruiken op de start pagina van mijn dash board?
 
-De statische afbeelding weergegeven i/o wijzigen de startpagina van het dashboard, de installatiekopie vervangen `WebApp\Content\img\world.jpg`. Vervolgens opnieuw maken en implementeren van de Web-App.
+Als u de statische afbeelding wilt wijzigen, weer gegeven io de start pagina van het dash board, vervangt u de afbeelding `WebApp\Content\img\world.jpg`. Vervolgens bouwt en implementeert u de WebApp opnieuw.
 
-### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Hoe gebruik ik niet OPC UA-apparaten met verbonden Factory?
+### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Wilt u niet-OPC UA-apparaten met verbonden Factory Hoe kan ik gebruiken?
 
-Voor het verzenden van telemetriegegevens van niet OPC UA apparaten naar verbonden Factory:
+Telemetriegegevens van niet-OPC UA-apparaten verzenden naar een verbonden Factory:
 
-1. [Een nieuw station configureren in de verbonden Factory-topologie](iot-accelerators-connected-factory-configure.md) in de `ContosoTopologyDescription.json` bestand.
+1. [Configureer een nieuw station in de topologie Connected Factory](iot-accelerators-connected-factory-configure.md) in het `ContosoTopologyDescription.json`-bestand.
 
-1. Opname van de telemetriegegevens die zijn verbonden Factory compatibel JSON-indeling:
+1. De telemetrie-gegevens opnemen in de met de Connected Factory compatibele JSON-indeling:
 
     ```json
     [
@@ -188,12 +188,12 @@ Voor het verzenden van telemetriegegevens van niet OPC UA apparaten naar verbond
 
 1. De indeling van `<timestamp>` is: `2017-12-08T19:24:51.886753Z`
 
-1. Start de Service van de App Connected Factory.
+1. Start de verbonden Factory-App Service opnieuw op.
 
 ### <a name="next-steps"></a>Volgende stappen
 
 U kunt ook enkele van de andere functies en mogelijkheden van de IoT-oplossingsversnellers bekijken:
 
 * [Een overzicht van de oplossingsversneller voor Predictief onderhoud](iot-accelerators-predictive-overview.md)
-* [Verbonden Factory oplossingsversnellers implementeren](quickstart-connected-factory-deploy.md)
-* [Fundamentele IoT-beveiliging](/azure/iot-fundamentals/iot-security-ground-up)
+* [Connected Factory Solution Accelerator implementeren](quickstart-connected-factory-deploy.md)
+* [IoT-beveiliging vanaf de grond](/azure/iot-fundamentals/iot-security-ground-up)

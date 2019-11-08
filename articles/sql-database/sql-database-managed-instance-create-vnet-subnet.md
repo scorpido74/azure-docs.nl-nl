@@ -1,5 +1,5 @@
 ---
-title: Een virtueel netwerk maken voor Azure SQL Database beheerde instantie
+title: Een virtueel netwerk voor een beheerd exemplaar maken
 description: In dit artikel wordt beschreven hoe u een virtueel netwerk maakt waarmee u Azure SQL Database beheerde instantie kunt implementeren.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: ae18671000a2bfd3bedef7805ba5db964fe0cf95
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73688167"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823365"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Een virtueel netwerk maken voor Azure SQL Database beheerde instantie
 

@@ -1,34 +1,35 @@
 ---
 title: Live gaan | Azure Marketplace
-description: De Go Live API initieert de aanbieding live aanbieding proces.
+description: De Go Live API initieert het Live-aanbiedings proces van de aanbieding.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: ac56f86bad132f3e00a4b5c2507d65c0722c628c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30500e9dfae9411563fc727290d0569998ba3550
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935495"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819688"
 ---
 <a name="go-live"></a>Live gaan
 =======
 
-Deze API begint het proces voor het pushen van een app naar productie. Met deze bewerking wordt meestal langlopende. Deze aanroep maakt gebruik van de meldingenlijst e-mailadres van de [publiceren](./cloud-partner-portal-api-publish-offer.md) API-bewerking.
+Deze API start het proces voor het pushen van een app naar productie. Deze bewerking wordt meestal langdurig uitgevoerd. Deze aanroep gebruikt de lijst met e-mail meldingen van de bewerking [Publish](./cloud-partner-portal-api-publish-offer.md) API.
 
  `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/golive?api-version=2017-10-31` 
 
-<a name="uri-parameters"></a>URI-parameters
+<a name="uri-parameters"></a>URI-para meters
 --------------
 
 |  **Naam**      |   **Beschrijving**                                                           | **Gegevenstype** |
 |  --------      |   ---------------                                                           | ------------- |
-| publisherId    | Uitgever-ID voor de aanbieding moet worden opgehaald, bijvoorbeeld `contoso`       |  String       |
-| offerId        | Id van de aanbieding om op te halen bieden                                   |  String       |
-| api-version    | Meest recente versie van de API                                                   |  Date         |
+| publisherId    | De uitgevers-id van de aanbieding die u wilt ophalen, bijvoorbeeld `contoso`       |  Tekenreeks       |
+| OfferId        | Id van de aanbieding die moet worden opgehaald                                   |  Tekenreeks       |
+| API-versie    | Nieuwste versie van de API                                                   |  Date         |
 |  |  |  |
 
 
@@ -42,7 +43,7 @@ Deze API begint het proces voor het pushen van een app naar productie. Met deze 
 |  |  |
 
 
-<a name="body-example"></a>Voorbeeld van de hoofdtekst
+<a name="body-example"></a>Voor beeld van tekst
 ------------
 
 ### <a name="response"></a>Antwoord
@@ -54,15 +55,15 @@ Deze API begint het proces voor het pushen van een app naar productie. Met deze 
 
 |  **Naam**             |      **Waarde**                                                            |
 |  --------             |      ----------                                                           |
-| Operation-Location    |  URL naar de query om te bepalen van de huidige status van de bewerking            |
+| Bewerkings locatie    |  URL die moet worden opgevraagd om de huidige status van de bewerking te bepalen            |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Antwoord-statuscodes
+### <a name="response-status-codes"></a>Antwoord status codes
 
-| **Code** |  **Beschrijving**                                                                        |
+| **Gecodeerd** |  **Beschrijving**                                                                        |
 | -------- |  ----------------                                                                        |
-|  202     | `Accepted` -De aanvraag is geaccepteerd. Het antwoord bevat een locatie voor het volgen van de status van de bewerking. |
-|  400     | `Bad/Malformed request` -Aanvullende foutinformatie vindt u in de hoofdtekst van de reactie. |
-|  404     |  `Not found` -De opgegeven entiteit bestaat niet.                                       |
+|  202     | `Accepted`-de aanvraag is geaccepteerd. Het antwoord bevat een locatie voor het bijhouden van de bewerkings status. |
+|  400     | `Bad/Malformed request`: er zijn aanvullende fout gegevens gevonden in de hoofd tekst van het antwoord. |
+|  404     |  `Not found`-de opgegeven entiteit bestaat niet.                                       |
 |  |  |

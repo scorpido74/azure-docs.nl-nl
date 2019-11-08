@@ -4,19 +4,20 @@ description: Beheer van leads configureren voor een HTTPS-eind punt.
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: evansma
-ms.openlocfilehash: 6a34bdcab5a13af682515bbae96e9a1800ccc37f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 83efb9cfd1ee7464a334ebc4064dbfaa20ab30de
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902193"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812295"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Beheer van potentiële klanten configureren met behulp van een HTTPS-eind punt
 
-Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt ondersteund in het partner centrum voor het ontvangen van Azure Marketplace-en AppSource-leads, kunt u een HTTPS-eind punt in MS flow gebruiken om deze leads af te handelen. Met een HTTPS-eind punt kunnen deze leads worden verzonden als een e-mail melding of kunnen ze worden geschreven naar een Customer Relationship Management (CRM)-systeem dat wordt ondersteund door MS flow. De instructies in dit artikel begeleiden u bij het basis proces voor het maken van een nieuwe stroom met behulp van Microsoft Flow, waarmee de HTTP POST-URL wordt gegenereerd die u gaat invoeren in de portal voor publiceren van het veld **https-eind punt** voor het beheer van leads >. Ook vindt u hier instructies over hoe u uw stroom kunt testen met behulp van een hulp programma [](https://www.getpostman.com/downloads/) dat is opgenomen in ' postman ', dat online kan worden gevonden.
+Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt ondersteund in het partner centrum voor het ontvangen van Azure Marketplace-en AppSource-leads, kunt u een HTTPS-eind punt in MS flow gebruiken om deze leads af te handelen. Met een HTTPS-eind punt kunnen deze leads worden verzonden als een e-mail melding of kunnen ze worden geschreven naar een Customer Relationship Management (CRM)-systeem dat wordt ondersteund door MS flow. De instructies in dit artikel begeleiden u bij het basis proces voor het maken van een nieuwe stroom met behulp van Microsoft Flow, waarmee de HTTP POST-URL wordt gegenereerd die u gaat invoeren in de portal voor publiceren van het veld **https-eind punt** voor het beheer van leads >. Ook vindt u hier instructies over hoe u uw stroom kunt testen met behulp van een hulp programma dat is opgenomen in ' [postman](https://www.getpostman.com/downloads/) ', dat online kan worden gevonden.
 
 ## <a name="create-a-flow-using-microsoft-flow"></a>Een stroom maken met behulp van Microsoft Flow
 
@@ -24,7 +25,7 @@ Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt onder
 
 2. Meld u aan en selecteer **mijn stromen** in de menu balk.
 
-3. Selecteer **+ geautomatiseerd: leeg**.
+3. Selecteer **+ automatisch: leeg**.
 
     ![Mijn stromen + automatisch-van leeg](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
@@ -136,7 +137,7 @@ Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt onder
 4. Configureer in het venster **een E-mail verzenden** de volgende vereiste velden:
 
    - Voer ten minste één geldig e-mail adres **in** , waarbij de leads worden verzonden.
-   - Met de optie stroom kunt u dynamische inhoud toevoegen, zoals **LeadSource** in de volgende scherm opname. Begin met het typen van een veld naam gevolgd door te klikken op de lijst met dynamische inhoud in het pop-upvenster. 
+   - **Met de** optie stroom kunt u dynamische inhoud toevoegen, zoals **LeadSource** in de volgende scherm opname. Begin met het typen van een veld naam gevolgd door te klikken op de lijst met dynamische inhoud in het pop-upvenster. 
 
         >[!Note] 
         > Bij het toevoegen van veld namen kunt u elk een ': ' volgen en vervolgens op ENTER om een nieuwe rij te maken. Zodra u de veld namen hebt toegevoegd, kunt u elke gekoppelde para meter toevoegen uit de dynamische keuze lijst.
@@ -150,11 +151,11 @@ Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt onder
 
 5. Selecteer **Opslaan** om de stroom te volt ooien. Er wordt een HTTP POST-URL gemaakt en deze is toegankelijk in het venster *Wanneer een HTTP-aanvraag wordt ontvangen* . Kopieer deze URL met behulp van het Kopieer besturings element dat zich rechts van de HTTP POST-URL bevindt. Dit is belang rijk, zodat u niet per ongeluk een deel van de volledige URL mist. Sla deze URL op zoals u deze nodig hebt wanneer u Lead beheer configureert in de portal voor publiceren.
 
-   ![URL voor HTTP POST ](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
+   ![HTTP POST-URL ](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
 
 ### <a name="testing"></a>Testen
 
-U kunt testen of alles werkt zoals verwacht, met behulp van een hulp programma [](https://app.getpostman.com/app/download/win64)dat is aangeduid als ' postman ', dat online kan worden gedownload. Dit is beschikbaar voor Windows. 
+U kunt testen of alles werkt zoals verwacht, met behulp van een hulp programma dat is aangeduid als ' [postman](https://app.getpostman.com/app/download/win64)', dat online kan worden gedownload. Dit is beschikbaar voor Windows. 
 
 1. Start postman en selecteer **nieuwe** > **aanvraag** om uw test programma in te stellen. 
 

@@ -4,15 +4,16 @@ description: Go-to-Market-Services-in deze sectie worden de aanbevolen procedure
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 9f55abf85803adf0f52bbfa445b9f3e489c9448b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 439617c07b8059860c6d412cc60d56d4ac8c36a5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821069"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818666"
 ---
 # <a name="offer-listing-best-practices"></a>Best practices voor aanbiedingsvermeldingen
 
@@ -21,7 +22,7 @@ De tabellen in deze sectie bieden suggesties voor het maken en aanbieden van Mar
 ## <a name="storefront-offer-details"></a>Details van de winkel aanbieding
 | Winkel instelling | Best practice |
 |:--- |:--- |  
-| Naam van aanbieding: | Geef een sterke titel op:<br> <ul> <li> De naam van uw app moet de kern waarde voor uw klanten door geven. </li> <li> Neem Zoek woorden op in de titel van de app om een hogere classificatie te krijgen in resultaten van de zoek machine. </li> </ul> Volg de titel notatie instellen voor advies over service voorbeelden:<br>[Naam aanbieding: [duur] [aanbiedings type] (bijvoorbeeld *contoso: implementatie van 2 weken*) <br><br> Voldoen aan de merk richtlijnen:<br>Volg de [richt lijnen van het handels merk en merk van micro soft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) en andere relevante richt lijnen die specifiek zijn voor het product wanneer u verwijst naar handels merken van micro soft en de namen van micro soft-software,-producten en-services. |
+| Naam van aanbieding | Geef een sterke titel op:<br> <ul> <li> De naam van uw app moet de kern waarde voor uw klanten door geven. </li> <li> Neem Zoek woorden op in de titel van de app om een hogere classificatie te krijgen in resultaten van de zoek machine. </li> </ul> Volg de titel notatie instellen voor advies over service voorbeelden:<br>[Naam aanbieding: [duur] [aanbiedings type] (bijvoorbeeld *contoso: implementatie van 2 weken*) <br><br> Voldoen aan de merk richtlijnen:<br>Volg de [richt lijnen van het handels merk en merk van micro soft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) en andere relevante richt lijnen die specifiek zijn voor het product wanneer u verwijst naar handels merken van micro soft en de namen van micro soft-software,-producten en-services. |
 | Beschrijving van aanbieding | Geef een beschrijving van een duidelijk aanbod op:<br> <ul> <li> Beschrijf duidelijk de toegevoegde waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving. </li> <li> Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in de resultaten van de zoek machine. </li> <li> Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die u levert. </li> <li> Gebruik zo veel mogelijk branchespecifieke woorden lijst of op basis van voor delen.</li> <li> Daarnaast moeten service voorbeelden van Consulting de door u geboden professionele service duidelijk vermelden. </li></ul> De belangrijkste onderdelen van de toegevoegde waarde moeten de volgende informatie bevatten:<ul><li>Beschrijving van het product.</li><li>Het type gebruiker dat voor deel is van het product.</li><li>De klant nodig heeft of pijnt dat de product adressen.</li></ul> |
 
 ## <a name="storefront-listing-details"></a>Details van de winkel vermelding
@@ -43,7 +44,7 @@ U kunt Maxi maal twee categorieën en twee subcategorieën voor een aanbieding s
 | \* Automobiel     | \* Automobiel |
 | Landbouw     | \* Overig-niet-gesegmenteerd |
 | Distributie    | \* Groot handel <br> \* Pakket verzen ding van Parcel & |
-| Opleiding     | \* Hoger onderwijs <br> \* Primaire & secundair onderwijs/K-12 <br> \* Bibliotheken & musea |
+| Education     | \* Hoger onderwijs <br> \* Primaire & secundair onderwijs/K-12 <br> \* Bibliotheken & musea |
 | Financiële dienstverlening     | \* Bankieren & kapitaal markten <br> \* Verzekering |
 | Overheid    | \* Verdediging &e intelligentie (gebruikt voor de zogenaamde nationale en open bare veiligheid) <br> \* Open bare veiligheid & rechtvaardigheid <br> \* Burger overheid |
 | Gezondheids zorg (gebruikt voor de status)   | \* Status betaler <br> \* Health-provider <br> \* Farmaceutische producten |

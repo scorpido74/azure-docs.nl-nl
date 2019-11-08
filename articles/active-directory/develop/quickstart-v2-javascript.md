@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad79ee0fd1d421c7e869424ccb8daa595e51a970
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5ca9a8b87713508a581a833f60fbe863fd93919a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149405"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795617"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Snelstartgids: gebruikers aanmelden en een toegangs token verkrijgen in een Java script-beveiligd-wachtwoord verificatie
 
@@ -80,12 +80,11 @@ Selecteer de optie die geschikt is voor uw ontwikkel omgeving:
 
 * Beschrijving Als u het project wilt uitvoeren met de IIS-server, [downloadt u het Visual Studio-project](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip). Pak het zip-bestand uit naar een lokale map (bijvoorbeeld *C:\Azure-samples*).
 
-#### <a name="step-3-configure-your-javascript-app"></a>Stap 3: uw Java script-app configureren
-
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-javascript-app"></a>Stap 3: uw Java script-app configureren
 > Bewerk in de map *JavaScriptSPA* *index. html*en stel de waarden `clientID` en `authority` onder `msalConfig`in.
 
-> [!div class="sxs-lookup" renderon="portal"]
+> [!div renderon="docs"]
 > Bewerk in de map *JavaScriptSPA* *index. html*en vervang `msalConfig` door de volgende code:
 
 ```javascript
@@ -102,10 +101,6 @@ var msalConfig = {
 };
 
 ```
-> [!div renderon="portal"]
-> > [!NOTE]
-> > Deze Quick Start biedt ondersteuning voor Enter_the_Supported_Account_Info_Here.
-
 
 > [!div renderon="docs"]
 >
@@ -120,7 +115,12 @@ var msalConfig = {
 > > Om de waarden van **Toepassings-id (client-id)** , **Map-id (tenant-id)** en **Ondersteunde accounttypen** te achterhalen, gaat u naar de **Overzichtspagina** van de app in de Azure-portal.
 >
 
-#### <a name="step-4-run-the-project"></a>Stap 4: het project uitvoeren
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Stap 3: uw app is geconfigureerd en klaar om te worden uitgevoerd
+> Uw project is geconfigureerd met waarden van de eigenschappen van uw app. 
+
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-project"></a>Stap 4: het project uitvoeren
 
 * Als u [node. js](https://nodejs.org/en/download/)gebruikt:
 

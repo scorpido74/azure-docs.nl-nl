@@ -1,6 +1,6 @@
 ---
-title: Overzicht van het wijzigen van de methoden voor beveiligings gegevens (preview) en informatie-Azure Active Directory | Microsoft Docs
-description: Overzicht van het toevoegen, bijwerken en verwijderen van uw beveiligings gegevens methoden voor twee ledige verificatie en self-service voor wachtwoord herstel.
+title: Overzicht van het wijzigen van beveiligings gegevens (preview)-Azure AD
+description: Koppelingen naar artikelen over het toevoegen, bijwerken en verwijderen van uw beveiligings gegevens methoden voor twee ledige verificatie en self-service voor wachtwoord herstel.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bcef64c8bf8c2b52e5cc5d954de933d830ba4c1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3b781cd30bc5f63199ef9bff45670fa618e2ca17
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382881"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803827"
 ---
 # <a name="overview-about-changing-your-security-info-preview-methods-and-information"></a>Overzicht over het wijzigen van methoden en informatie voor uw beveiligingsgegevens (preview)
 
@@ -39,7 +39,7 @@ Methoden voor beveiligingsgegevens worden zowel gebruikt voor tweeledige verific
 
 Deze lijst bevat de op methode gebaseerde artikelen. Elk artikel bevat gedetailleerde informatie over het toevoegen, bewerken, verwijderen of wijzigen van uw beveiligingsgegevens op basis van de opgegeven methode.
 
-| Artikel | Description |
+| Artikel | Beschrijving |
 | ------ |------------ |
 | [Beveiligingsgegevens instellen voor een Authenticator-app](security-info-setup-auth-app.md) | Beschrijft hoe u de methode voor uw beveiligingsgegevens voor de Microsoft Authenticator-app kunt wijzigen. |
 | [Beveiligingsgegevens instellen voor sms-berichten](security-info-setup-text-msg.md) | Beschrijft hoe u de methode voor uw beveiligingsgegevens voor sms-berichten kunt wijzigen. |

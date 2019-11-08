@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 744b4e4975c5d4cec5c705e639e9cc8d252a7dd6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4783d3ac8ef78929621179d87f9c8948f6dd079c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194275"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811999"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Werk accounts van het bedrijf en het partner centrum
 
@@ -23,7 +24,7 @@ Het partner centrum gebruikt bedrijfs accounts, ook wel bekend als Azure Active 
 Als uw bedrijf zich heeft geabonneerd op een micro soft-Cloud service, zoals Azure, Microsoft Intune of Office 365, hebt u al een account domein van het werk (ook wel een Azure Active Directory-Tenant genoemd) die kan worden gebruikt met partner centrum.
 
 Voer de volgende stappen uit om te controleren:
-1. Meld u aan bij de Azure-beheer https://portal.azure.com Portal op.
+1. Meld u aan bij de Azure-beheer Portal op https://portal.azure.com.
 2. Selecteer **Azure Active Directory** in het navigatie menu aan de linkerkant en selecteer vervolgens **aangepaste domein namen**.
 3. Als u al een werk account hebt, wordt uw domein naam weer gegeven.
 

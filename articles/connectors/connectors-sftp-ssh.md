@@ -10,16 +10,16 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: 33c6007ebc429bb0d95d702ae9b90f9ac411a88c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: a48ba0d2d691314a1ca7c91ac7ae27b62fbb379b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695197"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825245"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met SSH en Azure Logic Apps
 
-U kunt met behulp van het SSH-protocol [(Secure Shell)](https://www.ssh.com/ssh/protocol/) voor het automatiseren van taken voor het bewaken, maken, verzenden en ontvangen van bestanden op een [Secure File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) -server door het gebruik van Azure Logic apps en de SFTP-SSH te automatiseren connector. SFTP is een netwerk protocol dat toegang biedt tot bestanden, bestands overdracht en bestands beheer via elke betrouw bare gegevens stroom. Hier volgen enkele voor beelden van taken die u kunt automatiseren:
+U kunt met behulp van het SSH-protocol [(Secure Shell)](https://www.ssh.com/ssh/protocol/) voor het automatiseren van taken voor het bewaken, maken, verzenden en ontvangen van bestanden op een [Secure File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) -server door het gebruik van Azure Logic apps en de SFTP-SSH te automatiseren connector. SFTP is een netwerkprotocol dat bestandstoegang, bestandsoverdracht en bestandsbeheer mogelijk maakt via elke betrouwbare gegevensstroom. Hier volgen enkele voor beelden van taken die u kunt automatiseren:
 
 * Controleren wanneer bestanden worden toegevoegd of gewijzigd.
 * Bestanden downloaden, maken, kopiëren, een andere naam geven, bijwerken, weer geven en verwijderen.
@@ -49,7 +49,7 @@ Hier volgen andere belang rijke verschillen tussen de SFTP-SSH-connector en de S
 
 * Maakt gebruik van de [SSH.net-bibliotheek](https://github.com/sshnet/SSH.NET), een open-source SSH-bibliotheek (Secure Shell) die .net ondersteunt.
 
-* Met SFTP-SSH-acties kunnen standaard bestanden worden gelezen of geschreven die *1 GB of kleiner* zijn, maar slechts in *15 MB* segmenten tegelijk. Voor het verwerken van bestanden die groter zijn dan 15 MB, kunnen SFTP-SSH-acties gebruikmaken van [bericht Chunking](../logic-apps/logic-apps-handle-large-messages.md). De actie bestand kopiëren ondersteunt echter slechts 15 MB aan bestanden omdat die actie geen ondersteuning biedt voor het segmenteren van berichten. SFTP-SSH-Triggers bieden geen ondersteuning voor segmentering.
+* Met SFTP-SSH-acties kunnen standaard bestanden worden gelezen of geschreven die *1 GB of kleiner* zijn, maar slechts in *15 MB* segmenten tegelijk. Voor het verwerken van bestanden die groter zijn dan 15 MB, kunnen SFTP-SSH-acties gebruikmaken van [bericht Chunking](../logic-apps/logic-apps-handle-large-messages.md). Als u grote bestanden wilt uploaden, moet u ook lees-en schrijf machtigingen hebben. De actie bestand kopiëren ondersteunt echter slechts 15 MB aan bestanden omdat die actie geen ondersteuning biedt voor het segmenteren van berichten. SFTP-SSH-Triggers bieden geen ondersteuning voor segmentering.
 
 * Biedt de actie **map maken** , waarmee een map op het opgegeven pad op de sftp-server wordt gemaakt.
 
@@ -61,15 +61,15 @@ Hier volgen andere belang rijke verschillen tussen de SFTP-SSH-connector en de S
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Uw SFTP-server adres en account referenties, waarmee uw logische app toegang kan krijgen tot uw SFTP-account. U hebt ook toegang nodig tot een persoonlijke SSH-sleutel en het wacht woord voor de persoonlijke SSH-sleutel.
+* Uw SFTP-server adres en account referenties, waarmee uw logische app toegang kan krijgen tot uw SFTP-account. U hebt ook toegang nodig tot een persoonlijke SSH-sleutel en het wacht woord voor de persoonlijke SSH-sleutel. Als u Chunking wilt gebruiken bij het uploaden van grote bestanden, hebt u lees-en schrijf machtigingen nodig.
 
   > [!IMPORTANT]
   >
   > De SFTP-SSH-connector ondersteunt *alleen* deze indelingen, algoritmen en vinger afdrukken van persoonlijke sleutels:
   >
-  > * **Indelingen van persoonlijke sleutels**: RSA-sleutels (Rivest Shamir Adleman) en DSA (Digital Signature Algorithm) in zowel de OpenSSH-als de ssh.com-indeling. Als uw persoonlijke sleutel zich in de PuTTy-bestands indeling (. ppk) bevindt, [moet u eerst de sleutel converteren naar de OpenSSH-bestands indeling (. pem)](#convert-to-openssh).
+  > * **Indelingen van persoonlijke sleutels**: RSA-sleutels (Rivest Shamir Adleman) en DSA (Digital Signature Algorithm) in zowel de OpenSSH-als de SSH.com-indeling. Als uw persoonlijke sleutel zich in de PuTTy-bestands indeling (. ppk) bevindt, [moet u eerst de sleutel converteren naar de OpenSSH-bestands indeling (. pem)](#convert-to-openssh).
   >
-  > * **Versleutelings algoritmen**: DES-EDE3-CBC, DES-EDE3-CFB, DES-CBC, AES-128-CBC, AES-192-CBC en AES-256-CBC
+  > * **Versleutelings algoritmen**: des-EDE3-CBC, des-EDE3-CFB, des-CBC, AES-128-CBC, AES-192-CBC en AES-256-cbc
   >
   > * **Vinger afdruk**: MD5
   >
@@ -84,10 +84,10 @@ Hier volgen andere belang rijke verschillen tussen de SFTP-SSH-connector en de S
 
 SFTP-SSH-triggers werken door het SFTP-bestands systeem te pollen en te zoeken naar een bestand dat sinds de laatste poll is gewijzigd. Met sommige hulpprogram ma's kunt u de tijds tempel behouden wanneer de bestanden worden gewijzigd. In deze gevallen moet u deze functie uitschakelen zodat de trigger kan werken. Hier volgen enkele algemene instellingen:
 
-| SFTP-client | Action |
+| SFTP-client | Bewerking |
 |-------------|--------|
-| WinSCP | Ga naar **opties** > **voor keuren** > **overdracht** > **bewerken** > **tijds tempel voor behouden** > **uitschakelen** |
-| FileZilla | Ga naar **overdracht** > **tijds tempels van overgebrachte bestanden behouden** > **uitschakelen** |
+| WinSCP | Ga naar **opties** > **voor keuren** > **overdracht** > **bewerken** > **tijds tempel behouden** > **uitschakelen** |
+| FileZilla | Ga naar **overdracht** > de **tijds tempels van overgebrachte bestanden te behouden** > **uitschakelen** |
 |||
 
 Wanneer een trigger een nieuw bestand vindt, controleert de trigger of het nieuwe bestand is voltooid en niet gedeeltelijk is geschreven. Een bestand kan bijvoorbeeld wijzigingen in voortgang hebben wanneer de trigger de bestands server controleert. Om te voor komen dat een gedeeltelijk geschreven bestand wordt geretourneerd, wordt door de trigger de tijds tempel voor het bestand met recente wijzigingen weer gegeven, maar wordt dat bestand niet direct geretourneerd. De trigger retourneert het bestand alleen wanneer de server opnieuw wordt gecontroleerd. Dit gedrag kan soms een vertraging veroorzaken die twee maal het polling interval van de trigger is.
@@ -112,7 +112,7 @@ Als uw persoonlijke sleutel zich in de PuTTy-indeling bevindt, waarbij de bestan
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 
-### <a name="windows-os"></a>Windows-besturingssysteem
+### <a name="windows-os"></a>Windows OS
 
 1. Als u dit nog niet hebt gedaan, [downloadt u het hulp programma voor de nieuwste putty-Generator (puttygen. exe)](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)en start u het hulp programma.
 
@@ -156,7 +156,7 @@ Als uw persoonlijke sleutel zich in de PuTTy-indeling bevindt, waarbij de bestan
 
    1. Selecteer in het menu **bewerken** in Klad blok de optie **Alles selecteren**.
 
-   1. Selecteer  > -**exemplaar** **bewerken**.
+   1. Selecteer > **kopie** **bewerken** .
 
    1. Plak de *volledige* sleutel die u hebt gekopieerd in de eigenschap van de **persoonlijke SSH-sleutel** , die ondersteuning biedt voor meerdere regels in de SFTP-SSH-trigger of de actie die u hebt toegevoegd.  ***Zorg ervoor dat u*** de sleutel plakt. ***Voer de sleutel niet hand matig in of bewerk deze***.
 
@@ -168,15 +168,15 @@ Als uw persoonlijke sleutel zich in de PuTTy-indeling bevindt, waarbij de bestan
 
 <a name="file-added-modified"></a>
 
-### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP-SSH-trigger: Wanneer een bestand wordt toegevoegd of gewijzigd
+### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP-SSH-trigger: wanneer een bestand wordt toegevoegd of gewijzigd
 
 Deze trigger start een werk stroom voor logische apps wanneer een bestand wordt toegevoegd aan of gewijzigd op een SFTP-server. U kunt bijvoorbeeld een voor waarde toevoegen waarmee de inhoud van het bestand wordt gecontroleerd en de inhoud wordt opgehaald op basis van het feit of de inhoud voldoet aan een opgegeven voor waarde. U kunt vervolgens een actie toevoegen waarmee de inhoud van het bestand wordt opgehaald en die inhoud in een map op de SFTP-server plaatsen.
 
-**Bedrijfs voorbeeld**: U kunt deze trigger gebruiken om een SFTP-map te bewaken voor nieuwe bestanden die klant orders vertegenwoordigen. U kunt vervolgens een SFTP-actie gebruiken, zoals het **ophalen van bestands inhoud** , zodat u de inhoud van de bestelling krijgt voor verdere verwerking en die order in een Data Base orders opslaat.
+**Enter prise-voor beeld**: u kunt deze trigger gebruiken om een SFTP-map te bewaken voor nieuwe bestanden die klant orders vertegenwoordigen. U kunt vervolgens een SFTP-actie gebruiken, zoals het **ophalen van bestands inhoud** , zodat u de inhoud van de bestelling krijgt voor verdere verwerking en die order in een Data Base orders opslaat.
 
 <a name="get-content"></a>
 
-### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP-SSH-actie: Inhoud ophalen met behulp van pad
+### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP-SSH-actie: inhoud ophalen met behulp van pad
 
 Met deze actie wordt de inhoud van een bestand op een SFTP-server opgehaald. U kunt bijvoorbeeld de trigger uit het vorige voor beeld toevoegen en een voor waarde waaraan de inhoud van het bestand moet worden voldaan. Als de voor waarde waar is, kan de actie die de inhoud ophaalt worden uitgevoerd.
 
@@ -186,4 +186,4 @@ Raadpleeg de [referentie pagina](/connectors/sftpconnector/)van de connector voo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

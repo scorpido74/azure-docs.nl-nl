@@ -1,5 +1,5 @@
 ---
-title: Cross-Tenant analyse uitvoeren met geëxtraheerde gegevens | Microsoft Docs
+title: Cross-Tenant analyse met geëxtraheerde gegevens
 description: Cross-Tenant analyse query's die gebruikmaken van gegevens die zijn geëxtraheerd uit meerdere Azure SQL Database data bases in één Tenant-app.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 12/18/2018
-ms.openlocfilehash: 2c24a87377eb4b893cbcae1b9a36522e586a6d56
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c589d9619da8b5150d0fb4752625571c48393552
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570159"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826385"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Cross-Tenant analyse met geëxtraheerde gegevens-app met één Tenant
  
@@ -71,7 +71,7 @@ Voor het voltooien van deze zelfstudie moet u ervoor zorgen dat aan de volgende 
 - De Wingtip tickets SaaS-data base per Tenant toepassing wordt geïmplementeerd. Zie [de Wingtip SaaS-toepassing implementeren en verkennen](saas-dbpertenant-get-started-deploy.md) om in minder dan vijf minuten te implementeren
 - De Wingtip tickets SaaS-data base per Tenant scripts en toepassings [bron code](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) worden gedownload van github. Zie Download instructies. Zorg ervoor dat u *het zip-bestand deblokkeren* voordat u de inhoud uitpakt. Bekijk de [algemene richt lijnen](saas-tenancy-wingtip-app-guidance-tips.md) voor de stappen voor het downloaden en blok keren van de Wingtip tickets SaaS-scripts.
 - Power BI Desktop is geïnstalleerd. [Power BI Desktop downloaden](https://powerbi.microsoft.com/downloads/)
-- De batch met aanvullende tenants is ingericht. Raadpleeg de [**zelf studie**](saas-dbpertenant-provision-and-catalog.md)voor het inrichten van tenants.
+- De batch met aanvullende tenants is ingericht. Raadpleeg de [**zelf studie voor het inrichten van tenants**](saas-dbpertenant-provision-and-catalog.md).
 - Er is een taak account en een Data Base met taak accounts gemaakt. Zie de juiste stappen in de [**zelf studie schema beheer**](saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent).
 
 ### <a name="create-data-for-the-demo"></a>Gegevens maken voor de demo
@@ -79,7 +79,7 @@ Voor het voltooien van deze zelfstudie moet u ervoor zorgen dat aan de volgende 
 In deze zelf studie wordt de analyse uitgevoerd op de verkoop gegevens van het ticket. In de huidige stap genereert u ticket gegevens voor alle tenants.  Later worden deze gegevens geëxtraheerd voor analyse. *Zorg ervoor dat u de batch met tenants hebt ingericht zoals eerder beschreven, zodat u een zinvolle hoeveelheid gegevens hebt*. Een voldoende grote hoeveelheid gegevens kan een aantal verschillende inkopende patronen voor tickets bieden.
 
 1. Open *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*in Power shell ISE en stel de volgende waarde in:
-    - $DemoScenario = **1** koop tickets voor gebeurtenissen op alle locaties
+    - **$DemoScenario** = **1** aankoop tickets voor gebeurtenissen op alle locaties
 2. Druk op **F5** om het script uit te voeren en een ticket-inkoop geschiedenis te maken voor elke gebeurtenis in elke locatie.  Het script wordt gedurende enkele minuten uitgevoerd om tien duizenden tickets te genereren.
 
 ### <a name="deploy-the-analytics-store"></a>De Analytics Store implementeren
@@ -88,38 +88,38 @@ Vaak bestaan er talrijke transactionele data bases die samen alle Tenant gegeven
 In de volgende stappen implementeert u de Analytics Store, die **tenantanalytics**wordt genoemd. U kunt ook vooraf gedefinieerde tabellen implementeren die verderop in de zelf studie worden ingevuld:
 1. Open in Power shell ISE *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
 2. Stel de variabele $DemoScenario in het script in die overeenkomt met uw keuze uit Analytics Store:
-    - Als u SQL database wilt gebruiken zonder kolom opslag, stelt u **$DemoScenario** = **2** in
-    - Als u SQL database met een kolom archief wilt gebruiken, stelt u **$DemoScenario** = **3** in  
-3. Druk op **F5** om het demo script uit te voeren (waarmee het script *Deploy-TenantAnalytics\<xx >. ps1* wordt aangeroepen) waarmee de Tenant-Analytics Store wordt gemaakt. 
+    - Als u SQL database wilt gebruiken zonder kolom opslag, stelt u **$DemoScenario** in = **2**
+    - Als u SQL database met een kolom archief wilt gebruiken, stelt u **$DemoScenario** in = **3**  
+3. Druk op **F5** om het demo script uit te voeren (waarmee het script *Deploy-TenantAnalytics\<xx >. ps1* wordt aangeroepen, waarmee de Tenant-Analytics Store wordt gemaakt. 
 
-Nu u de toepassing hebt geïmplementeerd en deze hebt gevuld met interessante Tenant gegevens, gebruikt u [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) om verbinding te maken met **tenants1&gt; -dpt-&lt;User** en **Catalog-dpt-&lt;gebruiker&gt;** servers die aanmelden gebruiken = *ontwikkelaar*, wacht woord = *P\@ssword1*. Raadpleeg de [inleidende zelf studie](saas-dbpertenant-wingtip-app-overview.md) voor meer informatie.
+Nu u de toepassing hebt geïmplementeerd en deze hebt gevuld met interessante Tenant gegevens, gebruikt u [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) om verbinding te maken met **tenants1-dpt-&lt;gebruikers&gt;** en **catalogus-dpt&lt;gebruikers&gt;** servers Aanmelden gebruiken = *ontwikkelaar*, wacht woord = *P\@ssword1*. Raadpleeg de [inleidende zelf studie](saas-dbpertenant-wingtip-app-overview.md) voor meer informatie.
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
 Voer de volgende stappen uit in de Objectverkenner:
 
-1. Vouw de *tenants1-dpt-&lt;User&gt;*  server uit.
+1. Vouw de *tenants1-dpt-&lt;gebruiker&gt;-* server uit.
 2. Vouw het knoop punt data bases uit en Bekijk de lijst met Tenant databases.
-3. Vouw de *catalogus-dpt-&lt;gebruikers&gt;*  server uit.
+3. Vouw de *catalogus-dpt-&lt;gebruiker&gt;-* server uit.
 4. Controleer of u de analytische Store en de jobaccount-data base ziet.
 
 Zie de volgende data base-items in de SSMS-Objectverkenner door het knoop punt Analytics Store uit te vouwen:
 
 - Tabellen **TicketsRawData** en **EventsRawData** bevatten onbewerkte gegevens uit de Tenant-data bases.
-- De ster schema tabellen zijn **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**en **dim_Dates**.
+- De tabellen in het ster schema zijn **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**en **dim_Dates**.
 - De opgeslagen procedure wordt gebruikt voor het vullen van de ster-schema tabellen uit de onbewerkte gegevens tabellen.
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
 
-## <a name="data-extraction"></a>Ophalen van gegevens 
+## <a name="data-extraction"></a>Gegevens extractie 
 
 ### <a name="create-target-groups"></a>Doel groepen maken 
 
 Voordat u doorgaat, moet u ervoor zorgen dat u het taak account en de jobaccount-Data Base hebt geïmplementeerd. In de volgende reeks stappen wordt elastische taken gebruikt voor het extra heren van gegevens uit elke Tenant database en voor het opslaan van de gegevens in de analyse opslag. De tweede taak Shreds de gegevens en slaat deze op in de tabellen in het ster schema. Deze twee taken worden uitgevoerd op twee verschillende doel groepen, namelijk **TenantGroup** en **AnalyticsGroup**. De uitpak taak wordt uitgevoerd op de TenantGroup, die alle Tenant databases bevat. De verwerkings taak wordt uitgevoerd op de AnalyticsGroup, die alleen de analytische opslag bevat. Maak de doel groepen met behulp van de volgende stappen:
 
-1. In SSMS maakt u verbinding met de **jobaccount** -data base in de&lt;catalogus&gt;-dpt-gebruiker.
+1. In SSMS maakt u verbinding met de **jobaccount** -data base in Catalog-dpt-&lt;gebruikers&gt;.
 2. Open in SSMS *. ..\Learning Modules\Operational Analytics\Tenant Analytics \ TargetGroups. SQL* 
-3. Wijzig de @User variabele boven aan het script en vervang `<User>` door de gebruikers waarde die wordt gebruikt bij het implementeren van de Wingtip SaaS-app.
+3. Wijzig de @User variabele boven aan het script en vervang `<User>` door de gebruikers waarde die wordt gebruikt wanneer u de SaaS-app Wingtip implementeert.
 4. Druk op **F5** om het script uit te voeren dat de twee doel groepen maakt.
 
 ### <a name="extract-raw-data-from-all-tenants"></a>Onbewerkte gegevens uit alle tenants ophalen
@@ -131,9 +131,9 @@ Uitgebreide gegevens wijzigingen kunnen vaker voor komen voor *ticket-en klant* 
 
 Elke taak extraheert de gegevens en plaatst deze in het Analytics-archief. Er is een afzonderlijke taak Shreds de geëxtraheerde gegevens in het analyse ster-schema.
 
-1. In SSMS maakt u verbinding met de **jobaccount** -data base in de&lt;catalogus&gt; -dpt-gebruikers server.
+1. In SSMS maakt u verbinding met de **jobaccount** -data base in Catalog-dpt-&lt;gebruiker&gt;-server.
 2. Open in SSMS *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.SQL*.
-3. Wijzig @User boven aan het script en vervang `<User>` door de gebruikers naam die wordt gebruikt tijdens het implementeren van de Wingtip SaaS-app 
+3. Wijzig @User boven aan het script en vervang `<User>` door de gebruikers naam die wordt gebruikt tijdens de implementatie van de Wingtip SaaS-app 
 4. Druk op F5 om het script uit te voeren waarmee de taak wordt gemaakt en uitgevoerd voor het extra heren van tickets en klanten gegevens uit elke Tenant database. Met de taak worden de gegevens opgeslagen in de analyse opslag.
 5. Query's uitvoeren op de tabel TicketsRawData in de tenantanalytics-data base om ervoor te zorgen dat de tabel is gevuld met ticketsgegevens van alle tenants.
 
@@ -151,11 +151,11 @@ De volgende stap is het shred van de geëxtraheerde onbewerkte gegevens in een s
 
 In deze sectie van de zelf studie definieert en voert u een taak uit die de geëxtraheerde onbewerkte gegevens samenvoegt met de gegevens in de ster-schema tabellen. Nadat de samenvoeg taak is voltooid, worden de onbewerkte gegevens verwijderd, waardoor de tabellen klaar zijn om te worden gevuld met de volgende taak voor het uitpakken van Tenant gegevens.
 
-1. In SSMS maakt u verbinding met de **jobaccount** -data base in de&lt;catalogus&gt;-dpt-gebruiker.
+1. In SSMS maakt u verbinding met de **jobaccount** -data base in Catalog-dpt-&lt;gebruikers&gt;.
 2. Open in SSMS *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.SQL*.
-3. Druk op **F5** om het script uit te voeren om een taak te definiëren die de opgeslagen procedure sp_ShredRawExtractedData aanroept in de analyse opslag.
+3. Druk op **F5** om het script uit te voeren om een taak te definiëren die de sp_ShredRawExtractedData opgeslagen procedure aanroept in het Analytics-archief.
 4. Voldoende tijd om de taak te kunnen uitvoeren.
-    - Controleer de kolom **levens duur** van de tabel jobs. jobs_execution voor de status van de taak. Zorg ervoor dat de taak **is voltooid** voordat u doorgaat. Bij een geslaagde uitvoering worden gegevens weer gegeven die vergelijkbaar zijn met de volgende grafiek:
+    - Controleer de kolom **levens duur** van taken. jobs_execution tabel voor de status van de taak. Zorg ervoor dat de taak **is voltooid** voordat u doorgaat. Bij een geslaagde uitvoering worden gegevens weer gegeven die vergelijkbaar zijn met de volgende grafiek:
 
 ![versnippering](media/saas-tenancy-tenant-analytics/shreddingJob.PNG)
 
@@ -170,17 +170,17 @@ Gebruik de volgende stappen om verbinding te maken met Power BI en om de weer ga
 1. Start Power BI bureau blad.
 2. Selecteer op het lint start de optie **gegevens ophalen**en selecteer **meer...** in het menu.
 3. Selecteer Azure SQL Database in het venster **gegevens ophalen** .
-4. Voer in het venster Data Base-aanmeldingen de naam van uw server&lt;in&gt;(Catalog-dpt-User. database.Windows.net). Selecteer **importeren** voor de **gegevens connectiviteits modus**en klik vervolgens op OK. 
+4. Voer in het venster Data Base-aanmeldingen de naam van uw server in (Catalog-dpt-&lt;gebruiker&gt;. database.windows.net). Selecteer **importeren** voor de **gegevens connectiviteits modus**en klik vervolgens op OK. 
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Selecteer **Data Base** in het linkerdeel venster, voer gebruikers naam = *ontwikkelaar*in en voer wacht woord *=\@P ssword1*in. Klik op**Verbinden**.  
+5. Selecteer **Data Base** in het linkerdeel venster, voer gebruikers naam = *ontwikkelaar*in en voer wacht woord = *P\@ssword1*in. Klik op **Verbinden**.  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
-6. Selecteer in het deel venster **Navigator** onder de Analytics-Data Base de ster-schema tabellen: Fact_Tickets, Dim_Events, Dim_Venues, Dim_Customers en dim_Dates. Selecteer vervolgens **laden**. 
+6. Selecteer in het deel venster **Navigator** onder de Analytics-Data Base de ster-schema tabellen: fact_Tickets, dim_Events, dim_Venues, dim_Customers en dim_Dates. Selecteer vervolgens **laden**. 
 
-Gefeliciteerd! De gegevens zijn geladen in Power BI. U kunt nu interessante visualisaties gaan verkennen om inzicht te krijgen in uw tenants. In de volgende stap leert u hoe u met analyses gegevensgestuurde aanbevelingen kunt leveren aan het Business team van de Wingtip tickets. De aanbevelingen kunnen helpen het bedrijfs model en de klant ervaring te optimaliseren.
+Gefeliciteerd. De gegevens zijn geladen in Power BI. U kunt nu interessante visualisaties gaan verkennen om inzicht te krijgen in uw tenants. In de volgende stap leert u hoe u met analyses gegevensgestuurde aanbevelingen kunt leveren aan het Business team van de Wingtip tickets. De aanbevelingen kunnen helpen het bedrijfs model en de klant ervaring te optimaliseren.
 
 U begint met het analyseren van de verkoop gegevens van het ticket om de variatie in het gebruik over de locaties te bekijken. Selecteer de volgende opties in Power BI om een staaf diagram te tekenen van het totale aantal tickets dat per locatie is verkocht. Als gevolg van een wille keurige variatie in de ticket generator, kunnen de resultaten afwijken.
  
@@ -235,9 +235,9 @@ In deze zelfstudie heeft u het volgende geleerd:
 > - Query's uitvoeren op een Analytics-Data Base 
 > - Gebruik Power BI voor gegevens visualisatie om trends in Tenant gegevens te observeren 
 
-Gefeliciteerd!
+Gefeliciteerd.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - Aanvullende [zelf studies die voortbouwen op de Wingtip SaaS-toepassing](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - [Elastische taken](elastic-jobs-overview.md).

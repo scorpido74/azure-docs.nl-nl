@@ -1,78 +1,79 @@
 ---
-title: Het certificeren van uw VM-installatiekopie voor de Azure Marketplace
-description: Wordt uitgelegd hoe u kunt testen en het verzenden van een VM-installatiekopie voor certificering voor Azure Marketplace.
+title: Uw VM-installatie kopie voor de Azure Marketplace certificeren
+description: Hierin wordt uitgelegd hoe u een VM-installatie kopie kunt testen en verzenden voor Azure Marketplace-certificering.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: pabutler
-ms.openlocfilehash: 0dbf1abbb91f9e5c3bd2d042c57f87591d52c9cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4088864db4bf861d07821f5a0287336d8431f889
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938501"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826509"
 ---
-# <a name="certify-your-vm-image"></a>Uw VM-installatiekopie certificeren
+# <a name="certify-your-vm-image"></a>Uw VM-installatie kopie certificeren
 
-Nadat u maken en implementeren van uw virtuele machine (VM), moet u testen en verzenden van de VM-installatiekopie voor certificering voor Azure Marketplace. Dit artikel wordt uitgelegd waar u de *Test Certificeringshulpprogramma voor Azure Certified*, hoe u dit hulpprogramma gebruiken om te certificeren van uw VM-installatiekopie en over het uploaden van de verificatieresultaten naar de Azure-container waarin uw VHD's zich bevinden. 
-
-
-## <a name="download-and-run-the-certification-test-tool"></a>Downloaden en uitvoeren van het certificeringshulpprogramma van test
-
-Het Certificeringshulpprogramma van Test voor Azure Certified op een lokale Windows-machine wordt uitgevoerd, maar test een-op basis van Azure Windows of Linux-VM.  Er wordt gecontroleerd of uw gebruiker VM-installatiekopie compatibel met Microsoft Azure is, of aan de richtlijnen en vereisten rondom het voorbereiden van uw VHD is voldaan. De uitvoer van het hulpprogramma is een compatibiliteitsrapport, u naar uploaden zult de [Cloud Partner-Portal](https://cloudpartner.azure.com) om aan te vragen van VM-certificering.
-
-1. Download en installeer de meest recente [Test Certificeringshulpprogramma voor Azure Certified](https://www.microsoft.com/download/details.aspx?id=44299). 
-2. Open het certificeringshulpprogramma en klik vervolgens op **nieuwe Test Start**.
-3. Uit de **testen informatie** scherm, voert u een **naam Test** voor de test.
-4. Selecteer de **Platform** voor uw virtuele machine, hetzij `Windows Server` of `Linux`. Uw keuze van platform is van invloed op de overige opties.
-5. Als uw VM maakt gebruik van deze databaseservice, selecteert u de **testen voor Azure SQL Database** selectievakje.
-
-   ![Certificaat test hulpprogramma eerste pagina](./media/publishvm_025.png)
+Nadat u uw virtuele machine (VM) hebt gemaakt en geïmplementeerd, moet u de VM-installatie kopie testen en verzenden voor Azure Marketplace-certificering. In dit artikel wordt uitgelegd waar u het *certificerings test hulpprogramma voor Azure Certified*, hoe u dit hulp programma kunt gebruiken om uw VM-installatie kopie te certificeren en hoe u de verificatie resultaten uploadt naar de Azure-container waarin uw vhd's zich bevinden. 
 
 
-## <a name="connect-the-certification-tool-to-a-vm-image"></a>Het certificeringshulpprogramma verbinden met een VM-installatiekopie
+## <a name="download-and-run-the-certification-test-tool"></a>Het hulp programma voor certificerings test downloaden en uitvoeren
 
-  Het hulpprogramma maakt verbinding met virtuele machines op basis van Windows met [PowerShell](https://docs.microsoft.com/powershell/) en maakt verbinding met virtuele Linux-machines via [SSH.Net](https://www.ssh.com/ssh/protocol/).
+Het certificerings test hulpprogramma voor Azure Certified wordt uitgevoerd op een lokale Windows-computer, maar test een op Azure gebaseerde Windows-of Linux-VM.  Er wordt gecontroleerd of uw VM-installatie kopie van de gebruiker compatibel is met Microsoft Azure, dat is voldaan aan de richt lijnen en vereisten rond het voorbereiden van uw VHD. De uitvoer van het hulp programma is een compatibiliteits rapport dat u uploadt naar de [Cloud Partner-Portal](https://cloudpartner.azure.com) om VM-certificering aan te vragen.
 
-### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Het certificeringshulpprogramma verbinden met een Linux VM-installatiekopie
+1. Down load en installeer het meest recente [certificerings test programma voor Azure Certified](https://www.microsoft.com/download/details.aspx?id=44299). 
+2. Open het certificerings programma en klik vervolgens op **nieuwe test starten**.
+3. Voer in het scherm **test informatie** een **test naam** in voor de test uitvoering.
+4. Selecteer het **platform** voor uw virtuele machine, een `Windows Server` of `Linux`. De platform keuze is van invloed op de resterende opties.
+5. Als uw virtuele machine gebruikmaakt van deze database service, selecteert u het selectie vakje **testen voor Azure SQL database** .
+
+   ![Begin pagina CERT-test programma](./media/publishvm_025.png)
+
+
+## <a name="connect-the-certification-tool-to-a-vm-image"></a>Het certificerings hulpprogramma verbinden met een VM-installatie kopie
+
+  Het hulp programma maakt verbinding met Vm's op basis van Windows met [Power shell](https://docs.microsoft.com/powershell/) en maakt verbinding met virtuele Linux-machines via [SSH.net](https://www.ssh.com/ssh/protocol/).
+
+### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Verbind het certificerings programma met een Linux VM-installatie kopie
 
 1. Selecteer de **SSH-verificatie** modus: `Password Authentication` of `key File Authentication`.
-2. Als u gebruikmaakt van verificatie op basis van wachtwoorden, voer waarden in voor de **VM DNS-naam**, **gebruikersnaam**, en **wachtwoord**.  U kunt eventueel de standaardinstelling wijzigen **SSH-poort** getal.
+2. Als u verificatie op basis van wacht woorden gebruikt, voert u waarden in voor de **DNS-naam van de virtuele machine**, de **gebruikers naam**en het **wacht woord**.  Desgewenst kunt u het standaard-SSH- **poort** nummer wijzigen.
 
-     ![Wachtwoordverificatie van Linux VM-installatiekopie](./media/publishvm_026.png)
+     ![Wachtwoord verificatie van installatie kopie van Linux-VM](./media/publishvm_026.png)
 
-3. Als u verificatie met een sleutel op basis van bestanden, voer waarden in voor de **VM DNS-naam**, **gebruikersnaam**, en **privésleutel** locatie.  Desgewenst kunt u opgeven een **wachtwoordzin** of wijzigen van de standaard **SSH-poort** getal.
+3. Als u gebruikmaakt van verificatie op basis van een sleutel bestand, voert u waarden in voor de **DNS-naam van de virtuele machine**, de **gebruikers naam**en de locatie van de **persoonlijke sleutel** .  U kunt desgewenst een **wachtwoordzin** opgeven of het standaard-SSH- **poort** nummer wijzigen.
 
-     ![Verificatie van Linux VM-installatiekopie](./media/publishvm_027.png)
+     ![Bestands verificatie van installatie kopie van Linux-VM](./media/publishvm_027.png)
 
-### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Het certificeringshulpprogramma verbinden met een VM op basis van een Windows-installatiekopie**
-1. Voer de volledig gekwalificeerde **VM DNS-naam** (bijvoorbeeld `MyVMName.Cloudapp.net`).
-2. Voer waarden in voor de **gebruikersnaam** en **wachtwoord**.
+### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Het certificerings hulpprogramma verbinden met een VM-installatie kopie op basis van Windows**
+1. Voer de volledig gekwalificeerde **VM-DNS-naam** in (bijvoorbeeld `MyVMName.Cloudapp.net`).
+2. Voer waarden in voor de **gebruikers naam** en het **wacht woord**.
 
-   ![Wachtwoordverificatie van Windows-VM-installatiekopie](./media/publishvm_028.png)
+   ![Wachtwoord verificatie van Windows VM-installatie kopie](./media/publishvm_028.png)
 
 
-## <a name="run-a-certification-test"></a>Een CA-test uitvoeren
+## <a name="run-a-certification-test"></a>Een certificerings test uitvoeren
 
-Nadat u de parameterwaarden hebt opgegeven voor uw VM-installatiekopie in het certificeringshulpprogramma, selecteert u **testverbinding** om te controleren of een geldige verbinding met uw virtuele machine. Nadat een verbinding is gecontroleerd, selecteer **volgende** om de test te starten.  Wanneer de test voltooid is, wordt een tabel weergegeven met de testresultaten (geslaagd/mislukt/waarschuwing).  Het volgende voorbeeld ziet de resultaten van de Linux-VM te testen. 
+Nadat u de parameter waarden voor uw VM-installatie kopie in het certificerings programma hebt opgegeven, selecteert u **verbinding testen** om te zorgen voor een geldige verbinding met uw VM. Nadat een verbinding is geverifieerd, selecteert u **volgende** om de test te starten.  Wanneer de test is voltooid, wordt een tabel weer gegeven met de test resultaten (pass/fail/Warning).  In het volgende voor beeld ziet u de test resultaten voor een Linux VM-test. 
 
-![De resultaten van certificering voor Linux VM-installatiekopie](./media/publishvm_029.png)
+![Resultaten van certificerings test voor Linux VM-installatie kopie](./media/publishvm_029.png)
 
-Als een van de test mislukt, wordt uw installatiekopie is *niet* gecertificeerd. In dit geval Raadpleeg de vereisten en foutberichten van de opgegeven wijzigingen aanbrengen en test opnieuw uitvoeren. 
+Als een van de tests mislukt, is uw installatie kopie *niet* gecertificeerd. In dit geval raadpleegt u de vereisten en fout berichten, brengt u de aangegeven wijzigingen aan en voert u de test opnieuw uit. 
 
-Na de geautomatiseerde test, moet u bieden aanvullende informatie over uw VM-installatiekopie op de **vragenlijst** scherm.  Het bevat twee tabbladen die moeten worden voltooid.  De **algemene beoordeling** tabblad bevat **True/False** vragen, terwijl de **Kernel aanpassing** bevat meerdere selectie en vrije vragen.  Voltooien van de vragen op beide tabbladen en selecteer vervolgens **volgende**.
+Na de geautomatiseerde test moet u aanvullende informatie over de VM-installatie kopie op het **vragenlijst** scherm opgeven.  Het bevat twee tabbladen die u moet volt ooien.  Op het tabblad **algemene beoordeling** vindt u vragen over **waar/onwaar** , terwijl de **kernel-aanpassing** meerdere selectie-en vrije-vorm vragen bevat.  Voltooi de vragen op beide tabbladen en selecteer vervolgens **volgende**.
 
-![Certificering hulpprogramma vragenlijst](./media/publishvm_030.png)
+![Vragen lijst voor certificerings Programma's](./media/publishvm_030.png)
 
-Het laatste scherm kunt u aanvullende informatie, zoals een SSH-toegang tot gegevens van een Linux VM-installatiekopie en een uitleg voor elke mislukte beoordelingen als u op zoek zijn uitzonderingen. 
+In het laatste scherm kunt u aanvullende informatie opgeven, zoals SSH-toegangs gegevens voor een Linux VM-installatie kopie en een uitleg voor eventuele mislukte beoordelingen als u uitzonde ringen zoekt. 
 
-Klik ten slotte **rapport genereren** te downloaden van de resultaten van de logboekbestanden voor de uitgevoerde testcases verder aan de hand van uw antwoorden op de vragenlijst. De resultaten in dezelfde container als de virtuele harde schijven kunt opslaan.
+Klik ten slotte op **rapport genereren** om de test resultaten en logboek bestanden voor de uitgevoerde test cases te downloaden naast uw antwoorden op de vragen lijst. Sla de resultaten op in dezelfde container als uw VHD (s).
 
-![Testresultaten voor certificering opslaan](./media/publishvm_031.png)
+![Resultaten van certificerings test opslaan](./media/publishvm_031.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Vervolgens wordt u [een uniform resource-id's (URI) genereren voor elke VHD](./cpp-get-sas-uri.md) dat u verzendt naar de marketplace. 
+Vervolgens [genereert u een Uniform Resource Identifier (URI) voor elke VHD](./cpp-get-sas-uri.md) die u naar de Marketplace verzendt. 

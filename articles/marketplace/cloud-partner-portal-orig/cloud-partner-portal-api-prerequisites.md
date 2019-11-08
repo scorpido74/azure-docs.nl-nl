@@ -1,71 +1,72 @@
 ---
 title: API-vereisten | Azure Marketplace
-description: Vereisten voor met behulp van de Cloud Partner Portal-API's.
+description: Vereisten die van de Cloud Partner-portal Api's zijn.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: a973ab0a406168756af61900fd35947c8be6d03b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3c2d89d3c3561e86047529e5b284e4481fc1652
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935385"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819701"
 ---
 <a name="api-prerequisites"></a>API-vereisten
 ================
 
-Er zijn twee vereist programmatische activa die u wilt gebruiken de API's voor Cloud Partner-Portal: een service-principal en een Azure Active Directory (Azure AD)-toegangstoken.
+Er zijn twee vereiste programmeer middelen die u nodig hebt voor het gebruik van de Cloud Partner-portal-Api's: een Service-Principal en een Azure Active Directory Azure AD-toegangs token.
 
 
-<a name="create-a-service-principal-in-your-azure-active-directory-tenant"></a>Een service-principal maken in uw Azure Active Directory-tenant
+<a name="create-a-service-principal-in-your-azure-active-directory-tenant"></a>Een service-principal maken in uw Azure Active Directory-Tenant
 ----------------------------------------------------------------
 
-Eerst moet u een serviceprincipal maken in uw Azure AD-tenant. Deze tenant krijgt een eigen set machtigingen in de Cloud Partner-Portal. Uw code wordt aangeroepen met behulp van API's als deze tenant in plaats van met uw persoonlijke gegevens.  Zie voor een volledige uitleg over het maken van een service-principal, [portal gebruiken voor het maken van een Azure Active Directory-toepassing en service-principal die toegang hebben tot resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+Eerst moet u een service-principal maken in uw Azure AD-Tenant. Aan deze Tenant wordt een eigen set machtigingen toegewezen in de Cloud Partner-portal. De code roept Api's aan die als deze Tenant worden gebruikt in plaats van uw persoonlijke referenties te gebruiken.  Zie [Portal gebruiken om een Azure Active Directory toepassing en Service-Principal te maken voor toegang tot resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)voor een volledige uitleg bij het maken van een service-principal.
 
 
-<a name="add-the-service-principal-to-your-account"></a>De service-principal toevoegen aan uw account
+<a name="add-the-service-principal-to-your-account"></a>De Service-Principal toevoegen aan uw account
 -----------------------------------------
 
-Nu dat u de service principal in uw tenant gemaakt hebt, kunt u deze als een gebruiker toevoegen aan uw account Cloud Partner-Portal. Net als een gebruiker, kan de service-principal zijn een eigenaar of Inzender van de portal.
+Nu u de Service-Principal in uw Tenant hebt gemaakt, kunt u deze als een gebruiker aan uw Cloud Partner-portal-account toevoegen. Net als bij een gebruiker kan de service-principal een eigenaar of een bijdrager aan de portal zijn.
 
-Gebruik de volgende stappen uit om toe te voegen van de service-principal:
+Gebruik de volgende stappen om de Service-Principal toe te voegen:
 
-1. Meld u bij de Cloud Partner-Portal. 
-2. Klik op **gebruikers** op de menubalk linksboven en kies **gebruiker toevoegen**.
+1. Meld u aan bij de Cloud Partner-portal. 
+2. Klik op **gebruikers** op de linker menu balk en kies **gebruiker toevoegen**.
 
    ![Een gebruiker toevoegen aan de portal](./media/cloud-partner-portal-api-prerequisites/add-user.jpg)
 
-3. Uit de **Type** vervolgkeuzelijst **Service-Principal** en voeg de volgende gegevens toe:
+3. Selecteer in de vervolg keuzelijst **type** de optie **Service-Principal** en voeg de volgende gegevens toe:
 
--   Een **beschrijvende naam** voor de service-principal, bijvoorbeeld `spAccount`.
--   De **toepassings-ID**. Als u deze id zoekt, gaat u naar de [Azure Portal](https://portal.azure.com), klikt u op **Azure Active Directory**, kiest u **App-registraties**, en klikt u op uw app.
--   De **Tenant-ID**, ook wel bekend als de **map-ID**, voor uw Azure AD-tenant. U kunt deze id vinden in de Azure Active Directory-pagina in de [Azure-portal](https://portal.azure.com)onder **eigenschappen**.
--   De **Object-ID** voor uw service-principal-object. U kunt deze id ophalen uit de Azure-portal. Ga naar **Azure Active Directory**, kiest u **App-registraties**, klikt u op uw app en klik op de naam van de app onder **beheerde toepassing in lokale map**. Ga vervolgens naar de **eigenschappen** pagina, naar de Object-ID. Zorg ervoor dat u bent niet de gegevens uit de oorspronkelijke Object-ID die zich op uw app, maar in plaats daarvan de Object-ID in de beheerde toepassing formulieren.
--   De **rol** die zijn gekoppeld aan het account dat wordt gebruikt voor RBAC.
+-   Een **beschrijvende naam** voor de Service-Principal, bijvoorbeeld `spAccount`.
+-   De **toepassings-id**. Als u deze id wilt vinden, gaat u naar [Azure Portal](https://portal.azure.com), klikt u op **Azure Active Directory**, kiest u **app-registraties**en klikt u op uw app.
+-   De **Tenant-id**, ook wel de **Directory-id**genoemd, voor uw Azure AD-Tenant. U kunt deze id vinden op de pagina Azure Active Directory in het [Azure Portal](https://portal.azure.com)onder **Eigenschappen**.
+-   De **object-id** voor uw Service-Principal-object. U kunt deze id ophalen van de Azure Portal. Ga naar **Azure Active Directory**, kies **app-registraties**, klik op uw app en klik op de naam van de app onder **beheerde toepassing in de lokale map**. Ga vervolgens naar de pagina **Eigenschappen** om de object-id te vinden. Zorg ervoor dat u de eerste object-ID die in uw app is, niet vastmaakt, maar in plaats daarvan de object-ID in de beheerde toepassing.
+-   De **rol** die is gekoppeld aan het account, dat wordt gebruikt voor RBAC.
 
      ![Een beheerde app toevoegen aan de portal](./media/cloud-partner-portal-api-prerequisites/managedapp.png)
 
-1. Klik op **toevoegen** de service-principal toevoegen aan uw account.
+1. Klik op **toevoegen** om de Service-Principal toe te voegen aan uw account.
 
-   ![Een service-principal toevoegen](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
+   ![Een Service-Principal toevoegen](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
 
 
-<a name="get-an-azure-ad-access-token"></a>Een Azure AD-toegangstoken verkrijgen
+<a name="get-an-azure-ad-access-token"></a>Een Azure AD-toegangs Token ophalen
 ----------------------------
 
-De Cloud Partner Portal-API's maken gebruik van de volgende elementen en protocollen tijdens de verificatie:
+De Cloud Partner-portal-Api's gebruiken de volgende assets en protocollen tijdens de verificatie:
 
-- Een JSON Web Token (JWT) bearer-token voor het aanvragen van toegang tot resources
-- De [OpenID Connect](https://openid.net/connect/) (OIDC)-protocol om identiteit te verifiëren
-- [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) als de identiteit-instantie
+- Een JSON Web Token (JWT) Bearer-token om toegang tot resources aan te vragen
+- Het [OpenID Connect Connect](https://openid.net/connect/) (OIDC)-protocol om identiteit te verifiëren
+- [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) als de identiteits instantie
 
-Er zijn twee benaderingen van principe programmatisch ophalen van een JWT-token:
+Er zijn twee principe benaderingen voor het programmatisch ophalen van een JWT-token:
 
-- De Microsoft Authentication Library voor .NET gebruiken ([MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)).  Deze benadering van een hoger niveau wordt aanbevolen voor .NET-ontwikkelaars. 
-- Controleer een **HTTP POST** aanvraag naar de Azure AD oauth **token** eindpunt, waarbij het formulier:
+- Gebruik de micro soft Authentication Library voor .NET ([MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)).  Deze methode op hoger niveau wordt aanbevolen voor .NET-ontwikkel aars. 
+- Een **http post-** aanvraag indienen bij het Azure AD OAuth- **token** eind punt, waarbij de volgende indeling wordt gebruikt:
 
 ``` HTTP
 POST https://login.microsoftonline.com/<tenant-id>/oauth2/token
@@ -75,7 +76,7 @@ POST https://login.microsoftonline.com/<tenant-id>/oauth2/token
     resource: https://cloudpartner.azure.com
 ```
 
-Nu kunt u dit token doorgeven als onderdeel van de autorisatie-header voor API-aanvragen.
+U kunt dit token nu door geven als onderdeel van de autorisatie-header voor API-aanvragen.
 
 ``` HTTP
 GET https://cloudpartner.azure.com/api/offerTypes?api-version=2016-08-01-preview 
@@ -83,6 +84,6 @@ GET https://cloudpartner.azure.com/api/offerTypes?api-version=2016-08-01-preview
     Authorization: Bearer <access-token>
 ```
 > [!NOTE]
-> Voor alle API's in deze documentatie, wordt de autorisatie-header altijd uitgegaan doorgegeven, zodat deze niet wordt vermeld.
+> Voor alle Api's in deze Naslag informatie wordt de autorisatie-header altijd verondersteld door gegeven, zodat deze niet expliciet wordt vermeld.
 
-Als u verificatiefouten in uw aanvraag, Zie [verificatiefouten oplossen](./cloud-partner-portal-api-troubleshooting-authentication-errors.md).
+Zie [problemen oplossen met verificatie fouten](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)als u verificatie fouten in uw aanvraag uitvoert.

@@ -4,15 +4,16 @@ description: Hierin wordt uitgelegd hoe u de technische activa voor een aanbiedi
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: pabutler
-ms.openlocfilehash: c1ef00f846dfad76629b0603ab79fba17249417c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 45d0ff5b7b3fea1566b13b61bd01cc17da61e4b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224531"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824513"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Technische activa maken voor een aanbieding van een virtuele machine
 
@@ -46,15 +47,15 @@ Het ontwerpen, bouwen en testen van deze assets vergt tijd en vereist technische
 
 Kies een of beide van de volgende script omgevingen om Vhd's en Vm's te beheren:
 -   [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
--   [Azure-CLI](https://docs.microsoft.com/cli/azure)
+-   [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 Daarnaast raden wij aan de volgende hulpprogram ma's toe te voegen aan uw ontwikkel omgeving: 
 
 -   [Azure-opslagverkenner](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Switch [Azure Resource Manager-Hulpprogram Ma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Switch [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Switch [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+    *   Extensie: [Azure Resource Manager-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Extensie: [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *   Extensie: [PRETTIFY JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 We raden u ook aan om de beschik bare hulpprogram ma's op de [Azure Ontwikkelhulpprogramma's](https://azure.microsoft.com/tools/) -pagina te bekijken en als u Visual Studio, de [Visual Studio Marketplace](https://marketplace.visualstudio.com/), gebruikt.
 

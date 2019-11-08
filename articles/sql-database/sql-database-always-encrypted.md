@@ -1,5 +1,5 @@
 ---
-title: 'Always Encrypted: Azure SQL Database-Windows-certificaat archief '
+title: Always Encrypted-Windows-certificaat archief
 description: Dit artikel laat u zien hoe u met behulp van de wizard Always Encrypted in SQL Server Management Studio (SSMS) gevoelige gegevens kunt beveiligen in een SQL database met database versleuteling. U ziet ook hoe u de versleutelings sleutels opslaat in het Windows-certificaat archief.
 keywords: versleutelen van gegevens, SQL-versleuteling, database versleuteling, gevoelige gegevens Always Encrypted
 services: sql-database
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 03/08/2019
-ms.openlocfilehash: e19055f83ef9b943d5ac0068d38b4f58a2b3b17c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 82c3c3274a8a9d66019ce906ee7be47cedac7470
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691227"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822044"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: gevoelige gegevens beveiligen en versleutelings sleutels opslaan in het Windows-certificaat archief
 

@@ -140,78 +140,20 @@
   items:
     - name: AU PROTECTED
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: IaaS-webtoepassing
-          href: ../blueprints/au-protected-iaaswa-overview.md
-        - name: PaaS-webtoepassing
-          href: ../blueprints/au-protected-paaswa-overview.md
     - name: FedRAMP
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Gegevensanalyse
-          href: ../blueprints/fedramp-analytics-overview.md
-        - name: Datawarehouse
-          href: ../blueprints/fedramp-datawarehouse-overview.md
-        - name: IaaS-webtoepassing
-          href: ../blueprints/fedramp-iaaswa-overview.md
-        - name: PaaS-webtoepassing
-          href: ../blueprints/fedramp-paaswa-overview.md
     - name: FFIEC
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Gegevensanalyse
-          href: ../blueprints/ffiec-analytics-overview.md
-        - name: Datawarehouse
-          href: ../blueprints/ffiec-dw-overview.md
-        - name: IaaS-webtoepassing
-          href: ../blueprints/ffiec-iaaswa-overview.md
-        - name: PaaS-webtoepassing
-          href: ../blueprints/ffiec-paaswa-overview.md
     - name: HIPAA/HITRUST
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Statusgegevens en AI
-          href: ../blueprints/azure-health.md
     - name: NIST SP 800-171
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Gegevensanalyse
-          href: ../blueprints/nist171-analytics-overview.md
-        - name: Datawarehouse
-          href: ../blueprints/nist171-datawarehouse-overview.md
-        - name: IaaS-webtoepassing
-          href: ../blueprints/nist171-iaaswa-overview.md
-        - name: PaaS-webtoepassing
-          href: ../blueprints/nist171-paaswa-overview.md
     - name: PCI DSS
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Gegevensanalyse
-          href: ../blueprints/pcidss-analytics-overview.md
-        - name: Datawarehouse
-          href: ../blueprints/pcidss-dw-overview.md
-        - name: IaaS-webtoepassing
-          href: ../blueprints/pcidss-iaaswa-overview.md
-        - name: PaaS-webtoepassing
-          href: ../blueprints/pcidss-paaswa-overview.md
     - name: UK NHS
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Gegevensanalyse
-          href: ../blueprints/uknhs-analytics-overview.md
-        - name: Datawarehouse
-          href: ../blueprints/uknhs-datawarehouse-overview.md
-        - name: IaaS-webtoepassing
-          href: ../blueprints/uknhs-iaaswa-overview.md
-        - name: PaaS-webtoepassing
-          href: ../blueprints/uknhs-paaswa-overview.md
     - name: UK OFFICIAL
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: IaaS-webtoepassing
-          href: ../blueprints/ukofficial-iaaswa-overview.md
-        - name: PaaS-webtoepassing
-          href: ../blueprints/ukofficial-paaswa-overview.md
 - name: Technische documenten over beveiliging
   href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Azure-beveiligingsservices

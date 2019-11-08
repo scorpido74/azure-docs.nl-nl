@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Sync
+title: Gegevens synchroniseren
 description: In dit overzicht worden Azure-SQL Data Sync geïntroduceerd
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 925977edf267510399dc631f0d0efe5fc1941803
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d69378b2e791732fb478a66f226c6269e2c515f3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687051"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820824"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Gegevens synchroniseren tussen meerdere Cloud-en on-premises data bases met SQL Data Sync
 
@@ -67,7 +67,7 @@ Een synchronisatie groep heeft de volgende eigenschappen:
 
 ## <a name="how-does-data-sync-work"></a>Hoe werkt gegevens synchronisatie?
 
-- **Wijzigingen in de gegevens bijhouden:** Gegevens synchronisatie houdt wijzigingen bij met behulp van INSERT-, update-en delete-triggers. De wijzigingen worden vastgelegd in een tabel aan de kant van de gebruikers database. Houd er rekening mee dat BULK INSERT triggers standaard niet worden geactiveerd. Als FIRE_TRIGGERS niet is opgegeven, worden er geen invoeg triggers uitgevoerd. Voeg de optie FIRE_TRIGGERS toe zodat de gegevens synchronisatie deze toevoegingen kan bijhouden. 
+- **Wijzigingen in de gegevens bijhouden:** Gegevens synchronisatie houdt wijzigingen bij met behulp van INSERT-, update-en delete-triggers. De wijzigingen worden vastgelegd in een tabel aan de kant van de gebruikers database. Houd er rekening mee dat BULK INSERT triggers standaard niet worden geactiveerd. Als FIRE_TRIGGERS niet is opgegeven, worden er geen invoeg triggers uitgevoerd. Voeg de FIRE_TRIGGERS optie toe, zodat gegevens synchronisatie deze toevoegingen kan bijhouden. 
 - **Gegevens synchroniseren:** Gegevens synchronisatie is ontworpen in een hub-en spoke-model. De hub wordt met elk lid afzonderlijk gesynchroniseerd. Wijzigingen van de hub worden gedownload naar het lid en vervolgens worden wijzigingen van het lid geüpload naar de hub.
 - **Conflicten oplossen:** Gegevens synchronisatie biedt twee opties voor het oplossen van conflicten, *hub WINS* of *lid van WINS*.
   - Als u *hub WINS*selecteert, worden wijzigingen in het lid altijd overschreven door de wijzigingen in de hub.
@@ -129,7 +129,7 @@ Het inrichten en verwijderen van de inrichting tijdens het maken van een synchro
 ### <a name="general-limitations"></a>Algemene beperkingen
 
 - Een tabel kan geen identiteits kolom hebben die niet de primaire sleutel is.
-- Een primaire sleutel kan niet de volgende gegevens typen bevatten: sql_variant, binary, varbinary, Image, XML. 
+- Een primaire sleutel kan niet de volgende gegevens typen bevatten: sql_variant, binary, varbinary, image en XML. 
 - Wees voorzichtig wanneer u de volgende gegevens typen als primaire sleutel gebruikt, omdat de ondersteunde precisie alleen geldt voor de tweede: time, datetime, DATETIME2, date time offset.
 - De namen van objecten (data bases, tabellen en kolommen) mogen niet de periode van het afdruk bare teken (.), het linker vier Kante haakje ([) of de rechter rechte haak (]) bevatten.
 - Azure Active Directory-verificatie wordt niet ondersteund.

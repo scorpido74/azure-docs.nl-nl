@@ -1,5 +1,5 @@
 ---
-title: Beveiligings gegevens (preview) instellen om telefoon gesprekken te gebruiken-Azure Active Directory | Microsoft Docs
+title: Beveiligings gegevens instellen (preview) voor telefoon gesprekken-Azure AD
 description: Uw beveiligings gegevens instellen om uw identiteit te verifiëren met behulp van telefoon gesprekken.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b28330f8e81efbb496fb30a14e8ae10415ded27f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a5dc5ec06e60112e69a31d1ce4c69e698576609f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160743"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803803"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>Beveiligings gegevens instellen (preview) voor het gebruik van telefoon gesprekken
 
@@ -94,7 +94,7 @@ Als u wilt dat telefoon gesprekken de standaard methode zijn die wordt gebruikt 
 
     ![Methode kiezen voor standaard aanmelding](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-    De standaard methode voor het aanmelden bij de **telefoon oproep ( *_your_phone_number_* )** .
+    De standaard methode voor het aanmelden bij de **telefoon oproep ( *_your_phone_number_* )** wordt gebruikt.
 
 ## <a name="additional-security-info-methods"></a>Aanvullende beveiligings gegevens methoden
 

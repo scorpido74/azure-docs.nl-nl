@@ -1,19 +1,20 @@
 ---
-title: Verbindings problemen oplossen met Microsoft Azure SQL Database | Microsoft Docs
+title: Verbindings problemen oplossen
 description: Hierin wordt beschreven hoe u verbindings problemen in Azure SQL Database kunt oplossen.
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
+ms.custom: seo-lt-2019
 author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 9de6d85e1fc54d60f999cfa18665067b3998a432
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 20988296b5eac7152c53abd6d238043288feacc8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390665"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807277"
 ---
 # <a name="troubleshooting-connectivity-issues-with-microsoft-azure-sql-database"></a>Verbindings problemen oplossen met Microsoft Azure SQL Database
 
@@ -28,9 +29,9 @@ U ontvangt foutberichten wanneer het verbinden met Azure SQL Database mislukt. D
 Los dit probleem als volgt op:
 
 1. Raadpleeg het [dash board](https://status.azure.com/status) van de Microsoft Azure-service voor eventuele bekende storingen. 
-2. Als er geen bekende storingen zijn, gaat u naar de [ondersteunings website van Microsoft Azure](http://azure.microsoft.com/support/options) om een ondersteunings aanvraag te openen.
+2. Als er geen bekende storingen zijn, gaat u naar de [ondersteunings website van Microsoft Azure](https://azure.microsoft.com/support/options) om een ondersteunings aanvraag te openen.
 
-Zie [problemen oplossen met de fout ' Data Base op server is momenteel niet beschikbaar '](https://docs.microsoft.com/azure/sql-database/sql-database-troubleshoot-common-connection-issues#troubleshoot-transient-errors)voor meer informatie.
+Zie [problemen oplossen met de fout ' Data Base op server is momenteel niet beschikbaar '](sql-database-troubleshoot-common-connection-issues.md#troubleshoot-transient-errors)voor meer informatie.
 
 ## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server"></a>Er is een netwerkgerelateerde of exemplaar-specifieke fout opgetreden bij het maken van een verbinding met SQL Server
 
@@ -129,7 +130,7 @@ De service beheerder kan doorgaans de volgende stappen gebruiken om de aanmeldin
    ```
    
    > [!NOTE]
-   > U kunt ook `sp_addrolemember` gebruiken om specifieke gebruikers toe te wijzen aan specifieke database rollen.
+   > U kunt `sp_addrolemember` ook gebruiken om specifieke gebruikers toe te wijzen aan specifieke database rollen.
 
 Zie [data bases en aanmeldingen beheren in Azure SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)voor meer informatie.
 
@@ -188,7 +189,7 @@ Ga op een van de volgende manieren te werk om dit probleem op te lossen:
   > [!NOTE]
   > Dit is een minimale aanpak waarmee het probleem mogelijk niet kan worden opgelost.
 
-  1. Voer de volgende SQL-query uit om de weer gave [sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) te controleren om blokkerings aanvragen weer te geven:
+  1. Voer de volgende SQL-query uit om de weer gave [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) te controleren om blokkerings aanvragen weer te geven:
 
              ```
              SELECT * FROM dm_exec_requests
@@ -197,7 +198,7 @@ Ga op een van de volgende manieren te werk om dit probleem op te lossen:
   2. Bepaal de **invoer buffer** voor de hoofd blok kering.
   3. Stem de hoofd blok-query af.
 
-    Voor een uitgebreide probleemoplossings procedure, Zie [is mijn query wordt in de Cloud verfijnd?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+    Voor een uitgebreide probleemoplossings procedure, Zie [is mijn query wordt in de Cloud verfijnd?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 * Als de data base consequent de limiet heeft bereikt ondanks het blok keren van blokkeringen en langlopende query's, kunt u overwegen om een upgrade uit te voeren naar een van de nieuwe Preview-versies (zoals [Standard of Premium Edition](https://azure.microsoft.com/pricing/details/sql-database/)).
 
@@ -265,7 +266,7 @@ U kunt de volgende stappen gebruiken om het probleem op te lossen of om extra op
 
 Als u deze fout herhaaldelijk ondervindt, kunt u proberen om het probleem op te lossen door de volgende stappen uit te voeren: 
 
-1. Controleer de weer gave sys. DM _exec_requests om geopende sessies met een hoge waarde voor de kolom total_elapsed_time te bekijken. Voer deze controle uit door het volgende SQL-script uit te voeren:
+1. Controleer de weer gave sys. dm_exec_requests om geopende sessies met een hoge waarde voor de total_elapsed_time kolom te bekijken. Voer deze controle uit door het volgende SQL-script uit te voeren:
 
    ```
    SELECT * FROM dm_exec_requests
@@ -275,7 +276,7 @@ Als u deze fout herhaaldelijk ondervindt, kunt u proberen om het probleem op te 
 
 U kunt ook uw query's batcheren. Zie voor meer informatie over batch verwerking [batch verwerking gebruiken om de prestaties van SQL database-toepassingen te verbeteren](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance).
 
-Voor een uitgebreide probleemoplossings procedure, Zie [is mijn query wordt in de Cloud verfijnd?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Voor een uitgebreide probleemoplossings procedure, Zie [is mijn query wordt in de Cloud verfijnd?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>Fout 40551: de sessie is beëindigd vanwege het overmatige gebruik van TEMPDB
 
@@ -311,7 +312,7 @@ Probeer de volgende methoden om dit op te lossen:
 
 U kunt dit probleem omzeilen door de query te optimaliseren.
 
-Voor een uitgebreide probleemoplossings procedure, Zie [is mijn query wordt in de Cloud verfijnd?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Voor een uitgebreide probleemoplossings procedure, Zie [is mijn query wordt in de Cloud verfijnd?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 
 ### <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>Kan de data base ' Master ' die door de aanmelding is aangevraagd, niet openen. De aanmelding is mislukt.
@@ -336,7 +337,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-Wanneer de uitzonde ring wordt geactiveerd door query problemen, ziet u een aanroep stack die er ongeveer als volgt uitzien (Let op de verwijzing naar de klasse **SqlCommand** ). In dit geval kunt [u uw query's afstemmen](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Wanneer de uitzonde ring wordt geactiveerd door query problemen, ziet u een aanroep stack die er ongeveer als volgt uitzien (Let op de verwijzing naar de klasse **SqlCommand** ). In dit geval kunt [u uw query's afstemmen](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()
@@ -364,7 +365,7 @@ Zie [SQL Server verbindings gegevens ophalen](https://docs.microsoft.com/azure/s
 
 5. Zorg ervoor dat de logica voor opnieuw proberen is ingesteld als best practice. Zie [problemen met tijdelijke fouten en verbindings SQL database fouten oplossen](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues)voor meer informatie over logica voor opnieuw proberen.
 
-Als u met deze stappen het probleem niet kunt oplossen, kunt u proberen om meer gegevens te verzamelen en vervolgens contact op te nemen met de ondersteuning. Als uw toepassing een Cloud service is, schakelt u logboek registratie in. Deze stap retourneert een UTC-tijds tempel van de fout. Daarnaast retourneert SQL Azure de tracerings-ID. [Micro soft Customer Support Services](http://azure.microsoft.com/support/options/) kan deze informatie gebruiken. 
+Als u met deze stappen het probleem niet kunt oplossen, kunt u proberen om meer gegevens te verzamelen en vervolgens contact op te nemen met de ondersteuning. Als uw toepassing een Cloud service is, schakelt u logboek registratie in. Deze stap retourneert een UTC-tijds tempel van de fout. Daarnaast retourneert SQL Azure de tracerings-ID. [Micro soft Customer Support Services](https://azure.microsoft.com/support/options/) kan deze informatie gebruiken. 
 
 Zie [logboek registratie van diagnostische gegevens inschakelen voor apps in azure app service](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/)voor meer informatie over het inschakelen van logboek registratie.
 

@@ -1,44 +1,45 @@
 ---
-title: Azure Marketplace SEO-richtlijnen
-description: Biedt richtlijnen voor het maximaliseren van zoekmachines (SEO).
+title: SEO-richt lijnen voor Azure Marketplace
+description: Biedt hulp bij het maximaliseren van de optimalisatie van zoek machines (SEO).
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: pabutler
-ms.openlocfilehash: f5b956ed1197e3898c9536bda3a93a41e8ee35c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7115798faadc3209413d22a384433417ec0ddff0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935131"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819585"
 ---
-# <a name="azure-marketplace-seo-guidance"></a>Azure Marketplace SEO-richtlijnen
+# <a name="azure-marketplace-seo-guidance"></a>SEO-richt lijnen voor Azure Marketplace
 
-Dit artikel wordt uitgelegd hoe u kunt optimaliseren, zichtbaarheid van uw aanbieding via de zoekfunctie in de [Azure Marketplace](https://azuremarketplace.microsoft.com) en [AppSource](https://appsource.microsoft.com). 
+In dit artikel wordt uitgelegd hoe u de vind baarheid van uw aanbod kunt optimaliseren via de zoek functionaliteit in [Azure Marketplace](https://azuremarketplace.microsoft.com) en [AppSource](https://appsource.microsoft.com). 
 
 
-## <a name="general-explanation-of-algorithm"></a>Algemene uitleg van het algoritme
+## <a name="general-explanation-of-algorithm"></a>Algemene uitleg van algoritme
 
-Microsoft-marktplaatsen gebruikmaken van Azure Search voor het aansturen van de zoekmogelijkheden van de site. Het algoritme is gebaseerd op termijn frequentie – inverse document frequentie ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). De standaard [Lucene Analyzer](https://lucene.apache.org/core/) wordt gebruikt.
+Micro soft marketplaces gebruiken Azure Cognitive Search om de zoek mogelijkheden van de site uit te scha kelen. De algoritme is gebaseerd op de term frequentie – inverse document frequentie ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). De standaard- [lucene Analyzer](https://lucene.apache.org/core/) wordt gebruikt.
 
-In het algemeen alle tekst velden, categorieën en industrieën en opgenomen in de weightage van de volgorde van relevantie. Vaktermen die zelden worden gebruikt door apps, maar vaak in uw app genereert een hogere score in de overeenkomst met zoeken. Met inbegrip van termen, zoals 'VM' zou weinig voordeel bieden dat 'Azure search' zou worden nog veel meer gespecialiseerd.
-Hieronder vindt u de meest relevante velden om te overwegen.
+In het algemeen zijn dit alle tekst velden, categorieën en branches en opgenomen in het gewicht van de relevantie. Gespecialiseerde termen die niet veelvuldig worden gebruikt door apps, maar die vaak in uw app voor komen, genereren een hogere overeenkomst met zoeken. Met inbegrip van termen als ' VM ' zou u dus weinig voor deel kunnen bieden, terwijl ' Azure Search ' veel meer specialistisch is.
+Hieronder vindt u de meest relevante velden waarmee u rekening moet houden.
 
  
-|  Veld                   | Urgentie | Richtlijnen                                                                                            |
+|  Veld                   | Relevantie | Richtlijnen                                                                                            |
 |  --------------------    | ----------                   | ---------------                                                                   |
-| Naam van aanbieding:               |  Hoog      | Exacte of dicht bij een volledige overeenkomst met search query resulteert in hoge classificatie.                       |
-| De naam van uitgever           |  Hoog      | Exacte of dicht bij een volledige overeenkomst met search query resulteert in hoge classificatie.                       |
-| Korte beschrijving        |  Gemiddeld    | Naamgeving van apps en uitgever opgegeven namen wordt bijna een hoge ranking garanderen, kan dit niet het meest relevant. In dit geval is een korte beschrijving essentieel. De tekst behouden beknopt en het herstelpunt. Trefwoorden en verwachte zoektermen moeten worden opgenomen voor de beste resultaten.  Bijvoorbeeld "Dit is de beste Retail POS volledig gebaseerd op Dynamics 365" is minder effectief dan ' Retail POS (punt van verkoop) voor Dynamics 365 ".  | 
-| Lange beschrijving         |  Laag       | Beschrijving biedt een manier om dieper. De beschrijvingen van de meest effectieve redelijke lengte en trefwoorden worden gebruikt.  Een aan de-punten beschrijvingen met trefwoorden profiteren meer dan lang lange tekst. Zorg ervoor dat belangrijkste termen, zoals 'IoT' zijn aanwezig in de beschrijving.  |
-| Productcategorieën       | Gemiddeld     |  Productcategorieën worden bepaald door een combinatie van opties van de uitgever en Microsoft. Selecteer deze categorieën op de juiste wijze, zodat gebruikers de apps in de juiste categorie eenvoudig kunnen vinden. |
+| Naam van aanbieding               |  Hoog      | Nauw keurig of nauw keurig voor een volledige overeenkomst met de zoek query resulteert in een hoge rang schikking.                       |
+| Naam van de uitgever           |  Hoog      | Nauw keurig of nauw keurig voor een volledige overeenkomst met de zoek query resulteert in een hoge rang schikking.                       |
+| Korte beschrijving        |  Middelgroot    | Als de naam van de apps en de naam van de uitgever bijna een hoge prioriteit heeft, is het mogelijk niet het meest relevant. In dit geval is een korte beschrijving essentieel. Zorg ervoor dat de tekst beknopt en op het punt wordt bewaard. Tref woorden en verwachte zoek termen moeten worden opgenomen voor het beste resultaat.  Dit is bijvoorbeeld de beste verkoop POS die volledig op Dynamics 365 is gebouwd, is minder effectief dan Retail POS (verkoop punt) voor Dynamics 365.  | 
+| Lange beschrijving         |  Laag       | Beschrijving biedt een manier om meer dieper te gaan. De meest efficiënte beschrijvingen zijn van redelijke lengte en tref woorden worden gebruikt.  Een op-de-punt beschrijvingen die gebruikmaken van tref woorden, profiteren van meer dan lange, langdurige tekst. Zorg ervoor dat de belang rijke voor waarden, zoals IoT, aanwezig zijn in de beschrijving.  |
+| Productcategorieën       | Middelgroot     |  Product categorieën worden bepaald door een combi natie van Publisher-keuzes en micro soft. Selecteer deze categorieën op de juiste manier zodat gebruikers de apps in de juiste categorie eenvoudig kunnen vinden. |
 |  |  |  |
 
 
-## <a name="other-tips"></a>Andere Tips
+## <a name="other-tips"></a>Andere tips
 
--   Search stelt de zware gebruikersactiviteit opgehaald. Bepaalt de volgorde van overeenkomsten op basis van app-naam/uitgever. Korte beschrijving wordt het sleutelveld voor wanneer de zoekterm niet exact overeenkomt met de naam van uitgever/app is.
--   Documenten downloaden zijn niet opgenomen in weightage zoeken.
--   Uw apps daadwerkelijke aanschaf en het gebruik is van invloed op search ook classificeren. Bijvoorbeeld, krijgt twee gelijkwaardige apps waarbij een aanzienlijk meer gebruikers heeft een hogere ranking.
+-   Met zoek suggesties krijgt u een zware gebruikers activiteit. Hiermee worden prioriteiten in overeenstemming met de app-naam/Uitgever gegeven. Een korte beschrijving wordt het sleutel veld voor wanneer de zoek term niet exact overeenkomt met de naam van de uitgever/app.
+-   Documenten die worden gedownload, worden niet opgenomen in de zoek functie voor gewichten.
+-   De werkelijke aanschaf en het gebruik van uw apps heeft ook invloed op de zoek classificatie. Bijvoorbeeld: twee equivalente apps waarbij één veel meer gebruikers heeft, krijgen een hogere prioriteit.

@@ -1,76 +1,77 @@
 ---
-title: SKU's voor een Azure Containers-installatiekopie | Azure Marketplace
-description: SKU's voor een Azure-container configureren.
+title: Sku's voor een installatie kopie van Azure containers | Azure Marketplace
+description: Sku's configureren voor een Azure-container.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 6953329bfabe99fc4bb28f2494cb412ba9cbbba0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b69eea8ad7fd4c62925b50434b653118890e280
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942910"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823149"
 ---
-# <a name="container-skus-tab"></a>Container-SKU's tabblad
+# <a name="container-skus-tab"></a>Het tabblad container Sku's
 
-De **SKU's** tabblad van de **nieuwe aanbieding** pagina kunt u een of meer SKU's maken en deze koppelt aan uw nieuwe aanbieding.  U kunt verschillende SKU's gebruiken om te onderscheiden van een oplossing door functiesets, factureringsmodellen of andere kenmerken.
+Op het tabblad **sku's** van de pagina **nieuwe aanbieding** kunt u een of meer sku's maken en deze koppelen aan uw nieuwe aanbieding.  U kunt verschillende Sku's gebruiken om een oplossing te onderscheiden van functie sets, facturerings modellen of andere kenmerken.
 
 ## <a name="sku-settings"></a>SKU-instellingen
 
-Wanneer u het maken van een nieuwe aanbieding start, er zijn niet alle SKU's die zijn gekoppeld aan de aanbieding. Volg deze stappen voor het maken van een nieuwe SKU:
+Wanneer u begint met het maken van een nieuwe aanbieding, zijn er geen Sku's gekoppeld aan de aanbieding. Voer de volgende stappen uit om een nieuwe SKU te maken:
 
-1. Selecteer in het tabblad SKU's **nieuwe Voorraadeenheid**
+1. Op het tabblad Sku's selecteert u **nieuwe SKU**
 
    ![Nieuwe SKU-prompt](./media/containers-sku-settings.png)
 
-2. Geef de vereiste SKU en container-gegevens. Elke SKU correspondeert met een containerinstallatiekopie. Er zijn twee onderdelen naar een SKU:
+2. Geef de vereiste SKU-en container informatie op. Elke SKU komt overeen met een container installatie kopie. Er zijn twee onderdelen voor een SKU:
 
-    -   SKU-metagegevens
-    -   Metagegevenscontainer
-
-
-### <a name="sku-metadata"></a>SKU-metagegevens
-
-De SKU-metagegevens bevat storefront weergave-informatie voor de container-aanbieding.
-
-![SKU-metagegevens](./media/containers-sku-details.png)
+    -   SKU-meta gegevens
+    -   Meta gegevens van container
 
 
-### <a name="container-metadata"></a>Metagegevenscontainer
+### <a name="sku-metadata"></a>SKU-meta gegevens
 
-De containermetagegevens van de heeft de referentie-informatie van de gegevens van uw installatiekopie-opslagplaats in Azure Container Registry (ACR). Azure Marketplace wordt deze installatiekopie gekopieerd naar een Marketplace-specifieke, openbaar register en vervolgens de installatiekopie van het beschikbaar voor klanten na certificering. Alle aanvragen van de gebruiker van Azure gebruiken voor een Azure Marketplace-containerinstallatiekopie wordt uit openbare register van de Marketplace, geen ACR voldaan.
+De SKU-meta gegevens bevatten informatie over het weer geven van de container.
 
-![Metagegevenscontainer](./media/containers-image-repository.png)
+![SKU-meta gegevens](./media/containers-sku-details.png)
+
+
+### <a name="container-metadata"></a>Meta gegevens van container
+
+De meta gegevens van de container bevatten referentie gegevens van de opslag plaats Details van de installatie kopie in Azure Container Registry (ACR). Azure Marketplace kopieert deze installatie kopie naar een openbaar REGI ster dat specifiek is voor de Marketplace en maakt de installatie kopie na certificering beschikbaar voor klanten. Alle aanvragen van de Azure-gebruiker om een Azure Marketplace-container installatie kopie te gebruiken, worden aangeboden vanuit het open bare REGI ster van de Marketplace, niet ACR.
+
+![Meta gegevens van container](./media/containers-image-repository.png)
     
-De **installatiekopie opslagplaats Details** in het vorige scherm vastleggen van de volgende velden bevat.  Verplichte velden zijn indicted met een asterisk (*).
+De **Details van de installatie kopie opslagplaats** in de vorige scherm opname bevatten de volgende velden.  Vereiste velden worden gedicteerd door een asterisk (*).
 
--   **Abonnements-ID\***  -de Azure abonnements-ID waarin de ACR zich bevindt.
--   **De naam van resourcegroep\***  -naam van de resourcegroep van de ACR.
--   **Naam van het containerregister\***  -de ACR-naam.
--   **Naam van de opslagplaats\***  -naam van de opslagplaats. Nadat deze naam is ingesteld, kan deze waarde kan niet worden gewijzigd. Gebruik een unieke naam om te voorkomen dat een conflict met andere aanbiedingen in uw account.
--   **Gebruikersnaam\***  -de gebruikersnaam (admin-username) de ACR-installatiekopie.
--   **Wachtwoord\***  -het wachtwoord dat is gekoppeld aan de ACR-installatiekopie.
+-   **Abonnements-id\*** : de id van het Azure-abonnement waarin de ACR aanwezig is.
+-   De naam van de **resource groep\*** : de naam van de resource groep van de ACR.
+-   **Register naam\*** : de naam van de ACR.
+-   **Naam van opslag plaats\*** : de naam van de opslag plaats. Wanneer deze naam is ingesteld, kan deze waarde niet worden gewijzigd. Gebruik een unieke naam om een conflict met andere aanbiedingen in uw account te voor komen.
+-   **Gebruikers naam\*** : de gebruikers naam (gebruikers naam beheerder) die is gekoppeld aan de ACR-installatie kopie.
+-   **Wacht woord\*** : het wacht woord dat is gekoppeld aan de ACR-installatie kopie.
 
     >[!NOTE]
-    >De gebruikersnaam en wachtwoord zijn vereist om ervoor te zorgen dat partners toegang tot de ACR vermeld in het publicatieproces hebben.
+    >De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat partners toegang hebben tot de ACR die worden vermeld in het publicatie proces.
 
 
 ### <a name="image-version"></a>Installatiekopieversie
 
-Bij het publiceren van een containerinstallatiekopie, kunt u een of meer installatiekopielabels opgeven en SHA verwerkingen.
+Wanneer u een container installatie kopie publiceert, kunt u een of meer afbeeldings Tags en SHA-samen vattingen opgeven.
 
-**Tag Image\* of Digest**
+**\* of samen vatting van afbeeldings code**
  
-- Deze tag- of samenvattingsupdates moet bevatten een `latest` tag en een versietag (bijvoorbeeld beginnen met `xx.xx.xx-` waarbij xx is een getal). Ze moeten [manifest tags](https://github.com/estesp/manifest-tool) om u te richten op meerdere platforms. Alle tags waarnaar wordt verwezen door een manifest tag moeten ook worden toegevoegd, zodat we kunnen het uploaden. 
-- U kunt verschillende versies van de container met behulp van labels toevoegen. Alle tags manifest (met uitzondering van `latest`) moet beginnen met een `X.Y-` of `X.Y.Z-` waarbij X, Y, Z gehele getallen zijn. <br/> Bijvoorbeeld, als een `latest` label verwijst naar `1.0.1-linux-x64`, `1.0.1-linux-arm32`, en `1.0.1-windows-arm32`, deze tags moeten hier niet worden toegevoegd.
+- Deze tag of samen vatting moet een `latest`-tag en een versie label bevatten (bijvoorbeeld te beginnen met `xx.xx.xx-` waarbij XX een getal is). Ze moeten [manifest Tags](https://github.com/estesp/manifest-tool) zijn voor het richten op meerdere platforms. Alle labels waarnaar wordt verwezen door een manifest-tag, moeten ook worden toegevoegd, zodat ze kunnen worden geüpload. 
+- U kunt verschillende versies van de container met behulp van Tags toevoegen. Alle manifest Tags (met uitzonde ring van `latest`) moeten beginnen met `X.Y-` of `X.Y.Z-` waarbij X, Y, Z een geheel getal zijn. <br/> Als een `latest`-tag bijvoorbeeld verwijst naar `1.0.1-linux-x64`, `1.0.1-linux-arm32`en `1.0.1-windows-arm32`, moeten deze tags hier worden toegevoegd.
 
 >[!NOTE]
->Houd er rekening mee om toe te voegen een **tag testen** aan de installatiekopie, zodat u de installatiekopie tijdens het testen identificeren kunt.
+>Vergeet niet om een **test code** toe te voegen aan uw installatie kopie, zodat u de afbeelding tijdens het testen kunt identificeren.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de [Marketplace tabblad](./cpp-marketplace-tab.md) te maken van een marketplace-beschrijving van uw aanbieding. 
+Gebruik het [tabblad Marketplace](./cpp-marketplace-tab.md) om een beschrijving voor de Marketplace voor uw aanbieding te maken. 

@@ -1,43 +1,44 @@
 ---
-title: Pagina met inzichten voor Azure Marketplace
-description: Overzicht van de pagina met inzichten in de Cloud Partner-Portal voor Azure Marketplace.
+title: Pagina inzichten voor Azure Marketplace
+description: Overzicht van de pagina inzichten in Cloud Partner-portal voor Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 2cbe3b790197c3f71305e4cb21d0f37fe0404511
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1b8d716beec17b7da82968ede8d24ced348e04a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943490"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821512"
 ---
 # <a name="insights-page"></a>Pagina met inzichten
 
-De [ **Insights** ](https://cloudpartner.azure.com/#insights) pagina bevat de volgende sets dashboards om u te helpen meer informatie over en verkoop van uw marketplace-aanbiedingen te maximaliseren.  Elk dashboard wordt geopend via een tabblad van dezelfde naam aan de bovenkant van de pagina.
+De pagina [**inzichten**](https://cloudpartner.azure.com/#insights) bevat de volgende sets Dash boards die u helpen bij het inzicht in en maximaliseren van de verkoop van uw Marketplace-aanbiedingen.  Elk dash board wordt geopend via een tabblad met dezelfde naam en boven aan de pagina.
 
 
-|  **Dashboard**    |  **Weergegeven inhoud**               |
+|  **Dashboard**    |  **Weer gegeven inhoud**               |
 |  -------------    |  ---------------------               |
-| **Samenvatting**       | grafieken, trends en waarden van de cumulatieve gegevens met een overzicht van marketplace-activiteit voor aanbiedingen van de uitgever |
-| **Payout**        | betalingen en gerelateerde transacties in grafische en downloadbare indelingen |
-| **Orders en gebruik** | orders en informatie over het gebruik in grafische en downloadbare indelingen |
-| **De klant**      | klantgegevens, met inbegrip van hun aankopen profiel |
-| **Implementatie**    | geslaagde en mislukte informatie over de implementatie in zowel grafische als gebeurtenisniveau indelingen |
-| **Downloads**     | lijst met downloadaanvragen voor de afgelopen 30 dagen |
-| **Analytische gegevens**     | overzicht van de analyse van web- en analyse van Campagneprestaties |
+| **Samenvatting**       | grafieken, trends en waarden van statistische gegevens die een overzicht geven van Marketplace-activiteiten voor de aanbiedingen van de uitgever |
+| **Betalings**        | uitbetalingen en gerelateerde trans acties in grafische en download bare indelingen |
+| **& Gebruik van orders** | bestellingen en gebruiks gegevens in grafische en download bare indelingen |
+| **Gebruikers**      | klant informatie, inclusief aankoop profiel |
+| **Implementatie**    | geslaagde en mislukte implementaties in zowel grafische als op gebeurtenis niveau gepaarde indelingen |
+| **Load**     | lijst met Download aanvragen voor de afgelopen 30 dagen |
+| **Analytische gegevens**     | overzicht van Web Analytics en analyse van campagne prestaties |
 |  |  |
 
 
-## <a name="summary-dashboard"></a>Dashboard overzicht
-Het dashboard overzicht is het eerste tabblad en wordt het standaardtabblad weergegeven wanneer u naar de pagina met inzichten navigeert.  Dit opzettelijke ontwerp geeft aan dat dit dashboard uitgevers van de meest uitgebreide weergave van de verkoopactiviteiten van de aanbiedingen biedt.  Het biedt grafische voorstellingen van de genormaliseerde gebruikstrend; maandelijks gebruik; trending gebruik door geografische markt, aanbieding en de klant. en de betalings-ontwikkeling.  De uitvoer kan worden aangepast door begin- en einddatums voor de analyse op te geven.  De volgende afbeelding toont een voorbeeld van dashboard overzicht voor Contoso voor juni tot en met augustus 2018.
+## <a name="summary-dashboard"></a>Samenvattings dashboard
+Het dash board samen vatting is het eerste tabblad en het tabblad Standaard wordt weer gegeven wanneer u naar de pagina inzichten navigeert.  Dit ontwerp is opzettelijk duidelijk dat dit dash board uitgevers het breedste beeld biedt van de verkoop activiteiten van hun aanbiedingen.  Het biedt grafische voors tellingen van de genormaliseerde gebruiks trend; maandelijks gebruik; trending van het gebruik door de geografische markt, de aanbieding en de klant; en de uitbetalings trend.  De uitvoer kan worden aangepast door de begin-en eind datum voor de analyse op te geven.  De volgende afbeelding toont een voor beeld van een samen vatting van een dash board voor contoso voor juni tot en met augustus van 2018.
 
-![Dashboard overzicht van de pagina met de verkoper inzichten](./media/insights-page1.png)
+![Samen vatting van het dash board van de pagina met verkopers inzichten](./media/insights-page1.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de sectie voor meer informatie over het gebruik van de verkoper Insights aan het Optimaliseer uw verkoop [aan de slag met de verkoper Insights](./../../cloud-partner-portal-orig/si-getting-started.md).
+Zie de sectie [aan de slag met](./../../cloud-partner-portal-orig/si-getting-started.md)de verkoop inzichten voor meer informatie over het gebruik van verkopers inzichten om de omzet te optimaliseren.
 

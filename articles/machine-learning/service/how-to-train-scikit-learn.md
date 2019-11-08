@@ -1,5 +1,5 @@
 ---
-title: Machine learning modellen trainen met scikit-Learn
+title: Scikit trainen-meer informatie over machine learning modellen
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het uitvoeren van uw scikit-trainings scripts op ondernemings schaal met behulp van de SKlearn Estimator-klasse van Azure Machine Learning. De voorbeeld scripts classificeren de installatie van Iris bloem om een machine learning model te bouwen op basis van de Iris-gegevensset van scikit-leer.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed93eff6c137e125c2bc1707de441dc9971d6f3f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ea466486509c4b5dadc48ef830c9f05ec42ab5b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584465"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814847"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit bouwen-modellen op schaal leren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -87,9 +87,9 @@ exp = Experiment(workspace=ws, name='sklearn-iris')
 
 ### <a name="prepare-training-script"></a>Trainings script voorbereiden
 
-In deze zelf studie is het trainings script **train_iris. py** al voor u ingevuld. In de praktijk moet u een aangepast trainings script kunnen uitvoeren zoals dat is en dit kan worden uitgevoerd met Azure ML zonder dat u de code hoeft te wijzigen.
+In deze zelf studie wordt het trainings script **train_iris. py** al voor u ingevuld. In de praktijk moet u een aangepast trainings script kunnen uitvoeren zoals dat is en dit kan worden uitgevoerd met Azure ML zonder dat u de code hoeft te wijzigen.
 
-Als u de mogelijkheden voor bijhouden en metrische gegevens van Azure ML wilt gebruiken, voegt u een kleine hoeveelheid Azure ML-code toe in uw trainings script.  In het trainings script **train_iris. py** ziet u hoe u bepaalde metrische gegevens in azure ml kunt vastleggen met behulp van het `Run`-object in het script.
+Als u de mogelijkheden voor bijhouden en metrische gegevens van Azure ML wilt gebruiken, voegt u een kleine hoeveelheid Azure ML-code toe in uw trainings script.  In het trainings script **train_iris. py** wordt uitgelegd hoe u met het `Run`-object in het script bepaalde metrische gegevens registreert bij uw Azure ml.
 
 In het meegeleverde trainings script worden voorbeeld gegevens uit de `iris = datasets.load_iris()` functie gebruikt.  Voor uw eigen gegevens moet u mogelijk stappen zoals [gegevensset uploaden en scripts](how-to-train-keras.md#data-upload) gebruiken om gegevens beschikbaar te maken tijdens de training.
 
@@ -161,7 +161,7 @@ Wanneer de uitvoering wordt uitgevoerd, worden de volgende fasen door lopen:
 
 - **Schalen**: het cluster probeert omhoog te schalen als het batch AI-cluster meer knoop punten nodig heeft om de uitvoering uit te voeren dan momenteel beschikbaar zijn.
 
-- **Uitvoeren**: alle scripts in de map script worden geüpload naar het Compute-doel, gegevens archieven worden gekoppeld of gekopieerd en de entry_script wordt uitgevoerd. Uitvoer van stdout en de map./logs worden gestreamd naar de uitvoerings geschiedenis en kunnen worden gebruikt om de uitvoering te bewaken.
+- **Uitvoeren**: alle scripts in de map script worden geüpload naar het Compute-doel, gegevens archieven worden gekoppeld of gekopieerd en de entry_script worden uitgevoerd. Uitvoer van stdout en de map./logs worden gestreamd naar de uitvoerings geschiedenis en kunnen worden gebruikt om de uitvoering te bewaken.
 
 - **Na de verwerking**: de map./outputs van de uitvoering wordt gekopieerd naar de uitvoerings geschiedenis.
 
@@ -169,7 +169,7 @@ Wanneer de uitvoering wordt uitgevoerd, worden de volgende fasen door lopen:
 
 Zodra u het model hebt getraind, kunt u het opslaan en registreren in uw werk ruimte. Met model registratie kunt u uw modellen in uw werk ruimte opslaan en versieren om het [model beheer en de implementatie](concept-model-management-and-deployment.md)te vereenvoudigen.
 
-Voeg de volgende code toe aan het trainings script train_iris. py om het model op te slaan. 
+Voeg de volgende code toe aan het trainings script, train_iris. py, om het model op te slaan. 
 
 ``` Python
 import joblib

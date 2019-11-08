@@ -48,16 +48,6 @@
       href: front-door-url-rewrite.md
     - name: URL-omleiding
       href: front-door-url-redirect.md
-    - name: WAF
-      items:
-        - name: Overzicht
-          href: waf-overview.md
-        - name: Aangepaste regels
-          href: waf-front-door-custom-rules.md
-        - name: Beleidsinstellingen
-          href: waf-front-door-policy-settings.md
-        - name: Bewaking en registratie
-          href: waf-front-door-monitor.md
 - name: Handleidingen
   items:
     - name: Verkeer omleiden
@@ -74,26 +64,10 @@
           href: front-door-troubleshoot-routing.md
         - name: Toegestane certificeringsinstanties
           href: front-door-troubleshoot-allowed-ca.md
-    - name: WAF configureren
-      items:
-        - name: WAF-beleid configureren - portal
-          href: waf-front-door-create-portal.md
-        - name: WAF-beleid configureren - Azure PowerShell
-          href: waf-front-door-custom-rules-powershell.md
-        - name: Bot-bescherming configureren
-          href: waf-front-door-policy-configure-bot-protection.md
-        - name: Aangepast antwoordcode configureren
-          href: waf-front-door-configure-custom-response-code.md
-        - name: IP-beperkingen configureren
-          href: waf-front-door-configure-ip-restriction.md
-        - name: Frequentielimiet configureren - Azure PowerShell
-          href: waf-front-door-rate-limit-powershell.md
 - name: Veelgestelde vragen
   items:
     - name: Veelgestelde vragen over Front Door
       href: front-door-faq.md
-    - name: Veelgestelde vragen over WAF
-      href: waf-faq.md
 - name: Naslaginformatie
   items:
     - name: Azure-CLI

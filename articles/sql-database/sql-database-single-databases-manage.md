@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database servers en individuele data bases maken, beheren
+title: Servers en individuele data bases maken, beheren
 description: Meer informatie over het maken en beheren van SQL Database servers en individuele data bases.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 91a5ca6ef842b364ada24aa4ede5768cf205c776
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 02c4d7ba545282e3654f3889dd8000af33c728c7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687122"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820929"
 ---
 # <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>SQL Database servers en individuele data bases maken en beheren in Azure SQL Database
 
@@ -127,7 +127,7 @@ Gebruik de volgende T-SQL-opdrachten om Azure SQL Server, data bases en firewall
 | [ALTER data base (Azure SQL Database)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Hiermee wijzigt u een Azure-SQL database. |
 |[DROP data base (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Hiermee verwijdert u een Data Base.|
 |[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor een Azure-SQL database of een Azure SQL Data Warehouse. Als u bent aangemeld bij de hoofd database in een Azure SQL Database-Server, wordt er informatie over alle data bases geretourneerd. Voor Azure SQL Data Warehouse moet u verbinding hebben met de hoofd database.|
-|[sys. DM _db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Retourneert CPU, i/o en geheugen verbruik voor een Azure SQL Database-data base. Er bestaat één rij voor elke 15 seconden, zelfs als er geen activiteit in de data base is.|
+|[sys. dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Retourneert CPU, i/o en geheugen verbruik voor een Azure SQL Database-data base. Er bestaat één rij voor elke 15 seconden, zelfs als er geen activiteit in de data base is.|
 |[sys. resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Retourneert het CPU-gebruik en de opslag gegevens voor een Azure SQL Database. De gegevens worden binnen een interval van vijf minuten verzameld en geaggregeerd.|
 |[sys. database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Bevat statistieken voor SQL Database database connectiviteits gebeurtenissen, met een overzicht van geslaagde en mislukte database verbindingen. |
 |[sys. event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Hiermee worden geslaagde Azure SQL Database database verbindingen, verbindings fouten en deadlocks geretourneerd. U kunt deze informatie gebruiken om uw database activiteit bij SQL Database bij te houden of problemen op te lossen.|

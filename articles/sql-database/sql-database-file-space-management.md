@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database bestands ruimte beheer voor één/gegroepeerde Data bases | Microsoft Docs
+title: Ruimte beheer voor bestanden met één/gegroepeerde Data bases
 description: Op deze pagina wordt beschreven hoe u de bestands ruimte beheert met één en gegroepeerde Data bases in Azure SQL Database, en vindt u code voorbeelden om te bepalen of u een enkele of een gegroepeerde Data Base moet verkleinen en hoe u een verkleinings bewerking voor een Data Base kunt uitvoeren.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: c92ffb6aa6db9c77a859661115d54ff63ea02401
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a8fe58313bce6e9a21b07aa095672ec35ce572d2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568198"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803060"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Bestands ruimte voor één en gegroepeerde Data bases in Azure SQL Database beheren
 
@@ -44,7 +44,7 @@ Mogelijk moet u in de volgende scenario's het gebruik van bestandsruimte bewaken
 De meeste metrische gegevens over opslag ruimte worden weer gegeven in het Azure Portal en de volgende Api's meten alleen de grootte van de gebruikte data pagina's:
 
 - Api's met metrische gegevens op basis van Azure Resource Manager, waaronder Power shell [Get-Metrics](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
-- T-SQL: [sys. DM _db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- T-SQL: [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 De volgende Api's meten echter ook de grootte van de ruimte die is toegewezen voor data bases en elastische Pools:
 
@@ -53,7 +53,7 @@ De volgende Api's meten echter ook de grootte van de ruimte die is toegewezen vo
 
 ### <a name="shrinking-data-files"></a>Gegevens bestanden verkleinen
 
-De SQL Database-Service verkleint gegevens bestanden niet automatisch om ongebruikte toegewezen ruimte te claimen vanwege de mogelijke gevolgen voor de prestaties van de data base.  Klanten kunnen gegevens bestanden echter verkleint via self-service tegelijk, door de stappen te volgen die worden beschreven in herclaimen ongebruikte [toegewezen ruimte](#reclaim-unused-allocated-space).
+De SQL Database-Service verkleint gegevens bestanden niet automatisch om ongebruikte toegewezen ruimte te claimen vanwege de mogelijke gevolgen voor de prestaties van de data base.  Klanten kunnen gegevens bestanden echter verkleint via self-service tegelijk, door de stappen te volgen die worden beschreven in [herclaimen ongebruikte toegewezen ruimte](#reclaim-unused-allocated-space).
 
 > [!NOTE]
 > In tegens telling tot gegevens bestanden verkleint de SQL Database-service automatisch de logboek bestanden omdat deze bewerking geen invloed heeft op de prestaties van de data base. 
@@ -234,7 +234,7 @@ Zie [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-comma
 
 ### <a name="auto-shrink"></a>Automatisch verkleinen
 
-U kunt automatisch verkleinen ook inschakelen voor een Data Base.  Automatisch verkleinen vermindert de complexiteit van bestands beheer en is minder belang rijk voor de `SHRINKDATABASE` prestaties `SHRINKFILE`van de data base dan of.  Automatisch verkleinen kan bijzonder nuttig zijn voor het beheren van elastische Pools met veel data bases.  Automatisch verkleinen kan echter minder effectief zijn bij het vrijmaken van bestands ruimte dan `SHRINKDATABASE` en `SHRINKFILE`.
+U kunt automatisch verkleinen ook inschakelen voor een Data Base.  Automatisch verkleinen vermindert de complexiteit van bestands beheer en is minder belang rijk voor de database prestaties dan `SHRINKDATABASE` of `SHRINKFILE`.  Automatisch verkleinen kan bijzonder nuttig zijn voor het beheren van elastische Pools met veel data bases.  Automatisch verkleinen kan echter minder effectief zijn bij het vrijmaken van bestands ruimte dan `SHRINKDATABASE` en `SHRINKFILE`.
 Als u automatisch verkleinen wilt inschakelen, wijzigt u de naam van de data base in de volgende opdracht.
 
 
@@ -256,5 +256,5 @@ Nadat database gegevensbestanden zijn verkleind, kunnen de indexen gefragmenteer
   - [Resource limieten voor afzonderlijke data bases met behulp van het DTU-gebaseerd inkoop model](sql-database-dtu-resource-limits-single-databases.md)
   - [Azure SQL Database op vCore gebaseerde inkoop model limieten voor elastische Pools](sql-database-vcore-resource-limits-elastic-pools.md)
   - [Bronnen limieten voor elastische Pools met behulp van het DTU-gebaseerd inkoop model](sql-database-dtu-resource-limits-elastic-pools.md)
-- Zie SHRINKDATABASE voor meer informatie `SHRINKDATABASE` over de opdracht [](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
+- Zie [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)voor meer informatie over de opdracht `SHRINKDATABASE`. 
 - Zie [indexen opnieuw indelen en opnieuw samen stellen](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)voor meer informatie over fragmentatie en het opnieuw opbouwen van indexen.

@@ -4,15 +4,15 @@ description: Azure delegated Resource Management maakt een cross-Tenant beheer m
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/24/2019
+ms.date: 11/7/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: eb4ec10755b7ca2227623ba0842d2b1175635594
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 182970cc39d200c37264a93d5e1b70c8839e5ef7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901819"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825825"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -46,6 +46,11 @@ We bieden ook Api's voor het uitvoeren van Azure gedelegeerde resource beheer ta
 ## <a name="enhanced-services-and-scenarios"></a>Verbeterde services en scenario's
 
 De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources in beheerde tenants. Hieronder vindt u enkele van de belangrijkste scenario's waarbij beheer van meerdere tenants effectief kan zijn.
+
+[Azure-Arc voor servers (preview-versie)](https://docs.microsoft.com/azure/azure-arc/servers/overview):
+
+- [Windows Server-of Linux-computers buiten Azure verbinden](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal) met gedelegeerde abonnementen en/of resource groepen in azure
+- Verbonden computers beheren met Azure-constructs, zoals Azure Policy en tagging
 
 [Azure Automation](https://docs.microsoft.com/azure/automation/):
 

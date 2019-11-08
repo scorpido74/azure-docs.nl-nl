@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dfe5b886ff389cf2d0f01d402990929c0ef5628
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 247dee2cfbb00b185e941fde05c2198459a05e20
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72033973"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815743"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Problemen met licentie toewijzing voor een groep in Azure Active Directory identificeren en oplossen
 
@@ -29,6 +29,11 @@ Op groep gebaseerde licentie verlening in Azure Active Directory (Azure AD) intr
 Wanneer u licenties rechtstreeks aan afzonderlijke gebruikers toewijst, zonder gebruik te maken van groeps licenties, kan de toewijzings bewerking mislukken. Wanneer u bijvoorbeeld de Power shell-cmdlet `Set-MsolUserLicense` op een gebruikers systeem uitvoert, kan de cmdlet om verschillende redenen mislukken die betrekking hebben op bedrijfs logica. Er kan bijvoorbeeld een ontoereikend aantal licenties zijn of een conflict tussen twee service plannen die niet tegelijkertijd kunnen worden toegewezen. Het probleem wordt onmiddellijk aan u gemeld.
 
 Wanneer u gebruikmaakt van op groepen gebaseerde licentie verlening, kunnen dezelfde fouten optreden, maar deze worden op de achtergrond uitgevoerd terwijl de Azure AD-Service licenties toewijst. Daarom kunnen de fouten niet meteen naar u worden gecommuniceerd. In plaats daarvan worden ze vastgelegd op het gebruikers object en vervolgens gerapporteerd via de beheer Portal. De oorspronkelijke bedoeling van de licentie voor de gebruiker is nooit verloren gegaan, maar wordt vastgelegd in een fout status voor toekomstig onderzoek en oplossing.
+
+## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException in audit logboeken
+
+**Probleem:** Gebruiker heeft LicenseAssignmentAttributeConcurrencyException voor licentie toewijzing in audit Logboeken.
+Wanneer op groep gebaseerde licentie verlening probeert om gelijktijdige licentie toewijzing van dezelfde licentie voor een gebruiker te verwerken, wordt deze uitzonde ring op de gebruiker vastgelegd. Dit gebeurt meestal wanneer een gebruiker lid is van meer dan één groep met dezelfde toegewezen licentie. Er wordt door AZure AD opnieuw geprobeerd de gebruikers licentie te verwerken en het probleem op te lossen. Er is geen actie vereist van de klant om dit probleem op te lossen.
 
 ## <a name="find-license-assignment-errors"></a>Fouten bij licentie toewijzing zoeken
 
@@ -60,7 +65,7 @@ Als u wilt weten hoeveel licenties er beschikbaar zijn, gaat u naar **Azure Acti
 
 Als u wilt zien welke gebruikers en groepen licenties gebruiken, selecteert u een product. Onder **gelicentieerde gebruikers**ziet u een lijst met alle gebruikers aan wie licenties rechtstreeks of via een of meer groepen zijn toegewezen. Onder **gelicentieerde groepen**ziet u alle groepen waaraan de producten zijn toegewezen.
 
-**PowerShell:** Power shell-cmdlets rapporteren deze fout als _CountViolation_.
+**Power shell:** Power shell-cmdlets rapporteren deze fout als _CountViolation_.
 
 ## <a name="conflicting-service-plans"></a>Conflicterende service plannen
 
@@ -75,7 +80,7 @@ Als u dit conflict wilt oplossen, moet u twee van de plannen uitschakelen. U kun
 
 De beslissing over het oplossen van conflicterende product licenties maakt altijd deel uit van de beheerder. In azure AD worden licentie conflicten niet automatisch opgelost.
 
-**PowerShell:** Power shell-cmdlets rapporteren deze fout als _MutuallyExclusiveViolation_.
+**Power shell:** Power shell-cmdlets rapporteren deze fout als _MutuallyExclusiveViolation_.
 
 ## <a name="other-products-depend-on-this-license"></a>Andere producten zijn afhankelijk van deze licentie
 
@@ -83,17 +88,17 @@ De beslissing over het oplossen van conflicterende product licenties maakt altij
 
 Om dit probleem op te lossen, moet u ervoor zorgen dat het vereiste plan nog steeds wordt toegewezen aan gebruikers via een andere methode of dat de afhankelijke services zijn uitgeschakeld voor deze gebruikers. Nadat u dit hebt gedaan, kunt u de groeps licentie van deze gebruikers goed verwijderen.
 
-**PowerShell:** Power shell-cmdlets rapporteren deze fout als _DependencyViolation_.
+**Power shell:** Power shell-cmdlets rapporteren deze fout als _DependencyViolation_.
 
 ## <a name="usage-location-isnt-allowed"></a>Gebruiks locatie is niet toegestaan
 
-**Probleem:** Sommige micro soft-Services zijn niet op alle locaties beschikbaar vanwege lokale wetten en voor Schriften. Voordat u een licentie aan een gebruiker kunt toewijzen, moet u de eigenschap **gebruiks locatie** opgeven voor de gebruiker. U kunt de locatie opgeven onder de sectie **gebruikers** > **profiel** > -**instellingen** in de Azure Portal.
+**Probleem:** Sommige micro soft-Services zijn niet op alle locaties beschikbaar vanwege lokale wetten en voor Schriften. Voordat u een licentie aan een gebruiker kunt toewijzen, moet u de eigenschap **gebruiks locatie** opgeven voor de gebruiker. U kunt de locatie opgeven in het gedeelte **gebruikers** > **profiel** > **instellingen** van de Azure Portal.
 
 Wanneer Azure AD probeert een groeps licentie toe te wijzen aan een gebruiker van wie de gebruiks locatie niet wordt ondersteund, mislukt deze en registreert deze een fout bij de gebruiker.
 
 Om dit probleem op te lossen, verwijdert u gebruikers van niet-ondersteunde locaties van de groep met licentie. Als de huidige gebruiks locatie waarden niet de werkelijke locatie van de gebruiker vertegenwoordigen, kunt u deze wijzigen zodat de licenties de volgende keer correct worden toegewezen (als de nieuwe locatie wordt ondersteund).
 
-**PowerShell:** Power shell-cmdlets rapporteren deze fout als _ProhibitedInUsageLocationViolation_.
+**Power shell:** Power shell-cmdlets rapporteren deze fout als _ProhibitedInUsageLocationViolation_.
 
 > [!NOTE]
 > Wanneer groeps licenties door Azure AD worden toegewezen, nemen gebruikers zonder een opgegeven gebruiks locatie de locatie van de map over. U wordt aangeraden de juiste gebruiks locatie waarden voor gebruikers in te stellen voordat u op groep gebaseerde licentie verlening gebruikt om te voldoen aan de lokale wetten en voor Schriften.
@@ -149,7 +154,7 @@ Om deze add-on-licentie toe te wijzen aan een groep, moeten we ervoor zorgen dat
 Het is ook mogelijk om een zelfstandige groep te maken die alleen de mini maal vereiste producten bevat om de invoeg toepassing te laten werken. Het kan worden gebruikt om alleen geselecteerde gebruikers te een licentie voor het invoeg product. Op basis van het vorige voor beeld wijst u de volgende producten toe aan dezelfde groep:
 
 - Office 365 Enter prise E3 met alleen het service abonnement Exchange Online (abonnement 2) ingeschakeld
-- Microsoft Workplace Analytics
+- Micro soft Workplace Analytics
 
 Vanaf nu hebben alle gebruikers die zijn toegevoegd aan deze groep één licentie van het E3-product en één licentie van het product van de werk plek-analyse gebruikt. Op hetzelfde moment kunnen deze gebruikers lid zijn van een andere groep die het volledige E3-product geeft, en ze gebruiken nog steeds slechts één licentie voor dat product.
 
@@ -175,6 +180,6 @@ Zie het volgende voor meer informatie over andere scenario's voor licentie behee
 * [Wat is op een groep gebaseerde licentie verlening in Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Licenties toewijzen aan een groep in Azure Active Directory](licensing-groups-assign.md)
 * [Gebruikers met een afzonderlijke licentie migreren naar licenties op basis van groepen in Azure Active Directory](licensing-groups-migrate-users.md)
-* [Het migreren van gebruikers tussen productlicenties groepsgebaseerde licentieverlening in Azure Active Directory gebruiken](licensing-groups-change-licenses.md)
+* [Gebruikers tussen product licenties migreren met op groepen gebaseerde licentie verlening in Azure Active Directory](licensing-groups-change-licenses.md)
 * [Aanvullende scenario’s voor Azure Active Directory-licenties op basis van groepen](licensing-group-advanced.md)
-* [PowerShell-voorbeelden voor Groepslicenties in Azure Active Directory](licensing-ps-examples.md)
+* [Power shell-voor beelden voor op groep gebaseerde licentie verlening in Azure Active Directory](licensing-ps-examples.md)

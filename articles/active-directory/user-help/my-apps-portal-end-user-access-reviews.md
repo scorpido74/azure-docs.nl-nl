@@ -1,5 +1,5 @@
 ---
-title: Een toegangs beoordeling uitvoeren vanuit de portal mijn apps-Azure Active Directory | Microsoft Docs
+title: Een toegangs beoordeling uitvoeren vanuit de portal mijn apps-Azure AD
 description: Meer informatie over het weer geven en beheren van de beveiligings toegang voor de apps en groepen van uw organisatie.
 services: active-directory
 author: eross-msft
@@ -13,16 +13,16 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6681720fc7c0fe04c99bf7957be14865c663dd67
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bf803027aac7c62ea500d1af104ae3234fadf8b5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383162"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73804046"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Een toegangs beoordeling uitvoeren vanuit de portal mijn apps
 
-U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account  gegevens bij te werken, om uw groeps gegevens te bekijken en uit te voeren  **toegangs beoordelingen** voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
+U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en uit te voeren  **toegangs beoordelingen** voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -40,7 +40,7 @@ Als uw beheerder u toestemming heeft gegeven om uw eigen toegangs beoordelingen 
 
 1. Meld u aan bij uw werk-of school account.
 
-2. Open uw webbrowser en ga naar https://myapps.microsoft.com of gebruik de koppeling die door uw organisatie wordt weer gegeven. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Open uw webbrowser en ga naar https://myapps.microsoft.comof gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
@@ -65,7 +65,7 @@ Als uw beheerder u toestemming heeft gegeven om uw eigen toegangs beoordelingen 
 
     ![Pagina toegangs controle, met daarin het vak reden met voorbeeld tekst](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
-7. Selecteer **indienen**.
+7. Selecteer **Indienen**.
 
     De toegangs beoordeling is voltooid en u keert terug naar de portal **mijn apps** .
 

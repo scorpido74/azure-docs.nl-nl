@@ -1,7 +1,6 @@
 ---
-title: Azure MFA aanmelding met verificatie in twee stappen - Azure Active Directory | Microsoft Docs
-description: Deze pagina vindt u richtlijnen op waar u om te zien van de verschillende aanmelden methoden beschikbaar met Azure MFA.
-keywords: verificatie van de gebruiker, aanmelden, aanmelding met telefoon, aanmelding met telefoon (werk)
+title: Meld u aan met twee ledige verificatie-Azure AD
+description: Meer informatie over hoe u zich kunt aanmelden bij uw werk-of school account met behulp van de verschillende twee ledige verificatie methoden.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -15,77 +14,78 @@ ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1350b2d86e18f213d99f1c27d64e371451f5f9b7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: de080a613c69dd6f48f548c4ba89b2728e8c5e1d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60334398"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820432"
 ---
-# <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>De ervaring van aanmelding met Azure multi-factor Authentication
+# <a name="sign-in-to-your-work-or-school-account-using-two-factor-verification"></a>Meld u aan bij uw werk-of school account met behulp van twee ledige verificatie
+
 > [!NOTE]
-> Het doel van dit artikel is om te zien hoe een typische ervaring aanmelden. Zie voor hulp bij het aanmelden of het oplossen van problemen, [problemen hebt met Azure multi-factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
+> Het doel van dit artikel is een typische aanmeldings ervaring te door lopen. Zie [problemen met Azure multi-factor Authentication](multi-factor-authentication-end-user-troubleshoot.md)voor hulp bij het aanmelden of oplossen van problemen.
 
-## <a name="what-will-your-sign-in-experience-be"></a>Wat is uw ervaring aanmelden?
-Uw aanmeldingsprocedure is afhankelijk van wat u wilt gebruiken als de tweede factor: een telefonische oproep, een authentication-app of teksten. Kies de optie die het beste beschrijft wat u doet:
+## <a name="what-will-your-sign-in-experience-be"></a>Wat is uw aanmeldings ervaring?
+Uw aanmeldings ervaring verschilt afhankelijk van wat u wilt gebruiken als uw tweede factor: een telefoon gesprek, een verificatie-app of tekst. Kies de optie die het beste beschrijft wat u doet:
 
-| Hoe meld u aan? |
+| Hoe meld ik me aan? |
 | --- |
-| [Met een telefonische oproep naar mijn telefoon mobile- of office](#signing-in-with-a-phone-call) |
+| [Met een telefoon gesprek naar mijn mobiele of zakelijke telefoon](#signing-in-with-a-phone-call) |
 | [Met een tekst naar mijn mobiele telefoon](#signing-in-with-a-text-message)
-| [Dankzij de meldingen van de Microsoft Authenticator-app](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
-| Met verificatiecodes uit de Microsoft Authenticator-app |
-| [Met een alternatieve methode, omdat ik mijn voorkeursmethode nu niet kan gebruiken](#signing-in-with-an-alternate-method) |
+| [Met meldingen van de Microsoft Authenticator-app](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
+| Met verificatie codes uit de Microsoft Authenticator-app |
+| [Met een alternatieve methode, omdat ik mijn voorkeurs methode nu niet kan gebruiken](#signing-in-with-an-alternate-method) |
 
-## <a name="signing-in-with-a-phone-call"></a>Aanmelden met een telefonische oproep
-De volgende informatie beschrijft de verificatie in twee stappen verificatie-ervaring met een aanroep naar uw telefoon mobile- of office.
+## <a name="signing-in-with-a-phone-call"></a>Aanmelden met een telefoon gesprek
+In de volgende informatie wordt de verificatie in twee stappen beschreven met een oproep naar uw mobiele telefoon of kantoor.
 
-1. Aanmelden bij een toepassing of service zoals Office 365 met uw gebruikersnaam en wachtwoord.  
-2. Microsoft roept u.  
-3. Beantwoord de telefoon en druk op de toets #.  
+1. Meld u aan bij een toepassing of service zoals Office 365 met uw gebruikers naam en wacht woord.  
+2. Micro soft belt u.  
+3. Beantwoord de telefoon en druk op de #-toets.  
 
 ## <a name="signing-in-with-a-text-message"></a>Aanmelden met een SMS-bericht
-De volgende informatie beschrijft de ervaring van de verificatie in twee stappen met een SMS-bericht naar uw mobiele telefoon:
+In de volgende informatie wordt de verificatie in twee stappen beschreven met een SMS-bericht naar uw mobiele telefoon:
 
-1. Aanmelden bij een toepassing of service zoals Office 365 met uw gebruikersnaam en wachtwoord.
-2. Microsoft stuurt u een SMS-bericht met een aantal code.
-3. Voer de code in het vak op de pagina aanmelden.
+1. Meld u aan bij een toepassing of service zoals Office 365 met uw gebruikers naam en wacht woord.
+2. Micro soft stuurt u een SMS-bericht dat een nummer code bevat.
+3. Voer de code in het vak op de aanmeldings pagina in.
 
-## <a name="signing-in-with-the-microsoft-authenticator-app"></a>Aanmelden met de Microsoft Authenticator-app
-De volgende informatie beschrijft de ervaring van het gebruik van de Microsoft Authenticator-app voor verificatie in twee stappen verificaties. Er zijn twee verschillende manieren om de app te gebruiken. U kunt pushmeldingen ontvangen op uw apparaat kunt, of u de app om een verificatiecode.
+## <a name="signing-in-with-the-microsoft-authenticator-app"></a>Aanmelden met de app Microsoft Authenticator
+De volgende informatie beschrijft de ervaring van het gebruik van de Microsoft Authenticator-app voor verificatie in twee stappen. Er zijn twee verschillende manieren om de app te gebruiken. U kunt push meldingen ontvangen op uw apparaat of u kunt de app openen om een verificatie code op te halen.
 
-### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>Aanmelden met een melding van de Microsoft Authenticator-app
-1. Aanmelden bij een toepassing of service zoals Office 365 met uw gebruikersnaam en wachtwoord.
-2. Microsoft stuurt een melding naar de Microsoft Authenticator-app op uw apparaat.
+### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>Aanmelden met een melding van de app Microsoft Authenticator
+1. Meld u aan bij een toepassing of service zoals Office 365 met uw gebruikers naam en wacht woord.
+2. Micro soft stuurt een melding naar de Microsoft Authenticator-app op uw apparaat.
 
-   ![Microsoft stuurt melding](./media/multi-factor-authentication-end-user-signin/notify.png)
+   ![Micro soft verzendt een melding](./media/multi-factor-authentication-end-user-signin/notify.png)
 
-3. Open de melding op uw telefoon en selecteer de **controleren** sleutel. Als uw bedrijf een PINCODE is vereist, moet u deze hier opgeven.
-4. U moet nu worden aangemeld.
+3. Open de melding op uw telefoon en selecteer de toets **controleren** . Als uw bedrijf een pincode vereist, voert u dit hier in.
+4. U bent nu aangemeld.
 
-### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>Zich aanmelden met een verificatiecode met de Microsoft Authenticator-app
+### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>Aanmelden met behulp van een verificatie code met de app Microsoft Authenticator
 
-Als u de Microsoft Authenticator-app gebruikt om op te halen verificatiecodes, klikt u vervolgens ziet bij het openen van de app u een nummer onder de accountnaam van uw. Deze waarde verandert elke 30 seconden, zodat u niet twee keer hetzelfde getal gebruikt. Wanneer u wordt gevraagd om een verificatiecode, open de app en gebruik getal op dat moment wordt weergegeven.
+Als u de app Microsoft Authenticator gebruikt om verificatie codes op te halen, kunt u wanneer u de app opent, een nummer weer geven onder uw account naam. Dit getal wordt elke 30 seconden gewijzigd, zodat u niet twee keer hetzelfde nummer gebruikt. Wanneer u wordt gevraagd om een verificatie code, opent u de app en gebruikt u een wille keurig nummer dat wordt weer gegeven.
 
-1. Aanmelden bij een toepassing of service zoals Office 365 met uw gebruikersnaam en wachtwoord.
-2. Microsoft vraagt u om een verificatiecode.
+1. Meld u aan bij een toepassing of service zoals Office 365 met uw gebruikers naam en wacht woord.
+2. U wordt gevraagd om een verificatie code.
 
-   ![Voer de verificatiecode in](./media/multi-factor-authentication-end-user-signin/verify3.png)
+   ![Verificatie code invoeren](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
-3. Open de Microsoft Authenticator-app op uw telefoon en voer de code in het vak waar u zich aanmeldt.
+3. Open de Microsoft Authenticator-app op uw telefoon en voer de code in het vak in waarin u zich aanmeldt.
 
 ## <a name="signing-in-with-an-alternate-method"></a>Aanmelden met een alternatieve methode
-Soms hebt u niet de telefoon of het apparaat die u hebt ingesteld als uw contactmethode voorkeursoptie voor verificatie. Deze situatie is de reden waarom is het raadzaam dat u om back-upmethoden voor uw account instelt. De volgende sectie wordt beschreven hoe u zich aanmelden met een alternatieve methode wanneer de primaire methode mogelijk niet beschikbaar.
+Soms hebt u niet de telefoon of het apparaat dat u instelt als uw voorkeurs verificatie methode. Daarom wordt u aangeraden om back-upmethoden voor uw account in te stellen. In de volgende sectie wordt beschreven hoe u zich aanmeldt met een alternatieve methode wanneer uw primaire methode niet beschikbaar is.
 
-1. Aanmelden bij een toepassing of service zoals Office 365 met uw gebruikersnaam en wachtwoord.
-2. Selecteer **gebruiken een andere verificatieoptie**. Ziet u verschillende verificatie-opties op basis van hoeveel u ingesteld hebt.
-3. Kies een alternatieve methode en meld u aan.
+1. Meld u aan bij een toepassing of service zoals Office 365 met uw gebruikers naam en wacht woord.
+2. Selecteer **een andere verificatie optie gebruiken**. U ziet verschillende verificatie opties op basis van het aantal instellingen dat u hebt ingesteld.
+3. Kies een andere methode en meld u aan.
 
    ![Alternatieve methode gebruiken](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-- Als u problemen met aanmelden met verificatie in twee stappen hebt, u meer informatie op [problemen hebt met Azure multi-factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
+- Als u problemen ondervindt bij het aanmelden met verificatie in twee stappen, kunt u meer informatie krijgen over [problemen met Azure multi-factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
 
-- Meer informatie over het [beheren van de verificatie-instellingen voor verificatie in twee stappen](multi-factor-authentication-end-user-manage-settings.md).
+- Meer informatie over het [beheren van de verificatie-instellingen in twee stappen](multi-factor-authentication-end-user-manage-settings.md).
 
-- Meer informatie over het [aan de slag met de Microsoft Authenticator-app](user-help-auth-app-download-install.md) zodat u meldingen kunt aan te melden bij, in plaats van teksten en telefoongesprekken.
+- Ontdek hoe u aan [de slag gaat met de app Microsoft Authenticator](user-help-auth-app-download-install.md) , zodat u meldingen kunt gebruiken om u aan te melden in plaats van teksten en telefoon gesprekken.

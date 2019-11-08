@@ -1,5 +1,5 @@
 ---
-title: Spark-connector met Azure SQL Database en SQL Server | Microsoft Docs
+title: Spark-connector met Azure SQL Database en SQL Server
 description: Meer informatie over het gebruik van de Spark-connector voor Azure SQL Database en SQL Server
 services: sql-database
 ms.service: sql-database
@@ -11,23 +11,23 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: efa31e72811b83c00c1b2ee4a5d1a42fc7089630
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d398019b62078da6943cb98cbafc3ac39640513f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163180"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820880"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Versnel real-time big data Analytics met Spark-connector voor Azure SQL Database en SQL Server
 
 Met de Spark-connector voor Azure SQL Database en SQL Server kunnen SQL-data bases, waaronder Azure SQL Database en SQL Server, fungeren als invoer gegevens bron of uitvoer gegevens Sink voor Spark-taken. Hiermee kunt u realtime transactionele gegevens gebruiken in big data Analytics en de resultaten van ad hoc query's of rapportages behouden. Vergeleken met de ingebouwde JDBC-connector biedt deze connector de mogelijkheid om gegevens bulksgewijs in te voegen in SQL-data bases. De leverde kan rij by Row invoeging met 10x voor 20x snellere prestaties. De Spark-connector voor Azure SQL Database en SQL Server biedt ook ondersteuning voor AAD-verificatie. Hiermee kunt u veilig verbinding maken met uw Azure-SQL database van Azure Databricks met behulp van uw AAD-account. Het biedt vergelijk bare interfaces met de ingebouwde JDBC-connector. Het is eenvoudig om uw bestaande Spark-taken te migreren om deze nieuwe connector te gebruiken.
 
-## <a name="download"></a>Downloaden
+## <a name="download"></a>Download
 Om aan de slag te gaan, downloadt u de Spark naar SQL DB-connector vanuit de [Azure-sqldb-Spark-opslag plaats](https://github.com/Azure/azure-sqldb-spark) op github.
 
 ## <a name="official-supported-versions"></a>Officiële ondersteunde versies
 
-| Component                            |Version                  |
+| Onderdeel                            |Versie                  |
 | :----------------------------------- | :---------------------- |
 | Apache Spark                         |2.0.2 of hoger           |
 | Scala                                |2,10 of hoger            |

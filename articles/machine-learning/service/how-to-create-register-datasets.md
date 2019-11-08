@@ -1,7 +1,7 @@
 ---
-title: Data sets maken voor toegang tot gegevens met azureml-gegevens sets
+title: Azure Machine Learning data sets maken voor toegang tot gegevens
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het maken van gegevens sets van verschillende bronnen en het registreren van gegevens sets met uw werk ruimte.
+description: Meer informatie over het maken van Azure Machine Learning gegevens sets voor het openen van de machine learning-experimenten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 1379085e410ddf119ae4ed1fe45389f00eb1b2a5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 51102962879b43d4ef3ae8662d7c3136bc7441d9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716583"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818444"
 ---
-# <a name="create-and-access-datasets-in-azure-machine-learning"></a>Gegevens sets maken en openen in Azure Machine Learning
+# <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning gegevens sets maken
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u Azure Machine Learning gegevens sets (preview) maakt en hoe u toegang krijgt tot gegevens uit lokale of externe experimenten.
+In dit artikel leert u hoe u Azure Machine Learning gegevens sets maakt om toegang te krijgen tot gegevens voor uw lokale of externe experimenten.
 
 Met Azure Machine Learning gegevens sets kunt u het volgende doen:
 
@@ -43,7 +43,7 @@ Als u gegevens sets wilt maken en gebruiken, hebt u het volgende nodig:
 * De [Azure machine learning SDK voor python is geïnstalleerd](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), waaronder het pakket met de azureml-gegevens sets.
 
 > [!NOTE]
-> Voor sommige klassen van gegevensset (preview) gelden afhankelijkheden voor het pakket [met de azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . Voor Linux-gebruikers worden deze klassen alleen ondersteund in de volgende distributies: Red Hat Enterprise Linux, Ubuntu, Fedora en CentOS.
+> Voor sommige verzamelings klassen zijn afhankelijkheden van het pakket voor [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . Voor Linux-gebruikers worden deze klassen alleen ondersteund in de volgende distributies: Red Hat Enterprise Linux, Ubuntu, Fedora en CentOS.
 
 ## <a name="dataset-types"></a>Typen gegevensset
 

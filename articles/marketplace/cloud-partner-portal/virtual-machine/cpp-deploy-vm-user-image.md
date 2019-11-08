@@ -1,54 +1,55 @@
 ---
-title: Een Azure-VM vanaf een VHD voor gebruikers implementeren | Azure Marketplace
-description: Wordt uitgelegd hoe u een VHD-installatiekopie van de gebruiker voor het maken van een Azure VM-instantie implementeert.
+title: Een Azure-VM implementeren vanaf een gebruikers-VHD | Azure Marketplace
+description: Hierin wordt uitgelegd hoe u een VHD-installatie kopie van een gebruiker implementeert voor het maken van een Azure VM-exemplaar.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: e4da523fa54a513fe77fda037aea0a5fd530250b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8421e9b7b7e2b7d13054e977da83be044b4e6af7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938245"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816631"
 ---
-# <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Een Azure-VM van een gebruiker VHD implementeren
+# <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Een Azure-VM implementeren op basis van een gebruikers-VHD
 
-In dit artikel wordt uitgelegd hoe u een gegeneraliseerde VHD-installatiekopie voor het maken van een nieuwe virtuele machine van Azure-resource, met de opgegeven Azure Resource Manager-sjabloon en Azure PowerShell-script te implementeren.
+In dit artikel wordt uitgelegd hoe u een gegeneraliseerde VHD-installatie kopie implementeert om een nieuwe Azure VM-resource te maken met behulp van de meegeleverde Azure Resource Manager sjabloon en Azure PowerShell script.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="vhd-deployment-template"></a>VHD-implementatiesjabloon
+## <a name="vhd-deployment-template"></a>VHD-implementatie sjabloon
 
-De Azure Resource Manager-sjabloon voor het kopiëren [VHD implementatie](cpp-deploy-json-template.md) naar een lokaal bestand met de naam `VHDtoImage.json`.  Dit bestand als u waarden opgeven voor de volgende parameters wilt bewerken. 
+Kopieer de Azure Resource Manager sjabloon voor de implementatie van de [VHD](cpp-deploy-json-template.md) naar een lokaal bestand met de naam `VHDtoImage.json`.  Bewerk dit bestand om waarden op te geven voor de volgende para meters. 
 
-|  **Parameter**             |   **Beschrijving**                                                              |
+|  **Bepaalde**             |   **Beschrijving**                                                              |
 |  -------------             |   ---------------                                                              |
-| ResourceGroupName          | Bestaande Azure-resource-groepsnaam.  Doorgaans gebruikt u dezelfde Replicatiegroep die zijn gekoppeld aan uw key vault  |
-| Sjabloonbestand               | Volledig pad naar het bestand `VHDtoImage.json`                                    |
-| userStorageAccountName     | Naam van het storage-account                                                    |
-| sNameForPublicIP           | DNS-naam voor het openbare IP-adres. Moet een kleine letter                                  |
-| subscriptionId             | Azure-abonnement-id                                                  |
-| Locatie                   | Standaard Azure geografische locatie van de resourcegroep                       |
-| vmName                     | Naam van de virtuele machine                                                    |
-| vaultName                  | Naam van de key vault                                                          |
-| vaultResourceGroup         | Resourcegroep van de key vault
-| certificateUrl             | URL van het certificaat, met inbegrip van de versie die is opgeslagen in de key vault, bijvoorbeeld:  `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
+| ResourceGroupName          | De naam van de bestaande Azure-resource groep.  Gebruik normaal gesp roken dezelfde RG die is gekoppeld aan uw sleutel kluis  |
+| TemplateFile               | Volledige padnaam naar het bestand `VHDtoImage.json`                                    |
+| userStorageAccountName     | De naam van het opslag account                                                    |
+| sNameForPublicIP           | De DNS-naam voor het open bare IP-adres. Moet een kleine letter zijn                                  |
+| subscriptionId             | Azure-abonnements-id                                                  |
+| Locatie                   | Standaard geografische locatie van Azure van de resource groep                       |
+| vmName                     | De naam van de virtuele machine                                                    |
+| vaultName                  | De naam van de sleutel kluis                                                          |
+| vaultResourceGroup         | Resource groep van de sleutel kluis
+| certificateUrl             | De URL van het certificaat, inclusief de versie die is opgeslagen in de sleutel kluis, bijvoorbeeld: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 | vhdUrl                     | URL van de virtuele harde schijf                                                   |
-| vmSize                     | Grootte van de virtuele machine-instantie                                           |
-| publicIPAddressName        | Naam van het openbare IP-adres                                                  |
-| virtualNetworkName         | Naam van het virtuele netwerk                                                    |
-| nicName                    | Naam van de netwerkinterfacekaart voor het virtuele netwerk                     |
-| adminUserName              | Gebruikersnaam van het administrator-account                                          |
-| adminPassword              | Administrator-wachtwoord                                                          |
+| vmSize                     | Grootte van het exemplaar van de virtuele machine                                           |
+| publicIPAddressName        | Naam van het open bare IP-adres                                                  |
+| virtualNetworkName         | De naam van het virtuele netwerk                                                    |
+| nicName                    | De naam van de netwerk interface kaart voor het virtuele netwerk                     |
+| adminUserName              | Gebruikers naam van het beheerders account                                          |
+| adminPassword              | Beheerders wachtwoord                                                          |
 |  |  |
 
 
-## <a name="powershell-script"></a>PowerShell-script
+## <a name="powershell-script"></a>Power shell-script
 
-Kopiëren en bewerken van het volgende script voor het leveren van waarden voor de `$storageaccount` en `$vhdUrl` variabelen.  Uitvoeren voor het maken van een virtuele machine van Azure-resource van uw bestaande gegeneraliseerde VHD.
+Kopieer en bewerk het volgende script om waarden op te geven voor de variabelen `$storageaccount` en `$vhdUrl`.  Voer deze uit om een Azure VM-resource te maken op basis van uw bestaande gegeneraliseerde VHD.
 
 ```powershell
 # storage account of existing generalized VHD 
@@ -66,4 +67,4 @@ New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgNa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat de virtuele machine is geïmplementeerd, bent u klaar om [certificeren van uw VM-installatiekopie](./cpp-certify-vm.md).
+Nadat uw virtuele machine is geïmplementeerd, bent u klaar om [uw VM-installatie kopie te certificeren](./cpp-certify-vm.md).

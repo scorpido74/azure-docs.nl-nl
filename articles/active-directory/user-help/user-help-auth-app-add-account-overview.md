@@ -1,6 +1,6 @@
 ---
-title: Overzicht over hoe u accounts toevoegt aan de Microsoft Authenticator-app - Azure Active Directory | Microsoft Docs
-description: Overzicht over hoe u uw persoonlijke en werkaccounts toevoegt aan de Microsoft Authenticator-app voor verificatie in twee stappen.
+title: Overzicht van het toevoegen van accounts aan een verificator-app-Azure AD
+description: Koppelingen naar inhoud over het toevoegen van uw werk-en persoonlijke accounts aan de app Microsoft Authenticator voor twee ledige verificatie.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,19 +12,19 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d16699729e62953cb2369f39ecfe759aab663caf
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 16244be7dee9faaa15105f9dc0ac6c074230d243
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382646"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820284"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>Overzicht over accounts toevoegen aan de Microsoft Authenticator-app
 
 Met de Microsoft Authenticator-app kunt u zich aanmelden bij uw accounts als u gebruikmaakt van verificatie in twee stappen. Verificatie in twee stappen helpt u veiliger toegang te krijgen tot uw accounts, vooral als u gevoelige informatie bekijkt. Omdat wachtwoorden kunnen worden vergeten, gestolen of gewijzigd, is verificatie in twee stappen een extra beveiligingsstap waarmee u uw account beschermt door het voor anderen lastiger te maken om in te breken.
 
 > [!Important]
-> De app Microsoft Authenticator werkt met elke app die gebruikmaakt van tweeledige verificatie en met elk account dat de TOTP-normen (Time-Based One-Time Passwords) accepteert.
+> De app Microsoft Authenticator werkt met elke app die verificatie in twee stappen gebruikt en met elk account dat de TOTP-normen (Time-Based One-Time Passwords) ondersteunt.
 >
 > Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over hoe u uw Azure Active Directory-omgeving (Azure AD) instelt en beheert in de [documentatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
@@ -38,14 +38,14 @@ U kunt de Microsoft Authenticator-app op meerdere manieren gebruiken, bijvoorbee
 
 U kunt verificatie in twee stappen inschakelen voor veel accounts die u dagelijks gebruikt, waaronder:
 
-| Accounttype | Description |
+| Accounttype | Beschrijving |
 | ------------ | ----------- |
 | Werk- of schoolaccounts | Het account dat u uw werk of school u hebt gegeven, bijvoorbeeld alain@contoso.com. |
 | Persoonlijke accounts | Microsoft-accounts en niet-Microsoft-accounts die u zelf hebt gemaakt, bijvoorbeeld voor Outlook.com, Xbox LIVE, Google, Facebook en meer. |
 
-## <a name="in-this-section"></a>In deze sectie doet u het volgende
+## <a name="articles-about-how-to-add-different-accounts"></a>Artikelen over het toevoegen van verschillende accounts
 
-| Artikel |Description |
+| Artikel |Beschrijving |
 | ------|------------|
 | [Uw werk- of schoolaccount toevoegen](user-help-auth-app-add-work-school-account.md) | Beschrijft hoe u uw werk- of schoolaccount toevoegt aan de Microsoft Authenticator-app voor verificatie in twee stappen. |
 | [Uw persoonlijke Microsoft-account toevoegen](user-help-auth-app-add-personal-ms-account.md) | Beschrijft hoe u uw persoonlijke Microsoft-accounts toevoegt voor verificatie in twee stappen en aanmelding via telefoon (ook bekend als aanmelding zonder wachtwoord). |

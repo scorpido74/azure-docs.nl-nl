@@ -1,6 +1,6 @@
 ---
-title: De structuur van Azure-Dashboards | Microsoft Docs
-description: Dit artikel wordt uitgelegd dat de JSON-structuur van een Azure-Dashboard
+title: De structuur van Azure-Dash boards | Microsoft Docs
+description: In dit artikel wordt de JSON-structuur van een Azure-dash board uitgelegd
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: kfollis
-ms.openlocfilehash: a7e9acbe78ffdca2e615873cc4c33f86b250a429
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dccf1550052910269efe156b999882234669d7dc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551488"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815709"
 ---
-# <a name="the-structure-of-azure-dashboards"></a>De structuur van Azure-Dashboards
-Dit document begeleidt bij de structuur van een Azure-dashboard met het volgende dashboard als een voorbeeld:
+# <a name="the-structure-of-azure-dashboards"></a>De structuur van Azure-Dash boards
+In dit document wordt de structuur van een Azure-dash board beschreven, met behulp van het volgende dash board:
 
-![voorbeelddashboard](./media/azure-portal-dashboards-structure/sample-dashboard.png)
+![voorbeeld dashboard](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-Omdat gedeelde [Azure-dashboards worden resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), kan dit dashboard worden weergegeven als JSON.  De volgende JSON Hiermee geeft u het dashboard gevisualiseerd hierboven.
+Omdat gedeelde [Azure-Dash boards resources zijn](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), kan dit dash board worden weer gegeven als JSON.  In de volgende JSON staat het dash board dat hierboven is gevisualiseerd.
 
 ```json
 
@@ -289,62 +289,62 @@ Omdat gedeelde [Azure-dashboards worden resources](https://docs.microsoft.com/az
 
 ```
 
-## <a name="common-resource-properties"></a>Algemene broneigenschappen
+## <a name="common-resource-properties"></a>Algemene bron eigenschappen
 
-We nemen de relevante secties van de JSON.  De eigenschappen van het hoogste niveau __id__, __naam__, __type__, __locatie__, en __tags__ eigenschappen zijn gedeeld met alle Azure-resource-typen. Dat wil zeggen, hoeven ze geen zoveel te doen met de inhoud van het dashboard.
+Laten we de relevante secties van de JSON opsplitsen.  De eigenschappen van het hoogste niveau, de __id__, de __naam__, het __type__, de __locatie__en de __labels__ worden gedeeld in alle Azure-resource typen. Dat wil zeggen dat ze niet veel te maken hebben met de inhoud van het dash board.
 
-### <a name="the-id-property"></a>De eigenschap-id
+### <a name="the-id-property"></a>De eigenschap ID
 
-De Azure-resource-id, onderworpen is aan de [naamgevingsconventies van Azure-resources](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Wanneer de portal een dashboard maakt een id in het algemeen worden gekozen in de vorm van een guid, maar u bent een geldige naam kunt gebruiken wanneer u ze via een programma maken. 
+De Azure-resource-id, met inachtneming [van de naamgevings regels van Azure-resources](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). Wanneer de portal een dash board maakt, kiest deze in het algemeen een id in de vorm van een GUID, maar u kunt een geldige naam gebruiken wanneer u ze via een programma maakt. 
 
 ### <a name="the-name-property"></a>De eigenschap name
-De naam is het segment van de resource-Id die niet het abonnement, resourcetype of informatie over resource. Het is in feite het laatste segment van de resource-id.
+De naam is het segment van de resource-id die het abonnement, het resource type of de informatie over de resource groep niet bevat. In feite is dit het laatste segment van de resource-id.
 
 ### <a name="the-type-property"></a>De eigenschap type
-Alle dashboards zijn van het type __Microsoft.Portal/dashboards__.
+Alle Dash boards zijn van het type __micro soft. Portal/Dash boards__.
 
 ### <a name="the-location-property"></a>De locatie-eigenschap
-In tegenstelling tot andere resources geen dashboards een runtime-component.  Voor dashboards, geeft de locatie aan de primaire geografische locatie waarin de JSON-weergave van het dashboard. De waarde moet een van de codes die kunnen worden opgehaald met behulp van de [locaties API op de resource abonnementen](https://docs.microsoft.com/rest/api/resources/subscriptions).
+In tegens telling tot andere resources hebben Dash boards geen runtime-onderdeel.  Voor dash boards geeft de locatie de primaire geografische locatie aan waar de JSON-weer gave van het dash board wordt opgeslagen. De waarde moet een van de locatie codes zijn die kunnen worden opgehaald met behulp [van de locatie-API voor de abonnementen bron](https://docs.microsoft.com/rest/api/resources/subscriptions).
 
-### <a name="the-tags-property"></a>De eigenschap tags
-Tags zijn een algemene functie van Azure-resources waarmee u uw resource door willekeurige naam / waardeparen organiseren. Voor dashboards, er is een speciale tag met de naam __verborgen titel__. Als uw dashboard deze eigenschap is ingevuld is, wordt deze gebruikt als de weergavenaam voor uw dashboard in de portal. Azure resource-id's kan niet worden gewijzigd, maar de codes kunnen. Deze tag kunt u een manier om een u weergavenaam voor uw dashboard.
+### <a name="the-tags-property"></a>De eigenschap Tags
+Tags zijn een gemeen schappelijke functie van Azure-resources waarmee u uw resource kunt ordenen door wille keurige naam paren te gebruiken. Voor dash boards is er één speciale tag met de naam __verborgen titel__. Als uw dash board deze eigenschap heeft gevuld, wordt deze als weergave naam gebruikt voor uw dash board in de portal. De naam van een Azure-resource-id kan niet worden gewijzigd, maar Tags kunnen. Met deze tag kunt u een renamable-weergave naam voor uw dash board hebben.
 
 `"tags": { "hidden-title": "Created via API" }`
 
-### <a name="the-properties-object"></a>Het object voor eigenschappen
-Het object voor eigenschappen bevat twee eigenschappen, __lenzen__ en __metagegevens__. De __lenzen__ eigenschap bevat informatie over de tegels (ook wel) onderdelen) op het dashboard.  De __metagegevens__ eigenschap is er voor mogelijke toekomstige functies.
+### <a name="the-properties-object"></a>Het object Properties
+Het object Properties bevat twee eigenschappen, __lenzen__ en __meta gegevens__. De eigenschap __lenzen__ bevat informatie over de tegels (ook onderdelen) op het dash board.  De __meta gegevens__ eigenschap is mogelijk voor toekomstige functies.
 
 ### <a name="the-lenses-property"></a>De eigenschap lenzen
-De __lenzen__ eigenschap bevat het dashboard. Houd er rekening mee dat de lenzen van het object in dit voorbeeld bevat één eigenschap, genaamd "0". Lenzen zijn een groepering concept, dat momenteel niet is geïmplementeerd in dashboards. Nu hebben al uw dashboards deze één eigenschap op de lens-object opnieuw met de naam '0'.
+De eigenschap __lenzen__ bevat het dash board. Houd er rekening mee dat het object lenzen in dit voor beeld een enkele eigenschap met de naam ' 0 ' bevat. Lenzen zijn een groeperings concept dat momenteel niet is geïmplementeerd in dash boards. Nu hebben al uw Dash boards deze enkele eigenschap in het object lens, met de naam "0".
 
-### <a name="the-lens-object"></a>Het object lens
-Het object onder het '0' heeft twee eigenschappen __volgorde__ en __delen__.  In de huidige versie van dashboards, __volgorde__ is altijd 0. De __delen__ eigenschap bevat een object waarin de afzonderlijke onderdelen (ook wel) tegels) op het dashboard.
+### <a name="the-lens-object"></a>Het lens object
+Het object onder de ' 0 ' bevat twee eigenschappen, een __volg orde__ en __delen__.  In de huidige versie van Dash boards is __order__ altijd 0. De eigenschap __Parts__ bevat een object dat de afzonderlijke onderdelen definieert (ook tegels) op het dash board.
 
-De __delen__ -object bevat een eigenschap voor elk onderdeel, waarbij de naam van de eigenschap een getal is. Dit nummer is niet van belang. 
+Het object __Parts__ bevat een eigenschap voor elk onderdeel, waarbij de naam van de eigenschap een getal is. Dit getal is niet significant. 
 
-### <a name="the-part-object"></a>Het object deel
-Elk object afzonderlijk onderdeel heeft een __positie__, en __metagegevens__.
+### <a name="the-part-object"></a>Het onderdeel object
+Elk afzonderlijk onderdeel object heeft een __positie__en __meta gegevens__.
 
-### <a name="the-position-object"></a>Het Positieobject
-De __positie__ eigenschap bevat de grootte en locatie-informatie voor het onderdeel als uitgedrukt __x__, __y__, __rowSpan__, en __colSpan__. De waarden zijn in termen van raster eenheden. Deze eenheden raster zijn zichtbaar als het dashboard zich in de modus aanpassen zoals hier wordt weergegeven. Als u een tegel wilt om een breedte van de twee eenheden van de grid, een hoogte van een raster unit en een locatie in de rechterbovenhoek linkerbovenhoek van het dashboard en vervolgens het Positieobject er als uitzien volgt:
+### <a name="the-position-object"></a>Het positie object
+De eigenschap __Position__ bevat de grootte-en locatie-informatie voor het onderdeel, uitgedrukt als __x__, __y__, __rowspan__en __colspan__. De waarden zijn qua raster eenheden. Deze raster eenheden zijn zichtbaar wanneer het dash board zich in de aanpassings modus bevindt, zoals hier wordt weer gegeven. Als u wilt dat een tegel een breedte heeft van twee raster eenheden, een hoogte van één raster eenheid en een locatie in de linkerbovenhoek van het dash board, ziet het positie-object er als volgt uit:
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
 ![raster-eenheden](./media/azure-portal-dashboards-structure/grid-units.png)
 
-### <a name="the-metadata-object"></a>Het metagegevensobject
-Elk onderdeel heeft een metagegevenseigenschap, een object vereist slechts één eigenschap, genaamd __type__. Deze tekenreeks wordt in de portal de tegel die om weer te geven. Ons voorbeeld van dashboard maakt gebruik van deze typen tegels:
+### <a name="the-metadata-object"></a>Het meta gegevens object
+Elk onderdeel heeft een eigenschap meta data, een object heeft slechts één vereiste eigenschap met de naam __type__. Deze teken reeks vertelt de portal op welke tegel moet worden weer gegeven. Het dash board voor beeld maakt gebruik van de volgende typen tegels:
 
 
-1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart` : Wordt gebruikt om weer te geven metrische gegevens controleren
-1. `Extension[azure]/HubsExtension/PartType/MarkdownPart` : Wordt gebruikt om weer te geven tekst of afbeeldingen met eenvoudige opmaak voor lijsten, koppelingen, enzovoort.
-1. `Extension[azure]/HubsExtension/PartType/VideoPart` : Wordt gebruikt om video's van YouTube, Channel 9 en een ander type van de video die in een video HTML-code werkt weer te geven.
-1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` : Wordt gebruikt om de naam en de status van een virtuele Azure-machine weer te geven.
+1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart`: wordt gebruikt voor het weer geven van metrische gegevens over controles
+1. `Extension[azure]/HubsExtension/PartType/MarkdownPart`: wordt gebruikt om weer te geven met tekst of afbeeldingen met basis opmaak voor lijsten, koppelingen, enzovoort.
+1. `Extension[azure]/HubsExtension/PartType/VideoPart`: wordt gebruikt voor het weer geven van Video's van YouTube, Channel 9 en elk ander type video dat in een HTML-video code werkt.
+1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart`: wordt gebruikt om de naam en status van een virtuele Azure-machine weer te geven.
 
-Elk type onderdeel heeft een eigen configuratie. De mogelijke configuratie-eigenschappen worden genoemd __invoer__, __instellingen__, en __asset__. 
+Elk type onderdeel heeft een eigen configuratie. De mogelijke configuratie-eigenschappen worden __input__, __Settings__en __Asset__genoemd. 
 
-### <a name="the-inputs-object"></a>De invoer voor het object
-De invoer voor het object in het algemeen bevat informatie die wordt gebonden een tegel aan een resource-exemplaar.  Het deel van de virtuele machine in onze voorbeelddashboard bevat een één invoer die gebruikmaakt van de Azure-resource-id om de binding.  De indeling van deze resource-id is consistent voor alle Azure-resources.
+### <a name="the-inputs-object"></a>Het inputs-object
+Het object invoer bevat meestal informatie die een tegel verbindt met een resource-exemplaar.  Het onderdeel van de virtuele machine in het dash board voor beeld bevat één invoer die gebruikmaakt van de Azure-resource-id om de binding uit te drukken.  Deze indeling van de resource-id is consistent voor alle Azure-resources.
 
 ```json
 "inputs":
@@ -356,7 +356,7 @@ De invoer voor het object in het algemeen bevat informatie die wordt gebonden ee
 ]
 
 ```
-Het deel van de grafiek metrische gegevens is een één invoer waarin de resource moet worden verbonden, evenals informatie over de metrische waarde(n) die worden weergegeven. Hier volgt de invoer voor de tegel waarin de metrische gegevens voor inkomend en uitgaand netwerkverkeer wordt weergegeven.
+Het deel diagram met metrische gegevens heeft één invoer waarmee de resource wordt aangegeven die moet worden gekoppeld, evenals informatie over de gegevens die worden weer gegeven. Hier volgt de invoer voor de tegel die het netwerk in en de metrische gegevens van het netwerk weergeeft.
 
 ```json
 “inputs”:
@@ -390,8 +390,8 @@ Het deel van de grafiek metrische gegevens is een één invoer waarin de resourc
 
 ```
 
-### <a name="the-settings-object"></a>Het instellingenobject
-De instellingenobject bevat de configureerbare elementen van een onderdeel.  In het voorbeelddashboard van de Markdown-onderdeel instellingen gebruikt voor het opslaan van de aangepaste markdown-inhoud en een configureerbare titel en subtitel.
+### <a name="the-settings-object"></a>Het instellingen object
+Het object Settings bevat de Configureer bare elementen van een deel.  In het dash board van het voor beeld gebruikt het deel voor de prijs verlaging instellingen voor het opslaan van de aangepaste inhoud voor prijs verlaging en een Configureer bare titel en subtitel.
 
 ```json
 "settings": 
@@ -409,7 +409,7 @@ De instellingenobject bevat de configureerbare elementen van een onderdeel.  In 
 
 ```
 
-Op dezelfde manier heeft de videotegel een eigen instellingen met een verwijzing naar de video af te spelen, een instelling voor automatisch afspelen en informatie over de optionele titel.
+Op dezelfde manier heeft de video tegel eigen instellingen met een verwijzing naar de video die u wilt afspelen, een instelling voor automatisch afspelen en de informatie over de optionele titel.
 
 ```json
 "settings": 
@@ -428,7 +428,7 @@ Op dezelfde manier heeft de videotegel een eigen instellingen met een verwijzing
 
 ```
 
-### <a name="the-asset-object"></a>Het object asset
-Tegels die zijn gebonden aan eersteklas beheerbare portal objecten (activa genoemd) hebben deze relatie uitgedrukt via de object asset.  In ons voorbeeld van dashboard bevat de virtuele machine-tegel deze beschrijving asset.  De __idInputName__ eigenschap vertelt ons de portal dat de id bevat de unieke id voor de activa in dit geval de resource-id invoeren. De meeste Azure resourcetypen zijn assets die zijn gedefinieerd in de portal.
+### <a name="the-asset-object"></a>Het object Asset
+Voor tegels die zijn gekoppeld aan de eerste klasse beheer bare Portal objecten (die assets worden genoemd), wordt deze relatie weer gegeven via het object Asset.  In het dash board voor beeld bevat de tegel virtuele machine de naam van deze asset.  De eigenschap __idInputName__ geeft aan de portal door dat de id-invoer de unieke id voor de Asset bevat, in dit geval de resource-id. Voor de meeste Azure-resource typen zijn activa gedefinieerd in de portal.
 
 `"asset": {    "idInputName": "id",    "type": "VirtualMachine"    }`

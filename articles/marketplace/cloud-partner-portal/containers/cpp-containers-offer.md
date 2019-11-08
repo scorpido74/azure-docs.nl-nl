@@ -1,45 +1,46 @@
 ---
-title: Azure Containers-installatiekopie-aanbieding | Azure Marketplace
-description: Overzicht van het proces voor het publiceren van een container-aanbieding op Azure Marketplace.
+title: Aanbieding voor installatie kopieën van Azure containers | Azure Marketplace
+description: Overzicht van het proces voor het publiceren van een container aanbod op de Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: pabutler
-ms.openlocfilehash: 9617380822f5814d1cbd2bd2b69eac72722fe813
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0e71d8135a5dd691dc1f746ec54cfb6170e281d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942752"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823234"
 ---
 # <a name="containers"></a>Containers
 
-<table> <tr> <td>Deze sectie wordt uitgelegd hoe u een containerinstallatiekopie naar publiceert de <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a>.  
-De container aanbieding type ondersteunt Docker-containerinstallatiekopieën als ingericht <a href="https://docs.microsoft.com/azure/aks/index">Azure Kubernetes Service</a> exemplaren of <a href="https://docs.microsoft.com/azure/container-instances/container-instances-overview">Azure Container Instances</a> en wordt gehost in een <a href="https://docs.microsoft.com/azure/container-registry">Azure Container Registry </a> opslagplaats. </td> <td><img src="./media/container-icon.png"  alt="Azure container icon" /></td> </tr> </table>
+<table> <tr> <td>In deze sectie wordt uitgelegd hoe u een container installatie kopie publiceert naar de <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a>.  
+Het type container aanbod ondersteunt docker-container installatie kopieën die zijn ingericht als <a href="https://docs.microsoft.com/azure/aks/index">Azure Kubernetes-service</a> -exemplaren of <a href="https://docs.microsoft.com/azure/container-instances/container-instances-overview">Azure container instances</a> en worden gehost in een <a href="https://docs.microsoft.com/azure/container-registry">Azure container Registry</a> opslag plaats. </td> <td><img src="./media/container-icon.png"  alt="Azure container icon" /></td> </tr> </table>
 
-## <a name="offer-components"></a>Onderdelen van de aanbieding
+## <a name="offer-components"></a>Aanbiedings onderdelen
 
-In deze sectie geeft een overzicht van de elementen van de publicatie van een container en is bedoeld als richtlijn voor de uitgever in de Azure Marketplace. De publicatie is onderverdeeld in de volgende hoofdonderdelen:
+In deze sectie vindt u een overzicht van de elementen van het publiceren van een container en is bedoeld als een hand leiding voor de uitgever van de Azure Marketplace. De publicatie is onderverdeeld in de volgende hoofd onderdelen:
 
-- [Vereisten](./cpp-prerequisites.md) -geeft een lijst van de technische en zakelijke vereisten voor het maken of een container-aanbieding publiceren.
-- [Maken van de aanbieding](./cpp-create-offer.md) -vermeldt de stappen die zijn vereist voor het maken van een nieuwe container aanbieding vermelding met behulp van de Cloud Partner-Portal.
-- [Voorbereiden van de technische activa](./cpp-create-technical-assets.md) -het maken van de technische assets voor een containeroplossing als een aanbieding op Azure Marketplace.
-- [De aanbieding publiceren](./cpp-publish-offer.md) -het indienen van de aanbieding voor publicatie naar de Azure Marketplace.
+- [Vereisten: hier](./cpp-prerequisites.md) vindt u een lijst met technische en zakelijke vereisten voordat u een container aanbod maakt of publiceert.
+- [De aanbieding maken](./cpp-create-offer.md) : een lijst met de stappen die nodig zijn om een nieuwe vermelding voor een container aanbieding te maken met behulp van de Cloud Partner-Portal.
+- [De technische activa voorbereiden](./cpp-create-technical-assets.md) : de technische activa voor een container oplossing maken als aanbieding op de Azure Marketplace.
+- [De aanbieding publiceren](./cpp-publish-offer.md) : de aanbieding voor publicatie naar Azure Marketplace verzenden.
 
-## <a name="container-publishing-process"></a>Container-publicatieproces
+## <a name="container-publishing-process"></a>Container publicatie proces
 
-Het volgende diagram illustreert de stappen op hoog niveau in de publicatie van een VM-aanbieding.
-![Stappen voor het publiceren van een aanbieding](./media/containers-offer-process.png)
+In het volgende diagram ziet u de stappen op hoog niveau bij het publiceren van een VM-aanbieding.
+![stappen voor het publiceren van een aanbieding](./media/containers-offer-process.png)
 
-De stappen op hoog niveau voor het publiceren van een container-aanbieding zijn:
+De stappen op hoog niveau voor het publiceren van een container aanbod zijn:
 
-1. Maken van de aanbieding - bieden gedetailleerde informatie over de aanbieding. Deze informatie omvat: de beschrijving van de aanbieding, marketingmaterialen, informatie over ondersteuning en assetspecificaties.
-2. Maken van de zakelijke en technische activa - maken van de bedrijfsmiddelen (juridische documenten en marketingmaterialen) en de technische activa voor de gekoppelde oplossing (de installatiekopieën van containers die worden gehost in een Azure Container Registry.
-3. Maken van de SKU - maken van de SKU('s) die zijn gekoppeld aan de aanbieding. Een unieke SKU is vereist voor elke afbeelding die u van plan bent om te publiceren.
-4. Certificeren en publiceren van de aanbieding - nadat de aanbieding en de technische activa zijn voltooid, kunt u de aanbieding indienen. Deze verzending van het publicatieproces te starten. Tijdens dit proces wordt is de oplossing getest, gevalideerd, gecertificeerd, klikt u vervolgens "meteen live' op Azure Marketplace.
+1. De aanbieding maken: Geef gedetailleerde informatie op over de aanbieding. Deze informatie omvat: de beschrijving, het marketing materiaal, de ondersteunings informatie en de Asset-specificaties van de aanbieding.
+2. De bedrijfs-en technische activa maken: Maak de bedrijfs middelen (juridische documenten en marketing materialen) en technische activa voor de bijbehorende oplossing (de containers installatie kopieën die worden gehost in een Azure Container Registry.
+3. De SKU maken: Maak de SKU ('s) die aan de aanbieding zijn gekoppeld. Er is een unieke SKU vereist voor elke installatie kopie die u wilt publiceren.
+4. De aanbieding certificeren en publiceren: nadat de aanbieding en de technische middelen zijn voltooid, kunt u de aanbieding indienen. Met deze inzending wordt het publicatie proces gestart. Tijdens dit proces wordt de oplossing getest, gevalideerd, gecertificeerd en ' gaat live ' op de Azure Marketplace.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voordat u deze stappen, moet u voldoen aan de [technische en zakelijke vereisten](./cpp-prerequisites.md) voor het publiceren van een container naar de Microsoft Azure Marketplace.
+Voordat u deze stappen overweegt, moet u voldoen aan de [technische en zakelijke vereisten](./cpp-prerequisites.md) voor het publiceren van een container naar de Microsoft Azure Marketplace.

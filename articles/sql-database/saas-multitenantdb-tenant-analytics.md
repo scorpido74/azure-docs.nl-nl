@@ -1,5 +1,5 @@
 ---
-title: "Analytics-query's uitvoeren op Azure SQL-data bases "
+title: Analytics-query's uitvoeren
 description: Cross-Tenant analyse query's die gebruikmaken van gegevens die zijn geëxtraheerd uit meerdere Azure SQL Database data bases in een app met meerdere tenants.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 09/19/2018
-ms.openlocfilehash: 2044e72697526a1c757fa13aeffb85260a9b821e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 067afd09f942b8062825553a3cf90f715e8d3938
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691995"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822153"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Cross-Tenant analyse met geëxtraheerde gegevens-multi tenant-app
  
@@ -107,8 +107,8 @@ Voer de volgende stappen uit in de Objectverkenner:
 Zie de volgende data base-items in de SSMS-Objectverkenner door het knoop punt Analytics Store uit te vouwen:
 
 - Tabellen **TicketsRawData** en **EventsRawData** bevatten onbewerkte gegevens uit de Tenant-data bases.
-- De ster schema tabellen zijn **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**en **dim_Dates**.
-- De opgeslagen procedure **sp_ShredRawExtractedData** wordt gebruikt voor het vullen van de ster-schema tabellen uit de onbewerkte gegevens tabellen.
+- De tabellen in het ster schema zijn **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**en **dim_Dates**.
+- De **sp_ShredRawExtractedData** opgeslagen procedure wordt gebruikt voor het vullen van de ster-schema tabellen uit de onbewerkte gegevens tabellen.
 
 ![tenantAnalytics](media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
 
@@ -154,9 +154,9 @@ In deze sectie van de zelf studie definieert en voert u een taak uit die de geë
 
 1. In SSMS maakt u verbinding met de **jobaccount** -data base in Catalog-mt-\<gebruikers\>.
 2. Open in SSMS *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.SQL*.
-3. Druk op **F5** om het script uit te voeren om een taak te definiëren die de opgeslagen procedure sp_ShredRawExtractedData aanroept in de analyse opslag.
+3. Druk op **F5** om het script uit te voeren om een taak te definiëren die de sp_ShredRawExtractedData opgeslagen procedure aanroept in het Analytics-archief.
 4. Voldoende tijd om de taak te kunnen uitvoeren.
-    - Controleer de kolom **levens duur** van de tabel jobs. jobs_execution voor de status van de taak. Zorg ervoor dat de taak **is voltooid** voordat u doorgaat. Bij een geslaagde uitvoering worden gegevens weer gegeven die vergelijkbaar zijn met de volgende grafiek:
+    - Controleer de kolom **levens duur** van taken. jobs_execution tabel voor de status van de taak. Zorg ervoor dat de taak **is voltooid** voordat u doorgaat. Bij een geslaagde uitvoering worden gegevens weer gegeven die vergelijkbaar zijn met de volgende grafiek:
 
 ![shreddingJob](media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 
@@ -179,7 +179,7 @@ Gebruik de volgende stappen om verbinding te maken met Power BI en om de weer ga
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
-6. Selecteer in het deel venster **Navigator** onder de Analytics-Data Base de ster-schema tabellen: Fact_Tickets, Dim_Events, Dim_Venues, Dim_Customers en dim_Dates. Selecteer vervolgens **laden**. 
+6. Selecteer in het deel venster **Navigator** onder de Analytics-Data Base de ster-schema tabellen: fact_Tickets, dim_Events, dim_Venues, dim_Customers en dim_Dates. Selecteer vervolgens **laden**. 
 
 Gefeliciteerd. De gegevens zijn geladen in Power BI. U kunt nu interessante visualisaties gaan verkennen om inzicht te krijgen in uw tenants. In de volgende stap leert u hoe u met analyses gegevensgestuurde aanbevelingen kunt leveren aan het Business team van de Wingtip tickets. De aanbevelingen kunnen helpen het bedrijfs model en de klant ervaring te optimaliseren.
 

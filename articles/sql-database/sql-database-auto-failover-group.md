@@ -1,5 +1,5 @@
 ---
-title: Failover-groepen-Azure SQL Database
+title: Failover-groepen
 description: Groeps beleidsobjecten voor automatische failover is een SQL Database functie waarmee u replicatie en automatische/gecoördineerde failover kunt beheren van een groep data bases op een SQL Database Server of alle data bases in het beheerde exemplaar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 10/23/2019
-ms.openlocfilehash: 70c8bb618cd25c21d6cc59dde305fff113ffe22f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 88bcee1cbb23bf298c5ad3920a7744d8da6ce3fb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691160"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821961"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 
@@ -175,7 +175,7 @@ Houd bij het ontwerpen van een service met bedrijfs continuïteit de volgende al
   Als er een storing wordt gedetecteerd, wacht SQL op de periode die u hebt opgegeven door `GracePeriodWithDataLossHours`. De standaard waarde is 1 uur. Als u geen gegevens verlies kunt veroorloven, moet u `GracePeriodWithDataLossHours` instellen op een voldoende groot getal, zoals 24 uur. Gebruik hand matige failover van de groep om een failback uit te geven van de secundaire naar de primaire.
 
   > [!IMPORTANT]
-  > Elastische Pools met 800 of minder Dtu's en meer dan 250-data bases die gebruikmaken van geo-replicatie, kunnen problemen ondervinden, inclusief langere, geplande failovers en verminderde prestaties.  Deze problemen treden waarschijnlijk vaker op voor het schrijven van intensieve workloads, wanneer geo-replicatie-eind punten op grote schaal worden gescheiden door geografie, of wanneer meerdere secundaire eind punten worden gebruikt voor elke Data Base.  Symptomen van deze problemen worden aangegeven wanneer de geo-replicatie vertraging na verloop van tijd toeneemt.  Deze vertraging kan worden bewaakt met behulp van [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Als deze problemen optreden, zijn de mogelijke oplossingen het verhogen van het aantal groeps Dtu's of het verminderen van het aantal geo-gerepliceerde data bases in dezelfde groep.
+  > Elastische Pools met 800 of minder Dtu's en meer dan 250-data bases die gebruikmaken van geo-replicatie, kunnen problemen ondervinden, inclusief langere, geplande failovers en verminderde prestaties.  Deze problemen treden waarschijnlijk vaker op voor het schrijven van intensieve workloads, wanneer geo-replicatie-eind punten op grote schaal worden gescheiden door geografie, of wanneer meerdere secundaire eind punten worden gebruikt voor elke Data Base.  Symptomen van deze problemen worden aangegeven wanneer de geo-replicatie vertraging na verloop van tijd toeneemt.  Deze vertraging kan worden bewaakt met behulp van [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Als deze problemen optreden, zijn de mogelijke oplossingen het verhogen van het aantal groeps Dtu's of het verminderen van het aantal geo-gerepliceerde data bases in dezelfde groep.
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Aanbevolen procedures voor het gebruik van failover-groepen met beheerde exemplaren
 

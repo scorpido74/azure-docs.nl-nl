@@ -1,5 +1,5 @@
 ---
-title: De Automated ML-interface van Azure gebruiken voor het trainen & implementeren van modellen
+title: Bouw & automatische ML-modellen implementeren
 titleSuffix: Azure Machine Learning
 description: U kunt geautomatiseerde machine learning experimenten maken, beheren en implementeren in Azure Machine Learning Studio.
 services: machine-learning
@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: e1bb84c142fb24086cf6c11a7b1070bdd29ae3f2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 25e775cf7bfd415768144b28ab2ca6989f360edd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581287"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818493"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Automatische machine learning experimenten maken, verkennen en implementeren met Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -215,7 +215,7 @@ Automatische ML helpt u bij het implementeren van het model zonder code te schri
     >[!Important]
     > Bestands namen moeten minder dan 32 tekens lang zijn en moeten beginnen en eindigen met een alfanumerieke teken reeks. Kan streepjes, onderstrepings tekens, punten en alfanumerieken bevatten. Spaties zijn niet toegestaan.
 
-    Het menu *Geavanceerd* biedt standaard implementatie functies, zoals de instellingen voor gegevens verzameling en het gebruik van resources. Als u deze standaard waarden wilt overschrijven, doet u dit in dit menu.
+    Het menu *Geavanceerd* biedt standaard implementatie functies, zoals het [verzamelen van gegevens](how-to-enable-app-insights.md) en het gebruik van bron instellingen. Als u deze standaard waarden wilt overschrijven, doet u dit in dit menu.
 
 1. Selecteer **Implementeren**. Het volt ooien van de implementatie kan ongeveer 20 minuten duren.
 

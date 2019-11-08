@@ -4,15 +4,16 @@ description: Antwoorden op veelgestelde vragen over Azure Marketplace en Microso
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: c24f956a7aeb68fe6b0325705a9e7dab8e70b063
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 300f1783c1c514a6cc49d700c2741be85e69c3e8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330244"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822982"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Veelgestelde vragen over micro soft Commercial Marketplace
 
@@ -36,8 +37,8 @@ Azure Marketplace biedt technische oplossingen en services van Microsoft en part
 
 * basis besturingssystemen
 * databases
-* beveiliging
-* identiteit
+* security
+* identity
 * netwerken
 * Block Chain
 * ontwikkelhulpprogramma's
@@ -46,7 +47,7 @@ Azure Marketplace biedt technische oplossingen en services van Microsoft en part
 
 **Hoe kan ik aan de slag met Azure Marketplace?**
 
-U kunt een breed scala aan bedrijfs toepassingen en oplossingen vinden die zijn gecertificeerd en geoptimaliseerd voor uitvoering op Azure, door [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps)te bezoeken. Azure Marketplace kan ook worden geopend via de [Azure-portal] wanneer u [**een resource maakt**](https://portal.azure.com/#create/hub).
+U kunt een breed scala aan bedrijfs toepassingen en oplossingen vinden die zijn gecertificeerd en geoptimaliseerd voor uitvoering op Azure, door [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps)te bezoeken. Azure Marketplace kan ook worden geopend via de [Azure Portal] wanneer u [**een resource maakt**](https://portal.azure.com/#create/hub).
 
 **Wat zijn de belangrijkste voor delen van Azure Marketplace?**
 
@@ -57,7 +58,7 @@ Met Azure Marketplace kunnen klanten technische toepassingen detecteren die zijn
 Azure Marketplace-aanbiedingen kunnen worden aangeschaft via:
 
 * [De webgebaseerde webwinkel](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Het Azure Portal][azure-portal]
+* [Het Azure Portal][Azure Portal]
 * [De Azure-opdracht regel interface (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
@@ -127,7 +128,7 @@ Het Azure-abonnement is opgenomen in de prijzen van de ISV-oplossing (Independen
 
 + *Per gebruiker:* SaaS-abonnementen kunnen worden geprijsd op basis van per gebruiker, die maandelijks of jaarlijks wordt gefactureerd. 
 
-Specifieke prijs informatie voor aanbiedingen is te vinden op de pagina met details van de oplossing op [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) of binnen de [Azure-portal].
+Prijs informatie voor aanbiedingen is te vinden op de pagina met details van de oplossing op [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) of binnen de [Azure Portal].
 
 > [!Note]
 > Met uitzonde ring van de maandelijkse kosten zijn Azure-gebruiks kosten van toepassing op alle prijs modellen, tenzij anders vermeld.
@@ -180,9 +181,9 @@ Nee. De uitgever die eigenaar is van oplossingen in azure Marketplace kan prijze
 
 **Waar kan ik de abonnements Details en facturerings gegevens van mijn Azure Marketplace bekijken?**
 
-MOSP: [micro soft online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web direct)-klanten kunnen Details van Marketplace-aankopen bekijken op het tabblad facturen van het gedeelte Cost Management en facturering van de [Azure-portal].
+MOSP: [micro soft online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web direct)-klanten kunnen Details van Marketplace-aankopen bekijken op het tabblad facturen van het gedeelte Cost Management en facturering van de [Azure Portal].
 
-Enterprise Agreement (EA)-klanten kunnen Details van Marketplace-aankopen bekijken op het tabblad facturen van de sectie Cost Management + facturering van de [Azure-portal].
+Enterprise Agreement (EA)-klanten kunnen Details van Marketplace-aankopen bekijken op het tabblad facturen van de sectie Cost Management + facturering van de [Azure Portal].
 
 Cloud Solution Provider (CSP)-partners kunnen Details van Marketplace-aankopen bekijken voor elke klant in het partner centrum, nadat u een bedrijf hebt geselecteerd in de weer gave klanten.
 
@@ -208,7 +209,7 @@ De *prijs* verwijst naar de kosten van de virtuele machine van Azure om de softw
 
 **Hoe kan ik kom ik erachter welk deel van mijn Azure Marketplace-aankoop Ik heb gebruikt?**
 
-Een geschatte gebruiks informatie vindt u in de [Azure-portal]. Dergelijke geschatte gebruiks gegevens bevatten mogelijk geen recente activiteiten en zijn mogelijk gebaseerd op projecties die zijn afgeleid van het verbruik in het verleden. Tijdens de open bare preview-periode is deze functie mogelijk niet beschikbaar voor alle aankopen en kan deze variëren op basis van het product type.
+Een geschatte gebruiks informatie vindt u in de [Azure Portal]. Dergelijke geschatte gebruiks gegevens bevatten mogelijk geen recente activiteiten en zijn mogelijk gebaseerd op projecties die zijn afgeleid van het verbruik in het verleden. Tijdens de open bare preview-periode is deze functie mogelijk niet beschikbaar voor alle aankopen en kan deze variëren op basis van het product type.
 
 ### <a name="customer-support"></a>Klantondersteuning
 
@@ -224,7 +225,7 @@ Neem contact op met de uitgever provider voor alle technische product ondersteun
 
 **Met wie neem ik contact op met ondersteuning voor facturering/vragen over een oplossing van derden die is aangeschaft via Marketplace?**
 
-Neem contact op met Microsoft Ondersteuning op [Azure-ondersteuning](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
+Neem contact op met Microsoft Ondersteuning op [Azure Ondersteuning](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
 
 **Met wie neem ik contact op als ik vragen heb over de prijzen of voor waarden voor partner oplossingen die worden verkocht op de Azure Marketplace?**
 
@@ -246,7 +247,7 @@ Het terugbetalings beleid dat is gevonden in deze veelgestelde vragen, is onderh
 
 **Worden er restituties ondersteund voor aanbiedingen op basis van verbruik?**
 
-Kosten op basis van verbruik: of het per uur Vm's of aangepaste meters is, kan niet via annulering worden terugbetaald. Zodra het verbruik heeft plaatsgevonden, worden de kosten verwerkt door het commerce-platform van micro soft en eventuele geschillen met de kwaliteit van de service waarbij een restitutie wordt aangevraagd, worden buiten micro soft-systemen tussen de uitgever en de klant rechtstreeks afgehandeld. Aanbiedingen die ondersteuning bieden voor een vast tarief plus factuur met data limiet, volgen het standaard beleid voor restitutie voor de kosten met een vast tarief.
+Kosten op basis van verbruik: of het per uur Vm's of aangepaste meters is, kan niet worden terugbetaald via annulering. Zodra het verbruik heeft plaatsgevonden, worden de kosten verwerkt door het commerce-platform van micro soft en eventuele geschillen met de kwaliteit van de service waarbij een restitutie wordt aangevraagd, worden buiten micro soft-systemen tussen de uitgever en de klant rechtstreeks afgehandeld. Aanbiedingen die ondersteuning bieden voor een vast tarief plus factuur met data limiet, volgen het standaard beleid voor restitutie voor de kosten met een vast tarief.
 
 **Is het mogelijk om de middel lange termijn van plannen te wijzigen?**
 
@@ -267,7 +268,7 @@ Nee, het bedrijfs beleid is consistent op Azure Marketplace en Microsoft AppSour
 
 **Wat is Azure Marketplace?**
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) is een online Marketplace voor toepassingen en services. Klanten (voornamelijk IT-professionals en ontwikkel aars) kunnen software oplossingen van Cloud detecteren en kopen die zijn gebouwd met of voor Azure. De catalogus bevat meer dan 8.000 vermeldingen, zoals Azure-bouw stenen zoals Virtual Machines (Vm's), Api's, oplossings sjablonen, SaaS-toepassingen en aanbiedingen voor advies Services.
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) is een onlinemarkt voor toepassingen en services. Klanten (voornamelijk IT-professionals en ontwikkel aars) kunnen software oplossingen van Cloud detecteren en kopen die zijn gebouwd met of voor Azure. De catalogus bevat meer dan 8.000 vermeldingen, zoals Azure-bouw stenen zoals Virtual Machines (Vm's), Api's, oplossings sjablonen, SaaS-toepassingen en aanbiedingen voor advies Services.
 
 Azure Marketplace is het uitgangs punt voor alle joint micro Soft Go-to-Market-activiteiten.  We richten ons op het helpen van partners om meer klanten te bereiken. U kunt nieuwe vermeldingen publiceren en ook Azure Marketplace gebruiken om campagnes voor marketing en vraag te genereren, gezamenlijke verkoop-en marketing activiteiten met micro soft uit te voeren.
 
@@ -285,7 +286,7 @@ Azure Marketplace biedt een markt voor micro soft-partners om producten en servi
 
 Micro soft-partners kunnen kiezen waar ze publiceren op basis van hun doel groep.
 
-Micro soft biedt twee verschillende Marketplace-winkels in de Cloud: Azure Marketplace en AppSource. Klanten kunnen in deze webwinkels cloudtoepassingen en -services opzoeken, uitproberen en kopen. Elke winkel biedt unieke behoeften aan klanten en stelt micro soft-partners in staat hun oplossingen of services te richten op basis van de doel groep.
+Micro soft biedt twee afzonderlijke winkelen voor Cloud Marketplace-Azure Marketplace en AppSource. Klanten kunnen in deze webwinkels cloudtoepassingen en -services opzoeken, uitproberen en kopen. Elke winkel biedt unieke behoeften aan klanten en stelt micro soft-partners in staat hun oplossingen of services te richten op basis van de doel groep.
 
 Selecteer [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) om IT-professionals en ontwikkel aars, of technische gebruikers, te richten.
 
@@ -392,7 +393,7 @@ Ga naar [micro soft gtm Services](https://partner.microsoft.com/reach-customers/
 
 **Waar worden Azure Marketplace-oplossingen bevorderd in micro soft-webeigenschappen?**
 
-Azure Marketplace-oplossingen zijn beschikbaar op de website micro soft [Azure-portal]en [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Cloud ontwikkelaars en IT-professionals die Azure gebruiken, hebben een risico op partner oplossingen wanneer ze zich aanmelden. Een subset van partner oplossingen wordt ook getoond en gedraaid op de [Azure Marketplace-start](https://azuremarketplace.microsoft.com/marketplace) pagina en de [Azure-oplossingenpagina](https://azure.microsoft.com/solutions/).
+Azure Marketplace-oplossingen zijn beschikbaar op de website micro soft [Azure Portal]en [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Cloud ontwikkelaars en IT-professionals die Azure gebruiken, hebben een risico op partner oplossingen wanneer ze zich aanmelden. Een subset van partner oplossingen wordt ook getoond en gedraaid op de [Azure Marketplace-start](https://azuremarketplace.microsoft.com/marketplace) pagina en de [Azure-oplossingenpagina](https://azure.microsoft.com/solutions/).
 
 ### <a name="billing-and-payments"></a>Facturering en betalingen
 
@@ -430,7 +431,7 @@ Ga naar de [Publisher-hand leiding voor Azure Marketplace](marketplace-publisher
 
 1.  Ga in het partner centrum naar de SKU waaraan u nieuwe landen/regio's wilt toevoegen.  Ga in de **SKU-Details**naar **land/regio Beschik baarheid** en klik op **regio's selecteren**.
 
-    ![Regio's selecteren](media/marketplace-publishers-guide/FAQ-choose-geo.png)
+    ![Regio’s selecteren](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
 1.  Er wordt een lijst weer gegeven met alle beschik bare landen/regio's waarnaar moet worden verkocht.  Klik op het selectie vakje naast elk land of elke regio waarvoor u deze SKU beschikbaar wilt maken. Klik op **OK**.
 
@@ -476,4 +477,4 @@ Ja, bij uw aanvraag via de ondersteunings ticket verwerkt micro soft de tegoeden
 Ga naar de pagina [met Publisher-hand leiding voor Azure Marketplace en AppSource](/azure/marketplace/marketplace-publishers-guide) .
 
 
-[Azure-portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

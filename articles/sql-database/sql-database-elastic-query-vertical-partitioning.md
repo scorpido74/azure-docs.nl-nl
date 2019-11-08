@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 998513c942cf1b6ceae861160abfe3dc6dac7792
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d5983d25685242a696300f293231bbf987e8442d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690329"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823736"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Query's uitvoeren in Cloud databases met verschillende schema's (preview-versie)
 
@@ -133,7 +133,7 @@ Als u een externe gegevens bron gebruikt, zoals beschreven in de vorige sectie, 
 
 De DATA_SOURCE-component definieert de externe gegevens bron (dat wil zeggen de externe data base in het geval van verticale partitionering) die wordt gebruikt voor de externe tabel.  
 
-De SCHEMA_NAME-en OBJECT_NAME-componenten bieden de mogelijkheid om de definitie van de externe tabel toe te wijzen aan een tabel in een ander schema in de externe data base of aan een tabel met een andere naam. Dit is handig als u een externe tabel wilt definiëren in een catalogus weergave of DMV op uw externe data base, of een andere situatie waarin de naam van de externe tabel al lokaal wordt overgenomen.  
+De componenten SCHEMA_NAME en OBJECT_NAME bieden de mogelijkheid om de definitie van de externe tabel toe te wijzen aan een tabel in een ander schema op de externe data base of aan een tabel met een andere naam. Dit is handig als u een externe tabel wilt definiëren in een catalogus weergave of DMV op uw externe data base, of een andere situatie waarin de naam van de externe tabel al lokaal wordt overgenomen.  
 
 De volgende DDL-instructie verwijdert een bestaande definitie van een externe tabel uit de lokale catalogus. Dit heeft geen invloed op de externe data base. 
 

@@ -4,15 +4,16 @@ description: Beheer van leads voor Dynamics 365 voor klant betrokkenheid configu
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 181a3f3a8d3cabb2fdf6caf79cef16201fab0c68
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 37cf613b6e0bd2ec9910dd3e7431c0feaa02431c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177810"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812308"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Beheer van leads voor Dynamics 365 voor klant betrokkenheid configureren
 
@@ -77,7 +78,7 @@ Voer de volgende stappen uit om Azure Active Directory voor Dynamics 365 voor kl
 3. Selecteer **app-registraties** in het Azure Active Directory linkernavigatiebalk en selecteer vervolgens **nieuwe registratie** op die pagina.
 4. Voer een naam in voor de toepassings naam. Geef een zinvolle toepassings naam op.
 5. Onder ondersteunde account typen selecteert u **accounts in elke organisatie Directory**.
-6. Onder omleidings-URI selecteert u **Web** en geeft u een URI op (bijvoorbeeld `https://contosoapp1/auth`). 
+6. Onder omleidings-URI selecteert u **Web** en geeft u een URI op (zoals `https://contosoapp1/auth`). 
 7. Selecteer **Registreren**.
 
     ![Een toepassing registreren](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
@@ -93,7 +94,7 @@ Voer de volgende stappen uit om Azure Active Directory voor Dynamics 365 voor kl
 10. Zodra het client geheim is gemaakt, **kopieert u de waarde van het client geheim**. U kunt de waarde niet ophalen nadat u de pagina hebt verlaten. Sla deze waarde op, omdat het de *geheime* waarde van de client is die u moet opgeven in de portal voor publiceren om leads voor uw Marketplace-aanbieding te ontvangen. 
 11. Selecteer **API-machtigingen** van de linkernavigatiebalk van de apps en selecteer vervolgens **een machtiging toevoegen**.
 12. Selecteer micro soft-Api's en selecteer vervolgens **Dynamics CRM** als de API.
-13. Zorg ervoor dat de machtiging **gedelegeerde machtigingen** is geselecteerd onder *het type machtigingen dat uw toepassing nodig heeft*. Controleer de machtiging voor **user_impersonation** *-toegangs common data service als gebruikers*van de organisatie. Selecteer **machtigingen toevoegen**.
+13. Zorg ervoor dat de machtiging **gedelegeerde machtigingen** is geselecteerd onder *het type machtigingen dat uw toepassing nodig heeft*. Controleer de machtiging voor **user_impersonation** *toegang common data service als organisatie gebruikers*. Selecteer **machtigingen toevoegen**.
 
     ![Machtigingen toevoegen](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
@@ -179,13 +180,13 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 
     ![Verbindings Details-Lead bestemming](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
-4. Geef de **URL van het Dynamics 365-exemplaar** op, zoals `https://contoso.crm4.dynamics.com`.
+4. Geef de **URL van het Dynamics 365-exemplaar** , zoals `https://contoso.crm4.dynamics.com`, op.
 5. Selecteer de methode voor **verificatie**, Azure Active Directory of Office 365. 
-6. Als u Azure Active Directory hebt geselecteerd, geeft u de **toepassings-id (client)** op (bijvoorbeeld: `23456052-aaaa-bbbb-8662-1234df56788f`), **Directory-id** (voor beeld: `12345678-8af1-4asf-1234-12234d01db47`) en **client geheim** (voor beeld: `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`).
+6. Als u Azure Active Directory hebt geselecteerd, geeft u de **toepassings-id (client)** op (bijvoorbeeld: `23456052-aaaa-bbbb-8662-1234df56788f`), **map-id** (voor beeld: `12345678-8af1-4asf-1234-12234d01db47`) en **client geheim** (voor beeld: `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`).
 
     ![Verbindings Details-Azure Active Directory](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
 
-7. Als u Office 365 hebt geselecteerd, geeft u de **gebruikers naam** op (bijvoorbeeld: `contoso@contoso.onmicrosoft.com`) en wacht woord (voor beeld: `P@ssw0rd`).
+7. Als u Office 365 hebt geselecteerd, geeft u de **gebruikers naam** (bijvoorbeeld: `contoso@contoso.onmicrosoft.com`) en het wacht woord (bijvoorbeeld: `P@ssw0rd`) op.
 
     ![Verbindings Details-gebruikers naam](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
 

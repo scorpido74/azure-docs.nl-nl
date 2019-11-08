@@ -4,15 +4,16 @@ description: Configureer het beheer van leads voor de klanten van Azure Marketpl
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: 9470a593f5db564689a0b26601a201874c215aa2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8d13e8c3aeabf6d3fdea80ffddbae47b80adc139
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902089"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812141"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Beheer van leads in de Market configureren
 
@@ -22,16 +23,16 @@ In dit artikel wordt beschreven hoe u uw Marketo CRM-systeem zo instelt dat verk
 
 1. Meld u aan bij Marketo.
 2. Selecteer **Design Studio**.
-    ![Marketo Design Studio](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
+    ![Marketo-ontwerp Studio](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
 3.  Selecteer **nieuw formulier**.
-    ![Nieuw formulier voor marketo](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
+    ![Marketo nieuw formulier](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
 4.  Vul de vereiste velden in het nieuwe formulier in en selecteer vervolgens **maken**.
-    ![Marketo-nieuw formulier maken](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
+    ![Marketo nieuw formulier maken](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
 5.  Selecteer **volt ooien**op veld Details.
-    ![Formulier marketo-afwerking](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
+    formulier ![Marketo-afwerking](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
 6.  Goed keuren en sluiten.
 
@@ -54,8 +55,8 @@ In dit artikel wordt beschreven hoe u uw Marketo CRM-systeem zo instelt dat verk
 
     **Een andere manier om deze waarden te berekenen**
 
-    - De server-ID bevindt zich in de URL van uw Marketo-exemplaar`serverID.marketo.com`, bijvoorbeeld "".
-    - Down load de munching-ID van uw abonnement door naar uw admin-menu > Munchkin te gaan in het veld Munchkin account ID of vanuit het eerste deel van uw Market-REST API host- `https://{Munchkin ID}.mktorest.com`subdomein:.
+    - De server-ID bevindt zich in de URL van uw Marketo-exemplaar, bijvoorbeeld "`serverID.marketo.com`".
+    - U kunt de munching-ID van uw abonnement ophalen door naar uw beheerder te gaan > menu Munchkin in het veld Munchkin-account-ID of vanuit het eerste deel van uw Market-REST API host-subdomein: `https://{Munchkin ID}.mktorest.com`.
     - De formulier-ID is de ID van het insluit code formulier dat u in stap 7 hebt gemaakt om leads van onze Marketplace te routeren.
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Uw aanbieding configureren voor het verzenden van leads naar Marketo
@@ -67,7 +68,7 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 
     ![Lead beheer-verbinding maken](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
 
-1. Selecteer in het pop-upvenster verbindings Details de optie marketo voor de doel locatie van de lead.
+1. Selecteer in het pop-upvenster verbindings Details de optie **marketo** voor de doel locatie van de lead.
 
     ![Kies een doel voor een potentiële klant](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
 

@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 8ce032a6ad10b22bed5d266bb23fe81846e8a072
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 6349f90eeacaedb03db4d6e91902fea69a8d0dae
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795846"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818022"
 ---
 # <a name="different-stages-in-mobile-application-development"></a>Verschillende fasen in de ontwikkeling van mobiele toepassingen
 Het bouwen van een mobiele toepassing omvat meerdere fasen en ontwikkel aars kunnen eenvoudig profiteren van micro soft-Services,-hulpprogram ma's en-technologieën om mobiele toepassingen met hoge klasse te bouwen.
@@ -33,8 +33,8 @@ Ontwikkel aars kunnen native single platform-client toepassingen bouwen met tale
 ## <a name="devops-and-continuous-monitoring"></a>DevOps en doorlopende bewaking
 Ontwikkel aars die mobiele en Cloud toepassingen maken, kunnen gebruikmaken van doorlopende integratie (CI), continue levering (CD) en continue bewakings Services voor het produceren van systeem eigen builds voor alle platforms UI-automatiserings tests uitvoeren op duizenden met fysieke apparaten kunt u hun releases automatiseren via bèta test kanalen of rechtstreeks implementeren in App Stores. Daarnaast kunnen ze gebruiks analyses, crashes en uitzonderings informatie verzamelen voor hun toepassingen.
 
-## <a name="additional-services"></a>Aanvullende services
+## <a name="additional-services"></a>Extra services
 Er zijn veel Azure-Services die kunnen worden gebruikt, afhankelijk van het type en de aard van de toepassing die wordt gebouwd.
-  - Azure Search voor het zoeken naar alle soorten interne gegevens, met snelle query's.
+  - Azure Cognitive Search voor het zoeken naar alle soorten interne gegevens, met snelle query's.
   - Azure Cognitive Services om kunst matige intelligentie in uw toepassing te gebruiken.
   - Azure-Signa lering om realtime communicatie in uw toepassing in te scha kelen.

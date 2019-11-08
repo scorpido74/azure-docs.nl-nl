@@ -1,5 +1,5 @@
 ---
-title: 'Power shell voor VNet-eind punten en-regels voor één en gegroepeerde Data bases in Azure SQL '
+title: Power shell voor VNet-eind punten en-regels voor één en gepoolde data bases
 description: Voorziet in Power shell-scripts voor het maken en beheren van virtuele service-eind punten voor uw Azure SQL Database en SQL Data Warehouse.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 0f3c44d705cb3d8b6ff2d855686394d9e9f1575e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5c8f46c9066ad4ef0caac0fb19645b6e4b1cf846
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686845"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822410"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>Power shell: een virtueel service-eind punt en een VNet-regel voor SQL maken
 

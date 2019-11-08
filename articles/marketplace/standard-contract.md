@@ -1,58 +1,59 @@
 ---
-title: Standard Contract | Azure
-description: Standard-Contract in Azure Marketplace en AppSource
+title: Standard-contract | Azure
+description: Standard-contract in azure Marketplace en AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: ellacroi
-ms.openlocfilehash: 80c157423572d356026f257e81d52650ce01d3e8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 17c1bf9d20b6f2e3ec450ff7bfb54fe61494ff09
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620394"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819501"
 ---
 # <a name="standard-contract"></a>Standaardcontract
 
-Voor het vereenvoudigen van het aankoopproces voor klanten en juridische vanwege de complexiteit van softwareleveranciers, biedt Microsoft een Standard Contract-sjabloon om een transactie in de marketplace te vergemakkelijken. In plaats van het samenstellen van aangepaste voorwaarden en bepalingen, kunt Azure Marketplace-uitgevers bieden van hun software onder het standaardcontract, klanten alleen hoeven om te screenen en één keer te accepteren. Het standaardcontract vindt u hier: [ https://go.microsoft.com/fwlink/?linkid=2041178 ](https://go.microsoft.com/fwlink/?linkid=2041178). 
+Om het aankoop proces voor klanten te vereenvoudigen en de juridische complexiteit voor software leveranciers te verminderen, biedt micro soft een standaard contract sjabloon om een trans actie in de Marketplace te vergemakkelijken. In plaats van aangepaste voor waarden te gebruiken, kunnen uitgevers van Azure Marketplace ervoor kiezen hun software aan te bieden onder het Standard-contract, wat klanten alleen hoeven te bevestigen en één keer te accepteren. Het standaard contract vindt u hier: [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178). 
 
-De voorwaarden en bepalingen voor een aanbieding zijn gedefinieerd op het tabblad Marketplace bij het maken van een aanbieding in de Cloud Partner-Portal. De optie standaardcontract wordt ingeschakeld door de instelling wijzigen op Ja.
+De voor waarden voor een aanbieding worden op het tabblad Marketplace gedefinieerd wanneer u een aanbieding maakt in de Cloud Partner-portal. De standaard contract optie wordt ingeschakeld door de instelling te wijzigen in Ja.
 
-![De optie standaardcontract inschakelen](media/marketplace-publishers-guide/standard-contract.png)
+![Optie standaard contract inschakelen](media/marketplace-publishers-guide/standard-contract.png)
 
 >[!Note] 
->Als u gebruiken de standaardcontract wilt, afzonderlijke voorwaarden en bepalingen zijn nog steeds vereist zijn voor de [Cloud Solution Provider](./cloud-solution-providers.md) kanaal.
+>Als u ervoor kiest om het standaard contract te gebruiken, zijn er nog afzonderlijke voor waarden vereist voor het kanaal van de [Cloud Solution Provider](./cloud-solution-providers.md) .
 
-## <a name="standard-contract-amendments"></a>Standard Contract wijzigingen
+## <a name="standard-contract-amendments"></a>Wijzigingen in het standaard contract
 
-Standard Contract wijzigingen kunnen uitgevers om te selecteren van het standaard contract voor het gemak en aangepaste voorwaarden voor hun product of bedrijf.  Klanten moeten alleen de wijzigingen van het contract, bekijken als ze al hebt gecontroleerd en geaccepteerd van de standaard Microsoft-overeenkomst.
+Met de wijzigingen in het standaard contract kunnen uitgevers het standaard contract voor eenvoud selecteren en met aangepaste voor waarden voor hun product of bedrijf.  Klanten hoeven alleen de wijzigingen in het contract door te nemen als ze het micro soft Standard-contract al hebben gecontroleerd en geaccepteerd.
 
-Er zijn twee soorten wijzigingen beschikbaar voor Azure Marketplace-uitgevers:
+Er zijn twee soorten wijzigingen beschikbaar voor uitgevers van Azure Marketplace:
 
-* Universele wijzigingen: Deze wijzigingen worden universeel toegepast op het standaard contract voor alle klanten. Universele wijzigingen worden weergegeven voor elke klant van het product in de stroom aankoop.
+* Universele wijzigingen: deze wijzigingen worden universeel toegepast op het Standard-contract voor alle klanten. Universele wijzigingen worden weer gegeven aan elke klant van het product in de inkoop stroom.
 
 ![Universele wijzigingen](media/marketplace-publishers-guide/universal-amendaments.png)
 
-* Aangepaste wijzigingen: Azure Marketplace bevat ook een voorziening voor aangepaste wijzigingen die zijn gericht aan tenants. Ze zijn speciale wijzigingen in de standard-overeenkomst die bedoeld zijn voor bepaalde klanten alleen. Uitgevers kunnen de tenant die ze willen als doel kiezen. Klanten van deze tenant zou het product op Standard Contract en de wijzigingen van de betreffende kopen.
+* Aangepaste wijzigingen: Azure Marketplace heeft ook een voorziening voor aangepaste wijzigingen die zijn gericht op tenants. Ze zijn speciale wijzigingen in het standaard contract die alleen bestemd zijn voor bepaalde klanten. Uitgevers kunnen de Tenant kiezen die ze willen instellen. Klanten van deze Tenant kopen het product onder het standaard contract en de doel wijzigingen.
 
 ![Aangepaste wijzigingen](media/marketplace-publishers-guide/custom-amendaments.png)
 
 >[!Note] 
->Klanten met aangepaste wijzigingen wordt benaderd krijgen ook de universele wijziging van de voorwaarden van de standaard tijdens de aankoop.
+>Klanten die zijn gericht op aangepaste wijzigingen, krijgen tijdens de aankoop ook de universele wijzigingen in de standaard termen.
 
 >[!Note]
->De volgende typen ondersteunen standaard wijzigingen van overeenkomst: Azure-toepassingen (Oplossingssjablonen en beheerde toepassingen), virtuele Machines, Containers, containertoepassingen.
+>De volgende aanbiedings typen ondersteunen wijzigingen in het standaard contract: Azure-toepassingen (oplossings sjablonen en beheerde toepassingen), Virtual Machines, containers, container toepassingen.
 
-### <a name="customer-experience"></a>Ervaring van de klant
+### <a name="customer-experience"></a>Gebruikers ervaring
 
-Klanten, worden de voorwaarden die zijn gekoppeld aan het product als het standaard Microsoft-Contract en de wijzigingen zien tijdens het aankoopproces in Azure portal.
+Tijdens het aankoop proces in de Azure Portal kunnen klanten de voor waarden zien die zijn gekoppeld aan het product als het micro soft Standard-contract en de wijzigingen.
 
-![De klant van Azure portal-ervaring.](media/marketplace-publishers-guide/ibiza-customer-experience.png)
+![Het Azure Portal klant ervaring.](media/marketplace-publishers-guide/ibiza-customer-experience.png)
 
 ### <a name="api"></a>API
 
-Klanten kunnen gebruiken `Get-AzureRmMarketplaceTerms` aan de voorwaarden van een aanbieding ophalen en accepteren. De standaard contract en de bijbehorende wijzigingen worden geretourneerd in de uitvoer van de cmdlet.
+Klanten kunnen `Get-AzureRmMarketplaceTerms` gebruiken om de voor waarden van een aanbieding op te halen en deze te accepteren. Het standaard contract en de bijbehorende wijzigingen worden geretourneerd in de uitvoer van de cmdlet.
 
 ---

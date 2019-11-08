@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 5c583270428a459f500ae0e220592805fd1bf454
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 0a2b48a6c046150f6e685ecda0c0d765342e0194
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718904"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818955"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure"></a>Uw beperkte proef project verplaatsen naar Azure
 
@@ -46,7 +46,7 @@ Meerdere projecten kunnen worden gekoppeld aan één resource. Meer informatie o
 
 ## <a name="find-your-limited-trial-project-information"></a>Uw project gegevens met een beperkte proef versie zoeken
 
-Als u uw project wilt verplaatsen, hebt u de _project-id_ en _trainings sleutel_ nodig voor het project dat u wilt migreren. Als u deze informatie niet hebt, gaat u naar [https://limitedtrial.customvision.ai/projects](https://limitedtrial.customvision.ai/projects) om de id en de sleutel voor elk van uw projecten te verkrijgen. 
+Als u uw project wilt verplaatsen, hebt u de _project-id_ en _trainings sleutel_ nodig voor het project dat u wilt migreren. Als u deze informatie niet hebt, gaat u naar [https://www.customvision.ai/projects](https://www.customvision.ai/projects) om de id en de sleutel voor elk van uw projecten te verkrijgen. 
 
 ## <a name="use-the-python-sample-code-to-copy-your-project-to-azure"></a>De python-voorbeeld code gebruiken om uw project naar Azure te kopiëren
 

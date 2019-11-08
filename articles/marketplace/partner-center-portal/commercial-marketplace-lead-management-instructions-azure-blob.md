@@ -4,20 +4,21 @@ description: Beheer van leads voor Azure-Blob configureren
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/30/2019
 ms.author: evansma
-ms.openlocfilehash: c67855422808f5ec4c81242edcece4e447f2f44f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5da4e0ab315b3f66a477b816f6fc5d27de7aa339
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902362"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812372"
 ---
 # <a name="lead-management-instructions-for-azure-blob"></a>Instructies voor het beheer van potentiële klanten voor Azure Blob
 
 >[!Caution]
->De optie Azure Blob voor het verwerken van leads van uw Marketplace-aanbieding is afgeschaft. Als u momenteel een aanbieding hebt gepubliceerd met lead management-configuratie voor Azure Blob, ontvangt u geen leads meer van de klant. Werk de configuratie van uw lead beheer bij naar een van de andere opties voor het beheer van leads. Meer informatie over de andere opties op de [landings pagina](./commercial-marketplace-get-customer-leads.md)voor het beheer van leads.
+>De optie Azure Blob voor het verwerken van leads van uw Marketplace-aanbieding is afgeschaft. Als u momenteel een aanbieding hebt gepubliceerd met lead management-configuratie voor Azure Blob, ontvangt u geen leads meer van de klant. Werk de configuratie van uw lead beheer bij naar een van de andere opties voor het beheer van leads. Meer informatie over de andere opties op de [landings pagina voor het beheer van leads](./commercial-marketplace-get-customer-leads.md).
 
 Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt ondersteund in het partner centrum voor het ontvangen van Azure Marketplace-en AppSource-leads, kunt u een Azure-Blob gebruiken om deze leads af te handelen. U kunt de gegevens vervolgens exporteren en importeren in uw CRM-systeem. De instructies in dit artikel geven u door het proces van het maken van een Azure Storage-account en een Azure-Blob onder dat account. Daarnaast kunt u een nieuwe stroom maken met behulp van Microsoft Flow om een e-mail bericht te verzenden wanneer uw aanbieding een lead ontvangt.
 
@@ -49,7 +50,7 @@ Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt onder
 
     ![Azure-opslag sleutel](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
 
-6. Selecteer op de pagina opslag account deoptie blobs.
+6. Selecteer op de pagina opslag account de optie **blobs**.
 
    ![Azure-opslag sleutel](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
@@ -80,8 +81,8 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 
 4. Geef de **container naam** en de **verbindings reeks voor het opslag account** op die u hebt gevolgd door deze instructies.
 
-    * Container naam voor beeld:`marketplaceleadcontainer`
-    * Voor beeld van verbindings reeks voor opslag account: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net`![Verbindings Details](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
+    * Voor beeld van container naam: `marketplaceleadcontainer`
+    * Verbindings reeks voor het opslag account voor beeld: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![verbindings Details](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
 5. Selecteer **Opslaan**.
 

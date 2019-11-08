@@ -1,107 +1,108 @@
 ---
-title: Definities van de verkoper Insights
-description: Bevat definities voor veel van de voorwaarden u in de verkoper Insights vindt
+title: Insights-definities voor verkopers
+description: Bevat definities voor veel van de voor waarden die u vindt in de verkoop inzichten
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 8b3447b8094eb95bd2f61baed7371bf718fdf730
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2571f916f6efc61772b2734119e197996e2ffe3c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606896"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809114"
 ---
-<a name="seller-insights-definitions"></a>Definities van de verkoper Insights
+<a name="seller-insights-definitions"></a>Insights-definities voor verkopers
 =======================
 
-De volgende tabel bevat de definities voor veel van de voorwaarden in de verkoper Insights gebruikt.
+De volgende tabel bevat definities voor veel van de termen die worden gebruikt in de verkoop inzichten.
 
-|  **Term**                 |  **Definitie**                                                                                                                              |
+|  **Mandaat**                 |  **Definitie**                                                                                                                              |
 |  --------------------------------------------    |  ---------------------------------------------------------------------------------------------------------------------------------           |
-| **Azure licentietype**                               | Het type licentieovereenkomst door klanten gebruikt om Azure te kopen.  Ook wel bekend als kanaal.                                                  |
-| **Azure licentietype: Cloud Solution Provider**      | De eindklant aanschaft Azure en uw aanbieding van Marketplace via hun Cloud Solution Provider, die als uw reseller fungeert.                 |
-| **Azure licentietype: Enterprise**                   | De eindklant aanschaft Azure en uw Marketplace-aanbieding via een Enterprise Agreement, ondertekend rechtstreeks met Microsoft.                  |
-| **Azure licentietype: Enterprise via wederverkoper**  | De eindklant aanschaft Azure en uw Marketplace-aanbieding via een reseller die vereenvoudigt het uitvoeren van hun Enterprise Agreement van Microsoft.     |
-| **Azure licentietype: Betalen naar gebruik**                | De eindklant aanschaft Azure en uw Marketplace-aanbieding via een 'Betalen naar gebruik'-overeenkomst, ondertekend rechtstreeks met Microsoft.                |
-| **Bedrag kosten in rekening gebracht (CC)**                              | Het bedrag in rekening gebracht voor de klant, in de *klantvaluta* (CC) voor facturering.                                                                 |
-| **Bedrag kosten in rekening gebracht (PC)**                               | Het bedrag in rekening gebracht voor de klant, in de *Payout valuta* (PC).                                                                      |
-| **Datum van afschrijving**                                      | De datum waarop die de kosten van de klant is berekend (meestal direct na de gebruiksperiode).                                             |
-| **Naam van de cloud-exemplaar**                              | De Microsoft-Cloud waarin een VM-implementatie is opgetreden.                                   |
-| **Naam van cloud-exemplaar: Azure Global**                | De openbare wereldwijde Microsoft-cloud.                           |
-| **Naam van cloud-exemplaar: Azure Government**        | Voor een van de volgende overheden Government-specifieke Microsoft-clouds: China, Duitsland of de Verenigde Staten van Amerika.                           |
-| **Status van de verzameling**  | Voor een specifieke kosten in rekening gebracht, de meest recente status van de levenscyclus van facturering en verzameling.  Bijvoorbeeld mogelijk de status van de verzameling wordt uitgevoerd, die worden verzameld, of restitutie.                  |
-| **Grootte van Core**  | Het aantal virtuele kernen, gepresenteerd door de virtuele machine die op de aanbieding wordt uitgevoerd.               |
-| **Plaats klant**  | De plaatsnaam geleverd door de klant. Dit wordt mogelijk anders dan de plaats in de Azure-abonnement van een klant.  |
-| **Taal van de klant-communicatie**        | De taal van voorkeur van de klant voor communicatie.                                  |
-| **De naam van het bedrijf van klant**                  | De naam van het bedrijf die is opgegeven door de klant. Dit wordt mogelijk anders dan de plaats in de Azure-abonnement van een klant.                                  |
-| **Land van de klant**                       | De naam land/regio is opgegeven door de klant.  Dit wordt mogelijk anders dan het land/de regio in de Azure-abonnement van een klant.                               |
-| **De valuta van klant (CC)**                 | De valuta voorkeur van de klant voor prijzen en facturering.                            |
-| **E-mailadres van de klant**                         | Het e-mailadres dat is geleverd door de klant.  Dit wordt mogelijk anders dan het e-mailadres in van een klant Azure-abonnement.                   |
-| **Voornaam van de klant**                              | De eerste naam wordt geleverd door de klant.  Dit wordt mogelijk anders dan de naam die is opgegeven in de Azure-abonnement van een klant.                    |
-| **Achternaam van de klant**                               | De achternaam is opgegeven door de klant.  Dit wordt mogelijk anders dan de naam die is opgegeven in de Azure-abonnement van een klant.                    |
-| **Klant-ID**                               | De unieke id die is toegewezen aan een klant.  Een klant kan nul of meer Azure Marketplace-abonnementen hebben.                    |
-| **Betaling van het klanttype**                            | Het type informatie over betalingsmiddelen die worden gebruikt door de klant.  Dit kan bijvoorbeeld zijn kaart, factuur of elektronische selectievakje.                             |
-| **Klant-postcode**                             | De postcode is opgegeven door de klant.  Dit wordt mogelijk anders dan de postcode die is opgegeven in de Azure-abonnement van een klant.                                                                 |
-| **Status van de klant**                                   | De status (adres) die door de klant.  Dit wordt mogelijk anders dan de laatste naam die is opgegeven in de Azure-abonnement van een klant.                                                                 |
-| **Datum verworven**                                    | De eerste datum waarop de klant aangeschaft een aanbieding door u zijn gepubliceerd.                 |
-| **Datum verloren**                                        | De laatste datum de laatste van alle eerder hebt gekocht-aanbiedingen is geannuleerd door de klant.                                                         |
-| **Uitgebreide geschatte (CC)**                   | De geschatte uitgebreid kosten in rekening gebracht voor het aantal eenheden van het gebruik van voor een bepaalde SKU (in van de klant valuta). Deze waarde is mogelijk niet precies vanwege fouten afronding of moet worden afgekapt.                            |
-| **Uitgebreide geschatte (PC)**                   | De geschatte kosten in rekening gebracht voor het aantal eenheden van het gebruik van voor een bepaalde SKU, op basis van de conversie valuta op het gebruik van de datum uitgebreid is berekend (in van de uitgever valuta). Deze waarde is mogelijk niet precies vanwege fouten afronding of moet worden afgekapt.                  |
-| **Geschatte Payout (PC)**                            | De geschatte betaling voor het aantal eenheden van het gebruik van voor een bepaalde SKU, op basis van afwijkend exchange conversie op de datum waarop die het gebruik wordt berekend (in van de uitgever valuta). Deze waarde is mogelijk niet precies vanwege fouten afronding of moet worden afgekapt.                        |
-| **Geschatte prijs (PC)**                             | De geschatte prijs voor een eenheid van gebruik voor een bepaalde SKU, op basis van de conversie valuta op het gebruik van de datum wordt (in van de uitgever valuta) berekend. Deze waarde is mogelijk niet precies vanwege fouten afronding of moet worden afgekapt.                                             |
-| **Nieuwe klant**                                  | De waarde laat u weten als het is een nieuwe klant verbruikt of aanschaffen van een of meer van uw Marketplace biedt voor de eerste keer (of niet).  De waarde is 'Ja' als het dezelfde kalendermaand voor 'Datum verkregen'.  De waarde is "Nee" als een van uw aanbiedingen voorafgaand aan de kalendermaand gerapporteerd door de klant heeft gekocht.                                                       |
-| **Preview-versie SKU**                                  | De waarde laat u weten als u de SKU als 'preview' zijn gelabeld. De waarde is 'Ja' als de SKU is daarom gemarkeerd en geautoriseerd door u alleen Azure-abonnementen kunnen implementeren en gebruiken van deze installatiekopie.  De waarde is "Nee" Als de SKU is niet zijn geïdentificeerd als 'preview'.                                          |
-| **Contact op met de promotie is Opt-In**                   | De waarde laat u weten als de klant proactief aangemeld, wordt voor de contactpersoon in de promotie van uitgevers. Op dit moment zijn we niet de optie presenteren aan klanten, zodat we "Nee" over de hele linie hebt aangegeven. Wanneer deze functie is geïmplementeerd, gaan we dienovereenkomstig bijgewerkt.                                          |
-| **Type Marketplace-licentie**                         | De facturering methode van de Marketplace-aanbieding.                             |
-| **Marketplace-licentietype: Kosten in rekening gebracht via Azure**   | Microsoft is van de agent voor deze aanbieding van Marketplace en klanten namens u kosten in rekening gebracht. (Betalen per gebruik creditcard of factuur Enterprise)       |
-| **Marketplace-licentietype: Bring Your Own License** | De virtuele machine vereist een licentiesleutel geleverd door de klant om te implementeren. Microsoft kanaalpartners niet klanten voor hun gebruik van deze Marketplace-aanbiedingen. |
-| **Marketplace-licentietype: Gratis**                   | De Marketplace-aanbieding is geconfigureerd om gratis voor alle gebruikers. Microsoft kanaalpartners niet klanten voor hun gebruik van deze Marketplace-aanbieding.    |
-| **Marketplace-licentietype: Microsoft als wederverkoper**  | Microsoft kan uw reseller voor deze Marketplace-aanbieding.                               |
-| **Bedrijfsnaam van Marketplace-abonnement**  | De naam van het bedrijf die is opgegeven door de klant in hun Azure-abonnement.                           |
-| **Marketplace abonnements-ID**            | De unieke id die is gekoppeld aan het Azure-abonnement de klant gebruikt voor het kopen van uw Marketplace-aanbieding.  Voorheen was het de GUID van Azure-abonnement.  In sommige gevallen, zoals een SAAS-volgorde, zijn er geen abonnement is vereist.           |
-| **Microsoft Fee (CC)**                               | De kosten van Microsoft voor de transactie in de valuta van de klant.                              |
+| **Azure-licentie type**                               | Het type licentie overeenkomst dat door klanten wordt gebruikt om Azure aan te schaffen.  Ook wel bekend als Channel.                                                  |
+| **Azure-licentie type: Cloud Solution Provider**      | De eind klant schaft Azure en uw Marketplace-aanbieding aan via hun Cloud solution provider, die fungeert als uw wederverkoper.                 |
+| **Azure-licentie type: Enter prise**                   | De eind klant schaft Azure en uw Marketplace-aanbieding aan via een Enterprise Agreement, die rechtstreeks is ondertekend met micro soft.                  |
+| **Azure-licentie type: Enter prise through reseller**  | De eind klant schaft Azure en uw Marketplace-aanbieding aan via een wederverkoper die hun Enterprise Agreement met micro soft vereenvoudigt.     |
+| **Azure-licentie type: betalen naar gebruik**                | De eind klant aanschaft Azure en uw Marketplace-aanbieding via een overeenkomst voor betalen naar gebruik, die rechtstreeks is ondertekend met micro soft.                |
+| **Kosten bedrag (CC)**                              | De hoeveelheid die bij de klant in rekening wordt gebracht, in de *klant valuta* (CC) voor facturering.                                                                 |
+| **Kosten bedrag (PC)**                               | De hoeveelheid die bij de klant in rekening wordt gebracht, in de *valuta voor betaling* (PC).                                                                      |
+| **Kosten datum**                                      | De datum waarop de kosten van de klant worden berekend (doorgaans onmiddellijk na de gebruiks periode).                                             |
+| **Naam van Cloud exemplaar**                              | De Microsoft Cloud waarin een VM-implementatie is opgetreden.                                   |
+| **Naam van Cloud exemplaar: Azure Global**                | De open bare wereld wijde micro soft-Cloud.                           |
+| **Naam van Cloud exemplaar: Azure Government**        | Government-specifieke micro soft-Clouds voor een van de volgende overheden: China, Duitsland of de Verenigde Staten van Amerika.                           |
+| **Verzamelings status**  | Voor een specifieke kosten, de laatste status van de facturering en de levens cyclus van de verzameling.  De status kan bijvoorbeeld verzameling zijn van voortgang, verzameld of terugbetaling.                  |
+| **Kern grootte**  | Het aantal virtuele kernen dat wordt weer gegeven door de virtuele machine waarop de aanbieding wordt uitgevoerd.               |
+| **Klant plaats**  | De naam van de plaats van de klant. Dit kan afwijken van de plaats in het Azure-abonnement van een klant.  |
+| **Taal van klant communicatie**        | De taal die door de klant wordt aanbevolen voor communicatie.                                  |
+| **Bedrijfs naam van klant**                  | De bedrijfs naam die door de klant is verschaft. Dit kan afwijken van de plaats in het Azure-abonnement van een klant.                                  |
+| **Klant land**                       | De land/regio naam die door de klant wordt verschaft.  Dit kan afwijken van het land/de regio in het Azure-abonnement van een klant.                               |
+| **Klant valuta (CC)**                 | De door de klant gewenste valuta voor prijzen en facturering.                            |
+| **E-mail van klant**                         | Het e-mail adres van de eind gebruiker.  Dit kan afwijken van het e-mail adres in het Azure-abonnement van een klant.                   |
+| **Voor naam van klant**                              | De voor naam van de klant.  Dit kan anders zijn dan de naam die is opgenomen in het Azure-abonnement van de klant.                    |
+| **Achternaam van klant**                               | De achternaam van de klant.  Dit kan anders zijn dan de naam die is opgenomen in het Azure-abonnement van de klant.                    |
+| **Klant-ID**                               | De unieke id die aan een klant is toegewezen.  Een klant heeft mogelijk geen of meer Azure Marketplace-abonnementen.                    |
+| **Betalings type van klant**                            | Het type betalings middel dat door de klant wordt gebruikt.  Dit kan bijvoorbeeld kaart, factuur of elektronische controle zijn.                             |
+| **Post code van de klant**                             | De post code die de klant heeft ontvangen.  Dit kan afwijken van de post code die is opgenomen in het Azure-abonnement van een klant.                                                                 |
+| **Klant status**                                   | De status (adres) van de klant.  Dit kan afwijken van de achternaam die is opgenomen in het Azure-abonnement van de klant.                                                                 |
+| **Aanschaf datum**                                    | De eerste datum waarop de klant een door u gepubliceerde aanbieding heeft gekocht.                 |
+| **Datum verloren**                                        | De laatste datum waarop de klant de laatste van alle eerder gekochte aanbiedingen heeft geannuleerd.                                                         |
+| **Geschatte berekende toeslag (CC)**                   | De geschatte berekende kosten voor het aantal eenheden van gebruik voor een bepaalde SKU (in de valuta van de klant). Deze waarde mag niet exact zijn door afronding of Afbrekings fouten.                            |
+| **Geschatte uitgebreide lading (PC)**                   | De geschatte berekende toeslag voor het aantal eenheden van gebruik voor een bepaalde SKU, op basis van de deviezen conversie op het datum gebruik wordt berekend (in de valuta van de uitgever). Deze waarde mag niet exact zijn door afronding of Afbrekings fouten.                  |
+| **Geschatte uitbetaling (PC)**                            | De geschatte betaling voor het aantal gebruiks eenheden voor een bepaalde SKU, op basis van deviezen conversie op de datum waarop het gebruik wordt berekend (in de valuta van de uitgever). Deze waarde mag niet exact zijn door afronding of Afbrekings fouten.                        |
+| **Geschatte prijs (PC)**                             | De geschatte prijs voor een eenheid van gebruik voor een bepaalde SKU, op basis van deviezen conversie op het datum gebruik wordt berekend (in de valuta van de uitgever). Deze waarde mag niet exact zijn door afronding of Afbrekings fouten.                                             |
+| **Is nieuwe klant**                                  | De waarde laat u weten of een nieuwe klant een of meer van uw Marketplace-aanbiedingen voor de eerste keer gebruikt of aanschaft (of niet).  De waarde is ' ja ' als deze dezelfde kalender maand is als de datum van aanschaf.  De waarde is "nee" als de klant een van de aanbiedingen vóór de gemelde kalender maand heeft gekocht.                                                       |
+| **Is preview-SKU**                                  | De waarde laat u weten of u de SKU hebt gelabeld als ' preview '. De waarde is "ja" als de SKU dienovereenkomstig is gelabeld en alleen Azure-abonnementen die door u zijn geautoriseerd, kunnen deze installatie kopie implementeren en gebruiken.  De waarde is ' nee ' als de SKU niet is geïdentificeerd als ' preview '.                                          |
+| **Is de contact persoon voor de reclame in**                   | De waarde laat u weten of de klant proactief heeft gekozen voor een contact persoon van uitgevers. Op dit moment bieden we geen optie voor klanten, dus hebben we "no" aangegeven op het bord. Zodra deze functie is geïmplementeerd, gaan we dienovereenkomstig met bijwerken.                                          |
+| **Marketplace-licentie type**                         | De facturerings methode van de Marketplace-aanbieding.                             |
+| **Marketplace-licentie type: gefactureerd via Azure**   | Micro soft is uw agent voor deze Marketplace-aanbieding en factuurt klanten namens u. (PAYG credit card of ENTER prise-factuur)       |
+| **Marketplace-licentie type: Neem uw eigen licentie mee** | Voor de virtuele machine is een licentie sleutel van de klant vereist om te implementeren. Micro soft houdt geen klanten in rekening voor het gebruik van deze Marketplace-aanbiedingen. |
+| **Marketplace-licentie type: gratis**                   | De Marketplace-aanbieding is zo geconfigureerd dat deze gratis is voor alle gebruikers. Micro soft factureert geen klanten voor hun gebruik van deze Marketplace-aanbieding.    |
+| **Marketplace-licentie type: micro soft als wederverkoper**  | Micro soft is uw wederverkoper voor deze Marketplace-aanbieding.                               |
+| **Bedrijfs naam voor Marketplace-abonnement**  | De naam van het bedrijf dat door de klant is verschaft in hun Azure-abonnement.                           |
+| **Marketplace-abonnements-ID**            | De unieke id die is gekoppeld aan het Azure-abonnement dat de klant heeft gebruikt voor het kopen van uw Marketplace-aanbieding.  Het was voorheen de GUID van het Azure-abonnement.  In sommige gevallen, zoals een SAAS-bestelling, is geen abonnement vereist.           |
+| **Micro soft-kosten (CC)**                               | De kosten voor micro soft voor de trans actie in de valuta van de klant.                              |
 | **Naam van aanbieding**                                | De naam van de Marketplace-aanbieding.                                                             |
-| **Type aanbieding**                                | Het type van de Microsoft Marketplace-aanbiedingen.  Het kan bijvoorbeeld zijn beheerde toepassing, de licenties voor virtuele machine of de container.                           |
-| **Orderdatum annuleren**                         | De datum waarop die de Marketplace-bestelling is geannuleerd.                                                       |
-| **Order-ID**                                  | De unieke id van de volgorde van de klant voor uw Marketplace-service.  Virtuele Machine op gebruik gebaseerde aanbiedingen zijn niet gekoppeld aan een volgorde.                 |
-| **Aankoopdatum volgorde**                       | De datum waarop de Marketplace-bestelling is gemaakt.                                                        |
-| **De hoeveelheid**                       | De hoeveelheid van orders voor dezelfde SKU die zijn gekoppeld aan een Azure-abonnement.  Voor SAAS-orders staat voor het aantal seats die zijn gekoppeld aan dit exemplaar van een order.                                            |
-| **Order Status**                              | De status van een Marketplace-bestelling op het moment dat de gegevens voor het laatst is vernieuwd.  De volgorde zijn mogelijk actief of is geannuleerd.             |
-| **De Status van de order: Actieve**                           | De klant een bestelling heeft aangeschaft en niet de order is geannuleerd.   |
-| **De Status van de order: Geannuleerd**                        | De klant een bestelling eerder hebt gekocht en vervolgens hun order geannuleerd.        |
-| **Payout bedrag (PC)**                             | Het bedrag betaald, kunt u in uw favoriete Payout valuta (PC).                                       |
-| **Payout valuta (PC)**                           | De valuta voor uw betalingen gebruikt.                                                                |
-| **Betalings-datum**                                    | De datum waarop de betalingsaanvraag is verzonden van Microsoft naar uw gekozen financiële instelling.                                                                         |
-| **Betalings-Status**                                  | De status van de toekenning op het moment dat de gegevens voor het laatst is vernieuwd.                                   |
-| **Betalings-Status: Bezig**               | De transactie is niet gereed voor toekenning. (Zie voor meer informatie, de Status van de verzameling)                             |
-| **Betalings-Status: Betaald**                          | De transactie is opgenomen in een eerdere payout berekening. Positieve waarden worden betaald en negatieve waarden nettowaarde op basis van het totale verschuldigde bedrag worden teruggebracht. |
-| **Betalings-Status: Toekomstige Payout**                   | De transactie is gereed voor payout en worden opgenomen in de berekening van de volgende beschikbare payout.                      |
-| **Prijs (CC)**                                   | De prijs voor een eenheid van gebruik voor een bepaalde SKU (in van de klant valuta).                                                                  |
-| **E-mailadres van provider**                                 | Het e-mailadres van de provider in de relatie tussen Microsoft en de eindklant. Als de klant een onderneming via Reseller, worden de leverancier.  Als een Cloud Solution Provider (CSP) betrokken is, worden de CSP.                                                                 |
-| **Naam van provider**                                 | De naam van de provider die betrokken zijn bij de relatie tussen Microsoft en end-klant. Als de klant een onderneming via Reseller, worden de leverancier.  Als een Cloud Solution Provider (CSP) betrokken is, worden de CSP.                                                                 |
-| **Resource-URI**                                  | Het pad waar het artefact implementatie is geïmplementeerd.                                            |
-| **SKU**                                           | SKU-naam zoals gedefinieerd tijdens het publiceren. Een aanbieding mogelijk veel SKU's, maar een SKU kan alleen worden gekoppeld aan één aanbieding.              |
-| **SKU-Type voor facturering**                                 | De facturering methode van de SKU.                                                                                                             |
-| **SKU facturering-Type: Bring Your Own License**         | De VM of service moet een licentiesleutel geleverd door de klant om te implementeren. Microsoft kanaalpartners niet klanten voor hun gebruik van deze Marketplace-aanbiedingen.   |
-| **SKU facturering-Type: Microsoft As Reseller**          | Microsoft kan uw reseller voor deze SKU.   |
-| **SKU facturering-Type: Gratis**                           | De SKU is geconfigureerd om gratis voor alle gebruikers. Microsoft kanaalpartners niet klanten voor hun gebruik van deze SKU.                           |
-| **SKU facturering-Type: Betaalde**                           | Microsoft is van de agent voor deze SKU en klanten namens u kosten in rekening gebracht. (Betalen per gebruik creditcard of factuur Enterprise)                   |
-| **SKU facturering-Type: Trial**                          | De klant is in de proefperiode is afgelopen en worden geconverteerd naar een betaald als ze niet annuleren of verwijderen.                                         |
-| **Bedrag (CC)**                                  | Het bedrag toegepast op de factuur van de klant in de klant valuta (CC).                                                               |
-| **De datum van transactie**                                 | De datum van de transactie wordt vastgelegd in uw betalings-rapportage.                                                                           |
-| **Transactietype**                               | Het type van de transactie die wordt gerapporteerd.  Dit kan bijvoorbeeld een kosten in rekening gebracht, restitutie of payout aanpassing zijn.                                                                                        |
-| **Proefversie einddatum**                                 | De datum waarop de proefperiode voor deze order wordt beëindigd of is beëindigd.                                                                           |
-| **Gebruiksdatum**                                       | Het gebruik van de datum-klant is opgetreden.                                                                                                             |
-| **Verbruikte hoeveelheid**                                       | Het gebruik van de gerapporteerde klant van de SKU. Voor VM-installatiekopieën staan gebruiksrecords voor het gebruik voor de gerapporteerde periode voor die VM-grootte en SKU.                                               |
-| **Gebruik van verwijzing**                                       | De id voor een of meer dagen van klanten te worden gebruikt voor een bepaalde SKU die zijn gekoppeld aan een vermelding in het rapport payout.                                               |
-| **Gebruikstype**                                       | Een beschrijving van het gebruik wordt gemeten. (Gebruik van genormaliseerde of onbewerkte gebruik)                                                              |
-| **Gebruikstype: Genormaliseerde gebruik**                | Uren productgebruik genormaliseerd voor account voor het aantal VM-kernen die betrokken zijn bij het gebruik: [nummer van de VM-kernen] x [uren van onbewerkte Usage]. Virtuele machines aangewezen als "SHAREDCORE" 1/6 (of 0.1666) als de vermenigvuldiger [nummer van de VM-kernen gebruiken].                                        |
-| **Gebruikstype: Onbewerkte gebruik**                        | Gebruik uur voor uw Marketplace-aanbieding.  Deze functionaliteit wordt weergegeven in termen van "Agenda" uur.  Het is het aantal keer virtuele machines, al wordt uitgevoerd.                           |
-| **Gebruik eenheden**                                   | De maateenheid voor de vermelde gebruik. Virtuele machines zijn altijd wordt gemeten met eenheden per uur van de meting.                               |
-| **VM-grootte**                                       | Hiermee geeft u de grootte van de virtuele machine-hardware uitgelijnd met de Azure-aanbieding. Voorbeelden zijn onder meer `Basic_A0`, `Standard_A11`, `Standard_D12`, en `Standard_G4`.   |
+| **Aanbiedings type**                                | Het type Microsoft Marketplace aanbieding.  Dit kan bijvoorbeeld beheerde toepassing, licenties voor virtuele machines of container zijn.                           |
+| **Annulerings datum van bestelling**                         | De datum waarop de Marketplace-bestelling is geannuleerd.                                                       |
+| **Order-ID**                                  | De unieke id van de klant bestelling voor uw Marketplace-service.  Aanbiedingen op basis van het gebruik van virtuele machines zijn niet gekoppeld aan een order.                 |
+| **Aankoop datum van bestelling**                       | De datum waarop de Marketplace-bestelling is gemaakt.                                                        |
+| **Bestel hoeveelheid**                       | Het aantal orders voor dezelfde SKU dat is gekoppeld aan een Azure-abonnement.  Voor SAAS-orders vertegenwoordigt het het aantal seats dat is gekoppeld aan dit exemplaar van een order.                                            |
+| **Status van bestelling**                              | De status van een Marketplace-bestelling op het moment dat de gegevens voor het laatst zijn vernieuwd.  De volg orde kan bijvoorbeeld actief of geannuleerd zijn.             |
+| **Status van bestelling: actief**                           | De klant heeft een bestelling gekocht en heeft zijn order niet geannuleerd.   |
+| **Status van bestelling: geannuleerd**                        | De klant heeft eerder een order aangeschaft en vervolgens de bestelling geannuleerd.        |
+| **Uitbetalings bedrag (PC)**                             | Het bedrag dat aan u is betaald, in uw voorkeurs valuta (PC).                                       |
+| **Valuta voor betaling (PC)**                           | De valuta die voor uw uitbetalingen wordt gebruikt.                                                                |
+| **Uitbetalings datum**                                    | De datum waarop de betalings aanvraag is verzonden van micro soft naar de gekozen financiële instelling.                                                                         |
+| **Status uitbetaling**                                  | De status van de uitbetaling op het moment dat de gegevens voor het laatst zijn vernieuwd.                                   |
+| **Uitbetalings status: wordt uitgevoerd**               | De trans actie is niet gereed voor uitbetaling. (Zie status van de verzameling) voor meer informatie                             |
+| **Uitbetalings status: betaald**                          | De trans actie is opgenomen in een berekening van een eerdere uitbetaling. Positieve waarden worden betaald en negatieve waarden worden gesaldeerd op basis van het totale verschuldigde bedrag. |
+| **Status van uitbetaling: aanstaande uitbetaling**                   | De trans actie is gereed voor betaling en wordt opgenomen in de volgende beschik bare toekennings berekening.                      |
+| **Prijs (CC)**                                   | De prijs voor een gebruiks eenheid voor een bepaalde SKU (in de valuta van de klant).                                                                  |
+| **E-mail van provider**                                 | Het e-mail adres van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper.  Als een Cloud Solution Provider (CSP) is betrokken, is de CSP.                                                                 |
+| **Provider naam**                                 | De naam van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper.  Als een Cloud Solution Provider (CSP) is betrokken, is de CSP.                                                                 |
+| **Resource-URI**                                  | Het pad waar het implementatie artefact is geïmplementeerd.                                            |
+| **SKU**                                           | SKU-naam zoals gedefinieerd tijdens het publiceren. Een aanbieding kan veel Sku's hebben, maar een SKU kan slechts worden gekoppeld aan één aanbieding.              |
+| **Facturerings type SKU**                                 | De facturerings methode van de SKU.                                                                                                             |
+| **Facturerings type SKU: Neem uw eigen licentie mee**         | Voor de virtuele machine of service is een licentie sleutel van de klant vereist om te implementeren. Micro soft factureert geen klanten voor hun gebruik van deze Marketplace-aanbiedingen.   |
+| **SKU-facturerings type: micro soft als wederverkoper**          | Micro soft is uw wederverkoper voor deze SKU.   |
+| **Facturerings type SKU: gratis**                           | De SKU is zo geconfigureerd dat deze gratis is voor alle gebruikers. Micro soft factureert geen klanten voor hun gebruik van deze SKU.                           |
+| **Facturerings type SKU: betaald**                           | Micro soft is uw agent voor deze SKU en maakt klanten namens u rekening. (PAYG credit card of ENTER prise-factuur)                   |
+| **SKU-factuur type: proef versie**                          | De klant bevindt zich in de proef periode en wordt geconverteerd naar betaald als ze niet worden geannuleerd of verwijderd.                                         |
+| **Belasting bedrag (CC)**                                  | Het BTW-bedrag dat wordt toegepast op de factuur van de klant in de valuta van de klant (CC).                                                               |
+| **Transactie datum**                                 | De datum van de trans actie die is geregistreerd in uw uitbetalings rapportage.                                                                           |
+| **Transactie type**                               | Het type trans actie dat wordt gerapporteerd.  Dit kan bijvoorbeeld kosten, restitutie of uitbetalings correctie zijn.                                                                                        |
+| **Eind datum van proef versie**                                 | De datum waarop de proef periode voor deze order wordt beëindigd of beëindigd.                                                                           |
+| **Gebruiks datum**                                       | De datum waarop klant gebruik heeft plaatsgevonden.                                                                                                             |
+| **Gebruiks hoeveelheid**                                       | Het gerapporteerde klant gebruik van de SKU. Voor VM-installatie kopieën vertegenwoordigen gebruiks records het gebruik voor de gerapporteerde periode voor die VM-grootte en-SKU.                                               |
+| **Gebruiks referentie**                                       | De id voor een of meer dagen van klant gebruik voor een bepaalde SKU die is gekoppeld aan een vermelding in het uitbetalings rapport.                                               |
+| **Gebruiks type**                                       | Een beschrijving van het gebruik dat wordt gemeten. (Genormaliseerd gebruik of onbewerkt gebruik)                                                              |
+| **Gebruiks type: genormaliseerd gebruik**                | Gebruiks uren genormaliseerd voor het aantal VM-kernen die zijn betrokken bij het gebruik: [aantal VM-kernen] x [uur van onbewerkt gebruik]. Vm's die zijn aangewezen als "SHAREDCORE" gebruiken 1/6 (of 0,1666) als [aantal VM-kernen] vermenigvuldiger.                                        |
+| **Gebruiks type: onbewerkt gebruik**                        | Gebruiks uren voor uw Marketplace-aanbieding.  Het wordt weer gegeven in de context van ' Calendar '-uren.  Het is het aantal tijd dat virtuele machines actief zijn geweest.                           |
+| **Gebruiks eenheden**                                   | De meet eenheid voor het opgegeven gebruik. Vm's worden altijd gemeten met meet eenheden.                               |
+| **VM-grootte**                                       | Hiermee wordt de grootte van de hardware van de virtuele machine afgestemd op de Azure-aanbieding. Voor beelden zijn `Basic_A0`, `Standard_A11`, `Standard_D12`en `Standard_G4`.   |
 |  |  |
 
 

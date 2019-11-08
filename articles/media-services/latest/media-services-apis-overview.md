@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 574b1591669cc32ce30677cad5158e13b944486f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0c263e1353a07ca388ea9a7fb48ebcf99be07fc1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750206"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820641"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Ontwikkelen met Media Services v3-Api's
 
@@ -75,7 +75,7 @@ Namen van Azure Media Services v3-resources (bijvoorbeeld activa, taken, transfo
 
 Namen van Media Services-resources mogen niet de volgende tekens bevatten: '<', '>', '%', '&', ':', '&#92;', '?', '/', '*', '+', '.', enkele aanhalingstekens of besturingstekens. Alle andere tekens zijn toegestaan. De maximale lengte van een resourcenaam is 260 tekens. 
 
-Zie voor meer informatie over naamgeving voor Azure Resource Manager: [Naamgevingsvereisten](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) en [Naamgevingsconventies](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+Zie voor meer informatie over naamgeving voor Azure Resource Manager: [Naamgevingsvereisten](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) en [Naamgevingsconventies](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>Namen van bestanden/blobs in een Asset
 
@@ -117,12 +117,12 @@ Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live 
 > [!NOTE]
 > De Azure Media Services v3 Sdk's zijn niet gegarandeerd thread-safe. Wanneer u een toepassing met meerdere threads ontwikkelt, moet u uw eigen thread synchronisatie logica toevoegen om de client te beveiligen of een nieuw AzureMediaServicesClient-object per thread te gebruiken. Wees ook voorzichtig met het oplossen van problemen met meerdere threads die worden geïntroduceerd door de optionele objecten die door uw code worden verstrekt aan de client (zoals een httpclient maakt-exemplaar in .NET).
 
-|SDK|Referentie|
+|SDK|Naslaginformatie|
 |---|---|
 |[.NET-SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-ref](https://aka.ms/ams-v3-dotnet-ref)|
-|[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java-ref](https://aka.ms/ams-v3-java-ref)|
+|[Java-SDK](https://aka.ms/ams-v3-java-sdk)|[Java-ref](https://aka.ms/ams-v3-java-ref)|
 |[Python SDK](https://aka.ms/ams-v3-python-sdk)|[Python-ref](https://aka.ms/ams-v3-python-ref)|
-|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js-ref](https://aka.ms/ams-v3-nodejs-ref)| 
+|[Node.js-SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js-ref](https://aka.ms/ams-v3-nodejs-ref)| 
 |[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Go-ref](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 

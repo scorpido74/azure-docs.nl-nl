@@ -1,5 +1,5 @@
 ---
-title: .NET core gebruiken om Azure SQL Database te zoeken
+title: .NET core gebruiken om query's uit te zoeken
 description: In dit onderwerp wordt beschreven hoe u .NET Core gebruikt om een programma te maken waarmee u verbinding maakt met een Azure SQL-database en waarmee u query's voor deze database uitvoert met behulp van Transact-SQL-instructies.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
-ms.openlocfilehash: e605b4255d61ff0cb6402b40b099449f0fbafa7a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 369c708fd3181076c6deb9d7ac9134c57a18f819
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690986"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827090"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Snelstart: .NET Core (C#) gebruiken om een query uit te voeren voor een Azure SQL-database
 

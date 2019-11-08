@@ -1,190 +1,191 @@
 ---
-title: Instellen van uw toepassing in de Portal voor publiceren
-description: De instructies in het instellen van uw toepassing in de Cloud-Portal voor publiceren.
+title: Uw toepassing instellen in de portal voor publiceren
+description: Instructies voor het instellen van uw toepassing in de Cloud Publishing Portal.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 6da80bd3b5fe487a44400f4f3c21e8fa49da75d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bf89f94d91e0d809428cf8098db0fb37afdb47a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943568"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814681"
 ---
-# <a name="setup-your-application-in-the-publishing-portal"></a>Instellen van uw toepassing in de Portal voor publiceren
+# <a name="setup-your-application-in-the-publishing-portal"></a>Uw toepassing instellen in de portal voor publiceren
 
-U bent nu klaar voor het instellen van uw toepassing in de portal voor publiceren.
+U bent nu klaar om uw toepassing in te stellen in de portal voor publiceren.
 
-## <a name="login-and-create-a-new-offer"></a>Aanmelden en een nieuwe aanbieding maken
+## <a name="login-and-create-a-new-offer"></a>Meld u aan en maak een nieuwe aanbieding
 
-1. Aanmelden bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
-2. In de linker navigatiebalk, klikt u op '+ nieuw bieden' en selecteer "Dynamics 365 voor Customer Engagement."
+1. Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
+2. Klik in de linkernavigatiebalk op "+ nieuwe aanbieding" en selecteer "Dynamics 365 voor klant betrokkenheid".
 
 ![Een nieuwe aanbieding selecteren](./media/CRMScreenShot14.png)
 
-1. Een nieuwe aanbieding 'Editor' weergave wordt nu voor u geopend en we zijn klaar om door te gaan ontwerpen.
+1. Er wordt nu een nieuwe weer gave ' editor ' voor de aanbieding geopend en we zijn klaar om te beginnen met ontwerpen.
 
-![Venster voor de nieuwe aanbieding](./media/CRMScreenShot15.png)
+![Nieuw scherm voor aanbieding](./media/CRMScreenShot15.png)
 
-1. De 'formulieren"die moeten worden ingevuld zijn zichtbaar aan de linkerkant in de weergave 'Editor'. Elke "vorm" bestaat uit een set velden die moeten worden ingevuld. Vereiste velden zijn gemarkeerd met een rood sterretje (\*).
+1. De ' formulieren ' die moeten worden ingevuld, worden weer gegeven aan de linkerkant in de weer gave ' editor '. Elk formulier bestaat uit een set velden die moeten worden ingevuld. De vereiste velden zijn gemarkeerd met een rood sterretje (\*).
 
-Er zijn vier belangrijkste formulieren voor het ontwerpen van een Dynamics 365 voor Customer Engagement-aanbieding
+Er zijn vier hoofd formulieren voor het ontwerpen van een Dynamics 365 voor de klant engagement-aanbieding
 
-* Aanbiedingsinstellingen
+* Aanbiedings instellingen
 * Technische informatie
-* StoreFront Details
+* Details van de winkel
 * Contactpersonen
 
-## <a name="fill-out-the-offer-settings-form"></a>Vul het formulier instellingen bieden
+## <a name="fill-out-the-offer-settings-form"></a>Vul het formulier voor de aanbiedings instellingen in
 
-Het formulier van de instellingen voor aanbieding is een eenvoudige methode om de instellingen van de aanbieding te geven. De verschillende velden worden hieronder beschreven.
+Het formulier instellingen voor de aanbieding is een basis formulier waarmee u de instellingen voor de aanbieding kunt opgeven. De verschillende velden worden hieronder beschreven.
 
 ### <a name="offer-id"></a>Aanbiedings-ID
 
-Dit is een unieke id voor de aanbieding binnen een publisher-profiel. Deze ID zijn in URL's voor product zichtbaar. De id kan alleen bestaan uit alfanumerieke tekens in kleine letters en streepjes (-). De ID kan mag niet eindigen met een streepje en een maximum van 50 tekens. Dit veld is vergrendeld zodra een aanbieding live meteen.
+Dit is een unieke id voor de aanbieding binnen een Publisher-profiel. Deze ID wordt weer gegeven in product-Url's. De id kan alleen bestaan uit alfanumerieke tekens in kleine letters en streepjes (-). De ID kan niet eindigen op een streepje en kan Maxi maal 50 tekens bevatten. Dit veld is vergrendeld wanneer een aanbieding live gaat.
 
-bijvoorbeeld, als een uitgever **'contoso'** uitgevers maakt u een aanbieding met aanbiedings-ID **'voorbeeld-Web-App'** , wordt het weergegeven in AppSource als ' https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview "
+Als bijvoorbeeld een uitgever **' Contoso '** uitgevers een aanbieding met de AANBIEDINGS-id **' voor beeld-webapp '** maakt, wordt deze in AppSource weer gegeven als ' https:\//appsource.Microsoft.com/Marketplace/apps/contoso.sample-webapp?tab=Overview '
 
 ### <a name="publisher-id"></a>Uitgevers-ID
 
-Deze vervolgkeuzelijst kunt u de uitgeverprofiel dat u wilt publiceren, deze aanbieding onder kiezen. Dit veld is vergrendeld zodra een aanbieding live meteen.
+In deze vervolg keuzelijst kunt u het Publisher-profiel kiezen waarvoor u deze aanbieding wilt publiceren. Dit veld is vergrendeld wanneer een aanbieding live gaat.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
-Dit is de weergavenaam voor uw aanbieding. Dit is de naam die wordt weergegeven in de [AppSource](https://appsource.microsoft.com/). De naam mag maximaal 50 tekens bevatten.
+Dit is de weergave naam voor uw aanbieding. Dit is de naam die wordt weer gegeven in [AppSource](https://appsource.microsoft.com/). De naam mag maximaal 50 tekens bevatten.
 
-Klik op 'Opslaan' uw voortgang opslaan. Volgende stap zou zijn om toe te voegen technische informatie voor uw aanbieding.
+Klik op Opslaan om de voortgang op te slaan. De volgende stap is om technische gegevens voor uw aanbieding toe te voegen.
 
-## <a name="fill-out-the-technical-info-form"></a>Vul het formulier technische informatie
+## <a name="fill-out-the-technical-info-form"></a>Het formulier technische informatie invullen
 
 
-Het formulier technische informatie is waar vult u in informatie die specifiek is voor uw Dynamics 365 voor Customer Engagement-oplossing. De muisaanwijzer boven de wordt meer informatie met zich mee. Zie het voorbeeld hieronder.
+Het formulier technische informatie is de plek waar u informatie moet invullen die specifiek is voor uw Dynamics 365 voor klant engagement-oplossing. Als u de muis aanwijzer op de plaatst, wordt er meer informatie weer gegeven. Zie het voorbeeld hieronder.
 
-![Scherm voor technische informatie](./media/CRMScreenShot16.png)
+![Scherm technische informatie](./media/CRMScreenShot16.png)
 
-### <a name="application-info"></a>Informace aplikace
+### <a name="application-info"></a>Toepassings gegevens
 
-De meeste uitgevers laat deze velden met de standaardwaarden, gebruiker, Nee, geen, en de URL van een lege toepassing configuratie aan de hand van de bovenstaande schermafbeelding.
+De meeste uitgevers behouden deze velden met de standaard waarden, gebruiker, Nee, Nee en een lege toepassings configuratie-URL volgens de bovenstaande scherm afbeelding.
 
 ### <a name="crm-package"></a>CRM-pakket
 
-![Informatie over CRM-pakket](./media/CRMScreenShot17.png)
+![CRM-pakket gegevens](./media/CRMScreenShot17.png)
 
 Hier volgt een uitleg voor deze velden:
 
-* Naam van uw pakket: Naam van het bestand u gemaakt in de bovenstaande stap bij het maken van het zip-bestand dat is uw CRM AppSource-pakket. In het bovenstaande voorbeeld is ' Microsoft\_SamplePackage.zip '.
-* URL van de locatie van uw pakket: Dit is de URL van de Azure Storage-account met de naam van het pakket opgegeven hierboven. Het is de URL in stap 9 van de voorgaande sectie hebt gemaakt.
-* Is er meer dan één crm-pakket in uw pakketbestand: Selecteer Ja **alleen** als u ondersteuning voor meerdere versies van crm met verschillende pakketten bieden. Dit is voor de meeste partners "Nee". Als u Ja selecteert, moet u AppSource om pakketten te maken voor elke versie van uw oplossing. _Opmerking: Dit wordt niet gevraagd om als er meerdere **zip** bestanden. Als u meerdere solution.zip bestanden, maar slechts één versie hebt, moet u nog steeds selecteren 'Nee '. Het hulpprogramma verpakking wordt Breng deze samen in automatisch._
+* Bestands naam van het pakket: de bestands naam die u in de bovenstaande stap hebt gemaakt bij het maken van het zip-bestand dat uw CRM AppSource-pakket is. In het bovenstaande voor beeld is dit ' micro soft\_SamplePackage. zip '.
+* URL van de pakket locatie: dit is de URL naar het Azure Storage-account dat de bestands naam voor het pakket bevat die hierboven is opgegeven. Dit is de URL die u in stap 9 van de bovenstaande sectie hebt gemaakt.
+* Is er meer dan één CRM-pakket in uw pakket bestand: Selecteer **Ja als** u meerdere versies van CRM met verschillende pakketten ondersteunt. Voor de meeste partners is dit nee. Als u Ja selecteert, moet u AppSource-pakketten maken voor elke versie van uw oplossing. _Opmerking: er wordt niet gevraagd of u meerdere **zip** -bestanden hebt. Als u meerdere zip-bestanden van de oplossing hebt, maar slechts één versie hebt, moet u nog steeds ' nee ' selecteren. Het hulp programma voor het pakket brengt deze samen in automatisch._
 
-### <a name="crm-package-availability"></a>Beschikbaarheid van CRM-pakket
+### <a name="crm-package-availability"></a>Beschik baarheid van CRM-pakket
 
-In deze sectie, selecteer welke regio's van uw pakket wordt beschikbaar gesteld aan CRM. Raadpleeg voor informatie over welke CRM regio's bedienen die landen/regio's, de koppeling: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
+In deze sectie selecteert u welke regio's van CRM uw pakket beschikbaar wordt gemaakt. Ga voor meer informatie over welke CRM-regio's dienst doen op welke landen/regio's, de koppeling: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
-Opmerking: Implementeren naar Duitsland 'Onafhankelijke en VS (overheid)-Cloud' onafhankelijke vereist speciale MACHTIGINGEN en validatie tijdens de certificering
+Opmerking: het implementeren van een soevereine en US Gov Cloud in Duitsland vereist speciale machtigingen en validatie tijdens de certificering
 
-## <a name="storefront-details"></a>StoreFront Details
+## <a name="storefront-details"></a>Details van de winkel
 
 ### <a name="offer-summary"></a>Overzicht van aanbieding
 
-Dit is een overzicht van de toegevoegde waarde van uw aanbieding. Deze wordt weergegeven op de pagina voor zoeken van uw aanbieding. Dit moet een maximum van 100 tekens.
+Dit is een samen vatting van de toegevoegde waarde van uw aanbieding. Deze wordt weer gegeven op de zoek pagina van uw aanbieding. Dit mag Maxi maal 100 tekens lang zijn.
 
 ### <a name="offer-description"></a>Beschrijving van aanbieding
 
-Dit is de beschrijving die wordt weergegeven op de pagina met details van uw app. Maximaal toegestane aantal is 1300 tekens
+Dit is de beschrijving die wordt weer gegeven op de detail pagina van uw app. Maxi maal toegestaan aantal is 1300 tekens
 
 ### <a name="industries"></a>Bedrijfstakken
 
-Selecteer de branche dat uw app is het beste uitgelijnd. Als uw app is gekoppeld aan meerdere branches, kunt u dit leeg laten.
+Selecteer de branche waarin uw app het beste is uitgelijnd. Als uw app is gekoppeld aan meerdere branches, kunt u dit veld leeg laten.
 
-### <a name="categories"></a>Categories
+### <a name="categories"></a>Categorieën
 
-Selecteer de categorieën die relevant voor uw app zijn. Selecteer maximaal 3.
+Selecteer de categorieën die relevant zijn voor uw app. Selecteer een maximum van 3.
 
 ### <a name="app-type"></a>App-type
 
-Selecteer het type van de proefversie waarmee uw app wordt ingeschakeld op AppSource. 'Gratis' betekent dat uw app is gratis. 'Proefversie' betekent dat klanten uw app gedurende een korte periode op AppSource kunnen uitproberen. 'Voor proefversie aanvragen' wordt niet ondersteund voor Dynamics 365 voor Customer Engagement-apps. Selecteer deze optie niet.
+Selecteer het type proef versie dat door uw app wordt ingeschakeld op AppSource. ' Gratis ' betekent dat uw app gratis is. ' Proef versie ' betekent dat klanten uw app voor een korte periode op AppSource kunnen proberen. De aanvraag voor een proef versie wordt niet ondersteund voor Dynamics 365 voor klant engagement-apps. Selecteer deze optie niet.
 
 ### <a name="help-link-for-your-app"></a>Help-koppeling voor uw app
 
-Voer de URL naar een pagina waarmee verwante informatie voor uw app heeft.
+Voer de URL naar een pagina met Help-informatie voor uw app in.
 
-### <a name="supported-countriesregions"></a>Ondersteunde landen/regio 's
+### <a name="supported-countriesregions"></a>Ondersteunde landen/regio's
 
-Bepaalt de landen/regio waarin uw aanbieding is beschikbaar voor evaluatie van dit veld.
+Dit veld bepaalt in welke landen/regio's uw aanbieding beschikbaar is voor proef versie.
 
 ### <a name="supported-languages"></a>Ondersteunde talen
 
-Selecteer de talen die ondersteuning biedt voor uw app. Als uw app biedt ondersteuning voor extra talen die niet in deze lijst staat, blijven uw aanbieding publiceren en e-mail verzenden naar: [ appsource@microsoft.com ](mailto:appsource@microsoft.com) en laat ons weten.
+Selecteer de talen die door uw app worden ondersteund. Als uw app ondersteuning biedt voor extra talen die niet in deze lijst staan, kunt u door gaan met het publiceren van uw aanbieding en ons een e-mail sturen naar: [appsource@microsoft.com](mailto:appsource@microsoft.com) om ons te laten weten.
 
 ### <a name="app-version"></a>App-versie
 
-Voer in het versienummer voor uw app
+Het versie nummer voor uw app invoeren
 
-### <a name="app-release-date"></a>App-Releasedatum
+### <a name="app-release-date"></a>Release datum van de app
 
-Voer de releasedatum voor uw app
+Voer de release datum voor uw app in
 
-### <a name="products-your-app-works-with-max-3"></a>Producten die uw app met (Max. 3 werkt)
+### <a name="products-your-app-works-with-max-3"></a>Producten waarmee uw app werkt (Maxi maal 3)
 
-Lijst-specifieke producten die geschikt is voor uw app. U kunt maximaal drie producten weergeven. Als u een product, klikt u op het plusteken (naast Nieuw) en een nieuw open tekstveld wordt gemaakt voor u de naam van een product dat uw app met werkt invoeren.
+Lijst met specifieke producten waarmee uw app werkt. U kunt Maxi maal drie producten weer geven. Als u een product wilt weer geven, klikt u op het plus teken (naast nieuw) en wordt er een nieuw veld voor open tekst gemaakt waarin u de naam van een product kunt invoeren waarmee uw app werkt.
 
-### <a name="search-keywords-max-3"></a>Trefwoorden (Max. 3)
+### <a name="search-keywords-max-3"></a>Tref woorden zoeken (Maxi maal 3)
 
-AppSource kan een klant kan op basis van trefwoorden zoeken. U kunt de set waarvoor uw toepassing worden weergegeven op de klanten trefwoorden invoeren.
+Met AppSource kan de klant zoeken op basis van tref woorden. U kunt de set tref woorden invoeren waarvoor uw toepassing wordt weer gegeven aan de klanten.
 
-Bijvoorbeeld als de toepassing 'Mijn e-mailen Service' e-mailberichten is, postadres, e-mailservice mogelijk bepaalde trefwoorden. Kies woorden die gebruikers waarschijnlijk wordt gebruikt om te zoeken naar voor uw app in het zoekvak AppSource.
+Als de toepassing bijvoorbeeld e-mail berichten van mijn E-mail verzendt, kan mail service enkele tref woorden zijn. Kies woorden die gebruikers waarschijnlijk zullen gebruiken om te zoeken naar uw app in het zoekvak van AppSource.
 
 ### <a name="hide-key"></a>Sleutel verbergen
 
-Dit is een sleutel die wordt gecombineerd met de voorbeeld-URL van de aanbieding te verbergen in openbaar weer te geven. Het is niet een wachtwoord. U kunt een willekeurige tekenreeks hier invoeren.
+Dit is een sleutel die wordt gecombineerd met de Preview-URL van de aanbieding om deze te verbergen in de open bare weer gave. Het is geen wacht woord. U kunt hier een wille keurige teken reeks invoeren.
 
-### <a name="offer-logo-png-format-48x48"></a>Logo van de aanbieding (png-indeling, 48 x 48)
+### <a name="offer-logo-png-format-48x48"></a>Logo van aanbieding (PNG-indeling, 48x48)
 
-Dit wordt weergegeven op de pagina voor zoeken van uw app. **Alleen de PNG-indeling is toegestaan.** Uploaden van een PNG-afbeelding met een resolutie van 48PX\*48PX
+Dit wordt weer gegeven op de zoek pagina van de app. **Alleen de PNG-indeling is toegestaan.** Een PNG-afbeelding uploaden met een resolutie van 48PX\*48PX
 
-### <a name="offer-logo-png-format-216x216"></a>Logo van de aanbieding (png-indeling, 216 x 216)
+### <a name="offer-logo-png-format-216x216"></a>Logo van aanbieding (PNG-indeling, 216x216)
 
-Dit wordt weergegeven op de detailpagina van uw app. **Alleen de PNG-indeling is toegestaan.** Uploaden van een PNG-afbeelding met een resolutie van 216PX\*216PX
+Dit wordt weer gegeven op de detail pagina van uw app. **Alleen de PNG-indeling is toegestaan.** Een PNG-afbeelding uploaden met een resolutie van 216PX\*216PX
 
 ### <a name="videos"></a>Video's
 
-U kunt maximaal vier video's uploaden. Voor elke video die u wilt uploaden, moet u in de video naam, URL (YouTube of Vimeo alleen) en miniatuur om te koppelen aan de video te vullen. Miniatuur moeten PNG-indeling hebben en moet 1280PX\*720PX. Als u wilt toevoegen van nieuwe video(s), klikt u op het plusteken. Video's Trefwoordbeheer wordt weergegeven op de detailpagina van uw app.
+U kunt Maxi maal vier Video's uploaden. Voor elke video die u wilt uploaden, moet u de naam van de video, de URL (alleen YouTube of Vimeo) en de miniatuur die u aan de video wilt koppelen, invullen. De miniatuur moet de PNG-indeling hebben en moet 1280PX\*720PX zijn. Klik op het plus teken om nieuwe video (s) toe te voegen. Video miniaturen worden weer gegeven op de detail pagina van uw app.
 
 ### <a name="documents"></a>Documenten
 
-U kunt maximaal drie documenten in PDF-indeling uploaden. Voor elk document dat u wilt uploaden, moet u de naam van het document invullen en uploadt het document. Document moet zich in pdf-indeling.
+U kunt Maxi maal drie documenten uploaden in PDF-indeling. Voor elk document dat u wilt uploaden, moet u de naam van het document invullen en het document uploaden. Het document moet een PDF-indeling hebben.
 
-Nieuwe documenten toevoegen, klikt u op het plusteken (+)
+Klik op het plus teken om een nieuw (e) document (en) toe te voegen
 
 ### <a name="screenshots"></a>Schermopnamen
 
-Dit zijn schermafbeeldingen die wordt weergegeven op de detailpagina van AppSource voor uw app.
+Dit zijn scherm afbeeldingen die worden weer gegeven op de detail pagina AppSource voor uw app.
 
 ### <a name="privacy-policy"></a>Privacybeleid
 
-Voer de URL naar het privacybeleid van uw app
+Voer de URL naar het privacybeleid van uw app in
 
 ### <a name="terms-of-use"></a>Gebruiksvoorwaarden
 
-Voer de gebruiksvoorwaarden van uw app. AppSource-klanten moeten deze voorwaarden accepteren voordat ze kunnen uw app uitproberen
+Voer de gebruiks voorwaarden van uw app in. AppSource-klanten moeten deze voor waarden accepteren voordat ze uw app kunnen proberen
 
-### <a name="support-url"></a>URL voor ondersteuning
+### <a name="support-url"></a>Ondersteunings-URL
 
-Voer de URL voor ondersteuning voor uw app.
+Voer de ondersteunings-URL voor uw app in.
 
-### <a name="lead-destination"></a>Bestemming leiden
+### <a name="lead-destination"></a>Doel van de lead
 
-Selecteer een CRM-systeem indien u leiden worden, opgeslagen. Selecteer 'Azure Table' hier hebt u een van de volgende CRM-systemen: Salesforce, Marketo, Microsoft Dynamics CRM. De CRM-systeem die u hier selecteert, wordt waar we de details van eindgebruikers die uw Apps weer op AppSource (leads proberen) worden geschreven. Afhankelijk van de CRM-systeem dat u selecteert, klikt u op de bijbehorende URL hieronder voor meer informatie over het uitvoeren van de volgende set met velden
+Selecteer een CRM-systeem waar u een lead wilt opslaan. Selecteer hier ' Azure Table ' als u een van de volgende CRM-systemen hebt: Sales Force, Marketo, micro soft Dynamics CRM. Het CRM-systeem dat u hier selecteert, is informatie over de eind gebruikers die uw app proberen op AppSource (leads). Afhankelijk van het CRM-systeem dat u selecteert, klikt u op de bijbehorende URL hieronder voor informatie over het volt ooien van de volgende set velden
 
 * [Azure-tabel](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 * [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)
-* [Microsoft Dynamics CRM](./cloud-partner-portal-lead-management-instructions-dynamics.md)
+* [Micro soft Dynamics CRM](./cloud-partner-portal-lead-management-instructions-dynamics.md)
 * [Salesforce](./cloud-partner-portal-lead-management-instructions-salesforce.md)
 
-## <a name="storefront-details"></a>StoreFront Details
+## <a name="storefront-details"></a>Details van de winkel
 
-De gegevens van de contactpersoon worden voor de interne communicatie tussen de partner en Microsoft alleen gebruikt. Opmerking: Het is belangrijk dat u een e-mailadres dat wordt bewaakt in deze velden. We gebruiken dit e-mailbericht om te communiceren met u op uw voortgang bij het publiceren op AppSource. Alleen de URL voor ondersteuning is zichtbaar voor klanten.
+De contact gegevens worden alleen gebruikt voor interne communicatie tussen de partner en micro soft. Opmerking: het is belang rijk dat u een e-mail adres gebruikt dat in deze velden wordt gecontroleerd. Dit e-mail adres wordt gebruikt om met u te communiceren tijdens het publiceren naar AppSource. Alleen de ondersteunings-URL is zichtbaar voor de klanten.

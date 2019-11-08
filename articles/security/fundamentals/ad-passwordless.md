@@ -2,19 +2,19 @@
 title: Meer informatie over een wereld zonder wacht woorden met Azure Active Directory | Microsoft Docs
 description: Deze hand leiding helpt CEOs, Cio's, CISOs, Chief Identity Architects, Enter prise Architects en Security en IT-besluit vormers die verantwoordelijk zijn voor het kiezen van een verificatie methode met een wacht woord voor hun Azure Active Directory-implementatie.
 keywords: geen wacht woord, azuread
-author: TerryLanfear
-ms.author: terrylan
+author: martincoetzer
+ms.author: martinco
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: a24195dcf8f384db8d78d39ac7100e487f6c9272
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 0fbd8404e326ecc6fabef8c89991009809b1448b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621282"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820514"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Een wereld zonder wacht woorden met Azure Active Directory
 

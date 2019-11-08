@@ -4,15 +4,16 @@ description: Het gebruik van privé-Sku's voor het beheren van de beschik baarhe
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: pabutler
-ms.openlocfilehash: 940b50cf4a04abacd4d7be2104dd97fb8b3db736
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: eb6eac5eafaeea239bfaf9cf2aface3db659dd57
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883113"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818840"
 ---
 <a name="private-skus-and-plans"></a>Persoonlijke Sku's en abonnementen
 ============
@@ -44,7 +45,7 @@ Als de SKU is gemarkeerd als privé en de aanbieding andere Sku's heeft met herb
 >[!NOTE]
 >Nadat de app is gepubliceerd, kan een open bare SKU niet privé worden gemaakt.
 
-<a name="select-an-image"></a>Een afbeelding selecteren
+<a name="select-an-image"></a>Een installatie kopie selecteren
 ------------------
 
 U kunt nieuwe schijven voor de privé-SKU opgeven of dezelfde schijven die al in een andere SKU zijn geleverd hergebruiken, alleen de prijzen of beschrijving wijzigen. Als u de schijven opnieuw wilt gebruiken, selecteert u **Ja** als reactie op de prompt deze SKU wordt opnieuw gebruikt voor het opnieuw gebruiken van een open bare SKU.
@@ -53,7 +54,7 @@ U kunt nieuwe schijven voor de privé-SKU opgeven of dezelfde schijven die al in
 
 Nadat u hebt bevestigd dat de SKU installatie kopieën opnieuw gebruikt, selecteert u de bron-of *basis* -SKU voor de installatie kopieën:
 
-![Een afbeelding selecteren](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
+![Een installatie kopie selecteren](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
 
 Wanneer u het aanbod publiceert, worden de installatie kopieën van de geselecteerde SKU beschikbaar gesteld onder de persoonlijke SKU-ID met de aangepaste tarieven/voor waarden. De privé-SKU is alleen zichtbaar voor de doel groep.
 
@@ -98,7 +99,7 @@ Als u de API gebruikt en geen CSV-bestand wilt behouden, kunt u het publiek via 
 
 ###  <a name="managing-subscriptions-with-the-api"></a>Abonnementen beheren met de API
 
-U kunt de API gebruiken voor het uploaden van een CSV of het direct beheren van uw publiek (zonder een CSV-bestand). Over het algemeen hoeft u alleen maar uw aanbieding op te halen, `restrictedAudience` het object bij te werken en vervolgens deze wijzigingen te verzenden naar uw aanbieding om leden van een doel groep toe te voegen of te verwijderen.
+U kunt de API gebruiken voor het uploaden van een CSV of het direct beheren van uw publiek (zonder een CSV-bestand). Over het algemeen hoeft u alleen maar uw aanbieding op te halen, het `restrictedAudience`-object bij te werken en deze wijzigingen vervolgens terug te sturen naar uw aanbieding om leden van een doel groep toe te voegen of te verwijderen.
 
 U gaat als volgt te werk om de lijst met doel groepen programmatisch bij te werken:
 
@@ -126,7 +127,7 @@ U gaat als volgt te werk om de lijst met doel groepen programmatisch bij te werk
 
     Voor elk beperkt doel object:
 
-    a. Down load de inhoud `restrictedAudience.uploadedCsvUri`van. De inhoud is gewoon een CSV-bestand met kopteksten. Bijvoorbeeld:
+    a. Down load de inhoud van `restrictedAudience.uploadedCsvUri`. De inhoud is gewoon een CSV-bestand met kopteksten. Bijvoorbeeld:
 
         type,id,description
         subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
@@ -156,7 +157,7 @@ U gaat als volgt te werk om de lijst met doel groepen programmatisch bij te werk
         ]}
     ```
 
-    a. Voeg voor elk beperkt doel object vermeldingen toe aan de lijst of `restrictedAudience.manualEntries` Verwijder deze indien nodig.
+    a. Voeg voor elk beperkt doel object vermeldingen toe aan de `restrictedAudience.manualEntries` lijst, indien nodig, of verwijder deze.
 
 4. Als u alle *restrictedAudience* -objecten voor elke SKU van uw persoonlijke aanbieding hebt bijgewerkt, [werkt u de aanbieding](cloud-partner-portal-api-creating-offer.md)bij:
 

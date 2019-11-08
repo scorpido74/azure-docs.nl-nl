@@ -4,15 +4,16 @@ description: Hierin wordt het tabblad Sku's beschreven dat wordt gebruikt voor h
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: dceb82af73061b91676ffb7061c7495995e76667
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 101f928e296d0b48b4e077676393772829aa76ab
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868707"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808972"
 ---
 # <a name="virtual-machine-skus-tab"></a>Tabblad virtual machine Sku's
 
@@ -42,21 +43,21 @@ In de volgende tabel worden het doel, de inhoud en de opmaak van deze velden bes
 |  *SKU-instellingen*   |    |
 | **SKU-ID\***       | Id voor deze SKU.  Deze naam mag Maxi maal 50 tekens bevatten, die bestaat uit kleine letters of streepjes (-), maar niet eindigen met een streepje.  Het kan niet worden gewijzigd nadat de aanbieding is gepubliceerd.  |
 |  *SKU-gegevens*   |  |
-| **Hoofd\***        | Beschrijvende naam voor de aanbieding voor weer gave in de Marketplace. Maximale lengte van 50 tekens. |
+| **Titel\***        | Beschrijvende naam voor de aanbieding voor weer gave in de Marketplace. Maximale lengte van 50 tekens. |
 | **Overzicht\***      | Beknopt overzicht van de aanbieding voor weer gave in de Marketplace. Maximale lengte van 100 tekens. |
-| **Beschrijvingen\***  | Beschrijvende tekst voor een gedetailleerde beschrijving van de aanbieding.  <!-- TD: max len/guidance? 3k characters -->  |
-| **Deze SKU verbergen\*** | Hiermee wordt aangegeven of de SKU in de Marketplace op klanten moet worden weer gegeven.  Mogelijk wilt u de SKU verbergen als u alleen wilt dat deze alleen beschikbaar is via oplossings sjablonen en niet voor afzonderlijke aankopen.  Het kan ook handig zijn voor initiële tests of voor tijdelijke of seizoen aanbiedingen. |
-| **Beschik baarheid in de Cloud\*** | Bepaalt op welke Clouds de SKU beschikbaar moet zijn.  De standaard waarde is de open bare versie van Azure.  Microsoft Azure Government is een Cloud-community met gecontroleerde toegang voor de Amerikaanse federale, staats-, lokale of tribalee overheden en hun gecertificeerde partners.  Zie voor meer informatie over Government Cloud [Welkom bij Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome). |
+| **Beschrijving\***  | Beschrijvende tekst voor een gedetailleerde beschrijving van de aanbieding.  <!-- TD: max len/guidance? 3k characters -->  |
+| **Deze SKU\* verbergen** | Hiermee wordt aangegeven of de SKU in de Marketplace op klanten moet worden weer gegeven.  Mogelijk wilt u de SKU verbergen als u alleen wilt dat deze alleen beschikbaar is via oplossings sjablonen en niet voor afzonderlijke aankopen.  Het kan ook handig zijn voor initiële tests of voor tijdelijke of seizoen aanbiedingen. |
+| **Beschik baarheid van Cloud\*** | Bepaalt op welke Clouds de SKU beschikbaar moet zijn.  De standaard waarde is de open bare versie van Azure.  Microsoft Azure Government is een Cloud-community met gecontroleerde toegang voor de Amerikaanse federale, staats-, lokale of tribalee overheden en hun gecertificeerde partners.  Zie voor meer informatie over Government Cloud [Welkom bij Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome). |
 | **Is dit een privé-SKU?\*** | Hiermee wordt aangegeven of de SKU privé of openbaar is. De standaard waarde is **Nee** (openbaar).  Zie [open bare en private sku's](../../cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)voor meer informatie. |
-| **Beschik baarheid land/regio\*** | Bepaalt welke landen of regio's uw SKU beschikbaar is voor aankoop. Selecteer ten minste één regio/land. <!-- TD: Is this parameter an AMP visibility control or a contractual one, or both? --> |  
+| **Beschik baarheid van land/regio\*** | Bepaalt welke landen of regio's uw SKU beschikbaar is voor aankoop. Selecteer ten minste één regio/land. <!-- TD: Is this parameter an AMP visibility control or a contractual one, or both? --> |  
 |  *Prijzen*   |  |
 | **Licentie model\***| Gestandaardiseerd facturerings model dat moet worden gebruikt.  Als u **op gebruik gebaseerde maandelijkse gefactureerde SKU**selecteert, wordt er een sectie accordeon geopend waarmee u de details van per kern prijzen kunt opgeven en kunt u aangeven of u een gratis proef periode wilt aanbieden.  In deze sectie kunt u ook dit prijs schema exporteren en importeren in Excel. Zie [facturerings opties in azure Marketplace](../../billing-options-azure-marketplace.md)voor meer informatie. | 
 |  *VM-installatie kopieën*   |  |
-| **Besturingssysteem familie\*** | Hiermee wordt aangegeven of de oplossings-VM op Windows of Linux is gebaseerd. |
+| **\* van familie van besturings systeem** | Hiermee wordt aangegeven of de oplossings-VM op Windows of Linux is gebaseerd. |
 | **Type besturings systeem selecteren** | Specifieke leverancier of release van het opgegeven besturings systeem. |
 | **Beschrijvende naam van het besturings systeem\*** | Naam van het besturings systeem die aan klanten moet worden weer gegeven.  |
 | **Aanbevolen VM-grootten\*** | Hiermee kan Maxi maal zes aanbevolen VM-grootten worden geselecteerd uit een gestandaardiseerde lijst.  Deze lijst wordt door gegeven aan de Azure Portal en micro soft-markt plaatsen.  De eerste VM-grootte in deze lijst die geldig is (voor het abonnement van de klant, de regio, de zone enzovoort) is ingesteld als de standaard waarde voor de potentiële klant.  De gebruiker kan deze grootte wijzigen in elk compatibel met de oplossings installatie kopie. | 
-| **Poorten openen**| Poorten voor open en protocol ter ondersteuning van de SKU.  Deze configuraties moeten overeenkomen met het virtuele netwerk dat u hebt geconfigureerd voor het netwerk van de oplossings-VM. Deze instellingen worden van kracht tijdens de implementatie van de virtuele machine. Poort instellingen kunnen echter worden gewijzigd nadat u een SKU hebt gepubliceerd. Zie [poorten openen voor een virtuele machine met de Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal)voor meer informatie. <br/>De volgende standaard netwerk toewijzingen worden toegevoegd aan alle Vm's. &emsp; Windows: 3389 -> 3389 TCP, 5986 -> 5986 TCP; &emsp; Linux: 22 -> 22, TCP (SSH). |
+| **Poorten openen**| Poorten voor open en protocol ter ondersteuning van de SKU.  Deze configuraties moeten overeenkomen met het virtuele netwerk dat u hebt geconfigureerd voor het netwerk van de oplossings-VM. Deze instellingen worden van kracht tijdens de implementatie van de virtuele machine. Poort instellingen kunnen echter worden gewijzigd nadat u een SKU hebt gepubliceerd. Zie [poorten openen voor een virtuele machine met de Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal)voor meer informatie. <br/>De volgende standaard netwerk toewijzingen worden toegevoegd aan alle Vm's. &emsp; Windows: 3389-> 3389 TCP, 5986-> 5986 TCP; &emsp; Linux: 22-> 22, TCP (SSH). |
 | **Schijf versie**  | Gekoppelde oplossings-VM, opgegeven door het schijf versie nummer en de schijf-URL. De versie van de schijf moet een [semantische versie](https://semver.org/) -indeling hebben: `<major>.<minor>.<patch>`.  De URL is de URI van de gedeelde toegangs handtekening die is gemaakt voor de virtuele harde schijf van het besturings systeem.  Hoewel u per SKU Maxi maal acht schijf versies kunt toevoegen, wordt alleen het hoogste schijf nummer voor een SKU weer gegeven in azure Marketplace. De andere versies worden alleen weer gegeven via Api's.  <!--TD: Add more specific link to API --> <br/> In de sectie **nieuwe accordeon gegevens schijf** kunt u Maxi maal 15 gegevens schijven aan uw virtuele machine koppelen.  Zodra u een SKU met een bepaalde VM-versie en gekoppelde gegevens schijven publiceert, kan deze configuratie niet worden gewijzigd.  Als extra VM-versies worden toegevoegd aan de SKU, moeten ze ook hetzelfde aantal gegevens schijven ondersteunen. <br/> Als u de VM-installatie kopieën van Azure niet hebt gemaakt, kunt u dit veld later toevoegen.  Voor informatie over het maken van de gekoppelde VM-resource, zie de sectie [virtuele machines voor de VM maken](./cpp-create-technical-assets.md).  
 |  |  |
 

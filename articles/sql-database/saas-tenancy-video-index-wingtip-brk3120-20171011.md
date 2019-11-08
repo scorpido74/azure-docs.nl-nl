@@ -1,5 +1,5 @@
 ---
-title: 'Video geïndexeerd, Azure SaaS SQL-app '
+title: Video van SaaS SQL-app
 description: Dit artikel indexeert diverse tijd punten in onze 81 minuten video over het ontwerp van de SaaS-data base van de Ignite-conferentie van 11 oktober 2017. U kunt verder gaan met het onderdeel dat u interesseert. Er zijn ten minste drie patronen beschreven. Azure-functies die de ontwikkeling en het beheer vereenvoudigen, worden beschreven.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3d9b9c5af1994e2d0b3fd8f720def06489f3669d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0194d99a10eb34ecd8ad10fa0a1509baf8436381
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691912"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818483"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Video die is geïndexeerd en annotaties voor een SaaS-app met meerdere tenants met behulp van Azure SQL Database
 

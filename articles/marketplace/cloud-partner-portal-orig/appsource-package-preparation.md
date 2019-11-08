@@ -1,42 +1,43 @@
 ---
-title: AppSource-pakket voorbereiden | Azure Marketplace
-description: Explanaion in hoe u voorbereidt en bouwen van AppSource-pakketten.
+title: AppSource-pakket voorbereiding | Azure Marketplace
+description: Explanaion in het voorbereiden en bouwen van AppSource-pakketten.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: ff822e87bfec5daa161172c0d47975eb06cc2808
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c6b78e62afb43562910c872d31e2c9f564040da
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935633"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806102"
 ---
-# <a name="appsource-package-preparation"></a>AppSource-pakket voorbereiden
+# <a name="appsource-package-preparation"></a>AppSource-pakket voorbereiding
 
-Naast een solution.zip-bestand, moet u een **AppSource pakket**. Dit is een ZIP-bestand dat alle activa die nodig zijn voor het automatiseren van uw oplossing implementeren in de klanten CRM-omgeving bevat. De **AppSource pakket** heeft de volgende onderdelen
+Naast een Solution. zip-bestand hebt u een **AppSource-pakket**nodig. Dit is een zip-bestand met alle assets die nodig zijn om het proces voor het implementeren van uw oplossing in de CRM-omgeving van de klant te automatiseren. Het **AppSource-pakket** bevat de volgende onderdelen
 
-* Pakket voor Package Deployer
-* **Content_Types.XML** bestand met de assets die u gebruikt
-* XML-bestand met de gegevens van uw App-specifiek
-* logo van 32 x 32 die wordt weergegeven met uw aanbieding in het beheercentrum
-* Licentievoorwaarden, privacybeleid
+* Pakket voor pakket-deployer
+* **Content_Types. XML-** bestand met de activa die u gebruikt
+* XML-bestand met uw app-specifieke gegevens
+* het logo van 32x32 dat wordt weer gegeven met uw vermelding in het beheer centrum
+* Licentie voorwaarden, privacybeleid
 
-De onderstaande stappen kunt u uw AppSource-pakket maken.
+Met de volgende stappen kunt u uw AppSource-pakket maken.
 
-## <a name="a-create-a-package-for-the-package-deployer"></a>a. Een pakket maken voor Package Deployer
+## <a name="a-create-a-package-for-the-package-deployer"></a>a. Een pakket maken voor de pakket-deployer
 
-Het pakket voor Package Deployer maakt deel uit van het pakket met AppSource.
+Het pakket voor de package deployer is een onderdeel van het AppSource-pakket.
 
-Voor het maken van een pakket voor Package Deployer, gebruik de volgende instructies: [ https://msdn.microsoft.com/library/dn688182.aspx ](https://msdn.microsoft.com/library/dn688182.aspx). Als u klaar bent, wordt uw pakket bestaan uit de volgende elementen:
+Gebruik de volgende instructies om een pakket te maken voor de pakket-deployer: [https://msdn.microsoft.com/library/dn688182.aspx](https://msdn.microsoft.com/library/dn688182.aspx). Als u klaar bent, bestaat het pakket uit de volgende activa:
 
-1. Pakketmap: alle oplossingen, configuratiegegevens, platte bestanden en de inhoud van het pakket bevat. _Opmerking: In het volgende voorbeeld wordt ervan uitgegaan dat de pakketmap heet "PkgFolder"_
-2. DLL-bestand: De assembly bevat de aangepaste code voor het pakket. _Opmerking: In het volgende voorbeeld wordt ervan uitgegaan dat dit bestand is met de naam "MicrosoftSample.dll."_
+1. Pakketmap: bevat alle oplossingen, configuratie gegevens, platte bestanden en de inhoud van uw pakket. _Opmerking: in het volgende voor beeld wordt ervan uitgegaan dat de pakketmap "PkgFolder" wordt genoemd._
+2. dll: de assembly bevat de aangepaste code voor uw pakket. _Opmerking: in het volgende voor beeld wordt ervan uitgegaan dat dit bestand ' MicrosoftSample. dll ' wordt genoemd._
 
-U moet nu om te maken van een bestand met de naam '**Content_Types.xml**"dit bestand wordt een lijst alle activa-extensies die deel van uw pakket uitmaken. Hier volgt een voorbeeld van code voor het bestand.
+Nu moet u een bestand met de naam '**Content_Types. XML**' maken. dit bestand bevat alle asset-uitbrei dingen die onderdeel zijn van uw pakket. Hier volgt een voorbeeld code voor het bestand.
 
     <?xml version="1.0" encoding="utf-8"?>
         <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
@@ -53,36 +54,36 @@ U moet nu om te maken van een bestand met de naam '**Content_Types.xml**"dit bes
         <Default Extension="css" ContentType="application/octet-stream" />
     </Types>
 
-De laatste stap is het zip-het volgende tot één bestand. Deze aanroepen **package.zip**. Deze bevat
+De laatste stap bestaat uit het volgende te doen in één bestand. Noem het **pakket. zip**. Deze bevat
 
-1. PkgFolder (met inbegrip van alles wat in de map)
-2. DLL-bestand
-3. **Content_Types.xml**
+1. PkgFolder (inclusief alles in de map)
+2. bestand
+3. **Content_Types. XML**
 
-Stappen voor het maken van package.zip:
+Stappen voor het maken van package. zip:
 
-1. Plaats de pakketmap **Content_Types.xml** bestands- en PackageName.dll in één map.
+1. Plaats de pakketmap, **Content_Types. XML** -bestand en pakket naam. dll in één map.
 
 ![CRMScreenShot2](media/CRMScreenShot2.png)
 
-1. Selecteer alle items in de map met de rechtermuisknop en verzenden naar gecomprimeerde (zip) map kiezen
+1. Selecteer alle items in de map, klik met de rechter muisknop en kies naar gecomprimeerde map verzenden
 
 ![CRMScreenShot3](media/CRMScreenShot3.png)
 
-1. Wijzig de naam in package.zip
+1. Wijzig de naam in package. zip
 
 ![CRMScreenShot4](media/CRMScreenShot4.png)
 
-## <a name="b-create-an-appsource-package"></a>b. Maken van een pakket met AppSource
+## <a name="b-create-an-appsource-package"></a>b. Een AppSource-pakket maken
 
-Het AppSource-pakket moet een paar extra bestanden.
+Het AppSource-pakket vereist enkele extra bestanden.
 
-1. JPG (resolutie van 32 x 32)
-2. HTML-code (HTML opgemaakt bestand)
-3. **Content_Types.XML** (hetzelfde als hierboven)
+1. jpg (resolutie van 32x32)
+2. HTML-bestand (HTML-indeling)
+3. **Content_Types. XML** (hetzelfde als hierboven)
 4. xml
 
-Hier volgt een voorbeeld van code voor is input.xml. Zie definities in de onderstaande tabel.
+Hier volgt een voorbeeld code voor input. XML. Zie de definities in de onderstaande tabel.
 
     <PvsPackageData>
         <ProviderName>Microsoft</ProviderName>
@@ -102,35 +103,35 @@ Hier volgt een voorbeeld van code voor is input.xml. Zie definities in de onders
         </Locales>
     </PvsPackageData>
  
-**Waar:**
+**Positie**
 
 |Veld|Details|
 |---|---|
-|ProviderName|Wie is de oplossing die afkomstig zijn van. Als een Microsoft-team, moet dit Microsoft.|
-|PackageFile |Deployer-activa, samen met een inhoud ingepakte pakket\_types.xml-bestand. Dit zip-bestand moet bevatten de assembly van de implementatie van pakket en de map met de implementatie van pakket assets. Dat wil zeggen, package.zip|
-|SolutionAnchorName |De naam van het zip-bestand van de oplossing in package deployer die wordt gebruikt voor de weergavenaam en beschrijving van de activa van de oplossing.|
-| StartDate| Dit is de datum waarop het oplossingspakket beschikbaar. De indeling is MM/DD/JJJJ|
-|Einddatum|Dit is de datum dat het pakket wordt beëindigd beschikbaar worden gesteld. De indeling is MM/DD/JJJJ |
-|SupportedCountries |Dit is een door komma's gescheiden lijst van landen/regio's die u dit pakket ziet. Neem contact op met online services voor een lijst van alle huidige landcodes. Op het moment van schrijven van dit de lijst is: AE, AL, AM, DOOR DE AO, AR, AT, AUSTRALIË, AZ, BA, BB, BD, WORDEN, BG, BH, BM, BN, BO, BRAZILIË, DOOR CA, CH, CI, CL, CM, CO, CR, CV, GEWICHT, CY, CZ, DE, DK, DOEN, DZ, EG, EE, BIJVOORBEELD, ES, FI, FR, GB, GE, GH, GR, GT, HK , HN, HR, HU, -ID, INTERNET EXPLORER, IL, INDIA, IQ, IS, HET, JM, JO, JP, KE, KG, KN, KOREA, KW, KY, KZ, LB, LK, LT, LU, LV, LY, MA, MC, MD, MIJ, MK, MN, MAAND, MT, MU, MX, MIJN, NG, NI, NL, NEE, NZ, OPERATIONS MANAGER, PA, PE, PH , PK, PL, PULL-AANVRAAG, PS, PT, PY, QA, RO, RS, RU, RW, SA, SE, AG, SI, SK, SN, SV, E, TM, TN, TR, TT, TW, UA, VERENIGDE STATEN, UY, UZ, VE, VI, VN, ZA, ZW |
-|LearnMoreLink | URL naar de pagina voor meer info voor dit pakket. |
-|Landinstellingen|Een exemplaar van dit knooppunt voor elke taal UX die u wilt ondersteunen in de oplossing Preferred UX. Dit knooppunt bevat onderliggende items die worden beschreven van de landinstellingen, logo en voorwaarden voor elke taal|
-|Landinstellingen: PackageLocale.Code|LCID van de voor dit knooppunt. Voorbeeld: Amerikaans-Engels is 1033|
-|Landinstellingen: PackageLocale.IsDefault|Geeft aan dat dit de standaardtaal is. Dit wordt gebruikt als de herfst back-ups taal als de UX-taal die is gekozen door de klant niet beschikbaar is.|
-|Landinstellingen: Logo|Dit als het logo dat u wilt gebruiken voor dit pakket. Grootte van het pictogram is 32 x 32. Bestandsindelingen toegestaan zijn PNG en JPG|
-|Landinstellingen: voorwaarden: PackageTerm.File|Dit is de bestandsnaam van het HTML-document met de licentievoorwaarden.|
+|ProviderName|Wie is de oplossing die afkomstig is van. Als u een micro soft-team bent, moet dit micro soft zijn.|
+|PackageFile |Pakket-deployer-assets worden gecombineerd met een inhouds\_type. XML-bestand. Dit zip-bestand moet de package deployer-assembly bevatten en de map met de pakketten van de pakket-deployer. Dat wil zeggen, Package. zip|
+|SolutionAnchorName |De naam van het zip-bestand van de oplossing in de pakket-deployer die wordt gebruikt voor de weergave naam en beschrijving van de oplossings assets.|
+| Begin| Dit is de datum waarop het oplossings pakket beschikbaar wordt. De notatie is MM/DD/JJJJ|
+|EndDate|Dit is de datum waarop het oplossings pakket niet meer beschikbaar is. De notatie is MM/DD/JJJJ |
+|SupportedCountries |Dit is een door komma's gescheiden lijst met landen/regio's waarvoor dit pakket zou moeten worden weer geven. Neem contact op met onlineservices voor een lijst met alle huidige land codes. Op dit moment is het schrijven van de lijst: AE, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BG, BH, BM, BN, BO, BR, BY, CA, CH, CI, LC, CM, CO, CR, CV, CW, CY, CZ, DE, DK, DO, DZ, EG, EE, bv , ES, FI, FR, GB, GE, GH, GR, GT, HK, HN, HR, HU, ID, IE, IL, IN, IQ, IS, IT, JM, JO, JP, KE, KG, KN, KR, KW, KY, KZ, LB, LK, LT, LU, LV, ONWAAR, MA, MC, MD, ME, MK, MN, MO, MT, MU, MX, MY , AARDGAS, NI, NL, NEE, NZ, OM, PA, PE, PH, PK, PL, PR, PS, PT,/NV, QA, RO, RS, RU, RW, UY, SE, AG, SI, SK, SN, SV, TH, TM, TN, TR, TT, TW, UA, VS,, UZ, VE, VI, VN, ZA, ZW |
+|LearnMoreLink | URL naar de meer informatie pagina voor dit pakket. |
+|Land instellingen|Eén exemplaar van dit knoop punt voor elke UX-taal die u wilt ondersteunen in de voor keur UX van de oplossing. Dit knoop punt bevat onderliggende items die de land instellingen, het logo en de voor waarden voor elke taal beschrijven|
+|Land instellingen: PackageLocale. code|De LCID van de taal voor dit knoop punt. Voor beeld: Amerikaans Engels is 1033|
+|Land instellingen: PackageLocale. IsDefault|Geeft aan dat dit de standaard taal is. Dit wordt gebruikt als de taal van de terugvallen als de door de klant gekozen UX-taal niet beschikbaar is.|
+|Land instellingen: logo|Dit als het logo dat u wilt gebruiken voor dit pakket. Grootte van pictogram is 32x32. Toegestane notaties zijn PNG en JPG|
+|Land instellingen: voor waarden: PackageTerm. File|Dit is de bestands naam van het HTML-document met de licentie voorwaarden.|
 
-Dit is waar het logo wordt weergegeven:
+Hier wordt het logo weer gegeven:
 
 ![CRMScreenShot5](media/CRMScreenShot5.png)
 
-De laatste stap is het zip-het volgende tot één bestand.
+De laatste stap bestaat uit het volgende te doen in één bestand.
 
-1. ZIP (eerder hebt gemaakt)
-2. **Content_Types.xml**
+1. zip (eerder gemaakt)
+2. **Content_Types. XML**
 3. xml
 4. PNG
 5. html
 
 ![CRMScreenShot6](media/CRMScreenShot6.png)
 
-Naam van het bestand die geschikt zijn voor uw app. We de voorkeur geeft aan dat u uw bedrijfsnaam en app-naam bevatten. Bijvoorbeeld: **_Microsoft_SamplePackage.zip**.
+Wijzig de naam van het bestand in een waarde die geschikt is voor uw app. U kunt het beste de naam van uw bedrijf en de naam van de app toevoegen. Bijvoorbeeld: **_Microsoft_SamplePackage. zip**.

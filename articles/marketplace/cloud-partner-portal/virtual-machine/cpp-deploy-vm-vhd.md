@@ -4,15 +4,16 @@ description: Hierin wordt uitgelegd hoe u een virtuele machine registreert vanui
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: evansma
-ms.openlocfilehash: 1aa946c813de41423d4fb2ba5b3aa5274db90f39
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 797c258c963d0daec32a8f9ac7c4e0665dc465d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934971"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813401"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Een VM implementeren vanaf uw Vhd's
 
@@ -46,7 +47,7 @@ U gaat als volgt te werk om een VM-installatie kopie van een gebruiker te maken 
 Nadat uw virtuele machine is geïmplementeerd, bent u klaar om [uw VM-installatie kopie te certificeren](./cpp-certify-vm.md).
 
 1. Klik op **Nieuw** en zoek naar **sjabloon implementatie**en selecteer vervolgens **uw eigen sjabloon bouwen in de editor**.  <br/>
-   ![VHD-implementatie sjabloon maken in Azure Portal](./media/publishvm_021.png)
+   ![het maken van een sjabloon voor de VHD-implementatie in Azure Portal](./media/publishvm_021.png)
 
 1. Kopieer en plak deze [JSON-sjabloon](./cpp-deploy-json-template.md) in de editor en klik op **Opslaan**. <br/>
    ![VHD-implementatie sjabloon opslaan in Azure Portal](./media/publishvm_022.png)
@@ -55,27 +56,27 @@ Nadat uw virtuele machine is geïmplementeerd, bent u klaar om [uw VM-installati
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
-   |  **Parameter**              |   **Beschrijving**                                                            |
+   |  **Bepaalde**              |   **Beschrijving**                                                            |
    |  -------------              |   ---------------                                                            |
    | Account naam voor gebruikers opslag   | De naam van het opslag account waarin de gegeneraliseerde VHD zich bevindt                    |
    | Container naam voor gebruikers opslag | Container naam waar de gegeneraliseerde VHD zich bevindt                          |
    | DNS-naam voor openbaar IP-adres      | De naam van het open bare IP-adres. De DNS-naam is van de virtuele machine. u definieert deze in azure Portal zodra de aanbieding is geïmplementeerd.  |
-   | De naam van de gebruiker met beheerdersrechten             | Gebruikers naam van beheerders account voor nieuwe VM                                  |
-   | Beheerderswachtwoord              | Wacht woord van beheerders account voor nieuwe VM                                  |
-   | Type besturingssysteem                     | VM-besturings systeem `Windows` : \|`Linux`                                    |
+   | Gebruikers naam voor de beheerder             | Gebruikers naam van beheerders account voor nieuwe VM                                  |
+   | Beheerders wachtwoord              | Wacht woord van beheerders account voor nieuwe VM                                  |
+   | Het type besturingssysteem                     | VM-besturings systeem: `Windows` \| `Linux`                                    |
    | Abonnements-id             | Id van het geselecteerde abonnement                                      |
-   | Location                    | Geografische locatie van de implementatie                                        |
-   | VM-grootte                     | [Azure VM-grootte](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), bijvoorbeeld`Standard_A2` |
+   | Locatie                    | Geografische locatie van de implementatie                                        |
+   | VM-grootte                     | [Azure VM-grootte](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), bijvoorbeeld `Standard_A2` |
    | Naam van openbaar IP-adres      | Naam van uw open bare IP-adres                                               |
    | VM-naam                     | De naam van de nieuwe virtuele machine                                                           |
-   | Virtuele-netwerknaam        | De naam van het virtuele netwerk dat wordt gebruikt door de virtuele machine                                   |
+   | Virtual Network naam        | De naam van het virtuele netwerk dat wordt gebruikt door de virtuele machine                                   |
    | NIC-naam                    | De naam van de netwerk interface kaart met het virtuele netwerk               |
    | URL VOOR VHD                     | Volledige VHD-URL van de besturingssysteem schijf                                                     |
    |  |  |
             
 1. Nadat u deze waarden hebt opgegeven, klikt u op **kopen**. 
 
-Azure begint met de implementatie: er wordt een nieuwe virtuele machine gemaakt met de opgegeven onbeheerde VHD in het opgegeven pad van het opslag account.  U kunt de voortgang van de Azure Portal volgen door op **virtual machines** aan de linkerkant van de portal te klikken.  Wanneer de virtuele machine is gemaakt, wordt de status gewijzigd van `Starting` in `Running`. 
+Azure begint met de implementatie: er wordt een nieuwe virtuele machine gemaakt met de opgegeven onbeheerde VHD in het opgegeven pad van het opslag account.  U kunt de voortgang van de Azure Portal volgen door op **virtual machines** aan de linkerkant van de portal te klikken.  Wanneer de virtuele machine is gemaakt, wordt de status gewijzigd van `Starting` naar `Running`. 
 
 
 ### <a name="deploy-a-vm-from-powershell"></a>Een VM implementeren vanuit Power shell

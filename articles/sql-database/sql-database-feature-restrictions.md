@@ -1,5 +1,5 @@
 ---
-title: Functie beperkingen Azure SQL Database
+title: Functiebeperkingen
 description: Dankzij de beperkingen van Azure SQL Database-functies wordt uw database beveiliging verbeterd door functies in uw data base te beperken die aanvallers kunnen gebruiken om toegang te krijgen tot informatie.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: e9518065b2240d72698ed75f2fa8a7aed343b7bf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ce10daca23299f838e4086426fa89d9cade314ea
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690058"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823432"
 ---
 # <a name="azure-sql-database-feature-restrictions"></a>Functie beperkingen Azure SQL Database
 
@@ -67,7 +67,7 @@ De weer gave `sys.sql_feature_restrictions` geeft alle momenteel gedefinieerde f
 |-------------|-----------|-------------|
 | Klasse       | nvarchar (128) | Klasse van object waarop de beperking van toepassing is |
 | object      | nvarchar (256) | De naam van het object waarop de beperking van toepassing is |
-| Hulp     | nvarchar (128) | Functie die is beperkt |
+| hulp     | nvarchar (128) | Functie die is beperkt |
 
 ## <a name="feature-restrictions"></a>Functie beperkingen
 

@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met tijdelijke tabellen in Azure SQL Database
+title: Aan de slag met tijdelijke tabellen
 description: Meer informatie over hoe u met tijdelijke tabellen in Azure SQL Database aan de slag kunt gaan.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: 44a5589357301f979bb094579626e1c02e582846
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 98fd2658f3fbcb0e7e29114d29f8dc6ed39eedf2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686979"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820726"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Aan de slag met tijdelijke tabellen in Azure SQL Database
 
@@ -49,7 +49,7 @@ Kies in SSDT de sjabloon tijdelijke tabel (systeem versie) wanneer u nieuwe item
 
 ![SSDTNewTable](./media/sql-database-temporal-tables/AzureTemporal3.png)
 
-U kunt ook een tijdelijke tabel maken door de Transact-SQL-instructies rechtstreeks op te geven, zoals wordt weer gegeven in het onderstaande voor beeld. Houd er rekening mee dat de verplichte elementen van elke tijdelijke tabel de periode definitie en de SYSTEM_VERSIONING-component bevatten met een verwijzing naar een andere gebruikers tabel waarin historische rij versies worden opgeslagen:
+U kunt ook een tijdelijke tabel maken door de Transact-SQL-instructies rechtstreeks op te geven, zoals wordt weer gegeven in het onderstaande voor beeld. Houd er rekening mee dat de verplichte elementen van elke tijdelijke tabel de periode definitie en de SYSTEM_VERSIONING-component met een verwijzing naar een andere gebruikers tabel zijn waarin historische rij versies worden opgeslagen:
 
 ```
 CREATE TABLE WebsiteUserInfo 
@@ -120,7 +120,7 @@ Het is belang rijk te weten dat de update query niet de exacte tijd hoeft te ken
 ![TemporalArchitecture](./media/sql-database-temporal-tables/AzureTemporal5.png)
 
 ## <a name="step-3-perform-historical-data-analysis"></a>Stap 3: historische gegevens analyse uitvoeren
-Als tijdelijke systeem versie beheer nu is ingeschakeld, is historische gegevens analyse slechts één query van u. In dit artikel worden enkele voor beelden gegeven van veelvoorkomende analyse scenario's: voor meer informatie kunt u verschillende opties verkennen, die zijn geïntroduceerd in de [for SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) -component.
+Als tijdelijke systeem versie beheer nu is ingeschakeld, is historische gegevens analyse slechts één query van u. In dit artikel worden enkele voor beelden gegeven van veelvoorkomende analyse scenario's: voor meer informatie kunt u verschillende opties verkennen, die zijn geïntroduceerd in de [FOR SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) -component.
 
 Voer de volgende query uit om de Top 10-gebruikers weer te geven die op het aantal bezochte webpagina's per uur geleden worden besteld:
 

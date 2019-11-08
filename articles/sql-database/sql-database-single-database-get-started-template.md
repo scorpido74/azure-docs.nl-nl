@@ -1,5 +1,5 @@
 ---
-title: 'Azure Resource Manager: een enkele data base maken-Azure SQL Database '
+title: 'Azure Resource Manager: een enkele data base maken'
 description: Maak een enkele data base in Azure SQL Database met behulp van de Azure Resource Manager sjabloon.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/28/2019
-ms.openlocfilehash: 3c46dbe5cac4407eda8b4198613eda1c1742ed35
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b7888215a2d463c8007168e215179ace898ca1cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687202"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821029"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Snelstartgids: een enkele data base in Azure SQL Database maken met behulp van de Azure Resource Manager sjabloon
 

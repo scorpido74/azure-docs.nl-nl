@@ -1,5 +1,5 @@
 ---
-title: Sluit uw werk-of school account in een niet-beheerde map-Azure Active Directory | Microsoft Docs
+title: Werk-of school account sluiten in een niet-beheerde Azure AD-adres lijst
 description: Uw werk-of school account sluiten in een onbeheerde Azure Active Directory.
 services: active-directory
 author: rolyon
@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0da4c6b1c1434dae564ab4876a3ab3f341a87097
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 3c101c0ef7932151e675c5c514ac558e6e0f94b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891958"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815725"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>Uw werk-of school account sluiten in een niet-beheerde map
 
@@ -34,12 +34,12 @@ Voordat u uw account kunt sluiten, moet u de volgende items bevestigen:
 
 * Zorg ervoor dat u een gebruiker bent van een onbeheerde Azure AD-adres lijst. U kunt uw account niet sluiten als u deel uitmaakt van een beheerde map. Als u deel uitmaakt van een beheerde map en u uw account wilt sluiten, neemt u contact op met uw beheerder. Zie [de gebruiker verwijderen uit een niet-beheerde Tenant](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)voor informatie over hoe u kunt bepalen of u tot een niet-beheerde Directory behoort.
 
-* Sla de gegevens op die u wilt bewaren. Zie door het systeem gegenereerde logboeken voor niet- [beheerde tenants openen en exporteren](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)voor meer informatie over het verzenden van een aanvraag voor exporteren.
+* Sla de gegevens op die u wilt bewaren. Zie door het [systeem gegenereerde logboeken voor niet-beheerde tenants openen en exporteren](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)voor meer informatie over het verzenden van een aanvraag voor exporteren.
 
 > [!WARNING]
 > Het sluiten van uw account is onomkeerbaar. Wanneer u uw account sluit, worden alle persoonlijke gegevens verwijderd. U hebt geen toegang meer tot uw account en gegevens die aan uw account zijn gekoppeld.
 
-## <a name="close-your-account"></a>Je account sluiten
+## <a name="close-your-account"></a>Uw account sluiten
 
 Voer de volgende stappen uit om een niet-beheerd werk-of school account te sluiten:
 

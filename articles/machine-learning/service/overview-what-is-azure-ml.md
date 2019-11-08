@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: 9399353cb676ef4525e81229cf3920fd9d7e3aaf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7e07419115a6e9709879c71dfac1234408bda0ee
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684918"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824065"
 ---
 # <a name="what-is-azure-machine-learning"></a>Wat is Azure Machine Learning?
 
@@ -44,7 +44,7 @@ Azure Machine Learning biedt alle hulpprogram ma's voor ontwikkel aars en gegeve
 
 + Jupyter-notebooks: gebruik onze [voor beelden van notitie blokken](https://aka.ms/aml-notebooks) of maak uw eigen notitie blokken om te profiteren van onze <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK voor python</a> -voor beelden voor uw machine learning. 
 
-+ R-scripts of-notebooks waarin u de <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html on" target="_blank">SDK voor r</a> gebruikt voor het schrijven van uw eigen code of het gebruik van de R-modules in de ontwerp functie.
++ R-scripts of-notebooks waarin u de <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK voor r</a> gebruikt voor het schrijven van uw eigen code of het gebruik van de R-modules in de ontwerp functie.
 
 + [Visual Studio code-extensie](how-to-vscode-tools.md)
 

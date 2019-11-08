@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1c81045408a948820c8b9fef56e2c7d69cd39e08
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: c399bed803145659bae1863e9e0b919f33254627
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811919"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820203"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Toegang vanaf virtuele netwerken (VNet) configureren
 
@@ -51,8 +51,8 @@ In de volgende secties wordt beschreven hoe u een service-eind punt voor een vir
 > [!NOTE]
 > Als u service-eind punten voor virtuele netwerken wilt inschakelen, hebt u de volgende abonnements machtigingen nodig:
 >   * Abonnement met virtueel netwerk: Inzender voor netwerken
->   * Abonnement met Azure Cosmos DB account: Inzender voor DocumentDB-accounts
->   * Als uw virtuele netwerk en Azure Cosmos DB account zich in verschillende abonnementen bevinden, moet u ervoor zorgen dat er voor het abonnement met het virtuele netwerk ook een `Microsoft.DocumentDB`-Resource provider is geregistreerd. Als u een resource provider wilt registreren, raadpleegt u het artikel [Azure-resource providers en-typen](../azure-resource-manager/resource-manager-supported-services.md) .
+>   * Abonnement met Azure Cosmos DB account: Inzender van DocumentDB-account
+>   * Als uw virtuele netwerk en Azure Cosmos DB account zich in verschillende abonnementen bevinden, moet u ervoor zorgen dat er voor het abonnement met het virtuele netwerk ook `Microsoft.DocumentDB` resource provider is geregistreerd. Als u een resource provider wilt registreren, raadpleegt u het artikel [Azure-resource providers en-typen](../azure-resource-manager/resource-manager-supported-services.md) .
 
 Hier vindt u de instructies voor het registreren van een abonnement bij een resource provider.
 
@@ -68,7 +68,7 @@ Hier vindt u de instructies voor het registreren van een abonnement bij een reso
 
    ![Een virtueel netwerk en subnet selecteren voor een nieuw virtueel netwerk](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-Als uw Azure Cosmos DB-account wordt gebruikt door andere Azure-Services zoals Azure Search, of als het is geopend vanuit stream Analytics of Power BI, kunt u toegang toestaan door verbindingen accepteren te selecteren in de **wereld wijde Azure-data centers**.
+Als uw Azure Cosmos DB-account wordt gebruikt door andere Azure-Services zoals Azure Cognitive Search, of als het is geopend vanuit stream Analytics of Power BI, kunt u toegang toestaan door verbindingen accepteren te selecteren in de **wereld wijde Azure-data centers**.
 
 Om ervoor te zorgen dat u toegang hebt tot Azure Cosmos DB metrische gegevens uit de portal, moet u **toegang toestaan via Azure Portal** opties inschakelen. Zie het artikel [een IP-Firewall configureren](how-to-configure-firewall.md) voor meer informatie over deze opties. Nadat u toegang hebt ingeschakeld, selecteert u **Opslaan** om de instellingen op te slaan.
 
@@ -310,7 +310,7 @@ Nadat een service-eind punt voor een Azure Cosmos DB-account is ingeschakeld voo
      -Name $acctName
    ```
 
-1. Initialiseer de variabelen om deze later te gebruiken. Stel alle variabelen in van de bestaande account definitie. Voeg de toegangs beheer lijst van het virtuele netwerk toe aan alle Azure Cosmos DB accounts waartoe toegang wordt verkregen vanuit het subnet met de vlag `ignoreMissingVNetServiceEndpoint`.
+1. Initialiseer de variabelen om deze later te gebruiken. Stel alle variabelen in van de bestaande account definitie. Voeg de toegangs beheer lijst van het virtuele netwerk toe aan alle Azure Cosmos DB accounts waartoe toegang wordt verkregen vanuit het subnet met `ignoreMissingVNetServiceEndpoint` vlag.
 
    ```powershell
    $locations = @()

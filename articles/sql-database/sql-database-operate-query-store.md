@@ -1,5 +1,5 @@
 ---
-title: Het query archief van het besturings systeem in Azure SQL Database
+title: Query Store uitvoeren
 description: Meer informatie over het uitvoeren van de query Store in Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: b4f999818fe3b3517ee3fb48c22e616ee50f2d88
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fa60992c85e69143bfd65cc1a1f420ed85c8fd93
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567143"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802773"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Het query archief in Azure SQL Database gebruiken
 
@@ -29,15 +29,15 @@ Het query archief is sinds november 2015 [wereld wijd beschikbaar](https://azure
 
 ## <a name="optimal-query-store-configuration"></a>Optimale configuratie van het query archief
 
-In deze sectie worden optimale standaard instellingen voor configuraties beschreven, die zijn ontworpen om een betrouw bare werking van de query-Store en afhankelijke functies, zoals [SQL database Advisor en het prestatie dashboard](https://azure.microsoft.com/updates/sqldatabaseadvisorga/), te garanderen. De standaard configuratie is geoptimaliseerd voor het verzamelen van doorlopende gegevens, waarbij de minimale tijd wordt besteed aan de status uit-READ_ONLY.
+In deze sectie worden optimale standaard instellingen voor configuraties beschreven, die zijn ontworpen om een betrouw bare werking van de query-Store en afhankelijke functies, zoals [SQL database Advisor en het prestatie dashboard](https://azure.microsoft.com/updates/sqldatabaseadvisorga/), te garanderen. De standaard configuratie is geoptimaliseerd voor het verzamelen van doorlopende gegevens, waarbij de minimale tijd wordt besteed aan OFF-READ_ONLY statussen.
 
-| Configuratie | Description | Standaard | Opmerking |
+| Configuratie | Beschrijving | Standaard | Opmerking |
 | --- | --- | --- | --- |
 | MAX_STORAGE_SIZE_MB |Hiermee geeft u de limiet op voor de gegevens ruimte die in de query opslag kan worden uitgevoerd in de klanten database |100 |Afgedwongen voor nieuwe data bases |
 | INTERVAL_LENGTH_MINUTES |Definieert de grootte van het tijd venster waarin verzamelde runtime statistieken voor query plannen worden geaggregeerd en bewaard. Elk actief query plan heeft Maxi maal één rij voor een tijds periode die met deze configuratie is gedefinieerd |60 |Afgedwongen voor nieuwe data bases |
 | STALE_QUERY_THRESHOLD_DAYS |Op tijd gebaseerd opschonings beleid dat de Bewaar periode van persistente runtime statistieken en inactieve query's beheert |30 |Afgedwongen voor nieuwe data bases en data bases met eerdere standaard (367) |
-| SIZE_BASED_CLEANUP_MODE |Hiermee geeft u op of het automatisch opschonen van gegevens wordt uitgevoerd wanneer de gegevens opslag van de query de limiet nadert |AUTO |Afgedwongen voor alle data bases |
-| QUERY_CAPTURE_MODE |Hiermee wordt aangegeven of alle query's of alleen een subset van query's worden bijgehouden |AUTO |Afgedwongen voor alle data bases |
+| SIZE_BASED_CLEANUP_MODE |Hiermee geeft u op of het automatisch opschonen van gegevens wordt uitgevoerd wanneer de gegevens opslag van de query de limiet nadert |Auto |Afgedwongen voor alle data bases |
+| QUERY_CAPTURE_MODE |Hiermee wordt aangegeven of alle query's of alleen een subset van query's worden bijgehouden |Auto |Afgedwongen voor alle data bases |
 | FLUSH_INTERVAL_SECONDS |Hiermee geeft u de maximum periode op waarin vastgelegde runtime statistieken in het geheugen worden bewaard voordat deze naar de schijf worden leeg gemaakt |900 |Afgedwongen voor nieuwe data bases |
 |  | | | |
 
@@ -50,7 +50,7 @@ Als u de aangepaste instellingen wilt blijven gebruiken, gebruikt u de [Opties A
 
 [Inzicht in de prestaties SQL Database](sql-database-performance.md)
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 Raadpleeg de volgende artikelen voor meer informatie:
 

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6360c7ea5bfdfb2d348cc843288655ed904e6c74
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca9b0289fbc8dd01427de38e0e7b30eec266bb12
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580796"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818591"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Bewerkingen voor de resource provider Azure Resource Manager
 
@@ -4778,8 +4778,8 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Bewerking | Micro soft. Search/searchServices/Delete | Hiermee verwijdert u de zoek service. |
 > | Bewerking | Micro soft. Search/searchServices/deleteQueryKey/verwijderen | Hiermee verwijdert u de query sleutel. |
 > | Bewerking | Micro soft. Search/searchServices/listAdminKeys/Action | Hiermee worden de beheer sleutels gelezen. |
-> | Bewerking | Micro soft. Search/searchServices/listQueryKeys/Action | Retourneert de lijst met query-API-sleutels voor de gegeven Azure Search service. |
-> | Bewerking | Micro soft. Search/searchServices/listQueryKeys/lezen | Retourneert de lijst met query-API-sleutels voor de gegeven Azure Search service. |
+> | Bewerking | Micro soft. Search/searchServices/listQueryKeys/Action | Retourneert de lijst met query-API-sleutels voor de gegeven Azure Cognitive Search-service. |
+> | Bewerking | Micro soft. Search/searchServices/listQueryKeys/lezen | Retourneert de lijst met query-API-sleutels voor de gegeven Azure Cognitive Search-service. |
 > | Bewerking | Micro soft. Search/searchServices/lezen | Hiermee wordt de zoek service gelezen. |
 > | Bewerking | Micro soft. Search/searchServices/regenerateAdminKey/Action | Hiermee wordt de beheerders sleutel opnieuw gegenereerd. |
 > | Bewerking | Micro soft. Search/searchServices/start/Action | Hiermee wordt de zoek service gestart. |
@@ -6010,7 +6010,7 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Bewerking | micro soft. web/sites/hostnamebindings/lezen | Web Apps hostnaam-bindingen ophalen. |
 > | Bewerking | micro soft. web/sites/hostnamebindings/schrijven | Web Apps hostnaam-bindingen bijwerken. |
 > | Bewerking | micro soft. web/sites/hostruntime/functies/sleutels/lezen | Web Apps sleutels voor Hostruntime-functies ophalen. |
-> | Bewerking | Micro soft. web/sites/hostruntime/host/_master/lezen | De hoofd sleutel van functie-app voor beheer bewerkingen ophalen |
+> | Bewerking | Micro soft. web/sites/hostruntime/host/_master/Read | De hoofd sleutel van functie-app voor beheer bewerkingen ophalen |
 > | Bewerking | Micro soft. web/sites/hostruntime/host/actie | Voer functie-app runtime-actie uit zoals synchronisatie triggers, functies toevoegen, functies aanroepen, functies verwijderen, enzovoort. |
 > | Bewerking | micro soft. web/sites/hostruntime/host/lezen | Web Apps Hostruntime-host ophalen. |
 > | Bewerking | micro soft. web/sites/hybridconnection/verwijderen | Web Apps hybride verbinding verwijderen. |

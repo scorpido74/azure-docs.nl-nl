@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7c60fdfd4d8e579c24da3c43501e4437806becc6
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: f7a6ab954aff1bcc2e3dae3fc035db4b136ccbbe
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241715"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818167"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>HDInsight Spark-cluster gebruiken voor het analyseren van gegevens in Data Lake Storage Gen1
 
@@ -30,7 +30,7 @@ In dit artikel gebruikt u [Jupyter notebook](https://jupyter.org/) die beschikba
 > [!NOTE]  
 > U hoeft deze stap niet uit te voeren als u het HDInsight-cluster hebt gemaakt met Data Lake Storage als standaard opslag. Het proces voor het maken van een cluster voegt enkele voorbeeld gegevens toe aan het Data Lake Storage-account dat u opgeeft tijdens het maken van het cluster. Ga naar de sectie HDInsight Spark-cluster gebruiken met Data Lake Storage.
 
-Als u een HDInsight-cluster hebt gemaakt met Data Lake Storage als extra opslag en Azure Storage Blob als standaard opslag, moet u eerst een aantal voorbeeld gegevens kopiëren naar het Data Lake Storage-account. U kunt de voorbeeld gegevens gebruiken uit het Azure Storage Blob dat is gekoppeld aan het HDInsight-cluster. U kunt het [hulp programma ADLCopy](https://aka.ms/downloadadlcopy) gebruiken om dit te doen. Down load en installeer het hulp programma via de koppeling.
+Als u een HDInsight-cluster hebt gemaakt met Data Lake Storage als extra opslag en Azure Storage Blob als standaard opslag, moet u eerst een aantal voorbeeld gegevens kopiëren naar het Data Lake Storage-account. U kunt de voorbeeld gegevens gebruiken uit het Azure Storage Blob dat is gekoppeld aan het HDInsight-cluster. U kunt het [hulp programma ADLCopy](https://www.microsoft.com/download/details.aspx?id=50358) gebruiken om dit te doen. Down load en installeer het hulp programma via de koppeling.
 
 1. Open een opdracht prompt en ga naar de map waarin AdlCopy is geïnstalleerd, meestal `%HOMEPATH%\Documents\adlcopy`.
 

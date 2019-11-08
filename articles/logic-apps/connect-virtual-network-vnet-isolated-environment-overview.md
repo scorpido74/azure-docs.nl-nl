@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: adb89c04a83bbfbd5bddd5c23b0fa88019a88991
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 11/08/2019
+ms.openlocfilehash: da68cfe504332ed6641c52322f0df0d2efd95997
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721382"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820676"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Toegang tot Azure Virtual Network resources vanuit Azure Logic Apps met behulp van integratie service omgevingen (ISEs)
 
@@ -108,8 +108,8 @@ Voor on-premises systemen die zijn verbonden met een virtueel Azure-netwerk, wor
 
 * ISE-gelabelde connector voor dat systeem
 
-  > [!IMPORTANT]
-  > Als u Windows-verificatie met de SQL Server-connector wilt gebruiken, moet u de [on-premises gegevens gateway](../logic-apps/logic-apps-gateway-install.md)gebruiken. De SQL Server-connector biedt geen ondersteuning voor Windows-verificatie voor een logische app in een ISE.
+  > [!NOTE]
+  > Als u Windows-verificatie wilt gebruiken met de SQL Server-connector in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), gebruikt u de niet-ISE-versie van de connector met de [on-premises gegevens gateway](../logic-apps/logic-apps-gateway-install.md). De ISE-label versie biedt geen ondersteuning voor Windows-verificatie.
 
 * Aangepaste connector
 

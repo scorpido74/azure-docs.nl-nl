@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 931f2fbe5798966c41378d9b401dcd59cafc5cca
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 9bb7114611ce5c7eabb8124ad11db64d50e12946
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820870"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809823"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fout codes voor aanmeldings activiteiten rapport 
 
@@ -127,6 +127,7 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |50177|Externe controle wordt niet ondersteund voor passthrough-gebruikers.|
 |50178|Sessie beheer wordt niet ondersteund voor passthrough-gebruikers.|
 |50180|Geïntegreerde Windows-verificatie is vereist. Schakel de tenant in voor een naadloze eenmalige aanmelding (SSO).|
+|50181|Aan OTP gerelateerde fout tijdens het aanmelden. |
 |50201|Deze bericht prompt wordt weer gegeven voor de gebruiker tijdens het aanmelden wanneer aanvullende informatie aan de gebruiker moet worden verstrekt.|
 |51001|Er is geen domein Hint aanwezig met on-premises beveiligings-id-on-premises UPN.|
 |51004|Gebruikersaccount bestaat niet in de map.|

@@ -4,15 +4,16 @@ description: Hierin wordt uitgelegd hoe u de SAS-URI (Shared Access Signature) v
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: c242fbcd19187abb608ca80a49d04dae195bd7c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: dda074d81857247a922eb7a179b33aa2593e5bf8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374371"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824476"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>URI voor Shared Access-hand tekening ophalen voor uw VM-installatie kopie
 
@@ -21,7 +22,7 @@ Tijdens het publicatie proces moet u een Uniform Resource Identifier (URI) opgev
 Bij het genereren van SAS-Uri's voor uw Vhd's, moet u voldoen aan de volgende vereisten:
 
 - Alleen onbeheerde Vhd's worden ondersteund.
-- `List`-en `Read`-machtigingen zijn voldoende. Bied *geen* `Write`-of `Delete`-toegang.
+- `List`-en `Read`machtigingen zijn voldoende. Geef *geen* `Write`-of `Delete` toegang op.
 - De duur voor toegang (*verval datum*) moet mini maal drie weken zijn vanaf het moment dat de SAS-URI wordt gemaakt.
 - Om te beschermen tegen UTC-tijd variaties, stelt u de begin datum in op één dag voor de huidige datum. Als de huidige datum bijvoorbeeld 6 oktober 2014 is, selecteert u 10/5/2014.
 
@@ -33,12 +34,12 @@ De SAS-URL kan op twee algemene manieren worden gegenereerd met behulp van de vo
 -   Microsoft Azure CLI: aanbevolen voor niet-Windows OSs-en geautomatiseerde of continue integratie omgevingen
 
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 Gebruik de volgende stappen om een SAS-URI te genereren met Azure CLI.
 
 1. Down load en installeer de [Microsoft Azure cli](https://azure.microsoft.com/documentation/articles/xplat-cli-install/).  Er zijn versies beschikbaar voor Windows, macOS en verschillende distributies van Linux. 
-2. Maak een Power shell-bestand (`.ps1`-bestands extensie), kopieer de volgende code en sla deze lokaal op.
+2. Maak een Power shell-bestand (`.ps1` bestands extensie), kopieer de volgende code en sla deze lokaal op.
 
    ``` powershell
    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
@@ -47,9 +48,9 @@ Gebruik de volgende stappen om een SAS-URI te genereren met Azure CLI.
 3. Bewerk het bestand om de volgende parameter waarden op te geven.  Datums moeten worden weer gegeven in de notatie voor UTC-datum/tijd, bijvoorbeeld `2016-10-25T00:00:00Z`.
    - `<account-name>`-uw Azure Storage-account naam
    - `<account-key>`-uw Azure Storage-account sleutel
-   - `<vhd-name>`-naam van uw VHD
-   - `<start-date>`-begin datum van machtiging voor toegang tot de VHD. Geef een datum op van één dag voor de huidige datum. 
-   - `<expiry-date>`-de verval datum van machtigingen voor de toegang tot de VHD.  Geef een datum op die ten minste drie weken na de huidige datum valt. 
+   - `<vhd-name>`-de naam van uw VHD
+   - Start datum van `<start-date>` machtiging voor toegang tot de virtuele harde schijf. Geef een datum op van één dag voor de huidige datum. 
+   - verval datum van `<expiry-date>` machtiging voor toegang tot de VHD.  Geef een datum op die ten minste drie weken na de huidige datum valt. 
  
    In het volgende voor beeld worden de juiste parameter waarden weer gegeven (op het moment van schrijven).
 
@@ -75,7 +76,7 @@ Gebruik de volgende stappen om een SAS-URI te genereren met Azure CLI.
 
     `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 
-    Als de naam van de VDH bijvoorbeeld is `TestRGVM2.vhd`, dan zou de resulterende SAS-URI er als volgt uitziet:
+    Als de naam van de VDH bijvoorbeeld is `TestRGVM2.vhd`, zou de resulterende SAS-URI er als volgt uitziet:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
@@ -97,7 +98,7 @@ Gebruik de volgende stappen om een SAS-URI te genereren met de Microsoft Azure S
 6. Het dialoog venster **Shared Access Signature** wordt weer gegeven. Voer waarden in voor de volgende velden:
    - **Start tijd** -start datum van machtiging voor toegang tot de virtuele harde schijf. Geef een datum op die één dag voor de huidige datum valt.
    - **Verloop tijd** -verval datum van machtiging voor toegang tot de VHD.  Geef een datum op die ten minste drie weken na de huidige datum valt.
-   - **Machtigingen** : selecteer de `Read`-en `List`-machtigingen. 
+   - **Machtigingen** : selecteer de `Read` en `List` machtigingen. 
 
      ![Het dialoog venster SAS in azure Explorer](./media/publishvm_035.png)
 
@@ -108,11 +109,11 @@ Gebruik de volgende stappen om een SAS-URI te genereren met de Microsoft Azure S
 
     Deze gegenereerde SAS-URL is voor toegang op container niveau.  Als u deze specifiek wilt maken, moet u de naam van de bijbehorende VHD toevoegen.
 
-9. Bewerk het tekst bestand. Plaats uw VHD-naam achter de `vhds`-teken reeks in de SAS-URL (Voeg een voor loop-slash toe).  De uiteindelijke SAS-URI moet de volgende indeling hebben:
+9. Bewerk het tekst bestand. Voeg uw VHD-naam toe na de `vhds` teken reeks in de SAS-URL (Voeg een voorloop back slash toe).  De uiteindelijke SAS-URI moet de volgende indeling hebben:
 
     `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 
-    Als de naam van de VDH bijvoorbeeld is `TestRGVM2.vhd`, dan zou de resulterende SAS-URI er als volgt uitziet:
+    Als de naam van de VDH bijvoorbeeld is `TestRGVM2.vhd`, zou de resulterende SAS-URI er als volgt uitziet:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
@@ -124,7 +125,7 @@ Herhaal deze stappen voor elke VHD in de Sku's die u wilt publiceren.
 Controleer en controleer elke gegenereerde SAS-URI met behulp van de volgende controle lijst.  Controleer het volgende:
 - De URI heeft de volgende vorm: `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 - De URI bevat de bestands naam van de VHD-installatie kopie, inclusief de bestands extensie. VHD.
-- In het midden van de URI wordt `sp=rl` weer gegeven. Deze teken reeks geeft aan dat `Read` en `List`-toegang is opgegeven.
+- `sp=rl` wordt weer gegeven in de richting van het midden van de URI. Deze teken reeks geeft aan dat `Read` en `List` toegang is opgegeven.
 - Na dat punt wordt `sr=c` ook weer gegeven. Deze teken reeks geeft aan dat toegang op container niveau is opgegeven.
 - Kopieer en plak de URI in een browser om te beginnen met het downloaden van de gekoppelde blob.  (U kunt de bewerking annuleren voordat de down load is voltooid.)
 

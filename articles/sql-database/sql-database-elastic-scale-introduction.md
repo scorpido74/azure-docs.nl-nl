@@ -1,5 +1,5 @@
 ---
-title: Uitbreiden met Azure SQL Database
+title: Uitschalen
 description: SaaS-ontwikkel aars (Software as a Service) kunnen eenvoudig elastische, schaal bare data bases in de Cloud maken met behulp van deze hulpprogram ma's
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 56556576dffd4e022f919af89459d92e48c6c895
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3e30e54eb18eb5d487da6821d285109b1a22297f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690251"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823605"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Uitbreiden met Azure SQL Database
 U kunt Azure SQL-data bases eenvoudig uitschalen met behulp van de **Elastic database** -hulpprogram ma's. Met deze hulpprogram ma's en functies kunt u de database resources van **Azure SQL database** gebruiken om oplossingen te maken voor transactionele werk belastingen, en met name SaaS-toepassingen (Software as a Service). Elastic Database-functies bestaan uit het volgende:

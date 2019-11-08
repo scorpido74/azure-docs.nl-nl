@@ -1,129 +1,130 @@
 ---
-title: Bijwerken van marketplace-aanbiedingen | Azure Marketplace
-description: Update-aanbiedingen op Azure en AppSource marktplaatsen, met behulp van de Cloud Partner-Portal
+title: Update Marketplace-aanbiedingen | Azure Marketplace
+description: Aanbiedingen voor Azure en AppSource Marketplace bijwerken met behulp van de Cloud Partner-portal
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pabutler
-ms.openlocfilehash: 73e2812c678dca7e21089ee9cc091db756d7e25a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3f579dbdc943b2380c9de3dde6b2ebf4754d4d1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942366"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826714"
 ---
-# <a name="update-azure-marketplace-and-appsource-offers"></a>Aanbiedingen voor Azure Marketplace en AppSource bijwerken
+# <a name="update-azure-marketplace-and-appsource-offers"></a>Azure Marketplace-en AppSource-aanbiedingen bijwerken
 
-Er zijn verschillende soorten updates die u op uw aanbieding toepassen kunt nadat deze gepubliceerd.  De [Cloud Partner-Portal](https://cloudpartner.azure.com/) helpt u bij het correct als kenmerken van een aanbieding, met inbegrip van:
+Er zijn verschillende soorten updates die u kunt Toep assen op uw aanbieding nadat deze is gepubliceerd.  De [Cloud Partner-Portal](https://cloudpartner.azure.com/) helpt u bij het goed wijzigen van kenmerken van een aanbieding, waaronder:
 
--  Nieuwe installatiekopie of pakket versie van virtuele machine (VM) toevoegen aan een bestaande SKU
--  Een SKU is beschikbaar in regio's wijzigen
--  Toevoegen van nieuwe SKU 's
--  Bijwerken van marketplace-metagegevens voor aanbiedingen of SKU 's 
--  Bieden van een bijwerken prijs van betalen per gebruik
+-  Nieuwe virtuele machine (VM)-installatie kopie of pakket versie toevoegen aan een bestaande SKU
+-  Regio's wijzigen waarvoor een SKU beschikbaar is
+-  Nieuwe Sku's toevoegen
+-  Het bijwerken van de meta gegevens van Marketplace voor aanbiedingen of Sku's 
+-  Prijzen bijwerken voor aanbiedingen met betalen naar gebruik
 
-De portal heeft ook functies, zoals de mogelijkheid om te vergelijken van functies en een geschiedenis van functies voor een aanbieding die u helpen bij het beheren van wijzigingen weer te geven.  Nadat u een aanbieding of SKU hebt gewijzigd, moet worden gepubliceerd voordat de wijzigingen gaan 'live'.  Dit artikel begeleidt u bij de verschillende aspecten van uw marketplace-aanbieding wordt bijgewerkt.
+De portal heeft ook functies, zoals de mogelijkheid om functies te vergelijken en een geschiedenis van de functies van een aanbieding te bekijken, die u helpen bij het beheren van wijzigingen.  Nadat u een aanbieding of SKU hebt gewijzigd, moet deze opnieuw worden gepubliceerd voordat de wijzigingen ' live ' gaan.  Dit artikel begeleidt u door de verschillende aspecten van het bijwerken van uw Marketplace-aanbieding.
 
-## <a name="unpermitted-changes-to-an-offersku"></a>Ongeoorloofde wijzigingen aan een aanbieding/SKU
+## <a name="unpermitted-changes-to-an-offersku"></a>Niet-toegestane wijzigingen in een aanbieding/SKU
 
-Er zijn enkele kenmerken van een aanbieding of de SKU die niet worden gewijzigd nadat deze is gepubliceerd in de marketplace.  De bijbehorende velden zijn uitgeschakeld in de **Editor** tabblad van de portal, bijvoorbeeld:  
+Er zijn een aantal kenmerken van een aanbieding of SKU die niet meer kunnen worden gewijzigd nadat deze is gepubliceerd in de Marketplace.  De bijbehorende velden zijn uitgeschakeld op het tabblad **Editor** van de portal, bijvoorbeeld:  
 
-- Aanbieding-ID en uitgevers-ID
+- Aanbiedings-ID en uitgevers-ID
 - SKU-ID 
-- Telling van bestaande SKU's van de gegevensschijf
-- Wijzigingen in het gegevensmodel van bestaande SKU's facturering/licenties
-- Versie-tags, bijvoorbeeld: `1.0.1`
+- Aantal gegevens schijven van bestaande Sku's
+- Wijzigingen in het facturerings-en licentie model van bestaande Sku's
+- Versie Tags, bijvoorbeeld: `1.0.1`
 
 
-## <a name="common-update-operations"></a>Algemene updatebewerkingen
+## <a name="common-update-operations"></a>Algemene update bewerkingen
 
-In de volgende secties wordt uitgelegd hoe u enkele van de meeste updatebewerkingen uitvoert.  Deze bewerkingen zijn niet beschikbaar voor alle typen.  U moet zich in de Cloud Partner-Portal een van deze bewerkingen te starten.
+In de volgende secties wordt uitgelegd hoe u een aantal van de meest update bewerkingen kunt uitvoeren.  Deze bewerkingen zijn niet beschikbaar voor alle aanbiedings typen.  U moet zich aanmelden bij de Cloud Partner-portal om een van deze bewerkingen te starten.
 
 
-### <a name="update-offer-contacts"></a>Aanbieding contactpersonen bijwerken
+### <a name="update-offer-contacts"></a>Contact personen van aanbieding bijwerken
 
-Gebruik de volgende stappen uit om bij te werken van de contactpersonen voor ondersteuning van uw aanbieding.
-1. In de **alle biedt** pagina, selecteert u de aanbieding.
-2. Selecteer de **contactpersonen** tabblad. Uw contactpersonen bijwerken.
+Gebruik de volgende stappen om de ondersteunings contactpersonen voor uw aanbieding bij te werken.
+1. Selecteer op de pagina **alle aanbiedingen** de aanbieding.
+2. Selecteer het tabblad **contact personen** . werk uw contact personen bij.
 3. Selecteer de knop **Opslaan**.
-4. Selecteer **publiceren** het publicatieproces te starten.
+4. Selecteer **publiceren** om het publicatie proces te starten.
 
 
-### <a name="change-regions-an-offer-or-sku-is-available-in"></a>Wijzigen van een aanbieding of de SKU is beschikbaar in regio 's
+### <a name="change-regions-an-offer-or-sku-is-available-in"></a>Regio's wijzigen een aanbieding of SKU is beschikbaar in
 
-Na verloop van tijd kunt u uw aanbieding/SKU beschikbaar maken in meer regio's.
-U kunt ook stoppen met het ondersteunen van de aanbieding/SKU in een bepaalde regio.
-Deze wijzigingen wilt implementeren, volgt u de volgende stappen uit.
+In de loop van de tijd wilt u uw aanbieding/SKU mogelijk beschikbaar maken in meer regio's.
+U kunt er ook voor zorgen dat u de ondersteuning van de aanbieding/SKU in een bepaalde regio wilt beëindigen.
+Voer de volgende stappen uit om deze wijzigingen te implementeren.
 
-1. In de **alle aanbiedingen** pagina, vinden de aanbieding die u wilt bijwerken.
+1. Zoek op de pagina **alle aanbiedingen** naar de aanbieding die u wilt bijwerken.
 
-Voor Azure Marketplace-aanbiedingen:
+Voor Azure Marketplace kunt u het volgende doen:
 
-1. Selecteer de **SKU's** tabblad.  Selecteer de SKU te wijzigen.
-1. Klik op de **landen selecteren** knop onder de **land/regio beschikbaarheid** veld.
-1. In het dialoogvenster van de beschikbaarheid van regio toevoegen of verwijderen van de regio's voor deze SKU.
+1. Selecteer het tabblad **sku's** .  Selecteer de SKU die u wilt wijzigen.
+1. Klik op de knop **landen selecteren** onder het veld **Beschik baarheid land/regio** .
+1. Voeg in het dialoog venster Beschik baarheid van regio de regio's voor deze SKU toe of verwijder deze.
 
-Voor AppSource biedt het volgende:
+Voor AppSource-aanbiedingen:
 
-1. Selecteer de **Storefront Details** tabblad.
-1. Naast de **landen/regio's ondersteund** label, klikt u op **landen/regio's ondersteund**. 
-1. In het dialoogvenster ondersteunde landen/regio's toevoegen of verwijderen van de regio's voor deze aanbieding.
+1. Selecteer het tabblad Details van de **winkel** .
+1. Klik naast het label **ondersteunde landen/regio's** op **ondersteunde landen/regio's**. 
+1. Voeg in het dialoog venster ondersteunde landen/regio's de regio's voor deze aanbieding toe of verwijder deze.
 
-Voor beide marketplace:
+Voor Marketplace:
 
-1. Klik op **publiceren** het publicatieproces te starten. 
+1. Klik op **publiceren** om het publicatie proces te starten. 
 
-Als u een SKU wordt beschikbaar gesteld in een nieuwe regio, hebt u de mogelijkheid om op te geven van de prijzen voor die bepaalde regio via het **prijzen gegevens exporteren** functionaliteit. Als u een regio weer die eerder beschikbaar was toevoegt, kunt u de prijzen omdat prijswijzigingen zijn niet toegestaan niet bijwerken.
-
-
-### <a name="add-a-new-sku"></a>Voeg een nieuwe SKU toe 
-
-Als u een nieuwe SKU voor een bestaande aanbieding, gebruikt u de volgende stappen uit:
-
-1. In de **alle aanbiedingen** pagina, de aanbieding te vinden.
-3. Onder de **SKU's** vormen, klikt u op **toevoegen van nieuwe Voorraadeenheid** en bieden een **SKU-ID** in het pop-upvenster.
-4. Volg de rest van de stappen die worden beschreven [publiceren van een virtuele machine-aanbieding](../virtual-machine/cpp-publish-offer.md).
-5. Klik op **publiceren** het publicatieproces te starten.
+Als een SKU beschikbaar wordt gemaakt in een nieuwe regio, hebt u de mogelijkheid om prijzen voor deze regio op te geven via de functionaliteit voor het **exporteren van prijs gegevens** . Als u een eerder beschik bare regio hebt toegevoegd, kunt u de prijs categorie niet bijwerken omdat de prijs wijzigingen niet zijn toegestaan.
 
 
-### <a name="update-offer-marketplace-assets"></a>Aanbieding marketplace activa bijwerken
+### <a name="add-a-new-sku"></a>Een nieuwe SKU toevoegen 
 
-Mogelijk hebt u scenario's waarbij u moet bijwerken van de marketplace op basis van tekst en afbeelding activa, zoals uw bedrijfslogo, bieden beschrijving, enzovoort. Gebruik de volgende stappen uit om bij te werken van deze elementen.
+Gebruik de volgende stappen om een nieuwe SKU beschikbaar te maken voor een bestaande aanbieding:
 
-1. In de **alle aanbiedingen** pagina, merken dat uw aanbieding. 
-2. Selecteer de **Marketplace** tabblad en volg de instructies in van uw aanbieding *Marketplace tabblad* onderwerp.
-3. Klik op **publiceren** het publicatieproces te starten.
+1. Zoek de aanbieding op de pagina **alle aanbiedingen** .
+3. Klik onder het formulier **sku's** op **nieuwe SKU toevoegen** en geef een **SKU-id** op in het pop-upvenster.
+4. Volg de overige stappen in de aanbieding voor het [publiceren van een virtuele machine](../virtual-machine/cpp-publish-offer.md).
+5. Klik op **publiceren** om het publicatie proces te starten.
 
 
-### <a name="update-pricing-on-published-offers"></a>De prijzen van gepubliceerde aanbiedingen bijwerken
+### <a name="update-offer-marketplace-assets"></a>Update aanbod Marketplace-assets
 
-Zodra uw betalen per gebruik-aanbieding is gepubliceerd, kunt u de prijs van een bestaande SKU niet verhogen.  In plaats daarvan een SKU onder de dezelfde aanbieding maken, verwijderen van de oude SKU en vervolgens uw aanbod opnieuw publiceren. U kunt de prijs van de eerder gepubliceerde aanbiedingen verlagen. De aanbiedingsprijs van uw verminderen:
+Mogelijk hebt u de mogelijkheid om de op tekst gebaseerde en afbeeldings activa van de Marketplace bij te werken, zoals uw bedrijfs logo's, een beschrijving van de aanbieding, enzovoort. Gebruik de volgende stappen om deze assets bij te werken.
 
-1. Selecteer de SKU die u wilt verkleinen prijzen.
-2. U moet de lagere prijs ingesteld door de dezelfde mechanisme dat u oorspronkelijk hebt gebruikt: rechtstreeks in de gebruikersinterface van de portal of met het werkblad voor importeren/exporteren.
+1. Ga op de pagina **alle aanbiedingen** naar uw aanbieding. 
+2. Selecteer het tabblad **Marketplace** en volg de instructies in het *tabblad Marketplace* van het aanbod.
+3. Klik op **publiceren** om het publicatie proces te starten.
+
+
+### <a name="update-pricing-on-published-offers"></a>Prijzen voor gepubliceerde aanbiedingen bijwerken
+
+Zodra uw aanbieding voor betalen naar gebruik is gepubliceerd, kunt u de prijs van een bestaande SKU niet verhogen.  Maak in plaats daarvan een SKU onder dezelfde aanbieding, verwijder de oude SKU en publiceer uw aanbieding opnieuw. U kunt de prijs van eerder gepubliceerde aanbiedingen verlagen. Uw aanbiedings prijs verlagen:
+
+1. Selecteer de SKU waarvoor u de prijzen wilt verlagen.
+2. U moet de laagste prijs instellen volgens hetzelfde mechanisme dat u oorspronkelijk hebt gebruikt: rechtstreeks in de gebruikers interface van de portal of in het werk blad importeren/exporteren.
 3. Klik op **Opslaan**.
-4. Klik op **publiceren** het publicatieproces te starten.
+4. Klik op **publiceren** om het publicatie proces te starten.
 
-De prijzen is zichtbaar voor nieuwe klanten zodra ze actief op de marketplace is en alle nieuwe klanten wordt de nieuwe lagere prijs te betalen.  Voor bestaande klanten, de afname van de prijs met terugwerkende kracht weergegeven aan het begin van de factureringscyclus gedurende welke de afname van de prijs werd van kracht.  Als ze al zijn gefactureerd voor de cyclus waarbij er een lagere prijs is opgetreden, ontvangt deze een restitutie tijdens de volgende factureringscyclus voor de lagere prijs.
+De prijzen zijn zichtbaar voor nieuwe klanten zodra deze live op Marketplace zijn, en alle nieuwe klanten betalen dan de nieuwe prijs.  Voor bestaande klanten wordt de prijs verlaging terugwerkt naar het begin van de facturerings cyclus, waardoor de prijs verlaging effectief werd.  Als ze al zijn gefactureerd voor de cyclus gedurende welke een prijs verlaging zich voordeed, ontvangt hij een terugbetaling tijdens de volgende facturerings cyclus om de verlaagde prijs te dekken.
 
 
 ## <a name="compare-feature"></a>Functie vergelijken
 
-Als u wijzigingen in een gepubliceerde aanbieding aanbrengt, kunt u de *vergelijken* functie om te controleren van de wijzigingen. Gebruik deze functie:
+Wanneer u wijzigingen aanbrengt in een gepubliceerde aanbieding, kunt u de functie *compare* gebruiken om de wijzigingen te controleren. Gebruik deze functie als volgt:
 
-1. Op elk gewenst moment tijdens het bewerken, klikt u op de **vergelijken** knop in de **Editor** tabblad voor uw aanbieding.
-2. Een vergelijking-venster bevat side-by-side-versies van de opgeslagen wijzigingen op deze aanbieding in vergelijking met de marketplace-aanbieding. 
+1. U kunt op elk moment in het bewerkings proces op de knop **vergelijken** klikken in het tabblad **Editor** voor uw aanbieding.
+2. In een vergelijkings venster worden naast de Marketplace-aanbieding side-by-side-versies van de opgeslagen wijzigingen voor deze aanbieding weer gegeven. 
 
-![Aanbieding-knop in het tabblad editor vergelijken](./media/offer-compare-button.png)
+![De knop aanbieding vergelijken op het tabblad Editor](./media/offer-compare-button.png)
 
 
-## <a name="history-of-publishing-actions"></a>Geschiedenis van de publicatie van acties
+## <a name="history-of-publishing-actions"></a>Geschiedenis van publicatie acties
 
-Als u wilt weergeven van historische publicatie-activiteit, selecteer de **geschiedenis** tabblad in de linker verticale menubalk van de Cloud Partner-Portal.  De pagina Geschiedenis biedt flexibele door verschillende kenmerken te filteren en ondersteunt volgorde van kolommen.  Elke publishing gebeurtenis is voorzien van een tijdstempel.  Zie voor meer informatie, [Audit geschiedenispagina](../portal-tour/cpp-history-page.md).
+Als u de historische publicatie activiteit wilt weer geven, selecteert u het tabblad **geschiedenis** in de verticale balk links van het Cloud Partner-Portal.  De geschiedenis pagina biedt flexibele filtering door diverse kenmerken en biedt ondersteuning voor de volg orde van kolommen.  Elke publicatie gebeurtenis bevindt zich in een tijds tempel.  Zie de [pagina controle geschiedenis](../portal-tour/cpp-history-page.md)voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt ook de Cloud Partner-Portal te gebruiken [verwijderen van een gepubliceerde SKU of aanbieding](./cpp-delete-offer.md).
+U kunt ook de Cloud Partner-portal gebruiken om [een gepubliceerde SKU of aanbieding te verwijderen](./cpp-delete-offer.md).

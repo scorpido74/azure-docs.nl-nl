@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: fc72c59721a6f244806bf229ebded1e66341a04d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 7558ad2e5a4404db140daff89171af92c6072ef6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177693"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805979"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Best practices voor beveiliging voor IaaS-workloads in Azure
 In dit artikel worden de aanbevolen beveiligings procedures voor Vm's en besturings systemen beschreven.
@@ -68,7 +68,7 @@ Als uw virtuele machine essentiële toepassingen uitvoert waarvoor hoge Beschik 
 Een beschikbaarheidsset is een logische groepering die u in azure kunt gebruiken om ervoor te zorgen dat de VM-resources die u in de groep plaatst, van elkaar zijn geïsoleerd wanneer ze in een Azure-Data Center worden geïmplementeerd. Azure zorgt ervoor dat de Vm's die u in een beschikbaarheidsset plaatst, worden uitgevoerd op meerdere fysieke servers, reken rekken, opslag eenheden en netwerk switches. Als er sprake is van een hardware-of Azure-software fout, is dit alleen van invloed op een subset van uw virtuele machines en blijft uw volledige toepassing beschikbaar voor uw klanten. Beschikbaarheids sets vormen een essentiële mogelijkheid wanneer u betrouw bare cloud oplossingen wilt bouwen.
 
 ## <a name="protect-against-malware"></a>Bescherming tegen malware
-U moet antimalware Protection installeren om virussen, spyware en andere schadelijke software te identificeren en verwijderen. U kunt [micro soft antimalware](antimalware.md) of een Endpoint Protection-oplossing van micro soft partner ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/en-us/search?q=Windows+defender+endpoint+protection&rtc=1)en [System Center Endpoint Protection](https://www.microsoft.com/en-us/search?q=System+Center+endpoint+protection&rtc=1)) installeren.
+U moet antimalware Protection installeren om virussen, spyware en andere schadelijke software te identificeren en verwijderen. U kunt [micro soft antimalware](antimalware.md) of een Endpoint Protection-oplossing van micro soft partner ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)en [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) installeren.
 
 Micro soft antimalware bevat functies als realtime-beveiliging, geplande scans, malware-herstel, handtekening updates, engine-updates, voor beelden van rapporten en uitsluitings gebeurtenissen verzamelen. Voor omgevingen die afzonderlijk worden gehost vanuit uw productie omgeving, kunt u een antimalware-extensie gebruiken om uw Vm's en Cloud Services te beveiligen.
 

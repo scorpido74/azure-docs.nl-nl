@@ -1,22 +1,22 @@
 ---
-title: Power shell-een TDE-Protector verwijderen-Azure SQL Database | Microsoft Docs
+title: TDE-Protector verwijderen-Power shell
 description: Instructies voor het reageren op een mogelijk gemanipuleerde TDE-Protector voor een Azure SQL Database of Data Warehouse met behulp van TDE met uw eigen Key-ondersteuning (BYOK).
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: dc117dd844a3a47cafa1b37170c95fe852bb82ef
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: df1bf5a53cd5c49465acbe363c71a4a316cd2cc9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566065"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820781"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Een Transparent Data Encryption-Protector (TDE) verwijderen met behulp van Power shell
 
@@ -40,9 +40,9 @@ Als een sleutel wordt vermoed om te worden aangetast, bijvoorbeeld dat een servi
 
 Wanneer de TDE-Protector wordt verwijderd in Key Vault, **worden alle verbindingen met de versleutelde data bases op de server geblokkeerd en worden deze data bases offline gezet en binnen 24 uur verwijderd**. Oude back-ups die zijn versleuteld met de gemanipuleerde sleutel, zijn niet meer toegankelijk.
 
-In de volgende stappen wordt beschreven hoe u kunt controleren of de TDE-beveiligings vingerafdrukten nog steeds worden gebruikt door virtuele logboek bestanden (VLF) van een bepaalde data base. De vinger afdruk van de huidige TDE-Protector van de data base en de data base-ID kunt u vinden door het volgende uit te voeren: SELECT [database_id],       [encryption_state], [encryptor_type],/*asymmetrische sleutel betekent Azure, certificaat betekent door service beheerde sleutels*/[encryptor_thumbprint], van [sys]. [ dm_database_encryption_keys] 
+In de volgende stappen wordt beschreven hoe u kunt controleren of de TDE-beveiligings vingerafdrukten nog steeds worden gebruikt door virtuele logboek bestanden (VLF) van een bepaalde data base. De vinger afdruk van de huidige TDE-Protector van de data base en de data base-ID kunt u vinden door uit te voeren: Selecteer [database_id],       [encryption_state], [encryptor_type],/*asymmetrische sleutel betekent Azure, certificaat betekent door service beheerde sleutels*/[ encryptor_thumbprint], van [sys]. [dm_database_encryption_keys] 
  
-Met de volgende query worden de VLFs en de respectieve vinger afdrukken van de versleutelings functie geretourneerd. Elke andere vinger afdruk verwijst naar een andere sleutel in Azure Key Vault (Azure): SELECT * FROM sys. DM _db_log_info (database_id) 
+Met de volgende query worden de VLFs en de respectieve vinger afdrukken van de versleutelings functie geretourneerd. Elke andere vinger afdruk verwijst naar een andere sleutel in Azure Key Vault (Azure): Selecteer * uit sys. dm_db_log_info (database_id) 
 
 De Power shell-opdracht Get-AzureRmSqlServerKeyVaultKey biedt de vinger afdruk van de TDE-Protector die in de query wordt gebruikt, zodat u kunt zien welke sleutels moeten worden bewaard en welke sleutels moeten worden verwijderd in Azure. Alleen sleutels die niet meer door de Data Base worden gebruikt, kunnen veilig worden verwijderd uit Azure Key Vault.
 
@@ -117,5 +117,5 @@ Deze hand leiding gaat over twee benaderingen, afhankelijk van het gewenste resu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het draaien van de TDE-Protector van een server om te voldoen aan de beveiligings vereisten: [De Transparent Data Encryption-Protector draaien met Power shell](transparent-data-encryption-byok-azure-sql-key-rotation.md)
-- Aan de slag met Bring Your Own Key ondersteuning voor TDE: [TDE inschakelen met uw eigen sleutel vanuit Key Vault met behulp van Power shell](transparent-data-encryption-byok-azure-sql-configure.md)
+- Meer informatie over het draaien van de TDE-Protector van een server om te voldoen aan de beveiligings vereisten: [de transparent Data Encryption-Protector draaien met Power shell](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- Aan de slag met Bring Your Own Key ondersteuning voor TDE: [Schakel TDe met behulp van uw eigen sleutel in vanuit Key Vault met behulp van Power shell](transparent-data-encryption-byok-azure-sql-configure.md)

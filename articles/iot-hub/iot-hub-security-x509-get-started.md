@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 03ac9f878f0869ef33d22f50c6bdba4276bd4d3c
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 32219eeaee7980b685ac3453c6af3beff716abe2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048284"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824088"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>X. 509-beveiliging instellen in uw Azure IoT hub
 
@@ -37,13 +37,13 @@ U kunt een van de volgende manieren kiezen om uw certificaten op te halen:
 
 * Maak uw eigen X. 509-certificaten met een hulp programma van derden, zoals [openssl](https://www.openssl.org/). Deze techniek is prima voor test-en ontwikkelings doeleinden. Zie [test-CA-certificaten beheren voor voor beelden en zelf studies](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) voor informatie over het genereren van test-CA-certificaten met Power shell of bash. In de rest van deze zelf studie worden test certificerings instanties gebruikt die worden gegenereerd door de instructies in het [beheer van test-CA-certificaten voor voor beelden en zelf studies](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)te volgen.
 
-* Genereer een [X. 509-TUSSENLIGGEND CA-certificaat](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust) dat is ondertekend door een bestaand basis-CA-certificaat en upload het naar de hub. Zodra het tussenliggende certificaat is geüpload en geverifieerd, zoals hieronder aangegeven, kan het worden gebruikt in de plaats van een basis certificaat dat hieronder wordt vermeld. Hulpprogram ma's zoals OpenSSL ([openssl req](https://www.openssl.org/docs/manmaster/man1/openssl-req.html) en [openssl ca](https://www.openssl.org/docs/manmaster/man1/openssl-ca.html)) kunnen worden gebruikt voor het genereren en ondertekenen van een tussenliggend CA-certificaat.
+* Genereer een [X. 509-TUSSENLIGGEND CA-certificaat](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust) dat is ondertekend door een bestaand basis-CA-certificaat en upload het naar de hub. Zodra het tussenliggende certificaat is geüpload en geverifieerd, zoals hieronder aangegeven, kan het worden gebruikt in de plaats van een basis certificaat dat hieronder wordt vermeld. Hulpprogram ma's zoals OpenSSL ([openssl req](https://www.openssl.org/docs/man1.1.0/man1/req.html) en [openssl ca](https://www.openssl.org/docs/man1.1.0/man1/ca.html)) kunnen worden gebruikt voor het genereren en ondertekenen van een tussenliggend CA-certificaat.
 
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>X. 509 CA-certificaten bij uw IoT-hub registreren
 
 Deze stappen laten zien hoe u een nieuwe certificerings instantie aan uw IoT-hub kunt toevoegen via de portal.
 
-1. Navigeer in het Azure Portal naar uw IOT-hub en selecteer **instellingen** > **certificaten** voor de hub.
+1. Navigeer in het Azure Portal naar uw IoT-hub en selecteer **instellingen** > **certificaten** voor de hub.
 
 1. Selecteer **toevoegen** om een nieuw certificaat toe te voegen.
 
@@ -69,7 +69,7 @@ Deze stappen laten zien hoe u een nieuwe certificerings instantie aan uw IoT-hub
 
 ## <a name="create-an-x509-device-for-your-iot-hub"></a>Een X. 509-apparaat maken voor uw IoT-hub
 
-1. Navigeer in het Azure Portal naar uw IOT-hub en selecteer vervolgens**IOT-apparaten**in **Explorer** > .
+1. Navigeer in het Azure Portal naar uw IoT-hub en selecteer vervolgens **verkenners** > **IOT-apparaten**.
 
 1. Selecteer **Nieuw** om een nieuw apparaat toe te voegen.
 
@@ -97,7 +97,7 @@ We laten nu zien hoe u een C# toepassing maakt voor het simuleren van het X. 509
 
     Met deze stap wordt een verwijzing naar het Azure IoT Device SDK NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
 
-1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
+1. Voeg aan het begin van het bestand `using`Program.cs**de volgende** instructies toe:
 
     ```CSharp
         using Microsoft.Azure.Devices.Client;

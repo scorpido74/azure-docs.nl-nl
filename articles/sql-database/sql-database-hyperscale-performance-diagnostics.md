@@ -1,20 +1,21 @@
 ---
-title: Diagnostische gegevens voor Azure SQL Database-prestaties in de servicelaag grootschalige
+title: Diagnostische gegevens over prestaties in grootschalige
 description: In dit artikel wordt beschreven hoe u grootschalige prestatie problemen in Azure SQL Database kunt oplossen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
+ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: b8acdbc63098ae99355e8874f7c1585759e5fb7f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a7c64284c958fa8b3ec89c2b27515fe167a04011
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689858"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811154"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostische gegevens voor het oplossen van problemen met SQL grootschalige-prestaties
 
@@ -27,7 +28,7 @@ Om prestatie problemen in een grootschalige-Data Base op te lossen, is de [algem
 
 Elk Azure SQL Database service niveau heeft limieten voor het genereren van de logboeken die worden afgedwongen via [log rate governance](sql-database-resource-limits-database-server.md#transaction-log-rate-governance). In grootschalige is de limiet voor het genereren van het logboek op dit moment ingesteld op 100 MB per seconde, ongeacht het service niveau. Er zijn echter momenten waarop de snelheid waarmee het logboek is gegenereerd op de primaire Compute-replica moet worden beperkt om de bezorgings-Sla's te behouden. Deze beperking treedt op wanneer een [pagina Server of een andere compute replica](sql-database-service-tier-hyperscale.md#distributed-functions-architecture) significant achter het Toep assen van nieuwe logboek records van de logboek service.
 
-De volgende wacht typen (in [sys. DM _os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) beschrijven de redenen waarom de logboek frequentie kan worden beperkt op de primaire Compute replica:
+De volgende wacht typen (in [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) beschrijven de redenen waarom de logboek frequentie kan worden beperkt op de primaire Compute replica:
 
 |Wacht type    |Beschrijving                         |
 |-------------          |------------------------------------|
@@ -46,10 +47,10 @@ Als er een lees bewerking wordt uitgevoerd op een berekenings replica en de gege
 Verschillende Dmv's-en Extended Events hebben kolommen en velden waarmee het aantal externe Lees bewerkingen van een pagina Server kan worden vergeleken met het totale aantal lees bewerkingen. 
 
 - Kolommen voor het rapporteren van pagina-Server zijn beschikbaar in uitvoerings Dmv's, zoals:
-    - [sys. DM _exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
-    - [sys. DM _exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
-    - [sys. DM _exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
-    - [sys. DM _exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+    - [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
+    - [sys. dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
+    - [sys. dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
+    - [sys. dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
 - Lees bewerkingen voor pagina-Server worden toegevoegd aan de volgende uitgebreide gebeurtenissen:
     - sql_statement_completed
     - sp_statement_completed
@@ -68,12 +69,12 @@ Verschillende Dmv's-en Extended Events hebben kolommen en velden waarmee het aan
 
 ## <a name="virtual-file-stats-and-io-accounting"></a>Statistieken voor het virtuele bestand en IO-Accounting
 
-In Azure SQL Database is de [sys. DM _io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF de belangrijkste manier om SQL Server io te controleren. I/o-kenmerken van grootschalige verschillen als gevolg van de [gedistribueerde architectuur](sql-database-service-tier-hyperscale.md#distributed-functions-architecture). In deze sectie richten we ons op IO (lees-en schrijf bewerkingen) naar gegevens bestanden zoals deze worden weer gegeven in deze DMF. In grootschalige komt elk gegevens bestand dat zichtbaar is in deze DMF overeen met een externe pagina Server. De RBPEX-cache die hier wordt vermeld, is een lokale op SSD gebaseerde cache die een niet-bedekkende cache op de compute replica is.
+In Azure SQL Database is de [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF de belangrijkste manier om SQL Server io te controleren. I/o-kenmerken van grootschalige verschillen als gevolg van de [gedistribueerde architectuur](sql-database-service-tier-hyperscale.md#distributed-functions-architecture). In deze sectie richten we ons op IO (lees-en schrijf bewerkingen) naar gegevens bestanden zoals deze worden weer gegeven in deze DMF. In grootschalige komt elk gegevens bestand dat zichtbaar is in deze DMF overeen met een externe pagina Server. De RBPEX-cache die hier wordt vermeld, is een lokale op SSD gebaseerde cache die een niet-bedekkende cache op de compute replica is.
 
 
 ### <a name="local-rbpex-cache-usage"></a>Lokaal RBPEX-cache gebruik
 
-Lokale RBPEX-cache bestaat op het reken knooppunt in lokale SSD-opslag. Daarom is IO op deze RBPEX-cache sneller dan IO op externe pagina servers. Momenteel bevat [sys. DM _io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) in een grootschalige-Data Base een speciale rij die de io heeft gerapporteerd op de lokale RBPEX-cache op de compute replica. Deze rij heeft de waarde 0 voor zowel `database_id` als `file_id` kolommen. De query hieronder retourneert bijvoorbeeld RBPEX gebruiks statistieken sinds het opstarten van de data base.
+Lokale RBPEX-cache bestaat op het reken knooppunt in lokale SSD-opslag. Daarom is IO op deze RBPEX-cache sneller dan IO op externe pagina servers. Momenteel bevat [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) in een grootschalige-Data Base een speciale rij die de io heeft gerapporteerd in de lokale RBPEX-cache van de compute replica. Deze rij heeft de waarde 0 voor zowel `database_id` als `file_id` kolommen. De query hieronder retourneert bijvoorbeeld RBPEX gebruiks statistieken sinds het opstarten van de data base.
 
 `select * from sys.dm_io_virtual_file_stats(0,NULL);`
 
@@ -83,8 +84,8 @@ Een verhouding van Lees bewerkingen die worden uitgevoerd op RBPEX naar geaggreg
 ### <a name="data-reads"></a>Gegevens lezen
 
 - Wanneer Lees bewerkingen worden uitgegeven door de SQL Server-engine op een reken replica, kunnen ze worden geleverd door de lokale RBPEX-cache of door externe pagina servers, of door een combi natie van de twee als er meerdere pagina's worden gelezen.
-- Wanneer de reken replica sommige pagina's van een specifiek bestand leest, bijvoorbeeld file_id 1, als deze gegevens uitsluitend in de lokale RBPEX-cache zijn opgeslagen, wordt alle i/o voor deze Lees bewerking verrekend tegen file_id 0 (RBPEX). Als een deel van die gegevens zich in de lokale RBPEX-cache bevindt en een deel ervan op een externe pagina server staat, wordt de i/o verwerkt voor file_id 0 voor het onderdeel dat wordt aangeboden vanuit RBPEX. het onderdeel dat vanaf de externe pagina Server wordt bediend, wordt verwerkt op file_id 1. 
-- Wanneer een berekenings replica een pagina van een bepaalde [LSN](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) van een pagina server aanvraagt en de pagina Server niet heeft geresulteerd in het aangevraagde LSN, wordt de Lees bewerking op de reken replica gewacht totdat de pagina wordt geretourneerd naar de berekenings replica. Voor alle Lees bewerkingen van een pagina op de compute-replica ziet u het PAGEIOLATCH_ * wait-type als het wacht op die IO. Deze wacht tijd is afhankelijk van de tijd die nodig is voor het opvangen van de aangevraagde pagina op de pagina Server naar het vereiste LSN en de benodigde tijd voor het overdragen van de pagina van de pagina Server naar de compute replica.
+- Wanneer de reken replica sommige pagina's van een specifiek bestand leest, bijvoorbeeld file_id 1, als deze gegevens uitsluitend in de lokale RBPEX-cache zijn opgeslagen, wordt alle i/o voor deze Lees bewerking verwerkt op file_id 0 (RBPEX). Als een deel van die gegevens zich in de lokale RBPEX-cache bevindt en een deel ervan op een externe pagina server bevindt, wordt de i/o in rekening gezet met file_id 0 voor het onderdeel dat wordt aangeboden vanuit RBPEX, en wordt het onderdeel dat wordt aangeboden vanaf de externe pagina Server, verwerkt naar file_id 1. 
+- Wanneer een berekenings replica een pagina van een bepaalde [LSN](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) van een pagina server aanvraagt en de pagina Server niet heeft geresulteerd in het aangevraagde LSN, wordt de Lees bewerking op de reken replica gewacht totdat de pagina wordt geretourneerd naar de berekenings replica. Voor alle Lees bewerkingen van een pagina op de compute-replica ziet u het PAGEIOLATCH_ * wait-type als het wacht op die i/o. Deze wacht tijd is afhankelijk van de tijd die nodig is voor het opvangen van de aangevraagde pagina op de pagina Server naar het vereiste LSN en de benodigde tijd voor het overdragen van de pagina van de pagina Server naar de compute replica.
 - Grote Lees bewerkingen, zoals lezen-vooruit, worden vaak uitgevoerd met behulp van de [Lees bewerkingen van ' sprei ding-gather '](/sql/relational-databases/reading-pages/). Op deze manier kunnen Lees bewerkingen van Maxi maal 4 MB aan pagina's tegelijk worden beschouwd als één Lees bewerking in de SQL Server-engine. Als er echter gegevens worden gelezen in RBPEX, worden deze Lees bewerkingen beschouwd als meerdere afzonderlijke 8 KB-Lees bewerkingen, aangezien de buffer groep en RBPEX altijd 8 KB-pagina's gebruiken. Als gevolg hiervan kan het aantal gelezen IOs-apparaten op RBPEX groter zijn dan het werkelijke aantal IOs dat door de engine wordt uitgevoerd.
 
 
@@ -92,11 +93,11 @@ Een verhouding van Lees bewerkingen die worden uitgevoerd op RBPEX naar geaggreg
 
 - De primaire Compute-replica schrijft niet rechtstreeks naar pagina-servers. In plaats daarvan worden logboek records van de logboek service op de bijbehorende pagina servers opnieuw afgespeeld. 
 - Schrijf bewerkingen die plaatsvinden op de compute replica, worden voornamelijk naar de lokale RBPEX geschreven (file_id 0). Voor schrijf bewerkingen op logische bestanden die groter zijn dan 8 KB, dat wil zeggen die worden uitgevoerd met behulp van [gather-write](/sql/relational-databases/writing-pages/), wordt elke schrijf bewerking omgezet in meerdere 8 KB afzonderlijke schrijf bewerkingen naar RBPEX, aangezien de buffer groep en RBPEX altijd 8 KB-pagina's gebruiken. Als gevolg hiervan kan het aantal schrijf-IOs dat wordt gezien op RBPEX groter zijn dan het werkelijke aantal IOs dat door de engine wordt uitgevoerd.
-- Voor niet-RBPEX bestanden of andere gegevens bestanden dan file_id 0 die overeenkomen met pagina servers, worden ook schrijf bewerkingen weer gegeven. In de grootschalige-servicelaag worden deze schrijf bewerkingen gesimuleerd, omdat de reken replica's nooit rechtstreeks naar pagina servers schrijven. Het schrijven van IOPS en door voer worden uitgevoerd als ze plaatsvinden op de compute-replica, maar de latentie voor gegevens bestanden met uitzonde ring van file_id 0 weerspiegelt niet de werkelijke latentie van pagina-schrijf bewerkingen.
+- Voor niet-RBPEX bestanden of andere gegevens bestanden dan file_id 0 die overeenkomen met pagina servers, worden ook de schrijf bewerkingen weer gegeven. In de grootschalige-servicelaag worden deze schrijf bewerkingen gesimuleerd, omdat de reken replica's nooit rechtstreeks naar pagina servers schrijven. Het schrijven van IOPS en door voer worden uitgevoerd als ze plaatsvinden op de compute-replica, maar latentie voor gegevens bestanden met uitzonde ring van file_id 0 weerspiegelt niet de werkelijke latentie van pagina-schrijf bewerkingen.
 
 ### <a name="log-writes"></a>Schrijf bewerkingen vastleggen
 
-- Op de primaire Compute wordt een schrijf bewerking voor het logboek verwerkt in file_id 2 van sys. DM _io_virtual_file_stats. Het schrijven van een logboek op de primaire Compute is een schrijf bewerking naar de registratie zone van het logboek.
+- Op de primaire Compute wordt een schrijf bewerking voor het logboek verwerkt in file_id 2 van sys. dm_io_virtual_file_stats. Het schrijven van een logboek op de primaire Compute is een schrijf bewerking naar de registratie zone van het logboek.
 - Logboek records worden niet op de secundaire replica met een door Voer gehard. In grootschalige wordt het logboek door de xlog-service toegepast op de externe replica's. Omdat de schrijf bewerkingen in het logboek niet echt optreden op secundaire replica's, worden accounting van logboek-IO voor de secundaire replica's alleen gebruikt voor tracerings doeleinden.
 
 ## <a name="additional-resources"></a>Aanvullende resources

@@ -7,26 +7,26 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
-ms.openlocfilehash: d645eebefde473e404f7760d2bc8a67c7e3e9087
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7f4371bea467d6d4c99a776e03cdf13070d77ac6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609032"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818383"
 ---
 # <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Definitie artefact voor aangepaste rollen in Azure Managed Applications
 
-De definitie van een aangepaste rol is een optioneel artefact in beheerde toepassingen. Het wordt gebruikt om te bepalen welke machtigingen de beheerde toepassing nodig heeft om de functies uit te voeren.
+De definitie van een aangepaste rol is een optioneel artefact in beheerde toepassingen. De methode wordt gebruikt om te bepalen welke machtigingen de beheerde toepassing nodig heeft om de functies uit te voeren.
 
-Dit artikel bevat een overzicht van aangepaste functie-definitie artefacten en de mogelijkheden ervan.
+Dit artikel bevat een overzicht van het definitie artefact van aangepaste rollen en de mogelijkheden ervan.
 
 ## <a name="custom-role-definition-artifact"></a>Definitie artefact van aangepaste rol
 
-Het definitie artefact van de aangepaste roldefinitie moet de naam **customRoleDefinition. json** hebben en op hetzelfde niveau worden geplaatst als **createUiDefinition. json** en **mainTemplate. json** in het zip-pakket dat een definitie van een beheerde toepassing maakt. Zie [een definitie van een beheerde toepassing publiceren](publish-managed-app-definition-quickstart.md) voor meer informatie over het maken van een zip-pakket en het publiceren van een definitie van een beheerde toepassing.
+U moet de aangepaste functie definitie artefact customRoleDefinition. json noemen. Plaats het op hetzelfde niveau als createUiDefinition. json en mainTemplate. json in het zip-pakket dat een definitie van een beheerde toepassing maakt. Zie [een definitie van een beheerde toepassing publiceren](publish-managed-app-definition-quickstart.md) voor meer informatie over het maken van een zip-pakket en het publiceren van een definitie van een beheerde toepassing.
 
 ## <a name="custom-role-definition-schema"></a>Definitie schema voor aangepaste rol
 
-Het bestand **customRoleDefinition. json** heeft een eigenschap `roles` op het hoogste niveau. Dit is een matrix met rollen. Elk van deze rollen zijn de machtigingen die de beheerde toepassing nodig heeft. Op dit moment zijn alleen ingebouwde rollen toegestaan, maar er kunnen meerdere rollen worden opgegeven. Naar de rol kan worden verwezen met de ID van de roldefinitie of met de rolnaam.
+Het bestand customRoleDefinition. json heeft een `roles` eigenschap op het hoogste niveau die een matrix met rollen is. Deze rollen zijn de machtigingen die door de beheerde toepassing moeten worden gebruikt. Op dit moment zijn alleen ingebouwde rollen toegestaan, maar u kunt meerdere rollen opgeven. Naar een rol kan worden verwezen met de ID van de roldefinitie of met de rolnaam.
 
 Voor beeld-JSON voor aangepaste roldefinitie:
 
@@ -49,9 +49,9 @@ Voor beeld-JSON voor aangepaste roldefinitie:
 }
 ```
 
-## <a name="role"></a>Rol
+## <a name="roles"></a>Rollen
 
-Een rol bestaat uit een `$.properties.roleName` of `id`.
+Een rol bestaat uit een `$.properties.roleName` of een `id`:
 
 ```json
 {
@@ -62,10 +62,10 @@ Een rol bestaat uit een `$.properties.roleName` of `id`.
 }
 ```
 
-> [!Note]
-> Alleen een van de `id`-of `roleName` veld is vereist. Deze velden worden gebruikt om de roldefinitie op te zoeken die u wilt Toep assen. Als beide zijn opgegeven, wordt het `id` veld gebruikt.
+> [!NOTE]
+> U kunt het veld `id` of `roleName` gebruiken. Er is slechts één vereist. Deze velden worden gebruikt voor het opzoeken van de roldefinitie die moet worden toegepast. Als beide zijn opgegeven, wordt het `id` veld gebruikt.
 
-|Eigenschap|Vereist|Beschrijving|
+|Eigenschap|Vereist?|Beschrijving|
 |---------|---------|---------|
-|Id|*klikt*|De ID van de ingebouwde rol. Deze eigenschap kan de volledige ID of alleen de GUID zijn.|
-|RoleName|*klikt*|De naam van de ingebouwde rol.|
+|id|Ja|De ID van de ingebouwde rol. U kunt de volledige ID of alleen de GUID gebruiken.|
+|RoleName|Ja|De naam van de ingebouwde rol.|

@@ -1,5 +1,5 @@
 ---
-title: Beveiligings controles voor Azure SQL Database
+title: Beveiligingsmaatregelen
 description: Een controle lijst met beveiligings controles voor het evalueren van Azure SQL Database
 services: sql-database
 author: msmbaldwin
@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 77ff55389bac53d8719d86b4ac77f281415af49f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 58070cab1221b9d9585784d82cf1a48afcedb8af
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886607"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802831"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>Beveiligings controles voor Azure SQL Database
 
@@ -45,13 +45,13 @@ SQL Database bevatten zowel [één data base](sql-database-single-index.yml) als
 | Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
 | Authentication| Ja | Azure Active Directory (Azure AD) |
-| Authorization| Ja | Geen |
+| Autorisatie| Ja | Geen |
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Versleuteling aan server zijde bij rest: Door micro soft beheerde sleutels | Ja | Wordt ' versleuteling-in-gebruik ' genoemd, zoals beschreven in het artikel [Always encrypted](sql-database-always-encrypted.md). Versleuteling aan de server zijde maakt gebruik van [transparante gegevens versleuteling](transparent-data-encryption-azure-sql.md).|
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Wordt ' versleuteling-in-gebruik ' genoemd, zoals beschreven in het artikel [Always encrypted](sql-database-always-encrypted.md). Versleuteling aan de server zijde maakt gebruik van [transparante gegevens versleuteling](transparent-data-encryption-azure-sql.md).|
 | Versleuteling in transit:<ul><li>Azure ExpressRoute-versleuteling</li><li>Versleuteling in een virtueel netwerk</li><li>Versleuteling tussen virtuele netwerken</ul>| Ja | HTTPS gebruiken. |
 | Versleutelings verwerking, zoals CMK of BYOK| Ja | Door service beheerde en door de klant beheerde sleutel verwerking worden aangeboden. Deze laatste wordt aangeboden via [Azure Key Vault](../key-vault/index.yml). |
 | Versleuteling op kolom niveau van Azure Data Services| Ja | Via [Always encrypted](sql-database-always-encrypted.md). |
