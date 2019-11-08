@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracych
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 4390fab3d59706bf692de46d17923dad4f9a8f21
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 615536fbba38279a23516352c69461c19f9972ed
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489620"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796716"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-deinterferentie uitvoeren op grote hoeveel heden gegevens met behulp van Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -184,7 +184,7 @@ model = Model.register(model_path="models/",
 ## <a name="write-your-inference-script"></a>Uw Afleidings script schrijven
 
 >[!Warning]
->De volgende code is slechts een voor beeld van het gebruik van het voor [beeld-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/notebooks/contrib/batch_inferencing/file-dataset-image-inference-mnist.ipynb) . U moet uw eigen script maken voor uw scenario.
+>De volgende code is slechts een voor beeld van het gebruik van het voor [beeld-notebook](https://aka.ms/batch-inference-notebooks) . U moet uw eigen script maken voor uw scenario.
 
 Het script *moet* twee functies bevatten:
 - `init()`: gebruik deze functie voor een kost bare of gemeen schappelijke voor bereiding voor latere interferentie. U kunt dit bijvoorbeeld gebruiken om het model in een globaal object te laden.
@@ -347,7 +347,7 @@ pipeline_run.wait_for_completion(show_output=True)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt zien hoe dit proces werkt, kunt u de batch-Afleidings [notitieblok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/)gebruiken. 
+Als u wilt zien hoe dit proces werkt, kunt u de batch-Afleidings [notitieblok](https://aka.ms/batch-inference-notebooks)gebruiken. 
 
 Raadpleeg de [hand leiding](how-to-debug-pipelines.md)voor fout opsporing en probleemoplossings richtlijnen voor pijp lijnen.
 

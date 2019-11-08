@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/05/2019
 ms.author: memildin
-ms.openlocfilehash: d705174f46ba38f37ae8cce9839c2d1f63ab6bf8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 6b6acb0ae1452795fe02906779b920e4b41f9a55
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664276"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748388"
 ---
 # <a name="threat-detection-for-cloud-native-computing-in-azure-security-center"></a>Detectie van bedreigingen voor systeem eigen Cloud Computing in Azure Security Center
 
@@ -66,7 +66,7 @@ We detecteren bedreigingen op verschillende niveaus:
     >[!NOTE]
     > Als u ervoor kiest om de agents op uw hosts niet te installeren, ontvangt u alleen een subset van de voor delen en waarschuwingen voor bedreigingen detectie. U ontvangt nog steeds waarschuwingen met betrekking tot netwerk analyse en communicatie met schadelijke servers.
 
-* Voor **AKS-cluster niveau**is er sprake van detectie van bedreigingen op basis van de analyse van Kubernetes-controle Logboeken. Als u deze bewaking zonder **agents** wilt inschakelen, voegt u de optie Kubernetes toe aan uw abonnement op de pagina met **prijs & instellingen** (Zie [prijzen](security-center-pricing.md)). Als u waarschuwingen op dit niveau wilt genereren, controleert Security Center uw door AKS beheerde services met de logboeken die zijn opgehaald door AKS. Voor beelden van gebeurtenissen op dit niveau zijn onder andere weer gegeven Kubernetes-Dash boards, het maken van rollen met hoge bevoegdheden en het maken van gevoelige koppels. 
+* Voor **AKS-cluster niveau**is er sprake van detectie van bedreigingen op basis van de analyse van Kubernetes-controle Logboeken. Als u deze bewaking zonder **agents** wilt inschakelen, voegt u de optie Kubernetes toe aan uw abonnement op de pagina met **prijs & instellingen** (Zie [prijzen](security-center-pricing.md)). Als u waarschuwingen op dit niveau wilt genereren, controleert Security Center uw door AKS beheerde services met de logboeken die zijn opgehaald door AKS. Voor beelden van gebeurtenissen op dit niveau zijn onder andere weer gegeven Kubernetes-Dash boards, het maken van rollen met hoge bevoegdheden en het maken van gevoelige koppels.
 
     >[!NOTE]
     > Security Center genereert detectie waarschuwingen voor Azure Kubernetes-service acties en implementaties die worden uitgevoerd nadat de optie Kubernetes is ingeschakeld op de abonnements instellingen. 

@@ -2,21 +2,21 @@
 author: larryfr
 ms.service: machine-learning
 ms.topic: include
-ms.date: 07/19/2019
+ms.date: 11/06/2019
 ms.author: larryfr
-ms.openlocfilehash: 055909d51fcd1228e8eb26189ba682e09aee6a1a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: ab31d45808a8c77c53b895643eec63952201d9e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390584"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73799781"
 ---
-De vermeldingen in de `inferenceconfig.json` document structuur met de para meters voor de [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) -klasse. De volgende tabel beschrijft de toewijzing tussen entiteiten in het JSON-document en de para meters voor de-methode:
+De vermeldingen in het `inferenceconfig.json` document worden toegewezen aan de para meters voor de klasse [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) . De volgende tabel beschrijft de toewijzing tussen entiteiten in het JSON-document en de para meters voor de-methode:
 
-| JSON-entiteit | Methode parameter | Description |
+| JSON-entiteit | Methode parameter | Beschrijving |
 | ----- | ----- | ----- |
 | `entryScript` | `entry_script` | Pad naar een lokaal bestand dat de code bevat die moet worden uitgevoerd voor de installatie kopie. |
-| `runtime` | `runtime` | Welke runtime moet worden gebruikt voor de installatie kopie. De huidige ondersteunde Runtimes `spark-py` zijn `python`en. |
+| `runtime` | `runtime` | Welke runtime moet worden gebruikt voor de installatie kopie. De huidige ondersteunde Runtimes zijn `spark-py` en `python`. |
 | `condaFile` | `conda_file` | Optioneel. Pad naar een lokaal bestand dat een Conda-omgevings definitie bevat die moet worden gebruikt voor de installatie kopie. |
 | `extraDockerFileSteps` | `extra_docker_file_steps` | Optioneel. Pad naar een lokaal bestand dat extra docker-stappen bevat die moeten worden uitgevoerd bij het instellen van de installatie kopie. |
 | `sourceDirectory` | `source_directory` | Optioneel. Pad naar mappen die alle bestanden bevatten om de installatie kopie te maken. |
