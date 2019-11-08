@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: b0345773956a0adc5c7f403195c496a3ea5e6fd6
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 48bac68b518706cf3a23d2283da7cda49846e0a7
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982329"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795836"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services en machine learning
 
@@ -25,9 +25,9 @@ Cognitive Services biedt machine learning mogelijkheden om algemene problemen op
 |Service categorie|Doel|
 |--|--|
 |[Beslissen](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bouw apps die aanbevelingen opleveren voor geïnformeerde en efficiënte besluitvorming.|
-|[Taal](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Sta uw apps toe om natuurlijke taal met vooraf gemaakte scripts te verwerken, sentiment te evalueren en te ontdekken wat gebruikers willen.|
-|[Zoeken](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Voeg Bing Zoeken-API's toe aan uw apps en maak u de mogelijkheid om miljarden webpagina's, afbeeldingen, Video's en nieuws te bundelen met één API-oproep.|
-|[Spraak](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Converteert spraak naar tekst en tekst naar spraak met natuurlijke uitspraak. Vertaal teksten van de ene naar de andere taal en schakel sprekercontrole en -herkenning in.|
+|[Taal](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Laat uw apps natuurlijke taal verwerken met vooraf gemaakte scripts, sentiment evalueren en leren herkennen wat gebruikers willen.|
+|[Zoeken](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Voeg Bing Search-API's toe aan uw apps en maak het mogelijk om miljarden webpagina's, afbeeldingen, video's en nieuwsartikelen met één API-aanroep te doorzoeken.|
+|[Spraak](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Converteer spraak naar tekst en tekst naar spraak met natuurlijke uitspraak. Vertaal teksten van de ene naar de andere taal en schakel sprekercontrole en -herkenning in.|
 |[Handicap](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Herken, identificeer, indexeer en wijzig uw afbeeldingen, video's en digitale inkt en voorzie deze van ondertitels.|
 ||||
 
@@ -79,7 +79,7 @@ Services die een volledig getraind model bieden, kunnen worden behandeld als een
 
 Met sommige services kunt u uw eigen gegevens meenemen en vervolgens een model trainen. Hierdoor kunt u het model uitbreiden met behulp van de gegevens en het algoritme van de service met uw eigen gegevens. De uitvoer komt overeen met uw behoeften. Wanneer u uw eigen gegevens meebrengt, moet u mogelijk de gegevens labelen op een manier die specifiek is voor de service. Als u bijvoorbeeld een model traint om bloemen aan te duiden, kunt u een catalogus van bloem afbeeldingen samen met de locatie van de bloem in elke afbeelding opgeven om het model te trainen. 
 
-Met een service kunt u gegevens leveren om de eigen gegevens te verbeteren. Voor een service _moet_ u mogelijk gegevens opgeven. 
+Met een service _kunt u gegevens_ leveren om de eigen gegevens te verbeteren. Voor een service _moet_ u mogelijk gegevens opgeven. 
 
 ### <a name="real-time-or-near-real-time-data-required"></a>Realtime of bijna realtime gegevens vereist
 
@@ -89,19 +89,19 @@ Een service heeft mogelijk realtime of bijna realtime gegevens nodig om een effe
 
 In de volgende gegevens wordt elke service gecategoriseerd op basis van het type gegevens dat is toegestaan of vereist.
 
-|Cognitive Service|Geen trainings gegevens vereist|U geeft enkele of alle trainings gegevens op|Real-time of bijna realtime gegevens verzameling|
+|Cognitieve service|Geen trainings gegevens vereist|U geeft enkele of alle trainings gegevens op|Real-time of bijna realtime gegevens verzameling|
 |--|--|--|--|
 |[Anomalie detectie](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing Zoeken |x|||
 |[Computer Vision](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
-|[Face](./Face/Overview.md)|x|x||
+|[Gaat](./Face/Overview.md)|x|x||
 |[Formulier herkenning](./form-recognizer/overview.md)||x||
 |[Insluitende lezer](./immersive-reader/overview.md)|x|||
 |[Inkt herkenning](./Ink-recognizer/overview.md)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
-|[Personalizer](./personalizer/what-is-personalizer.md)|x*|x*|x|
+|[Personalizer](./personalizer/what-is-personalizer.md)|BxDxH|BxDxH|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
 |[Spreker-herkenning](./speaker-recognition/home.md)||x||
 |[Spraak tekst naar spraak (TTS)](speech-service/text-to-speech.md)|x|x||
@@ -117,9 +117,9 @@ In de volgende gegevens wordt elke service gecategoriseerd op basis van het type
  
 De services worden gebruikt in een toepassing die REST API (en) of SDK-aanroepen kan maken. Voor beelden van toepassingen zijn websites, bots, virtuele of gemengde realiteit, desktop-en mobiele toepassingen. 
 
-## <a name="how-is-cognitive-search-related-to-cognitive-services"></a>Hoe kan ik met cognitieve zoek actie te maken hebben met Cognitive Services?
+## <a name="how-is-azure-cognitive-search-related-to-cognitive-services"></a>Hoe zijn Azure Cognitive Search gerelateerd aan Cognitive Services?
 
-[Azure Search](../search/search-what-is-azure-search.md) gebruikt Cognitive Services om deze functie te bieden. Cognitive Services wordt weer gegeven in Azure Search via [ingebouwde vaardig heden](../search/cognitive-search-predefined-skills.md) waarmee afzonderlijke api's worden verpakt. U kunt een gratis resource gebruiken voor scenario's, maar plan het maken en koppelen van een [factureer bare resource](../search/cognitive-search-attach-cognitive-services.md) voor grotere volumes.
+[Azure Cognitive Search](../search/search-what-is-azure-search.md) is een afzonderlijke service voor het zoeken in de cloud die optioneel Cognitive Services gebruikt voor het toevoegen van een installatie kopie en natuurlijke taal verwerking voor het indexeren van werk belastingen. Cognitive Services wordt weer gegeven in azure Cognitive Search via [ingebouwde vaardig heden](../search/cognitive-search-predefined-skills.md) waarmee afzonderlijke api's worden verpakt. U kunt een gratis resource gebruiken voor scenario's, maar plan het maken en koppelen van een [factureer bare resource](../search/cognitive-search-attach-cognitive-services.md) voor grotere volumes.
 
 ## <a name="how-can-you-use-cognitive-services"></a>Hoe kunt u Cognitive Services gebruiken?
 
@@ -127,7 +127,7 @@ Elke service biedt informatie over uw gegevens. U kunt Services combi neren om o
 
 Cognitive Services die export modellen bieden voor andere machine learning-hulpprogram ma's:
 
-|Cognitive Service|Model gegevens|
+|Cognitieve service|Model gegevens|
 |--|--|
 |[Custom Vision](./custom-vision-service/home.md)|[Exporteren](./Custom-Vision-Service/export-model-python.md) voor tensor flow voor Android, CoreML voor IOS11, ONNX voor Windows ml|
 

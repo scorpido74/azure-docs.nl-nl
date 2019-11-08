@@ -1,6 +1,6 @@
 ---
-title: 'Wereldwijd bereik - ExpressRoute configureren: Azure | Microsoft Docs'
-description: Dit artikel helpt u koppelen van ExpressRoute-circuits samen om te maken van een particulier netwerk tussen uw on-premises netwerken en globale bereiken inschakelen.
+title: 'Global Reach configureren-ExpressRoute: Azure | Microsoft Docs'
+description: Dit artikel helpt u bij het koppelen van ExpressRoute-circuits om een particulier netwerk te maken tussen uw on-premises netwerken en Global Reach in te scha kelen.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,79 +8,79 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: de9cbd9cfac766e2a67274684d3fb6b447e45200
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64abf820a502db0ee0033ce52ed148bae6b8ffc2
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64572751"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748181"
 ---
 # <a name="configure-expressroute-global-reach"></a>ExpressRoute Global Reach configureren
 
-Dit artikel helpt u bij het configureren van ExpressRoute globale bereiken met behulp van PowerShell. Zie voor meer informatie, [ExpressRouteRoute globaal bereik](expressroute-global-reach.md).
+Dit artikel helpt u bij het configureren van ExpressRoute Global Reach met behulp van Power shell. Zie [ExpressRouteRoute Global Reach](expressroute-global-reach.md)voor meer informatie.
 
  ## <a name="before-you-begin"></a>Voordat u begint
 
-Voordat u de configuratie begint, controleert u het volgende:
+Bevestig het volgende voordat u begint met de configuratie:
 
-* U begrijpt het inrichten van het ExpressRoute-circuit [werkstromen](expressroute-workflows.md).
-* Uw ExpressRoute-circuits zijn status ingericht.
+* U begrijpt [werk stromen](expressroute-workflows.md)voor het inrichten van ExpressRoute-circuits.
+* Uw ExpressRoute-circuits bevinden zich in een Provisioning-status.
 * Persoonlijke Azure-peering is geconfigureerd op uw ExpressRoute-circuits.
-* Als u PowerShell lokaal uitvoeren wilt, moet u controleren of de nieuwste versie van Azure PowerShell is geïnstalleerd op uw computer.
+* Als u Power shell lokaal wilt uitvoeren, controleert u of de meest recente versie van Azure PowerShell op uw computer is geïnstalleerd.
 
 ### <a name="working-with-azure-powershell"></a>Werken met Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 ## <a name="identify-circuits"></a>Circuits identificeren
 
-1. Meld u aan bij uw Azure-account en selecteer het abonnement dat u wilt gebruiken voor het starten van de configuratie.
+1. Als u de configuratie wilt starten, meldt u zich aan bij uw Azure-account en selecteert u het abonnement dat u wilt gebruiken.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. Identificeer de ExpressRoute-circuits die u gebruiken wilt. U kunt ExpressRoute globaal bereik inschakelen tussen de twee ExpressRoute-circuits, zolang ze bevinden zich in de ondersteunde landen/regio en op verschillende locaties voor peering zijn gemaakt. 
+2. Identificeer de ExpressRoute-circuits die u wilt gebruiken. U kunt ExpressRoute Global Reach tussen twee ExpressRoute-circuits inschakelen, zolang ze zich in de ondersteunde landen/regio's bevinden en op verschillende peering locaties zijn gemaakt. 
 
-   * Als uw abonnement is eigenaar van beide circuits, kunt u een van beide circuit om uit te voeren van de configuratie in de volgende secties.
-   * Als de twee circuits zich in verschillende Azure-abonnementen, moet u toestemming van een Azure-abonnement. U geeft u in de autorisatiesleutel wanneer u de configuratieopdracht in andere Azure-abonnement uitvoert.
+   * Als uw abonnement eigenaar is van beide circuits, kunt u een van beide circuits kiezen om de configuratie uit te voeren in de volgende secties.
+   * Als de twee circuits zich in verschillende Azure-abonnementen bevinden, hebt u autorisatie nodig van een Azure-abonnement. Vervolgens geeft u de autorisatie sleutel door wanneer u de configuratie opdracht uitvoert in het andere Azure-abonnement.
 
-## <a name="enable-connectivity"></a>Connectiviteit
+## <a name="enable-connectivity"></a>Connectiviteit inschakelen
 
-Schakel de connectiviteit tussen uw on-premises netwerken. Er zijn verschillende sets met instructies voor het circuits die zich in hetzelfde Azure-abonnement en -circuits die zijn verschillende abonnementen.
+Connectiviteit tussen uw on-premises netwerken inschakelen. Er zijn afzonderlijke sets instructies voor circuits die zich in hetzelfde Azure-abonnement bevinden en circuits die verschillende abonnementen zijn.
 
 ### <a name="expressroute-circuits-in-the-same-azure-subscription"></a>ExpressRoute-circuits in hetzelfde Azure-abonnement
 
-1. Gebruik de volgende opdrachten om op te halen van circuit 1 en 2-circuit. De twee circuits zich in hetzelfde abonnement.
+1. Gebruik de volgende opdrachten om Circuit 1 en circuit 2 op te halen. De twee circuits bevinden zich in hetzelfde abonnement.
 
    ```azurepowershell-interactive
    $ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
    $ckt_2 = Get-AzExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
    ```
-2. De volgende opdracht uitvoeren op basis van circuit 1 en doorgeven in de persoonlijke peering-ID van het circuit 2. Wanneer u de opdracht uitvoert, Let op het volgende:
+2. Voer de volgende opdracht uit op Circuit 1 en geef de privé-peering-ID van circuit 2 door. Wanneer u de opdracht uitvoert, moet u rekening houden met het volgende:
 
-   * De persoonlijke peering-ID moet eruitzien zoals in het volgende voorbeeld: 
+   * De ID van de privé-peering ziet er ongeveer uit als in het volgende voor beeld: 
 
      ```
      /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/AzurePrivatePeering
      ```
-   * *-AddressPrefix* moet een/29 IPv4-subnet, bijvoorbeeld '10.0.0.0/29'. We gebruiken IP-adressen in dit subnet om te maken van verbinding tussen de twee ExpressRoute-circuits. U mag niet de adressen in dit subnet gebruiken in uw Azure virtual networks of in uw on-premises netwerk.
+   * *-AddressPrefix* moet een/29 IPv4-subnet zijn, bijvoorbeeld "10.0.0.0/29". We gebruiken IP-adressen in dit subnet om verbinding te maken tussen de twee ExpressRoute-circuits. Gebruik niet de adressen in dit subnet in uw virtuele Azure-netwerken of in uw on-premises netwerk.
 
      ```azurepowershell-interactive
      Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering $ckt_2.Peerings[0].Id -AddressPrefix '__.__.__.__/29'
      ```
-3. Sla de configuratie op circuit 1 als volgt:
+3. Sla de configuratie op Circuit 1 als volgt op:
 
    ```azurepowershell-interactive
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
    ```
 
-Wanneer de vorige bewerking is voltooid, hebt u connectiviteit tussen uw on-premises netwerken aan beide zijden via uw twee ExpressRoute-circuits.
+Wanneer de vorige bewerking is voltooid, hebt u verbinding tussen uw on-premises netwerken aan beide zijden via uw twee ExpressRoute-circuits.
 
 ### <a name="expressroute-circuits-in-different-azure-subscriptions"></a>ExpressRoute-circuits in verschillende Azure-abonnementen
 
-Als de twee circuits zich niet in hetzelfde Azure-abonnement, moet u autorisatie. In de volgende configuratie autorisatie wordt gegenereerd in het circuit 2-abonnement en de autorisatiesleutel wordt doorgegeven aan 1-circuit.
+Als de twee circuits zich niet in hetzelfde Azure-abonnement bevinden, hebt u autorisatie nodig. In de volgende configuratie wordt autorisatie gegenereerd in het circuit 2-abonnement en wordt de autorisatie sleutel door gegeven aan Circuit 1.
 
-1. Genereer een autorisatiesleutel.
+1. Genereer een autorisatie sleutel.
 
    ```azurepowershell-interactive
    $ckt_2 = Get-AzExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
@@ -88,32 +88,32 @@ Als de twee circuits zich niet in hetzelfde Azure-abonnement, moet u autorisatie
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_2
    ```
 
-   Noteer de persoonlijke peering-ID van het circuit 2, evenals de autorisatiesleutel.
-2. Voer de volgende opdracht op basis van circuit 1. In de persoonlijke peering-ID van het circuit doorgeven, 2 en de autorisatiesleutel.
+   Noteer de privé-peering-ID van circuit 2, evenals de autorisatie sleutel.
+2. Voer de volgende opdracht uit op Circuit 1. Geef een persoonlijke peering-ID van circuit 2 en de autorisatie sleutel door.
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering "circuit_2_private_peering_id" -AddressPrefix '__.__.__.__/29' -AuthorizationKey '########-####-####-####-############'
    ```
-3. Sla de configuratie op circuit 1.
+3. Sla de configuratie op Circuit 1 op.
 
    ```azurepowershell-interactive
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
    ```
 
-Wanneer de vorige bewerking is voltooid, hebt u connectiviteit tussen uw on-premises netwerken aan beide zijden via uw twee ExpressRoute-circuits.
+Wanneer de vorige bewerking is voltooid, hebt u verbinding tussen uw on-premises netwerken aan beide zijden via uw twee ExpressRoute-circuits.
 
 ## <a name="verify-the-configuration"></a>De configuratie controleren
 
-Gebruik de volgende opdracht om te controleren of de configuratie van het circuit waar de configuratie is gemaakt (bijvoorbeeld 1 circuit in het vorige voorbeeld).
+Gebruik de volgende opdracht om de configuratie te controleren van het circuit waarin de configuratie is gemaakt (bijvoorbeeld Circuit 1 in het vorige voor beeld).
 ```azurepowershell-interactive
 $ckt1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
 ```
 
-Als u gewoon *$ckt1* in PowerShell, ziet u *CircuitConnectionStatus* in de uitvoer. Het vertelt u of de verbinding is tot stand gebracht, 'Verbonden' of 'Verbinding verbroken'. 
+Als u alleen *$CKT 1* in Power shell uitvoert, ziet u *CircuitConnectionStatus* in de uitvoer. Hiermee wordt aangegeven of de verbinding tot stand is gebracht, verbonden of verbroken. 
 
 ## <a name="disable-connectivity"></a>Connectiviteit uitschakelen
 
-Connectiviteit tussen uw on-premises netwerken, voert u de opdrachten op basis van het circuit waar de configuratie is gemaakt (bijvoorbeeld circuit 1 in het vorige voorbeeld) uitschakelen.
+Als u de verbinding tussen uw on-premises netwerken wilt uitschakelen, voert u de opdrachten uit op het circuit waarin de configuratie is gemaakt (bijvoorbeeld Circuit 1 in het vorige voor beeld).
 
 ```azurepowershell-interactive
 $ckt1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
@@ -121,11 +121,11 @@ Remove-AzExpressRouteCircuitConnectionConfig -Name "Your_connection_name" -Expre
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 ```
 
-U kunt de Get-bewerking om te controleren of de status uitvoeren.
+U kunt de Get-bewerking uitvoeren om de status te controleren.
 
-Nadat de vorige bewerking voltooid is, hebt u niet langer connectiviteit tussen uw on-premises netwerk via uw ExpressRoute-circuits.
+Nadat de vorige bewerking is voltooid, hebt u niet langer de connectiviteit tussen uw on-premises netwerk via uw ExpressRoute-circuits.
 
 ## <a name="next-steps"></a>Volgende stappen
-1. [Meer informatie over ExpressRoute globaal bereik](expressroute-global-reach.md)
-2. [Controleer de ExpressRoute-verbinding](expressroute-troubleshooting-expressroute-overview.md)
-3. [Een ExpressRoute-circuit koppelen met een Azure-netwerk](expressroute-howto-linkvnet-arm.md)
+1. [Meer informatie over ExpressRoute Global Reach](expressroute-global-reach.md)
+2. [ExpressRoute-connectiviteit controleren](expressroute-troubleshooting-expressroute-overview.md)
+3. [Een ExpressRoute-circuit koppelen aan een virtueel Azure-netwerk](expressroute-howto-linkvnet-arm.md)

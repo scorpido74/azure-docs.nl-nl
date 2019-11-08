@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/25/2019
-ms.openlocfilehash: 2559a3cbd786c737b316a860e9c75434c6c719a4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e5dee838df2a60bf2038f2c7d2b1cc5958354d29
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576577"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796773"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten beveiligen en taken in een Azure-Virtual Network afzorgen
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ Ga als volgt te werk om een Azure-opslag account te gebruiken voor de werkruimte
     - Selecteer onder __virtuele netwerken__de koppeling __bestaande virtuele netwerk toevoegen__ . Met deze actie wordt het virtuele netwerk waar uw Compute zich bevindt, toegevoegd (zie stap 1).
 
         > [!IMPORTANT]
-        > Het opslag account moet zich in hetzelfde virtuele netwerk bezoeken als de VM-Vm's of-clusters die worden gebruikt voor de training of de deinterferentie.
+        > Het opslag account moet zich in hetzelfde virtuele netwerk bezoeken als de clusters die worden gebruikt voor de training of de deinterferentie.
 
     - Schakel het selectie vakje __vertrouwde micro soft-Services toegang geven tot dit opslag account__ in.
 
@@ -108,7 +108,7 @@ Ga als volgt te werk om Azure Machine Learning experimenten te gebruiken met Azu
 
 ## <a name="use-a-machine-learning-compute"></a>Een Machine Learning Compute gebruiken
 
-Als u een Azure Machine Learning notebook-VM of COMPUTE-cluster wilt gebruiken in een virtueel netwerk, moet aan de volgende netwerk vereisten worden voldaan:
+Als u een Azure Machine Learning Compute-cluster wilt gebruiken in een virtueel netwerk, moet aan de volgende netwerk vereisten worden voldaan:
 
 > [!div class="checklist"]
 > * Het virtuele netwerk moet zich in hetzelfde abonnement en dezelfde regio bevinden als de Azure Machine Learning-werk ruimte.
@@ -156,8 +156,8 @@ Als u de standaard regels voor uitgaande verbindingen niet wilt gebruiken en u d
 - Uitgaande Internet verbinding weigeren met behulp van de NSG-regels.
 
 - Beperk het uitgaande verkeer tot het volgende:
-   - Azure Storage, door gebruik te maken van de __service tag__ __Storage. Region_Name__ (bijvoorbeeld Storage. oostelijke)
-   - Azure Container Registry, met behulp van de __service-tag__ __AzureContainerRegistry. Region_Name__ (bijvoorbeeld AzureContainerRegistry. oostelijke)
+   - Azure Storage, met behulp van de __servicetag van__ __Storage. Region_Name__ (bijvoorbeeld Storage. oostelijke)
+   - Azure Container Registry, met behulp van de __service-tag__ __AzureContainerRegistry. Region_Name__ (bijvoorbeeld AzureContainerRegistry. oostelijkeus)
    - Azure Machine Learning, met behulp van het __service label__ __AzureMachineLearning__
 
 De NSG-regel configuratie in de Azure Portal wordt weer gegeven in de volgende afbeelding:
@@ -246,27 +246,6 @@ Wanneer het maken van het proces is voltooid, traint u uw model met behulp van h
 
 <a id="vmorhdi"></a>
 
-### <a name="create-a-compute-instance-in-a-virtual-network"></a>Een reken instantie maken in een virtueel netwerk
-
-Maak een Azure Machine Learning Compute-exemplaar in een virtueel netwerk. Ga als volgt te werk om een reken instantie te maken:
-
-1. Selecteer in de werk ruimte-Studio **Compute** in het linkerdeel venster.
-
-1. Selecteer op het tabblad Compute instances de optie **Nieuw** om te beginnen met het maken van een nieuw reken exemplaar.
-
-1. Stel de waarden voor de reken naam en de grootte van de virtuele machine in en schakel SSH-toegang in/uit.
-
-1. Ga als volgt te werk om deze Compute-instantie te configureren voor het gebruik van een virtueel netwerk:
-
-    a. Selecteer **Geavanceerde instellingen**.
-
-    b. Selecteer in de vervolg keuzelijst **resource groep** de resource groep met het virtuele netwerk.
-
-    c. Selecteer in de vervolg keuzelijst **virtueel netwerk** het virtuele netwerk dat het subnet bevat.
-
-    d. Selecteer in de vervolg keuzelijst **subnet** het subnet dat u wilt gebruiken.
-
-1. Selecteer **maken** om een reken instantie in te richten in een virtueel netwerk.
 
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Een virtuele machine of een HDInsight-cluster gebruiken
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 77d68763bac37a35b070bb7c95e2c16df7f67a27
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f7ed492960f6aaa190dc920c8829f91dce29399a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299348"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748833"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-same-or-different-subscription-with-powershell"></a>Een beheerde schijf maken op basis van een VHD-bestand in een opslagaccount in hetzelfde of een ander abonnement met PowerShell
 
@@ -29,7 +29,7 @@ Maak niet binnen korte tijd meerdere identieke beheerde schijven van een VHD-bes
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -37,7 +37,7 @@ Maak niet binnen korte tijd meerdere identieke beheerde schijven van een VHD-bes
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten om een beheerde schijf te maken op basis van een VHD in een ander abonnement. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten om een beheerde schijf te maken op basis van een VHD in een ander abonnement. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

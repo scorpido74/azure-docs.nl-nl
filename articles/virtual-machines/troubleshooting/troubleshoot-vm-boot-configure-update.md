@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 4263afe33caa4d6471848c8e7dbf9bc1eeec4bee
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: da45e24898bc3b5aead250077af69a61bdb33bab
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332544"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749637"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Het opstarten van de VM is vastgelopen op het ophalen van Windows Ready. Uw computer niet uitschakelen in azure
 
 In dit artikel vindt u een beschrijving van de schermen ' Getting Started ' en ' getting Starting Windows Ready ' die kunnen optreden wanneer u een virtuele Windows-machine (VM) opstart in Microsoft Azure. Het bevat stappen om u te helpen bij het verzamelen van gegevens voor een ondersteunings ticket.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="symptoms"></a>Symptomen
 
@@ -100,7 +100,7 @@ Voer het volgende script uit om dump logboek en seriële console in te scha kele
 3. [Ontkoppel de besturingssysteem schijf en koppel de besturingssysteem schijf opnieuw aan de betreffende VM](../windows/troubleshoot-recovery-disks-portal.md).
 4. Start de VM en open de seriële console.
 5. Selecteer **niet-maskeer bare interrupt (NMI) verzenden** om de geheugen dump te activeren.
-    ![the-installatie kopie over waar de niet-maskeer bare interrupt @ no__t-1 moet worden verzonden
+    de afbeelding ![over waar de niet-maskeer bare interrupt moet worden verzonden](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
 6. Koppel de besturingssysteem schijf weer aan een herstel-VM en probeer het dump bestand te verzamelen.
 
 ## <a name="contact-microsoft-support"></a>Neem contact op met micro soft ondersteuning

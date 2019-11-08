@@ -4,20 +4,23 @@ description: Oplossingen voor veelvoorkomende problemen met Azure Active Directo
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/25/2017
+tags: active-directory
 ms.author: mimart
 author: v-miegge
-manager: celestedg
+manager: dcscontentpm
 ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom:
+- it-pro
+- seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f91ddee8668316df69c98ed14fbcabcb06b6da82
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6449644f98280d75363f737be11f8e8b824cab36
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983401"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795186"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Problemen oplossen Azure Active Directory B2B-samen werking
 
@@ -57,9 +60,9 @@ Als u Federatie verificatie gebruikt en de gebruiker nog niet bestaat in Azure A
 
 Om dit probleem op te lossen, moet de beheerder van de externe gebruiker het account van de gebruiker synchroniseren met Azure Active Directory.
 
-## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Hoe is ' ', wat normaal gesp roken geen geldig teken is, synchroniseer ik met Azure AD?\#
+## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Hoe werkt '\#', maar dit is niet normaal gesp roken een geldig teken, synchroniseer ik met Azure AD?
 
-"\#" is een gereserveerd teken in upn's voor Azure AD B2B-samen werking of externe gebruikers, omdat het user@contoso.com uitgenodigde account user_contoso. com@fabrikam.onmicrosoft.com# ext # is. Daarom kunnen \# upn's die afkomstig zijn van on-premises, zich niet aanmelden bij de Azure Portal. 
+"\#" is een gereserveerd teken in Upn's voor Azure AD B2B-samen werking of externe gebruikers, omdat de uitgenodigde account user@contoso.com user_contoso. com # EXT #@fabrikam.onmicrosoft.comwordt. Daarom kunnen \# in Upn's die afkomstig zijn van on-premises, zich niet aanmelden bij de Azure Portal. 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Er wordt een fout bericht weer gegeven bij het toevoegen van externe gebruikers aan een gesynchroniseerde groep
 
@@ -67,7 +70,7 @@ Externe gebruikers kunnen alleen worden toegevoegd aan groepen ' toegewezen ' of
 
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Mijn externe gebruiker heeft geen e-mail bericht ontvangen om in te wisselen
 
-De genodigde moet met hun ISP-of spam filter controleren om ervoor te zorgen dat het volgende adres is toegestaan:Invites@microsoft.com
+De uitnodiging moet worden gecontroleerd met hun ISP-of spam filter om ervoor te zorgen dat het volgende adres is toegestaan: Invites@microsoft.com
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Ik zie dat het aangepaste bericht niet op momenten wordt opgenomen in uitnodigings berichten
 

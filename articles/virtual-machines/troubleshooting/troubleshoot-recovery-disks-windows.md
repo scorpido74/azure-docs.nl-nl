@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 9c7bc316900c9e1422289c76b2c3d05924130312
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: HT
+ms.openlocfilehash: 00f6e763006cbb8e5a2724536664291e0381e42f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602506"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749645"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Problemen met een Windows-VM oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van Azure PowerShell
 Als op uw virtuele Windows-machine (VM) in azure een opstart-of schijf fout optreedt, moet u mogelijk de stappen voor het oplossen van problemen op de schijf zelf uitvoeren. Een veelvoorkomend voor beeld hiervan is een mislukte toepassings update waarmee wordt voor komen dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om de schijf te verbinden met een andere Windows-VM om eventuele fouten op te lossen en vervolgens uw oorspronkelijke VM te herstellen. 
@@ -25,7 +25,7 @@ Als op uw virtuele Windows-machine (VM) in azure een opstart-of schijf fout optr
 > [!Important]
 > De scripts in dit artikel zijn alleen van toepassing op de virtuele machines die gebruikmaken van [beheerde schijven](../windows/managed-disks-overview.md). 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="recovery-process-overview"></a>Overzicht van het herstelproces
 We kunnen nu Azure PowerShell gebruiken om de besturingssysteem schijf voor een virtuele machine te wijzigen. Het is niet meer nodig om de virtuele machine te verwijderen en opnieuw te maken.

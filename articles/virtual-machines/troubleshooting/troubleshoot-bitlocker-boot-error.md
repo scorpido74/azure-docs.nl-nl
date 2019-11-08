@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: b0b8528a8eaf5cab22bb2482bd60e760d8bf5e3d
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058112"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749663"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-opstart fouten op een virtuele Azure-machine
 
  In dit artikel worden BitLocker-fouten beschreven die zich kunnen voordoen wanneer u een virtuele Windows-machine (VM) start in Microsoft Azure.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="symptom"></a>Symptoom
 
@@ -31,7 +31,7 @@ ms.locfileid: "71058112"
 
 - Het USB-stuur programma met de BitLocker-sleutel aansluiten
 
-- U bent vergrendeld. Voer de herstel sleutel in om weer aan de slag te gaan (toetsenbord indeling: VS) de verkeerde aanmeldings gegevens zijn te vaak ingevoerd, dus uw PC is vergrendeld om uw privacy te beschermen. Als u de herstel sleutel wilt ophalen, https://windows.microsoft.com/recoverykeyfaq gaat u naar vanaf een andere PC of een mobiel apparaat. Als u het nodig hebt, is de sleutel-ID XXXXXXx. U kunt ook uw PC opnieuw instellen.
+- U bent vergrendeld. Voer de herstel sleutel in om weer aan de slag te gaan (toetsenbord indeling: VS) de onjuiste aanmeldings gegevens zijn te vaak ingevoerd, waardoor uw PC is vergrendeld om uw privacy te beschermen. Als u de herstel sleutel wilt ophalen, gaat u naar https://windows.microsoft.com/recoverykeyfaq vanaf een andere computer of een mobiel apparaat. Als u het nodig hebt, is de sleutel-ID XXXXXXx. U kunt ook uw PC opnieuw instellen.
 
 - Voer het wacht woord in om dit station te ontgrendelen [] Druk op de INSERT-toets om het wacht woord te zien terwijl u typt.
 - Voer uw herstel sleutel in om de herstel sleutel van een USB-apparaat te laden.
@@ -46,8 +46,8 @@ U kunt dit probleem oplossen door de virtuele machine te stoppen en de toewijzin
 
 Als deze methode het probleem niet oplost, voert u de volgende stappen uit om het BEK-bestand hand matig te herstellen:
 
-1. Maak een moment opname van de systeem schijf van de betrokken VM als back-up. Zie voor meer informatie, [momentopname maken van een schijf](../windows/snapshot-copy-managed-disk.md).
-2. [De schijf koppelen aan een virtuele machine voor herstel](troubleshoot-recovery-disks-portal-windows.md). Als u de opdracht [Manage-BDE](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) in stap 7 wilt uitvoeren, moet u de functie **BitLocker-stationsversleuteling** ingeschakeld hebben op de virtuele machine voor herstel.
+1. Maak een moment opname van de systeem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
+2. [Koppel de systeem schijf aan een herstel-VM](troubleshoot-recovery-disks-portal-windows.md). Als u de opdracht [Manage-BDE](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) in stap 7 wilt uitvoeren, moet u de functie **BitLocker-stationsversleuteling** ingeschakeld hebben op de virtuele machine voor herstel.
 
     Wanneer u een beheerde schijf koppelt, ontvangt u mogelijk een fout bericht ' bevat versleutelings instellingen en kan daarom niet worden gebruikt als een gegevens schijf '. In dit geval voert u het volgende script uit om opnieuw te proberen de schijf te koppelen:
 
@@ -107,7 +107,7 @@ Als deze methode het probleem niet oplost, voert u de volgende stappen uit om he
 
     Nu u de naam van het BEK-bestand voor het station hebt, moet u de naam van het geheime bestand maken. BEK-bestand voor het ontgrendelen van het station.
 
-6.  Down load het BEK-bestand naar de herstel schijf. In het volgende voor beeld wordt het BEK-bestand opgeslagen in de map C:\BEK. Zorg ervoor dat het `C:\BEK\` pad bestaat voordat u de scripts uitvoert.
+6.  Down load het BEK-bestand naar de herstel schijf. In het volgende voor beeld wordt het BEK-bestand opgeslagen in de map C:\BEK. Zorg ervoor dat het pad `C:\BEK\` bestaat voordat u de scripts uitvoert.
 
     ```powershell
     $vault = "myKeyVault"
@@ -137,7 +137,7 @@ Als deze methode het probleem niet oplost, voert u de volgende stappen uit om he
 
                     manage-bde -protectors -disable F: -rc 0
            
-    - Het station volledig ontsleutelen. U doet dit door de volgende opdracht uitvoeren:
+    - Het station volledig ontsleutelen. Voer hiervoor de volgende opdracht uit:
 
                     manage-bde -off F:
 
@@ -266,20 +266,20 @@ Voer de volgende stappen uit voor een Key Encryption Key-scenario:
 
              manage-bde -protectors -disable F: -rc 0
            
-    - Het station volledig ontsleutelen. U doet dit door de volgende opdracht uitvoeren:
+    - Het station volledig ontsleutelen. Voer hiervoor de volgende opdracht uit:
 
                     manage-bde -off F:
 ## <a name="script-troubleshooting"></a>Script problemen oplossen
 
-**Fout: Kan bestand of assembly niet laden**
+**Fout: kan bestand of assembly niet laden**
 
-Deze fout treedt op omdat de paden van de ADAL-Assembly's onjuist zijn. Als de AZ-module alleen is geïnstalleerd voor de huidige gebruiker, zijn de ADAL-Assembly's te `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`vinden in.
+Deze fout treedt op omdat de paden van de ADAL-Assembly's onjuist zijn. Als de module AZ alleen is geïnstalleerd voor de huidige gebruiker, bevinden de ADAL-Assembly's zich in `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`.
 
-U kunt ook zoeken `Az.Accounts` naar een map om het juiste pad te vinden.
+U kunt ook zoeken naar `Az.Accounts` map om het juiste pad te vinden.
 
 **Fout: Get-AzKeyVaultSecret of Get-AzKeyVaultSecret wordt niet herkend als de naam van een cmdlet**
 
-Als u de oude AZ Power shell-module gebruikt, moet u de twee opdrachten wijzigen `Get-AzureKeyVaultSecret` in `Get-AzureKeyVaultSecret`en.
+Als u de oude AZ Power shell-module gebruikt, moet u de twee opdrachten wijzigen in `Get-AzureKeyVaultSecret` en `Get-AzureKeyVaultSecret`.
 
 **Voor beelden van para meters**
 

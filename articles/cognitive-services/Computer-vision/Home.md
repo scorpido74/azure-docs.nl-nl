@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a34fdb24573df3287b72991454963c67e9689b9f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 703e750c0d2515484cd9f1d2cb046096dfd1800d
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604544"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794965"
 ---
 # <a name="what-is-computer-vision"></a>Wat is Computer Vision?
 
@@ -26,7 +26,7 @@ U kunt Computer Vision in uw toepassing gebruiken via een systeem eigen SDK of d
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Computer Vision voor beheer van digitale activa
 
-Computer Vision kunt veel software voor het beheer van digitale activa (moeder) ondersteunen. DAM is het bedrijfs proces van het organiseren, opslaan en ophalen van uitgebreide media-assets en het beheren van digitale rechten en machtigingen. Het is bijvoorbeeld mogelijk dat een bedrijf afbeeldingen wil groeperen en identificeren op basis van zicht bare logo's, gezichten, objecten, kleuren, enzovoort. Het is ook mogelijk dat u automatisch [bijschriften voor afbeeldingen wilt genereren](./Tutorials/storage-lab-tutorial.md) en tref woorden wilt toevoegen zodat ze kunnen worden doorzocht. Zie voor een alles-in-één DAM-oplossing met behulp van Cognitive Services, Azure Search en intelligente rapportage de [hand leiding voor de oplossing voor kennis analyse](https://github.com/Azure-Samples/azure-search-knowledge-mining) op github. Raadpleeg de opslag plaats van de [Computer Vision-oplossing](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates) voor andere voor beelden van moeders.
+Computer Vision kunt veel software voor het beheer van digitale activa (moeder) ondersteunen. DAM is het bedrijfs proces van het organiseren, opslaan en ophalen van uitgebreide media-assets en het beheren van digitale rechten en machtigingen. Het is bijvoorbeeld mogelijk dat een bedrijf afbeeldingen wil groeperen en identificeren op basis van zicht bare logo's, gezichten, objecten, kleuren, enzovoort. Het is ook mogelijk dat u automatisch [bijschriften voor afbeeldingen wilt genereren](./Tutorials/storage-lab-tutorial.md) en tref woorden wilt toevoegen zodat ze kunnen worden doorzocht. Zie voor een alles-in-één moeder oplossing die gebruikmaakt van Cognitive Services, Azure Cognitive Search en intelligent Reporting de [hand leiding voor de oplossing voor kennis analyse](https://github.com/Azure-Samples/azure-search-knowledge-mining) op github. Raadpleeg de opslag plaats van de [Computer Vision-oplossing](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates) voor andere voor beelden van moeders.
 
 ## <a name="analyze-images-for-insight"></a>Analyseren van afbeeldingen voor inzicht
 

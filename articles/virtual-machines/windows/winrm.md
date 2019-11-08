@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: f7f57a43697a9376062bdd3baa2d5f7333bf4a7f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 25091e8e58fbdba908fb00ece3cd2d3d296c5ab1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100161"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749054"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>WinRM-toegang instellen voor Virtual Machines in Azure Resource Manager
 
@@ -31,16 +31,16 @@ Hier volgen de stappen die u moet uitvoeren om een VM in te stellen met WinRM-co
 4. Haal de URL voor uw zelfondertekende certificaat op in de Key Vault
 5. Verwijzen naar de URL van uw zelfondertekende certificaten tijdens het maken van een VM
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
-## <a name="step-1-create-a-key-vault"></a>Stap 1: Een sleutelkluis maken
+## <a name="step-1-create-a-key-vault"></a>Stap 1: een Key Vault maken
 U kunt de onderstaande opdracht gebruiken om de Key Vault te maken
 
 ```
 New-AzKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
 ```
 
-## <a name="step-2-create-a-self-signed-certificate"></a>Stap 2: Een zelfondertekend certificaat maken
+## <a name="step-2-create-a-self-signed-certificate"></a>Stap 2: een zelfondertekend certificaat maken
 U kunt een zelfondertekend certificaat maken met dit Power shell-script
 
 ```
@@ -55,7 +55,7 @@ $password = Read-Host -Prompt "Please enter the certificate password." -AsSecure
 Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $password
 ```
 
-## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>Stap 3: Uw zelfondertekende certificaat uploaden naar de Key Vault
+## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>Stap 3: uw zelfondertekende certificaat uploaden naar de Key Vault
 Voordat u het certificaat uploadt naar de Key Vault die u in stap 1 hebt gemaakt, moet dit worden geconverteerd naar een indeling die de micro soft. Compute-resource provider begrijpt. Met het onderstaande Power shell-script kunt u dit doen
 
 ```
@@ -78,11 +78,11 @@ $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
 Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
 ```
 
-## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>Stap 4: Haal de URL voor uw zelfondertekende certificaat op in de Key Vault
+## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>Stap 4: de URL voor uw zelfondertekende certificaat in het Key Vault ophalen
 De resource provider micro soft. Compute heeft een URL nodig voor het geheim in het Key Vault tijdens het inrichten van de virtuele machine. Hierdoor kan de resource provider micro soft. Compute het geheim downloaden en het gelijkwaardige certificaat maken op de VM.
 
 > [!NOTE]
-> De URL van het geheim moet ook de versie bevatten. Een voor beeld van een URL ziet er\/als volgt uit:/contosovault.Vault.Azure.net:443/Secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> De URL van het geheim moet ook de versie bevatten. Een voor beeld van een URL ziet er als volgt uit:\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>Sjablonen
 U kunt de koppeling naar de URL in de sjabloon ophalen met behulp van de onderstaande code
@@ -94,7 +94,7 @@ U kunt deze URL ophalen met behulp van de onderstaande Power shell-opdracht
 
     $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
-## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Stap 5: Verwijzen naar de URL van uw zelfondertekende certificaten tijdens het maken van een VM
+## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Stap 5: verwijzen naar uw zelfondertekende certificaten URL tijdens het maken van een VM
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager sjablonen
 Tijdens het maken van een VM via sjablonen, wordt in het gedeelte geheimen naar het certificaat verwezen en wordt de sectie winRM als hieronder beschreven:
 
@@ -143,13 +143,13 @@ De bron code voor deze sjabloon is te vinden op [github](https://github.com/Azur
     $CertificateStore = "My"
     $vm = Add-AzVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
 
-## <a name="step-6-connecting-to-the-vm"></a>Stap 6: Verbinding maken met de virtuele machine
+## <a name="step-6-connecting-to-the-vm"></a>Stap 6: verbinding maken met de virtuele machine
 Voordat u verbinding kunt maken met de virtuele machine, moet u ervoor zorgen dat uw computer is geconfigureerd voor het externe beheer van WinRM. Start Power shell als beheerder en voer de onderstaande opdracht uit om te controleren of u hebt ingesteld.
 
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> U moet er mogelijk voor zorgen dat de WinRM-service wordt uitgevoerd als de bovenstaande niet werkt. U kunt dit doen met`Get-Service WinRM`
+> U moet er mogelijk voor zorgen dat de WinRM-service wordt uitgevoerd als de bovenstaande niet werkt. U kunt dit doen met behulp van `Get-Service WinRM`
 > 
 > 
 

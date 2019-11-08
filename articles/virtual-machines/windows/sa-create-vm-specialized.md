@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: cc3c1d9352d9df44a51a917700c656055b8b8361
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cdbf55aae52cec9df1ba34cbeb34c67b8e5fc5d0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088625"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749201"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Een virtuele machine maken op basis van een gespecialiseerde VHD in een opslag account
 
@@ -30,10 +30,10 @@ U hebt hiervoor twee opties:
 * [Een VHD uploaden](sa-create-vm-specialized.md#option-1-upload-a-specialized-vhd)
 * [De VHD van een bestaande Azure-VM kopiëren](sa-create-vm-specialized.md#option-2-copy-the-vhd-from-an-existing-azure-vm)
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
-## <a name="option-1-upload-a-specialized-vhd"></a>Optie 1: Een gespecialiseerde VHD uploaden
+## <a name="option-1-upload-a-specialized-vhd"></a>Optie 1: een speciale VHD uploaden
 
 U kunt de VHD uploaden vanaf een gespecialiseerde virtuele machine die is gemaakt met een on-premises Virtualization tool, zoals Hyper-V, of een VM die is geëxporteerd uit een andere cloud.
 
@@ -78,7 +78,7 @@ Als u een opslag account wilt maken, voert u de volgende stappen uit:
     ```
    
 ### <a name="upload-the-vhd-to-your-storage-account"></a>De VHD uploaden naar uw opslag account
-Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de installatie kopie te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand **myVHD. VHD** geüpload `"C:\Users\Public\Documents\Virtual hard disks\"` van naar een opslag account met de naam **mystorageaccount** in de resource groep **myResourceGroup** . Het bestand wordt in de container met de naam **mycontainer** geplaatst en de nieuwe bestands naam wordt **myUploadedVHD. VHD**.
+Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de installatie kopie te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand **myVHD. VHD** geüpload van `"C:\Users\Public\Documents\Virtual hard disks\"` naar een opslag account met de naam **mystorageaccount** in de resource groep **myResourceGroup** . Het bestand wordt in de container met de naam **mycontainer** geplaatst en de nieuwe bestands naam wordt **myUploadedVHD. VHD**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -105,7 +105,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 Afhankelijk van uw netwerk verbinding en de grootte van het VHD-bestand kan het enige tijd duren voordat deze opdracht is voltooid.
 
 
-## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>Optie 2: De VHD kopiëren van een bestaande virtuele machine in azure
+## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>Optie 2: de VHD kopiëren van een bestaande Azure VM
 
 U kunt een VHD kopiëren naar een ander opslag account om te gebruiken bij het maken van een nieuwe, dubbele virtuele machine.
 
@@ -118,8 +118,8 @@ Zorg ervoor dat:
 ### <a name="deallocate-the-vm"></a>De toewijzing van de virtuele machine ongedaan maken
 Maak de toewijzing van de virtuele machine ongedaan, waardoor de VHD wordt gekopieerd. 
 
-* **Portal**: Klik op **virtuele machines** > **myVM** > stoppen
-* **Power shell**: Gebruik [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) om de virtuele machine met de naam **MyVM** in de **myResourceGroup**van de resource groep te stoppen (de toewijzing ongedaan te maken).
+* **Portal**: Klik op **virtual machines** > **myVM** > Stop
+* **Power shell**: gebruik [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) om de virtuele machine met de naam **myVM** in de **myResourceGroup**van de resource groep te stoppen (de toewijzing ongedaan te maken).
 
 ```powershell
 Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -128,12 +128,12 @@ Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
 De **status** van de virtuele machine in de Azure Portal verandert van **gestopt** in **gestopt (toewijzing opgeheven)** .
 
 ### <a name="get-the-storage-account-urls"></a>De Url's van het opslag account ophalen
-U hebt de Url's van de bron-en doel opslag accounts nodig. De Url's zien er als `https://<storageaccount>.blob.core.windows.net/<containerName>/`volgt uit:. Als u al bekend bent met het opslag account en de naam van de container, kunt u alleen de informatie tussen de haakjes vervangen om uw URL te maken. 
+U hebt de Url's van de bron-en doel opslag accounts nodig. De Url's zien er als volgt uit: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. Als u al bekend bent met het opslag account en de naam van de container, kunt u alleen de informatie tussen de haakjes vervangen om uw URL te maken. 
 
 U kunt de Azure Portal of Azure Power shell gebruiken om de URL op te halen:
 
-* **Portal**: Klik op **>** het voor **alle services** > **Storage** > -*account* > -**blobs** opslag accounts en uw bron-VHD-bestand bevindt zich waarschijnlijk in de **vhd's** container. Klik op **Eigenschappen** voor de container en kopieer de tekst met de label **URL**. U hebt de Url's nodig van zowel de bron-als de doel container. 
-* **Power shell**: Gebruik [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) voor het ophalen van de informatie voor de virtuele machine met de naam **myVM** in de resource groep **myResourceGroup**. Zoek in de resultaten in de sectie **opslag profiel** voor de **VHD-URI**. Het eerste deel van de URI is de URL naar de container en het laatste deel is de VHD-naam van het besturings systeem voor de virtuele machine.
+* **Portal**: Klik op de **>** voor **alle services** > **opslag accounts** > *opslag account* > **blobs** en uw VHD-bron bestand bevindt zich waarschijnlijk in de **vhd's** -container. Klik op **Eigenschappen** voor de container en kopieer de tekst met de label **URL**. U hebt de Url's nodig van zowel de bron-als de doel container. 
+* **Power shell**: gebruik [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) voor het ophalen van de informatie voor de virtuele machine met de naam **MyVM** in de resource groep **myResourceGroup**. Zoek in de resultaten in de sectie **opslag profiel** voor de **VHD-URI**. Het eerste deel van de URI is de URL naar de container en het laatste deel is de VHD-naam van het besturings systeem voor de virtuele machine.
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -142,8 +142,8 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ## <a name="get-the-storage-access-keys"></a>De toegangs sleutels voor opslag ophalen
 Zoek de toegangs sleutels voor de bron-en doel opslag accounts. Zie [over Azure Storage-accounts](../../storage/common/storage-create-storage-account.md)voor meer informatie over toegangs sleutels.
 
-* **Portal**: Klik op **alle services** > **opslag accounts** > opslag*account* > **toegangs sleutels**. Kopieer de sleutel met de naam **key1**.
-* **Power shell**: Gebruik [Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) om de opslag sleutel op te halen voor de **mystorageaccount** van het opslag account in de resource groep **myResourceGroup**. Kopieer de sleutel met de label **key1**.
+* **Portal**: Klik op **alle services** > **opslag accounts** > *opslag account* > **toegangs sleutels**. Kopieer de sleutel met de naam **key1**.
+* **Power shell**: gebruik [Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) om de opslag sleutel op te halen voor de **mystorageaccount** van het opslag account in de resource groep **myResourceGroup**. Kopieer de sleutel met de label **key1**.
 
 ```powershell
 Get-AzStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
@@ -154,7 +154,7 @@ U kunt bestanden kopiëren tussen opslag accounts met behulp van AzCopy. Als de 
 
 Als u AzCopy wilt gebruiken, opent u een opdracht prompt op de lokale computer en navigeert u naar de map waarin AzCopy is geïnstalleerd. Dit is vergelijkbaar met *C:\Program Files (x86) \Microsoft SDKs\Azure\AzCopy*. 
 
-Als u alle bestanden in een container wilt kopiëren, gebruikt u de schakel optie **/s** . Dit kan worden gebruikt voor het kopiëren van de VHD van het besturings systeem en alle gegevens schijven als deze zich in dezelfde container bevinden. In dit voor beeld ziet u hoe u alle bestanden in de container **mysourcecontainer** in het opslag account **mysourcestorageaccount** kopieert naar de container **mydestinationcontainer** in het **mydestinationstorageaccount** -opslag account . Vervang de namen van de opslag accounts en containers door uw eigen. Vervang `<sourceStorageAccountKey1>` en`<destinationStorageAccountKey1>` door uw eigen sleutels.
+Als u alle bestanden in een container wilt kopiëren, gebruikt u de schakel optie **/s** . Dit kan worden gebruikt voor het kopiëren van de VHD van het besturings systeem en alle gegevens schijven als deze zich in dezelfde container bevinden. In dit voor beeld ziet u hoe u alle bestanden in de container **mysourcecontainer** in het opslag account **mysourcestorageaccount** kopieert naar de container **mydestinationcontainer** in het **mydestinationstorageaccount** -opslag account . Vervang de namen van de opslag accounts en containers door uw eigen. Vervang `<sourceStorageAccountKey1>` en `<destinationStorageAccountKey1>` door uw eigen sleutels.
 
 ```
 AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
@@ -277,14 +277,14 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
     $vm = Set-AzVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption attach -Windows
     ```
 
-Optioneel: Als u gegevens schijven hebt die moeten worden gekoppeld aan de VM, voegt u de gegevens schijven toe met behulp van de Url's van de gegevens-Vhd's en het juiste LUN (Logical Unit Number).
+Optioneel: als u gegevens schijven hebt die moeten worden gekoppeld aan de virtuele machine, voegt u de gegevens schijven toe met behulp van de Url's van de gegevens-Vhd's en het juiste LUN (Logical Unit Number).
 
 ```powershell
 $dataDiskName = $vmName + "dataDisk"
 $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lun 1 -CreateOption attach
 ```
 
-Wanneer u een opslag account gebruikt, zien de Url's van de gegevens en de besturingssysteem schijf er `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`ongeveer als volgt uit:. U kunt dit vinden in de portal door te bladeren naar de doel opslag container, te klikken op het besturings systeem of de gegevens-VHD die is gekopieerd en vervolgens de inhoud van de URL te kopiëren.
+Wanneer u een opslag account gebruikt, zien de schijf-Url's van de gegevens en het besturings systeem er ongeveer als volgt uit: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`. U kunt dit vinden in de portal door te bladeren naar de doel opslag container, te klikken op het besturings systeem of de gegevens-VHD die is gekopieerd en vervolgens de inhoud van de URL te kopiëren.
 
 
 ### <a name="complete-the-vm"></a>De virtuele machine volt ooien 
@@ -306,7 +306,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Controleren of de virtuele machine is gemaakt
-U ziet de zojuist gemaakte vm in de [Azure Portal](https://portal.azure.com), onder **alle services** > **virtuele machines**, of met behulp van de volgende Power shell-opdrachten:
+U ziet de zojuist gemaakte VM in de [Azure Portal](https://portal.azure.com), onder **alle services** > **virtuele machines**, of met behulp van de volgende Power shell-opdrachten:
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $rgName

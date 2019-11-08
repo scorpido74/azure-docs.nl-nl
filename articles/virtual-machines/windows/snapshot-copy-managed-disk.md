@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 76110fa04441540875e65c8bc056fc21555c5db6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 74ef55fe9a0a6603bd43d68b6b8557dce1bca921
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102284"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749144"
 ---
 # <a name="create-a-snapshot"></a>Een momentopname maken
 
@@ -27,9 +27,9 @@ Een moment opname is een volledige, alleen-lezen kopie van een virtuele harde sc
 
 Als u de moment opname wilt gebruiken om een nieuwe virtuele machine te maken, kunt u het beste de virtuele machine op een schone manier afsluiten voordat u een moment opname maakt, zodat alle processen die worden uitgevoerd, worden gewist.
 
-## <a name="use-the-azure-portal"></a>Azure Portal gebruiken 
+## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Selecteer in het menu links de optie **een resource maken**en zoek naar en selecteer **moment opname**.
 3. Selecteer in het venster **moment opname** **maken**. Het venster **moment opname maken** wordt weer gegeven.
 4. Voer een **naam** in voor de moment opname.
@@ -43,7 +43,7 @@ Als u de moment opname wilt gebruiken om een nieuwe virtuele machine te maken, k
 
 De volgende stappen laten zien hoe u de VHD-schijf kopieert, de configuratie van de moment opname maakt en een moment opname van de schijf gebruikt met behulp van de cmdlet [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) . 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 1. Stel een aantal para meters in: 
 
@@ -72,7 +72,7 @@ De volgende stappen laten zien hoe u de VHD-schijf kopieert, de configuratie van
    ```
    
    > [!NOTE]
-   > Als u uw moment opname wilt opslaan in zone-flexibele opslag, maakt u deze in een regio die [beschikbaarheids zones](../../availability-zones/az-overview.md) ondersteunt en de `-SkuName Standard_ZRS` para meter bevat.   
+   > Als u uw moment opname wilt opslaan in zone-flexibele opslag, maakt u deze in een regio die [beschikbaarheids zones](../../availability-zones/az-overview.md) ondersteunt en de para meter `-SkuName Standard_ZRS` bevatten.   
    
 4. De moment opname maken:
 

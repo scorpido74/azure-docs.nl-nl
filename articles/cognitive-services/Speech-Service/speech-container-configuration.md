@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: 15739b735b67e29ed07521d31857f1b176447487
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4e09a476398134d92b4492c68ed4ebebc468f272
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491056"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796181"
 ---
 # <a name="configure-speech-service-containers"></a>Spraak service containers configureren
 
@@ -52,7 +52,7 @@ Deze instelling bevindt zich op de volgende locatie:
 
 |Vereist| Naam | Gegevenstype | Beschrijving |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](speech-container-howto.md#gathering-required-parameters)voor meer informatie over de facturerings-URI. |
+|Ja| `Billing` | Tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](speech-container-howto.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [aangepaste subdomein namen voor Cognitive Services](../cognitive-services-custom-subdomains.md)voor meer informatie en een volledige lijst met regionale eind punten. |
 
 ## <a name="eula-setting"></a>Gebruiksrecht overeenkomst instellen
 

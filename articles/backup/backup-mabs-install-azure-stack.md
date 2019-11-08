@@ -1,6 +1,6 @@
 ---
 title: Azure Backup Server installeren op Azure Stack | Microsoft Docs
-description: Gebruik Azure Backup Server voor het beveiligen of maken van een back-up van werk belastingen in Azure Stack.
+description: In dit artikel vindt u informatie over het gebruik van Azure Backup Server voor het beveiligen of maken van een back-up van werk belastingen in Azure Stack.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: da941d0234fe78791f9a1c2f2a7d01122247534c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: bdcd7cbd24ca7023070585df46aa8cea7bdc70eb
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639858"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747286"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server installeren op Azure Stack
 
@@ -25,6 +25,7 @@ In dit artikel wordt uitgelegd hoe u Azure Backup Server installeert op Azure St
 >
 
 ## <a name="azure-backup-server-protection-matrix"></a>Beveiligingsmatrix voor Azure Backup Server
+
 Azure Backup Server beveiligt de volgende Azure Stack werk belasting van virtuele machines.
 
 | Beveiligde gegevens bron | Beveiliging en herstel |
@@ -37,29 +38,35 @@ Azure Backup Server beveiligt de volgende Azure Stack werk belasting van virtuel
 | SQL Server 2016 | Database |
 | SQL Server 2014 | Database |
 | SQL Server 2012 SP1 | Database |
-| SharePoint 2016 | Farm, Data Base, front-end, webserver |
+| Share point 2016 | Farm, Data Base, front-end, webserver |
 | SharePoint 2013 | Farm, Data Base, front-end, webserver |
-| SharePoint 2010 | Farm, Data Base, front-end, webserver |
+| Share point 2010 | Farm, Data Base, front-end, webserver |
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Vereisten voor de Azure Backup Server omgeving
 
 Bekijk de aanbevelingen in deze sectie wanneer u Azure Backup Server installeert in uw Azure Stack omgeving. Het Azure Backup Server-installatie programma controleert of uw omgeving voldoet aan de vereisten, maar u bespaart tijd door u voor te bereiden voordat u de installatie uitvoert.
 
 ### <a name="determining-size-of-virtual-machine"></a>Grootte van virtuele machine bepalen
+
 Als u Azure Backup Server wilt uitvoeren op een Azure Stack virtuele machine, gebruikt u de grootte a2 of groter. Voor hulp bij het kiezen van de grootte van een virtuele machine downloadt u de [Azure stack VM-grootte Calculator](https://www.microsoft.com/download/details.aspx?id=56832).
 
 ### <a name="virtual-networks-on-azure-stack-virtual-machines"></a>Virtuele netwerken op Azure Stack virtuele machines
+
 Alle virtuele machines die worden gebruikt in een Azure Stack workload, moeten behoren tot hetzelfde virtuele Azure-netwerk en Azure-abonnement.
 
 ### <a name="azure-backup-server-vm-performance"></a>VM-prestaties Azure Backup Server
+
 Als het wordt gedeeld met andere virtuele machines, worden de grootte van het opslag account en de IOPS beperkt Azure Backup Server de prestaties van de virtuele machine. Daarom moet u een afzonderlijk opslag account voor de virtuele machine van Azure Backup Server gebruiken. De Azure Backup-agent die op de Azure Backup Server wordt uitgevoerd, heeft tijdelijke opslag nodig voor:
+
 - eigen gebruik (een cache locatie),
 - gegevens die zijn hersteld vanuit de Cloud (lokaal faserings gebied)
 
 ### <a name="configuring-azure-backup-temporary-disk-storage"></a>Azure Backup tijdelijke schijf opslag configureren
-Elke Azure Stack virtuele machine wordt geleverd met tijdelijke schijf opslag, die beschikbaar is voor de gebruiker als `D:\`volume. Het lokale faserings gebied dat door Azure backup nodig is `D:\`, kan zodanig worden geconfigureerd dat het zich bevindt en de cache locatie kan op `C:\`worden geplaatst. Op deze manier moet er geen opslag gehaald worden verwijderd van de gegevens schijven die zijn gekoppeld aan de virtuele machine van Azure Backup Server.
+
+Elke Azure Stack virtuele machine wordt geleverd met tijdelijke schijf opslag, die beschikbaar is voor de gebruiker als volume `D:\`. Het lokale faserings gebied dat door Azure Backup nodig is, kan zodanig worden geconfigureerd dat het zich in `D:\`bevindt en de cache locatie kan op `C:\`worden geplaatst. Op deze manier moet er geen opslag gehaald worden verwijderd van de gegevens schijven die zijn gekoppeld aan de virtuele machine van Azure Backup Server.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Back-upgegevens opslaan op een lokale schijf en in azure
+
 Azure Backup Server back-upgegevens opgeslagen op Azure-schijven die zijn gekoppeld aan de virtuele machine, voor operationeel herstel. Zodra de schijven en opslag ruimte aan de virtuele machine zijn gekoppeld, beheert Azure Backup Server opslag voor u. De hoeveelheid back-upgegevens opslag is afhankelijk van het aantal en de grootte van de schijven die aan elke [Azure stack virtuele machine](/azure-stack/user/azure-stack-storage-overview)zijn gekoppeld. Elke grootte van Azure Stack VM heeft een maximum aantal schijven dat aan de virtuele machine kan worden gekoppeld. A2 is bijvoorbeeld vier schijven. A3 is acht schijven. A4 is 16 schijven. De grootte en het aantal schijven bepalen de totale opslag groep voor back-ups.
 
 > [!IMPORTANT]
@@ -69,12 +76,14 @@ Azure Backup Server back-upgegevens opgeslagen op Azure-schijven die zijn gekopp
 Het opslaan van back-upgegevens in azure vermindert de back-upinfrastructuur van Azure Stack. Als gegevens meer dan vijf dagen oud zijn, moeten deze worden opgeslagen in Azure.
 
 Om back-upgegevens op te slaan in azure, maakt of gebruikt u een Recovery Services kluis. Wanneer u een back-up van de Azure Backup Server workload wilt voorbereiden, [configureert u de Recovery Services kluis](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Zodra een back-uptaak wordt uitgevoerd, wordt er een herstel punt in de kluis gemaakt. Elke Recovery Services kluis bevat Maxi maal 9999 herstel punten. Afhankelijk van het aantal gemaakte herstel punten en hoe lang ze bewaard blijven, kunt u back-upgegevens gedurende een aantal jaren bewaren. U kunt bijvoorbeeld maandelijkse herstel punten maken en deze gedurende vijf jaar bewaren.
- 
+
 ### <a name="scaling-deployment"></a>Implementatie schalen
+
 Als u de schaal van uw implementatie wilt aanpassen, hebt u de volgende opties:
-  - Omhoog schalen: Verhoog de grootte van de Azure Backup Server virtuele machine van een serie naar D-serie en verg root de lokale opslag [volgens de instructies voor de Azure stack virtuele machine](/azure-stack/user/azure-stack-manage-vm-disks).
-  - Offload data: Verstuur oudere gegevens naar Azure en behoud alleen de nieuwste gegevens op de opslag die is gekoppeld aan de Azure Backup Server.
-  - Uitschalen: Voeg meer Azure Backup servers toe om de werk belastingen te beveiligen.
+
+- Omhoog schalen: Verhoog de grootte van de Azure Backup Server virtuele machine van een serie naar D-serie en verg root de lokale opslag [volgens de instructies voor de Azure stack virtuele machine](/azure-stack/user/azure-stack-manage-vm-disks).
+- Offload data: Verstuur oudere gegevens naar Azure en behoud alleen de nieuwste gegevens op de opslag die is gekoppeld aan de Azure Backup Server.
+- Uitschalen: Voeg meer Azure Backup servers toe om de werk belastingen te beveiligen.
 
 ### <a name="net-framework"></a>.NET Framework
 
@@ -86,12 +95,13 @@ De Azure Backup Server virtuele machine moet lid zijn van een domein. Een domein
 
 ## <a name="using-an-iaas-vm-in-azure-stack"></a>Een IaaS-VM gebruiken in Azure Stack
 
-Wanneer u een server voor Azure Backup Server kiest, start u met een installatie kopie van Windows Server 2012 R2 Data Center of Windows Server 2016 Data Center. In het artikel [maakt u uw eerste virtuele Windows-machine in de Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Hier volgt een zelf studie om aan de slag te gaan met de aanbevolen virtuele machine. De aanbevolen minimale vereisten voor de virtuele machine van de server (VM) moeten zijn: A2 Standard met twee kernen en 3,5 GB RAM-geheugen.
+Wanneer u een server voor Azure Backup Server kiest, start u met een installatie kopie van Windows Server 2012 R2 Data Center of Windows Server 2016 Data Center. In het artikel [maakt u uw eerste virtuele Windows-machine in de Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Hier volgt een zelf studie om aan de slag te gaan met de aanbevolen virtuele machine. De aanbevolen minimum vereisten voor de virtuele machine van de server (VM) moeten zijn: a2 Standard met twee kernen en 3,5 GB RAM-geheugen.
 
 Het beveiligen van werk belastingen met Azure Backup Server heeft veel nuances. Het artikel [Installeer DPM als een virtuele machine van Azure](https://technet.microsoft.com/library/jj852163.aspx), en helpt deze nuances te verklaren. Lees dit artikel volledig voordat u de computer implementeert.
 
 > [!NOTE]
 > Azure Backup Server is ontworpen om te worden uitgevoerd op een specifieke virtuele machine met één doel. U kunt Azure Backup Server niet installeren op:
+>
 > - Een computer die wordt uitgevoerd als een domeincontroller
 > - Een computer waarop de toepassingsserverfunctie is geïnstalleerd
 > - Een computer waarop Exchange Server wordt uitgevoerd
@@ -108,7 +118,7 @@ Met de optie voor opslag replicatie van Recovery Services kluis kunt u kiezen tu
 De instelling voor opslagreplicatie bewerken:
 
 1. Selecteer uw kluis om het dash board kluis en het menu instellingen te openen. Als het menu **instellingen** niet wordt geopend, klikt u op **alle instellingen** in het kluis dashboard.
-2. Klik in het menu **instellingen** op back-upconfiguratie **Backup-infra structuur** > om het menu **back-upconfiguratie** te openen. Kies in het menu **back-upconfiguratie** de optie voor opslag replicatie voor uw kluis.
+2. Klik in het menu **instellingen** op **back-upinfrastructuur** > **back-upconfiguratie** om het menu **back-up configuratie** te openen. Kies in het menu **back-upconfiguratie** de optie voor opslag replicatie voor uw kluis.
 
     ![Lijst met back-upkluizen](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -287,7 +297,7 @@ Azure Backup Server deelt code met Data Protection Manager. Verwijzingen naar Da
 
     Het pad naar de referenties wordt weer gegeven in het menu kluis identificatie. Klik op **volgende** om door te gaan naar de versleutelings instelling.
 
-14. Geef in het dialoog venster versleutelings **instelling** een wachtwoordzin op voor de versleuteling van de back-up en een locatie voor het opslaan van de wachtwoordzin en klik op **volgende**.
+14. Geef in het dialoog venster **versleutelings instelling** een wachtwoordzin op voor de versleuteling van de back-up en een locatie voor het opslaan van de wachtwoordzin en klik op **volgende**.
 
     ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-encryption-19.png)
 
@@ -314,7 +324,7 @@ De eerste back-upkopie wordt opgeslagen op de opslag die is gekoppeld aan de Azu
 
 ## <a name="network-connectivity"></a>Netwerk verbinding
 
-Azure Backup Server moet verbinding hebben met de Azure Backup-service om het product goed te laten werken. Als u wilt controleren of de computer de verbinding met Azure heeft, ```Get-DPMCloudConnection``` gebruikt u de cmdlet in de Azure Backup Server Power shell-console. Als de uitvoer van de cmdlet TRUE is, is er verbinding, maar is er geen verbinding.
+Azure Backup Server moet verbinding hebben met de Azure Backup-service om het product goed te laten werken. Als u wilt controleren of de computer de verbinding met Azure heeft, gebruikt u de cmdlet ```Get-DPMCloudConnection``` in de Azure Backup Server Power shell-console. Als de uitvoer van de cmdlet TRUE is, is er verbinding, maar is er geen verbinding.
 
 Op hetzelfde moment moet het Azure-abonnement de status in orde hebben. Als u de status van uw abonnement wilt weten en wilt beheren, meldt u zich aan bij de [Portal voor abonnementen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
@@ -323,15 +333,15 @@ Zodra u de status van de Azure-verbinding en het Azure-abonnement kent, kunt u d
 | Connectiviteits status | Azure-abonnement | Back-ups maken naar Azure | Back-up op schijf maken | Herstellen vanuit Azure | Herstellen uit een schijf |
 | --- | --- | --- | --- | --- | --- |
 | Verbonden |Actief |Toegestaan |Toegestaan |Toegestaan |Toegestaan |
-| Verbonden |Vervallen |Gestopt |Gestopt |Toegestaan |Toegestaan |
+| Verbonden |Verlopen |Gestopt |Gestopt |Toegestaan |Toegestaan |
 | Verbonden |Ongedaan gemaakt |Gestopt |Gestopt |Gestopt en Azure-herstel punten zijn verwijderd |Gestopt |
 | Verbroken Connectiviteit > 15 dagen |Actief |Gestopt |Gestopt |Toegestaan |Toegestaan |
-| Verbroken Connectiviteit > 15 dagen |Vervallen |Gestopt |Gestopt |Toegestaan |Toegestaan |
+| Verbroken Connectiviteit > 15 dagen |Verlopen |Gestopt |Gestopt |Toegestaan |Toegestaan |
 | Verbroken Connectiviteit > 15 dagen |Ongedaan gemaakt |Gestopt |Gestopt |Gestopt en Azure-herstel punten zijn verwijderd |Gestopt |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Herstellen van connectiviteits verlies
 
-Als een firewall of proxy de toegang tot Azure blokkeert, worden de volgende domein adressen white list in het profiel van de firewall/proxy:
+Als een firewall of proxy de toegang tot Azure blokkeert, moet u de volgende domein adressen toevoegen aan de lijst met toegestane firewall-en proxy profielen:
 
 - `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com
@@ -345,7 +355,7 @@ Zodra de verbinding met Azure is hersteld naar het Azure Backup Server, bepaalt 
 
 Het is mogelijk om een Azure-abonnement te wijzigen van de status *verlopen* of niet- *ingericht* naar *actief* . De status van het abonnement is niet *actief*:
 
-- Terwijl een abonnement wordt *verwijderd, gaat*de functionaliteit verloren. Als u het abonnement terugzet op actief, wordt de functionaliteit voor back-up/herstel opnieuw *geactiveerd*. Als er back-upgegevens op de lokale schijf werden bewaard met een voldoende Bewaar periode, kunnen de back-upgegevens worden opgehaald. Back-upgegevens in azure zijn echter IRRETRIEVABLY kwijt wanneer het abonnement de status van oningerichte heeft ingevoerd.
+- Terwijl een abonnement wordt *verwijderd, gaat*de functionaliteit verloren. Als u het abonnement terugzet op actief, wordt de functionaliteit voor back-up/herstel opnieuw *geactiveerd*. Als er back-upgegevens op de lokale schijf werden bewaard met een voldoende Bewaar periode, kunnen de back-upgegevens worden opgehaald. Back-upgegevens in azure zijn echter IRRETRIEVABLY kwijt wanneer het abonnement de status van *oningerichte* heeft ingevoerd.
 - Wanneer een abonnement is *verlopen*, verliest dit de functionaliteit. Geplande back-ups worden niet uitgevoerd terwijl een abonnement is *verlopen*.
 
 ## <a name="troubleshooting"></a>Problemen oplossen

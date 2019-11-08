@@ -8,18 +8,18 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: bbe236bd4575ffb849b6f4739fc3a27c09aa5e47
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: fa7f72989d47499127714eddfa6b5e98aa80178c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595150"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749221"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Power shell-scripts uitvoeren in uw Windows-VM met behulp van de opdracht uitvoeren
 
 De functie voor het uitvoeren van opdrachten maakt gebruik van de virtuele machine (VM)-agent voor het uitvoeren van Power shell-scripts in een Azure Windows-VM. U kunt deze scripts gebruiken voor algemeen machine-of toepassings beheer. Ze kunnen u helpen bij het snel diagnosticeren en oplossen van problemen met de toegang tot het netwerk en het herstellen van de VM naar een goede status.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="benefits"></a>Voordelen
 
@@ -61,7 +61,7 @@ The entity was not found in this Azure location
 |**ResetRDPCert**|Hiermee verwijdert u het SSL-certificaat dat is gekoppeld aan de RDP-listener en herstelt u de standaard instellingen voor de RDP-listener. Gebruik dit script als u problemen met het certificaat ziet.|
 |**SetRDPPort**|Hiermee stelt u het standaard of door de gebruiker opgegeven poort nummer in voor Extern bureaublad verbindingen. Hiermee schakelt u firewall regels in voor inkomende toegang tot de poort.|
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-CLI
 
 In het volgende voor beeld wordt de opdracht [AZ VM Run-Command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) gebruikt om een shell script uit te voeren op een Azure Windows-VM.
 
@@ -94,7 +94,7 @@ Nadat u de opdracht hebt gekozen, selecteert u **uitvoeren** om het script uit t
 
 ## <a name="powershell"></a>PowerShell
 
-In het volgende voor beeld wordt de cmdlet [invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) gebruikt om een Power shell-script uit te voeren op een virtuele machine van Azure. De cmdlet verwacht dat het script waarnaar wordt verwezen in de para meter `-ScriptPath`, lokaal is waar de cmdlet wordt uitgevoerd.
+In het volgende voor beeld wordt de cmdlet [invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) gebruikt om een Power shell-script uit te voeren op een virtuele machine van Azure. De cmdlet verwacht het script waarnaar wordt verwezen in de para meter `-ScriptPath` naar de lokale locatie waar de cmdlet wordt uitgevoerd.
 
 ```azurepowershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}

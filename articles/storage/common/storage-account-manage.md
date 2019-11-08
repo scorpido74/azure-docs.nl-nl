@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 11/06/2019
 ms.author: tamram
-ms.openlocfilehash: 60104496006e790887dd9c4b3e4c3196e0ef6444
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3c01cc870b20c8256b215eb700548e6cd69ad0d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671362"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749010"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Instellingen voor opslag accounts beheren in de Azure Portal
 
@@ -58,7 +58,7 @@ Volg deze procedure om de sleutels van uw opslag account te roteren:
 3. Werk de verbindingsreeksen in uw code bij, zodat deze verwijzen naar de nieuwe primaire toegangssleutel.
 4. Genereer de secundaire toegangssleutel op dezelfde manier opnieuw.
 
-## <a name="account-configuration"></a>Accountconfiguratie
+## <a name="account-configuration"></a>Account configuratie
 
 Nadat u een opslag account hebt gemaakt, kunt u de configuratie wijzigen. U kunt bijvoorbeeld wijzigen hoe uw gegevens worden gerepliceerd, of de toegangs laag van het account wijzigen van hot naar cool. Navigeer in het [Azure Portal](https://portal.azure.com)naar uw opslag account en zoek en klik vervolgens op **configuratie** onder **instellingen** om de account configuratie te bekijken en/of te wijzigen.
 

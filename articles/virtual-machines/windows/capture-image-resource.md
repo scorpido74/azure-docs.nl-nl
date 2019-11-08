@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: fd2b3a8a09ce69c07cc7d4715a4aaeacf64f0817
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 54743b191b0334c92c63f374d38870a7dbfd9a38
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200651"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749617"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Een beheerde installatie kopie maken van een gegeneraliseerde VM in azure
 
 Een beheerde installatie kopie bron kan worden gemaakt op basis van een gegeneraliseerde virtuele machine (VM) die is opgeslagen als een beheerde schijf of een onbeheerde schijf in een opslag account. De installatie kopie kan vervolgens worden gebruikt om meerdere Vm's te maken. Zie [Managed disks-prijzen](https://azure.microsoft.com/pricing/details/managed-disks/)voor meer informatie over hoe beheerde installatie kopieën worden gefactureerd. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>De Windows VM generaliseren met behulp van Sysprep
 
@@ -70,7 +70,7 @@ Voer de volgende stappen uit om uw Windows-VM te generaliseren:
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Een beheerde installatie kopie maken in de portal 
 
-1. Open de [Azure-portal](https://portal.azure.com).
+1. Open de [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **virtuele machines** in het menu aan de linkerkant en selecteer vervolgens de virtuele machine in de lijst.
 
@@ -94,7 +94,7 @@ Voer de volgende stappen uit om uw Windows-VM te generaliseren:
 
 ## <a name="create-an-image-of-a-vm-using-powershell"></a>Een installatie kopie van een virtuele machine maken met behulp van Power shell
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 Als u een installatie kopie rechtstreeks vanuit de VM maakt, zorgt u ervoor dat de installatie kopie alle schijven bevat die zijn gekoppeld aan de virtuele machine, inclusief de besturingssysteem schijf en alle gegevens schijven. In dit voor beeld ziet u hoe u een beheerde installatie kopie maakt op basis van een virtuele machine die gebruikmaakt van beheerde schijven.
 

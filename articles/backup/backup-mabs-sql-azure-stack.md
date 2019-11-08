@@ -1,6 +1,6 @@
 ---
 title: Back-ups maken van SQL Server werk belastingen op Azure Stack
-description: Gebruik Azure Backup Server om SQL Server werk belasting op Azure Stack te beveiligen.
+description: In dit artikel vindt u informatie over het configureren van Microsoft Azure Backup Server (MABS) om SQL Server-data bases op Azure Stack te beveiligen.
 ms.reviewer: adigan
 author: dcurwin
 manager: carmonm
@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: ab65a1bf371ff8581f347403b49fafed6697374c
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 28d4ad1a94cea6f21d1fe75483357d8788524b88
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210225"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747219"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Back-up maken van SQL Server op Azure Stack
+
 Gebruik dit artikel om Microsoft Azure Backup Server (MABS) te configureren om SQL Server-data bases op Azure Stack te beveiligen.
 
 Het beheer van SQL Server database back-up naar Azure en het herstel van Azure bestaat uit drie stappen:
@@ -29,6 +30,7 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 [Azure backup server installeren en voorbereiden](backup-mabs-install-azure-stack.md).
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>Een back-upbeleid maken om SQL Server data bases te beveiligen in azure
+
 1. Klik in de Azure Backup Server gebruikers interface op de werk ruimte **beveiliging** .
 
 2. Klik op het lint met hulp middelen op **Nieuw** om een nieuwe beveiligings groep te maken.
@@ -41,7 +43,7 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 
     ![Type beveiligings groep selecteren-' servers '](./media/backup-azure-backup-sql/pg-servers.png)
 
-4. In het scherm **groeps leden selecteren** worden de verschillende gegevens bronnen weer gegeven in de lijst met beschik bare leden. Klik **+** om een map uit te vouwen en de submappen weer te geven. Klik op het selectie vakje om een item te selecteren.
+4. In het scherm **groeps leden selecteren** worden de verschillende gegevens bronnen weer gegeven in de lijst met beschik bare leden. Klik op **+** om een map uit te vouwen en de submappen weer te geven. Klik op het selectie vakje om een item te selecteren.
 
     ![SQL-data base selecteren](./media/backup-azure-backup-sql/pg-databases.png)
 
@@ -68,7 +70,7 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 
     ![Methode van initiële replicatie](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Voor de eerste back-upkopie moet de volledige gegevens bron (SQL Server-Data Base) van de productie server (SQL Server machine) naar Azure Backup Server worden overgedragen. Deze gegevens zijn mogelijk erg groot en het overdragen van de gegevens via het netwerk kan de band breedte overschrijden. Daarom kunt u ervoor kiezen om de eerste back-up over te dragen: **Hand matig** (met behulp van Verwissel bare media) om te voor komen dat de band breedte overbelast of **automatisch via het netwerk** (op een bepaald moment).
+    Voor de eerste back-upkopie moet de volledige gegevens bron (SQL Server-Data Base) van de productie server (SQL Server machine) naar Azure Backup Server worden overgedragen. Deze gegevens zijn mogelijk erg groot en het overdragen van de gegevens via het netwerk kan de band breedte overschrijden. Daarom kunt u ervoor kiezen om de eerste back-up te verplaatsen: **hand matig** (met behulp van Verwissel bare media) om te voor komen dat er band breedte overbelast wordt of **automatisch via het netwerk** (op een bepaald moment).
 
     Zodra de eerste back-up is voltooid, zijn de rest van de back-ups incrementele back-ups op de eerste back-upkopie. Incrementele back-ups zijn vaak klein en kunnen eenvoudig via het netwerk worden overgedragen.
 
@@ -93,13 +95,13 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
     >
     >
 
-    **Aanbevolen procedure**: Als u back-ups naar Azure plant om te starten nadat de back-ups van de lokale schijf zijn voltooid, worden de meest recente schijf back-ups altijd naar Azure gekopieerd.
+    **Aanbevolen procedure**: als u back-ups naar Azure plant om te starten nadat de back-ups van de lokale schijf zijn voltooid, worden de meest recente schijf back-ups altijd naar Azure gekopieerd.
 
 12. Kies het schema voor het Bewaar beleid. De details over de manier waarop het Bewaar beleid werkt, vindt u in [gebruik Azure backup om uw tape-infrastructuur artikel te vervangen](backup-azure-backup-cloud-as-tape.md).
 
     ![Bewaarbeleid](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
-    In dit voorbeeld:
+    In dit voor beeld:
 
     * Back-ups worden eenmaal per dag om 12:00 uur en 8 uur (onderste deel van het scherm) gemaakt en blijven 180 dagen bewaard.
     * De back-up op zaterdag om 12:00 uur wordt 104 weken bewaard
@@ -112,6 +114,7 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
     ![Bezig met het maken van een beveiligings groep](./media/backup-azure-backup-sql/pg-summary.png)
 
 ## <a name="on-demand-backup-of-a-sql-server-database"></a>Back-ups op aanvraag van een SQL Server Data Base
+
 Terwijl de vorige stappen een back-upbeleid hebben gemaakt, wordt er alleen een ' herstel punt ' gemaakt wanneer de eerste back-up wordt uitgevoerd. In plaats van te wachten tot de scheduler wordt gestart, activeren de volgende stappen om hand matig een herstel punt te maken.
 
 1. Wacht totdat de status van de beveiligings groep op **OK** staat voor de Data Base voordat u het herstel punt maakt.
@@ -128,6 +131,7 @@ Terwijl de vorige stappen een back-upbeleid hebben gemaakt, wordt er alleen een 
     ![Bewakings console](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>Een SQL Server-Data Base herstellen vanuit Azure
+
 De volgende stappen zijn vereist om een beveiligde entiteit (SQL Server-Data Base) te herstellen vanuit Azure.
 
 1. Open de Azure Backup Server-beheer console. Ga naar de **herstel** werkruimte waar u de beveiligde servers kunt zien. Blader door de vereiste data base (in dit geval Report Server $ MSDPM2012). Selecteer een **herstel** tijd die is opgegeven als een **online** punt.

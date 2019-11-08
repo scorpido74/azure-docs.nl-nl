@@ -1,6 +1,6 @@
 ---
-title: 'Azure Backup: Virtuele Azure-machines terugzetten met behulp van REST API'
-description: herstel bewerkingen van Azure VM-back-ups beheren met REST API
+title: "Azure Backup: Azure-Vm's herstellen met behulp van REST API"
+description: In dit artikel vindt u informatie over het beheren van herstel bewerkingen van back-ups van virtuele Azure-machines met behulp van REST API.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: bdbceec2f1d0a900ffdb392d8a0505ce11419036
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 364b6ab589cc0fa50953a71d55adeccc79462eed
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954893"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747535"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Virtuele Azure-machines herstellen met behulp van REST API
 
@@ -31,13 +31,13 @@ De beschik bare herstel punten van een back-upitem kunnen worden weer gegeven me
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2016-12-01
 ```
 
-De `{containerName}` en`{protectedItemName}` zijn [hier](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)gemaakt. `{fabricName}`is ' Azure '.
+De `{containerName}` en `{protectedItemName}` zijn [zo gemaakt.](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1) `{fabricName}` is ' Azure '.
 
 De *Get* -URI heeft alle vereiste para meters. Er is geen aanvullende aanvraag tekst nodig
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Antwoorden
 
-|Name  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -119,7 +119,7 @@ X-Powered-By: ASP.NET
 ......
 ```
 
-Het herstel punt wordt aangeduid met het `{name}` veld in het bovenstaande antwoord.
+Het herstel punt wordt geïdentificeerd met het `{name}` veld in het bovenstaande antwoord.
 
 ## <a name="restore-disks"></a>Schijven herstellen
 
@@ -131,13 +131,13 @@ Het activeren van herstel schijven is een *post* -aanvraag. Raadpleeg de [rest A
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
 ```
 
-De `{containerName}` en`{protectedItemName}` zijn [hier](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)gemaakt. `{fabricName}`is ' Azure ' en het `{recoveryPointId}` is het `{name}` veld van het [hierboven](#example-response)vermelde herstel punt.
+De `{containerName}` en `{protectedItemName}` zijn [zo gemaakt.](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1) `{fabricName}` is ' Azure ' en de `{recoveryPointId}` is het `{name}` veld van het [hierboven](#example-response)vermelde herstel punt.
 
 ### <a name="create-request-body"></a>Hoofd tekst van aanvraag maken
 
 Als u een schijf herstel wilt activeren vanuit een back-up van een Azure-VM, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-|Name  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -171,9 +171,9 @@ Het activeren van een herstel schijf is een [asynchrone bewerking](https://docs.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Name  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
-|202 geaccepteerd     |         |     Geaccepteerd    |
+|202 geaccepteerd     |         |     Afgewezen    |
 
 #### <a name="example-responses"></a>Voorbeeld reacties
 
@@ -284,4 +284,4 @@ Het antwoord moet worden afgehandeld op dezelfde manier als [hierboven beschreve
 Raadpleeg de volgende documenten voor meer informatie over de Azure Backup REST-Api's:
 
 - [REST API Azure Recovery Services provider](/rest/api/recoveryservices/)
-- [Aan de slag met Azure REST API](/rest/api/azure/)
+- [Aan de slag gaan met Azure REST API](/rest/api/azure/)

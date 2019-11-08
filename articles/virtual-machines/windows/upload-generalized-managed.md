@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 6382a39e67805eb9bddb356a7b76205a82f3f7c2
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ead44c321ffb7afb69295d1bf8c0e1acd26cb9ce
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553464"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749067"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Een gegeneraliseerde VHD uploaden en gebruiken om nieuwe virtuele machines te maken in azure
 
@@ -32,7 +32,7 @@ Zie [voorbeeld script voor het uploaden van een VHD naar Azure en het maken van 
 - Voordat u een VHD naar Azure uploadt, moet u [een Windows-VHD of VHDX voorbereiden om te uploaden naar Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - Controleer [het plan voor de migratie naar Managed disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) voordat u de migratie naar [Managed disks](managed-disks-overview.md)start.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>De bron-VM generaliseren met Sysprep
@@ -47,7 +47,7 @@ Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden 
 > 
 
 1. Meld u aan bij de virtuele Windows-machine.
-2. Open het venster met de opdrachtprompt als beheerder. Wijzig de Directory in%windir%\system32\sysprep en voer `sysprep.exe` uit.
+2. Open het venster met de opdrachtprompt als beheerder. Wijzig de Directory in%windir%\system32\sysprep en voer `sysprep.exe`uit.
 3. Selecteer in het dialoog venster **hulp programma voor systeem voorbereiding** de optie **systeem out-of-Box Experience (OOBE) opgeven**en zorg ervoor dat het selectie vakje **generalize** is ingeschakeld.
 4. Selecteer voor **afsluit opties**de optie **Afsluiten**.
 5. Selecteer **OK**.

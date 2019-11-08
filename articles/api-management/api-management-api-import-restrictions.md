@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 11/06/2019
 ms.author: apimpm
-ms.openlocfilehash: 0bf52b45bc315874c58be50bccbffa49090d554d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 88ef235d47a548ce426eaa2e8a8a56fb9dcb01d2
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294340"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796039"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-import beperkingen en bekende problemen
 
@@ -40,6 +40,8 @@ Als u fouten ontvangt bij het importeren van uw OpenAPI-document, moet u ervoor 
 -   De URL van het bron bestand (indien beschikbaar) wordt toegepast op relatieve server-Url's.
 -   Beveiligings definities worden genegeerd.
 -   Inline schema definities voor API-bewerkingen worden niet ondersteund. Schema definities worden gedefinieerd in het API-bereik en waarnaar kan worden verwezen in API-bewerkings aanvragen of-antwoord bereiken.
+-   Een gedefinieerde URL-para meter moet deel uitmaken van de URL-sjabloon.
+-   Het sleutel woord **produceert** , waarmee MIME-typen worden beschreven die worden geretourneerd door een API, worden niet ondersteund. 
 
 ### <a name="open-api-v2"> </a>OpenAPI versie 2
 

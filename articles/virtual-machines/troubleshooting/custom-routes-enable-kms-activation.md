@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: d554629c4a03b81ee3c04d27f6365c1a8734c952
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 47ff8870df7c89ee2ab3e48e064e31aa581f65f0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058183"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748630"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Windows-activering mislukt in scenario met geforceerde tunneling
 
@@ -50,7 +50,7 @@ Voer de volgende stappen uit om de aangepaste route toe te voegen:
 
 ### <a name="for-resource-manager-vms"></a>Voor Resource Manager-Vm's
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 > [!NOTE] 
 > Activering maakt gebruik van open bare IP-adressen en wordt beïnvloed door een standaard-SKU Load Balancer configuratie. Lees zorgvuldig de [uitgaande verbindingen in azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) om meer te weten te komen over de vereisten.

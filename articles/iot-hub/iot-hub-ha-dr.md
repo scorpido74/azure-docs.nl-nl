@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
-ms.openlocfilehash: 533a199f75baa5a27ed06698f22d4d046be45507
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: HT
+ms.openlocfilehash: 173be8207df2f0128dfc9ae3c36aa3c3dc392bee
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607877"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748564"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub hoge Beschik baarheid en herstel na nood geval
 
@@ -62,7 +62,7 @@ Zodra de failoverbewerking voor de IoT-hub is voltooid, worden alle bewerkingen 
 > [!CAUTION]
 > - De Event hub-compatibele naam en het eind punt van het eind punt van de IoT Hub ingebouwde gebeurtenissen na een failover wijzigen. Bij het ontvangen van telemetriegegevens van het ingebouwde eind punt met behulp van de Event Hub client of de gebeurtenis processor host, moet u [de Connection String IOT hub gebruiken](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) om de verbinding tot stand te brengen. Zo zorgt u ervoor dat uw back-end-toepassingen blijven werken zonder dat er hand matige interventie post-failover is vereist. Als u de Event hub-compatibele naam en het eind punt in uw back-end-toepassing rechtstreeks gebruikt, moet u de toepassing opnieuw configureren door [de nieuwe event hub-compatibele naam en het eind punt na de](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) failover op te halen om de bewerkingen voort te zetten.
 >
-> - Bij het door sturen naar de opslag wordt aangeraden de opslag container in te schrijven en vervolgens te herhalen, om ervoor te zorgen dat alle containers worden gelezen zonder dat er veronderstellingen worden gemaakt van de partitie. Het partitie bereik kan mogelijk worden gewijzigd tijdens een door micro soft geïnitieerde failover of hand matige failover. Zie [route ring naar Azure Storage](iot-hub-devguide-messages-d2c.md#azure-storage)voor meer informatie over het opsommen van de lijst met blobs.
+> - Bij het door sturen naar de opslag wordt u aangeraden de blobs of bestanden weer te geven en vervolgens te herhalen, om ervoor te zorgen dat alle blobs of bestanden worden gelezen zonder dat er veronderstellingen worden gemaakt van de partitie. Het partitie bereik kan mogelijk worden gewijzigd tijdens een door micro soft geïnitieerde failover of hand matige failover. U kunt de [List blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruiken om de lijst met blobs of de [lijst ADLS Gen2-API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) voor de lijst met bestanden op te sommen. 
 
 ## <a name="microsoft-initiated-failover"></a>Door micro soft geïnitieerde failover
 

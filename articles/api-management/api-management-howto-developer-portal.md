@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1311328dde6fc70202ce3c6271b33f79d52102cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1eef7b6505c4800acbe8aa69cf6f17eecc503aed
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472220"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796025"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Overzicht van Azure API Management-ontwikkelaars Portal
 
@@ -115,9 +115,33 @@ Nee.
 
 Nee.
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>Ik krijg een CORS-fout bij het gebruik van de interactieve console. Wat zal ik doen?
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>Ik krijg een CORS-fout bij het gebruik van de interactieve console. Wat moet ik doen?
 
-De interactieve console maakt een API aan de client zijde via de browser. U kunt het CORS-probleem oplossen door [een CORS-beleid](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) toe te voegen aan uw API (s). U kunt alle para meters hand matig opgeven (bijvoorbeeld Origin als https://contoso.com) of een Joker `*` waarde gebruiken.
+De interactieve console maakt een API aan de client zijde via de browser. U kunt het CORS-probleem oplossen door [een CORS-beleid](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) toe te voegen aan uw API (s). U kunt alle para meters hand matig opgeven of Joker `*` waarden gebruiken. Bijvoorbeeld:
+
+```XML
+<cors>
+    <allowed-origins>
+        <origin>*</origin>
+    </allowed-origins>
+    <allowed-methods>
+        <method>GET</method>
+        <method>POST</method>
+        <method>PUT</method>
+        <method>DELETE</method>
+        <method>HEAD</method>
+        <method>OPTIONS</method>
+        <method>PATCH</method>
+        <method>TRACE</method>
+    </allowed-methods>
+    <allowed-headers>
+        <header>*</header>
+    </allowed-headers>
+    <expose-headers>
+        <header>*</header>
+    </expose-headers>
+</cors>
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

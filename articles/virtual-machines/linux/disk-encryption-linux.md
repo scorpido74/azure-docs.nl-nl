@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a1515144f340938cddfd5ca9f2ac4803bcb3f77
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 2e7646d2f84696d0b04183d8d06b96405909de87
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174724"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750040"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption scenario's voor Linux-Vm's
 
@@ -38,11 +38,11 @@ In alle gevallen moet u [een moment opname nemen](snapshot-copy-managed-disk.md)
 
 Azure Disk Encryption kunnen worden ingeschakeld en beheerd via de [Azure cli](/cli/azure) en [Azure PowerShell](/powershell/azure/new-azureps-module-az). Hiervoor moet u de hulpprogram ma's lokaal installeren en verbinding maken met uw Azure-abonnement.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 De [Azure CLI 2,0](/cli/azure) is een opdracht regel programma voor het beheer van Azure-resources. De CLI is ontworpen voor flexibelere query gegevens, ondersteunt langlopende bewerkingen als niet-blokkerende processen en maakt het uitvoeren van scripts eenvoudig. U kunt deze lokaal installeren door de stappen in [de Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest)te volgen.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 Als u [zich wilt aanmelden bij uw Azure-account met de Azure cli](/cli/azure/authenticate-azure-cli), gebruikt u de opdracht [AZ login](/cli/azure/reference-index?view=azure-cli-latest#az-login) .
 
@@ -68,7 +68,7 @@ Zie [aan de slag met Azure CLI 2,0](/cli/azure/get-started-with-azure-cli)voor m
 ### <a name="azure-powershell"></a>Azure PowerShell
 De [Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az) bevat een set cmdlets die gebruikmaken van het [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) model voor het beheren van uw Azure-resources. U kunt dit in uw browser gebruiken met [Azure Cloud shell](../../cloud-shell/overview.md), of u kunt het installeren op uw lokale computer met behulp van de instructies in [de Azure PowerShell-module installeren](/powershell/azure/install-az-ps). 
 
-Als u dit al hebt geïnstalleerd, moet u ervoor zorgen dat u de nieuwste versie van Azure PowerShell SDK-versie gebruikt om Azure Disk Encryption te configureren. Down load de nieuwste versie van [Azure PowerShell release](https://github.com/Azure/azure-powershell/releases).
+Als u dit al hebt geïnstalleerd, moet u ervoor zorgen dat u de nieuwste versie van Azure PowerShell SDK-versie gebruikt om Azure Disk Encryption te configureren. Download de nieuwste versie van [Azure PowerShell versie](https://github.com/Azure/azure-powershell/releases).
 
 Gebruik de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) om u aan [te melden bij uw Azure-account met Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-2.5.0).
 
@@ -403,5 +403,5 @@ Azure Disk Encryption werkt niet voor de volgende Linux-scenario's,-functies en-
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van Azure Disk Encryption](disk-encryption-overview.md)
-- [Voorbeeld scripts Azure Disk Encryption](disk-encryption-sample-scripts.md)
-- [Azure Disk Encryption probleem oplossing](disk-encryption-troubleshooting.md)
+- [Voorbeeldscripts voor Azure Disk Encryption](disk-encryption-sample-scripts.md)
+- [Problemen met Azure Disk Encryption oplossen](disk-encryption-troubleshooting.md)

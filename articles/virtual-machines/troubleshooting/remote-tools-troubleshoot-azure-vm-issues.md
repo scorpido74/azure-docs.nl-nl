@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 70d777fe2e939c1871bc318eed439214fd3e3f60
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: fab1e0b6f3b01446baed974b4be9b7295af4f837
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155734"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749717"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Externe hulpprogram ma's gebruiken voor het oplossen van problemen met Azure VM
 
@@ -39,11 +39,11 @@ psexec \\<computer>-u user -s cmd
 
 >[!Note]
 >* De opdracht moet worden uitgevoerd op een computer die zich in hetzelfde VNET bevindt.
->* Dip of hostnaam kan worden gebruikt om computer \<> te vervangen.
+>* DIP of hostnaam kan worden gebruikt om \<computer > te vervangen.
 >* De para meter-s zorgt ervoor dat de opdracht wordt aangeroepen met behulp van systeem account (Administrator-machtiging).
 >* PsExec maakt gebruik van TCP-poorten 135 en 445. Daarom moeten de twee poorten zijn geopend op de firewall.
 
-## <a name="run-commands"></a>Uitvoeropdrachten
+## <a name="run-commands"></a>Opdrachten uitvoeren
 
 Zie [Power shell-scripts uitvoeren in uw Windows-VM met de opdracht uitvoeren](../windows/run-command.md) voor meer informatie over het gebruik van de functie opdrachten uitvoeren om scripts uit te voeren op de virtuele machine.
 
@@ -91,7 +91,7 @@ Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccount
 
 ### <a name="for-v2-vms"></a>Voor v2-Vm's
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ```powershell
 #Setup the basic variables
@@ -213,7 +213,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 1. Open de REGI ster-editor (Regedit. exe) van een andere VM op hetzelfde VNET.
 
-2. Selecteer **bestand** >**Connect netwerk Registry**.
+2. Selecteer **bestand** >**verbinding maken met netwerk register**.
 
    ![Externe optie](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 

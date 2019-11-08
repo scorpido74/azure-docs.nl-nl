@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: Content Moderator-client bibliotheek voor python | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Ga aan de slag met de Content Moderator-client bibliotheek voor python.
+description: Meer informatie over hoe u aan de slag kunt gaan met de Azure Cognitive Services Content Moderator-client bibliotheek voor python.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 28c70e7d226e8f4b2458234e1f14754cdbb1825c
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 3978b4ec302bf4dd2390f2390c967ca6e12e67d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044036"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744404"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Snelstartgids: Content Moderator-client bibliotheek voor python
 
@@ -29,7 +29,7 @@ Gebruik de Content Moderator-client bibliotheek voor python voor het volgende:
 * [Een aangepaste installatie kopie lijst gebruiken](#use-a-custom-image-list)
 * [Een beoordeling maken](#create-a-review)
 
-[Referentie documentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [package (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | -voor[beelden](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Referentie documentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [pakket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | -voor [beelden](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -101,7 +101,7 @@ Exemplaar een client met uw eind punt en sleutel. Maak een [CognitiveServicesCre
 
 ## <a name="moderate-text"></a>Gemiddelde tekst
 
-De volgende code gebruikt een Content Moderator-client om een tekst hoofdtekst te analyseren en de resultaten in de-console af te drukken. Maak eerst een **text_files/-** map aan de basis van het project en voeg een *content_moderator_text_moderation. txt* -bestand toe. Voeg uw eigen tekst toe aan dit bestand of gebruik de volgende voorbeeld tekst:
+De volgende code gebruikt een Content Moderator-client om een tekst hoofdtekst te analyseren en de resultaten in de-console af te drukken. Maak eerst een **text_files/** map in de hoofdmap van het project en voeg een *content_moderator_text_moderation. txt* -bestand toe. Voeg uw eigen tekst toe aan dit bestand of gebruik de volgende voorbeeld tekst:
 
 ```
 Is this a grabage email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -122,7 +122,7 @@ De volgende code laat zien hoe u een lijst met aangepaste voor waarden voor teks
 
 ### <a name="get-sample-text"></a>Voorbeeld tekst ophalen
 
-Als u dit voor beeld wilt gebruiken, moet u een **text_files/-** map maken in de hoofdmap van het project en een *content_moderator_term_list. txt* -bestand toevoegen. Dit bestand moet een organieke tekst bevatten die wordt gecontroleerd aan de hand van de lijst met voor waarden. U kunt de volgende voorbeeld tekst gebruiken:
+Als u dit voor beeld wilt gebruiken, moet u een **text_files/** map maken in de hoofdmap van het project en een *content_moderator_term_list. txt* -bestand toevoegen. Dit bestand moet een organieke tekst bevatten die wordt gecontroleerd aan de hand van de lijst met voor waarden. U kunt de volgende voorbeeld tekst gebruiken:
 
 ```
 This text contains the terms "term1" and "term2".
@@ -242,7 +242,7 @@ Met de volgende code worden al uw installatie kopieën aan de lijst toegevoegd.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_add)]
 
-Definieer de **add_images** -hulp functie elders in het script.
+Definieer de **add_images** helper-functie elders in het script.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_addhelper)]
 
@@ -335,7 +335,7 @@ Als u in dit scenario een call back-eind punt hebt gebruikt, wordt er een gebeur
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit met de `python`-opdracht in uw Quick Start-bestand.
+Voer de toepassing uit met de opdracht `python` in uw Quick Start-bestand.
 
 ```console
 python quickstart-file.py

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2148d6ea869a87571008c1f84c5b1000d4030bbb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 845ffda22cae9464870786cc5997b9f5521c03e1
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175950"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795628"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Externe toegang tot Power BI-Mobiel met Azure AD-toepassingsproxy inschakelen
 
@@ -82,7 +82,7 @@ Zie voor meer informatie [Kerberos-beperkte delegatie voor eenmalige aanmelding 
 U bent nu klaar om Azure AD-toepassingsproxy te configureren.
 
 1. Publiceer Report Services via toepassings proxy met de volgende instellingen. Zie [toepassingen publiceren met Azure AD-toepassingsproxy](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)voor stapsgewijze instructies voor het publiceren van een toepassing via toepassings proxy.
-   - **Interne URL**: Voer de URL naar de rapport server in die de connector kan bereiken in het bedrijfs netwerk. Zorg ervoor dat deze URL bereikbaar is vanaf de server waarop de connector is geïnstalleerd. Een best practice maakt gebruik van een domein op het hoogste niveau, zoals `https://servername/` om problemen met subpaden (bijvoorbeeld `https://servername/reports/` en `https://servername/reportserver/`) niet te publiceren via toepassings proxy.
+   - **Interne URL**: Voer de URL naar de rapport server in die de connector kan bereiken in het bedrijfs netwerk. Zorg ervoor dat deze URL bereikbaar is vanaf de server waarop de connector is geïnstalleerd. Een best practice gebruikt een domein op het hoogste niveau, zoals `https://servername/` om problemen te voor komen met subpaden die zijn gepubliceerd via toepassings proxy. Gebruik bijvoorbeeld `https://servername/` en niet `https://servername/reports/` of `https://servername/reportserver/`.
      > [!NOTE]
      > U kunt het beste een beveiligde HTTPS-verbinding met de rapport server gebruiken. Zie [SSL-verbindingen configureren op een rapport server in systeem eigen modus](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017) voor meer informatie.
    - **Externe URL**: Voer de open bare URL in waarmee de Power bi mobiele app verbinding maakt. Het kan bijvoorbeeld `https://reports.contoso.com` als een aangepast domein wordt gebruikt. Als u een aangepast domein wilt gebruiken, uploadt u een certificaat voor het domein en wijst u een DNS-record naar het standaard msappproxy.net-domein voor uw toepassing. Zie [werken met aangepaste domeinen in Azure AD-toepassingsproxy](application-proxy-configure-custom-domain.md)voor gedetailleerde stappen.

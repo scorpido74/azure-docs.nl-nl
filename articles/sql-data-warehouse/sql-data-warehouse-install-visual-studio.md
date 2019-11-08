@@ -9,15 +9,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 10/17/2019
+ms.date: 11/06/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: caf4a3efbfafcdb10a8834c213b2469e30296501
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 96d66e6190732d88ba9a33094b6c27bbadfd4aae
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692668"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747805"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>Aan de slag met Visual Studio 2019 voor SQL Data Warehouse
 Visual Studio **2019** SQL Server Data tools (SSDT) is één hulp programma waarmee u het volgende kunt doen:
@@ -29,14 +29,8 @@ Visual Studio **2019** SQL Server Data tools (SSDT) is één hulp programma waar
 - Integreer uw database project met broncode beheer systemen zoals Git met Azure opslag plaatsen
 - Continue integratie en implementatie pijplijnen instellen met automatiserings servers zoals Azure DevOps
 
-> [!NOTE]
-> Momenteel is Visual Studio SSDT-database projecten beschikbaar als preview-versie. Als u periodieke updates voor deze functie wilt ontvangen, kunt u stemmen op [UserVoice].
-
-## <a name="install-visual-studio-2019-preview"></a>Visual Studio 2019 Preview installeren
+## <a name="install-visual-studio-2019"></a>Installeer Visual Studio 2019
 Zie [Down load Visual Studio 2019][] om visual studio **16,3 en hoger**te downloaden en te installeren. Selecteer tijdens de installatie de werk belasting gegevens opslag en-verwerking. Zelfstandige installatie van SSDT is niet meer vereist in Visual Studio 2019.
-
-## <a name="reporting-issues-with-ssdt-visual-studio-2019-preview"></a>Problemen melden met SSDT Visual Studio 2019 (preview-versie)
-Als u problemen wilt rapporteren wanneer u SSDT gebruikt met SQL Data Warehouse, moet u de volgende e-mail distributie lijst per e-mail verzenden: <sqldwssdtpreview@service.microsoft.com>
 
 ## <a name="next-steps"></a>Volgende stappen
 Nu u de nieuwste versie van SSDT hebt, bent u klaar om [verbinding te maken][connect] met uw SQL Data Warehouse.

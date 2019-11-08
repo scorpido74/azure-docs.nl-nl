@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 645d969d71a0b8707d7969f4bf68a07ab0211d0a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 32264fc6c58dd1cb6c1514af1c07391ab0e9193d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080030"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749582"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Windows VM-installatie kopieën zoeken in azure Marketplace met Azure PowerShell
 
@@ -27,7 +27,7 @@ In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om VM-inst
 
 U kunt ook bladeren in beschik bare installatie kopieën en aanbiedingen met behulp van de [Azure Marketplace](https://azuremarketplace.microsoft.com/) -winkel, de [Azure Portal](https://portal.azure.com)of de [Azure cli](../linux/cli-ps-findimage.md). 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -38,17 +38,17 @@ In deze tabel ziet u een subset van beschik bare Sku's voor de aangegeven uitgev
 | Uitgever | Aanbieding | Sku |
 |:--- |:--- |:--- |
 | MicrosoftWindowsServer |WindowsServer |2019-Data Center |
-| MicrosoftWindowsServer |WindowsServer |2019-Datacenter-Core |
+| MicrosoftWindowsServer |WindowsServer |2019-Data Center-core |
 | MicrosoftWindowsServer |WindowsServer |2019-Data Center-met-containers |
-| MicrosoftWindowsServer |WindowsServer |2016-Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2016-Datacenter-Server-Core |
+| MicrosoftWindowsServer |WindowsServer |2016-Data Center |
+| MicrosoftWindowsServer |WindowsServer |2016-Data Center-Server-Core |
 | MicrosoftWindowsServer |WindowsServer |2016-Data Center-met-containers |
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
 | MicrosoftDynamicsNAV |DynamicsNAV |2017 |
 | MicrosoftSharePoint |MicrosoftSharePointServer |2019 |
-| MicrosoftSQLServer |SQL2019-WS2016 |Zakelijk |
-| MicrosoftRServer |RServer-WS2016 |Zakelijk |
+| MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
+| MicrosoftRServer |RServer-WS2016 |Enterprise |
 
 ## <a name="navigate-the-images"></a>Navigeren door de afbeeldingen
 
@@ -88,7 +88,7 @@ Voer vervolgens voor een geselecteerde SKU [Get-AzVMImage](https://docs.microsof
     Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
     ```
     
-Vanuit de uitvoer van de `Get-AzVMImage` opdracht kunt u een versie kopie selecteren om een nieuwe virtuele machine te implementeren.
+Vanuit de uitvoer van de `Get-AzVMImage`-opdracht kunt u een versie kopie selecteren om een nieuwe virtuele machine te implementeren.
 
 In het volgende voor beeld ziet u de volledige volg orde van de opdrachten en de bijbehorende uitvoer:
 
@@ -176,17 +176,17 @@ $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-Nu kunt u de geselecteerde Uitgever, aanbieding, SKU en versie combi neren in een URN (waarden gescheiden door:). Geef deze urn door met `--image` de para meter bij het maken van een virtuele machine met de cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . U kunt het versie nummer in de URN eventueel vervangen door de nieuwste versie van de installatie kopie.
+Nu kunt u de geselecteerde Uitgever, aanbieding, SKU en versie combi neren in een URN (waarden gescheiden door:). Geef deze URN door met de para meter `--image` wanneer u een virtuele machine maakt met de cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . U kunt het versie nummer in de URN eventueel vervangen door de nieuwste versie van de installatie kopie.
 
-Als u een virtuele machine implementeert met een resource manager-sjabloon, stelt u de installatie kopie parameters afzonderlijk `imageReference` in de eigenschappen in. Zie de [sjabloonverwijzing](/azure/templates/microsoft.compute/virtualmachines).
+Als u een virtuele machine implementeert met een resource manager-sjabloon, stelt u de installatie kopie parameters afzonderlijk in de `imageReference` eigenschappen in. Zie de [sjabloonverwijzing](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
 ### <a name="view-plan-properties"></a>Plan eigenschappen weer geven
 
-Voer de cmdlet uit om de `Get-AzVMImage` gegevens van het aankoop plan van een afbeelding weer te geven. Als de `PurchasePlan` eigenschap in de uitvoer niet `null`is, heeft de installatie kopie de voor waarden die u moet accepteren voordat u een programmatische implementatie uitvoert.  
+Als u de informatie van het aankoop plan van een afbeelding wilt weer geven, voert u de `Get-AzVMImage`-cmdlet uit. Als de eigenschap `PurchasePlan` in de uitvoer niet `null`is, heeft de installatie kopie voor waarden die u moet accepteren voordat u een programmatische implementatie kunt uitvoeren.  
 
-De Data Center-installatie kopie van *Windows Server 2016* heeft bijvoorbeeld geen aanvullende voor waarden `PurchasePlan` , dus `null`is de informatie:
+De *Windows Server 2016 Data Center* -installatie kopie heeft bijvoorbeeld geen aanvullende voor waarden, dus de `PurchasePlan` informatie wordt `null`:
 
 ```powershell
 $version = "2016.127.20170406"
@@ -212,7 +212,7 @@ DataDiskImages   : []
 
 ```
 
-In het onderstaande voor beeld ziet u een vergelijk bare opdracht voor de *Data Science Virtual Machine-Windows 2016-* installatie `PurchasePlan` kopie, `name`die de volgende `publisher`eigenschappen heeft:, `product`en. Sommige installatie kopieën hebben ook `promotion code` een eigenschap. Als u deze installatie kopie wilt implementeren, raadpleegt u de volgende secties om de voor waarden te accepteren en om programmatische implementatie mogelijk te maken.
+In het onderstaande voor beeld ziet u een vergelijk bare opdracht voor de *Data Science Virtual Machine-Windows 2016-* installatie kopie, die de volgende `PurchasePlan` eigenschappen heeft: `name`, `product`en `publisher`. Sommige installatie kopieën hebben ook een `promotion code` eigenschap. Als u deze installatie kopie wilt implementeren, raadpleegt u de volgende secties om de voor waarden te accepteren en om programmatische implementatie mogelijk te maken.
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
@@ -241,7 +241,7 @@ DataDiskImages   : []
 
 ```
 
-### <a name="accept-the-terms"></a>De voorwaarden accepteren
+### <a name="accept-the-terms"></a>De voor waarden accepteren
 
 Als u de licentie voorwaarden wilt weer geven, gebruikt u de cmdlet [Get-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms) en geeft u de para meters van het aankoop plan door. De uitvoer bevat een koppeling naar de voor waarden van de Marketplace-installatie kopie en toont of u de voor waarden eerder hebt geaccepteerd. Zorg ervoor dat u alle kleine letters in de parameter waarden gebruikt.
 
@@ -318,11 +318,11 @@ $version = "19.01.14"
 $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
 ...
 ```
-Vervolgens geeft u de VM-configuratie samen met de netwerk configuratie objecten door `New-AzVM` aan de cmdlet.
+Vervolgens geeft u de VM-configuratie samen met de netwerk configuratie objecten door aan de cmdlet `New-AzVM`.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie `New-AzVM` [een virtuele Windows-machine maken met Power shell](quick-create-powershell.md)om snel een virtuele machine met de cmdlet te maken met behulp van basis informatie over de installatie kopie.
+Zie [een virtuele Windows-machine maken met Power shell](quick-create-powershell.md)als u snel een virtuele machine wilt maken met de cmdlet `New-AzVM` met behulp van basis installatie kopie-informatie.
 
 
 Bekijk een voor beeld van een Power shell-script om [een volledig geconfigureerde virtuele machine te maken](../scripts/virtual-machines-windows-powershell-sample-create-vm.md).

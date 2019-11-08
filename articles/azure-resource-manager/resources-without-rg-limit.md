@@ -4,14 +4,14 @@ description: Geeft een lijst van de Azure-resource typen die meer dan 800 exempl
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 11/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0f9db618b69ff692350f333b8a4a4354f4980169
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: c08b80a841199ed2737f6fe8d7f2b76943c5b269
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249124"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795655"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Resources die niet beperkt zijn tot 800 exemplaren per resource groep
 
@@ -74,8 +74,18 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 
 * services
 
+## <a name="microsofteventhub"></a>Microsoft.EventHub
+
+* clusters
+* naam ruimten
+
+## <a name="microsoftexperimentation"></a>Micro soft. experimenten
+
+* experimentWorkspaces
+
 ## <a name="microsoftguestconfiguration"></a>Micro soft. GuestConfiguration
 
+* configurationProfileAssignments
 * guestConfigurationAssignments
 * software
 * softwareUpdateProfile
@@ -141,9 +151,17 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 
 * workspaceCollections: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
 
+## <a name="microsoftrelay"></a>Microsoft.Relay
+
+* naam ruimten
+
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
 * jobcollections
+
+## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
+
+* naam ruimten
 
 ## <a name="microsoftservicefabricmesh"></a>Micro soft. ServiceFabricMesh
 

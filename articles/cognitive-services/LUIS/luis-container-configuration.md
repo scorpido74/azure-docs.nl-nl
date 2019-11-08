@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: 163fe24c941f779a2160ee5ef50f9d4dfcea1022
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a30fcd0ec7e53c78876596baf787639e81c638db
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486739"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795012"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding docker-containers configureren 
 
@@ -35,7 +35,7 @@ Deze container bevat de volgende configuratie-instellingen:
 |Nee|[Fluentd](#fluentd-settings)|Schrijf logboek en, eventueel, metrische gegevens naar een vloeiende server.|
 |Nee|[Http-proxy](#http-proxy-credentials-settings)|Een HTTP-proxy configureren voor het maken van uitgaande aanvragen.|
 |Nee|[Userenv](#logging-settings)|Biedt ASP.NET Core ondersteuning voor logboek registratie voor uw container. |
-|Ja|[Koppelt](#mount-settings)|Gegevens lezen en schrijven van de hostcomputer naar de container en van de container terug naar de hostcomputer.|
+|Ja|[Hiermee wordt gekoppeld](#mount-settings)|Gegevens lezen en schrijven van de hostcomputer naar de container en van de container terug naar de hostcomputer.|
 
 > [!IMPORTANT]
 > De instellingen [`ApiKey`](#apikey-setting), [`Billing`](#billing-setting)en [`Eula`](#eula-setting) worden samen gebruikt en u moet geldige waarden opgeven voor alle drie deze. anders kan de container niet worden gestart. Zie [facturering](luis-container-howto.md#billing)voor meer informatie over het gebruik van deze configuratie-instellingen voor het instantiëren van een container.
@@ -66,7 +66,7 @@ Deze instelling bevindt zich op de volgende locaties:
 
 | Vereist | Naam | Gegevenstype | Beschrijving |
 |----------|------|-----------|-------------|
-| Ja      | `Billing` | tekenreeks | URL van het facturerings eindpunt. |
+| Ja      | `Billing` | tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](luis-container-howto.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [aangepaste subdomein namen voor Cognitive Services](../cognitive-services-custom-subdomains.md)voor meer informatie en een volledige lijst met regionale eind punten. |
 
 ## <a name="eula-setting"></a>Gebruiksrecht overeenkomst instellen
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: ac1572a75a3310afb9d0e0a34c6751ed12d839f9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 24ed7b75dfa8cb09c530a3f4a896aa9ff9aa92b5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102439"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749174"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Een gegeneraliseerde VHD uploaden naar Azure om een nieuwe virtuele machine te maken
 
@@ -30,7 +30,7 @@ Als u een virtuele machine wilt maken op basis van een gespecialiseerde VHD in e
 
 In dit onderwerp wordt beschreven hoe u opslag accounts gebruikt, maar we raden klanten aan om in plaats daarvan te gaan gebruiken Managed Disks. Zie [een nieuwe virtuele machine maken van een gegeneraliseerde VHD die is geüpload naar Azure met Managed disks](upload-generalized-managed.md)voor een volledige procedure voor het voorbereiden, uploaden en maken van een nieuwe virtuele machine met Managed disks.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="prepare-the-vm"></a>De virtuele machine voorbereiden
 
@@ -40,7 +40,7 @@ Voor een gegeneraliseerde VHD zijn al uw persoonlijke account gegevens verwijder
   * De virtuele machine generaliseren met Sysprep
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>Een virtuele Windows-machine generaliseren met Sysprep
-In deze sectie wordt beschreven hoe u uw virtuele Windows-machine generaliseren voor gebruik als een installatie kopie. Sysprep verwijdert onder meer al uw persoonlijke accountinformatie en de machine wordt voorbereid om als een installatiekopie te worden gebruikt. Zie voor meer informatie over [Sysprep gebruiken: een inleiding](https://technet.microsoft.com/library/bb457073.aspx).
+In deze sectie wordt beschreven hoe u uw virtuele Windows-machine generaliseren voor gebruik als een installatie kopie. Sysprep verwijdert onder meer al uw persoonlijke accountinformatie en de machine wordt voorbereid om als een installatiekopie te worden gebruikt. Raadpleeg [Sysprep gebruiken: een inleiding](https://technet.microsoft.com/library/bb457073.aspx) voor meer informatie over Sysprep.
 
 Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden ondersteund door Sysprep. Zie [Sysprep-ondersteuning voor Server functies](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) voor meer informatie.
 
@@ -81,7 +81,7 @@ Als u Power shell-versie 1,4 of hoger nog niet hebt geïnstalleerd, leest u [hoe
     ```powershell
     Get-AzSubscription
     ```
-3. Stel het juiste abonnement in met de abonnements-ID. Vervang `<subscriptionID>` door de id van het juiste abonnement.
+3. Stel het juiste abonnement in met de abonnements-ID. Vervang `<subscriptionID>` door de ID van het juiste abonnement.
    
     ```powershell
     Select-AzSubscription -SubscriptionId "<subscriptionID>"
@@ -121,7 +121,7 @@ Als u een opslag account wilt maken, voert u de volgende stappen uit:
  
 ### <a name="start-the-upload"></a>Het uploaden starten 
 
-Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de installatie kopie te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand **myVHD. VHD** geüpload `"C:\Users\Public\Documents\Virtual hard disks\"` van naar een opslag account met de naam **mystorageaccount** in de resource groep **myResourceGroup** . Het bestand wordt in de container met de naam **mycontainer** geplaatst en de nieuwe bestands naam wordt **myUploadedVHD. VHD**.
+Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de installatie kopie te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand **myVHD. VHD** geüpload van `"C:\Users\Public\Documents\Virtual hard disks\"` naar een opslag account met de naam **mystorageaccount** in de resource groep **myResourceGroup** . Het bestand wordt in de container met de naam **mycontainer** geplaatst en de nieuwe bestands naam wordt **myUploadedVHD. VHD**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -148,13 +148,13 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 Afhankelijk van uw netwerk verbinding en de grootte van het VHD-bestand kan het enige tijd duren voordat deze opdracht is voltooid.
 
 
-## <a name="create-a-new-vm"></a>Een nieuwe virtuele machine maken 
+## <a name="create-a-new-vm"></a>Een nieuwe VM maakt 
 
 U kunt nu de geüploade VHD gebruiken om een nieuwe virtuele machine te maken. 
 
 ### <a name="set-the-uri-of-the-vhd"></a>De URI van de VHD instellen
 
-De URI voor de VHD die moet worden gebruikt, heeft de volgende indeling: https://**mystorageaccount**. blob.core.Windows.net/**mycontainer**/**MyVhdName**. VHD. In dit voor beeld bevindt de VHD met de naam **myVHD** zich in het opslag account **mystorageaccount** in de container **mycontainer**.
+De URI voor de VHD die moet worden gebruikt, heeft de volgende indeling: https://**mystorageaccount**. blob.core.windows.net/**mycontainer**/**MyVhdName**. VHD. In dit voor beeld bevindt de VHD met de naam **myVHD** zich in het opslag account **mystorageaccount** in de container **mycontainer**.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -282,7 +282,7 @@ In het volgende Power shell-script ziet u hoe u de configuraties van virtuele ma
 ```
 
 ## <a name="verify-that-the-vm-was-created"></a>Controleren of de virtuele machine is gemaakt
-Als u klaar bent, ziet u de zojuist gemaakte vm in de [Azure Portal](https://portal.azure.com) onder**virtuele machines** **Bladeren** > of met behulp van de volgende Power shell-opdrachten:
+Als u klaar bent, ziet u de zojuist gemaakte VM in de [Azure Portal](https://portal.azure.com) onder **Bladeren** > **virtuele machines**of met behulp van de volgende Power shell-opdrachten:
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

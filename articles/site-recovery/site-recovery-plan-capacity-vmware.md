@@ -1,96 +1,96 @@
 ---
-title: Plannen van capaciteit en schaalbaarheid voor noodherstel van VMware naar Azure met behulp van Azure Site Recovery | Microsoft Docs
-description: In dit artikel kunt u plannen van capaciteit en schaalbaarheid bij het instellen van herstel na noodgevallen van virtuele VMware-machines naar Azure met behulp van Azure Site Recovery.
+title: Plan capaciteit en schalen voor nood herstel van VMware naar Azure met behulp van Azure Site Recovery | Microsoft Docs
+description: In dit artikel vindt u meer informatie over het plannen van capaciteit en schaal baarheid bij het instellen van herstel na nood gevallen van virtuele VMware-machines in azure met behulp van Azure Site Recovery.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 9a77b3982d8aed6ae694c32baecd7ae194c51724
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bf1b34295d827124198206e743bc21d5f7eb904
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924835"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747896"
 ---
-# <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Plannen van capaciteit en schaalbaarheid voor noodherstel van VMware naar Azure
+# <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Capaciteit en schaling plannen voor nood herstel van VMware naar Azure
 
-In dit artikel gebruiken voor het plannen van capaciteit en schalen wanneer u on-premises VMware-machines en fysieke servers naar Azure met behulp van repliceren [Azure Site Recovery](site-recovery-overview.md).
+Gebruik dit artikel om capaciteit en schaal baarheid te plannen wanneer u on-premises virtuele VMware-machines en fysieke servers naar Azure repliceert met behulp van [Azure site Recovery](site-recovery-overview.md).
 
-## <a name="how-do-i-start-capacity-planning"></a>Hoe start ik plannen van capaciteit?
+## <a name="how-do-i-start-capacity-planning"></a>Hoe kan ik u de capaciteits planning te plannen?
 
-Voor meer informatie over vereisten voor Azure Site Recovery-infrastructuur, verzamelt u informatie over uw replicatieomgeving door [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) voor VMware-replicatie. Zie voor meer informatie, [over Site Recovery Deployment Planner voor VMware naar Azure](site-recovery-deployment-planner.md). 
+Als u meer wilt weten over Azure Site Recovery infrastructuur vereisten, verzamelt u informatie over uw replicatie omgeving door [Azure site Recovery Deployment planner](https://aka.ms/asr-deployment-planner-doc) voor VMware-replicatie uit te voeren. Zie voor meer informatie [over Site Recovery Deployment planner voor VMware naar Azure](site-recovery-deployment-planner.md). 
 
-Site Recovery Deployment Planner biedt een rapport met volledige informatie over compatibele en niet-compatibele virtuele machines, schijven per VM en gegevensverloop per schijf. Het hulpprogramma bevat ook een overzicht van netwerkbandbreedtevereisten om te voldoen aan de RPO-doel en de Azure-infrastructuur die zijn voor succesvolle replicatie en failover vereist.
+Site Recovery Deployment Planner biedt een rapport met volledige informatie over compatibele en niet-compatibele Vm's, schijven per VM en gegevens verloop per schijf. Het hulp programma geeft ook een overzicht van de vereisten voor de netwerk bandbreedte om te voldoen aan de doel-RPO en de Azure-infra structuur die is vereist voor een succes volle replicatie en testfailover.
 
-## <a name="capacity-considerations"></a>Overwegingen voor capaciteit
+## <a name="capacity-considerations"></a>Capaciteits overwegingen
 
 Onderdeel | Details
 --- | ---
-**Replicatie** | **Maximale dagelijkse veranderingssnelheid**: Een beveiligde virtuele machine kan slechts één processerver gebruiken. Een dagelijkse kan worden verwerkt door een enkele processerver wijzigen beoordelen tot 2 TB. 2 TB is dus dat de maximale dagelijkse veranderingssnelheid van gegevens die wordt ondersteund voor een beveiligde machine.<br /><br /> **Maximale doorvoer**: Een gerepliceerde machine kan deel uitmaken van een opslagaccount in Azure. Een standaard Azure Storage-account kan een maximum van 20.000 aanvragen per seconde verwerken. Het is raadzaam dat u het aantal i/o-bewerkingen per seconde (IOP's) via een bronmachine 20.000 beperken. Bijvoorbeeld, als u een bronmachine met vijf schijven en elke schijf 120 IOPS (8 kB groot) op de broncomputer genereert, is de bron-VM in de Azure disk IOPS-limiet van 500. (Het aantal vereiste opslagaccounts voor is gelijk aan de totale bronmachine gedeeld door 20.000 IOP's.)
-**Configuratieserver** | De configuratieserver moet mogelijk voor het afhandelen van het dagelijkse tarief capaciteit voor wijzigen voor alle workloads die worden uitgevoerd op beveiligde machines. De configuratie-computer moet voldoende bandbreedte continu om gegevens te repliceren naar Azure Storage.<br /><br /> Er is een best practice om de configuratieserver op hetzelfde netwerk- en LAN-segment als de machines die u wilt beveiligen. U kunt de configuratieserver plaatsen op een ander netwerk, maar machines die u wilt beveiligen Laagzichtbaarheid-3-netwerk moeten hebben.<br /><br /> Aanbevelingen voor de grootte voor de configuratieserver worden samengevat in de tabel in de volgende sectie.
-**Processerver** | De eerste processerver is standaard geïnstalleerd op de configuratieserver. U kunt extra processervers om te schalen van uw omgeving kunt implementeren. <br /><br /> De processerver ontvangt gegevens van replicatie van beveiligde machines. De processerver optimaliseert de gegevens met behulp van caching, compressie en codering. De processerver verzendt vervolgens de gegevens naar Azure. De proces-server-machine moet voldoende bronnen zijn voor deze taken uitvoeren.<br /><br /> De processerver maakt gebruik van een cache op basis van een schijf. Gebruik een afzonderlijke cacheschijf 600 GB of meer voor het afhandelen van gegevenswijzigingen die zijn opgeslagen als een knelpunt netwerk of een storing optreedt.
+**Replicatie** | **Maximum dagelijkse wijzigings frequentie**: een beveiligde machine kan slechts één proces server gebruiken. Eén processerver kan een hoeveelheid dagelijkse wijzigingen afhandelen tot maximaal 2 TB. 2 TB is dus het maximale aantal dagelijkse gegevens wijzigingen dat wordt ondersteund voor een beveiligde machine.<br /><br /> **Maximale door Voer**: een gerepliceerde machine kan deel uitmaken van één opslag account in Azure. Een standaard Azure Storage account kan Maxi maal 20.000 aanvragen per seconde verwerken. We raden u aan om het aantal invoer/uitvoer-bewerkingen per seconde (IOPS) op een bron machine te beperken tot 20.000. Als u bijvoorbeeld een bron machine hebt die vijf schijven heeft en elke schijf 120 IOPS (8 KB groot) op de bron machine genereert, bevindt de bron machine zich in de limiet voor IOPS per schijf van 500. (Het vereiste aantal opslag accounts is gelijk aan de totale IOPS van de bron machine gedeeld door 20.000.)
+**Configuratieserver** | De configuratie server moet kunnen omgaan met de dagelijkse wijzigings frequentie voor alle workloads die worden uitgevoerd op beveiligde computers. De configuratie computer moet voldoende band breedte hebben om voortdurend gegevens te repliceren naar Azure Storage.<br /><br /> Een best practice is om de configuratie server op hetzelfde netwerk en LAN-segment te plaatsen als de computers die u wilt beveiligen. U kunt de configuratie server op een ander netwerk plaatsen, maar de computers die u wilt beveiligen moeten de laag 3-netwerk zichtbaarheid hebben.<br /><br /> De aanbevolen grootte voor de configuratie server wordt in de volgende sectie in de tabel samenvatten.
+**Processerver** | De eerste proces server wordt standaard geïnstalleerd op de configuratie server. U kunt extra proces servers implementeren om uw omgeving te schalen. <br /><br /> De proces server ontvangt replicatie gegevens van beveiligde computers. De proces server optimaliseert de gegevens met behulp van caching, compressie en versleuteling. Vervolgens verzendt de proces server de gegevens naar Azure. De proces Server computer moet voldoende resources hebben om deze taken uit te voeren.<br /><br /> De proces server maakt gebruik van een schijf cache. Gebruik een afzonderlijke cache schijf van 600 GB of meer voor het afhandelen van gegevens wijzigingen die worden opgeslagen als er een netwerk knelpunt of-storing optreedt.
 
-## <a name="size-recommendations-for-the-configuration-server-and-inbuilt-process-server"></a>Aanbevelingen voor de grootte voor de configuratieserver en ingebouwde processerver
+## <a name="size-recommendations-for-the-configuration-server-and-inbuilt-process-server"></a>Aanbevelingen voor de grootte van de configuratie server en de ingebouwde proces server
 
-Een configuratieserver die gebruikmaakt van een ingebouwde processerver ter bescherming van de werkbelasting kan verwerken van maximaal 200 virtuele machines op basis van de volgende configuraties:
+Een configuratie server die gebruikmaakt van een inbouw proces server om de werk belasting te beveiligen, kan tot 200 virtuele machines afhandelen op basis van de volgende configuraties:
 
-CPU | Geheugen | Cachegrootte van de schijf | Veranderingssnelheid van gegevens | Beveiligde machines
+CPU | Geheugen | Schijf grootte van cache | Gegevens wijzigings frequentie | Beveiligde machines
 --- | --- | --- | --- | ---
-8 vcpu's (2-sockets * 4 kernen \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB of minder | Gebruik voor het repliceren van minder dan 100 machines.
-12 vcpu's (2-sockets * 6 kernen \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB tot 1 TB | Gebruik voor het repliceren van 100-150-machines.
-16 vcpu's (2-sockets * 8 kernen \@ 2,5 GHz) | 32 GB | 1 TB | > 1 TB tot 2 TB | Gebruiken om te repliceren 151 tot 200 computers.
-Een andere configuratieserver implementeren met behulp van een [OVF-sjabloon](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template). | | | | Een nieuwe configuratieserver implementeren als u meer dan 200 machines repliceert.
-Implementatie van een andere [processerver](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | >2 TB| Een nieuwe uitbreidbare processerver implementeren als de totale dagelijkse veranderingssnelheid van gegevens groter dan 2 TB is.
+8 Vcpu's (2 sockets * 4 kern geheugens \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB of minder | Gebruik om minder dan 100 machines te repliceren.
+12 Vcpu's (2 sockets * 6 kernen \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB tot 1 TB | Gebruik om 100 te repliceren naar 150 machines.
+16 Vcpu's (2 sockets * 8 kernen \@ 2,5 GHz) | 32 GB | 1 TB | > 1 TB tot 2 TB | Gebruik om 151 te repliceren naar 200 machines.
+Implementeer een andere configuratie server met behulp van een [OVF-sjabloon](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template). | | | | Implementeer een nieuwe configuratie server als u meer dan 200 computers repliceert.
+Implementeer een andere [proces server](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | > 2 TB| Implementeer een nieuwe scale-out proces server als de totale dagelijkse wijzigings snelheid van gegevens groter is dan 2 TB.
 
 In deze configuraties:
 
-* Elke bron-VM heeft drie schijven van 100 GB elk.
-* We benchmarking opslag van acht shared access signature-stations van 10 K RPM gebruikt met RAID 10 voor de cache schijf metingen.
+* Elke bron machine heeft elk drie schijven van 100 GB.
+* We hebben de benchmarking-opslag gebruikt voor acht Shared Access Signature-stations van 10 K RPM met RAID 10 voor cache-schijf metingen.
 
-## <a name="size-recommendations-for-the-process-server"></a>Aanbevelingen voor de grootte voor de processerver
+## <a name="size-recommendations-for-the-process-server"></a>Aanbevolen grootte voor de proces server
 
-De processerver is het onderdeel die verantwoordelijk is voor replicatie van gegevens in Azure Site Recovery. Als de dagelijkse veranderingssnelheid groter dan 2 TB is, moet u scale-out processervers voor het afhandelen van de replicatie-belasting toevoegen. Als u wilt schalen, kunt u het volgende doen:
+De proces server is het onderdeel dat gegevens replicatie in Azure Site Recovery verwerkt. Als de dagelijkse wijzigings frequentie groter is dan 2 TB, moet u scale-out proces servers toevoegen om de replicatie belasting te verwerken. Als u wilt uitschalen, kunt u het volgende doen:
 
-* Het aantal configuratieservers verhogen door te implementeren met behulp van een [OVF-sjabloon](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template). Bijvoorbeeld, kunt u maximaal 400 machines beveiligen met behulp van twee configuratieservers.
-* Voeg [scale-out processervers](vmware-azure-set-up-process-server-scale.md#download-installation-file). De scale-out processervers gebruiken voor het afhandelen van replicatieverkeer in plaats van (of naast) de configuratieserver.
+* Verhoog het aantal configuratie servers door te implementeren met behulp van een [OVF-sjabloon](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template). U kunt bijvoorbeeld Maxi maal 400 machines beveiligen met behulp van twee configuratie servers.
+* [Scale-out proces servers](vmware-azure-set-up-process-server-scale.md#download-installation-file)toevoegen. Gebruik de scale-out proces servers voor het verwerken van replicatie verkeer in plaats van (of naast) de configuratie server.
 
-De volgende tabel worden beschreven in dit scenario:
+In de volgende tabel wordt dit scenario beschreven:
 
-* Instellen van een uitbreidbare processerver.
-* U beveiligde virtuele machines voor het gebruik van de uitbreidbare processerver hebt geconfigureerd.
-* Elke beveiligde bron-VM heeft drie schijven van 100 GB elk.
+* U hebt een scale-out proces server ingesteld.
+* U hebt beveiligde virtuele machines geconfigureerd voor het gebruik van de scale-out proces server.
+* Elke beveiligde bron machine heeft elk drie schijven van 100 GB.
 
-Aanvullende processerver | Cachegrootte van de schijf | Veranderingssnelheid van gegevens | Beveiligde machines
+Aanvullende proces server | Schijf grootte van cache | Gegevens wijzigings frequentie | Beveiligde machines
 --- | --- | --- | ---
-4 vcpu's (2-sockets * 2 kernen \@ 2,5 GHz), 8 GB geheugen | 300 GB | 250 GB of minder | Gebruik voor het repliceren van 85 of minder machines.
-8 vcpu's (2-sockets * 4 kernen \@ 2,5 GHz), 12 GB geheugen | 600 GB | 251 GB tot 1 TB | Gebruiken om te repliceren 86-150-machines.
-12 vcpu's (2-sockets * 6 kernen \@ 2,5 GHz) 24 GB geheugen | 1 TB | > 1 TB tot 2 TB | Gebruiken om te repliceren 151-225 machines.
+4 Vcpu's (2 sockets * 2 kernen \@ 2,5 GHz), 8 GB geheugen | 300 GB | 250 GB of minder | Gebruik om 85 of minder computers te repliceren.
+8 Vcpu's (2 sockets * 4 kernen \@ 2,5 GHz), 12 GB geheugen | 600 GB | 251 GB tot 1 TB | Gebruik om 86 te repliceren naar 150 machines.
+12 Vcpu's (2 sockets * 6 kernen \@ 2,5 GHz) 24 GB geheugen | 1 TB | > 1 TB tot 2 TB | Gebruik om 151 te repliceren naar 225 machines.
 
-Hoe u de schaal van uw servers, is afhankelijk van uw voorkeur voor een scale-up- of scale-out-model. Een paar geavanceerde configuratieservers implementeren om omhoog te schalen, en verwerken van servers. Als u wilt schalen, door meer servers waarvoor minder bronnen te implementeren. Bijvoorbeeld, als u wilt 200 machines beveiligt met een algemene dagelijkse veranderingssnelheid van gegevens van 1,5 TB, kan u een van de volgende acties uitvoeren:
+Hoe u uw servers schaalt, is afhankelijk van uw voor keur voor een scale-up-of scale-out model. Als u omhoog wilt schalen, implementeert u een aantal geavanceerde configuratie servers en proces servers. Als u wilt uitschalen, implementeert u meer servers met minder resources. Als u bijvoorbeeld 200 machines wilt beveiligen met een totaal dagelijks wijzigings snelheid van 1,5 TB, kunt u een van de volgende acties uitvoeren:
 
-* Instellen van een enkel proces-server (16 vCPU, 24 GB aan RAM-geheugen).
-* Instellen van twee processervers (2 x 8 vCPU, 2 * 12 GB aan RAM-geheugen).
+* Stel één proces server in (16 vCPU, 24 GB RAM-geheugen).
+* Twee proces servers instellen (2 x 8 vCPU, 2 * 12 GB RAM-geheugen).
 
-## <a name="control-network-bandwidth"></a>Netwerkbandbreedte
+## <a name="control-network-bandwidth"></a>Netwerk bandbreedte beheren
 
-Nadat u hebt gebruikt [Site Recovery Deployment Planner](site-recovery-deployment-planner.md) voor het berekenen van de bandbreedte die u nodig hebt voor replicatie (initiële replicatie en klikt u vervolgens de delta-), die u hebt een aantal opties voor het beheren van de hoeveelheid bandbreedte die wordt gebruikt voor replicatie:
+Nadat u [Site Recovery Deployment planner](site-recovery-deployment-planner.md) hebt gebruikt om de band breedte te berekenen die u nodig hebt voor replicatie (initiële replicatie en vervolgens de Delta), hebt u een aantal opties voor het beheren van de hoeveelheid band breedte die wordt gebruikt voor replicatie:
 
-* **Bandbreedte beperken**: VMware-verkeer dat wordt gerepliceerd naar Azure wordt gerouteerd via een specifiek proces. U kunt de bandbreedte op de machines die worden uitgevoerd als processervers beperken.
-* **Bandbreedte van invloed zijn op**: U kunt de bandbreedte die wordt gebruikt voor replicatie via diverse registersleutels beïnvloeden:
-  * De **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** registerwaarde Hiermee geeft u het aantal threads die worden gebruikt voor gegevensoverdracht (initiële replicatie of deltareplicatie) van een schijf. Een hogere waarde verhoogt de netwerkbandbreedte die wordt gebruikt voor replicatie.
-  * De **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** registerwaarde Hiermee geeft u het aantal threads die worden gebruikt voor gegevensoverdracht tijdens een failback.
+* **Bandbreedte beperking**: VMware-verkeer dat wordt gerepliceerd naar Azure gaat via een specifieke proces server. U kunt de band breedte beperken op de computers die als proces servers worden uitgevoerd.
+* **Invloed op band breedte**: u kunt invloed hebben op de band breedte die voor replicatie wordt gebruikt met behulp van een aantal register sleutels:
+  * Met de register waarde **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication\UploadThreadsPerVM** geeft u het aantal threads op dat wordt gebruikt voor gegevens overdracht (initiële of Delta replicatie) van een schijf. Een hogere waarde verhoogt de netwerk bandbreedte die wordt gebruikt voor replicatie.
+  * Met de register waarde **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication\DownloadThreadsPerVM** wordt het aantal threads aangegeven dat wordt gebruikt voor gegevens overdracht tijdens het failback.
 
 ### <a name="throttle-bandwidth"></a>Bandbreedte beperken
 
-1. Open de Azure Backup MMC-module op de computer die u als de processerver gebruiken. Een snelkoppeling voor back-up is standaard beschikbaar zijn op het bureaublad of in de volgende map: C:\Program Files\Microsoft Azure Recovery Services Agent\bin.
-2. Selecteer in de module **eigenschappen wijzigen**.
+1. Open de Azure Backup MMC-module op de computer die u als de proces server gebruikt. Een snelkoppeling voor back-up is standaard beschikbaar op het bureau blad of in de volgende map: C:\Program Files\Microsoft Azure Recovery Services Agent\bin.
+2. Selecteer in de module **Eigenschappen wijzigen**.
 
-    ![Schermafbeelding van de Azure Backup MMC-module de optie om eigenschappen te wijzigen](./media/site-recovery-vmware-to-azure/throttle1.png)
-3. Op de **beperking** tabblad **inschakelen voor gebruik van internetbandbreedte voor back-upbewerkingen**. Stel de limieten in voor werktijden en niet-wordt gewerkt. Geldige bereiken liggen tussen 512 Kbps en 1023 Mbps.
+    ![Scherm afbeelding van de MMC-module Azure Backup voor het wijzigen van eigenschappen](./media/site-recovery-vmware-to-azure/throttle1.png)
+3. Op het tabblad **beperking** selecteert u **beperking van Internet bandbreedte gebruik inschakelen voor back-upbewerkingen**. Stel de limieten voor werk-en niet-werk uren in. Geldige bereiken zijn van 512 Kbps tot 1.023 Mbps.
 
-    ![Schermopname van het dialoogvenster Eigenschappen van de Azure-back-up](./media/site-recovery-vmware-to-azure/throttle2.png)
+    ![Scherm afbeelding van het dialoog venster Eigenschappen van Azure Backup](./media/site-recovery-vmware-to-azure/throttle2.png)
 
 U kunt ook de cmdlet [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) gebruiken om een beperking in te stellen. Hier volgt een voorbeeld:
 
@@ -100,74 +100,74 @@ U kunt ook de cmdlet [Set-OBMachineSetting](https://technet.microsoft.com/librar
 
 **Set-OBMachineSetting -NoThrottle** geeft aan dat er geen beperking is vereist.
 
-### <a name="alter-the-network-bandwidth-for-a-vm"></a>De netwerkbandbreedte voor een virtuele machine wijzigen
+### <a name="alter-the-network-bandwidth-for-a-vm"></a>De netwerk bandbreedte voor een virtuele machine wijzigen
 
-1. In het register van de virtuele machine, gaat u naar **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
-   * Als u wilt wijzigen van de bandbreedteverkeer op een replicerende schijf, wijzig de waarde van **UploadThreadsPerVM**. Maak de sleutel aan als deze nog niet bestaat.
-   * Als u wilt wijzigen van de bandbreedte voor failbackverkeer vanuit Azure, wijzig de waarde van **DownloadThreadsPerVM**.
-2. De standaardwaarde voor elke sleutel is **4**. In netwerken met overprovisioning moeten deze registersleutels zodanig worden gewijzigd dat niet de standaardwaarden worden gebruikt. De maximale waarde die u kunt gebruiken is **32**. Houd het verkeer in de gaten om de waarde te optimaliseren.
+1. Ga in het REGI ster van de virtuele machine naar **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication**.
+   * Als u het bandbreedte verkeer op een replicerende schijf wilt wijzigen, wijzigt u de waarde van **UploadThreadsPerVM**. Maak de sleutel als deze niet bestaat.
+   * Als u de band breedte voor failback-verkeer vanuit Azure wilt wijzigen, wijzigt u de waarde van **DownloadThreadsPerVM**.
+2. De standaard waarde voor elke sleutel is **4**. In netwerken met overprovisioning moeten deze registersleutels zodanig worden gewijzigd dat niet de standaardwaarden worden gebruikt. De maximum waarde die u kunt gebruiken, is **32**. Houd het verkeer in de gaten om de waarde te optimaliseren.
 
-## <a name="set-up-the-site-recovery-infrastructure-to-protect-more-than-500-vms"></a>Instellen van de Site Recovery-infrastructuur meer dan 500 VM's beveiligen
+## <a name="set-up-the-site-recovery-infrastructure-to-protect-more-than-500-vms"></a>De Site Recovery-infra structuur instellen om meer dan 500 Vm's te beveiligen
 
-Voordat u de Site Recovery-infrastructuur hebt ingesteld, toegang krijgen tot de omgeving om te meten van de volgende factoren: compatibele virtuele machines, de dagelijkse veranderingssnelheid van gegevens, de vereiste netwerkbandbreedte voor de RPO die u bereiken wilt, het nummer van Site Recovery onderdelen die vereist zijn, en de tijd die nodig zijn om de initiële replicatie te voltooien. De volgende stappen voor het verzamelen van de vereiste gegevens:
+Voordat u de Site Recovery-infra structuur instelt, hebt u toegang tot de omgeving om de volgende factoren te meten: compatibele virtuele machines, het dagelijkse gegevens wijzigings tempo, de vereiste netwerk bandbreedte voor de RPO die u wilt verkrijgen, het aantal Site Recovery onderdelen die vereist zijn, en de tijd die nodig is om de initiële replicatie te volt ooien. Voer de volgende stappen uit om de vereiste gegevens te verzamelen:
 
-1. Als u wilt deze parameters meten, Site Recovery Deployment Planner in uw omgeving worden uitgevoerd. Zie voor nuttige richtlijnen [over Site Recovery Deployment Planner voor VMware naar Azure](site-recovery-deployment-planner.md).
-2. Implementeren van een configuratieserver die voldoet aan de [aanbevolen waarden voor de configuratieserver](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server). Als uw productie-werkbelasting groter is dan 650 virtuele machines, implementeert u een andere configuratieserver.
-3. Implementeren op basis van de gemeten dagelijkse veranderingssnelheid van gegevens, [scale-out processervers](vmware-azure-set-up-process-server-scale.md#download-installation-file) met behulp van [richtlijnen grootte](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
-4. Als u verwacht dat de gegevenswijzigingssnelheid voor een schijf virtuele machine meer dan 2 MBps dat, zorgt u ervoor dat u premium-beheerde schijven gebruiken. Site Recovery Deployment Planner wordt uitgevoerd voor een bepaalde periode. Pieken in de veranderingssnelheid van gegevens op andere momenten kunnen niet worden vastgelegd in het rapport.
-5. [Instellen van de netwerkbandbreedte](site-recovery-plan-capacity-vmware.md#control-network-bandwidth) op basis van de RPO die u wilt bereiken.
-6. Wanneer de infrastructuur is ingesteld, schakelt u herstel na noodgevallen voor uw workload. Voor meer informatie Zie [de bronomgeving instellen voor VMware naar Azure-replicatie](vmware-azure-set-up-source.md).
+1. U kunt deze para meters meten door Site Recovery Deployment Planner uit te voeren in uw omgeving. Zie [over Site Recovery Deployment planner voor VMware naar Azure](site-recovery-deployment-planner.md)voor nuttige richt lijnen.
+2. Implementeer een configuratie server die voldoet aan de [aanbevelingen voor de grootte van de configuratie server](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server). Als uw productie werk belasting groter is dan 650 virtuele machines, implementeert u een andere configuratie server.
+3. Implementeer [scale-out proces servers](vmware-azure-set-up-process-server-scale.md#download-installation-file) op basis van de gemeten dagelijkse gegevens wijzigings frequentie met behulp van de [richt lijnen](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server)voor de grootte.
+4. Als u verwacht dat de gegevens wijzigings frequentie voor een virtuele schijf machine groter is dan 2 MBps, moet u ervoor zorgen dat u Premium Managed disks gebruikt. Site Recovery Deployment Planner wordt uitgevoerd voor een bepaalde periode. Pieken in de gegevens wijzigings snelheid op andere tijden worden mogelijk niet vastgelegd in het rapport.
+5. [Stel de netwerk bandbreedte](site-recovery-plan-capacity-vmware.md#control-network-bandwidth) in op basis van de RPO die u wilt uitvoeren.
+6. Wanneer de infra structuur is ingesteld, schakelt u herstel na nood gevallen in voor uw werk belasting. Zie [de bron omgeving voor VMware naar Azure-replicatie instellen](vmware-azure-set-up-source.md)voor meer informatie.
 
-## <a name="deploy-additional-process-servers"></a>Extra processervers implementeren
+## <a name="deploy-additional-process-servers"></a>Aanvullende proces servers implementeren
 
-Als u de schaal van uw implementatie meer dan 200 bronmachines of als u een totaal dagelijks verloop snelheid van meer dan 2 TB hebt, moet u processervers voor het afhandelen van het verkeersvolume toevoegen. We hebben het product 9.24 versie voor een verbeterde [verwerken van server-waarschuwingen](vmware-physical-azure-monitor-process-server.md#process-server-alerts) op bij het instellen van een uitbreidbare processerver. [Instellen van de processerver](vmware-azure-set-up-process-server-scale.md) om nieuwe bronmachines te beveiligen of [verdelen](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
+Als u uw implementatie met meer dan 200 bron machines uitschaalt of als u een totaal dagelijks verloop van meer dan 2 TB hebt, moet u proces servers toevoegen om het verkeers volume te verwerken. We hebben het product in 9,24-versie uitgebreid om [waarschuwingen over de proces server](vmware-physical-azure-monitor-process-server.md#process-server-alerts) te bieden bij het instellen van een scale-out proces server. [Stel de proces server](vmware-azure-set-up-process-server-scale.md) in om nieuwe bron machines te beveiligen of [de belasting te verdelen](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
 
-### <a name="migrate-machines-to-use-the-new-process-server"></a>Migreren van machines voor het gebruik van de nieuwe processerver
+### <a name="migrate-machines-to-use-the-new-process-server"></a>Machines migreren voor het gebruik van de nieuwe proces server
 
-1. Selecteer **instellingen** > **Site Recovery-servers**. Selecteer de configuratieserver uit en vouw vervolgens **servers verwerken**.
+1. Selecteer **instellingen** > **servers site Recovery**. Selecteer de configuratie server en vouw vervolgens **proces servers**uit.
 
-    ![Schermafbeelding van het dialoogvenster van de processerver](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
-2. Met de rechtermuisknop op de processerver die momenteel in gebruik en selecteer vervolgens **Switch**.
+    ![Scherm afbeelding van het dialoog venster proces server](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
+2. Klik met de rechter muisknop op de proces server die momenteel in gebruik is en selecteer **Switch**.
 
-    ![Schermopname van het dialoogvenster van de configuratie-server](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
-3. In **doelprocesserver selecteren**, selecteert u de nieuwe processerver die u wilt gebruiken. Selecteer vervolgens de virtuele machines op de server af te handelen. Als u informatie over de server, selecteer het pictogram voor informatie. Voor hulp bij het laden van beslissingen maken, wordt de gemiddelde ruimte die is vereist voor het repliceren van elke geselecteerde virtuele machine naar de nieuwe processerver weergegeven. Klik op het vinkje om te beginnen met repliceren naar de nieuwe processerver.
+    ![Scherm afbeelding van het dialoog venster Configuratie server](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
+3. Selecteer in **doel proces server selecteren**de nieuwe proces server die u wilt gebruiken. Selecteer vervolgens de virtuele machines die door de server worden verwerkt. Als u informatie over de server wilt ophalen, selecteert u het informatie pictogram. Om u te helpen bij het nemen van load beslissingen, wordt de gemiddelde ruimte die nodig is voor het repliceren van elke geselecteerde virtuele machine naar de nieuwe proces server weer gegeven. Schakel het selectie vakje in om te beginnen met repliceren naar de nieuwe proces server.
 
-## <a name="deploy-additional-master-target-servers"></a>Aanvullende hoofddoelservers implementeren
+## <a name="deploy-additional-master-target-servers"></a>Aanvullende Master doel servers implementeren
 
-Meer dan één hoofddoelserver is in de volgende scenario's vereist:
+In de volgende scenario's is meer dan een hoofddoel server vereist:
 
-*   Wilt u een op basis van Linux virtuele machine te beschermen.
-*   De hoofddoelserver beschikbaar is op de configuratieserver heeft geen toegang tot de gegevensopslag van de virtuele machine.
-*   Het totale aantal schijven op de hoofddoelserver (het nummer van lokale schijven op server) plus het aantal schijven moeten worden beveiligd, is groter dan 60 schijven.
+*   U wilt een virtuele machine op basis van Linux beveiligen.
+*   De hoofddoel server die beschikbaar is op de configuratie server heeft geen toegang tot de gegevens opslag van de virtuele machine.
+*   Het totale aantal schijven op de hoofddoel server (het aantal lokale schijven op de server plus het aantal schijven dat moet worden beveiligd) is groter dan 60 schijven.
 
-Zie voor informatie over het toevoegen van een hoofddoelserver voor een op basis van Linux virtuele machine, [installeren van een Linux-hoofddoelserver voor failback](vmware-azure-install-linux-master-target.md).
+Zie [een Linux-hoofddoel server voor failback installeren](vmware-azure-install-linux-master-target.md)voor meer informatie over het toevoegen van een hoofddoel server voor een virtuele machine op basis van Linux.
 
-Om toe te voegen een hoofddoelserver voor een Windows-virtuele machine:
+Een hoofddoel server voor een op Windows gebaseerde virtuele machine toevoegen:
 
-1. Ga naar **Recovery Services-kluis** > **Site Recovery-infrastructuur** > **configuratieservers**.
-2. Selecteer de vereiste configuratie-server en selecteer vervolgens **Masterdoelserver**.
+1. Ga naar **Recovery Services kluis** > **Site Recovery infra structuur** > **configuratie servers**.
+2. Selecteer de vereiste configuratie server en selecteer vervolgens **hoofddoel server**.
 
-    ![Schermafbeelding van de knop toevoegen Masterdoelserver](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
-3. Download het geïntegreerde setup-bestand en voer vervolgens het bestand op de virtuele machine voor het instellen van de hoofddoelserver.
+    ![Scherm opname van de knop Master doel server toevoegen](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
+3. Down load het Unified Setup-bestand en voer het bestand op de virtuele machine uit om de hoofddoel server in te stellen.
 4. Selecteer **installeren hoofddoel** > **volgende**.
 
-    ![Schermafbeelding van de installatie van het hoofddoel selecteren](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
-5. Selecteer de standaardlocatie voor installatie, en selecteer vervolgens **installeren**.
+    ![Scherm afbeelding van de optie voor het installeren van een hoofddoel doel](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
+5. Selecteer de standaard installatie locatie en selecteer **installeren**.
 
-     ![Schermafbeelding van de standaardlocatie voor installatie](media/site-recovery-plan-capacity-vmware/MT-installation.PNG)
-6. Selecteer voor het registreren van het hoofddoel met de configuratieserver, **doorgaan naar configuratie**.
+     ![Scherm opname van de standaard installatie locatie](media/site-recovery-plan-capacity-vmware/MT-installation.PNG)
+6. Selecteer **door gaan naar configuratie**om het hoofd doel bij de configuratie server te registreren.
 
-    ![Schermafbeelding van de doorgaan naar configuratie-knop](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
-7. Geef het IP-adres van de configuratieserver en voer vervolgens de wachtwoordzin. Zie voor informatie over het genereren van een wachtwoordzin, [genereren een wachtwoordzin voor de configuratieserver](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase). 
+    ![Scherm opname van de knop door gaan naar configuratie](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
+7. Voer het IP-adres van de configuratie server in en voer vervolgens de wachtwoordzin in. Zie [een wachtwoordzin voor een configuratie server genereren](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)voor meer informatie over het genereren van een wachtwoordzin. 
 
-    ![Schermopname die laat waar zien u de IP-adres en een wachtwoordzin invoert voor de configuratieserver](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
-8. Selecteer **Registreren**. Wanneer de registratie is voltooid, selecteert u **voltooien**.
+    ![Scherm opname van de locatie waar het IP-adres en de wachtwoordzin voor de configuratie server moeten worden ingevoerd](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
+8. Selecteer **Registreren**. Wanneer de registratie is voltooid, selecteert u **volt ooien**.
 
-Wanneer de registratie is voltooid, de server wordt weergegeven in de Azure portal op **Recovery Services-kluis** > **Site Recovery-infrastructuur**  >   **Configuratieservers**, in de hoofddoelservers van de configuratieserver.
+Wanneer de registratie is voltooid, wordt de server weer gegeven in het Azure Portal op **Recovery Services kluis** > **configuratie servers**voor **site Recovery infrastructuur** > , in de hoofddoel servers van de configuratie server.
 
  > [!NOTE]
- > Download de nieuwste versie van de [hoofddoel server geïntegreerde setup-bestand voor Windows](https://aka.ms/latestmobsvc).
+ > Down load de meest recente versie van het [Unified Setup-bestand van de Master doel server voor Windows](https://aka.ms/latestmobsvc).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Downloaden en uitvoeren van [Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner).
+[Site Recovery Deployment planner](https://aka.ms/asr-deployment-planner)te downloaden en uit te voeren.

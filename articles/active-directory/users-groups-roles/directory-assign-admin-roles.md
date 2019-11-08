@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 10/28/2019
+ms.date: 11/06/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea38317868d183bd02958398b51ef906eb78e799
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e1e4fe4c06833302ac3ef9794981ee4a47fa454b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177026"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747765"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerdersrol in Azure Active Directory
 
@@ -75,12 +75,12 @@ Gebruikers met deze rol kunnen referenties voor niet-wacht woord instellen of op
 
 > [!IMPORTANT]
 > Gebruikers met deze rol kunnen referenties wijzigen voor personen die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie binnen en buiten Azure Active Directory. Het wijzigen van de referenties van een gebruiker kan betekenen dat de identiteit en machtigingen van de gebruiker worden aangenomen. Bijvoorbeeld:
-
-* Toepassings registratie en eigen aren van bedrijfs toepassingen, die referenties kunnen beheren van apps waarvan ze eigenaar zijn. Deze apps hebben mogelijk privileged-machtigingen in azure AD en elders niet verleend aan verificatie beheerders. Via dit pad kan een verificatie beheerder mogelijk de identiteit van een toepassings eigenaar aannemen en vervolgens de identiteit van een bevoorrechte toepassing verder aannemen door de referenties voor de toepassing bij te werken.
-* Eigen aars van Azure-abonnementen, die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie in Azure.
-* Groeps eigenaren van beveiligings groep en Office 365, wie groepslid maatschap kan beheren. Deze groepen kunnen toegang verlenen tot gevoelige of persoonlijke informatie of kritieke configuratie in azure AD en elders.
-* Beheerders in andere services buiten Azure AD, zoals Exchange Online, Office Security and Compliance Center en Human Resources Systems.
-* Niet-beheerders als leidinggevenden, juridisch adviseur en Human Resources-werk nemers die mogelijk toegang tot gevoelige of persoonlijke informatie hebben.
+>
+>- Toepassings registratie en eigen aren van bedrijfs toepassingen, die referenties kunnen beheren van apps waarvan ze eigenaar zijn. Deze apps hebben mogelijk privileged-machtigingen in azure AD en elders niet verleend aan verificatie beheerders. Via dit pad kan een verificatie beheerder mogelijk de identiteit van een toepassings eigenaar aannemen en vervolgens de identiteit van een bevoorrechte toepassing verder aannemen door de referenties voor de toepassing bij te werken.
+>- Eigen aars van Azure-abonnementen, die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie in Azure.
+>- Groeps eigenaren van beveiligings groep en Office 365, wie groepslid maatschap kan beheren. Deze groepen kunnen toegang verlenen tot gevoelige of persoonlijke informatie of kritieke configuratie in azure AD en elders.
+>- Beheerders in andere services buiten Azure AD, zoals Exchange Online, Office Security and Compliance Center en Human Resources Systems.
+>- Niet-beheerders als leidinggevenden, juridisch adviseur en Human Resources-werk nemers die mogelijk toegang tot gevoelige of persoonlijke informatie hebben.
 
 ### <a name="azure-devops-administratorazure-devops-administrator-permissions"></a>[Azure DevOps-beheerder](#azure-devops-administrator-permissions)
 
@@ -139,7 +139,7 @@ Naast | Kan doen
 [Nalevings beheerder](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | De regelgeving voor naleving van uw organisatie bijhouden, toewijzen en verifiëren
 [Office 365 Beveiligings-en compliancecentrum](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Beheer van gegevens beheren<br>Juridisch en gegevens onderzoek uitvoeren<br>Aanvraag voor gegevens onderwerp beheren<br><br>Deze rol heeft dezelfde machtigingen als de RoleGroup van de [nalevings beheerder](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) in Office 365 beveiligings-en compliancecentrum op rollen gebaseerd toegangs beheer.
 [InTune](https://docs.microsoft.com/intune/role-based-access-control) | Alle intune-controle gegevens weer geven
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Heeft alleen-lezen-machtigingen en kan waarschuwingen beheren<br>Kan bestands beleid maken en wijzigen en bestandsbeheer acties toestaan<br> Kan alle ingebouwde rapporten weer geven onder Gegevensbeheer
+[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Heeft alleen-lezen-machtigingen en kan waarschuwingen beheren<br>Kan bestands beleid maken en wijzigen en bestandsbeheer acties toestaan<br>Kan alle ingebouwde rapporten weer geven onder Gegevensbeheer
 
 ### <a name="compliance-data-administratorcompliance-data-administrator-permissions"></a>[Beheerder van nalevings gegevens](#compliance-data-administrator-permissions)
 
@@ -151,7 +151,7 @@ Naast | Kan doen
 [Nalevings beheerder](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | De regelgeving voor naleving van uw organisatie bijhouden, toewijzen en verifiëren
 [Office 365 Beveiligings-en compliancecentrum](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Beheer van gegevens beheren<br>Juridisch en gegevens onderzoek uitvoeren<br>Aanvraag voor gegevens onderwerp beheren<br><br>Deze rol heeft dezelfde machtigingen als de RoleGroup van de [compatibiliteits gegevens](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) in Office 365 beveiligings-en compliancecentrum op rollen gebaseerd toegangs beheer.
 [InTune](https://docs.microsoft.com/intune/role-based-access-control) | Alle intune-controle gegevens weer geven
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Heeft alleen-lezen-machtigingen en kan waarschuwingen beheren<br>Kan bestands beleid maken en wijzigen en bestandsbeheer acties toestaan<br> Kan alle ingebouwde rapporten weer geven onder Gegevensbeheer
+[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Heeft alleen-lezen-machtigingen en kan waarschuwingen beheren<br>Kan bestands beleid maken en wijzigen en bestandsbeheer acties toestaan<br>Kan alle ingebouwde rapporten weer geven onder Gegevensbeheer
 
 ### <a name="conditional-access-administratorconditional-access-administrator-permissions"></a>[Beheerder van voorwaardelijke toegang](#conditional-access-administrator-permissions)
 
@@ -224,14 +224,14 @@ Gebruikers met deze rol kunnen instellingen en beheer informatie lezen over Micr
 > [!NOTE]
 > De rol van globale lezer heeft nu enkele beperkingen:
 >
->* Share point-beheer centrum: het share point-beheer centrum biedt geen ondersteuning voor de globale lezer-rol. U ziet share point niet in het linkerdeel venster onder beheer centrums in [Microsoft 365 beheer centrum](https://admin.microsoft.com/Adminportal/Home#/homepage).
->* [Onedrive-beheer centrum](https://admin.onedrive.com/) : het onedrive-beheer centrum biedt geen ondersteuning voor de globale lezer-rol.
->* [Azure AD-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -algemene lezer kan de inrichtings modus van een bedrijfs-app niet lezen.
->* [M365-beheer centrum](https://admin.microsoft.com/Adminportal/Home#/homepage) : globale lezer kan geen lockbox-aanvragen van klanten lezen. U vindt het tabblad **klant lockbox-aanvragen** niet onder **ondersteuning** in het linkerdeel venster van het M365-beheer centrum.
->* [M365 Security Center](https://security.microsoft.com/homepage) : globale lezer kan geen gevoeligheids-en bewaar labels lezen. In het linkerdeel venster van M365 Security Center vindt u geen **gevoeligheids labels**, tabbladen voor het **bewaren van labels**en **labels voor label Analytics** .
->* [Teams beheer centrum](https://admin.teams.microsoft.com) : wereld wijde lezer kan de **levens cyclus van teams**, **analyses & rapporten**, het **beheer van IP-telefoon apparaten** en de **app-catalogus**niet lezen.
->* [Privileged Access Management (PAM)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) biedt geen ondersteuning voor de globale lezer-rol.
->* [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) -wereld wijde lezer wordt alleen ondersteund voor [centrale rapportage](https://docs.microsoft.com/azure/information-protection/reports-aip) en wanneer uw Tenant zich niet op het [uniforme label platform](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)bevindt.
+>- Share point-beheer centrum: het share point-beheer centrum biedt geen ondersteuning voor de globale lezer-rol. U ziet share point niet in het linkerdeel venster onder beheer centrums in [Microsoft 365 beheer centrum](https://admin.microsoft.com/Adminportal/Home#/homepage).
+>- [Onedrive-beheer centrum](https://admin.onedrive.com/) : het onedrive-beheer centrum biedt geen ondersteuning voor de globale lezer-rol.
+>- [Azure AD-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -algemene lezer kan de inrichtings modus van een bedrijfs-app niet lezen.
+>- [M365-beheer centrum](https://admin.microsoft.com/Adminportal/Home#/homepage) : globale lezer kan geen lockbox-aanvragen van klanten lezen. U vindt het tabblad **klant lockbox-aanvragen** niet onder **ondersteuning** in het linkerdeel venster van het M365-beheer centrum.
+>- [M365 Security Center](https://security.microsoft.com/homepage) : globale lezer kan geen gevoeligheids-en bewaar labels lezen. In het linkerdeel venster van M365 Security Center vindt u geen **gevoeligheids labels**, tabbladen voor het **bewaren van labels**en **labels voor label Analytics** .
+>- [Teams beheer centrum](https://admin.teams.microsoft.com) : wereld wijde lezer kan de **levens cyclus van teams**, **analyses & rapporten**, het **beheer van IP-telefoon apparaten** en de **app-catalogus**niet lezen.
+>- [Privileged Access Management (PAM)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) biedt geen ondersteuning voor de globale lezer-rol.
+>- [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) -wereld wijde lezer wordt alleen ondersteund [voor centrale rapportage](https://docs.microsoft.com/azure/information-protection/reports-aip) en wanneer uw Azure AD-organisatie zich niet op het [uniforme label platform](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)bevindt.
 >
 > Deze functies zijn momenteel in ontwikkeling.
 >
@@ -256,17 +256,16 @@ Gebruikers met deze rol kunnen wacht woorden wijzigen, tokens voor vernieuwen on
 
 > [!IMPORTANT]
 > Gebruikers met deze rol kunnen wacht woorden wijzigen voor personen die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie binnen en buiten Azure Active Directory. Het wijzigen van het wacht woord van een gebruiker kan betekenen dat de identiteit en machtigingen van de gebruiker worden aangenomen. Bijvoorbeeld:
-
-* Toepassings registratie en eigen aren van bedrijfs toepassingen, die referenties kunnen beheren van apps waarvan ze eigenaar zijn. Deze apps hebben mogelijk privileged-machtigingen in azure AD en elders niet verleend aan helpdesk beheerders. Via dit pad kan een helpdesk beheerder de identiteit van een toepassings eigenaar aannemen en vervolgens de identiteit van een bevoorrechte toepassing verder aannemen door de referenties voor de toepassing bij te werken.
-* Eigen aars van Azure-abonnementen, die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie in Azure.
-* Groeps eigenaren van beveiligings groep en Office 365, wie groepslid maatschap kan beheren. Deze groepen kunnen toegang verlenen tot gevoelige of persoonlijke informatie of kritieke configuratie in azure AD en elders.
-* Beheerders in andere services buiten Azure AD, zoals Exchange Online, Office Security and Compliance Center en Human Resources Systems.
-* Niet-beheerders als leidinggevenden, juridisch adviseur en Human Resources-werk nemers die mogelijk toegang tot gevoelige of persoonlijke informatie hebben.
-
-> [!NOTE]
-> Het overdragen van beheerders machtigingen via subsets van gebruikers en het Toep assen van beleid op een subset van gebruikers is mogelijk met [beheer eenheden (preview)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units).
 >
-> Deze rol heette voorheen ' Wachtwoord beheerder ' in de [Azure Portal](https://portal.azure.com/). We hebben de naam gewijzigd in "helpdesk beheerder" zodat deze overeenkomt met de naam in azure AD Power shell, Azure AD Graph API en Microsoft Graph-API.
+>- Toepassings registratie en eigen aren van bedrijfs toepassingen, die referenties kunnen beheren van apps waarvan ze eigenaar zijn. Deze apps hebben mogelijk privileged-machtigingen in azure AD en elders niet verleend aan helpdesk beheerders. Via dit pad kan een helpdesk beheerder de identiteit van een toepassings eigenaar aannemen en vervolgens de identiteit van een bevoorrechte toepassing verder aannemen door de referenties voor de toepassing bij te werken.
+>- Eigen aars van Azure-abonnementen, die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie in Azure.
+>- Groeps eigenaren van beveiligings groep en Office 365, wie groepslid maatschap kan beheren. Deze groepen kunnen toegang verlenen tot gevoelige of persoonlijke informatie of kritieke configuratie in azure AD en elders.
+>- Beheerders in andere services buiten Azure AD, zoals Exchange Online, Office Security and Compliance Center en Human Resources Systems.
+>- Niet-beheerders als leidinggevenden, juridisch adviseur en Human Resources-werk nemers die mogelijk toegang tot gevoelige of persoonlijke informatie hebben.
+
+Het overdragen van beheerders machtigingen via subsets van gebruikers en het Toep assen van beleid op een subset van gebruikers is mogelijk met [beheer eenheden (nu beschikbaar in open bare preview)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units).
+
+Deze rol heette voorheen ' Wachtwoord beheerder ' in de [Azure Portal](https://portal.azure.com/). De naam van de "helpdesk beheerder" in azure AD komt nu overeen met de naam in azure AD Power shell, Azure AD Graph API en Microsoft Graph-API.
 
 ### <a name="intune-administratorintune-service-administrator-permissions"></a>[InTune-beheerder](#intune-service-administrator-permissions)
 
@@ -360,7 +359,7 @@ Windows Defender ATP en EDR | Rollen toewijzen<br>Computer groepen beheren<br>De
 
 ### <a name="security-operatorsecurity-operator-permissions"></a>[Beveiligings operator](#security-operator-permissions)
 
-Gebruikers met deze rol kunnen waarschuwingen beheren en algemene alleen-lezen toegang hebben voor de functie met betrekking tot beveiliging, inclusief alle informatie in Microsoft 365 Security Center, Azure Active Directory, identiteits beveiliging, Privileged Identity Management en Office 365 Beveiligings-en compliancecentrum. Meer informatie over machtigingen voor Office 365 is beschikbaar op [machtigingen in de Office 365 beveiligings-en compliancecentrum](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center).
+Gebruikers met deze rol kunnen waarschuwingen beheren en algemene alleen-lezen toegang hebben voor de functie met betrekking tot beveiliging, inclusief alle informatie in Microsoft 365 Security Center, Azure Active Directory, identiteits beveiliging, Privileged Identity Management en Office 365 Beveiligings- en compliancecentrum. Meer informatie over machtigingen voor Office 365 is beschikbaar op [machtigingen in de Office 365 beveiligings-en compliancecentrum](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center).
 
 Naast | Kan doen
 --- | ---
@@ -440,12 +439,12 @@ Gebruikers met deze rol kunnen gebruikers maken en alle aspecten van gebruikers 
 
 > [!IMPORTANT]
 > Gebruikers met deze rol kunnen wacht woorden wijzigen voor personen die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie binnen en buiten Azure Active Directory. Het wijzigen van het wacht woord van een gebruiker kan betekenen dat de identiteit en machtigingen van de gebruiker worden aangenomen. Bijvoorbeeld:
-
-* Toepassings registratie en eigen aren van bedrijfs toepassingen, die referenties kunnen beheren van apps waarvan ze eigenaar zijn. Deze apps hebben mogelijk privileged-machtigingen in azure AD en andere personen die niet aan gebruikers beheerders zijn toegekend. Via dit pad kan een gebruikers beheerder mogelijk de identiteit van een toepassings eigenaar aannemen en vervolgens de identiteit van een bevoorrechte toepassing verder aannemen door de referenties voor de toepassing bij te werken.
-* Eigen aars van Azure-abonnementen, die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie in Azure.
-* Groeps eigenaren van beveiligings groep en Office 365, wie groepslid maatschap kan beheren. Deze groepen kunnen toegang verlenen tot gevoelige of persoonlijke informatie of kritieke configuratie in azure AD en elders.
-* Beheerders in andere services buiten Azure AD, zoals Exchange Online, Office Security and Compliance Center en Human Resources Systems.
-* Niet-beheerders als leidinggevenden, juridisch adviseur en Human Resources-werk nemers die mogelijk toegang tot gevoelige of persoonlijke informatie hebben.
+>
+>- Toepassings registratie en eigen aren van bedrijfs toepassingen, die referenties kunnen beheren van apps waarvan ze eigenaar zijn. Deze apps hebben mogelijk privileged-machtigingen in azure AD en andere personen die niet aan gebruikers beheerders zijn toegekend. Via dit pad kan een gebruikers beheerder mogelijk de identiteit van een toepassings eigenaar aannemen en vervolgens de identiteit van een bevoorrechte toepassing verder aannemen door de referenties voor de toepassing bij te werken.
+>- Eigen aars van Azure-abonnementen, die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie in Azure.
+>- Groeps eigenaren van beveiligings groep en Office 365, wie groepslid maatschap kan beheren. Deze groepen kunnen toegang verlenen tot gevoelige of persoonlijke informatie of kritieke configuratie in azure AD en elders.
+>- Beheerders in andere services buiten Azure AD, zoals Exchange Online, Office Security and Compliance Center en Human Resources Systems.
+>- Niet-beheerders als leidinggevenden, juridisch adviseur en Human Resources-werk nemers die mogelijk toegang tot gevoelige of persoonlijke informatie hebben.
 
 ## <a name="role-permissions"></a>Rolmachtigingen
 

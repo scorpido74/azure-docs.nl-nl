@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: 3abf3d562b9ca4d6fc9907c065dbaf9a52d58c5f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: MT
+ms.openlocfilehash: 81d82ce79130513a2827090a98bfef192c9d7829
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555342"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795735"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Overzicht van inzichten in Azure Monitor
 Inzichten bieden een aangepaste bewakings ervaring voor bepaalde toepassingen en services. Ze slaan gegevens op in het [Azure monitor-gegevens platform](../platform/data-platform.md) en maken gebruik van andere Azure monitor functies voor analyse en waarschuwingen, maar kunnen ook extra gegevens verzamelen en een unieke gebruikers ervaring bieden in de Azure Portal. Krijg toegang tot inzichten via de sectie **inzichten** van het menu Azure monitor in het Azure Portal.
@@ -46,6 +46,11 @@ Azure Monitor voor VM's bewaakt uw Azure virtual machines (VM) en virtuele-machi
 Zie [Wat is Azure monitor voor VM's?](vminsights-overview.md)
 
 ![Azure Monitor voor virtuele machines](media/insights-overview/vm-insights.png)
+
+## <a name="azure-monitor-for-network-preview"></a>Azure Monitor voor netwerk (preview-versie)
+Azure Monitor voor netwerk biedt een uitgebreid overzicht van de status en metrische gegevens voor al uw netwerk bronnen. De geavanceerde zoek functie helpt u bij het identificeren van bron afhankelijkheden, het inschakelen van scenario's zoals het identificeren van resources die als host fungeren voor uw website, door eenvoudigweg te zoeken naar de naam van uw website.
+
+![Azure Monitor voor netwerken](media/insights-overview/network-insights.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het [Azure monitor-gegevens platform](../platform/data-platform.md) dat wordt gebruikt door inzichten.

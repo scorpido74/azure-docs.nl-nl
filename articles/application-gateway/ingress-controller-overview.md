@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 79ddfe6b536dcdd7e930960c51854849b94df1bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9635798720667e38a767f26fc2e5f5374e420059
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513352"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795538"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Wat is Application Gateway ingangs controller?
 De Application Gateway ingangs controller (AGIC) is een Kubernetes-toepassing, waardoor [Azure Kubernetes service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) -klanten de systeem eigen [Application Gateway](https://azure.microsoft.com/services/application-gateway/) N7-Load Balancer van Azure kunnen gebruiken om cloud software beschikbaar te stellen aan Internet. AGIC bewaakt het Kubernetes-cluster dat wordt gehost op een Application Gateway, zodat de geselecteerde services worden blootgesteld aan Internet.
@@ -22,7 +22,7 @@ De ingangs controller wordt uitgevoerd in een eigen pod op de AKS van de klant. 
 ## <a name="benefits-of-application-gateway-ingress-controller"></a>Voor delen van Application Gateway ingangs controller
 Met AGIC kan uw implementatie meerdere AKS-clusters beheren met één Application Gateway ingangs controller. AGIC zorgt er ook voor dat een ander load balancer/openbaar IP-adres vóór AKS-cluster niet meer nodig is en dat meerdere hops in uw DataPath worden voor komen voordat aanvragen het AKS-cluster bereiken. Application Gateway gespeert naar een doel dat rechtstreeks gebruikmaakt van het privé-IP-adres en geen NodePort-of KubeProxy-Services vereist. Dit brengt ook betere prestaties voor uw implementaties.
 
-De ingangs controller wordt alleen ondersteund door de Standard_v2-en WAF_v2-Sku's, waarmee u uw voor delen ook automatisch kunt schalen. Application Gateway kan reageren op een toename of afname in de belasting van het verkeer en de schaal dienovereenkomstig, zonder dat er resources van uw AKS-cluster worden gebruikt.
+Ingangs controller wordt alleen ondersteund door Standard_v2 en WAF_v2 Sku's, waarmee u uw voor delen automatisch kunt schalen. Application Gateway kan reageren op een toename of afname in de belasting van het verkeer en de schaal dienovereenkomstig, zonder dat er resources van uw AKS-cluster worden gebruikt.
 
 Het gebruik van Application Gateway naast AGIC biedt ook bescherming voor uw AKS-cluster door TLS-beleid en functionaliteit voor Web Application firewall (WAF) te bieden.
 

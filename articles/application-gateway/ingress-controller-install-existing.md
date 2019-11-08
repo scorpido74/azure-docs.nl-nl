@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 045fb54956e78e826b06dc1c56c29e1c7bd430bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dec43a4d7eb5a9546fcd77cce972b93542ea3b10
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513417"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795942"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Een Application Gateway ingangs controller (AGIC) installeren met behulp van een bestaande Application Gateway
 
@@ -72,7 +72,7 @@ AGIC communiceert met de Kubernetes-API-server en de Azure Resource Manager. Hie
 
 ## <a name="set-up-aad-pod-identity"></a>AAD pod-identiteit instellen
 
-De [Aad pod-identiteit](https://github.com/Azure/aad-pod-identity) is een controller, VERGELIJKBAAR met AGIC, die ook wordt uitgevoerd op uw AKS. Azure Active Directory-identiteiten worden aan uw Kubernetes-peul gebonden. De identiteit van een toepassing in een Kubernetes-Pod is vereist om te kunnen communiceren met andere Azure-onderdelen. In het specifieke geval hebben we autorisatie nodig voor de AGIC-pod om HTTP-aanvragen te kunnen maken voor [arm](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+De [Aad pod-identiteit](https://github.com/Azure/aad-pod-identity) is een controller, VERGELIJKBAAR met AGIC, die ook wordt uitgevoerd op uw AKS. Azure Active Directory-identiteiten worden aan uw Kubernetes-peul gebonden. De identiteit van een toepassing in een Kubernetes-Pod is vereist om te kunnen communiceren met andere Azure-onderdelen. In het specifieke geval hebt u autorisatie nodig voor de AGIC-pod om HTTP-aanvragen te kunnen maken voor [arm](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 Volg de [installatie-instructies voor de Aad pod-identiteit](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra) om dit onderdeel toe te voegen aan uw AKS.
 
@@ -91,7 +91,7 @@ Gebruik [Cloud shell](https://shell.azure.com/) om alle van de volgende opdracht
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. Geef de identiteit `Contributor` toegang tot u Application Gateway. Hiervoor hebt u de ID van de Application Gateway nodig. deze ziet er ongeveer als volgt uit: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. Geef de identiteit `Contributor` toegang tot uw Application Gateway. Hiervoor hebt u de ID van de Application Gateway nodig. deze ziet er ongeveer als volgt uit: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
     De lijst met Application Gateway-Id's in uw abonnement ophalen met: `az network application-gateway list --query '[].id'`
 
@@ -128,7 +128,7 @@ armAuth:
 ```
 
 ## <a name="install-ingress-controller-as-a-helm-chart"></a>De ingangs controller installeren als een helm-grafiek
-In de eerste paar stappen gaan we de Tiller van helm installeren op uw Kubernetes-cluster. Gebruik [Cloud shell](https://shell.azure.com/) om het AGIC helm-pakket te installeren:
+In de eerste paar stappen installeert helm de Tiller op uw Kubernetes-cluster. Gebruik [Cloud shell](https://shell.azure.com/) om het AGIC helm-pakket te installeren:
 
 1. Voeg de `application-gateway-kubernetes-ingress` helm opslag plaats toe en voer een helm-update uit
 
@@ -244,9 +244,9 @@ Maak __een back-up van de configuratie van uw Application Gateway voordat u__ de
 Het zip-bestand dat u hebt gedownload, heeft JSON-sjablonen, bash-en Power shell-scripts die u kunt gebruiken om Application Gateway te herstellen
 
 ### <a name="example-scenario"></a>Voorbeeldscenario
-Laten we eens kijken naar een imaginaire Application Gateway, dat verkeer beheert voor 2 websites:
+Laten we eens kijken naar een imaginaire Application Gateway, waarmee het verkeer voor twee websites wordt beheerd:
   - `dev.contoso.com`-gehost op een nieuwe AKS met behulp van Application Gateway en AGIC
-  - `prod.contoso.com`-gehost op een [schaalset van een Azure virtueel-computer](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
+  - `prod.contoso.com`-gehost op een [schaalset voor virtuele Azure-machines](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
 
 Met de standaard instellingen van AGIC wordt ervan uitgegaan dat 100% eigenaar is van de Application Gateway deze wordt verwijzen. AGIC overschrijft alle configuratie van de app-gateway. Als u hand matig een listener moet maken voor `prod.contoso.com` (op Application Gateway), zonder deze te definiëren in de Kubernetes-inkomen, wordt de `prod.contoso.com` configuratie binnen enkele seconden door AGIC verwijderd.
 

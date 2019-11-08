@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: 849c919950c57a1df3b0fb76021de6e10254c7b4
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: a818d84bf3df712190ccc6c1721c26933a9fbcdb
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286416"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73793941"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Taal ondersteuning van Knowledge Base-inhoud voor QnA Maker
 
@@ -38,9 +38,9 @@ Taal selectie maakt deel uit van de stappen voor het maken van de eerste Knowled
 ![Scherm afbeelding van QnA Maker portal van het selecteren van de taal voor de eerste kennis database](../media/language-support/select-language-when-creating-knowledge-base.png)
 
 ## <a name="query-matching-and-relevance"></a>Overeenkomende treffers en relevantie van query's
-QnA Maker is afhankelijk van [Azure Search taal analyse](https://docs.microsoft.com/rest/api/searchservice/language-support) functies voor het leveren van resultaten. 
+QnA Maker is afhankelijk van de [taal analyse functies van Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/language-support) voor het leveren van resultaten. 
 
-Hoewel de Azure Search-functies op pari zijn voor ondersteunde talen, heeft QnA Maker een extra rangorde die zich boven de Azure Search-resultaten bevindt. In dit classificatie model gebruiken we enkele speciale semantische en op woord gebaseerde functies in de volgende talen. 
+Hoewel de mogelijkheden van Azure Cognitive Search op pari zijn voor ondersteunde talen, heeft QnA Maker een extra rangorde die zich boven de Azure Search-resultaten bevindt. In dit classificatie model gebruiken we enkele speciale semantische en op woord gebaseerde functies in de volgende talen. 
 
 |Talen met extra rangorde|
 |--|

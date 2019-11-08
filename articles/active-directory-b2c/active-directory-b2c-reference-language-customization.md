@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bced7a4b994172a1a2076149d6f25adb39c99b54
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 62d75267421d1f7587f136ea1e76f7c4b4341a37
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015569"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742640"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Taal aanpassing in Azure Active Directory B2C
 
@@ -23,13 +23,13 @@ Door de taal aanpassing in Azure Active Directory B2C (Azure AD B2C) kan uw gebr
 
 ## <a name="how-language-customization-works"></a>De werking van taal aanpassing
 
-U gebruikt taal aanpassing om te selecteren in welke talen uw gebruikers stroom beschikbaar is. Nadat de functie is ingeschakeld, kunt u de query teken reeks parameter opgeven `ui_locales`, vanuit uw toepassing. Wanneer u Azure AD B2C aanroept, wordt uw pagina vertaald naar de land instellingen die u hebt opgegeven. Dit type configuratie geeft u volledige controle over de talen in uw gebruikers stroom en negeert de taal instellingen van de browser van de klant.
+U gebruikt taal aanpassing om te selecteren in welke talen uw gebruikers stroom beschikbaar is. Nadat de functie is ingeschakeld, kunt u de query teken reeks parameter `ui_locales`van uw toepassing opgeven. Wanneer u Azure AD B2C aanroept, wordt uw pagina vertaald naar de land instellingen die u hebt opgegeven. Dit type configuratie geeft u volledige controle over de talen in uw gebruikers stroom en negeert de taal instellingen van de browser van de klant.
 
-Mogelijk hebt u niet het controle niveau nodig over de talen die uw klant ziet. Als u geen `ui_locales` para meter opgeeft, wordt de gebruikers ervaring bepaald door de instellingen van de browser. U kunt nog steeds bepalen in welke talen uw gebruikers stroom wordt vertaald door deze toe te voegen als een ondersteunde taal. Als de browser van een klant is ingesteld om een taal weer te geven die u niet wilt ondersteunen, wordt in plaats daarvan de taal weer gegeven die u als standaard waarde hebt geselecteerd in ondersteunde cult uren.
+Mogelijk hebt u niet het controle niveau nodig over de talen die uw klant ziet. Als u geen `ui_locales` para meter opgeeft, wordt de ervaring van de klant bepaald door de instellingen van de browser. U kunt nog steeds bepalen in welke talen uw gebruikers stroom wordt vertaald door deze toe te voegen als een ondersteunde taal. Als de browser van een klant is ingesteld om een taal weer te geven die u niet wilt ondersteunen, wordt in plaats daarvan de taal weer gegeven die u als standaard waarde hebt geselecteerd in ondersteunde cult uren.
 
-* **gebruikers interface-land instellingen opgegeven taal**: Nadat u de taal aanpassing hebt ingeschakeld, wordt uw gebruikers stroom vertaald naar de taal die hier is opgegeven.
-* Door **browser aangevraagde taal**: Als er `ui_locales` geen para meter is opgegeven, wordt uw gebruikers stroom vertaald naar de door de browser aangevraagde taal, *als de taal wordt ondersteund*.
-* **Standaard taal van beleid**: Als de browser geen taal opgeeft, of als er een wordt opgegeven die niet wordt ondersteund, wordt de gebruikers stroom vertaald naar de standaard taal van de gebruikers stroom.
+* **gebruikers interface-land instellingen opgegeven taal**: nadat u de taal aanpassing hebt ingeschakeld, wordt uw gebruikers stroom vertaald naar de taal die u hier opgeeft.
+* Door **browser aangevraagde taal**: als er geen para meter `ui_locales` is opgegeven, wordt uw gebruikers stroom vertaald naar de door de browser aangevraagde taal, *als de taal wordt ondersteund*.
+* **Standaard taal van beleid**: als in de browser geen taal is opgegeven of als er een niet wordt ondersteund, wordt de gebruikers stroom vertaald naar de standaard taal van de gebruikers stroom.
 
 > [!NOTE]
 > Als u aangepaste gebruikers kenmerken gebruikt, moet u uw eigen vertalingen opgeven. Zie [uw teken reeksen aanpassen](#customize-your-strings)voor meer informatie.
@@ -38,7 +38,7 @@ Mogelijk hebt u niet het controle niveau nodig over de talen die uw klant ziet. 
 
 Beleids regels die zijn gemaakt voor de algemene Beschik baarheid van taal aanpassing, moeten deze functie eerst inschakelen. Beleids regels en gebruikers stromen die zijn gemaakt nadat de taal aanpassing standaard is ingeschakeld.
 
-Wanneer u taal aanpassing inschakelt voor een gebruikers stroom, kunt u de taal van de gebruikers stroom beheren door `ui_locales` de para meter toe te voegen.
+Wanneer u taal aanpassing inschakelt voor een gebruikers stroom, kunt u de taal van de gebruikers stroom beheren door de para meter `ui_locales` toe te voegen.
 
 1. Selecteer in uw Azure AD B2C-Tenant **gebruikers stromen**.
 1. Klik op de gebruikers stroom die u wilt inschakelen voor vertalingen.
@@ -47,7 +47,7 @@ Wanneer u taal aanpassing inschakelt voor een gebruikers stroom, kunt u de taal 
 
 ## <a name="select-which-languages-in-your-user-flow-are-enabled"></a>Selecteren welke talen in uw gebruikers stroom zijn ingeschakeld
 
-Schakel een set talen in voor uw gebruikers stroom die moet worden omgezet naar wanneer dit wordt aangevraagd door de `ui_locales` browser zonder de para meter.
+Schakel een set talen in voor de stroom van uw gebruikers, zodat deze kan worden vertaald wanneer deze wordt aangevraagd door de browser zonder de para meter `ui_locales`.
 
 1. Zorg ervoor dat de taal aanpassing van uw gebruikers stroom is ingeschakeld vanuit de vorige instructies.
 1. Selecteer op de pagina **talen** voor de gebruikers stroom een taal die u wilt ondersteunen.
@@ -55,7 +55,7 @@ Schakel een set talen in voor uw gebruikers stroom die moet worden omgezet naar 
 1. Selecteer **Opslaan** boven in het deel venster Eigenschappen.
 
 >[!NOTE]
->Als er `ui_locales` geen para meter wordt gegeven, wordt de pagina alleen vertaald naar de browser taal van de klant als deze is ingeschakeld.
+>Als er geen `ui_locales`-para meter wordt gegeven, wordt de pagina alleen vertaald naar de browser taal van de klant als deze is ingeschakeld.
 >
 
 ## <a name="customize-your-strings"></a>Uw teken reeksen aanpassen
@@ -72,13 +72,13 @@ Deze stappen geven u een JSON-bestand dat u kunt gebruiken om te beginnen met he
 ### <a name="change-any-string-on-the-page"></a>Een wille keurige teken reeks op de pagina wijzigen
 
 1. Open het JSON-bestand dat u hebt gedownload van de vorige instructies in een JSON-editor.
-1. Zoek het element dat u wilt wijzigen. U kunt zoeken `StringId` naar de teken reeks die u zoekt, of zoeken naar het `Value` kenmerk dat u wilt wijzigen.
+1. Zoek het element dat u wilt wijzigen. U kunt `StringId` vinden voor de teken reeks die u zoekt, of zoeken naar het `Value` kenmerk dat u wilt wijzigen.
 1. Werk het `Value` kenmerk bij met wat u wilt weer geven.
-1. Voor elke teken reeks die u wilt wijzigen in, `Override` wijzigt `true`u in.
+1. Voor elke teken reeks die u wilt wijzigen, wijzigt u `Override` in `true`.
 1. Sla het bestand op en upload uw wijzigingen. (U kunt het upload beheer vinden op dezelfde locatie als waar u het JSON-bestand hebt gedownload.)
 
 > [!IMPORTANT]
-> Als u een teken reeks moet overschrijven, moet u ervoor zorgen dat `Override` u de `true`waarde instelt op. Als de waarde niet wordt gewijzigd, wordt de vermelding genegeerd.
+> Als u een teken reeks moet overschrijven, moet u ervoor zorgen dat u de `Override` waarde instelt op `true`. Als de waarde niet wordt gewijzigd, wordt de vermelding genegeerd.
 
 ### <a name="change-extension-attributes"></a>Extensie kenmerken wijzigen
 
@@ -104,7 +104,7 @@ Vervang `<ExtensionAttributeValue>` door de nieuwe teken reeks die moet worden w
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Een lijst met waarden opgeven met behulp van LocalizedCollections
 
-Als u een lijst met waarden voor antwoorden wilt opgeven, moet u een `LocalizedCollections` kenmerk maken. `LocalizedCollections`is een matrix van `Name` en `Value` -paren. De volg orde van de items is de volg orde waarin ze worden weer gegeven. Gebruik de `LocalizedCollections`volgende indeling om toe te voegen:
+Als u een lijst met waarden voor antwoorden wilt opgeven, moet u een `LocalizedCollections` kenmerk maken. `LocalizedCollections` is een matrix met `Name`-en `Value`-paren. De volg orde van de items is de volg orde waarin ze worden weer gegeven. Gebruik de volgende indeling om `LocalizedCollections`toe te voegen:
 
 ```JSON
 {
@@ -128,9 +128,9 @@ Als u een lijst met waarden voor antwoorden wilt opgeven, moet u een `LocalizedC
 }
 ```
 
-* `ElementId`is het gebruikers kenmerk waarvan dit `LocalizedCollections` kenmerk een antwoord is.
-* `Name`is de waarde die wordt weer gegeven voor de gebruiker.
-* `Value`is wat wordt geretourneerd in de claim wanneer deze optie is geselecteerd.
+* `ElementId` is het kenmerk van de gebruiker waarop dit `LocalizedCollections` kenmerk een antwoord is.
+* `Name` is de waarde die wordt weer gegeven voor de gebruiker.
+* `Value` is wat wordt geretourneerd in de claim wanneer deze optie is geselecteerd.
 
 ### <a name="upload-your-changes"></a>Uw wijzigingen uploaden
 
@@ -145,9 +145,9 @@ De wijzigingen worden automatisch opgeslagen in de stroom van uw gebruikers.
 
 ## <a name="customize-the-page-ui-by-using-language-customization"></a>De pagina gebruikers interface aanpassen met behulp van taal aanpassing
 
-Er zijn twee manieren om uw HTML-inhoud te lokaliseren. Een manier is om [taal aanpassing](active-directory-b2c-reference-language-customization.md)in te scha kelen. Als u deze functie inschakelt, kunnen Azure AD B2C de OpenID Connect `ui-locales`Connect-para meter, naar uw eind punt door sturen. De inhouds server kan deze para meter gebruiken om aangepaste HTML-pagina's te bieden die specifiek zijn voor een specifieke taal.
+Er zijn twee manieren om uw HTML-inhoud te lokaliseren. Een manier is om [taal aanpassing](active-directory-b2c-reference-language-customization.md)in te scha kelen. Als u deze functie inschakelt, kunnen Azure AD B2C de OpenID Connect Connect-para meter `ui-locales`naar uw eind punt door sturen. De inhouds server kan deze para meter gebruiken om aangepaste HTML-pagina's te bieden die specifiek zijn voor een specifieke taal.
 
-U kunt ook inhoud vanaf verschillende locaties ophalen op basis van de land instelling die wordt gebruikt. In het eind punt waarvoor CORS is ingeschakeld, kunt u een mapstructuur instellen om inhoud voor specifieke talen te hosten. U belt het juiste nummer als u de Joker teken waarde `{Culture:RFC5646}`gebruikt. Stel dat dit uw aangepaste pagina-URI is:
+U kunt ook inhoud vanaf verschillende locaties ophalen op basis van de land instelling die wordt gebruikt. In het eind punt waarvoor CORS is ingeschakeld, kunt u een mapstructuur instellen om inhoud voor specifieke talen te hosten. U roept de juiste waarde aan als u de Joker teken `{Culture:RFC5646}`gebruikt. Stel dat dit uw aangepaste pagina-URI is:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
@@ -191,7 +191,7 @@ Micro soft biedt momenteel geen ondersteuning voor talen die van rechts naar lin
 
 ### <a name="social-identity-provider-translations"></a>Vertalingen van de sociale ID-provider
 
-Micro soft biedt `ui_locales` de para meter OIDC aan sociale aanmeldingen. Maar sommige aanbieders van sociale identiteiten, waaronder Facebook en Google, voldoen niet aan deze providers.
+Micro soft biedt de para meter `ui_locales` OIDC aan sociale aanmeldingen. Maar sommige aanbieders van sociale identiteiten, waaronder Facebook en Google, voldoen niet aan deze providers.
 
 ### <a name="browser-behavior"></a>Browser gedrag
 
@@ -203,56 +203,56 @@ Azure AD B2C biedt ondersteuning voor de volgende talen. De talen van de gebruik
 
 | Taal              | Taalcode | Gebruikersstromen         | MFA-meldingen  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
-| Arabisch                | p.a.            | BxDxH                | :heavy_check_mark: |
-| Bulgaars             | bg            | BxDxH                | :heavy_check_mark: |
-| Bengalees                | bn            | :heavy_check_mark: | BxDxH                |
-| Catalaans               | certificering            | BxDxH                | :heavy_check_mark: |
-| Tsjechisch                 | cs            | :heavy_check_mark: | :heavy_check_mark: |
-| Deens                | da            | :heavy_check_mark: | :heavy_check_mark: |
-| Duits                | de            | :heavy_check_mark: | :heavy_check_mark: |
-| Grieks                 | el            | :heavy_check_mark: | :heavy_check_mark: |
-| Engels               | nl-NL            | :heavy_check_mark: | :heavy_check_mark: |
-| Spaans               | es            | :heavy_check_mark: | :heavy_check_mark: |
-| Estisch              | et            | BxDxH                | :heavy_check_mark: |
-| Baskisch                | EU            | BxDxH                | :heavy_check_mark: |
-| Fins               | fi            | :heavy_check_mark: | :heavy_check_mark: |
-| Frans                | fr            | :heavy_check_mark: | :heavy_check_mark: |
-| Galicisch              | boekhoud            | BxDxH                | :heavy_check_mark: |
-| Gujarati              | gu            | :heavy_check_mark: | BxDxH                |
-| Hebreeuws                | Hij            | BxDxH                | :heavy_check_mark: |
-| Hindi                 | Hallo            | :heavy_check_mark: | :heavy_check_mark: |
-| Kroatisch              | uur            | :heavy_check_mark: | :heavy_check_mark: |
-| Hongaars             | hu            | :heavy_check_mark: | :heavy_check_mark: |
-| Indonesisch            | id            | BxDxH                | :heavy_check_mark: |
-| Italiaans               | it            | :heavy_check_mark: | :heavy_check_mark: |
-| Japans              | ja            | :heavy_check_mark: | :heavy_check_mark: |
-| Kazachs                | kk            | BxDxH                | :heavy_check_mark: |
-| Kanarees               | kn            | :heavy_check_mark: | BxDxH                |
-| Koreaans                | ko            | :heavy_check_mark: | :heavy_check_mark: |
-| Litouws            | lt            | BxDxH                | :heavy_check_mark: |
-| Lets               | lv            | BxDxH                | :heavy_check_mark: |
-| Malayalam             | ml            | :heavy_check_mark: | BxDxH                |
-| Marathi               | Dhr            | :heavy_check_mark: | BxDxH                |
-| Maleis                 | ms            | :heavy_check_mark: | :heavy_check_mark: |
-| Noors Bokmål      | nb            | :heavy_check_mark: | BxDxH                |
-| Nederlands                 | nl            | :heavy_check_mark: | :heavy_check_mark: |
-| Noors             | nee            | BxDxH                | :heavy_check_mark: |
-| Punjabi               | PA            | :heavy_check_mark: | BxDxH                |
-| Pools                | pl            | :heavy_check_mark: | :heavy_check_mark: |
-| Portugees-Brazilië   | pt-br         | :heavy_check_mark: | :heavy_check_mark: |
-| Portugees-Portugal | pt-pt         | :heavy_check_mark: | :heavy_check_mark: |
-| Roemeens              | ro            | :heavy_check_mark: | :heavy_check_mark: |
-| Russisch               | ru            | :heavy_check_mark: | :heavy_check_mark: |
-| Slowaaks                | SK            | :heavy_check_mark: | :heavy_check_mark: |
-| Sloveens             | lineaire            | BxDxH                | :heavy_check_mark: |
-| Servisch-cyrillisch    | SR-Cryl-CS    | BxDxH                | :heavy_check_mark: |
-| Servisch-Latijn       | SR-latn-cs    | BxDxH                | :heavy_check_mark: |
-| Zweeds               | sv            | :heavy_check_mark: | :heavy_check_mark: |
-| Tamil                 | &            | :heavy_check_mark: | BxDxH                |
-| Telugu                | Ken            | :heavy_check_mark: | BxDxH                |
-| Thais                  | e            | :heavy_check_mark: | :heavy_check_mark: |
-| Turks               | formulieren            | :heavy_check_mark: | :heavy_check_mark: |
-| Oekraïens             | rijk            | BxDxH                | :heavy_check_mark: |
-| Vietnamees            | beschreven            | BxDxH                | :heavy_check_mark: |
-| Chinees-vereenvoudigd  | zh-hans       | :heavy_check_mark: | :heavy_check_mark: |
-| Chinees-traditioneel | zh-hant       | :heavy_check_mark: | :heavy_check_mark: |
+| Arabisch                | p.a.            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Bulgaars             | bg            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Bengalese                | bn            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![nee](media/active-directory-b2c-reference-language-customization/no.png) |
+| Catalaans               | certificering            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Tsjechisch                 | cs            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Deens                | da            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Duits                | de            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Grieks                 | el            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Nederlands               | nl            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Spaans               | es            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Estisch              | et            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Baskisch                | EU            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Fins               | fi            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Frans                | fr            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Galicisch              | boekhoud            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Gujarati              | gu            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![nee](media/active-directory-b2c-reference-language-customization/no.png) |
+| Hebreeuws                | Hij            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Hindi                 | Hallo            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Kroatisch              | afdeling            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Hongaars             | hu            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Indonesisch            | id            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Italiaans               | it            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Japans              | ja            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Kazachstaans                | kk            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Kannada               | kn            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![nee](media/active-directory-b2c-reference-language-customization/no.png) |
+| Koreaans                | ko            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Litouws            | lt            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Lets               | LV            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Malajalam             | ml            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![nee](media/active-directory-b2c-reference-language-customization/no.png) |
+| Marathi               | Dhr            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![nee](media/active-directory-b2c-reference-language-customization/no.png) |
+| Maleis                 | Mevrouw            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Noors Bokmål      | nb            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![nee](media/active-directory-b2c-reference-language-customization/no.png) |
+| Nederlands                 | nl            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Noors             | nee            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Punjabi               | PA            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![nee](media/active-directory-b2c-reference-language-customization/no.png) |
+| Pools                | pl            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Portugees-Brazilië   | pt-br         | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Portugees-Portugal | pt-pt         | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Roemeens              | ro            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Russisch               | ru            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Slowaaks                | SK            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Sloveens             | lineaire            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Servisch-cyrillisch    | SR-Cryl-CS    | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Servisch-Latijn       | SR-latn-cs    | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Zweeds               | sv            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Tamil                 | &            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![nee](media/active-directory-b2c-reference-language-customization/no.png) |
+| Telugu                | Ken            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![nee](media/active-directory-b2c-reference-language-customization/no.png) |
+| Thais                  | e            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Turks               | formulieren            | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Oekraïens             | rijk            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Vietnamees            | beschreven            | ![nee](media/active-directory-b2c-reference-language-customization/no.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Chinees-vereenvoudigd  | zh-Hans       | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Chinees-traditioneel | zh-hant       | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) | ![ja](media/active-directory-b2c-reference-language-customization/yes.png) |

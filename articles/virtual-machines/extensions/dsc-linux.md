@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: e2faf444aa411f0e60f1b5c7b1f811abc2f6b63a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1825f9f0f5d525c0129341d800ca5949136ae633
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176689"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750071"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-extensie voor Linux (micro soft. OSTCExtensions. DSCForLinux)
 
@@ -35,7 +35,7 @@ De extensie DSCForLinux wordt gepubliceerd en ondersteund door micro soft. Met d
 - Aangepaste DSC-modules installeren op de virtuele Linux-machine (ExtensionAction installeren)
 - Aangepaste DSC-modules verwijderen van de virtuele Linux-machine (ExtensionAction verwijderen)
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -43,7 +43,7 @@ De extensie DSCForLinux wordt gepubliceerd en ondersteund door micro soft. Met d
 
 De DSC Linux-extensie ondersteunt alle [Linux-distributies die zijn goedgekeurd op Azure](/azure/virtual-machines/linux/endorsed-distros) , met uitzonde ring van:
 
-| Distributie | Version |
+| Distributie | Versie |
 |---|---|
 | Debian | alle versies |
 | Ubuntu| 18,04 |
@@ -64,7 +64,7 @@ Hier vindt u alle ondersteunde para meters voor de open bare configuratie:
 * `NodeConfigurationName`: (optioneel, String) de naam van een knooppunt configuratie die moet worden toegepast.
 * `RefreshFrequencyMins`: (optioneel, int) geeft aan hoe vaak (in minuten) DSC probeert de configuratie van de pull-server op te halen. 
        Als de configuratie op de pull-server verschilt van het huidige op het doel knooppunt, wordt deze gekopieerd naar de in behandeling zijnde Store en toegepast.
-* `ConfigurationMode`: (optioneel, String) geeft aan hoe DSC de configuratie moet Toep assen. Geldige waarden zijn: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
+* `ConfigurationMode`: (optioneel, String) Hiermee geeft u op hoe DSC de configuratie moet Toep assen. Geldige waarden zijn: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`: (optioneel, int) geeft aan hoe vaak (in minuten) DSC ervoor zorgt dat de configuratie de gewenste status heeft.
 
 > [!NOTE]
@@ -286,7 +286,7 @@ Voor meer informatie over Azure Resource Manager-sjabloon gaat u naar [ontwerp A
 ## <a name="azure-cli-deployment"></a>Implementatie van Azure CLI
 
 ### <a name="21-using-azure-cliazure-cli"></a>2,1. [**Azure cli**] [Azure-cli] gebruiken
-Voordat u de DSCForLinux-extensie implementeert, moet u uw `public.json` en `protected.json` configureren volgens de verschillende scenario's in sectie 3.
+Voordat u de DSCForLinux-extensie implementeert, moet u uw `public.json` en `protected.json`configureren volgens de verschillende scenario's in sectie 3.
 
 #### <a name="211-classic"></a>2.1.1. Klassiek
 De klassieke modus wordt ook Azure Service Management-modus genoemd. U kunt overschakelen naar het bestand door het volgende uit te voeren:

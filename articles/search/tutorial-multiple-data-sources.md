@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3b94e3e352f4d6b5cd7da41feb9660be2ffed2bd
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 69b18cdd4d0bb8e3d13bbacd5d21764004308786
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786488"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795643"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Zelf studie: gegevens uit meerdere gegevens bronnen in één Azure Cognitive Search-index combi neren
 
@@ -36,7 +36,7 @@ De volgende services, hulpprogram ma's en gegevens worden gebruikt in deze Quick
 
 - [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt voor deze zelf studie gebruikmaken van een gratis service.
 
-- [Maak een Azure Cosmos DB account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) voor het opslaan van de gegevens van het voorbeeld Hotel.
+- [Maak een Azure Cosmos DB account](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) voor het opslaan van de gegevens van het voorbeeld Hotel.
 
 - [Maak een Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) voor het opslaan van de voorbeeld gegevens van JSON-blobs.
 
@@ -58,7 +58,7 @@ Als u met uw Azure Cognitive Search-service wilt communiceren, hebt u de service
 
 1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
-1. In **instellingen** > **sleutels**, een beheerders sleutel ophalen voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
 ![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
 
@@ -127,7 +127,7 @@ De volgende vermeldingen geven account namen en connection string informatie op 
 
 ### <a name="identify-the-document-key"></a>De document sleutel identificeren
 
-In azure Cognitive Search is het sleutel veld een unieke identificatie voor elk document in de index. Elke zoek index moet precies één sleutel veld van het type `Edm.String` hebben. Het sleutel veld moet aanwezig zijn voor elk document in een gegevens bron dat wordt toegevoegd aan de index. (In feite is dit het enige vereiste veld.)
+In azure Cognitive Search is het sleutel veld een unieke identificatie voor elk document in de index. Elke zoek index moet precies één sleutel veld van het type `Edm.String`hebben. Het sleutel veld moet aanwezig zijn voor elk document in een gegevens bron dat wordt toegevoegd aan de index. (In feite is dit het enige vereiste veld.)
 
 Wanneer u gegevens uit meerdere gegevens bronnen indexeert, moet elke waarde van de gegevens bron sleutel worden toegewezen aan hetzelfde sleutel veld in de gecombineerde index. Er is vaak een planning vooraf van tevoren vereist om een zinvolle document sleutel voor uw index te identificeren en ervoor te zorgen dat deze zich in elke gegevens bron bevindt.
 

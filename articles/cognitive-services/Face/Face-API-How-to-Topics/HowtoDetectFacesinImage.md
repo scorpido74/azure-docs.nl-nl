@@ -1,7 +1,7 @@
 ---
 title: Gezichten detecteren in een installatie kopie-Face-API
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van de verschillende gegevens die worden geretourneerd door de functie voor gezichts detectie.
+description: In deze hand leiding wordt gedemonstreerd hoe u gezichts detectie kunt gebruiken om kenmerken te extra heren, zoals geslacht, leeftijd of pose van een bepaalde afbeelding.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 07089def3290d6d64919ad2551de7584646cc681
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306622"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744275"
 ---
 # <a name="get-face-detection-data"></a>Detectie gegevens van het gezicht ophalen
 
@@ -29,7 +29,7 @@ In deze hand leiding wordt uitgelegd hoe u:
 
 ## <a name="setup"></a>Instellen
 
-In deze hand leiding wordt ervan uitgegaan dat [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) u al een FaceClient `faceClient`-object met de naam hebt gemaakt met een face-abonnements sleutel en eind punt-URL. Hier kunt u de functie voor gezichts herkenning gebruiken door het aanroepen van [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), dat wordt gebruikt in deze hand leiding of [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Volg een van de Quick starts voor instructies over het instellen van deze functie.
+In deze hand leiding wordt ervan uitgegaan dat u al een [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) -object met de naam `faceClient`hebt gemaakt met een face-abonnements sleutel en eind punt-URL. Hier kunt u de functie voor gezichts herkenning gebruiken door het aanroepen van [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), dat wordt gebruikt in deze hand leiding of [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Volg een van de Quick starts voor instructies over het instellen van deze functie.
 
 Deze hand leiding is gericht op de details van de detectie aanroep, zoals de argumenten die u kunt door geven en wat u met de geretourneerde gegevens kunt doen. U wordt aangeraden alleen een query uit te voeren voor de functies die u nodig hebt. Elke bewerking heeft meer tijd nodig om te volt ooien.
 
@@ -144,8 +144,8 @@ Zie de conceptuele hand leiding voor [gezichts detectie en kenmerken](../concept
 
 In deze hand leiding hebt u geleerd hoe u de verschillende functies van gezicht detectie kunt gebruiken. Vervolgens integreert u deze functies in uw app door een diep gaande zelf studie te volgen.
 
-- [Zelfstudie: Een WPF-app maken om gezichts gegevens in een installatie kopie weer te geven](../Tutorials/FaceAPIinCSharpTutorial.md)
-- [Zelfstudie: Een Android-app maken voor het detecteren van en het frame van gezichten in een installatie kopie](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+- [Zelf studie: een WPF-app maken voor het weer geven van gezichts gegevens in een installatie kopie](../Tutorials/FaceAPIinCSharpTutorial.md)
+- [Zelf studie: een Android-app maken voor het detecteren en plaatsen van gezichten in een installatie kopie](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
 
 ## <a name="related-topics"></a>Verwante onderwerpen
 

@@ -13,21 +13,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: d10844a52505331418e3bc4e9b36d00a5a7e7b6f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f7f4e65253e0fc160da4d343115e9115abfab808
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102614"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749310"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Een virtuele Windows-machine met meerdere Nic's maken en beheren
-Aan virtuele machines (Vm's) in azure kunnen meerdere Nic's (virtuele netwerk interface kaarten) zijn gekoppeld. Een veelvoorkomend scenario is om verschillende subnetten te hebben voor de connectiviteit van front-end-en back-end. U kunt meerdere Nic's aan een virtuele machine koppelen aan meerdere subnetten, maar deze subnetten moeten zich allemaal in hetzelfde virtuele netwerk (vNet) bevinden. In dit artikel vindt u informatie over het maken van een VM waaraan meerdere Nic's zijn gekoppeld. U leert ook hoe u Nic's kunt toevoegen aan of verwijderen uit een bestaande virtuele machine. Verschillende [VM](sizes.md) -grootten ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig.
+Aan virtuele machines (Vm's) in azure kunnen meerdere Nic's (virtuele netwerk interface kaarten) zijn gekoppeld. Een veelvoorkomend scenario is om verschillende subnetten te hebben voor de connectiviteit van front-end-en back-end. U kunt meerdere Nic's aan een virtuele machine koppelen aan meerdere subnetten, maar deze subnetten moeten zich allemaal in hetzelfde virtuele netwerk (vNet) bevinden. In dit artikel vindt u informatie over het maken van een VM waaraan meerdere Nic's zijn gekoppeld. U leert ook hoe u Nic's kunt toevoegen aan of verwijderen uit een bestaande virtuele machine. Verschillende [VM-grootten](sizes.md) ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn *myResourceGroup*, *myVnet*en *myVM*.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="create-a-vm-with-multiple-nics"></a>Een virtuele machine met meerdere NIC's maken
 Maak eerst een resource groep. In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
@@ -79,9 +79,9 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
 Doorgaans maakt u ook een [netwerk beveiligings groep](../../virtual-network/security-overview.md) om het netwerk verkeer naar de virtuele machine te filteren en een [Load Balancer](../../load-balancer/load-balancer-overview.md) om verkeer over meerdere vm's te distribueren.
 
 ### <a name="create-the-virtual-machine"></a>De virtuele machine maken
-Begin nu met het maken van de VM-configuratie. Voor elke VM-grootte geldt een limiet voor het totale aantal Nic's dat u aan een virtuele machine kunt toevoegen. Zie [Windows VM](sizes.md)-grootten voor meer informatie.
+Begin nu met het maken van de VM-configuratie. Voor elke VM-grootte geldt een limiet voor het totale aantal Nic's dat u aan een virtuele machine kunt toevoegen. Zie [Windows VM-grootten](sizes.md)voor meer informatie.
 
-1. Stel uw VM-referenties als `$cred` volgt in op de variabele:
+1. Stel als volgt uw VM-referenties in op de `$cred` variabele:
 
     ```powershell
     $cred = Get-Credential
@@ -125,7 +125,7 @@ Begin nu met het maken van de VM-configuratie. Voor elke VM-grootte geldt een li
 6. Voeg routes voor secundaire Nic's toe aan het besturings systeem door de stappen in [het besturings systeem configureren voor meerdere nic's](#configure-guest-os-for-multiple-nics)te volt ooien.
 
 ## <a name="add-a-nic-to-an-existing-vm"></a>Een NIC toevoegen aan een bestaande virtuele machine
-U kunt een virtuele NIC toevoegen aan een bestaande virtuele machine door de toewijzing van de VM ongedaan te maken, de virtuele NIC toe te voegen en vervolgens de VM te starten. Verschillende [VM](sizes.md) -grootten ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig. Indien nodig kunt u [de grootte van een virtuele machine wijzigen](resize-vm.md).
+U kunt een virtuele NIC toevoegen aan een bestaande virtuele machine door de toewijzing van de VM ongedaan te maken, de virtuele NIC toe te voegen en vervolgens de VM te starten. Verschillende [VM-grootten](sizes.md) ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig. Indien nodig kunt u [de grootte van een virtuele machine wijzigen](resize-vm.md).
 
 1. Hef de toewijzing van de virtuele machine op met [AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm). In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam *myVM* in *myResourceGroup*ongedaan gemaakt:
 
@@ -158,7 +158,7 @@ U kunt een virtuele NIC toevoegen aan een bestaande virtuele machine door de toe
     ```
 
     ### <a name="primary-virtual-nics"></a>Primaire virtuele Nic's
-    Een van de Nic's op een multi-NIC-VM moet primair zijn. Als een van de bestaande virtuele Nic's op de VM al als primair is ingesteld, kunt u deze stap overs Laan. In het volgende voor beeld wordt ervan uitgegaan dat twee virtuele nic's nu aanwezig zijn op een VM en u de eerste NIC`[0]`() als primair wilt toevoegen:
+    Een van de Nic's op een multi-NIC-VM moet primair zijn. Als een van de bestaande virtuele Nic's op de VM al als primair is ingesteld, kunt u deze stap overs Laan. In het volgende voor beeld wordt ervan uitgegaan dat er nu twee virtuele Nic's aanwezig zijn op een VM en u de eerste NIC (`[0]`) als primair wilt toevoegen:
         
     ```powershell
     # List existing NICs on the VM and find which one is primary
@@ -204,7 +204,7 @@ Als u een virtuele NIC van een bestaande VM wilt verwijderen, moet u de toewijzi
     $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. Verwijder de NIC met [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) en werk de virtuele machine bij met [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). `$nicId` In het volgende voor beeld wordt *myNic3* verwijderd zoals verkregen in de vorige stap:
+4. Verwijder de NIC met [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) en werk de virtuele machine bij met [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). In het volgende voor beeld worden de *myNic3* die zijn verkregen door `$nicId`, verwijderd uit de vorige stap:
 
     ```powershell
     Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
@@ -229,7 +229,7 @@ Azure Resource Manager sjablonen bieden een manier om meerdere exemplaren van ee
 
 Zie [meerdere exemplaren maken met behulp van *kopiëren*](../../resource-group-create-multiple.md)voor meer informatie. 
 
-U kunt ook gebruiken `copyIndex()` om een nummer toe te voegen aan een resource naam. Vervolgens kunt u *myNic1*, *MyNic2* , enzovoort maken. De volgende code toont een voor beeld van het toevoegen van de index waarde:
+U kunt ook `copyIndex()` gebruiken om een nummer toe te voegen aan een resource naam. Vervolgens kunt u *myNic1*, *MyNic2* , enzovoort maken. De volgende code toont een voor beeld van het toevoegen van de index waarde:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
@@ -281,7 +281,7 @@ Azure wijst een standaard gateway toe aan de eerste (primaire) netwerk interface
       netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
       ```
   
-5. Als u wilt bevestigen dat de toegevoegde route zich in de route tabel `route print` bevindt, voert u de opdracht in, die de uitvoer retourneert, zoals in de volgende tekst:
+5. Als u wilt bevestigen dat de toegevoegde route zich in de route tabel bevindt, voert u de `route print` opdracht in, die de uitvoer retourneert zoals in de volgende tekst:
 
     ```
     ===========================================================================

@@ -1,6 +1,6 @@
 ---
 title: 'Snelstartgids: Face client-bibliotheek voor python | Microsoft Docs'
-description: Aan de slag met de face-client bibliotheek voor python...
+description: Dit artikel helpt u aan de slag te gaan met de face-client bibliotheek voor python om te detecteren, vergelijk bare, identificeren, controleren en meer te vinden.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: b265ec68039f03c09d45c9605965de8ce0baba99
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9728ff86de8561c463886847494ecc4c1c007851
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935877"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743193"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Snelstartgids: Face client-bibliotheek voor python
 
@@ -29,7 +29,7 @@ Gebruik de face client-bibliotheek voor python voor het volgende:
 * Gezichten verifiëren
 * Een moment opname maken voor gegevens migratie
 
-[Referentie documentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [package (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | -voor[beelden](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
+[Referentie documentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [pakket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | -voor [beelden](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -105,7 +105,7 @@ Exemplaar een client met uw eind punt en sleutel. Maak een [CognitiveServicesCre
 
 ## <a name="detect-faces-in-an-image"></a>Gezichten in een afbeelding detecteren
 
-Met de volgende code wordt een gezicht gedetecteerd in een externe installatie kopie. Hiermee wordt de ID van het gedetecteerde gezicht afgedrukt op de-console en wordt deze ook opgeslagen in het programma geheugen. Vervolgens worden de gezichten van een afbeelding met meerdere personen gedetecteerd en worden de bijbehorende Id's ook naar de console afgedrukt. Door de para meters in de methode [detect_with_url](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python#detect-with-url-url--return-face-id-true--return-face-landmarks-false--return-face-attributes-none--recognition-model--recognition-01---return-recognition-model-false--detection-model--detection-01---custom-headers-none--raw-false----operation-config-) te wijzigen, kunt u verschillende informatie retour neren voor elk [DetectedFace](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface?view=azure-python) -object.
+Met de volgende code wordt een gezicht gedetecteerd in een externe installatie kopie. Hiermee wordt de ID van het gedetecteerde gezicht afgedrukt op de-console en wordt deze ook opgeslagen in het programma geheugen. Vervolgens worden de gezichten van een afbeelding met meerdere personen gedetecteerd en worden de bijbehorende Id's ook naar de console afgedrukt. Door de para meters in de methode [detect_with_url](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python#detect-with-url-url--return-face-id-true--return-face-landmarks-false--return-face-attributes-none--recognition-model--recognition-01---return-recognition-model-false--detection-model--detection-01---custom-headers-none--raw-false----operation-config-) te wijzigen, kunt u verschillende informatie met elk [DetectedFace](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface?view=azure-python) -object retour neren.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detect)]
 
@@ -129,7 +129,7 @@ Voer eerst de code in de bovenstaande sectie ([gezichten detecteren in een afbee
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detectgroup)]
 
-Voeg vervolgens het volgende code blok toe om exemplaren van het eerste gezicht in de groep te vinden. Zie de methode [find_similar](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python#find-similar-face-id--face-list-id-none--large-face-list-id-none--face-ids-none--max-num-of-candidates-returned-20--mode--matchperson---custom-headers-none--raw-false----operation-config-) voor meer informatie over hoe u dit gedrag kunt wijzigen.
+Voeg vervolgens het volgende code blok toe om exemplaren van het eerste gezicht in de groep te vinden. Raadpleeg de [find_similar](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python#find-similar-face-id--face-list-id-none--large-face-list-id-none--face-ids-none--max-num-of-candidates-returned-20--mode--matchperson---custom-headers-none--raw-false----operation-config-) -methode om te leren hoe u dit gedrag kunt wijzigen.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar)]
 
@@ -147,7 +147,7 @@ Met de volgende code wordt een **PersonGroup** gemaakt met drie verschillende **
 
 Als u dit scenario wilt door lopen, moet u de volgende installatie kopieën opslaan in de hoofd directory van uw project: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
 
-Deze groep met installatie kopieën bevat drie sets gezichts afbeeldingen die overeenkomen met drie verschillende personen. Met de code worden drie **persoons** objecten gedefinieerd en gekoppeld aan afbeeldings bestanden die beginnen met `woman`, `man` en `child`.
+Deze groep met installatie kopieën bevat drie sets gezichts afbeeldingen die overeenkomen met drie verschillende personen. Met de code worden drie **persoons** objecten gedefinieerd en gekoppeld aan afbeeldings bestanden die beginnen met `woman`, `man`en `child`.
 
 Nadat u uw installatie kopieën hebt ingesteld, definieert u een label boven aan het script voor het **PersonGroup** -object dat u maakt.
 
@@ -262,7 +262,7 @@ Zodra u deze stappen hebt voltooid, kunt u toegang krijgen tot uw gezichts gegev
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit met de `python`-opdracht in uw Quick Start-bestand.
+Voer de toepassing uit met de opdracht `python` in uw Quick Start-bestand.
 
 ```console
 python quickstart-file.py

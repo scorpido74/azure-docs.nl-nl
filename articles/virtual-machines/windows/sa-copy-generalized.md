@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 45c59ccdd45a0c00635c3e0a3919248f33e2919a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0277e07f67b3f9124dc0e27b20e3d49e0d2f6e9
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102455"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749208"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Een installatie kopie van een niet-beheerde virtuele machine maken op basis van een Azure-VM
 
@@ -28,10 +28,10 @@ In dit artikel wordt beschreven hoe u opslag accounts gebruikt. U wordt aangerad
 
 In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om een installatie kopie van een gegeneraliseerde Azure-VM te maken met behulp van een opslag account. Vervolgens kunt u de installatie kopie gebruiken om een andere virtuele machine te maken. De installatie kopie bevat de besturingssysteem schijf en de gegevens schijven die aan de virtuele machine zijn gekoppeld. De installatie kopie bevat geen virtuele netwerk resources, dus moet u deze resources instellen wanneer u de nieuwe VM maakt. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="generalize-the-vm"></a>De virtuele machine generaliseren 
-In deze sectie wordt beschreven hoe u uw virtuele Windows-machine generaliseren voor gebruik als een installatie kopie. Als u een virtuele machine generaliseert, worden alle gegevens van uw persoonlijke account, onder andere, verwijderd en wordt de computer voor bereid voor gebruik als installatie kopie. Zie voor meer informatie over [Sysprep gebruiken: een inleiding](https://technet.microsoft.com/library/bb457073.aspx).
+In deze sectie wordt beschreven hoe u uw virtuele Windows-machine generaliseren voor gebruik als een installatie kopie. Als u een virtuele machine generaliseert, worden alle gegevens van uw persoonlijke account, onder andere, verwijderd en wordt de computer voor bereid voor gebruik als installatie kopie. Raadpleeg [Sysprep gebruiken: een inleiding](https://technet.microsoft.com/library/bb457073.aspx) voor meer informatie over Sysprep.
 
 Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden ondersteund door Sysprep. Zie [Sysprep-ondersteuning voor Server functies](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) voor meer informatie.
 
@@ -40,7 +40,7 @@ Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden 
 > 
 > 
 
-U kunt een virtuele Linux-machine ook generaliseren met `sudo waagent -deprovision+user` en vervolgens Power shell gebruiken om de virtuele machine vast te leggen. Zie [een virtuele Linux-machine generaliseren en vastleggen met behulp van de Azure cli](../linux/capture-image.md)voor meer informatie over het gebruik van de CLI om een virtuele machine vast te leggen.
+U kunt ook een virtuele Linux-machine generaliseren met `sudo waagent -deprovision+user` en vervolgens Power shell gebruiken om de virtuele machine vast te leggen. Zie [een virtuele Linux-machine generaliseren en vastleggen met behulp van de Azure cli](../linux/capture-image.md)voor meer informatie over het gebruik van de CLI om een virtuele machine vast te leggen.
 
 
 1. Meld u aan bij de virtuele Windows-machine.
@@ -103,7 +103,7 @@ U kunt een virtuele Linux-machine ook generaliseren met `sudo waagent -deprovisi
 
 ## <a name="create-the-image"></a>De installatiekopie maken
 
-Maak met behulp van deze opdracht een niet-beheerde installatie kopie van een virtuele machine in de doel opslag container. De installatie kopie wordt gemaakt in hetzelfde opslag account als de oorspronkelijke virtuele machine. Met `-Path` de para meter wordt een kopie van de JSON-sjabloon voor de bron-VM opgeslagen op de lokale computer. De `-DestinationContainerName` para meter is de naam van de container die u in uw afbeeldingen wilt opslaan. Als de container niet bestaat, wordt deze voor u gemaakt.
+Maak met behulp van deze opdracht een niet-beheerde installatie kopie van een virtuele machine in de doel opslag container. De installatie kopie wordt gemaakt in hetzelfde opslag account als de oorspronkelijke virtuele machine. Met de para meter `-Path` wordt een kopie van de JSON-sjabloon voor de bron-VM opgeslagen op de lokale computer. De para meter `-DestinationContainerName` is de naam van de container waarin u de installatie kopieën wilt opslaan. Als de container niet bestaat, wordt deze voor u gemaakt.
    
 ```powershell
 Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
@@ -111,7 +111,7 @@ Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -Path <C:\local\Filepath\Filename.json>
 ```
    
-U kunt de URL van uw installatie kopie ophalen uit de sjabloon voor het JSON-bestand. Ga naar de > sectie **storageProfile** > van**osDisk** > voorhetvolledige pad van de installatie kopie. >  De URL van de afbeelding ziet er als `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`volgt uit:.
+U kunt de URL van uw installatie kopie ophalen uit de sjabloon voor het JSON-bestand. Ga naar de sectie **resources** > **storageProfile** > **osDisk** > **installatie kopie** > **URI** voor het volledige pad van uw installatie kopie. De URL van de afbeelding ziet er als volgt uit: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
    
 U kunt ook de URI in de portal controleren. De installatie kopie wordt gekopieerd naar een container met de naam **System** in uw opslag account. 
 
@@ -121,7 +121,7 @@ U kunt nu een of meer virtuele machines maken op basis van de niet-beheerde inst
 
 ### <a name="set-the-uri-of-the-vhd"></a>De URI van de VHD instellen
 
-De URI voor de VHD die moet worden gebruikt, heeft de volgende indeling: https://**mystorageaccount**. blob.core.Windows.net/**mycontainer**/**MyVhdName**. VHD. In dit voor beeld bevindt de VHD met de naam **myVHD** zich in het opslag account **mystorageaccount** in de container **mycontainer**.
+De URI voor de VHD die moet worden gebruikt, heeft de volgende indeling: https://**mystorageaccount**. blob.core.windows.net/**mycontainer**/**MyVhdName**. VHD. In dit voor beeld bevindt de VHD met de naam **myVHD** zich in het opslag account **mystorageaccount** in de container **mycontainer**.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -249,7 +249,7 @@ De volgende Power shell voltooit de configuraties van de virtuele machine en maa
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Controleren of de virtuele machine is gemaakt
-Als u klaar bent, ziet u de zojuist gemaakte vm in de [Azure Portal](https://portal.azure.com) onder**virtuele machines** **Bladeren** > of met behulp van de volgende Power shell-opdrachten:
+Als u klaar bent, ziet u de zojuist gemaakte VM in de [Azure Portal](https://portal.azure.com) onder **Bladeren** > **virtuele machines**of met behulp van de volgende Power shell-opdrachten:
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

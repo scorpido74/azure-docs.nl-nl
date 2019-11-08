@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f3e852d178a6720f8d567f4ecb042f0b83bcd56c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f782c5abe611086baae5d2ad71bc38516039a231
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583152"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796059"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Toegang tot meerdere protocollen op Azure Data Lake Storage
 
@@ -79,7 +79,7 @@ Net als in de lijst met ondersteunde functies voor Blob-opslag, worden de items 
 |[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal)|Algemeen beschikbaar|
 |[IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|Algemeen beschikbaar|
 |[Logic apps](https://azure.microsoft.com/services/logic-apps/)|Algemeen beschikbaar|
-|[Azure Search](https://docs.microsoft.com/azure/search/search-blob-storage-integration)|Preview|
+|[Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|Preview|
 
 Zie [Azure data Lake Storage met Azure-Services integreren](data-lake-storage-integrate-with-azure-services.md)voor de volledige lijst met Azure ecosysteem-ondersteuning voor data Lake Storage Gen2.
 

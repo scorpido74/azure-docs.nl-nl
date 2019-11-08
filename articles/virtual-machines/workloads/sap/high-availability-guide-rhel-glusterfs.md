@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: fd5014de622c37950c15006c2cc4dcbbb27ef8e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2ae9a1419232cca051f7cab4e9bd8c70f885df73
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101126"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749047"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>GlusterFS in Azure VM's in Red Hat Enterprise Linux voor SAP NetWeaver
 
@@ -98,21 +98,21 @@ U kunt een van de Quick Start-sjablonen op github gebruiken voor het implementer
    4. Beheerders naam, beheerders wachtwoord of SSH-sleutel  
       Er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
    5. Subnet-ID  
-      Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De id is doorgaans hetzelfde als/Subscriptions/ **&lt;-&gt;abonnements-id**/resourceGroups/ **&lt;naam&gt;van de resource groep**/providers/Microsoft.Network/virtualNetworks/ **&lt; naam&gt;** van**het&lt;/subnets/-subnetvanhetvirtuelenetwerk&gt;**
+      Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID is doorgaans hetzelfde als/Subscriptions/ **&lt;abonnement-id&gt;** /resourceGroups/ **&lt;resource groeps naam&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;naam van het virtuele netwerk&gt;** /subnets/ **&lt;subnet naam&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux hand matig implementeren via Azure Portal
 
-U moet eerst de virtuele machines voor dit cluster maken. Daarna maakt u een load balancer en gebruikt u de virtuele machines in de back-endservers.
+U moet eerst de virtuele machines voor dit cluster maken. Daarna maakt u een load balancer en gebruikt u de virtuele machines in de back-endservers. [Standaard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)worden aanbevolen.  
 
 1. Een resourcegroep maken
 1. Een Virtual Network maken
 1. Een Beschikbaarheidsset maken  
    Maximum aantal update domeinen instellen
 1. Virtuele machine 1 maken  
-   Gebruik ten minste RHEL 7, in dit voor beeld de installatie kopie van Red Hat Enterprise Linux 7,4<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Gebruik ten minste RHEL 7, in dit voor beeld de Red Hat Enterprise Linux 7,4-installatie kopie <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Selecteer een Beschikbaarheidsset die u eerder hebt gemaakt  
 1. Virtuele machine 2 maken  
-   Gebruik ten minste RHEL 7, in dit voor beeld de installatie kopie van Red Hat Enterprise Linux 7,4<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Gebruik ten minste RHEL 7, in dit voor beeld de Red Hat Enterprise Linux 7,4-installatie kopie <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Selecteer een Beschikbaarheidsset die u eerder hebt gemaakt  
 1. Voeg één gegevens schijf voor elk SAP-systeem toe aan beide virtuele machines.
 
@@ -120,15 +120,15 @@ U moet eerst de virtuele machines voor dit cluster maken. Daarna maakt u een loa
 
 De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1, **[2]** -alleen van toepassing op knoop punt 2, **[3]** -alleen van toepassing op knoop punt 3.
 
-1. **[A]**  Omzetten van de hostnaam instellen
+1. **[A]** omzetting van hostnaam van installatie
 
-   U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
+   U kunt een DNS-server gebruiken of de bestand/etc/hosts wijzigen op alle knoop punten. In dit voor beeld ziet u hoe u het bestand/etc/hosts-bestand gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Voeg de volgende regels/etc/hosts. De IP-adres en hostnaam zodat deze overeenkomen met uw omgeving wijzigen
+   Voeg de volgende regels toe aan/etc/hosts. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving
 
    <pre><code># IP addresses of the Gluster nodes
    <b>10.0.0.40 glust-0</b>
@@ -181,7 +181,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    sudo systemctl enable glusterd
    </code></pre>
 
-1. **[1]** Create GluserFS
+1. **[1]** GluserFS maken
 
    Voer de volgende opdrachten uit om het GlusterFS-cluster te maken
 

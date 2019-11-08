@@ -1,6 +1,6 @@
 ---
-title: 'Azure Backup: Back-uptaken beheren met REST API'
-description: back-up-en herstel taken van Azure Backup beheren met REST API
+title: 'Azure Backup: back-uptaken beheren met REST API'
+description: In dit artikel leert u hoe u back-up-en herstel taken van Azure Backup kunt bijhouden en beheren met behulp van REST API.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: b10283c2946d01101b941d53b6bf03be3a12e99e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: c0ce79c68b9d9cf11ea20c2d6469f4240fb38a95
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954916"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747537"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Back-up-en herstel taken bijhouden met behulp van REST API
 
@@ -23,7 +23,7 @@ Azure Backup-service activeert taken die op de achtergrond worden uitgevoerd in 
 
 ## <a name="fetch-job-information-from-operations"></a>Taak gegevens ophalen uit bewerkingen
 
-Een bewerking zoals het activeren van een back-up retourneert altijd een jobID. Bijvoorbeeld: De laatste reactie van een [trigger back-up rest API bewerking](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) is als volgt:
+Een bewerking zoals het activeren van een back-up retourneert altijd een jobID. Bijvoorbeeld: de laatste reactie van een [trigger back-up rest API bewerking](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) is als volgt:
 
 ```http
 {
@@ -39,7 +39,7 @@ Een bewerking zoals het activeren van een back-up retourneert altijd een jobID. 
 }
 ```
 
-De Azure VM-back-uptaak wordt aangeduid met het veld jobId en kan worden gevolgd [](https://docs.microsoft.com/rest/api/backup/jobdetails/) door een eenvoudige *Get* -aanvraag.
+De Azure VM-back-uptaak wordt [aangeduid met het](https://docs.microsoft.com/rest/api/backup/jobdetails/) veld jobId en kan worden gevolgd door een eenvoudige *Get* -aanvraag.
 
 ## <a name="tracking-the-job"></a>De taak bijhouden
 
@@ -47,11 +47,11 @@ De Azure VM-back-uptaak wordt aangeduid met het veld jobId en kan worden gevolgd
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2017-07-01
 ```
 
-De `{jobName}` is de ' jobId ' die hierboven wordt vermeld. Het antwoord is altijd 200 OK met het veld Status om de huidige status van de taak aan te geven. Zodra het ' voltooid ' of ' CompletedWithWarnings ' is, toont de sectie ' extendedInfo ' meer informatie over de taak.
+De `{jobName}` is ' jobId ' die hierboven wordt vermeld. Het antwoord is altijd 200 OK met het veld Status om de huidige status van de taak aan te geven. Zodra het ' voltooid ' of ' CompletedWithWarnings ' is, toont de sectie ' extendedInfo ' meer informatie over de taak.
 
 ### <a name="response"></a>Antwoord
 
-|Name  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 

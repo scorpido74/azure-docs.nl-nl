@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: ec8250f6cdb44af3c99c1d34d1f14fbd2209aac0
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: f70052a62152a20f808c1e491a663d1406fbd407
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530093"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747711"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Linkerd installeren in azure Kubernetes service (AKS)
 
@@ -248,7 +248,7 @@ Opening Linkerd dashboard in the default browser
 > [!WARNING]
 > Het verwijderen van Linkerd van een actief systeem kan leiden tot problemen met verkeer tussen uw services. Zorg ervoor dat u voor het systeem nog steeds goed werkt zonder Linkerd voordat u doorgaat.
 
-Eerst moet u de gegevensfeed-proxy's verwijderen. Verwijder alle [aantekeningen][linkerd-automatic-proxy-injection] voor automatische invoeging van proxy's uit workload-naam ruimten en implementeer de implementaties van uw werk belasting. Uw workloads moeten geen bijbehorende gegevenslaag onderdelen meer hebben.
+Eerst moet u de gegevensfeed-proxy's verwijderen. Verwijder alle [aantekeningen][linkerd-automatic-proxy-injection] voor automatische proxy-injecties uit de naam ruimten van de werk ruimte en implementeer uw implementaties van werk belastingen. Uw workloads moeten geen bijbehorende gegevenslaag onderdelen meer hebben.
 
 Ten slotte verwijdert u het besturings vlak als volgt:
 

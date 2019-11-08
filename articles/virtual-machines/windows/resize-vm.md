@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 9537744787df7fc6c470bc1ee6862ad3f2991ae9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1f5f8f3a315b894ab8bc972d36008b5bce85d8e7
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088730"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749237"
 ---
 # <a name="resize-a-windows-vm"></a>Het formaat van een Windows-VM wijzigen
 
@@ -29,7 +29,7 @@ Nadat u een virtuele machine (VM) hebt gemaakt, kunt u de VM omhoog of omlaag sc
 
 Als uw virtuele machine gebruikmaakt van Premium Storage, moet u ervoor zorgen dat u een **s** -versie van de grootte kiest om Premium Storage ondersteuning te krijgen. Kies bijvoorbeeld Standard_E4**s**_v3 in plaats van Standard_E4_v3.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Het formaat van een Windows-virtuele machine niet wijzigen in een beschikbaarheidsset
 
@@ -54,7 +54,7 @@ $vm.HardwareProfile.VmSize = "<newVMsize>"
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ```
 
-Als de gewenste grootte niet wordt weer gegeven, voert u de volgende opdrachten uit om de toewijzing van de VM ongedaan te maken, de grootte ervan te wijzigen en de virtuele machine opnieuw op te starten. **Vervang\<newVMsize >** door de gewenste grootte.
+Als de gewenste grootte niet wordt weer gegeven, voert u de volgende opdrachten uit om de toewijzing van de VM ongedaan te maken, de grootte ervan te wijzigen en de virtuele machine opnieuw op te starten. Vervang **\<newVMsize >** door de gewenste grootte.
    
 ```powershell
 Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force

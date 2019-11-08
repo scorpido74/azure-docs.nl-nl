@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: bestanden en mappen herstellen vanuit een back-up van Azure VM'
-description: Bestanden herstellen vanaf een herstel punt van een virtuele machine in azure
+description: In dit artikel vindt u informatie over het herstellen van bestanden en mappen vanaf een herstel punt van een virtuele Azure-machine.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: df8e309ecb2a81205684c60076015f79ac8c4c8f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: c6b49e794011d915f8cd7b29e6317e80391f2675
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968489"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747383"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -212,7 +212,7 @@ In Linux moet het besturings systeem van de computer die wordt gebruikt om besta
 
 Het script vereist ook python-en bash-onderdelen om het herstel punt veilig uit te voeren en te verbinden.
 
-|Component | Version  |
+|Onderdeel | Versie  |
 | --------------- | ---- |
 | bash | 4 en hoger |
 | python | 2.6.6 en hoger  |
@@ -222,7 +222,7 @@ Het script vereist ook python-en bash-onderdelen om het herstel punt veilig uit 
 
 In deze sectie wordt uitgelegd hoe u bestands herstel kunt uitvoeren vanuit back-ups van virtuele Azure-machines waarvan het aantal schijven > 16 is en elke schijf grootte > 4 TB.
 
-Omdat bestands herstel proces alle schijven van de back-up koppelt, in het geval van een groot aantal schijven (> 16) of grote schijven (> 4 TB elk), worden de volgende actie punten aanbevolen.
+Omdat bestands herstel proces alle schijven van de back-up koppelt, worden de volgende actie punten aanbevolen wanneer een groot aantal schijven (> 16) of grote schijven (> 4 TB elke) worden gebruikt:
 
 - Bewaar een afzonderlijke herstel server (virtuele machines van Azure VM D2v3) voor bestands herstel. U kunt dat alleen bestands herstel gebruiken en vervolgens uitschakelen wanneer dat niet vereist is. Het terugzetten op de oorspronkelijke machine wordt niet aanbevolen, omdat het aanzienlijke gevolgen heeft voor de VM zelf.
 - Voer vervolgens het script opnieuw uit om te controleren of de bestands herstel bewerking is gelukt.
@@ -242,9 +242,9 @@ Omdat bestands herstel proces alle schijven van de back-up koppelt, in het geval
 
 - Als de Restore-server een virtuele Linux-machine is
   - In het bestand/etc/iscsi/iscsid.conf wijzigt u de instelling van
-    - node. verbonden [0]. time-noop_out_timeout = 5 to node. verbonden [0]. Timeo. noop_out_timeout = 30
+    - node. verbonden [0]. Timeo. noop_out_timeout = 5 naar node. verbonden [0]. Timeo. noop_out_timeout = 30
 - Nadat u het volgende hebt uitgevoerd, voert u het script nu opnieuw uit. Met deze wijzigingen is het zeer waarschijnlijk dat de bestands herstel is gelukt.
-- Telkens wanneer een gebruiker een script downloadt, initieert Azure Backup het proces van het voorbereiden van het herstel punt voor down loads. In het geval van grote schijven neemt dit veel tijd in beslag. Als er opeenvolgende bursts van aanvragen zijn, gaat de voor bereiding van het doel naar een down load Spiral. Daarom is het raadzaam om een script te downloaden van portal/Power shell/CLI, te wachten op 20-30 minuten (een heuristiek) en het vervolgens uit te voeren. Op dit moment wordt verwacht dat het doel gereed is voor verbinding vanuit het script.
+- Telkens wanneer een gebruiker een script downloadt, initieert Azure Backup het proces van het voorbereiden van het herstel punt voor down loads. Bij grote schijven duurt dit veel tijd. Als er opeenvolgende bursts van aanvragen zijn, gaat de voor bereiding van het doel naar een down load Spiral. Daarom is het raadzaam om een script te downloaden van portal/Power shell/CLI, te wachten op 20-30 minuten (een heuristiek) en het vervolgens uit te voeren. Op dit moment wordt verwacht dat het doel gereed is voor verbinding vanuit het script.
 - Nadat het bestand is hersteld, gaat u terug naar de portal om te klikken op ontkoppelen van schijven voor herstel punten waar u geen volumes kunt koppelen. In wezen worden bestaande processen/sessies opgeschoond en wordt de kans op herstel verbeterd.
 
 ## <a name="troubleshooting"></a>Problemen oplossen

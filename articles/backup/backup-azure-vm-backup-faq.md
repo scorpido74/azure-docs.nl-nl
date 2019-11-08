@@ -1,6 +1,6 @@
 ---
 title: 'Veelgestelde vragen: back-ups maken van virtuele Azure-machines met Azure Backup'
-description: Antwoorden op veelgestelde vragen over het maken van back-ups van virtuele Azure-machines met Azure Backup.
+description: In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van virtuele Azure-machines met de Azure Backup-service.
 ms.reviewer: sogup
 author: dcurwin
 manager: carmonm
@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: d93225186fe5b16300a3138d67dd40c66d56976e
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: ad5e715de2f3467d4530759cbb2acec0358e5597
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968396"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747279"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Veelgestelde vragen: back-ups maken van virtuele Azure-machines
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van virtuele Azure-machines met de [Azure backup](backup-introduction-to-azure-backup.md) -service.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Back-up maken
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Welke VM-installatie kopieën kunnen worden ingeschakeld voor back-up wanneer ik ze Maak?
 

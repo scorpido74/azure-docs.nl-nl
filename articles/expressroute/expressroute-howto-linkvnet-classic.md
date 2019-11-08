@@ -1,6 +1,6 @@
 ---
-title: 'Een virtueel netwerk koppelen aan een ExpressRoute-circuit: PowerShell: klassiek: Azure | Microsoft Docs'
-description: Dit document bevat een overzicht van virtuele netwerken (VNets) koppelen aan ExpressRoute-circuits met behulp van het klassieke implementatiemodel en PowerShell.
+title: 'Een virtueel netwerk koppelen aan een ExpressRoute-circuit: Power shell: klassiek: Azure | Microsoft Docs'
+description: Dit document bevat een overzicht van hoe u virtuele netwerken (VNets) koppelt aan ExpressRoute-circuits met behulp van het klassieke implementatie model en Power shell.
 services: expressroute
 documentationcenter: na
 author: cherylmc
@@ -8,25 +8,25 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: cherylmc
-ms.openlocfilehash: 21676ff329613f792d6570713f044bb7440e58d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9365e36cb2beff21e795adecaef5fa41e0d7583c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370625"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748265"
 ---
-# <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Een virtueel netwerk verbinden met een ExpressRoute-circuit met behulp van PowerShell (klassiek)
+# <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Een virtueel netwerk verbinden met een ExpressRoute-circuit met behulp van Power shell (klassiek)
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
-> * [Azure-CLI](howto-linkvnet-cli.md)
-> * [Video - Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [Azure CLI](howto-linkvnet-cli.md)
+> * [Video-Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (klassiek)](expressroute-howto-linkvnet-classic.md)
 >
 
-In dit artikel krijgt u virtuele netwerken (VNets) koppelen aan Azure ExpressRoute-circuits met behulp van PowerShell. Een enkel VNet kan worden gekoppeld aan maximaal vier ExpressRoute-circuits. Gebruik de stappen in dit artikel om te maken van een nieuwe koppeling naar elk ExpressRoute-circuit dat u verbinding maakt. De ExpressRoute-circuits kunnen zich in hetzelfde abonnement, verschillende abonnementen of een combinatie van beide. In dit artikel is van toepassing op virtuele netwerken die zijn gemaakt met het klassieke implementatiemodel.
+In dit artikel vindt u informatie over het koppelen van virtuele netwerken (VNets) aan Azure ExpressRoute-circuits met behulp van Power shell. Eén VNet kan worden gekoppeld aan Maxi maal vier ExpressRoute-circuits. Volg de stappen in dit artikel om een nieuwe koppeling te maken naar elk ExpressRoute-circuit waarmee u verbinding maakt. De ExpressRoute-circuits kunnen zich in hetzelfde abonnement, verschillende abonnementen of een combi natie van beide bevindt. Dit artikel is van toepassing op virtuele netwerken die zijn gemaakt met het klassieke implementatie model.
 
-U kunt maximaal 10 virtuele netwerken koppelen aan een ExpressRoute-circuit. Alle virtuele netwerken moeten zich in dezelfde geopolitieke regio. U kunt een groter aantal virtuele netwerken aan uw ExpressRoute-circuit of virtuele netwerken koppelen die zich in andere geopolitieke regio's als u de invoegtoepassing ExpressRoute premium inschakelen koppelen. Controleer de [Veelgestelde vragen over](expressroute-faqs.md) voor meer informatie over de premium-invoegtoepassing.
+U kunt Maxi maal 10 virtuele netwerken koppelen aan een ExpressRoute-circuit. Alle virtuele netwerken moeten zich in dezelfde geopolitieke regio bevinden. U kunt een groter aantal virtuele netwerken koppelen aan uw ExpressRoute-circuit of virtuele netwerken koppelen die zich in andere geopolitieke regio's bevinden als u de ExpressRoute Premium-invoeg toepassing inschakelt. Raadpleeg de [Veelgestelde vragen](expressroute-faqs.md) voor meer informatie over de Premium-invoeg toepassing.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -35,31 +35,29 @@ U kunt maximaal 10 virtuele netwerken koppelen aan een ExpressRoute-circuit. All
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="configuration-prerequisites"></a>Configuratievereisten
 
-* Controleer de [vereisten](expressroute-prerequisites.md), [routeringsvereisten](expressroute-routing.md), en [werkstromen](expressroute-workflows.md) voordat u begint met de configuratie.
+* Bekijk de [](expressroute-prerequisites.md) [vereisten, routerings behoeften](expressroute-routing.md)en [werk stromen](expressroute-workflows.md) voordat u begint met de configuratie.
 * U moet een actief ExpressRoute-circuit hebben.
-   * Volg de instructies voor [maken van een ExpressRoute-circuit](expressroute-howto-circuit-classic.md) en vraag uw connectiviteitsprovider het circuit inschakelen.
-   * Zorg ervoor dat u Azure private peering is geconfigureerd voor uw circuit hebt. Zie de [configureren routering](expressroute-howto-routing-classic.md) artikel voor routeringsinstructies.
-   * Zorg ervoor dat de persoonlijke Azure-peering is geconfigureerd en van de BGP-peering tussen uw netwerk en Microsoft is, zodat u end-to-end-connectiviteit kunt inschakelen.
-   * Hebt u een virtueel netwerk en een virtuele netwerkgateway gemaakt en volledig is ingericht. Volg de instructies voor [een virtueel netwerk configureren voor ExpressRoute](expressroute-howto-vnet-portal-classic.md).
+   * Volg de instructies voor het [maken van een ExpressRoute-circuit](expressroute-howto-circuit-classic.md) en laat uw connectiviteits provider het circuit inschakelen.
+   * Zorg ervoor dat u persoonlijke Azure-peering voor uw circuit hebt geconfigureerd. Zie het artikel [route ring configureren](expressroute-howto-routing-classic.md) voor instructies voor route ring.
+   * Zorg ervoor dat persoonlijke Azure-peering is geconfigureerd en dat de BGP-peering tussen uw netwerk en micro soft actief is zodat u end-to-end connectiviteit kunt inschakelen.
+   * U moet een virtueel netwerk en een gateway voor het virtuele netwerk hebben gemaakt en volledig zijn ingericht. Volg de instructies voor het [configureren van een virtueel netwerk voor ExpressRoute](expressroute-howto-vnet-portal-classic.md).
 
-### <a name="download-the-latest-powershell-cmdlets"></a>Download de meest recente PowerShell-cmdlets
+### <a name="download-the-latest-powershell-cmdlets"></a>De meest recente Power shell-cmdlets downloaden
 
-Installeer de nieuwste versies van de Azure SM (Service Management) PowerShell-modules en de ExpressRoute-module. Wanneer u het volgende voorbeeld, houd er rekening mee dat het versienummer (in dit voorbeeld 5.1.1) worden gewijzigd als nieuwere versies van de cmdlets worden vrijgegeven.
+Installeer de nieuwste versies van de Azure Service Management (SM) Power shell-modules en de ExpressRoute-module. Wanneer u het volgende voor beeld gebruikt, ziet u dat het versie nummer (in dit voor beeld 5.1.1) verandert als nieuwere versies van de cmdlets worden vrijgegeven.
 
 ```powershell
 Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
 Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
 ```
 
-Als u meer informatie over Azure PowerShell, Zie [aan de slag met Azure PowerShell-cmdlets](/powershell/azure/overview) voor stapsgewijze instructies over het configureren van uw computer voor het gebruik van de Azure PowerShell-modules.
+Als u meer informatie over Azure PowerShell nodig hebt, raadpleegt u aan de slag [met Azure PowerShell-cmdlets](/powershell/azure/overview) voor stapsgewijze instructies voor het configureren van uw computer om de Azure PowerShell modules te gebruiken.
 
 ### <a name="sign-in"></a>Aanmelden
 
-Als u wilt aanmelden bij uw Azure-account, moet u de volgende voorbeelden gebruiken:
+Gebruik de volgende voor beelden om u aan te melden bij uw Azure-account:
 
 1. Open de PowerShell-console met verhoogde rechten en maak verbinding met uw account.
 
@@ -77,22 +75,22 @@ Als u wilt aanmelden bij uw Azure-account, moet u de volgende voorbeelden gebrui
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
 
-4. Gebruik vervolgens de volgende cmdlet uit uw Azure-abonnement toevoegen aan PowerShell voor het klassieke implementatiemodel.
+4. Gebruik vervolgens de volgende cmdlet om uw Azure-abonnement toe te voegen aan Power shell voor het klassieke implementatie model.
 
    ```powershell
    Add-AzureAccount
    ```
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Een virtueel netwerk in hetzelfde abonnement verbinden met een circuit
-U kunt een virtueel netwerk koppelen aan een ExpressRoute-circuit met behulp van de volgende cmdlet. Zorg ervoor dat de virtuele netwerkgateway is gemaakt en gereed is voor het koppelen voordat u de cmdlet uitvoert.
+U kunt een virtueel netwerk koppelen aan een ExpressRoute-circuit met behulp van de volgende cmdlet. Zorg ervoor dat de virtuele netwerk gateway is gemaakt en gereed is voor koppeling voordat u de cmdlet uitvoert.
 
 ```powershell
 New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
 Provisioned
 ```
     
-## <a name="remove-a-virtual-network-link-to-a-circuit"></a>Een virtueel netwerk koppelen aan een circuit verwijderen
-U kunt een virtueel netwerk koppelen aan een ExpressRoute-circuit verwijderen met behulp van de volgende cmdlet. Zorg ervoor dat het huidige abonnement is geselecteerd voor het opgegeven virtuele netwerk. 
+## <a name="remove-a-virtual-network-link-to-a-circuit"></a>Een koppeling met een virtueel netwerk naar een circuit verwijderen
+U kunt een koppeling van een virtueel netwerk met een ExpressRoute-circuit verwijderen met de volgende cmdlet. Zorg ervoor dat het huidige abonnement is geselecteerd voor het opgegeven virtuele netwerk. 
 
 ```powershell
 Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
@@ -100,33 +98,33 @@ Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VN
  
 
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>Een virtueel netwerk in een ander abonnement verbinden met een circuit
-U kunt een ExpressRoute-circuit delen voor meerdere abonnementen. De volgende afbeelding toont een eenvoudig schema van hoe delen werkt voor ExpressRoute-circuits voor meerdere abonnementen.
+U kunt een ExpressRoute-circuit delen tussen meerdere abonnementen. In de volgende afbeelding ziet u hoe delen werkt voor ExpressRoute-circuits voor meerdere abonnementen.
 
-Elk van de kleinere clouds binnen de grote cloud wordt gebruikt voor abonnementen die deel uitmaken van verschillende afdelingen binnen een organisatie. Elk van de afdelingen binnen de organisatie kan hun eigen abonnement gebruiken voor het implementeren van hun services, maar de afdelingen een enkel ExpressRoute-circuit terugverbinding maken met uw on-premises netwerk kan delen. Één afdeling (in dit voorbeeld: IT) kunt eigenaar van het ExpressRoute-circuit. Andere abonnementen binnen de organisatie kunnen het ExpressRoute-circuit gebruiken.
+Elk van de kleinere Clouds in de grote Cloud wordt gebruikt om abonnementen weer te geven die deel uitmaken van verschillende afdelingen binnen een organisatie. Elk van de afdelingen in de organisatie kan hun eigen abonnement gebruiken voor het implementeren van hun services, maar de afdelingen kunnen een enkel ExpressRoute-circuit delen om verbinding te maken met uw on-premises netwerk. Eén afdeling (in dit voor beeld: IT) kan eigenaar zijn van het ExpressRoute-circuit. Andere abonnementen binnen de organisatie kunnen het ExpressRoute-circuit gebruiken.
 
 > [!NOTE]
-> Connectiviteit en de bandbreedte kosten in rekening gebracht voor het toegewezen circuit wordt toegepast op de eigenaar van het ExpressRoute-circuit. Alle virtuele netwerken delen de dezelfde bandbreedte.
+> Connectiviteits-en bandbreedte kosten voor het specifieke circuit worden toegepast op de eigenaar van het ExpressRoute-circuit. Alle virtuele netwerken delen dezelfde band breedte.
 > 
 > 
 
-![Abonnementoverschrijdende connectiviteit](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
+![Connectiviteit tussen abonnementen](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
 ### <a name="administration"></a>Beheer
-De *circuiteigenaar* is de beheerder/CO-beheerder van het abonnement waarin het ExpressRoute-circuit is gemaakt. De circuiteigenaar van het kunt autoriseren beheerders/medebeheerders van andere abonnementen, aangeduid als *circuit gebruikers*moeten worden gebruikt het toegewezen circuit waarvan ze eigenaar. Circuitgebruikers die zijn gemachtigd voor het gebruik van de organisatie ExpressRoute-circuit kunnen het virtuele netwerk in het abonnement koppelen aan het ExpressRoute-circuit nadat ze zijn gemachtigd.
+De *eigenaar* van het circuit is de beheerder/beheerder van het abonnement waarin het ExpressRoute-circuit is gemaakt. De eigenaar van het circuit kan beheerders/mede beheerders van andere abonnementen, zoals *circuit gebruikers*genoemd, autoriseren voor het gebruik van het toegewezen circuit waarvan ze eigenaar zijn. Circuit gebruikers die gemachtigd zijn om het ExpressRoute-circuit van de organisatie te gebruiken, kunnen het virtuele netwerk in hun abonnement koppelen aan het ExpressRoute-circuit nadat ze zijn geautoriseerd.
 
-De circuiteigenaar van het heeft de mogelijkheid om te wijzigen en autorisaties op elk gewenst moment intrekken. Een autorisatie intrekken resulteert in alle koppelingen wordt verwijderd uit het abonnement waarvan toegang is ingetrokken.
+De eigenaar van het circuit heeft de bevoegdheid om autorisaties op elk gewenst moment te wijzigen en in te trekken. Als u een autorisatie intrekt, worden alle koppelingen verwijderd uit het abonnement waarvan de toegang is ingetrokken.
 
-### <a name="circuit-owner-operations"></a>Circuit eigenaar bewerkingen
+### <a name="circuit-owner-operations"></a>Bewerkingen voor circuit eigenaars
 
-**Het maken van een autorisatie**
+**Een autorisatie maken**
 
-De circuiteigenaar van het machtigt de beheerders van andere abonnementen het opgegeven circuit gebruiken. In het volgende voorbeeld kan de beheerder van het circuit (Contoso IT) de beheerder van een ander abonnement (Dev-Test) tot twee virtuele netwerken koppelen aan het circuit. De Contoso IT-beheerder kan dit door op te geven de ontwikkel-en Microsoft-account. De cmdlet verzendt geen e-mailbericht naar de opgegeven id van Microsoft. De circuiteigenaar van het moet expliciet op de hoogte stellen andere eigenaar van het abonnement dat de autorisatie voltooid is.
+De eigenaar van het circuit geeft de beheerders van andere abonnementen toestemming om het opgegeven circuit te gebruiken. In het volgende voor beeld is de beheerder van het circuit (Contoso IT) de beheerder van een ander abonnement (dev-test) in staat om Maxi maal twee virtuele netwerken aan het circuit te koppelen. De contoso IT-beheerder kan dit doen door de micro soft-ID voor dev-test op te geven. De cmdlet verzendt geen e-mail bericht naar de opgegeven micro soft-ID. De eigenaar van het circuit moet expliciet de andere eigenaar van het abonnement melden dat de autorisatie is voltooid.
 
 ```powershell
 New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -Description "Dev-Test Links" -Limit 2 -MicrosoftIds 'devtest@contoso.com'
 ```
 
-  Resultaat:
+  Opvragen
 
   ```powershell
   Description         : Dev-Test Links
@@ -136,14 +134,14 @@ New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "************************
   Used                : 0
   ```
 
-**Machtigingen controleren**
+**Autorisaties controleren**
 
-De circuiteigenaar van het kunt bekijken van alle machtigingen die op een bepaalde circuit zijn uitgegeven door de volgende cmdlet uit te voeren:
+De eigenaar van het circuit kan alle autorisaties controleren die zijn uitgegeven op een bepaald circuit door de volgende cmdlet uit te voeren:
 
 ```powershell
 Get-AzureDedicatedCircuitLinkAuthorization -ServiceKey: "**************************"
 ```
-  Resultaat:
+  Opvragen
 
   ```powershell
   Description         : EngineeringTeam
@@ -165,15 +163,15 @@ Get-AzureDedicatedCircuitLinkAuthorization -ServiceKey: "***********************
   Used                : 2
   ```
 
-**Bijwerken van autorisaties**
+**Autorisaties bijwerken**
 
-De circuiteigenaar van het kunt autorisaties wijzigen met behulp van de volgende cmdlet:
+De eigenaar van het circuit kan autorisaties wijzigen met behulp van de volgende cmdlet:
 
 ```powershell
 Set-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -AuthorizationId "&&&&&&&&&&&&&&&&&&&&&&&&&&&&"-Limit 5
 ```
 
-  Resultaat:
+  Opvragen
 
   ```powershell
   Description         : Dev-Test Links
@@ -183,25 +181,25 @@ Set-AzureDedicatedCircuitLinkAuthorization -ServiceKey "************************
   Used                : 0
   ```
 
-**Verwijderen van autorisaties**
+**Autorisaties verwijderen**
 
-De circuiteigenaar van het kunt intrekken/verwijderen autorisaties voor de gebruiker door de volgende cmdlet:
+De eigenaar van het circuit kan autorisaties voor de gebruiker intrekken/verwijderen door de volgende cmdlet uit te voeren:
 
 ```powershell
 Remove-AzureDedicatedCircuitLinkAuthorization -ServiceKey "*****************************" -AuthorizationId "###############################"
 ```
 
-### <a name="circuit-user-operations"></a>Circuit gebruikersbewerkingen
+### <a name="circuit-user-operations"></a>Gebruikers bewerkingen circuit
 
-**Machtigingen controleren**
+**Autorisaties controleren**
 
-De gebruiker circuit kunt autorisaties bekijken met behulp van de volgende cmdlet:
+De circuit gebruiker kan autorisaties controleren met behulp van de volgende cmdlet:
 
 ```powershell
 Get-AzureAuthorizedDedicatedCircuit
 ```
 
-  Resultaat:
+  Opvragen
 
   ```powershell
   Bandwidth                        : 200
@@ -215,15 +213,15 @@ Get-AzureAuthorizedDedicatedCircuit
   UsedLinks                        : 0
   ```
 
-**Autorisaties voor koppelingen met inwisselen**
+**Koppelings autorisaties worden ingewisseld**
 
-De gebruiker circuit kan de volgende cmdlet als u wilt een koppeling autorisatie inwisselen uitvoeren:
+De circuit gebruiker kan de volgende cmdlet uitvoeren om een koppelings autorisatie te verwisselen:
 
 ```powershell
 New-AzureDedicatedCircuitLink –servicekey "&&&&&&&&&&&&&&&&&&&&&&&&&&" –VnetName 'SalesVNET1'
 ```
 
-  Resultaat:
+  Opvragen
 
   ```powershell
   State VnetName
@@ -231,7 +229,7 @@ New-AzureDedicatedCircuitLink –servicekey "&&&&&&&&&&&&&&&&&&&&&&&&&&" –Vnet
   Provisioned SalesVNET1
   ```
 
-Voer deze opdracht uit in de zojuist gekoppelde abonnement voor het virtuele netwerk:
+Voer deze opdracht uit in het zojuist gekoppelde abonnement voor het virtuele netwerk:
 
 ```powershell
 New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"

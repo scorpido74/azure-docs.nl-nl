@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 3f2c768fe7998cc166e3102619e7183c96d1ccbb
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 813263442bc82254d0cb5ea9e9f7e8a265de5b4a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965363"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748212"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Peering voor een ExpressRoute-circuit maken en wijzigen met behulp van Power shell
 
 Dit artikel helpt u bij het maken en beheren van routerings configuratie voor een ExpressRoute-circuit in het Resource Manager-implementatie model met behulp van Power shell. U kunt ook de status van peerings voor een ExpressRoute-circuit controleren, bijwerken of verwijderen en de inrichting ongedaan maken. Als u een andere methode wilt gebruiken om met uw circuit te werken, selecteert u een artikel in de volgende lijst:
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Video-persoonlijke peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
@@ -37,7 +37,7 @@ Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met ser
 > 
 > 
 
-U kunt een, twee of alle drie de peerings (Azure privé, Azure openbaar en Microsoft) voor een ExpressRoute-circuit configureren. U kunt peerings configureren in elke gewenste volgorde. U moet er echter wel voor zorgen dat u de configuratie van elke peering een voor een voltooit. Voor meer informatie over routerings domeinen en peerings, Zie [ExpressRoute-routerings domeinen](expressroute-circuit-peerings.md).
+U kunt een, twee of alle drie de peerings (Azure privé, Azure openbaar en Microsoft) voor een ExpressRoute-circuit configureren. U kunt peerings configureren in elke gewenste volgorde. U moet er echter wel voor zorgen dat u de configuratie van elke peering een voor een voltooit. Zie voor meer informatie over routering domeinen en peerings [ExpressRoute-Routeringsdomeinen](expressroute-circuit-peerings.md).
 
 ## <a name="configuration-prerequisites"></a>Configuratievereisten
 
@@ -46,7 +46,7 @@ U kunt een, twee of alle drie de peerings (Azure privé, Azure openbaar en Micro
 
 ### <a name="working-with-azure-powershell"></a>Werken met Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 

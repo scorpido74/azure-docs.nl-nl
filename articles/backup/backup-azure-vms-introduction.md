@@ -1,18 +1,18 @@
 ---
 title: Over Azure VM Backup
-description: Meer informatie over back-ups van Azure-VM'S en enkele aanbevolen procedures.
+description: In dit artikel leest u hoe de Azure Backup-service een back-up maakt van virtuele Azure-machines en hoe u de aanbevolen procedures volgt.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: db3e4b8a8abea4718f5779790906bf45591d221c
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: e22c4c24e83be0f89b306eed0eb1d80bdd9387e1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018696"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747200"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Een overzicht van Azure VM backup
 
@@ -34,10 +34,10 @@ Hier volgt een beschrijving van de manier waarop Azure Backup een back-up voor v
     - De back-up wordt geoptimaliseerd door een back-up te maken van elke VM-schijf parallel.
     - Azure Backup leest de blokken op de schijf voor elke schijf waarvan een back-up wordt gemaakt en identificeert en brengt alleen de gegevens blokken die zijn gewijzigd (Delta) sinds de vorige back-up.
     - Momentopname gegevens worden mogelijk niet direct naar de kluis gekopieerd. Het kan enkele uren duren om piek tijden. De totale back-uptijd voor een virtuele machine is minder dan 24 uur voor dagelijks back-upbeleid.
- 1. Wijzigingen die zijn aangebracht in een Windows-VM nadat Azure Backup is ingeschakeld, zijn:
-    -   Micro soft C++ Visual 2013 Redistributable (x64)-12.0.40660 is geïnstalleerd in de VM
-    -   Het opstart type van de Volume Shadow Copy service (VSS) is gewijzigd in automatisch vanuit hand matig
-    -   IaaSVmProvider Windows-service is toegevoegd
+1. Wijzigingen die zijn aangebracht in een Windows-VM nadat Azure Backup is ingeschakeld, zijn:
+    - Micro soft C++ Visual 2013 Redistributable (x64)-12.0.40660 is geïnstalleerd in de VM
+    - Het opstart type van de Volume Shadow Copy service (VSS) is gewijzigd in automatisch vanuit hand matig
+    - IaaSVmProvider Windows-service is toegevoegd
 
 1. Wanneer de gegevens overdracht is voltooid, wordt de moment opname verwijderd en wordt er een herstel punt gemaakt.
 
@@ -54,7 +54,7 @@ Wanneer u back-ups maakt van virtuele Azure-machines met Azure Backup, worden vi
 
 Voor beheerde en onbeheerde Azure-Vm's ondersteunt back-ups beide Vm's die zijn versleuteld met alleen BEKs of Vm's die zijn versleuteld met BEKs, samen met KEKs.
 
-De back-up-BEKs (geheimen) en KEKs (sleutels) zijn versleuteld. Ze kunnen alleen worden gelezen en gebruikt wanneer ze terug worden teruggezet naar de sleutel kluis door gemachtigde gebruikers. Niet-geautoriseerde gebruikers en Azure kunnen geen back-upsleutels of geheimen lezen of gebruiken.
+De back-up-BEKs (geheimen) en KEKs (sleutels) zijn versleuteld. Ze kunnen alleen worden gelezen en gebruikt wanneer ze terug worden teruggezet naar de sleutel kluis door gemachtigde gebruikers. Niet-geautoriseerde gebruikers of Azure kunnen geen back-upsleutels of geheimen lezen of gebruiken.
 
 Er wordt ook een back-up gemaakt van BEKs. Als de BEKs verloren zijn gegaan, kunnen geautoriseerde gebruikers dus de BEKs herstellen naar de sleutel kluis en de versleutelde Vm's herstellen. Alleen gebruikers met het benodigde machtigings niveau kunnen back-ups maken van versleutelde Vm's, sleutels en geheimen en deze herstellen.
 
@@ -62,7 +62,7 @@ Er wordt ook een back-up gemaakt van BEKs. Als de BEKs verloren zijn gegaan, kun
 
 Azure Backup maakt moment opnamen volgens het back-upschema.
 
-- **Windows-Vm's:** Voor Windows-Vm's coördineert de back-upservice met VSS voor het maken van een app-consistente moment opname van de VM-schijven.
+- **Windows-vm's:** Voor Windows-Vm's coördineert de back-upservice met VSS voor het maken van een app-consistente moment opname van de VM-schijven.
 
   - Azure Backup maakt standaard volledige VSS-back-ups. [Meer informatie](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx).
   - Als u de instelling wilt wijzigen zodat Azure Backup VSS-kopie back-ups maakt, stelt u de volgende register sleutel in vanaf een opdracht prompt:
@@ -79,10 +79,10 @@ Azure Backup maakt moment opnamen volgens het back-upschema.
 
 In de volgende tabel ziet u de verschillende soorten consistentie van moment opnamen:
 
-**Snapshot** | **Details** | **Recovery** | **Overweging**
+**Snapshot** | **Details** | **Gave** | **Overweging**
 --- | --- | --- | ---
-**Toepassings consistent** | Met app-consistente back-ups worden geheugen inhoud en I/O-bewerkingen in behandeling vastgelegd. App-consistente moment opnamen maken gebruik van een VSS Writer (of pre/post scripts voor Linux) om de consistentie van de app-gegevens te garanderen voordat een back-up wordt uitgevoerd. | Wanneer u een virtuele machine herstelt met een app-consistente moment opname, wordt de VM opgestart. Er zijn geen gegevens beschadiging of-verlies. De apps beginnen met een consistente status. | Windows: Alle VSS-schrijvers zijn geslaagd<br/><br/> Linux: Pre/post-scripts zijn geconfigureerd en geslaagd
-**Bestands systeem consistent** | Bestandssysteem consistente back-ups bieden consistentie door een moment opname van alle bestanden tegelijk te maken.<br/><br/> | Wanneer u een virtuele machine herstelt met een bestandssysteem consistente moment opname, wordt de VM opgestart. Er zijn geen gegevens beschadiging of-verlies. Apps moeten hun eigen mechanisme ' herstellen ' implementeren om ervoor te zorgen dat de herstelde gegevens consistent zijn. | Windows: Sommige VSS-schrijvers zijn mislukt <br/><br/> Linux: Standaard (als er vooraf/post-scripts niet zijn geconfigureerd of mislukt)
+**Toepassings consistent** | Met app-consistente back-ups worden geheugen inhoud en I/O-bewerkingen in behandeling vastgelegd. App-consistente moment opnamen maken gebruik van een VSS Writer (of pre/post scripts voor Linux) om de consistentie van de app-gegevens te garanderen voordat een back-up wordt uitgevoerd. | Wanneer u een virtuele machine herstelt met een app-consistente moment opname, wordt de VM opgestart. Er zijn geen gegevens beschadiging of-verlies. De apps beginnen met een consistente status. | Windows: alle VSS-schrijvers zijn geslaagd<br/><br/> Linux: vóór/post-scripts zijn geconfigureerd en geslaagd
+**Bestands systeem consistent** | Bestandssysteem consistente back-ups bieden consistentie door een moment opname van alle bestanden tegelijk te maken.<br/><br/> | Wanneer u een virtuele machine herstelt met een bestandssysteem consistente moment opname, wordt de VM opgestart. Er zijn geen gegevens beschadiging of-verlies. Apps moeten hun eigen mechanisme ' herstellen ' implementeren om ervoor te zorgen dat de herstelde gegevens consistent zijn. | Windows: sommige VSS-schrijvers zijn mislukt <br/><br/> Linux: standaard (als er vooraf/post-scripts niet zijn geconfigureerd of mislukt)
 **Crash-consistent** | Crash-consistente moment opnamen doen zich meestal voor als een Azure-VM wordt afgesloten op het moment van de back-up. Alleen de gegevens die al op de schijf aanwezig zijn op het moment van de back-up worden vastgelegd en er een back-up van wordt gemaakt.<br/><br/> Een crash-consistent herstel punt garandeert geen gegevens consistentie voor het besturings systeem of de app. | Hoewel er geen garanties zijn, start de virtuele machine meestal op en vervolgens wordt er een schijf controle gestart om beschadigings fouten op te lossen. Gegevens in het geheugen of schrijf bewerkingen die niet naar de schijf zijn overgedragen voordat de crash is verbroken. Apps implementeren hun eigen gegevens verificatie. Een Data Base-app kan bijvoorbeeld het transactie logboek voor verificatie gebruiken. Als het transactie logboek vermeldingen bevat die zich niet in de data base bevinden, worden trans acties teruggedraaid door de data base software totdat de gegevens consistent zijn. | De virtuele machine heeft de status afsluiting
 
 ## <a name="backup-and-restore-considerations"></a>Overwegingen voor back-up en herstel
@@ -140,11 +140,12 @@ Gegevens schijf 2 | 4095 GB | 0 GB
 De werkelijke grootte van de virtuele machine in dit geval 17 GB + 30 GB + 0 GB = 47 GB. Deze beveiligde-instantie grootte (47 GB) wordt de basis voor de maandelijkse factuur. Naarmate de hoeveelheid gegevens in de virtuele machine groeit, wordt de grootte van de beveiligde instantie die wordt gebruikt voor het aanpassen van de facturering, gewijzigd.
 
 <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
-## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Openbare preview: Back-up van de VM met schijf grootten tot 30 TB
+
+## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Open bare Preview: back-up van de virtuele machine met een schijf grootte van Maxi maal 30 TB
 
 Azure Backup ondersteunt nu een open bare preview van grotere en krachtige [Azure-Managed disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) van Maxi maal 30 TB. Deze preview biedt ondersteuning op productie niveau voor beheerde virtuele machines.
 
-De back-ups voor uw virtuele machines met elke schijf grootte tot 30TB en een maximum van 256TB gecombineerd voor alle schijven in een VM, moeten naadloos werken zonder dat dit van invloed is op uw bestaande back-ups. Er is geen gebruikers actie vereist voor het ophalen van de back-ups die worden uitgevoerd voor de grote schijven, als de virtuele machine al is geconfigureerd met Azure Backup.
+De back-ups voor uw virtuele machines met elke schijf grootte van Maxi maal 30 TB en een maximum van 256 TB gecombineerd voor alle schijven in een VM, moeten naadloos werken zonder dat dit van invloed is op uw bestaande back-ups. Er is geen gebruikers actie vereist voor het ophalen van de back-ups die worden uitgevoerd voor de grote schijven, als de virtuele machine al is geconfigureerd met Azure Backup.
 
 Voor alle Azure-Virtual Machines met grote schijven waarvan de back-up is geconfigureerd, moet een back-up worden gemaakt.
 

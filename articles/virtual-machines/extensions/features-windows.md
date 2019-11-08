@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e8543f1f6ef2cdf1695340b07dcbc51365a01a5
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8d73a2dcd0aab3b972a3e0a9237e53d05d4a9a53
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72438137"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750035"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Extensies en functies van virtuele machines voor Windows
 
@@ -28,7 +28,7 @@ Azure virtual machine (VM)-uitbrei dingen zijn kleine toepassingen die configura
 
 Dit artikel bevat een overzicht van VM-extensies, vereisten voor het gebruik van Azure VM-extensies en richt lijnen voor het detecteren, beheren en verwijderen van VM-extensies. Dit artikel bevat algemene informatie omdat er veel VM-uitbrei dingen beschikbaar zijn, elk met een mogelijk unieke configuratie. Details van een specifieke extensie vindt u in elk document dat specifiek is voor de afzonderlijke extensie.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="use-cases-and-samples"></a>Gebruiks voorbeelden en voor beelden
 
@@ -137,7 +137,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-De `Set-AzVMExtension`-opdracht kan worden gebruikt om een VM-extensie te starten. Zie de [Naslag Gids set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)voor meer informatie.
+De opdracht `Set-AzVMExtension` kan worden gebruikt om een VM-extensie te starten. Zie de [Naslag Gids set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)voor meer informatie.
 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -351,7 +351,7 @@ De volgende stappen voor probleem oplossing zijn van toepassing op alle VM-exten
 
 1. Als u het logboek van de Windows-gast agent wilt controleren, bekijkt u de activiteit wanneer uw extensie is ingericht in *C:\WindowsAzure\Logs\WaAppAgent.txt*
 
-2. Raadpleeg de logboeken van de daad werkelijke extensie voor meer informatie in *C:\WindowsAzure\Logs\Plugins @ no__t-1extensionName >*
+2. Raadpleeg de logboeken van de daad werkelijke extensie voor meer informatie over *C:\WindowsAzure\Logs\Plugins\<extensie >*
 
 3. Raadpleeg de onderwerpen over probleem oplossing voor specifieke documentatie voor fout codes, bekende problemen, enzovoort.
 

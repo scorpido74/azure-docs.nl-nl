@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: efbb6ccef9096ed89f6ccd16f8d3b37c9a97b278
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: de33ed80055c26870a29b4c4393a9072ec8dda5e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103214"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749489"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Een gegevens schijf loskoppelen van een virtuele Windows-machine
 
@@ -31,7 +31,7 @@ Wanneer u een gegevensschijf die is gekoppeld aan een virtuele machine niet meer
 
 Als u de bestaande gegevens op de schijf opnieuw wilt gebruiken, kunt u de schijf opnieuw koppelen aan dezelfde of een andere virtuele machine.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="detach-a-data-disk-using-powershell"></a>Een gegevens schijf loskoppelen met Power shell
 
@@ -53,7 +53,7 @@ De schijf blijft in de opslag, maar is niet meer gekoppeld aan een virtuele mach
 2. Selecteer de virtuele machine met de gegevens schijf die u wilt loskoppelen en klik op **stoppen** om de VM opnieuw toe te wijzen.
 3. Selecteer **schijven**in het deel venster virtuele machine.
 4. Selecteer boven in het deel venster **schijven** de optie **bewerken**.
-5. Klik in het deel venster **schijven** helemaal rechts van de gegevens schijf die u wilt loskoppelen op de ![knop knop afbeelding](./media/detach-disk/detach.png) loskoppelen.
+5. Klik in het deel venster **schijven** helemaal rechts van de gegevens schijf die u wilt loskoppelen op de knop ![loskoppelen](./media/detach-disk/detach.png) knop loskoppelen.
 5. Nadat de schijf is verwijderd, klikt u boven aan het deel venster op **Opslaan** .
 6. Klik in het deel venster virtuele machine op **overzicht** en klik vervolgens op de knop **Start** boven aan het deel venster om de VM opnieuw op te starten.
 

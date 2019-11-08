@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: 0fddabc7973fbea147de9f3b6e6da5556407030c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc3c7ea2f0060fc6ab20fa821c9e45d6e5173d4f
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498453"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795803"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-gegevens versleuteling-at-rest
 
@@ -262,7 +262,7 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Server-side met door service beheerde sleutel**     | **Server-zijde met door de klant beheerde sleutel**             | **Client-side met door client beheerde sleutel**      |
 | **AI en Machine Learning**      |                    |                    |                    |
-| Azure Search                     | Ja                | Preview            | -                  |
+| Azure Cognitive Search                     | Ja                | Preview            | -                  |
 | Azure Machine Learning   | Ja                | -                  | -                  |
 | Azure Machine Learning Studio    | Ja                | Preview, RSA 2048-bits | -               |
 | Power BI                         | Ja                | Preview, RSA 2048-bits | -                  |
@@ -316,7 +316,7 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 | Queue Storage                    | Ja                | -                  | Ja                |
 | Avere vFXT                       | Ja                | -                  | -                  |
 | Azure NetApp Files               | Ja                | -                  | -                  |
-| Archiefopslag                  | Ja                | Ja, RSA 2048-bits  | -                  |
+| Archive Storage                  | Ja                | Ja, RSA 2048-bits  | -                  |
 | StorSimple                       | Ja                | Ja, RSA 2048-bits  | Ja                |
 | Azure Backup                     | Ja                | -                  | Ja                |
 | Data Box                         | Ja                | -                  | Ja                |

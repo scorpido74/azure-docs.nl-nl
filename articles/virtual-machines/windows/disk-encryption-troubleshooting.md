@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 026b5d219bee34dd846990d54e691039d1c6e458
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 0d4e76f4d02b0287770243bfddf995a19f90d232
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245069"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749445"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Gids voor het oplossen van problemen Azure Disk Encryption
 
@@ -24,7 +24,7 @@ Voordat u een van de volgende stappen uitvoert, moet u eerst controleren of de v
 - [Groeps beleids vereisten](disk-encryption-overview.md#group-policy-requirements)
 - [Opslag vereisten voor de versleutelings sleutel](disk-encryption-overview.md#encryption-key-storage-requirements)
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Problemen met Azure Disk Encryption achter een firewall oplossen
 
@@ -38,11 +38,11 @@ Alle instellingen voor de netwerk beveiligings groep die worden toegepast, moete
 Wanneer versleuteling wordt ingeschakeld met [Azure AD-referenties](disk-encryption-windows-aad.md#), moet de doel-VM verbinding kunnen maken met zowel Azure Active Directory-eind punten als Key Vault-eind punten. De huidige Azure Active Directory-verificatie-eind punten worden onderhouden in de secties 56 en 59 van de documentatie voor [Office 365-url's en IP-](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) adresbereiken. Key Vault instructies vindt u in de documentatie over het [verkrijgen van toegang tot Azure Key Vault achter een firewall](../../key-vault/key-vault-access-behind-firewall.md).
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
-De virtuele machine moet toegang hebben tot de [meta gegevens service](../windows/instance-metadata-service.md) -eind punt van Azure, die gebruikmaakt van een bekende niet-Routeer bare IP-adres (`169.254.169.254`) dat alleen vanuit de virtuele machine kan worden geopend.  Proxy configuraties waarmee lokaal HTTP-verkeer naar dit adres wordt gewijzigd (bijvoorbeeld het toevoegen van een X-doorgestuurd-for-header) worden niet ondersteund.
+De virtuele machine moet toegang hebben tot het [meta gegevens service](../windows/instance-metadata-service.md) -eind punt van Azure, dat gebruikmaakt van een goed bekend, niet-routeerbaar IP-adres (`169.254.169.254`) dat alleen vanuit de VM kan worden geopend.  Proxy configuraties waarmee lokaal HTTP-verkeer naar dit adres wordt gewijzigd (bijvoorbeeld het toevoegen van een X-doorgestuurd-for-header) worden niet ondersteund.
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Problemen met Windows Server 2016 Server Core oplossen
 
-In Windows Server 2016 Server Core is het onderdeel bdehdcfg niet standaard beschikbaar. Dit onderdeel is vereist door Azure Disk Encryption. Het wordt gebruikt om het systeem volume van het besturingssysteem volume te splitsen. dit wordt slechts één keer uitgevoerd voor de levens duur van de virtuele machine. Deze binaire bestanden zijn niet vereist tijdens latere versleutelings bewerkingen.
+In Windows Server 2016 Server Core is het onderdeel bdehdcfg niet standaard beschikbaar. Dit onderdeel is vereist door Azure Disk Encryption. Deze wordt gebruikt voor het splitsen van het systeemvolume van OS-volume, die slechts één keer voor de levensduur van de virtuele machine wordt uitgevoerd. Deze binaire bestanden zijn niet vereist tijdens latere versleutelings bewerkingen.
 
 U kunt dit probleem omzeilen door de volgende vier bestanden te kopiëren van een Windows Server 2016 Data Center-VM naar dezelfde locatie op Server Core:
 
@@ -85,7 +85,7 @@ Gebruik [AZ VM Encryption Disable](/cli/azure/vm/encryption)om Azure Disk Encryp
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit document hebt u meer geleerd over enkele veelvoorkomende problemen in Azure Disk Encryption en hoe u deze problemen oplost. Raadpleeg de volgende artikelen voor meer informatie over deze service en de mogelijkheden ervan:
+In dit document hebt u geleerd informatie over enkele veelvoorkomende problemen in Azure Disk Encryption en hoe deze problemen op te lossen. Raadpleeg de volgende artikelen voor meer informatie over deze service en de mogelijkheden ervan:
 
 - [Schijf versleuteling Toep assen in Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)
 - [Azure-gegevens versleuteling in rust](../../security/fundamentals/encryption-atrest.md)

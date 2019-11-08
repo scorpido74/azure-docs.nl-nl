@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: Maak een back-up van virtuele Azure-machines met REST API'
-description: Back-upbewerkingen van Azure VM-back-ups beheren met REST API
+description: In dit artikel vindt u informatie over het configureren, initiëren en beheren van back-upbewerkingen van Azure VM-back-ups met behulp van REST API.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 837401256aa264a527e2323b055713f4bd8e8d1c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 901ae66281e1d68474304a4f5456a0163fcb6f2a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671687"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747607"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Maak een back-up van een Azure-VM met behulp van Azure Backup via REST API
 
@@ -108,13 +108,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 De *Get* -URI heeft alle vereiste para meters. Er is geen aanvullende aanvraag tekst nodig.
 
-##### <a name="responses-1"></a>Rapporten
+#### <a name="responses-1"></a>Rapporten
 
 |Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
-##### <a name="example-responses-1"></a>Voorbeeld reacties
+#### <a name="example-responses-1"></a>Voorbeeld reacties
 
 Zodra de *Get* -aanvraag is ingediend, wordt een antwoord van 200 (OK) geretourneerd.
 
@@ -329,7 +329,7 @@ Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere b
 |---------|---------|---------|
 |202 geaccepteerd     |         |     Afgewezen    |
 
-##### <a name="example-responses-3"></a>Voorbeeld reacties
+#### <a name="example-responses-3"></a>Voorbeeld reacties
 
 Zodra u de *post* -aanvraag voor een back-up op aanvraag hebt verzonden, is het eerste antwoord 202 (geaccepteerd) met een locatie header of Azure-async-header.
 

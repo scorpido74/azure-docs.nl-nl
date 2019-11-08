@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: 773ffe264446e6a4d9ef2e88634e4f2c9b8aeb45
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.date: 11/07/2019
+ms.openlocfilehash: 460079248e6cbd939c36b84f94cac41dce4dda2b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273979"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747661"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Zelf studie: een SQL Server Linux-docker-container in een virtueel netwerk doorzoeken van een Azure Databricks notebook
 
@@ -42,7 +42,7 @@ In deze zelfstudie leert u het volgende:
 
     ![Nieuwe virtuele machine van Azure toevoegen](./media/vnet-injection-sql-server/add-virtual-machine.png)
 
-2. Kies op het tabblad **basis beginselen** de optie Ubuntu Server 16,04 LTS. Wijzig de VM-grootte in B1ms. deze heeft één VCPU'S en 2 GB RAM-geheugen. De minimale vereiste voor een Linux SQL Server docker-container is 2 GB. Kies een gebruikers naam en wacht woord voor de beheerder.
+2. Kies op het tabblad **basis beginselen** de optie Ubuntu Server 18,04 LTS en wijzig de VM-grootte in B2s. Kies een gebruikers naam en wacht woord voor de beheerder.
 
     ![Tabblad basis informatie van de configuratie van de nieuwe virtuele machine](./media/vnet-injection-sql-server/create-virtual-machine-basics.png)
 
@@ -65,10 +65,10 @@ In deze zelfstudie leert u het volgende:
     |Instelling|Voorgestelde waarde|Beschrijving|
     |-------|---------------|-----------|
     |Bron|IP-adressen|IP-adressen geeft aan dat binnenkomend verkeer van een specifiek IP-adres van de bron wordt toegestaan of geweigerd door deze regel.|
-    |IP-adressen van bron|< uw open bare IP-adres @ no__t-0|Voer het open bare IP-adres in. U kunt uw open bare IP-adres vinden door naar [Bing.com](https://www.bing.com/) te gaan en naar **' mijn IP '** te zoeken.|
+    |IP-adressen van bron|< uw open bare IP-\>|Voer het open bare IP-adres in. U kunt uw open bare IP-adres vinden door naar [Bing.com](https://www.bing.com/) te gaan en naar **' mijn IP '** te zoeken.|
     |Poortbereiken van bron|*|Verkeer vanaf elke poort toestaan.|
-    |Bestemming|IP-adressen|IP-adressen geeft aan dat uitgaand verkeer voor een specifiek IP-adres van de bron wordt toegestaan of geweigerd door deze regel.|
-    |Doel-IP-adressen|het open bare IP-adres van de VM < @ no__t-0|Voer het open bare IP-adres van uw virtuele machine in. U kunt dit vinden op de pagina **overzicht** van de virtuele machine.|
+    |Doel|IP-adressen|IP-adressen geeft aan dat uitgaand verkeer voor een specifiek IP-adres van de bron wordt toegestaan of geweigerd door deze regel.|
+    |Doel-IP-adressen|< uw open bare IP-adres van de VM\>|Voer het open bare IP-adres van uw virtuele machine in. U kunt dit vinden op de pagina **overzicht** van de virtuele machine.|
     |Poortbereiken van doel|22|Open poort 22 voor SSH.|
     |Prioriteit|290|Geef een prioriteit voor de regel op.|
     |Naam|SSH-databricks-zelf studie-VM|Geef een naam op voor de regel.|
@@ -80,11 +80,10 @@ In deze zelfstudie leert u het volgende:
 
     |Instelling|Voorgestelde waarde|Beschrijving|
     |-------|---------------|-----------|
-    |Bron|IP-adressen|IP-adressen geeft aan dat binnenkomend verkeer van een specifiek IP-adres van de bron wordt toegestaan of geweigerd door deze regel.|
-    |IP-adressen van bron|10.179.0.0/16|Voer het adres bereik voor het virtuele netwerk in.|
+    |Bron|Alle|Source geeft aan dat binnenkomend verkeer van een specifiek IP-adres van de bron wordt toegestaan of geweigerd door deze regel.|
     |Poortbereiken van bron|*|Verkeer vanaf elke poort toestaan.|
-    |Bestemming|IP-adressen|IP-adressen geeft aan dat uitgaand verkeer voor een specifiek IP-adres van de bron wordt toegestaan of geweigerd door deze regel.|
-    |Doel-IP-adressen|het open bare IP-adres van de VM < @ no__t-0|Voer het open bare IP-adres van uw virtuele machine in. U kunt dit vinden op de pagina **overzicht** van de virtuele machine.|
+    |Doel|IP-adressen|IP-adressen geeft aan dat uitgaand verkeer voor een specifiek IP-adres van de bron wordt toegestaan of geweigerd door deze regel.|
+    |Doel-IP-adressen|< uw open bare IP-adres van de VM\>|Voer het open bare IP-adres van uw virtuele machine in. U kunt dit vinden op de pagina **overzicht** van de virtuele machine.|
     |Poortbereiken van doel|1433|Open poort 22 voor SQL Server.|
     |Prioriteit|300|Geef een prioriteit voor de regel op.|
     |Naam|SQL-databricks-zelf studie-VM|Geef een naam op voor de regel.|
@@ -137,7 +136,7 @@ In deze zelfstudie leert u het volgende:
     sudo docker ps -a
     ```
 
-## <a name="create-a-sql-database"></a>Een SQL Database maken
+## <a name="create-a-sql-database"></a>Een SQL-database maken
 
 1. Open SQL Server Management Studio en maak verbinding met de server met behulp van de server naam en SQL-verificatie. De aanmeldings naam van de gebruiker is **sa** en het wacht woord is het wacht woord dat is ingesteld in de docker-opdracht. Het wacht woord in de voorbeeld opdracht is `Password1234`.
 

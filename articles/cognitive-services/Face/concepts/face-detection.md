@@ -1,7 +1,7 @@
 ---
-title: Gezichtsdetectie en concepten van kenmerken
+title: Concepten van gezichts detectie en kenmerken
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over concepten over gezichtsdetectie en face kenmerken.
+description: Gezichts detectie is de actie van het vinden van menselijke gezichten in een afbeelding en optioneel verschillende soorten informatie retour neren.
 services: cognitive-services
 author: PatrickFarley
 manager: nitime
@@ -10,74 +10,74 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: e61048eeab9d7061c18f3237db22fc87ca52f526
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15e39eb9f5b8dd3556ea9ff8240bc2c9d252cd31
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65891168"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743052"
 ---
-# <a name="face-detection-and-attributes"></a>Gezichtsdetectie en kenmerken
+# <a name="face-detection-and-attributes"></a>Gezichts detectie en kenmerken
 
-In dit artikel worden de concepten van gezichtsherkenning en face kenmerkgegevens. Gezichtsdetectie is de bewerking van menselijke gezichten zoeken in een afbeelding en desgewenst retourneren van verschillende soorten gegevens met betrekking tot face.
+In dit artikel worden de concepten van gezichts detectie en face-kenmerk gegevens uitgelegd. Gezichts detectie is de actie van het vinden van menselijke gezichten in een afbeelding en optioneel verschillende soorten informatie retour neren.
 
-U gebruikt de [geconfronteerd - detecteren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) bewerking voor het detecteren van gezichten in een afbeelding. Ten minste elke gedetecteerde face komt overeen met een veld faceRectangle in het antwoord. Deze reeks pixelcoördinaten voor de links, boven, breedte en hoogte markeren het gezicht bevindt. Met behulp van deze coördinaten, krijgt u de locatie van het gezicht en de grootte ervan. In de API-reactie worden gezichten weergegeven in volgorde van de grootte van grootste naar kleinste.
+U gebruikt de bewerking [Face-detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) om gezichten in een installatie kopie te detecteren. Elk gedetecteerd gezicht komt ten minste overeen met een faceRectangle-veld in het antwoord. Deze set pixel coördinaten voor de linkerkant, boven, breedte en hoogte markeert het bevindde gezicht. Met deze coördinaten kunt u de locatie van het gezicht en de grootte ervan ophalen. In de API-reactie worden gezichten weer gegeven in de volg orde van grootste naar kleinste.
 
 ## <a name="face-id"></a>Gezichts-id
 
-De face-ID is een tekenreeks met de unieke id voor elke gedetecteerde gezicht in een afbeelding. U kunt aanvragen een face ID in uw [geconfronteerd - detecteren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API-aanroep.
+De face ID is een unieke id-teken reeks voor elk gedetecteerd gezicht in een afbeelding. U kunt een gezichts-ID aanvragen bij uw [gezicht-detectie API-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) oproep.
 
 ## <a name="face-landmarks"></a>Gezichtsoriëntatiepunten
 
-Gezichtsoriëntatiepunten zijn een set van punten op een gezicht, zoals de leerlingen of de tip van de voorzijde gemakkelijk te vinden. Standaard zijn er 27 oriëntatiepunten vooraf gedefinieerde punten. De volgende afbeelding ziet u alle 27 punten:
+Gezichts bezienswaardigheden zijn een verzameling gemakkelijk te vinden punten op een gezicht, zoals de pupilsen of de tip van de neus. Standaard zijn er 27 oriëntatiepunten vooraf gedefinieerde punten. In de volgende afbeelding ziet u alle 27 punten:
 
-![Een diagram face met alle 27 oriëntatiepunten met het label](../Images/landmarks.1.jpg)
+![Een gezichts diagram met alle 27 oriëntatie punten](../Images/landmarks.1.jpg)
 
 De coördinaten van de punten worden geretourneerd in eenheden van pixels.
 
 ## <a name="attributes"></a>Kenmerken
 
-Kenmerken zijn een set van functies die optioneel kan worden gedetecteerd door de [geconfronteerd - detecteren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API. De volgende kenmerken kunnen worden gedetecteerd:
+Kenmerken zijn een set functies die optioneel kunnen worden gedetecteerd door de [-detectie-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API. De volgende kenmerken kunnen worden gedetecteerd:
 
-* **Leeftijd**. De geschatte leeftijd in jaar van een bepaald gezicht.
-* **Blur**. De vervaging van het gezicht in de afbeelding. Dit kenmerk retourneert een waarde tussen 0 en 1 en een informele classificatie van laag, Gemiddeld of hoog.
-* **Emoties**. Een lijst van emoties met hun detectie vertrouwen voor het opgegeven gezicht. Vertrouwen van de scores zijn genormaliseerd en de scores in alle emoties toevoegen aan een. De geretourneerde emoties zijn blijdschap, verdriet, neutraal, boosheid, minachting, walging, angst en verrassing.
-* **Blootstelling**. De blootstelling van het gezicht in de afbeelding. Dit kenmerk retourneert een waarde tussen 0 en 1 en een informele classificatie van onderbelichting, goodExposure of overbelichting.
-* **Gezichtshaar**. De geschatte gezichtshaar aanwezigheid en de lengte voor een bepaald gezicht.
-* **Geslacht**. De geschatte geslacht van de bepaald gezicht. Mogelijke waarden zijn man, vrouw en genderless.
-* **Een bril**. Bepaalt of de bepaald gezicht bril heeft. Mogelijke waarden zijn NoGlasses, ReadingGlasses zonnebril en dragen van een veiligheidsbril zwemmen.
-* **Haar**. Het type haar van het gezicht. Dit kenmerk bevat of de haren zichtbaar is en welke haar kleuren worden gedetecteerd of baldness wordt gedetecteerd.
-* **HEAD inhouden**. Richting van het gezicht in 3D-ruimte. Dit kenmerk wordt beschreven door de presentatie, implementatie en plafondmontagemethoden hoeken in graden. De waardebereiken zijn 90 graden op 90 graden, -180 en 180 graden en 90 graden 90 graden. Zie het volgende diagram voor hoek toewijzingen:
+* **Leeftijd**. De geschatte leeftijd in jaren van een bepaald gezicht.
+* **Vervagen**. De blurriness van het gezicht in de afbeelding. Dit kenmerk retourneert een waarde tussen nul en een informele classificatie van laag, gemiddeld of hoog.
+* **Emotion**. Een lijst met emoties met hun detectie betrouwbaarheids niveau voor het gegeven gezicht. Betrouw bare scores worden genormaliseerd en de scores voor alle emoties worden Maxi maal één opgeteld. De emoties is blij, verdriet, neutraal, boosheid, congeneigd, walging, verrassing en vrezen.
+* **Bloot stelling**. De bloot stelling van het gezicht in de afbeelding. Dit kenmerk retourneert een waarde tussen nul en een informele classificatie van onderbelichting, goodExposure of overbelichting.
+* Laat het **staan.** Het geschatte gezicht is de aanwezigheid en de lengte van het gegeven gezicht.
+* **Geslacht**. Het geschatte geslacht van het opgegeven gezicht. Mogelijke waarden zijn mannelijk, vrouwelijk en geslacht.
+* **Glazen**. Hiermee wordt aangegeven of het opgegeven gezicht bril heeft. Mogelijke waarden zijn glazen, ReadingGlasses, zonnebril en zwem brillen.
+* **Haar**. Het type van het gezicht. Dit kenmerk toont of het haar zichtbaar is, of baldness wordt gedetecteerd en wat haar kleuren zijn gedetecteerd.
+* **Hoofd pose**. De richting van het gezicht in de 3D-ruimte. Dit kenmerk wordt beschreven door de hoeken pitch, roll en yaw in graden. De waardebereiken zijn-90 graden tot 90 graden,-180 graden tot 180 graden en-90 graden tot 90 graden. Zie het volgende diagram voor hoek toewijzingen:
 
-    ![Een head met de presentatie, rollen en yaw assen met het label](../Images/headpose.1.jpg)
-* **Makeup**. Bepaalt of het gezicht Make-up heeft. Dit kenmerk retourneert een Booleaanse waarde voor eyeMakeup en lipMakeup.
-* **Ruis**. De visual ruis gedetecteerd in het gezicht. Dit kenmerk retourneert een waarde tussen 0 en 1 en een informele classificatie van laag, Gemiddeld of hoog.
-* **Bedekking**. Of er blokkerende onderdelen van de face-objecten. Dit kenmerk retourneert een Booleaanse waarde voor eyeOccluded foreheadOccluded en mouthOccluded.
-* **Lach**. De expressie glimlach van de bepaald gezicht. Deze waarde is tussen de nul voor geen glimlach en één voor glimlach wissen.
+    ![Een kop met de assen pitch, roll en yaw label](../Images/headpose.1.jpg)
+* **Makeup**. Hiermee wordt aangegeven of het gezicht Makeup heeft. Dit kenmerk retourneert een Booleaanse waarde voor eyeMakeup en lipMakeup.
+* **Lawaai**. Het visuele geluid dat is gedetecteerd in de gezichts afbeelding. Dit kenmerk retourneert een waarde tussen nul en een informele classificatie van laag, gemiddeld of hoog.
+* **Bedekking**. Hiermee wordt aangegeven of er objecten zijn die delen van het gezicht blok keren. Dit kenmerk retourneert een Booleaanse waarde voor eyeOccluded, foreheadOccluded en mouthOccluded.
+* **Glim lach**. De glim lach-expressie van het opgegeven gezicht. Deze waarde ligt tussen nul en een voor een helder glim lach.
 
 > [!IMPORTANT]
-> Face-kenmerken worden voorspeld door het gebruik van statistische algoritmen. Ze altijd mogelijk niet nauwkeurig. Wees voorzichtig wanneer u op basis van kenmerkgegevens beslissingen.
+> Gezichts kenmerken worden voor speld door het gebruik van statistische algoritmen. Ze zijn mogelijk niet altijd nauw keurig. Wees voorzichtig bij het nemen van beslissingen op basis van kenmerk gegevens.
 
 ## <a name="input-data"></a>Invoergegevens
 
-Gebruik de volgende tips om ervoor te zorgen dat uw invoer afbeeldingen de meest nauwkeurige resultaten geven:
+Gebruik de volgende tips om ervoor te zorgen dat uw invoer installatie kopieën de meest nauw keurige detectie resultaten bieden:
 
-* De afbeelding ondersteunde indelingen zijn JPEG, PNG-, GIF-bestand voor de eerste frame, en BMP.
-* De grootte van de installatiekopie mag niet groter zijn dan 4 MB zijn.
-* Het bereik van de grootte detecteerbare gezicht is 36 x 36 naar 4096 x 4096 pixels. Gezichten buiten dit bereik wordt niet worden gedetecteerd.
-* Sommige gezichten kunnen niet worden gevonden vanwege technische problemen. Extreme face hoeken (hoofd houding) of face bedekking (objecten zoals zonnebril of handen die deel uitmaken van het gezicht blokkeren) kan invloed hebben op detectie. Voorzijde en in de buurt binnen handbereik gezichten bieden de beste resultaten.
+* De ondersteunde indelingen voor de invoer afbeeldingen zijn JPEG, PNG, GIF voor het eerste frame en BMP.
+* De grootte van het afbeeldings bestand mag niet groter zijn dan 4 MB.
+* Het waarneem bare gezichts grootte bereik is 36 x 36 tot 4096 x 4096 pixels. Gezichten buiten dit bereik worden niet gedetecteerd.
+* Sommige gezichten worden mogelijk niet gedetecteerd vanwege technische problemen. Extreme gezichts hoeken (Head pose) of gezichts bedekking (objecten zoals zonnebril of handen die deel van het gezicht blok keren) kunnen de detectie beïnvloeden. Front-en bijna-frontale gezichten bieden de beste resultaten.
 
-Als u gezichten in een feed video detecteren bent, kunt u mogelijk de prestaties verbeteren door bepaalde instellingen op uw videocamera aan te passen:
+Als u gezichten van een video feed detecteert, kunt u de prestaties mogelijk verbeteren door bepaalde instellingen op uw video camera aan te passen:
 
-* **Vloeiend**: Veel video camera's toepassen vloeiend maken het effect. U moet dit uitschakelen als u de kunt omdat het een vervaging tussen frames maakt en duidelijkheid vermindert.
-* **Sluitersnelheid**: Waarop u sneller wordt de hoeveelheid beweging tussen frames en elk duidelijker frame maakt. U wordt aangeraden waarop snelheden van 1/60 seconden of sneller.
-* **Waarop hoek**: Sommige camera's opgeven waarop hoek in plaats van waarop snelheid. Indien mogelijk moet u een lagere waarop hoek gebruiken. Dit wordt duidelijker videoframes leiden.
+* **Vloeiend maken**: veel video camera's maken een gladd effect toe. Als dat het geval is, kunt u dit uitschakelen omdat er een vervaging tussen frames wordt gemaakt en de duidelijkheid wordt verminderd.
+* **Sluiter snelheid**: een snellere sluiter snelheid vermindert de hoeveelheid beweging tussen frames en maakt elk frame duidelijker. U kunt het beste een sluiter snelheid van 1/60 seconden of sneller.
+* **Sluit hoek**: sommige camera's geven een sluit hoek aan in plaats van de sluiter snelheid. Gebruik, indien mogelijk, een kleine sluit hoek. Dit leidt tot duidelijkere video frames.
 
     >[!NOTE]
-    > Een camera met een lagere waarop hoek ontvangt minder licht in elk frame, zodat de afbeelding donkerder. U moet bepalen het juiste niveau te gebruiken.
+    > Een camera met een lagere sluiter hoek krijgt minder licht in elk frame, waardoor de afbeelding donkerder wordt. U moet het juiste niveau bepalen dat u wilt gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u bekend met face detection-concepten bent, Leer hoe u een script schrijven dat gezichten gedetecteerd in een bepaalde installatiekopie.
+Nu u bekend bent met gezichts detectie concepten, leert u hoe u een script schrijft dat gezichten detecteert in een bepaalde afbeelding.
 
-* [Detecteer gezichten in een afbeelding](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)
+* [Gezichten detecteren in een installatie kopie](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

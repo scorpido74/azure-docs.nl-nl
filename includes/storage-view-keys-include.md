@@ -5,22 +5,24 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 06/20/2019
+ms.date: 11/06/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 0e8f1453687f7424c6b651dc324e66e84dd8d29f
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e3b3d944508a4261b78def0b3bee13f7395a8bf0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302534"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749001"
 ---
-Om te bekijken en kopiëren van uw opslagaccount of de verbindingsreeks vanuit Azure portal:
+De toegangs sleutels of connection string van uw opslag account weer geven en kopiëren vanuit de Azure Portal:
 
 1. Navigeer naar [Azure Portal](https://portal.azure.com).
 2. Zoek uw opslagaccount.
 3. In de sectie **Instellingen** van het overzicht met opslagaccounts selecteert u **Toegangssleutels**. De toegangssleutels van uw account worden weergegeven, evenals de volledige verbindingsreeks voor elke sleutel.
 4. Zoek de waarde van de **Sleutel** onder **key1** en klik op de knop **Kopiëren** om de accountsleutel te kopiëren.
-5. U kunt ook de volledige verbindingsreeks kopiëren. Zoek de waarde van de **Verbindingsreeks** onder **key1** en klik op de knop **Kopiëren** om de verbindingsreeks te kopiëren.
+5. U kunt ook de hele connection string kopiëren. Zoek de waarde van de **Verbindingsreeks** onder **key1** en klik op de knop **Kopiëren** om de verbindingsreeks te kopiëren.
 
-    ![Schermopname van het toegangssleutels weergeven in Azure portal](media/storage-view-keys-include/portal-connection-string.png)
+    ![Scherm afbeelding die laat zien hoe toegangs sleutels in de Azure Portal worden weer gegeven](media/storage-view-keys-include/portal-connection-string.png)
+
+U kunt een van beide sleutels gebruiken om toegang te krijgen tot Azure Storage, maar in het algemeen is het een goed idee om de eerste sleutel te gebruiken en het gebruik van de tweede toets te reserveren wanneer u sleutels draait.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: fa6b005be91f47f5976dace7fd1e76f6ea7e0b29
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 274697d555974f286c2c71f26280640077c11f81
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698851"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749546"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Het opslag type van een beheerde schijf bijwerken
 
@@ -20,7 +20,7 @@ Er zijn vier schijf typen van Azure Managed disks: Azure Ultra Ssd's (preview), 
 
 Deze functionaliteit wordt niet ondersteund voor niet-beheerde schijven. U kunt echter eenvoudig een niet-beheerde [schijf converteren naar een Managed Disk](convert-unmanaged-to-managed-disks.md) om tussen schijf typen te scha kelen.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -113,9 +113,9 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 Volg deze stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Selecteer de VM in de lijst met **virtuele machines** in de portal.
-3. Als de virtuele machine niet is gestopt, selecteert u **stoppen** boven aan VM-overzichts deel venster en wacht u totdat de virtuele machine is gestopt.
+3. Als de virtuele machine niet is gestopt, selecteert u **stoppen** boven aan vm- **overzichts** deel venster en wacht u totdat de virtuele machine is gestopt.
 3. Selecteer in het deel venster voor de VM de optie **schijven** in het menu.
 4. Selecteer de schijf die u wilt converteren.
 5. Selecteer **configuratie** in het menu.

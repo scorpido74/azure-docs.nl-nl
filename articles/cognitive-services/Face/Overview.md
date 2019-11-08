@@ -1,7 +1,7 @@
 ---
 title: Wat is de Face-API?
 titleSuffix: Azure Cognitive Services
-description: Informatie over het gebruik van de Face-service voor het detecteren en analyseren van gezichten op afbeeldingen.
+description: De Azure Cognitive Services Face-API biedt algoritmen die worden gebruikt voor het detecteren, herkennen en analyseren van menselijke gezichten in installatie kopieën.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,81 +9,81 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 4be33f781dec93fd9fe1b1846322672266cd7350
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 95ea1718682340967d5d39fe5f550f2638273796
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606917"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743698"
 ---
 # <a name="what-is-the-azure-face-api"></a>Wat is de Azure Face-API?
 
-De Azure Cognitive Services Face-API biedt algoritmen die worden gebruikt om te detecteren en analyseren van menselijke gezichten in foto's herkennen. De mogelijkheid voor het verwerken van menselijke gezichten informatie is belangrijk in veel scenario's voor andere software. Scenario's met voorbeelden zijn beveiliging, natuurlijke gebruikersinterface, Inhoudsanalyse van de afbeelding en beheer, mobiele apps en robotiek.
+De Azure Cognitive Services Face-API biedt algoritmen die worden gebruikt voor het detecteren, herkennen en analyseren van menselijke gezichten in installatie kopieën. De mogelijkheid om informatie over Human gezicht te verwerken is belang rijk in veel verschillende software scenario's. Voorbeeld scenario's zijn beveiliging, natuurlijke gebruikers interface, analyse van afbeeldings inhoud en beheer, mobiele apps en Robotics.
 
-De Face-API biedt verschillende functies. Elke functie wordt beschreven in de volgende secties. Lees verder voor meer informatie over deze.
+De Face-API biedt verschillende functies. Elke functie wordt beschreven in de volgende secties. Lees verder voor meer informatie hierover.
 
 ## <a name="face-detection"></a>Gezichtsdetectie
 
-De Face-API detecteert menselijke gezichten in een afbeelding en retourneert de rechthoekcoördinaten van hun locatie. Gezichtsdetectie kan eventueel een reeks face-gerelateerde kenmerken extraheren. Voorbeelden zijn head houding, geslacht, leeftijd, emotie, gezichtshaar en bril.
+De Face-API detecteert menselijke gezichten in een afbeelding en retourneert de rechthoek coördinaten van hun locaties. Een voor beeld van gezichts detectie kan een reeks kenmerken met betrekking tot het gezicht extra heren. Voor beelden zijn Head pose, gender, Age, Emotion, gezichts haar en glazen.
 
 > [!NOTE]
-> De face detection-functie is ook beschikbaar via de [Computer Vision-API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home). Als u wilt meer bewerkingen op gegevens van de face-, gebruikt u de Face-API, dit is de service die in dit artikel worden besproken.
+> De functie voor gezichts detectie is ook beschikbaar via de [Computer Vision-API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home). Als u verdere bewerkingen met gezichts gegevens wilt uitvoeren, gebruikt u de Face-API. Dit is de service die in dit artikel wordt besproken.
 
-![Een installatiekopie van een vrouw en een man, waarbij kleinere rechthoeken getekend rond de gezichten en leeftijd en geslacht weergegeven](./Images/Face.detection.jpg)
+![Een afbeelding van een vrouw en een man met rechthoeken die zijn getekend rond hun gezichten en de weer gegeven leeftijd en geslacht](./Images/Face.detection.jpg)
 
-Zie voor meer informatie over gezichtsdetectie, de [Gezichtsdetectie](concepts/face-detection.md) concepten artikel. Zie ook de [API detecteren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) verwijzen naar documentatie.
+Zie het artikel [gezichts detectie](concepts/face-detection.md) concepten voor meer informatie over gezichts detectie. Zie ook de referentie documentatie voor [API detecteren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) .
 
 ## <a name="face-verification"></a>Gezichtsverificatie
 
-De Verificatie-API voert een verificatie uit op basis van twee gedetecteerde gezichten of op basis van een gedetecteerd gezicht in relatie tot een object van één persoon. Waar het eigenlijk op neerkomt is dat de Verificatie-API evalueert of twee gezichten van dezelfde persoon zijn. Deze mogelijkheid is mogelijk handig in scenario's voor beveiliging. Zie voor meer informatie de [Gezichtsherkenning-](concepts/face-recognition.md) gids voor concepten of de [API controleren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) verwijzen naar documentatie.
+De Verificatie-API voert een verificatie uit op basis van twee gedetecteerde gezichten of op basis van een gedetecteerd gezicht in relatie tot een object van één persoon. Waar het eigenlijk op neerkomt is dat de Verificatie-API evalueert of twee gezichten van dezelfde persoon zijn. Deze mogelijkheid is mogelijk nuttig in beveiligings scenario's. Voor meer informatie raadpleegt u de hand leiding voor [gezichts herkenning](concepts/face-recognition.md) of de naslag documentatie voor [API-verificatie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) .
 
 ## <a name="find-similar-faces"></a>Vergelijkbare gezichten zoeken
 
-De vergelijkbare zoeken-API vergelijkt een gezicht doel met een set candidate gezichten vinden van een kleiner aantal gezichten die op het vlak van het doel lijken. Twee werkdagen modi, matchPerson en matchFace, worden ondersteund. De modus matchPerson soortgelijke gezichten geretourneerd nadat deze filters voor dezelfde persoon met behulp van de [API controleren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a). De modus matchFace negeert het filter dezelfde persoon. Deze retourneert een lijst van soortgelijke kandidaat gezichten die wel of niet kan behoren tot dezelfde persoon.
+Met de zoek vergelijk bare API vergelijkt u een doel vlak met een verzameling kandidaten voor een kleiner aantal gezichten dat lijkt op het doel gezicht. Twee werk modi, matchPerson en matchFace, worden ondersteund. De modus matchPerson retourneert vergelijk bare gezichten nadat deze is gefilterd op dezelfde persoon met behulp van de [verificatie-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a). In de modus matchFace wordt het filter van dezelfde persoon genegeerd. Er wordt een lijst met vergelijk bare kandidaten geretourneerd die tot dezelfde persoon behoren.
 
-Het volgende voorbeeld ziet u het gezicht van doel:
+In het volgende voor beeld ziet u het doel gezicht:
 
 ![Een glimlachende vrouw](./Images/FaceFindSimilar.QueryFace.jpg)
 
 En dit zijn de kandidaatgezichten:
 
-![Vijf afbeeldingen van glimlachende mensen Installatiekopieën van een en dezelfde persoon b.](./Images/FaceFindSimilar.Candidates.jpg)
+![Vijf afbeeldingen van glimlachende mensen Afbeeldingen a en b tonen dezelfde persoon.](./Images/FaceFindSimilar.Candidates.jpg)
 
-Als u wilt zoeken vier soortgelijke gezichten, de modus matchPerson retourneert een en b, die dezelfde persoon als de doel-face weergeven. De matchFace modus retourneert a, b, c en d, precies vier kandidaten, zelfs als sommige zijn niet dezelfde persoon als het doel of lage vergelijkbaar zijn. Zie voor meer informatie de [Gezichtsherkenning-](concepts/face-recognition.md) gids voor concepten of de [vergelijkbare API vinden](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) verwijzen naar documentatie.
+Als u vier vergelijk bare gezichten zoekt, retourneert de matchPerson-modus a en b, die dezelfde persoon als het doel gezicht weergeeft. De matchFace-modus retourneert a, b, c en d, precies vier kandidaten, zelfs als sommige niet dezelfde persoon als het doel zijn of weinig gelijkenis hebben. Voor meer informatie raadpleegt u de hand leiding voor [gezichts herkenning](concepts/face-recognition.md) of de documentatie over het [zoeken naar vergelijk bare API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) .
 
 ## <a name="face-grouping"></a>Gezichtsgroepering
 
-De Groeperings-API verdeelt een set onbekende gezichten in groepen op basis van gelijkenis. Elke groep is een niet-aaneengesloten juiste subset van de oorspronkelijke set van gezichten. Alle van de gezichten in een groep zijn waarschijnlijk te behoren tot dezelfde persoon. Er zijn diverse verschillende groepen voor één persoon. De groepen worden onderscheiden door een andere factoren, zoals expressie, bijvoorbeeld. Zie voor meer informatie de [Gezichtsherkenning-](concepts/face-recognition.md) gids voor concepten of de [groep API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) verwijzen naar documentatie.
+De Groeperings-API verdeelt een set onbekende gezichten in groepen op basis van gelijkenis. Elke groep is een niet-aaneengesloten juiste subset van de oorspronkelijke set van gezichten. Alle gezichten in een groep zijn waarschijnlijk bij dezelfde persoon. Er kunnen verschillende groepen voor één persoon zijn. De groepen worden onderscheiden door een andere factor, zoals Expression, bijvoorbeeld. Zie voor meer informatie de hand leiding voor [gezichts herkenning](concepts/face-recognition.md) of de naslag documentatie over [groeps-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) .
 
 ## <a name="person-identification"></a>Identificatie van personen
 
-De API identificeren wordt gebruikt om een gedetecteerde vlak voor een database van mensen te identificeren. Deze functie kan handig zijn voor automatische afbeeldingen taggen in software voor beheer van foto's. U de database vooraf maken en kunt u deze bewerken na verloop van tijd.
+De Identify-API wordt gebruikt om een gedetecteerd gezicht te identificeren voor een Data Base van personen. Deze functie kan handig zijn voor het automatisch Toep assen van afbeeldingen in foto beheer software. U maakt de data base vooraf en u kunt deze na verloop van tijd bewerken.
 
-De volgende afbeelding toont een voorbeeld van een database met de naam `"myfriends"`. Elke groep kan maximaal 1 miljoen andere persoonsobjecten bevatten. Voor elk persoonsobject kunnen maximaal 248 gezichten zijn geregistreerd.
+In de volgende afbeelding ziet u een voor beeld van een Data Base met de naam `"myfriends"`. Elke groep kan Maxi maal 1.000.000 verschillende personen-objecten bevatten. Voor elk persoonsobject kunnen maximaal 248 gezichten zijn geregistreerd.
 
-![Een raster met drie kolommen voor andere personen, elk met drie rijen van de face-installatiekopieën](./Images/person.group.clare.jpg)
+![Een raster met drie kolommen voor verschillende personen, elk met drie rijen met gezichts afbeeldingen](./Images/person.group.clare.jpg)
 
-Nadat u maken en trainen van een database, kunt u identificatie op basis van de groep met een nieuwe gedetecteerde gezicht uitvoeren. Als het gezicht wordt geïdentificeerd als een persoon in de groep, wordt het persoonsobject geretourneerd.
+Nadat u een Data Base hebt gemaakt en getraind, kunt u met een nieuw gedetecteerd gezicht identificatie uitvoeren voor de groep. Als het gezicht wordt geïdentificeerd als een persoon in de groep, wordt het persoonsobject geretourneerd.
 
-Zie voor meer informatie over de identificatie van personen, de [Gezichtsherkenning-](concepts/face-recognition.md) gids voor concepten of de [identificeren API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) verwijzen naar documentatie.
+Voor meer informatie over persoons-id raadpleegt u de hand leiding voor [gezichts herkenning](concepts/face-recognition.md) of de naslag informatie over [API identificeren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) .
 
 ## <a name="use-containers"></a>Containers gebruiken
 
-[Gebruik de Face-container](face-how-to-install-containers.md) om te detecteren, herkennen en Identificeer gezichten door het installeren van een gestandaardiseerde Docker-container dichter bij met uw gegevens.
+[Gebruik de face-container](face-how-to-install-containers.md) om gezichten te detecteren, herkennen en identificeren door een gestandaardiseerde docker-container dichter bij uw gegevens te installeren.
 
 ## <a name="sample-apps"></a>Voorbeeld-apps
 
-De volgende voorbeeldtoepassingen weergeven enkele manieren waarop u met de Face-API:
+De volgende voorbeeld toepassingen bevatten een aantal manieren om de Face-API te gebruiken:
 
-- [Microsoft Face-API: Windows Client-bibliotheek en voorbeeldapp](https://github.com/Microsoft/Cognitive-Face-Windows) is een WPF-app die laat zien van verschillende scenario's voor de detectie, analyse en identificatie Face.
-- [FamilyNotes UWP-app](https://github.com/Microsoft/Windows-appsample-familynotes) is een Universal Windows Platform (UWP)-app die gebruikt face-identificatie, samen met de spraak-, Cortana, inkt en camera in een familie scenario voor het delen van de opmerking.
+- [Micro soft face-API: Windows-client bibliotheek en](https://github.com/Microsoft/Cognitive-Face-Windows) -voor beeld is een WPF-app die verschillende Scenario's van gezichts detectie, analyses en identificatie toont.
+- [FAMILYNOTES UWP-app](https://github.com/Microsoft/Windows-appsample-familynotes) is een universeel Windows-platform-app (UWP) die gebruikmaakt van gezichts identificatie samen met spraak, Cortana, inkt en camera in een scenario voor het delen van familie notities.
 
 ## <a name="data-privacy-and-security"></a>Gegevensprivacy en -beveiliging
 
-Net als bij alle van de Cognitive Services-resources, moet ontwikkelaars die gebruikmaken van de Face-service op de hoogte van het beleid van Microsoft op gegevens van de klant. Zie voor meer informatie de [Cognitive Services-pagina](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) op het Microsoft Trust Center.
+Net als bij alle Cognitive Services resources moeten ontwikkel aars die gebruikmaken van de face-service op de hoogte zijn van het beleid van micro soft op klant gegevens. Zie de [pagina Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) in het micro soft vertrouwens centrum voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga als volgt een snelstartgids voor het implementeren van een gezichtsherkenning scenario in code:
+Volg een Snelstartgids om een scenario voor een gezichts detectie in code te implementeren:
 
-- [Snelstart: Detecteer gezichten in een afbeelding met behulp van de .NET-SDK met C# ](quickstarts/csharp.md). Andere talen zijn beschikbaar.
+- [Quick Start: gezichten detecteren in een installatie kopie met behulp van C#de .NET SDK met ](quickstarts/csharp.md). Er zijn andere talen beschikbaar.

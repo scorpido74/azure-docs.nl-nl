@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 7bb4e507df24f50238197b738fd54e6b5c1d05ee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: HT
+ms.openlocfilehash: 6ce5a93cdd44af7f199d59d459daa46b4adb0719
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571184"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748031"
 ---
-# <a name="use-azure-iot-tools-for-visual-studio-code"></a>Gebruik Azure IoT-Hulpprogram Ma's voor Visual Studio code
+# <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>Visual Studio en Visual Studio code gebruiken om IoT Plug en Play-apparaten te bouwen
 
 De Azure IoT-Hulpprogram Ma's voor Visual Studio code biedt een geïntegreerde omgeving voor het ontwerpen van mogelijkheden voor apparaten en interfaces, het publiceren naar model opslagplaatsen en het genereren van skelet C-code om de apparaat-app te implementeren.
 
@@ -69,7 +69,7 @@ De code generator probeert DCM-en interface bestanden te gebruiken die zich in d
 
 Wanneer het genereren van code is voltooid, wordt met de uitbrei ding een nieuw versus code venster geopend met de code. Als u een gegenereerd bestand opent, zoals **Main. c**, is het mogelijk dat IntelliSense rapporteert dat de c SDK-bron bestanden niet kunnen worden geopend. Als u de juiste IntelliSense-en code navigatie wilt inschakelen, gebruikt u de volgende stappen om de C SDK-bron op te nemen:
 
-1. In VS code gebruikt u **CTRL + SHIFT + P** om het opdracht palet te openen, typt en selecteert u **C/C++: Edit configurations (JSON)** om het bestand **c_cpp_properties. json** te openen.
+1. In VS code gebruikt u **CTRL + SHIFT + P** om het opdracht palet te openen, typt en selecteert u **C/C++: Edit configurations (JSON)** om het **c_cpp_properties. json** -bestand te openen.
 
 1. Voeg het pad van de SDK van het apparaat toe in het gedeelte `includePath`:
 

@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
-ms.openlocfilehash: 3add7e31568831e4c2de6901791d131ff01f43bb
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c7223274417ef4c911c32acbcde1511682d6d9e0
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588107"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796075"
 ---
 # <a name="integrate-azure-data-lake-storage-with-azure-services"></a>Azure Data Lake Storage integreren met Azure-Services
 
@@ -29,7 +29,7 @@ De volgende tabel geeft een lijst van de Azure-Services die Azure Data Lake Stor
 |Azure Event Hubs Capture| [Gebeurtenissen vastleggen via Azure Event Hubs in Azure Blob Storage of Azure Data Lake Storage](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|
 |Azure Logic Apps | [Overzicht: wat is Azure Logic Apps?](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)|
 |Azure Machine Learning|[Toegang tot gegevens in azure Storage-services](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data)|
-|Azure Search (preview-versie)| [Blob-opslag doorzoeken met Azure Search](https://docs.microsoft.com/azure/search/search-blob-storage-integration)|
+|Azure Cognitive Search | [Index-en zoek Azure Data Lake Storage Gen2 documenten (preview-versie)](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
 |Azure Stream Analytics| [Snelstartgids: een Stream Analytics-taak maken met behulp van de Azure Portal](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Uitgaand naar Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2) |
 |Data Box|  [Gebruik Azure Data Box om gegevens van een on-premises HDFS-Store te migreren naar Azure Storage](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
 |HDInsight | [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[De HDFS CLI gebruiken met Data Lake Storage Gen2](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Zelf studie: gegevens extra heren, transformeren en laden met behulp van Apache Hive in azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md) |

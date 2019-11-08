@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: 49ed6eedf55a8a3c0faa2fa1ff60b9894af78285
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/06/2019
+ms.openlocfilehash: e0354f96036cce968e6b6909a18f97ff48347eda
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580855"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796254"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Verbinding maken met on-premises gegevens bronnen vanuit Azure Logic Apps
 
@@ -57,7 +57,7 @@ Azure Logic Apps ondersteunt Lees-en schrijf bewerkingen via de gegevens gateway
 
 * U hebt [de on-premises gegevens gateway al geïnstalleerd op een lokale computer](../logic-apps/logic-apps-gateway-install.md).
 
-* U hebt [hetzelfde Azure-account en-abonnement](../logic-apps/logic-apps-gateway-install.md#requirements) dat is gebruikt bij het installeren van die gegevens gateway.
+* U gebruikt [hetzelfde Azure-account en-abonnement](../logic-apps/logic-apps-gateway-install.md#requirements) dat is gebruikt bij het installeren van die gegevens gateway. Dit Azure-account moet deel uitmaken van een enkele [Azure Active Directory (Azure AD)-Tenant of-map](../active-directory/fundamentals/active-directory-whatis.md#terminology).
 
 * De installatie van de gateway is niet al geregistreerd en geclaimd door een andere Azure gateway-resource.
 
@@ -87,7 +87,7 @@ Nadat u de gateway op een lokale computer hebt geïnstalleerd, maakt u de Azure-
    | **Abonnement** | Selecteer het Azure-abonnement voor het Azure-account dat is gebruikt voor de installatie van de gateway. Het standaard abonnement is gebaseerd op het Azure-account dat u hebt gebruikt om u aan te melden. |
    | **Resourcegroep** | De [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) die u wilt gebruiken |
    | **Locatie** | Dezelfde regio of locatie die is geselecteerd voor de gateway-Cloud service tijdens de installatie van de [Gateway](../logic-apps/logic-apps-gateway-install.md). Anders wordt de installatie van de gateway niet weer gegeven in de lijst **installatie naam** . De locatie van de logische app kan verschillen van de resource locatie van uw gateway. |
-   | **Installatie naam** | Selecteer een gateway-installatie die alleen in de lijst wordt weer gegeven als aan deze voor waarden wordt voldaan: <p><p>-Bestaat in dezelfde regio als de gateway resource die u wilt maken <br>-Ontkoppeld naar een andere Azure gateway-resource <br>-Gekoppeld aan hetzelfde Azure-account dat u gebruikt voor het maken van de gateway resource <p><p>Zie het gedeelte Veelgestelde [vragen](#faq) voor meer informatie. |
+   | **Installatie naam** | Selecteer een gateway-installatie die alleen in de lijst wordt weer gegeven als aan deze voor waarden wordt voldaan: <p><p>-De gateway-installatie maakt gebruik van dezelfde regio als de gateway resource die u wilt maken. <br>-De gateway-installatie is niet gekoppeld aan een andere Azure gateway-resource. <br>-De gateway-installatie is gekoppeld aan hetzelfde Azure-account dat u gebruikt om de gateway bron te maken. <br>-Uw Azure-account hoort bij een enkele [Azure Active Directory (Azure AD)-Tenant of-map](../active-directory/fundamentals/active-directory-whatis.md#terminology) en is hetzelfde account dat is gebruikt voor de installatie van de gateway. <p><p>Zie het gedeelte Veelgestelde [vragen](#faq) voor meer informatie. |
    |||
 
    Hier volgt een voor beeld waarin een gateway-installatie wordt weer gegeven die zich in dezelfde regio bevindt als de gateway bron en is gekoppeld aan hetzelfde Azure-account:
@@ -164,7 +164,7 @@ Als u een andere gateway bron wilt maken, koppelt u de gateway-installatie aan e
 **V**: Waarom wordt de installatie van mijn gateway niet weer gegeven wanneer ik mijn gateway resource Maak in azure? <br/>
 **Een**: dit probleem kan om de volgende redenen optreden:
 
-* Uw Azure-account moet hetzelfde account zijn dat is gekoppeld aan de gateway-installatie op de lokale computer. Controleer of u bent aangemeld bij de Azure Portal met dezelfde identiteit die is gekoppeld aan de gateway-installatie.
+* Uw Azure-account moet hetzelfde account zijn dat is gekoppeld aan de gateway-installatie op de lokale computer. Controleer of u bent aangemeld bij de Azure Portal met dezelfde identiteit die is gekoppeld aan de gateway-installatie. Zorg er ook voor dat uw Azure-account tot één [Azure AD-Tenant of-directory](../active-directory/fundamentals/active-directory-whatis.md#terminology) behoort en is ingesteld op dezelfde Azure AD-Tenant of-map die werd gebruikt tijdens de installatie van de gateway.
 
 * De installatie van de gateway bron en-gateway moet dezelfde regio gebruiken. De locatie van uw logische app kan echter verschillen van de locatie van uw gateway resource.
 

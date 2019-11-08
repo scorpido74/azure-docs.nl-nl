@@ -6,6 +6,7 @@ documentationcenter: na
 author: v-miegge
 manager: dcscontentpm
 editor: ''
+tags: virtual-network
 ms.assetid: 1a3d1e84-f793-41b4-aa04-774a7e8f7719
 ms.service: virtual-network
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 0898a65323957cbab4c2ab5278e9970cf0c16a90
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 1fddbe908ccebc1384dcccde0810366f1a6d5da7
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219240"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796240"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Peering-problemen van virtueel netwerk oplossen
 
@@ -66,11 +67,11 @@ Zie [peering maken in verschillende abonnementen voor Azure cli](https://docs.mi
 
 ### <a name="for-a-site-to-site-connection-or-an-expressroute-connection"></a>Voor een site-naar-site-verbinding of een ExpressRoute-verbinding
 
-Volg de stappen in: [Configureer VPN-gateway doorvoer voor peering van virtuele netwerken](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
+Volg de stappen in: [Configure VPN gateway Transit voor peering van virtuele netwerken](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
 
 ### <a name="for-point-to-site-connections"></a>Voor punt-naar-site-verbindingen
 
-1. Volg de stappen in: [Configureer VPN-gateway doorvoer voor peering van virtuele netwerken](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
+1. Volg de stappen in: [Configure VPN gateway Transit voor peering van virtuele netwerken](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
 2. Nadat de peering van het virtuele netwerk is vastgesteld of gewijzigd, downloadt en installeert u het punt-naar-site-pakket zodat de punt-naar-site-clients de bijgewerkte routes naar het spoke-virtuele netwerk ophalen.
 
 ## <a name="configure-virtual-network-peering-with-hub-spoke-topology-virtual-network"></a>Peering voor het virtuele netwerk configureren met het virtuele netwerk hub-spoke-topologie
@@ -126,7 +127,7 @@ U kunt dit probleem als volgt oplossen:
    1. Start een netwerk tracering op de doel-VM. Voor Windows kunt u **netsh**gebruiken. Gebruik **TCPDump**voor Linux.
    2. Voer **TcpPing** of **PsPing** uit van de bron naar het doel-IP.
 
-      Dit is een voor beeld van een **TcpPing** -opdracht:`tcping64.exe -t <destination VM address> 3389`
+      Dit is een voor beeld van een **TcpPing** -opdracht: `tcping64.exe -t <destination VM address> 3389`
 
    3. Stop de netwerk tracering op de bestemming nadat de **TcpPing** is voltooid.
    4. Als pakketten van de bron arriveren, is er geen netwerk probleem. Controleer zowel de VM-firewall als de toepassing die op die poort luistert om het configuratie probleem te vinden.
@@ -222,7 +223,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>Problemen met een configuratie fout bericht voor peering in virtuele netwerken oplossen 
 
-### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>De huidige `<TENANT ID>` Tenant is niet gemachtigd om toegang te krijgen tot het gekoppelde abonnement
+### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>De huidige Tenant `<TENANT ID>` is niet geautoriseerd voor toegang tot het gekoppelde abonnement
 
 Zie [peering maken-Azure cli](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)om dit probleem op te lossen.
 

@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 80809afc9f2a8e8da2f6adecfe916141c4cd3e45
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8a2a704f39aa678be819a7297b30f8926e414e56
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278340"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748447"
 ---
 # <a name="service-bus-faq"></a>Veelgestelde vragen over Service Bus
 
@@ -36,7 +36,7 @@ Een [Service Bus wachtrij](service-bus-queues-topics-subscriptions.md) is een en
 Een onderwerp kan worden gevisualiseerd als een wachtrij en wanneer meerdere abonnementen worden gebruikt, wordt het een rijkere berichten model. in wezen een een-op-veel-communicatie hulpprogramma. Dit model voor publiceren/abonneren (of *pub/sub*) maakt het mogelijk dat een toepassing die een bericht verzendt naar een onderwerp met meerdere abonnementen, het bericht ontvangt dat door meerdere toepassingen wordt ontvangen.
 
 ### <a name="what-is-a-partitioned-entity"></a>Wat is een gepartitioneerde entiteit?
-Een conventionele wachtrij of onderwerp wordt verwerkt door één Message Broker en opgeslagen in één berichten archief. Een gepartitioneerde [wachtrij of onderwerp](service-bus-partitioning.md) wordt alleen ondersteund in de lagen basis en standaard berichten, maar wordt verwerkt door meerdere bericht brokers en opgeslagen in meerdere berichten archieven. Deze functie houdt in dat de algemene door Voer van een gepartitioneerde wachtrij of onderwerp niet langer wordt beperkt door de prestaties van één bericht Broker of berichten archief. Daarnaast wordt een tijdelijke onderbreking van een berichten archief niet weer gegeven in een gepartitioneerde wachtrij of onderwerp niet beschikbaar.
+Een conventionele wachtrij of onderwerp wordt verwerkt door één Message Broker en opgeslagen in één berichten archief. Een [gepartitioneerde wachtrij of onderwerp](service-bus-partitioning.md) wordt alleen ondersteund in de lagen basis en standaard berichten, maar wordt verwerkt door meerdere bericht brokers en opgeslagen in meerdere berichten archieven. Deze functie houdt in dat de algemene door Voer van een gepartitioneerde wachtrij of onderwerp niet langer wordt beperkt door de prestaties van één bericht Broker of berichten archief. Daarnaast wordt een tijdelijke onderbreking van een berichten archief niet weer gegeven in een gepartitioneerde wachtrij of onderwerp niet beschikbaar.
 
 De volg orde wordt niet gegarandeerd wanneer gepartitioneerde entiteiten worden gebruikt. In het geval dat een partitie niet beschikbaar is, kunt u nog steeds berichten verzenden en ontvangen van de andere partities.
 
@@ -45,7 +45,7 @@ De volg orde wordt niet gegarandeerd wanneer gepartitioneerde entiteiten worden 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Welke poorten moet ik op de firewall openen? 
 U kunt de volgende protocollen gebruiken met Azure Service Bus voor het verzenden en ontvangen van berichten:
 
-- Advanced Message Queuing Protocol (AMQP)
+- Advanced Message Queueing Protocol (AMQP)
 - Service Bus Messa ging Protocol (SBMP)
 - HTTP
 
@@ -65,7 +65,7 @@ Ga als volgt te werk om de juiste IP-adressen voor uw verbindingen te zoeken naa
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Noteer het IP-adres dat is `Non-authoritative answer`geretourneerd in. Dit IP-adres is statisch. Wanneer u de naam ruimte op een ander cluster herstelt, wordt het enige tijdstip gewijzigd dat het zou veranderen.
+2. Noteer het IP-adres dat is geretourneerd in `Non-authoritative answer`. Dit IP-adres is statisch. Wanneer u de naam ruimte op een ander cluster herstelt, wordt het enige tijdstip gewijzigd dat het zou veranderen.
 
 Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra stappen uitvoeren: 
 
@@ -111,6 +111,13 @@ Elke gegevens overdracht binnen een bepaalde Azure-regio wordt gratis geleverd, 
 
 ### <a name="does-service-bus-charge-for-storage"></a>Worden er Service Bus kosten in rekening gebracht voor opslag?
 Nee, er worden geen kosten in rekening gebracht voor opslag Service Bus. Er is echter een quotum dat de maximale hoeveelheid gegevens beperkt die kan worden bewaard per wachtrij/onderwerp. Zie de volgende veelgestelde vragen.
+
+### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Ik heb een Service Bus standaard naam ruimte. Waarom worden kosten onder resource groep ' $system ' weer geven?
+De facturerings onderdelen Azure Service Bus recent bijgewerkt. Als u een Service Bus standaard naam ruimte hebt, ziet u mogelijk regel items voor de resource '/Subscriptions/< azure_subscription_id >/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system ' onder resource groep $ systeem.
+
+Deze kosten vertegenwoordigen de basis kosten per Azure-abonnement dat een Service Bus standaard naam ruimte heeft ingericht. 
+
+Het is belang rijk te weten dat dit geen nieuwe kosten zijn, dat wil zeggen dat ze ook in het vorige facturerings model aanwezig waren. De enige wijziging is dat ze nu worden vermeld onder $system. Dit wordt gedaan door Contraints in het nieuwe facturerings systeem waarbij kosten op abonnements niveau worden gegroepeerd, niet zijn gebonden aan een specifieke resource, onder de resource-id $system.
 
 ## <a name="quotas"></a>Quota
 

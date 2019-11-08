@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: danlep
-ms.openlocfilehash: dbfadea9bc05614108333ef5a046e11b5280cc68
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: HT
+ms.openlocfilehash: 7b9d220ac7e507513458eab6b55276b3aa434739
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588432"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742744"
 ---
 # <a name="repository-scoped-permissions-in-azure-container-registry"></a>Machtigingen voor opslag plaatsen in Azure Container Registry 
 
@@ -28,9 +28,8 @@ Zie [over machtigingen voor opslagplaatsen](#about-repository-scoped-permissions
 
 ## <a name="preview-limitations"></a>Preview-beperkingen
 
-* Deze functie is alleen beschikbaar in een **Premium** container Registry. Zie [Azure container Registry sku's](container-registry-skus.md)voor meer informatie over de service lagen van het REGI ster.
+* Deze functie is alleen beschikbaar in een **Premium** container Registry. Zie [Azure container Registry sku's](container-registry-skus.md)voor meer informatie over de service lagen en limieten voor het REGI ster.
 * U kunt momenteel geen machtigingen voor opslag plaatsen toewijzen aan een Azure Active Directory-object zoals een service-principal of beheerde identiteit.
-* Een REGI ster mag Maxi maal 20.000 Scope Maps en 20.000 tokens zijn.
 
 ## <a name="prerequisites"></a>Vereisten
 

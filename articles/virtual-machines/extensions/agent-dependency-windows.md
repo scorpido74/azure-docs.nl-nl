@@ -14,22 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: b6b1292e4c8874da826740d303cd0de26f9f46ee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b2a86ffab0286559cfcce89252c889c530f00871
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092758"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750113"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Extensie van de virtuele machine voor Azure Monitor afhankelijkheid voor Windows
 
-De Azure-Monitor voor de functie voor toewijzing van virtuele machines worden de gegevens uit de agent voor Microsoft Dependency opgehaald. De virtuele machine-extensie van de Azure VM-afhankelijkheids agent voor Windows wordt gepubliceerd en ondersteund door micro soft. De uitbrei ding installeert de afhankelijkheids agent op virtuele machines van Azure. Dit document bevat informatie over de ondersteunde platforms, configuraties en implementatie opties voor de extensie van de virtuele machine van de Azure VM-afhankelijkheids agent voor Windows.
+De Azure Monitor voor VM's toewijzings functie haalt de gegevens op uit de micro soft-afhankelijkheids agent. De virtuele machine-extensie van de Azure VM-afhankelijkheids agent voor Windows wordt gepubliceerd en ondersteund door micro soft. De uitbrei ding installeert de afhankelijkheids agent op virtuele machines van Azure. Dit document bevat informatie over de ondersteunde platforms, configuraties en implementatie opties voor de extensie van de virtuele machine van de Azure VM-afhankelijkheids agent voor Windows.
 
-## <a name="prerequisites"></a>Vereisten
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-### <a name="operating-system"></a>Besturingssysteem
+## <a name="operating-system"></a>Besturingssysteem
 
 De Azure VM dependency agent-extensie voor Windows kan worden uitgevoerd op basis van de ondersteunde besturings systemen die worden vermeld in de sectie [ondersteunde besturings systemen](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) van het artikel Azure monitor voor VM's-implementatie.
 
@@ -73,12 +69,12 @@ De volgende JSON toont het schema voor de Azure VM dependency agent-extensie op 
 }
 ```
 
-### <a name="property-values"></a>Waarden van eigenschappen
+### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde/voor beeld |
+| Naam | Waarde/voor beeld |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
-| publisher | Microsoft.Azure.Monitoring.DependencyAgent |
+| Uitgever | Micro soft. Azure. monitoring. DependencyAgent |
 | type | DependencyAgentWindows |
 | typeHandlerVersion | 9.5 |
 
@@ -86,9 +82,9 @@ De volgende JSON toont het schema voor de Azure VM dependency agent-extensie op 
 
 U kunt de Azure VM-extensies implementeren met Azure Resource Manager sjablonen. U kunt het JSON-schema dat wordt beschreven in de vorige sectie van een Azure Resource Manager sjabloon gebruiken om de extensie van de Azure VM dependency agent uit te voeren tijdens het implementeren van een Azure Resource Manager sjabloon.
 
-De JSON voor een extensie van een virtuele machine kan worden genest in de resource van de virtuele machine. Of u kunt het op het hoogste niveau van een resource manager-JSON-sjabloon plaatsen. De plaatsing van de JSON is van invloed op de waarde van de naam en het type van de resource. Zie voor meer informatie, [naam en type voor de onderliggende resources instellen](../../azure-resource-manager/child-resource-name-type.md).
+De JSON voor een extensie van een virtuele machine kan worden genest in de resource van de virtuele machine. Of u kunt het op het hoogste niveau van een resource manager-JSON-sjabloon plaatsen. De plaatsing van de JSON is van invloed op de waarde van de naam en het type van de resource. Zie voor meer informatie [naam en type voor onderliggende resources instellen](../../azure-resource-manager/child-resource-name-type.md).
 
-In het volgende voor beeld wordt ervan uitgegaan dat de extensie van de afhankelijkheids agent is genest in de resource van de virtuele machine. Wanneer u de extensie resource nest, wordt de json in het `"resources": []` object van de virtuele machine geplaatst.
+In het volgende voor beeld wordt ervan uitgegaan dat de extensie van de afhankelijkheids agent is genest in de resource van de virtuele machine. Wanneer u de extensie resource nest, wordt de JSON geplaatst in het `"resources": []`-object van de virtuele machine.
 
 
 ```json
@@ -162,4 +158,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Monitoring.DependencyAgent\
 
 ### <a name="support"></a>Ondersteuning
 
-Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnemen met de Azure-experts op het [forums voor Azure MSDN en Stack Overflow](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.

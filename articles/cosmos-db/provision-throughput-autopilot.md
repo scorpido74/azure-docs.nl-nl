@@ -6,19 +6,19 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3e2d9b892ad42563b481a0b1fe6a468daefad672
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: HT
+ms.openlocfilehash: e0c3c88119c3d064326442881854920b411f5ed4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606435"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748385"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Azure Cosmos-containers en-data bases maken in de automatische test modus (preview)
 
 Met Azure Cosmos DB kunt u de door Voer voor uw containers inrichten in hand matig of in de modus Auto Pilot. In dit artikel worden de voor delen en het gebruik van de automatische test modus beschreven.
 
 > [!NOTE]
-> De automatische test modus is momenteel beschikbaar in de open bare preview.
+> De automatische test modus is momenteel beschikbaar in de open bare preview. Als u auto pilot wilt inschakelen voor uw Azure Cosmos-account, raadpleegt u de sectie auto [pilot inschakelen](#enable-autopilot) van dit artikel. U kunt auto pilot alleen inschakelen voor nieuwe data bases en containers, maar dit is niet beschikbaar voor bestaande containers en data bases.
 
 Naast het hand matig inrichten van de door Voer kunt u nu Azure Cosmos-containers configureren in de automatische test modus. Azure Cosmos-containers en-data bases die zijn geconfigureerd in de automatische test modus, kunnen **de ingerichte door Voer automatisch laten schalen op basis van de behoeften van uw toepassing zonder in te boeten voor de sla's.**
 
@@ -68,7 +68,7 @@ Oplossingen voor de vorige problemen vereisen niet alleen een enorme hoeveelheid
 | **Prijzen** | Hand matig ingerichte RU/s per uur. | Voor afzonderlijke accounts voor schrijf regio's betaalt u de door Voer die op elk uur wordt gebruikt, door gebruik te maken van het tarief van de auto pilot RU per uur. <br/><br/>Voor accounts met meerdere schrijf regio's worden er geen extra kosten in rekening gebracht voor auto pilot. U betaalt voor de door Voer die op elk uur wordt gebruikt met hetzelfde tarief van één of meerdere masters per uur. |
 | **Geschikt voor typen werk belastingen** |  Voorspel bare en stabiele workloads|   Onvoorspelbare en variabele workloads  |
 
-## <a name="enable-autopilot-from-azure-portal"></a>Automatische pilot van Azure Portal inschakelen
+## <a name="a-idenable-autopilot-enable-autopilot-from-azure-portal"></a>Automatische test <a id="enable-autopilot"> inschakelen vanuit Azure Portal
 
 U kunt automatische pilot in uw Azure Cosmos-accounts uitproberen door in te scha kelen in van Azure Portal. Gebruik de volgende stappen om de auto pilot-optie in te scha kelen:
 

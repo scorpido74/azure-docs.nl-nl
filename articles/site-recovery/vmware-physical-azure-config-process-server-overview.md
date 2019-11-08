@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: d835eda044c2a6d1e0e7c678073711e45fde7395
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a70400a1d0c710b939b4dd6d157cb06e729f53cb
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972148"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747820"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Over Site Recovery-onderdelen (configuratie, proces, hoofd doel)
 
@@ -27,12 +27,12 @@ Voor herstel na nood gevallen van on-premises virtuele VMware-machines en fysiek
 **Materialen**  | Op de computer met de configuratie server worden alle on-premises Site Recovery onderdelen uitgevoerd, waaronder de configuratie server, de proces server en de hoofddoel server.<br/><br/> Wanneer u de configuratie server instelt, worden alle onderdelen automatisch geïnstalleerd. | [Lees](vmware-azure-common-questions.md#configuration-server) de veelgestelde vragen over de configuratie server.
 **Rol** | De configuratieserver coördineert de communicatie tussen on-premises en Azure, en beheert de gegevensreplicatie. | Meer informatie over de architectuur voor de nood herstel van [VMware](vmware-azure-architecture.md) en [fysieke servers](physical-azure-architecture.md) naar Azure.
 **VMware-vereisten** | Voor herstel na nood gevallen van on-premises virtuele VMware-machines moet u de configuratie server installeren en uitvoeren als een on-premises, Maxi maal beschik bare VMware VM. | [Meer informatie over](vmware-azure-deploy-configuration-server.md#prerequisites) de vereisten.
-**VMware-implementatie** | We raden u aan de configuratie server te implementeren met behulp van een gedownloade eicellen-sjabloon. Deze methode biedt een eenvoudige manier om een configuratie server in te stellen die voldoet aan alle vereisten en voor waarden.<br/><br/> Als u om een of andere reden geen virtuele VMware-machine kunt implementeren met behulp van een sjabloon van de eicellen, stelt u de configuratie Server-computers hand matig in, zoals hieronder wordt beschreven voor nood herstel van een fysieke machine. | [Implementeren](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) met een eicellen-sjabloon.
+**VMware-implementatie** | We raden u aan de configuratie server te implementeren met behulp van een gedownloade eicellen-sjabloon. Deze methode biedt een eenvoudige manier om een configuratie server in te stellen die voldoet aan alle vereisten en voor waarden.<br/><br/> Als u om een of andere reden geen virtuele VMware-machine kunt implementeren met behulp van een sjabloon van de eicellen, stelt u de configuratie Server-computers hand matig in, zoals hieronder wordt beschreven voor nood herstel van een fysieke machine. | [Implementeren](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template) met een eicellen-sjabloon.
 **Vereisten voor fysieke servers** | Voor herstel na nood gevallen op fysieke servers op locatie, implementeert u de configuratie server hand matig. | [Meer informatie over](physical-azure-set-up-source.md#prerequisites) de vereisten.
 **Fysieke server implementatie** | Als deze niet kan worden geïnstalleerd als een virtuele VMware-machine, kunt u deze installeren op een fysieke server. | [Implementeer](physical-azure-set-up-source.md#set-up-the-source-environment) de configuratie server hand matig.
 
 
-## <a name="process-server"></a>Processerver
+## <a name="process-server"></a>Proces server
 
 **Instelling** | **Details** | **Koppelen**
 --- | --- | ---

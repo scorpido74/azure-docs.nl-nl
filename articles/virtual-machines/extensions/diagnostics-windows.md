@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 771064774371e71c0664918790b296c156ed1c1f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 547de4862081b56bf627c3a00564ce6564f2ad09
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084779"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750099"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell gebruiken voor het inschakelen van Azure Diagnostics in een virtuele machine met Windows
 
 Azure Diagnostics is de mogelijkheid binnen Azure om het verzamelen van diagnostische gegevens op een geïmplementeerde toepassing mogelijk te maken. U kunt de diagnostische extensie gebruiken om diagnostische gegevens te verzamelen, zoals toepassings Logboeken of prestatie meter items van een virtuele Azure-machine (VM) met Windows. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>De diagnostische uitbrei ding inschakelen als u het Resource Manager-implementatie model gebruikt
 U kunt de diagnostische uitbrei ding inschakelen tijdens het maken van een virtuele Windows-machine via het Azure Resource Manager-implementatie model door de extensie configuratie toe te voegen aan de Resource Manager-sjabloon. Zie [een virtuele Windows-machine met controle en diagnostische gegevens maken met behulp van de sjabloon Azure Resource Manager](diagnostics-template.md).

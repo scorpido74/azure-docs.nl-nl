@@ -1,6 +1,6 @@
 ---
 title: Back-ups maken en herstellen Azure Files met Azure Backup en Power shell
-description: Back-ups maken en herstellen Azure Files met behulp van Azure Backup en Power shell.
+description: In dit artikel vindt u informatie over het maken van back-ups en het herstellen van Azure Files met behulp van de Azure Backup-service en Power shell.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
 ms.reviewer: pullabhk
-ms.openlocfilehash: bfaecc5fe9fbbd68ba0f138b7b40b2507d729635
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 491e27f85d00ce512995a63e43b9e248798e5d0f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968641"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747626"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Back-ups maken en herstellen Azure Files met Power shell
 
@@ -22,6 +22,7 @@ In dit artikel wordt beschreven hoe u Azure PowerShell gebruikt voor het maken v
 In deze zelfstudie wordt het volgende uitgelegd:
 
 > [!div class="checklist"]
+>
 > * Stel Power shell in en registreer de Azure Recovery Services-provider.
 > * Maak een Recovery Services-kluis.
 > * Configureer de back-up voor een Azure-bestands share.
@@ -277,7 +278,7 @@ De moment opnamen van Azure-bestands shares worden gebruikt tijdens het maken va
 
 Back-ups op aanvraag kunnen worden gebruikt om uw moment opnamen gedurende tien jaar te bewaren. U kunt planners gebruiken om Power shell-scripts op aanvraag uit te voeren met de gekozen Bewaar periode en zo elke week, maand of jaar moment opnamen te maken. Bij het maken van reguliere moment opnamen raadpleegt u de [beperkingen van back-ups op aanvraag](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share-) met Azure backup.
 
-Als u een voor beeld van scripts zoekt, kunt u het voorbeeld script in github (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup)> gebruiken met Azure Automation runbook waarmee u periodiek back-ups kunt plannen en ze zelfs tot wel tien jaar bewaren.
+Als u een voor beeld van scripts zoekt, kunt u het voorbeeld script in GitHub (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup)> gebruiken met Azure Automation runbook waarmee u periodiek back-ups kunt plannen en ze zelfs tot wel tien jaar bewaren.
 
 ### <a name="modify-the-protection-policy"></a>Het beveiligings beleid wijzigen
 

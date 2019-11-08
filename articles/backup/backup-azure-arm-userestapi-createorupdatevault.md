@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: Recovery Services kluizen maken met behulp van REST API'
-description: back-up-en herstel bewerkingen van Azure VM-back-ups beheren met REST API
+description: In dit artikel vindt u informatie over het beheren van back-up-en herstel bewerkingen van Azure VM-back-ups met behulp van REST API.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: dacurwin
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: f60a675b87d989f12ac3e6181f580b8acffa640b
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 7c9d165f623367d1c888b90f76e96ce8fa2e8f89
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688702"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747564"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Azure Recovery Services-kluis maken met behulp van REST API
 
@@ -29,14 +29,14 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-a-request"></a>Een aanvraag maken
 
-Voor het maken van de *put* - `{subscription-id}` aanvraag is de para meter vereist. Als u meerdere abonnementen hebt, raadpleegt u [werken met meerdere abonnementen](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). U definieert een `{resourceGroupName}` en `{vaultName}` voor uw resources, samen met de `api-version` para meter. In dit artikel `api-version=2016-06-01`wordt gebruikgemaakt van.
+Voor het maken van de *put* -aanvraag is de para meter `{subscription-id}` vereist. Als u meerdere abonnementen hebt, raadpleegt u [werken met meerdere abonnementen](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). U definieert een `{resourceGroupName}` en `{vaultName}` voor uw resources, samen met de `api-version`-para meter. In dit artikel wordt gebruikgemaakt van `api-version=2016-06-01`.
 
 De volgende headers zijn vereist:
 
-| Aanvraag header   | Description |
+| Aanvraagheader   | Beschrijving |
 |------------------|-----------------|
-| *Inhouds type:*  | Vereist. Ingesteld op `application/json`. |
-| *Authorization:* | Vereist. Ingesteld op een geldig `Bearer` [toegangs token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Content-Type:*  | Vereist. Ingesteld op `application/json`. |
+| *Authorization:* | Vereist. Ingesteld op een geldig `Bearer` [toegangstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 Zie [onderdelen van een rest API aanvraag/antwoord](/rest/api/azure/#components-of-a-rest-api-requestresponse)voor meer informatie over het maken van de aanvraag.
 
@@ -44,13 +44,13 @@ Zie [onderdelen van een rest API aanvraag/antwoord](/rest/api/azure/#components-
 
 De volgende algemene definities worden gebruikt voor het bouwen van een aanvraag tekst:
 
-|Name  |Vereist  |Type  |Description  |
+|Naam  |Vereist  |Type  |Beschrijving  |
 |---------|---------|---------|---------|
-|eTag     |         |   Reeks      |  Optionele eTag       |
-|location     |  true       |Tekenreeks         |   Resourcelocatie      |
+|eTag     |         |   Tekenreeks      |  Optionele eTag       |
+|location     |  true       |Tekenreeks         |   Resource locatie      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschappen van de kluis       |
 |sku     |         |  [SKU](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Identificeert de unieke systeem-id voor elke Azure-resource     |
-|codes     |         | Object        |     Resourcetags    |
+|tags     |         | Object        |     Resourcetags    |
 
 Houd er rekening mee dat de naam van de kluis en de resource groep is opgenomen in de PUT-URI. De hoofd tekst van de aanvraag definieert de locatie.
 
@@ -68,11 +68,11 @@ De volgende voorbeeld tekst wordt gebruikt voor het maken van een kluis in ' vs-
 }
 ```
 
-## <a name="responses"></a>Responses
+## <a name="responses"></a>Antwoorden
 
 Er zijn twee geslaagde reacties voor de bewerking om een Recovery Services kluis te maken of bij te werken:
 
-|Name  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     |   [Vault](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
 |201 gemaakt     | [Vault](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Gemaakt      |
@@ -105,4 +105,4 @@ Een versmalded *201* -antwoord dat is gemaakt op basis van de aanvraag tekst van
 Raadpleeg de volgende documenten voor meer informatie over de REST-Api's van Azure:
 
 - [REST API Azure Recovery Services provider](/rest/api/recoveryservices/)
-- [Aan de slag met Azure REST API](/rest/api/azure/)
+- [Aan de slag gaan met Azure REST API](/rest/api/azure/)

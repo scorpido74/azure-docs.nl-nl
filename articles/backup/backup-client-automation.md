@@ -1,6 +1,6 @@
 ---
 title: Power shell gebruiken om een back-up te maken van Windows Server naar Azure
-description: Meer informatie over het implementeren en beheren van Azure Backup met behulp van Power shell
+description: In dit artikel leert u hoe u Power shell kunt gebruiken voor het instellen van Azure Backup op Windows Server of een Windows-client, en het beheren van back-up en herstel.
 ms.reviewer: shivamg
 author: dcurwin
 manager: carmonm
@@ -8,18 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: d65da05ea2b24e3820d9a6fde31b3d4a5c72dbd1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 78b83eb725da09dc98df05865ba4d41c505f0f4c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656737"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747263"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor een Windows-server/Windows-client
 
 In dit artikel wordt beschreven hoe u Power shell gebruikt voor het instellen van Azure Backup op Windows Server of een Windows-client, en het beheren van back-up en herstel.
 
 ## <a name="install-azure-powershell"></a>Azure PowerShell installeren
+
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [Installeer de meest recente versie van Power shell](/powershell/azure/install-az-ps)om aan de slag te gaan.
@@ -78,12 +79,11 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="installing-the-azure-backup-agent"></a>De Azure Backup-Agent installeren
 
-Voordat u de Azure Backup-Agent installeert, moet u het installatie programma downloaden en op de Windows-Server presen teren. U kunt de meest recente versie van het installatie programma downloaden van het [micro soft Download centrum](https://aka.ms/azurebackup_agent) of van de pagina dash board van de Recovery Services kluis. Sla het installatie programma op een gemakkelijk toegankelijke locatie op,\*zoals * C:\Downloads.
+Voordat u de Azure Backup-Agent installeert, moet u het installatie programma downloaden en op de Windows-Server presen teren. U kunt de meest recente versie van het installatie programma downloaden van het [micro soft Download centrum](https://aka.ms/azurebackup_agent) of van de pagina dash board van de Recovery Services kluis. Sla het installatie programma op een gemakkelijk toegankelijke locatie op, zoals * C:\Downloads\*.
 
 U kunt ook Power shell gebruiken om de Downloader op te halen:
 
@@ -100,11 +100,11 @@ Als u de agent wilt installeren, voert u de volgende opdracht uit in een Power s
 MARSAgentInstaller.exe /q
 ```
 
-Hiermee installeert u de agent met alle standaard opties. De installatie duurt enkele minuten op de achtergrond. Als u de optie */nu* niet opgeeft, wordt het venster **Windows Update** aan het einde van de installatie geopend om te controleren of er updates zijn. Zodra de agent is geïnstalleerd, wordt deze weer gegeven in de lijst met geïnstalleerde Program ma's.
+Hiermee installeert u de agent met alle standaard opties. De installatie duurt enkele minuten op de achtergrond. Als u de optie */nu* niet opgeeft, wordt het venster **Windows Update** geopend aan het einde van de installatie om te controleren of er updates zijn. Zodra de agent is geïnstalleerd, wordt deze weer gegeven in de lijst met geïnstalleerde Program ma's.
 
-Ga naar **configuratie scherm** > **Program** > ma's**en onderdelen**om de lijst met geïnstalleerde Program ma's weer te geven.
+Ga naar **configuratie scherm** > **Program Ma's** > **Program ma's en onderdelen**om de lijst met geïnstalleerde Program ma's weer te geven.
 
-![De agent is geïnstalleerd](./media/backup-client-automation/installed-agent-listing.png)
+![Agent geïnstalleerd](./media/backup-client-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Installatie opties
 
@@ -118,7 +118,7 @@ De beschik bare opties zijn onder andere:
 
 | Optie | Details | Standaard |
 | --- | --- | --- |
-| /q |Stille installatie |- |
+| q |Stille installatie |- |
 | /p: "locatie" |Het pad naar de installatiemap voor de Azure Backup-Agent. |C:\Program Files\Microsoft Azure Recovery Services-agent |
 | /s: "locatie" |Het pad naar de cachemap voor de Azure Backup-Agent. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m |Opt-in Microsoft Update |- |
@@ -151,7 +151,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Certificate $certifica
 ```
 
 Voer op de Windows Server-of Windows-client computer de cmdlet [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) uit om de computer bij de kluis te registreren.
-Deze en andere cmdlets die worden gebruikt voor het maken van een back-up, bevinden zich in de MSONLINE-module die door de Mars-AgentInstaller is toegevoegd als onderdeel van het installatie proces.
+Deze en andere cmdlets die worden gebruikt voor het maken van een back-up, zijn afkomstig uit de MSONLINE-module, die door de Mars-AgentInstaller is toegevoegd als onderdeel van het installatie proces.
 
 Het installatie programma van de agent werkt de $Env:P SModulePath-variabele niet bij. Dit betekent dat automatisch laden van de module mislukt. U kunt het volgende doen om dit op te lossen:
 
@@ -188,7 +188,7 @@ Machine registration succeeded.
 
 Wanneer de verbinding van de Windows-computer met Internet via een proxy server wordt uitgevoerd, kunnen de proxy-instellingen ook aan de agent worden door gegeven. In dit voor beeld is er geen proxy server. Daarom worden er expliciet gegevens over de proxy gewist.
 
-Het bandbreedte gebruik kan ook worden beheerd met de opties `work hour bandwidth` van `non-work hour bandwidth` en voor een bepaalde set dagen van de week.
+Bandbreedte gebruik kan ook worden beheerd met de opties van `work hour bandwidth` en `non-work hour bandwidth` voor een bepaalde set dagen van de week.
 
 Het instellen van de proxy-en bandbreedte gegevens wordt uitgevoerd met behulp van de cmdlet [set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) :
 
@@ -208,11 +208,11 @@ Set-OBMachineSetting -NoThrottle
 Server properties updated successfully.
 ```
 
-## <a name="encryption-settings"></a>Versleutelingsinstellingen
+## <a name="encryption-settings"></a>Versleutelings instellingen
 
 De back-upgegevens die naar Azure Backup worden verzonden, worden versleuteld om de vertrouwelijkheid van de gegevens te beveiligen. De wachtwoordzin voor versleuteling is het wacht woord voor het ontsleutelen van de gegevens op het moment van herstel.
 
-U moet een beveiligings pincode genereren door **genereren**te selecteren onder **instellingen** > **Eigenschappen** > **beveiliging pincode** in het gedeelte **Recovery Services kluis** van de Azure Portal. Gebruik deze optie als de `generatedPIN` in de volgende opdracht:
+U moet een beveiligings pincode genereren door **genereren**te selecteren onder **instellingen** > **Eigenschappen** > **beveiligings pincode** in het gedeelte **Recovery Services kluis** van de Azure Portal. Gebruik deze als `generatedPIN` in de opdracht:
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force
@@ -246,7 +246,7 @@ Op dit moment is het beleid leeg en zijn er andere cmdlets nodig om te definiër
 
 ### <a name="configuring-the-backup-schedule"></a>Het back-upschema configureren
 
-De eerste van de drie delen van een beleid is het back-upschema dat wordt gemaakt met de cmdlet [New-OBSchedule](https://technet.microsoft.com/library/hh770401) . Het back-upschema definieert wanneer back-ups moeten worden gemaakt. Wanneer u een planning maakt, moet u 2 invoer parameters opgeven:
+De eerste van de drie delen van een beleid is het back-upschema dat wordt gemaakt met de cmdlet [New-OBSchedule](https://technet.microsoft.com/library/hh770401) . Het back-upschema definieert wanneer back-ups moeten worden gemaakt. Wanneer u een planning maakt, moet u twee invoer parameters opgeven:
 
 * De **dagen van de week** waarop de back-up moet worden uitgevoerd. U kunt de back-uptaak uitvoeren op slechts één dag of op elke dag van de week, of een combi natie hiervan.
 * **Tijden van de dag** waarop de back-up moet worden uitgevoerd. U kunt Maxi maal drie verschillende tijdstippen van de dag definiëren wanneer de back-up wordt geactiveerd.
@@ -266,9 +266,10 @@ Set-OBSchedule -Policy $NewPolicy -Schedule $Schedule
 ```Output
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName : RetentionPolicy : State : New PolicyState : Valid
 ```
+
 ### <a name="configuring-a-retention-policy"></a>Een Bewaar beleid configureren
 
-In het Bewaar beleid wordt gedefinieerd hoe lang herstel punten die zijn gemaakt op basis van back-uptaken, behouden blijven. Wanneer u een nieuw Bewaar beleid maakt met behulp van de cmdlet [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) , kunt u het aantal dagen opgeven dat de back-upherstel punten moeten worden bewaard met Azure backup. In het onderstaande voor beeld wordt een Bewaar beleid ingesteld van 7 dagen.
+In het Bewaar beleid wordt gedefinieerd hoe lang herstel punten die zijn gemaakt op basis van back-uptaken, behouden blijven. Wanneer u een nieuw Bewaar beleid maakt met behulp van de cmdlet [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) , kunt u het aantal dagen opgeven dat de back-upherstel punten moeten worden bewaard met Azure backup. In het onderstaande voor beeld wordt een Bewaar beleid van zeven dagen ingesteld.
 
 ```powershell
 $RetentionPolicy = New-OBRetentionPolicy -RetentionDays 7
@@ -300,9 +301,10 @@ RetentionPolicy : Retention Days : 7
 State           : New
 PolicyState     : Valid
 ```
+
 ### <a name="including-and-excluding-files-to-be-backed-up"></a>Bestanden opnemen en uitsluiten waarvan een back-up moet worden gemaakt
 
-Een `OBFileSpec` object definieert de bestanden die moeten worden opgenomen en uitgesloten in een back-up. Dit is een set regels die de beveiligde bestanden en mappen op een computer afwerken. U kunt zoveel bestands insluiting-en uitsluitings regels als vereist hebben en deze koppelen aan een beleid. Wanneer u een nieuw OBFileSpec-object maakt, kunt u het volgende doen:
+Een `OBFileSpec`-object definieert de bestanden die moeten worden opgenomen en uitgesloten in een back-up. Dit is een set regels die de beveiligde bestanden en mappen op een computer afwerken. U kunt zoveel bestands insluiting-en uitsluitings regels als vereist hebben en deze koppelen aan een beleid. Wanneer u een nieuw OBFileSpec-object maakt, kunt u het volgende doen:
 
 * De bestanden en mappen opgeven die moeten worden opgenomen
 * De bestanden en mappen opgeven die moeten worden uitgesloten
@@ -403,16 +405,18 @@ RetentionPolicy : Retention Days : 7
 State           : New
 PolicyState     : Valid
 ```
+
 ## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>Back-up maken van de systeem status van Windows Server in de MABS-agent
 
 In deze sectie wordt de Power shell-opdracht voor het instellen van de systeem status in de MABS-agent beschreven.
 
 ### <a name="schedule"></a>Planning
+
 ```powershell
 $sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
 ```
 
-### <a name="retention"></a>Bewaarperiode
+### <a name="retention"></a>Bewaartermijn
 
 ```powershell
 $rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
@@ -432,7 +436,7 @@ Get-OBSystemStatePolicy
 
 ### <a name="applying-the-policy"></a>Het beleid Toep assen
 
-Het beleids object is nu voltooid en heeft een bijbehorend back-upschema, retentie beleid en een lijst met uitsluitingen/uitsluiting van bestanden. Dit beleid kan nu worden doorgevoerd voor het gebruik van Azure Backup. Voordat u het zojuist gemaakte beleid toepast, moet u ervoor zorgen dat er geen bestaand back-upbeleid is gekoppeld aan de server met behulp van de cmdlet [Remove-OBPolicy](https://technet.microsoft.com/library/hh770415) . Als u het beleid verwijdert, wordt om bevestiging gevraagd. Als u de bevestiging wilt overs Laan, gebruikt u de `-Confirm:$false` vlag met de cmdlet.
+Het beleids object is nu voltooid en heeft een bijbehorend back-upschema, retentie beleid en een lijst met uitsluitingen/uitsluiting van bestanden. Dit beleid kan nu worden doorgevoerd voor het gebruik van Azure Backup. Voordat u het zojuist gemaakte beleid toepast, moet u ervoor zorgen dat er geen bestaand back-upbeleid is gekoppeld aan de server met behulp van de cmdlet [Remove-OBPolicy](https://technet.microsoft.com/library/hh770415) . Als u het beleid verwijdert, wordt om bevestiging gevraagd. Als u de bevestiging wilt overs Laan, gebruikt u de vlag `-Confirm:$false` met de cmdlet.
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy
@@ -442,7 +446,7 @@ Get-OBPolicy | Remove-OBPolicy
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
-Het door voeren van het beleids object wordt uitgevoerd met de cmdlet [set-OBPolicy](https://technet.microsoft.com/library/hh770421) . Hiermee wordt ook om bevestiging gevraagd. Als u de bevestiging wilt overs Laan, gebruikt u de `-Confirm:$false` vlag met de cmdlet.
+Het door voeren van het beleids object wordt uitgevoerd met de cmdlet [set-OBPolicy](https://technet.microsoft.com/library/hh770421) . Hiermee wordt ook om bevestiging gevraagd. Als u de bevestiging wilt overs Laan, gebruikt u de vlag `-Confirm:$false` met de cmdlet.
 
 ```powershell
 Set-OBPolicy -Policy $NewPolicy
@@ -624,13 +628,13 @@ ItemSize :
 ItemLastModifiedTime :
 ```
 
-Het object `$Rps` is een matrix met back-uppunten. Het eerste element is het laatste punt en het n-element is het oudste punt. Om het nieuwste punt te kiezen, zullen we `$Rps[0]`gebruiken.
+Het object `$Rps` is een matrix met back-uppunten. Het eerste element is het laatste punt en het n-element is het oudste punt. We gebruiken `$Rps[0]`om het nieuwste punt te kiezen.
 
 ### <a name="choosing-an-item-to-restore"></a>Een item kiezen om te herstellen
 
-Recursief gebruiken van de cmdlet [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) om het bestand of de map te identificeren die u wilt herstellen. Op die manier kan de maphiërarchie alleen worden gebladerd met `Get-OBRecoverableItem`behulp van de.
+Recursief gebruiken van de cmdlet [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) om het bestand of de map te identificeren die u wilt herstellen. Op die manier kan de maphiërarchie alleen worden gebladerd met behulp van de `Get-OBRecoverableItem`.
 
-Als we in dit voor beeld het bestand *Financiën. xls* willen herstellen, kunnen we verwijzen naar die het object `$FilesFolders[1]`gebruiken.
+Als we in dit voor beeld het bestand *Financiën. xls* willen herstellen, kunnen we verwijzen naar met behulp van het object `$FilesFolders[1]`.
 
 ```powershell
 $FilesFolders = Get-OBRecoverableItem $Rps[0]
@@ -679,7 +683,7 @@ ItemSize : 96256
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 ```
 
-U kunt ook zoeken naar items die u wilt herstellen ```Get-OBRecoverableItem``` met behulp van de cmdlet. In ons voor beeld om te zoeken naar *Financiën. xls* kunnen we een ingang voor het bestand krijgen door deze opdracht uit te voeren:
+U kunt ook zoeken naar items die u wilt herstellen met behulp van de cmdlet ```Get-OBRecoverableItem```. In ons voor beeld om te zoeken naar *Financiën. xls* kunnen we een ingang voor het bestand krijgen door deze opdracht uit te voeren:
 
 ```powershell
 $Item = Get-OBRecoverableItem -RecoveryPoint $Rps[0] -Location "D:\MyData" -SearchString "finance*"
@@ -693,7 +697,7 @@ Om het herstel proces te activeren, moeten we eerst de herstel opties opgeven. U
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-Activeer nu het herstel proces met behulp van de opdracht [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) op `$Item` de geselecteerde van de uitvoer `Get-OBRecoverableItem` van de cmdlet:
+Activeer nu het herstel proces met behulp van de [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) opdracht op de geselecteerde `$Item` uit de uitvoer van de `Get-OBRecoverableItem`-cmdlet:
 
 ```powershell
 Start-OBRecovery -RecoverableItem $Item -RecoveryOption $RecoveryOption
@@ -770,7 +774,7 @@ Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Azure Backup voor Windows Server/client
+Voor meer informatie over Azure Backup voor Windows Server/client:
 
 * [Kennismaking met Azure Backup](backup-introduction-to-azure-backup.md)
 * [Back-ups maken van Windows-servers](backup-configure-vault.md)

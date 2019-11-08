@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a15d450d033c04c59f6981a887689f1fc08919f1
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 42c674e236d769d48f6f17fc43494ac006219a8a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958852"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795700"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage versleuteling voor Data-at-rest
 
@@ -26,7 +26,7 @@ Opslag accounts worden versleuteld, ongeacht hun prestatie niveau (Standard of P
 
 Versleuteling heeft geen invloed op de prestaties van Azure Storage. Er zijn geen extra kosten verbonden aan Azure Storage versleuteling.
 
-Zie [Cryptography-API voor meer informatie over de onderliggende cryptografische modules Azure Storage versleuteling: Volgende generatie @ no__t-0.
+Zie [crypto GRAFIE API: Next Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)(Engelstalig) voor meer informatie over de onderliggende cryptografische modules Azure Storage versleuteling.
 
 ## <a name="about-encryption-key-management"></a>Over het beheer van versleutelings sleutels
 
@@ -42,8 +42,8 @@ De volgende tabel vergelijkt de opties voor sleutel beheer voor Azure Storage ve
 |    Bewerkingen voor versleuteling/ontsleuteling    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
 |    Azure Storage services ondersteund    |    Alle                                                |    Blob-opslag, Azure Files                                                                                                               |    Blob Storage                                                                  |
 |    Sleutel opslag                         |    Micro soft-sleutel archief    |    Azure Key Vault                                                                                                                              |    Azure Key Vault of een ander sleutel archief                                                                 |
-|    Verantwoordelijkheid voor sleutel rotatie         |    Microsoft                                          |    De klant                                                                                                                                     |    De klant                                                                      |
-|    Sleutelgebruik                           |    Microsoft                                          |    Azure Portal, opslag Resource provider REST API, Azure Storage beheer Bibliotheken, Power shell, CLI        |    Azure Storage REST API (Blob Storage), Azure Storage client bibliotheken    |
+|    Verantwoordelijkheid voor sleutel rotatie         |    Microsoft                                          |    Klant                                                                                                                                     |    Klant                                                                      |
+|    Sleutel gebruik                           |    Microsoft                                          |    Azure Portal, opslag Resource provider REST API, Azure Storage beheer Bibliotheken, Power shell, CLI        |    Azure Storage REST API (Blob Storage), Azure Storage client bibliotheken    |
 |    Sleutel toegang                          |    Alleen micro soft                                     |    Micro soft, klant                                                                                                                    |    Alleen klant                                                                 |
 
 In de volgende secties worden de opties voor sleutel beheer in meer detail beschreven.
@@ -74,7 +74,7 @@ In de volgende lijst worden de genummerde stappen in het diagram uitgelegd:
 
 Zie [Azure Key Vault Power shell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) en [Azure Key Vault cli](https://docs.microsoft.com/cli/azure/keyvault)voor meer informatie over het intrekken van de toegang tot door de klant beheerde sleutels voor het opslag account. Als u toegang intrekt, wordt de toegang tot alle gegevens in het opslag account effectief geblokkeerd, omdat de versleutelings sleutel niet toegankelijk is voor Azure Storage.
 
-Door de klant beheerde sleutels worden niet ondersteund voor [Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md).
+Door de klant beheerde sleutels zijn ook beschikbaar voor Azure Managed disks als een open bare preview-versie. door de klant beheerde sleutels werken op een andere manier voor beheerde schijven dan de rest van de opslag. Zie [het artikel over het onderwerp](../../virtual-machines/linux/disk-encryption.md#customer-managed-keys-public-preview)voor meer informatie.
 
 Zie een van de volgende artikelen voor meer informatie over het gebruik van door de klant beheerde sleutels met Azure Storage:
 
@@ -105,7 +105,7 @@ Elke BLOB-moment opname kan een eigen versleutelings sleutel hebben.
 
 Voor REST-aanroepen kunnen clients de volgende headers gebruiken om informatie over de versleutelings sleutel op een aanvraag voor Blob-opslag veilig door te geven:
 
-|Aanvraagheader | Description |
+|Aanvraagheader | Beschrijving |
 |---------------|-------------|
 |`x-ms-encryption-key` |Vereist voor zowel schrijf-als Lees aanvragen. Een met base64 gecodeerde AES-256-versleutelings sleutel waarde. |
 |`x-ms-encryption-key-sha256`| Vereist voor zowel schrijf-als Lees aanvragen. De met base64 gecodeerde SHA256 van de versleutelings sleutel. |
@@ -140,11 +140,11 @@ Als u een versleutelings sleutel wilt draaien die is door gegeven voor de aanvra
 >
 > Zorg ervoor dat u de versleutelings sleutel beveiligt die u opgeeft voor een aanvraag voor Blob-opslag in een beveiligd sleutel archief zoals Azure Key Vault. Als u een schrijf bewerking probeert uit te voeren op een container of BLOB zonder de versleutelings sleutel, mislukt de bewerking en krijgt u geen toegang meer tot het object.
 
-### <a name="example-use-a-customer-provided-key-to-upload-a-blob-in-net"></a>Voorbeeld: Een door de klant verschafte sleutel gebruiken voor het uploaden van een BLOB in .NET
+### <a name="example-use-a-customer-provided-key-to-upload-a-blob-in-net"></a>Voor beeld: een door de klant verschafte sleutel gebruiken voor het uploaden van een BLOB in .NET
 
 In het volgende voor beeld wordt een door de klant verschafte sleutel gemaakt en wordt deze sleutel gebruikt voor het uploaden van een blob. De code uploadt een blok en voert vervolgens de blokkerings lijst door om de BLOB te schrijven naar Azure Storage. De sleutel wordt op het object [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) gegeven door de eigenschap [CustomerProvidedKey](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.customerprovidedkey) in te stellen.
 
-De sleutel wordt gemaakt met de [AesCryptoServiceProvider](/dotnet/api/system.security.cryptography.aescryptoserviceprovider) -klasse. Als u een exemplaar van deze klasse in uw code wilt maken, voegt u een `using`-instructie toe die verwijst naar de `System.Security.Cryptography`-naam ruimte:
+De sleutel wordt gemaakt met de [AesCryptoServiceProvider](/dotnet/api/system.security.cryptography.aescryptoserviceprovider) -klasse. Als u een exemplaar van deze klasse in uw code wilt maken, voegt u een `using`-instructie toe die verwijst naar de `System.Security.Cryptography` naam ruimte:
 
 ```csharp
 public static void UploadBlobWithClientKey(CloudBlobContainer container)

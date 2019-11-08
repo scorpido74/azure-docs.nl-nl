@@ -1,6 +1,6 @@
 ---
 title: Beveiligings controles voor Azure Backup
-description: Een controle lijst met beveiligings controles voor het evalueren van Azure Backup
+description: Meer informatie over de beveiligings opties die worden gebruikt in de Azure Backup-service. Deze besturings elementen helpen de service om beveiligings problemen te voor komen, te detecteren en erop te reageren.
 ms.reviewer: mbaldwin
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: 8170022a3ee4b4b65e8da0d9e5a2f8464675d08f
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 9d7bb2e9ea2d2cf9cce6c4f6d3b4f3346e7ce363
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528104"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747161"
 ---
 # <a name="security-controls-for-azure-backup"></a>Beveiligings controles voor Azure Backup
 
@@ -34,18 +34,18 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen| | Documentatie
 |---|---|--|
-| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | Log Analytics wordt ondersteund via resource Logboeken. Zie [Azure backup beveiligde werk belastingen bewaken met behulp van log Analytics](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) voor meer informatie. |  |
+| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | Log Analytics wordt ondersteund via resource Logboeken. Zie [Azure backup beveiligde werk belastingen bewaken met log Analytics](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/)voor meer informatie. |  |
 | Logboek registratie en controle op het vlak van controle en beheer| Ja | Alle door de klant geactiveerde acties van de Azure Portal worden vastgelegd in activiteiten Logboeken. |  |
 | Logboek registratie en controle van het gegevens vlak| Nee | Azure Backup gegevens vlak kan niet rechtstreeks worden bereikt.  |  |
 
-## <a name="identity"></a>Identity
+## <a name="identity"></a>Identiteit
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen| | Documentatie
 |---|---|--|
-| Verificatie| Ja | Verificatie is via Azure Active Directory. |  |
-| Autorisatie| Ja | Door de klant gemaakte en ingebouwde RBAC-rollen worden gebruikt. Zie [Access Control op basis van rollen gebruiken om Azure backup herstel punten te beheren](/azure/backup/backup-rbac-rs-vault) voor meer informatie. |  |
+| Authentication| Ja | Verificatie is via Azure Active Directory. |  |
+| Autorisatie| Ja | Door de klant gemaakte en ingebouwde RBAC-rollen worden gebruikt. Zie [Access Control op rollen gebaseerd gebruiken om Azure backup herstel punten te beheren](/azure/backup/backup-rbac-rs-vault)voor meer informatie. |  |
 
-## <a name="data-protection"></a>Databeveiliging
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen | | Documentatie
 |---|---|--|

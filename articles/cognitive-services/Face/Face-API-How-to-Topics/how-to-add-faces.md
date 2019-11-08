@@ -1,7 +1,7 @@
 ---
-title: 'Voorbeeld: Gezichten toevoegen aan een PersonGroup - Face-API'
+title: 'Voor beeld: gezichten toevoegen aan een PersonGroup-Face-API'
 titleSuffix: Azure Cognitive Services
-description: De Face-API gebruiken voor het toevoegen van gezichten in afbeeldingen.
+description: Deze hand leiding laat zien hoe u een groot aantal personen en gezichten kunt toevoegen aan een PersonGroup-object met de Azure Cognitive Services Face-API.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 0415dcae08c188c1758150c4b8b0df4dee014ce6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2f8a6272b02aea5948be79ddf72d105c4f72bb33
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448608"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744242"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Gezichten toevoegen aan een PersonGroup
 
-Deze handleiding laat zien hoe u een groot aantal personen en gezichten toevoegen aan een PersonGroup-object. De strategie voor dezelfde geldt ook voor LargePersonGroup, FaceList en LargeFaceList-objecten. In dit voorbeeld is geschreven in C# met behulp van de Azure Cognitive Services Face-API .NET-clientbibliotheek.
+Deze hand leiding laat zien hoe u een groot aantal personen en gezichten kunt toevoegen aan een PersonGroup-object. Dezelfde strategie geldt ook voor LargePersonGroup-, FaceList-en LargeFaceList-objecten. Dit voor beeld wordt geschreven C# in met behulp van de Azure Cognitive Services Face-API .net-client bibliotheek.
 
-## <a name="step-1-initialization"></a>Stap 1: De initialisatie
+## <a name="step-1-initialization"></a>Stap 1: Initialisatie
 
-De volgende code declareert verschillende variabelen en implementeert toevoegen van een Help-functie voor het plannen van de face-aanvragen:
+De volgende code declareert verschillende variabelen en implementeert een Help-functie om het gezichts toevoeg aanvragen te plannen:
 
 - `PersonCount` is het totale aantal personen.
 - `CallLimitPerSecond` is het maximum aantal aanroepen per seconde op basis van de abonnementslaag.
 - `_timeStampQueue` is een wachtrij om aanvraag tijdstempels vast te leggen.
-- `await WaitCallLimitPerSecondAsync()` Wacht totdat de parameter geldig is voor het verzenden van de volgende aanvraag.
+- `await WaitCallLimitPerSecondAsync()` wacht totdat het geldig is voor het verzenden van de volgende aanvraag.
 
 ```csharp
 const int PersonCount = 10000;
@@ -58,9 +58,9 @@ static async Task WaitCallLimitPerSecondAsync()
 }
 ```
 
-## <a name="step-2-authorize-the-api-call"></a>Stap 2: De API-aanroep autoriseren
+## <a name="step-2-authorize-the-api-call"></a>Stap 2: de API-aanroep autoriseren
 
-Wanneer u een clientbibliotheek gebruikt, moet u uw abonnementssleutel doorgeven aan de constructor van het **FaceClient** klasse. Bijvoorbeeld:
+Wanneer u een client bibliotheek gebruikt, moet u uw abonnements sleutel door geven aan de constructor van de klasse **FaceClient** . Bijvoorbeeld:
 
 ```csharp
 private readonly IFaceClient faceClient = new FaceClient(
@@ -68,7 +68,7 @@ private readonly IFaceClient faceClient = new FaceClient(
     new System.Net.Http.DelegatingHandler[] { });
 ```
 
-Als u de abonnementssleutel, gaat u naar de Azure Marketplace via Azure portal. Zie voor meer informatie, [abonnementen](https://www.microsoft.com/cognitive-services/sign-up).
+Als u de abonnements sleutel wilt ophalen, gaat u naar de Azure Marketplace vanuit de Azure Portal. Zie [abonnementen](https://www.microsoft.com/cognitive-services/sign-up)voor meer informatie.
 
 ## <a name="step-3-create-the-persongroup"></a>Stap 3: De PersonGroup maken
 
@@ -82,9 +82,9 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step-4-create-the-persons-for-the-persongroup"></a>Stap 4: De personen die voor de PersonGroup maken
+## <a name="step-4-create-the-persons-for-the-persongroup"></a>Stap 4: de personen voor de PersonGroup maken
 
-Personen die gelijktijdig, worden gemaakt en `await WaitCallLimitPerSecondAsync()` wordt ook toegepast om te voorkomen dat de aanroep is overschreden.
+Personen worden gelijktijdig gemaakt en `await WaitCallLimitPerSecondAsync()` wordt ook toegepast om te voor komen dat de aanroep limiet wordt overschreden.
 
 ```csharp
 CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
@@ -99,8 +99,8 @@ Parallel.For(0, PersonCount, async i =>
 
 ## <a name="step-5-add-faces-to-the-persons"></a>Stap 5: Gezichten voor de personen toevoegen
 
-Gezichten toegevoegd aan verschillende personen worden gelijktijdig kunnen verwerkt. Gezichten toegevoegd voor een specifieke persoon worden opeenvolgend verwerkt;.
-Nogmaals, `await WaitCallLimitPerSecondAsync()` wordt aangeroepen om ervoor te zorgen dat de frequentie van de aanvraag binnen het bereik van beperking.
+Gezichten die aan verschillende personen worden toegevoegd, worden gelijktijdig verwerkt. Gezichten die worden toegevoegd voor een specifieke persoon, worden opeenvolgend verwerkt.
+`await WaitCallLimitPerSecondAsync()` wordt opnieuw gestart om ervoor te zorgen dat de aanvraag frequentie binnen het bereik van de beperking valt.
 
 ```csharp
 Parallel.For(0, PersonCount, async i =>
@@ -122,21 +122,21 @@ Parallel.For(0, PersonCount, async i =>
 
 ## <a name="summary"></a>Samenvatting
 
-In deze handleiding, hebt u het proces voor het maken van een PersonGroup met een groot aantal personen en gezichten geleerd. Verschillende herinneringen:
+In deze hand leiding hebt u het proces voor het maken van een PersonGroup met een groot aantal personen en gezichten geleerd. Verschillende herinneringen:
 
 - Deze strategie is ook van toepassing op FaceLists en LargePersonGroups.
-- Toevoegen of verwijderen van gezichten naar andere personen in LargePersonGroups of FaceLists worden gelijktijdig kunnen verwerkt.
-- Toevoegen of verwijderen van gezichten op een specifieke FaceList of persoon in een LargePersonGroup worden opeenvolgend uitgevoerd.
-- Verwerken van een mogelijke uitzondering is voor het gemak weggelaten in deze handleiding. Als u meer robuustheid te verbeteren wilt, het juiste beleid van toepassing.
+- Het toevoegen of verwijderen van gezichten aan verschillende FaceLists of personen in LargePersonGroups wordt gelijktijdig verwerkt.
+- Het toevoegen of verwijderen van gezichten aan een specifieke FaceList of persoon in een LargePersonGroup wordt opeenvolgend uitgevoerd.
+- In deze hand leiding wordt beschreven hoe u een mogelijke uitzonde ring kunt afhandelen. Als u meer robuustheid wilt uitbreiden, moet u het juiste beleid voor opnieuw proberen Toep assen.
 
-De volgende onderdelen zijn uitgelegd en gedemonstreerd:
+De volgende functies zijn uitgelegd en aangetoond:
 
-- PersonGroups maken met behulp van de [PersonGroup - maken](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API.
-- Personen maken met behulp van de [PersonGroup persoon - maken](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API.
-- Gezichten voor de personen toevoegen met behulp van de [PersonGroup persoon - Face toevoegen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API.
+- PersonGroups maken met behulp van de [PersonGroup-Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API.
+- Personen maken met behulp van de [PersonGroup-API maken](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) .
+- Voeg gezichten toe aan personen met behulp van de [PersonGroup persoon-add face-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API.
 
 ## <a name="related-topics"></a>Verwante onderwerpen
 
-- [Identificeer gezichten in een afbeelding](HowtoIdentifyFacesinImage.md)
-- [Detecteer gezichten in een afbeelding](HowtoDetectFacesinImage.md)
-- [Gebruik de functie voor grootschalige](how-to-use-large-scale.md)
+- [Gezichten identificeren in een installatie kopie](HowtoIdentifyFacesinImage.md)
+- [Gezichten detecteren in een installatie kopie](HowtoDetectFacesinImage.md)
+- [De grootschalige functie gebruiken](how-to-use-large-scale.md)

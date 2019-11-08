@@ -1,5 +1,5 @@
 ---
-title: Knowledge base - QnA Maker
+title: Knowledge Base-QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Een QnA Maker Knowledge Base bestaat uit een set vraag-en antwoord-paren (QnA) en optionele meta gegevens die zijn gekoppeld aan elk QnA-paar.
 services: cognitive-services
@@ -11,32 +11,32 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 78fc9fe34eb3463021dae69990fe1d30668d453f
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 355556e98300ecad6aa3141f0f4ab14b834cd91e
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300515"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794903"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Wat is een QnA Maker Knowledge Base?
 
 Een QnA Maker Knowledge Base bestaat uit een set vraag-en antwoord-paren (QnA) en optionele meta gegevens die zijn gekoppeld aan elk QnA-paar.
 
-## <a name="key-knowledge-base-concepts"></a>Kennisbank van belangrijke concepten
+## <a name="key-knowledge-base-concepts"></a>Basis concepten van belang rijke kennis
 
-* **Vragen**: Een vraag bevat tekst die het beste een gebruikers query weergeeft. 
-* **Antwoorden**: Een antwoord is het antwoord dat wordt geretourneerd wanneer een gebruikers query overeenkomt met de bijbehorende vraag.  
-* **Meta gegevens**: Meta gegevens zijn tags die zijn gekoppeld aan een QnA paar en worden weer gegeven als sleutel-waardeparen. Tags voor meta gegevens worden gebruikt voor het filteren van QnA-paren en het beperken van de set waarover overeenkomende query's worden uitgevoerd.
+* **Vragen**: een vraag bevat tekst die het beste een gebruikers query weergeeft. 
+* **Antwoorden**: een antwoord is het antwoord dat wordt geretourneerd wanneer een gebruikers query overeenkomt met de bijbehorende vraag.  
+* **Meta gegevens**: meta gegevens zijn tags die zijn gekoppeld aan een QnA paar en worden weer gegeven als sleutel-waardeparen. Tags voor meta gegevens worden gebruikt voor het filteren van QnA-paren en het beperken van de set waarover overeenkomende query's worden uitgevoerd.
 
-Een enkele QnA, vertegenwoordigd door een numerieke ID van de QnA heeft meerdere varianten van een vraag (alternatieve vragen) dat alle aan een enkel antwoord toewijzen. Daarnaast kunnen aan elk van deze combi natie meerdere meta gegevens velden zijn gekoppeld: één sleutel en één waarde.
+Eén QnA, vertegenwoordigd door een numerieke QnA-ID, heeft meerdere varianten van een vraag (alternatieve vragen) die allemaal zijn toegewezen aan één antwoord. Daarnaast kunnen aan elk van deze combi natie meerdere meta gegevens velden zijn gekoppeld: één sleutel en één waarde.
 
-![QnA Maker knowledge bases](../media/qnamaker-concepts-knowledgebase/knowledgebase.png) 
+![Knowledge Base van QnA Maker](../media/qnamaker-concepts-knowledgebase/knowledgebase.png) 
 
-## <a name="knowledge-base-content-format"></a>Inhoud Knowledge base-indeling
+## <a name="knowledge-base-content-format"></a>Inhouds indeling Knowledge Base
 
-Wanneer u inhoud met opmaak in een knowledge base opnemen, probeert de QnA Maker aan de inhoud naar markdown converteren. Lees [deze blog](https://aka.ms/qnamaker-docs-markdown-support) voor meer informatie over de uitprijs notaties die worden herkend door de meeste chat-clients.
+Wanneer u opgemaakte inhoud opneemt in een Knowledge Base, QnA Maker probeert de inhoud te converteren naar prijs verlaging. Lees [deze blog](https://aka.ms/qnamaker-docs-markdown-support) voor meer informatie over de uitprijs notaties die worden herkend door de meeste chat-clients.
 
-Meta gegevens velden bestaan uit sleutel-waardeparen, gescheiden door een dubbele punt, zoals product: versnipperer. Zowel de sleutel als de waarde moet alleen tekst zijn. De metagegevenssleutel mag geen spaties bevatten. Meta gegevens bieden ondersteuning voor slechts één waarde per sleutel.
+Meta gegevens velden bestaan uit sleutel-waardeparen, gescheiden door een dubbele punt, zoals product: versnipperer. Zowel de sleutel als de waarde moet alleen tekst zijn. De meta gegevens sleutel mag geen spaties bevatten. Meta gegevens bieden ondersteuning voor slechts één waarde per sleutel.
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Hoe QnA Maker een gebruikers query verwerkt om het beste antwoord te selecteren
 
@@ -53,9 +53,9 @@ Het proces wordt uitgelegd in de volgende tabel.
 |1|De client toepassing verzendt de query van de gebruiker naar de [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
 |2|QnA Maker de gebruikers query met taal detectie, spellingen en woord afbreekers verwerkt.|
 |3|Deze voor verwerking wordt gebruikt om de query van de gebruiker voor de beste Zoek resultaten te wijzigen.|
-|4|Deze gewijzigde query wordt verzonden naar Azure search index, die het `top` aantal resultaten ontvangt. Als het juiste antwoord niet in deze resultaten voor komt, verhoogt u `top` de waarde enigszins. Over het algemeen is de waarde 10 `top` voor Works in 90% van de query's.|
-|5|QnA Maker past geavanceerde parametrisatie toe om de juistheid van de opgehaalde Azure Search resultaten voor de gebruikers query te bepalen. |
-|6|Het getrainde rangorde model gebruikt de functie Score uit stap 5 om de Azure Search resultaten te rangschikken.|
+|4|Deze gewijzigde query wordt verzonden naar een Azure Cognitive Search-index, die het `top` aantal resultaten ontvangt. Als het juiste antwoord niet in deze resultaten voor komt, verhoogt u de waarde van `top` enigszins. Over het algemeen geldt een waarde van 10 voor `top` van 90% van de query's.|
+|5|QnA Maker past geavanceerde parametrisatie toe om de juistheid van de opgehaalde Zoek resultaten voor de gebruikers query te bepalen. |
+|6|Het getrainde rangorde model gebruikt de functie Score uit stap 5 om de resultaten van Azure Cognitive Search te rangschikken.|
 |7|De nieuwe resultaten worden weer gegeven in de rang orde van de client toepassing.|
 |||
 
@@ -66,7 +66,7 @@ Wanneer u uw Knowledge Base publiceert, maakt de service een op REST gebaseerd H
 
 ### <a name="the-user-query-request-to-generate-an-answer"></a>De aanvraag van de gebruikers query voor het genereren van een antwoord
 
-Een gebruikers query is de vraag of de eind gebruiker de Knowledge Base vraagt, bijvoorbeeld `How do I add a collaborator to my app?`. De query is vaak in een natuurlijke taal of enkele tref woorden die de vraag vertegenwoordigen, zoals `help with collaborators`. De query wordt naar uw Knowledge Base verzonden vanuit een HTTP-aanvraag in uw client toepassing.
+Een gebruikers query is de vraag of de eind gebruiker de Knowledge Base vraagt, bijvoorbeeld `How do I add a collaborator to my app?`. De query is vaak in een natuurlijke taal indeling of enkele tref woorden die de vraag vertegenwoordigen, zoals `help with collaborators`. De query wordt naar uw Knowledge Base verzonden vanuit een HTTP-aanvraag in uw client toepassing.
 
 ```json
 {
@@ -89,7 +89,7 @@ Gebruik [gespreks context](../how-to/metadata-generateanswer-usage.md#use-questi
 
 ### <a name="the-response-from-a-call-to-generate-an-answer"></a>Het antwoord van een aanroep om een antwoord te genereren
 
-Het HTTP-antwoord is het antwoord dat is opgehaald uit de Knowledge Base, op basis van de beste overeenkomst voor een bepaalde gebruikers query. Het antwoord bevat het antwoord en de Voorspellings Score. Als u wordt gevraagd om meer dan één bovenste antwoord met `top` de eigenschap, krijgt u meer dan een bovenste antwoord, elk met een score. 
+Het HTTP-antwoord is het antwoord dat is opgehaald uit de Knowledge Base, op basis van de beste overeenkomst voor een bepaalde gebruikers query. Het antwoord bevat het antwoord en de Voorspellings Score. Als u om meer dan één hoofd antwoord met de eigenschap `top` wordt gevraagd, krijgt u meer dan een bovenste antwoord, elk met een score. 
 
 ```json
 {
@@ -124,21 +124,21 @@ Een kennis database heeft twee statussen: *testen* en *gepubliceerd*.
 
 De *test kennis basis* is de versie die wordt bewerkt, opgeslagen en getest op nauw keurigheid en volledige reacties. Wijzigingen die zijn aangebracht in de test Knowledge Base, hebben geen invloed op de eind gebruiker van uw toepassing of chat-bot. De test kennis basis staat bekend als `test` in de HTTP-aanvraag. 
 
-De *gepubliceerde kennis database* is de versie die wordt gebruikt in uw chat-bot of-toepassing. De actie voor het publiceren van een Knowledge Base heeft de inhoud van de test Knowledge Base in de gepubliceerde versie van de Knowledge Base. Omdat de gepubliceerde kennis basis de versie is die de toepassing via het eind punt gebruikt, moet u ervoor zorgen dat de inhoud juist en goed is getest. De gepubliceerde kennis database staat bekend als `prod` in de HTTP-aanvraag.
+De *gepubliceerde kennis database* is de versie die wordt gebruikt in uw chat-bot of-toepassing. De actie voor het publiceren van een Knowledge Base heeft de inhoud van de test Knowledge Base in de gepubliceerde versie van de Knowledge Base. Omdat de gepubliceerde kennis basis de versie is die de toepassing via het eind punt gebruikt, moet u ervoor zorgen dat de inhoud juist en goed is getest. De gepubliceerde kennis basis staat bekend als `prod` in de HTTP-aanvraag.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Ontwikkelingslevenscyclus van een kennisdatabase](./development-lifecycle-knowledge-base.md)
+> [Ontwikkelings levenscyclus van een Knowledge Base](./development-lifecycle-knowledge-base.md)
 
 ## <a name="see-also"></a>Zie ook
 
 [Overzicht van QnA Maker](../Overview/overview.md)
 
 Een Knowledge Base maken en bewerken met: 
-* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamaker/knowledgebase)
-* [.NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
+* [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
+* [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
 Een antwoord genereren met: 
-* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
-* [.NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)
+* [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
+* [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

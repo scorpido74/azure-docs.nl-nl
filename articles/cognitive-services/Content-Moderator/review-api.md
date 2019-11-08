@@ -1,7 +1,7 @@
 ---
 title: Recensies, werk stromen en taken concepten-Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over beoordelingen, werk stromen en taken
+description: In dit artikel vindt u meer informatie over de basis concepten van het hulp programma voor beoordeling. Beoordelingen, werk stromen en taken.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 917636c8ae339e06321c169979611f74276ca523
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044006"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744423"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Beoordelingen, werk stromen en taken voor content toezicht
 
@@ -35,7 +35,7 @@ Een werk stroom is een op de cloud gebaseerd gepersonaliseerd filter voor inhoud
 
 ### <a name="view-workflows"></a>Werk stromen weer geven
 
-Als u uw bestaande werk stromen wilt weer geven, gaat u naar het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/) en selecteert u **instellingen**  > **werk stromen**.
+Als u uw bestaande werk stromen wilt weer geven, gaat u naar het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/) en selecteert u **instellingen** > **werk stromen**.
 
 ![Standaardwerk stroom](images/default-workflow-listed.PNG)
 

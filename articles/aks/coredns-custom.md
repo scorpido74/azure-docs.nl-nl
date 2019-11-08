@@ -7,23 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: b4c771b406d635410c22db5c1c4687a34a2e6eb0
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 4f2e1a6f18a83d1e6c691f3fbcb0d85c7afd1575
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130024"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795093"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>CoreDNS aanpassen met de Azure Kubernetes-service
 
 Azure Kubernetes service (AKS) maakt gebruik van het [CoreDNS][coredns] -project voor cluster-DNS-beheer en oplossingen met alle clusters van *1.12. x* en hoger. Voorheen werd het uitvoeren-DNS-project gebruikt. Dit uitvoeren-DNS-project is nu afgeschaft. Zie de [officiële upstream-documentatie][corednsk8s]voor meer informatie over het aanpassen van CoreDNS en Kubernetes.
 
-Omdat AKS een beheerde service is, kunt u de hoofd configuratie voor CoreDNS (een *CoreFile*) niet wijzigen. In plaats daarvan gebruikt u een Kubernetes *ConfigMap* om de standaard instellingen te overschrijven. Als u de standaard AKS CoreDNS ConfigMaps wilt zien, `kubectl get configmaps --namespace=kube-system coredns -o yaml` gebruikt u de opdracht.
+Omdat AKS een beheerde service is, kunt u de hoofd configuratie voor CoreDNS (een *CoreFile*) niet wijzigen. In plaats daarvan gebruikt u een Kubernetes *ConfigMap* om de standaard instellingen te overschrijven. Als u de standaard AKS CoreDNS ConfigMaps wilt zien, gebruikt u de opdracht `kubectl get configmaps --namespace=kube-system coredns -o yaml`.
 
 Dit artikel laat u zien hoe u ConfigMaps kunt gebruiken voor de basis aanpassings opties van CoreDNS in AKS. Deze aanpak wijkt af van het configureren van CoreDNS in andere contexten, zoals het gebruik van de CoreFile. Controleer de versie van CoreDNS die u gebruikt omdat de configuratie waarden kunnen veranderen tussen versies.
 
 > [!NOTE]
-> `kube-dns`verschillende [aanpassings opties][kubednsblog] aangeboden via een Kubernetes-configuratie kaart. CoreDNS is **niet** achterwaarts compatibel met uitvoeren-DNS. Aanpassingen die u eerder hebt gebruikt, moeten worden bijgewerkt voor gebruik met CoreDNS.
+> `kube-dns` verschillende [aanpassings opties][kubednsblog] aangeboden via een Kubernetes-configuratie kaart. CoreDNS is **niet** achterwaarts compatibel met uitvoeren-DNS. Aanpassingen die u eerder hebt gebruikt, moeten worden bijgewerkt voor gebruik met CoreDNS.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -35,7 +35,7 @@ Alle ingebouwde CoreDNS-invoeg toepassingen worden ondersteund. Er worden geen i
 
 ## <a name="rewrite-dns"></a>DNS opnieuw schrijven
 
-U moet een scenario voor het uitvoeren van een herschrijf bewerking door de DNS-naam. Vervang `<domain to be written>` in het volgende voor beeld door uw eigen Fully Qualified Domain name. Maak een bestand met `corednsms.yaml` de naam en plak de volgende voorbeeld configuratie:
+U moet een scenario voor het uitvoeren van een herschrijf bewerking door de DNS-naam. Vervang in het volgende voor beeld `<domain to be written>` door uw eigen Fully Qualified Domain Name. Maak een bestand met de naam `corednsms.yaml` en plak de volgende voorbeeld configuratie:
 
 ```yaml
 apiVersion: v1
@@ -49,7 +49,7 @@ data:
         errors
         cache 30
         rewrite name substring <domain to be rewritten>.com default.svc.cluster.local
-        proxy .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10
+        forward .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10
     }
 ```
 
@@ -72,11 +72,11 @@ kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 ```
 
 > [!Note]
-> De bovenstaande opdracht is juist. Terwijl we veranderen `coredns`, is de implementatie onder de **uitvoeren-DNS-** naam.
+> De bovenstaande opdracht is juist. Tijdens het wijzigen van `coredns`, is de implementatie onder de **uitvoeren-DNS-** naam.
 
-## <a name="custom-proxy-server"></a>Aangepaste proxy server
+## <a name="custom-forward-server"></a>Aangepaste doorstuur server
 
-Als u een proxy server voor uw netwerk verkeer moet opgeven, kunt u een ConfigMap maken om DNS aan te passen. In het volgende voor beeld werkt u `proxy` de naam en het adres bij met de waarden voor uw eigen omgeving. Maak een bestand met `corednsms.yaml` de naam en plak de volgende voorbeeld configuratie:
+Als u een doorstuur server moet opgeven voor uw netwerk verkeer, kunt u een ConfigMap maken om DNS aan te passen. In het volgende voor beeld werkt u de naam en het adres van `forward` bij met de waarden voor uw eigen omgeving. Maak een bestand met de naam `corednsms.yaml` en plak de volgende voorbeeld configuratie:
 
 ```yaml
 apiVersion: v1
@@ -87,7 +87,7 @@ metadata:
 data:
   test.server: | # you may select any name here, but it must end with the .server file extension
     <domain to be rewritten>.com:53 {
-        proxy foo.com 1.1.1.1
+        forward foo.com 1.1.1.1
     }
 ```
 
@@ -95,14 +95,14 @@ Net als in de vorige voor beelden maakt u de ConfigMap met de opdracht [kubectl 
 
 ```console
 kubectl apply -f corednsms.yaml
-kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
+kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="use-custom-domains"></a>Aangepaste domeinen gebruiken
 
 Mogelijk wilt u aangepaste domeinen configureren die alleen intern kunnen worden omgezet. U kunt bijvoorbeeld het aangepaste domein *puglife. local*, dat geen geldig domein op het hoogste niveau is, omzetten. Zonder een aangepast domein ConfigMap kan het AKS-cluster het adres niet omzetten.
 
-In het volgende voor beeld werkt u het aangepaste domein en IP-adres bij naar direct verkeer naar met de waarden voor uw eigen omgeving. Maak een bestand met `corednsms.yaml` de naam en plak de volgende voorbeeld configuratie:
+In het volgende voor beeld werkt u het aangepaste domein en IP-adres bij naar direct verkeer naar met de waarden voor uw eigen omgeving. Maak een bestand met de naam `corednsms.yaml` en plak de volgende voorbeeld configuratie:
 
 ```yaml
 apiVersion: v1
@@ -115,7 +115,7 @@ data:
     puglife.local:53 {
         errors
         cache 30
-        proxy . 192.11.0.1  # this is my test/dev DNS server
+        forward . 192.11.0.1  # this is my test/dev DNS server
     }
 ```
 
@@ -123,12 +123,12 @@ Net als in de vorige voor beelden maakt u de ConfigMap met de opdracht [kubectl 
 
 ```console
 kubectl apply -f corednsms.yaml
-kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
+kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="stub-domains"></a>Stub-domeinen
 
-CoreDNS kan ook worden gebruikt om stub-domeinen te configureren. In het volgende voor beeld werkt u de aangepaste domeinen en IP-adressen bij met de waarden voor uw eigen omgeving. Maak een bestand met `corednsms.yaml` de naam en plak de volgende voorbeeld configuratie:
+CoreDNS kan ook worden gebruikt om stub-domeinen te configureren. In het volgende voor beeld werkt u de aangepaste domeinen en IP-adressen bij met de waarden voor uw eigen omgeving. Maak een bestand met de naam `corednsms.yaml` en plak de volgende voorbeeld configuratie:
 
 ```yaml
 apiVersion: v1
@@ -141,12 +141,12 @@ data:
     abc.com:53 {
         errors
         cache 30
-        proxy . 1.2.3.4
+        forward . 1.2.3.4
     }
     my.cluster.local:53 {
         errors
         cache 30
-        proxy . 2.3.4.5
+        forward . 2.3.4.5
     }
 
 ```
@@ -155,7 +155,7 @@ Net als in de vorige voor beelden maakt u de ConfigMap met de opdracht [kubectl 
 
 ```console
 kubectl apply -f corednsms.yaml
-kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
+kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="hosts-plugin"></a>Host-plugin
@@ -187,8 +187,6 @@ Zie [netwerk concepten voor toepassingen in AKS voor][concepts-network]meer info
 [coredns]: https://coredns.io/
 [corednsk8s]: https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns
 [dnscache]: https://coredns.io/plugins/cache/
-[aks-quickstart-cli]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough
-[aks-quickstart-portal]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete

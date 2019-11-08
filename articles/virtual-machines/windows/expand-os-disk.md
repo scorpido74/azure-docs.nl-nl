@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 692046070ffc04942a5d8a73825f6cb59e462f8b
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 12fa8cb09a9864b49c9368462ae3d5ca1d88f2c9
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147213"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749409"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Het station van het besturings systeem van een virtuele machine uitbreiden
 
@@ -37,7 +37,7 @@ Wanneer u een nieuwe virtuele machine (VM) maakt in een resource groep door een 
 > 
 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
 ## <a name="resize-a-managed-disk"></a>Het formaat van een beheerde schijf wijzigen
@@ -207,11 +207,11 @@ Wanneer u de schijf voor de virtuele machine hebt uitgebreid, moet u het besturi
 
 2.  Open een opdracht prompt en typ **Disk Part**.
 
-2.  Typ`list volume`bij de **Disk Part** -prompt. Noteer het volume dat u wilt uitbreiden.
+2.  Typ `list volume`bij de **Disk Part** -prompt. Noteer het volume dat u wilt uitbreiden.
 
-3.  Typ`select volume <volumenumber>`bij de **Disk Part** -prompt. Hiermee wordt het volume *volumenumber* geselecteerd dat u wilt uitbreiden naar aaneengesloten lege ruimte op dezelfde schijf.
+3.  Typ `select volume <volumenumber>`bij de **Disk Part** -prompt. Hiermee wordt het volume *volumenumber* geselecteerd dat u wilt uitbreiden naar aaneengesloten lege ruimte op dezelfde schijf.
 
-4.  Typ`extend [size=<size>]`bij de **Disk Part** -prompt. Hiermee wordt het geselecteerde volume uitgebreid naar *grootte* in mega bytes (MB).
+4.  Typ `extend [size=<size>]`bij de **Disk Part** -prompt. Hiermee wordt het geselecteerde volume uitgebreid naar *grootte* in mega bytes (MB).
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: e096982c7bbf4f06b96ef4e3918ca1caa9d481a0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 599417131f228c95168641c54ffbb947e3682f7b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169079"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750005"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Azure Policy gebruiken om de installatie van extensies op Windows-Vm's te beperken
 
@@ -26,7 +26,7 @@ Als u wilt voor komen dat bepaalde extensies op uw Windows-Vm's worden gebruikt 
 
 In deze zelf studie wordt gebruikgemaakt van Azure PowerShell in het Cloud Shell, dat voortdurend wordt bijgewerkt naar de nieuwste versie. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="create-a-rules-file"></a>Een regel bestand maken
 
@@ -141,7 +141,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>Het beleid testen
 
-Als u het beleid wilt testen, probeert u de extensie VM-toegang te gebruiken. Het volgende moet mislukken met het bericht ' set-AzVMAccessExtension: De resource myVMAccess is niet toegestaan door het beleid.
+Als u het beleid wilt testen, probeert u de extensie VM-toegang te gebruiken. Het volgende moet mislukken met het bericht ' set-AzVMAccessExtension: resource ' myVMAccess ' is niet toegestaan door beleid '.
 
 ```azurepowershell-interactive
 Set-AzVMAccessExtension `

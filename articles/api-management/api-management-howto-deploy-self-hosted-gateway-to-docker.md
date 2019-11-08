@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: bfb012116f74e451f9479c8c65057e5c8405bbb4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc7e0f7e4e0e80a030a437bc4f0f13360595f32e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513781"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747704"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Een Azure API Management zelf-hostende Gateway implementeren naar docker
 
@@ -31,6 +31,9 @@ Dit artikel bevat de stappen voor het implementeren van een zelf-hostende Azure 
 - Lees de volgende snelstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 - Maak een docker-omgeving. [Docker voor desktop](https://www.docker.com/products/docker-desktop) is een goede optie voor ontwikkelings-en evaluatie doeleinden. Raadpleeg [docker-documentatie](https://docs.docker.com) voor informatie over alle docker-edities, hun functies en uitgebreide documentatie over docker zelf.
 - [Een gateway bron inrichten in uw API Management-exemplaar](api-management-howto-provision-self-hosted-gateway.md)
+
+> [!NOTE]
+> Zelf-hostende gateway is verpakt als een op Linux gebaseerde docker-container.
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>De zelf-hostende Gateway implementeren naar docker
 
@@ -63,4 +66,5 @@ CONTAINER ID        IMAGE                                                 COMMAN
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over de zelf-hostende Gateway vindt u in [Azure API Management zelf-hostende gateway-overzicht](self-hosted-gateway-overview.md)
+* Zie [Azure API Management zelf-hostende gateway-overzicht](self-hosted-gateway-overview.md)voor meer informatie over de zelf-hostende gateway.
+* [Configureer de aangepaste domein naam voor de zelf-hostende gateway](api-management-howto-configure-custom-domain-gateway.md).

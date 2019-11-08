@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5d807f185a8cdb181093d37dac35ee2e467fdba9
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 8ce35156cd772487c4787f2f5fb99feb1225826f
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328097"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794193"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Snelstartgids: uw QnA Maker Knowledge Base maken, trainen en publiceren
 
@@ -25,7 +25,7 @@ Neem een Chit-Chat persoonlijkheid op om uw kennis beter te maken met uw gebruik
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisite"></a>Vereisten
+## <a name="prerequisite"></a>Vereiste
 
 > [!div class="checklist"]
 > * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
@@ -67,11 +67,11 @@ Neem een Chit-Chat persoonlijkheid op om uw kennis beter te maken met uw gebruik
 
 1. Het antwoord toevoegen dat is opgemaakt met de _prijs verlaging_:
 
-    ` * Azure QnA Maker service\n* Azure Search\n* Azure web app\n* Azure app plan`
+    ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
     ![ Voeg de vraag toe als tekst en het antwoord dat is opgemaakt met de prijs verlaging.](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
 
-    Het symbool voor de prijs verlaging, `*`, wordt gebruikt voor opsommings tekens. De `\n` wordt gebruikt voor een nieuwe regel.  
+    Het symbool voor de prijs verlaging, `*`, wordt gebruikt voor punten van een opsommings teken. De `\n` wordt gebruikt voor een nieuwe regel.  
 
     Op de pagina **bewerken** wordt de prijs verlaging weer gegeven. Wanneer u het deel venster **testen** later gebruikt, ziet u dat de prijs correct wordt weer gegeven. 
 
@@ -94,7 +94,7 @@ Selecteer in de rechterbovenhoek **Save and train** (Opslaan en trainen) om de w
 
 ## <a name="publish-the-knowledge-base"></a>De knowledge base publiceren
 
-Wanneer u een kennis database publiceert, wordt de inhoud van uw kennis basis verplaatst van de `test`-index naar een `prod`-index in azure Search.
+Wanneer u een kennis database publiceert, wordt de inhoud van uw kennis basis verplaatst van de `test` index naar een `prod` index in azure Search.
 
 ![Scherm afbeelding van het verplaatsen van de inhoud van uw Knowledge Base](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
 

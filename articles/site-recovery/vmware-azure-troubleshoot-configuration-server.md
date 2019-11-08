@@ -1,94 +1,94 @@
 ---
-title: Oplossen van problemen met de configuratieserver tijdens herstel na noodgevallen van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery | Microsoft Docs
-description: Dit artikel bevat informatie over probleemoplossing voor het implementeren van de configuratieserver voor herstel na noodgevallen van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery.
+title: Problemen met de configuratie Server oplossen tijdens nood herstel van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery | Microsoft Docs
+description: In dit artikel vindt u informatie over het oplossen van problemen met het implementeren van de configuratie server voor herstel na nood gevallen van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: f08d7bb2087ef4f30b325b3796a13e387ccdea22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725564"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748551"
 ---
-# <a name="troubleshoot-configuration-server-issues"></a>Problemen met configuratie-server
+# <a name="troubleshoot-configuration-server-issues"></a>Problemen met de configuratie Server oplossen
 
-In dit artikel helpt u bij het oplossen van problemen wanneer u implementeert en beheert de [Azure Site Recovery](site-recovery-overview.md) configuratieserver. De configuratieserver fungeert als een beheerserver. Gebruik de configuratieserver instellen van herstel na noodgevallen van on-premises VMware-machines en fysieke servers naar Azure met behulp van Site Recovery. De volgende secties worden de meest voorkomende fouten tegenkomen wanneer u een nieuwe configuratieserver toevoegt en bij het beheren van een configuratieserver besproken.
+Dit artikel helpt u bij het oplossen van problemen bij het implementeren en beheren van de [Azure site Recovery](site-recovery-overview.md) configuratie server. De configuratie server fungeert als een beheer server. Gebruik de configuratie server om herstel na nood gevallen van on-premises virtuele VMware-machines en fysieke servers naar Azure in te stellen met behulp van Site Recovery. In de volgende secties worden de meest voorkomende fouten besproken die u kunt ondervinden wanneer u een nieuwe configuratie server toevoegt en wanneer u een configuratie server beheert.
 
 ## <a name="registration-failures"></a>Registratiefouten
 
-De bronmachine wordt geregistreerd bij de configuratieserver bij de installatie van de mobility-agent. U kunt fouten opsporen fouten tijdens deze stap door deze richtlijnen te volgen:
+De bron machine wordt geregistreerd bij de configuratie server wanneer u de Mobility-Agent installeert. U kunt tijdens deze stap fouten opsporen tijdens de volgende richt lijnen:
 
-1. Open the C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log file. (De map ProgramData mogelijk een verborgen map. Als u de map ProgramData in Windows Verkenner, niet ziet op de **weergave** tabblad, in de **weergeven/verbergen** sectie, selecteer de **verborgen items** selectievakje in.) Fouten kunnen worden veroorzaakt door verschillende problemen.
+1. Open het bestand C:\ProgramData\ASR\home\svsystems\var\ configurator_register_host_static_info. log. (De map Program Data is mogelijk een verborgen map. Als de map Program Data niet wordt weer gegeven, gaat u in Verkenner naar het tabblad **weer** geven **/verbergen** en schakelt u het selectie vakje **verborgen items** in.) Fouten kunnen worden veroorzaakt door meerdere problemen.
 
-2. De zoekreeks **geen geldig IP-adres gevonden**. Als de tekenreeks wordt gevonden:
-   1. Controleer of de aangevraagde host-ID is gelijk aan de host-ID van de bronmachine.
-   2. Controleer of de bronmachine heeft ten minste één IP-adres toegewezen aan de fysieke netwerkadapter. Voor de agentregistratie met de configuratieserver te voltooien, moet de bronmachine ten minste één geldig IP v4-adres toegewezen aan de fysieke netwerkadapter.
-   3. Voer een van de volgende opdrachten op de broncomputer om op te halen van alle IP-adressen van de bronmachine:
+2. Zoeken naar de teken reeks **geen geldig IP-adres gevonden**. Als de teken reeks wordt gevonden:
+   1. Controleer of de aangevraagde host-ID hetzelfde is als de host-ID van de bron machine.
+   2. Controleer of er ten minste één IP-adres aan de fysieke NIC is toegewezen aan de bron machine. Voor agent registratie met de configuratie server moet ten minste één geldig IP v4-adres aan de fysieke NIC zijn toegewezen.
+   3. Voer een van de volgende opdrachten uit op de bron computer om alle IP-adressen van de bron computer op te halen:
       - Voor Windows: `> ipconfig /all`
       - Voor Linux: `# ifconfig -a`
 
-3. Als de tekenreeks **geen geldig IP-adres gevonden** niet wordt gevonden, de zoekreeks **reden = > NULL**. Deze fout treedt op als de bron-VM gebruikmaakt van een lege host om te registreren bij de configuratieserver. Als de tekenreeks wordt gevonden:
-    - Nadat u de problemen hebt opgelost, voert u de richtlijnen in [registreren van de bron-VM met de configuratieserver](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) handmatig de registratie opnieuw uit te voeren.
+3. Als de teken reeks **geen geldig IP-adres** gevonden is, zoekt u naar de teken reeks **reden = > Null**. Deze fout treedt op als de bron machine een lege host gebruikt voor registratie bij de configuratie server. Als de teken reeks wordt gevonden:
+    - Nadat u de problemen hebt opgelost, volgt u de richt lijnen in [REGI Steren van de bron machine bij de configuratie server](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) om de registratie hand matig opnieuw uit te voeren.
 
-4. Als de tekenreeks **reden = > NULL** niet wordt gevonden, op de bronmachine, open het bestand C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log. (De map ProgramData mogelijk een verborgen map. Als u de map ProgramData in Windows Verkenner, niet ziet op de **weergave** tabblad, in de **weergeven/verbergen** sectie, selecteer de **verborgen items** selectievakje in.) Fouten kunnen worden veroorzaakt door verschillende problemen. 
+4. Als de teken reeks **reden = > null** niet wordt gevonden, opent u het bestand C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log op de bron machine. (De map Program Data is mogelijk een verborgen map. Als de map Program Data niet wordt weer gegeven, gaat u in Verkenner naar het tabblad **weer** geven **/verbergen** en schakelt u het selectie vakje **verborgen items** in.) Fouten kunnen worden veroorzaakt door meerdere problemen. 
 
-5. De zoekreeks **post-aanvraag: (7) - kan geen verbinding maken met server**. Als de tekenreeks wordt gevonden:
-    1. Los de netwerkproblemen tussen de broncomputer en de configuratieserver. Controleer of de configuratieserver bereikbaar is vanaf de broncomputer met behulp van hulpprogramma's voor netwerk, zoals ping, traceroute of een webbrowser. Zorg ervoor dat de broncomputer de configuratieserver via poort 443 kan bereiken.
-    2. Controleer of alle firewallregels op de bron-machine-blok de verbinding tussen de broncomputer en de configuratieserver. Werken met uw netwerkbeheerders voor het deblokkeren van verbindingsproblemen met.
-    3. Zorg ervoor dat de mappen die worden vermeld in [uitsluitingen van Site Recovery van antivirusprogramma's](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) zijn uitgesloten van de antivirussoftware.
-    4. Wanneer het netwerkproblemen zijn opgelost, de registratie opnieuw door de richtlijnen in [registreren van de bron-VM met de configuratieserver](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
+5. Zoeken naar de teken reeks **post-aanvraag: (7)-kan geen verbinding maken met de server**. Als de teken reeks wordt gevonden:
+    1. Los de netwerk problemen tussen de bron computer en de configuratie server op. Controleer of de configuratie server bereikbaar is vanaf de bron computer met behulp van netwerk hulpprogramma's als ping, traceroute of een webbrowser. Zorg ervoor dat de bron machine de configuratie server kan bereiken via poort 443.
+    2. Controleer of de firewall regels op de bron machine de verbinding tussen de bron computer en de configuratie server blok keren. Werk samen met uw netwerk beheerders om verbindings problemen te blok keren.
+    3. Zorg ervoor dat de mappen die worden vermeld in [site Recovery map uitsluitingen van antivirus Programma's](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) worden uitgesloten van de antivirus software.
+    4. Wanneer netwerk problemen zijn opgelost, voert u de registratie opnieuw uit door de richt lijnen te volgen in de [bron machine registreren bij de configuratie server](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 
-6. Als de tekenreeks **post-aanvraag: (7) - kan geen verbinding maken met server** is niet gevonden in hetzelfde logboekbestand, zoekt u naar de tekenreeks **aanvraag: (60) - peer-certificaat kan niet worden geverifieerd met de opgegeven CA-certificaten**. Deze fout kan optreden omdat de configuratie-servercertificaat is verlopen of de bronmachine biedt geen ondersteuning voor TLS 1.0 of hoger SSL-protocollen. Deze ook optreden als een firewall SSL-communicatie tussen de broncomputer en de configuratieserver blokkeert. Als de tekenreeks wordt gevonden: 
-    1. Om op te lossen, verbinding maken met de configuratieserver IP-adres via een webbrowser op de bronmachine. Gebruik van de URI-https:\/\/< IP-adres van configuratie\>: 443 /. Zorg ervoor dat de broncomputer de configuratieserver via poort 443 kan bereiken.
-    2. Controleer of alle firewallregels op de bronmachine moeten worden toegevoegd of verwijderd voor de bronmachine om te communiceren met de configuratieserver. Wij kunnen niet alle vereiste firewallconfiguraties in de lijst vanwege de verschillende van firewallsoftware die mogelijk in gebruik. Werken met uw netwerkbeheerders voor het deblokkeren van verbindingsproblemen met.
-    3. Zorg ervoor dat de mappen die worden vermeld in [uitsluitingen van Site Recovery van antivirusprogramma's](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) zijn uitgesloten van de antivirussoftware.  
-    4. Als u de problemen hebt opgelost, de registratie opnieuw door de volgende richtlijnen in [registreren van de bron-VM met de configuratieserver](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
+6. Als de teken reeks **post-aanvraag: (7)-kan geen verbinding maken met de server** is niet gevonden. Zoek in hetzelfde logboek bestand naar de teken reeks **aanvraag: (60)-peer certificaat kan niet worden geverifieerd met de opgegeven CA-certificaten**. Deze fout kan optreden omdat het configuratie server certificaat is verlopen of de bron machine geen TLS 1,0 of later SSL-protocollen ondersteunt. Dit kan ook optreden als een firewall SSL-communicatie blokkeert tussen de bron computer en de configuratie server. Als de teken reeks wordt gevonden: 
+    1. Als u wilt oplossen, maakt u verbinding met het IP-adres van de configuratie server met behulp van een webbrowser op de bron machine. Gebruik de URI https:\/\/< IP-adres van de configuratie server\>: 443/. Zorg ervoor dat de bron machine de configuratie server kan bereiken via poort 443.
+    2. Controleer of er firewall regels op de bron machine moeten worden toegevoegd of verwijderd voor de bron machine om te communiceren met de configuratie server. Vanwege de verschillende firewall software die mogelijk in gebruik is, kunnen we niet alle vereiste firewall configuraties weer geven. Werk samen met uw netwerk beheerders om verbindings problemen te blok keren.
+    3. Zorg ervoor dat de mappen die worden vermeld in [site Recovery map uitsluitingen van antivirus Programma's](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) worden uitgesloten van de antivirus software.  
+    4. Nadat u de problemen hebt opgelost, voert u de registratie opnieuw uit door de richt lijnen te volgen in [Registreer de bron machine bij de configuratie server](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 
-7. Op Linux, als de waarde van het platform in < INSTALLATION_DIR\>/etc/drscout.conf is beschadigd, mislukt de registratie. Open het bestand /var/log/ua_install.log voor het identificeren van dit probleem. De zoekreeks **configuratie wordt afgebroken omdat VM_PLATFORM waarde null of is is niet VmWare/Azure**. Het platform moet worden ingesteld op **VmWare** of **Azure**. Als het bestand drscout.conf is beschadigd, raden we u [verwijderen van de mobility-agent](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) en installeer de mobility-agent. Als het verwijderen is mislukt, de volgende stappen uitvoeren: een. Open het bestand Installation_Directory/uninstall.sh en een opmerking bij het aanroepen van de **StopServices** functie.
-    b. Open het bestand Installation_Directory/Vx/bin/uninstall.sh en een opmerking bij het aanroepen van de **stop_services** functie.
-    c. Open het bestand Installation_Directory/Fx/uninstall.sh en een opmerking bij de volledige sectie waartoe de Fx-service te stoppen.
-    d. [Verwijder](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) de mobility-agent. Het systeem opnieuw opstarten na geslaagde verwijdering en probeer het vervolgens opnieuw installeren van de mobility-agent.
+7. Als de waarde van het platform in < INSTALLATION_DIR\>/etc/drscout.conf is beschadigd, mislukt de registratie op Linux. Als u dit probleem wilt identificeren, opent u het bestand/var/log/ua_install. log. Zoek naar de teken reeks **die de configuratie afbreekt, omdat VM_PLATFORM waarde Null is of niet VMware/Azure is**. Het platform moet worden ingesteld op **VMware** of **Azure**. Als het bestand drscout. conf beschadigd is, raden wij u aan [de Mobility-agent te verwijderen](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) en vervolgens de Mobility-agent opnieuw te installeren. Als de installatie mislukt, voert u de volgende stappen uit: a. Open het/Uninstall.sh-bestand van de Installation_Directory en Bekijk de aanroep van de functie **StopServices** .
+    b. Open het/VX/bin/uninstall.sh-bestand van de Installation_Directory en opmerkingen bij de aanroep van de functie **stop_services** .
+    c. Open het/FX/uninstall.sh-bestand van Installation_Directory en bewerk de volledige sectie waarin wordt geprobeerd de FX-service te stoppen.
+    d. [Verwijder](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) de Mobility-agent. Nadat de installatie is voltooid, start u het systeem opnieuw op en probeert u de Mobility-agent opnieuw te installeren.
 
-## <a name="installation-failure-failed-to-load-accounts"></a>Installatiefout: Accounts laden is mislukt
+## <a name="installation-failure-failed-to-load-accounts"></a>Installatie fout: kan de accounts niet laden
 
-Deze fout treedt op wanneer de service kan geen gegevens uit de transportverbinding lezen bij het installeren van de mobility-agent en registreren met de configuratieserver. Het probleem oplossen door ervoor te zorgen dat TLS 1.0 is ingeschakeld op de bronmachine.
+Deze fout treedt op wanneer de service geen gegevens kan lezen van de transport verbinding tijdens de installatie van de Mobility-agent en registratie bij de configuratie server. Om het probleem op te lossen, moet u ervoor zorgen dat TLS 1,0 is ingeschakeld op de bron computer.
 
-## <a name="vcenter-discovery-failures"></a>ontdekkingsfouten vCenter
+## <a name="vcenter-discovery-failures"></a>fouten bij vCenter-detectie
 
-Als u wilt verhelpen ontdekkingsfouten vCenter, toevoegen de vCenter-server naar de proxy-instellingen van de byPass-lijst. 
+Als u fouten in de vCenter-detectie wilt oplossen, voegt u de vCenter-Server toe aan de proxy-instellingen voor overs Laan. 
 
-- Download PsExec-hulpprogramma op [hier](https://aka.ms/PsExec) voor toegang tot inhoud voor systeem-gebruiker.
-- Open Internet Explorer in system gebruikersinhoud door het uitvoeren van de volgende opdrachtregel psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
-- Voeg proxy-instellingen in Internet Explorer en tmanssvc-service opnieuw starten.
-- Voor het configureren van proxy-instellingen van DRA cd C:\Program Files\Microsoft Azure Site Recovery Provider uitvoeren
-- Vervolgens DRCONFIGURATOR worden uitgevoerd. EXE / /AddBypassUrls configureren [toevoegen van IP-adres/de FQDN van vCenter-Server die is opgegeven tijdens de **vCenter Server/vSphere ESXi-server configureren** stap van [configuratieserver implementatie](vmware-azure-deploy-configuration-server.md#configure-settings)]
+- Down load het PsExec-hulp programma van [hier](https://aka.ms/PsExec) om toegang te krijgen tot inhoud van het systeem gebruiker.
+- Open Internet Explorer in de inhoud van systeem gebruikers door de volgende opdracht regel PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe" uit te voeren.
+- Voeg proxy-instellingen in IE toe en start de tmanssvc-service opnieuw.
+- Als u DRA-proxy-instellingen wilt configureren, voert u cd C:\Program Files\Microsoft Azure Site Recovery provider uit.
+- Voer vervolgens DRCONFIGURATOR uit. EXE/configure/AddBypassUrls [IP-adres/FQDN van vCenter Server toevoegen tijdens [configuratie](vmware-azure-deploy-configuration-server.md#configure-settings)van **VCenter server/vSphere ESXi server**
 
-## <a name="change-the-ip-address-of-the-configuration-server"></a>Het IP-adres van de configuratieserver wijzigen
+## <a name="change-the-ip-address-of-the-configuration-server"></a>Het IP-adres van de configuratie server wijzigen
 
-Het is raadzaam dat u het IP-adres van een configuratieserver niet te wijzigen. Zorg ervoor dat alle IP-adressen die zijn toegewezen aan de configuratieserver statische IP-adressen. Gebruik geen DHCP IP-adressen.
+We raden u ten zeerste aan het IP-adres van een configuratie server niet te wijzigen. Zorg ervoor dat alle IP-adressen die zijn toegewezen aan de configuratie server statische IP-adressen zijn. Gebruik geen DHCP IP-adressen.
 
-## <a name="acs50008-saml-token-is-invalid"></a>ACS50008: SAML-token is ongeldig
+## <a name="acs50008-saml-token-is-invalid"></a>ACS50008: het SAML-token is ongeldig
 
-Zorg ervoor dat de tijd op de systeemklok niet verschillen van de lokale tijd op meer dan 15 minuten om te voorkomen dat deze fout. Voer het installatieprogramma opnieuw uit om de registratie te voltooien.
+Als u deze fout wilt voor komen, moet u ervoor zorgen dat de tijd op de systeem klok niet meer dan 15 minuten afwijkt van de lokale tijd. Voer het installatieprogramma opnieuw uit om de registratie te voltooien.
 
-## <a name="failed-to-create-a-certificate"></a>Kan niet een certificaat maken
+## <a name="failed-to-create-a-certificate"></a>Kan geen certificaat maken
 
-Een certificaat dat is vereist voor het verifiëren van Site Recovery kan niet worden gemaakt. Voer setup opnieuw uit nadat u ervoor zorgen dat u setup als een lokale beheerder uitvoert.
+Een certificaat dat vereist is voor verificatie Site Recovery kan niet worden gemaakt. Voer Setup opnieuw uit nadat u ervoor hebt gezorgd dat u Setup uitvoert als een lokale beheerder.
 
-## <a name="failure-to-activate-windows-license-from-server-standard-evaluation-to-server-standard"></a>Windows-licentie van Standard evaluatie van de Server naar Server Standard te activeren is mislukt
+## <a name="failure-to-activate-windows-license-from-server-standard-evaluation-to-server-standard"></a>Kan Windows-licentie niet activeren van Server Standard-evaluatie naar Server Standard
 
-1. Als onderdeel van de implementatie van configuratieserver via OVF, wordt een evaluatielicentie gebruikt die 180 dagen geldig is. U moet deze licentie activeren voordat deze verloopt. Anders kan dit leiden tot frequente afsluiten van de configuratieserver, waardoor op weg aan activiteiten voor replicatie.
-2. Als u geen licentie voor Windows activeren, contact op met [Windows ondersteuningsteam](https://aka.ms/Windows_Support) om het probleem te verhelpen.
+1. Als onderdeel van de implementatie van de configuratie server via OVF, wordt een evaluatie licentie gebruikt, die gedurende 180 dagen geldig is. U moet deze licentie activeren voordat deze is verlopen. Dit kan ook leiden tot het veelvuldig afsluiten van de configuratie server en kan leiden tot replicatie activiteiten.
+2. Neem contact op met het [ondersteunings team van Windows](https://aka.ms/Windows_Support) om het probleem op te lossen als u de Windows-licentie niet kunt activeren.
 
-## <a name="register-source-machine-with-configuration-server"></a>Broncomputer met de configuratieserver registreren
+## <a name="register-source-machine-with-configuration-server"></a>Bron machine bij de configuratie server registreren
 
-### <a name="if-the-source-machine-runs-windows"></a>Als de bronmachine wordt uitgevoerd Windows
+### <a name="if-the-source-machine-runs-windows"></a>Als Windows op de bron machine wordt uitgevoerd
 
-Voer de volgende opdracht op de bronmachine:
+Voer de volgende opdracht uit op de bron computer:
 
 ```
   cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
@@ -97,14 +97,14 @@ Voer de volgende opdracht op de bronmachine:
 
 Instelling | Details
 --- | ---
-Gebruik | UnifiedAgentConfigurator.exe /CSEndPoint < IP-adres van configuratie\> /PassphraseFilePath < bestandspad wachtwoordzin\>
-Agent-logboeken voor configuratie | Located under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
-/CSEndPoint | Verplichte parameter. Hiermee geeft u het IP-adres van de configuratieserver. Gebruik een geldig IP-adres.
-/PassphraseFilePath |  Verplicht. De locatie van de wachtwoordzin. Gebruik een geldig UNC- of lokaal bestandspad.
+Gebruik | UnifiedAgentConfigurator. exe/CSEndPoint < IP-adres van configuratie server\>/PassphraseFilePath < pad van de wachtwoordzin\>
+Agent configuratie logboeken | Bevindt zich onder%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
+/CSEndPoint | Verplichte para meter. Hiermee geeft u het IP-adres van de configuratie server. Gebruik een geldig IP-adres.
+/PassphraseFilePath |  Verplicht. De locatie van de wachtwoordzin. Gebruik een geldig UNC-pad of een lokaal bestandspad.
 
-### <a name="if-the-source-machine-runs-linux"></a>Als de bronmachine wordt uitgevoerd voor Linux
+### <a name="if-the-source-machine-runs-linux"></a>Als de bron machine Linux uitvoert
 
-Voer de volgende opdracht op de bronmachine:
+Voer de volgende opdracht uit op de bron computer:
 
 ```
   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <configuration server IP address> -P /var/passphrase.txt
@@ -112,25 +112,25 @@ Voer de volgende opdracht op de bronmachine:
 
 Instelling | Details
 --- | ---
-Gebruik | cd /usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh -i < IP-adres van configuratie\> - P < bestandspad wachtwoordzin\>
--i | Verplichte parameter. Hiermee geeft u het IP-adres van de configuratieserver. Gebruik een geldig IP-adres.
--P |  Verplicht. Het volledige pad van het bestand waarin de wachtwoordzin die is opgeslagen. Gebruik een geldige map.
+Gebruik | cd-/usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh-i < IP-adres van de configuratie server\>-P < pad naar de wachtwoordzin\>
+-i | Verplichte para meter. Hiermee geeft u het IP-adres van de configuratie server. Gebruik een geldig IP-adres.
+-P |  Verplicht. Het volledige bestandspad van het bestand waarin de wachtwoordzin wordt opgeslagen. Gebruik een geldige map.
 
-## <a name="unable-to-configure-the-configuration-server"></a>Kan de configuratieserver configureren
+## <a name="unable-to-configure-the-configuration-server"></a>Kan de configuratie server niet configureren
 
-Als u andere toepassingen dan de configuratieserver op de virtuele machine installeert, is het mogelijk dat u kan niet worden geconfigureerd van het hoofddoel. 
+Als u andere toepassingen dan de configuratie server op de virtuele machine installeert, kunt u het hoofd doel mogelijk niet configureren. 
 
-De configuratieserver moet op een server met één doel en deze gebruiken als een gedeelde server niet ondersteund wordt. 
+De configuratie server moet een server met één doel zijn en kan niet worden gebruikt als een gedeelde server niet wordt ondersteund. 
 
-Zie voor meer informatie, de configuratie Veelgestelde vragen over in [implementeren van een configuratieserver](vmware-azure-deploy-configuration-server.md#faq). 
+Zie de veelgestelde vragen over configuratie in [een configuratie server implementeren](vmware-azure-deploy-configuration-server.md#faqs)voor meer informatie. 
 
-## <a name="remove-the-stale-entries-for-protected-items-from-the-configuration-server-database"></a>De verouderde vermeldingen voor beveiligde items verwijderen uit de database van de configuratieserver 
+## <a name="remove-the-stale-entries-for-protected-items-from-the-configuration-server-database"></a>De verouderde vermeldingen voor beveiligde items verwijderen uit de data base van de configuratie server 
 
-Als u wilt verwijderen van verouderde beveiligde machine op de configuratieserver, gebruik de volgende stappen. 
+Gebruik de volgende stappen om de verouderde beveiligde machine te verwijderen op de configuratie server. 
  
-1. Om te bepalen van de broncomputer en de IP-adres van de verouderde vermelding: 
+1. Bepalen van de bron computer en het IP-adres van de verlopen vermelding: 
 
-    1. Open de MYSQL-opdrachtregel in de beheerdersmodus. 
+    1. Open de MYSQL-opdracht regel in de beheerders modus. 
     2. Voer de volgende opdrachten uit. 
    
         ```
@@ -138,27 +138,27 @@ Als u wilt verwijderen van verouderde beveiligde machine op de configuratieserve
         mysql> select id as hostid, name, ipaddress, ostype as operatingsystem, from_unixtime(lasthostupdatetime) as heartbeat from hosts where name!='InMageProfiler'\G;
         ```
 
-        Hiermee wordt de lijst met geregistreerde machines samen met hun IP-adressen en de laatste heartbeat. De host met verouderde replicatieparen niet vinden.
+        Hiermee wordt de lijst met geregistreerde machines samen met hun IP-adressen en de laatste kern slag geretourneerd. Zoek de host met verouderde replicatie paren.
 
-2. Open een opdrachtprompt met verhoogde bevoegdheid en navigeer naar C:\ProgramData\ASR\home\svsystems\bin. 
-4. Als u wilt de details van de geregistreerde hosts en de informatie van de verouderde vermelding verwijderen vanaf de configuratieserver, voer de volgende opdracht uit met behulp van de bronmachine en het IP-adres van de verouderde vermelding. 
+2. Open een opdracht prompt met verhoogde bevoegdheid en navigeer naar C:\ProgramData\ASR\home\svsystems\bin. 
+4. Voer de volgende opdracht uit met behulp van de bron computer en het IP-adres van de verlopen vermelding om de gegevens van de geregistreerde hosts en de verouderde vermelding van de configuratie server te verwijderen. 
    
     `Syntax: Unregister-ASRComponent.pl -IPAddress <IP_ADDRESS_OF_MACHINE_TO_UNREGISTER> -Component <Source/ PS / MT>`
  
-    Als u een vermelding van "On-premises-VM01" server met het ip-adres 10.0.0.4 hebt vervolgens gebruiken de volgende opdracht uit in plaats daarvan.
+    Als u een bron server vermelding van ' premises-VM01 ' met een IP-adres van 10.0.0.4 hebt, gebruikt u in plaats daarvan de volgende opdracht.
  
     `perl Unregister-ASRComponent.pl -IPAddress 10.0.0.4 -Component Source`
  
-5. Start opnieuw op de volgende services op de broncomputer opnieuw te registreren bij de configuratieserver. 
+5. Start de volgende services op de bron computer opnieuw op om de registratie bij de configuratie server ongedaan te maken. 
  
-    - InMage Scout Application Service
-    - InMage Scout VX Agent - Sentinel/Outpost
+    - InMage Scout-toepassingsservice
+    - Inmage Scout-agent-Sentinel-Outpost
 
-## <a name="upgrade-fails-when-the-services-fail-to-stop"></a>Upgrade mislukt wanneer de services niet stoppen
+## <a name="upgrade-fails-when-the-services-fail-to-stop"></a>De upgrade mislukt wanneer de services niet worden gestopt
 
-De upgrade van de configuratie-server mislukt wanneer bepaalde services niet te stoppen. 
+De upgrade van de configuratie server mislukt wanneer bepaalde services niet worden gestopt. 
 
-Voor het identificeren van het probleem, gaat u naar C:\ProgramData\ASRSetupLogs\CX_TP_InstallLogFile op de configuratieserver. Als u de volgende fouten kunt vinden, gebruikt u de volgende stappen uit om het probleem te verhelpen: 
+Als u het probleem wilt identificeren, gaat u naar C:\ProgramData\ASRSetupLogs\ CX_TP_InstallLogFile op de configuratie server. Als u de volgende fouten vindt, gebruikt u de onderstaande stappen om het probleem op te lossen: 
 
     2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
     2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
@@ -171,85 +171,85 @@ Voor het identificeren van het probleem, gaat u naar C:\ProgramData\ASRSetupLogs
     2018-06-28 14:38:12.971   Rolling back the install changes.
     2018-06-28 14:38:12.971   Upgrade has failed.
 
-Het probleem kunt oplossen:
+Om het probleem op te lossen:
 
-Stop de volgende services:
+Stop de volgende services hand matig:
 
 - cxprocessserver
-- InMage Scout VX Agent-Sentinel/Outpost, 
-- Microsoft Azure Recovery Services-Agent 
-- Microsoft Azure Site Recovery Service, 
+- Inmage Scout-agent: Sentinel/Outpost, 
+- Microsoft Azure Recovery Services-agent, 
+- Microsoft Azure Site Recovery-service, 
 - tmansvc
   
-Voer voor het bijwerken van de configuratieserver, de [van geïntegreerde setup](service-updates-how-to.md#links-to-currently-supported-update-rollups) opnieuw.
+Als u de configuratie server wilt bijwerken, voert u de [Unified Setup](service-updates-how-to.md#links-to-currently-supported-update-rollups) opnieuw uit.
 
-## <a name="azure-active-directory-application-creation-failure"></a>Azure Active Directory-toepassing maken is mislukt
+## <a name="azure-active-directory-application-creation-failure"></a>Fout bij het maken van Azure Active Directory toepassing
 
-U hebt onvoldoende machtigingen voor het maken van een toepassing in Azure Active Directory (AAD) met behulp van de [Open Virtualization-toepassing (OVA)](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template
+U hebt onvoldoende machtigingen voor het maken van een toepassing in Azure Active Directory (AAD) met behulp van de [Open Virtualization Application (eicellen)-](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template
 ) sjabloon.
 
-Los het probleem, meld u aan bij Azure portal en een van de volgende handelingen uit:
+Om het probleem op te lossen, meldt u zich aan bij de Azure Portal en voert u een van de volgende handelingen uit:
 
-- Aanvragen van de rol van ontwikkelaar van toepassing in AAD. Zie voor meer informatie over de rol van ontwikkelaar [rol beheerdersmachtigingen in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
-- Controleer de **toepassing kunt maken door gebruiker** vlag is ingesteld op *waar* in AAD. Zie voor meer informatie, [het: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+- Vraag de ontwikkelaar van de toepassing aan bij AAD. Zie [Administrator role permissions in azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over de ontwikkelaar van de toepassing.
+- Controleer of de **gebruiker kan een toepassings vlag maken** in Aad is ingesteld op *True* . Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)voor meer informatie.
 
-## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>Proces-server/Master Target zijn kan niet communiceren met de configuratieserver 
+## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>Proces server/Master doel kunnen niet communiceren met de configuratie server 
 
-De processerver (PS) en een Master Target (MT)-modules zijn kan niet communiceren met de configuratieserver (CS) en hun status wordt weergegeven als niet is verbonden op Azure-portal.
+De module proces server (PS) en Master target (MT) kan niet communiceren met de configuratie server (CS) en de status wordt weer gegeven als niet verbonden op Azure Portal.
 
-Dit is meestal vanwege een fout met poort 443. Gebruik de volgende stappen uit om te deblokkeren van de poort en communicatie met de CS opnieuw inschakelen.
+Dit wordt meestal veroorzaakt door een fout met poort 443. Gebruik de volgende stappen om de poort te deblokkeren en communicatie met de CS opnieuw in te scha kelen.
 
-**Controleer of dat de MARS-agent wordt aangeroepen door de agent hoofddoel**
+**Controleren of de MARS-agent wordt aangeroepen door de hoofddoel agent**
 
-Om te controleren dat de Doelagent Master een TCP-sessie voor de configuratie van IP-adres maken kunt, zoeken naar een tracering die vergelijkbaar is met het volgende in het hoofddoel agent-Logboeken:
+Als u wilt controleren of de hoofddoel agent een TCP-sessie kan maken voor het IP-adres van de configuratie server, zoekt u naar een tracering die vergelijkbaar is met de volgende in de logboeken van de hoofd doel agent:
 
-TCP \<vervangen door IP-adres met hier CS-IP-adres >: 52739 \<vervangen door IP-adres met hier CS-IP-adres >: 443 SYN_SENT 
+TCP \<het IP-adres vervangen door CS IP hier >: 52739 \<Vervang IP door hier het IP-adres van de CS >: 443 SYN_SENT 
 
-TCP-192.168.1.40:52739 192.168.1.40:443 SYN_SENT / / vervangen door IP-adres met hier CS-IP-adres
+TCP 192.168.1.40:52739 192.168.1.40:443 SYN_SENT//Vervang het IP-adres door het CS-IP-adres
 
-Als u traceringen die vergelijkbaar is met het volgende in de logboeken van de agent MT vinden, rapporteert de Agent MT fouten op poort 443:
+Als u traceringen vindt die vergelijkbaar zijn met de volgende in de logboeken van de MT-agent, worden de MT-agent fouten gerapporteerd op poort 443:
 
     #~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
     #~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
  
-Deze fout kan optreden wanneer andere toepassingen gebruiken ook poort 443 of als gevolg van een firewallinstelling voor het blokkeren van de poort.
+Deze fout kan optreden als andere toepassingen ook poort 443 gebruiken of als gevolg van een firewall instelling die de poort blokkeert.
 
-Het probleem kunt oplossen:
+Om het probleem op te lossen:
 
-- Controleer of dat poort 443 niet wordt geblokkeerd door uw firewall.
-- Als de poort niet bereikbaar vanwege een andere toepassing met behulp van deze poort is, stoppen en verwijderen van de app.
-  - Als de app stoppen niet haalbaar is is, instellen van een nieuwe, schone CS.
-- Start opnieuw op de configuratieserver.
-- Start de IIS-service.
+- Controleer of poort 443 niet is geblokkeerd door uw firewall.
+- Als de poort niet bereikbaar is vanwege een andere toepassing die deze poort gebruikt, stopt en verwijdert u de app.
+  - Als het stoppen van de app niet haalbaar is, stelt u een nieuwe schone CS in.
+- Start de configuratie server opnieuw op.
+- Start de IIS-service opnieuw.
 
-### <a name="configuration-server-is-not-connected-due-to-incorrect-uuid-entries"></a>Configuratieserver is niet verbonden vanwege onjuiste UUID-vermeldingen
+### <a name="configuration-server-is-not-connected-due-to-incorrect-uuid-entries"></a>De configuratie server is niet verbonden vanwege onjuiste UUID-vermeldingen
 
-Deze fout kan optreden wanneer er meerdere configuratie (CS)-server-exemplaar UUID vermeldingen in de database. Het probleem treedt meestal op wanneer u de configuratieserver virtuele machine klonen.
+Deze fout kan optreden als er meerdere UUID-items van een configuratie server (CS) in de-Data Base zijn. Het probleem treedt vaak op wanneer u de VM van de configuratie server kloont.
 
-Het probleem kunt oplossen:
+Om het probleem op te lossen:
 
-1. Verouderd/oude CS VM uit vCenter verwijderen. Zie voor meer informatie, [servers verwijderen en beveiliging uitschakelen](site-recovery-manage-registration-and-protection.md).
-2. Meld u aan met de van configuratieserver-machine en maak verbinding met de MySQL-database svsdb1. 
+1. Verwijder de verouderde/oude CS-VM uit de vCenter. Zie [servers verwijderen en beveiliging uitschakelen](site-recovery-manage-registration-and-protection.md)voor meer informatie.
+2. Meld u aan bij de configuratie Server-VM en maak verbinding met de MySQL svsdb1-data base. 
 3. Voer de volgende query uit:
 
     > [!IMPORTANT]
     >
-    > Controleer of u de details van de UUID van de gekloonde configuratieserver of de verouderde vermelding van de configuratieserver die niet meer wordt gebruikt voor het beveiligen van virtuele machines wilt invoeren. Een onjuiste UUID invoeren leidt tot verlies van de gegevens voor alle bestaande beveiligde items.
+    > Controleer of u de UUID-Details van de gekloonde configuratie server of de verouderde vermelding van de configuratie server die niet meer wordt gebruikt voor het beveiligen van virtuele machines. Als u een onjuiste UUID invoert, gaan de gegevens voor alle bestaande beveiligde items verloren.
    
     ```
         MySQL> use svsdb1;
         MySQL> delete from infrastructurevms where infrastructurevmid='<Stale CS VM UUID>';
         MySQL> commit; 
     ```
-4. Vernieuw de portal-pagina.
+4. Vernieuw de portal pagina.
 
-## <a name="an-infinite-sign-in-loop-occurs-when-entering-your-credentials"></a>Een oneindige lus aanmeldingsnaam treedt op wanneer u uw referenties invoert
+## <a name="an-infinite-sign-in-loop-occurs-when-entering-your-credentials"></a>Er treedt een oneindige lus op bij het invoeren van uw referenties
 
-Na het invoeren van de juiste gebruikersnaam en wachtwoord op de configuratieserver OVF, Azure Meld u aan te vragen om de juiste referenties blijft.
+Nadat u de juiste gebruikers naam en het wacht woord hebt ingevoerd op de configuratie server OVF, wordt u gevraagd om de juiste referenties op te geven.
 
-Dit probleem kan optreden wanneer de systeemtijd onjuist is.
+Dit probleem kan optreden wanneer de systeem tijd onjuist is.
 
-Het probleem kunt oplossen:
+Om het probleem op te lossen:
 
-De juiste tijd instellen op de computer en probeer de aanmelding. 
+Stel de juiste tijd op de computer in en voer de aanmelding opnieuw uit. 
  

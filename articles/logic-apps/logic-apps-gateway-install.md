@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: d515982dc2937b660de75ee723cebe39b33bec7d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/06/2019
+ms.openlocfilehash: a8deb7933bb19745bbe4c3b3a209c19c9cc712bd
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580876"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796312"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevens gateway voor Azure Logic Apps installeren
 
@@ -33,9 +33,9 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
 * Een Azure-account en -abonnement. Als u geen Azure-account hebt met een abonnement, [meldt u zich aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-  * U moet hetzelfde Azure-account gebruiken om de gateway op uw lokale computer te installeren en te beheren.
+  * Uw Azure-account moet deel uitmaken van een enkele [Azure Active Directory (Azure AD)-Tenant of-map](../active-directory/fundamentals/active-directory-whatis.md#terminology). U moet hetzelfde Azure-account gebruiken voor het installeren en beheren van de gateway op uw lokale computer.
 
-    Tijdens de installatie van de gateway meldt u zich aan met uw Azure-account, waarmee u uw gateway-installatie kunt koppelen aan uw Azure-account en alleen dat account. U moet later in de Azure Portal hetzelfde Azure-account gebruiken voor het maken van een Azure gateway-resource waarmee de gateway-installatie wordt geregistreerd en claims. In Azure Logic Apps moeten on-premises triggers en acties vervolgens de gateway bron gebruiken om verbinding te maken met on-premises gegevens bronnen.
+  * Tijdens de installatie van de gateway meldt u zich aan met uw Azure-account, waarmee u uw gateway-installatie kunt koppelen aan uw Azure-account en alleen dat account. Later, in de Azure Portal, moet u hetzelfde Azure-account en Azure AD-Tenant gebruiken wanneer u een Azure gateway-resource maakt waarmee de gateway-installatie wordt geregistreerd en claimt. In Azure Logic Apps moeten on-premises triggers en acties vervolgens de gateway bron gebruiken om verbinding te maken met on-premises gegevens bronnen.
 
     > [!NOTE]
     > U kunt slechts één gateway-installatie en één Azure gateway-resource aan elkaar koppelen. U kunt dezelfde Gateway-installatie niet koppelen aan meerdere Azure-accounts of Azure gateway-resources. Een Azure-account kan echter worden gekoppeld aan meerdere gateway-installaties en Azure gateway-resources. In een on-premises trigger of actie kunt u kiezen uit uw verschillende Azure-abonnementen en vervolgens een gekoppelde gateway resource selecteren.

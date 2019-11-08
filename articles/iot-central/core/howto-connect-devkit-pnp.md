@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: b7d2e1b08653cb8023ef6a5190ab53ecc3d568a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: de394a98f78b0bdb7cdf090de5c052cc761aa92d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951508"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748616"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing
 
@@ -29,12 +29,12 @@ In dit procedure-artikel:
 
 U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
-1. Een [DevKit-apparaat](https://aka.ms/iot-devkit-purchase).
-1. Een IoT Central toepassing die is gemaakt op basis van de sjabloon **voor de voorbeeld toepassing** . U kunt de stappen in [een IoT Plug en Play-toepassing maken](./quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)volgen.
+- Een [DevKit-apparaat](https://aka.ms/iot-devkit-purchase).
+- Een IoT Central toepassing die is gemaakt op basis van de sjabloon **voor de voorbeeld toepassing** . U kunt de stappen in [een IoT Plug en Play-toepassing maken](./quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)volgen.
 
 ## <a name="get-device-connection-details"></a>Verbindings Details van apparaat ophalen
 
-Selecteer in uw Azure IoT Central-toepassing het tabblad **beheer** en selecteer **apparaat-verbinding**. Noteer het **id-bereik** en de **primaire sleutel**.
+Selecteer in uw Azure IoT Central-toepassing het tabblad **beheer** en selecteer **apparaat-verbinding**. Noteer de **bereik-id** en de **primaire sleutel** (in de koppeling **sleutels weer geven** ). En zorg ervoor dat **automatisch goed keuren** is ingeschakeld.
 
 ![Verbindings Details van de apparaatgroep](media/howto-connect-devkit-pnp/device-group-connection-details.png)
 
@@ -61,7 +61,7 @@ Selecteer in uw Azure IoT Central-toepassing het tabblad **beheer** en selecteer
 
     - De naam van uw WiFi-netwerk (SSID).
     - Uw WiFi-netwerk wachtwoord.
-    - De verbindings Details: de **apparaat-id** die u zelf kunt kiezen en het **id-bereik** en de **groeps-SAS-primaire sleutel** die u eerder hebt genoteerd.
+    - De verbindings Details: de **apparaat-id** die u zelf kunt kiezen en de **bereik-id** en **groeps-SAS-primaire sleutel** die u eerder hebt genoteerd.
 
     > [!NOTE]
     > Momenteel kan IoT DevKit alleen verbinding maken met 2,4 GHz Wi-Fi. 5 GHz wordt niet ondersteund als gevolg van hardwarebeperkingen.
@@ -82,11 +82,11 @@ In deze stap bekijkt u de telemetrie in uw Azure IoT Central-toepassing.
 
 Selecteer op het tabblad **apparaten** In uw IOT Central-toepassing het apparaat dat u hebt toegevoegd. Op het tabblad **overzicht** kunt u de telemetrie van het DevKit-apparaat zien:
 
-   ![Overzicht van IoT Central apparaat](media/howto-connect-devkit-pnp/mxchip-overview-page.png)
+![Overzicht van IoT Central apparaat](media/howto-connect-devkit-pnp/mxchip-overview-page.png)
 
 ## <a name="review-the-code"></a>De code bekijken
 
-Ga naar de [code voorbeelden](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)om de code te bekijken of te wijzigen en te compileren.
+Om de code te controleren of te wijzigen en te compileren, gaat u naar de [MXChip IOT DevKit sample code github-opslag plaats](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp).
 
 ## <a name="next-steps"></a>Volgende stappen
 

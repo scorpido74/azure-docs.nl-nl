@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 87777d3a6abfeaeac74fd69126cc3e71e11be825
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 73f38760153a6e1db5621801282c71216b3e8560
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597857"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749433"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Virtuele schijven op een Windows-VM versleutelen
 Virtuele schijven in azure kunnen worden versleuteld voor verbeterde beveiliging en naleving van de virtuele machine (VM). Schijven worden versleuteld met behulp van cryptografische sleutels die zijn beveiligd in een Azure Key Vault. U kunt deze cryptografische sleutels beheren en het gebruik ervan controleren. In dit artikel wordt beschreven hoe u virtuele schijven op een Windows-VM versleutelt met behulp van Azure PowerShell. U kunt ook [virtuele Linux-machines versleutelen](../linux/disk-encryption-overview.md).
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="overview-of-disk-encryption"></a>Overzicht van schijf versleuteling
 Virtuele schijven op Windows-Vm's worden op rest versleuteld met behulp van BitLocker. Er worden geen kosten in rekening gebracht voor het versleutelen van virtuele schijven in Azure. Cryptografische sleutels worden opgeslagen in een Azure Key Vault met behulp van software beveiliging, of u kunt uw sleutels in Hardware Security modules (Hsm's) die zijn gecertificeerd voor FIPS 140-2 level 2-standaarden, importeren of genereren. Cryptografische sleutels worden gebruikt voor het versleutelen en ontsleutelen van virtuele schijven die zijn gekoppeld aan uw VM. U kunt de controle over deze cryptografische sleutels houden en het gebruik ervan controleren. 

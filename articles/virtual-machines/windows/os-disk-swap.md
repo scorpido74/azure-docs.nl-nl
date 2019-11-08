@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 28aad5c3ff80042d1b9de5a8a92137e19c8871fd
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 50428f8f28a4211c54e7e3e9ee19421197490666
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058536"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749298"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>De besturingssysteem schijf wijzigen die wordt gebruikt door een Azure VM met behulp van Power shell
 
 Als u een bestaande VM hebt, maar u de schijf wilt wisselen voor een back-upschijf of een andere besturingssysteem schijf, kunt u Azure PowerShell gebruiken om de besturingssysteem schijven te vervangen. U hoeft de virtuele machine niet te verwijderen en opnieuw te maken. U kunt zelfs een beheerde schijf in een andere resource groep gebruiken, zolang deze nog niet in gebruik is.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 De VM moet stopped\deallocated zijn. vervolgens kan de bron-ID van de beheerde schijf worden vervangen door de resource-ID van een andere beheerde schijf.
 

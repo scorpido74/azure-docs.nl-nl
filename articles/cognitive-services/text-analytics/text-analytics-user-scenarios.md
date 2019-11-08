@@ -1,7 +1,7 @@
 ---
-title: Voorbeeld van de gebruiker scenario's voor de Tekstanalyse-API
+title: Voor beelden van gebruikers scenario's voor de Text Analytics-API
 titleSuffix: Azure Cognitive Services
-description: Gebruik dit artikel om te zien van enkele algemene scenario's voor het integreren van de Tekstanalyse-API in uw services en -processen.
+description: In dit artikel vindt u enkele algemene scenario's voor het integreren van de Text Analytics-API in uw-services en-processen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,42 +10,42 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/04/2019
 ms.author: aahi
-ms.openlocfilehash: d8d2aed16b5af60c44501e6d72332783a164ff91
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 19421788eea59ea250efbaa656266da49dc3b42f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478396"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742727"
 ---
-# <a name="example-user-scenarios-for-the-text-analytics-api"></a>Voorbeeld van de gebruiker scenario's voor de Tekstanalyse-API
+# <a name="example-user-scenarios-for-the-text-analytics-api"></a>Voor beelden van gebruikers scenario's voor de Text Analytics-API
 
-De Tekstanalyse-API is een cloud-gebaseerde service waarmee u geavanceerde natuurlijke taalverwerking over de tekst. Dit artikel beschrijft enkele voorbeelden van use cases voor het integreren van de API in uw zakelijke oplossingen en -processen. 
+De Text Analytics-API is een Cloud service die geavanceerde verwerking van natuurlijke taal voor tekst biedt. In dit artikel worden enkele voor beelden van gebruiks voorbeelden beschreven voor het integreren van de API in uw bedrijfs oplossingen en-processen. 
 
-## <a name="analyze-survey-results"></a>Resultaten van het onderzoek analyseren
+## <a name="analyze-survey-results"></a>Enquête resultaten analyseren
 
-Haal inzichten uit de resultaten van klanten en werknemers het onderzoek door het verwerken van de onbewerkte tekst antwoorden met behulp van Sentimentanalyse. Samenvoegen van de bevindingen voor analyse, volgen en engagements te stimuleren.
+Teken inzichten van klant-en werknemers enquête resultaten door de onbewerkte tekst reacties te verwerken met behulp van Sentimentanalyse. Voeg de resultaten voor analyse, follow-up en Route beschrijvingen samen.
 
-![Een afbeelding waarin wordt beschreven hoe u sentimentanalyse op klanten en werknemers enquêtes.](media/use-cases/survey-results.svg)
+![Een afbeelding waarin wordt beschreven hoe u sentiment analyse kunt uitvoeren op enquêtes van klanten en werk nemers.](media/use-cases/survey-results.svg)
 
-## <a name="analyze-recorded-inbound-customer-calls"></a>Analyseer klantgesprekken met geregistreerde inkomend
+## <a name="analyze-recorded-inbound-customer-calls"></a>Geregistreerde inkomende klant oproepen analyseren
 
-Haal inzichten uit gesprekken met klanten services met behulp van tekst naar spraak, Sentimentanalyse en sleutel vindt er sleuteltermextractie plaats. De resultaten weergeven in Power BI-dashboard of een portal beter begrijpen van klanten, markeert u klant servicetrends, en de betrokkenheid van de klant. API-aanvragen als een batch voor het melden van of in realtime voor interventie verzenden. Zie [voorbeeldcode](https://github.com/rlagh2/callcenteranalytics).
+Haal inzichten uit de aanroepen van Customer Services met behulp van Text to Speech, Sentimentanalyse en Sleuteltermextractie. De resultaten in Power BI dash board of een portal weer geven om klanten beter te begrijpen, trends van klanten service te markeren en de klant betrokkenheid te stimuleren. API-aanvragen verzenden als een batch voor rapportage of in realtime voor interventie. Zie [voorbeeld code](https://github.com/rlagh2/callcenteranalytics).
 
-![Een afbeelding waarin wordt beschreven hoe u kunt verkrijgen van inzichten uit gesprekken met klanten service met behulp van sentimentanalyse automatiseren](media/use-cases/azure-inbound.svg)
+![Een afbeelding waarin wordt beschreven hoe u inzichten kunt automatiseren van de klant service aanroepen met behulp van sentiment-analyse](media/use-cases/azure-inbound.svg)
 
-## <a name="process-and-categorize-support-incidents"></a>Verwerken en categoriseren support-incidenten
+## <a name="process-and-categorize-support-incidents"></a>Ondersteunings incidenten verwerken en categoriseren
 
-Sleutel vindt er sleuteltermextractie plaats en herkenning entiteit gebruiken voor het verwerken van ondersteuningsaanvragen indienen in niet-gestructureerde tekstuele indeling. Gebruik de uitgepakte zinnen en entiteiten voor het categoriseren van de aanvragen voor de analyse van planning en trend.
+Gebruik Sleuteltermextractie en entiteits herkenning om ondersteunings aanvragen te verwerken die in ongestructureerde tekst indeling zijn verzonden. Gebruik de geëxtraheerde frasen en entiteiten om de aanvragen voor resource planning en trend analyse te categoriseren.
 
-![Een afbeelding waarin wordt beschreven hoe u belangrijke phrase-herkenning voor extractie en entiteit gebruiken voor het categoriseren van incidentrapporten en trends](media/use-cases/support-incidents.svg)
+![Een afbeelding waarin wordt beschreven hoe u de sleutel woorden extractie en entiteits herkenning kunt gebruiken om incident rapporten en trends te categoriseren](media/use-cases/support-incidents.svg)
 
-## <a name="monitor-your-products-social-media-feeds"></a>Bewaken van uw product social-mediafeeds
+## <a name="monitor-your-products-social-media-feeds"></a>De feeds voor sociale media van uw product bewaken
 
-Feedback van gebruikers product op de twitter of Facebook-pagina van uw product bewaken. Gebruik de gegevens te analyseren sentiment van klanten naar nieuwe producten wordt gestart, Extraheer sleuteluitdrukkingen over functies en functieaanvragen of klachten adres wanneer deze zich voordoen.
+Feedback van gebruikers producten op de Twitter-of Facebook-pagina van uw product bewaken. Gebruik de gegevens om klant sentiment te analyseren naar nieuwe producten, sleutel zinnen te extra heren over functies en functie aanvragen of klachten van klanten te adresseren wanneer deze zich voordoen.
 
-![Een afbeelding waarin wordt beschreven hoe u voor het bewaken van uw product en bedrijf feedback op sociale media met behulp van de extractie van cruciale frasen](media/use-cases/social-feed.svg)
+![Een afbeelding waarin wordt beschreven hoe u uw product-en bedrijfs feedback op sociale media kunt controleren met behulp van sleutel woorden extractie](media/use-cases/social-feed.svg)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is de Tekstanalyse-API?](overview.md)
-* [Een aanvraag verzenden naar de Tekstanalyse-API gebruikenC#](quickstarts/csharp.md)
+* [Wat is de Text Analytics-API?](overview.md)
+* [Een aanvraag verzenden naar het Text Analytics-API met behulp van de client bibliotheek](quickstarts/text-analytics-sdk.md)

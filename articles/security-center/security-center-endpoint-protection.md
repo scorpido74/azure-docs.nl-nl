@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2019
 ms.author: memildin
-ms.openlocfilehash: dad8c6173495d11abd6c9f5babb4ef8bc789e4ce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 140361b7ba3a6a618d4c416447525f8a73690b81
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686412"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748424"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-evaluatie en aanbevelingen in Azure Security Center
 
@@ -84,7 +84,7 @@ Azure Security Center biedt status beoordelingen van [ondersteunde](https://docs
 * Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren op de virtuele machine** wanneer een van de volgende controles niet is voldaan:
     * **HKLM: \ SOFTWARE\TrendMicro\Deep Security-Agent** bestaat
     * **HKLM: \ SOFTWARE\TrendMicro\Deep Security Agent\InstallationFolder** bestaat
-    * Het bestand **dsq_query. cmd** bevindt zich in de installatiemap
+    * Het bestand **dsa_query. cmd** bevindt zich in de installatiemap
     * Resultaten van **dsa_query. cmd** uitvoeren met **component. am. mode: on-trend micro diepe beveiligings agent gedetecteerd**
 
 ## <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection

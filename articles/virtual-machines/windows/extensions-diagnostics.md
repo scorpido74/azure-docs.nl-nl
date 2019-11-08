@@ -1,6 +1,6 @@
 ---
 title: Azure Diagnostics-extensie voor Windows | Microsoft Docs
-description: Azure Windows VM's controleren met de Azure Diagnostics-extensie
+description: Virtuele Windows-machines bewaken met de uitbrei ding Azure Diagnostics
 services: virtual-machines-windows
 documentationcenter: ''
 author: johnkemnetz
@@ -12,40 +12,40 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 58c520ecbaf764140748167e458c301ab56de375
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4230e2aac8d386c759a403b9008029d68049569c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708060"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749405"
 ---
-# <a name="azure-diagnostics-extension-for-windows-vms"></a>Azure Diagnostics-extensie voor Windows-VM 's
+# <a name="azure-diagnostics-extension-for-windows-vms"></a>Azure Diagnostics-extensie voor Windows-Vm's
 
 ## <a name="overview"></a>Overzicht
 
-De virtuele machine van Azure Diagnostics-extensie kunt u het verzamelen van gegevens, zoals prestatiemeteritems en gebeurtenislogboeken, van uw Windows-VM. Granulair kunt u opgeven welke gegevens u wenst te verzamelen en waar u de gegevens om te gaan, zoals een Azure Storage-account of een Azure Event Hub. U kunt deze gegevens ook gebruiken om te bouwen grafieken in Azure portal of metrische waarschuwingen maken.
+Met de extensie Azure Diagnostics VM kunt u bewakings gegevens, zoals prestatie meter items en gebeurtenis logboeken, verzamelen van uw Windows-VM. U kunt nauw keurig opgeven welke gegevens u wilt verzamelen en waar u de gegevens wilt gaan, zoals een Azure Storage-account of een Azure Event hub. U kunt deze gegevens ook gebruiken om grafieken te maken in de Azure Portal of metrische waarschuwingen te maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-De Azure Diagnostics-extensie kunnen voor Windows 10-clients, Windows Server 2008 R2, 2012, 2012 R2 en 2016 worden uitgevoerd.
+De uitbrei ding Azure Diagnostics kan worden uitgevoerd op Windows 10-client, Windows Server 2008 R2, 2012, 2012 R2 en 2016.
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
-De Azure Diagnostics-extensie is vereist dat de virtuele doelmachine is verbonden met internet. 
+De uitbrei ding Azure Diagnostics vereist dat de virtuele doel machine is verbonden met internet. 
 
 ## <a name="extension-schema"></a>Extensieschema
 
-[De Azure Diagnostics-extensie schema en de eigenschap waarden worden beschreven in dit document.](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
+[In dit document worden de Azure Diagnostics extensie schema-en eigenschaps waarden beschreven.](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
-Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. De JSON-schema in de vorige sectie beschreven kan worden gebruikt in een Azure Resource Manager-sjabloon om uit te voeren van de Azure Diagnostics-extensie tijdens de sjabloonimplementatie van een Azure Resource Manager. Zie [Gebruik controle en diagnostische gegevens met een Windows-VM en Azure Resource Manager-sjablonen](extensions-diagnostics-template.md).
+Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sjablonen. Het JSON-schema dat in de vorige sectie wordt beschreven, kan worden gebruikt in een Azure Resource Manager sjabloon om de Azure Diagnostics-extensie uit te voeren tijdens de implementatie van een Azure Resource Manager-sjabloon. Zie [controle en diagnose gebruiken met een Windows-VM en Azure Resource Manager sjablonen](extensions-diagnostics-template.md).
 
-## <a name="azure-cli-deployment"></a>Azure CLI-implementatie
+## <a name="azure-cli-deployment"></a>Implementatie van Azure CLI
 
-De Azure CLI kan worden gebruikt om de Azure Diagnostics-extensie om een bestaande virtuele machine te implementeren. Vervang de beveiligde instellingen en eigenschappen voor door geldige JSON uit de bovenstaande extensieschema. 
+De Azure CLI kan worden gebruikt om de Azure Diagnostics-extensie te implementeren op een bestaande virtuele machine. Vervang de eigenschappen beveiligde instellingen en instellingen met een geldige JSON van het bovenstaande uitbreidings schema. 
 
 ```azurecli
 az vm extension set \
@@ -57,11 +57,11 @@ az vm extension set \
   --settings public-settings.json 
 ```
 
-## <a name="powershell-deployment"></a>PowerShell-implementatie
+## <a name="powershell-deployment"></a>Power shell-implementatie
 
-De `Set-AzVMDiagnosticsExtension` opdracht kan worden gebruikt om de Azure Diagnostics-extensie toevoegen aan een bestaande virtuele machine. Zie ook [PowerShell gebruiken voor het inschakelen van Azure Diagnostics in een virtuele machine met Windows](ps-extensions-diagnostics.md).
+De `Set-AzVMDiagnosticsExtension`-opdracht kan worden gebruikt om de Azure Diagnostics-extensie toe te voegen aan een bestaande virtuele machine. Zie ook [Power shell gebruiken om Azure Diagnostics in te scha kelen op een virtuele machine waarop Windows wordt uitgevoerd](ps-extensions-diagnostics.md).
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
 ```powershell
@@ -78,18 +78,18 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-Gegevens over de status van extensie-implementaties kunnen worden opgehaald uit de Azure-portal en met behulp van de Azure CLI. Als wilt zien de implementatiestatus van extensies voor een bepaalde virtuele machine, voert u de volgende opdracht uit met de Azure CLI.
+Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald uit het Azure Portal en met behulp van de Azure CLI. Als u de implementatie status van uitbrei dingen voor een bepaalde virtuele machine wilt bekijken, voert u de volgende opdracht uit met behulp van de Azure CLI.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-[Raadpleeg dit artikel](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md) voor een uitgebreidere gids voor probleemoplossing voor de Azure Diagnostics-extensie.
+[Raadpleeg dit artikel](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md) voor een uitgebreidere gids voor probleem oplossing voor de uitbrei ding van de Azure Diagnostics.
 
 ### <a name="support"></a>Ondersteuning
 
-Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnemen met de Azure-experts op het [forums voor Azure MSDN en Stack Overflow](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteuning van Azure site](https://azure.microsoft.com/support/options/) en selecteer Get-ondersteuning. Voor meer informatie over het gebruik van ondersteuning voor Azure, de [Veelgestelde vragen over Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/).
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Meer informatie over de Azure Diagnostics-extensie](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [Raadpleeg de extensieschema en versies](../../azure-monitor/platform/diagnostics-extension-schema.md)
+* [Meer informatie over de uitbrei ding van de Azure Diagnostics](../../azure-monitor/platform/diagnostics-extension-overview.md)
+* [Het schema en de versies van de extensie controleren](../../azure-monitor/platform/diagnostics-extension-schema.md)

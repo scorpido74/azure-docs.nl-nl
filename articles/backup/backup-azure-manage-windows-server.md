@@ -1,29 +1,28 @@
 ---
 title: Azure Recovery Services-kluizen en-servers beheren
-description: Beheer taken en waarschuwingen in een Azure Recovery Services kluis.
+description: In dit artikel leert u hoe u het overzichts Dashboard van Recovery Services kluis kunt gebruiken om uw Recovery Services kluizen te controleren en te beheren.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7e7312f942103125217c1f61ae8fe8007a49529b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a86af57f49b91615cc453946b0b5d51d22f2d163
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954765"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747440"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-kluizen beheren en controleren
 
-In dit artikel wordt uitgelegd hoe u het **overzichts** dashboard van Recovery Services kluis kunt gebruiken om uw Recovery Services kluizen te controleren en te beheren. Wanneer u een Recovery Services kluis in de lijst opent, wordt het overzichts dashboard voor de geselecteerde kluis geopend. Het dash board biedt verschillende details over de kluis. Er zijn *tegels* die worden weer gegeven: de status van kritieke en waarschuwings meldingen, taken in uitvoering en mislukte back-ups en de hoeveelheid lokaal redundante opslag (LRS) en geo redundante opslag (GRS). Als u een back-up maakt van virtuele Azure-machines in de kluis, worden in de [tegel **status van back-up** voor het controleren alle kritieke items weer gegeven](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/). De volgende afbeelding is het **overzichts** dashboard voor **Contoso-kluis**. Op de tegel **back-** upitems ziet u dat er negen items zijn geregistreerd bij de kluis.
+In dit artikel wordt uitgelegd hoe u het **overzichts** dashboard van Recovery Services kluis kunt gebruiken om uw Recovery Services kluizen te controleren en te beheren. Wanneer u een Recovery Services kluis in de lijst opent, wordt het **overzichts** dashboard voor de geselecteerde kluis geopend. Het dash board biedt verschillende details over de kluis. Er zijn *tegels* die worden weer gegeven: de status van kritieke en waarschuwings meldingen, taken in uitvoering en mislukte back-ups en de hoeveelheid lokaal redundante opslag (LRS) en geo redundante opslag (GRS). Als u een back-up maakt van virtuele Azure-machines in de kluis, worden in de [tegel **status van back-up** voor het controleren alle kritieke items weer gegeven](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/). De volgende afbeelding is het **overzichts** dashboard voor **Contoso-kluis**. Op de tegel **Back-upitems** ziet u dat er negen items zijn geregistreerd bij de kluis.
 
 ![Recovery Services-kluis dashboard](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
 De vereisten voor dit artikel zijn: een Azure-abonnement, een Recovery Services kluis en dat er ten minste één back-upitem is geconfigureerd voor de kluis.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
-
 
 ## <a name="open-a-recovery-services-vault"></a>Een Recovery Services kluis openen
 
@@ -47,11 +46,11 @@ Open de kluis om waarschuwingen te controleren of beheer gegevens over een Recov
 
 ## <a name="monitor-backup-jobs-and-alerts"></a>Back-uptaken en waarschuwingen bewaken
 
-Het overzichts dashboard Recovery Services kluis bevat tegels voor controle-en gebruiks informatie. De tegels in de bewakings sectie tonen kritieke en waarschuwings meldingen en taken in uitvoering en mislukt. Klik op een bepaalde waarschuwing of taak om het menu met back-upwaarschuwingen of back-uptaken te openen, gefilterd op die taak of waarschuwing.
+Het **overzichts** dashboard Recovery Services kluis bevat tegels voor controle-en gebruiks informatie. De tegels in de bewakings sectie tonen kritieke en waarschuwings meldingen en taken in uitvoering en mislukt. Klik op een bepaalde waarschuwing of taak om het menu met back-upwaarschuwingen of back-uptaken te openen, gefilterd op die taak of waarschuwing.
 
 ![Back-updashboard taken](./media/backup-azure-manage-windows-server/monitor-dashboard-tiles-warning.png)
 
-De sectie bewaking toont de resultaten van de query's van vooraf gedefinieerde **back-** upwaarschuwingen en **back-uptaken** . De bewakings tegels bieden actuele informatie over:
+De sectie bewaking toont de resultaten van de query's van vooraf gedefinieerde **back-upwaarschuwingen** en **back-uptaken** . De bewakings tegels bieden actuele informatie over:
 
 * Kritieke en waarschuwingen voor back-uptaken (in de afgelopen 24 uur)
 * Status vooraf controleren voor Azure-Vm's: Raadpleeg de [back-up-blog op pre-check status van back-ups](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)voor volledige informatie over de status van de controle vooraf.
@@ -66,11 +65,11 @@ Klik op de tegels (behalve back-upopslag) om het bijbehorende menu te openen. In
 
 ![Menu met back-upwaarschuwingen gefilterd op kritieke waarschuwingen](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
-Het menu back-upwaarschuwingen, in de bovenstaande afbeelding, wordt gefilterd op: De status is actief, ernst is kritiek en tijd is de afgelopen 24 uur.
+Het menu back-upwaarschuwingen, in de bovenstaande afbeelding, wordt gefilterd op: status is actief, ernst is kritiek en tijd is de vorige 24 uur.
 
 ## <a name="manage-backup-alerts"></a>Back-upwaarschuwingen beheren
 
-Als u het menu back-upwaarschuwingen wilt openen, klikt u in het menu Recovery Services kluis op **back-** upwaarschuwingen.
+Als u het menu back-upwaarschuwingen wilt openen, klikt u in het menu Recovery Services kluis op **back-upwaarschuwingen**.
 
 ![Waarschuwingen voor back-ups](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
@@ -84,8 +83,8 @@ In de lijst met waarschuwingen voor back-ups worden de geselecteerde gegevens vo
 
 | Waarschuwings niveau | Gebeurtenissen die waarschuwingen genereren |
 | ----------- | ----------- |
-| Kritiek | U ontvangt kritieke waarschuwingen wanneer: Back-uptaken mislukken, herstel taken mislukken en wanneer u de beveiliging op een server stopt, maar de gegevens behouden.|
-| Waarschuwing | Er worden waarschuwingen weer gegeven wanneer: Back-uptaken worden voltooid met waarschuwingen, bijvoorbeeld wanneer er geen back-up wordt gemaakt van minder dan 100 bestanden als gevolg van beschadigde problemen of wanneer er een back-up van meer dan 1.000.000 bestanden wordt gemaakt. |
+| Kritiek | U ontvangt kritieke waarschuwingen wanneer: back-uptaken mislukken, herstel taken mislukken en wanneer u de beveiliging op een server stopt, maar de gegevens behouden.|
+| Waarschuwing | Er worden waarschuwingen weer gegeven wanneer back-uptaken worden voltooid met waarschuwingen, bijvoorbeeld wanneer minder dan 100 bestanden geen back-up worden gemaakt als gevolg van beschadiging of als er een back-up van meer dan 1.000.000 bestanden wordt gemaakt. |
 | Informatief | Er zijn momenteel geen informatieve waarschuwingen in gebruik. |
 
 ### <a name="viewing-alert-details"></a>Waarschuwings details weer geven
@@ -100,8 +99,8 @@ Standaard worden alle details, met uitzonde ring van de **laatste tijdstippen**,
 * Back-upitem
 * Beveiligde server
 * Severity
-* Duration
-* Aanmaaktijd
+* Duur
+* Aanmaak tijd
 * Status
 * Laatste tijdstip waarop de gebeurtenis is opgetreden
 
@@ -155,7 +154,7 @@ Kies de ernst van de waarschuwing (kritiek of waarschuwing) die wordt gebruikt v
 
 ## <a name="manage-backup-items"></a>Back-upitems beheren
 
-Een Recovery Services kluis bevat veel soorten back-upgegevens. Meer [informatie](backup-overview.md#what-can-i-back-up) over waarvan u een back-up kunt maken. Als u de verschillende servers, computers, data bases en werk belastingen wilt beheren, klikt u op de tegel **back-** upitems om de inhoud van de kluis weer te geven.
+Een Recovery Services kluis bevat veel soorten back-upgegevens. Meer [informatie](backup-overview.md#what-can-i-back-up) over waarvan u een back-up kunt maken. Als u de verschillende servers, computers, data bases en werk belastingen wilt beheren, klikt u op de tegel **Back-upitems** om de inhoud van de kluis weer te geven.
 
 ![Tegel back-upitems](./media/backup-azure-manage-windows-server/backup-items.png)
 
@@ -205,12 +204,12 @@ De filters wijzigen:
 
 2. Kies de filter instellingen en klik op **gereed**. De gefilterde lijst wordt vernieuwd op basis van de nieuwe instellingen.
 
-#### <a name="item-type"></a>Itemtype
+#### <a name="item-type"></a>Item type
 
 Het item type is het type back-upbeheer van het beveiligde exemplaar. Er zijn vier typen; Zie de volgende lijst. U kunt alle item typen of één item type weer geven. U kunt niet twee of drie item typen selecteren. De beschik bare typen items zijn:
 
 * Alle item typen
-* Virtuele Azure-machine
+* virtuele Azure-machine
 * Bestanden en mappen
 * Azure Storage
 * Azure-workload
@@ -222,7 +221,7 @@ U kunt één bewerking of alle bewerkingen weer geven. U kunt twee of drie bewer
 * Alle bewerkingen
 * Registreren
 * Back-up configureren
-* Back-up
+* Back-up maken
 * Herstellen
 * Back-up uitschakelen
 * Back-upgegevens verwijderen
@@ -259,22 +258,22 @@ De tegel back-upopslag in het dash board toont de opslag die wordt gebruikt in A
 * Cloud LRS-opslag gebruik dat is gekoppeld aan de kluis
 * Cloud GRS-opslag gebruik dat is gekoppeld aan de kluis
 
-
 ## <a name="troubleshooting-monitoring-issues"></a>Problemen met bewaking oplossen
 
 **Probleem:** Taken en/of waarschuwingen van de Azure Backup Agent worden niet weer gegeven in de portal.
 
-**Stappen voor probleem oplossing:** Het proces, ```OBRecoveryServicesManagementAgent```, verzendt de taak-en waarschuwings gegevens naar de Azure backup-service. Dit proces kan af en toe worden vastgelopen of afgesloten.
+**Stappen voor probleem oplossing:** Het proces, ```OBRecoveryServicesManagementAgent```, verzendt de taak-en waarschuwings gegevens naar de Azure Backup-service. Dit proces kan af en toe worden vastgelopen of afgesloten.
 
-1. Als u wilt controleren of het proces niet wordt uitgevoerd, opent u ```OBRecoveryServicesManagementAgent``` **taak beheer**en voert u de opdracht uit.
+1. Als u wilt controleren of het proces niet wordt uitgevoerd, opent u **taak beheer**en controleert u of ```OBRecoveryServicesManagementAgent``` wordt uitgevoerd.
 
 2. Als het proces niet wordt uitgevoerd, opent u het **configuratie scherm**en bladert u naar de lijst met Services. **Microsoft Azure Recovery Services beheer agent**te starten of opnieuw te starten.
 
     Ga voor meer informatie naar de logboeken in:<br/>
-   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`Bijvoorbeeld:<br/>
+   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` bijvoorbeeld:<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * [Windows Server of Windows-client herstellen vanuit Azure](backup-azure-restore-windows-server.md)
 * Zie [Azure backup Overview](backup-introduction-to-azure-backup.md) (Engelstalig) voor meer informatie over Azure backup
 * Ga naar het [Azure Backup forum](https://go.microsoft.com/fwlink/p/?LinkId=290933)

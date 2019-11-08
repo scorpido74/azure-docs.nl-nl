@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: raynew
-ms.openlocfilehash: 90b1250009e6efdb2f8cb9351fe270c8324cc77a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: e752d52d0f792d39f417031c26d923fce07ccdf8
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715482"
+ms.locfileid: "73747992"
 ---
 # <a name="azure-migrate-support-matrix"></a>Ondersteunings matrix Azure Migrate
 
@@ -51,7 +51,7 @@ Migratie van Azure Migrate server | N.v.t. | Migreer [VMware-vm's](tutorial-migr
 [Cohuur technologie](https://go.microsoft.com/fwlink/?linkid=2084928) | Evalueer en migreer VMware-Vm's, Hyper-V-Vm's, fysieke servers, open bare Cloud werkbelastingen. |  Migreer VMware-Vm's, virtuele Hyper-V-machines, fysieke servers, open bare Cloud werkbelastingen.
 [Apparaat 42](https://go.microsoft.com/fwlink/?linkid=2097158) | Evalueer virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers, werk belastingen voor de open bare Cloud.| N.v.t.
 [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | On-premises SQL Server data bases evalueren. | N.v.t.
-[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | Migrate SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. | N.v.t.
+[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | N.v.t. | Migrate SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Virtual Desktop Infrastructure (VDI) evalueren | N.v.t.
 [Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | Bewaak virtuele VMWare-machines, Hyper-V-Vm's, xen-Vm's, fysieke machines, werk stations (inclusief VDI), open bare Cloud werkbelastingen | N.v.t.
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | N.v.t. | Virtuele VMWare-machines migreren, virtuele Hyper-V-machines, xen-Vm's, KVM-Vm's, fysieke machines, open bare Cloud werkbelastingen 

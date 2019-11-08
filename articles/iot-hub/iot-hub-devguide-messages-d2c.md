@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: e4f1797d600a226eb152a464efe4da8ddbdb6207
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: HT
+ms.openlocfilehash: ff50d972ad9590fb70dbcf67e21f8b5dc8c32fad
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606227"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748054"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub bericht routering gebruiken om apparaat-naar-Cloud-berichten te verzenden naar verschillende eind punten
 
@@ -57,7 +57,7 @@ IoT Hub batch berichten en schrijft gegevens naar de opslag wanneer de batch een
 
 U kunt elke bestands naam Conventie gebruiken, maar u moet alle vermelde tokens gebruiken. IoT Hub wordt naar een lege BLOB geschreven als er geen gegevens zijn om te schrijven.
 
-We raden u aan om de opslag containers in te schrijven en vervolgens te herhalen, om ervoor te zorgen dat alle containers worden gelezen zonder dat er veronderstellingen worden gemaakt van de partitie. Het partitie bereik kan mogelijk worden gewijzigd tijdens een door [micro soft geïnitieerde failover](iot-hub-ha-dr.md#microsoft-initiated-failover) of IOT hub [hand matige failover](iot-hub-ha-dr.md#manual-failover). U kunt de [List blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruiken om de lijst met blobs op te sommen. Raadpleeg het volgende voor beeld als richt lijn.
+We raden u aan om de blobs of bestanden te vermelden en vervolgens te herhalen, om ervoor te zorgen dat alle blobs of bestanden worden gelezen zonder dat er veronderstellingen worden gemaakt van de partitie. Het partitie bereik kan mogelijk worden gewijzigd tijdens een door [micro soft geïnitieerde failover](iot-hub-ha-dr.md#microsoft-initiated-failover) of IOT hub [hand matige failover](iot-hub-ha-dr.md#manual-failover). U kunt de [List blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruiken om de lijst met blobs of de [lijst ADLS Gen2-API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) voor de lijst met bestanden op te sommen. Raadpleeg het volgende voor beeld als richt lijn.
 
 ```csharp
 public void ListBlobsInContainer(string containerName, string iothub)

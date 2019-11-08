@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 8270d17d998b27a067eb91a517a7c5fdfd23becd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f6f3a4be21eee6a9e07a4ae11a530dd9dd50c81c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101854"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749159"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Een virtuele Windows-machine coderen in azure
 In dit artikel worden verschillende manieren beschreven om een virtuele Windows-machine in azure te coderen via het Resource Manager-implementatie model. Tags zijn door de gebruiker gedefinieerde sleutel/waarde-paren die rechtstreeks kunnen worden geplaatst op een resource of resource groep. Azure ondersteunt momenteel Maxi maal 15 Tags per resource en resource groep. Labels kunnen worden geplaatst op een resource op het moment dat ze worden gemaakt of worden toegevoegd aan een bestaande resource. Tags worden alleen ondersteund voor resources die zijn gemaakt via het Resource Manager-implementatie model. Als u een virtuele Linux-machine wilt labelen, raadpleegt [u een virtuele Linux-machine in azure labelen](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -29,9 +29,9 @@ In dit artikel worden verschillende manieren beschreven om een virtuele Windows-
 ## <a name="tagging-with-powershell"></a>Labelen met Power shell
 Als u tags wilt maken, toevoegen en verwijderen via Power shell, moet u eerst uw [Power shell-omgeving instellen met Azure Resource Manager][PowerShell environment with Azure Resource Manager]. Nadat u de installatie hebt voltooid, kunt u tags plaatsen op compute-, netwerk-en opslag resources tijdens het maken of nadat de resource is gemaakt via Power shell. Dit artikel richt zich op het weer geven/bewerken van tags die op Virtual Machines zijn geplaatst.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
-Ga eerst naar een virtuele machine via de `Get-AzVM` cmdlet.
+Ga eerst naar een virtuele machine via de cmdlet `Get-AzVM`.
 
         PS C:\> Get-AzVM -ResourceGroupName "MyResourceGroup" -Name "MyTestVM"
 
@@ -44,9 +44,9 @@ Als uw virtuele machine al Tags bevat, ziet u alle tags in uw resource:
                 "Environment": "Production"
                }
 
-Als u tags wilt toevoegen via Power shell, kunt u de `Set-AzResource` opdracht gebruiken. Opmerking bij het bijwerken van Tags via Power shell worden Tags bijgewerkt als geheel. Als u bijvoorbeeld één tag toevoegt aan een resource die al Tags heeft, moet u alle labels opnemen die u op de resource wilt plaatsen. Hieronder ziet u een voor beeld van het toevoegen van extra tags aan een resource via Power shell-cmdlets.
+Als u tags wilt toevoegen via Power shell, kunt u de opdracht `Set-AzResource` gebruiken. Opmerking bij het bijwerken van Tags via Power shell worden Tags bijgewerkt als geheel. Als u bijvoorbeeld één tag toevoegt aan een resource die al Tags heeft, moet u alle labels opnemen die u op de resource wilt plaatsen. Hieronder ziet u een voor beeld van het toevoegen van extra tags aan een resource via Power shell-cmdlets.
 
-Met deze eerste cmdlet worden alle tags die op *MyTestVM* zijn geplaatst, ingesteld op de variabele *$Tags* , met behulp van de `Get-AzResource` -en `Tags` -eigenschap.
+Met deze eerste cmdlet worden alle labels die op *MyTestVM* zijn geplaatst, ingesteld op de variabele *$Tags* , met behulp van de eigenschap `Get-AzResource` en `Tags`.
 
         PS C:\> $tags = (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
@@ -63,7 +63,7 @@ Met de tweede opdracht worden de labels voor de opgegeven variabele weer gegeven
     Environment   Production
 ```
 
-De derde opdracht voegt een extra tag toe aan de variabele *$Tags* . Let op het gebruik van **+=** de om de nieuwe sleutel/waarde-paar toe te voegen aan de *$Tags* lijst.
+De derde opdracht voegt een extra tag toe aan de variabele *$Tags* . Let op het gebruik van de **+=** om de nieuwe sleutel/waarde-paar toe te voegen aan de lijst met *$Tags* .
 
         PS C:\> $tags += @{Location="MyLocation"}
 
@@ -85,7 +85,7 @@ Met de vijfde opdracht worden alle labels op de resource weer gegeven. Zoals u z
     Location      MyLocation
 ```
 
-Raadpleeg de [Azure resource][Azure Resource Cmdlets]-cmdlets voor meer informatie over het coderen via Power shell.
+Raadpleeg de [Azure resource-cmdlets][Azure Resource Cmdlets]voor meer informatie over het coderen via Power shell.
 
 [!INCLUDE [virtual-machines-common-tag-usage](../../../includes/virtual-machines-common-tag-usage.md)]
 

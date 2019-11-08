@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: bf964f23b6c38444fb15b61161cb7ed5a2b15e00
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 01d5670add82291cb91264ab41fcd312a338840c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102662"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749323"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>IaaS-resources van klassiek naar Azure Resource Manager migreren met behulp van Azure PowerShell
 In deze stappen ziet u hoe u Azure PowerShell-opdrachten kunt gebruiken om IaaS-resources (Infrastructure as a Service) te migreren van het klassieke implementatie model naar het Azure Resource Manager-implementatie model.
@@ -35,9 +35,9 @@ Hier volgt een stroom diagram om de volg orde te bepalen waarin de stappen moete
 
 ![Schermafbeelding van de migratiestappen](media/migration-classic-resource-manager/migration-flow.png)
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
-## <a name="step-1-plan-for-migration"></a>Stap 1: Plan voor migratie
+## <a name="step-1-plan-for-migration"></a>Stap 1: plan voor migratie
 Hier volgen enkele aanbevolen procedures voor het evalueren van de migratie van IaaS-resources van klassiek naar Resource Manager:
 
 * Lees de [ondersteunde en niet-ondersteunde functies en configuraties](migration-classic-resource-manager-overview.md). Als u virtuele machines hebt die niet-ondersteunde configuraties of functies gebruiken, raden wij u aan te wachten tot de ondersteuning van de configuratie/functie wordt aangekondigd. U kunt ook, als deze aan uw behoeften voldoet, deze functie verwijderen of de configuratie verplaatsen om de migratie mogelijk te maken.
@@ -49,7 +49,7 @@ Hier volgen enkele aanbevolen procedures voor het evalueren van de migratie van 
 >ExpressRoute gateways die verbinding maken met ExpressRoute-circuits in een ander abonnement, kunnen niet automatisch worden gemigreerd. In dergelijke gevallen verwijdert u de ExpressRoute-gateway, migreert u het virtuele netwerk en maakt u de gateway opnieuw. Zie [ExpressRoute-circuits en gekoppelde virtuele netwerken van het klassieke naar het Resource Manager-implementatie model migreren](../../expressroute/expressroute-migration-classic-resource-manager.md) voor meer informatie.
 
 ## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>Stap 2: Installeer de nieuwste versie van Azure PowerShell
-Er zijn twee belang rijke opties voor het installeren van Azure PowerShell: Installatie programma van [PowerShell Gallery](https://www.powershellgallery.com/profiles/azure-sdk/) of [Web platform (WebPI)](https://aka.ms/webpi-azps). WebPI ontvangt maandelijkse updates. PowerShell Gallery updates doorlopend worden ontvangen. Dit artikel is gebaseerd op Azure PowerShell versie 2.1.0.
+Er zijn twee belang rijke opties voor het installeren van Azure PowerShell: [PowerShell Gallery](https://www.powershellgallery.com/profiles/azure-sdk/) of [Web platform Installer (WebPI)](https://aka.ms/webpi-azps). WebPI ontvangt maandelijkse updates. PowerShell Gallery updates doorlopend worden ontvangen. Dit artikel is gebaseerd op Azure PowerShell versie 2.1.0.
 
 Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor installatie-instructies.
 
@@ -64,7 +64,7 @@ Als u deze migratie wilt uitvoeren, moet u worden toegevoegd als een mede beheer
 
 Als u geen mede beheerder kunt toevoegen, neemt u contact op met een service beheerder of mede beheerder voor het abonnement om aan de slag te gaan.   
 
-## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>Stap 4: Uw abonnement instellen en registreren voor migratie
+## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>Stap 4: uw abonnement instellen en registreren voor migratie
 Start eerst een Power shell-prompt. Voor migratie moet u uw omgeving instellen voor klassieke en Resource Manager.
 
 Meld u aan bij uw account voor het Resource Manager-model.
@@ -88,7 +88,7 @@ Stel uw Azure-abonnement in voor de huidige sessie. In dit voor beeld wordt de s
 > [!NOTE]
 > Registratie is een eenmalige stap, maar u moet het eenmaal doen voordat u de migratie uitvoert. Zonder te registreren, wordt het volgende fout bericht weer gegeven:
 >
-> *Onjuiste aanvraag Het abonnement is niet geregistreerd voor migratie.*
+> *Onjuiste aanvraag: het abonnement is niet geregistreerd voor migratie.*
 
 Meld u bij de resource provider voor migratie aan met de volgende opdracht:
 
@@ -133,7 +133,7 @@ In dit voor beeld wordt de beschik baarheid in de regio **VS-West** gecontroleer
 Get-AzVMUsage -Location "West US"
 ```
 
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Stap 6: Opdrachten uitvoeren voor het migreren van uw IaaS-resources
+## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Stap 6: opdrachten uitvoeren voor het migreren van uw IaaS-resources
 * [Vm's migreren in een Cloud service (niet in een virtueel netwerk)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
 * [Vm's migreren in een virtueel netwerk](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
 * [Opslag account migreren](#step-62-migrate-a-storage-account)
@@ -142,7 +142,7 @@ Get-AzVMUsage -Location "West US"
 > Alle bewerkingen die hier worden beschreven, zijn idempotent. Als er een ander probleem is dan een niet-ondersteunde functie of een configuratie fout, raden wij u aan de bewerking voor voorbereiden, afbreken of door voeren opnieuw uit. Het platform voert vervolgens de actie opnieuw uit.
 
 
-### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Stap 6,1: Optie 1: virtuele machines migreren in een Cloud service (niet in een virtueel netwerk)
+### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Stap 6,1: optie 1-virtuele machines in een Cloud service migreren (niet in een virtueel netwerk)
 Bekijk de lijst met Cloud Services met behulp van de volgende opdracht en kies vervolgens de Cloud service die u wilt migreren. Als de virtuele machines in de Cloud service zich in een virtueel netwerk bevinden of als ze beschikken over web-of werk rollen, retourneert de opdracht een fout bericht.
 
 ```powershell
@@ -201,7 +201,7 @@ Bereid de virtuele machines in de Cloud service voor op migratie. U kunt kiezen 
         -VirtualNetworkName $vnetName -SubnetName $subnetName
     ```
 
-Nadat de voor bereiding is voltooid met een van de voor gaande opties, doorzoekt u de migratie status van de Vm's. Zorg ervoor dat deze zich in `Prepared` de staat bevinden.
+Nadat de voor bereiding is voltooid met een van de voor gaande opties, doorzoekt u de migratie status van de Vm's. Zorg ervoor dat deze zich in de `Prepared` status bevinden.
 
 In dit voor beeld wordt de naam van de virtuele machine ingesteld op **myVM**. Vervang de voorbeeld naam door de naam van uw eigen virtuele machine.
 
@@ -223,7 +223,7 @@ Als de voor bereide configuratie goed lijkt, kunt u de resources door lopen en d
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Stap 6,1: Optie 2: virtuele machines in een virtueel netwerk migreren
+### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Stap 6,1: optie 2-virtuele machines in een virtueel netwerk migreren
 
 Als u virtuele machines in een virtueel netwerk wilt migreren, migreert u het virtuele netwerk. De virtuele machines worden automatisch gemigreerd met het virtuele netwerk. Kies het virtuele netwerk dat u wilt migreren.
 > [!NOTE]
@@ -231,7 +231,7 @@ Als u virtuele machines in een virtueel netwerk wilt migreren, migreert u het vi
 <br>
 
 > [!NOTE]
-> De naam van het virtuele netwerk kan afwijken van wat er in de nieuwe portal wordt weer gegeven. In de nieuwe Azure-portal wordt de `[vnet-name]` naam weer gegeven, maar de werkelijke naam van `Group [resource-group-name] [vnet-name]`het virtuele netwerk is van het type. Voordat u de migratie uitvoert, moet u de werkelijke naam van het `Get-AzureVnetSite | Select -Property Name` virtuele netwerk opzoeken met de opdracht of weer geven in de oude Azure-Portal. 
+> De naam van het virtuele netwerk kan afwijken van wat er in de nieuwe portal wordt weer gegeven. In de nieuwe Azure-portal wordt de naam weer gegeven als `[vnet-name]`, maar de werkelijke naam van het virtuele netwerk is van het type `Group [resource-group-name] [vnet-name]`. Voordat u de migratie uitvoert, moet u de werkelijke naam van het virtuele netwerk opzoeken met behulp van de opdracht `Get-AzureVnetSite | Select -Property Name` of weer geven in de oude Azure-Portal. 
 
 In dit voor beeld wordt de naam van het virtuele netwerk ingesteld op **myVnet**. Vervang het voor beeld van een virtueel netwerk door uw eigen naam.
 
