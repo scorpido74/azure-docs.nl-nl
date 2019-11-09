@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 9724e54b03e5de065b8b39cb57c6a9880cf37cc6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e9ef939d46a02b8aa6b0b7f481fec9e30edf53fc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827197"
+ms.locfileid: "73839193"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Een elastische-taakagent maken met behulp van PowerShell
 
@@ -72,7 +72,7 @@ Voor het maken van een Elastic Jobs-agent is een database (S0 of hoger) vereist 
 
 *In het onderstaande script maakt u een nieuwe resource groep, server en Data Base voor gebruik als de taak database. In het onderstaande script wordt ook een tweede server met twee lege data bases gemaakt om taken uit te voeren.*
 
-Elastic Jobs heeft geen specifieke naamgevingsvereisten, zodat u elke naamgevingsconventie kunt gebruiken die u wilt, zolang deze maar voldoet aan de [Azure-vereisten](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+Elastic Jobs heeft geen specifieke naamgevingsvereisten, zodat u elke naamgevingsconventie kunt gebruiken die u wilt, zolang deze maar voldoet aan de [Azure-vereisten](/azure/architecture/best-practices/resource-naming).
 
 ```powershell
 # Sign in to your Azure account

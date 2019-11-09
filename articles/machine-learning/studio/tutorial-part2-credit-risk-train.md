@@ -1,6 +1,6 @@
 ---
 title: 'Zelf studie 2: Credit risico modellen trainen'
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Een gedetailleerde zelf studie waarin wordt getoond hoe u een predictive analytics oplossing kunt maken voor een beoordeling van een credit risico in de klassieke versie van Azure Machine Learning Studio. Deze zelfstudie is deel twee van een driedelige reeks. Ze laat zien hoe u modellen moet trainen en evalueren.
 keywords: kredietrisico, predictive analytics-oplossing, risico-evaluatie
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 375fdf9b64afcce2d521008d353949e650f9df5e
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: b3f0ebe2cad68759e7feeb7a7cc3dadbbd03ee7e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622078"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838658"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Zelf studie 2: Credit risico modellen trainen-Azure Machine Learning Studio (klassiek)
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 52394eb150a4206b7fb31cdf4b801762511e1a8c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa8acbab8179eea752607c4410851d74ae4e9444
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471370"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835860"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Zelf studie: een bestaande aangepaste DNS-naam toewijzen aan Azure App Service
 
@@ -330,13 +330,13 @@ Aan de onderkant van de pagina verwijst de virtuele hoofdmap `/` standaard naar 
 
 ![Virtuele map aanpassen](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
-Nadat de bewerking is voltooid, moet uw app de juiste pagina op het hoofdpad (bijvoorbeeld http://contoso.com)) retourneren.
+Zodra de bewerking is voltooid, moet uw app de juiste pagina op het hoofdpad (bijvoorbeeld `http://contoso.com`) retour neren.
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
 U kunt het beheer van aangepaste domeinen met scripts automatiseren met behulp van de [Azure CLI](/cli/azure/install-azure-cli) of [Azure PowerShell](/powershell/azure/overview). 
 
-### <a name="azure-cli"></a>Azure-CLI 
+### <a name="azure-cli"></a>Azure CLI 
 
 De volgende opdracht voegt een geconfigureerde aangepaste DNS-naam toe aan een App Service-app. 
 

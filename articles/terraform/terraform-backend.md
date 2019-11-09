@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: f024fd7886ec6f192c440cca6951e3aeb66ad22d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 11/07/2019
+ms.openlocfilehash: cb85897e0a7d281eca4ad3f42e8ef28c9e3fdb7b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177807"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833531"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>Zelf studie: terraform-status opslaan in Azure Storage
 
@@ -58,9 +58,9 @@ Noteer de naam van het opslag account, de container naam en de toegangs sleutel 
 De back-end van de terraform-status wordt geconfigureerd bij het uitvoeren van de `terraform init` opdracht. de volgende gegevens zijn vereist voor het configureren van de status back-end:
 
 - storage_account_name: de naam van het Azure Storage-account.
-- container_name: de naam van de BLOB-container.
+- container_name-de naam van de BLOB-container.
 - sleutel-de naam van het status archief bestand dat moet worden gemaakt.
-- access_key: de toegangs sleutel voor opslag.
+- access_key-de toegangs sleutel voor opslag.
 
 Elk van deze waarden kan worden opgegeven in het configuratie bestand van de terraform of op de opdracht regel, maar het is raadzaam om een omgevings variabele te gebruiken voor de `access_key`. Als u een omgevings variabele gebruikt, voor komt u dat de sleutel naar de schijf wordt geschreven.
 
@@ -125,4 +125,4 @@ Zie [Azure Storage-service versleuteling voor Data-at-rest](../storage/common/st
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Terraform op Azure](/azure/ansible/)
+> [Meer informatie over het gebruik van terraform in azure](/azure/terraform)

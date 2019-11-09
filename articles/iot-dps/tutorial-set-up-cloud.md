@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 41689b7596c9da350a9e0fec619e49d332a36d5b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: f2f3e56c9eb9362b8164ec611c9b305f5f994b03
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826201"
+ms.locfileid: "73833072"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Cloudresources configureren voor apparaatinrichting met de IoT Hub Device Provisioning Service
 
@@ -48,12 +48,12 @@ Volg deze stappen om een nieuwe instantie van een Device Provisioning Service te
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Naam** | Een unieke naam | -- | 
    | **Abonnement** | Uw abonnement  | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
-   | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
+   | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
    | **Locatie** | Een geldige locatie | Zie [Azure-regio's](https://azure.microsoft.com/regions/) voor informatie over regio's. |   
 
    ![Basisinformatie over Device Provisioning Service invoeren op de portal](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. Klik op **Create**. Na enkele ogenblikken wordt de Device Provisioning Service-instantie gemaakt en de **overzichtspagina** weergegeven.
+5. Klik op **Maken**. Na enkele ogenblikken wordt de Device Provisioning Service-instantie gemaakt en de **overzichtspagina** weergegeven.
 
 6. Kopieer op de **overzichtspagina** van het nieuwe service-exemplaar de waarde voor het **ID-bereik** zodat u deze later kunt gebruiken. Die waarde wordt gebruikt voor het identificeren van de registratie-id's en biedt de zekerheid dat de registratie-id uniek is.
 

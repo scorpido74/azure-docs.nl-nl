@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 8/13/2018
 ms.author: victorh
-ms.openlocfilehash: 6e85bd6ec51cff27fed6d0b2d9e73f94325e4d4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df7897e5b0941f1763f1a10e51d49827bd2ca63d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60194181"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839269"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Een Azure Firewall-testomgeving maken
 
@@ -21,20 +21,20 @@ In dit voorbeeldscript wordt een firewall en een testnetwerkomgeving gemaakt. He
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-De firewall bevindt zich in het AzureFirewallSubnet en is geconfigureerd met een toepassingsregelverzameling met één regel die toegang geeft tot www.microsoft.com.
+De firewall bevindt zich in de AzureFirewallSubnet en is geconfigureerd met een toepassings regel verzameling met één regel waarmee toegang tot `www.microsoft.com`wordt toegestaan.
 
 Er wordt een gebruikergedefinieerde route gemaakt die het netwerkverkeer vanuit het ServersSubnet door de firewall leidt, waar de firewallregels worden toegepast.
 
 U kunt het script uitvoeren vanuit de Azure [Cloud Shell](https://shell.azure.com/powershell) of vanuit een lokale installatie van PowerShell. 
 
-Als u PowerShell lokaal uitvoert, worden in dit script is de Azure PowerShell vereist. Voer `Get-Module -ListAvailable Az` uit om na te gaan welke versie er is geïnstalleerd. 
+Als u Power shell lokaal uitvoert, is voor dit script Azure PowerShell vereist. Voer `Get-Module -ListAvailable Az` uit om te zien welke versie is geïnstalleerd. 
 
 Als u moet upgraden, kunt u `PowerShellGet` gebruiken, wat in Windows 10 en Windows Server 2016 is ingebouwd.
 
 > [!NOTE]
 >Voor andere Windows-versies moet u `PowerShellGet` installeren voordat u het kunt gebruiken. U kunt `Get-Module -Name PowerShellGet -ListAvailable | Select-Object -Property Name,Version,Path` uitvoeren om te bepalen of het op uw systeem is geïnstalleerd. Als de uitvoer leeg is, moet u het nieuwste [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) installeren.
 
-Zie voor meer informatie, [Azure PowerShell installeren](/powershell/azure/install-Az-ps)
+Zie voor meer informatie [installeren Azure PowerShell](/powershell/azure/install-Az-ps)
 
 Een bestaande Azure PowerShell-installatie die met het webplatforminstallatieprogramma is uitgevoerd, conflicteert met de PowerShellGet-installatie en moet worden verwijderd.
 
@@ -61,14 +61,14 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Hiermee maakt u een subnetconfiguratie |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Hiermee maakt u een virtueel Azure-netwerk en front-end-subnet. |
 | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) | Hiermee maakt u beveiligingsregels voor verbindingen die worden toegewezen aan een netwerkbeveiligingsgroep. |
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) |Hiermee maakt u NSG-regels die bepaalde poorten tot specifieke subnetten blokkeren of toestaan. |
 | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Hiermee koppelt u NSG's aan subnetten. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres voor toegang tot de VM via internet. |
-| [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | Hiermee maakt u virtuele netwerkinterfaces en koppelt u ze aan de front-end- en back-end-subnetten van het virtuele netwerk. |
+| [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | Hiermee maakt u virtuele netwerkinterfaces en koppelt deze aan de front-end en back-end-subnetten van het virtuele netwerk. |
 | [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | Hiermee maakt u een VM-configuratie. Deze configuratie bevat informatie zoals de naam, het besturingssysteem en de beheerdersreferenties van de virtuele machine. De configuratie wordt gebruikt tijdens het maken van de virtuele machine. |
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Hiermee maakt u een virtuele machine. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep en alle daarin opgenomen resources. |

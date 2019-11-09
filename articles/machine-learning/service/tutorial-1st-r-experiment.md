@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: bcd1fff61e1612cc3361548527e5ed13affa3ba5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 9073893ebfcfea1a7f4e2a00bf82babcb8841122
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501370"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838524"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Zelf studie: uw eerste model trainen en implementeren in R met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -70,7 +70,7 @@ We raden u aan RStudio te gebruiken om deze zelf studie uit te voeren. In RStudi
 > Als u ervaring hebt met RMarkdown, kunt u de code uit dat bestand gebruiken.  Of u kunt de code fragmenten uit deze of van dit artikel kopiëren/plakken in een R-script of de opdracht regel.
 
 
-## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
+## <a name="set-up-your-development-environment"></a>Uw ontwikkelomgeving instellen
 De configuratie voor uw ontwikkel werkzaamheden in deze zelf studie bevat de volgende acties:
 
 * De vereiste pakketten installeren
@@ -167,7 +167,7 @@ Voor deze zelf studie past u een logistiek regressie model toe op uw geüploade 
 Er is een trainings script met de naam `accidents.R` voor u in dezelfde map als deze zelf studie. Let op de volgende Details **in het trainings script** dat is uitgevoerd om gebruik te maken van de Azure ml-service voor training:
 
 * Het trainings script gebruikt een argument `-d` om de map te vinden die de trainings gegevens bevat. Wanneer u later uw taak definieert en verzendt, wijst u de gegevens opslag voor dit argument aan. Azure ML koppelt de opslagmap aan het externe cluster voor de trainings taak.
-* Het trainings script registreert de uiteindelijke nauw keurigheid als een metriek voor het uitvoeren van een record in azure ML met behulp van `log_metric_to_run()`. De Azure ML SDK biedt een set logboek registratie-Api's voor het vastleggen van verschillende metrische gegevens tijdens trainings uitvoeringen. Deze metrische gegevens worden vastgelegd en bewaard in de record voor het experiment run. De metrieken kunnen op elk gewenst moment worden geopend of worden weer gegeven op de detail pagina Details in [Azure machine learning Studio](http://ml.azure.com). Zie de [Naslag informatie](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) voor de volledige set registratie methoden `log_*()`.
+* Het trainings script registreert de uiteindelijke nauw keurigheid als een metriek voor het uitvoeren van een record in azure ML met behulp van `log_metric_to_run()`. De Azure ML SDK biedt een set logboek registratie-Api's voor het vastleggen van verschillende metrische gegevens tijdens trainings uitvoeringen. Deze metrische gegevens worden vastgelegd en bewaard in de record voor het experiment run. De metrieken kunnen op elk gewenst moment worden geopend of worden weer gegeven op de detail pagina Details in [Azure machine learning Studio](https://ml.azure.com). Zie de [Naslag informatie](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) voor de volledige set registratie methoden `log_*()`.
 * Het trainings script slaat uw model op in een map met de naam **uitvoer**. De `./outputs` map ontvangt een speciale behandeling door Azure ML. Tijdens de training worden bestanden die naar `./outputs` zijn geschreven, automatisch geüpload naar het run-record door Azure ML en persistent gemaakt als artefacten. Door het getrainde model op te slaan op `./outputs`, kunt u uw model bestand openen en ophalen, zelfs nadat de uitvoering is voltooid en u geen toegang meer hebt tot uw externe trainings omgeving.
 
 ### <a name="create-an-estimator"></a>Een estimator maken

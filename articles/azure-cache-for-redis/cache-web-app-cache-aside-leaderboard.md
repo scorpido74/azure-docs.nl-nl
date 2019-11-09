@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 8ca24e8556ee53e9d12eaea8fd9eddb07ebed490
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3260bbbd858fecc8cc305a9fcab0b551fdf182dc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826396"
+ms.locfileid: "73834111"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Zelfstudie: Een cache-aside-leaderboard maken in ASP.NET
 
@@ -671,7 +671,7 @@ In deze sectie richt u een nieuwe SQL Azure-database in voor de app die moet wor
 
    | Instelling       | Voorgestelde waarde | Beschrijving |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Servernaam** | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) (Naamgevingsconventies) voor geldige servernamen. |
+   | **Servernaam** | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige servernamen. |
    | **Aanmeldgegevens van serverbeheerder** | Een geldige naam | Zie [Database-id's](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) voor geldige aanmeldingsnamen. |
    | **Wachtwoord** | Een geldig wachtwoord | Uw wachtwoord moet uit ten minste 8 tekens bestaan en moet tekens bevatten uit drie van de volgende categorieën: hoofdletters, kleine letters, cijfers en niet-alfanumerieke tekens. |
    | **Locatie** | *US - oost* | Selecteer dezelfde regio als waarin u de cache en de App Service hebt gemaakt. |
@@ -709,7 +709,7 @@ In deze stap van de zelfstudie publiceert u de toepassingsupdate in Azure om dez
 
     De volgende tabel beschrijft elke actiekoppeling in de voorbeeldtoepassing:
 
-    | Bewerking | Beschrijving |
+    | Actie | Beschrijving |
     | --- | --- |
     | Create New |Een nieuw team maken |
     | Play Season |Speel een seizoen wedstrijden, werk de teamstatistieken bij en wis eventuele verouderde teamgegevens uit de cache. |

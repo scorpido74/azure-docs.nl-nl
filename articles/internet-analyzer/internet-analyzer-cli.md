@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 3ae3c3f66ce7301023217a91cd8c79783f3ef833
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2952f7f24e92b952daafa682eee9d4605537a37b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501776"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839525"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Een Internet Analyzer-test maken met CLI (preview)
 
@@ -79,7 +79,7 @@ De Internet Analyzer CLI maakt de volgende typen resources beschikbaar:
     az internet-analyzer test create --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --endpoint-a-name "contoso" --endpoint-a-endpoint "www.contoso.com/some/path/to/trans.gif" --endpoint-b-name "microsoft" --endpoint-b-endpoint "www.microsoft.com/another/path/to/trans.gif" --name "MyFirstInternetAnalyzerTest" --enabled-state Enabled
     ```
 
-    De bovenstaande opdracht gaat ervan uit dat zowel www.contoso.com als www.microsoft.com als host fungeert voor de afbeelding van één pixel ([trans. gif](https://fpc.msedge.net/apc/trans.gif)) onder Aangepaste paden. Als een objectpad niet expliciet wordt opgegeven, gebruikt Internet Analyzer standaard `/apc/trans.gif` als het objectpad. Dit is de locatie waar de vooraf geconfigureerde eind punten de afbeelding met één pixel hosten. Houd er ook rekening mee dat het schema (https/http) niet hoeft te worden opgegeven. Internet-analyse ondersteunt alleen HTTPS-eind punten, dus HTTPS wordt aangenomen.
+    In de bovenstaande opdracht wordt ervan uitgegaan dat zowel `www.contoso.com` als `www.microsoft.com` als host fungeert voor de afbeelding van één pixel ([trans. gif](https://fpc.msedge.net/apc/trans.gif)) onder Aangepaste paden. Als een objectpad niet expliciet wordt opgegeven, gebruikt Internet Analyzer standaard `/apc/trans.gif` als het objectpad. Dit is de locatie waar de vooraf geconfigureerde eind punten de afbeelding met één pixel hosten. Houd er ook rekening mee dat het schema (https/http) niet hoeft te worden opgegeven. Internet-analyse ondersteunt alleen HTTPS-eind punten, dus HTTPS wordt aangenomen.
 
 11. De nieuwe test moet worden weer gegeven onder het profiel Internet Analyzer:
     ```azurecli-interactive

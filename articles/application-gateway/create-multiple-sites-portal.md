@@ -7,21 +7,21 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: victorh
-ms.openlocfilehash: 73a313a6244971b65ba89fb7b676610d88acabfa
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 3b6818d68b62b574e49817b574450625c231506c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498458"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833578"
 ---
-# <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Zelfstudie: Een toepassings gateway maken en configureren om meerdere websites te hosten met behulp van de Azure Portal
+# <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Zelf studie: een toepassings gateway maken en configureren om meerdere websites te hosten met behulp van de Azure Portal
 
 U kunt de Azure Portal gebruiken om [het hosten van meerdere websites te configureren](multiple-site-overview.md) wanneer u een [toepassings gateway](overview.md)maakt. In deze zelf studie definieert u back-end-adres groepen met behulp van virtuele machines. Vervolgens configureert u listeners en regels op basis van domeinen waarvan u eigenaar bent om er zeker van te zijn dat webverkeer bij de juiste servers in de pools binnenkomen. In deze zelfstudie wordt ervan uitgegaan dat u eigenaar bent van meerdere domeinen en voorbeelden gebruikt van *www.contoso.com* en *www.fabrikam.com*.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een toepassingsgateway maken
+> * Een Application Gateway maken
 > * Virtuele machines maken voor back-endservers
 > * Back-endservers maken met de back-endservers
 > * Back-endlisteners maken
@@ -36,7 +36,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Meld u aan bij Azure Portal op [https://portal.azure.com](https://portal.azure.com)
 
-## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
+## <a name="create-an-application-gateway"></a>Een Application Gateway maken
 
 1. Selecteer **Een resource maken** in het linkermenu van de Azure-portal. Het venster **Nieuw** wordt weergegeven.
 
@@ -46,32 +46,32 @@ Meld u aan bij Azure Portal op [https://portal.azure.com](https://portal.azure.c
 
 1. Voer op het tabblad **basis beginselen** deze waarden in voor de volgende instellingen voor de toepassings gateway:
 
-   - **Resourcegroep**: Selecteer **myResourceGroupAG** als de resourcegroep. Als deze nog niet bestaat, selecteert u **Nieuwe maken** om deze te maken.
-   - **Naam van de toepassings gateway**: Typ *myAppGateway* als naam voor de toepassingsgateway.
+   - **Resource groep**: Selecteer **myResourceGroupAG** voor de resource groep. Als deze nog niet bestaat, selecteert u **Nieuwe maken** om deze te maken.
+   - **Naam van de toepassings gateway**: Voer *myAppGateway* in als de naam van de toepassings gateway.
 
-     ![Nieuwe toepassings gateway maken: Basics](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+     ![Nieuwe toepassings gateway maken: basis beginselen](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
 2.  Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maakt. U kunt een nieuw virtueel netwerk maken of een bestaande gebruiken. In dit voor beeld maakt u een nieuw virtueel netwerk op het moment dat u de toepassings gateway maakt. Application Gateway exemplaren worden in afzonderlijke subnetten gemaakt. In dit voorbeeld maakt u twee subnetten: één voor de toepassingsgateway en één voor de back-endservers.
 
     Onder **virtueel netwerk configureren**selecteert u **nieuwe maken** om een nieuw virtueel netwerk te maken. In het venster **virtueel netwerk maken** dat wordt geopend, voert u de volgende waarden in om het virtuele netwerk en twee subnetten te maken:
 
-    - **Naam**: Typ *myVnet* als naam voor het virtuele netwerk.
+    - **Naam**: Voer *myVNet* in als de naam van het virtuele netwerk.
 
-    - **Subnetnaam** (Application Gateway subnet): In  het raster subnetten wordt een subnet met de naam *standaard*weer gegeven. Wijzig de naam van dit subnet in *myAGSubnet*.<br>Het subnet van de toepassingsgateway kan alleen bestaan uit toepassingsgateways. Andere resources zijn niet toegestaan.
+    - **Subnetnaam** (Application Gateway subnet): in het raster **subnetten** wordt een subnet weer gegeven met de naam *standaard*. Wijzig de naam van dit subnet in *myAGSubnet*.<br>Het subnet van de toepassingsgateway kan alleen bestaan uit toepassingsgateways. Andere resources zijn niet toegestaan.
 
-    - **Subnetnaam** (subnet van back-endserver): Voer in de tweede rij van  het raster subnetten *myBackendSubnet* in de kolom **subnet name** in.
+    - **Subnetnaam** (subnet van de back-endserver): in de tweede rij van het raster **subnetten** voert u *myBackendSubnet* in de kolom **subnet name** in.
 
-    - **Adres bereik** (subnet van back-endserver): Voer in de tweede rij van  het raster subnetten een adres bereik in dat niet overlapt met het adres bereik van *myAGSubnet*. Als het adres bereik van *myAGSubnet* bijvoorbeeld 10.0.0.0/24 is, voert u *10.0.1.0/24* in voor het adres bereik van *myBackendSubnet*.
+    - **Adres bereik** (subnet van de back-endserver): Voer in de tweede rij van het raster **subnetten** een adres bereik in dat niet overlapt met het adres bereik van *myAGSubnet*. Als het adres bereik van *myAGSubnet* bijvoorbeeld 10.0.0.0/24 is, voert u *10.0.1.0/24* in voor het adres bereik van *myBackendSubnet*.
 
     Selecteer **OK** om het venster **virtueel netwerk maken** te sluiten en de instellingen voor het virtuele netwerk op te slaan.
 
      ![Nieuwe toepassings gateway maken: virtueel netwerk](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
     
-3. Accepteer op het tabblad **basis beginselen** de standaard waarden voor de overige instellingen en selecteer **vervolgens volgende: Front-end.**
+3. Accepteer op het tabblad **basis beginselen** de standaard waarden voor de overige instellingen en selecteer vervolgens **volgende:** front-ends.
 
 ### <a name="frontends-tab"></a>Tabblad front-ends
 
-1. Controleer op  het tabblad frontends of het **frontend-IP-adres type** is ingesteld op **openbaar**. <br>U kunt de frontend-IP zo configureren dat deze openbaar of privé is volgens uw use-case. In dit voor beeld kiest u een openbaar frontend-IP.
+1. Controleer op het tabblad **frontends** of het **frontend-IP-adres type** is ingesteld op **openbaar**. <br>U kunt de frontend-IP zo configureren dat deze openbaar of privé is volgens uw use-case. In dit voor beeld kiest u een openbaar frontend-IP.
    > [!NOTE]
    > Voor de SKU van Application Gateway v2 kunt u alleen de **open bare** frontend-IP-configuratie kiezen. De persoonlijke frontend-IP-configuratie is op dit moment niet ingeschakeld voor deze v2-SKU.
 
@@ -79,7 +79,7 @@ Meld u aan bij Azure Portal op [https://portal.azure.com](https://portal.azure.c
 
      ![Nieuwe toepassings gateway maken: front-end](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
-3. Selecteer **Volgende: Back-end.**
+3. Selecteer **volgende: back-end**.
 
 ### <a name="backends-tab"></a>Tabblad back-ends
 
@@ -90,14 +90,14 @@ De back-end-groep wordt gebruikt voor het routeren van aanvragen naar de back-en
 2. In het venster **een back-Endadresgroep toevoegen** dat wordt geopend, voert u de volgende waarden in om een lege back-end-groep te maken:
 
     - **Naam**: Voer *contosoPool* in als de naam van de back-end-groep.
-    - **Back-end-groep zonder doelen toevoegen**: Selecteer **Ja** als u een back-end-groep zonder doelen wilt maken. U voegt back-endservers toe nadat u de toepassings gateway hebt gemaakt.
+    - **Back-end-pool toevoegen zonder doelen**: Selecteer **Ja** om een back-end-groep met geen doelen te maken. U voegt back-endservers toe nadat u de toepassings gateway hebt gemaakt.
 
 3. Selecteer in het venster **een back-Endadresgroep toevoegen** de optie **toevoegen** om de back-endadresgroep op te slaan en terug te keren naar het tabblad **back-end** .
 4. Voeg nu nog een back-end-groep toe met de naam *fabrikamPool*.
 
      ![Nieuwe toepassings gateway maken: back-end](./media/create-multiple-sites-portal/backend-pools.png)
 
-4. Op het tabblad **back-end** selecteert **u volgende: Configuratie**.
+4. Op het tabblad **back-end** selecteert u **volgende: Configuratie**.
 
 ### <a name="configuration-tab"></a>Tabblad Configuratie
 
@@ -113,7 +113,7 @@ Op het tabblad **configuratie** verbindt u de front-end-en back-endservers die u
     - **Frontend-IP**: Selecteer **openbaar** om het open bare IP-adres te kiezen dat u hebt gemaakt voor de front-end.
 
    Onder **aanvullende instellingen**:
-   - **Type listener**: Meerdere sites
+   - **Type listener**: meerdere sites
    - **Hostnaam**: **www.contoso.com**
 
    Accepteer de standaard waarden voor de overige instellingen op het tabblad **listener** en selecteer vervolgens het tabblad **backend-doelen** om de rest van de routerings regel te configureren.
@@ -122,14 +122,14 @@ Op het tabblad **configuratie** verbindt u de front-end-en back-endservers die u
 
 4. Op het tabblad **backend-doelen** selecteert u **ContosoPool** voor het back- **end-doel**.
 
-5. Voor de **http-instelling**selecteert u **Nieuw maken** om een nieuwe http-instelling te maken. De HTTP-instelling bepaalt het gedrag van de routerings regel. In het venster **een HTTP-instelling toevoegen** dat wordt geopend, voert u *contosoHTTPSetting* in voor de naam van de **http-instelling**. Accepteer de standaard waarden voor de overige instellingen in het venster **een HTTP-instelling toevoegen** en selecteer vervolgens **toevoegen** om terug te gaan naar het venster een regel voor het routeren van **een route ring toevoegen** . 
+5. Voor de **http-instelling**selecteert u **Nieuw maken** om een nieuwe http-instelling te maken. De HTTP-instelling bepaalt het gedrag van de routerings regel. In het venster **een HTTP-instelling toevoegen** dat wordt geopend, voert u *contosoHTTPSetting* in voor de naam van de **http-instelling**. Accepteer de standaard waarden voor de overige instellingen in het venster **een HTTP-instelling toevoegen** en selecteer vervolgens **toevoegen** om terug te gaan naar het venster een regel voor het **routeren van een route ring toevoegen** . 
 
 6. Selecteer in het venster **een routerings regel toevoegen** de optie **toevoegen** om de routerings regel op te slaan en terug te keren naar het tabblad **configuratie** .
 7. Selecteer **een regel toevoegen** en voeg een soort gelijke regel, listener, back-end en http-instelling voor fabrikam toe.
 
      ![Nieuwe toepassings gateway maken: routerings regel](./media/create-multiple-sites-portal/fabrikamRule.png)
 
-7. Selecteer **Volgende: Tags** en vervolgens **volgende: Bekijk + maken**.
+7. Selecteer **volgende: Tags** en vervolgens **volgende: controleren + maken**.
 
 ### <a name="review--create-tab"></a>Tabblad controleren en maken
 
@@ -153,13 +153,13 @@ Voor het toevoegen van back-end-doelen voert u de volgende handelingen uit:
 2. Selecteer **Compute** en selecteer vervolgens **Windows Server 2016 Data Center** in de lijst **populair** . De pagina **Een virtuele machine maken** wordt weergegeven.<br>Application Gateway kunt verkeer routeren naar elk type virtuele machine dat wordt gebruikt in de back-endadresgroep. In dit voor beeld gebruikt u een Windows Server 2016 Data Center.
 3. Voer deze waarden in op het tabblad **Basisinformatie** voor de volgende instellingen voor de virtuele machine:
 
-    - **Resourcegroep**: Selecteer **myResourceGroupAG** als naam van de resourcegroep.
+    - **Resource groep**: Selecteer **myResourceGroupAG** voor de naam van de resource groep.
     - **Naam van virtuele machine**: Voer *contosoVM* in als de naam van de virtuele machine.
-    - **Gebruikersnaam**: Typ *azureuser* als gebruikersnaam van de beheerder.
-    - **Wachtwoord**: Typ *Azure123456!* als beheerderswachtwoord.
-4. Accepteer de overige standaardwaarden en klik op **Volgende: Schijven**.  
-5. Accepteer de standaardwaarden op het tabblad **Schijven** en selecteer **Volgende: Netwerken**.
-6. Zorg ervoor dat, op het tabblad **Netwerken**, **myVNet** is geselecteerd bij **Virtueel netwerk** en dat **Subnet** is ingesteld op **myBackendSubnet**. Accepteer de overige standaardwaarden en klik op **Volgende: Beheer**.<br>Application Gateway kunt communiceren met exemplaren buiten het virtuele netwerk waarin deze zich bevindt, maar u moet ervoor zorgen dat er een IP-verbinding is.
+    - **Gebruikers**naam: Voer *azureuser* in als de gebruikernaam van de beheerder.
+    - **Wacht woord**: Voer *Azure123456!* als beheerderswachtwoord.
+4. Accepteer de andere standaard waarden en selecteer vervolgens **volgende: schijven**.  
+5. Accepteer de standaard instellingen van het tabblad **schijven** en selecteer vervolgens **volgende: netwerken**.
+6. Zorg ervoor dat, op het tabblad **Netwerken**, **myVNet** is geselecteerd bij **Virtueel netwerk** en dat **Subnet** is ingesteld op **myBackendSubnet**. Accepteer de andere standaard instellingen en selecteer vervolgens **volgende: beheer**.<br>Application Gateway kunt communiceren met exemplaren buiten het virtuele netwerk waarin deze zich bevindt, maar u moet ervoor zorgen dat er een IP-verbinding is.
 7. Op het tabblad **Beheer** stelt u **Diagnostische gegevens over opstarten** in op **Uit**. Accepteer de overige standaardwaarden en selecteer **Beoordelen en maken**.
 8. Controleer de instellingen op het tabblad **Beoordelen en maken**, corrigeer eventuele validatiefouten en selecteer vervolgens **Maken**.
 9. Wacht tot de virtuele machine is gemaakt voordat u verder gaat.
@@ -219,7 +219,7 @@ Nadat de toepassings gateway is gemaakt met het open bare IP-adres, kunt u het I
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-1. Voer uw domeinnaam in de adresbalk van de browser in. Bijvoorbeeld http://www.contoso.com.
+1. Voer uw domeinnaam in de adresbalk van de browser in. Bijvoorbeeld `http://www.contoso.com`.
 
     ![Contoso-site testen in toepassingsgateway](./media/create-multiple-sites-portal/application-gateway-iistest.png)
 

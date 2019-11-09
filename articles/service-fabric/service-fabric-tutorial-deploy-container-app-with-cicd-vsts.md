@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b686ceace3679d1541e8f1a74bca7e99b81ba932
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a2dc6aeb7dc2a62c543a58c322c23c9661c6940a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68598890"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832747"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Zelfstudie: Een containertoepassing met CI/CD implementeren in een Service Fabric-cluster
 
@@ -110,7 +110,7 @@ Klik in het dialoogvenster **Save build pipeline and queue** op **Save & queue**
 
 ![Triggers selecteren][save-and-queue]
 
-Hiermee worden ook triggers gebouwd na pushen of inchecken. Als u de voortgang van de build wilt controleren, schakelt u over naar het tabblad **Builds**.  Als u hebt gecontroleerd dat de build correct wordt uitgevoerd, definieert u een release-definitie waarmee uw toepassing in een cluster wordt geïmplementeerd.
+Hiermee worden ook triggers gebouwd na pushen of inchecken. Als u de voortgang van de build wilt controleren, gaat u naar het tabblad **builds** .  Nadat u hebt gecontroleerd of de build is uitgevoerd, definieert u een release definitie waarmee uw toepassing wordt geïmplementeerd in een cluster.
 
 ### <a name="create-a-release-definition"></a>Release-definitie maken
 
@@ -147,7 +147,7 @@ Schakel een trigger voor continue implementatie in, zodat automatisch een releas
 
 Selecteer **+Release** -> **Create a Release** -> **Create** om handmatig een release te maken. U kunt de voortgang van de release volgen op het tabblad **Releases**.
 
-Controleer of de implementatie is gelukt en de toepassing in het cluster wordt uitgevoerd.  Open een browser en ga naar [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Noteer de versie van de toepassing (in dit voorbeeld 1.0.0.20170616.3).
+Controleer of de implementatie is gelukt en de toepassing in het cluster wordt uitgevoerd.  Open een webbrowser en ga naar `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Noteer de versie van de toepassing (in dit voorbeeld 1.0.0.20170616.3).
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Wijzigingen doorvoeren en pushen, een release activeren
 
@@ -167,7 +167,7 @@ Als u de wijzigingen naar Azure DevOps pusht, wordt er automatisch een build gea
 
 Als u de voortgang van de build wilt controleren, schakelt u over naar het tabblad **Builds** in **Team Explorer** in Visual Studio.  Als u hebt gecontroleerd dat de build correct wordt uitgevoerd, definieert u een release-definitie waarmee uw toepassing in een cluster wordt geïmplementeerd.
 
-Controleer of de implementatie is gelukt en de toepassing in het cluster wordt uitgevoerd.  Open een browser en ga naar [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Noteer de versie van de toepassing (in dit voorbeeld 1.0.0.20170815.3).
+Controleer of de implementatie is gelukt en de toepassing in het cluster wordt uitgevoerd.  Open een webbrowser en ga naar `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Noteer de versie van de toepassing (in dit voorbeeld 1.0.0.20170815.3).
 
 ![Service Fabric Explorer][sfx1]
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 184c57c0d9160cedef4be417f16c52c8635a1eb4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 13411e813e96a1548b912c024f75404dd856fee1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68385285"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838958"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Zelfstudie: Een toepassing met CI/CD implementeren in een Service Fabric-cluster
 
@@ -38,7 +38,7 @@ In deze zelfstudiereeks leert u het volgende:
 > [!div class="checklist"]
 > * [Een .NET Service Fabric-toepassing bouwen](service-fabric-tutorial-create-dotnet-app.md)
 > * [De toepassing implementeren in een extern cluster](service-fabric-tutorial-deploy-app-to-party-cluster.md)
-> * [Een HTTPS-eindpunt toevoegen aan een front-endservice van ASP.NET Core](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
+> * [Een HTTPS-eindpunt toevoegen aan een front-end-service van ASP.NET Core](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * CI/CD configureren met behulp van Azure-pijplijnen
 > * [Controle en diagnostische gegevens voor de toepassing instellen](service-fabric-tutorial-monitoring-aspnet.md)
 
@@ -48,7 +48,7 @@ Voor u met deze zelfstudie begint:
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Installeer Visual Studio 2019](https://www.visualstudio.com/) en installeer de werk belasting van **Azure Development** en **ASP.net en Web Development** .
-* [Installeer de Service Fabric-SDK](service-fabric-get-started.md).
+* [Installeer de Service Fabric-SDK](service-fabric-get-started.md)
 * Maak een Windows Service Fabric-cluster in Azure, bijvoorbeeld door [deze zelfstudie te volgen](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * Maak een [Azure DevOps-organisatie](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). Hiermee kunt u een project maken in Azure DevOps en Azure Pipelines gebruiken.
 
@@ -114,7 +114,7 @@ Schakel onder **Triggers** continue integratie in door **Enable continuous integ
 
 ![Triggers selecteren][save-and-queue2]
 
-Hiermee worden ook triggers gebouwd na pushen of inchecken. Als u de voortgang van de build wilt controleren, schakelt u over naar het tabblad **Builds**.  Als u hebt gecontroleerd of de build correct wordt uitgevoerd, definieert u een release-pijplijn waarmee uw toepassing in een cluster wordt geïmplementeerd.
+Hiermee worden ook triggers gebouwd na pushen of inchecken. Als u de voortgang van de build wilt controleren, gaat u naar het tabblad **builds** .  Nadat u hebt gecontroleerd of de build is uitgevoerd, definieert u een release pijplijn die uw toepassing implementeert in een cluster.
 
 ### <a name="create-a-release-pipeline"></a>Een release-pijplijn maken
 
@@ -144,7 +144,7 @@ Schakel een trigger voor continue implementatie in, zodat automatisch een releas
 
 Selecteer **+Release** -> **Create a Release** -> **Create** om handmatig een release te maken. U kunt de voortgang van de release volgen op het tabblad **Releases**.
 
-Controleer of de implementatie is gelukt en de toepassing in het cluster wordt uitgevoerd.  Open een browser en ga naar [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Noteer de versie van de toepassing (in dit voorbeeld 1.0.0.20170616.3).
+Controleer of de implementatie is gelukt en de toepassing in het cluster wordt uitgevoerd.  Open een webbrowser en ga naar `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Noteer de versie van de toepassing (in dit voorbeeld 1.0.0.20170616.3).
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Wijzigingen doorvoeren en pushen, een release activeren
 
@@ -164,7 +164,7 @@ Als u de wijzigingen naar Azure Pipelines pusht, wordt er automatisch een build 
 
 Als u de voortgang van de build wilt controleren, schakelt u over naar het tabblad **Builds** in **Team Explorer** in Visual Studio.  Als u hebt gecontroleerd of de build correct wordt uitgevoerd, definieert u een release-pijplijn waarmee uw toepassing in een cluster wordt geïmplementeerd.
 
-Controleer of de implementatie is gelukt en de toepassing in het cluster wordt uitgevoerd.  Open een browser en ga naar [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Noteer de versie van de toepassing (in dit voorbeeld 1.0.0.20170815.3).
+Controleer of de implementatie is gelukt en de toepassing in het cluster wordt uitgevoerd.  Open een webbrowser en ga naar `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Noteer de versie van de toepassing (in dit voorbeeld 1.0.0.20170815.3).
 
 ![Service Fabric Explorer][sfx1]
 
