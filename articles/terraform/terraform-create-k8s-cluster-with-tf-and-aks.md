@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: b815776b8ff6dddf74c8aaa31a489b56751c0c73
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/07/2019
+ms.openlocfilehash: 1bfeef729bdb3f07fe2cc64cee4fd4f27c49ef67
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162341"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833610"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Zelf studie: een Kubernetes-cluster maken met de Azure Kubernetes-service met behulp van terraform
 
@@ -32,7 +32,7 @@ In deze zelf studie leert u hoe u de volgende taken kunt uitvoeren:
 
 - **Azure service-principal**: volg de aanwijzingen in de sectie **Create the service principal** (de service-principal maken) in het artikel [Create an Azure service principal with Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) (een Azure-service-principal maken met Azure CLI). Noteer de waarden voor appId, displayName, password en tenant.
 
-## <a name="create-the-directory-structure"></a>De directorystructuur maken
+## <a name="create-the-directory-structure"></a>De mapstructuur maken
 
 De eerste stap is het maken van een map voor de Terraform-configuratiebestanden voor de oefening.
 
@@ -48,13 +48,13 @@ De eerste stap is het maken van een map voor de Terraform-configuratiebestanden 
     cd clouddrive
     ```
 
-1. Maak een directory met de naam `terraform-aks-k8s`.
+1. Maak een map met de naam `terraform-aks-k8s`.
 
     ```bash
     mkdir terraform-aks-k8s
     ```
 
-1. Maak de nieuwe directory de actieve directory:
+1. Ga naar de nieuwe map:
 
     ```bash
     cd terraform-aks-k8s
@@ -82,7 +82,7 @@ Maak het Terraform-configuratiebestand waarin de Azure-provider wordt gedeclaree
     }
     ```
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 ## <a name="define-a-kubernetes-cluster"></a>Een Kubernetes-cluster definiëren
 
@@ -173,7 +173,7 @@ Maak het Terraform-configuratiebestand waarin de resources voor het Kubernetes-c
 
     Met AKS betaalt u alleen voor de werkknooppunten. Met de `agent_pool_profile` record configureert u de Details voor deze worker-knoop punten. Het `agent_pool_profile record` bevat het aantal worker-knoop punten dat moet worden gemaakt en het type worker-knoop punten. Als u het cluster in de toekomst omhoog of omlaag wilt schalen, wijzigt u de `count` waarde in deze record.
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 ## <a name="declare-the-variables"></a>De variabelen declareren
 
@@ -228,7 +228,7 @@ Maak het Terraform-configuratiebestand waarin de resources voor het Kubernetes-c
    }
     ```
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 ## <a name="create-a-terraform-output-file"></a>Een Terraform-uitvoerbestand maken
 
@@ -272,7 +272,7 @@ Met [Terraform-uitvoer](https://www.terraform.io/docs/configuration/outputs.html
     }
     ```
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 ## <a name="set-up-azure-storage-to-store-terraform-state"></a>Azure Storage instellen voor opslag van de Terraform-status
 
@@ -398,4 +398,4 @@ Toen het AKS-cluster werd gemaakt, werd controleren ingeschakeld om metrische ge
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Terraform op Azure](/azure/ansible/)
+> [Meer informatie over het gebruik van terraform in azure](/azure/terraform)

@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 0c381cc6e2e2957c946207491c666667821184ad
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3ead267ee11cba65e20f3df2fb76d9138a080bfb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176501"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850326"
 ---
 | Category | Gegevensarchief | Ondersteund als een bron | Ondersteund als een sink |
 |:--- |:--- |:--- |:--- |
@@ -18,7 +18,7 @@ ms.locfileid: "67176501"
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/v1/data-factory-azure-datalake-connector.md) |✓ |✓ |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/v1/data-factory-azure-sql-connector.md) |✓ |✓ |
 | &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/v1/data-factory-azure-sql-data-warehouse-connector.md) |✓ |✓ |
-| &nbsp; |[Azure Search-index](../articles/data-factory/v1/data-factory-azure-search-connector.md) | |✓ |
+| &nbsp; |[Azure Cognitive Search-index](../articles/data-factory/v1/data-factory-azure-search-connector.md) | |✓ |
 | &nbsp; |[Azure Table storage](../articles/data-factory/v1/data-factory-azure-table-connector.md) |✓ |✓ |
 | **Databases** |[Amazon Redshift](../articles/data-factory/v1/data-factory-amazon-redshift-connector.md) |✓ | |
 | &nbsp; |[DB2](../articles/data-factory/v1/data-factory-onprem-db2-connector.md)* |✓ | |
@@ -32,7 +32,7 @@ ms.locfileid: "67176501"
 | &nbsp; |[Teradata](../articles/data-factory/v1/data-factory-onprem-teradata-connector.md)* |✓ | |
 | **NoSQL** |[Cassandra](../articles/data-factory/v1/data-factory-onprem-cassandra-connector.md)* |✓ | |
 | &nbsp; |[MongoDB](../articles/data-factory/v1/data-factory-on-premises-mongodb-connector.md)* |✓ | |
-| **File** |[Amazon S3](../articles/data-factory/v1/data-factory-amazon-simple-storage-service-connector.md) |✓ | |
+| **Bestand** |[Amazon S3](../articles/data-factory/v1/data-factory-amazon-simple-storage-service-connector.md) |✓ | |
 | &nbsp; |[File System](../articles/data-factory/v1/data-factory-onprem-file-system-connector.md)* |✓ |✓ |
 | &nbsp; |[FTP](../articles/data-factory/v1/data-factory-ftp-connector.md) |✓ | |
 | &nbsp; |[HDFS](../articles/data-factory/v1/data-factory-hdfs-connector.md)* |✓ | |

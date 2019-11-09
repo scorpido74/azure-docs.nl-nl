@@ -1,6 +1,6 @@
 ---
 title: 'Zelf studie 1: krediet risico voors pellen'
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Een gedetailleerde zelf studie waarin wordt getoond hoe u een predictive analytics oplossing kunt maken voor een beoordeling van een credit risico in de klassieke versie van Azure Machine Learning Studio. Deze zelfstudie is deel één van een driedelige serie.  U leert een werkruimte maken, gegevens uploaden en een experiment maken.
 keywords: kredietrisico, predictive analytics-oplossing, risico-evaluatie
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 78092bd4ad4da896cd2fd36768f181764335ee85
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e8c1eea097fc3ea2704acfae198eb493943b6ccf
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619182"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838856"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Zelf studie 1: krediet risico voors pellen-Azure Machine Learning Studio (klassiek)
 

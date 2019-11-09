@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: 205cf7610bd9f86bf36fc738ced71fc8175ccdc9
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/07/2019
+ms.openlocfilehash: e2b7d816a02eaf47ef50bfd2d814f7b26a813446
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969460"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838394"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Zelf studie: een schaalset voor virtuele Azure-machines maken met behulp van terraform
 
@@ -37,7 +37,7 @@ In deze zelf studie leert u hoe u [Azure Cloud shell](/azure/cloud-shell/overvie
 
 - **Een SSH-sleutel paar maken**: Zie [een openbaar en persoonlijk SSH-sleutel paar maken en gebruiken voor Linux-vm's in azure](/azure/virtual-machines/linux/mac-create-ssh-keys)voor meer informatie.
 
-## <a name="create-the-directory-structure"></a>De directorystructuur maken
+## <a name="create-the-directory-structure"></a>De mapstructuur maken
 
 1. Blader naar [Azure Portal](https://portal.azure.com).
 
@@ -51,13 +51,13 @@ In deze zelf studie leert u hoe u [Azure Cloud shell](/azure/cloud-shell/overvie
     cd clouddrive
     ```
 
-1. Maak een directory met de naam `vmss`.
+1. Maak een map met de naam `vmss`.
 
     ```bash
     mkdir vmss
     ```
 
-1. Maak de nieuwe directory de actieve directory:
+1. Ga naar de nieuwe map:
 
     ```bash
     cd vmss
@@ -96,7 +96,7 @@ Voer de volgende stappen uit in de Azure Cloud Shell:
    }
    ```
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 ## <a name="create-the-output-definitions-file"></a>Het bestand met uitvoerdefinities maken
 In deze sectie maakt u het bestand dat de uitvoer na de implementatie beschrijft.
@@ -118,7 +118,7 @@ Voer de volgende stappen uit in de Azure Cloud Shell:
     }
    ```
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 ## <a name="define-the-network-infrastructure-in-a-template"></a>De netwerkinfrastructuur definiëren in een sjabloon
 In deze sectie maakt u de volgende netwerkinfrastructuur in een nieuwe Azure-resourcegroep:
@@ -176,7 +176,7 @@ Voer de volgende stappen uit in de Azure Cloud Shell:
    }
    ```
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 ## <a name="provision-the-network-infrastructure"></a>De netwerkinfrastructuur inrichten
 Voer de volgende stappen uit met behulp van de Azure Cloud Shell uit de map waarin u de configuratie bestanden hebt gemaakt (. tf):
@@ -377,7 +377,7 @@ Voer in Cloud Shell de volgende stappen uit:
     }
     ```
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 1. Maak een Terraform-plan om de implementatie van de virtuele-machineschaalset te visualiseren. (U moet een wachtwoord van uw keuze opgeven, evenals de locatie voor uw resources.)
 
@@ -496,7 +496,7 @@ Een SSH- *JumpBox* is een enkele server waarop u ' Jump ' kunt gebruiken om toeg
    }
    ```
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 1. Implementeer de jumpbox.
 
@@ -524,4 +524,4 @@ Het vernietigingsproces kan enkele minuten in beslag nemen.
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Terraform op Azure](/azure/ansible/)
+> [Meer informatie over het gebruik van terraform in azure](/azure/terraform)

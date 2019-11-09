@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: 209bc23c6f8e96734506e3017ed2b16e51c77a00
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/07/2019
+ms.openlocfilehash: 0bfd10325f1a62e74f0d3573f052d114069491a3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969280"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838065"
 ---
 # <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Zelf studie: infra structuur inrichten met Azure-implementatie sites met behulp van terraform
 
@@ -39,13 +39,13 @@ In dit artikel ziet u een voorbeeld van het gebruik van implementatiesites waarb
     cd clouddrive
     ```
 
-1. Maak een directory met de naam `deploy`.
+1. Maak een map met de naam `deploy`.
 
     ```bash
     mkdir deploy
     ```
 
-1. Maak een directory met de naam `swap`.
+1. Maak een map met de naam `swap`.
 
     ```bash
     mkdir swap
@@ -104,7 +104,7 @@ In dit artikel ziet u een voorbeeld van het gebruik van implementatiesites waarb
     }
     ```
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 1. Nu u het bestand hebt gemaakt, controleert u de inhoud ervan.
 
@@ -260,7 +260,7 @@ Voer de volgende stappen uit om de twee implementatie sleuven te testen:
     }
     ```
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 1. Initialiseer Terraform.
 
@@ -297,4 +297,4 @@ Na de app-wisseling ziet u de oorspronkelijke configuratie.
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Terraform op Azure](/azure/ansible/)
+> [Meer informatie over het gebruik van terraform in azure](/azure/terraform)

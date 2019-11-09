@@ -1,6 +1,6 @@
 ---
 title: "Zelf studie 3: een model voor krediet Risico's implementeren"
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Een gedetailleerde zelf studie waarin wordt getoond hoe u een predictive analytics oplossing kunt maken voor een beoordeling van een credit risico in de klassieke versie van Azure Machine Learning Studio. Deze zelfstudie is deel drie van een driedelige serie. U ontdek hierin hoe u een model implementeert als webservice.
 keywords: credit risk, predictive analytics solution,risk assessment, deploy, web service
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 0f4ee6cfebcb5edb38b1cc7a11b070dab5d2098c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 4e8e8a114a06029ef9a81d92b60afd575bc9661f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619016"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839492"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Zelf studie 3: een model voor krediet Risico's implementeren-Azure Machine Learning Studio (klassiek)
 
@@ -34,7 +34,7 @@ In [deel twee van de zelfstudie](tutorial-part2-credit-risk-train.md) hebt u mod
 In dit deel van de zelfstudie gaat u het volgende doen:
 
 > [!div class="checklist"]
-> * Implementatie voorbereiden
+> * Voorbereiden op implementatie
 > * De webservice implementeren
 > * De webservice testen
 > * De webservice beheren
@@ -44,7 +44,7 @@ In dit deel van de zelfstudie gaat u het volgende doen:
 
 Voltooi [deel twee van de zelfstudie](tutorial-part2-credit-risk-train.md).
 
-## <a name="prepare-for-deployment"></a>Implementatie voorbereiden
+## <a name="prepare-for-deployment"></a>Voorbereiden op implementatie
 Als u anderen de mogelijkheid wilt bieden om het voorspellende model te gebruiken dat u in deze zelfstudie hebt ontwikkeld, kunt u het als webservice implementeren in Azure.
 
 Tot nu hebt u geëxperimenteerd met het trainen van het model. Met de geïmplementeerde service wordt echter niet meer getraind - hij wordt gebruikt om nieuwe voorspellingen te genereren door de invoer van de gebruiker te beoordelen op basis van het model. We gaan dus nu voorbereidingen treffen om dit experiment van een ***trainingsexperiment*** om te zetten in een ***voorspellend*** experiment. 
@@ -244,7 +244,7 @@ Zie [Consume an Azure Machine Learning Web service with a web app template](/azu
 In deze zelfstudie hebt u de volgende stappen voltooid:
 
 > [!div class="checklist"]
-> * Implementatie voorbereiden
+> * Voorbereiden op implementatie
 > * De webservice implementeren
 > * De webservice testen
 > * De webservice beheren

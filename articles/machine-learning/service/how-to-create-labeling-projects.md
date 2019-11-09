@@ -7,18 +7,18 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 76f995901814c90ff9fd78585c98d56b3478e8b4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: ca3486610d6cf71ba315e407b58a2a2551ad6ee1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612759"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837489"
 ---
 # <a name="get-labels-for-data"></a>Labels voor gegevens ophalen
 
 Het labelen van grote hoeveel heden gegevens is vaak een hoofd in machine learning projecten. ML projecten met een computer vision-onderdeel, zoals afbeeldings classificatie of object detectie, vereisen doorgaans duizenden afbeeldingen en bijbehorende labels. 
  
-Azure Machine Learning Studio biedt een centrale locatie voor het maken, beheren en bewaken van label projecten. Het labelen van projecten helpt bij het coördineren van de gegevens, labels en team leden, zodat u de taken voor het label efficiënter kunt beheren. Momenteel ondersteunde taken zijn afbeeldings classificatie, ofwel meerdere labels, meerdere klassen en object-id's die gebruikmaken van begrensde vakken.
+Azure Machine Learning biedt u een centrale locatie voor het maken, beheren en bewaken van label projecten. Het labelen van projecten helpt bij het coördineren van de gegevens, labels en team leden, zodat u de taken voor het label efficiënter kunt beheren. Momenteel ondersteunde taken zijn afbeeldings classificatie, ofwel meerdere labels, meerdere klassen en object-id's die gebruikmaken van begrensde vakken.
 
 Azure traceert de voortgang en onderhoudt de wachtrij met onvolledige label taken. Labels hebben geen Azure-account nodig om deel te nemen. Als ze zijn geverifieerd met hun micro soft-account (MSA) of [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis), kunnen ze net zo veel of zo weinig labels krijgen als in hun tijd. Ze kunnen labels toewijzen en wijzigen met behulp van sneltoetsen. 
 
@@ -43,7 +43,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="create-a-labeling-project"></a>Een label project maken
 
-Labels van projecten worden beheerd vanuit [Azure machine learning Studio](https://ml.azure.com/). Op de pagina **labelen projecten** kunt u uw projecten, teams en personen beheren. Aan een project zijn een of meer teams toegewezen en aan een team zijn een of meer personen toegewezen. 
+Labels van projecten worden beheerd vanuit [Azure machine learning](https://ml.azure.com/). Op de pagina **labelen projecten** kunt u uw projecten, teams en personen beheren. Aan een project zijn een of meer teams toegewezen en aan een team zijn een of meer personen toegewezen. 
 
 Als uw gegevens al zijn opgeslagen in Azure Blob-opslag, moet u deze beschikbaar maken als een gegevens opslag voordat u het label project maakt. Zie gegevens [opslag maken en registreren](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data#create-and-register-datastores)voor meer informatie. 
 
@@ -149,7 +149,7 @@ U kunt gegevens rechtstreeks labelen op de pagina **Project Details** door **Lab
 
 U kunt op elk gewenst moment de label gegevens exporteren voor machine learning experimenten. Labels van afbeeldingen kunnen worden geëxporteerd in [Coco-indeling](http://cocodataset.org/#format-data) of als een Azure ml-gegevensset. U vindt de knop **exporteren** op de pagina **Project Details** van het label project.
 
-Het COCO-bestand wordt gemaakt in de standaard-Blob-opslag van de Azure ML-werk ruimte in een map in **export-Coco**. U kunt de geëxporteerde Azure ML-gegevensset openen via de sectie **gegevens sets** van Studio. De pagina Details van gegevensset biedt ook voorbeeld code voor toegang tot uw labels vanuit Python.
+Het COCO-bestand wordt gemaakt in de standaard-Blob-opslag van de Azure ML-werk ruimte in een map in **export-Coco**. U kunt de geëxporteerde Azure ML-gegevensset openen via de sectie **gegevens sets** van Azure machine learning. De pagina Details van gegevensset biedt ook voorbeeld code voor toegang tot uw labels vanuit Python.
 
 ![Geëxporteerde gegevensset](media/how-to-create-labeling-projects/exported-dataset.png)
 

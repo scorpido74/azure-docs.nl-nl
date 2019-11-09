@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: c010b1acbf1b8f0a05ffda05bddfd8a9145dee8d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6b0ac017704c599e96543ed36a13ff5d3ddef9fc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825433"
+ms.locfileid: "73838578"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob Storage
 
@@ -79,8 +79,8 @@ Volg deze stappen om een account voor geografisch redundante opslag met leestoeg
    | **Prestaties** | Standard | Standard is voldoende voor het voorbeeldscenario. |
    | **Replicatie**| Geografisch redundante opslag met leestoegang (RA-GRS) | Dit is nodig om het voorbeeld te laten werken. |
    |**Abonnement** | uw abonnement |Zie [Abonnementen](https://account.azure.com/Subscriptions) voor meer informatie over uw abonnementen. |
-   |**ResourceGroup** | myResourceGroup |Zie [Naming conventions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
-   |**Locatie** | US - oost | Kies een locatie. |
+   |**ResourceGroup** | myResourceGroup |Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
+   |**Locatie** | VS - oost | Kies een locatie. |
 
 ![opslagaccount maken](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 

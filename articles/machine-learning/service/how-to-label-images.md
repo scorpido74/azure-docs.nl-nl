@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: af12361ed11d0a16e5a5d0cfe5989bb3918ce154
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9cbebb905ba39dabaf905be2fa741702bd1a0088
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586395"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838944"
 ---
 # <a name="how-to-tag-images-in-a-labeling-project"></a>Afbeeldingen in een label project labelen
 
-Zodra de Project beheerder een label project heeft gemaakt in Azure Machine Learning Studio, kunt u het hulp programma labelen gebruiken om snel gegevens voor een machine learning project voor te bereiden. 
+Zodra de Project beheerder een label project heeft gemaakt in Azure Machine Learning, kunt u het hulp programma labelen gebruiken om snel gegevens voor een machine learning project voor te bereiden. 
 
 > [!div class="checklist"]
 > * Toegang krijgen tot uw etiket projecten

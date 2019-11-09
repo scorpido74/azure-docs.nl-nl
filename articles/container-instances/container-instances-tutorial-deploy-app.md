@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e14a3ba50d75161afa3325b3b7bcbfe96ea24cc3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f2890948dd15fa972104e4ef11001e83a2abd4f8
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325634"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73846586"
 ---
-# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Zelfstudie: een containertoepassing implementeren in Azure Container Instances
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Zelf studie: een container toepassing implementeren in Azure Container Instances
 
 Dit is de laatste zelfstudie in een reeks van drie. U hebt eerder in de reeks [een containerinstallatiekopie gemaakt](container-instances-tutorial-prepare-app.md) en [gepusht naar Azure Container Registry](container-instances-tutorial-prepare-acr.md). In dit artikel wordt de reeks afgerond door de container te implementeren in Azure Container Instances.
 
@@ -37,7 +37,9 @@ In deze sectie gebruikt u Azure CLI om de installatiekopie te implementeren die 
 
 ### <a name="get-registry-credentials"></a>Registerreferenties ophalen
 
-Wanneer u een installatiekopie implementeert die in een privécontainerregister wordt gehost, zoals de installatiekopie die u hebt gemaakt in de [tweede zelfstudie](container-instances-tutorial-prepare-acr.md), moet u referenties opgeven om toegang te krijgen tot het register. Zoals wordt uitgelegd in [Authenticate with Azure Container Registry from Azure Container Instances](../container-registry/container-registry-auth-aci.md) (Authenticeren bij Azure Container Registry vanuit Azure Container Instances), is het voor veel scenario's een best practice om een Azure Active Directory-service-principal te maken met *pull*-machtigingen voor het register. Raadpleeg dit artikel voor voorbeelden van scripts voor het maken van een service-principal met de vereiste machtigingen. Noteer de ID en het wachtwoord van de service-principal. U gebruikt deze referenties wanneer u de container implementeert.
+Wanneer u een installatie kopie implementeert die wordt gehost in een persoonlijk Azure-container register, zoals het bestand dat in de [tweede zelf studie](container-instances-tutorial-prepare-acr.md)is gemaakt, moet u referenties opgeven voor toegang tot het REGI ster. 
+
+Een best practice voor veel scenario's is het maken en configureren van een Azure Active Directory Service-Principal met *pull* -machtigingen voor het REGI ster. Zie [verifiëren met Azure container Registry van Azure container instances](../container-registry/container-registry-auth-aci.md) voor voorbeeld scripts om een service-principal met de benodigde machtigingen te maken. Noteer de *Service-Principal-id* en het *Service-Principal-wacht woord*. U gebruikt deze referenties om toegang te krijgen tot het REGI ster wanneer u de container implementeert.
 
 U hebt ook de volledige naam nodig van de aanmeldingsserver van het containerregister (vervang `<acrName>` door de naam van het register):
 

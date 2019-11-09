@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 8916cb0438f0005d3ff9f720cf1b5a5653eeac77
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9a226c17dd72d0dcd6403277054cf264f0094e65
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504030"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850334"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -44,7 +44,7 @@ Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configura
 Met dit voor beeld wordt het `SpeechConfig`-object gebouwd met behulp van LUIS-sleutel en-regio. Zie [SpeechConfig-klasse](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)voor een volledige lijst met beschik bare methoden.
 
 > [!NOTE]
-> Het is belang rijk dat u de LUIS-eindpunt sleutel gebruikt en niet de Starter-of Authroing-sleutels, omdat alleen de eindpunt sleutel geldig is voor spraak op intentie herkenning. Zie [een Luis-toepassing maken en een eindpunt sleutel ophalen](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) voor instructies over het ophalen van de juiste sleutel.
+> Het is belang rijk dat u de LUIS-eindpunt sleutel gebruikt en niet de Starter-of ontwerp sleutels, omdat alleen de eindpunt sleutel geldig is voor spraak op de intentie herkenning. Zie [een Luis-toepassing maken en een eindpunt sleutel ophalen](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) voor instructies over het ophalen van de juiste sleutel.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
 

@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: ac89930d55901e20759dc582d9835e99d26aac7c
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/07/2019
+ms.openlocfilehash: 080fda3077a10d0605f061aca5226783457348f9
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969435"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837528"
 ---
 # <a name="tutorial-create-azure-virtual-machine-scale-set-from-a-packer-custom-image-using-terraform"></a>Zelf studie: een schaalset voor virtuele Azure-machines maken op basis van een aangepaste installatie kopie van een pakket met terraform
 
@@ -455,4 +455,4 @@ Typ `yes` als u wordt gevraagd om het verwijderen van de resources te bevestigen
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Terraform op Azure](/azure/ansible/)
+> [Meer informatie over het gebruik van terraform in azure](/azure/terraform)
