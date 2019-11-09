@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: a662201823808c9e2e34e9210096cb081e1b9430
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: b0d2617983a7ee1702e8871a2c6bfc5f0511656f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615315"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890683"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Zelf studie: een in-Store Analytics-toepassing maken in azure IoT Central
 
@@ -75,7 +75,7 @@ Voor het maken van een nieuwe toepassing in de Store Analytics-uitchecking die g
 
 1. Als u een Azure-abonnement hebt, voert u uw *adres lijst, het Azure-abonnement en de regio*in. Als u geen abonnement hebt, kunt u een **gratis proef versie van 7 dagen** inschakelen en de vereiste contact gegevens volt ooien.  
 
-    Zie de [snelstart over het maken van een toepassing](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)voor meer informatie over directory's en abonnementen.
+    Zie de [snelstart over het maken van een toepassing](../preview/quick-deploy-iot-central.md)voor meer informatie over directory's en abonnementen.
 
 1. Selecteer **Maken**.
 
@@ -160,7 +160,7 @@ Ten tweede kunt u uw Apparaatinstellingen aanpassen door Cloud eigenschappen toe
 
 Ten derde kunt u ook de apparaatinstellingen aanpassen door aangepaste weer gaven te maken. Weer gaven bieden Opera tors voor het visualiseren van telemetriegegevens en meta gegevens voor uw apparaten, zoals metrische gegevens over apparaten en status.
 
-Hier kunt u de eerste twee methoden gebruiken om de Device-sjabloon voor uw RuuviTag-Sens oren aan te passen. Meer informatie over het maken van weer gaven voor uw Sens oren vindt [u in de Snelstartgids een gesimuleerd apparaat toevoegen aan de IOT Central-toepassing](../core/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) .
+Hier kunt u de eerste twee methoden gebruiken om de Device-sjabloon voor uw RuuviTag-Sens oren aan te passen. Meer informatie over het maken van weer gaven voor uw Sens oren vindt [u in de Snelstartgids een gesimuleerd apparaat toevoegen aan de IOT Central-toepassing](../preview/quick-create-pnp-device.md) .
 
 De ingebouwde interfaces van de sjabloon voor het RuuviTag-apparaat aanpassen:
 
@@ -227,8 +227,8 @@ Voor deze zelf studie gebruikt u de volgende set echte en gesimuleerde apparaten
 
 Volg de stappen in de volgende twee artikelen om een echte Rigado-gateway en RuuviTag Sens oren te verbinden. Wanneer u klaar bent, keert u terug naar deze zelf studie. Omdat u al Device-sjablonen in deze zelf studie hebt gemaakt, hoeft u deze niet opnieuw te maken in de volgende reeks richtingen.
 
-- Zie [verbinding maken met een Rigado Cascade 500 met uw Azure IOT Central-toepassing](../core/howto-connect-rigado-cascade-500-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)om verbinding te maken met een Rigado-gateway.
-- Zie [een RuuviTag-sensor verbinden met uw Azure IOT Central-toepassing](../core/howto-connect-ruuvi-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)om verbinding te maken met RuuviTag Sens oren. U kunt deze instructies ook gebruiken om twee gesimuleerde Sens oren te maken, indien nodig.
+- Zie [verbinding maken met een Rigado Cascade 500 met uw Azure IOT Central-toepassing](../preview/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)om verbinding te maken met een Rigado-gateway.
+- Zie [een RuuviTag-sensor verbinden met uw Azure IOT Central-toepassing](../preview/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)om verbinding te maken met RuuviTag Sens oren. U kunt deze instructies ook gebruiken om twee gesimuleerde Sens oren te maken, indien nodig.
 
 ## <a name="add-rules-and-actions"></a>Regels en acties toevoegen
 Als onderdeel van het gebruik van Sens oren in uw Azure IoT Central-toepassing om voor waarden te bewaken, kunt u regels maken voor het uitvoeren van acties wanneer aan bepaalde voor waarden wordt voldaan. Een regel is gekoppeld aan een apparaatprofiel en een of meer apparaten en bevat voor waarden waaraan moet worden voldaan op basis van telemetrie van apparaten of gebeurtenissen. Een regel heeft ook een of meer gekoppelde acties. De acties omvatten mogelijk het verzenden van e-mail meldingen of het activeren van een webhook-actie voor het verzenden van gegevens naar andere services. De toepassings sjabloon **in de Store analyse-uitchecken** bevat enkele vooraf gedefinieerde regels voor de apparaten in de toepassing.

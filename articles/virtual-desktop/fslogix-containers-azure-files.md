@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: cf4274931d83b51afb4a8ada7d1c9040ccce3c14
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7003e5b8574d2caa05bfe66e500b93db0c1cdcfa
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606835"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891641"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profielcontainers en Azure Files
 
@@ -78,7 +78,7 @@ Sinds de aanschaf is micro soft begonnen met het vervangen van bestaande gebruik
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Integratie met Azure Active Directory-domein service Azure Files
 
-De prestaties en functies van FSLogix-profiel containers profiteren van de Cloud. Op 2019 7 augustus heeft Microsoft Azure bestanden de algemene Beschik baarheid aangekondigd van [Azure files verificatie met Azure Active Directory Domain Service (AD DS)](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview). Door zowel kosten als administratieve overhead te adresseren, Azure Files met Azure AD DS-verificatie een Premium-oplossing voor gebruikers profielen in de virtueel-bureaublad service van Windows.
+De prestaties en functies van FSLogix-profiel containers profiteren van de Cloud. Op 2019 7 augustus heeft Microsoft Azure bestanden de algemene Beschik baarheid aangekondigd van [Azure files verificatie met Azure Active Directory Domain Service (AD DS)](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview). Door zowel kosten als administratieve overhead te adresseren, Azure Files met Azure AD DS-verificatie een Premium-oplossing voor gebruikers profielen in de virtueel-bureaublad service van Windows.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Aanbevolen procedures voor virtueel bureau blad van Windows
 

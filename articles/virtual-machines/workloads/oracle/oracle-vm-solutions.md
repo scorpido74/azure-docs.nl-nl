@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 4480819a08ef9a7a4ad7257f75a94c5d10a3d312
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 23e638b1d678e6ecf19c23220828185eb0e25a00
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858573"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891444"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle-VM-installatie kopieën en hun implementatie op Microsoft Azure
 
@@ -79,7 +79,7 @@ Deze mogelijkheden zijn mogelijk omdat Azure NetApp Files is gebaseerd op NetApp
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Licentie Oracle Database & software op Azure
 Microsoft Azure is een geautoriseerde cloud omgeving voor het uitvoeren van Oracle Database. De Oracle core factor Table is niet van toepassing op Oracle-data bases in de Cloud. Bij het gebruik van Vm's met Hyper-Threading-technologie die is ingeschakeld voor Enter prise Edition-data bases, telt u twee Vcpu's als gelijkwaardig aan één Oracle-processor licentie als hyperthreading is ingeschakeld (zoals vermeld in het beleids document). De details van het beleid vindt u [hier](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf).
-Oracle-data bases vereisen over het algemeen meer geheugen en IO. Daarom worden [Vm's geoptimaliseerd voor geheugen](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory) aanbevolen voor deze werk belastingen. Om uw workloads verder te optimaliseren, worden [beperkte kern vcpu's](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/constrained-vcpu) aanbevolen voor Oracle DB workloads die hoge geheugen, opslag ruimte en I/O-band breedte nodig hebben, maar geen hoog aantal kernen.
+Oracle-data bases vereisen over het algemeen meer geheugen en IO. Daarom worden [Vm's geoptimaliseerd voor geheugen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) aanbevolen voor deze werk belastingen. Om uw workloads verder te optimaliseren, worden [beperkte kern vcpu's](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) aanbevolen voor Oracle DB workloads die hoge geheugen, opslag ruimte en I/O-band breedte nodig hebben, maar geen hoog aantal kernen.
 
 Wanneer Oracle-software en-workloads van on-premises naar Microsoft Azure worden gemigreerd, biedt Oracle licentie mobiliteit zoals vermeld in de [Veelgestelde vragen over Oracle op Azure](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)
 
@@ -90,7 +90,7 @@ Oracle RAC is ontworpen om het mislukken van één knoop punt in een on-premises
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Overwegingen voor hoge Beschik baarheid en herstel na nood gevallen
 Wanneer u Oracle-data bases in azure gebruikt, bent u verantwoordelijk voor het implementeren van een oplossing voor hoge Beschik baarheid en herstel na nood gevallen om uitval tijd te voor komen. 
 
-Hoge Beschik baarheid en herstel na nood gevallen voor Oracle Database Enterprise Edition (zonder vertrouwen op Oracle RAC) kunnen worden bereikt op Azure met behulp van [Data Guard, Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html)of [Oracle Golden Gate](https://www.oracle.com/technetwork/middleware/goldengate), met twee data bases op twee afzonderlijke virtuele apparaten. Beide virtuele machines moeten zich in hetzelfde [virtuele netwerk](https://azure.microsoft.com/documentation/services/virtual-network/) bevinden om ervoor te zorgen dat ze toegang hebben tot elkaar via het permanente IP-adres van de privé.  Daarnaast is het raadzaam om de virtuele machines in dezelfde beschikbaarheidsset te plaatsen zodat Azure deze kan plaatsen in afzonderlijke fout domeinen en upgrade domeinen. Als u geo-redundantie wilt instellen, stelt u de twee data bases in voor replicatie tussen twee verschillende regio's en verbindt u de twee exemplaren met een VPN Gateway.
+Hoge Beschik baarheid en herstel na nood gevallen voor Oracle Database Enterprise Edition (zonder vertrouwen op Oracle RAC) kunnen worden bereikt op Azure met behulp van [Data Guard, Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html)of [Oracle Golden Gate](https://www.oracle.com/technetwork/middleware/goldengate), met twee data bases op twee afzonderlijke virtuele machines. Beide virtuele machines moeten zich in hetzelfde [virtuele netwerk](https://azure.microsoft.com/documentation/services/virtual-network/) bevinden om ervoor te zorgen dat ze toegang hebben tot elkaar via het permanente IP-adres van de privé.  Daarnaast is het raadzaam om de virtuele machines in dezelfde beschikbaarheidsset te plaatsen zodat Azure deze kan plaatsen in afzonderlijke fout domeinen en upgrade domeinen. Als u geo-redundantie wilt instellen, stelt u de twee data bases in voor replicatie tussen twee verschillende regio's en verbindt u de twee exemplaren met een VPN Gateway.
 
 Met de zelf studie [implementeert u Oracle Data Guard in azure](configure-oracle-dataguard.md) met behulp van de basis installatie procedure van Azure.  
 
@@ -102,7 +102,7 @@ Naast een oplossing van HA en DR in azure, moet u een back-upstrategie hebben om
 
 
 ## <a name="support-for-jd-edwards"></a>Ondersteuning voor JD Edwards
-Volgens Oracle-ondersteunings nota [doc id 2178595,1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), JD Edwards EnterpriseOne versie 9,2 en hoger, worden ondersteund in **een open bare Cloud** die `Minimum Technical Requirements` voldoet aan hun specifieke (MTR).  U moet aangepaste installatie kopieën maken die voldoen aan de MTR-specificaties voor de compatibiliteit van besturings systemen en software toepassingen. 
+Volgens Oracle-ondersteunings nota [doc ID 2178595,1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), JD Edwards EnterpriseOne versie 9,2 en hoger, worden ondersteund in **een open bare Cloud** die voldoet aan hun specifieke `Minimum Technical Requirements` (MTR).  U moet aangepaste installatie kopieën maken die voldoen aan de MTR-specificaties voor de compatibiliteit van besturings systemen en software toepassingen. 
 
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Installatie kopieën van virtuele Oracle WebLogic-Server

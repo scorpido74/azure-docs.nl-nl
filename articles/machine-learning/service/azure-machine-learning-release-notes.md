@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 08/19/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 587856be6ca1064e5d2487ba6740b51a8c645fee
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: e0709143f1beb9726fc79eb837d59d7db7cf00d7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716632"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888586"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
@@ -105,7 +105,7 @@ Raadpleeg de [pakket website](https://azure.github.io/azureml-sdk-for-r) voor vo
     + Modellen kunnen worden geregistreerd met twee nieuwe frameworks, Onnx en tensor flow. -Model registratie accepteert voorbeeld invoer gegevens, voorbeeld uitvoer gegevens en resource configuratie voor het model.
   + **azureml-automl-core**
     + Training een herhaling wordt alleen uitgevoerd in een onderliggend proces als er runtime-beperkingen worden ingesteld.
-    + Er is een guardrail toegevoegd voor prognose taken om te controleren of een opgegeven max_horizon een geheugen probleem op de opgegeven computer veroorzaakt. Als dat het geval is, wordt er een guardrail-bericht weer gegeven.
+    + Er is een guardrail toegevoegd voor prognose taken om te controleren of een opgegeven max_horizon een geheugen probleem op de desbetreffende computer veroorzaakt. Als dat het geval is, wordt er een guardrail-bericht weer gegeven.
     + Toegevoegde ondersteuning voor complexe frequenties, zoals 2 jaar en 1 maand. -Er is een begrijpelijk fout bericht toegevoegd als de frequentie niet kan worden bepaald.
     + Voeg de standaard waarden van azureml toe aan automatisch gegenereerde Conda env om het model implementatie fout op te lossen
     + Toestaan dat tussenliggende gegevens in Azure Machine Learning pijp lijn worden geconverteerd naar tabellaire gegevensset en worden gebruikt in `AutoMLStep`.
@@ -196,17 +196,17 @@ Raadpleeg de [pakket website](https://azure.github.io/azureml-sdk-for-r) voor vo
     + Kan [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset) en [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset) als invoer voor [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep), [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep)en [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyperdrivestep) in azure machine learning pijp lijn gebruiken.
     + Prestaties van FileDataset. [Mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset#mount-mount-point-none-) is verbeterd voor mappen met een groot aantal bestanden
     + De URL is toegevoegd aan bekende fout aanbevelingen in de details van de uitvoering.
-    + Er is een fout opgetreden tijdens het uitvoeren. Get _metrics waar aanvragen zouden mislukken als een uitvoering te veel onderliggende items heeft
-    + Er is een fout opgetreden tijdens het [uitvoeren. Get _metrics](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run#get-metrics-name-none--recursive-false--run-type-none--populate-false-) waar aanvragen zouden mislukken als een uitvoering te veel onderliggende items heeft
+    + Er is een fout opgetreden tijdens de uitvoering. get_metrics waar aanvragen zouden mislukken als een uitvoering te veel onderliggende items heeft
+    + Er is een fout opgetreden tijdens de [uitvoering. get_metrics](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run#get-metrics-name-none--recursive-false--run-type-none--populate-false-) waar aanvragen zouden mislukken als een uitvoering te veel onderliggende items heeft
     + Er is ondersteuning toegevoegd voor verificatie op het Arcadia-cluster.
-    + Als u een experiment object maakt, wordt het experiment in de Azure Machine Learning-werk ruimte gemaakt, zodat het bijhouden van de uitvoerings geschiedenis kan worden uitgevoerd. Het experiment-ID en de gearchiveerde tijd worden gevuld in het object experiment bij het maken. Voor beeld: experiment = experiment (werk ruimte, ' nieuw experiment ') experiment_id = experiment.id Archive () en reactivate () zijn functies die kunnen worden aangeroepen in een experiment om het experiment te verbergen en te herstellen, zodat het niet wordt weer gegeven in de UX of standaard wordt geretourneerd in een aanroep om experimenten weer te geven. Als een nieuw experiment wordt gemaakt met dezelfde naam als een gearchiveerd experiment, kunt u de naam van het gearchiveerde experiment wijzigen door een nieuwe naam door te geven. Er kan slechts één actief experiment met een bepaalde naam zijn. Voor beeld: experiment1 = experiment (werk ruimte, "actief experiment") experiment1. Archive () # nieuw actief experiment maken met dezelfde naam als de gearchiveerde. experiment2. = Experiment (werk ruimte, "actief experiment") experiment1. reactivate (new_name = "vorig actief experiment") de statische methode lijst () op het experiment kan een naam filter en een View type-filter hebben. View type-waarden zijn "ACTIVE_ONLY", "ARCHIVED_ONLY" en "alle" voor beeld: archived_experiments = experiment. List (workspace, view_type = "ARCHIVED_ONLY") all_first_experiments = experiment. List (werk ruimte, name = "eerste experiment", view_type = "ALL")
+    + Als u een experiment object maakt, wordt het experiment in de Azure Machine Learning-werk ruimte gemaakt, zodat het bijhouden van de uitvoerings geschiedenis kan worden uitgevoerd. Het experiment-ID en de gearchiveerde tijd worden gevuld in het object experiment bij het maken. Voor beeld: experiment = experiment (werk ruimte, "nieuw experiment") experiment_id = experiment.id Archive () en reactivate () zijn functies die kunnen worden aangeroepen in een experiment om het experiment te verbergen en te herstellen, zodat het niet wordt weer gegeven in de UX of standaard wordt geretourneerd in een gesprek om experimenten weer te geven. Als een nieuw experiment wordt gemaakt met dezelfde naam als een gearchiveerd experiment, kunt u de naam van het gearchiveerde experiment wijzigen door een nieuwe naam door te geven. Er kan slechts één actief experiment met een bepaalde naam zijn. Voor beeld: experiment1 = experiment (werk ruimte, "actief experiment") experiment1. Archive () # nieuw actief experiment maken met dezelfde naam als de gearchiveerde. experiment2. = Experiment (werk ruimte, "actief experiment") experiment1. reactivate (new_name = "vorig actief experiment") de lijst met statische methoden () op het experiment kan een naam filter en een View type-filter hebben. View type-waarden zijn "ACTIVE_ONLY", "ARCHIVED_ONLY" en "alle" voor beeld: archived_experiments = experiment. List (workspace, view_type = "ARCHIVED_ONLY") all_first_experiments = experiment. List (werk ruimte, naam = "eerste experiment", view_type = "ALL")
     + Ondersteuning voor het gebruik van een omgeving voor model implementatie en service-update
   + **azureml-datadrift**
-    + Het kenmerk show van de klasse DataDriftDector biedt geen ondersteuning voor het optionele argument ' with_details '. Bij het kenmerk show wordt alleen de bijdrage van de functie kolommen gegevens drift en gegevens drift weer gegeven.
-    + Het DataDriftDetector kenmerk ' get_output ' wordt gewijzigd:
-      + Invoer parameter start_time, end_time zijn optioneel in plaats van verplicht.
-      + Bij het invoeren van specifieke start_time en/of end_time met een specifieke run_id in dezelfde aanroepen treedt er een fout op in de waarde 
-      + Op basis van specifieke start_time en/of end_time worden alleen de resultaten van geplande uitvoeringen geretourneerd. 
+    + Het kenmerk show van de klasse DataDriftDector ondersteunt geen optioneel argument with_details meer. Bij het kenmerk show wordt alleen de bijdrage van de functie kolommen gegevens drift en gegevens drift weer gegeven.
+    + Gedrag van het DataDriftDetector-kenmerk ' get_output ' wordt gewijzigd:
+      + Invoer parameter start_time, end_time optioneel zijn in plaats van verplicht.
+      + De invoer van specifieke start_time en/of end_time met een specifieke run_id in dezelfde aanroepen leidt ertoe dat er een fout uitzonde ring optreedt omdat deze elkaar wederzijds uitsluiten 
+      + Als er specifieke start_time en/of end_time worden opgegeven, worden alleen de resultaten van geplande uitvoeringen geretourneerd. 
       + De para meter daily_latest_only is afgeschaft.
     + Ondersteuning bij het ophalen van op gegevensset gebaseerde gegevens-drift-uitvoer.
   + **azureml-explain-model**
@@ -241,11 +241,11 @@ Raadpleeg de [pakket website](https://azure.github.io/azureml-sdk-for-r) voor vo
         ```
     + Ondersteuning voor het gebruik van een omgeving voor model implementatie en service-update.
   + **[azureml-datadrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift)**
-    + Het kenmerk show van de klasse [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector) biedt geen ondersteuning voor het optionele argument ' with_details '. Bij het kenmerk show wordt alleen de bijdrage van de functie kolommen gegevens drift en gegevens drift weer gegeven.
-    + DataDriftDetector functie [get_output](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector#get-output-start-time--end-time--run-id-none--daily-latest-only-true-) gedrag:
-      + Invoer parameter start_time, end_time zijn optioneel in plaats van verplicht.
-      + Bij het invoeren van specifieke start_time en/of end_time met een specifieke run_id in dezelfde aanroepen treedt er een fout op in de waarde van deze eigenschap omdat deze elkaar wederzijds uitsluiten. 
-      + Op basis van specifieke start_time en/of end_time worden alleen de resultaten van geplande uitvoeringen geretourneerd. 
+    + Het kenmerk show van de klasse [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector) ondersteunt geen optioneel argument with_details meer. Bij het kenmerk show wordt alleen de bijdrage van de functie kolommen gegevens drift en gegevens drift weer gegeven.
+    + Wijzigingen in de functie DataDriftDetector [get_output](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector#get-output-start-time--end-time--run-id-none--daily-latest-only-true-) gedrag:
+      + Invoer parameter start_time, end_time optioneel zijn in plaats van verplicht.
+      + De invoer van specifieke start_time en/of end_time met een specifieke run_id in hetzelfde aanroepen leidt ertoe dat er een fout uitzonde ring optreedt omdat deze elkaar wederzijds uitsluiten. 
+      + Als er specifieke start_time en/of end_time worden opgegeven, worden alleen de resultaten van geplande uitvoeringen geretourneerd. 
       + De para meter daily_latest_only is afgeschaft.
     + Ondersteuning bij het ophalen van op gegevensset gebaseerde gegevens-drift-uitvoer.
   + **[azureml-uitleg-model](https://docs.microsoft.com/python/api/azureml-explain-model)**
@@ -304,23 +304,23 @@ Het tabblad experiment in de [nieuwe werkruimte Portal](https://ml.azure.com) is
     + Prophet toegevoegd als een trained-pijp lijn (alleen preview-versie)
     + Er is een afschaffing bericht toegevoegd voor explain_model () en retrieve_model_explanations ().
     + Prophet toegevoegd als een trained-pijp lijn (alleen preview-versie).
-    + Er is ondersteuning toegevoegd voor automatische detectie van de doel-lags, de grootte van het rollen venster en de maximale waarde. Als een van target_lags, target_rolling_window_size of max_horizon is ingesteld op ' auto ', worden de heuristiek toegepast om de waarde van de overeenkomstige para meter te schatten op basis van de opleidings gegevens.
+    + Er is ondersteuning toegevoegd voor automatische detectie van de doel-lags, de grootte van het rollen venster en de maximale waarde. Als een van target_lags, target_rolling_window_size of max_horizon is ingesteld op ' auto ', worden de heuristiek toegepast om de waarde van de overeenkomstige para meter te schatten op basis van de trainings gegevens.
     + Als er sprake is van een vaste prognose in het geval wanneer gegevensset één kolom korrel bevat, is deze korrel van een numeriek type en is er een hiaat tussen de trein-en testset
     + Het fout bericht over de gedupliceerde index in de externe uitvoering in prognose taken is opgelost
     + Als er sprake is van een vaste prognose in het geval dat de gegevensset één kolom bevat, is deze korrel van een numeriek type en is er een hiaat tussen de trein-en testset.
     + Het fout bericht over de gedupliceerde index in de externe uitvoering in prognose taken is opgelost.
     + Er is een guardrail toegevoegd om te controleren of een gegevensset niet is gebalanceerd of niet. Als dat het geval is, wordt er een guardrail-bericht naar de-console geschreven.
   + **azureml-core**
-    + De mogelijkheid om SAS-URL op te halen in het model-object wordt toegevoegd aan de opslag. Bijvoorbeeld: model. Get _sas_url ()
+    + De mogelijkheid om SAS-URL op te halen in het model-object wordt toegevoegd aan de opslag. Bijvoorbeeld: model. get_sas_url ()
     + `run.get_details()['datasets']` introduceren voor het ophalen van gegevens sets die zijn gekoppeld aan de ingediende uitvoering
     + Voeg API-`Dataset.Tabular.from_json_lines_files` toe om een TabularDataset te maken op basis van JSON-lijn bestanden. Ga voor meer informatie over deze tabellaire gegevens in JSON-regel bestanden op TabularDataset naar https://aka.ms/azureml-data voor documentatie.
     + Er zijn extra VM-grootte velden (besturingssysteem schijf, aantal Gpu's) toegevoegd aan de functie supported_vmsizes ()
     + Er zijn extra velden toegevoegd aan de functie list_nodes () om de uitvoering, het persoonlijke en het open bare IP-adres, de poort, enzovoort weer te geven.
-    + De mogelijkheid om tijdens het inrichten van het cluster een nieuw veld op te geven-remotelogin_port_public_access dat kan worden ingesteld op ingeschakeld of uitgeschakeld, afhankelijk van of u de SSH-poort open of gesloten wilt laten op het moment van het maken van het cluster. Als u deze niet opgeeft, wordt de poort slim geopend of gesloten, afhankelijk van het feit of u het cluster in een VNet implementeert.
+    + De mogelijkheid om tijdens het inrichten van het cluster een nieuw veld op te geven: remotelogin_port_public_access dat kan worden ingesteld op ingeschakeld of uitgeschakeld, afhankelijk van of u de SSH-poort open of gesloten wilt laten op het moment van het maken van het cluster. Als u deze niet opgeeft, wordt de poort slim geopend of gesloten, afhankelijk van het feit of u het cluster in een VNet implementeert.
   + **azureml-explain-model**
   + **[azureml-core](https://docs.microsoft.com/python/api/azureml-core/azureml.core)**
     + De mogelijkheid om SAS-URL op te halen in het model-object wordt toegevoegd aan de opslag. Ex: model. [get_sas_url ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model#get-sas-urls--)
-    + Voer uit om uit te voeren. [get_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29#get-details--)[' gegevens sets '] ophalen van gegevens sets die zijn gekoppeld aan de verzonden uitvoering
+    + Voer uit om uit te voeren. [get_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29#get-details--)[' gegevens sets '] ophalen van gegevens sets die zijn gekoppeld aan de ingediende uitvoering
     + Voeg API-`Dataset.Tabular`toe. [from_json_lines_files ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-json-lines-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) om een TabularDataset te maken op basis van JSON-lijn bestanden. Ga voor meer informatie over deze tabellaire gegevens in JSON-regel bestanden op TabularDataset naar https://aka.ms/azureml-data voor documentatie.
     + Er zijn extra VM-grootte velden (besturingssysteem schijf, aantal Gpu's) toegevoegd aan de functie [supported_vmsizes ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-)
     + Er zijn extra velden toegevoegd aan de functie [list_nodes ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#list-nodes--) om de uitvoering, het persoonlijke en het open bare IP-adres, de poort, enzovoort weer te geven.
@@ -343,7 +343,7 @@ Het tabblad experiment in de [nieuwe werkruimte Portal](https://ml.azure.com) is
     + [RScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.rscriptstep) toegevoegd ter ondersteuning van het uitvoeren van R-script via AML-pijp lijn.
     + Er zijn geen vaste meta data-para meters voor het parseren in [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep) die het fout bericht ' toewijzing voor para meter SubscriptionId ' heeft veroorzaakt, niet opgegeven.
   + **[azureml-Train-automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
-    + Ondersteunde training_data, validation_data, label_column_name, weight_column_name als indeling voor gegevens invoer.
+    + Ondersteunde training_data, validation_data, label_column_name, weight_column_name als invoer indeling voor gegevens.
     + Er is een afschaffing bericht toegevoegd voor [explain_model ()](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer#explain-model-fitted-model--x-train--x-test--best-run-none--features-none--y-train-none----kwargs-) en [retrieve_model_explanations ()](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer#retrieve-model-explanation-child-run-).
 
   
@@ -360,7 +360,7 @@ Het tabblad experiment in de [nieuwe werkruimte Portal](https://ml.azure.com) is
   
 + **Oplossingen en verbeteringen voor oplossingen**
   + **azureml-automl-core**
-    + De AutoML-instelling lag_length en LaggingTransformer zijn afgeschaft.
+    + De AutoML-instelling lag_length en de LaggingTransformer is afgeschaft.
     + De juiste validatie van invoer gegevens is hersteld als deze zijn opgegeven in een gegevensstroom indeling
     + De fit_pipeline. py is gewijzigd om de JSON van de grafiek te genereren en te uploaden naar artefacten. 
     + De grafiek wordt weer gegeven onder `userrun` met behulp van `Cytoscape`.
@@ -372,23 +372,23 @@ Het tabblad experiment in de [nieuwe werkruimte Portal](https://ml.azure.com) is
     + Maak `mount_point` en `target_path` optioneel voor `FileDataset.mount` en `FileDataset.download`.
     + Uitzonde ring dat de time stamp-kolom niet kan worden gevonden, wordt gegenereerd als de gerelateerde time-out van de API wordt aangeroepen zonder dat de toegewezen time stamp-kolommen worden verwijderd.
     + Tijdgebonden kolommen moeten worden toegewezen aan een kolom waarvan het type datum is, anders wordt er een uitzonde ring verwacht
-    + Time-kolommen voor het toewijzen van de API ' with_timestamp_columns ' kunnen de kolom naam voor de fijn/ruwe tijds tempel geen waarde krijgen, waardoor eerder toegewezen time stamp-kolommen worden gewist.
-    + Er wordt een uitzonde ring gegenereerd wanneer een ruwe korrel of een verfijnde time stamp-kolom wordt verwijderd met de melding dat de gebruiker die het object verwijdert, kan worden uitgevoerd na een time stamp-kolom in de lijst met uitzonde ringen, of with_time_stamp met geen waarde voor release-tijds tempel aanroepen kolommen
-    + Er wordt een uitzonde ring gegenereerd wanneer een ruwe korrel of een verfijnde time stamp-kolom niet is opgenomen in de lijst kolommen behouden, met vermelding van de gebruiker die kan worden uitgevoerd na de time stamp-kolom in de kolom lijst behouden of with_time_stamp met geen aanroepen de waarde voor het vrijgeven van Time Stamp-kolommen.
+    + Tijdgebonden kolommen voor het toewijzen van de API ' with_timestamp_columns ' kunnen geen waarde krijgen de kolom naam van de verfijnd/ruwe Time Stamp, waardoor eerder toegewezen time stamp-kolommen worden gewist.
+    + Er wordt een uitzonde ring gegenereerd wanneer een ruwe korrel of een verfijnde time stamp-kolom wordt verwijderd met de melding dat de gebruiker die het object verwijdert, kan worden uitgevoerd na een time stamp-kolom in de lijst of with_time_stamp met geen waarde voor release-time stamp kolommen
+    + Er wordt een uitzonde ring gegenereerd wanneer een ruwe korrel of een verfijnde time stamp-kolom niet is opgenomen in de lijst kolommen behouden, met vermelding van de gebruiker die kan worden uitgevoerd na de time stamp-kolom in de kolom lijst behouden of de aanroep with_time_stamp met geen de waarde voor het vrijgeven van Time Stamp-kolommen.
     + Logboek registratie toegevoegd voor de grootte van een geregistreerd model.
   + **azureml-explain-model**
     + Er is een vaste waarschuwing afgedrukt op de console wanneer het python-pakket ' Pack ' niet is geïnstalleerd: ' ouder dan de ondersteunde versie van lightgbm, een upgrade uitvoeren naar een versie die groter is dan 2.2.1 '
     + Verklaring van een vast Download model met sharding voor globale uitleg met veel functies
     + Er ontbreken voor beelden van de initialisatie van een vaste naimiteerer voor de uitvoer uitleg
     + Vast onveranderbare fout bij het instellen van eigenschappen bij het uploaden met een uitleg-client met behulp van twee verschillende typen modellen
-    + Er is een get_raw-para meter toegevoegd aan Score uitleg. uitleg (), zodat één beoordelings uitleg zowel engineered als RAW-waarden kan retour neren.
+    + Er is een get_raw para meter toegevoegd aan scoreer uitleg. Leg uit dat een beoordelings uitleg zowel de gestuurde als de onbewerkte waarden kan retour neren.
   + **azureml-train-automl**
     + Geïntroduceerde open bare Api's van AutoML voor de ondersteuning `automl` van uitleg bij het ondersteunen van AutoML-een nieuwe, door ontkoppeling AutoML parametrisatie en uitleg over SDK geïntegreerde onbewerkte uitleg basis.
     + Het verwijderen van azureml-standaard waarden van een externe trainings omgeving.
     + De standaard locatie van het cache archief is gewijzigd van file cache Store op basis van een AzureFileCacheStore voor AutoML op Azure Databricks codepad.
     + De juiste validatie van invoer gegevens is hersteld als deze zijn opgegeven in een gegevensstroom indeling
   + **azureml-train-core**
-    + Geannuleerde source_directory_data_store-afschaffing.
+    + Geannuleerd source_directory_data_store afschaffing.
     + De mogelijkheid om geïnstalleerde pakket versies van azureml te negeren is toegevoegd. 
     + Er is ondersteuning toegevoegd voor dockerfile in de para meter `environment_definition` in schattingen.
     + Vereenvoudigde gedistribueerde trainings parameters in schattingen.
@@ -443,7 +443,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + AutoML-modellen retour neren nu AutoMLExceptions
     + Met deze release worden de uitvoerings prestaties van automatische machine learning lokale uitvoeringen verbeterd.
   + **azureml-core**
-    + Maak een gegevensset. Get _all (werk ruimte), die een woorden boek retourneert van `TabularDataset` en `FileDataset` objecten worden gesleuteld op basis van de registratie naam. 
+    + Geef DataSet. get_all (werk ruimte) op die een woorden lijst van `TabularDataset` en `FileDataset` objecten retourneert op basis van hun registratie naam. 
     
     ```py 
     workspace = Workspace.from_config() 
@@ -451,14 +451,14 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     mydata = all_datasets['my-data'] 
     ```
     
-    + `parition_format` als argument voor `Dataset.Tabular.from_delimited_files` en `Dataset.Tabular.from_parquet.files`introduceren. De partitie gegevens van elk gegevenspad worden geëxtraheerd in kolommen op basis van de opgegeven indeling. {COLUMN_NAME} maakt een teken reeks kolom en ' {COLUMN_NAME: JJJJ/MM/DD/uu/mm/SS} ' maakt de kolom datetime, waarbij ' jjjj ', ' MM ', ' DD ', ' HH ', ' mm ' en ' ss ' worden gebruikt voor het ophalen van jaar, maand, dag, uur, minuut en seconde voor het type datum/tijd. De partition_format moet beginnen met de positie van de eerste partitie sleutel tot het einde van het bestandspad. Bijvoorbeeld, op basis van het pad '.. /USA/2019/01/01/data.csv ' waarbij de partitie op land en tijd staat, partition_format = '/{Country}/{PartitionDate: JJJJ/MM/DD}/data. csv ' maakt teken reeks kolom ' land ' met de waarde ' USA ' en datetime column ' PartitionDate ' met de waarde ' 2019-01-01 '.
+    + `parition_format` als argument voor `Dataset.Tabular.from_delimited_files` en `Dataset.Tabular.from_parquet.files`introduceren. De partitie gegevens van elk gegevenspad worden geëxtraheerd in kolommen op basis van de opgegeven indeling. {column_name} maakt een teken reeks kolom, en {column_name: JJJJ/MM/DD/uu/mm/SS} maakt de kolom datetime, waarbij ' jjjj ', ' MM ', ' DD ', ' HH ', ' mm ' en ' ss ' worden gebruikt voor het uitpakken van jaar, maand, dag, uur, minuut en seconde voor het type datum/tijd. Het partition_format moet beginnen met de positie van de eerste partitie sleutel tot het einde van het bestandspad. Bijvoorbeeld, op basis van het pad '.. /USA/2019/01/01/data.csv ' waarbij de partitie op land en tijd staat, partition_format = '/{Country}/{PartitionDate: JJJJ/MM/DD}/data. csv ' wordt de teken reeks kolom ' Country ' met de waarde ' USA ' en de datetime-kolom ' PartitionDate ' met de waarde ' 2019-01-01 '.
         ```py 
         workspace = Workspace.from_config() 
         all_datasets = Dataset.get_all(workspace) 
         mydata = all_datasets['my-data'] 
         ```
         
-    + `partition_format` als argument voor `Dataset.Tabular.from_delimited_files` en `Dataset.Tabular.from_parquet.files`introduceren. De partitie gegevens van elk gegevenspad worden geëxtraheerd in kolommen op basis van de opgegeven indeling. {COLUMN_NAME} maakt een teken reeks kolom en ' {COLUMN_NAME: JJJJ/MM/DD/uu/mm/SS} ' maakt de kolom datetime, waarbij ' jjjj ', ' MM ', ' DD ', ' HH ', ' mm ' en ' ss ' worden gebruikt voor het ophalen van jaar, maand, dag, uur, minuut en seconde voor het type datum/tijd. De partition_format moet beginnen met de positie van de eerste partitie sleutel tot het einde van het bestandspad. Bijvoorbeeld, op basis van het pad '.. /USA/2019/01/01/data.csv ' waarbij de partitie op land en tijd staat, partition_format = '/{Country}/{PartitionDate: JJJJ/MM/DD}/data. csv ' maakt teken reeks kolom ' land ' met de waarde ' USA ' en datetime column ' PartitionDate ' met de waarde ' 2019-01-01 '.
+    + `partition_format` als argument voor `Dataset.Tabular.from_delimited_files` en `Dataset.Tabular.from_parquet.files`introduceren. De partitie gegevens van elk gegevenspad worden geëxtraheerd in kolommen op basis van de opgegeven indeling. {column_name} maakt een teken reeks kolom, en {column_name: JJJJ/MM/DD/uu/mm/SS} maakt de kolom datetime, waarbij ' jjjj ', ' MM ', ' DD ', ' HH ', ' mm ' en ' ss ' worden gebruikt voor het uitpakken van jaar, maand, dag, uur, minuut en seconde voor het type datum/tijd. Het partition_format moet beginnen met de positie van de eerste partitie sleutel tot het einde van het bestandspad. Bijvoorbeeld, op basis van het pad '.. /USA/2019/01/01/data.csv ' waarbij de partitie op land en tijd staat, partition_format = '/{Country}/{PartitionDate: JJJJ/MM/DD}/data. csv ' wordt de teken reeks kolom ' Country ' met de waarde ' USA ' en de datetime-kolom ' PartitionDate ' met de waarde ' 2019-01-01 '.
     + `to_csv_files`-en `to_parquet_files`-methoden zijn toegevoegd aan `TabularDataset`. Met deze methoden wordt de conversie tussen een `TabularDataset` en een `FileDataset` ingeschakeld door de gegevens te converteren naar bestanden met de opgegeven indeling.
     + Automatisch aanmelden bij het REGI ster van de basis installatie kopie bij het opslaan van een Dockerfile die is gegenereerd door model. pakket ().
     + ' gpu_support ' is niet langer nodig; Nu wordt de NVIDIA docker-extensie automatisch gedetecteerd en gebruikt wanneer deze beschikbaar is. Deze wordt in een toekomstige release verwijderd.
@@ -467,9 +467,9 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Gebruikers kunnen metrische gegevens opvragen uit de uitvoerings geschiedenis op naam.
     + De logboek registratie is verbeterd door aangepaste uitzonde ringen te gebruiken in plaats van algemeen in de prognose taken.
   + **azureml-explain-model**
-    + De feature_maps-para meter is toegevoegd aan de nieuwe MimicWrapper, zodat gebruikers de onbewerkte functie verklaringen kunnen ophalen.
+    + Feature_maps para meter toegevoegd aan de nieuwe MimicWrapper, zodat gebruikers de onbewerkte functie verklaringen kunnen ophalen.
     + Gegevensset-uploads zijn nu standaard uitgeschakeld voor het uploaden van uitleg en kunnen opnieuw worden ingeschakeld met upload_datasets = True
-    + Er zijn ' is_law ' filter parameters toegevoegd aan de uitleg lijst en Download functies.
+    + De para meters voor ' is_law ' zijn toegevoegd aan de uitleg lijst en de functies worden gedownload.
     + Voegt de methode `get_raw_explanation(feature_maps)` toe aan zowel globale als lokale uitleg objecten.
     + Versie controle toegevoegd aan lightgbm met afgedrukte waarschuwing als onderstaande ondersteunde versie
     + Geoptimaliseerd geheugen gebruik bij de batch verwerking van uitleg
@@ -511,26 +511,26 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Het probleem is opgelost met de prognose taken wanneer er geen is aangetroffen in de Boole-kolommen van de invoer tabellen.
     + Sta AutoML-gebruikers toe om trainings reeksen te verwijderen die niet lang genoeg zijn bij het voors pellen. -Sta AutoML-gebruikers toe om korrels te verwijderen uit de testset die niet voor komt in de Trainingsset tijdens het maken van prognoses.
   + **azureml-core**
-    + Probleem opgelost met het rangschikken van de blob_cache_timeout-para meter.
+    + Probleem opgelost met de volg orde van blob_cache_timeout-para meters.
     + De uitzonderings typen voor externe aanpassing en trans formatie zijn toegevoegd aan systeem fouten.
     + Er is ondersteuning toegevoegd voor Key Vault geheimen voor externe uitvoeringen. Voeg een azureml. core. class kluis. klasse-kluis toe om geheimen toe te voegen, op te halen en weer te geven van de sleutel kluis die is gekoppeld aan uw werk ruimte. Ondersteunde bewerkingen zijn:
-      + azureml. core. workspace. workspace. Get _default_keyvault ()
-      + azureml. core. de sleutel kluis. _secret (naam, waarde)
-      + azureml. core. de sleutel kluis. _secrets (secrets_dict)
-      + azureml. core. de sleutel kluis. de sleutel kluis. Get _secret (naam)
-      + azureml. core. de sleutel kluis. de sleutel kluis. Get _secrets (secrets_list)
+      + azureml. core. workspace. workspace. get_default_keyvault ()
+      + azureml. core. de sleutel kluis. sleutel kluis. set_secret (naam, waarde)
+      + azureml. core. de sleutel kluis. de sleutel kluis. set_secrets (secrets_dict)
+      + azureml. core. de sleutel kluis. sleutel kluis. get_secret (naam)
+      + azureml. core. de sleutel kluis. de sleutel kluis. get_secrets (secrets_list)
       + azureml. core. de sleutel kluis. de sleutel kluis. list_secrets ()
     + Aanvullende methoden voor het verkrijgen van de standaard-sleutel kluis en het ophalen van geheimen tijdens externe uitvoering:
-      + azureml. core. workspace. workspace. Get _default_keyvault ()
-      + azureml. core. run. run. Get _secret (naam)
-      + azureml. core. run. run. Get _secrets (secrets_list)
+      + azureml. core. workspace. workspace. get_default_keyvault ()
+      + azureml. core. run. run. get_secret (naam)
+      + azureml. core. run. run. get_secrets (secrets_list)
     + Er zijn extra onderdrukkings parameters toegevoegd voor verzenden-Hyperdrive CLI-opdracht.
     + Verbeter de betrouw baarheid van API-aanroepen om nieuwe pogingen uit te breiden naar algemene aanvragen bibliotheek uitzonderingen.
     + Voeg ondersteuning toe voor het verzenden van uitvoeringen vanuit een ingediende uitvoering.
     + Probleem met een vast verlopen SAS-token in FileWatcher, waardoor bestanden niet meer worden geüpload nadat het oorspronkelijke token is verlopen.
     + Ondersteunde HTTP CSV/TSV-bestanden importeren in dataset python SDK.
     + De methode Workspace. Setup () is afgeschaft. Er wordt een waarschuwings bericht weer gegeven aan gebruikers met de suggesties Create () of Get ()/from_config ().
-    + Er is een omgeving toegevoegd. Voeg _private_pip_wheel () toe, waarmee het uploaden van persoonlijke aangepaste Python-pakketten `whl`naar de werk ruimte kan worden gemaakt en deze veilig kan worden gebruikt om de omgeving te bouwen/realiseren.
+    + Environment. add_private_pip_wheel () is toegevoegd, waarmee het uploaden van persoonlijke aangepaste Python-pakketten kan worden `whl`naar de werk ruimte en het veilig gebruiken van ze om de omgeving te bouwen/realiseren.
     + U kunt nu het SSL-certificaat voor het Score-eind punt dat is geïmplementeerd op het AKS-cluster bijwerken voor zowel het micro soft-certificaat dat is gegenereerd door een klant.
   + **azureml-explain-model**
     + Para meter toegevoegd om een model-ID toe te voegen aan uitleg bij het uploaden.
@@ -584,39 +584,39 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Er zijn bepaalde fout berichten voor prognose gegevens validatie meer actie mogelijk.
     + Gereduceerd geheugen gebruik van AutoML wordt uitgevoerd door gegevens sets te verwijderen en/of langzaam te laden, met name tussen het proces
   + **azureml-contrib-uitleg-model**
-    + Er is een model_task-vlag toegevoegd aan uitleg om toe te staan dat gebruikers standaard automatische interferentie logica voor model type overschrijven
+    + Er is model_task vlag toegevoegd aan uitlegers, zodat de gebruiker de standaard logica voor automatische interferentie voor het model type kan overschrijven
     + Wijzigingen in de widget: automatisch geïnstalleerd met `contrib`, geen uitleg meer `nbextension` installeren/inschakelen-ondersteuning met alleen de prioriteit van globale functies (bijvoorbeeld Permutative)
     + Wijzigingen in het dash board:-box plots en viools worden naast `beeswarm` plot op een overzichts pagina, veel sneller opnieuw weer geven van `beeswarm` teken op de schuif regelaar van de hoogste k-verschuiving-nuttig bericht waarin wordt uitgelegd hoe top-k is berekend: bruikbare, aanpas bare berichten in plaats van grafieken wanneer niet-beschik bare gegevens
   + **azureml-core**
     + De methode model. package () is toegevoegd om docker-installatie kopieën en Dockerfiles te maken waarmee modellen en hun afhankelijkheden worden ingekapseld.
     + Lokale webservices bijgewerkt om InferenceConfigs te accepteren die omgevings objecten bevatten.
     + Vast model. REGI ster () waarbij ongeldige modellen worden geproduceerd wanneer. (voor de huidige map) wordt door gegeven als de para meter model_path.
-    + Run. submit_child toevoegen, de functionaliteit weerspiegelt experiment. Submit tijdens het opgeven van de run as the parent van de ingediende onderliggende run.
-    + Ondersteuning voor configuratie opties van model. REGI ster in run. register_model.
+    + Run. submit_child toevoegen, de functionaliteit spiegelt experiment. Submit bij het opgeven van de run as the parent van de ingediende onderliggende run.
+    + Ondersteuning voor configuratie opties van model. registreren in run. register_model.
     + De mogelijkheid om JAR-taken uit te voeren op een bestaand cluster.
-    + De instance_pool_id-en cluster_log_dbfs_path-para meters worden nu ondersteund.
+    + Ondersteunt nu instance_pool_id-en cluster_log_dbfs_path-para meters.
     + Er is ondersteuning toegevoegd voor het gebruik van een omgevings object bij het implementeren van een model naar een webservice. Het omgevings object kan nu worden opgenomen als onderdeel van het InferenceConfig-object.
     + Appinsifht toewijzing toevoegen voor nieuwe regio's-centraal-westus-northcentralus
     + Documentatie toegevoegd voor alle kenmerken in alle Data Store-klassen.
-    + De blob_cache_timeout-para meter is toegevoegd aan `Datastore.register_azure_blob_container`.
-    + Save_to_directory-en load_from_directory-methoden zijn toegevoegd aan azureml. core. Environment. Environment.
+    + Blob_cache_timeout para meter toegevoegd aan `Datastore.register_azure_blob_container`.
+    + Save_to_directory-en load_from_directory-methoden toegevoegd aan azureml. core. Environment. Environment.
     + De opdrachten "AZ ml Environment down load" en "AZ ml Environment REGI ster" zijn toegevoegd aan de CLI.
-    + De methode environment. add _private_pip_wheel is toegevoegd.
+    + De methode environment. add_private_pip_wheel is toegevoegd.
   + **azureml-explain-model**
     + Het bijhouden van gegevensset is toegevoegd aan uitleg met behulp van de DataSet-service (preview).
     + De standaard Batch grootte is verminderd bij het streamen van globale uitleg van 10k tot 100.
-    + Er is een model_task-vlag toegevoegd aan uitleg om gebruikers toe te staan de standaard logica voor automatische interferentie voor het model type te negeren.
+    + Er is model_task markering toegevoegd aan uitlegers, zodat de gebruiker de standaard logica voor automatische interferentie voor het model type kan onderdrukken.
   + **azureml-mlflow**
-    + Er is een fout opgelost in mlflow. azureml. build_image waarbij geneste mappen worden genegeerd.
+    + Er is een fout opgelost in mlflow. azureml. build_image waar geneste mappen worden genegeerd.
   + **azureml-pipeline-steps**
     + De mogelijkheid om JAR-taken uit te voeren op bestaande Azure Databricks cluster is toegevoegd.
-    + Ondersteuning voor instance_pool_id-en cluster_log_dbfs_path-para meters voor DatabricksStep-stap toegevoegd.
+    + Er zijn ondersteunings instance_pool_id en cluster_log_dbfs_path-para meters voor de stap DatabricksStep toegevoegd.
     + Er is ondersteuning toegevoegd voor pijplijn parameters in de stap DatabricksStep.
   + **azureml-train-automl**
     + `docstrings` toegevoegd voor de aan ensemble gerelateerde bestanden.
     + Documenten bijgewerkt naar een meer geschikte taal voor `max_cores_per_iteration` en `max_concurrent_iterations`
     + De logboek registratie van taken op de externe uitvoering is verbeterd. de gebruiker wordt nu uitgebreid met het fout bericht weer gegeven als de uitvoering is mislukt.
-    + Get_data verwijderd uit pijplijn `automlstep` notitie blok.
+    + Get_data verwijderd uit pijp lijn `automlstep` notitie blok.
     + De ondersteuning van `dataprep` in `automlstep`is gestart.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1110"></a>Azure Machine Learning data prep SDK v 1.1.10
@@ -637,7 +637,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
 + **Oplossingen en verbeteringen voor oplossingen**
   + **automl-client-core-nativeclient**
     + De bug over verbroken-kolom typen na de trans formatie oplossen (bug gekoppeld); 
-    + Toestaan dat y_query een object type bevat aan het begin (#459519).
+    + Y_query mag een object type zijn dat geen (e) (of) bevat aan het begin (#459519).
   + **Azure-cli-ml**
     + CLI-opdrachten ' model implementeren ' en ' service-update ' accepteren nu para meters, configuratie bestanden of een combi natie van beide. Para meters hebben voor rang op kenmerken in bestanden.
     + De model beschrijving kan nu worden bijgewerkt na de registratie
@@ -645,14 +645,14 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + NimbusML-afhankelijkheid bijwerken naar 1.2.0-versie (meest recent).
     + Het toevoegen van ondersteuning voor Nimbus ML-schattingen & pijp lijnen die moeten worden gebruikt binnen AutoML-schattingen.
     + Het oplossen van een bug in de selectie procedure van de ensemble die de resulterende ensemble niet noodzakelijkerwijs groeit, zelfs als de scores constant bleven.
-    + Schakel het hergebruik van een aantal featurizations in voor de voor spellingen van taken. Dit versnelt het uitvoeren van de uitvoering van het installatie programma door een factor n_cross_validations te gebruiken voor dure featurizations zoals lags en Rolling Windows.
+    + Schakel het hergebruik van een aantal featurizations in voor de voor spellingen van taken. Dit versnelt de uitvoerings tijd van de installatie die wordt uitgevoerd door een factor n_cross_validations voor dure featurizations zoals lags en Rolling Windows.
     + Er wordt een probleem opgelost als de tijd buiten de Panda-ondersteunde tijds bereik wordt ondersteund. We veroorzaken nu een DataException als de tijd minder is dan pd. Time Stamp. min of groter dan pd. Time Stamp. Max
     + Door prognoses te maken, kunnen verschillende frequenties worden ingesteld in de trein-en test sets als deze kunnen worden uitgelijnd. Zo kan ' kwar taal vanaf januari ' en op ' kwar taal vanaf oktober ' worden uitgelijnd.
     + De eigenschap para meters is toegevoegd aan de TimeSeriesTransformer.
     + Oude uitzonderings klassen verwijderen.
-    + In prognose taken accepteert de para meter `target_lags` nu één geheel getal of een lijst met gehele getallen. Als het gehele getal is gegeven, wordt er slechts één vertraging gemaakt. Als er een lijst wordt weer gegeven, worden de unieke waarden van lags genomen. target_lags = [1, 2, 2, 4] maakt lags van één, 2 en 4 Peri Oden.
+    + In prognose taken accepteert de para meter `target_lags` nu één geheel getal of een lijst met gehele getallen. Als het gehele getal is gegeven, wordt er slechts één vertraging gemaakt. Als er een lijst wordt weer gegeven, worden de unieke waarden van lags genomen. target_lags = [1, 2, 2, 4] maakt lags van 1, 2 en 4 Peri Oden.
     + Los de fout op over het verliezen van kolom typen na de trans formatie (bug gekoppeld);
-    + In `model.forecast(X, y_query)`kunt u y_query toestaan om een object type te maken dat geen (s) bevat aan het begin (#459519).
+    + In `model.forecast(X, y_query)`kunt u y_query een object type hebben dat geen (en) bevat aan het begin (#459519).
     + verwachte waarden toevoegen aan `automl` uitvoer
   + **azureml-contrib-datadrift**
     +  Verbeteringen in het voor beeld van een notebook, inclusief de overstap naar azureml-open datasets in plaats van contrib-open datasets en prestatie verbeteringen bij het verrijken van gegevens
@@ -669,7 +669,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Er is een fout opgelost met het uploaden van de Data Store waar een lege map wordt gemaakt als `target_path` is gestart met `/`
     + Probleem met vaste `deepcopy` in ServicePrincipalAuthentication.
     + De opdrachten "AZ ml Environment show" en "AZ ml Environment List" zijn toegevoegd aan de CLI.
-    + Omgevingen bieden nu ondersteuning voor het opgeven van een base_dockerfile als een alternatief voor een al gebouwde base_image.
+    + Omgevingen bieden nu ondersteuning voor het opgeven van een base_dockerfile als alternatief voor een al gebouwd base_image.
     + De niet-gebruikte RunConfiguration-instelling auto_prepare_environment is gemarkeerd als afgeschaft.
     + De model beschrijving kan nu worden bijgewerkt na de registratie
     + Bugfix: voor het verwijderen van modellen en installatie kopieën wordt nu meer informatie geboden over het ophalen van upstream-objecten die afhankelijk zijn van het verwijderen als de verwijdering mislukt vanwege een upstream-afhankelijkheid.
@@ -686,29 +686,29 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Argument voor vaste trans formaties voor de licht gewicht uitleg van de onbewerkte functie in het contrib-uitleg-model pakket
     + scipy sparse-ondersteuning voor LimeExplainer toevoegen
     + vorm van lineaire uitleg weergave is toegevoegd, evenals een ander niveau voor de uitleg over lineaire modellen in tabel vorm
-    + voor een gesimuleerde uitleg van de uitleg model bibliotheek is een vaste fout opgetreden wanneer include_local = False voor de sparse gegevens invoer
+    + voor een gesimuleerde uitleg van de uitleg model bibliotheek is een vaste fout opgetreden wanneer include_local = False voor sparse gegevens invoer
     + verwachte waarden toevoegen aan `automl` uitvoer
     + het is belang rijk dat het probleem is opgelost door het argument van de transformaties van de functie RAW te verkrijgen
     + `batch_size` is toegevoegd om de uitleger te simuleren wanneer `include_local=False`, voor het streamen van globale toelichtingen in batches om de uitvoerings tijd van DecisionTreeExplainableModel te verbeteren
     + voor de model verklarende bibliotheek is een vast blackbox-uitleg waarbij Pandas data frame invoer vereist is voor de voor spelling
     + Er is een fout opgelost waarbij `explanation.expected_values` soms een float retourneert in plaats van een lijst met een zwevende waarde.
   + **azureml-mlflow**
-    + Verbeter de prestaties van mlflow. set _experiment (experiment_name)
-    + Fout bij het gebruik van InteractiveLoginAuthentication voor mlflow-tracking_uri oplossen
+    + Verbeter de prestaties van mlflow. set_experiment (experiment_name)
+    + Bug corrigeren in het gebruik van InteractiveLoginAuthentication voor mlflow-tracking_uri
     + Het resource gebruik van externe uitvoeringen verbeteren met behulp van azureml. mlflow.
     + De documentatie van het pakket voor de azureml-mlflow verbeteren
-    + Patch bug waarbij mlflow. log _artifacts ("my_dir") artefacten opslaat onder "my_dir/< artefact-paden >" in plaats van < artefact-paden > "
+    + Patch bug waarbij mlflow. log_artifacts (' my_dir ') artefacten opslaat onder ' my_dir/< artefact-paden > ' in plaats van ' < artefact-paden > '
   + **azureml-opendatasets**
     + Vastmaken `pyarrow` van `opendatasets` aan oude versies (< 0.14.0) vanwege geheugen problemen die hier nieuw zijn geïntroduceerd.
     +  Verplaats azureml-contrib-opendatasets naar azureml-opendatasets. -Open dataset-klassen mogen worden geregistreerd voor de AML-werk ruimte en maakt naadloos gebruik van de functies van AML-gegevensset. -Verbeter de NoaaIsdWeather-verrijkings prestaties in een niet-SPARK-versie aanzienlijk.
   + **azureml-pipeline-steps**
     + DBFS Data Store wordt nu ondersteund voor invoer en uitvoer in DatabricksStep.
     + Bijgewerkte documentatie voor Azure Batch stap met betrekking tot invoer/uitvoer.
-    + In AzureBatchStep is de standaard waarde *delete_batch_job_after_finish* gewijzigd in *True*.
+    + In AzureBatchStep is *delete_batch_job_after_finish* standaard waarde gewijzigd in *True*.
   + **azureml-telemetrie**
     +  Verplaats azureml-contrib-opendatasets naar azureml-opendatasets. -Open dataset-klassen mogen worden geregistreerd voor de AML-werk ruimte en maakt naadloos gebruik van de functies van AML-gegevensset. -Verbeter de NoaaIsdWeather-verrijkings prestaties in een niet-SPARK-versie aanzienlijk.
   + **azureml-train-automl**
-    + Bijgewerkte documentatie op get_output om het werkelijke retour type weer te geven en aanvullende notities te geven over het ophalen van de sleutel eigenschappen.
+    + Bijgewerkte documentatie over get_output om het werkelijke retour type weer te geven en aanvullende notities te geven over het ophalen van de sleutel eigenschappen.
     + NimbusML-afhankelijkheid bijwerken naar 1.2.0-versie (meest recent).
     + verwachte waarden toevoegen aan `automl` uitvoer
   + **azureml-train-core**
@@ -744,9 +744,9 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
 + **Oplossingen en verbeteringen voor oplossingen**
   + **azureml-train-automl**
     + De fout voor het verliezen van kolom typen na de trans formatie is opgelost.
-    + De bug is opgelost om y_query toe te staan een object type te maken dat geen (e) (en) bevat. 
+    + De bug is opgelost zodat y_query een object type is dat aan het begin geen (en) bevat. 
     + Het probleem is opgelost in de procedure voor het selecteren van ensembles die de resulterende ensemble niet noodzakelijkerwijs groeit, zelfs als de scores constant bleven.
-    + Het probleem met de instellingen whitelist_models en blacklist_models in AutoMLStep is opgelost.
+    + Het probleem met whitelist_models-en blacklist_models-instellingen in AutoMLStep is opgelost.
     + Het probleem is opgelost waardoor het gebruik van voor verwerking niet mogelijk is wanneer AutoML werd gebruikt in de context van Azure ML-pijp lijnen.
   + **azureml-opendatasets**
     + Azureml-contrib-opendatasets is verplaatst naar azureml-opendatasets.
@@ -767,13 +767,13 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
   + **azureml-mlflow**
     + Verbeterd resource gebruik van externe uitvoeringen die gebruikmaken van azureml. mlflow.
     + De documentatie van het pakket voor de azureml-mlflow is verbeterd.
-    + Het probleem is opgelost waarbij mlflow. log _artifacts ("my_dir") artefacten opslaat onder "my_dir/artefact-paths" in plaats van "artefact paden".
+    + Er is een probleem opgelost waarbij mlflow. log_artifacts (' my_dir ') artefacten opslaat onder ' my_dir/artifact-paths ' in plaats van ' artefact paden '.
   + **azureml-pipeline-core**
-    + De para meter hash_paths voor alle pijplijn stappen is afgeschaft en wordt in de toekomst verwijderd. Standaard wordt de inhoud van de bronmap gehasht (met uitzonde ring van bestanden die worden vermeld in. amlignore of. gitignore)
+    + De para meter hash_paths voor alle pijplijn stappen is afgeschaft en wordt in de toekomst verwijderd. Standaard wordt de inhoud van de source_directory gehasht (met uitzonde ring van bestanden die worden vermeld in. amlignore of. gitignore)
     + Verbeterde module-en ModuleStep voor het ondersteunen van berekenings type-specifieke modules, voor bereiding op RunConfiguration-integratie en andere wijzigingen om het gebruik van het gerekende type specifieke module in pijp lijnen te ontgrendelen.
   + **azureml-pipeline-steps**
     + AzureBatchStep: verbeterde documentatie met betrekking tot invoer/uitvoer.
-    + AzureBatchStep: de delete_batch_job_after_finish-standaard waarde is gewijzigd in True.
+    + AzureBatchStep: delete_batch_job_after_finish standaard waarde is gewijzigd in waar.
   + **azureml-train-core**
     + Teken reeksen worden nu geaccepteerd als Compute target voor automatische afstemming-afstemming.
     + De niet-gebruikte RunConfiguration-instelling is afgeschaft in auto_prepare_environment.
@@ -821,7 +821,7 @@ Er is een wijziging doorgegaan die de prestaties verbeterd, omdat deze problemen
 + **Preview-functies**
     + Score uitlegers kunnen nu optioneel Conda-en PIP-gegevens opslaan voor betrouwbaardere serialisatie en deserialisatie.
     + Fout oplossing voor automatische functie selectie.
-    + De mlflow. azureml. build_image is bijgewerkt naar de nieuwe API, patched bugs die worden weer gegeven door de nieuwe implementatie.
+    + Mlflow. azureml. build_image bijgewerkt naar de nieuwe API, patches die worden weer gegeven door de nieuwe implementatie.
 
 + **Oplossingen en verbeteringen voor oplossingen**
   + De `paramiko` afhankelijkheid is verwijderd uit de azureml-kern. Waarschuwingen voor afschaffing zijn toegevoegd voor verouderde methoden voor het koppelen van het doel.
@@ -853,7 +853,7 @@ Er is een wijziging doorgegaan die de prestaties verbeterd, omdat deze problemen
   + Azure Machine Learning biedt nu eersteklas ondersteuning voor populaire machine learning en gegevens analyse Framework Scikit-meer informatie. Met [`SKLearn` Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)kunnen gebruikers eenvoudig Scikit-leer modellen trainen en implementeren.
     + Meer informatie over het [uitvoeren van afstemming-afstemming met Scikit-informatie met behulp van HyperDrive](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb).
   + Er is ondersteuning toegevoegd voor het maken van ModuleStep in pijp lijnen, samen met module-en ModuleVersion-klassen voor het beheren van herbruikbare reken eenheden.
-  + ACI webservices bieden nu ondersteuning voor permanente scoring_uri via updates. De scoring_uri wordt gewijzigd van IP in FQDN. Het DNS-naam label voor FQDN kan worden geconfigureerd door de dns_name_label in deploy_configuration in te stellen. 
+  + ACI webservices ondersteunen nu permanente scoring_uri via updates. De scoring_uri wordt gewijzigd van IP naar FQDN. Het DNS-naam label voor FQDN kan worden geconfigureerd door de dns_name_label op deploy_configuration in te stellen. 
   + Automatische machine learning nieuwe functies:
     + STL featurizer voor prognose
     + KMeans-Clustering is ingeschakeld voor het opruimen van functies
@@ -871,11 +871,11 @@ Er is een wijziging doorgegaan die de prestaties verbeterd, omdat deze problemen
   + De cache is toegevoegd in ServicePrincipalAuthentication, is standaard uitgeschakeld.
   + Logboek registratie inschakelen voor meerdere grafieken onder dezelfde metrische naam.
   + Model klasse kan nu goed worden overdraagbaar vanuit azureml. core (`from azureml.core import Model`).
-  + In pijplijn stappen is de para meter `hash_path` nu afgeschaft. Het nieuwe gedrag is om een hash te volt ooien, met uitzonde ring van bestanden die worden vermeld in. amlignore of. gitignore.
+  + In pijplijn stappen is de para meter `hash_path` nu afgeschaft. Het nieuwe gedrag is om een hash te volt ooien source_directory, behalve bestanden die worden vermeld in. amlignore of. gitignore.
   + In pijplijn pakketten zijn verschillende `get_all`-en `get_all_*`-methoden vervangen door respectievelijk `list` en `list_*`.
-  + azureml. core. Get _run vereist niet langer dat klassen worden geïmporteerd voordat het oorspronkelijke run-type wordt geretourneerd.
+  + azureml. core. get_run vereist niet langer dat klassen worden geïmporteerd voordat het oorspronkelijke run-type wordt geretourneerd.
   + Er is een probleem opgelost waarbij een aantal aanroepen naar de update voor de WebService geen update heeft geactiveerd.
-  + Een score-time-out op AKS webservices moet tussen 5ms en 300000ms zijn. Het Maxi maal toegestane aantal scoring_timeout_ms voor Score aanvragen is van 1 min naar 5 minuten.
+  + Een score-time-out op AKS webservices moet tussen 5ms en 300000ms zijn. Maxi maal toegestane scoring_timeout_ms voor Score aanvragen is van 1 min tot 5 minuten gedalend.
   + LocalWebservice-objecten hebben nu `scoring_uri`-en `swagger_uri`-Eigenschappen.
   + Tijdens het maken van de uitvoer van de map en uitvoer van de Directory wordt het gebruikers proces niet meer verzonden. De SDK voor de uitvoerings geschiedenis is ingeschakeld om in elk gebruikers proces te worden uitgevoerd. Hiermee worden enkele synchronisatie problemen opgelost die zijn ondervonden door gedistribueerde trainings uitvoeringen.
   + De naam van het azureml-logboek dat is geschreven van de naam van het gebruikers proces bevat nu de naam van het proces (alleen voor gedistribueerde trainingen) en de PID.
@@ -915,7 +915,7 @@ Er is een wijziging doorgegaan die de prestaties verbeterd, omdat deze problemen
 ### <a name="azure-machine-learning-data-prep-sdk-v113"></a>Azure Machine Learning data prep SDK v 1.1.3
 
 + **Nieuwe functies**
-  + Er is ondersteuning toegevoegd om te lezen uit een PostgresSQL-data base, door het aanroepen van read_postgresql of het gebruik van een gegevens opslag.
+  + Er is ondersteuning toegevoegd om te lezen uit een PostgresSQL-data base, door read_postgresql aan te roepen of door gebruik te maken van een gegevens opslag.
     + Voor beelden bekijken in hand leidingen:
       + [Notitie blok voor gegevens opname](https://aka.ms/aml-data-prep-ingestion-nb)
       + [Data Store-notebook](https://aka.ms/aml-data-prep-datastore-nb)
@@ -1067,15 +1067,15 @@ Opmerking: de python-SDK voor gegevens voorbereiding wordt niet meer `numpy` en 
 ### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Azure Machine Learning data prep SDK v 1.1.1
 
 + **Nieuwe functies**
-  + U kunt meerdere Data Store-DataPath/DataReference-bronnen lezen met behulp van read_ * trans formats.
+  + U kunt meerdere Data Store-DataPath/DataReference-bronnen lezen met read_ *-trans formaties.
   + U kunt de volgende bewerkingen uitvoeren op kolommen om een nieuwe kolom te maken: divisie, vloer, modulo, macht, lengte.
   + Data prep maakt nu deel uit van de Azure ML Diagnostics Suite en registreert standaard diagnostische gegevens.
     + Als u deze optie wilt uitschakelen, stelt u deze omgevings variabele in op True: DISABLE_DPREP_LOGGER
 
 + **Oplossingen en verbeteringen voor oplossingen**
   + Verbeterde code documentatie voor veelgebruikte klassen en functies.
-  + Er is een fout opgelost in auto_read_file die geen Excel-bestanden kan lezen.
-  + De optie is toegevoegd om de map te overschrijven in read_pandas_dataframe.
+  + Er is een fout opgelost in auto_read_file die Excel-bestanden niet kan lezen.
+  + De optie is toegevoegd om de map in read_pandas_dataframe te overschrijven.
   + Verbeterde prestaties van de installatie van dotnetcore2 dependency en toegevoegde ondersteuning voor Fedora 27/28 en Ubuntu 1804.
   + Verbeterde prestaties van het lezen van Azure-blobs.
   + Detectie van kolom type ondersteunt nu kolommen van het type Long.
@@ -1142,7 +1142,7 @@ Opmerking: de python-SDK voor gegevens voorbereiding wordt niet meer `numpy` en 
   + Met de functie voor het toevoegen van Azure Machine Learning pijp lijnen wordt een pijplijn uitvoering geactiveerd op basis van wijzigingen in het gegevens archief. Het [notitie blok](https://aka.ms/pl-schedule) voor de pijp lijn planning is bijgewerkt om deze functie te presen teren.
 
 + **Oplossingen en verbeteringen voor oplossingen**
-  + Er is ondersteuning toegevoegd Azure Machine Learning pijp lijnen voor het instellen van de eigenschap source_directory_data_store op een gewenste gegevens opslag (zoals een Blob-opslag) op [RunConfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) die worden geleverd aan de [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). In de volgende stappen wordt gebruikgemaakt van Azure File Store als back-upgegevens opslag, wat kan leiden tot beperking van problemen wanneer een groot aantal stappen gelijktijdig wordt uitgevoerd.
+  + Er is ondersteuning toegevoegd Azure Machine Learning pijp lijnen voor het instellen van de source_directory_data_store eigenschap op een gewenste gegevens opslag (zoals een Blob-opslag) op [RunConfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) die worden geleverd aan de [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). In de volgende stappen wordt gebruikgemaakt van Azure File Store als back-upgegevens opslag, wat kan leiden tot beperking van problemen wanneer een groot aantal stappen gelijktijdig wordt uitgevoerd.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -1303,7 +1303,7 @@ Azure Machine Learning Compute kan worden gemaakt in Python, met behulp van Azur
 + **Oplossingen voor oplossingen**
   * Het meest recente AML-uitvoerings token gebruiken bij het lezen van en schrijven naar gegevens opslag op externe uitvoeringen. Als het AML-uitvoerings token is bijgewerkt in Python, wordt de data prep-runtime echter niet bijgewerkt met het bijgewerkte token voor de AML-uitvoering.
   * Meer duidelijkere fout berichten
-  * to_spark_dataframe () zal niet langer vastlopen wanneer Spark `Kryo`-serialisatie gebruikt
+  * to_spark_dataframe () zal niet langer vastlopen wanneer Spark `Kryo` serialisatie gebruikt
   * De teller van het aantal waarden kan nu meer dan 1000 unieke waarden bevatten
   * Willekeurige Split mislukt langer als de oorspronkelijke gegevensstroom beschikt niet over een naam  
 
@@ -1337,7 +1337,7 @@ Azure Machine Learning Compute kan worden gemaakt in Python, met behulp van Azur
 
 + **Wijzigingen afbreken** 
   * de naam ruimte van *azureml. Train. widgets* is verplaatst naar *azureml. widgets*.
-  * *azureml. core. compute. AmlCompute* reafschaffing de volgende klassen: *azureml. core. compute. BatchAICompute* en *azureml. core. compute. DSVMCompute*. De laatste klasse wordt in volgende releases verwijderd. De klasse AmlCompute heeft nu een eenvoudige definitie en heeft alleen een vm_size en het max_nodes nodig. het cluster wordt automatisch geschaald van 0 naar de max_nodes wanneer een taak wordt verzonden. Onze [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) zijn bijgewerkt met deze gegevens en u krijgt voor beelden van gebruik te geven. We hopen dat u deze vereenvoudiging en veel meer leuke functies in een latere versie kunt vinden.
+  * *azureml. core. compute. AmlCompute* reafschaffing de volgende klassen: *azureml. core. compute. BatchAICompute* en *azureml. core. compute. DSVMCompute*. De laatste klasse wordt in volgende releases verwijderd. De klasse AmlCompute heeft nu een eenvoudige definitie en heeft alleen een vm_size en de max_nodes nodig. het cluster wordt automatisch geschaald van 0 naar het max_nodes wanneer een taak wordt verzonden. Onze [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) zijn bijgewerkt met deze gegevens en u krijgt voor beelden van gebruik te geven. We hopen dat u deze vereenvoudiging en veel meer leuke functies in een latere versie kunt vinden.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Azure Machine Learning data prep SDK v 0.5.1 
 
@@ -1345,7 +1345,7 @@ Lees voor meer informatie over de SDK voor gegevens voorbereiding door [referent
 + **Nieuwe functies**
    * Er is een nieuwe DataPrep-CLI gemaakt om DataPrep-pakketten uit te voeren en het gegevens profiel voor een gegevensset of gegevensstroom weer te geven
    * De SetColumnType-API is opnieuw ontworpen om de bruikbaarheid te verbeteren
-   * De naam van smart_read_file is gewijzigd in auto_read_file
+   * De naam van smart_read_file gewijzigd in auto_read_file
    * Bevat nu scheefheid en kurtosis in het gegevens profiel
    * Kan voor beeld met stratified-steek proeven
    * Kan lezen uit zip-bestanden die CSV-bestanden bevatten
@@ -1377,9 +1377,9 @@ De Azure Portal voor Azure Machine Learning heeft de volgende updates:
 ### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Azure Machine Learning SDK voor python v-0.1.74
 
 + **Wijzigingen afbreken** 
-  * \* Werk ruimte. compute_targets, gegevens opslag, experimenten, afbeeldingen, modellen en *webservices* zijn eigenschappen in plaats van methoden. Vervang bijvoorbeeld *Workspace. compute_targets ()* door *Workspace. compute_targets*.
-  * *Run. Get _context* afschaffs *Run. Get _submitted_run*. De laatste methode wordt in volgende releases verwijderd.
-  * *PipelineData* -klasse verwacht nu een Data Store-object als een para meter in plaats van datastore_name. Op dezelfde manier accepteert de *pijp lijn* default_datastore in plaats van default_datastore_name.
+  * \* Werk ruimte. compute_targets, gegevens opslag, experimenten, installatie kopieën, modellen en *webservices* zijn eigenschappen in plaats van methoden. Vervang bijvoorbeeld *Workspace. compute_targets ()* door *Workspace. compute_targets*.
+  * *Run. get_context* afschaffs *Run. get_submitted_run*. De laatste methode wordt in volgende releases verwijderd.
+  * *PipelineData* -klasse verwacht nu een Data Store-object als para meter in plaats van datastore_name. Op dezelfde manier accepteert de *pijp lijn* default_datastore in plaats van default_datastore_name.
 
 + **Nieuwe functies**
   * In het [voorbeeld notitieblok](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-mpi-batch-prediction.ipynb) voor Azure machine learning pijp lijnen worden nu mpi-stappen gebruikt.
@@ -1427,7 +1427,7 @@ De Azure Portal voor Azure Machine Learning heeft de volgende updates:
 Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs en tijdelijke oplossingen.
 
 + **Wijzigingen afbreken**
-  * Werk ruimte. experimenten, werk ruimte. modellen, werk ruimte. compute_targets, werk ruimte. images, werk ruimte. Web _services retour Dictionary, eerder geretourneerde lijst. Zie de documentatie van [azureml. core. workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API.
+  * Werk ruimte. experimenten, werk ruimte. modellen, werk ruimte. compute_targets, werk ruimte. afbeeldingen, werk ruimte. web_services retour woordenboek, eerder geretourneerde lijst. Zie de documentatie van [azureml. core. workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API.
 
   * Automatische Machine Learning verwijderde, genormaliseerde gemiddelde kwadraat fout van de primaire meet waarden.
 
@@ -1456,11 +1456,11 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
   * Fout bij het oplossen van een probleem in MAC OS.
   * Down sampling macro gemiddelde PR/ROC-curve in aangepast validatie scenario.
   * De extra index logica is verwijderd.
-  * Filter verwijderd van get_output-API.
+  * Filter verwijderd uit get_output-API.
 
 + **Pijplijnen**
   * Een methode pijplijn. publish () is toegevoegd om een pijp lijn rechtstreeks te publiceren, zonder eerst een uitvoering uit te voeren.   
-  * Er is een methode PipelineRun. Get _pipeline_runs () toegevoegd voor het ophalen van de pijplijn uitvoeringen die zijn gegenereerd vanuit een gepubliceerde pijp lijn.
+  * Er is een methode PipelineRun. get_pipeline_runs () toegevoegd voor het ophalen van de pijplijn uitvoeringen die zijn gegenereerd op basis van een gepubliceerde pijp lijn.
 
 + **Project brainwave**
   * Bijgewerkte ondersteuning voor nieuwe AI-modellen die beschikbaar zijn op Fpga's.

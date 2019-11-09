@@ -9,23 +9,23 @@ ms.author: robreed
 ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e655e286c3aebe28bcb09c8723516c2ff52ad20e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6c29015e2fd327d74183d5fbbd6214152507e517
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850358"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886770"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation typen runbook
 
 Azure Automation ondersteunt diverse typen runbooks die kort worden beschreven in de volgende tabel.  In de volgende secties vindt u meer informatie over elk type, met inbegrip van overwegingen voor het gebruik ervan.
 
-| type | Description |
+| Type | Beschrijving |
 |:--- |:--- |
 | [Grafisch](#graphical-runbooks)|Op basis van Windows Power shell en worden volledig gemaakt en bewerkt in de grafische editor in Azure Portal. |
 | [Grafische power shell-werk stroom](#graphical-runbooks)|Op basis van een Windows Power shell-werk stroom en worden volledig gemaakt en bewerkt in de grafische editor in Azure Portal. |
-| [PowerShell](#powershell-runbooks) |Tekstrunbook op basis van Windows PowerShell-script. |
-| [PowerShell-werkstroom](#powershell-workflow-runbooks)|Tekstrunbook op basis van Windows PowerShell-werkstroom. |
+| [PowerShell](#powershell-runbooks) |Tekst runbook op basis van een Windows Power shell-script. |
+| [PowerShell-werkstroom](#powershell-workflow-runbooks)|Tekst runbook op basis van een Windows Power shell-werk stroom. |
 | [Python](#python-runbooks) |Tekst runbook op basis van python. |
 
 ## <a name="graphical-runbooks"></a>Grafische runbooks
@@ -47,14 +47,14 @@ Azure Automation ondersteunt diverse typen runbooks die kort worden beschreven i
 * Kan de Power shell-code die door de grafische werk stroom is gemaakt, niet weer geven of rechtstreeks bewerken. U kunt de code die u in code-activiteiten maakt, bekijken.
 * Kan niet worden uitgevoerd op een Linux-Hybrid Runbook Worker
 
-## <a name="powershell-runbooks"></a>PowerShell-runbooks
+## <a name="powershell-runbooks"></a>Power shell-runbooks
 
-PowerShell-runbooks zijn gebaseerd op Windows PowerShell.  U bewerkt de code van het runbook rechtstreeks met behulp van de tekst editor in het Azure Portal.  U kunt ook een editor voor offline tekst gebruiken en [het runbook importeren](manage-runbooks.md) in azure Automation.
+Power shell-runbooks zijn gebaseerd op Windows Power shell.  U bewerkt de code van het runbook rechtstreeks met behulp van de tekst editor in het Azure Portal.  U kunt ook een editor voor offline tekst gebruiken en [het runbook importeren](manage-runbooks.md) in azure Automation.
 
 ### <a name="advantages"></a>Voordelen
 
-* Implementeer alle complexe logica met PowerShell-code zonder de extra complexiteit van de PowerShell-werkstroom.
-* Runbook start sneller dan PowerShell Workflow-runbooks omdat hoeft niet te worden gecompileerd voordat wordt uitgevoerd.
+* Implementeer alle complexe logica met Power shell-code zonder de extra complexiteit van Power shell-werk stroom.
+* Het Runbook start sneller dan Power shell workflow-runbooks omdat het niet moet worden gecompileerd voordat het wordt uitgevoerd.
 * Kan worden uitgevoerd in azure of op zowel Linux-als Windows Hybrid Runbook Workers
 
 ### <a name="limitations"></a>Beperkingen
@@ -69,7 +69,7 @@ PowerShell-runbooks zijn gebaseerd op Windows PowerShell.  U bewerkt de code van
 Hieronder vindt u actuele bekende problemen met Power shell-runbooks.
 
 * Power shell-runbooks kunnen een niet-versleutelde [variabele Asset](automation-variables.md) niet ophalen met een null-waarde.
-* Power shell-runbooks kunnen een [variabele Asset](automation-variables.md) met *~* in de naam niet ophalen.
+* Power shell-runbooks kunnen geen [variabele activa](automation-variables.md) ophalen met *~* in de naam.
 * Get-process in een lus in een Power shell-runbook kan na ongeveer 80 iteraties vastlopen.
 * Een Power shell-runbook kan mislukken als wordt geprobeerd een grote hoeveelheid gegevens naar de uitvoer stroom tegelijk te schrijven.   Normaal gesp roken kunt u dit probleem omzeilen door alleen de informatie die u nodig hebt bij het werken met grote objecten uit te voeren.  In plaats van iets zoals *Get-process*uit te voeren, kunt u bijvoorbeeld alleen de vereiste velden uitvoeren met *Get-process | Selecteer verwerkings-en CPU*.
 
@@ -79,16 +79,16 @@ Power shell workflow-runbooks zijn tekst-runbooks op basis van [Windows Power sh
 
 ### <a name="advantages"></a>Voordelen
 
-* Alle complexe logica met PowerShell Workflow-code implementeren.
+* Implementeer alle complexe logica met Power shell-werk stroom code.
 * Gebruik [controle punten](automation-powershell-workflow.md#checkpoints) om het runbook te hervatten als er een fout optreedt.
-* Gebruik [parallelle verwerking](automation-powershell-workflow.md#parallel-processing) meerdere acties parallel uitvoeren.
+* Gebruik [parallelle verwerking](automation-powershell-workflow.md#parallel-processing) om meerdere acties parallel uit te voeren.
 * Kan andere grafische runbooks en Power shell-werk stroom runbooks als onderliggende runbooks bevatten om werk stromen op hoog niveau te maken.
 
 ### <a name="limitations"></a>Beperkingen
 
 * De auteur moet bekend zijn met de Power shell-werk stroom.
 * Runbook moet de extra complexiteit van Power shell-werk stroom, zoals [gedeserialiseerd objecten](automation-powershell-workflow.md#code-changes), afhandelen.
-* Runbook langer duurt om te beginnen dan PowerShell-runbooks omdat ze moeten worden gecompileerd voordat wordt uitgevoerd.
+* Het starten van het Runbook duurt langer dan Power shell-runbooks sinds het moet worden gecompileerd voordat het wordt uitgevoerd.
 * Power shell-runbooks kunnen alleen worden opgenomen als onderliggende runbooks met behulp van de cmdlet start-AzureAutomationRunbook, waarmee een nieuwe taak wordt gemaakt.
 * Kan niet worden uitgevoerd op een Linux-Hybrid Runbook Worker
 
@@ -119,4 +119,4 @@ Houd rekening met de volgende aanvullende overwegingen bij het bepalen van het t
 * Zie voor meer informatie over het ontwerpen van een grafisch runbook [grafisch ontwerpen in azure Automation](automation-graphical-authoring-intro.md)
 * Zie [Windows Power shell-werk stroom leren](automation-powershell-workflow.md) voor informatie over de verschillen tussen Power shell-en Power shell-werk stromen voor runbooks.
 * Zie [een Runbook maken of importeren](manage-runbooks.md) voor meer informatie over het maken of importeren van een runbook
-* Raadpleeg de [Power shell-documenten](https://docs.microsoft.com/en-us/powershell/scripting/overview)voor meer informatie over Power shell, inclusief taal referentie-en leer modules.
+* Raadpleeg de [Power shell-documenten](https://docs.microsoft.com/powershell/scripting/overview)voor meer informatie over Power shell, inclusief taal referentie-en leer modules.

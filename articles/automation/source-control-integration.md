@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 52fcd0d928ecbce5c617ff6a27175fccb8fd96f6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 44ab9688471a87e6db3712cc61b8abb194d54ac3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990245"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886519"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integratie van broncodebeheer in Azure Automation
 
@@ -24,7 +24,7 @@ Azure Automation ondersteunt drie typen broncode beheer:
 
 * GitHub
 * Azure-opslag plaatsen (Git)
-* Azure Repos (TFVC)
+* Azure-opslag plaatsen (TFVC)
 
 ## <a name="pre-requisites"></a>Vereisten
 
@@ -45,16 +45,16 @@ Kies **broncode beheer type**en klik op **verifiëren**. Een browser venster wor
 
 Vul op de pagina **overzicht van broncode beheer** de gegevens in en klik op **Opslaan**. De volgende tabel bevat een beschrijving van de beschik bare velden.
 
-|Eigenschap  |Description  |
+|Eigenschap  |Beschrijving  |
 |---------|---------|
 |Naam van broncode beheer     | Een beschrijvende naam voor het broncode beheer. *Deze naam mag alleen letters en cijfers bevatten.*        |
-|Type broncode beheer     | Het type bron beheer bron. De volgende opties zijn beschikbaar:</br> GitHub</br>Azure-opslag plaatsen (Git)</br> Azure Repos (TFVC)        |
-|Opslagplaats     | De naam van de opslag plaats of het project. De eerste 200 opslag plaatsen worden geretourneerd. Als u wilt zoeken naar een opslag plaats, typt u de naam in het veld en klikt u op **zoeken op github**.|
-|Branche     | De vertakking waaruit de bron bestanden moeten worden gehaald. Vertakkings doelen zijn niet beschikbaar voor het TFVC-broncode beheer type.          |
+|Type broncode beheer     | Het type bron beheer bron. De volgende opties zijn beschikbaar:</br> GitHub</br>Azure-opslag plaatsen (Git)</br> Azure-opslag plaatsen (TFVC)        |
+|Opslag plaats     | De naam van de opslag plaats of het project. De eerste 200 opslag plaatsen worden geretourneerd. Als u wilt zoeken naar een opslag plaats, typt u de naam in het veld en klikt u op **zoeken op github**.|
+|Branch     | De vertakking waaruit de bron bestanden moeten worden gehaald. Vertakkings doelen zijn niet beschikbaar voor het TFVC-broncode beheer type.          |
 |Mappad     | De map die de runbooks bevat die moeten worden gesynchroniseerd. Voor beeld:/Runbooks </br>*Alleen runbooks in de opgegeven map worden gesynchroniseerd. Recursie wordt niet ondersteund.*        |
 |Automatische synchronisatie<sup>1</sup>     | Hiermee schakelt u automatische synchronisatie in of uit wanneer een door Voer wordt gemaakt in de bron beheer opslagplaats         |
 |Runbook publiceren     | Als deze functie is ingesteld op **on**, wordt automatisch gepubliceerd nadat runbooks zijn gesynchroniseerd vanuit broncode beheer.         |
-|Description     | Een tekst veld om aanvullende details op te geven        |
+|Beschrijving     | Een tekst veld om aanvullende details op te geven        |
 
 <sup>1</sup> als u automatische synchronisatie wilt inschakelen bij het configureren van de integratie van broncode beheer met Azure opslag plaatsen, moet u een project beheerder zijn.
 
@@ -73,7 +73,7 @@ U kunt Power shell ook gebruiken voor het configureren van broncode beheer in Az
 New-AzureRmAutomationSourceControl -Name SCReposGit -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname> -SourceType VsoGit -AccessToken <secureStringofPAT> -Branch master -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
 ```
 
-### <a name="azure-repos-tfvc"></a>Azure Repos (TFVC)
+### <a name="azure-repos-tfvc"></a>Azure-opslag plaatsen (TFVC)
 
 ```powershell-interactive
 New-AzureRmAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_versionControl -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
@@ -93,13 +93,13 @@ Voor broncode beheer zijn enkele minimale machtigingen vereist voor persoonlijke
 
 Voor meer informatie over het maken van een persoonlijk toegangs token in GitHub gaat u naar [een persoonlijk toegangs token maken voor de opdracht regel](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Scope  |Description  |
+|Bereik  |Beschrijving  |
 |---------|---------|
 |**opslagplaats**     |         |
 |opslag plaats: status     | Toegangs status voor door voeren         |
 |repo_deployment      | Toegangs implementatie status         |
 |public_repo     | Open bare opslag plaatsen openen         |
-|**admin:repo_hook**     |         |
+|**beheerder: repo_hook**     |         |
 |schrijven: repo_hook     | Opslag plaats-hooks schrijven         |
 |lezen: repo_hook|Opslag plaats hooks lezen|
 
@@ -107,7 +107,7 @@ Voor meer informatie over het maken van een persoonlijk toegangs token in GitHub
 
 Ga voor meer informatie over het maken van een persoonlijk toegangs token in azure opslag plaatsen naar [verificatie van toegang met persoonlijke toegangs tokens](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
-|Scope  |
+|Bereik  |
 |---------|
 |Code (lezen)     |
 |Project en team (lezen)|
@@ -118,7 +118,7 @@ Ga voor meer informatie over het maken van een persoonlijk toegangs token in azu
 
 <sup>1</sup> de machtiging voor service verbindingen is alleen vereist als u automatische synchronisatie hebt ingeschakeld.
 
-## <a name="syncing"></a>Synchroniseren...
+## <a name="syncing"></a>Synchroniseren
 
 Selecteer de bron in de tabel op de pagina **broncode beheer** . Klik op **synchronisatie starten** om het synchronisatie proces te starten.
 
@@ -177,7 +177,7 @@ Als meerdere personen runbooks bewerken in uw opslag plaats voor bron beheer met
 
 Op dit moment is het niet mogelijk om het toegangs token in broncode beheer bij te werken vanuit de portal. Nadat uw persoonlijke toegangs token is verlopen of ingetrokken, kunt u op de volgende manieren broncode beheer bijwerken met een nieuw toegangs token:
 
-* Via de [rest-API](https://docs.microsoft.com/en-us/rest/api/automation/sourcecontrol/update).
+* Via de [rest-API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update).
 * Met behulp van de cmdlet [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) .
 
 ## <a name="next-steps"></a>Volgende stappen

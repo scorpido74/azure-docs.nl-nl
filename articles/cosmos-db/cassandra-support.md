@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 12df79696033e69abbf48f053c1a594be9409cda
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0a47e922ae8cdca3c70cb53f9fa2f7dafe191c6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721104"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889227"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Door Azure Cosmos DB Cassandra API ondersteunde Apache Cassandra-functies 
 
@@ -110,7 +110,7 @@ Het CQLSH-opdracht regel hulpprogramma wordt geleverd met Apache Cassandra 3.1.1
 
 **Windows:**
 
-Als u Windows gebruikt, raden we u aan het [Windows-Bestands systeem](https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)in te scha kelen voor Linux. U kunt vervolgens de onderstaande Linux-opdrachten volgen.
+Als u Windows gebruikt, raden we u aan het [Windows-Bestands systeem](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)in te scha kelen voor Linux. U kunt vervolgens de onderstaande Linux-opdrachten volgen.
 
 **UNIX/Linux/Mac:**
 

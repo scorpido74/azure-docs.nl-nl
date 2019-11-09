@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 1c48e758e9ee69085034f714652632151912f8d4
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d5d0a575c3fb662df034b66a48135ac33393f95c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530626"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885395"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Consul installeren en gebruiken in azure Kubernetes service (AKS)
 
@@ -21,7 +21,7 @@ ms.locfileid: "72530626"
 In dit artikel wordt beschreven hoe u consul installeert. De consul-onderdelen worden in een Kubernetes-cluster op AKS geïnstalleerd.
 
 > [!NOTE]
-> Deze instructies verwijzen naar consul versie `1.6.0` en gebruiken ten minste helm versie `2.14.2`.
+> Deze instructies verwijzen naar consul versie `1.6.0`en gebruiken ten minste helm versie `2.14.2`.
 >
 > De consul-`1.6.x` releases kunnen worden uitgevoerd op Kubernetes-versies `1.13+`. U kunt aanvullende consul-versies vinden op [github-consul releases][consul-github-releases] en informatie over elk van de releases op [consul-release opmerkingen][consul-release-notes].
 
@@ -129,7 +129,7 @@ consul-consul-sync-catalog-d846b79c-8ssr8                         1/1     Runnin
 consul-consul-tz2t5                                               1/1     Running   0          3m9s   10.240.0.12   aks-linux-92468653-vmss000000   <none>           <none>
 ```
 
-Alle peulen moeten de status van `Running` weer geven. Als uw peul niet over deze status beschikt, moet u een paar minuten wachten totdat dit het geval is. Als een van de peulen een probleem rapporteert, gebruikt u de [kubectl pod][kubectl-describe] opdracht om de uitvoer en status te controleren.
+Alle peulen moeten de status van `Running`weer geven. Als uw peul niet over deze status beschikt, moet u een paar minuten wachten totdat dit het geval is. Als een van de peulen een probleem rapporteert, gebruikt u de [kubectl pod][kubectl-describe] opdracht om de uitvoer en status te controleren.
 
 ## <a name="accessing-the-consul-ui"></a>Toegang tot de consul-gebruikers interface
 
@@ -186,7 +186,7 @@ U kunt ook aanvullende scenario's volgen met behulp van:
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-port-forward]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward
-[kubernetes-node-selectors]: https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads#node-selectors
+[kubernetes-node-selectors]: https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#node-selectors
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md

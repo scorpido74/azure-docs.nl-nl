@@ -1,24 +1,20 @@
 ---
 title: Apparaatstatus synchroniseren vanuit Azure IoT Hub | Microsoft Docs
-description: Gebruik apparaatdubbels om de status te synchroniseren tussen uw apparaten en uw IoT hub
+description: Meer informatie over hoe u apparaatdubbels kunt gebruiken om uw apparaten te configureren vanuit de Cloud en om status-en compatibiliteits gegevens van uw apparaten te ontvangen.
 services: iot-hub
-documentationcenter: ''
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/21/2019
 ms.custom: mvc
-ms.openlocfilehash: 4ad3013f6914abbf4c75676e7423848dff9d5e9a
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 647182389ec0ad4cb2b80a0676812961cb9be770
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330363"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890435"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -43,7 +39,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="prerequisites"></a>Vereisten
 
-De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Node.js. U moet Node.js v10.x.x of hoger op uw ontwikkelcomputer.
+De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Node.js. U hebt node. js V10 toevoegen. x. x of hoger nodig op uw ontwikkel machine.
 
 U kunt Node.js voor meerdere platforms downloaden van [nodejs.org](https://nodejs.org).
 
@@ -59,7 +55,7 @@ Download het Node.js-voorbeeldproject van https://github.com/Azure-Samples/azure
 
 Om deze zelfstudie te voltooien moet uw Azure-abonnement een IoT hub bevatten met een apparaat toegevoegd aan het apparaatidentiteitsregister. Met de vermelding in het apparaatidentiteitsregister kan het gesimuleerd apparaat dat u in deze zelfstudie uitvoert, verbinding maken met uw hub.
 
-Als u nog een IoT-hub geconfigureerd in uw abonnement hebt, kunt u een instellen met de volgende CLI-script. Dit script gebruikt de naam **zelfstudie-iot-hub** voor de IoT hub, u moet deze naam vervangen door een eigen unieke naam wanneer u dit uitvoert. Het script maakt de brongroep en hub in de regio **US - centraal** die u kunt wijzigen in een regio dichterbij. Met het script wordt uw verbindingsreeks voor de IoT hub, die u gebruikt in het back-endvoorbeeld om verbinding te maken met uw IoT hub:
+Als u nog geen IoT-hub hebt ingesteld in uw abonnement, kunt u er een instellen met het volgende CLI-script. Dit script gebruikt de naam **zelfstudie-iot-hub** voor de IoT hub, u moet deze naam vervangen door een eigen unieke naam wanneer u dit uitvoert. Het script maakt de brongroep en hub in de regio **US - centraal** die u kunt wijzigen in een regio dichterbij. Met het script wordt uw verbindingsreeks voor de IoT hub, die u gebruikt in het back-endvoorbeeld om verbinding te maken met uw IoT hub:
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -240,7 +236,7 @@ De volgende schermafbeelding toont de uitvoer van de gesimuleerd apparaattoepass
 
 ![Gesimuleerd apparaat](./media/tutorial-device-twins/SimulatedDevice2.png)
 
-De volgende schermafbeelding ziet u de uitvoer van de back-endtoepassing en wordt uitgelegd hoe het ontvangt en verwerkt een gerapporteerde eigenschap van een apparaat bij te werken:
+In de volgende scherm afbeelding ziet u de uitvoer van de back-endtoepassing en wordt uitgelegd hoe de toepassing een gerapporteerde eigenschaps update van een apparaat ontvangt en verwerkt:
 
 ![Back-endtoepassing](./media/tutorial-device-twins/BackEnd2.png)
 

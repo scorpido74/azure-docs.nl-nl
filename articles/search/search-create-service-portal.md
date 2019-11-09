@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 21f55805e0486d987922a1aa160f2938f3a50155
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5acfb60395f39d17e640e389ae2a28e220ccfae6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792442"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884343"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Snelstartgids: een Azure Cognitive Search-service maken in de portal
 
 Azure Cognitive Search is een zelfstandige resource die wordt gebruikt om een zoek ervaring in aangepaste apps te koppelen. Hoewel Azure Cognitive Search eenvoudig kan worden geïntegreerd met andere Azure-Services, kunt u het ook gebruiken als zelfstandig onderdeel of het integreren met apps op netwerk servers, of met software die wordt uitgevoerd op andere Cloud platforms.
 
-In dit artikel leert u hoe u een Azure Cognitive Search-resource maakt in de [Azure Portal](https://portal.azure.com/).
+In dit artikel leert u hoe u een resource maakt in de [Azure Portal](https://portal.azure.com/).
 
 [![GIF-animatie](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -27,34 +27,36 @@ Hebt u liever PowerShell? Gebruik de [servicesjabloon](https://azure.microsoft.c
 
 ## <a name="subscribe-free-or-paid"></a>Abonneren (gratis of betaald)
 
-[Maak een gratis Azure-account](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) en gebruik gratis tegoed om betaalde Azure-services uit te proberen. Nadat u het tegoed hebt opgemaakt, kunt u het account houden en de gratis Azure-services, zoals Websites, blijven gebruiken. Er worden nooit kosten in rekening gebracht bij uw creditcard tenzij u de instellingen expliciet wijzigt en aangeeft dat u wilt betalen.
+[Maak een gratis Azure-account](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) en gebruik gratis tegoed om betaalde Azure-services uit te proberen. Nadat u het tegoed hebt opgemaakt, kunt u het account houden en de gratis Azure-services, zoals Websites, blijven gebruiken. Er wordt nooit geld van uw creditcard afgeschreven, tenzij u uw instellingen zelf wijzigt en expliciet aangeeft dat u wilt betalen.
 
 U kunt ook [voordelen voor MSDN-abonnees activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). Als u een MSDN-abonnement hebt, ontvangt u elke maand tegoeden die u voor betaalde Azure-services kunt gebruiken. 
 
 ## <a name="find-azure-cognitive-search"></a>Azure Cognitive Search zoeken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Klik op het plusteken (+ Resource maken) in de linkerbovenhoek.
 3. Gebruik de zoek balk om ' Azure Cognitive Search ' te vinden of navigeer naar de resource via **Web** > **Azure Cognitive Search**.
 
-![Navigeer naar een Azure Cognitive Search-resource](./media/search-create-service-portal/find-search3.png "Het navigatiepad naar Azure Cognitive Search")
+![Een resource maken in de portal](./media/search-create-service-portal/find-search3.png "Een resource maken in de portal")
 
-## <a name="select-a-subscription"></a>Een abonnement selecteren
+## <a name="choose-a-subscription"></a>Een abonnement kiezen
 
-Als u meer dan één abonnement hebt, moet u er één kiezen dat ook services voor gegevensopslag of File Storage-services biedt. Azure Cognitive Search kunnen Azure Table-en Blob-opslag, SQL Database en Azure Cosmos DB voor indexering automatisch detecteren via [*Indexeer functies*](search-indexer-overview.md), maar alleen voor services onder hetzelfde abonnement.
+Het instellen van de abonnements-ID en de resource groep is uw eerste stap. Als u meer dan één abonnement hebt, moet u er één kiezen dat ook services voor gegevensopslag of File Storage-services biedt. Azure Cognitive Search kunnen Azure Table-en Blob-opslag, SQL Database en Azure Cosmos DB voor indexering automatisch detecteren via [*Indexeer functies*](search-indexer-overview.md), maar alleen voor services onder hetzelfde abonnement.
 
 ## <a name="set-a-resource-group"></a>Een resource groep instellen
 
-Een resource groep is vereist en is handig voor het beheren van resources, met inbegrip van kosten beheer. Een resource groep kan bestaan uit één service of meerdere services die samen worden gebruikt. Als u bijvoorbeeld Azure Cognitive Search gebruikt voor het indexeren van een Azure Cosmos DB-Data Base, kunt u beide services onderdeel maken van dezelfde resource groep voor beheer doeleinden. 
+Een resource groep is vereist en is handig voor het beheren van resources, inclusief de kosten. Een resource groep kan bestaan uit één service of meerdere services die samen worden gebruikt. Als u bijvoorbeeld Azure Cognitive Search gebruikt voor het indexeren van een Azure Cosmos DB-Data Base, kunt u beide services onderdeel maken van dezelfde resource groep voor beheer doeleinden. 
 
 Als u resources niet in één groep combineert of als bestaande resource groepen zijn gevuld met resources die worden gebruikt in niet-gerelateerde oplossingen, maakt u een nieuwe resource groep voor uw Azure Cognitive Search-resource. 
 
-Wanneer u de service gebruikt, kunt u de huidige en geschatte kosten bijhouden (zoals weer gegeven in de scherm opname) of omlaag schuiven om de kosten voor afzonderlijke resources weer te geven.
+![Een nieuwe resource groep maken](./media/search-create-service-portal/new-resource-group.png "Een nieuwe resourcegroep maken")
+
+Na verloop van tijd kunt u de huidige en geschatte kosten bijhouden (zoals weer gegeven in de scherm opname) of omlaag schuiven om de kosten voor afzonderlijke resources weer te geven. De volgende scherm afbeelding toont het soort kosten gegevens dat u uiteindelijk kunt verwachten wanneer u meerdere resources in één groep combineert.
 
 ![Kosten beheren op het niveau van de resource groep](./media/search-create-service-portal/resource-group-cost-management.png "Kosten beheren op het niveau van de resource groep")
 
 > [!TIP]
-> Als u een resourcegroep verwijdert, worden de services binnen die resourcegroep ook verwijderd. Bij prototypeprojecten die gebruikmaken van meerdere services, wordt het opschonen na afloop van het project gemakkelijker als die services zich allemaal in dezelfde resourcegroep bevinden.
+> Resource groepen vereenvoudigen opschonen omdat het verwijderen van een groep ook de services erin verwijdert. Bij prototypeprojecten die gebruikmaken van meerdere services, wordt het opschonen na afloop van het project gemakkelijker als die services zich allemaal in dezelfde resourcegroep bevinden.
 
 ## <a name="name-the-service"></a>Naam van de service
 
@@ -77,7 +79,7 @@ Als Azure-service kunnen Azure Cognitive Search worden gehost in data centers ov
 
 U kunt de bandbreedte kosten minimaliseren of vermijden door dezelfde locatie voor meerdere services te kiezen. Als u bijvoorbeeld gegevens indexeert die door een andere Azure-service zijn verschaft (Azure Storage, Azure Cosmos DB, Azure SQL Database), voor komt u dat de Azure Cognitive Search-service in dezelfde regio bandbreedte kosten (er worden geen kosten in rekening gebracht voor uitgaande gegevens wanneer Services bevinden zich in dezelfde regio).
 
-Daarnaast kunt u, als u verrijkingen van cognitieve Zoek opdrachten AI gebruikt, uw service maken in dezelfde regio als uw Cognitive Services-resource. *De co-locatie van Azure Cognitive Search en Cognitive Services in dezelfde regio is een vereiste voor AI-verrijking*.
+Daarnaast kunt u, als u AI-verrijking gebruikt, uw service maken in dezelfde regio als Cognitive Services. *De co-locatie van Azure Cognitive Search en Cognitive Services in dezelfde regio is een vereiste voor AI-verrijking*.
 
 > [!Note]
 > Centraal-India is momenteel niet beschikbaar voor nieuwe services. Voor services die zich al in Centraal-India bevinden, kunt u opschalen zonder beperkingen en wordt uw service volledig ondersteund in die regio. De beperking voor deze regio is tijdelijk en beperkt tot alleen nieuwe services. Deze notitie wordt verwijderd wanneer de beperking niet meer van toepassing is.
@@ -104,9 +106,9 @@ Uw service wordt binnen enkele minuten geïmplementeerd, die u via meldingen van
 
 Tenzij u de portal gebruikt, moet u op programmeer niveau toegang tot uw nieuwe service het URL-eind punt en een verificatie-API-sleutel opgeven.
 
-1. Zoek en kopieer op de overzichtspagina van de service het URL-eindpunt aan de rechterkant van de pagina.
+1. Op de pagina **overzicht** zoekt en kopieert u het URL-eind punt aan de rechter kant van de pagina.
 
-2. Selecteer **Sleutels** in het navigatiedeelvenster links en kopieer een van de beheersleutels (deze zijn equivalent). API-beheersleutels voor beheerders zijn vereist voor het maken, bijwerken en verwijderen van objecten in uw service.
+2. Kopieer op de pagina **sleutels** een van de beheer sleutels (deze zijn gelijk aan). API-beheersleutels voor beheerders zijn vereist voor het maken, bijwerken en verwijderen van objecten in uw service. Query sleutels bieden daarentegen Lees toegang voor het indexeren van inhoud.
 
    ![Service overzicht pagina met URL-eind punt](./media/search-create-service-portal/get-url-key.png "URL-eind punt en andere service Details")
 
@@ -151,7 +153,7 @@ Een tweede service is niet vereist voor hoge beschikbaarheid. Hoge beschikbaarhe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u een Azure Cognitive Search-service hebt ingericht, kunt u door gaan in de portal om uw eerste index te maken.
+Nadat u een service hebt ingericht, kunt u door gaan in de portal om uw eerste index te maken.
 
 > [!div class="nextstepaction"]
 > [Snelstartgids: een Azure Cognitive Search-index maken in de portal](search-get-started-portal.md)

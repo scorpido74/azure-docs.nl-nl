@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 880b31702cf1c0a92ab7ee536cd88e8e6957f6f8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3414cc54e5023bdeebb2d5536c1408f981e68f19
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430850"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891404"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Back-ups maken van werkbelasting Vm's op CloudSimple Privécloud met Veeam B & R
 
@@ -54,7 +54,7 @@ Voor omgevingen met minder dan 30 TB om een back-up te maken, raadt CloudSimple 
 
 * Veeam backup-server en proxy server zijn geïnstalleerd op dezelfde VM in de Privécloud.
 * Een op Linux gebaseerde primaire back-upopslagplaats in azure die is geconfigureerd als een doel voor back-uptaken.
-* `azcopy` die wordt gebruikt om de gegevens van de primaire back-upopslagplaats te kopiëren naar een Azure-Blob-container die wordt gerepliceerd naar een andere regio.
+* `azcopy` gebruikt voor het kopiëren van de gegevens van de primaire back-upopslagplaats naar een Azure-Blob-container die wordt gerepliceerd naar een andere regio.
 
 ![Basis implementatie scenario's](media/veeam-basicdeployment.png)
 
@@ -65,7 +65,7 @@ Voor omgevingen met meer dan 30 TB om een back-up te maken, raadt CloudSimple de
 * Een proxy server per knoop punt in het vSAN-cluster, zoals aanbevolen door Veeam.
 * Op Windows gebaseerde primaire back-upopslagplaats in de Privécloud om vijf dagen aan gegevens in de cache te plaatsen voor snelle herstel bewerkingen.
 * Linux backup-opslag plaats in azure als doel voor het maken van back-uptaken voor een langere retentie van de duur. Deze opslag plaats moet worden geconfigureerd als een scale-out back-upopslagplaats.
-* `azcopy` die wordt gebruikt om de gegevens van de primaire back-upopslagplaats te kopiëren naar een Azure-Blob-container die wordt gerepliceerd naar een andere regio.
+* `azcopy` gebruikt voor het kopiëren van de gegevens van de primaire back-upopslagplaats naar een Azure-Blob-container die wordt gerepliceerd naar een andere regio.
 
 ![Basis implementatie scenario's](media/veeam-advanceddeployment.png)
 
@@ -136,7 +136,7 @@ Maak firewall regels tussen het subnet van het beheer en het back-upnetwerk om n
 
 De volgende tabel bevat een lijst met poorten.
 
-| Diapictogram | Beschrijving | Diapictogram | Beschrijving |
+| diapictogram | Beschrijving | diapictogram | Beschrijving |
 | ------------ | ------------- | ------------ | ------------- |
 | Backup Server  | vCenter  | HTTPS/TCP  | 443 |
 | Backup Server <br> *Vereist voor de implementatie van Veeam Backup &-replicatie onderdelen* | Back-upproxy  | TCP/UDP  | 135, 137 tot 139 en 445 |
@@ -194,7 +194,7 @@ Verbind uw virtuele netwerk met de Privécloud door de instructies in [Azure Vir
 
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Azure Blob-opslag configureren voor het bewaren van lange termijn gegevens
 
-1. Maak een opslag account voor algemeen gebruik (GPv2) van het standaard type en een BLOB-container zoals beschreven in de micro soft video [aan de slag met Azure Storage](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage).
+1. Maak een opslag account voor algemeen gebruik (GPv2) van het standaard type en een BLOB-container zoals beschreven in de micro soft video [aan de slag met Azure Storage](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage).
 2. Maak een Azure storage-container, zoals beschreven in de verwijzing [Create container](https://docs.microsoft.com/rest/api/storageservices/create-container) .
 2. Down load het `azcopy`-opdracht regel programma voor Linux van micro soft. U kunt de volgende opdrachten gebruiken in de bash-shell in CentOS 7,5.
 
@@ -206,7 +206,7 @@ Verbind uw virtuele netwerk met de Privécloud door de instructies in [Azure Vir
     sudo yum -y install icu
     ```
 
-3. Gebruik de `azcopy` opdracht om back-upbestanden van en naar de BLOB-container te kopiëren.  Zie [gegevens overdragen met AzCopy in Linux](../storage/common/storage-use-azcopy-linux.md) voor gedetailleerde opdrachten.
+3. Gebruik de opdracht `azcopy` om back-upbestanden van en naar de BLOB-container te kopiëren.  Zie [gegevens overdragen met AzCopy in Linux](../storage/common/storage-use-azcopy-linux.md) voor gedetailleerde opdrachten.
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>vCenter-console van Privécloud: Installeer Veeam B & R
 
@@ -260,7 +260,7 @@ Maak een firewall regel met om de Veeam-back-upserver toe te staan een uitgaande
 
 Als u de bevoegdheden wilt deescaleren, raadpleegt u [bevoegdheden deescaleren](escalate-private-cloud-privileges.md#de-escalate-privileges).
 
-## <a name="references"></a>Naslaginformatie
+## <a name="references"></a>Verwijzingen
 
 ### <a name="cloudsimple-references"></a>CloudSimple-verwijzingen
 
@@ -290,7 +290,7 @@ Als u de bevoegdheden wilt deescaleren, raadpleegt u [bevoegdheden deescaleren](
 * [Een VNet verbinden met een circuit-ander abonnement](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
 * [Een virtuele Linux-machine maken in de Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Een beheerde gegevens schijf koppelen aan een virtuele Windows-machine in de Azure Portal](../virtual-machines/windows/attach-managed-disk-portal.md)
-* [Aan de slag met Azure Storage-video](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage)
+* [Aan de slag met Azure Storage-video](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
 * [Container maken](https://docs.microsoft.com/rest/api/storageservices/create-container)
 * [Gegevens overdragen met AzCopy voor Linux](../storage/common/storage-use-azcopy-linux.md)
 

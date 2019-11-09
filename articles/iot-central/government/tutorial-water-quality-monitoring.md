@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 94e8695e01ca5e5c456ce230c4cc84b41685fd9c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 51c84410de39516312d2058eeda575023dbe32ab
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026532"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890769"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-iot-central"></a>Zelf studie: een toepassing voor het controleren van water kwaliteit maken in IoT Central
 
@@ -64,7 +64,7 @@ Een nieuwe toepassing voor het controleren van de IoT Central water kwaliteit va
     * **URL** : u kunt desgewenst de gewenste URL kiezen. U kunt de URL later ook wijzigen. 
     * Als u een Azure-abonnement hebt, voert u uw *adres lijst, het Azure-abonnement en de regio*in. Als u geen abonnement hebt, kunt u een **gratis proef versie van 7 dagen** inschakelen en de vereiste contact gegevens volt ooien.  
 
-    Zie de [snelstart over het maken van een toepassing](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)voor meer informatie over directory's en abonnementen.
+    Zie de [snelstart over het maken van een toepassing](../preview/quick-deploy-iot-central.md)voor meer informatie over directory's en abonnementen.
 
 5. Klik op de knop **maken** onder aan de pagina. 
 

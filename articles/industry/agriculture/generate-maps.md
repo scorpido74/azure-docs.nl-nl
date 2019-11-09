@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6cdebb8f6abea2b50dd8aad58ccc9fb5e680cba9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 635431fb87e5f164f92ab4b7a1027ee96e9d801a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798477"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891006"
 ---
 # <a name="generate-maps"></a>Maps genereren
 
@@ -170,7 +170,7 @@ Bodem vocht is het water dat in de ruimten tussen de bodem deeltjes wordt bewaar
 Zorg ervoor dat u het volgende voordat u probeert een bodem vocht heatmap te genereren:
 
 - Ten minste drie bodem vocht Sens oren moeten worden geïmplementeerd. Micro soft raadt u aan geen kaart met een bodem vocht te maken voordat Sens oren worden geïmplementeerd en gekoppeld aan de farm.  
-- Er moet ten minste één Cloud vrije Sentinel-scène beschikbaar zijn voor de afgelopen 120 dagen, van de dag waarop de kaart voor het bodem vocht is aangevraagd.
+- Het genereren van bodem vocht heatmap wordt beïnvloed door de padvariabelen van het Sentinel, de dekking van de Cloud en de Cloud schaduw. Er moet ten minste één Cloud vrije Sentinel-scène beschikbaar zijn voor de afgelopen 120 dagen, van de dag waarop de kaart voor het bodem vocht is aangevraagd.
 - Ten minste de helft van de Sens oren die in de farm zijn geïmplementeerd, moet online zijn en gegevens moeten worden gestreamd naar de data hub.
 - De heatmap moet worden gegenereerd met behulp van sensor metingen van dezelfde provider.
 
@@ -220,6 +220,6 @@ Voer de volgende stappen uit:
 4. Selecteer het **Sorteer** pictogram naast de tabelkop teksten om te sorteren op basis van de farm, datum, gemaakt op, taak-id en taak type.
 5. Blader door de lijst met kaarten die beschikbaar zijn via de navigatie knoppen aan het einde van de pagina.
 6. Selecteer de kaart die u wilt weer geven. In een pop-upvenster wordt het voor beeld voor de geselecteerde kaart weer gegeven.
-7. Selecteer **down load** vervolg keuzelijst om de Download indeling te selecteren en de kaart wordt gedownload en opgeslagen in de lokale map van uw computer.
+7. Selecteer **down load** vervolg keuzelijst om de Download indeling te selecteren en de kaart wordt gedownload en opgeslagen in de opgegeven map.
 
     ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)

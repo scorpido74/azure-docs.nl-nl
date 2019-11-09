@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 73aa641fc4bb01ef3d06820ecd18b61197ab81e7
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695503"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890180"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure scheduler-taken migreren naar Azure Logic Apps
 
@@ -31,7 +31,7 @@ In dit artikel wordt beschreven hoe u eenmalige en terugkerende taken kunt plann
 
 * Schema's instellen die tijd zones ondersteunen en automatisch aanpassen aan zomer tijd (DST).
 
-Zie [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md) of probeer uw eerste logische app te maken in deze Snelstartgids: [Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Zie [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md) of probeer uw eerste logische app te maken in deze Snelstartgids: [uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -49,7 +49,7 @@ U kunt meerdere eenmalige taken uitvoeren door slechts één logische app te mak
 
 1. Maak in de [Azure Portal](https://portal.azure.com)een lege logische app in de ontwerp functie voor logische apps. 
 
-   Volg [voor de basis stappen Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+   Volg voor de basis stappen [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 1. Typ in het zoekvak ' wanneer een HTTP-aanvraag ' als uw filter. Selecteer in de lijst triggers deze trigger: **Wanneer een HTTP-aanvraag wordt ontvangen** 
 
@@ -71,7 +71,7 @@ U kunt meerdere eenmalige taken uitvoeren door slechts één logische app te mak
 
 1. Selecteer **volgende stap**onder de trigger. 
 
-1. Voer in het zoekvak ' delay until ' in als uw filter. Selecteer in de lijst acties deze actie: **Vertraging tot**
+1. Voer in het zoekvak ' delay until ' in als uw filter. Selecteer in de lijst acties de optie deze actie: **vertraging tot**
 
    Met deze actie wordt de werk stroom van uw logische app onderbroken tot een opgegeven datum en tijd.
 
@@ -106,14 +106,14 @@ Als u een eenmalige taak hand matig wilt uitvoeren of activeren, stuurt u een aa
 
 Als u bijvoorbeeld de Postman-app gebruikt, kunt u een POST-aanvraag maken met de instellingen die vergelijkbaar zijn met dit voor beeld en vervolgens **verzenden** selecteren om de aanvraag te doen.
 
-| Aanvraagmethode | URL | Hoofdtekst | Headers |
+| Aanvraag methode | URL | Hoofdtekst | Headers |
 |----------------|-----|------|---------|
-| **POST** | <*endpoint-URL*> | **uitgang** <p>**JSON(application/json)** <p>Voer in het vak **onbewerkt** de lading in die u in de aanvraag wilt verzenden. <p>**Opmerking**: Met deze instelling worden de waarden van de **headers** automatisch geconfigureerd. | **Sleutel**: Content-Type <br>**Waarde**: Application/JSON |
+| **POST** | < *-eind punt-URL*> | **uitgang** <p>**JSON (toepassing/JSON)** <p>Voer in het vak **onbewerkt** de lading in die u in de aanvraag wilt verzenden. <p>**Opmerking**: met deze instelling worden de waarden van de **headers** automatisch geconfigureerd. | **Sleutel**: inhouds type <br>**Waarde**: Application/JSON |
 |||||
 
 ![Aanvraag verzenden om uw logische app hand matig te activeren](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
 
-Nadat u de oproep hebt verzonden, wordt de reactie van de logische app weer gegeven onder het vak onbewerkt op het tabblad **hoofd tekst** . 
+Nadat u de oproep hebt verzonden, wordt de reactie van de logische app weer gegeven onder het vak **onbewerkt** op het tabblad **hoofd tekst** . 
 
 <a name="workflow-run-id"></a>
 
@@ -131,9 +131,9 @@ In Logic Apps wordt elke eenmalige taak uitgevoerd als een run-exemplaar van een
 
 1. Maak in de [Azure Portal](https://portal.azure.com)een lege logische app in de ontwerp functie voor logische apps. 
 
-   Volg [voor de basis stappen Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+   Volg voor de basis stappen [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Voer in het zoekvak ' recurrence ' in als uw filter. Selecteer in de lijst triggers deze trigger: **Terugkeerpatroon** 
+1. Voer in het zoekvak ' recurrence ' in als uw filter. Selecteer in de lijst triggers deze trigger: **terugkeer patroon** 
 
    ![De trigger ' recurrence ' toevoegen](./media/migrate-from-scheduler-to-logic-apps/recurrence-trigger.png)
 
@@ -197,22 +197,22 @@ Zie voor meer informatie over het afhandelen van uitzonde [ringen afhandelen en 
 
 <a name="retire-date"></a>
 
-**V**: Wanneer wordt Azure scheduler buiten gebruik gesteld? <br>
-**A**: Azure scheduler is gepland om op 31 december 2019 volledig te worden buiten gebruik gesteld. Voor belang rijke stappen die u moet nemen vóór deze datum en een gedetailleerde tijd lijn raadpleegt u [pensioen datum voor scheduler uitbreiden tot 31 December 2019](https://azure.microsoft.com/en-us/updates/extending-retirement-date-of-scheduler/). Zie voor algemene updates [Azure updates-scheduler](https://azure.microsoft.com/updates/?product=scheduler).
+**V**: wanneer is Azure scheduler buiten gebruik gesteld? <br>
+**A**: Azure scheduler is gepland voor volledig gebruik op 31 december 2019. Voor belang rijke stappen die u moet nemen vóór deze datum en een gedetailleerde tijd lijn raadpleegt u [pensioen datum voor scheduler uitbreiden tot 31 December 2019](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/). Zie voor algemene updates [Azure updates-scheduler](https://azure.microsoft.com/updates/?product=scheduler).
 
-**V**: Wat gebeurt er met mijn taak verzamelingen en-taken nadat de service buiten gebruik is gesteld? <br>
-**A**: Alle scheduler-taak verzamelingen en-taken stoppen met uitvoeren en worden verwijderd uit het systeem.
+**V**: wat gebeurt er met mijn taak verzamelingen en-taken nadat de service buiten gebruik is gesteld? <br>
+**A**: alle scheduler-taak verzamelingen en-taken stoppen met uitvoeren en worden verwijderd uit het systeem.
 
-**V**: Moet ik een back-up maken of andere taken uitvoeren voordat ik mijn scheduler-taken Migreer naar Logic Apps? <br>
-**A**: Als best practice, moet u altijd een back-up maken van uw werk. Controleer of de Logic apps die u hebt gemaakt, op de verwachte manier worden uitgevoerd voordat u de scheduler-taken verwijdert of uitschakelt. 
+**V**: moet ik back-ups maken of andere taken uitvoeren voordat ik mijn scheduler-taken naar Logic apps Migreer? <br>
+**A**: als u een Best Practice, maakt u altijd een back-up van uw werk. Controleer of de Logic apps die u hebt gemaakt, op de verwachte manier worden uitgevoerd voordat u de scheduler-taken verwijdert of uitschakelt. 
 
-**V**: Is er een hulp programma waarmee ik mijn taken kan migreren van scheduler naar Logic Apps? <br>
-**A**: Elke scheduler-taak is uniek, dus er bestaat geen hulp programma met één grootte dat past. Op basis van uw behoeften kunt u [Dit script echter bewerken om Azure scheduler-taken naar Azure Logic apps te migreren](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration).
+**V**: is er een hulp programma waarmee ik mijn taken kan migreren van scheduler naar Logic apps? <br>
+**A**: elke scheduler-taak is uniek, dus er bestaat geen hulp programma met één grootte dat past. Op basis van uw behoeften kunt u [Dit script echter bewerken om Azure scheduler-taken naar Azure Logic apps te migreren](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration).
 
-**V**: Waar kan ik ondersteuning krijgen voor het migreren van mijn scheduler-taken? <br>
+**V**: waar kan ik ondersteuning krijgen voor het migreren van mijn scheduler-taken? <br>
 **A**: Hier volgen enkele manieren om ondersteuning te krijgen: 
 
-**Azure-portal**
+**Azure Portal**
 
 Als uw Azure-abonnement een betaald ondersteunings plan heeft, kunt u een aanvraag voor technische ondersteuning in het Azure Portal maken. Anders kunt u een andere ondersteunings optie selecteren.
 
@@ -220,16 +220,16 @@ Als uw Azure-abonnement een betaald ondersteunings plan heeft, kunt u een aanvra
 
 1. Selecteer in het menu **ondersteuning** de optie **nieuwe ondersteunings aanvraag**. Geef deze informatie op over uw aanvraag:
 
-   | Eigenschap | Value |
+   | Eigenschap | Waarde |
    |---------|-------|
    | **Probleem type** | **Documentatie** |
-   | **Abonnement** | <*your-Azure-subscription*> |
-   | **Service** | Selecteer scheduler onder bewaking van **& beheer**. Als u **scheduler**niet kunt vinden, selecteert u eerst **alle services** . |
+   | **Abonnement** | <*uw> Azure-abonnement* |
+   | **Service** | Selecteer **scheduler**onder **bewaking van & beheer**. Als u **scheduler**niet kunt vinden, selecteert u eerst **alle services** . |
    ||| 
 
 1. Selecteer de gewenste ondersteunings optie. Als u een betaald ondersteunings abonnement hebt, selecteert u **volgende**.
 
-**Community**
+**Communitynamen**
 
 * [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
@@ -237,4 +237,4 @@ Als uw Azure-abonnement een betaald ondersteunings plan heeft, kunt u een aanvra
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Regel matig actieve taken en werk stromen maken met Azure Logic Apps](../connectors/connectors-native-recurrence.md)
-* [Zelfstudie: Verkeer controleren met een logische app op basis van een planning](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
+* [Zelf studie: verkeer controleren met een logische app op basis van een planning](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)

@@ -10,29 +10,29 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a1395c89b047bb120c7f7e2d2d9bb9b4d2b0c50
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 0fc0aeab4e9603995130392e3560325ccaba1ffc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959961"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886806"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Wijzigingen in uw omgeving bijhouden met de Wijzigingen bijhouden oplossing
 
 Dit artikel helpt u bij het gebruik van de Wijzigingen bijhouden-oplossing om eenvoudig wijzigingen in uw omgeving te identificeren. De oplossing houdt wijzigingen bij van Windows-en Linux-software, Windows-en Linux-bestanden, Windows-register sleutels, Windows-Services en Linux-daemons. Het identificeren van configuratie wijzigingen kan u helpen bij het lokaliseren van operationele problemen.
 
-Wijzigingen in geïnstalleerde software, Windows-Services, Windows-REGI ster en-bestanden en Linux-daemons op de bewaakte servers worden verzonden naar de Azure Monitor-service in de Cloud voor verwerking. Logica wordt toegepast op de ontvangen gegevens en de cloudservice registreert de gegevens. Met behulp van de informatie op het Wijzigingen bijhouden dash board kunt u eenvoudig de wijzigingen zien die zijn aangebracht in uw server infrastructuur.
+Wijzigingen in geïnstalleerde software, Windows-Services, Windows-REGI ster en-bestanden en Linux-daemons op de bewaakte servers worden verzonden naar de Azure Monitor-service in de Cloud voor verwerking. Logica wordt toegepast op de ontvangen gegevens en de gegevens worden vastgelegd door de cloudservice. Met behulp van de informatie op het Wijzigingen bijhouden dash board kunt u eenvoudig de wijzigingen zien die zijn aangebracht in uw server infrastructuur.
 
 > [!NOTE]
 > Azure Automation Wijzigingen bijhouden houdt wijzigingen in de virtuele machines bij. Zie de [wijzigings geschiedenis](../governance/resource-graph/how-to/get-resource-changes.md)van de Azure-resource grafiek om de wijzigingen in de Azure Resource Manager-eigenschappen bij te houden.
 
-## <a name="supported-windows-operating-systems"></a>Ondersteunde Windows-besturingssystemen
+## <a name="supported-windows-operating-systems"></a>Ondersteunde Windows-besturings systemen
 
-De volgende versies van het Windows-besturingssysteem worden officieel ondersteund voor de Windows-agent:
+De volgende versies van het Windows-besturings systeem worden officieel ondersteund voor de Windows-agent:
 
 * Windows Server 2008 R2 of hoger
 
-## <a name="supported-linux-operating-systems"></a>Ondersteunde Linux-besturingssystemen
+## <a name="supported-linux-operating-systems"></a>Ondersteunde Linux-besturings systemen
 
 De volgende Linux-distributies worden officieel ondersteund. De Linux-agent kan echter ook worden uitgevoerd op andere distributies die niet worden vermeld. Tenzij anders vermeld, worden alle secundaire releases ondersteund voor elke primaire versie die wordt vermeld.
 
@@ -65,7 +65,7 @@ Als u wijzigingen wilt bijhouden, moet u de Wijzigingen bijhouden-en inventaris 
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Wijzigingen bijhouden en inventaris configureren
 
-Ga voor meer informatie over het onboarden van computers naar de oplossing naar: [Onboarding van Automation-oplossingen](automation-onboard-solutions-from-automation-account.md). Wanneer u een computer hebt met de Wijzigingen bijhouden-en inventaris oplossing, kunt u de items configureren die moeten worden gevolgd. Wanneer u een nieuw bestand of register sleutel inschakelt om bij te houden, wordt deze ingeschakeld voor zowel Wijzigingen bijhouden als inventarisatie.
+Ga voor meer informatie over het onboarden van computers naar de oplossing naar: [onboarding Automation-oplossingen](automation-onboard-solutions-from-automation-account.md). Wanneer u een computer hebt met de Wijzigingen bijhouden-en inventaris oplossing, kunt u de items configureren die moeten worden gevolgd. Wanneer u een nieuw bestand of register sleutel inschakelt om bij te houden, wordt deze ingeschakeld voor zowel Wijzigingen bijhouden als inventarisatie.
 
 Voor het bijhouden van wijzigingen in bestanden in zowel Windows als Linux, worden MD5-hashes van de bestanden gebruikt. Deze hashes worden vervolgens gebruikt om te detecteren of er sinds de laatste inventarisatie een wijziging is aangebracht.
 
@@ -80,7 +80,7 @@ Azure Security Center heeft FIM (File Integrity Monitoring) op basis van Azure W
 Als u FIM al hebt ingeschakeld en de volledige Wijzigingen bijhouden-oplossing wilt uitproberen, moet u de volgende stappen uitvoeren. De instellingen worden niet verwijderd door dit proces.
 
 > [!NOTE]
-> Als u de volledige Wijzigingen bijhouden-oplossing inschakelt, kunnen er extra kosten in rekening worden gebracht. Zie [prijzen voor Automation](https://azure.microsoft.com/en-us/pricing/details/automation/)voor meer informatie.
+> Als u de volledige Wijzigingen bijhouden-oplossing inschakelt, kunnen er extra kosten in rekening worden gebracht. Zie [prijzen voor Automation](https://azure.microsoft.com/pricing/details/automation/)voor meer informatie.
 
 1. Verwijder de bewakings oplossing door te navigeren naar de werk ruimte en te zoeken in de [lijst met geïnstalleerde bewakings oplossingen](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions).
 2. Klik op de naam van de oplossing om de overzichts pagina te openen en klik vervolgens op verwijderen, zoals beschreven in [een bewakings oplossing verwijderen](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution).
@@ -95,13 +95,13 @@ Gebruik de volgende stappen om bestands tracering op Linux-computers te configur
 2. Selecteer op de pagina **Wijzigingen bijhouden** **Linux-bestanden**en klik vervolgens op **toevoegen** om een nieuw bestand toe te voegen aan de tracering.
 3. Voer op het **Linux-bestand voor wijzigingen bijhouden toevoegen**de informatie in voor het bestand of de map die u wilt bijhouden en klik op **Opslaan**.
 
-|Eigenschap  |Description  |
+|Eigenschap  |Beschrijving  |
 |---------|---------|
-|Enabled     | Hiermee wordt bepaald of de instelling wordt toegepast.        |
+|Ingeschakeld     | Hiermee wordt bepaald of de instelling wordt toegepast.        |
 |Itemnaam     | Beschrijvende naam van het bestand dat moet worden bijgehouden.        |
 |Groep     | Een groeps naam voor het logisch groeperen van bestanden.        |
 |Pad invoeren     | Het pad om het bestand te controleren. Bijvoorbeeld: "/etc/*. conf"       |
-|Type pad     | Type item dat moet worden bijgehouden, mogelijke waarden zijn bestand en Directory.        |
+|Padtype     | Type item dat moet worden bijgehouden, mogelijke waarden zijn bestand en Directory.        |
 |Recursie     | Bepaalt of recursie wordt gebruikt bij het zoeken naar het item dat moet worden bijgehouden.        |
 |Sudo gebruiken     | Deze instelling bepaalt of sudo wordt gebruikt bij het controleren op het item.         |
 |Koppelingen     | Deze instelling bepaalt hoe symbolische koppelingen worden afgehandeld bij het doorlopen van mappen.<br> **Negeren** : Hiermee worden symbolische koppelingen genegeerd en worden de bestanden/mappen waarnaar wordt verwezen, niet meegenomen.<br>**Follow** -volgt de symbolische koppelingen tijdens recursie en bevat ook de bestanden/mappen waarnaar wordt verwezen.<br>**Beheren** : volgt de symbolische koppelingen en staat het wijzigen van geretourneerde inhoud toe.     |
@@ -118,9 +118,9 @@ Gebruik de volgende stappen om het bijhouden van bestanden op Windows-computers 
 2. Selecteer op de pagina **Wijzigingen bijhouden** **Windows-bestanden**en klik vervolgens op **toevoegen** om een nieuw bestand toe te voegen om bij te houden.
 3. Voer op het **Windows-bestand voor wijzigingen bijhouden toevoegen**de informatie in voor het bestand dat u wilt bijhouden en klik op **Opslaan**.
 
-|Eigenschap  |Description  |
+|Eigenschap  |Beschrijving  |
 |---------|---------|
-|Enabled     | Hiermee wordt bepaald of de instelling wordt toegepast.        |
+|Ingeschakeld     | Hiermee wordt bepaald of de instelling wordt toegepast.        |
 |Itemnaam     | Beschrijvende naam van het bestand dat moet worden bijgehouden.        |
 |Groep     | Een groeps naam voor het logisch groeperen van bestanden.        |
 |Pad invoeren     | Het pad voor het controleren op het bestand, bijvoorbeeld: "C:\temp\\\*.txt"<br>U kunt ook omgevingsvariabelen gebruiken zoals ' %winDir%\System32\\\*. * "       |
@@ -150,12 +150,12 @@ Gebruik de volgende stappen om het bijhouden van register sleutels op Windows-co
 2. Selecteer op de pagina **Wijzigingen bijhouden** **Windows-REGI ster**en klik vervolgens op **toevoegen** om een nieuwe register sleutel toe te voegen die u wilt bijhouden.
 3. Voer in het **Windows-REGI ster voor wijzigingen bijhouden toevoegen**de informatie in voor de sleutel die u wilt bijhouden en klik op **Opslaan**.
 
-|Eigenschap  |Description  |
+|Eigenschap  |Beschrijving  |
 |---------|---------|
-|Enabled     | Hiermee wordt bepaald of de instelling wordt toegepast.        |
+|Ingeschakeld     | Hiermee wordt bepaald of de instelling wordt toegepast.        |
 |Itemnaam     | Beschrijvende naam van de register sleutel die moet worden bijgehouden.        |
 |Groep     | Een groeps naam voor het logisch groeperen van register sleutels.        |
-|Windows-registersleutel   | Het pad om de register sleutel te controleren. Bijvoorbeeld: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup      |
+|Windows-registersleutel   | Het pad om de register sleutel te controleren. Bijvoorbeeld: "HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User shell Folders\Common opstarten"      |
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -176,7 +176,7 @@ Andere beperkingen:
 De Wijzigingen bijhouden oplossing ondervindt momenteel de volgende problemen:
 
 * Hotfix-updates worden niet verzameld op computers met Windows Server 2016 core RS3.
-* Linux-daemons kunnen een gewijzigde status tonen, zelfs als er geen wijzigingen zijn. Dit komt door de manier waarop het veld `SvcRunLevels` wordt vastgelegd.
+* Linux-daemons kunnen een gewijzigde status tonen, zelfs als er geen wijzigingen zijn. Dit komt door de manier waarop het `SvcRunLevels` veld wordt vastgelegd.
 
 ## <a name="change-tracking-data-collection-details"></a>Details van het verzamelen van Wijzigingen bijhouden gegevens
 
@@ -187,7 +187,7 @@ In de volgende tabel wordt de frequentie van gegevens verzameling voor de typen 
 | Windows-REGI ster | 50 minuten |
 | Windows-bestand | 30 minuten |
 | Linux-bestand | 15 minuten |
-| Windows-services | 10 seconden tot 30 minuten</br> Prijs 30 minuten |
+| Windows-services | 10 seconden tot 30 minuten</br> Standaard: 30 minuten |
 | Linux-daemons | 5 minuten |
 | Windows-software | 30 minuten |
 | Linux-software | 5 minuten |
@@ -196,12 +196,12 @@ De volgende tabel bevat de limieten voor het bijgehouden item per computer voor 
 
 | **Resource** | **Limiet**| **Opmerkingen** |
 |---|---|---|
-|File|500||
+|Bestand|500||
 |Register|250||
 |Windows-software|250|Bevat geen software-hotfixes|
 |Linux-pakketten|1250||
 |Services|250||
-|Daemon|250||
+|daemon|250||
 
 Het gemiddelde Log Analytics gegevens gebruik voor een machine met Wijzigingen bijhouden en inventaris is ongeveer 40MB per maand. Deze waarde is alleen een benadering en kan worden gewijzigd op basis van uw omgeving. Het is raadzaam om uw omgeving te controleren om precies het gebruik te zien dat u hebt.
 
@@ -247,9 +247,9 @@ De volgende adressen zijn specifiek vereist voor Wijzigingen bijhouden. De commu
 
 |Open bare Azure  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
 
 ## <a name="use-change-tracking"></a>Wijzigingen bijhouden gebruiken
@@ -268,11 +268,11 @@ Als u op een wijziging of gebeurtenis klikt, wordt gedetailleerde informatie ove
 
 Naast de details die in de portal zijn opgenomen, kunnen Zoek opdrachten worden uitgevoerd op basis van de logboeken. Klik op **log Analytics**op de pagina **Wijzigingen bijhouden** om de pagina **Logboeken** te openen.
 
-### <a name="sample-queries"></a>Voorbeeldquery's
+### <a name="sample-queries"></a>Voorbeeld query's
 
 De volgende tabel bevat voor beelden van zoek opdrachten in Logboeken voor wijzigings records die door deze oplossing worden verzameld:
 
-|Query’s uitvoeren  |Description  |
+|Query’s uitvoeren  |Beschrijving  |
 |---------|---------|
 |ConfigurationData<br>&#124;Where ConfigDataType = = "WindowsServices" and SvcStartupType = = "auto"<br>&#124;Where SvcState = = "stopped"<br>&#124;arg_max (TimeGenerated, *) samenvatten op software naam, computer         | Toont de meest recente inventaris records voor Windows-services die zijn ingesteld op auto, maar die zijn gerapporteerd als gestopt<br>De resultaten zijn beperkt tot de meest recente record voor die software naam en computer      |
 |ConfigurationChange<br>&#124;waarbij ConfigChangeType = = "software" en ChangeCategory = = "verwijderd"<br>&#124;order by TimeGenerated desc|Toont de wijzigings records voor verwijderde software|
@@ -281,11 +281,11 @@ De volgende tabel bevat voor beelden van zoek opdrachten in Logboeken voor wijzi
 
 Een belang rijke mogelijkheid van Wijzigingen bijhouden en inventaris is de mogelijkheid om een waarschuwing te sturen over de configuratie status en eventuele wijzigingen in de configuratie status van uw hybride omgeving.
 
-In het volgende voor beeld ziet u in de scherm afbeelding dat het bestand `C:\windows\system32\drivers\etc\hosts` op een machine is gewijzigd. Dit bestand is belang rijk omdat het hosts-bestand door Windows wordt gebruikt voor het omzetten van hostnamen naar IP-adressen en voor rang heeft boven zelfs DNS, wat kan leiden tot verbindings problemen of het omleiden van verkeer naar kwaad aardige of anderszins gevaarlijke websites.
+In het volgende voor beeld ziet u in de scherm opname dat de bestands `C:\windows\system32\drivers\etc\hosts` op een machine is gewijzigd. Dit bestand is belang rijk omdat het hosts-bestand door Windows wordt gebruikt voor het omzetten van hostnamen naar IP-adressen en voor rang heeft boven zelfs DNS, wat kan leiden tot verbindings problemen of het omleiden van verkeer naar kwaad aardige of anderszins gevaarlijke websites.
 
 ![Een grafiek met de wijziging van het bestand hosts](./media/change-tracking/changes.png)
 
-Ga naar zoeken in Logboeken om deze wijziging verder te analyseren en klik op **log Analytics**. Zoek in logboek zoeken naar inhoud wijzigingen in het bestand hosts met de query `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Deze query zoekt naar wijzigingen die een wijziging van de bestands inhoud bevatten voor bestanden waarvan het volledige pad het woord hosts bevat. U kunt ook om een specifiek bestand vragen door het pad naar de volledig gekwalificeerde vorm te wijzigen (bijvoorbeeld `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`).
+Ga naar zoeken in Logboeken om deze wijziging verder te analyseren en klik op **log Analytics**. Zoek in logboek zoeken naar inhoud wijzigingen in het bestand hosts met de query `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Deze query zoekt naar wijzigingen die een wijziging van de bestands inhoud bevatten voor bestanden waarvan het volledige pad het woord hosts bevat. U kunt ook een specifiek bestand vragen door het pad naar het volledige formulier (zoals `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`) te wijzigen.
 
 Nadat de query de gewenste resultaten heeft geretourneerd, klikt u op de knop **nieuwe waarschuwings regel** in de zoek functie voor Logboeken om de pagina voor het maken van een waarschuwing te openen. U kunt ook naar deze ervaring navigeren via **Azure monitor** in de Azure Portal. Controleer bij het maken van de waarschuwing de query opnieuw en wijzig de logica van de waarschuwing. In dit geval moet de waarschuwing worden geactiveerd als er zelfs één wijziging wordt gedetecteerd op alle computers in de omgeving.
 
@@ -301,16 +301,16 @@ Nadat alle para meters en logica zijn ingesteld, kunnen we de waarschuwing Toep 
 
 Het is een goede toepassing van waarschuwingen voor Wijzigingen bijhouden-of inventaris gegevens, maar er zijn veel meer scenario's voor waarschuwingen, waaronder de cases die zijn gedefinieerd samen met hun voorbeeld query's in de onderstaande sectie.
 
-|Query’s uitvoeren  |Description  |
+|Query’s uitvoeren  |Beschrijving  |
 |---------|---------|
-|ConfigurationChange <br>&#124;waarbij ConfigChangeType = = "files" en FileSystemPath bevat "c: \\windows @ no__t-2system32 @ no__t-3drivers @ no__t-4"|Handig voor het bijhouden van wijzigingen in essentiële bestanden van het systeem|
-|ConfigurationChange <br>&#124;waarbij FieldsChanged ' FileContentChecksum ' en FileSystemPath = = ' c: \\windows @ no__t-2system32 @ no__t-3drivers @ no__t-4etc @ no__t-5hosts ' bevat.|Handig voor het bijhouden van wijzigingen in sleutel configuratie bestanden|
+|ConfigurationChange <br>&#124;waarbij ConfigChangeType = = "files" en FileSystemPath bevat "c:\\Windows\\System32\\Stuur Programma's\\"|Handig voor het bijhouden van wijzigingen in essentiële bestanden van het systeem|
+|ConfigurationChange <br>&#124;waarbij FieldsChanged ' FileContentChecksum ' en FileSystemPath = = ' c:\\Windows\\System32\\Stuur Programma's\\etc\\hosts '|Handig voor het bijhouden van wijzigingen in sleutel configuratie bestanden|
 |ConfigurationChange <br>&#124;Where ConfigChangeType = = "WindowsServices" en SvcName bevat "W3SVC" en SvcState = "gestopt"|Handig voor het bijhouden van wijzigingen in essentiële systeem services|
 |ConfigurationChange <br>&#124;Where ConfigChangeType = = "daemons" en SvcName bevat "SSH" en SvcState! = "running"|Handig voor het bijhouden van wijzigingen in essentiële systeem services|
 |ConfigurationChange <br>&#124;Where ConfigChangeType = = "software" and ChangeCategory = = "Added"|Handig voor omgevingen waarvoor software configuraties moeten worden vergrendeld|
 |ConfigurationData <br>&#124;waarbij softwarenaam "Monitoring Agent" en CurrentVersion! = "8.0.11081.0" bevat|Nuttig als u wilt zien op welke computers een verouderde of niet-compatibele software versie is geïnstalleerd. Het rapporteert de laatst gerapporteerde configuratie status, niet de wijzigingen.|
-|ConfigurationChange <br>&#124;Where RegistryKey = = @ "HKEY_LOCAL_MACHINE @ no__t-1SOFTWARE @ no__t-2Microsoft @ no__t-3Windows @ no__t-4CurrentVersion @ no__t-5QualityCompat"| Handig voor het bijhouden van wijzigingen in essentiële anti-virus sleutels|
-|ConfigurationChange <br>&#124;waar RegistryKey bevat @ "HKEY_LOCAL_MACHINE @ no__t-1SYSTEM @ no__t-2CurrentControlSet @ no__t-3Services @ no__t-4SharedAccess @ no__t-5Parameters @ no__t-6FirewallPolicy"| Handig voor het bijhouden van wijzigingen in Firewall-instellingen|
+|ConfigurationChange <br>&#124;waar RegistryKey = = @ "HKEY_LOCAL_MACHINE\\SOFTWARE\\micro soft\\Windows\\CurrentVersion\\QualityCompat"| Handig voor het bijhouden van wijzigingen in essentiële anti-virus sleutels|
+|ConfigurationChange <br>&#124;waarbij RegistryKey HKEY_LOCAL_MACHINE\\systeem bevat\\CurrentControlSet\\Services\\SharedAccess\\para meters\\FirewallPolicy "| Handig voor het bijhouden van wijzigingen in Firewall-instellingen|
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,8 +5,6 @@
   items:
     - name: Meer informatie over uw factuur
       href: billing-understand-your-bill.md
-    - name: Meer informatie over uw EA-factuur
-      href: billing-understand-your-bill-ea.md
     - name: Meer informatie over uw factuur - Microsoft-klantovereenkomst
       href: billing-mca-understand-your-bill.md
     - name: Meer informatie over uw factuur - Microsoft-partnerovereenkomst
@@ -159,6 +157,8 @@
       items:
         - name: Aan de slag in de Azure EA-portal
           href: billing-ea-portal-get-started.md
+        - name: Meer informatie over uw EA-factuur
+          href: billing-understand-your-bill-ea.md
         - name: EA-rollen in Azure
           href: billing-understand-ea-roles.md
         - name: Beheer van Azure EA-portal

@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: b265ff8831275a9f4b84f7dac28b82ae75630f8b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595193"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889789"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Herstel na nood gevallen en failover van het opslag account (preview) in Azure Storage
 
@@ -47,8 +47,8 @@ Andere Azure Storage redundantie opties zijn onder meer zone-redundante opslag (
 
 Het is belang rijk om uw toepassing te ontwerpen voor hoge Beschik baarheid vanaf het begin. Raadpleeg deze Azure-bronnen voor hulp bij het ontwerpen van uw toepassing en het plannen van nood herstel:
 
-* [Flexibele toepassingen ontwerpen voor Azure](https://docs.microsoft.com/azure/architecture/resiliency/): een overzicht van de belangrijkste concepten voor het ontwikkelen van Maxi maal beschik bare toepassingen in Azure.
-* [Beschikbaarheids controlelijst](https://docs.microsoft.com/azure/architecture/checklist/availability): een controle lijst voor het controleren of uw toepassing de aanbevolen ontwerp procedures voor hoge Beschik baarheid implementeert.
+* [Flexibele toepassingen ontwerpen voor Azure](/azure/architecture/checklist/resiliency-per-service): een overzicht van de belangrijkste concepten voor het ontwikkelen van Maxi maal beschik bare toepassingen in Azure.
+* [Beschikbaarheids controlelijst](/azure/architecture/checklist/resiliency-per-service): een controle lijst voor het controleren of uw toepassing de aanbevolen ontwerp procedures voor hoge Beschik baarheid implementeert.
 * [Ontwerpen van Maxi maal beschik bare toepassingen met Ra-GRS](storage-designing-ha-apps-with-ragrs.md): ontwerp richt lijnen voor het ontwikkelen van toepassingen om te profiteren van Ra-GRS.
 * [Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob-opslag](../blobs/storage-create-geo-redundant-storage.md): een zelf studie waarin wordt uitgelegd hoe u een Maxi maal beschik bare toepassing bouwt die automatisch schakelt tussen eind punten als storingen en herstel bewerkingen worden gesimuleerd. 
 
@@ -120,9 +120,9 @@ U kunt een failover van een account initiëren vanuit de Azure Portal, Power she
 Account-failover is beschikbaar als preview-versie voor alle klanten die gebruikmaken van GRS of RA-GRS met Azure Resource Manager-implementaties. Algemeen gebruik v1, algemeen v2 en Blob Storage-account typen worden ondersteund. de failover van het account is momenteel beschikbaar in deze regio's:
 
 - Azië - oost
-- Azië (zuidoost)
-- Australië Oost
-- Australië Zuidoost
+- Azië - zuidoost
+- Australië - oost
+- Australië - zuidoost
 - US - centraal
 - US - oost 2
 - US - west-centraal
@@ -180,7 +180,7 @@ De volgende functies of services worden niet ondersteund voor account-failover v
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Gegevens kopiëren als alternatief voor failover
 
-Als uw opslag account is geconfigureerd voor RA-GRS, hebt u lees toegang tot uw gegevens via het secundaire eind punt. Als u de voor keur geeft aan een failover in het geval van een storing in de primaire regio, kunt u hulpprogram ma's zoals [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)of de [Azure-bibliotheek voor gegevens verplaatsing](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) gebruiken om gegevens van uw opslag account in de secundaire regio naar een andere te kopiëren opslag account in een regio waarin het probleem niet optreedt. U kunt vervolgens uw toepassingen naar dat opslag account laten wijzen voor zowel lees-als schrijf Beschik baarheid.
+Als uw opslag account is geconfigureerd voor RA-GRS, hebt u lees toegang tot uw gegevens via het secundaire eind punt. Als u de voor keur geeft aan een failover in het geval van een storing in de primaire regio, kunt u hulpprogram ma's zoals [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)of de [Azure-bibliotheek voor gegevens verplaatsing](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) gebruiken om gegevens van uw opslag account in de secundaire regio te kopiëren naar een ander opslag account in een andere regio. U kunt vervolgens uw toepassingen naar dat opslag account laten wijzen voor zowel lees-als schrijf Beschik baarheid.
 
 ## <a name="microsoft-managed-failover"></a>Door micro soft beheerde failover
 

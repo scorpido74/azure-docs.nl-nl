@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 11e2a02277a47e070f91e8f057f0d8493235c5ce
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 183b85ad8a61c76942981ebb764512b8a090b0a8
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821352"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890447"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Communiceren met uw IoT-hub met behulp van het MQTT-Protocol
 
@@ -132,7 +132,7 @@ Deze opslag plaats bevat:
 
 • DeviceTwinMQTTWin32: bevat code voor het zoeken naar en abonneren op de dubbele gebeurtenissen van een apparaat in de Azure IoT hub op een Windows-computer.
 
-• PnPMQTTWin32: bevat code voor het verzenden van een telemetrie-bericht met IoT plug & Play preview-mogelijkheden voor apparaten naar een Azure IoT hub, gebouwd en uitgevoerd op een Windows-computer. Meer informatie over IoT plug & [hier](https://docs.microsoft.com/en-us/azure/iot-pnp/overview-iot-plug-and-play) afspelen
+• PnPMQTTWin32: bevat code voor het verzenden van een telemetrie-bericht met IoT plug & Play preview-mogelijkheden voor apparaten naar een Azure IoT hub, gebouwd en uitgevoerd op een Windows-computer. Meer informatie over IoT plug & [hier](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) afspelen
 
 **Voor Linux:**
 
@@ -142,7 +142,7 @@ Deze opslag plaats bevat:
 
 **Voor mosquito_pub:**
 
-• Deze map bevat twee voor beelden van opdrachten die worden gebruikt met het hulp programma mosquitto_pub Utility van Mosquitto.org.
+• Deze map bevat twee voor beelden van opdrachten die worden gebruikt met mosquitto_pub hulp programma dat wordt meegeleverd door Mosquitto.org.
 
 Mosquitto_sendmessage: een eenvoudig tekst bericht verzenden naar een Azure IoT hub die fungeert als een apparaat.
 
@@ -181,7 +181,7 @@ pip install paho-mqtt
 
 Implementeer vervolgens de client in een python-script. Vervang de tijdelijke aanduidingen als volgt:
 
-* `<local path to digicert.cer>` is het pad naar een lokaal bestand dat het DigiCert Baltimore-basis certificaat bevat. U kunt dit bestand maken door de certificaat gegevens te kopiëren van [certificaten. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) in de Azure IOT SDK voor c. Neem de regels `-----BEGIN CERTIFICATE-----` en `-----END CERTIFICATE-----`, verwijder de `"` markeringen aan het begin en het einde van elke regel en verwijder de `\r\n` tekens op de einde van elke regel.
+* `<local path to digicert.cer>` is het pad naar een lokaal bestand dat het DigiCert Baltimore-basis certificaat bevat. U kunt dit bestand maken door de certificaat gegevens te kopiëren van [certificaten. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) in de Azure IOT SDK voor c. Neem de regels `-----BEGIN CERTIFICATE-----` en `-----END CERTIFICATE-----`, verwijder de `"` markeringen aan het begin en het einde van elke regel en verwijder de `\r\n` tekens aan het einde van elke regel.
 
 * `<device id from device registry>` is de ID van een apparaat dat u hebt toegevoegd aan uw IoT-hub.
 
@@ -361,7 +361,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
                rid, twin_reported_property_patch, qos=0)
 ```
 
-Bij het slagen van dubbele gerapporteerde update-bewerking hierboven, heeft het publicatie bericht van IoT Hub het volgende onderwerp: `$iothub/twin/res/204/?$rid=1&$version=6`, waarbij `204` de status code is die aangeeft dat het is geslaagd, `$rid=1` overeenkomt met de aanvraag-ID van het apparaat in de code en `$version` overeenkomen met de versie van de sectie gerapporteerde eigenschappen van Device apparaatdubbels na de update.
+Bij het slagen van dubbele gerapporteerde update-bewerking hierboven heeft het publicatie bericht van IoT Hub het volgende onderwerp: `$iothub/twin/res/204/?$rid=1&$version=6`, waarbij `204` de status code is die het succes aangeeft, `$rid=1` overeenkomt met de aanvraag-ID die is opgegeven door het apparaat in de code en `$version` overeenkomt met de versie van de sectie gerapporteerde eigenschappen van Device apparaatdubbels na de update.
 
 Zie [de ontwikkelaars handleiding voor Device apparaatdubbels](iot-hub-devguide-device-twins.md)voor meer informatie.
 

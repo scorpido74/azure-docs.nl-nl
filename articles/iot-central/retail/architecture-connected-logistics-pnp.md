@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 1940f02fdf9badcf99ef85a2ab02ac9099cc1775
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 797488632f04af9a170f05590154e50310570b28
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615380"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890726"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>Architectuur van IoT Central verbonden logistiek-toepassings sjabloon
 
@@ -47,4 +47,4 @@ IoT Central-platform biedt uitgebreide uitbreidings opties via continue gegevens
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het implementeren van een sjabloon voor een [verbonden logistiek-oplossing](./tutorial-iot-central-connected-logistics-pnp.md)
 * Meer informatie over [IOT Central Retail-sjablonen](./overview-iot-central-retail-pnp.md)
-* Raadpleeg [IOT Central Overview](../core/overview-iot-central-pnp.md) voor meer informatie over IOT Central
+* Raadpleeg [IOT Central Overview](../preview/overview-iot-central.md) voor meer informatie over IOT Central

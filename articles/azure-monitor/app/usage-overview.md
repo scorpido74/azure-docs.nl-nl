@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2019
-ms.openlocfilehash: 7131cf1902cc92fed66ae4db59449700973c6913
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: aa37717c5037294c2b5ec61f7815b007cbf74992
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899439"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884831"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Gebruiksanalyse met Application Insights
 
@@ -73,7 +73,7 @@ Retentie helpt u te begrijpen hoe vaak uw gebruikers terugkeren naar het gebruik
 - Formulier hypo Thesen op basis van echte gebruikers gegevens 
 - Bepalen of er een probleem is met het bewaren van uw product 
 
-![Retentie](./media/usage-overview/retention.png) 
+![Bewaartermijn](./media/usage-overview/retention.png) 
 
 Met de besturings elementen voor retentie bovenaan kunt u specifieke gebeurtenissen en tijds bereik definiëren voor het berekenen van de Bewaar periode. De grafiek in het midden geeft een visuele weer gave van het algemene Bewaar percentage op basis van het opgegeven tijds bereik. In de grafiek aan de onderkant staat een afzonderlijke Bewaar periode in een bepaalde tijd. Met dit detail niveau kunt u begrijpen wat uw gebruikers doen en wat van invloed kan zijn op het retour neren van gebruikers met een gedetailleerdere granulariteit.  
 
@@ -125,7 +125,7 @@ Voor deze techniek koppelt u afzonderlijke eigenschaps waarden aan alle telemetr
 
 Filter en Splits uw gegevens op de eigenschaps waarden in de Application Insights Portal, zodat u de verschillende versies kunt vergelijken.
 
-[Stel hiervoor een initialisatie functie voor telemetrie](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)in:
+[Stel hiervoor een initialisatie functie voor telemetrie](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)in:
 
 **ASP.NET-Apps**
 

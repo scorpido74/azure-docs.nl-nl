@@ -1,6 +1,6 @@
 ---
 title: Routerings resultaten voor Azure IoT Hub-berichten weer geven (.NET) | Microsoft Docs
-description: Resultaten van de Routing van Azure IoT Hub-berichten weer geven
+description: Nadat u alle resources hebt ingesteld met behulp van deel 1 van de zelf studie, voegt u de mogelijkheid toe om berichten te routeren naar Azure Stream Analytics en de resultaten in PowerBI weer te geven.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 6d40f7d81faa77a48a32aadefdf44ed89e184efb
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900777"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890395"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Zelf studie: deel 2-de gerouteerde berichten weer geven
 
@@ -34,7 +34,7 @@ Dit zijn de regels voor de route ring van berichten. Deze zijn ingesteld in deel
 
 Nu maakt u de resources waarnaar de berichten worden doorgestuurd, voert u een app uit om berichten naar de hub te verzenden en bekijkt u de route ring in actie.
 
-## <a name="create-a-logic-app"></a>Een logica-app maken  
+## <a name="create-a-logic-app"></a>Een logische app maken  
 
 De Service Bus-wachtrij moet worden gebruikt voor het ontvangen van berichten die zijn aangeduid als kritiek. Installeer een logische app die wordt geactiveerd om de Service Bus-wachtrij te bewaken en een e-mailbericht te verzenden wanneer een bericht wordt toegevoegd aan de wachtrij.
 
@@ -90,7 +90,7 @@ De Service Bus-wachtrij moet worden gebruikt voor het ontvangen van berichten di
 
 9. Selecteer **Opslaan**. Sluit daarna de ontwerpfunctie voor de logische app af.
 
-## <a name="set-up-azure-stream-analytics"></a>Azure Stream Analytics instellen
+## <a name="set-up-azure-stream-analytics"></a>Azure Stream Analytics installeren
 
 Als u de gegevens in een Power BI-visualisatie wilt zien, stelt u eerst een Stream Analytics-taak in om de gegevens op te halen. Houd er rekening mee dat alleen de berichten waarin het **niveau** **normaal** is, worden verzonden naar het standaardeindpunt en door de Stream Analytics-taak voor de Power BI-visualisatie worden opgehaald.
 
@@ -174,7 +174,7 @@ Als u de gegevens in een Power BI-visualisatie wilt zien, stelt u eerst een Stre
 
 5. Sluit het deelvenster Query. U keert terug naar de weer gave van de resources in de resource groep. Selecteer de Stream Analytics taak. In deze zelfstudie heet deze taak **contosoJob**.
 
-### <a name="run-the-stream-analytics-job"></a>De Stream Analytics-taak uitvoeren
+### <a name="run-the-stream-analytics-job"></a>Voer de Stream Analytics-taak uit
 
 Selecteer in de taak Stream Analytics **start** > **nu** > **starten**. Zodra de taak kan worden gestart, wordt de taakstatus veranderd van **Gestopt** naar **In uitvoering**.
 
@@ -186,7 +186,7 @@ In deel 1 van deze zelf studie stelt u een apparaat in om te simuleren met behul
 
 Met deze toepassing worden berichten verzonden voor elk van de verschillende routerings methoden voor berichten. Er is ook een map in de down load die de volledige Azure Resource Manager sjabloon en het parameter bestand bevat, evenals de Azure CLI-en Power shell-scripts.
 
-Als u de bestanden niet hebt gedownload uit de opslag plaats in deel 1 van deze zelf studie, kunt u deze nu downloaden vanuit [IOT Device simulatie](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Als u deze koppeling selecteert, wordt een opslag plaats met meerdere toepassingen gedownload. de oplossing die u zoekt, is IOT-hub/zelf studies/Routing/IoT_SimulatedDevice. SLN. 
+Als u de bestanden niet hebt gedownload uit de opslag plaats in deel 1 van deze zelf studie, kunt u deze nu downloaden vanuit [IOT Device simulatie](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Als u deze koppeling selecteert, wordt een opslag plaats met meerdere toepassingen gedownload. de oplossing die u zoekt is IOT-hub/zelf studies/route ring/IoT_SimulatedDevice. SLN. 
 
 Dubbel klik op het oplossings bestand (IoT_SimulatedDevice. SLN) om de code te openen in Visual Studio en open vervolgens Program.cs. Vervang `{your hub name}` door de hostnaam van de IoT Hub. De indeling van de hostnaam van de IoT Hub is **{iot-hub-name} .azure-devices.net**. Voor deze zelfstudie is de naam van de hubhost **ContosoTestHub.azure devices.net**. Vervang vervolgens `{your device key}` door de apparaatsleutel die u eerder hebt opgeslagen bij het instellen van het gesimuleerde apparaat. 
 

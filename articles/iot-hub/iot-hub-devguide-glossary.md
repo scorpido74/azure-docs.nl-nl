@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub-woordenlijst van termen | Microsoft Docs
-description: Handleiding voor ontwikkelaars - een verklarende woordenlijst van termen met betrekking tot Azure IoT Hub.
+title: Woorden lijst voor Azure IoT Hub termen | Microsoft Docs
+description: 'Ontwikkelaars handleiding: een verklarende woorden lijst met een aantal algemene termen die worden gebruikt in de Azure IoT Hub-artikelen.'
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -8,259 +8,259 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: 6f89e27b06179c33857d581c0c6e3fc78c683d48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c4215933b3816b445c55282bae9a36e88c0311f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119806"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890530"
 ---
-# <a name="glossary-of-iot-hub-terms"></a>Verklarende woordenlijst voor IoT Hub
-In dit artikel worden enkele van de algemene termen gebruikt in de IoT Hub-artikelen.
+# <a name="glossary-of-iot-hub-terms"></a>Woorden lijst met IoT Hub voor waarden
+In dit artikel vindt u een aantal algemene termen die in de IoT Hub-artikelen worden gebruikt.
 
-## <a name="advanced-message-queueing-protocol"></a>Geavanceerde Message Queueing Protocol
-[Advanced Message Queueing Protocol (AMQP)](https://www.amqp.org/) is een van de berichten die protocollen [IoT-Hub](#iot-hub) ondersteunt om te communiceren met apparaten. Zie voor meer informatie over de messaging-protocollen die IoT Hub worden ondersteund, [berichten verzenden en ontvangen met IoT Hub](iot-hub-devguide-messaging.md).
+## <a name="advanced-message-queueing-protocol"></a>Protocol voor geavanceerde berichten wachtrijen
+[Advanced Message queueing Protocol (AMQP)](https://www.amqp.org/) is een van de berichten protocollen die [IOT hub](#iot-hub) ondersteunt voor het communiceren met apparaten. Zie [berichten verzenden en ontvangen met IOT hub](iot-hub-devguide-messaging.md)voor meer informatie over de berichten protocollen die door IOT hub worden ondersteund.
 
-## <a name="automatic-device-management"></a>Automatic Device Management
-Automatische Apparaatbeheer in Azure IoT Hub automatiseert veel herhaalde en complexe taken van grote apparaat vloten via het geheel van de levenscycli hiervan te beheren. Met automatisch beheer van apparaten, kunt u een set met apparaten op basis van hun eigenschappen als doel, definieert een gewenste configuratie en IoT Hub-apparaten bijgewerkt wanneer ze bereik binnenkomen, kunnen.  Bestaat uit [automatische apparaatconfiguraties](iot-hub-auto-device-config.md) en [IoT Edge-automatische implementaties](../iot-edge/how-to-deploy-monitor.md).
+## <a name="automatic-device-management"></a>Automatisch Apparaatbeheer
+Automatische Apparaatbeheer in azure IoT Hub automatiseert veel van de herhaalde en complexe taken van het beheer van grote apparaat vloots in de hele levens cyclus. Met automatisch Apparaatbeheer kunt u een set apparaten op basis van hun eigenschappen richten, een gewenste configuratie definiëren en apparaten IoT Hub bijwerken wanneer deze binnen het bereik vallen.  Bestaat uit [automatische configuraties van apparaten](iot-hub-auto-device-config.md) en [IOT Edge automatische implementaties](../iot-edge/how-to-deploy-monitor.md).
 
-## <a name="automatic-device-configuration"></a>Configuratie van automatische inrichting
-Uw back-end oplossing kunt [automatische apparaatconfiguraties](iot-hub-auto-device-config.md) gewenste eigenschappen toewijzen aan een set [apparaatdubbels](#device-twin) en status rapporteren met behulp van metrische systeemmeetgegevens en aangepaste metrische gegevens. 
+## <a name="automatic-device-configuration"></a>Automatische apparaatconfiguratie
+De back-end van de oplossing kan [automatische hardwareconfiguraties](iot-hub-auto-device-config.md) gebruiken om de gewenste eigenschappen toe te wijzen aan een set [apparaatdubbels](#device-twin) en de status van het rapport met behulp van systeem metrieken en aangepaste metrische gegevens. 
 
-## <a name="azure-classic-cli"></a>Klassieke versie van Azure CLI
-De [Azure klassieke CLI](../cli-install-nodejs.md) is een hulpprogramma voor meerdere platformen, open-source, op basis van shell-opdracht voor het maken en beheren van resources in Microsoft Azure. Deze versie van de CLI moet worden gebruikt voor alleen voor klassieke implementaties.
+## <a name="azure-classic-cli"></a>Klassieke versie van de Azure CLI
+De [klassieke Azure-cli](../cli-install-nodejs.md) is een platformoverschrijdende, open-source, op shell gebaseerd, opdracht hulpprogramma voor het maken en beheren van resources in Microsoft Azure. Deze versie van de CLI moet alleen voor klassieke implementaties worden gebruikt.
 
 ## <a name="azure-cli"></a>Azure-CLI
-De [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) is een hulpprogramma voor meerdere platformen, open-source, op basis van shell-opdracht voor het maken en beheren van resources in Microsoft Azure.
+De [Azure cli](https://docs.microsoft.com/cli/azure/install-az-cli2) is een platformoverschrijdende, open-source, op shell gebaseerd, opdracht hulpprogramma voor het maken en beheren van resources in Microsoft Azure.
 
 
-## <a name="azure-iot-device-sdks"></a>Azure IoT device SDK 's
-Er zijn _apparaat-SDK's_ beschikbaar voor meerdere talen waarmee u kunt maken [apps op apparaten](#device-app) die communiceren met een IoT-hub. De IoT Hub-zelfstudies laten zien hoe u deze apparaat-SDK's gebruiken. U vindt de broncode en meer informatie over de apparaat-SDK's in deze GitHub [opslagplaats](https://github.com/Azure/azure-iot-sdks).
+## <a name="azure-iot-device-sdks"></a>Sdk's van Azure IoT-apparaat
+Er zijn _apparaat-sdk's_ beschikbaar voor meerdere talen waarmee u [apps](#device-app) kunt maken die communiceren met een IOT-hub. De IoT Hub zelf studies laten zien hoe u deze apparaat-Sdk's kunt gebruiken. U vindt de bron code en meer informatie over de Sdk's van het apparaat in deze GitHub- [opslag plaats](https://github.com/Azure/azure-iot-sdks).
 
-## <a name="azure-iot-service-sdks"></a>Azure IoT service SDK 's
-Er zijn _service-SDK's_ beschikbaar voor meerdere talen waarmee u kunt maken [back-end-apps](#back-end-app) die communiceren met een IoT-hub. De IoT Hub-zelfstudies laten zien hoe u deze service-SDK's gebruiken. U vindt de broncode en meer informatie over de service-SDK's in deze GitHub [opslagplaats](https://github.com/Azure/azure-iot-sdks).
+## <a name="azure-iot-service-sdks"></a>Sdk's van Azure IoT-service
+Er zijn _service-sdk's_ beschikbaar voor meerdere talen waarmee u [back-end-apps](#back-end-app) kunt maken die communiceren met een IOT-hub. De IoT Hub zelf studies laten zien hoe u deze service-Sdk's kunt gebruiken. U vindt de bron code en meer informatie over de Sdk's van de service in deze GitHub- [opslag plaats](https://github.com/Azure/azure-iot-sdks).
 
 ## <a name="azure-iot-tools"></a>Azure IoT Tools
-De [hulpprogramma's voor Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) is een platformoverschrijdende, open-source Visual Studio Code-extensie die helpt u bij het beheren van Azure IoT Hub en apparaten in VS Code. Met Azure IoT-hulpprogramma's kunnen IoT-ontwikkelaars ontwikkelen met IoT-project in VS Code eenvoudig.
+De [Azure IOT-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) is een platformoverschrijdende, open-source Visual Studio code-extensie waarmee u Azure IOT hub en-apparaten kunt beheren in VS code. Met Azure IoT-Hulpprogram Ma's kunnen IoT-ontwikkel aars IoT-project met gemak ontwikkelen in VS code.
 
 ## <a name="azure-portal"></a>Azure Portal
-De [Microsoft Azure portal](https://portal.azure.com) is een centrale plaats waar u kunt inrichten en beheren van uw Azure-resources. De inhoud met behulp van georganiseerd _blades_.
+De [Microsoft Azure-Portal](https://portal.azure.com) is een centrale locatie waar u uw Azure-resources kunt inrichten en beheren. De inhoud wordt ingedeeld met behulp van _Blades_.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell](/powershell/azure/overview) is een verzameling van cmdlets die u gebruiken kunt voor het beheren van Azure met Windows PowerShell. U kunt de cmdlets gebruiken om te maken, testen, implementeren en beheren van oplossingen en services die worden geleverd via het Azure-platform.
+[Azure PowerShell](/powershell/azure/overview) is een verzameling cmdlets die u kunt gebruiken om Azure te beheren met Windows Power shell. U kunt de-cmdlets gebruiken voor het maken, testen, implementeren en beheren van oplossingen en services die via het Azure-platform worden geleverd.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) kunt u werken met de resources in uw oplossing als een groep. U kunt implementeren, bijwerken of verwijderen van de resources voor uw oplossing in een enkele, gecoördineerde bewerking.
+[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) kunt u met de resources in uw oplossing als groep gebruiken. U kunt de resources voor uw oplossing implementeren, bijwerken of verwijderen in een enkele, gecoördineerde bewerking.
 
 ## <a name="azure-service-bus"></a>Azure Service Bus
-[Service Bus](../service-bus/index.md) biedt cloudcommunicatie met berichtenverzending en relayed communicatie waarmee u verbinding maken met on-premises oplossingen met de cloud. Sommige IoT Hub-zelfstudies maken gebruik van Service Bus [wachtrijen](../service-bus-messaging/service-bus-messaging-overview.md).
+[Service Bus](../service-bus/index.md) biedt communicatie via de Cloud met Enter prise Messa ging en door gegeven communicatie waarmee u on-premises oplossingen kunt verbinden met de Cloud. Sommige IoT Hub-zelf studies maken gebruik van Service Bus [wacht rijen](../service-bus-messaging/service-bus-messaging-overview.md).
 
 ## <a name="azure-storage"></a>Azure Storage
-[Azure Storage](../storage/common/storage-introduction.md) is een oplossing voor cloudopslag. Het bevat de Blob Storage-service die u gebruiken kunt voor het opslaan van ongestructureerde objectgegevens. Sommige IoT Hub-zelfstudies blob-opslag gebruiken.
+[Azure Storage](../storage/common/storage-introduction.md) is een oplossing voor Cloud opslag. Het bevat de Blob Storage-service die u kunt gebruiken om ongestructureerde object gegevens op te slaan. Sommige IoT Hub zelf studies maken gebruik van Blob Storage.
 
 ## <a name="back-end-app"></a>Back-end-app
-In de context van [IoT-Hub](#iot-hub), een back-end-app is een app die verbinding met een van de service gerichte eindpunten voor een IoT hub maakt. Bijvoorbeeld een back-end-app mogelijk ophalen [apparaat-naar-cloud](#device-to-cloud) berichten of beheren van de [id-register](#identity-registry). Normaal gesproken een back-end-app wordt uitgevoerd in de cloud, maar in veel van de zelfstudies voor de back-end-apps zijn console-apps die worden uitgevoerd op uw lokale ontwikkelcomputer.
+In de context van [IOT hub](#iot-hub)is een back-end-app een app die verbinding maakt met een van de service gerichte eind punten op een IOT-hub. Een back-end-app kan bijvoorbeeld [apparaat-naar-Cloud-](#device-to-cloud) berichten ophalen of het [identiteits register](#identity-registry)beheren. Normaal gesp roken wordt een back-end-app uitgevoerd in de Cloud, maar in veel van de zelf studies zijn de back-end-apps console-apps die worden uitgevoerd op uw lokale ontwikkel computer.
 
-## <a name="built-in-endpoints"></a>Ingebouwde eindpunten
-Elke IoT hub bevat een ingebouwde [eindpunt](iot-hub-devguide-endpoints.md) dat wil zeggen Event Hub-compatibele. U kunt een mechanisme dat met Event Hubs werkt te lezen van apparaat-naar-cloud-berichten vanaf dit eindpunt.
+## <a name="built-in-endpoints"></a>Ingebouwde eind punten
+Elke IoT-hub bevat een ingebouwd [eind punt](iot-hub-devguide-endpoints.md) dat compatibel is met Event hub. U kunt elk mechanisme gebruiken dat werkt met Event Hubs om apparaat-naar-Cloud-berichten van dit eind punt te lezen.
 
-## <a name="cloud-gateway"></a>Cloudgateway
-Een cloudgateway zorgt voor connectiviteit voor apparaten die niet kan rechtstreeks een verbinding met [IoT-Hub](#iot-hub). Een cloudgateway wordt gehost in de cloud in tegenstelling tot een [veldgateway](#field-gateway) die wordt lokaal uitgevoerd op uw apparaten. Een typische gebruiksscenario's voor de cloudgateway van een is het implementeren van protocollen vertalen voor uw apparaten.
+## <a name="cloud-gateway"></a>Cloud gateway
+Een Cloud gateway maakt connectiviteit mogelijk voor apparaten die niet rechtstreeks verbinding kunnen maken met [IOT hub](#iot-hub). Een Cloud gateway wordt in de Cloud gehost in tegens telling tot een [veld Gateway](#field-gateway) die lokaal op uw apparaten wordt uitgevoerd. Een typische use-case voor een Cloud gateway is het implementeren van protocol vertalingen voor uw apparaten.
 
 ## <a name="cloud-to-device"></a>Cloud-naar-apparaat
-Verwijst naar berichten die naar een aangesloten apparaat van een IoT-hub zijn verzonden. Deze berichten zijn vaak opdrachten die vertelt u het apparaat een actie te ondernemen. Zie voor meer informatie, [berichten verzenden en ontvangen met IoT Hub](iot-hub-devguide-messaging.md).
+Verwijst naar berichten die vanuit een IoT-hub naar een verbonden apparaat worden verzonden. Deze berichten zijn vaak opdrachten waarmee het apparaat een actie kan uitvoeren. Zie [berichten verzenden en ontvangen met IOT hub](iot-hub-devguide-messaging.md)voor meer informatie.
 
 ## <a name="configuration"></a>Configuratie
-In de context van [automatische apparaatconfiguratie](iot-hub-auto-device-config.md), een configuratie in de IoT Hub definieert de gewenste configuratie voor een set apparaten dubbels en een set metrische gegevens voor het rapportstatus en voortgang biedt.
+In de context van [automatische apparaatconfiguratie](iot-hub-auto-device-config.md), definieert een configuratie binnen IOT hub de gewenste configuratie voor een set apparaten apparaatdubbels en biedt een set metrische gegevens om de status en de voortgang te rapporteren.
 
 ## <a name="connection-string"></a>Verbindingsreeks
-U verbindingsreeksen in uw app-code gebruiken om in te kapselen van de vereiste informatie op verbinding maken met een eindpunt. Een verbindingsreeks bevat doorgaans het adres van het eindpunt en de informatie over beveiliging, maar de verbindingsreeks indelingen verschillen voor verschillende services. Er zijn twee typen die zijn gekoppeld aan de service voor IoT Hub-verbindingsreeks:
-- *Apparaat-verbindingsreeksen* inschakelen dat apparaten verbinding maken met het apparaat gerichte eindpunten voor een IoT hub.
-- *Verbindingsreeksen voor IoT Hub* back-end-apps verbinding maken met de service gerichte eindpunten in een IoT-hub inschakelen.
+U gebruikt verbindings reeksen in uw app-code om de vereiste gegevens voor het maken van verbinding met een eind punt te integreren. Een connection string bevat normaal gesp roken het adres van het eind punt en de beveiligings gegevens, maar connection string indelingen variëren in verschillende services. Er zijn twee soorten connection string gekoppeld aan de IoT Hub-service:
+- Met *verbindings reeksen* voor apparaten kunnen apparaten verbinding maken met de op het apparaat gerichte eind punten op een IOT-hub.
+- Met *IOT hub verbindings reeksen* kunnen back-end-apps verbinding maken met de service gerichte eind punten op een IOT-hub.
 
-## <a name="custom-endpoints"></a>Aangepaste eindpunten
-U kunt aangepaste maken [eindpunten](iot-hub-devguide-endpoints.md) een IoT-hub kunt u berichten worden verzonden door een [routeringsregel](#routing-rules). Aangepaste eindpunten rechtstreeks verbinding maken met een Event hub, een Service Bus-wachtrij of een Service Bus-onderwerp.
+## <a name="custom-endpoints"></a>Aangepaste eind punten
+U kunt aangepaste [eind punten](iot-hub-devguide-endpoints.md) maken op een IOT-hub om berichten te leveren die worden verzonden door een [routerings regel](#routing-rules). Aangepaste eind punten verbinden rechtstreeks met een event hub, een Service Bus wachtrij of een Service Bus onderwerp.
 
 ## <a name="custom-gateway"></a>Aangepaste gateway
-Een gateway zorgt voor connectiviteit voor apparaten die niet kan rechtstreeks een verbinding met [IoT-Hub](#iot-hub). Azure IoT Edge kunt u aangepaste gateways die aangepaste logica voor het afhandelen van berichten, aangepaste protocol conversies en andere verwerking op de rand implementeren bouwen.
+Een gateway maakt connectiviteit mogelijk voor apparaten die niet rechtstreeks verbinding kunnen maken met [IOT hub](#iot-hub). U kunt Azure IoT Edge gebruiken om aangepaste gateways te maken die aangepaste logica implementeren voor het afhandelen van berichten, aangepaste protocol conversies en andere verwerking aan de rand.
 
-## <a name="data-point-message"></a>Gegevenspunt bericht
-Een gegevenspunt bericht is een [apparaat-naar-cloud](#device-to-cloud) -mailbericht met [telemetrie](#telemetry) gegevens, zoals windsnelheid of temperatuur.
+## <a name="data-point-message"></a>Bericht van gegevens punt
+Een bericht van het gegevens punt is een [apparaat-naar-Cloud](#device-to-cloud) -bericht dat [telemetriegegevens](#telemetry) bevat, zoals wind snelheid of Tempe ratuur.
 
 ## <a name="desired-configuration"></a>Gewenste configuratie
-In de context van een [apparaatdubbel](iot-hub-devguide-device-twins.md), de gewenste configuratie verwijst naar de volledige set eigenschappen en metagegevens in de apparaatdubbel die moet worden gesynchroniseerd met het apparaat.
+In de context van een [apparaat dubbele](iot-hub-devguide-device-twins.md), gewenste configuratie verwijst naar de volledige set eigenschappen en meta gegevens in het apparaat-dubbele dat moet worden gesynchroniseerd met het apparaat.
 
 ## <a name="desired-properties"></a>Gewenste eigenschappen
-In de context van een [apparaatdubbel](iot-hub-devguide-device-twins.md), gewenste eigenschappen is een subsectie van het dubbele apparaat dat wordt gebruikt met [gerapporteerde eigenschappen](#reported-properties) te synchroniseren met apparaatconfiguratie of voorwaarde. Gewenste eigenschappen kunnen alleen worden ingesteld door een [back-end-app](#back-end-app) en jobniveau in acht genomen door de [apparaattoepassing](#device-app).
+In de context van een [apparaat met dubbele](iot-hub-devguide-device-twins.md), gewenste eigenschappen is een subsectie van het apparaat dat wordt gebruikt met [gerapporteerde eigenschappen](#reported-properties) om de apparaatconfiguratie of voor waarde te synchroniseren. Gewenste eigenschappen kunnen alleen worden ingesteld door een [back-end-app](#back-end-app) en worden waargenomen door de [apparaat-app](#device-app).
 
-## <a name="device-to-cloud"></a>Apparaat-naar-cloud
-Verwijst naar berichten van een verbonden apparaat [IoT-Hub](#iot-hub). Deze berichten mogelijk [gegevenspunt](#data-point-message) of [interactieve](#interactive-message) berichten. Zie voor meer informatie, [berichten verzenden en ontvangen met IoT Hub](iot-hub-devguide-messaging.md).
+## <a name="device-to-cloud"></a>Apparaat-naar-Cloud
+Verwijst naar berichten die vanuit een verbonden apparaat naar [IOT hub](#iot-hub)worden verzonden. Deze berichten kunnen [gegevens](#data-point-message) of [interactieve](#interactive-message) berichten zijn. Zie [berichten verzenden en ontvangen met IOT hub](iot-hub-devguide-messaging.md)voor meer informatie.
 
 ## <a name="device"></a>Apparaat
-Een apparaat is in de context van IoT, doorgaans een kleinschalige, zelfstandige computer of fysiek apparaat die kan worden verzameld of andere apparaten beheren. Een apparaat zijn mogelijk een uitwerking controle-apparaat of een domeincontroller voor het water en ventilatie systemen in een vergunning. De [apparaatcatalogus](https://catalog.azureiotsolutions.com/) bevat een lijst met apparaten gecertificeerd voor gebruik met [IoT-Hub](#iot-hub).
+In de context van IoT is een apparaat doorgaans een klein, zelfstandig computer apparaat dat gegevens kan verzamelen of andere apparaten kan beheren. Een apparaat kan bijvoorbeeld een milieubewakings apparaat zijn of een controller voor de water-en ventilatie systemen in een broeikas. De [catalogus](https://catalog.azureiotsolutions.com/) met apparaten bevat een lijst met apparaten die zijn gecertificeerd voor gebruik met [IOT hub](#iot-hub).
 
 ## <a name="device-app"></a>Apparaat-app
-Een apparaat-app wordt uitgevoerd op uw [apparaat](#device) en verzorgt de communicatie met uw [IoT-hub](#iot-hub). Meestal gebruikt u een van de [Azure IoT device SDK's](#azure-iot-device-sdks) bij het implementeren van een apparaat-app. In veel van de IoT-zelfstudies, gebruikt u een [gesimuleerd apparaat](#simulated-device) voor het gemak.
+Een apparaat-app wordt op uw [apparaat](#device) uitgevoerd en verwerkt de communicatie met uw [IOT-hub](#iot-hub). Normaal gesp roken gebruikt u een van de [Azure IOT-apparaat-sdk's](#azure-iot-device-sdks) wanneer u een apparaat-app implementeert. In veel van de IoT-zelf studies gebruikt u een [gesimuleerd apparaat](#simulated-device) voor het gemak.
 
-## <a name="device-condition"></a>Apparaat voorwaarde
-Verwijst naar informatie over de apparaatstatus, zoals de methode connectiviteit die momenteel in gebruik, zoals gemeld door een [apparaattoepassing](#device-app). [Apps op apparaten](#device-app) kunnen ook hun mogelijkheden rapporteren. U kunt een query voor de voorwaarde en de functionaliteit van gegevens met behulp van dubbele apparaten.
+## <a name="device-condition"></a>Voorwaarde voor apparaat
+Verwijst naar informatie over de status van het apparaat, zoals de verbindings methode die momenteel in gebruik is, zoals gerapporteerd door een [apparaat-app](#device-app). [Apparaat-apps](#device-app) kunnen ook hun mogelijkheden rapporteren. U kunt een query uitvoeren op informatie over de voor waarde en de capaciteit met behulp van Device apparaatdubbels.
 
 ## <a name="device-data"></a>Apparaatgegevens
-Apparaatgegevens verwijst naar de per apparaat gegevens die zijn opgeslagen in de IoT-Hub [id-register](#identity-registry). Het is mogelijk om te importeren en exporteren van deze gegevens.
+Apparaatgegevens verwijzen naar de gegevens per apparaat die zijn opgeslagen in het IoT Hub [identiteits register](#identity-registry). Het is mogelijk om deze gegevens te importeren en exporteren.
 
 ## <a name="device-explorer"></a>Apparatenverkenner
-De [apparatenverkenner](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) is een hulpprogramma dat wordt uitgevoerd op Windows en kunt u voor het beheren van uw apparaten in de [id-register](#identity-registry). Het hulpprogramma kan ook verzenden en ontvangen van berichten op uw apparaten.
+[Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) is een hulp programma dat wordt uitgevoerd op Windows en waarmee u uw apparaten kunt beheren in het [identiteits register](#identity-registry). Het hulp programma kan ook berichten naar uw apparaten verzenden en ontvangen.
 
 ## <a name="device-identity"></a>Apparaat-id
-De apparaat-id is de unieke id die is toegewezen aan elk apparaat dat is geregistreerd in de [id-register](#identity-registry).
+De apparaat-id is de unieke id die is toegewezen aan elk apparaat dat is geregistreerd in het [identiteits register](#identity-registry).
 
 ## <a name="device-management"></a>Apparaatbeheer
-Beheer van apparaten omvat de volledige levenscyclus die zijn gekoppeld aan het beheren van de apparaten in uw IoT-oplossing met inbegrip van plannen, inrichten, configureren, bewaken en buiten gebruik stellen.
+Apparaatbeheer omvat de volledige levens cyclus voor het beheer van de apparaten in uw IoT-oplossing, waaronder het plannen, inrichten, configureren, bewaken en buiten gebruik stellen.
 
 ## <a name="device-management-patterns"></a>Patronen voor apparaatbeheer
-[IoT-hub](#iot-hub) kunnen algemene patronen van Apparaatbeheer met inbegrip van opnieuw opstarten, het uitvoeren van de fabrieksinstellingen herstellen en het uitvoeren van firmware-updates op uw apparaten.
+Met [IOT hub](#iot-hub) kunt u veelgebruikte patronen voor Apparaatbeheer maken, waaronder het opnieuw opstarten, het opnieuw instellen van de fabriek en het uitvoeren van firmware-updates op uw apparaten.
 
-## <a name="device-rest-api"></a>Device REST API
-U kunt de [REST-API voor apparaat](https://docs.microsoft.com/rest/api/iothub/device) vanaf een apparaat aan de apparaat-naar-cloud-berichten naar een IoT-hub te verzenden en ontvangen [cloud-naar-apparaat](#cloud-to-device) berichten van een IoT-hub. Normaal gesproken moet u een van de hogere [apparaat-SDK's](#azure-iot-device-sdks) zoals wordt weergegeven in de IoT Hub-zelfstudies.
+## <a name="device-rest-api"></a>Apparaat REST API
+U kunt het [apparaat rest API](https://docs.microsoft.com/rest/api/iothub/device) van een apparaat gebruiken om apparaat-naar-Cloud-berichten te verzenden naar een IOT-hub en [Cloud-naar-apparaat-](#cloud-to-device) berichten van een IOT-hub te ontvangen. Normaal gesp roken moet u een van de [apparaat-sdk's](#azure-iot-device-sdks) van het hogere niveau gebruiken, zoals wordt weer gegeven in de IOT hub zelf studies.
 
-## <a name="device-provisioning"></a>Apparaten inrichten
-Apparaatinrichting is het proces van het toevoegen van de eerste [apparaatgegevens](#device-data) naar de winkels in uw oplossing. Als u wilt een nieuw apparaat verbinding maken met uw hub inschakelen, moet u een apparaat-ID en sleutels toevoegen aan de IoT-Hub [id-register](#identity-registry). Als onderdeel van het proces van inrichting moet u mogelijk apparaatspecifieke gegevens in andere archieven oplossing initialiseren.
+## <a name="device-provisioning"></a>Apparaat inrichten
+Het inrichten van apparaten is het proces van het toevoegen van de initiële gegevens van het [apparaat](#device-data) aan de winkels in uw oplossing. Als u een nieuw apparaat wilt inschakelen om verbinding te maken met uw hub, moet u een apparaat-ID en sleutels toevoegen aan het IoT Hub- [identiteits register](#identity-registry). Als onderdeel van het inrichtings proces moet u mogelijk apparaatspecifieke gegevens initialiseren in andere oplossingen Stores.
 
 ## <a name="device-twin"></a>Dubbel apparaat
-Een [apparaatdubbel](iot-hub-devguide-device-twins.md) is JSON-document waarin informatie over de apparaatstatus, zoals metagegevens, configuraties en voorwaarden. [IoT Hub](#iot-hub) een apparaatdubbel voor elk apparaat dat u in uw IoT-hub inrichten. Dubbele apparaten kunnen u om te synchroniseren [apparaat voorwaarden](#device-condition) en configuraties tussen het apparaat en de oplossing back-end. U kunt een query uitvoeren voor apparaatdubbels naar specifieke apparaten en de status van langlopende bewerkingen opvragen.
+Een dubbel [apparaat](iot-hub-devguide-device-twins.md) is een JSON-document waarin informatie over de status van het apparaat, zoals meta gegevens, configuraties en voor waarden, wordt opgeslagen. [IOT hub](#iot-hub) persistent voor elk apparaat dat u inricht in IOT hub. Met Device apparaatdubbels kunt u de [voor waarden](#device-condition) en configuraties van apparaten synchroniseren tussen het apparaat en de back-end van de oplossing. U kunt een query voor apparaat apparaatdubbels uitvoeren om specifieke apparaten te vinden en de status van langlopende bewerkingen te doorzoeken.
 
 ## <a name="direct-method"></a>Directe methode
-Een [directe methode](iot-hub-devguide-direct-methods.md) is een manier om u voor het activeren van een methode om uit te voeren op een apparaat door een API voor uw IoT-hub aan te roepen.
+Een [directe methode](iot-hub-devguide-direct-methods.md) is een manier waarop u een methode voor het uitvoeren van een apparaat kunt activeren door een API op uw IOT-hub aan te roepen.
 
 ## <a name="endpoint"></a>Eindpunt
-Een IoT-hub toont meerdere [eindpunten](iot-hub-devguide-endpoints.md) waarmee uw apps verbinding maken met de IoT-hub. Er zijn apparaat gerichte eindpunten waarmee apparaten voor het uitvoeren van bewerkingen zoals het verzenden van [apparaat-naar-cloud](#device-to-cloud) berichten en ontvangen [cloud-naar-apparaat](#cloud-to-device) berichten. Er zijn gerichte service management-eindpunten waarmee [back-end-apps](#back-end-app) bewerkingen uit te voeren, zoals [apparaat-id](#device-identity) management en beheer van de dubbele apparaten. Er zijn service gerichte [ingebouwde eindpunten](#built-in-endpoints) voor het lezen van apparaat-naar-cloud-berichten. U kunt maken [aangepaste eindpunten](#custom-endpoints) voor het ontvangen van apparaat-naar-cloud-berichten verzonden door een [routeringsregel](#routing-rules).
+Een IoT-hub biedt meerdere [eind punten](iot-hub-devguide-endpoints.md) die uw apps in staat stellen om verbinding te maken met de IOT-hub. Er zijn apparaat gerichte eind punten die apparaten in staat stellen om bewerkingen uit te voeren, zoals het verzenden van [apparaat-naar-Cloud](#device-to-cloud) -berichten en het ontvangen van [Cloud-naar-apparaat-](#cloud-to-device) berichten. Er zijn service-Facing Management-eind punten waarmee [back-end-apps](#back-end-app) bewerkingen kunnen uitvoeren zoals het beheer van [apparaat-id's](#device-identity) en het dubbele beheer van apparaten. Er zijn op de service gerichte [ingebouwde eind punten](#built-in-endpoints) voor het lezen van apparaat-naar-Cloud-berichten. U kunt [aangepaste eind punten](#custom-endpoints) maken om apparaat-naar-Cloud-berichten te ontvangen die worden verzonden door een [routerings regel](#routing-rules).
 
 ## <a name="event-hubs-service"></a>Event Hubs-service
-[Eventhubs](../event-hubs/event-hubs-what-is-event-hubs.md) is een zeer schaalbare service voor die van miljoenen opnemen kan gebeurtenissen per seconde. De service kunt u om te verwerken en analyseren van de enorme hoeveelheden gegevens die worden geproduceerd door uw verbonden apparaten en toepassingen. Zie voor een vergelijking met de IoT Hub-service, [vergelijking van Azure IoT Hub en Azure Event Hubs](iot-hub-compare-event-hubs.md).
+[Event hubs](../event-hubs/event-hubs-what-is-event-hubs.md) is een zeer schaal bare service voor gegevens ingang die miljoenen gebeurtenissen per seconde kan opnemen. Met deze service kunt u de enorme hoeveel heden gegevens verwerken en analyseren die door uw verbonden apparaten en toepassingen worden geproduceerd. Zie [vergelijking van azure IOT hub en azure Event hubs](iot-hub-compare-event-hubs.md)voor een vergelijking met de IOT hub-service.
 
-## <a name="event-hub-compatible-endpoint"></a>Event Hub-compatibele eindpunt
-Om te lezen [apparaat-naar-cloud](#device-to-cloud) berichten verzonden naar uw IoT-hub, u kunt verbinding maken met een eindpunt op uw hub en een Event Hub-compatibele-methode gebruiken om deze berichten te lezen. Event Hub-compatibele methoden zijn onder meer met behulp van de [Event Hubs-SDK's](../event-hubs/event-hubs-programming-guide.md) en [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
+## <a name="event-hub-compatible-endpoint"></a>Event hub-compatibel eind punt
+Voor het lezen van [apparaat-naar-Cloud](#device-to-cloud) -berichten die naar uw IOT hub worden verzonden, kunt u verbinding maken met een eind punt op uw hub en een event hub-compatibele methode gebruiken om die berichten te lezen. Event hub-compatibele methoden zijn het gebruik van de [Event hubs sdk's](../event-hubs/event-hubs-programming-guide.md) en [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md).
 
-## <a name="field-gateway"></a>Veldgateway
-Een veldgateway maakt de connectiviteit voor apparaten die niet kan rechtstreeks een verbinding met [IoT-Hub](#iot-hub) en meestal lokaal is geïmplementeerd in uw apparaten. Zie voor meer informatie, [wat is Azure IoT Hub?](about-iot-hub.md)
+## <a name="field-gateway"></a>Veld Gateway
+Een veld Gateway maakt connectiviteit mogelijk voor apparaten die niet rechtstreeks verbinding kunnen maken met [IOT hub](#iot-hub) en die doorgaans lokaal op uw apparaten wordt geïmplementeerd. Zie [Wat is Azure IOT hub?](about-iot-hub.md) voor meer informatie.
 
 ## <a name="free-account"></a>Gratis account
-U kunt maken een [gratis Azure-account](https://azure.microsoft.com/pricing/free-trial/) voor het voltooien van de IoT Hub-zelfstudies en Experimenteer met de IoT Hub-service (en andere Azure-services).
+U kunt een [gratis Azure-account](https://azure.microsoft.com/pricing/free-trial/) maken voor het volt ooien van de IOT hub zelf studies en experimenteren met de IOT hub-service (en andere Azure-Services).
 
 ## <a name="gateway"></a>Gateway
-Een gateway zorgt voor connectiviteit voor apparaten die niet kan rechtstreeks een verbinding met [IoT-Hub](#iot-hub). Zie ook [veld Gateway](#field-gateway), [Gateway Cloud](#cloud-gateway), en [aangepaste Gateway](#custom-gateway).
+Een gateway maakt connectiviteit mogelijk voor apparaten die niet rechtstreeks verbinding kunnen maken met [IOT hub](#iot-hub). Zie ook [veld Gateway](#field-gateway), [Cloud gateway](#cloud-gateway)en [aangepaste gateway](#custom-gateway).
 
-## <a name="identity-registry"></a>ID-register
-De [id-register](iot-hub-devguide-identity-registry.md) is het ingebouwde onderdeel van een IoT-hub die informatie over de afzonderlijke apparaten opgeslagen verbinding mogen maken met een IoT-hub.
+## <a name="identity-registry"></a>Id-REGI ster
+Het [id-REGI ster](iot-hub-devguide-identity-registry.md) is het ingebouwde onderdeel van een IOT-hub dat informatie bevat over de afzonderlijke apparaten die verbinding mogen maken met een IOT-hub.
 
-## <a name="interactive-message"></a>Interactieve bericht
-Een interactieve bericht is een [cloud-naar-apparaat](#cloud-to-device) bericht dat een onmiddellijke actie in de back-end van de oplossing wordt geactiveerd. Een apparaat kan bijvoorbeeld een waarschuwing over een fout die moet worden automatisch aangemeld bij een CRM-systeem te verzenden.
+## <a name="interactive-message"></a>Interactief bericht
+Een interactief bericht is een [Cloud-naar-apparaat-](#cloud-to-device) bericht dat een onmiddellijke actie activeert in de back-end van de oplossing. Een apparaat kan bijvoorbeeld een waarschuwing sturen over een fout die automatisch moet worden aangemeld bij een CRM-systeem.
 
 [!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]
 
 ## <a name="iot-hub"></a>IoT Hub
-IoT Hub is een volledig beheerde Azure-service die stabiele en veilige tweerichtingscommunicatie tussen miljoenen apparaten mogelijk maakt en een back-end oplossing. Zie voor meer informatie, [wat is Azure IoT Hub?](about-iot-hub.md) Met behulp van uw [Azure-abonnement](#subscription), kunt u IoT-hubs voor het afhandelen van uw IoT messaging-workloads.
+IoT Hub is een volledig beheerde Azure-service die betrouw bare en veilige bidirectionele communicatie mogelijk maakt tussen miljoenen apparaten en een back-end van een oplossing. Zie [Wat is Azure IOT hub?](about-iot-hub.md) voor meer informatie. Met uw [Azure-abonnement](#subscription)kunt u IOT hubs maken om uw IOT Messa ging-werk belastingen te verwerken.
 
-## <a name="iot-hub-metrics"></a>Metrische gegevens van IoT Hub
-[Metrische gegevens van IoT-Hub](iot-hub-metrics.md) bieden u de gegevens over de status van de IoT-hubs in uw [Azure-abonnement](#subscription). Metrische gegevens van IoT Hub kunt u de algemene status van de service en de apparaten die zijn verbonden met het beoordelen. Metrische gegevens van IoT Hub kunt u zien wat er gebeurt met uw IoT-hub en hoofdoorzaak problemen onderzoeken zonder contact opnemen met ondersteuning van Azure.
+## <a name="iot-hub-metrics"></a>IoT Hub metrische gegevens
+[IOT hub metrische](iot-hub-metrics.md) gegevens geven u informatie over de status van de IOT-hubs in uw [Azure-abonnement](#subscription). Met IoT Hub metrische gegevens kunt u de algemene status van de service en de aangesloten apparaten beoordelen. Met IoT Hub metrische gegevens kunt u zien wat er gebeurt met uw IoT hub en problemen met de hoofd oorzaak onderzoeken zonder dat u contact hoeft op te nemen met de ondersteuning van Azure.
 
-## <a name="iot-hub-query-language"></a>IoT Hub-querytaal
-De [IoT Hub-querytaal](iot-hub-devguide-query-language.md) is een SQL-achtige taal waarmee u kunt query uw [](#job) en dubbele apparaten.
+## <a name="iot-hub-query-language"></a>Query taal IoT Hub
+De [IOT hub query taal](iot-hub-devguide-query-language.md) is een SQL-achtige taal waarmee u een query kunt uitvoeren [](#job) op uw apparaten en apparaatdubbels.
 
-## <a name="iot-hub-resource-rest-api"></a>IoT-Hub Resource REST-API
-U kunt de [REST-API voor IoT Hub Resource](https://docs.microsoft.com/rest/api/iothub/iothubresource) voor het beheren van de IoT-hubs in uw [Azure-abonnement](#subscription) uitvoeren van bewerkingen, zoals het maken, bijwerken en verwijderen van hubs.
+## <a name="iot-hub-resource-rest-api"></a>IoT Hub resource REST API
+U kunt de [IOT hub Resource rest API](https://docs.microsoft.com/rest/api/iothub/iothubresource) gebruiken voor het beheren van de IOT-hubs in uw [Azure-abonnement](#subscription) voor het uitvoeren van bewerkingen, zoals het maken, bijwerken en verwijderen van hubs.
 
 ## <a name="iot-solution-accelerators"></a>IoT-oplossingsversnellers
-Pakket in oplossingen voor Azure IoT-oplossingsversnellers samen meerdere Azure-services. Deze oplossingen kunnen u snel aan de slag met end-to-end-implementaties van algemene IoT-scenario's. Zie voor meer informatie, [wat zijn Azure-IoT-oplossingsversnellers?](../iot-accelerators/about-iot-accelerators.md)
+Met accelerators van Azure IoT-oplossing worden meerdere Azure-Services in oplossingen gecombineerd. Met deze oplossingen kunt u snel aan de slag met end-to-end-implementaties van algemene IoT-scenario's. Zie [Wat zijn Azure IOT-oplossings Accelerators?](../iot-accelerators/about-iot-accelerators.md) voor meer informatie.
 
 ## <a name="the-iot-extension-for-azure-cli"></a>De IoT-extensie voor Azure CLI 
-[De IoT-extensie voor Azure CLI](https://github.com/Azure/azure-iot-cli-extension) is een platformoverschrijdende, opdrachtregel-hulpprogramma. Het hulpprogramma kunt u voor het beheren van uw apparaten in de [id-register](#identity-registry), verzenden en ontvangen van berichten en bestanden van uw apparaten en bewaken van uw IoT hub-bewerkingen.
+[De IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension) is een platform, opdracht regel programma voor meerdere platforms. Met het hulp programma kunt u uw apparaten beheren in het [identiteits register](#identity-registry), berichten en bestanden van uw apparaten verzenden en ontvangen en uw IOT hub-bewerkingen bewaken.
 
-## <a name="job"></a>Taak
-Uw back-end oplossing kunt [taken](iot-hub-devguide-jobs.md) voor het plannen en de activiteiten bijhouden op een set met apparaten die zijn geregistreerd met uw IoT-hub. Activiteiten omvatten bijwerken van de apparaatdubbel [gewenste eigenschappen](#desired-properties), bijwerken apparaatdubbel [tags](#tags), en aan te roepen [directe methoden](#direct-method). [IoT Hub](#iot-hub) gebruikt ook [te importeren en exporteren](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) uit de [id-register](#identity-registry).
+## <a name="job"></a>Job
+De back-end van uw oplossing kan [taken](iot-hub-devguide-jobs.md) gebruiken om activiteiten te plannen en bij te houden voor een set apparaten die zijn geregistreerd bij uw IOT-hub. Activiteiten omvatten het bijwerken van de dubbele [gewenste eigenschappen](#desired-properties)van het apparaat, het bijwerken van de dubbele [Tags](#tags)van een apparaat en het aanroepen van [directe methoden](#direct-method). [IOT hub](#iot-hub) wordt ook gebruikt voor het [importeren van en exporteren](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) uit het [identiteits register](#identity-registry).
 
 ## <a name="modules"></a>Modules
-Aan de kant van het apparaat, kunt u maken met de IoT Hub apparaat-SDK's [modules](iot-hub-devguide-module-twins.md) waarbij elk ervan een onafhankelijke verbinding met IoT Hub wordt geopend. Deze functie kunt u afzonderlijke naamruimten voor de verschillende onderdelen op uw apparaat gebruikt.
+Aan de kant van het apparaat kunt u met de Sdk's van het IoT Hub apparaat [modules](iot-hub-devguide-module-twins.md) maken waarbij elke ene een onafhankelijke verbinding met IOT hub opent. Met deze functie kunt u afzonderlijke naam ruimten voor verschillende onderdelen op het apparaat gebruiken.
 
-Module identiteits- en moduledubbel bieden dezelfde mogelijkheden als [apparaat-id](#device-identity) en [apparaatdubbel](#device-twin) , maar op een fijnere granulatie. Deze weer specifieker kunt apparaten, zoals apparaten op basis van het besturingssysteem of de firmware-apparaten beheren van meerdere onderdelen, als u wilt isoleren, configuratie en voorwaarden voor elk van deze onderdelen.
+Module-identiteit en module twee bieden dezelfde mogelijkheden als de [apparaat-id](#device-identity) en het [apparaat](#device-twin) , met een nauw keurigere granulariteit. Met deze nauw keurigheid kunnen apparaten, zoals apparaten op basis van een besturings systeem of firmware-apparaten meerdere onderdelen beheren, de configuratie en voor waarden voor elk van deze onderdelen worden geïsoleerd.
 
 ## <a name="module-identity"></a>Module-identiteit
-De identiteit van de module is de unieke id die is toegewezen aan elke module die deel uitmaken van een apparaat. Identiteit van de module ook is geregistreerd in de [id-register](#identity-registry).
+De module-id is de unieke id die is toegewezen aan elke module die deel uitmaakt van een apparaat. Module-identiteit wordt ook geregistreerd in het [identiteits register](#identity-registry).
 
-## <a name="module-twin"></a>Moduledubbel
-Net als bij het dubbele apparaat, is een moduledubbel JSON-document waarin statusinformatie van de module, zoals metagegevens, configuraties en voorwaarden. IoT-Hub zich blijft voordoen een moduledubbel voor elke module-identiteit die u onder een apparaat-id in uw IoT-hub inricht. Moduledubbels kunnen u voorwaarden van de module en configuraties tussen de module en de back-end oplossing te synchroniseren. U kunt een query moduledubbels naar specifieke modules en de status van langlopende bewerkingen opvragen.
+## <a name="module-twin"></a>Module dubbele
+Net als bij een ander apparaat dan is een module gelijk aan het JSON-document waarin module status gegevens worden opgeslagen, zoals meta gegevens, configuraties en voor waarden. IoT Hub persistent een module tussen een module-identiteit die u onder een apparaat-id in uw IoT-hub inricht. Met module apparaatdubbels kunt u module omstandigheden en configuraties synchroniseren tussen de module en de back-end van de oplossing. U kunt de module apparaatdubbels opvragen om specifieke modules te vinden en de status van langlopende bewerkingen te controleren.
 
 ## <a name="mqtt"></a>MQTT
-[MQTT](https://mqtt.org/) is een van de berichten die protocollen [IoT-Hub](#iot-hub) ondersteunt om te communiceren met apparaten. Zie voor meer informatie over de messaging-protocollen die IoT Hub worden ondersteund, [berichten verzenden en ontvangen met IoT Hub](iot-hub-devguide-messaging.md).
+[MQTT](https://mqtt.org/) is een van de berichten protocollen die [IOT hub](#iot-hub) ondersteunt voor het communiceren met apparaten. Zie [berichten verzenden en ontvangen met IOT hub](iot-hub-devguide-messaging.md)voor meer informatie over de berichten protocollen die door IOT hub worden ondersteund.
 
 ## <a name="operations-monitoring"></a>Controle van bewerkingen
-IoT Hub [bewerkingen controleren](iot-hub-operations-monitoring.md) kunt u de status van de bewerkingen op uw IoT-hub in realtime controleren. [IoT Hub](#iot-hub) gebeurtenissen worden bijgehouden in meerdere categorieën met bewerkingen. U kunt kiezen voor het verzenden van gebeurtenissen uit een of meer categorieën naar een IoT Hub-eindpunt voor verwerking. U kunt de gegevens op fouten controleren of instellen van meer complexe verwerking op basis van, gegevenspatronen.
+Met IoT Hub [bewerkingen](iot-hub-operations-monitoring.md) bewaken kunt u de status van de bewerkingen op uw IOT-hub in realtime bewaken. [IOT hub](#iot-hub) houdt gebeurtenissen in verschillende categorieën bewerkingen bij. U kunt ervoor kiezen gebeurtenissen te verzenden van een of meer categorieën naar een IoT Hub eind punt voor verwerking. U kunt de gegevens controleren op fouten of complexere verwerking instellen op basis van gegevens patronen.
 
 ## <a name="physical-device"></a>Fysiek apparaat
-Een fysiek apparaat is een echt apparaat zoals een Raspberry Pi die verbinding met een IoT-hub maakt. Veel van de IoT Hub-zelfstudies gebruiken voor het gemak [gesimuleerde apparaten](#simulated-device) waarmee u kunt voorbeelden uitvoeren op uw lokale computer.
+Een fysiek apparaat is een echt apparaat, zoals een Raspberry Pi, waarmee verbinding wordt gemaakt met een IoT-hub. Voor het gemak gebruiken veel van de IoT Hub zelf studies [gesimuleerde apparaten](#simulated-device) waarmee u voor beelden kunt uitvoeren op uw lokale computer.
 
-## <a name="primary-and-secondary-keys"></a>Primaire en secundaire sleutel
-Wanneer u verbinding met een apparaat gerichte of gerichte service-eindpunt voor een IoT-hub maakt, uw [verbindingsreeks](#connection-string) bevat om u toegang kunt krijgen. Wanneer u een apparaat toevoegt aan de [id-register](#identity-registry) of toe te voegen een [gedeeld toegangsbeleid](#shared-access-policy) op uw hub, de service een primaire en secundaire sleutel is gegenereerd. Twee sleutels betekent dat, kunt u vernieuwen uit één sleutel naar een andere wanneer u een sleutel bijwerken zonder te verliezen toegang tot de IoT-hub.
+## <a name="primary-and-secondary-keys"></a>Primaire en secundaire sleutels
+Wanneer u verbinding maakt met een apparaat-Facing of een service gericht eind punt op een IoT-hub, bevat uw [Connection String](#connection-string) sleutel om u toegang te verlenen. Wanneer u een apparaat toevoegt aan het [identiteits register](#identity-registry) of een [gedeeld toegangs beleid](#shared-access-policy) toevoegt aan uw hub, wordt door de service een primaire en secundaire sleutel gegenereerd. Met twee sleutels kunt u overgaan van de ene sleutel naar de andere wanneer u een sleutel bijwerkt zonder de toegang tot de IoT-hub te verliezen.
 
-## <a name="protocol-gateway"></a>Protocolgateway
-Een protocolgateway wordt gewoonlijk geïmplementeerd in de cloud en biedt protocol vertaalservices voor apparaten die verbinding maken met [IoT-Hub](#iot-hub). Zie voor meer informatie, [wat is Azure IoT Hub?](about-iot-hub.md)
+## <a name="protocol-gateway"></a>Protocol gateway
+Een protocol gateway wordt doorgaans geïmplementeerd in de Cloud en biedt protocol Vertaal Services voor apparaten die verbinding maken met [IOT hub](#iot-hub). Zie [Wat is Azure IOT hub?](about-iot-hub.md) voor meer informatie.
 
 ## <a name="quotas-and-throttling"></a>Quota en beperkingen
-Er zijn verschillende [quota](iot-hub-devguide-quotas-throttling.md) die van toepassing is op het gebruik van [IoT-Hub](#iot-hub), veel van de quota variëren op basis van de laag van de IoT-hub. [IoT Hub](#iot-hub) geldt ook [beperkt](iot-hub-devguide-quotas-throttling.md) op het gebruik van de service tijdens runtime.
+Er zijn verschillende [quota's](iot-hub-devguide-quotas-throttling.md) die van toepassing zijn op uw gebruik van [IOT hub](#iot-hub). veel van de quota's variëren op basis van de laag van de IOT-hub. [IOT hub](#iot-hub) [is ook van toepassing op het](iot-hub-devguide-quotas-throttling.md) gebruik van de service tijdens de uitvoering.
 
 ## <a name="reported-configuration"></a>Gerapporteerde configuratie
-In de context van een [apparaatdubbel](iot-hub-devguide-device-twins.md), gerapporteerd configuratie verwijst naar de volledige set eigenschappen en metagegevens in de apparaatdubbel die moet worden gerapporteerd aan de back-end van de oplossing.
+In de context van een [apparaat dubbele](iot-hub-devguide-device-twins.md), gerapporteerde configuratie verwijst naar de volledige set eigenschappen en meta gegevens in het apparaat dat moet worden gerapporteerd aan de back-end van de oplossing.
 
 ## <a name="reported-properties"></a>Gerapporteerde eigenschappen
-In de context van een [apparaatdubbel](iot-hub-devguide-device-twins.md), gerapporteerde eigenschappen is een subsectie van het dubbele apparaat gebruikt in combinatie met [gewenste eigenschappen](#desired-properties) te synchroniseren met apparaatconfiguratie of voorwaarde. Gerapporteerde eigenschappen kunnen alleen worden ingesteld door de [apparaattoepassing](#device-app) en kan worden gelezen en query's uitgevoerd door een [back-end-app](#back-end-app).
+In de context van een [apparaat](iot-hub-devguide-device-twins.md), gerapporteerde eigenschappen is een subsectie van het apparaat dat wordt gebruikt met de [gewenste eigenschappen](#desired-properties) voor het synchroniseren van de apparaatconfiguratie of voor waarde. Gerapporteerde eigenschappen kunnen alleen worden ingesteld door de [apparaat-app](#device-app) en kunnen worden gelezen en opgevraagd door een [back-end-app](#back-end-app).
 
 ## <a name="resource-group"></a>Resourcegroep
-[Azure Resource Manager](#azure-resource-manager) maakt gebruik van resourcegroepen naar gerelateerde resources te groeperen. Bewerkingen uit te voeren op alle resources in de groep tegelijkertijd kunt u een resourcegroep.
+[Azure Resource Manager](#azure-resource-manager) maakt gebruik van resource groepen om gerelateerde resources samen te groeperen. U kunt een resource groep gebruiken om bewerkingen uit te voeren op alle resources in de groep tegelijk.
 
 ## <a name="retry-policy"></a>Beleid voor opnieuw proberen
-Gebruik van een beleid voor opnieuw proberen om af te handelen [tijdelijke fouten](/azure/architecture/best-practices/transient-faults) wanneer u verbinding maken met een service in de cloud.
+U gebruikt een beleid voor opnieuw proberen om [tijdelijke fouten](/azure/architecture/best-practices/transient-faults) af te handelen wanneer u verbinding maakt met een Cloud service.
 
 ## <a name="routing-rules"></a>Regels voor doorsturen
-U configureert [routeringsregels](iot-hub-devguide-messages-read-custom.md) in uw IoT-hub voor het routeren van apparaat-naar-cloud-berichten naar een [ingebouwd eindpunt](#built-in-endpoints) of [aangepaste eindpunten](#custom-endpoints) voor verwerking door de back-end .
+U configureert [routerings regels](iot-hub-devguide-messages-read-custom.md) in uw IOT-hub om apparaat-naar-Cloud-berichten te routeren naar een [ingebouwd eind punt](#built-in-endpoints) of naar [aangepaste eind punten](#custom-endpoints) voor verwerking door de back-end van uw oplossing.
 
-## <a name="sasl-plain"></a>SASL ZONDER OPMAAK
-SASL zonder opmaak is een protocol dat het AMQP-protocol wordt gebruikt om over te dragen van beveiligingstokens.
+## <a name="sasl-plain"></a>SASL PLAIN
+SASL PLAIN is een protocol dat het AMQP-protocol gebruikt voor het overdragen van beveiligings tokens.
 
-## <a name="service-rest-api"></a>Service REST API
-U kunt de [REST API voor Service](https://docs.microsoft.com/rest/api/iothub/service) van de oplossing back-end om uw apparaten te beheren. De API kunt u voor het ophalen en bijwerken [apparaatdubbel](#device-twin) eigenschappen aangeroepen [directe methoden](#direct-method), en de planning [taken](#job). Normaal gesproken moet u een van de hogere [service-SDK's](#azure-iot-service-sdks) zoals wordt weergegeven in de IoT Hub-zelfstudies.
+## <a name="service-rest-api"></a>REST API voor Search-service
+U kunt de [Service rest API](https://docs.microsoft.com/rest/api/iothub/service) van de back-end van de oplossing gebruiken om uw apparaten te beheren. Met de API kunt u dubbele eigenschappen van het [apparaat](#device-twin) ophalen en bijwerken, [direct methoden](#direct-method)aanroepen en [taken](#job)plannen. Normaal gesp roken moet u een van de high-level [service-sdk's](#azure-iot-service-sdks) gebruiken, zoals weer gegeven in de IOT hub zelf studies.
 
-## <a name="shared-access-signature"></a>Handtekening voor gedeelde toegang
-Shared Access Signatures (SAS) zijn een verificatiemechanisme voor op basis van beveiligde SHA-256-hashes of URI's. SAS-verificatie bestaat uit twee onderdelen: een _beleid voor gedeelde toegang_ en een _Shared Access Signature_ (ook wel een token). Een apparaat maakt gebruik van SAS te verifiëren met een IoT-hub. [Back-end-apps](#back-end-app) SAS ook gebruiken om te verifiëren met de service gerichte eindpunten voor een IoT hub. Normaal gesproken het opnemen van de SAS-token in de [verbindingsreeks](#connection-string) dat een app wordt gebruikt om een verbinding naar een IoT-hub te maken.
+## <a name="shared-access-signature"></a>Shared Access Signature
+Shared Access signatures (SAS) zijn een verificatie methode op basis van SHA-256 Secure hashes of Uri's. SAS-verificatie heeft twee onderdelen: een _gedeeld toegangs beleid_ en een _Shared Access Signature_ (vaak een token genoemd). Een apparaat gebruikt SAS om te verifiëren bij een IoT-hub. [Back-end-apps](#back-end-app) maken ook gebruik van SAS om te verifiëren bij de service gerichte eind punten op een IOT-hub. Normaal gesp roken neemt u het SAS-token op in het [Connection String](#connection-string) dat een app gebruikt om een verbinding met een IOT-hub tot stand te brengen.
 
 ## <a name="shared-access-policy"></a>Beleid voor gedeelde toegang
-Een beleid voor gedeelde toegang definieert de machtigingen voor iedereen met een geldige [primaire of secundaire sleutel](#primary-and-secondary-keys) die zijn gekoppeld aan dit beleid. U kunt het beleid voor gedeelde toegang en sleutels beheren voor uw hub in de [portal](#azure-portal).
+In een gedeeld toegangs beleid worden de machtigingen gedefinieerd die aan iedereen zijn verleend en die een geldige [primaire of secundaire sleutel](#primary-and-secondary-keys) heeft die aan dat beleid is gekoppeld. U kunt het gedeelde toegangs beleid en de sleutels voor uw hub in de [Portal](#azure-portal)beheren.
 
 ## <a name="simulated-device"></a>Gesimuleerd apparaat
-Veel van de IoT Hub-zelfstudies voor het gemak gesimuleerde apparaten gebruiken waarmee u kunt voorbeelden uitvoeren op uw lokale computer. Daarentegen een [fysiek apparaat](#physical-device) is een echt apparaat zoals een Raspberry Pi die verbinding met een IoT-hub maakt.
+Voor het gemak gebruiken veel van de IoT Hub zelf studies gesimuleerde apparaten waarmee u voor beelden kunt uitvoeren op uw lokale computer. Een [fysiek apparaat](#physical-device) daarentegen is een echt apparaat, zoals een Raspberry Pi, waarmee verbinding wordt gemaakt met een IOT-hub.
 
 ## <a name="solution"></a>Oplossing
-Een _oplossing_ kunnen verwijzen naar een Visual Studio-oplossing met een of meer projecten. Een _oplossing_ mogelijk ook verwijzen naar een IoT-oplossing met elementen zoals apparaten, [apps op apparaten](#device-app), een IoT-hub, andere Azure-services en [back-end-apps](#back-end-app).
+Een _oplossing_ kan verwijzen naar een Visual Studio-oplossing die een of meer projecten bevat. Een _oplossing_ kan ook verwijzen naar een IOT-oplossing die elementen, zoals apparaten, [apps](#device-app), een IOT-hub, andere Azure-Services en [back-end-apps](#back-end-app)bevat.
 
 ## <a name="subscription"></a>Abonnement
-Een Azure-abonnement is waar facturering plaatsvindt. Elke Azure-resource die u maakt of u Azure-service is gekoppeld aan één abonnement. Veel quota zijn ook van toepassing op het niveau van een abonnement.
+Een Azure-abonnement is de plaats waar facturering plaatsvindt. Elke Azure-resource die u maakt of de Azure-service die u gebruikt, is gekoppeld aan één abonnement. Veel quota's zijn ook van toepassing op het niveau van een abonnement.
 
 ## <a name="system-properties"></a>Systeemeigenschappen
-In de context van een [apparaatdubbel](iot-hub-devguide-device-twins.md), Systeemeigenschappen zijn alleen-lezen en bevatten informatie over het gebruik van het apparaat, zoals de laatste activiteit tijd en de verbinding staat.
+In de context van een [apparaat](iot-hub-devguide-device-twins.md)zijn de systeem eigenschappen alleen-lezen en bevatten informatie over het gebruik van het apparaat, zoals de tijd van de laatste activiteit en de status van de verbinding.
 
 ## <a name="tags"></a>Tags
-In de context van een [apparaatdubbel](iot-hub-devguide-device-twins.md), labels zijn metagegevens van apparaten die zijn opgeslagen en worden opgehaald met de back-end oplossing in de vorm van een JSON-document. Tags zijn niet zichtbaar voor apps op een apparaat.
+In de context van een [apparaat dubbele](iot-hub-devguide-device-twins.md)worden de meta gegevens van het apparaat opgeslagen en opgehaald door de back-end van de oplossing in de vorm van een JSON-document. Tags zijn niet zichtbaar voor apps op een apparaat.
 
 ## <a name="telemetry"></a>Telemetrie
-Apparaten telemetriegegevens, zoals windsnelheid of temperatuur, verzamelen en gebruiken van gegevenspunt berichten naar de telemetrie wordt verzonden naar een IoT-hub.
+Apparaten verzamelen telemetriegegevens, zoals wind snelheid of Tempe ratuur, en gebruiken gegevens punt berichten om de telemetrie te verzenden naar een IoT-hub.
 
-## <a name="token-service"></a>Token-service
-Een token service kunt u een verificatiemechanisme implementeren voor uw apparaten. Het maakt gebruik van een IoT-Hub [gedeeld toegangsbeleid](#shared-access-policy) met **DeviceConnect** machtigingen voor het maken *binnen het bereik van apparaat* tokens. Deze tokens inschakelen voor een apparaat verbinding maakt met uw IoT-hub. Een apparaat maakt gebruik van een aangepaste verificatiemechanisme voor verificatie met de service voor beveiligingstokens. Als het apparaat is geverifieerd, geeft de service voor beveiligingstokens een SAS-token voor het apparaat gebruiken voor toegang tot uw IoT-hub.
+## <a name="token-service"></a>Token Service
+U kunt een token service gebruiken om een verificatie mechanisme voor uw apparaten te implementeren. Er wordt gebruikgemaakt van een IoT Hub [beleid voor gedeelde toegang](#shared-access-policy) met **DeviceConnect** -machtigingen voor het maken van tokens met een *bereik* . Met deze tokens kunnen apparaten verbinding maken met uw IoT-hub. Een apparaat gebruikt een aangepast verificatie mechanisme om te verifiëren met de token service. Als het apparaat is geverifieerd, geeft de token service een SAS-token uit voor het apparaat dat moet worden gebruikt voor toegang tot uw IoT-hub.
 
-## <a name="twin-queries"></a>Apparaatdubbel-query 's
-[Module- en apparaat-query's voor apparaattwins](iot-hub-devguide-query-language.md) gebruikt u de SQL-achtige IoT Hub-querytaal gegevens ophalen uit uw apparaatdubbels of moduledubbels. U kunt de dezelfde IoT Hub-querytaal gebruiken om op te halen van informatie over [](#job) die worden uitgevoerd in uw IoT-hub.
+## <a name="twin-queries"></a>Dubbele query's
+Bij [dubbele query's voor apparaten en modules](iot-hub-devguide-query-language.md) wordt de SQL-achtige IOT hub query taal gebruikt om informatie op te halen van uw apparaat apparaatdubbels of module apparaatdubbels. U kunt dezelfde IoT Hub query taal gebruiken om informatie op te halen [](#job) over het uitvoeren van uw IOT-hub.
 
 ## <a name="twin-synchronization"></a>Dubbele synchronisatie
-Twin synchronisatie gebruikt het [gewenste eigenschappen](#desired-properties) in uw apparaatdubbels of moduledubbels voor uw apparaten te configureren of modules ophalen [gerapporteerde eigenschappen](#reported-properties) uit om op te slaan op het dubbele.
+Dubbele synchronisatie maakt gebruik van de [gewenste eigenschappen](#desired-properties) in uw apparaat apparaatdubbels of module apparaatdubbels om uw apparaten of modules te configureren en [gerapporteerde eigenschappen](#reported-properties) van ze te verkrijgen voor opslag in de dubbele.
 
-## <a name="x509-client-certificate"></a>X.509-clientcertificaat
-Een apparaat een X.509-certificaat kunt gebruiken om te verifiëren met [IoT-Hub](#iot-hub). Met behulp van een X.509-certificaat is een alternatief voor het gebruik van een [SAS-token](#shared-access-signature).
+## <a name="x509-client-certificate"></a>X. 509-client certificaat
+Een apparaat kan een X. 509-certificaat gebruiken om te verifiëren met [IOT hub](#iot-hub). Het gebruik van een X. 509-certificaat is een alternatief voor het gebruik van een [SAS-token](#shared-access-signature).

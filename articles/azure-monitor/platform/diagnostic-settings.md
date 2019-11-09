@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ec1842d534dcb1e9ddef149d3ae879677b29e715
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c1b7f81c62217d9e113f3293a8f351d908a6a576
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262516"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887270"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure
 [Platform logboeken](resource-logs-overview.md) in azure bieden gedetailleerde informatie over diagnostische gegevens en controle voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. In dit artikel vindt u informatie over het maken en configureren van diagnostische instellingen voor het verzamelen van platform logboeken op verschillende locaties.
@@ -32,10 +32,10 @@ Met één diagnostische instelling kan een van beide bestemmingen worden gedefin
 > [!NOTE]
 > De [metrische gegevens](metrics-supported.md) van het platform worden automatisch verzameld om [Azure monitor metrische gegevens](data-platform-metrics.md). Diagnostische instellingen kunnen worden gebruikt voor het verzamelen van metrische gegevens voor bepaalde Azure-Services in Azure Monitor logboeken voor analyse met andere bewakings informatie met behulp van [logboek query's](../log-query/log-query-overview.md).
 
-## <a name="destinations"></a>Doelen 
+## <a name="destinations"></a>Ontvangst 
 Platform logboeken kunnen worden verzonden naar de doelen in de volgende tabel. De configuratie voor elke bestemming wordt uitgevoerd met hetzelfde proces voor het maken van diagnostische instellingen die in dit artikel worden beschreven. Volg elke koppeling in de volgende tabel voor meer informatie over het verzenden van gegevens naar deze bestemming.
 
-| Destination | Description |
+| Doel | Beschrijving |
 |:---|:---|
 | [Log Analytics-werkruimte](resource-logs-collect-workspace.md) | Door Logboeken te verzamelen in een Log Analytics-werk ruimte kunt u ze analyseren met andere bewakings gegevens die zijn verzameld door Azure Monitor met behulp van krachtige logboek query's en ook om gebruik te maken van andere Azure Monitor functies, zoals waarschuwingen en visualisaties. |
 | [Event hubs](resource-logs-stream-event-hubs.md) | Door Logboeken naar Event Hubs te verzenden, kunt u gegevens streamen naar externe systemen, zoals Siem's van derden en andere log Analytics-oplossingen. |
@@ -55,26 +55,26 @@ U kunt Diagnostische instellingen configureren in de Azure Portal in het menu Az
 
     ![Diagnostische instellingen](media/diagnostic-settings/menu-resource.png)
 
-2. Als er geen instellingen zijn op de resource hebt u geselecteerd, wordt u gevraagd om een instelling te maken. Klik op **Diagnostische gegevens inschakelen**.
+2. Als er geen instellingen bestaan op de resource die u hebt geselecteerd, wordt u gevraagd een instelling te maken. Klik op **Diagnostische gegevens inschakelen**.
 
-   ![Diagnostische instelling - er zijn geen bestaande instellingen toevoegen](media/diagnostic-settings/add-setting.png)
+   ![Diagnostische instelling toevoegen-geen bestaande instellingen](media/diagnostic-settings/add-setting.png)
 
    Als er bestaande instellingen zijn voor de resource, ziet u een lijst met instellingen die al zijn geconfigureerd. Klik op **Diagnostische instelling toevoegen** om een nieuwe instelling of **Bewerk instelling** toe te voegen die u kunt bewerken. Elke instelling kan niet meer dan één van de doel typen hebben.
 
-   ![Diagnostische instelling - bestaande instellingen toevoegen](media/diagnostic-settings/edit-setting.png)
+   ![Diagnostische instelling toevoegen-bestaande instellingen](media/diagnostic-settings/edit-setting.png)
 
 3. Geef een naam op voor uw instelling als deze nog niet aanwezig is.
 4. Schakel het selectie vakje voor elke bestemming in om de logboeken te verzenden. Klik op **configureren** om de instellingen op te geven, zoals wordt beschreven in de volgende tabel.
 
-    | Instelling | Description |
+    | Instelling | Beschrijving |
     |:---|:---|
-    | Log Analytics-werkruimte | De naam van de werk ruimte. |
+    | Log Analytics werk ruimte | De naam van de werk ruimte. |
     | Storage-account | De naam van het opslag account. |
-    | Event Hub-naamruimte | De naam ruimte waar de Event Hub wordt gemaakt (als dit uw eerste keer is dat streaming-logboeken zijn) of gestreamd naar (als er al resources zijn die de logboek categorie naar deze naam ruimte streamen).
+    | Event hub-naamruimte | De naam ruimte waar de Event Hub wordt gemaakt (als dit uw eerste keer is dat streaming-logboeken zijn) of gestreamd naar (als er al resources zijn die de logboek categorie naar deze naam ruimte streamen).
     | Naam van Event Hub | Geef eventueel een Event Hub naam op voor het verzenden van alle gegevens in de instelling. Als u geen naam opgeeft, wordt er een Event Hub voor elke logboek categorie gemaakt. Als u meerdere categorieën verzendt, wilt u mogelijk een naam opgeven om het aantal gemaakte Event hubs te beperken. Zie [Azure Event hubs quota's en limieten](../../event-hubs/event-hubs-quotas.md) voor meer informatie. |
-    | De naam van een Event hub-beleid | Hiermee worden de machtigingen gedefinieerd die het streaming-mechanisme heeft. |
+    | Naam van de Event hub-beleid | Hiermee worden de machtigingen gedefinieerd die het streaming-mechanisme heeft. |
 
-    ![Diagnostische instelling - bestaande instellingen toevoegen](media/diagnostic-settings/setting-details.png)
+    ![Diagnostische instelling toevoegen-bestaande instellingen](media/diagnostic-settings/setting-details.png)
 
 5. Schakel het selectie vakje in voor elk van de gegevens categorieën die u naar de opgegeven doelen wilt verzenden. Als u de optie voor het **archiveren naar een opslag account**hebt geselecteerd, moet u ook de [Bewaar periode](resource-logs-collect-storage.md#data-retention)opgeven.
 
@@ -83,7 +83,7 @@ U kunt Diagnostische instellingen configureren in de Azure Portal in het menu Az
 > [!NOTE]
 > Het verzenden van multidimensionale metrische gegevens via diagnostische instellingen wordt momenteel niet ondersteund. Metrische gegevens met dimensies worden geëxporteerd als platte eendimensionale metrische gegevens, als totaal van alle dimensiewaarden.
 >
-> *Bijvoorbeeld*: De metriek 'Binnenkomende berichten' voor een Event Hub kan worden verkend en uitgezet op wachtrijniveau. Wanneer de waarde wordt geëxporteerd via diagnostische instellingen, wordt deze echter voorgesteld als alle binnenkomende berichten voor alle wachtrijen in de Event Hub.
+> *Een voorbeeld*: de metriek 'Binnenkomende berichten' voor een Event Hub kan worden verkend en uitgezet op wachtrijniveau. Wanneer de waarde wordt geëxporteerd via diagnostische instellingen, wordt deze echter voorgesteld als alle binnenkomende berichten voor alle wachtrijen in de Event Hub.
 
 4. Klik op **Opslaan**.
 
@@ -92,7 +92,7 @@ Na enkele ogen blikken wordt de nieuwe instelling weer gegeven in de lijst met i
 
 
 ## <a name="create-diagnostic-settings-using-powershell"></a>Diagnostische instellingen maken met behulp van Power shell
-Gebruik de cmdlet [set-AzDiagnosticSetting](https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azdiagnosticsetting) om een diagnostische instelling met [Azure PowerShell](powershell-quickstart-samples.md)te maken. Raadpleeg de documentatie voor deze cmdlet voor beschrijvingen van de para meters.
+Gebruik de cmdlet [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) om een diagnostische instelling met [Azure PowerShell](powershell-quickstart-samples.md)te maken. Raadpleeg de documentatie voor deze cmdlet voor beschrijvingen van de para meters.
 
 Hieronder volgt een voor beeld van een Power shell-cmdlet om een diagnostische instelling te maken met behulp van alle drie de bestemmingen.
 

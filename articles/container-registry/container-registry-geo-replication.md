@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: c0de5f958c6dcbf935de4eec9557cf64620abbcf
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: f6d1987012cb401d7167896d9352ba7eae821a04
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208016"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887992"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replicatie in Azure Container Registry
 
@@ -60,7 +60,7 @@ De functie voor geo-replicatie van Azure Container Registry biedt de volgende vo
 
 * Eén register beheren voor alle regio's: `contoso.azurecr.io`
 * Eén configuratie van installatiekopie-implementaties beheren, omdat voor alle regio's dezelfde installatiekopie-URL wordt gebruikt: `contoso.azurecr.io/public/products/web:1.2`
-* Push naar één REGI ster, terwijl ACR de geo-replicatie beheert. U kunt regionale webhooks configureren om u op de hoogte te stellen van gebeurtenissen in specifieke replica's. [](container-registry-webhook.md)
+* Push naar één REGI ster, terwijl ACR de geo-replicatie beheert. U kunt regionale [webhooks](container-registry-webhook.md) configureren om u op de hoogte te stellen van gebeurtenissen in specifieke replica's.
 
 ## <a name="configure-geo-replication"></a>Geo-replicatie configureren
 
@@ -97,7 +97,7 @@ ACR begint installatiekopieën te synchroniseren voor de geconfigureerde replica
 * Elke regio in een geo-gerepliceerd REGI ster is onafhankelijk nadat deze is ingesteld. Azure Container Registry Sla's gelden voor elke regio met geo-replicatie.
 * Wanneer u installatie kopieën vanuit een geo-gerepliceerd REGI ster pusht of pullt, verzendt Azure Traffic Manager op de achtergrond de aanvraag naar het REGI ster in de dichtstbijzijnde regio.
 * Nadat u een installatie kopie of label update naar de dichtstbijzijnde regio hebt gepusht, duurt het enige tijd voor Azure Container Registry om de manifesten en lagen te repliceren naar de overige regio's waarin u zich hebt aangemeld. Grotere afbeeldingen nemen meer tijd in beslag dan kleinere bestanden. Afbeeldingen en tags worden gesynchroniseerd over de replicatie regio's met een mogelijk consistentie model.
-* Voor het beheren van werk stromen die afhankelijk zijn van push-updates naar een geo-gerepliceerd, [](container-registry-webhook.md) wordt u aangeraden webhooks te configureren om te reageren op push gebeurtenissen. U kunt regionale webhooks instellen binnen een geo-gerepliceerd REGI ster om Push gebeurtenissen bij te houden die worden uitgevoerd in de geografisch gerepliceerde regio's.
+* Voor het beheren van werk stromen die afhankelijk zijn van push-updates naar een geo-gerepliceerd, wordt u aangeraden [webhooks](container-registry-webhook.md) te configureren om te reageren op push gebeurtenissen. U kunt regionale webhooks instellen binnen een geo-gerepliceerd REGI ster om Push gebeurtenissen bij te houden die worden uitgevoerd in de geografisch gerepliceerde regio's.
 
 ## <a name="delete-a-replica"></a>Een replica verwijderen
 
@@ -121,7 +121,7 @@ In het voorgaande voorbeeld ging Contoso van twee registers naar één en voegde
  
 Een docker-client die een installatie kopie naar een geo-gerepliceerd REGI ster pusht, kan niet alle afbeeldings lagen en het bijbehorende manifest naar één gerepliceerde regio pushen. Dit kan gebeuren omdat Azure-Traffic Manager register aanvragen naar het netwerk-dichtstbijzijnde gerepliceerde REGI ster stuurt. Als het REGI ster twee regio's voor replicatie in de *buurt* heeft, kunnen afbeeldings lagen en het manifest naar de twee sites worden gedistribueerd en mislukt de push bewerking wanneer het manifest is gevalideerd. Dit probleem wordt veroorzaakt door de manier waarop de DNS-naam van het REGI ster op sommige Linux-hosts wordt opgelost. Dit probleem doet zich niet voor in Windows, dat een DNS-cache aan de client zijde biedt.
  
-Als dit probleem optreedt, kunt u een DNS-cache aan de client zijde Toep assen, `dnsmasq` zoals op de Linux-host. Dit helpt ervoor te zorgen dat de naam van het REGI ster consistent wordt opgelost. Als u een virtuele Linux-machine in azure gebruikt om naar een REGI ster te pushen, raadpleegt u opties in [DNS-naam omzettings opties voor virtuele Linux-machines in azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-dns).
+Als dit probleem optreedt, kunt u een DNS-cache aan de client zijde Toep assen, zoals `dnsmasq` op de Linux-host. Dit helpt ervoor te zorgen dat de naam van het REGI ster consistent wordt opgelost. Als u een virtuele Linux-machine in azure gebruikt om naar een REGI ster te pushen, raadpleegt u opties in [DNS-naam omzettings opties voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/azure-dns).
 
 Als u de DNS-omzetting naar de dichtstbijzijnde replica tijdens het pushen van installatie kopieën wilt optimaliseren, configureert u een geo-gerepliceerd REGI ster in dezelfde Azure-regio's als de bron van de push bewerkingen of de dichtstbijzijnde regio bij het werken buiten Azure.
 

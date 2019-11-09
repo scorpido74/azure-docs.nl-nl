@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 217a1d94a4a5235fc5886f34986ffcb3aef60873
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: f2479d9f3e278d23d62275b667f78d1fd70dd151
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949252"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889695"
 ---
 # <a name="routing-events-and-messages"></a>Routering van gebeurtenissen en berichten
 
@@ -23,15 +23,17 @@ IoT-oplossingen zijn vaak een aantal krachtige services die opslag, analyses en 
 
 Azure Digital Apparaatdubbels biedt twee manieren om IoT-gebeurtenissen te verbinden met andere Azure-Services of zakelijke toepassingen:
 
-* **Azure Digital apparaatdubbels-gebeurtenissen routeren**: Een object in de ruimtelijke grafiek dat wijzigingen aanbrengt, de ontvangen telemetriegegevens of een door de gebruiker gedefinieerde functie die een melding maakt op basis van vooraf gedefinieerde voor waarden kan gebeurtenissen van het Azure Digital Apparaatdubbels activeren. Gebruikers kunnen deze gebeurtenissen verzenden naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/), [Azure Service Bus onderwerpen](https://azure.microsoft.com/services/service-bus/)of [Azure Event grid](https://azure.microsoft.com/services/event-grid/) voor verdere verwerking.
+* **Azure Digital apparaatdubbels-gebeurtenissen routeren**: een object in de ruimtelijke grafiek dat wijzigingen aanbrengt, of een door de gebruiker gedefinieerde functie die een melding maakt op basis van vooraf gedefinieerde voor waarden kan gebeurtenissen van het Azure Digital apparaatdubbels activeren. Gebruikers kunnen deze gebeurtenissen verzenden naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/), [Azure Service Bus onderwerpen](https://azure.microsoft.com/services/service-bus/)of [Azure Event grid](https://azure.microsoft.com/services/event-grid/) voor verdere verwerking.
 
-* **Telemetrie van routerings apparaat**: Azure Digital Apparaatdubbels kan naast routerings gebeurtenissen ook telemetrie-berichten van onbewerkte apparaten routeren naar Event Hubs voor meer inzichten en analyses. Deze typen berichten worden niet verwerkt door Azure Digital Apparaatdubbels. En ze worden alleen doorgestuurd naar de Event Hub.
+* **Telemetrie van routerings apparaat**: naast routerings gebeurtenissen kan Azure Digital apparaatdubbels ook telemetrie-berichten van onbewerkte apparaten routeren naar Event hubs voor meer inzichten en analyses. Deze typen berichten worden niet verwerkt door Azure Digital Apparaatdubbels. En ze worden alleen doorgestuurd naar de Event Hub.
 
 Gebruikers kunnen een of meer uitstaande eind punten opgeven voor het verzenden van gebeurtenissen of het door sturen van berichten. Gebeurtenissen en berichten worden verzonden naar de eind punten volgens deze vooraf gedefinieerde routerings voorkeuren. Met andere woorden, gebruikers kunnen een bepaald eind punt opgeven om grafiek bewerkings gebeurtenissen te ontvangen, een andere voor het ontvangen van telemetrie-gebeurtenissen van apparaten, enzovoort.
 
-[route ring voor 1Azure digitale Apparaatdubbels-gebeurtenissen @no__t](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
+[![Azure Digital Apparaatdubbels-gebeurtenissen routeren](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
-Route ring naar Event Hubs houdt de volg orde bij waarin telemetrie-berichten worden verzonden. Ze arriveren op het eind punt in dezelfde volg orde als waarin ze oorspronkelijk werden ontvangen. Event Grid en Service Bus niet garanderen dat eind punten gebeurtenissen ontvangen in dezelfde volg orde als waarin ze zijn opgetreden. Het gebeurtenis schema bevat echter een tijds tempel dat kan worden gebruikt om de volg orde te identificeren nadat de gebeurtenissen op het eind punt arriveren.
+Route ring naar Event Hubs houdt de volg orde bij waarin telemetrie-berichten worden verzonden. Ze arriveren op het eind punt in dezelfde volg orde als waarin ze oorspronkelijk werden ontvangen. 
+
+Event Grid en Service Bus niet garanderen dat eind punten gebeurtenissen ontvangen in dezelfde volg orde als waarin ze zijn opgetreden. Het gebeurtenis schema bevat echter een tijds tempel dat kan worden gebruikt om de volg orde te identificeren nadat de gebeurtenissen op het eind punt arriveren.
 
 ## <a name="route-implementation"></a>Route-implementatie
 

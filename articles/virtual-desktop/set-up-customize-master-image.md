@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 622b4e53be68025ad9553ce604041d14885bb2b2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7a0cce6b72240b95943fbece08cfbf61eaee3524
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330832"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891711"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Een VHD-hoofdinstallatiekopie voorbereiden en aanpassen
 
@@ -70,7 +70,7 @@ Als uw gebruikers toegang moeten hebben tot bepaalde LOB-toepassingen, raden we 
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Gebruikers profiel container instellen (FSLogix)
 
-Als u de container FSLogix wilt opnemen als onderdeel van de installatie kopie, volgt u de instructies in [een profiel container maken voor een hostgroep met een bestands share](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). U kunt de functionaliteit van de FSLogix-container testen met [deze Snelstartgids](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial).
+Als u de container FSLogix wilt opnemen als onderdeel van de installatie kopie, volgt u de instructies in [een profiel container maken voor een hostgroep met een bestands share](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). U kunt de functionaliteit van de FSLogix-container testen met [deze Snelstartgids](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial).
 
 ### <a name="configure-windows-defender"></a>Windows Defender configureren
 
@@ -86,7 +86,7 @@ Zie [uitsluitingen configureren en valideren op basis van bestands extensie en m
 
 Automatische updates via lokale groepsbeleid uitschakelen:
 
-1. Open **lokale Groepsbeleidsobjecteditor @ no__t-1Administrative templates @ no__t-2Windows Components @ no__t-3Windows update**.
+1. Open **Lokale groepsbeleidsobjecteditor\\Beheersjablonen\\Windows-onderdelen\\Windows Update**.
 2. Klik met de rechter muisknop op **Automatische updates configureren** en stel deze in op **uitgeschakeld**.
 
 U kunt ook de volgende opdracht uitvoeren op een opdracht prompt om Automatische updates uit te scha kelen.
@@ -109,7 +109,7 @@ Externe-sessie beleidsregels kunnen worden afgedwongen op groepsbeleid niveau, o
 
 Beleid voor externe sessies configureren:
 
-1. Navigeer naar **Beheersjablonen** > **Windows-onderdelen**@no__t-**3 Extern bureaublad-services** > **extern bureaublad sessiehost** > **sessie tijds limieten**.
+1. Ga naar **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > extern bureaublad **sessiehost** > sessie **tijds limieten**.
 2. Selecteer in het deel venster aan de rechter kant het beleid **tijds limiet instellen voor actieve maar niet-actieve Extern bureaublad-services sessies** .
 3. Nadat het modale venster wordt weer gegeven, wijzigt u de beleids optie van **niet geconfigureerd** in **ingeschakeld** om het beleid te activeren.
 4. Stel de hoeveelheid tijd in het vervolg keuzemenu onder de beleids optie in op **3 uur**.
@@ -134,7 +134,7 @@ Tijd zones omleiden:
 1. Open de **console Groepsbeleidbeheer**op de Active Directory-server.
 2. Breid uw domein en groepsbeleid objecten uit.
 3. Klik met de rechter muisknop op het **Groepsbeleid-object** dat u hebt gemaakt voor de instellingen voor groeps beleid en selecteer **bewerken**.
-4. Ga in het **Groepsbeleidsbeheer-editor**naar **computer configuratie** > **beleid** > **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services**@no__ t-10**extern bureaublad Session Host**2**apparaat en omleiding van bronnen**.
+4. Ga in het **Groepsbeleidsbeheer-editor**naar **computer configuratie** > **beleid** > **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > extern bureaublad van de **host** > **apparaat en bron omleiding**.
 5. Schakel de instelling **tijd zone omleiding toestaan** in.
 
 U kunt deze opdracht ook uitvoeren op de hoofd installatie kopie om tijd zones om te leiden:

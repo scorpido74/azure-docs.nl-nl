@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 34759077bd7223d17fea70d32bda63fd1b2595eb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4e55932d47389e09b135d571d0e000b9795e6edc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668122"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884951"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions-netwerk opties
 
@@ -86,7 +86,7 @@ Ongeacht de versie die wordt gebruikt, biedt integratie van virtuele netwerken u
 De functie voor integratie van virtuele netwerken:
 
 * Vereist een Standard-, Premium-of PremiumV2-App Service plan
-* ondersteunt TCP en UDP
+* Ondersteunt TCP en UDP
 * Werkt met App Service apps en functie-apps
 
 Er zijn enkele dingen die de integratie van virtuele netwerken niet ondersteunt, waaronder:
@@ -116,6 +116,12 @@ Als u een hoger beveiligings niveau wilt bieden, kunt u een aantal Azure-Service
 Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemeen gebruik maken of koppelen dat ondersteuning biedt voor blob-, wachtrij-en tabel opslag. U kunt momenteel geen beperkingen voor virtuele netwerken gebruiken voor dit account. Als u een service-eind punt voor een virtueel netwerk configureert op het opslag account dat u gebruikt voor uw functie-app, waardoor uw app wordt verbroken.
 
 [Meer informatie over vereisten voor opslag accounts.](./functions-create-function-app-portal.md#storage-account-requirements)
+
+### <a name="using-key-vault-references"></a>Key Vault verwijzingen gebruiken 
+
+Met Key Vault verwijzingen kunt u geheimen van Azure Key Vault gebruiken in uw Azure Functions-toepassing, zonder dat u code wijzigingen hoeft aan te brengen. Azure Key Vault is een service die gecentraliseerd geheimen beheer biedt, met volledige controle over het toegangs beleid en de controle geschiedenis.
+
+Als uw Key Vault is beveiligd met Service-eind punten, werkt [Key Vault verwijzingen](../app-service/app-service-key-vault-references.md) momenteel niet. Als u verbinding wilt maken met een Key Vault met behulp van virtuele netwerk integratie, moet u de sleutel kluis aanroepen in de code van uw toepassing.
 
 ## <a name="virtual-network-triggers-non-http"></a>Virtuele netwerk triggers (niet-HTTP)
 

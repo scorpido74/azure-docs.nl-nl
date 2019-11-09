@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a77c0e38db06698e714c3d0c3df0d9a5f028787b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 097429e9c761d447a7164c813a6c84d3f07f0ab6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71672943"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891407"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-workloads op Azure: controle lijst voor planning en implementatie
 
@@ -128,7 +128,7 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
             - Oracle Linux 7,5. Als u de RHCKL-kernel gebruikt, is release 3.10.0-862.13.1. EL7 vereist. Als u de Oracle UEK-kernel gebruikt, is release 5 vereist.
         - Test en evalueer de netwerk latentie tussen de virtuele machines van de SAP-toepassingslaag en de DBMS-Vm's op basis van SAP-ondersteunings opmerkingen [#500235](https://launchpad.support.sap.com/#/notes/500235) en [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Controleer de resultaten op basis van de richt lijnen voor netwerk latentie in [SAP-ondersteunings opmerking #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). De netwerk latentie moet in het gemiddelde of het goede bereik liggen. Uitzonde ringen zijn van toepassing op verkeer tussen Vm's en HANA grote instantie-eenheden, zoals beschreven in [dit artikel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance).
         - Zorg ervoor dat ILB-implementaties zijn ingesteld om direct server return te gebruiken. Met deze instelling wordt de latentie verminderd wanneer Azure ILBs wordt gebruikt voor configuraties met hoge Beschik baarheid op de DBMS-laag.
-        - Als u Azure Load Balancer samen met Linux-gast besturingssystemen gebruikt, controleert u of de Linux-netwerk parameter **net. IPv4. TCP _timestamps** is ingesteld op **0**. Deze aanbeveling is in conflict met aanbevelingen in oudere versies van [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421). De SAP-notitie wordt nu bijgewerkt met de status dat deze para meter moet worden ingesteld op **0** om te kunnen werken met Azure load balancers.
+        - Als u Azure Load Balancer samen met Linux-gast besturingssystemen gebruikt, controleert u of de Linux-netwerk parameter **net. IPv4. tcp_timestamps** is ingesteld op **0**. Deze aanbeveling is in conflict met aanbevelingen in oudere versies van [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421). De SAP-notitie wordt nu bijgewerkt met de status dat deze para meter moet worden ingesteld op **0** om te kunnen werken met Azure load balancers.
         - Overweeg het gebruik van [Azure proximity placement groups](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) om een optimale netwerk latentie te verkrijgen. Zie voor meer informatie [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md).
    4. Hoge Beschik baarheid en implementaties voor herstel na nood gevallen.
         - Als u de SAP-toepassingslaag implementeert zonder een specifieke Azure-beschikbaarheids zone te definiëren, moet u ervoor zorgen dat alle virtuele machines waarop SAP-dialoog instanties of middleware-exemplaren van één SAP-systeem worden uitgevoerd, worden geïmplementeerd in een [beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability).
@@ -160,7 +160,7 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
    1.  Controleer of de [netwerk beveiligings groep en de ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) -regels naar behoren werken en de beveiligde resources afschermen.
    1.  Zorg ervoor dat alle resources die moeten worden versleuteld, zijn versleuteld. Definieer en implementeer processen voor het maken van back-ups van certificaten, opslag en toegang tot die certificaten en herstel de versleutelde entiteiten.
    1.  Gebruik [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) voor besturingssysteem schijven waar mogelijk vanuit een besturings systeem-ondersteunings punt wordt weer gegeven.
-   1.  Zorg ervoor dat u niet te veel versleutelings lagen gebruikt. In sommige gevallen is het zinvol om Azure Disk Encryption te gebruiken in combi natie met een van de DBMS Transparent Data Encryption-methoden.
+   1.  Zorg ervoor dat u niet te veel versleutelings lagen gebruikt. In sommige gevallen is het zinvol om Azure Disk Encryption samen met een van de DBMS-Transparent Data Encryption methoden te gebruiken om verschillende schijven of onderdelen op dezelfde server te beveiligen.  U kunt bijvoorbeeld op een SAP-DBMS-server de Azure Disk Encryption (ADE) inschakelen op de opstart schijf van het besturings systeem (als het besturings systeem ADE ondersteunt) en die gegevens schijven die niet worden gebruikt door de bestanden met DBMS-gegevens persistentie.  Een voor beeld hiervan is het gebruik van ADE op de schijf met de DBMS TDE-versleutelings sleutels.
 1. Prestatie testen. In SAP voert u de volgende vergelijkingen uit op basis van SAP-tracering en-metingen:
    - Indien van toepassing, kunt u de 10 beste online rapporten vergelijken met uw huidige implementatie.
    - Indien van toepassing, kunt u de eerste 10 batch-taken vergelijken met uw huidige implementatie.

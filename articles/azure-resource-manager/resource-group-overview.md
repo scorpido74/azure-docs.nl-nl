@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: overview
 ms.date: 08/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: f8ec833a469e3c3a9b4c88343a48e109fc5c9728
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 525271fdc94e0fd1b2cafe4a5a222ce9100156ef
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338212"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888478"
 ---
 # <a name="azure-resource-manager-overview"></a>Overzicht van Azure Resource Manager
 
@@ -57,11 +57,11 @@ Met Resource Manager kunt u het volgende doen:
 
 * Verhelder de facturering van uw organisatie door de kosten voor een groep resources te bekijken die dezelfde tag delen.
 
-## <a name="understand-scope"></a>Bereik
+## <a name="understand-scope"></a>Reikwijdte
 
 Azure biedt vier bereik niveaus: [beheer groepen](../governance/management-groups/overview.md), abonnementen, [resource groepen](#resource-groups)en resources. In de volgende afbeelding ziet u een voorbeeld van deze lagen.
 
-![Scope](./media/resource-group-overview/scope-levels.png)
+![Bereik](./media/resource-group-overview/scope-levels.png)
 
 U past beheerinstellingen toe op een of meer bereikniveaus. Het niveau dat u kiest, bepaalt de reikwijdte van de instelling. Lagere niveaus nemen instellingen over van hogere niveaus. Wanneer u bijvoorbeeld een [beleid](../governance/policy/overview.md) toepast op het abonnement, wordt het beleid toegepast op alle resource groepen en resources in uw abonnement. Wanneer u een beleid toepast op de resource groep, wordt dat beleid toegepast op de resource groep en alle bijbehorende resources. Een andere resource groep beschikt echter niet over die beleids toewijzing.
 
@@ -87,7 +87,7 @@ Er zijn een aantal belangrijke factoren waarmee u rekening moet houden bij het d
 
 Als u een resourcegroep maakt, moet u voor die resourcegroep een locatie opgeven. U vraagt zich misschien af: 'Waarom heeft een resourcegroep een locatie nodig? En als de resources andere locaties kunnen hebben dan de resourcegroep, wat is dan het nut van een locatie voor de resourcegroep?' De resourcegroep slaat metagegevens op over de resources. Wanneer u een locatie voor de resource groep opgeeft, geeft u op waar de meta gegevens worden opgeslagen. In verband met nalevingsvereisten moet u er mogelijk voor zorgen dat uw gegevens worden opgeslagen in een bepaalde regio.
 
-Als de regio van de resource groep tijdelijk niet beschikbaar is, kunt u resources in de resource groep niet bijwerken omdat de meta gegevens niet beschikbaar zijn. De resources in andere regio's zullen nog steeds werken zoals verwacht, maar u kunt ze niet bijwerken. Zie voor meer informatie over het bouwen van betrouw bare toepassingen [ontwerpen van betrouw bare Azure-toepassingen](/azure/architecture/reliability/).
+Als de regio van de resource groep tijdelijk niet beschikbaar is, kunt u resources in de resource groep niet bijwerken omdat de meta gegevens niet beschikbaar zijn. De resources in andere regio's zullen nog steeds werken zoals verwacht, maar u kunt ze niet bijwerken. Zie voor meer informatie over het bouwen van betrouw bare toepassingen [ontwerpen van betrouw bare Azure-toepassingen](/azure/architecture/checklist/resiliency-per-service).
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Tolerantie van Azure Resource Manager
 

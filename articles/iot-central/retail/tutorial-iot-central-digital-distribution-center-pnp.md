@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 1965cc17f3d58932321c3ff14c99a962830d07b4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 879e1911c715688c2fed4044e23f437b3bbef7b2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615240"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890663"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Zelf studie: een Digital Distribution Center-toepassings sjabloon implementeren en door lopen
 
@@ -113,4 +113,4 @@ Als u deze toepassing niet meer wilt gebruiken, verwijdert u de toepassings sjab
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het Digital Distribution Center- [concept](./architecture-digital-distribution-center-pnp.md) van Digital Distribution Center (oplossings architectuur)
 * Meer informatie over andere [IOT Central Retail-sjablonen](./overview-iot-central-retail-pnp.md)
-* Raadpleeg [IOT Central Overview](../core/overview-iot-central-pnp.md) voor meer informatie over IOT Central
+* Raadpleeg [IOT Central Overview](../preview/overview-iot-central.md) voor meer informatie over IOT Central

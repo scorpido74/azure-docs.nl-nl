@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 8860a297332a3572890ceb4c843040f530b8a897
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f12f92294a9c30ddedea3c433ff65de4a635fd4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935536"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889639"
 ---
 # <a name="expressroute-virtual-network-gateway-and-fastpath"></a>Virtuele ExpressRoute-netwerkgateway en FastPath
 Als u uw virtuele Azure-netwerk en uw on-premises netwerk wilt verbinden via ExpressRoute, moet u eerst een virtuele netwerk gateway maken. Een virtuele netwerk gateway fungeert twee doelen: IP-routes uitwisselen tussen de netwerken en netwerk verkeer routeren. In dit artikel worden de gateway typen, gateway-Sku's en geschatte prestaties per SKU uitgelegd. In dit artikel wordt ook ExpressRoute [FastPath](#fastpath)beschreven, een functie waarmee het netwerk verkeer van uw on-premises netwerk wordt omzeild om de virtuele netwerk gateway te omzeilen om de prestaties te verbeteren.
@@ -85,10 +85,10 @@ FastPath is beschikbaar op alle ExpressRoute-circuits. Er is nog een virtuele ne
 FastPath biedt geen ondersteuning voor de volgende functies:
 * UDR op Gateway-subnet: als u een UDR toepast op het gateway-subnet van het virtuele netwerk, wordt het netwerk verkeer van uw on-premises netwerk naar de gateway van het virtuele netwerk verzonden.
 * VNet-peering: als u andere virtuele netwerken hebt die zijn gekoppeld aan het netwerk verkeer van uw on-premises netwerk naar de andere virtuele netwerken (dat wil zeggen de zogenaamde ' spoke ' VNets), blijven worden verzonden naar het virtuele netwerk. #b0. De tijdelijke oplossing is om alle virtuele netwerken rechtstreeks aan het ExpressRoute-circuit te koppelen.
-* Basis Load Balancer: als u een intern interne load balancer in uw virtuele netwerk implementeert of de Azure PaaS-service die u in uw virtuele netwerk implementeert, maakt gebruik van een Basic interne load balancer, het netwerk verkeer van uw on-premises netwerk naar de virtuele IP-adressen die worden gehost op de Basis load balancer worden verzonden naar de gateway van het virtuele netwerk. De oplossing is het bijwerken van de basis load balancer naar een [standaard Load Balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview).
+* Basis Load Balancer: als u een intern interne load balancer in uw virtuele netwerk implementeert of de Azure PaaS-service die u in uw virtuele netwerk implementeert, maakt gebruik van een Basic interne load balancer, het netwerk verkeer van uw on-premises netwerk naar de virtuele IP-adressen die worden gehost op de Basis load balancer worden verzonden naar de gateway van het virtuele netwerk. De oplossing is het bijwerken van de basis load balancer naar een [standaard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).
 * Privé-koppeling: als u vanuit uw on-premises netwerk verbinding maakt met een [persoonlijk eind punt](../private-link/private-link-overview.md) in uw virtuele netwerk, gaat de verbinding via de gateway van het virtuele netwerk.
  
-## <a name="resources"></a>REST Api's en Power shell-cmdlets
+## <a name="resources"></a>REST-API's en PowerShell-cmdlets
 Zie de volgende pagina's voor aanvullende technische bronnen en specifieke syntaxis vereisten voor het gebruik van REST Api's en Power shell-cmdlets voor configuraties van virtuele netwerk gateways:
 
 | **Klassiek** | **Resource Manager** |

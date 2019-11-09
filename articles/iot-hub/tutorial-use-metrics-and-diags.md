@@ -1,22 +1,21 @@
 ---
 title: Metrische gegevens en diagnostische logboeken instellen en gebruiken met een Azure IoT-hub | Microsoft Docs
-description: Metrische gegevens en diagnostische logboeken instellen en gebruiken met een Azure IoT-hub
+description: Meer informatie over het instellen en gebruiken van metrische gegevens en Diagnostische logboeken met een Azure IoT hub. Zo beschikt u over gegevens die u kunt analyseren om problemen met de hub op te sporen.
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 7349287945a56bb7674e364f515d0b763015ed59
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3bda78a54b0914465a50d664ab0323444203a387
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262316"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890363"
 ---
-# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Zelfstudie: Metrische gegevens en diagnostische logboeken instellen en gebruiken met een IoT-hub
+# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Zelf studie: metrische gegevens en Diagnostische logboeken instellen en gebruiken met een IoT-hub
 
 Als u een IoT Hub-oplossing in een productieomgeving gebruikt, wilt u metrische gegevens instellen en diagnostische logboeken inschakelen. Als er dan een probleem optreedt, hebt u gegevens die u kunt bekijken om het probleem te diagnosticeren en sneller op te lossen. In dit artikel ziet u hoe u de diagnostische logboeken met diagnostische gegevens kunt inschakelen en op fouten controleren. U gaat ook wat metrische gegevens instellen om in de gaten te houden, en waarschuwingen die worden geactiveerd wanneer de metrische gegevens een bepaalde grens raken. U kunt bijvoorbeeld een e-mail naar u laten verzenden wanneer het aantal verzonden telemetrieberichten een bepaalde grens overschrijdt, of wanneer het aantal gebruikte berichten de hoeveelheid toegestane berichten per dag voor de IoT-hub nadert. 
 
@@ -116,7 +115,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 ```
 
 >[!NOTE]
->Bij het maken van de apparaat-id krijgt u mogelijk de volgende foutmelding: *Geen sleutels gevonden voor beleid iothubowner van IoT Hub ContosoTestHub*. U kunt deze fout corrigeren door de Azure CLI IoT-extensie bij te werken en vervolgens de laatste twee opdrachten in het script opnieuw uit te voeren. 
+>Bij het maken van de apparaat-id wordt mogelijk de volgende fout weer gegeven: *Er zijn geen sleutels gevonden voor de beleids iothubowner van IOT hub ContosoTestHub*. U kunt deze fout corrigeren door de Azure CLI IoT-extensie bij te werken en vervolgens de laatste twee opdrachten in het script opnieuw uit te voeren. 
 >
 >Hier volgt de opdracht voor het bijwerken van de extensie. Voer deze uit in uw Cloud Shell-instantie.
 >
@@ -135,7 +134,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
    ![Schermafbeelding van het gedeelte Diagnostische instellingen van de IoT Hub-blade.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
 
 
-3. Zorg ervoor dat het abonnement en de resourcegroep correct zijn. Schakel onder **Resourcetype** het selectievakje **Alles selecteren** uit, zoek **IoT Hub** op en schakel het in. (Het vinkje naast *Alles selecteren* verschijnt weer; negeer dit gewoon.) Selecteer onder **Resource** de naam van de hub. Uw scherm moet lijken op deze afbeelding: 
+3. Zorg ervoor dat het abonnement en de resourcegroep correct zijn. Schakel onder **Resourcetype** het selectievakje **Alles selecteren** uit, zoek **IoT Hub** op en schakel het in. (Het selectie vakje wordt ingeschakeld als u *alles opnieuw selecteert* , maar u kunt dit gewoon negeren.) Onder **resource**selecteert u de naam van de hub. Uw scherm moet lijken op deze afbeelding: 
 
    ![Schermafbeelding van het gedeelte Diagnostische instellingen van de IoT Hub-blade.](./media/tutorial-use-metrics-and-diags/02-diagnostic-settings-start.png)
 
@@ -196,25 +195,25 @@ IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](/az
 
     Vul de velden in: 
 
-    **Abonnement**: Laat dit veld ingesteld op uw huidige abonnement.
+    **Abonnement**: verlaat dit veld dat is ingesteld voor uw huidige abonnement.
 
-    **Bron**: Stel dit veld in op *Metrische gegevens*.
+    **Bron**: Stel dit veld in op *metrische gegevens*.
 
-    **Resourcegroep**: Stel dit veld in op uw huidige resourcegroep, *ContosoResources*. 
+    **Resource groep**: Stel dit veld in op uw huidige resource groep *ContosoResources*. 
 
-    **Resourcetype**: Stel dit veld in op IoT Hub. 
+    **Resource type**: Stel dit veld in op IOT hub. 
 
-    **Resource**: Selecteer uw IoT-hub, *ContosoTestHub*.
+    **Resource**: Selecteer uw IOT-hub, *ContosoTestHub*.
 
 3. Klik op **Waarschuwing voor metrische gegevens toevoegen (klassiek)** om een nieuwe waarschuwing in te stellen.
 
     Vul de velden in:
 
-    **Naam**: Geef een naam op voor de waarschuwingsregel, zoals *telemetrieberichten*.
+    **Naam**: Geef een naam op voor uw waarschuwings regel, zoals *telemetrie-berichten*.
 
-    **Beschrijving**: Geef een beschrijving op voor de waarschuwing, zoals *waarschuwen wanneer er 1000 telemetrieberichten zijn verzonden*. 
+    **Beschrijving**: Geef een beschrijving op van de waarschuwing, zoals een *waarschuwing wanneer er 1000 telemetriegegevens worden verzonden*. 
 
-    **Bron**: Stel dit in op *Metrische gegevens*.
+    **Bron**: Stel dit in op *metrische gegevens*.
 
     **Abonnement**, **Resourcegroep** en **Resource** moeten worden ingesteld op de waarden die u hebt geselecteerd in het scherm **Klassieke waarschuwingen weergeven**. 
 
@@ -224,13 +223,13 @@ IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](/az
 
 4. Stel na de grafiek de volgende velden in:
 
-   **Voorwaarde**: Stel in op *Groter dan*.
+   **Voor waarde**: ingesteld op *groter dan*.
 
-   **Drempel**: Stel in op 1000.
+   **Drempel waarde**: ingesteld op 1000.
 
-   **Periode**: Stel in op *In de afgelopen 5 minuten*.
+   **Period**: ingesteld op *de laatste 5 minuten*.
 
-   **Ontvangers van e-mailmeldingen**: Voeg hier uw e-mailadres toe. 
+   E- **mail ontvangers van meldingen**: plaats hier uw e-mail adres. 
 
    ![Schermafbeelding van de onderste helft van het waarschuwingenscherm.](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
 
@@ -240,11 +239,11 @@ IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](/az
 
    Klik in het scherm **Klassieke waarschuwingen weergeven** op **Waarschuwing voor metrische gegevens toevoegen (klassiek)** en vul vervolgens in het deelvenster **Regel toevoegen** deze velden in.
 
-   **Naam**: Geef een naam op voor de waarschuwingsregel, zoals *aantal gebruikte berichten*.
+   **Naam**: Geef een naam op voor de waarschuwings regel, zoals het *aantal gebruikte berichten*.
 
-   **Beschrijving**: Geef een beschrijving op voor de waarschuwing, zoals *waarschuwen wanneer het quotum bijna op is*.
+   **Beschrijving**: Geef een beschrijving op van de waarschuwing, zoals *waarschuwing, wanneer u een quotum wilt*ontvangen.
 
-   **Bron**: Stel dit veld in op *Metrische gegevens*.
+   **Bron**: Stel dit veld in op *metrische gegevens*.
 
     **Abonnement**, **Resourcegroep** en **Resource** moeten worden ingesteld op de waarden die u hebt geselecteerd in het scherm **Klassieke waarschuwingen weergeven**. 
 
@@ -252,13 +251,13 @@ IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](/az
 
 6. Vul onder de grafiek de volgende velden in:
 
-   **Voorwaarde**: Stel in op *Groter dan*.
+   **Voor waarde**: ingesteld op *groter dan*.
 
-   **Drempel**: Stel in op 1000.
+   **Drempel waarde**: ingesteld op 1000.
 
-   **Periode**: Stel dit veld in op *In de afgelopen 5 minuten*. 
+   **Periode**: Stel dit veld in op *de laatste vijf minuten*. 
 
-   **Ontvangers van e-mailmeldingen**: Voeg hier uw e-mailadres toe. 
+   E- **mail ontvangers van meldingen**: plaats hier uw e-mail adres. 
 
    Klik op **OK** om de regel op te slaan. 
 

@@ -1,6 +1,6 @@
 ---
-title: Implementeer de oplossing voor externe controle lokaal (via Visual Studio IDE) - Azure | Microsoft Docs
-description: In deze gebruiksaanwijzing laat zien hoe de oplossingsverbetering voor externe bewaking implementeren naar uw lokale computer met behulp van Visual Studio voor het testen en ontwikkeling.
+title: Externe bewakings oplossing implementeren lokaal-VS IDE-Azure | Microsoft Docs
+description: In deze hand leiding wordt uitgelegd hoe u de oplossing voor externe controle kunt implementeren op uw lokale computer met behulp van Visual Studio voor testen en ontwikkeling.
 author: avneet723
 manager: hegate
 ms.author: avneets
@@ -8,115 +8,115 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1adf59feca7db4c5903b04c59e1bd23290c1855e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1eba1fceb959bd475d205176c2c53f6409fdc77
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967507"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890890"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>De bewaking op afstand oplossingsversnellers implementeren lokaal - Visual Studio
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>De externe controle oplossings versneller implementeren lokaal-Visual Studio
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-In dit artikel leest u hoe de oplossingsverbetering voor externe bewaking implementeren naar uw lokale computer voor het testen en ontwikkeling. U informatie over het uitvoeren van de microservices in Visual Studio. Een lokale microservices-implementatie maakt gebruik van de volgende cloudservices: IoT Hub, Cosmos DB, Azure stream Analytics en Azure Time Series Insights-services in de cloud.
+In dit artikel wordt beschreven hoe u de oplossing voor externe controle op uw lokale computer implementeert voor testen en ontwikkeling. U leert hoe u de micro Services in Visual Studio uitvoert. Een lokale implementatie van micro Services maakt gebruik van de volgende Cloud Services: IoT Hub, Cosmos DB, Azure streaming Analytics en Azure Time Series Insights Services in de Cloud.
 
-Als u wilt dat de oplossingsverbetering voor externe controle uitvoeren in Docker op uw lokale computer, raadpleegt u [Remote Monitoring solution accelerator lokaal - Docker implementeren](iot-accelerators-remote-monitoring-deploy-local-docker.md).
+Als u de oplossings versneller voor externe controle in docker op uw lokale computer wilt uitvoeren, raadpleegt u [de externe controle oplossings versneller lokaal-docker implementeren](iot-accelerators-remote-monitoring-deploy-local-docker.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het implementeren van de Azure-services die worden gebruikt door de oplossingsverbetering voor externe controle, moet u een actief Azure-abonnement.
+Als u de Azure-Services wilt implementeren die worden gebruikt door de oplossings versneller voor externe bewaking, hebt u een actief Azure-abonnement nodig.
 
 Als u geen account hebt, kunt u binnen een paar minuten een account voor de gratis proefversie maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.
 
-### <a name="machine-setup"></a>Machine-instellingen
+### <a name="machine-setup"></a>Machine instellen
 
-Voor het voltooien van de lokale implementatie, moet u de volgende hulpprogramma's geïnstalleerd op uw lokale ontwikkelcomputer:
+Als u de lokale implementatie wilt volt ooien, moet u de volgende hulpprogram ma's installeren op uw lokale ontwikkel computer:
 
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Visual Studio](https://visualstudio.microsoft.com/)
 * [Nginx](https://nginx.org/en/download.html)
-* [Node.js v8](https://nodejs.org/) -deze software is een vereiste voor de CLI PCS die de scripts gebruiken voor het maken van Azure-resources. Gebruik geen Node.js v10.
+* [Node. js V8](https://nodejs.org/) : deze software is een vereiste voor de pc's cli die de scripts gebruiken om Azure-resources te maken. Gebruik node. js V10 toevoegen niet.
 
 > [!NOTE]
 > Visual Studio is beschikbaar voor Windows en Mac.
 
 [!INCLUDE [iot-accelerators-local-setup](../../includes/iot-accelerators-local-setup.md)]
 
-## <a name="run-the-microservices"></a>Voer de microservices
+## <a name="run-the-microservices"></a>De micro Services uitvoeren
 
-In deze sectie maakt uitvoeren u de microservices bewaking op afstand. U hebt de web-UI systeemeigen uitgevoerd, de Apparaatsimulatie-service in Docker en de microservices in Visual Studio.
+In deze sectie voert u de externe bewakings service uit. U voert de Web-UI zelf uit, de Device simulatie service in docker en de micro Services in Visual Studio.
 
-### <a name="run-the-device-simulation-service"></a>Uitvoeren van de service van de simulatie van apparaat
+### <a name="run-the-device-simulation-service"></a>De Device simulatie service uitvoeren
 
-Open een nieuw opdrachtpromptvenster om er zeker van te zijn dat u toegang hebt tot de omgevingsvariabelen ingesteld door de **start.cmd** script in de vorige sectie.
+Open een nieuw opdracht prompt venster om er zeker van te zijn dat u toegang hebt tot de omgevings variabelen die zijn ingesteld door het script **Start. cmd** in de vorige sectie.
 
-Voer de volgende opdracht voor het starten van de Docker-container voor de service van de simulatie apparaat. De service simuleert apparaten voor de oplossing voor externe controle.
+Voer de volgende opdracht uit om de docker-container voor de Device simulatie service te starten. De service simuleert apparaten voor de oplossing voor externe controle.
 
 ```cmd
 <path_to_cloned_repository>\services\device-simulation\scripts\docker\run.cmd
 ```
 
-### <a name="deploy-all-other-microservices-on-local-machine"></a>Implementatie van alle andere microservices op lokale computer
+### <a name="deploy-all-other-microservices-on-local-machine"></a>Alle andere micro Services op de lokale computer implementeren
 
-De volgende stappen laten zien hoe u de microservices bewaking op afstand uitvoeren in Visual Studio:
+De volgende stappen laten zien hoe u de micro Services voor externe controle uitvoert in Visual Studio:
 
-1. Launch Visual Studio.
-1. Open de **extern monitoring.sln** oplossing in de **services** map in de lokale kopie van de opslagplaats.
-1. In **Solution Explorer**, met de rechtermuisknop op de oplossing en klik op **eigenschappen**.
-1. Selecteer **algemene eigenschappen > Startup Project**.
-1. Selecteer **meerdere opstartprojecten** en stel **actie** naar **Start** voor de volgende projecten:
+1. Start Visual Studio.
+1. Open de oplossing **Remote-monitoring. SLN** in de map **Services** in uw lokale kopie van de opslag plaats.
+1. Klik in **Solution Explorer**met de rechter muisknop op de oplossing en klik op **Eigenschappen**.
+1. Selecteer **algemene eigenschappen > project voor opstarten**.
+1. Selecteer **meerdere opstart projecten** en stel **actie** in die moet worden **gestart** voor de volgende projecten:
     * WebService (asa-manager\WebService)
     * WebService (auth\WebService)
     * WebService (config\WebService)
     * WebService (device-telemetry\WebService)
     * WebService (iothub-manager\WebService)
     * WebService (storage-adapter\WebService)
-1. Klik op **OK** om op te slaan, uw keuzes.
-1. Klik op **fouten opsporen > Foutopsporing starten** wilt bouwen en uitvoeren van de webservices op de lokale computer.
+1. Klik op **OK** om uw keuzes op te slaan.
+1. Klik op **fouten opsporen > fout opsporing starten** om de webservices op de lokale computer te bouwen en uit te voeren.
 
-Elke webservice wordt een opdrachtprompt en web-browservenster geopend. Bij de opdrachtprompt, ziet u uitvoer van de service en het browservenster kunt u de status controleren. Sluit niet de opdracht prompts of webpagina's, met deze actie wordt de web-service gestopt.
+Elke webservice opent een opdracht prompt en webbrowser venster. Bij de opdracht prompt ziet u uitvoer van de actieve service en kunt u in het browser venster de status bewaken. Sluit de opdracht prompts of webpagina's niet. met deze actie wordt de webservice gestopt.
 
 ### <a name="start-the-stream-analytics-job"></a>De Stream Analytics-taak starten
 
-Volg deze stappen voor het starten van de Stream Analytics-taak:
+Volg deze stappen om de Stream Analytics taak te starten:
 
 1. Navigeer naar [Azure Portal](https://portal.azure.com).
-1. Navigeer naar de **resourcegroep** gemaakt voor uw oplossing. De naam van de resourcegroep is de naam die u voor uw oplossing hebt gekozen bij het uitvoeren van de **start.cmd** script.
-1. Klik op de **Stream Analytics-taak** in de lijst met resources.
-1. Op de Stream Analytics-taak **overzicht** pagina, klikt u op de **Start** knop. Klik vervolgens op **Start** de taak om nu te starten.
+1. Navigeer naar de **resource groep** die is gemaakt voor uw oplossing. De naam van de resource groep is de naam die u voor uw oplossing hebt gekozen toen u het script **Start. cmd** hebt uitgevoerd.
+1. Klik op de **taak stream Analytics** in de lijst met resources.
+1. Klik op de pagina **overzicht** van stream Analytics op de knop **starten** . Klik vervolgens op **Start** om de taak nu te starten.
 
-### <a name="run-the-web-ui"></a>Uitvoeren van de web-UI
+### <a name="run-the-web-ui"></a>De Web-UI uitvoeren
 
-In deze stap start u de web-UI. Open een nieuw opdrachtpromptvenster om er zeker van te zijn dat u toegang hebt tot de omgevingsvariabelen ingesteld door de **start.cmd** script. Navigeer naar de **webinterface** map in uw lokale exemplaar van de opslagplaats en voer de volgende opdrachten uit:
+In deze stap start u de Web-UI. Open een nieuw opdracht prompt venster om er zeker van te zijn dat u toegang hebt tot de omgevings variabelen die zijn ingesteld door het script **Start. cmd** . Ga naar de map **webui** in uw lokale kopie van de opslag plaats en voer de volgende opdrachten uit:
 
 ```cmd
 npm install
 npm start
 ```
 
-Wanneer het begin voltooid is, wordt de pagina in uw browser weergegeven **http:\//localhost:3000 / dashboard**. De fouten op deze pagina worden verwacht. Als u de toepassing zonder fouten, voer de volgende stap.
+Wanneer het starten is voltooid, wordt in uw browser de pagina **http:\//localhost: 3000/dash board**weer gegeven. De fouten op deze pagina worden verwacht. Als u de toepassing zonder fouten wilt weer geven, voert u de volgende stap uit.
 
-### <a name="configure-and-run-nginx"></a>Configureren en uitvoeren van NGINX
+### <a name="configure-and-run-nginx"></a>NGINX configureren en uitvoeren
 
-Instellen van een reverse proxy-server om de web-App en microservices die worden uitgevoerd op uw lokale computer te koppelen:
+Stel een reverse-proxy server in om de webtoepassing en micro services die worden uitgevoerd op uw lokale computer te koppelen:
 
-* Kopieer de **nginx.conf** -bestand uit de **webui\scripts\localhost** map in de lokale kopie van de opslagplaats naar de **nginx\conf** directory installeren.
-* Voer **nginx**.
+* Kopieer het bestand **nginx. conf** vanuit de map **webui\scripts\localhost** in uw lokale kopie van de opslag plaats naar de installatiemap van **nginx\conf** .
+* Voer **nginx**uit.
 
-Voor meer informatie over het uitvoeren **nginx**, Zie [nginx voor Windows](https://nginx.org/en/docs/windows.html).
+Zie [nginx voor Windows](https://nginx.org/en/docs/windows.html)voor meer informatie over het uitvoeren van **nginx**.
 
-### <a name="connect-to-the-dashboard"></a>Verbinding maken met het dashboard
+### <a name="connect-to-the-dashboard"></a>Verbinding maken met het dash board
 
-Voor toegang tot het oplossingsdashboard voor externe controle, gaat u naar http:\//localhost:9000 in uw browser.
+Om toegang te krijgen tot het dash board van de oplossing voor externe controle, gaat u naar http:\//localhost: 9000 in uw browser.
 
 ## <a name="clean-up"></a>Opruimen
 
-Om te voorkomen dat onnodige verwijderen kosten, wanneer u klaar bent met de test cloudservices uit uw Azure-abonnement. Als u wilt verwijderen van de services, gaat u naar de [Azure-portal](https://ms.portal.azure.com) en verwijder de resource-groep die de **start.cmd** script dat is gemaakt.
+Om onnodige kosten te voor komen, kunt u, wanneer u klaar bent met testen, de Cloud Services verwijderen uit uw Azure-abonnement. Als u de services wilt verwijderen, gaat u naar de [Azure Portal](https://ms.portal.azure.com) en verwijdert u de resource groep waarin het script **Start. cmd** is gemaakt.
 
-U kunt ook de lokale kopie van de bewaking op afstand opslagplaats gemaakt wanneer u de broncode van GitHub gekloond verwijderen.
+U kunt ook de lokale kopie van de externe bewakings opslagplaats verwijderen die is gemaakt bij het klonen van de bron code van GitHub.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u de oplossing voor externe controle hebt geïmplementeerd, wordt de volgende stap is het [verkennen van de mogelijkheden van het oplossingsdashboard](quickstart-remote-monitoring-deploy.md).
+Nu u de oplossing voor controle op afstand hebt geïmplementeerd, is de volgende stap het [verkennen van de mogelijkheden van het dash board van de oplossing](quickstart-remote-monitoring-deploy.md).

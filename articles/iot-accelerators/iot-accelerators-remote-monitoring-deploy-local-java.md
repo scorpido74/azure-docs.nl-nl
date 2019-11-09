@@ -1,5 +1,5 @@
 ---
-title: Implementeer de externe bewakings oplossing lokaal (via IntelliJ IDE)-Azure | Microsoft Docs
+title: Externe bewakings oplossing implementeren lokaal-IntelliJ IDE-Azure | Microsoft Docs
 description: In deze hand leiding wordt uitgelegd hoe u de oplossing voor externe controle kunt implementeren op uw lokale computer met behulp van IntelliJ voor testen en ontwikkeling.
 author: v-krghan
 manager: dominicbetts
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2f3c11763bb2f406caf9d33275fc29b0d140da9a
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 779ee1e057d74b11c5e0ba58dc2fd32b803f1e0e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "70743327"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888816"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>De externe controle oplossings versneller implementeren lokaal-IntelliJ
 
@@ -98,18 +98,18 @@ Als u de vereiste Azure-resources nog niet hebt gemaakt, voert u de volgende sta
    Het script voegt ook een set omgevings variabelen toe aan uw lokale machine. De naam van elke variabele heeft de voor voegsel- **pc's**. Deze omgevings variabelen bieden Details waarmee externe controle de configuratie waarden van een Azure Key Vault bron kan lezen.
 
    > [!TIP]
-   > Wanneer het script is voltooid, worden de omgevings variabelen opgeslagen in een bestand  **\<met\<\>\\de naam basismap.\\PC-\>oplossing naam. env**. U kunt deze gebruiken voor toekomstige implementaties van oplossings versnelling. Houd er rekening mee dat alle omgevings variabelen die op uw lokale computer zijn ingesteld, de waarden in het **lokale\\\\. env\\** -bestand van Services-scripts overschrijven wanneer u **docker-opstellen**uitvoert.
+   > Wanneer het script is voltooid, worden de omgevings variabelen opgeslagen in een bestand met de naam **\<uw basismap\>\\. pcs\\\<oplossings naam\>. env**. U kunt deze gebruiken voor toekomstige implementaties van oplossings versnelling. Houd er rekening mee dat alle omgevings variabelen die op uw lokale computer zijn ingesteld, de waarden in de **services\\scripts\\lokaal\\. env** -bestand overschrijven wanneer u **docker-opstellen**uitvoert.
 
 1. Sluit uw opdracht regel omgeving.
 
 ### <a name="use-existing-azure-resources"></a>Bestaande Azure-resources gebruiken
 
 Als u de vereiste Azure-resources al hebt gemaakt, stelt u de bijbehorende omgevings variabelen in op uw lokale computer:
-* **PCS_KEYVAULT_NAME**: De naam van de Key Vault resource.
-* **PCS_AAD_APPID**: De toepassings-ID van de Azure Active Directory (Azure AD).
-* **PCS_AAD_APPSECRET**: Het Azure AD-toepassings geheim.
+* **PCS_KEYVAULT_NAME**: de naam van de Key Vault resource.
+* **PCS_AAD_APPID**: de Azure Active Directory-toepassings-id (Azure AD).
+* **PCS_AAD_APPSECRET**: het Azure AD-toepassings geheim.
 
-Configuratie waarden worden gelezen uit deze Key Vault bron. Deze omgevings variabelen kunnen worden opgeslagen in het  **\<bestand\<\>\\uw basismap.\\PC Solution\>naam. env** van de implementatie. Houd er rekening mee dat omgevings variabelen die op uw lokale computer zijn ingesteld, waarden in het bestand **Local\\\\. env van\\Services-scripts** worden vervangen wanneer u **docker-opstellen**uitvoert.
+Configuratie waarden worden gelezen uit deze Key Vault bron. Deze omgevings variabelen kunnen worden opgeslagen in de **\<uw basismap\>\\. pcs\\\<. env** -bestand van de implementatie.\> Houd er rekening mee dat omgevings variabelen die op uw lokale computer zijn ingesteld, waarden in de **services\\scripts\\local\\. env** -bestand worden overschreven wanneer u **docker-opstellen**uitvoert.
 
 Een deel van de configuratie die nodig is voor de micro service, wordt opgeslagen in een exemplaar van Key Vault dat is gemaakt tijdens de eerste implementatie. De bijbehorende variabelen in de sleutel kluis moeten naar behoefte worden gewijzigd.
 
@@ -159,11 +159,11 @@ De volgende stappen laten zien hoe u micro Services voor externe controle uitvoe
 
 #### <a name="create-run-configurations"></a>Uitvoerings configuraties maken
 
-1. Selecteer**bewerkings configuraties** **uitvoeren** > .
-1. Selecteer **nieuwe configuratie** > **SBT taak**toevoegen.
+1. Selecteer **uitvoeren** > **configuraties te bewerken**.
+1. Selecteer **nieuwe configuratie toevoegen** > **taak SBT**.
 1. Voer een **naam**in en voer vervolgens **taken** in als **Run**.
 1. Selecteer de **werkmap** op basis van de service die u wilt uitvoeren.
-1. Selecteer**OK** **Toep assen** > om uw keuzes op te slaan.
+1. Selecteer **Toep assen** > **OK** om uw keuzes op te slaan.
 1. Uitvoerings configuraties maken voor de volgende webservices:
     * WebService (services\config)
     * WebService (services\device-Telemetry)
@@ -172,17 +172,17 @@ De volgende stappen laten zien hoe u micro Services voor externe controle uitvoe
 
 In de volgende afbeelding ziet u een voor beeld van het toevoegen van een configuratie voor een service:
 
-[![Scherm opname van het venster IntelliJ IDE run/debug-configuratie, met de optie storageAdapter gemarkeerd in de taken lijst SBT in het linkerdeel venster en de vermeldingen in de vakken naam, taken, werkmap en VM-para meters in het rechterdeel venster.](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
+[![scherm afbeelding van het venster IntelliJ IDE-uitvoering/fout opsporing wordt weer gegeven, met de optie storageAdapter gemarkeerd in de taken lijst SBT in het linkerdeel venster en de vermeldingen in de vakken naam, taken, werkmap en VM-para meters in het rechterdeel venster.](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
 #### <a name="create-a-compound-configuration"></a>Een samengestelde configuratie maken
 
-1. Als u alle services tegelijk wilt uitvoeren, selecteert u **nieuwe configuratie** > **verbinding**toevoegen.
+1. Als u alle services tegelijk wilt uitvoeren, selecteert u **nieuwe configuratie toevoegen** > **samengestelde**.
 1. Voer een **naam**in en selecteer vervolgens **SBT-taken toevoegen**.
-1. Selecteer**OK** **Toep assen** > om uw keuzes op te slaan.
+1. Selecteer **Toep assen** > **OK** om uw keuzes op te slaan.
 
 De volgende afbeelding laat bijvoorbeeld zien hoe u alle SBT-taken aan één configuratie toevoegt:
 
-[![Scherm opname van het venster IntelliJ IDE run/debug-configuraties, met de optie AllServices gemarkeerd in de samengestelde lijst in het linkerdeel venster en de optie voor de SBT-taak ' deviceTelemetry ' gemarkeerd in het rechterdeel venster.](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
+[![scherm afbeelding van het venster IntelliJ IDE-uitvoering/fout opsporing wordt weer gegeven, met de optie AllServices gemarkeerd in de samengestelde lijst in het linkerdeel venster en de optie voor de SBT-taak ' deviceTelemetry ' gemarkeerd in het rechterdeel venster.](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
 Selecteer **uitvoeren** om de webservices op de lokale computer te bouwen en uit te voeren.
 
@@ -190,10 +190,10 @@ Elke webservice opent een opdracht prompt venster en webbrowser venster. Bij de 
 
 Als u toegang wilt krijgen tot de status van de services, gaat u naar de volgende Url's:
 
-* IoT-hub-beheer:[http://localhost:9002/v1/status](http://localhost:9002/v1/status)
-* Telemetrie van apparaat:[http://localhost:9004/v1/status](http://localhost:9004/v1/status)
-* configuraties[http://localhost:9005/v1/status](http://localhost:9005/v1/status)
-* opslag adapter:[http://localhost:9022/v1/status](http://localhost:9022/v1/status)
+* IoT-hub-beheer: [http://localhost:9002/v1/status](http://localhost:9002/v1/status)
+* Telemetrie van apparaat: [http://localhost:9004/v1/status](http://localhost:9004/v1/status)
+* configuratie: [http://localhost:9005/v1/status](http://localhost:9005/v1/status)
+* opslag adapter: [http://localhost:9022/v1/status](http://localhost:9022/v1/status)
 
 ### <a name="start-the-stream-analytics-job"></a>De Stream Analytics-taak starten
 
@@ -226,7 +226,7 @@ Zie [nginx voor Windows](https://nginx.org/en/docs/windows.html)voor meer inform
 
 ### <a name="connect-to-the-dashboard"></a>Verbinding maken met het dash board
 
-Ga http://localhost:9000 naar in uw browser om toegang te krijgen tot het dash board van de oplossing voor externe controle.
+Ga naar http://localhost:9000 in uw browser om toegang te krijgen tot het dash board van de oplossing voor externe controle.
 
 ## <a name="clean-up"></a>Opruimen
 

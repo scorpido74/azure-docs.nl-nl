@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie over het gebruik van waarschuwingen en het verhelpen van problemen met apparaten met de externe bewakingsoplossing - Azure | Microsoft Docs
+title: 'Waarschuwingen gebruiken in de oplossing voor controle op afstand: Azure | Microsoft Docs'
 description: In deze zelfstudie ziet u hoe u waarschuwingen kunt gebruiken om problemen te identificeren en op te lossen met apparaten die zijn verbonden met de verbetering voor de externe bewakingsoplossing.
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 1cd1eb9a0bd4b8457ea82303a747acb2553ab707
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 853fa2b80e04dd8d9225d023db8030fed044ed7f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61452587"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890928"
 ---
 # <a name="tutorial-troubleshoot-and-fix-device-issues"></a>Zelfstudie: Problemen met apparaten opsporen en oplossen
 

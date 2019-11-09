@@ -13,7 +13,7 @@
       href: ios-quickstart.md
 - name: Zelfstudies
   items:
-    - name: De Insluitende lezer starten (Node.js)
+    - name: Start de Insluitende lezer (Node.js)
       href: tutorial-nodejs.md
     - name: De Insluitende lezer starten (Python)
       href: tutorial-python.md
@@ -32,8 +32,8 @@
 - name: Resources
   items:
     - name: Azure-roadmap
-      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Taalondersteuning
       href: 'https://aka.ms/ltlangsupport'
     - name: Regionale beschikbaarheid
-      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=cognitive-services'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

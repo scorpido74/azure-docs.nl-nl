@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 457154a797a4b6d9853b1effe0d8121053653a99
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: cd16ee87b213c2bfa4c541c4d3c453a4499855d0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174769"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887736"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps ondersteunde kaart stijlen
 Azure Maps biedt ondersteuning voor verschillende ingebouwde kaart stijlen, zoals hieronder wordt beschreven.
@@ -31,10 +31,10 @@ Een **wegkaart is een standaard** kaart met wegen, natuurlijke en kunst matige f
 
 ## <a name="blank-and-blank_accessible"></a>leeg en blank_accessible
 
-De **lege** en **blank_accessible** kaart stijlen bieden een leeg canvas waarop gegevens kunnen worden gevisualiseerd. De stijl **blank_accessible** blijft scherm lezers-updates bieden met locatie Details van waar de kaart zich bevindt, hoewel de basis kaart niet wordt weer gegeven.
+De **lege** en **blank_accessible** kaart stijlen bieden een leeg canvas waarop gegevens kunnen worden gevisualiseerd. De **blank_accessible** stijl blijft scherm lezers-updates bieden met locatie Details van waar de kaart zich bevindt, hoewel de basis kaart niet wordt weer gegeven.
 
 > [!Note]
-> In de Web-SDK kunt u de achtergrond kleur van de kaart wijzigen door de stijl CSS `background-color` van kaart DIV-element in te stellen.
+> In de Web-SDK kunt u de achtergrond kleur van de kaart wijzigen door de stijl CSS `background-color` van het element map DIV in te stellen.
 
 **Toepasselijke Api's:**
 * Web SDK-kaart besturings element
@@ -103,4 +103,4 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 Meer informatie over het instellen van een kaart stijl in Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Een kaart stijl kiezen](https://docs.microsoft.com/en-us/azure/azure-maps/choose-map-style)
+> [Een kaart stijl kiezen](https://docs.microsoft.com/azure/azure-maps/choose-map-style)

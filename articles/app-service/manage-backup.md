@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bbfab41c3324bc16874463d2fc0201f99ee9284b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: a56abbcb72afc1f45683259d3bd3bf13309cda07
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516973"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886070"
 ---
 # <a name="back-up-your-app-in-azure"></a>Back-up maken van uw app in Azure
 Met de functie voor het maken en terugzetten van back-ups in [Azure app service](overview.md) kunt u eenvoudig hand matig app-back-ups maken of volgens een planning. U kunt instellen dat de back-ups tot een onbeperkte tijd worden bewaard. U kunt de app herstellen naar een moment opname van een vorige status door de bestaande app te overschrijven of te herstellen naar een andere app.
@@ -39,7 +39,7 @@ De volgende database oplossingen worden ondersteund met de back-upfunctie:
 - [SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
-- [MySQL in-app](https://azure.microsoft.com/en-us/blog/mysql-in-app-preview-app-service/)
+- [MySQL in-app](https://azure.microsoft.com/blog/mysql-in-app-preview-app-service/)
  
 
 > [!NOTE]
@@ -68,7 +68,7 @@ De volgende database oplossingen worden ondersteund met de back-upfunctie:
     > [!NOTE]
     > Als het volgende bericht wordt weer gegeven, klikt u hierop om uw App Service-abonnement bij te werken voordat u kunt door gaan met back-ups.
     > Zie [een app omhoog schalen in azure](manage-scale-up.md)voor meer informatie.
-    > ![Choose Storage-account ](./media/manage-backup/upgrade-plan.png)
+    > ![Kies een opslag account](./media/manage-backup/upgrade-plan.png)
     > 
     > 
 
@@ -156,7 +156,7 @@ Voer back-ups op dezelfde manier uit als u normaal gesp roken [hand matig](#crea
 <a name="aboutbackups"></a>
 
 ## <a name="how-backups-are-stored"></a>Hoe back-ups worden opgeslagen
-Nadat u een of meer back-ups voor uw app hebt gemaakt, zijn de back-ups zichtbaar op de pagina **containers** van uw opslag account en uw app. In het opslag account bestaat elke back-up uit een `.zip` bestand dat de back-upgegevens bevat en een `.xml` bestand dat een manifest bevat van de inhoud van het `.zip` bestand. U kunt deze bestanden uitpakken en door bladeren als u toegang wilt krijgen tot uw back-ups zonder een app te herstellen.
+Nadat u een of meer back-ups voor uw app hebt gemaakt, zijn de back-ups zichtbaar op de pagina **containers** van uw opslag account en uw app. In het opslag account bestaat elke back-up uit een`.zip` bestand dat de back-upgegevens bevat en een `.xml` bestand dat een manifest bevat van de inhoud van het `.zip` bestand. U kunt deze bestanden uitpakken en door bladeren als u toegang wilt krijgen tot uw back-ups zonder een app te herstellen.
 
 De back-up van de Data Base voor de app wordt opgeslagen in de hoofdmap van het zip-bestand. Voor een SQL database is dit een BACPAC-bestand (geen bestands extensie) en kan het worden geïmporteerd. Als u een SQL database wilt maken op basis van de BACPAC-export, raadpleegt [u een BACPAC-bestand importeren om een nieuwe gebruikers database te maken](https://technet.microsoft.com/library/hh710052.aspx).
 

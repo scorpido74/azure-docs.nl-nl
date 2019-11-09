@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9563def1a7b510c403cf299a66066def0b03b59a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796776"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888603"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Bestanden uploaden naar een Media Services-account met behulp van REST  
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ In deze zelf studie leert u hoe u een bestand en een andere bewerking die eraan 
 - Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 - [Maak een Azure Media Services-account met behulp van de Azure Portal](media-services-portal-create-account.md).
 - Raadpleeg het artikel [toegang tot Azure Media Services-API met Aad-verificatie](media-services-use-aad-auth-to-access-ams-api.md) .
-- Zie ook voor meer informatie de [Azure AD-verificatie gebruiken om toegang te krijgen tot de Media Services-API met het rest](https://docs.microsoft.com/en-us/azure/media-services/previous/media-services-rest-connect-with-aad) -artikel.
+- Zie ook voor meer informatie de [Azure AD-verificatie gebruiken om toegang te krijgen tot de Media Services-API met het rest](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) -artikel.
 - Een **postman** configureren zoals beschreven in [postman configureren voor Media Services rest API-aanroepen](media-rest-apis-with-postman.md).
 
 ## <a name="considerations"></a>Overwegingen

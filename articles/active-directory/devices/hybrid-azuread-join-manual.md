@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5722d0b14c43bcdee7a06ebf5545cfc6254f7508
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: ed28b4bb8ec61455168f50058c8cdcaf9f50717d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562349"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882855"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Zelfstudie: Hybride Azure Active Directory-gekoppelde apparaten handmatig configureren
 
@@ -82,10 +82,10 @@ In de volgende tabel staat een overzicht van de stappen die vereist zijn voor uw
 
 | Stappen | Actueel Windows en wachtwoord-hashsynchronisatie | Actueel Windows en federatie | Downlevel Windows |
 | :--- | :---: | :---: | :---: |
-| Serviceverbindingspunt configureren | ![Vinkje][1] | ![Vinkje][1] | ![Vinkje][1] |
-| Claimuitgifte instellen |     | ![Vinkje][1] | ![Vinkje][1] |
-| Niet-Windows 10-apparaten inschakelen |       |        | ![Vinkje][1] |
-| Gekoppelde apparaten verifiëren | ![Vinkje][1] | ![Vinkje][1] | [Kijk][1] |
+| Serviceverbindingspunt configureren | ![Selecteren][1] | ![Selecteren][1] | ![Selecteren][1] |
+| Claimuitgifte instellen |     | ![Selecteren][1] | ![Selecteren][1] |
+| Niet-Windows 10-apparaten inschakelen |       |        | ![Selecteren][1] |
+| Gekoppelde apparaten verifiëren | ![Selecteren][1] | ![Selecteren][1] | [Kijk][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Een serviceverbindingspunt configureren
 
@@ -141,7 +141,7 @@ De cmdlet `Initialize-ADSyncDomainJoinedComputerSync`:
 
 * Maakt gebruik van de Active Directory PowerShell-module en Azure AD DS-hulpprogramma's (Azure Active Directory Domain Services). Deze hulpprogramma's maken op hun beurt gebruik van Active Directory Web Services dat wordt uitgevoerd op een domeincontroller. Active Directory Web Services wordt ondersteund op domeincontrollers waarop Windows Server 2008 R2 of hoger wordt uitgevoerd.
 * Wordt alleen ondersteund door MSOnline PowerShell-module versie 1.1.166.0. Gebruik deze [koppeling](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/) om deze module te downloaden.
-* Als de AD DS-hulpprogram ma's niet zijn `Initialize-ADSyncDomainJoinedComputerSync` geïnstalleerd, mislukt de installatie. U kunt de AD DS-hulpprogram ma's installeren via Serverbeheer onder **functies** > **Remote Server Administration Tools** > **hulpprogram ma's voor functie beheer**.
+* Als de AD DS-hulpprogram ma's niet zijn geïnstalleerd, mislukt `Initialize-ADSyncDomainJoinedComputerSync`. U kunt de AD DS-hulpprogram ma's installeren via Serverbeheer onder **functies** > **Remote Server Administration Tools** > **hulpprogram ma's voor functie beheer**.
 
 Voor domeincontrollers waarop Windows Server 2008 of een eerdere versie wordt uitgevoerd, gebruikt u het volgende script om het serviceverbindingspunt te maken. In een configuratie met meerdere forests gebruikt u het volgende script om het serviceverbindingspunt te maken in elke forest waarin computers bestaan:
 
@@ -185,7 +185,7 @@ Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **ADFS/Services/Trust/2005/windowstransport** of **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. Onder **Service** > **Eindpunten** in de AD FS-beheerconsole kunt u zien welke eindpunten zijn ingeschakeld.
+> **ADFS/Services/Trust/2005/windowstransport** of **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. Onder **Service** > **Eindpunten** in de AD FS-beheerconsole kunt u zien welke eindpunten zijn ingeschakeld.
 
 > [!NOTE]
 >Als u AD FS niet als uw on-premises federatieve service hebt, volgt u de instructies van uw leverancier om te verzekeren dat ze WS-Trust 1.3- of WS-Trust 2005-eindpunten ondersteunen en dat deze via het MEX-bestand (Metadata Exchange) worden gepubliceerd.
@@ -503,7 +503,7 @@ Als sommige van uw domein-gekoppelde apparaten downlevel Windows-apparaten zijn,
 
 Om downlevel Windows-apparaten te registreren, moet u ervoor zorgen dat de instelling is ingeschakeld die gebruikers in staat stelt apparaten te registreren in Azure AD. In de Azure-portal vindt u deze instelling onder **Azure Active Directory** > **Gebruikers en groepen** > **Apparaatinstellingen**.
 
-Het volgende beleid moet zijn ingesteld op **Alle**: **Gebruikers mogen hun apparaten met Azure AD registreren**
+Het volgende beleid moet worden ingesteld op **alle**: **gebruikers kunnen hun apparaten registreren bij Azure AD**.
 
 ![De knop Alles waarmee gebruikers apparaten kunnen registreren](./media/hybrid-azuread-join-manual/23.png)
 

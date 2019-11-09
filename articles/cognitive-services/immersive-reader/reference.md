@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1908ed916d61c7a65b1f0061c0fe8d8a08b5e41c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ed9bd6f5932fdcb2d9124a000115a6f68cf21613
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388097"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889310"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Naslag Gids voor insluitende lezers SDK
 
 De insluitende lezer SDK is een Java script-bibliotheek waarmee u de insluitende lezer kunt integreren in uw webtoepassing.
 
-# <a name="functions"></a>Functies
+## <a name="functions"></a>Functions
 
 De SDK biedt de volgende functies beschikbaar:
 
@@ -43,24 +43,24 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 | Naam | Type | Beschrijving |
 | ---- | ---- |------------ |
-| `token` | string | Het Azure AD-verificatie token. Zie de [instructies voor Azure AD-verificatie](./azure-active-directory-authentication.md). |
-| `subdomain` | string | Het aangepaste subdomein van uw insluitende lezer-resource in Azure. Zie de [instructies voor Azure AD-verificatie](./azure-active-directory-authentication.md). |
+| `token` | tekenreeks | Het Azure AD-verificatie token. Zie de [instructies voor Azure AD-verificatie](./azure-active-directory-authentication.md). |
+| `subdomain` | tekenreeks | Het aangepaste subdomein van uw insluitende lezer-resource in Azure. Zie de [instructies voor Azure AD-verificatie](./azure-active-directory-authentication.md). |
 | `content` | [Inhoud](#content) | Een object met de inhoud die in de insluitende lezer moet worden weer gegeven. |
 | `options` | [Opties](#options) | Opties voor het configureren van bepaald gedrag van de insluitende lezer. Optioneel. |
 
 ### <a name="returns"></a>Retourneert
 
-Retourneert een `Promise<HTMLDivElement>`, die wordt omgezet wanneer de insluitende lezer wordt geladen. De `Promise` wordt omgezet naar een `div`-element waarvan alleen een onderliggend element een `iframe`-onderdeel is dat de pagina voor de insluitende lezer bevat.
+Retourneert een `Promise<HTMLDivElement>`, die wordt omgezet wanneer de insluitende lezer wordt geladen. De `Promise` wordt omgezet naar een `div`-element waarvan alleen een onderliggend element een `iframe` is dat de pagina voor de insluitende lezer bevat.
 
 ### <a name="exceptions"></a>Uitzonderingen
 
-De geretourneerde `Promise` wordt afgewezen met een [`Error`-](#error) object als de insluitende lezer niet kan worden geladen. Zie de [fout codes](#error-codes)voor meer informatie.
+De geretourneerde `Promise` wordt afgewezen met een [`Error`](#error) -object als de insluitende lezer niet kan worden geladen. Zie de [fout codes](#error-codes)voor meer informatie.
 
 ## <a name="close"></a>sluiten
 
 Hiermee wordt de insluitende lezer gesloten.
 
-Een voor beeld van een use-case voor deze functie is als u de knop Afsluiten verborgen door ```hideExitButton: true``` in [Opties](#options)in te stellen. Vervolgens kan een andere knop (bijvoorbeeld de pijl-terug van een mobiele koptekst) deze ```close```-functie aanroepen wanneer erop wordt geklikt.
+Een voor beeld van een use-case voor deze functie is als de knop Afsluiten verborgen is door ```hideExitButton: true``` in [Opties](#options)in te stellen. Vervolgens kan een andere knop (bijvoorbeeld de pijl-terug van een mobiele koptekst) deze ```close```-functie aanroepen wanneer erop wordt geklikt.
 
 ```typescript
 close(): void;
@@ -68,7 +68,7 @@ close(): void;
 
 ## <a name="renderbuttons"></a>renderButtons
 
-Deze functie stijlen en werkt de elementen van de insluitende lezer van het document bij. Als ```options.elements``` wordt gegeven, zal deze functie knoppen in ```options.elements``` weer geven. Anders worden de knoppen weer gegeven in de elementen van het document die de klasse ```immersive-reader-button``` hebben.
+Deze functie stijlen en werkt de elementen van de insluitende lezer van het document bij. Als ```options.elements``` is geleverd, zal deze functie knoppen in ```options.elements```weer geven. Anders worden de knoppen weer gegeven in de elementen van het document die de klasse ```immersive-reader-button```hebben.
 
 Deze functie wordt automatisch aangeroepen door de SDK wanneer het venster wordt geladen.
 
@@ -168,16 +168,16 @@ Bevat informatie over de fout.
 
 #### <a name="error-codes"></a>Foutcodes
 
-| Coderen | Beschrijving |
+| Code | Beschrijving |
 | ---- | ----------- |
 | BadArgument | Het opgegeven argument is ongeldig. Zie `message` voor meer informatie. |
-| out | De insluitende lezer kan niet worden geladen binnen de opgegeven time-out. |
+| Out | De insluitende lezer kan niet worden geladen binnen de opgegeven time-out. |
 | TokenExpired | Het opgegeven token is verlopen. |
 | Beperkt | De limiet voor de aanroep frequentie is overschreden. |
 
 ## <a name="launching-the-immersive-reader"></a>De insluitende lezer starten
 
-De SDK biedt standaard stijlen voor de knop voor het starten van de insluitende lezer. Gebruik het klasse-kenmerk `immersive-reader-button` om deze stijl in te scha kelen.
+De SDK biedt standaard stijlen voor de knop voor het starten van de insluitende lezer. Gebruik het kenmerk `immersive-reader-button` class om deze stijl in te scha kelen.
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -189,7 +189,7 @@ Gebruik de volgende kenmerken om het uiterlijk van de knop te configureren.
 
 | Kenmerk | Beschrijving |
 | --------- | ----------- |
-| `data-button-style` | Hiermee wordt de stijl van de knop ingesteld. Kan `icon`, `text` of `iconAndText` zijn. De standaard waarde is `icon`. |
+| `data-button-style` | Hiermee wordt de stijl van de knop ingesteld. Kan `icon`, `text`of `iconAndText`zijn. De standaard instelling is `icon`. |
 | `data-locale` | Hiermee stelt u de land instelling. Bijvoorbeeld `en-US` of `fr-FR`. De standaard instelling is Engels `en`. |
 | `data-icon-px-size` | Hiermee stelt u de grootte van het pictogram in pixels. De standaard waarde is 20px. |
 

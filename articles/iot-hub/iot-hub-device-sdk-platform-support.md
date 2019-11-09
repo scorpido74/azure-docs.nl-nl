@@ -1,18 +1,18 @@
 ---
 title: Ondersteuning voor Azure IoT Device Sdk's-platform | Microsoft Docs
-description: "Concepten: een lijst met platforms die worden ondersteund door de Sdk's van het Azure IoT-apparaat"
+description: Er zijn Sdk's voor open source-apparaten beschikbaar op GitHub in C,C#.net (), Java, node. js en python om apparaten te verbinden met Azure IOT hub en de Device Provisioning Service (DPS).
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: ac5817675d3cfc97a8732ee2e10ec7b9246b12a5
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d39fd95f8704650db16c1dc1553efaba2f727052
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693323"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889429"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Ondersteuning voor Azure IoT Device Sdk's-platform
 
@@ -44,19 +44,19 @@ Voor elk van de vermelde Sdk's, micro soft:
 
 De [Azure IOT hub C Device SDK](https://github.com/Azure/azure-iot-sdk-c) is getest met en ondersteunt de volgende configuraties.
 
-| Besturingssysteem                  | TLS-bibliotheek                  | Aanvullende vereisten                                                                     |
+| OS                  | TLS-bibliotheek                  | Aanvullende vereisten                                                                     |
 |---------------------|------------------------------|---------------------------------------------------------------------------------------------|
 | Linux               | OpenSSL, WolfSSL of BearSSL | Berkeley-Sockets</br></br>De Portable Operating System Interface (POSIX)                       |
 | iOS 12,2            | OpenSSL of systeem eigen OSX        | XCode geëmuleerd in OSX 10.13.4                                                               |
 | Windows 10-serie   | Veilige                     |                                                                                             |
 | Mbed OS 5,4         | Mbed TLS 2                   | [MXChip IoT dev kit](https://microsoft.github.io/azure-iot-developer-kit/)                  |
-| Azure Sphere OS     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/en-us/services/azure-sphere/get-started/) |
+| Azure Sphere OS     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/services/azure-sphere/get-started/) |
 
-### <a name="python-sdk"></a>Python-SDK
+### <a name="python-sdk"></a>Python SDK
 
 De [Azure IOT hub python Device SDK](https://github.com/Azure/azure-iot-sdk-python) wordt getest met en ondersteunt de volgende configuraties.
 
-| Besturingssysteem                  | Programma's                          |
+| OS                  | Programma's                          |
 |---------------------|-----------------------------------|
 | Linux               | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
 | MacOS-hoge-Sierra   | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
@@ -68,7 +68,7 @@ De [Azure IOT hub python Device SDK](https://github.com/Azure/azure-iot-sdk-pyth
 
 De [SDK van het AzureC#IOT hub .net ()-apparaat](https://github.com/Azure/azure-iot-sdk-csharp) wordt getest met en ondersteunt de volgende configuraties.
 
-| Besturingssysteem                                   | Standard                                                   |
+| OS                                   | Standard                                                   |
 |--------------------------------------|------------------------------------------------------------|
 | Linux                                | .NET Core 2.1                                              |
 | Windows 10 Desktop-en server-Sku's   | .NET Core 2,1, .NET Framework 4.5.1 of .NET Framework 4,7 |
@@ -79,7 +79,7 @@ De .NET SDK kan ook worden gebruikt met Windows IoT core met de [Azure Device ag
 
 De [SDK van het Azure IOT hub node. js-apparaat](https://github.com/Azure/azure-iot-sdk-node) wordt getest met en ondersteunt de volgende configuraties.
 
-| Besturingssysteem                  | Knooppunt versie    |
+| OS                  | Knooppunt versie    |
 |---------------------|-----------------|
 | Linux               | LTS en actueel |
 | Windows 10-serie   | LTS en actueel |
@@ -88,7 +88,7 @@ De [SDK van het Azure IOT hub node. js-apparaat](https://github.com/Azure/azure-
 
 De [Azure IOT hub Java-apparaat-SDK](https://github.com/Azure/azure-iot-sdk-java) wordt getest met en ondersteunt de volgende configuraties.
 
-| Besturingssysteem                     | Java-versie |
+| OS                     | Java-versie |
 |------------------------|--------------|
 | Android API 28         | Java 8       |
 | Linux x64             | Java 8       |
@@ -115,11 +115,11 @@ Micro soft werkt met een aantal partners om het Azure IoT-universum voortdurend 
 
 * Zie [Microsoft Azure Certified for IOT Device Catalog](https://catalog.azureiotsolutions.com/)voor informatie over het bladeren door Azure IOT-gecertificeerde apparaten.
 
-* Zie [Microsoft Azure gecertificeerde Internet of Things vertrouwde partners](https://azure.microsoft.com/en-us/marketplace/certified-iot-partners/)voor meer informatie over vertrouwde micro soft-partners of als u wilt weten hoe u een vertrouwde partner van micro soft kunt worden.
+* Zie [Microsoft Azure gecertificeerde Internet of Things vertrouwde partners](https://azure.microsoft.com/marketplace/certified-iot-partners/)voor meer informatie over vertrouwde micro soft-partners of als u wilt weten hoe u een vertrouwde partner van micro soft kunt worden.
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>Verbinding maken met IoT Hub zonder een SDK
 
-Als u een van de IoT Hub apparaat-Sdk's niet kunt gebruiken, kunt u rechtstreeks verbinding maken met IoT Hub met behulp van de [IOT hub rest-api's](https://docs.microsoft.com/en-us/rest/api/iothub/) van elke toepassing die HTTPS-aanvragen en-antwoorden kan verzenden en ontvangen.
+Als u een van de IoT Hub apparaat-Sdk's niet kunt gebruiken, kunt u rechtstreeks verbinding maken met IoT Hub met behulp van de [IOT hub rest-api's](https://docs.microsoft.com/rest/api/iothub/) van elke toepassing die HTTPS-aanvragen en-antwoorden kan verzenden en ontvangen.
 
 ## <a name="support-and-other-resources"></a>Ondersteuning en andere bronnen
 

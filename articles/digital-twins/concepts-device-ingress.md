@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 6c61bc6075b3f0713dd790f1b3aa1a47af9d8e6c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: 723fe14db9089e1127f39eae3ed7b10bbddf70bf
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950024"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889718"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Apparaatconnectiviteit en inkomende telemetriegegevens
 
@@ -39,7 +39,7 @@ In de volgende secties vindt u informatie over het ophalen van de IoT Hub appara
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Haal een GET-aanroep op de apparaat-API met een para meter `includes=ConnectionString` op om de IoT Hub apparaat connection string op te halen. Filter op de GUID van het apparaat of de hardware-ID om het opgegeven apparaat te zoeken.
+Haal een GET-aanroep op de apparaat-API met een `includes=ConnectionString` para meter op om de IoT Hub apparaat connection string op te halen. Filter op de GUID van het apparaat of de hardware-ID om het opgegeven apparaat te zoeken.
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
@@ -67,12 +67,12 @@ U kunt de bericht indeling en payload van uw apparaat aanpassen aan de behoeften
 
  De inhoud van de nettolading van een **bericht** kan wille keurige gegevens tot 256 KB groot zijn. Er worden enkele vereisten verwacht voor eigenschappen van het type [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) . De tabel bevat de vereiste en optionele eigenschappen die door het systeem worden ondersteund.
 
-| Naam van eigenschap | Value | Vereist | Description |
+| Naam van eigenschap | Waarde | Vereist | Beschrijving |
 |---|---|---|---|
-| **DigitalTwins-Telemetry** | 1.0 | Ja | Een constante waarde die een bericht identificeert aan het systeem. |
+| **DigitalTwins-telemetrie** | 1.0 | Ja | Een constante waarde die een bericht identificeert aan het systeem. |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | Ja | Een unieke id van de sensor die het **bericht**verzendt. Deze waarde moet overeenkomen met de eigenschap **HardwareId** van een object voor het systeem om het te verwerken. Bijvoorbeeld `00FF0643BE88-CO2`. |
 | **CreationTimeUtc** | `string` | Nee | Een datum reeks in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -notatie waarmee de steekproef tijd van de nettolading wordt geïdentificeerd. Bijvoorbeeld `2018-09-20T07:35:00.8587882-07:00`. |
-| **CorrelationId** | `string` | Nee | Een UUID die wordt gebruikt voor het traceren van gebeurtenissen in het systeem. Bijvoorbeeld `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
+| **Correlatie** | `string` | Nee | Een UUID die wordt gebruikt voor het traceren van gebeurtenissen in het systeem. Bijvoorbeeld `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
 ### <a name="send-your-message-to-digital-twins"></a>Uw bericht verzenden naar Digital Apparaatdubbels
 

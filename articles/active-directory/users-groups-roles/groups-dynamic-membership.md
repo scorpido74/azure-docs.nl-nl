@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a8823a9b354ca4ae9ecab0eeac265b486116bec
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 050bc3cf6b81b9467d9947a4f611477e2fcbcd9a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808969"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885864"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -88,7 +88,7 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 
 | Eigenschappen | Toegestane waarden | Gebruik |
 | --- | --- | --- |
-| AccountEnabled |waar onwaar |User. accountEnabled-EQ True |
+| accountEnabled |waar onwaar |User. accountEnabled-EQ True |
 | dirSyncEnabled |waar onwaar |User. dirSyncEnabled-EQ True |
 
 ### <a name="properties-of-type-string"></a>Eigenschappen van het type teken reeks
@@ -96,14 +96,14 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | Eigenschappen | Toegestane waarden | Gebruik |
 | --- | --- | --- |
 | city |Een wille keurige teken reeks waarde of *Null* |(User. City-EQ "waarde") |
-| Regio |Een wille keurige teken reeks waarde of *Null* |(User. country-EQ "waarde") |
-| CompanyName | Een wille keurige teken reeks waarde of *Null* | (User. companyName-EQ "waarde") |
+| regio |Een wille keurige teken reeks waarde of *Null* |(User. country-EQ "waarde") |
+| companyName | Een wille keurige teken reeks waarde of *Null* | (User. companyName-EQ "waarde") |
 | department |Een wille keurige teken reeks waarde of *Null* |(User. Department-EQ "waarde") |
 | displayName |Wille keurige teken reeks waarde |(User. displayName-EQ "waarde") |
 | employeeId |Wille keurige teken reeks waarde |(User. employeeId-EQ "waarde")<br>(User. employeeId-ne *Null*) |
 | facsimileTelephoneNumber |Een wille keurige teken reeks waarde of *Null* |(User. facsimileTelephoneNumber-EQ "waarde") |
-| GivenName |Een wille keurige teken reeks waarde of *Null* |(gebruiker. OpgegevenNaam-EQ "waarde") |
-| JobTitle |Een wille keurige teken reeks waarde of *Null* |(User. jobTitle-EQ "waarde") |
+| givenName |Een wille keurige teken reeks waarde of *Null* |(gebruiker. OpgegevenNaam-EQ "waarde") |
+| jobTitle |Een wille keurige teken reeks waarde of *Null* |(User. jobTitle-EQ "waarde") |
 | mail |Een wille keurige teken reeks waarde of *Null* (SMTP-adres van de gebruiker) |(gebruiker. mail-EQ "waarde") |
 | mailNickName |Een wille keurige teken reeks waarde (e-mail alias van de gebruiker) |(gebruiker. mailnickname-EQ "waarde") |
 | provider |Een wille keurige teken reeks waarde of *Null* |(gebruiker. Mobile-EQ "waarde") |
@@ -117,7 +117,7 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | state |Een wille keurige teken reeks waarde of *Null* |(User. State-EQ "waarde") |
 | streetAddress |Een wille keurige teken reeks waarde of *Null* |(User. streetAddress-EQ "waarde") |
 | surname |Een wille keurige teken reeks waarde of *Null* |(User. achternaam-EQ "waarde") |
-| TelephoneNumber |Een wille keurige teken reeks waarde of *Null* |(User. telephoneNumber-EQ "waarde") |
+| telephoneNumber |Een wille keurige teken reeks waarde of *Null* |(user.telephoneNumber -eq "value") |
 | usageLocation |Land code van twee letters |(User. usageLocation-EQ "US") |
 | userPrincipalName |Wille keurige teken reeks waarde |(User. userPrincipalName-EQ "alias@domain") |
 | User type |*Null* voor leden gast |(User. User type-EQ "lid") |
@@ -357,7 +357,10 @@ De naam van de aangepaste eigenschap kan worden gevonden in de map door de eigen
 
 ## <a name="rules-for-devices"></a>Regels voor apparaten
 
-U kunt ook een regel maken waarmee objecten worden geselecteerd voor lidmaatschap van een groep. U kunt niet zowel gebruikers als groeps leden hebben. Het kenmerk **organizationalUnit** wordt niet meer weer gegeven en mag niet worden gebruikt. Deze teken reeks wordt in specifieke gevallen door intune ingesteld, maar wordt niet herkend door Azure AD, zodat er geen apparaten worden toegevoegd aan groepen op basis van dit kenmerk.
+U kunt ook een regel maken waarmee objecten worden geselecteerd voor lidmaatschap van een groep. U kunt niet zowel gebruikers als groeps leden hebben. 
+
+> [!NOTE]
+> Het kenmerk **organizationalUnit** wordt niet meer weer gegeven en mag niet worden gebruikt. Deze teken reeks wordt in specifieke gevallen door intune ingesteld, maar wordt niet herkend door Azure AD, zodat er geen apparaten worden toegevoegd aan groepen op basis van dit kenmerk.
 
 > [!NOTE]
 > systemlabels is een alleen-lezen kenmerk dat niet kan worden ingesteld met intune.
@@ -368,7 +371,7 @@ De volgende kenmerken van apparaten kunnen worden gebruikt.
 
  Kenmerk apparaat  | Waarden | Voorbeeld
  ----- | ----- | ----------------
- AccountEnabled | waar onwaar | (Device. accountEnabled-EQ True)
+ accountEnabled | waar onwaar | (Device. accountEnabled-EQ True)
  displayName | Wille keurige teken reeks waarde |(apparaat. displayName-EQ "Rob iPhone")
  deviceOSType | Wille keurige teken reeks waarde | (Device. deviceOSType-EQ "iPad")-of (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-bevat "AndroidEnterprise")<br>(Device. deviceOSType-EQ "AndroidForWork")
  deviceOSVersion | Wille keurige teken reeks waarde | (Device. deviceOSVersion-EQ "9,1")
@@ -379,9 +382,8 @@ De volgende kenmerken van apparaten kunnen worden gebruikt.
  enrollmentProfileName | Apple-inschrijvings profiel voor apparaten, registratie van apparaten-bedrijfs apparaat-id's (Android-kiosk) of Windows auto pilot-profiel naam | (apparaat. enrollmentProfileName-EQ "DEP iPhones")
  isRooted | waar onwaar | (Device. isRooted-EQ True)
  managementType | MDM (voor mobiele apparaten)<br>PC (voor computers die worden beheerd door de intune-PC-agent) | (Device. managementType-EQ "MDM")
- organizationalUnit | een geldige on-premises organisatie-eenheid (OE) | (Device. organizationalUnit-bevat "laptop")
  deviceId | een geldige Azure AD-apparaat-ID | (apparaat. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- Id | een geldige Azure AD-object-ID |  (apparaat. objectId-EQ 76ad43c9-32c5-45e8-a272-7b58b58f596d ")
+ Id | een geldige Azure AD-object-ID |  (apparaat. objectId-EQ "76ad43c9-32c5-45e8-a272-7b58b58f596d")
  devicePhysicalIds | een teken reeks waarde die wordt gebruikt door auto pilot, zoals alle auto pilot-apparaten, OrderID of PurchaseOrderID  | (Device. devicePhysicalIDs-wille keurige _-bevat "[ZTDId]") (Device. devicePhysicalIds-wille keurige _-EQ "[OrderID]: 179887111881") (Device. devicePhysicalIds-wille keurige _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | een teken reeks die overeenkomt met de eigenschap van het intune-apparaat voor het labelen van moderne werkplek apparaten | (Device. systemLabels-bevat "M365Managed")
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cijothomas
 ms.author: cithomas
 ms.date: 09/15/2019
-ms.openlocfilehash: ccc7218575638c7ede2c56a99e41dd68cbd475c0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8dd46d8224567e1883fd2a397d5ba2b00a0fd43d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899237"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887284"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights voor Worker-service toepassingen (niet-HTTP-toepassingen)
 
@@ -31,7 +31,7 @@ Een geldige Application Insights instrumentatie sleutel. Deze sleutel is vereist
 ## <a name="using-application-insights-sdk-for-worker-services"></a>Application Insights SDK voor Worker-Services gebruiken
 
 1. Installeer het pakket [micro soft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) op de toepassing.
-   Het volgende code fragment toont de wijzigingen die moeten worden toegevoegd aan het `.csproj`-bestand van uw project.
+   Het volgende code fragment toont de wijzigingen die moeten worden toegevoegd aan het `.csproj` bestand van uw project.
 
 ```xml
     <ItemGroup>
@@ -39,9 +39,9 @@ Een geldige Application Insights instrumentatie sleutel. Deze sleutel is vereist
     </ItemGroup>
 ```
 
-1. Roep de uitbreidings methode `AddApplicationInsightsTelemetryWorkerService(string instrumentationKey)` aan op `IServiceCollection`, waardoor de instrumentatie sleutel wordt verstrekt. Deze methode moet worden aangeroepen aan het begin van de toepassing. De exacte locatie is afhankelijk van het type toepassing.
+1. Roep `AddApplicationInsightsTelemetryWorkerService(string instrumentationKey)` extensie methode aan op `IServiceCollection`, waardoor de instrumentatie sleutel wordt verstrekt. Deze methode moet worden aangeroepen aan het begin van de toepassing. De exacte locatie is afhankelijk van het type toepassing.
 
-1. Haal een `ILogger` exemplaar of `TelemetryClient` exemplaar op uit de container Injection (DI) door het aanroepen van `serviceProvider.GetRequiredService<TelemetryClient>();` of het gebruik van constructor-injectie. Met deze stap wordt het instellen van de modules `TelemetryConfiguration` en automatische verzameling geactiveerd.
+1. Haal een `ILogger` exemplaar of `TelemetryClient` exemplaar op uit de container Injection (DI) door het aanroepen van `serviceProvider.GetRequiredService<TelemetryClient>();` of het gebruik van constructor-injectie. Met deze stap wordt het instellen van `TelemetryConfiguration` en modules voor automatische verzameling geactiveerd.
 
 Specifieke instructies voor elk type toepassing worden beschreven in de volgende secties.
 
@@ -50,10 +50,10 @@ Specifieke instructies voor elk type toepassing worden beschreven in de volgende
 [Hier](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) wordt een volledig voor beeld gedeeld
 
 1. Down load en Installeer [.net Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-2. Maak een nieuw werk service project met behulp van Visual Studio nieuw project sjabloon of de opdracht regel `dotnet new worker`
+2. Maak een nieuw werk service project met behulp van de nieuwe project sjabloon of de opdracht regel van Visual Studio `dotnet new worker`
 3. Installeer het pakket [micro soft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) op de toepassing.
 
-4. Voeg `services.AddApplicationInsightsTelemetryWorkerService();` toe aan de `CreateHostBuilder()`-methode in uw `Program.cs`-klasse, zoals in dit voor beeld:
+4. Voeg `services.AddApplicationInsightsTelemetryWorkerService();` toe aan de methode `CreateHostBuilder()` in uw `Program.cs`-klasse, zoals in dit voor beeld:
 
 ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -65,7 +65,7 @@ Specifieke instructies voor elk type toepassing worden beschreven in de volgende
             });
 ```
 
-5. Wijzig uw `Worker.cs` volgens het onderstaande voor beeld.
+5. Wijzig uw `Worker.cs` volgens onderstaande voor beeld.
 
 ```csharp
     using Microsoft.ApplicationInsights;
@@ -106,7 +106,7 @@ Specifieke instructies voor elk type toepassing worden beschreven in de volgende
 
 6. Stel de instrumentatie sleutel in.
 
-    Hoewel u de instrumentatie sleutel kunt opgeven als argument voor `AddApplicationInsightsTelemetryWorkerService`, raden we u aan om de instrumentatie sleutel in te stellen in de configuratie. In het volgende code voorbeeld ziet u hoe u een instrumentatie sleutel opgeeft in `appsettings.json`. Zorg ervoor dat `appsettings.json` tijdens het publiceren naar de hoofdmap van de toepassing is gekopieerd.
+    Hoewel u de instrumentatie sleutel kunt opgeven als een argument voor `AddApplicationInsightsTelemetryWorkerService`, raden we u aan om de instrumentatie sleutel in te stellen in de configuratie. In het volgende code voorbeeld ziet u hoe u een instrumentatie sleutel opgeeft in `appsettings.json`. Zorg ervoor dat `appsettings.json` tijdens het publiceren naar de hoofdmap van de toepassing is gekopieerd.
 
 ```json
     {
@@ -140,8 +140,8 @@ In [Dit](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-service
 
 [Hier](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) wordt een volledig voor beeld gedeeld
 
-1. Installeer het pakket micro soft. ApplicationInsights. WorkerService (https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) bij de toepassing.
-2. Voeg `services.AddApplicationInsightsTelemetryWorkerService();` toe aan de `ConfigureServices()`-methode, zoals in dit voor beeld:
+1. Installeer het pakket micro soft. ApplicationInsights. WorkerService (https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) voor de toepassing.
+2. Voeg `services.AddApplicationInsightsTelemetryWorkerService();` toe aan de methode `ConfigureServices()`, zoals in dit voor beeld:
 
 ```csharp
     public static async Task Main(string[] args)
@@ -173,7 +173,7 @@ In [Dit](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-service
     }
 ```
 
-Hier volgt de code voor `TimedHostedService` waar de logica van de achtergrond taak zich bevindt.
+Hier volgt de code voor `TimedHostedService` waarbij de logica van de achtergrond taak zich bevindt.
 
 ```csharp
     using Microsoft.ApplicationInsights;
@@ -223,11 +223,11 @@ Hier volgt de code voor `TimedHostedService` waar de logica van de achtergrond t
 
 ## <a name="net-corenet-framework-console-application"></a>.NET core/. NET Framework-console toepassing
 
-Zoals vermeld in het begin van dit artikel, kan het nieuwe pakket worden gebruikt voor het inschakelen van Application Insights Telemetry van zelfs een gewone console toepassing. Dit pakket heeft betrekking [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)en kan daarom worden gebruikt voor console-apps in .net Core 2,0 of hoger, en .NET Framework 4.7.2 of hoger.
+Zoals vermeld in het begin van dit artikel, kan het nieuwe pakket worden gebruikt voor het inschakelen van Application Insights Telemetry van zelfs een gewone console toepassing. Dit pakket is gericht [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)en kan daarom worden gebruikt voor console-apps in .net Core 2,0 of hoger, en .NET Framework 4.7.2 of hoger.
 
 [Hier](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) wordt een volledig voor beeld gedeeld
 
-1. Installeer het pakket micro soft. ApplicationInsights. WorkerService (https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) bij de toepassing.
+1. Installeer het pakket micro soft. ApplicationInsights. WorkerService (https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) voor de toepassing.
 
 2. Wijzig Program.cs zoals hieronder wordt beschreven.
 
@@ -290,13 +290,13 @@ Zoals vermeld in het begin van dit artikel, kan het nieuwe pakket worden gebruik
     }
 ```
 
-Deze console toepassing gebruikt ook dezelfde standaard `TelemetryConfiguration` en kan op dezelfde manier worden aangepast als de voor beelden in eerdere sectie.
+Deze console toepassing gebruikt ook dezelfde standaard `TelemetryConfiguration`en kan op dezelfde manier worden aangepast als de voor beelden in een eerdere sectie.
 
 ## <a name="run-your-application"></a>Uw toepassing uitvoeren
 
-Voer de toepassing uit. Met de voorbeeld werk rollen van het bovenstaande voor beeld wordt een HTTP-oproep elke seconde verzonden naar bing.com, en worden er ook enkele logboeken met ILogger. Deze regels worden genest in `StartOperation`-aanroep van `TelemetryClient`, die wordt gebruikt voor het maken van een bewerking (in dit voor beeld `RequestTelemetry` met de naam ' Operation '). Application Insights verzamelt deze ILogger-Logboeken (standaard) en afhankelijkheden, en ze worden gekoppeld aan de `RequestTelemetry` met een bovenliggende/onderliggende relatie. De correlatie werkt ook met cross proces/netwerk grens. Als de aanroep bijvoorbeeld is gedaan aan een ander bewaakt onderdeel, wordt deze ook aan dit bovenliggende item gecorreleerd.
+Voer de toepassing uit. Met de voorbeeld werk rollen van het bovenstaande voor beeld wordt een HTTP-oproep elke seconde verzonden naar bing.com, en worden er ook enkele logboeken met ILogger. Deze regels worden genest in `StartOperation` aanroep van `TelemetryClient`, die wordt gebruikt voor het maken van een bewerking (in dit voor beeld `RequestTelemetry` de naam ' Operation '). Application Insights verzamelt deze ILogger-Logboeken (standaard) en afhankelijkheden, en ze worden gecorreleerd aan de `RequestTelemetry` met een relatie tussen bovenliggende en onderliggende items. De correlatie werkt ook met cross proces/netwerk grens. Als de aanroep bijvoorbeeld is gedaan aan een ander bewaakt onderdeel, wordt deze ook aan dit bovenliggende item gecorreleerd.
 
-Deze aangepaste bewerking van `RequestTelemetry` kan worden beschouwd als het equivalent van een inkomende webaanvraag in een typische webtoepassing. Hoewel het niet nodig is om een bewerking te gebruiken, past deze het beste bij het [Application Insights correlatie gegevens model](https://docs.microsoft.com/azure/azure-monitor/app/correlation) , met `RequestTelemetry` fungeren als de bovenliggende bewerking en elke telemetrie die in de worker-iteratie wordt gegenereerd, wordt behandeld als logisch deel uitmaakt naar dezelfde bewerking. Deze aanpak zorgt er ook voor dat alle telemetrie die is gegenereerd (automatisch en hand matig), hetzelfde `operation_id`heeft. Als steek proef is gebaseerd op `operation_id`, houdt het steekproef algoritme alle telemetrie van één iteratie over of verwijdert u deze.
+Deze aangepaste bewerking van `RequestTelemetry` kan worden beschouwd als het equivalent van een inkomende webaanvraag in een typische webtoepassing. Hoewel het niet nodig is om een bewerking te gebruiken, past deze het beste bij het [Application Insights correlatie gegevens model](https://docs.microsoft.com/azure/azure-monitor/app/correlation) , waarbij `RequestTelemetry` fungeert als de bovenliggende bewerking en elke telemetrie die in de worker-iteratie wordt gegenereerd, wordt beschouwd als logisch deel uitmaakt van dezelfde bewerking. Deze aanpak zorgt er ook voor dat alle telemetrie die is gegenereerd (automatisch en hand matig), hetzelfde `operation_id`heeft. Als steek proef is gebaseerd op `operation_id`, houdt het steekproef algoritme alle telemetrie van één iteratie over of verwijdert u deze.
 
 Hieronder ziet u de volledige telemetrie die automatisch is verzameld door Application Insights.
 
@@ -306,7 +306,7 @@ Hieronder ziet u de volledige telemetrie die automatisch is verzameld door Appli
 
 ### <a name="ilogger-logs"></a>ILogger-logboeken
 
-Logboeken die worden verzonden via `ILogger` met een Ernst `Warning` of hoger worden automatisch vastgelegd. Volg de [ILogger-documenten](ilogger.md#control-logging-level) om aan te passen welke logboek niveaus worden vastgelegd door Application Insights.
+Logboeken die worden verzonden via `ILogger` Ernst `Warning` of hoger worden automatisch vastgelegd. Volg de [ILogger-documenten](ilogger.md#control-logging-level) om aan te passen welke logboek niveaus worden vastgelegd door Application Insights.
 
 ### <a name="dependencies"></a>Afhankelijkheden
 
@@ -318,16 +318,16 @@ De afhankelijkheids verzameling is standaard ingeschakeld. In [Dit](asp-net-depe
 
 ### <a name="manually-tracking-additional-telemetry"></a>Hand matig extra telemetrie bijhouden
 
-Hoewel de SDK automatisch telemetrie verzamelt zoals hierboven is uitgelegd, moet de gebruiker in de meeste gevallen extra telemetrie naar Application Insights service verzenden. De aanbevolen manier om extra telemetrie bij te houden, is door een instantie van `TelemetryClient` op te halen uit de afhankelijkheids injectie en vervolgens een van de ondersteunde [API](api-custom-events-metrics.md) -methoden van `TrackXXX()` aan te roepen. Een andere typische use-case is het [bijhouden van bewerkingen op maat](custom-operations-tracking.md). Deze benadering wordt uitgelegd in de bovenstaande voor beelden van werk nemers.
+Hoewel de SDK automatisch telemetrie verzamelt zoals hierboven is uitgelegd, moet de gebruiker in de meeste gevallen extra telemetrie naar Application Insights service verzenden. De aanbevolen manier om extra telemetrie bij te houden, is door een exemplaar van `TelemetryClient` te verkrijgen bij afhankelijkheids injectie en vervolgens een van de ondersteunde `TrackXXX()` [API](api-custom-events-metrics.md) -methoden erop aan te roepen. Een andere typische use-case is het [bijhouden van bewerkingen op maat](custom-operations-tracking.md). Deze benadering wordt uitgelegd in de bovenstaande voor beelden van werk nemers.
 
 ## <a name="configure-the-application-insights-sdk"></a>De Application Insights SDK configureren
 
-De standaard `TelemetryConfiguration` die wordt gebruikt door de worker-SDK is vergelijkbaar met de automatische configuratie die wordt gebruikt in een ASP.NET of ASP.NET Core toepassing, verminderd met de TelemetryInitializers die wordt gebruikt om de telemetrie van `HttpContext` te verrijken.
+De standaard `TelemetryConfiguration` die wordt gebruikt door de worker-SDK is vergelijkbaar met de automatische configuratie die wordt gebruikt in een ASP.NET of ASP.NET Core toepassing, min de TelemetryInitializers die wordt gebruikt om de telemetrie van `HttpContext`te verrijken.
 
-U kunt de Application Insights SDK for Worker-service aanpassen om de standaard configuratie te wijzigen. Gebruikers van de Application Insights ASP.NET Core SDK kunnen vertrouwd zijn met het wijzigen van de configuratie met behulp van ASP.NET Core ingebouwde [afhankelijkheids injectie](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection). De WorkerService SDK is ook gebaseerd op soort gelijke principes. Maak bijna alle configuratie wijzigingen in de sectie `ConfigureServices()` door de juiste methoden op `IServiceCollection` aan te roepen, zoals hieronder wordt beschreven.
+U kunt de Application Insights SDK for Worker-service aanpassen om de standaard configuratie te wijzigen. Gebruikers van de Application Insights ASP.NET Core SDK kunnen vertrouwd zijn met het wijzigen van de configuratie met behulp van ASP.NET Core ingebouwde [afhankelijkheids injectie](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection). De WorkerService SDK is ook gebaseerd op soort gelijke principes. Maak bijna alle configuratie wijzigingen in de sectie `ConfigureServices()` door de juiste methoden op `IServiceCollection`aan te roepen, zoals hieronder wordt beschreven.
 
 > [!NOTE]
-> Wanneer u deze SDK gebruikt, wordt het wijzigen van de configuratie door het wijzigen van `TelemetryConfiguration.Active` niet ondersteund en worden wijzigingen niet weer gegeven.
+> Wanneer u deze SDK gebruikt, wordt het wijzigen van de configuratie door `TelemetryConfiguration.Active` niet ondersteund en worden wijzigingen niet weer gegeven.
 
 ### <a name="using-applicationinsightsserviceoptions"></a>ApplicationInsightsServiceOptions gebruiken
 
@@ -349,28 +349,28 @@ U kunt enkele algemene instellingen wijzigen door `ApplicationInsightsServiceOpt
     }
 ```
 
-Houd er rekening mee dat `ApplicationInsightsServiceOptions` in deze SDK zich in de naam ruimte `Microsoft.ApplicationInsights.WorkerService` bevindt in plaats van `Microsoft.ApplicationInsights.AspNetCore.Extensions` in de ASP.NET Core SDK.
+Houd er rekening mee dat `ApplicationInsightsServiceOptions` in deze SDK zich in de naam ruimte bevindt `Microsoft.ApplicationInsights.WorkerService` in plaats van `Microsoft.ApplicationInsights.AspNetCore.Extensions` in de ASP.NET Core SDK.
 
 Veelgebruikte instellingen in `ApplicationInsightsServiceOptions`
 
 |Instelling | Beschrijving | Standaard
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | Functie LiveMetrics in-of uitschakelen | waar
-|EnableAdaptiveSampling | Adaptieve steek proeven in-/uitschakelen | waar
-|EnableHeartbeat | De functie heartbeats inschakelen/uitschakelen, die periodiek (standaard 15-minuten) een aangepaste metriek met de naam ' HeartBeatState ' verzendt met informatie over de runtime, zoals .NET-versie, informatie over de Azure-omgeving, indien van toepassing, enzovoort. | waar
-|AddAutoCollectedMetricExtractor | Schakel AutoCollectedMetrics extractor in/uit. Dit is een TelemetryProcessor die vooraf geaggregeerde metrische gegevens over aanvragen/afhankelijkheden verzendt voordat steek proeven worden uitgevoerd. | waar
+|EnableQuickPulseMetricStream | Functie LiveMetrics in-of uitschakelen | true
+|EnableAdaptiveSampling | Adaptieve steek proeven in-/uitschakelen | true
+|EnableHeartbeat | De functie heartbeats inschakelen/uitschakelen, die periodiek (standaard 15-minuten) een aangepaste metriek met de naam ' HeartBeatState ' verzendt met informatie over de runtime, zoals .NET-versie, informatie over de Azure-omgeving, indien van toepassing, enzovoort. | true
+|AddAutoCollectedMetricExtractor | Schakel AutoCollectedMetrics extractor in/uit. Dit is een TelemetryProcessor die vooraf geaggregeerde metrische gegevens over aanvragen/afhankelijkheden verzendt voordat steek proeven worden uitgevoerd. | true
 
 Zie de [Configureer bare instellingen in `ApplicationInsightsServiceOptions`](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) voor de meest recente lijst.
 
-### <a name="sampling"></a>Sampling
+### <a name="sampling"></a>Steekproeven
 
 De Application Insights SDK voor Worker-service ondersteunt zowel vaste als adaptieve steek proeven. Adaptieve steek proeven zijn standaard ingeschakeld. Het configureren van sampling voor Worker-service gebeurt op dezelfde manier als voor [ASP.net core toepassingen](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-adaptive-sampling-for-aspnet-core-applications).
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers toevoegen
 
-Gebruik de [initialisatie functies voor telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) wanneer u eigenschappen wilt definiëren die worden verzonden met alle telemetrie.
+Gebruik de [initialisatie functies voor telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) wanneer u eigenschappen wilt definiëren die worden verzonden met alle telemetrie.
 
-Nieuwe `TelemetryInitializer` toevoegen aan de `DependencyInjection`-container en SDK worden deze automatisch toegevoegd aan de `TelemetryConfiguration`.
+Nieuwe `TelemetryInitializer` toevoegen aan de `DependencyInjection`-container en SDK worden ze automatisch toegevoegd aan de `TelemetryConfiguration`.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
@@ -384,7 +384,7 @@ Nieuwe `TelemetryInitializer` toevoegen aan de `DependencyInjection`-container e
 
 ### <a name="removing-telemetryinitializers"></a>TelemetryInitializers verwijderen
 
-De initialisatie functies voor telemetrie zijn standaard aanwezig. Als u alle of specifieke telemetrie-initialisatie functies wilt verwijderen, gebruikt u de volgende voorbeeld code *nadat* u `AddApplicationInsightsTelemetryWorkerService()` aanroept.
+De initialisatie functies voor telemetrie zijn standaard aanwezig. Als u alle of specifieke telemetrie-initialisatie functies wilt verwijderen, gebruikt u de volgende voorbeeld code *nadat* u `AddApplicationInsightsTelemetryWorkerService()`aanroept.
 
 ```csharp
    public void ConfigureServices(IServiceCollection services)
@@ -430,7 +430,7 @@ De volgende automatische verzamelings modules zijn standaard ingeschakeld. Deze 
 * `AppServicesHeartbeatTelemetryModule`
 * `AzureInstanceMetadataTelemetryModule`
 
-Als u een standaard `TelemetryModule` wilt configureren, gebruikt u de extensie methode `ConfigureTelemetryModule<T>` op `IServiceCollection`, zoals in het volgende voor beeld wordt weer gegeven.
+Als u een standaard `TelemetryModule`wilt configureren, gebruikt u de extensie methode `ConfigureTelemetryModule<T>` op `IServiceCollection`, zoals in het volgende voor beeld wordt weer gegeven.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
@@ -477,7 +477,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="disable-telemetry-dynamically"></a>Telemetrie dynamisch uitschakelen
 
-Als u telemetrie voorwaardelijk en dynamisch wilt uitschakelen, kunt u het `TelemetryConfiguration`-exemplaar met ASP.NET Core afhankelijkheids injectie container op elke wille keurige locatie in uw code omzetten en daar `DisableTelemetry`-vlag instellen.
+Als u telemetrie voorwaardelijk en dynamisch wilt uitschakelen, kunt u `TelemetryConfiguration`-exemplaar met ASP.NET Core-injectie container voor afhankelijkheid in de code omzetten en `DisableTelemetry` vlag hierop instellen.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -496,7 +496,7 @@ Als u telemetrie voorwaardelijk en dynamisch wilt uitschakelen, kunt u het `Tele
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>Hoe kan ik telemetrie traceren die niet automatisch wordt verzameld?
 
-Haal een exemplaar van `TelemetryClient` op met behulp van constructor-injectie en roep de vereiste `TrackXXX()`-methode aan. Het maken van nieuwe `TelemetryClient`-instanties wordt niet aanbevolen. Een singleton-exemplaar van `TelemetryClient` is al geregistreerd in de `DependencyInjection`-container, die `TelemetryConfiguration` deelt met rest van de telemetrie. Het maken van een nieuw `TelemetryClient`-exemplaar wordt alleen aanbevolen als er een configuratie nodig is die gescheiden is van de rest van de telemetrie.
+Haal een exemplaar van `TelemetryClient` op met behulp van constructor-injectie en roep de vereiste `TrackXXX()`-methode aan. Het maken van nieuwe `TelemetryClient`-exemplaren wordt niet aanbevolen. Een singleton-exemplaar van `TelemetryClient` is al geregistreerd in de `DependencyInjection` container, die `TelemetryConfiguration` deelt met de rest van de telemetrie. Het maken van een nieuw `TelemetryClient`-exemplaar wordt alleen aanbevolen als er een configuratie nodig is die gescheiden is van de rest van de telemetrie.
 
 ### <a name="can-i-use-visual-studio-ide-to-onboard-application-insights-to-a-worker-service-project"></a>Kan ik Visual Studio IDE gebruiken om Application Insights te doen voor een werk nemer service-project?
 

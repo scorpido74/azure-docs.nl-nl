@@ -4,16 +4,16 @@ ms.service: billing
 ms.topic: include
 ms.date: 07/01/2019
 ms.author: amberb
-ms.openlocfilehash: 4b2533131407081b97bb491895d96cf566442090
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 79e5e0bf1476bf049e47ba6aedcc172cea0bb13c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375445"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850333"
 ---
 Controleer het type overeenkomst om het type van uw factureringsaccount te bepalen
  
-1. Meld u aan bij [Azure Portal]( http://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
  
 2. Zoek naar **kostenbeheer en facturering**.
  

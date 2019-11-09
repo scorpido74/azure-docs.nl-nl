@@ -1,6 +1,6 @@
 ---
 title: Inzicht in de resultaten van de Windows agent-controle in azure Updatebeheer
-description: Informatie over het oplossen van problemen met de updatebeheer-agent.
+description: Meer informatie over het oplossen van problemen met de Updatebeheer-agent.
 services: automation
 author: bobbytreed
 ms.author: robreed
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 956e31c157c667acd2f830702467249d869648cb
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: d3099498c3abea428e04d94ca0fcd553e6a0fec6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971280"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886403"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Inzicht in de resultaten van de Windows agent-controle in Updatebeheer
 
-Er kunnen veel redenen zijn waarom uw computer niet **gereed** is in updatebeheer. U kunt de status van een Hybrid Worker-agent om te bepalen van het onderliggende probleem controleren in Update Management. In dit artikel wordt beschreven hoe u de probleem oplosser voor Azure-machines uitvoert vanaf de Azure Portal-en niet-Azure-machines in het [offline scenario](#troubleshoot-offline).
+Er kunnen veel redenen zijn waarom uw computer niet **gereed** is in updatebeheer. In Updatebeheer kunt u de status van een Hybrid Worker agent controleren om het onderliggende probleem te bepalen. In dit artikel wordt beschreven hoe u de probleem oplosser voor Azure-machines uitvoert vanaf de Azure Portal-en niet-Azure-machines in het [offline scenario](#troubleshoot-offline).
 
 De volgende lijst geeft een overzicht van de drie gereedheids statussen die een machine kan hebben:
 
@@ -29,7 +29,7 @@ De volgende lijst geeft een overzicht van de drie gereedheids statussen die een 
 > [!NOTE]
 > Er kan een lichte vertraging optreden tussen de Azure Portal weer geven en de huidige status van de machine.
 
-## <a name="start-the-troubleshooter"></a>De probleemoplosser voor starten
+## <a name="start-the-troubleshooter"></a>De probleem Oplosser starten
 
 Voor Azure-machines klikt u op de koppeling **problemen oplossen** onder de gereedheids kolom van de **Update Agent** in de portal, wordt de pagina **problemen met Update agent oplossen** gestart. Voor niet-Azure-computers brengt de koppeling u naar dit artikel. Zie de [offline-instructies](#troubleshoot-offline) voor het oplossen van problemen met een niet-Azure-machine.
 
@@ -61,33 +61,33 @@ De controle van het besturings systeem controleert of op de Hybrid Runbook Worke
 
 Met de .NET Framework controle wordt gecontroleerd of er mini maal [.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981) is geïnstalleerd op het systeem.
 
-### <a name="wmf-51"></a>WMF 5.1
+### <a name="wmf-51"></a>WMF 5,1
 
 De WMF-controle controleert of het systeem de vereiste versie van het Windows Management Framework (WMF)- [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616)bevat.
 
-### <a name="tls-12"></a>TLS 1.2
+### <a name="tls-12"></a>TLS 1,2
 
 Met deze controle wordt bepaald of u gebruikmaakt van TLS 1,2 om uw communicatie te versleutelen. TLS 1,0 wordt niet meer ondersteund door het platform. We raden aan dat clients TLS 1,2 gebruiken om te communiceren met Updatebeheer.
 
-## <a name="connectivity-checks"></a>Controles voor connectiviteit
+## <a name="connectivity-checks"></a>Connectiviteits controles
 
-### <a name="registration-endpoint"></a>Eindpunt voor clientregistratie
+### <a name="registration-endpoint"></a>Registratie-eind punt
 
 Met deze controle wordt bepaald of de agent goed kan communiceren met de Agent service.
 
-Proxy- en firewallinstellingen configuraties moeten de Hybrid Runbook Worker-agent kan communiceren met het eindpunt voor clientregistratie toestaan. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
+Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan te communiceren met het eind punt van de registratie. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
 
-### <a name="operations-endpoint"></a>Operations-eindpunt
+### <a name="operations-endpoint"></a>Eind punt van bewerkingen
 
 Met deze controle wordt bepaald of de agent goed kan communiceren met de taak runtime gegevens service.
 
-Proxy- en firewallinstellingen configuraties moeten de Hybrid Runbook Worker-agent kan communiceren met de taak Runtime Data-Service toestaan. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
+Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan te communiceren met de taak runtime gegevens service. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
 
 ## <a name="vm-service-health-checks"></a>Status controles van de VM-service
 
 ### <a name="monitoring-agent-service-status"></a>Status van Monitoring Agent-service
 
-Met deze controle wordt `HealthService`bepaald of micro soft monitoring agent wordt uitgevoerd op de computer.
+Met deze controle wordt bepaald of `HealthService`, de micro soft Monitoring Agent, wordt uitgevoerd op de computer.
 
 Zie [micro soft monitoring agent wordt niet uitgevoerd](hybrid-runbook-worker.md#mma-not-running)voor meer informatie over het oplossen van problemen met de service.
 
@@ -95,7 +95,7 @@ Zie [micro soft Monitoring Agent installeren en configureren](../../azure-monito
 
 ### <a name="monitoring-agent-service-events"></a>Service gebeurtenissen van monitoring agent
 
-Met deze controle wordt bepaald `4502` of gebeurtenissen in de afgelopen 24 uur worden weer gegeven in het Azure Operations Manager-logboek op de computer.
+Met deze controle wordt bepaald of `4502` gebeurtenissen in de afgelopen 24 uur worden weer gegeven in het Azure Operations Manager-logboek op de computer.
 
 Raadpleeg de [gids voor probleem oplossing](hybrid-runbook-worker.md#event-4502) voor deze gebeurtenis voor meer informatie over deze gebeurtenis.
 
@@ -107,7 +107,7 @@ De toegangs controle voor de cryptografie mappen bepaalt of het lokale systeem a
 
 ## <a name="troubleshoot-offline"></a>Problemen met offline oplossen
 
-U kunt de probleem Oplosser op een Hybrid Runbook Worker offline gebruiken door het script lokaal uit te voeren. U kunt het script, [Troubleshooting-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration), ophalen in de PowerShell Gallery. U moet WMF 4,0 of hoger hebben geïnstalleerd om het script uit te voeren. Zie [verschillende versies van Power Shell installeren](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell)voor informatie over het downloaden van de meest recente versie van Power shell.
+U kunt de probleem Oplosser op een Hybrid Runbook Worker offline gebruiken door het script lokaal uit te voeren. U kunt het script, [Troubleshooting-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration), ophalen in de PowerShell Gallery. U moet WMF 4,0 of hoger hebben geïnstalleerd om het script uit te voeren. Zie [verschillende versies van Power Shell installeren](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)voor informatie over het downloaden van de meest recente versie van Power shell.
 
 De uitvoer van dit script ziet eruit als in het volgende voor beeld:
 

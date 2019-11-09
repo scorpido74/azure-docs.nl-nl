@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie over apparaten configureren in een externe bewakingsoplossing - Azure | Microsoft Docs
+title: Apparaten in de oplossing voor externe controle configureren-Azure | Microsoft Docs
 description: In deze zelfstudie leert u hoe u apparaten beheert die zijn verbonden met de verbetering voor de externe bewakingsoplossing.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d23b7c8fa10127094fec67535333ae169f0f38f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4236952bd41c4955e337813ff6d706263b8ef47
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61453098"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890903"
 ---
-# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Zelfstudie: apparaten configureren en beheren die zijn verbonden met uw bewakingsoplossing
+# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Zelfstudie: Apparaten configureren en beheren die zijn verbonden met uw bewakingsoplossing
 
 In deze zelfstudie gebruikt u de verbetering voor de externe bewakingsoplossing om de verbonden IoT-apparaten te configureren en bewaken. U voegt een nieuw apparaat toe aan de oplossingsverbetering en configureert het apparaat.
 

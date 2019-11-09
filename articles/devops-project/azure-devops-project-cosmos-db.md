@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Node. js-Apps implementeren die worden aangedreven door Azure Cosmos DB met Azure DevOps Projects'
+title: 'Zelf studie: node. js-Apps implementeren die worden aangedreven door Azure Cosmos DB met Azure DevOps Projects'
 description: Azure DevOps Projects zorgt ervoor dat u eenvoudig aan de slag kunt met Azure. Met DevOps Projects kunt u in een paar snelle stappen uw node. js-app implementeren die wordt aangedreven door Azure Cosmos DB naar Windows Web app.
 ms.author: mlearned
 ms.manager: gwallace
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 1c16368990148406fbacdde2981c10fab0b2d405
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 229b4b9f53ea3866dce1169645f6d6da20827271
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969664"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888894"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>Node. js-Apps implementeren die worden aangedreven door Azure Cosmos DB met DevOps Projects
 
@@ -45,7 +45,7 @@ U hebt een Azure-abonnement nodig. dit kunt u gratis doen met [Visual Studio dev
 
 In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. DevOps Projects maakt ook Azure-resources, zoals Azure Cosmos DB, Application Insights, App Service en App Service plannen, in het Azure-abonnement van uw keuze.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **Een resource maken** in het linkerdeelvenster.
 
@@ -103,13 +103,13 @@ DevOps Projects configureert automatisch een Azure-CI/CD-pijplijn in uw Azure De
 
     ![Deel venster maken](_img/azure-devops-project-cosmos-db/build.png)
 
-1. Selecteer **Bewerken**. In dit deelvenster kunt u de verschillende taken voor uw build-pijplijn onderzoeken. De build voert diverse taken uit, zoals het ophalen van de bron code uit de Git-opslag plaats, het bouwen van de toepassing, het uitvoeren van eenheids tests en het publiceren van uitvoer die worden gebruikt voor implementaties.
+1. Selecteer **Bewerken**. In dit deelvenster kunt u de verschillende taken voor de build-pijplijn onderzoeken. De build voert diverse taken uit, zoals het ophalen van de bron code uit de Git-opslag plaats, het bouwen van de toepassing, het uitvoeren van eenheids tests en het publiceren van uitvoer die worden gebruikt voor implementaties.
 
 1. Selecteer **Triggers**. In DevOps Projects wordt automatisch een CI-trigger gemaakt en met elke doorvoering naar de opslagplaats wordt een nieuwe build gestart. U kunt ervoor kiezen om vertakkingen op te nemen of uit te sluiten van het CI-proces.
 
 1. Selecteer **Retentie**. Afhankelijk van het scenario kunt u beleidsregels opgeven om een bepaald aantal builds te behouden of te verwijderen.
 
-1. Selecteer bovenaan de build-pijplijn de naam van de build-pijplijn.
+1. Selecteer boven aan de build-pijplijn de naam van de build-pijplijn.
 
 1. Wijzig de naam van uw build-pijp lijn in iets beschrijvender en selecteer vervolgens **Opslaan** in de vervolg keuzelijst **Opslaan & wachtrij** .
 
@@ -169,6 +169,6 @@ U kunt deze build- en release-pipelines desgewenst wijzigen in overeenstemming m
 > * Wijzigingen doorvoeren in Git en automatisch implementeren naar Azure
 > * Resources opschonen
 
-Zie [uw cd-pipeline (multi-fase continue implementatie) definiëren](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) voor meer informatie en de volgende stappen.
+Zie [uw cd-pipeline (multi-fase continue implementatie) definiëren](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) voor meer informatie en de volgende stappen.
 
 

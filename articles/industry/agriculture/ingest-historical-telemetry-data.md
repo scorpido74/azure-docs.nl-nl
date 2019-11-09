@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6fc70b55b3e672ecc67eb1145bb751de33d998a1
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: e6bd9b5c09e1af5ec587e1f0e52ab25d21d2293b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847438"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889616"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -50,11 +50,14 @@ Volg de onderstaande stappen om deze te genereren:
 
     ![Maten van project-Farm](./media/for-tutorials/power-shell-two-1.png)
 
-5. Ga naar de map waarin de bestanden zijn geüpload (standaard wordt deze geüpload naar de basismap/home/username/.
+5. Ga naar de map waarin de bestanden zijn geüpload
+
+   >[!NOTE]
+   > Standaard wordt het bestand geüpload naar de basismap/home/username/.
 6. Voer het script uit met behulp van de opdracht:  
 
     ```azurepowershell-interactive
-    PS> ./generateCredentials.ps1
+    ./generateCredentials.ps1
     ```
 
 7. Volg de instructies op het scherm om de procedure te volt ooien.
@@ -127,7 +130,9 @@ De FarmBeats data hub maakt gebruik van Bearer-verificatie, die de volgende refe
 
 Met behulp van de bovenstaande referenties kan de aanroeper een toegangs token aanvragen, dat in de volgende API-aanvragen in de koptekst sectie als volgt moet worden verzonden:
 
-headers = *{"autorisatie": "Beer" + access_token,...}*
+```
+headers = *{"Authorization": "Bearer " + access_token, …}*
+```
 
 **HTTP-aanvraag headers**:
 
@@ -161,8 +166,10 @@ Hier volgen de meest voorkomende aanvraag headers die moeten worden opgegeven bi
     "additionalProp3": {}
   }
 }
+```
 
-Device
+Apparaat
+
 ```json
 {
   "deviceModelId": "string",
@@ -242,7 +249,7 @@ Sensoren
 ```
 De onderstaande voorbeeld aanvraag is het maken van een apparaat (deze heeft een invoer JSON als Payload met de hoofd tekst van de aanvraag).  
 
-```
+```azurepowershell-interactive
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
 "accept: application/json" -H  "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>" -d "
@@ -266,6 +273,7 @@ U moet de telemetrie naar Azure Event hub verzenden voor verwerking. Azure Event
 
 Zodra u een verbinding hebt gemaakt als een EventHub-client, kunt u berichten verzenden naar de EventHub als een JSON-bestand.  
 Converteer de historische sensor gegevens indeling naar een canonieke indeling die door Azure FarmBeats wordt begrepen. De canonieke bericht indeling is als volgt:  
+
 
 
  ```

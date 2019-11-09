@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f8ddec95b92121c8dad4a39cf0c7b3f1798ec8ad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 81e652b90831af0e1e20e716842b4e79f5606d05
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789510"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889875"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>JSON-blobs indexeren met behulp van een BLOB-Indexeer functie in azure Cognitive Search
 
@@ -65,17 +65,11 @@ Op de pagina **gegevens bron** moet de bron **Azure Blob Storage**zijn, met de v
 
    ![Definitie van BLOB-gegevens bron](media/search-howto-index-json/import-wizard-json-data-source.png)
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4-de pagina cognitieve zoek opdracht toevoegen in de wizard overs Laan
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4-de pagina verrijkte inhoud in de wizard overs Laan
 
-Het is niet nodig om cognitieve vaardig heden toe te voegen voor het importeren van JSON-documenten. Tenzij u een specifieke behoefte hebt om [AI-verrijking toe te voegen](cognitive-search-concept-intro.md) aan uw indexerings pijplijn, moet u deze stap overs Laan.
+Het toevoegen van cognitieve vaardig heden (of verrijking) is geen import vereiste. Tenzij u een specifieke behoefte hebt om [AI-verrijking toe te voegen](cognitive-search-concept-intro.md) aan uw indexerings pijplijn, moet u deze stap overs Laan.
 
-Als u de stap wilt overs Laan, gaat u eerst naar de volgende pagina.
-
-   ![De knop volgende pagina voor Cognitive Search](media/search-get-started-portal/next-button-add-cog-search.png)
-
-Vanaf deze pagina kunt u verdergaan met het aanpassen van de index.
-
-   ![Stap voor cognitieve vaardigheden overslaan](media/search-get-started-portal/skip-cog-skill-step.png)
+Als u de stap wilt overs Laan, klikt u op de blauwe knoppen onder aan de pagina voor ' volgende ' en ' overs Laan '.
 
 ### <a name="5---set-index-attributes"></a>5-index kenmerken instellen
 
@@ -411,7 +405,7 @@ Bekijk ons voor beeld van een JSON-document:
         }
     }
 
-Stel dat er een zoek index is met de volgende velden: `text` type `Edm.String`, `date` type `Edm.DateTimeOffset` en `tags` van het type `Collection(Edm.String)`. Let op de discrepantie tussen ' datePublished ' in het veld bron en `date` in de index. Als u uw JSON wilt toewijzen aan de gewenste vorm, gebruikt u de volgende veld toewijzingen:
+Stel dat er een zoek index is met de volgende velden: `text` type `Edm.String`, `date` type `Edm.DateTimeOffset`en `tags` van het type `Collection(Edm.String)`. Let op de discrepantie tussen ' datePublished ' in het veld bron en `date` in de index. Als u uw JSON wilt toewijzen aan de gewenste vorm, gebruikt u de volgende veld toewijzingen:
 
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },

@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8a783581394de05fff9f0060e124e8dc59c96b60
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8fa20608f09b4e3006dad685d2fc52bcc9207b5a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790174"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890152"
 ---
 # <a name="working-with-skillsets-in-azure-cognitive-search"></a>Werken met vaardig heden in azure Cognitive Search
 
@@ -32,7 +32,7 @@ Een vaardighedenset heeft drie eigenschappen:
 
 
 
-Vaardig heden zijn geschreven in JSON. U kunt complexe vaardig heden maken met lussen en [vertakkingen](https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-conditional) met behulp van de [expressie taal](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional). De expressie taal maakt gebruik van de notatie van het [JSON-wijzer](https://tools.ietf.org/html/rfc6901) pad met enkele wijzigingen om knoop punten in de verrijkings structuur te identificeren. Een ```"/"``` doorloopt een niveau lager in de structuur en ```"*"``` fungeert als een for-each-operator in de context. Deze concepten worden het beste beschreven met een voor beeld. Ter illustratie van een aantal concepten en mogelijkheden worden de voor beelden van de voor keuren voor de [Hotel beoordelingen](knowledge-store-connect-powerbi.md) door lopen. Als u de vaardig heden wilt bekijken nadat u de werk stroom gegevens importeren hebt gevolgd, moet u een REST API-client gebruiken om [de vaardig heden](https://docs.microsoft.com/en-us/rest/api/searchservice/get-skillset)op te halen.
+Vaardig heden zijn geschreven in JSON. U kunt complexe vaardig heden maken met lussen en [vertakkingen](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) met behulp van de [expressie taal](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional). De expressie taal maakt gebruik van de notatie van het [JSON-wijzer](https://tools.ietf.org/html/rfc6901) pad met enkele wijzigingen om knoop punten in de verrijkings structuur te identificeren. Een ```"/"``` doorloopt een niveau lager in de structuur en ```"*"``` fungeert als een for-each-operator in de context. Deze concepten worden het beste beschreven met een voor beeld. Ter illustratie van een aantal concepten en mogelijkheden worden de voor beelden van de voor keuren voor de [Hotel beoordelingen](knowledge-store-connect-powerbi.md) door lopen. Als u de vaardig heden wilt bekijken nadat u de werk stroom gegevens importeren hebt gevolgd, moet u een REST API-client gebruiken om [de vaardig heden](https://docs.microsoft.com/rest/api/searchservice/get-skillset)op te halen.
 
 ### <a name="enrichment-tree"></a>Verrijkings structuur
 
@@ -43,14 +43,14 @@ Zodra een document zich in de verrijkings pijplijn bevindt, wordt het weer gegev
 
 |Modus data Source\Parsing|Standaard|JSON, JSON-lijnen & CSV|
 |---|---|---|
-|Blobopslag|/document/content<br>/document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
-|SQL|/document/{column1}<br>/document/{column2}<br>...|N/A |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|N/A|
+|Blob Storage|/document/content<br>/document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
+|SQL|/document/{column1}<br>/document/{column2}<br>...|N.v.t. |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|N.v.t.|
 
  Wanneer vaardig heden worden uitgevoerd, voegen ze nieuwe knoop punten toe aan de verrijkings structuur. Deze nieuwe knoop punten kunnen vervolgens worden gebruikt als invoer voor downstream-vaardig heden, projecteren naar het kennis archief of toewijzing aan index velden. Verrijkingen zijn niet onveranderbaar: als u deze eenmaal hebt gemaakt, kunnen knoop punten niet worden bewerkt. Naarmate uw vaardig heden ingewik kelder wordt, is uw verrijkings structuur, maar niet alle knoop punten in de verrijkings structuur nodig om deze naar de index of het kennis archief te brengen. U kunt slechts een subset van de verrijkingen van de index of het kennis archief selectief blijven.
 
 U kunt slechts een subset van de verrijkingen van de index of het kennis archief selectief blijven.
-Voor de rest van dit document gaan we ervan uit dat we een [voor beeld van een hotel beoordeling](https://docs.microsoft.com/en-us/azure/search/knowledge-store-connect-powerbi)gebruiken, maar dezelfde concepten zijn van toepassing op het verrijken van documenten uit alle andere gegevens bronnen.
+Voor de rest van dit document gaan we ervan uit dat we een [voor beeld van een hotel beoordeling](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi)gebruiken, maar dezelfde concepten zijn van toepassing op het verrijken van documenten uit alle andere gegevens bronnen.
 
 ### <a name="context"></a>Context
 Elke vaardigheid vereist een context. Een context bepaalt het volgende:

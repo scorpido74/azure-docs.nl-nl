@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: c8647e316cc77e7e1eed5108fafccd6d70d181cf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 1fec8a10a6699dc1360494cc7ac66e13f5d37ff0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898189"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885742"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Verbeter de prestaties van Azure-toepassingen met Azure Advisor
 
@@ -73,7 +73,7 @@ Advisor identificeert tabellen die geen gerepliceerde tabellen zijn, maar die we
 Migreer het implementatie model van uw opslag account naar Azure Resource Manager (Resource Manager) om te profiteren van sjabloon implementaties, extra beveiligings opties en de mogelijkheid om een upgrade uit te voeren naar een GPv2-account voor gebruik van de nieuwste functies van Azure Storage. Advisor identificeert zelfstandige opslag accounts die gebruikmaken van het klassieke implementatie model en raadt u aan om te migreren naar het Resource Manager-implementatie model.
 
 > [!NOTE]
-> Klassieke waarschuwingen in Azure Monitor zijn in augustus 2019 buiten gebruik gesteld. We raden u aan uw klassieke opslag account bij te werken om Resource Manager te gebruiken om de functionaliteit van waarschuwingen met het nieuwe platform te behouden. Zie [klassieke waarschuwingen buiten](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform)gebruik stellen voor meer informatie.
+> Klassieke waarschuwingen in Azure Monitor zijn in augustus 2019 buiten gebruik gesteld. We raden u aan uw klassieke opslag account bij te werken om Resource Manager te gebruiken om de functionaliteit van waarschuwingen met het nieuwe platform te behouden. Zie [klassieke waarschuwingen buiten](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform)gebruik stellen voor meer informatie.
 
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Uw opslag accounts ontwerpen om te voor komen dat de maximale abonnements limiet wordt bereikt
 
@@ -88,7 +88,7 @@ Een zeer hoog gebruik van de CPU gedurende een langere periode kan de prestaties
 Een lage cache verhouding kan leiden tot tragere query prestaties en meer IOPS. Dit kan worden veroorzaakt door een beschadigd query plan of door een geheugenintensieve werk belasting uit te voeren. Het herstellen van het query plan of [het verg Roten](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) van het geheugen van de Azure database for PostgreSQL database server, Azure MySQL-database server of Azure MariaDB-server helpt de uitvoering van de werk belasting van de data base te optimaliseren. Azure Advisor identificeert servers die worden beïnvloed door deze hoge verloop tijd van de buffer groep en raadt u aan om het query plan te corrigeren, over te stappen op een hogere SKU met meer geheugen of de opslag grootte te verg Roten om meer IOPS te verkrijgen.
 
 ### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Een Azure MySQL-of Azure PostgreSQL-Lees replica gebruiken om Lees bewerkingen uit te schalen voor intensieve werk belastingen voor lezen
-Azure Advisor maakt gebruik van heuristiek op basis van werk belastingen, zoals de verhouding van Lees bewerkingen op de server gedurende de afgelopen zeven dagen om Lees-intensieve workloads te identificeren. Uw Azure data base for PostgreSQL-resource of Azure data base for MySQL-resource met een zeer hoge lees-en schrijf bewerkingen kan resulteren in CPU-en/of geheugen conflicten die leiden tot trage query prestaties. Het toevoegen van een [replica](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) helpt bij het uitschalen van Lees bewerkingen naar de replica server, waardoor er geen CPU-en/of geheugen beperkingen zijn op de primaire server. Advisor identificeert servers met zulke hoge lees-intensieve workloads en raadt aan een [Lees replica](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) toe te voegen om een aantal lees workloads te offloaden.
+Azure Advisor maakt gebruik van heuristiek op basis van werk belastingen, zoals de verhouding van Lees bewerkingen op de server gedurende de afgelopen zeven dagen om Lees-intensieve workloads te identificeren. Uw Azure data base for PostgreSQL-resource of Azure data base for MySQL-resource met een zeer hoge lees-en schrijf bewerkingen kan resulteren in CPU-en/of geheugen conflicten die leiden tot trage query prestaties. Het toevoegen van een [replica](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) helpt bij het uitschalen van Lees bewerkingen naar de replica server, waardoor er geen CPU-en/of geheugen beperkingen zijn op de primaire server. Advisor identificeert servers met dergelijke hoge lees-intensieve workloads en raadt aan een [Lees replica](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) toe te voegen om enkele van de Lees workloads te offloaden.
 
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Schaal uw Azure MySQL-, Azure PostgreSQL-of Azure MariaDB-server naar een hogere SKU om verbindings beperkingen te voor komen

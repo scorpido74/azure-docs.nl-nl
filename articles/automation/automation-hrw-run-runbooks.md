@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83c185a6ba8f1c5e6edf095db5baf575f750fa3b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9c7084954fe58351a6f9af40552714faa34685ad
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176464"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887050"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbooks uitvoeren op een Hybrid Runbook Worker
 
@@ -45,7 +45,7 @@ Runbooks die worden uitgevoerd op een Hybrid Runbook Worker, kunnen niet dezelfd
 
 ### <a name="runbook-authentication"></a>Runbook-verificatie
 
-Runbooks worden standaard uitgevoerd in de context van het lokale systeem account voor Windows en een speciaal gebruikers account `nxautomation` voor Linux op de on-premises computer, zodat ze hun eigen verificatie moeten opgeven voor de resources waartoe ze toegang hebben.
+Runbooks worden standaard uitgevoerd in de context van het lokale systeem account voor Windows en een speciaal gebruikers account `nxautomation` voor Linux op de on-premises computer, zodat ze hun eigen authenticatie moeten opgeven voor de resources waartoe ze toegang hebben.
 
 U kunt [referentie](automation-credentials.md) -en [certificaat](automation-certificates.md) assets in uw runbook gebruiken met-cmdlets waarmee u referenties kunt opgeven, zodat u zich op verschillende bronnen kan verifiëren. In het volgende voor beeld ziet u een deel van een runbook waarmee een computer opnieuw wordt opgestart. De referenties worden opgehaald uit een referentie-element en de naam van de computer van een variabele Asset en vervolgens deze waarden gebruikt met de cmdlet Restart-computer.
 
@@ -92,7 +92,7 @@ Als u een beheerde identiteit voor Azure-resources wilt gebruiken op een Hybrid 
 3. [Uw VM toegang verlenen tot een resource groep in Resource Manager](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager) zelf studie-Windows-VM-toegang-arm. MD # Get-a-Access-token-using-the-vm's-door het systeem toegewezen beheerde identiteit-en-use-to-call-Azure-Resource-Manager)
 4. [Installeer de Windows-Hybrid Runbook worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) op de virtuele machine.
 
-Zodra de voor gaande stappen zijn voltooid, kunt u in het runbook `Connect-AzureRmAccount -Identity` gebruiken om te verifiëren bij Azure-resources. Deze configuratie vermindert de nood zaak om een uitvoeren als-account te gebruiken en het certificaat voor het uitvoeren als-account te beheren.
+Zodra de voor gaande stappen zijn voltooid, kunt u `Connect-AzureRmAccount -Identity` in het runbook gebruiken om te verifiëren bij Azure-resources. Deze configuratie vermindert de nood zaak om een uitvoeren als-account te gebruiken en het certificaat voor het uitvoeren als-account te beheren.
 
 ```powershell
 # Connect to Azure using the Managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
@@ -109,7 +109,7 @@ Get-AzureRmVm | Select Name
 
 Als onderdeel van uw geautomatiseerde bouw proces voor het implementeren van resources in azure, hebt u mogelijk toegang tot on-premises systemen nodig ter ondersteuning van een taak of een reeks stappen in uw implementatie reeks. Als u verificatie wilt ondersteunen voor Azure met behulp van het uitvoeren als-account, moet u het certificaat van het run as-account installeren.
 
-Met het volgende Power shell **-runbook, export-RunAsCertificateToHybridWorker**, wordt het run as-certificaat geëxporteerd uit uw Azure Automation-account en gedownload en geïmporteerd in het certificaat archief van de lokale computer op een Hybrid worker, dat is verbonden naar hetzelfde account. Zodra deze stap is voltooid, wordt gecontroleerd of de werk nemer kan worden geverifieerd bij Azure met behulp van het run as-account.
+Met het volgende Power shell **-runbook, export-RunAsCertificateToHybridWorker**, wordt het run as-certificaat geëxporteerd uit uw Azure Automation-account en gedownload en geïmporteerd in het certificaat archief van de lokale computer op een Hybrid worker, dat is verbonden met hetzelfde account. Zodra deze stap is voltooid, wordt gecontroleerd of de werk nemer kan worden geverifieerd bij Azure met behulp van het run as-account.
 
 ```azurepowershell-interactive
 <#PSScriptInfo
@@ -184,7 +184,7 @@ Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 > [!IMPORTANT]
 > **Add-AzureRmAccount** is nu een alias voor **Connect-AzureRmAccount**. Als u de bibliotheek items zoekt en u geen **Connect-AzureRMAccount**ziet, kunt u **add-AzureRMAccount**gebruiken, maar u kunt ook uw modules bijwerken in uw Automation-account.
 
-Sla het runbook *export-RunAsCertificateToHybridWorker* op uw computer op met een uitbrei ding van `.ps1`. Importeer deze in uw Automation-account en bewerk het runbook, waarbij u de waarde van de variabele `$Password` wijzigt met uw eigen wacht woord. Publiceer het runbook en voer het vervolgens uit. Richt de Hybrid Worker-groep in die runbooks uitvoert en verifieert met behulp van het run as-account. De taak stroom rapporteert de poging om het certificaat te importeren in het archief van de lokale computer en wordt gevolgd door meerdere regels. Dit gedrag is afhankelijk van het aantal Automation-accounts dat u in uw abonnement definieert en als de verificatie is geslaagd.
+Sla het runbook *export-RunAsCertificateToHybridWorker* op uw computer op met een `.ps1` extensie. Importeer deze in uw Automation-account en bewerk het runbook en wijzig de waarde van de variabele `$Password` met uw eigen wacht woord. Publiceer het runbook en voer het vervolgens uit. Richt de Hybrid Worker-groep in die runbooks uitvoert en verifieert met behulp van het run as-account. De taak stroom rapporteert de poging om het certificaat te importeren in het archief van de lokale computer en wordt gevolgd door meerdere regels. Dit gedrag is afhankelijk van het aantal Automation-accounts dat u in uw abonnement definieert en als de verificatie is geslaagd.
 
 ## <a name="job-behavior"></a>Taak gedrag
 
@@ -260,7 +260,7 @@ Als u runbooks wilt ondertekenen op een Linux-Hybrid Runbook Worker, moet het ui
 
 Als u de sleutel hanger en het sleutel paar wilt maken, moet u het Hybrid Runbook Worker-account gebruiken `nxautomation`.
 
-Gebruik `sudo` om u aan te melden als de `nxautomation`-account.
+Gebruik `sudo` om u aan te melden als het `nxautomation`-account.
 
 ```bash
 sudo su – nxautomation
@@ -315,4 +315,4 @@ Het ondertekende runbook kan nu worden geüpload naar Azure Automation en kan wo
 * Zie [starten van een runbook in azure Automation](automation-starting-a-runbook.md)voor meer informatie over de verschillende methoden die kunnen worden gebruikt om een runbook te starten.
 * Zie [een Runbook bewerken in azure Automation](automation-edit-textual-runbook.md) voor meer informatie over de verschillende manieren waarop u Power shell-runbooks in azure Automation kunt gebruiken in de tekst editor.
 * Als uw runbooks niet met succes worden voltooid, raadpleegt u de hand leiding voor het oplossen van [runbook-uitvoerings fouten](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
-* Raadpleeg de [Power shell-documenten](https://docs.microsoft.com/en-us/powershell/scripting/overview)voor meer informatie over Power shell, inclusief taal referentie-en leer modules.
+* Raadpleeg de [Power shell-documenten](https://docs.microsoft.com/powershell/scripting/overview)voor meer informatie over Power shell, inclusief taal referentie-en leer modules.

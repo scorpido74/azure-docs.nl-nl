@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9206bf07a36cc5724b173790eb94037cb86add9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 25b0ec1b86a59b944cdb895bd536da32a1f8595b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952080"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884480"
 ---
-# <a name="azure-iot-central-architecture"></a>Architectuur van Azure IoT Central
+# <a name="azure-iot-central-architecture"></a>Azure IoT Central-architectuur
 
 [!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
@@ -57,7 +57,7 @@ In azure IoT Central worden toepassings gegevens opgeslagen in de Cloud. De opge
 
 Azure IoT Central gebruikt een time series Store voor de meet gegevens die vanaf uw apparaten worden verzonden. Time Series-gegevens van apparaten die worden gebruikt door de analyse service.
 
-## <a name="analytics"></a>Analyse
+## <a name="analytics"></a>Analytische gegevens
 
 De analyse service is verantwoordelijk voor het genereren van de aangepaste rapportage gegevens die door de toepassing worden weer gegeven. Een operator kan [de analyse aanpassen](howto-create-analytics.md) die in de toepassing wordt weer gegeven. De Analytics-service is boven op [Azure time series Insights](https://azure.microsoft.com/services/time-series-insights/) gebouwd en verwerkt de meet gegevens die vanaf uw apparaten worden verzonden.
 
@@ -83,7 +83,7 @@ Een toepassing kan een of meer gesimuleerde en echte apparaten op basis van elk 
 
 ## <a name="data-export"></a>Gegevens export
 
-In een Azure IoT Central-toepassing kunt u [uw gegevens voortdurend exporteren](howto-export-data-event-hubs-service-bus.md) naar uw eigen azure-Event Hubs en Azure service bus exemplaren. U kunt uw gegevens ook periodiek exporteren naar uw Azure Blob-opslag account. IoT Central kunt metingen, apparaten en apparaatinstellingen exporteren.
+In een Azure IoT Central-toepassing kunt u [uw gegevens voortdurend exporteren](howto-export-data-event-hubs-service-bus.md) naar uw eigen azure-Event Hubs, Azure service bus en Azure Blob Storage-exemplaren. IoT Central kunt metingen, apparaten en apparaatinstellingen exporteren.
 
 ## <a name="batch-device-updates"></a>Updates voor batch-apparaten
 

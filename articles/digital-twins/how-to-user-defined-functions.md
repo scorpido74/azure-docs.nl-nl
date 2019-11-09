@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 11/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 24b7f05bc59f3eb951897f5e36030b531d8f3aa9
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 5271b14ec008579d18a152a229b9768339927bb7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959103"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888851"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Door de gebruiker gedefinieerde functies maken in azure Digital Apparaatdubbels
 
@@ -54,20 +54,22 @@ Met JSON-hoofd tekst:
 
 ```JSON
 {
-  "Name": "Temperature Matcher",
-  "Conditions": [
+  "id": "3626464-f39b-46c0-d9b0c-436aysj55",
+  "name": "Temperature Matcher",
+  "spaceId": "YOUR_SPACE_IDENTIFIER",
+  "conditions": [
     {
+      "id": "ag7gq35cfu3-e15a-4e9c-6437-sj6w68sy44s",
       "target": "Sensor",
       "path": "$.dataType",
       "value": "\"Temperature\"",
       "comparison": "Equals"
     }
-  ],
-  "SpaceId": "YOUR_SPACE_IDENTIFIER"
+  ]
 }
 ```
 
-| Value | Vervangen door |
+| Waarde | Vervangen door |
 | --- | --- |
 | YOUR_SPACE_IDENTIFIER | De serverregio waarin het exemplaar wordt gehost |
 
@@ -107,7 +109,7 @@ function process(telemetry, executionContext) {
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Value | Vervangen door |
+| Waarde | Vervangen door |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | Een grens naam voor meerdelige inhoud |
 | YOUR_SPACE_IDENTIFIER | De ruimte-id  |
@@ -119,12 +121,12 @@ function process(telemetry, executionContext) {
    - Het eerste deel bevat de vereiste meta gegevens van de door de gebruiker gedefinieerde functie.
    - Het tweede deel bevat de Java script-Compute-logica.
 
-1. Vervang in de sectie **USER_DEFINED_BOUNDARY** de waarden **spaceId** (`YOUR_SPACE_IDENTIFIER`) en **matchers** (`YOUR_MATCHER_IDENTIFIER`).
+1. Vervang de waarden voor **spaceId** (`YOUR_SPACE_IDENTIFIER`) en **matchers** (`YOUR_MATCHER_IDENTIFIER`) in het gedeelte **USER_DEFINED_BOUNDARY** .
 1. Controleer of de door de gebruiker gedefinieerde Java script-functie is opgegeven als `Content-Type: text/javascript`.
 
 ### <a name="example-functions"></a>Voorbeeld functies
 
-Stel de telemetrie van de sensor zo in dat deze rechtstreeks wordt gelezen voor de sensor met gegevens type **temperatuur**, `sensor.DataType`:
+Stel de telemetrie van de sensor zo in dat deze rechtstreeks wordt gelezen voor de sensor met gegevens type **temperatuur**. dit is `sensor.DataType`:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -202,21 +204,21 @@ Maak een roltoewijzing voor de door de gebruiker gedefinieerde functie die u wil
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
-   Behoud de gewenste rol-ID. Het wordt door gegeven als het JSON-kenmerk **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) hieronder.
+   Behoud de gewenste rol-ID. Het wordt door gegeven als het JSON-hoofd kenmerk **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) hieronder.
 
-1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) wordt de door de gebruiker gedefinieerde functie-id die eerder is gemaakt.
+1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) wordt de door de gebruiker gedefinieerde functie-id die u eerder hebt gemaakt.
 1. Zoek de waarde van het **pad** (`YOUR_ACCESS_CONTROL_PATH`) door uw Spaces te doorzoeken met `fullpath`.
-1. Kopieer de geretourneerde waarde `spacePaths`. U gaat hiervoor het volgende gebruiken. Een geverifieerde HTTP GET-aanvraag indienen voor:
+1. Kopieer de geretourneerde `spacePaths` waarde. U gaat hiervoor het volgende gebruiken. Een geverifieerde HTTP GET-aanvraag indienen voor:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | Value | Vervangen door |
+    | Waarde | Vervangen door |
     | --- | --- |
     | YOUR_SPACE_NAME | De naam van de ruimte die u wilt gebruiken |
 
-1. Plak de geretourneerde `spacePaths`-waarde in **pad** om een door de gebruiker gedefinieerde functie toewijzing te maken door een geverifieerde HTTP POST-aanvraag in te stellen:
+1. Plak de geretourneerde `spacePaths` waarde in **pad** om een door de gebruiker gedefinieerde functie toewijzing te maken door een geverifieerde HTTP POST-aanvraag in te stellen:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments
@@ -232,7 +234,7 @@ Maak een roltoewijzing voor de door de gebruiker gedefinieerde functie die u wil
     }
     ```
 
-    | Value | Vervangen door |
+    | Waarde | Vervangen door |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | De id voor de gewenste rol |
     | YOUR_USER_DEFINED_FUNCTION_ID | De ID voor de door de gebruiker gedefinieerde functie die u wilt gebruiken |

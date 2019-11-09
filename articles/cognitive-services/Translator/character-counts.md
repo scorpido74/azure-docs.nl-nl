@@ -1,7 +1,7 @@
 ---
 title: Aantal tekens-Translator Text-API
 titleSuffix: Azure Cognitive Services
-description: Hoe de Translator Text-API tekens telt.
+description: In dit artikel wordt uitgelegd hoe de Cognitive Services Translator Text-API van Azure tekens telt, zodat u kunt begrijpen hoe de inhoud wordt opgenomen.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: e3a16d9272e75f9a94f5381c1681c036d177e0f6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cb70b8624ac0d909511032622948f14f8764b153
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595984"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888149"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>Hoe de Translator Text-API tekens telt
 
@@ -24,16 +24,16 @@ Het Translator Text-API telt elk Unicode-code punt van invoer tekst als een teke
 Wat is het aantal:
 
 * Tekst die wordt door gegeven aan de Translator Text-API in de hoofd tekst van de aanvraag
-   * `Text`bij gebruik van de opzoek methoden vertalen, trans actie en Dictionary
-   * `Text`en `Translation` wanneer u de voor beelden van de woordenlijst methode gebruikt
-* Alle markeringen: HTML-, XML-tags, enzovoort, in het tekst veld van de hoofd tekst van de aanvraag. De JSON-notatie die wordt gebruikt om de aanvraag te maken (bijvoorbeeld ' Text: '), wordt niet meegerekend.
+   * `Text` bij het gebruik van de opzoek methoden voor vertalen, trans actie en Dictionary
+   * `Text` en `Translation` bij gebruik van de methode Dictionary-voor beelden
+* Alle aantekeningen: HTML, XML-tags enzovoort, in het tekst veld van de hoofd tekst van de aanvraag. De JSON-notatie die wordt gebruikt om de aanvraag te maken (bijvoorbeeld ' Text: '), wordt niet meegerekend.
 * Een afzonderlijke brief
-* Leestekens
+* interpunctie
 * Een spatie, tab, opmaak en elk soort spatie teken
 * Elk code punt dat in Unicode is gedefinieerd
 * Een herhaalde vertaling, zelfs als u dezelfde tekst eerder hebt vertaald
 
-Voor scripts die zijn gebaseerd op ideograms zoals Chinees en Japans Kanji, telt het Translator Text-API nog steeds het aantal Unicode-code punten, één teken per Ideogram. Uitzondering: Unicode-surrogaten tellen als twee tekens.
+Voor scripts die zijn gebaseerd op ideograms zoals Chinees en Japans Kanji, telt het Translator Text-API nog steeds het aantal Unicode-code punten, één teken per Ideogram. Uitzonde ring: Unicode-vervangingen tellen als twee tekens.
 
 Het aantal aanvragen, woorden, bytes of zinnen is irrelevant in het aantal tekens.
 

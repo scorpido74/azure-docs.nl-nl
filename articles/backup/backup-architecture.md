@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 24e90ebd2994c5fffc1252167c06783421f2ac33
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: e072923c2c8b1d8e5bb281a5bcff992b25289b4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035248"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888489"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -48,8 +48,8 @@ Recovery Services kluizen hebben de volgende kenmerken:
 - U kunt back-upitems bewaken in een kluis, waaronder Azure Vm's en on-premises machines.
 - U kunt de toegang tot de kluis beheren met [op rollen gebaseerd toegangs beheer (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)van Azure.
 - U geeft op hoe gegevens in de kluis worden gerepliceerd voor redundantie:
-  - **Lokaal redundante opslag (LRS)** : Als u wilt beveiligen tegen fouten in een Data Center, kunt u LRS gebruiken. LRS repliceert gegevens naar een opslag schaal eenheid. [Meer informatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-  - **Geografisch redundante opslag (GRS)** : U kunt GRS gebruiken om te beschermen tegen de regionale storingen. GRS repliceert uw gegevens naar een secundaire regio. [Meer informatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - **Lokaal redundante opslag (LRS)** : als u wilt beveiligen tegen fouten in een Data Center, kunt u LRS gebruiken. LRS repliceert gegevens naar een opslag schaal eenheid. [Meer informatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+  - **Geografisch redundante opslag (GRS)** : als u wilt beveiligen tegen regionale storingen, kunt u GRS gebruiken. GRS repliceert uw gegevens naar een secundaire regio. [Meer informatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
   - Recovery Services kluizen gebruiken standaard GRS.
 
 ## <a name="backup-agents"></a>Back-upagenten
@@ -106,7 +106,7 @@ Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> 
 
 ![Tabel sleutel](./media/backup-architecture/table-key.png)
 
-## <a name="architecture-direct-backup-of-azure-vms"></a>Architectuur: Directe back-ups van virtuele Azure-machines
+## <a name="architecture-direct-backup-of-azure-vms"></a>Architectuur: directe back-ups van virtuele Azure-machines
 
 1. Wanneer u back-up voor een virtuele machine van Azure inschakelt, wordt een back-up uitgevoerd volgens het schema dat u opgeeft.
 1. Tijdens de eerste back-up wordt een back-upextensie op de VM geïnstalleerd als de virtuele machine wordt uitgevoerd.
@@ -120,13 +120,13 @@ Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> 
     - Alleen gegevens blokken die zijn gewijzigd sinds de laatste back-up zijn gekopieerd.
     - De gegevens zijn niet versleuteld. Azure Backup kunt een back-up maken van virtuele Azure-machines die zijn versleuteld met behulp van Azure Disk Encryption.
     - Momentopname gegevens worden mogelijk niet direct naar de kluis gekopieerd. Het maken van een back-up kan enige tijd duren. De totale back-uptijd voor een virtuele machine is minder dan 24 uur voor dagelijks back-upbeleid.
-1. Nadat de gegevens naar de kluis zijn verzonden, wordt een herstel punt gemaakt. Standaard worden moment opnamen twee dagen bewaard voordat ze worden verwijderd. Met deze functie kunt u de herstel bewerking van deze moment opnamen herstellen. Het vermindert de tijd die nodig is om gegevens terug te zetten en te kopiëren van de kluis. Zie [Azure backup mogelijkheid om direct te herstellen](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability).
+1. Nadat de gegevens naar de kluis zijn verzonden, wordt een herstel punt gemaakt. Standaard worden moment opnamen twee dagen bewaard voordat ze worden verwijderd. Met deze functie kunt u de herstel bewerking van deze moment opnamen herstellen. Het vermindert de tijd die nodig is om gegevens terug te zetten en te kopiëren van de kluis. Zie [Azure backup mogelijkheid om direct te herstellen](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
 
 Azure-Vm's hebben Internet toegang nodig voor besturings opdrachten. Als u een back-up maakt van werk belastingen binnen de virtuele machine (bijvoorbeeld SQL Server database back-ups), heeft de back-end-gegevens ook toegang tot internet nodig.
 
 ![Back-ups van virtuele Azure-machines](./media/backup-architecture/architecture-azure-vm.png)
 
-## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Architectuur: Directe back-ups van on-premises Windows Server-of Azure VM-bestanden of-mappen
+## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Architectuur: directe back-ups van on-premises Windows Server-machines of Azure-VM-bestanden of-mappen
 
 1. Als u het scenario wilt instellen, downloadt en installeert u de MARS-agent op de computer. Selecteer vervolgens waarvan u een back-up wilt maken, wanneer back-ups worden uitgevoerd en hoe lang ze in Azure worden bewaard.
 1. De eerste back-up wordt uitgevoerd volgens uw back-upinstellingen.
@@ -140,7 +140,7 @@ Azure-Vm's hebben Internet toegang nodig voor besturings opdrachten. Als u een b
 
 ![Back-ups van on-premises Windows Server-machines met MARS agent](./media/backup-architecture/architecture-on-premises-mars.png)
 
-## <a name="architecture-back-up-to-dpmmabs"></a>Architectuur: Back-up naar DPM/MABS
+## <a name="architecture-back-up-to-dpmmabs"></a>Architectuur: back-up naar DPM-MABS
 
 1. U installeert de DPM-of MABS-beveiligings agent op computers die u wilt beveiligen. Vervolgens voegt u de machines toe aan een DPM-beveiligings groep.
     - Als u on-premises machines wilt beveiligen, moet de DPM-of MABS-server zich lokaal bevinden.
@@ -164,7 +164,7 @@ Azure-Vm's gebruiken schijven voor het opslaan van hun besturings systeem, apps 
   - **Standard-SSD schijf:** Hiermee worden elementen van Premium SSD-schijven en standaard HDD-schijven gecombineerd. Biedt consistente prestaties en betrouw baarheid dan HDD, maar nog steeds rendabel.
   - **Premium-SSD schijf:** Ondersteund door Ssd's en biedt hoge prestaties en lage latentie voor Vm's met I/O-intensieve workloads.
 - Schijven kunnen worden beheerd of onbeheerd:
-  - **Niet-beheerde schijven:** Traditioneel type schijven dat wordt gebruikt door Vm's. Voor deze schijven maakt u uw eigen opslag account en geeft u deze op wanneer u de schijf maakt. Vervolgens moet u nagaan hoe u de opslag resources voor uw virtuele machines kunt maximaliseren.
+  - Niet- **beheerde schijven:** Traditioneel type schijven dat wordt gebruikt door Vm's. Voor deze schijven maakt u uw eigen opslag account en geeft u deze op wanneer u de schijf maakt. Vervolgens moet u nagaan hoe u de opslag resources voor uw virtuele machines kunt maximaliseren.
   - **Beheerde schijven:** Azure maakt en beheert de opslag accounts voor u. U geeft de schijf grootte en de prestatie-laag op en Azure maakt beheerde schijven voor u. Wanneer u schijven toevoegt en virtuele machines schaalt, worden de opslag accounts door Azure afgehandeld.
 
 Zie de volgende artikelen voor meer informatie over schijf ruimte en de beschik bare schijf typen voor Vm's:

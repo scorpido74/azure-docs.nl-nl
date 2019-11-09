@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie over problemen met apparaten detecteren in een externe bewakingsoplossing - Azure | Microsoft Docs
+title: De oplossing voor controle op afstand gebruiken om problemen met apparaten op te sporen-Azure | Microsoft Docs
 description: In deze zelfstudie leert u hoe u regels en acties kunt gebruiken voor het automatisch detecteren van problemen met apparaten op basis van een drempelwaarde in de externe bewakingsoplossing.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 91ee5087e5f41cda3648c2ecadcfcf16fd32a249
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61448237"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888879"
 ---
-# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Zelfstudie: problemen detecteren met apparaten die zijn verbonden met uw bewakingsoplossing
+# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Zelfstudie: Problemen detecteren met apparaten die zijn verbonden met uw bewakingsoplossing
 
 In deze zelfstudie configureert u de verbetering voor de externe bewakingsoplossing om problemen met verbonden IoT-apparaten te detecteren. Voor het detecteren van problemen met uw apparaten voegt u regels toe waarmee meldingen in het dashboard van de oplossing worden gegenereerd.
 
@@ -51,10 +51,10 @@ Als u alleen de regels wilt zien die betrekking hebben op chillers, moet u een f
 
 Als u een regel wilt maken waarmee een waarschuwing wordt gegenereerd wanneer de druk in een chiller hoger wordt dan 150 PSI, klikt u op **Nieuwe regel**. Gebruik de volgende waarden om de regel te maken:
 
-| Instelling          | Value                                 |
+| Instelling          | Waarde                                 |
 | ---------------- | ------------------------------------- |
 | Regelnaam        | Waarschuwing voor chiller                       |
-| Description      | De druk in de chiller heeft 150 PSI overschreden |
+| Beschrijving      | De druk in de chiller heeft 150 PSI overschreden |
 | Apparaatgroep     | **Chillers**-apparaatgroep             |
 | Berekening      | Direct                               |
 | Veld Voorwaarde 1| pressure                              |
@@ -74,12 +74,12 @@ U kunt zien wanneer de regel wordt geactiveerd op de pagina **Regels** of op de 
 
 Klik op **Nieuwe regel**  als u een regel met meerdere voorwaarden wilt maken die een kritieke melding genereert wanneer in de laatste vijf minuten voor een chiller de gemiddelde vochtigheid hoger is dan 80% en de gemiddelde temperatuur hoger dan 75 graden Fahrenheit. Gebruik de volgende waarden om de regel te maken:
 
-| Instelling          | Value                                 |
+| Instelling          | Waarde                                 |
 | ---------------- | ------------------------------------- |
 | Regelnaam        | Kritieke vochtigheid en temp van chiller    |
-| Description      | Vochtigheid en temperatuur zijn kritiek |
+| Beschrijving      | Vochtigheid en temperatuur zijn kritiek |
 | Apparaatgroep     | **Chillers**-apparaatgroep             |
-| Berekening      | Gemiddeld                               |
+| Berekening      | Average                               |
 | Periode      | 5                                     |
 | Veld Voorwaarde 1| vochtigheid                              |
 | Operator Voorwaarde 1 | Groter dan                      |
@@ -90,7 +90,7 @@ Klik op **Nieuwe regel**  als u een regel met meerdere voorwaarden wilt maken di
 
 Als u wilt de tweede voorwaarde wilt toevoegen, klikt u op '+ Voorwaarde toevoegen'. Gebruik de volgende waarden voor de nieuwe voorwaarde:
 
-| Instelling          | Value                                 |
+| Instelling          | Waarde                                 |
 | ---------------- | ------------------------------------- |
 | Veld Voorwaarde 2| temperatuur                           |
 | Operator Voorwaarde 2 | Groter dan                      |

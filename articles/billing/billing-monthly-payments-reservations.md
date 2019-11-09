@@ -6,14 +6,14 @@ author: bandersmsft
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: d211334ad2aa760cd63b98c6827fb2512811a1d3
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b1cc034b4d397f170b57e873cb9a5d74c91f83f4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806946"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73746457"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Reserveringen aanschaffen met maandelijkse betalingen
 
@@ -24,6 +24,7 @@ Uw maandbedrag kan variëren op basis van de wisselkoers van de huidige maand vo
 Maandelijkse betalingen zijn beschikbaar voor:
 
 - Virtuele machines
+- Azure Storage
 - SQL Database
 - SQL Data Warehouse
 - Cosmos DB
@@ -60,20 +61,6 @@ Wanneer u een reservering met maandelijkse betaling omruilt, moeten de kosten vo
 Als een reservering met maandelijkse betaling wordt geannuleerd, kan Microsoft annuleringskosten toepassen op de vastgelegde toekomstige betalingen die worden geannuleerd. De resterende vastgelegde betalingen tellen mee voor de restitutielimiet van USD 50.000.
 
 Zie [Selfservice voor omruiling en terugbetaling van Azure-reserveringen](billing-azure-reservations-self-service-exchange-and-refund.md) voor meer informatie over omruiling en terugbetaling.
-
-## <a name="faq"></a>Veelgestelde vragen
-
-V. Biedt Azure ook reserveringen met gedeeltelijke betaling vooraf?<br>
-A. Nee. Omdat de kosten voor reserveringen die vooraf en per maand worden betaald gelijk zijn, biedt Microsoft geen ondersteuning voor gedeeltelijke betaling vooraf.
-
-V. Is maandelijkse betaling beschikbaar voor het Microsoft Cloud Solution Provider (CSP)-programma?<br>
-A. Ja, partners kunnen reserveringen voor hun CSP-klanten kopen in Azure Portal. De mogelijkheid om reserveringen te kopen met maandelijkse facturering is niet beschikbaar in het Partnercentrum.
-
-V. Kan ik als Azure Government-klant per maand betalen voor reserveringsaankopen?<br>
-A. Momenteel niet.
-
-V. Kan ik zelf omruiling of terugbetaling regelen in Azure Portal, in plaats van een ondersteuningsticket te maken?<br>
-A. Momenteel niet. Aanvragen voor omruiling en terugbetaling van reserveringen met maandelijkse betalingen worden verwerkt door de ondersteuning voor Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/01/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: c386343ff8f5608931aca4a6f46ae09a92082a35
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8ab49b27d383cd50463d08a8fa2081234a97108f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929580"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889019"
 ---
 > [!NOTE]
-> U bekijkt momenteel de documentatie van IoT Central *Preview-functies* . Ga naar [Wat is Azure IOT Central?](../articles/iot-central/core/overview-iot-central.md)voor een overzicht van de oorspronkelijke documentatie.
+> U bekijkt momenteel de IoT Central-documentatie voor [toepassings sjablonen die gebruikmaken van preview-functies](../articles/iot-central/core/concepts-app-templates.md#preview-templates). Als u de documentatie wilt weer geven voor [toepassings sjablonen die algemeen beschik bare functies gebruiken](../articles/iot-central/core/concepts-app-templates.md#preview-templates) , gaat u naar [wat is Azure IOT Central (preview-functies)?](../articles/iot-central/preview/overview-iot-central.md).

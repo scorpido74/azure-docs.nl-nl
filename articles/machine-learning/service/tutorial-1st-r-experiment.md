@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 9073893ebfcfea1a7f4e2a00bf82babcb8841122
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
-ms.translationtype: HT
+ms.openlocfilehash: 690df14e4e09b4a35589446029468a7d757d2732
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838524"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888620"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Zelf studie: uw eerste model trainen en implementeren in R met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -70,7 +70,7 @@ We raden u aan RStudio te gebruiken om deze zelf studie uit te voeren. In RStudi
 > Als u ervaring hebt met RMarkdown, kunt u de code uit dat bestand gebruiken.  Of u kunt de code fragmenten uit deze of van dit artikel kopiëren/plakken in een R-script of de opdracht regel.
 
 
-## <a name="set-up-your-development-environment"></a>Uw ontwikkelomgeving instellen
+## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
 De configuratie voor uw ontwikkel werkzaamheden in deze zelf studie bevat de volgende acties:
 
 * De vereiste pakketten installeren
@@ -269,7 +269,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 ## <a name="deploy-as-a-web-service"></a>Als webservice implementeren
 
-Met uw model kunt u het risico van de dood van een botsing voors pellen. Gebruik Azure ML om uw model te implementeren als een Voorspellings service. In deze zelf studie gaat u de webservice in [Azure container instances](https://docs.microsoft.com/en-us/azure/container-instances/) (ACI) implementeren.
+Met uw model kunt u het risico van de dood van een botsing voors pellen. Gebruik Azure ML om uw model te implementeren als een Voorspellings service. In deze zelf studie gaat u de webservice in [Azure container instances](https://docs.microsoft.com/azure/container-instances/) (ACI) implementeren.
 
 ### <a name="register-the-model"></a>Het model registreren
 

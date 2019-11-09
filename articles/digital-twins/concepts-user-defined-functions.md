@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: b8ea5c54afd4b1e2c212422417688e528367d44f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: 0708b1dd2d272757949d014d768c1da649b50146
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949977"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889686"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Gegevensverwerking en door gebruikers gedefinieerde functies
 
@@ -23,7 +23,7 @@ Azure Digital Apparaatdubbels biedt geavanceerde reken mogelijkheden. Ontwikkel 
 
 Nadat apparaten telemetriegegevens naar Azure Digital Apparaatdubbels hebben verzonden, kunnen ontwikkel aars gegevens in vier fasen verwerken: *Validate*, *match*, *Compute*en *Dispatch*.
 
-[![Azure Digital Apparaatdubbels-gegevens verwerkings stroom](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
+[gegevens verwerkings stroom voor Azure Digital Apparaatdubbels ![](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. Met de validate-fase wordt het inkomende telemetriegegevens getransformeerd naar een veelgebruikte indeling voor [gegevens overdracht](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) . Deze fase voert ook de validatie van het apparaat en de sensor uit.
 1. De match-fase vindt de juiste door de gebruiker gedefinieerde functies die moeten worden uitgevoerd. Vooraf gedefinieerde overeenkomsten zoeken de door de gebruiker gedefinieerde functies op basis van het apparaat, de sensor en de ruimte-informatie uit het binnenkomende telemetrie-bericht.
@@ -40,37 +40,42 @@ Gegevens verwerking in azure Digital Apparaatdubbels bestaat uit het definiëren
 
 Met matchers definieert u een set voor waarden die evalueren welke acties worden uitgevoerd op basis van de inkomende sensor-telemetrie. Voor waarden om de overeenkomst te bepalen kan eigenschappen van de sensor, het bovenliggende apparaat van de sensor en de bovenliggende ruimte van de sensor bevatten. De voor waarden worden uitgedrukt als vergelijkingen voor een [JSON-pad](https://jsonpath.com/) zoals beschreven in dit voor beeld:
 
-- Alle Sens oren van de gegevens type **temperatuur** vertegenwoordigd door de waarde voor escaped string `\"Temperature\"`
-- @No__t-0 in hun poort
-- Welk deel uitmaakt van apparaten met de uitgebreide eigenschaps sleutel **fabrikant** ingesteld op de escaped String waarde `\"GoodCorp\"`
+- Alle Sens oren van de gegevens type **temperatuur** worden weer gegeven door de escaped String-waarde `\"Temperature\"`
+- `01` in hun poort
+- Welk deel uitmaakt van apparaten met de uitgebreide eigenschaps sleutel **fabrikant** ingesteld op de escaped String-waarde `\"Contoso\"`
 - Die horen bij spaties van het type dat is opgegeven door de escaped string `\"Venue\"`
 - Wat zijn descendanten van de bovenliggende **SpaceId** -`DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
 
 ```JSON
 {
-  "SpaceId": "DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
-  "Name": "My custom matcher",
-  "Description": "All sensors of datatype Temperature with 01 in their port that belong to devices with the extended property key Manufacturer set to the value GoodCorp and that belong to spaces of type Venue that are somewhere below space Id DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
-  "Conditions": [
+  "id": "23535afafd-f39b-46c0-9b0c-0dd3892a1c30",
+  "name": "My custom matcher",
+  "spaceId": "DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
+  "description": "All sensors of datatype Temperature with 01 in their port that belong to devices with the extended property key Manufacturer set to the value Contoso and that belong to spaces of type Venue that are somewhere below space Id DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
+  "conditions": [
     {
+      "id": "43898sg43-e15a-4e9c-abb8-2gw464364",
       "target": "Sensor",
       "path": "$.dataType",
       "value": "\"Temperature\"",
       "comparison": "Equals"
     },
     {
+      "id": "wt3th44-e15a-35sg-seg3-235wf3ga463",
       "target": "Sensor",
       "path": "$.port",
       "value": "01",
       "comparison": "Contains"
     },
     {
+      "id": "735hs33-e15a-37jj-23532-db901d550af5",
       "target": "SensorDevice",
       "path": "$.properties[?(@.name == 'Manufacturer')].value",
-      "value": "\"GoodCorp\"",
+      "value": "\"Contoso\"",
       "comparison": "Equals"
     },
     {
+      "id": "222325-e15a-49fg-5744-463643644",
       "target": "SensorSpace",
       "path": "$.type",
       "value": "\"Venue\"",

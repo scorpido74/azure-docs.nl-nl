@@ -1,19 +1,18 @@
 ---
 title: Query's uitvoeren op Azure IoT Hub-bericht routering | Microsoft Docs
-description: 'Ontwikkelaars handleiding: query syntaxis voor bericht routering op Azure IoT Hub.'
+description: Meer informatie over de IoT Hub bericht routerings query taal die u kunt gebruiken om uitgebreide query's toe te passen op berichten om de gegevens te ontvangen die voor u van belang zijn.
 author: ash2017
-manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 7f6439d79e5d46621b92b1c24ba5caf87889f443
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 859b15954f64f8b481f6b86c04fc28b542599f02
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877064"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890498"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Query syntaxis voor het routeren van berichten IoT Hub
 
@@ -51,13 +50,13 @@ Met de IoT Hub definieert u een [algemene indeling](iot-hub-devguide-messages-co
 
 Systeem eigenschappen helpen de inhoud en bron van de berichten te identificeren. 
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| contentType | string | De gebruiker geeft het inhouds type van het bericht op. Als u een query wilt toestaan voor de hoofd tekst van het bericht, moet u de waarde Application/JSON instellen. |
-| contentEncoding | string | De gebruiker geeft het type code ring van het bericht op. Toegestane waarden zijn UTF-8, UTF-16, UTF-32 als het content type is ingesteld op Application/JSON. |
-| iothub-connection-device-id | string | Deze waarde wordt ingesteld door IoT Hub en identificeert de ID van het apparaat. Gebruik `$connectionDeviceId`voor query's. |
-| iothub-enqueuedtime | string | Deze waarde wordt ingesteld door IoT Hub en vertegenwoordigt de werkelijke tijd van enqueuing van het bericht in UTC. Gebruik `enqueuedTime`voor query's. |
-| iothub-interface-name | string | Deze waarde wordt ingesteld door de gebruiker en vertegenwoordigt de naam van de digitale twee interface die het telemetrie-bericht implementeert. Gebruik `$interfaceName`voor query's. Deze functie is beschikbaar als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). |
+| Invoer | tekenreeks | De gebruiker geeft het inhouds type van het bericht op. Als u een query wilt toestaan voor de hoofd tekst van het bericht, moet u de waarde Application/JSON instellen. |
+| contentEncoding | tekenreeks | De gebruiker geeft het type code ring van het bericht op. Toegestane waarden zijn UTF-8, UTF-16, UTF-32 als het content type is ingesteld op Application/JSON. |
+| iothub-connection-device-id | tekenreeks | Deze waarde wordt ingesteld door IoT Hub en identificeert de ID van het apparaat. Gebruik `$connectionDeviceId`om een query uit te zoeken. |
+| iothub-enqueuedtime | tekenreeks | Deze waarde wordt ingesteld door IoT Hub en vertegenwoordigt de werkelijke tijd van enqueuing van het bericht in UTC. Gebruik `enqueuedTime`om een query uit te zoeken. |
+| iothub-interface-name | tekenreeks | Deze waarde wordt ingesteld door de gebruiker en vertegenwoordigt de naam van de digitale twee interface die het telemetrie-bericht implementeert. Gebruik `$interfaceName`om een query uit te zoeken. Deze functie is beschikbaar als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). |
 
 Zoals beschreven in de [IOT hub berichten](iot-hub-devguide-messages-construct.md), zijn er aanvullende systeem eigenschappen in een bericht. Naast **Content type**, **contentEncoding**en **enqueuedTime**kan ook een query worden uitgevoerd op de **connectionDeviceId** -en **connectionModuleId** .
 
@@ -67,7 +66,7 @@ Toepassings eigenschappen zijn door de gebruiker gedefinieerde teken reeksen die
 
 ### <a name="query-expressions"></a>Query-expressies
 
-Een query op bericht systeem eigenschappen moet worden voorafgegaan door het `$` symbool. Query's op toepassings eigenschappen zijn toegankelijk met hun naam en mogen niet worden voorafgegaan door het `$`symbool. Als de naam van een toepassings eigenschap `$`begint met, zoekt IOT hub deze in de systeem eigenschappen en wordt deze niet gevonden. vervolgens wordt de toepassings eigenschappen weer gegeven. Bijvoorbeeld: 
+Een query op bericht systeem eigenschappen moet worden voorafgegaan door het `$`-symbool. Query's op toepassings eigenschappen zijn toegankelijk met hun naam en mogen niet worden voorafgegaan door het `$`symbool. Als de naam van een toepassings eigenschap begint met `$`, zoekt IoT Hub deze in de systeem eigenschappen en is deze niet gevonden. vervolgens wordt de toepassings eigenschappen weer gegeven. Bijvoorbeeld: 
 
 Een query uitvoeren op de systeem eigenschap contentEncoding 
 
@@ -91,7 +90,7 @@ Een volledige lijst met ondersteunde Opera tors en functies wordt weer gegeven i
 
 ## <a name="message-routing-query-based-on-message-body"></a>Bericht routerings query op basis van bericht tekst 
 
-Als u het uitvoeren van query's op bericht hoofdtekst wilt inschakelen, moet het bericht in een JSON worden gecodeerd in UTF-8, UTF-16 of UTF-32. De `contentType` moet worden `application/JSON` ingesteld`contentEncoding` op een van de ondersteunde UTF-code ringen in de systeem eigenschap. Als deze eigenschappen niet worden opgegeven, wordt de query-expressie niet door IoT Hub geëvalueerd op de bericht tekst. 
+Als u het uitvoeren van query's op bericht hoofdtekst wilt inschakelen, moet het bericht in een JSON worden gecodeerd in UTF-8, UTF-16 of UTF-32. De `contentType` moet worden ingesteld op `application/JSON` en `contentEncoding` op een van de ondersteunde UTF-code ringen in de systeem eigenschap. Als deze eigenschappen niet worden opgegeven, wordt de query-expressie niet door IoT Hub geëvalueerd op de bericht tekst. 
 
 In het volgende voor beeld ziet u hoe u een bericht maakt met een juist gevormde en gecodeerde JSON-hoofd tekst: 
 
@@ -197,7 +196,7 @@ Met bericht routering kunt u een query uitvoeren op dubbele Tags en eigenschappe
 
 ### <a name="query-expressions"></a>Query-expressies
 
-Een query op de bericht tekst moet worden voorafgegaan door de `$twin`. De query-expressie kan ook een dubbele tag of eigenschaps verwijzing combi neren met een verwijzing naar een hoofd tekst, eigenschappen van het bericht systeem en naslag informatie over de eigenschappen van een bericht toepassing. U kunt het beste unieke namen gebruiken in tags en eigenschappen, aangezien de query niet hoofdletter gevoelig is. U `twin` `$twin` `$body`kunt ook onthouden of,, of, als eigenschaps namen. `body` Zo zijn de volgende geldige query-expressies: 
+Een query op de bericht tekst moet worden voorafgegaan door de `$twin`. De query-expressie kan ook een dubbele tag of eigenschaps verwijzing combi neren met een verwijzing naar een hoofd tekst, eigenschappen van het bericht systeem en naslag informatie over de eigenschappen van een bericht toepassing. U kunt het beste unieke namen gebruiken in tags en eigenschappen, aangezien de query niet hoofdletter gevoelig is. U kunt ook `twin`, `$twin`, `body`of `$body`gebruiken als eigenschaps namen. Zo zijn de volgende geldige query-expressies: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

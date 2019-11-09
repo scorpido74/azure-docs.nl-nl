@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7be5e814d8092b523fa69fdd84f0e1476736fda2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259162"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887719"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Problemen met desired state Configuration (DSC) oplossen
 
@@ -24,7 +24,7 @@ In dit artikel vindt u informatie over het oplossen van problemen met desired st
 
 Wanneer er fouten zijn opgetreden bij het compileren of implementeren van configuraties in de Azure-status configuratie, zijn hier enkele stappen beschikbaar om u te helpen bij het vaststellen van het probleem.
 
-1. **Zorg ervoor dat uw configuratie compileert op uw lokale computer:**  De Azure-status configuratie is gebaseerd op Power shell DSC. U kunt de documentatie voor de DSC-taal en syntaxis vinden in de [Power shell DSC-documenten](https://docs.microsoft.com/en-us/powershell/scripting/overview).
+1. **Zorg ervoor dat uw configuratie compileert op uw lokale computer:**  De Azure-status configuratie is gebaseerd op Power shell DSC. U kunt de documentatie voor de DSC-taal en syntaxis vinden in de [Power shell DSC-documenten](https://docs.microsoft.com/powershell/scripting/overview).
 
    Door de DSC-configuratie op de lokale computer te compileren, kunt u veelvoorkomende fouten detecteren en oplossen, zoals:
 
@@ -45,7 +45,7 @@ Wanneer er fouten zijn opgetreden bij het compileren of implementeren van config
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Veelvoorkomende fouten bij het werken met de desired state Configuration (DSC)
 
-### <a name="unsupported-characters"></a>Omstandigheden Een configuratie met speciale tekens kan niet worden verwijderd uit de portal
+### <a name="unsupported-characters"></a>Scenario: een configuratie met speciale tekens kan niet worden verwijderd uit de portal
 
 #### <a name="issue"></a>Probleem
 
@@ -59,17 +59,17 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 Deze fout is een tijdelijk probleem dat is gepland om te worden opgelost.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 * Gebruik de AZ-cmdlet Remove-AzAutomationDscConfiguration om de configuratie te verwijderen.
 * De documentatie voor deze cmdlet is nog niet bijgewerkt.  Tot slot raadpleegt u de documentatie voor de module AzureRM.
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
 
-### <a name="failed-to-register-agent"></a>Omstandigheden Kan de DSC-agent niet registreren
+### <a name="failed-to-register-agent"></a>Scenario: de DSC-agent kan niet worden geregistreerd
 
 #### <a name="issue"></a>Probleem
 
-Wanneer u probeert een `Set-DscLocalConfigurationManager` of andere DSC-cmdlet uit te voeren, wordt de volgende fout weer gegeven:
+Wanneer u probeert `Set-DscLocalConfigurationManager` of een andere DSC-cmdlet uit te voeren, wordt de volgende fout weer gegeven:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -86,11 +86,11 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 Deze fout wordt meestal veroorzaakt door een firewall, de computer zich achter een proxy server bevindt of andere netwerk fouten.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Controleer of de computer toegang heeft tot de juiste eind punten voor Azure Automation DSC en probeer het opnieuw. Zie [netwerk planning](../automation-dsc-overview.md#network-planning) voor een lijst met poorten en adressen.
 
-### <a name="failed-not-found"></a>Omstandigheden Het knoop punt heeft de status mislukt met de fout ' niet gevonden '
+### <a name="failed-not-found"></a>Scenario: het knoop punt heeft de status mislukt met de fout ' niet gevonden '
 
 #### <a name="issue"></a>Probleem
 
@@ -104,7 +104,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 Deze fout treedt doorgaans op wanneer het knoop punt is toegewezen aan een configuratie naam (bijvoorbeeld ABC) in plaats van een knooppunt configuratie naam (bijvoorbeeld ABC. Webserver).
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 * Zorg ervoor dat u het knoop punt met de naam ' knooppunt configuratie ' en niet de ' configuratie naam ' toewijst.
 * U kunt een knooppunt configuratie toewijzen aan een knoop punt met behulp van Azure Portal of met een Power shell-cmdlet.
@@ -112,7 +112,7 @@ Deze fout treedt doorgaans op wanneer het knoop punt is toegewezen aan een confi
   * Als u een knooppunt configuratie wilt toewijzen aan een knoop punt met behulp van Azure Portal, opent u de pagina **DSC-knoop punten** , selecteert u een knoop punt en klikt u op de knop **knooppunt configuratie toewijzen** .
   * Met de cmdlet **set-AzureRmAutomationDscNode** kunt u een knooppunt configuratie toewijzen aan een knoop punt met behulp van de Power shell-cmdlet.
 
-### <a name="no-mof-files"></a>Omstandigheden Er zijn geen knooppunt configuraties (MOF-bestanden) geproduceerd tijdens het compileren van een configuratie
+### <a name="no-mof-files"></a>Scenario: er zijn geen knooppunt configuraties (MOF-bestanden) geproduceerd bij het compileren van een configuratie
 
 #### <a name="issue"></a>Probleem
 
@@ -124,16 +124,16 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 #### <a name="cause"></a>Oorzaak
 
-Wanneer de expressie die volgt op `$null`het sleutel woord van het **knoop punt** in de DSC-configuratie, wordt geëvalueerd in, worden er geen knooppunt configuraties geproduceerd.
+Wanneer de expressie die volgt op het sleutel woord van het **knoop punt** in de DSC-configuratie, wordt geëvalueerd als `$null`, worden er geen knooppunt configuraties geproduceerd.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Het probleem wordt opgelost met een van de volgende oplossingen:
 
 * Zorg ervoor dat de expressie naast het sleutel woord van het **knoop punt** in de configuratie definitie niet evalueert naar $null.
 * Als u ConfigurationData door geven tijdens het compileren van de configuratie, moet u ervoor zorgen dat u de verwachte waarden doorgeeft die de configuratie vereist van [ConfigurationData](../automation-dsc-compile.md).
 
-### <a name="dsc-in-progress"></a>Omstandigheden De status van het DSC-knoop punt wordt vastgelopen
+### <a name="dsc-in-progress"></a>Scenario: het DSC-knooppunt rapport wordt vastlopen de status wordt uitgevoerd
 
 #### <a name="issue"></a>Probleem
 
@@ -147,11 +147,11 @@ No instance found with given property values
 
 U hebt uw WMF-versie bijgewerkt en hebt WMI beschadigd.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Volg de instructies in het artikel [bekende problemen en beperkingen van DSC](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) om het probleem op te lossen.
 
-### <a name="issue-using-credential"></a>Omstandigheden Kan geen referentie gebruiken in een DSC-configuratie
+### <a name="issue-using-credential"></a>Scenario: een referentie kan niet worden gebruikt in een DSC-configuratie
 
 #### <a name="issue"></a>Probleem
 
@@ -165,11 +165,11 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 U hebt een referentie in een configuratie gebruikt, maar u hebt niet de juiste **ConfigurationData** om **PSDscAllowPlainTextPassword** in te stellen op True voor elke knooppunt configuratie.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 * Zorg ervoor dat u de juiste **ConfigurationData** geeft om **PSDscAllowPlainTextPassword** in te stellen op True voor elke knooppunt configuratie die wordt vermeld in de configuratie. Zie [assets in azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation)voor meer informatie.
 
-### <a name="failure-processing-extension"></a>Omstandigheden Onboarding van de DSC-extensie, fout verwerkings uitbreiding
+### <a name="failure-processing-extension"></a>Scenario: onboarding van de DSC-uitbrei ding ' fout bij het verwerken van de uitbrei ding '
 
 #### <a name="issue"></a>Probleem
 
@@ -183,12 +183,12 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 Deze fout treedt doorgaans op wanneer aan het knoop punt een knooppunt configuratie naam wordt toegewezen die niet voor komt in de service.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 * Zorg ervoor dat u het knoop punt toewijst met een knooppunt configuratie naam die exact overeenkomt met de naam in de service.
 * U kunt ervoor kiezen om de naam van de configuratie van het knoop punt niet op te stellen, wat resulteert in het voorbereiden van het knoop punt, maar geen knooppunt configuratie toewijzen
 
-### <a name="failure-linux-temp-noexec"></a>Omstandigheden Het Toep assen van een configuratie in Linux, treedt er een fout op met een algemene fout
+### <a name="failure-linux-temp-noexec"></a>Scenario: een configuratie Toep assen in Linux, treedt er een fout op met een algemene fout
 
 #### <a name="issue"></a>Probleem
 
@@ -202,11 +202,11 @@ This event indicates that failure happens when LCM is processing the configurati
 
 Klanten hebben vastgesteld dat als de `/tmp` locatie is ingesteld op `noexec`, de huidige versie van DSC geen configuraties kan Toep assen.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
-* Verwijder de `noexec` optie uit de `/tmp` locatie.
+* Verwijder de optie `noexec` van de locatie van `/tmp`.
 
-### <a name="compilation-node-name-overlap"></a>Omstandigheden Knooppunt configuratie namen die elkaar overlappen kunnen leiden tot een slechte release
+### <a name="compilation-node-name-overlap"></a>Scenario: namen van knooppunt configuraties die elkaar overlappen kunnen resulteren in slechte release
 
 #### <a name="issue"></a>Probleem
 
@@ -218,7 +218,7 @@ Als er bijvoorbeeld één configuratie script wordt gebruikt om configuraties te
 
 Bekend probleem met de compilatie service.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 De beste oplossing is om lokaal of in een CI/CD-pijp lijn te compileren en de MOF-bestanden rechtstreeks te uploaden naar de service.  Als de compilatie in de service een vereiste is, is de volgende beste tijdelijke oplossing om de compilatie taken te splitsen, zodat er geen overlap is in namen.
 

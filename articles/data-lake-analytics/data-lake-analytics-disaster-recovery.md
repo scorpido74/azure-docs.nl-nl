@@ -1,6 +1,6 @@
 ---
-title: Richtlijnen voor herstel na noodgevallen voor Azure Data Lake Analytics
-description: Informatie over het plannen van herstel na noodgevallen voor uw Azure Data Lake Analytics-accounts.
+title: Richt lijnen voor herstel na nood gevallen voor Azure Data Lake Analytics
+description: Meer informatie over het plannen van herstel na nood gevallen voor uw Azure Data Lake Analytics-accounts.
 services: data-lake-analytics
 author: MikeRys
 ms.author: mrys
@@ -8,41 +8,41 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ea1d4020aa9be23b4839690ae0b386d35bce8a23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9b22e6b806f76189134ec63c83d48f48bf95587
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66498887"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889763"
 ---
-# <a name="disaster-recovery-guidance-for-azure-data-lake-analytics"></a>Richtlijnen voor herstel na noodgevallen voor Azure Data Lake Analytics
+# <a name="disaster-recovery-guidance-for-azure-data-lake-analytics"></a>Richt lijnen voor herstel na nood gevallen voor Azure Data Lake Analytics
 
-Azure Data Lake Analytics is een service op aanvraag voor het uitvoeren van analysetaken, om de analyse van big data te vereenvoudigen. U hoeft geen hardware te implementeren, configureren en optimaliseren, maar kunt query's schrijven om uw data te transformeren en waardevolle inzichten te verkrijgen. De analyseservice kan taken van elke schaal onmiddellijk verwerken, door de hoeveelheid rekenkracht die u nodig hebt aan te passen. U betaalt alleen voor de tijd die nodig is voor het uitvoeren van uw taak, wat het gebruik van deze service zeer rendabel maakt. In dit artikel bevat richtlijnen voor het beveiligen van uw taken tegen zeldzame regiobrede storingen of onbedoelde verwijderingen.
+Azure Data Lake Analytics is een service op aanvraag voor het uitvoeren van analysetaken, om de analyse van big data te vereenvoudigen. U hoeft geen hardware te implementeren, configureren en optimaliseren, maar kunt query's schrijven om uw data te transformeren en waardevolle inzichten te verkrijgen. De analyseservice kan taken van elke schaal onmiddellijk verwerken, door de hoeveelheid rekenkracht die u nodig hebt aan te passen. U betaalt alleen voor de tijd die nodig is voor het uitvoeren van uw taak, wat het gebruik van deze service zeer rendabel maakt. Dit artikel bevat richt lijnen voor het beveiligen van uw taken tegen zeldzame regionale onderbrekingen of onbedoelde verwijderingen.
 
 ## <a name="disaster-recovery-guidance"></a>Richtlijnen voor herstel na noodgevallen
 
-Wanneer u Azure Data Lake Analytics, is het van cruciaal belang voor u het voorbereiden van uw eigen noodherstelplan. In dit artikel begeleidt u voor het bouwen van een herstelplan na noodgevallen. Er zijn aanvullende bronnen waarmee u uw eigen plan maken:
+Wanneer u Azure Data Lake Analytics gebruikt, is het essentieel om uw eigen plan voor herstel na nood gevallen voor te bereiden. Dit artikel helpt u bij het maken van een plan voor herstel na nood gevallen. Er zijn aanvullende bronnen die u kunnen helpen bij het maken van uw eigen plan:
 - [Herstel na fouten en noodgevallen voor Azure-toepassingen](/azure/architecture/reliability/disaster-recovery)
-- [Technische richtlijnen voor flexibiliteit van Azure](/azure/architecture/reliability)
+- [Technische richtlijnen voor flexibiliteit van Azure](/azure/architecture/checklist/resiliency-per-service)
 
-## <a name="best-practices-and-scenario-guidance"></a>Aanbevolen procedures en richtlijnen voor scenario
+## <a name="best-practices-and-scenario-guidance"></a>Aanbevolen procedures en scenario richtlijnen
 
-U kunt een terugkerende U-SQL-taak uitvoeren in een ADLA-account in een regio die leest en schrijft U-SQL-tabellen, evenals de niet-gestructureerde gegevens.  Na een noodgeval voorbereiden door deze stappen:
+U kunt een terugkerende U-SQL-taak uitvoeren in een ADLA-account in een regio die U-SQL-tabellen leest en schrijft, evenals ongestructureerde gegevens.  Bereid u voor op een nood geval door de volgende stappen uit te voeren:
 
-1. ADLA en ADLS-accounts maken in de secundaire regio die wordt gebruikt tijdens een storing.
-
-   > [!NOTE]
-   > Sinds de accountnamen wereldwijd uniek zijn, gebruikt u een consistente schematische naam die aangeeft welk account secundaire.
-
-2. Voor niet-gestructureerde gegevens door te verwijzen naar [richtlijnen voor herstel na noodgevallen voor gegevens in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
-
-3. Voor gestructureerde gegevens die zijn opgeslagen in ADLA-tabellen en -databases, kopieën van de van metagegevensartefacten, zoals databases, tabellen, tabelfuncties en assembly's te maken. U moet deze artefacten periodiek opnieuw te synchroniseren wanneer er wijzigingen optreden in de productieomgeving. Nieuw geplaatste gegevens heeft bijvoorbeeld naar de secundaire regio worden gerepliceerd door de gegevens kopiëren en in de tweede tabel invoegen.
+1. Maak ADLA-en ADLS-accounts in de secundaire regio die wordt gebruikt tijdens een storing.
 
    > [!NOTE]
-   > De namen van deze objecten zijn gericht op de secundaire-account en zijn niet globaal uniek zijn, zodat ze kunnen dezelfde namen als in de primaire productie-account hebben.
+   > Omdat account namen wereld wijd uniek zijn, gebruikt u een consistent naam schema dat aangeeft welk account secundair is.
 
-Tijdens een storing moet u uw scripts bijwerken zodat de invoerpaden naar het secundaire eindpunt verwijst. Vervolgens de gebruikers hun taken indienen bij de ADLA account in de secundaire regio. De uitvoer van de taak wordt vervolgens naar de ADLA en ADLS-account in de secundaire regio worden geschreven.
+2. Raadpleeg de [richt lijnen voor herstel na nood gevallen voor gegevens in azure data Lake Storage gen1](../data-lake-store/data-lake-store-disaster-recovery-guidance.md) voor ongestructureerde gegevens
+
+3. Voor gestructureerde gegevens die zijn opgeslagen in ADLA-tabellen en-data bases, maakt u kopieën van de meta gegevensartefacten, zoals data bases, tabellen, functies voor tabel waarden en verzamelingen. U moet deze artefacten periodiek opnieuw synchroniseren wanneer er wijzigingen in de productie plaatsvinden. Zo moeten nieuw ingevoegde gegevens worden gerepliceerd naar de secundaire regio door de gegevens te kopiëren en in de secundaire tabel in te voegen.
+
+   > [!NOTE]
+   > Deze object namen vallen binnen het bereik van het secundaire account en zijn niet globaal uniek, zodat ze dezelfde namen kunnen hebben als in het primaire productie account.
+
+Tijdens een storing moet u uw scripts bijwerken zodat de invoer paden naar het secundaire eind punt verwijzen. Vervolgens verzenden de gebruikers hun taken naar het ADLA-account in de secundaire regio. De uitvoer van de taak wordt vervolgens geschreven naar het ADLA-en ADLS-account in de secundaire regio.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Richtlijnen voor herstel na noodgevallen voor gegevens in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
+[Richt lijnen voor herstel na nood gevallen voor gegevens in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)

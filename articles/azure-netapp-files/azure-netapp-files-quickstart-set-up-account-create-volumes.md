@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: 7ecc76a8b1f57d4e397746c28dc4cd56b90c3599
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 06ebe8ed22453289fa02c238d9b2e6ef13191f2a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834717"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888553"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Snelstartgids: Azure NetApp Files instellen en een NFS-volume maken 
 
@@ -110,7 +110,7 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
     ``` 
 
     > [!NOTE]
-    > Raadpleeg de [beschik bare producten per regio](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp&regions=all) voor een lijst met ondersteunde regio's.
+    > Raadpleeg de [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) voor een lijst met ondersteunde regio's.
     > Gebruik `Get-AzLocation | select Location` om de regio naam op te halen die wordt ondersteund door onze opdracht regel Programma's
     >
 
@@ -137,7 +137,7 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
     ``` 
 
     > [!NOTE]
-    > Raadpleeg de [beschik bare producten per regio](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp&regions=all) voor een lijst met ondersteunde regio's.
+    > Raadpleeg de [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) voor een lijst met ondersteunde regio's.
     > Gebruik `az account list-locations -query "[].{Region:name}" --out table` om de regio naam op te halen die wordt ondersteund door onze opdracht regel Programma's
     >
 

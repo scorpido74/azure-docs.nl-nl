@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: Documentatie over Azure IoT Central
+summary: Azure IoT Central is een volledig beheerde SaaS-oplossing (Software as a Service), waarmee u uw IoT-assets eenvoudig op schaal kunt verbinden, controleren en beheren. Azure IoT Central vereenvoudigt de eerste installatie van uw IoT-oplossing en vermindert de beheerlast, de operationele kosten en overheadkosten van een typisch IoT-project. Leer aan de hand van onze snelstarts en zelfstudies hoe u een Azure IoT Central-toepassing maakt, aanpast, beheert en gebruikt.
+metadata:
+  title: Documentatie over Azure IoT Central
+  description: Azure IoT Central is een volledig beheerde SaaS-oplossing (Software as a Service), waarmee u uw IoT-assets eenvoudig op schaal kunt verbinden, controleren en beheren. Azure IoT Central vereenvoudigt de eerste installatie van uw IoT-oplossing en vermindert de beheerlast, de operationele kosten en overheadkosten van een typisch IoT-project. Leer aan de hand van onze snelstarts en zelfstudies hoe u een Azure IoT Central-toepassing maakt, aanpast, beheert en gebruikt.
+  services: iot-central
+  ms.service: iot-central
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 10/25/2019
+  ms.openlocfilehash: d769b906324c1022baffff198fea6e4e44821757
+  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 11/09/2019
+  ms.locfileid: "73891802"
+landingContent:
+- title: Over Azure IoT Central
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure IoT Central?
+      url: overview-iot-central.md
+    - text: Opties voor IoT-oplossing
+      url: overview-iot-central-tour.md
+    - text: Rondleiding door de gebruikersinterface
+      url: overview-iot-central-tour.md
+  - linkListType: architecture
+    links:
+    - text: Azure IoT Central-architectuur
+      url: concepts-architecture.md
+  - linkListType: quickstart
+    links:
+    - text: Een nieuwe toepassing maken
+      url: quick-deploy-iot-central.md
+- title: Verbinding maken
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Een sjabloon van het apparaat instellen
+      url: howto-set-up-template.md
+    - text: Een IoT Plug en Play-apparaat verbinden
+      url: tutorial-connect-pnp-device.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een MX Chip IoT DevKit voorbereiden en aansluiten
+      url: howto-connect-devkit.md
+    - text: Verbinding maken met andere IoT-clouds
+      url: ../core/howto-build-iotc-device-bridge.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+- title: Blijf verbonden
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Apparaatgroepen gebruiken
+      url: tutorial-use-device-groups.md
+  - linkListType: how-to-guide
+    links:
+    - text: Uw apparaten beheren
+      url: howto-manage-devices.md
+    - text: Een taak uitvoeren
+      url: ../core/howto-run-a-job.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+    - text: Uw apparaatgegevens analyseren
+      url: howto-create-analytics.md
+- title: Transformeren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Een regel maken
+      url: quick-configure-rules.md
+    - text: Telemetrieregels maken
+      url: tutorial-create-telemetry-rules.md
+    - text: Exporteren naar Blob Storage
+      url: howto-export-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Aangepaste regels maken
+      url: howto-create-custom-rules.md
+    - text: Aangepaste analyses maken
+      url: howto-create-custom-analytics.md
+- title: Beheer
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Uw toepassing beheren
+      url: howto-administer.md
+    - text: Gebruikers en rollen beheren
+      url: howto-manage-users-roles.md
+    - text: Uw factuur weergeven
+      url: howto-view-bill.md
+    - text: De gebruikersinterface van de toepassing aanpassen
+      url: howto-customize-ui.md
+    - text: Persoonlijke dashboards configureren
+      url: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+    - text: Dashboardtegels gebruiken
+      url: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+    - text: Toepassingssjablonen gebruiken
+      url: howto-use-app-templates.md

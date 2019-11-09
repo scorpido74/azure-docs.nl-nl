@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4335b8251e31f151e3d965481bead01303ab7420
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 14565c7e499b04b9c41184111d6ddcc88fffac80
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562259"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73883012"
 ---
-# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Zelfstudie: Hybride Azure Active Directory-deelname configureren voor federatieve domeinen
+# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Zelfstudie: Hybride Azure Active Directory-koppeling configureren voor federatieve domeinen
 
 Net als bij een gebruiker in uw organisatie is een apparaat een kern identiteit die u wilt beveiligen. U kunt de identiteit van een apparaat gebruiken om uw resources te beschermen op elk gewenst moment en vanaf elke locatie. U kunt dit doel doen door de apparaat-id's te halen en te beheren in Azure Active Directory (Azure AD) met een van de volgende methoden:
 
@@ -32,7 +32,7 @@ Een gefedereerde omgeving moet een id-provider hebben die de volgende vereisten 
 
 - **WIAORMULTIAUTHN claim:** Deze claim is vereist voor het uitvoeren van hybride Azure AD-deelname voor Windows-apparaten op lagere niveaus.
 - **WS-Trust-Protocol:** Dit protocol is vereist voor de verificatie van Windows Current Hybrid Azure AD gekoppelde apparaten met Azure AD.
-  Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen:`/adfs/services/trust/2005/windowstransport`
+  Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen: `/adfs/services/trust/2005/windowstransport`
    `/adfs/services/trust/13/windowstransport`
    `/adfs/services/trust/2005/usernamemixed`
    `/adfs/services/trust/13/usernamemixed`
@@ -40,7 +40,7 @@ Een gefedereerde omgeving moet een id-provider hebben die de volgende vereisten 
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **ADFS/Services/Trust/2005/windowstransport** of **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. Onder **Service** > **Eindpunten** in de AD FS-beheerconsole kunt u zien welke eindpunten zijn ingeschakeld.
+> **ADFS/Services/Trust/2005/windowstransport** of **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. Onder **Service** > **Eindpunten** in de AD FS-beheerconsole kunt u zien welke eindpunten zijn ingeschakeld.
 
 In deze zelf studie leert u hoe u hybride Azure AD join kunt configureren voor Active Directory computers die lid zijn van een domein in een federatieve omgeving door gebruik te maken van AD FS.
 
@@ -79,9 +79,9 @@ Hybride Azure AD-deelname vereist dat apparaten toegang hebben tot de volgende m
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
 - De beveiligings token service (STS) van uw organisatie (voor federatieve domeinen)
-- `https://autologon.microsoftazuread-sso.com`(Als u naadloze SSO gebruikt of wilt gebruiken)
+- `https://autologon.microsoftazuread-sso.com` (als u naadloze SSO gebruikt of wilt gebruiken)
 
-Met ingang van Windows 10 1803, als de direct hybride Azure AD-deelname voor een gefedereerde omgeving door het gebruik van AD FS mislukt, vertrouwen we op Azure AD Connect om het computer object in azure AD te synchroniseren dat vervolgens wordt gebruikt om de apparaatregistratie voor hybride Azure te volt ooien AD-deelname. Controleer of Azure AD Connect de computer objecten hebt gesynchroniseerd van de apparaten met wie u een hybride Azure AD wilt maken en lid wilt worden van Azure AD. Als de computer objecten deel uitmaken van specifieke organisatie-eenheden (Ou's), moet u ook de Ou's configureren om te synchroniseren in Azure AD Connect. Zie voor meer informatie over het synchroniseren van computer objecten met behulp van Azure AD Connect [filters configureren](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)met behulp van Azure AD Connect.
+Met ingang van Windows 10 1803, als de direct hybride Azure AD-deelname voor een gefedereerde omgeving door het gebruik van AD FS mislukt, vertrouwen we op Azure AD Connect om het computer object in azure AD te synchroniseren dat vervolgens wordt gebruikt om de apparaatregistratie voor hybride Azure te volt ooien AD-deelname. Controleer of Azure AD Connect de computer objecten hebt gesynchroniseerd van de apparaten met wie u een hybride Azure AD wilt maken en lid wilt worden van Azure AD. Als de computer objecten deel uitmaken van specifieke organisatie-eenheden (Ou's), moet u ook de Ou's configureren om te synchroniseren in Azure AD Connect. Zie voor meer informatie over het synchroniseren van computer objecten met behulp van Azure AD Connect [filters configureren met behulp van Azure AD Connect](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering).
 
 Als uw organisatie toegang tot internet via een uitgaande proxy vereist, raadt micro soft aan om [Web Proxy Auto-Discovery (WPAD) te implementeren](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) om Windows 10-computers in te scha kelen voor apparaatregistratie met Azure AD. Als u problemen ondervindt met het configureren en beheren van WPAD, raadpleegt u [problemen met automatische detectie oplossen](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)). 
 
@@ -102,11 +102,11 @@ Als u een hybride Azure AD-deelname wilt configureren met behulp van Azure AD Co
 - De referenties van de ondernemings beheerder voor elk forest
 - De referenties van uw AD FS-beheerder
 
-**Een hybride Azure AD-deelname configureren**met behulp van Azure AD Connect:
+**Een hybride Azure AD-deelname configureren met behulp van Azure AD Connect**:
 
 1. Start Azure AD Connect en selecteer vervolgens **configureren**.
 
-   ![Bijwerken](./media/hybrid-azuread-join-federated-domains/11.png)
+   ![Welkom](./media/hybrid-azuread-join-federated-domains/11.png)
 
 1. Selecteer op de pagina **extra taken** de optie **Apparaatinstellingen configureren**en selecteer vervolgens **volgende**.
 
@@ -142,7 +142,7 @@ Als u een hybride Azure AD-deelname wilt configureren met behulp van Azure AD Co
 
 1. Selecteer **configureren**op de pagina **gereed voor configuratie** .
 
-   ![Gereed om te configureren](./media/hybrid-azuread-join-federated-domains/19.png)
+   ![Klaar om te configureren](./media/hybrid-azuread-join-federated-domains/19.png)
 
 1. Selecteer op de pagina **configuratie voltooid** de optie **Afsluiten**.
 
@@ -161,7 +161,7 @@ Als u de hybride Azure AD join van uw Windows down level-apparaten wilt volt ooi
 
 - `https://device.login.microsoftonline.com`
 - De STS van uw organisatie (voor federatieve domeinen)
-- `https://autologon.microsoftazuread-sso.com`(Voor naadloze SSO)
+- `https://autologon.microsoftazuread-sso.com` (voor naadloze SSO)
 
 U moet ook **toestaan dat updates voor de status balk via script worden** ingeschakeld in de lokale intranet zone van de gebruiker.
 
@@ -169,7 +169,7 @@ U moet ook **toestaan dat updates voor de status balk via script worden** ingesc
 
 Voor het registreren van Windows down level-apparaten moeten organisaties [micro soft Workplace join installeren voor niet-Windows 10-computers](https://www.microsoft.com/download/details.aspx?id=53554). Micro soft Workplace Join voor niet-Windows 10-computers is beschikbaar in het micro soft Download centrum.
 
-U kunt het pakket implementeren met behulp van een software distributiesysteem als [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager). Het pakket ondersteunt de standaard opties voor installatie op de `quiet` achtergrond met de para meter. De huidige vertakking van Configuration Manager biedt voor delen ten opzichte van eerdere versies, zoals de mogelijkheid om voltooide registraties bij te houden.
+U kunt het pakket implementeren met behulp van een software distributiesysteem als [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager). Het pakket ondersteunt de standaard opties voor installatie op de achtergrond met de para meter `quiet`. De huidige vertakking van Configuration Manager biedt voor delen ten opzichte van eerdere versies, zoals de mogelijkheid om voltooide registraties bij te houden.
 
 Het installatie programma maakt een geplande taak op het systeem dat wordt uitgevoerd in de gebruikers context. De taak wordt geactiveerd wanneer de gebruiker zich aanmeldt bij Windows. De taak wordt op de achtergrond met Azure AD toegevoegd aan het apparaat met behulp van de referenties van de gebruiker na verificatie met Azure AD.
 

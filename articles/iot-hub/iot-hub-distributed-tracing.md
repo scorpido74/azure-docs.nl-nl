@@ -1,6 +1,6 @@
 ---
 title: Correlatie-Id's toevoegen aan IoT-berichten met gedistribueerde tracering (preview-versie)
-description: ''
+description: Meer informatie over het gebruik van de functie voor gedistribueerde tracering om IoT-berichten te traceren in de Azure-Services die door uw oplossing worden gebruikt.
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: e4403c245a3cae671f83260ae313ed400b0f7721
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: a6e7d2dc9b6274c07fda011bff8ec9dc59f74f95
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259354"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889448"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-apparaat-naar-Cloud-berichten traceren met gedistribueerde tracering (voor beeld)
 
@@ -28,7 +28,7 @@ Door gedistribueerde tracering in te scha kelen voor IoT Hub hebt u de volgende 
 - Meet en begrijp de berichten stroom en latentie van apparaten tot IoT Hub en routerings eindpunten.
 - Ga eerst na hoe u gedistribueerde tracering wilt implementeren voor de niet-Azure-Services in uw IoT-oplossing.
 
-In dit artikel gebruikt u de [Azure IOT Device SDK voor C](./iot-hub-device-sdk-c-intro.md) met gedistribueerde tracering. Ondersteuning voor gedistribueerde tracering wordt nog steeds uitgevoerd voor de andere Sdk's.
+In dit artikel gebruikt u de [Azure IOT Device SDK voor C](iot-hub-device-sdk-c-intro.md) met gedistribueerde tracering. Ondersteuning voor gedistribueerde tracering wordt nog steeds uitgevoerd voor de andere Sdk's.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,7 +38,7 @@ In dit artikel gebruikt u de [Azure IOT Device SDK voor C](./iot-hub-device-sdk-
   - **Zuidoost-Azië**
   - **VS-West 2**
 
-- In dit artikel wordt ervan uitgegaan dat u bekend bent met het verzenden van telemetrie-berichten naar uw IoT-hub. Zorg ervoor dat u de Snelstartgids voor het [verzenden van telemetrie C](./quickstart-send-telemetry-c.md)hebt voltooid.
+- In dit artikel wordt ervan uitgegaan dat u bekend bent met het verzenden van telemetrie-berichten naar uw IoT-hub. Zorg ervoor dat u de Snelstartgids voor het [verzenden van telemetrie C](quickstart-send-telemetry-c.md)hebt voltooid.
 
 - Registreer een apparaat met uw IoT-hub (de stappen die beschikbaar zijn in elke Snelstartgids) en noteer de connection string.
 
@@ -58,8 +58,8 @@ In deze sectie configureert u een IoT Hub voor het registreren van gedistribueer
 
 1. Kies een of meer van de volgende opties om te bepalen waar de logboek registratie wordt verzonden:
 
-    - **Archiveren naar een opslag account**: Een opslag account configureren om de logboek gegevens te bevatten.
-    - **Streamen naar een event hub**: Configureer een Event Hub om de logboek gegevens te bevatten.
+    - **Archiveren naar een opslag account**: Configureer een opslag account om de logboek gegevens te bevatten.
+    - **Streamen naar een event hub**: configureer een event hub om de logboek gegevens te bevatten.
     - **Verzenden naar log Analytics**: Configureer een log Analytics-werk ruimte om de logboek gegevens te bevatten.
 
 1. Selecteer in de sectie **logboek** de bewerkingen waarvoor u logboek registratie gegevens wilt.
@@ -90,7 +90,7 @@ Deze instructies zijn voor het bouwen van het voor beeld in Windows. Zie voor an
 
 1. Installeer [' Desktop Development ' C++met ' workload '](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2017) voor Visual Studio 2015 of 2017.
 
-1. Installeer [cmake](https://cmake.org/). Zorg ervoor dat deze in uw `PATH` typt door `cmake -version` te typen vanaf een opdracht prompt.
+1. Installeer [cmake](https://cmake.org/). Zorg ervoor dat deze zich in uw `PATH` bevindt door `cmake -version` te typen vanaf een opdracht prompt.
 
 1. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdracht uit voor het klonen van de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-opslagplaats:
 
@@ -109,7 +109,7 @@ Deze instructies zijn voor het bouwen van het voor beeld in Windows. Zie voor an
     cmake ..
     ```
 
-    Als `cmake` u uw C++ compiler niet kunt vinden, kunt u tijdens het uitvoeren van de bovenstaande opdracht build-fouten krijgen. Als dit gebeurt, voert u deze opdracht uit bij de [Visual Studio-opdrachtprompt](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Als `cmake` uw C++ Compileer programma niet kunt vinden, kunt u tijdens het uitvoeren van de bovenstaande opdracht build-fouten krijgen. Als dit gebeurt, voert u deze opdracht uit bij de [Visual Studio-opdrachtprompt](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     Zodra het bouwen is voltooid, zijn de laatste paar uitvoerregels vergelijkbaar met de volgende uitvoer:
 
@@ -135,17 +135,17 @@ Deze instructies zijn voor het bouwen van het voor beeld in Windows. Zie voor an
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=2)]
 
-    Vervang de waarde van de `connectionString` constante door het apparaat Connection String u een notitie hebt gemaakt in de sectie [een apparaat registreren](./quickstart-send-telemetry-c.md#register-a-device) van de [Snelstartgids voor het verzenden van telemetrie C](./quickstart-send-telemetry-c.md).
+    Vervang de waarde van de `connectionString` constante door het apparaat connection string u een notitie hebt gemaakt in de sectie [een apparaat registreren](./quickstart-send-telemetry-c.md#register-a-device) van de [Snelstartgids voor het verzenden van telemetrie C](./quickstart-send-telemetry-c.md).
 
-1. Wijzig de `MESSAGE_COUNT` definitie in `5000`:
+1. Wijzig de `MESSAGE_COUNT` definiëren in `5000`:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=3)]
 
-1. Zoek de regel met code die aanroept `IoTHubDeviceClient_LL_SetConnectionStatusCallback` voor het registreren van een call back functie van een verbindings status vóór de lus bericht verzenden. Voeg code toe onder die regel zoals hieronder wordt weer `IoTHubDeviceClient_LL_EnablePolicyConfiguration` gegeven om het inschakelen van gedistribueerde tracering voor het apparaat aan te roepen:
+1. Zoek de regel code die `IoTHubDeviceClient_LL_SetConnectionStatusCallback` aanroept voor het registreren van een call back functie van de verbindings status voor de lus Send Message. Voeg `IoTHubDeviceClient_LL_EnablePolicyConfiguration` op de volgende regel code toe, zoals hieronder wordt weer gegeven, om gedistribueerde tracering in te scha kelen voor het apparaat:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_tracing&highlight=5)]
 
-    De `IoTHubDeviceClient_LL_EnablePolicyConfiguration` functie maakt beleids regels mogelijk voor specifieke IoTHub-functies die zijn geconfigureerd via [apparaat apparaatdubbels](./iot-hub-devguide-device-twins.md). Eenmaal `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` ingeschakeld met de bovenstaande regel code wordt met het tracerings gedrag van het apparaat gedistribueerde tracerings wijzigingen weer gegeven die zijn aangebracht op het apparaat dubbele.
+    De functie `IoTHubDeviceClient_LL_EnablePolicyConfiguration` maakt beleids regels mogelijk voor specifieke IoTHub-functies die zijn geconfigureerd via [apparaatdubbels](./iot-hub-devguide-device-twins.md). Als `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` is ingeschakeld met de bovenstaande regel code, wordt in het tracerings gedrag van het apparaat gedistribueerde tracerings wijzigingen weer gegeven die zijn aangebracht op het apparaat dubbele.
 
 1. Als u de voor beeld-app wilt blijven uitvoeren zonder gebruik te maken van al uw quota, voegt u aan het einde van de lus Send Message een vertraging toe van een seconde:
 
@@ -153,7 +153,7 @@ Deze instructies zijn voor het bouwen van het voor beeld in Windows. Zie voor an
 
 ### <a name="compile-and-run"></a>Compileren en uitvoeren
 
-1. Ga naar de projectmap *iothub_ll_telemetry_sample* in de cmake-map (`azure-iot-sdk-c/cmake`) die u eerder hebt gemaakt en compileer het voor beeld:
+1. Ga naar de project directory van *iothub_ll_telemetry_sample* in de map CMake (`azure-iot-sdk-c/cmake`) die u eerder hebt gemaakt en compileer het voor beeld:
 
     ```cmd
     cd iothub_client/samples/iothub_ll_telemetry_sample
@@ -174,10 +174,10 @@ Deze instructies zijn voor het bouwen van het voor beeld in Windows. Zie voor an
 
 Het is **niet** eenvoudig om een voor beeld van de gedistribueerde tracerings functie te bekijken zonder de C SDK te gebruiken. Daarom wordt deze methode niet aanbevolen.
 
-Eerst moet u alle IoT Hub protocol primitieven in uw berichten implementeren door de ontwikkelaars gids te volgen om [IOT hub berichten te maken en te lezen](iot-hub-devguide-messages-construct.md). Bewerk vervolgens de protocol eigenschappen in de MQTT/AMQP-berichten om toe `tracestate` te voegen als **systeem eigenschap**. Met name:
+Eerst moet u alle IoT Hub protocol primitieven in uw berichten implementeren door de ontwikkelaars gids te volgen om [IOT hub berichten te maken en te lezen](iot-hub-devguide-messages-construct.md). Bewerk vervolgens de protocol eigenschappen in de MQTT/AMQP-berichten om `tracestate` als **systeem eigenschap**toe te voegen. Met name:
 
-* Voor MQTT voegt `%24.tracestate=timestamp%3d1539243209` u toe aan het bericht onderwerp, `1539243209` waar moet worden vervangen door de aanmaak tijd van het bericht in de Unix-Time Stamp-indeling. Zie als voor beeld de implementatie [in de C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)
-* Voor AMQP, toevoegen `key("tracestate")` en `value("timestamp=1539243209")` als aantekening van een bericht. Zie [hier](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)voor een referentie-implementatie.
+* Voor MQTT voegt u `%24.tracestate=timestamp%3d1539243209` toe aan het onderwerp van het bericht, waarbij `1539243209` moet worden vervangen door de aanmaak tijd van het bericht in de Unix-Time Stamp-indeling. Zie als voor beeld de implementatie [in de C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)
+* Voor AMQP voegt u `key("tracestate")` en `value("timestamp=1539243209")` toe als aantekening van een bericht. Zie [hier](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)voor een referentie-implementatie.
 
 Voor het beheren van het percentage berichten dat deze eigenschap bevat, implementeert u logica om te Luis teren naar gebeurtenissen die in de cloud worden gestart, zoals dubbele updates.
 
@@ -201,11 +201,11 @@ Als u het percentage berichten wilt wijzigen dat moet worden getraceerd vanuit d
 
 1. Wacht een paar seconden en klik op **vernieuwen**. Als u het apparaat hebt bevestigd, wordt het pictogram synchroniseren weer gegeven.
 
-1. Ga terug naar het console venster voor de app voor telemetrie-berichten. Berichten die worden verzonden met `tracestate` in de toepassings eigenschappen worden weer gegeven.
+1. Ga terug naar het console venster voor de app voor telemetrie-berichten. U ziet dat berichten met `tracestate` worden verzonden in de eigenschappen van de toepassing.
 
     ![Traceer status](./media/iot-hub-distributed-tracing/MicrosoftTeams-image.png)
 
-1. Beschrijving Wijzig de sampling frequentie in een andere waarde en Bekijk de wijziging in de frequentie die berichten bevatten `tracestate` in de eigenschappen van de toepassing.
+1. Beschrijving Wijzig de sampling frequentie in een andere waarde en Bekijk de wijziging in de frequentie waarmee berichten `tracestate` in de toepassings eigenschappen bevatten.
 
 ### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>Bijwerken met behulp van Azure IoT Hub Toolkit voor VS code
 
@@ -240,10 +240,10 @@ Voor het bijwerken van de configuratie van de gedistribueerde tracerings samplin
 }
 ```
 
-| De naam van element | Vereist | Type | Description |
+| Elementnaam | Vereist | Type | Beschrijving |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Ja | Integer | Op dit moment worden twee modus waarden ondersteund om steek proeven in en uit te scha kelen. `1`is ingeschakeld en `2` is uit. |
-| `sampling_rate` | Ja | Integer | Deze waarde is een percentage. Alleen waarden van `0` tot `100` (inclusief) zijn toegestaan.  |
+| `sampling_mode` | Ja | Geheel getal | Op dit moment worden twee modus waarden ondersteund om steek proeven in en uit te scha kelen. `1` is ingeschakeld en `2` is uitgeschakeld. |
+| `sampling_rate` | Ja | Geheel getal | Deze waarde is een percentage. Alleen waarden van `0` naar `100` (inclusief) zijn toegestaan.  |
 
 ## <a name="query-and-visualize"></a>Query's uitvoeren en visualiseren
 
@@ -263,10 +263,10 @@ AzureDiagnostics
 
 Voorbeeld logboeken, zoals weer gegeven door Log Analytics:
 
-| TimeGenerated | OperationName | Category | Niveau | CorrelationId | DurationMs | properties |
+| TimeGenerated | OperationName | Category | Niveau | CorrelationId | DurationMs | Eigenschappen |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
-| 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
+| 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "parentSpanId": "0144d2590aacd909"} |
 | 2018-02-22T03:28:48.633 Z | DiagnosticIoTHubEgress | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType": "EventHub", "eind punt": "myEventHub", "parentSpanId": "0144d2590aacd909"} |
 
 Zie [Azure IOT hub Diagnostische logboeken](iot-hub-monitor-resource-health.md#distributed-tracing-preview)voor meer informatie over de verschillende soorten logboeken.
@@ -303,10 +303,10 @@ Als de functie voor gedistribueerde tracering voor IoT Hub is ingeschakeld, volg
 1. De SDK voegt een `tracestate` toe aan de eigenschap van de bericht toepassing die de tijds tempel voor het maken van het bericht bevat.
 1. Het IoT-apparaat verzendt het bericht naar IoT Hub.
 1. Het bericht arriveert bij de IoT hub-gateway.
-1. IOT hub zoekt naar de `tracestate` in de eigenschappen van de Message-toepassing en controleert of het de juiste indeling heeft.
-1. Als dit het geval is, genereert IOT hub `trace-id` de `span-id` en registreert deze en worden de `DiagnosticIoTHubD2C`Diagnostische logboeken in de categorie Azure monitor.
-1. Zodra de bericht verwerking is voltooid, wordt er door `span-id` IOT hub een andere gegenereerd en wordt deze `trace-id` samen met de `DiagnosticIoTHubIngress`bestaande onder de categorie geregistreerd.
-1. Als route ring is ingeschakeld voor het bericht, wordt het door IOT hub naar het aangepaste eind punt geschreven `span-id` en wordt er `trace-id` een andere logboek `DiagnosticIoTHubEgress`registratie met dezelfde categorie.
+1. IoT Hub zoekt naar de `tracestate` in de eigenschappen van de bericht toepassing en controleert of het de juiste indeling heeft.
+1. Als dit het geval is, IoT Hub genereert en registreert de `trace-id` en `span-id` om Diagnostische logboeken te Azure Monitor in de categorie `DiagnosticIoTHubD2C`.
+1. Zodra de verwerking van het bericht is voltooid, wordt door IoT Hub een nieuwe `span-id` gegenereerd en wordt dit samen met de bestaande `trace-id` onder de categorie `DiagnosticIoTHubIngress`.
+1. Als route ring is ingeschakeld voor het bericht, wordt het door IoT Hub naar het aangepaste eind punt geschreven en wordt een andere `span-id` met dezelfde `trace-id` in de categorie `DiagnosticIoTHubEgress`geregistreerd.
 1. De bovenstaande stappen worden herhaald voor elk gegenereerd bericht.
 
 ## <a name="public-preview-limits-and-considerations"></a>Limieten en overwegingen voor de open bare preview

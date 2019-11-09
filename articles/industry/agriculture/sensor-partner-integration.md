@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 7a85ed93d9ee01255d809cce84ebe24e6c3f71d1
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: e90284ce2f8ea37eb9249822e38cef04e1356f59
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847401"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889584"
 ---
 # <a name="sensor-partner-integration"></a>Integratie van de sensor partner
 
@@ -66,7 +66,7 @@ De telemetriegegevens worden toegewezen aan een canonieke bericht dat is gepubli
 
 De Api's bevatten technische documentatie voor Swagger. Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger) voor meer informatie over de api's en de bijbehorende aanvragen/antwoorden.
 
-**Authenticatie**
+**Verificatie**
 
 FarmBeats maakt gebruik van de Active Directory-verificatie van Microsoft Azure. Azure App Service biedt ingebouwde ondersteuning voor verificatie en autorisatie.
 
@@ -79,7 +79,7 @@ De FarmBeats data hub maakt gebruik van Bearer-verificatie, die de volgende refe
 
 Met behulp van de bovenstaande referenties kan de aanroeper een toegangs token aanvragen, dat in de volgende API-aanvragen in de koptekst sectie als volgt moet worden verzonden:
 
-```
+```json
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
@@ -124,14 +124,14 @@ U kunt desgewenst query parameters toevoegen aan GET-aanroepen om te filteren, d
 
 De onderstaande voorbeeld aanvraag is om de lijst met apparaten op te halen:
 
-```
+```azurepowershell-interactive
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 Voor de meeste GET-, POST-en PUT-aanroepen is een JSON-aanvraag tekst vereist.
 
 De onderstaande voorbeeld aanvraag is het maken van een apparaat (dit voor beeld heeft een invoer-JSON met de hoofd tekst van de aanvraag).
 
-```
+```azurepowershell-interactive
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -241,7 +241,7 @@ write_client.stop()
 
 De canonieke bericht indeling is als volgt:
 
-```
+```json
 {
 “deviceid”: “<id of the Device created>”,
  "timestamp": "<timestamp in ISO 8601 format>",
@@ -269,7 +269,7 @@ Alle sleutel namen in de telemetrie-JSON moeten een kleine letter zijn, bijvoorb
 Bijvoorbeeld telemetrie-bericht:
 
 
-```
+```json
 {
   "deviceid": "7f9b4b92-ba45-4a1d-a6ae-c6eda3a5bd12",
   "timestamp": "2019-06-22T06:55:02.7279559Z",

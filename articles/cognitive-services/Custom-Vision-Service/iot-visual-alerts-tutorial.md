@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: pafarley
-ms.openlocfilehash: b19f5a4f4f61285bc7b1a30073ea7d33d95420e0
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d146c264ebc2d36f0842f464f4547520546fd363
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "73519447"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888278"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Zelf studie: Custom Vision gebruiken met een IoT-apparaat om de visuele statussen te melden
 
@@ -56,7 +56,7 @@ De app IoT Visual Alerts wordt uitgevoerd in een doorlopende lus en zo nodig ove
 
 De volgende bestanden verwerken de belangrijkste functionaliteit van de app.
 
-| File | Beschrijving |
+| Bestand | Beschrijving |
 |-------------|-------------|
 | [MainPage. xaml](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml) | Dit bestand definieert de XAML-gebruikers interface. Het hosten het besturings element webcamera en bevat de labels die worden gebruikt voor status updates.|
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Deze code bepaalt het gedrag van de XAML-gebruikers interface. Het bevat de verwerkings code van de status machine.|

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: gwallace
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc9ca5f5a638f0b36a28d58172fe8052b3d1522f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b59343fca5e14d211864a1354001819c918bd1ca
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875438"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891521"
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Wat u moet doen in het geval dat een Azure-service een onderbreking heeft op virtuele machines van Azure
 Bij micro soft werken we hard om ervoor te zorgen dat onze services altijd beschikbaar zijn wanneer u ze nodig hebt. Forceren meer dan ons besturings element is soms van invloed op de manier waarop ongeplande service onderbrekingen ontstaan.
@@ -33,11 +33,11 @@ In dit artikel wordt een scenario voor herstel na nood gevallen beschreven, wann
 
 Om u te helpen deze zeldzame gevallen te verwerken, bieden we de volgende richt lijnen voor virtuele Azure-machines in het geval van een service onderbreking van de hele regio waar uw Azure virtual machine-toepassing wordt geïmplementeerd.
 
-## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Optie 1: Een failover initiëren met behulp van Azure Site Recovery
-U kunt Azure Site Recovery voor uw virtuele machines configureren, zodat u uw toepassing met één klik in een paar minuten kunt herstellen. U kunt repliceren naar de Azure-regio van uw keuze en niet beperkt tot gekoppelde regio's. U kunt aan de slag door [uw virtuele machines te repliceren](https://aka.ms/a2a-getting-started). U kunt [een herstel plan maken](../site-recovery/site-recovery-create-recovery-plans.md) zodat u het hele failoverproces voor uw toepassing kunt automatiseren. U kunt [de failovers](../site-recovery/site-recovery-test-failover-to-azure.md) van tevoren testen zonder dat dit van invloed is op de productie toepassing of de continue replicatie. In het geval van een onderbreking van de primaire regio initieert u zojuist [een failover](../site-recovery/site-recovery-failover.md) en brengt u uw toepassing in de doel regio.
+## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Optie 1: een failover initiëren met behulp van Azure Site Recovery
+U kunt Azure Site Recovery voor uw virtuele machines configureren, zodat u uw toepassing met één klik in een paar minuten kunt herstellen. U kunt repliceren naar de Azure-regio van uw keuze en niet beperkt tot gekoppelde regio's. U kunt aan de slag door [uw virtuele machines te repliceren](https://aka.ms/a2a-getting-started). U kunt [een herstel plan maken](../site-recovery/site-recovery-create-recovery-plans.md) zodat u het hele failoverproces voor uw toepassing kunt automatiseren. U kunt [de failovers](../site-recovery/site-recovery-test-failover-to-azure.md) van tevoren testen zonder dat dit van invloed is op de productie toepassing of de continue replicatie. In het geval van een onderbreking van de primaire regio [initieert u zojuist een failover](../site-recovery/site-recovery-failover.md) en brengt u uw toepassing in de doel regio.
 
 
-## <a name="option-2-wait-for-recovery"></a>Optie 2: Wachten op herstel
+## <a name="option-2-wait-for-recovery"></a>Optie 2: wachten op herstel
 In dit geval is er geen actie voor uw onderdeel vereist. U weet dat we hard werken om de beschik baarheid van de service te herstellen. U kunt de huidige status van de service zien op het [Azure service Health-dash board](https://azure.microsoft.com/status/).
 
 Dit is de beste optie als u geen Azure Site Recovery, geografisch redundante opslag met lees toegang of geografisch redundante opslag hebt ingesteld voorafgaand aan de onderbreking. Als u geografisch redundante opslag of geografisch redundante opslag met lees toegang hebt ingesteld voor het opslag account waarin de virtuele harde schijven van uw virtuele machines zijn opgeslagen, kunt u de VHD met basis installatie kopie herstellen en proberen een nieuwe VM in te richten. Dit is geen voorkeurs optie omdat er geen garanties zijn voor het synchroniseren van gegevens. Daarom is deze optie niet gegarandeerd werk.
@@ -54,7 +54,7 @@ Dit is de beste optie als u geen Azure Site Recovery, geografisch redundante ops
 
 - Zie [herstel na nood gevallen en hoge Beschik baarheid voor Azure-toepassingen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)voor meer informatie over het implementeren van een strategie voor herstel na nood gevallen en hoge Beschik baarheid.
 
-- Zie [technische richt lijnen voor Azure](../resiliency/resiliency-technical-guidance.md)voor meer informatie over het ontwikkelen van een gedetailleerd technisch inzicht in de mogelijkheden van een Cloud platform.
+- Zie [technische richt lijnen voor Azure](/azure/data-lake-store/data-lake-store-disaster-recovery-guidance)voor meer informatie over het ontwikkelen van een gedetailleerd technisch inzicht in de mogelijkheden van een Cloud platform.
 
 
 - Neem contact op met de [klant ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)als de instructies niet duidelijk zijn of als u wilt dat micro soft de bewerkingen namens u uitvoert.

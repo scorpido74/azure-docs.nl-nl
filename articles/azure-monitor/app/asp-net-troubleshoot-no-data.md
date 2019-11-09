@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: 0bb32486ea3fcfd37337b18b02f4f432effa8f75
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 857188ebb5ddc3c24f6a225819c47fc1643417e6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678329"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887518"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Problemen met ontbrekende gegevens oplossen - Application Insights voor .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Er ontbreekt een deel van de telemetrie
@@ -113,7 +113,7 @@ De instrumentatie sleutel in ApplicationInsights. config bepaalt waar de telemet
 
 Holpen
 
-* Klik in Solution Explorer met de rechter muisknop op het project en kies Application Insights, Application Insights configureren. In het dialoog venster kunt u ervoor kiezen om telemetrie te verzenden naar een bestaande resource of een nieuw item te maken. of
+* Klik in Solution Explorer met de rechter muisknop op het project en kies Application Insights, Application Insights configureren. In het dialoog venster kunt u ervoor kiezen om telemetrie te verzenden naar een bestaande resource of een nieuw item te maken. Of
 * Open de resource rechtstreeks. Meld u aan bij [de Azure Portal](https://portal.azure.com), klik op Application Insights in de linker navigatie balk en selecteer vervolgens uw app.
 
 ## <a name="where-do-i-find-my-telemetry"></a>Waar vind ik mijn telemetrie?
@@ -136,7 +136,7 @@ Holpen
   * Als u de overeenkomende sleutels niet kunt vinden, controleert u of u dezelfde aanmeldings referenties in Visual Studio gebruikt als in voor de portal.
 * Ga in het [Microsoft Azure start-dash board](https://portal.azure.com)naar de service Health kaart. Als er enkele waarschuwings vermeldingen zijn, wacht u totdat ze zijn teruggekeerd naar OK. Sluit vervolgens de Blade Application Insights toepassing en open deze opnieuw.
 * Controleer ook [onze status blog](https://blogs.msdn.microsoft.com/servicemap-status/).
-* Hebt u code geschreven voor de SDK aan de [server zijde](../../azure-monitor/app/api-custom-events-metrics.md) die de instrumentatie sleutel in `TelemetryClient` instanties of in `TelemetryContext` kan wijzigen? Of hebt u een [filter of sampling configuratie](../../azure-monitor/app/api-filtering-sampling.md) geschreven die te veel kan worden gefilterd?
+* Hebt u code geschreven voor de SDK aan de [server zijde](../../azure-monitor/app/api-custom-events-metrics.md) die de instrumentatie sleutel in `TelemetryClient` instanties of in `TelemetryContext`kan wijzigen? Of hebt u een [filter of sampling configuratie](../../azure-monitor/app/api-filtering-sampling.md) geschreven die te veel kan worden gefilterd?
 * Als u ApplicationInsights. config hebt bewerkt, controleert u de configuratie van [TelemetryInitializers en TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)zorgvuldig. Een type of para meter met een onjuiste naam kan ertoe leiden dat de SDK geen gegevens verzendt.
 
 ## <a name="q04"></a>Geen gegevens op pagina weergaven, browsers, gebruik
@@ -146,7 +146,7 @@ De gegevens zijn afkomstig van scripts in de webpagina's.
 
 * Als u Application Insights hebt toegevoegd aan een bestaand webproject, moet [u de scripts hand matig toevoegen](../../azure-monitor/app/javascript.md).
 * Zorg ervoor dat uw site niet wordt weer gegeven in de compatibiliteits modus van Internet Explorer.
-* Gebruik de functie fout opsporing van de browser (F12 op sommige browsers en kies vervolgens netwerk) om te controleren of de gegevens naar `dc.services.visualstudio.com` worden verzonden.
+* Gebruik de functie fout opsporing van de browser (F12 op sommige browsers en kies vervolgens netwerk) om te controleren of de gegevens naar `dc.services.visualstudio.com`worden verzonden.
 
 ## <a name="no-dependency-or-exception-data"></a>Geen gegevens over afhankelijkheid of uitzonde ring
 Zie [afhankelijkheids telemetrie](../../azure-monitor/app/asp-net-dependencies.md) en [uitzonde ring telemetrie](asp-net-exceptions.md).
@@ -174,7 +174,7 @@ U kunt deze uitschakelen, maar dit wordt niet aanbevolen. Steek proeven zijn zod
 Op 5 2018 februari hebben we gemeld dat de registratie van het client-IP-adres is verwijderd. Dit heeft geen invloed op de geografische locatie.
 
 > [!NOTE]
-> Als u de eerste 3 octetten van het IP-adres nodig hebt, kunt u een [initialisatie functie voor telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) gebruiken om een aangepast kenmerk toe te voegen.
+> Als u de eerste 3 octetten van het IP-adres nodig hebt, kunt u een [initialisatie functie voor telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer) gebruiken om een aangepast kenmerk toe te voegen.
 > Dit heeft geen invloed op gegevens die zijn verzameld vóór 5 februari 2018.
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Verkeerde geografische gegevens in de telemetrie van de gebruiker

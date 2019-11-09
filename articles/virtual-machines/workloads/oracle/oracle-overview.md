@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
-ms.openlocfilehash: d8fed68d9b830df359f8129d55f1b9911f69e8f1
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 71caa6730e3a00f3aa80329d6b87d2531fdd8049
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802255"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891464"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Overzicht van Oracle-toepassingen en-oplossingen op Azure
 
@@ -54,9 +54,9 @@ Voer bedrijfs toepassingen uit in azure op ondersteunde Oracle-besturings system
 
 ## <a name="backup-oracle-workloads"></a>Back-ups van Oracle-workloads
 
-* Maak een back-up van uw Oracle-Vm's met [Azure backup](https://docs.microsoft.com/en-us/azure/backup/backup-overview)
+* Maak een back-up van uw Oracle-Vm's met [Azure backup](https://docs.microsoft.com/azure/backup/backup-overview)
 
-* Maak een back-up van uw Oracle Database met behulp van Oracle RMAN en gebruik eventueel [Azure Blob-zekering](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-mount-container-linux) om een [zeer redudant Azure Blob Storage-account](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy) te koppelen en uw rman-back-ups ernaar te schrijven voor extra tolerantie.
+* Maak een back-up van uw Oracle Database met behulp van Oracle RMAN en gebruik eventueel [Azure Blob-zekering](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) om een [zeer redudant Azure Blob Storage-account](https://docs.microsoft.com/azure/storage/common/storage-redundancy) te koppelen en uw rman-back-ups ernaar te schrijven voor extra tolerantie.
 
 ## <a name="integration-of-azure-with-oci-preview"></a>Integratie van Azure met OCI (preview-versie)
 
@@ -71,7 +71,7 @@ Gebruik terraform-sjablonen om een Azure-infra structuur in te stellen en Oracle
 
 * E-Business Suite
 * JD Edwards EnterpriseOne
-* PeopleSoft
+* People
 * Retail toepassingen van Oracle
 * Financieel beheer van Oracle Hyperion
 
@@ -82,7 +82,7 @@ Implementeer ook aangepaste toepassingen in azure die verbinding maken met OCI e
 Gebruik Oracle Database Cloud Services (autonome data base, RAC, Exadata, DBaaS, één knoop punt) in combi natie met Oracle-toepassingen die worden uitgevoerd in Azure. Meer informatie over [Opties voor OCI-data base](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
-## <a name="licensing"></a>Licenties
+## <a name="licensing"></a>Licentieverlening
 
 De implementatie van Oracle-toepassingen in Azure is gebaseerd op een model voor het maken van een eigen licentie. Er wordt ervan uitgegaan dat u beschikt over een juiste licentie voor het gebruik van Oracle-software en dat er een actuele ondersteunings overeenkomst is met Oracle. Oracle heeft de mobiliteit van licenties van on-premises naar Azure gegarandeerd. Raadpleeg de [Veelgestelde vragen over](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)Oracle-Azure.
 

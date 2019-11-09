@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8b7e50fdc02ab47c50cecb95073f1b51393db898
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202975"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885631"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>Beveiligings beveiliging in hosts van virtuele AKS-machines 
 
@@ -30,7 +30,7 @@ Het doel van het besturings systeem voor de beveiliging van beveiligde hosts is 
 
 * AKS biedt standaard een geoptimaliseerd host-besturings systeem voor beveiliging. Er is geen huidige optie om een ander besturings systeem te selecteren. 
 
-* Azure past dagelijkse patches (inclusief beveiligings patches) toe aan AKS van virtuele machines. Voor sommige van deze patches moet de computer opnieuw worden opgestart, terwijl anderen dat niet doen. U bent zelf verantwoordelijk voor het plannen van het opnieuw opstarten van AKS VM-host. Zie [patching AKS nodes](https://docs.microsoft.com/en-us/azure/aks/node-updates-kured)(Engelstalig) voor meer informatie over het AUTOMATISEREN van AKS-patches.
+* Azure past dagelijkse patches (inclusief beveiligings patches) toe aan AKS van virtuele machines. Voor sommige van deze patches moet de computer opnieuw worden opgestart, terwijl anderen dat niet doen. U bent zelf verantwoordelijk voor het plannen van het opnieuw opstarten van AKS VM-host. Zie [patching AKS nodes](https://docs.microsoft.com/azure/aks/node-updates-kured)(Engelstalig) voor meer informatie over het AUTOMATISEREN van AKS-patches.
 
 Hieronder vindt u een samen vatting van het werk van afbeeldings beveiliging dat is geïmplementeerd in AKS-engine voor het maken van het door de hosten van beveiliging geoptimaliseerde besturings systeem. Het werk is geïmplementeerd [in dit github-project](https://github.com/Azure/aks-engine/projects/7).  
 
@@ -75,7 +75,7 @@ AKS: de engine kan op dit moment niet worden gestimuleerd of gerespecteerd aan e
 |5.4.1.1 |Controleren of het wacht woord verloopt 90 dagen of minder |
 |5.4.1.4 |Controleren of inactieve wachtwoord vergrendeling 30 dagen of minder is |
 |5.4.4 |Zorg ervoor dat de umask van de standaard gebruiker 027 of meer beperkend is |
-|5.6 |Controleren of de toegang tot de su-opdracht is beperkt|
+|5,6 |Controleren of de toegang tot de su-opdracht is beperkt|
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
  

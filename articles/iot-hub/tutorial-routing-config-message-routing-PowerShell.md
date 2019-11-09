@@ -1,6 +1,6 @@
 ---
 title: Configureer bericht routering voor Azure IoT Hub met behulp van Azure PowerShell | Microsoft Docs
-description: Bericht routering voor Azure IoT Hub configureren met Azure PowerShell
+description: Configureer bericht routering voor Azure IoT Hub met behulp van Azure PowerShell. Route naar een opslag account of een Service Bus wachtrij, afhankelijk van de eigenschappen in het bericht.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 8b054fd8008b926cf63a28b0730589eaece5042a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: a0a64d694429bddf040deeeb901c776adc8ec595
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809388"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888783"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>Zelf studie: Azure PowerShell gebruiken om IoT Hub bericht routering te configureren
 

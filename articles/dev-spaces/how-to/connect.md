@@ -9,12 +9,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 description: Meer informatie over hoe u uw ontwikkel machine verbindt met een AKS-cluster met Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 0adaa4266978cf9c9ef42359c0cf4f81c5c5f056
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 15e46fba19d92e08a9c87a63f6f01ec6b0836910
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571723"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888911"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Uw ontwikkel machine verbinden met een AKS-cluster (preview)
 
@@ -96,7 +96,7 @@ Nadat u de verbindings modus hebt geselecteerd, wordt u gevraagd om de TCP-poort
 Nadat u de TCP-poort van uw toepassing hebt geselecteerd, wordt door Azure dev Spaces een verbinding met het AKS-cluster tot stand gebracht. Azure dev Spaces injecteert een agent in uw AKS-cluster om verkeer tussen het AKS-cluster en uw ontwikkel machine om te leiden. Het kan enkele minuten duren voordat deze verbinding tot stand is gebracht. Azure dev Spaces hebben ook beheerders toegang nodig om het *hosts* -bestand in de ontwikkel computer te wijzigen.
 
 > [!IMPORTANT]
-> Als Azure dev Spaces een verbinding met uw AKS-cluster tot stand brengt, werken de andere services in uw AKS-cluster mogelijk niet goed totdat u de service in de ontwikkel machine start. Als uw service een afhankelijkheid heeft die niet beschikbaar is in uw ontwikkel machine, moet u mogelijk uw toepassing wijzigen of [aanvullende configuratie](#additional-configuration) opgeven
+> Wanneer Azure dev Spaces een verbinding met uw AKS-cluster tot stand brengt, werken de andere services in uw AKS-cluster mogelijk niet goed totdat u de service in de ontwikkel machine start als u de verbindings modus *vervangen* kiest. U kunt in plaats daarvan de verbindings modus *klonen* kiezen om een onderliggende ontwikkel ruimte voor uw omleiding te maken en eventuele onderbrekingen van de bovenliggende ruimte te voor komen. Als uw service een afhankelijkheid heeft die niet beschikbaar is in uw ontwikkel machine, moet u mogelijk uw toepassing wijzigen of [aanvullende configuratie](#additional-configuration) opgeven
 
 Met Azure dev Spaces wordt een Terminal venster geopend met de titel *AZDS Connect-Bikes* nadat het een verbinding met uw AKS-cluster tot stand heeft gebracht. Dit Terminal venster bevat alle omgevings variabelen en DNS-vermeldingen die zijn geconfigureerd op basis van uw AKS-cluster. Alle code die u uitvoert in dit Terminal venster of het gebruik van de Visual Studio code debugger is verbonden met het AKS-cluster.
 

@@ -1,100 +1,99 @@
 ---
-title: Het opnieuw inrichten van apparaten in de Azure IoT Hub Device Provisioning Service | Microsoft Docs
-description: Hoe u apparaten met uw device provisioning service-exemplaar opnieuw inrichten
+title: Apparaten opnieuw inrichten in de Azure IoT Hub Device Provisioning Service | Microsoft Docs
+description: Meer informatie over het opnieuw inrichten van apparaten met het Device Provisioning service-exemplaar en waarom u dit mogelijk moet doen.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 92680a453d93c8dc0189c6ae376449a8e7a22076
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41e6274e81c91584cf5212bc7ca7b2f31582b4db
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60627318"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888984"
 ---
-# <a name="how-to-reprovision-devices"></a>Het opnieuw inrichten van apparaten
+# <a name="how-to-reprovision-devices"></a>Apparaten opnieuw inrichten
 
-Tijdens de levenscyclus van een IoT-oplossing is het gebruikelijk dat apparaten verplaatsen tussen IoT-hubs. De redenen voor deze overstap, kunnen de volgende scenario's omvatten:
+Tijdens de levens cyclus van een IoT-oplossing is het gebruikelijk om apparaten te verplaatsen tussen IoT-hubs. De redenen hiervoor kunnen de volgende scenario's omvatten:
 
-* **Geolocatie**: Als u een apparaat verplaatst tussen locaties, netwerklatentie is verbeterd doordat het apparaat gemigreerd naar een IoT hub dichter naar elke locatie.
+* **Geolocatie**: wanneer een apparaat tussen locaties wordt verplaatst, wordt de netwerk latentie verbeterd doordat het apparaat dichter op elke locatie naar een IOT-hub wordt gemigreerd.
 
-* **Multitenancy**: Een apparaat kan worden gebruikt binnen de dezelfde IoT-oplossing, maar opnieuw toegewezen of in lease gegeven naar een nieuwe klant of een klantensite. Deze nieuwe klanten kan worden verwerkt met behulp van een andere IoT-hub.
+* **Multitenancy: een**apparaat kan worden gebruikt binnen dezelfde IOT-oplossing, maar kan worden toegewezen aan of geleasd aan een nieuwe klant of klant site. Deze nieuwe klant kan worden verwerkt met behulp van een andere IoT-hub.
 
-* **Wijzigen van de oplossing**: Een apparaat kan worden verplaatst naar een nieuwe of bijgewerkte IoT-oplossing. Het opnieuw toewijzen is mogelijk dat het apparaat met een nieuwe IoT-hub die is verbonden met andere back-end-onderdelen communiceren. 
+* **Oplossings wijziging**: een apparaat kan worden verplaatst naar een nieuwe of bijgewerkte IOT-oplossing. Deze opnieuw toewijzen kan vereisen dat het apparaat communiceert met een nieuwe IoT-hub die is verbonden met andere back-uponderdelen. 
 
-* **In quarantaine plaatsen**: Dit is vergelijkbaar met het wijzigen van een oplossing. Een apparaat dat is niet goed functioneert, waarmee is geknoeid of verouderde mogelijk opnieuw worden toegewezen aan een IoT-hub waar mee kunt doen, is bijgewerkt en weer toegang te krijgen in naleving. Zodra het apparaat goed werkt, wordt deze vervolgens terug naar de belangrijkste hub gemigreerd.
+* **Quarantaine**: vergelijkbaar met een oplossings wijziging. Een apparaat met een beschadigde, gemanipuleerd of verouderd kan opnieuw worden toegewezen aan een IoT-hub, waar alles kan worden bijgewerkt en vervolgens weer in overeenstemming kan worden gebracht. Zodra het apparaat correct werkt, wordt het opnieuw gemigreerd naar de hoofd hub.
 
-Zie voor meer een meer gedetailleerd overzicht van beëindiging, [beëindiging van de concepten van IoT Hub Device](concepts-device-reprovision.md).
+Zie IoT Hub voor meer informatie over het opnieuw inrichten van het [apparaat](concepts-device-reprovision.md).
 
 
-## <a name="configure-the-enrollment-allocation-policy"></a>Het toewijzingsbeleid inschrijving configureren
+## <a name="configure-the-enrollment-allocation-policy"></a>Het toewijzings beleid voor inschrijving configureren
 
-Het toewijzingsbeleid bepaalt hoe de apparaten die zijn gekoppeld aan de inschrijving wordt toegewezen, of toegewezen, naar een IoT-hub eenmaal is ingericht.
+Het toewijzings beleid bepaalt hoe de apparaten die aan de inschrijving zijn gekoppeld, worden toegewezen aan een IoT-hub zodra deze opnieuw is ingericht.
 
-De volgende stappen uit configureren het toewijzingsbeleid voor inschrijving van een apparaat:
+Met de volgende stappen configureert u het toewijzings beleid voor de inschrijving van een apparaat:
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com) en navigeer naar uw Device Provisioning Service-exemplaar.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw Device Provisioning service-exemplaar.
 
-2. Klik op **registraties beheren**, en klik op de registratiegroep of afzonderlijke inschrijving die u configureren wilt voor beëindiging. 
+2. Klik op **inschrijvingen beheren**en klik op de registratie groep of de individuele inschrijving die u wilt configureren voor opnieuw inrichten. 
 
-3. Onder **selecteert u hoe u apparaten toewijzen aan hubs wilt**, selecteer een van de volgende toewijzingsbeleid voor:
+3. Selecteer onder **Selecteer hoe u apparaten aan hubs wilt toewijzen**, een van de volgende toewijzings beleidsregels:
 
-    * **Laagste latentie**: Dit beleid toegewezen apparaten aan de gekoppelde IoT-Hub die in de laagste latentie communicatie tussen apparaat en IoT-Hub resulteren. Deze optie kunt het apparaat om te communiceren met de dichtstbijzijnde IoT-hub op basis van locatie. 
+    * **Laagste latentie**: met dit beleid worden apparaten toegewezen aan de gekoppelde IOT hub die leiden tot de laagste latentie communicatie tussen het apparaat en IOT hub. Met deze optie kan het apparaat communiceren met de dichtstbijzijnde IoT-hub op basis van locatie. 
     
-    * **Gelijk gewogen distributie**: Dit beleid worden apparaten verdeeld door de gekoppelde IoT-Hubs op basis van de toewijzingsgewicht toegewezen aan elke gekoppelde IoT-hub. Dit beleid kunt u saldo apparaten laden voor een groep van gekoppelde hubs op basis van de toewijzing van waarden instellen voor deze hubs. Als u apparaten voor slechts één IoT-Hub inricht, wordt aangeraden deze instelling. Dit is de standaardinstelling. 
+    * **Evenredig gewogen distributie**: dit beleid distribueert apparaten over de gekoppelde IOT-hubs op basis van het toewijzings gewicht dat is toegewezen aan elke gekoppelde IOT-hub. Met dit beleid kunt u taken verdelen over een groep gekoppelde hubs op basis van de toewijzings gewichten die zijn ingesteld op die hubs. Als u apparaten op slechts één IoT Hub inrichten, raden we u aan deze instelling in te stellen. Dit is de standaardinstelling. 
     
-    * **Statische configuratie**: Dit beleid vereist een gewenste IoT-Hub worden vermeld in de inschrijvingsvermelding voor een apparaat in te richten. Dit beleid kunt u om één specifieke IoT-hub die u wilt dat apparaten toewijzen aan toe te wijzen.
+    * **Statische configuratie**: dit beleid vereist dat een gewenste IOT hub worden weer gegeven in de inschrijvings vermelding voor een apparaat dat moet worden ingericht. Met dit beleid kunt u een enkele specifieke IoT-hub aanwijzen waaraan u apparaten wilt toewijzen.
 
-4. Onder **selecteert u deze groep kan worden toegewezen aan de IoT-hubs**, selecteert u de gekoppelde IoT-hubs die u wilt opnemen met uw toewijzingsbeleid. (Optioneel) Voeg een nieuwe gekoppelde Iot-hub met behulp de **een nieuwe IoT-Hub koppelen** knop.
+4. Onder **Selecteer de IOT-hubs waaraan deze groep kan worden toegewezen**, selecteert u de gekoppelde IOT-hubs die u wilt opnemen in uw toewijzings beleid. Voeg eventueel een nieuwe gekoppelde IOT-hub toe met behulp van de knop **een nieuwe IOT hub koppelen** .
 
-    Met de **laagste latentie** toewijzingsbeleid, de hubs die u selecteert worden opgenomen in de evaluatie latentie om te bepalen van de dichtstbijzijnde hub voor apparaattoewijzing.
+    Met het **laagste latentie** toewijzings beleid worden de hubs die u selecteert in de latentie-evaluatie opgenomen om de dichtstbijzijnde hub voor apparaattoewijzing te bepalen.
 
-    Met de **gelijk gewogen distributie** toewijzingsbeleid, apparaten, worden verdeeld over de hubs die u selecteert op basis van hun gewichten geconfigureerde toewijzing en hun huidige apparaat laden.
+    Met het **evenredige gewogen distributie** toewijzings beleid worden apparaten gelijkmatig verdeeld over de hubs die u selecteert op basis van hun geconfigureerde toewijzings gewichten en de huidige belasting van het apparaat.
 
-    Met de **statische configuratie** toewijzingsbeleid, selecteert u de IoT-hub die u wilt dat apparaten die zijn toegewezen aan.
+    Selecteer met het **statische configuratie** toewijzings beleid de IOT-hub waaraan apparaten moeten worden toegewezen.
 
-4. Klik op **opslaan**, of gaat u verder met de volgende sectie om in te stellen het reprovisioning beleid.
+4. Klik op **Opslaan**of ga door naar de volgende sectie om het beleid voor opnieuw inrichten in te stellen.
 
-    ![Toewijzingsbeleid voor inschrijving selecteren](./media/how-to-reprovision/enrollment-allocation-policy.png)
-
-
-
-## <a name="set-the-reprovisioning-policy"></a>Het reprovisioning beleid instellen
-
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com) en navigeer naar uw Device Provisioning Service-exemplaar.
-
-2. Klik op **registraties beheren**, en klik op de registratiegroep of afzonderlijke inschrijving die u configureren wilt voor beëindiging.
-
-3. Onder **selecteert u hoe u gegevens van het apparaat moet worden verwerkt op herinrichting voor verschillende IoT-hub wilt**, kies een van de volgende reprovisioning beleidsregels:
-
-    * **Opnieuw inrichten en migreren van gegevens**: Dit beleid onderneemt actie wanneer apparaten die zijn gekoppeld aan de vermelding voor apparaatinschrijving een nieuwe aanvraag voor inrichting verzendt. Afhankelijk van de configuratie van de vermelding voor inschrijving het apparaat wordt mogelijk opnieuw toegewezen aan een andere IoT-hub. Als het apparaat IoT-hubs wijzigt is, wordt de apparaatregistratie bij de eerste IoT-hub worden verwijderd. Alle informatie over de apparaatstatus in die eerste IoT-hub worden gemigreerd naar de nieuwe IoT-hub. Tijdens de migratie van het apparaat de status wordt gerapporteerd als **toewijzen**
-
-    * **Opnieuw inrichten en opnieuw ingesteld op initiële configuratie**: Dit beleid onderneemt actie wanneer apparaten die zijn gekoppeld aan de vermelding voor apparaatinschrijving een nieuwe aanvraag voor inrichting verzendt. Afhankelijk van de configuratie van de vermelding voor inschrijving het apparaat wordt mogelijk opnieuw toegewezen aan een andere IoT-hub. Als het apparaat IoT-hubs wijzigt is, wordt de apparaatregistratie bij de eerste IoT-hub worden verwijderd. De oorspronkelijke configuratiegegevens die het provisioning service-exemplaar dat is ontvangen tijdens het inrichten van het apparaat is opgegeven voor de nieuwe IoT hub. Tijdens de migratie van het apparaat de status wordt gerapporteerd als **toewijzen**.
-
-4. Klik op **opslaan** om in te schakelen de beëindiging van het apparaat op basis van uw wijzigingen.
-
-    ![Toewijzingsbeleid voor inschrijving selecteren](./media/how-to-reprovision/reprovisioning-policy.png)
+    ![Toewijzings beleid voor inschrijving selecteren](./media/how-to-reprovision/enrollment-allocation-policy.png)
 
 
 
-## <a name="send-a-provisioning-request-from-the-device"></a>Een aanvraag voor inrichting van het apparaat verzenden
+## <a name="set-the-reprovisioning-policy"></a>Het beleid voor opnieuw inrichten instellen
 
-In de volgorde voor apparaten om te worden ingericht op basis van de configuratiewijzigingen in de voorgaande secties, deze apparaten moeten aanvragen beëindiging. 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw Device Provisioning service-exemplaar.
 
-Hoe vaak een apparaat een aanvraag voor inrichting verzendt, is afhankelijk van het scenario. Echter, is het raadzaam om uw apparaten voor het verzenden van een aanvraag voor inrichting naar een provisioning service-exemplaar opnieuw opstarten en ondersteuning te programmeren een [methode](../iot-hub/iot-hub-devguide-direct-methods.md) handmatig activeren inrichting op aanvraag. Inrichting kan ook worden geactiveerd door in te stellen een [gewenste eigenschap](../iot-hub/iot-hub-devguide-device-twins.md#desired-property-example). 
+2. Klik op **inschrijvingen beheren**en klik op de registratie groep of de individuele inschrijving die u wilt configureren voor opnieuw inrichten.
 
-Het reprovisioning beleid op een vermelding voor apparaatinschrijving bepaalt hoe deze inrichting aanvragen worden verwerkt door de device provisioning service-exemplaar, en als de statusgegevens van het apparaat tijdens de beëindiging moeten worden gemigreerd. Dezelfde beleidsregels zijn beschikbaar voor afzonderlijke inschrijvingen en Registratiegroepen:
+3. Onder **Selecteer hoe u wilt dat apparaatgegevens worden verwerkt bij het opnieuw inrichten naar een andere IOT-hub**, kiest u een van de volgende beleids regels voor opnieuw inrichten:
 
-Bijvoorbeeld code van het verzenden van aanvragen van een apparaat inrichten tijdens een boot-volgorde, Zie [een gesimuleerd apparaat automatische inrichting](quick-create-simulated-device.md).
+    * **Gegevens opnieuw inrichten en migreren**: dit beleid onderneemt actie wanneer apparaten die zijn gekoppeld aan de inschrijvings vermelding een nieuwe inrichtings aanvraag indienen. Afhankelijk van de configuratie van de registratie vermelding, kan het apparaat opnieuw worden toegewezen aan een andere IoT-hub. Als het apparaat IoT hubs wijzigt, wordt de registratie van het apparaat met de eerste IoT-hub verwijderd. Alle status gegevens van de apparaten van die eerste IoT-hub worden gemigreerd naar de nieuwe IoT hub. Tijdens de migratie wordt de status van het apparaat gerapporteerd als **toewijzing**
+
+    * **Opnieuw inrichten en opnieuw instellen op de eerste configuratie**: dit beleid voert een actie uit wanneer de apparaten die zijn gekoppeld aan de inschrijvings vermelding een nieuwe inrichtings aanvraag indienen. Afhankelijk van de configuratie van de registratie vermelding, kan het apparaat opnieuw worden toegewezen aan een andere IoT-hub. Als het apparaat IoT hubs wijzigt, wordt de registratie van het apparaat met de eerste IoT-hub verwijderd. De initiële configuratie gegevens waarvan het exemplaar van de inrichtings service dat is ontvangen toen het apparaat werd ingericht, worden geleverd aan de nieuwe IoT hub. Tijdens de migratie wordt de status van het apparaat gerapporteerd als **toewijzing**.
+
+4. Klik op **Opslaan** om het opnieuw inrichten van het apparaat in te scha kelen op basis van uw wijzigingen.
+
+    ![Toewijzings beleid voor inschrijving selecteren](./media/how-to-reprovision/reprovisioning-policy.png)
+
+
+
+## <a name="send-a-provisioning-request-from-the-device"></a>Een inrichtings aanvraag verzenden vanaf het apparaat
+
+Als u wilt dat apparaten opnieuw worden ingericht op basis van de configuratie wijzigingen die in de voor gaande secties zijn aangebracht, moeten deze apparaten opnieuw worden ingericht. 
+
+Hoe vaak een apparaat een inrichtings aanvraag indient, is afhankelijk van het scenario. Het wordt echter aanbevolen om uw apparaten te Program meren om een inrichtings aanvraag te verzenden naar een inrichtings service-exemplaar bij het opnieuw opstarten, en biedt ondersteuning voor een [methode](../iot-hub/iot-hub-devguide-direct-methods.md) om het inrichten op aanvraag hand matig te activeren. Het inrichten kan ook worden geactiveerd door een [gewenste eigenschap](../iot-hub/iot-hub-devguide-device-twins.md#desired-property-example)in te stellen. 
+
+Het beleid voor opnieuw inrichten voor een inschrijvings vermelding bepaalt hoe het Device Provisioning service-exemplaar deze inrichtings aanvragen verwerkt, en als de status gegevens van het apparaat tijdens het opnieuw inrichten moeten worden gemigreerd. Dezelfde beleids regels zijn beschikbaar voor individuele inschrijvingen en inschrijvings groepen:
+
+Zie voor beelden van code voor het verzenden van inrichtings aanvragen van een apparaat tijdens een opstart reeks, [het automatisch inrichten van een gesimuleerd apparaat](quick-create-simulated-device.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer meer Reprovisioning [beëindiging van de concepten van IoT Hub Device](concepts-device-reprovision.md) 
-- Zie voor meer meer opheffen van inrichting [hoe u de inrichting van apparaten die zijn eerder automatisch ingericht](how-to-unprovision-devices.md) 
+- Zie [IOT hub-concepten](concepts-device-reprovision.md) voor het opnieuw inrichten van apparaten voor meer informatie. 
+- Zie voor meer informatie over het ongedaan maken van de inrichting van [apparaten die eerder automatisch zijn ingericht](how-to-unprovision-devices.md) , ongedaan maken 
 
 
 

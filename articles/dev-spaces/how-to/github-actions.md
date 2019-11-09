@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: Bekijk en test wijzigingen van een pull-aanvraag rechtstreeks in azure Kubernetes service met behulp van GitHub-acties en Azure dev Spaces.
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, GitHub acties, helm, Service-Mesh, Service-Mesh-route ring, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 590d49f4c189ff48f20369d18b17e0f6e4a46fa2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 09dc9440628ac5d808f90d086bd88e4f90765c28
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571594"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889738"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub acties & Azure Kubernetes service (preview)
 
@@ -96,12 +96,12 @@ Navigeer naar uw gevorkte opslag plaats en klik op *instellingen*. Klik op *gehe
 1. *RESOURCE_GROUP*: de resource groep voor uw AKS-cluster, in dit voor beeld *MyResourceGroup*.
 1. *CLUSTER_NAME*: de naam van uw AKS-cluster, in dit voor beeld *MyAKS*.
 1. *CONTAINER_REGISTRY*: de *login server* voor de ACR.
-1. *Host*: de host voor uw dev-ruimte, die de vorm *< MASTER_SPACE >. < APP_NAME >. < HOST_SUFFIX >* , die in dit voor beeld is *dev.bikesharingweb.fedcab0987.Eus.azds.io*.
+1. *Host*: de host voor uw dev-ruimte, die de vorm *< MASTER_SPACE >. < APP_NAME >. <* HOST_SUFFIX >, die in dit voor beeld is *dev.bikesharingweb.fedcab0987.Eus.azds.io*.
 1. *HOST_SUFFIX*: het achtervoegsel van de host voor uw dev-ruimte, in dit voor beeld *fedcab0987.Eus.azds.io*.
 1. *IMAGE_PULL_SECRET*: de naam van het geheim dat u wilt gebruiken, bijvoorbeeld *demo-geheim*.
 1. *MASTER_SPACE*: de naam van de bovenliggende ontwikkel ruimte, die in dit voor beeld *dev*is.
 1. *REGISTRY_USERNAME*: de *CLIENTID* van de JSON-uitvoer van de Service-Principal is gemaakt.
-1. *REGISTRY_PASSWORD*: de *CLIENTSECRET* van de JSON-uitvoer van het maken van de Service-Principal.
+1. *REGISTRY_PASSWORD*: de *CLIENTSECRET* van de JSON-uitvoer van de Service-Principal is gemaakt.
 
 > [!NOTE]
 > Al deze geheimen worden gebruikt door de GitHub-actie en zijn geconfigureerd in [. github/workflows/Bikes. yml][github-action-yaml].
@@ -145,7 +145,7 @@ Gebruik `git push` om uw nieuwe vertakking naar uw gevorkte opslag plaats te pus
 git push origin bike-images
 ```
 
-Nadat de push is voltooid, gaat u naar de gesplitste opslag plaats op GitHub maakt u een pull-aanvraag met de *dev* in uw gevorkte opslag plaats als basis vertakking in vergelijking met de vertakking van de *fiets installatie kopieën* .
+Nadat de push is voltooid, gaat u naar de gesplitste opslag plaats op GitHub om een pull-aanvraag te maken met de *hoofd* vertakking in uw gevorkte opslag plaats als basis vertakking in vergelijking met de vertakking van de *fiets installatie kopieën* .
 
 Nadat uw pull-aanvraag is geopend, gaat u naar het tabblad *acties* . Controleer of de nieuwe actie is gestart en bouwt de *Bikes* -service.
 
@@ -158,7 +158,7 @@ Nadat de actie is voltooid, ziet u een opmerking met een URL naar uw nieuwe onde
 
 Ga naar de *bikesharingweb* -service door de URL te openen in de opmerking. Selecteer *Aurelia Briggs (klant)* als de gebruiker en selecteer vervolgens een te huur fiets. Controleer of de tijdelijke aanduiding voor de fiets niet meer wordt weer geven.
 
-Als u uw wijzigingen in de *dev* branch samenvoegt, wordt er een andere actie uitgevoerd om uw hele toepassing opnieuw te bouwen en uit te voeren in de bovenliggende ontwikkel ruimte. In dit voor beeld is de bovenliggende ruimte *dev*. Deze actie is geconfigureerd in [. github/workflows/bikesharing. yml][github-action-bikesharing-yaml].
+Als u uw wijzigingen in de *hoofd* vertakking in uw Fork samenvoegt, wordt er een andere actie uitgevoerd om uw hele toepassing opnieuw te bouwen en uit te voeren in de bovenliggende ontwikkel ruimte. In dit voor beeld is de bovenliggende ruimte *dev*. Deze actie is geconfigureerd in [. github/workflows/bikesharing. yml][github-action-bikesharing-yaml].
 
 ## <a name="clean-up-your-azure-resources"></a>Uw Azure-resources opschonen
 

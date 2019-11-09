@@ -1,6 +1,6 @@
 ---
-title: Gebruik een bestaande IoT-hub met de Apparaatsimulatie-oplossing - Azure | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u de oplossingsversneller voor Apparaatsimulatie voor het gebruik van een IoT Hub configureren.
+title: Bestaande IoT-hub gebruiken met Device simulatie oplossing-Azure | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u de apparaat simulatie oplossings versneller configureert voor het gebruik van een bestaande IoT Hub.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,35 +8,35 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 38cde750ce07741a433baa1b8607a584f94ad9b1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1f89e23d7bb279e7cce5c104060cc7898517f8b7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203955"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889184"
 ---
-# <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>Gebruik een bestaande IoT-hub met de oplossingsversnellers Apparaatsimulatie
+# <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>Een bestaande IoT-hub gebruiken met de apparaat simulatie oplossings versneller
 
-Wanneer u Apparaatsimulatie implementeren, kunt u ook kiezen voor het implementeren van een IoT-hub te gebruiken in uw simulatie. Deze optie wordt geïmplementeerd een [S2-laag IoT-hub met een één schaaleenheid](../iot-hub/iot-hub-scaling.md). Als u deze optionele IoT hub implementeert, kunt u nog steeds gericht op een andere IoT-Hub voor het uitvoeren van de simulatie.
+Wanneer u Device simulatie implementeert, kunt u er ook voor kiezen om een IoT-hub te implementeren voor gebruik in uw simulatie. Met deze optie implementeert u een [IOT-hub uit de S2-laag met één schaal eenheid](../iot-hub/iot-hub-scaling.md). Als u deze optionele IoT-hub implementeert, kunt u nog steeds een andere IoT Hub instellen voor een simulatie uitvoering.
 
-Als u niet de optionele IoT-Hub implementeren, moet u uw eigen hub gebruiken voor elke simulaties uitvoeren.
+Als u ervoor kiest om de optionele IoT Hub niet te implementeren, moet u uw eigen hub gebruiken voor simulaties die u uitvoert.
 
-Als u een IoT-hub hebt, kunt u altijd een nieuw label van maken de [Azure-portal](https://portal.azure.com).
+Als u geen IoT-hub hebt, kunt u altijd een nieuwe maken op basis van de [Azure Portal](https://portal.azure.com).
 
-Voor het gebruik van een bestaande IoT-hub, moet u de verbindingsreeks voor de **iothubowner** gedeeld toegangsbeleid. U kunt deze verbindingsreeks uit de [Azure-portal](https://portal.azure.com):
+Als u een al bestaande IoT-hub wilt gebruiken, hebt u de connection string nodig voor het **iothubowner** -beleid voor gedeelde toegang. U kunt deze connection string ophalen via de [Azure Portal](https://portal.azure.com):
 
-1. Klik op de configuratiepagina van de hub in de portal op **beleid voor gedeelde toegang**.
+1. Klik op de configuratie pagina van de hub in de portal op **beleid voor gedeelde toegang**.
 
 1. Klik op **iothubowner**.
 
-1. Kopieer de primaire of secundaire verbindingsreeks.
+1. Kopieer de primaire of secundaire connection string.
 
-[![Verbindingsreeks ophalen](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-inline.png)](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-expanded.png#lightbox)
+[connection string ![ophalen](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-inline.png)](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-expanded.png#lightbox)
 
-Gebruik de verbindingsreeks die u bij het configureren van de simulatie gekopieerd:
+Gebruik de connection string die u hebt gekopieerd tijdens het configureren van de simulatie:
 
 ![Simulatie configureren](./media/iot-accelerators-device-simulation-choose-hub/configuresimulation.png)
 
 ### <a name="next-steps"></a>Volgende stappen
 
-In deze handleiding, hebt u geleerd hoe u een bestaande IoT-hub in de simulatie. Vervolgens kunt u leren hoe u [maken van een geavanceerde Apparaatmodel](iot-accelerators-device-simulation-advanced-device.md) voor een simulatie.
+In deze hand leiding hebt u geleerd hoe u een bestaande IoT-hub kunt gebruiken in een simulatie. Vervolgens wilt u weten hoe u [een geavanceerd model kunt maken](iot-accelerators-device-simulation-advanced-device.md) voor een simulatie.

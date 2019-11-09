@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 9c9dcd567b8632626bf4b1f0bf2ef6b5e69b8a9d
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 245ac3b1fd88b8d2430e9ddefef3562efd16e6d1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530444"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885389"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Istio installeren en gebruiken in azure Kubernetes service (AKS)
 
@@ -21,9 +21,9 @@ ms.locfileid: "72530444"
 In dit artikel wordt beschreven hoe u Istio installeert. De Istio `istioctl` binaire client wordt geïnstalleerd op de client computer en de Istio-onderdelen worden geïnstalleerd in een Kubernetes-cluster op AKS.
 
 > [!NOTE]
-> Deze instructies verwijzen naar Istio versie `1.3.2` en gebruiken ten minste helm versie `2.14.2`.
+> Deze instructies verwijzen naar Istio versie `1.3.2`en gebruiken ten minste helm versie `2.14.2`.
 >
-> De Istio-`1.3.x` releases zijn getest door het Istio-team tegen Kubernetes-versies `1.13`, `1.14` `1.15`. U kunt aanvullende Istio-versies vinden op [github-Istio-releases][istio-github-releases], informatie over elk van de releases van [Istio News][istio-release-notes] en ondersteunde Kubernetes-versies op [Istio algemene veelgestelde vragen][istio-faq].
+> De Istio-`1.3.x` releases zijn getest door het Istio-team tegen Kubernetes-versies `1.13`, `1.14``1.15`. U kunt aanvullende Istio-versies vinden op [github-Istio-releases][istio-github-releases], informatie over elk van de releases van [Istio News][istio-release-notes] en ondersteunde Kubernetes-versies op [Istio algemene veelgestelde vragen][istio-faq].
 
 In dit artikel leert u het volgende:
 
@@ -94,7 +94,7 @@ istio-init-crd-11-1.3.2   1/1           12s        14s
 istio-init-crd-12-1.3.2   1/1           14s        14s
 ```
 
-Nu we hebben bevestigd dat de taken zijn voltooid, gaan we controleren of het juiste aantal Istio CRDs is geïnstalleerd. U kunt controleren of alle 23 Istio CRDs zijn geïnstalleerd door de volgende opdracht uit te voeren. De opdracht moet het getal `23` retour neren.
+Nu we hebben bevestigd dat de taken zijn voltooid, gaan we controleren of het juiste aantal Istio CRDs is geïnstalleerd. U kunt controleren of alle 23 Istio CRDs zijn geïnstalleerd door de volgende opdracht uit te voeren. De opdracht moet het getal `23`retour neren.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -195,12 +195,12 @@ kubectl get svc --namespace istio-system --output wide
 In de volgende voorbeeld uitvoer ziet u de services die nu moeten worden uitgevoerd:
 
 - `istio-*` Services
-- `jaeger-*`, `tracing` en `zipkin` invoeg toepassing voor tracering van services
+- `jaeger-*`, `tracing`en `zipkin` invoeg toepassing voor tracering van services
 - service voor metrische gegevens van `prometheus` toevoegen
 - dash board-service voor `grafana`-invoeg toepassingen en-bewaking
 - dash board service voor de `kiali`-invoeg service
 
-Als de `istio-ingressgateway` een extern IP-adres van `<pending>` bevat, wacht u enkele minuten totdat er een IP-adressen zijn toegewezen door Azure-netwerken.
+Als de `istio-ingressgateway` een extern IP-adres van `<pending>`bevat, wacht u enkele minuten totdat er een IP-adressen zijn toegewezen door Azure-netwerken.
 
 ```console
 NAME                     TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                                                                                                                      AGE   SELECTOR
@@ -252,7 +252,7 @@ kiali-65d55bcfb8-tqrfk                   1/1     Running     0          88s
 prometheus-846f9849bd-br8kp              1/1     Running     0          87s
 ```
 
-Er moeten drie `istio-init-crd-*` een Peul met een `Completed` status. Deze peulen zijn verantwoordelijk voor het uitvoeren van de taken die de CRDs in een eerdere stap hebben gemaakt. Alle andere peulen moeten de status van `Running` weer geven. Als uw peul niet over deze status beschikt, moet u een paar minuten wachten totdat dit het geval is. Als een van de peulen een probleem rapporteert, gebruikt u de [kubectl pod][kubectl-describe] opdracht om de uitvoer en status te controleren.
+Er moeten drie `istio-init-crd-*` een Peul met een `Completed` status. Deze peulen zijn verantwoordelijk voor het uitvoeren van de taken die de CRDs in een eerdere stap hebben gemaakt. Alle andere peulen moeten de status van `Running`weer geven. Als uw peul niet over deze status beschikt, moet u een paar minuten wachten totdat dit het geval is. Als een van de peulen een probleem rapporteert, gebruikt u de [kubectl pod][kubectl-describe] opdracht om de uitvoer en status te controleren.
 
 ## <a name="accessing-the-add-ons"></a>De invoeg toepassingen openen
 
@@ -383,7 +383,7 @@ Raadpleeg de volgende Azure Monitor documentatie voor meer informatie over het b
 [kubernetes-crd]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions
 [kubernetes-jobs]: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
 [kubernetes-secrets]: https://kubernetes.io/docs/concepts/configuration/secret/
-[kubernetes-node-selectors]: https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads#node-selectors
+[kubernetes-node-selectors]: https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#node-selectors
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-port-forward]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward

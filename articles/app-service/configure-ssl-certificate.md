@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4f0c8078a502d0332b02d95c0c46d9dbcc53a884
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572156"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886870"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Een SSL-certificaat in Azure App Service toevoegen
 
@@ -325,7 +325,7 @@ Zodra de vernieuwings bewerking is voltooid, klikt u op **synchroniseren**. Met 
 
 ### <a name="export-certificate"></a>Certificaat exporteren
 
-Omdat App Service certificaten een [Key Vault geheim](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets)is, kunt u een pfx-kopie van het certificaat exporteren en gebruiken voor andere Azure-Services of buiten Azure.
+Omdat een App Service Certificate een [Key Vault geheim](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets)is, kunt u een pfx-kopie van het bestand exporteren en gebruiken voor andere Azure-Services of buiten Azure.
 
 Als u de App Service Certificate als een PFX-bestand wilt exporteren, voert u de volgende opdrachten uit in de [Cloud shell](https://shell.azure.com). U kunt deze ook lokaal uitvoeren als u [Azure cli hebt geïnstalleerd](https://docs.microsoft.com/cli/azure/install-azure-cli). Vervang de tijdelijke aanduidingen door de namen die u hebt gebruikt bij [het maken van het app service certificaat](#start-certificate-order).
 
@@ -344,7 +344,7 @@ az keyvault secret download \
     --encoding base64
 ```
 
-Het gedownloade bestand *appservicecertificate. pfx* is een onbewerkt pkcs12/pfx-profiel-bestand met zowel de open bare als de persoonlijke certificaten. Wanneer u hierom wordt gevraagd, zijn zowel het import wachtwoord als de wachtwoordzin voor PEM de lege teken reeks.
+Het gedownloade bestand *appservicecertificate. pfx* is een onbewerkt pkcs12/pfx-profiel-bestand met zowel de open bare als de persoonlijke certificaten. In elke prompt gebruikt u een lege teken reeks voor het import wachtwoord en de PEM-wachtwoordzin.
 
 ### <a name="delete-certificate"></a>Certificaat verwijderen 
 
@@ -360,7 +360,7 @@ U kunt nu het App Service certificaat verwijderen. Selecteer **overzicht** > **v
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 

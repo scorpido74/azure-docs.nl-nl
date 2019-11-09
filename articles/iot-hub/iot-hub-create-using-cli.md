@@ -1,36 +1,36 @@
 ---
-title: Een IoT-Hub met behulp van Azure CLI maken | Microsoft Docs
-description: Het maken van een Azure IoT-hub met behulp van Azure CLI.
+title: Een IoT Hub maken met behulp van Azure CLI | Microsoft Docs
+description: Meer informatie over het gebruik van de Azure CLI-opdrachten voor het maken van een resource groep en het maken van een IoT-hub in de resource groep. Meer informatie over het verwijderen van de hub.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: 78ea9071f220b2a78c6d9260d47145f22284d760
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7253747d95917e34725cc7c6c034b1306f65e50
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66166286"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889505"
 ---
-# <a name="create-an-iot-hub-using-the-azure-cli"></a>Maken van een IoT-hub met behulp van de Azure CLI
+# <a name="create-an-iot-hub-using-the-azure-cli"></a>Een IoT-hub maken met behulp van de Azure CLI
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Dit artikel laat u het maken van een IoT-hub met behulp van Azure CLI.
+In dit artikel wordt beschreven hoe u een IoT-hub maakt met behulp van Azure CLI.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt deze procedures hebt voltooid, moet u een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+U hebt een Azure-abonnement nodig om deze procedure te volt ooien. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="sign-in-and-set-your-azure-account"></a>Meld u aan en stel uw Azure-account
+## <a name="sign-in-and-set-your-azure-account"></a>Meld u aan en stel uw Azure-account in
 
-Als u Azure CLI lokaal in plaats van met behulp van Cloud Shell uitvoert, moet u zich aanmeldt bij uw Azure-account.
+Als u Azure CLI lokaal uitvoert in plaats van Cloud Shell, moet u zich aanmelden bij uw Azure-account.
 
-Voer bij de opdrachtprompt de [aanmeldingsopdracht](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli):
+Voer de volgende [opdracht](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)uit vanaf de opdracht prompt:
 
    ```azurecli
    az login
@@ -40,23 +40,23 @@ Volg de instructies om te verifiëren met de code en meld u aan bij uw Azure-acc
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
-Azure CLI gebruiken voor het maken van een resourcegroep en voegt u een IoT-hub.
+Gebruik de Azure CLI om een resource groep te maken en vervolgens een IoT-hub toe te voegen.
 
-1. Wanneer u een IoT-hub maakt, moet u deze in een resourcegroep maken. Gebruik een bestaande resourcegroep of Voer de volgende [opdracht voor het maken van een resourcegroep](https://docs.microsoft.com/cli/azure/resource):
+1. Wanneer u een IoT-hub maakt, moet u deze maken in een resource groep. Gebruik een bestaande resource groep of voer de volgende opdracht uit [om een resource groep te maken](https://docs.microsoft.com/cli/azure/resource):
     
    ```azurecli
    az group create --name {your resource group name} --location westus
    ```
 
    > [!TIP]
-   > In het voorbeeld wordt de resourcegroep gemaakt in de locatie US - west. U kunt een lijst met beschikbare locaties weergeven door het uitvoeren van deze opdracht: 
+   > In het voorbeeld wordt de resourcegroep gemaakt in de locatie US - west. U kunt een lijst met beschik bare locaties weer geven door de volgende opdracht uit te voeren: 
    >
    >``` bash
    >az account list-locations -o table
    >```
    >
 
-2. Voer de volgende [opdracht voor het maken van een IoT-hub](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) in de resourcegroep, met behulp van een wereldwijd unieke naam voor uw IoT-hub:
+2. Voer de volgende [opdracht uit om een IOT-hub](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) in uw resource groep te maken met behulp van een wereld wijd unieke naam voor uw IOT-hub:
     
    ```azurecli
    az iot hub create --name {your iot hub name} \
@@ -66,20 +66,20 @@ Azure CLI gebruiken voor het maken van een resourcegroep en voegt u een IoT-hub.
    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 
-De vorige opdracht maakt u een IoT-hub in de S1-prijscategorie die in rekening worden gebracht. Zie voor meer informatie, [prijzen van Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
+Met de vorige opdracht maakt u een IoT-hub in de prijs categorie S1 waarvoor u een factuur wilt maken. Zie [prijzen van Azure IOT hub](https://azure.microsoft.com/pricing/details/iot-hub/)voor meer informatie.
 
-## <a name="remove-an-iot-hub"></a>Een IoT-Hub verwijderen
+## <a name="remove-an-iot-hub"></a>Een IoT Hub verwijderen
 
-U kunt Azure CLI voor [een afzonderlijke resource verwijderen](https://docs.microsoft.com/cli/azure/resource), zoals een IoT-hub of verwijder een resourcegroep en alle bijbehorende resources, met inbegrip van een IoT-hubs.
+U kunt Azure CLI gebruiken voor [het verwijderen van een afzonderlijke resource](https://docs.microsoft.com/cli/azure/resource), zoals een IOT-hub, of het verwijderen van een resource groep en alle bijbehorende resources, inclusief IOT-hubs.
 
-Naar [verwijderen van een IoT-hub](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete), voer de volgende opdracht uit:
+Als u [een IOT-hub wilt verwijderen](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete), voert u de volgende opdracht uit:
 
 ```azurecli
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
-Naar [verwijderen van een resourcegroep](https://docs.microsoft.com/cli/azure/group#az-group-delete) en alle bijbehorende resources, voer de volgende opdracht uit:
+Als u [een resource groep](https://docs.microsoft.com/cli/azure/group#az-group-delete) en alle bijbehorende resources wilt verwijderen, voert u de volgende opdracht uit:
 
 ```azurecli
 az group delete --name {your resource group name}
@@ -87,7 +87,7 @@ az group delete --name {your resource group name}
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor meer informatie over het gebruik van een IoT-hub:
+Raadpleeg de volgende artikelen voor meer informatie over het gebruik van een IoT hub:
 
-* [Ontwikkelaarshandleiding voor IoT Hub](iot-hub-devguide.md)
-* [Met behulp van de Azure-portal voor het beheren van IoT Hub](iot-hub-create-through-portal.md)
+* [Ontwikkelaars handleiding IoT Hub](iot-hub-devguide.md)
+* [De Azure Portal gebruiken om IoT Hub te beheren](iot-hub-create-through-portal.md)

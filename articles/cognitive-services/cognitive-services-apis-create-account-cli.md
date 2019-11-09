@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: 8ca994b0b4abb27eef284eedf5a76571fe19699d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d715252f16a34f2261c108ebd3ff5d1f6f3424d8
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595325"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887918"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Een Cognitive Services resource maken met behulp van de Azure-opdracht regel interface (CLI)
 
@@ -91,7 +91,7 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 | Computer Vision            | `ComputerVision`          |
 | Custom Vision-voor spelling | `CustomVision.Prediction` |
 | Custom Vision-training   | `CustomVision.Training`   |
-| Face API                   | `Face`                    |
+| Face-API                   | `Face`                    |
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
@@ -100,12 +100,12 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 | Service            | type                  |
 |--------------------|-----------------------|
 | Automatische suggesties van Bing   | `Bing.Autosuggest.v7` |
-| Bing Custom Search | `Bing.CustomSearch`   |
+| Bing Aangepaste zoekopdrachten | `Bing.CustomSearch`   |
 | Bing Entiteiten zoeken | `Bing.EntitySearch`   |
 | Bing Zoeken        | `Bing.Search.v7`      |
-| Bing Spellingcontrole   | `Bing.SpellCheck.v7`  |
+| Bing-spellingcontrole   | `Bing.SpellCheck.v7`  |
 
-### <a name="speech"></a>Spraak
+### <a name="speech"></a>Speech
 
 | Service            | type                 |
 |--------------------|----------------------|
@@ -179,7 +179,7 @@ De prijs categorieën (en de hoeveelheid die u ontvangt) zijn gebaseerd op het a
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>Huidig quotum gebruik voor uw resource ophalen
 
-Gebruik de opdracht [AZ cognitiveservices account list-Usage](https://docs.microsoft.com/en-us/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) om het gebruik van uw cognitieve service resource op te halen.
+Gebruik de opdracht [AZ cognitiveservices account list-Usage](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) om het gebruik van uw cognitieve service resource op te halen.
 
 ```azurecli-interactive
 az cognitiveservices account list-usage \

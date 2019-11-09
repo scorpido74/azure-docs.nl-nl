@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5daa1cf04e04507174fa480c785bd15b656541a1
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: d1ef652747dccdcb0e04ac8032dd47e2ebaa6bf2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019108"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886894"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook-en module galerieën voor Azure Automation
 
@@ -35,7 +35,7 @@ U kunt alleen rechtstreeks importeren vanuit de PowerShell Gallery met behulp va
 
 1. Open uw Automation-account in Azure Portal.
 2. Klik onder **proces automatisering**op **Runbooks galerie**
-3. Bron **selecteren: PowerShell Gallery**.
+3. **Bron selecteren: PowerShell Gallery**.
 4. Zoek het gewenste galerij-item en selecteer dit om de details ervan weer te geven. Aan de linkerkant kunt u aanvullende zoek parameters opgeven voor de uitgever en het type.
 
    ![Bladeren in galerie](media/automation-runbook-gallery/browse-gallery.png)
@@ -69,8 +69,8 @@ Power shell-modules bevatten cmdlets die u in uw runbooks kunt gebruiken en best
 
 4. Op de pagina **Blade galerie** kunt u zoeken op de volgende velden:
 
-   * Modulenaam
-   * Labels
+   * Module naam
+   * Tags
    * Auteur
    * Cmdlet/DSC-resource naam
 
@@ -113,4 +113,4 @@ De onderstaande lijst bevat enkele runbooks die oplossingen bieden voor veelvoor
 
 * Zie [Runbook beheren in azure Automation](manage-runbooks.md) om aan de slag te gaan met runbooks.
 * Zie de [Power shell-werk stroom leren](automation-powershell-workflow.md) voor informatie over de verschillen tussen de Power shell-en Power shell-werk stroom met runbooks.
-* Raadpleeg de [Power shell-documenten](https://docs.microsoft.com/en-us/powershell/scripting/overview)voor meer informatie over Power shell, inclusief taal referentie-en leer modules.
+* Raadpleeg de [Power shell-documenten](https://docs.microsoft.com/powershell/scripting/overview)voor meer informatie over Power shell, inclusief taal referentie-en leer modules.

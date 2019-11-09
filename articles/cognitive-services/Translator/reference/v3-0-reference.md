@@ -1,7 +1,7 @@
 ---
 title: Naslag informatie over Translator Text-API V 3.0
 titleSuffix: Azure Cognitive Services
-description: Referentie documentatie voor de Translator Text-API V 3.0.
+description: Referentie documentatie voor de Translator Text-API V 3.0. Versie 3 van de Translator Text-API biedt een moderne op JSON gebaseerde web-API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: a441ca83230a1c715aadda79683964aaab6d6213
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: c07673e7b170170de4723a1232d2e7281feaaf99
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72252972"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888082"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text-API v 3.0
 
-## <a name="whats-new"></a>Wat is er nieuw?
+## <a name="whats-new"></a>Nieuwe functies
 
 Versie 3 van de Translator Text-API biedt een moderne op JSON gebaseerde web-API. Het verbetert de bruikbaarheid en prestaties door bestaande functies te consolideren in minder bewerkingen en biedt nieuwe functies.
 
@@ -46,9 +46,9 @@ Als u wilt afdwingen dat de aanvraag wordt verwerkt door een specifieke Azure-ge
 |Azure|Algemeen (niet-regionaal)|   api.cognitive.microsofttranslator.com|
 |Azure|Verenigde Staten|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
-|Azure|Azië-Pacific|    api-apc.cognitive.microsofttranslator.com|
+|Azure|Azië en Stille Oceaan|    api-apc.cognitive.microsofttranslator.com|
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
 Abonneer u op Translator Text-API of [Cognitive Services meerdere services](https://azure.microsoft.com/pricing/details/cognitive-services/) in azure Cognitive Services en gebruik uw abonnements sleutel (beschikbaar in de Azure Portal) om te verifiëren. 
 
@@ -57,11 +57,11 @@ Er zijn drie kopteksten die u kunt gebruiken om uw abonnement te verifiëren. In
 |Headers|Beschrijving|
 |:----|:----|
 |OCP-APIM-abonnements sleutel|*Gebruik with Cognitive Services-abonnement als u uw geheime sleutel door geven*.<br/>De waarde is de geheime Azure-sleutel voor uw abonnement Translator Text-API.|
-|Autorisatie|*Gebruik with Cognitive Services-abonnement als u een verificatie token doorgeeft.*<br/>De waarde is het Bearer-token: `Bearer <token>`.|
+|Autorisatie|*Gebruik with Cognitive Services-abonnement als u een verificatie token doorgeeft.*<br/>De waarde is de Bearer-token: `Bearer <token>`.|
 |OCP-APIM-abonnement-regio|*Gebruik met met Cognitive Services abonnement voor meerdere services als u een geheime sleutel van meerdere services doorgeeft.*<br/>De waarde is de regio van het multi-service abonnement. Deze waarde is optioneel wanneer u geen multi-service-abonnement gebruikt.|
 
 ###  <a name="secret-key"></a>Geheime sleutel
-De eerste optie is om te verifiëren met behulp van de `Ocp-Apim-Subscription-Key`-header. Voeg de header `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` toe aan uw aanvraag.
+De eerste optie is om te verifiëren met behulp van de `Ocp-Apim-Subscription-Key`-header. Voeg de `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>`-header toe aan uw aanvraag.
 
 ### <a name="authorization-token"></a>Autorisatie token
 U kunt ook uw geheime sleutel voor een toegangs token uitwisselen. Dit token is opgenomen in elke aanvraag als de `Authorization`-header. Als u een autorisatie token wilt verkrijgen, moet u een `POST`-aanvraag indienen bij de volgende URL:
@@ -98,11 +98,11 @@ Wanneer u een geheime sleutel van meerdere services gebruikt, moet u twee verifi
 
 De regio is vereist voor het multi-service-tekst-API-abonnement. De regio die u selecteert, is de enige regio die u voor tekst omzetting kunt gebruiken wanneer u de sleutel voor meerdere services gebruikt en moet dezelfde regio zijn die u hebt geselecteerd toen u zich registreerde voor uw abonnement op meerdere services via de Azure Portal.
 
-Beschik bare regio's zijn `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 @no__ t-21 en 2.
+Beschik bare regio's zijn `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2`en `southafricanorth`.
 
-Als u de geheime sleutel in de query reeks doorgeeft met de para meter `Subscription-Key`, moet u de regio met de query parameter `Subscription-Region` opgeven.
+Als u de geheime sleutel in de query reeks doorgeeft met de para meter `Subscription-Key`, moet u de regio met de query parameter `Subscription-Region`opgeven.
 
-Als u een Bearer-token gebruikt, moet u het token verkrijgen uit het eind punt van de regio: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
+Als u een Bearer-token gebruikt, moet u het token ophalen uit het gebied eind punt: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 
 ## <a name="errors"></a>Fouten
@@ -110,7 +110,7 @@ Als u een Bearer-token gebruikt, moet u het token verkrijgen uit het eind punt v
 Een standaard fout bericht is een JSON-object met een naam/waardepaar met de naam `error`. De waarde is ook een JSON-object met eigenschappen:
 
   * `code`: een fout code die door de server is gedefinieerd.
-  * `message`: een teken reeks met een lees bare weer gave van de fout.
+  * `message`: een teken reeks die een door de mens lees bare weer gave van de fout geeft.
 
 Zo kan een klant met een gratis proef abonnement de volgende fout melding ontvangen wanneer het gratis quotum is uitgeput:
 
@@ -124,7 +124,7 @@ Zo kan een klant met een gratis proef abonnement de volgende fout melding ontvan
 ```
 De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfers wordt gevolgd door een getal van drie cijfers om de fout verder te categoriseren. Veelvoorkomende fout codes zijn:
 
-| Coderen | Beschrijving |
+| Code | Beschrijving |
 |:----|:-----|
 | 400000| Een van de aanvraag invoer is ongeldig.|
 | 400001| De para meter "scope" is ongeldig.|

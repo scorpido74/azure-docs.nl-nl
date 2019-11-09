@@ -1,93 +1,93 @@
 ---
-title: Apparaat-configuratie aanbevolen procedures voor Azure IoT Hub | Microsoft Docs
-description: Meer informatie over aanbevolen procedures voor het configureren van IoT-apparaten op schaal
+title: Aanbevolen procedures voor het configureren van de apparaatconfiguratie voor Azure IoT Hub | Microsoft Docs
+description: Meer informatie over best practices voor het gebruik van automatische Apparaatbeheer om herhaalde en complexe taken te minimaliseren die betrokken zijn bij het beheer van IoT-apparaten op schaal.
 author: chrisgre
 ms.author: chrisgre
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 33e77d63b958df292ee9b4ac8ded41f3693cb6bc
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: a3b70af71c2ce19835ac2ef8fc8ceed79ca5fe1a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485817"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889534"
 ---
-# <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Aanbevolen procedures voor de configuratie van het apparaat in een IoT-oplossing
+# <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Aanbevolen procedures voor het configureren van apparaten binnen een IoT-oplossing
 
-Automatische Apparaatbeheer in Azure IoT Hub automatiseert veel herhaalde en complexe taken van grote apparaat vloten via het geheel van de levenscycli hiervan te beheren. In dit artikel worden veel van de aanbevolen procedures voor de verschillende rollen die betrokken zijn bij het ontwikkelen en het besturingssysteem van een IoT-oplossing.
+Automatische Apparaatbeheer in azure IoT Hub automatiseert veel herhaalde en complexe taken voor het beheren van grote apparaat vloots in de hele levens cyclus. In dit artikel worden veel van de aanbevolen procedures gedefinieerd voor de verschillende rollen die betrokken zijn bij het ontwikkelen en gebruiken van een IoT-oplossing.
 
-* **De fabrikant voor IoT-hardware/integrator:** Fabrikanten van IoT-hardware, integrators aan elkaar te koppelen hardware van verschillende fabrikanten of leveranciers leveren van hardware voor een IoT-implementatie geproduceerd of geïntegreerd met andere leveranciers. Bij het ontwikkelen en integreren van de firmware, embedded-besturingssystemen en ingesloten software.
+* **IOT-hardwarefabrikant/integrator:** Fabrikanten van IoT-hardware, integrators die hardware van verschillende fabrikanten assembleren, of leveranciers die hardware leveren voor een IoT-implementatie die is gefabriceerd of geïntegreerd door andere leveranciers. Betrokken bij de ontwikkeling en integratie van firmware, Inge sloten besturings systemen en Inge sloten software.
 
-* **Ontwikkelaarshandleiding voor IoT-oplossing:** De ontwikkeling van een IoT-oplossing wordt doorgaans uitgevoerd door een ontwikkelaar van de oplossing. Deze ontwikkelaar kan deel uitmaken van een interne team of een systeemintegrator dat is gespecialiseerd in deze activiteit. De ontwikkelaar van de IoT-oplossing kan verschillende onderdelen van de IoT-oplossing helemaal ontwikkelen, integreren van verschillende standard- of open-source-onderdelen of aanpassen een [IoT-oplossingsversnellers](/azure/iot-accelerators/).
+* **Ontwikkel aars van IOT-oplossingen:** De ontwikkeling van een IoT-oplossing wordt doorgaans uitgevoerd door een ontwikkelaar van oplossingen. Deze ontwikkelaar kan deel uitmaken van een intern team of een systeem integrator die is gespecialiseerd in deze activiteit. De ontwikkel aars van IoT-oplossingen kunnen verschillende onderdelen van de IoT-oplossing volledig ontwikkelen, verschillende standaard-of open source-onderdelen integreren of een [IOT-oplossings versneller](/azure/iot-accelerators/)aanpassen.
 
-* **IoT-oplossing operator:** Nadat de IoT-oplossing is geïmplementeerd, moet op de lange termijn gebruik, bewaking, upgrades en onderhoud. Deze taken kunnen worden gedaan door een interne team dat bestaat uit informatie technologie-specialisten, hardwarebewerkingen en onderhoud teams en domein-specialisten die de juiste werking van de algemene IoT-infrastructuur bewaken.
+* **IOT-oplossings operator:** Nadat de IoT-oplossing is geïmplementeerd, zijn langlopende bewerkingen, bewaking, upgrades en onderhoud vereist. Deze taken kunnen worden uitgevoerd door een intern team dat bestaat uit informatie technologie specialisten, hardware-bewerkingen en onderhouds teams, en domein specialisten die het juiste gedrag van de algemene IoT-infra structuur controleren.
 
-## <a name="understand-automatic-device-management-for-configuring-iot-devices-at-scale"></a>Informatie over het beheer van de automatische inrichting voor het configureren van IoT-apparaten op schaal
+## <a name="understand-automatic-device-management-for-configuring-iot-devices-at-scale"></a>Automatische Apparaatbeheer begrijpen voor het configureren van IoT-apparaten op schaal
 
-Automatische inrichting beheer omvat de vele voordelen van [apparaatdubbels](iot-hub-devguide-device-twins.md) en [moduledubbels](iot-hub-devguide-module-twins.md) om te synchroniseren van de gewenste en de gerapporteerde status tussen de cloud en apparaten. [Automatische apparaatconfiguraties](iot-hub-auto-device-config.md) automatisch bijwerken van grote gegevenssets dubbels en samen te vatten wordt uitgevoerd en naleving. De volgende geavanceerde stappen wordt beschreven hoe automatische Apparaatbeheer is ontwikkeld en gebruikt:
+Automatische Apparaatbeheer omvat de vele voor delen van [apparaatdubbels](iot-hub-devguide-device-twins.md) en [module apparaatdubbels](iot-hub-devguide-module-twins.md) om de gewenste en gerapporteerde statussen tussen de Cloud en apparaten te synchroniseren. Met [automatische hardwareconfiguraties](iot-hub-auto-device-config.md) worden grote sets van apparaatdubbels automatisch bijgewerkt en wordt de voortgang en naleving samenvatten. De volgende stappen op hoog niveau beschrijven hoe automatische Apparaatbeheer wordt ontwikkeld en gebruikt:
 
-* De **IoT hardware fabrikant/integrator** functies voor Apparaatbeheer in een ingesloten toepassing met behulp implementeert [apparaatdubbels](iot-hub-devguide-device-twins.md). Deze functies kunnen omvatten firmware-updates, software-installatie en update en instellingen beheren.
+* De **IOT hardware fabrikant/integrator** implementeert functies voor Apparaatbeheer binnen een Inge sloten toepassing met behulp van [apparaatdubbels](iot-hub-devguide-device-twins.md). Deze functies kunnen firmware-updates, software-installatie en-update en instellingen beheer omvatten.
 
-* De **IoT-oplossing developer** implementeert de beheerlaag van bewerkingen voor Apparaatbeheer met behulp van [apparaatdubbels](iot-hub-devguide-device-twins.md) en [automatische apparaatconfiguraties](iot-hub-auto-device-config.md). De oplossing moet opnemen met het definiëren van een operatorinterface om apparaat-beheertaken uitvoeren.
+* De **Software** van de IOT-oplossing implementeert de Management-laag van beheer bewerkingen voor apparaten met behulp van [apparaatdubbels](iot-hub-devguide-device-twins.md) en [automatische configuraties](iot-hub-auto-device-config.md)van apparaten. De oplossing moet een operator interface definiëren voor het uitvoeren van beheer taken voor het apparaat.
 
-* De **IoT-oplossing operator** maakt gebruik van de IoT-oplossing beheertaken apparaat, met name om apparaten te groeperen samen, wijzigingen in de configuratie, zoals firmware-updates initiëren, voortgang controleren en oplossen van problemen die ontstaan.
+* De **oplossings operator IOT** maakt gebruik van de IOT-oplossing voor het uitvoeren van beheer taken voor het apparaat, met name om apparaten te groeperen, configuratie wijzigingen te initiëren, zoals firmware-updates, de voortgang te controleren en problemen op te lossen die zich voordoen.
 
-## <a name="iot-hardware-manufacturerintegrator"></a>IoT hardware fabrikant/integrator
+## <a name="iot-hardware-manufacturerintegrator"></a>IoT-hardwarefabrikant/integrator
 
-Hier volgen de aanbevolen procedures voor hardwarefabrikanten en omgaan met ingesloten softwareontwikkeling integrators:
+Hieronder vindt u aanbevolen procedures voor hardwarefabrikanten en integrators die gebruikmaken van Inge sloten software ontwikkeling:
 
-* **Implementeer [apparaatdubbels](iot-hub-devguide-device-twins.md):** Dubbele apparaten inschakelen synchroniseren gewenste configuratie van de cloud en voor het rapporteren van de huidige configuratie en eigenschappen van een apparaat. De beste manier voor het implementeren van apparaatdubbels binnen embedded-toepassingen is via de [Azure IoT SDK's](https://github.com/Azure/azure-iot-sdks). Apparaatdubbels zijn bij uitstek geschikt voor de configuratie, omdat ze:
-
-    * Ondersteuning voor bidirectionele communicatie.
-    * Voor beide apparaatstatussen verbonden en niet-verbonden toestaan.
-    * Ga als volgt het principe van uiteindelijke consistentie.
-    * Volledig Apparaatmetagegevens zich in de cloud.
-
-* **Structuur van het dubbele apparaat voor beheer van apparaten:** Het dubbele apparaat moet worden gestructureerd zodat management apparaateigenschappen logisch zijn gegroepeerd in secties. In dat geval kunnen wijzigingen in de configuratie moeten worden geïsoleerd zonder gevolgen voor andere gedeelten van het dubbele. Maak bijvoorbeeld een sectie in de gewenste eigenschappen voor de firmware, een andere sectie voor software, en een derde sectie netwerkinstellingen. 
-
-* **Rapport-apparaatkenmerken die nuttig voor het beheer van apparaten zijn:** Kenmerken, zoals fysieke apparaten merk en model, firmware, besturingssystemen, serienummer, en andere id's zijn nuttig voor rapportage en als parameters die zijn gericht op wijzigingen in de configuratie.
-
-* **Definieer de belangrijkste Staten voor het melden van status en voortgang:** Op het hoogste niveau status moeten worden geïnventariseerd, zodat deze kunnen worden gerapporteerd aan de operator. Bijvoorbeeld, rapporteren een firmware-update status als de huidige, downloaden, toepassen, wordt uitgevoerd en fout. Extra velden voor meer informatie over elke status definiëren.
-
-## <a name="iot-solution-developer"></a>Ontwikkelaarshandleiding voor IoT-oplossing
-
-Hier volgen de aanbevolen procedures voor ontwikkelaars van de IoT-oplossingen die aan systemen op basis van in Azure werken:
-
-* **Implementeer [apparaatdubbels](iot-hub-devguide-device-twins.md):** Dubbele apparaten inschakelen synchroniseren gewenste configuratie van de cloud en voor het rapporteren van de huidige configuratie en eigenschappen van een apparaat. De beste manier voor het implementeren van apparaatdubbels in cloud solutions toepassingen is via de [Azure IoT SDK's](https://github.com/Azure/azure-iot-sdks). Apparaatdubbels zijn bij uitstek geschikt voor de configuratie, omdat ze:
+* **[Apparaatdubbels](iot-hub-devguide-device-twins.md)implementeren:** Met apparaatdubbels kan de gewenste configuratie vanuit de cloud worden gesynchroniseerd en voor de rapportage van de huidige configuratie en de apparaateigenschappen. De beste manier om apparaatdubbels binnen Inge sloten toepassingen te implementeren, is via de [Azure IOT sdk's](https://github.com/Azure/azure-iot-sdks). Apparaatdubbels van apparaten zijn het meest geschikt voor configuratie omdat:
 
     * Ondersteuning voor bidirectionele communicatie.
-    * Voor beide apparaatstatussen verbonden en niet-verbonden toestaan.
-    * Ga als volgt het principe van uiteindelijke consistentie.
-    * Volledig Apparaatmetagegevens zich in de cloud.
+    * De status van apparaten die zijn verbonden met een apparaat zonder verbinding.
+    * Volg het principe van uiteindelijke consistentie.
+    * Zijn volledig apparaatmetagegevens in de Cloud.
 
-* **Apparaten met apparaat dubbele tags indelen:** De oplossing moet de operator voor het definiëren van kwaliteit ringen of andere sets met apparaten op basis van verschillende implementatiestrategieën voor, zoals Canarische toestaan. Apparaat-organisatie kan worden geïmplementeerd in uw oplossing met behulp van apparaat apparaatdubbel-tags en [query's](iot-hub-devguide-query-language.md). Apparaat-organisatie is die nodig zijn om toe te staan voor de configuratie van implementatie-outs veilig en nauwkeurig.
+* **Het apparaat onderstructuur voor Apparaatbeheer:** Het dubbele apparaat moet zodanig zijn gestructureerd dat de eigenschappen van Apparaatbeheer in secties logisch zijn gegroepeerd. Hierdoor kunnen configuratie wijzigingen worden geïsoleerd zonder dat dit van invloed is op andere onderdelen van de dubbele. U kunt bijvoorbeeld een sectie maken binnen de gewenste eigenschappen voor de firmware, een andere sectie voor software en een derde sectie voor netwerk instellingen. 
 
-* **Implementeer [automatische apparaatconfiguraties](iot-hub-auto-device-config.md):** Automatische inrichting configuraties implementeren en monitorconfiguratie wordt gewijzigd op grote sets van IoT-apparaten via dubbele apparaten.
+* **Kenmerken van apparaten rapporteren die nuttig zijn voor Apparaatbeheer:** Kenmerken zoals het merk en model van fysieke apparaten, firmware, besturings systeem, serie nummer en andere id's zijn handig voor rapportage en als para meters voor het instellen van configuratie wijzigingen.
 
-   Automatische apparaatconfiguraties doel sets met dubbele apparaten via de **voorwaarde, doel** die een query op apparaat apparaatdubbel-tags of gerapporteerde eigenschappen. De **inhoud richten** is de set van gewenste eigenschappen die in de betreffende apparaatdubbels worden ingesteld. De inhoud van het doel moet worden uitgelijnd met de apparaat-twin-structuur gedefinieerd door de fabrikant IoT hardware/integrator. De **metrische gegevens** zijn query's op het dubbele apparaat gerapporteerde eigenschappen en moeten ook worden uitgelijnd met de apparaat-twin-structuur gedefinieerd door de fabrikant IoT hardware/integrator.
+* **Definieer de belangrijkste statussen voor rapportage status en voortgang:** Statussen op het hoogste niveau moeten worden geïnventariseerd zodat ze aan de operator kunnen worden gerapporteerd. Zo rapporteert een firmware-update status als actueel, downloaden, Toep assen, in uitvoering en fout. Aanvullende velden definiëren voor meer informatie over elke status.
 
-   Automatische inrichting configuraties uitvoeren voor de eerste keer kort nadat de configuratie wordt gemaakt en klik vervolgens met intervallen van vijf minuten. Ze ook profiteren van de IoT-Hub uitvoeren van bewerkingen van dubbele apparaat met een snelheid die nooit overschrijdt de [beperkingslimieten](iot-hub-devguide-quotas-throttling.md) voor apparaat dubbele leesbewerkingen en updates.
+## <a name="iot-solution-developer"></a>Ontwikkel aars van IoT-oplossingen
 
-* **Gebruik de [Device Provisioning Service](../iot-dps/how-to-manage-enrollments.md):** Ontwikkelaars, moeten de Device Provisioning Service gebruiken om te device twin labels toewijzen aan nieuwe apparaten, zodat ze automatisch worden geconfigureerd door **automatische apparaatconfiguraties** die zijn gericht op dubbele met die tag. 
+Hier volgen de aanbevolen procedures voor ontwikkel aars van IoT-oplossingen die systemen maken op basis van Azure:
 
-## <a name="iot-solution-operator"></a>Operator voor IoT-oplossing
+* **[Apparaatdubbels](iot-hub-devguide-device-twins.md)implementeren:** Met apparaatdubbels kan de gewenste configuratie vanuit de cloud worden gesynchroniseerd en voor de rapportage van de huidige configuratie en de apparaateigenschappen. De beste manier om apparaatdubbels in Cloud Solutions-toepassingen te implementeren, is via de [Azure IOT sdk's](https://github.com/Azure/azure-iot-sdks). Apparaatdubbels van apparaten zijn het meest geschikt voor configuratie omdat:
 
-Hier volgen de aanbevolen procedures voor IoT-oplossing operators die met behulp van een IoT-oplossing die is gebouwd op Azure:
+    * Ondersteuning voor bidirectionele communicatie.
+    * De status van apparaten die zijn verbonden met een apparaat zonder verbinding.
+    * Volg het principe van uiteindelijke consistentie.
+    * Zijn volledig apparaatmetagegevens in de Cloud.
 
-* **Apparaten voor beheer indelen:** De IoT-oplossing moet definiëren of toe te staan voor het maken van kwaliteit ringen of andere sets met apparaten op basis van verschillende implementatiestrategieën voor, zoals Canarische. De sets met apparaten wordt gebruikt om te implementeren wijzigingen in de configuratie en andere bewerkingen voor Apparaatbeheer op schaal uitvoeren.
+* **Apparaten ordenen met Device-dubbele Tags:** De oplossing moet de operator toestaan kwaliteits ringen of andere sets apparaten te definiëren op basis van verschillende implementatie strategieën zoals Canarische. De organisatie van een apparaat kan worden geïmplementeerd in uw oplossing met behulp van dubbele Tags en [query's](iot-hub-devguide-query-language.md)van het apparaat. De inrichting van het apparaat is nood zakelijk om configuratie-uitrollen veilig en nauw keurig mogelijk te maken.
 
-* **Voer de wijzigingen in de configuratie met behulp van een gefaseerde uitrol:**  Een gefaseerde uitrol is een algemene proces waarbij wijzigingen in een operator worden geïmplementeerd op een leven set IoT-apparaten. Het doel is om wijzigingen aanbrengen geleidelijk in vermindert het risico van het maken van grote schaal belangrijke wijzigingen.  De operator moet de interface van de oplossing gebruiken om te maken een [automatische apparaatconfiguratie](iot-hub-auto-device-config.md) en de doelitems voorwaarde moet het doel een eerste set met apparaten (zoals een canary groep). De operator moet de configuratiewijziging in de eerste set met apparaten vervolgens te valideren.
+* **[Automatische configuraties van apparaten](iot-hub-auto-device-config.md)implementeren:** Met automatische apparaatconfiguratie worden configuratie wijzigingen in grote sets van IoT-apparaten geïmplementeerd en gecontroleerd via apparaat apparaatdubbels.
 
-   Nadat de validatie voltooid is, wordt de operator de configuratie van automatische inrichting om op te nemen van een grotere set van apparaten bijgewerkt. De operator moet de prioriteit voor de configuratie moet hoger zijn dan andere configuraties die momenteel wordt toegepast op die apparaten ook worden ingesteld. De implementatie kan worden gecontroleerd met behulp van de metrische gegevens gerapporteerd door de configuratie van automatische inrichting.
+   Automatische configuraties doel sets van apparaatdubbels via de **doel voorwaarde,** een query op apparaatspecifieke Tags of gerapporteerde eigenschappen van het apparaat. De **doel inhoud** is de set gewenste eigenschappen die worden ingesteld binnen de apparaatdubbels van het doel apparaat. De doel inhoud moet worden uitgelijnd met de dubbele structuur van het apparaat dat is gedefinieerd door de IoT hardware fabrikant/integrator. De **metrische gegevens** zijn query's op dubbele gerapporteerde eigenschappen van het apparaat en moeten ook worden uitgelijnd met de dubbele structuur van het apparaat dat is gedefinieerd door de IOT hardware fabrikant/integrator.
 
-* **Voer terugdraaiacties in het geval van fouten of onjuiste configuraties:**  Een automatische apparaatconfiguratie die ervoor zorgt fouten of onjuiste configuraties dat kan worden teruggedraaid door het veranderen van de **die gericht is op voorwaarde** zodat de apparaten niet langer voldoet aan de doelitems voorwaarde. Zorg ervoor dat een andere automatische configuratie met een lagere prioriteit nog steeds voor deze apparaten is gericht. Controleren of het terugdraaien is geslaagd door de metrische gegevens weer te geven: Status voor untargeted apparaten niet meer moet worden weergegeven door de service-Update-back-configuratie en metrische gegevens van de configuratie van de tweede bevatten nu aantallen voor de apparaten die nog steeds zijn gericht.
+   Automatische apparaatconfiguratie wordt voor het eerst uitgevoerd, kort nadat de configuratie is gemaakt en vervolgens met een interval van vijf minuten. Ze profiteren ook van de IoT Hub het uitvoeren van drijvende-verwerkings apparaten met een snelheid die nooit groter is dan de [beperkings limieten](iot-hub-devguide-quotas-throttling.md) voor dubbele Lees bewerkingen en updates van het apparaat.
+
+* **De [Device Provisioning Service](../iot-dps/how-to-manage-enrollments.md)gebruiken:** ontwikkel aars van oplossingen moeten de Device Provisioning Service gebruiken voor het toewijzen van apparaatbesturing-Tags aan nieuwe apparaten, zodat ze automatisch worden geconfigureerd door **automatische configuraties van apparaten** die zijn gericht op apparaatdubbels met die tag. 
+
+## <a name="iot-solution-operator"></a>IoT-oplossings operator
+
+Hieronder vindt u aanbevolen procedures voor IoT-oplossings operators die gebruikmaken van een IoT-oplossing die is gebouwd op Azure:
+
+* **Apparaten ordenen voor beheer:** De IoT-oplossing moet bepalen of toestaan dat kwaliteits ringen of andere sets apparaten worden gemaakt op basis van verschillende implementatie strategieën zoals Canarische. De sets apparaten worden gebruikt voor het implementeren van configuratie wijzigingen en voor het uitvoeren van andere beheer bewerkingen voor Apparaatbeheer.
+
+* **Configuratie wijzigingen uitvoeren met behulp van een gefaseerde implementatie:**  Een gefaseerde implementatie is een algemeen proces waarbij een operator wijzigingen implementeert in een uitgebreidere set IoT-apparaten. Het doel is om wijzigingen geleidelijk aan te brengen om het risico te verkleinen dat er grote veranderingen in de omvang ontstaan.  De operator moet de interface van de oplossing gebruiken voor het maken van een [automatische apparaatconfiguratie](iot-hub-auto-device-config.md) en de doel voorwaarde moet gericht zijn op een eerste set apparaten (zoals een Canarische groep). De operator moet vervolgens de configuratie wijziging valideren in de eerste set apparaten.
+
+   Zodra de validatie is voltooid, wordt de automatische apparaatconfiguratie door de operator bijgewerkt zodat deze een grotere set apparaten bevat. De operator moet de prioriteit voor de configuratie ook instellen op hoger dan andere configuraties die momenteel zijn gericht op die apparaten. De implementatie kan worden bewaakt met behulp van de metrische gegevens die worden gerapporteerd door de automatische apparaatconfiguratie.
+
+* **Terugdraai acties uitvoeren in geval van fouten of onjuiste configuraties:**  Een automatische apparaatconfiguratie die fouten of onjuiste configuraties veroorzaakt, kan worden teruggedraaid door de **doel voorwaarde** te wijzigen zodat de apparaten niet langer voldoen aan de doel voorwaarde. Zorg ervoor dat een andere automatische apparaatconfiguratie met een lagere prioriteit nog steeds is gericht op deze apparaten. Controleer of het terugdraaien is geslaagd door de metrische gegevens weer te geven: de gerollte back-upconfiguratie moet niet langer de status voor niet-doel apparaten weer geven en de metrische gegevens van de tweede configuratie moeten nu tellingen bevatten voor de apparaten die nog steeds zijn gericht.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het implementeren van apparaatdubbels in [apparaatdubbels begrijpen en gebruiken in IoT Hub](iot-hub-devguide-device-twins.md).
+* Meer informatie over het implementeren van apparaatdubbels in de [apparaatdubbels in IOT hub](iot-hub-devguide-device-twins.md).
 
-* Doorloop de stappen voor het maken, bijwerken of verwijderen van een configuratie voor automatische inrichting in [configureren en controleren van IoT-apparaten op schaal](iot-hub-auto-device-config.md).
+* Door loop de stappen om een automatische apparaatconfiguratie te maken, bij te werken of te verwijderen in [IOT-apparaten configureren en controleren op schaal](iot-hub-auto-device-config.md).
 
-* Implementeren van een firmware-update-patroon met behulp van apparaatdubbels en automatische apparaatconfiguraties in [zelfstudie: Implementeren van een apparaat firmware-updateproces](tutorial-firmware-update.md).
+* Een firmware-update patroon implementeren met behulp van apparaat apparaatdubbels en automatische apparaatconfiguratie in [zelf studie: een update proces voor een firmware van een apparaat implementeren](tutorial-firmware-update.md).

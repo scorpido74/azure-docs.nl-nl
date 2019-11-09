@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 366986f989fdd8d76b1707451c2a7cca2aa554cf
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ee4e9bd5487382ebb6f57996aac5d3de1ff6162a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719969"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890066"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Quick Start: een Azure Cognitive Search-index maken in de Azure Portal
 > [!div class="op_single_selector"]
@@ -68,9 +68,7 @@ Voor deze zelf studie gebruiken we een ingebouwde voor beeld-gegevensset die met
 
 3. Ga door naar de volgende pagina.
 
-   ![De knop volgende pagina voor Cognitive Search](media/search-get-started-portal/next-button-add-cog-search.png)
-
-### <a name="step-2---skip-cognitive-skills"></a>Stap 2: cognitieve vaardigheden overslaan
+### <a name="step-2---skip-the-enrich-content-page"></a>Stap 2: de pagina verrijkte inhoud overs Laan
 
 De wizard ondersteunt het maken van een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) voor het opnemen van de Cognitive Services AI-algoritmen in indexering. 
 
@@ -104,7 +102,6 @@ Standaard wordt met de wizard de gegevensbron gescand op unieke id's als basis v
 
 2. Ga door naar de volgende pagina.
 
-   ![Volgende pagina Indexeerfunctie maken](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>Stap 4: indexeerfunctie configureren
 
@@ -127,6 +124,8 @@ Het kan een paar minuten duren voordat in de portal de pagina is bijgewerkt, maa
 ## <a name="view-the-index"></a>De index bekijken
 
 Op de pagina hoofd service vindt u koppelingen naar de resources die in de Azure Cognitive Search-service zijn gemaakt.  Als u de index wilt bekijken die u zojuist hebt gemaakt, klikt u op **Indexen** in de lijst met koppelingen. 
+
+Wacht tot de portal pagina is vernieuwd. Na enkele minuten ziet u de index met het aantal documenten en de opslag grootte.
 
    ![Lijst met indexen op het servicedashboard](media/search-get-started-portal/indexes-list.png)
 
@@ -154,7 +153,7 @@ U zou nu een zoekindex moeten hebben die klaar is om query’s uit te voeren met
 
    ![Opdracht Search Explorer](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. Kies in de vervolg keuzelijst **index** de optie *hotels-voor beeld*. Klik op de vervolg keuzelijst **API-versie** om te zien welke rest api's beschikbaar zijn. Gebruik de algemeen beschik bare versie (2019-05-06) voor de onderstaande query's.
+2. Kies in de vervolg keuzelijst **index** de optie *hotels-voor beeld-index*. Klik op de vervolg keuzelijst **API-versie** om te zien welke rest api's beschikbaar zijn. Gebruik de algemeen beschik bare versie (2019-05-06) voor de onderstaande query's.
 
    ![Index- en API-opdrachten](media/search-get-started-portal/search-explorer-changeindex.png)
 

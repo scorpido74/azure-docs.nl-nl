@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: f27b910910ca21aa36582506e6c7b2d1d39da88a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ce5d2965d0127eec01620c702d7d83bd0b39416
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472861"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885789"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Schaal een cluster automatisch om te voldoen aan de vereisten van de toepassing op de Azure Kubernetes-service (AKS)
 
@@ -122,6 +122,35 @@ U kunt het cluster hand matig schalen na het uitschakelen van de automatische cl
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>Een uitgeschakelde cluster automatisch schalen opnieuw inschakelen
 
 Als u de automatisch schalen van het cluster opnieuw wilt inschakelen op een bestaand cluster, kunt u het opnieuw inschakelen met de opdracht [AZ AKS update][az-aks-update] , waarbij u de para *meter--Enable-cluster-auto Scaler*, *--min-Count*en *--maximum-Count* opgeeft.
+
+## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>Logboeken en status van automatische cluster-uitschalen ophalen
+
+Voor het diagnosticeren en opsporen van fouten in de functie voor automatisch schalen, kunnen Logboeken en statussen worden opgehaald uit de invoeg toepassing voor automatisch schalen.
+
+AKS beheert de automatisch schalen van het cluster namens u en voert dit uit in het beheerde besturings vlak. Hoofd knooppunt Logboeken moeten zo worden geconfigureerd dat ze als resultaat worden weer gegeven.
+
+Ga als volgt te werk om logboeken te configureren die moeten worden gepusht van de automatische clustering van clusters naar Log Analytics deze stappen uit te voeren.
+
+1. Stel een regel voor Diagnostische logboeken in om de logboeken van het automatisch schalen van het cluster te Log Analytics. [Instructies worden hier beschreven](https://docs.microsoft.com/azure/aks/view-master-logs#enable-diagnostics-logs), zodat u het selectie vakje inschakelt voor `cluster-autoscaler` bij het selecteren van opties voor Logboeken.
+1. Klik op de sectie ' logs ' op het cluster via de Azure Portal.
+1. Voer de volgende voorbeeld query in op Log Analytics:
+
+```
+AzureDiagnostics
+| where Category == "cluster-autoscaler"
+```
+
+Er worden logboeken weer gegeven die vergelijkbaar zijn met het volgende geretourneerd, zolang er logboeken zijn die moeten worden opgehaald.
+
+![Log Analytics logboeken](media/autoscaler/autoscaler-logs.png)
+
+De automatische schaal functie van het cluster schrijft ook de integriteits status naar een configmap met de naam `cluster-autoscaler-status`. Als u deze logboeken wilt ophalen, voert u de volgende `kubectl` opdracht uit. Er wordt een integriteits status gerapporteerd voor elke knooppunt groep die is geconfigureerd met de cluster-automatische schaal functie.
+
+```
+kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
+```
+
+Lees de veelgestelde vragen over het [github-project van Kubernetes/autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#ca-doesnt-work-but-it-used-to-work-yesterday-why)voor meer informatie over wat er wordt vastgelegd van de automatische schaal bewerking.
 
 ## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>De automatische clustering van clusters gebruiken met meerdere knooppunt Pools ingeschakeld
 

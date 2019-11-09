@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: hrasheed
-ms.openlocfilehash: b9bcaf4b7497e8beba377eb7e47a44a6eb061299
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: d662ad59722658ed888aa732c1f45afdf48f850c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178014"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889209"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights"></a>Zelf studie: een end-to-end gegevens pijplijn maken om verkoop inzichten af te leiden
 
@@ -33,7 +33,7 @@ Down load [Power bi Desktop](https://www.microsoft.com/download/details.aspx?id=
 
 ### <a name="clone-the-repository-with-scripts-and-data"></a>De opslag plaats klonen met scripts en gegevens
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Open Azure Cloud Shell in de bovenste menu balk. Selecteer uw abonnement voor het maken van een bestands share als Cloud Shell u hierom vraagt.
 
    ![Azure Cloud Shell openen](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
@@ -101,7 +101,7 @@ Het standaard wachtwoord voor SSH-toegang tot de clusters is `Thisisapassword1`.
 ### <a name="verify-deployment-and-collect-resource-information"></a>Implementatie controleren en resource gegevens verzamelen
 
 1. Als u de status van uw implementatie wilt controleren, gaat u naar de resource groep op de Azure Portal. Selecteer **implementaties** onder **instellingen**. Selecteer de naam van uw implementatie, `ResourcesDeployment`. Hier ziet u de resources die zijn geïmplementeerd en de resources die nog worden uitgevoerd.
-1. Nadat de implementatie is voltooid, gaat u naar de Azure Portal > **resource groepen** > < RESOURCE_GROUP_NAME->.
+1. Nadat de implementatie is voltooid, gaat u naar de Azure Portal > **resource groepen** > < RESOURCE_GROUP_NAME >.
 1. Zoek het nieuwe Azure-opslag account dat is gemaakt voor het opslaan van de verkoop bestanden. De naam van het opslag account begint met `blob` en bevat een wille keurige teken reeks. Ga als volgt te werk:
    1. Noteer de naam van het opslag account voor later gebruik.
    1. Selecteer de naam van het Blob Storage-account.
@@ -122,9 +122,9 @@ Het standaard wachtwoord voor SSH-toegang tot de clusters is `Thisisapassword1`.
 >    --output table
 > ```
 
-### <a name="create-a-data-factory"></a>Een gegevensfactory maken
+### <a name="create-a-data-factory"></a>Een data factory maken
 
-Azure Data Factory is een hulp programma waarmee Azure-pijp lijnen kunnen worden geautomatiseerd. Het is niet de enige manier om deze taken uit te voeren, maar het is een uitstekende manier om de processen te automatiseren. Raadpleeg de [Azure Data Factory documentatie](https://azure.microsoft.com/en-us/services/data-factory/)voor meer informatie over Azure Data Factory. 
+Azure Data Factory is een hulp programma waarmee Azure-pijp lijnen kunnen worden geautomatiseerd. Het is niet de enige manier om deze taken uit te voeren, maar het is een uitstekende manier om de processen te automatiseren. Raadpleeg de [Azure Data Factory documentatie](https://azure.microsoft.com/services/data-factory/)voor meer informatie over Azure Data Factory. 
 
 Deze data factory heeft één pijp lijn met twee activiteiten: 
 
@@ -173,7 +173,7 @@ Als u de pijp lijnen wilt activeren, kunt u het volgende doen:
 Om te controleren of de pijp lijnen zijn uitgevoerd, kunt u een van de volgende stappen uitvoeren:
 
 - Ga naar de sectie **monitor** in uw Data Factory via de portal.
-- Ga in Azure Storage Explorer naar uw Data Lake Storage gen 2-opslag account. Ga naar het bestands systeem van @no__t 0, ga naar de map `transformed` en controleer de inhoud ervan om te zien of de pijp lijn is geslaagd.
+- Ga in Azure Storage Explorer naar uw Data Lake Storage gen 2-opslag account. Ga naar het `files` bestands systeem, ga naar de map `transformed` en controleer de inhoud om te zien of de pijp lijn is geslaagd.
 
 Zie [dit artikel over het gebruik van Jupyter notebook](/azure/hdinsight/spark/apache-spark-load-data-run-query)voor andere manieren om gegevens te transformeren met behulp van HDInsight.
 
