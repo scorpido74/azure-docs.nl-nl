@@ -1,37 +1,30 @@
 ---
-title: Azure Data Lake Storage Gen1 beheren in Azure Storage Explorer
-description: Leer hoe u toegang tot en beheer uw Azure Data Lake Storage Gen1 gegevens en resources in Azure Storage Explorer
-Keywords: Azure Data Lake Store, Azure Storage Explorer
-services: Data Lake Store
-documentationcenter: ''
+title: Data Lake Storage Gen1 resources beheren-Azure Storage Explorer
+description: Meer informatie over het openen en beheren van uw Azure Data Lake Storage Gen1 gegevens en resources in Azure Storage Explorer
 author: jejiang
-manager: DJ
-editor: Jenny Jiang
-ms.assetid: ''
 ms.service: data-lake-store
-ms.custom: Azure Data Lake Store
-ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: 18ef1f182611a9c8fbf24cd08026633f5449bbe9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5117f72f933e1e48dc471a75624a8d3921f55af
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60613617"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832265"
 ---
-# <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Azure Data Lake Storage Gen1 resources beheren met behulp van Storage Explorer
+# <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Azure Data Lake Storage Gen1-resources beheren met Storage Explorer
 
-[Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) is een service voor het opslaan van grote hoeveelheden ongestructureerde gegevens, zoals tekst of binaire gegevens. U kunt overal toegang tot de gegevens krijgen via HTTP of HTTPS. Data Lake Storage Gen1 in Azure Storage Explorer kunt u toegang tot en beheer van Data Lake Storage Gen1 gegevens en resources samen met andere Azure-entiteiten, zoals blobs en wachtrijen. U kunt nu hetzelfde hulpprogramma gebruiken om uw verschillende Azure entiteiten op één plek te beheren.
+[Azure data Lake Storage gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) is een service voor het opslaan van grote hoeveel heden ongestructureerde gegevens, zoals tekst of binaire gegevens. U kunt overal toegang tot de gegevens krijgen via HTTP of HTTPS. Met Data Lake Storage Gen1 in Azure Storage Explorer kunt u Data Lake Storage Gen1 gegevens en-resources openen en beheren, samen met andere Azure-entiteiten, zoals blobs en wacht rijen. U kunt nu hetzelfde hulpprogramma gebruiken om uw verschillende Azure entiteiten op één plek te beheren.
 
-Een ander voordeel is dat u niet nodig hebt voor het beheren van Data Lake Storage Gen1 gegevens. In Storage Explorer kunt u koppelen van het Data Lake Storage Gen1 pad naar de **lokaal en gekoppeld** knooppunt als iemand toestemming verleent.
+Een ander voor deel is dat u geen abonnements machtiging nodig hebt om Data Lake Storage Gen1 gegevens te beheren. In Storage Explorer kunt u het Data Lake Storage Gen1 pad koppelen aan het **lokale en gekoppelde** knoop punt, zolang iemand de machtiging verleent.
 
 ## <a name="prerequisites"></a>Vereisten
+
 U moet de volgende vereiste zaken hebben om de stappen in dit artikel uit te voeren:
 
-*   Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial).
-*   Een Data Lake Storage Gen1-account. Zie voor instructies over het maken van een [aan de slag met Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
+* Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial).
+* Een Data Lake Storage Gen1-account. Zie [aan de slag met Azure data Lake Storage gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)voor instructies over het maken van een account.
 
 ## <a name="install-storage-explorer"></a>Storage Explorer installeren
 
@@ -40,18 +33,18 @@ Installeer de meest recente Azure Storage Explorer-bits vanaf de [productwebpagi
 ## <a name="connect-to-an-azure-subscription"></a>Verbinding maken met een Azure-abonnement
 
 1. Selecteer in Storage Explorer het pictogram voor de invoegtoepassing aan de linkerkant.
-       
+
    ![Pictogram voor de invoegtoepassing](./media/data-lake-store-in-storage-explorer/plug-in-icon.png)
- 
-2. Selecteer **Een Azure-account toevoegen** en selecteer vervolgens **Aanmelden**.
+
+1. Selecteer **Een Azure-account toevoegen** en selecteer vervolgens **Aanmelden**.
 
    ![Dialoogvenster Verbinding maken met Azure Storage](./media/data-lake-store-in-storage-explorer/connect-to-azure-subscription.png)
 
-2. Voer in het dialoogvenster **Aanmelden bij uw account** uw Azure-referenties in.
+1. Voer in het dialoogvenster **Aanmelden bij uw account** uw Azure-referenties in.
 
     ![Dialoogvenster voor aanmelden bij Azure](./media/data-lake-store-in-storage-explorer/sign-in.png)
 
-3. Selecteer uw abonnement in de lijst en selecteer vervolgens **Toepassen**.
+1. Selecteer uw abonnement in de lijst en selecteer vervolgens **Toepassen**.
 
     ![Abonnementsgegevens en knop Toepassen](./media/data-lake-store-in-storage-explorer/apply-subscription.png)
 
@@ -59,10 +52,12 @@ Installeer de meest recente Azure Storage Explorer-bits vanaf de [productwebpagi
 
     ![Lijst met accounts](./media/data-lake-store-in-storage-explorer/account-list.png)
 
-U hebt de Data Lake Storage Gen1 is verbonden met uw Azure-abonnement.
+U hebt Data Lake Storage Gen1 verbonden met uw Azure-abonnement.
 
 ## <a name="connect-to-data-lake-storage-gen1"></a>Verbinding maken met Data Lake Storage Gen1
-U kunt resources openen die niet voor uw abonnement bestaan als iemand u de URI voor de resources geeft. U kunt vervolgens verbinding maken met Data Lake Storage Gen1 met behulp van de URI nadat u zich hebt aangemeld.
+
+U kunt resources openen die niet voor uw abonnement bestaan als iemand u de URI voor de resources geeft. Nadat u zich hebt aangemeld, kunt u verbinding maken met Data Lake Storage Gen1 met behulp van de URI.
+
 1. Open Storage Explorer.
 2. Vouw **Lokaal en gekoppeld** uit in het linkerdeelvenster.
 3. Klik met de rechtermuisknop op **Data Lake Store** en selecteer **Verbinding maken met Data Lake Store**.
@@ -73,48 +68,51 @@ U kunt resources openen die niet voor uw abonnement bestaan als iemand u de URI 
 
       ![Dialoogvenster Verbinding maken met Data Lake Store, met het tekstvak voor invoer van de URI](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-uri-attach-dialog.png)
 
-      ![Resultaat van de verbinding te maken met Data Lake Storage Gen1](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-attach-finish.png)
+      ![Resultaat van het maken van verbinding met Data Lake Storage Gen1](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-attach-finish.png)
 
-## <a name="view-a-data-lake-storage-gen1-accounts-contents"></a>Inhoud van een Data Lake Storage Gen1-account weergeven
-Resources van een Data Lake Storage Gen1 account bevatten mappen en bestanden.
+## <a name="view-a-data-lake-storage-gen1-accounts-contents"></a>De inhoud van een Data Lake Storage Gen1 account weer geven
 
-De volgende stappen laten zien hoe u de inhoud van een Data Lake Storage Gen1 account binnen Storage Explorer weergeven:
+De bronnen van een Data Lake Storage Gen1-account bevatten mappen en bestanden.
+
+De volgende stappen laten zien hoe u de inhoud van een Data Lake Storage Gen1 account kunt weer geven in Storage Explorer:
 
 1. Open Storage Explorer.
-2. Vouw in het linkerdeelvenster het abonnement met het Gen1 van Data Lake Storage-account dat u wilt weergeven.
+2. Vouw in het linkerdeel venster het abonnement uit dat het Data Lake Storage Gen1-account bevat dat u wilt weer geven.
 3. Vouw **Data Lake Store** uit.
-4. Met de rechtermuisknop op het knooppunt van het Data Lake Storage Gen1-account die u wilt weergeven, en selecteer vervolgens **Open**. U kunt ook dubbelklikken op het Data Lake Storage Gen1-account om deze te openen. 
-   
-   In het hoofdvenster wordt de inhoud van de account van de Data Lake Storage Gen1 weergegeven.
+4. Klik met de rechter muisknop op het Data Lake Storage Gen1 account knooppunt dat u wilt weer geven en selecteer vervolgens **openen**. U kunt ook dubbel klikken op het Data Lake Storage Gen1-account om het te openen.
 
-   ![Hoofdvenster met een lijst mappen](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-toolbar-mainpane.png) 
+   In het hoofd venster wordt de inhoud van het Data Lake Storage Gen1-account weer gegeven.
+
+   ![Hoofdvenster met een lijst mappen](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-toolbar-mainpane.png)
 
 ## <a name="manage-resources-in-data-lake-storage-gen1"></a>Resources in Data Lake Storage Gen1 beheren
 
-U kunt Data Lake Storage Gen1 resources kunt beheren op deze manier volgende bewerkingen:
-*   Blader door de Data Lake Storage Gen1 resources in meerdere Gen1 van Data Lake Storage-accounts.  
-*   Gebruik een verbindingsreeks te verbinden met Data Lake Storage Gen1 rechtstreeks beheren. 
-*   Data Lake Storage Gen1 die worden gedeeld met anderen via een ACL onder weergeven **lokaal en gekoppeld**.
-*   Voer CRUD-bewerkingen uit voor bestanden en mappen: bied ondersteuning voor recursieve mappen en meervoudig geselecteerde bestanden. 
-*   Sleep een map en voeg deze toe voor snelle toegang van recent gebruikte locaties. Deze bewerking is analoog aan die van Verkenner op het bureaublad. 
-*   Kopieer en open een Data Lake Storage Gen1 hyperlink in Storage Explorer met één klik. 
-*   Geef het activiteitenlogboek weer in het deelvenster rechtsonder om de activiteitsstatus te bekijken.
-*   Geef de mapstatistieken en de bestandseigenschappen weer.
+U kunt Data Lake Storage Gen1-resources beheren door de volgende bewerkingen uit te voeren:
+
+* Bladeren door Data Lake Storage Gen1 resources over meerdere Data Lake Storage Gen1 accounts.  
+* Gebruik een connection string om Data Lake Storage Gen1 rechtstreeks verbinding te maken en te beheren.
+* Data Lake Storage Gen1 resources weer geven die door anderen worden gedeeld via een ACL onder **lokaal en gekoppeld**.
+* Voer CRUD-bewerkingen uit voor bestanden en mappen: bied ondersteuning voor recursieve mappen en meervoudig geselecteerde bestanden.
+* Sleep een map en voeg deze toe voor snelle toegang van recent gebruikte locaties. Deze bewerking is analoog aan die van Verkenner op het bureaublad.
+* Kopieer en open een Data Lake Storage Gen1 Hyper link in Storage Explorer met één klik.
+* Geef het activiteitenlogboek weer in het deelvenster rechtsonder om de activiteitsstatus te bekijken.
+* Geef de mapstatistieken en de bestandseigenschappen weer.
 
 ## <a name="manage-resources-in-azure-storage-explorer"></a>Beheer resources in Azure Storage Explorer
-Nadat u een Data Lake Storage Gen1-account maakt, kunt u het volgende doen:
+
+Nadat u een Data Lake Storage Gen1-account hebt gemaakt, kunt u het volgende doen:
 
 * Mappen en bestanden uploaden en downloaden, en resources op de lokale computer openen.
 * Items vastmaken aan **Snelle toegang**, nieuwe mappen maken, URL's kopiëren en alles selecteren.
 * Kopiëren en plakken, wijzigen, verwijderen, mapstatistieken ophalen, en vernieuwen.
 
-De volgende items laten zien hoe u resources binnen een Gen1 van Data Lake Storage-account beheren. Volg de stappen voor de taak die u wilt uitvoeren.
+De volgende items laten zien hoe u resources binnen een Data Lake Storage Gen1-account kunt beheren. Volg de stappen voor de taak die u wilt uitvoeren.
 
 ### <a name="upload-files"></a>Bestanden uploaden
 
 1. Selecteer **Uploaden** op de werkbalk van het hoofdvenster en selecteer vervolgens **Bestanden uploaden** in de vervolgkeuzelijst.
 
-   ![Menu-item Bestanden uploaden](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-files-menu.png) 
+   ![Menu-item Bestanden uploaden](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-files-menu.png)
 
 2. Selecteer in het dialoogvenster **Bestanden selecteren voor uploaden** de bestanden die u wilt uploaden.
 
@@ -126,19 +124,19 @@ De volgende items laten zien hoe u resources binnen een Gen1 van Data Lake Stora
 
 1. Selecteer **Uploaden** op de werkbalk van het hoofdvenster en selecteer vervolgens **Map uploaden** in de vervolgkeuzelijst.
 
-   ![Menu-item Map uploaden](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-menu.png) 
-     
+   ![Menu-item Map uploaden](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-menu.png)
+
 2. Selecteer in het dialoogvenster **Map selecteren voor uploaden** een map die u wilt uploaden. Klik vervolgens op **Map selecteren**.
 
-   ![Dialoogvenster voor het uploaden van mappen](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-dialog.png)      
+   ![Dialoogvenster voor het uploaden van mappen](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-dialog.png)
 
    Het uploaden wordt gestart.
 
-   ![Dialoogvenster waarin de voortgang van het uploaden wordt getoond](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-drag.png) 
+   ![Dialoogvenster waarin de voortgang van het uploaden wordt getoond](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-drag.png)
 
 > [!NOTE]
-> U kunt de mappen en bestanden rechtstreeks in een lokale computer slepen om het uploaden te starten. 
-       
+> U kunt de mappen en bestanden rechtstreeks in een lokale computer slepen om het uploaden te starten.
+
 ### <a name="download-folders-or-files-to-your-local-computer"></a>Mappen of bestanden downloaden naar uw lokale computer
 
 1. Selecteer de mappen of bestanden die u wilt downloaden.
@@ -153,20 +151,20 @@ De volgende items laten zien hoe u resources binnen een Gen1 van Data Lake Stora
 
 Het bestand wordt gedownload en geopend met de toepassing die is gekoppeld aan het onderliggende bestandstype. Of de map wordt in het hoofdvenster geopend.
 
-![Geopend bestand](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-open.png) 
+![Geopend bestand](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-open.png)
 
 ### <a name="copy-folders-or-files-to-the-clipboard"></a>Mappen of bestanden kopiëren naar het klembord
 
 1. Selecteer de mappen of bestanden die u wilt kopiëren.
 2. Selecteer **Kopiëren** op de werkbalk van het hoofdvenster. Of klik met de rechtermuisknop op de geselecteerde map of het geselecteerde bestand en selecteer vervolgens **Kopiëren** in het snelmenu.
-3. In het linkerdeelvenster, blader naar een andere Gen1 van Data Lake Storage-account en dubbelklik erop om deze te bekijken in het hoofdvenster.
+3. Blader in het linkerdeel venster naar een ander Data Lake Storage Gen1 account en dubbel klik hierop om het weer te geven in het hoofd venster.
 4. Selecteer **Plakken** op de werkbalk van het hoofdvenster om een kopie te maken. Of selecteer **Plakken** in het snelmenu van het doel.
 
 ![Selecties voor het kopiëren van een map](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-copy-paste.png)
 
 > [!NOTE]
-> Kopieer- en plakbewerkingen voor opslagtypen worden niet ondersteund. U kunt Data Lake Storage Gen1 mappen of bestanden kopiëren en plak deze in een ander Gen1 van Data Lake Storage-account. Maar u *kan geen* Data Lake Storage Gen1 mappen of bestanden kopiëren en plakken in Azure Blob-opslag of andersom.
-> 
+> Kopieer- en plakbewerkingen voor opslagtypen worden niet ondersteund. U kunt Data Lake Storage Gen1 mappen of bestanden kopiëren en plakken in een ander Data Lake Storage Gen1-account. Maar u *kunt* data Lake Storage gen1 mappen of bestanden niet kopiëren en plakken in Azure Blob-opslag of op een andere manier.
+>
 > Bij het kopiëren en plakken worden de mappen of bestanden gedownload naar de lokale computer en vervolgens geüpload naar het doel. Het hulpprogramma voert de actie *niet* uit in de back-end. Het kopiëren en plakken van grote bestanden gaat langzaam. Het geavanceerd kopiëren en verplaatsen van bestanden wordt momenteel geoptimaliseerd.
 
 ### <a name="delete-folders-or-files"></a>Mappen of bestanden verwijderen
@@ -189,14 +187,15 @@ Het bestand wordt gedownload en geopend met de toepassing die is gekoppeld aan h
 Nadat u een map hebt vastgemaakt aan het knooppunt **Snelle toegang**, kunt u de resources makkelijk openen.
 
 ### <a name="use-deep-links"></a>Dieptekoppelingen gebruiken
+
 Als u een URL hebt, kunt u de URL invoeren in het adrespad in Verkenner of in de browser. Vervolgens wordt Storage Explorer.exe automatisch uitgevoerd om naar de locatie van de URL te gaan.
 
 ![Dieptekoppeling in Verkenner](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-deep-link.png)
 
-
 ## <a name="next-steps"></a>Volgende stappen
+
 * De [meest recente releaseopmerkingen en video's van Storage Explorer](https://www.storageexplorer.com) bekijken.
 * Informatie over [het beheer van Azure Cosmos DB in Azure Storage Explorer](https://docs.microsoft.com/azure/cosmos-db/storage-explorer).
 * [Aan de slag met Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
-* [Aan de slag met Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).
+* [Aan de slag met Azure data Lake Storage gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).
 * Bekijk een (Engelstalige) [YouTube-video over het gebruik van Azure Cosmos DB in Azure Storage Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).

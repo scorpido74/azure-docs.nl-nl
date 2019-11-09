@@ -1,10 +1,10 @@
 ---
-title: Toegang tot Azure AD-rollen controleren in PIM-Azure Active Directory | Microsoft Docs
-description: Meer informatie over het controleren van de toegang tot Azure AD-rollen in Azure AD Privileged Identity Management (PIM).
+title: Toegang tot Azure AD-rollen controleren in PIM-Azure AD | Microsoft Docs
+description: Meer informatie over het controleren van de toegang tot Azure Active Directory rollen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8b9f16d6c7f738e64f154506228c832e31e0f5b
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 76eccb5d62b68865b7a117312be62753f203e2cb
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809048"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847094"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>Toegang tot Azure AD-rollen in Privileged Identity Management controleren
 
@@ -33,7 +33,7 @@ Als u een beheerder van een bevoorrechte rol of globale beheerder bent die geïn
 
 Als u de Azure AD Privileged Identity Management-service niet hebt vastgemaakt aan uw dash board in uw Azure Portal, voert u de volgende stappen uit om aan de slag te gaan.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Selecteer uw gebruikers naam in de rechter bovenhoek van de Azure Portal en selecteer de map waarin u wilt werken.
 3. Selecteer **Alle services** en gebruik het tekstvak Filteren om te zoeken naar **Azure AD Privileged Identity Management**.
 4. Schakel **Vastmaken aan dashboard** in en klik op de knop **Maken**. De Privileged Identity Management-toepassing wordt geopend.

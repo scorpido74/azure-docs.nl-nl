@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 4c16953d3c708516edbe0b3c13b091dc3181b187
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 75d1f2b6facd438e329555d8595fe159565dbb74
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465072"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837369"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 prebuiled-entiteit voor een LUIS-app
 
@@ -119,7 +119,7 @@ De volgende utterance en de gedeeltelijke JSON-respons worden hieronder weer geg
 |type|**teken reeks** -een van de [subtypen van datetimeV2](#subtypes-of-datetimev2)
 |Start index|**int** -de index in de utterance waarbij de entiteit begint.|
 |endIndex|**int** -de index in de utterance waarbij de entiteit eindigt.|
-|Opgelost|Heeft een `values` matrix met een, twee of vier [waarden voor de oplossing](#values-of-resolution).|
+|opgelost|Heeft een `values` matrix met een, twee of vier [waarden voor de oplossing](#values-of-resolution).|
 |endsystemen|De eind waarde van een tijd of datum bereik, in dezelfde notatie als `value`. Wordt alleen gebruikt als `type` is `daterange`, `timerange`of `datetimerange`|
 
 * * * 
@@ -147,7 +147,7 @@ Elk element van de `values` matrix kan de volgende velden bevatten:
 |--|--|
 |Timex|tijd, datum of datum bereik in de TIMEX-indeling die volgt op de [ISO 8601-standaard](https://en.wikipedia.org/wiki/ISO_8601) en de TIMEX3-kenmerken voor aantekening met behulp van de TimeML-taal. Deze aantekening wordt beschreven in de [Timex richt lijnen](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf).|
 |type|Het subtype, dat een van de volgende items kan zijn: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`, `set`.|
-|waarde|**Beschrijving.** Een datetime-object in de notatie JJJJ: MM: dd (datum), uu: mm: SS (tijd) jjjj: MM: DD uu: mm: SS (datetime). Als `type` `duration`is, is de waarde het aantal seconden (duur) <br/> Wordt alleen gebruikt als `type` `datetime` of `date`, `time`of ' duration ' is.|
+|waarde|**Beschrijving.** Een datetime-object in de notatie JJJJ-MM-DD (datum), uu: mm: SS (tijd) JJJJ-MM-DD uu: mm: SS (datetime). Als `type` `duration`is, is de waarde het aantal seconden (duur) <br/> Wordt alleen gebruikt als `type` `datetime` of `date`, `time`of ' duration ' is.|
 
 ## <a name="valid-date-values"></a>Geldige datum waarden
 

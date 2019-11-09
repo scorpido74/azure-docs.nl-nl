@@ -1,25 +1,25 @@
 ---
-title: De wizard Beveiliging van Azure AD-rollen in Privileged Identity Management-Azure Active Directory | Microsoft Docs
+title: Wizard Beveiliging van Azure AD-rollen in PIM-Azure Active Directory | Microsoft Docs
 description: Hierin wordt de wizard Beveiliging beschreven waarmee u permanente privileged Azure AD-roltoewijzingen kunt converteren naar kwalificeren met Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d1c9905047cb4b234bf80ba82f2395f72f67f1
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 04bd0993873568ba7cce368ddd9277ed356b636c
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895225"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847035"
 ---
 # <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>De wizard Beveiliging van Azure AD-rollen in Privileged Identity Management
 
@@ -37,7 +37,7 @@ De tweede stap van de wizard biedt u de mogelijkheid om de roltoewijzingen van d
 
 ## <a name="run-the-wizard"></a>De wizard uitvoeren
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**.
 

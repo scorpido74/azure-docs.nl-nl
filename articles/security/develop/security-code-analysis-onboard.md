@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8936bc21af951cbabb90188b6a31d610caf80395
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: aaf59de2425e0725958847477f1043a5b7fac68a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241764"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839353"
 ---
 # <a name="onboarding-and-installing"></a>Onboarding en installatie
 
@@ -51,7 +51,7 @@ Vereisten om aan de slag te gaan met de analyse van micro soft-beveiligings code
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>De uitbrei ding voor de analyse van micro soft-beveiligings code installeren
 
-1. Nadat de extensie is gedeeld met uw Azure DevOps-organisatie, gaat u naar de pagina Azure DevOps-organisatie. Een voor beeld van een URL voor een http://dev.azure.com/contoso dergelijke pagina is.
+1. Nadat de extensie is gedeeld met uw Azure DevOps-organisatie, gaat u naar de pagina Azure DevOps-organisatie. Een voor beeld-URL voor een dergelijke pagina is `https://dev.azure.com/contoso`.
 1. Selecteer het pictogram winkel Bag in de rechter bovenhoek naast uw naam en selecteer vervolgens **extensies beheren**.
 1. Selecteer de uitbrei ding analyse van micro soft-beveiligings code en open vervolgens de wizard Azure DevOps-gebruikers interface om de installatie te starten.
 1. Kies in de vervolg keuzelijst de Azure DevOps-organisatie waarop u de extensie wilt installeren.
@@ -67,7 +67,7 @@ Nadat u de uitbrei ding hebt geïnstalleerd, zijn de taken voor het ontwikkelen 
 1. Open uw team project uit uw Azure DevOps-organisatie.
 1. Selecteer **pijp lijnen** > **builds**.
 1. Selecteer de pijp lijn waaraan u de extensie taken wilt toevoegen:
-   - Nieuwe pijp lijn: Selecteer **Nieuw** en volg de stappen voor het maken van een nieuwe pijp lijn.
+   - Nieuwe pijp lijn: Selecteer **Nieuw** en volg de stappen die worden beschreven om een nieuwe pijp lijn te maken.
    - Pijp lijn bewerken: Selecteer een bestaande pijp lijn en selecteer **bewerken** om te beginnen met het bewerken van de pijp lijn.
 1. Selecteer **+** en ga naar het deel venster **taken toevoegen** .
 1. Zoek in de lijst of via het zoekvak de build-taak die u wilt toevoegen. Selecteer **Toevoegen**.

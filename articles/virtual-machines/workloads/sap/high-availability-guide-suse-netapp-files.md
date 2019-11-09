@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 11/07/2019
 ms.author: radeltch
-ms.openlocfilehash: 3764ae9ff3a20de6d31f0438b73597933080e372
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 910ffc1a94b78fec259dcf30a3c7284716809355
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791738"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832585"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen
 
@@ -96,7 +96,7 @@ Het is nu mogelijk om SAP NetWeaver HA te maken met behulp van gedeelde opslag, 
 
 ![Overzicht van de hoge Beschik baarheid van SAP netweave](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS en de SAP HANA-Data Base gebruiken virtuele hostnamen en virtuele IP-adressen. Op Azure is een [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) vereist voor het gebruik van een virtueel IP-adres. De volgende lijst bevat de configuratie van de (A) SCS-en ERS-load balancer.
+SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS en de SAP HANA-Data Base gebruiken virtuele hostnamen en virtuele IP-adressen. Op Azure is een [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) vereist voor het gebruik van een virtueel IP-adres. U kunt het beste [standaard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)gebruiken. De volgende lijst bevat de configuratie van de (A) SCS-en ERS-load balancer.
 
 > [!IMPORTANT]
 > Multi-SID clustering van SAP ASCS/ERS met SUSE Linux als gast besturingssysteem in azure Vm's wordt **niet ondersteund**. Met multi-SID clustering wordt de installatie van meerdere SAP ASCS/ERS-exemplaren met verschillende Sid's in één pacemaker-cluster beschreven
@@ -111,13 +111,15 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS en de SAP HANA-Data Bas
 * Test poort
   * Poort 620<strong>&lt;nr&gt;</strong>
 * Taakverdelings regels
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 36<strong>&lt;nr&gt;</strong> TCP
-  * 39<strong>&lt;nr&gt;</strong> TCP
-  * 81<strong>&lt;nr&gt;</strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
+  * Als u basis Load Balancer gebruikt, maakt u regels voor taak verdeling voor de volgende poorten
+    * 32<strong>&lt;nr&gt;</strong> TCP
+    * 36<strong>&lt;nr&gt;</strong> TCP
+    * 39<strong>&lt;nr&gt;</strong> TCP
+    * 81<strong>&lt;nr&gt;</strong> TCP
+    * 5<strong>&lt;nr&gt;</strong>13 TCP
+    * 5<strong>&lt;nr&gt;</strong>14 TCP
+    * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -128,11 +130,13 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS en de SAP HANA-Data Bas
 * Test poort
   * Poort 621<strong>&lt;nr&gt;</strong>
 * Taakverdelings regels
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 33<strong>&lt;nr&gt;</strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
+  * Als u basis Load Balancer gebruikt, maakt u regels voor taak verdeling voor de volgende poorten
+    * 32<strong>&lt;nr&gt;</strong> TCP
+    * 33<strong>&lt;nr&gt;</strong> TCP
+    * 5<strong>&lt;nr&gt;</strong>13 TCP
+    * 5<strong>&lt;nr&gt;</strong>14 TCP
+    * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>De Azure NetApp Files-infra structuur instellen 
 
@@ -207,7 +211,42 @@ In dit voor beeld zijn de resources hand matig geïmplementeerd via de [Azure Po
 
 Eerst moet u de Azure NetApp Files volumes maken. Implementeer de Vm's. Daarna maakt u een load balancer en gebruikt u de virtuele machines in de back-endservers.
 
-1. Een Load Balancer maken (intern)  
+1. Load balancer maken (intern, standaard):  
+   1. De frontend-IP-adressen maken
+      1. IP-adres 10.1.1.20 voor de ASCS
+         1. Open de load balancer, selecteer de frontend-IP-adres groep en klik op toevoegen
+         1. Voer de naam van de nieuwe front-end-IP-adres groep in (bijvoorbeeld front- **End. QAS. ASCS**)
+         1. Stel de toewijzing in op statisch en voer het IP-adres in (bijvoorbeeld **10.1.1.20**)
+         1. Klik op OK
+      1. IP-adres 10.1.1.21 voor de ASCS ERS
+         * Herhaal de bovenstaande stappen onder a om een IP-adres voor de ERS te maken (bijvoorbeeld **10.1.1.21** en front- **End. QAS. ERS**)
+   1. De back-end-Pools maken
+      1. Een back-end-pool maken voor de ASCS
+         1. Open de load balancer, selecteer back-endservers en klik op toevoegen
+         1. Voer de naam van de nieuwe back-end-groep in (bijvoorbeeld **back-end. QAS**)
+         1. Klik op een virtuele machine toevoegen.
+         1. Virtuele machine selecteren
+         1. Selecteer de virtuele machines van het (A) SCS-cluster en de bijbehorende IP-adressen.
+         1. Klik op Add.
+   1. De status tests maken
+      1. Poort 620**00** voor ASCS
+         1. Open de load balancer, selecteer status controles en klik op toevoegen
+         1. Voer de naam van de nieuwe status test in (bijvoorbeeld **status. QAS. ASCS**)
+         1. TCP als protocol selecteren, poort 620**00**, interval 5 en drempel waarde voor onjuiste status 2 gebruiken
+         1. Klik op OK
+      1. Poort 621**01** voor ASCS ers
+            * Herhaal de bovenstaande stappen onder ' c ' om een status test te maken voor de ERS (bijvoorbeeld 621**01** en **status. QAS. ERS**)
+   1. Taakverdelings regels
+      1. Een back-end-pool maken voor de ASCS
+         1. Open de load balancer, selecteer taakverdelings regels en klik op toevoegen
+         1. Voer de naam in van de nieuwe load balancer regel (bijvoorbeeld **lb. QAS. ASCS**)
+         1. Selecteer het frontend-IP-adres voor ASCS, back-endservers en de status test die u eerder hebt gemaakt (bijvoorbeeld front- **End. QAS. ASCS**, **back-end. QAS** en **status. QAS. ASCS**)
+         1. **Ha-poorten** selecteren
+         1. Time-out voor inactiviteit tot 30 minuten verhogen
+         1. **Zorg ervoor dat zwevend IP-adressen zijn ingeschakeld**
+         1. Klik op OK
+         * Herhaal de bovenstaande stappen om taakverdelings regels voor ERS te maken (bijvoorbeeld **lb. QAS. ERS**)
+1. U kunt ook de volgende stappen uitvoeren als voor uw scenario Basic-load balancer (intern) vereist is:  
    1. De frontend-IP-adressen maken
       1. IP-adres 10.1.1.20 voor de ASCS
          1. Open de load balancer, selecteer de frontend-IP-adres groep en klik op toevoegen
@@ -246,14 +285,17 @@ Eerst moet u de Azure NetApp Files volumes maken. Implementeer de Vm's. Daarna m
       1. Aanvullende poorten voor de ASCS ERS
          * Herhaal de bovenstaande stappen onder d voor de poorten 33**01**, 5**01**13, 5**01**14, 5**01**16 en TCP voor de ASCS ers
 
+> [!Note]
+> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)voor meer informatie over het bezorgen van uitgaande verbindingen.  
+
 > [!IMPORTANT]
-> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. TCP _timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
+> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
 
 ### <a name="create-pacemaker-cluster"></a>Een pacemaker-cluster maken
 
 Volg de stappen bij het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](high-availability-guide-suse-pacemaker.md) voor het maken van een basis pacemaker-cluster voor deze (a) SCS-server.
 
-### <a name="installation"></a>Installatie
+### <a name="installation"></a>Installeren
 
 De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1 of **[2]** -alleen van toepassing op knoop punt 2.
 
@@ -265,7 +307,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    > [!NOTE]
    > Gebruik geen streepjes in de hostnamen van de cluster knooppunten. Als dat niet het geval is, werkt het cluster niet. Dit is een bekende beperking en SUSE werkt aan een oplossing. De oplossing wordt uitgebracht als patch van het SAP-SuSE-Cloud connector-pakket.
 
-   Zorg ervoor dat u de nieuwe versie van de SAP SUSE-cluster connector hebt geïnstalleerd. De oude werd sap_suse_cluster_connector genoemd en de nieuwe heet **SAP-SuSE-cluster-connector**.
+   Zorg ervoor dat u de nieuwe versie van de SAP SUSE-cluster connector hebt geïnstalleerd. Het oude werd sap_suse_cluster_connector genoemd en de nieuwe heet **SAP-SuSE-cluster-connector**.
 
    <pre><code>sudo zypper info sap-suse-cluster-connector
    
@@ -296,7 +338,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    <pre><code>&lt;parameter name="IS_ERS" unique="0" required="0"&gt;
    </code></pre>
 
-   Als de grep-opdracht de IS_ERS-para meter niet vindt, moet u de patch installeren die wordt weer gegeven op [de SuSE-download pagina](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents)
+   Als de grep-opdracht de para meter IS_ERS niet vindt, moet u de patch installeren die wordt vermeld op [de SuSE-download pagina](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents)
 
    <pre><code># example for patch for SLES 12 SP1
    sudo zypper in -t patch SUSE-SLE-HA-12-SP1-2017-885=1
@@ -434,9 +476,9 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
   
 2. **[1]** SAP NetWeaver ASCS installeren  
 
-   Installeer SAP NetWeaver ASCS als root op het eerste knoop punt met behulp van een virtuele hostnaam die is toegewezen aan het IP-adres van de load balancer front-end-configuratie voor de ASCS, bijvoorbeeld <b>anftstsapvh</b>, <b>10.1.1.20</b> en het exemplaar nummer dat u hebt gebruikt voor de test van de load balancer, bijvoorbeeld <b>00</b>.
+   Installeer SAP NetWeaver ASCS als root op het eerste knoop punt met behulp van een virtuele hostnaam die verwijst naar het IP-adres van de load balancer frontend-configuratie voor de ASCS, bijvoorbeeld <b>anftstsapvh</b>, <b>10.1.1.20</b> en het exemplaar nummer dat u hebt gebruikt voor de test van de Load Balancer, bijvoorbeeld <b>00</b>.
 
-   U kunt de sapinst para meter SAPINST_REMOTE_ACCESS_USER gebruiken om een niet-hoofd gebruiker verbinding te laten maken met sapinst. U kunt de para meter SAPINST_USE_HOSTNAME gebruiken om SAP te installeren met behulp van een virtuele hostnaam.
+   U kunt de para meter sapinst SAPINST_REMOTE_ACCESS_USER gebruiken om een niet-hoofd gebruiker verbinding te laten maken met sapinst. U kunt de para meter SAPINST_USE_HOSTNAME gebruiken om SAP te installeren met behulp van een virtuele hostnaam.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b> SAPINST_USE_HOSTNAME=<b>virtual_hostname</b>
    </code></pre>
@@ -495,9 +537,9 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 
 4. **[2]** SAP NetWeaver ers installeren
 
-   Installeer SAP NetWeaver ERS als root op het tweede knoop punt met behulp van een virtuele hostnaam die verwijst naar het IP-adres van de load balancer front-end-configuratie voor de ERS, bijvoorbeeld <b>anftstsapers</b>, <b>10.1.1.21</b> en het exemplaar nummer dat u hebt gebruikt voor de test van de load balancer, bijvoorbeeld <b>01</b>.
+   Installeer SAP NetWeaver ERS als root op het tweede knoop punt met behulp van een virtuele hostnaam die verwijst naar het IP-adres van de load balancer frontend-configuratie voor de ERS, bijvoorbeeld <b>anftstsapers</b>, <b>10.1.1.21</b> en het exemplaar nummer dat u hebt gebruikt voor de test van de Load Balancer, bijvoorbeeld <b>01</b>.
 
-   U kunt de sapinst para meter SAPINST_REMOTE_ACCESS_USER gebruiken om een niet-hoofd gebruiker verbinding te laten maken met sapinst. U kunt de para meter SAPINST_USE_HOSTNAME gebruiken om SAP te installeren met behulp van een virtuele hostnaam.
+   U kunt de para meter sapinst SAPINST_REMOTE_ACCESS_USER gebruiken om een niet-hoofd gebruiker verbinding te laten maken met sapinst. U kunt de para meter SAPINST_USE_HOSTNAME gebruiken om SAP te installeren met behulp van een virtuele hostnaam.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b> SAPINST_USE_HOSTNAME=<b>virtual_hostname</b>
    </code></pre>
@@ -796,7 +838,7 @@ In dit voor beeld is SAP NetWeaver geïnstalleerd op SAP HANA. U kunt elke onder
 
    Installeer het SAP NetWeaver-data base-exemplaar als root met behulp van een virtuele hostnaam die wordt toegewezen aan het IP-adres van de load balancer front-end-configuratie voor de data base.
 
-   U kunt de sapinst para meter SAPINST_REMOTE_ACCESS_USER gebruiken om een niet-hoofd gebruiker verbinding te laten maken met sapinst.
+   U kunt de para meter sapinst SAPINST_REMOTE_ACCESS_USER gebruiken om een niet-hoofd gebruiker verbinding te laten maken met sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
@@ -809,7 +851,7 @@ Volg deze stappen om een SAP-toepassings server te installeren.
 
 2. **[A]** SAP NetWeaver-toepassings server installeren een primaire of extra SAP NetWeaver-toepassingen server installeren.
 
-   U kunt de sapinst para meter SAPINST_REMOTE_ACCESS_USER gebruiken om een niet-hoofd gebruiker verbinding te laten maken met sapinst.
+   U kunt de para meter sapinst SAPINST_REMOTE_ACCESS_USER gebruiken om een niet-hoofd gebruiker verbinding te laten maken met sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>

@@ -1,7 +1,7 @@
 ---
 title: Migratie van micro soft Translator hub-werk ruimte en-projecten? -Aangepaste vertaler
 titleSuffix: Azure Cognitive Services
-description: Migreer uw hub-werk ruimte en projecten naar een aangepaste vertaler.
+description: In dit artikel wordt uitgelegd hoe u uw hub-werk ruimte en-projecten kunt migreren naar Azure Cognitive Services Custom Translator.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,19 +9,19 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 9c97eaef30a08123605ed4c01810745e312d6aa0
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 7ea7b48e1fc36399a0ca173f9068faf8b88849d5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675503"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836577"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub-werk ruimte en projecten migreren naar een aangepaste vertaler
 
 U kunt uw [micro soft Translator hub](https://hub.microsofttranslator.com/) -werk ruimte en-projecten eenvoudig migreren naar aangepaste vertalers. Migratie wordt gestart vanuit micro soft hub door een werk ruimte of project te selecteren, vervolgens een werk ruimte te selecteren in Custom Translator en vervolgens de opleidingen te selecteren die u wilt overdragen. Nadat de migratie is gestart, worden de geselecteerde trainings instellingen met alle relevante documenten overgebracht. Geïmplementeerde modellen zijn getraind en kunnen na voltooiing automatisch worden geïmplementeerd.
 
 Deze acties worden uitgevoerd tijdens de migratie:
-* De namen van alle documenten en project definities worden overgebracht met de toevoeging ' hub_ ', voorafgegaan door de naam. Automatisch gegenereerde test-en afstemmings gegevens hebben de naam hub_systemtune_ \<modelid > of hub_systemtest_ \<modelid >.
+* De namen van alle documenten en project definities worden overgebracht met de toevoeging ' hub_ ', voorafgegaan door de naam. Automatisch gegenereerde test-en afstemmings gegevens worden in hub_systemtune_\<modelid > of hub_systemtest_\<modelid > genoemd.
 * Alle trainingen die in de geïmplementeerde toestand waren toen de migratie plaatsvindt, worden automatisch getraind met behulp van de documenten van de hub-training. Deze training wordt niet in rekening gebracht voor uw abonnement. Als automatisch implementeren is geselecteerd voor de migratie, wordt het getrainde model na voltooiing geïmplementeerd. Normale hosting kosten worden toegepast.
 * Gemigreerde trainingen die zich niet in de geïmplementeerde status bevonden, worden in de gemigreerde concept status geplaatst. In deze status kunt u een model trainen met de gemigreerde definitie, maar er worden regel matig trainings kosten in rekening gebracht.
 * Op elk gewenst moment kunt u de BLEU-Score die vanuit de hub-training is gemigreerd, vinden op de pagina TrainingDetails van het model in de kop ' Bleu Score in MT hub '.
@@ -78,7 +78,7 @@ Een werk ruimte migreren:
 
     ![Migreren vanaf hub](media/how-to/how-to-migrate-workspace-from-hub.png)
 
-4. Selecteer op de volgende pagina een van deze twee opties:
+4. Selecteer een van deze twee opties op de volgende pagina:
 
     a. Alleen geïmplementeerde trainingen: als u deze optie selecteert, worden alleen de geïmplementeerde systemen en gerelateerde documenten gemigreerd.
 

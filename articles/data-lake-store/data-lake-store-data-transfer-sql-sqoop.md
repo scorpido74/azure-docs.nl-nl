@@ -1,5 +1,5 @@
 ---
-title: Gegevens kopiëren tussen Azure Data Lake Storage Gen1 en Azure SQL database met behulp van Sqoop | Microsoft Docs
+title: Gegevens kopiëren tussen Data Lake Storage Gen1 en Azure SQL-Sqoop | Microsoft Docs
 description: Gebruik Sqoop om gegevens te kopiëren tussen Azure SQL Database en Azure Data Lake Storage Gen1
 services: data-lake-store
 author: twooley
@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: 22789deca0934a9d4e88d587cd24aacacc9b12c6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: cf3893706afcb4c4cc5b90dd3d2431ecedc71d0a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620004"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839065"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Gegevens kopiëren tussen Data Lake Storage Gen1 en Azure SQL Database met behulp van Sqoop
 
@@ -69,7 +69,7 @@ Voordat u begint, moet u het volgende hebben:
 
 ## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-storage-gen1"></a>Sqoop gebruiken vanuit een HDInsight-cluster met toegang tot Data Lake Storage Gen1
 
-De Sqoop-pakketten van An HDInsight cluster zijn al beschikbaar. Als u het HDInsight-cluster hebt geconfigureerd voor het gebruik van Data Lake Storage Gen1 als extra opslag, kunt u Sqoop (zonder configuratie wijzigingen) gebruiken om gegevens te importeren/exporteren tussen een relationele data base, zoals Azure SQL Database, en een Data Lake Storage Gen1-account .
+De Sqoop-pakketten van An HDInsight cluster zijn al beschikbaar. Als u het HDInsight-cluster hebt geconfigureerd voor het gebruik van Data Lake Storage Gen1 als extra opslag, kunt u Sqoop (zonder configuratie wijzigingen) gebruiken om gegevens te importeren/exporteren tussen een relationele data base, zoals Azure SQL Database, en een Data Lake Storage Gen1-account.
 
 1. Voor dit artikel wordt ervan uitgegaan dat u een Linux-cluster hebt gemaakt, zodat u SSH moet gebruiken om verbinding te maken met het cluster. Zie [verbinding maken met een HDInsight-cluster op basis van Linux](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -81,7 +81,7 @@ De Sqoop-pakketten van An HDInsight cluster zijn al beschikbaar. Als u het HDIns
 
 ### <a name="import-data-from-azure-sql-database-into-data-lake-storage-gen1"></a>Gegevens importeren van Azure SQL Database naar Data Lake Storage Gen1
 
-1. Navigeer naar de map waar Sqoop-pakketten beschikbaar zijn. Normaal gesp roken is `/usr/hdp/<version>/sqoop/bin`deze locatie.
+1. Navigeer naar de map waar Sqoop-pakketten beschikbaar zijn. Normaal gesp roken is deze locatie `/usr/hdp/<version>/sqoop/bin`.
 
 1. Importeer de gegevens van **Tabel1** in het data Lake Storage gen1-account. Gebruik de volgende syntaxis:
 

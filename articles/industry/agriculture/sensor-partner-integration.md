@@ -5,21 +5,22 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e7de815b7254fb071b3094f9ae636b712b38684b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 7a85ed93d9ee01255d809cce84ebe24e6c3f71d1
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797684"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847401"
 ---
 # <a name="sensor-partner-integration"></a>Integratie van de sensor partner
-Dit artikel bevat informatie over het onderdeel Azure FarmBeats **Translator** .
+
+Dit artikel bevat informatie over het onderdeel Azure FarmBeats **Translator** , waarmee sensor-partner integratie mogelijk wordt.
 
 Met dit onderdeel kunnen partners Sens oren ontwikkelen die worden geïntegreerd met FarmBeats, door gebruik te maken van onze API en om gegevens en telemetrie van klant apparaten naar de FarmBeats data hub te verzenden. De gegevens worden gevisualiseerd met behulp van de FarmBeats-Accelerator. Gegevens kunnen worden gebruikt voor gegevens fusie en voor het bouwen van machine taal/kunst matige intelligentie-modellen.
 
 ## <a name="link-farmbeats-account"></a>FarmBeats-account koppelen
 
-Zodra de klanten apparaten/Sens oren hebben gekocht en geïmplementeerd, hebben ze toegang tot de apparaatgegevens en telemetrie op de SaaS-portal van de apparaatgegevens (software als een service). De partners van het apparaat moeten klanten in staat stellen hun account te koppelen aan hun FarmBeats-exemplaar in Azure. De volgende referenties zijn vereist om in te vullen per klant/SI:
+Zodra de klanten apparaten/Sens oren hebben gekocht en geïmplementeerd, hebben ze toegang tot de apparaatgegevens en telemetrie op de SaaS-portal van de apparaatgegevens (software als een service). De partners van het apparaat moeten klanten in staat stellen hun account te koppelen aan hun FarmBeats-exemplaar in Azure. De volgende referenties zijn vereist om in te vullen door de klant/het systeem integrator:
 
    - Weergave naam (een optioneel veld voor gebruiker om een naam te definiëren voor deze integratie)
    - API-eind punt
@@ -41,14 +42,11 @@ Klanten hebben de mogelijkheid om een bestaande FarmBeats-integratie te ontkoppe
 
 ## <a name="edit-farmbeats-integration"></a>FarmBeats-integratie bewerken
 
-De klant kan de FarmBeats-integratie bewerken. Het primaire scenario voor bewerken is wanneer het client geheim of connection string wijzigingen vanwege de verval datum, in dit geval kan de klant alleen de volgende velden bewerken.
+De klant kan de FarmBeats-integratie-instellingen bewerken als het client geheim of het connection string verandert. In dit geval kan de klant alleen de volgende velden bewerken:
 
    - Weergave naam (indien van toepassing)
    - Client geheim (moet worden weer gegeven in de indeling ' 2x8 * * * * * * * * * * * * ' of ' weer geven/verbergen ' in plaats van gewone tekst)
    - Verbindings reeks (moet worden weer gegeven in de indeling ' 2x8 * * * * * * * * * * * * ' of ' weer geven/verbergen ' in plaats van gewone tekst)
-
-   > [!NOTE]
-   > Het maken van meta gegevens objecten moet niet worden onderbroken door een bewerking.
 
 ## <a name="view-last-telemetry-sent"></a>Laatst verzonden telemetrie weer geven
 
@@ -68,7 +66,7 @@ De telemetriegegevens worden toegewezen aan een canonieke bericht dat is gepubli
 
 De Api's bevatten technische documentatie voor Swagger. Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger) voor meer informatie over de api's en de bijbehorende aanvragen/antwoorden.
 
-**Verificatie**
+**Authenticatie**
 
 FarmBeats maakt gebruik van de Active Directory-verificatie van Microsoft Azure. Azure App Service biedt ingebouwde ondersteuning voor verificatie en autorisatie.
 
@@ -192,7 +190,7 @@ ParentDeviceId | ID van het bovenliggende apparaat waarmee dit apparaat is verbo
   description  | Geef een zinvolle beschrijving
   properties  | Aanvullende eigenschappen van de fabrikant
 
- Zie [Swagger](httpa://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over elk van de objecten en hun eigenschappen.
+ Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over elk van de objecten en hun eigenschappen.
 
  > [!NOTE]
  > De Api's retour neren unieke Id's voor elk gemaakt exemplaar. Deze ID moet worden behouden door de vertaler voor het synchroniseren van apparaten en meta gegevens.

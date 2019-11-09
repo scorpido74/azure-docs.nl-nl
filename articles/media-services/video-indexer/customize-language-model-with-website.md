@@ -1,7 +1,7 @@
 ---
-title: De website van de Video Indexer gebruiken om aan te passen een taalmodel - Azure
-titlesuffix: Azure Media Services
-description: In dit artikel laat zien hoe een taalmodel met de Video Indexer-website aanpassen.
+title: De Video Indexer-website gebruiken om een taal model aan te passen-Azure
+titleSuffix: Azure Media Services
+description: In dit artikel wordt beschreven hoe u een taal model kunt aanpassen met de Video Indexer-website.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,142 +10,142 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: f98cdcab2d108f8dd9d40e3770498ad17b2a8a88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d92cb02a0ac52b317cf9d4b6c8e0278f9291910
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799621"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838447"
 ---
-# <a name="customize-a-language-model-with-the-video-indexer-website"></a>Een taalmodel met de Video Indexer-website aanpassen
+# <a name="customize-a-language-model-with-the-video-indexer-website"></a>Een taal model aanpassen met de Video Indexer-website
 
-Video Indexer kunt u aangepaste taalmodellen voor het aanpassen van spraakherkenning door te uploaden aanpassing van woordenlijsten tekst, namelijk de tekst uit het domein waarvan u de engine om aan te passen dat wilt aan de woordenlijst maken. Nadat u uw model te trainen, kunt u nieuwe woorden die voorkomen in de aanpassing van woordenlijsten tekst wordt herkend. 
+Met Video Indexer kunt u aangepaste taal modellen maken om spraak herkenning aan te passen door de aanpassings tekst te uploaden, namelijk de tekst van het domein waarvan u wilt dat de engine aan de woorden lijst voldoet. Zodra u het model hebt getraind, worden nieuwe woorden in de aanpassings tekst herkend. 
 
-Zie voor een gedetailleerd overzicht en aanbevolen procedures voor het aangepaste taalmodellen [aanpassen van een taalmodel met Video Indexer](customize-language-model-overview.md).
+Zie [een taal model aanpassen met video indexer](customize-language-model-overview.md)voor een gedetailleerd overzicht en aanbevolen procedures voor aangepaste taal modellen.
 
-U kunt de Video Indexer-website maken en bewerken van aangepaste taalmodellen in uw account, zoals beschreven in dit onderwerp. U kunt ook de API, zoals beschreven in [aanpassen taalmodel met behulp van API's](customize-language-model-with-api.md).
+U kunt de Video Indexer-website gebruiken om aangepaste taal modellen in uw account te maken en te bewerken, zoals wordt beschreven in dit onderwerp. U kunt ook de API gebruiken, zoals beschreven in [taal model aanpassen met behulp van api's](customize-language-model-with-api.md).
 
-## <a name="create-a-language-model"></a>Een taalmodel maken
+## <a name="create-a-language-model"></a>Een taal model maken
 
 1. Ga naar de [Video Indexer](https://www.videoindexer.ai/)-website en meld u aan.
-2. Voor het aanpassen van een model in uw account, klikt u op de **modelaanpassing inhoud** knop in de rechterbovenhoek van de pagina.
+2. Als u een model in uw account wilt aanpassen, klikt u op de knop **aanpassing van inhouds model** in de rechter bovenhoek van de pagina.
 
-   ![Inhoudsmodel aanpassen](./media/content-model-customization/content-model-customization.png)
+   ![Inhouds model aanpassen](./media/content-model-customization/content-model-customization.png)
 
-3. Selecteer de **taal** tabblad.
+3. Selecteer het tabblad **taal** .
 
     U ziet een lijst met ondersteunde talen. 
 
-    ![Taalmodel aanpassen](./media/customize-language-model/customize-language-model.png)
+    ![Taal model aanpassen](./media/customize-language-model/customize-language-model.png)
 
-4. Onder de taal die u wilt, klikt u op **toevoegen model**.
-5. Typ in de naam voor het taalmodel en druk op enter.
+4. Klik onder de gewenste taal op **model toevoegen**.
+5. Typ de naam voor het taal model en druk op ENTER.
 
-    Hiermee maakt u het model en biedt de mogelijkheid om tekstbestanden uploaden naar het model.
-6. Als u wilt toevoegen een tekstbestand, klikt u op **Add file**. Hiermee opent u de Verkenner.
+    Hiermee maakt u het model en biedt de optie om tekst bestanden naar het model te uploaden.
+6. Klik op **bestand toevoegen**om een tekst bestand toe te voegen. Hiermee opent u de bestanden Verkenner.
 
-7. Navigeer naar en selecteer het tekstbestand. U kunt meerdere bestanden toevoegen aan een taalmodel.
+7. Navigeer naar en selecteer het tekst bestand. U kunt meerdere tekst bestanden toevoegen aan een taal model.
 
-    U kunt ook een tekstbestand toevoegen door te klikken op de **...**  selecteren en de knop aan de rechterkant van het taalmodel **Add file**.
-8. Wanneer u klaar bent voor het uploaden van de tekstbestanden, klikt u op de groene **Train** optie.
+    U kunt ook een tekst bestand toevoegen door te klikken op de knop **...** aan de rechter kant van het taal model en vervolgens **bestand toevoegen**te selecteren.
+8. Wanneer u klaar bent met het uploaden van de tekst bestanden, klikt u op de groene **trein** optie.
 
-    ![Taalmodel van de trein](./media/customize-language-model/train-model.png)
+    ![Model voor Train taal](./media/customize-language-model/train-model.png)
 
-De trainingsproces kan enkele minuten duren. Nadat de training is voltooid, ziet u **Trained** naast het model. U kunt bekijken, downloaden en het bestand verwijderen uit het model.
+Het trainings proces kan een paar minuten duren. Zodra de training is voltooid, ziet u **getraind** naast het model. U kunt het bestand bekijken, downloaden en verwijderen uit het model.
 
-![Getrainde taalmodel](./media/customize-language-model/preview-model.png)
+![Getraind taal model](./media/customize-language-model/preview-model.png)
 
-### <a name="using-a-language-model-on-a-new-video"></a>Met behulp van een taalmodel op een nieuwe video
+### <a name="using-a-language-model-on-a-new-video"></a>Een taal model gebruiken in een nieuwe video
 
-Voor het gebruik van uw taalmodel op een nieuwe video, moet u een van de volgende handelingen:
+Ga op een van de volgende manieren te werk om uw taal model te gebruiken in een nieuwe video:
 
-* Klik op de **uploaden** knop boven aan de pagina 
+* Klik op de knop **uploaden** boven aan de pagina 
 
     ![Uploaden](./media/customize-language-model/upload.png)
-* Uw audio- of -bestand in de cirkel te verwijderen of bladert u naar het bestand
+* Uw audio-of video bestand in de cirkel neerzetten of naar uw bestand bladeren
 
     ![Uploaden](./media/customize-language-model/upload2.png)
 
-Zodoende kunt u de optie te selecteren de **Video source-taal**. Klik op de vervolgkeuzelijst en selecteer een taalmodel die u hebt gemaakt in de lijst. Er moet de taal van uw taalmodel en de naam die u hebt opgegeven tussen haakjes.
+Hiermee krijgt u de mogelijkheid om de taal van de **video bron**te selecteren. Klik op de vervolg keuzelijst en selecteer een taal model dat u hebt gemaakt in de lijst. U moet de taal van uw taal model en de naam die u hebt opgegeven tussen haakjes zeggen.
 
-Klik op de **uploaden** onder aan de pagina en uw nieuwe video worden geïndexeerd met behulp van uw taalmodel.
+Klik onder aan de pagina op de optie **uploaden** en uw nieuwe video wordt geïndexeerd met uw taal model.
 
-### <a name="using-a-language-model-to-reindex"></a>Met behulp van een taalmodel opnieuw indexeren
+### <a name="using-a-language-model-to-reindex"></a>Een taal model gebruiken om opnieuw te indexeren
 
-Als u uw taalmodel wilt indexeren van een video in uw verzameling, gaat u naar uw **Account video's** op de [Video Indexer](https://www.videoindexer.ai/) startpagina en houd de muis boven de naam van de video die u wilt opnieuw indexeren.
+Als u uw taal model wilt gebruiken om een video in uw verzameling opnieuw te indexeren, gaat u naar uw **account Video's** op de start pagina van [video indexer](https://www.videoindexer.ai/) en houdt u de muis aanwijzer over de naam van de video die u opnieuw wilt indexeren.
 
-Ziet u opties voor het bewerken van uw video, verwijdert u video en indexeren van uw video. Klik op de optie voor het indexeren van uw video.
+U ziet opties voor het bewerken van uw video, het verwijderen van de video en het opnieuw indexeren van uw video. Klik op de optie om uw video opnieuw te indexeren.
 
-![Reindex](./media/customize-language-model/reindex1.png)
+![REINDEX](./media/customize-language-model/reindex1.png)
 
-Dit biedt u de optie te selecteren de **Video source-taal** opnieuw indexeren van uw video. Klik op de vervolgkeuzelijst en selecteer een taalmodel die u hebt gemaakt in de lijst. Er moet de taal van uw taalmodel en de naam die u hebt opgegeven tussen haakjes.
+Dit geeft u de mogelijkheid om de taal van de **video bron** te selecteren waarmee u uw video opnieuw wilt indexeren. Klik op de vervolg keuzelijst en selecteer een taal model dat u hebt gemaakt in de lijst. U moet de taal van uw taal model en de naam die u hebt opgegeven tussen haakjes zeggen.
 
-![Reindex](./media/customize-language-model/reindex.png)
+![REINDEX](./media/customize-language-model/reindex.png)
 
-Klik op de **opnieuw indexeren** knop en de video wordt worden geïndexeerd met u taalmodel.
+Klik op de knop **opnieuw indexeren** en uw video wordt opnieuw geïndexeerd met behulp van het taal model.
 
-## <a name="edit-a-language-model"></a>Een taalmodel bewerken
+## <a name="edit-a-language-model"></a>Een taal model bewerken
 
-U kunt een taalmodel bewerken door de naam ervan wijzigen en verwijderen van bestanden uit het toevoegen van bestanden aan het.
+U kunt een taal model bewerken door de naam ervan te wijzigen, bestanden toe te voegen en er bestanden van te verwijderen.
 
-Als u bestanden toevoegen of uit het taalmodel verwijderen, hebt u met het trainen van het model opnieuw door te klikken in het groen **trainen** optie.
+Als u bestanden uit het taal model toevoegt of verwijdert, moet u het model opnieuw trainen door te klikken op de groene **trein** optie.
 
-### <a name="rename-the-language-model"></a>Wijzig de naam van het taalmodel
+### <a name="rename-the-language-model"></a>De naam van het taal model wijzigen
 
-U kunt de naam van het taalmodel wijzigen door te klikken op **...**  model aan de rechterkant van de taal en selecteer **naam**. 
+U kunt de naam van het taal model wijzigen door op **...** aan de rechter kant van het taal model te klikken en **naam wijzigen**te selecteren. 
 
-Type in de nieuwe naam en hits invoeren.
+Typ de nieuwe naam en druk op ENTER.
 
 ### <a name="add-files"></a>Bestanden toevoegen
 
-Als u wilt toevoegen een tekstbestand, klikt u op **Add file**. Hiermee opent u de Verkenner.
+Klik op **bestand toevoegen**om een tekst bestand toe te voegen. Hiermee opent u de bestanden Verkenner.
 
-Navigeer naar en selecteer het tekstbestand. U kunt meerdere bestanden toevoegen aan een taalmodel.
+Navigeer naar en selecteer het tekst bestand. U kunt meerdere tekst bestanden toevoegen aan een taal model.
 
-U kunt ook een tekstbestand toevoegen door te klikken op de **...**  selecteren en de knop aan de rechterkant van het taalmodel **Add file**.
+U kunt ook een tekst bestand toevoegen door te klikken op de knop **...** aan de rechter kant van het taal model en vervolgens **bestand toevoegen**te selecteren.
 
 ### <a name="delete-files"></a>Bestanden verwijderen
 
-Als u wilt een bestand verwijderen uit het taalmodel, klikt u op de **...**  aan de rechterkant van het tekstbestand en selecteer **verwijderen**. Hiermee wordt een nieuw venster aangegeven dat de verwijdering niet ongedaan worden gemaakt. Klik op de **verwijderen** optie in het nieuwe venster.
+Als u een bestand uit het taal model wilt verwijderen, klikt u op de knop **...** aan de rechter kant van het tekst bestand en selecteert u **verwijderen**. Hiermee wordt een nieuw venster geopend waarin staat dat het verwijderen niet ongedaan kan worden gemaakt. Klik op de optie **verwijderen** in het nieuwe venster.
 
-Deze actie wordt het bestand volledig verwijderd uit het taalmodel.
+Met deze actie verwijdert u het bestand volledig uit het taal model.
 
-## <a name="delete-a-language-model"></a>Een taalmodel verwijderen
+## <a name="delete-a-language-model"></a>Een taal model verwijderen
 
-Als een taalmodel verwijderen uit uw account, klikt u op de **...**  aan de rechterkant van het taalmodel en selecteer **verwijderen**.
+Als u een taal model uit uw account wilt verwijderen, klikt u op de knop **..** . aan de rechter kant van het taal model en selecteert u **verwijderen**.
 
-Hiermee wordt een nieuw venster aangegeven dat de verwijdering niet ongedaan worden gemaakt. Klik op de **verwijderen** optie in het nieuwe venster.
+Hiermee wordt een nieuw venster geopend waarin staat dat het verwijderen niet ongedaan kan worden gemaakt. Klik op de optie **verwijderen** in het nieuwe venster.
 
-Deze actie verwijdert het taalmodel volledig uit uw account. Een video die is met behulp van het verwijderde taalmodel blijft de dezelfde index totdat u de video opnieuw indexeren. Als u de video opnieuw indexeren, kunt u een nieuwe taalmodel toewijzen aan de video. Video Indexer wordt gebruik anders de standaardmodel opnieuw indexeren van de video. 
+Met deze actie wordt het taal model volledig verwijderd uit uw account. Alle Video's die het verwijderde taal model gebruiken, blijven dezelfde index totdat u de video opnieuw indexeert. Als u de video opnieuw indexeert, kunt u een nieuw taal model toewijzen aan de video. Anders wordt het standaard model van Video Indexer gebruikt om de video opnieuw te indexeren. 
 
-## <a name="customize-language-models-by-correcting-transcripts"></a>Taal-modellen aanpassen door te corrigeren transcripties
+## <a name="customize-language-models-by-correcting-transcripts"></a>Taal modellen aanpassen door transcripten te corrigeren
 
-Video Indexer biedt ondersteuning voor automatische aanpassing van taal modellen op basis van de gebruikers van de werkelijke correcties in de transcripties van hun video's aanbrengen.
+Video Indexer ondersteunt automatische aanpassing van taal modellen op basis van de daad werkelijke correcties die gebruikers aanbrengen in de transcripties van hun Video's.
 
-1. Als u een transcript correcties, opent u de video die u wilt bewerken uit uw Account-video's. Selecteer de **tijdlijn** tabblad.
+1. Als u correcties wilt aanbrengen in een transcript, opent u de video die u wilt bewerken vanuit uw account Video's. Selecteer het tabblad **tijd lijn** .
 
-    ![Taalmodel aanpassen](./media/customize-language-model/timeline.png)
-1. Klik op het potloodpictogram om te bewerken van het transcript van uw transcriptie. 
+    ![Taal model aanpassen](./media/customize-language-model/timeline.png)
+1. Klik op het potlood pictogram om de transcriptie van uw transcriptie te bewerken. 
 
-    ![Taalmodel aanpassen](./media/customize-language-model/edits.png)
+    ![Taal model aanpassen](./media/customize-language-model/edits.png)
 
-    Video Indexer bevat alle regels die door u worden opgelost in de schrijffouten van uw video en automatisch naar een tekstbestand met de naam 'van transcript bewerkingen' toegevoegd. Deze wijzigingen worden gebruikt voor het specifieke taal-model dat is gebruikt in deze video kunt indexeren om opnieuw te trainen. 
+    Video Indexer alle regels die door u zijn gecorrigeerd, worden vastgelegd in de transcriptie van uw video en worden ze automatisch toegevoegd aan een tekst bestand met de naam ' van transcripten bewerken '. Deze bewerkingen worden gebruikt voor het opnieuw trainen van het specifieke taal model dat is gebruikt voor het indexeren van deze video. 
     
-    Als u een taalmodel opgeeft hebt bij het indexeren van deze video, worden alle bewerkingen voor deze video worden opgeslagen in een standaard taalmodel met de naam Account aanpassingen binnen de gedetecteerde taal van de video. 
+    Als u tijdens het indexeren van deze video geen taal model hebt opgegeven, worden alle bewerkingen voor deze video opgeslagen in een standaard taal model met de naam account aanpassingen binnen de gedetecteerde taal van de video. 
     
-    Als meerdere wijzigingen zijn aangebracht aan dezelfde regel, wordt alleen de laatste versie van de herstelde regel worden gebruikt voor het bijwerken van het taalmodel.  
+    Als er meerdere bewerkingen op dezelfde regel zijn aangebracht, wordt alleen de laatste versie van de gecorrigeerde regel gebruikt voor het bijwerken van het taal model.  
     
     > [!NOTE]
-    > Alleen tekstuele correcties worden gebruikt voor het aanpassen. Dit betekent dat correcties die geen betrekking op werkelijke woorden (bijvoorbeeld leestekens of spaties) zijn niet opgenomen. 
+    > Voor de aanpassing worden alleen tekstuele correcties gebruikt. Dit betekent dat correcties die geen werkelijke woorden (bijvoorbeeld lees tekens of spaties) bevatten, niet zijn opgenomen. 
     
-1. Hier ziet u transcript correcties weergegeven in het tabblad van de taal van de pagina inhoudsmodel aanpassen.
+1. Er worden afschrift correcties weer gegeven op het tabblad taal van de pagina aanpassing van het inhouds model.
 
-    ![Taalmodel aanpassen](./media/customize-language-model/customize.png)
+    ![Taal model aanpassen](./media/customize-language-model/customize.png)
 
-   Als u wilt zoeken in het bestand 'van transcript bewerkingen' voor elk van uw taalmodellen, klikt u op om dit te openen. 
+   Als u wilt kijken naar het bestand ' van transcripten bewerken ' voor elk van uw taal modellen, klikt u erop om het te openen. 
 
     ![Van transcript bewerkingen](./media/customize-language-model/from-transcript-edits.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Taalmodel met behulp van API's aanpassen](customize-language-model-with-api.md)
+[Taal model aanpassen met behulp van Api's](customize-language-model-with-api.md)

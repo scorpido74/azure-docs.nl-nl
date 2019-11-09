@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ca091a1bbf56e2d2850a464d0109020b06483d0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 20bc148e392900aecb63ad393ec6e90cda65585a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576696"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839102"
 ---
 # <a name="collect-data-for-models-in-production"></a>Gegevens verzamelen voor modellen in productie
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Als u deze gegevens hebt verzameld, kunt u het volgende doen:
 De volgende gegevens kunnen worden verzameld:
 * Model **invoer** gegevens van webservices die zijn geïmplementeerd in azure Kubernetes cluster (AKS) (spraak, afbeeldingen en video worden **niet** verzameld) 
   
-* Model voorspellingen met behulp van invoer gegevens voor productie.
+* Voor spellingen model leren met behulp van invoer gegevens voor productie
 
 > [!Note]
 > Vóór het samen voegen of vooraf berekenen van deze gegevens maken geen deel uit van de service.   
@@ -57,22 +57,22 @@ Het pad naar de uitvoer gegevens in de BLOB volgt de volgende syntaxis:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+- Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree)
 
-- Een Azure Machine Learning-werk ruimte, een lokale map met uw scripts en de Azure Machine Learning SDK voor python geïnstalleerd. Meer informatie over hoe u deze vereisten kunt ophalen met behulp van het document [een ontwikkel omgeving configureren](how-to-configure-environment.md) .
+- Een Azure Machine Learning-werk ruimte, een lokale map met uw scripts en de Azure Machine Learning SDK voor python geïnstalleerd. Meer informatie over hoe u deze vereisten kunt ophalen met behulp van het document [een ontwikkel omgeving configureren](how-to-configure-environment.md)
 
-- Een getraind machine learning model dat moet worden geïmplementeerd in azure Kubernetes service (AKS). Als u er nog geen hebt, raadpleegt u de zelf studie over het [classificatie Model Train image](tutorial-train-models-with-aml.md) .
+- Een getraind machine learning model dat moet worden geïmplementeerd in azure Kubernetes service (AKS). Als u er nog geen hebt, raadpleegt u de zelf studie over het [classificatie Model Train image](tutorial-train-models-with-aml.md)
 
-- Een Azure Kubernetes-service cluster. Zie voor meer informatie over het maken en implementeren van een account de [instructies document implementeren en](how-to-deploy-and-where.md) gebruiken.
+- Een Azure Kubernetes-service cluster. Zie voor meer informatie over het maken en implementeren van [een document de](how-to-deploy-and-where.md)
 
-- [Stel uw omgeving](how-to-configure-environment.md) in en installeer de [controle-SDK](https://aka.ms/aml-monitoring-sdk).
+- [Uw omgeving instellen](how-to-configure-environment.md) en de [bewakings-SDK](https://aka.ms/aml-monitoring-sdk) installeren
 
 ## <a name="enable-data-collection"></a>Gegevensverzameling inschakelen
 Het verzamelen van gegevens kan worden ingeschakeld, ongeacht het model dat wordt geïmplementeerd via Azure Machine Learning of andere hulpprogram ma's. 
 
 Als u deze wilt inschakelen, moet u het volgende doen:
 
-1. Open het Score bestand. 
+1. Het Score bestand openen
 
 1. Voeg de [volgende code](https://aka.ms/aml-monitoring-sdk) toe boven aan het bestand:
 
@@ -90,7 +90,7 @@ Als u deze wilt inschakelen, moet u het volgende doen:
 
     *CorrelationId* is een optionele para meter. u hoeft deze niet in te stellen als u deze niet nodig hebt voor uw model. Als u een correlationId op locatie hebt, helpt u de toewijzing met andere gegevens te vereenvoudigen. (Voor beelden zijn: LoanNumber, CustomerId, etc.)
     
-    De *id* wordt later gebruikt voor het maken van de mapstructuur in uw blob. deze kan worden gebruikt om "onbewerkte" gegevens te delen versus "verwerkt".
+    De *id* wordt later gebruikt voor het maken van de mapstructuur in uw blob. deze kan worden gebruikt om "onbewerkte" gegevens te delen versus "verwerkt"
 
 3.  Voeg de volgende regels code toe aan de functie `run(input_df)`:
 
@@ -111,45 +111,45 @@ Als u deze wilt inschakelen, moet u het volgende doen:
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True, enable_app_insights=True)
     ``` 
 
-5. Als u een nieuwe installatie kopie wilt maken en de service wilt implementeren, raadpleegt u het document [implementeren en](how-to-deploy-and-where.md) gebruiken.
+5. Als u een nieuwe installatie kopie wilt maken en de service wilt implementeren, raadpleegt u het document [implementeren en](how-to-deploy-and-where.md) gebruiken
 
 
 Als u al een service hebt met de afhankelijkheden die zijn geïnstalleerd in uw **omgevings bestand** en **Score bestand**, schakelt u het verzamelen van gegevens in:
 
-1. Ga naar [Azure machine learning Studio](https://ml.azure.com).
+1. Ga naar [Azure machine learning Studio](https://ml.azure.com)
 
-1. Open uw werk ruimte.
+1. Uw werk ruimte openen
 
-1. Ga naar **implementaties** -> **Selecteer Service** -> **bewerken**.
+1. Ga naar **implementaties** -> **Selecteer Service** -> **bewerken**
 
    ![Service bewerken](media/how-to-enable-data-collection/EditService.PNG)
 
-1. Selecteer in **Geavanceerde instellingen**de optie **model gegevens verzameling inschakelen**. 
+1. Selecteer in **Geavanceerde instellingen** **model gegevens verzameling inschakelen**
 
     [Gegevens verzameling ![controleren](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
-   In dit venster kunt u er ook voor kiezen om Appinsights Diagnostics in te scha kelen om de status van uw service bij te houden.  
+   In dit venster kunt u er ook voor kiezen om Appinsights Diagnostics in te scha kelen om de status van uw service bij te houden
 
-1. Selecteer **bijwerken** om de wijziging toe te passen.
+1. Selecteer **bijwerken** om de wijziging toe te passen
 
 
 ## <a name="disable-data-collection"></a>Gegevens verzameling uitschakelen
 U kunt het verzamelen van gegevens op elk gewenst moment stoppen. Gebruik python-code of Azure Machine Learning Studio om het verzamelen van gegevens uit te scha kelen.
 
 + Optie 1-uitschakelen in Azure Machine Learning studio: 
-  1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
+  1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com)
 
-  1. Open uw werk ruimte.
+  1. Uw werk ruimte openen
 
-  1. Ga naar **implementaties** -> **Selecteer Service** -> **bewerken**.
+  1. Ga naar **implementaties** -> **Selecteer Service** -> **bewerken**
 
      [optie voor ![bewerken](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-  1. Schakel in **Geavanceerde instellingen**de optie **model gegevens verzamelen inschakelen**uit. 
+  1. Schakel in **Geavanceerde instellingen**de optie **model gegevens verzamelen inschakelen** uit
 
      [Gegevens verzameling ![uitschakelen](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
-  1. Selecteer **bijwerken** om de wijziging toe te passen.
+  1. Selecteer **bijwerken** om de wijziging toe te passen
 
   U kunt deze instellingen ook openen in uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com).
 
@@ -164,10 +164,11 @@ U kunt het verzamelen van gegevens op elk gewenst moment stoppen. Gebruik python
 U kunt elk gewenst hulp programma kiezen voor het analyseren van de verzamelde gegevens in uw Azure-Blob.
 
 Om snel toegang te krijgen tot de gegevens van uw blob:
-1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
 
-1. Open uw werk ruimte.
-1. Klik op **opslag**.
+1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com)
+
+1. Uw werk ruimte openen
+1. Klik op **opslag**
 
     [Opslag ![](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
@@ -183,47 +184,47 @@ Om snel toegang te krijgen tot de gegevens van uw blob:
 
 1. [Power bi Desktop](https://www.powerbi.com) downloaden en openen
 
-1. Selecteer **gegevens ophalen** en klik op [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
+1. Selecteer **gegevens ophalen** en klik op [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources)
 
     [Setup van aan pbi-BLOB ![](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 
-1. Voeg de naam van uw opslag account toe en voer uw opslag sleutel in. U kunt deze informatie vinden in de **instellingen** van uw blob > > toegangs sleutels. 
+1. Voeg de naam van uw opslag account toe en voer uw opslag sleutel in. U kunt deze informatie vinden in de **instellingen** van uw BLOB > toegangs sleutels >
 
-1. Selecteer de container **modeldata** en klik op **bewerken**. 
+1. Selecteer de container **modeldata** en klik op **bewerken**
 
     [![aan pbi-Navigator](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
 1. Klik in de query-editor onder naam kolom en voeg uw opslag account 1 toe. Het pad naar het filter model. Opmerking: als u alleen bestanden van een bepaald jaar of een bepaalde maand wilt bekijken, vouwt u het pad naar het filter uit. Bekijk bijvoorbeeld alleen maart-gegevens:/modeldata/subscriptionid >/resourcegroupname >/WorkspaceName >/webservicename >/modelname >/modelversion >/designation >/Year >/3
 
-1. Filter de gegevens die relevant zijn voor u op basis van de **naam**. Als u voor **spellingen** en **invoer**hebt opgeslagen, moet u een query maken voor elke.
+1. Filter de gegevens die relevant zijn voor u op basis van de **naam**. Als u voor **spellingen** en **invoer**hebt opgeslagen, moet u een query maken voor elke
 
-1. Klik op de dubbele pijl afgezien van de kolom **inhoud** om de bestanden te combi neren. 
+1. Klik op de dubbele pijl afgezien van de kolom **inhoud** om de bestanden te combi neren
 
     [AAN pbi-inhoud ![](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. Klik op OK om de gegevens vooraf te laden.
+1. Klik op OK en de gegevens worden vooraf geladen
 
     [![pbiCombine](media/how-to-enable-data-collection/pbiCombine.png)](./media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
-1. U kunt nu klikken op **sluiten en Toep assen** .
+1. U kunt nu klikken op **sluiten en Toep assen**
 
-1.  Als u invoer en voor spellingen hebt toegevoegd, worden uw tabellen automatisch gecorreleerd op **aanvraag**-waarde.
+1.  Als u invoer en voor spellingen hebt toegevoegd, worden uw tabellen automatisch gecorreleerd op **aanvraag** -waarde
 
-1. Begin met het bouwen van uw aangepaste rapporten in uw model gegevens.
+1. Beginnen met het bouwen van uw aangepaste rapporten in uw model gegevens
 
 
 ### <a name="analyzing-model-data-using-databricks"></a>Model gegevens analyseren met behulp van Databricks
 
-1. Maak een [Databricks-werk ruimte](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). 
+1. Een [Databricks-werk ruimte](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) maken
 
-1. Ga naar uw Databricks-werk ruimte. 
+1. Ga naar uw Databricks-werk ruimte
 
-1. Selecteer **gegevens uploaden**in uw databricks-werk ruimte.
+1. Selecteer in uw databricks-werk ruimte **gegevens uploaden**
 
     [![DB-upload](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. Maak een nieuwe tabel en selecteer **andere gegevens bronnen** -> Azure Blob Storage-> tabel maken in notitie blok.
+1. Nieuwe tabel maken en **andere gegevens bronnen** selecteren-> Azure Blob Storage-> tabel maken in notebook
 
     [![DB-tabel](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
@@ -236,7 +237,7 @@ Om snel toegang te krijgen tot de gegevens van uw blob:
  
     [![met dbsetup](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
-1. Volg de stappen in de sjabloon om uw gegevens te bekijken en te analyseren. 
+1. Volg de stappen in de sjabloon om uw gegevens te bekijken en te analyseren
 
 ## <a name="example-notebook"></a>Voor beeld van notebook
 

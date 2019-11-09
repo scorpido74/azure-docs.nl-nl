@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: b2b32d6ccca69f330cfe15faa1446aa91fdb687a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d59646a87727409d759cc1903046fb3cdeade2e0
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465722"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847376"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Bronnen voor ontwikkel aars voor Language Understanding
 
@@ -41,8 +41,10 @@ Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
 De API'S voor ontwerpen en voor spellingen van eind punten zijn beschikbaar via REST-Api's:
 
-* [Naslag documentatie](https://go.microsoft.com/fwlink/?linkid=2092087) voor het ontwerpen
-* [Naslag documentatie](https://go.microsoft.com/fwlink/?linkid=2092356) voor de runtime van de voor spelling
+|Type|Versie|
+|--|--|
+|Ontwerpen|[Offload](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[Preview v3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
+|Voorspellings|[Offload](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[V3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
 
 ### <a name="language-based-sdks"></a>Op taal gebaseerde Sdk's
 

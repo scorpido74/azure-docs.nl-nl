@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 5ababe9eb1f680378e882970df2d0b008287a7c4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6aa721ee6cf6680518a28d050c22d8649f0f531f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241718"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833169"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Snelstartgids: de Ansible-oplossings sjabloon voor Azure implementeren op CentOS
 
@@ -59,7 +59,7 @@ De Ansible-oplossingssjabloon voor Azure is ontworpen voor het configureren van 
        - [Krachtige Premium Storage en beheerde schijven voor VM's](/azure/virtual-machines/windows/premium-storage)
        - [Standard SSD Managed Disks for Azure Virtual machine workloads](/azure/virtual-machines/windows/disks-standard-ssd) (Standaard beheerde SSD-schijven voor workloads van Azure-VM's)
    - **Openbaar IP-adres**: configureer deze instelling als u van buiten de virtuele machine met de virtuele machine wilt communiceren. De standaardwaarde is een nieuw openbaar IP-adres met de naam `ansible-pip`. Als u een ander IP-adres wilt opgeven, selecteert u de pijl om de kenmerken op te geven, zoals de naam, SKU en toewijzing van dat IP-adres. 
-   - **Domeinnaamlabel**: geef de openbare-domeinnaam op van de virtuele machine. De naam moet uniek zijn en voldoen aan de vereisten voor naamgeving. Zie [Naamconventies voor Azure-resources](/azure/architecture/best-practices/naming-conventions) voor meer informatie over het opgeven van een naam voor de virtuele machine.
+   - **Domeinnaamlabel**: geef de openbare-domeinnaam op van de virtuele machine. De naam moet uniek zijn en voldoen aan de vereisten voor naamgeving. Zie [Naamconventies voor Azure-resources](/azure/architecture/best-practices/resource-naming) voor meer informatie over het opgeven van een naam voor de virtuele machine.
    - **Ansible-versie**: geef een versienummer of de waarde `latest` op om de nieuwste versie te implementeren. Selecteer het informatiepictogram naast de **Ansible-versie** voor meer informatie over de beschikbare versies.
 
      ![Azure-portaltabblad voor de aanvullende Ansible-instellingen](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-2.png)

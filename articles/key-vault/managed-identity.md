@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6c7a9fdb5ed60023a82984fd5be5b424c634e679
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 75317f73ad724b4ce8ad7a894890b2269bd8c5d0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720255"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837501"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Key Vault-verificatie bieden met een beheerde identiteit
 
@@ -34,7 +34,7 @@ Voor het volt ooien van deze hand leiding hebt u de volgende resources nodig.
    - [Een sleutel kluis maken met Azure PowerShell](quick-create-powershell.md)
    - [Een sleutel kluis maken met de Azure Portal](quick-create-portal.md).
 - Een bestaande App Service-toepassing waaraan toegang tot de sleutel kluis moet worden verleend. U kunt een snelle versie maken door de stappen in de [app service-documentatie](../app-service/overview.md)te volgen.
-- [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/overview). U kunt ook de [Azure Portal](http://portal.azure.com)gebruiken.
+- [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/overview). U kunt ook de [Azure Portal](https://portal.azure.com)gebruiken.
 
 
 ## <a name="adding-a-system-assigned-identity"></a>Een door het systeem toegewezen identiteit toevoegen 
@@ -53,7 +53,7 @@ Als u een beheerde identiteit in de portal instelt, moet u eerst een toepassing 
 
     ![](./media/managed-identity-system-assigned.png)
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Voor deze Quick start is de Azure CLI-versie 2.0.4 of hoger vereist. Voer `az --version` uit om uw huidige versie te vinden. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli?view=azure-cli-latest). 
 
@@ -76,7 +76,7 @@ az webapp identity assign --name myApp --resource-group myResourceGroup
 az functionapp identity assign --name myApp --resource-group myResourceGroup
 ```
 
-Noteer de, die in `PrincipalId`de volgende sectie nodig is.
+Noteer de `PrincipalId`, die in de volgende sectie nodig is.
 
 ```json
 {
@@ -101,7 +101,7 @@ Noteer de, die in `PrincipalId`de volgende sectie nodig is.
 
     ![](./media/managed-identity-access-policy.png)
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Als u uw toepassing toegang wilt verlenen tot uw sleutel kluis, gebruikt u de Azure CLI [AZ set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) opdracht, waarbij u de **ObjectId** -para meter opgeeft met de **principalId** die u hierboven hebt genoteerd.
 
@@ -111,7 +111,7 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Key Vault beveiliging: Identiteits-en toegangs beheer @ no__t-0
+- [Azure Key Vault beveiliging: identiteits-en toegangs beheer](overview-security.md#identity-and-access-management)
 - [Key Vault verificatie met een toegangscontrole beleid bieden](key-vault-group-permissions-for-apps.md)
 - [Informatie over sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)
 - [Beveilig uw sleutel kluis](key-vault-secure-your-key-vault.md).

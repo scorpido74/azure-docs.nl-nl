@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 10/17/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 91e6f08d1dc3dc829dd7c6a58c651d453121e240
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cfde1355ef5e5a2f9033456ac4089ce3ca3f9d72
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516914"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839960"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Maximale grootte van de Web Application firewall-aanvraag en uitsluitings lijsten
 
@@ -82,7 +82,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-Dus als de URL **http://www.contoso.com/?user%281%29=fdafdasfda** wordt door gegeven aan de WAF, wordt de teken reeks **fdafdasfda**niet geëvalueerd, maar wordt nog wel de parameter naam **gebruiker %281 %29**geëvalueerd. 
+Dus als de URL `http://www.contoso.com/?user%281%29=fdafdasfda` wordt door gegeven aan de WAF, wordt de teken reeks **fdafdasfda**niet geëvalueerd, maar wordt nog wel de parameter naam **gebruiker %281 %29**geëvalueerd. 
 
 ## <a name="waf-request-size-limits"></a>Limieten voor WAF-aanvraag grootte
 

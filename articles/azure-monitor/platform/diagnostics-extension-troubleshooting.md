@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/08/2019
-ms.openlocfilehash: 24a2b8a3c190ed440684ea3aa0ab35ebbf93fca0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0a6322edccc2047ffd9d67e4e3ed113e668898da
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161967"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834695"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Diagnostics probleem oplossing
 In dit artikel vindt u informatie over het oplossen van problemen die relevant zijn voor het gebruik van Azure Diagnostics. Zie [Azure Diagnostics Overview](diagnostics-extension-overview.md)voor meer informatie over Azure Diagnostics.
@@ -22,7 +22,7 @@ In dit artikel vindt u informatie over het oplossen van problemen die relevant z
 
 **Invoeg toepassing voor diagnostische gegevens (DiagnosticsPlugin. exe)** : Hiermee kunt u de levens duur van de bewakings agent configureren, starten en beheren. Het is het belangrijkste proces dat door het start programma wordt gestart.
 
-**Bewakings agent (MonAgent \*. exe-processen)** : Hiermee worden de diagnostische gegevens bewaakt, verzameld en overgedragen.  
+**Bewakings agent (MonAgent\*. exe-processen)** : Hiermee worden de diagnostische gegevens bewaakt, verzameld en overgedragen.  
 
 ## <a name="logartifact-paths"></a>Logboek/artefact paden
 Hieronder vindt u de paden naar enkele belang rijke logboeken en artefacten. We verwijzen naar deze informatie in de rest van het document.
@@ -31,9 +31,9 @@ Hieronder vindt u de paden naar enkele belang rijke logboeken en artefacten. We 
 | Artefact | Pad |
 | --- | --- |
 | **Azure Diagnostics-configuratie bestand** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<-versie > \Config.txt |
-| **Logboek bestanden** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > \ |
-| **Lokaal archief voor diagnostische gegevens** | Map c:\resources\directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Tables |
-| **Configuratie bestand van bewakings agent** | Map c:\resources\directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
+| **Logboek bestanden** | \<versie > C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics |
+| **Lokaal archief voor diagnostische gegevens** | Map c:\resources\directory\<CloudServiceDeploymentID >.\<rolnaam >. DiagnosticStore\WAD0107\Tables |
+| **Configuratie bestand van bewakings agent** | Map c:\resources\directory\<CloudServiceDeploymentID >.\<rolnaam >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
 | **Azure Diagnostics extensie pakket** | \<versie van%SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics > |
 | **Pad naar het hulp programma voor logboek verzameling** | %SystemDrive%\Packages\GuestAgent\ |
 | **MonAgentHost-logboek bestand** | Map c:\resources\directory\<CloudServiceDeploymentID >.\<rolnaam >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
@@ -41,12 +41,12 @@ Hieronder vindt u de paden naar enkele belang rijke logboeken en artefacten. We 
 ### <a name="virtual-machines"></a>Virtuele machines
 | Artefact | Pad |
 | --- | --- |
-| **Azure Diagnostics-configuratie bestand** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version > \RuntimeSettings |
-| **Logboek bestanden** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion > \ |
-| **Lokaal archief voor diagnostische gegevens** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion > \WAD0107\Tables |
-| **Configuratie bestand van bewakings agent** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion > \WAD0107\Configuration\MaConfig.xml |
-| **Status bestand** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version > \Status |
-| **Azure Diagnostics extensie pakket** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion >|
+| **Azure Diagnostics-configuratie bestand** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<-versie > \RuntimeSettings |
+| **Logboek bestanden** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \ |
+| **Lokaal archief voor diagnostische gegevens** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Tables |
+| **Configuratie bestand van bewakings agent** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MaConfig.xml |
+| **Status bestand** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<-versie > \Status |
+| **Azure Diagnostics extensie pakket** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion >|
 | **Pad naar het hulp programma voor logboek verzameling** | C:\WindowsAzure\Logs\WaAppAgent.log |
 | **MonAgentHost-logboek bestand** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
@@ -55,9 +55,9 @@ Azure Diagnostics geeft metrische gegevens die kunnen worden weer gegeven in de 
 
 Hier is de **PartitionKey** van de tabel de resource-id, virtuele machine of virtuele-machine schaalset. **RowKey** is de metrische naam (ook wel de naam van het prestatie meter item genoemd).
 
-Als de resource-ID onjuist is, controleert u de **configuratie** van de **diagnostische gegevens**  > **metrische gegevens**  > **ResourceID** om te zien of de resource-id correct is ingesteld.
+Als de resource-ID onjuist is, controleert u de **configuratie** van de **diagnostische gegevens** > **metrische gegevens** > **ResourceID** om te zien of de resource-id correct is ingesteld.
 
-Als er geen gegevens zijn voor de specifieke metriek, controleert u de **Diagnostische configuratie**  > **Performance Counter** om na te gaan of de metriek (prestatie meter item) is opgenomen. De volgende prestatie meter items worden standaard ingeschakeld:
+Als er geen gegevens zijn voor de specifieke metriek, controleert u de **Diagnostische configuratie** > **Performance Counter** om na te gaan of de metriek (prestatie meter item) is opgenomen. De volgende prestatie meter items worden standaard ingeschakeld:
 - \Processor(_Total)\% Processor Time
 - \Memory\Available Bytes
 - \ ASP.NET toepassingen (__totaal__) \ aanvragen/sec
@@ -123,12 +123,12 @@ De diagnostische configuratie bevat instructies voor een bepaald type gegevens d
 #### <a name="is-the-host-generating-data"></a>Worden er gegevens gegenereerd door de host?
 - **Prestatie meter items**: open perfmon en controleer de teller.
 
-- **Traceer logboeken**: externe toegang tot de virtuele machine en een TextWriterTraceListener toevoegen aan het configuratie bestand van de app.  Zie https://msdn.microsoft.com/library/sk36c28t.aspx om de tekst-listener in te stellen.  Zorg ervoor dat het `<trace>`-element `<trace autoflush="true">` heeft.<br />
+- **Traceer logboeken**: externe toegang tot de virtuele machine en een TextWriterTraceListener toevoegen aan het configuratie bestand van de app.  Zie https://msdn.microsoft.com/library/sk36c28t.aspx om de tekst-listener in te stellen.  Zorg ervoor dat het `<trace>`-element `<trace autoflush="true">`heeft.<br />
 Als u geen traceer logboeken ziet die worden gegenereerd, raadpleegt u meer informatie over traceer logboeken die ontbreken.
 
-- **Etw-traceringen**: externe toegang tot de virtuele machine en PerfView installeren.  In PerfView voert u **File**  > **User Command**  > **etwprovder1**  > **etwprovider2**, enzovoort. De opdracht **listen** is hoofdletter gevoelig en er mogen geen spaties tussen de door komma's gescheiden lijst van etw-providers zijn. Als de opdracht niet kan worden uitgevoerd, kunt u de knop **logboek** selecteren in de rechter benedenhoek van het hulp programma Perfview om te zien wat er is geprobeerd te starten en wat het resultaat was.  Ervan uitgaande dat de invoer juist is, verschijnt er een nieuw venster. In een paar seconden gaat u ETW-traceringen bekijken.
+- **Etw-traceringen**: externe toegang tot de virtuele machine en PerfView installeren.  In PerfView voert u **File** > **User Command** > **etwprovder1** > **etwprovider2**, enzovoort. De opdracht **listen** is hoofdletter gevoelig en er mogen geen spaties tussen de door komma's gescheiden lijst van etw-providers zijn. Als de opdracht niet kan worden uitgevoerd, kunt u de knop **logboek** selecteren in de rechter benedenhoek van het hulp programma Perfview om te zien wat er is geprobeerd te starten en wat het resultaat was.  Ervan uitgaande dat de invoer juist is, verschijnt er een nieuw venster. In een paar seconden gaat u ETW-traceringen bekijken.
 
-- **Gebeurtenis logboeken**: externe toegang tot de virtuele machine. Open `Event Viewer` en controleer of de gebeurtenissen bestaan.
+- **Gebeurtenis logboeken**: externe toegang tot de virtuele machine. Open `Event Viewer`en controleer of de gebeurtenissen bestaan.
 
 #### <a name="is-data-getting-captured-locally"></a>Worden gegevens lokaal vastgelegd?
 Controleer vervolgens of de gegevens lokaal worden vastgelegd.
@@ -143,7 +143,7 @@ Controleer ook de configuratie die is gegenereerd voor monitoring agent MaConfig
 #### <a name="is-data-getting-transferred"></a>Worden gegevens overgedragen?
 Als u hebt gecontroleerd of de gegevens lokaal worden vastgelegd, maar u deze nog steeds niet ziet in uw opslag account, voert u de volgende stappen uit:
 
-- Controleer of u een juist opslag account hebt opgegeven en of u de sleutels voor het opgegeven opslag account nog niet hebt doorgevoerd. Voor Azure Cloud Services zien soms dat mensen de `useDevelopmentStorage=true` niet bijwerken.
+- Controleer of u een juist opslag account hebt opgegeven en of u de sleutels voor het opgegeven opslag account nog niet hebt doorgevoerd. Voor Azure Cloud Services zien soms dat mensen de `useDevelopmentStorage=true`niet bijwerken.
 
 - Controleer of het gegeven opslag account juist is. Zorg ervoor dat u geen netwerk beperkingen hebt die verhinderen dat de onderdelen open bare-opslag eindpunten bereiken. Een manier om dat te doen is met externe toegang tot de computer en vervolgens proberen om iets te schrijven naar hetzelfde opslag account.
 
@@ -213,10 +213,10 @@ Deze code genereert vier tabellen:
 | provider = "PROv1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("PROv1") |
 | provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
-## <a name="references"></a>Naslaginformatie
+## <a name="references"></a>Verwijzingen
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>De configuratie van de extensie voor diagnostische gegevens controleren
-De eenvoudigste manier om de configuratie van de extensie te controleren, is door naar [Azure resource Explorer](http://resources.azure.com)te gaan en vervolgens naar de virtuele machine of Cloud service te gaan waar de Azure Diagnostics extensie (IaaSDiagnostics/PaaDiagnostics) is.
+De eenvoudigste manier om de configuratie van de extensie te controleren, is door naar [Azure resource Explorer](https://resources.azure.com)te gaan en vervolgens naar de virtuele machine of Cloud service te gaan waar de Azure Diagnostics extensie (IaaSDiagnostics/PaaDiagnostics) is.
 
 U kunt ook extern bureau blad op de computer en kijken naar het Azure Diagnostics configuratie bestand dat wordt beschreven in de sectie logboek artefacten Path.
 
@@ -295,7 +295,7 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 
 In de portal-ervaring in de virtuele machines worden standaard prestatie meter items weer gegeven. Als u de prestatie meter items niet ziet en u weet dat de gegevens worden gegenereerd omdat deze beschikbaar zijn in de opslag ruimte, controleert u het volgende:
 
-- Hiermee wordt aangegeven of de gegevens in de opslag item namen in het Engels zijn. Als de namen van de items niet in het Engels zijn, kan de grafiek met metrische gegevens niet worden herkend. **Risico beperking**: Wijzig de taal van de computer in het Engels voor systeem accounts. Als u dit wilt doen, selecteert u **configuratie scherm**  > **regio**  >  instellingen voor**beheer**  > **kopiëren**. Schakel vervolgens het selectie vakje **welkomst scherm en systeem accounts** uit zodat de aangepaste taal niet wordt toegepast op het systeem account.
+- Hiermee wordt aangegeven of de gegevens in de opslag item namen in het Engels zijn. Als de namen van de items niet in het Engels zijn, kan de grafiek met metrische gegevens niet worden herkend. **Risico beperking**: Wijzig de taal van de computer in het Engels voor systeem accounts. Als u dit wilt doen, selecteert u **configuratie scherm** > **regio** > instellingen voor **beheer** > **kopiëren**. Schakel vervolgens het selectie vakje **welkomst scherm en systeem accounts** uit zodat de aangepaste taal niet wordt toegepast op het systeem account.
 
 - Als u Joker tekens (\*) gebruikt in de namen van uw prestatie meter items, kan de Portal de geconfigureerde en verzamelde teller niet correleren wanneer de prestatie meter items worden verzonden naar de Sink van het Azure Storage. **Risico beperking**: om ervoor te zorgen dat u Joker tekens kunt gebruiken en de portal (\*) wilt uitbreiden, moet u de prestatie meter items door sturen naar de [sink ' Azure monitor '](diagnostics-extension-schema.md#diagnostics-extension-111).
 

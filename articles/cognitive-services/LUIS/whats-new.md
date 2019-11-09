@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: diberry
-ms.openlocfilehash: 0788df1c05d70c01d4de7f7a6ba62a476252f75a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2e32d0f4906dea69d6eab27faca4a2e41106ed73
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498927"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836845"
 ---
 # <a name="whats-new-in-language-understanding"></a>Wat is er nieuw in Language Understanding
 
@@ -31,11 +31,13 @@ Meer informatie over wat er nieuw is in de service. Deze items zijn release opme
     * De mogelijkheid om apps te importeren en exporteren met de. lu-indeling ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). Dit wordt de manier om een effectief CI/CD-proces uit te voeren. 
 * Taal uitbreiding
     * [Arabisch en Hindi](luis-language-support.md) in open bare preview.
-* Modellen voorbouwen
+* Vooraf gemaakte modellen
     * [Vooraf gebouwde domeinen](luis-reference-prebuilt-domains.md) zijn nu algemeen beschikbaar (ga)
     * Japanse [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md#japanese-entity-support) : leeftijd, valuta, getal, percentage worden niet ondersteund in v3.
     * Italiaanse [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md#italian-entity-support) -leeftijd, valuta, dimensie, getal, percentage resolutie gewijzigd van v2.
-* Verbeter de gebruikers ervaring in de [Preview.Luis.ai-Portal](https://preview.luis.ai) met verbeterde labels om het bouwen en debuggen van complexe modellen mogelijk te maken.
+* Verbeter de gebruikers ervaring in de [Preview.Luis.ai-Portal](https://preview.luis.ai) met verbeterde labels om het bouwen en debuggen van complexe modellen mogelijk te maken. Probeer de preview-portal zelf studies:
+    * [Alleen intentie](tutorial-intents-only.md)
+    * [Door de computer geleerde entiteit](tutorial-machine-learned-entity.md) 
 * Geavanceerde taal mogelijkheden: [Geavanceerde taal modellen bouwen](luis-concept-entity-types.md) met minder inspanning. 
 * Het definiëren van machine learning-functies op model niveau en het inschakelen van modellen die kunnen worden gebruikt als signalen voor een ander model, zoals het gebruik van entiteiten als functies voor intenties en andere entiteiten.
 * Nieuwe, uitgebreide [limieten](luis-boundaries.md) : hoger maximum voor woordgroepen lijsten en totaal aantal zinsdelen, nieuw model als een functie limiet

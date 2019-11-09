@@ -4,20 +4,20 @@ description: Veelgestelde vragen over avere vFXT voor Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 11/06/2019
 ms.author: rohogue
-ms.openlocfilehash: f42a9cf5aaa3256865bcf388aa5bd422664c73dd
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 7839530463ea834ed5f8ae2ae06854985a77c673
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255402"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847372"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Veelgestelde vragen over Avere vFXT for Azure
 
-In dit artikel vindt u antwoorden op vragen die u kunnen helpen bij het bepalen of avere vFXT voor Azure geschikt is voor uw behoeften. Het bevat algemene informatie over avere vFXT en legt uit hoe het werkt met andere Azure-onderdelen en met producten van externe leveranciers. 
+In dit artikel vindt u antwoorden op vragen die u kunnen helpen bij het bepalen of avere vFXT voor Azure geschikt is voor uw behoeften. Het bevat algemene informatie over avere vFXT en legt uit hoe het werkt met andere Azure-onderdelen en met producten van externe leveranciers.
 
-## <a name="general"></a>Algemeen 
+## <a name="general"></a>Algemeen
 
 ### <a name="what-is-avere-vfxt-for-azure"></a>Wat is Avere vFXT for Azure?
 
@@ -67,7 +67,7 @@ AVERE vFXT voor Azure wordt ondersteund in alle regio's, met uitzonde ring van s
 
 ### <a name="how-do-i-get-help-with-avere-vfxt"></a>Hoe kan ik hulp krijgen bij avere vFXT?
 
-Een gespecialiseerde ondersteunings groep biedt hulp bij avere vFXT voor Azure. Volg de instructies in [hulp bij uw systeem verkrijgen](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) om een ondersteunings ticket te openen via de Azure Portal. 
+Een gespecialiseerde ondersteunings groep biedt hulp bij avere vFXT voor Azure. Volg de instructies in [hulp bij uw systeem verkrijgen](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) om een ondersteunings ticket te openen via de Azure Portal.
 
 ### <a name="is-avere-vfxt-highly-available"></a>Is avere vFXT Maxi maal beschikbaar?
 
@@ -75,7 +75,7 @@ Ja, avere vFXT wordt uitsluitend uitgevoerd als een HA-oplossing.
 
 ### <a name="does-avere-vfxt-for-azure-also-support-other-cloud-services"></a>Ondersteunt avere vFXT voor Azure ook andere Cloud Services?
 
-Ja, klanten kunnen meer dan één Cloud provider gebruiken met het avere vFXT-cluster. Het ondersteunt AWS S3 Standard buckets, Google Cloud Services Standard buckets en Azure Blob-containers. 
+Ja, klanten kunnen meer dan één Cloud provider gebruiken met het avere vFXT-cluster. Het ondersteunt AWS S3 Standard buckets, Google Cloud Services Standard buckets en Azure Blob-containers.
 
 > [!NOTE] 
 > Een software vergoeding is van toepassing op het gebruik van AVERE vFXT in AWS of Google Cloud, maar niet met Azure.
@@ -84,11 +84,11 @@ Ja, klanten kunnen meer dan één Cloud provider gebruiken met het avere vFXT-cl
 
 ### <a name="can-you-describe-what-an-avere-vfxt-environment-looks-like"></a>Kunt u beschrijven wat een avere vFXT-omgeving lijkt?
 
-AVERE vFXT is een geclusterd apparaat dat bestaat uit meerdere virtuele machines van Azure. Een python-bibliotheek verwerkt het maken, verwijderen en wijzigen van het cluster. Lees [Wat is avere vFXT voor Azure?](avere-vfxt-overview.md) voor meer informatie. 
+AVERE vFXT is een geclusterd apparaat dat bestaat uit meerdere virtuele machines van Azure. Een python-bibliotheek verwerkt het maken, verwijderen en wijzigen van het cluster. Lees [Wat is avere vFXT voor Azure?](avere-vfxt-overview.md) voor meer informatie.
 
 ### <a name="what-kind-of-azure-virtual-machines-does-avere-vfxt-run-on"></a>Op welke soort virtuele Azure-machines wordt avere vFXT uitgevoerd?  
 
-Een avere vFXT voor Azure-cluster maakt gebruik van Microsoft Azure virtuele machines van E32s_v3. 
+Een avere vFXT voor Azure-cluster maakt gebruik van Microsoft Azure E32s_v3 virtuele machines.
 
 <!-- ### Can I mix and match virtual machine types for my cluster?
 
@@ -134,7 +134,7 @@ Nee, u moet het ondersteunde python-script gebruiken om knoop punten toe te voeg
 
 ### <a name="is-there-a-vm-version-of-the-software-i-can-run-in-my-own-local-environment"></a>Is er een VM-versie van de software die ik in mijn eigen lokale omgeving kan uitvoeren?
 
-Nee, het systeem wordt aangeboden als een geclusterd apparaat en getest op specifieke typen virtuele machines. Deze beperking helpt klanten bij het maken van een systeem dat geen ondersteuning biedt voor de hoge prestatie vereisten van een typische avere vFXT-werk stroom. 
+Nee, het systeem wordt aangeboden als een geclusterd apparaat en getest op specifieke typen virtuele machines. Deze beperking helpt klanten bij het maken van een systeem dat geen ondersteuning biedt voor de hoge prestatie vereisten van een typische avere vFXT-werk stroom.
 
 ## <a name="technical-disks"></a>Technisch: schijven
 
@@ -168,8 +168,8 @@ De gegevens worden gestripd over de schijven, maar niet versleuteld. De schijven
 
 Als u gebruikmaakt van on-premises opslag met avere vFXT, moet u een netwerk verbinding hebben van 1 Gbps of hoger. Als u een kleine hoeveelheid gegevens hebt en bereid bent om gegevens te kopiëren naar de Cloud voordat u taken uitvoert, kan de VPN-verbinding voldoende zijn. 
 
-> [!TIP] 
-> Hoe langzamer de netwerk koppeling is, hoe langzamer de eerste koude Lees bewerkingen zijn. Trage Lees bewerkingen verhogen de latentie van de werk pijplijn. 
+> [!TIP]
+> Hoe langzamer de netwerk koppeling is, hoe langzamer de eerste koude Lees bewerkingen zijn. Trage Lees bewerkingen verhogen de latentie van de werk pijplijn.
 
 ### <a name="can-i-run-avere-vfxt-in-a-different-virtual-network-than-my-compute-cluster"></a>Kan ik avere vFXT uitvoeren in een ander virtueel netwerk dan mijn berekenings cluster?
 
@@ -189,22 +189,22 @@ De avere vFXT-omgeving is net als elke andere virtuele machine van Azure, omdat 
 
 ### <a name="what-are-the-bandwidth-requirements-for-avere-vfxt"></a>Wat zijn de bandbreedte vereisten voor avere vFXT?
 
-De vereiste voor de totale band breedte is afhankelijk van twee factoren: 
+De vereiste voor de totale band breedte is afhankelijk van twee factoren:
 
-* De hoeveelheid gegevens die wordt aangevraagd vanuit de bron 
+* De hoeveelheid gegevens die wordt aangevraagd vanuit de bron
 * De tolerantie van het client systeem tijdens het laden van initiële gegevens  
 
 Voor latentie gevoelige omgevingen moet u een glasvezel oplossing gebruiken met een minimale verbindings snelheid van 1 Gbps. Gebruik ExpressRoute als deze beschikbaar is.  
 
 ### <a name="can-i-run-avere-vfxt-with-public-ip-addresses"></a>Kan ik avere vFXT uitvoeren met open bare IP-adressen?
 
-Nee, avere vFXT is bedoeld om te worden gebruikt in een netwerk omgeving die wordt beveiligd met aanbevolen procedures.  
+Nee, avere vFXT is bedoeld om te worden gebruikt in een netwerk omgeving die wordt beveiligd met aanbevolen procedures.
 
-### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>Kan ik Internet toegang vanuit het virtuele netwerk van mijn cluster beperken? 
+### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>Kan ik Internet toegang vanuit het virtuele netwerk van mijn cluster beperken?
 
-Over het algemeen kunt u zo nodig extra beveiliging op uw vnet configureren, maar sommige beperkingen kunnen de werking van het cluster belemmeren.
+Over het algemeen kunt u zo nodig extra beveiliging op het virtuele netwerk configureren, maar sommige beperkingen kunnen de werking van het cluster belemmeren.
 
-Als u bijvoorbeeld de uitgaande internet toegang van uw vnet beperkt, worden er problemen voor het cluster veroorzaakt, tenzij u ook een regel toevoegt waarmee expliciet toegang tot Cloud wordt toegestaan. Deze situatie wordt beschreven in [aanvullende documentatie over github](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
+Als u bijvoorbeeld de uitgaande internet toegang van uw virtuele netwerk beperkt, worden er problemen voor het cluster veroorzaakt, tenzij u ook een regel toevoegt waarmee expliciet toegang tot Cloud wordt toegestaan. Deze situatie wordt beschreven in [aanvullende documentatie over github](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
 
 Neem contact op met de ondersteuning, zoals wordt beschreven in [hulp vragen bij uw systeem](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)voor hulp bij aangepaste beveiliging.
 
@@ -212,7 +212,7 @@ Neem contact op met de ondersteuning, zoals wordt beschreven in [hulp vragen bij
 
 ### <a name="how-many-core-filers-does-a-single-avere-vfxt-environment-support"></a>Hoeveel kern bestanden ondersteunt één avere vFXT-omgeving?
 
-Een avere vFXT-cluster ondersteunt Maxi maal 20 kern bestanden. 
+Een avere vFXT-cluster ondersteunt Maxi maal 20 kern bestanden.
 
 ### <a name="how-does-the-avere-vfxt-environment-store-data"></a>Hoe worden gegevens opgeslagen in de omgeving van de avere-vFXT?
 
@@ -220,16 +220,16 @@ AVERE vFXT is geen opslag ruimte. Het is een cache die gegevens leest uit en sch
 
 ### <a name="which-core-filers-does-avere-vfxt-support"></a>Welke kern bestanden ondersteunt avere vFXT?
 
-In het algemeen worden in avere vFXT voor Azure de volgende systemen ondersteund als kern bestanden: 
+In het algemeen worden in avere vFXT voor Azure de volgende systemen ondersteund als kern bestanden:
 
 * Dell EMC Isilon (OneFS 7,1, 7,2, 8,0 en 8,1) 
-* NetApp ONTAP (geclusterde modus 9,4, 9,3, 9,2, 9.1 P1, 8.0-8.3) en (7-modus 7. *, 8.0-8,3) 
+* NetApp ONTAP (geclusterde modus 9,4, 9,3, 9,2, 9.1 P1, 8.0-8.3) en (7-modus 7. *, 8.0-8,3)
 
-  > [!NOTE] 
-  > Azure NetApp Files wordt momenteel niet ondersteund. 
+  > [!NOTE]
+  > Azure NetApp Files wordt momenteel niet ondersteund.
 
-* Azure Blob-containers (alleen lokaal redundante opslag) 
-* AWS S3-buckets 
+* Azure Blob-containers (alleen lokaal redundante opslag)
+* AWS S3-buckets
 * Google-Cloud-buckets
 
 ### <a name="why-doesnt-avere-vfxt-support-all-nfs-filers"></a>Waarom biedt avere vFXT geen ondersteuning voor alle NFS-bestanden?
@@ -254,11 +254,13 @@ Uw opslag account moet een GPv2-account (General-Purpose v2) zijn en alleen word
 
 ### <a name="can-i-use-archive-blob-storage"></a>Kan ik archief-Blob-opslag gebruiken?
 
-Nee. De Service Level Agreement (SLA) voor archief opslag is niet compatibel met de real-time Directory-en bestands toegangs behoeften van het avere vFXT-systeem. 
+Nee. De Service Level Agreement (SLA) voor archief opslag is niet compatibel met de real-time Directory-en bestands toegangs behoeften van het avere vFXT-systeem.
 
 ### <a name="can-i-use-cool-blob-storage"></a>Kan ik de cool Blob-opslag gebruiken?
 
-U kunt de cool-laag gebruiken, maar houd er rekening mee dat de frequentie van bewerkingen veel hoger is. 
+Blob-opslag voor de cool-laag wordt doorgaans niet aanbevolen voor een avere vFXT voor Azure core-bestanden. Cool-laag biedt lagere opslag kosten, maar hogere bewerkings kosten. (Zie [prijzen voor blok-blobs](<https://azure.microsoft.com/pricing/details/storage/blobs/>) voor meer informatie.) Als gegevens regel matig worden geopend en gewijzigd of verwijderd, kunt u overwegen de warme laag te gebruiken.
+
+[Toegangs lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier) biedt meer informatie over wanneer het zinvol is om de cool-laag opslag te gebruiken als een vFXT-kern bestand.
 
 ### <a name="how-do-i-encrypt-the-blob-container"></a>Hoe kan ik de BLOB-container versleutelen?
 
@@ -266,13 +268,13 @@ U kunt BLOB-versleuteling configureren in azure (bij voor keur) of op het niveau
 
 ### <a name="can-i-use-my-own-encryption-key-for-a-blob-core-filer"></a>Kan ik mijn eigen versleutelings sleutel gebruiken voor een BLOB-kern bestand?
 
-Standaard worden gegevens versleuteld met door micro soft beheerde sleutels voor Azure Blob, Table en Queue Storage, plus Azure Files. U kunt uw eigen sleutel voor versleuteling van de Blob-opslag en Azure Files. Als u ervoor kiest om avere vFXT-versleuteling te gebruiken, moet u de door avere gegenereerde sleutel gebruiken en deze lokaal opslaan. 
+Standaard worden gegevens versleuteld met door micro soft beheerde sleutels voor Azure Blob, Table en Queue Storage, plus Azure Files. U kunt uw eigen sleutel voor versleuteling van de Blob-opslag en Azure Files. Als u ervoor kiest om avere vFXT-versleuteling te gebruiken, moet u de door avere gegenereerde sleutel gebruiken en deze lokaal opslaan.
 
-## <a name="purchasing"></a>Inkopen
+## <a name="purchasing"></a>Aanschaffen
 
 ### <a name="how-do-i-get-avere-vfxt-for-azure-licensing"></a>Hoe kan ik avere vFXT voor Azure-licenties ophalen?
 
-Het verkrijgen van een avere vFXT voor Azure-licentie is eenvoudig via Azure Marketplace. Meld u aan voor een Azure-account en volg de instructies in [Deploy the avere vFXT cluster](avere-vfxt-deploy.md) om een avere vFXT-cluster te maken. 
+Het verkrijgen van een avere vFXT voor Azure-licentie is eenvoudig via Azure Marketplace. Meld u aan voor een Azure-account en volg de instructies in [Deploy the avere vFXT cluster](avere-vfxt-deploy.md) om een avere vFXT-cluster te maken.
 
 ### <a name="how-much-does-avere-vfxt-cost"></a>Wat kost avere vFXT?
 
@@ -280,7 +282,7 @@ In azure zijn er geen extra licentie kosten verbonden aan het gebruik van AVERE 
 
 ### <a name="can-avere-vfxt-vms-be-run-as-low-priority"></a>Kunnen avere vFXT-Vm's als lage prioriteit worden uitgevoerd?
 
-Nee, avere vFXT-clusters vereisen de service ' always on '. De clusters kunnen worden uitgeschakeld wanneer ze niet nodig zijn. 
+Nee, avere vFXT-clusters vereisen de service ' always on '. De clusters kunnen worden uitgeschakeld wanneer ze niet nodig zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 

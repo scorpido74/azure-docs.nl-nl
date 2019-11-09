@@ -1,22 +1,26 @@
 ---
-title: 'Een VPN-client configureren voor P2S VPN-verbindingen: Azure AD-verificatie | Microsoft Docs'
+title: 'Een VPN-client configureren voor OpenVPN-protocol P2S-verbindingen: Azure AD-verificatie | Microsoft Docs'
 description: U kunt P2S VPN gebruiken om verbinding te maken met uw VNet met behulp van Azure AD-verificatie
 services: vpn-gateway
-author: cherylmc
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.author: cherylmc
-ms.openlocfilehash: 704dcd6335766a6058de4e520b8dcbca0d304c9d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 11/07/2019
+ms.author: alzam
+ms.openlocfilehash: da863144da5ec4361673c913392495d3d622f5a9
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721469"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837968"
 ---
-# <a name="configure-a-vpn-client-for-p2s-vpn-connections-azure-ad-authentication-preview"></a>Een VPN-client configureren voor P2S VPN-verbindingen: Azure AD-verificatie (preview-versie)
+# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>Een VPN-client configureren voor P2S OpenVPN-protocol verbindingen: Azure AD-verificatie (preview)
 
 Dit artikel helpt u bij het configureren van een VPN-client om verbinding te maken met een virtueel netwerk met behulp van punt-naar-site-VPN en Azure Active Directory-verificatie. Voordat u verbinding kunt maken met en verifiëren met Azure AD, moet u eerst uw Azure AD-Tenant configureren. Zie [een Azure AD-Tenant configureren](openvpn-azure-ad-tenant.md)voor meer informatie.
+
+> [!NOTE]
+> Azure AD-verificatie wordt alleen ondersteund voor OpenVPN®-protocol verbindingen.
+>
 
 ## <a name="profile"></a>Werken met client profielen
 

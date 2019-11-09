@@ -1,7 +1,7 @@
 ---
-title: Veelgestelde vragen over de Tekstanalyse-API
+title: Veelgestelde vragen over de Text Analytics-API
 titleSuffix: Azure Cognitive Services
-description: Vind antwoorden op veelgestelde vragen over de Tekstanalyse-API.
+description: Hier vindt u antwoorden op veelgestelde vragen over concepten, code en scenario's met betrekking tot de Text Analytics-API voor Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,48 +10,48 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: a85fa543a6b26a5ea6452ce99fb91dc1ce465db7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aca3b0bea65923cee1bae25020058666c973922c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60827949"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837124"
 ---
-# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Veelgestelde vragen (FAQ) over de Text Analytics-Cognitive Service
+# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Veelgestelde vragen over de Text Analytics cognitieve service
 
- Vind antwoorden op veelgestelde vragen over concepten, code en scenario's met betrekking tot de Tekstanalyse-API voor Microsoft Cognitive Services op Azure.
+ Hier vindt u antwoorden op veelgestelde vragen over concepten, code en scenario's met betrekking tot de Text Analytics-API voor Microsoft Cognitive Services op Azure.
 
-## <a name="can-text-analytics-identify-sarcasm"></a>Kan de Text Analytics herkennen sarcasme?
+## <a name="can-text-analytics-identify-sarcasm"></a>Kan sarcasme Text Analytics identificeren?
 
-Analyse is voor positieve negatief gevoel in plaats van stemming detectie.
+Analyse is voor positieve negatieve sentiment in plaats van stemmings detectie.
 
-Er is altijd een zekere mate van imprecisie in sentimentanalyse, maar het model is vooral nuttig zijn wanneer er geen verborgen betekenis of tekstonderdeel tot de inhoud is. Irony, sarcasme humor en op dezelfde manier genuanceerd inhoud, is afhankelijk van culturele context en normen bedoeling duidelijk. Dit type inhoud is tussen de meest uitdagende te analyseren. Normaal gesproken is het grootste verschil tussen een bepaald scorebereik die worden geproduceerd door de analyzer en een subjectief beoordeling door een mens voor inhoud met genuanceerd betekenis.
+Er is altijd een zekere mate van onnauwkeurigheid in sentiment-analyse, maar het model is het handigst wanneer er geen verborgen betekenis of subtekst van de inhoud is. Ijzer, sarcasme, humor en soort gelijke inhoud zijn afhankelijk van culturele context en normen voor het overbrengen van de intentie. Dit type inhoud is een van de grootste uitdaging voor het analyseren. Normaal gesp roken is het grootste verschil tussen een gegeven Score die door het analyseprogramma wordt geproduceerd en een subjectieve beoordeling door een mens, voor inhoud met een genuancete betekenis.
 
-## <a name="can-i-add-my-own-training-data-or-models"></a>Kan ik mijn eigen trainingsgegevens of modellen toevoegen?
+## <a name="can-i-add-my-own-training-data-or-models"></a>Kan ik mijn eigen trainings gegevens of modellen toevoegen?
 
-Nee, de modellen zijn dat. De enige bewerkingen op de geüploade gegevens worden scoren, sleuteltermextractie en taaldetectie. We aangepaste modellen gehost. Als u wilt maken en hosten van aangepaste machine learning-modellen, houd rekening met de [machine learning-mogelijkheden in Microsoft R Server](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package).
+Nee, de modellen zijn voortraind. De enige bewerkingen die beschikbaar zijn voor geüploade gegevens zijn score, extractie van sleutel woorden en taal detectie. We hosten geen aangepaste modellen. Als u aangepaste machine learning modellen wilt maken en hosten, moet u rekening houden [met de machine learning mogelijkheden van Microsoft R server](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package).
 
-## <a name="can-i-request-additional-languages"></a>Kan ik vragen om extra talen?
+## <a name="can-i-request-additional-languages"></a>Kan ik extra talen aanvragen?
 
-Sentimentanalyse en sleuteltermextractie zijn beschikbaar voor een [selecteert u het aantal talen](text-analytics-supported-languages.md). Verwerking van natuurlijke taal is complex en vereist aanzienlijk testen voordat de nieuwe functionaliteit kan worden vrijgegeven. Om deze reden vermijden we ondersteuning vooraf aankondiging zodat niemand wordt afhankelijk van functionaliteit die nodig heeft meer tijd om te vervallen. 
+Er zijn sentiment-analyse en sleutel woordgroepen extractie beschikbaar voor een [geselecteerd aantal talen](text-analytics-supported-languages.md). De verwerking van natuurlijke taal is complex en vereist aanzienlijke tests voordat nieuwe functionaliteit kan worden vrijgegeven. Daarom voor komt u dat er vooraf aangekondigde ondersteuning wordt geboden, zodat niemand meer tijd nodig heeft om te vervallen. 
 
-Zodat we prioriteit geven aan welke talen om te werken op volgende stemmen voor specifieke talen op [User Voice](https://cognitive.uservoice.com/forums/555922-text-analytics). 
+Stem aan de hand van specifieke talen op de [gebruikers stem](https://cognitive.uservoice.com/forums/555922-text-analytics)om te bepalen welke talen u nu moet gebruiken. 
 
-## <a name="why-does-key-phrase-extraction-return-some-words-but-not-others"></a>Waarom retourneert sleuteltermextractie sommige woorden, maar niet voor andere?
+## <a name="why-does-key-phrase-extraction-return-some-words-but-not-others"></a>Waarom retourneert sleutel woordgroepen extra woorden, maar niet andere?
 
-Sleuteltermextractie wordt voorkomen dat niet-essentiële woorden en bijvoeglijke van zelfstandige naamwoorden. Bijvoeglijk naamwoord-zelfstandig naamwoord combinaties, zoals "spectaculaire weergaven" of "duidelijk weer" worden samen geretourneerd.
+Met het uitpakken van sleutel woorden worden niet-essentiële woorden en zelfstandige bijvoeglijke code fragmenten geëlimineerd. Combi Naties van zelfstandig naam woorden, zoals ' spectaculaire weer gaven ' of ' Foggy weer ', worden samen geretourneerd.
 
-Over het algemeen bestaat de uitvoer van zelfstandige naamwoorden en objecten van de zin. Uitvoer wordt weergegeven in de volgorde van prioriteit, met de eerste woordgroep wordt de belangrijkste. Urgentie wordt gemeten door het aantal keren dat die een bepaald concept wordt vermeld of de relatie van dat element op andere elementen in de tekst.
+Normaal gesp roken bestaat de uitvoer uit zelfstandige naam woorden en objecten van de zin. De uitvoer wordt weer gegeven in volg orde van prioriteit, waarbij de eerste zin het belangrijkst is. Het belang wordt gemeten op basis van het aantal keren dat een bepaald concept wordt vermeld, of de relatie van dat element met andere elementen in de tekst.
 
-## <a name="why-does-output-vary-given-identical-inputs"></a>Waarom uitvoer verschilt, opgegeven identieke invoer?
+## <a name="why-does-output-vary-given-identical-inputs"></a>Waarom verschilt de uitvoer, op basis van identieke invoer?
 
-Verbeteringen van modellen en algoritmes zijn als de wijziging is belangrijke of stil bijbehorende in de service als de update secundaire is aangekondigd. Na verloop van tijd vindt u misschien dat dezelfde tekst invoer resultaten in een andere gevoelsscore of sleuteluitdrukkingen uitvoer. Dit is normaal en opzettelijke gevolg van het gebruik van beheerde machine learning-resources in de cloud.
+Er worden verbeteringen aangebracht in modellen en algoritmen als de wijziging primair is of als de update stil is geslipstreamt in de-service als het een kleine is. Na verloop van tijd kan het voor komen dat dezelfde tekst invoer resulteert in een andere sentiment-Score of uitvoer van een sleutel woord groep. Dit is een normaal en opzettelijk gevolg van het gebruik van beheerde machine learning-resources in de Cloud.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Uw vraag over een ontbrekende functie of functionaliteit is? Houd rekening met aanvragen of uw stem op deze op onze [UserVoice-website](https://cognitive.uservoice.com/forums/555922-text-analytics).
+Is uw vraag over een ontbrekend onderdeel of functionaliteit? Overweeg om IT te vragen of te stemmen op onze [UserVoice-website](https://cognitive.uservoice.com/forums/555922-text-analytics).
 
 ## <a name="see-also"></a>Zie ook
 
- [StackOverflow: Text Analytics-API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [Stack overflow: Text Analytics-API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [Stack overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

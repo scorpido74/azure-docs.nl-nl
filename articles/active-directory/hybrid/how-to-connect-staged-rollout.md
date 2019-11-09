@@ -6,16 +6,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 11/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24efd9d67e5bcc083ce1a02dcf0850a39189afe8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2596091324acde5c4fdc3f7c467849f90266fec9
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173102"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847234"
 ---
 # <a name="cloud-authentication-staged-rollout-public-preview"></a>Cloud authenticatie: gefaseerde implementatie (open bare preview)
 
@@ -117,18 +117,18 @@ Schakel naadloze SSO in voor de AD-forests met behulp van Power shell. Als u mee
 
 2. Navigeer naar de map% Program Files%\\Microsoft Azure Active Directory Connect.
 
-3. Importeer de naadloze SSO Power shell-module met behulp van deze opdracht: `Import-Module .\\AzureADSSO.psd1`.
+3. Importeer de naadloze SSO Power shell-module met behulp van deze opdracht: `Import-Module .\AzureADSSO.psd1`.
 
 4. Voer Power shell uit als beheerder. Roep `New-AzureADSSOAuthenticationContext`aan in Power shell. Met deze opdracht geeft u een dialoog venster weer waarin u de referenties van de globale beheerder van uw Tenant kunt invoeren.
 
-5.  `Get-AzureADSSOStatus \| ConvertFrom-Json`aanroepen. Met deze opdracht geeft u de lijst met AD-forests weer (Bekijk de \"domeinen\" lijst) waarop deze functie is ingeschakeld. Standaard is deze ingesteld op False op Tenant niveau.
+5.  `Get-AzureADSSOStatus | ConvertFrom-Json`aanroepen. Met deze opdracht geeft u de lijst met AD-forests weer (Bekijk de \"domeinen\" lijst) waarop deze functie is ingeschakeld. Standaard is deze ingesteld op False op Tenant niveau.
 
    > **Voor beeld:** 
    > ![voor beeld van de Windows Power shell-uitvoer](./media/how-to-connect-staged-rollout/sr3.png)
 
-6.  `\$creds = Get-Credential`aanroepen. Wanneer u hierom wordt gevraagd, voert u de referenties voor de domein beheerder in voor het beoogde AD-forest.
+6.  `$creds = Get-Credential`aanroepen. Wanneer u hierom wordt gevraagd, voert u de referenties voor de domein beheerder in voor het beoogde AD-forest.
 
-7. `Enable-AzureADSSOForest -OnPremCredentials \$creds`aanroepen. Met deze opdracht maakt u het AZUREADSSOACC-computer account van de on-premises domein controller voor dit specifieke Active Directory-forest dat is vereist voor naadloze SSO.
+7. `Enable-AzureADSSOForest -OnPremCredentials $creds`aanroepen. Met deze opdracht maakt u het AZUREADSSOACC-computer account van de on-premises domein controller voor dit specifieke Active Directory-forest dat is vereist voor naadloze SSO.
 
 8. Voor naadloze SSO moeten Url's zich in de intranet zone bevindt. Raadpleeg de Snelstartgids voor [naadloze eenmalige aanmelding](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature) om deze url's te implementeren met behulp van groeps beleid.
 
@@ -169,7 +169,7 @@ Voer de volgende stappen uit:
    >[!NOTE]
    >De leden in een groep worden automatisch ingeschakeld voor gefaseerde implementatie. Geneste en dynamische groepen worden niet ondersteund voor gefaseerde implementatie.
 
-## <a name="auditing"></a>Controle
+## <a name="auditing"></a>Controleren
 
 We hebben controle gebeurtenissen ingeschakeld voor de verschillende acties die we uitvoeren voor de gefaseerde implementatie.
 
@@ -240,7 +240,7 @@ Hier vindt u informatie over het bijhouden van gebruikers aanmeldingen die zich 
 
 -   **V: kunnen we Power shell gebruiken voor het uitvoeren van een gefaseerde implementatie?**
 
--   A: Ja, ga naar de documentatie om Power shell te gebruiken voor het uitvoeren van de gefaseerde implementatie.
+-   A: Ja, ga naar de documentatie om Power shell te gebruiken voor het uitvoeren van de gefaseerde [implementatie.](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)
 
 ## <a name="next-steps"></a>Volgende stappen
 - [AzureAD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

@@ -1,7 +1,7 @@
 ---
 title: Entiteits herkenning gebruiken met de Text Analytics-API
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het herkennen van entiteiten met behulp van de Text Analytics REST API.
+description: Meer informatie over het identificeren en dubbel zinnigheid van de identiteit van een entiteit gevonden in tekst met de Text Analytics REST API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: aahi
-ms.openlocfilehash: e51e5945df8b08ec81db0c85416b31b3ec788ffd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b139f473bb20dbecde75c3b08dd92371849f096e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488625"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835669"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Benoemde entiteits herkenning gebruiken in Text Analytics
 
@@ -111,13 +111,13 @@ Entiteit koppelen
 | Aantal      | Valuta      | $ 10,99     |
 | Aantal      | Dimensie     | 10 mijl, 40 cm     |
 | Aantal      | Temperatuur   | 32 graden    |
-| DateTime      | N.v.t.\*         | 18:30 uur, 4 februari 2012      |
-| DateTime      | Date          | 2 mei 2017, 05-02-2017   |
-| DateTime      | Time          | "8 a.m.", "8:00"  |
-| DateTime      | Datumbereik     | 2 mei tot 5 mei    |
-| DateTime      | Tijdsbereik     | 18.00 uur tot 19.00 uur     |
-| DateTime      | Duur      | 1 minuut en 45 seconden   |
-| DateTime      | Instellen           | elke dinsdag     |
+| Datum/tijd      | N.v.t.\*         | 18:30 uur, 4 februari 2012      |
+| Datum/tijd      | Datum          | 2 mei 2017, 05-02-2017   |
+| Datum/tijd      | Time          | "8 a.m.", "8:00"  |
+| Datum/tijd      | Datumbereik     | 2 mei tot 5 mei    |
+| Datum/tijd      | Tijdsbereik     | 18.00 uur tot 19.00 uur     |
+| Datum/tijd      | Duur      | 1 minuut en 45 seconden   |
+| Datum/tijd      | Set           | elke dinsdag     |
 | URL           | N.v.t.\*         | "https:\//www.bing.com"    |
 | Email         | N.v.t.\*         | "support@contoso.com" |
 

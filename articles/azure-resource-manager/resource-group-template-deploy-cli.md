@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: c5a07d8b52e83215b2fdc220d76557ca45e1eae9
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: e2f1747b8ae98ce53ce570422044a2f172c1a526
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286024"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834481"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Resources implementeren met Resource Manager-sjablonen en Azure CLI
 
@@ -37,9 +37,11 @@ Als u wilt implementeren in een **abonnement**, gebruikt u [AZ Deployment Create
 az deployment create --location <location> --template-file <path-to-template>
 ```
 
-Op dit moment worden implementaties van beheer groepen alleen ondersteund via de REST API. Zie [resources implementeren met Resource Manager-sjablonen en resource manager rest API](resource-group-template-deploy-rest.md).
+Zie [resource groepen en-resources op abonnements niveau maken](deploy-to-subscription.md)voor meer informatie over implementaties op abonnements niveau.
 
-In de voor beelden in dit artikel worden de implementaties van resource groepen gebruikt. Zie [resource groepen en-resources op abonnements niveau maken](deploy-to-subscription.md)voor meer informatie over abonnements implementaties.
+Op dit moment worden implementaties van beheer groepen alleen ondersteund via de REST API. Zie [resources maken op het niveau van de beheer groep](deploy-to-management-group.md)voor meer informatie over implementaties op het niveau van beheer groepen.
+
+In de voor beelden in dit artikel worden de implementaties van resource groepen gebruikt.
 
 ## <a name="deploy-local-template"></a>Lokale sjabloon implementeren
 
@@ -151,7 +153,7 @@ az group deployment create \
 
 ## <a name="handle-extended-json-format"></a>Uitgebreide JSON-indeling verwerken
 
-Als u een sjabloon wilt implementeren met teken reeksen of opmerkingen met meerdere regels, moet u de `--handle-extended-json-format`-switch gebruiken.  Bijvoorbeeld:
+Als u een sjabloon wilt implementeren met teken reeksen of opmerkingen met meerdere regels, moet u de `--handle-extended-json-format` schakelaar gebruiken.  Bijvoorbeeld:
 
 ```json
 {

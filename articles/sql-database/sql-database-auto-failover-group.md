@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 10/23/2019
-ms.openlocfilehash: 88bcee1cbb23bf298c5ad3920a7744d8da6ce3fb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/07/2019
+ms.openlocfilehash: 16fc15a574655f20e3e6e37f164773b41ffe0b78
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821961"
+ms.locfileid: "73839340"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 
@@ -246,7 +246,7 @@ Als uw toepassing gebruikmaakt van een beheerd exemplaar als gegevenslaag, volgt
 
 - **Bekende beperkingen van failover-groepen erkennen**
 
-  Het wijzigen van de naam van de data base en het wijzigen van exemplaren worden niet ondersteund voor instanties in een failovergroep. U moet de failovergroep tijdelijk verwijderen om deze acties te kunnen uitvoeren.
+  De naam van een Data Base wordt niet ondersteund voor exemplaren in een failovergroep. U moet een failovergroep tijdelijk verwijderen om de naam van een Data Base te kunnen wijzigen.
 
 ## <a name="failover-groups-and-network-security"></a>Failover-groepen en netwerk beveiliging
 
@@ -296,7 +296,7 @@ Wanneer u een failovergroep instelt tussen de primaire en secundaire beheerde in
    > [!IMPORTANT]
    > Onjuist geconfigureerde NSG-beveiligings regels leiden tot vastgelopen database Kopieer bewerkingen.
 
-7. Het secundaire exemplaar is geconfigureerd met de juiste DNS-zone-ID. DNS-zone is een eigenschap van een beheerd exemplaar en de bijbehorende ID is opgenomen in het adres van de hostnaam. De zone-ID wordt gegenereerd als een wille keurige teken reeks wanneer het eerste beheerde exemplaar wordt gemaakt in elk VNet en dezelfde ID wordt toegewezen aan alle andere exemplaren in hetzelfde subnet. Zodra het is toegewezen, kan de DNS-zone niet worden gewijzigd. Beheerde instanties die zijn opgenomen in dezelfde failovergroep, moeten de DNS-zone delen. Dit doet u door de zone-ID van het primaire exemplaar door te geven als waarde voor de para meter DnsZonePartner bij het maken van het secundaire exemplaar. 
+7. Het secundaire exemplaar is geconfigureerd met de juiste DNS-zone-ID. DNS-zone is een eigenschap van een beheerd exemplaar en een virtueel cluster en de bijbehorende ID is opgenomen in het adres van de hostnaam. De zone-ID wordt gegenereerd als een wille keurige teken reeks wanneer het eerste beheerde exemplaar wordt gemaakt in elk VNet en dezelfde ID wordt toegewezen aan alle andere exemplaren in hetzelfde subnet. Zodra het is toegewezen, kan de DNS-zone niet worden gewijzigd. Beheerde instanties die zijn opgenomen in dezelfde failovergroep, moeten de DNS-zone delen. Dit doet u door de zone-ID van het primaire exemplaar door te geven als waarde voor de para meter DnsZonePartner bij het maken van het secundaire exemplaar. 
 
    > [!NOTE]
    > Zie [een beheerd exemplaar toevoegen aan een failovergroep](sql-database-managed-instance-failover-group-tutorial.md)voor een gedetailleerde zelf studie over het configureren van failover-groepen met een beheerd exemplaar.

@@ -1,6 +1,6 @@
 ---
 title: Video Indexer widgets insluiten in uw toepassingen
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Meer informatie over het insluiten van Video Indexer widgets in uw toepassing.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 74518fb891c5ecb25e818b9642d31e3daaf828de
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 99d6647ab5e7fa8f35cef883dd00ae9fea866370
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162609"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839109"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Video Indexer widgets insluiten in uw toepassingen
 
@@ -235,7 +235,7 @@ Als u bijvoorbeeld een widget wilt insluiten die alleen personen en zoek inzicht
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
 
-De titel van het iframe-venster kan ook worden aangepast door `&title=<YourTitle>` aan de iframe-URL op te geven. (Het HTML-\<title-> waarde wordt aangepast).
+De titel van het iframe-venster kan ook worden aangepast door `&title=<YourTitle>` aan de iframe-URL op te geven. (De HTML-\<Titel > waarde wordt aangepast).
     
 Als u bijvoorbeeld het iframe-venster de titel ' MyInsights ' wilt geven, ziet de URL er als volgt uit:
 
@@ -253,13 +253,13 @@ Bijvoorbeeld:
 
 Video Indexer Player heeft standaard ondertiteling gegenereerd die is gebaseerd op de transcriptie van de video. De transcriptie wordt geëxtraheerd uit de video met de bron taal die is geselecteerd toen de video werd geüpload.
 
-Als u wilt insluiten met een andere taal, kunt u `&captions=< Language | "all" | "false" >` toevoegen aan de Inge sloten URL van de speler. Als u bijschriften in alle beschik bare bijschriften van talen wilt, gebruikt u de waarde `all`. Als u wilt dat de bijschriften standaard worden weer gegeven, kunt u `&showCaptions=true` door geven.
+Als u wilt insluiten met een andere taal, kunt u `&captions=< Language | "all" | "false" >` toevoegen aan de Inge sloten URL van de speler. Als u bijschriften in alle beschik bare bijschriften van talen wilt, gebruikt u de waarde `all`. Als u wilt dat de bijschriften standaard worden weer gegeven, kunt u `&showCaptions=true`door geven.
 
 De Inge sloten URL ziet er dan als volgt uit: 
 
 `https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
 
-Als u bijschriften wilt uitschakelen, kunt u de waarde van de `captions` parameter als `false` door geven.
+Als u bijschriften wilt uitschakelen, kunt u de waarde van de `captions` parameter als `false`door geven.
 
 #### <a name="autoplay"></a>Zorgen
 Standaard wordt de video afgespeeld met de speler. u kunt ervoor kiezen om `&autoplay=false` niet door te geven aan de voor gaande Inge sloten URL.

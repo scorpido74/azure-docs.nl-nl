@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 6/7/2017
-ms.openlocfilehash: 6bc0d8a1e938f2b8a97cab486d4679bfc445f6fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 531199303f7b00083bcd7139ac00ac36bde5c583
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60642244"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837521"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Vanuit Azure Portal een Jenkins-server maken op een Azure-VM met Linux
 
@@ -33,7 +33,7 @@ Jenkins biedt ondersteuning voor een model waarin de Jenkins-server werk delegee
 
 ## <a name="connect-to-jenkins"></a>Verbinding maken met Jenkins
 
-Navigeer in uw webbrowser naar uw virtuele machine (bijvoorbeeld http://jenkins2517454.eastus.cloudapp.azure.com/). De Jenkins-console is niet toegankelijk via onbeveiligde HTTP. Om die reden bevat de pagina instructies om de console veilig vanaf uw computer te gebruiken via een SSH-tunnel.
+Navigeer naar uw virtuele machine (bijvoorbeeld `http://jenkins2517454.eastus.cloudapp.azure.com/`) in uw webbrowser. De Jenkins-console is niet toegankelijk via onbeveiligde HTTP. Om die reden bevat de pagina instructies om de console veilig vanaf uw computer te gebruiken via een SSH-tunnel.
 
 ![Jenkins ontgrendelen](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 
@@ -75,7 +75,7 @@ Selecteer het tabblad **Build** en selecteer vervolgens **Add build step**, **In
 
 ![De Gradle-wrapper gebruiken om de code te bouwen](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 
-Selecteer **Geavanceerd** en voer vervolgens in het veld **Root Build script** de waarde `complete` in. Selecteer **Opslaan**.
+Selecteer **Geavanceerd** en voer vervolgens in het veld `complete`Root Build script**de waarde** in. Selecteer **Opslaan**.
 
 ![Geavanceerde instellingen opgeven in de stap voor het bouwen van de Gradle-wrapper](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
 

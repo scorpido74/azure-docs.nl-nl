@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 10/15/2019
-ms.openlocfilehash: 31c3cd944651b9ba4ca4fcaa275e5b0ccedd947c
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/06/2019
+ms.openlocfilehash: ded95800c482d43fcaf27993869f1e71eee68f47
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72559435"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831828"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>machine learning-pijp lijnen plannen met Azure Machine Learning SDK voor python
 
@@ -54,7 +54,7 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 
 ## <a name="create-a-schedule"></a>Een planning maken
 
-Als u een pijp lijn op een terugkerende basis wilt uitvoeren, maakt u een planning. Een `Schedule` koppelt een pijp lijn, een experiment en een trigger. De trigger kan een `ScheduleRecurrence` zijn met een beschrijving van de wacht tijd tussen uitvoeringen of een Data Store-pad dat een directory specificeert om te bekijken of er wijzigingen zijn. In beide gevallen hebt u de pijp lijn-id en de naam van het experiment nodig om de planning te maken.
+Als u een pijp lijn op een terugkerende basis wilt uitvoeren, maakt u een planning. Een `Schedule` koppelt een pijp lijn, een experiment en een trigger. De trigger kan een`ScheduleRecurrence` zijn met een beschrijving van de wacht tijd tussen uitvoeringen of een Data Store-pad dat een directory specificeert om te bekijken of er wijzigingen zijn. In beide gevallen hebt u de pijp lijn-id en de naam van het experiment nodig om de planning te maken.
 
 ### <a name="create-a-time-based-schedule"></a>Een op tijd gebaseerde planning maken
 
@@ -75,7 +75,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 Pijp lijnen die worden geactiveerd door bestands wijzigingen zijn mogelijk efficiënter dan op tijd gebaseerde schema's. Het is bijvoorbeeld mogelijk dat u een voor verwerkings stap wilt uitvoeren wanneer een bestand wordt gewijzigd of wanneer een nieuw bestand wordt toegevoegd aan een Data Directory. U kunt wijzigingen in een gegevens opslag of wijzigingen bewaken in een specifieke map in het gegevens archief. Als u een specifieke directory bewaken, wordt een uitvoering _niet_ geactiveerd door wijzigingen in submappen van die map.
 
-Als u een `Schedule` wilt maken van een bestand, moet u de para meter `datastore` instellen in de aanroep naar [Schedule. Create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Als u een map wilt bewaken, stelt u het argument `path_on_datastore` in.
+Als u een `Schedule`wilt maken van een bestand, moet u de para meter `datastore` instellen in de aanroep naar [Schedule. Create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Als u een map wilt bewaken, stelt u het argument `path_on_datastore` in.
 
 Met het argument `polling_interval` kunt u, in minuten, de frequentie opgeven waarmee het gegevens archief wordt gecontroleerd op wijzigingen.
 
@@ -94,9 +94,9 @@ Naast de argumenten die eerder zijn beschreven, kunt u het argument `status` ins
 
 ## <a name="view-your-scheduled-pipelines"></a>Uw geplande pijp lijnen weer geven
 
-Navigeer in uw webbrowser naar uw Machine Learning service-werk ruimte. Kies **pijp lijnen**in het gedeelte **assets** van het navigatie venster. Met deze koppeling gaat u naar een lijst met de pijp lijnen die zijn gepubliceerd in de werk ruimte.
+Navigeer in uw webbrowser naar Azure Machine Learning. Kies in het gedeelte **endpoints** van het navigatie venster **pijplijn eindpunten**. Hiermee gaat u naar een lijst met de pijp lijnen die zijn gepubliceerd in de werk ruimte.
 
-![Pagina pijp lijnen van werk ruimte](media/how-to-schedule-a-pipeline/pipelines-list.png)
+![Pagina pijp lijnen van AML](media/how-to-schedule-pipelines/scheduled-pipelines.png)
 
 Op deze pagina kunt u samenvattings informatie weer geven over alle pijp lijnen in de werk ruimte: namen, beschrijvingen, status, enzovoort. Inzoomen door te klikken op de pijp lijn. Op de resulterende pagina vindt u meer informatie over de pijp lijn en kunt u inzoomen op afzonderlijke uitvoeringen.
 

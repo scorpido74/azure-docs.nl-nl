@@ -1,7 +1,7 @@
 ---
-title: Video Indexer-concepten
-titlesuffix: Azure Media Services
-description: Dit onderwerp worden enkele concepten van de Video Indexer-service.
+title: Video Indexer concepten
+titleSuffix: Azure Media Services
+description: In dit onderwerp worden enkele concepten van de Video Indexer-service beschreven.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,32 +10,32 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 156eceba856bf159d4821360639a0641d3ed02be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3795b699f5518efdbef117fb24d118041ed3e78
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799064"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839578"
 ---
-# <a name="video-indexer-concepts"></a>Video Indexer-concepten
+# <a name="video-indexer-concepts"></a>Video Indexer concepten
  
-Dit artikel worden enkele concepten van de Video Indexer-service.
+In dit artikel worden enkele concepten van de Video Indexer-service beschreven.
     
-## <a name="summarized-insights"></a>Samengevatte insights
+## <a name="summarized-insights"></a>Overzicht van inzichten
 
-Samengevatte insights bevat een samengevoegde weergave van de gegevens: gezichten, onderwerpen en emoties. Bijvoorbeeld, in plaats van gaan over elk van de duizenden tijdsbereik en waarin gezichten worden weergegeven in het te controleren, de samengevatte inzichten bevat alle gezichten en voor elk adres, het tijdsbereik dat deze wordt weergegeven in en het percentage van de tijd die wordt weergegeven.
+Samenvatd Insights bevatten een geaggregeerde weer gave van de gegevens: gezichten, topics, emoties. Zo kunt u in plaats van elke duizenden Peri odes te gaan gebruiken en te controleren welke gezichten er zich bevinden. het overzicht bevat alle gezichten en voor elk van de getoonde inzichten, het tijds bereik dat wordt weer gegeven in en het percentage van de tijd dat het wordt weer gegeven.
 
-## <a name="time-range-vs-adjusted-time-range"></a>tijdsbereik versus aangepast tijdsbereik
+## <a name="time-range-vs-adjusted-time-range"></a>tijds bereik versus gecorrigeerd tijd bereik
 
-TimeRange is het tijdsbereik in de oorspronkelijke video. AdjustedTimeRange is het tijdsbereik ten opzichte van de huidige afspeellijst. Omdat u een afspeellijst van verschillende regels van verschillende video's maken kunt, kunt u een video van 1 uur duren en slechts 1 regel van het, bijvoorbeeld, 10:00-10:15 gebruikt. In dat geval hebt u een afspeellijst met 1 regel, waar het tijdsbereik 10:00:15-10 is, maar de adjustedTimeRange is 00:00-00:15.
+Time Range is het tijds bereik in de oorspronkelijke video. AdjustedTimeRange is het tijds bereik ten opzichte van de huidige afspeel lijst. Omdat u een afspeel lijst kunt maken op basis van verschillende lijnen van verschillende Video's, kunt u een video van 1 uur nemen en er slechts één regel van gebruiken, bijvoorbeeld 10:00-10:15. In dat geval hebt u een afspeel lijst met 1 regel, waarbij het tijds bereik 10:00-10:15 is, maar de adjustedTimeRange is 00:00-00:15.
  
-## <a name="blocks"></a>blokken
+## <a name="blocks"></a>Block
 
-Blokken zijn bedoeld om gemakkelijker te doorlopen van de gegevens. Een blok kan bijvoorbeeld worden opgesplitst op basis van wanneer er tussen sprekers wordt gewisseld of als er een lange pauze plaatsvindt.
+Blokken zijn bedoeld om het gemakkelijker te maken om de gegevens te door lopen. Een blok kan bijvoorbeeld worden opgesplitst op basis van wanneer er tussen sprekers wordt gewisseld of als er een lange pauze plaatsvindt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over hoe u aan de slag [hoe u zich aanmelden en uw eerste video uploaden](video-indexer-get-started.md).
+Voor informatie over hoe u aan de slag gaat, raadpleegt [u hoe u zich kunt registreren en hoe u uw eerste video uploadt](video-indexer-get-started.md).
 
 ## <a name="see-also"></a>Zie ook
 

@@ -1,6 +1,6 @@
 ---
-title: Azure voordeur Service - cache | Microsoft Docs
-description: In dit artikel helpt u begrijpen hoe Azure voordeur Service controleert de status van uw back-ends
+title: Azure front-deur service-caching | Microsoft Docs
+description: Dit artikel helpt u te begrijpen hoe de status van uw back-endservers wordt bewaakt door de Azure front-deur service
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,108 +11,108 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 42ee1dea8c9735592f6d6c9e0542ca094a6be383
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70ee0af0b39e80aa90d143303b3c522fbb3cc780
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962910"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839224"
 ---
-# <a name="caching-with-azure-front-door-service"></a>Opslaan in cache met de Service Azure voordeur
-Het volgende document bevat gedrag voor voordeur met regels voor doorsturen die opslaan in cache ingeschakeld.
+# <a name="caching-with-azure-front-door-service"></a>Caching met de Azure front-deur service
+In het volgende document wordt het gedrag voor de voor deur opgegeven met routerings regels waarvoor caching is ingeschakeld.
 
 ## <a name="delivery-of-large-files"></a>Levering van grote bestanden
-Azure voordeur Service voorziet in grote bestanden zonder een bovengrens voor bestandsgrootte. Voordeur maakt gebruik van de techniek object logische groepen te verdelen. Als er een groot bestand wordt aangevraagd, haalt Front Door kleine onderdelen van het bestand op uit de back-end. Wanneer er een volledig bestand (of een bepaald bytebereik) wordt aangevraagd, wordt in de Front Door-omgeving het bestand in delen van 8 MB aangevraagd bij de back-end.
+De Azure front-deur service levert grote bestanden zonder een limiet voor de bestands grootte. De voor deur maakt gebruik van een techniek die object Chunking wordt genoemd. Als er een groot bestand wordt aangevraagd, haalt Front Door kleine onderdelen van het bestand op uit de back-end. Wanneer er een volledig bestand (of een bepaald bytebereik) wordt aangevraagd, wordt in de Front Door-omgeving het bestand in delen van 8 MB aangevraagd bij de back-end.
 
-</br>Nadat het segment bij de voordeur omgeving aankomt, is het in de cache opgeslagen en onmiddellijk naar de gebruiker verzonden. Voordeur haalt vervolgens vooraf het volgende segment tegelijk. Deze vooraf vastgestelde zorgt ervoor dat de inhoud blijft één segment voor de gebruiker, waardoor latentie. Dit proces gaat door totdat het volledige bestand is gedownload (indien nodig), zijn alle bereiken in bytes beschikbaar zijn (indien nodig), of als de client de verbinding verbreekt.
+</br>Nadat het segment in de front-deur omgeving arriveert, wordt het in de cache opgeslagen en direct aan de gebruiker geleverd. De voor deur haalt vervolgens het volgende segment parallel op. Met deze vooraf opgehaalde, zorgt u ervoor dat de inhoud één segment vóór de gebruiker blijft, waardoor de latentie wordt verminderd. Dit proces wordt voortgezet totdat het hele bestand is gedownload (indien aangevraagd), alle byte bereiken beschikbaar zijn (indien aangevraagd) of de client beëindigt de verbinding.
 
-</br>Lees voor meer informatie over de aanvraag bereik in bytes, [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
-Voordeur slaat alle segmenten als ze worden ontvangen en zodat het hele bestand hoeft niet te worden in de cache op de voordeur-cache. De volgende aanvragen voor het bestand of de byte-adresbereiken worden geleverd uit de cache. Als niet alle segmenten in de cache zijn opgeslagen, vooraf ophalen wordt gebruikt om aan te vragen van segmenten van de back-end. Deze optimalisatie is afhankelijk van de mogelijkheid van de back-end voor ondersteuning van de byte-bereikaanvragen; Als de back-end biedt geen ondersteuning voor byte-bereikaanvragen, is deze optimalisatie niet effectief.
+</br>Lees [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html)voor meer informatie over de aanvraag voor byte bereik.
+Bij de voor deur worden eventuele segmenten in de cache opgeslagen wanneer ze worden ontvangen, zodat het hele bestand niet in de cache hoeft te worden opgeslagen in de front-deur cache. Volgende aanvragen voor het bestand of de byte bereik worden vanuit de cache verwerkt. Als niet alle segmenten in de cache zijn opgeslagen, wordt vooraf ophalen gebruikt voor het aanvragen van segmenten van de back-end. Deze optimalisatie is afhankelijk van de mogelijkheid van de back-end om aanvragen voor byte bereik te ondersteunen; Als de back-end geen aanvragen voor byte bereik ondersteunt, is deze optimalisatie niet effectief.
 
 ## <a name="file-compression"></a>Bestandscompressie
-Voordeur kunt dynamische inhoud op de rand, comprimeren leidt tot een reactie kleiner en sneller aan uw clients. Alle bestanden komen in aanmerking voor compressie. Een bestand moet echter een MIME-type dat in aanmerking komen voor de compressie-lijst. Voordeur is momenteel niet toegestaan voor deze lijst om te worden gewijzigd. De huidige lijst is:</br>
-- "application/grootte van eot"
-- "application/lettertype"
-- "application/lettertype-sfnt"
-- "application/javascript"
-- "application/json"
-- "application/opentype"
-- "application/otf"
-- "application/pkcs7-mime"
-- "application/truetype"
-- "application/ttf"
-- "application/vnd.ms-fontobject"
-- ' application/xhtml + xml'
-- 'application/xml'
-- "application/xml+rss"
-- "application/x-lettertype-opentype"
-- "application/x-lettertype-truetype"
-- "application/x-lettertype-ttf"
-- "application/x-httpd-cgi"
-- "application/x-mpegurl"
-- "application/x-opentype"
-- "application/x-otf"
-- "application/x-perl"
-- "application/x-ttf"
-- "application/x-javascript"
-- "lettertype/grootte van eot"
+De voor deur kan inhoud op de rand dynamisch comprimeren, wat resulteert in een kleiner en sneller antwoord op uw clients. Alle bestanden komen in aanmerking voor compressie. Een bestand moet echter een MIME-type zijn dat in aanmerking komt voor compressie lijst. Op dit moment staat de voor deur niet toe dat deze lijst wordt gewijzigd. De huidige lijst is:</br>
+- ' Application/EOT '
+- toepassing/letter type
+- "toepassing/letter type-sfnt"
+- "toepassing/Java script"
+- ' application/json '
+- toepassing/open type
+- ' Application/otf '
+- ' application/pkcs7-MIME '
+- "toepassing/True Type"
+- ' Application/ttf ',
+- ' application/vnd. MS-fontobject '
+- "toepassing/XHTML en XML"
+- ' Application/XML '
+- ' Application/XML + RSS '
+- ' Application/x: font-open type '
+- ' Application/x: font-True Type '
+- ' Application/x: font-ttf '
+- "Application/x-httpd-cgi"
+- ' Application/x-mpegurl '
+- ' Application/x-open type '
+- ' Application/x-otf '
+- ' Application/x-perl '
+- ' Application/x-ttf '
+- ' Application/x-java script '
+- "font/EOT"
 - "font/ttf"
 - "font/otf"
-- "font/opentype"
-- ' afbeelding/svg + xml'
-- "text/css"
-- "text/csv"
-- "text/html"
-- "text/javascript"
-- "text/js", "text/plain"
-- "text/richtext"
-- 'text/tabblad gescheiden waarden'
-- "text/xml"
-- "text/x-script"
-- "text/x-component"
-- "text/x-java-source"
+- "letter type/open type"
+- "afbeelding/SVG + XML"
+- "tekst/css"
+- "tekst/CSV"
+- "tekst/html"
+- "tekst/java script"
+- "tekst/js", "tekst/zonder opmaak"
+- "tekst/RTF"
+- "tekst/door tabs gescheiden waarden"
+- "tekst/XML"
+- "tekst/x-script"
+- "tekst/x-onderdeel"
+- "tekst/x-Java-bron"
 
-Het bestand moet bovendien ook tussen 1 KB en 8 MB groot zijn.
+Daarnaast moet het bestand ook tussen 1 KB en 8 MB groot zijn.
 
-Deze profielen ondersteunen de volgende aanduidingen van de compressie:
-- [gzip (GNU zip)](https://en.wikipedia.org/wiki/Gzip)
+Deze profielen ondersteunen de volgende compressie coderingen:
+- [Gzip (GNU-zip)](https://en.wikipedia.org/wiki/Gzip)
 - [Brotli](https://en.wikipedia.org/wiki/Brotli)
 
-Als een aanvraag gzip en Brotli compressie ondersteunt, voorrang Brotli compressie.</br>
-Wanneer een aanvraag voor een asset Hiermee geeft u compressie en de resultaten van de aanvraag in een cache ontbreekt, voert voordeur compressie van de asset rechtstreeks op de POP-server. Daarna wordt het gecomprimeerde bestand geleverd uit de cache. De resulterende item geretourneerd met een transfer-encoding: chunked.
+Als een aanvraag gzip en Brotli-compressie ondersteunt, heeft Brotli-compressie prioriteit.</br>
+Wanneer een aanvraag voor een Asset compressie specificeert en de aanvraag resulteert in een Missing in een cache, voert de front-deur compressie van de Asset rechtstreeks op de POP-server uit. Daarna wordt het gecomprimeerde bestand vanuit de cache verwerkt. Het resulterende item wordt geretourneerd met een overdracht-Encoding: gesegmenteerd.
 
-## <a name="query-string-behavior"></a>Gedrag van de query-tekenreeks
-Met de voordeur, kunt u bepalen hoe bestanden in cache zijn opgeslagen voor een webaanvraag die een queryreeks bevat. In een webaanvraag met een queryreeks is de query-tekenreeks het gedeelte van de aanvraag die wordt weergegeven achter een vraagteken (?). Een query-tekenreeks kan een of meer sleutel / waarde-paren, waarin de naam van het veld en de waarde ervan worden gescheiden door een gelijkteken (=) bevatten. Elke sleutel / waarde-paar wordt gescheiden door een en-teken (&). Bijvoorbeeld http://www.contoso.com/content.mov?field1=value1&field2=value2. Als er meer dan één sleutel / waarde-paar in een querytekenreeks van een aanvraag, is de volgorde niet van belang.
-- **Queryreeksen negeren**: Standaardmodus. In deze modus voordeur geeft de queryreeksen van de aanvrager aan de back-end op de eerste aanvraag en de activa in de cache opslaat. Alle volgende aanvragen voor de asset die bereikbaar zijn vanaf de voordeur-omgeving worden de queryreeksen negeren totdat de activa in de cache verloopt.
+## <a name="query-string-behavior"></a>Query teken reeks gedrag
+Met de voor deur kunt u bepalen hoe bestanden in de cache worden opgeslagen voor een webaanvraag die een query reeks bevat. In een webaanvraag met een query reeks is de query reeks het gedeelte van de aanvraag dat wordt uitgevoerd na een vraag teken (?). Een query reeks kan een of meer sleutel-waardeparen bevatten, waarbij de veld naam en de waarde ervan gescheiden worden door een gelijkteken (=). Elk sleutel-waardepaar wordt gescheiden door een en-teken (&). Bijvoorbeeld `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Als er meer dan één sleutel/waarde-paar in een query reeks van een aanvraag is, is de volg orde hiervan niet van belang.
+- **Query reeksen negeren**: standaard modus. In deze modus geeft de voor deur de query teken reeksen van de aanvrager door aan de back-end bij de eerste aanvraag en slaat het de Asset op in de cache. Alle volgende aanvragen voor de activa die worden bediend vanuit de voor deur, negeren de query teken reeksen totdat het activum in de cache verloopt.
 
-- **Elke unieke URL in de cache**: Elke aanvraag met een unieke URL, met inbegrip van de query-tekenreeks wordt in deze modus wordt behandeld als een unieke asset met de eigen cache. Bijvoorbeeld, het antwoord van de back-end voor een aanvraag voor `www.example.ashx?q=test1` is opgeslagen in de cache aan de voordeur-omgeving en voor daaropvolgende caches met dezelfde querytekenreeks geretourneerd. Een aanvraag voor `www.example.ashx?q=test2` is in de cache opgeslagen als een afzonderlijk actief met een eigen time-to-live-instelling.
+- **Elke unieke URL in de cache opslaan**: in deze modus wordt elke aanvraag met een unieke URL, inclusief de query reeks, behandeld als een unieke Asset met een eigen cache. Het antwoord van de back-end voor een aanvraag voor `www.example.ashx?q=test1` wordt bijvoorbeeld opgeslagen in de cache in de front-deur omgeving en wordt geretourneerd voor volgende caches met dezelfde query reeks. Een aanvraag voor `www.example.ashx?q=test2` wordt in de cache opgeslagen als een afzonderlijk activum met een eigen time-to-Live-instelling.
 
-## <a name="cache-purge"></a>Cache leegmaken
-Voordeur cache activa totdat van de asset time-to-live (TTL) verloopt. Nadat de TTL van de asset is verlopen, wanneer een client vraagt om de asset, een nieuwe bijgewerkte kopie van de activa voor aanvraag van de client worden opgehaald door de voordeur-omgeving en store de cache wordt vernieuwd.
-</br>De beste manier om ervoor te zorgen dat uw gebruikers altijd de meest recente versie van uw activa ophalen is versie van de activa voor elke update en deze publiceren als nieuwe URL's. Voordeur haalt onmiddellijk de nieuwe activa voor de volgende aanvragen van clients. Soms wilt u mogelijk in de cache opgeslagen inhoud verwijderen uit alle edge-knooppunten en zorgen dat ze alle nieuwe bijgewerkte activa ophalen. Dit kan komen door updates aan uw webtoepassing of aan snel update-activa met onjuiste gegevens bevatten.
+## <a name="cache-purge"></a>Cache opschonen
+Met de voor deur worden assets in de cache opgeslagen totdat de TTL (time-to-Live) van het activum verloopt. Nadat de TTL van het activum verloopt, haalt de front-deur omgeving een nieuwe bijgewerkte kopie van de Asset op om de client aanvraag te leveren en de cache op te slaan wanneer een client de Asset aanvraagt.
+</br>De best practice om ervoor te zorgen dat uw gebruikers altijd de nieuwste kopie van uw assets verkrijgen, is om uw assets voor elke update te maken en ze als nieuwe Url's te publiceren. Met de voor deur worden onmiddellijk de nieuwe assets opgehaald voor de volgende client aanvragen. Soms wilt u in de cache opgeslagen inhoud uit alle Edge-knoop punten verwijderen en alle nieuwe bijgewerkte assets laten afdwingen. Dit kan worden veroorzaakt door updates van uw webtoepassing, of om snel assets bij te werken die onjuiste informatie bevatten.
 
-</br>Selecteer welke elementen die u wilt leegmaken van het edge-knooppunten. Als u wissen van alle activa wilt, klikt u op het opschonen van alle selectievakje. Anders typt u het pad van de activa die u wilt leegmaken in het tekstvak pad. Hieronder indelingen worden ondersteund in het pad.
-1. **Opschonen van één URL**: Individuele asset opschonen door de volledige URL op te geven met de bestandsextensie, bijvoorbeeld /pictures/strasbourg.png;
-2. **Leegmaken met jokertekens**: Sterretje (\*) kan worden gebruikt als een jokerteken. Alle mappen, submappen en bestanden in een eindpunt met leegmaken /\* in het pad of opschonen van alle submappen en bestanden in een specifieke map door te geven van de map gevolgd door /\*, bijvoorbeeld /afbeeldingen/\*.
-3. **Opschonen van domein hoofdmap**: Opschonen van de hoofdmap van het eindpunt met '/' in het pad.
+</br>Selecteer welke assets u wilt verwijderen uit de Edge-knoop punten. Als u alle assets wilt wissen, klikt u op het selectie vakje alles opschonen. Als dat niet het geval is, typt u het pad van elk activum dat u wilt verwijderen in het tekstvak pad. De onderstaande indelingen worden ondersteund in het pad.
+1. **Enkelvoudige URL opschonen**: afzonderlijke activa opschonen door de volledige URL op te geven, bijvoorbeeld/pictures/Strasbourg.png;
+2. **Joker tekens opschonen**: sterretje (\*) kan als Joker teken worden gebruikt. Verwijder alle mappen, submappen en bestanden onder een eind punt met/\* in het pad of verwijder alle submappen en bestanden in een specifieke map door de map op te geven gevolgd door/\*, bijvoorbeeld/pictures/\*.
+3. **Basis domein opschonen**: de hoofdmap van het eind punt met '/' in het pad opschonen.
 
-Cache worden op de voordeur zijn niet hoofdlettergevoelig. Bovendien zijn ze query tekenreeks neutraal, wat betekent dat alle variaties van de query-tekenreeks van het verwijderen van een URL worden verwijderd. 
+Cache verwijderingen op de voor deur zijn hoofdletter gevoelig. Daarnaast zijn ze query teken reeks neutraal, wat betekent dat als u een URL opschoont, alle wijzigingen in de query teken reeks worden verwijderd. 
 
-## <a name="cache-expiration"></a>Vervaltijd van de cache
-De volgende volgorde van headers wordt gebruikt om te bepalen hoe lang een item zijn in de cache opgeslagen:</br>
-1. Cache-Control: s-maxage =\<seconden >
-2. Cache-Control: max-age=\<seconds>
-3. Verloopt: \<http-datum >
+## <a name="cache-expiration"></a>Verval datum van cache
+De volgende volg orde van koppen wordt gebruikt om te bepalen hoe lang een item wordt opgeslagen in de cache:</br>
+1. Cache-Control: s-maxAge =\<seconden >
+2. Cache-Control: Max-Age =\<seconden >
+3. Expires: \<http-datum >
 
-Cache-Control-antwoordheaders die aangeven dat het antwoord in de cache wordt niet worden opgeslagen, zoals Cache-Control: privé, Cache-Control: niet-cache en het Cache-Control: Nee-archief worden herkend. Als er meerdere aanvragen die onderweg zijn op een pop-server voor de dezelfde URL, kunnen ze het antwoord delen. Als er geen Cache-Control aanwezig is is het standaardgedrag dat AFD cache worden opgeslagen door de resource voor X hoeveelheid tijd waarin X willekeurig tussen 1 tot 3 dagen wordt opgehaald.
+Cache-Control-antwoord headers die aangeven dat het antwoord niet in de cache moet worden opgeslagen, zoals cache-Control: private, caching-Control: no-cache en Cache-Control: No-Store is gehonoreerd. Als er echter meerdere aanvragen in de vlucht zijn bij een POP voor dezelfde URL, kunnen ze de reactie delen. Als er geen cache-Control aanwezig is, is het standaard gedrag dat AFD de resource gedurende X-tijd in de cache plaatst waarbij X wille keurig tussen 1 en 3 dagen wordt gekozen.
 
 
-## <a name="request-headers"></a>Aanvraagheaders
+## <a name="request-headers"></a>Aanvraag headers
 
-De volgende aanvraagheaders wordt niet naar een back-end worden doorgestuurd bij het gebruik van opslaan in cache.
+De volgende aanvraag headers worden niet doorgestuurd naar een back-end wanneer caching wordt gebruikt.
 - Autorisatie
-- Content-Length
-- Transfer-Encoding
+- Content-length
+- Overdracht-encoding
 
 ## <a name="next-steps"></a>Volgende stappen
 

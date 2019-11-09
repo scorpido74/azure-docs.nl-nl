@@ -1,7 +1,7 @@
 ---
 title: Migreren naar v3-Translator Text-API
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het migreren van v2 naar v3 van de Translator Text-API.
+description: Dit artikel bevat de stappen waarmee u kunt migreren van v2 naar v3 van de Azure Cognitive Services Translator Text-API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 9ce9dc330ec1b0c32ce045437fadb5d8c191529e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eb43d549d3e0cd449c865d533fc8701c4c3912fd
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595244"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837314"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Migratie van v2 naar v3 Translator Text-API
 
@@ -61,13 +61,13 @@ In de volgende lijst met v2-en V3-methoden worden de V3-methoden en Api's geïde
 
 Micro soft Translator Text vertalen v2 geaccepteerde en geretourneerde gegevens in XML-indeling. In v3 worden alle gegevens die zijn verzonden en ontvangen met behulp van de API in JSON-indeling. XML wordt niet meer geaccepteerd of geretourneerd in v3.
 
-Deze wijziging is van invloed op verschillende aspecten van een toepassing die is geschreven voor de v2 Text Translator-API. Als u een voorbeeld: De talen-API retourneert taal informatie voor tekst omzetting, vele en de twee woordenlijst methoden. U kunt alle taal informatie voor alle methoden in één gesprek aanvragen of ze afzonderlijk aanvragen.
+Deze wijziging is van invloed op verschillende aspecten van een toepassing die is geschreven voor de v2 Text Translator-API. Voor beeld: de talen-API retourneert taal informatie voor tekst omzetting, vele en de twee woordenlijst methoden. U kunt alle taal informatie voor alle methoden in één gesprek aanvragen of ze afzonderlijk aanvragen.
 
 Voor de methode language is geen verificatie vereist; door op de volgende koppeling te klikken, ziet u alle taal informatie voor v3 in JSON:
 
 [https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation, woorden lijst, vele](https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration)
 
-## <a name="authentication-key"></a>Verificatiesleutel
+## <a name="authentication-key"></a>Verificatie sleutel
 
 De verificatie sleutel die u voor v2 gebruikt, wordt geaccepteerd voor v3. U hoeft geen nieuw abonnement te krijgen. U kunt v2 en V3 in uw apps tijdens de Yearlong-migratie periode combi neren, waardoor het eenvoudiger wordt om nieuwe versies vrij te geven terwijl u nog steeds migreert van v2-XML naar v3-JSON.
 
@@ -80,7 +80,7 @@ Micro soft Translator V3 heeft geprijsd op dezelfde manier als v2 heeft geprijsd
 | `Languages`     | Geen tekens verzonden, geen geteld, geen kosten.          |
 | `Translate`     | Aantal is gebaseerd op het aantal tekens dat voor vertaling wordt verzonden en hoeveel talen de tekens worden omgezet in. 50 tekens verzonden en vijf gevraagde talen worden 50x5.           |
 | `Transliterate`     | Het aantal tekens dat voor vele wordt verzonden, wordt geteld.         |
-| `Dictionary lookup & example`     | Aantal tekens dat is ingediend voor Dictionary lookup en voorbeelden worden geteld.         |
+| `Dictionary lookup & example`     | Het aantal tekens dat is verzonden voor het opzoeken van de dictionary en voor beelden worden geteld.         |
 | `BreakSentence`     | Geen kosten.       |
 | `Detect`     | Geen kosten.      |
 
@@ -139,7 +139,7 @@ Er wordt geen versie van de Translator-API gemaakt om een record van uw vertalin
 
 ## <a name="links"></a>Koppelingen
 
-* [Microsoft Privacy Policy](https://privacy.microsoft.com/privacystatement)
+* [Privacybeleid van micro soft](https://privacy.microsoft.com/privacystatement)
 * [Juridische informatie Microsoft Azure](https://azure.microsoft.com/support/legal)
 * [Voor waarden voor Online Services](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 

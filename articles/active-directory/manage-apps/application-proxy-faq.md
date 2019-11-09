@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 9743f25d89bed4e54b3deed815d1cf29030caff6
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955469"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832213"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Veelgestelde vragen over de toepassings proxy van Active Directory (Azure AD)
 
@@ -95,7 +95,7 @@ De methode PrincipalsAllowedToDelegateToAccount wordt gebruikt wanneer connector
 Als de connector servers en het Web Application Service-account zich in hetzelfde domein bevinden, kunt u Active Directory gebruikers en computers gebruiken om de delegatie-instellingen op elk van de connector computer accounts te configureren, zodat ze kunnen worden gedelegeerd naar de SPN van het doel.
 
 Als de connector servers en het Web Application Service-account zich in verschillende domeinen bevinden, wordt delegering op basis van resources gebruikt. De machtigingen voor delegering zijn geconfigureerd op de doel webserver en Web Application Service-account. Deze methode van beperkte delegering is relatief nieuw. De methode is geïntroduceerd in Windows Server 2012, die ondersteuning biedt voor Cross-Domain delegering door de eigenaar van de resource (webservice) te laten bepalen welke computer-en service accounts er kunnen worden gedelegeerd. Er is geen gebruikers interface die u kan helpen bij deze configuratie. hiervoor moet u Power shell gebruiken.
-Zie voor meer informatie het technisch document [over Kerberos-beperkte overdracht met toepassings proxy](http://aka.ms/kcdpaper).
+Zie voor meer informatie het technisch document [over Kerberos-beperkte overdracht met toepassings proxy](https://aka.ms/kcdpaper).
 
 ## <a name="pass-through-authentication"></a>Pass-through-verificatie
 

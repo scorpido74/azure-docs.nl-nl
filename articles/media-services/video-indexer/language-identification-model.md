@@ -1,6 +1,6 @@
 ---
 title: Automatisch de gesp roken taal identificeren met Video Indexer-Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: In dit artikel wordt beschreven hoe het Video Indexer language Identification model wordt gebruikt om automatisch de gesp roken taal in een video te identificeren.
 services: media-services
 author: juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: 729ac9fc7c8ec6a85b3497c51888d3b5a6fc8558
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: ce3e488a6387f9a823d7c1b514b52af24944776b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147199"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838993"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatische identificatie van de gesp roken taal met taal identificatie model
 
@@ -23,7 +23,7 @@ Video Indexer ondersteunt automatische taal identificatie (deksel). Dit is het p
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>Automatische taal identificatie voor indexering kiezen
 
-Wanneer u een video met behulp van de API indexeert of [opnieuw indexeert](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) , `sourceLanguage` kiest u de `auto detect` optie in de para meter.
+Wanneer u een video met behulp van de API indexeert of [opnieuw indexeert](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) , kiest u de optie `auto detect` in de para meter `sourceLanguage`.
 
 Wanneer u Portal gebruikt, gaat u naar uw **account Video's** op de start pagina van [video indexer](https://www.videoindexer.ai/) en houdt u de muis aanwijzer over de naam van de video die u opnieuw wilt indexeren. Klik in de rechter bovenhoek op de knop opnieuw indexeren. Kies in het dialoog venster **video opnieuw indexeren** de optie *Automatische detectie* in de vervolg keuzelijst **video bron taal** .
 
@@ -31,9 +31,9 @@ Wanneer u Portal gebruikt, gaat u naar uw **account Video's** op de start pagina
 
 ## <a name="model-output"></a>Model uitvoer
 
-Video Indexer transcribeert de video aan de hand van de meest waarschijnlijke taal als het vertrouwen voor `> 0.6`die taal is. Als de taal niet met vertrouwen kan worden geïdentificeerd, wordt ervan uitgegaan dat de gesp roken taal Engels is. 
+Video Indexer transcribeert de video op basis van de meest waarschijnlijke taal als het vertrouwen voor die taal `> 0.6`is. Als de taal niet met vertrouwen kan worden geïdentificeerd, wordt ervan uitgegaan dat de gesp roken taal Engels is. 
 
-De dominante taal van het model is beschikbaar in de `sourceLanguage` JSON Insights als het kenmerk (onder hoofdmap/Video's/inzichten). Er is ook een bijbehorende betrouwbaarheids Score beschikbaar `sourceLanguageConfidence` onder het-kenmerk.
+De dominante taal van het model is beschikbaar in de JSON van Insights als het `sourceLanguage` kenmerk (onder hoofdmap/Video's/inzichten). Er is ook een bijbehorende betrouwbaarheids Score beschikbaar onder het kenmerk `sourceLanguageConfidence`.
 
 ```json
 "insights": {
@@ -51,7 +51,7 @@ De dominante taal van het model is beschikbaar in de `sourceLanguage` JSON Insig
 
 * Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Chinees (vereenvoudigd), Japans, Russisch en Portugees (Brazilië).
 * Als de audio andere talen dan de hierboven vermelde lijst bevat, is het resultaat onverwacht.
-* Als video indexer de taal niet kan identificeren met een hoge mate van`>0.6`betrouw baarheid (), is de terugval taal Engels.
+* Als Video Indexer de taal niet kan identificeren met een hoge mate van vertrouwen (`>0.6`), is de terugval taal Engels.
 * Er is geen huidige ondersteuning voor een bestand met audio voor gemengde talen. Als de audio gemengde talen bevat, is het resultaat onverwacht. 
 * Audio van lage kwaliteit kan van invloed zijn op de model resultaten.
 * Het model vereist ten minste één minuut spraak op de audio.

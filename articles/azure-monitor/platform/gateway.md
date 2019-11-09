@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 10/30/2019
-ms.openlocfilehash: 87e1995a84ae2b598b8097d4910914831a75a318
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7574f5c17c1b4598336b8db3108946164dc203f2
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162010"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847289"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Computers zonder Internet toegang verbinden met behulp van de Log Analytics-gateway in Azure Monitor
 
@@ -26,7 +26,7 @@ De Log Analytics-gateway is een HTTP-doorstuur proxy die ondersteuning biedt voo
 
 De Log Analytics gateway ondersteunt:
 
-* Het rapporteren van Maxi maal vier Log Analytics werkruimte agents die zich achter het werk gebied bevinden en die zijn geconfigureerd met Azure Automation Hybrid Runbook Workers.  
+* Het rapporteren van Maxi maal dezelfde Log Analytics werk ruimten die zijn geconfigureerd op elke afzonderlijke agent en die zijn geconfigureerd met Azure Automation Hybrid Runbook Workers.  
 * Windows-computers waarop micro soft Monitoring Agent rechtstreeks is verbonden met een Log Analytics-werk ruimte in Azure Monitor.
 * Linux-computers waarop een Log Analytics-agent voor Linux rechtstreeks is verbonden met een Log Analytics-werk ruimte in Azure Monitor.  
 * System Center Operations Manager 2012 SP1 met UR7, Operations Manager 2012 R2 met UR3, of een beheer groep in Operations Manager 2016 of hoger die is geïntegreerd met Log Analytics.  
@@ -137,7 +137,7 @@ Voer de volgende stappen uit als u een gateway wilt installeren met de wizard Se
 
    b. Als de server waarop de gateway is geïnstalleerd, moet communiceren via een proxy, voert u het proxy adres in waar de gateway verbinding moet maken. Geef bijvoorbeeld `http://myorgname.corp.contoso.com:80` op.  Als u dit veld leeg laat, probeert de gateway rechtstreeks verbinding te maken met het internet.  Als voor uw proxy server verificatie is vereist, voert u een gebruikers naam en wacht woord in.
 
-   c. Selecteer **Next**.
+   c. Selecteer **Volgende**.
 
    ![Scherm opname van configuratie voor de gateway proxy](./media/gateway/gateway-wizard02.png)
 

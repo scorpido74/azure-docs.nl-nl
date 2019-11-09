@@ -4,15 +4,15 @@ description: Beschrijft de vereiste client bibliotheken voor client toepassingen
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 11/07/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f78ac8686f23c47995cab9686c2ca3f6cf88fa6b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9db76ca32c97cca622dc68642be5b770254191a1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573059"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834226"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Client bibliotheken voor het maken van verbinding met Azure Analysis Services
 
@@ -22,10 +22,10 @@ Er zijn client bibliotheken nodig voor client toepassingen en hulpprogram ma's o
 
 |Download  |Product versie  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.5.15    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.5.15       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.9.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.9.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.10.25    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.10.25       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.2.3.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.2.3.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO en ADOMD (NuGet-pakketten)
 

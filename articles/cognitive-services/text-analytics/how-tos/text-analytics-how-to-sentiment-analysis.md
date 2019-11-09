@@ -1,7 +1,7 @@
 ---
-title: Sentiment analyse met behulp van de REST API Text Analytics van Azure Cognitive Services
+title: Sentiment-analyse uitvoeren met Text Analytics REST API
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het detecteren van sentiment met behulp van de Text Analytics REST API.
+description: In dit artikel wordt uitgelegd hoe u sentiment in tekst kunt detecteren met de Azure Cognitive Services Text Analytics REST API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: d246b14a5bd6e60a7b6facae73c68d7449e2e097
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a930a22472dd4329c555539704747af9a2359c33
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494433"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837154"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Voor beeld: sentiment detecteren met Text Analytics
 

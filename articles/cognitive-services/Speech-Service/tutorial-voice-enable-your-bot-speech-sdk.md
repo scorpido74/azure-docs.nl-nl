@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: dcohen
-ms.openlocfilehash: 839bb24996ab782a386d7d28bcc1c06c686e6cd5
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c95bc7b58f3883fee54aaa8095cb187eaefdb3e0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578027"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836970"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Zelf studie: spraak-uw bot inschakelen met de Speech SDK
 
@@ -93,7 +93,7 @@ Nu u een resource groep hebt in de regio **VS-West** , is de volgende stap het m
 
 Volg deze instructies om een spraak bron te maken:
 
-1. Selecteer **een resource maken** in het linkernavigatievenster.
+1. Ga naar de [Azure Portal](https://portal.azure.com) en selecteer **een resource maken** in de linkernavigatiebalk.
 2. Typ **spraak**in de zoek balk.
 3. Selecteer **spraak**en klik vervolgens op **maken**.
 4. U wordt gevraagd om de volgende informatie op te geven:
@@ -109,13 +109,13 @@ Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGro
 
 | NAAM | TYPE  | LOCATIE |
 |------|-------|----------|
-| SpeechEchoBotTutorial-speech | Cognitive Services | US - west |
+| SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
 
 ### <a name="create-an-azure-app-service-plan"></a>Een Azure App Service-plan maken
 
 De volgende stap is het maken van een App Service-abonnement. Een App Service-plan definieert een set rekenresources waarmee een web-app kan worden uitgevoerd.
 
-1. Selecteer **een resource maken** in het linkernavigatievenster.
+1. Ga naar de [Azure Portal](https://portal.azure.com) en selecteer **een resource maken** in de linkernavigatiebalk.
 2. Typ **app service plan**op de zoek balk. Zoek en selecteer vervolgens de kaart **app service plan** in de zoek resultaten.
 3. Klik op **Maken**.
 4. U wordt gevraagd om de volgende informatie op te geven:
@@ -124,7 +124,7 @@ De volgende stap is het maken van een App Service-abonnement. Een App Service-pl
    * Geef uw resource een **naam**. We raden **SpeechEchoBotTutorial-AppServicePlan** aan
    * Selecteer voor **besturings systeem** **Windows**.
    * Selecteer voor **regio** **VS-West**.
-   * Zorg ervoor dat **standaard S1** is geselecteerd voor de **prijs categorie**. Dit moet de standaard waarde zijn.
+   * Zorg ervoor dat **standaard S1** is geselecteerd voor de **prijs categorie**. Dit moet de standaard waarde zijn. Als dat niet het geval is, moet u ervoor zorgen dat u het **besturings systeem** instelt op **Windows** zoals hierboven wordt beschreven.
 5. Klik op **controleren en maken**. U ziet een banner waarvoor Lees **validatie is geslaagd**.
 6. Klik op **Maken**. Het kan enkele minuten duren om de resource groep te maken.
 
@@ -132,17 +132,17 @@ Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGro
 
 | NAAM | TYPE  | LOCATIE |
 |------|-------|----------|
-| SpeechEchoBotTutorial-AppServicePlan | App Service-plan | US - west |
-| SpeechEchoBotTutorial-speech | Cognitive Services | US - west |
+| SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
+| SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
 
 ## <a name="build-an-echo-bot"></a>Een echo bot bouwen
 
 Nu u enkele resources hebt gemaakt, gaan we een bot bouwen. We beginnen met het voor beeld van de echo bot, zoals de naam al aangeeft, ECHO de tekst die u hebt ingevoerd als antwoord. U hoeft zich geen zorgen te maken dat de voorbeeld code klaar is om zonder wijzigingen te worden gebruikt. Het is geconfigureerd om te werken met het directe-lijn spraak kanaal dat we gaan verbinden nadat we de bot hebben geïmplementeerd in Azure.
 
 > [!NOTE]
-> De volgende instructies, evenals aanvullende informatie over de echo-bot, zijn beschikbaar in het Leesmij-bestand van het [voor beeld op github](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/directline-speech/csharp_dotnetcore/02.echo-bot/README.md).
+> De volgende instructies, evenals aanvullende informatie over de echo-bot, zijn beschikbaar in het Leesmij-bestand van het [voor beeld op github](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/02.echo-bot/README.md).
 
-### <a name="download-and-run-the-sample"></a>Het voorbeeld downloaden en uitvoeren
+### <a name="run-the-bot-sample-on-your-machine"></a>Het voor beeld van de bot op uw computer uitvoeren
 
 1. De opslag plaats voor beelden klonen:
 
@@ -151,17 +151,17 @@ Nu u enkele resources hebt gemaakt, gaan we een bot bouwen. We beginnen met het 
    ```
 
 2. Start Visual Studio.
-3. Selecteer in de werk balk **File** > **Open** > **Project/Solution**en open het project bestand van de echo-bot die is geconfigureerd voor gebruik met een direct lijn spraak kanaal:
+3. Selecteer in de werk balk **File** > **Open** > **Project/Solution**en open de project-oplossing ECHO bot:
 
    ```
-   experimental\directline-speech\csharp_dotnetcore\02.echo-bot\EchoBot.csproj
+   samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
    ```
 
-4. Nadat het project is geladen, drukt u op `F5` om het project uit te voeren.
+4. Nadat het project is geladen, drukt u op `F5` om het project te bouwen en uit te voeren.
 
-### <a name="test-with-the-bot-framework-emulator"></a>Testen met de bot Framework emulator
+### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>Het bot-voor beeld testen met de bot Framework-emulator
 
-De [bot Framework-emulator](https://github.com/microsoft/botframework-emulator) is een bureau blad-app waarmee bot-ontwikkel aars hun bots lokaal of op afstand kunnen testen en door lopen via een tunnel. Volg deze stappen om de bot Framework emulator te gebruiken om uw bot te testen.
+De [bot Framework-emulator](https://github.com/microsoft/botframework-emulator) is een bureau blad-app waarmee bot-ontwikkel aars hun bots lokaal of op afstand kunnen testen en door lopen via een tunnel. De emulator ondersteunt getypte tekst als de invoer (niet spraak). De bot antwoordt op de tekst. Volg deze stappen om de bot Framework emulator te gebruiken om uw ECHO-bot die lokaal wordt uitgevoerd, te testen met tekst invoer en tekst uitvoer. Nadat we de bot hebben geïmplementeerd, zullen we deze testen met spraak invoer en spraak uitvoer.
 
 1. De [bot Framework-emulator](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) versie 4.3.0 of hoger installeren
 2. Start de bot Framework emulator en open uw bot:
@@ -171,8 +171,8 @@ De [bot Framework-emulator](https://github.com/microsoft/botframework-emulator) 
    ```
    http://localhost:3978/api/messages
    ```
-
-4. Gebruik de gebruikers interface om met uw bot te communiceren met getypte tekst. Bevestig dat u een reactie krijgt.
+   en klik op verbinden.
+4. De bot moet u onmiddellijk begroeten met ' Hallo en Welkom! ' Bericht. Typ een tekst bericht en bevestig dat u een reactie van de bot ontvangt.
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>Uw bot implementeren op een Azure App Service
 
@@ -184,7 +184,7 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
 1. Open in Visual Studio de echo-bot die is geconfigureerd voor gebruik met een direct-lijn spraak kanaal:
 
    ```
-   experimental\directline-speech\csharp_dotnetcore\02.echo-bot\EchoBot.csproj
+   samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
    ```
 
 1. Klik in de **Solution Explorer**met de rechter muisknop op de oplossing **EchoBot** en selecteer **publiceren...**
@@ -209,16 +209,16 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
 
 | NAAM | TYPE  | LOCATIE |
 |------|-------|----------|
-| EchoBot20190805125647 | App Service | US - west |
-| SpeechEchoBotTutorial-AppServicePlan | App Service-plan | US - west |
-| SpeechEchoBotTutorial-speech | Cognitive Services | US - west |
+| EchoBot20190805125647 | App Service | VS - west |
+| SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
+| SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
 
 ## <a name="enable-web-sockets"></a>Websockets inschakelen
 
 U moet een kleine configuratie wijziging aanbrengen zodat uw bot met behulp van websockets met het directe lijn spraak kanaal kan communiceren. Volg deze stappen om Web sockets in te scha kelen:
 
 1. Ga naar het [Azure Portal](https://portal.azure.com)en zoek uw app service. De resource moet een naam hebben die vergelijkbaar is met **EchoBot20190805125647** (uw unieke app-naam).
-2. Selecteer in het navigatie venster links **instellingen**en klik vervolgens op **configuratie**.
+2. Klik in de linkernavigatiebalk onder **instellingen**op **configuratie**.
 3. Selecteer het tabblad **algemene instellingen** .
 4. Zoek de wissel knop voor **Web sockets** en stel deze **in op aan**.
 5. Klik op **Opslaan**.
@@ -251,10 +251,10 @@ Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup**
 
 | NAAM | TYPE  | LOCATIE |
 |------|-------|----------|
-| EchoBot20190805125647 | App Service | US - west |
-| SpeechEchoBotTutorial-AppServicePlan | App Service-plan | US - west |
+| EchoBot20190805125647 | App Service | VS - west |
+| SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
 | SpeechEchoBotTutorial-BotRegistration | Registratie van bot-kanalen | Wereldwijd |
-| SpeechEchoBotTutorial-speech | Cognitive Services | US - west |
+| SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
 
 > [!IMPORTANT]
 > In de bron van de bot-kanalen wordt de wereld wijde regio weer gegeven, zelfs als u vs West hebt geselecteerd. Dit is normaal gedrag.
@@ -268,6 +268,7 @@ Nu is het tijd om uw bot te registreren met het directe-lijn spraak kanaal. Dit 
    * Zoek naar **meer kanalen**, zoek en klik op **direct line speech**.
    * Bekijk de tekst op de pagina met de titel **directe lijn spraak configureren**en vouw vervolgens de vervolg keuzelijst ' cognitieve service-account ' uit.
    * Selecteer de spraak resource die u eerder hebt gemaakt (bijvoorbeeld **SpeechEchoBotTutorial-speech**) in het menu om uw bot te koppelen aan de sleutel van uw spraak abonnement.
+   * Klik op **Opslaan**.
 
 1. Klik op **instellingen**in het navigatie venster aan de linkerkant.
    * Schakel het selectie vakje **streaming-eind punt inschakelen**in het vak in. Dit is nodig voor het inschakelen van een communicatie protocol dat is gebaseerd op Web-sockets tussen uw bot en het directe lijn spraak kanaal.
@@ -296,8 +297,7 @@ Als er een fout bericht wordt weer gegeven in het hoofd venster van de app, gebr
 
 | Fout | Wat moet u doen? |
 |-------|----------------------|
-|App-fout (zie logboek voor meer informatie): micro soft. CognitiveServices. speech. csharp: de waarde mag niet null zijn. Parameter naam: speechConfig | Dit is een client-app-fout. Zorg ervoor dat u een niet-lege waarde hebt voor het *bot-geheim* in het hoofd venster van de app (Zie [de sectie uw bot registreren met een direct lijn spraak kanaal](#register-the-direct-line-speech-channel)) |
-|Fout AuthenticationFailure: de WebSocket-upgrade is mislukt met een verificatie fout (401). Controleren op juiste abonnements sleutel (of autorisatie token) en regio naam| Controleer op de pagina instellingen van de app of u de sleutel voor spraak abonnementen en de regio juist hebt ingevoerd.<br>Controleer of het bot-geheim juist is ingevoerd. |
+|Fout AuthenticationFailure: de WebSocket-upgrade is mislukt met een verificatie fout (401). Controleren op juiste abonnements sleutel (of autorisatie token) en regio naam| Controleer op de pagina instellingen van de app of u de sleutel voor spraak abonnementen en de regio juist hebt ingevoerd.<br>Zorg ervoor dat de spraak sleutel en de sleutel regio correct zijn ingevoerd. |
 |Fout ConnectionFailure: de verbinding is door de externe host gesloten. Fout code: 1011. Fout Details: er kan geen verbinding worden gemaakt met de bot voordat een bericht wordt verzonden | Zorg ervoor dat u het selectie vakje [streaming-eind punt inschakelen](#register-the-direct-line-speech-channel) en/of [ **websockets** ](#enable-web-sockets) op op hebt ingeschakeld.<br>Zorg ervoor dat uw Azure App Service actief is. Als dat het geval is, start u de App Service opnieuw op.|
 |Fout ConnectionFailure: de verbinding is door de externe host gesloten. Fout code: 1011. Fout Details: de antwoord status code geeft geen succes aan: 500 (InternalServerError)| Uw bot heeft een Neural-stem opgegeven in het veld [uitspreken](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) van uitvoer activiteit, maar de Azure-regio die aan uw spraak abonnements sleutel is gekoppeld, biedt geen ondersteuning voor Neural stemmen. Zie de [standaard-en Neural stemmen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
 |Fout ConnectionFailure: de verbinding is door de externe host gesloten. Fout code: 1000. Fout Details: maximum aantal niet-actieve verbindingen van WebSocket-verbinding (> 300000 MS)| Dit is een verwachte fout wanneer er meer dan vijf minuten een verbinding met het kanaal is geopend en inactief is. |
@@ -348,7 +348,7 @@ Zie [velden in de activiteit](https://github.com/microsoft/botframework-sdk/blob
 ### <a name="view-client-source-code-for-calls-to-the-speech-sdk"></a>Client bron code weer geven voor aanroepen naar de Speech SDK
 
 De direct line speech-client maakt gebruik van het NuGet-pakket [micro soft. CognitiveServices. speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/), dat de Speech SDK bevat. Een goede plaats om te beginnen met het controleren van de voorbeeld code is de methode InitSpeechConnector () in bestands [`DLSpeechClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/MainWindow.xaml.cs), waarmee deze twee Speech SDK-objecten worden gemaakt:
-- [`DialogServiceConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig) -voor configuratie-instellingen (Key spraak abonnement, sleutel regio, bot geheim)
+- [`DialogServiceConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig) -voor configuratie-instellingen (bijvoorbeeld sleutel voor spraak abonnementen, sleutel regio)
 - [`DialogServiceConnector`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.-ctor) -voor het beheren van de kanaal verbinding en gebeurtenissen van client abonnementen voor het verwerken van herkende spraak-en bot-reacties.
 
 ## <a name="add-custom-keyword-activation"></a>Aangepaste trefwoord activering toevoegen
@@ -367,7 +367,7 @@ Volg deze stappen voor het maken van een trefwoord model, Configureer de direct-
 3. Ga in de client direct speech naar het menu **instellingen** (Zoek het tandwiel pictogram in de rechter bovenhoek). Zoek het pad naar het **model bestand** en voer in stap 2 de volledige padnaam voor het `kws.table` bestand in.
 4. Zorg ervoor dat het selectie vakje is **ingeschakeld**. Dit bericht wordt weer gegeven naast het selectie vakje: ' Luister naar het tref woord bij de volgende verbinding '. Als u het verkeerde bestand of een ongeldig pad hebt, wordt een fout bericht weer gegeven.
 5. Voer de sleutel van uw spraak **abonnement**, de regio van de **abonnements sleutel**en klik vervolgens op **OK** om het menu **instellingen** te sluiten.
-6. Selecteer een **bot-geheim**en klik vervolgens op **opnieuw verbinding maken**. Er wordt een bericht weer gegeven met de volgende tekst: ' nieuw gesprek gestart-type, druk op de microfoon knop of zeg het tref woord '. De app luistert nu voortdurend.
+6. Klik op **opnieuw verbinding maken**. Er wordt een bericht weer gegeven met de volgende tekst: ' nieuw gesprek gestart-type, druk op de microfoon knop of zeg het tref woord '. De app luistert nu voortdurend.
 7. Spreek een wille keurige woord groep in die begint met uw tref woord. Bijvoorbeeld: **{uw tref woord}** , wat is het tijdstip? '. U hoeft niet te onderbreken na het uttering van het sleutel woord. Wanneer u klaar bent, gebeuren er twee dingen:
    * U ziet een transcriptie van uw Spaak
    * Kort daarna kunt u het antwoord van de bot horen
@@ -378,7 +378,7 @@ Volg deze stappen voor het maken van een trefwoord model, Configureer de direct-
 
 ### <a name="view-the-source-code-that-enables-keyword"></a>De bron code weer geven waarmee sleutel woord wordt ingeschakeld
 
-Bekijk in de bron code van de directe regel client de volgende bestanden om de code te controleren die wordt gebruikt om de detectie van tref woorden in te scha kelen:
+Bekijk in de bron code van de directe-spraak client de volgende bestanden om de code te controleren die wordt gebruikt om de detectie van tref woorden in te scha kelen:
 
 1. [`DLSpeechClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/Models.cs) bevat een aanroep van de methode Speech SDK [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-), die wordt gebruikt om het model te instantiëren vanuit een lokaal bestand op schijf.
 1. [`DLSpeechClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/MainWindow.xaml.cs) bevat een aanroep naar de Speech SDK-methode [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync), waarmee doorlopende trefwoord detectie wordt geactiveerd.
@@ -389,7 +389,7 @@ De bot die u hebt gemaakt, luistert naar en reageert in het Engels. U bent echte
 
 ### <a name="change-the-language"></a>De taal wijzigen
 
-1. Laten we beginnen met het openen van `\experimental\directline-speech\csharp_dotnetcore\02.echo-bot\Bots\echo-bot.cs`.
+1. Laten we beginnen met het openen van `samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs`.
 2. Zoek vervolgens de SSML op. Het is eenvoudig te vinden, omdat het zich in `<speak></speak>` Tags bevindt.
 3. Zoek in de teken reeks SSML de `<voice name>` tag, vervang deze door `<voice name='de-DE-Stefan-Apollo'>`en sla het bestand op. Deze opgemaakte teken reeks vertelt de service tekst naar spraak om een gesynthesizerd spraak antwoord te retour neren met behulp van de Voice `de-DE-Stefan-Apollo`, dat is geoptimaliseerd voor Duits.
 
@@ -429,4 +429,4 @@ Als u de in deze zelf studie geïmplementeerde ECHO-bot niet wilt blijven gebrui
   * [Spraakservices](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * Bouwen en implementeren van uw eigen spraak ingeschakelde bot:
   * Bouw een [bot-raam](https://dev.botframework.com/)werk op. Registreer deze met [direct line speech Channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) en [Pas uw bot aan voor spraak](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)
-  * Bestaande [bot-Framework oplossingen](https://github.com/microsoft/botframework-solutions)verkennen: een [aangepaste spraak-assistent](https://docs.microsoft.com/azure/cognitive-services/speech-service/voice-assistants) bouwen en [deze stem inschakelen](https://github.com/microsoft/botframework-solutions/blob/master/docs/howto/assistant/csharp/speechenablement.md)
+  * Bekijk bestaande [bot-Framework oplossingen](https://microsoft.github.io/botframework-solutions/index): bouw een [virtuele assistent](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) en [breid deze uit naar direct line speech](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

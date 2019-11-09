@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 34b54459629560ba80e6a38d10edbab32ea44778
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3f987b9e05bcdcda9afe26a1eb1354e5e2450ac5
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820161"
+ms.locfileid: "73846540"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account (preview-versie)
 
@@ -86,7 +86,7 @@ De volgende tabel toont de toewijzing tussen de verschillende Azure Cosmos-accou
 
 ### <a name="fetch-the-private-ip-addresses"></a>De privé-IP-adressen ophalen
 
-Nadat het persoonlijke eind punt is ingericht, kunt u een query uitvoeren op de IP-adressen. De IP-adressen van Azure Portal weer geven. Selecteer **alle resources**, zoek naar het persoonlijke eind punt dat u eerder hebt gemaakt in dit geval het ' dbPrivateEndpoint3 ' en selecteer het tabblad Overzicht voor een overzicht van de DNS-instellingen en IP-adressen:
+Nadat het persoonlijke eind punt is ingericht, kunt u een query uitvoeren op de IP-adressen. Als u de IP-adressen uit Azure Portal wilt weer geven, selecteert u **alle resources**, zoekt u naar het persoonlijke eind punt dat u eerder hebt gemaakt in dit geval is het ' dbPrivateEndpoint3 ' en selecteert u het tabblad Overzicht om de DNS-instellingen en IP-adressen te bekijken:
 
 ![Privé-IP-adressen in Azure Portal](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
 
@@ -354,7 +354,7 @@ Als u regio's wilt toevoegen aan of verwijderen uit een Azure Cosmos-account, mo
 
 Bijvoorbeeld, als u een Azure Cosmos-account in drie regio's implementeert: "VS-West", "centraal VS" en "Europa-west". Wanneer u een persoonlijk eind punt voor uw account maakt, worden vier privé Ip's gereserveerd in het subnet. Een voor elke regio, die het totaal van 3 en één voor het neutraal-eind punt voor Global/Region omvat.
 
-Als u later een nieuwe regio toevoegt, bijvoorbeeld ' vs-Oost ', aan het Azure Cosmos-account. De nieuwe regio is standaard niet toegankelijk vanuit het bestaande persoonlijke eind punt. De beheerder van het Azure Cosmos-account moet de verbinding met het persoonlijke eind punt vernieuwen voordat de nieuwe regio wordt geopend. 
+Als u later een nieuwe regio toevoegt, bijvoorbeeld ' vs-Oost ', aan het Azure Cosmos-account. De nieuwe regio is standaard niet toegankelijk vanuit het bestaande persoonlijke eind punt. De beheerder van het Azure Cosmos-account moet de verbinding met het persoonlijke eind punt vernieuwen voordat deze vanuit de nieuwe regio wordt geopend. 
 
 Wanneer u de ` Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupName <your resource group name>` opdracht uitvoert, bevat de uitvoer van de opdracht de para meter `actionsRequired` die is ingesteld op opnieuw maken. Deze waarde geeft aan dat het persoonlijke eind punt moet worden vernieuwd. Vervolgens voert de beheerder van het Azure Cosmos-account de `Set-AzPrivateEndpoint` opdracht uit om het vernieuwen van het persoonlijke eind punt te activeren.
 

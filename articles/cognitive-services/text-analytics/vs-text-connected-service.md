@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: Verbinding maken met de Text Analytics-service met behulp van Connected Services in Visual Studio'
+title: 'Zelf studie: verbinding maken met de Text Analytics-service met verbonden services in Visual Studio'
 titleSuffix: Azure Cognitive Services
-description: Verbinding leren maken met Text Analytics vanuit een ASP.NET Core-webtoepassing.
+description: Dit artikel en de bijbehorende artikelen bieden details voor het gebruik van de Visual Studio Connected Service-functie voor de Text Analytics-Service.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: ff4c703070d6a7ebd545de3043e5f59b764fe4c9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b094a6917892dfff58c49435de4dc42551be19df
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478461"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837195"
 ---
-# <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Zelfstudie: Verbinding maken met de Text Analytics-service met behulp van Connected Services in Visual Studio
+# <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Zelf studie: verbinding maken met de Text Analytics-service met verbonden services in Visual Studio
 
 Met Text Analytics-service kunt u uitgebreide informatie extraheren om visuele gegevens te extraheren en te verwerken, en kunt u afbeeldingen computerondersteund beheren om uw services te cureren.
 
@@ -32,7 +32,7 @@ Dit artikel en de bijbehorende artikelen bieden details voor het gebruik van de 
 
 ## <a name="add-support-to-your-project-for-the-text-analytics-service"></a>Voeg ondersteuning toe aan uw project voor de Text Analytics-Service
 
-1. Maak een nieuw ASP.NET Core-webproject met de naam TextAnalyticsDemo. Gebruik de projectsjabloon webtoepassing (Model-View-Controller) met de standaardinstellingen. Het is belangrijk om het project de naam MyWebApplication te geven, zodat de naamruimte overeenkomt wanneer u code naar het project kopieert.  In het voor beeld in dit artikel wordt MVC gebruikt, maar u kunt de Text Analytics verbonden service gebruiken met elk ASP.NET-project type.
+1. Maak een nieuw ASP.NET Core-webproject met de naam TextAnalyticsDemo. Gebruik de projectsjabloon webtoepassing (Model-View-Controller) met de standaardinstellingen. Het is belangrijk om het project de naam MyWebApplication te geven zodat de naamruimte overeenkomt wanneer u code hebt gekopieerd in het project.  In het voor beeld in dit artikel wordt MVC gebruikt, maar u kunt de Text Analytics verbonden service gebruiken met elk ASP.NET-project type.
 
 1. Dubbelklik in **Solution Explorer** op het **Connected Service**-item.
    De Connected Service-pagina wordt weergegeven met services die u aan uw project toevoegen kunt.
@@ -90,7 +90,7 @@ Dit artikel en de bijbehorende artikelen bieden details voor het gebruik van de 
       }
    ```
 
-1. Voeg een klassen bestand toe aan  de map controllers `DemoTextAnalyzeController` met de naam en vervang de inhoud door de volgende code:
+1. Voeg een klassen bestand toe aan de map *controllers* met de naam `DemoTextAnalyzeController` en vervang de inhoud door de volgende code:
 
     ```csharp
     using System;
@@ -153,7 +153,7 @@ Dit artikel en de bijbehorende artikelen bieden details voor het gebruik van de 
     }
     ```
     
-    De code omvat `GetTextAnalyzeClient` het ophalen van het client object voor het aanroepen van de Text Analytics-API en een aanvraaghandler die DetectLanguage aanroept voor een bepaalde tekst.
+    De code bevat `GetTextAnalyzeClient` om het client object op te halen voor het aanroepen van de Text Analytics-API en een aanvraaghandler die DetectLanguage aanroept voor een bepaalde tekst.
 
 1. Voeg de MyHandler helperklasse toe die wordt gebruikt door de bovenstaande code.
 

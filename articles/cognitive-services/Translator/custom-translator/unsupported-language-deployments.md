@@ -1,7 +1,7 @@
 ---
-title: Niet-ondersteunde taal implementaties - aangepaste Translator
+title: Niet-ondersteunde taal implementaties-aangepaste vertaler
 titleSuffix: Azure Cognitive Services
-description: Klik hier voor meer informatie over het implementeren van paren van niet-ondersteunde taal in aangepaste Translator.
+description: In dit artikel wordt beschreven hoe u niet-ondersteunde taal paren in azure Cognitive Services Custom Translator implementeert.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,51 +10,51 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 284a7e98c088edb73a2c770a4c14bb0a479a6621
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436074"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837455"
 ---
 # <a name="unsupported-language-deployments"></a>Implementaties in niet-ondersteunde talen
 
 <!--Custom Translator provides the highest-quality translations possible using the latest techniques in neural machine learning. While Microsoft intends to make neural training available in all languages, there are some limitations that prevent us from being able to offer neural machine translation in all language pairs.-->  
 
-Met de geplande buitengebruikstelling van de Microsoft Translator-Hub, heeft Microsoft uitschakeling alle modellen die momenteel zijn geïmplementeerd via de Hub. Veel mensen hebben geïmplementeerd in de Hub waarvan paren taal worden niet ondersteund in aangepaste Translator modellen.  We wilt niet dat gebruikers in dit geval geen beroep voor het omzetten van de inhoud ervan te doen.
+Met de aanstaande beëindiging van de micro soft Translator-hub zal micro soft de implementatie van alle modellen die momenteel via de hub zijn geïmplementeerd, onbeschikbaar maken. Veel van uw modellen zijn geïmplementeerd in de hub waarvan de taal paren niet worden ondersteund in het aangepaste conversie programma.  We willen niet dat gebruikers in deze situatie geen verdere voor het vertalen van hun inhoud hebben.
 
-We hebben nu een proces waarmee u uw niet-ondersteunde modellen via de aangepaste Translator implementeren.  Dit proces kunt u om door te gaan voor de omzetting van inhoud met behulp van de meest recente V3-API.  Deze modellen worden gehost totdat u ze worden geïmplementeerd of beschikbaar is de combinatie van taal in aangepaste Translator.  In dit artikel wordt uitgelegd dat het proces voor het implementeren van modellen met niet-ondersteunde taal paren.
+We hebben nu een proces waarmee u uw niet-ondersteunde modellen kunt implementeren via het aangepaste conversie programma.  Dit proces stelt u in staat om inhoud te blijven vertalen met behulp van de meest recente v3 API.  Deze modellen worden gehost totdat u ervoor kiest om deze te deimplementeren of het taal paar wordt beschikbaar in het aangepaste conversie programma.  In dit artikel wordt het proces beschreven voor het implementeren van modellen met niet-ondersteunde taal paren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In de volgorde voor uw modellen en kandidaten zijn voor implementatie, moeten ze voldoen aan de volgende criteria:
-* Het project met het model moet zijn gemigreerd uit de Hub aan de aangepaste vertaler met behulp van het hulpprogramma voor migratie.  Het proces voor het migreren van projecten en werkruimten vindt [hier](how-to-migrate.md).
-* Het model moet zich in de status van de geïmplementeerde als de migratie plaatsvindt.  
-* De combinatie van taal van het model moet een sleutelpaar met niet-ondersteunde taal in aangepaste Translator.  Taal paren waarin een taal wordt ondersteund of naar het Engels, maar het paar zelf bevat geen Engels, zijn kandidaten voor implementaties van niet-ondersteunde taal.  Bijvoorbeeld, zelfs al Franse Engelse en Engels naar Duitse zijn ondersteunde taal voor het sleutelpaar met een niet-ondersteunde taal paar wordt beschouwd als een Hub-model van een Frans, Duits gekoppeld.
+Om ervoor te zorgen dat uw modellen kandidaten zijn voor implementatie, moeten ze voldoen aan de volgende criteria:
+* Het project met het model moet zijn gemigreerd van de hub naar de aangepaste vertaler met het migratie programma.  Het proces voor het migreren van projecten en werk ruimten kunt u [hier](how-to-migrate.md)vinden.
+* Het model moet zich in de geïmplementeerde status bevinden wanneer de migratie plaatsvindt.  
+* Het taal paar van het model moet een niet-ondersteund taal paar zijn in het aangepaste conversie programma.  Taal paren waarin een taal wordt ondersteund naar of van het Engels, maar het paar zelf niet de Engelse versie bevat, zijn kandidaten voor niet-ondersteunde taal implementaties.  Zo wordt bijvoorbeeld een hub-model voor een Frans-naar-Duits taal paar beschouwd als een niet-ondersteund taal paar, ook al is Frans naar Engels en Engels naar Duits ondersteund taal paar.
 
-## <a name="process"></a>Process
-Als u modellen hebt gemigreerd van de Hub die geschikt zijn voor implementatie, kunt u deze vinden door te gaan naar de **instellingen** pagina voor uw werkruimte en schuiven naar het einde van de pagina u ziet een **niet ondersteund Translator Hub trainingen** sectie.  In deze sectie wordt alleen weergegeven als u projecten die voldoen aan de vereisten die hierboven worden vermeld.
+## <a name="process"></a>Proces
+Zodra u modellen van de hub hebt gemigreerd die kandidaten zijn voor implementatie, kunt u deze vinden door naar de pagina **instellingen** voor uw werk ruimte te gaan en naar het einde van de pagina te schuiven, waar u een **niet-ondersteunde sectie training voor Translator hub** ziet.  Deze sectie wordt alleen weer gegeven als u projecten hebt die voldoen aan de hierboven vermelde vereisten.
 
-![Over het migreren van de Hub](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
+![Migreren vanaf hub](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
 
-Binnen de **niet-ondersteunde Translator Hub trainingen** pagina selectie van de **ongevraagde trainingen** tabblad bevat modellen die in aanmerking komen voor de implementatie.  Selecteer de modellen die u wilt implementeren en een aanvraag indienen.   Vóór de deadline van de 30 April implementatie, kunt u zoveel modellen als u voor de implementatie wilt.
+Op de **niet-ondersteunde pagina training voor Translator hub** bevat het tabblad niet- **aangevraagde opleidingen** modellen die in aanmerking komen voor implementatie.  Selecteer de modellen die u wilt implementeren en dien een aanvraag in.   Vóór de implementatie deadline van 30 april kunt u net zoveel modellen selecteren als u wilt voor de implementatie.
  
-![Over het migreren van de Hub](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
+![Migreren vanaf hub](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
 
-Wanneer verzonden, het model niet langer beschikbaar is op de **ongevraagde trainingen** tabblad en in plaats daarvan wordt weergegeven op de **aangevraagd trainingen** tabblad.  U kunt uw aangevraagde trainingen op elk gewenst moment weergeven.
+Na verzen ding is het model niet meer beschikbaar op het tabblad niet- **aangevraagde opleidingen** en wordt het niet meer weer gegeven op het tabblad **aangevraagde opleidingen** .  U kunt uw aangevraagde trainingen op elk gewenst moment weer geven.
 
-![Over het migreren van de Hub](media/unsupported-language-deployments/request-unsupported-trainings.jpg) 
+![Migreren vanaf hub](media/unsupported-language-deployments/request-unsupported-trainings.jpg) 
 
-## <a name="whats-next"></a>Volgende stappen
+## <a name="whats-next"></a>En verder?
 
-De modellen die u hebt geselecteerd voor de implementatie worden opgeslagen als de Hub uit bedrijf genomen is en alle modellen ongedaan gemaakt worden.  U hebt tot 24 mei om te verzenden aanvragen voor de implementatie van niet-ondersteunde modellen.  We gaan deze modellen op 15 juni op het moment waarop ze toegankelijk via de API van Translator V3 zijn implementeren.  Bovendien zijn ze beschikbaar via de API V2 tot 1 juli.  
+De modellen die u hebt geselecteerd voor implementatie, worden opgeslagen nadat de hub uit bedrijf is genomen en alle modellen niet meer zijn geïmplementeerd.  U hebt tot 24 mei aanvragen voor de implementatie van niet-ondersteunde modellen te verzenden.  Deze modellen worden op 15 juni geïmplementeerd, op het moment dat ze toegankelijk zijn via de Translator v3 API.  Bovendien zullen ze tot 1 juli via de v2 API beschikbaar zijn.  
 
-Voor meer informatie over belangrijke datums in de afschaffing van de controle van de Hub [hier](https://www.microsoft.com/translator/business/hub/).
-Eenmaal is geïmplementeerd, normale hosting wordt in rekening gebracht.  Zie [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) voor meer informatie.  
+Zie [hier](https://www.microsoft.com/translator/business/hub/)voor meer informatie over belang rijke datums in de afschaffing van de hub.
+Zodra de implementatie is geïmplementeerd, worden de normale hosting kosten toegepast.  Zie de [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) voor meer informatie.  
 
-In tegenstelling tot standaard aangepaste Translator-modellen zijn Hub modellen alleen beschikbaar in één regio, dus kosten voor het hosten van meerdere regio's zijn niet van toepassing.  Zodra geïmplementeerd, kunt u zich aan het model van uw Hub worden geïmplementeerd op elk gewenst moment via het gemigreerde aangepaste Translator-project.
+Hub modellen zijn, in tegens telling tot standaard aangepaste Translator-modellen, alleen beschikbaar in één regio, dus de kosten voor het hosten van meerdere regio's zijn niet van toepassing.  Na de implementatie kunt u de implementatie van uw hub-model op elk gewenst moment ontoegankelijk maken via het gemigreerde aangepaste Translator-project.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een model te trainen](how-to-train-model.md).
-- Start met behulp van het model van uw geïmplementeerde aangepaste vertaling via [Microsoft Translator Text-API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- [Train een model](how-to-train-model.md).
+- Begin met het gebruik van uw geïmplementeerde aangepaste Vertaal model via [micro soft Translator text-API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).

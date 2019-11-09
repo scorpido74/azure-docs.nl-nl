@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: a5176f74964e0809cea39aa160943cc6f3451237
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: a2f6d7f881e404e9e4dbdb8087cabf25f67d561b
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176520"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847309"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
@@ -41,7 +41,7 @@ Als u een beheerde identiteit in de portal instelt, moet u eerst een toepassing 
 
 2. Als u een functie-app gebruikt, navigeert u naar **platform functies**. Voor andere typen apps schuift u omlaag naar de **instellingen** groep in het linkernavigatievenster.
 
-3. Selecteer **beheerde identiteit**.
+3. Selecteer **identiteit**.
 
 4. Schakel op het tabblad **systeem toegewezen** de optie **status** in **op aan**. Klik op **Opslaan**.
 
@@ -168,11 +168,11 @@ Eerst moet u een door de gebruiker toegewezen id-resource maken.
 
 3. Als u een functie-app gebruikt, navigeert u naar **platform functies**. Voor andere typen apps schuift u omlaag naar de **instellingen** groep in het linkernavigatievenster.
 
-4. Selecteer **beheerde identiteit**.
+4. Selecteer **identiteit**.
 
 5. Klik op het tabblad **toegewezen door gebruiker** op **toevoegen**.
 
-6. Zoek de identiteit die u eerder hebt gemaakt en selecteer deze. Klik op **Add**.
+6. Zoek de identiteit die u eerder hebt gemaakt en selecteer deze. Klik op **Toevoegen**.
 
     ![Beheerde identiteit in App Service](media/app-service-managed-service-identity/msi-blade-user.png)
 
@@ -193,7 +193,7 @@ Een resource van het type `Microsoft.Web/sites` kan worden gemaakt met een ident
 > [!NOTE] 
 > Een toepassing kan gelijktijdig een door het systeem toegewezen en door de gebruiker toegewezen identiteiten hebben. In dit geval wordt de eigenschap `type` `SystemAssigned,UserAssigned`
 
-Het toevoegen van een door de gebruiker toegewezen type en een mede deling van Azure om de identiteit voor uw toepassing te maken en te beheren.
+Als u het door de gebruiker toegewezen type toevoegt, krijgt Azure de door de gebruiker toegewezen identiteit te gebruiken die voor uw toepassing is opgegeven.
 
 Een web-app kan er bijvoorbeeld als volgt uitzien:
 ```json
@@ -252,13 +252,13 @@ Er is een eenvoudig REST-protocol voor het verkrijgen van een token in App Servi
 Er zijn twee omgevings variabelen gedefinieerd voor een app met een beheerde identiteit:
 
 - MSI_ENDPOINT: de URL naar de lokale token service.
-- MSI_SECRET: een header die wordt gebruikt om SSRF-aanvallen (server-side Request vervalsing) te voor komen. De waarde wordt geroteerd door het platform.
+- MSI_SECRET: een kop die wordt gebruikt om SSRF-aanvallen (server-side Request vervalsing) te voor komen. De waarde wordt geroteerd door het platform.
 
 De **MSI_ENDPOINT** is een lokale URL van waaruit uw app tokens kan aanvragen. Als u een token voor een resource wilt ophalen, maakt u een HTTP GET-aanvraag naar dit eind punt, met inbegrip van de volgende para meters:
 
 > |Parameternaam|Naast|Beschrijving|
 > |-----|-----|-----|
-> |Resource|Query|De AAD-resource-URI van de resource waarvoor een token moet worden verkregen. Dit kan een van de [Azure-Services zijn die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) of een andere resource-URI.|
+> |resource|Query|De AAD-resource-URI van de resource waarvoor een token moet worden verkregen. Dit kan een van de [Azure-Services zijn die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) of een andere resource-URI.|
 > |API-versie|Query|De versie van de token-API die moet worden gebruikt. "2017-09-01" is momenteel de enige versie die wordt ondersteund.|
 > |geheim|Header|De waarde van de omgevings variabele MSI_SECRET. Deze header wordt gebruikt om SSRF-aanvallen (server-side Request vervalsing) te voor komen.|
 > |clientid|Query|(Optioneel tenzij gebruikers toegewezen) De ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Als u dit weglaat, wordt de door het systeem toegewezen identiteit gebruikt.|
@@ -272,7 +272,7 @@ Een geslaagd 200 OK-antwoord bevat een JSON-hoofd tekst met de volgende eigensch
 > |-------------|----------|
 > |access_token|Het aangevraagde toegangs token. De aanroepende webservice kan dit token gebruiken om te verifiëren bij de ontvangende webservice.|
 > |expires_on|Het tijdstip waarop het toegangs token verloopt. De datum wordt weer gegeven als het aantal seconden van 1970-01-01T0:0: 0Z UTC tot de verloop tijd. Deze waarde wordt gebruikt om de levens duur van tokens in de cache te bepalen.|
-> |Resource|De App-ID-URI van de ontvangende webservice.|
+> |resource|De App-ID-URI van de ontvangende webservice.|
 > |token_type|Geeft de waarde van het token type aan. Het enige type dat door Azure AD wordt ondersteund, is Bearer. Zie voor meer informatie over Bearer-tokens [het OAuth 2,0 Authorization Framework: Bearer-token gebruik (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 Dit antwoord is hetzelfde als het [antwoord voor de aanvraag van de Aad service-to-service-toegangs token](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).

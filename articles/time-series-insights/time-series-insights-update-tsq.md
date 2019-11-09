@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 97265a83a73d45f45a4bd1183df61521f4ca29bf
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: e660db5db3d1afc14a3c895e6786d1b6a8b82c13
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989688"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832412"
 ---
 # <a name="data-querying"></a>Query's uitvoeren op gegevens
 
@@ -33,15 +33,15 @@ Time Series Insights maakt gebruik van een uitgebreide op teken reeks gebaseerde
 
 De volgende kern-Api's worden ondersteund.
 
-[overzicht van![time series-query](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
+[overzicht van ![time series-query](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
 ## <a name="environment-apis"></a>Omgevings-Api's
 
 De volgende omgevings-Api's zijn beschikbaar:
 
-* [Omgevings-API ophalen](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environments-api): retourneert de lijst met omgevingen waarvoor de aanroeper gemachtigd is om toegang te krijgen.
-* [API voor omgevings beschikbaarheid ophalen](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api): retourneert de verdeling van het aantal gebeurtenissen over de tijds tempel van de gebeurtenis `$ts`. Met deze API kunt u bepalen of er gebeurtenissen in de tijds tempel zijn door het aantal gebeurtenissen te retour neren, indien aanwezig.
-* [Event schema-API ophalen](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-event-schema-api): retourneert de meta gegevens van het gebeurtenis schema voor een opgegeven zoek reeks. Deze API helpt bij het ophalen van alle meta gegevens en eigenschappen die beschikbaar zijn in het schema voor de opgegeven zoek reeks.
+* [Omgevings-API ophalen](/rest/api/time-series-insights/management/environments/get): retourneert de lijst met omgevingen waarvoor de aanroeper gemachtigd is om toegang te krijgen.
+* [API voor omgevings beschikbaarheid ophalen](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): retourneert de verdeling van het aantal gebeurtenissen over de tijds tempel van de gebeurtenis `$ts`. Met deze API kunt u bepalen of er gebeurtenissen in de tijds tempel zijn door het aantal gebeurtenissen te retour neren, indien aanwezig.
+* [Event schema-API ophalen](/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema): retourneert de meta gegevens van het gebeurtenis schema voor een opgegeven zoek reeks. Deze API helpt bij het ophalen van alle meta gegevens en eigenschappen die beschikbaar zijn in het schema voor de opgegeven zoek reeks.
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>Time Series model-query (TSM-Q)-Api's
 
@@ -58,16 +58,16 @@ De volgende time series-model-query-Api's zijn beschikbaar. De meeste van deze A
 
 De volgende time series query-Api's zijn beschikbaar. Deze Api's zijn beschikbaar op alle ondersteunde meerdere lagen opslag in Time Series Insights. Query-URL-para meters worden gebruikt om het [Store-type](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters) op te geven waarop de query moet worden uitgevoerd:
 
-* [Get Events API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-events-api): maakt het mogelijk om gegevens op te vragen en op te time series Insights halen uit gebeurtenissen die zijn vastgelegd in time series Insights van de bron provider. Met deze API kunt u onbewerkte gebeurtenissen ophalen voor een bepaalde tijd reeks-ID en zoek reeks. Deze API ondersteunt paginering om de volledige gegevensset voor de geselecteerde invoer op te halen. 
+* [Get Events API](/rest/api/time-series-insights/dataaccess(preview)/query/execute#getevents): maakt het mogelijk om gegevens op te vragen en op te time series Insights halen uit gebeurtenissen die zijn vastgelegd in time series Insights van de bron provider. Met deze API kunt u onbewerkte gebeurtenissen ophalen voor een bepaalde tijd reeks-ID en zoek reeks. Deze API ondersteunt paginering om de volledige gegevensset voor de geselecteerde invoer op te halen. 
 
-* [Get Series API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-series-api): maakt het mogelijk om gegevens op te vragen en op te time series Insights halen uit vastgelegde gebeurtenissen met behulp van gegevens die zijn vastgelegd op de kabel. De geretourneerde waarden zijn gebaseerd op de variabelen die zijn gedefinieerd in het model of die inline zijn opgegeven. Deze API ondersteunt paginering om de volledige gegevensset voor de geselecteerde invoer op te halen. Deze API helpt bij het definiëren van berekende eigenschappen of kolommen.
+* [Get Series API](/rest/api/time-series-insights/dataaccess(preview)/query/execute#getseries): maakt het mogelijk om gegevens op te vragen en op te time series Insights halen uit vastgelegde gebeurtenissen met behulp van gegevens die zijn vastgelegd op de kabel. De geretourneerde waarden zijn gebaseerd op de variabelen die zijn gedefinieerd in het model of die inline zijn opgegeven. Deze API ondersteunt paginering om de volledige gegevensset voor de geselecteerde invoer op te halen. Deze API helpt bij het definiëren van berekende eigenschappen of kolommen.
 
     >[!NOTE]
     > De component Aggregation wordt genegeerd, zelfs als deze is opgegeven in een model of inline.
 
   De Get-reeks-API retourneert een time series-waarde voor elke variabele voor elk interval. Een time series-waarde is een indeling die Time Series Insights gebruikt voor het uitvoeren van JSON van een query. De geretourneerde waarden zijn gebaseerd op de tijd reeks-ID en de set variabelen die zijn opgegeven.
 
-* [Aggregatie-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#aggregate-series-api): maakt het mogelijk om gegevens op te vragen en op te time series Insights halen uit vastgelegde gebeurtenissen door steek proeven te nemen en opgenomen gegevens samen te voegen. Deze API ondersteunt continue uitvoering met behulp van [vervolg tokens](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#queryresultpage).
+* [Aggregatie-API](/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregatevariable): maakt het mogelijk om gegevens op te vragen en op te time series Insights halen uit vastgelegde gebeurtenissen door steek proeven te nemen en opgenomen gegevens samen te voegen. Deze API ondersteunt continue uitvoering met behulp van [vervolg tokens](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#queryresultpage).
 
   De verzamelings-API voor samen voegen retourneert een time series-waarde voor elke variabele voor elk interval. De waarden zijn gebaseerd op de tijd reeks-ID en de set variabelen die zijn opgegeven. De verzamelings-API voor samen voegen behaalt de reductie met behulp van variabelen die zijn opgeslagen in het time series-model of die inline zijn voor aggregatie of voorbeeld gegevens.
 

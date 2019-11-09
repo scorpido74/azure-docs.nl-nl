@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 0046443bef0e71215157dfe89aaae45b2a91c330
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 93ae820f8c98b749ef8f71b17bf3d540d7886ed6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200266"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832133"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Snelstartgids: aanmelden toevoegen met micro soft aan een Java-Web-app
 
@@ -40,24 +40,24 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 - Een Azure Active Directory-Tenant (Azure AD). Zie [een Azure AD-Tenant verkrijgen](https://azure.microsoft.com/documentation/articles/active-directory-howto-tenant/)voor meer informatie over het verkrijgen van een Azure AD-Tenant.
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
+> ## <a name="register-and-download-your-quickstart-app"></a>De snelstart-app registreren en downloaden
 > U hebt twee opties om uw Quick Start-toepassing te starten: Express (optie 1) of hand matig (optie 2)
-> 
+>
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: de app registreren en automatisch configureren, en vervolgens de voorbeeldcode downloaden
-> 
+>
 > 1. Ga naar de [Azure Portal-app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
 > 1. Volg de instructies om uw nieuwe toepassing te downloaden en automatisch te configureren.
-> 
+>
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: de toepassing en voorbeeldcode registreren en handmatig configureren
-> 
+>
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
-> 
+>
 > Volg deze stappen om de toepassing te registreren en de registratiegegevens van de app handmatig toe te voegen aan uw oplossing:
-> 
+>
 > 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-> 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
-> 
+> 1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
+>
 > 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](/azure/active-directory/develop/) .
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
@@ -66,10 +66,9 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > 1. Zoek op de pagina **overzicht** de **client-id** van de toepassing en de id van de **Directory (Tenant)** van de toepassing. Kopieer deze waarden voor later.
 > 1. Selecteer de **verificatie** in het menu en voeg de volgende gegevens toe:
 >    - In **omleidings-uri's**voegt u `http://localhost:8080/msal4jsamples/secure/aad` en `http://localhost:8080/msal4jsamples/graph/me`toe.
->    - Voeg in **Geavanceerde instellingen**`https://localhost:8080/msal4jsample/sign-out` toe aan de **afmeldings-URL**.
 >    - Selecteer **Opslaan**.
 > 1. Selecteer de **certificaten & geheimen** in het menu en klik in de sectie **client geheimen** op **Nieuw client geheim**:
-> 
+>
 >    - Typ een beschrijving voor de sleutel (bijvoorbeeld het geheim van een app-exemplaar).
 >    - Selecteer een sleutel duur **in 1 jaar**.
 >    - De sleutel waarde wordt weer gegeven wanneer u **toevoegen**selecteert.
@@ -77,9 +76,9 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Stap 1: uw toepassing configureren in de Azure-portal
-> 
+>
 > Het code voorbeeld voor deze Quick Start werkt alleen als u:
-> 
+>
 > 1. Antwoord-Url's toevoegen als `http://localhost:8080/msal4jsamples/secure/aad` en `http://localhost:8080/msal4jsamples/graph/me`.
 > 1. Maak een client geheim.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -145,12 +144,12 @@ Voeg MSAL4J toe aan uw toepassing met behulp van Maven of Gradle om uw afhankeli
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>msal4j</artifactId>
-    <version>0.6.0-preview</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
 ```$xslt
-compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.6.0-preview'
+compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'
 ```
 
 ### <a name="msal-initialization"></a>MSAL initialiseren

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 00130114b793b5f4d4459eee3404fc4adaf6a8b4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 28a280ea7c3bf9ef84a1fff05da5090ed526fb12
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699414"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837460"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Ontwikkelen voor Azure Files met Java
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -165,7 +165,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 }
 ```
 
-## <a name="upload-a-file"></a>Een bestand uploaden
+## <a name="upload-a-file"></a>Bestand uploaden
 In deze sectie leert u hoe u een bestand van de lokale opslag uploadt naar de hoofdmap van een share.
 
 De eerste stap bij het uploaden van een bestand is het verkrijgen van een verwijzing naar de map waar deze zich moet bevinden. U doet dit door de methode **getRootDirectoryReference** van het object share aan te roepen.
@@ -185,7 +185,7 @@ Nu u een verwijzing naar de hoofdmap van de share hebt, kunt u een bestand uploa
         cloudFile.uploadFromFile(filePath);
 ```
 
-## <a name="download-a-file"></a>Een bestand downloaden
+## <a name="download-a-file"></a>Bestand downloaden
 Een van de frequentere bewerkingen die u kunt uitvoeren op Azure Files is het downloaden van bestanden. In het volgende voor beeld downloadt de code SampleFile. txt en wordt de inhoud ervan weer gegeven.
 
 ```java
@@ -227,7 +227,7 @@ Als u meer wilt weten over andere Azure Storage-Api's, volgt u deze koppelingen.
 * [Azure voor Java-Ontwikkel aars](/java/azure)/)
 * [Azure Storage SDK voor Java](https://github.com/azure/azure-storage-java)
 * [Azure Storage SDK voor Android](https://github.com/azure/azure-storage-android)
-* [Azure Storage Client SDK-referentie](http://dl.windowsazure.com/storage/javadoc/)
+* [Azure Storage Client SDK-referentie](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [REST-API voor Azure Storage-services](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Blog van het Azure Storage-team](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Gegevensoverdracht met het AzCopy-opdrachtregelprogramma](../common/storage-use-azcopy.md)

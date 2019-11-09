@@ -1,18 +1,18 @@
 ---
 title: Azure Blob-opslag koppelen als een bestands systeem op Linux | Microsoft Docs
 description: Een Azure Blob-opslag container koppelen met ZEKERheid op Linux
-author: normesta
+author: rishabpoh
 ms.service: storage
 ms.topic: conceptual
 ms.date: 2/1/2019
-ms.author: normesta
+ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 88002999baacf38b4afd40b574686457c48546e4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 35a4313d10231aec74685069a67d803ea32e68b1
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845018"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847550"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Blob-opslag koppelen als een bestands systeem met blobfuse
 
@@ -42,7 +42,7 @@ Als voor beeld voor een Enter prise Linux 6-distributie:
 sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-prod.rpm
 ```
 
-Wijzig ook de URL naar `.../rhel/7/...` om naar een Enter prise Linux 7-distributie te verwijzen.
+Wijzig ook de URL in `.../rhel/7/...` zodat deze verwijst naar een Enter prise Linux 7-distributie.
 
 Een ander voor beeld van een Ubuntu 14,04-distributie:
 ```bash
@@ -51,7 +51,7 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-Wijzig ook de URL naar `.../ubuntu/16.04/...` of `.../ubuntu/18.04/...` om te verwijzen naar een andere Ubuntu-versie.
+Wijzig ook de URL in `.../ubuntu/16.04/...` of `.../ubuntu/18.04/...` om te verwijzen naar een andere Ubuntu-versie.
 
 ### <a name="install-blobfuse"></a>Blobfuse installeren
 
@@ -97,7 +97,7 @@ accountName myaccount
 accountKey storageaccesskey
 containerName mycontainer
 ```
-Het `accountName` is het voor voegsel voor uw opslag account, niet de volledige URL.
+De `accountName` is het voor voegsel voor uw opslag account, niet de volledige URL.
 
 Dit bestand maken met:
 
@@ -111,7 +111,7 @@ chmod 600 fuse_connection.cfg
 ```
 
 > [!NOTE]
-> Als u het configuratie bestand in Windows hebt gemaakt, zorg er dan voor `dos2unix` dat u het bestand kunt opschonen en converteren naar de UNIX-indeling. 
+> Als u het configuratie bestand in Windows hebt gemaakt, moet u ervoor zorgen dat `dos2unix` worden uitgevoerd om het bestand op te schonen en te converteren naar de UNIX-indeling. 
 >
 
 ### <a name="create-an-empty-directory-for-mounting"></a>Een lege directory maken om te koppelen
@@ -125,13 +125,13 @@ mkdir ~/mycontainer
 > Controleer [de blobfuse-opslag plaats](https://github.com/Azure/azure-storage-fuse#mount-options)voor een volledige lijst met koppelings opties.  
 > 
 
-Als u blobfuse wilt koppelen, voert u de volgende opdracht uit met uw gebruiker. Met deze opdracht koppelt u de container die is opgegeven in '/Path/to/fuse_connection.cfg ' op de locatie '/mycontainer '.
+Als u blobfuse wilt koppelen, voert u de volgende opdracht uit met uw gebruiker. Met deze opdracht koppelt u de container die is opgegeven in '/Path/to/fuse_connection. cfg ' op de locatie '/mycontainer '.
 
 ```bash
 sudo blobfuse ~/mycontainer --tmp-path=/mnt/resource/blobfusetmp  --config-file=/path/to/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
 ```
 
-U hebt nu toegang tot uw blok-blobs via de reguliere Api's van het bestands systeem. De gebruiker die de Directory koppelt, is standaard de enige persoon die toegang heeft tot de map, waardoor de toegang wordt beveiligd. Als u toegang tot alle gebruikers wilt toestaan, kunt u koppelen via ```-o allow_other```de optie. 
+U hebt nu toegang tot uw blok-blobs via de reguliere Api's van het bestands systeem. De gebruiker die de Directory koppelt, is standaard de enige persoon die toegang heeft tot de map, waardoor de toegang wordt beveiligd. Als u toegang tot alle gebruikers wilt toestaan, kunt u koppelen via de optie ```-o allow_other```. 
 
 ```bash
 cd ~/mycontainer

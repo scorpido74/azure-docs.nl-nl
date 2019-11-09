@@ -1,7 +1,7 @@
 ---
-title: Een Video Indexer-account beheren
-titlesuffix: Azure Media Services
-description: In dit artikel laat zien hoe voor het beheren van een Video Indexer-account met Azure bent verbonden.
+title: Een Video Indexer account beheren
+titleSuffix: Azure Media Services
+description: In dit artikel wordt beschreven hoe u een Video Indexer account beheert dat is verbonden met Azure.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,72 +10,72 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 37aef7c0ae06aefc69b8a72a80c8ade3951e8b0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8221cdcf7afe82ee969f645d7f459c69519711d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799524"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838974"
 ---
-# <a name="manage-a-video-indexer-account-connected-to-azure"></a>Een Video Indexer-account dat is verbonden met Azure beheren
+# <a name="manage-a-video-indexer-account-connected-to-azure"></a>Een Video Indexer account beheren dat is verbonden met Azure
 
-In dit artikel ziet u hoe u een Video Indexer-account die is verbonden met uw Azure-abonnement en een Azure Media Services-account beheren.
+In dit artikel wordt beschreven hoe u een Video Indexer-account kunt beheren dat is verbonden met uw Azure-abonnement en een Azure Media Services-account.
 
 > [!NOTE]
-> U moet de eigenaar van de Video Indexer-account wilt account aanpassingen in de configuratie die in dit onderwerp wordt besproken.
+> U moet de eigenaar van het Video Indexer account zijn voor het uitvoeren van aanpassingen van de account configuratie die in dit onderwerp worden beschreven.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Verbinding maken met uw Video Indexer-account naar Azure, zoals beschreven in [met Azure bent verbonden](connect-to-azure.md). 
+Verbind uw Video Indexer-account met Azure, zoals beschreven in [verbonden met Azure](connect-to-azure.md). 
 
-Zorg ervoor dat u [vereisten](connect-to-azure.md#prerequisites) en bekijk [overwegingen met betrekking tot](connect-to-azure.md#considerations) in het artikel.
+Zorg ervoor dat u voldoet aan de [vereisten](connect-to-azure.md#prerequisites) en Lees [overwegingen](connect-to-azure.md#considerations) in het artikel.
 
-## <a name="examine-account-settings"></a>Accountinstellingen bekijken
+## <a name="examine-account-settings"></a>Account instellingen controleren
 
-In dit gedeelte worden de instellingen van uw Video Indexer-account.
+In deze sectie worden de instellingen van uw Video Indexer-account onderzocht.
 
-Instellingen weergeven:
+Instellingen weer geven:
 
-1. Klik op het pictogram van de gebruiker in de rechterbovenhoek en selecteer **instellingen**.
+1. Klik in de rechter bovenhoek op het pictogram van de gebruiker en selecteer **instellingen**.
 
     ![Instellingen](./media/manage-account-connected-to-azure/select-settings.png)
 
-2. Op de **instellingen** weergeeft, schakelt de **Account** tabblad.
+2. Selecteer op de pagina **instellingen** het tabblad **account** .
 
-Als uw video Indexer-account is verbonden met Azure, ziet u het volgende:
+Als uw video indexer-account is verbonden met Azure, ziet u het volgende:
 
-* De naam van de onderliggende Azure Media Services-account.
-* Het aantal indexeertaken laten uitvoeren en in de wachtrij geplaatst.
-* Het aantal en type van de toegewezen gereserveerde eenheden.
+* De naam van het onderliggende Azure Media Services-account.
+* Het aantal uitgevoerde indexerings taken en de wachtrij.
+* Het aantal en het type toegewezen gereserveerde eenheden.
 
-Als uw account aanpassen moet, ziet u relevante fouten en waarschuwingen over de configuratie van uw account op de **instellingen** pagina. De berichten bevatten koppelingen naar de exacte plaatsen in Azure portal waar u moet wijzigingen aanbrengen. Zie voor meer informatie de [fouten en waarschuwingen](#errors-and-warnings) volgende sectie.
+Als uw account aanpassingen vereist, worden relevante fouten en waarschuwingen over uw account configuratie weer gegeven op de pagina **instellingen** . De berichten bevatten koppelingen naar exacte locaties in Azure Portal waar u wijzigingen moet aanbrengen. Zie de sectie met [fouten en waarschuwingen](#errors-and-warnings) voor meer informatie.
 
-## <a name="auto-scale-reserved-units"></a>Automatisch schalen, gereserveerde eenheden
+## <a name="auto-scale-reserved-units"></a>Gereserveerde eenheden automatisch schalen
 
-De **instellingen** pagina kunt u de automatische schaalaanpassing van Media gereserveerde eenheden (RU) instellen. Als de optie **op**, kunt u het maximum aantal ru's toewijzen en zorg ervoor dat dat Video Indexer stoppen/starten ru's automatisch. Met deze optie niet extra geld te betalen voor niet-actieve tijd maar ook moet u niet wachten voor indexering van taken voor het voltooien van een lange tijd wanneer de indexering belasting hoog is.
+Op de pagina **instellingen** kunt u automatisch schalen instellen voor gereserveerde media-eenheden (ru). Als de optie is **ingeschakeld**, kunt u het maximum aantal aan Rus toewijzen en ervoor zorgen dat de video indexer automatisch Rus wordt gestopt/gestart. Met deze optie betaalt u geen extra geld voor niet-actieve tijd, maar u hoeft niet te wachten op het volt ooien van index taken wanneer de indexerings belasting hoog is.
 
-Automatisch schalen schaalt niet 1 RU of hoger dan de standaardlimiet van het Media Services-account. Als u wilt de limiet te verhogen, moet u een serviceaanvraag maken. Zie voor meer informatie over quota en beperkingen en hoe u een ondersteuningsticket [quota en beperkingen](../../media-services/previous/media-services-quotas-and-limitations.md).
+Automatische schaal aanpassing niet lager dan 1 RU of hoger dan de standaard limiet van het Media Services-account. Als u de limiet wilt verhogen, maakt u een service aanvraag. Zie [quota's en beperkingen](../../media-services/previous/media-services-quotas-and-limitations.md)voor meer informatie over quota en beperkingen en het openen van een ondersteunings ticket.
 
 ![Aanmelden](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
 
 ## <a name="errors-and-warnings"></a>Fouten en waarschuwingen
 
-Als uw account aanpassen moet, ziet u relevante fouten en waarschuwingen over de configuratie van uw account op de **instellingen** pagina. De berichten bevatten koppelingen naar de exacte plaatsen in Azure portal waar u moet wijzigingen aanbrengen. Deze sectie vindt u meer informatie over de fout- en waarschuwingsberichten.
+Als uw account aanpassingen vereist, ziet u relevante fouten en waarschuwingen over uw account configuratie op de pagina **instellingen** . De berichten bevatten koppelingen naar exacte locaties in Azure Portal waar u wijzigingen moet aanbrengen. In deze sectie vindt u meer informatie over de fout-en waarschuwings berichten.
 
 * Event Grid
 
-    U hebt voor het registreren van de EventGrid resourceprovider met behulp van de Azure portal. In de [Azure-portal](https://portal.azure.com/), gaat u naar **abonnementen** > [abonnement] > **resourceproviders en** > **Microsoft.EventGrid**. Als dat niet in de **geregistreerde** staat, klikt u op **registreren**. Het duurt enkele minuten om te registreren. 
+    U moet de EventGrid-resource provider registreren met behulp van de Azure Portal. Ga in het [Azure Portal](https://portal.azure.com/)naar **abonnementen** > [subscription] > **ResourceProviders** > **micro soft. EventGrid**. Als de status niet is **geregistreerd** , klikt u op **registreren**. Het duurt enkele minuten om u te registreren. 
 
-* Streaming-eindpunt
+* Streaming-eind punt
 
-    Zorg ervoor dat de onderliggende Media Services-account is de standaardwaarde **Streaming-eindpunt** in de status van een gestart. Anders niet mogelijk om te bekijken van video's vanaf deze Media Services-account of in Video Indexer.
+    Zorg ervoor dat de onderliggende Media Services account het standaard **streaming-eind punt** met de status gestart heeft. Als dat niet het geval is, kunt u geen Video's bekijken uit dit Media Services-account of Video Indexer.
 
 * Gereserveerde media-eenheden 
 
-    U moet gereserveerde Media-eenheden toewijzen voor uw Media Service-resource in volgorde naar index video's. Voor optimale prestaties indexering, is het raadzaam om toe te wijzen ten minste 10 gereserveerde S3-eenheden. Voor informatie over prijzen, Zie de sectie Veelgestelde vragen over van de [prijzen van Media Services](https://azure.microsoft.com/pricing/details/media-services/) pagina.   
+    U moet gereserveerde media-eenheden toewijzen aan uw media service bron om Video's te kunnen indexeren. Voor optimale index prestaties is het raadzaam om ten minste 10 S3-gereserveerde eenheden toe te wijzen. Zie de sectie Veelgestelde vragen op de pagina met [prijzen voor Media Services](https://azure.microsoft.com/pricing/details/media-services/) voor prijs informatie.   
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt via programmacode communiceren met uw proefaccount en/of met uw Video Indexer-accounts die zijn verbonden met azure door de instructies in: [API's gebruiken](video-indexer-use-apis.md).
+U kunt programmatisch communiceren met uw proef account en/of met uw Video Indexer-accounts die zijn verbonden met Azure door de instructies te volgen in: [Api's gebruiken](video-indexer-use-apis.md).
 
-U moet dezelfde Azure AD-gebruiker die u hebt gebruikt bij het verbinden met Azure.
+U moet dezelfde Azure AD-gebruiker gebruiken die u hebt gebruikt om verbinding te maken met Azure.

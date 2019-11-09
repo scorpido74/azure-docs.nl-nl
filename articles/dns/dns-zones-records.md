@@ -15,22 +15,22 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: ccc418cd3af14c0468ab8d669ad2e2e11a0b6d57
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: fdf9b60e38ad37334fe6183bb1a9c60cce9f85e1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772260"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832055"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Overzicht van DNS-zones en records
 
 Op deze pagina worden de belangrijkste concepten van domeinen, DNS-zones, DNS-records en-record sets uitgelegd en hoe deze worden ondersteund in Azure DNS.
 
-## <a name="domain-names"></a>Domeinnamen
+## <a name="domain-names"></a>Domein namen
 
 Het Domain Name System is een hiërarchie van domeinen. De hiërarchie start vanaf het hoofddomein. De naam van dit domein is eenvoudigweg ' **.** '.  Hieronder komen de topleveldomeinen, zoals com, net, org, uk of nl.  Onder de topleveldomeinen komen de secondleveldomeinen, zoals org.uk of co.jp. De domeinen in de DNS-hiërarchie zijn wereld wijd gedistribueerd, gehost door DNS-naam servers over de hele wereld.
 
-Een domein naam registratie is een organisatie waarmee u een domein naam kunt kopen, zoals ' contoso.com '.  Als u een domein naam aanschaft, kunt u de DNS-hiërarchie onder die naam beheren, bijvoorbeeld zodat u de naam www.contoso.com kunt door sturen naar de website van uw bedrijf. De registratie van het domein kan in eigen naam servers worden gehost of u kunt alternatieve naam servers opgeven.
+Een domein naam registratie is een organisatie waarmee u een domein naam kunt kopen, zoals `contoso.com`.  Als u een domein naam aanschaft, kunt u de DNS-hiërarchie onder die naam beheren, bijvoorbeeld zodat u de naam `www.contoso.com` naar de website van uw bedrijf kunt sturen. De registratie van het domein kan in eigen naam servers worden gehost of u kunt alternatieve naam servers opgeven.
 
 Azure DNS biedt een wereld wijd gedistribueerde naam server infrastructuur met hoge Beschik baarheid, die u kunt gebruiken om uw domein te hosten. Door uw domeinen in Azure DNS te hosten, kunt u uw DNS-records met dezelfde referenties, Api's, hulpprogram ma's, facturering en ondersteuning als uw andere Azure-Services beheren.
 
@@ -54,12 +54,12 @@ In Azure DNS wordt de TTL voor de recordset opgegeven, niet voor elke record, zo
 
 Azure DNS ondersteunt [recordsets met jokertekens](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Joker records worden geretourneerd als antwoord op een wille keurige query met een overeenkomende naam (tenzij er een nauwere overeenkomst is met een niet-Joker record). Azure DNS ondersteunt Joker record sets voor alle record typen behalve NS en SOA.
 
-Als u een set met Joker tekens wilt maken, gebruikt u de\*naam van de recordset. U kunt ook een naam met '\*' gebruiken als het meest linkse label, bijvoorbeeld '\*. foo '.
+Als u een set met Joker tekens wilt maken, gebruikt u de naam van de recordset\*. U kunt ook een naam met '\*' gebruiken als het meest linkse label, bijvoorbeeld '\*. foo '.
 
 ### <a name="caa-records"></a>CAA records
 
 Met CAA-records kunnen domein eigen aars opgeven welke certificerings instanties (Ca's) geautoriseerd zijn om certificaten voor hun domein te verlenen. Op die manier kunnen certificerings instanties in sommige gevallen niet-verleende certificaten vermijden. CAA records hebben drie eigenschappen:
-* **Vlaggen**: Dit is een geheel getal tussen 0 en 255, dat wordt gebruikt om de kritieke vlag voor te stellen die een speciale betekenis heeft per [RFC](https://tools.ietf.org/html/rfc6844#section-3)
+* **Flags**: dit is een geheel getal tussen 0 en 255, dat wordt gebruikt om de kritieke vlag weer te geven die een speciale betekenis heeft per [RFC](https://tools.ietf.org/html/rfc6844#section-3)
 * **Tag**: een ASCII-teken reeks die een van de volgende kan zijn:
     * **probleem**: gebruik deze als u ca's wilt opgeven die certificaten mogen uitgeven (alle typen)
     * **issuewild**: gebruik deze als u ca's wilt opgeven die certificaten mogen verlenen (alleen voor joker tekens)
@@ -76,7 +76,7 @@ Deze beperkingen komen voort uit de DNS-standaarden en zijn geen beperkingen van
 
 ### <a name="ns-records"></a>NS-records
 
-De NS-record die is ingesteld op de zone Apex\@(naam) wordt automatisch gemaakt bij elke DNS-zone en wordt automatisch verwijderd wanneer de zone wordt verwijderd (deze kan niet afzonderlijk worden verwijderd).
+De NS-record die is ingesteld op de zone Apex (naam\@) wordt automatisch gemaakt bij elke DNS-zone en wordt automatisch verwijderd wanneer de zone wordt verwijderd (deze kan niet afzonderlijk worden verwijderd).
 
 Deze recordset bevat de namen van de Azure DNS naam servers die zijn toegewezen aan de zone. U kunt aanvullende naam servers toevoegen aan deze NS-Recordset, ter ondersteuning van co-hosting domeinen met meer dan één DNS-provider. U kunt ook de TTL en meta gegevens voor deze recordset wijzigen. U kunt de vooraf ingevulde Azure DNS naam servers echter niet verwijderen of wijzigen. 
 
@@ -84,7 +84,7 @@ Dit geldt alleen voor de NS-recordset die is ingesteld op de zone Apex. Andere N
 
 ### <a name="soa-records"></a>SOA-records
 
-Er wordt automatisch een SOA-recordset gemaakt aan de Apex van elke zone (naam\@= ' ') en wordt automatisch verwijderd wanneer de zone wordt verwijderd.  SOA-records kunnen niet afzonderlijk worden gemaakt of verwijderd.
+Er wordt automatisch een SOA-recordset gemaakt aan de Apex van elke zone (naam = '\@') en wordt automatisch verwijderd wanneer de zone wordt verwijderd.  SOA-records kunnen niet afzonderlijk worden gemaakt of verwijderd.
 
 U kunt alle eigenschappen van de SOA-record wijzigen, met uitzonde ring van de eigenschap host, die vooraf is geconfigureerd om te verwijzen naar de naam van de primaire naam server die wordt opgegeven door Azure DNS.
 
@@ -98,7 +98,7 @@ Het serie nummer van de zone in de SOA-record wordt niet automatisch bijgewerkt 
 
 [SRV-records](https://en.wikipedia.org/wiki/SRV_record) worden door verschillende services gebruikt om server locaties op te geven. Bij het opgeven van een SRV-record in Azure DNS:
 
-* De *service* en het *protocol* moeten worden opgegeven als onderdeel van de naam van de recordset, voorafgegaan door onderstrepings tekens.  Bijvoorbeeld: '\_SIP.\_ tcp.name '.  Voor een record op de zone Apex is het niet nodig om in de record\@naam op te geven. u hoeft alleen de service en het protocol te gebruiken,\_bijvoorbeeld '\_ SIP '. TCP.
+* De *service* en het *protocol* moeten worden opgegeven als onderdeel van de naam van de recordset, voorafgegaan door onderstrepings tekens.  Bijvoorbeeld '\_SIP.\_tcp.name '.  Voor een record op de zone Apex is het niet nodig om '\@' op te geven in de record naam. gebruik gewoon de service en het Protocol, bijvoorbeeld '\_SIP.\_TCP.
 * De *prioriteit*, het *gewicht*, de *poort*en het *doel* worden opgegeven als para meters van elke record in de recordset.
 
 ### <a name="txt-records"></a>TXT-records
@@ -113,7 +113,7 @@ De meerdere teken reeksen in een DNS-record mogen niet worden verward met de mee
 
 ## <a name="tags-and-metadata"></a>Tags en meta gegevens
 
-### <a name="tags"></a>Labels
+### <a name="tags"></a>Tags
 
 Tags zijn een lijst met naam/waarde-paren en worden gebruikt door Azure Resource Manager om resources te labelen.  Azure Resource Manager maakt gebruik van tags om gefilterde weer gaven van uw Azure-factuur in te scha kelen. Daarnaast kunt u een beleid instellen waarvoor Tags zijn vereist. Zie [Tags gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/resource-group-using-tags.md) voor meer informatie over tags.
 
@@ -136,12 +136,12 @@ Op het niveau van de Azure DNS REST API worden eTags opgegeven met behulp van HT
 | Header | Gedrag |
 | --- | --- |
 | Geen |PUT altijd geslaagd (geen ETag-controles) |
-| Als-match \<-ETAG > |Alleen geslaagd als resource bestaat en ETAG overeenkomt |
+| If-match \<ETAG-> |Alleen geslaagd als resource bestaat en ETAG overeenkomt |
 | If-match * |Alleen geslaagd als de resource bestaat |
 | If-None-Match * |Alleen geslaagd als de resource niet bestaat |
 
 
-## <a name="limits"></a>Limieten
+## <a name="limits"></a>Beperkingen
 
 De volgende standaard limieten zijn van toepassing wanneer u Azure DNS gebruikt:
 

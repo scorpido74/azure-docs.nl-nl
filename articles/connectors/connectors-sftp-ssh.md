@@ -10,12 +10,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: a48ba0d2d691314a1ca7c91ac7ae27b62fbb379b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f52fc91d218e1a5448f6e6e7465f6416a04fd67d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825245"
+ms.locfileid: "73837138"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met SSH en Azure Logic Apps
 
@@ -49,7 +49,9 @@ Hier volgen andere belang rijke verschillen tussen de SFTP-SSH-connector en de S
 
 * Maakt gebruik van de [SSH.net-bibliotheek](https://github.com/sshnet/SSH.NET), een open-source SSH-bibliotheek (Secure Shell) die .net ondersteunt.
 
-* Met SFTP-SSH-acties kunnen standaard bestanden worden gelezen of geschreven die *1 GB of kleiner* zijn, maar slechts in *15 MB* segmenten tegelijk. Voor het verwerken van bestanden die groter zijn dan 15 MB, kunnen SFTP-SSH-acties gebruikmaken van [bericht Chunking](../logic-apps/logic-apps-handle-large-messages.md). Als u grote bestanden wilt uploaden, moet u ook lees-en schrijf machtigingen hebben. De actie bestand kopiëren ondersteunt echter slechts 15 MB aan bestanden omdat die actie geen ondersteuning biedt voor het segmenteren van berichten. SFTP-SSH-Triggers bieden geen ondersteuning voor segmentering.
+* Met SFTP-SSH-acties kunnen standaard bestanden worden gelezen of geschreven die *1 GB of kleiner* zijn, maar slechts in *15 MB* segmenten tegelijk.
+
+  Voor het verwerken van bestanden die groter zijn dan 15 MB, kunnen SFTP-SSH-acties gebruikmaken van [bericht Chunking](../logic-apps/logic-apps-handle-large-messages.md). De actie bestand kopiëren ondersteunt echter slechts 15 MB aan bestanden omdat die actie geen ondersteuning biedt voor het segmenteren van berichten. SFTP-SSH-Triggers bieden geen ondersteuning voor segmentering. Als u grote bestanden wilt uploaden, hebt u zowel lees-als schrijf machtigingen nodig voor de hoofdmap op uw SFTP-server.
 
 * Biedt de actie **map maken** , waarmee een map op het opgegeven pad op de sftp-server wordt gemaakt.
 
@@ -61,7 +63,7 @@ Hier volgen andere belang rijke verschillen tussen de SFTP-SSH-connector en de S
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Uw SFTP-server adres en account referenties, waarmee uw logische app toegang kan krijgen tot uw SFTP-account. U hebt ook toegang nodig tot een persoonlijke SSH-sleutel en het wacht woord voor de persoonlijke SSH-sleutel. Als u Chunking wilt gebruiken bij het uploaden van grote bestanden, hebt u lees-en schrijf machtigingen nodig.
+* Uw SFTP-server adres en account referenties, waarmee uw logische app toegang kan krijgen tot uw SFTP-account. U hebt ook toegang nodig tot een persoonlijke SSH-sleutel en het wacht woord voor de persoonlijke SSH-sleutel. Als u Chunking wilt gebruiken bij het uploaden van grote bestanden, hebt u lees-en schrijf machtigingen nodig voor de hoofdmap van de SFTP-server. Anders krijgt u de fout melding ' 401 niet toegestaan '.
 
   > [!IMPORTANT]
   >

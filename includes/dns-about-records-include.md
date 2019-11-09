@@ -4,28 +4,28 @@ ms.service: dns
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
-ms.openlocfilehash: f7fa018225d82e2db4a3c51b333aea6fcb9a1514
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 261ae22348cd82b129727261c619727917e19c96
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176665"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832062"
 ---
 ### <a name="record-names"></a>Recordnamen
 
-In Azure DNS worden records opgegeven met behulp van relatieve namen. Een FQDN-domeinnaam (*Fully Qualified Domain Name*) bevat de zonenaam, terwijl een *relatieve* naam deze niet bevat. De relatieve recordnaam 'www' in de zone 'contoso.com' geeft bijvoorbeeld de volledig gekwalificeerde naam van de record 'www.contoso.com'.
+In Azure DNS worden records opgegeven met behulp van relatieve namen. Een FQDN-domeinnaam (*Fully Qualified Domain Name*) bevat de zonenaam, terwijl een *relatieve* naam deze niet bevat. Bijvoorbeeld, de relatieve record naam `www` in de zone `contoso.com` geeft de volledig gekwalificeerde record naam `www.contoso.com`.
 
-Een *apexrecord* is een DNS-record in de hoofdmap (of *apex*) van een DNS-zone. Een apexrecord heeft in de DNS-zone 'contoso.com' bijvoorbeeld ook de volledig gekwalificeerde naam 'contoso.com' (dit wordt soms een domein *zonder voorvoegsel* genoemd).  Volgens de conventies wordt de relatieve naam '\@' wordt gebruikt om apexrecords te representeren.
+Een *apexrecord* is een DNS-record in de hoofdmap (of *apex*) van een DNS-zone. Zo bevat een Apex-record in de DNS-zone `contoso.com`ook de volledig gekwalificeerde naam `contoso.com` (dit wordt ook wel een *Blot* -domein genoemd).  Volgens de conventies wordt de relatieve naam\@gebruikt om Apex-records weer te geven.
 
 ### <a name="record-types"></a>Recordtypen
 
 Elke DNS-record heeft een naam en een type. Records zijn ingedeeld in verschillende typen overeenkomstig de gegevens die ze bevatten. Het meest voorkomende type is een A-record, waarmee een naam aan een IPv4-adres wordt toegewezen. Een ander algemeen type is een MX-record, waarmee een naam aan een e-mailserver wordt toegewezen.
 
-Azure DNS ondersteunt alle algemene DNS-recordtypen: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV en TXT. Houd er rekening mee dat [SPF-records worden gerepresenteerd door TXT-records](../articles/dns/dns-zones-records.md#spf-records).
+Azure DNS ondersteunt alle algemene DNS-record typen: A, AAAA, CAA, CNAME,, NS, PTR, SOA, SRV en TXT. Houd er rekening mee dat [SPF-records worden gerepresenteerd door TXT-records](../articles/dns/dns-zones-records.md#spf-records).
 
 ### <a name="record-sets"></a>Recordsets
 
-Soms moet u meer dan één DNS-record maken met een bepaalde naam en een bepaald type. Stel bijvoorbeeld dat de website 'www.contoso.com' wordt gehost op twee verschillende IP-adressen. De website vereist twee verschillende A-records, één voor elk IP-adres. Dit is een voorbeeld van een recordset:
+Soms moet u meer dan één DNS-record maken met een bepaalde naam en een bepaald type. Stel bijvoorbeeld dat de website www.contoso.com wordt gehost op twee verschillende IP-adressen. De website vereist twee verschillende A-records, één voor elk IP-adres. Dit is een voorbeeld van een recordset:
 
     www.contoso.com.        3600    IN    A    134.170.185.46
     www.contoso.com.        3600    IN    A    134.170.188.221

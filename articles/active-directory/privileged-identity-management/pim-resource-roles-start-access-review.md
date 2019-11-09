@@ -1,26 +1,26 @@
 ---
-title: Een toegangs beoordeling van Azure-resource rollen maken in Privileged Identity Management-Azure Active Directory | Microsoft Docs
+title: Een toegangs beoordeling van Azure-resource rollen maken in PIM-Azure AD | Microsoft Docs
 description: Meer informatie over het maken van een toegangs beoordeling van Azure-resource rollen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56ccab2162a8f0ea9405d834e3f25558d8236b52
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ae70b8386b1dc3ebd570d2651cded3eda75dfc53
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895415"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847078"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Een toegangs beoordeling van Azure-resource rollen maken in Privileged Identity Management
 

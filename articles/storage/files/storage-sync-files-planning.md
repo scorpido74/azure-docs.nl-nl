@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e1f7aeb5615c1a22c1970f118c24c996ac936870
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3c70d2086fc5866b07c31966343397f8ccc809be
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826826"
+ms.locfileid: "73846736"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -169,7 +169,7 @@ Houd er rekening mee dat de besparing van volumes alleen van toepassing is op de
 > Gegevensontdubbeling en Cloud lagen worden momenteel niet ondersteund op hetzelfde volume op server 2019 vanwege een fout die wordt opgelost in een toekomstige update.
 
 **Windows Server 2012 R2**  
-Azure File Sync biedt geen ondersteuning voor Gegevensontdubbeling en Cloud lagen op hetzelfde volume. Als Gegevensontdubbeling op een volume is ingeschakeld, moet Cloud lagen worden uitgeschakeld. 
+Azure File Sync biedt geen ondersteuning voor Gegevensontdubbeling en Cloud lagen op hetzelfde volume op Windows Server 2012 R2. Als Gegevensontdubbeling op een volume is ingeschakeld, moet Cloud lagen worden uitgeschakeld. 
 
 **Opmerkingen**
 - Als Gegevensontdubbeling is geïnstalleerd voordat de Azure File Sync-agent wordt geïnstalleerd, moet opnieuw opstarten zijn vereist voor de ondersteuning van Gegevensontdubbeling en Cloud lagen op hetzelfde volume.
@@ -244,7 +244,7 @@ Over het algemeen moet Azure File Sync interoperabiliteit ondersteunen met versl
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Andere HSM-oplossingen (hiërarchische opslag beheer)
 Er mogen geen andere HSM-oplossingen worden gebruikt met Azure File Sync.
 
-## <a name="region-availability"></a>Beschikbaarheid in regio’s
+## <a name="region-availability"></a>Regionale beschikbaarheid
 Azure File Sync is alleen beschikbaar in de volgende regio's:
 
 | Regio | Locatie van Data Center |
@@ -252,36 +252,36 @@ Azure File Sync is alleen beschikbaar in de volgende regio's:
 | Australië - oost | New South Wales |
 | Australië - zuidoost | Victoria |
 | Brazilië - zuid | Sao Paulo (staat) |
-| Canada - midden | Toronto |
-| Canada - oost | Quebec |
+| Canada - centraal | Toronto |
+| Canada-Oost | Quebec |
 | India - centraal | Pune |
 | US - centraal | Iowa |
 | Azië - oost | Hong Kong SAR |
-| US - oost | Virginia |
+| VS - oost | Virginia |
 | VS - oost2 | Virginia |
 | Frankrijk - centraal | Parijs |
 | Frankrijk-zuid * | Marseille |
 | Korea - centraal | Seoul |
 | Korea - zuid | Busan |
-| Japan - oost | Tokyo, Saitama |
+| Japan - Oost | Tokyo, Saitama |
 | Japan - west | Osaka |
-| US - noord-centraal | Illinois |
+| VS - noord-centraal | Illinois |
 | Europa - noord | Ierland |
 | Zuid-Afrika - noord | Johannesburg |
 | Zuid-Afrika-west * | Kaapstad |
-| US - zuid-centraal | Texas |
+| VS - zuid-centraal | Texas |
 | India - zuid | Chennai |
 | Azië - zuidoost | Singapore |
-| Verenigd Koninkrijk Zuid | Londen |
-| Verenigd Koninkrijk West | Cardiff |
+| VK - zuid | Londen |
+| VK - west | Cardiff |
 | VS (overheid) - Arizona | Arizona |
 | VS (overheid) - Texas | Texas |
 | VS (overheid) - Virginia | Virginia |
 | VAE - noord | Dubai |
 | UAE-centraal * | Abu Dhabi |
-| Europa -west | Nederland |
-| US - west-centraal | Wyoming |
-| US - west | Californië |
+| Europa - west | Nederland |
+| VS - west-centraal | Wyoming |
+| VS - west | Californië |
 | US - west 2 | Washington |
 
 Azure File Sync ondersteunt alleen synchronisatie met een Azure-bestands share die zich in dezelfde regio bevinden als de opslag synchronisatie service.
@@ -300,36 +300,36 @@ Ter ondersteuning van de failover-integratie tussen geo-redundante opslag en Azu
 |---------------------|--------------------|
 | Australië - oost      | Australië - zuidoost|
 | Australië - zuidoost | Australië - oost     |
-| Brazilië - zuid        | US - zuid-centraal   |
-| Canada - midden      | Canada - oost        |
-| Canada - oost         | Canada - midden     |
+| Brazilië - zuid        | VS - zuid-centraal   |
+| Canada - centraal      | Canada-Oost        |
+| Canada-Oost         | Canada - centraal     |
 | India - centraal       | India - zuid        |
-| US - centraal          | US - oost 2          |
+| US - centraal          | VS - oost 2          |
 | Azië - oost           | Azië - zuidoost     |
-| US - oost             | US - west            |
-| US - oost 2           | US - centraal         |
+| VS - oost             | VS - west            |
+| VS - oost 2           | US - centraal         |
 | Frankrijk - centraal      | Frankrijk - zuid       |
 | Frankrijk - zuid        | Frankrijk - centraal     |
-| Japan - oost          | Japan - west         |
-| Japan - west          | Japan - oost         |
+| Japan - Oost          | Japan - west         |
+| Japan - west          | Japan - Oost         |
 | Korea - centraal       | Korea - zuid        |
 | Korea - zuid         | Korea - centraal      |
-| Europa - noord        | Europa -west        |
-| US - noord-centraal    | US - zuid-centraal   |
+| Europa - noord        | Europa - west        |
+| VS - noord-centraal    | VS - zuid-centraal   |
 | Zuid-Afrika - noord  | Zuid-Afrika - west  |
 | Zuid-Afrika - west   | Zuid-Afrika - noord |
-| US - zuid-centraal    | US - noord-centraal   |
+| VS - zuid-centraal    | VS - noord-centraal   |
 | India - zuid         | India - centraal      |
 | Azië - zuidoost      | Azië - oost          |
-| Verenigd Koninkrijk Zuid            | Verenigd Koninkrijk West            |
-| Verenigd Koninkrijk West             | Verenigd Koninkrijk Zuid           |
+| VK - zuid            | VK - west            |
+| VK - west             | VK - zuid           |
 | VS (overheid) - Arizona      | VS (overheid) - Texas       |
 | US Gov - Iowa         | VS (overheid) - Virginia    |
 | VS (overheid) - Virginia      | VS (overheid) - Texas       |
-| Europa -west         | Europa - noord       |
-| US - west-centraal     | US - west 2          |
-| US - west             | US - oost            |
-| US - west 2           | US - west-centraal    |
+| Europa - west         | Europa - noord       |
+| VS - west-centraal     | US - west 2          |
+| VS - west             | VS - oost            |
+| US - west 2           | VS - west-centraal    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Updatebeleid Azure File Sync-agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

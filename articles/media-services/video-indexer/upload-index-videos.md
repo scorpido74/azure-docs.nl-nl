@@ -1,6 +1,6 @@
 ---
 title: Video's uploaden en indexeren met Video Indexer
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: In dit onderwerp ziet u hoe u API's gebruikt om uw video's te uploaden en indexeren met Video Indexer.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
-ms.openlocfilehash: d6338f3840b6f8afe21f8115304ba00bba90c6ea
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 255c98965026266348a66bb98a1741eaf04a1d38
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372380"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839142"
 ---
 # <a name="upload-and-index-your-videos"></a>Uw video's uploaden en indexeren  
 
@@ -37,7 +37,7 @@ Als uw video eenmaal is geüpload, wordt de video eventueel door Video Indexer g
 - De lengte van de aanvraag-URL is beperkt tot 6144 tekens waarbij de lengte van de URL van de query teken reeks is beperkt tot 4096 tekens.
 - De upload grootte met de byte matrix optie is beperkt tot 2 GB.
 - De byte matrix optie verkeert na 30 minuten.
-- De URL die is opgenomen in de para meter `videoURL` moet worden gecodeerd.
+- De URL die is opgenomen in de `videoURL` para meter moet worden gecodeerd.
 - Het indexeren van Media Services assets heeft dezelfde beperking als het indexeren van een URL.
 - Video Indexer heeft een maximale duur limiet van vier uur voor één bestand.
 
@@ -65,7 +65,7 @@ Een URL die wordt gebruikt om de klant (met een POST-aanvraag) op de hoogte te s
         |---|---|
         |id|De video-ID|
         |state|De videostatus|  
-    - Voor beeld: https: \//test. com/notifyme? projectName = MyProject & id = 1234abcd & State = verwerkt
+    - Voor beeld: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - Personen geïdentificeerd in de video:
   - Eigenschappen
     
@@ -76,7 +76,7 @@ Een URL die wordt gebruikt om de klant (met een POST-aanvraag) op de hoogte te s
       |knownPersonId|De persoons-id die uniek is in een gezichtsmodel|
       |personName|De naam van de persoon|
         
-    - Voor beeld: https: \//test. com/notifyme? projectName = MyProject & id = 1234abcd & FaceId = 12 & knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5 & persoonnaam = Inigo_Montoya 
+    - Voor beeld: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>Opmerkingen
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: afbf77014ece981568d4123db7820a2fa0a8f60d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.openlocfilehash: e1b513344b6ea16c25d829939e64cd5ca1063c87
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749106"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838893"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuele machines in een Azure Resource Manager sjabloon
 
@@ -282,7 +282,7 @@ Als u deze eigenschap wilt instellen, moet de netwerk interface aanwezig zijn. D
 Er worden verschillende profiel elementen gebruikt bij het definiëren van een virtuele-machine bron. Sommige zijn vereist en sommige zijn optioneel. De elementen hardwareProfile, osProfile, storageProfile en networkProfile zijn bijvoorbeeld vereist, maar de diagnosticsProfile is optioneel. Deze profielen definiëren instellingen zoals:
    
 - [size](sizes.md)
-- [naam](/azure/architecture/best-practices/naming-conventions) en referenties
+- [naam](/azure/architecture/best-practices/resource-naming) en referenties
 - instellingen voor schijf en [besturings systeem](cli-ps-findimage.md)
 - [netwerk interface](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - Diagnostische gegevens over opstarten

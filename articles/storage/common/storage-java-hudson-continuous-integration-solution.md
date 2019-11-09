@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 10bfc3ce4666ee1653110099a3c8d22a58d80f35
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 75b0ea106be04cd77b18bfed8487edb6a7b7f65b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985305"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839190"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Azure Storage gebruiken met een Hudson CI-oplossing
 ## <a name="overview"></a>Overzicht
@@ -48,11 +48,11 @@ U hebt het volgende nodig om de Blob service te gebruiken met uw Hudson CI-oplos
       `java -jar hudson-3.1.2.war`
 
   3. Open `http://localhost:8080/`in uw browser. Hiermee wordt het Hudson-dash board geopend.
-  4. Bij het eerste gebruik van Hudson voltooit u de eerste `http://localhost:8080/`installatie op.
-  5. Nadat u de eerste Setup hebt voltooid, annuleert u het actieve exemplaar van de Hudson War, start u de Hudson oorlog opnieuw en opent u het `http://localhost:8080/`Hudson-dash board opnieuw, dat u gebruikt voor het installeren en configureren van de Azure Storage-invoeg toepassing.
+  4. Bij het eerste gebruik van Hudson voert u de eerste installatie uit op `http://localhost:8080/`.
+  5. Nadat u de eerste Setup hebt voltooid, annuleert u het actieve exemplaar van de Hudson WAR, start u de Hudson oorlog opnieuw en opent u het Hudson-dash board `http://localhost:8080/`, dat u gebruikt om de Azure Storage-invoeg toepassing te installeren en te configureren.
      
       Hoewel een typische Hudson CI-oplossing zo is ingesteld dat deze als een service wordt uitgevoerd, is het uitvoeren van de Hudson War op de opdracht regel voldoende voor deze zelf studie.
-* Een Azure-account. U kunt zich registreren voor een Azure-account <https://www.azure.com>op.
+* Een Azure-account. U kunt zich op <https://www.azure.com>registreren voor een Azure-account.
 * Een Azure Storage-account. Als u nog geen opslag account hebt, kunt u er een maken met behulp van de stappen in [een opslag account maken](../common/storage-quickstart-create-account.md).
 * De vertrouwdheid van de Hudson CI-oplossing wordt aanbevolen, maar is niet vereist, omdat de volgende inhoud een basis voorbeeld gebruikt om u te laten zien welke stappen nodig zijn bij het gebruik van de Blob service als opslag plaats voor Hudson CI-build-artefacten.
 
@@ -65,7 +65,7 @@ Als u de Blob service wilt gebruiken met Hudson, moet u de Azure Storage-invoeg 
 3. Klik op het tabblad **beschikbaar** .
 4. Klik op **anderen**.
 5. Selecteer **Microsoft Azure Storage-invoeg toepassing**in de sectie **artefacten uploaden** .
-6. Klik op **Install**.
+6. Klik op **Installeren**.
 7. Nadat de installatie is voltooid, start u Hudson opnieuw.
 
 ## <a name="how-to-configure-the-azure-storage-plugin-to-use-your-storage-account"></a>De Azure Storage-invoeg toepassing configureren voor het gebruik van uw opslag account
@@ -103,20 +103,20 @@ Voor instructie doeleinden moet eerst een taak worden gemaakt waarmee meerdere b
 
 5. Klik in de sectie **acties na het maken** van de taak configuratie op **artefacten uploaden om de Blob-opslag te Microsoft Azure**.
 6. Selecteer bij **naam van opslag account**het opslag account dat u wilt gebruiken.
-7. Geef voor **container name**de naam van de container op. (De container wordt gemaakt als deze nog niet bestaat wanneer de build-artefacten worden geüpload.) U kunt omgevings variabelen gebruiken. in dit voor beeld wordt **$ {JOB_NAME}** als container naam ingevoerd.
+7. Geef voor **container name**de naam van de container op. (De container wordt gemaakt als deze nog niet bestaat wanneer de build-artefacten worden geüpload.) U kunt omgevings variabelen gebruiken. voor dit voor beeld voert u **$ {JOB_NAME}** als container naam in.
    
     **Tip**
    
     Onder de **opdracht** sectie waar u een script voor de **opdracht Windows Batch uitvoeren** hebt opgegeven, is een koppeling naar de omgevings variabelen die worden herkend door Hudson. Klik op deze koppeling voor meer informatie over de namen en beschrijvingen van omgevings variabelen. Omgevings variabelen die speciale tekens bevatten, zoals de omgevings variabele **BUILD_URL** , zijn niet toegestaan als container naam of algemeen virtueel pad.
 8. Klik op **nieuwe container standaard openbaar maken** voor dit voor beeld. (Als u een persoonlijke container wilt gebruiken, moet u een hand tekening voor gedeelde toegang maken om toegang toe te staan. Dit valt buiten het bereik van dit artikel. Meer informatie over gedeelde toegangs handtekeningen kunt u vinden [met behulp van Shared Access signatures (SAS)](storage-sas-overview.md).)
-9. Beschrijving Klik op **container opschonen voordat** u deze uploadt als u wilt dat de container wordt gewist voordat er artefacten worden geüpload (laat dit selectie vakje uitgeschakeld als u de inhoud van de container niet wilt opschonen).
+9. Beschrijving Klik op **container opschonen voordat u deze uploadt** als u wilt dat de container wordt gewist voordat er artefacten worden geüpload (laat dit selectie vakje uitgeschakeld als u de inhoud van de container niet wilt opschonen).
 10. Voer **tekst/*. txt**in **Als u een lijst met artefacten wilt uploaden**.
-11. Voor het **algemene virtuele pad voor geüploade artefacten**typt u **$\_{build id}/$\_{Build Number}** .
+11. Voor het **algemene virtuele pad voor geüploade artefacten**typt u **$ {Build\_id}/$ {build\_Number}** .
 12. Klik op **Opslaan** om uw instellingen op te slaan.
 13. Klik in het Hudson-dash board op **nu bouwen** om **MyJob**uit te voeren. Bekijk de console-uitvoer voor status. Status berichten voor Azure Storage worden opgenomen in de console-uitvoer wanneer de actie na het maken van het bouwen van build-artefacten wordt gestart.
 14. Wanneer de taak is voltooid, kunt u de constructie artefacten bekijken door de open bare BLOB te openen.
     
-    a. Meld u aan bij [Azure Portal](https://portal.azure.com).
+    a. Meld u aan bij de [Azure Portal](https://portal.azure.com).
     
     b. Klik op **opslag**.
     
@@ -126,7 +126,7 @@ Voor instructie doeleinden moet eerst een taak worden gemaakt waarmee meerdere b
     
     e. Klik op de container met de naam **MyJob**. Dit is de kleine versie van de naam van de taak die u hebt toegewezen tijdens het maken van de Hudson-taak. Namen van containers en blobs zijn kleine letters (en hoofdletter gevoelig) in Azure Storage. In de lijst met blobs voor de container met de naam **MyJob** moet **Hello. txt** en **date. txt**worden weer geven. Kopieer de URL voor een van deze items en open deze in uw browser. Het tekst bestand dat is geüpload als een build-artefact, wordt weer geven.
 
-Er kan slechts één actie na het bouwen worden gemaakt waarmee artefacten naar Azure Blob-opslag kunnen worden geüpload per taak. De enkelvoudige actie na het maken van het uploaden van artefacten naar Azure Blob-opslag kan verschillende bestanden (inclusief joker tekens) en paden naar bestanden in een **lijst met artefacten opgeven die** met een punt komma als scheidings teken moeten worden geüpload. Als uw Hudson-Build bijvoorbeeld jar-bestanden en txt-bestanden in de map **Build** van uw werk ruimte produceert en u wilt uploaden naar Azure Blob Storage, gebruikt u het volgende voor de **lijst met artefacten voor het uploaden van** de waarde: **Build/\*. jar; Build/\*. txt**. U kunt ook de syntaxis met een dubbel punt gebruiken om een pad op te geven dat u wilt gebruiken in de naam van de blob. Als u bijvoorbeeld wilt dat de potten worden geüpload met behulp van **binaire bestanden** in het BLOB-pad en de txt-bestanden om te worden geüpload met behulp van **meldingen** in het BLOB-pad, gebruikt u het volgende voor de **lijst met artefacten voor het uploaden van** de waarde: **Build/\*. jar: : binaire bestanden; build\*/. txt:: kennisgevingen**.
+Er kan slechts één actie na het bouwen worden gemaakt waarmee artefacten naar Azure Blob-opslag kunnen worden geüpload per taak. De enkelvoudige actie na het maken van het uploaden van artefacten naar Azure Blob-opslag kan verschillende bestanden (inclusief joker tekens) en paden naar bestanden in een **lijst met artefacten opgeven die** met een punt komma als scheidings teken moeten worden geüpload. Als uw Hudson-Build bijvoorbeeld JAR-bestanden en TXT-bestanden in de map **Build** van uw werk ruimte produceert en u wilt uploaden naar Azure Blob Storage, gebruikt u het volgende voor de **lijst met artefacten voor het uploaden van** de waarde: **Build/\*. jar; build/\*. txt**. U kunt ook de syntaxis met een dubbel punt gebruiken om een pad op te geven dat u wilt gebruiken in de naam van de blob. Als u bijvoorbeeld wilt dat de potten worden geüpload met behulp van **binaire bestanden** in het BLOB-pad en de txt-bestanden om te worden geüpload met behulp van **meldingen** in het BLOB-pad, gebruikt u het volgende voor de **lijst met artefacten voor het uploaden van** de waarde: **Build/\*. jar:: binaire bestanden; build/\*. txt:: aankondigingen**.
 
 ## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Een build-stap maken die wordt gedownload vanuit Azure Blob-opslag
 De volgende stappen laten zien hoe u een build-stap configureert voor het downloaden van items uit Azure Blob-opslag. Dit is handig als u items wilt opnemen in uw build, bijvoorbeeld potten die u in Azure Blob-opslag wilt bewaren.
@@ -134,7 +134,7 @@ De volgende stappen laten zien hoe u een build-stap configureert voor het downlo
 1. Klik in de sectie **Build** van de taak configuratie op **Build-stap toevoegen** en kies **downloaden vanuit Azure Blob-opslag**.
 2. Selecteer bij **naam van opslag account**het opslag account dat u wilt gebruiken.
 3. Geef bij **container naam**de naam op van de container met de blobs die u wilt downloaden. U kunt omgevings variabelen gebruiken.
-4. Geefde naam van de BLOB op voor de blobnaam. U kunt omgevings variabelen gebruiken. U kunt ook een asterisk gebruiken als Joker teken nadat u de eerste letter (s) van de naam van de BLOB hebt opgegeven. **Project\\** * geeft bijvoorbeeld alle blobs aan waarvan de naam begint met **project**.
+4. Geef de naam van de BLOB op voor de **blobnaam**. U kunt omgevings variabelen gebruiken. U kunt ook een asterisk gebruiken als Joker teken nadat u de eerste letter (s) van de naam van de BLOB hebt opgegeven. **Project\\** * geeft bijvoorbeeld alle blobs aan waarvan de namen beginnen met **project**.
 5. Beschrijving Voor het **downloadmap**geeft u het pad op de Hudson-computer op waar u bestanden wilt downloaden van Azure Blob-opslag. Omgevings variabelen kunnen ook worden gebruikt. (Als u geen waarde opgeeft voor het **Download traject**, worden de bestanden van Azure Blob-opslag gedownload naar de werk ruimte van de taak.)
 
 Als er extra items zijn die u wilt downloaden vanuit Azure Blob-opslag, kunt u aanvullende build-stappen maken.
@@ -144,23 +144,23 @@ Nadat u een build hebt uitgevoerd, kunt u de uitvoer van de console build-geschi
 ## <a name="components-used-by-the-blob-service"></a>Onderdelen die worden gebruikt door de Blob service
 Hieronder vindt u een overzicht van de Blob service-onderdelen.
 
-* **Opslagaccount**: Alle toegang tot Azure Storage wordt uitgevoerd via een opslag account. Dit is het hoogste niveau van de naam ruimte voor toegang tot blobs. Een account kan een onbeperkt aantal containers bevatten, zolang de totale grootte minder is dan 100 TB.
-* **Container**: Een container biedt een groepering van een set blobs. Alle blobs moeten zich in een container bevinden. Een account kan een onbeperkt aantal containers bevatten. Een container kan een onbeperkt aantal blobs bevatten.
-* **BLOB**: Een bestand van elk type en elke grootte. Er zijn twee typen blobs die kunnen worden opgeslagen in Azure Storage: blok-en pagina-blobs. De meeste bestanden zijn blok-blobs. Eén blok-Blob kan Maxi maal 200 GB groot zijn. In deze zelf studie wordt gebruikgemaakt van blok-blobs. Pagina-blobs, een ander BLOB-type, kunnen Maxi maal 1 TB groot zijn, en zijn efficiënter wanneer een bereik van de bytes in een bestand regel matig wordt gewijzigd. Zie voor meer informatie over blobs ' [blok-blobs, toevoeg-blobs en pagina](https://msdn.microsoft.com/library/azure/ee691964.aspx)-blobs '.
-* **URL-indeling**: Blobs zijn adresseerbaar met behulp van de volgende URL-indeling:
+* **Opslag account**: alle toegang tot Azure Storage wordt uitgevoerd via een opslag account. Dit is het hoogste niveau van de naam ruimte voor toegang tot blobs. Een account kan een onbeperkt aantal containers bevatten, zolang de totale grootte minder is dan 100 TB.
+* **Container**: een container bevat een groepering van een set blobs. Alle blobs moeten zich in een container bevinden. Een account kan een onbeperkt aantal containers bevatten. Een container kan een onbeperkt aantal blobs bevatten.
+* **BLOB**: een bestand van elk type en elke grootte. Er zijn twee typen blobs die kunnen worden opgeslagen in Azure Storage: blok-en pagina-blobs. De meeste bestanden zijn blok-blobs. Eén blok-Blob kan Maxi maal 200 GB groot zijn. In deze zelf studie wordt gebruikgemaakt van blok-blobs. Pagina-blobs, een ander BLOB-type, kunnen Maxi maal 1 TB groot zijn, en zijn efficiënter wanneer een bereik van de bytes in een bestand regel matig wordt gewijzigd. Zie voor meer informatie over blobs ' [blok-blobs, toevoeg-blobs en pagina-blobs](https://msdn.microsoft.com/library/azure/ee691964.aspx)'.
+* **URL-indeling**: blobs zijn adresseerbaar met behulp van de volgende URL-indeling:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
     (De bovenstaande notatie is van toepassing op de wereld wijde Azure-Cloud. Als u een andere Azure-Cloud gebruikt, gebruikt u het eind punt binnen de [Azure Portal](https://portal.azure.com) om het URL-eind punt te bepalen.)
   
-    In de bovenstaande `storageaccount` notatie vertegenwoordigt de naam van uw opslag account, `container_name` de naam van uw container en `blob_name` de naam van uw blob. Binnen de naam van de container kunt u meerdere paden hebben, gescheiden door een slash **/** . De voor beeld-container naam in deze zelf studie is **MyJob**, en **\_$ {build-id}/$ {buildnummer\_}** is gebruikt voor het algemene virtuele pad, wat resulteert in de blob met een URL van de volgende vorm:
+    In de bovenstaande notatie geeft `storageaccount` de naam van uw opslag account, `container_name` de naam van de container en `blob_name` de naam van uw BLOB vertegenwoordigt. In de naam van de container kunt u meerdere paden hebben, gescheiden door een slash, **/** . De voorbeeld container naam in deze zelf studie is **MyJob**, en **$ {Build\_id}/$ {build\_Number}** is gebruikt voor het algemene virtuele pad, wat resulteert in de blob met een URL van de volgende vorm:
   
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Voldoen aan Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Azure Storage SDK voor Java](https://github.com/azure/azure-storage-java)
-* [Azure Storage Client SDK-referentie](http://dl.windowsazure.com/storage/javadoc/)
+* [Azure Storage Client SDK-referentie](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [REST-API voor Azure Storage-services](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Blog van het Azure Storage-team](https://blogs.msdn.com/b/windowsazurestorage/)
 

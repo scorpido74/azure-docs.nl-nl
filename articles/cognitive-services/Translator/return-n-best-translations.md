@@ -1,7 +1,7 @@
 ---
-title: N-beste vertalingen retour neren-Translator Text-API
+title: N-beste vertalingen retour neren-Translator Text
 titleSuffix: Azure Cognitive Services
-description: N-beste vertalingen retour neren met behulp van de micro soft-Translator Text-API.
+description: N-beste vertalingen retour neren met behulp van de Translator Text-API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,13 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 7aec6bb81f3ca99ead744767668c2e4f1d1d4d53
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ROBOTS: NOINDEX
+ms.openlocfilehash: eff25877165ac365e0af77651147fcdd1eebe294
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594881"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837244"
 ---
 # <a name="how-to-return-n-best-translations"></a>N-beste vertalingen retour neren
 
@@ -35,22 +36,22 @@ De hand tekening is:
 
 **Parameters**
 
-| Parameter | Description |
+| Parameter | Beschrijving |
 |:---|:---|
 | appId | **Vereist** Als de autorisatie-header wordt gebruikt, laat u het veld AppID leeg een teken reeks opgeven met ' Bearer ' + ' "+ toegangs token.|
-| text | **Vereist** Een teken reeks voor de tekst die moet worden vertaald. De tekst mag niet langer zijn dan 10000 tekens.|
-| from | **Vereist** Een teken reeks die de taal code vertegenwoordigt van de tekst die moet worden vertaald. |
-| to | **Vereist** Een teken reeks die de taal code vertegenwoordigt voor het vertalen van de tekst in. |
+| tekst | **Vereist** Een teken reeks voor de tekst die moet worden vertaald. De tekst mag niet langer zijn dan 10000 tekens.|
+| Van | **Vereist** Een teken reeks die de taal code vertegenwoordigt van de tekst die moet worden vertaald. |
+| tot | **Vereist** Een teken reeks die de taal code vertegenwoordigt voor het vertalen van de tekst in. |
 | maxTranslations | **Vereist** Een geheel getal dat het maximum aantal vertalingen vertegenwoordigt dat moet worden geretourneerd. |
-| opties | **Optioneel** Een TranslateOptions-object met daarin de waarden die hieronder worden weer gegeven. Ze zijn allemaal optioneel en standaard ingesteld op de meest voorkomende instellingen.
+| Opties | **Optioneel** Een TranslateOptions-object met daarin de waarden die hieronder worden weer gegeven. Ze zijn allemaal optioneel en standaard ingesteld op de meest voorkomende instellingen.
 
-* Rubriek De enige ondersteunde en standaard optie is ' Algemeen '.
-* ContentType: De enige ondersteunde en standaard optie is ' text/plain '.
-* Status: Gebruikers status voor het correleren van aanvragen en antwoorden. Dezelfde inhoud wordt in het antwoord geretourneerd.
+* Categorie: de enige ondersteunde en standaard optie is "algemeen".
+* Content type: de enige ondersteunde en standaard optie is ' text/plain '.
+* Status: gebruikers status voor het correleren van aanvragen en antwoorden. Dezelfde inhoud wordt in het antwoord geretourneerd.
 * IncludeMultipleMTAlternatives: vlag om te bepalen of er meer dan één alternatief moet worden geretourneerd van de MT-engine. De standaard waarde is False en bevat slechts één alternatief.
 
 ## <a name="ratings"></a>Inhoudrestricties
-De classificaties worden als volgt toegepast: De beste automatische vertaling heeft de classificatie 5.
+De classificaties worden als volgt toegepast: de beste automatische vertaling heeft de classificatie 5.
 De automatisch gegenereerde alternatieven voor vertaling (N-best) hebben een classificatie van 0 en hebben een afstemmings graad van 100.
 
 ## <a name="number-of-alternatives"></a>Aantal alternatieven

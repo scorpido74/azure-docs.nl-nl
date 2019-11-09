@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 2962f6c5032ba317f9eb8f10c2abddb566aad904
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2edc644f003af2b33054a5cbdbaee81c9baa38cd
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825506"
+ms.locfileid: "73847455"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Uw commerciële Marketplace-account beheren in het partner centrum 
 
@@ -145,6 +145,11 @@ Rapportage wordt uitgevoerd door de partner waarde (micro soft-partner-ID) en de
 Zie [Veelgestelde vragen over het bijhouden van Azure-klanten met guid's](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq)voor meer informatie.
 
 
+## <a name="establish-a-billing-profile"></a>Een facturerings profiel maken
+
+Als u een [Dynamics 365 voor klant betrokkenheid publiceert & Power apps](./create-new-customer-engagement-offer.md) of [Dynamics 365 for Operations](./create-new-operations-offer.md) -aanbieding, moet u uw **facturerings profiel**volt ooien.
+
+Het factuur adres is vooraf ingevuld op basis van uw MPN-ID en u kunt dit adres later bijwerken. De velden BTW-ID en BTW-nummer zijn optioneel.  De land naam en bedrijfs naam kunnen niet worden bewerkt.
 
 ## <a name="multi-user-account-management"></a>Beheer van meerdere gebruikers accounts
 

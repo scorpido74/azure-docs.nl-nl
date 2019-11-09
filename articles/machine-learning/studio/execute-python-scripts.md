@@ -1,5 +1,6 @@
 ---
 title: Python-scripts uitvoeren
+titleSuffix: ML Studio (classic) - Azure
 description: Meer informatie over het gebruik van de script module python uitvoeren voor het gebruik van python-code in Machine Learning Studio (klassiek) experimenten en webservices.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: dea8fd7971f0572350306ea11ee1f9d897438d11
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6079f904002f00a39d3ee9d70dedd9d261e2825f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684876"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837630"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python machine learning scripts uitvoeren in Azure Machine Learning Studio (klassiek)
 
@@ -132,7 +133,7 @@ Als u installatie kopieën van MatplotLib wilt genereren, moet u de volgende sta
 1. De as ophalen en alle uitstaande grafieken genereren.
 1. Sla de afbeelding op in een PNG-bestand.
 
-Dit proces wordt geïllustreerd in de volgende installatie kopieën die een spreidings plot matrix maken met behulp van de functie scatter_matrix in Pandas.
+Dit proces wordt geïllustreerd in de volgende afbeeldingen die een spreidings plot matrix maken met behulp van de functie scatter_matrix in Pandas.
 
 ![Code voor het opslaan van MatplotLib-cijfers in afbeeldingen](./media/execute-python-scripts/figure-v1-8.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Maken van Azure Service Bus-onderwerp-abonnement en regel met behulp van Azure Resource Manager-sjabloon | Microsoft Docs
-description: Een Service Bus-naamruimte maken met een onderwerp, abonnement en regel met behulp van Azure Resource Manager-sjabloon
+title: Azure Service Bus-onderwerp en-regel maken met Azure Resource Manager sjabloon | Microsoft Docs
+description: Een Service Bus naam ruimte maken met een onderwerp, een abonnement en een regel met behulp van Azure Resource Manager sjabloon
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 8be34a85cb1a1863ee8a78c7b97af66627612fea
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6631528c9d1f2dfc6dcd3e9d6da81115a9ece637
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444747"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832082"
 ---
-# <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Een Service Bus-naamruimte maken met een onderwerp, abonnement en regel met een Azure Resource Manager-sjabloon
+# <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Een Service Bus naam ruimte maken met een onderwerp, een abonnement en een regel met behulp van een Azure Resource Manager sjabloon
 
-In dit artikel laat zien hoe u een Azure Resource Manager-sjabloon die wordt gemaakt van een Service Bus-naamruimte met een onderwerp, abonnement en regel (filter). Het artikel wordt uitgelegd hoe om op te geven welke resources worden geïmplementeerd en over het definiëren van parameters die zijn opgegeven wanneer de implementatie wordt uitgevoerd. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen
+In dit artikel wordt beschreven hoe u een Azure Resource Manager sjabloon gebruikt waarmee een Service Bus naam ruimte wordt gemaakt met een onderwerp, een abonnement en een regel (filter). In het artikel wordt uitgelegd hoe u kunt opgeven welke resources worden geïmplementeerd en hoe para meters moeten worden gedefinieerd die worden opgegeven wanneer de implementatie wordt uitgevoerd. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen
 
-Zie voor meer informatie over het maken van sjablonen, [Authoring Azure Resource Manager-sjablonen][Authoring Azure Resource Manager templates].
+Zie [Azure Resource Manager sjablonen ontwerpen][Authoring Azure Resource Manager templates]voor meer informatie over het maken van sjablonen.
 
-Zie voor meer informatie over de praktijken en patronen op Azure-resources naamconventies [aanbevolen naamgevingsregels voor Azure-resources][Recommended naming conventions for Azure resources].
+Zie [Aanbevolen naamgevings regels voor Azure-resources][Recommended naming conventions for Azure resources]voor meer informatie over de procedures en patronen voor Azure resources-naamgevings conventies.
 
-Zie voor de volledige sjabloon, de [Service Bus-naamruimte met een onderwerp, abonnement en regel][Service Bus namespace with topic, subscription, and rule] sjabloon.
+Voor de volledige sjabloon, zie de [Service Bus naam ruimte met onderwerp, abonnement en regel][Service Bus namespace with topic, subscription, and rule] sjabloon.
 
 > [!NOTE]
-> De volgende Azure Resource Manager-sjablonen zijn beschikbaar voor downloaden en implementeren.
+> De volgende Azure Resource Manager sjablonen zijn beschikbaar voor downloaden en implementeren.
 > 
-> * [Een Service Bus-naamruimte maken met de wachtrij en de autorisatie-regel](service-bus-resource-manager-namespace-auth-rule.md)
-> * [Een Service Bus-naamruimte met een wachtrij maken](service-bus-resource-manager-namespace-queue.md)
-> * [Een Service Bus-naamruimte maken](service-bus-resource-manager-namespace.md)
-> * [Een Service Bus-naamruimte maken met een onderwerp en abonnement](service-bus-resource-manager-namespace-topic.md)
+> * [Een Service Bus naam ruimte maken met een wachtrij-en autorisatie regel](service-bus-resource-manager-namespace-auth-rule.md)
+> * [Een Service Bus naam ruimte maken met wachtrij](service-bus-resource-manager-namespace-queue.md)
+> * [Een Service Bus naam ruimte maken](service-bus-resource-manager-namespace.md)
+> * [Een Service Bus naam ruimte met een onderwerp en een abonnement maken](service-bus-resource-manager-namespace-topic.md)
 > 
-> Om te controleren of de meest recente sjablonen, gaat u naar de [Azure-Snelstartsjablonen][Azure Quickstart Templates] galerie en zoek naar Service Bus.
+> Als u de meest recente sjablonen wilt controleren, gaat u naar de galerie met [Azure Quick Start sjablonen][Azure Quickstart Templates] en zoekt u naar Service Bus.
 > 
 > 
 
-## <a name="what-do-you-deploy"></a>Wat u implementeren?
+## <a name="what-do-you-deploy"></a>Wat gaat u implementeren?
 
-Met deze sjabloon kunt implementeren u een Service Bus-naamruimte met een onderwerp, abonnement en regel (filter).
+Met deze sjabloon implementeert u een Service Bus naam ruimte met een onderwerp, een abonnement en een regel (filter).
 
-[Service Bus-onderwerpen en abonnementen](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) voorzien in de vorm van een een-op-veel communicatie, in een *publiceren/abonneren* patroon. Wanneer u onderwerpen en abonnementen, communiceren onderdelen van een gedistribueerde toepassing niet rechtstreeks met elkaar worden verbonden, in plaats daarvan wisselen ze berichten uit via een onderwerp dat als een intermediair fungeert. Een abonnement op een onderwerp lijkt op een virtuele wachtrij die kopieën van berichten die zijn verzonden naar het onderwerp ontvangt. Een filter op abonnement kunt u opgeven welke berichten die worden verzonden naar een onderwerp moet worden weergegeven binnen een bepaald onderwerpabonnement.
+[Service Bus-onderwerpen en-abonnementen](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) bieden een een-op-veel communicatie vorm, in een patroon voor *publiceren/abonneren* . Wanneer u onderwerpen en abonnementen gebruikt, communiceren onderdelen van een gedistribueerde toepassing niet rechtstreeks met elkaar. in plaats daarvan wisselen ze berichten uit via een onderwerp dat fungeert als een intermediair. Een abonnement op een onderwerp lijkt op een virtuele wachtrij die kopieën ontvangt van berichten die naar het onderwerp zijn verzonden. Met een filter op het abonnement kunt u opgeven welke berichten die naar een onderwerp worden verzonden, moeten worden weer gegeven in een specifiek onderwerp-abonnement.
 
 ## <a name="what-are-rules-filters"></a>Wat zijn regels (filters)?
 
-In veel scenario's, moeten berichten met specifieke kenmerken op verschillende manieren worden verwerkt. U kunt abonnementen om te zoeken naar berichten die specifieke eigenschappen en voer de wijzigingen in deze eigenschappen configureren zodat deze aangepaste verwerking. Hoewel Service Bus-abonnementen alle berichten die naar het onderwerp weergeven, kunt u alleen een subset van deze berichten kopiëren naar de abonnementenwachtrij voor virtuele. Dit wordt bereikt met behulp van abonnementfilters. Zie voor meer informatie over regels (filters), [regels en acties](service-bus-queues-topics-subscriptions.md#rules-and-actions).
+In veel gevallen moeten berichten met specifieke kenmerken op verschillende manieren worden verwerkt. Als u deze aangepaste verwerking wilt inschakelen, kunt u abonnementen configureren om berichten te vinden die specifieke eigenschappen hebben en vervolgens wijzigingen aan die eigenschappen uit te voeren. Hoewel Service Bus-abonnementen alle berichten zien die naar het onderwerp worden verzonden, kunt u alleen een subset van die berichten kopiëren naar de wachtrij voor virtuele abonnementen. Het wordt uitgevoerd met behulp van abonnements filters. Zie [regels en acties](service-bus-queues-topics-subscriptions.md#rules-and-actions)voor meer informatie over regels (filters).
 
 Klik op de volgende knop om de implementatie automatisch uit te voeren:
 
@@ -59,12 +59,12 @@ Klik op de volgende knop om de implementatie automatisch uit te voeren:
 
 ## <a name="parameters"></a>Parameters
 
-Met Azure Resource Manager, de parameters definiëren voor waarden die u opgeven wilt wanneer de sjabloon wordt geïmplementeerd. De sjabloon bevat een sectie met de naam `Parameters` die alle parameterwaarden bevat. Een parameter definiëren voor de waarden die variëren op basis van het project dat u wilt implementeren of op basis van de omgeving die u implementeert. Definieer geen parameters voor waarden die altijd hetzelfde blijven. De waarde van elke parameter wordt gebruikt in de sjabloon voor het definiëren van de resources die worden geïmplementeerd.
+Met Azure Resource Manager definieert u de para meters voor waarden die u wilt opgeven wanneer de sjabloon wordt geïmplementeerd. De sjabloon bevat een sectie met de naam `Parameters` die alle parameterwaarden bevat. Definieer een para meter voor die waarden die variëren op basis van het project dat u implementeert of op basis van de omgeving waarin u implementeert. Definieer geen parameters voor waarden die altijd hetzelfde blijven. De waarde van elke parameter wordt gebruikt in de sjabloon voor het definiëren van de resources die worden geïmplementeerd.
 
-De sjabloon definieert de volgende parameters:
+De sjabloon definieert de volgende para meters:
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-De naam van de Service Bus-naamruimte te maken.
+De naam van de Service Bus naam ruimte die moet worden gemaakt.
 
 ```json
 "serviceBusNamespaceName": {
@@ -73,7 +73,7 @@ De naam van de Service Bus-naamruimte te maken.
 ```
 
 ### <a name="servicebustopicname"></a>serviceBusTopicName
-De naam van het onderwerp in de Service Bus-naamruimte gemaakt.
+De naam van het onderwerp dat in de Service Bus naam ruimte is gemaakt.
 
 ```json
 "serviceBusTopicName": {
@@ -82,7 +82,7 @@ De naam van het onderwerp in de Service Bus-naamruimte gemaakt.
 ```
 
 ### <a name="servicebussubscriptionname"></a>serviceBusSubscriptionName
-De naam van het abonnement in de Service Bus-naamruimte hebt gemaakt.
+De naam van het abonnement dat in de naam ruimte van de Service Bus is gemaakt.
 
 ```json
 "serviceBusSubscriptionName": {
@@ -90,7 +90,7 @@ De naam van het abonnement in de Service Bus-naamruimte hebt gemaakt.
 }
 ```
 ### <a name="servicebusrulename"></a>serviceBusRuleName
-De naam van de rule(filter) in de Service Bus-naamruimte hebt gemaakt.
+De naam van de regel (filter) die is gemaakt in de Service Bus naam ruimte.
 
 ```json
    "serviceBusRuleName": {
@@ -98,7 +98,7 @@ De naam van de rule(filter) in de Service Bus-naamruimte hebt gemaakt.
   }
 ```
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
-De Service Bus-API-versie van de sjabloon.
+De API-versie van de Service Bus van de sjabloon.
 
 ```json
 "serviceBusApiVersion": { 
@@ -109,7 +109,7 @@ De Service Bus-API-versie van de sjabloon.
        }
 ```
 ## <a name="resources-to-deploy"></a>Resources om te implementeren
-Hiermee maakt u een standard Service Bus-naamruimte van het type **Messaging**, met een onderwerp en abonnement en regels.
+Hiermee maakt u een standaard Service Bus naam ruimte van het type **berichten**, met onderwerp en abonnement en regels.
 
 ```json
  "resources": [{
@@ -161,7 +161,7 @@ Hiermee maakt u een standard Service Bus-naamruimte van het type **Messaging**, 
     }]
 ```
 
-Zie voor JSON-syntaxis en eigenschappen [naamruimten](/azure/templates/microsoft.servicebus/namespaces), [onderwerpen](/azure/templates/microsoft.servicebus/namespaces/topics), [abonnementen](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions), en [regels](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions/rules).
+Voor de JSON-syntaxis en-eigenschappen raadpleegt u [naam ruimten](/azure/templates/microsoft.servicebus/namespaces), [onderwerpen](/azure/templates/microsoft.servicebus/namespaces/topics), [abonnementen](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions)en [regels](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions/rules).
 
 ## <a name="commands-to-run-deployment"></a>Opdrachten om implementatie uit te voeren
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
@@ -171,7 +171,7 @@ Zie voor JSON-syntaxis en eigenschappen [naamruimten](/azure/templates/microsoft
 New-AzureResourceGroupDeployment -Name \<deployment-name\> -ResourceGroupName \<resource-group-name\> -TemplateUri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
 ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 ```azurecli
 azure config mode arm
 
@@ -179,11 +179,11 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende onderwerp die laat zien hoe u een abonnementsfilter maken: [Een Service Bus-naamruimte maken met een onderwerp, abonnement en regel met een Azure Resource Manager-sjabloon](service-bus-resource-manager-namespace-topic-with-rule.md)
+Zie het volgende onderwerp waarin wordt uitgelegd hoe u een abonnements filter maakt: [een service bus naam ruimte maken met een onderwerp, een abonnement en een regel met behulp van een Azure Resource Manager sjabloon](service-bus-resource-manager-namespace-topic-with-rule.md)
 
-Informatie over het beheren van deze bronnen hiervoor deze artikelen:
+Meer informatie over het beheren van deze resources door de volgende artikelen te bekijken:
 
-* [Azure Servicebus beheren](service-bus-management-libraries.md)
+* [Azure Service Bus beheren](service-bus-management-libraries.md)
 * [Service Bus met PowerShell beheren](service-bus-manage-with-ps.md)
 * [Service Bus-resources beheren met de Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
@@ -192,7 +192,7 @@ Informatie over het beheren van deze bronnen hiervoor deze artikelen:
 [Learn more about Service Bus topics and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
-[Recommended naming conventions for Azure resources]: ../guidance/guidance-naming-conventions.md
+[Recommended naming conventions for Azure resources]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
 [Service Bus namespace with topic, subscription, and rule]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-subscription-rule/
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 

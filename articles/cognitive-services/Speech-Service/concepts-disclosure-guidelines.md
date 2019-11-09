@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: angle
-ms.openlocfilehash: d3b3f90be7dda28db9a27aa96282acee61e6c8fc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7dffa3d9f6e96adc6146a1059e7360c77926ece3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507339"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837384"
 ---
 # <a name="disclosure-design-guidelines"></a>Richt lijnen voor het ontwerpen van vrijgeven
 Meer informatie over het bouwen en onderhouden van vertrouwen met klanten door transparante informatie te krijgen over de synthetische aard van uw stem ervaring.
@@ -76,7 +76,7 @@ Gebruik het volgende diagram om te bepalen of uw synthetische spraak ervaring ee
 
 ## <a name="reference-docs"></a>Referentiedocumenten
 
-* [Opmerking over transparantie](https://aka.ms/neural-tts-transparency-note)
+* [Openbaar making voor spraak-talen](https://aka.ms/disclosure-voice-talent)
 * [Richt lijnen voor de verantwoordelijke implementatie van synthetische spraak technologie](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Overzicht van beperking](concepts-gating-overview.md)
 

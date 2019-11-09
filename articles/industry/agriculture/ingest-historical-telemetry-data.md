@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0ff9e055ecc0c4f58e4b3df0494debbe3f4cd8a4
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6fc70b55b3e672ecc67eb1145bb751de33d998a1
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797853"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847438"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -58,8 +58,6 @@ Volg de onderstaande stappen om deze te genereren:
     ```
 
 7. Volg de instructies op het scherm om de procedure te volt ooien.
-
-    Neem contact op met de FarmBeats-beheerder voor het geval u geen toegang hebt tot FarmBeats of uw Azure-abonnement.
 
 ## <a name="create-devicesensor-metadata"></a>Meta gegevens van apparaat/sensor maken
 

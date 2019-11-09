@@ -1,6 +1,6 @@
 ---
 title: De voorbeeldgegevenssets gebruiken
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Beschrijvingen van de gegevens sets die worden gebruikt in voorbeeld modellen die zijn opgenomen in Machine Learning Studio (klassiek). U kunt deze voorbeeld gegevens sets gebruiken voor uw experimenten.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: f22d27f7900ce9dda3a8e65451acb9b743a25811
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73618911"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839411"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>De voorbeeld gegevens sets gebruiken in Azure Machine Learning Studio (klassiek)
 [top]: #machine-learning-sample-datasets
@@ -399,7 +399,7 @@ Onderwerps toewijzingen voor nieuws artikelen in de RCV1-v2-nieuws gegevensset v
   <td>
 Deze gegevens zijn afkomstig van de KDDe Cup 2010 Student prestatie-evaluatie test (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Student Performance Evaluation</a>). De gebruikte gegevens zijn de Algebra_2008_2009-Trainingsset (stempel, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebra I 2008-2009. Uitdaging gegevensset van de KDDe Cup 2010 onderwijs gegevens analyse uitdaging. Zoek het op <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">down loads. jsp</a>.
 <p></p>
-De gegevensset is gedownload en opgeslagen in Azure Blob Storage (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a>) en bevat logboek bestanden van een student. De opgegeven functies omvatten de probleem-ID en de korte beschrijving, student-ID, tijds tempel en het aantal pogingen dat de student heeft gedaan voordat het probleem op de juiste manier wordt opgelost. De oorspronkelijke gegevensset heeft 8,9 M Records; Deze gegevensset is niet beschikbaar-voor beeld van de eerste 100.000 rijen. De gegevensset heeft 23 door tabs gescheiden kolommen van verschillende typen: numeriek, categorische en tijds tempel.
+De gegevensset is gedownload en opgeslagen in Azure Blob-opslag (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a>) en bevat logboek bestanden van een student-studie systeem. De opgegeven functies omvatten de probleem-ID en de korte beschrijving, student-ID, tijds tempel en het aantal pogingen dat de student heeft gedaan voordat het probleem op de juiste manier wordt opgelost. De oorspronkelijke gegevensset heeft 8,9 M Records; Deze gegevensset is niet beschikbaar-voor beeld van de eerste 100.000 rijen. De gegevensset heeft 23 door tabs gescheiden kolommen van verschillende typen: numeriek, categorische en tijds tempel.
   </td>
 </tr>
 

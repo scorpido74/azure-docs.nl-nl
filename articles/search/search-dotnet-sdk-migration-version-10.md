@@ -1,7 +1,7 @@
 ---
-title: Een upgrade uitvoeren naar Azure Search .NET SDK versie 10
+title: Upgrade uitvoeren naar Azure Cognitive Search .NET SDK versie 10
 titleSuffix: Azure Cognitive Search
-description: Code migreren naar de Azure Search .NET SDK versie 10 van oudere versies. Meer informatie over wat er nieuw is en welke code wijzigingen vereist zijn.
+description: Code migreren naar Azure Cognitive Search .NET SDK versie 10 van oudere versies. Meer informatie over wat er nieuw is en welke code wijzigingen vereist zijn.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,30 +9,30 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a8550a7f9c6a684a172da6f384039c6050797f6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ad912eb0b26354d40a654a1c8782dfcb960235e5
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793039"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847524"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-10"></a>Een upgrade uitvoeren naar Azure Search .NET SDK versie 10
+# <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Upgrade uitvoeren naar Azure Cognitive Search .NET SDK versie 10
 
 Als u versie 9,0 of ouder van de [Azure Search .NET SDK](https://aka.ms/search-sdk)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 10.
 
-Zie [Azure Search van een .NET-toepassing gebruiken](search-howto-dotnet-sdk.md)voor een meer algemeen overzicht van de SDK, inclusief voor beelden.
+De naam van Azure Search is gewijzigd in azure Cognitive Search in versie 10, maar naam ruimten en pakket namen blijven onveranderd. Eerdere versies van de SDK (9,0 en eerder) blijven de oude naam gebruiken. Zie [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](search-howto-dotnet-sdk.md)voor meer informatie over het gebruik van de SDK, met inbegrip van voor beelden.
 
 Versie 10 voegt diverse functies en probleem oplossingen toe en brengt deze naar hetzelfde functionaliteits niveau als de meest recente versie van de REST API versie `2019-05-06`. In gevallen waarin een wijziging bestaande code verbreekt, wordt u begeleid bij de [stappen die nodig zijn om het probleem op te lossen](#UpgradeSteps).
 
 > [!NOTE]
 > Als u versie 8,0-Preview of ouder gebruikt, moet u eerst een upgrade uitvoeren naar versie 9 en vervolgens een upgrade uitvoeren naar versie 10. Zie [upgraden naar de Azure Search .NET SDK versie 9](search-dotnet-sdk-migration-version-9.md) voor instructies.
 >
-> Uw Azure Search service-exemplaar ondersteunt verschillende REST API versies, met inbegrip van de meest recente versie. U kunt een versie blijven gebruiken wanneer deze niet langer het meest recent is, maar we raden u aan uw code te migreren om de nieuwste versie te gebruiken. Wanneer u de REST API gebruikt, moet u in elke aanvraag de API-versie opgeven via de para meter API-Version. Wanneer u de .NET SDK gebruikt, bepaalt de versie van de SDK die u gebruikt, de corresponderende versie van de REST API. Als u een oudere SDK gebruikt, kunt u deze code zonder wijzigingen blijven uitvoeren, zelfs niet als de service wordt bijgewerkt voor ondersteuning van een nieuwere API-versie.
+> Het exemplaar van de zoek service ondersteunt verschillende REST API versies, met inbegrip van de meest recente versie. U kunt een versie blijven gebruiken wanneer deze niet langer het meest recent is, maar we raden u aan uw code te migreren om de nieuwste versie te gebruiken. Wanneer u de REST API gebruikt, moet u in elke aanvraag de API-versie opgeven via de para meter API-Version. Wanneer u de .NET SDK gebruikt, bepaalt de versie van de SDK die u gebruikt, de corresponderende versie van de REST API. Als u een oudere SDK gebruikt, kunt u deze code zonder wijzigingen blijven uitvoeren, zelfs niet als de service wordt bijgewerkt voor ondersteuning van een nieuwere API-versie.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>Wat is er nieuw in versie 10
-Versie 10 van de Azure Search .NET SDK streeft naar de meest recente, algemeen beschik bare versie van de Azure Search REST API (`2019-05-06`) met deze updates:
+Versie 10 van de Azure Cognitive Search .NET SDK is gericht op de meest recente, algemeen beschik bare versie van de REST API (`2019-05-06`) met de volgende updates:
 
 * Introductie van twee nieuwe vaardig heden- [voorwaardelijke](cognitive-search-skill-conditional.md) vaardig heden en [tekst vertalingen](cognitive-search-skill-text-translation.md).
 * [Shaper-vaardigheids](cognitive-search-skill-shaper.md) invoer is herstructureeerd om consolidatie van geneste contexten mogelijk te houden. Zie voor meer informatie dit [voor beeld van JSON-definitie](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts).
@@ -62,7 +62,7 @@ Versie 10 van de Azure Search .NET SDK streeft naar de meest recente, algemeen b
 Er zijn verschillende belang rijke wijzigingen in versie 10 waarvoor code wijzigingen moeten worden aangebracht naast het opnieuw samen stellen van uw toepassing.
 
 > [!NOTE]
-> De onderstaande lijst met wijzigingen is niet limitatief. Sommige wijzigingen leiden waarschijnlijk niet tot fouten in de build, maar worden technisch afgebroken omdat ze binaire compatibiliteit met assembly's die afhankelijk zijn van eerdere versies van de Azure Search .NET SDK-assembly's, afgebroken. Belang rijke wijzigingen die onder deze categorie vallen, worden ook vermeld samen met aanbevelingen. Bouw uw toepassing opnieuw op wanneer u een upgrade uitvoert naar versie 10 om problemen met binaire compatibiliteit te voor komen.
+> De onderstaande lijst met wijzigingen is niet limitatief. Sommige wijzigingen leiden waarschijnlijk niet tot fouten in de build, maar zijn technisch gebreken omdat ze binaire compatibiliteit met assembly's die afhankelijk zijn van eerdere versies van de Azure Cognitive Search .NET SDK-assembly's, afgebroken. Belang rijke wijzigingen die onder deze categorie vallen, worden ook vermeld samen met aanbevelingen. Bouw uw toepassing opnieuw op wanneer u een upgrade uitvoert naar versie 10 om problemen met binaire compatibiliteit te voor komen.
 
 ### <a name="custom-web-api-skill-definition"></a>Aangepaste web API-vaardigheids definitie
 

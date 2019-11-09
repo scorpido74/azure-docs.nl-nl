@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: rajanaki
-ms.openlocfilehash: 68881d57f251d2f26996b2a837780106326ec1d3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c126d72720c16d4ba869156e86a6e60110b2c31b
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492280"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847480"
 ---
 # <a name="upcoming-deprecation-of-dr-between-customer-owned-sites-using-hyper-v-and-between-sites-managed-by-scvmm-to-azure"></a>Toekomstige afschaffing van DR tussen sites van klanten die gebruikmaken van Hyper-V en tussen sites die worden beheerd door SCVMM naar Azure
 
@@ -43,7 +43,7 @@ Hieronder ziet u de opties die de klant heeft om ervoor te zorgen dat de DR-stra
 - Kies ervoor om [Azure te gaan gebruiken als het Dr-doel voor vm's op Hyper-V-hosts](hyper-v-azure-tutorial.md).
 
 > [!IMPORTANT]
-> Houd er rekening mee dat uw on-premises omgeving nog steeds SCVMMM heeft, maar u kunt ASR alleen configureren met verwijzingen naar de Hyper-V-hosts.
+> Houd er rekening mee dat uw on-premises omgeving nog steeds SCVMM kan hebben, maar u kunt ASR alleen configureren met verwijzingen naar de Hyper-V-hosts.
 
 - Kies ervoor om door te gaan met site-naar-site-replicatie, maar met de onderliggende [Hyper-V-replica oplossing](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica), maar u kunt geen Dr-configuraties beheren met Azure site Recovery in de Azure Portal. 
 

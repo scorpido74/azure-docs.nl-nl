@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: b451597d2d91117e11b1becd8b4ab96f981dade8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce0b917f34cab31227e721e119c72cd5d1f99bff
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931321"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832004"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Veelgestelde vragen over Netwerkprestatiemeter oplossingen
 
@@ -48,7 +48,7 @@ Voor de functionaliteit van de ExpressRoute-monitor moeten de Azure-knoop punten
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Welk protocol onder TCP en ICMP moet worden gekozen voor bewaking?
 Als u uw netwerk bewaakt met behulp van knoop punten op basis van Windows Server, raden we u aan TCP als controle protocol te gebruiken, omdat dit een betere nauw keurigheid biedt. 
 
-ICMP wordt aanbevolen voor Windows-Desk tops/client besturingssystemen op basis van het besturings systeem. Dit platform does'nt toestaan dat TCP-gegevens worden verzonden via onbewerkte sockets, die NPM gebruikt voor het detecteren van de netwerk topologie.
+ICMP wordt aanbevolen voor Windows-Desk tops/client besturingssystemen op basis van het besturings systeem. Dit platform staat niet toe dat TCP-gegevens worden verzonden via onbewerkte sockets, die door NPM worden gebruikt om de netwerk topologie te detecteren.
 
 U kunt [hier](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol)meer informatie vinden over de relatieve voor delen van elk protocol.
 
@@ -69,7 +69,7 @@ U moet ten minste één agent gebruiken voor elk subnet dat u wilt bewaken.
 ### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Wat is het maximum aantal agents dat ik kan gebruiken of zie fout '... ' u hebt de configuratie limiet bereikt "?
 NPM beperkt het aantal Ip's tot 5000 Ip's per werk ruimte. Als een knoop punt zowel IPv4-als IPv6-adressen heeft, worden de twee Ip's voor dat knoop punt geteld. Deze limiet van 5000 Ip's zou daarom de bovengrens bepalen van het aantal agents. U kunt het tabblad inactieve agents verwijderen van knoop punten in NPM > > configureren. NPM houdt ook geschiedenis bij van alle IP-adressen die ooit zijn toegewezen aan de virtuele machine die als host fungeert voor de agent en die elke worden beschouwd als een afzonderlijk IP-adres dat bijdragen aan de maximum limiet van 5000 Ip's. Om IP-adressen voor uw werk ruimte vrij te maken, kunt u de pagina knoop punten gebruiken om de IP-adressen te verwijderen die niet in gebruik zijn.
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 ### <a name="how-are-loss-and-latency-calculated"></a>Hoe worden verlies en latentie berekend?
 Bron agenten verzenden TCP-SYN-aanvragen (als TCP is gekozen als protocol voor bewaking) of ICMP-ECHO aanvragen (als ICMP is gekozen als het protocol voor bewaking) tot doel-IP met regel matige tussen pozen om ervoor te zorgen dat alle paden tussen de bron-IP-doel de combi natie wordt gedekt. Het percentage ontvangen pakketten en de round-trip tijd van het pakket wordt gemeten om het verlies en de latentie van elk pad te berekenen. Deze gegevens worden geaggregeerd over het polling-interval en over alle paden om de geaggregeerde waarden van verlies en latentie voor de IP-combi natie voor het betreffende polling-interval op te halen.
@@ -98,6 +98,42 @@ NPM maakt gebruik van een Probabilistic-mechanisme om fout kansen toe te wijzen 
 ### <a name="how-can-i-create-alerts-in-npm"></a>Hoe kan ik waarschuwingen in NPM maken?
 Raadpleeg [de sectie waarschuwingen in de documentatie](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts) voor stapsgewijze instructies.
 
+### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Wat zijn de standaard Log Analytics query's voor waarschuwingen
+Query prestatie meter
+
+    NetworkMonitoring 
+     | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
+     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
+    
+Query voor service connectiviteits controle
+
+    NetworkMonitoring                 
+     | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
+     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
+    
+ExpressRoute-controle query's: circuits query
+
+    NetworkMonitoring
+    | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
+
+Persoonlijke peering
+
+    NetworkMonitoring 
+     | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ExpressRoutePath")   
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
+
+Microsoft-peering
+
+    NetworkMonitoring 
+     | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
+
+Algemene query   
+
+    NetworkMonitoring
+    | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") 
+
 ### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>Kunnen NPM-routers en-servers als afzonderlijke apparaten worden bewaakt?
 NPM identificeert alleen de IP-en hostnaam van de onderliggende netwerk-hops (switches, routers, servers, enzovoort) tussen de bron-en doel-IP-adressen. Ook wordt de latentie tussen deze geïdentificeerde hops geïdentificeerd. Deze onderliggende hops worden niet afzonderlijk bewaakt.
 
@@ -110,17 +146,23 @@ Bandbreedte gebruik is het totale aantal binnenkomende en uitgaande band breedte
 ### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>Kan er informatie over binnenkomende en uitgaande band breedte worden ontvangen voor de ExpressRoute?
 Binnenkomende en uitgaande waarden voor zowel de primaire als de secundaire band breedte kunnen worden vastgelegd.
 
-Voor informatie over het peer niveau gebruikt u de onderstaande query in zoeken in Logboeken
+Voor informatie over het niveau van MS-peering gebruikt u de onderstaande query in zoeken in Logboeken
 
     NetworkMonitoring 
-    | where SubType == "ExpressRoutePeeringUtilization"
-    | project CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | where SubType == "ERMSPeeringUtilization"
+     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+    
+Voor informatie over privé-peering kunt u de onderstaande query gebruiken in zoeken in Logboeken
+
+    NetworkMonitoring 
+     | where SubType == "ERVNetConnectionUtilization"
+     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
   
-Voor informatie over het circuit niveau gebruikt u de onderstaande query 
+Voor informatie over het circuit niveau gebruikt u de onderstaande query in zoeken in Logboeken
 
     NetworkMonitoring 
-    | where SubType == "ExpressRouteCircuitUtilization"
-    | project CircuitName,PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+        | where SubType == "ERCircuitTotalUtilization"
+        | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Welke regio's worden ondersteund voor de prestatie meter van de NPM?
 NPM kan de connectiviteit van netwerken in een deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de [ondersteunde regio's](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
@@ -139,11 +181,11 @@ NPM maakt gebruik van een gewijzigde versie van traceroute om de topologie van d
 Een hop reageert mogelijk niet op een traceroute in een of meer van de onderstaande scenario's:
 
 * De routers zijn zodanig geconfigureerd dat hun identiteit niet wordt onthuld.
-* De netwerk apparaten staan geen ICMP_TTL_EXCEEDED-verkeer toe.
-* Een firewall blokkeert het ICMP_TTL_EXCEEDED-antwoord van het netwerk apparaat.
+* De netwerk apparaten mogen geen ICMP_TTL_EXCEEDED verkeer toestaan.
+* De ICMP_TTL_EXCEEDED reactie van het netwerk apparaat wordt geblokkeerd door een firewall.
 
-### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy-"></a>Er worden waarschuwingen weer geven voor slechte testen, maar de hoge waarden in de grafiek met verlies en latentie van NPM zijn niet zichtbaar. Hoe kan ik controleren wat is beschadigd?
-NPM treedt een waarschuwing als de eind-en eind latentie tussen de bron en het doel de drempel voor voor een wille keurig pad ertussen overschrijdt. Sommige netwerken hebben meer dan één paden die dezelfde bron en bestemming verbinden. NPM genereert een waarschuwing dat een pad een onjuiste status heeft. Het verlies en de latentie die in de grafieken worden weer gegeven, is de gemiddelde waarde voor alle paden. Daarom kan de waarde van één pad niet exact worden weer gegeven. Zoek naar de kolom subtype in de waarschuwing om te begrijpen waar de drempel is geschonden. Als het probleem wordt veroorzaakt door een pad, wordt de waarde van subtype NetworkPath (voor test tests van prestaties), EndpointPath (voor de tests van de verbindings monitor van de service) en ExpressRoutePath (voor ExpressRotue-monitor tests). 
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Er worden waarschuwingen weer geven voor slechte testen, maar de hoge waarden in de grafiek met verlies en latentie van NPM zijn niet zichtbaar. Hoe kan ik controleren wat is beschadigd?
+NPM treedt een waarschuwing als de eind-en eind latentie tussen de bron en het doel de drempel waarde voor een wille keurig pad ertussen overschrijdt. Sommige netwerken hebben meerdere paden waarmee dezelfde bron en bestemming worden verbonden. NPM genereert een waarschuwing dat een pad een onjuiste status heeft. Het verlies en de latentie die in de grafieken worden weer gegeven, is de gemiddelde waarde voor alle paden. Daarom kan de waarde van één pad niet exact worden weer gegeven. Zoek naar de kolom subtype in de waarschuwing om te begrijpen waar de drempel is geschonden. Als het probleem wordt veroorzaakt door een pad, wordt de waarde van subtype NetworkPath (voor test tests van prestaties), EndpointPath (voor de tests van de verbindings monitor van de service) en ExpressRoutePath (voor ExpressRotue-monitor tests). 
 
 De voorbeeld query die u wilt zoeken, is beschadigd:
 

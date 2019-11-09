@@ -1,7 +1,7 @@
 ---
 title: Veelgestelde vragen-aangepaste vertaler
 titleSuffix: Azure Cognitive Services
-description: Biedt antwoorden op veelgestelde vragen over de aangepaste vertaler.
+description: In dit artikel vindt u antwoorden op veelgestelde vragen over de Cognitive Services aangepaste Translator van Azure.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 3dacfc0d8371ad9e8fa66d8bb1c5fafa59271ce0
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 97d399f4a8ec704fd90eb6c49f0835be7e9e4537
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388167"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836598"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>Veelgestelde vragen over aangepaste vertalers
 
@@ -45,9 +45,9 @@ Via de micro soft Translator Text-API v3 kunnen geïmplementeerde systemen worde
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Hoe kan ik de uitlijning en de zin niet overs Laan als er al een zin van mijn gegevens is uitgelijnd?
 
-De aangepaste vertaler slaat de uitlijning van de zin en de zinnen voor TMX-bestanden en tekst bestanden met de extensie `.align` over. `.align` bestanden geven gebruikers een optie om de zin en het afstemmings proces van de zinnen van de aangepaste vertaler over te slaan voor de bestanden die perfect zijn uitgelijnd en waarvoor geen verdere verwerking nodig is. We raden u aan om de extensie `.align` alleen te gebruiken voor bestanden die perfect zijn uitgelijnd.
+De aangepaste vertaler slaat de uitlijning van de zin en de zin van zinnen voor TMX-bestanden en tekst bestanden met de extensie `.align` over. `.align`-bestanden geven gebruikers een optie om de zin en het afstemmings proces van de zinnen van de aangepaste vertaler over te slaan voor de bestanden die perfect zijn uitgelijnd en waarvoor geen verdere verwerking nodig is. We raden u aan `.align`-extensie alleen te gebruiken voor bestanden die perfect zijn uitgelijnd.
 
-Als het aantal geëxtraheerde zinnen niet overeenkomt met de twee bestanden met dezelfde basis naam, wordt de zin met aangepaste vertaler nog steeds uitgevoerd op `.align` bestanden.
+Als het aantal geëxtraheerde zinnen niet overeenkomt met de twee bestanden met dezelfde basis naam, wordt in de aangepaste vertaler nog steeds de zin-uitlijning uitgevoerd op `.align`-bestanden.
 
 ## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Ik heb geprobeerd mijn TMX te uploaden, maar dit betekent dat de verwerking van documenten is mislukt.
 

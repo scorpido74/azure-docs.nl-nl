@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f0d732917a6587307e6d60581e0189687cc7e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dd50ca8b81b933a61a67ac36db6a656791a8121f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164768"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832858"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -166,7 +166,7 @@ Na enkele ogen blikken wordt de rol bij de geselecteerde scope toegewezen aan de
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>De Azure Cloud Shell-ervaring gebruiken
 
-In het volgende voor beeld wordt [AZ roltoewijzing Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) gebruikt om de rol van de beheerder van de virtuele machine toe te wijzen aan de VM voor uw huidige Azure-gebruiker. De gebruikers naam van uw actieve Azure-account wordt verkregen met [AZ account show](https://docs.microsoft.com/cli/azure/account#az-account-show)en de scope wordt ingesteld op de virtuele machine die in een vorige stap is gemaakt met [AZ VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show). Het bereik kan ook worden toegewezen aan een resource groep of abonnement, en de normale machtigingen voor RBAC-overname zijn van toepassing. Zie [op rollen gebaseerde toegangs beheer](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control)voor meer informatie.
+In het volgende voor beeld wordt [AZ roltoewijzing Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) gebruikt om de rol van de beheerder van de virtuele machine toe te wijzen aan de VM voor uw huidige Azure-gebruiker. De gebruikers naam van uw actieve Azure-account wordt verkregen met [AZ account show](https://docs.microsoft.com/cli/azure/account#az-account-show)en de scope wordt ingesteld op de virtuele machine die in een vorige stap is gemaakt met [AZ VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show). Het bereik kan ook worden toegewezen aan een resource groep of abonnement, en de normale machtigingen voor RBAC-overname zijn van toepassing. Zie [op rollen gebaseerde toegangs beheer](../../virtual-machines/linux/login-using-aad.md)voor meer informatie.
 
 ```AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -223,24 +223,24 @@ De AADLoginForWindows-extensie moet worden geïnstalleerd om de virtuele machine
 
    | Opdracht die moet worden uitgevoerd | Verwachte uitvoer |
    | --- | --- |
-   | krul-H meta gegevens: True "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Juiste informatie over de Azure VM |
-   | krul-H meta gegevens: True "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Geldige Tenant-ID die is gekoppeld aan het Azure-abonnement |
-   | krul-H meta gegevens: True "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | Geldig toegangs token dat is uitgegeven door Azure Active Directory voor de beheerde identiteit die aan deze VM is toegewezen |
+   | krul-H meta gegevens: True "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Juiste informatie over de Azure VM |
+   | krul-H meta gegevens: True "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Geldige Tenant-ID die is gekoppeld aan het Azure-abonnement |
+   | krul-H meta gegevens: True "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Geldig toegangs token dat is uitgegeven door Azure Active Directory voor de beheerde identiteit die aan deze VM is toegewezen |
 
    > [!NOTE]
    > Het toegangs token kan worden gedecodeerd met een hulp programma als [http://calebb.net/](http://calebb.net/). Controleer of de ' AppID ' in het toegangs token overeenkomt met de beheerde identiteit die is toegewezen aan de virtuele machine.
 
 1. Zorg ervoor dat de vereiste eind punten toegankelijk zijn vanaf de virtuele machine met behulp van de opdracht regel:
    
-   - krul https://login.microsoftonline.com/ -D –
-   - krul https://login.microsoftonline.com/`<TenantID>` /-D:
+   - krul https://login.microsoftonline.com/-D –
+   - krul https://login.microsoftonline.com/`<TenantID>`/-D:
 
    > [!NOTE]
    > Vervang `<TenantID>` door de ID van de Azure AD-Tenant die is gekoppeld aan het Azure-abonnement.
 
-   - krul https://enterpriseregistration.windows.net/ -D-
-   - krul https://device.login.microsoftonline.com/ -D-
-   - krul https://pas.windows.net/ -D-
+   - krul https://enterpriseregistration.windows.net/-D-
+   - krul https://device.login.microsoftonline.com/-D-
+   - krul https://pas.windows.net/-D-
 
 1. De apparaatstatus kan worden weer gegeven door `dsregcmd /status`uit te voeren. Het doel is om de status van het apparaat weer te geven als `AzureAdJoined : YES`.
 
@@ -251,7 +251,7 @@ Als AADLoginForWindows-extensie mislukt met bepaalde fout code, kunt u de volgen
 
 #### <a name="issue-1-aadloginforwindows-extension-fails-to-install-with-terminal-error-code-1007-and-exit-code--2145648574"></a>Probleem 1: de AADLoginForWindows-extensie kan niet worden geïnstalleerd met de Terminal fout code ' 1007 ' en de afsluit code:-2145648574.
 
-Deze afsluit code wordt omgezet in DSREG_E_MSI_TENANTID_UNAVAILABLE omdat de extensie geen query kan uitvoeren op de gegevens van de Azure AD-Tenant.
+Deze afsluit code wordt omgezet naar DSREG_E_MSI_TENANTID_UNAVAILABLE omdat de extensie geen query kan uitvoeren op de gegevens van de Azure AD-Tenant.
 
 1. Controleer of de virtuele machine van Azure de TenantID kan ophalen uit de Instance Metadata Service.
 
@@ -263,19 +263,19 @@ Deze afsluit code wordt omgezet in DSREG_E_MSI_TENANTID_UNAVAILABLE omdat de ext
 
 #### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>Probleem 2: de AADLoginForWindows-extensie kan niet worden geïnstalleerd met de afsluit code:-2145648607
 
-Deze afsluit code wordt omgezet in DSREG_AUTOJOIN_DISC_FAILED omdat de extensie het https://enterpriseregistration.windows.net -eind punt niet kan bereiken.
+Deze afsluit code wordt omgezet naar DSREG_AUTOJOIN_DISC_FAILED omdat de extensie het https://enterpriseregistration.windows.net-eind punt niet kan bereiken.
 
 1. Controleer of de vereiste eind punten toegankelijk zijn vanaf de virtuele machine met behulp van de opdracht regel:
 
-   - krul https://login.microsoftonline.com/ -D –
-   - krul https://login.microsoftonline.com/`<TenantID>` /-D:
+   - krul https://login.microsoftonline.com/-D –
+   - krul https://login.microsoftonline.com/`<TenantID>`/-D:
    
    > [!NOTE]
    > Vervang `<TenantID>` door de ID van de Azure AD-Tenant die is gekoppeld aan het Azure-abonnement. Als u de Tenant-ID moet vinden, kunt u met de muis aanwijzer over uw account naam bewegen om de map/Tenant-ID op te halen, of Azure Active Directory > Eigenschappen > Directory-ID selecteren in het Azure Portal.
 
-   - krul https://enterpriseregistration.windows.net/ -D-
-   - krul https://device.login.microsoftonline.com/ -D-
-   - krul https://pas.windows.net/ -D-
+   - krul https://enterpriseregistration.windows.net/-D-
+   - krul https://device.login.microsoftonline.com/-D-
+   - krul https://pas.windows.net/-D-
 
 1. Als een van de opdrachten mislukt met ' kan host `<URL>`niet oplossen ', probeert u deze opdracht uit te voeren om te bepalen welke DNS-server wordt gebruikt door de virtuele machine.
    
@@ -312,7 +312,7 @@ Als het volgende fout bericht wordt weer gegeven wanneer u een verbinding met ee
 
 ![Uw account is geconfigureerd om te voor komen dat u dit apparaat kunt gebruiken.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
-Controleer of u [RBAC-beleids regels hebt geconfigureerd](https://docs.microsoft.com/azure/virtual-machines/linux/login-using-aad#configure-rbac-policy-for-the-virtual-machine) voor de virtuele machine die de gebruiker de aanmeldings naam van de beheerder of de gebruiker van de virtuele machine verleent:
+Controleer of u [RBAC-beleids regels hebt geconfigureerd](../../virtual-machines/linux/login-using-aad.md) voor de virtuele machine die de gebruiker de aanmeldings naam van de beheerder of de gebruiker van de virtuele machine verleent:
  
 #### <a name="unauthorized-client"></a>Niet-geautoriseerde client
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 1c9562f413fa0ed52d61d0b38df358f1a2cd03f9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 54d34a120c575fd01f746131d909058951d1facf
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498678"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839245"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Beveiligings frame: communicatie beveiliging | Oplossingen 
 | Product/service | Artikel |
@@ -136,7 +136,7 @@ Het volgende voor beeld bevat een eenvoudige regel voor het herschrijven van URL
   </system.webServer>
 </configuration>
 ```
-Deze regel werkt door het retour neren van een HTTP-status code van 301 (permanente omleiding) wanneer de gebruiker een pagina aanvraagt via HTTP. De 301 leidt de aanvraag om naar dezelfde URL als de door de bezoeker aangevraagde, maar vervangt het HTTP-gedeelte van de aanvraag met HTTPS. HTTP://contoso.com worden bijvoorbeeld omgeleid naar HTTPS://contoso.com. 
+Deze regel werkt door het retour neren van een HTTP-status code van 301 (permanente omleiding) wanneer de gebruiker een pagina aanvraagt via HTTP. De 301 leidt de aanvraag om naar dezelfde URL als de door de bezoeker aangevraagde, maar vervangt het HTTP-gedeelte van de aanvraag met HTTPS. `HTTP://contoso.com` worden bijvoorbeeld omgeleid naar `HTTPS://contoso.com`. 
 
 ## <a id="http-hsts"></a>HTTP-strikte transport beveiliging (HSTS) inschakelen
 

@@ -7,35 +7,34 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 07/16/2019
+ms.date: 11/07/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91b202f8a5df841fa3d6aa1f0903999b395f8137
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e9d5a137247c072516c0b25d7f6147ef48fec248
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686065"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839795"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Onderhouds planningen gebruiken voor het beheren van service-updates en-onderhoud
 
-Onderhouds planningen zijn nu beschikbaar in alle Azure SQL Data Warehouse regio's. De functie onderhouds planning integreert de Service Health geplande onderhouds meldingen, Resource Health controle en de Azure SQL Data Warehouse onderhouds plannings service.
+De functie onderhouds planning integreert de Service Health geplande onderhouds meldingen, Resource Health controle en de Azure SQL Data Warehouse onderhouds plannings service.
 
-U kunt onderhouds planning gebruiken om een tijd venster te kiezen wanneer het handig is om nieuwe functies, upgrades en patches te ontvangen. U kiest een primair en secundair onderhouds venster binnen een periode van zeven dagen. Als u deze functie wilt gebruiken, moet u een primair en secundair venster binnen verschillende datumbereiken identificeren.
+U moet de onderhouds planning gebruiken om een tijd venster te kiezen wanneer het handig is om nieuwe functies, upgrades en patches te ontvangen. U moet een primair en secundair onderhouds venster binnen een periode van zeven dagen kiezen. elk venster moet zich binnen een bereik van de dag bevallen.
 
-U kunt bijvoorbeeld een primair venster van zaterdag 22:00 op zondag 01:00 plannen en vervolgens een secundair venster van woensdag 19:00 tot 22:00 plannen. Als SQL Data Warehouse geen onderhoud kunt uitvoeren tijdens het primaire onderhouds venster, wordt het onderhoud opnieuw geprobeerd tijdens het secundaire onderhouds venster. Service onderhoud kan optreden in zowel het primaire als het secundaire Windows-venster. Om ervoor te zorgen dat alle onderhouds bewerkingen snel worden voltooid, kunnen DW400 (c) en lagere Data Warehouse-lagen het onderhoud volt ooien buiten een aangewezen onderhouds venster.
+U kunt bijvoorbeeld een primair venster van zaterdag 22:00 op zondag 01:00 plannen en vervolgens een secundair venster van woensdag 19:00 tot 22:00 plannen. Als SQL Data Warehouse geen onderhoud kunt uitvoeren tijdens het primaire onderhouds venster, wordt het onderhoud opnieuw geprobeerd tijdens het secundaire onderhouds venster. Service onderhoud kan tijdens het primaire en het secundaire Windows optreden. Om ervoor te zorgen dat alle onderhouds bewerkingen snel worden voltooid, kunnen DW400c en lagere Data Warehouse-lagen onderhoud volt ooien buiten een aangewezen onderhouds venster.
 
 Voor alle nieuw gemaakte Azure SQL Data Warehouse instanties wordt een door het systeem gedefinieerde onderhouds planning toegepast tijdens de implementatie. De planning kan worden bewerkt zodra de implementatie is voltooid.
 
-Elk onderhouds venster kan tussen drie en acht uur liggen. Onderhoud kan op elk gewenst moment in het venster worden uitgevoerd. Wanneer onderhoud wordt gestart, worden alle actieve sessies geannuleerd en worden niet-doorgevoerde trans acties teruggedraaid. U moet rekening houden met meerdere korte verliezen in connectiviteit wanneer de service nieuwe code implementeert in uw data warehouse. U ontvangt een melding zodra uw data warehouse-onderhoud is voltooid.
+Hoewel een onderhouds venster tussen drie en acht uur kan zijn, betekent dit niet dat het Data Warehouse offline is voor de duur. Onderhoud kan op elk gewenst moment in dat venster optreden en u verwacht dat er een enkele verbreking tijdens deze periode verloopt ~ 5 -6 minuten, aangezien de service nieuwe code implementeert in uw data warehouse. DW400c en lager kunnen meerdere korte verliezen veroorzaken in connectiviteit op verschillende momenten tijdens het onderhouds venster. Als onderhoud wordt gestart, worden alle actieve sessies geannuleerd en worden niet-doorgevoerde trans acties teruggedraaid. Zorg ervoor dat uw data warehouse geen langlopende trans acties heeft vóór de gekozen onderhouds periode om de uitval tijd van het exemplaar te minimaliseren.
 
- Alle onderhouds bewerkingen moeten worden voltooid binnen het geplande onderhouds venster. Er vindt geen onderhoud plaats buiten de opgegeven onderhoudsperioden zonder voorafgaande kennisgeving. Als uw data warehouse tijdens een gepland onderhoud wordt onderbroken, wordt het bijgewerkt tijdens de hervatting. 
+Alle onderhouds bewerkingen moeten binnen de opgegeven onderhouds Vensters worden voltooid, tenzij we een tijd gevoelige update moeten implementeren. Als uw data warehouse tijdens een gepland onderhoud wordt onderbroken, wordt het bijgewerkt tijdens de hervatting. U ontvangt een melding zodra uw data warehouse-onderhoud is voltooid.
 
 ## <a name="alerts-and-monitoring"></a>Waarschuwingen en bewaking
 
-Dankzij de integratie met Service Health meldingen en de Resource Health controle controle kunnen klanten op de hoogte blijven van de bedreigende onderhouds activiteiten. De nieuwe automatisering maakt gebruik van Azure Monitor. U kunt bepalen hoe u op de hoogte wilt worden gesteld van aanstaande onderhouds gebeurtenissen. Daarnaast kunt u kiezen welke automatische stromen u helpen uitval tijd te beheren en de operationele impact te minimaliseren.
-
-Er wordt een melding van 24 uur voorgeschoten vóór alle onderhouds gebeurtenissen die niet voor de DWC400c en lagere lagen zijn. Zorg ervoor dat uw data warehouse geen langlopende trans acties heeft vóór de gekozen onderhouds periode om de uitval tijd van het exemplaar te minimaliseren.
+Dankzij de integratie met Service Health meldingen en de Resource Health controle controle kunnen klanten op de hoogte blijven van de bedreigende onderhouds activiteiten. Deze automatisering maakt gebruik van Azure Monitor. U kunt bepalen hoe u op de hoogte wilt worden gesteld van aanstaande onderhouds gebeurtenissen. Daarnaast kunt u kiezen welke automatische stromen u helpen uitval tijd te beheren en de operationele impact te minimaliseren.
+Er wordt een melding van 24 uur voorgeschoten vóór alle onderhouds gebeurtenissen die niet voor de DWC400c en lagere lagen zijn.
 
 > [!NOTE]
 > In het geval dat er een essentiële update moet worden geïmplementeerd, kunnen geavanceerde meldings tijden aanzienlijk worden verkleind.

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 94db17405457be91795d1588bee68a0deea68246
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: e97783d1a32916cad151f1d0858a8190d0005fd0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114814"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831972"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure Firewall implementeren en configureren met behulp van Azure CLI
 
@@ -284,7 +284,7 @@ Test nu de firewall om te controleren of deze werkt zoals verwacht.
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   De www.google.com-aanvragen moeten slagen en de www.microsoft.com-aanvragen moeten mislukken. Dit laat zien dat uw firewall regels werken zoals verwacht.
+   De `www.google.com` aanvragen moeten slagen en de `www.microsoft.com` aanvragen moeten mislukken. Dit laat zien dat uw firewall regels werken zoals verwacht.
 
 Nu hebt u gecontroleerd of de firewall regels werken:
 

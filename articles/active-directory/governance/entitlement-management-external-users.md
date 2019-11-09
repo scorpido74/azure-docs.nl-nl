@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9107471448a58dc7866fb2cd6052abf168437d2b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e76e5c5d2cfcfd983f2b5cdc279f0c13fa6706e4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174172"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832707"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>De toegang tot externe gebruikers bepalen in het beheer van rechten van Azure AD
 
@@ -97,7 +97,7 @@ Om ervoor te zorgen dat personen buiten uw organisatie toegangs pakketten kunnen
 
 ### <a name="review-your-sharepoint-online-external-sharing-settings"></a>De instellingen voor extern delen van share point online controleren
 
-- Als u share point online-sites wilt toevoegen aan uw toegangs pakketten voor externe gebruikers, moet u ervoor zorgen dat de instelling voor extern delen op organisatie niveau is ingesteld op **iedereen** (gebruikers hoeven zich niet aan te melden) of **nieuwe en bestaande gasten** (gasten moeten zich aanmelden). in of geef een verificatie code op). Zie [extern delen in-of uitschakelen](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)voor meer informatie.
+- Als u share point online-sites wilt toevoegen aan uw toegangs pakketten voor externe gebruikers, moet u ervoor zorgen dat de instelling voor extern delen op organisatie niveau is ingesteld op **iedereen** (gebruikers hoeven zich niet aan te melden) of **nieuwe en bestaande gasten** (gasten moeten zich aanmelden of een verificatie code opgeven). Zie [extern delen in-of uitschakelen](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)voor meer informatie.
 
 - Als u extern delen buiten het beheer van rechten wilt beperken, kunt u de instelling voor extern delen instellen op **bestaande gasten**. Alleen nieuwe gebruikers die via rechten beheer worden uitgenodigd, kunnen toegang krijgen tot deze sites. Zie [extern delen in-of uitschakelen](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)voor meer informatie.
 
@@ -113,7 +113,7 @@ Om ervoor te zorgen dat personen buiten uw organisatie toegangs pakketten kunnen
 
 ### <a name="review-your-teams-sharing-settings"></a>De instellingen voor het delen van teams controleren
 
-- Als u teams wilt toevoegen aan uw toegangs pakketten voor externe gebruikers, moet u ervoor zorgen dat de **toegang gast toestaan in micro soft teams** is **ingesteld op aan om gast** toegang toe te staan. Zie voor meer informatie [gast toegang configureren in het micro soft teams-beheer centrum](https://docs.microsoft.com/microsoftteams/set-up-guests#configure-guest-access-in-the-microsoft-teams-admin-center).
+- Als u teams wilt toevoegen aan uw toegangs pakketten voor externe gebruikers, moet u ervoor zorgen dat de **toegang gast toestaan in micro soft teams** is **ingesteld op aan om gast** toegang toe te staan. Zie voor meer informatie [gast toegang configureren in het micro soft teams-beheer centrum](/microsoftteams/set-up-guests#configure-guest-access-in-the-teams-admin-center).
 
 ## <a name="manage-the-lifecycle-of-external-users"></a>De levens cyclus van externe gebruikers beheren
 

@@ -4,14 +4,14 @@ description: Hierin wordt beschreven hoe u een resource groep maakt in een Azure
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 11/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: d8b1be1d79ae0426d73c45408dd3c4f4f4660afb
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 04a46700b68bcf498956f93c96ce2dccf1b555fe
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532190"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832717"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Resource groepen en-resources op abonnements niveau maken
 
@@ -23,7 +23,7 @@ Als u sjablonen wilt implementeren op abonnements niveau, gebruikt u Azure CLI, 
 
 U kunt de volgende bron typen implementeren op abonnements niveau:
 
-* [implementaties](/azure/templates/microsoft.resources/deployments) 
+* [implementaties](/azure/templates/microsoft.resources/deployments)
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -36,10 +36,16 @@ U kunt de volgende bron typen implementeren op abonnements niveau:
 
 Het schema dat u voor implementaties op abonnements niveau gebruikt, wijkt af van het schema voor implementaties van resource groepen.
 
-Voor het schema gebruikt u:
+Voor sjablonen gebruikt u:
 
 ```json
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
+```
+
+Gebruik voor parameter bestanden:
+
+```json
+https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>Implementatie opdrachten
@@ -76,14 +82,14 @@ Voor implementaties op abonnements niveau moet u een locatie opgeven voor de imp
 
 U kunt een naam opgeven voor de implementatie of de naam van de standaard implementatie gebruiken. De standaard naam is de naam van het sjabloon bestand. Als u bijvoorbeeld een sjabloon met de naam **azuredeploy. json** implementeert, wordt er een standaard implementatie naam van **azuredeploy**gemaakt.
 
-Voor elke implementatie naam is de locatie onveranderbaar. U kunt geen implementatie op één locatie maken wanneer er een bestaande implementatie met dezelfde naam maar een andere locatie is. Als u de fout code `InvalidDeploymentLocation` krijgt, moet u een andere naam of dezelfde locatie gebruiken als de vorige implementatie voor die naam.
+Voor elke implementatie naam is de locatie onveranderbaar. U kunt geen implementatie op één locatie maken wanneer er een bestaande implementatie met dezelfde naam op een andere locatie is. Als u de fout code `InvalidDeploymentLocation`krijgt, moet u een andere naam of dezelfde locatie gebruiken als de vorige implementatie voor die naam.
 
 ## <a name="use-template-functions"></a>Sjabloon functies gebruiken
 
 Voor implementaties op abonnements niveau zijn er enkele belang rijke aandachtspunten bij het gebruik van sjabloon functies:
 
 * De functie [resourceGroup ()](resource-group-template-functions-resource.md#resourcegroup) wordt **niet** ondersteund.
-* De functie [resourceId ()](resource-group-template-functions-resource.md#resourceid) wordt ondersteund. Gebruik deze om de resource-ID op te halen voor resources die worden gebruikt bij implementaties op abonnements niveau. U kunt bijvoorbeeld de resource-ID voor een beleids definitie ophalen met `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`
+* De functie [resourceId ()](resource-group-template-functions-resource.md#resourceid) wordt ondersteund. Gebruik deze om de resource-ID op te halen voor resources die worden gebruikt bij implementaties op abonnements niveau. U kunt bijvoorbeeld de resource-ID voor een beleids definitie ophalen met `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`. Of gebruik de functie [subscriptionResourceId ()](resource-group-template-functions-resource.md#subscriptionresourceid) om de resource-id voor een resource op abonnements niveau op te halen.
 * De functies [Reference ()](resource-group-template-functions-resource.md#reference) en [List ()](resource-group-template-functions-resource.md#list) worden ondersteund.
 
 ## <a name="create-resource-groups"></a>Resource groepen maken

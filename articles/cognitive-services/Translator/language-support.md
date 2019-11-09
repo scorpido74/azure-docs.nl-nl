@@ -1,7 +1,7 @@
 ---
 title: Taal ondersteuning-Translator Text-API
 titleSuffix: Azure Cognitive Services
-description: Een lijst met natuurlijke talen die worden ondersteund door de Translator Text-API.
+description: De Translator Text-API ondersteunt de volgende talen voor tekst omzetting met Neural machine translation (NMT).
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: cb0552612d95500e01edd91aff36406d4c2282bd
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 5e96ced1bd87a0ed8be19bf4e07f7b0d9b319aad
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909981"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837335"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Ondersteuning van talen en regio's voor de Translator Text-API
 
@@ -23,31 +23,31 @@ De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neura
 
 [Meer informatie over hoe automatische vertaling werkt](https://www.microsoft.com/translator/mt.aspx)
 
-## <a name="translation"></a>Vertaling
+## <a name="translation"></a>Omzetting
 
 **V2 Translator-API**
 
 > [!NOTE]
 > V2 is op 30 april 2018 afgeschaft. Migreer uw toepassingen naar v3 om te kunnen profiteren van de nieuwe functionaliteit die alleen beschikbaar is in v3.
 
-* Alleen statistisch: Er is geen Neural systeem beschikbaar voor deze taal.
-* Neural beschikbaar: Er is een Neural-systeem beschikbaar. Gebruik de para `category=generalnn` meter om toegang te krijgen tot het Neural-systeem.
-* Neural standaard: Neural is het standaard Vertaal systeem. Gebruik de para `category=smt` meter om toegang te krijgen tot het statistische systeem voor gebruik met de micro soft Translator-hub.
-* Alleen Neural: Alleen Neural-omzetting is beschikbaar.
+* Alleen statistisch: er is geen Neural systeem beschikbaar voor deze taal.
+* Neural beschikbaar: er is een Neural-systeem beschikbaar. Gebruik de para meter `category=generalnn` om toegang te krijgen tot het Neural-systeem.
+* Neural standaard: Neural is het standaard Vertaal systeem. Gebruik de para meter `category=smt` om toegang te krijgen tot het statistische systeem voor gebruik met de micro soft Translator-hub.
+* Alleen Neural: alleen Neural-omzetting is beschikbaar.
 
 **V3 Translator-API** De V3 Translator-API is Neural standaard en statistische systemen zijn alleen beschikbaar als er geen Neural-systeem bestaat.
 
 > [!NOTE]
 > Momenteel is een subset van de Neural-talen beschikbaar in het aangepaste conversie programma en worden er geleidelijk extra toegevoegd. [Talen weer geven die momenteel beschikbaar zijn in het aangepaste conversie programma](#customization).
 
-|Taal|  Taalcode|  V2 API| V3 API|
+|Taal|  Taalcode|  V2-API| V3-API|
 |:-----|:-----:|:-----|:-----|
 |Afrikaans| `af`    |Alleen statistisch|  Neuraal|
 |Arabisch|    `ar`    |Neural beschikbaar|  Neuraal|
-|Bengalees|    `bn`    |Neural beschikbaar|  Neuraal|
+|Bengalese|    `bn`    |Neural beschikbaar|  Neuraal|
 |Bosnisch (Latijns)|   `bs`    |Neural beschikbaar|  Neuraal|
 |Bulgaars| `bg`    |Neural beschikbaar|  Neuraal|
-|Kantonees (Traditioneel)|   `yue`   |Alleen statistisch|  Statische|
+|Kantonees (traditioneel)|   `yue`   |Alleen statistisch|  Statische|
 |Catalaans|   `ca`    |Alleen statistisch|  Statische|
 |Vereenvoudigd Chinees|    `zh-Hans`   |Neural standaard |Neuraal|
 |Traditioneel Chinees|   `zh-Hant`   |Neural standaard |Neuraal|
@@ -55,9 +55,9 @@ De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neura
 |Tsjechisch| `cs`    |Neural beschikbaar|  Neuraal|
 |Deens|    `da`    |Neural beschikbaar   |Neuraal|
 |Nederlands| `nl`    |Neural beschikbaar|  Neuraal|
-|Engels|   `en`    |Neural beschikbaar|  Neuraal|
+|Nederlands|   `en`    |Neural beschikbaar|  Neuraal|
 |Estisch|  `et`    |Neural beschikbaar|  Neuraal|
-|Fiji|    `fj`    |Alleen statistisch|  Statische|
+|Fijian|    `fj`    |Alleen statistisch|  Statische|
 |Filipijns|  `fil`   |Alleen statistisch|  Statische|
 |Fins|   `fi`    |Neural beschikbaar|  Neuraal|
 |Frans|    `fr`    |Neural beschikbaar|  Neuraal|
@@ -88,7 +88,7 @@ De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neura
 |Queretaro Otomi|   `otq`   |Alleen statistisch|  Statische|
 |Roemeens|  `ro`    |Neural beschikbaar|  Neuraal|
 |Russisch|   `ru`    |Neural beschikbaar|  Neuraal|
-|Samoaanse|    `sm`    |Alleen statistisch|  Statische|
+|Samoan|    `sm`    |Alleen statistisch|  Statische|
 |Servisch (Cyrillisch)|    `sr-Cyrl`   |Alleen statistisch|  Statische|
 |Servisch (Latijns)|   `sr-Latn`   |Alleen statistisch   |Statische|
 |Slowaaks|    `sk`    |Neural beschikbaar|  Neuraal|
@@ -99,7 +99,7 @@ De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neura
 |Tamil| `ta`    |Alleen statistisch|  Statische|
 |Telugu|    `te`    |Alleen Neural|   Neuraal|
 |Thais|  `th`    |Neural beschikbaar|  Neuraal|
-|Tongan|    `to`    |Alleen statistisch|  Statische|
+|Tongaanse|    `to`    |Alleen statistisch|  Statische|
 |Turks|   `tr`    |Neural beschikbaar   |Neuraal|
 |Oekraïens| `uk`    |Neural beschikbaar|  Neuraal|
 |Urdu|  `ur`    |Alleen statistisch|  Statische|
@@ -113,26 +113,26 @@ De methode transtranscrib ondersteunt de volgende talen. In de ' aan/van ', ' <-
 
 | Taal    | Taalcode | Script | Naar/van | Script|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| Arabisch | `ar` | Arabisch`Arab` | <--> | Latijnse`Latn` |
-|Bengalees  | `bn` | Bengali `Beng` | <--> | Latijnse`Latn` |
-| Chinees (vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees`Hans`| <--> | Latijnse`Latn` |
-| Chinees (vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees`Hans`| <--> | Traditioneel Chinees`Hant`|
-| Chinees (traditioneel) | `zh-Hant` | Traditioneel Chinees`Hant`| <--> | Latijnse`Latn` |
-| Chinees (traditioneel) | `zh-Hant` | Traditioneel Chinees`Hant`| <--> | Vereenvoudigd Chinees`Hans` |
-| Gujarati | `gu`  | Gujarati `Gujr` | --> | Latijnse`Latn` |
-| Hebreeuws | `he` | Hebreeuws`Hebr` | <--> | Latijnse`Latn` |
-| Hindi | `hi` | Devanagari `Deva` | <--> | Latijnse`Latn` |
-| Japans | `ja` | Japans`Jpan` | <--> | Latijnse`Latn` |
-| Kanarees | `kn` | Kannada `Knda` | --> | Latijnse`Latn` |
-| Malayalam | `ml` | Malajalam`Mlym` | --> | Latijnse`Latn` |
-| Marathi | `mr` | Devanagari `Deva` | --> | Latijnse`Latn` |
-| Odia | `or` | Odia`Orya` | <--> | Latijnse`Latn` |
-| Punjabi | `pa` | Gurmukhi `Guru`  | <--> | Latijnse`Latn`  |
-| Servisch (Cyrillisch) | `sr-Cyrl` | Cyrillisch`Cyrl`  | --> | Latijnse`Latn` |
-| Servisch (Latijns) | `sr-Latn` | Latijnse`Latn` | --> | Cyrillisch`Cyrl`|
-| Tamil | `ta` | Tamil`Taml` | --> | Latijnse`Latn` |
-| Telugu | `te` | Telugu `Telu` | --> | Latijnse`Latn` |
-| Thais | `th` | Thais`Thai` | <--> | Latijnse`Latn` |
+| Arabisch | `ar` | Arabische `Arab` | <--> | Latijns `Latn` |
+|Bengalese  | `bn` | Bengaals `Beng` | <--> | Latijns `Latn` |
+| Chinees (vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees `Hans`| <--> | Latijns `Latn` |
+| Chinees (vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees `Hans`| <--> | Traditioneel Chinees `Hant`|
+| Chinees (traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Latijns `Latn` |
+| Chinees (traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Vereenvoudigd Chinees `Hans` |
+| Gujarati | `gu`  | Gujarati `Gujr` | --> | Latijns `Latn` |
+| Hebreeuws | `he` | Hebreeuws `Hebr` | <--> | Latijns `Latn` |
+| Hindi | `hi` | Devanagari `Deva` | <--> | Latijns `Latn` |
+| Japans | `ja` | Japanse `Jpan` | <--> | Latijns `Latn` |
+| Kannada | `kn` | Kannada `Knda` | --> | Latijns `Latn` |
+| Malajalam | `ml` | Malayalam `Mlym` | --> | Latijns `Latn` |
+| Marathi | `mr` | Devanagari `Deva` | --> | Latijns `Latn` |
+| Odia | `or` | Oriya `Orya` | <--> | Latijns `Latn` |
+| Punjabi | `pa` | Gurmukhi `Guru`  | <--> | Latijns `Latn`  |
+| Servisch (Cyrillisch) | `sr-Cyrl` | Cyrillische `Cyrl`  | --> | Latijns `Latn` |
+| Servisch (Latijns) | `sr-Latn` | Latijns `Latn` | --> | Cyrillische `Cyrl`|
+| Tamil | `ta` | Tamil `Taml` | --> | Latijns `Latn` |
+| Telugu | `te` | Telugu `Telu` | --> | Latijns `Latn` |
+| Thais | `th` | Thais `Thai` | <--> | Latijns `Latn` |
 
 ## <a name="dictionary"></a>Woordenlijst
 
@@ -142,7 +142,7 @@ De woorden lijst ondersteunt de volgende talen in of vanuit het Engels met behul
 |:----------- |:-------------:|
 | Afrikaans      | `af`          |
 | Arabisch       | `ar`          |
-| Bengalees      | `bn`          |
+| Bengalese      | `bn`          |
 | Bosnisch (Latijns)      | `bs`          |
 | Bulgaars      | `bg`          |
 | Catalaans      | `ca`          |
@@ -191,7 +191,7 @@ De woorden lijst ondersteunt de volgende talen in of vanuit het Engels met behul
 | Vietnamees      | `vi`          |
 | Welsh      | `cy`          |
 
-## <a name="detect"></a>Detect
+## <a name="detect"></a>Detecteren
 
 Translator Text-API detecteert alle talen die beschikbaar zijn voor vertaal-en vele.
 
@@ -209,7 +209,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Taal    | Taalcode |
 |:----------- |:-------------:|
 | Arabisch       | `ar`          |
-| Bengalees      | `bn`          |
+| Bengalese      | `bn`          |
 | Bosnisch (Latijns)      | `bs`          |
 | Bulgaars      | `bg`          |
 | Vereenvoudigd Chinees      | `zh-Hans`          |
@@ -243,7 +243,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Portugees      | `pt`          |
 | Roemeens      | `ro`          |
 | Russisch      | `ru`          |
-|Samoaanse|    `sm`    |
+|Samoan|    `sm`    |
 | Servisch (Latijns)      | `sr-Latn`          |
 | Slowaaks     | `sk`          |
 | Sloveens      | `sl`          |

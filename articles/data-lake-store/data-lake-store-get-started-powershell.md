@@ -1,33 +1,30 @@
 ---
-title: PowerShell gebruiken voor het aan de slag met Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Azure PowerShell gebruiken voor een Azure Data Lake Storage Gen1-account maken en basisbewerkingen uitvoert
-services: data-lake-store
-documentationcenter: ''
+title: Aan de slag met Azure Data Lake Storage Gen1-Power shell | Microsoft Docs
+description: Gebruik Azure PowerShell om een Azure Data Lake Storage Gen1 account te maken en basis bewerkingen uit te voeren.
 author: twooley
-manager: mtillman
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 5bec627f114a20033ca4364c39c048763df36b67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 42ddab6991b418af3e41da9966cdab69ded87461
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66161427"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837899"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Aan de slag met Azure Data Lake Storage Gen1 met behulp van Azure PowerShell
+
 > [!div class="op_single_selector"]
 > * [Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
-> * [Azure-CLI](data-lake-store-get-started-cli-2.0.md)
+> * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
 >
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-Leer hoe u met Azure PowerShell een Azure Data Lake Storage Gen1-account maken en uitvoeren van basisbewerkingen, zoals het maken van mappen, uploaden en downloaden van gegevensbestanden, verwijderen van uw account, enzovoort. Zie voor meer informatie over Data Lake Storage Gen1 [overzicht van Data Lake Storage Gen1](data-lake-store-overview.md).
+Meer informatie over het gebruik van Azure PowerShell om een Azure Data Lake Storage Gen1 account te maken en basis bewerkingen uit te voeren, zoals het maken van mappen, uploaden en downloaden van gegevens bestanden, verwijderen van uw account enzovoort. Zie [overzicht van data Lake Storage gen1](data-lake-store-overview.md)voor meer informatie over data Lake Storage gen1.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,92 +34,137 @@ Leer hoe u met Azure PowerShell een Azure Data Lake Storage Gen1-account maken e
 * **Azure PowerShell 1.0 of hoger**. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview).
 
 ## <a name="authentication"></a>Verificatie
-In dit artikel wordt een eenvoudigere verificatiemethode met Data Lake Storage Gen1 waarbij u wordt gevraagd de referenties van uw Azure-account in te voeren. Het toegangsniveau voor Data Lake Storage Gen1 account en bestandssysteem wordt vervolgens bepaald door het toegangsniveau van de aangemelde gebruiker. Er zijn echter andere manieren ook om te verifiëren met Data Lake Storage Gen1, zoals **verificatie door eindgebruikers** of **service-naar-serviceverificatie**. Zie [Verificatie door eindgebruikers](data-lake-store-end-user-authenticate-using-active-directory.md) of [Service-to-serviceverificatie](data-lake-store-authenticate-using-active-directory.md) voor instructies en meer informatie over verificatie.
+
+In dit artikel wordt gebruikgemaakt van een eenvoudigere verificatie methode met Data Lake Storage Gen1 waarbij u wordt gevraagd de referenties van uw Azure-account in te voeren. Het toegangs niveau voor Data Lake Storage Gen1 account en bestands systeem wordt vervolgens bepaald door het toegangs niveau van de aangemelde gebruiker. Er zijn echter andere manieren om te verifiëren met Data Lake Storage Gen1, die verificatie door eind gebruikers of service-naar-service-verificatie zijn. Zie [Verificatie door eindgebruikers](data-lake-store-end-user-authenticate-using-active-directory.md) of [Service-to-serviceverificatie](data-lake-store-authenticate-using-active-directory.md) voor instructies en meer informatie over verificatie.
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Een Data Lake Storage Gen1-account maken
-1. Open een nieuw Windows PowerShell-venster via het bureaublad. Voer het volgende fragment Meld u aan bij uw Azure-account, het abonnement instellen en registreren van de Data Lake Storage Gen1-provider. Wanneer u hierom wordt gevraagd om aan te melden, zorg er dan voor dat u zich aanmeldt als een van de beheerders/eigenaar van het abonnement:
 
-        # Log in to your Azure account
-        Connect-AzAccount
+1. Open een nieuw Windows PowerShell-venster via het bureaublad. Voer het volgende code fragment in om u aan te melden bij uw Azure-account, het abonnement in te stellen en de Data Lake Storage Gen1 provider te registreren. Wanneer u wordt gevraagd om u aan te melden, moet u zich aanmelden als een van de abonnements beheerders/-eigenaar:
 
-        # List all the subscriptions associated to your account
-        Get-AzSubscription
+    ```PowerShell
+    # Log in to your Azure account
+    Connect-AzAccount
 
-        # Select a subscription
-        Set-AzContext -SubscriptionId <subscription ID>
+    # List all the subscriptions associated to your account
+    Get-AzSubscription
 
-        # Register for Azure Data Lake Storage Gen1
-        Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
-2. Een Data Lake Storage Gen1-account is gekoppeld aan een Azure-resourcegroep. Maak daarom eerst een Azure-resourcegroep.
+    # Select a subscription
+    Set-AzContext -SubscriptionId <subscription ID>
 
-        $resourceGroupName = "<your new resource group name>"
-        New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
+    # Register for Azure Data Lake Storage Gen1
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+    ```
 
-    ![Een Azure-resourcegroep maken](./media/data-lake-store-get-started-powershell/ADL.PS.CreateResourceGroup.png "Een Azure-resourcegroep maken")
-3. Maak een Data Lake Storage Gen1-account. De naam die u opgeeft, mag alleen kleine letters en cijfers bevatten.
+1. Een Data Lake Storage Gen1-account is gekoppeld aan een Azure-resource groep. Begin met het maken van een resource groep.
 
-        $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
-        New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+    ```PowerShell
+    $resourceGroupName = "<your new resource group name>"
+    New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
+    ```
 
-    ![Maak een account voor Data Lake Storage Gen1](./media/data-lake-store-get-started-powershell/ADL.PS.CreateADLAcc.png "een Gen1 van Data Lake Storage-account maken")
-4. Controleer of het account is gemaakt.
+    ![Een Azure-resource groep maken](./media/data-lake-store-get-started-powershell/ADL.PS.CreateResourceGroup.png "Een Azure-resourcegroep maken")
 
-        Test-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
+1. Maak een Data Lake Storage Gen1-account. De naam die u opgeeft, mag alleen kleine letters en cijfers bevatten.
+
+    ```PowerShell
+    $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
+    New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+    ```
+
+    ![Een Data Lake Storage Gen1-account maken](./media/data-lake-store-get-started-powershell/ADL.PS.CreateADLAcc.png "Een Data Lake Storage Gen1-account maken")
+
+1. Controleer of het account is gemaakt.
+
+    ```PowerShell
+    Test-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
+    ```
 
     De uitvoer van de cmdlet moet **waar** zijn.
 
-## <a name="create-directory-structures-in-your-data-lake-storage-gen1-account"></a>Mapstructuren maken in uw Data Lake Storage Gen1-account
-U kunt mappen maken onder uw Data Lake Storage Gen1-account te beheren en opslaan van gegevens.
+## <a name="create-directory-structures"></a>Mapstructuren maken
+
+U kunt mappen onder uw Data Lake Storage Gen1-account maken om gegevens te beheren en op te slaan.
 
 1. Geef een hoofdmap op.
 
-        $myrootdir = "/"
-2. Maak onder de opgegeven hoofdmap een nieuwe map met de naam **mynewdirectory**.
+    ```PowerShell
+    $myrootdir = "/"
+    ```
 
-        New-AzDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/mynewdirectory
-3. Controleer of de nieuwe map is gemaakt.
+1. Maak onder de opgegeven hoofdmap een nieuwe map met de naam **mynewdirectory**.
 
-        Get-AzDataLakeStoreChildItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir
+    ```PowerShell
+    New-AzDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/mynewdirectory
+    ```
+
+1. Controleer of de nieuwe map is gemaakt.
+
+    ```PowerShell
+    Get-AzDataLakeStoreChildItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir
+    ```
 
     De uitvoer moet overeenkomen met de volgende schermafbeelding:
 
-    ![Map controleren](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "Map controleren")
+    ![Map controleren](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "Map verifiëren")
 
-## <a name="upload-data-to-your-data-lake-storage-gen1-account"></a>Gegevens uploaden naar uw Data Lake Storage Gen1-account
-U kunt uw gegevens uploaden naar Data Lake Storage Gen1 rechtstreeks op het hoogste niveau doen of naar een map die u in het account hebt gemaakt. In de codefragmenten in deze sectie ziet u hoe u voorbeeldgegevens uploadt naar de map (**mynewfolder**) die u in de voorgaande sectie hebt gemaakt.
+## <a name="upload-data"></a>Gegevens uploaden
+
+U kunt uw gegevens rechtstreeks naar Data Lake Storage Gen1 uploaden op het hoofd niveau of naar een map die u in het account hebt gemaakt. In de codefragmenten in deze sectie ziet u hoe u voorbeeldgegevens uploadt naar de map (**mynewfolder**) die u in de voorgaande sectie hebt gemaakt.
 
 Als u nog geen voorbeeldgegevens hebt om te uploaden, kunt u de map **Ambulance Data** uit de [Azure Data Lake Git-opslagplaats](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) gebruiken. Download het bestand en sla het in een lokale map op uw computer op, bijvoorbeeld C:\sampledata\.
 
-    Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\sampledata\vehicle1_09142014.csv" -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
+```PowerShell
+Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
+   -Path "C:\sampledata\vehicle1_09142014.csv" `
+   -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
+```
 
+## <a name="rename-download-and-delete-data"></a>Gegevens een andere naam geven, downloaden en verwijderen
 
-## <a name="rename-download-and-delete-data-from-your-data-lake-storage-gen1-account"></a>Wijzig de naam, downloaden en gegevens uit uw Data Lake Storage Gen1-account verwijderen
 Als u de naam van een bestand wilt wijzigen, gebruikt u de volgende opdracht:
 
-    Move-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir\mynewdirectory\vehicle1_09142014.csv -Destination $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
+```PowerShell
+Move-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
+    -Path $myrootdir\mynewdirectory\vehicle1_09142014.csv `
+    -Destination $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
+```
 
 Gebruik de volgende opdracht als u een bestand wilt uploaden:
 
-    Export-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv -Destination "C:\sampledata\vehicle1_09142014_Copy.csv"
+```PowerShell
+Export-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
+    -Path $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv `
+    -Destination "C:\sampledata\vehicle1_09142014_Copy.csv"
+```
 
 Gebruik de volgende opdracht als u een bestand wilt verwijderen:
 
-    Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Paths $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
+```PowerShell
+Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
+    -Paths $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
+```
 
 Wanneer dit wordt gevraagd, typt u **Y** om het item te verwijderen. Als u meer dan één bestand wilt verwijderen, kunt u alle paden, door komma's gescheiden, opgeven.
 
-    Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
+```PowerShell
+Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
+    -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
+```
 
-## <a name="delete-your-data-lake-storage-gen1-account"></a>Uw Data Lake Storage Gen1-account verwijderen
-Gebruik de volgende opdracht om uw Gen1 van Data Lake Storage-account te verwijderen.
+## <a name="delete-your-account"></a>Uw account verwijderen
 
-    Remove-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
+Gebruik de volgende opdracht om uw Data Lake Storage Gen1-account te verwijderen.
+
+```PowerShell
+Remove-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
+```
 
 Wanneer dit wordt gevraagd, typt u **Y** om het account te verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Richtlijnen voor het gebruik van PowerShell met Azure Data Lake Storage Gen1 afstemmen van prestaties](data-lake-store-performance-tuning-powershell.md)
-* [Azure Data Lake Storage Gen1 gebruiken voor big data-vereisten](data-lake-store-data-scenarios.md) 
+
+* [Richt lijnen voor het afstemmen van prestaties voor het gebruik van Power shell met Azure Data Lake Storage Gen1](data-lake-store-performance-tuning-powershell.md)
+* [Azure Data Lake Storage Gen1 gebruiken voor big data vereisten](data-lake-store-data-scenarios.md)
 * [Gegevens beveiligen in Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Azure Data Lake Analytics gebruiken met Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Azure HDInsight gebruiken met Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

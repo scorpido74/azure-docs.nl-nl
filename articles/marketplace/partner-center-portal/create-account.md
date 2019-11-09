@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 09/26/2019
-ms.openlocfilehash: 072fafac7294757afb26511af569ea75ace0d20a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: df857fb938ade329a971578ac206f16f1357d7e5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811936"
+ms.locfileid: "73838764"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Een commercieel Marketplace-account maken in het partner centrum
 
@@ -137,7 +137,7 @@ Nadat u zich hebt aangemeld, gebruikt u de volgende stappen om het instellen van
 
 1. Selecteer in partner centrum **instellingen** > **ontwikkelaars instellingen** > **Program ma's** > **aan de slag te gaan**en voer uw zakelijke e-mail adres in.
 2. Vul de details in op de pagina met het Publisher-profiel.
-3. Lees de voor waarden in de [Microsoft Marketplace Publisher-overeenkomst](http://go.microsoft.com/fwlink/?LinkID=699560)en selecteer vervolgens **accepteren en door gaan** om uw registratie te volt ooien.
+3. Lees de voor waarden in de [Microsoft Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/?LinkID=699560)en selecteer vervolgens **accepteren en door gaan** om uw registratie te volt ooien.
 
     >[!Important]
     >*U moet gemachtigd zijn om namens uw bedrijf te handelen om deze voor waarden te accepteren.*

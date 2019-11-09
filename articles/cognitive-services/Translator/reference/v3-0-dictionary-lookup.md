@@ -1,7 +1,7 @@
 ---
 title: Zoek methode voor Translator Text-API woordenlijst
 titleSuffix: Azure Cognitive Services
-description: Gebruik de Zoek methode Translator Text-API woordenlijst.
+description: De Zoek methode voor de woorden lijst bevat alternatieve vertalingen voor een woord en een klein aantal idiomatisch-zinnen.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 0bbdba343888bc91521245d0c9a0e4eaa87c5538
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bd725d41f75bdfb1048b5bee7e8224679dbece4c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932010"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837258"
 ---
-# <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text-API 3,0: Opzoeken in woordenlijst
+# <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text-API 3,0: opzoeken in woorden lijst
 
 Biedt alternatieve vertalingen voor een woord en een klein aantal idiomatisch-zinnen. Elke vertaling heeft een deel van spraak en een lijst met back-vertalingen. Met de back-vertalingen kunnen gebruikers de vertaling in context begrijpen. Met de [voorbeeld bewerking voor de woorden lijst](./v3-0-dictionary-examples.md) kunt u verder inzoomen om het voor beeld van elk Vertaal paar te bekijken.
 
@@ -29,24 +29,24 @@ Een `POST` aanvraag verzenden naar:
 https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 ```
 
-## <a name="request-parameters"></a>Aanvraagparameters
+## <a name="request-parameters"></a>Aanvraag parameters
 
 Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
 
 <table width="100%">
-  <th width="20%">Queryparameter</th>
-  <th>Description</th>
+  <th width="20%">Query parameter</th>
+  <th>Beschrijving</th>
   <tr>
-    <td>api-version</td>
-    <td>*Vereiste para meter*.<br/>De versie van de API die door de client is aangevraagd. Waarde moet zijn `3.0`.</td>
+    <td>API-versie</td>
+    <td>*Vereiste para meter*.<br/>De versie van de API die door de client is aangevraagd. De waarde moet `3.0`zijn.</td>
   </tr>
   <tr>
-    <td>from</td>
-    <td>*Vereiste para meter*.<br/>Geeft de taal van de invoer tekst aan. De bron taal moet een van de [ondersteunde talen](./v3-0-languages.md) zijn die in het `dictionary` bereik zijn opgenomen.</td>
+    <td>Van</td>
+    <td>*Vereiste para meter*.<br/>Geeft de taal van de invoer tekst aan. De bron taal moet een van de [ondersteunde talen](./v3-0-languages.md) zijn die is opgenomen in het `dictionary` bereik.</td>
   </tr>
   <tr>
-    <td>to</td>
-    <td>*Vereiste para meter*.<br/>Hiermee geeft u de taal van de uitvoer tekst op. De doel taal moet een van de [ondersteunde talen](./v3-0-languages.md) zijn die in het `dictionary` bereik zijn opgenomen.</td>
+    <td>tot</td>
+    <td>*Vereiste para meter*.<br/>Hiermee geeft u de taal van de uitvoer tekst op. De doel taal moet een van de [ondersteunde talen](./v3-0-languages.md) zijn die is opgenomen in het `dictionary` bereik.</td>
   </tr>
 </table>
 
@@ -54,13 +54,13 @@ Aanvraag headers zijn onder andere:
 
 <table width="100%">
   <th width="20%">Headers</th>
-  <th>Description</th>
+  <th>Beschrijving</th>
   <tr>
     <td>Verificatie header (s)</td>
     <td>De <em>vereiste aanvraag header</em>.<br/>Bekijk de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">beschik bare opties voor authenticatie</a>.</td>
   </tr>
   <tr>
-    <td>Inhoudstype</td>
+    <td>Content-Type</td>
     <td>De *vereiste aanvraag header*.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json`.</td>
   </tr>
   <tr>
@@ -69,13 +69,13 @@ Aanvraag headers zijn onder andere:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Optioneel*.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. U kunt deze koptekst weglaten als u de tracerings-ID in de query reeks opneemt `ClientTraceId`met behulp van een query parameter met de naam.</td>
+    <td>*Optioneel*.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. U kunt deze koptekst weglaten als u de tracerings-ID in de query reeks opneemt met behulp van een query parameter met de naam `ClientTraceId`.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Aanvraagbody
 
-De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSON-object met een teken reeks `Text`eigenschap met de naam, die de term vertegenwoordigt die moet worden gezocht.
+De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSON-object met een teken reeks eigenschap met de naam `Text`, die de term vertegenwoordigt die moet worden gezocht.
 
 ```json
 [
@@ -92,25 +92,25 @@ De volgende beperkingen zijn van toepassing:
 
 Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken reeks in de invoer matrix. Een resultaat object bevat de volgende eigenschappen:
 
-  * `normalizedSource`: Een teken reeks met de genormaliseerde vorm van de bron term. Als de aanvraag bijvoorbeeld "JOHN" is, is de genormaliseerde vorm "John". De inhoud van dit veld wordt de invoer voor [Zoek voorbeelden](./v3-0-dictionary-examples.md).
+  * `normalizedSource`: een teken reeks met de genormaliseerde vorm van de bron term. Als de aanvraag bijvoorbeeld "JOHN" is, is de genormaliseerde vorm "John". De inhoud van dit veld wordt de invoer voor [Zoek voorbeelden](./v3-0-dictionary-examples.md).
     
-  * `displaySource`: Een teken reeks waarmee de bron term in een formulier het meest geschikt is voor weer gave van eind gebruikers. Als de invoer bijvoorbeeld ' JOHN ' is, wordt in het weergave formulier de gebruikelijke spelling van de naam weer gegeven: "John". 
+  * `displaySource`: een teken reeks waarmee de bron term in een formulier het meest geschikt is voor weer gave op de eind gebruiker. Als de invoer bijvoorbeeld ' JOHN ' is, wordt in het weergave formulier de gebruikelijke spelling van de naam weer gegeven: "John". 
 
-  * `translations`: Een lijst met vertalingen voor de bron term. Elk element van de lijst is een object met de volgende eigenschappen:
+  * `translations`: een lijst met vertalingen voor de bron term. Elk element van de lijst is een object met de volgende eigenschappen:
 
-    * `normalizedTarget`: Een teken reeks met de genormaliseerde vorm van deze term in de doel taal. Deze waarde moet worden gebruikt als invoer voor [Zoek voorbeelden](./v3-0-dictionary-examples.md).
+    * `normalizedTarget`: een teken reeks die de genormaliseerde vorm van deze term in de doel taal geeft. Deze waarde moet worden gebruikt als invoer voor [Zoek voorbeelden](./v3-0-dictionary-examples.md).
 
-    * `displayTarget`: Een teken reeks met de term in de doel taal en in een vorm die het meest geschikt is voor weer gave op de eind gebruiker. Over het algemeen geldt dit alleen voor het `normalizedTarget` hoofdletter gebruik. Een voor beeld: een eigen zelfstandig naam woord zoals ' Juan `normalizedTarget = "juan"` ' `displayTarget = "Juan"`heeft en.
+    * `displayTarget`: een teken reeks waarmee de term in de doel taal en in een formulier wordt weer gegeven die het meest geschikt is voor gebruik van de eind gebruiker. Over het algemeen is dit slechts een verschil tussen de `normalizedTarget` in termen van het hoofdletter gebruik. Een eigen zelfstandig naam woord zoals ' Juan ' heeft bijvoorbeeld `normalizedTarget = "juan"` en `displayTarget = "Juan"`.
 
-    * `posTag`: Een teken reeks waarmee deze term wordt gekoppeld aan een deel van een spraak label.
+    * `posTag`: een teken reeks waarmee deze term wordt gekoppeld aan een deel van een spraak label.
 
-        | Label naam | Description  |
+        | Label naam | Beschrijving  |
         |----------|--------------|
-        | CORR      | Bijvoegingen   |
+        | Corr      | Bijvoegingen   |
         | ADV      | Beparameters      |
         | CONJ     | Samen voegingen |
         | DET      | Zoekers  |
-        | MODAL    | Termen        |
+        | MODAAL    | Termen        |
         | ZELFSTANDIG     | Woorden        |
         | PREP     | Preposities |
         | PRON     | Prowoorders     |
@@ -119,26 +119,26 @@ Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken ree
 
         Als implementatie opmerking worden deze Tags bepaald door een deel van spraak Tags aan de Engelse kant en vervolgens de meest frequente tag te nemen voor elk bron/doel-paar. Als mensen vaak een Spaans woord vertalen naar een ander deel van een spraak code in het Engels, kunnen Tags uiteindelijk worden beëindigd (ten opzichte van het Spaanse woord).
 
-    * `confidence`: Een waarde tussen 0,0 en 1,0 die de "betrouw baarheid" (of mogelijk nauw keuriger "" kans in de opleidings gegevens ") van dat Vertaal paar vertegenwoordigt. De som van betrouwbaarheids scores voor één bron woord kan niet oplopen tot 1,0. 
+    * `confidence`: een waarde tussen 0,0 en 1,0 die de "betrouw baarheid" (of mogelijk nauw keurigere "waarschijnlijkheid in de opleidings gegevens") van die Vertaal paar vertegenwoordigt. De som van betrouwbaarheids scores voor één bron woord kan niet oplopen tot 1,0. 
 
-    * `prefixWord`: Een teken reeks waarmee het woord wordt weer gegeven als een voor voegsel van de vertaling. Dit is momenteel de geslachte naam van zelfstandige naam woorden, in talen met geslachte determiners. Het voor voegsel van het Spaanse woord "Mosca" is bijvoorbeeld "La", omdat "Mosca" een Feminine-zelfstandig naam woord in het Spaans is. Dit is alleen afhankelijk van de vertaling en niet voor de bron. Als er geen voor voegsel is, is dit de lege teken reeks.
+    * `prefixWord`: een teken reeks waarmee het woord wordt weer gegeven als een voor voegsel van de vertaling. Dit is momenteel de geslachte naam van zelfstandige naam woorden, in talen met geslachte determiners. Het voor voegsel van het Spaanse woord "Mosca" is bijvoorbeeld "La", omdat "Mosca" een Feminine-zelfstandig naam woord in het Spaans is. Dit is alleen afhankelijk van de vertaling en niet voor de bron. Als er geen voor voegsel is, is dit de lege teken reeks.
     
-    * `backTranslations`: Een lijst met ' back vertalingen ' van het doel. Bijvoorbeeld bron woorden waarnaar het doel kan worden vertaald. De lijst moet het aangevraagde bron woord bevatten (bijvoorbeeld, als het gezochte bron woord ' vliegen ' is, dan is het gegarandeerd dat ' vliegen ' in de `backTranslations` lijst wordt weer geven). Het is echter niet zeker dat deze zich op de eerste positie bevindt. Dit is vaak niet het geval. Elk element van de `backTranslations` lijst is een object dat wordt beschreven door de volgende eigenschappen:
+    * `backTranslations`: een lijst met ' back-vertalingen ' van het doel. Bijvoorbeeld bron woorden waarnaar het doel kan worden vertaald. De lijst moet het aangevraagde bron woord bevatten (bijvoorbeeld, als het gezochte bron woord ' vliegen ' is, dan is het gegarandeerd dat ' vliegen ' in de `backTranslations` lijst staat). Het is echter niet zeker dat deze zich op de eerste positie bevindt. Dit is vaak niet het geval. Elk element van de `backTranslations` lijst is een object dat wordt beschreven door de volgende eigenschappen:
 
-        * `normalizedText`: Een teken reeks met de genormaliseerde vorm van de bron term die een back-translatie van het doel is. Deze waarde moet worden gebruikt als invoer voor [Zoek voorbeelden](./v3-0-dictionary-examples.md).        
+        * `normalizedText`: een teken reeks met de genormaliseerde vorm van de bron term die een back-translatie van het doel is. Deze waarde moet worden gebruikt als invoer voor [Zoek voorbeelden](./v3-0-dictionary-examples.md).        
 
-        * `displayText`: Een teken reeks met de bron term die een back-upconversie van het doel is in een formulier dat het meest geschikt is voor weer gave op de eind gebruiker.
+        * `displayText`: een teken reeks die de bron term bevat die een back-translatie vormt van het doel in een formulier dat het meest geschikt is voor weer gave op de eind gebruiker.
 
-        * `numExamples`: Een geheel getal dat het aantal voor beelden voor deze Vertaal paar voor stelt. De werkelijke voor beelden moeten worden opgehaald met een afzonderlijke aanroep naar [lookup-voor beelden](./v3-0-dictionary-examples.md). Het nummer is voornamelijk bedoeld om weer gave in een UX te vergemakkelijken. Zo kan een gebruikers interface een Hyper Link toevoegen aan de back-translatie als het aantal voor beelden groter is dan nul en de back-vertalingen als tekst zonder opmaak weer geven als er geen voor beelden zijn. Houd er rekening mee dat het werkelijke aantal voor beelden dat wordt geretourneerd door een aanroep van de `numExamples`voor beelden van de [Zoek opdracht](./v3-0-dictionary-examples.md) , kan kleiner zijn dan, omdat extra filters op de vlucht kunnen worden toegepast om "onjuiste" voor beelden te verwijderen.
+        * `numExamples`: een geheel getal dat het aantal voor beelden voor deze Vertaal paar voor stelt. De werkelijke voor beelden moeten worden opgehaald met een afzonderlijke aanroep naar [lookup-voor beelden](./v3-0-dictionary-examples.md). Het nummer is voornamelijk bedoeld om weer gave in een UX te vergemakkelijken. Zo kan een gebruikers interface een Hyper Link toevoegen aan de back-translatie als het aantal voor beelden groter is dan nul en de back-vertalingen als tekst zonder opmaak weer geven als er geen voor beelden zijn. Houd er rekening mee dat het werkelijke aantal voor beelden dat wordt geretourneerd door een aanroep van de [voor beelden van de zoek opdracht](./v3-0-dictionary-examples.md) kleiner is dan `numExamples`, omdat extra filtering op de vlucht kan worden toegepast om "onjuiste" voor beelden te verwijderen.
         
-        * `frequencyCount`: Een geheel getal dat de frequentie van deze Vertaal koppeling in de gegevens vertegenwoordigt. Het belangrijkste doel van dit veld is een gebruikers interface te bieden met een manier om back-vertalingen te sorteren, zodat de meest voorkomende voor waarden het eerst zijn.
+        * `frequencyCount`: een geheel getal dat de frequentie van dit vertaal paar in de gegevens vertegenwoordigt. Het belangrijkste doel van dit veld is een gebruikers interface te bieden met een manier om back-vertalingen te sorteren, zodat de meest voorkomende voor waarden het eerst zijn.
 
     > [!NOTE]
-    > Als de term die wordt gezocht, niet in de woorden lijst voor komt, is de reactie 200 (OK), `translations` maar is de lijst een lege lijst.
+    > Als de term die wordt gezocht, niet in de woorden lijst voor komt, is de reactie 200 (OK), maar is de `translations` lijst een lege lijst.
 
 ## <a name="examples"></a>Voorbeelden
 
-In dit voor beeld ziet u hoe u alternatieve vertalingen in het Spaans van `fly` de Engelse periode kunt opzoeken.
+In dit voor beeld ziet u hoe u in het Spaans van de Engelse termijn alternatieve vertalingen kunt opzoeken `fly`.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
@@ -191,7 +191,7 @@ In dit voor beeld ziet u wat er gebeurt wanneer de term die wordt gezocht, niet 
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"
 ```
 
-Omdat de term niet in de woorden lijst voor komt, bevat de antwoord tekst een `translations` lege lijst.
+Omdat de term niet in de woorden lijst voor komt, bevat de antwoord tekst een lege `translations`-lijst.
 
 ```
 [

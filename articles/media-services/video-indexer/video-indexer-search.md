@@ -1,7 +1,7 @@
 ---
-title: Exacte momenten in video's - Video Indexer zoeken
-titlesuffix: Azure Media Services
-description: In dit onderwerp ziet u hoe u exacte momenten in video's met behulp van Video Indexer vinden.
+title: Zoek naar een exacte momenten binnen Video's-Video Indexer
+titleSuffix: Azure Media Services
+description: In dit onderwerp ziet u hoe u met behulp van Video Indexer precies even vragen kunt vinden in Video's.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,47 +10,47 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 93376059dac2a8336e581269d8289d893779b291
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ebf7606d1a0932cc2254e14a40a2fff550fd35f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799094"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833799"
 ---
 # <a name="find-exact-moments-within-videos"></a>Exacte momenten in video's zoeken
 
-Dit onderwerp leest u de zoekopties waarmee u kunt exacte momenten in video's zoeken.
+Dit onderwerp bevat een overzicht van de zoek opties waarmee u precies even vragen kunt vinden in Video's.
 
 1. Ga naar de [Video Indexer](https://www.videoindexer.ai/)-website en meld u aan.
-2. Zoeken in alle video's in uw account.
+2. Zoek naar alle Video's in uw account.
 
-    In het volgende voorbeeld wordt er gezocht naar alle video's die communiceren over beveiliging en waarin Satya wordt weergegeven,
+    In het volgende voor beeld wordt gezocht naar alle Video's die praten over beveiliging en waarin Satya wordt weer gegeven,
 
     ![Search](./media/video-indexer-search/video-indexer-search01.png)
-3. Zoeken naar de samengevatte inzichten van de video.
+3. Doorzoek de samen vatting van de video.
 
-    Vervolgens kunt u zoeken binnen een video door te klikken op **afspelen** op de video. Vervolgens kunt u zoeken binnen de video door het selecteren van de **zoeken** tabblad. 
+    U kunt vervolgens in een video zoeken door te klikken op **afspelen** op de video. Vervolgens kunt u in de video zoeken door het tabblad **zoeken** te selecteren. 
 
-    In het volgende voorbeeld wordt er gezocht naar "veilig" in de geselecteerde video.
+    In het volgende voor beeld zoeken we naar ' beveiligd ' in de geselecteerde video.
 
     ![Search](./media/video-indexer-search/video-indexer-search02.png)
 
-    Als u klikt op een van de resultaten, brengt de speler u op dat moment in de video. U kunt de weergave van de speler/inzichten en de synchronisatie in uw toepassing bereiken. Zie voor meer informatie, [widgets in uw toepassing insluiten van Video Indexer](video-indexer-embed-widgets.md). 
-4. Zoeken naar de gedetailleerde informatie van de video.
+    Als u op een van de resultaten klikt, brengt de speler naar dat moment in de video. U kunt de weer gave van de speler/inzichten en synchronisatie in uw toepassing verkrijgen. Zie [video indexer widgets insluiten in uw toepassing](video-indexer-embed-widgets.md)voor meer informatie. 
+4. Zoek de gedetailleerde uitsplitsing van de video.
     
-    Als u wilt maken van uw eigen clip op basis van de video die u hebt gevonden, drukt u op de **bewerken** knop. Deze pagina ziet u samen met de insights video als filters. Zie voor meer informatie, [weergeven en bewerken van Video Indexer-inzichten](video-indexer-view-edit.md). 
+    Als u uw eigen clip wilt maken op basis van de video die u hebt gevonden, klikt u op de knop **bewerken** . Op deze pagina vindt u video en de inzichten als filters. Zie [video indexer Insights weer geven en bewerken](video-indexer-view-edit.md)voor meer informatie. 
 
-    U kunt zoeken in de video om weer te geven alleen de regels die u geïnteresseerd bent in en gebruikt u de inzichten aan clientzijde voor het filteren van de onderdelen die u wilt zien. Wanneer u klaar bent, kunt u uw clip en druk op bekijken **publiceren** te maken van de nieuwe clip die wordt weergegeven in de galerie.
+    U kunt in de video zoeken om alleen de gewenste regels weer te geven en de zijde inzichten te gebruiken voor het filteren van de onderdelen die u wilt weer geven. Wanneer u klaar bent, kunt u een voor beeld van de clip bekijken en op **publiceren** drukken om de nieuwe clip te maken die wordt weer gegeven in de galerie.
     
-    In het volgende voorbeeld wordt gezocht we de tekst "gemengde realiteit". We hebben ook meer filters toegepast zoals wordt weergegeven in het onderstaande scherm.
+    In het volgende voor beeld is gezocht naar de tekst ' Mixed Reality '. We hebben ook extra filters toegepast, zoals in het onderstaande scherm wordt weer gegeven.
     
     ![Search](./media/video-indexer-search/video-indexer-search03.png)
 
 ## <a name="next-steps"></a>Volgende stappen 
 
-Als u de video die u werken wilt met hebt gevonden, kunt u blijven verwerken van de video, zoals beschreven in een van de volgende onderwerpen: 
+Zodra u de video hebt gevonden waarmee u wilt werken, kunt u door gaan met het verwerken van de video, zoals beschreven in een van de volgende onderwerpen: 
 
-- [Uw video's diepe inzichten gebruiken](use-editor-create-project.md)
+- [Uitgebreide inzichten van uw Video's gebruiken](use-editor-create-project.md)
 - [REST-API van Video Indexer gebruiken](video-indexer-use-apis.md)
 - [Video Indexer-widgets insluiten in uw toepassingen](video-indexer-embed-widgets.md)
 

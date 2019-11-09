@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 76648428e6adcaed579b0e4f1896fdf83e11a8b6
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 8ce949ac997ba7ee38cb057752d89f4b4d22388f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348863"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838708"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Een Azure Storage-account naar een andere regio verplaatsen
 
@@ -51,7 +51,7 @@ Deze sjabloon bevat instellingen die uw opslag account beschrijven.
 
 Een sjabloon exporteren met behulp van Azure Portal:
 
-1. Meld u aan bij [Azure Portal](http://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **alle resources** en selecteer vervolgens uw opslag account.
 
@@ -137,7 +137,7 @@ De sjabloon implementeren met behulp van Azure Portal:
          "location": "centralus"
          }]          
     ```
-    Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS** = -**Midden**.
+    Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **centrale amerikaanse** = **centralus**.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -186,9 +186,9 @@ Implementeer de sjabloon om een nieuw opslag account te maken in de doel regio.
 
 2. Voer de eigenschaps waarden in of Selecteer deze:
 
-- **Abonnement**: Selecteer een Azure-abonnement.
+- **Subscription**: selecteer een Azure-abonnement.
 
-- **Resourcegroep**: Selecteer **nieuwe maken** en geef de resource groep een naam.
+- **Resourcegroep**: selecteer **Nieuwe maken** en geef de resourcegroep een naam.
 
 - **Locatie**: Selecteer een Azure-locatie.
 
@@ -219,7 +219,7 @@ Sommige functies worden niet naar een sjabloon geëxporteerd, dus moet u deze to
 
 De volgende tabel bevat een overzicht van deze functies en richt lijnen voor het toevoegen van ze aan uw nieuwe opslag account.
 
-| Functie    | Richtlijnen    |
+| Functie    | Hulp    |
 |--------|-----------|
 | **Levenscyclus beheer beleid** | [De levenscyclus van Azure Blob-opslag beheren](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statische websites** | [Een statische website hosten in Azure Storage](../blobs/storage-blob-static-website-how-to.md) |
@@ -234,19 +234,19 @@ De volgende tabel bevat een overzicht van deze functies en richt lijnen voor het
 
 Hier volgen enkele manieren om uw gegevens te verplaatsen.
 
-:heavy_check_mark: **Azure-opslagverkenner**
+: heavy_check_mark: **Azure Storage Explorer**
 
   Het is eenvoudig te gebruiken en geschikt voor kleine gegevens sets. U kunt containers en bestands shares kopiëren en deze vervolgens in het doel account plakken.
 
   Zie [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/);
 
-:heavy_check_mark: **AzCopy**
+: heavy_check_mark: **AzCopy**
 
   Dit is de aanbevolen benadering. Het is geoptimaliseerd voor prestaties.  Een van de manieren waarop het sneller is, is dat gegevens rechtstreeks tussen opslag servers worden gekopieerd, zodat AzCopy niet de netwerk bandbreedte van uw computer gebruikt. Gebruik AzCopy op de opdracht regel of als onderdeel van een aangepast script.
 
   Zie [aan de slag met AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-:heavy_check_mark: **Azure Data Factory** 
+: heavy_check_mark: **Azure Data Factory** 
 
   Gebruik dit hulp programma alleen als u functionaliteit nodig hebt die niet wordt ondersteund in de huidige versie van AzCopy. In de huidige release van AzCopy kunt u bijvoorbeeld geen blobs kopiëren tussen accounts die een hiërarchische naam ruimte hebben. AzCopy behoudt ook bestands toegangscontrole lijsten of bestands tempels (bijvoorbeeld: Create and modified time Stamps). 
 

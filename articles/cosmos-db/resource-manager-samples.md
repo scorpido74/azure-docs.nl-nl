@@ -1,17 +1,17 @@
 ---
 title: Azure Resource Manager sjablonen voor Azure Cosmos DB
 description: Gebruik Azure Resource Manager sjablonen om Azure Cosmos DB te maken en te configureren.
-author: markjbrown
+author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: ecdfe89e899e0d416784ae32a0d66b335c09e2b6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/07/2019
+ms.author: thvankra
+ms.openlocfilehash: 7c508d736c7c04cc6df2b42e0a90a2906052adbc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582812"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835522"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Resource Manager sjablonen voor Azure Cosmos DB
 
@@ -37,8 +37,6 @@ De volgende tabellen bevatten koppelingen naar Azure Resource Manager sjablonen 
 |**Sjabloon**|**Beschrijving**|
 |---| ---|
 |[Een Azure Cosmos-account maken, een spatie, tabel](manage-cassandra-with-resource-manager.md#create-resource) | Met deze sjabloon maakt u een Cassandra-API-account in twee regio's waarvoor multi-master is ingeschakeld. Het Azure Cosmos-account heeft twee tabellen die door Voer op het niveau van de bestands ruimte worden gedeeld. |
-|[De door Voer (RU/s) bijwerken voor een spatie](manage-cassandra-with-resource-manager.md#keyspace-ru-update) | Met deze sjabloon wordt de door Voer voor een spatie in een Cassandra-API-account bijgewerkt. |
-|[De door Voer (RU/s) voor een tabel bijwerken](manage-cassandra-with-resource-manager.md#table-ru-update) | Met deze sjabloon wordt de door Voer voor een tabel in een Cassandra-API-account bijgewerkt. |
 
 ## <a name="gremlin-api"></a>Gremlin-API
 

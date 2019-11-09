@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a1c3bec4b32a9d3450e307f42958bb19263c3d7a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ddd631b809d4a0635107069f48281db4c0a2e7e0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717150"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837558"
 ---
 # <a name="permutation-feature-importance"></a>Permutatie functie urgentie
 
@@ -24,7 +24,7 @@ In deze module worden functie waarden wille keurig in de andere volg orde, één
 
 De scores die de module retourneert, vertegenwoordigen de *wijziging* van de prestaties van een getraind model, na permutatie. Belang rijke functies zijn doorgaans gevoeliger voor het proces waarin de procedure wordt uitgevoerd, zodat ze resulteren in hogere urgentie scores. 
 
-Dit artikel bevat een overzicht van de permutatie functie, de theoretische basis en de bijbehorende toepassingen in machine learning: het belang van de [permutatie functie](http://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
+Dit artikel bevat een overzicht van de permutatie functie, de theoretische basis en de bijbehorende toepassingen in machine learning: het belang van de [permutatie functie](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
 
 ## <a name="how-to-use-permutation-feature-importance"></a>Het belang van de permutatie-functie gebruiken
 

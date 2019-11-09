@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 659c4cb3a6f0d50176875b76eeb2784c711eafd1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 84a46e66bb6c36950a84fbeb2dacc3a8d6bcc241
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967147"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833372"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Een zelfondertekend certificaat van Azure-toepassing gateway genereren met een aangepaste basis-CA
 
@@ -23,7 +23,7 @@ Application Gateway vertrouwt het certificaat van uw website standaard als dit i
 > [!NOTE]
 > Zelfondertekende certificaten worden niet standaard vertrouwd en kunnen lastig zijn om te onderhouden. Ze kunnen ook verouderde hash-en coderings suites gebruiken die mogelijk niet sterk zijn. Voor betere beveiliging koopt u een certificaat dat is ondertekend door een bekende certificerings instantie.
 
-In dit artikel leert u hoe u:
+In dit artikel leert u het volgende:
 
 - Uw eigen aangepaste certificerings instantie maken
 - Een zelfondertekend certificaat maken dat is ondertekend door uw aangepaste certificerings instantie
@@ -40,7 +40,7 @@ In dit artikel leert u hoe u:
 
 - **Een SKU van Application Gateway v2**
    
-  Als u geen bestaande toepassings gateway hebt, raadpleegt [u Quick Start: Webverkeer omleiden met Azure Application Gateway - Azure Portal](quick-create-portal.md).
+  Als u geen bestaande toepassings gateway hebt, raadpleegt u [Quick Start: direct Web Traffic with Azure-toepassing gateway-Azure Portal](quick-create-portal.md).
 
 ## <a name="create-a-root-ca-certificate"></a>Een basis-CA-certificaat maken
 
@@ -87,7 +87,7 @@ Gebruik de volgende opdracht om de sleutel voor het server certificaat te genere
 De CSR is een open bare sleutel die aan een CA wordt toegewezen bij het aanvragen van een certificaat. De CA geeft het certificaat voor deze specifieke aanvraag uit.
 
 > [!NOTE]
-> De CN (common name) voor het server certificaat moet verschillen van het domein van de verlener. In dit geval is de CN voor de verlener bijvoorbeeld www.contoso.com en is de CN van het server certificaat www.fabrikam.com
+> De CN (common name) voor het server certificaat moet verschillen van het domein van de verlener. In dit geval is de CN voor de verlener `www.contoso.com` en is de CN van het server certificaat `www.fabrikam.com`.
 
 
 1. Gebruik de volgende opdracht om de CSR te genereren:
@@ -96,9 +96,9 @@ De CSR is een open bare sleutel die aan een CA wordt toegewezen bij het aanvrage
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. Wanneer u hierom wordt gevraagd, typt u het wacht woord voor de hoofd sleutel en de organisatie gegevens voor de aangepaste CA: Land, provincie, org, OE en de Fully Qualified Domain Name. Dit is het domein van de website en het moet afwijken van de verlener.
+1. Wanneer u hierom wordt gevraagd, typt u het wacht woord voor de hoofd sleutel en de organisatie gegevens voor de aangepaste CA: land, provincie, org, OE en de Fully Qualified Domain Name. Dit is het domein van de website en het moet afwijken van de verlener.
 
-   ![Servercertificaat](media/self-signed-certificates/server-cert.png)
+   ![Server certificaat](media/self-signed-certificates/server-cert.png)
 
 ### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>Genereer het certificaat met de CSR en de sleutel en onderteken het met de basis sleutel van de CA
 
@@ -130,7 +130,7 @@ Configureer op uw webserver SSL met behulp van de bestanden fabrikam. CRT en fab
 
 ### <a name="iis"></a>IIS
 
-Zie [How to: voor instructies over het importeren van een certificaat en het uploaden ervan als server certificaat op IIS. Geïmporteerde certificaten installeren op een webserver in Windows Server 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
+Zie [procedure: geïmporteerde certificaten installeren op een webserver in Windows server 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)voor instructies over het importeren van een certificaat en het uploaden ervan als server certificaat in IIS.
 
 Zie [SSL instellen in IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)voor instructies voor SSL-binding.
 

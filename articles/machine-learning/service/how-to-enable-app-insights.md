@@ -11,30 +11,31 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/11/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c02c502dc2ab85a6ae1c602c53723e9b5a758250
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 545826a66e518366cd993a1e293c4137bde08c22
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576742"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839087"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eind punten bewaken en verzamelen
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u gegevens kunt verzamelen van en bewaakt modellen die zijn geïmplementeerd op web service-eind punten in azure Kubernetes service (AKS) of Azure Container Instances (ACI) door Azure-toepassing inzichten in te scha kelen. Naast het verzamelen van de invoer gegevens en het antwoord van een eind punt kunt u het volgende controleren:
-* Aanvraag tarieven, reactie tijden en fout percentages.
-* Afhankelijkheids tarieven, reactie tijden en fout percentages.
-* Uitzonderingen.
+
+* Aanvraag tarieven, reactie tijden en fout tarieven
+* Afhankelijkheids tarieven, reactie tijden en fout percentages
+* Uitzonderingen
 
 [Meer informatie over Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md). 
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+* Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree)
 
-* Een Azure Machine Learning-werk ruimte, een lokale map die uw scripts bevat en de Azure Machine Learning SDK voor python is geïnstalleerd. Zie [How to configure a Development Environment (een ontwikkel omgeving configureren](how-to-configure-environment.md)) voor meer informatie over het verkrijgen van deze vereisten.
-* Een getraind machine learning model dat moet worden geïmplementeerd in azure Kubernetes service (AKS) of Azure container instance (ACI). Als u er nog geen hebt, raadpleegt u de zelf studie over het [classificatie Model Train image](tutorial-train-models-with-aml.md) .
+* Een Azure Machine Learning-werk ruimte, een lokale map die uw scripts bevat en de Azure Machine Learning SDK voor python is geïnstalleerd. Zie [een ontwikkel omgeving configureren](how-to-configure-environment.md) voor meer informatie over het verkrijgen van deze vereisten.
+* Een getraind machine learning model dat moet worden geïmplementeerd in azure Kubernetes service (AKS) of Azure container instance (ACI). Als u er nog geen hebt, raadpleegt u de zelf studie over het [classificatie Model Train image](tutorial-train-models-with-aml.md)
 
 ## <a name="web-service-input-and-response-data"></a>Invoer-en antwoord gegevens van de webservice
 
@@ -44,65 +45,68 @@ De invoer en het antwoord op de service-die overeenkomen met de invoer van het M
 
 U kunt Azure-toepassing Insights in de Azure Portal in-en uitschakelen. 
 
-1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com).
+1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com)
 
-1. Selecteer op het tabblad **implementaties** de service waar u Azure-toepassing Insights wilt inschakelen.
+1. Selecteer op het tabblad **implementaties** de service waar u Azure-toepassing Insights wilt inschakelen
 
    [![lijst met Services op het tabblad implementaties](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
-3. Selecteer **Bewerken**.
+3. Selecteer **bewerken**
 
    [knop bewerken ![](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
-4. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights diagnostische gegevens inschakelen** in.
+4. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights diagnostische gegevens inschakelen** in
 
    [![ingeschakeld selectie vakje voor het inschakelen van diagnostische gegevens](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
-1. Selecteer **Update** aan de onderkant van het scherm om de wijzigingen toe te passen. 
+1. Selecteer **bijwerken** aan de onderkant van het scherm om de wijzigingen toe te passen
 
 ### <a name="disable"></a>Uitschakelen
-1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com).
-1. Selecteer **implementaties**, selecteer de service en selecteer vervolgens **bewerken**.
+
+1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com)
+1. Selecteer **implementaties**, selecteer de service en selecteer vervolgens **bewerken** .
 
    [![de knop bewerken gebruiken](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
-1. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights Diagnostics inschakelen** uit. 
+1. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights Diagnostics inschakelen** in
 
    [![gewist selectie vakje voor het inschakelen van diagnostische gegevens](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
-1. Selecteer **Update** aan de onderkant van het scherm om de wijzigingen toe te passen. 
+1. Selecteer **bijwerken** aan de onderkant van het scherm om de wijzigingen toe te passen
  
 ## <a name="use-python-sdk-to-configure"></a>Python-SDK gebruiken om te configureren 
 
 ### <a name="update-a-deployed-service"></a>Een geïmplementeerde service bijwerken
-1. Identificeer de service in uw werk ruimte. De waarde voor `ws` is de naam van uw werk ruimte.
+
+1. Identificeer de service in uw werk ruimte. De waarde voor `ws` is de naam van uw werk ruimte
 
     ```python
     from azureml.core.webservice import Webservice
     aks_service= Webservice(ws, "my-service-name")
     ```
-2. Werk uw service bij en schakel Azure-toepassing Insights in. 
+2. Uw service bijwerken en Azure-toepassing Insights inschakelen
 
     ```python
     aks_service.update(enable_app_insights=True)
     ```
 
 ### <a name="log-custom-traces-in-your-service"></a>Aangepaste traceringen vastleggen in uw service
+
 Als u aangepaste traceringen wilt registreren, volgt u het standaard implementatie proces voor AKS of ACI in het document [implementeren en where](how-to-deploy-and-where.md) . Gebruik vervolgens de volgende stappen:
 
-1. Werk het Score bestand bij door afdruk instructies toe te voegen.
+1. Het Score bestand bijwerken door afdruk instructies toe te voegen
     
     ```python
     print ("model initialized" + time.strftime("%H:%M:%S"))
     ```
 
-2. Werk de service configuratie bij.
+2. De service configuratie bijwerken
     
     ```python
     config = Webservice.deploy_configuration(enable_app_insights=True)
     ```
 
-3. Bouw een installatie kopie en implementeer deze op [AKS](how-to-deploy-to-aks.md) of [ACI](how-to-deploy-to-aci.md).  
+3. Een installatie kopie bouwen en implementeren op [AKS](how-to-deploy-to-aks.md) of [ACI](how-to-deploy-to-aci.md)
 
 ### <a name="disable-tracking-in-python"></a>Tracering in python uitschakelen
 
@@ -116,22 +120,23 @@ Als u Azure-toepassing Insights wilt uitschakelen, gebruikt u de volgende code:
 ## <a name="evaluate-data"></a>Gegevens evalueren
 De gegevens van uw service worden opgeslagen in uw Azure-toepassing Insights-account, in dezelfde resource groep als Azure Machine Learning.
 Om het weer te geven:
-1. Ga naar uw Machine Learning service-werk ruimte in [Azure machine learning Studio](https://ml.azure.com) en klik op Application Insights link.
+
+1. Ga naar de werk ruimte van uw Machine Learning-service in [Azure machine learning Studio](https://ml.azure.com) en klik op Application Insights koppeling
 
     [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
-1. Selecteer het tabblad **overzicht** om een basis verzameling metrische gegevens voor uw service weer te geven.
+1. Selecteer het tabblad **overzicht** om een basis verzameling metrische gegevens voor uw service weer te geven
 
    [Overzicht van ![](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
 1. Als u de nettoladingen voor de invoer en het antwoord van de webservice wilt bekijken, selecteert u **Analytics**
-1. Selecteer in de sectie schema **traceringen** en filter traceringen met het bericht `"model_data_collection"`. In de aangepaste dimensies ziet u de invoer, voor spellingen en andere relevante informatie.
+1. Selecteer in de sectie schema **traceringen** en filter traceringen met het bericht `"model_data_collection"`. In de aangepaste dimensies ziet u de invoer, voor spellingen en andere relevante Details
 
    [Model gegevens ![](media/how-to-enable-app-insights/model-data-trace.png)](./media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 
-3. Als u uw aangepaste traceringen wilt bekijken, selecteert u **Analytics**.
-4. Selecteer in de sectie schema **traceringen**. Selecteer vervolgens **uitvoeren** om de query uit te voeren. Gegevens moeten worden weer gegeven in een tabel indeling en moeten worden toegewezen aan uw aangepaste aanroepen in uw score bestand. 
+3. Als u wilt zoeken naar uw aangepaste traceringen, selecteert u **Analytics**
+4. Selecteer in de sectie schema **traceringen**. Selecteer vervolgens **uitvoeren** om de query uit te voeren. Gegevens moeten worden weer gegeven in een tabel indeling en moeten worden toegewezen aan uw aangepaste aanroepen in uw score bestand
 
    [Aangepaste traceringen ![](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
@@ -152,5 +157,5 @@ De [Enable-app-Insights-in-production-service. ipynb-](https://github.com/Azure/
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [een model implementeren in een Azure Kubernetes-service cluster](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service) of [een model implementeren in azure container instances](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-container-instance) om uw modellen te implementeren voor webservice-eind punten en Azure-toepassing inzichten in te scha kelen voor het verzamelen en het eind punt van gegevens bewaking.
-* Zie [MLOps: modellen beheren, implementeren en bewaken met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment) voor meer informatie over het benutten van gegevens die zijn verzameld van modellen in productie. Dergelijke gegevens kunnen helpen uw machine learning proces voortdurend te verbeteren. 
+* Zie [een model implementeren in een Azure Kubernetes-service cluster](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service) of [een model implementeren in azure container instances](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-container-instance) om uw modellen te implementeren voor webservice-eind punten, en Azure-toepassing Insights in te scha kelen voor het gebruik van gegevens verzameling en eindpunt bewaking
+* Zie [MLOps: modellen beheren, implementeren en bewaken met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment) voor meer informatie over het benutten van gegevens die zijn verzameld van modellen in productie. Dergelijke gegevens kunnen helpen uw machine learning proces voortdurend te verbeteren

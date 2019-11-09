@@ -1,6 +1,6 @@
 ---
 title: Modelresultaten interpreteren
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: De optimale parameterset voor een algoritme kiezen met behulp van en het visualiseren van score model uitvoer.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: cdeded35e1afb9313f2dd2c5842aef511ea0dd61
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: acac881a790644532121697e6b79e57a98b168fe
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621673"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839848"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Model resultaten interpreteren in Azure Machine Learning Studio (klassiek)
 In dit onderwerp wordt uitgelegd hoe u de Voorspellings resultaten in Azure Machine Learning Studio (klassiek) kunt visualiseren en interpreteren. Nadat u een model hebt getraind en voor spellingen hebt uitgevoerd (het ' gescoorde ' model '), moet u het Voorspellings resultaat begrijpen en interpreteren.
@@ -26,7 +26,7 @@ Er zijn vier belang rijke soorten machine learning modellen in de klassieke vers
 
 * Classificatie
 * Clustering
-* Regressie
+* regressie
 * Aanbevolen systemen
 
 De modules die worden gebruikt voor de voor spelling boven op deze modellen zijn:
@@ -137,7 +137,7 @@ Nadat u de webservice hebt gepubliceerd en uitgevoerd en enkele invoer waarden h
 
 Afbeelding 10. Webservice resultaat van een classificatie met meer klassen
 
-## <a name="regression"></a>Regressie
+## <a name="regression"></a>regressie
 Regressie problemen verschillen van classificatie problemen. In een classificatie probleem probeert u afzonderlijke klassen te voors pellen, bijvoorbeeld op welke klasse een Iris bloem is aangesloten. Maar zoals u kunt zien in het volgende voor beeld van een regressie probleem, probeert u een continue variabele te voors pellen, zoals de prijs van een auto.
 
 **Voorbeeld experiment**

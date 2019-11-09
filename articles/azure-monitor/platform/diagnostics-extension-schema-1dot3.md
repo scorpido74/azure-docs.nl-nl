@@ -7,20 +7,20 @@ ms.topic: reference
 author: rboucher
 ms.author: robb
 ms.date: 09/20/2018
-ms.openlocfilehash: 1d378571a02f30c223338eef5c7d142ed02ff4c8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 3d79fe6a415b7d1f862797bf41caed89bfe50a41
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555544"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834752"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Configuratie schema voor Azure Diagnostics 1,3 en hoger
 > [!NOTE]
 > De uitbrei ding Azure Diagnostics is het onderdeel dat wordt gebruikt voor het verzamelen van prestatie meter items en andere statistieken uit:
 > - Azure Virtual Machines
-> - Virtual Machine Scale Sets
+> - Schaalsets voor virtuele machines
 > - Service Fabric
-> - Cloud Services
+> - Cloudservices
 > - Netwerkbeveiligingsgroepen
 >
 > Deze pagina is alleen relevant als u een van deze services gebruikt.
@@ -411,7 +411,7 @@ Toegevoegd in versie 1,3.
 Het element op het hoogste niveau van het diagnostische configuratie bestand.  
 
 **Kenmerk** xmlns-de XML-naam ruimte voor het diagnostische configuratie bestand is:  
-http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
+`http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration`
 
 
 |Onderliggende elementen|Beschrijving|  
@@ -441,7 +441,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration-element
  *Structuur: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration*
 
- Verplicht
+ Vereist
 
 |Kenmerken|Beschrijving|  
 |----------------|-----------------|  
@@ -560,7 +560,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Hiermee kunt u een tabel voor prestatie meter items genereren die is geoptimaliseerd voor snelle query's. Elk prestatie meter item dat in het **Performance Counters** -element is gedefinieerd, wordt opgeslagen in de tabel metrische gegevens, naast de tabel prestatie meter items.  
 
- Het kenmerk **resourceId** is vereist.  De resource-ID van de virtuele machine of virtuele-machine Schaalset waarmee u Azure Diagnostics implementeert. Haal de **resourceID** op uit de [Azure Portal](https://portal.azure.com). Selecteer **bladeren**  -> **Resource groepen**  ->  **< name \>** . Klik op de tegel **Eigenschappen** en kopieer de waarde uit het veld **id** .  
+ Het kenmerk **resourceId** is vereist.  De resource-ID van de virtuele machine of virtuele-machine Schaalset waarmee u Azure Diagnostics implementeert. Haal de **resourceID** op uit de [Azure Portal](https://portal.azure.com). Selecteer **bladeren** -> **Resource groepen** ->  **< name\>** . Klik op de tegel **Eigenschappen** en kopieer de waarde uit het veld **id** .  
 
 |Onderliggende elementen|Beschrijving|  
 |--------------------|-----------------|  
@@ -609,9 +609,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Kenmerk|Type|Beschrijving|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Optioneel. Hiermee geeft u de maximale hoeveelheid bestandssysteem opslag op die beschikbaar is voor de opgegeven gegevens.<br /><br /> De standaard waarde is 0.|  
-|**scheduledTransferLogLevelFilter**|**tekenreeksexpressie**|Optioneel. Hiermee geeft u het minimale Ernst niveau voor logboek vermeldingen die worden overgebracht. De standaard waarde is niet **gedefinieerd**, waardoor alle logboeken worden overgedragen. Andere mogelijke waarden (ten opzichte van de meest waarschijnlijke informatie) zijn **uitgebreide**, **informatie**, **waarschuwing**, **fout**en **kritiek**.|  
+|**scheduledTransferLogLevelFilter**|**string**|Optioneel. Hiermee geeft u het minimale Ernst niveau voor logboek vermeldingen die worden overgebracht. De standaard waarde is niet **gedefinieerd**, waardoor alle logboeken worden overgedragen. Andere mogelijke waarden (ten opzichte van de meest waarschijnlijke informatie) zijn **uitgebreide**, **informatie**, **waarschuwing**, **fout**en **kritiek**.|  
 |**scheduledTransferPeriod**|**hebben**|Optioneel. Hiermee geeft u het interval op tussen de geplande overdracht van gegevens, naar boven afgerond op de dichtstbijzijnde minuut.<br /><br /> De standaard waarde is PT0S.|  
-|**wastafel** |**tekenreeksexpressie**| Toegevoegd in 1,5. Optioneel. Verwijst naar een Sink-locatie om ook diagnostische gegevens te verzenden. Bijvoorbeeld Application Insights of Event Hubs.|  
+|**wastafel** |**string**| Toegevoegd in 1,5. Optioneel. Verwijst naar een Sink-locatie om ook diagnostische gegevens te verzenden. Bijvoorbeeld Application Insights of Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-DockerSources*
@@ -640,12 +640,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Kenmerk|Type|Beschrijving|  
 |---------------|----------|-----------------|  
-|**naam**|string|Een teken reeks die de Sink-id aangeeft.|  
+|**naam**|tekenreeks|Een teken reeks die de Sink-id aangeeft.|  
 
 |Element|Type|Beschrijving|  
 |-------------|----------|-----------------|  
-|**Application Insights**|string|Wordt alleen gebruikt bij het verzenden van gegevens naar Application Insights. De instrumentatie sleutel voor een actief Application Insights account bevatten waartoe u toegang hebt.|  
-|**Detailhandelkanalen**|string|Een voor elke extra filtering die stream die u|  
+|**Application Insights**|tekenreeks|Wordt alleen gebruikt bij het verzenden van gegevens naar Application Insights. De instrumentatie sleutel voor een actief Application Insights account bevatten waartoe u toegang hebt.|  
+|**Detailhandelkanalen**|tekenreeks|Een voor elke extra filtering die stream die u|  
 
 ## <a name="channels-element"></a>Channels-element  
  *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-Sink-channels*
@@ -656,7 +656,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Element|Type|Beschrijving|  
 |-------------|----------|-----------------|  
-|**Kanalen**|string|Zie de beschrijving elders op deze pagina.|  
+|**Kanalen**|tekenreeks|Zie de beschrijving elders op deze pagina.|  
 
 ## <a name="channel-element"></a>Kanaal element
  *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-Sink-kanalen-Channel*
@@ -667,8 +667,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Kenmerken|Type|Beschrijving|  
 |----------------|----------|-----------------|  
-|**logLevel**|**tekenreeksexpressie**|Hiermee geeft u het minimale Ernst niveau voor logboek vermeldingen die worden overgebracht. De standaard waarde is niet **gedefinieerd**, waardoor alle logboeken worden overgedragen. Andere mogelijke waarden (ten opzichte van de meest waarschijnlijke informatie) zijn **uitgebreide**, **informatie**, **waarschuwing**, **fout**en **kritiek**.|  
-|**naam**|**tekenreeksexpressie**|Een unieke naam van het kanaal waarnaar moet worden verwezen|  
+|**logLevel**|**string**|Hiermee geeft u het minimale Ernst niveau voor logboek vermeldingen die worden overgebracht. De standaard waarde is niet **gedefinieerd**, waardoor alle logboeken worden overgedragen. Andere mogelijke waarden (ten opzichte van de meest waarschijnlijke informatie) zijn **uitgebreide**, **informatie**, **waarschuwing**, **fout**en **kritiek**.|  
+|**naam**|**string**|Een unieke naam van het kanaal waarnaar moet worden verwezen|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig-element
@@ -682,7 +682,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Onderliggende elementen|Beschrijving|  
 |--------------------|-----------------|  
-|**Storage account**|Het opslag account dat moet worden gebruikt. De volgende kenmerken zijn vereist<br /><br /> - **naam** : de naam van het opslag account.<br /><br /> - **sleutel** : de sleutel voor het opslag account.<br /><br /> - -**eind punt** : het eind punt voor toegang tot het opslag account. <br /><br /> -**sasToken** (toegevoegde 1.8.1): u kunt in de persoonlijke configuratie een SAS-token opgeven in plaats van een opslag account sleutel. Als u deze opgeeft, wordt de sleutel van het opslag account genegeerd. <br />Vereisten voor het SAS-token: <br />-Ondersteunt alleen het account-SAS-token <br />- *b*, *t* service types zijn vereist. <br /> - *a*, *c*, *u*, *w* -machtigingen zijn vereist. <br /> - *c*, *o* -resource typen zijn vereist. <br /> -Ondersteunt alleen het HTTPS-protocol <br /> -Start en verloop tijd moeten geldig zijn.|  
+|**Storage account**|Het opslag account dat moet worden gebruikt. De volgende kenmerken zijn vereist<br /><br /> - **naam** : de naam van het opslag account.<br /><br /> - **sleutel** : de sleutel voor het opslag account.<br /><br /> - - **eind punt** : het eind punt voor toegang tot het opslag account. <br /><br /> -**sasToken** (toegevoegde 1.8.1): u kunt in de persoonlijke configuratie een SAS-token opgeven in plaats van een opslag account sleutel. Als u deze opgeeft, wordt de sleutel van het opslag account genegeerd. <br />Vereisten voor het SAS-token: <br />-Ondersteunt alleen het account-SAS-token <br />- *b*, *t* service types zijn vereist. <br /> - *a*, *c*, *u*, *w* -machtigingen zijn vereist. <br /> - *c*, *o* -resource typen zijn vereist. <br /> -Ondersteunt alleen het HTTPS-protocol <br /> -Start en verloop tijd moeten geldig zijn.|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled-element  

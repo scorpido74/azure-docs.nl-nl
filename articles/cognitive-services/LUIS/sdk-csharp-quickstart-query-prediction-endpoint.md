@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: d7cf46add464a089f15a5bd15a20cea7d17eed37
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bd1fefa828aca71e3faa27f75a8c67a2f1539d52
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488690"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837081"
 ---
 # <a name="quickstart-query-v2-prediction-endpoint-with-c-net-sdk"></a>Quick Start: een query v2-eind punt C# voor voor spelling met .NET SDK
 
@@ -77,7 +77,7 @@ using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 
 ## <a name="create-a-new-method-for-the-prediction"></a>Een nieuwe methode maken voor de voorspelling
 
-Maak een nieuwe methode `GetPrediction` om de query te verzenden naar het eindpunt van de queryvoorspelling. De methode maakt en configureert alle benodigde objecten retourneert vervolgens een `Task` met de voorspellingsresultaten [`LuisResult`](https://docs.microsoft.com/en-us/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.luisresult?view=azure-python). 
+Maak een nieuwe methode `GetPrediction` om de query te verzenden naar het eindpunt van de queryvoorspelling. De methode maakt en configureert alle benodigde objecten retourneert vervolgens een `Task` met de voorspellingsresultaten [`LuisResult`](/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.luisresult). 
 
 ```csharp
 static async  Task<LuisResult> GetPrediction() {

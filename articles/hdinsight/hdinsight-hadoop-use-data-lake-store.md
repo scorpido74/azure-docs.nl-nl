@@ -1,82 +1,82 @@
 ---
-title: Data Lake Storage Gen1 met Hadoop in Azure HDInsight gebruiken
-description: Leer hoe u gegevens opvraagt uit Azure Data Lake Storage Gen1 en voor het opslaan van resultaten van uw analyse.
+title: Data Lake Storage Gen1 gebruiken met Hadoop in azure HDInsight
+description: Meer informatie over het opvragen van gegevens uit Azure Data Lake Storage Gen1 en voor het opslaan van resultaten van de analyse.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.openlocfilehash: 890cd7080447649396855bfbe051dca4470a4564
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/04/2019
+ms.openlocfilehash: 309af904f0dbfc0664c4341803cb6a4dc8a2c8a4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546305"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839291"
 ---
-# <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Data Lake Storage Gen1 met Azure HDInsight-clusters gebruiken
+# <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Data Lake Storage Gen1 gebruiken met Azure HDInsight-clusters
 
-> [!Note] 
-> Implementeren van nieuwe HDInsight-clusters met behulp van [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md) voor betere prestaties en nieuwe functies.
+> [!Note]
+> Implementeer nieuwe HDInsight-clusters met behulp van [Azure data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md) voor verbeterde prestaties en nieuwe functies.
 
-Voor het analyseren van gegevens in HDInsight-cluster, kunt u ofwel de gegevens opslaan in [Azure Storage](../storage/common/storage-introduction.md), [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md) of [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md). Alle opties voor opslag kunnen u HDInsight-clusters die worden gebruikt voor berekeningen zonder verlies van gebruikersgegevens veilig verwijderen.
+Als u gegevens in een HDInsight-cluster wilt analyseren, kunt u de gegevens opslaan in [Azure Storage](../storage/common/storage-introduction.md), [Azure data Lake Storage gen 1](../data-lake-store/data-lake-store-overview.md)of [Azure data Lake Storage gen 2](../storage/blobs/data-lake-storage-introduction.md). Met alle opslag opties kunt u HDInsight-clusters die worden gebruikt voor berekeningen, veilig verwijderen zonder dat er gebruikers gegevens verloren gaan.
 
-In dit artikel leert u hoe Data Lake Storage Gen1 werkt met HDInsight-clusters. Zie [Azure Storage gebruiken met Azure HDInsight-clusters](hdinsight-hadoop-use-blob-storage.md) voor informatie over de werking van Azure Storage met HDInsight-clusters. Zie voor meer informatie over het maken van een HDInsight-cluster [Apache Hadoop-clusters maken in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+In dit artikel leert u hoe Data Lake Storage Gen1 werkt met HDInsight-clusters. Zie [Azure Storage gebruiken met Azure HDInsight-clusters](hdinsight-hadoop-use-blob-storage.md) voor informatie over de werking van Azure Storage met HDInsight-clusters. Zie [Apache Hadoop clusters maken in HDInsight](hdinsight-hadoop-provision-linux-clusters.md)voor meer informatie over het maken van een HDInsight-cluster.
 
 > [!NOTE]  
-> Data Lake Storage Gen1 altijd toegankelijk is via een beveiligd kanaal, zodat er geen `adls` bestandssysteemschemanaam. U gebruikt altijd `adl`.
+> Data Lake Storage Gen1 wordt altijd geopend via een beveiligd kanaal, zodat er geen `adls` naam van het bestandssysteem schema is. U gebruikt altijd `adl`.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="availability-for-hdinsight-clusters"></a>Beschikbaarheid voor HDInsight-clusters
+## <a name="availability-for-hdinsight-clusters"></a>Beschik baarheid voor HDInsight-clusters
 
-Apache Hadoop ondersteunt een notatie van het standaardbestandssysteem. Het standaardbestandssysteem impliceert een standaardschema en instantie. De toepassing kan ook worden gebruikt om relatieve paden om te zetten. Tijdens het HDInsight-cluster maken, kunt u een blob-container in Azure Storage als het standaardbestandssysteem opgeven of u kunt ook Azure Storage of Azure Data Lake Storage Gen1 met HDInsight 3.5 en latere versies kunt selecteren als het standaardbestandssysteem met een paar uitzonderingen. 
+Apache Hadoop ondersteunt een principe van het standaard bestandssysteem. Het standaardbestandssysteem impliceert een standaardschema en instantie. De toepassing kan ook worden gebruikt om relatieve paden om te zetten. Tijdens het maken van het HDInsight-cluster kunt u een BLOB-container opgeven in Azure Storage als het standaard bestandssysteem of met HDInsight 3,5 en nieuwere versies, kunt u Azure Storage of Azure Data Lake Storage Gen1 als standaard bestanden systeem selecteren met een enkele uitzonde ringen.
 
 HDInsight-clusters kunnen Data Lake Storage Gen1 op twee manieren gebruiken:
 
 * als standaardopslag
 * als extra opslag, met Azure Storage Blob als standaardopslag.
 
-Vanaf nu slechts een deel van de HDInsight-clustertypen /-versies ondersteuning met behulp van Data Lake Storage Gen1 als standaardopslag en extra opslagaccounts cluster:
+Vanaf nu kunnen slechts enkele typen HDInsight-clusters en-versies worden ondersteund met Data Lake Storage Gen1 als standaard opslag en extra opslag accounts:
 
-| HDInsight-clustertype | Data Lake Storage Gen1 als standaardopslag | Data Lake Storage Gen1 als extra opslag| Opmerkingen |
+| HDInsight-clustertype | Data Lake Storage Gen1 als standaard opslag | Data Lake Storage Gen1 als extra opslag ruimte| Opmerkingen |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight versie 4.0 | Nee | Nee |ADLS Gen1 wordt niet ondersteund met HDInsight 4.0 |
+| HDInsight-versie 4,0 | Nee | Nee |ADLS Gen1 wordt niet ondersteund met HDInsight 4,0 |
 | HDInsight-versie 3.6 | Ja | Ja | Met uitzondering van HBase|
 | HDInsight-versie 3.5 | Ja | Ja | Met uitzondering van HBase|
 | HDInsight-versie 3.4 | Nee | Ja | |
 | HDInsight-versie 3.3 | Nee | Nee | |
 | HDInsight-versie 3.2 | Nee | Ja | |
-| Storm | | |U kunt Data Lake Storage Gen1 gebruiken om gegevens te schrijven van een Storm-topologie. U kunt Data Lake Storage ook gebruiken voor referentiegegevens die vervolgens kunnen worden gelezen door een Storm-topologie.|
+| Storm | | |U kunt Data Lake Storage Gen1 gebruiken om gegevens van een storm-topologie te schrijven. U kunt Data Lake Storage ook gebruiken voor referentie gegevens die vervolgens kunnen worden gelezen door een storm-topologie.|
 
 > [!WARNING]  
 > HDInsight HBase wordt niet ondersteund met Azure Data Lake Storage Gen1
 
-Met behulp van Data Lake Storage Gen1 als een extra opslagaccount heeft geen invloed op prestaties of de mogelijkheid om te lezen of schrijven naar Azure storage uit het cluster.
+Het gebruik van Data Lake Storage Gen1 als een extra opslag account heeft geen invloed op de prestaties of de mogelijkheid om te lezen van of te schrijven naar Azure Storage vanuit het cluster.
 
-## <a name="use-data-lake-storage-gen1-as-default-storage"></a>Data Lake Storage Gen1 als standaardopslag gebruiken
+## <a name="use-data-lake-storage-gen1-as-default-storage"></a>Data Lake Storage Gen1 als standaard opslag gebruiken
 
-Wanneer HDInsight met Data Lake Storage Gen1 als standaardopslag is geïmplementeerd, de cluster-gerelateerde bestanden worden opgeslagen in `adl://mydatalakestore/<cluster_root_path>/`, waarbij `<cluster_root_path>` is de naam van een map die u in Data Lake-opslag maakt. Als u een pad naar de hoofdmap van ieder cluster opgeeft, kunt u hetzelfde Data Lake Storage-account voor meer dan één cluster. U kunt dus instellingen hebben waarbij:
+Wanneer HDInsight met Data Lake Storage Gen1 als standaard opslag is geïmplementeerd, worden de aan het cluster gerelateerde bestanden opgeslagen in `adl://mydatalakestore/<cluster_root_path>/`, waarbij `<cluster_root_path>` de naam is van een map die u in Data Lake Storage maakt. Als u voor elk cluster een pad naar een hoofdmap opgeeft, kunt u hetzelfde Data Lake Storage-account voor meer dan één cluster gebruiken. U kunt dus instellingen hebben waarbij:
 
 * Cluster1 het pad `adl://mydatalakestore/cluster1storage` kan gebruiken
 * Cluster2 het pad `adl://mydatalakestore/cluster2storage` kan gebruiken
 
-U ziet dat beide clusters hetzelfde Data Lake Storage Gen1-account gebruiken **mydatalakestore**. Elk cluster heeft toegang tot een eigen basisbestandssysteem in Data Lake-opslag. In het Azure Portal-implementatiescenario wordt u gevraagd voor het pad naar de hoofdmap een mapnaam te gebruiken zoals **/clusters/\<clusternaam>** .
+U ziet dat beide clusters gebruikmaken van hetzelfde Data Lake Storage Gen1 account **mydatalakestore**. Elk cluster heeft toegang tot een eigen hoofd bestandssysteem in Data Lake Storage. In het Azure Portal-implementatiescenario wordt u gevraagd voor het pad naar de hoofdmap een mapnaam te gebruiken zoals **/clusters/\<clusternaam>** .
 
-Als u Data Lake Storage Gen1 als standaardopslag gebruiken, moet u de service-principal toegang tot de volgende paden verlenen:
+Om Data Lake Storage Gen1 als standaard opslag te kunnen gebruiken, moet u de Service-Principal toegang verlenen tot de volgende paden:
 
-- De hoofdmap van de Gen1 van Data Lake Storage-account.  Bijvoorbeeld: adl://mydatalakestore/.
-- De map voor alle mappen van het cluster.  Bijvoorbeeld: adl://mydatalakestore/clusters.
-- De map voor het cluster.  Bijvoorbeeld: adl://mydatalakestore/clusters/cluster1storage.
+* De hoofdmap van het Data Lake Storage Gen1-account.  Bijvoorbeeld: adl://mydatalakestore/.
+* De map voor alle mappen van het cluster.  Bijvoorbeeld: adl://mydatalakestore/clusters.
+* De map voor het cluster.  Bijvoorbeeld: adl://mydatalakestore/clusters/cluster1storage.
 
-Zie voor meer informatie over het maken van service-principal en het verlenen toegang tot Data Lake-opslag configureren toegang.
+Zie Data Lake Storage toegang configureren voor meer informatie over het maken van een Service-Principal en het verlenen van toegang.
 
-### <a name="extracting-a-certificate-from-azure-keyvault-for-use-in-cluster-creation"></a>Een certificaat ophalen uit Azure Key Vault voor gebruik in het maken van clusters
+### <a name="extracting-a-certificate-from-azure-keyvault-for-use-in-cluster-creation"></a>Een certificaat uit Azure-sleutel kluis extra heren voor het maken van een cluster
 
-Als u wilt instellen van Azure Data Lake Storage Gen1 als de standaardopslag voor een nieuwe cluster en het certificaat voor uw service-principal is opgeslagen in Azure Key Vault, zijn er enkele extra stappen die nodig zijn om te converteren van het certificaat naar de juiste indeling. De volgende codefragmenten laten zien hoe de conversie uitvoeren.
+Als u Azure Data Lake Storage Gen1 wilt instellen als uw standaard opslag voor een nieuw cluster en het certificaat voor uw service-principal is opgeslagen in Azure Key Vault, zijn er enkele extra stappen vereist om het certificaat te converteren naar de juiste indeling. De volgende code fragmenten laten zien hoe u de conversie kunt uitvoeren.
 
-Eerst downloaden van het certificaat uit Key Vault en uitpakken van de `SecretValueText`.
+Down load eerst het certificaat van Key Vault en pak de `SecretValueText`uit.
 
 ```powershell
 $certPassword = Read-Host "Enter Certificate Password"
@@ -84,7 +84,7 @@ $cert = (Get-AzureKeyVaultSecret -VaultName 'MY-KEY-VAULT' -Name 'MY-SECRET-NAME
 $certValue = [System.Convert]::FromBase64String($cert.SecretValueText)
 ```
 
-Vervolgens converteert de `SecretValueText` naar een certificaat.
+Converteer vervolgens de `SecretValueText` naar een certificaat.
 
 ```powershell
 $certObject = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList $certValue,$null,"Exportable, PersistKeySet"
@@ -92,7 +92,7 @@ $certBytes = $certObject.Export([System.Security.Cryptography.X509Certificates.X
 $identityCertificate = [System.Convert]::ToBase64String($certBytes)
 ```
 
-Vervolgens kunt u de `$identityCertificate` implementeren van een nieuw cluster zoals in het volgende codefragment:
+Vervolgens kunt u de `$identityCertificate` gebruiken om een nieuw cluster te implementeren, zoals in het volgende code fragment:
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -108,63 +108,124 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-data-lake-storage-gen1-as-additional-storage"></a>Data Lake Storage Gen1 als extra opslag gebruiken
 
-U kunt Data Lake Storage Gen1 als extra opslag gebruiken voor het cluster ook. In dergelijke gevallen kan kan de standaardopslag voor het cluster zijn van een Azure Storage Blob of een Data Lake Storage-account. Als u HDInsight-taken voor de gegevens die zijn opgeslagen in Data Lake Storage als extra opslag uitvoert, moet u het volledige pad naar de bestanden. Bijvoorbeeld:
+U kunt Data Lake Storage Gen1 ook gebruiken als extra opslag ruimte voor het cluster. In dergelijke gevallen kan de standaard opslag van het cluster een Azure Storage Blob of een Data Lake Storage-account zijn. Als u HDInsight-taken uitvoert voor gegevens die zijn opgeslagen in Data Lake Storage als extra opslag ruimte, moet u het volledige pad naar de bestanden gebruiken. Bijvoorbeeld:
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
-U ziet dat er nu geen **cluster_root_path** in de URL is. Dat komt doordat Data Lake-opslag is niet een standaardopslag in dit geval hoeft u alleen maar is het pad naar de bestanden opgeven.
+U ziet dat er nu geen **cluster_root_path** in de URL is. Dat komt omdat Data Lake Storage in dit geval geen standaard opslag is. u hoeft alleen maar het pad naar de bestanden op te geven.
 
-Als u een Data Lake Storage Gen1 als extra opslag gebruiken, moet u alleen de service principal toegang verlenen tot de paden waar uw bestanden worden opgeslagen.  Bijvoorbeeld:
+Als u een Data Lake Storage Gen1 als extra opslag ruimte wilt gebruiken, hoeft u alleen de Service-Principal toegang te verlenen tot de paden waar uw bestanden worden opgeslagen.  Bijvoorbeeld:
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
-Zie voor meer informatie over het maken van service-principal en het verlenen toegang tot Data Lake-opslag configureren toegang.
+Zie Data Lake Storage toegang configureren voor meer informatie over het maken van een Service-Principal en het verlenen van toegang.
 
+## <a name="use-more-than-one-data-lake-storage-accounts"></a>Meer dan één Data Lake Storage accounts gebruiken
 
-## <a name="use-more-than-one-data-lake-storage-accounts"></a>Meer dan een Data Lake Storage-accounts gebruiken
+Het toevoegen van een Data Lake Storage-account als extra en het toevoegen van meer dan een Data Lake Storage accounts wordt bereikt door het HDInsight-cluster toestemming te geven voor gegevens in een of meer Data Lake Storage-accounts. Zie Data Lake Storage toegang configureren.
 
-Een Data Lake Storage-account toevoegen als extra en het toevoegen van meer dan één Data Lake Storage-accounts wordt bereikt door middel van de HDInsight-cluster machtiging van de gegevens in een of meer Data Lake Storage-accounts. Zie Configure Data Lake Storage-toegang.
+## <a name="configure-data-lake-storage-access"></a>Data Lake Storage toegang configureren
 
-## <a name="configure-data-lake-storage-access"></a>Data Lake Storage-toegang configureren
-
-Voor het configureren van Data Lake Storage-toegang vanaf uw HDInsight-cluster, moet u een Azure Active directory (Azure AD) service-principal hebben. Alleen een Azure AD-beheerder kan een service-principal maken. De service-principal moet worden gemaakt met een certificaat. Zie voor meer informatie [Snelstart: Clusters instellen in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md), en [service-principal maken met zelfondertekend certificaat](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
+Als u Data Lake Storage toegang vanaf uw HDInsight-cluster wilt configureren, moet u een service-principal voor Azure Active Directory (Azure AD) hebben. Alleen een Azure AD-beheerder kan een service-principal maken. De service-principal moet worden gemaakt met een certificaat. Zie voor meer informatie [Snelstartgids: Clusters instellen in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) en [Service-principal maken met zelfondertekend certificaat](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
 
 > [!NOTE]  
-> Als u gebruiken van Azure Data Lake Storage Gen1 als extra opslag voor HDInsight-cluster wilt, wordt aangeraden dat u dit doen terwijl u het cluster maakt zoals beschreven in dit artikel. Toe te voegen Azure Data Lake Storage Gen1 als extra opslag aan een bestaand HDInsight-cluster is niet een ondersteund scenario.
->
+> Als u Azure Data Lake Storage Gen1 als extra opslag voor HDInsight-cluster gaat gebruiken, raden we u ten zeerste aan dit te doen tijdens het maken van het cluster zoals beschreven in dit artikel. Het is niet mogelijk om Azure Data Lake Storage Gen1 als extra opslag toe te voegen aan een bestaand HDInsight-cluster.
 
 ## <a name="access-files-from-the-cluster"></a>Bestanden openen vanuit het cluster
 
-Er zijn verschillende manieren u toegang hebt tot de bestanden in Data Lake Storage vanuit een HDInsight-cluster.
+Er zijn verschillende manieren om toegang te krijgen tot de bestanden in Data Lake Storage vanuit een HDInsight-cluster.
 
 * **De volledig gekwalificeerde naam gebruiken**. Met deze methode geeft u het volledige pad op naar het bestand dat u wilt openen.
 
-        adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/<file_path>
+    ```
+    adl://<data_lake_account>.azuredatalakestore.net/<cluster_root_path>/<file_path>
+    ```
 
-* **De verkorte padnotatie gebruiken**. Met deze methode vervangt u het pad tot de hoofdmap van het cluster door adl:///. In het bovenstaande voorbeeld kunt u `adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/` vervangen door `adl:///`.
+* **De verkorte padnotatie gebruiken**. Met deze methode vervangt u het pad naar de hoofdmap van het cluster met:
 
-        adl:///<file path>
+    ```
+    adl:///<file path>
+    ```
 
-* **Het relatieve pad gebruiken**. Met deze methode geeft u alleen het volledige relatieve pad op naar het bestand dat u wilt openen. Als dit bijvoorbeeld het volledige pad naar het bestand is:
+* **Het relatieve pad gebruiken**. Met deze methode geeft u alleen het volledige relatieve pad op naar het bestand dat u wilt openen.
 
-        adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/example/data/sample.log
+    ```
+    /<file.path>/
+    ```
 
-    U kunt hetzelfde bestand sample.log in plaats daarvan via dit relatieve pad openen.
+### <a name="data-access-examples"></a>Voor beelden van gegevens toegang
 
-        /example/data/sample.log
+Voor beelden zijn gebaseerd op een [SSH-verbinding](./hdinsight-hadoop-linux-use-ssh-unix.md) met het hoofd knooppunt van het cluster. De voor beelden gebruiken alle drie de URI-schema's. Vervang `DATALAKEACCOUNT` en `CLUSTERNAME` door de relevante waarden.
 
-## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage-gen1"></a>Maken van HDInsight-clusters met toegang tot Data Lake Storage Gen1
+#### <a name="a-few-hdfs-commands"></a>Enkele hdfs-opdrachten
 
-Gebruik de volgende koppelingen voor gedetailleerde instructies voor het maken van HDInsight-clusters met toegang tot Data Lake Storage Gen1.
+1. Maak een eenvoudig bestand op lokale opslag.
+
+    ```bash
+    touch testFile.txt
+    ```
+
+1. Maak mappen in de cluster opslag.
+
+    ```bash
+    hdfs dfs -mkdir adl://DATALAKEACCOUNT.azuredatalakestore.net/clusters/CLUSTERNAME/sampledata1/
+    hdfs dfs -mkdir adl:///sampledata2/
+    hdfs dfs -mkdir /sampledata3/
+    ```
+
+1. Gegevens uit de lokale opslag kopiëren naar de cluster opslag.
+
+    ```bash
+    hdfs dfs -copyFromLocal testFile.txt adl://DATALAKEACCOUNT.azuredatalakestore.net/clusters/CLUSTERNAME/sampledata1/
+    hdfs dfs -copyFromLocal testFile.txt adl:///sampledata2/
+    hdfs dfs -copyFromLocal testFile.txt /sampledata3/
+    ```
+
+1. Mapinhoud weer geven in cluster opslag.
+
+    ```bash
+    hdfs dfs -ls adl://DATALAKEACCOUNT.azuredatalakestore.net/clusters/CLUSTERNAME/sampledata1/
+    hdfs dfs -ls adl:///sampledata2/
+    hdfs dfs -ls /sampledata3/
+    ```
+
+#### <a name="creating-a-hive-table"></a>Een Hive-tabel maken
+
+Er worden drie bestands locaties weer gegeven voor illustratie doeleinden. Gebruik slechts één van de `LOCATION` vermeldingen voor daad werkelijke uitvoering.
+
+```hql
+DROP TABLE myTable;
+CREATE EXTERNAL TABLE myTable (
+    t1 string,
+    t2 string,
+    t3 string,
+    t4 string,
+    t5 string,
+    t6 string,
+    t7 string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
+STORED AS TEXTFILE
+LOCATION 'adl://DATALAKEACCOUNT.azuredatalakestore.net/clusters/CLUSTERNAME/example/data/';
+LOCATION 'adl:///example/data/';
+LOCATION '/example/data/';
+```
+
+## <a name="identify-storage-path-from-abmari"></a>Pad naar opslag van Abmari identificeren
+
+Als u het volledige pad naar het geconfigureerde standaard archief wilt identificeren, gaat u naar **HDFS** > **configuraties** en voert u `fs.defaultFS` in het vak invoer filteren.
+
+## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage-gen1"></a>HDInsight-clusters maken met toegang tot Data Lake Storage Gen1
+
+Gebruik de volgende koppelingen voor gedetailleerde instructies over het maken van HDInsight-clusters met toegang tot Data Lake Storage Gen1.
 
 * [Portal gebruiken](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-* [Met behulp van PowerShell (met Data Lake Storage Gen1 als standaardopslag)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-* [Met behulp van PowerShell (met Data Lake Storage Gen1 als extra opslag)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
+* [Power shell gebruiken (met Data Lake Storage Gen1 als standaard opslag)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+* [Power shell gebruiken (met Data Lake Storage Gen1 als extra opslag)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Azure-sjablonen gebruiken](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
 ## <a name="refresh-the-hdinsight-certificate-for-data-lake-storage-gen1-access"></a>Het HDInsight-certificaat voor toegang tot Data Lake Storage Gen1 vernieuwen
 
-Het volgende voorbeeld PowerShell-code leest een certificaat uit een lokaal bestand of de Azure Key Vault en updates van uw HDInsight-cluster met het nieuwe certificaat voor toegang tot Azure Data Lake Storage Gen1. Geef uw eigen naam van de HDInsight-cluster, Resourcegroepnaam, abonnements-ID, app-ID, lokaal pad naar het certificaat. Typ in het wachtwoord wanneer hierom wordt gevraagd.
+In het volgende voor beeld van een Power shell-code wordt een certificaat uit een lokaal bestand of Azure Key Vault gelezen en wordt uw HDInsight-cluster bijgewerkt met het nieuwe certificaat voor toegang tot Azure Data Lake Storage Gen1. Geef uw eigen HDInsight-cluster naam, de naam van de resource groep, de abonnements-ID, de App-ID, het lokale pad naar het certificaat op. Typ het wacht woord wanneer u daarom wordt gevraagd.
 
 ```powershell-interactive
 $clusterName = '<clustername>'
@@ -237,29 +298,15 @@ Invoke-AzResourceAction `
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u HDFS-compatibele Azure Data Lake Storage Gen1 met HDInsight. Zodoende kunt u een schaalbare, duurzame, archiveringsoplossing voor gegevensverzameling bouwen en HDInsight gebruiken om de informatie te ontsluiten in de opgeslagen gestructureerde en ongestructureerde gegevens.
+
+In dit artikel hebt u geleerd hoe u HDFS-compatibele Azure Data Lake Storage Gen1 met HDInsight kunt gebruiken. Zodoende kunt u een schaalbare, duurzame, archiveringsoplossing voor gegevensverzameling bouwen en HDInsight gebruiken om de informatie te ontsluiten in de opgeslagen gestructureerde en ongestructureerde gegevens.
 
 Zie voor meer informatie:
 
-* [Aan de slag met Azure HDInsight][hdinsight-get-started]
-* [Snelstart: Clusters instellen in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) voor informatie over het maken van een HDInsight-cluster met Data Lake Storage
-* [Maken van een HDInsight-cluster voor het gebruik van Data Lake Storage Gen1 met behulp van Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
-* [Gegevens uploaden naar HDInsight][hdinsight-upload-data]
-* [Apache Hive gebruiken met HDInsight][hdinsight-use-hive]
-* [Apache Pig gebruiken met HDInsight][hdinsight-use-pig]
-* [Handtekeningen voor gedeelde toegang van Azure Storage gebruiken om de toegang tot gegevens te beperken met HDInsight][hdinsight-use-sas]
-
-[hdinsight-use-sas]: hdinsight-storage-sharedaccesssignature-permissions.md
-[powershell-install]: /powershell/azureps-cmdlets-docs
-[hdinsight-creation]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
-[hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
-
-[blob-storage-restAPI]: https://msdn.microsoft.com/library/windowsazure/dd135733.aspx
-[azure-storage-create]:../storage/common/storage-create-storage-account.md
-
-[img-hdi-powershell-blobcommands]: ./media/hdinsight-hadoop-use-blob-storage/HDI.PowerShell.BlobCommands.png
-[img-hdi-quick-create]: ./media/hdinsight-hadoop-use-blob-storage/HDI.QuickCreateCluster.png
-[img-hdi-custom-create-storage-account]: ./media/hdinsight-hadoop-use-blob-storage/HDI.CustomCreateStorageAccount.png  
+* [Aan de slag met Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [Snelstartgids: Clusters instellen in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Een HDInsight-cluster maken om Data Lake Storage Gen1 te gebruiken met behulp van de Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
+* [Gegevens uploaden naar HDInsight](hdinsight-upload-data.md)
+* [Apache Hive gebruiken met HDInsight](hadoop/hdinsight-use-hive.md)
+* [Azure Storage-hand tekeningen voor gedeelde toegang gebruiken om de toegang tot gegevens te beperken met HDInsight](hdinsight-storage-sharedaccesssignature-permissions.md)
+* [Zelf studie: gegevens uitpakken, transformeren en laden met interactieve Query's in azure HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

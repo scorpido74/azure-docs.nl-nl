@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen over Video Indexer - Azure
-titlesuffix: Azure Media Services
+title: Veelgestelde vragen over Video Indexer-Azure
+titleSuffix: Azure Media Services
 description: Krijg antwoorden op veelgestelde vragen over Video Indexer.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: f20d718d0b1d3bbdf117e502a380897c79a7905f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95f2af1b192564290551f9ed31f0fe158b4536f6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799506"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838237"
 ---
 # <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -25,147 +25,147 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Video Indexer.
 
 ### <a name="what-is-video-indexer"></a>Wat is Video Indexer?
 
-Video Indexer is een kunstmatige intelligentie-service die deel uitmaakt van Microsoft Azure Media Services. Video Indexer biedt een indeling van meerdere machine learning-modellen waarmee u eenvoudig diepgaand inzicht ophalen uit een video. Geavanceerde en nauwkeurige om inzichten te krijgen, Video Indexer maakt gebruik van meerdere kanalen van de video: audio-, spraak- en visueel element. Video Indexer-inzichten kunnen worden gebruikt op tal van manieren, zoals het verbeteren van de inhoud vindbaarheid en toegankelijkheid, het maken van nieuwe verdiensten kansen of gebouw nieuwe ervaringen die gebruikmaken van de inzichten. Video Indexer biedt een webinterface voor het testen, configuratie en aanpassing van modellen in uw account. Ontwikkelaars kunnen een REST-API gebruiken om te integreren met Video Indexer productiesysteem. 
+Video Indexer is een kunst matige intelligentie service die deel uitmaakt van Microsoft Azure Media Services. Video Indexer biedt een indeling van meerdere machine learning modellen waarmee u gemakkelijk diep inzicht kunt verkrijgen op basis van een video. Video Indexer maakt gebruik van meerdere kanalen van de video om geavanceerde en nauw keurige inzichten te bieden: Audio, spraak en visuele elementen. De inzichten van Video Indexer kunnen op verschillende manieren worden gebruikt, zoals het verbeteren van de detectie van inhoud en toegankelijkheid, het maken van nieuwe verdiensten maximaliseren-mogelijkheden of het bouwen van nieuwe ervaringen die gebruikmaken van de inzichten. Video Indexer biedt een webinterface voor het testen, configureren en aanpassen van modellen in uw account. Ontwikkel aars kunnen een op REST gebaseerde API gebruiken om Video Indexer te integreren in het productie systeem. 
 
-### <a name="what-can-i-do-with-video-indexer"></a>Wat kan ik doen met Video Indexer
+### <a name="what-can-i-do-with-video-indexer"></a>Wat kan ik doen met Video Indexer?
 
-Enkele van de bewerkingen die Video Indexer op de media-bestanden uitvoeren kunt zijn:
+Enkele van de bewerkingen die Video Indexer op media bestanden kunnen uitvoeren, zijn:
 
-* Identificeren van en het ophalen van spraak en identificeren van luidsprekers.
-* Identificeren en op het scherm extraheren tekst in een video.
-* Detecteren van objecten in een videobestand.
-* Identificeren van merken (bijvoorbeeld: Microsoft) van audionummers en op het scherm de tekst in een video.
-* Detecteren van en het herkennen van gezichten in een database van beroemdheden en een gebruiker gedefinieerde database van gezichten wordt uitgevoerd.
-* Uitpakken van onderwerpen besproken, maar niet noodzakelijkerwijs die worden vermeld in de audio en video-inhoud.
-* Het maken van ondertitels uit de audiotrack.
+* Het identificeren en uitpakken van spraak en het identificeren van luid sprekers.
+* Het identificeren en uitpakken van tekst op het scherm in een video.
+* Objecten in een video bestand detecteren.
+* Identificeren van merken (bijvoorbeeld micro soft) van audio tracks en tekst op het scherm in een video.
+* Het detecteren en herkennen van gezichten van een Data Base met beroemdheden en een door de gebruiker gedefinieerde data base van gezichten.
+* Het uitpakken van onderwerpen die worden besproken, maar niet noodzakelijkerwijs vermeld in audio-en video-inhoud.
+* Ondertiteling of ondertiteling maken op basis van het audio spoor.
 
-Zie voor meer informatie en meer Video Indexer-functies, [overzicht](video-indexer-overview.md).
+Zie [overzicht](video-indexer-overview.md)voor meer informatie en meer video indexer functies.
 
-### <a name="how-do-i-get-started-with-video-indexer"></a>Hoe ga ik aan de slag met Video Indexer?
+### <a name="how-do-i-get-started-with-video-indexer"></a>Hoe kan ik aan de slag met Video Indexer?
 
-Video Indexer bevat een gratis proefversie waarmee u met 600 minuten in de webinterface en 2.400 minuten via de API. U kunt [Meld u aan bij de webinterface van Video Indexer](https://www.videoindexer.ai/) en probeer het zelf met behulp van een web-id en zonder het instellen van een Azure-abonnement. 
+Video Indexer bevat een gratis proef versie van 600 minuten in de web-interface en 2.400 minuten via de API. U kunt u [Aanmelden bij de video indexer-webinterface](https://www.videoindexer.ai/) en deze zelf uitproberen met een webidentiteit en zonder dat u een Azure-abonnement hoeft in te stellen. 
 
-Index video's en audiobestanden op schaal, u kunt Video Indexer verbinding maken met een betaald Microsoft Azure-abonnement. U vindt meer informatie over prijzen op de [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) pagina.
+Als u Video's en audio op schaal wilt indexeren, kunt u Video Indexer verbinden met een betaald Microsoft Azure-abonnement. Op de pagina met [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) vindt u meer informatie over de prijzen.
 
-U vindt meer informatie over aan de slag in [aan de slag](video-indexer-get-started.md).
+Meer informatie vindt u [in aan de slag.](video-indexer-get-started.md)
 
-### <a name="do-i-need-coding-skills-to-use-video-indexer"></a>Moet ik programmeren voor het gebruik van Video Indexer?
+### <a name="do-i-need-coding-skills-to-use-video-indexer"></a>Heb ik codeer vaardigheden nodig om Video Indexer te gebruiken?
 
-U kunt de webinterface van Video Indexer gebruiken om te evalueren, configureren en beheren van uw account met **geen codering vereist**.  Wanneer u klaar om complexere toepassingen te ontwikkelen bent, kunt u de [Video Indexer-API](https://api-portal.videoindexer.ai/) Video Indexer integreren in uw eigen toepassingen, websites, of [aangepaste werkstromen met behulp van serverloze technologieën, zoals Azure Logic Apps](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) of Azure Functions.
+U kunt de webinterface van Video Indexer gebruiken om uw account te evalueren, te configureren en te beheren zonder dat hiervoor **code ring vereist**is.  Wanneer u klaar bent voor het ontwikkelen van complexere toepassingen, kunt u de [video indexer-API](https://api-portal.videoindexer.ai/) gebruiken om video indexer te integreren in uw eigen toepassingen, websites of [aangepaste werk stromen met behulp van serverloze technologieën zoals Azure Logic apps](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) of Azure functions.
 
-### <a name="do-i-need-machine-learning-skills-to-use-video-indexer"></a>Moet ik machine learning-vaardigheden aan Video Indexer gebruiken?
+### <a name="do-i-need-machine-learning-skills-to-use-video-indexer"></a>Heb ik machine learning vaardig heden nodig om Video Indexer te gebruiken?
 
-Video Indexer biedt Nee, de integratie van meerdere machine learning-modellen in één pijplijn. Indexeren van een video of audio-bestand via Video Indexer, haalt een volledige set met inzichten zonder een machine learning-vaardigheden en kennis over de algoritmen die nodig zijn voor een bepaald deel van de klant heeft uitgepakt op één gedeelde tijdlijn.
+Nee, Video Indexer biedt de integratie van meerdere machine learning modellen in één pijp lijn. Als u een video-of audio bestand indexeert via Video Indexer, wordt een volledige set inzichten opgehaald die op één gedeelde tijd lijn is geëxtraheerd zonder enige machine learning vaardig heden of kennis over algoritmen die nodig zijn voor het onderdeel van de klant.
 
-### <a name="what-media-formats-does-video-indexer-support"></a>Welke media-indelingen biedt ondersteuning voor Video Indexer?
+### <a name="what-media-formats-does-video-indexer-support"></a>Welke media-indelingen ondersteunt Video Indexer?
 
-Video Indexer biedt ondersteuning voor meest voorkomende media-indelingen. Raadpleeg de [Azure Media Encoder standard indelingen](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) lijst voor meer informatie.
+Video Indexer biedt ondersteuning voor de meeste algemene media-indelingen. Raadpleeg de lijst met [Azure Media Encoder standaard indelingen](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) voor meer informatie.
 
-### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Hoe wil ik een medium naar Video Indexer uploaden?
+### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Hoe kan ik een medium uploaden naar Video Indexer?
 
-In Video Indexer web gebaseerde portal, een mediabestand met behulp van het dialoogvenster voor het uploaden van bestand kunt uploaden of u door die verwijst naar een URL die rechtstreeks als host fungeert voor de bron-bestand (Zie [voorbeeld](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). Een URL op die hosts de media inhoud met een iFrame of invoegcode niet werkt (Zie [voorbeeld](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). De Video Indexer-API moet u het invoerbestand via een URL of een matrix van bytes opgeven. Via een URL met behulp van de API-uploads zijn beperkt tot 10 GB, maar nog geen een duur van de termijn. Voor meer informatie raadpleegt u dit [gebruiksaanwijzing](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
+In de Video Indexer-webportal kunt u een media bestand uploaden met behulp van het dialoog venster voor het uploaden van bestanden of door een URL aan te wijzen die het bron bestand rechtstreeks host (Zie [voor beeld](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). Een URL die als host fungeert voor de media-inhoud die gebruikmaakt van een iFrame of invoeg code, werkt niet (Zie [voor beeld](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). De Video Indexer-API vereist dat u het invoer bestand via een URL of een byte matrix opgeeft. Uploads via een URL die de API gebruikt, zijn beperkt tot 10 GB, maar hebben geen tijds duur limiet. Lees voor meer informatie deze [hand leiding](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
 
-### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Hoe lang duurt Video Indexer inzichten ophalen uit media?
+### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Hoe lang duurt het Video Indexer om inzichten te extra heren van media?
 
-De hoeveelheid tijd die nodig is om te indexeren van een video of audio-bestand, beide met behulp van de Video Indexer-API en de Video Indexer webinterface, is afhankelijk van meerdere parameters op, zoals de bestandslengte van het en de kwaliteit, het aantal insights gevonden in het bestand, het aantal [gereserveerde eenheden](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) beschikbaar is, en of de [streaming-eindpunt](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) of niet is ingeschakeld. U wordt aangeraden dat u een aantal testbestanden met uw eigen inhoud uitvoeren en een gemiddelde om een beter idee te krijgen.
+De hoeveelheid tijd die nodig is om een video-of audio bestand te indexeren, zowel met de Video Indexer-API als met de Video Indexer-webinterface, is afhankelijk van meerdere para meters, zoals de bestands lengte en de kwaliteit, het aantal inzichten in het bestand, het aantal beschik bare [gereserveerde eenheden](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) en of het [streaming-eind punt](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) is ingeschakeld of niet. We raden u aan een paar test bestanden met uw eigen inhoud uit te voeren en zo een beter idee te krijgen.
 
-### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Kan ik aangepaste werkstromen voor het automatiseren van processen met Video Indexer maken?
+### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Kan ik aangepaste werk stromen maken voor het automatiseren van processen met Video Indexer?
 
-Ja, u Video Indexer kunt integreren in de serverloze technologieën zoals Logic Apps, Flow en [Azure Functions](https://azure.microsoft.com/services/functions/). U kunt meer informatie vinden op de [logische App](https://azure.microsoft.com/services/logic-apps/) en [Flow](https://flow.microsoft.com/en-us/) connectors voor Video Indexer [hier](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/). 
+Ja, u kunt Video Indexer integreren in serverloze technologieën zoals Logic Apps, flow en [Azure functions](https://azure.microsoft.com/services/functions/). U kunt [hier](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)meer informatie vinden over de [logische app](https://azure.microsoft.com/services/logic-apps/) en [flow](https://flow.microsoft.com/en-us/) connectors voor video indexer. 
 
-### <a name="in-which-azure-regions-is-video-indexer-available"></a>In welke Azure-regio's is de Video indexer beschikbaar?
+### <a name="in-which-azure-regions-is-video-indexer-available"></a>In welke Azure-regio's is video indexer beschikbaar?
 
-U kunt zien welke Azure-regio's Video Indexer is beschikbaar op de [regio's](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all) pagina.
+Op de pagina [regio's](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all) kunt u zien welke Azure-regio's video indexer beschikbaar zijn.
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Wat is de SLA voor Video Indexer?
 
-SLA voor Azure Media Service van meer informatie over Video Indexer en kunt u vinden op de [SLA](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/) pagina. De SLA wordt alleen toegepast op Video Indexer rekeningen betalen en geldt niet voor de gratis proefversie.
+De SLA van Azure media service behandelt Video Indexer en is te vinden op de [Sla](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/) -pagina. De SLA is alleen van toepassing op Video Indexer betaalde accounts en is niet van toepassing op de gratis proef versie.
 
-## <a name="privacy-questions"></a>Vragen over privacy
+## <a name="privacy-questions"></a>Privacy-vragen
 
-### <a name="are-video-and-audio-files-indexed-by-video-indexer-stored"></a>Worden video-en audiobestanden geïndexeerd door Video Indexer opgeslagen?
+### <a name="are-video-and-audio-files-indexed-by-video-indexer-stored"></a>Worden video-en audio bestanden geïndexeerd door Video Indexer opgeslagen?
 
-Ja, tenzij u het bestand uit de Video Indexer verwijderen, hetzij met behulp van de Video Indexer-website of de API, worden uw video en audio-bestanden opgeslagen. Voor de gratis proefversie, video en audio-bestanden die u moet index worden opgeslagen in de Azure-regio VS-Oost. Anders worden uw video en audio-bestanden opgeslagen in de storage-account van uw Azure-abonnement.
+Ja, tenzij u het bestand verwijdert uit Video Indexer, met behulp van de Video Indexer website of API, worden uw video-en audio bestanden opgeslagen. Voor de gratis proef versie worden de video-en audio bestanden die u indexeert, opgeslagen in de Azure-regio VS-Oost. Anders worden uw video-en audio bestanden opgeslagen in het opslag account van uw Azure-abonnement.
 
-### <a name="can-i-delete-my-files-that-are-stored-in-video-indexer-portal"></a>Kan ik mijn bestanden die zijn opgeslagen in Video Indexer Portal verwijderen?
+### <a name="can-i-delete-my-files-that-are-stored-in-video-indexer-portal"></a>Kan ik mijn bestanden verwijderen die zijn opgeslagen in Video Indexer Portal?
 
-Ja, kunt u uw video en audio-bestanden, evenals alle metagegevens en inzichten die zijn geëxtraheerd uit door Video Indexer altijd verwijderen. Nadat u een bestand verwijderen uit de Video Indexer, het bestand en bijbehorende metagegevens en inzichten worden permanent verwijderd uit de Video Indexer. Als u uw eigen back-upoplossing hebt geïmplementeerd in Azure storage, moet het bestand blijft echter in uw Azure-opslag.
+Ja, u kunt altijd uw video-en audio bestanden verwijderen, evenals alle meta gegevens en inzichten die door Video Indexer worden geëxtraheerd. Wanneer u een bestand verwijdert uit Video Indexer, worden het bestand en de bijbehorende meta gegevens en inzichten permanent verwijderd uit Video Indexer. Als u echter uw eigen back-upoplossing hebt geïmplementeerd in azure Storage, blijft het bestand in uw Azure-opslag.
 
-### <a name="can-i-control-user-access-to-my-video-indexer-account"></a>Kan ik gebruikerstoegang beheren op mijn Video Indexer-account?
+### <a name="can-i-control-user-access-to-my-video-indexer-account"></a>Kan ik de gebruikers toegang tot mijn Video Indexer account beheren?
 
-Ja, alleen de accountbeheerders kunt uitnodigen en uitnodiging van personen bij hun account, evenals wie heeft bevoegdheden bewerken en wie alleen-lezen toegang heeft toewijzen.
+Ja, alleen account beheerders kunnen personen uitnodigen en uitnodigen voor hun account, maar ook toewijzen met bewerkings rechten en met alleen-lezen toegang.
 
-### <a name="who-has-access-to-my-video-and-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Wie heeft toegang tot Mijn video en audio-bestanden die zijn is geïndexeerd en/of opgeslagen door Video Indexer en de metagegevens en inzichten die zijn opgehaald?
+### <a name="who-has-access-to-my-video-and-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Wie heeft toegang tot mijn video-en audio bestanden die zijn geïndexeerd en/of opgeslagen door Video Indexer en de door u uitgepakte meta gegevens en inzichten?
 
-Uw video of audio-inhoud met openbare als de privacyinstelling zijn toegankelijk voor iedereen die de koppeling naar uw video of audio-inhoud en de inzichten is. Uw video of audio-inhoud privé als de privacyinstelling waarvoor alleen toegankelijk door gebruikers die zijn uitgenodigd voor het account van de video of audio-inhoud. De privacyinstelling van uw inhoud geldt ook voor de metagegevens en inzichten aan Video Indexer worden geëxtraheerd. U kunt de privacyinstelling toewijzen tijdens het uploaden van uw video of audio-bestand. U kunt ook de privacyinstelling na indexeren wijzigen.
+Uw video-of audio-inhoud die openbaar is als privacy-instelling, is toegankelijk voor iedereen met de koppeling naar uw video-of audio-inhoud en inzichten. Uw video-of audio-inhoud die als privacyinstelling is ingesteld, kan alleen worden gebruikt door gebruikers die zijn uitgenodigd voor het account van de video-of audio-inhoud. De privacyinstelling van uw inhoud is ook van toepassing op de meta gegevens en inzichten die Video Indexer uittreksels. U wijst de privacyinstelling toe wanneer u uw video-of audio bestand uploadt. U kunt de privacyinstelling ook na het indexeren wijzigen.
 
-### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Welke toegang beschikt Microsoft over naar Mijn video- of audio-bestanden die zijn is geïndexeerd en/of opgeslagen door Video Indexer en de metagegevens en inzichten die zijn opgehaald
+### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Welke toegang heeft micro soft voor mijn video-of audio bestanden die zijn geïndexeerd en/of opgeslagen door Video Indexer en de door u uitgepakte meta gegevens en inzichten?
 
-Per de [voorwaarden voor onlineservices Azure](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST), volledig eigenaar van uw inhoud en Microsoft alleen toegang tot uw inhoud en de metagegevens en inzichten die Video Indexer uit uw inhoud op basis van het OST-bestand en de Microsoft ophaalt Privacyverklaring.
+Op basis van de [Azure Online Services-voor waarden](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST) hebt u volledig eigenaar van uw inhoud. micro soft heeft alleen toegang tot uw inhoud en de meta gegevens en inzichten die video indexer worden geëxtraheerd uit uw inhoud volgens de OST en de privacyverklaring van micro soft.
 
-### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>Zijn de aangepaste modellen die ik bouw in mijn Video Indexer-account beschikbaar voor andere accounts?
+### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>Zijn de aangepaste modellen die ik in mijn Video Indexer-account heb gemaakt, beschikbaar voor andere accounts?
 
- Nee, de aangepaste modellen die u in uw account maakt zijn niet beschikbaar voor een ander account. Video Indexer op dit moment kunt u aangepaste [merken](customize-brands-model-overview.md), [taal](customize-language-model-overview.md), en [persoon](customize-person-model-overview.md) modellen in uw account. Deze modellen zijn alleen beschikbaar in het account waarin u de modellen hebt gemaakt.
+ Nee, de aangepaste modellen die u in uw account maakt, zijn niet beschikbaar voor een ander account. Met Video Indexer kunt u op dit moment aangepaste [merken](customize-brands-model-overview.md), [talen](customize-language-model-overview.md)en [persoons](customize-person-model-overview.md) modellen bouwen in uw account. Deze modellen zijn alleen beschikbaar in het account waarin u de modellen hebt gemaakt.
   
-### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>Is de inhoud geïndexeerd door Video Indexer binnen de Azure-regio waar ik Video Indexer gebruik gehouden?
+### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>Wordt de inhoud geïndexeerd door Video Indexer gehouden in de Azure-regio waar ik Video Indexer gebruik?
 
-Ja, de inhoud en de inzichten worden bewaard in de Azure-regio, tenzij u een handmatige configuratie hebt in uw Azure-abonnement dat gebruikmaakt van meerdere Azure-regio's. 
+Ja, de inhoud en de inzichten worden bewaard in de Azure-regio, tenzij u een hand matige configuratie in uw Azure-abonnement hebt die gebruikmaakt van meerdere Azure-regio's. 
 
-### <a name="what-is-the-privacy-policy-for-video-indexer"></a>Wat is de privacyverklaring voor Video Indexer?
+### <a name="what-is-the-privacy-policy-for-video-indexer"></a>Wat is het privacybeleid voor Video Indexer?
 
-Video Indexer wordt gedekt door de [privacyverklaring van Microsoft](https://privacy.microsoft.com/privacystatement). De privacyverklaring wordt uitgelegd dat de persoonlijke gegevens die Microsoft uit hoe Microsoft verwerkt en voor welke doelen verwerkt Microsoft. Voor meer informatie over privacy, gaat u naar de [Microsoft Trust Center](https://www.microsoft.com/trustcenter).
+Video Indexer valt onder de [privacyverklaring van micro soft](https://privacy.microsoft.com/privacystatement). De privacyverklaring bevat een uitleg van de persoonlijke gegevens van micro soft-processen, de manier waarop micro soft deze verwerkt en voor welke doelen micro soft dit verwerkt. Ga naar het [vertrouwens centrum van micro soft](https://www.microsoft.com/trustcenter)voor meer informatie over privacy.
 
 ### <a name="what-certifications-does-video-indexer-have"></a>Welke certificeringen heeft Video Indexer?
 
-Video Indexer heeft momenteel de SOC-certificering. Als u wilt controleren van Video Indexer-certificering, Raadpleeg de [Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure).
+Video Indexer heeft momenteel de SOC-certificering. Raadpleeg het [vertrouwens centrum van micro soft](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure)om de certificering van video indexer te controleren.
 
 ## <a name="api-questions"></a>API-vragen
 
-### <a name="what-apis-does-video-indexer-offer"></a>Welke API's wordt aangeboden door Video Indexer?
+### <a name="what-apis-does-video-indexer-offer"></a>Welke Api's biedt Video Indexer?
 
-Video Indexer-API's kunt indexeren, extraheren van metagegevens, beheer van middelen, vertaling, insluiten, aanpassing van modellen en nog veel meer. Ga voor meer gedetailleerde informatie over het gebruik van de Video Indexer-API, raadpleegt u de [Video Indexer-Ontwikkelaarsportal](https://api-portal.videoindexer.ai/).
+Met de Api's van Video Indexer kan indexering worden uitgebreid, worden meta gegevens, het beheer van activa, de vertaling, het insluiten, het aanpassen van modellen en meer uitgepakt. Raadpleeg de [video indexer ontwikkelaars Portal](https://api-portal.videoindexer.ai/)voor meer gedetailleerde informatie over het gebruik van de video INDEXER-API.
 
-### <a name="what-client-sdks-does-video-indexer-offer"></a>Welke client-SDK's wordt aangeboden door Video Indexer?
+### <a name="what-client-sdks-does-video-indexer-offer"></a>Welke client-Sdk's Video Indexer aanbieding?
 
-Er zijn momenteel geen client SDK's die worden aangeboden. De Video Indexer-team werkt aan de SDK's en wil ze snel te leveren.
+Er zijn momenteel geen client-Sdk's beschikbaar. Het Video Indexer-team werkt aan de Sdk's en is van plan om ze binnenkort te leveren.
 
-### <a name="how-do-i-get-started-with-video-indexers-api"></a>Hoe ga ik aan de slag met de Video Indexer-API?
+### <a name="how-do-i-get-started-with-video-indexers-api"></a>Hoe kan ik aan de slag met de Video Indexer-API?
 
-Ga als volgt [zelfstudie: aan de slag met Video Indexer-API](video-indexer-use-apis.md).
+Volg [de zelf studie: aan de slag met de video indexer-API](video-indexer-use-apis.md).
 
-### <a name="what-is-the-difference-between-the-video-indexer-api-and-the-azure-media-service-v3-api"></a>Wat is het verschil tussen de Video Indexer-API en de Azure Media Service-API v3?
+### <a name="what-is-the-difference-between-the-video-indexer-api-and-the-azure-media-service-v3-api"></a>Wat is het verschil tussen de Video Indexer API en de Azure Media Service V3 API?
 
-Er zijn momenteel enkele overlappingen in functies die worden aangeboden door de Video Indexer-API en de Azure Media Service-API v3. U vindt meer informatie over het vergelijken van beide services [hier](compare-video-indexer-with-media-services-presets.md).
+Er zijn momenteel enkele overlap pingen in functies die worden aangeboden door de Video Indexer-API en de Azure Media Service V3 API. U kunt [hier](compare-video-indexer-with-media-services-presets.md)meer informatie vinden over het vergelijken van beide services.
 
-### <a name="what-is-an-api-access-token-and-why-do-i-need-it"></a>Wat is een API-toegangstoken en waarom moet ik deze?
+### <a name="what-is-an-api-access-token-and-why-do-i-need-it"></a>Wat is een API-toegangs token en waarom heb ik dit nodig?
 
-De Video Indexer-API bevat een autorisatie-API en een API-bewerkingen. De autorisaties-API-aanroepen die je bevat toegangstoken. Elke aanroep naar de Operations-API moet worden gekoppeld aan een toegangstoken dat overeenkomt met het autorisatiebereik van de aanroep.
+De Video Indexer-API bevat een autorisatie-API en een operations API. De autorisaties-API bevat aanroepen waarmee u een toegangs token kunt opgeven. Elke aanroep naar de Operations-API moet worden gekoppeld aan een toegangstoken dat overeenkomt met het autorisatiebereik van de aanroep.
 
-Toegangstokens zijn nodig om de Video Indexer-API's gebruiken om veiligheidsredenen. Dit zorgt ervoor dat alle aanroepen zijn afkomstig van u of gebruikers die beschikken over machtigingen voor toegang tot uw account. 
+Toegangs tokens zijn nodig voor het gebruik van de Video Indexer-Api's om veiligheids redenen. Dit zorgt ervoor dat alle aanroepen afkomstig zijn van u of gebruikers met toegangs machtigingen voor uw account. 
 
-### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>Wat is het verschil tussen het toegangstoken voor Account, token voor gebruikerstoegang en Video-toegangstoken?
+### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>Wat is het verschil tussen account toegangs token, toegangs token voor gebruikers en video toegangs token?
 
-* Accountniveau – account toegangsniveau van de tokens kunnen u bewerkingen uitvoeren op het accountniveau of de video. Bijvoorbeeld, een video uploaden, lijst met alle video's, inzichten in video's ophalen.
-* Het gebruikersniveau van de - toegangsniveau gebruikerstokens kunnen u bewerkingen uitvoeren op het gebruikersniveau van de. Hiermee kunt u bijvoorbeeld gekoppelde accounts ophalen.
-* Videoniveau – toegangsniveau van de video-tokens kunnen u bewerkingen uitvoeren op een specifieke video. Hiermee kunt u bijvoorbeeld inzichten in een video krijgen, ondertiteling downloaden, widgets ophalen, enzovoort.
+* Account niveau: toegangs tokens op account niveau bieden u de mogelijkheid om bewerkingen uit te voeren op het niveau van de account of het video niveau. U kunt bijvoorbeeld een video uploaden, alle Video's weer geven en video inzichten ophalen.
+* Gebruikers niveau: toegangs tokens op gebruikers niveau bieden u de mogelijkheid om bewerkingen op het gebruikers niveau uit te voeren. Hiermee kunt u bijvoorbeeld gekoppelde accounts ophalen.
+* Video niveau – toegangs tokens op video niveau bieden u de mogelijkheid om bewerkingen uit te voeren op een specifieke video. Hiermee kunt u bijvoorbeeld inzichten in een video krijgen, ondertiteling downloaden, widgets ophalen, enzovoort.
 
-### <a name="how-often-do-i-need-to-get-a-new-access-token-when-do-access-tokens-expire"></a>Hoe vaak moet ik een nieuw toegangstoken ophalen? Wanneer toegangstokens verlopen?
+### <a name="how-often-do-i-need-to-get-a-new-access-token-when-do-access-tokens-expire"></a>Hoe vaak moet ik een nieuw toegangs token verkrijgen? Wanneer verlopen toegangs tokens?
 
-Access tokens verlopen elk uur, dus u moet voor het genereren van een nieuw toegangstoken elk uur. 
+Toegangs tokens verlopen elk uur, dus u moet elk uur een nieuw toegangs token genereren. 
 
 ## <a name="billing-questions"></a>Vragen over facturering
 
-### <a name="how-much-does-video-indexer-cost"></a>Wat kost Video Indexer?
+### <a name="how-much-does-video-indexer-cost"></a>Hoeveel kost het Video Indexer?
 
-Video Indexer maakt gebruik van een eenvoudige betalen per gebruik prijsmodel op basis van de duur van de inhoud invoer die u met de index. Extra kosten in rekening kunnen passen voor codering, streaming, opslag, netwerkgebruik en media gereserveerde eenheden. Zie voor meer informatie de [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) pagina.
+Video Indexer maakt gebruik van een eenvoudig prijs model voor betalen per gebruik op basis van de duur van de inhouds invoer die u indexeert. Er kunnen extra kosten in rekening worden gebracht voor het coderen, streamen, opslaan, netwerk gebruik en gereserveerde media-eenheden. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) voor meer informatie.
 
-### <a name="when-am-i-billed-for-using-video-indexer"></a>Wanneer Word ik gefactureerd voor het gebruik van Video Indexer?
+### <a name="when-am-i-billed-for-using-video-indexer"></a>Wanneer ben ik gefactureerd voor het gebruik van Video Indexer?
 
 Wanneer u een video opstuurt om deze te laten indexeren, geeft u aan dat de video, de audio of beide moeten worden geanalyseerd. Op basis hiervan wordt bepaald voor welke SKU's kosten in rekening worden gebracht. Als er tijdens de verwerking een kritieke fout optreedt, wordt er als antwoord een foutcode geretourneerd. In een dergelijk geval worden er geen kosten in rekening gebracht.  Kritieke fouten kunnen worden veroorzaakt door een bug in onze code of een kritiek probleem met een interne afhankelijkheid van de service. Bij fouten zoals onjuiste verificatie of de onjuiste extractie van inzichten, wordt er gewoon een antwoord geretourneerd; deze fouten zijn niet kritiek. Als er een geldig antwoord wordt geretourneerd (geen foutcode), worden er kosten in rekening gebracht.
  
-### <a name="does-video-indexer-offer-a-free-trial"></a>Biedt Video Indexer een gratis proefversie?
+### <a name="does-video-indexer-offer-a-free-trial"></a>Biedt Video Indexer een gratis proef versie?
 
-Ja, Video Indexer biedt een gratis proefversie waarmee u de volledige-service en de API-functionaliteit. Er is een quotum van 600 minuten video's voor gebruikers webgebaseerde interface en 2.400 minuten voor API-gebruikers. 
+Ja, Video Indexer biedt een gratis proef versie die volledige service-en API-functionaliteit biedt. Er is een quotum van 600 minuten aan Video's voor web-interface gebruikers en 2.400 minuten voor API-gebruikers. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

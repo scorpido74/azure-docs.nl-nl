@@ -1,7 +1,7 @@
 ---
-title: Een model merken in Video Indexer - Azure aanpassen
-titlesuffix: Azure Media Services
-description: In dit artikel biedt een overzicht van wat is een model merken in Video Indexer en hoe u kunt aanpassen.
+title: Een merk model aanpassen in Video Indexer-Azure
+titleSuffix: Azure Media Services
+description: Dit artikel geeft een overzicht van wat een merk model is in Video Indexer en hoe u het kunt aanpassen.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,31 +10,31 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 863dbd9a6044ee33ae39ac9693a7d4f74382b9c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca3d825fb2f4184448cc279d9408f47ad4ad004a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799679"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838359"
 ---
-# <a name="customize-a-brands-model-in-video-indexer"></a>Een model merken in Video Indexer aanpassen
+# <a name="customize-a-brands-model-in-video-indexer"></a>Een merk model aanpassen in Video Indexer
 
-Video Indexer biedt ondersteuning voor detectie merk van spraak en tekst visual tijdens het indexeren en indexeren van video en audio-inhoud. De mogelijkheid voor het detecteren van merk vermeldingen van producten, services, identificeert en bedrijven voorgesteld door de Bing merken database. Bijvoorbeeld, als Microsoft wordt vermeld in een video of audio-inhoud of als deze weergegeven in de visual tekst in een video wordt, Video Indexer wordt dit gedetecteerd als een onderdeel in de inhoud. Merken zijn disambiguated van andere context met voorwaarden.
+Video Indexer ondersteunt merk detectie van spraak-en visuele tekst tijdens het indexeren en opnieuw indexeren van video-en audio-inhoud. De merk detectie functie identificeert vermeldingen van producten, services en bedrijven die worden voorgesteld door de merken database van Bing. Als micro soft bijvoorbeeld wordt vermeld in een video-of audio-inhoud of als het in visuele tekst in een video wordt weer gegeven, detecteert Video Indexer deze als een merk in de inhoud. Brands worden disambiguated uit andere termen die gebruikmaken van context.
 
-Merk-detectie is handig in tal van zakelijke scenario's zoals inhoud archief en detectie, contextuele reclame, analyse van sociale media, concurreren retail analysis en nog veel meer. Video Indexer merk detectie kunt u index merk vermeldingen in spraak- en visual tekst, met behulp van de Bing merken database evenals met aanpassingen door het bouwen van een aangepast model merken voor elke Video Indexer-account. De aangepaste merken model-functie kunt u aangeven of Video Indexer merken uit de database van Bing merken, uitsluiten van bepaalde merken detecteert wordt gedetecteerd (in wezen het maken van een zwarte lijst met merken), en omvatten merken die deel van uitmaken moeten uw model die mogelijk niet in de database van de Bing merken (in wezen het maken van een technisch overzicht van merken). De aangepaste model merken die u maakt is alleen beschikbaar in het account waarin u het model hebt gemaakt.
+Merk detectie is handig voor een groot aantal bedrijfs scenario's, zoals het archiveren van inhoud en detectie, contextuele advertenties, analyse van sociale media, analyse van de detail handel en nog veel meer. Met Video Indexer merk detectie kunt u merk vermeldingen indexeren in spraak-en visuele tekst, met behulp van de merken-data base van Bing en de aanpassing door een aangepast merk model te bouwen voor elk Video Indexer-account. Met de functie Custom Brands model kunt u selecteren of Video Indexer Brands detecteert van de Bing Brands-data base, of u bepaalde merken wilt uitsluiten van detectie (in wezen een zwarte lijst met merken maakt), en u kunt ook merken opnemen die deel uitmaken van uw model dat zich mogelijk niet in de Bing Brands-data base bewaart (in feite een witte lijst met merken maken). Het aangepaste merk model dat u maakt, is alleen beschikbaar in het account waarin u het model hebt gemaakt.
 
-## <a name="out-of-the-box-detection-example"></a>Buiten de voorbeeld-detectie
+## <a name="out-of-the-box-detection-example"></a>Voor beeld van de detectie van het vak
 
-In de [Microsoft Build 2017 dag 2](https://www.videoindexer.ai/media/ed6ede78ad/) presentatie, het merk "Microsoft Windows" wordt meerdere keren weergegeven. Soms in het transcript, soms visual tekst en nooit als verbatim. Video Indexer detecteert met hoge precisie is een term inderdaad merk op basis van de context, die betrekking hebben op meer dan 90k merken gebruiksklaar en voortdurend bijgewerkt. Video Indexer detecteert het merk van gesproken inhoud om 02:25, en vervolgens opnieuw op 02:40 uit visual tekst, die deel uitmaakt van het windows-logo.
+In de [micro soft Build 2017 dag 2](https://www.videoindexer.ai/media/ed6ede78ad/) -presentatie wordt het merk "micro soft Windows" meerdere keren weer gegeven. Soms in het transcript, soms als visuele tekst en nooit als Verbatim. Video Indexer detecteert met zeer nauw keurigheid dat een term op basis van de context inderdaad is gebaseerd op het 90k Brands-merk en voortdurend wordt bijgewerkt. Bij 02:25 detecteert Video Indexer het merk van spraak en vervolgens opnieuw op 02:40 van visuele tekst, die deel uitmaakt van het Windows-logo.
 
-![Overzicht van merken](./media/content-model-customization/brands-overview.png)
+![Overzicht van Brands](./media/content-model-customization/brands-overview.png)
 
-Praten over windows in de context van de bouw, wordt het woord 'Windows' als een onderdeel, en dezelfde voor Box, Apple, Fox, enz., op basis van geavanceerde Machine Learning-algoritmen die weet hoe dubbelzinnigheid van context niet detecteren. Merk detectie werkt voor onze ondersteunde talen. Klik hier voor [volledige Microsoft Build 2017 dag 2 inleidende video en index](https://www.videoindexer.ai/media/ed6ede78ad/).
+Het praten over Windows in de context van de constructie detecteert het woord ' Windows ' niet als een merk en is hetzelfde voor box, Apple, Fox, etc., op basis van geavanceerde Machine Learning-algoritmen die weten hoe u dubbel zinnigheid van de context. Merk detectie werkt voor alle ondersteunde talen. Klik hier voor [volledige micro soft Build 2017 dag 2 Speech video en index](https://www.videoindexer.ai/media/ed6ede78ad/).
 
-Bekijk de volgende stappen om uw eigen merken.
+Bekijk de volgende stappen om uw eigen Brands te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Pas merken model met behulp van API 's](customize-brands-model-with-api.md)
+[Het merk model aanpassen met behulp van Api's](customize-brands-model-with-api.md)
 
-[Merken model met behulp van de website aanpassen](customize-brands-model-with-website.md)
+[Brands model aanpassen met behulp van de website](customize-brands-model-with-website.md)

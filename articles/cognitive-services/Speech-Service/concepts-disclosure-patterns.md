@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: angle
-ms.openlocfilehash: fde4a73dd4a95028f23563fb6a8ae36c0142fd39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507317"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836985"
 ---
 # <a name="disclosure-design-patterns"></a>Ontwerp patronen voor openbaar making
 Nu u het&#39;juiste [niveau van openbaar making](concepts-disclosure-guidelines.md#disclosure-assessment) hebt vastgesteld voor uw synthetische spraak ervaring, is&#39;het een goed idee om mogelijke ontwerp patronen te verkennen.
@@ -247,11 +247,11 @@ Gebruik openbaar making als een kans om zonder problemen te werken.
 
 ## <a name="reference-docs"></a>Referentiedocumenten
 
-* [Opmerking over transparantie](https://aka.ms/neural-tts-transparency-note)
+* [Openbaar making voor spraak-talen](https://aka.ms/disclosure-voice-talent)
 * [Richt lijnen voor de verantwoordelijke implementatie van synthetische spraak technologie](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Overzicht van beperking](concepts-gating-overview.md)
 * [Vrijgeven](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Opmerking over transparantie](https://aka.ms/neural-tts-transparency-note)
+* [Openbaar making voor spraak-talen](https://aka.ms/disclosure-voice-talent)

@@ -1,7 +1,7 @@
 ---
-title: Een taalmodel in Video Indexer - Azure aanpassen
-titlesuffix: Azure Media Services
-description: In dit artikel biedt een overzicht van wat is een taalmodel in Video Indexer en hoe u kunt aanpassen.
+title: Een taal model aanpassen in Video Indexer-Azure
+titleSuffix: Azure Media Services
+description: Dit artikel geeft een overzicht van wat een taal model is in Video Indexer en hoe u het kunt aanpassen.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,38 +10,38 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 516ecd8842e7b673201cc640b283c081a02d2b2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b096b9352be65033f2fb782b118e815dc16b43b6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799549"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838324"
 ---
-# <a name="customize-a-language-model-with-video-indexer"></a>Een taalmodel met Video Indexer aanpassen
+# <a name="customize-a-language-model-with-video-indexer"></a>Een taal model aanpassen met Video Indexer
 
-Video Indexer biedt ondersteuning voor automatische spraakherkenning dankzij de integratie met de Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). U kunt het taalmodel aanpassen door aanpassing van woordenlijsten tekst, namelijk de tekst uit het domein waarvan u wilt dat de engine om aan te passen voor uploaden. Nadat u uw model te trainen, nieuwe woorden die voorkomen in de aanpassing van woordenlijsten tekst wordt herkend, ervan uitgaande dat het standaard uitspraak van, en het taalmodel leert nieuwe waarschijnlijk reeksen woorden. Aangepaste taalmodellen worden ondersteund voor Engels, Spaans, Frans, Duits, Italiaans, Chinees (Vereenvoudigd), Japans, Russisch, Portugees (Brazilië), Hindi en Koreaans. 
+Video Indexer ondersteunt automatische spraak herkenning via integratie met de micro soft- [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). U kunt het taal model aanpassen door de aanpassings tekst te uploaden, namelijk de tekst van het domein waarvan de woorden lijst de engine moet aanpassen. Zodra u uw model hebt getraind, worden nieuwe woorden die in de aanpassings tekst worden weer gegeven, herkend, aangenomen dat de standaard uitspraak en het taal model nieuwe mogelijke reeksen van woorden bevat. Aangepaste taal modellen worden ondersteund voor Engels, Spaans, Frans, Duits, Italiaans, Chinees (vereenvoudigd), Japans, Russisch, Braziliaans Portugees, Hindi en Koreaans. 
 
-We gaan een woord dat is zeer specifieke, zoals 'Kubernetes' (in de context van Azure Kubernetes service), als voorbeeld. Omdat het woord nieuw in Video Indexer is, deze wordt herkend als 'community's '. U moet het model voor het herkennen van deze als 'Kubernetes' te trainen. In andere gevallen de woorden bestaan, maar ze worden weergegeven in een bepaalde context wordt niet verwacht door het taalmodel. Bijvoorbeeld is 'containerservice' niet een 2-woordvolgorde op die een niet-specifieke taalmodel als een bepaalde reeks woorden herkennen zou.
+Laten we een woord maken dat zeer specifiek is, zoals ' Kubernetes ' (in de context van de Azure Kubernetes-service), als voor beeld. Omdat het woord nieuw is voor Video Indexer, wordt het herkend als community's. U moet het model trainen om het te herkennen als ' Kubernetes '. In andere gevallen bestaan de woorden, maar het taal model verwacht niet dat ze in een bepaalde context worden weer gegeven. Bijvoorbeeld: ' container service ' is geen reeks van twee woorden die een niet-gespecialiseerd taal model zou herkennen als een specifieke set woorden.
 
-U hebt de optie voor het uploaden van woorden zonder context in een lijst in een tekstbestand. Dit wordt beschouwd als gedeeltelijke aanpassing. U kunt ook bestanden van de tekst van de documentatie of de zinnen met betrekking tot uw inhoud voor betere aanpassing uploaden.
+U hebt de optie om woorden zonder context te uploaden in een lijst in een tekst bestand. Dit wordt beschouwd als gedeeltelijke aanpassing. U kunt ook een tekst bestand (en) van documentatie of zinnen uploaden die betrekking hebben op uw inhoud voor een betere aanpassing.
 
-U kunt de Video Indexer-API's of de website maken en bewerken van aangepaste taalmodellen, zoals beschreven in de onderwerpen in de [Vervolgstappen](#next-steps) sectie van dit onderwerp.
+U kunt de Video Indexer-Api's of de website gebruiken om aangepaste taal modellen te maken en te bewerken, zoals beschreven in de sectie [volgende stappen](#next-steps) van dit onderwerp.
 
-## <a name="best-practices-for-custom-language-models"></a>Aanbevolen procedures voor het aangepaste taalmodellen
+## <a name="best-practices-for-custom-language-models"></a>Aanbevolen procedures voor aangepaste taal modellen
 
-Video Indexer aan op basis van de waarschijnlijkheid van combinaties van word, dus voor meer het beste leert:
+Video Indexer is gebaseerd op de waarschijnlijkheid van combi Naties van woorden, zodat u het beste kunt leren:
 
-* Geef voldoende praktijkvoorbeelden van zinnen als ze zouden worden uitgesproken.
-* Slechts één zin per regel, niet meer plaatsen. Het systeem leert anders kansen in zinnen.
-* Het is goed dat één woord plaatsen als een zin om het woord op basis van anderen te verbeteren, maar het systeem leert beste uit volledige zinnen.
-* Wanneer introduceert nieuwe woorden of afkortingen, indien mogelijk zo veel voorbeelden geven van het gebruik in een volledige zin zoveel context geven mogelijk tot het systeem.
-* Probeer verschillende mogelijkheden voor aanpassing, en ontdek hoe deze werken voor u.
-* Herhaling van de exacte dezelfde zin meerdere keren voorkomen. Deze mogen afwijking op basis van de rest van de invoer maken.
-* Vermijd het gebruik van ongebruikelijke symbolen (~, # @ % &) als ze zullen krijgen verwijderd. De zinnen waarin ze worden weergegeven ophalen, ook genegeerd.
-* Plaats het te groot invoer, zoals honderden of duizenden zinnen, omdat hierdoor het effect van het versterkingsbereik wordt Breng.
+* Geef voldoende voor beelden van zinnen, zoals ze zouden worden gesp roken.
+* Plaats slechts één zin per regel, niet meer. Anders leert het systeem waarschijnlijk meer over zinnen.
+* Het is aan te raden om één woord als een zin te plaatsen om het woord te verhogen tegen anderen, maar het systeem leert het beste van volledige zinnen.
+* Bij het introduceren van nieuwe woorden of acroniemen moet u, indien mogelijk, zoveel voor beelden van gebruik in een volledige zin geven om zo veel mogelijk context aan het systeem toe te voegen.
+* Probeer verschillende aanpassings opties te plaatsen en te zien hoe ze werken.
+* Vermijd herhalingen van exact dezelfde zin meermaals. Dit kan bias veroorzaken ten opzichte van de rest van de invoer.
+* Vermijd het gebruik van niet-algemene symbolen (~, # @% &), aangezien deze worden genegeerd. De zinnen waarin ze worden weer gegeven, worden ook genegeerd.
+* Vermijd het plaatsen van te grote invoer, zoals honderd duizenden zinnen, omdat hierdoor het effect van versterking wordt verkleind.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Taalmodel met behulp van API's aanpassen](customize-language-model-with-api.md)
+[Taal model aanpassen met behulp van Api's](customize-language-model-with-api.md)
 
-[Taalmodel met behulp van de website aanpassen](customize-language-model-with-website.md)
+[Taal model aanpassen met behulp van de website](customize-language-model-with-website.md)

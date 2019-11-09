@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/10/2019
 ms.author: victorh
-ms.openlocfilehash: c4bc0ec2bf15a29962909f14f55854c06f0a6561
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e32443e01e8b44ff5a891afc76378a53b13d7ddd
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932507"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833325"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure-toepassing gateway en Web Application firewall migreren van v1 naar v2
 
@@ -29,8 +29,8 @@ In dit artikel wordt beschreven hoe u de configuratie migreert. Migratie van cli
 
 Er is een Azure PowerShell script beschikbaar dat het volgende doet:
 
-* Hiermee maakt u een nieuwe Standard_v2-of WAF_v2-gateway in een subnet van een virtueel netwerk dat u opgeeft.
-* Hiermee wordt de configuratie die is gekoppeld aan de V1 Standard-of WAF-gateway, naadloos gekopieerd naar de zojuist gemaakte Standard_V2-of WAF_V2-gateway.
+* Hiermee maakt u een nieuwe Standard_v2 of WAF_v2 gateway in een subnet van een virtueel netwerk dat u opgeeft.
+* Hiermee wordt de configuratie die is gekoppeld aan de V1 Standard-of WAF-gateway, naadloos gekopieerd naar de zojuist gemaakte Standard_V2 of WAF_V2 gateway.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
@@ -49,10 +49,10 @@ Down load het migratie script van de [PowerShell Gallery](https://www.powershell
 
 Er zijn twee opties voor u afhankelijk van de instellingen en voor keuren van uw lokale Power shell-omgeving:
 
-* Als u de Azure AZ-modules niet hebt geïnstalleerd of als u niet van mening bent dat u de Azure AZ-modules verwijdert, kunt u `Install-Script` het beste de optie gebruiken om het script uit te voeren.
+* Als u de Azure AZ-modules niet hebt geïnstalleerd of als u niet van mening bent dat u de Azure AZ-modules verwijdert, is de beste optie om het script uit te voeren met de optie `Install-Script`.
 * Als u de Azure AZ-modules wilt blijven gebruiken, is het verstandig om het script te downloaden en het rechtstreeks uit te voeren.
 
-Als u wilt weten of u de Azure AZ-modules hebt `Get-InstalledModule -Name az`geïnstalleerd, voert u uit. Als er geen geïnstalleerde AZ-modules worden weer geven, kunt u de `Install-Script` -methode gebruiken.
+Als u wilt weten of u de Azure AZ-modules hebt geïnstalleerd, voert u `Get-InstalledModule -Name az`uit. Als er geen geïnstalleerde AZ-modules worden weer geven, kunt u de `Install-Script`-methode gebruiken.
 
 ### <a name="install-using-the-install-script-method"></a>Installeren met behulp van de methode install-script
 
@@ -70,9 +70,9 @@ Als er sommige Azure AZ-modules zijn geïnstalleerd en deze niet kunnen verwijde
 
 Het script uitvoeren:
 
-1. Gebruiken `Connect-AzAccount` om verbinding te maken met Azure.
+1. Gebruik `Connect-AzAccount` om verbinding te maken met Azure.
 
-1. Gebruiken `Import-Module Az` voor het importeren van de AZ-modules.
+1. Gebruik `Import-Module Az` om de AZ-modules te importeren.
 
 1. Voer `Get-Help AzureAppGWMigration.ps1` uit om de vereiste para meters te controleren:
 
@@ -89,7 +89,7 @@ Het script uitvoeren:
    ```
 
    Para meters voor het script:
-   * **resourceId: [String]: Vereist** : dit is de Azure-resource-id voor uw bestaande Standard v1-of WAF v1-gateway. Als u deze teken reeks waarde wilt vinden, gaat u naar de Azure Portal, selecteert u de toepassings gateway of de WAF-resource en klikt u op de koppeling **Eigenschappen** voor de gateway. De resource-ID bevindt zich op deze pagina.
+   * **resourceId: [teken reeks]: vereist** -dit is de Azure-resource-id voor uw bestaande Standard v1-of WAF v1-gateway. Als u deze teken reeks waarde wilt vinden, gaat u naar de Azure Portal, selecteert u de toepassings gateway of de WAF-resource en klikt u op de koppeling **Eigenschappen** voor de gateway. De resource-ID bevindt zich op deze pagina.
 
      U kunt ook de volgende Azure PowerShell opdrachten uitvoeren om de resource-ID op te halen:
 
@@ -98,9 +98,9 @@ Het script uitvoeren:
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [String]:  Vereist** : dit is de IP-adres ruimte die u hebt toegewezen (of die u wilt toewijzen) voor een nieuw subnet dat uw nieuwe v2-gateway bevat. Dit moet worden opgegeven in de CIDR-notatie. Bijvoorbeeld: 10.0.0.0/24. U hoeft dit subnet niet vooraf te maken. Het script maakt het voor u als het niet bestaat.
-   * **appgwName: [teken reeks]: Optioneel**. Dit is een teken reeks die u opgeeft om te gebruiken als de naam voor de nieuwe Standard_v2-of WAF_v2-gateway. Als deze para meter niet wordt opgegeven, wordt de naam van uw bestaande v1-gateway gebruikt met het achtervoegsel *_v2* toegevoegd.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Optioneel**.  Een door komma's gescheiden lijst met PSApplicationGatewaySslCertificate-objecten die u maakt om de SSL-certificaten van uw v1-gateway te vertegenwoordigen, moet worden geüpload naar de nieuwe v2-gateway. Voor elk van de SSL-certificaten die zijn geconfigureerd voor uw Standard v1-of WAF v1-gateway, kunt u een nieuw PSApplicationGatewaySslCertificate `New-AzApplicationGatewaySslCertificate` -object maken via de opdracht die hier wordt weer gegeven. U hebt het pad naar uw SSL-certificaat bestand en het wacht woord nodig.
+   * **subnetAddressRange: [teken reeks]: vereist** -dit is de IP-adres ruimte die u hebt toegewezen (of die u wilt toewijzen) voor een nieuw subnet dat uw nieuwe v2-gateway bevat. Dit moet worden opgegeven in de CIDR-notatie. Bijvoorbeeld: 10.0.0.0/24. U hoeft dit subnet niet vooraf te maken. Het script maakt het voor u als het niet bestaat.
+   * **appgwName: [teken reeks]: optioneel**. Dit is een teken reeks die u opgeeft om te gebruiken als de naam voor de nieuwe Standard_v2 of WAF_v2 gateway. Als deze para meter niet wordt opgegeven, wordt de naam van uw bestaande v1-gateway gebruikt met het achtervoegsel *_v2* toegevoegd.
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]: optioneel**.  Een door komma's gescheiden lijst met PSApplicationGatewaySslCertificate-objecten die u maakt om de SSL-certificaten van uw v1-gateway te vertegenwoordigen, moet worden geüpload naar de nieuwe v2-gateway. Voor elk van de SSL-certificaten die zijn geconfigureerd voor uw Standard v1-of WAF v1-gateway, kunt u een nieuw PSApplicationGatewaySslCertificate-object maken via de `New-AzApplicationGatewaySslCertificate`-opdracht die hier wordt weer gegeven. U hebt het pad naar uw SSL-certificaat bestand en het wacht woord nodig.
 
        Deze para meter is alleen optioneel als u geen HTTPS-listeners hebt geconfigureerd voor uw v1-gateway of WAF. Als u ten minste één HTTPS-listener-installatie hebt, moet u deze para meter opgeven.
 
@@ -114,14 +114,14 @@ Het script uitvoeren:
         -Password $password
       ```
 
-      U kunt in het `$mySslCert1, $mySslCert2` vorige voor beeld (door komma's gescheiden) door geven als waarden voor deze para meter in het script.
-   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: Optioneel**. Een door komma's gescheiden lijst met PSApplicationGatewayTrustedRootCertificate-objecten die u maakt om de [vertrouwde basis certificaten](ssl-overview.md) te vertegenwoordigen voor verificatie van uw back-end-instanties vanuit uw v2-gateway.  
+      U kunt in het vorige voor beeld door geven `$mySslCert1, $mySslCert2` (gescheiden door komma's) als waarden voor deze para meter in het script.
+   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: optioneel**. Een door komma's gescheiden lijst met PSApplicationGatewayTrustedRootCertificate-objecten die u maakt om de [vertrouwde basis certificaten](ssl-overview.md) te vertegenwoordigen voor verificatie van uw back-end-instanties vanuit uw v2-gateway.  
 
       Zie [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)als u een lijst met PSApplicationGatewayTrustedRootCertificate-objecten wilt maken.
-   * **privateIpAddress: [String]: Optioneel**. Een specifiek privé-IP-adres dat u wilt koppelen aan uw nieuwe v2-gateway.  Dit moet afkomstig zijn uit hetzelfde VNet dat u toewijst voor uw nieuwe v2-gateway. Als dit niet is opgegeven, wordt door het script een persoonlijk IP-adres voor uw v2-gateway toegewezen.
-    * **publicIpResourceId: [String]: Optioneel**. De resourceId van een open bare IP-adres resource (standaard-SKU) in uw abonnement dat u wilt toewijzen aan de nieuwe v2-gateway. Als dit niet is opgegeven, wijst het script een nieuw openbaar IP-adres toe aan dezelfde resource groep. De naam is de naam van de v2-gateway met *-IP* toegevoegd.
-   * **validateMigration: [Switch]: Optioneel**. Gebruik deze para meter als u wilt dat het script enkele validaties op basis van de configuratie van de 2-en de configuratie kopie van de v2-gateway. Standaard wordt er geen validatie uitgevoerd.
-   * **enableAutoScale: [Switch]: Optioneel**. Gebruik deze para meter als u wilt dat het script automatisch schalen inschakelt op de nieuwe v2-gateway nadat deze is gemaakt. Automatisch schalen is standaard uitgeschakeld. U kunt dit later altijd hand matig inschakelen op de zojuist gemaakte v2-gateway.
+   * **privateIpAddress: [teken reeks]: optioneel**. Een specifiek privé-IP-adres dat u wilt koppelen aan uw nieuwe v2-gateway.  Dit moet afkomstig zijn uit hetzelfde VNet dat u toewijst voor uw nieuwe v2-gateway. Als dit niet is opgegeven, wordt door het script een persoonlijk IP-adres voor uw v2-gateway toegewezen.
+    * **publicIpResourceId: [teken reeks]: optioneel**. De resourceId van een open bare IP-adres resource (standaard-SKU) in uw abonnement dat u wilt toewijzen aan de nieuwe v2-gateway. Als dit niet is opgegeven, wijst het script een nieuw openbaar IP-adres toe aan dezelfde resource groep. De naam is de naam van de v2-gateway met *-IP* toegevoegd.
+   * **validateMigration: [Switch]: optioneel**. Gebruik deze para meter als u wilt dat het script enkele validaties op basis van de configuratie van de 2-en de configuratie kopie van de v2-gateway. Standaard wordt er geen validatie uitgevoerd.
+   * **enableAutoScale: [Switch]: optioneel**. Gebruik deze para meter als u wilt dat het script automatisch schalen inschakelt op de nieuwe v2-gateway nadat deze is gemaakt. Automatisch schalen is standaard uitgeschakeld. U kunt dit later altijd hand matig inschakelen op de zojuist gemaakte v2-gateway.
 
 1. Voer het script uit met de juiste para meters. Het kan vijf tot zeven minuten duren voordat de bewerking is voltooid.
 
@@ -149,14 +149,14 @@ Hier volgen enkele scenario's waarin uw huidige toepassings gateway (standaard) 
 
 * **Een aangepaste DNS-zone (bijvoorbeeld contoso.com) die verwijst naar het front-end-IP-adres (met behulp van een A-record) dat is gekoppeld aan uw Standard v1-of WAF v1-gateway**.
 
-    U kunt uw DNS-record bijwerken zodat deze verwijst naar het frontend-IP-of DNS-label dat aan uw Standard_v2-toepassings gateway is gekoppeld. Afhankelijk van de TTL die op uw DNS-record is geconfigureerd, kan het enige tijd duren voordat al uw client verkeer naar uw nieuwe v2-gateway wordt gemigreerd.
+    U kunt uw DNS-record bijwerken zodat deze verwijst naar het frontend-IP-of DNS-label dat is gekoppeld aan uw Standard_v2 Application Gateway. Afhankelijk van de TTL die op uw DNS-record is geconfigureerd, kan het enige tijd duren voordat al uw client verkeer naar uw nieuwe v2-gateway wordt gemigreerd.
 * **Een aangepaste DNS-zone (bijvoorbeeld contoso.com) die verwijst naar het DNS-label (bijvoorbeeld: *myappgw.eastus.cloudapp.Azure.com* met een CNAME-record) die is gekoppeld aan uw v1-gateway**.
 
    U hebt twee opties:
 
   * Als u open bare IP-adressen in uw toepassings gateway gebruikt, kunt u een bewaakte, gedetailleerde migratie uitvoeren met behulp van een Traffic Manager profiel om het verkeer (gewogen verkeers routerings methode) incrementeel door te sturen naar de nieuwe v2-gateway.
 
-    U kunt dit doen door de DNS-labels van zowel de v1-als v2-toepassings gateways toe te voegen aan het [Traffic Manager-profiel](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)en uw aangepaste DNS-record (bijvoorbeeld www.contoso.com) te CNAME aan het Traffic Manager domein (bijvoorbeeld contoso.trafficmanager.net) .
+    U kunt dit doen door de DNS-labels van zowel de v1-als v2-toepassings gateways toe te voegen aan het [Traffic Manager-profiel](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)en uw aangepaste DNS-record (bijvoorbeeld `www.contoso.com`) te CNAME aan het Traffic Manager domein (bijvoorbeeld contoso.trafficmanager.net).
   * U kunt ook uw aangepaste DNS-domein record bijwerken zodat deze verwijst naar het DNS-label van de nieuwe v2-toepassings gateway. Afhankelijk van de TTL die op uw DNS-record is geconfigureerd, kan het enige tijd duren voordat al uw client verkeer naar uw nieuwe v2-gateway wordt gemigreerd.
 * **Uw clients maken verbinding met het frontend-IP-adres van uw toepassings gateway**.
 

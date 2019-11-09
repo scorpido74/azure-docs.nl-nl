@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: kfollis
-ms.openlocfilehash: dccf1550052910269efe156b999882234669d7dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5933521993b598ae3758df6e2e7dbf61bf424779
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815709"
+ms.locfileid: "73832798"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>De structuur van Azure-Dash boards
 In dit document wordt de structuur van een Azure-dash board beschreven, met behulp van het volgende dash board:
@@ -295,7 +295,7 @@ Laten we de relevante secties van de JSON opsplitsen.  De eigenschappen van het 
 
 ### <a name="the-id-property"></a>De eigenschap ID
 
-De Azure-resource-id, met inachtneming [van de naamgevings regels van Azure-resources](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). Wanneer de portal een dash board maakt, kiest deze in het algemeen een id in de vorm van een GUID, maar u kunt een geldige naam gebruiken wanneer u ze via een programma maakt. 
+De Azure-resource-id, met inachtneming [van de naamgevings regels van Azure-resources](/azure/architecture/best-practices/resource-naming). Wanneer de portal een dash board maakt, kiest deze in het algemeen een id in de vorm van een GUID, maar u kunt een geldige naam gebruiken wanneer u ze via een programma maakt. 
 
 ### <a name="the-name-property"></a>De eigenschap name
 De naam is het segment van de resource-id die het abonnement, het resource type of de informatie over de resource groep niet bevat. In feite is dit het laatste segment van de resource-id.

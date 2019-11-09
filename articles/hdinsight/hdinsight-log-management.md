@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: c069b620e129177be5d374f5b23b5e54befd8ca2
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 11/07/2019
+ms.openlocfilehash: e5abc9e75e11424b5d0dc4c260b412d0e414ad83
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105428"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837949"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Logboeken beheren voor een HDInsight-cluster
 
@@ -23,17 +23,17 @@ Het beheren van HDInsight-cluster logboeken omvat het bewaren van informatie ove
 
 Veelvoorkomende stappen in het logboek beheer van HDInsight zijn:
 
-* Stap 1: Beleid voor het bewaren van Logboeken bepalen
-* Stap 2: Configuratie logboeken van Cluster service versies beheren
-* Stap 3: Logboek bestanden voor het uitvoeren van cluster taken beheren
-* Stap 4: Prognose logboek volume opslag grootten en kosten
-* Stap 5: Beleids regels en processen voor logboek archivering bepalen
+* Stap 1: beleid voor het bewaren van Logboeken bepalen
+* Stap 2: Configuratie logboeken voor Cluster service versies beheren
+* Stap 3: logboek bestanden voor het uitvoeren van cluster taken beheren
+* Stap 4: het logboek volume grootte en kosten voor de opslag van volumes
+* Stap 5: beleid en processen voor logboek archivering bepalen
 
-## <a name="step-1-determine-log-retention-policies"></a>Stap 1: Beleid voor het bewaren van Logboeken bepalen
+## <a name="step-1-determine-log-retention-policies"></a>Stap 1: beleid voor het bewaren van Logboeken bepalen
 
 De eerste stap bij het maken van een logboek beheer strategie voor HDInsight-clusters is het verzamelen van informatie over bedrijfs scenario's en opslag vereisten voor taak uitvoerings geschiedenis.
 
-### <a name="cluster-details"></a>Clusterdetails
+### <a name="cluster-details"></a>Cluster Details
 
 De volgende cluster Details zijn handig voor het verzamelen van informatie in uw strategie voor logboek beheer. Verzamel deze informatie uit alle HDInsight-clusters die u hebt gemaakt in een bepaald Azure-account.
 
@@ -45,8 +45,8 @@ De volgende cluster Details zijn handig voor het verzamelen van informatie in uw
 U kunt de meeste gegevens op het hoogste niveau ophalen met behulp van de Azure Portal.  U kunt ook [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) gebruiken om informatie over uw HDInsight-cluster (en) op te halen:
 
 ```azurecli
-    az hdinsight list --resource-group <ResourceGroup>
-    az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
+az hdinsight list --resource-group <ResourceGroup>
+az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
 
 U kunt Power shell ook gebruiken om deze informatie weer te geven.  Zie voor meer informatie [Apache Hadoop-clusters in HDInsight beheren met behulp van Azure PowerShell](hdinsight-administer-use-powershell.md).
@@ -67,7 +67,7 @@ Het is belang rijk om inzicht te krijgen in de werkbelasting typen die op uw HDI
 
 * Denk na over het verzamelen van Logboeken vanuit het cluster of van meer dan één cluster, en om ze te sorteren voor doel einden, zoals controle, bewaking, planning en waarschuwingen. U kunt een aangepaste oplossing gebruiken om regel matig de logboek bestanden te openen en te downloaden en ze te combi neren en analyseren om een dashboard weergave te bieden. U kunt ook aanvullende mogelijkheden toevoegen voor waarschuwingen voor beveiliging of fout detectie. U kunt deze hulpprogram ma's samen stellen met behulp van Power shell, de HDInsight Sdk's of de code die toegang heeft tot het klassieke Azure-implementatie model.
 
-* Overweeg of een bewakings oplossing of service een nuttig voor deel zou zijn. Micro soft System Center biedt een [HDInsight-Management Pack](https://www.microsoft.com/download/details.aspx?id=42521). U kunt ook hulpprogram ma's van derden, zoals Apache Chukwa en ganglia, gebruiken om logboeken te verzamelen en te centraliseren. Veel bedrijven bieden services voor het bewaken van op Hadoop gebaseerde big data oplossingen, bijvoorbeeld: Centeriteit, Compuware APM, Sematext SPM en Zettaset Orchestrator.
+* Overweeg of een bewakings oplossing of service een nuttig voor deel zou zijn. Micro soft System Center biedt een [HDInsight-Management Pack](https://www.microsoft.com/download/details.aspx?id=42521). U kunt ook hulpprogram ma's van derden, zoals Apache Chukwa en ganglia, gebruiken om logboeken te verzamelen en te centraliseren. Veel bedrijven bieden services om op Hadoop gebaseerde big data oplossingen te bewaken, bijvoorbeeld: Centeriteit, Compuware APM, Sematext SPM en Zettaset Orchestrator.
 
 ## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>Stap 2: Cluster service versies beheren en script actie logboeken weer geven
 
@@ -87,11 +87,11 @@ Met de Ambari-gebruikers interface kunt u de configuratie voor alle (of alle) se
 
 ### <a name="view-the-script-action-logs"></a>De script actie logboeken weer geven
 
-Met HDInsight- [script acties](hdinsight-hadoop-customize-cluster-linux.md) worden scripts uitgevoerd op een cluster, hetzij hand matig of indien opgegeven. Script acties kunnen bijvoorbeeld worden gebruikt voor het installeren van extra software op het cluster of voor het wijzigen van de configuratie-instellingen van de standaard waarden. Script actie logboeken kunnen inzicht geven in fouten die zijn opgetreden tijdens de installatie van het cluster, en ook wijzigingen in de configuratie-instellingen die van invloed kunnen zijn op de prestaties en beschik baarheid van het cluster.  Als u de status van een script actie wilt zien, selecteert u de knop **OPS** in uw Ambari-gebruikers interface of opent u de status Logboeken in het standaard opslag account. De opslag logboeken zijn beschikbaar `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`op.
+Met HDInsight- [script acties](hdinsight-hadoop-customize-cluster-linux.md) worden scripts uitgevoerd op een cluster, hetzij hand matig of indien opgegeven. Script acties kunnen bijvoorbeeld worden gebruikt voor het installeren van extra software op het cluster of voor het wijzigen van de configuratie-instellingen van de standaard waarden. Script actie logboeken kunnen inzicht geven in fouten die zijn opgetreden tijdens de installatie van het cluster, en ook wijzigingen in de configuratie-instellingen die van invloed kunnen zijn op de prestaties en beschik baarheid van het cluster.  Als u de status van een script actie wilt zien, selecteert u de knop **OPS** in uw Ambari-gebruikers interface of opent u de status Logboeken in het standaard opslag account. De opslag logboeken zijn beschikbaar op `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`.
 
-## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>Stap 3: De logboek bestanden voor de uitvoering van cluster taken beheren
+## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>Stap 3: de logboek bestanden voor de cluster taak uitvoering beheren
 
-De volgende stap is het controleren van de logboek bestanden voor taak uitvoering voor de verschillende services.  Services kunnen Apache HBase, Apache Spark en vele andere zijn. Een Hadoop-cluster produceert een groot aantal uitgebreide logboeken, zodat u kunt bepalen welke logboeken nuttig zijn (en welke niet) het tijdrovender is.  Meer informatie over het logboek registratie systeem is belang rijk voor het beheer van logboek bestanden.  Hier volgt een voor beeld van een logboek bestand.
+De volgende stap is het controleren van de logboek bestanden voor taak uitvoering voor de verschillende services.  Services kunnen Apache HBase, Apache Spark en vele andere zijn. Een Hadoop-cluster produceert een groot aantal uitgebreide logboeken, zodat u kunt bepalen welke logboeken nuttig zijn (en dat niet) het tijdrovender is.  Meer informatie over het logboek registratie systeem is belang rijk voor het beheer van logboek bestanden.  Hier volgt een voor beeld van een logboek bestand.
 
 ![Voor beeld van een logboek bestand van HDInsight voorbeeld uitvoer](./media/hdinsight-log-management/hdi-log-file-example.png)
 
@@ -99,7 +99,7 @@ De volgende stap is het controleren van de logboek bestanden voor taak uitvoerin
 
 HDInsight slaat de logboek bestanden op in het cluster bestandssysteem en in azure Storage. U kunt logboek bestanden in het cluster onderzoeken door een [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) -verbinding met het cluster te openen en door het bestands systeem te bladeren of door de Hadoop-status Portal op de externe hoofd knooppunt server te gebruiken. U kunt de logboek bestanden in azure Storage controleren met behulp van de hulpprogram ma's die gegevens uit Azure Storage kunnen openen en downloaden. Voor beelden zijn [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)en Visual Studio Server Explorer. U kunt ook Power shell en de Azure Storage-client bibliotheken of de Azure .NET-Sdk's gebruiken om toegang te krijgen tot gegevens in Azure Blob-opslag.
 
-Hadoop voert het werk van de taken uit als *taak pogingen* op verschillende knoop punten in het cluster. HDInsight kan speculatieve taak pogingen initiëren, waarbij alle andere taak pogingen die niet eerst worden voltooid, worden beëindigd. Hiermee genereert u belang rijke activiteiten die op het moment van de-vlucht worden vastgelegd in de controller, stderr en syslog-logboek bestanden. Daarnaast worden meerdere taak pogingen tegelijk uitgevoerd, maar een logboek bestand kan alleen de resultaten lineair weer geven.
+Hadoop voert het werk van de taken uit als *taak pogingen* op verschillende knoop punten in het cluster. HDInsight kan speculatieve taak pogingen initiëren en eventuele andere taak pogingen beëindigen die niet eerst worden voltooid. Hiermee genereert u belang rijke activiteiten die op het moment van de-vlucht worden vastgelegd in de controller, stderr en syslog-logboek bestanden. Daarnaast worden meerdere taak pogingen tegelijk uitgevoerd, maar een logboek bestand kan alleen de resultaten lineair weer geven.
 
 #### <a name="hdinsight-logs-written-to-azure-blob-storage"></a>HDInsight-logboeken geschreven naar Azure Blob-opslag
 
@@ -109,21 +109,21 @@ Naast de kern logboek bestanden die door HDInsight worden gegenereerd, genereren
 
 ### <a name="hdinsight-logs-generated-by-yarn"></a>HDInsight-logboeken die zijn gegenereerd door GARENs
 
-GAREN aggregateert logboeken over alle containers op een worker-knoop punt en slaat deze logboeken op als één geaggregeerd logboek bestand per worker-knoop punt. Het logboek wordt opgeslagen op het standaard bestandssysteem nadat een toepassing is voltooid. Uw toepassing kan honderden of duizenden containers gebruiken, maar logboeken voor alle containers die op één worker-knoop punt worden uitgevoerd, worden altijd geaggregeerd naar één bestand. Er wordt slechts één logboek per worker-knoop punt gebruikt door uw toepassing. Logboek aggregatie is standaard ingeschakeld op HDInsight-clusters versie 3,0 en hoger. Samengevoegde logboeken bevinden zich in de standaard opslag voor het cluster.
+GAREN aggregateert logboeken over alle containers op een worker-knoop punt en slaat deze logboeken op als één geaggregeerd logboek bestand per worker-knoop punt. Het logboek wordt opgeslagen op het standaard bestandssysteem nadat een toepassing is voltooid. Uw toepassing kan honderden of duizenden containers gebruiken, maar logboeken voor alle containers die op één worker-knoop punt worden uitgevoerd, worden altijd geaggregeerd naar één bestand. Er is slechts één logboek per werk knooppunt dat door uw toepassing wordt gebruikt. Logboek aggregatie is standaard ingeschakeld op HDInsight-clusters versie 3,0 en hoger. Samengevoegde logboeken bevinden zich in de standaard opslag voor het cluster.
 
 ```
-    /app-logs/<user>/logs/<applicationId>
+/app-logs/<user>/logs/<applicationId>
 ```
 
-De geaggregeerde logboeken zijn niet rechtstreeks leesbaar, omdat ze zijn geschreven in een TFile binaire indeling die is geïndexeerd door container. Gebruik de indelings-of CLI-hulpprogram ma's van de garen om deze logboeken als tekst zonder opmaak te bekijken voor toepassingen of containers die van belang zijn.
+De geaggregeerde logboeken zijn niet direct leesbaar, omdat ze zijn geschreven in een TFile binaire indeling die is geïndexeerd door container. Gebruik de indelings-of CLI-hulpprogram ma's van de garen om deze logboeken als tekst zonder opmaak te bekijken voor toepassingen of containers die van belang zijn.
 
 #### <a name="yarn-cli-tools"></a>Hulp middelen voor garen-CLI
 
-Als u de hulpprogram ma's voor garen-CLI wilt gebruiken, moet u eerst met SSH verbinding maken met het HDInsight-cluster. Geef de `<applicationId>`gegevens `<user-who-started-the-application>`, `<containerId>`, en`<worker-node-address>` op bij het uitvoeren van deze opdrachten. U kunt de logboeken weer geven als tekst zonder opmaak met een van de volgende opdrachten:
+Als u de hulpprogram ma's voor garen-CLI wilt gebruiken, moet u eerst met SSH verbinding maken met het HDInsight-cluster. Geef de `<applicationId>`, `<user-who-started-the-application>`, `<containerId>`en `<worker-node-address>` informatie op wanneer u deze opdrachten uitvoert. U kunt de logboeken weer geven als tekst zonder opmaak met een van de volgende opdrachten:
 
 ```bash
-    yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
-    yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
+yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
+yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 ```
 
 #### <a name="yarn-resourcemanager-ui"></a>De gebruikers interface van garen
@@ -132,9 +132,9 @@ De gebruikers interface van de garen-server wordt uitgevoerd op het hoofd knoopp
 
 1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`. Vervang CLUSTERNAME door de naam van uw HDInsight-cluster.
 2. Selecteer in de lijst met services aan de linkerkant de optie GARENs.
-3. Selecteer in de vervolg keuzelijst snelle koppelingen een van de cluster hoofd knooppunten en selecteer vervolgens de weer gave van het **Resource Manager-logboek**. Er wordt een lijst weer gegeven met koppelingen naar GARENs op hetzelfde basis.
+3. Selecteer in de vervolg keuzelijst snelle koppelingen een van de cluster hoofd knooppunten en selecteer vervolgens de weer gave van het **Resource Manager-logboek**. Er wordt een lijst weer gegeven met koppelingen naar GARENs in de logboeken.
 
-## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>Stap 4: Prognose logboek volume opslag grootten en kosten
+## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>Stap 4: het logboek volume grootte en kosten voor de opslag van volumes
 
 Nadat u de voor gaande stappen hebt voltooid, hebt u een goed idee van de typen en volumes van de logboek bestanden die uw HDInsight-cluster (en) produceert.
 
@@ -142,11 +142,11 @@ Analyseer daarna het volume van de logboek gegevens in de opslag locaties van he
 
 U hebt nu voldoende informatie om een strategie voor logboek beheer voor de sleutel logboeken te maken.  Gebruik uw werk blad (of hulp programma) om zowel de groei van de logboek grootte als de logboek opslag van Azure-service kosten in de toekomst te ramen.  Houd ook rekening met de vereisten voor het bewaren van Logboeken voor de set met logboeken die u wilt onderzoeken.  Nu kunt u toekomstige kosten voor de opslag van het logboek opnieuw ramen nadat u hebt bepaald welke logboek bestanden kunnen worden verwijderd (indien van toepassing) en welke logboeken moeten worden bewaard en gearchiveerd naar minder dure Azure-opslag.
 
-## <a name="step-5-determine-log-archive-policies-and-processes"></a>Stap 5: Beleids regels en processen voor logboek archivering bepalen
+## <a name="step-5-determine-log-archive-policies-and-processes"></a>Stap 5: beleid en processen voor logboek archivering bepalen
 
 Nadat u hebt vastgesteld welke logboek bestanden kunnen worden verwijderd, kunt u de logboek registratie parameters op veel Hadoop-Services aanpassen om logboek bestanden na een bepaalde periode automatisch te verwijderen.
 
-Voor bepaalde logboek bestanden kunt u gebruikmaken van een gereduceerde aanpak voor het archiveren van het logboek bestand. Voor Azure Resource Manager activiteiten Logboeken kunt u deze aanpak verkennen met behulp van de Azure Portal.  Stel de archivering van de ARM-Logboeken in door de koppeling **activiteiten logboek**te selecteren in de Azure portal voor uw HDInsight-exemplaar.  Selecteer aan de bovenkant van de pagina zoeken in het activiteiten logboek het menu-item **exporteren** om het deel venster **activiteiten logboek exporteren** te openen.  Vul het abonnement, de regio, in of u wilt exporteren naar een opslag account en hoeveel dagen de logboeken moeten worden bewaard. In dit deel venster kunt u ook aangeven of u wilt exporteren naar een Event Hub.
+Voor bepaalde logboek bestanden kunt u gebruikmaken van een gereduceerde aanpak voor het archiveren van het logboek bestand. Voor Azure Resource Manager activiteiten Logboeken kunt u deze aanpak verkennen met behulp van de Azure Portal.  Stel de archivering van de Resource Manager-Logboeken in door de koppeling **activiteiten logboek** te selecteren in het Azure portal voor uw HDInsight-exemplaar.  Selecteer aan de bovenkant van de pagina zoeken in het activiteiten logboek het menu-item **exporteren** om het deel venster **activiteiten logboek exporteren** te openen.  Vul het abonnement, de regio, in of u wilt exporteren naar een opslag account en hoeveel dagen de logboeken moeten worden bewaard. In dit deel venster kunt u ook aangeven of u wilt exporteren naar een Event Hub.
 
 ![Preview van Azure Portal-activiteiten logboek exporteren](./media/hdinsight-log-management/hdi-export-log-files.png)
 
@@ -159,14 +159,14 @@ U kunt de .NET SDK voor Hadoop gebruiken om de logboek bestanden te controleren 
 
 ### <a name="control-the-size-and-number-of-backup-indexes-for-old-log-files"></a>De grootte en het aantal back-upindexen voor oude logboek bestanden bepalen
 
-Als u de grootte en het aantal logboek bestanden dat moet worden behouden wilt beheren, stelt `RollingFileAppender`u de volgende eigenschappen in:
+Als u de grootte en het aantal logboek bestanden dat moet worden behouden wilt beheren, stelt u de volgende eigenschappen van de `RollingFileAppender`in:
 
-* `maxFileSize`is de kritieke grootte van het bestand, waarboven het bestand wordt getotaliseerd. De standaard waarde is 10 MB.
-* `maxBackupIndex`Hiermee geeft u het aantal back-upbestanden dat moet worden gemaakt, standaard 1.
+* `maxFileSize` is de kritieke grootte van het bestand, waarboven het bestand wordt getotaliseerd. De standaard waarde is 10 MB.
+* `maxBackupIndex` geeft het aantal back-upbestanden aan dat moet worden gemaakt: standaard 1.
 
 ### <a name="other-log-management-techniques"></a>Andere technieken voor logboek beheer
 
-Om te voor komen dat er onvoldoende schijf ruimte beschikbaar is, kunt u bepaalde hulpprogram ma's voor het besturings systeem, zoals [logrotate](https://linux.die.net/man/8/logrotate) , gebruiken om de verwerking van logboek bestanden te beheren. U kunt configureren `logrotate` om dagelijks uit te voeren, logboek bestanden comprimeren en oude verwijderen. Uw aanpak is afhankelijk van uw vereisten, zoals hoe lang de logboek bestanden op lokale knoop punten bewaard moeten blijven.  
+Om te voor komen dat er onvoldoende schijf ruimte beschikbaar is, kunt u bepaalde hulpprogram ma's voor het besturings systeem, zoals [logrotate](https://linux.die.net/man/8/logrotate) , gebruiken om de verwerking van logboek bestanden te beheren. U kunt `logrotate` configureren om dagelijks uit te voeren, logboek bestanden comprimeren en oude verwijderen. Uw aanpak is afhankelijk van uw vereisten, zoals hoe lang de logboek bestanden op lokale knoop punten bewaard moeten blijven.  
 
 U kunt ook controleren of logboek registratie voor fout opsporing is ingeschakeld voor een of meer services, waardoor de grootte van het uitvoer logboek aanzienlijk toeneemt.  
 
