@@ -4,18 +4,18 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/23/2019
-ms.openlocfilehash: b9f84385e49fcf5f101b7ce642b0a82e3a4b9388
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: fb3795ff807a87e9bac4d95400f5e446c68d1e4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799803"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73897486"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Verifiëren bij Azure Active Directory
 
 > [!IMPORTANT]
 > 1. Momenteel worden **alleen** de Computer Vision-API, Face-API, Text Analytics-API, insluitende lezer, formulier herkenning, afwijkings detectie en alle Bing-services ondersteund, met uitzonde ring van Bing aangepaste zoekopdrachten ondersteuning voor verificatie met behulp van Azure Active Directory (Aad).
-> 2. AAD-verificatie moet altijd worden gebruikt in combi natie met aangepaste subdomeinnaam van uw Azure-resource. [Regionale eind punten](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) bieden geen ondersteuning voor Aad-verificatie.
+> 2. AAD-verificatie moet altijd worden gebruikt in combi natie met aangepaste subdomeinnaam van uw Azure-resource. [Regionale eind punten](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) bieden geen ondersteuning voor Aad-verificatie.
 
 In de vorige secties laten we u zien hoe u met Azure Cognitive Services kunt verifiëren met behulp van een single-service of een sleutel van een abonnement op meerdere services. Hoewel deze sleutels een snel en eenvoudig pad bieden om de ontwikkeling te starten, vallen ze op korter complexe scenario's waarvoor op rollen gebaseerd toegangs beheer is vereist. Laten we eens kijken wat u nodig hebt om te verifiëren met behulp van Azure Active Directory (AAD).
 
@@ -69,7 +69,7 @@ Nu u een aangepast subdomein hebt dat aan uw resource is gekoppeld, moet u een r
 3. De laatste stap is het [toewijzen van de rol ' Cognitive Services gebruiker '](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) aan de Service-Principal (bereik van de resource). Door een rol toe te wijzen, verleent u Service-Principal-toegang tot deze resource. U kunt dezelfde service-principal toegang verlenen tot meerdere resources in uw abonnement.
    >[!NOTE]
    > De ObjectId van de service-principal wordt gebruikt, niet de ObjectId voor de toepassing.
-   > De ACCOUNT_ID is de Azure-resource-id van het Cognitive Services-account dat u hebt gemaakt. U vindt de Azure-resource-id van ' Eigenschappen ' van de resource in Azure Portal.
+   > De ACCOUNT_ID is de Azure-resource-id van het Cognitive Services account dat u hebt gemaakt. U vindt de Azure-resource-id van ' Eigenschappen ' van de resource in Azure Portal.
 
    ```azurecli-interactive
    New-AzRoleAssignment -ObjectId <SERVICE_PRINCIPAL_OBJECTID> -Scope <ACCOUNT_ID> -RoleDefinitionName "Cognitive Services User"

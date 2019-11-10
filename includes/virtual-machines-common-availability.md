@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: ffe0d3a85006bbaad53e471a10b10fb1bbea89b1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7ea4762684a41e06687adcca91b13872a0c9f740
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664435"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73897491"
 ---
 In dit artikel vindt u een overzicht van de beschik baarheid van Azure virtual machines (Vm's).
 
@@ -82,5 +82,5 @@ Vm's binnen een beschikbaarheidsset worden ook automatisch gedistribueerd in upd
 ![Beschikbaarheidssets](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-U kunt nu deze functies voor beschikbaarheid en redundantie gaan gebruiken om uw eigen Azure-omgeving te bouwen. Zie voor informatie over aanbevolen procedures de [aanbevolen procedures voor Azure-beschikbaarheid](../articles/best-practices-availability-checklist.md).
+U kunt nu deze functies voor beschikbaarheid en redundantie gaan gebruiken om uw eigen Azure-omgeving te bouwen. Zie voor informatie over aanbevolen procedures de [aanbevolen procedures voor Azure-beschikbaarheid](/azure/architecture/checklist/resiliency-per-service).
 
