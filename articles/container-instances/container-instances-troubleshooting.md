@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 1fda05ffcac8952ee5a12c23383aad1a04d36b97
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 14745f79955a98727d6f55da4189212f2f18d9c0
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601323"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904405"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Veelvoorkomende problemen in Azure Container Instances oplossen
 
@@ -22,7 +22,8 @@ In dit artikel wordt beschreven hoe u veelvoorkomende problemen oplost voor het 
 
 Als u aanvullende ondersteuning nodig hebt, raadpleegt u de beschik bare **Help en ondersteunings** opties in de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-## <a name="naming-conventions"></a>Naamconventies
+## <a name="issues-during-container-group-deployment"></a>Problemen tijdens de implementatie van de container groep
+### <a name="naming-conventions"></a>Naamconventies
 
 Bij het definiëren van de container specificatie, moeten bepaalde para meters worden uitgebreid tot naamgevings beperkingen. Hieronder ziet u een tabel met specifieke vereisten voor container groep eigenschappen. Zie [naamgevings conventies][azure-name-restrictions] in de Azure Architecture Center voor meer informatie over Azure-naamgevings conventies.
 
@@ -35,7 +36,7 @@ Bij het definiëren van de container specificatie, moeten bepaalde para meters w
 | Omgevingsvariabele | 1-63 |Niet hoofdlettergevoelig |Alfanumerieke tekens en onderstrepings tekens (_) overal behalve het eerste of laatste teken |`<name>` |`MY_VARIABLE` |
 | Volume naam | 5-63 |Niet hoofdlettergevoelig |Kleine letters en cijfers en wille keurige streepjes, behalve het eerste of laatste teken. Kan niet twee opeenvolgende afbreek streepjes bevatten. |`<name>` |`batch-output-volume` |
 
-## <a name="os-version-of-image-not-supported"></a>De versie van het besturings systeem van de installatie kopie wordt niet ondersteund
+### <a name="os-version-of-image-not-supported"></a>De versie van het besturings systeem van de installatie kopie wordt niet ondersteund
 
 Als u een installatie kopie opgeeft die Azure Container Instances niet wordt ondersteund, wordt een `OsVersionNotSupported` fout geretourneerd. De fout is vergelijkbaar met de volgende, waarbij `{0}` de naam is van de installatie kopie die u probeert te implementeren:
 
@@ -50,7 +51,7 @@ Als u een installatie kopie opgeeft die Azure Container Instances niet wordt ond
 
 Deze fout treedt meestal op bij het implementeren van Windows-installatie kopieën die zijn gebaseerd op semi-Annual-kanaal release 1709 of 1803, wat niet wordt ondersteund. Zie [Veelgestelde vragen](container-instances-faq.md#what-windows-base-os-images-are-supported)voor ondersteunde Windows-installatie kopieën in azure container instances.
 
-## <a name="unable-to-pull-image"></a>Kan de installatie kopie niet ophalen
+### <a name="unable-to-pull-image"></a>Kan de installatie kopie niet ophalen
 
 Als Azure Container Instances in eerste instantie de afbeelding niet kan ophalen, wordt er gedurende een periode een nieuwe poging gedaan. Als de pull-bewerking van de installatie kopie blijft mislukken, mislukt ACI de implementatie en ziet u mogelijk een `Failed to pull image` fout.
 
@@ -86,8 +87,21 @@ Als de installatie kopie niet kan worden opgehaald, worden gebeurtenissen zoals 
   }
 ],
 ```
+### <a name="resource-not-available-error"></a>Fout bericht bron niet beschikbaar
 
-## <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Container wordt voortdurend afgesloten en opnieuw gestart (geen langlopend proces)
+Als gevolg van verschillende regionale resource belasting in azure, wordt mogelijk de volgende fout weer gegeven bij het implementeren van een container exemplaar:
+
+`The requested resource with 'x' CPU and 'y.z' GB memory is not available in the location 'example region' at this moment. Please retry with a different resource request or in another location.`
+
+Deze fout geeft aan dat de resources die zijn opgegeven voor de container niet op dat moment kunnen worden toegewezen vanwege een zware belasting in de regio waarin u wilt implementeren. Gebruik een of meer van de volgende beperkings stappen om het probleem op te lossen.
+
+* Controleer of de implementatie-instellingen van de container vallen binnen de para meters die zijn gedefinieerd in de [regio beschikbaarheid voor Azure container instances](container-instances-region-availability.md)
+* Lagere CPU-en geheugen instellingen voor de container opgeven
+* Implementeren naar een andere Azure-regio
+* Op een later tijdstip implementeren
+
+## <a name="issues-during-container-group-runtime"></a>Problemen tijdens runtime van container groep
+### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Container wordt voortdurend afgesloten en opnieuw gestart (geen langlopend proces)
 
 Container groepen worden standaard ingesteld op het beleid **voor** [opnieuw opstarten](container-instances-restart-policy.md) , zodat containers in de container groep altijd opnieuw worden opgestart nadat ze zijn uitgevoerd om te worden voltooid. Mogelijk moet u dit wijzigen in **OnFailure** of **nooit** als u van plan bent om op taken gebaseerde containers uit te voeren. Als u **OnFailure** opgeeft en nog steeds voortdurend opnieuw wordt opgestart, is er mogelijk een probleem met de toepassing of het script dat in uw container wordt uitgevoerd.
 
@@ -147,16 +161,17 @@ De Container Instances-API en Azure Portal bevatten een `restartCount`-eigenscha
 > [!NOTE]
 > De meeste container installatie kopieën voor Linux-distributies stellen een shell, zoals bash, in als de standaard opdracht. Omdat een shell op zichzelf geen langlopende service is, worden deze containers onmiddellijk afgesloten en in een restart-lus gezet wanneer deze is geconfigureerd met het standaard beleid voor **altijd** opnieuw opstarten.
 
-## <a name="container-takes-a-long-time-to-start"></a>Het starten van de container duurt lang
+### <a name="container-takes-a-long-time-to-start"></a>Het starten van de container duurt lang
 
-De twee primaire factoren die bijdragen aan de opstart tijd van de container in Azure Container Instances zijn:
+De drie primaire factoren die bijdragen aan de opstart tijd van de container in Azure Container Instances zijn:
 
 * [Afbeeldings grootte](#image-size)
 * [Locatie van installatie kopie](#image-location)
+* [Afbeeldingen in cache](#cached-images)
 
 Windows-installatie kopieën hebben [extra overwegingen](#cached-images).
 
-### <a name="image-size"></a>Afbeeldings grootte
+#### <a name="image-size"></a>Afbeeldings grootte
 
 Als uw container veel tijd in beslag neemt, maar uiteindelijk is geslaagd, gaat u eerst naar de grootte van uw container installatie kopie. Omdat Azure Container Instances uw container installatie kopie op aanvraag ophaalt, is de opstart tijd die u ziet direct gerelateerd aan de grootte.
 
@@ -170,39 +185,26 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 De sleutel voor het bewaren van afbeeldings grootten zorgt ervoor dat de uiteindelijke afbeelding niets hoeft te bevatten die tijdens runtime niet is vereist. Een manier om dit te doen is met [meerdere fase builds][docker-multi-stage-builds]. Met meerdere fasen kunt u ervoor zorgen dat de uiteindelijke installatie kopie alleen de artefacten bevat die u nodig hebt voor uw toepassing, en niet een van de extra inhoud die tijdens het bouwen was vereist.
 
-### <a name="image-location"></a>Locatie van installatie kopie
+#### <a name="image-location"></a>Locatie van installatie kopie
 
 Een andere manier om de impact van de installatie kopie op de opstart tijd van de container te verminderen, is door de container installatie kopie te hosten in [Azure container Registry](/azure/container-registry/) in dezelfde regio waarin u container instanties wilt implementeren. Hiermee verkort u het netwerkpad dat de container installatie kopie moet reizen, waardoor de download tijd aanzienlijk verkort.
 
-### <a name="cached-images"></a>Afbeeldingen in cache
+#### <a name="cached-images"></a>Afbeeldingen in cache
 
 Azure Container Instances gebruikt een cache mechanisme om de opstart tijd van de container te versnellen voor installatie kopieën die zijn gebaseerd op algemene [Windows-basis installatie kopieën](container-instances-faq.md#what-windows-base-os-images-are-supported), waaronder `nanoserver:1809`, `servercore:ltsc2019`en `servercore:1809`. Veelgebruikte Linux-installatie kopieën, zoals `ubuntu:1604` en `alpine:3.6`, worden ook in de cache opgeslagen. Voor een bijgewerkte lijst met afbeeldingen en tags in de cache gebruikt u de API-afbeelding van de [lijst in cache][list-cached-images] .
 
 > [!NOTE]
 > Het gebruik van installatie kopieën op basis van Windows Server 2019 in Azure Container Instances is in de preview-versie.
 
-### <a name="windows-containers-slow-network-readiness"></a>Windows-containers langzaam netwerk gereedheid
+#### <a name="windows-containers-slow-network-readiness"></a>Windows-containers langzaam netwerk gereedheid
 
 Na het maken van de eerste keer is het mogelijk dat Windows-containers tot 30 seconden (of langer) in zeldzame gevallen geen binnenkomende of uitgaande connectiviteit hebben. Als uw container toepassing een Internet verbinding nodig heeft, voegt u vertraging toe en voert u de logica opnieuw uit om 30 seconden een Internet verbinding tot stand te brengen. Na de initiële installatie moet de container netwerken op de juiste manier worden hervat.
 
-## <a name="resource-not-available-error"></a>Fout bericht bron niet beschikbaar
-
-Als gevolg van verschillende regionale resource belasting in azure, wordt mogelijk de volgende fout weer gegeven bij het implementeren van een container exemplaar:
-
-`The requested resource with 'x' CPU and 'y.z' GB memory is not available in the location 'example region' at this moment. Please retry with a different resource request or in another location.`
-
-Deze fout geeft aan dat de resources die zijn opgegeven voor de container niet op dat moment kunnen worden toegewezen vanwege een zware belasting in de regio waarin u wilt implementeren. Gebruik een of meer van de volgende beperkings stappen om het probleem op te lossen.
-
-* Controleer of de implementatie-instellingen van de container vallen binnen de para meters die zijn gedefinieerd in de [regio beschikbaarheid voor Azure container instances](container-instances-region-availability.md)
-* Lagere CPU-en geheugen instellingen voor de container opgeven
-* Implementeren naar een andere Azure-regio
-* Op een later tijdstip implementeren
-
-## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Kan geen verbinding maken met de onderliggende docker-API of er worden geprivilegieerde containers uitgevoerd
+### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Kan geen verbinding maken met de onderliggende docker-API of er worden geprivilegieerde containers uitgevoerd
 
 Azure Container Instances biedt geen rechtstreekse toegang tot de onderliggende infra structuur die als host fungeert voor container groepen. Dit geldt ook voor toegang tot de docker-API die wordt uitgevoerd op de host van de container en het uitvoeren van geprivilegieerde containers. Als u docker-interactie nodig hebt, raadpleegt u de [rest-referentie documentatie](https://aka.ms/aci/rest) om te zien wat de ACI API ondersteunt. Als er iets ontbreekt, dient u een aanvraag in te dienen bij de forums over de [ACI-feedback](https://aka.ms/aci/feedback).
 
-## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Het IP-adres van de container groep is mogelijk niet toegankelijk vanwege niet-overeenkomende poorten
+### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Het IP-adres van de container groep is mogelijk niet toegankelijk vanwege niet-overeenkomende poorten
 
 Azure Container Instances biedt nog geen ondersteuning voor poort toewijzing, zoals bij normale docker-configuratie. Als u het IP-adres van een container groep niet toegankelijk hebt wanneer u denkt dat dit het geval is, moet u ervoor zorgen dat u de container installatie kopie hebt geconfigureerd om te Luis teren naar dezelfde poorten die u in uw container groep weergeeft met de eigenschap `ports`.
 

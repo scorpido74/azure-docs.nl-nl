@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a59e5443c80c9372f646edfdae2261157a41acc9
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d854f41ffc883b40f9159a7dacdde0fb3bb7240f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614894"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904070"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Ontwikkelaars handleiding voor duurzame entiteiten in .NET
 
@@ -117,7 +117,7 @@ We kunnen de entiteit teller bijvoorbeeld zodanig wijzigen dat een indeling word
 
 ## <a name="accessing-entities-directly"></a>Rechtstreeks toegang tot entiteiten
 
-Op klassen gebaseerde entiteiten kunnen rechtstreeks worden geopend, met behulp van expliciete teken reeks namen voor de entiteit en de bijbehorende bewerkingen. Hieronder vindt u enkele voor beelden. Zie de discussie over het [openen van entiteiten](durable-functions-entities.md#accessing-entities)voor een diep gaande uitleg van de onderliggende concepten (zoals signalen versus aanroepen). 
+Op klassen gebaseerde entiteiten kunnen rechtstreeks worden geopend, met behulp van expliciete teken reeks namen voor de entiteit en de bijbehorende bewerkingen. Hieronder vindt u enkele voor beelden. Zie de discussie in [Access entities](durable-functions-entities.md#access-entities)voor een diep gaande uitleg van de onderliggende concepten (zoals signalen versus aanroepen). 
 
 > [!NOTE]
 > Waar mogelijk wordt u aangeraden om [toegang te krijgen tot entiteiten via interfaces](#accessing-entities-through-interfaces), omdat deze meer type controle biedt.

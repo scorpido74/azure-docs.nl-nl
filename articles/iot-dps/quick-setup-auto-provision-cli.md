@@ -1,22 +1,22 @@
 ---
-title: Een Device Provisioning Service instellen met behulp van de Azure CLI | Microsoft Docs
+title: 'Snelstartgids: een Device Provisioning Service instellen met behulp van Azure CLI'
 description: Azure-snelstart - Azure IoT Hub Device Provisioning-service instellen met de Azure CLI
 author: wesmc7777
 ms.author: wesmc
-ms.date: 02/26/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3062fb640985498ba35e23f6310828a2bd59bfed
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: ef40d0df630fc369705a1365aa8d95317aa54cb3
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "60363713"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904709"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>IoT Hub Device Provisioning Service instellen met de Azure CLI
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Snelstartgids: de IoT Hub Device Provisioning Service instellen met Azure CLI
 
 De Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. Deze snelstart gaat gedetailleerd in op hoe de Azure CLI kan worden gebruikt om een IoT Hub en een IoT Hub Device Provisioning-service te maken, en deze twee services aan elkaar te koppelen. 
 
@@ -66,7 +66,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 ```
 
 > [!TIP]
-> In het voorbeeld wordt de inrichtingsservice gemaakt op de locatie US - west. U kunt een lijst met beschikbare locaties weergeven door de opdracht `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` uit te voeren of door naar de pagina [Status van Azure](https://azure.microsoft.com/status/) te gaan en te zoeken naar 'device provisioning service'. In opdrachten kunnen locaties worden opgegeven in één woord of in meerdere woorden, bijvoorbeeld: uswest, US - west, US WEST enzovoort. De waarde is niet hoofdlettergevoelig. Als u meerdere woorden gebruikt om een locatie op te geven, voeg dan de waarde toe tussen aanhalingstekens; bijvoorbeeld: `-- location "West US"`.
+> In het voorbeeld wordt de inrichtingsservice gemaakt op de locatie US - west. U kunt een lijst met beschikbare locaties weergeven door de opdracht `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` uit te voeren of door naar de pagina [Status van Azure](https://azure.microsoft.com/status/) te gaan en te zoeken naar 'device provisioning service'. In opdrachten kunnen locaties worden opgegeven in één woord of in een indeling met meerdere woorden. bijvoorbeeld: westus, VS-West, VS-West, enzovoort. De waarde is niet hoofdletter gevoelig. Als u meerdere woorden gebruikt om een locatie op te geven, voeg dan de waarde toe tussen aanhalingstekens; bijvoorbeeld: `-- location "West US"`.
 >
 
 
@@ -137,4 +137,3 @@ In deze snelstartgids hebt u een IoT-hub en een Device Provisioning Service-exem
 
 > [!div class="nextstepaction"]
 > [Snelstartgids voor het maken van een gesimuleerd apparaat](./quick-create-simulated-device.md)
-

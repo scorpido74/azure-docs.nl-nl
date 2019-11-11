@@ -1,22 +1,22 @@
 ---
-title: Inrichting van mobiele apparaten instellen in de Azure Portal | Microsoft Docs
+title: 'Snelstartgids: inrichten van apparaten instellen in de Azure Portal'
 description: Azure-snelstartgids - Azure IoT Hub Device Provisioning Service instellen in de Azure Portal
 author: wesmc7777
 ms.author: wesmc
-ms.date: 07/12/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 0b16c6da0066ac4e919c1bef031d3206a359aae6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 504e027095d839efcbfb535c0e1ecc8c6cfbad26
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126457"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903456"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>IoT Hub Device Provisioning Service instellen met Azure Portal
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Snelstartgids: Stel de IoT Hub Device Provisioning Service in met de Azure Portal
 
 Deze stappen laten zien hoe u de Azure-cloudresources in de portal instelt voor het inrichten van uw apparaten. Dit artikel omvat stappen voor het maken van uw IoT-hub, het maken van een nieuwe IoT Hub Device Provisioning Service en het aan elkaar koppelen van de twee services. 
 
@@ -36,10 +36,10 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 3. Geef de volgende informatie op voor uw nieuwe exemplaar van de Device Provisioning Service en klik op **Maken**.
 
-    * **Naam:** Geef een unieke naam op voor uw nieuwe Device Provisioning Service-instantie. Als de door u opgegeven naam beschikbaar is, verschijnt er een groen vinkje.
-    * **Abonnement:** Kies het abonnement dat u wilt gebruiken om deze Device Provisioning Service-instantie te maken.
-    * **Resourcegroep:** Dit veld kunt u gebruiken om een nieuwe resourcegroep te maken of de nieuwe instantie aan een bestaande resourcegroep toe te voegen. Kies dezelfde resourcegroep als die de IoT-hub bevat die u hierboven hebt gemaakt, zoals **TestResources**. Door alle gerelateerde resources samen in een groep te plaatsen, kunt u ze samen beheren. Als u bijvoorbeeld de resourcegroep verwijdert, worden alle resources verwijderd die deze groep bevat. Zie [Azure Resource Manager-resourcegroepen beheren](../azure-resource-manager/manage-resource-groups-portal.md) voor meer informatie.
-    * **Locatie:** Selecteer de dichtstbijzijnde locatie voor uw apparaten.
+    * **Naam:** geef een unieke naam op voor uw nieuwe instantie van de Device Provisioning Service. Als de door u opgegeven naam beschikbaar is, verschijnt er een groen vinkje.
+    * **Abonnement**: kies het abonnement dat u wilt gebruiken om deze instantie van de Device Provisioning Service te maken.
+    * **Resourcegroep:** dit veld kunt u gebruiken om een nieuwe resourcegroep te maken of het nieuwe exemplaar aan een bestaande resourcegroep toe te voegen. Kies dezelfde resourcegroep als die de IoT-hub bevat die u hierboven hebt gemaakt, zoals **TestResources**. Door alle gerelateerde resources samen in een groep te plaatsen, kunt u ze samen beheren. Als u bijvoorbeeld de resourcegroep verwijdert, worden alle resources verwijderd die deze groep bevat. Zie [Azure Resource Manager-resourcegroepen beheren](../azure-resource-manager/manage-resource-groups-portal.md) voor meer informatie.
+    * **Locatie**: selecteer de locatie die het dichtst bij uw apparaten in de buurt is.
 
       ![Basisinformatie over uw Device Provisioning Service-exemplaar invoeren op de portalblade](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
@@ -57,9 +57,9 @@ In deze sectie voegt u een configuratie toe aan het Device Provisioning Service-
 
 3. Geef, op de pagina **Koppeling toevoegen aan IoT-hub**, de volgende informatie op om uw nieuwe instantie van de Device Provisioning Service te koppelen aan een IoT-hub. Klik vervolgens op **Opslaan**. 
 
-    * **Abonnement:** Selecteer het abonnement dat de IoT-hub bevat die u wilt koppelen aan uw nieuwe Device Provisioning Service-instantie.
-    * **IoT-hub:** Selecteer de IoT-hub die u wilt koppelen aan uw nieuwe Device Provisioning Service-instantie.
-    * **Toegangsbeleid:** Selecteer **iothubowner** als de referenties om de koppeling met de IoT-hub tot stand te brengen.  
+    * **Abonnement:** selecteer het abonnement dat de IoT-hub bevat die u wilt koppelen aan uw nieuwe Device Provisioning Service-exemplaar.
+    * **IoT-hub:** selecteer de IoT-hub die u wilt koppelen aan uw nieuwe Device Provisioning Service-exemplaar.
+    * **Toegangsbeleid:** selecteer **iothubowner** als de referenties om de koppeling met de IoT-hub tot stand te brengen.  
 
       ![Koppel de naam van de hub aan het Device Provisioning Service-exemplaar op de portalblade](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
 

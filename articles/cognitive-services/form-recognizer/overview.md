@@ -1,7 +1,7 @@
 ---
 title: Wat is Form Recognizer?
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van de formulier herkenner om formulier-en tabel gegevens te parseren.
+description: Met de Azure Cognitive Services-formulier herkenning kunt u sleutel-waardeparen en tabel gegevens uit formulier documenten identificeren en extra heren.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: b07201556f08bde4ef8c7a7904c6619a126d7765
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 86e0494ded84e9711b2283ae5fad77ff626cf792
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594540"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904485"
 ---
 # <a name="what-is-form-recognizer"></a>Wat is Form Recognizer?
 
@@ -58,10 +58,10 @@ Formulier herkenner is beschikbaar in een preview-versie van beperkte toegang. A
 **Stap 1:** Een resource voor een formulier herkenning maken in de Azure Portal.
 
 **Stap 2:** Volg een Snelstartgids om de REST API te gebruiken:
-* [Snelstart: Een formulier Recognizer-model trainen en formulier gegevens extra heren met behulp van de REST API met krul](quickstarts/curl-train-extract.md)
-* [Snelstart: Een formulier Recognizer-model trainen en formulier gegevens extra heren met behulp van de REST API met python](quickstarts/python-train-extract.md)
-* [Snelstart: Ontvangst gegevens ophalen met krul](quickstarts/curl-receipts.md)
-* [Snelstart: Ontvangst gegevens ophalen met behulp van python](quickstarts/python-receipts.md)
+* [Snelstartgids: een model voor een formulier herkenning trainen en formulier gegevens extra heren met behulp van de REST API met krul](quickstarts/curl-train-extract.md)
+* [Quick Start: een model voor een formulier herkenning trainen en formulier gegevens extra heren met behulp van de REST API met python](quickstarts/python-train-extract.md)
+* [Snelstartgids: ontvangst gegevens ophalen met behulp van krul](quickstarts/curl-receipts.md)
+* [Snelstartgids: ontvangst gegevens ophalen met behulp van python](quickstarts/python-receipts.md)
 
 U wordt aangeraden de gratis service te gebruiken wanneer u de technologie bekijkt. Houd er rekening mee dat het aantal beschik bare pagina's beperkt is tot 500 per maand.
 

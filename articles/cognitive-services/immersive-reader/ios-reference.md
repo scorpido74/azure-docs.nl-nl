@@ -1,7 +1,7 @@
 ---
 title: Referentie voor insluitende lezer iOS SDK
 titleSuffix: Azure Cognitive Services
-description: Naslag informatie voor de insluitende lezer iOS SDK
+description: De insluitende lezer iOS SDK is een Swift-CocoaPod waarmee u de insluitende lezer kunt integreren in uw iOS-toepassing.
 services: cognitive-services
 author: metanMSFT
 ms.service: cognitive-services
@@ -9,20 +9,20 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: 1f85740c358bd0949fed9c954537f0926538995d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 67d6b8c22c5635bd789078a7f91b02f8b07e5e70
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388121"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903124"
 ---
 # <a name="immersive-reader-sdk-reference-for-ios"></a>Naslag Gids voor insluitende lezers SDK voor iOS
 
 De insluitende lezer iOS SDK is een Swift-CocoaPod waarmee u de insluitende lezer kunt integreren in uw iOS-toepassing.
 
-## <a name="functions"></a>Functies
+## <a name="functions"></a>Functions
 
-De SDK stelt één functie `launchImmersiveReader(navController, token, subdomain, content, options, onSuccess, onFailure)`.
+De SDK biedt één functie `launchImmersiveReader(navController, token, subdomain, content, options, onSuccess, onFailure)`.
 
 ### <a name="launchimmersivereader"></a>launchImmersiveReader
 
@@ -42,9 +42,9 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 | `content` | [Inhoud](#content) | Een object met de inhoud die in de insluitende lezer moet worden weer gegeven. |
 | `options` | [Opties](#options) | Opties voor het configureren van bepaald gedrag van de insluitende lezer. Optioneel. |
 | `onSuccess` | ()-> void | Een sluiting die wordt aangeroepen wanneer de insluitende lezer wordt gestart. |
-| `onFailure` | (_ fout: [fout](#error))-> ongeldig | Een sluiting die wordt aangeroepen wanneer de insluitende lezer niet kan worden geladen. Deze closure retourneert een [`Error`-](#error) object dat een fout code en fout bericht vertegenwoordigt dat is gekoppeld aan de fout. Zie de [fout codes](#error-codes)voor meer informatie. |
+| `onFailure` | (_ fout: [fout](#error))-> ongeldig | Een sluiting die wordt aangeroepen wanneer de insluitende lezer niet kan worden geladen. Deze closure retourneert een [`Error`](#error) -object dat een fout code en fout bericht vertegenwoordigt dat is gekoppeld aan de fout. Zie de [fout codes](#error-codes)voor meer informatie. |
 
-## <a name="types"></a>Dergelijke
+## <a name="types"></a>Typen
 
 ### <a name="content"></a>Inhoud
 
@@ -88,10 +88,10 @@ struct Error {
 
 #### <a name="error-codes"></a>Foutcodes
 
-| Coderen | Beschrijving |
+| Code | Beschrijving |
 | ---- | ----------- |
 | BadArgument | Het opgegeven argument is ongeldig. Zie `message` voor meer informatie. |
-| out | De insluitende lezer kan niet worden geladen binnen de opgegeven time-out. |
+| Out | De insluitende lezer kan niet worden geladen binnen de opgegeven time-out. |
 | TokenExpired | Het opgegeven token is verlopen. |
 | Beperkt | De limiet voor de aanroep frequentie is overschreden. |
 | InternalError | Er is een interne fout opgetreden in de controller van de insluitende lezer weergave. Zie `message` voor meer informatie.|

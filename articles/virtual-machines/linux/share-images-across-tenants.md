@@ -1,6 +1,6 @@
 ---
-title: Galerie met installatiekopieën delen voor tenants in Azure | Microsoft Docs
-description: Leer hoe u VM-installatiekopieën in Azure met behulp van gedeelde Afbeeldingsgalerieën-tenants delen.
+title: Galerie-installatie kopieën delen via tenants in azure | Microsoft Docs
+description: Meer informatie over het delen van VM-installatie kopieën in azure-tenants met behulp van de galerie met gedeelde afbeeldingen.
 services: virtual-machines-linux
 author: cynthn
 manager: gwallace
@@ -10,23 +10,25 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/05/2019
 ms.author: cynthn
-ms.openlocfilehash: cbf42de406ecb0caed67b77743f376284ab64608
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b63bc1089b113edaac637df0a7e55c39f3a11f1a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706560"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904979"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Galerie met VM-installatiekopieën in Azure-tenants delen
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>Galerie-VM-installatie kopieën delen in azure-tenants
+
+Met de galerie met gedeelde afbeeldingen kunt u afbeeldingen delen met RBAC. U kunt RBAC gebruiken om installatie kopieën te delen binnen uw Tenant, en zelfs voor personen buiten uw Tenant. Zie de [Galerie delen](/azure/virtual-machines/linux/shared-images-portal#share-the-gallery)voor meer informatie over deze eenvoudige optie voor delen.
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
 > [!IMPORTANT]
-> U kunt de portal niet gebruiken voor het implementeren van een virtuele machine uit een afbeelding in een andere azure-tenant. Voor het maken van een virtuele machine van een installatiekopie die wordt gedeeld tussen tenants, moet u de Azure CLI of [Powershell](../windows/share-images-across-tenants.md).
+> U kunt de portal niet gebruiken om een virtuele machine te implementeren op basis van een installatie kopie in een andere Azure-Tenant. Als u een virtuele machine wilt maken op basis van een installatie kopie die tussen tenants wordt gedeeld, moet u de Azure CLI of [Power shell](../windows/share-images-across-tenants.md)gebruiken.
 
-## <a name="create-a-vm-using-azure-cli"></a>Een virtuele machine maken met Azure CLI
+## <a name="create-a-vm-using-azure-cli"></a>Een virtuele machine maken met behulp van Azure CLI
 
-Meld u aan de service-principal voor de tenant met behulp van de toepassings-id, de app-sleutel en de ID van tenant 1 1. U kunt `az account show --query "tenantId"` aan de tenant id's indien nodig.
+Meld u aan bij de service-principal voor Tenant 1 met behulp van de appID, de app-sleutel en de ID van Tenant 1. U kunt `az account show --query "tenantId"` gebruiken om de Tenant-Id's, indien nodig, op te halen.
 
 ```azurecli-interactive
 az account clear
@@ -34,14 +36,14 @@ az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 1 ID>
 az account get-access-token 
 ```
  
-Meld u aan de service-principal voor de tenant met behulp van de toepassings-id, de app-sleutel en de ID van tenant 2 2:
+Meld u aan bij de service-principal voor Tenant 2 met behulp van de appID, de app-sleutel en de ID van Tenant 2:
 
 ```azurecli-interactive
 az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 2 ID>'
 az account get-access-token
 ```
 
-De virtuele machine maken. De informatie in het voorbeeld vervangen door uw eigen.
+Maak de virtuele machine. Vervang de informatie in het voor beeld door uw eigen.
 
 ```azurecli-interactive
 az vm create \
@@ -54,4 +56,4 @@ az vm create \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u problemen ondervindt, kunt u [oplossen gedeelde afbeeldingsgalerieën](troubleshooting-shared-images.md).
+Als u problemen ondervindt, kunt u [problemen met gedeelde afbeeldings galerieën oplossen](troubleshooting-shared-images.md).

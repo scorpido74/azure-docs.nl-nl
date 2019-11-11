@@ -6,15 +6,15 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 11/01/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cc9b11ba5fe0cd015d0879f28b9e85fb46b11955
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: a785ecbfa09c54d3affa97c220d4808f9fe8d90b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178577"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904451"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Container groepen in Azure Container Instances
 
@@ -51,15 +51,17 @@ Als u de configuratie van een container groep wilt behouden, kunt u de configura
 
 Azure Container Instances wijst resources, zoals Cpu's, geheugen en optioneel [gpu's][gpus] (preview), toe aan een container groep door de [resource-aanvragen][resource-requests] van de instanties in de groep toe te voegen. Het maken van CPU-resources als voor beeld als u een container groep maakt met twee exemplaren, die elk één CPU aanvragen, wordt twee Cpu's toegewezen aan de container groep.
 
-De Maxi maal beschik bare resources voor een container groep zijn afhankelijk van de [Azure-regio][region-availability] die wordt gebruikt voor de implementatie.
+### <a name="resource-usage-by-instances"></a>Resource gebruik per instantie
 
-### <a name="container-resource-requests-and-limits"></a>Container resource aanvragen en-limieten
+Aan elk container exemplaar zijn de resources toegewezen die zijn opgegeven in de resource-aanvraag. Het resource gebruik door een container instantie in een groep is echter afhankelijk van de configuratie van de optionele [resource limiet][resource-limits] eigenschap.
 
-* Standaard delen container instanties in een groep de aangevraagde resources van de groep. In een groep met twee exemplaren die elk één CPU aanvragen, heeft de groep als geheel toegang tot twee Cpu's. Elk exemplaar kan tot de twee Cpu's gebruiken en de exemplaren kunnen concurreren voor CPU-bronnen wanneer ze worden uitgevoerd.
+* Als u geen resource limiet opgeeft, is het maximale resource gebruik van het exemplaar hetzelfde als de resource aanvraag.
 
-* Als u het resource gebruik wilt beperken door een instantie in een groep, stelt u eventueel een [resource limiet][resource-limits] in voor het exemplaar. In een groep met twee instanties die 1 CPU aanvragen, is het mogelijk dat een van de containers meer Cpu's nodig heeft dan de andere.
+* Als u een resource limiet opgeeft voor een exemplaar, kunt u het resource gebruik van het exemplaar aanpassen voor de werk belasting, ofwel het gebruik beperken of verhogen ten opzichte van de resource aanvraag. De maximale resource limiet die u kunt instellen is het totale aantal resources dat aan de groep is toegewezen.
+    
+    In een groep met twee instanties die 1 CPU aanvragen, kan een van uw containers bijvoorbeeld een werk belasting uitvoeren waarvoor meer Cpu's moeten worden uitgevoerd dan de andere.
 
-  In dit scenario kunt u een resource limiet van 0,5 CPU instellen voor één exemplaar en een limiet van 2 Cpu's voor de tweede. Met deze configuratie wordt het resource gebruik van de eerste container beperkt tot 0,5 CPU, waardoor de tweede container Maxi maal twee Cpu's kan gebruiken, indien beschikbaar.
+    In dit scenario kunt u een resource limiet van 0,5 CPU instellen voor één exemplaar en een limiet van 2 Cpu's voor de tweede. Met deze configuratie wordt het resource gebruik van de eerste container beperkt tot 0,5 CPU, waardoor de tweede container Maxi maal twee Cpu's kan gebruiken, indien beschikbaar.
 
 Zie de eigenschap [ResourceRequirements][resource-requirements] in de container groepen rest API voor meer informatie.
 
@@ -67,7 +69,7 @@ Zie de eigenschap [ResourceRequirements][resource-requirements] in de container 
 
 * Wijs **Mini maal** 1 CPU en 1 GB aan geheugen toe aan een container groep. Afzonderlijke container instanties binnen een groep kunnen worden ingericht met minder dan 1 CPU en 1 GB geheugen. 
 
-* Voor het **maximum aantal** resources in een container groep raadpleegt u de beschik [baarheid van resources][region-availability] voor Azure container instances in de implementatie regio.
+* Voor het **maximum aantal** resources in een container groep raadpleegt u de [Beschik baarheid van resources][region-availability] voor Azure container instances in de implementatie regio.
 
 ## <a name="networking"></a>Netwerken
 

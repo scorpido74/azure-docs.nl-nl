@@ -1,18 +1,18 @@
 ---
 title: Back-ups maken van VMware-Vm's met Azure Backup Server
-description: Gebruik Azure Backup Server om een back-up te maken van virtuele VMware-machines die op een VMware vCenter/ESXi-server worden uitgevoerd.
+description: In dit artikel leert u hoe u Azure Backup Server kunt gebruiken om een back-up te maken van virtuele VMware-machines die op een VMware vCenter/ESXi-server worden uitgevoerd.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3d8983835c587ffeec9dd2bc418f1c01afbeb571
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: df41907ee10b54ab3bfaeb548e085617f7d79084
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264504"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903235"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Back-ups maken van VMware-Vm's met Azure Backup Server
 
@@ -62,11 +62,11 @@ Stel als volgt een beveiligd kanaal in:
 
 4. Sla het bestand op de Azure Backup Server machine op met de extensie. zip.
 
-5. Klik met de rechter muisknop op **down load. zip** > **Alles ophalen**. Het zip-bestand extraheert de inhoud naar de map **certs** , die de volgende bevat:
+5. Klik met de rechter muisknop op **down load. zip** > **Alles uitpakken**. Het zip-bestand extraheert de inhoud naar de map **certs** , die de volgende bevat:
    - Het basis certificaat bestand met een extensie die begint met een genummerde reeks, zoals 0 en 1.
    - Het CRL-bestand heeft een extensie die begint met een Sequence zoals. R0 of. R1. Het CRL-bestand is gekoppeld aan een certificaat.
 
-         ![Downloaded certificates](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
+    ![Gedownloade certificaten](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
 
 6. Klik in de map **certificaten** met de rechter muisknop op het basis certificaat bestand > **naam wijzigen**.
 
@@ -82,7 +82,7 @@ Stel als volgt een beveiligd kanaal in:
 
 10. Selecteer op de pagina **certificaat archief** **alle certificaten in het onderstaande archief opslaan**en klik vervolgens op **Bladeren** om het certificaat archief te kiezen.
 
-         ![Certificate storage](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
+    ![Certificaat opslag](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
 11. Selecteer in **certificaat archief selecteren**de optie **vertrouwde basis certificerings instanties** als doelmap voor de certificaten en klik vervolgens op **OK**.
 
@@ -100,11 +100,9 @@ Als u binnen uw organisatie beveiligde grenzen hebt en u het HTTPS-protocol niet
 
 1. Kopieer en plak de volgende tekst in een txt-bestand.
 
-      ```text
-      Windows Registry Editor Version 5.00
-      [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
-      "IgnoreCertificateValidation"=dword:00000001
-      ```
+       ```text
+      Windows Registry editor versie 5,00 [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare] "IgnoreCertificateValidation" = dword: 00000001
+       ```
 
 2. Sla het bestand op de Azure Backup Server computer op met de naam **DisableSecureAuthentication. reg**.
 
@@ -123,14 +121,14 @@ De Azure Backup Server moet een gebruikers account met machtigingen hebben voor 
 
     ![Rol toevoegen](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
-4. Voer *BackupAdminRole*in **rol maken** > **Role name**in. De rolnaam kan wille keurig zijn, maar deze moet herkenbaar zijn voor het doel van de functie.
+4. Voer *BackupAdminRole*in **rol maken** > **naam**in. De rolnaam kan wille keurig zijn, maar deze moet herkenbaar zijn voor het doel van de functie.
 
 5. Selecteer in de onderstaande tabel de bevoegdheden die u wilt samenvatten en klik vervolgens op **OK**.  De nieuwe rol wordt weer gegeven in de lijst in het deel venster **rollen** .
    - Klik op het pictogram naast het bovenliggende label om het bovenliggende item uit te vouwen en de onderliggende bevoegdheden weer te geven.
    - Als u de VirtualMachine-bevoegdheden wilt selecteren, moet u verschillende niveaus naar de bovenliggende onderliggende hiërarchie gaan.
    - U hoeft niet alle onderliggende bevoegdheden binnen een bovenliggende bevoegdheid te selecteren.
 
-             ![Parent child privilege hierarchy](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
+    ![Hiërarchie bovenliggende onderliggende bevoegdheden](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
 
 ### <a name="role-permissions"></a>Rolmachtigingen
 
@@ -165,7 +163,7 @@ VirtualMachine. State. RemoveSnapshot | VirtualMachine. State. RemoveSnapshot
 
 2. Selecteer in het deel venster **vCenter-gebruikers en-groepen** het tabblad **gebruikers** en klik vervolgens op het pictogram gebruikers toevoegen (het plus teken).
 
-         ![vCenter Users and Groups panel](./media/backup-azure-backup-server-vmware/usersandgroups.png)
+    ![het deel venster vCenter-gebruikers en-groepen](./media/backup-azure-backup-server-vmware/usersandgroups.png)
 
 3. Voeg in het dialoog venster **nieuwe gebruiker** de gebruikers gegevens > **OK**toe. In deze procedure is de gebruikers naam BackupAdmin.
 
@@ -219,9 +217,9 @@ Voeg de vCenter Server toe aan Azure Backup Server.
 
     ![Wizard voor het toevoegen van productie servers](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-2. Klik in de wizard voor het toevoegen van een **productie server** >  Selecteer de pagina**type productie server** , selecteer **VMware-servers**en klikt u vervolgens op **volgende**.
+2. Selecteer in de wizard voor het toevoegen van de **productie server** > pagina **type productie server selecteren** de optie **VMware-servers**en klik vervolgens op **volgende**.
 
-         ![Production Server Addition Wizard](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
+    ![Wizard voor het toevoegen van productie servers](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
 3. Geef in **computers selecteren**  **Server naam/IP-adres**de FQDN of het IP-adres van de VMware-Server op. Als alle ESXi-servers worden beheerd door dezelfde vCenter, geeft u de vCenter-naam op. Voeg anders de ESXi-host toe.
 
@@ -266,7 +264,7 @@ VMware-Vm's toevoegen voor back-up. Beveiligings groepen verzamelen meerdere Vm'
     - Wanneer u een map selecteert, worden er ook Vm's of mappen in die map geselecteerd voor back-up. U kunt de selectie van mappen of Vm's die u niet wilt maken, uitschakelen.
 1. Als er al een back-up van een virtuele machine of map wordt gemaakt, kunt u deze niet selecteren. Dit zorgt ervoor dat er geen dubbele herstel punten worden gemaakt voor een virtuele machine.
 
-         ![Select group members](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
+    ![Groeps leden selecteren](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
 1. Voer op de pagina **methode voor gegevens beveiliging selecteren** een naam in voor de beveiligings groep en beveiligings instellingen. Als u een back-up wilt maken naar Azure, stelt u kortetermijnbeveiliging op **schijf** in en schakelt u online beveiliging in. Klik op **Volgende**.
 
@@ -290,14 +288,14 @@ VMware-Vm's toevoegen voor back-up. Beveiligings groepen verzamelen meerdere Vm'
    - **Automatisch verg Roten:** Als u deze instelling inschakelt en de gegevens in de beveiligde groep groter worden dan de initiële toewijzing, Azure Backup Server probeert de schijf grootte met 25 procent te verhogen.
    - **Details van opslag groep:** Hier wordt de status van de opslag groep weer gegeven, met inbegrip van de totale en resterende schijf grootte.
 
-         ![Review disk allocation](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
+    ![Schijf toewijzing controleren](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 
 1. Geef in de pagina **methode voor maken van replica selecteren** op hoe u de eerste back-up wilt maken en klik vervolgens op **volgende**.
    - De standaard instelling is **automatisch via het netwerk** en **nu**.
    - Als u de standaard waarde gebruikt, raden we u aan een rustige tijd op te geven. Kies **later** en geef een dag en tijd op.
    - Voor grote hoeveel heden gegevens of minder dan optimale netwerk omstandigheden kunt u overwegen om de gegevens offline te repliceren met behulp van Verwissel bare media.
 
-         ![Choose replica creation method](./media/backup-azure-backup-server-vmware/replica-creation.png)
+    ![Methode voor maken van replica selecteren](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
 1. Selecteer in **Opties voor consistentie controle**hoe en wanneer de consistentie controles moeten worden geautomatiseerd. Klik op **Volgende**.
       - U kunt consistentie controles uitvoeren wanneer de replica gegevens inconsistent worden, of volgens een ingesteld schema.
@@ -305,25 +303,25 @@ VMware-Vm's toevoegen voor back-up. Beveiligings groepen verzamelen meerdere Vm'
 
 1. Selecteer op de pagina **gegevens voor online beveiliging opgeven** de vm's of de mappen van de virtuele machine waarvan u een back-up wilt maken. U kunt de leden afzonderlijk selecteren of op **Alles selecteren** klikken om alle leden te kiezen. Klik op **Volgende**.
 
-          ![Specify online protection data](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
+    ![Gegevens voor online beveiliging opgeven](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. Op de pagina **online back-upschema opgeven** geeft u op hoe vaak u een back-up wilt maken van gegevens van de lokale opslag naar Azure.
 
     - De Cloud herstel punten voor de gegevens worden gegenereerd volgens het schema. Klik op **Volgende**.
     - Nadat het herstel punt is gegenereerd, wordt het overgedragen naar de Recovery Services kluis in Azure.
 
-          ![Specify online backup schedule](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
+    ![Online back-upschema opgeven](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
 1. Geef op de pagina **online retentie beleid opgeven** op hoe lang u de herstel punten wilt bewaren die zijn gemaakt op basis van de dagelijkse/wekelijkse/maandelijkse/jaarlijkse back-ups naar Azure. Klik vervolgens op **volgende**.
 
     - Er is geen tijds limiet voor hoe lang u gegevens in azure kunt blijven gebruiken.
     - De enige limiet is dat u niet meer dan 9999 herstel punten per beveiligd exemplaar kunt hebben. In dit voor beeld is het beveiligde exemplaar de VMware-Server.
 
-          ![Specify online retention policy](./media/backup-azure-backup-server-vmware/retention-policy.png)
+    ![Online Bewaar beleid opgeven](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
 1. Controleer de instellingen op de pagina **samen vatting** en klik vervolgens op **groep maken**.
 
-         ![Protection group member and setting summary](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
+    ![Lid van beveiligings groep en samen vatting van instellingen](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6,7
 
@@ -335,25 +333,26 @@ Ga als volgt te werk om een back-up te maken van vSphere 6,7:
 
 - Stel de register sleutels als volgt in:
 
-```text
- Windows Registry Editor Version 5.00
+       ```text
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
-"SystemDefaultTlsVersions"=dword:00000001
-"SchUseStrongCrypto"=dword:00000001
+        Windows Registry Editor Version 5.00
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-"SystemDefaultTlsVersions"=dword:00000001
-"SchUseStrongCrypto"=dword:00000001
+        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
+       "SystemDefaultTlsVersions"=dword:00000001
+       "SchUseStrongCrypto"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
-"SystemDefaultTlsVersions"=dword:00000001
-"SchUseStrongCrypto"=dword:00000001
+       [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+       "SystemDefaultTlsVersions"=dword:00000001
+       "SchUseStrongCrypto"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-"SystemDefaultTlsVersions"=dword:00000001
-"SchUseStrongCrypto"=dword:00000001
-```
+       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
+       "SystemDefaultTlsVersions"=dword:00000001
+       "SchUseStrongCrypto"=dword:00000001
+
+       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+       "SystemDefaultTlsVersions"=dword:00000001
+       "SchUseStrongCrypto"=dword:00000001
+       ```
 
 ## <a name="next-steps"></a>Volgende stappen
 

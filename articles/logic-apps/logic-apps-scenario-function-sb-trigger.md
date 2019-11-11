@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
-ms.date: 06/04/2019
-ms.openlocfilehash: 2ab6ace7c30c3dd385928b6b0ae8000485d5f495
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 11/08/2019
+ms.openlocfilehash: c65a0464bbad6dbaca51dbc5bbc0d84adbd605d7
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680145"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904655"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Logische apps aanroepen of activeren met behulp van Azure Functions en Azure Service Bus
 
@@ -32,13 +32,13 @@ U kunt [Azure functions](../azure-functions/functions-overview.md) gebruiken om 
 
 ## <a name="create-logic-app"></a>Logische app maken
 
-Voor dit scenario hebt u een functie voor het uitvoeren van elke logische app die u wilt activeren. Maak eerst een logische app die begint met een HTTP-aanvraag trigger. De functie roept dat eind punt op wanneer er een wachtrij bericht wordt ontvangen.  
+Voor dit scenario hebt u een functie voor het uitvoeren van elke logische app die u wilt activeren. Maak eerst een logische app die begint met een HTTP-aanvraag trigger. De functie roept dat eind punt op wanneer er een wachtrij bericht wordt ontvangen.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en maak een lege logische app.
 
    Als u geen ervaring hebt met Logic apps, raadpleegt u [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Voer in het zoekvak ' HTTP-aanvraag ' in. Selecteer in de lijst triggers deze trigger: **Wanneer een HTTP-aanvraag wordt ontvangen**
+1. Typ `http request` in het zoekvak. Selecteer in de lijst triggers de trigger **Wanneer een HTTP-aanvraag wordt ontvangen** .
 
    ![Trigger selecteren](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
@@ -50,9 +50,9 @@ Voor dit scenario hebt u een functie voor het uitvoeren van elke logische app di
 
    Als u geen schema hebt, maar u een voor beeld van een nettolading in JSON-indeling hebt, kunt u een schema genereren op basis van die nettolading.
 
-   1. In de trigger voor aanvragen kiest u **voor beeld Payload gebruiken om een schema te genereren**.
+   1. Selecteer in de trigger voor de aanvraag een **voor beeld-nettolading gebruiken om een schema te genereren**.
 
-   1. Voer onder **ENTER of plak een JSON**-voor beeld-nettolading in en kies vervolgens **gereed**.
+   1. Voer onder **ENTER of plak een JSON**-voor beeld-nettolading in en selecteer vervolgens **gereed**.
 
       ![Voor beeld-nettolading invoeren](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 
@@ -102,9 +102,9 @@ Maak vervolgens de functie die als trigger fungeert en luistert naar de wachtrij
 
 1. Open en vouw in de Azure Portal uw functie-app, als deze nog niet is geopend. 
 
-1. Vouw **functies**onder de naam van de functie-app uit. Kies in het deel venster **functies** de optie **nieuwe functie**.
+1. Vouw **functies**onder de naam van de functie-app uit. Selecteer in het deel venster **functies** de optie **nieuwe functie**.
 
-   ![Vouw ' functions ' uit en kies ' nieuwe functie '](./media/logic-apps-scenario-function-sb-trigger/create-new-function.png)
+   ![Vouw ' functions ' uit en selecteer ' nieuwe functie '](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
 
 1. Selecteer deze sjabloon op basis van het feit of u een nieuwe functie-app hebt gemaakt waarbij u .NET als runtime stack hebt geselecteerd, of dat u een bestaande functie-app gebruikt.
 
@@ -116,9 +116,17 @@ Maak vervolgens de functie die als trigger fungeert en luistert naar de wachtrij
 
      ![Selecteer een sjabloon voor de bestaande functie-app](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
 
-1. Geef in het deel venster **Azure service bus wachtrij-trigger** een naam op voor de trigger en stel de **Service Bus verbinding** voor de wachtrij in, die gebruikmaakt van de Azure service bus SDK `OnMessageReceive()` listener en kies **maken**.
+1. Geef in het deel venster **Azure service bus wachtrij activeren** een naam op voor de trigger en stel de **Service Bus verbinding** voor de wachtrij in, die gebruikmaakt van de Azure service bus SDK `OnMessageReceive()` listener, en selecteer **maken**.
 
-1. Schrijf een Basic-functie om het eerder gemaakte logische app-eind punt aan te roepen met behulp van het wachtrij bericht als een trigger. In dit voor beeld wordt het inhouds type `application/json` bericht gebruikt, maar u kunt dit type zo nodig wijzigen. Gebruik, indien mogelijk, het exemplaar van HTTP-clients opnieuw. Zie [verbindingen beheren in azure functions](../azure-functions/manage-connections.md)voor meer informatie.
+1. Schrijf een Basic-functie om het eerder gemaakte logische app-eind punt aan te roepen met behulp van het wachtrij bericht als een trigger. Lees de volgende overwegingen voordat u de functie schrijft:
+
+   * In dit voor beeld wordt het inhouds type `application/json` bericht gebruikt, maar u kunt dit type zo nodig wijzigen.
+   
+   * Als gevolg van mogelijke gelijktijdig uitgevoerde functies, grote volumes of zware belastingen, moet u voor komen dat u de [klasse httpclient maakt](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) met de instructie `using` maakt en dat er rechtstreeks httpclient maakt-exemplaren per aanvraag worden gemaakt. Zie [HttpClientFactory gebruiken voor het implementeren van flexibele HTTP-aanvragen](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)voor meer informatie.
+   
+   * Gebruik, indien mogelijk, het exemplaar van HTTP-clients opnieuw. Zie [verbindingen beheren in azure functions](../azure-functions/manage-connections.md)voor meer informatie.
+
+   In dit voor beeld wordt de [methode`Task.Run`](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) in de [asynchrone](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) modus gebruikt. Zie [asynchrone programmering met async en await](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)voor meer informatie.
 
    ```CSharp
    using System;
@@ -126,17 +134,16 @@ Maak vervolgens de functie die als trigger fungeert en luistert naar de wachtrij
    using System.Net.Http;
    using System.Text;
 
-   // Callback URL for previously created Request trigger
+   // Can also fetch from App Settings or environment variable
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/workflows/<remaining-callback-URL>";
 
-   // Reuse the instance of HTTP clients if possible
+   // Reuse the instance of HTTP clients if possible: https://docs.microsoft.com/azure/azure-functions/manage-connections
    private static HttpClient httpClient = new HttpClient();
 
-   public static void Run(string myQueueItem, ILogger log)
+   public static async Task Run(string myQueueItem, TraceWriter log) 
    {
-       log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
-
-       var response = httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
+      log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+      var response = await httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")); 
    }
    ```
 
@@ -146,4 +153,4 @@ Maak vervolgens de functie die als trigger fungeert en luistert naar de wachtrij
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Aanroepen, activeren of nesten van werk stromen met behulp van HTTP-eind punten](../logic-apps/logic-apps-http-endpoint.md)
+* [Aanroepen, activeren of nesten van werk stromen met behulp van HTTP-eind punten](../logic-apps/logic-apps-http-endpoint.md)

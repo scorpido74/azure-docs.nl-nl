@@ -1,117 +1,140 @@
 ---
-title: Azure Data Lake Storage Gen1 MapReduce prestaties richtlijnen over het afstemmen | Microsoft Docs
-description: Azure Data Lake Storage Gen1 MapReduce prestaties richtlijnen over het afstemmen
-services: data-lake-store
-documentationcenter: ''
+title: Azure Data Lake Storage Gen1 prestaties afstemmen-MapReduce
+description: Richt lijnen voor het afstemmen van Azure Data Lake Storage Gen1 MapReduce
 author: stewu
-manager: amitkul
-editor: stewu
-ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: b9e5d034db4711384d2ac8a1083da5c93ea11900
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a645049665bc1d51efa94a879b9d2e4e5529282f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61437239"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904592"
 ---
-# <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Richtlijnen voor MapReduce in HDInsight en Azure Data Lake Storage Gen1 afstemmen van prestaties
+# <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Richt lijnen voor het afstemmen van de prestaties voor MapReduce in HDInsight en Azure Data Lake Storage Gen1
 
 ## <a name="prerequisites"></a>Vereisten
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-* **Een account met Azure Data Lake Storage Gen1**. Zie voor instructies over het maken van een [aan de slag met Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
-* **Azure HDInsight-cluster** met toegang tot een Gen1 van Data Lake Storage-account. Zie [een HDInsight-cluster maken met Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Zorg ervoor dat u extern bureaublad inschakelen voor het cluster.
-* **Met behulp van MapReduce in HDInsight**.  Zie voor meer informatie, [MapReduce in Hadoop op HDInsight gebruiken](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
-* **Richtlijnen voor het Data Lake Storage Gen1 afstemmen van prestaties**.  Zie voor de prestaties van de algemene concepten, [Data Lake Storage Gen1 prestaties afstemmen-richtlijnen](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
+* **Een Azure data Lake Storage gen1-account**. Zie [aan de slag met Azure data Lake Storage gen1](data-lake-store-get-started-portal.md) voor instructies over het maken van een account.
+* **Azure HDInsight-cluster** met toegang tot een Data Lake Storage gen1-account. Zie [een HDInsight-cluster met data Lake Storage gen1 maken](data-lake-store-hdinsight-hadoop-use-portal.md). Zorg ervoor dat Extern bureaublad voor het cluster is ingeschakeld.
+* **MapReduce gebruiken in HDInsight**. Zie [MapReduce gebruiken in Hadoop op HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce) voor meer informatie.
+* **Bekijk de richt lijnen voor het afstemmen van de prestaties voor data Lake Storage gen1**. Zie [Data Lake Storage gen1 richt lijnen voor het afstemmen van prestaties](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) voor algemene concepten.
 
 ## <a name="parameters"></a>Parameters
 
-Bij het uitvoeren van MapReduce-taken, vindt hier u de belangrijkste parameters die u configureren kunt voor betere prestaties op Data Lake Storage Gen1:
+Wanneer u MapReduce-taken uitvoert, zijn dit de belangrijkste para meters die u kunt configureren om de prestaties van Data Lake Storage Gen1 te verbeteren:
 
-* **Mapreduce.map.Memory.MB** – de hoeveelheid geheugen worden toegewezen aan elke toewijzen
-* **Mapreduce.job.Maps** : het aantal taken per taak kaart
-* **Mapreduce.reduce.Memory.MB** – de hoeveelheid geheugen aan elke reducer toewijzen
-* **Mapreduce.job.reduces** : het aantal taken per taak verminderen
+|Parameter      | Beschrijving  |
+|---------|---------|
+|`Mapreduce.map.memory.mb`  |  De hoeveelheid geheugen die aan elke Mapper moet worden toegewezen.  |
+|`Mapreduce.job.maps`     |  Het aantal toewijzings taken per taak.  |
+|`Mapreduce.reduce.memory.mb`     |  De hoeveelheid geheugen die aan elke reductier moet worden toegewezen.  |
+|`Mapreduce.job.reduces`    |   Het aantal verlaagde taken per taak.  |
 
-**Mapreduce.map.Memory / Mapreduce.reduce.memory** dit nummer moet worden aangepast op basis van de hoeveelheid geheugen nodig is voor de kaart en/of beperken van de taak.  De standaardwaarden van mapreduce.map.memory en mapreduce.reduce.memory kunnen worden weergegeven in de Ambari via de Yarn-configuratie.  Navigeer naar YARN in Ambari, en naar het tabblad configuraties.  De YARN-geheugen wordt weergegeven.  
+### <a name="mapreducemapmemory--mapreducereducememory"></a>MapReduce. map. Memory/MapReduce. Verminder. Memory
 
-**Mapreduce.job.Maps / Mapreduce.job.reduces** dit bepaalt het maximum aantal mappers of reducers tegelijkertijd kunnen worden gemaakt.  Het aantal splitsingen, bepaalt hoeveel mappers voor de MapReduce-taak wordt gemaakt.  Daarom, krijgt u mogelijk minder mappers dan u hebt aangevraagd of er minder splitsingen dan het aantal mappers aangevraagd zijn.       
+Pas dit aantal aan op basis van de hoeveelheid geheugen die nodig is voor de kaart en/of de taak verminderen. U kunt de standaard waarden van `mapreduce.map.memory` en `mapreduce.reduce.memory` in Ambari weer geven via de garen configuratie. Ga in Ambari naar GARENs en Bekijk het tabblad **configuratie** . Het garen geheugen wordt weer gegeven.
 
-## <a name="guidance"></a>Richtlijnen
+### <a name="mapreducejobmaps--mapreducejobreduces"></a>MapReduce. job. Mapss/MapReduce. job. reduceert
 
-**Stap 1: Aantal actieve taken bepalen** -standaard MapReduce het hele cluster wordt gebruikt voor de taak.  U kunt minder van het cluster met behulp van minder mappers dan er beschikbaar containers.  De instructies in dit document wordt ervan uitgegaan dat uw toepassing is de enige toepassing die wordt uitgevoerd op uw cluster.      
+Hiermee bepaalt u het maximum aantal mappers of verminderers dat moet worden gemaakt. Het aantal splitsingen bepaalt hoeveel toewijzingen voor de MapReduce-taak worden gemaakt. Daarom kunt u minder mappers aanvragen dan u hebt aangevraagd als er minder splitsingen zijn dan het aangevraagde aantal mappers.
 
-**Stap 2: Stel mapreduce.map.memory/mapreduce.reduce.memory** – de grootte van het geheugen voor de kaart en verminder taken zijn afhankelijk van uw specifieke taak.  U kunt de geheugengrootte verminderen als u wilt verhogen gelijktijdigheid.  Het aantal gelijktijdig uitvoeren van taken, is afhankelijk van het aantal containers.  De hoeveelheid geheugen per toewijzen of reducer verlaagt, kunnen meer containers worden gemaakt, waarmee meer mappers en reducers tegelijkertijd kunnen gelijktijdig worden uitgevoerd.  De hoeveelheid geheugen te veel verlagen, kan dit ertoe leiden dat bepaalde processen te weinig geheugen.  Als u een heap-fout optreedt bij het uitvoeren van uw taak, moet u de hoeveelheid geheugen per toewijzen of reducer vergroten.  U moet rekening houden met toevoegen van meer containers wordt toegevoegd extra overhead voor elke extra container, zodat mogelijk de prestaties kan verslechteren.  Een ander alternatief is om op te halen van meer geheugen met behulp van een cluster met grotere hoeveelheden geheugen of het aantal knooppunten in uw cluster verhoogt.  Meer geheugen kunnen meer containers kunnen worden gebruikt, wat betekent dat meer gelijktijdigheid.  
+## <a name="guidance"></a>Hulp
 
-**Stap 3: Totaal aantal YARN geheugen bepalen** - om af te stemmen mapreduce.job.maps/mapreduce.job.reduces, moet u rekening houden met de hoeveelheid totale YARN-geheugen beschikbaar voor gebruik.  Deze informatie is beschikbaar in Ambari.  Navigeer naar YARN en weergeven van het tabblad configuraties.  De YARN-geheugen wordt weergegeven in dit venster.  U moet de YARN-geheugen met het aantal knooppunten in uw cluster om op te halen van het totale geheugen van de YARN vermenigvuldigen.
+### <a name="step-1-determine-number-of-jobs-running"></a>Stap 1: het aantal uitgevoerde taken bepalen
 
-    Total YARN memory = nodes * YARN memory per node
-Als u een lege cluster gebruikt, kan het totale YARN-geheugen voor uw cluster zijn op geheugen.  Als u andere toepassingen gebruikt geheugen, kunt klikt u vervolgens u alleen een gedeelte van het geheugen van uw cluster worden gebruikt door het aantal mappers of reducers tegelijkertijd beperken tot het aantal containers dat u wilt gebruiken.  
+MapReduce maakt standaard gebruik van het hele cluster voor uw taak. U kunt minder van het cluster gebruiken door minder mappers te gebruiken dan er beschik bare containers zijn. In de instructies in dit document wordt ervan uitgegaan dat uw toepassing de enige toepassing is die in uw cluster wordt uitgevoerd.
 
-**Stap 4: Aantal YARN-containers berekenen** – YARN-containers dicteren de hoeveelheid gelijktijdigheid beschikbaar voor de taak.  Totale hoeveelheid geheugen voor YARN nemen en die wordt gedeeld door mapreduce.map.memory.  
+### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>Stap 2: Stel MapReduce. kaart. Memory/MapReduce. Reducing. memory in
 
-    # of YARN containers = total YARN memory / mapreduce.map.memory
+De grootte van het geheugen voor het toewijzen en verminderen van taken is afhankelijk van uw specifieke taak. U kunt de geheugen grootte verminderen als u gelijktijdigheid wilt verg Roten. Het aantal gelijktijdig uitgevoerde taken is afhankelijk van het aantal containers. Door de hoeveelheid geheugen per Mapper of extra verlaging te verlagen, kunnen er meer containers worden gemaakt, waarmee meer toewijzingen of verminderers gelijktijdig worden uitgevoerd. Het verminderen van de hoeveelheid geheugen die te groot is, kan ertoe leiden dat er onvoldoende geheugen beschikbaar is voor sommige processen. Als er een heap-fout optreedt tijdens het uitvoeren van uw taak, verg root u het geheugen per Mapper of minder. Houd er rekening mee dat het toevoegen van meer containers extra overhead voor elke extra container toevoegt, waardoor de prestaties mogelijk nadelig kunnen afnemen. Een andere mogelijkheid is om meer geheugen te verkrijgen door gebruik te maken van een cluster met een grotere hoeveelheid geheugen of het aantal knoop punten in het cluster te verhogen. Meer geheugens worden gebruikt om meer containers te gebruiken. Dit betekent dat u meer dan gelijktijdig kunt instellen.
 
-**Stap 5: Stel mapreduce.job.maps/mapreduce.job.reduces** mapreduce.job.maps/mapreduce.job.reduces ingesteld op ten minste het aantal beschikbare containers.  U kunt experimenteren verder door het aantal mappers en reducers tegelijkertijd om te zien of u betere prestaties krijgt.  Houd er rekening mee dat meer mappers extra overhead hebben om dat te veel mappers hoeft de prestaties nadelig beïnvloeden.  
+### <a name="step-3-determine-total-yarn-memory"></a>Stap 3: de totale hoeveelheid garen bepalen
 
-CPU-plannings- en CPU-isolatie zijn standaard uitgeschakeld zodat het nummer van de YARN-containers wordt beperkt door het geheugen.
+Als u MapReduce. job. Mapss/MapReduce. job. reduceert, moet u rekening houden met de totale hoeveelheid garen geheugen die beschikbaar is voor gebruik. Deze informatie is beschikbaar in Ambari. Navigeer naar GARENs en Bekijk het tabblad **configuratie** . Het garen geheugen wordt in dit venster weer gegeven. Vermenigvuldig het garen geheugen met het aantal knoop punten in het cluster om het totale garen geheugen te verkrijgen.
 
-## <a name="example-calculation"></a>Voorbeeld van de berekening
+`Total YARN memory = nodes * YARN memory per node`
 
-Stel dat u momenteel een cluster bestaat uit 8 D14 knooppunten hebt en u wilt een i/o-intensieve taak uit te voeren.  Hier volgen de berekeningen die u moet doen:
+Als u een leeg cluster gebruikt, kan het geheugen de totale hoeveelheid garen van het cluster zijn. Als andere toepassingen geheugen gebruiken, kunt u ervoor kiezen om alleen een gedeelte van het geheugen van uw cluster te gebruiken door het aantal mappers of verminderers te verminderen tot het aantal containers dat u wilt gebruiken.
 
-**Stap 1: Aantal actieve taken bepalen** -in ons voorbeeld gaan we ervan uit dat de taak de slechts één die wordt uitgevoerd is.  
+### <a name="step-4-calculate-number-of-yarn-containers"></a>Stap 4: het aantal GARENs
 
-**Stap 2: Stel mapreduce.map.memory/mapreduce.reduce.memory** – in ons voorbeeld u een i/o-intensieve taak worden uitgevoerd en besluit 3 GB aan geheugen voor de taken van de kaart is voldoende.
+GAREN-containers bepalen de hoeveelheid gelijktijdige Beschik baarheid voor de taak. Profiteer van het totale aantal garen geheugen en splits dit door MapReduce. map. Memory.
 
-    mapreduce.map.memory = 3GB
-**Stap 3: Bepalen van de totale YARN-geheugen**
+`# of YARN containers = total YARN memory / mapreduce.map.memory`
 
-    total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
-**Stap 4: Berekenen # van YARN-containers**
+### <a name="step-5-set-mapreducejobmapsmapreducejobreduces"></a>Stap 5: Stel MapReduce. job. Mapss/MapReduce. job. reduceert
 
-    # of YARN containers = 768GB of available memory / 3 GB of memory =   256
+Stel MapReduce. job. Mapss/MapReduce. job. reduceert ten minste het aantal beschik bare containers. U kunt verder experimenteren door het aantal mappers en verminderers te verhogen om te zien of u betere prestaties krijgt. Houd er rekening mee dat meer toewijzingen meer overhead hebben, zodat er te veel mappers zijn die de prestaties kunnen verminderen.
 
-**Stap 5: Set mapreduce.job.maps/mapreduce.job.reduces**
+CPU-planning en CPU-isolatie zijn standaard uitgeschakeld zodat het aantal garen containers wordt beperkt door het geheugen.
 
-    mapreduce.map.jobs = 256
+## <a name="example-calculation"></a>Voorbeeld berekening
+
+Stel dat u momenteel een cluster hebt dat bestaat uit 8 D14-knoop punten en u een I/O-intensieve taak wilt uitvoeren. Dit zijn de berekeningen die u moet uitvoeren:
+
+### <a name="step-1-determine-number-of-jobs-running"></a>Stap 1: het aantal uitgevoerde taken bepalen
+
+In ons voor beeld gaan we ervan uit dat de enige actieve taak is.
+
+### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>Stap 2: Stel MapReduce. kaart. Memory/MapReduce. Reducing. memory in
+
+In ons voor beeld voert u een I/O-intensieve taak uit en beslist u dat 3 GB geheugen voor de toewijzing van taken voldoende is.
+
+`mapreduce.map.memory = 3GB`
+
+### <a name="step-3-determine-total-yarn-memory"></a>Stap 3: de totale hoeveelheid garen bepalen
+
+`total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB`
+
+### <a name="step-4-calculate--of-yarn-containers"></a>Stap 4: aantal GARENs
+
+`# of YARN containers = 768 GB of available memory / 3 GB of memory = 256`
+
+### <a name="step-5-set-mapreducejobmapsmapreducejobreduces"></a>Stap 5: Stel MapReduce. job. Mapss/MapReduce. job. reduceert
+
+`mapreduce.map.jobs = 256`
 
 ## <a name="limitations"></a>Beperkingen
 
 **Data Lake Storage Gen1 beperking**
 
-Data Lake Storage Gen1 ingesteld als een service met meerdere tenants, niveau bandbreedtelimieten.  Als u deze limiet bereikt, begint u taakfouten ziet. Dit kan worden geïdentificeerd door geobserveerd beperkingsfouten in Logboeken van de taak.  Als u meer bandbreedte nodig voor uw taak, neem dan contact met ons.   
+Als multi tenant-service, Data Lake Storage Gen1 instellen bandbreedte limieten op account niveau. Als u deze limieten bereikt, worden er taak fouten weer geven. Dit kan worden geïdentificeerd door beperkings fouten in taak logboeken te observeren. Als u meer band breedte voor uw taak nodig hebt, kunt u contact met ons opnemen.
 
-Om te controleren als u ophalen beperkt, moet u de logboekregistratie op de client voor foutopsporing inschakelen. Hier ziet hoe u dat kunt doen:
+Als u wilt controleren of u een beperking krijgt, moet u de logboek registratie voor fout opsporing inschakelen op de client. U kunt dit als volgt doen:
 
-1. De volgende eigenschap plaatsen in de eigenschappen log4j in Ambari > YARN > Configuratie > Geavanceerde yarn-log4j: log4j.logger.com.microsoft.azure.datalake.store=DEBUG
+1. Plaats de volgende eigenschap in de log4j-eigenschappen in Ambari > GARENs > config > Advanced garens-log4j: log4j. logger. com. Microsoft. Azure. datalake. Store = DEBUG
 
-2. Alle knooppunten/start de service opnieuw voor de configuratie van kracht te laten worden.
+2. Start alle knoop punten/service opnieuw op om de configuratie van kracht te laten worden.
 
-3. Als u beperkt ophalen, ziet u de code van de fout HTTP 429 in de YARN-logboekbestand. De YARN-logboekbestand bevindt zich in /tmp/&lt;gebruiker&gt;/yarn.log
+3. Als u een beperking krijgt, ziet u de fout code HTTP 429 in het garen logboek bestand. Het garen logboek bestand bevindt zich in/tmp/&lt;gebruiker&gt;/Yarn.log
 
-## <a name="examples-to-run"></a>Voorbeelden uitvoeren
+## <a name="examples-to-run"></a>Voor beelden om uit te voeren
 
-Om te demonstreren hoe MapReduce wordt uitgevoerd op Data Lake Storage Gen1, volgt hieronder een voorbeeld van code die is uitgevoerd op een cluster met de volgende instellingen:
+Om te laten zien hoe MapReduce wordt uitgevoerd op Data Lake Storage Gen1, ziet u hier een voor beeld van een code die op een cluster werd uitgevoerd met de volgende instellingen:
 
-* 16 knooppunten D14v2
-* Hadoop-cluster met HDI 3.6
+* D14v2 van 16 knoop punten
+* Hadoop-cluster met HDI 3,6
 
-Hier volgen enkele Voorbeeldopdrachten MapReduce Teragen, Terasort en Teravalidate uit te voeren voor een beginpunt.  U kunt deze opdrachten op basis van uw resources aanpassen.
+Hier volgen enkele voorbeeld opdrachten voor het uitvoeren van MapReduce Teragen, Terasort en Teravalidate. U kunt deze opdrachten aanpassen op basis van uw resources.
 
-**Teragen**
+### <a name="teragen"></a>Teragen
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 adl://example/data/1TB-sort-input
+```
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 adl://example/data/1TB-sort-input
+```
 
-**Terasort**
+### <a name="terasort"></a>Terasort
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 adl://example/data/1TB-sort-input adl://example/data/1TB-sort-output
+```
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 adl://example/data/1TB-sort-input adl://example/data/1TB-sort-output
+```
 
-**Teravalidate**
+### <a name="teravalidate"></a>Teravalidate
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 adl://example/data/1TB-sort-output adl://example/data/1TB-sort-validate
+```
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 adl://example/data/1TB-sort-output adl://example/data/1TB-sort-validate
+```

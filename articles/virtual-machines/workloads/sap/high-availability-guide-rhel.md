@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
 ms.author: sedusch
-ms.openlocfilehash: 13f751b472b3443ba50be5d54ab08e015d1a8f5a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a618a2cb976c90174125e54af645123c6b0a9dcd
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824876"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73905038"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux
 
@@ -117,7 +117,7 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS en de SAP HANA-Data Bas
 * Test poort
   * Poort 621<strong>&lt;nr&gt;</strong>
 * Taakverdelings regels
-  * Als u Standard Load Balancer gebruikt, selecteert u * * HA-poorten * *
+  * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
   * Als u basis Load Balancer gebruikt, maakt u regels voor taak verdeling voor de volgende poorten
     * 32<strong>&lt;nr&gt;</strong> TCP
     * 33<strong>&lt;nr&gt;</strong> TCP
@@ -250,9 +250,8 @@ U moet eerst de virtuele machines voor dit cluster maken. Daarna maakt u een loa
       1. Aanvullende poorten voor de ASCS ERS
          * Herhaal de bovenstaande stappen voor poort 33**02**, 5**02**13, 5**02**14, 5**02**16 en TCP voor de ASCS ers
 
-> [!TIP]
-> Wanneer Vm's zonder open bare IP-adressen in de back-end-groep van interne standaard load balancer worden geplaatst, hebben de Vm's geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd.  
-> Als voor uw scenario uitgaande verbindingen naar open bare eind punten vereist zijn, raadpleegt u [open bare-eindpunt connectiviteit voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)voor tips en overwegingen voor het bezorgen van uitgaande connectiviteit met open bare eind punten.
+> [!Note]
+> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)voor meer informatie over het bezorgen van uitgaande verbindingen.  
 
 > [!IMPORTANT]
 > Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.

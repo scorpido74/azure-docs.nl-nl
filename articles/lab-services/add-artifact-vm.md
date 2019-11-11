@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 19a7d6052091f8889a88c61793186b7bf7d9d869
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 27fec279582d845972b87ac635c87c16c239924e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60304275"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901314"
 ---
-# <a name="add-an-artifact-to-a-vm"></a>Een artefact toevoegen aan een virtuele machine
-Tijdens het maken van een virtuele machine, kunt u bestaande artefacten toevoegen aan deze. Deze artefacten kunnen afkomstig zijn uit een de [openbare DevTest Labs Git-opslagplaats](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) of vanuit uw eigen Git-opslagplaats. Dit artikel leest u hoe artefacten in Azure portal en met behulp van Azure PowerShell toevoegen. 
+# <a name="add-an-artifact-to-a-vm"></a>Een artefact toevoegen aan een VM
+U kunt bij het maken van een virtuele machine bestaande artefacten toevoegen. Deze artefacten kunnen afkomstig zijn uit de [open bare DevTest Labs-opslag plaats](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) of vanuit uw eigen Git-opslag plaats. In dit artikel leest u hoe u artefacten kunt toevoegen in de Azure Portal en met behulp van Azure PowerShell. 
 
-Azure DevTest Labs *artefacten* kunt u opgeven *acties* die worden uitgevoerd wanneer de virtuele machine is ingericht, zoals het uitvoeren van Windows PowerShell-scripts, Bash-opdrachten uitvoeren en installeren van software. Artefact *parameters* kunt u aanpassen van het artefact voor uw specifieke scenario.
+Met Azure DevTest Labs *artefacten* kunt u *acties* opgeven die worden uitgevoerd wanneer de virtuele machine wordt ingericht, zoals het uitvoeren van Windows Power shell-scripts, het uitvoeren van bash-opdrachten en het installeren van software. Met artefact *parameters* kunt u het artefact aanpassen voor uw specifieke scenario.
 
-Zie voor meer informatie over het maken van aangepaste artefacten, het artikel: [Aangepaste artefacten maken](devtest-lab-artifact-author.md).
+Zie het artikel: [aangepaste artefacten maken](devtest-lab-artifact-author.md)voor meer informatie over het maken van aangepaste artefacten.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken 
-1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Selecteer **alle Services**, en selecteer vervolgens **DevTest Labs** in de lijst.
-1. Selecteer in de lijst met labs, in het lab met de virtuele machine die u wilt werken.  
+1. Meld u aan bij de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
+1. Selecteer in de lijst met Labs het lab met de virtuele machine waarmee u wilt werken.  
 1. Selecteer **mijn virtuele machines**.
-1. Selecteer de gewenste virtuele machine.
+1. Selecteer de gewenste VM.
 1. Selecteer **artefacten beheren**. 
-1. Selecteer **toepassen artefacten**.
-1. Op de **toepassen artefacten** deelvenster, selecteert u het artefact dat u wilt toevoegen aan de virtuele machine.
-1. Op de **toevoegen artefact** deelvenster, voert u de vereiste parameterwaarden en eventuele optionele parameters die u nodig hebt.  
-1. Selecteer **toevoegen** het artefact toevoegen en terugkeren naar de **toepassen artefacten** deelvenster.
-1. Doorgaan met het toevoegen van artefacten, zoals die nodig zijn voor uw virtuele machine.
-1. Als u uw artefacten hebt toegevoegd, kunt u [wijzigt de volgorde waarin de artefacten zijn uitgevoerd](#change-the-order-in-which-artifacts-are-run). U kunt ook teruggaan naar [weergeven of wijzigen van een artefact](#view-or-modify-an-artifact).
-1. Wanneer u klaar bent met het artefacten toe te voegen, selecteert u **toepassen**
+1. Selecteer **artefacten Toep assen**.
+1. Selecteer in het deel venster **artefacten Toep assen** het artefact dat u aan de virtuele machine wilt toevoegen.
+1. Voer in het deel venster **artefact toevoegen** de vereiste parameter waarden in en eventuele optionele para meters die u nodig hebt.  
+1. Selecteer **toevoegen** om het artefact toe te voegen en terug te keren naar het deel venster **artefacten Toep assen** .
+1. Ga door met het toevoegen van artefacten die nodig zijn voor uw VM.
+1. Wanneer u uw artefacten hebt toegevoegd, kunt u [de volg orde wijzigen waarin de artefacten worden uitgevoerd](#change-the-order-in-which-artifacts-are-run). U kunt ook terugkeren om [een artefact weer te geven of te wijzigen](#view-or-modify-an-artifact).
+1. Wanneer u klaar bent met het toevoegen van artefacten, selecteert u **Toep assen**
 
-### <a name="change-the-order-in-which-artifacts-are-run"></a>Wijzig de volgorde waarin artefacten worden uitgevoerd
-De acties van de artefacten worden standaard uitgevoerd in de volgorde waarin ze worden toegevoegd aan de virtuele machine. De volgende stappen laten zien hoe u de volgorde waarin de artefacten worden uitgevoerd.
+### <a name="change-the-order-in-which-artifacts-are-run"></a>De volg orde wijzigen waarin artefacten worden uitgevoerd
+De acties van de artefacten worden standaard uitgevoerd in de volg orde waarin ze worden toegevoegd aan de virtuele machine. De volgende stappen laten zien hoe u de volg orde wijzigt waarin de artefacten worden uitgevoerd.
 
-1. Aan de bovenkant van de **toepassen artefacten** deelvenster, selecteert u de koppeling met het nummer van de artefacten die zijn toegevoegd aan de virtuele machine.
+1. Selecteer boven in het deel venster **artefacten Toep assen** de koppeling waarmee het aantal artefacten wordt aangegeven dat aan de virtuele machine is toegevoegd.
    
-    ![Aantal artefacten toegevoegd aan de virtuele machine](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. Op de **geselecteerd artefacten** deelvenster slepen en neerzetten van de artefacten in de gewenste volgorde. Als u problemen ondervindt met het slepen van het artefact, zorg ervoor dat u vanaf de linkerkant van het artefact sleept. 
+    ![Aantal artefacten dat aan de virtuele machine is toegevoegd](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
+1. Sleep in het deel venster **geselecteerde artefacten** de artefacten naar de gewenste volg orde. Als u het artefact niet kunt slepen, moet u ervoor zorgen dat u vanaf de linkerkant van het artefact sleept. 
 1. Selecteer **OK** wanneer u gereed bent.  
 
-### <a name="view-or-modify-an-artifact"></a>Weergeven of wijzigen van een artefact
-De volgende stappen laten zien hoe u weergeven of wijzigen van de parameters van een artefact:
+### <a name="view-or-modify-an-artifact"></a>Een artefact weer geven of wijzigen
+De volgende stappen laten zien hoe u de para meters van een artefact kunt weer geven of wijzigen:
 
-1. Aan de bovenkant van de **toepassen artefacten** deelvenster, selecteert u de koppeling met het nummer van de artefacten die zijn toegevoegd aan de virtuele machine.
+1. Selecteer boven in het deel venster **artefacten Toep assen** de koppeling waarmee het aantal artefacten wordt aangegeven dat aan de virtuele machine is toegevoegd.
    
-    ![Aantal artefacten toegevoegd aan de virtuele machine](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. Op de **geselecteerd artefacten** deelvenster, selecteert u de artefacten die u wilt weergeven of bewerken.  
-1. Op de **toevoegen artefact** deelvenster, controleert alle wijzigingen die nodig zijn, en selecteer **OK** sluiten de **toevoegen artefact** deelvenster.
-1. Selecteer **OK** sluiten de **geselecteerd artefacten** deelvenster.
+    ![Aantal artefacten dat aan de virtuele machine is toegevoegd](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
+1. Selecteer in het deel venster **geselecteerde artefacten** het artefact dat u wilt weer geven of bewerken.  
+1. Breng de gewenste wijzigingen aan in het deel venster **artefact toevoegen** en selecteer **OK** om het deel venster **artefact toevoegen** te sluiten.
+1. Selecteer **OK** om het **geselecteerde artefacten** venster te sluiten.
 
 ## <a name="use-powershell"></a>PowerShell gebruiken
-Het opgegeven artefact geldt in het volgende script voor de opgegeven virtuele machine. De [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) opdracht is degene die de bewerking wordt uitgevoerd.  
+Met het volgende script wordt het opgegeven artefact toegepast op de opgegeven virtuele machine. De opdracht [invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) is het account waarmee de bewerking wordt uitgevoerd.  
 
 ```powershell
 #Requires -Module Az.Resources
@@ -90,7 +90,7 @@ param
 Set-AzContext -SubscriptionId $SubscriptionId | Out-Null
  
 # Get the lab resource group name
-$resourceGroupName = (Find-AzResource -ResourceType 'Microsoft.DevTestLab/labs' | Where-Object { $_.Name -eq $DevTestLabName}).ResourceGroupName
+$resourceGroupName = (Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' | Where-Object { $_.Name -eq $DevTestLabName}).ResourceGroupName
 if ($resourceGroupName -eq $null) { throw "Unable to find lab $DevTestLabName in subscription $SubscriptionId." }
 
 # Get the internal repo name
@@ -164,9 +164,9 @@ if ($virtualMachine -ne $null) {
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen op artefacten:
+Raadpleeg de volgende artikelen over artefacten:
 
-- [Verplichte artefacten voor uw lab opgeven](devtest-lab-mandatory-artifacts.md)
+- [Verplichte artefacten opgeven voor uw Lab](devtest-lab-mandatory-artifacts.md)
 - [Aangepaste artefacten maken](devtest-lab-artifact-author.md)
-- [Een artefactopslagplaats toevoegen aan een lab](devtest-lab-artifact-author.md)
+- [Een opslag plaats voor artefacten toevoegen aan een Lab](devtest-lab-artifact-author.md)
 - [Problemen met artefacten vaststellen](devtest-lab-troubleshoot-artifact-failure.md)

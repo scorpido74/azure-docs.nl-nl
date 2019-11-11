@@ -1,6 +1,6 @@
 ---
-title: Uw Azure Security Center configureren voor IoT-oplossing | Microsoft Docs
-description: Meer informatie over het configureren van uw end-to-end IoT-oplossing met behulp van Azure Security Center voor IoT.
+title: 'Snelstartgids: uw Azure Security Center voor IoT-oplossing configureren'
+description: In deze Quick Start leert u hoe u uw end-to-end IoT-oplossing kunt configureren met Azure Security Center voor IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: a546d153c6fe4f14ccc8c21308bd4a33385870c3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e670df359cc33c9eaca089d0ed8f9614ef8c0468
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299693"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904150"
 ---
-# <a name="quickstart-configure-your-iot-solution"></a>Quickstart: Uw IoT-oplossing configureren
+# <a name="quickstart-configure-your-iot-solution"></a>Snelstartgids: uw IoT-oplossing configureren
 
 Dit artikel bevat een uitleg over het uitvoeren van de eerste configuratie van uw IoT-beveiligings oplossing met behulp van Azure Security Center voor IoT. 
 
@@ -49,7 +49,7 @@ Ga als volgt te werk om een nieuwe resource toe te voegen aan uw IoT-oplossing:
 1. Selecteer **bewerken** en kies de resource groepen die deel uitmaken van uw IOT-oplossing.
 1. Klik op **Toevoegen**. 
 
-Gefeliciteerd! U hebt een nieuwe resource groep toegevoegd aan uw IoT-oplossing.
+Gefeliciteerd. U hebt een nieuwe resource groep toegevoegd aan uw IoT-oplossing.
 
 Azure Security Center voor IoT bewaakt u nu nieuwe resource groepen en Opper vlakken van relevante beveiligings aanbevelingen en-waarschuwingen als onderdeel van uw IoT-oplossing.
 

@@ -1,6 +1,6 @@
 ---
-title: Geen downtime-implementatie voor Durable Functions
-description: Meer informatie over het inschakelen van uw Durable Functions-indeling voor 0 downtime-implementaties.
+title: Implementatie met een nul-uitval tijd voor Durable Functions
+description: Meer informatie over het inschakelen van uw Durable Functions-indeling voor implementaties met een nul-uitval tijd.
 services: functions
 author: tsushi
 manager: gwallace
@@ -8,29 +8,31 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b47604f2c8703ba587e98d68dc30552e5944f562
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: af19f8cdcc26d1459bc024f00b963f04bd8d763b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614504"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904047"
 ---
-# <a name="zero-downtime-deployment-for-durable-functions"></a>Geen downtime-implementatie voor Durable Functions
+# <a name="zero-downtime-deployment-for-durable-functions"></a>Implementatie met een nul-uitval tijd voor Durable Functions
 
-Voor het [betrouw bare uitvoerings model](durable-functions-checkpointing-and-replay.md) van Durable functions moet de indeling deterministisch zijn, wat een extra uitdaging vormt om te overwegen bij het implementeren van updates. Wanneer een implementatie wijzigingen bevat in de hand tekeningen of Orchestrator-logica van de activiteit functie, mislukken in vlucht indelings instanties. Deze situatie is met name een probleem voor exemplaren van langlopende orchestrator, die uren of werk dagen kunnen Voorst Ellen.
+Het [betrouw bare uitvoerings model](durable-functions-checkpointing-and-replay.md) van Durable functions vereist dat indelingen deterministisch zijn, wat een extra uitdaging vormt om te overwegen wanneer u updates implementeert. Wanneer een implementatie wijzigingen bevat in de hand tekeningen of Orchestrator-logica van de activiteit functie, mislukken in vlucht indelings instanties. Deze situatie is met name een probleem voor exemplaren van langlopende orchestrator, die uren of werk dagen kunnen Voorst Ellen.
 
-Om ervoor te zorgen dat deze fouten zich voordoen, moet u uw implementatie vertragen totdat alle actieve Orchestrator-instanties zijn voltooid, of ervoor zorgen dat alle actieve Orchestrator-instanties de bestaande versies van uw functies gebruiken. Zie voor meer informatie over versie beheer [versie beheer in Durable functions](durable-functions-versioning.md).
+Om te voor komen dat deze fouten zich voordoen, hebt u twee opties: 
+- Stel uw implementatie uit totdat alle actieve Orchestrator-exemplaren zijn voltooid.
+- Zorg ervoor dat alle actieve Orchestrator-instanties de bestaande versies van uw functies gebruiken. 
 
 > [!NOTE]
-> Dit artikel bevat richt lijnen voor functions-apps die zijn gericht Durable Functions 1. x. Het is nog niet bijgewerkt naar het account voor wijzigingen die zijn aangebracht in Durable Functions 2. x. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen extensies.
+> Dit artikel bevat richt lijnen voor functions-apps die zijn gericht op Durable Functions 1. x. Het account is niet bijgewerkt met de wijzigingen die zijn aangebracht in Durable Functions 2. x. Zie [Durable functions-versies](durable-functions-versions.md)voor meer informatie over de verschillen tussen extensie versies.
 
-In het volgende diagram worden de drie belangrijkste strategieën vergeleken om een time-outwaarde voor Durable Functions van nul te krijgen: 
+In het volgende diagram worden de drie belangrijkste strategieën vergeleken om een implementatie met een nul-uitval tijd voor Durable Functions te krijgen: 
 
 | Strategie |  Wanneer gebruikt u dit? | -Professionals | Nadelen |
 | -------- | ------------ | ---- | ---- |
-| **[Versie beheer](#versioning)** |  Toepassingen die geen regel matige [Afbrekings wijzigingen](durable-functions-versioning.md) ondervinden. | Eenvoudig te implementeren. |  Verbeterde grootte van de functie-app in het geheugen en het aantal functies.<br/>Code duplicatie. |
-| **[Status controle met sleuf](#status-check-with-slot)** | Een systeem dat geen langlopende Orchestrator heeft die meer dan 24 uur of veelvuldig overlappende integraties heeft. | Eenvoudige code basis.<br/>Vereist geen extra functie-app-beheer. | Vereist extra opslag account of taak hub-beheer.<br/>Er is een tijds periode vereist wanneer er geen Orchestrations worden uitgevoerd. |
-| **[Toepassings routering](#application-routing)** | Een systeem dat geen tijd punten heeft wanneer er geen Orchestrations worden uitgevoerd, zoals degenen met meer dan 24 uur of met vaak overlappende integraties. | Behandelt nieuwe versies van systemen met doorlopende integraties die wijzigingen hebben onderlopen. | Vereist een intelligente toepassings router.<br/>Kan Maxi maal het aantal functie-apps dat door uw abonnement is toegestaan (standaard 100). |
+| [Versie beheer](#versioning) |  Toepassingen die geen regel matige [Afbrekings wijzigingen](durable-functions-versioning.md) ondervinden. | Eenvoudig te implementeren. |  Verbeterde grootte van de functie-app in het geheugen en het aantal functies.<br/>Code duplicatie. |
+| [Status controle met sleuf](#status-check-with-slot) | Een systeem dat geen langlopende Orchestrations heeft die meer dan 24 uur of veelvuldig overlappende integraties bevat. | Eenvoudige code basis.<br/>Vereist geen extra functie-app-beheer. | Vereist extra opslag account of taak hub-beheer.<br/>Er is een tijds periode vereist wanneer er geen Orchestrations worden uitgevoerd. |
+| [Toepassings routering](#application-routing) | Een systeem dat geen tijd punten heeft wanneer er sprake is van niet-actieve orchestrator, zoals Peri Oden met een indeling die meer dan 24 uur of met regel matig overlappende integraties bevat. | Behandelt nieuwe versies van systemen met doorlopende integraties die wijzigingen hebben onderlopen. | Vereist een intelligente toepassings router.<br/>Kan Maxi maal het aantal functie-apps dat is toegestaan door uw abonnement. De standaard waarde is 100. |
 
 ## <a name="versioning"></a>Versiebeheer
 
@@ -38,34 +40,34 @@ Definieer nieuwe versies van uw functies en verlaat de oude versies in uw functi
 
 ![Strategie voor versie beheer](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
 
-In deze strategie moet elke functie worden gekopieerd en zijn verwijzingen naar andere functies die zijn bijgewerkt. U kunt dit vereenvoudigen door een script te schrijven. Hier volgt een voor beeld van een [project](https://github.com/TsuyoshiUshio/DurableVersioning) met een migratie script.
+In deze strategie moet elke functie worden gekopieerd en zijn verwijzingen naar andere functies moeten worden bijgewerkt. U kunt dit vereenvoudigen door een script te schrijven. Hier volgt een voor beeld van een [project](https://github.com/TsuyoshiUshio/DurableVersioning) met een migratie script.
 
 >[!NOTE]
 >Deze strategie maakt gebruik van implementatie sleuven om uitval tijd tijdens de implementatie te voor komen. Zie [Azure functions implementatie sleuven](../functions-deployment-slots.md)voor meer informatie over het maken en gebruiken van nieuwe implementatie sleuven.
 
 ## <a name="status-check-with-slot"></a>Status controle met sleuf
 
-Terwijl de huidige versie van de functie-app wordt uitgevoerd in uw productie sleuf, implementeert u de nieuwe versie van uw functie-app in uw staging-sleuf. Controleer voordat u uw productie-en staging-sleuven verwisselt of er Orchestrator-exemplaren worden uitgevoerd. Nadat alle indelings instanties zijn voltooid, kunt u de swap uitvoeren. Deze strategie werkt wanneer u voorspel bare Peri Oden hebt wanneer er geen indelings instanties in vlucht zijn. Dit is de beste benadering wanneer uw Orchestrations niet lang worden uitgevoerd en wanneer uw Orchestration-uitvoeringen niet vaak overlappen.
+Terwijl de huidige versie van de functie-app wordt uitgevoerd in uw productie sleuf, implementeert u de nieuwe versie van uw functie-app in uw staging-sleuf. Controleer voordat u uw productie-en staging-sleuven verwisselt of er exemplaren van de indeling worden uitgevoerd. Nadat alle indelings instanties zijn voltooid, kunt u de swap uitvoeren. Deze strategie werkt wanneer u voorspel bare Peri Oden hebt wanneer er geen indelings instanties in vlucht zijn. Dit is de beste benadering wanneer uw Orchestrations niet lang worden uitgevoerd en wanneer uw Orchestration-uitvoeringen niet vaak overlappen.
 
 ### <a name="function-app-configuration"></a>Configuratie van functie-app
 
-U kunt de volgende procedure gebruiken om dit scenario in te stellen:
+Gebruik de volgende procedure om dit scenario in te stellen.
 
 1. [Voeg implementatie sleuven](../functions-deployment-slots.md#add-a-slot) toe aan uw functie-app voor fase ring en productie.
 
-1. Stel voor elke sleuf de [toepassings instelling AzureWebJobsStorage](../functions-app-settings.md#azurewebjobsstorage) in op de Connection String van een gedeeld opslag account. Dit wordt gebruikt door de Azure Functions runtime. Dit account wordt gebruikt door de Azure Functions runtime en beheert de sleutels van de functie.
+1. Stel voor elke sleuf de [toepassings instelling AzureWebJobsStorage](../functions-app-settings.md#azurewebjobsstorage) in op de Connection String van een gedeeld opslag account. Dit opslag account connection string wordt gebruikt door de Azure Functions-runtime. Dit account wordt gebruikt door de Azure Functions runtime en beheert de sleutels van de functie.
 
-1. Maak voor elke sleuf een nieuwe app-instelling (bijvoorbeeld DurableManagementStorage) en stel de waarde ervan in op de connection string van verschillende opslag accounts. Deze opslag accounts worden gebruikt door de extensie Durable Functions voor [betrouw bare uitvoering](durable-functions-checkpointing-and-replay.md). Gebruik een afzonderlijk opslag account voor elke sleuf. Markeer deze instelling niet als een implementatie site-instelling.
+1. Maak voor elke sleuf een nieuwe app-instelling, bijvoorbeeld `DurableManagementStorage`. Stel de waarde ervan in op de connection string van verschillende opslag accounts. Deze opslag accounts worden gebruikt door de extensie Durable Functions voor [betrouw bare uitvoering](durable-functions-checkpointing-and-replay.md). Gebruik een afzonderlijk opslag account voor elke sleuf. Markeer deze instelling niet als een implementatie site-instelling.
 
-1. Geef in de [sectie durableTask van de host. JSON-bestand](durable-functions-bindings.md#hostjson-settings)van de functie-app azureStorageConnectionStringName op als de naam van de app-instelling die u in stap 3 hebt gemaakt.
+1. `azureStorageConnectionStringName` Geef in de [sectie durableTask van de host. JSON-bestand](durable-functions-bindings.md#hostjson-settings)van de functie de naam op van de app-instelling die u in stap 3 hebt gemaakt.
 
-In het onderstaande diagram ziet u een voor beeld van de configuratie van implementatie sleuven en opslag accounts. In dit mogelijke scenario vóór de implementatie wordt versie 2 van een functie-app uitgevoerd in de productie sleuf, terwijl versie 1 in de faserings sleuf blijft.
+In het volgende diagram ziet u de beschreven configuratie van implementatie sleuven en opslag accounts. In dit mogelijke scenario voor voor implementatie wordt versie 2 van een functie-app uitgevoerd in de productie omgeving, terwijl versie 1 in de faserings sleuf blijft.
 
-![Implementatiesite](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
+![Implementatie sleuven en opslag accounts](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
 ### <a name="hostjson-examples"></a>voor beelden van host. json
 
-De volgende JSON-fragmenten zijn voor beelden van de connection string instelling in het bestand host. json.
+De volgende JSON-fragmenten zijn voor beelden van de connection string instelling in het bestand *host. json* .
 
 #### <a name="functions-20"></a>Functies 2,0
 
@@ -121,7 +123,7 @@ Azure-pijp lijnen controleert uw functie-app voor het uitvoeren van Orchestrator
 
 Nu moet de nieuwe versie van de functie-app worden geïmplementeerd in de faserings sleuf.
 
-![Implementatiesite](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
+![Faserings sleuf](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
 
 Ten slotte wisselen de sleuven. 
 
@@ -129,17 +131,17 @@ Toepassings instellingen die niet zijn gemarkeerd als implementatie site-instell
 
 ![Implementatiesite](media/durable-functions-zero-downtime-deployment/deployment-slot-3.png)
 
-Als u hetzelfde opslag account voor beide sleuven wilt gebruiken, kunt u de namen van uw taak hubs wijzigen. In dit geval moet u de status van uw sleuven en uw apps HubName-instellingen beheren. Zie [taak hubs in Durable functions](durable-functions-task-hubs.md)voor meer informatie.
+Als u hetzelfde opslag account voor beide sleuven wilt gebruiken, kunt u de namen van uw taak hubs wijzigen. In dit geval moet u de status van uw sleuven en de HubName-instellingen van uw app beheren. Zie [taak hubs in Durable functions](durable-functions-task-hubs.md)voor meer informatie.
 
 ## <a name="application-routing"></a>Toepassings routering
 
 Deze strategie is het meest complexe. Het kan echter worden gebruikt voor functie-apps waarvoor geen tijd is tussen het uitvoeren van Orchestrations.
 
-Voor deze strategie moet u een *toepassings router* vóór uw Durable functions maken. Deze router kan worden geïmplementeerd met Durable Functions en heeft de volgende verantwoordelijkheden:
+Voor deze strategie moet u een *toepassings router* vóór uw Durable functions maken. Deze router kan worden geïmplementeerd met Durable Functions. De router is verantwoordelijk voor het volgende:
 
-* De functie-app implementeren.
+* Implementeer de functie-app.
 * De versie van Durable Functions beheren. 
-* Routering aanvragen voor het functie van apps.
+* Routerings aanvragen voor functie-apps.
 
 De eerste keer dat een Orchestrator-aanvraag wordt ontvangen, voert de router de volgende taken uit:
 
@@ -151,23 +153,23 @@ De router beheert de status van de versie van de code van uw app die wordt geïm
 
 ![Toepassings routering (de eerste keer)](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-De router stuurt implementatie-en indelings aanvragen naar de juiste functie-app op basis van het `version` dat met de aanvraag is verzonden, waarbij de patch versie wordt genegeerd.
+De router stuurt implementatie-en indelings aanvragen naar de juiste functie-app op basis van de versie die met de aanvraag is verzonden. De patch versie wordt genegeerd.
 
-Wanneer u een nieuwe versie van uw app implementeert *zonder* een belang rijke wijziging, kunt u de patch versie verhogen. De router wordt geïmplementeerd op uw bestaande functie-app en verzendt aanvragen voor de oude en nieuwe versies van de code worden doorgestuurd naar dezelfde functie-app.
+Wanneer u een nieuwe versie van uw app implementeert zonder een belang rijke wijziging, kunt u de patch versie verhogen. De router wordt geïmplementeerd in uw bestaande functie-app en verzendt aanvragen voor de oude en nieuwe versies van de code die naar dezelfde functie-app worden doorgestuurd.
 
 ![Sollicitatie routering (geen breuk wijzigen)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
 
-Wanneer u een nieuwe versie van uw app implementeert met een belang rijke wijziging, kunt u de primaire of secundaire versie verhogen. Vervolgens maakt de toepassings router een nieuwe functie-app in azure, implementeert deze en worden aanvragen voor de nieuwe versie van uw app hiernaar gerouteerd. In het onderstaande diagram wordt het uitvoeren van Orchestrations op de 1.0.1-versie van de app uitgevoerd, maar aanvragen voor de 1.1.0-versie worden doorgestuurd naar de nieuwe functie-app.
+Wanneer u een nieuwe versie van uw app implementeert met een belang rijke wijziging, kunt u de primaire of secundaire versie verhogen. Vervolgens maakt de toepassings router een nieuwe functie-app in azure, implementeert deze en worden aanvragen voor de nieuwe versie van uw app hiernaar gerouteerd. In het volgende diagram wordt het uitvoeren van Orchestrations op de 1.0.1-versie van de app actief blijven, maar aanvragen voor de 1.1.0-versie worden doorgestuurd naar de nieuwe functie-app.
 
 ![Sollicitatie routering (breuk wijzigen)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
 
-De router controleert de status van Orchestrations op de 1.0.1-versie en verwijdert apps nadat alle indelingen zijn voltooid.  
+De router controleert de status van de integraties op de 1.0.1-versie en verwijdert apps nadat alle Orchestrations zijn voltooid. 
 
 ### <a name="tracking-store-settings"></a>Opslag instellingen bijhouden
 
-Elke functie-app moet afzonderlijke plannings wachtrijen gebruiken, mogelijk in afzonderlijke opslag accounts. Als u echter wilt zoeken naar alle indelings instanties in alle versies van uw toepassing, kunt u exemplaar-en geschiedenis tabellen delen in uw functie-apps. U kunt tabellen delen door de `trackingStoreConnectionStringName` en `trackingStoreNamePrefix` in het bestand [host. json-instellingen](durable-functions-bindings.md#host-json) te configureren, zodat ze allemaal dezelfde waarden gebruiken.
+Elke functie-app moet afzonderlijke plannings wachtrijen gebruiken, mogelijk in afzonderlijke opslag accounts. Als u in alle versies van uw toepassing alle indelingen van exemplaren wilt opvragen, kunt u exemplaar-en geschiedenis tabellen delen in uw functie-apps. U kunt tabellen delen door de instellingen `trackingStoreConnectionStringName` en `trackingStoreNamePrefix` in het bestand [host. json-instellingen](durable-functions-bindings.md#host-json) te configureren, zodat ze allemaal dezelfde waarden gebruiken.
 
-[Beheer instanties in Durable functions in azure](durable-functions-instance-management.md)voor meer informatie.
+Zie [instanties beheren in Durable functions in azure](durable-functions-instance-management.md)voor meer informatie.
 
 ![Opslag instellingen bijhouden](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
 

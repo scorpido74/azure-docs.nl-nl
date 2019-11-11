@@ -9,12 +9,12 @@ ms.author: estfan
 ms.topic: article
 ms.date: 10/01/2019
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: 275d02219087d07a058f486c263d1886839dd4cf
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5b946e36c5da9f122adce1f8e3b99523a789a66f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799730"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901094"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure functions aanroepen vanuit Azure Logic Apps
 
@@ -114,7 +114,7 @@ Voordat u een Azure-functie kunt maken vanuit uw logische app met behulp van de 
 
    * Beweeg tussen de bestaande stappen in de werk stroom van uw logische app de muis aanwijzer over de pijl, selecteer het plus teken (+) en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer in het zoekvak ' Azure functions ' in als uw filter. Selecteer in de lijst acties deze actie: **een Azure-functie kiezen**
+1. Voer in het zoekvak ' Azure functions ' in als uw filter. Selecteer in de lijst acties de actie **een Azure-functie kiezen** , bijvoorbeeld:
 
    ![' Azure functions ' zoeken](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
@@ -126,24 +126,24 @@ Voordat u een Azure-functie kunt maken vanuit uw logische app met behulp van de 
 
    1. Geef in het vak **functie naam** een naam op voor de functie.
 
-   1. Voeg in het vak **code** de code toe aan de functie sjabloon, met inbegrip van de reactie en de nettolading die u wilt retour neren naar uw logische app nadat de functie is voltooid.
+   1. Voeg in het vak **code** de code toe aan de functie sjabloon, met inbegrip van de reactie en de nettolading die u wilt retour neren naar uw logische app nadat de functie is voltooid. Als u gereed bent, selecteert u **Maken**.
 
-      ![Uw functie definiëren](./media/logic-apps-azure-functions/function-definition.png)
+   Bijvoorbeeld:
 
-      In de code van de sjabloon verwijst het *`context`-object* naar het bericht dat door de logische app wordt verzonden via het veld **hoofd tekst** van de aanvraag in een latere stap. Gebruik de volgende syntaxis om de eigenschappen van het `context`-object vanuit uw functie te openen:
+   ![Uw functie definiëren](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-      `context.body.<property-name>`
+   In de code van de sjabloon verwijst het *`context`-object* naar het bericht dat door de logische app wordt verzonden via het veld **hoofd tekst** van de aanvraag in een latere stap. Gebruik de volgende syntaxis om de eigenschappen van het `context`-object vanuit uw functie te openen:
 
-      Als u bijvoorbeeld wilt verwijzen naar de eigenschap `content` binnen het object `context`, gebruikt u de volgende syntaxis:
+   `context.body.<property-name>`
 
-      `context.body.content`
+   Als u bijvoorbeeld wilt verwijzen naar de eigenschap `content` binnen het object `context`, gebruikt u de volgende syntaxis:
 
-      De sjabloon code bevat ook een `input` variabele, die de waarde van de para meter `data` opslaat, zodat uw functie bewerkingen op die waarde kan uitvoeren. In Java script-functies is de variabele `data` ook een snelkoppeling voor `context.body`.
+   `context.body.content`
 
-      > [!NOTE]
-      > De eigenschap `body` is hier van toepassing op het `context`-object en is niet hetzelfde als het **hoofdtekst** token van de uitvoer van een actie. Dit kan ook worden door gegeven aan de functie.
+   De sjabloon code bevat ook een `input` variabele, die de waarde van de para meter `data` opslaat, zodat uw functie bewerkingen op die waarde kan uitvoeren. In Java script-functies is de variabele `data` ook een snelkoppeling voor `context.body`.
 
-   1. Als u gereed bent, selecteert u **Maken**.
+   > [!NOTE]
+   > De eigenschap `body` is hier van toepassing op het `context`-object en is niet hetzelfde als het **hoofdtekst** token van de uitvoer van een actie. Dit kan ook worden door gegeven aan de functie.
 
 1. Geef in het vak **hoofd tekst** van de aanvraag de invoer van uw functie op die moet worden opgemaakt als een JavaScript object NOTATION (JSON)-object.
 
@@ -167,7 +167,7 @@ Als u bestaande Azure-functies wilt aanroepen vanuit uw Logic apps, kunt u Azure
 
 1. Selecteer **nieuwe stap**onder de stap waar u de functie wilt toevoegen.
 
-1. Voer onder **Kies een actie**in het zoekvak ' Azure functions ' in als uw filter. Selecteer in de lijst acties deze actie: **een Azure-functie kiezen**
+1. Voer onder **Kies een actie**in het zoekvak ' Azure functions ' in als uw filter. Selecteer in de lijst acties de actie **een Azure-functie kiezen** .
 
    ![' Azure functions ' zoeken](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 

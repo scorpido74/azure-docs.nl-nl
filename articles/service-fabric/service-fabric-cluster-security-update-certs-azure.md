@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9c14afb22d95493deaf3552cb8c7392c3fc5a679
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a993c71e362a61b6861e001dfb5d6eca24873293
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934025"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903277"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Certificaten voor een Service Fabric cluster in azure toevoegen of verwijderen
 Het is raadzaam om vertrouwd te raken met de manier waarop Service Fabric X. 509-certificaten gebruikt en dat u vertrouwd bent met de [beveiligings scenario's](service-fabric-cluster-security.md)voor het cluster. Voordat u verder gaat, moet u weten wat een cluster certificaat is en wat wordt gebruikt voor.
 
-De standaard instelling voor het laden van het certificaat van de SDK van Azure service fabrics is het implementeren en gebruiken van een gedefinieerd certificaat met een verlopende datum die het verst in de toekomst ligt. ongeacht de definitie van de primaire of secundaire configuratie. Terugvallen op het klassieke gedrag is een niet-aanbevolen geavanceerde actie. hiervoor moet de waarde van de para meter ' UseSecondaryIfNewer ' worden ingesteld op False in uw infra structuur. code configuratie.
+De standaard methode voor het laden van het certificaat van de SDK van Azure service fabrics is het implementeren en gebruiken van het gedefinieerde certificaat met de verloop datum die het verst in de toekomst ligt. ongeacht de definitie van de primaire of secundaire configuratie. Terugvallen op het klassieke gedrag is een niet-aanbevolen geavanceerde actie. hiervoor moet de waarde van de para meter "UseSecondaryIfNewer" worden ingesteld op False binnen uw `Fabric.Code` configuratie.
 
 Met Service Fabric kunt u twee cluster certificaten, een primaire en een secundaire, opgeven wanneer u certificaat beveiliging configureert tijdens het maken van het cluster, naast client certificaten. Raadpleeg het [maken van een Azure-cluster via de portal](service-fabric-cluster-creation-via-portal.md) of [het maken van een Azure-cluster via Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) voor meer informatie over het instellen van de clusters tijdens het maken van een tijd. Als u per keer een cluster certificaat opgeeft, wordt dit gebruikt als het primaire certificaat. Nadat het cluster is gemaakt, kunt u een nieuw certificaat toevoegen als secundair.
 
@@ -287,6 +287,10 @@ u kunt een wille keurig aantal client certificaten opgeven. Elke toevoeging/verw
 ### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Client certificaten verwijderen: beheerder of alleen-lezen via de portal
 
 Als u een secundair certificaat wilt verwijderen dat wordt gebruikt voor cluster beveiliging, gaat u naar de sectie Beveiliging en selecteert u de optie verwijderen in het context menu van het specifieke certificaat.
+
+## <a name="adding-application-certificates-to-a-virtual-machine-scale-set"></a>Toepassings certificaten toevoegen aan een schaalset voor virtuele machines
+
+Zie [Dit Power shell-voorbeeld script](scripts/service-fabric-powershell-add-application-certificate.md)voor het implementeren van een certificaat dat u voor uw toepassingen gebruikt voor uw cluster.
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees deze artikelen voor meer informatie over Cluster beheer:

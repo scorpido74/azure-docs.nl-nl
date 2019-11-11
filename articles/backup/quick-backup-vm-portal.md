@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 09154c68ab5cb0c3db3cd3325a4bf37fa33c1144
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: fb6a1022308ee26aa8a4f2ac39c58fce26243419
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747062"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903580"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Een back-up van een virtuele machine maken in Azure
 
@@ -26,7 +26,7 @@ Deze quickstart is bedoeld voor een back-up van een bestaande VM in Azure. Als u
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de Azure Portal op <https://portal.azure.com.>
+Meld u aan bij de Azure Portal op <https://portal.azure.com>
 
 ## <a name="select-a-vm-to-back-up"></a>VM selecteren waarvan u een back-up wilt maken
 

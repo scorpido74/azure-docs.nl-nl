@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: 88a914a2a4d3d62918b01674d6d21f2f011e2c2e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 049b09f7927da2cc841130a0adeaa90768037db8
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834303"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903213"
 ---
 # <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services agent-back-ups beheren met behulp van de Azure Backup-Service
 
@@ -62,7 +62,7 @@ Maak als volgt een beleid:
             -Back-ups die zijn gemaakt op zaterdag in de afgelopen week van de maand om middernacht en 6:00 uur, worden twaalf maanden bewaard.
             -Back-ups die zijn gemaakt op een zaterdag in de afgelopen week van maart worden tien jaar bewaard.
 
-           ![Retention example](./media/backup-configure-vault/retention-example.png)
+    ![Voor beeld van Bewaar periode](./media/backup-configure-vault/retention-example.png)
 
 11. In **eerste back-uptype kiezen** beslist u of u de eerste back-up via het netwerk wilt maken of offline back-ups wilt gebruiken (zie dit [artikel](backup-azure-backup-import-export.md)voor meer informatie over offline back-up). Als u de eerste back-up via het netwerk wilt maken, selecteert u **automatisch via het netwerk** en klikt u op **volgende**.
 

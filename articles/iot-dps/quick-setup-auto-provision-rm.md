@@ -1,22 +1,22 @@
 ---
-title: Apparaatinrichting instellen met een Azure Resource Manager-sjabloon | Microsoft Docs
+title: 'Snelstartgids: inrichten van apparaten instellen met behulp van een Azure Resource Manager sjabloon'
 description: Azure-snelstart - Azure IoT Hub Device Provisioning-service instellen met een sjabloon
 author: wesmc7777
 ms.author: wesmc
-ms.date: 06/18/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3360bfa7eed15f72fb78f698e837d887e9c8aa85
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: fdc75424c5c99e80c13ac086229da93411e3ce83
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126474"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903369"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>IoT Hub Device Provisioning-service instellen met een Azure Resource Manager-sjabloon
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Snelstartgids: de IoT Hub Device Provisioning Service instellen met een Azure Resource Manager sjabloon
 
 U kunt [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) gebruiken voor het programmatisch instellen van de benodigde Azure-cloudresources voor het inrichten van uw apparaten. Deze stappen laten zien hoe u een IoT-hub en een nieuwe IoT Hub Device Provisioning-service maakt en deze twee services aan elkaar koppelt met een Azure Resource Manager-sjabloon. Deze snelstart maakt gebruik van [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) voor het uitvoeren van de benodigde programmatische stappen voor het maken van een resourcegroep en het implementeren van de sjabloon, maar u kunt ook gewoon [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [PowerShell ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), .NET, ruby of andere programmeertalen gebruiken om deze stappen uit te voeren en de sjabloon te implementeren. 
 
@@ -31,7 +31,7 @@ U kunt [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-
 
 Meld u aan bij uw Azure-account en selecteer uw abonnement.
 
-1. Voer bij de opdrachtprompt deze [aanmeldingsopdracht][lnk-login-command] uit:
+1. Voer de volgende [opdracht][lnk-login-command]uit vanaf de opdracht prompt:
     
     ```azurecli
     az login
@@ -51,7 +51,7 @@ Meld u aan bij uw Azure-account en selecteer uw abonnement.
     az account set --subscription {your subscription name or id}
     ```
 
-3. Wanneer u Azure-cloudresources zoals IoT-hubs maakt en services inricht, groepeert u deze in een resourcegroep. Gebruik een bestaande resourcegroep of voer de volgende [opdracht voor het maken van een resourcegroep][lnk-az-resource-command] uit:
+3. Wanneer u Azure-cloudresources zoals IoT-hubs maakt en services inricht, groepeert u deze in een resourcegroep. Gebruik een bestaande resource groep of voer de volgende opdracht uit [om een resource groep te maken][lnk-az-resource-command]:
     
     ```azurecli
      az group create --name {your resource group name} --location westus
@@ -321,7 +321,7 @@ Met de volgende Azure CLI-opdrachten kunt u de sjablonen implementeren en de imp
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Andere Quick Starts in deze verzameling zijn op deze Quick Start gebaseerd. Als u van plan bent om door te gaan met andere snelstartgidsen of met de zelfstudies, verwijdert u de resources die u in deze snelstartgids hebt gemaakt niet. Als u niet van plan bent om door te gaan, kunt u Azure CLI gebruiken voor het [verwijderen van een afzonderlijke resource][lnk-az-resource-command], zoals een IoT-hub of een inrichtingsservice, of voor het verwijderen van een resourcegroep en alle bijbehorende resources.
+Andere Quick Starts in deze verzameling zijn op deze Quick Start gebaseerd. Als u van plan bent om door te gaan met andere snelstartgidsen of met de zelfstudies, verwijdert u de resources die u in deze snelstartgids hebt gemaakt niet. Als u niet wilt door gaan, kunt u de Azure CLI gebruiken om [een afzonderlijke resource te verwijderen][lnk-az-resource-command], zoals een IOT-hub of een inrichtings service, of om een resource groep en alle bijbehorende resources te verwijderen.
 
 Voer de volgende opdracht uit voor het verwijderen van een inrichtingsservice:
 

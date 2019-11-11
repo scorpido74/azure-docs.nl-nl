@@ -9,33 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 227efcdbcb7d8e776dd77b38c5d1dedd54d71b6b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d3f8696388a33a8ea112aae438c6bbe9af520c61
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500319"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904277"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Een nieuwe LUIS-app maken in de LUIS-Portal
-Er zijn een aantal manieren om een LUIS-app te maken. U kunt een LUIS-app maken in de [Luis](https://www.luis.ai) -portal of via de Luis-ontwerp- [api's](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
+Er zijn een aantal manieren om een LUIS-app te maken. U kunt een LUIS-app maken in de LUIS-portal of via de LUIS-ontwerp- [api's](developer-reference-resource.md).
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="using-the-luis-portal"></a>De LUIS-Portal gebruiken
 
-U kunt op verschillende manieren een nieuwe app maken in de LUIS-portal:
+U kunt op verschillende manieren een nieuwe app maken in de preview-portal:
 
 * Begin met een lege app en maak intents, uitingen en entiteiten.
 * Begin met een lege app en voeg een [vooraf gebouwd domein](luis-how-to-use-prebuilt-domains.md)toe.
-* Importeer een LUIS-app uit een JSON-bestand dat al de intenties, uitingen en entiteiten bevat.
+* Importeer een LUIS-app uit een `.lu`-of `.json`-bestand dat al de intenties, uitingen en entiteiten bevat.
 
 ## <a name="using-the-authoring-apis"></a>De ontwerp-Api's gebruiken
 U kunt op een aantal manieren een nieuwe app maken met behulp van de ontwerp-Api's:
 
-* [Begin](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) met een lege app en maak intents, uitingen en entiteiten.
-* [Begin](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5) met een vooraf gebouwd domein.  
+* [Toepassing toevoegen](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f) : begin met een lege app en maak intents, uitingen en entiteiten.
+* [Vooraf gebouwde toepassing toevoegen](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/59104e515aca2f0b48c76be5) : begin met een vooraf gebouwd domein, met inbegrip van intenties, uitingen en entiteiten.  
 
 
 <a name="export-app"></a>
@@ -47,51 +47,36 @@ U kunt op een aantal manieren een nieuwe app maken met behulp van de ontwerp-Api
 
 ## <a name="create-new-app-in-luis"></a>Nieuwe app maken in LUIS
 
-1. Selecteer op **de pagina mijn apps** **+ maken**.
+1. Selecteer uw abonnement op **mijn apps** pagina en ontwerp de resource en vervolgens **+ maken**. Als u een gratis proef versie gebruikt, leert u hoe u [een ontwerp bron maakt](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
 
-    ![Lijst met apps van LUIS](./media/luis-create-new-app/apps-list.png)
+    ![Lijst met apps van LUIS](./media/create-app-in-portal.png)
 
 
-2. Geef in het dialoog venster de naam van de toepassing "TravelAgent".
+1. Voer in het dialoog venster de naam van uw toepassing in, bijvoorbeeld `Pizza Tutorial`.
 
-    ![Dialoog venster nieuwe app maken](./media/luis-create-new-app/create-app.png)
+    ![Dialoog venster nieuwe app maken](./media/create-pizza-tutorial-app-in-portal.png)
 
-3. Kies uw toepassings cultuur (voor de TravelAgent-app, Kies Engels) en selecteer vervolgens **gereed**. 
+1. Kies uw toepassings cultuur en selecteer vervolgens **gereed**. De beschrijving en Voorspellings bron zijn op dit moment optioneel. U kunt op elk gewenst moment instellen in het gedeelte **beheren** van de portal.
 
     > [!NOTE]
     > De cultuur kan niet worden gewijzigd nadat de toepassing is gemaakt. 
 
-## <a name="import-an-app-from-file"></a>Een app importeren uit een bestand
+    Nadat de app is gemaakt, wordt in de LUIS-Portal de lijst met **intenties** weer gegeven met de `None` opzet die u al voor u hebt gemaakt. U hebt nu een lege app. 
+    
+    > [!div class="mx-imgBorder"]
+    > ![-intentie lijst met geen intentie gemaakt zonder voor beeld uitingen.](media/pizza-tutorial-new-app-empty-intent-list.png)
 
-1. Selecteer **nieuwe app importeren**op **de pagina mijn apps** .
-1. Selecteer in het pop-updialoogvenster een geldig JSON-bestand voor de app en selecteer vervolgens **gereed**.
+## <a name="other-actions-available"></a>Andere acties beschikbaar
 
-### <a name="import-errors"></a>Fouten importeren
+De context werkbalk bevat andere acties:
 
-Mogelijke fouten zijn: 
-
-* Er bestaat al een app met die naam. U kunt dit probleem verhelpen door de app opnieuw te importeren en de **optionele naam** in te stellen op een nieuwe naam. 
-
-## <a name="export-app-for-backup"></a>App voor back-up exporteren
-
-1. Selecteer op **de pagina mijn apps** **exporteren**.
-1. Selecteer **exporteren als JSON**. Uw browser downloadt de actieve versie van de app.
-1. Voeg dit bestand toe aan het back-upsysteem om het model te archiveren.
-
-## <a name="export-app-for-containers"></a>App voor containers exporteren
-
-1. Selecteer op **de pagina mijn apps** **exporteren**.
-1. Selecteer **exporteren als container** en selecteer vervolgens welke gepubliceerde sleuf (productie of fase) u wilt exporteren.
-1. Gebruik dit bestand met uw [Luis-container](luis-container-howto.md). 
-
-    Als u geïnteresseerd bent in het exporteren van een getraind maar nog niet gepubliceerd model dat u wilt gebruiken met de LUIS-container, gaat u naar de pagina **versies** en exporteert u daar naartoe. 
-
-## <a name="delete-app"></a>App verwijderen
-
-1. Selecteer op de pagina **mijn apps** de drie puntjes (...) aan het einde van de rij van de app.
-1. Selecteer **verwijderen** in het menu.
-1. Selecteer **OK** in het bevestigings venster.
+* Naam van app wijzigen
+* Importeren uit een bestand met behulp van `.lu` of `.json`
+* App exporteren als `.lu` (voor [LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)), `.json`of `.zip` (voor [Luis-container](luis-container-howto.md))
+* Container-eindpunt logboeken importeren om eind punt uitingen te controleren
+* Eindpunt logboeken exporteren als `.csv`voor offline analyse
+* App verwijderen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Uw eerste taak in de app is om [intenties toe te voegen](luis-how-to-add-intents.md).
+Als het ontwerp van uw app de detectie van de opzet bevat, [maakt u nieuwe intenties](luis-how-to-add-intents.md)en voegt u bijvoorbeeld uitingen toe. Als het ontwerp van uw app alleen gegevens extractie is, voegt u bijvoorbeeld uitingen toe aan de geen intentie, vervolgens [maakt u entiteiten](luis-how-to-add-example-utterances.md)en labelt u het voor beeld uitingen met deze entiteiten. 

@@ -1,6 +1,6 @@
 ---
-title: Aangepaste waarschuwingen voor Azure Security Center voor IoT maken | Microsoft Docs
-description: Aangepaste apparaatstuurprogramma's voor Azure Security Center voor IoT maken en toewijzen.
+title: 'Snelstartgids: aangepaste waarschuwingen voor Azure Security Center voor IoT maken'
+description: In deze Quick Start kunt u aangepaste waarschuwingen voor Azure Security Center voor IoT maken en toewijzen.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: ed10cbf89f878f8d27b43476d26ac93dd373ed66
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eca5d69efb04cf8210b0b2aa502bcee5cd4f5264
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597004"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904125"
 ---
-# <a name="quickstart-create-custom-alerts"></a>Quickstart: Aangepaste waarschuwingen maken
+# <a name="quickstart-create-custom-alerts"></a>Snelstartgids: aangepaste waarschuwingen maken
 
 
 Met aangepaste beveiligings groepen en waarschuwingen kunt u optimaal profiteren van de end-to-end beveiligings informatie en categorische op het apparaat om te zorgen voor een betere beveiliging van uw IoT-oplossing. 
@@ -82,7 +82,7 @@ Gebruik beveiligings groepen om uw apparaten in logische categorieën te groeper
 De volgende tabel bevat een overzicht van de waarschuwingen die beschikbaar zijn voor aanpassing.
 
 
-| Severity | Name | Gegevensbron | Description | Voorgestelde herstel|
+| Severity | Naam | Gegevens bron | Beschrijving | Voorgestelde herstel|
 |---|---|---|---|---|
 | Laag      | Aangepaste waarschuwing: aantal berichten van de Cloud naar het apparaat in het AMQP-protocol valt buiten het toegestane bereik          | IoT Hub     | Het aantal Cloud-naar-apparaat-berichten (AMQP-Protocol) binnen een bepaald tijd venster ligt buiten het huidige geconfigureerde en toegestane bereik.||
 | Laag      | Aangepaste waarschuwing: aantal afgewezen Cloud-naar-apparaat-berichten in het AMQP-protocol valt buiten het toegestane bereik | IoT Hub     | Het aantal Cloud-naar-apparaat-berichten (AMQP-Protocol) dat door het apparaat is afgewezen, binnen een bepaald tijd venster valt buiten het huidige geconfigureerde en toegestane bereik.||

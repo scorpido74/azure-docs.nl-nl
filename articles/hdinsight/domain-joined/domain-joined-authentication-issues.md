@@ -1,18 +1,18 @@
 ---
 title: Verificatie problemen in azure HDInsight
 description: Verificatie problemen in azure HDInsight
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/09/2019
-ms.openlocfilehash: 3d2ba5965fef19a36faa8b9bbef235fd4117c20f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 11/08/2019
+ms.openlocfilehash: 17bc9f1ea93b0afa4f53443a53d294acb9e94b2e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71071943"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901405"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Verificatie problemen in azure HDInsight
 
@@ -34,11 +34,11 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 ### <a name="cause"></a>Oorzaak
 
-Azure AD-fout code 50126 betekent `AllowCloudPasswordValidation` dat het beleid niet is ingesteld door de Tenant.
+Azure AD-fout code 50126 betekent dat het `AllowCloudPasswordValidation` beleid niet is ingesteld door de Tenant.
 
 ### <a name="resolution"></a>Oplossing
 
-De beheerder van de Azure AD-Tenant moet Azure AD in staat stellen wacht woord-hashes te gebruiken voor gebruikers met een back-up van ADFS.  Pas de `AllowCloudPasswordValidationPolicy` weer gegeven in het artikel [Enterprise Security package in HDInsight gebruiken](../domain-joined/apache-domain-joined-architecture.md).
+De beheerder van de Azure AD-Tenant moet Azure AD in staat stellen wacht woord-hashes te gebruiken voor gebruikers met een back-up van ADFS.  Pas de `AllowCloudPasswordValidationPolicy` toe, zoals wordt weer gegeven in het artikel [Enterprise Security package gebruiken in HDInsight](../domain-joined/apache-domain-joined-architecture.md).
 
 ---
 
@@ -106,11 +106,11 @@ Wijzig het wacht woord in de Azure Portal (op uw on-premises systeem) en wacht 3
 
 ### <a name="issue"></a>Probleem
 
-Fout bericht `interaction_required`ontvangen.
+Er wordt een fout bericht weer gegeven `interaction_required`.
 
 ### <a name="cause"></a>Oorzaak
 
-Het beleid voor voorwaardelijke toegang of MFA wordt toegepast op de gebruiker. Omdat interactieve verificatie nog niet wordt ondersteund, moet de gebruiker of het cluster worden uitgesloten van MFA/voorwaardelijke toegang. Als u ervoor kiest het cluster op te heffen (op IP-adres gebaseerd uitsluitings beleid), `ServiceEndpoints` moet u ervoor zorgen dat de AD voor dat vnet is ingeschakeld.
+Het beleid voor voorwaardelijke toegang of MFA wordt toegepast op de gebruiker. Omdat interactieve verificatie nog niet wordt ondersteund, moet de gebruiker of het cluster worden uitgesloten van MFA/voorwaardelijke toegang. Als u ervoor kiest het cluster op te heffen (op IP-adres gebaseerd uitsluitings beleid), moet u ervoor zorgen dat de AD-`ServiceEndpoints` zijn ingeschakeld voor dat vnet.
 
 ### <a name="resolution"></a>Oplossing
 
@@ -148,9 +148,9 @@ Hangt.
 
 ### <a name="resolution"></a>Oplossing
 
-Om kinit te laten slagen, moet u weten dat `sAMAccountName` u uw (dit is de korte account naam zonder de realm). `sAMAccountName`is doorgaans het account voorvoegsel (zoals Bob in `bob@contoso.com`). Voor sommige gebruikers kan het verschillend zijn. U hebt de mogelijkheid om door de map te bladeren/te zoeken om `sAMAccountName`uw te leren.
+Om kinit te laten slagen, moet u weten wat uw `sAMAccountName` zijn (dit is de korte account naam zonder de realm). `sAMAccountName` is doorgaans het account voorvoegsel (bijvoorbeeld Bob in `bob@contoso.com`). Voor sommige gebruikers kan het verschillend zijn. U hebt de mogelijkheid om door de map te bladeren/te zoeken om uw `sAMAccountName`te leren.
 
-Manieren om te `sAMAccountName`zoeken:
+Manieren om `sAMAccountName`te vinden:
 
 * Als u zich kunt aanmelden bij Ambari met behulp van de lokale Ambari-beheerder, kijkt u naar de lijst met gebruikers.
 
@@ -158,7 +158,7 @@ Manieren om te `sAMAccountName`zoeken:
 
 * Vanuit het hoofd knooppunt kunt u SAMBA-opdrachten gebruiken om te zoeken. Hiervoor is een geldige Kerberos-sessie (geslaagde kinit) vereist. net ADS Search (userPrincipalName = Bob *) "
 
-    De zoek-en blader resultaten bevatten het `sAMAccountName` kenmerk. U kunt ook andere kenmerken zoals `pwdLastSet`, `badPasswordTime`, `userPrincipalName` enzovoort, bekijken om te zien of deze eigenschappen overeenkomen met wat u verwacht.
+    De zoek-en blader resultaten bevatten het `sAMAccountName` kenmerk. U kunt ook andere kenmerken, zoals `pwdLastSet`, `badPasswordTime`, `userPrincipalName` enzovoort, bekijken om te zien of deze eigenschappen overeenkomen met wat u verwacht.
 
 ---
 
@@ -174,7 +174,7 @@ De gebruikers naam of het wacht woord is onjuist.
 
 ### <a name="resolution"></a>Oplossing
 
-Controleer uw gebruikers naam en wacht woord. Controleer ook of andere eigenschappen hierboven worden beschreven. Als u uitgebreide fout opsporing wilt inschakelen `export KRB5_TRACE=/tmp/krb.log` , moet u eerst vanuit de sessie uitvoeren voordat u kinit probeert.
+Controleer uw gebruikers naam en wacht woord. Controleer ook of andere eigenschappen hierboven worden beschreven. Als u uitgebreide fout opsporing wilt inschakelen, voert u `export KRB5_TRACE=/tmp/krb.log` uit vanuit de sessie voordat u kinit probeert.
 
 ---
 
@@ -194,12 +194,30 @@ Zorg ervoor dat u bij de Ambari-Portal hebt aangemeld met de gebruikers naam waa
 
 ---
 
+## <a name="error-fetching-access-token"></a>Fout bij het ophalen van het toegangs token
+
+### <a name="issue"></a>Probleem
+
+Gebruiker ontvangt fout bericht `Error fetching access token`.
+
+### <a name="cause"></a>Oorzaak
+
+Deze fout treedt af en toe op wanneer gebruikers toegang proberen te krijgen tot de ADLS Gen2 met behulp van Acl's en het Kerberos-token is verlopen.
+
+### <a name="resolution"></a>Oplossing
+
+* Voor Azure Data Lake Storage Gen1 moet u de cache van de browser opschonen en opnieuw aanmelden bij Ambari.
+
+* Voor Azure Data Lake Storage Gen2 voert u `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` uit voor de gebruiker waarbij de gebruiker zich probeert aan te melden.
+
+---
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. Toegang tot abonnementsbeheer en factuurbeheer is in uw Microsoft Azure-abonnement inbegrepen, en technische ondersteuning wordt verstrekt via een van de [Azure-ondersteuningsplannen](https://azure.microsoft.com/support/plans/).

@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: d926f1c286c4288784d429f13b22436d7c8ae7e5
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 8ebcc863c1812081e6198ff9c684934642e1dc41
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73849274"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904557"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Quick Start: verzend telemetrie van een apparaat naar een IoT-hub en bewaak deze met de Azure CLI
 
@@ -74,7 +74,7 @@ In deze sectie gebruikt u de Azure CLI voor het maken van een resource groep en 
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. Voer de opdracht [AZ IOT hub Create](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) uit om een IOT-hub te maken.
+1. Voer de opdracht [AZ IOT hub Create](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) uit om een IOT-hub te maken. Het kan enkele minuten duren om een IoT-hub te maken. 
 
     *YourIotHubName*. vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub. De naam van een IoT-hub moet globaal uniek zijn in Azure. Deze tijdelijke aanduiding wordt gebruikt in de rest van deze Quick Start om de naam van uw IoT-hub aan te geven.
 
@@ -141,15 +141,15 @@ In deze sectie gebruikt u de tweede CLI-sessie om een bericht te verzenden naar 
 
     ![Cloud-naar-apparaat-bericht Cloud Shell](media/quickstart-send-telemetry-cli/cloud-shell-receive-message.png)
 
-1. Nadat u het bericht hebt bekeken, sluit u beide CLI-sessies. 
+1. Nadat u het bericht hebt bekeken, sluit u de tweede CLI-sessie. Zorg ervoor dat de eerste CLI-sessie geopend is. U kunt deze gebruiken om resources in een latere stap op te schonen.
 
 ## <a name="view-messaging-metrics-in-the-portal"></a>Metrische bericht gegevens weer geven in de portal
 Met de Azure Portal kunt u alle aspecten van uw IoT Hub en apparaten beheren. In een typische IoT Hub toepassing die telemetrie van apparaten opneemt, wilt u mogelijk apparaten bewaken of metrische gegevens weer geven op telemetrie van het apparaat. 
 
 Voor het visualiseren van metrische gegevens voor berichten in de Azure Portal:
-1. Selecteer **alle resources**op de **Start** pagina in de portal. 
+1. Selecteer **alle resources**in het navigatie menu links op de portal. Hiermee worden alle resources in uw abonnement weer gegeven, met inbegrip van de IoT-hub die u hebt gemaakt. 
 
-1. Selecteer in de lijst met resource groepen de IoT-hub die u hebt gemaakt. 
+1. Klik op de koppeling op de IoT-hub die u hebt gemaakt. In de portal wordt de overzichts pagina voor de hub weer gegeven.
 
 1. Selecteer **metrische gegevens** in het linkerdeel venster van uw IOT hub. 
 

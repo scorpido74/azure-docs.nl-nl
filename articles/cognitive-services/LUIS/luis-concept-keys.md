@@ -1,5 +1,5 @@
 ---
-title: Ontwerpen en runtime-sleutels-LUIS
+title: Ontwerpen en runtime sleutels gebruiken met LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS maakt gebruik van twee sleutels, de ontwerp sleutel voor het maken van uw model en de runtime sleutel voor het uitvoeren van query's op het Voorspellings eindpunt met gebruiker uitingen.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 973a8dd56437506d907159f212164ff147ba975c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b58aa97dbb97bade87a38456c58df8f93a29946f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487492"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901706"
 ---
 # <a name="authoring-and-runtime-keys"></a>Ontwerp- en runtimesleutels
 

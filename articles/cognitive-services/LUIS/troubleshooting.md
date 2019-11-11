@@ -9,20 +9,20 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 6a17993d7bc4ff54b3d55fa5b5bb141463896e32
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5824b835b3debb33386c0d1f86581c6bb91b14ae
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488695"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904197"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Veelgestelde vragen over Language Understanding
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over Language Understanding (LUIS).
 
-## <a name="whats-new"></a>Nieuwe functies
+## <a name="whats-new"></a>Wat is er nieuw
 
 Meer [informatie](whats-new.md) over wat er nieuw is in language Understanding.
 
@@ -74,7 +74,7 @@ In de LUIS-Portal kunt u tekst labelen voor de exacte entiteit die u wilt uitpak
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Ik heb geprobeerd een app of versie bestand te importeren, maar ik kreeg een fout melding. Wat is er gebeurd? 
 
-Lees meer over fouten bij het [importeren van versies](luis-how-to-manage-versions.md#import-errors) en fouten bij het [importeren van apps](luis-how-to-start-new-app.md#import-errors).
+Meer informatie over [fouten](luis-how-to-manage-versions.md#import-errors)bij het importeren van versies.
 
 <a name="luis-collaborating"></a>
 
@@ -264,7 +264,7 @@ Uw ontwerp/starter sleutel is alleen toegestaan 1000-eind punt query's per maand
 
 ## <a name="bots"></a>Bots
 
-### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>Mijn LUIS-bot werkt niet. Wat kan ik doen?
+### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>Mijn LUIS-bot werkt niet. Wat moet ik doen?
 
 De eerste fout is het isoleren als het probleem betrekking heeft op LUIS of zich buiten de LUIS-middleware bevindt. 
 

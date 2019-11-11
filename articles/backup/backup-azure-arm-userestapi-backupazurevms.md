@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 901ae66281e1d68474304a4f5456a0163fcb6f2a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 39ab0caa31f79aca41f2c40a3220412e0683ee22
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747607"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903163"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Maak een back-up van een Azure-VM met behulp van Azure Backup via REST API
 
@@ -168,7 +168,7 @@ In het voor beeld worden de bovenstaande waarden vertaald naar:
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Beveiliging inschakelen voor de Azure VM
 
-Selecteer het beleid dat u wilt beveiligen nadat de relevante VM in de cache is opgeslagen en geïdentificeerd. Raadpleeg [API voor lijst beleid](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)voor meer informatie over bestaande beleids regels in de kluis. Selecteer vervolgens het [relevante beleid](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) door te verwijzen naar de naam van het beleid. Zie [zelf studie beleid maken](backup-azure-arm-userestapi-createorupdatepolicy.md)voor het maken van beleid. ' Defaultpolicy bij ' is geselecteerd in het onderstaande voor beeld.
+Selecteer het beleid dat u wilt beveiligen nadat de relevante VM in de cache is opgeslagen en geïdentificeerd. Raadpleeg [API voor lijst beleid](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)voor meer informatie over bestaande beleids regels in de kluis. Selecteer vervolgens het [relevante beleid](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/get) door te verwijzen naar de naam van het beleid. Zie [zelf studie beleid maken](backup-azure-arm-userestapi-createorupdatepolicy.md)voor het maken van beleid. ' Defaultpolicy bij ' is geselecteerd in het onderstaande voor beeld.
 
 Het inschakelen van beveiliging is een asynchrone *put* -bewerking die een ' beveiligd item ' maakt.
 

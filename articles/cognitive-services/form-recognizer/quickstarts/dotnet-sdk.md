@@ -1,6 +1,6 @@
 ---
 title: 'Snelstartgids: client bibliotheek voor formulier herkenning voor .NET | Microsoft Docs'
-description: Aan de slag met de Form Recognizer-client bibliotheek voor .NET.
+description: Aan de slag met de Form Recognizer-client bibliotheek voor .NET voor het trainen, uitpakken, analyseren en ophalen van gestructureerde gegevens uitvoer.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: e4e65f38f71b458c34a6747c434ebcd1d8a1b350
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d360939a0196d7e5dc651ecf9a01ef5cbd2f689
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931572"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904610"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Snelstartgids: client bibliotheek voor formulier herkenning voor .NET
 
@@ -28,7 +28,7 @@ Gebruik de Form Recognizer-client bibliotheek voor .NET voor het volgende:
 * [Een lijst met aangepaste modellen ophalen](#get-a-list-of-custom-models)
 * [Een aangepast model verwijderen](#delete-a-custom-model)
 
-[Referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer)van de bibliotheek  | -[pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
+[Referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) van de bibliotheek | [pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -174,7 +174,7 @@ Als u het aangepaste model uit uw account wilt verwijderen, gebruikt u de volgen
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit door de `dotnet run`-opdracht van de toepassingsmap aan te roepen.
+Voer de toepassing uit door de `dotnet run` opdracht vanuit de toepassingsmap aan te roepen.
 
 ```console
 dotnet run
@@ -197,4 +197,4 @@ In deze Quick Start hebt u de formulier Recognizer .NET-client bibliotheek gebru
 >[Een set trainings gegevens bouwen](../build-training-data-set.md)
 
 * [Wat is formulier herkenner?](../overview.md)
-* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer).
+* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer).

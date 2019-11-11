@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 09fc0f7cee38f799322a1914848a5176e9a223a1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 376b7b8a734e5064713237e9250542a4c5cc18f1
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692785"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903078"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Trans acties in SQL Data Warehouse gebruiken
 Tips voor het implementeren van trans acties in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
@@ -78,7 +78,7 @@ De limiet voor de transactie grootte wordt toegepast per trans actie of bewerkin
 Als u de hoeveelheid gegevens die naar het logboek moet worden geschreven, wilt optimaliseren en minimaliseren, raadpleegt u het artikel [Best practices voor trans acties](sql-data-warehouse-develop-best-practices-transactions.md) .
 
 > [!WARNING]
-> De maximale transactie grootte kan alleen worden bereikt voor HASH-of ROUND_ROBIN-gedistribueerde tabellen waarin de sprei ding van de gegevens zich ook bevindt. Als de trans actie gegevens op een gescheefe manier naar de distributies schrijft, wordt de limiet waarschijnlijk bereikt vóór de maximale transactie grootte.
+> De maximale transactie grootte kan alleen worden bereikt voor HASH-of ROUND_ROBIN gedistribueerde tabellen waarin de sprei ding van de gegevens zich ook bevindt. Als de trans actie gegevens op een gescheefe manier naar de distributies schrijft, wordt de limiet waarschijnlijk bereikt vóór de maximale transactie grootte.
 > <!--REPLICATED_TABLE-->
 > 
 > 
@@ -87,7 +87,7 @@ Als u de hoeveelheid gegevens die naar het logboek moet worden geschreven, wilt 
 SQL Data Warehouse maakt gebruik van de functie XACT_STATE () om een mislukte trans actie te rapporteren met de waarde-2. Deze waarde betekent dat de trans actie is mislukt en alleen is gemarkeerd voor terugdraaien.
 
 > [!NOTE]
-> Het gebruik van-2 door de functie XACT_STATE om een mislukte trans actie aan te duiden, vertegenwoordigt een ander gedrag voor SQL Server. SQL Server gebruikt de waarde-1 om een niet-doorvoer bare trans actie weer te geven. SQL Server kunt een aantal fouten binnen een trans actie verdragen zonder dat het als niet-doorvoerbaar moet worden gemarkeerd. `SELECT 1/0` zou bijvoorbeeld een fout veroorzaken, maar een trans actie niet in een niet-doorgevoerde status afdwingen. Met SQL Server wordt ook lees bewerkingen in de niet-doorvoer bare trans actie toegestaan. Met SQL Data Warehouse kunt u dit echter niet doen. Als er een fout optreedt in een SQL Data Warehouse trans actie, wordt er automatisch de status-2 ingevoerd en kunt u geen verdere SELECT-instructies meer maken totdat de instructie weer is teruggedraaid. Het is daarom belang rijk om te controleren of de toepassings code XACT_STATE () gebruikt, aangezien u mogelijk code wijzigingen moet aanbrengen.
+> Het gebruik van-2 door de functie XACT_STATE om een mislukte trans actie aan te duiden, vertegenwoordigt een ander gedrag voor SQL Server. SQL Server gebruikt de waarde-1 om een niet-doorvoer bare trans actie weer te geven. SQL Server kunt een aantal fouten binnen een trans actie verdragen zonder dat het als niet-doorvoerbaar moet worden gemarkeerd. `SELECT 1/0` zou bijvoorbeeld een fout veroorzaken, maar een trans actie niet in een niet-doorgevoerde status afdwingen. Met SQL Server wordt ook lees bewerkingen in de niet-doorvoer bare trans actie toegestaan. Met SQL Data Warehouse kunt u dit echter niet doen. Als er een fout optreedt in een SQL Data Warehouse trans actie, wordt er automatisch de status-2 ingevoerd en kunt u geen verdere SELECT-instructies meer maken totdat de instructie weer is teruggedraaid. Het is daarom belang rijk om te controleren of de toepassings code gebruikmaakt van XACT_STATE (), omdat u mogelijk code wijzigingen moet aanbrengen.
 > 
 > 
 
@@ -151,8 +151,8 @@ BEGIN TRAN
 
         IF @@TRANCOUNT > 0
         BEGIN
-            PRINT 'ROLLBACK';
             ROLLBACK TRAN;
+            PRINT 'ROLLBACK';
         END
 
         SELECT  ERROR_NUMBER()    AS ErrNumber
@@ -172,11 +172,11 @@ END
 SELECT @xact_state AS TransactionState;
 ```
 
-Het verwachte gedrag wordt nu in acht genomen. De fout in de trans actie wordt beheerd en de functies ERROR_ * bieden waarden zoals verwacht.
+Het verwachte gedrag wordt nu in acht genomen. De fout in de trans actie wordt beheerd en de functies van de ERROR_ * bieden waarden zoals verwacht.
 
 Alle wijzigingen die zijn gewijzigd, zijn dat het terugdraaien van de trans actie moet plaatsvinden voordat de fout gegevens in het blok CATCH worden gelezen.
 
-## <a name="error_line-function"></a>De functie Error_Line ()
+## <a name="error_line-function"></a>Functie Error_Line ()
 Het is ook een goed idee dat SQL Data Warehouse de functie ERROR_LINE () niet implementeert of ondersteunt. Als u dit in uw code hebt, moet u deze verwijderen om te voldoen aan SQL Data Warehouse. Gebruik in plaats daarvan query labels in uw code om gelijkwaardige functionaliteit te implementeren. Zie het artikel [Label](sql-data-warehouse-develop-label.md) voor meer informatie.
 
 ## <a name="using-throw-and-raiserror"></a>THROW en////////

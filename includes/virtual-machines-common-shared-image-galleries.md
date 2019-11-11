@@ -6,14 +6,14 @@ author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 05/06/2019
-ms.author: akjosh; cynthn
+ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 9a564bf7f633903c58a5719327216baee2df6550
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 18c85995c545e1b603333fd6788b70cd863865ce
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026168"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73905017"
 ---
 Galerie met gedeelde afbeeldingen is een service die u helpt bij het bouwen van structuur en organisatie rond uw beheerde installatie kopieën. Galerieën met gedeelde afbeeldingen bieden:
 
@@ -31,11 +31,12 @@ Als u een groot aantal beheerde installatie kopieën hebt dat u wilt behouden en
 
 De functie gedeelde installatie kopie galerie heeft meerdere bron typen:
 
-| Resource | Description|
+| Resource | Beschrijving|
 |----------|------------|
-| **Beheerde installatie kopie** | Een basis installatie kopie die alleen kan worden gebruikt of gebruikt om een **installatie kopie versie** in een galerie met installatie kopieën te maken. Beheerde installatie kopieën worden gemaakt op basis van gegeneraliseerde Vm's. Een beheerde installatie kopie is een speciaal type VHD dat kan worden gebruikt om meerdere virtuele machines te maken en kan nu worden gebruikt om versies van gedeelde installatie kopieën te maken. |
+| **Beheerde installatie kopie** | Een basis installatie kopie die alleen kan worden gebruikt of gebruikt om een **installatie kopie versie** in een galerie met installatie kopieën te maken. Beheerde installatie kopieën worden gemaakt op basis van [gegeneraliseerde](#generalized-and-specialized-images) vm's. Een beheerde installatie kopie is een speciaal type VHD dat kan worden gebruikt om meerdere virtuele machines te maken en kan nu worden gebruikt om versies van gedeelde installatie kopieën te maken. |
+| **Snapshot** | Een kopie van een VHD die kan worden gebruikt om een **installatie kopie versie**te maken. Moment opnamen kunnen worden gemaakt op basis van een [gespecialiseerde](#generalized-and-specialized-images) virtuele machine (een die niet is gegeneraliseerd) en vervolgens alleen worden gebruikt of met moment opnamen van gegevens schijven, om een gespecialiseerde installatie kopie versie te maken.
 | **Galerie met installatie kopieën** | Net als de Azure Marketplace is een **afbeeldings galerie** een opslag plaats voor het beheren en delen van installatie kopieën, maar u bepaalt wie toegang heeft. |
-| **Definitie van installatie kopie** | Installatie kopieën worden in een galerie gedefinieerd en bevatten informatie over de installatie kopie en vereisten voor het gebruik ervan binnen uw organisatie. U kunt bijvoorbeeld informatie over de installatie kopie toevoegen aan Windows of Linux, minimale en maximale geheugen vereisten en release opmerkingen. Het is een definitie van een type installatie kopie. |
+| **Definitie van installatie kopie** | Installatie kopieën worden in een galerie gedefinieerd en bevatten informatie over de installatie kopie en vereisten voor het gebruik ervan binnen uw organisatie. U kunt informatie toevoegen zoals of de installatie kopie wordt gegeneraliseerd of gespecialiseerd, het besturings systeem, de minimale en maximale geheugen vereisten en release opmerkingen. Het is een definitie van een type installatie kopie. |
 | **Versie van installatie kopie** | Een **installatie kopie versie** is wat u gebruikt om een virtuele machine te maken wanneer u een galerie gebruikt. U kunt meerdere versies van een installatie kopie naar behoefte hebben voor uw omgeving. Net als bij een beheerde installatie kopie wordt de versie van de installatie kopie gebruikt voor het maken van nieuwe schijven voor de virtuele machine wanneer u een **installatie kopie** gebruikt voor het maken van een virtuele machine. Installatie kopie versies kunnen meerdere keren worden gebruikt. |
 
 <br>
@@ -58,7 +59,7 @@ Alle drie deze hebben unieke sets waarden. De indeling is vergelijkbaar met de m
 
 Hieronder ziet u andere para meters die kunnen worden ingesteld voor de definitie van uw installatie kopie, zodat u uw resources gemakkelijker kunt bijhouden:
 
-* Status van het besturings systeem: u kunt de besturingssysteem status instellen op gegeneraliseerd of gespecialiseerd, maar alleen gegeneraliseerd wordt momenteel ondersteund. Installatie kopieën moeten worden gemaakt op basis van Vm's die zijn gegeneraliseerd met Sysprep voor Windows of `waagent -deprovision` voor Linux.
+* Status van besturings systeem: u kunt de besturingssysteem status instellen op [gegeneraliseerd of gespecialiseerd](#generalized-and-specialized-images).
 * Besturings systeem: dit kan Windows of Linux zijn.
 * Beschrijving: gebruik beschrijving om meer gedetailleerde informatie te geven over waarom de definitie van de installatie kopie bestaat. U kunt bijvoorbeeld een definitie van een installatie kopie hebben voor de front-end-server waarop de toepassing vooraf is geïnstalleerd.
 * EULA: kan worden gebruikt om te verwijzen naar een gebruiksrecht overeenkomst die specifiek is voor de definitie van de installatie kopie.
@@ -68,23 +69,45 @@ Hieronder ziet u andere para meters die kunnen worden ingesteld voor de definiti
 * Minimale en maximale vCPU-en geheugen aanbevelingen: als uw installatie kopie vCPU en geheugen aanbevelingen heeft, kunt u die gegevens koppelen aan de definitie van uw installatie kopie.
 * Niet-toegestane schijf typen: u kunt informatie geven over de opslag behoeften voor uw VM. Als de installatie kopie bijvoorbeeld niet geschikt is voor standaard HDD-schijven, voegt u deze toe aan de lijst niet toegestaan.
 
+## <a name="generalized-and-specialized-images"></a>Gegeneraliseerde en gespecialiseerde installatie kopieën
+
+Er zijn twee statussen van het besturings systeem die worden ondersteund door de galerie met gedeelde afbeeldingen. Normaal gesp roken moeten installatie kopieën ervoor zorgen dat de virtuele machine die wordt gebruikt om de installatie kopie te maken, wordt gegeneraliseerd voordat de installatie kopie wordt gemaakt. Generalisatie is een proces waarbij computer-en gebruikersspecifieke gegevens van de virtuele machine worden verwijderd. Voor Windows wordt ook het Sysprep-bestand gebruikt. Voor Linux kunt u [waagent](https://github.com/Azure/WALinuxAgent) -`-deprovision` of `-deprovision+user`-para meters gebruiken.
+
+Gespecialiseerde Vm's zijn niet via een proces voor het verwijderen van computerspecifieke informatie en-accounts. Daarnaast hebben Vm's die zijn gemaakt op basis van gespecialiseerde installatie kopieën geen `osProfile` gekoppeld. Dit betekent dat gespecialiseerde installatie kopieën enkele beperkingen zullen hebben.
+
+- Accounts die kunnen worden gebruikt om zich aan te melden bij de virtuele machine, kunnen ook worden gebruikt op elke virtuele machine die is gemaakt met behulp van de gespecialiseerde installatie kopie die is gemaakt op basis van die VM.
+- Vm's krijgen de **computer naam** van de virtuele machine waaruit de installatie kopie is gemaakt. Wijzig de computer naam om conflicten te voor komen.
+- De `osProfile` is hoe gevoelige informatie wordt door gegeven aan de virtuele machine met behulp van `secrets`. Dit kan problemen veroorzaken met behulp van de sleutel kluis, WinRM en andere functionaliteit die gebruikmaakt van `secrets` in de `osProfile`. In sommige gevallen kunt u de beheerde service-identiteiten (MSI) gebruiken om deze beperkingen te omzeilen.
+
+> [!IMPORTANT]
+> Gespecialiseerde installatie kopieën zijn momenteel beschikbaar als open bare preview.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+>
+> **Bekende preview-beperkingen** Vm's kunnen alleen worden gemaakt op basis van gespecialiseerde installatie kopieën met behulp van de portal of API. De is geen CLI-of Power Shell-ondersteuning voor de preview-versie.
+
+
 ## <a name="regional-support"></a>Regionale ondersteuning
 
 De bron regio's worden weer gegeven in de volgende tabel. Alle open bare regio's kunnen doel regio's zijn, maar om naar Australië-centraal te repliceren en Australië-centraal 2 moet u uw abonnement white list. Als u White List wilt aanvragen, gaat u naar: https://azure.microsoft.com/global-infrastructure/australia/contact/
 
-| Bron regio's |
-|---------------------|-----------------|------------------|-----------------|
-| Australië - centraal   | Centrale VS-EUAP | Korea - centraal    | US - west-centraal |
-| Australië - centraal 2 | Azië - oost       | Korea - zuid      | Europa -west     |
-| Australië - oost      | East US         | US - noord-centraal | India - west      |
-| Australië - zuidoost | US - oost 2       | Europa - noord     | US - west         |
-| Brazilië - zuid        | VS-Oost 2 EUAP  | US - zuid-centraal | US - west 2       |
-| Canada - midden      | Frankrijk - centraal  | India - zuid      | China East      |
-| Canada - oost         | Frankrijk - zuid    | Azië - zuidoost   | China - oost 2    |
-| India - centraal       | Japan - oost      | Verenigd Koninkrijk Zuid         | China - noord     |
-| US - centraal          | Japan - west      | Verenigd Koninkrijk West          | China - noord 2   |
 
-## <a name="limits"></a>Limieten 
+| Bron regio's        |                   |                    |                    |
+| --------------------- | ----------------- | ------------------ | ------------------ |
+| Australië - centraal     | China East        | India - zuid        | Europa - west        |
+| Australië - centraal 2   | China - oost 2      | Azië - zuidoost     | VK - zuid           |
+| Australië - oost        | China - noord       | Japan - oost         | Verenigd Koninkrijk West            |
+| Australië - zuidoost   | China - noord 2     | Japan - west         | US DoD - centraal     |
+| Brazilië - zuid          | Azië - oost         | Korea - centraal      | US DoD - oost        |
+| Canada - midden        | VS - oost           | Korea - zuid        | VS (overheid) - Arizona     |
+| Canada - oost           | VS - oost 2         | VS - noord-centraal   | VS (overheid) - Texas       |
+| India - centraal         | VS-Oost 2 EUAP    | Europa - noord       | US Gov - Virginia    |
+| VS - centraal            | Frankrijk - centraal    | VS - zuid-centraal   | India - west         |
+| Centrale VS-EUAP       | Frankrijk - zuid      | VS - west-centraal    | VS - west            |
+|                       |                   |                    | VS - west 2          |
+
+
+
+## <a name="limits"></a>Beperkingen 
 
 Er zijn limieten, per abonnement, voor het implementeren van resources met behulp van de galerie met gedeelde afbeeldingen:
 - 100 gedeelde afbeeldings galerieën, per abonnement, per regio
@@ -120,7 +143,7 @@ De regio's waarvan een versie van de gedeelde installatie kopie wordt gereplicee
 
 ![Afbeelding die laat zien hoe u installatie kopieën kunt repliceren](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Access
+## <a name="access"></a>Toegang
 
 Aangezien de galerie met gedeelde afbeeldingen, de afbeeldings definitie en de versie van de installatie kopie alle resources zijn, kunnen ze worden gedeeld met behulp van de ingebouwde systeem eigen Azure RBAC-besturings elementen. Met RBAC kunt u deze resources delen met andere gebruikers, service-principals en groepen. U kunt zelfs toegang delen voor personen buiten de Tenant waarin deze zijn gemaakt. Zodra een gebruiker toegang heeft tot de versie van de gedeelde installatie kopie, kunnen ze een virtuele machine of een VM-Schaalset implementeren.  Dit is de matrix voor delen waarmee u begrijpt waarover de gebruiker toegang krijgt:
 
@@ -143,12 +166,12 @@ Er zijn geen extra kosten verbonden aan het gebruik van de Shared Image Gallery-
 Nadat u deze hebt gemaakt, kunt u enkele wijzigingen aanbrengen in de afbeeldingen galerie-resources. Deze zijn beperkt tot:
  
 Galerie met gedeelde afbeeldingen:
-- Description
+- Beschrijving
 
 Definitie van installatie kopie:
 - Aanbevolen Vcpu's
 - Aanbevolen geheugen
-- Description
+- Beschrijving
 - Einde van de levens duur
 
 Versie van installatie kopie:
@@ -215,17 +238,18 @@ Volg de onderstaande stappen om alle resources van de gedeelde installatie kopie
  
 Ja. Er zijn drie scenario's die zijn gebaseerd op de typen installatie kopieën die u mogelijk hebt.
 
- Scenario 1: Als u een beheerde installatie kopie hebt, kunt u er een installatie kopie-en afbeeldings versie van maken.
+ Scenario 1: als u een beheerde installatie kopie hebt, kunt u een afbeeldings definitie en installatie kopie versie van de afbeelding maken.
 
- Scenario 2: Als u een niet-beheerde gegeneraliseerde installatie kopie hebt, kunt u er een beheerde installatie kopie van maken en vervolgens een installatie kopie en afbeeldings versie van de afbeelding maken. 
+ Scenario 2: als u een niet-beheerde afbeelding hebt, kunt u er een beheerde installatie kopie van maken en vervolgens een installatie kopie en afbeeldings versie van de afbeelding maken. 
 
- Scenario 3: Als u een VHD hebt in uw lokale bestands systeem, moet u de VHD uploaden, een beheerde installatie kopie maken en vervolgens de versie van de installatie kopie en de installatie kopie maken.
-- Als de VHD van een Windows-VM is, raadpleegt u [een gegeneraliseerde VHD uploaden](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
+ Scenario 3: als u een VHD in het lokale bestands systeem hebt, moet u de VHD uploaden naar een beheerde installatie kopie, waarna u een installatie kopie en afbeeldings versie van de virtuele harde schijf kunt maken.
+
+- Zie [een VHD uploaden](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)als de VHD van een Windows-virtuele machine is.
 - Zie [een VHD uploaden](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd) als de VHD voor een virtuele Linux-machine is.
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Kan ik een installatie kopie versie van een gespecialiseerde schijf maken?
 
-Nee, we ondersteunen momenteel geen gespecialiseerde schijven als installatie kopieën. Als u een gespecialiseerde schijf hebt, moet u [een virtuele machine maken op basis van de VHD](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) door de speciale schijf aan een nieuwe virtuele machine te koppelen. Zodra u een virtuele machine uitvoert, moet u de instructies volgen voor het maken van een beheerde installatie kopie van de virtuele [Windows-machine](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) of [Linux-machine](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Zodra u een gegeneraliseerde beheerde installatie kopie hebt, kunt u het proces starten om een beschrijving van de gedeelde installatie kopie en de versie van de installatie kopie te maken.
+Ja, ondersteuning voor speciale schijven als installatie kopieën is in de preview-versie. U kunt alleen een virtuele machine maken op basis van een gespecialiseerde installatie kopie met behulp van de portal ([Windows](../articles/virtual-machines/linux/shared-images-portal.md) of [Linux](../articles/virtual-machines/linux/shared-images-portal.md)) en de API. Er is geen Power Shell-ondersteuning voor de preview-versie.
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Kan ik de resource van de gedeelde afbeeldingen galerie verplaatsen naar een ander abonnement nadat deze is gemaakt?
 
@@ -235,7 +259,7 @@ Nee, u kunt de resource van de gedeelde afbeeldings galerie niet naar een ander 
 
 Nee, u kunt geen afbeeldings versies van Clouds repliceren.
 
-### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>Kan ik mijn installatie kopie versies in abonnementen repliceren? 
+### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>Kan ik mijn installatie kopie versies in abonnementen repliceren?
 
 Nee, u kunt de installatie kopie versies van de verschillende regio's in een abonnement repliceren en deze gebruiken in andere abonnementen via RBAC.
 
@@ -262,11 +286,11 @@ Er zijn twee manieren waarop u kunt opgeven hoeveel afbeeldings versie replica's
 1. Het regionale aantal replica's waarmee het aantal replica's wordt opgegeven dat u per regio wilt maken. 
 2. Het aantal algemene replica's dat de standaard waarde per regio is, in het geval dat het aantal regionale replica's is opgegeven. 
 
-Als u het aantal regionale replica's wilt opgeven, geeft u de locatie door, samen met het aantal replica's dat u in die regio wilt maken: "Zuid-Centraal VS = 2". 
+Als u het aantal regionale replica's wilt opgeven, geeft u de locatie door, samen met het aantal replica's dat u wilt maken in die regio: "Zuid-Centraal VS = 2". 
 
 Als er voor elke locatie geen regionaal aantal replica's is opgegeven, is het standaard aantal replica's het aantal gemeen schappelijke replica's dat u hebt opgegeven. 
 
-Als u het aantal algemene replica's in CLI wilt opgeven, gebruikt u het argument **--replica-Count** in de `az sig image-version create` opdracht.
+Als u het aantal algemene replica's in CLI wilt opgeven, gebruikt u het argument **--replica-Count** in de opdracht `az sig image-version create`.
 
 ### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>Kan ik de galerie met gedeelde afbeeldingen maken op een andere locatie dan die voor de definitie van de installatie kopie en de versie van de installatie kopie?
 

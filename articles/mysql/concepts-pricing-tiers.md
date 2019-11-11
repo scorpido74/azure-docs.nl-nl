@@ -5,25 +5,25 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: f53f260ebe80ce2e3d6d6349e3fa892fa3c021a3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 11/08/2019
+ms.openlocfilehash: 62c5c338f9783c65a3907a706618f653eea5cd0d
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972830"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904377"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL prijs Categorieën
 
-U kunt een Azure Database for MySQL-server maken in een van drie verschillende prijs Categorieën: Basic, Algemeen gebruik en Geoptimaliseerd voor geheugen. De prijs categorieën worden onderscheiden van de hoeveelheid Compute in vCores die kan worden ingericht, het geheugen per vCore en de opslag technologie die wordt gebruikt om de gegevens op te slaan. Alle resources worden ingericht op het niveau van de MySQL-server. Een server kan een of meer data bases bevatten.
+U kunt een Azure Database for MySQL-server maken in een van drie verschillende prijs Categorieën: basis, Algemeen en geoptimaliseerd voor geheugen. De prijs categorieën worden onderscheiden van de hoeveelheid Compute in vCores die kan worden ingericht, het geheugen per vCore en de opslag technologie die wordt gebruikt om de gegevens op te slaan. Alle resources worden ingericht op het niveau van de MySQL-server. Een server kan een of meer data bases bevatten.
 
 |    | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
-| Compute-generatie | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
+| Compute genereren | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Geheugen per vCore | 2 GB | 5 GB | 10 GB |
-| Opslag grootte | 5 GB tot 1 TB | 5 GB tot 4 TB | 5 GB tot 4 TB |
-| Opslagtype | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Opslag grootte | 5 GB tot 1 TB | 5 GB tot 16 TB | 5 GB tot 16 TB |
+| Opslagtype | Azure Standard-opslag | Azure Premium Storage | Azure Premium Storage |
 | Bewaar periode voor database back-ups | 7 tot 35 dagen | 7 tot 35 dagen | 7 tot 35 dagen |
 
 Als u een prijs categorie wilt kiezen, gebruikt u de volgende tabel als uitgangs punt.
@@ -31,7 +31,7 @@ Als u een prijs categorie wilt kiezen, gebruikt u de volgende tabel als uitgangs
 | Prijscategorie | Beoogde workloads |
 |:-------------|:-----------------|
 | Basic | Werk belastingen waarvoor lichte reken kracht en I/O-prestaties zijn vereist. Voor beelden zijn servers die worden gebruikt voor ontwikkeling of testen of kleinschalige, niet-veelgebruikte toepassingen. |
-| Algemeen doel | De meeste zakelijke workloads die evenwichtige reken kracht en geheugen vereisen met schaal bare I/O-door voer. Voor beelden zijn servers voor het hosten van web-en mobiele apps en andere zakelijke toepassingen.|
+| Algemeen gebruik | De meeste zakelijke workloads die evenwichtige reken kracht en geheugen vereisen met schaal bare I/O-door voer. Voor beelden zijn servers voor het hosten van web-en mobiele apps en andere zakelijke toepassingen.|
 | Geoptimaliseerd geheugen | Data bases met hoogwaardige prestaties waarvoor de prestaties in het geheugen zijn vereist voor een snellere transactie verwerking en hogere gelijktijdigheid. Voor beelden zijn servers voor het verwerken van real-time gegevens en transactionele of analytische toepassingen met hoge prestaties.|
 
 Nadat u een server hebt gemaakt, kunt u binnen enkele seconden het aantal vCores, de generatie van de hardware en de prijs categorie (met uitzonde ring van en van basis) wijzigen. U kunt ook onafhankelijk de hoeveelheid opslag ruimte en de Bewaar periode voor back-ups op afstand aanpassen zonder uitval tijd van de toepassing. U kunt het opslag type voor back-ups niet wijzigen nadat een server is gemaakt. Zie de sectie [resources schalen](#scale-resources) voor meer informatie.
@@ -46,10 +46,16 @@ De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikb
 
 |    | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
-| Opslagtype | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
-| Opslag grootte | 5 GB tot 1 TB | 5 GB tot 4 TB | 5 GB tot 4 TB |
+| Opslagtype | Azure Standard-opslag | Azure Premium Storage | Azure Premium Storage |
+| Opslag grootte | 5 GB tot 1 TB | 5 GB tot 16 TB | 5 GB tot 16 TB |
 | Grootte van toename van opslag | 1 GB | 1 GB | 1 GB |
-| IOPS | Variabele |3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 6000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 6000 IOPS |
+| IOPS | Variabele |3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS |
+
+> [!NOTE]
+> Opslag tot 16TB en 20.000 IOPS wordt ondersteund in de volgende regio's: VS-Oost, VS-Oost 2, centraal VS, VS-West, Europa-noord, Europa-west, UK-zuid, UK-west, Zuidoost-Azië, Azië-oost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Australië-oost, Australië Zuid-Oost.
+>
+> Alle andere regio's ondersteunen Maxi maal 4 TB opslag ruimte en Maxi maal 6000 IOPS.
+>
 
 U kunt extra opslag capaciteit toevoegen tijdens en na het maken van de-server en het systeem toestaan om opslag automatisch te laten groeien op basis van het opslag verbruik van uw werk belasting. 
 
@@ -59,25 +65,6 @@ U kunt extra opslag capaciteit toevoegen tijdens en na het maken van de-server e
 De laag basis biedt geen IOPS-garantie. In de prijs Categorieën Algemeen en geoptimaliseerd voor geheugen, wordt de IOPS-schaal met de ingerichte opslag grootte in een verhouding van 3:1.
 
 U kunt uw I/O-gebruik bewaken in de Azure Portal of met behulp van Azure CLI-opdrachten. De relevante metrische gegevens die moeten worden bewaakt [, zijn opslag limiet, opslag percentage, gebruikte opslag en i/o-percentage](concepts-monitoring.md).
-
-### <a name="large-storage-preview"></a>Grote opslag (preview-versie)
-
-We verg Roten de opslag limieten in onze lagen van Algemeen en geoptimaliseerd voor geheugen. Nieuw gemaakte servers die zich aanmelden voor de preview-versie, kunnen tot 16 TB aan opslag ruimte inrichten. De IOPS-schaal bij een verhouding van 3:1 tot 20.000 IOPS. Net zoals bij de huidige algemeen beschik bare opslag ruimte, kunt u extra opslag capaciteit toevoegen na het maken van de server en het systeem toestaan om opslag automatisch te laten groeien op basis van het opslag verbruik van uw werk belasting.
-
-|              | **Algemeen** | **Geoptimaliseerd voor geheugen** |
-|:-------------|:--------------------|:---------------------|
-| Opslagtype | Azure Premium Storage | Azure Premium Storage |
-| Opslag grootte | 32 GB tot 16 TB| 32 GB tot 16 TB |
-| Grootte van toename van opslag | 1 GB | 1 GB |
-| IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS| 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS |
-
-> [!IMPORTANT]
-> Grote opslag ruimte bevindt zich momenteel in de open bare preview in de volgende regio's: VS-Oost, VS-Oost 2, centraal VS, VS-West, Europa-noord, Europa-west, UK-zuid, UK-west, Zuidoost-Azië, Azië-oost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Australië-oost, Australië-Zuid-Oost.
->
-> De preview-versie van grote opslag biedt momenteel geen ondersteuning voor:
->
-> * Geografisch redundante back-ups
-> * Replicatie tussen regio's
 
 ### <a name="reaching-the-storage-limit"></a>De opslag limiet wordt bereikt
 
@@ -97,7 +84,7 @@ Als u bijvoorbeeld 1000 GB aan opslag hebt ingericht en het werkelijke gebruik m
 
 Houd er rekening mee dat opslag alleen omhoog kan worden geschaald.
 
-## <a name="backup"></a>Back-up
+## <a name="backup"></a>Backup
 
 De service maakt automatisch back-ups van uw server. De minimale Bewaar periode voor back-ups is zeven dagen. U kunt een Bewaar periode van Maxi maal 35 dagen instellen. De retentie kan op elk moment worden aangepast tijdens de levens duur van de server. U kunt kiezen tussen lokaal redundante en geografisch redundante back-ups. Geografisch redundante back-ups worden ook opgeslagen in het [geo-paard gebied](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) van de regio waar uw server is gemaakt. Deze redundantie biedt een beveiligings niveau in het geval van een ramp. U krijgt ook de mogelijkheid om uw server te herstellen naar een andere Azure-regio waarin de service beschikbaar is met geo-redundante back-ups. Het is niet mogelijk om te wisselen tussen de twee opties voor back-upopslag nadat de server is gemaakt.
 

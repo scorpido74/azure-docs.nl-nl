@@ -1,23 +1,25 @@
 ---
 title: Blobs weer geven met .NET-Azure Storage
-description: Meer informatie over het weer geven van blobs in een container in uw Azure Storage-account met behulp van de .NET-client bibliotheek.
+description: Meer informatie over het weer geven van blobs in een container in uw Azure Storage-account met behulp van de .NET-client bibliotheek. Code voorbeelden laten zien hoe blobs in een platte lijst worden weer gegeven of hoe blobs hiërarchisch moeten worden vermeld, alsof ze in mappen of mappen zijn ingedeeld.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bf9d2d59e993de3807a10a6c39f88b2063024bfc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4b6dc9d80cfe96e501e575d265b9fa383b1c4d2c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599927"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73902005"
 ---
 # <a name="list-blobs-with-net"></a>Blobs weer geven met .NET
 
-Wanneer u blobs uit uw code opneemt, kunt u een aantal opties opgeven om te beheren hoe de resultaten van Azure Storage worden geretourneerd. In dit artikel wordt beschreven hoe u blobs kunt weer geven met behulp [van de Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage/client).  
+Wanneer u blobs uit uw code opneemt, kunt u een aantal opties opgeven om te beheren hoe de resultaten van Azure Storage worden geretourneerd. U kunt het aantal resultaten opgeven dat moet worden geretourneerd in elke set resultaten en vervolgens de volgende sets ophalen. U kunt een voor voegsel opgeven voor het retour neren van blobs waarvan de naam met dat teken of teken reeks begint. En u kunt blobs in een platte lijst structuur of hiërarchisch vermelden. Een hiërarchische vermelding retourneert blobs alsof ze zijn ingedeeld in mappen. 
+
+In dit artikel wordt beschreven hoe u blobs kunt weer geven met behulp [van de Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage/client).  
 
 ## <a name="understand-blob-listing-options"></a>Informatie over de opties voor BLOB-vermeldingen
 
@@ -53,7 +55,7 @@ Als u BLOB-meta gegevens wilt retour neren met de resultaten, geeft u de **meta 
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Platte aanbieding versus hiërarchische lijst
 
-Blobs in Azure Storage zijn ingedeeld in een plat paradigma, in plaats van een hiërarchisch paradigma (zoals een klassiek bestands systeem). U kunt blobs echter indelen in *virtuele mappen* om een hiërarchisch paradigma te simuleren. Een virtuele map maakt deel uit van de naam van de blob die wordt gescheiden door het scheidings teken.
+Blobs in Azure Storage zijn ingedeeld in een plat paradigma, in plaats van een hiërarchisch paradigma (zoals een klassiek bestands systeem). U kunt blobs echter indelen in *virtuele mappen* om een mapstructuur te simuleren. Een virtuele map vormt een deel van de naam van de BLOB en wordt aangeduid met het scheidings teken.
 
 Als u blobs wilt indelen in virtuele mappen, gebruikt u een scheidings teken in de naam van de blob. Het standaard scheidings teken is een slash (/), maar u kunt een wille keurig teken als scheidings tekens opgeven.
 

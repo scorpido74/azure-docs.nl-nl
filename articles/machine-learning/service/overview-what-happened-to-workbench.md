@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 835024f7c8d77d67a2f6321df658c2f5c2007e62
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1ff70a8a794cbc4c201512a0cf578eb0a890a5e4
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647107"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904425"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Wat is er gebeurd met Azure Machine Learning Workbench?
 
@@ -99,8 +99,8 @@ Meer informatie over de [nieuwste architectuur voor Azure machine learning](conc
 Lees [Wat is Azure machine learning?](overview-what-is-azure-ml.md)voor een overzicht van de service.
 
 Maak uw eerste experiment met uw voorkeurs methode:
-  + [Python-notebooks gebruiken voor het trainen & implementeren van ML-modellen](tutorial-1st-experiment-sdk-setup.md)
-  + [R-korting gebruiken om & Deploy-modellen te trainen]( tutorial-1st-r-experiment.md) 
-  + [Automatische machine learning gebruiken om & Deploy-modellen te trainen](ui-tutorial-automobile-price-train-score.md) 
-  + [Gebruik de functie slepen & neerzetten van Designer om & implementeren te trainen](tutorial-first-experiment-automated-ml.md) 
-  + [De machine learning CLI gebruiken om een model te trainen en te implementeren](tutorial-train-deploy-model-cli.md)
+  + [Python-notebooks gebruiken](tutorial-1st-experiment-sdk-setup.md)
+  + [R-prijs verlaging gebruiken]( tutorial-1st-r-experiment.md) 
+  + [Automatische machine learning gebruiken](ui-tutorial-automobile-price-train-score.md) 
+  + [De Sleep mogelijkheden van de ontwerp functie voor het Designer-& gebruiken](tutorial-first-experiment-automated-ml.md) 
+  + [De uitbrei ding voor ML van de CLI gebruiken](tutorial-train-deploy-model-cli.md)

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: dbfb6a1c4c53b1bd255560e688d3dc0cf3835a3a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d286cbab33a1fb6a2d2a2cb70caed11b21af735
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469630"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904096"
 ---
 # <a name="azure-app-configuration-faq"></a>Veelgestelde vragen over Azure-app configuratie
 
@@ -42,9 +42,19 @@ App-configuratie is complementair met Key Vault en de twee moeten naast elkaar w
 
 Hoewel app-configuratie een beveiligde beveiliging biedt, is Key Vault nog steeds de beste plaats voor het opslaan van toepassings geheimen. Key Vault biedt versleuteling op hardwareniveau, granulair toegangs beleid en beheer bewerkingen, zoals het draaien van certificaten.
 
+U kunt app-configuratie waarden maken die verwijzen naar geheimen die zijn opgeslagen in Key Vault. Zie [Key Vault verwijzingen gebruiken in een ASP.net core-app](./use-key-vault-references-dotnet-core.md)voor meer informatie.
+
 ## <a name="does-app-configuration-encrypt-my-data"></a>Versleutelen de app-configuratie mijn gegevens?
 
 Ja. App-configuratie versleutelt alle sleutel waarden die worden bewaard en versleutelt de netwerk communicatie. Sleutel namen worden gebruikt als indexen voor het ophalen van configuratie gegevens en worden niet versleuteld.
+
+## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Hoe wijkt de configuratie van de app af van Azure App Service instellingen?
+
+Met Azure App Service kunt u app-instellingen definiëren voor elk App Service exemplaar. Deze instellingen worden door gegeven als omgevings variabelen aan de toepassings code. U kunt desgewenst een instelling koppelen aan een specifieke implementatie site, indien gewenst. Zie [app-instellingen configureren](/azure/app-service/configure-common#configure-app-settings)voor meer informatie.
+
+Azure-app configuratie daarentegen kunt u instellingen definiëren die kunnen worden gedeeld tussen meerdere apps, waaronder apps die worden uitgevoerd in App Service. Deze instellingen zijn toegankelijk via de configuratie providers voor .NET en Java via de Azure SDK, of rechtstreeks via REST Api's.
+
+U kunt ook instellingen importeren en exporteren tussen App Service en app-configuratie. Zo kunt u snel een nieuw app-configuratie archief instellen op basis van bestaande App Service instellingen, of de configuratie eenvoudig delen met een bestaande app die afhankelijk is van App Service-instellingen.
 
 ## <a name="are-there-any-size-limitations-on-keys-and-values-stored-in-app-configuration"></a>Zijn er beperkingen voor de grootte van sleutels en waarden die zijn opgeslagen in de app-configuratie?
 

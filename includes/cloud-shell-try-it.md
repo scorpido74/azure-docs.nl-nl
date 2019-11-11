@@ -4,16 +4,16 @@ ms.service: azure
 ms.topic: include
 ms.date: 06/13/2019
 ms.author: sttramer
-ms.openlocfilehash: fdb4ddc43c1fcde55da8186bd2c09b709eb41374
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 47873016a8e355127df36928f2c26439cf3f28c4
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "71055265"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901452"
 ---
 ## <a name="use-azure-cloud-shell"></a>Azure Cloud Shell gebruiken
 
-Azure host Azure Cloud Shell, een interactieve shell-omgeving die u via uw browser kunt gebruiken. Met Cloud Shell kunt u `bash` of `PowerShell` gebruiken om met Azure-Services te werken. U kunt de Cloud Shell vooraf geïnstalleerde opdrachten gebruiken om de code in dit artikel uit te voeren zonder dat u iets hoeft te installeren in uw lokale omgeving.
+Azure host Azure Cloud Shell, een interactieve shell-omgeving die u via uw browser kunt gebruiken. U kunt bash of Power shell gebruiken met Cloud Shell om met Azure-Services te werken. U kunt de Cloud Shell vooraf geïnstalleerde opdrachten gebruiken om de code in dit artikel uit te voeren zonder dat u iets hoeft te installeren in uw lokale omgeving.
 
 Azure Cloud Shell starten:
 
@@ -29,6 +29,6 @@ Als u de code in dit artikel in Azure Cloud Shell wilt uitvoeren:
 
 1. Selecteer de knop **kopiëren** in een code blok om de code te kopiëren.
 
-1. Plak de code in de Cloud Shell-sessie met **Ctrl**+**SHIFT**+**v** op Windows en Linux, of **cmd**+**SHIFT**+**v** op macOS.
+1. Plak de code in de Cloud Shell-sessie door **Ctrl**+**SHIFT**+**v** in Windows en Linux te selecteren of door **cmd**+**SHIFT**+**v** te selecteren op macOS.
 
-1. Druk op **Enter** om de code uit te voeren.
+1. Selecteer **Enter** om de code uit te voeren.

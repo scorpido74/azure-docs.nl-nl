@@ -1,7 +1,7 @@
 ---
 title: Naslag Gids voor insluitende lezers SDK
 titleSuffix: Azure Cognitive Services
-description: Naslag informatie voor de insluitende lezer-SDK
+description: De insluitende lezer SDK is een Java script-bibliotheek waarmee u de insluitende lezer kunt integreren in uw webtoepassing.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ed9bd6f5932fdcb2d9124a000115a6f68cf21613
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 09244b634fa2603a7dc92af3c78d171f8d6bd9df
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889310"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903115"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Naslag Gids voor insluitende lezers SDK
 
@@ -84,7 +84,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Opties voor het configureren van bepaald gedrag van de functie renderButtons. Optioneel. |
 
-## <a name="types"></a>Dergelijke
+## <a name="types"></a>Typen
 
 ### <a name="content"></a>Inhoud
 

@@ -1,23 +1,23 @@
 ---
-title: In deze snelstart wordt uitgelegd hoe u een X.509-apparaat kunt registreren bij Azure Device Provisioning Service met behulp van C# | Microsoft Docs
-description: In deze quickstart wordt gebruikgemaakt van groepsregistraties. In deze Snelstartgids schrijft u X. 509-apparaten in voor de Azure C#-IOT hub Device Provisioning Service met behulp van.
+title: 'Quick Start: X. 509-apparaat inschrijven bij de Azure Device Provisioning Service met behulp vanC#'
+description: In deze snelstart wordt gebruikgemaakt van groepsregistraties. In deze Snelstartgids schrijft u X. 509-apparaten in voor de Azure C#-IOT hub Device Provisioning Service met behulp van.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 15bce340b257b5c221192a6ace5c5f0eac30f85a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: e43448337f787115c479f2f53ca57b7a20120108
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036009"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903440"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Quickstart: X.509-apparaten registreren bij Device Provisioning Service met behulp van C#
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Snelstart: X.509-apparaten registreren bij Device Provisioning Service met behulp van C#
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
@@ -92,7 +92,7 @@ In deze sectie wordt beschreven hoe u een .NET Core-Console-app maakt waarmee ee
 
    Met deze stap wordt een verwijzing naar het [Azure IOT Provisioning Service client SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
 
-1. Voeg de volgende `using` instructies toe achter de `using` andere-instructies boven aan `Program.cs`:
+1. Voeg de volgende `using`-instructies toe achter de andere `using`-instructies boven aan `Program.cs`:
 
    ```csharp
    using System.Security.Cryptography.X509Certificates;
@@ -100,7 +100,7 @@ In deze sectie wordt beschreven hoe u een .NET Core-Console-app maakt waarmee ee
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. Voeg de volgende velden toe aan `Program` de klasse en breng de weer gegeven wijzigingen aan.  
+1. Voeg de volgende velden toe aan de klasse `Program` en breng de weer gegeven wijzigingen aan.  
 
    ```csharp
    private static string ProvisioningConnectionString = "{Your provisioning service connection string}";
@@ -108,9 +108,9 @@ In deze sectie wordt beschreven hoe u een .NET Core-Console-app maakt waarmee ee
    private static string X509RootCertPath = @"{Path to a .cer or .pem file for a verified root CA or intermediate CA X.509 certificate}";
    ```
 
-   * Vervang de `ProvisioningConnectionString` waarde van de tijdelijke aanduiding door de Connection String van de inrichtings service waarvoor u de inschrijving wilt maken.
+   * Vervang de waarde van de tijdelijke aanduiding `ProvisioningConnectionString` door de connection string van de inrichtings service waarvoor u de inschrijving wilt maken.
 
-   * Vervang de `X509RootCertPath` waarde van de tijdelijke aanduiding door het pad naar een. pem-of CER-bestand. Dit bestand vertegenwoordigt het open bare deel van een tussenliggend of basis-CA X. 509-certificaat dat eerder is geüpload en geverifieerd met uw inrichtings service.
+   * Vervang de waarde van de tijdelijke aanduiding `X509RootCertPath` door het pad naar een. pem-of CER-bestand. Dit bestand vertegenwoordigt het open bare deel van een tussenliggend of basis-CA X. 509-certificaat dat eerder is geüpload en geverifieerd met uw inrichtings service.
 
    * U kunt eventueel de `EnrollmentGroupId` waarde wijzigen. De tekenreeks mag alleen kleine letters en afbreekstreepjes bevatten.
 
@@ -120,7 +120,7 @@ In deze sectie wordt beschreven hoe u een .NET Core-Console-app maakt waarmee ee
    > * Hard-coding van de verbindingsreeks voor de inrichtingsservicebeheerder is in strijd met de aanbevolen beveiligingsprocedures. In plaats daarvan moet de verbindingsreeks op een veilige manier worden ondergebracht, zoals in een beveiligd configuratiebestand of in het register.
    > * Upload alleen het openbare deel van het handtekeningcertificaat. Upload nooit .pfx- (PKCS12) of .pem-bestanden met persoonlijke sleutels naar de inrichtingsservice.
 
-1. Voeg de volgende methode toe aan `Program` de klasse. Deze code maakt een vermelding voor de registratie groep en roept `CreateOrUpdateEnrollmentGroupAsync` vervolgens de `ProvisioningServiceClient` -methode aan om de registratie groep toe te voegen aan de inrichtings service.
+1. Voeg de volgende methode toe aan de klasse `Program`. Deze code maakt een vermelding voor de registratie groep en roept vervolgens de methode `CreateOrUpdateEnrollmentGroupAsync` aan op `ProvisioningServiceClient` om de registratie groep toe te voegen aan de inrichtings service.
 
    ```csharp
    public static async Task RunSample()
@@ -156,7 +156,7 @@ In deze sectie wordt beschreven hoe u een .NET Core-Console-app maakt waarmee ee
    }
    ```
 
-1. Ten slotte vervangt u de hoofd tekst `Main` van de-methode door de volgende regels:
+1. Vervang tot slot de hoofd tekst van de `Main` methode door de volgende regels:
 
    ```csharp
    RunSample().GetAwaiter().GetResult();

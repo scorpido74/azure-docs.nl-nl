@@ -1,23 +1,23 @@
 ---
-title: TPM-apparaat inschrijven bij Azure Device Provisioning Service met behulp van C# | Microsoft Docs
-description: Azure Quick Start-TPM-apparaat inschrijven bij Azure C# IOT hub Device Provisioning Service met Service SDK. In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen.
+title: 'Quick Start: TPM-apparaat inschrijven bij Azure Device Provisioning Service met behulp vanC#'
+description: Azure Quick Start-TPM-apparaat inschrijven bij Azure C# IOT hub Device Provisioning Service met Service SDK. In deze snelstart wordt gebruikgemaakt van afzonderlijke registraties.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/16/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: dcb9d2000ff9432f4360dab7f7df28b5b32482bf
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 70f9c9d2ec488854a1b386b872f10e4f54c45a1c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035765"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904742"
 ---
-# <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>TPM-apparaat inschrijven bij IoT Hub Device Provisioning Service met behulp van de C# service-SDK
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Quick Start: TPM-apparaat inschrijven voor C# IOT hub Device Provisioning Service met Service SDK
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
@@ -64,14 +64,14 @@ In deze sectie wordt beschreven hoe u een .NET Core-Console-app maakt die een af
 
    Met deze stap wordt een verwijzing naar het [Azure IOT Provisioning Service client SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
 
-1. Voeg de volgende `using` instructies toe achter de `using` andere-instructies boven aan `Program.cs`:
+1. Voeg de volgende `using`-instructies toe achter de andere `using`-instructies boven aan `Program.cs`:
   
    ```csharp
    using System.Threading.Tasks;
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. Voeg de volgende velden toe aan `Program` de klasse en breng de weer gegeven wijzigingen aan.
+1. Voeg de volgende velden toe aan de klasse `Program` en breng de weer gegeven wijzigingen aan.
 
    ```csharp
    private static string ProvisioningConnectionString = "{Your provisioning service connection string}";
@@ -88,13 +88,13 @@ In deze sectie wordt beschreven hoe u een .NET Core-Console-app maakt die een af
    private const ProvisioningStatus OptionalProvisioningStatus = ProvisioningStatus.Enabled;
    ```
 
-   * Vervang de `ProvisioningConnectionString` waarde van de tijdelijke aanduiding door de Connection String van de inrichtings service waarvoor u de inschrijving wilt maken.
+   * Vervang de waarde van de tijdelijke aanduiding `ProvisioningConnectionString` door de connection string van de inrichtings service waarvoor u de inschrijving wilt maken.
 
    * U kunt desgewenst de registratie-ID, goedkeuringssleutel, apparaat-ID en inrichtingsstatus wijzigen.
 
-   * Als u deze Quick Start gebruikt in combi natie met het [maken en inrichten van C# een GEsimuleerd TPM-apparaat met apparaat SDK](quick-create-simulated-device-tpm-csharp.md) Quick Start om een gesimuleerd apparaat in te richten, vervangt u de goedkeurings sleutel en registratie-id door de waarden die u hebt genoteerd. Snelstartgids. U kunt de apparaat-ID vervangen door de waarde die in die Snelstartgids is voorgesteld, uw eigen waarde gebruiken of de standaard waarde in dit voor beeld gebruiken.
+   * Als u deze Quick Start gebruikt in combi natie met het [maken en inrichten van C# een GEsimuleerd TPM-apparaat met Device SDK](quick-create-simulated-device-tpm-csharp.md) Quick Start om een gesimuleerd apparaat in te richten, vervangt u de goedkeurings sleutel en registratie-id door de waarden die u hebt genoteerd in die Snelstartgids. U kunt de apparaat-ID vervangen door de waarde die in die Snelstartgids is voorgesteld, uw eigen waarde gebruiken of de standaard waarde in dit voor beeld gebruiken.
 
-1. Voeg de volgende methode toe aan `Program` de klasse.  Deze code maakt afzonderlijke inschrijvings vermelding en roept vervolgens `CreateOrUpdateIndividualEnrollmentAsync` de-methode `ProvisioningServiceClient` aan om de individuele inschrijving toe te voegen aan de inrichtings service.
+1. Voeg de volgende methode toe aan de klasse `Program`.  Deze code maakt afzonderlijke inschrijvings vermelding en roept vervolgens de `CreateOrUpdateIndividualEnrollmentAsync`-methode op de `ProvisioningServiceClient` om de individuele inschrijving aan de inrichtings service toe te voegen.
 
    ```csharp
    public static async Task RunSample()
@@ -129,7 +129,7 @@ In deze sectie wordt beschreven hoe u een .NET Core-Console-app maakt die een af
    }
    ```
 
-1. Ten slotte vervangt u de hoofd tekst `Main` van de-methode door de volgende regels:
+1. Vervang tot slot de hoofd tekst van de `Main` methode door de volgende regels:
 
    ```csharp
    RunSample().GetAwaiter().GetResult();
@@ -159,7 +159,7 @@ Als u van plan bent het C# service voorbeeld te verkennen, moet u de resources d
 
 1. Sluit het C# voorbeeld venster uitvoer op de computer.
 
-1. Navigeer naar Device Provisioning Service in het Azure Portal, selecteer **inschrijvingen beheren**en selecteer vervolgens het tabblad **afzonderlijke registraties** . Selecteer de *registratie-id* voor de registratie vermelding die u hebt gemaakt met behulp van deze Quick Start en selecteer **verwijderen**.
+1. Navigeer naar uw Device Provisioning Service in de Azure Portal, selecteer **inschrijvingen beheren**en selecteer vervolgens het tabblad **afzonderlijke inschrijvingen** . Selecteer de *registratie-id* voor de registratie vermelding die u hebt gemaakt met behulp van deze Quick Start en selecteer **verwijderen**.
 
 1. Als u de stappen in [een gesimuleerd TPM-apparaat maken en inrichten C# met apparaat-SDK](quick-create-simulated-device-tpm-csharp.md) hebt gevolgd om een gesimuleerd TPM-apparaat te maken, voert u de volgende stappen uit:
 

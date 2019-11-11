@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: cf05468af17a4fafa7c81c7ad8bc89b3306a54af
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: f74d4cbc17e49345534a37e9e6612a36e19be295
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286176"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903710"
 ---
-Met de galerie met gedeelde afbeeldingen kunt u afbeeldingen delen met RBAC. U kunt RBAC gebruiken om installatie kopieën te delen binnen uw Tenant, en zelfs voor personen buiten uw Tenant. Maar als u installatie kopieën wilt delen buiten uw Azure-Tenant, moet u op schaal een app-registratie maken om het delen te vergemakkelijken.  Het gebruik van een app-registratie kan meer complexe scenario's voor delen mogelijk maken, zoals: 
+Maar als u installatie kopieën wilt delen buiten uw Azure-Tenant, moet u op schaal een app-registratie maken om het delen te vergemakkelijken.  Het gebruik van een app-registratie kan meer complexe scenario's voor delen mogelijk maken, zoals: 
 
 * Gedeelde installatie kopieën beheren wanneer een bedrijf een andere verkrijgt en de Azure-infra structuur is verdeeld over afzonderlijke tenants. 
 * Azure-partners beheren Azure-infra structuur namens hun klanten. Aanpassing van installatie kopieën wordt uitgevoerd binnen de partner van de partners, maar de implementatie van de infra structuur vindt plaats in de Tenant van de klant. 
@@ -28,7 +28,7 @@ Maak een toepassings registratie die door beide tenants wordt gebruikt om de afb
 1. Selecteer **nieuwe registratie** in het menu boven aan de pagina.
 1. Typ *myGalleryApp*in **naam**.
 1. In **ondersteunde account typen**selecteert u **accounts in een organisatorische map en persoonlijke micro soft-accounts**.
-1. Typ *https://www.microsoft.com* in de omleidings-URI en selecteer vervolgens **registreren**. Nadat de app-registratie is gemaakt, wordt de overzichts pagina geopend.
+1. In de **omleidings-URI**typt u *https://www.microsoft.com* en selecteert u vervolgens **registreren**. Nadat de app-registratie is gemaakt, wordt de overzichts pagina geopend.
 1. Op de pagina overzicht kopieert u de **toepassings-id** en slaat u deze later op.   
 1. Selecteer **certificaten & geheimen**en selecteer vervolgens **Nieuw client geheim**.
 1. Typ in **Beschrijving**de *Galerie multi tenant-app-geheim voor gedeelde installatie kopieën*.
@@ -46,7 +46,7 @@ Geef de app-registratie toestemming om de galerie met gedeelde afbeeldingen te g
 
 ## <a name="give-tenant-2-access"></a>Toegang tot Tenant 2 verlenen
 
-Tenant 2 toegang verlenen tot de toepassing door een aanmelding aan te vragen met behulp van een browser. *Vervang\<Tenant2-id >* door de Tenant-id voor de Tenant waarmee u de galerie met installatie kopieën wilt delen. Vervang de toepassings- *id (client) > door de toepassings-id van de app-registratie die u hebt gemaakt. \<* Wanneer u de vervangingen hebt uitgevoerd, plakt u de URL in een browser en volgt u de aanmeldings prompts om u aan te melden bij Tenant 2.
+Tenant 2 toegang verlenen tot de toepassing door een aanmelding aan te vragen met behulp van een browser. Vervang *\<Tenant2-id >* door de Tenant-id voor de Tenant waarmee u uw galerie met afbeeldingen wilt delen. Vervang *\<-id van de toepassing (client) >* met de toepassings-id van de app-registratie die u hebt gemaakt. Wanneer u de vervangingen hebt uitgevoerd, plakt u de URL in een browser en volgt u de aanmeldings prompts om u aan te melden bij Tenant 2.
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 
