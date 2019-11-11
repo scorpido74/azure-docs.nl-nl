@@ -1,53 +1,18 @@
 - name: Documentatie over basisprincipes
   href: index.yml
-- name: Architectuur en ontwerp
-  href: overview.md
+- name: Overzicht
   items:
+    - name: Inleiding tot Azure-beveiliging
+      href: overview.md
     - name: Gedeelde verantwoordelijkheid in de cloud
       href: shared-responsibility.md
-    - name: Geavanceerde detectie van bedreigingen
-      displayName: 'vulnerability, virus, IDs, incident'
-      href: threat-detection.md
-    - name: Logboekregistratie en bewaking in Azure
-      displayName: incident
-      href: log-audit.md
-    - name: Azure-netwerkbeveiliging
-      displayName: 'firewall, ssl, vpn, IDs, gateway, https, application gateway, azure application gateway, ips, waf'
-      href: 'https://azure.microsoft.com/resources/azure-network-security/'
-    - name: Isolatie in de Azure-cloud
-      displayName: trust boundary
-      href: isolation-choices.md
-    - name: Veilige hybride netwerkarchitectuur
-      displayName: trust boundary
-      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+- name: Workloads beveiligen in Azure
+  items:
     - name: Technische mogelijkheden voor beveiliging
       href: technical-capabilities.md
-  expanded: false
-- name: Gegevensbeveiliging en -versleuteling
-  href: encryption-overview.md
-  items:
-    - name: Databasebeveiliging
-      href: database-security-overview.md
-      items:
-        - name: Aanbevolen procedures
-          href: database-best-practices.md
-        - name: Controlelijst voor beveiliging
-          href: database-security-checklist.md
-    - name: Schijfversleuteling
-      items:
-        - name: Aanbevolen procedures
-          displayName: transit
-          href: data-encryption-best-practices.md
-        - name: Gegevensversleuteling in rust
-          href: encryption-atrest.md
-        - name: Azure Disk Encryption voor virtuele machines
-          displayName: virtual machines and virtual machine scale sets
-          href: azure-disk-encryption-vms-vmss.md
-    - name: Gids voor opslagbeveiliging
-      href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
-    - name: Klanten-lockbox
-      href: customer-lockbox-overview.md
-- name: Platform en infrastructuur
+    - name: Ingebouwde beveiligingsmaatregelen
+      href: security-controls.md
+- name: Azure-platform en -infrastructuur
   items:
     - name: Beveiligingsinfrastructuur
       href: infrastructure.md
@@ -73,40 +38,64 @@
           href: infrastructure-integrity.md
         - name: Gegevensbeveiliging
           href: protection-customer-data.md
-    - name: Microsoft Antimalware
-      displayName: virus
-      href: antimalware.md
-    - name: IaaS-beveiliging
-      href: virtual-machines-overview.md
-      items:
-        - name: Best practices voor IaaS-workloads
-          displayName: patch
-          href: iaas.md
-        - name: Azure Marketplace-installatiekopieën
-          href: azure-marketplace-images.md
-    - name: Identiteitsbeheer
+    - name: Isolatie in de Azure-cloud
+      href: isolation-choices.md
+- name: Identiteitsbeheer
+  items:
+    - name: Beveiligingsoverzicht
       href: identity-management-overview.md
-      items:
-        - name: Kies Azure AD-verificatie
-          displayName: 'identity, active directory, seamless sso'
-          href: choose-ad-authn.md
-        - name: Controlelijst voor beveiliging
-          displayName: 'identity, active directory, password'
-          href: steps-secure-identity.md
-        - name: Zonder wachtwoord kiezen
-          displayName: 'identity, active directory, passwordless'
-          href: ad-passwordless.md
-        - name: Aanbevolen procedures
-          displayName: 'password, identity, active directory'
-          href: identity-management-best-practices.md
-    - name: Netwerkbeveiliging
-      displayName: 'firewall, ssl, vpn, IDs, gateway, https, azure application gateway, application gateway, ips, waf'
+    - name: Aanbevolen procedures
+      href: identity-management-best-practices.md
+    - name: Controlelijst voor beveiliging
+      href: steps-secure-identity.md
+    - name: Zonder wachtwoord kiezen
+      href: ad-passwordless.md
+    - name: Kies Azure AD-verificatie
+      href: choose-ad-authn.md
+- name: Netwerkbeveiliging
+  items:
+    - name: Beveiligingsoverzicht
       href: network-overview.md
+    - name: Aanbevolen procedures
+      href: network-best-practices.md
+    - name: DDoS Protection
+      href: ddos-best-practices.md
+    - name: Veilige hybride netwerkarchitectuur
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+- name: IaaS-beveiliging
+  items:
+    - name: Microsoft Antimalware
+      href: antimalware.md
+    - name: Overzicht van beveiliging van virtuele machines
+      href: virtual-machines-overview.md
+    - name: Best practices voor IaaS-workloads
+      href: iaas.md
+    - name: Azure Marketplace-installatiekopieën
+      href: azure-marketplace-images.md
+- name: 'Gegevensbeveiliging, versleuteling en opslag'
+  items:
+    - name: Gegevensbeveiliging en -versleuteling
+      href: encryption-overview.md
+    - name: Schijfversleuteling
       items:
         - name: Aanbevolen procedures
-          href: network-best-practices.md
-        - name: DDoS Protection
-          href: ddos-best-practices.md
+          href: data-encryption-best-practices.md
+        - name: Gegevensversleuteling in rust
+          href: encryption-atrest.md
+        - name: Azure Disk Encryption voor virtuele machines
+          href: azure-disk-encryption-vms-vmss.md
+    - name: Databasebeveiliging
+      items:
+        - name: Overzicht
+          href: database-security-overview.md
+        - name: Aanbevolen procedures
+          href: database-best-practices.md
+        - name: Controlelijst voor beveiliging
+          href: database-security-checklist.md
+    - name: Gids voor opslagbeveiliging
+      href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+    - name: Klanten-lockbox
+      href: customer-lockbox-overview.md
 - name: Toepassing
   items:
     - name: PaaS
@@ -121,53 +110,32 @@
     - name: Azure Service Fabric-beveiliging
       href: service-fabric-best-practices.md
 - name: 'Controle, bewaking en bewerkingen'
-  href: management-monitoring-overview.md
   items:
-    - name: Controle en logboekregistratie
-      items:
-        - name: Extern beheer en beveiliging
-          href: management.md
-        - name: Azure-logboekintegratie
+    - name: Geavanceerde beveiliging tegen bedreigingen
+      href: threat-detection.md
+    - name: Logboekregistratie en bewaking in Azure
+      href: log-audit.md
+    - name: Beveiligingsbeheer en -controle
+      href: management-monitoring-overview.md
     - name: Operationele beveiliging
-      href: operational-overview.md
       items:
+        - name: Overzicht
+          href: operational-overview.md
         - name: Aanbevolen procedures
           href: operational-best-practices.md
         - name: Controlelijst voor beveiliging
           href: operational-checklist.md
-- name: Governance en naleving
-  displayName: 'blueprint, privacy, certifications'
-  items:
-    - name: AU PROTECTED
-      displayName: 'blueprint, privacy, certifications'
-    - name: FedRAMP
-      displayName: 'blueprint, privacy, certifications'
-    - name: FFIEC
-      displayName: 'blueprint, privacy, certifications'
-    - name: HIPAA/HITRUST
-      displayName: 'blueprint, privacy, certifications'
-    - name: NIST SP 800-171
-      displayName: 'blueprint, privacy, certifications'
-    - name: PCI DSS
-      displayName: 'blueprint, privacy, certifications'
-    - name: UK NHS
-      displayName: 'blueprint, privacy, certifications'
-    - name: UK OFFICIAL
-      displayName: 'blueprint, privacy, certifications'
-- name: Technische documenten over beveiliging
-  href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
-- name: Azure-beveiligingsservices
-  href: services-technologies.md
-- name: Aanbevolen procedures
-  href: best-practices-and-patterns.md
 - name: Resources
   items:
-    - name: Ingebouwde beveiligingsmaatregelen
-      href: security-controls.md
+    - name: Azure-beveiligingsservices
+      href: services-technologies.md
+    - name: Technische documenten over beveiliging
+      href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
+    - name: Aanbevolen procedures
+      href: best-practices-and-patterns.md
     - name: Adviezen voor cyberbeveiliging
       href: cyber-services.md
     - name: Een ondersteuningsticket voor een beveiligingsgebeurtenis maken
       href: event-support-ticket.md
     - name: Pen testen
-      displayName: penetration
       href: pen-testing.md

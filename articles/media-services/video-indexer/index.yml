@@ -16,7 +16,7 @@ metadata:
   ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: 'Azure Media Services Video Indexer is een cloudtoepassing die is gebouwd met behulp van Azure Media Analytics, Azure Search en Cognitive Services (zoals de Face-API, Microsoft Translator, de Computer Vision-API en Custom Speech Service). Hiermee kunt u inzichten ophalen uit uw video''s met Video Indexer-modellen voor audio en video.<br/>Als u het verschil wilt weten tussen het gebruik van instellingen van Video Indexer en Media Services, raadpleegt u het <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">vergelijkingsdocument</a>.'
+  description: 'Azure Media Services Video Indexer is een cloudtoepassing die is gebouwd met behulp van Azure Media Analytics, Azure Cognitive Search en Cognitive Services (zoals de Face-API, Microsoft Translator, de Computer Vision-API en Custom Speech Service). Hiermee kunt u inzichten ophalen uit uw video''s met Video Indexer-modellen voor audio en video.<br/>Als u het verschil wilt weten tussen het gebruik van instellingen van Video Indexer en Media Services, raadpleegt u het <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">vergelijkingsdocument</a>.'
 sections:
   - items:
       - type: list

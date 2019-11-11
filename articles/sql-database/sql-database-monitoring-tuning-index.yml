@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: 'Azure SQL Database: Bewaking en afstemming'
+title: Bewaking en afstemming
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: Azure SQL Database - bewaking en afstemming
+  title: Azure SQL Database - Bewaking en afstemming
   meta.description: Learn how to monitor and tune your Azure SQL database.
   services: sql-database
   ms.subservice: performance
@@ -24,34 +24,34 @@ sections:
         className: cardsM
         columns: 3
         items:
-          - title: Query prestatie-inzichten
+          - title: Inzicht in queryprestaties
             href: /azure/sql-database/sql-database-query-performance
-            html: <p>Eenvoudig gebruik van bronnen in uw Azure SQL-database (één of gegroepeerde database) met behulp van ingebouwde mogelijkheden voor bewaking in Azure portal.</p>
+            html: <p>Bewaak eenvoudig uw resourcegebruik in uw Azure SQL-database (individuele database of pooldatabase) door gebruik te maken van de ingebouwde bewakingsmogelijkheden in de Azure-portal.</p>
           - title: Azure SQL-analyse
             href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql?toc=/azure/sql-database/toc.json'
-            html: '<p>Azure SQL Analytics-bewaking, kunt u eenvoudig een grote vloot van databases, elastische pools en -exemplaren in één deelvenster bedrijfsanalyses.</p>'
+            html: '<p>Met Azure SQL-analyse kunt u gemakkelijk een groot aantal databases, elastische pools en exemplaren bewaken in één venster.</p>'
           - title: Automatisch instellen
             href: /azure/sql-database/sql-database-automatic-tuning
-            html: '<p>Automatisch afstemmen automatisch wordt aanbevolen en lost problemen met het plan van de query, en maakt en verwijdert indexen om prestaties te verbeteren.</p>'
-          - title: Intelligent Performance Insight
+            html: '<p>Automatisch afstemmen biedt automatische aanbevelingen, lost problemen met queryplannen op, en maakt en verwijdert indexen om zo de prestaties te verbeteren.</p>'
+          - title: Intelligente prestatie-inzichten
             href: /azure/sql-database/sql-database-intelligent-insights
-            html: <p>Ingebouwde intelligentie in Azure SQL Database detecteert verstorende gebeurtenissen die leiden slechte prestaties in uw databases tot en bevat aanbevelingen voor beperking indien mogelijk.</p>
+            html: '<p>Ingebouwde intelligentie in Azure SQL Database detecteert storende gebeurtenissen die slechte prestaties in uw databases veroorzaken en biedt beperkende aanbevelingen, wanneer mogelijk.</p>'
           - title: Aanbevelingen voor prestaties
             href: /azure/sql-database/sql-database-advisor
-            html: <p>Azure SQL Database biedt aanbevelingen die u kunnen helpen optimaliseren van uw database in Azure portal.</p>
+            html: <p>Azure SQL Database biedt aanbevelingen die u helpen uw database in de Azure-portal de optimaliseren.</p>
           - title: Metrische gegevens en logboekregistratie
             href: /azure/sql-database/sql-database-metrics-diag-logging
-            html: '<p>Diagnostische telemetrie van uw database naar Azure SQL Analytics, Azure Event Hubs of Azure Blob-opslag voor aangepaste integraties Stream.</p>'
+            html: '<p>Stream de diagnostische telemetrie van uw database naar Azure SQL-analyse, Azure Event Hubs of Azure Blob-opslag voor aangepaste integraties.</p>'
   - title: Meer bronnen
     items:
       - type: paragraph
-        text: Meer informatie over extra functies die kunnen dat u de prestaties van uw database te optimaliseren.
+        text: Meer informatie over aanvullende functies die u kunnen helpen de prestaties van uw database te optimaliseren.
       - type: list
         style: unordered
         items:
           - html: Meer informatie over <a href="sql-database-monitor-tune-overview.md">bewaking en afstemming</a> in Azure SQL Database.
-          - html: 'Informatie over hoe <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json">intelligente queryverwerking</a> de prestaties van uw database kunt verbeteren.'
-          - html: 'Instellen van en werken <a href="sql-database-operate-query-store.md">Query Store</a>, de kern van SQL Server-technologie waarmee u realtime inzicht krijgt in prestaties van query''s.'
-          - html: Meer informatie over het gebruik van <a href="sql-database-operate-query-store.md">dynamische beheerweergaven</a> voor het analyseren van de prestaties van uw workload.
-          - html: Informatie over het bewaken van de database-activiteiten met <a href="sql-database-xevent-db-diff-from-svr.md">XEvents</a>.
-          - html: Meer informatie over het <a href="sql-database-performance-guidance.md">handmatig af te stemmen uw database</a>.
+          - html: 'Meer informatie over hoe <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json">intelligente queryverwerking</a> de prestaties van uw database kan verbeteren.'
+          - html: '<a href="sql-database-operate-query-store.md">Query-opslag</a> instellen en gebruiken, de belangrijke SQL Server-technologie waarmee u realtime inzicht krijgt in queryprestaties.'
+          - html: Meer informatie over hoe u <a href="sql-database-operate-query-store.md">Dynamische beheerweergave</a> gebruikt om de prestaties van uw workload te analyseren.
+          - html: Meer informatie over hoe u databaseactiviteiten bewaakt met <a href="sql-database-xevent-db-diff-from-svr.md">XEvents</a>.
+          - html: Meer informatie over hoe u <a href="sql-database-performance-guidance.md">uw database handmatig afstemt</a>.

@@ -138,6 +138,8 @@
           href: resource-group-create-multiple.md
         - name: Resources op abonnementsniveau
           href: deploy-to-subscription.md
+        - name: Resources op beheergroepniveau
+          href: deploy-to-management-group.md
     - name: Sjablonen implementeren
       items:
         - name: Implementeren - portal

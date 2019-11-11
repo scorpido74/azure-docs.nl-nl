@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure SQL Database - schaalbaarheid
+title: Schaalbaarheid
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: Azure SQL Database - schaalbaarheid
+  title: Azure SQL Database - Schaalbaarheid
   meta.description: Learn how to scale your Azure SQL Database.
   services: sql-database
   ms.subservice: scale-out
@@ -19,7 +19,7 @@ metadata:
 sections:
   - items:
       - type: paragraph
-        text: Azure SQL Database kunt u eenvoudig schalen u database door het toevoegen van dat meer rekenkracht (omhoog) of meer database-eenheden (scale-out) toe te voegen.
+        text: Met Azure SQL Database kunt u uw database eenvoudig schalen door meer rekenkracht (omhoog schalen) of meer database-eenheden (uitschalen) toe te voegen.
       - type: list
         style: cards
         className: cardsM
@@ -27,28 +27,28 @@ sections:
         items:
           - title: Omhoog schalen
             href: /azure/sql-database/sql-database-scale-resources
-            html: <p>Eenvoudig toevoegen of verwijderen van resources in uw SQL-Database om te kunnen vinden van de beste prijs-prestatieverhouding verhouding of prestatieproblemen oplossen.</p>
-          - title: Uitschaling lezen
+            html: <p>Voeg eenvoudig resources toe of verwijder ze in uw SQL Database om de beste prijs-prestatieverhouding te vinden of prestatieproblemen te beperken.</p>
+          - title: Uitschalen voor leesbewerking
             href: /azure/sql-database/sql-database-read-scale-out
-            html: '<p>Kritieke bedrijfslaag biedt u een replica van-kosten van de database waar u rapporten, analyses en andere alleen-lezen query''s op een kopie van gegevens uitvoeren kunt.</p>'
+            html: '<p>De Bedrijfskritieke laag biedt u een gratis replica van uw database waarin u rapporten, analyses en andere alleen-lezen-query''s uitvoert op een gegevenskopie.</p>'
           - title: Database-sharding
             href: /azure/sql-database/sql-database-elastic-scale-introduction
-            html: <p>U kunt meerdere databases shards scale-out van uw database dan de maximale reken- en opslaglimieten voor individuele databases.</p>
+            html: <p>U kunt meerdere databaseshards gebruiken om uw database verder uit te schalen dan de maximale reken- en opslaglimiet voor individuele databases.</p>
           - title: Elastische query’s
             href: /azure/sql-database/sql-database-elastic-query-overview
-            html: <p>Elastische query's kunnen u uitvoert standard Transact-SQL-query's in een set van wereldwijd gedistribueerde database shards.</p>
+            html: <p>Met elastische query's kunt u standaard Transact-SQL-query's uitvoeren op een set globaal gedistribueerde databaseshards.</p>
           - title: Elastische transacties
             href: /azure/sql-database/sql-database-elastic-transactions-overview
-            html: <p>Wereldwijd gedistribueerde transacties gebruiken om ervoor te zorgen consistent databasearchief toegang tot uw gedistribueerde gegevens.</p>
+            html: <p>Gebruik globaak gedistribueerde transacties om te zorgen voor transactioneel consistente toegang tot uw gedistribueerde gegevens.</p>
           - title: Databaseoverschrijdende taken
             href: /azure/sql-database/elastic-jobs-overview
-            html: <p>Een set van databases met elastische taken Cross database behouden.</p>
+            html: <p>Onderhoud een set databases met elastische taken in kruislingse databases.</p>
   - title: Meer bronnen
     items:
       - type: paragraph
-        text: Meer informatie over extra functies die u helpen kunnen bij het schalen van uw gegevens.
+        text: Meer informatie over aanvullende functies die u kunnen helpen uw gegevens te schalen.
       - type: list
         style: ordered
         items:
-          - html: '<a href="https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine">Gekoppelde server</a> zijn core SQL Server Database Engine-functie waarmee u gedistribueerde query''s van Transact-SQL-code uitvoeren op een andere database-engines.'
-          - html: <a href="sql-database-geo-replication-overview.md">Geo-replicatie</a> Hiermee kunt u een willekeurig aantal leesbare replica's in verschillende regio's.
+          - html: '<a href="https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine">Gekoppelde server</a> is een belangrijke SQL Server Database Engine-functie waarmee u gedistribueerde query''s uitvoert van Transact-SQL-code naar andere database-engines.'
+          - html: Met <a href="sql-database-geo-replication-overview.md">geo-replicatie</a> kunt u een willekeurig aantal leesbare replica's in verschillende regio's plaatsen.
