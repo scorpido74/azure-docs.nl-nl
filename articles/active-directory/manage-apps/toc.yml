@@ -353,6 +353,10 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: Problemen met CORS in de toepassingsproxy
               href: application-proxy-understand-cors-issues.md
+    - name: 'Veilige, hybride toegang (cloud en on-premises)'
+      items:
+        - name: Verouderde apps beveiligen met app-leveringscontrollers of -netwerken
+          href: secure-hybrid-access.md
 - name: Naslaginformatie
   items:
     - name: Toepassingsinrichting (SCIM)

@@ -45,10 +45,12 @@
       href: azure-netapp-files-set-up-capacity-pool.md
     - name: Een subnet delegeren aan Azure NetApp Files
       href: azure-netapp-files-delegate-subnet.md
-    - name: Een NFS-volume maken voor Azure NetApp Files
-      href: azure-netapp-files-create-volumes.md
     - name: Een SMB-volume maken voor Azure NetApp Files
       href: azure-netapp-files-create-volumes-smb.md
+    - name: Een NFS-volume maken voor Azure NetApp Files
+      href: azure-netapp-files-create-volumes.md
+    - name: NFSv4.1-standaarddomein configureren voor Azure NetApp Files
+      href: azure-netapp-files-configure-nfsv41-domain.md
     - name: Exportbeleid voor een NFS-volume configureren
       href: azure-netapp-files-configure-export-policy.md
     - name: Volumes beheren

@@ -106,12 +106,16 @@
 - name: Resources
   items:
     - name: Prijzen
-      href: 'https://azure.microsoft.com/en-us/pricing/details/app-configuration/'
+      href: 'https://azure.microsoft.com/pricing/details/app-configuration/'
     - name: Video's
       items:
         - name: Aan de slag
           href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
         - name: Functiebeheer
           href: 'https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement'
+        - name: Gecentraliseerde configuratie eenvoudig maken
+          href: 'https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210'
+        - name: Azure App Configuration in Cloud Native Show
+          href: 'https://www.youtube.com/watch?v=DJqmA5PcfzE'
     - name: Productfeedback geven
       href: 'https://github.com/Azure/AppConfiguration/issues'
