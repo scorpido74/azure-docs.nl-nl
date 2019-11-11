@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: 175c5173091bee85a5c9fc4a50e9df5d3f73da13
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c7ef648dd2610c337bc9146e7a52c04d91907c8e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300917"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904915"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Zelf studie: een beheer programma implementeren
 
@@ -56,15 +56,15 @@ Volg deze instructies voor het implementeren van de Azure resource management-sj
     - Als u in een Cloud Solution Provider-abonnement implementeert, volgt u deze instructies om te implementeren in Azure:
         1. Schuif omlaag en klik met de rechter muisknop op **implementeren naar Azure**, en selecteer vervolgens **koppelings locatie kopiëren**.
         2. Open een tekst editor zoals Klad blok en plak de koppeling daar.
-        3. Voer direct na <https://portal.azure.com/> en vóór de hashtag (#) een apen staartje (@) in, gevolgd door de domein naam van de Tenant. Hier volgt een voor beeld van de notatie: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
+        3. Typ direct na <https://portal.azure.com/> en vóór de hashtag (#) een apen staartje (@) gevolgd door de domein naam van de Tenant. Hier volgt een voor beeld van de indeling: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
         4. Meld u aan bij de Azure Portal als gebruiker met beheerders-en Inzender machtigingen voor het Cloud Solution Provider-abonnement.
         5. Plak de koppeling die u naar de tekst editor hebt gekopieerd naar de adres balk.
 
 ### <a name="guidance-for-template-parameters"></a>Richt lijnen voor sjabloon parameters
 U kunt als volgt para meters invoeren voor het configureren van het hulp programma:
 
-- Dit is de URL van de extern bureau blad-Broker: https: \//rdbroker. WVD. Microsoft. com/
-- Dit is de bron-URL: https: \//Mrs-Prod. AAM. GBL/Mevr-RDInfra-Prod
+- Dit is de URL van de extern bureau blad-Broker: https:\/-rdbroker.wvd.microsoft.com/
+- Dit is de bron-URL: https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod
 - Gebruik uw AAD-referenties met MFA uitgeschakeld om u aan te melden bij Azure. Bekijk [wat u nodig hebt om de Azure Resource Manager-sjabloon uit te voeren](#what-you-need-to-run-the-azure-resource-manager-template).
 - Gebruik een unieke naam voor de toepassing die wordt geregistreerd in uw Azure Active Directory voor het beheer programma. bijvoorbeeld Apr3UX.
 
@@ -103,9 +103,14 @@ Volg deze instructies om het hulp programma te starten:
 1. Selecteer de Azure-app Services-resource met de naam die u in de sjabloon hebt gegeven (bijvoorbeeld Apr3UX) en navigeer naar de URL die eraan is gekoppeld. bijvoorbeeld <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Meld u aan met de referenties van uw Windows-virtueel bureau blad.
 3. Wanneer u wordt gevraagd om een Tenant groep te kiezen, selecteert u **standaard Tenant groep** in de vervolg keuzelijst.
+4. Wanneer u standaard Tenant groep selecteert, wordt er een menu aan de rechter kant van het venster weer gegeven. Zoek in dit menu de naam van uw Tenant groep en selecteer deze.
 
 > [!NOTE]
 > Als u een aangepaste Tenant groep hebt, voert u de naam hand matig in in plaats van te kiezen in de vervolg keuzelijst.
+
+## <a name="report-issues"></a>Problemen melden
+
+Als u problemen ondervindt met het beheer programma of andere virtuele bureau blad-hulpprogram ma's van Windows, volgt u de instructies in [arm-sjablonen voor extern bureaublad-services](https://github.com/Azure/RDS-Templates/blob/master/README.md) om ze te rapporteren op github.
 
 ## <a name="next-steps"></a>Volgende stappen
 
