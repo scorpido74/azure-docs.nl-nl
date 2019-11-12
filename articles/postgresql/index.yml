@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Documentatie voor Azure Database for PostgreSQL
-summary: "Azure Database for PostgreSQL is een relationele databaseservice op basis van de open-source PostgreSQL-database-engine. Deze volledig beheerde Database as a Service kan bedrijfskritieke workloads verwerken met voorspelbare prestaties, beveiliging, hoge beschikbaarheid en dynamische schaalbaarheid. De service is beschikbaar in twee implementatieopties: enkele server en Hyperscale (Citus) (preview). De optie Hyperscale (Citus) schaalt query's horizontaal op meerdere machines met behulp van sharding en is geschikt voor toepassingen die betere schaalbaarheid en prestaties vereisen. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Database voor PostgreSQL gebruikt."
+summary: "Azure Database for PostgreSQL is een relationele databaseservice op basis van de open-source PostgreSQL-database-engine. Deze volledig beheerde Database as a Service kan bedrijfskritieke workloads verwerken met voorspelbare prestaties, beveiliging, hoge beschikbaarheid en dynamische schaalbaarheid. De service is beschikbaar in twee implementatieopties: enkele server en Hyperscale (Citus). De optie Hyperscale (Citus) schaalt query's horizontaal op meerdere machines met behulp van sharding en is geschikt voor toepassingen die betere schaalbaarheid en prestaties vereisen. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Database voor PostgreSQL gebruikt."
 metadata:
   description: Azure Database voor PostgreSQL is een relationele databaseservice in de Microsoft Cloud die is gebouwd voor ontwikkelaars op basis van de open-source PostgreSQL-database-engine.
   author: rachel-msft
@@ -8,12 +8,12 @@ metadata:
   ms.date: 08/30/2019
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 70888f27f346c930d37652a3ddd02a0c4d5f65c1
-  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.openlocfilehash: 4deeec3686d2e3b0a150b74a222f7f1eab0a93fd
+  ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73499901"
+  ms.lasthandoff: 11/12/2019
+  ms.locfileid: "73932229"
 landingContent:
 - title: Algemene informatie over Azure Database for PostgreSQL
   linkLists:
@@ -57,11 +57,11 @@ landingContent:
       url: /azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json
     - text: De service controleren en afstemmen
       url: tutorial-monitor-and-tune.md
-- title: Een Hyperscale (Citus)-cluster maken (preview)
+- title: Een Hyperscale-cluster (Citus) maken
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Een Hyperscale (Citus)-cluster (preview) maken in de Azure-portal
+    - text: Een Hyperscale-cluster (Citus) maken in de Azure-portal
       url: quickstart-create-hyperscale-portal.md
   - linkListType: tutorial
     links:

@@ -134,6 +134,8 @@
               href: azure-expressroute-connection.md
             - name: DNS-naamomzettingen configureren
               href: on-premises-dns-setup.md
+            - name: Maximaal beschikbare site-naar-site-VPN-verbindingen configureren
+              href: high-availability-vpn-connection.md
         - name: VMware-platform
           items:
             - name: Informatie over het machtigingsmodel van de privécloud

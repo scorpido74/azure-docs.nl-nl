@@ -1183,19 +1183,17 @@
               href: platform/autoscale-webhook-email.md
         - name: PowerShell
           items:
-            - name: Azure PowerShell-voorbeelden
+            - name: Beheren met PowerShell
               href: platform/powershell-quickstart-samples.md
-            - name: PowerShell-cmdlets
+            - name: Waarschuwingen maken
+              href: app/powershell-alerts.md
+            - name: Log Analytics beheren
               href: platform/powershell-workspace-configuration.md
-            - name: Toepassingen
+            - name: Application Insights
               items:
-                - name: Application Insights-resources maken
+                - name: Application Insights beheren
                   href: app/powershell.md
-                - name: Resources maken
-                  href: app/powershell-script-create-resource.md
-                - name: Waarschuwingen instellen
-                  href: app/powershell-alerts.md
-                - name: Diagnostische gegevens van Azure ophalen
+                - name: Azure Cloud Services beheren
                   href: app/powershell-azure-diagnostics.md
         - name: Azure CLI-voorbeelden
           href: platform/cli-samples.md
