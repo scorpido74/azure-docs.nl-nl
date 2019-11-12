@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: builds van containerinstallatiekopieën automatiseren - Azure Container Registry-taken'
+title: Zelf studie-een installatie kopie maken op basis van code door voeren-Azure Container Registry taken
 description: In deze zelfstudie leert u hoe u een Azure Container Registry-taak configureert om builds van containerinstallatiekopieën automatisch te activeren in de cloud wanneer u broncode naar een Git-opslagplaats doorvoert.
 services: container-registry
 author: dlepow
@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 05/04/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 25a0ef528d67deb5ea71720d2ff8e4d62b3b98a5
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: d01863979f4cf74d544ef2b1ff121022abb8d4f6
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744571"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931427"
 ---
-# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Zelfstudie: builds van containerinstallatiekopieën in de cloud automatiseren bij het doorvoeren van broncode
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Zelf studie: builds van container installatie kopieën in de Cloud automatiseren bij het door voeren van de bron code
 
 Naast een [snelle taak](container-registry-tutorial-quick-task.md)ondersteunt ACR-taken geautomatiseerde docker-container installatie kopieën in de Cloud wanneer u bron code doorvoert in een Git-opslag plaats.
 
-In deze zelf studie bouwt en pusht uw ACR-taak één container installatie kopie die is opgegeven in een Dockerfile wanneer u de bron code doorvoert in een Git-opslag plaats. Zie[zelf studie: voor het maken van een [taak met meerdere stappen](container-registry-tasks-multi-step.md) die gebruikmaakt van een yaml-bestand voor het definiëren van stappen voor het bouwen, pushen en optioneel testen van meerdere containers op code doorvoer. Voer een container werk stroom met meerdere stappen uit in de Cloud wanneer u de](container-registry-tutorial-multistep-task.md)bron code doorvoert. Zie [reparatie van besturings systemen en Framework automatiseren met ACR-taken](container-registry-tasks-overview.md) voor een overzicht van ACR-taken
+In deze zelf studie bouwt en pusht uw ACR-taak één container installatie kopie die is opgegeven in een Dockerfile wanneer u de bron code doorvoert in een Git-opslag plaats. Voor het maken van een [taak met meerdere stappen](container-registry-tasks-multi-step.md) die gebruikmaakt van een yaml-bestand voor het definiëren van stappen voor het bouwen, pushen en optioneel testen van meerdere containers op code doorvoer, raadpleegt [u zelf studie: een werk stroom voor meerdere stappen in de Cloud uitvoeren wanneer u de bron code doorvoert](container-registry-tutorial-multistep-task.md). Zie [reparatie van besturings systemen en Framework automatiseren met ACR-taken](container-registry-tasks-overview.md) voor een overzicht van ACR-taken
 
 In deze zelf studie:
 
@@ -63,7 +63,7 @@ az acr task create \
 ```
 
 > [!IMPORTANT]
-> Als u eerder taken hebt gemaakt tijdens het voor beeld `az acr build-task` met de opdracht, moeten deze taken opnieuw worden gemaakt met de opdracht [AZ ACR Task][az-acr-task] .
+> Als u eerder taken hebt gemaakt tijdens het voor beeld met de `az acr build-task` opdracht, moeten deze taken opnieuw worden gemaakt met de opdracht [AZ ACR Task][az-acr-task] .
 
 Deze taak geeft aan dat elke keer dat code wordt doorgevoerd naar de *master*-vertakking in de opslagplaats zoals is opgegeven door `--context`, ACR Tasks dan de containerinstallatiekopie van de code in die vertakking bouwt. Er wordt gebruik gemaakt van het Dockerfile dat is opgegeven door `--file` vanuit de hoofdmap. Het argument `--image` geeft een parameterwaarde van `{{.Run.ID}}` aan voor het versiegedeelte van de tag van de installatiekopie, zodat de gebouwde installatiekopie correleert met een specifieke build en uniek is gelabeld.
 
