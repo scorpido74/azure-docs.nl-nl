@@ -1,53 +1,53 @@
 ---
-title: Controleer de status van uw Azure IoT Hub | Microsoft Docs
-description: Azure Monitor en Azure Resource Health gebruiken om te controleren van uw IoT-Hub en snel problemen vaststellen
+title: De status van uw Azure-IoT Hub controleren | Microsoft Docs
+description: Azure Monitor en Azure Resource Health gebruiken om snel uw IoT Hub te controleren en problemen vast te stellen
 author: kgremban
 manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 11/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 6dea1add1e329cfc894068732898a856a69c9b4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66166194"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929696"
 ---
-# <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Controleer de status van Azure IoT Hub en snel problemen vaststellen
+# <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>De status van Azure IoT Hub controleren en snel problemen vaststellen
 
-Bedrijven die Azure IoT Hub implementeren verwachten betrouwbare prestaties van hun resources. Voor hulp bij het onderhouden van een sluiten controle over uw bewerkingen, IoT-Hub volledig is geïntegreerd met [Azure Monitor](../azure-monitor/index.yml) en [Azure Resource Health](../service-health/resource-health-overview.md). Deze twee services werken zodat u de gegevens die u nodig hebt om uw IoT-oplossingen en die worden uitgevoerd in een status in orde te houden.
+Bedrijven die Azure IoT Hub implementeren, verwachten betrouw bare prestaties van hun resources. IoT Hub is volledig geïntegreerd met [Azure monitor](../azure-monitor/index.yml) en [Azure resource Health](../service-health/resource-health-overview.md)om u te helpen bij het bewaken van uw activiteiten. Deze twee services zijn geschikt om u de gegevens te geven die u nodig hebt om uw IoT-oplossingen te laten werken met een goede status.
 
-Azure Monitor is één bron van controle en registratie voor uw Azure-services. U kunt de diagnostische logboeken die Azure Monitor genereert Azure Monitor-Logboeken, Event Hubs of Azure Storage voor de verwerking van aangepaste verzenden. Instellingen voor het metrische en diagnostische gegevens van Azure Monitor kunnen u inzicht in de prestaties van uw resources. Doorgaan met het lezen van dit artikel voor meer informatie over hoe u [gebruikt Azure Monitor](#use-azure-monitor) met uw IoT-hub. 
+Azure Monitor is een enkele bron van bewaking en logboek registratie voor al uw Azure-Services. U kunt de diagnostische logboeken verzenden die Azure Monitor gegenereerd voor Azure Monitor logboeken, Event Hubs of Azure Storage voor aangepaste verwerking. Met de instellingen voor gegevens en diagnostische gegevens van Azure Monitor krijgt u inzicht in de prestaties van uw resources. Ga verder met het lezen van dit artikel voor meer informatie over het [gebruik van Azure monitor](#use-azure-monitor) met uw IOT-hub. 
 
 > [!IMPORTANT]
-> De gebeurtenissen die zijn gegenereerd door de IoT Hub-service met behulp van Azure Monitor logboeken met diagnostische gegevens zijn niet gegarandeerd betrouwbaar of geordende. Sommige gebeurtenissen kunnen verloren of die niet de juiste volgorde worden geleverd. Logboeken met diagnostische gegevens ook zijn niet bedoeld om te worden realtime en het duurt enkele minuten voor gebeurtenissen naar uw keuze van de bestemming wordt geschreven.
+> De gebeurtenissen die worden verzonden door de IoT Hub-service met behulp van Azure Monitor Diagnostische logboeken zijn niet betrouwbaar of besteld. Sommige gebeurtenissen kunnen verloren gaan of in de juiste volg orde worden geleverd. Diagnostische logboeken zijn ook niet geschikt voor realtime en het kan enkele minuten duren voordat gebeurtenissen worden geregistreerd in het doel van uw keuze.
 
-Azure Resource Health helpt u bij het diagnosticeren en ondersteuning krijgen wanneer een Azure-probleem gevolgen heeft voor uw resources. Huidige en eerdere status van geeft een dashboard voor elk van uw IoT-hubs. Ga verder met de sectie onder aan dit artikel voor meer informatie over het [gebruik Azure Resource Health](#use-azure-resource-health) met uw IoT-hub. 
+Azure Resource Health helpt u bij het vaststellen en verkrijgen van ondersteuning wanneer een Azure-probleem van invloed is op uw resources. Een dash board biedt de huidige en vorige integriteits status voor elk van uw IoT-hubs. Ga verder naar de sectie onder aan dit artikel voor meer informatie over het [gebruik van Azure resource Health](#use-azure-resource-health) met uw IOT-hub. 
 
-IoT Hub biedt ook een eigen metrische gegevens die u gebruiken kunt om te begrijpen van de status van uw IoT-resources. Zie voor meer informatie, [metrische gegevens van IoT-Hub begrijpen](iot-hub-metrics.md).
+IoT Hub biedt ook een eigen metrische gegevens die u kunt gebruiken om de status van uw IoT-resources te begrijpen. Zie [inzicht IOT hub metrische gegevens](iot-hub-metrics.md)voor meer informatie.
 
 ## <a name="use-azure-monitor"></a>Azure Monitor gebruiken
 
-Azure Monitor biedt diagnostische gegevens voor Azure-resources, wat betekent dat bewerkingen die binnen uw IoT-hub plaatsvinden te bewaken.
+Azure Monitor voorziet in diagnostische gegevens voor Azure-resources, wat betekent dat u bewerkingen kunt bewaken die plaatsvinden in uw IoT-hub.
 
-Azure Monitor diagnostische instellingen vervangt de IoT Hub-bewerkingen bewaken. Als u momenteel gebruikmaakt van bewerkingen controleren, moet u uw werkstromen migreren. Zie voor meer informatie, [migreren uit bewerkingen voor controle-instellingen voor diagnostische gegevens over](iot-hub-migrate-to-diagnostics-settings.md).
+De diagnostische instellingen van Azure Monitor vervangt de IoT Hub Operations monitor. Als u momenteel bewerkingen bewaken gebruikt, moet u uw werk stromen migreren. Zie voor meer informatie [migreren van bewerkingen bewaken naar Diagnostische instellingen](iot-hub-migrate-to-diagnostics-settings.md).
 
-Zie voor meer informatie over de specifieke metrische gegevens en gebeurtenissen die Azure Monitor bewaakt, [ondersteunde metrische gegevens met Azure Monitor](../azure-monitor/platform/metrics-supported.md) en [ondersteunde services, schema's en categorieën voor diagnostische logboeken van Azure](../azure-monitor/platform/diagnostic-logs-schema.md).
+Zie [ondersteunde metrische gegevens met Azure monitor](../azure-monitor/platform/metrics-supported.md) en [ondersteunde services, schema's en categorieën voor Diagnostische logboeken van Azure voor](../azure-monitor/platform/diagnostic-logs-schema.md)meer informatie over de specifieke metrische gegevens en gebeurtenissen die Azure monitor Watches.
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
-### <a name="understand-the-logs"></a>Logboeken begrijpen
+### <a name="understand-the-logs"></a>Meer informatie over de logboeken
 
-Azure Monitor houdt bij of verschillende bewerkingen die zich in IoT Hub voordoen. Elke categorie bevat een schema dat definieert hoe gebeurtenissen in die categorie worden gerapporteerd.
+Azure Monitor registreert verschillende bewerkingen die in IoT Hub optreden. Elke categorie heeft een schema dat definieert hoe gebeurtenissen in die categorie worden gerapporteerd.
 
 #### <a name="connections"></a>Verbindingen
 
-De verbindingen categorie nummers apparaat verbinding maken en gebeurtenissen loskoppelen van een IoT-hub, evenals fouten. Deze categorie is handig voor het identificeren van niet-geautoriseerde verbindingspogingen en of waarschuwingen wanneer u verbinding met de apparaten kwijtraken.
+De categorie verbindingen houdt het apparaat Connect en verbreekt gebeurtenissen van een IoT-hub en van fouten. Deze categorie is handig voor het identificeren van niet-geautoriseerde Verbindings pogingen en of waarschuwingen wanneer u de verbinding met apparaten verliest.
 
 > [!NOTE]
-> Voor betrouwbare verbindingsstatus van apparaten controleren [apparaat heartbeat](iot-hub-devguide-identity-registry.md#device-heartbeat).
+> Voor een betrouw bare verbindings status van apparaten controleert u de heartbeat van het [apparaat](iot-hub-devguide-identity-registry.md#device-heartbeat).
 
 ```json
 {
@@ -66,15 +66,15 @@ De verbindingen categorie nummers apparaat verbinding maken en gebeurtenissen lo
 }
 ```
 
-#### <a name="cloud-to-device-commands"></a>Cloud-naar-apparaatopdrachten
+#### <a name="cloud-to-device-commands"></a>Cloud-naar-apparaat-opdrachten
 
-De categorie cloud-naar-apparaatopdrachten houdt bij of fouten die optreden bij de IoT-hub en zijn gerelateerd aan de pijplijn cloud-naar-apparaat bericht. Deze categorie bevat fouten die vanaf optreden:
+De categorie Cloud-naar-apparaat-opdrachten houdt fouten bij die zich op de IoT-hub voordoen en zijn gerelateerd aan de Cloud-naar-apparaat-berichten pijplijn. Deze categorie bevat fouten die zich voordoen vanaf:
 
-* Verzenden van cloud-naar-apparaat-berichten (zoals niet-geautoriseerde afzender fouten)
-* Ontvangen van berichten van cloud-naar-apparaat (zoals levering overschrijdt het aantal fouten), en
-* Cloud-naar-apparaat bericht feedback ontvangen (zoals feedback verlopen fouten).
+* Cloud-naar-apparaat-berichten verzenden (zoals niet-geautoriseerde Sender fouten),
+* Cloud-naar-apparaat-berichten ontvangen (zoals het aantal leverings fouten is overschreden), en
+* Cloud-naar-apparaat-bericht feedback ontvangen (zoals verlopen feedback fouten).
 
-Deze categorie heeft geen runbookauteur fouten worden gedetecteerd wanneer het cloud-naar-apparaat-bericht is bezorgd, maar niet goed door het apparaat verwerkt.
+In deze categorie worden geen fouten onderschept wanneer het Cloud-naar-apparaat-bericht wordt bezorgd, maar vervolgens niet goed wordt verwerkt door het apparaat.
 
 ```json
 {
@@ -95,9 +95,9 @@ Deze categorie heeft geen runbookauteur fouten worden gedetecteerd wanneer het c
 }
 ```
 
-#### <a name="device-identity-operations"></a>Bewerkingen voor apparaat-id
+#### <a name="device-identity-operations"></a>Bewerkingen voor apparaat-id's
 
-De apparaatcategorie die identiteit operations houdt bij of fouten die optreden wanneer u probeert te maken, bijwerken of verwijderen van een vermelding in het identiteitenregister van uw IoT-hub. Het bijhouden van deze categorie is handig voor het inrichten van scenario's.
+De categorie apparaat-id bewerkingen houdt fouten bij die optreden wanneer u probeert een vermelding te maken, bij te werken of te verwijderen in het id-REGI ster van uw IoT-hub. Het bijhouden van deze categorie is handig voor het inrichten van scenario's.
 
 ```json
 {
@@ -120,13 +120,13 @@ De apparaatcategorie die identiteit operations houdt bij of fouten die optreden 
 
 #### <a name="routes"></a>Routes
 
-De categorie voor het doorsturen van bericht houdt bij of fouten die optreden tijdens de evaluatie van bericht route en eindpunt status van de waargenomen door de IoT Hub. Deze categorie omvat gebeurtenissen, zoals:
+In de categorie bericht routering worden fouten bijgehouden die optreden tijdens de bericht route-evaluatie en de eindpunt status, zoals wordt waargenomen door IoT Hub. Deze categorie bevat gebeurtenissen zoals:
 
-* Een regel resulteert in "niet-gedefinieerde",
-* IoT Hub een eindpunt markeert als onbestelbaar, of
-* Eventuele fouten die zijn ontvangen van een eindpunt. 
+* Een regel resulteert in "niet-gedefinieerd",
+* IoT Hub markeert een eind punt als Dead of
+* Eventuele fouten die zijn ontvangen van een eind punt. 
 
-Deze categorie bevat geen specifieke fouten over berichten zelf (zoals apparaat beperkingsfouten), die worden gerapporteerd in de categorie 'apparaattelemetrie'.
+Deze categorie bevat geen specifieke fouten voor de berichten zelf (zoals storingen in het apparaat), die worden gerapporteerd in de categorie telemetrie van het apparaat.
 
 ```json
 {
@@ -145,9 +145,9 @@ Deze categorie bevat geen specifieke fouten over berichten zelf (zoals apparaat 
 }
 ```
 
-#### <a name="device-telemetry"></a>Telemetrie van apparaten
+#### <a name="device-telemetry"></a>Telemetrie van apparaat
 
-De apparaatcategorie telemetrie houdt bij of fouten die optreden bij de IoT-hub en zijn gerelateerd aan de pijplijn telemetrie. Deze categorie bevat fouten die optreden bij het verzenden van telemetriegebeurtenissen (zoals beperking) en telemetriegebeurtenissen (zoals niet-geautoriseerde lezer) ontvangen. Deze categorie worden geen fouten veroorzaakt door de code die wordt uitgevoerd op het apparaat zelf gedetecteerd.
+De telemetrie-categorie van het apparaat houdt fouten bij die zich op de IoT-hub voordoen en zijn gerelateerd aan de telemetrie-pijp lijn. Deze categorie bevat fouten die optreden bij het verzenden van telemetrie-gebeurtenissen (zoals het beperken) en het ontvangen van telemetrie-gebeurtenissen (zoals niet-geautoriseerde lezer). Deze categorie kan geen fouten ondervangen die worden veroorzaakt door code die op het apparaat wordt uitgevoerd.
 
 ```json
 {
@@ -170,15 +170,15 @@ De apparaatcategorie telemetrie houdt bij of fouten die optreden bij de IoT-hub 
 
 #### <a name="file-upload-operations"></a>Bestandsuploadbewerkingen
 
-De categorie van bestand uploaden bijgehouden fouten die optreden bij de IoT-hub en zijn gerelateerd aan functionaliteit voor het uploaden van bestand. Deze categorie omvat:
+De categorie bestand uploaden houdt fouten bij die zich op de IoT-hub voordoen en zijn gerelateerd aan de functionaliteit voor het uploaden van bestanden. Deze categorie omvat:
 
-* Fouten die met de SAS-URI optreden, zoals wanneer het verloopt voordat een apparaat aan de hub van het uploaden van een voltooide gecommuniceerd.
+* Fouten die zich voordoen met de SAS-URI, zoals wanneer deze verlopen voordat een apparaat de hub van een voltooide upload ontvangt.
 
-* Kan geen uploads gemeld door het apparaat.
+* Mislukte uploads die zijn gerapporteerd door het apparaat.
 
-* Fouten die optreden wanneer een bestand niet in de opslag tijdens het maken van IoT-Hub melding weergegeven gevonden is.
+* Fouten die optreden wanneer een bestand niet wordt gevonden in de opslag tijdens het maken van IoT Hub meldings bericht.
 
-Deze categorie worden geen fouten die optreden wanneer het apparaat een bestand naar storage uploaden is gedetecteerd.
+Deze categorie kan geen fouten ondervangen die rechtstreeks optreden terwijl het apparaat een bestand naar de opslag uploadt.
 
 ```json
 {
@@ -200,9 +200,9 @@ Deze categorie worden geen fouten die optreden wanneer het apparaat een bestand 
 }
 ```
 
-#### <a name="cloud-to-device-twin-operations"></a>Cloud-naar-apparaat dubbele bewerkingen
+#### <a name="cloud-to-device-twin-operations"></a>Dubbele bewerkingen van het Cloud naar het apparaat
 
-De categorie van cloud-naar-apparaat dubbele bewerkingen bijgehouden service geïnitieerde gebeurtenissen op dubbele apparaten. Deze bewerkingen kunnen bevatten dubbele ophalen, bijwerken of vervangen van tags, en bijwerken of vervangen gewenste eigenschappen.
+De categorie met dubbele bewerkingen van Cloud naar apparaat houdt de door de service geïnitieerde gebeurtenissen op apparaat apparaatdubbels. Deze bewerkingen kunnen bestaan uit het ophalen van dubbele, update of vervangen Tags en het bijwerken of vervangen van gewenste eigenschappen.
 
 ```json
 {
@@ -222,9 +222,9 @@ De categorie van cloud-naar-apparaat dubbele bewerkingen bijgehouden service ge�
 }
 ```
 
-#### <a name="device-to-cloud-twin-operations"></a>Dubbele apparaat-naar-cloud-bewerkingen
+#### <a name="device-to-cloud-twin-operations"></a>Dubbele bewerkingen van het apparaat naar de Cloud
 
-De categorie van het dubbele apparaat-naar-cloud-bewerkingen bijgehouden apparaat geïnitieerde gebeurtenissen op dubbele apparaten. Deze bewerkingen kunnen get dubbele opnemen, gerapporteerde eigenschappen bij te werken en Abonneer u op de gewenste eigenschappen.
+Met de categorie apparaat-naar-Cloud dubbele bewerkingen worden door het apparaat geïnitieerde gebeurtenissen op apparaat apparaatdubbels bijgehouden. Tot deze bewerkingen behoren onder andere ophalen, gerapporteerde eigenschappen bijwerken en abonneren op gewenste eigenschappen.
 
 ```json
 {
@@ -244,9 +244,9 @@ De categorie van het dubbele apparaat-naar-cloud-bewerkingen bijgehouden apparaa
 }
 ```
 
-#### <a name="twin-queries"></a>Apparaatdubbel-query 's
+#### <a name="twin-queries"></a>Dubbele query's
 
-De categorie van de query's dubbele rapporteert over queryaanvragen voor apparaatdubbels die geïnitieerd zijn in de cloud.
+De categorie dubbele query's rapporteert over query aanvragen voor apparaatdubbels die in de cloud worden gestart.
 
 ```json
 {
@@ -268,7 +268,7 @@ De categorie van de query's dubbele rapporteert over queryaanvragen voor apparaa
 
 #### <a name="jobs-operations"></a>Taakbewerkingen
 
-De categorie van de bewerkingen taken rapporteert over taakaanvragen voor het bijwerken van apparaatdubbels of directe methoden aanroepen op meerdere apparaten. Deze aanvragen worden gestart in de cloud.
+De categorie taken bewerkingen rapporteert over taak aanvragen voor het bijwerken van apparaatdubbels of het aanroepen van directe methoden op meerdere apparaten. Deze aanvragen worden gestart in de Cloud.
 
 ```json
 {
@@ -290,7 +290,7 @@ De categorie van de bewerkingen taken rapporteert over taakaanvragen voor het bi
 
 #### <a name="direct-methods"></a>Directe methoden
 
-De categorie directe methoden houdt request response-interacties verzonden naar afzonderlijke apparaten. Deze aanvragen worden gestart in de cloud.
+In de categorie directe methoden worden aanvraag-antwoord interacties bijgehouden die naar afzonderlijke apparaten worden verzonden. Deze aanvragen worden gestart in de Cloud.
 
 ```json
 {
@@ -310,15 +310,15 @@ De categorie directe methoden houdt request response-interacties verzonden naar 
 }
 ```
 
-#### <a name="distributed-tracing-preview"></a>Gedistribueerde tracering (Preview)
+#### <a name="distributed-tracing-preview"></a>Gedistribueerde tracering (preview-versie)
 
-De categorie gedistribueerde tracering houdt de correlatie-id's voor berichten die de trace-context-header bevatten. Om deze logboeken, client-side-code moet worden bijgewerkt door [analyseren en onderzoeken van IoT-toepassingen end-to-end met IoT Hub gedistribueerde tracering (preview)](iot-hub-distributed-tracing.md).
+De categorie gedistribueerde tracering houdt de correlatie-Id's bij voor berichten die de header van de tracering context bevatten. Als u deze logboeken volledig wilt inschakelen, moet de client code worden bijgewerkt door het [end-to-end van IOT-toepassingen te analyseren en te diagnosticeren met IOT hub Distributed tracing (preview)](iot-hub-distributed-tracing.md).
 
-Houd er rekening mee dat `correlationId` voldoet aan de [W3C Trace Context](https://github.com/w3c/trace-context) voorstel, waar deze bevat een `trace-id` , evenals een `span-id`.
+Houd er rekening mee dat `correlationId` voldoet aan het voor stel van de [W3C-tracering](https://github.com/w3c/trace-context) , waar het een `trace-id` en een `span-id`bevat.
 
-##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>Logboeken van IoT Hub D2C (apparaat-naar-cloud)
+##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT Hub D2C-Logboeken (apparaat-naar-Cloud)
 
-IoT Hub registreert dit logboek wanneer een bericht weergegeven met de eigenschappen van geldige spoor op IoT-Hub aankomt.
+IoT Hub registreert dit logboek wanneer een bericht met geldige traceer eigenschappen arriveert bij IoT Hub.
 
 ```json
 {
@@ -341,18 +341,18 @@ IoT Hub registreert dit logboek wanneer een bericht weergegeven met de eigenscha
 }
 ```
 
-Hier `durationMs` niet is berekend als de klok van de IoT Hub mogelijk niet gesynchroniseerd met de apparaatklok en een duur van de berekening kan dus misleidend. Het is raadzaam schrijven logica met behulp van de tijdstempels in de `properties` sectie om vast te leggen van pieken in de latentie van apparaat-naar-cloud.
+Hier wordt `durationMs` niet berekend omdat de klok van het IoT Hub mogelijk niet synchroon is met de klok van het apparaat en daarom kan de duur van de berekening misleidend zijn. U wordt aangeraden logica te schrijven met behulp van de tijds tempels in het gedeelte `properties` om pieken vast te leggen in latentie van apparaat naar Cloud.
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageSize** | Geheel getal | De grootte van apparaat-naar-cloud bericht in bytes |
-| **deviceId** | Tekenreeks van ASCII-7-bits alfanumerieke tekens | De identiteit van het apparaat |
-| **callerLocalTimeUtc** | UTC timestamp | De aanmaaktijd van het bericht, zoals gemeld door de lokale klok van apparaat |
-| **calleeLocalTimeUtc** | UTC timestamp | De tijd van aankomst bericht bij de IoT-Hub gateway zoals gemeld door IoT Hub-service kant klok |
+| **messageSize** | Geheel getal | De grootte van het apparaat-naar-Cloud bericht in bytes |
+| **deviceId** | Teken reeks van ASCII 7-bits alfanumerieke tekens | De identiteit van het apparaat |
+| **callerLocalTimeUtc** | UTC-tijds tempel | De aanmaak tijd van het bericht zoals gerapporteerd door de lokale klok van het apparaat |
+| **calleeLocalTimeUtc** | UTC-tijds tempel | De tijd van de aankomst van het bericht op de gateway van de IoT Hub, zoals gerapporteerd door de IoT Hub klok van de service |
 
-##### <a name="iot-hub-ingress-logs"></a>IoT Hub inkomend Logboeken
+##### <a name="iot-hub-ingress-logs"></a>IoT Hub ingangs logboeken
 
-IoT Hub registreert dit logboek bij het bericht met geldige trace-eigenschappen worden geschreven naar interne of ingebouwde Event Hub.
+IoT Hub registreert dit logboek wanneer een bericht met geldige traceer eigenschappen naar een interne of ingebouwde Event hub schrijft.
 
 ```json
 {
@@ -375,16 +375,16 @@ IoT Hub registreert dit logboek bij het bericht met geldige trace-eigenschappen 
 }
 ```
 
-In de `properties` sectie, dit logboek bevat aanvullende informatie over bericht inkomend verkeer.
+In het gedeelte `properties` bevat dit logboek extra informatie over bericht binnenkomend.
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | String | True of false, geeft u aan of Routering van berichten is ingeschakeld in de IoT-Hub |
-| **parentSpanId** | String | De [bereik-id](https://w3c.github.io/trace-context/#parent-id) van het bericht bovenliggende, die in dit geval de D2C message-tracering zijn |
+| **isRoutingEnabled** | Tekenreeks | Waar of onwaar, geeft aan of bericht routering is ingeschakeld in de IoT Hub |
+| **parentSpanId** | Tekenreeks | De [reeks-id](https://w3c.github.io/trace-context/#parent-id) van het bovenliggende bericht, die de D2C-bericht tracering in dit geval zou zijn |
 
-##### <a name="iot-hub-egress-logs"></a>IoT Hub-logboeken voor uitgaand verkeer
+##### <a name="iot-hub-egress-logs"></a>IoT Hub uitgangs logboeken
 
-IoT Hub records dit melden wanneer [routering](iot-hub-devguide-messages-d2c.md) is ingeschakeld en het bericht is geschreven naar een [eindpunt](iot-hub-devguide-endpoints.md). Als de routering niet is ingeschakeld, vastleggen geen IoT Hub dit logboek.
+IoT Hub registreert dit logboek wanneer [route ring](iot-hub-devguide-messages-d2c.md) is ingeschakeld en het bericht naar een [eind punt](iot-hub-devguide-endpoints.md)wordt geschreven. Als route ring niet is ingeschakeld, wordt dit logboek IoT Hub niet geregistreerd.
 
 ```json
 {
@@ -407,17 +407,65 @@ IoT Hub records dit melden wanneer [routering](iot-hub-devguide-messages-d2c.md)
 }
 ```
 
-In de `properties` sectie, dit logboek bevat aanvullende informatie over bericht inkomend verkeer.
+In het gedeelte `properties` bevat dit logboek extra informatie over bericht binnenkomend.
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **endpointName** | String | De naam van het eindpunt van de routering |
-| **endpointType** | String | Het type van het eindpunt van de routering |
-| **parentSpanId** | String | De [bereik-id](https://w3c.github.io/trace-context/#parent-id) van de bovenliggende bericht dat de IoT Hub inkomend bericht tracering in dit geval zou zijn |
+| **endpointName** | Tekenreeks | De naam van het eind punt van de route ring |
+| **endpointType** | Tekenreeks | Het type van het eind punt van de route ring |
+| **parentSpanId** | Tekenreeks | De [reeks-id](https://w3c.github.io/trace-context/#parent-id) van het bovenliggende bericht, dat de IOT hub bericht tracering in dit geval zou zijn |
 
-### <a name="read-logs-from-azure-event-hubs"></a>Lezen Logboeken uit Azure Event Hubs
+#### <a name="configurations"></a>Configuraties
 
-Na het instellen van via diagnostische instellingen voor logboekregistratie van gebeurtenissen, kunt u toepassingen die de logboeken gelezen zodat u op basis van de informatie in deze actie kunt ondernemen. Deze voorbeeldcode haalt de logboeken van een event hub:
+In IoT Hub configuratie logboeken worden gebeurtenissen en fouten bijgehouden voor de functie voor het automatisch instellen van Apparaatbeheer.
+
+```json
+{
+    "records":
+    [
+         {
+             "time": "2019-09-24T17:21:52Z",
+             "resourceId": "Resource Id",
+             "operationName": "ReadManyConfigurations",
+             "category": "Configurations",
+             "resultType": "",
+             "resultDescription": "",
+             "level": "Information",
+             "durationMs": "17",
+             "properties": "{\"configurationId\":\"\",\"sdkVersion\":\"2018-06-30\",\"messageSize\":\"0\",\"statusCode\":null}",
+             "location": "southcentralus"
+         }
+    ]
+}
+```
+
+### <a name="device-streams-preview"></a>Apparaatversleuteling (preview-versie)
+
+De categorie Device streams traceert aanvraag-antwoord interacties die naar afzonderlijke apparaten worden verzonden.
+
+```json
+{
+    "records":
+    [
+         {
+             "time": "2019-09-19T11:12:04Z",
+             "resourceId": "Resource Id",
+             "operationName": "invoke",
+             "category": "DeviceStreams",
+             "resultType": "",
+             "resultDescription": "",    
+             "level": "Information",
+             "durationMs": "74",
+             "properties": "{\"deviceId\":\"myDevice\",\"moduleId\":\"myModule\",\"sdkVersion\":\"2019-05-01-preview\",\"requestSize\":\"3\",\"responseSize\":\"5\",\"statusCode\":null,\"requestName\":\"myRequest\",\"direction\":\"c2d\"}",
+             "location": "Central US"
+         }
+    ]
+}
+```
+
+### <a name="read-logs-from-azure-event-hubs"></a>Logboeken van Azure Event Hubs lezen
+
+Nadat u gebeurtenis logboek registratie via Diagnostische instellingen hebt ingesteld, kunt u toepassingen maken die de logboeken lezen, zodat u actie kunt ondernemen op basis van de informatie in hen. Met deze voorbeeld code worden logboeken van een Event Hub opgehaald:
 
 ```csharp
 class Program
@@ -484,23 +532,23 @@ class Program
 }
 ```
 
-## <a name="use-azure-resource-health"></a>Gebruik Azure Resource Health
+## <a name="use-azure-resource-health"></a>Azure Resource Health gebruiken
 
-Gebruik Azure Resource Health om te controleren of uw IoT-hub actief en werkend is. U kunt ook meer informatie of een regionale storing is die invloed hebben op de status van uw IoT-hub. Voor meer informatie over specifieke details over de status van uw Azure-IoT-Hub, raden wij aan dat u [gebruikt Azure Monitor](#use-azure-monitor).
+Gebruik Azure Resource Health om te controleren of uw IoT-hub actief is. U kunt ook zien of een regionale storing invloed heeft op de status van uw IoT-hub. Voor specifieke details over de status van uw Azure IoT Hub, raden we u aan Azure Monitor te [gebruiken](#use-azure-monitor).
 
-Azure IoT Hub geeft aan dat de status op het niveau van een regionale. Als een regionale storing van invloed is op uw IoT-hub, de status wordt weergegeven als **onbekende**. Zie voor meer informatie, [resourcetypen en statuscontroles in Azure resource health](../service-health/resource-health-checks-resource-types.md).
+Met Azure IoT Hub wordt de status op een regionaal niveau aangegeven. Als een regionale storing gevolgen heeft voor uw IoT-hub, wordt de status weer gegeven als **onbekend**. Zie [resource typen en status controles in azure resource Health](../service-health/resource-health-checks-resource-types.md)voor meer informatie.
 
-Om te controleren of de status van uw IoT-hubs, de volgende stappen uit:
+Voer de volgende stappen uit om de status van uw IoT-hubs te controleren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-2. Navigeer naar **servicestatus** > **resourcestatus**.
+2. Navigeer naar **Service Health** > **resource Health**.
 
-3. Selecteer uw abonnement in de vervolgkeuzelijsten en selecteer vervolgens **IoT-Hub** als het resourcetype.
+3. Selecteer uw abonnement in de vervolg keuzelijsten en selecteer vervolgens **IOT hub** als resource type.
 
-Zie voor meer informatie over het interpreteren van de van gezondheidsgegevens, [overzicht van Azure resource health](../service-health/resource-health-overview.md).
+Zie [overzicht van Azure resource Health](../service-health/resource-health-overview.md)voor meer informatie over het interpreteren van status gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Informatie over metrische gegevens van IoT Hub](iot-hub-metrics.md)
-* [Externe controle IoT en meldingen met Azure Logic Apps die gebruikmaken van uw IoT-hub en Postvak](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+* [IoT Hub metrische gegevens begrijpen](iot-hub-metrics.md)
+* [IoT-externe bewaking en meldingen met Azure Logic Apps verbinding maken met uw IoT hub en Postvak](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

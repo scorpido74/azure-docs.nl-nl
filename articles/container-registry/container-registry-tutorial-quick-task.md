@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Containerinstallatiekopieën bouwen in de cloud met Azure Container Registry-taken'
+title: Zelf studie-build van snelle container installatie kopie-Azure Container Registry taken
 description: In deze zelfstudie leert u hoe een Docker-containerinstallatiekopie in Azure bouwt met Azure Container Registry Tasks (ACR Tasks) en deze vervolgens implementeert naar Azure Container Instances.
 services: container-registry
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 091c1a4c9e6adae69ec1c8b3e507624b9f5e6a96
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0b62ef1fa05138b1d5c0a3aacb570f5d577176fe
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057500"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931398"
 ---
-# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Zelfstudie: Containerinstallatiekopieën bouwen in de cloud met Azure Container Registry-taken
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Zelf studie: container installatie kopieën bouwen en implementeren in de Cloud met Azure Container Registry taken
 
 **ACR Tasks** is een suite met functies in Azure Container Registry die gestroomlijnde en efficiënte builds van Docker-containerinstallatiekopieën mogelijk maakt in Azure. In dit artikel leert u hoe u de functie *quick task* van ACR Tasks gebruikt.
 
@@ -43,7 +43,7 @@ Als u de Azure CLI lokaal wilt gebruiken, moet u Azure CLI versie **2.0.46** of 
 
 Maak een account op https://github.com als u er nog geen hebt. In deze zelfstudiereeks wordt een GitHub-opslagplaats gebruikt om geautomatiseerde builds van installatiekopieën in ACR Tasks te demonstreren.
 
-### <a name="fork-sample-repository"></a>Voorbeeldopslagplaats splitsen
+### <a name="fork-sample-repository"></a>Voorbeeldopslagplaats fork
 
 Gebruik vervolgens de GitHub UI om de voorbeeldopslagplaats te splitsen naar uw GitHub-account. In deze zelfstudie maakt u een containerinstallatiekopie van de bron in de opslagplaats. In de volgende zelfstudie pusht u een commit of doorvoer naar uw fork van de opslagplaats om een geautomatiseerde taak te starten.
 
@@ -176,7 +176,7 @@ In deze sectie maakt u een Azure Key Vault en service-principal. Vervolgens impl
 
 ### <a name="configure-registry-authentication"></a>Registerverificatie configureren
 
-Alle productie scenario's moeten [service][service-principal-auth] -principals gebruiken om toegang te krijgen tot een Azure container Registry. Met service-principals kunt u voor op rollen gebaseerde toegangsbeheer bieden voor uw containerinstallatiekopieën. U kunt bijvoorbeeld een service-principal configureren met alleen pull-toegang tot een register.
+Alle productie scenario's moeten [service-principals][service-principal-auth] gebruiken om toegang te krijgen tot een Azure container Registry. Met service-principals kunt u voor op rollen gebaseerde toegangsbeheer bieden voor uw containerinstallatiekopieën. U kunt bijvoorbeeld een service-principal configureren met alleen pull-toegang tot een register.
 
 #### <a name="create-a-key-vault"></a>Een sleutelkluis maken
 
@@ -221,8 +221,8 @@ az keyvault secret set \
 
 U hebt een Azure Key Vault gemaakt en er twee geheimen in opgeslagen:
 
-* `$ACR_NAME-pull-usr`: De service-principal-id, voor gebruik als de **gebruikersnaam** van het containerregister.
-* `$ACR_NAME-pull-pwd`: Het service-principal-wachtwoord, voor gebruik als het **wachtwoord** van het containerregister.
+* `$ACR_NAME-pull-usr`: de service principal-ID, voor gebruik als de **gebruikersnaam** van het containerregister.
+* `$ACR_NAME-pull-pwd`: het service principal-wachtwoord, voor gebruik als het **wachtwoord** van het containerregister.
 
 U kunt nu op naam naar deze geheime gegevens verwijzen wanneer u of uw toepassingen en services installatiekopieën uit het register halen.
 

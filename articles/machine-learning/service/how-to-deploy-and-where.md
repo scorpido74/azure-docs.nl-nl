@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 0d478b56d7be4ae0c7f2403f9960e5eed59e2b4d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4a0736267ca00b67f35abc7cf263e7cf19543d81
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888645"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932132"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen met Azure Machine Learning implementeren
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -1061,6 +1061,78 @@ Als u de container wilt stoppen, gebruikt u de volgende opdracht uit een andere 
 
 ```bash
 docker kill mycontainer
+```
+
+## <a name="preview-no-code-model-deployment"></a>Evaluatie Implementatie van geen code model
+
+Implementatie zonder code model is momenteel als preview-versie beschikbaar en ondersteunt de volgende machine learning frameworks:
+
+### <a name="tensorflow-savedmodel-format"></a>Tensor flow SavedModel-indeling
+
+```python
+from azureml.core import Model
+
+model = Model.register(workspace=ws,
+                       model_name='flowers',                        # Name of the registered model in your workspace.
+                       model_path='./flowers_model',                # Local Tensorflow SavedModel folder to upload and register as a model.
+                       model_framework=Model.Framework.TENSORFLOW,  # Framework used to create the model.
+                       model_framework_version='1.14.0',            # Version of Tensorflow used to create the model.
+                       description='Flowers model')
+
+service_name = 'tensorflow-flower-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+### <a name="onnx-models"></a>ONNX-modellen
+
+Registratie en implementatie van het ONNX-model worden ondersteund voor elk ONNX-Afleidings diagram. De stappen voor preprocess en postprocess worden momenteel niet ondersteund.
+
+Hier volgt een voor beeld van hoe u een MNIST ONNX-model registreert en implementeert:
+
+```python
+from azureml.core import Model
+
+model = Model.register(workspace=ws,
+                       model_name='mnist-sample',                  # Name of the registered model in your workspace.
+                       model_path='mnist-model.onnx',              # Local ONNX model to upload and register as a model.
+                       model_framework=Model.Framework.ONNX ,      # Framework used to create the model.
+                       model_framework_version='1.3',              # Version of ONNX used to create the model.
+                       description='Onnx MNIST model')
+
+service_name = 'onnx-mnist-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+### <a name="scikit-learn-models"></a>Scikit-modellen leren
+
+Er wordt geen code model implementatie ondersteund voor alle ingebouwde scikit-informatie over model typen.
+
+Hier volgt een voor beeld van het registreren en implementeren van een sklearn-model zonder extra code:
+
+```python
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = Model.register(workspace=ws,
+                       model_name='my-sklearn-model',                # Name of the registered model in your workspace.
+                       model_path='./sklearn_regression_model.pkl',  # Local file to upload and register as a model.
+                       model_framework=Model.Framework.SCIKITLEARN,  # Framework used to create the model.
+                       model_framework_version='0.19.1',             # Version of scikit-learn used to create the model.
+                       resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5),
+                       description='Ridge regression model to predict diabetes progression.',
+                       tags={'area': 'diabetes', 'type': 'regression'})
+                       
+service_name = 'my-sklearn-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+Opmerking: deze afhankelijkheden zijn opgenomen in de vooraf opgebouwde sklearn-deinterferentie-container:
+
+```yaml
+    - azureml-defaults
+    - inference-schema[numpy-support]
+    - scikit-learn
+    - numpy
 ```
 
 ## <a name="clean-up-resources"></a>Resources opschonen

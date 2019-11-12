@@ -1,5 +1,5 @@
 ---
-title: Naslag informatie voor de door de gebruiker gedefinieerde Azure Digital Apparaatdubbels-client bibliotheek | Microsoft Docs
+title: Naslag informatie over door de gebruiker gedefinieerde Azure Digital Apparaatdubbels | Microsoft Docs
 description: Naslag informatie over de client bibliotheek voor door de gebruiker gedefinieerde Azure Digital Apparaatdubbels-functies.
 ms.author: alinast
 author: alinamstanciu
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: article
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36fb8a5588321426ccae7d6c6577fb4b48f3a4db
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: daab63067087267c12cef75178b5f974043e0fd9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948910"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931232"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Naslag informatie voor de door de gebruiker gedefinieerde functies client bibliotheken
 
@@ -30,7 +30,7 @@ Met een spatie-id haalt deze functie de ruimte op uit de grafiek.
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | Ruimte-id |
 
@@ -40,7 +40,7 @@ Op basis van een sensor-ID haalt deze functie de sensor op uit de grafiek.
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | Sensor-ID |
 
@@ -50,7 +50,7 @@ Met deze functie wordt het apparaat uit de grafiek opgehaald met een apparaat-id
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *id* | `guid` | Apparaat-id |
 
@@ -60,18 +60,18 @@ Op basis van een sensor-ID en het bijbehorende gegevens type haalt deze functie 
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *sensorId*  | `guid` | Sensor-ID |
-| *dataType*  | `string` | Gegevens type sensor |
+| *param1*  | `string` | Gegevens type sensor |
 
-### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue (spaceId, waardenaam) @no__t ⇒-0
+### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue (spaceId, waardenaam) ⇒ `value`
 
 Op basis van een spatie-id en de waardenaam wordt met deze functie de huidige waarde voor die eigenschap Space opgehaald.
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *spaceId*  | `guid` | Ruimte-id |
 | *valueName* | `string` | Naam van de eigenschap Space |
@@ -82,10 +82,10 @@ Op basis van een sensor-ID en het bijbehorende gegevens type haalt deze functie 
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Sensor-ID |
-| *dataType* | `string` | Gegevens type sensor |
+| *param1* | `string` | Gegevens type sensor |
 
 ### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues (spaceId, data type) ⇒ `value[]`
 
@@ -93,7 +93,7 @@ Op basis van een spatie-id en de waardenaam, haalt deze functie de historische w
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
 | *valueName* | `string` | Naam van de eigenschap Space |
@@ -104,7 +104,7 @@ Met deze functie worden de onderliggende ruimten voor die bovenliggende ruimte o
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
 
@@ -114,7 +114,7 @@ Met een spatie-id haalt u de onderliggende Sens oren op voor die bovenliggende r
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
 
@@ -124,7 +124,7 @@ Met een spatie-id haalt u de onderliggende apparaten voor die bovenliggende ruim
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
 
@@ -134,7 +134,7 @@ Met behulp van een apparaat-id haalt deze functie de onderliggende Sens oren voo
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *deviceId* | `guid` | Apparaat-id |
 
@@ -144,7 +144,7 @@ Met deze functie wordt de bovenliggende ruimte van een spatie-id opgehaald.
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *childSpaceId* | `guid` | Ruimte-id |
 
@@ -154,7 +154,7 @@ Met deze functie wordt de bovenliggende ruimte van de sensor-ID opgehaald.
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | Sensor-ID |
 
@@ -164,7 +164,7 @@ Als er een apparaat-id is opgegeven, haalt deze functie de bovenliggende ruimte 
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *childDeviceId* | `guid` | Apparaat-id |
 
@@ -174,28 +174,28 @@ Met behulp van een sensor-ID haalt deze functie het bovenliggende apparaat op.
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | Sensor-ID |
 
-### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty (spaceId, PropertyName) @no__t ⇒-0
+### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty (spaceId, PropertyName) ⇒ `extendedProperty`
 
 Met een spatie-id haalt deze functie de eigenschap en de waarde ervan op uit de ruimte.
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
 | *propertyName* | `string` | Naam van de eigenschap Space |
 
-### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty (sensorId, PropertyName) @no__t ⇒-0
+### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty (sensorId, PropertyName) ⇒ `extendedProperty`
 
 Op basis van een sensor-ID haalt deze functie de eigenschap en de waarde ervan op uit de sensor.
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Sensor-ID |
 | *propertyName* | `string` | Naam sensor eigenschap |
@@ -206,7 +206,7 @@ Met een apparaat-id haalt deze functie de eigenschap en de waarde van het appara
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *deviceId* | `guid` | Apparaat-id |
 | *propertyName* | `string` | Naam van de apparaat-eigenschap |
@@ -217,11 +217,11 @@ Deze functie stelt een waarde in voor het sensor-object met het opgegeven gegeve
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Sensor-ID |
-| *dataType*  | `string` | Gegevens type sensor |
-| *value*  | `string` | Value |
+| *param1*  | `string` | Gegevens type sensor |
+| *value*  | `string` | Waarde |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (spaceId, data type, waarde)
 
@@ -229,11 +229,11 @@ Deze functie stelt een waarde in voor het Space-object met het opgegeven gegeven
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
-| *dataType* | `string` | Gegevenstype |
-| *value* | `string` | Value |
+| *param1* | `string` | Gegevenstype |
+| *value* | `string` | Waarde |
 
 ### <a name="logmessage"></a>logboek (bericht)
 
@@ -241,7 +241,7 @@ Met deze functie wordt het volgende bericht geregistreerd binnen de door de gebr
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *Bericht* | `string` | Bericht dat moet worden geregistreerd |
 
@@ -251,17 +251,17 @@ Deze functie verzendt een aangepaste melding om te worden verzonden.
 
 **Soort**: globale functie
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *topologyObjectId*  | `guid` | Object-id van grafiek. Voor beelden zijn ruimte, sensor en apparaat-ID.|
 | *topologyObjectType*  | `string` | Voor beelden zijn sensor en apparaat.|
-| *payload*  | `string` | De JSON-nettolading die met de melding moet worden verzonden. |
+| *nettolading*  | `string` | De JSON-nettolading die met de melding moet worden verzonden. |
 
 ## <a name="return-types"></a>Retour typen
 
 De antwoord modellen die worden geretourneerd door de hulp methoden voor client verwijzing, worden hieronder beschreven.
 
-### <a name="space"></a>Spatiebalk
+### <a name="space"></a>Ruimte
 
 ```JSON
 {
@@ -292,7 +292,7 @@ Deze functie retourneert de onderliggende apparaten van de huidige ruimte.
 
 Deze functie retourneert de uitgebreide eigenschap en de waarde voor de huidige ruimte.
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | Naam van de uitgebreide eigenschap |
 
@@ -300,7 +300,7 @@ Deze functie retourneert de uitgebreide eigenschap en de waarde voor de huidige 
 
 Deze functie retourneert de waarde van de huidige ruimte.
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *valueName* | `string` | Naam van de waarde |
 
@@ -308,7 +308,7 @@ Deze functie retourneert de waarde van de huidige ruimte.
 
 Deze functie retourneert de historische waarden van de huidige ruimte.
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *valueName* | `string` | Naam van de waarde |
 
@@ -316,9 +316,9 @@ Deze functie retourneert de historische waarden van de huidige ruimte.
 
 Met deze functie wordt een melding met de opgegeven Payload verzonden.
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *payload* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
+| *nettolading* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
 
 ### <a name="device"></a>Apparaat
 
@@ -352,7 +352,7 @@ Deze functie retourneert de onderliggende Sens oren van het huidige apparaat.
 
 Deze functie retourneert de uitgebreide eigenschap en de waarde voor het huidige apparaat.
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | Naam van de uitgebreide eigenschap |
 
@@ -360,11 +360,11 @@ Deze functie retourneert de uitgebreide eigenschap en de waarde voor het huidige
 
 Met deze functie wordt een melding met de opgegeven Payload verzonden.
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *payload* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
+| *nettolading* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
 
-### <a name="sensor"></a>Sensor
+### <a name="sensor"></a>Sensoren
 
 ```JSON
 {
@@ -400,7 +400,7 @@ Deze functie retourneert het bovenliggende apparaat van de huidige sensor.
 
 Deze functie retourneert de uitgebreide eigenschap en de waarde ervan voor de huidige sensor.
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | Naam van de uitgebreide eigenschap |
 
@@ -416,11 +416,11 @@ Deze functie retourneert de historische waarden van de huidige sensor.
 
 Met deze functie wordt een melding met de opgegeven Payload verzonden.
 
-| Parameter  | type                | Description  |
+| Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *payload* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
+| *nettolading* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
 
-### <a name="value"></a>Value
+### <a name="value"></a>Waarde
 
 ```JSON
 {

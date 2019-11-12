@@ -6,16 +6,16 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: dcdc9c6a22f5d291b3773da02a79cc5ceebc3db1
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 9ac22461e04b447fe34d5647eb5ec7847d25a09d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101464"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931274"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Doorvoer voor containers en databases inrichten
 
-Een Azure Cosmos-data base is een beheer eenheid voor een set containers. Een data base bestaat uit een set schema-neutraal containers. Een Azure Cosmos-container is de eenheid van schaal baarheid voor zowel de door Voer als de opslag. Een container is horizon taal gepartitioneerd over een set machines binnen een Azure-regio en wordt gedistribueerd in alle Azure-regio's die zijn gekoppeld aan uw Azure Cosmos-account.
+Een Azure Cosmos-data base is een beheer eenheid voor een set containers. Een data base bestaat uit een set schema-neutraal containers. Een Azure Cosmos-container is de schaalbaarheid voor doorvoer en opslag. Een container is horizon taal gepartitioneerd over een set machines binnen een Azure-regio en wordt gedistribueerd in alle Azure-regio's die zijn gekoppeld aan uw Azure Cosmos-account.
 
 Met Azure Cosmos DB kunt u de door Voer op twee nauw keurigheid inrichten:
  
@@ -28,7 +28,7 @@ De door Voer die is ingericht voor een Azure Cosmos-container is exclusief geres
 
 Het instellen van een ingerichte door Voer voor een container is de meest gebruikte optie. U kunt de door Voer voor een container elastisch schalen door een wille keurige hoeveelheid door Voer in te stellen met behulp van [aanvraag eenheden (RUs)](request-units.md). 
 
-Uitgaande van een goede partitie sleutel die de logische partities gelijkmatig verspreidt tussen de fysieke partities, wordt de door Voer ook gelijkmatig verdeeld over alle logische partities van de container. U kunt de door Voer voor logische partities niet selectief opgeven. Omdat een of meer logische partities van een container worden gehost door een fysieke partitie, behoren de fysieke partities uitsluitend tot de container en ondersteunen ze de door Voer ingericht op de container. 
+De door Voer die is ingericht voor een container wordt gelijkmatig verdeeld over de fysieke partities en er wordt ervan uitgegaan dat er een goede partitie sleutel is waarmee de logische partities gelijkmatig over de fysieke partities worden gedistribueerd. de door Voer wordt ook gelijkmatig verdeeld over alle de logische partities van de container. U kunt de door Voer voor logische partities niet selectief opgeven. Omdat een of meer logische partities van een container worden gehost door een fysieke partitie, behoren de fysieke partities uitsluitend tot de container en ondersteunen ze de door Voer ingericht op de container. 
 
 Als de werk belasting die wordt uitgevoerd op een logische partitie, groter is dan de door Voer die is toegewezen aan de logische partitie, worden de verwerkings frequenties beperkt. Wanneer de snelheids beperking optreedt, kunt u de ingerichte door Voer voor de gehele container verhogen of de bewerking opnieuw uitvoeren. Zie [logische partities](partition-data.md)voor meer informatie over partitioneren.
 
@@ -110,7 +110,7 @@ U kunt de minimale door Voer van een container of een Data Base via een programm
 
 Wanneer u de .NET SDK gebruikt, kunt u met de methode [DocumentClient. ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) de minimale door Voer van een container of een Data Base ophalen. 
 
-U kunt de ingerichte door Voer van een container of een Data Base op elk gewenst moment schalen. Wanneer er een schaal bewerking wordt uitgevoerd om de door voer te verg Roten, kan het langer duren vanwege de systeem taken om de vereiste resources in te richten. U kunt de status van de schaal bewerking controleren in Azure Portal of programmatisch met behulp van de Sdk's. Wanneer u de .NET SDK gebruikt, kunt u de status van de schaal bewerking ophalen met behulp van de methode `DocumentClient.ReadOfferAsync`.
+U kunt de ingerichte door Voer van een container of een Data Base op elk gewenst moment schalen. Wanneer er een schaal bewerking wordt uitgevoerd om de door voer te verg Roten, kan het langer duren vanwege de systeem taken om de vereiste resources in te richten. U kunt de status van de schaal bewerking controleren in Azure Portal of programmatisch met behulp van de Sdk's. Wanneer u de .NET SDK gebruikt, kunt u de status van de schaal bewerking ophalen met behulp van de `DocumentClient.ReadOfferAsync` methode.
 
 ## <a name="comparison-of-models"></a>Vergelijking van modellen
 

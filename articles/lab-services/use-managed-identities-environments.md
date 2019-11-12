@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: spelluru
-ms.openlocfilehash: d1dd059f1a6f9ce96b27d4fe1f214978dfc06a8f
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: a4ba4206c01e492f2ae980c5806de1e72c7051c3
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815990"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931160"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Door Azure beheerde identiteiten gebruiken voor het implementeren van omgevingen in een Lab 
 Als eigenaar van een lab kunt u een beheerde identiteit gebruiken voor het implementeren van omgevingen in een lab. Deze functie is handig in scenario's waarin de omgeving bevat of verwijzingen naar Azure-resources, zoals sleutel kluizen, gemeen schappelijke afbeeldings galerieën en netwerken die zich buiten de resource groep van de omgeving bevinden. Het maakt het mogelijk sandbox-omgevingen te maken die niet beperkt zijn tot de resource groep van die omgeving.
@@ -54,7 +54,7 @@ Als u de door de gebruiker beheerde identiteit die is toegewezen aan het lab, wi
 1. Nadat u een identiteit hebt gemaakt, noteert u de resource-ID van deze identiteit. Deze moet eruitzien als in het volgende voor beeld: 
 
     `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
-1. Voer een PUT https-methode uit om een nieuwe `ServiceRunner`-Resource toe te voegen aan het lab, vergelijkbaar met het volgende voor beeld. Resource voor het uitloper van Services is een proxy bron voor het beheer en beheer van beheerde identiteiten in DevTest Labs. De naam van het service loper kan een geldige naam zijn, maar we raden u aan de naam van de beheerde identiteits bron te gebruiken. 
+1. Voer een PUT https-methode uit om een nieuwe `ServiceRunner`-resource toe te voegen aan het lab, vergelijkbaar met het volgende voor beeld. Resource voor het uitloper van Services is een proxy bron voor het beheer en beheer van beheerde identiteiten in DevTest Labs. De naam van het service loper kan een geldige naam zijn, maar we raden u aan de naam van de beheerde identiteits bron te gebruiken. 
  
     ```json
     PUT https://management.azure.com/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Devtestlab/labs/{yourlabname}/serviceRunners/{serviceRunnerName}
@@ -67,6 +67,10 @@ Als u de door de gebruiker beheerde identiteit die is toegewezen aan het lab, wi
                 "[userAssignedIdentityResourceId]":{}
             }
         }
+        "properties":{
+            "identityUsageType":"Environment"
+                     }
+          
     }
     ```
  
@@ -83,6 +87,9 @@ Als u de door de gebruiker beheerde identiteit die is toegewezen aan het lab, wi
                 "/subscriptions/0000000000-0000-0000-0000-000000000000000/resourceGroups/exampleRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuseridentity":{}
             }
         }
+        "properties":{
+            "identityUsageType":"Environment"
+                     }
     }
     ```
  

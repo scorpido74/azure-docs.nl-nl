@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 0708b1dd2d272757949d014d768c1da649b50146
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 76ff8a63c2fbda3ddbaed794d24f7adb66a4dd95
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889686"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930363"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Gegevensverwerking en door gebruikers gedefinieerde functies
 
@@ -97,7 +97,7 @@ Met matchers definieert u een set voor waarden die evalueren welke acties worden
 
 Een door de gebruiker gedefinieerde functie is een aangepaste functie die wordt uitgevoerd in een geïsoleerde omgeving met een digitale Apparaatdubbels van Azure. Door de gebruiker gedefinieerde functies hebben toegang tot een bericht van de onbewerkte sensor-telemetrie, zodra het wordt ontvangen. Door de gebruiker gedefinieerde functies hebben ook toegang tot de spatiale grafiek en de dispatcher-service. Nadat de door de gebruiker gedefinieerde functie is geregistreerd binnen een grafiek, moet er een overeenkomende functie (beschreven [hierboven](#matchers)) worden gemaakt om op te geven wanneer de functies worden uitgevoerd. Als bijvoorbeeld Azure Digital Apparaatdubbels nieuwe telemetrie van een bepaalde sensor ontvangt, kan de overeenkomende door de gebruiker gedefinieerde functie een zwevend gemiddelde berekenen van de laatste lees bewerkingen van de sensor.
 
-Door de gebruiker gedefinieerde functies kunnen worden geschreven in Java script. Hulp methoden communiceren met de grafiek in de door de gebruiker gedefinieerde uitvoerings omgeving. Ontwikkel aars kunnen aangepaste code fragmenten uitvoeren op Sens-metrie-berichten. Voorbeelden zijn:
+Door de gebruiker gedefinieerde functies kunnen worden geschreven in Java script. Hulp methoden communiceren met de grafiek in de door de gebruiker gedefinieerde uitvoerings omgeving. Ontwikkel aars kunnen aangepaste code fragmenten uitvoeren op Sens-metrie-berichten. Voorbeelden:
 
 - Stel de sensor direct in op het sensor object in de grafiek.
 - Een actie uitvoeren op basis van verschillende sensor aflezingen binnen een ruimte in de grafiek.
@@ -112,7 +112,7 @@ De [github-opslag plaats voor het digitale C# apparaatdubbels-voor beeld](https:
 - [Deze functie](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) zoekt naar kool dioxide-, bewegings-en temperatuur waarden om te bepalen of een ruimte beschikbaar is met deze waarden in het bereik. De [zelf studies voor Digital apparaatdubbels](tutorial-facilities-udf.md) verkennen deze functie in meer details. 
 - [Deze functie](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) zoekt naar gegevens uit meerdere bewegings Sens oren en bepaalt of de ruimte beschikbaar is als geen enkele beweging kan worden gedetecteerd. U kunt de door de gebruiker gedefinieerde functie die in de [Snelstartgids](quickstart-view-occupancy-dotnet.md)of de [zelf studies](tutorial-facilities-setup.md)wordt gebruikt, gemakkelijk vervangen door de wijzigingen aan te brengen die worden vermeld in de sectie opmerkingen van het bestand. 
 
-### <a name="role-assignment"></a>Roltoewijzing
+### <a name="role-assignment"></a>Nieuwe roltoewijzing
 
 De acties van een door de gebruiker gedefinieerde functie zijn onderhevig aan op [rollen gebaseerd toegangs beheer van](./security-role-based-access-control.md) Azure Digital apparaatdubbels voor het beveiligen van gegevens in de service. Met roltoewijzingen definieert u welke door de gebruiker gedefinieerde functies de juiste machtigingen hebben om te communiceren met de ruimtelijke grafiek en de bijbehorende entiteiten. Een door de gebruiker gedefinieerde functie kan bijvoorbeeld de mogelijkheid hebben om grafiek gegevens te *maken*, *lezen*, *bijwerken*of *verwijderen* onder een bepaalde ruimte. Het toegangs niveau van een door de gebruiker gedefinieerde functie wordt gecontroleerd wanneer de door de gebruiker gedefinieerde functie de grafiek voor gegevens aanvraagt of een actie probeert uit te proberen. Zie [op rollen gebaseerd toegangs beheer](./security-create-manage-role-assignments.md)voor meer informatie.
 

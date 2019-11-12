@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 55b59802116eb10d2e7eeb3b13ecb3da2d475c6d
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: acc64486ac8bd15a9abab1f2010ea56b752a1e86
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906987"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927671"
 ---
 # <a name="deploy-farmbeats"></a>FarmBeats implementeren
 
@@ -60,8 +60,8 @@ Volg deze stappen voor het maken van een Azure FarmBeats-aanbieding in Marketpla
 1. Meld u aan bij de Azure Portal en selecteer uw account in de rechter bovenhoek en schakel over naar de Azure AD-Tenant waar u Microsoft Azure FarmBeats wilt implementeren.
 2. Azure FarmBeats is beschikbaar op Azure Marketplace. Op de Marketplace-pagina selecteert u op nu downloaden.
 3. Selecteer maken en voer de volgende gegevens in:
-  - abonnements naam.
-  - een bestaande resource groeps naam (alleen lege resource groep) of een nieuwe resource groep maken voor het implementeren van Azure FarmBeats. Noteer deze resource groep in de volgende secties.
+    - abonnements naam.
+    - een bestaande resource groeps naam (alleen lege resource groep) of een nieuwe resource groep maken voor het implementeren van Azure FarmBeats. Noteer deze resource groep in de volgende secties.
 4. De regio waarvoor u Azure FarmBeats wilt installeren. Momenteel FarmBeats de volgende regio's: VS-centraal, Europa-west, VS-Oost 2, Europa-noord, VS-West, Zuidoost-Azië, VS-Oost, Australië-oost, VS-West 2.
 5. Selecteer **OK**.
 De pagina Gebruiksvoorwaarden wordt weer gegeven. Bekijk de Standard Marketplace-voor waarden of selecteer de Hyper link om de gebruiks voorwaarden te bekijken.
@@ -131,7 +131,7 @@ Gebruik de volgende stappen om het Azure AD-toepassings registratie script uit t
 
 Als onderdeel van de installatie maakt u een input. JSON-bestand als volgt:
 
-    ```
+```json
     {  
        "sku":"both",
        "subscriptionId":"da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx",
@@ -144,7 +144,7 @@ Als onderdeel van de installatie maakt u een input. JSON-bestand als volgt:
        "notificationEmailAddress":"dummy@yourorg.com",
        "updateIfExists":true
     }
-    ```
+```
 
 Dit bestand is uw invoer bestand voor Azure Cloud Shell en para meters waarvan de waarden worden gebruikt tijdens de installatie. Alle para meters in de JSON moeten worden vervangen door de juiste waarden of worden verwijderd. Als u dit verwijdert, wordt u door het installatie programma gevraagd tijdens de installatie
 
@@ -210,9 +210,9 @@ Voor beeld van JSON-invoer:
 4. Ga naar de basismap in de Cloud shell. Het is standaard/Home/<username>
 5. Typ of plak de volgende opdracht in het Cloud Shell. Zorg ervoor dat u het pad naar de invoer wijzigt. JSON-bestand en druk op ENTER.
 
-      ```azurepowershell-interactive
+   ```bash
       wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
-     ```
+    ```
      Het installatie programma downloadt automatisch alle afhankelijkheden en bouwt de deployer. U wordt gevraagd om akkoord te gaan met de gebruiksrecht overeenkomst voor Azure FarmBeats (EULA).
 
      - Voer ' Y ' in als u akkoord gaat en ga door naar de volgende stap.
@@ -266,7 +266,7 @@ Volg de overige stappen:
 4. Ga naar de basismap in de Cloud shell. Het is standaard/Home/<username>
 5. Typ of plak de volgende opdracht in het Cloud Shell. Zorg ervoor dat u het pad naar de invoer wijzigt. JSON-bestand en druk op ENTER.
 
-    ```azurepowershell-interactive
+    ```bash
     wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 
@@ -324,7 +324,7 @@ De stappen voor de upgrade zijn vergelijkbaar met de installatie van de eerste k
 5. Upload het bestand input. json naar Azure Cloud Shell.
 6. Typ of plak de volgende twee opdrachten in de Cloud Shell. Zorg ervoor dat u het pad naar het bestand input. json wijzigt en druk op ENTER.
 
-    ```azurepowershell-interactive
+    ```bash
     wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 Volg de instructies op het scherm:

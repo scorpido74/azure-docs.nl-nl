@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 95e38cee8f6995e09dbbb2194cd5a9d0ebc301c1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32e7e79465b68caca9a636019f65b9f08284fc72
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498658"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928222"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Verbinding maken met gegevens van Microsoft Cloud App Security 
 
@@ -30,7 +30,7 @@ U kunt Logboeken van [Cloud app Security](https://docs.microsoft.com/cloud-app-s
 ## <a name="prerequisites"></a>Vereisten
 
 - Gebruiker met de machtigingen globale beheerder of beveiligings beheerder
-- Als u Cloud Discovery-Logboeken in azure Sentinel wilt streamen, [schakelt u Azure Sentinel in als uw Siem in Microsoft Cloud app Security](aka.ms. https://aka.ms/AzureSentinelMCAS).
+- Als u Cloud Discovery-Logboeken in azure Sentinel wilt streamen, [schakelt u Azure Sentinel in als uw Siem in Microsoft Cloud app Security](https://aka.ms/AzureSentinelMCAS).
 
 > [!IMPORTANT]
 > Opname van Cloud Discovery Logboeken is momenteel beschikbaar als open bare preview.
@@ -47,7 +47,7 @@ Als Cloud App Security is geïmplementeerd en opnamet van uw gegevens, kunnen de
 
 1. Selecteer de logboeken die u wilt streamen naar Azure Sentinel, u kunt **waarschuwingen** en **Cloud Discovery logboeken** kiezen (preview-versie). 
 
-1. Klik op **Verbinden**.
+1. Klik op **Verbinding maken**.
 
 1. Als u het relevante schema in Log Analytics voor de Cloud App Security waarschuwingen wilt gebruiken, zoekt u naar **SecurityAlert**.
 

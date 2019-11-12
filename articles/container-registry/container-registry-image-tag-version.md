@@ -1,18 +1,18 @@
 ---
 title: Code-en versie-installatie kopieën in Azure Container Registry
-description: Aanbevolen procedures voor het coderen en versie beheer van docker-container installatie kopieën
+description: Aanbevolen procedures voor het labelen en versie beheer van docker-container installatie kopieën bij het pushen van installatie kopieën naar en het ophalen van installatie kopieën uit een Azure container Registry
 services: container-registry
 author: stevelasker
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: ea7c0831f4ecc345cbcd8a9b8eb6d6566e8c5023
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 41013fb5831d09d7a4334e94d2b8b39e0cafe4d2
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297771"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931565"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Aanbevelingen voor het labelen en versie beheer van container installatie kopieën
 
@@ -23,7 +23,7 @@ Wanneer u container installatie kopieën naar een container register pusht en ve
 
 ## <a name="stable-tags"></a>Stabiele Tags
 
-**Aanbeveling**: Gebruik stabiele Tags voor het onderhouden van **basis installatie kopieën** voor uw container builds. Vermijd implementaties met stabiele Tags, omdat deze Tags updates blijven ontvangen en inconsistenties kunnen introduceren in productie omgevingen.
+**Aanbeveling**: gebruik stabiele Tags voor het onderhouden van **basis installatie kopieën** voor uw container builds. Vermijd implementaties met stabiele Tags, omdat deze Tags updates blijven ontvangen en inconsistenties kunnen introduceren in productie omgevingen.
 
 *Stabiele Tags* betekenen een ontwikkelaar of een build-systeem en kunnen een specifieke tag blijven ophalen, waardoor updates worden voortgezet. Stabiel betekent niet dat de inhoud is bevroren. In plaats daarvan houdt dat in dat de afbeelding stabiel moet zijn voor de bedoeling van die versie. Om "stabiel" te blijven staan, kan het zijn dat er beveiligings patches of Framework-updates worden toegepast.
 
@@ -31,10 +31,10 @@ Wanneer u container installatie kopieën naar een container register pusht en ve
 
 Een framework-team verzendt versie 1,0. Ze weten dat ze updates kunnen verzenden, met inbegrip van kleine updates. Om stabiele Tags te ondersteunen voor een primaire en secundaire versie, hebben ze twee sets stabiele Tags.
 
-* `:1`: een stabiele tag voor de primaire versie. `1`vertegenwoordigt de versie ' nieuw ' of ' nieuwste ' 1. *.
+* `:1`: een stabiele tag voor de primaire versie. `1` vertegenwoordigt de versie ' nieuw ' of ' nieuwste ' 1. *.
 * `:1.0`-een stabiele tag voor versie 1,0, waardoor een ontwikkelaar verbinding kan maken met de updates van 1,0, en niet wordt doorgevoerd naar 1,1 wanneer deze wordt uitgebracht.
 
-Het team gebruikt ook het `:latest` label, dat verwijst naar de laatste stabiele tag, ongeacht wat de huidige primaire versie is.
+Het team gebruikt ook de code `:latest`, die verwijst naar de laatste stabiele tag, ongeacht de huidige primaire versie.
 
 Als er updates voor de basis installatie kopie beschikbaar zijn of een type onderhouds release van het Framework, worden installatie kopieën met de stabiele Tags bijgewerkt naar de nieuwste Digest die de meest actuele stabiele versie van de desbetreffende release vertegenwoordigt.
 
@@ -51,11 +51,11 @@ Unieke labels betekenen gewoon dat elke afbeelding die naar een REGI ster is gep
 * **Manifest Digest** : elke container installatie kopie die naar een container register is gepusht, is gekoppeld aan een manifest, geïdentificeerd door een unieke SHA-256-Hash, of Digest. Hoewel uniek, is de samen vatting lang, moeilijk te lezen en niet-gecorreleerd met uw build-omgeving.
 * **Build-id** : deze optie is mogelijk het beste omdat deze waarschijnlijk incrementeel is, en Hiermee kunt u weer correleren met de specifieke build om alle artefacten en logboeken te vinden. Net als bij een samen vatting van een manifest is het echter mogelijk moeilijk te lezen.
 
-  Als uw organisatie verschillende build-systemen heeft, wordt het voor voegsel van de tag met de naam van het build-systeem `<build-system>-<build-id>`een variant voor deze optie:. U kunt bijvoorbeeld samen stellingen onderscheiden van het Jenkins build-systeem van het API-team en het build-systeem van Azure pipelines van het webteam.
+  Als uw organisatie verschillende build-systemen heeft, wordt het voor voegsel van de tag met de naam van het build-systeem een variant voor deze optie: `<build-system>-<build-id>`. U kunt bijvoorbeeld samen stellingen onderscheiden van het Jenkins build-systeem van het API-team en het build-systeem van Azure pipelines van het webteam.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor een gedetailleerde beschrijving van de concepten in dit artikel, zie de blog post [docker-Labels: Aanbevolen procedures voor het labelen en versie beheer van](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/)docker-installatie kopieën.
+Voor een gedetailleerde beschrijving van de concepten in dit artikel, raadpleegt u de blog post [docker tagging: Aanbevolen procedures voor het labelen en versie beheer van docker-installatie kopieën](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
 
 Zie [Aanbevolen procedures voor Azure container Registry voor](container-registry-best-practices.md)het optimaliseren van de prestaties en het rendabele gebruik van uw Azure container Registry.
 

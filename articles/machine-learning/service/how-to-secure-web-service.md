@@ -1,5 +1,5 @@
 ---
-title: S beveiligen met SSL
+title: Webservices beveiligen met SSL
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het inschakelen van HTTPS in de juiste volg orde voor het beveiligen van een webservice die is geïmplementeerd via Azure Machine Learning.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1455ec17898e82ed0f39fea66c44d2e9b4f57280
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1021ad1983f78252d924a5d3cb674419732d66e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489553"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932060"
 ---
 # <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>SSL gebruiken om een t/m-Azure Machine Learning te beveiligen
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -81,9 +81,9 @@ Als u de service wilt implementeren (of opnieuw wilt implementeren) met SSL inge
 Wanneer u implementeert in AKS, kunt u een nieuw AKS-cluster maken of een bestaande toevoegen. Zie [een model implementeren in een Azure Kubernetes-service cluster](how-to-deploy-azure-kubernetes-service.md)voor meer informatie over het maken of koppelen van een cluster.
   
 -  Als u een nieuw cluster maakt, gebruikt u **[AksCompute. provisionining_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none-)** .
-- Als u een bestaand cluster koppelt, gebruikt u **[AksCompute. attach_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** . Beide retour neren een configuratie object dat een **enable_ssl** -methode heeft.
+- Als u een bestaand cluster koppelt, gebruikt u **[AksCompute. attach_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** . Beide retour neren een configuratie object dat een **enable_ssl** methode heeft.
 
-De methode **enable_ssl** kan gebruikmaken van een certificaat dat door micro soft wordt verschaft of een certificaat dat u koopt.
+De **enable_ssl** -methode kan gebruikmaken van een certificaat dat door micro soft wordt verschaft of een certificaat dat u aanschaft.
 
   * Wanneer u een certificaat van micro soft gebruikt, moet u de para meter *leaf_domain_label* gebruiken. Met deze para meter wordt de DNS-naam voor de service gegenereerd. Met de waarde ' myservice ' wordt bijvoorbeeld de domein naam ' myservice\<zes wille keurige tekens >.\<azureregio >. cloudapp. Azure. com ', waarbij \<azureregio > de regio is waarin de service is opgenomen. U kunt desgewenst de para meter *overwrite_existing_domain* gebruiken om de bestaande *leaf_domain_label*te overschrijven.
 
@@ -160,7 +160,7 @@ SSL-certificaten verlopen en moeten worden vernieuwd. Dit gebeurt meestal elk ja
 
 ### <a name="update-a-microsoft-generated-certificate"></a>Een door micro soft gegenereerd certificaat bijwerken
 
-Als het certificaat oorspronkelijk is gegenereerd door micro soft (als u de *leaf_domain_label* gebruikt om de service te maken), gebruikt u een van de volgende voor beelden om het certificaat bij te werken:
+Als het certificaat oorspronkelijk is gegenereerd door micro soft (als de *leaf_domain_label* wordt gebruikt om de service te maken), gebruikt u een van de volgende voor beelden om het certificaat bij te werken:
 
 **De SDK gebruiken**
 

@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 057037807a75e50eb2305bfab19d1fcff7fe77ce
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: efd294910531509d736dbda274406bd7c801c124
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889596"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931205"
 ---
 # <a name="references"></a>Verwijzingen
 
 Hieronder vindt u een verzameling notities en instructies voor het overzicht van de Azure FarmBeats-Api's.
 
-## <a name="rest-api"></a>REST-API
+## <a name="rest-api"></a>REST API
 
 De Azure FarmBeats-Api's bieden agrarische ondernemingen met een gestandaardiseerde, doorgestuurde interface met antwoorden op basis van JSON. Dit helpt u bij het gebruik van Azure FarmBeats-mogelijkheden:
 
@@ -36,11 +36,11 @@ Dit is een samen vatting van alle objecten/resources in FarmBeats data hub:
 Voorzien | De farm komt overeen met een fysieke locatie van belang in het FarmBeats-systeem. Elke farm heeft een farm naam en een unieke Farm-ID.
 --- | ---|
 Apparaat  | Het apparaat komt overeen met een fysiek apparaat dat aanwezig is in de farm. Elk apparaat heeft een unieke apparaat-ID. Het apparaat wordt doorgaans ingericht voor een farm met een farm-ID.
-deviceModel  | DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant, het type van het apparaat of de gateway of het knoop punt.
+DeviceModel  | DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant, het type van het apparaat of de gateway of het knoop punt.
 Sensoren  | Sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.
 SensorModel  | SensorModel komt overeen met de meta gegevens van de sensor, zoals de fabrikant, het type van de sensor ofwel analoog of digitaal, de sensor meting, zoals omgevings temperatuur, druk enz.
 Telemetrie  | Telemetrie biedt de mogelijkheid om telemetrie-berichten te lezen voor een bepaalde sensor en tijds bereik.
-Job  | De taak komt overeen met elke werk stroom van activiteiten die in het FarmBeats-systeem worden uitgevoerd om een gewenste uitvoer te krijgen. Elke taak is gekoppeld aan een taak-ID en taak type.
+Taak  | De taak komt overeen met elke werk stroom van activiteiten die in het FarmBeats-systeem worden uitgevoerd om een gewenste uitvoer te krijgen. Elke taak is gekoppeld aan een taak-ID en taak type.
 Taak type  | Taak type komt overeen met verschillende taak typen die door het systeem worden ondersteund. Dit omvat het systeem dat is gedefinieerd & door de gebruiker gedefinieerde taak typen.
 Extended type  | Extended type komt overeen met de lijst met door de gebruiker gedefinieerde typen systeem & in het systeem. Dit helpt bij het instellen van een nieuwe sensor of scène of Scenefile type in het FarmBeats-systeem.
 Partner  | Partner komt overeen met de sensor/imagey Integration-partner voor FarmBeats
@@ -85,7 +85,7 @@ De URL naar de API-service is uw data hub-URL https://\<yourdatahub-website-name
 
 De onderstaande voorbeeld aanvraag is om de lijst met apparaten op te halen:
 
-```azurepowershell-interactive
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 
@@ -93,7 +93,7 @@ Voor de meeste GET-, POST-en PUT-aanroepen is een JSON-aanvraag tekst vereist.
 
 De onderstaande voorbeeld aanvraag is het maken van een apparaat (deze heeft een invoer-JSON met de hoofd tekst van de aanvraag).
 
-```json
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -120,25 +120,25 @@ De Azure FarmBeats data hub API retourneert de standaard HTTP-fouten. De meest v
 
 Naast de standaard HTTP-fouten retour neren Api's van Azure FarmBeats data hub ook interne fouten in de onderstaande notatie:
 
-    ```
+```json
     {
       "message": "<More information on the error>",
       "status": "<error code>”,
       "code": "<InternalErrorCode>",
       "moreInfo": "<Details of the error>"
     }
-    ```
+```
 
 Voor beeld: bij het maken van een farm is een verplicht veld ' naam ' niet opgegeven in de invoer lading. Het volgende fout bericht wordt weer gegeven:
 
-    ```json
+ ```json    
     {
       "message": "Model validation failed",
       "status": 400,
       "code": "ModelValidationFailed",
       "moreInfo": "[\"The Name field is required.\"]"
     }
-    ```
+  ```
 
 ## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>Gebruikers of app-registraties toevoegen aan Azure Active Directory
 

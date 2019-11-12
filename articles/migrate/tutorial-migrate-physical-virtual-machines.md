@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ffa072f593a06a38e6e3d121fb76806e41bf568e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 28705ea8a552f4d2e6653857c69ebb8d5f87b962
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605555"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907108"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Fysieke of gevirtualiseerde servers migreren naar Azure 
 
@@ -123,7 +123,7 @@ Zorg ervoor dat de computers voldoen aan de vereisten voor migratie naar Azure.
 > [!NOTE]
 > Migratie op basis van een agent met Azure Migrate server migratie is gebaseerd op de functies van de Azure Site Recovery-service. Sommige vereisten kunnen worden gekoppeld aan Site Recovery documentatie.
 
-1. [Verifieer](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) de vereisten voor VMware-servers.
+1. [Controleer](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) de server vereisten.
 2. [Verifiëren](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) VM-ondersteunings vereisten voor migratie.
 3. Controleer de VM-instellingen. On-premises Vm's die u naar Azure repliceert, moeten voldoen aan de vereisten van de [Azure-VM](migrate-support-matrix-vmware.md#azure-vm-requirements).
 
@@ -265,7 +265,7 @@ Selecteer nu machines voor migratie.
 
     ![VM's repliceren](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
 
-2. In **Repliceren** > **Broninstellingen** > **Zijn uw machines gevirtualiseerd?** selecteert u **Ja, met VMware vSphere**.
+2. Bij **repliceren**worden > **bron instellingen** > **uw machines gevirtualiseerd?** , selecteert u **niet gevirtualiseerd/Overig**.
 3. Selecteer in **on-premises apparaat**de naam van het Azure migrate apparaat dat u hebt ingesteld.
 4. Geef in **vCenter-Server**de naam op van de vCenter-Server die de vm's beheert, of de vSphere-server waarop de virtuele machines worden gehost.
 5. Selecteer in **proces server**de naam van het replicatie apparaat.

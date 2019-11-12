@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: helohr
-ms.openlocfilehash: cf344d6c551ecd3d301d79c29efe9e7adb7f8d83
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: dc93480807f34a79ee02f628f7b6f090c7efa428
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646864"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931710"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -59,7 +59,7 @@ ControlUp is een Windows-service provider voor virtueel bureau blad waarmee IT-t
 
 In combi natie met Windows Virtual Desktop biedt ControlUp extra mogelijkheden voor het optimaliseren van Windows-omgevingen met virtuele Bureau bladen en de ervaring van de eind gebruiker. Vanuit de ControlUp-console wordt de omgeving van de eind gebruikers zichtbaar om prestatie problemen effectief te controleren en op te lossen. Een intuïtief dash board biedt inzichten en analyses voor implementaties van virtuele Bureau bladen, evenals opties voor geautomatiseerde rapportage verrijkt met de benchmarks van de community. Met ControlUp kunnen meerdere gegevens bronnen en-typen worden beheerd. deze worden ingedeeld in hoogwaardige gegevens sets die zijn geaggregeerd voor de berekenings-, opslag-en Windows Virtual Desktop-infra structuur, waardoor nauw keurig inzicht kan worden gegeven in één deel venster.
 
-- [Raadpleeg de korte oplossing voor samen voegen](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [Ga naar de website van de partner](https://www.controlup.com/solutions/ms_wvd/).
 
 ## <a name="devicetrust"></a>deviceTRUST

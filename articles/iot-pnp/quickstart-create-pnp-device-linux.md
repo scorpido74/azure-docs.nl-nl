@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 203725ba109922a8704c0e31a6e61dc6eadf6bd9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 087f1d76aaab4b05425262e0c1fb87b168c99b95
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586633"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931220"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-linux"></a>Snelstartgids: een mogelijkheidsprofiel gebruiken voor het maken van een IoT Plug en Play preview-apparaat (Linux)
 
@@ -57,11 +57,11 @@ Als u zich aanmeldt met een micro soft-werk-of school account, of uw micro soft-
 
 ## <a name="prepare-an-iot-hub"></a>Een IoT-hub voorbereiden
 
-U hebt een Azure IoT-hub in uw Azure-abonnement nodig om deze Quick Start te volt ooien. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+U hebt ook een Azure IoT hub in uw Azure-abonnement nodig om deze Quick Start te volt ooien. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. Als u geen IoT hub hebt, zijn er stappen die hieronder worden gemaakt.
 
 Als u de Azure CLI lokaal gebruikt, moet de `az` versie **2.0.75** of hoger zijn, de Azure Cloud Shell maakt gebruik van de nieuwste versie. Gebruik de `az --version` opdracht om de versie te controleren die op uw computer is geïnstalleerd.
 
-Voeg de Microsoft Azure IoT-extensie voor Azure CLI toe:
+Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar:
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -69,11 +69,11 @@ az extension add --name azure-cli-iot-ext
 
 Voor de stappen in deze Snelstartgids is versie **0.8.5** of hoger van de extensie vereist. Gebruik de `az extension list` opdracht om de versie te controleren die u hebt geïnstalleerd en de `az extension update` opdracht zo nodig bij te werken.
 
-Als u geen IoT-hub hebt, maakt u er een met de volgende opdrachten, waarbij u `{YourIoTHubName}` vervangt door een unieke naam van uw keuze. Als u deze opdrachten lokaal uitvoert, meldt u zich eerst aan bij uw Azure-abonnement met behulp van `az login`. Als u deze opdrachten uitvoert in de Azure Cloud shell, bent u automatisch aangemeld:
+Als u geen IoT-hub hebt, maakt u er een met de volgende opdrachten, waarbij u `<YourIoTHubName>` vervangt door een unieke naam van uw keuze. Als u deze opdrachten lokaal uitvoert, meldt u zich eerst aan bij uw Azure-abonnement met behulp van `az login`. Als u deze opdrachten uitvoert in de Azure Cloud shell, bent u automatisch aangemeld:
 
   ```azurecli-interactive
   az group create --name pnpquickstarts_rg --location centralus
-  az iot hub create --name {YourIoTHubName} \
+  az iot hub create --name <YourIoTHubName> \
     --resource-group pnpquickstarts_rg --sku S1
   ```
 
@@ -82,23 +82,23 @@ Met de vorige opdrachten maakt u een resource groep met de naam `pnpquickstarts_
 > [!IMPORTANT]
 > Tijdens de open bare preview zijn IoT-Plug en Play-functies alleen beschikbaar voor IoT-hubs die zijn gemaakt in de regio's **VS-centraal**, **Europa-Noord**en **Japan-Oost** .
 
-Voer de volgende opdracht uit om een apparaat-id te maken voor een apparaat met de naam `mypnpdevice` in uw IoT-hub. Vervang de tijdelijke aanduiding `{YourIoTHubName}` door de naam van uw IoT-hub:
+Voer de volgende opdracht uit om een apparaat-id in uw IoT-hub te maken. Vervang de tijdelijke aanduidingen **YourIoTHubName** en **YourDevice** door uw werkelijke namen.
 
 ```azurecli-interactive
-az iot hub device-identity create --hub-name {YourIoTHubName} --device-id mypnpdevice
+az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
 ```
 
-Voer de volgende opdrachten uit om de _apparaat-Connection String_ op te halen voor het apparaat dat u zojuist hebt geregistreerd. U hebt deze connection string verderop in deze Quick Start:
+Voer de volgende opdrachten uit om de _apparaat-Connection String_ op te halen voor het apparaat dat u zojuist hebt geregistreerd.
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id mypnpdevice --output table
+az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
 ```
 
 ## <a name="author-your-model"></a>Uw model ontwerpen
 
 In deze Quick Start gebruikt u een bestaand voor beeld-mogelijkheidsprofiel en de bijbehorende interfaces.
 
-1. Maak een `pnp_app` Directory in uw basismap. U gebruikt deze map voor de model bestanden van het apparaat en de stub van het apparaat.
+1. Maak een `pnp_app` Directory in uw lokale station. U gebruikt deze map voor de model bestanden van het apparaat en de stub van het apparaat.
 
     ```bash
     cd ~
@@ -126,11 +126,11 @@ Nu u een DCM en de bijbehorende interfaces hebt, kunt u de apparaatcode generere
 1. Open de map `pnp_app` in VS code en gebruik **CTRL + SHIFT + P** om het opdracht palet te openen, **IOT Plug en Play**in te voeren en de stub voor de **apparaatcode**te selecteren.
 
     > [!NOTE]
-    > De eerste keer dat u het hulp programma IoT Plug en Play code generator gebruikt, duurt het enkele seconden om te downloaden.
+    > De eerste keer dat u het hulp programma IoT Plug en Play code generator gebruikt, duurt het enkele seconden om automatisch te downloaden en te installeren.
 
-1. Kies het bestand **SampleDevice. capabilitymodel. json** dat u wilt gebruiken voor het genereren van de code-stub van het apparaat.
+1. Kies het bestand **SampleDevice. capabilitymodel. json** dat moet worden gebruikt voor het genereren van de code-stub van het apparaat.
 
-1. Voer de project naam **sample_device**in. Dit is de naam van uw apparaat-app.
+1. Voer de naam van het project in **sample_device**. Dit is de naam van uw apparaat-app.
 
 1. Kies **ANSI C** als uw taal.
 
@@ -138,9 +138,9 @@ Nu u een DCM en de bijbehorende interfaces hebt, kunt u de apparaatcode generere
 
 1. Kies **cmake-project in Linux** als uw project sjabloon.
 
-1. Kies **via bron code** als de manier waarop u de SDK wilt toevoegen.
+1. Kies **via bron code** als de manier waarop u de SDK van het apparaat wilt toevoegen.
 
-1. VS code opent een nieuw venster met gegenereerde code stub-bestanden.
+1. Er wordt een nieuwe map met de naam **sample_device** gemaakt op dezelfde locatie als het DCM-bestand en in het de gegenereerde code stub-bestanden. VS code opent een nieuw venster om deze weer te geven.
     ![apparaatcode](media/quickstart-create-pnp-device-linux/device-code.png)
 
 ## <a name="build-and-run-the-code"></a>De code bouwen en uitvoeren
@@ -154,7 +154,7 @@ U gebruikt de SDK-bron code van het apparaat om de gegenereerde stub voor de app
     git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
     ```
 
-1. Maak een **cmake** -build-map voor de **sample_device** -toepassing:
+1. Maak een **cmake** -build-map voor de toepassing **sample_device** :
 
     ```bash
     cd ~/pnp_app/sample_device
@@ -173,7 +173,7 @@ U gebruikt de SDK-bron code van het apparaat om de gegenereerde stub voor de app
 
     ```sh
     cd ~/pnp_app/sample_device/cmake
-    ./sample_device "{IoT Hub device connection string}"
+    ./sample_device "<device connection string>"
     ```
 
 1. De toepassing wordt gestart met het verzenden van gegevens naar IoT Hub.
@@ -195,7 +195,7 @@ Als u de apparaatcode met **AZ** cli wilt valideren, moet u de bestanden naar de
     > [!NOTE]
     > De connection string is alleen vereist wanneer u voor het eerst verbinding maakt met de opslag plaats.
 
-1. In het venster voor het uitvoeren van VS code en meldingen kunt u controleren of de bestanden correct zijn gepubliceerd.
+1. In het venster voor het uitvoeren van VS code en meldingen kunt u controleren of de bestanden zijn gepubliceerd.
 
     > [!NOTE]
     > Als er fouten optreden bij het publiceren van de model bestanden van het apparaat, kunt u gebruikmaken van de opdracht **IoT Plug en Play: model opslagplaats afmelden** om u af te melden en de stappen opnieuw door te lopen.
@@ -207,13 +207,13 @@ Nadat het voor beeld van de apparaatclient is gestart, kunt u controleren of dez
 Gebruik de volgende opdracht om de telemetrie te bekijken waarvan het voor beeld-apparaat wordt verzonden. Mogelijk moet u een minuut of twee wachten voordat u een telemetrie in de uitvoer ziet:
 
 ```azurecli-interactive
-az iot dt monitor-events --hub-name {your IoT hub} --device-id mypnpdevice
+az iot dt monitor-events --hub-name <YourIoTHubNme> --device-id <YourDevice>
 ```
 
 Gebruik de volgende opdracht om alle eigenschappen weer te geven die zijn verzonden door het apparaat:
 
 ```azurecli-interactive
-az iot dt list-properties --device-id mypnpdevice --hub-name {Your IoT hub name} --source private --repo-login "{Your company model repository connection string}"
+az iot dt list-properties --device-id <YourDevice> --hub-name <YourIoTHubNme> --source private --repo-login "<Your company model repository connection string>"
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -223,4 +223,4 @@ In deze Quick Start hebt u geleerd hoe u een IoT-Plug en Play apparaat kunt make
 Ga verder met de zelf studie voor meer informatie over DCMs en het maken van uw eigen modellen:
 
 > [!div class="nextstepaction"]
-> [Zelf studie: een mogelijkheidsprofiel voor een apparaat testen met Visual Studio code maken](tutorial-pnp-visual-studio-code.md)
+> [Zelf studie: een mogelijkheidsprofiel maken en testen met Visual Studio code](tutorial-pnp-visual-studio-code.md)

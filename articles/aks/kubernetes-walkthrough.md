@@ -14,16 +14,16 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: ae67ed5e6b23d9d2fae3f3d6e73597876bf7315c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f7e7804b2fc60976ef0ec9af9dcd22e2a2bd9db0
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592968"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929123"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Snelstartgids: een Azure Kubernetes service-cluster implementeren met behulp van Azure CLI
 
-In deze Quick Start implementeert u een Azure Kubernetes service (AKS)-cluster met behulp van de Azure CLI. AKS is een beheerde Kubernetes-service waarmee u snel clusters kunt implementeren en beheren. In het cluster wordt een toepassing met meerdere containers uitgevoerd die bestaat uit een web-front-end en een Redis-exemplaar. Vervolgens ziet u hoe u de status van het cluster en de pods kunt bewaken die uw toepassing uitvoeren.
+In deze Quick Start implementeert u een Azure Kubernetes service (AKS)-cluster met behulp van de Azure CLI. AKS is een beheerde Kubernetes-service waarmee u snel clusters kunt implementeren en beheren. Een toepassing met meerdere containers die bestaat uit een web-front-end en een Redis-exemplaar wordt uitgevoerd in het cluster. U ziet vervolgens hoe u de status van het cluster en de pods die uw toepassing uitvoeren kunt bewaken.
 
 Als u Windows Server-containers wilt gebruiken (momenteel in de preview-versie van AKS), raadpleegt u [een AKS-cluster maken dat Windows Server-containers ondersteunt][windows-container-cli].
 
@@ -37,7 +37,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze Quick Start de Azure CLI-versie 2.0.64 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-> [!Note]
+> [!NOTE]
 > Als u de opdrachten in deze Snelstartgids lokaal uitvoert (in plaats van Azure Cloud Shell), moet u ervoor zorgen dat u de opdrachten als beheerder uitvoert.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
@@ -69,7 +69,8 @@ In de volgende voorbeelduitvoer ziet u dat de resourcegroep is gemaakt:
 
 Gebruik de opdracht [AZ AKS Create][az-aks-create] om een AKS-cluster te maken. In het volgende voorbeeld wordt een cluster met de naam *myAKSCluster* gemaakt met één knooppunt. Azure Monitor voor containers kan ook worden ingeschakeld met behulp van de parameter *--enable-addons monitoring*.  Dit kan enkele minuten duren.
 
-> ERAAN Bij het maken van een AKS-cluster wordt automatisch een tweede bron groep gemaakt voor het opslaan van de AKS-resources. Zie [Waarom zijn er twee resource groepen gemaakt met AKS?](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks) voor meer informatie.
+> [!NOTE]
+> Bij het maken van een AKS-cluster wordt automatisch een tweede resource groep gemaakt voor het opslaan van de AKS-resources. Zie [Waarom zijn er twee resource groepen gemaakt met AKS?](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks) voor meer informatie.
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
@@ -85,7 +86,7 @@ Als u een Kubernetes-cluster wilt beheren, gebruikt u [kubectl][kubectl], de Kub
 az aks install-cli
 ```
 
-Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
+Gebruik de opdracht `kubectl`az aks get-credentials[ om ][az-aks-get-credentials] zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

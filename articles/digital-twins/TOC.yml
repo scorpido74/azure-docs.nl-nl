@@ -67,8 +67,6 @@
           href: how-to-navigate-apis.md
         - name: Veelvoorkomende querypatronen
           href: how-to-query-common-apis.md
-    - name: Uw app bij een verouderde AAD registreren
-      href: how-to-use-legacy-aad.md
 - name: Naslaginformatie
   items:
     - name: Bibliotheek met door de gebruiker gedefinieerde functies

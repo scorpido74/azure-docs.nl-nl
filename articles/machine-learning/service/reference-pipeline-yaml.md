@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
-ms.date: 10/15/2019
-ms.openlocfilehash: a98a0e75c7a03baa663ccb4215e918a87bcc5df7
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.date: 11/11/2019
+ms.openlocfilehash: 474a184b24ca3318a33adb89b25640939a814474
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821773"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929513"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>machine learning pijp lijnen definiëren in YAML
 
@@ -47,8 +47,6 @@ Een pijplijn definitie maakt gebruik van de volgende sleutels, die overeenkomen 
 | `data_reference` | Hiermee definieert u hoe en waar gegevens beschikbaar moeten worden gemaakt in een run. |
 | `default_compute` | Standaard Compute target waarbij alle stappen in de pijplijn worden uitgevoerd. |
 | `steps` | De stappen die worden gebruikt in de pijp lijn. |
-
-De volgende YAML is een voor beeld van een pijplijn definitie:
 
 ## <a name="parameters"></a>Parameters
 
@@ -104,15 +102,15 @@ pipeline:
 
 ## <a name="steps"></a>Stappen
 
-In stappen wordt een reken omgeving gedefinieerd, samen met de bestanden die in de omgeving moeten worden uitgevoerd. De definitie van de YAML vertegenwoordigt de volgende stappen:
+In stappen wordt een reken omgeving gedefinieerd, samen met de bestanden die in de omgeving moeten worden uitgevoerd. Als u het type van een stap wilt definiëren, gebruikt u de `type` sleutel:
 
-| YAML-sleutel | Beschrijving |
+| Type stap | Beschrijving |
 | ----- | ----- |
-| `adla_step` | Voert een U-SQL-script uit met Azure Data Lake Analytics. Komt overeen met de [AdlaStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py) -klasse. |
-| `azurebatch_step` | Voert taken uit met Azure Batch. Komt overeen met de [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py) -klasse. |
-| `databricks_step` | Hiermee voegt u een Databricks-notebook, python-script of JAR toe. Komt overeen met de [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) -klasse. |
-| `data_transfer_step` | Hiermee worden gegevens overgebracht tussen opslag opties. Komt overeen met de [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) -klasse. |
-| `python_script_step` | Voert een python-script uit. Komt overeen met de [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) -klasse. |
+| `AdlaStep` | Voert een U-SQL-script uit met Azure Data Lake Analytics. Komt overeen met de [AdlaStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py) -klasse. |
+| `AzureBatchStep` | Voert taken uit met Azure Batch. Komt overeen met de [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py) -klasse. |
+| `DatabricsStep` | Hiermee voegt u een Databricks-notebook, python-script of JAR toe. Komt overeen met de [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) -klasse. |
+| `DataTransferStep` | Hiermee worden gegevens overgebracht tussen opslag opties. Komt overeen met de [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) -klasse. |
+| `PythonScriptStep` | Voert een python-script uit. Komt overeen met de [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) -klasse. |
 
 ### <a name="adla-step"></a>ADLA stap
 
@@ -146,15 +144,15 @@ pipeline:
     default_compute: adlacomp
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            adla_step:
-                name: "AdlaStep"
-                script_name: "sample_script.usql"
-                source_directory: "helloworld"
+            type: "AdlaStep"
+            name: "MyAdlaStep"
+            script_name: "sample_script.usql"
+            source_directory: "D:\\scripts\\Adla"
             inputs:
                 employee_data:
                     source: employee_data
@@ -198,18 +196,18 @@ pipeline:
     default_compute: testbatch
     steps:
         Step1:
-            runconfig: "D:\\AzureMlCli\\cli_testing\\default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            azurebatch_step:
-                name: "AzureBatchStep"
-                pool_id: "MyPoolName"
-                create_pool: true
-                executable: "azurebatch.cmd"
-                source_directory: "D:\\AzureMlCli\\cli_testing"
-                allow_reuse: false
+            type: "AzureBatchStep"
+            name: "MyAzureBatchStep"
+            pool_id: "MyPoolName"
+            create_pool: true
+            executable: "azurebatch.cmd"
+            source_directory: "D:\\scripts\\AureBatch"
+            allow_reuse: false
             inputs:
                 input:
                     source: input
@@ -251,18 +249,18 @@ pipeline:
     default_compute: mydatabricks
     steps:
         Step1:
-            runconfig: "D:\\AzureMlCli\\cli_testing\\default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            databricks_step:
-                name: "Databrickstep"
-                run_name: "DatabrickRun"
-                python_script_name: "train-db-local.py"
-                source_directory: "D:\\AzureMlCli\\cli_testing\\databricks_train"
-                num_workers: 1
-                allow_reuse: true
+            type: "DatabricksStep"
+            name: "MyDatabrickStep"
+            run_name: "DatabricksRun"
+            python_script_name: "train-db-local.py"
+            source_directory: "D:\\scripts\\Databricks"
+            num_workers: 1
+            allow_reuse: true
             inputs:
                 blob_test_data:
                     source: blob_test_data
@@ -301,14 +299,14 @@ pipeline:
     default_compute: adftest
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            data_transfer_step:
-                name: "DataTransferStep"
-                adla_compute_name: adftest
+            type: "DataTransferStep"
+            name: "MyDataTransferStep"
+            adla_compute_name: adftest
             source_data_reference:
                 adls_test_data:
                     source: adls_test_data
@@ -345,16 +343,16 @@ pipeline:
     default_compute: cpu-cluster
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            python_script_step:
-                name: "PythonScriptStep"
-                script_name: "train.py"
-                allow_reuse: True
-                source_directory: "helloworld"
+            type: "PythonScriptStep"
+            name: "MyPythonScriptStep"
+            script_name: "train.py"
+            allow_reuse: True
+            source_directory: "D:\\scripts\\PythonScript"
             inputs:
                 InputData:
                     source: DataReference1
@@ -365,7 +363,7 @@ pipeline:
                     bind_mode: mount
 ```
 
-## <a name="schedules"></a>Schema's
+## <a name="schedules"></a>Planningen
 
 Bij het definiëren van het schema voor een pijp lijn kan het gegevens archief worden geactiveerd of terugkerend op basis van een tijds interval. Hieronder vindt u de sleutels die worden gebruikt voor het definiëren van een planning:
 
@@ -408,7 +406,7 @@ Bij het definiëren van een **terugkerend schema**gebruikt u de volgende sleutel
 | `time_zone` | De tijd zone voor de begin tijd. Als er geen tijd zone wordt gegeven, wordt UTC gebruikt. |
 | `hours` | Als `frequency` `"Day"` of `"Week"`, kunt u een of meer gehele getallen van 0 tot en met 23, gescheiden door komma's, opgeven als de uren van de dag waarop de pijp lijn moet worden uitgevoerd. Alleen `time_of_day`, `hours` en `minutes` kunnen worden gebruikt. |
 | `minutes` | Als `frequency` `"Day"` of `"Week"`, kunt u een of meer gehele getallen van 0 tot en met 59 opgeven, gescheiden door komma's, als de minuten van het uur waarop de pijp lijn moet worden uitgevoerd. Alleen `time_of_day`, `hours` en `minutes` kunnen worden gebruikt. |
-| `time_of_day` | Als `frequency` `"Day"` of `"Week"`, kunt u een tijd van de dag opgeven waarop het schema moet worden uitgevoerd. De teken reeks notatie van de waarde is `hh:mm`. Alleen `time_of_day`, `hours` en `minutes` kunnen worden gebruikt. |zzs
+| `time_of_day` | Als `frequency` `"Day"` of `"Week"`, kunt u een tijd van de dag opgeven waarop het schema moet worden uitgevoerd. De teken reeks notatie van de waarde is `hh:mm`. Alleen `time_of_day`, `hours` en `minutes` kunnen worden gebruikt. |
 | `week_days` | Als `frequency` `"Week"`is, kunt u een of meer dagen opgeven, gescheiden door komma's, wanneer het schema moet worden uitgevoerd. Geldige waarden zijn `"Monday"`, `"Tuesday"`, `"Wednesday"`, `"Thursday"`, `"Friday"`, `"Saturday"`en `"Sunday"`. |
 
 Het volgende voor beeld bevat de definitie van een terugkerend schema:

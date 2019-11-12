@@ -1,5 +1,5 @@
 ---
-title: Een Azure Resource Manager sjabloon gebruiken om een werk ruimte te maken
+title: Een werk ruimte met Azure Resource Manager sjabloon maken
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het gebruik van een Azure Resource Manager sjabloon voor het maken van een nieuwe Azure Machine Learning-werk ruimte.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: f20c7955856e2e848d331d857d2564649c837bb0
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 8bcfb80d42e7cd1fad6ff4c04415bd8627a3293e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847463"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932147"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

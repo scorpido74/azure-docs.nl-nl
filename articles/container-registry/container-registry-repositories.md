@@ -1,6 +1,6 @@
 ---
 title: Azure Container Registry opslag plaatsen in de Azure Portal
-description: Azure Container Registry opslag plaatsen weer geven in de Azure Portal.
+description: Gebruik de Azure Portal om Azure Container Registry opslag plaatsen weer te geven, die fungeren als host voor docker-container installatie kopieën en andere ondersteunde artefacten.
 services: container-registry
 author: cristy
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 22f84efee2b3996734e8e38c73d30ba891b745d9
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 793d8e82ca78c6055a6e956d4f41b7991d5fd700
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310588"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931533"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Container register opslagplaatsen weer geven in de Azure Portal
 
@@ -21,15 +21,15 @@ Met Azure Container Registry kunt u docker-container installatie kopieën opslaa
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Container register**: Een container register maken in uw Azure-abonnement. Gebruik bijvoorbeeld de [Azure Portal](container-registry-get-started-portal.md) of de [Azure cli](container-registry-get-started-azure-cli.md).
-* **Docker-cli**: Installeer [docker][docker-install] op uw lokale machine, waarmee u de opdracht regel interface van docker kunt installeren.
-* **Container installatie kopie**: Een installatie kopie naar het container register pushen. Zie [een installatie kopie pushen en ophalen](container-registry-get-started-docker-cli.md)voor meer informatie over het pushen en ophalen van installatie kopieën.
+* **Container register**: een container register maken in uw Azure-abonnement. Gebruik bijvoorbeeld de [Azure Portal](container-registry-get-started-portal.md) of de [Azure cli](container-registry-get-started-azure-cli.md).
+* **Docker cli**: Installeer [docker][docker-install] op uw lokale machine, waarmee u de opdracht regel interface van docker kunt installeren.
+* **Container installatie kopie**: push een installatie kopie naar het container register. Zie [een installatie kopie pushen en ophalen](container-registry-get-started-docker-cli.md)voor meer informatie over het pushen en ophalen van installatie kopieën.
 
 ## <a name="view-repositories-in-azure-portal"></a>Opslag plaatsen in Azure Portal weer geven
 
 U kunt een lijst weer geven met de opslag plaatsen die als host fungeren voor uw installatie kopieën, evenals de afbeeldings Tags in de Azure Portal.
 
-Als u de stappen in [push en pull a-installatie kopie](container-registry-get-started-docker-cli.md) hebt uitgevoerd (en de installatie kopie niet meer hebt verwijderd), moet u een nginx-installatie kopie hebben in het container register. De instructies in dat artikel hebben opgegeven dat u de installatie kopie labelt met een naam ruimte, de `/samples/nginx`"voor beelden" in. Als refresher is de opdracht [docker push][docker-push] opgegeven in dat artikel:
+Als u de stappen in [push en pull a-installatie kopie](container-registry-get-started-docker-cli.md) hebt uitgevoerd (en de installatie kopie niet meer hebt verwijderd), moet u een nginx-installatie kopie hebben in het container register. De instructies in dat artikel hebben opgegeven dat u de installatie kopie labelt met een naam ruimte, de "voor beelden" in `/samples/nginx`. Als refresher is de opdracht [docker push][docker-push] opgegeven in dat artikel:
 
 ```Bash
 docker push myregistry.azurecr.io/samples/nginx

@@ -1,18 +1,18 @@
 ---
-title: Integratie van de sensor partner
+title: Partnerintegratie voor sensoren
 description: Hierin wordt de integratie van de sensor partner beschreven
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e90284ce2f8ea37eb9249822e38cef04e1356f59
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1e819c94732e1cbc2de39e6400f8305b7df5aca1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889584"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927660"
 ---
-# <a name="sensor-partner-integration"></a>Integratie van de sensor partner
+# <a name="sensor-partner-integration"></a>Partnerintegratie voor sensoren
 
 Dit artikel bevat informatie over het onderdeel Azure FarmBeats **Translator** , waarmee sensor-partner integratie mogelijk wordt.
 
@@ -79,7 +79,7 @@ De FarmBeats data hub maakt gebruik van Bearer-verificatie, die de volgende refe
 
 Met behulp van de bovenstaande referenties kan de aanroeper een toegangs token aanvragen, dat in de volgende API-aanvragen in de koptekst sectie als volgt moet worden verzonden:
 
-```json
+```
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
@@ -124,14 +124,14 @@ U kunt desgewenst query parameters toevoegen aan GET-aanroepen om te filteren, d
 
 De onderstaande voorbeeld aanvraag is om de lijst met apparaten op te halen:
 
-```azurepowershell-interactive
-curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
+```bash
+curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>"
 ```
 Voor de meeste GET-, POST-en PUT-aanroepen is een JSON-aanvraag tekst vereist.
 
 De onderstaande voorbeeld aanvraag is het maken van een apparaat (dit voor beeld heeft een invoer-JSON met de hoofd tekst van de aanvraag).
 
-```azurepowershell-interactive
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -177,16 +177,16 @@ ParentDeviceId | ID van het bovenliggende apparaat waarmee dit apparaat is verbo
   SensorMeasures > aggregationType  | Ofwel geen, gemiddeld, maximum, minimum, StandardDeviation
   Diepte van SensorMeasures->  | De diepte van de sensor in centimeters (bijvoorbeeld meting van de vocht 10 cm onder het wegdek)
   Beschrijving van sensorMeasures->  | Geef een zinvolle beschrijving van de meting
-  naam  | Naam voor het identificeren van de resource. Bijvoorbeeld model naam/product naam
+  name  | Naam voor het identificeren van de resource. Bijvoorbeeld model naam/product naam
   description  | Geef een zinvolle beschrijving van het model
   properties  | Aanvullende eigenschappen van de fabrikant
   **Sensoren**  |
   HardwareId  | Unieke ID voor de sensor die door de fabrikant is ingesteld
   sensorModelId  | ID van het gekoppelde sensor model.
-  location  | Sensor Latitude (-90 tot + 90)/Longitude (-180 tot 180)/Elevation (in meters)
+  locatie  | Sensor Latitude (-90 tot + 90)/Longitude (-180 tot 180)/Elevation (in meters)
   naam van poort >  |Naam en type van de poort waarop de sensor is aangesloten op het apparaat. Dit moet dezelfde naam zijn als die is gedefinieerd in het model van het apparaat
   deviceId  | ID van het apparaat waarmee de sensor is verbonden
-  naam  | Naam voor het identificeren van de resource. Bijvoorbeeld: naam van sensor/product naam en model nummer/product code.
+  name  | Naam voor het identificeren van de resource. Bijvoorbeeld: naam van sensor/product naam en model nummer/product code.
   description  | Geef een zinvolle beschrijving
   properties  | Aanvullende eigenschappen van de fabrikant
 
@@ -243,27 +243,26 @@ De canonieke bericht indeling is als volgt:
 
 ```json
 {
-“deviceid”: “<id of the Device created>”,
- "timestamp": "<timestamp in ISO 8601 format>",
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
 "version" : "1",
 "sensors": [
     {
-      "id": "<id of the sensor created>”
+      "id": "<id of the sensor created>",
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": value
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": value
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
+ ]
 }
-
 ```
-
 Alle sleutel namen in de telemetrie-JSON moeten een kleine letter zijn, bijvoorbeeld DeviceID, sensordata enzovoort.
 
 Bijvoorbeeld telemetrie-bericht:

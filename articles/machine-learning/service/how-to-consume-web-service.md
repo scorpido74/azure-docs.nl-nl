@@ -1,5 +1,5 @@
 ---
-title: Client maken om geïmplementeerde webservice te gebruiken
+title: Client maken voor model dat is geïmplementeerd als webservice
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het gebruik van een webservice die is gegenereerd bij het implementeren van een model met Azure Machine Learning model. De webservice toont een REST API. Clients voor deze API maken met behulp van de programmeer taal van uw keuze.
 services: machine-learning
@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 387ba970aed68a5f4e682f932a362d3b04b35b8d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 608f343166b528cacf3b1479d993466f6df7cb7e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671456"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932161"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning model gebruiken dat is geïmplementeerd als een webservice
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

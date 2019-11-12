@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 8ebcc863c1812081e6198ff9c684934642e1dc41
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 948dfd25881a6a90dd441ad640091d88812cc298
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904557"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931817"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Quick Start: verzend telemetrie van een apparaat naar een IoT-hub en bewaak deze met de Azure CLI
 
@@ -47,7 +47,7 @@ De Cloud Shell starten:
     ![CLI-omgeving selecteren](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
 ## <a name="prepare-two-cli-sessions"></a>Twee CLI-sessies voorbereiden
-In deze sectie bereidt u twee Azure CLI-sessies voor. In de Cloud Shell voert u de twee sessies uit op afzonderlijke browser tabbladen. In een lokale CLI-client voert u twee afzonderlijke CLI-instanties uit. U gebruikt de eerste sessie als een gesimuleerd apparaat en de tweede sessie om berichten te controleren en te verzenden. Als u een opdracht wilt uitvoeren, selecteert u **kopiëren** om een code blok in deze Snelstartgids te kopiëren, plakt u deze in de shell-sessie en voert u deze uit.
+In deze sectie bereidt u twee Azure CLI-sessies voor. Als u de Cloud Shell gebruikt, voert u de twee sessies uit op afzonderlijke browser tabbladen. Als u een lokale CLI-client gebruikt, voert u twee afzonderlijke CLI-instanties uit. U gebruikt de eerste sessie als een gesimuleerd apparaat en de tweede sessie om berichten te controleren en te verzenden. Als u een opdracht wilt uitvoeren, selecteert u **kopiëren** om een code blok in deze Snelstartgids te kopiëren, plakt u deze in de shell-sessie en voert u deze uit.
 
 Voor Azure CLI moet u zijn aangemeld bij uw Azure-account. Alle communicatie tussen uw Azure CLI-shell sessie en uw IoT-hub wordt geverifieerd en versleuteld. Als gevolg hiervan heeft deze Snelstartgids geen aanvullende verificatie nodig die u zou gebruiken met een echt apparaat, zoals een connection string.
 
@@ -149,7 +149,7 @@ Met de Azure Portal kunt u alle aspecten van uw IoT Hub en apparaten beheren. In
 Voor het visualiseren van metrische gegevens voor berichten in de Azure Portal:
 1. Selecteer **alle resources**in het navigatie menu links op de portal. Hiermee worden alle resources in uw abonnement weer gegeven, met inbegrip van de IoT-hub die u hebt gemaakt. 
 
-1. Klik op de koppeling op de IoT-hub die u hebt gemaakt. In de portal wordt de overzichts pagina voor de hub weer gegeven.
+1. Selecteer de koppeling in de IoT-hub die u hebt gemaakt. In de portal wordt de overzichts pagina voor de hub weer gegeven.
 
 1. Selecteer **metrische gegevens** in het linkerdeel venster van uw IOT hub. 
 

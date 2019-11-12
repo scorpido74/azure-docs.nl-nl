@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: c6a6af6d32e0664e66696523f53ac81cd921609e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a61b7e058e485121d87c5d3bb1050b4289e4ceed
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814872"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931075"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Een Keras-classificatie model trainen en registreren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -189,6 +189,9 @@ Nadat u het DNN-model hebt getraind, kunt u dit registreren in uw werk ruimte. M
 ```Python
 model = run.register_model(model_name='keras-dnn-mnist', model_path='outputs/model')
 ```
+
+> [!TIP]
+> Het model dat u zojuist hebt geregistreerd, wordt op dezelfde manier geïmplementeerd als andere geregistreerde modellen in Azure Machine Learning, ongeacht de Estimator die u hebt gebruikt voor de training. De implementatie-instructie bevat een sectie over het registreren van modellen, maar u kunt direct door gaan naar het [maken van een reken doel](how-to-deploy-and-where.md#choose-a-compute-target) voor implementatie, omdat u al een geregistreerd model hebt.
 
 U kunt ook een lokale kopie van het model downloaden. Dit kan handig zijn om een extra model validatie lokaal te kunnen uitvoeren. In het trainings script `mnist-keras.py`een tensor flow-beveiligings object het model persistent maken naar een lokale map (lokaal naar het Compute-doel). U kunt het object run gebruiken om een kopie te downloaden uit de gegevens opslag.
 

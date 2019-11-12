@@ -1,6 +1,5 @@
 ---
 title: Logboek registratie inschakelen in Azure Machine Learning
-titleSuffix: Azure Machine Learning
 description: Meer informatie over het inschakelen van logboek registratie in Azure Machine Learning met behulp van zowel het standaard python-logboek registratie pakket als het gebruik van specifieke SDK-functies.
 ms.author: trbye
 author: trevorbye
@@ -10,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: a47ce44a325720fb1b6df919a0a324a4d3319d86
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91e00b8e1d13f69ae3ba446bcbc09f06f387c439
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489889"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931123"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Logboek registratie inschakelen in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

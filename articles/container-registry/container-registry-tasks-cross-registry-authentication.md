@@ -1,18 +1,18 @@
 ---
-title: Verificatie tussen het REGI ster in een Azure Container Registry taak
-description: Een beheerde identiteit inschakelen voor Azure-resources in een Azure Container Registry-taak (ACR) om de taak toegang te geven tot een ander persoonlijk container register.
+title: Verificatie tussen het REGI ster van Azure Container Registry taak
+description: Een Azure Container Registry taak (ACR Task) configureren om toegang te krijgen tot een ander persoonlijk Azure container Registry met behulp van een beheerde identiteit voor Azure-resources
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 07fa7f3df5274ae88c93deac75093ead3f32f036
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f2ffb42ce109f5e6f7186461f931b7f8da57ff32
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509099"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931518"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Verificatie tussen het REGI ster in een ACR-taak met behulp van een door Azure beheerde identiteit 
 
@@ -39,7 +39,7 @@ Voor dit artikel hebt u twee Azure-container registers nodig:
 
 Vervang door uw eigen register namen in latere stappen.
 
-Als u nog niet beschikt over de benodigde Azure-container registers, raadpleegt [u Quick Start: Maak een persoonlijk container register met behulp van](container-registry-get-started-azure-cli.md)de Azure cli. U hoeft nog geen installatie kopieën naar het REGI ster te pushen.
+Als u nog niet beschikt over de benodigde Azure-container registers, raadpleegt u [Quick Start: een persoonlijk container register maken met behulp van de Azure cli](container-registry-get-started-azure-cli.md). U hoeft nog geen installatie kopieën naar het REGI ster te pushen.
 
 ## <a name="prepare-base-registry"></a>Basis register voorbereiden
 
@@ -56,7 +56,7 @@ az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file D
 
 ## <a name="define-task-steps-in-yaml-file"></a>Taak stappen definiëren in het YAML-bestand
 
-De stappen voor dit voor beeld van een [taken met meerdere stappen](container-registry-tasks-multi-step.md) worden gedefinieerd in een [yaml-bestand](container-registry-tasks-reference-yaml.md). Maak een bestand met `helloworldtask.yaml` de naam in uw lokale werkmap en plak de volgende inhoud. Werk de waarde van `REGISTRY_NAME` in de build-stap bij met de server naam van het basis register.
+De stappen voor dit voor beeld van een [taken met meerdere stappen](container-registry-tasks-multi-step.md) worden gedefinieerd in een [yaml-bestand](container-registry-tasks-reference-yaml.md). Maak een bestand met de naam `helloworldtask.yaml` in uw lokale werkmap en plak de volgende inhoud. Werk de waarde van `REGISTRY_NAME` in de build-stap bij met de server naam van het basis register.
 
 ```yml
 version: v1.0.0
@@ -66,17 +66,17 @@ steps:
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
 ```
 
-In de stap build wordt `Dockerfile-app` het bestand gebruikt in [Azure-samples/ACR-build-HelloWorld-node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) opslag plaats om een installatie kopie te bouwen. Hiermee `--build-arg` wordt verwezen naar het basis register voor het ophalen van de basis installatie kopie. Wanneer de installatie kopie is gemaakt, wordt deze naar het REGI ster gepusht om de taak uit te voeren.
+In de stap build wordt het `Dockerfile-app`-bestand gebruikt in [Azure-samples/ACR-build-HelloWorld-node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) opslag plaats om een installatie kopie te bouwen. De `--build-arg` verwijst naar het basis register om de basis installatie kopie te halen. Wanneer de installatie kopie is gemaakt, wordt deze naar het REGI ster gepusht om de taak uit te voeren.
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>Optie 1: Taak maken met door gebruiker toegewezen identiteit
+## <a name="option-1-create-task-with-user-assigned-identity"></a>Optie 1: taak maken met door gebruiker toegewezen identiteit
 
-Met de stappen in deze sectie maakt u een taak en schakelt u een door de gebruiker toegewezen identiteit in. Als u in plaats daarvan een door het systeem toegewezen identiteit wilt inschakelen [, raadpleegt u optie 2: Maak een taak met een door het](#option-2-create-task-with-system-assigned-identity)systeem toegewezen identiteit. 
+Met de stappen in deze sectie maakt u een taak en schakelt u een door de gebruiker toegewezen identiteit in. Als u in plaats daarvan een door het systeem toegewezen identiteit wilt inschakelen, raadpleegt u [optie 2: taak maken met door het systeem toegewezen identiteit](#option-2-create-task-with-system-assigned-identity). 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
 ### <a name="create-task"></a>Taak maken
 
-Maak de taak *helloworldtask* door de volgende [AZ ACR Task Create][az-acr-task-create] -opdracht uit te voeren. De taak wordt uitgevoerd zonder een bron code context en de opdracht verwijst naar het `helloworldtask.yaml` bestand in de werkmap. De `--assign-identity` para meter geeft de resource-id van de door de gebruiker toegewezen identiteit door. 
+Maak de taak *helloworldtask* door de volgende [AZ ACR Task Create][az-acr-task-create] -opdracht uit te voeren. De taak wordt uitgevoerd zonder een bron code context en de opdracht verwijst naar het bestand `helloworldtask.yaml` in de werkmap. Met de para meter `--assign-identity` wordt de resource-ID van de door de gebruiker toegewezen identiteit door gegeven. 
 
 ```azurecli
 az acr task create \
@@ -89,13 +89,13 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>Optie 2: Taak maken met door het systeem toegewezen identiteit
+## <a name="option-2-create-task-with-system-assigned-identity"></a>Optie 2: een taak maken met een door het systeem toegewezen identiteit
 
-Met de stappen in deze sectie maakt u een taak en schakelt u een door het systeem toegewezen identiteit in. Als u in plaats daarvan een door de gebruiker toegewezen identiteit wilt inschakelen [, raadpleegt u optie 1: Maak een taak met een door de](#option-1-create-task-with-user-assigned-identity)gebruiker toegewezen identiteit. 
+Met de stappen in deze sectie maakt u een taak en schakelt u een door het systeem toegewezen identiteit in. Als u in plaats daarvan een door de gebruiker toegewezen identiteit wilt inschakelen, raadpleegt u [optie 1: taak maken met door de gebruiker toegewezen identiteit](#option-1-create-task-with-user-assigned-identity). 
 
 ### <a name="create-task"></a>Taak maken
 
-Maak de taak *helloworldtask* door de volgende [AZ ACR Task Create][az-acr-task-create] -opdracht uit te voeren. De taak wordt uitgevoerd zonder een bron code context en de opdracht verwijst naar het `helloworldtask.yaml` bestand in de werkmap. Met `--assign-identity` de para meter zonder waarde kan de door het systeem toegewezen identiteit voor de taak worden ingeschakeld. 
+Maak de taak *helloworldtask* door de volgende [AZ ACR Task Create][az-acr-task-create] -opdracht uit te voeren. De taak wordt uitgevoerd zonder een bron code context en de opdracht verwijst naar het bestand `helloworldtask.yaml` in de werkmap. Met de para meter `--assign-identity` zonder waarde kan de door het systeem toegewezen identiteit voor de taak worden ingeschakeld. 
 
 ```azurecli
 az acr task create \
@@ -117,7 +117,7 @@ Gebruik de opdracht [AZ ACR show][az-acr-show] om de resource-id van het basis r
 baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 ```
 
-Gebruik de opdracht [AZ Role Assignment Create][az-role-assignment-create] om de `acrpull` rol-id toe te wijzen aan het basis register. Deze rol heeft alleen machtigingen voor het ophalen van installatie kopieën uit het REGI ster.
+Gebruik de opdracht [AZ Role Assignment Create][az-role-assignment-create] om de identiteit van de `acrpull`-rol toe te wijzen aan het basis register. Deze rol heeft alleen machtigingen voor het ophalen van installatie kopieën uit het REGI ster.
 
 ```azurecli
 az role assignment create --assignee $principalID --scope $baseregID --role acrpull
@@ -125,7 +125,7 @@ az role assignment create --assignee $principalID --scope $baseregID --role acrp
 
 ## <a name="add-target-registry-credentials-to-task"></a>Doel register referenties toevoegen aan taak
 
-Gebruik nu de opdracht [AZ ACR taak Credential add][az-acr-task-credential-add] om de referenties van de identiteit toe te voegen aan de taak, zodat deze kan worden geverifieerd met het basis register. Voer de opdracht uit die overeenkomt met het type beheerde identiteit dat u hebt ingeschakeld in de taak. Als u een door de gebruiker toegewezen identiteit hebt ingeschakeld `--use-identity` , geeft u de client-id van de identiteit door. Als u een door het systeem toegewezen identiteit hebt ingeschakeld `--use-identity [system]`, geeft u door.
+Gebruik nu de opdracht [AZ ACR taak Credential add][az-acr-task-credential-add] om de referenties van de identiteit toe te voegen aan de taak, zodat deze kan worden geverifieerd met het basis register. Voer de opdracht uit die overeenkomt met het type beheerde identiteit dat u hebt ingeschakeld in de taak. Als u een door de gebruiker toegewezen identiteit hebt ingeschakeld, geeft u `--use-identity` door met de client-ID van de identiteit. Als u een door het systeem toegewezen identiteit hebt ingeschakeld, geeft u `--use-identity [system]`door.
 
 ```azurecli
 # Add credentials for user-assigned identity to the task

@@ -1,6 +1,6 @@
 ---
-title: Implementatiearchitectuur van - Azure toegewezen HSM | Microsoft Docs
-description: Basisontwerp overwegingen bij het gebruik van Azure toegewezen HSM als onderdeel van de toepassingsarchitectuur van een
+title: Implementatie architectuur-Azure dedicated HSM | Microsoft Docs
+description: Basis overwegingen bij het ontwerpen van het gebruik van een specifieke HSM van Azure als onderdeel van een toepassings architectuur
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -10,28 +10,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 93755ded8f9db27cf8e78079f32e90cccfac2831
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: ff86c25de006495e3536f2ff907e1cf40a216f8e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883830"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927865"
 ---
-# <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure dedicated HSM-implementatie architectuur
+# <a name="azure-dedicated-hsm-deployment-architecture"></a>Implementatiearchitectuur van Azure Dedicated HSM
 
-Azure toegewezen HSM biedt opslag van cryptografische sleutels in Azure. Deze voldoet aan strenge beveiligingsvereisten. Klanten profiteren van Azure toegewezen HSM als ze:
+Azure dedicated HSM biedt cryptografische-sleutel opslag in Azure. Het voldoet aan strenge beveiligings vereisten. Klanten profiteren van het gebruik van een speciale HSM van Azure, als ze:
 
-* FIPS moet 140-2 Level 3-certificering voldoen
+* Moet voldoen aan de FIPS 140-2-certificering van niveau 3
 * Vereisen dat ze exclusieve toegang tot de HSM hebben
-* volledige controle over hun apparaten moeten hebben
+* moeten volledige controle over hun apparaten hebben
 
-De HSM's worden verdeeld over de Microsoft-datacenters en kunnen eenvoudig worden ingericht als een paar apparaten als de basis van een maximaal beschikbare oplossing. Ze kunnen ook worden geïmplementeerd in regio's voor een robuuste oplossing voor noodherstel. De regio's met toegewezen HSM die beschikbaar zijn op dit moment:
+De Hsm's worden gedistribueerd in de data centers van micro soft en kunnen eenvoudig worden ingericht als een combi natie van apparaten als basis voor een Maxi maal beschik bare oplossing. Ze kunnen ook worden geïmplementeerd in verschillende regio's voor een nood herstel oplossing. De regio's met een toegewezen HSM op dit moment zijn:
 
 * US - oost
 * US - oost 2
 * US - west
+* US - west 2
 * US - zuid-centraal
 * Azië - zuidoost
 * Azië - oost
@@ -44,26 +45,26 @@ De HSM's worden verdeeld over de Microsoft-datacenters en kunnen eenvoudig worde
 * Australië - oost
 * Australië - zuidoost
 
-Elk van deze regio's heeft HSM rekken geïmplementeerd in datacenters met twee onafhankelijke of ten minste twee onafhankelijke beschikbaarheidszones. Zuidoost-Azië heeft drie beschikbaarheidszones en VS-Oost 2 heeft twee. Er is een totaal van acht regio's in Europa, Azië en de VS die worden geboden door de toegewezen HSM-service. Zie voor meer informatie over Azure-regio's, de officiële [informatie van de Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/).
-Bepaalde factoren ontwerp voor een oplossing op basis van toegewezen HSM locatie/latentie, hoge beschikbaarheid en ondersteuning voor andere gedistribueerde toepassingen.
+Elk van deze regio's heeft HSM-racks die zijn geïmplementeerd in twee onafhankelijke data centers of ten minste twee onafhankelijke beschikbaarheids zones. Zuid-Azië-oost heeft drie beschikbaarheids zones en VS-Oost 2 heeft twee. Er zijn in totaal acht regio's in Europa, Azië en de Verenigde Staten die de toegewezen HSM-service bieden. Zie de officiële [informatie over Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/)voor meer informatie over Azure-regio's.
+Enkele ontwerp factoren voor een specifieke op HSM gebaseerde oplossing zijn locatie/latentie, hoge Beschik baarheid en ondersteuning voor andere gedistribueerde toepassingen.
 
 ## <a name="device-location"></a>Locatie apparaat
 
-Locatie van het apparaat optimale HSM is in de dichtstbijzijnde nabijheid tot de toepassingen uitvoeren van cryptografische bewerkingen. Regionale latentie wordt verwacht één cijfer milliseconden. Regio-overschrijdende latentie kan 5 tot 10 keer hoger zijn dan dit.
+De optimale locatie van een HSM-apparaat bevindt zich in de buurt van de toepassingen die cryptografische bewerkingen uitvoeren. In de regio latentie wordt verwacht dat het enkele milliseconden is. De latentie van de andere regio kan 5 tot 10 keer hoger zijn dan dit.
 
 ## <a name="high-availability"></a>Hoge beschikbaarheid
 
-Voor het bereiken van hoge beschikbaarheid, moet een klant twee HSM-apparaten in een regio die zijn geconfigureerd met behulp van Gemalto software als een paar met hoge beschikbaarheid gebruiken. Dit type implementatie zorgt ervoor dat de beschikbaarheid van sleutels als er een probleem te voorkomen dat deze sleutel verwerkingen is een enkel apparaat. Bovendien vermindert het risico bij het uitvoeren van onderhoud, zoals power supply vervanging ondersteuning voor probleemoplossing. Het is belangrijk voor een ontwerp voor elk soort regionaal niveau. Storingen in andere niveau kunnen gebeuren wanneer er natuurrampen zoals orkanen, overstromingen of aardbevingen. Deze typen gebeurtenissen moeten worden verholpen door het inrichten van HSM-apparaten in een andere regio. Apparaten die zijn geïmplementeerd in een andere regio kunnen samen worden gekoppeld via de softwareconfiguratie voor Gemalto. Dit betekent dat de minimale implementatie voor een maximaal beschikbare en noodherstel flexibele oplossing is vier HSM-apparaten in twee regio's. Lokale redundantie en redundantie in regio's kunnen worden gebruikt als een basislijn toe te voegen verdere HSM-apparaat implementaties voor de ondersteuning van latentie, capaciteit of om te voldoen aan andere vereisten toepassingsspecifieke.
+Voor een hoge Beschik baarheid moet een klant twee HSM-apparaten gebruiken in een regio die is geconfigureerd met behulp van Gemalto-software als een paar met hoge Beschik baarheid. Dit type implementatie zorgt voor de beschik baarheid van sleutels als één apparaat een probleem ondervindt waardoor het niet mogelijk is om sleutel bewerkingen te verwerken. Het vermindert ook aanzienlijk risico bij het uitvoeren van onderhouds-en reparatie onderhoud, zoals het vervangen van een voeding. Het is belang rijk om te voor komen dat u rekening moet doen met een soort fout op regionaal niveau. Er kunnen regionale storingen optreden wanneer er sprake is van natuur rampen, zoals orkanen, overstroming of aard bevingen. Dit type gebeurtenissen moet worden verholpen door HSM-apparaten in een andere regio in te richten. Apparaten die zijn geïmplementeerd in een andere regio kunnen samen worden gekoppeld via de Gemalto-software configuratie. Dit betekent dat de minimale implementatie voor een Maxi maal beschik bare en nood herstel bare oplossing vier HSM-apparaten zijn tussen twee regio's. Lokale redundantie en redundantie over regio's kunnen worden gebruikt als basis lijn voor het toevoegen van andere implementaties van HSM-apparaten voor de ondersteuning van latentie, capaciteit of om te voldoen aan andere toepassingsspecifieke vereisten.
 
-## <a name="distributed-application-support"></a>Gedistribueerde toepassingsondersteuning
+## <a name="distributed-application-support"></a>Ondersteuning voor gedistribueerde toepassingen
 
-Toegewezen HSM-apparaten worden doorgaans geïmplementeerd ter ondersteuning van toepassingen die nodig zijn om uit te voeren van de opslag van sleutels en bewerkingen voor het sleutel ophalen. Toegewezen HSM apparaten hebben 10 partities voor ondersteuning van onafhankelijke toepassing. Locatie van het apparaat moet worden gebaseerd op een holistische weergave van alle toepassingen die u nodig hebt om de service te gebruiken.
+Toegewezen HSM-apparaten worden meestal geïmplementeerd ter ondersteuning van toepassingen die sleutel opslag en het ophalen van sleutels moeten uitvoeren. Toegewezen HSM-apparaten hebben 10 partities voor onafhankelijke toepassings ondersteuning. De locatie van het apparaat moet worden gebaseerd op een holistische weer gave van alle toepassingen die de service moeten gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zodra de implementatie-architectuur wordt bepaald, worden de meeste configuratieactiviteiten te implementeren die architectuur wordt geleverd door Gemalto. Dit omvat zowel apparaatconfiguratie als toepassing integratiescenario's. Gebruik voor meer informatie de [Gemalto klantondersteuning](https://supportportal.gemalto.com/csm/) portal en download handleidingen voor beheer en de configuratie. De website van Microsoft-partner heeft een aantal integratiehandleidingen.
-Het is raadzaam dat alle belangrijke concepten van de service, zoals hoge beschikbaarheid en beveiliging bijvoorbeeld duidelijk zijn voordat het apparaat inrichten of toepassingsontwerp en implementatie.
-Verdere concept niveau onderwerpen:
+Zodra de implementatie architectuur is vastgesteld, worden de meeste configuratie activiteiten voor het implementeren van die architectuur verschaft door Gemalto. Dit omvat ook apparaatconfiguratie en scenario's voor de integratie van toepassingen. Voor meer informatie gebruikt u de Gemalto-portal voor [klanten ondersteuning](https://supportportal.gemalto.com/csm/) en downloadt u beheer-en configuratie handleidingen. De micro soft-partner site heeft verschillende integratie handleidingen.
+Het wordt aanbevolen om alle belang rijke concepten van de service, zoals hoge Beschik baarheid en beveiliging, bijvoorbeeld goed te begrijpen vóór het inrichten van apparaten of het ontwerpen en implementeren van toepassingen.
+Meer onderwerpen over het concept niveau:
 
 * [Hoge beschikbaarheid](high-availability.md)
 * [Fysieke beveiliging](physical-security.md)

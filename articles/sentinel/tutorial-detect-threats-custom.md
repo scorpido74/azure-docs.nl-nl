@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5d4c549eaded78c69d3e7fa7173b5ad9b1d82f2f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9c4ba09c7e3eca4482ed56b0b337124aeec5b838
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333150"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928255"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Zelf studie: aangepaste analyse regels maken om verdachte bedreigingen te detecteren
 
-Nadat u [uw gegevens bronnen](quickstart-onboard.md) To Azure-Sentinel hebt verbonden, kunt u aangepaste regels maken waarmee kan worden gezocht naar specifieke criteria in uw omgeving en incidenten worden gegenereerd wanneer de criteria worden vergeleken, zodat u ze kunt onderzoeken. Deze zelf studie helpt u bij het maken van aangepaste regels voor het detecteren van bedreigingen met Azure Sentinel.
+Nadat u [uw gegevens bronnen](quickstart-onboard.md) aan Azure Sentinel hebt gekoppeld, kunt u aangepaste regels maken waarmee kan worden gezocht naar specifieke criteria in uw omgeving en incidenten worden gegenereerd wanneer de criteria worden vergeleken, zodat u ze kunt onderzoeken. Deze zelf studie helpt u bij het maken van aangepaste regels voor het detecteren van bedreigingen met Azure Sentinel.
 
 Deze zelf studie helpt u bij het detecteren van bedreigingen met Azure Sentinel.
 > [!div class="checklist"]
@@ -56,7 +56,7 @@ U kunt aangepaste analyse regels maken om u te helpen bij het zoeken naar de typ
     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
    > [!NOTE]
-   > De lengte van de query moet tussen 1 en 1.000 tekens lang zijn en mag geen ' Search \* ' of ' Union \* ' bevatten.
+   > De lengte van de query moet tussen 1 en 10.000 tekens lang zijn en mag geen ' Search \*' of ' Union \*' bevatten.
 
     1. Stel onder **query planning**de volgende para meters in:
 

@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2c704e36f4353b34733ccc29b785c752b2a5c559
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a18949799b948b962a5b24ffdc7c735fc1380808
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822715"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931078"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Pytorch diepe Learning-modellen op schaal trainen met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -174,6 +174,9 @@ Zodra u het model hebt getraind, kunt u het registreren in uw werk ruimte. Met m
 ```Python
 model = run.register_model(model_name='pt-dnn', model_path='outputs/')
 ```
+
+> [!TIP]
+> Het model dat u zojuist hebt geregistreerd, wordt op dezelfde manier geïmplementeerd als andere geregistreerde modellen in Azure Machine Learning, ongeacht de Estimator die u hebt gebruikt voor de training. De implementatie-instructie bevat een sectie over het registreren van modellen, maar u kunt direct door gaan naar het [maken van een reken doel](how-to-deploy-and-where.md#choose-a-compute-target) voor implementatie, omdat u al een geregistreerd model hebt.
 
 U kunt ook een lokale kopie van het model downloaden met behulp van het object run. In het trainings script `pytorch_train.py`een PyTorch-object opslaan het model persistent maken naar een lokale map (lokaal naar het Compute-doel). U kunt het object run gebruiken om een kopie te downloaden.
 

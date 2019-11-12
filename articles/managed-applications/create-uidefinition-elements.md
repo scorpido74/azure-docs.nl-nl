@@ -1,25 +1,21 @@
 ---
-title: Azure maakt het rapportdefinitie-element UI | Microsoft Docs
-description: Beschrijving van de elementen te gebruiken bij het maken van definities van de gebruikersinterface voor Azure-portal.
-services: managed-applications
-documentationcenter: na
+title: Azure-interface definitie-element maken | Microsoft Docs
+description: Beschrijft de elementen die moeten worden gebruikt bij het maken van UI-definities voor Azure Portal.
 author: tfitzmac
 ms.service: managed-applications
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/19/2018
+ms.date: 11/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 41a583a77f85bb1524112fa20d9098e18bc4f431
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f952b8301f1d85d81fcc63e5d46dc57b1fb1106
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60587935"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932012"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition-elementen
-Dit artikel wordt beschreven voor het schema en de eigenschappen voor alle ondersteunde elementen van een CreateUiDefinition. 
+
+In dit artikel worden het schema en de eigenschappen beschreven voor alle ondersteunde elementen van een CreateUiDefinition. 
 
 ## <a name="schema"></a>Schema
 
@@ -38,28 +34,29 @@ Het schema voor de meeste elementen is als volgt:
 }
 ```
 
-| Eigenschap | Vereist | Description |
+| Eigenschap | Vereist | Beschrijving |
 | -------- | -------- | ----------- |
-| name | Ja | Een interne id om te verwijzen naar een specifiek exemplaar van een element. De meest voorkomende gebruik van de naam van het element is in `outputs`, waar de uitvoerwaarden van de opgegeven elementen zijn toegewezen aan de parameters van de sjabloon. U kunt deze ook gebruiken om te koppelen van de uitvoerwaarde van een element op de `defaultValue` van een ander element. |
-| type | Ja | De UI-besturingselement om weer te geven voor het element. Zie voor een lijst van ondersteunde typen [elementen](#elements). |
-| label | Ja | De weergegeven tekst van het element. Sommige elementtypen bevatten meerdere labels, zodat de waarde kan een object met meerdere tekenreeksen zijn. |
-| defaultValue | Nee | De standaardwaarde van het element. Sommige elementtypen ondersteuning voor complexe standaardwaarden, zodat de waarde kan een object zijn. |
-| toolTip | Nee | De tekst die moet worden weergegeven in de knopinfo van het element. Vergelijkbaar met `label`, bepaalde onderdelen van de ondersteuning van meerdere hulpprogramma tip tekenreeksen. Inlinelinks kan worden ingesloten Markdown-syntaxis gebruiken.
-| constraints | Nee | Een of meer eigenschappen die worden gebruikt voor het aanpassen van de werking van de validatie van het element. De ondersteunde eigenschappen voor beperkingen variëren per elementtype. Sommige elementtypen geen ondersteuning voor aanpassing van het validatiegedrag, en dus er is geen eigenschap beperkingen hebben. |
-| opties | Nee | Extra eigenschappen die het gedrag van het element aanpassen. Vergelijkbaar met `constraints`, de ondersteunde eigenschappen variëren per elementtype. |
-| visible | Nee | Geeft aan of het element wordt weergegeven. Als `true`, het element en de betreffende onderliggende elementen worden weergegeven. De standaardwaarde is `true`. Gebruik [logische functies](create-uidefinition-functions.md#logical-functions) dynamisch beheren de waarde van deze eigenschap.
+| name | Ja | Een interne id om te verwijzen naar een specifiek exemplaar van een element. Het meest voorkomende gebruik van de element naam bevindt zich in `outputs`, waarbij de uitvoer waarden van de opgegeven elementen worden toegewezen aan de para meters van de sjabloon. U kunt dit ook gebruiken om de uitvoer waarde van een-element te binden aan de `defaultValue` van een ander element. |
+| type | Ja | Het besturings element in de gebruikers interface dat voor het element moet worden weer gegeven. Zie [elementen](#elements)voor een lijst met ondersteunde typen. |
+| label | Ja | De weergave tekst van het element. Sommige element typen bevatten meerdere labels. de waarde kan dus een object met meerdere teken reeksen zijn. |
+| Standaard | Nee | De standaard waarde van het element. Sommige element typen ondersteunen complexe standaard waarden, dus de waarde kan een object zijn. |
+| Knop | Nee | De tekst die moet worden weer gegeven in de knop Info van het element. Net als bij `label`ondersteunen sommige elementen meerdere knop info-teken reeksen. Inline-koppelingen kunnen worden inge sloten met de syntaxis voor de korting.
+| standaardwaarde | Nee | Een of meer eigenschappen die worden gebruikt voor het aanpassen van het validatie gedrag van het element. De ondersteunde eigenschappen voor beperkingen variëren per element type. Sommige element typen bieden geen ondersteuning voor het aanpassen van het validatie gedrag en hebben daarom geen beperkingen voor de eigenschap. |
+| Opties | Nee | Aanvullende eigenschappen die het gedrag van het element aanpassen. Net als bij `constraints`variëren de ondersteunde eigenschappen per element type. |
+| Gezien | Nee | Hiermee wordt aangegeven of het element wordt weer gegeven. Als `true`, worden het element en de bijbehorende onderliggende elementen weer gegeven. De standaard waarde is `true`. [Logische functies](create-uidefinition-functions.md#logical-functions) gebruiken om de waarde van deze eigenschap dynamisch te beheren.
 
 ## <a name="elements"></a>Elementen
 
-De documentatie voor elk element bevat een voorbeeld van een gebruikersinterface, schema en opmerkingen van het gedrag van het element (meestal met betrekking tot validatie en ondersteunde aanpassing) en voorbeeld van uitvoer.
+De documentatie voor elk element bevat een UI-voor beeld, schema, opmerkingen over het gedrag van het element (meestal met betrekking tot validatie en ondersteunde aanpassing) en voorbeeld uitvoer.
 
 - [Microsoft.Common.DropDown](microsoft-common-dropdown.md)
 - [Microsoft.Common.FileUpload](microsoft-common-fileupload.md)
-- [Microsoft.Common.InfoBox](microsoft-common-infobox.md)
+- [Micro soft. common. InfoBox](microsoft-common-infobox.md)
 - [Microsoft.Common.OptionsGroup](microsoft-common-optionsgroup.md)
 - [Microsoft.Common.PasswordBox](microsoft-common-passwordbox.md)
 - [Microsoft.Common.Section](microsoft-common-section.md)
-- [Microsoft.Common.TextBlock](microsoft-common-textblock.md)
+- [Micro soft. common. TagsByResource](microsoft-common-tagsbyresource.md)
+- [Micro soft. common. TextBlock](microsoft-common-textblock.md)
 - [Microsoft.Common.TextBox](microsoft-common-textbox.md)
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)
@@ -70,4 +67,5 @@ De documentatie voor elk element bevat een voorbeeld van een gebruikersinterface
 - [Microsoft.Storage.StorageAccountSelector](microsoft-storage-storageaccountselector.md)
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een inleiding tot het maken van definities van de gebruikersinterface, [aan de slag met CreateUiDefinition](create-uidefinition-overview.md).
+
+Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.

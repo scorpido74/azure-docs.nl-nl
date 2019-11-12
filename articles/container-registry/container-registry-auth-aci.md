@@ -1,5 +1,5 @@
 ---
-title: Verifiëren met Azure Container Registry vanuit Azure Container Instances
+title: Toegang tot Azure Container Registry vanuit Container Instances
 description: Meer informatie over het verlenen van toegang tot installatie kopieën in uw persoonlijke container register van Azure Container Instances met behulp van een Azure Active Directory Service-Principal.
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: b11f88cbb29016032cbf536a2c970573eda82152
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 53cdca72587dafd39abd3f13ad488dcb460bf622
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72262856"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931661"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Verifiëren met Azure Container Registry vanuit Azure Container Instances
 
@@ -33,7 +33,7 @@ Service-principals moeten ook worden gebruikt wanneer de [gebruiker](container-r
 
 ## <a name="authenticate-using-the-service-principal"></a>Verificatie met behulp van de Service-Principal
 
-Als u een container in Azure Container Instances wilt starten met behulp van een Service-Principal, geeft u de ID op voor `--registry-username` en het bijbehorende wacht woord voor `--registry-password`.
+Als u een container in Azure Container Instances wilt starten met behulp van een Service-Principal, geeft u de ID op voor `--registry-username`en het bijbehorende wacht woord voor `--registry-password`.
 
 ```azurecli-interactive
 az container create \

@@ -1,5 +1,5 @@
 ---
-title: Modellen implementeren met een aangepaste docker-basis installatie kopie
+title: Modellen implementeren met een aangepaste docker-installatie kopie
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het gebruik van een aangepaste docker-basis installatie kopie bij het implementeren van uw Azure Machine Learning modellen. Hoewel Azure Machine Learning een standaard basis installatie kopie voor u biedt, kunt u ook uw eigen basis installatie kopie gebruiken.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 3f822e0089772f06245d80c1323cf1f5dfe10361
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b34ef305a6f1cf41c7b7bdcf415e1a91653ad878
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496932"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932102"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

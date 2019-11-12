@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 59f2db8ec4dd8affe1c87ca2bb85a7ff7b8a4d7c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b073c4244d2a7abc7c2c066c3fad036f0caa5faa
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485393"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929547"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data Wetenschappen met een Linux-Data Science Virtual Machine in azure
 
@@ -58,8 +58,8 @@ Voeg de twee bestanden vervolgens samen:
 
 De gegevensset heeft verschillende typen statistieken voor elk e-mail bericht:
 
-* Kolommen zoals **word\_freq\_* woord*** geven het percentage woorden in het e-mail bericht aan dat overeenkomt met *Word*. Als bijvoorbeeld **word\_freq\_** **1**is, is 1% van alle woorden in het e-mail bericht *gemaakt*.
-* Kolommen zoals **char\_freq\_* char*** geven het percentage van alle tekens in het e-mail bericht dat *char*is.
+* Kolommen zoals **word\_freq\__Word_**  het percentage woorden in het e-mail bericht aangeven dat overeenkomt met *Word*. Als bijvoorbeeld **word\_freq\_** **1**is, is 1% van alle woorden in het e-mail bericht *gemaakt*.
+* Kolommen zoals **char\_freq\__teken_**  geven het percentage van alle tekens in het e-mail *bericht.*
 * de **lengte van\_run\_length\_langste** is de langste lengte van een reeks hoofd letters.
 * de **lengte van\_run\_\_gemiddelde** is de gemiddelde lengte van alle reeksen hoofd letters.
 * de totale lengte van de **\_lengte\_totaal** is het totaal van alle reeksen hoofd letters.\_

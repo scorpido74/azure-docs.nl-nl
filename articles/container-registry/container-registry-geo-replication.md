@@ -1,6 +1,6 @@
 ---
 title: Geo-replicatie van een Azure-containerregister
-description: Aan de slag met het maken en beheren van geo-replicatie van Azure-containerregisters.
+description: Ga aan de slag met het maken en beheren van een geo-gerepliceerd Azure container Registry, waarmee het REGI ster meerdere regio's met regionale replica's voor meerdere masters kan verwerken.
 services: container-registry
 author: stevelas
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: f6d1987012cb401d7167896d9352ba7eae821a04
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: cddd55d3dfc2609b7a32a276e106e152f0868b32
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887992"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931657"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replicatie in Azure Container Registry
 
@@ -121,7 +121,7 @@ In het voorgaande voorbeeld ging Contoso van twee registers naar één en voegde
  
 Een docker-client die een installatie kopie naar een geo-gerepliceerd REGI ster pusht, kan niet alle afbeeldings lagen en het bijbehorende manifest naar één gerepliceerde regio pushen. Dit kan gebeuren omdat Azure-Traffic Manager register aanvragen naar het netwerk-dichtstbijzijnde gerepliceerde REGI ster stuurt. Als het REGI ster twee regio's voor replicatie in de *buurt* heeft, kunnen afbeeldings lagen en het manifest naar de twee sites worden gedistribueerd en mislukt de push bewerking wanneer het manifest is gevalideerd. Dit probleem wordt veroorzaakt door de manier waarop de DNS-naam van het REGI ster op sommige Linux-hosts wordt opgelost. Dit probleem doet zich niet voor in Windows, dat een DNS-cache aan de client zijde biedt.
  
-Als dit probleem optreedt, kunt u een DNS-cache aan de client zijde Toep assen, zoals `dnsmasq` op de Linux-host. Dit helpt ervoor te zorgen dat de naam van het REGI ster consistent wordt opgelost. Als u een virtuele Linux-machine in azure gebruikt om naar een REGI ster te pushen, raadpleegt u opties in [DNS-naam omzettings opties voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/azure-dns).
+Als dit probleem optreedt, kunt u een DNS-cache aan de client zijde Toep assen, zoals `dnsmasq` op de Linux-host. Dit helpt ervoor te zorgen dat de naam van het REGI ster consistent wordt opgelost. Als u een virtuele Linux-machine in azure gebruikt om naar een REGI ster te pushen, raadpleegt u opties in [DNS-naam omzettings opties voor virtuele Linux-machines in azure](../virtual-machines/linux/azure-dns.md).
 
 Als u de DNS-omzetting naar de dichtstbijzijnde replica tijdens het pushen van installatie kopieën wilt optimaliseren, configureert u een geo-gerepliceerd REGI ster in dezelfde Azure-regio's als de bron van de push bewerkingen of de dichtstbijzijnde regio bij het werken buiten Azure.
 

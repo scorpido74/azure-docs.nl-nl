@@ -259,8 +259,6 @@
               href: howto-read-replicas-cli.md
     - name: Hyperscale (Citus)
       items:
-        - name: Gebruikers maken
-          href: howto-hyperscale-create-users.md
         - name: Schalen
           href: howto-hyperscale-scaling.md
         - name: Firewall beheren

@@ -295,10 +295,10 @@
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
         - name: Batch-voorspellingen uitvoeren
-          displayName: score scoring asynchronous consume pipeline
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference
           href: how-to-run-batch-predictions.md
         - name: De ontwerper gebruiken voor batchvoorspellingen
-          displayName: score scoring asynchronous consume pipeline
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference
           href: how-to-run-batch-predictions-ui.md
     - name: Modellen bewaken
       items:

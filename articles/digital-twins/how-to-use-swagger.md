@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 06cbdf6fbba89b6666e6fe3162fd591e93dffecd
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6a99693c3f88e94c093910da6ba4a305c26fe39d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958875"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931350"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Naslag documentatie voor Azure Digital Apparaatdubbels Swagger
 
@@ -42,15 +42,15 @@ Het automatisch gegenereerde Swagger-referentie materiaal bevat een kort overzic
 
 Een beknopt overzicht bevat een beschrijving van de API.
 
-[![Swagger](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
+[![Swagger bovenaan](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
 
 Beheer-API-object modellen worden ook weer gegeven.
 
-[![Swagger modellen](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
+[![Swagger-modellen](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
 U kunt elk weer gegeven object model selecteren voor een gedetailleerd overzicht van belang rijke kenmerken.
 
-[model ![Swagger](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[![Swagger-model](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
 De gegenereerde Swagger-object modellen zijn handig om alle beschik bare [objecten en api's](./concepts-objectmodel-spatialgraph.md)van Azure Digital apparaatdubbels te zien. Ontwikkel aars kunnen deze resource gebruiken wanneer ze oplossingen bouwen op Azure Digital Apparaatdubbels.
 
@@ -74,11 +74,11 @@ Een van de krachtige functies Swagger biedt de mogelijkheid om een API-eind punt
 
 Nadat u een bepaald eind punt hebt geselecteerd, ziet u **het uitproberen**.
 
-[![Swagger try](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
+[![Swagger proberen](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
 Vouw deze sectie uit om invoer velden weer te geven voor elke vereiste en optionele para meter. Voer de juiste waarden in en selecteer **uitvoeren**.
 
-[![Swagger probeerde](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
+[poging tot ![Swagger](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
 Nadat u de test hebt uitgevoerd, kunt u de antwoord gegevens valideren.
 
@@ -95,14 +95,14 @@ De voor beelden bevatten ook fout codes voor het oplossen van fouten of het verb
 > [!NOTE]
 > * De gebruikers-principal die de Azure Digital Apparaatdubbels-resource heeft gemaakt, heeft een rol voor ruimte-beheerdersrol en kan extra roltoewijzingen maken voor andere gebruikers. Dergelijke gebruikers en hun rollen kunnen worden gemachtigd om de Api's aan te roepen.
 
-1. Volg de stappen in [deze Snelstartgids](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) of [Registreer uw Azure Digital apparaatdubbels-app met Azure Active Directory verouderd](./how-to-use-legacy-aad.md) om een Azure AD-toepassing te maken en te configureren. U kunt ook een bestaande app-registratie hergebruiken.
+1. Volg de stappen in [deze Snelstartgids](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) om een Azure AD-toepassing te maken en te configureren. U kunt ook een bestaande app-registratie hergebruiken.
 
 1. Voeg de volgende antwoord-URL toe aan de app-registratie:
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | Name  | Vervangen door | Voorbeeld |
+    | Naam  | Vervangen door | Voorbeeld |
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Uw management REST API-documentatie-URL gevonden in de portal  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
@@ -112,11 +112,11 @@ Na het volt ooien van de Azure Active Directory registratie:
 
 1. Selecteer de knop **autoriseren** op uw Swagger-pagina.
 
-    [![Select de knop voor Swagger-autorisatie](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![de knop voor Swagger-autorisatie selecteren](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
 1. Plak de toepassings-ID in het veld **client_id** .
 
-    [![Swagger client_id veld](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
+    [client_id veld voor Swagger ![](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
 1. U wordt vervolgens doorgestuurd naar het volgende geslaagde modale.
 

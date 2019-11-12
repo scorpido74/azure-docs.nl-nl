@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
-ms.openlocfilehash: bcf741e82e247a5b79a478ef1015a70cccb4d274
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c4d029de782ae408b83c265322a865db7b166c1e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899917"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928303"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Telemetrie scheiden van ontwikkeling, testen en productie
 
@@ -51,7 +51,7 @@ Stel de sleutel in een initialisatie methode in, zoals global.aspx.cs in een ASP
 In dit voor beeld worden de ikeys voor de verschillende bronnen in verschillende versies van het webconfiguratiebestand geplaatst. Het webconfiguratiebestand: dat u kunt doen als onderdeel van het release script, wordt de doel resource vervangen.
 
 ### <a name="web-pages"></a>Webpagina's
-De iKey wordt ook gebruikt op de webpagina's van uw app, in het [script dat u hebt ontvangen van de Blade snel starten](../../azure-monitor/app/javascript.md). In plaats van de consistentie in het script te maken, moet u deze genereren op basis van de server status. Bijvoorbeeld in een ASP.NET-app:
+De iKey wordt ook gebruikt op de webpagina's van uw app, in het [script dat u hebt ontvangen van de Blade Quick](../../azure-monitor/app/javascript.md)start. In plaats van de consistentie in het script te maken, moet u deze genereren op basis van de server status. Bijvoorbeeld in een ASP.NET-app:
 
 *Java script in haar*
 
@@ -81,7 +81,7 @@ Voeg in het [Portal.Azure.com](https://portal.azure.com)een Application Insights
 
 Het maken van de resource duurt een paar seconden. U ziet een waarschuwing wanneer deze is voltooid.
 
-(U kunt een [Power shell-script](../../azure-monitor/app/powershell-script-create-resource.md) schrijven om een resource automatisch te maken.)
+(U kunt een [Power shell-script](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) schrijven om een resource automatisch te maken.)
 
 ### <a name="getting-the-instrumentation-key"></a>De instrumentatie sleutel ophalen
 De instrumentatie sleutel identificeert de resource die u hebt gemaakt. 
@@ -134,7 +134,7 @@ Er zijn verschillende methoden voor het instellen van de eigenschap toepassings 
     Als u wilt toestaan dat MSBuild versie nummers genereert, stelt u de versie als `1.0.*` in AssemblyReference.cs
 
 ## <a name="version-and-release-tracking"></a>Versie en release bijhouden
-Als u de toepassingsversie wilt bijhouden, zorgt u ervoor dat `buildinfo.config` wordt gegenereerd door het Microsoft Build Engine-proces. Voeg het volgende toe in uw .csproj-bestand:  
+Als u de toepassingsversie wilt bijhouden, zorgt u ervoor dat `buildinfo.config` wordt gegenereerd door het Microsoft Build Engine-proces. Voeg het volgende toe in uw `.csproj`-bestand:  
 
 ```XML
 
@@ -145,7 +145,7 @@ Als u de toepassingsversie wilt bijhouden, zorgt u ervoor dat `buildinfo.config`
 
 Wanneer de buildgegevens beschikbaar zijn, voegt de Application Insights-webmodule automatisch **Toepassingsversie** als eigenschap toe aan elk telemetrie-item. Dit biedt de mogelijkheid om op versie te filteren wanneer u [diagnostische zoekopdrachten](../../azure-monitor/app/diagnostic-search.md) uitvoert of [metrische gegevens verkent](../../azure-monitor/app/metrics-explorer.md).
 
-Let er echter op dat het buildversienummer alleen wordt gegenereerd door Microsoft Build Engine en niet door de ontwikkelaarsbuild in Visual Studio.
+U ziet echter dat het build-versie nummer alleen wordt gegenereerd door de micro soft build engine, niet door de ontwikkel aars versie van Visual Studio.
 
 ### <a name="release-annotations"></a>Release-aantekeningen
 Als u Azure DevOps gebruikt, kunt u [een aantekeningen markering](../../azure-monitor/app/annotations.md) toevoegen aan uw diagrammen wanneer u een nieuwe versie uitgeeft. De volgende afbeelding toont hoe deze markering wordt weergegeven.

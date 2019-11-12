@@ -7,14 +7,14 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: fe733b686f2b56beee26a6c33c4d6264d621e627
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bcea9a8674e4b1979698b7d28eb4192172b0dc11
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516342"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931303"
 ---
-# <a name="deploy-a-trusted-security-partner-preview"></a>Een vertrouwde beveiligings partner (preview-versie) implementeren
+# <a name="deploy-a-trusted-security-partner-preview"></a>Een vertrouwde beveiligingspartner implementeren (preview)
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
@@ -83,12 +83,11 @@ Om tunnels in te stellen voor de VPN Gateway van de virtuele hub, hebben externe
 
    > [!NOTE]
    > U kunt de toegang tot de resource groep beperken voor meer gedetailleerde besturings elementen.
-3. Volg de instructies in de volgende koppeling.
+3. Volg de [ZScaler: configure a Microsoft Azure instructies voor het configureren van virtuele WAN-integratie](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration) naar:
 
    - Meld u aan bij de Partner Portal en voeg uw referenties toe om de vertrouwde partner toegang te geven tot uw beveiligde hub.
-   - Als uw Azure AD-verificatie referenties zijn gevalideerd, gebruikt u de volgende instructies om de virtuele hubs in de partner portal te synchroniseren en de tunnel in te stellen op de virtuele hub.
-
-   [ZScaler: een Microsoft Azure virtuele WAN-integratie configureren](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration)
+   - Synchroniseer de virtuele hubs in de Partner Portal en stel de tunnel in op de virtuele hub. U kunt dit doen zodra uw Azure AD-verificatie referenties zijn gevalideerd.
+   
 4. U kunt de status voor het maken van de tunnel bekijken in de Azure Virtual WAN-Portal in Azure. Zodra de tunnels **zijn verbonden** met Azure en de Partner Portal, gaat u door met de volgende stappen om routes in te stellen om te selecteren welke branches en VNets Internet verkeer naar de partner moeten verzenden.
 
 ## <a name="configure-route-settings"></a>Route-instellingen configureren

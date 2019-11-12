@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: c4fca9b8f4c8a01124074396985b1ec3f1c896c6
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 5ecfa1853479c1cdc705a1a465a1de6318917a72
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675149"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928998"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Apache Spark taken uitvoeren op AKS
 
@@ -49,7 +49,7 @@ Maak een service-principal voor het cluster. Nadat deze is gemaakt, hebt u de Se
 az ad sp create-for-rbac --name SparkSP
 ```
 
-Maak het AKS-cluster met knoop punten met een grootte `Standard_D3_v2` en waarden van de appId en het wacht woord die zijn door gegeven als Service-Principal-en client-geheime para meters.
+Maak het AKS-cluster met knoop punten met een grootte `Standard_D3_v2`en waarden van de appId en het wacht woord die zijn door gegeven als Service-Principal-en client-geheime para meters.
 
 ```azurecli
 az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
@@ -111,7 +111,7 @@ Push de container installatie kopie naar het REGI ster van de container installa
 
 ## <a name="prepare-a-spark-job"></a>Een Spark-taak voorbereiden
 
-Vervolgens moet u een Spark-taak voorbereiden. Een jar-bestand wordt gebruikt om de Spark-taak te bewaren en is nodig om de `spark-submit`-opdracht uit te voeren. Het jar kan toegankelijk worden gemaakt via een open bare URL of vooraf verpakt in een container installatie kopie. In dit voor beeld wordt een jar-voorbeeld gemaakt om de waarde van pi te berekenen. Dit jar wordt vervolgens geüpload naar Azure Storage. Als u een bestaand jar hebt, kunt u vervangen
+Vervolgens moet u een Spark-taak voorbereiden. Een jar-bestand wordt gebruikt om de Spark-taak te bewaren en is nodig voor het uitvoeren van de `spark-submit` opdracht. Het jar kan toegankelijk worden gemaakt via een open bare URL of vooraf verpakt in een container installatie kopie. In dit voor beeld wordt een jar-voorbeeld gemaakt om de waarde van pi te berekenen. Dit jar wordt vervolgens geüpload naar Azure Storage. Als u een bestaand jar hebt, kunt u vervangen
 
 Maak een map waarin u het project voor een Spark-taak wilt maken.
 
@@ -126,7 +126,7 @@ Een nieuw scala-project maken op basis van een sjabloon.
 sbt new sbt/scala-seed.g8
 ```
 
-Wanneer u hierom wordt gevraagd, geeft u `SparkPi` op voor de project naam.
+Wanneer u hierom wordt gevraagd, geeft u `SparkPi` op voor de naam van het project.
 
 ```bash
 name [Scala Seed Project]: SparkPi
@@ -204,7 +204,7 @@ az storage blob upload --container-name $CONTAINER_NAME --file $FILE_TO_UPLOAD -
 jarUrl=$(az storage blob url --container-name $CONTAINER_NAME --name $BLOB_NAME | tr -d '"')
 ```
 
-Variabele `jarUrl` bevat nu het openbaar toegankelijke pad naar het jar-bestand.
+Variabele `jarUrl` nu het openbaar toegankelijke pad naar het jar-bestand bevat.
 
 ## <a name="submit-a-spark-job"></a>Een Spark-taak verzenden
 
@@ -253,7 +253,7 @@ spark-pi-2232778d0f663768ab27edc35cb73040-exec-2   0/1       Init:0/1   0       
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-3   0/1       Init:0/1   0          4s
 ```
 
-Terwijl de taak wordt uitgevoerd, kunt u ook toegang krijgen tot de Spark-gebruikers interface. Gebruik in de tweede terminal sessie de opdracht `kubectl port-forward` om toegang te bieden tot Spark-gebruikers interface.
+Terwijl de taak wordt uitgevoerd, kunt u ook toegang krijgen tot de Spark-gebruikers interface. In de tweede terminal sessie gebruikt u de opdracht `kubectl port-forward` om toegang te bieden tot Spark-gebruikers interface.
 
 ```bash
 kubectl port-forward spark-pi-2232778d0f663768ab27edc35cb73040-driver 4040:4040
@@ -278,7 +278,7 @@ NAME                                               READY     STATUS      RESTART
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   0/1       Completed   0          1m
 ```
 
-Gebruik de `kubectl logs`-opdracht om logboeken op te halen uit het Spark-stuur programma pod. Vervang de naam van de pod door de naam van de pod van uw stuur programma.
+Gebruik de `kubectl logs` opdracht om logboeken op te halen uit het stuur programma pod van Spark. Vervang de naam van de pod door de naam van de pod van uw stuur programma.
 
 ```bash
 kubectl logs spark-pi-2232778d0f663768ab27edc35cb73040-driver
@@ -294,9 +294,9 @@ Pi is roughly 3.152155760778804
 
 In het bovenstaande voor beeld is het Spark jar-bestand geüpload naar Azure Storage. Een andere mogelijkheid is om het jar-bestand te verpakken in aangepaste docker-installatie kopieën.
 
-Ga hiervoor naar de `dockerfile` voor de Spark-installatie kopie die zich bevindt in de map `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/`. Voeg de instructie am `ADD` toe voor de Spark-taak `jar` ergens tussen `WORKDIR`-en `ENTRYPOINT`-declaraties.
+Als u dit wilt doen, gaat u naar de `dockerfile` voor de Spark-installatie kopie die zich op `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` Directory bevindt. Voeg am `ADD`-instructie toe voor de Spark-taak `jar` ergens tussen `WORKDIR` en `ENTRYPOINT` declaraties.
 
-Werk het jar-pad bij naar de locatie van het bestand `SparkPi-assembly-0.1.0-SNAPSHOT.jar` in het ontwikkel systeem. U kunt ook uw eigen aangepaste JAR-bestand gebruiken.
+Werk het jar-pad bij naar de locatie van het `SparkPi-assembly-0.1.0-SNAPSHOT.jar`-bestand in uw ontwikkel systeem. U kunt ook uw eigen aangepaste JAR-bestand gebruiken.
 
 ```bash
 WORKDIR /opt/spark/work-dir
@@ -313,7 +313,7 @@ Bouw en push de installatie kopie met de meegeleverde Spark-scripts.
 ./bin/docker-image-tool.sh -r <your container repository name> -t <tag> push
 ```
 
-Bij het uitvoeren van de taak, in plaats van een externe Jar-URL aan te duiden, kan het `local://`-schema worden gebruikt met het pad naar het jar-bestand in de docker-installatie kopie.
+Bij het uitvoeren van de taak, in plaats van een externe Jar-URL aan te duiden, kan het `local://` schema worden gebruikt met het pad naar het jar-bestand in de docker-installatie kopie.
 
 ```bash
 ./bin/spark-submit \
@@ -322,6 +322,7 @@ Bij het uitvoeren van de taak, in plaats van een externe Jar-URL aan te duiden, 
     --name spark-pi \
     --class org.apache.spark.examples.SparkPi \
     --conf spark.executor.instances=3 \
+    --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
     --conf spark.kubernetes.container.image=<spark-image> \
     local:///opt/spark/work-dir/<your-jar-name>.jar
 ```

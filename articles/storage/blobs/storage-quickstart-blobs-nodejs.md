@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 28a75158b161e680f857b986bcb754f1f99e8fab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 90ef1be4366205b1f655a0b93619a897d6d1f25d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825308"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929484"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V12 voor Java script
 
@@ -351,7 +351,7 @@ In deze Quick Start hebt u geleerd hoe u blobs kunt uploaden, downloaden en verm
 Als u voor beeld-apps voor Blob-opslag wilt zien, gaat u door naar:
 
 > [!div class="nextstepaction"]
-> [Azure Blob Storage SDK V12 java script-voor beelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/azure-storage-blob/samples)
+> [Azure Blob Storage SDK V12 java script-voor beelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
 * Zie de [Azure SDK voor Java script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/README.md)voor meer informatie.
 * Voor zelf studies, voor beelden, snel starten en andere documentatie gaat u naar de [Azure SDK voor Java script-documentatie](/azure/javascript/).

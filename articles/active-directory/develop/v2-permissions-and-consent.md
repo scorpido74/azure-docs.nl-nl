@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edb6d96dfdca63f1bacf45ab0af01d18aafcf302
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b4aa4fbff4e1b89b87dd05e0547db8e14ae5835
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73667879"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927138"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Machtigingen en toestemming in het micro soft Identity platform-eind punt
 
@@ -91,7 +91,7 @@ Het `email` bereik kan worden gebruikt met het `openid` bereik en andere. Het ge
 
 ### <a name="profile"></a>uplinkpoortprofiel
 
-Het `profile` bereik kan worden gebruikt met het `openid` bereik en andere. Hiermee krijgt de app toegang tot een aanzienlijke hoeveelheid informatie over de gebruiker. De informatie waartoe het toegang heeft, is inclusief, maar is niet beperkt tot, de gegeven naam, de voor keur, de gebruikers naam en de object-ID van de gebruiker. Voor een volledige lijst met de profiel claims die beschikbaar zijn in de para meter id_tokens voor een specifieke gebruiker, raadpleegt u de [referentie`id_tokens`](id-tokens.md).
+Het `profile` bereik kan worden gebruikt met het `openid` bereik en andere. Hiermee krijgt de app toegang tot een aanzienlijke hoeveelheid informatie over de gebruiker. De informatie waartoe het toegang heeft, is inclusief, maar is niet beperkt tot, de gegeven naam, de voor keur, de gebruikers naam en de object-ID van de gebruiker. Voor een volledige lijst met de profiel claims die beschikbaar zijn in de para meter id_tokens voor een specifieke gebruiker, raadpleegt u de [`id_tokens` verwijzing](id-tokens.md).
 
 ### <a name="offline_access"></a>offline_access
 
@@ -186,18 +186,18 @@ Wanneer u klaar bent om machtigingen aan te vragen bij de beheerder van uw organ
 
 ```
 // Line breaks are for legibility only.
-    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+  GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
   client_id=6731de76-14a6-49ae-97bc-6eba6914391e
   &state=12345
   &redirect_uri=http://localhost/myapp/permissions
-    &scope=
-    https://graph.microsoft.com/calendars.read 
-    https://graph.microsoft.com/mail.send
+  &scope=
+  https://graph.microsoft.com/calendars.read 
+  https://graph.microsoft.com/mail.send
 ```
 
 
 | Parameter     | Voorwaarde     | Beschrijving                                                                               |
-|--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
+|:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | Vereist | De Directory-Tenant waarvan u toestemming wilt aanvragen. Kan worden geleverd in de indeling GUID of beschrijvende naam of in het algemeen waarnaar wordt verwezen met `common`, zoals wordt weer gegeven in het voor beeld. |
 | `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
 | `redirect_uri` | Vereist |De omleidings-URI waar u het antwoord voor uw app wilt laten afhandelen. Het moet exact overeenkomen met een van de omleidings-Uri's die u hebt geregistreerd in de app-registratie Portal. |

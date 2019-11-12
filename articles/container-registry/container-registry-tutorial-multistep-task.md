@@ -1,5 +1,5 @@
 ---
-title: Zelf studie-container taken met meerdere stappen-Azure Container Registry taken
+title: 'Zelf studie: taak werk stroom met meerdere stappen-Azure Container Registry taken'
 description: In deze zelf studie leert u hoe u een Azure Container Registry taak kunt configureren om automatisch een werk stroom met meerdere stappen te activeren om container installatie kopieën in de cloud te bouwen, uit te voeren en te pushen wanneer u de bron code doorvoert in een Git-opslag plaats.
 services: container-registry
 author: dlepow
@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 913f535cb7fa07832a272c1cb9d02ab3e885f52c
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: dd7dd6f78087a40de93a5ab47936806076fc562a
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743585"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931453"
 ---
-# <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Zelfstudie: Een container werk stroom met meerdere stappen in de Cloud uitvoeren wanneer u de bron code doorvoert
+# <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Zelf studie: een container werk stroom met meerdere stappen in de Cloud uitvoeren bij het door voeren van de bron code
 
 Naast een [snelle taak](container-registry-tutorial-quick-task.md)ondersteunt ACR-taken meerdere stappen, op meerdere containers gebaseerde werk stromen die automatisch kunnen worden geactiveerd wanneer u bron code doorvoert in een Git-opslag plaats. 
 
-In deze zelf studie leert u hoe u voor beelden van YAML-bestanden kunt gebruiken om taken met meerdere stappen te definiëren die een of meer container installatie kopieën bouwen, uitvoeren en pushen naar een REGI ster wanneer u de bron code doorvoert. Zie [zelf studie: voor het maken van een taak die slechts één installatie kopie op basis van code doorvoert. De build van container installatie kopieën in de Cloud automatiseren wanneer u](container-registry-tutorial-build-task.md)de bron code doorvoert. Zie voor een overzicht van ACR-taken het automatiseren van het [besturings systeem en Framework-patches met ACR-taken](container-registry-tasks-overview.md).
+In deze zelf studie leert u hoe u voor beelden van YAML-bestanden kunt gebruiken om taken met meerdere stappen te definiëren die een of meer container installatie kopieën bouwen, uitvoeren en pushen naar een REGI ster wanneer u de bron code doorvoert. Zie [zelf studie: builds van container installatie kopieën automatiseren in de Cloud wanneer u bron code doorvoert](container-registry-tutorial-build-task.md)om een taak te maken die slechts één installatie kopie automatiseert die door de code wordt gemaakt. Zie voor een overzicht van ACR-taken het automatiseren van het [besturings systeem en Framework-patches met ACR-taken](container-registry-tasks-overview.md).
 
 In deze zelf studie:
 
@@ -46,7 +46,7 @@ Nu u de stappen hebt voltooid die vereist zijn om ACR-taken in te scha kelen voo
 
 ### <a name="yaml-file"></a>YAML-bestand
 
-U definieert de stappen voor een taak met meerdere stappen in een [yaml-bestand](container-registry-tasks-reference-yaml.md). Het eerste voor beeld van een taak met meerdere stappen voor deze zelf studie is `taskmulti.yaml`gedefinieerd in het bestand, dat zich in de hoofdmap van de GitHub opslag plaats bevindt die u hebt gekloond:
+U definieert de stappen voor een taak met meerdere stappen in een [yaml-bestand](container-registry-tasks-reference-yaml.md). Het eerste voor beeld van een taak met meerdere stappen voor deze zelf studie is gedefinieerd in het bestand `taskmulti.yaml`, dat zich in de hoofdmap van de GitHub opslag plaats bevindt die u hebt gekloond:
 
 ```yml
 version: v1.0.0
@@ -66,9 +66,9 @@ steps:
 
 Deze taak met meerdere stappen doet het volgende:
 
-1. Voert een `build` stap uit om een installatie kopie te maken van de Dockerfile in de werkmap. De afbeelding is gericht `Run.Registry`op het, het REGI ster waar de taak wordt uitgevoerd en is gelabeld met een unieke run-id voor ACR-taken. 
+1. Voert een `build` stap uit om een installatie kopie te maken van de Dockerfile in de werkmap. De afbeelding is gericht op de `Run.Registry`, het REGI ster waar de taak wordt uitgevoerd en is gelabeld met een unieke run-ID voor ACR-taken. 
 1. Voert een `cmd` stap uit om de installatie kopie in een tijdelijke container uit te voeren. In dit voor beeld wordt een langlopende container op de achtergrond gestart en wordt de container-ID geretourneerd, waarna de container wordt gestopt. In een praktijk scenario kunt u stappen nemen om de actieve container te testen om te controleren of deze correct wordt uitgevoerd.
-1. In een `push` stap pusht de installatie kopie die is gebouwd voor het uitvoeren van het REGI ster.
+1. In een `push` stap duwt u de installatie kopie die is gebouwd voor het uitvoeren van het REGI ster.
 
 ### <a name="task-command"></a>Taak opdracht
 
@@ -91,7 +91,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Met deze taak geeft u op dat elke tijd code wordt doorgevoerd in de *hoofd* vertakking in `--context`de opslag plaats die wordt opgegeven door. ACR-taken voeren de taak met meerdere stappen uit vanuit de code in die vertakking. Het yaml-bestand dat `--file` is opgegeven door vanuit de hoofdmap van de opslag plaats definieert de stappen. 
+Met deze taak wordt aangegeven dat elke tijd code wordt doorgevoerd in de *hoofd* vertakking in de opslag plaats die is opgegeven door `--context`, ACR-taken uitvoeren de taak met meerdere stappen vanuit de code in die vertakking. Het YAML-bestand dat is opgegeven door `--file` uit de hoofdmap van de opslag plaats definieert de stappen. 
 
 De uitvoer van een geslaagd [AZ ACR taak Create][az-acr-task-create] opdracht lijkt op het volgende:
 
@@ -287,13 +287,13 @@ cf19      example1   linux       Succeeded  Manual     2019-05-03T03:03:30Z  00:
 
 ACR-taken zijn standaard gemachtigd om installatie kopieën te pushen of te halen uit het REGI ster waarin de taak wordt uitgevoerd. U kunt een taak met meerdere stappen uitvoeren die een of meer registers bedoelt naast het uitvoerings register. U moet bijvoorbeeld installatie kopieën in één REGI ster bouwen en installatie kopieën met andere Tags opslaan in een tweede REGI ster dat wordt geopend door een productie systeem. Dit voor beeld laat zien hoe u een dergelijke taak maakt en referenties voor een ander REGI ster opgeeft.
 
-Als u nog geen tweede REGI ster hebt, maakt u er een voor dit voor beeld. Als u een register nodig hebt, raadpleegt u de [vorige zelfstudie](container-registry-tutorial-quick-task.md) of [Quickstart: een containerregister maken met de Azure-CLI](container-registry-get-started-azure-cli.md).
+Als u nog geen tweede REGI ster hebt, maakt u er een voor dit voor beeld. Als u een register nodig hebt, zie dan de [vorige zelfstudie](container-registry-tutorial-quick-task.md) of [Snelstartgids: Een containerregister maken met de Azure CLI](container-registry-get-started-azure-cli.md).
 
 Als u de taak wilt maken, hebt u de naam van de aanmeldings server van het REGI ster nodig. Dit is de vorm *mycontainerregistrydate.azurecr.io* (alle kleine letters). In dit voor beeld gebruikt u het tweede REGI ster om installatie kopieën op te slaan die zijn gelabeld op basis van build date.
 
 ### <a name="yaml-file"></a>YAML-bestand
 
-Het tweede voor beeld van een taak met meerdere stappen voor deze zelf studie is `taskmulti-multiregistry.yaml`gedefinieerd in het bestand, dat zich in de hoofdmap van de GitHub opslag plaats bevindt die u hebt gekloond:
+Het tweede voor beeld van een taak met meerdere stappen voor deze zelf studie is gedefinieerd in het bestand `taskmulti-multiregistry.yaml`, dat zich in de hoofdmap van de GitHub opslag plaats bevindt die u hebt gekloond:
 
 ```yml
 version: v1.0.0
@@ -315,11 +315,11 @@ steps:
 
 Deze taak met meerdere stappen doet het volgende:
 
-1. Voert twee `build` stappen uit om installatie kopieën te maken van de Dockerfile in de werkmap:
-    * De eerste streeft `Run.Registry`naar het, het REGI ster waar de taak wordt uitgevoerd en is gelabeld met de run-id van de ACR-taken. 
-    * De tweede streeft naar het REGI ster geïdentificeerd door `regDate`de waarde van, die u instelt bij het maken van de taak (of `values.yaml` door middel van `az acr task create`een extern bestand dat is door gegeven aan). Deze afbeelding is gelabeld met de uitvoerings datum.
+1. Voert twee `build` stappen uit om installatie kopieën te bouwen op basis van de Dockerfile in de werkmap:
+    * Het eerste streeft naar het `Run.Registry`, het REGI ster waar de taak wordt uitgevoerd en is gelabeld met de run-ID van de ACR-taken. 
+    * De tweede streeft naar het REGI ster geïdentificeerd door de waarde van `regDate`, die u hebt ingesteld bij het maken van de taak (of door middel van een extern `values.yaml` bestand dat is door gegeven aan `az acr task create`). Deze afbeelding is gelabeld met de uitvoerings datum.
 1. Voert een `cmd` stap uit om een van de gebouwde containers uit te voeren. In dit voor beeld wordt een langlopende container op de achtergrond gestart en wordt de container-ID geretourneerd, waarna de container wordt gestopt. In een praktijk scenario kunt u een actieve container testen om er zeker van te zijn dat deze correct wordt uitgevoerd.
-1. In een `push` stap pusht de installatie kopieën die zijn gebouwd, het eerste naar het Run Registry, het tweede naar het REGI ster geïdentificeerd `regDate`door.
+1. In een `push` stap duwt de installatie kopieën die zijn gebouwd, het eerste naar het Run Registry, de tweede naar het REGI ster geïdentificeerd door `regDate`.
 
 ### <a name="task-command"></a>Taak opdracht
 
@@ -337,11 +337,11 @@ az acr task create \
 
 ### <a name="add-task-credential"></a>Taak referentie toevoegen
 
-Als u installatie kopieën wilt pushen naar het REGI ster `regDate`dat wordt geïdentificeerd door de waarde van, gebruikt u de opdracht [AZ ACR Credential add][az-acr-task-credential-add] om aanmeldings referenties voor het REGI ster toe te voegen aan de taak.
+Als u installatie kopieën wilt pushen naar het REGI ster dat wordt geïdentificeerd door de waarde van `regDate`, gebruikt u de opdracht [AZ ACR taak Credential add][az-acr-task-credential-add] om aanmeldings referenties voor het REGI ster toe te voegen aan de taak.
 
 Voor dit voor beeld raden we u aan een [Service-Principal](container-registry-auth-service-principal.md) te maken met toegang tot het REGI ster die is toegewezen aan de *AcrPush* -rol. Zie dit [Azure CLI-script](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh)voor het maken van de Service-Principal.
 
-Geef de aanvraag-id en het wacht woord van de `az acr task credential add` Service-Principal in de volgende opdracht:
+Geef de toepassings-ID en het wacht woord van de Service-Principal op in de volgende `az acr task credential add` opdracht:
 
 ```azurecli-interactive
 az acr task credential add --name example2 \

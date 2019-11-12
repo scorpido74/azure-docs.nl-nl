@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea466486509c4b5dadc48ef830c9f05ec42ab5b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6d71ea59b7094134cc70b9eeea6da89feacb3a14
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814847"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931058"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit bouwen-modellen op schaal leren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -177,20 +177,47 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-Registreer het model in uw werk ruimte met de volgende code.
+Registreer het model in uw werk ruimte met de volgende code. Als u de para meters `model_framework`, `model_framework_version`en `resource_configuration`opgeeft, wordt de implementatie van geen code model beschikbaar. Zo kunt u uw model rechtstreeks implementeren als een webservice van het geregistreerde model en het `ResourceConfiguration`-object definieert de reken resource voor de webservice.
 
 ```Python
-model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = run.register_model(model_name='sklearn-iris', 
+                           model_path='model.joblib',
+                           model_framework=Model.Framework.SCIKITLEARN,
+                           model_framework_version='0.19.1',
+                           resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
+
+## <a name="deployment"></a>Implementatie
+
+Het model dat u zojuist hebt geregistreerd, kan op dezelfde manier worden geïmplementeerd als andere geregistreerde modellen in Azure Machine Learning, ongeacht welke Estimator u hebt gebruikt voor de training. De implementatie-instructie bevat een sectie over het registreren van modellen, maar u kunt direct door gaan naar het [maken van een reken doel](how-to-deploy-and-where.md#choose-a-compute-target) voor implementatie, omdat u al een geregistreerd model hebt.
+
+### <a name="preview-no-code-model-deployment"></a>Evaluatie Implementatie van geen code model
+
+In plaats van de traditionele implementatie route kunt u ook de functie voor het implementeren van geen code (preview) gebruiken voor scikit-learn. Implementatie van geen code model wordt ondersteund voor alle ingebouwde scikit-informatie over model typen. Als u het model registreert zoals hierboven wordt weer gegeven, kunt u de para meters van het `model_framework`, `model_framework_version`en `resource_configuration` gewoon `deploy()` gebruiken om uw model te implementeren.
+
+```python
+web_service = Model.deploy(ws, "scikit-learn-service", [model])
+```
+
+Opmerking: deze afhankelijkheden zijn opgenomen in de vooraf gemaakte scikit.
+
+```yaml
+    - azureml-defaults
+    - inference-schema[numpy-support]
+    - scikit-learn
+    - numpy
+```
+
+De volledige [instructies voor](how-to-deploy-and-where.md) het implementeren van een implementatie in azure machine learning meer dieper.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 
+In dit artikel hebt u een scikit-leer model getraind en geregistreerd en hebt u geleerd over implementatie opties. Raadpleeg de volgende artikelen voor meer informatie over Azure Machine Learning.
 
-In dit artikel hebt u een Keras-model getraind en geregistreerd op Azure Machine Learning. Ga verder met ons model implementatie artikel voor meer informatie over het implementeren van een model.
-
-> [!div class="nextstepaction"]
-> [Hoe en waar modellen moeten worden geïmplementeerd](how-to-deploy-and-where.md)
 * [Metrische uitvoerings gegevens tijdens de training volgen](how-to-track-experiments.md)
 * [Afstemmen van hyperparameters](how-to-tune-hyperparameters.md)
-* [Een getraind model implementeren](how-to-deploy-and-where.md)
 * [Referentie architectuur voor gedistribueerde training van diep gaande lessen in azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

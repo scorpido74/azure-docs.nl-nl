@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3d5a61b93175559bce92a17e27602a4f79d88ad
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 4a055e039e8d7629f3ff1c20c6ce9e4f1533b6b9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603963"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931034"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Bouw een tensor flow-Learning model op schaal met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -177,16 +177,23 @@ Wanneer de uitvoering wordt uitgevoerd, worden de volgende fasen door lopen:
 
 - **Schalen**: het cluster probeert omhoog te schalen als het batch AI-cluster meer knoop punten nodig heeft om de uitvoering uit te voeren dan momenteel beschikbaar zijn.
 
-- **Uitvoeren**: alle scripts in de map script worden geüpload naar het Compute-doel, gegevens archieven worden gekoppeld of gekopieerd en de entry_script wordt uitgevoerd. Uitvoer van stdout en de map./logs worden gestreamd naar de uitvoerings geschiedenis en kunnen worden gebruikt om de uitvoering te bewaken.
+- **Uitvoeren**: alle scripts in de map script worden geüpload naar het Compute-doel, gegevens archieven worden gekoppeld of gekopieerd en de entry_script worden uitgevoerd. Uitvoer van stdout en de map./logs worden gestreamd naar de uitvoerings geschiedenis en kunnen worden gebruikt om de uitvoering te bewaken.
 
 - **Na de verwerking**: de map./outputs van de uitvoering wordt gekopieerd naar de uitvoerings geschiedenis.
 
 ## <a name="register-or-download-a-model"></a>Een model registreren of downloaden
 
-Zodra u het model hebt getraind, kunt u het registreren in uw werk ruimte. Met model registratie kunt u uw modellen in uw werk ruimte opslaan en versieren om het [model beheer en de implementatie](concept-model-management-and-deployment.md)te vereenvoudigen.
+Zodra u het model hebt getraind, kunt u het registreren in uw werk ruimte. Met model registratie kunt u uw modellen in uw werk ruimte opslaan en versieren om het [model beheer en de implementatie](concept-model-management-and-deployment.md)te vereenvoudigen. Als u de para meters `model_framework`, `model_framework_version`en `resource_configuration`opgeeft, wordt de implementatie van geen code model beschikbaar. Zo kunt u uw model rechtstreeks implementeren als een webservice van het geregistreerde model en het `ResourceConfiguration`-object definieert de reken resource voor de webservice.
 
 ```Python
-model = run.register_model(model_name='tf-dnn-mnist', model_path='outputs/model')
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = run.register_model(model_name='tf-dnn-mnist', 
+                           model_path='outputs/model',
+                           model_framework=Model.Framework.TENSORFLOW,
+                           model_framework_version='1.13.0',
+                           resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
 
 U kunt ook een lokale kopie van het model downloaden met behulp van het object run. In het trainings script `mnist-tf.py`een tensor flow-beveiligings object het model persistent maken naar een lokale map (lokaal naar het Compute-doel). U kunt het object run gebruiken om een kopie te downloaden.
@@ -259,7 +266,7 @@ estimator= TensorFlow(source_directory=project_folder,
 run = exp.submit(tf_est)
 ```
 
-#### <a name="define-cluster-specifications-in-tf_config"></a>Cluster specificaties definiëren in ' TF_CONFIG '
+#### <a name="define-cluster-specifications-in-tf_config"></a>Cluster specificaties definiëren in de TF_CONFIG
 
 U hebt ook de netwerk adressen en poorten van het cluster nodig voor de [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec), zodat Azure Machine Learning de `TF_CONFIG` omgevings variabele voor u instelt.
 
@@ -292,13 +299,24 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
+## <a name="deployment"></a>Implementatie
+
+Het model dat u zojuist hebt geregistreerd, kan op dezelfde manier worden geïmplementeerd als andere geregistreerde modellen in Azure Machine Learning, ongeacht welke Estimator u hebt gebruikt voor de training. De implementatie-instructie bevat een sectie over het registreren van modellen, maar u kunt direct door gaan naar het [maken van een reken doel](how-to-deploy-and-where.md#choose-a-compute-target) voor implementatie, omdat u al een geregistreerd model hebt.
+
+### <a name="preview-no-code-model-deployment"></a>Evaluatie Implementatie van geen code model
+
+In plaats van de traditionele implementatie route kunt u ook de functie voor het implementeren van geen code (preview) gebruiken voor tensor flow. Als u het model registreert zoals hierboven wordt weer gegeven, kunt u de para meters van het `model_framework`, `model_framework_version`en `resource_configuration` gewoon `deploy()` gebruiken om uw model te implementeren.
+
+```python
+service = Model.deploy(ws, "tensorflow-web-service", [model])
+```
+
+De volledige [instructies voor](how-to-deploy-and-where.md) het implementeren van een implementatie in azure machine learning meer dieper.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een tensor flow-model getraind en geregistreerd. Voor meer informatie over het implementeren van een model op een GPU-cluster gaat u verder met het artikel over het implementeren van het GPU-model.
+In dit artikel hebt u een tensor flow-model getraind en geregistreerd en hebt u geleerd over opties voor implementatie. Raadpleeg de volgende artikelen voor meer informatie over Azure Machine Learning.
 
-> [!div class="nextstepaction"]
-> [Hoe en waar modellen moeten worden geïmplementeerd](how-to-deploy-and-where.md)
 * [Metrische uitvoerings gegevens tijdens de training volgen](how-to-track-experiments.md)
 * [Afstemmen van hyperparameters](how-to-tune-hyperparameters.md)
-* [Een getraind model implementeren](how-to-deploy-and-where.md)
 * [Referentie architectuur voor gedistribueerde training van diep gaande lessen in azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

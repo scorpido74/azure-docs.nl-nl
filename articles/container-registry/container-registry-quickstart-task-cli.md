@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een container installatie kopie bouwen en uitvoeren in Azure Container Registry'
+title: 'Quick Start: een container installatie kopie bouwen & in Azure Container Registry'
 description: Voer snel taken uit met Azure Container Registry om op aanvraag een container installatie kopie te maken en uit te voeren in de Cloud.
 services: container-registry
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: e5e02d8194f9164a03bb27d932df45d91486c518
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b97249aa61916975fa641d4620179be33e1d5276
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310631"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931542"
 ---
-# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Quickstart: Een container installatie kopie bouwen en uitvoeren met behulp van Azure Container Registry taken
+# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Snelstartgids: een container installatie kopie bouwen en uitvoeren met Azure Container Registry taken
 
 In deze Quick Start gebruikt u Azure Container Registry opdrachten voor taken om snel een docker-container installatie kopie in azure te bouwen, te pushen en uit te voeren, waarin wordt weer gegeven hoe u de ontwikkelings cyclus voor ' Inner-loop ' kunt overzetten naar de Cloud. [ACR-taken][container-registry-tasks-overview] is een reeks functies in azure container Registry die u helpen bij het beheren en wijzigen van container installatie kopieën in de levens cyclus van de container. 
 
@@ -56,7 +56,7 @@ Gebruik nu Azure Container Registry om een installatie kopie te maken. Maak eers
 echo FROM hello-world > Dockerfile
 ```
 
-Voer de opdracht [AZ ACR build][az-acr-build] uit om de installatie kopie te bouwen. Wanneer de installatie kopie is gemaakt, wordt deze naar het REGI ster gepusht. In het volgende voor beeld wordt `sample/hello-world:v1` de installatie kopie gepusht. `.` Aan het einde van de opdracht wordt de locatie van de Dockerfile ingesteld, in dit geval de huidige map.
+Voer de opdracht [AZ ACR build][az-acr-build] uit om de installatie kopie te bouwen. Wanneer de installatie kopie is gemaakt, wordt deze naar het REGI ster gepusht. In het volgende voor beeld wordt de `sample/hello-world:v1`-installatie kopie gepusht. Met de `.` aan het einde van de opdracht wordt de locatie van de Dockerfile ingesteld, in dit geval de huidige map.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 --registry myContainerRegistry008 --file Dockerfile . 
@@ -118,14 +118,14 @@ Run ID: ca8 was successful after 10s
 
 Voer nu snel de installatie kopie uit die u hebt gemaakt en gepusht naar het REGI ster. In de ontwikkel werk stroom van de container kan dit een validatie stap zijn voordat u de installatie kopie implementeert.
 
-Maak een bestand *quickrun. yaml* in een lokale werkmap met de volgende inhoud voor één stap. Vervang de naam van de aanmeldings server van het REGI ster door voor  *\<acrLoginServer\>* . De naam van de aanmeldings server bevindt zich in de indeling  *\<REGI ster-\>name. azurecr.io* (alle kleine letters), bijvoorbeeld *mycontainerregistry008.azurecr.io*. In dit voor beeld wordt ervan uitgegaan dat u de `sample/hello-world:v1` afbeelding in de vorige sectie hebt gemaakt en gepusht:
+Maak een bestand *quickrun. yaml* in een lokale werkmap met de volgende inhoud voor één stap. Vervang de naam van de aanmeldings server van het REGI ster door *\<acrLoginServer\>* . De naam van de aanmeldings server bevindt zich in de indeling *\<REGI ster-naam\>. azurecr.io* (alle kleine letters), bijvoorbeeld *mycontainerregistry008.azurecr.io*. In dit voor beeld wordt ervan uitgegaan dat u de `sample/hello-world:v1` installatie kopie in de vorige sectie hebt gemaakt en gepusht:
 
 ```yml
 steps:
   - cmd: <acrLoginServer>/sample/hello-world:v1
 ```
 
-Met `cmd` de stap in dit voor beeld wordt de container in de standaard configuratie `cmd` uitgevoerd, `docker run` maar worden aanvullende para `docker` meters of zelfs andere opdrachten ondersteund.
+Met de `cmd` stap in dit voor beeld wordt de container in de standaard configuratie uitgevoerd, maar `cmd` ondersteunt extra `docker run` para meters of zelfs andere `docker`-opdrachten.
 
 Voer de container uit met de volgende opdracht:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/04/2017
-ms.openlocfilehash: 28881403e4938376cc1912227bdff51aa5f069cf
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 61bd5898c494018a2bacbd894d4dc2aac97f53b4
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817363"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928422"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hoe kan ik ... in Application Insights?
 ## <a name="get-an-email-when-"></a>Een e-mail ontvangen wanneer...
@@ -39,7 +39,7 @@ Waarschuwingen kunnen worden ingesteld op [aangepaste metrische gegevens](../../
 
     telemetry.TrackMetric("Alarm", 10);
 
-of
+Of
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;
@@ -72,7 +72,7 @@ Enkele punten om in overweging te nemen:
 [Power shell gebruiken voor het maken van nieuwe waarschuwingen](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Power shell gebruiken voor het beheren van Application Insights
-* [Nieuwe resources maken](../../azure-monitor/app/powershell-script-create-resource.md)
+* [Nieuwe resources maken](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [Nieuwe waarschuwingen maken](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Telemetrie scheiden van verschillende versies
@@ -91,7 +91,7 @@ Enkele punten om in overweging te nemen:
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Dash board met gegevens uit andere bronnen en Application Insights
 * [Telemetrie exporteren naar Power bi](../../azure-monitor/app/export-power-bi.md ).
 
-Of
+of
 
 * Gebruik share point als uw dash board, waarmee gegevens worden weer gegeven in share point-webonderdelen. [Continue export en stream Analytics gebruiken om naar SQL te exporteren](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md).  Gebruik Power View om de data base te onderzoeken en een share point-webonderdeel te maken voor Power View.
 
@@ -102,7 +102,7 @@ Als uw gebruikers zich aanmelden, kunt u de [geverifieerde gebruikers-id](../../
 
 U kunt vervolgens het volgende doen:
 
-* Zoeken naar specifieke gebruikers-id's
+* Zoeken naar specifieke gebruikers-Id's
 
 ![](./media/how-do-i/110-search.png)
 
@@ -114,12 +114,12 @@ U kunt vervolgens het volgende doen:
 Een [filter](../../azure-monitor/app/api-filtering-sampling.md#filtering)maken. Hiermee kunt u de telemetrie wijzigen of filteren voordat deze vanuit uw app naar Application Insights wordt verzonden.
 
 ## <a name="list-specific-users-and-their-usage"></a>Specifieke gebruikers en hun gebruik weer geven
-Als u alleen [specifieke gebruikers wilt zoeken](#search-specific-users), kunt u de [geverifieerde gebruikers-id](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)instellen.
+Als u alleen [specifieke gebruikers wilt zoeken](#search-specific-users), kunt u de [GEVERIFIEERDE gebruikers-id](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)instellen.
 
 Als u een lijst met gebruikers wilt met gegevens, zoals op welke pagina's ze worden weer gegeven of hoe vaak ze zich aanmelden, hebt u twee opties:
 
 * [Stel een geverifieerde gebruikers-id](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) [in, exporteer naar een Data Base](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) en gebruik geschikte hulpprogram ma's om uw gebruikers gegevens daar te analyseren.
-* Als u slechts een klein aantal gebruikers hebt, kunt u aangepaste gebeurtenissen of metrische gegevens verzenden met behulp van de informatie die van belang is als metrische waarde of gebeurtenis naam en de gebruikers-id instellen als een eigenschap. Als u pagina weergaven wilt analyseren, vervangt u de standaard Java script trackPageView-aanroep. Als u telemetrie aan de server zijde wilt analyseren, gebruikt u de initialisatie functie voor telemetrie om de gebruikers-id toe te voegen aan alle server-telemetrie. Vervolgens kunt u metrische gegevens filteren en segmenteren en zoeken op de gebruikers-id.
+* Als u slechts een klein aantal gebruikers hebt, kunt u aangepaste gebeurtenissen of metrische gegevens verzenden met behulp van de informatie die van belang is als metrische waarde of gebeurtenis naam en de gebruikers-ID instellen als een eigenschap. Als u pagina weergaven wilt analyseren, vervangt u de standaard Java script trackPageView-aanroep. Als u telemetrie aan de server zijde wilt analyseren, gebruikt u de initialisatie functie voor telemetrie om de gebruikers-ID toe te voegen aan alle server-telemetrie. Vervolgens kunt u metrische gegevens filteren en segmenteren en zoeken op de gebruikers-ID.
 
 ## <a name="reduce-traffic-from-my-app-to-application-insights"></a>Het verkeer van mijn app naar Application Insights verminderen
 * Schakel in [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)alle modules uit die u niet nodig hebt, zoals de prestatie meter item verzamelaar.

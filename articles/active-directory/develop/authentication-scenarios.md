@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab2180c54f07ff5009e2c57d8522f2eb0b81aad
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718382"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927115"
 ---
 # <a name="authentication-basics"></a>Basisbeginselen van verificatie
 
@@ -74,7 +74,7 @@ Het is de app waarvoor het token is gegenereerd, de web-app die is aangemeld bij
 
 Tokens zijn alleen geldig voor een beperkte periode. De STS biedt doorgaans een paar tokens: een toegangs token voor toegang tot de toepassing of beveiligde resource, en een vernieuwings token dat wordt gebruikt om het toegangs token te vernieuwen wanneer het toegangs token bijna is verlopen. 
 
-Toegangs tokens worden door gegeven aan een web-API als het Bearer-token in de `Authenticate`-header. Een app kan een vernieuwings token bieden voor de STS en als de gebruiker de toegang tot de app niet heeft ingetrokken, wordt een nieuw toegangs token en een nieuw vernieuwings token teruggestuurd. Zo wordt het scenario van iemand die de onderneming verlaat, afgehandeld. Wanneer de STS het vernieuwings token ontvangt, wordt er geen ander geldig toegangs token uitgegeven als de gebruiker niet meer is gemachtigd.
+Toegangs tokens worden door gegeven aan een web-API als het Bearer-token in de `Authorization`-header. Een app kan een vernieuwings token bieden voor de STS en als de gebruiker de toegang tot de app niet heeft ingetrokken, wordt een nieuw toegangs token en een nieuw vernieuwings token teruggestuurd. Zo wordt het scenario van iemand die de onderneming verlaat, afgehandeld. Wanneer de STS het vernieuwings token ontvangt, wordt er geen ander geldig toegangs token uitgegeven als de gebruiker niet meer is gemachtigd.
 
 ## <a name="application-model"></a>Toepassingsmodel
 

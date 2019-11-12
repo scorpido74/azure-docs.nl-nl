@@ -1,5 +1,5 @@
 ---
-title: Automatiseren van het bouwen en repareren van container installatie kopieën met Azure Container Registry taken (ACR-taken)
+title: Azure Container Registry-taken-overzicht
 description: Een inleiding tot ACR-taken, een reeks functies in Azure Container Registry die beveiligde, geautomatiseerde build van container installatie kopieën biedt, beheer en patches in de Cloud.
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: danlep
-ms.openlocfilehash: e2686dcd5615c42abf78cbf4575bab6008024718
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 45fdd68273ed2cd5cfccf37765935ce9f7bfdc13
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001399"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931481"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Bouw en onderhoud van container installatie kopieën automatiseren met ACR-taken
 
@@ -27,7 +27,7 @@ Containers bieden nieuwe niveaus van virtualisatie, het isoleren van afhankelijk
 
 ACR-taken bieden ondersteuning voor verschillende scenario's voor het maken en onderhouden van container installatie kopieën en andere artefacten. Zie de volgende secties in dit artikel voor meer informatie.
 
-* **[Snelle taak](#quick-task)** : bouw en push één container installatie kopie naar een container register op aanvraag in azure, zonder dat hiervoor een lokale docker-engine moet worden geïnstalleerd. Beschouw `docker build`, `docker push` in de Cloud.
+* **[Snelle taak](#quick-task)** : bouw en push één container installatie kopie naar een container register op aanvraag in azure, zonder dat hiervoor een lokale docker-engine moet worden geïnstalleerd. Denk `docker build`, `docker push` in de Cloud.
 * **Automatisch geactiveerde taken** : Schakel een of meer *Triggers* in om een installatie kopie samen te stellen.
   * **[Activeren bij het bijwerken van de bron code](#trigger-task-on-source-code-update)** 
   * **[Activeren bij basis installatie kopie-update](#automate-os-and-framework-patching)** 
@@ -44,7 +44,7 @@ Het proces voor de duur van de binnenste cyclus, het iteratieproces voor het sch
 
 Voordat u uw eerste regel code doorvoert, kunt u met de [snelle taak](container-registry-tutorial-quick-task.md) functie van ACR-taken een geïntegreerde ontwikkel ervaring bieden door de build-installatie kopieën van de container te offloaden naar Azure. Met snelle taken kunt u uw geautomatiseerde build-definities controleren en mogelijke problemen ondervangen voordat u uw code doorvoert.
 
-Met de vertrouwde `docker build`-indeling wordt met de opdracht [AZ ACR build][az-acr-build] in de Azure cli een [context](#context-locations) (de set bestanden die moet worden gemaakt), de ACR-taken verzonden en standaard wordt de ingebouwde installatie kopie naar het REGI ster gepusht na voltooiing.
+Met de vertrouwde `docker build`-indeling wordt met de opdracht [AZ ACR build][az-acr-build] in azure cli een [context](#context-locations) (de set te bouwen bestanden) gemaakt, wordt de ACR-taken verzonden en wordt standaard de ingebouwde installatie kopie naar het REGI ster gepusht na voltooiing.
 
 Zie voor een inleiding de Snelstartgids voor het [maken en uitvoeren van een container installatie kopie](container-registry-quickstart-task-cli.md) in azure container Registry.  
 
@@ -74,7 +74,7 @@ Meer informatie over het activeren van builds op basis van de bron code in de tw
 
 De kracht van ACR taken om de werk stroom voor het bouwen van containers echt te verbeteren, is van de mogelijkheid om een update naar een basis installatie kopie te detecteren. Wanneer de bijgewerkte basis installatie kopie naar het REGI ster wordt gepusht of een basis installatie kopie is bijgewerkt in een open bare opslag plaats, zoals in docker hub, kunnen ACR-taken automatisch eventuele installatie kopieën van toepassingen maken op basis van het bestand.
 
-Container installatie kopieën kunnen breed worden gecategoriseerd in *basis* installatie kopieën en *toepassings* installatie kopieën. Uw basis installatie kopieën bevatten doorgaans het besturings systeem en toepassings raamwerken waarop uw toepassing is gebouwd, samen met andere aanpassingen. Deze basis installatie kopieën zijn gewoonlijk gebaseerd op open bare upstream-installatie kopieën, bijvoorbeeld: [Alpine Linux][base-alpine], [Windows][base-windows], [.net][base-dotnet]of [node. js][base-node]. Diverse installatie kopieën van uw toepassing kunnen een gemeen schappelijke basis installatie kopie delen.
+Container installatie kopieën kunnen breed worden gecategoriseerd in *basis* installatie kopieën en *toepassings* installatie kopieën. Uw basis installatie kopieën bevatten doorgaans het besturings systeem en toepassings raamwerken waarop uw toepassing is gebouwd, samen met andere aanpassingen. Deze basis installatie kopieën zijn normaal gesp roken gebaseerd op open bare upstream-installatie kopieën, bijvoorbeeld: [Alpine Linux][base-alpine], [Windows][base-windows], [.net][base-dotnet]of [node. js][base-node]. Diverse installatie kopieën van uw toepassing kunnen een gemeen schappelijke basis installatie kopie delen.
 
 Wanneer een installatie kopie van een besturings systeem of app-Framework wordt bijgewerkt door de upstream-Maintainer, bijvoorbeeld met een kritieke beveiligings patch voor het besturings systeem, moet u ook uw basis installatie kopieën bijwerken om de essentiële oplossing op te nemen. Elke toepassings installatie kopie moet vervolgens ook opnieuw worden opgebouwd om deze upstream-oplossingen op te nemen die nu zijn opgenomen in uw basis installatie kopie.
 
@@ -108,7 +108,7 @@ U kunt bijvoorbeeld een taak met meerdere stappen maken waarmee het volgende wor
 1. Een test installatie kopie voor een webtoepassing bouwen
 1. Voer de test container voor webtoepassingen uit, waarmee tests worden uitgevoerd voor de actieve toepassings container
 1. Als de tests zijn geslaagd, bouwt u een helm-archief pakket voor grafieken op
-1. Een `helm upgrade` uitvoeren met het nieuwe helm-diagram archief pakket
+1. Een `helm upgrade` uitvoeren met het nieuwe helm-archief pakket voor grafieken
 
 Met taken met meerdere stappen kunt u het bouwen, uitvoeren en testen van een afbeelding in meer samenstel bare stappen splitsen, met ondersteuning voor afhankelijkheden tussen verschillende stappen. Met taken met meerdere stappen in ACR-taken hebt u meer gedetailleerde controle over het bouwen, testen en OS-en Framework-patch werk stromen.
 
@@ -118,7 +118,7 @@ Meer informatie over taken in meerdere stappen in de stappen voor het [bouwen, t
 
 De volgende tabel bevat enkele voor beelden van ondersteunde context locaties voor ACR-taken:
 
-| Context locatie | Description | Voorbeeld |
+| Context locatie | Beschrijving | Voorbeeld |
 | ---------------- | ----------- | ------- |
 | Lokaal bestands systeem | Bestanden in een map op het lokale bestands systeem. | `/home/user/projects/myapp` |
 | Hoofd vertakking GitHub | Bestanden in de hoofd vertakking (of een andere standaard) van een GitHub-opslag plaats.  | `https://github.com/gituser/myapp-repo.git` |
@@ -129,7 +129,7 @@ De volgende tabel bevat enkele voor beelden van ondersteunde context locaties vo
 
 ## <a name="image-platforms"></a>Afbeeldings platforms
 
-Standaard bouwt ACR-taken installatie kopieën voor het Linux-besturings systeem en de amd64-architectuur. Geef de tag `--platform` op om Windows-installatie kopieën of Linux-installatie kopieën voor andere architecturen te maken. Geef het besturings systeem en eventueel een ondersteunde architectuur op in de indeling van het besturings systeem/de architectuur (bijvoorbeeld `--platform Linux/arm`). Voor ARM-architecturen geeft u optioneel een variant op in de indeling OS/Architecture/variant (bijvoorbeeld `--platform Linux/arm64/v8`):
+Standaard bouwt ACR-taken installatie kopieën voor het Linux-besturings systeem en de amd64-architectuur. Geef het `--platform` label op om Windows-installatie kopieën of Linux-installatie kopieën voor andere architecturen te maken. Geef het besturings systeem en eventueel een ondersteunde architectuur op in de indeling van het besturings systeem/de architectuur (bijvoorbeeld `--platform Linux/arm`). Voor ARM-architecturen geeft u optioneel een variant op in de indeling OS/Architecture/variant (bijvoorbeeld `--platform Linux/arm64/v8`):
 
 | OS | Architectuur|
 | --- | ------- | 

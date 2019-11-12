@@ -1,6 +1,6 @@
 ---
 title: Inhouds indelingen Azure Container Registry
-description: Meer informatie over ondersteunde inhouds indelingen in Azure Container Registry.
+description: Meer informatie over inhouds indelingen die worden ondersteund door Azure Container Registry, waaronder docker-compatibele container installatie kopieën, helm-grafieken, OCI-afbeeldingen en OCI-artefacten.
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: danlep
-ms.openlocfilehash: d49aab89c9568f168808c40508b4fe7d3175e902
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 98bab18f9a8250b99410941a8f865fd7ec1c5fe0
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164524"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931589"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Inhouds indelingen die worden ondersteund in Azure Container Registry
 
@@ -35,7 +35,7 @@ Azure Container Registry ondersteunt installatie kopieën die voldoen aan de ind
 
 Azure Container Registry ondersteunt de [OCI-distributie specificatie](https://github.com/opencontainers/distribution-spec), een leverancier-neutraal, Cloud-neutraal specificatie voor het opslaan, delen, beveiligen en implementeren van container installatie kopieën en andere inhouds typen (artefacten). Met de specificatie kan een REGI ster een breed scala aan artefacten opslaan naast container installatie kopieën. U gebruikt hulp middelen die geschikt zijn voor het artefacten om artefacten te pushen en te pullen. Zie [een OCI-artefact pushen en trekken met behulp van een Azure container Registry](container-registry-oci-artifacts.md)voor een voor beeld.
 
-Zie voor meer informatie over OCI-artefacten het [OCI-REGI ster als Storage (Oras)](https://github.com/deislabs/oras) opslag plaats en de [OCI](https://github.com/opencontainers/artifacts) -artefacten opslag plaats op github.
+Zie voor meer informatie over OCI-artefacten het [OCI-REGI ster als Storage (Oras)](https://github.com/deislabs/oras) opslag plaats en de [OCI-artefacten](https://github.com/opencontainers/artifacts) opslag plaats op github.
 
 ## <a name="helm-charts"></a>Helm grafieken
 

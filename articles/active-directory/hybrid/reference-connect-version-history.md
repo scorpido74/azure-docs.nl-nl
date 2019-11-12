@@ -16,12 +16,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38235e90ccf79cf1322ce0f26ed426d8c3a693cc
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 52e15aa62043ba394ae6e8cfe2cc7f27709c7d33
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847183"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927445"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -43,9 +43,18 @@ Downloaden | [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkI
 Hoewel we dit proces door lopen, wordt het versie nummer van de release weer gegeven met een ' X ' in de positie van het kleine release nummer, zoals in ' 1.3. X. 0 '. Dit betekent dat de release opmerkingen in dit document geldig zijn voor alle versies die beginnen met ' 1,3 '. Zodra het release proces is voltooid, wordt het versie nummer van de release bijgewerkt naar de meest recente versie en wordt de release status bijgewerkt naar ' vrijgegeven voor downloaden en automatische upgrade '.
 Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatische upgrade. De release status geeft aan of een release beschikbaar moet worden gesteld voor automatische upgrade of alleen voor down loads. Als automatische upgrade is ingeschakeld op uw Azure AD Connect server, wordt die server automatisch bijgewerkt naar de meest recente versie van Azure AD Connect die is uitgebracht voor automatische upgrade. Houd er rekening mee dat niet alle Azure AD Connect configuraties in aanmerking komen voor automatische upgrade. Volg deze link voor meer informatie over [automatische upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
+## <a name="14320"></a>1.4.32.0
+### <a name="release-status"></a>Release status
+08/11/2019: uitgebracht voor downloaden. Niet beschikbaar voor automatische upgrade
+
+>[!IMPORTANT]
+>Als gevolg van een interne schema wijziging in deze versie van Azure AD Connect, als u configuratie-instellingen van ADFS-vertrouwens relatie beheert met MSOnline Power shell, moet u uw MSOnline Power shell-module bijwerken naar versie 1.1.183.57 of hoger
+### <a name="fixed-issues"></a>Problemen opgelost
+
+Deze versie corrigeert een probleem met bestaande hybride Azure AD-apparaten die zijn toegevoegd. Deze release bevat een nieuwe regel voor het synchroniseren van apparaten waarmee dit probleem wordt verholpen.
+Houd er rekening mee dat deze regel wijziging ertoe kan leiden dat er verouderde apparaten van Azure AD worden verwijderd. Dit is geen oorzaak van bezorgdheid, omdat deze object objecten niet worden gebruikt door Azure AD tijdens de autorisatie van voorwaardelijke toegang. Voor sommige klanten kan het aantal apparaten dat wordt verwijderd via deze regel wijziging de drempel waarde voor verwijderen overschrijden. Als u het verwijderen van apparaatobject in azure AD overschrijdt, wordt de drempel waarde voor het verwijderen van het exporteren weer toegestaan. [Verwijderen van een stroom toestaan wanneer deze de drempel waarde voor verwijderen overschrijden](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sync-feature-prevent-accidental-deletes)
+
 ## <a name="14250"></a>1.4.25.0
-
-
 
 ### <a name="release-status"></a>Release status
 9/28/2019: vrijgegeven voor automatische upgrade om tenants te selecteren. Niet beschikbaar voor downloaden.
@@ -614,7 +623,7 @@ Status: september 05 2017
 * Wanneer Azure AD Connect-wachtwoord synchronisatie agent wordt gestart, wordt geprobeerd verbinding te maken met een bekend Azure AD-eind punt voor wachtwoord synchronisatie. Wanneer de verbinding is geslaagd, wordt deze omgeleid naar een regio-specifiek eind punt. Voorheen slaat de wachtwoord synchronisatie agent het regio-specifieke eind punt op in het cache geheugen totdat het opnieuw wordt gestart. Nu wordt de cache door de agent gewist en wordt opnieuw geprobeerd met het bekende eind punt als er een verbindings probleem met het regio-specifieke eind punt wordt aangetroffen. Met deze wijziging zorgt u ervoor dat wachtwoord synchronisatie een failover naar een ander regio-specifiek eind punt kan hebben wanneer het in de cache opgeslagen regio-specifieke eind punt niet meer beschikbaar is.
 * Voor het synchroniseren van wijzigingen vanuit een on-premises AD-forest is een AD DS-account vereist. U kunt (i) zelf het AD DS-account maken en de referentie voor Azure AD Connect opgeven, of (II) Geef de referenties van een ondernemings beheerder op en laat Azure AD Connect het AD DS-account voor u maken. Voorheen, (i) is de standaard optie in de wizard Azure AD Connect. Nu is (II) de standaard optie.
 
-### <a name="azure-ad-connect-health"></a>Azure AD Connect Health (Engelstalig)
+### <a name="azure-ad-connect-health"></a>Azure AD Connect Health
 
 #### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 * Er is ondersteuning toegevoegd voor Microsoft Azure Government Cloud en Microsoft Cloud Duitsland.

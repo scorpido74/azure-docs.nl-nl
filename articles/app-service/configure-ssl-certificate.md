@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 4f0c8078a502d0332b02d95c0c46d9dbcc53a884
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 48c8390eff52466d11f781447c448d04ba567f31
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886870"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907139"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Een SSL-certificaat in Azure App Service toevoegen
 
@@ -69,6 +69,10 @@ Het gratis door App Service beheerde certificaat is een zet-sleutel oplossing vo
 - Biedt geen ondersteuning voor niet-geblote domeinen.
 - Kan niet worden geëxporteerd.
 
+> [!NOTE]
+> Het gratis certificaat wordt uitgegeven door DigiCert. Voor sommige domeinen van het hoogste niveau moet u DigiCert als een certificaat verlener expliciet toestaan door een CAA- [domein record](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) te maken met de waarde: `0 issue digicert.com`.
+> 
+
 Een gratis door App Service beheerd certificaat maken:
 
 Selecteer in het menu links in het <a href="https://portal.azure.com" target="_blank">Azure Portal</a> **app Services** > \<naam van de **app >** .
@@ -115,7 +119,7 @@ Gebruik de volgende tabel om u te helpen bij het configureren van het certificaa
 | Instelling | Beschrijving |
 |-|-|
 | Naam | Een beschrijvende naam voor uw App Service certificaat. |
-| Naam van het Blot-domein | Geef hier het hoofd domein op. Het verleende certificaat beveiligt *zowel* het hoofd domein als het subdomein `www`. In het verleende certificaat bevat het veld algemene naam het hoofd domein en het veld alternatieve naam voor onderwerp bevat het domein `www`. Als u alleen een subdomein wilt beveiligen, geeft u de Fully Qualified Domain Name van het subdomein hier op (bijvoorbeeld `mysubdomain.contoso.com`).|
+| Naam van het Blot-domein | Geef hier het hoofd domein op. Het verleende certificaat beveiligt *zowel* het hoofd domein als het subdomein `www`. In het verleende certificaat bevat het veld algemene naam het hoofd domein en het veld alternatieve naam voor onderwerp bevat het `www` domein. Als u alleen een subdomein wilt beveiligen, geeft u de Fully Qualified Domain Name van het subdomein hier op (bijvoorbeeld `mysubdomain.contoso.com`).|
 | Abonnement | Het datacenter waar de web-app wordt gehost. |
 | Resourcegroep | De resource groep die het certificaat bevat. U kunt een nieuwe resource groep gebruiken of dezelfde resource groep selecteren als uw App Service-app, bijvoorbeeld. |
 | Certificaat-SKU | Hiermee wordt het type certificaat bepaald dat moet worden gemaakt, of het een standaard certificaat of een [certificaat voor joker tekens](https://wikipedia.org/wiki/Wildcard_certificate)is. |

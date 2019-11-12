@@ -1,5 +1,5 @@
 ---
-title: Een algemene node. js-client toepassing verbinden met Azure IoT Central | Microsoft Docs
+title: Een algemene node. js-client-app verbinden met Azure IoT Central | Microsoft Docs
 description: Als ontwikkelaar van een apparaat kunt u een algemeen knoop punt. js-apparaat verbinden met uw Azure IoT Central-toepassing.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 76ab6a229de14af1e3808326c62a7bdbbd188e81
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 87dbd7ab4d75150d09a8c26db50ce2e3b1a085db
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951365"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930246"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Een algemene client toepassing verbinden met uw Azure IoT Central-toepassing (node. js)
 
@@ -53,7 +53,7 @@ Voeg de volgende status toe op de pagina **metingen** :
 
 | Weergavenaam | Veldnaam  | Waarde 1 | Weergavenaam | Waarde 2 | Weergavenaam |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| Ventilatormodus     | ventilatormodus     | 1       | In uitvoering      | 0       | Stopped      |
+| Ventilatormodus     | ventilatormodus     | 1       | In uitvoering      | 0       | Gestopt      |
 
 > [!NOTE]
 > Het gegevens type van de status meting is teken reeks.
@@ -64,7 +64,7 @@ Voer de veld namen precies in zoals weer gegeven in de tabel in de sjabloon voor
 
 Voeg de volgende gebeurtenis toe op de pagina **metingen** :
 
-| Weergavenaam | Veldnaam  | Ernst |
+| Weergavenaam | Veldnaam  | Severity |
 | ------------ | ----------- | -------- |
 | Oververhitting  | overheat    | Fout    |
 
@@ -77,7 +77,7 @@ Voeg de volgende locatie meting toe op de pagina **metingen** :
 
 | Weergavenaam | Veldnaam  |
 | ------------ | ----------- |
-| Locatie     | location    |
+| Locatie     | locatie    |
 
 Het gegevens type van de locatie meting bestaat uit twee drijvende-komma nummers voor lengte graad en breedte graad, en een optioneel drijvende-komma nummer voor hoogte.
 
@@ -111,7 +111,7 @@ Voeg de volgende opdracht toe op de pagina **opdrachten** :
 
 | Weergavenaam    | Veldnaam     | Standaardtime-out | Gegevenstype |
 | --------------- | -------------- | --------------- | --------- |
-| Geteld       | geteld      | 30              | getal    |
+| Geteld       | Geteld      | 30              | getal    |
 
 Voeg het volgende invoer veld toe aan de opdracht Aftel tijd:
 

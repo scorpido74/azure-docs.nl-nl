@@ -1,6 +1,6 @@
 ---
 title: Azure Container Registry taken plannen
-description: Stel timers in om een Azure Container Registry taak uit te voeren op een gedefinieerd schema.
+description: Meer informatie over het uitvoeren van een Azure Container Registry taak volgens een gedefinieerde planning door een of meer timer triggers in te stellen
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: a4a1099d90b619be383d440067a692c51a2430ac
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 6272b5467aff10171814152eb4188554a22c7a51
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509076"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931467"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Een ACR-taak uitvoeren volgens een gedefinieerd schema
 
@@ -31,7 +31,7 @@ U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken
 
 * **Activeren met cron-expressie** -de timer trigger voor een taak maakt gebruik van een *cron-expressie*. De expressie is een teken reeks met vijf velden die de minuut, het uur, de dag, de maand en de dag van de week opgeven om de taak te activeren. Frequenties van Maxi maal één keer per minuut worden ondersteund.
 
-  Met de expressie `"0 12 * * Mon-Fri"` wordt bijvoorbeeld een taak geactiveerd om 12.00 UTC op elke werkdag. [Meer informatie](#cron-expressions) vindt u verderop in dit artikel.
+  Met de expressie `"0 12 * * Mon-Fri"` bijvoorbeeld een taak geactiveerd om de UTC-waarde van elke werkdag. [Meer informatie](#cron-expressions) vindt u verderop in dit artikel.
 * **Meerdere timer triggers** : het toevoegen van meerdere tijds duren aan een taak is toegestaan, zolang de planningen verschillen.
     * Geef meerdere timer triggers op wanneer u de taak maakt of voeg ze later toe.
     * Noem eventueel de triggers voor eenvoudiger beheer, of ACR taken bieden standaard namen voor triggers.
@@ -40,9 +40,9 @@ U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>Een taak maken met een timer trigger
 
-Wanneer u een taak maakt met de opdracht [AZ ACR Task Create][az-acr-task-create] , kunt u eventueel een timer trigger toevoegen. Voeg de `--schedule` para meter toe en geef een cron-expressie door voor de timer.
+Wanneer u een taak maakt met de opdracht [AZ ACR Task Create][az-acr-task-create] , kunt u eventueel een timer trigger toevoegen. Voeg de para meter `--schedule` toe en geef een cron-expressie door voor de timer.
 
-Als eenvoudig voor beeld wordt met de volgende opdracht de `hello-world` installatie kopie vanaf docker hub elke dag uitgevoerd om 21:00 UTC. De taak wordt uitgevoerd zonder een bron code context.
+Als eenvoudig voor beeld wordt met de volgende opdracht de `hello-world` installatie kopie vanaf docker hub elke dag om 21:00 UTC geactiveerd. De taak wordt uitgevoerd zonder een bron code context.
 
 ```azurecli
 az acr task create \
@@ -170,17 +170,17 @@ ACR-taken gebruiken de [NCronTab](https://github.com/atifaziz/NCrontab) -bibliot
 De tijd zone die wordt gebruikt met de cron-expressies is Coordinated Universal Time (UTC). Uren hebben een 24-uurs notatie.
 
 > [!NOTE]
-> ACR-taken bieden geen ondersteuning `{second}` voor `{year}` het veld or in cron-expressies. Als u een cron-expressie die wordt gebruikt in een ander systeem kopieert, moet u deze velden verwijderen als ze worden gebruikt.
+> ACR-taken bieden geen ondersteuning voor het veld `{second}` of `{year}` in cron-expressies. Als u een cron-expressie die wordt gebruikt in een ander systeem kopieert, moet u deze velden verwijderen als ze worden gebruikt.
 
 Elk veld kan een van de volgende typen waarden hebben:
 
-|type  |Voorbeeld  |Wanneer geactiveerd  |
+|Type  |Voorbeeld  |Wanneer geactiveerd  |
 |---------|---------|---------|
 |Een specifieke waarde |<nobr>`"5 * * * *"`</nobr>|elk uur om 5 minuten na het hele uur|
 |Alle waarden (`*`)|<nobr>`"* 5 * * *"`</nobr>|elke minuut van het uur vanaf 5:00 UTC (60 keer per dag)|
-|Een bereik (`-` operator)|<nobr>`"0 1-3 * * *"`</nobr>|3 keer per dag, om 1:00, 2:00 en 3:00 UTC|
-|Een reeks waarden (`,` operator)|<nobr>`"20,30,40 * * * *"`</nobr>|3 keer per uur, om 20 minuten, 30 minuten en 40 minuten na het hele uur|
-|Een interval waarde (`/` operator)|<nobr>`"*/10 * * * *"`</nobr>|6 keer per uur, 10 minuten, 20 minuten, enzovoort, na het hele uur
+|Een bereik (`-`-operator)|<nobr>`"0 1-3 * * *"`</nobr>|3 keer per dag, om 1:00, 2:00 en 3:00 UTC|
+|Een verzameling waarden (`,`-operator)|<nobr>`"20,30,40 * * * *"`</nobr>|3 keer per uur, om 20 minuten, 30 minuten en 40 minuten na het hele uur|
+|Een interval waarde (`/`-operator)|<nobr>`"*/10 * * * *"`</nobr>|6 keer per uur, 10 minuten, 20 minuten, enzovoort, na het hele uur
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 

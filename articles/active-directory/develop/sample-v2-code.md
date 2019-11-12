@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01ed7383515a725816679acb405b2ff3b1dc8e92
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 84c94675ac5c69055cd2811df206f81af55d3c1e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817240"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927197"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Micro soft Identity platform code samples (v 2.0-eind punt)
 
@@ -53,7 +53,7 @@ In deze voor beelden ziet u hoe u een toepassing met één pagina schrijft die i
 | ![deze afbeelding ziet u het hoek JS-logo](media/sample-v2-code/logo_angular.png) [Java script (MSAL AngularJS)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs)| Aanroepen Microsoft Graph  | [MsalAngularjsDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/MsalAngularjsDemoApp)
 | ![deze afbeelding ziet u het hoek logo](media/sample-v2-code/logo_angular.png) [Java script (MSAL hoek)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| Aanroepen Microsoft Graph  | [MSALAngularDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/MSALAngularDemoApp) |
 
-## <a name="web-applications"></a>Web-apps
+## <a name="web-applications"></a>Webtoepassingen
 
 De volgende voor beelden illustreren webtoepassingen die aanmelden bij gebruikers. Sommige voor beelden demonstreren ook de toepassing die Microsoft Graph aanroept of uw eigen web-API met de identiteit van de gebruiker.
 
@@ -87,7 +87,7 @@ In de volgende voor beelden ziet u een toepassing die toegang heeft tot de Micro
 | Client toepassing | Platform | Stroom/verlenen | Aanroepen Microsoft Graph |
 | ------------------ | -------- | ---------- | -------------------- |
 | Console | ![In deze afbeelding wordt het .NET core-logo weer gegeven](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [Client referenties](msal-authentication-flows.md#client-credentials) | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
-| Web-app | ![In deze afbeelding wordt het ASP.NET-logo weer gegeven](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [Client referenties](msal-authentication-flows.md#client-credentials) | [DotNet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
+| Web-app | ![In deze afbeelding wordt het ASP.NET-logo weer gegeven](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [Client referenties](msal-authentication-flows.md#client-credentials) | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
 
 ## <a name="headless-applications"></a>Headless toepassingen
 
@@ -105,6 +105,18 @@ De volgende voor beelden laten zien hoe u een web-API kunt beveiligen met het mi
 | -------- | ------------------- |
 | ![Deze afbeelding toont het ASP.NET Core logo](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | ASP.NET Core Web-API (Service) van [DotNet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
 | ![In deze afbeelding wordt het ASP.NET-logo weer gegeven](media/sample-v2-code/logo_NET.png)</p>ASP.NET MVC | Web-API (Service) van [MS-Identity-ASPNET-webapi-onbehalfof](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) |
+
+## <a name="azure-functions-as-web-apis"></a>Azure Functions als web-Api's
+
+De volgende voor beelden laten zien hoe u een Azure-functie kunt beveiligen met behulp van http trigger en een web-API kunt weer geven met het micro soft Identity platform-eind punt en hoe u een downstream API aanroept vanuit de Web-API.
+
+| Platform | Voorbeeld |
+| -------- | ------------------- |
+| ![Deze afbeelding toont het ASP.NET Core logo](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | ASP.NET Core Web-API (Service) Azure function van [DotNet-native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
+| ![Deze afbeelding toont het node. js-logo](media/sample-v2-code/logo_nodejs.png)</p>Node.js | Web-API (Service) van [NodeJS en Pass Port-Azure-AD](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
+| ![Deze afbeelding toont het python-logo](media/sample-v2-code/logo_python.png)</p>Python | Web-API (Service) van [python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) |
+| ![Deze afbeelding toont het node. js-logo](media/sample-v2-code/logo_nodejs.png)</p>Node.js | Web-API (Service) van [NodeJS en Pass Port-Azure-AD namens](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) |
+
 
 ## <a name="other-microsoft-graph-samples"></a>Andere Microsoft Graph-voor beelden
 

@@ -16,16 +16,16 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1c054bf354b5cdc5e0803ba6849af19fab40f3c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 1fd72bba6e8c01644adebaa333c8fe588c35b8c7
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174154"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927319"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Wat is Azure AD-rechtenbeheer?
 
-Azure Active Directory (Azure AD) is een functie voor [identiteits](identity-governance-overview.md) beheer waarmee organisaties identiteits-en toegangs levenscyclus op schaal kunnen beheren door het automatiseren van werk stromen voor toegangs aanvragen, toegangs toewijzingen, recensies en verval.
+Azure Active Directory (Azure AD) is een functie voor [identiteits](identity-governance-overview.md) beheer waarmee organisaties identiteits-en toegangs levenscyclus op schaal kunnen beheren door het automatiseren van werk stromen voor toegangs aanvragen, toegangs toewijzingen, recensies en verval datum.
 
 Werk nemers in organisaties moeten toegang hebben tot verschillende groepen, toepassingen en sites om hun taak uit te voeren. Het beheer van deze toegang is lastig, omdat de vereisten veranderen: nieuwe toepassingen worden toegevoegd of gebruikers hebben extra toegangs rechten nodig.  Dit scenario haalt meer gecompliceerd op wanneer u samen met externe organisaties samenwerkt. u weet niet wie in de andere organisatie toegang nodig heeft tot de resources van uw organisatie en weet niet welke toepassingen, groepen of sites uw organisatie gebruikt.
 
@@ -123,7 +123,7 @@ Als u meer inzicht wilt krijgen in het rechten beheer en de bijbehorende documen
 | Maker van catalogus | Een verzameling gebruikers die gemachtigd zijn om nieuwe catalogussen te maken.  Wanneer een niet-beheerders gebruiker die gemachtigd is om een catalogus Maker te maken, een nieuwe catalogus maakt, wordt deze automatisch de eigenaar van die catalogus. |
 | verbonden organisatie | Een externe Azure AD-Directory of-domein waarmee u een relatie hebt. De gebruikers van een verbonden organisatie kunnen worden opgegeven in een beleid als toestemming om toegang aan te vragen. |
 | policy | Een set regels die de toegangs levenscyclus definieert, bijvoorbeeld hoe gebruikers toegang krijgen, wie kan goed keuren en hoelang gebruikers toegang hebben via een toewijzing. Een beleid is gekoppeld aan een toegangs pakket. Een toegangs pakket kan bijvoorbeeld twee beleids regels bevatten: een voor werk nemers om toegang aan te vragen en een tweede voor externe gebruikers om toegang aan te vragen. |
-| Resource | Een Asset, zoals een Office-groep, een beveiligings groep, een toepassing of een share point online-site, met een rol waaraan een gebruiker machtigingen kan verlenen. |
+| resource | Een Asset, zoals een Office-groep, een beveiligings groep, een toepassing of een share point online-site, met een rol waaraan een gebruiker machtigingen kan verlenen. |
 | Resource Directory | Een map met een of meer resources die moeten worden gedeeld. |
 | resource functie | Een verzameling machtigingen die zijn gekoppeld aan en gedefinieerd door een resource. Een groep heeft twee rollen: lid en eigenaar. Share point-sites hebben doorgaans drie rollen, maar kunnen extra aangepaste rollen hebben. Toepassingen kunnen aangepaste rollen hebben. |
 

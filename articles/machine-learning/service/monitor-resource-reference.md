@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/06/2019
-ms.openlocfilehash: 178c60d82c8337987e9858a409fcdef7063c9559
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 743007d3636516a39dd36caf3d44d3edb650c030
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684911"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929529"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Naslag informatie voor Azure machine learning monitoring-gegevens
 
@@ -31,13 +31,13 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 |:--- |:---|
 | TimeGenerated | Tijdstip waarop de logboek vermelding is gegenereerd |
 | OperationName | De naam van de bewerking die is gekoppeld aan de logboek gebeurtenis |
-| Category | De naam van de logboek gebeurtenis, AmlComputeClusterNodeEvent |
+| Categorie | De naam van de logboek gebeurtenis, AmlComputeClusterNodeEvent |
 | JobId | ID van de verzonden taak |
 | ExperimentId | ID van het experiment |
 | experimentnaam | De naam van het experiment |
 | customerSubscriptionId | SubscriptionId waar experiment en job worden verzonden |
 | workspaceName | De naam van de machine learning-werk ruimte |
-| clusterName | De naam van het cluster |
+| ClusterName | De naam van het cluster |
 | ProvisioningState | Status van het verzenden van taken |
 | ResourceGroupName | Naam van de resource groep |
 | JobName | De naam van de taak |
@@ -60,13 +60,13 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 |:--- |:--- |
 | TimeGenerated | Tijdstip waarop de logboek vermelding is gegenereerd |
 | OperationName | De naam van de bewerking die is gekoppeld aan de logboek gebeurtenis |
-| Category | De naam van de logboek gebeurtenis, AmlComputeClusterNodeEvent |
+| Categorie | De naam van de logboek gebeurtenis, AmlComputeClusterNodeEvent |
 | ProvisioningState | De inrichtings status van het cluster |
-| clusterName | De naam van het cluster |
-| clusterType | Type van het cluster |
+| ClusterName | De naam van het cluster |
+| ClusterType | Type van het cluster |
 | Type CreatedBy | Gebruiker die het cluster heeft gemaakt |
 | CoreCount | Aantal kernen in het cluster |
-| vmSize | VM-grootte van het cluster |
+| VmSize | VM-grootte van het cluster |
 | VmPriority | Prioriteit van de knoop punten die zijn gemaakt in een cluster toegewezen-LowPriority |
 | ScalingType | Type hand matig/automatisch schalen cluster |
 | InitialNodeCount | Oorspronkelijk aantal knoop punten van het cluster |
@@ -103,10 +103,10 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 |:--- |:--- |
 | TimeGenerated | Tijdstip waarop de logboek vermelding is gegenereerd |
 | OperationName | De naam van de bewerking die is gekoppeld aan de logboek gebeurtenis |
-| Category | De naam van de logboek gebeurtenis, AmlComputeClusterNodeEvent |
-| clusterName | De naam van het cluster |
+| Categorie | De naam van de logboek gebeurtenis, AmlComputeClusterNodeEvent |
+| ClusterName | De naam van het cluster |
 | NodeId | ID van het cluster knooppunt dat is gemaakt |
-| vmSize | VM-grootte van het knoop punt |
+| VmSize | VM-grootte van het knoop punt |
 | VmFamilyName | De VM-familie waartoe het knoop punt behoort |
 | VmPriority | Prioriteit van het knoop punt dat speciaal is gemaakt/LowPriority |
 | Uitgever | Uitgever van de VM-installatie kopie, bijvoorbeeld micro soft-dsvm |
@@ -128,7 +128,7 @@ In de volgende tabellen worden de platform gegevens weer gegeven die zijn verzam
 
 **Activiteitsmodel**
 
-| Model | Eenheid | Beschrijving |
+| Gegevens | Eenheid | Beschrijving |
 | ----- | ----- | ----- |
 | Model implementeren is mislukt | Count | Het aantal model implementaties dat is mislukt. |
 | Model implementeren gestart | Count | Het aantal model implementaties is gestart. |

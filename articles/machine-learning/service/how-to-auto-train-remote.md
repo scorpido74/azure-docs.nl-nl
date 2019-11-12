@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4276a713e62f96cc5340fc7be0e8391939d32342
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5104e6e037341c41a032f80287c6d56d17361d4c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497316"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932200"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Modellen trainen met automatische machine learning in de Cloud
 
@@ -151,24 +151,6 @@ automl_config = AutoMLConfig(task='classification',
                              )
 ```
 
-### <a name="enable-model-explanations"></a>Model uitleg inschakelen
-
-Stel de optionele para meter `model_explainability` in de `AutoMLConfig`-constructor in. Daarnaast moet een validatie data frame-object worden door gegeven als een para meter `X_valid` voor het gebruik van de functie voor model uitleg.
-
-```python
-automl_config = AutoMLConfig(task='classification',
-                             debug_log='automl_errors.log',
-                             path=project_folder,
-                             compute_target=compute_target,
-                             run_configuration=run_config,
-                             X = X,
-                             y = y,
-                             **automl_settings,
-                             model_explainability=True,
-                             X_valid=X_test
-                             )
-```
-
 ## <a name="submit-training-experiment"></a>Trainings experiment verzenden
 
 Verzend de configuratie nu om automatisch het algoritme te selecteren, de Hyper-para meters en het model te trainen.
@@ -237,59 +219,13 @@ remote_run.get_portal_url()
 
 Dezelfde informatie is beschikbaar in uw werk ruimte.  Zie [inzicht in geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md)voor meer informatie over deze resultaten.
 
-### <a name="view-logs"></a>Logboeken weergeven
-
-Zoek naar Logboeken op de DSVM onder `/tmp/azureml_run/{iterationid}/azureml-logs`.
-
-## <a name="explain"></a>Best mogelijke model uitleg
-
-Door model uitleg gegevens op te halen, kunt u gedetailleerde informatie over de modellen weer geven om de transparantie van de back-end te verg Roten. In dit voor beeld voert u alleen model verklaringen uit voor het beste model. Als u voor alle modellen in de pijp lijn uitvoert, resulteert dit in een aanzienlijke uitvoerings tijd. Informatie over model uitleg:
-
-* shap_values: de uitleg informatie die is gegenereerd door Shap lib.
-* expected_values: de verwachte waarde van het model dat wordt toegepast op set met X_train-gegevens.
-* overall_summary: de belang rijke waarden van de functie op model niveau in aflopende volg orde gesorteerd.
-* overall_imp: de functie namen worden gesorteerd in dezelfde volg orde als in overall_summary.
-* per_class_summary: de belang rijke waarden voor functie niveau zijn in aflopende volg orde gesorteerd. Alleen beschikbaar voor de classificatie case.
-* per_class_imp: de functie namen worden gesorteerd in dezelfde volg orde als in per_class_summary. Alleen beschikbaar voor de classificatie case.
-
-Gebruik de volgende code om de beste pijp lijn te selecteren uit uw iteraties. De `get_output`-methode retourneert het beste uitvoeren en het model dat het meest geschikt is voor het aanroepen van de laatste.
-
-```python
-best_run, fitted_model = remote_run.get_output()
-```
-
-Importeer de functie `retrieve_model_explanation` en voer deze uit op het beste model.
-
-```python
-from azureml.train.automl.automlexplainer import retrieve_model_explanation
-
-shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
-    retrieve_model_explanation(best_run)
-```
-
-Resultaten afdrukken voor de `best_run` uitleg variabelen die u wilt weer geven.
-
-```python
-print(overall_summary)
-print(overall_imp)
-print(per_class_summary)
-print(per_class_imp)
-```
-
-Het afdrukken van de samenvattings variabelen van de `best_run`-uitleg resulteert in de volgende uitvoer.
-
-![Uitvoer van de console voor de uitleg van modellen](./media/how-to-auto-train-remote/expl-print.png)
-
-U kunt het belang van de functie ook visualiseren via de gebruikers interface van de widget of in uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com). 
-
-![Gebruikers interface voor model uitleg](./media/how-to-auto-train-remote/model-exp.png)
-
 ## <a name="example"></a>Voorbeeld
 
-In de notebook [How-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-Remote-amlcompute. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) worden concepten in dit artikel gedemonstreerd.
+In het volgende [notitie blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb) worden concepten in dit artikel gedemonstreerd.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie [over het configureren van instellingen voor automatische training](how-to-configure-auto-train.md).
+* Meer informatie [over het configureren van instellingen voor automatische training](how-to-configure-auto-train.md).
+* Bekijk de [functie voor het inschakelen](how-to-machine-learning-interpretability-automl.md) van model interpret functies in geautomatiseerde ml experimenten.

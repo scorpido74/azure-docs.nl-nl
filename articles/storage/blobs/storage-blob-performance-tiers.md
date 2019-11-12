@@ -1,65 +1,81 @@
 ---
-title: Azure Block Blob Storage-prestatie lagen-Azure Storage
-description: Prestatie lagen voor Azure Blob Storage.
+title: Prestatie lagen voor Blob Storage blok keren, Azure Storage
+description: In dit artikel wordt het verschil beschreven tussen de Premium-en Standard-prestatie lagen voor Azure Block Blob Storage.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/02/2019
+ms.date: 11/12/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: e0d746f1b01784bc383c12543936f06dae66ca09
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 64efd1a02b903ec3874066f6c663b86a8080f746
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063263"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932272"
 ---
-# <a name="azure-block-blob-storage-performance-tiers"></a>Prestatie lagen van Azure Block Blob Storage
+# <a name="performance-tiers-for-block-blob-storage"></a>Prestatie lagen voor blok-blobopslag
 
 Als ondernemingen prestaties gevoelige Cloud toepassingen implementeren, is het belang rijk dat u beschikt over opties voor rendabele gegevens opslag op verschillende prestatie niveaus.
 
 Azure Block Blob Storage biedt twee verschillende prestatie lagen:
 
-- Premium: geoptimaliseerd voor hoge transactie tarieven en een consistente opslag latentie van één cijfer
-- Standaard: geoptimaliseerd voor hoge capaciteit en hoge door Voer
+- **Premium**: geoptimaliseerd voor hoge transactie tarieven en een consistente opslag latentie van één cijfer
+- **Standaard**: geoptimaliseerd voor hoge capaciteit en hoge door Voer
 
 De volgende overwegingen zijn van toepassing op de verschillende prestatie lagen:
 
-- Standaard prestaties zijn beschikbaar in alle [Azure-regio's](https://azure.microsoft.com/global-infrastructure/services/?products=storage). Premium-prestaties zijn beschikbaar in [regio's selecteren](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
-- Premium performance biedt geoptimaliseerde prijzen voor toepassingen met een hoge transactie snelheid om de [totale opslag kosten](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/) voor deze werk belastingen te verlagen.
-- Als u Premium-prestaties voor blok-blobs wilt ophalen, moet u het BlockBlobStorage-account type gebruiken.
-- Standaard prestaties zijn beschikbaar met Algemeen v1-, Algemeen v2-en Blob Storage-accounts.
-- Premium en standaard prestaties ondersteunen [blok-blobs met hoge door Voer](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/). Blok-blobs met hoge door Voer zijn beschikbaar voor Premium-prestaties van meer dan 256 KiB. Blok-blobs met hoge door Voer zijn beschikbaar voor standaard prestaties in meer dan 4 MiB-put-blok of put-grootte van de blob.
-- Premium-prestaties zijn momenteel alleen beschikbaar met lokaal redundante opslag (LRS).
+| Onderwerp |Standaard prestaties  |Premium-prestaties  |
+|---------|---------|---------|
+|Regionale beschikbaarheid     |   Alle regio's      | In [regio's selecteren](https://azure.microsoft.com/global-infrastructure/services/?products=storage)       |
+|Ondersteunde [typen opslag accounts](../common/storage-account-overview.md#types-of-storage-accounts)     |     Algemeen gebruik v2, BlobStorage, algemeen gebruik v1    |    BlockBlobStorage     |
+|Ondersteunt [blok-blobs met hoge door Voer](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)     |    Ja, met meer dan 4 MiB-PutBlock of PutBlob-grootten     |    Ja, groter dan 256 KiB PutBlock of PutBlob grootten    |
+|Redundantie     |     [Typen opslag accounts](../common/storage-account-overview.md#types-of-storage-accounts) weer geven   |  Ondersteunt momenteel alleen lokaal redundante opslag (LRS) en zone-redudant Storage (ZRS)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div>     |
+
+<div id="zone-redundant-storage"><sup>1</sup> Zone-redundante opslag (ZRS) is beschikbaar in Selecteer regio's voor de accounts voor Premium-prestatie blok-Blob-opslag.</div>
+
+Met betrekking tot kosten biedt Premium-prestaties geoptimaliseerde prijzen voor toepassingen met een hoge transactie snelheid om de [totale opslag kosten](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/) voor deze werk belastingen te verlagen.
 
 ## <a name="premium-performance"></a>Premium-prestaties
 
 Met de Premium-opslag voor blok-blobs kunt u gegevens beschikbaar maken via high performance-hardware. Gegevens worden opgeslagen op Ssd's (Solid-state drives) die zijn geoptimaliseerd voor een lage latentie. Ssd's bieden een hogere door Voer vergeleken met traditionele harde schijven.
 
-De Premium-Blob-opslag voor het blok keren van prestaties is ideaal voor werk belastingen waarvoor snelle en consistente reactie tijden zijn vereist. Het is het beste voor werk belastingen die veel kleine trans acties uitvoeren.
+Premium-prestatie opslag is ideaal voor werk belastingen waarvoor snelle en consistente reactie tijden zijn vereist. Het is het beste voor werk belastingen die veel kleine trans acties uitvoeren. Voor beelden van werk belastingen zijn:
+
+- **Interactieve werk belastingen**. Voor deze werk belastingen zijn directe updates en gebruikers feedback vereist, zoals e-commerce en het toewijzen van toepassingen. Zo worden in een e-commerce-toepassing minder vaak bekeken items waarschijnlijk niet in de cache opgeslagen. Ze moeten echter direct worden weer gegeven aan de klant op aanvraag.
+
+- **Analytics**. In een IoT-scenario kunnen veel kleinere schrijf bewerkingen elke seconde worden gepusht naar de Cloud. Grote hoeveel heden gegevens kunnen worden opgenomen in, geaggregeerd voor analyse doeleinden en bijna onmiddellijk worden verwijderd. De hoge opname mogelijkheden van de Premium-blok-blobopslag maken het efficiënt voor dit type werk belasting.
+
+- **Kunst matige intelligentie/machine learning (AI/ml)** . AI/ML behandelt het gebruik en de verwerking van verschillende gegevens typen, zoals visuele elementen, spraak en tekst. Dit type werk belasting met hoge prestaties wordt behandeld met grote hoeveel heden gegevens waarvoor snelle reacties en efficiënte opname tijden voor gegevens analyse zijn vereist.
+
+- **Gegevens transformatie**. Voor processen waarvoor het bewerken, aanpassen en converteren van gegevens constant is, zijn directe updates vereist. Voor een nauw keurige weer gave van gegevens moeten gebruikers van deze gegevens deze wijzigingen onmiddellijk weer geven.
 
 ## <a name="standard-performance"></a>Standaard prestaties
 
 Standaard prestaties bieden ondersteuning voor verschillende [toegangs lagen](storage-blob-storage-tiers.md) om gegevens op de voordeligste manier op te slaan. Het is geoptimaliseerd voor hoge capaciteit en hoge door Voer voor grote gegevens sets.
 
+## <a name="migrate-from-standard-to-premium"></a>Migreren van Standard naar Premium
+
+U kunt een bestaand standaard prestatie opslag account niet converteren naar een blok-Blob-opslag account met Premium-prestaties. Als u wilt migreren naar een Premium-prestatie opslag account, moet u een BlockBlobStorage-account maken en de gegevens naar het nieuwe account migreren. Zie [een BlockBlobStorage-account maken](storage-blob-create-account-block-blob.md)voor meer informatie.
+
+U kunt de meest recente versie van het [AzCopy](../common/storage-use-azcopy-blobs.md) -opdracht regel programma gebruiken om blobs tussen opslag accounts te kopiëren. Andere hulpprogram ma's, zoals Azure Data Factory, zijn ook beschikbaar voor gegevens verplaatsing en-trans formatie.
+
 ## <a name="blob-lifecycle-management"></a>Beheer van de BLOB levenscyclus
 
-Blob Storage levenscyclus beheer biedt een uitgebreid beleid op basis van regels:
+Levenscyclus beheer van Blob-opslag biedt een uitgebreid beleid op basis van regels:
 
-- Premium-verloopt gegevens aan het einde van de levens cyclus
-- Standaard: overgangs gegevens naar de beste Access-laag en verlopen gegevens aan het einde van de levens cyclus
+- **Premium**: verlopen gegevens aan het einde van de levens cyclus.
+- **Standard**: overgangs gegevens naar de beste Access-laag en verlopen gegevens aan het einde van de levens cyclus.
 
 Zie [de Azure Blob-opslag levenscyclus beheren](storage-lifecycle-management-concepts.md)voor meer informatie.
 
-Gegevens die zijn opgeslagen in een Premium Block Blob Storage-account kunnen niet worden verplaatst tussen de lagen hot, cool en Archive. U kunt echter blobs kopiëren van een blok-Blob-opslag account naar de laag Hot Access in een *ander* account. Gebruik de [put-blok versie van URL](/rest/api/storageservices/put-block-from-url) API of [AzCopy V10 toevoegen](../common/storage-use-azcopy-v10.md) om gegevens te kopiëren naar een ander account. **Met de put-blok kering van URL** -API worden gegevens synchroon gekopieerd op de server. De oproep wordt pas voltooid nadat alle gegevens zijn verplaatst van de oorspronkelijke server locatie naar de doel locatie.
+Het is niet mogelijk om gegevens die zijn opgeslagen in een Premium Block Blob-opslag account te verplaatsen tussen de lagen hot, cool en Archive. U kunt echter blobs kopiëren van een blok-Blob-opslag account naar de laag Hot Access in een *ander* account. Als u gegevens wilt kopiëren naar een ander account, gebruikt u het [put-blok van URL](/rest/api/storageservices/put-block-from-url) API of [AzCopy V10 toevoegen](../common/storage-use-azcopy-v10.md). **Met de put-blok kering van URL** -API worden gegevens synchroon gekopieerd op de server. De oproep wordt pas voltooid nadat alle gegevens zijn verplaatst van de oorspronkelijke server locatie naar de doel locatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Evalueren van warme, koude en archief in GPv2-en Blob Storage-accounts
+Evalueer warme, cool en Archive in GPv2-en Blob Storage-accounts.
 
-- [De beschikbaarheid controleren van de dynamische, statische en archieflaag per regio](https://azure.microsoft.com/regions/#services)
-- [De levenscyclus van Azure Blob-opslag beheren](storage-lifecycle-management-concepts.md)
 - [Meer informatie over reactiveren BLOB-gegevens uit de laag archief](storage-blob-rehydration.md)
 - [Gebruik van de huidige opslagaccounts evalueren door metrische gegevens voor Azure Storage in te schakelen](../common/storage-enable-and-view-metrics.md)
 - [Prijzen voor de dynamische, statische en archieflaag controleren in Blob Storage- en GPv2-accounts per regio](https://azure.microsoft.com/pricing/details/storage/)

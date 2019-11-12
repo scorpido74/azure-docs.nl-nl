@@ -1,5 +1,5 @@
 ---
-title: Regels voor telemetrie maken en beheren in uw Azure IoT Central-toepassing | Microsoft Docs
+title: Telemetrie-regels gebruiken in uw Azure IoT Central-toepassing | Microsoft Docs
 description: Met Azure IoT Central telemetrie-regels kunt u uw apparaten bijna in realtime controleren en automatisch acties aanroepen, zoals het verzenden van een e-mail bericht wanneer de regel wordt geactiveerd.
 author: ankitgupta
 ms.author: ankitgup
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d586f899a46a1404af6e798eda4d783a5a7ead85
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3b2fff84b70c5c5e37d14faa87143e5dacc82bce
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953783"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930190"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Een telemetrie-regel maken en meldingen instellen in uw Azure IoT Central-toepassing
 
@@ -25,7 +25,7 @@ U kunt Azure IoT Central gebruiken om uw verbonden apparaten op afstand te bewak
 
 Apparaten kunnen telemetrische metingen gebruiken om numerieke gegevens van het apparaat te verzenden. Een telemetrie regel wordt geactiveerd wanneer de telemetrie van het geselecteerde apparaat een opgegeven drempel overschrijdt.
 
-## <a name="create-a-telemetry-rule"></a>Een telemetrie-regel maken
+## <a name="create-a-telemetry-rule"></a>Een telemetrieregel maken
 
 Voor het maken van een telemetrie-regel moet er ten minste één telemetrie-meting zijn gedefinieerd. In dit voor beeld wordt gebruikgemaakt van een computer apparaat met een gekoelde verkoop, dat een telemetrie van de Tempe ratuur en vochtigheid verzendt. De regel controleert de door het apparaat gemelde Tempe ratuur en verzendt een e-mail wanneer deze meer dan 80 graden gaat.
 

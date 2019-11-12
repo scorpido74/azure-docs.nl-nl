@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr
-ms.author: tracych
-author: tracych
+ms.reviewer: trbye, jmartens, larryfr, vaidyas
+ms.author: vaidyas
+author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 615536fbba38279a23516352c69461c19f9972ed
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 4e7ddf7fc7b18d57b8251d4fb8293ed2f6e83d17
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796716"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929559"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-deinterferentie uitvoeren op grote hoeveel heden gegevens met behulp van Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -189,13 +189,13 @@ model = Model.register(model_path="models/",
 Het script *moet* twee functies bevatten:
 - `init()`: gebruik deze functie voor een kost bare of gemeen schappelijke voor bereiding voor latere interferentie. U kunt dit bijvoorbeeld gebruiken om het model in een globaal object te laden.
 -  `run(mini_batch)`: de functie wordt uitgevoerd voor elk `mini_batch` exemplaar.
-    -  `mini_batch`: in batch-dedata frame wordt de methode Run aangeroepen en wordt een lijst of Panda als argument aan de methode door gegeven. Elke vermelding in min_batch is-een filepath als invoer een FileDataset is, een Panda data frame als invoer een TabularDataset is.
-    -  `response`: de methode Run () moet een Panda data frame of een matrix retour neren. Deze geretourneerde elementen voor append_row-output_action worden toegevoegd aan het gemeen schappelijke uitvoer bestand. Voor summary_only wordt de inhoud van de elementen genegeerd. Voor alle uitvoer acties geeft elk geretourneerd uitvoer element een geslaagde afleiding van het invoer element in de invoer-mini-batch aan. De gebruiker moet er zeker van zijn dat er voldoende gegevens zijn opgenomen in het afnemen van de invoer aan de afleiding. De Afleidings uitvoer wordt geschreven naar het uitvoer bestand en is niet gegarandeerd in de juiste volg orde. de gebruiker moet een bepaalde sleutel in de uitvoer gebruiken om deze toe te wijzen aan de invoer.
+    -  `mini_batch`: in batch-dedata frame wordt de methode Run aangeroepen en wordt een lijst of Panda als argument aan de methode door gegeven. Elke vermelding in min_batch is een bestandspad als invoer een FileDataset is, een Panda data frame als invoer een TabularDataset is.
+    -  `response`: de methode Run () moet een Panda data frame of een matrix retour neren. Voor append_row output_action worden deze geretourneerde elementen toegevoegd aan het algemene uitvoer bestand. Voor summary_only wordt de inhoud van de elementen genegeerd. Voor alle uitvoer acties geeft elk geretourneerd uitvoer element een geslaagde afleiding van het invoer element in de invoer-mini-batch aan. De gebruiker moet er zeker van zijn dat er voldoende gegevens zijn opgenomen in het afnemen van de invoer aan de afleiding. De Afleidings uitvoer wordt geschreven naar het uitvoer bestand en is niet gegarandeerd in de juiste volg orde. de gebruiker moet een bepaalde sleutel in de uitvoer gebruiken om deze toe te wijzen aan de invoer.
 
 ```python
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
-# (https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/digit_identification.py)
+# (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
 import os
@@ -269,7 +269,7 @@ batch_env.spark.precache_packages = False
 - `error_threshold`: het aantal record fouten voor `TabularDataset` en bestands fouten voor `FileDataset` die tijdens de verwerking moeten worden genegeerd. Als het aantal fouten voor de volledige invoer boven deze waarde komt, wordt de taak gestopt. De drempel waarde voor de fout is voor de volledige invoer en niet voor afzonderlijke mini batches die worden verzonden naar de `run()` methode. Het bereik is `[-1, int.max]`. Het deel `-1` geeft aan dat alle fouten tijdens de verwerking worden genegeerd.
 - `output_action`: een van de volgende waarden geeft aan hoe de uitvoer wordt georganiseerd:
     - `summary_only`: de uitvoer wordt opgeslagen met het gebruikers script. `ParallelRunStep` wordt de uitvoer alleen gebruikt voor de berekening van de fout drempelwaarde.
-    - `append_row`: voor alle invoer bestanden wordt slechts één bestand gemaakt in de uitvoermap om alle uitvoer, gescheiden door regel, toe te voegen. De bestands naam is parallel_run_step. txt.
+    - `append_row`: voor alle invoer bestanden wordt slechts één bestand gemaakt in de uitvoermap om alle uitvoer, gescheiden door regel, toe te voegen. De bestands naam wordt parallel_run_step. txt.
 - `source_directory`: paden naar mappen die alle bestanden bevatten die moeten worden uitgevoerd op het Compute-doel (optioneel).
 - `compute_target`: alleen `AmlCompute` wordt ondersteund.
 - `node_count`: het aantal reken knooppunten dat moet worden gebruikt voor het uitvoeren van het gebruikers script.

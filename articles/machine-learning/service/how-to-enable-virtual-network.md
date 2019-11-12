@@ -1,5 +1,5 @@
 ---
-title: Beveilig experimenten en demijnen in een virtueel netwerk
+title: Veilige experimenten en demijnen in het virtuele netwerk
 titleSuffix: Azure Machine Learning
 description: meer informatie over het beveiligen van experimenten/trainings taken en het afleiden/scoren van taken in Azure Machine Learning binnen een Azure Virtual Network.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/25/2019
-ms.openlocfilehash: e5dee838df2a60bf2038f2c7d2b1cc5958354d29
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 5ac741579562b41678c4aeb59bb5ebb425d8405c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796773"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932089"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten beveiligen en taken in een Azure-Virtual Network afzorgen
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

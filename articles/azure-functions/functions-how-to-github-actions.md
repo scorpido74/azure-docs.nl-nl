@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 483ac9380fa8d58f294112cb6c80e0393fa01589
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 486033ef4120d721458add7f23cdf9b78a44a388
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028958"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928356"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continue levering met behulp van GitHub-actie
 
@@ -27,11 +27,14 @@ Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het pad `/.g
 
 Voor een Azure Functions werk stroom heeft het bestand drie secties: 
 
-| Section | Taken |
+| Sectie | Taken |
 | ------- | ----- |
 | **Verificatie** | <ol><li>Definieer een service-principal.</li><li>Publicatie profiel downloaden.</li><li>Maak een GitHub-geheim.</li></ol>|
 | **PE** | <ol><li>Stel de omgeving in.</li><li>De functie-app bouwen.</li></ol> |
 | **Implementeren** | <ol><li>Implementeer de functie-app.</li></ol>|
+
+> [!NOTE]
+> U hoeft geen service-principal te maken als u het publicatie profiel voor verificatie wilt gebruiken.
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
@@ -42,9 +45,6 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 ```
 
 In dit voor beeld vervangt u de tijdelijke aanduidingen in de resource door uw abonnements-ID, resource groep en naam van de functie-app. De uitvoer is de roltoewijzings referenties die toegang bieden tot uw functie-app. Kopieer dit JSON-object, dat u kunt gebruiken om te verifiëren vanuit GitHub.
-
-> [!NOTE]
-> U hoeft geen service-principal te maken als u het publicatie profiel voor verificatie wilt gebruiken.
 
 > [!IMPORTANT]
 > Het is altijd een goed idee om minimale toegang te verlenen. Daarom is de scope in het vorige voor beeld beperkt tot de specifieke functie-app en niet de hele resource groep.
@@ -59,7 +59,7 @@ Kopieer de inhoud van het bestand.
 
 ## <a name="configure-the-github-secret"></a>Het GitHub-geheim configureren
 
-1. In [github](https://github.com)gaat u naar uw opslag plaats, selecteert u **instellingen** > **geheimen** > **een nieuw geheim toevoegen**.
+1. In [github](https://github.com)gaat u naar uw opslag plaats, selecteert u **instellingen** > **geheimen** > **een nieuw geheim toe te voegen**.
 
    ![Geheim toevoegen](media/functions-how-to-github-actions/add-secret.png)
 
@@ -206,7 +206,7 @@ Als u uw code wilt implementeren in een functie-app, moet u de actie `Azure/func
 |_**sleuf naam**_ | Beschrijving De naam van de [implementatie sleuf](functions-deployment-slots.md) waarnaar u wilt implementeren. De sleuf moet al zijn gedefinieerd in uw functie-app. |
 
 
-In het volgende voor beeld wordt versie 1 van de `functions-action` gebruikt:
+In het volgende voor beeld wordt versie 1 van de `functions-action`gebruikt:
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -218,7 +218,7 @@ In het volgende voor beeld wordt versie 1 van de `functions-action` gebruikt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een volledige werk stroom. yaml wilt weer geven, raadpleegt u een van de bestanden in de [werk stroom voor beelden van Azure github actions opslag plaats](https://github.com/Azure/actions-workflow-samples) met `functionapp` in de naam. U kunt deze voor beelden gebruiken als uitgangs punt voor uw werk stroom.
+Als u een volledige werk stroom. yaml wilt weer geven, raadpleegt u een van de bestanden in de [werk stroom voor beelden van Azure github actions opslag plaats](https://github.com/Azure/actions-workflow-samples) die `functionapp` in de naam hebben. U kunt deze voor beelden gebruiken als uitgangs punt voor uw werk stroom.
 
 > [!div class="nextstepaction"]
 > [Meer informatie over GitHub-acties](https://help.github.com/en/articles/about-github-actions)

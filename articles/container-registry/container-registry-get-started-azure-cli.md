@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Een privé-Docker-register maken in Azure - Azure CLI'
+title: 'Quick Start: REGI ster maken-Azure CLI-Azure Container Registry'
 description: Leer snel hoe u een persoonlijk Docker-containerregister maakt met behulp van Azure CLI.
 services: container-registry
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 6c511c56ab8df14cc6ea81363772ae0fd6d61272
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 562f8d41e1f91e408263809bdfc78905317912a1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68309535"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931603"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Snelstartgids: Een privé-containerregister maken met Azure CLI
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Snelstartgids: een persoonlijk container register maken met behulp van Azure CLI
 
 Azure Container Registry is een beheerde service voor Docker-containerregisters die wordt gebruikt voor het opslaan van installatiekopieën van persoonlijke Docker-containers. In deze handleiding vindt u instructies voor het maken van een Azure Container Registry-exemplaar met behulp van Azure CLI. Gebruik vervolgens Docker-opdrachten om een containerinstallatiekopie naar het register pushen, waarna u de installatiekopie ophaalt en uitvoert vanuit het register.
 

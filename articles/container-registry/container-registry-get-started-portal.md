@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: een privé-Docker-register maken in Azure - Azure Portal'
-description: Leer snel een persoonlijk Docker-containerregister maken met Azure Portal.
+title: 'Quick Start: REGI ster maken in portal-Azure Container Registry'
+description: Leer snel hoe u een persoonlijk docker-REGI ster maakt in Azure Container Registry met de Azure Portal.
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c9e8c7fe4d32a44e8c0831154f02eda1f82aaff3
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: bcf0874266aa83a4b4b932670557854c4688d400
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68309471"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931632"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Snelstartgids: Een privé-containerregister maken met Azure Portal
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Snelstartgids: een persoonlijk container register maken met behulp van de Azure Portal
 
 Een Azure-containerregister is een persoonlijk Docker-register in Azure waar u uw persoonlijke installatiekopieën van de Docker-container kunt opslaan en beheren. In deze quickstart maakt u een containerregister in Azure Portal. Gebruik vervolgens Docker-opdrachten om een containerinstallatiekopie naar het register pushen, waarna u de installatiekopie ophaalt en uitvoert vanuit het register.
 
@@ -34,7 +34,7 @@ Selecteer **Een resource maken** > **Containers** > **Container Registry**.
 
 ![Een containerregister maken met Azure Portal][qs-portal-01]
 
-Voer waarden in voor **Registernaam** en **Resourcegroep**. De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. Maak voor deze snelstart een nieuwe resourcegroep met de naam `myResourceGroup` in locatie `West US`. Kies voor **SKU** de optie Basic. Selecteer **Maken** om de ACR-instantie te implementeren.
+Voer waarden in voor **Registernaam** en **Resourcegroep**. De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. Maak voor deze snelstart een nieuwe resourcegroep met de naam `West US` in locatie `myResourceGroup`. Kies voor **SKU** de optie Basic. Selecteer **Maken** om de ACR-instantie te implementeren.
 
 ![Een containerregister maken in de Azure-portal][qs-portal-03]
 
@@ -62,7 +62,7 @@ De opdracht retourneert `Login Succeeded` nadat deze is voltooid.
 
 Als u de installatiekopieën in uw register wilt weergeven, gaat u naar het register in de portal en selecteert u **Opslagplaatsen**. Selecteer vervolgens de opslagplaats die u met `docker push` hebt gemaakt.
 
-In dit voor beeld selecteren we de opslag plaats **Hallo wereld** en zien we de `v1`afbeelding-gelabeld onder **Tags**.
+In dit voor beeld selecteren we de opslag plaats **Hallo wereld** en zien we de afbeelding met `v1`Tags onder **labels**.
 
 ![Containerinstallatiekopieën weergeven in de Azure-portal][qs-portal-09]
 

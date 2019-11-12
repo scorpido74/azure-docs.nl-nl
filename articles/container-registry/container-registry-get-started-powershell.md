@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Een privé-Docker-register maken in Azure - PowerShell'
-description: Leer snel hoe u een persoonlijk Docker-containerregister maakt in Azure met behulp van PowerShell.
+title: Snelstartgids-REGI ster maken-Power shell-Azure Container Registry
+description: Meer informatie over het maken van een persoonlijk docker-REGI ster in Azure Container Registry met Power shell
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f99b4ee6dd11a109d1c563c84debc2157cb03337
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b337c28efc3db7d4bec4408b5da1f8a5e1d87094
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68309499"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931613"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Snelstartgids: Een privé-containerregister maken met Azure PowerShell
+# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Snelstartgids: een persoonlijk container register maken met behulp van Azure PowerShell
 
 Azure Container Registry is een beheerde service voor Docker-containerregisters die wordt gebruikt voor het bouwen, opslaan en faciliteren van installatiekopieën van Docker-containers. In deze snelstart leert u hoe u een Azure Container Registry maakt met behulp van PowerShell. Gebruik vervolgens Docker-opdrachten om een containerinstallatiekopie naar het register pushen, waarna u de installatiekopie ophaalt en uitvoert vanuit het register.
 
@@ -66,7 +66,7 @@ Voordat u installatiekopieën van containers gaat pushen en ophalen, moet u zich
 $creds = Get-AzContainerRegistryCredential -Registry $registry
 ```
 
-Voer vervolgens [Aanmelden][docker-login] bij docker uit om u aan te melden:
+Voer vervolgens [Aanmelden bij docker][docker-login] uit om u aan te melden:
 
 ```powershell
 $creds.Password | docker login $registry.LoginServer -u $creds.Username --password-stdin

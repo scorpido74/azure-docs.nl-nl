@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e07136eed9c14eb4b6eda49ef635171aaf543445
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 21f1da8738946078cb625c76e11ce1bfd62d97ac
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809268"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927160"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Toepassings typen voor micro soft Identity platform
 
@@ -76,7 +76,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Meer informatie over de verschillende typen tokens die worden gebruikt in het micro soft Identity platform-eind punt zijn beschikbaar in de naslag informatie voor het [toegangs token](access-tokens.md) en de [id_token-referentie](id-tokens.md)
+Meer informatie over de verschillende typen tokens die worden gebruikt in het micro soft Identity platform-eind punt zijn beschikbaar in de naslag informatie voor het [toegangs token](access-tokens.md) en de [referentie id_token](id-tokens.md)
 
 In web server-apps neemt de aanmeldings verificatie stroom de volgende stappen op hoog niveau:
 
@@ -90,7 +90,7 @@ Naast het gebruik van een eenvoudige aanmelding moet een webserver-app mogelijk 
 
 ## <a name="web-apis"></a>Web-API's
 
-U kunt het micro soft Identity platform-eind punt gebruiken voor het beveiligen van webservices, zoals de REST Web API van uw app. In plaats van ID-tokens en sessie cookies gebruikt een web-API een OAuth 2,0-toegangs token om de gegevens te beveiligen en inkomende aanvragen te verifiëren. De aanroeper van een web-API voegt een toegangs token toe in de autorisatie-header van een HTTP-aanvraag, zoals:
+U kunt het micro soft Identity platform-eind punt gebruiken voor het beveiligen van webservices, zoals de REST Web API van uw app. Web-Api's kunnen worden geïmplementeerd in talloze platforms en talen. Ze kunnen ook worden geïmplementeerd met behulp van HTTP-triggers in Azure Functions. In plaats van ID-tokens en sessie cookies gebruikt een web-API een OAuth 2,0-toegangs token om de gegevens te beveiligen en inkomende aanvragen te verifiëren. De aanroeper van een web-API voegt een toegangs token toe in de autorisatie-header van een HTTP-aanvraag, zoals:
 
 ```
 GET /api/items HTTP/1.1
@@ -100,7 +100,7 @@ Accept: application/json
 ...
 ```
 
-De Web-API gebruikt het toegangs token om de identiteit van de API-aanroeper te controleren en om informatie over de aanroeper op te halen uit claims die zijn gecodeerd in het toegangs token. Meer informatie over de verschillende typen tokens die worden gebruikt in het micro soft Identity platform-eind punt zijn beschikbaar in de naslag informatie voor het [toegangs token](access-tokens.md) en de [id_token-referentie](id-tokens.md)
+De Web-API gebruikt het toegangs token om de identiteit van de API-aanroeper te controleren en om informatie over de aanroeper op te halen uit claims die zijn gecodeerd in het toegangs token. Meer informatie over de verschillende typen tokens die worden gebruikt in het micro soft Identity platform-eind punt zijn beschikbaar in de naslag informatie voor het [toegangs token](access-tokens.md) en de [referentie id_token](id-tokens.md)
 
 Een web-API kan gebruikers de bevoegdheid geven om zich aan te melden of om specifieke functionaliteit of gegevens uit te scha kelen door machtigingen (ook wel [scopes](v2-permissions-and-consent.md)genoemd) te bieden. Voor een aanroep-app om machtigingen voor een bereik te verkrijgen, moet de gebruiker toestemming geven voor het bereik tijdens een stroom. Het micro soft Identity platform-eind punt vraagt de gebruiker om toestemming en registreert vervolgens de machtigingen in alle toegangs tokens die de Web-API ontvangt. De Web-API valideert de toegangs tokens die op elke aanroep worden ontvangen en voert autorisatie controles uit.
 

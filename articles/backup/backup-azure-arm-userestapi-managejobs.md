@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: c0ce79c68b9d9cf11ea20c2d6469f4240fb38a95
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5fe0255a8f304061dc970907c651261832fee614
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747537"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929105"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Back-up-en herstel taken bijhouden met behulp van REST API
 
@@ -44,7 +44,7 @@ De Azure VM-back-uptaak wordt [aangeduid met het](https://docs.microsoft.com/res
 ## <a name="tracking-the-job"></a>De taak bijhouden
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2017-07-01
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
 De `{jobName}` is ' jobId ' die hierboven wordt vermeld. Het antwoord is altijd 200 OK met het veld Status om de huidige status van de taak aan te geven. Zodra het ' voltooid ' of ' CompletedWithWarnings ' is, toont de sectie ' extendedInfo ' meer informatie over de taak.

@@ -1,18 +1,18 @@
 ---
-title: Image-partner integratie
+title: Partnerintegratie voor afbeeldingen
 description: Hierin wordt beschreven hoe u de integratie van image-partner
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 2b15cc56cb4f804fac0b047819ccf166950e1cf3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 232ade55350ad1ac85612cf8c69117c19cb20d0c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890978"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927798"
 ---
-# <a name="imagery-partner-integration"></a>Image-partner integratie
+# <a name="imagery-partner-integration"></a>Partnerintegratie voor afbeeldingen
 
 In dit artikel wordt beschreven hoe u het onderdeel Azure FarmBeats Translator gebruikt om afbeeldings gegevens naar FarmBeats te verzenden. Gegevens over agrarische beelden kunnen afkomstig zijn uit verschillende bronnen, waaronder MultiSpectral-camera's, satellieten en drones. Agrarische installatie kopieën kunnen worden geïntegreerd met FarmBeats om klanten met aangepaste, gegenereerde kaarten voor hun farms te voorzien.
 
@@ -97,7 +97,7 @@ U kunt desgewenst query parameters toevoegen aan GET-aanroepen om te filteren, d
 
 De onderstaande voorbeeld aanvraag is om de lijst met apparaten op te halen:
 
-```azurepowershell-interactive
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>”
@@ -108,7 +108,7 @@ Voor de meeste GET-, POST-en PUT-aanroepen is een JSON-aanvraag tekst vereist.
 De onderstaande voorbeeld aanvraag is het maken van een apparaat (deze heeft een invoer-JSON met de hoofd tekst van de aanvraag).
 
 
-```azurepowershell-interactive
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  
 "accept: application/json" -H  
 "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d
@@ -326,6 +326,7 @@ Hier volgen de door het systeem gedefinieerde waarden:
   ]
 }
 ```
+
 Dit is een eenmalige installatie, en het bereik van deze nieuwe scenetype is beperkt tot het abonnement waarin het FarmBeats-project wordt geïmplementeerd.
 
 Voor beeld: om SceneSource toe te voegen: "SlantRange", plaatst u de ID van de/ExtendedType met de sleutel: "SceneSource" invoer Payload:

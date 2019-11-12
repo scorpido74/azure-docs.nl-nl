@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: ddf5b81f7269b02ebdc6777fd1bee126157141ff
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: df6c4afc0da50c5b4b32923f24370b9c959b1af7
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893429"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929597"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Zelf studie: een regel maken en meldingen instellen in uw Azure IoT Central-toepassing (preview-functies)
 
@@ -113,7 +113,7 @@ Nu u hebt geleerd hoe u regels maakt in uw Azure IoT Central-toepassing, is de v
 
 ## <a name="next-steps"></a>Volgende stappen
 
->>>>>>> fa07415cf19e8cdb02d570edb3785780bfa97a7c:articles/IOT-Central/preview/zelf studie-telemetrie-rules. MD in deze zelf studie hebt u geleerd hoe u:
+In deze zelfstudie heeft u het volgende geleerd:
 
 * Een regel op basis van telemetrie maken
 * Een actie toevoegen
@@ -121,5 +121,4 @@ Nu u hebt geleerd hoe u regels maakt in uw Azure IoT Central-toepassing, is de v
 Nu u een regel op basis van drempel hebt gedefinieerd, is de voorgestelde volgende stap om te leren hoe u:
 
 > [!div class="nextstepaction"]
-
 > [Continue gegevens export configureren](./howto-export-data.md).

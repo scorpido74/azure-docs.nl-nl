@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: efdb2f51058eca456d622afda390dee17fffea0b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b949a0edff7ed6341d10518bc1c38afe2f7efad0
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819350"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929187"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Periodieke back-ups maken en herstellen in azure Service Fabric
 > [!div class="op_single_selector"]
@@ -117,19 +117,7 @@ Eerst moet u de service voor _back-up en herstel_ inschakelen in uw cluster. Haa
 
 4. Nadat u het configuratie bestand van het cluster met de voor gaande wijzigingen hebt bijgewerkt, past u deze toe en laat u de implementatie/upgrade volt ooien. Zodra het proces is voltooid, wordt de _back-up-en herstel service_ gestart in uw cluster. De URI van deze service is `fabric:/System/BackupRestoreService` en de service bevindt zich in de sectie systeem service van de Service Fabric Explorer. 
 
-### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer gebruiken
 
-1. Zorg ervoor dat de geavanceerde modus is ingeschakeld.
-
-    ![Geavanceerde modus inschakelen][2]
-
-2. Selecteer een toepassing en ga naar actie. Klik op back-up van toepassing inschakelen/bijwerken.
-
-    ![Back-up van toepassing inschakelen][3] 
-
-3. Selecteer ten slotte het gewenste beleid en klik op back-up inschakelen.
-
-    ![Beleid selecteren][4]
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Periodieke back-ups inschakelen voor betrouw bare stateful service en Reliable Actors
 We gaan stappen uitvoeren om periodieke back-ups in te scha kelen voor betrouw bare stateful service en Reliable Actors. Bij deze stappen wordt ervan uitgegaan
@@ -207,6 +195,16 @@ $url = "http://localhost:19080/Applications/SampleApp/$/EnableBackup?api-version
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ``` 
+
+#### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer gebruiken
+
+1. Selecteer een toepassing en ga naar actie. Klik op back-up van toepassing inschakelen/bijwerken.
+
+    ![Back-up van toepassing inschakelen][3] 
+
+2. Selecteer ten slotte het gewenste beleid en klik op back-up inschakelen.
+
+    ![Beleid selecteren][4]
 
 ### <a name="verify-that-periodic-backups-are-working"></a>Controleren of periodieke back-ups werken
 
@@ -292,8 +290,6 @@ Als u back-ups wilt weer geven in Service Fabric Explorer, gaat u naar een parti
 - [Naslag informatie over back-up terugzetten REST API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event.png
-[2]: ./media/service-fabric-backuprestoreservice/advanced-mode.png
 [3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
 [4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
 [5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png
-

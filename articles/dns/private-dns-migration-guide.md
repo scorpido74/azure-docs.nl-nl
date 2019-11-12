@@ -7,16 +7,22 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 870f8f43fb37f3f58fc19f2fd544e77b1a3a3967
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9f52a568d42fa23a40a396311955626a1fa0073b
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960558"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931261"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Verouderde Azure DNS particuliere zones migreren naar een nieuw resource model
 
-De huidige versie van Azure DNS private zones biedt nieuwe functionaliteit en verwijdert enkele beperkingen en beperkingen van de eerste open bare preview. Deze voor delen zijn echter niet beschikbaar voor de privé-DNS-zones die zijn gemaakt met behulp van de preview-API. Als u de voor delen van de nieuwe release wilt krijgen, moet u uw verouderde privé-DNS-zone bronnen migreren naar het nieuwe resource model. Het migratie proces is eenvoudig en er is een Power shell-script gegeven om dit proces te automatiseren. Deze hand leiding bevat stapsgewijze instructies voor het migreren van uw Azure DNS persoonlijke zones naar het nieuwe resource model.
+Tijdens de open bare preview zijn privé-DNS-zones gemaakt met behulp van de ' dnszones-bron waarvan de eigenschap ' para ' is ingesteld op ' persoonlijk '. Dergelijke zones worden na 31 december 2019 niet ondersteund en moeten worden gemigreerd naar een GA Resource-model dat gebruikmaakt van het resource type ' privateDnsZones ' in plaats van ' dnszones '. Het migratie proces is eenvoudig en er is een Power shell-script gegeven om dit proces te automatiseren. Deze hand leiding bevat stapsgewijze instructies voor het migreren van uw Azure DNS persoonlijke zones naar het nieuwe resource model.
+
+Om erachter te komen welke dnszones-bronnen moeten worden gemigreerd. Voer de onderstaande opdracht uit in azure CLI.
+```azurecli
+az account set --subscription <SubscriptionId>
+az network dns zone list --query "[?zoneType=='Private']"
+```
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -25,7 +31,7 @@ Zorg ervoor dat u de nieuwste versie van Azure PowerShell hebt geïnstalleerd. G
 Zorg ervoor dat u de module AZ. PrivateDns hebt voor de Azure PowerShell geïnstalleerd. Als u deze module wilt installeren, opent u een Power shell-venster met verhoogde bevoegdheden (beheer modus) en voert u de volgende opdracht in
 
 ```powershell
-Install-Module -Name Az.PrivateDns -AllowPrerelease
+Install-Module -Name Az.PrivateDns
 ```
 
 >[!IMPORTANT]
@@ -43,7 +49,10 @@ Voer ' A ' in wanneer u wordt gevraagd het script te installeren
 
 ![Het script installeren](./media/private-dns-migration-guide/install-migration-script.png)
 
-U kunt de meest recente versie van Power shell-script ook hand matig verkrijgen bij https://www.powershellgallery.com/packages/PrivateDnsMigrationScript
+U kunt ook hand matig de nieuwste versie van Power shell-script op https://www.powershellgallery.com/packages/PrivateDnsMigrationScript verkrijgen
+
+>[!IMPORTANT]
+>Het migratie script mag niet worden uitgevoerd in azure Cloud shell en moet worden uitgevoerd op een virtuele machine of lokale computer die is verbonden met internet.
 
 ## <a name="running-the-script"></a>Het script uitvoeren
 

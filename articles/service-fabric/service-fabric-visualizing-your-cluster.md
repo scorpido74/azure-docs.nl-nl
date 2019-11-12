@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 75568cf3c88c02968b3e3e95971f81cf1b9285d3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9b873b5a68979b8225c44c32e0b9494408e35ac1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496356"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927183"
 ---
-# <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualisern van uw cluster met Service Fabric Explorer
+# <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Uw cluster visualiseren met Service Fabric Explorer
 
 Service Fabric Explorer (SFX) is een open source-hulp programma voor het inspecteren en beheren van Azure Service Fabric-clusters. Service Fabric Explorer is een bureaublad toepassing voor Windows, macOS en Linux.
 
@@ -129,7 +129,11 @@ Viewer voor afbeeldings archief is een functie die wordt aangeboden als u gebrui
 ![Cluster toewijzing Service Fabric Explorer][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>Back-up en herstel
-Service Fabric Explorer biedt de mogelijkheid om een interface te [maken voor back-up en herstel](./service-fabric-reliable-services-backup-restore.md). De volgende bewerkingen zijn mogelijk:
+Service Fabric Explorer biedt de mogelijkheid om een interface te [maken voor back-up en herstel](./service-fabric-reliable-services-backup-restore.md). Als u back-up-en herstel functies wilt zien in SFX, moet geavanceerde modus zijn ingeschakeld.
+
+![Geavanceerde modus inschakelen][0]
+ 
+De volgende bewerkingen zijn mogelijk:
 
 * Een back-upbeleid maken, bewerken en verwijderen.
 * Back-ups voor een toepassing, service of partitie inschakelen en uitschakelen.
@@ -151,3 +155,4 @@ Zie voor meer informatie over de service voor back-up en herstel de [rest API ve
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/sfx-create-app-instance.png
 [sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png
 [sfx-imagestore]: ./media/service-fabric-visualizing-your-cluster/sfx-image-store.png
+[0]: ./media/service-fabric-backuprestoreservice/advanced-mode.png

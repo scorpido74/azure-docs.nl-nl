@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e6bd9b5c09e1af5ec587e1f0e52ab25d21d2293b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e721a7818c5f2fcea23263b296912edf164036b2
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889616"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927800"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -107,7 +107,7 @@ Volg de onderstaande stappen om deze te genereren:
 |    **Sensoren**      |          |
 | HardwareId          |   Unieke ID voor de sensor die door de fabrikant is ingesteld |
 |  sensorModelId     |    ID van het gekoppelde sensor model   |
-| location          |  Sensor Latitude (-90 tot + 90)/Longitude (-180 tot 180)/Elevation (in meters)|
+| locatie          |  Sensor Latitude (-90 tot + 90)/Longitude (-180 tot 180)/Elevation (in meters)|
 |   naam van poort >        |  Naam en type van de poort waarop de sensor is aangesloten op het apparaat. Dit moet dezelfde naam zijn als die in het model van het apparaat is gedefinieerd. |
 |    DeviceID  |    ID van het apparaat waarmee de sensor is verbonden     |
 | Naam            |   Naam voor het identificeren van de resource. Bijvoorbeeld: naam van sensor/product naam en model nummer/product code.|
@@ -245,17 +245,15 @@ Sensoren
     "additionalProp3": {}
   }
 }
-
 ```
 De onderstaande voorbeeld aanvraag is het maken van een apparaat (deze heeft een invoer JSON als Payload met de hoofd tekst van de aanvraag).  
 
-```azurepowershell-interactive
+```bash
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
 "accept: application/json" -H  "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>" -d "
-{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
+"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
 \"reportingInterval\": 900,  \"name\": \"Device123\",  
-\"description\": \"Test Device 123\",}"*
+\"description\": \"Test Device 123\"}" *
 ```
 
 > [!NOTE]
@@ -274,31 +272,28 @@ U moet de telemetrie naar Azure Event hub verzenden voor verwerking. Azure Event
 Zodra u een verbinding hebt gemaakt als een EventHub-client, kunt u berichten verzenden naar de EventHub als een JSON-bestand.  
 Converteer de historische sensor gegevens indeling naar een canonieke indeling die door Azure FarmBeats wordt begrepen. De canonieke bericht indeling is als volgt:  
 
-
-
- ```
-  {   
-      “deviceid”: “<id of the Device created>”,   
-      "timestamp": "<timestamp in ISO 8601 format>",     
-      "version" : "1",   
-      "sensors":
-      [     
-      {        
-          "id": "<id of the sensor created>”       
-          "sensordata": [         
-          {            
-              "timestamp": "< timestamp in ISO 8601 format >",           
-              "<sensor measure name (as defined in the Sensor Model)>": value          
-    },          
-    {            
-    "timestamp": "<timestamp in ISO 8601 format>",           
-     "<sensor measure name (as defined in the Sensor Model)>": value          
-    }        
-    ]      
-    }  
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+        }
+      ]
     }
+ ]
+}
 ```
-
 
 Nadat u de bijbehorende apparaten en Sens oren hebt toegevoegd, moet u het DeviceID en de sensorid in het telemetrie-bericht ophalen, zoals beschreven in de vorige sectie
 

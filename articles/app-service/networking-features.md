@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 102f3e131b20534dc2f192b6485a3fdc95070315
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 801692c53ef268f15edc60d31743aefa6a247a78
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470256"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928511"
 ---
 # <a name="app-service-networking-features"></a>App Service-netwerk functies
 
@@ -34,7 +34,7 @@ Het Azure App Service is een gedistribueerd systeem. De rollen die binnenkomende
 | Binnenkomende functies | Uitgaande functies |
 |---------------------|-------------------|
 | Toegewezen adres van de app | Hybride verbindingen |
-| Toegangs beperkingen | vereiste VNet-integratie voor gateway |
+| Toegangs beperkingen | Vereiste VNet-integratie voor gateway |
 | Service-eindpunten | VNet-integratie (preview-versie) |
 
 Tenzij anders vermeld, kunnen alle functies tegelijk worden gebruikt. U kunt de functies combi neren om uw verschillende problemen op te lossen.
@@ -60,7 +60,7 @@ In de volgende uitgaande use-cases wordt uitgelegd hoe u App Service-netwerk fun
 | Uitgaande use cases | Functie |
 |---------------------|-------------------|
 | Toegang tot resources in een Azure-Virtual Network in dezelfde regio | VNet-integratie </br> ASE |
-| Toegang tot resources in een Azure-Virtual Network in een andere regio | vereiste VNet-integratie voor gateway </br> ASE en VNet-peering |
+| Toegang tot resources in een Azure-Virtual Network in een andere regio | Vereiste VNet-integratie voor gateway </br> ASE en VNet-peering |
 | Toegang tot resources die zijn beveiligd met Service-eind punten | VNet-integratie </br> ASE |
 | Toegang tot bronnen in een particulier netwerk dat niet is verbonden met Azure | Hybride verbindingen |
 | Toegang tot resources via ExpressRoute-circuits | VNet-integratie (beperkt tot RFC 1918-adressen voor nu) </br> ASE | 
@@ -137,11 +137,11 @@ Omdat de functie toegang tot on-premises bronnen mogelijk maakt zonder een uitga
 
 Hoewel Hybride verbindingen populair is voor ontwikkeling, wordt het ook gebruikt in talloze productie toepassingen. Het is ideaal voor het verkrijgen van toegang tot een webservice of Data Base, maar is niet geschikt voor situaties waarbij veel verbindingen worden gemaakt. 
 
-### <a name="gateway-required-vnet-integration"></a>vereiste VNet-integratie voor gateway 
+### <a name="gateway-required-vnet-integration"></a>Vereiste VNet-integratie voor gateway 
 
 Met de gateway die is vereist App Service VNet-integratie functie kan uw app **uitgaande** aanvragen indienen in een Azure-Virtual Network. De functie werkt door verbinding te maken met de host waarop uw app wordt uitgevoerd op een Virtual Network gateway op uw VNet met een punt-naar-site-VPN. Wanneer u de functie configureert, haalt uw app een van de punt-naar-site-adressen die zijn toegewezen aan elk exemplaar. Met deze functie kunt u toegang krijgen tot resources in een klassieke of Resource Manager-VNets in elke regio. 
 
-![vereiste VNet-integratie voor gateway](media/networking-features/gw-vnet-integration.png)
+![Vereiste VNet-integratie voor gateway](media/networking-features/gw-vnet-integration.png)
 
 Met deze functie kunt u het probleem met het openen van bronnen in andere VNets oplossen en zelfs gebruiken om via een VNet verbinding te maken met een ander VNets of zelfs on-premises. Het werkt niet met ExpressRoute verbonden VNets, maar wel met site-naar-site-VPN verbonden netwerken. Het is normaal gesp roken niet geschikt om deze functie te gebruiken vanuit een app in een App Service Environment (ASE), omdat de ASE zich al in uw VNet bevindt. De use cases die deze functie oplost, zijn:
 

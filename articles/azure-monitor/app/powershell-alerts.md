@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/31/2016
-ms.openlocfilehash: 0771079eb338c2f22cb0b1f31c48b0b9f80a3ff5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: cf03fa0055710dde86a0f74cd58344575494faf1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819087"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928572"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell gebruiken om waarschuwingen in te stellen in Application Insights
 
@@ -131,7 +131,7 @@ De metrische gegevens worden verzonden door verschillende telemetrie-modules:
 U kunt [uw reactie op een waarschuwing automatiseren](../../azure-monitor/platform/alerts-webhooks.md). Azure roept een webadres van uw keuze aan wanneer een waarschuwing wordt gegenereerd.
 
 ## <a name="see-also"></a>Zie ook
-* [Script voor het configureren van Application Insights](powershell-script-create-resource.md)
+* [Script voor het configureren van Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [Application Insights-en web-test resources maken op basis van sjablonen](powershell.md)
 * [Koppelings Microsoft Azure Diagnostics automatiseren voor Application Insights](powershell-azure-diagnostics.md)
 * [Uw reactie op een waarschuwing automatiseren](../../azure-monitor/platform/alerts-webhooks.md)

@@ -1,5 +1,5 @@
 ---
-title: Toegang tot een Azure container Registry beperken vanuit een virtueel netwerk
+title: Toegang tot Azure Container Registry beperken met een virtueel netwerk
 description: Toegang tot een Azure container Registry alleen toestaan van resources in een virtueel Azure-netwerk of open bare IP-adresbereiken.
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 3050a52da4d39657bd7b2fb38e235b9bd418faf4
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5ba5c180def9539c486fb8727a0a78b4f98fa185
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619878"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931320"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Toegang tot een Azure container Registry beperken met behulp van een virtueel netwerk of een firewall-regel van Azure
 
@@ -42,7 +42,7 @@ Zie [regels configureren voor toegang tot een Azure-container register achter ee
 
 * Als u de stappen van Azure CLI in dit artikel wilt gebruiken, is Azure CLI-versie 2.0.58 of later vereist. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-* Als u nog geen container register hebt, maakt u er een (Premium SKU vereist) en pusht u een voorbeeld `hello-world` installatie kopie, zoals van docker hub. Gebruik bijvoorbeeld de [Azure Portal][quickstart-portal] of de [Azure cli][quickstart-cli] om een REGI ster te maken. 
+* Als u nog geen container register hebt, maakt u er een (Premium SKU vereist) en pusht u een voorbeeld installatie kopie, zoals `hello-world` van docker hub. Gebruik bijvoorbeeld de [Azure Portal][quickstart-portal] of de [Azure cli][quickstart-cli] om een REGI ster te maken. 
 
 * Als u de toegang tot het REGI ster wilt beperken met behulp van een virtueel netwerk in een ander Azure-abonnement, moet u de resource provider registreren voor Azure Container Registry in dat abonnement. Bijvoorbeeld:
 
@@ -54,7 +54,7 @@ Zie [regels configureren voor toegang tot een Azure-container register achter ee
 
 ## <a name="about-network-rules-for-a-container-registry"></a>Over netwerk regels voor een container register
 
-Een Azure-container register accepteert standaard verbindingen via Internet van hosts op elk netwerk. Met een virtueel netwerk kunt u alleen Azure-resources, zoals een AKS-cluster of Azure-VM, toestaan om veilig toegang te krijgen tot het REGI ster, zonder een netwerk grens te overschrijden. U kunt ook netwerk firewall regels configureren voor het white list van specifieke open bare IP-adresbereiken voor het internet. 
+Een Azure-container register accepteert standaard verbindingen via Internet van hosts op elk netwerk. Met een virtueel netwerk kunt u alleen Azure-resources, zoals een AKS-cluster of Azure-VM, toestaan om veilig toegang te krijgen tot het REGI ster, zonder een netwerk grens te overschrijden. U kunt ook firewall regels voor netwerken configureren om alleen specifieke open bare IP-adresbereiken voor Internet toe te staan. 
 
 Als u de toegang tot een REGI ster wilt beperken, wijzigt u eerst de standaard actie van het REGI ster zodat alle netwerk verbindingen worden geweigerd. Voeg vervolgens netwerk toegangs regels toe. Clients die toegang hebben verleend via de netwerk regels, moeten blijven [verifiëren bij het container register](https://docs.microsoft.com/azure/container-registry/container-registry-authentication) en moeten worden gemachtigd om toegang te krijgen tot de gegevens.
 
@@ -62,9 +62,9 @@ Als u de toegang tot een REGI ster wilt beperken, wijzigt u eerst de standaard a
 
 Als u toegang wilt toestaan vanaf een subnet in een virtueel netwerk, moet u een [service-eind punt](../virtual-network/virtual-network-service-endpoints-overview.md) voor de Azure container Registry-service toevoegen. 
 
-Multi tenant Services, zoals Azure Container Registry, gebruiken één set IP-adressen voor alle klanten. Een service-eind punt wijst een eind punt toe voor toegang tot een REGI ster. Dit eind punt geeft een optimale route naar de resource via het Azure-backbone-netwerk. De identiteit van het virtuele netwerk en het subnet worden ook verzonden bij elke aanvraag.
+Multi tenant Services, zoals Azure Container Registry, gebruiken één set IP-adressen voor alle klanten. Een service-eind punt wijst een eind punt toe voor toegang tot een REGI ster. Dit eind punt geeft een optimale route naar de resource via het Azure-backbone-netwerk. De identiteiten van het virtuele netwerk en het subnet worden ook met elke aanvraag verzonden.
 
-### <a name="firewall-rules"></a>Firewallregels
+### <a name="firewall-rules"></a>Firewall-regels
 
 Geef voor IP-netwerk regels toegestane Internet adresbereiken op met behulp van CIDR-notatie, zoals *16.17.18.0/24* , of een afzonderlijke IP-adressen, zoals *16.17.18.19*. IP-netwerk regels zijn alleen toegestaan voor *open bare* Internet-IP-adressen. IP-adresbereiken die zijn gereserveerd voor particuliere netwerken (zoals gedefinieerd in RFC 1918) zijn niet toegestaan in IP-regels.
 
@@ -89,7 +89,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Het duurt enkele minuten voordat de virtuele machine wordt gemaakt. Wanneer de opdracht is voltooid, noteert u de `publicIpAddress` weer gegeven door de Azure cli. Gebruik dit adres voor het maken van SSH-verbindingen met de virtuele machine en eventueel voor latere installatie van firewall regels.
+Het duurt enkele minuten voordat de virtuele machine wordt gemaakt. Wanneer de opdracht is voltooid, noteert u de `publicIpAddress` die worden weer gegeven door de Azure CLI. Gebruik dit adres voor het maken van SSH-verbindingen met de virtuele machine en eventueel voor latere installatie van firewall regels.
 
 ### <a name="install-docker-on-the-vm"></a>Docker installeren op de VM
 
@@ -119,7 +119,7 @@ This message shows that your installation appears to be working correctly.
 [...]
 ```
 
-### <a name="install-the-azure-cli"></a>Azure-CLI installeren
+### <a name="install-the-azure-cli"></a>Azure CLI installeren
 
 Volg de stappen in [Azure cli installeren met apt](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) om de Azure CLI op uw virtuele Ubuntu-machine te installeren. Voor dit artikel moet u versie 2.0.58 of hoger installeren.
 
@@ -218,7 +218,7 @@ Een Azure container Registry staat standaard verbindingen toe van hosts op elk n
 
 1. Navigeer in de portal naar het container register.
 1. Onder **instellingen**selecteert u **firewall en virtuele netwerken**.
-1. Kies voor het weigeren van toegang standaard, zodat toegang vanaf **geselecteerde netwerken**. 
+1. Als u de toegang standaard wilt weigeren, kiest u toegang vanaf **geselecteerde netwerken**toestaan. 
 1. Selecteer **bestaand virtueel netwerk toevoegen**en selecteer het virtuele netwerk en het subnet dat u hebt geconfigureerd met een service-eind punt. Selecteer **Toevoegen**.
 1. Selecteer **Opslaan**.
 
@@ -310,7 +310,7 @@ Nadat u een paar minuten hebt gewacht voordat de configuratie is bijgewerkt, con
 az acr login --name mycontainerregistry
 ```
 
-U kunt register bewerkingen uitvoeren zoals uitvoeren `docker pull` om een voorbeeld installatie kopie uit het REGI ster te halen. Vervang een installatie kopie en label waarde die geschikt is voor uw REGI ster, voorafgegaan door de naam van de aanmeldings server van het REGI ster (alle kleine letters):
+U kunt register bewerkingen zoals run `docker pull` uitvoeren om een voorbeeld installatie kopie uit het REGI ster te halen. Vervang een installatie kopie en label waarde die geschikt is voor uw REGI ster, voorafgegaan door de naam van de aanmeldings server van het REGI ster (alle kleine letters):
 
 ```bash
 docker pull mycontainerregistry.azurecr.io/hello-world:v1
@@ -318,7 +318,7 @@ docker pull mycontainerregistry.azurecr.io/hello-world:v1
 
 Docker haalt de installatie kopie op naar de virtuele machine.
 
-In dit voor beeld wordt gedemonstreerd dat u toegang hebt tot het persoonlijke container register via de netwerk toegangs regel. Het REGI ster kan echter niet worden geopend vanaf een andere aanmeldings host waarvoor geen netwerk toegangs regel is geconfigureerd. Als u zich probeert aan te melden bij een andere `az acr login` host met `docker login` behulp van de opdracht of opdracht, is de uitvoer vergelijkbaar met het volgende:
+In dit voor beeld wordt gedemonstreerd dat u toegang hebt tot het persoonlijke container register via de netwerk toegangs regel. Het REGI ster kan echter niet worden geopend vanaf een andere aanmeldings host waarvoor geen netwerk toegangs regel is geconfigureerd. Als u zich probeert aan te melden bij een andere host met behulp van de `az acr login` opdracht of `docker login` opdracht, is de uitvoer vergelijkbaar met het volgende:
 
 ```Console
 Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ failed with status: 403 Forbidden

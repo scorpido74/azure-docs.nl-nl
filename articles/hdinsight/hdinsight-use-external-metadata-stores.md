@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: 33302f3760cc750bfc41386aaf17368abc15ba5d
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 18e03b6828922b3444d9461bef394b5c6682c238
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063292"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930321"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Externe meta gegevensopslag plaatsen gebruiken in azure HDInsight
 
@@ -57,6 +57,18 @@ HDInsight biedt ook ondersteuning voor aangepaste meta Stores, die worden aanbev
 
 ![Use-case van het meta gegevens archief van HDInsight Hive](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 
+### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Azure SQL Database maken en configureren voor de aangepaste meta Store
+
+U moet een bestaande Azure SQL Database maken of hebben voordat u een aangepaste Hive-metastore voor een HDInsight-cluster instelt.  Zie [Quick Start: een enkele data base maken in Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)voor meer informatie.
+
+Om ervoor te zorgen dat uw HDInsight-cluster toegang heeft tot de verbonden Azure SQL Database, configureert u Azure SQL Database firewall regels om Azure-Services en-bronnen toegang te geven tot de server.
+
+U kunt deze optie inschakelen in de Azure Portal door te klikken op **Server firewall instellen**en **op** hieronder **Azure-Services en-bronnen toestaan om toegang te krijgen tot deze server** voor de Azure SQL database-server of-Data Base. Zie [IP-firewall regels maken en beheren](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) voor meer informatie.
+
+![knop Server firewall instellen](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+
+![toegang tot Azure-Services toestaan](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
+
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Een aangepaste meta Store selecteren tijdens het maken van het cluster
 
 U kunt uw cluster naar een eerder gemaakte Azure SQL Database laten wijzen tijdens het maken van het cluster of u kunt de SQL Database configureren nadat het cluster is gemaakt. Deze optie is opgegeven bij de **opslag > Meta Store-instellingen** tijdens het maken van een nieuw Hadoop-, Spark-of Interactive Hive-cluster van Azure Portal.
@@ -95,7 +107,7 @@ Apache Oozie is een coördinatie systeem voor werk stromen waarmee Hadoop-taken 
 
 Zie [Apache Oozie gebruiken voor werk stromen](hdinsight-use-oozie-linux-mac.md)voor instructies over het maken van een Oozie-meta store met Azure SQL database.
 
-## <a name="custom-ambari-db"></a>Aangepaste Ambari-data base
+## <a name="custom-ambari-db"></a>Aangepaste Ambari-database
 
 Als u uw eigen externe data base wilt gebruiken met Apache Ambari in HDInsight, raadpleegt u [Custom Apache Ambari data base](hdinsight-custom-ambari-db.md).
 

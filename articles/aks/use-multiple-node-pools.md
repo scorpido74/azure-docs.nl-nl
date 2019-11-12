@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 3495d62c7447ba50d9ffe48e68b15dbe36867ac9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9c8bae879c5e28914981eec34afb0759dd963004
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73662583"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928980"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -36,7 +36,7 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 * Het AKS-cluster moet het standaard SKU-load balancer gebruiken om meerdere knooppunt groepen te kunnen gebruiken. de functie wordt niet ondersteund met Basic SKU load balancers.
 * Het AKS-cluster moet virtuele-machine schaal sets gebruiken voor de knoop punten.
 * U kunt geen knooppunt groepen toevoegen of verwijderen met behulp van een bestaande resource manager-sjabloon, net als bij de meeste bewerkingen. In plaats daarvan [kunt u een afzonderlijke resource manager-sjabloon gebruiken](#manage-node-pools-using-a-resource-manager-template) om wijzigingen aan te brengen in knooppunt groepen in een AKS-cluster.
-* De naam van een knooppunt groep moet beginnen met een kleine letter en mag alleen alfanumerieke tekens bevatten. Voor Linux-knooppunt Pools moet de lengte tussen 1 en 12 tekens lang zijn voor Windows-knooppunt groepen. de lengte moet tussen 1 en 6 tekens lang zijn.
+* De naam van een knooppunt groep mag alleen kleine letters bevatten en moet beginnen met een kleine letter. Voor Linux-knooppunt Pools moet de lengte tussen 1 en 12 tekens lang zijn voor Windows-knooppunt groepen. de lengte moet tussen 1 en 6 tekens lang zijn.
 * Het AKS-cluster kan Maxi maal acht knooppunt groepen bevatten.
 * Het AKS-cluster kan Maxi maal 400 knoop punten in deze acht knooppunt groepen hebben.
 * Alle knooppunt groepen moeten zich in hetzelfde subnet bevinden.
@@ -46,7 +46,7 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 Om aan de slag te gaan, maakt u een AKS-cluster met één knooppunt groep. In het volgende voor beeld wordt de opdracht [AZ Group Create][az-group-create] gebruikt voor het maken van een resource groep met de naam *myResourceGroup* in de regio *eastus* . Er wordt een AKS-cluster met de naam *myAKSCluster* gemaakt met behulp van de opdracht [AZ AKS Create][az-aks-create] . Een *--kubernetes-versie* van *1.13.10* wordt gebruikt om te laten zien hoe u een knooppunt groep in een volgende stap bijwerkt. U kunt elke [ondersteunde versie van Kubernetes][supported-versions]opgeven.
 
 > [!NOTE]
-> De *Basic* load BALANACER-SKU wordt niet ondersteund wanneer meerdere knooppunt groepen worden gebruikt. Standaard worden AKS-clusters gemaakt met de *Standard* Load Balancer SKU van Azure CLI en Azure Portal.
+> De *Basic* Load Balancer SKU wordt **niet ondersteund** wanneer meerdere knooppunt groepen worden gebruikt. Standaard worden AKS-clusters gemaakt met de *Standard* Load Balancer SKU van Azure CLI en Azure Portal.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -126,7 +126,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ```
 
 > [!TIP]
-> Als er geen *OrchestratorVersion* of *VmSize* wordt opgegeven wanneer u een knooppunt groep toevoegt, worden de knoop punten gemaakt op basis van de standaard waarden voor het AKS-cluster. In dit voor beeld is dat Kubernetes Version *1.13.10* en de knooppunt grootte van *Standard_DS2_v2*.
+> Als er geen *OrchestratorVersion* of *VmSize* wordt opgegeven wanneer u een knooppunt groep toevoegt, worden de knoop punten gemaakt op basis van de standaard waarden voor het AKS-cluster. In dit voor beeld is dat Kubernetes Version *1.13.10* en knooppunt grootte van *Standard_DS2_v2*.
 
 ## <a name="upgrade-a-node-pool"></a>Een knooppunt groep upgraden
  
@@ -191,28 +191,34 @@ Als best practice moet u alle knooppunt groepen in een AKS-cluster upgraden naar
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Een cluster besturings vlak upgraden met meerdere knooppunt groepen
 
 > [!NOTE]
-> Kubernetes maakt gebruik van het standaard versie beheer schema van [semantische versie](https://semver.org/) . Het versie nummer wordt weer gegeven als *x. y. z*, waarbij *x* de primaire versie is, *y* de secundaire versie en *z* de versie van de patch. In versie *1.12.6*is bijvoorbeeld 1 de primaire versie, 12 de secundaire versie en 6 de versie van de patch. De Kubernetes-versie van het besturings vlak en de eerste knooppunt groep wordt ingesteld tijdens het maken van het cluster. Voor alle extra knooppunt groepen wordt de Kubernetes-versie ingesteld wanneer ze aan het cluster worden toegevoegd. De Kubernetes-versies kunnen verschillen tussen de knooppunt Pools en tussen de knooppunt groep en het besturings vlak, maar de volgende beperkingen zijn van toepassing:
-> 
-> * De versie van de knooppunt groep moet dezelfde primaire versie hebben als het besturings vlak.
-> * De versie van de knooppunt groep kan een secundaire versie zijn die kleiner is dan de versie van het besturings element.
-> * De versie van de groep van toepassingen kan elke patch versie zijn, zolang de andere twee beperkingen worden gevolgd.
+> Kubernetes maakt gebruik van het standaard versie beheer schema van [semantische versie](https://semver.org/) . Het versie nummer wordt weer gegeven als *x. y. z*, waarbij *x* de primaire versie is, *y* de secundaire versie en *z* de versie van de patch. In versie *1.12.6*is bijvoorbeeld 1 de primaire versie, 12 de secundaire versie en 6 de versie van de patch. De Kubernetes-versie van het besturings vlak en de eerste knooppunt groep worden ingesteld tijdens het maken van het cluster. Voor alle extra knooppunt groepen wordt de Kubernetes-versie ingesteld wanneer ze aan het cluster worden toegevoegd. De Kubernetes-versies kunnen verschillen tussen de knooppunt Pools en tussen een knooppunt groep en het besturings vlak.
 
-Een AKS-cluster heeft twee cluster resource objecten waaraan Kubernetes-versies zijn gekoppeld. De eerste is een Kubernetes-versie van besturings vlak. De tweede is een agent groep met een Kubernetes-versie. Een besturings vlak wordt toegewezen aan een of meer knooppunt groepen. Het gedrag van een upgrade bewerking is afhankelijk van welke Azure CLI-opdracht wordt gebruikt.
+Een AKS-cluster heeft twee cluster resource objecten waaraan Kubernetes-versies zijn gekoppeld.
 
-* Voor het bijwerken van het besturings vlak is het gebruik van `az aks upgrade` vereist
-   * Hiermee worden de versie van het besturings element en alle knooppunt Pools in het cluster bijgewerkt
-   * Door `az aks upgrade` door te geven aan de `--control-plane-only`-vlag wordt alleen het cluster besturings vlak bijgewerkt en worden geen van de gekoppelde knooppunt groepen gewijzigd.
-* Voor het upgraden van afzonderlijke knooppunt Pools is `az aks nodepool upgrade` vereist
-   * Hiermee wordt alleen de doel knooppunt groep met de opgegeven Kubernetes-versie bijgewerkt
+1. Een Kubernetes-versie van het cluster besturings vlak.
+2. Een knooppunt groep met een Kubernetes-versie.
 
-De relatie tussen de Kubernetes-versies van knooppunt Pools moet ook volgen op een set regels.
+Een besturings vlak wordt toegewezen aan een of meer knooppunt groepen. Het gedrag van een upgrade bewerking is afhankelijk van welke Azure CLI-opdracht wordt gebruikt.
 
-* U kunt het besturings vlak of de Kubernetes-versie van de knooppunt groep niet opdowngradeen.
-* Als er geen Kubernetes-versie van een knooppunt groep wordt opgegeven, is het gedrag afhankelijk van de gebruikte client. Voor een declaratie in de Resource Manager-sjabloon wordt de bestaande versie die is gedefinieerd voor de knooppunt groep gebruikt, als er geen is ingesteld dat de versie van het besturings element wordt gebruikt.
-* U kunt een besturings vlak of knooppunt groep op een bepaald moment bijwerken of schalen, u kunt beide bewerkingen niet tegelijkertijd verzenden.
-* Een Kubernetes-versie van een knooppunt groep moet dezelfde primaire versie zijn als het besturings vlak.
-* Een Kubernetes-versie van een knooppunt groep kan Maxi maal twee (2) secundaire versies kleiner zijn dan het besturings vlak, nooit meer.
-* Een knooppunt groep kan een Kubernetes-patch versie zijn die kleiner is dan of gelijk is aan het besturings vlak, nooit meer.
+Voor het bijwerken van een AKS-besturings vlak is het gebruik van `az aks upgrade`vereist. Hiermee worden de besturings vlak versie en alle knooppunt Pools in het cluster bijgewerkt. 
+
+Als u de opdracht `az aks upgrade` met de `--control-plane-only`-vlag geeft, wordt alleen het cluster besturings vlak bijgewerkt. Geen van de gekoppelde knooppunt Pools in het cluster is gewijzigd.
+
+Voor het upgraden van afzonderlijke knooppunt groepen is `az aks nodepool upgrade`vereist. Hiermee wordt alleen de doel knooppunt groep met de opgegeven Kubernetes-versie bijgewerkt
+
+### <a name="validation-rules-for-upgrades"></a>Validatie regels voor upgrades
+
+De geldige upgrades voor Kubernetes-versies die worden gehouden door de besturings vlak-of knooppunt groepen van een cluster, worden gevalideerd door de volgende sets regels.
+
+* Regels voor geldige versies waarvoor een upgrade moet worden uitgevoerd:
+   * De versie van de knooppunt groep moet dezelfde *primaire* versie hebben als het besturings vlak.
+   * De versie van de knooppunt groep kan twee *secundaire* versies zijn die kleiner zijn dan de versie van het besturings element.
+   * De versie van de knooppunt groep kan twee *patch* versies zijn die kleiner zijn dan de versie van het besturings element.
+
+* Regels voor het verzenden van een upgrade bewerking:
+   * U kunt de Kubernetes-versie van het besturings vlak of de groep met knooppunt groepen niet verlagen.
+   * Als er geen Kubernetes-versie van een knooppunt groep wordt opgegeven, is het gedrag afhankelijk van de gebruikte client. De declaratie in Resource Manager-sjablonen gaat terug naar de bestaande versie die is gedefinieerd voor de knooppunt groep als deze wordt gebruikt, als geen is ingesteld, wordt de versie van het besturings element gebruikt om terug te vallen.
+   * U kunt een besturings vlak of een knooppunt groep op een bepaald moment bijwerken of schalen, u kunt niet meerdere bewerkingen tegelijkertijd verzenden op één besturings vlak of resource van een groep knoop punten.
 
 ## <a name="scale-a-node-pool-manually"></a>Een knooppunt groep hand matig schalen
 
@@ -322,7 +328,7 @@ In de vorige voor beelden voor het maken van een knooppunt groep is een standaar
 
 In het volgende voor beeld maakt u een op GPU gebaseerde knooppunt groep die gebruikmaakt van de *Standard_NC6* VM-grootte. Deze Vm's worden aangedreven door de NVIDIA Tesla K80-kaart. Zie [grootten voor virtuele Linux-machines in azure][vm-sizes]voor meer informatie over de beschik bare VM-grootten.
 
-Maak een knooppunt groep met de opdracht [AZ AKS node pool add][az-aks-nodepool-add] opnieuw. Geef deze keer de naam *gpunodepool*op en gebruik de para meter `--node-vm-size` om de *Standard_NC6* -grootte op te geven:
+Maak een knooppunt groep met de opdracht [AZ AKS node pool add][az-aks-nodepool-add] opnieuw. Geef deze keer de naam *gpunodepool*op en gebruik de para meter `--node-vm-size` om de *Standard_NC6* grootte op te geven:
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -450,13 +456,13 @@ Alleen een van de peulen waarvoor deze Taint is toegepast, kan worden gepland op
 
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>Knooppunt Pools beheren met een resource manager-sjabloon
 
-Wanneer u een Azure Resource Manager sjabloon gebruikt om resources te maken en te beheren, kunt u de instellingen in uw sjabloon doorgaans bijwerken en opnieuw implementeren om de resource bij te werken. Met knooppunt Pools in AKS kan het oorspronkelijke knooppunt groeps profiel niet worden bijgewerkt nadat het AKS-cluster is gemaakt. Dit gedrag houdt in dat u een bestaande resource manager-sjabloon niet kunt bijwerken, een wijziging kunt aanbrengen in de knooppunt groepen en opnieuw moet implementeren. In plaats daarvan moet u een afzonderlijke resource manager-sjabloon maken waarmee alleen de agent groepen voor een bestaand AKS-cluster worden bijgewerkt.
+Wanneer u een Azure Resource Manager sjabloon gebruikt om resources te maken en te beheren, kunt u de instellingen in uw sjabloon doorgaans bijwerken en opnieuw implementeren om de resource bij te werken. Met knooppunt Pools in AKS kan het oorspronkelijke knooppunt groeps profiel niet worden bijgewerkt nadat het AKS-cluster is gemaakt. Dit gedrag houdt in dat u een bestaande resource manager-sjabloon niet kunt bijwerken, een wijziging kunt aanbrengen in de knooppunt groepen en opnieuw moet implementeren. In plaats daarvan moet u een afzonderlijke resource manager-sjabloon maken waarmee alleen de knooppunt groepen voor een bestaand AKS-cluster worden bijgewerkt.
 
 Maak een sjabloon, zoals `aks-agentpools.json` en plak het volgende voorbeeld manifest. Met deze voorbeeld sjabloon worden de volgende instellingen geconfigureerd:
 
-* Hiermee werkt u de *Linux* -agent pool met de naam *myagentpool* bij om drie knoop punten uit te voeren.
+* Hiermee werkt u de *Linux* -knooppunt groep met de naam *myagentpool* bij om drie knoop punten uit te voeren.
 * Hiermee stelt u de knoop punten in de knooppunt groep in op het uitvoeren van Kubernetes-versie *1.13.10*.
-* Hiermee wordt de knooppunt grootte gedefinieerd als *Standard_DS2_v2*.
+* Hiermee definieert u de knooppunt grootte als *Standard_DS2_v2*.
 
 Bewerk deze waarden als u wilt dat er knooppunt groepen worden bijgewerkt, toegevoegd of verwijderd:
 

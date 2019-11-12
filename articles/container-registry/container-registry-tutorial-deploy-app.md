@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een app implementeren vanuit een Docker-register met geo-replicatie in Azure'
+title: 'Zelf studie: app implementeren vanuit geo-gerepliceerde Azure Container Registry'
 description: Een op Linux gebaseerde web-app implementeren in twee verschillende Azure-regio's met behulp van een containerinstallatiekopie van een Azure-containerregister met geo-replicatie. Deel twee van een serie van drie.
 services: container-registry
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ac4d78147820c2cf56549abbec7e1fbc873ea260
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 0aebc31e1b8e6849d4cc0aeccc0e0a79edf0e65d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146934"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931418"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Zelfstudie: Een web-app implementeren vanuit een Azure-containerregister met geo-replicatie
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Zelf studie: een web-app implementeren vanuit een geografisch gerepliceerd Azure container Registry
 
 Dit is deel twee van een serie met drie zelfstudies. In [deel één](container-registry-tutorial-prepare-registry.md) is er een geo-gerepliceerd privécontainerregister gemaakt en is er een containerinstallatiekopie gemaakt op basis van de bron en naar het register gepusht. In dit artikel implementeert u de container naar twee web-app-instanties in twee verschillende Azure-regio's om ervan te profiteren dat het geo-gerepliceerde register dicht bij het netwerk is. Met de containerinstallatiekopie wordt vervolgens elke instantie opgehaald uit het dichtstbijzijnde register.
 
@@ -50,7 +50,7 @@ Als Deploy to web app is uitgeschakeld, is de gebruiker met beheerdersrechten vo
 
 Onder **Web App for Containers**, dat wordt weergegeven na selectie van Deploy to web app, geeft u de volgende waarden voor elke instelling op:
 
-| Instelling | Value |
+| Instelling | Waarde |
 |---|---|
 | **Sitenaam** | Een globaal unieke naam voor de web-app. In dit voorbeeld gebruiken we de indeling `<acrName>-westus` om eenvoudig het register en de regio te identificeren van waaruit de web-app wordt geïmplementeerd. |
 | **Resourcegroep** | **Bestaande gebruiken** > `myResourceGroup` |
@@ -83,7 +83,7 @@ Zodra de Docker-installatiekopie vanuit het geo-gerepliceerde containerregister 
 
 Gebruik de procedure die in het vorige gedeelte is beschreven om een tweede web-app naar de regio *US - oost* te implementeren. Geef onder **Web App for Containers** de volgende waarden op:
 
-| Instelling | Value |
+| Instelling | Waarde |
 |---|---|
 | **Sitenaam** | Een globaal unieke naam voor de web-app. In dit voorbeeld gebruiken we de indeling `<acrName>-eastus` om eenvoudig het register en de regio te identificeren van waaruit de web-app wordt geïmplementeerd. |
 | **Resourcegroep** | **Bestaande gebruiken** > `myResourceGroup` |

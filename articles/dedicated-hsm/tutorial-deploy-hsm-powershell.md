@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 53fb4fa344839957a3f98275d174bbb787fa5e38
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 2f605d5adda913fa465b43a85bd027458959c122
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881000"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928098"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Zelfstudie: PowerShell gebruiken om HSM's te implementeren in een bestaand virtueel netwerk
 
@@ -40,7 +40,7 @@ Deze zelfstudie richt zich op twee HSM's en de vereiste ExpressRoute-gateway (zi
 
 ## <a name="prerequisites"></a>Vereisten
 
-Azure Toegewezen HSM is momenteel niet beschikbaar in de Azure-portal, dus alle interactie met de service loopt via de opdrachtregel of PowerShell. In deze zelfstudie wordt PowerShell in de Azure Cloud Shell gebruikt. Als u niet bekend bent met PowerShell, volg dan de instructies in: [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Azure Toegewezen HSM is momenteel niet beschikbaar in de Azure-portal, dus alle interactie met de service loopt via de opdrachtregel of PowerShell. In deze zelfstudie wordt PowerShell in de Azure Cloud Shell gebruikt. Als u niet bekend bent met PowerShell, volg dan de instructies in [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 Veronderstellingen:
 
@@ -217,7 +217,7 @@ Het SSH-hulpprogramma wordt gebruikt om verbinding te maken met de virtuele mach
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 Gebruik het wachtwoord uit het parameterbestand.
-Zodra u bent aangemeld bij de virtuele Linux-machine, kunt u zich aanmelden bij de HSM met behulp van het privé-IP \<-adres dat is gevonden in de portal voor het resource voorvoegsel > hsm_vnic.
+Zodra u bent aangemeld bij de virtuele Linux-machine, kunt u zich aanmelden bij de HSM met behulp van het privé-IP-adres dat is gevonden in de portal voor de resource \<voor voegsel > hsm_vnic.
 
 ```powershell
 
@@ -249,13 +249,9 @@ Als u klaar bent met het HSM-apparaat, kan het als resource worden verwijderd en
 
 1. `hsm factoryReset -f`
 2. `sysconf config factoryReset -f -service all`
-3. `network interface delete -device eth0`
-4. `network interface delete -device eth1`
-5. `network interface delete -device eth2`
-6. `network interface delete -device eth3`
-7. `my file clear -f`
-8. `my public-key clear -f`
-9. `syslog rotate`
+3. `my file clear -f`
+4. `my public-key clear -f`
+5. `syslog rotate`
 
 
 > [!NOTE]

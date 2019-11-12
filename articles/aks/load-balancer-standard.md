@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 8ebd91f8f02ad7eacd8440b34a31b78f5cac5741
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2d652b31c264d7b17fcf303564c327d09d416f9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472617"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929142"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Een standaard SKU-load balancer gebruiken in azure Kubernetes service (AKS)
 
@@ -40,7 +40,7 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 * Er is ten minste één openbaar IP-of IP-voor voegsel vereist voor het toestaan van uitgaand verkeer van het AKS-cluster. Het open bare IP-of IP-voor voegsel is ook vereist voor het onderhouden van de connectiviteit tussen het besturings vlak en de agent knooppunten, en voor het behouden van de compatibiliteit met eerdere versies van AKS. U hebt de volgende opties voor het opgeven van open bare Ip's of IP-voor voegsels met een *standaard* -SKU Load Balancer:
     * Geef uw eigen open bare Ip's op.
     * Geef uw eigen open bare IP-voor voegsels op.
-    * Geef een waarde op van Maxi maal 100 zodat het AKS-cluster ervoor kan zorgen dat veel *standaard* -SKU open bare ip's in dezelfde resource groep zijn gemaakt als het AKS-cluster, die meestal met *MC_* aan het begin wordt genoemd. AKS wijst het open bare IP-adres toe aan de *standaard* -SKU Load Balancer. Standaard wordt één openbaar IP-adres automatisch gemaakt in dezelfde resource groep als het AKS-cluster als er geen openbaar IP-adres, openbaar IP-voor voegsel of aantal Ip's is opgegeven. U moet ook open bare adressen toestaan en voor komen dat u een Azure Policy maakt waardoor het IP-adres niet kan worden gemaakt.
+    * Geef een waarde op van Maxi maal 100 zodat het AKS-cluster ervoor kan zorgen dat veel *standaard* -SKU open bare ip's in dezelfde resource groep zijn gemaakt als het AKS-cluster. Dit is meestal een naam met *MC_* aan het begin. AKS wijst het open bare IP-adres toe aan de *standaard* -SKU Load Balancer. Standaard wordt één openbaar IP-adres automatisch gemaakt in dezelfde resource groep als het AKS-cluster als er geen openbaar IP-adres, openbaar IP-voor voegsel of aantal Ip's is opgegeven. U moet ook open bare adressen toestaan en voor komen dat u een Azure Policy maakt waardoor het IP-adres niet kan worden gemaakt.
 * Wanneer u de *standaard* -SKU voor een Load Balancer gebruikt, moet u Kubernetes versie 1,13 of hoger gebruiken.
 * Het definiëren van de load balancer SKU kan alleen worden uitgevoerd wanneer u een AKS-cluster maakt. U kunt de load balancer SKU niet wijzigen nadat er een AKS-cluster is gemaakt.
 * U kunt slechts één load balancer SKU in één cluster gebruiken.
@@ -148,6 +148,25 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
+## <a name="show-the-outbound-rule-for-your-load-balancer"></a>De uitgaande regel voor uw load balancer weer geven
+
+Als u de uitgaande regel die in de load balancer is gemaakt wilt weer geven, gebruikt u [AZ Network lb outbound-Rule List][az-network-lb-outbound-rule-list] en geeft u de resource groep van het knoop punt van uw AKS-cluster op:
+
+```azurecli-interactive
+NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+az network lb outbound-rule list --resource-group $NODE_RG --lb-name kubernetes -o table
+```
+
+Met de vorige opdrachten wordt de uitgaande regel voor uw load balancer weer geven, bijvoorbeeld:
+
+```console
+AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name             Protocol    ProvisioningState    ResourceGroup
+------------------------  ----------------  ----------------------  ---------------  ----------  -------------------  -------------
+0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
+```
+
+In de voorbeeld uitvoer is *AllocatedOutboundPorts* 0. De waarde voor *AllocatedOutboundPorts* betekent dat de toewijzing van de SNAT-poort terugkeert naar automatische toewijzing op basis van de grootte van de back-endserver. Zie [Load Balancer uitgaande regels][azure-lb-outbound-rules] en [uitgaande verbindingen in azure][azure-lb-outbound-connections] voor meer informatie.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over Kubernetes Services vindt u in de [documentatie van Kubernetes Services][kubernetes-services].
@@ -176,11 +195,14 @@ Meer informatie over Kubernetes Services vindt u in de [documentatie van Kuberne
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-group-create]: /cli/azure/group#az-group-create
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[az-network-lb-outbound-rule-list]: /cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-list
 [az-network-public-ip-show]: /cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show
 [az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus
+[azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
+[azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md

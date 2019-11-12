@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: a6d38a9196d640ebc823b4f25e089cc04193212b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f9e5b5a70f7398483d5359a0489d5a6e6b241c6d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845747"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928192"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Veelgestelde vragen-Hyper-V naar Azure nood herstel
 
@@ -83,11 +83,11 @@ Ja, zowel versleuteling als transit en [versleuteling in azure](https://docs.mic
 
 ### <a name="what-can-i-do-with-hyper-v-to-azure-replication"></a>Wat kan ik doen met replicatie van Hyper-V naar Azure?
 
-- **Herstel na nood**geval: U kunt een volledig herstel na nood gevallen instellen. In dit scenario repliceert u on-premises virtuele Hyper-V-machines naar Azure Storage:
+- **Herstel na nood**geval: u kunt volledige nood herstel instellen. In dit scenario repliceert u on-premises virtuele Hyper-V-machines naar Azure Storage:
     - U kunt Vm's repliceren naar Azure. Als uw on-premises infra structuur niet beschikbaar is, kunt u een failover uitvoeren naar Azure.
     - Wanneer u een failover hebt uitgevoerd, worden er Azure-Vm's gemaakt met de gerepliceerde gegevens. U hebt toegang tot apps en werk belastingen op de virtuele machines van Azure.
     - Als uw on-premises Data Center weer beschikbaar is, kunt u een failback uitvoeren van Azure naar uw on-premises site.
-- **Migratie**: U kunt Site Recovery gebruiken om on-premises virtuele Hyper-V-machines te migreren naar Azure Storage. Vervolgens voert u een failover uit van on-premises naar Azure. Na een failover zijn uw apps en workloads beschikbaar en worden deze uitgevoerd op virtuele Azure-machines.
+- **Migratie**: u kunt site Recovery gebruiken om on-premises virtuele Hyper-V-machines te migreren naar Azure Storage. Vervolgens voert u een failover uit van on-premises naar Azure. Na een failover zijn uw apps en workloads beschikbaar en worden deze uitgevoerd op virtuele Azure-machines.
 
 
 ### <a name="what-do-i-need-on-premises"></a>Wat heb ik on-premises nodig?
@@ -99,7 +99,7 @@ U hebt een of meer virtuele machines nodig die worden uitgevoerd op een of meer 
 
 ### <a name="can-i-replicate-vms-located-on-a-hyper-v-cluster"></a>Kan ik Vm's die zich op een Hyper-V-cluster bevinden, repliceren?
 
-Ja, Site Recovery ondersteunt geclusterde Hyper-V-hosts. Houd rekening met het volgende:
+Ja, Site Recovery ondersteunt geclusterde Hyper-V-hosts. Opmerking:
 
 - Alle knoop punten van het cluster moeten worden geregistreerd bij dezelfde kluis.
 - Als u VMM niet gebruikt, moeten alle Hyper-V-hosts in het cluster worden toegevoegd aan dezelfde Hyper-V-site.
@@ -147,16 +147,16 @@ Meer [informatie](hyper-v-azure-architecture.md#replication-process) over het re
 
 ### <a name="can-i-replicate-to-azure-with-a-site-to-site-vpn"></a>Kan ik repliceren naar Azure met een site-naar-site-VPN?
 
-Site Recovery repliceert gegevens van on-premises naar Azure-opslag via een openbaar eind punt of met behulp van ExpressRoute open bare peering. Replicatie via een site-naar-site-VPN-netwerk wordt niet ondersteund.
+Site Recovery repliceert gegevens van on-premises naar Azure Storage via een openbaar eind punt of met ExpressRoute micro soft-peering. Replicatie via een site-naar-site-VPN-netwerk wordt niet ondersteund.
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>Kan ik repliceren naar Azure met ExpressRoute?
 
-Ja, ExpressRoute kan worden gebruikt om Vm's te repliceren naar Azure. Site Recovery repliceert gegevens naar een Azure Storage account via een openbaar eind punt en moet u [open bare peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) instellen voor site Recovery-replicatie. Nadat Vm's een failover naar een virtueel Azure-netwerk hebben uitgevoerd, kunt u ze openen met behulp van [persoonlijke peering](../expressroute/expressroute-circuit-peerings.md#privatepeering).
+Ja, ExpressRoute kan worden gebruikt om Vm's te repliceren naar Azure. Site Recovery repliceert gegevens naar een Azure Storage account via een openbaar eind punt en u moet [micro soft-peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) instellen voor site Recovery-replicatie. Nadat Vm's een failover naar een virtueel Azure-netwerk hebben uitgevoerd, kunt u ze openen met behulp van [persoonlijke peering](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Waarom kan ik niet repliceren via VPN?
 
-Wanneer u naar Azure repliceert, bereikt het replicatie verkeer de open bare eind punten van een Azure Storage-account. Zo kunt u alleen repliceren via het open bare Internet met ExpressRoute (open bare peering) en werkt VPN niet. 
+Wanneer u naar Azure repliceert, bereikt het replicatie verkeer de open bare eind punten van een Azure Storage-account. Zo kunt u alleen repliceren via het open bare Internet met ExpressRoute (micro soft-peering) en werkt VPN niet. 
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Wat zijn de vereisten voor de replicatie van de virtuele machine?
 
@@ -224,8 +224,8 @@ Als uw on-premises infra structuur weer actief is, kunt u een failback uitvoeren
 
 1. U kunt een geplande failover van Azure naar de on-premises site starten met een aantal verschillende opties:
 
-    - Downtime minimaliseren: Als u deze optie gebruikt Site Recovery worden gegevens gesynchroniseerd vóór de failover. Er wordt gecontroleerd op gewijzigde gegevens blokken en deze worden gedownload naar de on-premises site, terwijl de virtuele machine van Azure actief blijft, waardoor de uitval tijd wordt geminimaliseerd. Wanneer u hand matig opgeeft dat de failover moet worden voltooid, wordt de Azure-VM afgesloten, worden eventuele laatste Delta wijzigingen gekopieerd en wordt de failover gestart.
-    - Volledige down load: Bij deze optie worden de gegevens tijdens de failover gesynchroniseerd. Met deze optie wordt de volledige schijf gedownload. Het is sneller omdat er geen controle sommen worden berekend, maar er is meer uitval tijd. Gebruik deze optie als u de replica-Azure-Vm's enige tijd hebt uitgevoerd of als de on-premises VM is verwijderd.
+    - Downtime minimaliseren: als u deze optie gebruikt Site Recovery worden gegevens gesynchroniseerd voor failover. Er wordt gecontroleerd op gewijzigde gegevens blokken en deze worden gedownload naar de on-premises site, terwijl de virtuele machine van Azure actief blijft, waardoor de uitval tijd wordt geminimaliseerd. Wanneer u hand matig opgeeft dat de failover moet worden voltooid, wordt de Azure-VM afgesloten, worden eventuele laatste Delta wijzigingen gekopieerd en wordt de failover gestart.
+    - Volledige down load: met deze optie gegevens worden tijdens de failover gesynchroniseerd. Met deze optie wordt de volledige schijf gedownload. Het is sneller omdat er geen controle sommen worden berekend, maar er is meer uitval tijd. Gebruik deze optie als u de replica-Azure-Vm's enige tijd hebt uitgevoerd of als de on-premises VM is verwijderd.
 
 2. U kunt een failback uitvoeren naar dezelfde virtuele machine of naar een andere virtuele machine. U kunt opgeven dat Site Recovery de virtuele machine moet maken als deze nog niet bestaat.
 3. Wanneer de initiële synchronisatie is voltooid, selecteert u om de failover te volt ooien. Nadat deze is voltooid, kunt u zich aanmelden bij de on-premises VM om te controleren of alles werkt zoals verwacht. In de Azure Portal ziet u dat de virtuele machines van Azure zijn gestopt.

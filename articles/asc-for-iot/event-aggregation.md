@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: b1a14cf4c8aec2f3dbfa7bc4fd0800d9fd1fb0aa
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: ca1d1a5761e62b2838a474dcb83f450987972998
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327318"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928958"
 ---
 # <a name="azure-security-center-for-iot-event-aggregation"></a>Azure Security Center voor IoT-gebeurtenis aggregatie
 
@@ -44,7 +44,7 @@ De agent verhoogt het aantal treffers van deze specifieke gebeurtenis, wanneer d
 
 Gebeurtenissen worden alleen als identiek beschouwd wanneer aan de volgende voor waarden wordt voldaan: 
 
-* ProcessCreate-gebeurtenissen: wanneer **commandline**, **uitvoer bare bestand**, * * gebruikers naam en **gebruikers-id** identiek zijn
+* ProcessCreate-gebeurtenissen: wanneer **commandline**, **uitvoer bare bestand**, **gebruikers naam**en **GebruikersID** identiek zijn
 * ConnectionCreate-gebeurtenissen: wanneer **commandline**, **GebruikersID**, **Direction**, **lokaal adres**, **extern adres**, * * protocol en **doel poort** identiek zijn
 * ProcessTerminate-gebeurtenissen: wanneer het **uitvoer bare bestand** en de status van het **Afsluiten** identiek zijn
 
@@ -64,19 +64,19 @@ Elke samengevoegde gebeurtenis vertegenwoordigt een periode van 24 uur verzameld
 ## <a name="event-aggregation-twin-configuration"></a>Dubbele configuratie gebeurtenis aggregatie
 Breng wijzigingen aan in de configuratie van Azure Security Center voor IoT-gebeurtenis aggregatie in het object van de [agent configuratie](how-to-agent-configuration.md) van de module dubbele identiteit van de module **azureiotsecurity** .
 
-| Configuratienaam | Mogelijke waarden | Details | Opmerkingen |
+| Configuratie naam | Mogelijke waarden | Details | Opmerkingen |
 |:-----------|:---------------|:--------|:--------|
-| aggregationEnabledProcessCreate | boolean | Gebeurtenis aggregatie voor het maken van proces gebeurtenissen in-of uitschakelen |
+| aggregationEnabledProcessCreate | booleaans | Gebeurtenis aggregatie voor het maken van proces gebeurtenissen in-of uitschakelen |
 | aggregationIntervalProcessCreate | ISO8601 time span-teken reeks | Aggregatie-interval voor het maken van proces gebeurtenissen |
-| aggregationEnabledConnectionCreate | boolean| Aggregatie van gebeurtenissen in-of uitschakelen voor het maken van verbinding |
+| aggregationEnabledConnectionCreate | booleaans| Aggregatie van gebeurtenissen in-of uitschakelen voor het maken van verbinding |
 | aggregationIntervalConnectionCreate | ISO8601 time span-teken reeks | Aggregatie-interval voor het maken van verbindings gebeurtenissen |
-| aggregationEnabledProcessTerminate | boolean | Gebeurtenis aggregatie voor proces beëindigings gebeurtenissen in-/uitschakelen | Alleen Windows|
+| aggregationEnabledProcessTerminate | booleaans | Gebeurtenis aggregatie voor proces beëindigings gebeurtenissen in-/uitschakelen | Alleen Windows|
 | aggregationIntervalProcessTerminate | ISO8601 time span-teken reeks | Aggregatie-interval voor gebeurtenissen voor proces beëindigen | Alleen Windows|
 |
 
 ## <a name="default-configurations-settings"></a>Standaard configuratie-instellingen
 
-| Configuratienaam | Standaardwaarden |
+| Configuratie naam | Standaardwaarden |
 |:-----------|:---------------|
 | aggregationEnabledProcessCreate | true |
 | aggregationIntervalProcessCreate | PT1H|

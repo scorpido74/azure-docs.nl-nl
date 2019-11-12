@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: dd58ec08c6ec372cf53a79b75162748cfe336b23
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/11/2019
+ms.openlocfilehash: f2a33f96f77678e02c5b72c36563781e7d7ac334
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477123"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928283"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor inschakelen voor containers
 
@@ -42,6 +42,13 @@ Voordat u begint, moet u ervoor zorgen dat u over het volgende beschikt:
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 * Prometheus-metrische gegevens worden standaard niet verzameld. Voordat u [de agent configureert](container-insights-prometheus-integration.md) om deze te verzamelen, is het belang rijk dat u de Prometheus- [documentatie](https://prometheus.io/) bekijkt om te begrijpen wat u kunt definiëren.
+
+## <a name="supported-configurations"></a>Ondersteunde configuraties
+
+Het volgende wordt officieel ondersteund met Azure Monitor voor containers.
+
+- Omgevingen: Kubernetes on-premises, AKS-engine op Azure en Azure Stack. Zie de [AKS-engine op Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)voor meer informatie.
+- De versies van Kubernetes en het ondersteunings beleid zijn hetzelfde als de versies van AKS die worden [ondersteund](../../aks/supported-kubernetes-versions.md). 
 
 ## <a name="network-firewall-requirements"></a>Netwerk firewall vereisten
 

@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f15f6480c2dc77fb1f6e229b62a0114f0f6fb735
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a8cf7b7004097ef5a4d915d8fdff60cc9606c5be
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802833"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927085"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Client toepassingen initialiseren met MSAL.NET
 In dit artikel wordt beschreven hoe u open bare client-en vertrouwelijke client toepassingen initialiseert met behulp van micro soft Authentication Library voor .NET (MSAL.NET).  Lees het [overzicht](msal-client-applications.md)voor meer informatie over de client toepassings typen en configuratie opties voor toepassingen.
@@ -101,7 +101,7 @@ In de code fragmenten die gebruikmaken van toepassings bouwers, kan een aantal `
 
 De opties die u kunt instellen op een open bare client of de opbouw functie voor vertrouwelijke client toepassingen zijn:
 
-|Parameter | Beschrijving|
+|Modifier | Beschrijving|
 |--------- | --------- |
 |`.WithAuthority()` 7 onderdrukkingen | Hiermee stelt u de standaard instantie van de toepassing in op een Azure AD-instantie, met de mogelijkheid om de Azure-Cloud, de doel groep, de Tenant (Tenant-ID of domein naam) te kiezen of rechtstreeks de CA-URI op te geven.|
 |`.WithAdfsAuthority(string)` | Hiermee stelt u de standaard instantie van de toepassing als ADFS-instantie.|
@@ -120,7 +120,7 @@ De opties die u kunt instellen op een open bare client of de opbouw functie voor
 
 De opties die u kunt instellen voor een open bare-client toepassings Builder op Xamarin. iOS zijn:
 
-|Parameter | Beschrijving|
+|Modifier | Beschrijving|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Alleen Xamarin. IOS**: Hiermee stelt u de beveiligings groep IOS-sleutel keten in (voor de cache persistentie).|
 
@@ -128,7 +128,7 @@ De opties die u kunt instellen voor een open bare-client toepassings Builder op 
 
 De opties die u kunt instellen voor een vertrouwelijk client toepassings Builder zijn:
 
-|Parameter | Beschrijving|
+|Modifier | Beschrijving|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Hiermee stelt u het certificaat dat de toepassing identificeert met Azure AD.|
 |`.WithClientSecret(string clientSecret)` | Hiermee stelt u het client geheim (app-wacht woord) voor het identificeren van de toepassing met Azure AD.|
