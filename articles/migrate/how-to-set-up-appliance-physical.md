@@ -4,18 +4,21 @@ description: Hierin wordt beschreven hoe u een apparaat instelt voor de evaluati
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 11/11/2019
 ms.author: raynew
-ms.openlocfilehash: ddd659e8cbcb54a36868848d0c6327f294d531b1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a3212e4dac6856a5fd032c731d877453965584ae
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512624"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907158"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Een apparaat instellen voor fysieke servers
 
 In dit artikel wordt beschreven hoe u het Azure Migrate apparaat instelt als u fysieke servers wilt beoordelen met het Azure Migrate: Server Assessment-hulp programma.
+
+> [!NOTE]
+> Als hier functies worden vermeld die u nog niet ziet in de Azure Migrate Portal, loopt u vast. Deze worden in de volgende week weer gegeven.
 
 Het Azure Migrate apparaat is een licht gewicht apparaat dat door de Azure Migrate server-evaluatie wordt gebruikt om het volgende te doen:
 

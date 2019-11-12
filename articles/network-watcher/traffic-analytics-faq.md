@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: kumud
-ms.openlocfilehash: b232df010190a95d12d5a57f076a4c1bf336cea4
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 991bb91c5bc1f6d695d5b363cdb08268f1ee83df
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026592"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907092"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Veelgestelde vragen over Traffic Analytics
 
@@ -41,16 +41,16 @@ Uw account moet voldoen aan een van de volgende opties om Traffic Analytics in t
 - Uw account moet een van de volgende RBAC-rollen (op rollen gebaseerd toegangs beheer) hebben bij het abonnements bereik: eigenaar, bijdrager, lezer of netwerk bijdrager.
 - Als uw account niet is toegewezen aan een van de eerder vermelde rollen, moet dit worden toegewezen aan een aangepaste rol waaraan de volgende acties zijn toegewezen op abonnements niveau.
             
-    - Microsoft.Network/applicationGateways/read
-    - Microsoft.Network/connections/read
-    - Microsoft.Network/loadBalancers/read 
-    - Microsoft.Network/localNetworkGateways/read 
-    - Microsoft.Network/networkInterfaces/read 
-    - Microsoft.Network/networkSecurityGroups/read 
-    - Microsoft.Network/publicIPAddresses/read
-    - Microsoft.Network/routeTables/read
-    - Microsoft.Network/virtualNetworkGateways/read 
-    - Microsoft.Network/virtualNetworks/read
+    - Micro soft. Network/applicationGateways/lezen
+    - Micro soft. netwerk/verbindingen/lezen
+    - Micro soft. Network/loadBalancers/lezen 
+    - Micro soft. Network/localNetworkGateways/lezen 
+    - Micro soft. Network/networkInterfaces/lezen 
+    - Micro soft. Network/networkSecurityGroups/lezen 
+    - Micro soft. Network/publicIPAddresses/lezen
+    - Micro soft. Network/routeTables/lezen
+    - Micro soft. Network/virtualNetworkGateways/lezen 
+    - Micro soft. Network/virtualNetworks/lezen
         
 Rollen controleren die aan een gebruiker zijn toegewezen voor een abonnement:
 
@@ -68,7 +68,7 @@ Als er geen uitvoer wordt weer gegeven, neemt u contact op met de beheerder van 
 U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteunde regio's:
 - Canada - midden
 - US - west-centraal
-- East US
+- US - oost
 - US - oost 2
 - US - noord-centraal
 - US - zuid-centraal
@@ -91,19 +91,22 @@ U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteund
 - Japan - oost
 - Japan - west
 - VS (overheid) - Virginia
+- China - oost 2
 
 De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 - Canada - midden
 - US - west-centraal
-- US - west
-- US - west 2
+- US - oost
+- US - oost 2
+- US - noord-centraal
 - US - zuid-centraal
 - US - centraal
-- East US
-- US - oost 2
+- US - west
+- US - west 2
 - Frankrijk - centraal
 - Europa -west
 - Europa - noord
+- Verenigd Koninkrijk West
 - Verenigd Koninkrijk Zuid
 - Australië - oost
 - Australië - zuidoost
@@ -113,6 +116,7 @@ De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 - India - centraal
 - Japan - oost
 - VS (overheid) - Virginia
+- China - oost 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Kan de Nsg's ik stroom logboeken inschakelen voor andere regio's dan mijn werk ruimte?
 
@@ -151,7 +155,7 @@ De micro soft. Insights-provider moet zijn geregistreerd voor een goede werking 
 
 Het kan tot 30 minuten duren voordat het dash board de eerste keer wordt weer gegeven. De oplossing moet eerst voldoende gegevens verzamelen om zinvolle inzichten te kunnen afleiden. Vervolgens worden er rapporten gegenereerd. 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Wat gebeurt er als ik dit bericht ontvang: "Er zijn geen gegevens in deze werk ruimte gevonden voor het geselecteerde tijds interval. Wijzig het tijds interval of selecteer een andere werk ruimte. "?
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Wat gebeurt er als ik dit bericht krijg: ' er zijn geen gegevens in deze werk ruimte gevonden voor het geselecteerde tijds interval. Wijzig het tijds interval of selecteer een andere werk ruimte. "?
 
 Probeer de volgende opties:
 - Wijzig het tijds interval in de bovenste balk.
@@ -160,7 +164,7 @@ Probeer de volgende opties:
     
 Als er problemen blijven optreden, moet u zorgen voor het forum van de [gebruiker](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Wat gebeurt er als ik dit bericht ontvang: Het voor de eerste keer analyseren van uw NSG-stroom Logboeken. Dit proces kan 20-30 minuten duren. Probeer het na enige tijd opnieuw. 2) als de bovenstaande stap niet werkt en uw werk ruimte zich onder de gratis SKU bevindt, controleert u het gebruik van uw werk ruimte hier om het quotum te valideren. Raadpleeg anders de veelgestelde vragen voor meer informatie. "?
+## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Wat gebeurt er als ik dit bericht krijg: ' de NSG-stroom logboeken voor de eerste keer analyseren. Dit proces kan 20-30 minuten duren. Probeer het na enige tijd opnieuw. 2) als de bovenstaande stap niet werkt en uw werk ruimte zich onder de gratis SKU bevindt, controleert u het gebruik van uw werk ruimte hier om het quotum te valideren. Raadpleeg anders de veelgestelde vragen voor meer informatie. "?
 
 Dit bericht kan worden weer gegeven omdat:
 - Traffic Analytics onlangs is ingeschakeld en er zijn mogelijk nog voldoende gegevens verzameld om zinvolle inzichten te verkrijgen.
@@ -168,7 +172,7 @@ Dit bericht kan worden weer gegeven omdat:
     
 Als er problemen blijven optreden, moet u zorgen voor het forum van de [gebruiker](https://feedback.azure.com/forums/217313-networking?category_id=195844).
     
-## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Wat gebeurt er als ik dit bericht ontvang: "Er zijn resource gegevens (topologie) en geen gegevens over stromen. Ondertussen klikt u hier om resource gegevens weer te geven en raadpleegt u veelgestelde vragen voor meer informatie. "?
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Wat gebeurt er als ik dit bericht krijg: "er zijn resource gegevens (topologie) en er zijn geen gegevens over stromen. Ondertussen klikt u hier om resource gegevens weer te geven en raadpleegt u veelgestelde vragen voor meer informatie. "?
 
 U ziet de informatie over de resources op het dash board. Er zijn echter geen gegevens met betrekking tot de stroom aanwezig. Gegevens zijn mogelijk niet aanwezig vanwege geen communicatie stromen tussen de resources. Wacht 60 minuten en controleer de status opnieuw. Als het probleem zich blijft voordoen en u zeker weet dat er communicatie stromen tussen bronnen bestaan, kunt u problemen opdoen in het forum van de [gebruiker](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
@@ -244,7 +248,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 Traffic Analytics wordt gemeten. De meting is gebaseerd op de verwerking van gegevens van stroom logboeken door de service en de resulterende uitgebreide logboeken worden opgeslagen in een Log Analytics-werk ruimte. 
 
-Als de gegevens in een opslag account dat is verwerkt door Traffic Analytics, bijvoorbeeld 10 GB en uitgebreide logboeken die zijn opgenomen in Log Analytics werk ruimte 1 GB zijn, worden de volgende kosten in rekening gebracht op basis van het [prijs plan](https://azure.microsoft.com/pricing/details/network-watcher/)in de regio West-Centraal vs. 10 x $2,3 + 1 x $2,76 = $25,76
+Als de gegevens in een opslag account dat is verwerkt door Traffic Analytics 10 GB en uitgebreide logboeken die zijn opgenomen in Log Analytics werk ruimte 1 GB [zijn, worden](https://azure.microsoft.com/pricing/details/network-watcher/)de volgende kosten in rekening gebracht: 10 x $2,3 + 1 x $2,76 = $25,76
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>Hoe vaak worden gegevens Traffic Analytics verwerkt?
 
@@ -266,51 +270,51 @@ Traffic Analytics biedt geen ingebouwde ondersteuning voor waarschuwingen. Omdat
 
 De pagina GeoMap bevat twee hoofd secties:
     
-- **Banner**: De banner aan de bovenkant van de geokaart bevat knoppen om filters voor verkeers distributie te selecteren (bijvoorbeeld implementatie, verkeer van landen/regio's en kwaad aardig). Wanneer u een knop selecteert, wordt het respectieve filter toegepast op de kaart. Als u bijvoorbeeld de knop actief selecteert, markeert de kaart de actieve Data Centers in uw implementatie.
-- **Kaart**: Onder de banner ziet u de distributie van verkeer tussen Azure-data centers en landen/regio's.
+- **Banner**: de banner aan de bovenkant van de geokaart bevat knoppen voor het selecteren van verkeers distributie filters (bijvoorbeeld implementatie, verkeer van landen/regio's en kwaad aardig). Wanneer u een knop selecteert, wordt het respectieve filter toegepast op de kaart. Als u bijvoorbeeld de knop actief selecteert, markeert de kaart de actieve Data Centers in uw implementatie.
+- **Kaart**: onder de banner ziet u de distributie van verkeer onder Azure-data centers en landen/regio's.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Toetsenbord navigatie op de banner
     
 - Standaard is de selectie op de pagina GeoMap voor de banner het filter ' Azure DCs '.
-- Als u wilt overstappen op een ander filter, gebruikt u de `Tab` of de `Right arrow`-sleutel. Als u naar achteren wilt gaan, gebruikt u de `Shift+Tab` of de `Left arrow`-sleutel. Forward navigatie is van links naar rechts, gevolgd door boven naar beneden.
-- Druk op `Enter` of de `Down`-pijl toets om het geselecteerde filter toe te passen. Op basis van filter selectie en-implementatie worden een of meer knoop punten onder de kaart sectie gemarkeerd.
-- Als u wilt scha kelen tussen banners en kaarten, drukt u op `Ctrl+F6`.
+- Als u wilt overstappen op een ander filter, gebruikt u de `Tab` of de sleutel `Right arrow`. Als u naar achteren wilt gaan, gebruikt u de `Shift+Tab` of de sleutel `Left arrow`. Forward navigatie is van links naar rechts, gevolgd door boven naar beneden.
+- Druk op `Enter` of op de pijl toets `Down` om het geselecteerde filter toe te passen. Op basis van filter selectie en-implementatie worden een of meer knoop punten onder de kaart sectie gemarkeerd.
+- Druk op `Ctrl+F6`om te scha kelen tussen banner en kaart.
         
 ### <a name="keyboard-navigation-on-the-map"></a>Toetsenbord navigatie op de kaart
     
-- Nadat u een filter op de banner hebt geselecteerd en op @no__t 0 hebt geklikt, wordt de focus verplaatst naar een van de gemarkeerde knoop punten (**Azure Data Center** of **land/regio**) in de kaart weergave.
-- Als u wilt overstappen op andere gemarkeerde knoop punten in de kaart, gebruikt u `Tab` of de `Right arrow`-sleutel voor voorwaartse verplaatsing. Gebruik `Shift+Tab` of de `Left arrow`-sleutel voor achterwaartse verplaatsing.
+- Nadat u een filter op de banner hebt geselecteerd en op `Ctrl+F6`hebt geklikt, wordt de focus verplaatst naar een van de gemarkeerde knoop punten (**Azure Data Center** of **land/regio**) in de kaart weergave.
+- Als u wilt overstappen op andere gemarkeerde knoop punten in de kaart, gebruikt u `Tab` of de `Right arrow`-sleutel voor voorwaartse verplaatsing. Gebruik `Shift+Tab` of de `Left arrow` sleutel voor achterwaartse verplaatsing.
 - Als u een gemarkeerd knoop punt in de kaart wilt selecteren, gebruikt u de sleutel `Enter` of `Down arrow`.
-- Wanneer u een van deze knoop punten selecteert, wordt de focus verplaatst naar het **vak informatie** van het knoop punt. De focus wordt standaard verplaatst naar de knop gesloten in het **dialoog venster informatie**. Als u verder wilt gaan in de weer gave van het **vak** , gebruikt u de sleutels `Right arrow` en `Left arrow` om respectievelijk vooruit en achteruit te gaan. Het indrukken van `Enter` heeft hetzelfde effect als het selecteren van de knop met de focus in het **vak informatie**.
+- Wanneer u een van deze knoop punten selecteert, wordt de focus verplaatst naar het **vak informatie** van het knoop punt. De focus wordt standaard verplaatst naar de knop gesloten in het **dialoog venster informatie**. Als u verder wilt gaan in de weer gave van het **vak** , gebruikt u `Right arrow` en `Left arrow` sleutels om respectievelijk vooruit en achteruit te gaan. Als u op `Enter` drukt, heeft dit hetzelfde effect als de knop met de focus in het **vak informatie**.
 - Wanneer u op `Tab` drukt terwijl de focus zich in het **vak informatie**bevindt, wordt de focus verplaatst naar de eind punten in hetzelfde continent als het geselecteerde knoop punt. Gebruik de sleutels `Right arrow` en `Left arrow` om deze eind punten te door lopen.
 - Als u wilt overstappen op andere flow-eind punten of continenten clusters, gebruikt u `Tab` voor voorwaartse verplaatsing en `Shift+Tab` voor achterwaartse verplaatsing.
-- Wanneer de focus zich op **continent-clusters**bevindt, gebruikt u de pijl toetsen `Enter` of `Down` om de eind punten in het continent-cluster te markeren. Als u de eind punten wilt door lopen en de knop Sluiten in het vak informatie van het continent-cluster, gebruikt u de `Right arrow`-of `Left arrow`-sleutel voor respectievelijk voorwaartse en achterwaartse verplaatsing. Op elk eind punt kunt u `Shift+L` gebruiken om over te scha kelen van de verbindings lijn van het geselecteerde knoop punt naar het eind punt. U kunt opnieuw op `Shift+L` drukken om naar het geselecteerde eind punt te gaan.
+- Wanneer de focus zich op **continent-clusters**bevindt, gebruikt u de pijl toetsen `Enter` of `Down` om de eind punten in het continent-cluster te markeren. Als u de eind punten wilt door lopen en de knop Sluiten in het vak informatie van het continent-cluster, gebruikt u de `Right arrow` of `Left arrow` sleutel voor respectievelijk voorwaartse en achterwaartse verplaatsing. U kunt op elk eind punt `Shift+L` gebruiken om over te scha kelen naar de verbindings lijn van het geselecteerde knoop punt naar het eind punt. U kunt opnieuw op `Shift+L` klikken om over te scha kelen naar het geselecteerde eind punt.
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Toetsenbord navigatie in elk stadium
     
-- `Esc` wordt de uitgevouwen selectie samengevouwen.
-- De `Up arrow`-sleutel voert dezelfde actie uit als `Esc`. De `Down arrow`-sleutel voert dezelfde actie uit als `Enter`.
+- `Esc` de uitgevouwen selectie samen vouwen.
+- De `Up arrow` sleutel voert dezelfde actie uit als `Esc`. De `Down arrow` sleutel voert dezelfde actie uit als `Enter`.
 - Gebruik `Shift+Plus` om in te zoomen en `Shift+Minus` om uit te zoomen.
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Hoe kan ik navigeren met behulp van het toetsen bord in de topologie weergave van het virtuele netwerk?
 
 De pagina topologie virtuele netwerken bevat twee hoofd secties:
     
-- **Banner**: De banner aan de bovenkant van de topologie met virtuele netwerken biedt knoppen om filters voor het distribueren van verkeer te selecteren (bijvoorbeeld verbonden virtuele netwerken, niet-verbonden virtuele netwerken en open bare Ip's). Wanneer u een knop selecteert, wordt het respectieve filter toegepast op de topologie. Als u bijvoorbeeld de knop actief selecteert, markeert de topologie de actieve virtuele netwerken in uw implementatie.
-- **Topologie**: Onder de banner toont het gedeelte topologie verkeer distributie tussen virtuele netwerken.
+- **Banner**: de banner aan de bovenkant van de topologie met virtuele netwerken biedt knoppen om filters voor het distribueren van verkeer te selecteren (bijvoorbeeld verbonden virtuele netwerken, niet-verbonden virtuele netwerken en open bare ip's). Wanneer u een knop selecteert, wordt het respectieve filter toegepast op de topologie. Als u bijvoorbeeld de knop actief selecteert, markeert de topologie de actieve virtuele netwerken in uw implementatie.
+- **Topologie**: onder de banner ziet u in het gedeelte topologie verkeer distributie tussen virtuele netwerken.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Toetsenbord navigatie op de banner
     
 - De selectie op de topologie pagina met virtuele netwerken voor de banner is standaard het filter ' verbonden VNets '.
-- Als u wilt overstappen op een ander filter, gebruikt u de `Tab`-toets om door te gaan. Als u naar achteren wilt gaan, gebruikt u de `Shift+Tab`-sleutel. Forward navigatie is van links naar rechts, gevolgd door boven naar beneden.
+- Als u wilt overstappen op een ander filter, gebruikt u de `Tab` sleutel om door te gaan. Gebruik de sleutel `Shift+Tab` om terug te gaan. Forward navigatie is van links naar rechts, gevolgd door boven naar beneden.
 - Druk op `Enter` om het geselecteerde filter toe te passen. Op basis van de filter selectie en-implementatie worden een of meer knoop punten (virtueel netwerk) onder de sectie topologie gemarkeerd.
-- Als u wilt scha kelen tussen de banner en de topologie, drukt u op `Ctrl+F6`.
+- Druk op `Ctrl+F6`om te scha kelen tussen de banner en de topologie.
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Toetsenbord navigatie op de topologie
     
-- Nadat u een filter op de banner hebt geselecteerd en op @no__t 0 hebt geklikt, wordt de focus verplaatst naar een van de gemarkeerde knoop punten (**VNet**) in de weer gave topologie.
-- Als u wilt overstappen op andere gemarkeerde knoop punten in de topologie weergave, gebruikt u de `Shift+Right arrow`-sleutel voor voorwaartse verplaatsing. 
-- Focus wordt op gemarkeerde knoop punten verplaatst naar het **vak informatie** van het knoop punt. Focus gaat standaard naar de knop **meer details** in het **dialoog venster informatie**. Als u verder wilt verplaatsen in de weer gave van het **vak** , gebruikt u de sleutels `Right arrow` en `Left arrow` om respectievelijk vooruit en achteruit te gaan. Het indrukken van `Enter` heeft hetzelfde effect als het selecteren van de knop met de focus in het **vak informatie**.
+- Nadat u een filter op de banner hebt geselecteerd en op `Ctrl+F6`hebt geklikt, wordt de focus verplaatst naar een van de gemarkeerde knoop punten (**VNet**) in de weer gave topologie.
+- Als u wilt overstappen op andere gemarkeerde knoop punten in de topologie weergave, gebruikt u de `Shift+Right arrow` sleutel voor voorwaartse verplaatsing. 
+- Focus wordt op gemarkeerde knoop punten verplaatst naar het **vak informatie** van het knoop punt. Focus gaat standaard naar de knop **meer details** in het **dialoog venster informatie**. Als u verder wilt gaan in de weer gave van het **vak** , gebruikt u de sleutels `Right arrow` en `Left arrow` om respectievelijk vooruit en achteruit te gaan. Als u op `Enter` drukt, heeft dit hetzelfde effect als de knop met de focus in het **vak informatie**.
 - Wanneer u een van deze knoop punten selecteert, kunt u alle verbindingen met één voor één bekijken door op de `Shift+Left arrow`-toets te drukken. Focus wordt verplaatst naar het **vak informatie** van deze verbinding. U kunt op elk gewenst moment de focus weer verplaatsen naar het knoop punt door nogmaals op `Shift+Right arrow` te drukken.
     
 
@@ -318,20 +322,20 @@ De pagina topologie virtuele netwerken bevat twee hoofd secties:
 
 De pagina topologie virtuele subnetwerken bevat twee hoofd secties:
     
-- **Banner**: De banner aan de bovenkant van de topologie met virtuele subnetwerken bevat knoppen voor het selecteren van de distributie filters voor verkeer (bijvoorbeeld Active, medium en gateway subnets). Wanneer u een knop selecteert, wordt het respectieve filter toegepast op de topologie. Als u bijvoorbeeld de knop actief selecteert, markeert de topologie het actieve virtuele subnetwerk in uw implementatie.
-- **Topologie**: Onder de banner toont de sectie topologie verkeer distributie over virtuele subnetwerken.
+- **Banner**: de banner aan de bovenkant van de topologie met virtuele subnetwerken biedt knoppen om filters voor het distribueren van verkeer te selecteren (bijvoorbeeld Active, medium en gateway subnetten). Wanneer u een knop selecteert, wordt het respectieve filter toegepast op de topologie. Als u bijvoorbeeld de knop actief selecteert, markeert de topologie het actieve virtuele subnetwerk in uw implementatie.
+- **Topologie**: onder de banner ziet u in het gedeelte topologie verkeer distributie over virtuele subnetwerken.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Toetsenbord navigatie op de banner
     
 - De selectie op de topologie pagina virtuele subnetwerken voor de banner is standaard het filter subnetten.
-- Als u wilt overstappen op een ander filter, gebruikt u de `Tab`-toets om door te gaan. Als u naar achteren wilt gaan, gebruikt u de `Shift+Tab`-sleutel. Forward navigatie is van links naar rechts, gevolgd door boven naar beneden.
+- Als u wilt overstappen op een ander filter, gebruikt u de `Tab` sleutel om door te gaan. Gebruik de sleutel `Shift+Tab` om terug te gaan. Forward navigatie is van links naar rechts, gevolgd door boven naar beneden.
 - Druk op `Enter` om het geselecteerde filter toe te passen. Op basis van filter selectie en-implementatie worden een of meer knoop punten (subnet) onder de sectie topologie gemarkeerd.
-- Als u wilt scha kelen tussen de banner en de topologie, drukt u op `Ctrl+F6`.
+- Druk op `Ctrl+F6`om te scha kelen tussen de banner en de topologie.
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Toetsenbord navigatie op de topologie
     
-- Nadat u een filter op de banner hebt geselecteerd en op @no__t 0 hebt geklikt, wordt de focus verplaatst naar een van de gemarkeerde knoop punten (**subnet**) in de weer gave topologie.
-- Als u wilt overstappen op andere gemarkeerde knoop punten in de topologie weergave, gebruikt u de `Shift+Right arrow`-sleutel voor voorwaartse verplaatsing. 
-- Focus wordt op gemarkeerde knoop punten verplaatst naar het **vak informatie** van het knoop punt. Focus gaat standaard naar de knop **meer details** in het **dialoog venster informatie**. Als u verder wilt gaan in de weer gave van het **vak** , gebruikt u de sleutels `Right arrow` en `Left arrow` om respectievelijk vooruit en achteruit te gaan. Het indrukken van `Enter` heeft hetzelfde effect als het selecteren van de knop met de focus in het **vak informatie**.
-- Wanneer u een van deze knoop punten selecteert, kunt u alle verbindingen met één voor één bekijken door op `Shift+Left arrow`-toets te drukken. Focus wordt verplaatst naar het **vak informatie** van deze verbinding. U kunt op elk gewenst moment de focus weer verplaatsen naar het knoop punt door nogmaals op `Shift+Right arrow` te drukken.    
+- Nadat u een filter op de banner hebt geselecteerd en op `Ctrl+F6`hebt geklikt, wordt de focus verplaatst naar een van de gemarkeerde knoop punten (**subnet**) in de weer gave topologie.
+- Als u wilt overstappen op andere gemarkeerde knoop punten in de topologie weergave, gebruikt u de `Shift+Right arrow` sleutel voor voorwaartse verplaatsing. 
+- Focus wordt op gemarkeerde knoop punten verplaatst naar het **vak informatie** van het knoop punt. Focus gaat standaard naar de knop **meer details** in het **dialoog venster informatie**. Als u verder wilt gaan in de weer gave van het **vak** , gebruikt u `Right arrow` en `Left arrow` sleutels om respectievelijk vooruit en achteruit te gaan. Als u op `Enter` drukt, heeft dit hetzelfde effect als de knop met de focus in het **vak informatie**.
+- Wanneer u een van deze knoop punten selecteert, kunt u alle verbindingen met één voor één bezoeken door `Shift+Left arrow`-toets te drukken. Focus wordt verplaatst naar het **vak informatie** van deze verbinding. U kunt op elk gewenst moment de focus weer verplaatsen naar het knoop punt door nogmaals op `Shift+Right arrow` te drukken.    
 

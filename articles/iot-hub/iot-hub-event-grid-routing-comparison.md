@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 067293f76ac4894ca73f4e74cb01db65ae8d1fba
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 877467b65d346c871dd93f4b3f96b2c1664fa4b9
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876921"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906787"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Berichten Routering en-Event Grid vergelijken voor IoT Hub
 
@@ -21,9 +21,9 @@ Azure IoT Hub biedt de mogelijkheid om gegevens van uw verbonden apparaten te st
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-**[IOT hub bericht routering](iot-hub-devguide-messages-d2c.md)** : Met deze IoT Hub functie kunnen gebruikers apparaat-naar-Cloud-berichten naar service-eind punten routeren, zoals Azure Storage containers, Event Hubs, Service Bus wacht rijen en Service Bus onderwerpen. Route ring biedt ook een query mogelijkheid om de gegevens te filteren voordat deze naar de eind punten worden doorgestuurd. Naast de telemetriegegevens van apparaten kunt u ook [niet-telemetrie-gebeurtenissen](iot-hub-devguide-messages-d2c.md#non-telemetry-events) verzenden die kunnen worden gebruikt om acties te activeren. 
+**[IOT hub bericht routering](iot-hub-devguide-messages-d2c.md)** : met deze IOT hub functie kunnen gebruikers apparaat-naar-Cloud-berichten door sturen naar service-eind punten, zoals Azure Storage containers, Event Hubs, service bus wachtrijen en service bus onderwerpen. Route ring biedt ook een query mogelijkheid om de gegevens te filteren voordat deze naar de eind punten worden doorgestuurd. Naast de telemetriegegevens van apparaten kunt u ook [niet-telemetrie-gebeurtenissen](iot-hub-devguide-messages-d2c.md#non-telemetry-events) verzenden die kunnen worden gebruikt om acties te activeren. 
 
-**Integratie met Event Grid IOT hub**: Azure Event Grid is een volledig beheerde service voor gebeurtenis routering die gebruikmaakt van een model voor publiceren en abonneren. IoT Hub en Event Grid werken samen om IoT Hub gebeurtenissen in bijna realtime te [integreren in Azure-en niet-Azure-Services](iot-hub-event-grid.md). IoT Hub het publiceren van [faxgebeurtenissen](iot-hub-event-grid.md#event-types), die algemeen beschikbaar zijn, en publiceert nu ook telemetrie-gebeurtenissen, die in open bare preview zijn.
+**IOT hub integratie met Event grid**: Azure Event grid is een volledig beheerde service voor gebeurtenis routering die gebruikmaakt van een model voor publiceren en abonneren. IoT Hub en Event Grid werken samen om IoT Hub gebeurtenissen in bijna realtime te [integreren in Azure-en niet-Azure-Services](iot-hub-event-grid.md). IoT Hub publiceert zowel gebeurtenis-en telemetrie [-gebeurtenissen.](iot-hub-event-grid.md#event-types)
 
 ## <a name="differences"></a>Verschillen
 
@@ -33,8 +33,8 @@ Hoewel zowel bericht routering als Event Grid waarschuwings configuratie inschak
 | ------- | --------------- | ---------- |
 | **Berichten en gebeurtenissen van apparaten** | Ja, de route ring van berichten kan worden gebruikt voor telemetriegegevens, het rapporteren van de dubbele wijzigingen van het apparaat, de levens cyclus van apparaten en gebeurtenissen voor digitale dubbele wijzigingen (onderdeel van de [IoT Plug en Play open bare preview](../iot-pnp/overview-iot-plug-and-play.md)). | Ja, Event Grid kunnen worden gebruikt voor telemetriegegevens, maar kan ook rapporteren wanneer apparaten worden gemaakt, verwijderd, verbonden en losgekoppeld van IoT Hub |
 | **Autom** | Ja, de volg orde van gebeurtenissen wordt gehandhaafd.  | Nee, volg orde van gebeurtenissen is niet gegarandeerd. | 
-| **Filteren** | Uitgebreide filtering voor eigenschappen van de bericht toepassing, eigenschappen van het berichten systeem, bericht tekst, dubbele Tags voor apparaten en dubbele eigenschappen van het apparaat. Filteren wordt niet toegepast op digitale dubbele wijzigings gebeurtenissen. Zie [query syntaxis voor bericht routering](iot-hub-devguide-routing-query-syntax.md)voor voor beelden. | Filteren op basis van het gebeurtenis type, het type onderwerp en de kenmerken van elke gebeurtenis. Zie voor voor beelden [inzicht in het filteren van gebeurtenissen in Event grid abonnementen](../event-grid/event-filtering.md). Bij het abonneren op telemetrie-gebeurtenissen kunt u extra filters toep assen op de gegevens die u wilt filteren op bericht eigenschappen, bericht tekst en onderliggend apparaat in uw IoT Hub voordat u naar Event Grid publiceert. Zie [gebeurtenissen filteren](../iot-hub/iot-hub-event-grid.md#filter-events). |
-| **Eind punten** | <ul><li>Event Hubs</li> <li>Azure Blob Storage</li> <li>Service Bus-wachtrij</li> <li>Service Bus-onderwerpen</li></ul><br>Betaalde IoT Hub Sku's (S1, S2 en S3) zijn beperkt tot 10 aangepaste eind punten. u kunt Maxi maal 100 routes maken per IoT Hub. | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Storage Blob</li> <li>Aangepaste onderwerpen</li> <li>Opslagwachtrij</li> <li>Microsoft Flow</li> <li>Services van derden via webhooks</li></ul><br>500-eind punten per IoT Hub worden ondersteund. Zie [Event grid gebeurtenis](../event-grid/overview.md#event-handlers)-handlers voor de meest recente lijst met eind punten. |
+| **Filtrati** | Uitgebreide filtering voor eigenschappen van de bericht toepassing, eigenschappen van het berichten systeem, bericht tekst, dubbele Tags voor apparaten en dubbele eigenschappen van het apparaat. Filteren wordt niet toegepast op digitale dubbele wijzigings gebeurtenissen. Zie [query syntaxis voor bericht routering](iot-hub-devguide-routing-query-syntax.md)voor voor beelden. | Filteren op basis van het gebeurtenis type, het type onderwerp en de kenmerken van elke gebeurtenis. Zie voor voor beelden [inzicht in het filteren van gebeurtenissen in Event grid abonnementen](../event-grid/event-filtering.md). Bij het abonneren op telemetrie-gebeurtenissen kunt u extra filters toep assen op de gegevens die u wilt filteren op bericht eigenschappen, bericht tekst en onderliggend apparaat in uw IoT Hub voordat u naar Event Grid publiceert. Zie [gebeurtenissen filteren](../iot-hub/iot-hub-event-grid.md#filter-events). |
+| **Eind punten** | <ul><li>Event Hubs</li> <li>Azure Blob Storage</li> <li>Service Bus wachtrij</li> <li>Service Bus-onderwerpen</li></ul><br>Betaalde IoT Hub Sku's (S1, S2 en S3) zijn beperkt tot 10 aangepaste eind punten. u kunt Maxi maal 100 routes maken per IoT Hub. | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Storage Blob</li> <li>Aangepaste onderwerpen</li> <li>Queue Storage</li> <li>Microsoft Flow</li> <li>Services van derden via webhooks</li></ul><br>500-eind punten per IoT Hub worden ondersteund. Zie [Event grid gebeurtenis-handlers](../event-grid/overview.md#event-handlers)voor de meest recente lijst met eind punten. |
 | **Kosten** | Er worden geen afzonderlijke kosten in rekening gebracht voor bericht routering. Alleen binnenbrengen van telemetrie in IoT Hub wordt in rekening gebracht. Als u bijvoorbeeld een bericht naar drie verschillende eind punten hebt doorgestuurd, wordt slechts één bericht in rekening gebracht. | Er worden geen kosten in rekening gebracht van IoT Hub. Event Grid biedt de eerste 100.000 bewerkingen per maand gratis en vervolgens $0,60 per miljoen bewerkingen. |
 
 ## <a name="similarities"></a>Overeenkomsten
@@ -44,11 +44,11 @@ IoT Hub bericht Routering en Event Grid hebben er ook vergelijk bare, wat wordt 
 | Functie | Berichten routering IoT Hub | Integratie met Event Grid IoT Hub |
 | ------- | --------------- | ---------- |
 | **Maximale bericht grootte** | 256 KB, apparaat-naar-Cloud | 256 KB, apparaat-naar-Cloud |
-| **Betrouwbaarheid** | Hogesnelheidsnet Levert elk bericht aan het eind punt ten minste één keer per route. Verloopt alle berichten die niet binnen één uur worden geleverd. | Hogesnelheidsnet Levert elk bericht aan de webhook ten minste één keer voor elk abonnement. Verloopt alle gebeurtenissen die niet binnen 24 uur worden geleverd. | 
-| **Schaalbaarheid** | Hogesnelheidsnet Geoptimaliseerd ter ondersteuning van miljoenen gelijktijdig verbonden apparaten die miljarden berichten verzenden. | Hogesnelheidsnet Geschikt voor route ring van 10.000.000 gebeurtenissen per seconde per regio. |
-| **Latentie** | Gebrek Bijna real time. | Gebrek Bijna real time. |
+| **Betrouwbaarheid** | Hoog: elk bericht wordt voor elke route ten minste één keer op het eind punt bezorgd. Verloopt alle berichten die niet binnen één uur worden geleverd. | Hoog: Hiermee wordt elk bericht ten minste één keer op de webhook bezorgd voor elk abonnement. Verloopt alle gebeurtenissen die niet binnen 24 uur worden geleverd. | 
+| **Schaalbaarheid** | Hoog: geoptimaliseerd voor de ondersteuning van miljoenen gelijktijdig verbonden apparaten die miljarden berichten verzenden. | Hoog: de route ring van 10.000.000 gebeurtenissen per seconde per regio is mogelijk. |
+| **Latentie** | Laag: bijna realtime. | Laag: bijna realtime. |
 | **Verzenden naar meerdere eind punten** | Ja, Eén bericht verzenden naar meerdere eind punten. | Ja, Eén bericht verzenden naar meerdere eind punten.  
-| **Beveiliging** | IOT hub biedt identiteit per apparaat en ingetrokken Access Control. Zie de [IOT hub Access Control](iot-hub-devguide-security.md)voor meer informatie. | Event Grid biedt validatie op drie punten: gebeurtenis abonnementen, gebeurtenis publicatie en webhook gebeurtenis levering. Zie voor meer informatie, [Event Grid-beveiliging en verificatie](../event-grid/security-authentication.md). |
+| **Beveiliging** | IOT hub biedt identiteit per apparaat en ingetrokken Access Control. Zie de [IOT hub Access Control](iot-hub-devguide-security.md)voor meer informatie. | Event Grid biedt validatie op drie punten: gebeurtenis abonnementen, gebeurtenis publicatie en webhook gebeurtenis levering. Zie [Event grid beveiliging en verificatie](../event-grid/security-authentication.md)voor meer informatie. |
 
 ## <a name="how-to-choose"></a>Hoe u kunt kiezen
 

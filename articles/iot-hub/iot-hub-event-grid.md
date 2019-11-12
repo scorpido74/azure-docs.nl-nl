@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 7d5a232d92c37a94ff427a3bf203f6f20764060e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a2bb961989d5bb1cc879b197e45d25b566c56e83
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748577"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906777"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reageren op IoT Hub gebeurtenissen met behulp van Event Grid om acties te activeren
 
@@ -25,7 +25,7 @@ Azure IoT Hub integreert met Azure Event Grid, zodat u gebeurtenis meldingen kun
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
-De Event Grid-integratie is beschikbaar voor IoT-hubs in de regio's waar Event Grid wordt ondersteund. Alle faxgebeurtenissen behalve telemetrie-gebeurtenissen van apparaten zijn algemeen beschikbaar. De telemetrie-gebeurtenis van het apparaat bevindt zich in de open bare preview en is beschikbaar in alle regio's behalve VS-Oost, VS-West, Europa-west, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china)en [Azure Duitsland](https://azure.microsoft.com/global-infrastructure/germany/). Zie voor de meest recente lijst met regio's [een inleiding tot Azure Event grid](../event-grid/overview.md).
+De Event Grid-integratie is beschikbaar voor IoT-hubs in de regio's waar Event Grid wordt ondersteund. Zie voor de meest recente lijst met regio's [een inleiding tot Azure Event grid](../event-grid/overview.md).
 
 ## <a name="event-types"></a>Gebeurtenis typen
 

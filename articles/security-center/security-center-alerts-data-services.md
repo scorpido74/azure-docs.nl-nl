@@ -1,6 +1,6 @@
 ---
 title: Detectie van bedreigingen voor gegevens Services in Azure Security Center | Microsoft Docs
-description: Dit onderwerp bevat de beschik bare Data Services-waarschuwingen in Azure Security Center.
+description: Dit artikel bevat de beschik bare Data Services-waarschuwingen in Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,16 +10,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: c69352b8ff11edfce8bd800a0d3aad4584557572
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d23d9d2712923f37b3ab9da5ae5369342cd82f5d
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621350"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906995"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Detectie van bedreigingen voor gegevens Services in Azure Security Center
 
- Azure Security Center analyseert de logboeken van de services voor gegevens opslag en activeert waarschuwingen wanneer een bedreiging voor uw gegevens bronnen wordt gedetecteerd. In dit onderwerp vindt u de waarschuwingen die Security Center gegenereerd voor de volgende services:
+ Azure Security Center analyseert de logboeken van de services voor gegevens opslag en activeert waarschuwingen wanneer een bedreiging voor uw gegevens bronnen wordt gedetecteerd. In dit artikel vindt u de waarschuwingen die Security Center gegenereerd voor de volgende services:
 
 * [Azure SQL Database en Azure SQL Data Warehouse](#data-sql)
 * [Azure Storage](#azure-storage)
@@ -53,7 +53,7 @@ Security Center analyseert Diagnostische logboeken met lees-, schrijf-en verwijd
 
 |Waarschuwing|Beschrijving|
 |---|---|
-|**Afwijking van ongebruikelijke locatie toegang**|Voor beeld van netwerk verkeer analyse heeft afwijkende uitgaande Remote Desktop Protocol (RDP)-communicatie gedetecteerd, afkomstig van een bron in uw implementatie. Deze activiteit wordt als abnormaal beschouwd voor deze omgeving. Dit kan erop duiden dat de bron is aangetast en wordt nu gebruikt om een extern RDP-eind punt aanval te forceren. Dit type activiteit kan ertoe leiden dat uw IP als schadelijk wordt gemarkeerd door externe entiteiten.|
+|**Toegang vanaf ongebruikelijke locatie**|Geeft aan dat er een wijziging is in het toegangs patroon voor een Azure Storage-account. Iemand heeft toegang verkregen tot dit account vanuit een IP-adres dat als niet-vertrouwd wordt beschouwd in vergelijking met recente activiteiten. Een aanvaller heeft toegang verkregen tot het account of een rechtmatige gebruiker heeft verbinding gemaakt vanaf een nieuwe of ongebruikelijke geografische locatie. Een voor beeld van de laatste is extern onderhoud van een nieuwe toepassing of ontwikkelaar.|
 |**Afwijking van toepassings toegang**|Geeft aan dat een ongebruikelijke toepassing toegang heeft gekregen tot dit opslag account. Een mogelijke oorzaak is dat een aanvaller met een nieuwe toepassing toegang heeft tot uw opslag account.|
 |**Afwijking anonieme toegang**|Geeft aan dat er een wijziging is in het toegangs patroon voor een opslag account. Zo is bijvoorbeeld anoniem toegang gekregen tot het account (zonder enige verificatie). Dit is onverwacht vergeleken met het recente toegangs patroon voor dit account. Een mogelijke oorzaak is dat een aanvaller open bare Lees toegang heeft voor een container die Blob-opslag bevat.|
 |**Tor-afwijkingen**|Geeft aan dat de toegang tot dit account is verkregen vanaf een IP-adres dat een actief eind knooppunt van Tor (een anoniem-proxy) wordt genoemd. Bij de ernst van deze waarschuwing wordt rekening gehouden met het gebruikte verificatie type (indien van toepassing) en of dit het eerste geval van dergelijke toegang is. Mogelijke oorzaken kunnen een aanvaller zijn die toegang heeft gehad tot uw opslag account via Tor of een rechtmatige gebruiker die toegang heeft gehad tot uw opslag account met behulp van Tor.|

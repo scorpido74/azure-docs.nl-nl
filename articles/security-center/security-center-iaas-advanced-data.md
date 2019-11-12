@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 93e52b393db288f5b19afde4a31e08d0bb91b471
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571562"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907029"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Geavanceerde gegevens beveiliging voor SQL-servers in azure Virtual Machines (preview-versie)
 Geavanceerde gegevens beveiliging voor SQL-servers in azure Virtual Machines is een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. Deze preview-functie bevat functionaliteit voor het identificeren en beperken van potentiële database problemen en het detecteren van afwijkende activiteiten die kunnen wijzen op bedreigingen voor uw data base. 
@@ -54,7 +54,7 @@ Geavanceerde gegevens beveiliging inschakelen voor SQL-servers op Virtual Machin
     Geavanceerde gegevens beveiliging voor SQL-servers wordt ingeschakeld op alle SQL-servers die zijn verbonden met de geselecteerde werk ruimte of de standaard werkruimte van het geselecteerde abonnement.
 
     >[!NOTE]
-    > De oplossing is actief nadat de SQL Server voor het eerst opnieuw is opgestart. 
+    > De oplossing is volledig actief na de eerste keer opnieuw opstarten van de SQL Server. 
 
 Als u een nieuwe werk ruimte wilt maken, volgt u de instructies in [een log Analytics-werk ruimte maken](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
@@ -72,7 +72,7 @@ U kunt een lijst met ontvangers instellen om een e-mail melding te ontvangen wan
 1. Klik in het menu instellingen op **e-mail meldingen**. 
 1. Voer in het tekstvak **e-mail adres** de e-mail adressen in om de meldingen te ontvangen. U kunt meer dan één e-mail adres invoeren door de e-mail adressen te scheiden door een komma (,).  Bijvoorbeeld admin1@mycompany.com,admin2@mycompany.com,admin3@mycompany.com
 
-      ![E-mailinstellingen](./media/security-center-advanced-iaas-data/email-settings.png)
+    ![E-mailinstellingen](./media/security-center-advanced-iaas-data/email-settings.png)
 
 1. Stel in de instellingen voor **e-mail meldingen** de volgende opties in:
   
@@ -88,29 +88,27 @@ U kunt een lijst met ontvangers instellen om een e-mail melding te ontvangen wan
 
 Het dash board evaluatie van beveiligings problemen biedt een overzicht van de resultaten van de evaluatie in al uw data bases. U kunt de distributie van data bases weer geven op basis van SQL Server versie, samen met een samen vatting van fouten versus het door geven van data bases en een algehele samen vatting van mislukte controles volgens risico distributie.
 
-U kunt de resultaten van de evaluatie van beveiligings problemen en rapporten rechtstreeks van Log Analytics weer geven.
+U kunt de resultaten van de evaluatie van de beveiligings problemen rechtstreeks vanuit Security Center weer geven.
 
-1. Navigeer naar uw Log Analytics-werk ruimte met de geavanceerde gegevens beveiligings oplossing.
-1. Navigeer naar **oplossingen** en selecteer de oplossing **SQL-evaluatie van beveiligings problemen** .
-1. Klik in het deel venster **samen** vatting op **samen vatting weer geven** en selecteer het **rapport evaluatie van SQL-beveiligings problemen**.
+1. Selecteer op de zijbalk van Security Center onder RESOURCE SECURITY-hygiëne **gegevens & opslag**.
 
-    ![SQL-evaluatie rapport](./media/security-center-advanced-iaas-data/ads-sql-server-1.png)
+1. Selecteer de aanbevolen **beveiligings problemen voor uw SQL-data bases in vm's moeten worden hersteld (preview-versie)** . Zie [Security Center-aanbevelingen](security-center-recommendations.md)voor meer informatie. 
 
-    Het rapport dashboard wordt geladen. Zorg ervoor dat het tijd venster is ingesteld op ten minste de **laatste 7 dagen** sinds scans voor de evaluatie van beveiligings problemen worden uitgevoerd op uw data bases in een vast schema van één keer per zeven dagen.
+    [![* * beveiligings problemen voor uw SQL-data bases in Vm's moeten worden hersteld (preview) * * Recommendation](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
 
-    ![De afgelopen 7 dagen instellen](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
+    De gedetailleerde weer gave voor deze aanbeveling wordt weer gegeven.
 
-1. Als u meer details wilt bekijken, klikt u op een van de dashboard items. Bijvoorbeeld:
+    [![gedetailleerde weer gave voor de * * beveiligings problemen voor uw SQL-data bases in Vm's moet worden hersteld (preview-versie) * * aanbeveling](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
 
-   1. Klik op een beveiligings probleem in de sectie **samen vatting van mislukte controles** om een log Analytics tabel met de resultaten voor deze controle in alle data bases weer te geven. De resultaten worden als eerste weer gegeven.
+1. Meer informatie over inzoomen:
 
-   1. Klik vervolgens op door om de Details voor elk beveiligings probleem te bekijken, met inbegrip van de beschrijving van het beveiligingslek en de impact, status, het bijbehorende risico en de werkelijke resultaten van deze data base. U kunt ook de daad werkelijke query zien die is uitgevoerd om deze controle uit te voeren en informatie over herstel voor het oplossen van dit beveiligings probleem.
+    * Voor een overzicht van gescande resources (data bases) en de lijst met beveiligings controles die zijn getest, klikt u op de server van belang.
+    [![beveiligings problemen die zijn gegroepeerd op SQL Server](media/security-center-advanced-iaas-data/single-server-view.png)](media/security-center-advanced-iaas-data/single-server-view.png#lightbox)
 
-    ![Werkruimte selecteren](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
+    * Voor een overzicht van de beveiligings problemen gegroepeerd op een specifieke SQL database, klikt u op de gewenste data base.
+    [![beveiligings problemen die zijn gegroepeerd op SQL Server](media/security-center-advanced-iaas-data/single-database-view.png)](media/security-center-advanced-iaas-data/single-database-view.png#lightbox)
 
-    ![Werkruimte selecteren](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
-
-1. U kunt alle Log Analytics query's uitvoeren op de resultaten van de evaluatie van beveiligings problemen, om de gegevens te segmenteren en te dobbelten op basis van uw behoeften.
+    In elke weer gave worden de beveiligings controles gesorteerd op **Ernst**. Klik op een specifieke beveiligings controle om het deel venster Details te bekijken met een **Beschrijving**, het probleem te **verhelpen** en andere gerelateerde informatie, zoals **impact** of **Bench Mark**.
 
 ## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Geavanceerde bedreigings beveiliging voor SQL-servers op Azure Vm's-waarschuwingen
 Waarschuwingen worden gegenereerd door ongebruikelijke en mogelijk schadelijke pogingen om SQL-servers te openen of misbruik te maken. Deze gebeurtenissen kunnen de volgende waarschuwingen activeren:

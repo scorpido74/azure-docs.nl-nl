@@ -17,24 +17,24 @@ ms.date: 07/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2b30b6463ed3d58ec1565f3c49f98388ad09ed4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: a43c5849dcd037915a46de182064b3e630a663ec
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186285"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907184"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Controleactiviteitenrapporten in Azure Active Directory Portal 
 
-Met Azure Active Directory-rapporten (Azure AD) kunt u de gegevens ophalen die u nodig hebt om te bepalen hoe uw omgeving bezig is.
+Met Azure Active Directory-rapporten (Azure AD) kunt u de gegevens ophalen die u nodig hebt om te bepalen hoe uw omgeving wordt uitgevoerd.
 
 De rapportage architectuur bestaat uit de volgende onderdelen:
 
 - **Activiteit** 
-    - Aanmeldingen: het [rapport](concept-sign-ins.md) met aanmeldingen bevat informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers.
+    - **Aanmeldingen** : het [rapport met aanmeldingen](concept-sign-ins.md) bevat informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers.
     - **Auditlogboeken**: traceerbaarheid via logboeken voor alle door diverse functies binnen Azure AD uitgevoerde wijzigingen. Voor beelden van audit logboeken zijn wijzigingen die zijn aangebracht in resources binnen Azure AD, zoals het toevoegen of verwijderen van gebruikers, apps, groepen, rollen en beleid.
 - **Beveiliging** 
-    - **Risk ante** aanmeldingen: een [Risk ante aanmelding](concept-risky-sign-ins.md) is een indicator voor een aanmeldings poging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikers account is. 
+    - **Risk ante aanmeldingen** : een [Risk ante aanmelding](concept-risky-sign-ins.md) is een indicator voor een aanmeldings poging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikers account is. 
     - **Gebruikers die zijn gemarkeerd voor risico** : een [Risk ante gebruiker](concept-user-at-risk.md) is een indicator voor een gebruikers account dat mogelijk is aangetast.
 
 In dit artikel vindt u een overzicht van het controle rapport.
@@ -42,9 +42,9 @@ In dit artikel vindt u een overzicht van het controle rapport.
 ## <a name="who-can-access-the-data"></a>Wie heeft er toegang tot de gegevens?
 
 * Gebruikers in **beveiligings beheerders**, **beveiligings lezer**, **Report Reader** of **Global Administrator** rollen
-* Daarnaast kunnen alle gebruikers (niet-beheerders) hun eigen controle activiteiten zien
+* Daarnaast kunnen alle gebruikers (niet-beheerders) hun eigen aanmeldings activiteiten zien
 
-## <a name="audit-logs"></a>Controlelogboeken
+## <a name="audit-logs"></a>Auditlogboeken
 
 De Azure AD-controle logboeken bieden records van systeem activiteiten voor naleving. Om het controle rapport te openen, selecteert u **controle logboeken** in het gedeelte **activiteit** van **Azure Active Directory**. Houd er rekening mee dat audit Logboeken een latentie van Maxi maal een uur kunnen hebben, zodat het lang kan duren voordat de gegevens van de controle activiteit worden weer gegeven in de portal nadat u de taak hebt voltooid.
 
@@ -57,7 +57,7 @@ Een controlelogboek heeft een standaardlijstweergave die het volgende laat zien:
 - de categorie en de naam van de activiteit (*wat*) 
 - de status van de activiteit (geslaagd of mislukt)
 - het doel
-- de initiator/Actor (wie) van een activiteit
+- De initiator/Actor (wie) van een activiteit
 
 ![Auditlogboeken](./media/concept-audit-logs/listview.png "Auditlogboeken")
 
@@ -90,7 +90,7 @@ U kunt de controle gegevens filteren op de volgende velden:
 
 Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de volgende services selecteren:
 
-- Alle
+- Alles
 - Toegangsbeoordelingen
 - Account inrichten 
 - SSO van de toepassing
@@ -99,7 +99,7 @@ Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de vo
 - Voorwaardelijke toegang
 - Hoofddirectory
 - Rechtenbeheer
-- Identity Protection
+- Identiteitsbeveiliging
 - Uitgenodigde gebruikers
 - PIM
 - Self-service voor groepsbeheer
@@ -108,12 +108,12 @@ Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de vo
 
 Met het filter **categorie** kunt u een van de volgende filters selecteren:
 
-- Alle
+- Alles
 - AdministrativeUnit
 - ApplicationManagement
 - Authentication
-- Authorization
-- Neem contact op met
+- Autorisatie
+- Contactpersoon
 - Apparaat
 - Apparaatconfiguratie
 - DirectoryManagement
@@ -127,11 +127,11 @@ Met het filter **categorie** kunt u een van de volgende filters selecteren:
 
 Het **activiteiten** filter is gebaseerd op de selectie van de categorie en het resource type voor de activiteit die u maakt. U kunt een specifieke activiteit of alle activiteiten selecteren. 
 
-U kunt de lijst met alle controle activiteiten ophalen met behulp van de Graph API:`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
+U kunt de lijst met alle controle activiteiten ophalen met behulp van de Graph API: `https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
 Met het filter **status** kunt u filteren op basis van de status van een audit bewerking. De status kan een van de volgende zijn:
 
-- Alle
+- Alles
 - Geslaagd
 - Fout
 
@@ -145,7 +145,7 @@ Mogelijke waarden zijn:
 - 1 maand
 - 7 dagen
 - 24 uur
-- Aanpassen
+- Aangepast
 
 Wanneer u een aangepast tijdsbestek selecteert, kunt u een begintijd en eindtijd configureren.
 

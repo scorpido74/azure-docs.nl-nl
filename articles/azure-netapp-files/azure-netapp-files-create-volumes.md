@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 1a479b4928631f27d5453d462a59fe7fed09a88c
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 1f312e8a5034d238e4802e9323bc1b5ac5cdae21
+ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302758"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906235"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Een NFS-volume maken voor Azure NetApp Files
 
@@ -34,7 +34,7 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 ## <a name="considerations"></a>Overwegingen 
 
 > [!IMPORTANT] 
-> Voor toegang tot de functie NFSv 4.1 is white list vereist.  Als u White List wilt aanvragen, moet u een aanvraag indienen bij <anffeedback@microsoft.com>. 
+> Voor toegang tot de functie NFSv 4.1 is white list vereist.  Als u White List wilt aanvragen, dient u een aanvraag in bij <anffeedback@microsoft.com>. 
 
 * Bepalen welke NFS-versie moet worden gebruikt  
   NFSv3 kan een groot aantal use-cases verwerken en wordt meestal geïmplementeerd in de meeste bedrijfs toepassingen. U dient te controleren welke versie (NFSv3 of NFSv 4.1) uw toepassing vereist en maakt u het volume met behulp van de juiste versie. Als u bijvoorbeeld [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)gebruikt, wordt het vergren delen van bestanden met nfsv 4.1 aanbevolen voor NFSv3. 
@@ -43,7 +43,7 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
   Ondersteuning voor UNIX-modus bits (lezen, schrijven en uitvoeren) is beschikbaar voor NFSv3 en NFSv 4.1. Toegang op hoofd niveau is vereist op de NFS-client om NFS-volumes te koppelen.
 
 * Lokale gebruiker/groep en LDAP-ondersteuning voor NFSv 4.1  
-  Op dit moment ondersteunt NFSv 4.1 alleen toegang tot de hoofdmap voor volumes. 
+  Op dit moment ondersteunt NFSv 4.1 alleen toegang tot de hoofdmap voor volumes. Zie [nfsv 4.1 standaard domein configureren voor Azure NetApp files](azure-netapp-files-configure-nfsv41-domain.md). 
 
 ## <a name="best-practice"></a>Best practice
 
@@ -68,7 +68,7 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
         Een volume naam moet uniek zijn binnen elke capaciteits groep. De naam moet minstens drie tekens bevatten. U kunt alle alfanumerieke tekens gebruiken.   
 
-        U kunt `default` niet gebruiken als de naam van het volume.
+        U kunt `default` niet als de naam van het volume gebruiken.
 
     * **Capaciteits pool**  
         Geef de capaciteits pool op waar u het volume wilt maken.
@@ -115,6 +115,7 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
 ## <a name="next-steps"></a>Volgende stappen  
 
+* [Het standaard domein NFSv 4.1 configureren voor Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
 * [Een volume koppelen of ontkoppelen voor virtuele Windows-of Linux-machines](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Exportbeleid voor een NFS-volume configureren](azure-netapp-files-configure-export-policy.md)
 * [Resourcelimieten voor Azure NetApp Files](azure-netapp-files-resource-limits.md)
