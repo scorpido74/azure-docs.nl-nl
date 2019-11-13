@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 6e42911d05f387ea47b56b913e9a1868100c1b3c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821366"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009104"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>De prestaties van de query in Azure SQL Database hand matig afstemmen
 
@@ -253,7 +253,7 @@ Als u een scale-out-architectuur in Azure SQL Database gebruikt, is het een goed
 
 Voor toepassingen die toegang hebben tot gegevens met behulp van hoog volume, frequente ad hoc query's, wordt een aanzienlijke hoeveelheid reactie tijd besteed aan netwerk communicatie tussen de toepassingslaag en de laag Azure SQL Database. Zelfs wanneer zowel de toepassing als de Azure SQL Database zich in hetzelfde Data Center bevinden, kan de netwerk latentie tussen de twee worden verg root door een groot aantal bewerkingen voor gegevens toegang. Als u de netwerk round trips voor de gegevens toegangs bewerkingen wilt reduceren, kunt u de optie gebruiken om de ad-hoc-query's te batch of te compileren als opgeslagen procedures. Als u de ad-hoc query's batcheert, kunt u meerdere query's verzenden als één grote batch in één reis naar Azure SQL Database. Als u ad-hoc query's in een opgeslagen procedure compileert, kunt u hetzelfde resultaat opleveren als bij de batch-subquery's. Het gebruik van een opgeslagen procedure biedt u het voor deel van het verg Roten van de kans op het in de cache plaatsen van de query plannen in Azure SQL Database zodat u de opgeslagen procedure opnieuw kunt gebruiken.
 
-Sommige toepassingen zijn write-intensief. Soms kunt u de totale i/o-belasting voor een Data Base verminderen door te overwegen hoe u batches tegelijk schrijft. Vaak is dit net zo eenvoudig als het gebruik van expliciete trans acties in plaats van trans acties met automatische door Voer in opgeslagen procedures en ad hoc batches. Zie [batch-technieken voor SQL database-toepassingen in azure](https://msdn.microsoft.com/library/windowsazure/dn132615.aspx)voor een evaluatie van de verschillende technieken die u kunt gebruiken. Experimenteer met uw eigen werk belasting om het juiste model voor batch verwerking te vinden. Houd er rekening mee dat een model weinig verschillende garanties voor transactionele consistentie kan hebben. Het vinden van de juiste werk belasting voor het minimaliseren van het resource gebruik vereist het vinden van de juiste combi natie van consistentie en prestatie verhouding.
+Sommige toepassingen zijn write-intensief. Soms kunt u de totale i/o-belasting voor een Data Base verminderen door te overwegen hoe u batches tegelijk schrijft. Vaak is dit net zo eenvoudig als het gebruik van expliciete trans acties in plaats van trans acties met automatische door Voer in opgeslagen procedures en ad hoc batches. Zie [batch-technieken voor SQL database-toepassingen in azure](sql-database-use-batching-to-improve-performance.md)voor een evaluatie van de verschillende technieken die u kunt gebruiken. Experimenteer met uw eigen werk belasting om het juiste model voor batch verwerking te vinden. Houd er rekening mee dat een model weinig verschillende garanties voor transactionele consistentie kan hebben. Het vinden van de juiste werk belasting voor het minimaliseren van het resource gebruik vereist het vinden van de juiste combi natie van consistentie en prestatie verhouding.
 
 ### <a name="application-tier-caching"></a>Caching op toepassings niveau
 

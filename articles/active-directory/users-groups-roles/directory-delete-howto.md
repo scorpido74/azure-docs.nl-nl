@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7993810343f6bd925afd54cc38a8302420d6aec
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 47a60ed44ddf057ef983f8f76f23fd784bc3efd5
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439345"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961818"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Een map in Azure Active Directory verwijderen
 
@@ -67,7 +67,7 @@ Inrichting ongedaan gemaakt (30 dagen na uitgeschakeld) | Gegevens verwijderd (a
 
 Met het Microsoft 365-beheer centrum kunt u een abonnement op de **onvoorziene** status laten verwijderen in drie dagen.
 
-1. Meld u aan bij het [Microsoft 365-beheer centrum](https://admin.microsoft.com) met een account dat een globale beheerder is in uw organisatie. Als u probeert de Directory contoso te verwijderen met de oorspronkelijke standaard domein contoso.onmicrosoft.com, meldt u zich aan met een UPN, zoals admin@contoso.onmicrosoft.com.
+1. Meld u aan bij het [Microsoft 365-beheer centrum](https://admin.microsoft.com) met een account dat een globale beheerder is in uw organisatie. Als u probeert de Directory contoso te verwijderen met de oorspronkelijke standaard domein contoso.onmicrosoft.com, meldt u zich aan met een UPN zoals admin@contoso.onmicrosoft.com.
 
 2. Bekijk een voor beeld van het nieuwe Microsoft 365-beheer centrum door ervoor te zorgen dat de nieuwe schakel optie voor het **beheer centrum** is ingeschakeld.
 
@@ -97,7 +97,7 @@ Met het Microsoft 365-beheer centrum kunt u een abonnement op de **onvoorziene**
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Ik heb een proef abonnement dat verwijderen blokkeert
 
-Er zijn [self-service-aanmeldingen](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , zoals micro soft Power BI, Rights Management Services, micro soft power apps of Dynamics 365, afzonderlijke gebruikers kunnen zich aanmelden via Office 365, waarmee ook een gast gebruiker voor verificatie wordt gemaakt in uw Azure AD-Directory . Met deze self-service producten worden verwijderde mappen geblokkeerd tot ze volledig zijn verwijderd uit de map, om gegevens verlies te voor komen. Ze kunnen alleen worden verwijderd door de Azure AD-beheerder, ongeacht of de gebruiker zich afzonderlijk heeft aangemeld of het product heeft toegewezen.
+Er zijn [self-service-aanmeldingen](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , zoals micro soft Power BI, Rights Management Services, micro soft power apps of Dynamics 365, afzonderlijke gebruikers kunnen zich aanmelden via Office 365, waarmee ook een gast gebruiker voor verificatie wordt gemaakt in uw Azure AD-adres lijst. Met deze self-service producten worden verwijderde mappen geblokkeerd tot ze volledig zijn verwijderd uit de map, om gegevens verlies te voor komen. Ze kunnen alleen worden verwijderd door de Azure AD-beheerder, ongeacht of de gebruiker zich afzonderlijk heeft aangemeld of het product heeft toegewezen.
 
 Er zijn twee soorten self-service registratie producten die worden toegewezen: 
 
@@ -108,24 +108,24 @@ Wanneer u het verwijderen van het self-service-aanmeldings product start, worden
 
 Zie [beschik bare selfservice Program ma's](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)voor meer informatie over momenteel beschik bare self-service voor het aanmelden van services.
 
-Zie de volgende tabel voor wat u kunt verwachten wanneer een proef versie van Office 365 verloopt (exclusief betaalde partner/CSP, Enterprise Agreement of volume licentie). Zie [Wat gebeurt er met mijn gegevens en toegang wanneer mijn Office 365 voor bedrijven-abonnement wordt beëindigd?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)voor meer informatie over het bewaren van gegevens in Office 365 en de levens cyclus van abonnementen.
+Zie de volgende tabel voor wat u kunt verwachten wanneer een proef versie van Office 365 verloopt (exclusief betaalde partner/CSP, Enterprise Agreement of volume licentie). Zie [Wat gebeurt er met mijn gegevens en toegang wanneer mijn Office 365 voor bedrijven-abonnement wordt beëindigd?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)voor meer informatie over het bewaren van gegevens in Office 365 en de levens cyclus van abonnementen.
 
 Product status | Gegevens | Toegang tot gegevens
 ------------- | ---- | --------------
 Actief (30 dagen voor proef versie) | Gegevens die toegankelijk zijn voor alle | Gebruikers hebben normale toegang tot een self-service voor het registreren van een product, bestanden of apps<br>Beheerders hebben normale toegang tot Microsoft 365 beheer centrum en bronnen
-Deleted | Gegevens verwijderd | Gebruikers kunnen geen toegang krijgen tot een self-service voor het aanmelden, bestanden of apps<br>Beheerders hebben toegang tot het Microsoft 365-beheer centrum om andere abonnementen te kopen en te beheren
+Verwijderen | Gegevens verwijderd | Gebruikers kunnen geen toegang krijgen tot een self-service voor het aanmelden, bestanden of apps<br>Beheerders hebben toegang tot het Microsoft 365-beheer centrum om andere abonnementen te kopen en te beheren
 
 ## <a name="how-can-i-delete-a-self-service-sign-up-product-in-the-azure-portal"></a>Hoe kan ik een self-service-aanmeld product verwijderen in de Azure Portal?
 
 U kunt een self-service registratie product, zoals micro soft Power BI of Azure Rights Management Services, in een **verwijderings** status plaatsen zodat ze onmiddellijk worden verwijderd in de Azure AD-Portal.
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) with een account dat een globale beheerder in de organisatie is. Als u probeert de Directory contoso te verwijderen met de oorspronkelijke standaard domein contoso.onmicrosoft.com, meldt u zich aan met een UPN, zoals admin@contoso.onmicrosoft.com.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat een globale beheerder in de organisatie is. Als u probeert de Directory contoso te verwijderen met de oorspronkelijke standaard domein contoso.onmicrosoft.com, meldt u zich aan met een UPN zoals admin@contoso.onmicrosoft.com.
 
-2. Selecteer **licenties**en selecteer vervolgens **self-service registratie producten**. U kunt alle Self-service-aanmeldings producten afzonderlijk van de op seat gebaseerde abonnementen bekijken. Kies het product dat u definitief wilt verwijderen. Hier volgt een voor beeld van micro soft Power BI:
+2. Selecteer **licenties**en selecteer vervolgens **self-service registratie producten**. U kunt alle Self-service-aanmeldings producten afzonderlijk van de op seat gebaseerde abonnementen bekijken. Kies het product dat u definitief wilt verwijderen. Hier volgt een voor beeld van micro soft Power BI:
 
     ![de gebruikers naam is onjuist getypt of niet gevonden](./media/directory-delete-howto/licenses-page.png)
 
-3. Selecteer **verwijderen** To het product verwijderen en accepteer de voor waarden dat gegevens onmiddellijk en onherroepelijk worden verwijderd. Met deze Verwijder actie worden alle gebruikers verwijderd en wordt de organisatie toegang tot het product verwijderd. Klik op Ja om door te gaan met de verwijdering.  
+3. Selecteer **verwijderen** om het product te verwijderen en de voor waarden te accepteren waarmee gegevens onmiddellijk en onherroepelijk worden verwijderd. Met deze Verwijder actie worden alle gebruikers verwijderd en wordt de organisatie toegang tot het product verwijderd. Klik op Ja om door te gaan met de verwijdering.  
 
     ![de gebruikers naam is onjuist getypt of niet gevonden](./media/directory-delete-howto/delete-product.png)
 

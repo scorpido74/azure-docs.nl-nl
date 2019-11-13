@@ -3,7 +3,7 @@ title: Zelf studie voor AD Reporting API met certificaten | Microsoft Docs
 description: In deze zelf studie wordt uitgelegd hoe u de rapportage-API van Azure AD gebruikt met certificaat referenties om gegevens op te halen uit directory's zonder tussen komst van de gebruiker.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fe5f2a6d1957a544c63cb8a7c223ba9734786f8
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4d723af5d994006c4ae4f90905ede73fa87326bf
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895135"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014272"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Zelf studie: gegevens ophalen met behulp van de API voor Azure Active Directory rapportage met certificaten
 
@@ -39,7 +39,7 @@ In deze zelf studie leert u hoe u een test certificaat kunt gebruiken om toegang
 
 4. Down load en Installeer [Azure AD Power shell v2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md).
 
-5. Installeer [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/). Deze module biedt verschillende cmdlets, waaronder:
+5. Install [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/). Deze module biedt verschillende cmdlets, waaronder:
     - De ADAL-bibliotheken die nodig zijn voor authenticatie
     - Toegangstokens van gebruiker, toepassingssleutels en certificaten met behulp van ADAL
     - Afhandeling van pagina's met zoekresultaten door Graph API
@@ -87,15 +87,15 @@ In deze zelf studie leert u hoe u een test certificaat kunt gebruiken om toegang
   
 7. U kunt nu een toegangs token verkrijgen voor de MS-Graph API met behulp van dit certificaat. Gebruik de cmdlet **Get-MSCloudIdMSGraphAccessTokenFromCert** van de MSCloudIdUtils Power shell-module, waarbij u de toepassings-id en de vinger afdruk doorgeeft die u hebt verkregen uit de vorige stap. 
 
-   ![Azure Portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
+   ![Azure-portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
 8. Gebruik het toegangs token in uw Power shell-script om de Graph API op te vragen. Gebruik de cmdlet **invoke-MSCloudIdMSGraphQuery** van de MSCloudIDUtils om het eind punt aanmeldingen en directoryAudits te inventariseren. Met deze cmdlet worden resultaten met meerdere pagina's verwerkt en worden deze resultaten verzonden naar de Power shell-pijp lijn.
 
 9. Zoek het directoryAudits-eind punt op om de audit logboeken op te halen. 
-   ![Azure-portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
+   ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
 10. Zoek het aanmeldingen-eind punt op om de aanmeld logboeken op te halen.
-    ![Azure-portal](./media/tutorial-access-api-with-certificates/query-signins.png)
+    ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
 
 11. U kunt er nu voor kiezen om deze gegevens te exporteren naar een CSV en op te slaan in een SIEM-systeem. U kunt uw script ook verpakken in een geplande taak om periodiek gegevens van Azure AD op te halen uit uw tenant zonder dat u toepassingssleutels hoeft op te slaan in de broncode. 
 

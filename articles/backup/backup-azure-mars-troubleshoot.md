@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: dacurwin
-ms.openlocfilehash: a59ac45d157f8674374c894a280e51392038524b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: abd4e91b8fd3332191b58acf38daed06d03801be
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747408"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012844"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problemen met de Microsoft Azure Recovery Services-agent (MARS) oplossen
 
@@ -47,7 +47,7 @@ U wordt aangeraden het volgende te controleren voordat u begint met het oplossen
 | ---     | ---    |
 | **De kluis referenties zijn niet geldig** <br/> <br/> De kluis referentie bestanden zijn mogelijk beschadigd of verlopen. (Het is bijvoorbeeld mogelijk dat ze meer dan 48 uur vóór de registratie tijd hebben gedownload.)| Down load nieuwe referenties van Recovery Services kluis op de Azure Portal. (Zie stap 6 in het gedeelte [de Mars-agent downloaden](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent) .) Voer vervolgens de volgende stappen uit: <ul><li> Als u MARS al hebt geïnstalleerd en geregistreerd, opent u de MMC-console Microsoft Azure Backup Agent en selecteert u vervolgens **server registreren** in het deel venster **acties** om de registratie met de nieuwe referenties te volt ooien. <br/> <li> Als de nieuwe installatie mislukt, probeert u opnieuw te installeren met de nieuwe referenties.</ul> **Opmerking**: als er meerdere kluis referentie bestanden zijn gedownload, is alleen het meest recente bestand geldig voor de volgende 48 uur. U wordt aangeraden een nieuw kluis referentie bestand te downloaden.
 | **De registratie van Proxy Server/firewall is geblokkeerd** <br/>of <br/>**Geen Internet verbinding** <br/><br/> Als uw computer of proxy server beperkte internet connectiviteit heeft en u geen toegang hebt tot de benodigde Url's, mislukt de registratie.| Voer de volgende stappen uit:<br/> <ul><li> Werk samen met uw IT-team om te controleren of het systeem verbinding heeft met internet.<li> Als u geen proxy server hebt, moet u ervoor zorgen dat de proxy optie niet is geselecteerd bij het registreren van de agent. [Controleer de proxy-instellingen](#verifying-proxy-settings-for-windows).<li> Als u een firewall/proxy server hebt, moet u samen werken met uw netwerk team om ervoor te zorgen dat deze Url's en IP-adressen toegang hebben:<br/> <br> **Adres**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-adressen**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Probeer de registratie opnieuw uit te voeren nadat u de voor gaande stappen voor probleem oplossing hebt door lopen.
-| **Registratie wordt geblokkeerd door antivirus software** | Als er antivirus software op de server is geïnstalleerd, voegt u de benodigde uitsluitings regels toe aan de antivirus scan voor deze bestanden en mappen: <br/><ul> <li> CBengine. exe <li> CSC. exe<li> De map Scratch. De standaard locatie is C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> De bin-map in C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
+| **Registratie wordt geblokkeerd door antivirus software** | Als er antivirus software op de server is geïnstalleerd, voegt u de benodigde uitsluitings regels toe aan de antivirus scan voor deze bestanden en mappen: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> De map Scratch. De standaard locatie is C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> De bin-map in C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
 ### <a name="additional-recommendations"></a>Aanvullende aanbevelingen
 
@@ -119,11 +119,13 @@ Als geplande back-ups niet automatisch worden geactiveerd, maar hand matige back
 
   `<MARS agent installation path>\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup`
 
-- Als het Power shell-uitvoerings beleid voor `LocalMachine` is ingesteld op beperkt, kan de Power shell-cmdlet waarmee de back-uptaak wordt geactiveerd, mislukken. Voer deze opdrachten uit in de modus met verhoogde bevoegdheid om het uitvoerings beleid te controleren en in te stellen op `Unrestricted` of `RemoteSigned`:
+- Als het Power shell-uitvoerings beleid voor `LocalMachine` is ingesteld op `restricted`, kan de Power shell-cmdlet waarmee de back-uptaak wordt geactiveerd, mislukken. Voer deze opdrachten uit in de modus met verhoogde bevoegdheid om het uitvoerings beleid te controleren en in te stellen op `Unrestricted` of `RemoteSigned`:
 
-  `PS C:\WINDOWS\system32> Get-ExecutionPolicy -List`
+ ```PowerShell
+ Get-ExecutionPolicy -List
 
-  `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
+Set-ExecutionPolicy Unrestricted
+```
 
 - Zorg ervoor dat de MSOnlineBackup-bestanden van de Power shell-module ontbreken of beschadigd zijn. Als er ontbrekende of beschadigde bestanden aanwezig zijn, voert u de volgende stappen uit:
 
@@ -165,9 +167,9 @@ Als het herstel nog steeds mislukt, start u de server of client opnieuw op. Als 
 
 ## <a name="troubleshoot-cache-problems"></a>Cache problemen oplossen
 
-De back-upbewerking kan mislukken als de cachemap (ook wel Scratch map genoemd) onjuist is geconfigureerd, vereisten ontbreken of beperkte toegang heeft.
+De back-upbewerking kan mislukken als de cachemap (ook wel Scratch map genoemd) onjuist is geconfigureerd, ontbrekende vereisten of beperkte toegang heeft.
 
-### <a name="pre-requisites"></a>Vereisten
+### <a name="prerequisites"></a>Vereisten
 
 Voor MARS-agent bewerkingen moet de cachemap voldoen aan de onderstaande vereisten:
 
@@ -192,8 +194,8 @@ Als er antivirus software op de server is geïnstalleerd, voegt u de benodigde u
 
 - De map Scratch. De standaard locatie is C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch
 - De bin-map in C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
-- CBengine. exe
-- CSC. exe
+- CBengine.exe
+- CSC.exe
 
 ## <a name="common-issues"></a>Algemene problemen
 
@@ -215,13 +217,13 @@ De Microsoft Azure Recovery Services-agent heeft geen toegang gekregen tot de sc
 
 Foutbericht | Aanbevolen actie |
 -- | --
-Het maken van de back-up is mislukt vanwege onvoldoende opslag ruimte op het volume waar de Scratch map zich bevindt | Om dit probleem op te lossen, controleert u de onderstaande stappen en voert u de bewerking opnieuw uit:<br/>- [zorgen dat de Mars-agent het meest recent is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> [opslag problemen - controleren en oplossen die van invloed zijn op de Scratch ruimte voor back-ups](#pre-requisites)
+Het maken van de back-up is mislukt vanwege onvoldoende opslag ruimte op het volume waar de Scratch map zich bevindt | Om dit probleem op te lossen, controleert u de onderstaande stappen en voert u de bewerking opnieuw uit:<br/>- [zorgen dat de Mars-agent het meest recent is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> [opslag problemen - controleren en oplossen die van invloed zijn op de Scratch ruimte voor back-ups](#prerequisites)
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
 Foutbericht | Aanbevolen actie |
 -- | --
-Kan wijzigingen niet vinden in een bestand. Dit kan verschillende redenen hebben. Voer de bewerking opnieuw uit | Om dit probleem op te lossen, controleert u de onderstaande stappen en voert u de bewerking opnieuw uit:<br/> - [zorgen dat de Mars-agent het meest recent is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> [opslag problemen - controleren en oplossen die van invloed zijn op de Scratch ruimte voor back-ups](#pre-requisites)
+Kan wijzigingen niet vinden in een bestand. Dit kan verschillende redenen hebben. Voer de bewerking opnieuw uit | Om dit probleem op te lossen, controleert u de onderstaande stappen en voert u de bewerking opnieuw uit:<br/> - [zorgen dat de Mars-agent het meest recent is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> [opslag problemen - controleren en oplossen die van invloed zijn op de Scratch ruimte voor back-ups](#prerequisites)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: raynew
-ms.openlocfilehash: 54416faa9140cf6e7c7c471e4b4c62db5f6f079b
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 19bf79cdb6bcdc0c20d47c698647383b758338db
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242936"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961319"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -20,19 +20,6 @@ De [Azure site Recovery](site-recovery-overview.md) -service wordt voortdurend b
 
 U kunt volgen en u abonneren op Site Recovery update meldingen in het [Azure-updates](https://azure.microsoft.com/updates/?product=site-recovery) kanaal.
 
-## <a name="update-to-servicing-stack-updatesha-2"></a>Update voor service stack update/SHA-2
-
-Voor herstel na nood gevallen van virtuele Azure-machines naar een secundaire regio, of on-premises virtuele VMware-machines of fysieke servers naar Azure, moet u rekening houden met het volgende:
-
-- Van versie 9.30. x. x (verwachte release vanaf november 2019) van de extensie van de Mobility-service (voor Azure-Vm's) en Mobility Service-agent (voor VMware/fysieke machines) moeten op sommige besturings systemen van de machine de service stack-update en SHA-2 worden uitgevoerd. Details worden weer gegeven in de volgende tabel.
-- Installeer de update en SHA-2 in overeenstemming met de gekoppelde KB. SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt.
-- Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
-
-**Besturingssysteem** | **Azure VM** | **VMware-VM/fysieke machine**
---- | --- | ---
-**Windows 2008 R2 SP1** | [Onderhouds stack-update](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Onderhouds stack-update](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
-**Windows 2008 SP2** | [Onderhouds stack-update](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Onderhouds stack-update](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
-**Windows 7 SP1** | [Onderhouds stack-update](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Onderhouds stack-update](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419).
 
 
 ## <a name="supported-updates"></a>Ondersteunde updates
@@ -41,14 +28,61 @@ Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest re
 
 **Update** |  **Unified Setup** | **Eicellen van de configuratie server** | **Mobility Service-agent** | **Site Recovery provider** | **Recovery Services-agent**
 --- | --- | --- | --- | --- | ---
-[Pakket 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 9.29.5367.1 | 5.15000.0 | 9.29.5367.1 | 5.15000.0 | 2.0.9165.0
+[Pakket 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
+[Pakket 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 [Pakket 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Pakket 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 [Pakket 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
-[Pakket 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
         
 
 Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning van de update.
+
+
+## <a name="updates-november-2019"></a>Updates (november 2019)
+
+### <a name="update-rollup-42"></a>Update pakket 42
+
+[Update pakket 42](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) bevat de volgende updates.
+
+**Update** | **Details**
+--- | ---
+**Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
+**Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
+
+
+## <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM
+
+Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel samenvatten.
+
+**Functie** | **Details**
+--- | ---
+**UEFI** | Site Recovery ondersteunt nu herstel na nood gevallen voor Azure-Vm's met UEFI-gebaseerde opstart architectuur.
+**Linux** | Site Recovery ondersteunt nu Azure-Vm's met Linux met Azure Disk Encryption (ADE).
+**Generatie 2** | Alle Azure-Vm's van de tweede generatie worden nu ondersteund voor herstel na nood gevallen.
+**Regio's** | U kunt nu herstel na nood gevallen inschakelen voor virtuele Azure-machines in het Noor wegen geo.
+
+### <a name="vmware-to-azure-disaster-recovery"></a>Herstel na noodgevallen van VMware naar Azure
+
+De tabel bevat een overzicht van de nieuwe functies voor VMware naar Azure voor herstel na nood gevallen.
+
+**Functie** | **Details**
+--- | ---
+**UEFI** | Site Recovery ondersteunt nu herstel na nood geval voor virtuele VMware-machines met UEFI-gebaseerde opstart architectuur.<br/><br/> Ondersteunde besturings systemen zijn onder andere Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, SLES 12 SP4, RHEL 8.
+
+## <a name="update-to-servicing-stack-updatesha-2"></a>Update voor service stack update/SHA-2
+
+Voor herstel na nood gevallen van virtuele Azure-machines naar een secundaire regio, of on-premises virtuele VMware-machines of fysieke servers naar Azure, moet u rekening houden met het volgende:
+
+- Vanaf versie 9.30.5407.1 van de Mobility service-extensie (voor Azure-Vm's) en de Mobility Service-agent (voor VMware/fysieke machines) moeten op sommige besturings systemen van de machine de onderhouds stack-update en SHA-2 worden uitgevoerd. Details worden weer gegeven in de volgende tabel.
+- Installeer de update en SHA-2 in overeenstemming met de gekoppelde KB. SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt.
+- Meer informatie over de [SHA-2-upgrade en de vereisten](https://aka.ms/SHA-2KB).
+
+**Besturingssysteem** | **Azure VM** | **VMware-VM/fysieke machine**
+--- | --- | ---
+**Windows 2008 R2 SP1** | [Onderhouds stack-update](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Onderhouds stack-update](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 2008 SP2** | [Onderhouds stack-update](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Onderhouds stack-update](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 7 SP1** | [Onderhouds stack-update](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Onderhouds stack-update](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419).
+
 
 
 ## <a name="updates-october-2019"></a>Updates (oktober 2019)

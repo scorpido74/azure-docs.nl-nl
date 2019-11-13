@@ -1,19 +1,18 @@
 ---
-title: Veelgestelde vragen-Hyper-V naar Azure nood herstel met Azure Site Recovery | Microsoft Docs
+title: Veelgestelde vragen over herstel na nood gevallen voor Hyper-V met Azure Site Recovery
 description: In dit artikel vindt u een overzicht van algemene vragen over het instellen van herstel na nood gevallen voor on-premises virtuele Hyper-V-machines naar Azure met behulp van de Azure Site Recovery-site.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 08/07/2019
+ms.date: 11/12/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: f9e5b5a70f7398483d5359a0489d5a6e6b241c6d
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8f3a04c70b88987fc91dbed3c186d04826b75726
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928192"
+ms.locfileid: "73954047"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Veelgestelde vragen-Hyper-V naar Azure nood herstel
 

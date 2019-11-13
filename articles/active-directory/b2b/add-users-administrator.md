@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 11/12/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21117e551642571d5b974e66d0769ed9906b9d50
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 85905e31b9375bac7f813782cbc224a6e770b7ce
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018197"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013128"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B-samenwerkings gebruikers toevoegen aan de Azure Portal
 
@@ -25,7 +25,7 @@ Als gebruiker aan wie een van de beperkte beheerders rollen is toegewezen, kunt 
 Nadat u een gast gebruiker aan de Directory hebt toegevoegd, kunt u de gast gebruiker een rechtstreekse koppeling sturen naar een gedeelde app, of de gast gebruiker kan klikken op de opname-URL in het e-mail bericht. Zie voor meer informatie over het inwisselings proces [uitnodiging voor B2B-samen werking](redemption-experience.md).
 
 > [!IMPORTANT]
-> Volg de stappen in [How-to: Voeg de privacygegevens van uw organisatie toe](https://aka.ms/adprivacystatement) aan Azure Active Directory om de URL van de privacyverklaring van uw organisatie toe te voegen. Als onderdeel van de eerste keer dat een uitnodiging wordt inwisseld, moet een uitgenodigde gebruiker toestemming geven om door te gaan. 
+> Volg de stappen in de [procedure: de privacygegevens van uw organisatie toevoegen in azure Active Directory](https://aka.ms/adprivacystatement) om de URL van de privacyverklaring van uw organisatie toe te voegen. Als onderdeel van de eerste keer dat een uitnodiging wordt inwisseld, moet een uitgenodigde gebruiker toestemming geven om door te gaan. 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -45,14 +45,18 @@ Voer de volgende stappen uit om B2B-samenwerkings gebruikers toe te voegen aan d
    > [!NOTE]
    > De optie **nieuwe gast gebruiker** is ook beschikbaar op de pagina **relaties organisatie** . Selecteer in **Azure Active Directory** **organisatie relaties**onder **beheren**.
 
-5. Onder **Gebruikersnaam**, voer het e-mailadres van de externe gebruiker in. U kunt optioneel een welkomstbericht toevoegen. Bijvoorbeeld:
-
-   ![Laat zien waar een nieuwe gast gebruiker zich in de gebruikers interface bevindt](./media/add-users-administrator/InviteGuest.png) 
+5. Selecteer op de pagina **nieuwe gebruiker** de optie **gebruiker uitnodigen** en voeg vervolgens de gegevens van de gast gebruiker toe. 
 
     > [!NOTE]
     > E-mail adressen van groepen worden niet ondersteund. Voer het e-mail adres voor een persoon in. Daarnaast kunnen gebruikers van e-mail providers een plus teken (+) en aanvullende tekst toevoegen aan hun e-mail adressen om te helpen bij zaken als het filteren van postvak in. Azure AD biedt momenteel echter geen ondersteuning voor plus symbolen in e-mail adressen. Als u de bezorgings problemen wilt voor komen, laat u het plus teken en eventuele tekens achter het symbool weg.
 
-6. Selecteer **Uitnodigen** voor het automatisch verzenden van de uitnodiging voor de gastgebruiker. 
+   - **Naam.** De voor-en achternaam van de gast gebruiker.
+   - **E-mail adres (vereist)** . Het e-mail adres van de gast gebruiker.
+   - **Persoonlijk bericht (optioneel)** Neem een persoonlijk Welkomst bericht op voor de gast gebruiker.
+   - **Groepen**: u kunt de gast gebruiker toevoegen aan een of meer bestaande groepen of u kunt dit later doen.
+   - **Directory-rol**: als u Azure AD-beheerders machtigingen voor de gebruiker nodig hebt, kunt u deze toevoegen aan een Azure AD-rol. 
+
+7. Selecteer **Uitnodigen** voor het automatisch verzenden van de uitnodiging voor de gastgebruiker. 
  
 Nadat u de uitnodiging verzendt, wordt het gebruikersaccount automatisch toegevoegd aan de map als gast.
 

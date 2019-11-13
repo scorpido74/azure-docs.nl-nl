@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 11/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 38250d1cd9853013ba9721ece0201a8df6dd1b4a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 6678efd04125e6ae0e0b66e8bcc011c0f319c0fb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336295"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954288"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Aangepaste routes adverteren voor P2S VPN-clients
 
@@ -22,7 +22,7 @@ Mogelijk wilt u aangepaste routes adverteren naar al uw punt-naar-site-VPN-clien
 
 ## <a name="to-advertise-custom-routes"></a>Aangepaste routes adverteren
 
-Gebruik de `Set-AzVirtualNetworkGateway cmdlet`om aangepaste routes te adverteren. In het volgende voor beeld ziet u hoe u het IP-adres voor de tabellen uit de [Contoso-opslag account](https://contoso.table.core.windows.net)aankondigt.
+Als u aangepaste routes wilt adverteren, gebruikt u de `Set-AzVirtualNetworkGateway cmdlet`. In het volgende voor beeld ziet u hoe u het IP-adres voor de tabellen uit de [Contoso-opslag account](https://contoso.table.core.windows.net)aankondigt.
 
 1. Ping *contoso.table.core.Windows.net* en noteer het IP-adres. Bijvoorbeeld:
 
@@ -51,7 +51,14 @@ Gebruik het volgende voor beeld om aangepaste routes weer te geven:
   $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
   $gw.CustomRoutes | Format-List
   ```
+## <a name="to-delete-custom-routes"></a>Aangepaste routes verwijderen
 
+Gebruik het volgende voor beeld om aangepaste routes te verwijderen:
+
+  ```azurepowershell-interactive
+  $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
+  Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute @0
+  ```
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [about Point-to-site Routing](vpn-gateway-about-point-to-site-routing.md)(Engelstalig) voor meer informatie over P2S-route ring.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 3b957181015cba06eb361272ca1004ba3e7a7008
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2d0a05c763b21b0cf22a724f9a5faa9d70b5b557
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579684"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010649"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Veelgestelde vragen over spraak naar tekst
 
@@ -71,26 +71,31 @@ Als u een model hebt aangepast en geïmplementeerd met basis lijn V 1.0, blijft 
 
 Neem contact op met [spraak ondersteuning](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) als u een hogere schaal nodig hebt.
 
-We hebben de volgende informatie nodig om de gelijktijdigheid voor een aangepast model te verg Roten:
+We hebben de volgende informatie nodig om de gelijktijdigheid voor een ***aangepast model***te verg Roten:
 
-- De regio waar het model wordt geïmplementeerd.
-- De eind punt-ID van het geïmplementeerde model.
+- De regio waar het model is geïmplementeerd,
+- de eind punt-ID van het geïmplementeerde model:
+  - Ontvangen naar de [Custom speech Portal](https://aka.ms/customspeech),
+  - aanmelden (indien nodig)
+  - Selecteer uw project en implementatie,
+  - Selecteer het eind punt waarvoor u de gelijktijdigheids toename wilt verhogen,
+  - Kopieer de `Endpoint ID`.
 
-We hebben de volgende informatie nodig om de gelijktijdigheid voor een basis model te verg Roten:
+We hebben de volgende informatie nodig om de gelijktijdigheid van een ***basis model***te verg Roten:
 
 - De regio van uw service,
 
 en ofwel
 
-- een toegangs token voor u subrscription (Zie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token))
+- een toegangs token voor uw abonnement (Zie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token))
 
 of
 
 - de resource-ID voor uw abonnement:
-  - Ga naar https://portal.azure.com,
+  - Ga naar de [Azure Portal](https://portal.azure.com),
   - Selecteer `Cognitive Services` in het zoekvak,
   - Kies in de weer gegeven Services de spraak service waarvoor u de gelijktijdigheid wilt verhogen,
-  - de eigenschappen voor deze service weer geven
+  - de `Properties` voor deze service weer geven
   - Kopieer de volledige `Resource ID`.
 
 **V: kan ik mijn model downloaden en lokaal uitvoeren?**
@@ -107,7 +112,7 @@ of
 
 **V: hoe worden er kosten in rekening gebracht voor Dual Channel audio?**
 
-**A**: als u elk kanaal afzonderlijk verzendt (elk kanaal in een eigen bestand), wordt u gefactureerd volgens de duur van elk bestand. Als u één bestand met elk kanaal hebt verzonden, worden er kosten in rekening gebracht voor de duur van het ene bestand.
+**A**: als u elk kanaal afzonderlijk verzendt (elk kanaal in een eigen bestand), wordt u per duur van het bestand in rekening gebracht. Als u één bestand met elk kanaal hebt verzonden, worden er kosten in rekening gebracht voor de duur van het ene bestand.
 
 > [!IMPORTANT]
 > Neem contact op met een van de ondersteunings kanalen als u meer privacy-problemen hebt die verhinderen dat u de aangepaste spraak service kunt gebruiken.
@@ -184,8 +189,8 @@ of
  
 **V: welke spraak ervaring zijn verbeterd door het Tenant model?**
 
-**A:** Wanneer het Tenant model is ingeschakeld, gemaakt en gepubliceerd, wordt het gebruikt voor het verbeteren van de herkenning van bedrijfs toepassingen die zijn gebouwd met behulp van spraak service; Er wordt ook een AAD-token van de gebruiker door gegeven dat het lidmaatschap van de onderneming aangeeft. 
- 
+**A:** Wanneer het Tenant model is ingeschakeld, gemaakt en gepubliceerd, wordt het gebruikt voor het verbeteren van de herkenning van bedrijfs toepassingen die zijn gebouwd met behulp van spraak service; Hiermee wordt ook een AAD-token van de gebruiker door gegeven dat het lidmaatschap van de onderneming aangeeft.
+
 De spraak ervaring die is ingebouwd in Office 365, zoals dicteer-en Power Point-ondertiteling, wordt niet gewijzigd wanneer u een Tenant model maakt voor uw speech service-toepassingen.
 
 ## <a name="next-steps"></a>Volgende stappen

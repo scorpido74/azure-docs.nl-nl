@@ -1,6 +1,6 @@
 ---
-title: Replicatie configureren voor opslagruimten (S2d) virtuele machines in Azure Site Recovery direct | Microsoft Docs
-description: In dit artikel wordt beschreven hoe het configureren van replicatie voor virtuele machines met S2D, van een Azure-regio naar de andere met behulp van Site Recovery.
+title: Virtuele Azure-machines met Opslagruimten Direct repliceren met Azure Site Recovery
+description: In dit artikel wordt beschreven hoe u Azure-Vm's met Opslagruimten Direct repliceert met behulp van Azure Site Recovery.
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,93 +8,93 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: asgang
-ms.openlocfilehash: 6c639d4503b170660abed5767e3571c8a2bf24b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25ac7fa577aa33eda036c0f8544cc5ab03b12cd7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790297"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954452"
 ---
-# <a name="replicate-azure-virtual-machines-using-storage-spaces-direct-to-another-azure-region"></a>Azure virtuele machines repliceren met behulp van storage spaces direct naar een andere Azure-regio
+# <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Virtuele Azure-machines met Opslagruimten Direct repliceren naar een andere regio
 
-Dit artikel wordt beschreven hoe u herstel na noodgevallen van virtuele Azure-machines uitgevoerd opslagruimten direct inschakelt.
+In dit artikel wordt beschreven hoe u herstel na nood gevallen van Azure-Vm's met opslag ruimten direct inschakelt.
 
 >[!NOTE]
->Alleen crash consistente herstelpunten die worden ondersteund voor storage spaces direct-clusters.
+>Alleen crash-consistente herstel punten worden ondersteund voor opslag ruimten direct-clusters.
 >
 
 ## <a name="introduction"></a>Inleiding 
-[Opslagruimten direct (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) is een met software gedefinieerde opslag, waarmee u een manier om te maken [gastclusters](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure) op Azure.  Een gastcluster in Microsoft Azure is dat een Failover-Cluster bestaat uit de IaaS-VM's. Hierdoor kan gehoste VM-workloads voor failover tussen de gastclusters hogere mate van beschikbaarheid SLA voor toepassingen dan één Azure-VM kan bieden. Dit is handig in scenario's waar virtuele machine die als host fungeert voor een essentiële toepassing, zoals SQL- of Scale out bestandsserver enzovoort.
+[Opslag ruimten direct (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) is een door software gedefinieerde opslag, waarmee u [gast clusters](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure) kunt maken in Azure.  Een gast cluster in Microsoft Azure is een failovercluster dat bestaat uit IaaS Vm's. Hiermee kunnen gehoste VM-workloads worden overgenomen over de gast clusters, met een hogere Beschik baarheid van de SLA voor toepassingen dan één Azure VM kan bieden. Het is handig in scenario's waarbij VM als host fungeert voor een essentiële toepassing, zoals SQL of scale-out Bestands server, enzovoort.
 
-## <a name="disaster-recovery-of-azure-virtual-machines-using-storage-spaces-direct"></a>Disaster Recovery virtuele Machines van Azure met behulp van opslagruimten direct
-In een typisch scenario hebt u mogelijk gastcluster virtuele machines op Azure voor hogere tolerantie van uw toepassing, zoals Scale out bestandsserver. Hoewel dit uw toepassing een hogere beschikbaarheid bieden kan, wilt u deze toepassingen met behulp van Site Recovery voor het niveau regio niet beveiligen. Site Recovery repliceert de gegevens van de ene regio naar een andere Azure-regio en zorgt voor de Dr-regio in geval van failover-cluster.
+## <a name="disaster-recovery-of-azure-virtual-machines-using-storage-spaces-direct"></a>Herstel na nood gevallen van Azure Virtual Machines met behulp van Storage Spaces direct
+In een typisch scenario hebt u mogelijk virtuele machines gast cluster in azure voor een hogere tolerantie van uw toepassing, zoals scale-out Bestands server. Hoewel dit een hogere Beschik baarheid van uw toepassing kan bieden, kunt u deze toepassingen beveiligen met Site Recovery voor elk probleem op regio niveau. Site Recovery repliceert de gegevens van de ene regio naar een andere Azure-regio en brengt het cluster in een herstel regio voor nood gevallen in een gebeurtenis van de failover.
 
-De onderstaande diagram ziet u de grafisch weergegeven van de twee virtuele machines van Azure failover-cluster met behulp van storage spaces direct.
+Hieronder ziet u de afbeeldings weergave van twee virtuele Azure Vm's-failovercluster met behulp van Storage Spaces direct.
 
 ![storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacedirect.png)
 
  
-- Twee Azure virtuele machines in een Windows-failovercluster en elke virtuele machine hebt twee of meer gegevensschijven.
-- S2D synchroniseert de gegevens op de gegevensschijf en geeft de gesynchroniseerde opslag als een opslaggroep.
-- De opslaggroep weergegeven als een gedeeld clustervolume (CSV) aan het failovercluster.
-- Het failovercluster maakt gebruik van de CSV voor de gegevensstations.
+- Twee virtuele machines van Azure in een Windows-failovercluster en elke virtuele machine hebben twee of meer gegevens schijven.
+- S2D synchroniseert de gegevens op de gegevens schijf en geeft de gesynchroniseerde opslag weer als een opslag groep.
+- De opslag groep presenteert een CSV (cluster Shared volume) voor het failovercluster.
+- Het failovercluster gebruikt het CSV voor de gegevens stations.
 
-**Overwegingen voor herstel na noodgevallen**
+**Aandachtspunten voor herstel na nood gevallen**
 
-1. Als u instelt [cloud witness](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) behouden voor het cluster witness in de regio voor herstel na noodgevallen.
-2. Als u de virtuele machines met het subnet op de DR-regio die van de bronregio afwijkt failover moet cluster-IP-adres worden gewijzigd na een failover.  Wijzigen van IP-adres van het cluster dat u wilt gebruiken voor automatisch Systeemherstel [herstelplanscript.](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)</br>
-[Voorbeeldscript](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) opdracht binnen virtuele machine met behulp van de extensie voor aangepaste scripts uit te voeren 
+1. Wanneer u een Cloud- [Witness](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) voor het cluster instelt, moet u de witness in het gebied voor herstel na nood gevallen blijven gebruiken.
+2. Als u een failover wilt uitvoeren voor de virtuele machines naar het subnet in de DR-regio die afwijkt van de bron regio, moet het cluster-IP-adres worden gewijzigd na de failover.  Als u het IP-adres van het cluster wilt wijzigen, moet u het script voor ASR- [herstel plannen gebruiken.](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)</br>
+[Voorbeeld script](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) voor het uitvoeren van de opdracht in de virtuele machine met behulp van aangepaste script extensie 
 
-### <a name="enabling-site-recovery-for-s2d-cluster"></a>U kunt Site Recovery inschakelt voor S2D-cluster:
+### <a name="enabling-site-recovery-for-s2d-cluster"></a>Site Recovery inschakelen voor S2D-cluster:
 
-1. In de recovery services-kluis, klikt u op ' + repliceren '
-1. Selecteer alle knooppunten in het cluster en deze deel uitmaakt van een [consistentiegroep Multi-VM](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency)
-1. Selecteer replicatiebeleid met toepassingsconsistentie uit * (alleen crash-consistentie-ondersteuning beschikbaar is)
+1. Klik in de Recovery Services-kluis op "+ repliceren"
+1. Alle knoop punten in het cluster selecteren en deze deel uitmaken van een [consistentie groep met meerdere vm's](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency)
+1. Replicatie beleid met toepassings consistentie selecteren * (alleen ondersteuning voor crash consistentie is beschikbaar)
 1. De replicatie inschakelen
 
-   ![storagespacesdirect beveiliging](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
+   ![storagespacesdirect-beveiliging](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
-2. Ga naar gerepliceerde items en ziet u zowel de status van de virtuele machine. 
-3. De virtuele machines zijn ophalen beveiligd en worden ook weergegeven als onderdeel van de groep van multi-VM-consistentie.
+2. Ga naar gerepliceerde items en u kunt de status van de virtuele machine bekijken. 
+3. De virtuele machines worden beveiligd en worden ook weer gegeven als onderdeel van de multi-VM-consistentie groep.
 
-   ![storagespacesdirect beveiliging](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
+   ![storagespacesdirect-beveiliging](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
 
-## <a name="creating-a-recovery-plan"></a>Het maken van een herstelplan
-Een herstelplan ondersteunt de sequentiëren van de verschillende lagen in een toepassing met meerdere lagen tijdens een failover. Sequentiëren helpt consistentie van de toepassing. Wanneer u een plan voor herstel voor een webtoepassing met meerdere lagen maakt, voltooid de stappen beschreven in [een herstelplan maken met behulp van Site Recovery](site-recovery-create-recovery-plans.md).
+## <a name="creating-a-recovery-plan"></a>Een herstel plan maken
+Een herstel plan ondersteunt het sequentiëren van verschillende lagen in een toepassing met meerdere lagen tijdens een failover. Met sequentiëren kunt u de consistentie van toepassingen onderhouden. Wanneer u een herstel plan voor een webtoepassing met meerdere lagen maakt, voert u de stappen uit die worden beschreven in [een herstel plan maken met behulp van site Recovery](site-recovery-create-recovery-plans.md).
 
-### <a name="adding-virtual-machines-to-failover-groups"></a>VM's toevoegt aan de failover-groepen
+### <a name="adding-virtual-machines-to-failover-groups"></a>Virtuele machines toevoegen aan failover-groepen
 
-1.  Maak een plan voor herstel door toe te voegen van de virtuele machines.
-2.  Klik op 'Aanpassen' aan de groep van de virtuele machines. Standaard worden alle virtuele machines deel uit van 'Groep 1'.
+1.  Maak een herstel plan door de virtuele machines toe te voegen.
+2.  Klik op aanpassen om de Vm's te groeperen. Standaard maken alle Vm's deel uit van ' groep 1 '.
 
 
-### <a name="add-scripts-to-the-recovery-plan"></a>Voeg scripts toe aan het herstelplan te gaan
-Voor uw toepassingen goed te laten functioneren, moet u bepaalde bewerkingen op de virtuele Azure-machines uitvoeren na de failover of tijdens een test-failover. U kunt bepaalde bewerkingen na een failover automatiseren. Bijvoorbeeld, hier we zijn bezig met koppelen van Load Balancer en wijzigen van cluster-IP.
+### <a name="add-scripts-to-the-recovery-plan"></a>Scripts toevoegen aan het herstel plan
+Voor een goede werking van uw toepassingen moet u mogelijk bepaalde bewerkingen uitvoeren op de virtuele Azure-machines na de failover of tijdens een testfailover. U kunt bewerkingen na de failover automatiseren. Hier gaan we de loadbalancer koppelen en het IP-adres van het cluster wijzigen.
 
 
 ### <a name="failover-of-the-virtual-machines"></a>Failover van de virtuele machines 
-Beide knooppunten van de virtuele machines moet worden uitgevoerd met behulp van de [ASR herstelplan](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) 
+De knoop punten van de virtuele machines moeten een failover uitvoeren via het [ASR-herstel plan](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) 
 
-![storagespacesdirect beveiliging](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
+![storagespacesdirect-beveiliging](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
 
 ## <a name="run-a-test-failover"></a>Een testfailover uitvoeren
-1.  Selecteer uw Recovery Services-kluis in de Azure-portal.
-2.  Selecteer het herstelplan te gaan die u hebt gemaakt.
+1.  Selecteer uw Recovery Services kluis in de Azure Portal.
+2.  Selecteer het herstel plan dat u hebt gemaakt.
 3.  Selecteer **Failover testen**.
-4.  Selecteer het herstelpunt en de Azure-netwerk voor het starten van de test-failover-proces.
-5.  Wanneer de secundaire-omgeving is, validatieprocedures.
-6.  Wanneer validaties voltooid zijn, voor het opschonen van de failover-omgeving, selecteer **failovertest**.
+4.  Als u het proces testfailover wilt starten, selecteert u het herstel punt en het virtuele Azure-netwerk.
+5.  Voer validaties uit wanneer de secundaire omgeving actief is.
+6.  Wanneer de validaties zijn voltooid, selecteert u testfailover **opschonen**om de failover-omgeving op te schonen.
 
-Zie voor meer informatie, [testfailover naar Azure in Site Recovery](site-recovery-test-failover-to-azure.md).
+Zie [failover testen naar Azure in site Recovery](site-recovery-test-failover-to-azure.md)voor meer informatie.
 
 ## <a name="run-a-failover"></a>Een failover uitvoeren
 
-1.  Selecteer uw Recovery Services-kluis in de Azure-portal.
-2.  Selecteer het herstelplan te gaan die u hebt gemaakt voor SAP-toepassingen.
+1.  Selecteer uw Recovery Services kluis in de Azure Portal.
+2.  Selecteer het herstel plan dat u hebt gemaakt voor SAP-toepassingen.
 3.  Selecteer **Failover**.
-4.  Selecteer het herstelpunt dat voor het starten van het failoverproces.
+4.  Als u het failoverproces wilt starten, selecteert u het herstel punt.
 
-Zie voor meer informatie, [Failover in Site Recovery](site-recovery-failover.md).
+Zie [failover in site Recovery](site-recovery-failover.md)voor meer informatie.
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) over het uitvoeren van failback.
+Meer [informatie](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) over het uitvoeren van failback.

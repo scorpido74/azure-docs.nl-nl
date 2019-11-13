@@ -1,6 +1,6 @@
 ---
-title: Uw Azure Time Series Insights-omgeving beheren met Azure Resource Manager sjablonen | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u uw Azure Time Series Insights omgeving programmatisch beheert met behulp van Azure Resource Manager.
+title: Uw omgeving beheren met Azure Resource Manager sjablonen-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over het programmatisch beheren van uw Azure Time Series Insights-omgeving met behulp van Azure Resource Manager.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7a88dafb9662e404cedf10334b22af149a3cd16
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: acafb9aab756507bb073b3e883ee190c72b4f9f8
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991219"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006772"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights-resources maken met behulp van Azure Resource Manager sjablonen
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u Time Series Insights-resources maakt en im
 
 Time Series Insights ondersteunt de volgende bronnen:
 
-   | Bron | Beschrijving |
+   | Resource | Beschrijving |
    | --- | --- |
    | Omgeving | Een Time Series Insights omgeving is een logische groepering van gebeurtenissen die worden gelezen vanuit gebeurtenis-Brokers, opgeslagen en beschikbaar worden gesteld voor query's. Zie [uw Azure time series Insights-omgeving plannen](time-series-insights-environment-planning.md) voor meer informatie. |
    | Bron van gebeurtenis | Een gebeurtenis bron is een verbinding met een gebeurtenis-Broker van waaruit Time Series Insights gebeurtenissen in de omgeving leest en opneemt. De momenteel ondersteunde gebeurtenis bronnen zijn IoT Hub en Event hub. |
@@ -174,7 +174,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 1. De implementatie maken
 
-    * Als u de nieuwe implementatie wilt maken, voert u de `New-AzResourceGroupDeployment`-cmdlet uit en geeft u de benodigde para meters op wanneer u hierom wordt gevraagd. De para meters bevatten een naam voor uw implementatie, de naam van uw resource groep en het pad of de URL naar het sjabloon bestand. Als de **modus** parameter niet is opgegeven, wordt de standaard waarde **Incrementeel** gebruikt. Zie [incrementele en volledige implementaties](../azure-resource-manager/deployment-modes.md)voor meer informatie.
+    * Als u de nieuwe implementatie wilt maken, voert u de cmdlet `New-AzResourceGroupDeployment` uit en geeft u de benodigde para meters op wanneer u hierom wordt gevraagd. De para meters bevatten een naam voor uw implementatie, de naam van uw resource groep en het pad of de URL naar het sjabloon bestand. Als de **modus** parameter niet is opgegeven, wordt de standaard waarde **Incrementeel** gebruikt. Zie [incrementele en volledige implementaties](../azure-resource-manager/deployment-modes.md)voor meer informatie.
 
     * Met de volgende opdracht wordt u gevraagd om de vijf vereiste para meters in het Power shell-venster:
 

@@ -1,5 +1,5 @@
 ---
-title: Virtuele Azure IaaS-machines verplaatsen naar een andere Azure-regio met behulp van de Azure Site Recovery-service | Microsoft Docs
+title: Virtuele Azure-machines verplaatsen naar een andere regio met Azure Site Recovery
 description: Azure Site Recovery gebruiken om Azure IaaS-VM’s te verplaatsen van de ene Azure-regio naar een andere.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: df64575039e08292da5aed5b611ac54d625634a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933883"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954105"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Virtuele Azure-machines verplaatsen naar een andere regio
 
@@ -99,7 +99,7 @@ Site Recovery haalt een lijst op met de virtuele machines die zijn gekoppeld aan
 
 1. Selecteer in de volgende stap de virtuele machine die u wilt verplaatsen en selecteer vervolgens **OK**.
 1. Selecteer in **instellingen** **herstel na nood gevallen**.
-1. Selecteer in **nood herstel configureren** > **doel regio**de doel regio waarnaar u wilt repliceren.
+1. Selecteer in **Noodherstel configureren** > **Doelregio** de doelregio waarnaar u wilt repliceren.
 1. Accepteer voor deze zelfstudie de overige standaardinstellingen.
 1. Selecteer **Replicatie inschakelen**. Met deze stap wordt een taak gestart om replicatie in te scha kelen voor de virtuele machine.
 

@@ -14,12 +14,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 75632d4fcdbf27f70b1b84f08f7295212dbac6a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ad9ee8a21390126f20da4037a438a2655b8b5d47
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471088"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012263"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Een Windows java-app configureren voor Azure App Service
 
@@ -40,10 +40,6 @@ Implementeer uw War niet met FTP. Het FTP-hulp programma is ontworpen voor het u
 ## <a name="logging-and-debugging-apps"></a>Apps registreren en fouten opsporen
 
 Prestatie rapporten, visualisaties van verkeer en de status checkups zijn beschikbaar voor elke app via de Azure Portal. Zie [Azure app service Diagnostics-overzicht](overview-diagnostics.md)voor meer informatie.
-
-### <a name="ssh-console-access"></a>SSH-console toegang
-
-[!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
 ### <a name="stream-diagnostic-logs"></a>Diagnostische logboeken streamen
 

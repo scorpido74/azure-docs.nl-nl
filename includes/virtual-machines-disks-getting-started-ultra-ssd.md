@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 838037804baad9105b4636934de957c2e5f3e810
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3525edb2a73811254b2a4dce70ce3edb58988492
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612041"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012446"
 ---
-# <a name="using-azure-ultra-disks"></a>Azure Ultra Disk gebruiken
-
 Azure Ultra disks biedt hoge door Voer, hoge IOPS en een consistente schijf opslag met lage latentie voor Azure IaaS virtual machines (Vm's). Deze nieuwe aanbieding biedt de hoogste prestaties van de lijn op dezelfde beschikbaarheids niveaus als onze bestaande schijven. Een belang rijk voor deel van ultra schijven is de mogelijkheid om de prestaties van de SSD in combi natie met uw workloads dynamisch te wijzigen zonder dat u uw Vm's opnieuw hoeft op te starten. Ultra disks zijn geschikt voor gegevensintensieve workloads, zoals SAP HANA, data bases in de bovenste laag en transactie zware werk belastingen.
 
 ## <a name="ga-scope-and-limitations"></a>GA bereik en beperkingen
@@ -27,7 +25,7 @@ Azure Ultra disks biedt hoge door Voer, hoge IOPS en een consistente schijf opsl
 
 Als u ultra disks wilt gebruiken, moet u bepalen in welke beschikbaarheids zone u zich bevindt. Niet elke regio ondersteunt elke VM-grootte met ultra schijven. Als u wilt bepalen of uw regio, zone en VM-grootte Ultra Disk ondersteunen, voert u een van de volgende opdrachten uit. Zorg ervoor dat u de **regio**-, **vmSize**-en **abonnements** waarden eerst vervangt:
 
-CLI
+CLI:
 
 ```bash
 $subscription = "<yourSubID>"

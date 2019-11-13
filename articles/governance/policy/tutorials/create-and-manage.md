@@ -1,17 +1,14 @@
 ---
 title: Beleidsregels voor het afdwingen van naleving maken en beheren
 description: Azure Policy gebruiken om standaarden af te dwingen, te voldoen aan wettelijke vereisten voor naleving en audits, kosten te beheren, consistente beveiliging en prestaties te houden en bedrijfsbrede ontwerpprincipes op te leggen.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: tutorial
-ms.service: azure-policy
-ms.openlocfilehash: d01a28e1b4cbd9b2dacef8059d46ea72e789094d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: abbe4334767a48cf6444ce5aa7822cc8a79f9f69
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490467"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959549"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Zelf studie: beleid maken en beheren om naleving af te dwingen
 
@@ -56,7 +53,7 @@ De eerste stap bij het afdwingen van naleving met Azure Policy bestaat uit het t
 1. De **Toewijzingsnaam** wordt automatisch ingevuld met de naam van het beleid dat u hebt geselecteerd, maar u kunt dit wijzigen. In dit voorbeeld houden we *SQL Server-versie 12.0 vereisen*. U kunt ook een optionele **Beschrijving** opgeven. De beschrijving bevat details over deze beleidstoewijzing.
    **Toegewezen door** wordt automatisch ingevuld op basis van degene die is aangemeld. Dit veld is optioneel, dus u kunt aangepaste waarden invoeren.
 
-1. Laat **Beheerde identiteit maken** uitgeschakeld. Dit vak _moet_ worden ingeschakeld wanneer het beleid of initiatief dat wordt toegewezen beleid bevat met het effect [deployIfNotExists](../concepts/effects.md#deployifnotexists). Omdat het beleid dat voor deze zelfstudie wordt gebruikt deze regel niet bevat, laat u deze optie uitgeschakeld. Zie voor meer informatie [beheerde identiteiten](../../../active-directory/managed-identities-azure-resources/overview.md) en [hoe herstelbeveiliging werkt](../how-to/remediate-resources.md#how-remediation-security-works).
+1. Laat **Beheerde identiteit maken** uitgeschakeld. Dit vak _moet_ worden ingeschakeld wanneer het beleid of initiatief dat wordt toegewezen beleid bevat met het effect [deployIfNotExists](../concepts/effects.md#deployifnotexists). Omdat het beleid dat voor deze zelfstudie wordt gebruikt deze regel niet bevat, laat u deze optie uitgeschakeld. Zie [Beheerde identiteiten](../../../active-directory/managed-identities-azure-resources/overview.md) en [Hoe herstelbeveiliging werkt](../how-to/remediate-resources.md#how-remediation-security-works) voor meer informatie.
 
 1. Selecteer **Toewijzen**.
 
@@ -114,7 +111,7 @@ Nu u een ingebouwde beleidsdefinitie hebt toegewezen, kunt u meer kunt doen met 
 
 1. Selecteer **Opslaan**.
 
-## <a name="create-a-policy-definition-with-rest-api"></a>Een beleidsdefinitie maken met de REST API
+## <a name="create-a-policy-definition-with-rest-api"></a>Een beleidsdefinitie maken met de REST-API
 
 U kunt een beleid maken met de REST API voor Azure Policy definities. Met de REST API kunt u beleidsdefinities maken en verwijderen en informatie over bestaande definities ophalen. Gebruik het volgende voorbeeld om een beleidsdefinitie te maken:
 
@@ -382,7 +379,7 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
    - Beschrijving: deze initiatieftoewijzing heeft als doel deze groep beleidsdefinities af te dwingen.
    - Toegewezen door: automatisch gevuld op basis van degene die is aangemeld. Dit veld is optioneel, dus u kunt aangepaste waarden invoeren.
 
-1. Laat **Beheerde identiteit maken** uitgeschakeld. Dit vak _moet_ worden ingeschakeld wanneer het beleid of initiatief dat wordt toegewezen beleid bevat met het effect [deployIfNotExists](../concepts/effects.md#deployifnotexists). Omdat het beleid dat voor deze zelfstudie wordt gebruikt deze regel niet bevat, laat u deze optie uitgeschakeld. Zie voor meer informatie [beheerde identiteiten](../../../active-directory/managed-identities-azure-resources/overview.md) en [hoe herstelbeveiliging werkt](../how-to/remediate-resources.md#how-remediation-security-works).
+1. Laat **Beheerde identiteit maken** uitgeschakeld. Dit vak _moet_ worden ingeschakeld wanneer het beleid of initiatief dat wordt toegewezen beleid bevat met het effect [deployIfNotExists](../concepts/effects.md#deployifnotexists). Omdat het beleid dat voor deze zelfstudie wordt gebruikt deze regel niet bevat, laat u deze optie uitgeschakeld. Zie [Beheerde identiteiten](../../../active-directory/managed-identities-azure-resources/overview.md) en [Hoe herstelbeveiliging werkt](../how-to/remediate-resources.md#how-remediation-security-works) voor meer informatie.
 
 1. Selecteer **Toewijzen**.
 

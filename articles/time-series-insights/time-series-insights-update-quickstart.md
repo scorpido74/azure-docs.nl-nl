@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Verken de Azure Time Series Insights preview-demo omgeving | Microsoft Docs'
-description: Quick Start om inzicht te krijgen in de demo omgeving van Azure Time Series Insights preview.
+title: 'Snelstartgids: Verken de preview-demo omgeving-Azure Time Series Insights | Microsoft Docs'
+description: Meer informatie over Azure Time Series Insights preview-demo omgevingen met behulp van een voor beeld van Quick Start.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 10/24/2019
-ms.openlocfilehash: 25d6d1aa1cf7db0f448ec22ed7b5c84d840af3f5
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 61d13831ff0d8810cfdce35f86a0402cb1679ad1
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579653"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014757"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Snelstartgids: Verken de Azure Time Series Insights preview-demo omgeving
 

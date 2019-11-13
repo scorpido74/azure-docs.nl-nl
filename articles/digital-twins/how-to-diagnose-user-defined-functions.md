@@ -1,6 +1,6 @@
 ---
-title: Fout opsporing voor Udf's in azure Digital Apparaatdubbels | Microsoft Docs
-description: Richt lijnen over het opsporen van fouten in Udf's in azure Digital Apparaatdubbels.
+title: Fout opsporing voor UDFs-Azure Digital Apparaatdubbels | Microsoft Docs
+description: Meer informatie over aanbevolen benaderingen voor het debuggen van door de gebruiker gedefinieerde functies in azure Digital Apparaatdubbels.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b122df279ecde8ed9ed49b5a89251073f3feda7
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 130250156f0fae3e6c40742278479b5d4612657b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949891"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005939"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Fout opsporing door door de gebruiker gedefinieerde functies in azure Digital Apparaatdubbels
 
@@ -35,7 +35,7 @@ Azure Digital Apparaatdubbels ondersteunt robuuste logboek registratie, bewaking
 
 * Lees [hoe u bewaking en logboek registratie configureert](./how-to-configure-monitoring.md)voor logboek registratie configuratie die specifiek is voor Azure Digital apparaatdubbels.
 * Raadpleeg het [Azure monitor](../azure-monitor/overview.md) -overzicht voor meer informatie over de krachtige logboek instellingen die via Azure monitor kunnen worden ingeschakeld.
-* Raadpleeg het artikel [gegevens verzamelen en gebruiken van uw Azure-resources](../azure-monitor/platform/resource-logs-overview.md) voor het configureren van instellingen voor Diagnostische logboeken in azure Digital Apparaatdubbels via Azure Portal, Azure CLI of Power shell.
+* Raadpleeg het artikel [gegevens verzamelen en gebruiken van uw Azure-resources](../azure-monitor/platform/resource-logs-overview.md) voor het configureren van instellingen voor Diagnostische logboeken in azure Digital apparaatdubbels via de Azure Portal, Azure CLI of Power shell.
 
 Na de configuratie kunt u alle logboek categorieën, metrische gegevens en krachtige Azure Monitor Log Analytics-werk ruimten gebruiken ter ondersteuning van uw fout opsporing.
 
@@ -173,7 +173,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-Dit scenario doet zich voor omdat de gebruikte id naar een sensor verwijst terwijl het opgegeven topologie object type `Space` is.
+Dit scenario doet zich voor omdat de gebruikte id naar een sensor verwijst terwijl het opgegeven topologie object type `Space`is.
 
 **Juiste** Hierbij
 
@@ -185,7 +185,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification));
 ```
 
-De eenvoudigste manier om dit probleem niet op te lossen, is door de `Notify`-methode voor het object meta gegevens te gebruiken.
+De eenvoudigste manier om dit probleem niet op te lossen, is door de `Notify` methode voor het object meta gegevens te gebruiken.
 
 Voorbeeld:
 

@@ -1,6 +1,6 @@
 ---
-title: Een Azure Time Series Insights-omgeving maken | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u de Azure Portal gebruikt om een nieuwe Time Series Insights omgeving te maken.
+title: Een omgeving maken-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over het gebruik van de Azure Portal om een nieuwe Time Series Insights omgeving te maken.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1b51931385eb7e2e0bf2a1baf5cc4c3379eab2df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: fc3f21c95ad6f4bb033336018dddb9e966e9cc9a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991235"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006905"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Een nieuwe Time Series Insights-omgeving maken in Azure Portal
 
@@ -28,7 +28,7 @@ Met Time Series Insights kunt u aan de slag gaan met het visualiseren en opvrage
 
 Volg deze stappen om een omgeving te maken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Selecteer de knop **+ een resource maken** .
 
@@ -55,13 +55,13 @@ Volg deze stappen om een omgeving te maken:
 
 1. Als u het implementatie proces wilt bewaken, selecteert u het **meldings** symbool (pictogram Bell).
 
-   [de meldingen![bekijken](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
+   [de meldingen ![bekijken](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
 
     Wanneer de implementatie is voltooid, kunt u **Go to resource** selecteren om andere eigenschappen te configureren, beveiliging in te stellen met beleid voor gegevens toegang, gebeurtenis bronnen toevoegen en andere acties uit te voeren.
 
 1. Selecteer in het resource **overzicht**het **speld pictogram** in de rechter bovenhoek om in de toekomst eenvoudig toegang te krijgen tot uw time series Insights omgeving.
 
-   [de Time Series Insights pincode![maken op dash board](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
+   [de Time Series Insights pincode ![maken op dash board](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -69,6 +69,6 @@ Volg deze stappen om een omgeving te maken:
 
 * [Een event hub-gebeurtenis bron toevoegen](time-series-insights-how-to-add-an-event-source-eventhub.md) aan uw Azure time series Insights-omgeving.
 
-* [Gebeurtenissen verzenden](time-series-insights-send-events.md) naar de bron van de gebeurtenis.
+* [Gebeurtenissen verzenden](time-series-insights-send-events.md) naar de gebeurtenisbron.
 
 * Bekijk uw omgeving in [Time Series Insights Explorer](https://insights.timeseries.azure.com).

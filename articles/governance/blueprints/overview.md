@@ -1,17 +1,14 @@
 ---
 title: Overzicht van Azure Blueprints
 description: Meer informatie over hoe u met de Azure-service voor blauw drukken artefacten kunt maken, definiëren en implementeren in uw Azure-omgeving.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/26/2019
 ms.topic: overview
-ms.service: blueprints
-ms.openlocfilehash: 86f58594ce1af91b19f70cbdb1114a90180e3b4f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 3005bf171c5297048978d090d0f253a8690242cd
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981711"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960328"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Overzicht van de service Azure-blauw drukken
 
@@ -51,9 +48,9 @@ Een beleid kan worden opgenomen als een van de vele _artefacten_ in de definitie
 
 Een blauwdruk bestaat uit _artefacten_. Blauwdrukken ondersteunen momenteel de volgende resources als artefacten:
 
-|Resource  | Hiërarchieopties| Description  |
+|Resource  | Hiërarchieopties| Beschrijving  |
 |---------|---------|---------|
-|Resourcegroepen | Subscription | Een nieuwe resourcegroep maken voor gebruik door andere artefacten binnen de blauwdruk.  Met deze tijdelijke resourcegroepen kunt u resources precies zo indelen als u ze wilt structureren, en het bereik beperken voor opgenomen beleids- en roltoewijzingsartefacten, en Azure Resource Manager-sjablonen. |
+|Resourcegroepen | Abonnement | Een nieuwe resourcegroep maken voor gebruik door andere artefacten binnen de blauwdruk.  Met deze tijdelijke resourcegroepen kunt u resources precies zo indelen als u ze wilt structureren, en het bereik beperken voor opgenomen beleids- en roltoewijzingsartefacten, en Azure Resource Manager-sjablonen. |
 |Azure Resource Manager-sjabloon | Abonnement, resourcegroep | Sjablonen worden gebruikt om complexe omgevingen samen te stellen. Voorbeeldomgevingen: een SharePoint-farm, Azure Automation State Configuration of een Log Analytics-werkruimte. |
 |Beleidstoewijzing | Abonnement, resourcegroep | Hiermee kan een beleid of initiatief worden toegewezen aan het abonnement waaraan de blauwdruk wordt toegewezen. Het beleid of initiatief moet binnen het bereik van de locatie van de blauwdrukdefinitie vallen. Als het beleid of initiatief parameters heeft, worden deze parameters toegewezen bij het maken of toewijzen van de blauwdruk. |
 |Roltoewijzing | Abonnement, resourcegroep | Voeg een bestaande gebruiker of groep toe aan een ingebouwde rol om ervoor te zorgen dat de juiste mensen altijd over de juiste toegang tot uw bronnen beschikken. Roltoewijzingen kunnen voor het hele abonnement worden gedefinieerd of genest in een specifieke resourcegroep die in de blauwdruk is opgenomen. |
@@ -107,7 +104,7 @@ Als u een blauwdruk wilt toewijzen of de toewijzing ongedaan wilt maken, heeft u
 
 De volgende ingebouwde rollen zijn beschikbaar:
 
-|RBAC-rol | Description |
+|RBAC-rol | Beschrijving |
 |-|-|
 |[Eigenaar](../../role-based-access-control/built-in-roles.md#owner) | Naast andere machtigingen bevat alle Azure Blueprint gerelateerde machtigingen. |
 |[Inzender](../../role-based-access-control/built-in-roles.md#contributor) | Naast andere machtigingen, kunnen blauw drukken-definities maken en verwijderen, maar geen blauw drukken toewijzings machtigingen. |
@@ -123,12 +120,12 @@ Als deze ingebouwde rollen niet aan uw beveiligingsbehoeften voldoen, kunt u een
 
 De volgende beperkingen bestaan voor bepaalde velden:
 
-|Object|Veld|Toegestane tekens|Met maximaal Hoogte|
+|Object|Veld|Toegestane tekens|Met maximaal Lengte|
 |-|-|-|-|
-|Blauwdruk|Name|letters, cijfers, afbreek streepjes en punten|48|
-|Blauwdruk|Version|letters, cijfers, afbreek streepjes en punten|20|
-|Blauwdruktoewijzing|Name|letters, cijfers, afbreek streepjes en punten|90|
-|Blauw druk artefact|Name|letters, cijfers, afbreek streepjes en punten|48|
+|Blauwdruk|Naam|letters, cijfers, afbreek streepjes en punten|48|
+|Blauwdruk|Versie|letters, cijfers, afbreek streepjes en punten|20|
+|Blauwdruktoewijzing|Naam|letters, cijfers, afbreek streepjes en punten|90|
+|Blauw druk artefact|Naam|letters, cijfers, afbreek streepjes en punten|48|
 
 ## <a name="video-overview"></a>Video-overzicht
 
