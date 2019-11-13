@@ -141,27 +141,6 @@
       items:
         - name: Problemen met Azure Load Balancer oplossen
           href: load-balancer-troubleshoot.md
-    - name: Artikelen over het klassieke implementatiemodel
-      items:
-        - name: Uitgaande verbindingen (klassiek)
-          href: load-balancer-outbound-connections-classic.md
-        - name: Meerdere VIP's configureren voor cloudservice
-          href: load-balancer-multivip.md
-          items:
-            - name: Een interne load balancer configureren voor cloudservices
-              href: load-balancer-get-started-ilb-classic-cloud.md
-              items:
-                - name: Een interne load balancer configureren voor cloudservices (PowerShell)
-                  href: load-balancer-get-started-ilb-classic-ps.md
-                - name: Een interne load balancer configureren voor cloudservices (CLI)
-                  href: load-balancer-get-started-ilb-classic-cli.md
-            - name: Een openbare load balancer configureren (klassieke PowerShell)
-              href: load-balancer-get-started-internet-classic-ps.md
-              items:
-                - name: Een openbare load balancer configureren (klassieke cloud)
-                  href: load-balancer-get-started-internet-classic-cloud.md
-                - name: Een openbare load balancer configureren (klassieke CLI)
-                  href: load-balancer-get-started-internet-classic-cli.md
 - name: Naslaginformatie
   items:
     - name: Codevoorbeelden
