@@ -35,6 +35,8 @@
       items:
         - name: Apache Hadoop-onderdelen in HDInsight
           href: ./hdinsight-component-versioning.md
+        - name: Onderdelen met hoge beschikbaarheid
+          href: ./hdinsight-high-availability-components.md
         - name: Machine learning in HDInsight
           href: ./hdinsight-machine-learning-overview.md
         - name: Schaalbaar streamen in HDInsight

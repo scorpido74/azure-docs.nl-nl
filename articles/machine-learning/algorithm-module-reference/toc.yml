@@ -1,0 +1,147 @@
+- name: Naslaginformatie voor Azure Machine Learning-ontwerpfunctie?
+  href: module-reference.md
+- name: Documentatie voor Azure Machine Learning
+  href: ../index.yml
+- name: Modulecategorieën
+  expanded: true
+  items:
+    - name: Invoer en uitvoer van gegevens
+      items:
+        - name: Gegevens importeren
+          href: import-data.md
+        - name: Gegevens handmatig invoeren
+          href: enter-data-manually.md
+        - name: Gegevens exporteren
+          href: export-data.md
+    - name: Gegevenstransformatie
+      items:
+        - name: Kolommen toevoegen
+          href: add-columns.md
+        - name: Rijen toevoegen
+          href: add-rows.md
+        - name: SQL-transformatie toepassen
+          href: apply-sql-transformation.md
+        - name: Converteren naar CSV
+          href: convert-to-csv.md
+        - name: Converteren naar gegevensset
+          href: convert-to-dataset.md
+        - name: Ontbrekende gegevens opschonen
+          href: clean-missing-data.md
+        - name: Metagegevens bewerken
+          href: edit-metadata.md
+        - name: Gegevens samenvoegen
+          href: join-data.md
+        - name: Gegevens normaliseren
+          href: normalize-data.md
+        - name: Dubbele rijen verwijderen
+          href: remove-duplicate-rows.md
+        - name: Kolomtransformatie selecteren
+          href: select-columns-transform.md
+        - name: Kolommen in gegevensset selecteren
+          href: select-columns-in-dataset.md
+    - name: Steekproeven
+      items:
+        - name: Kruisvalidatie van model valideren
+          href: cross-validate-model.md
+        - name: Partitie en voorbeeld
+          href: partition-and-sample.md
+        - name: SMOTE
+          href: smote.md
+        - name: Gegevens splitsen
+          href: split-data.md
+    - name: Functies selecteren
+      items:
+        - name: Functieselectie op basis van filters
+          href: filter-based-feature-selection.md
+        - name: Belang van permutatiefunctie
+          href: permutation-feature-importance.md
+    - name: Python en R
+      items:
+        - name: Python-model maken
+          href: create-python-model.md
+        - name: Python-script uitvoeren
+          href: execute-python-script.md
+        - name: R-Script uitvoeren
+          href: execute-r-script.md
+    - name: Tekstanalyse
+      items:
+        - name: N-Gram-functies uit tekst halen
+          href: extract-n-gram-features-from-text.md
+        - name: Functie-hashing
+          href: feature-hashing.md
+        - name: Tekst voorverwerken
+          href: preprocess-text.md
+    - name: Machine learning-algoritmen
+      items:
+        - name: Classificatie
+          items:
+            - name: Beslissingsforest met meerdere klassen
+              href: multiclass-decision-forest.md
+            - name: Versterkte beslissingsstructuur met meerdere klassen
+              href: multiclass-boosted-decision-tree.md
+            - name: Logistieke regressie met meerdere klassen
+              href: multiclass-logistic-regression.md
+            - name: Neuraal netwerk met meerdere klassen
+              href: multiclass-neural-network.md
+            - name: One-vs- All Multiclass
+              href: one-vs-all-multiclass.md
+            - name: Logistieke regressie met twee klassen
+              href: two-class-logistic-regression.md
+            - name: Gemiddeld perceptron met twee klassen
+              href: two-class-averaged-perceptron.md
+            - name: Two-Class Boosted Decision Tree
+              href: two-class-boosted-decision-tree.md
+            - name: Beslissingsforest met twee klassen
+              href: two-class-decision-forest.md
+            - name: Neuraal netwerk met twee klassen
+              href: two-class-neural-network.md
+            - name: Ondersteuning voor vectormachine met twee klassen
+              href: two-class-support-vector-machine.md
+        - name: Clustering
+          items:
+            - name: K-means-clustering
+              href: k-means-clustering.md
+        - name: Regressie
+          items:
+            - name: Regressie versterkte beslissingsstructuur
+              href: boosted-decision-tree-regression.md
+            - name: Regressie beslissingsforest
+              href: decision-forest-regression.md
+            - name: Lineaire regressie
+              href: linear-regression.md
+            - name: Regressie neuraal netwerk
+              href: neural-network-regression.md
+        - name: Aanbevelingsfunctie
+          items:
+            - name: Aanbevelingsfunctie van SVD-training
+              href: train-svd-recommender.md
+    - name: Model trainen
+      items:
+        - name: Model trainen
+          href: train-model.md
+        - name: Clustermodel trainen
+          href: train-clustering-model.md
+        - name: Model Hyperparameters afstemmen
+          href: tune-model-hyperparameters.md
+    - name: Model evalueren
+      items:
+        - name: Model evalueren
+          href: evaluate-model.md
+        - name: Aanbevelingsfunctie voor evaluatie
+          href: evaluate-recommender.md
+    - name: Model beoordelen
+      items:
+        - name: Transformatie toepassen
+          href: apply-transformation.md
+        - name: Gegevens aan cluster toewijzen
+          href: assign-data-to-clusters.md
+        - name: Score Model
+          href: score-model.md
+        - name: Aanbevelingsfunctie voor SVD-score
+          href: score-svd-recommender.md
+    - name: Statistische functies
+      items:
+        - name: Wiskundige bewerking toepassen
+          href: apply-math-operation.md
+        - name: Gegevens samenvatten
+          href: summarize-data.md

@@ -166,9 +166,7 @@
       items:
         - name: Intentie toevoegen
           href: luis-how-to-add-intents.md
-        - name: Entiteit toevoegen aan utterance
-          href: luis-how-to-add-example-utterances.md
-        - name: Entiteit toevoegen zonder utterance
+        - name: Een entiteit toevoegen om gegevens te extraheren
           href: luis-how-to-add-entities.md
           displayName: 'roles, import'
         - name: Vooraf gemaakte modellen gebruiken
@@ -306,6 +304,8 @@
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: Aangepaste entiteitsverwijzing
       items:
+        - name: Entiteit op basis van machine learning
+          href: reference-entity-machine-learned-entity.md
         - name: Samengestelde entiteit
           href: reference-entity-composite.md
         - name: Lijstentiteit
@@ -316,6 +316,8 @@
           href: reference-entity-regular-expression.md
         - name: Eenvoudige entiteit
           href: reference-entity-simple.md
+    - name: Patroonsyntaxis
+      href: reference-pattern-syntax.md
     - name: Sentiment
       href: luis-reference-prebuilt-sentiment.md
     - name: Resources voor ontwikkelaars

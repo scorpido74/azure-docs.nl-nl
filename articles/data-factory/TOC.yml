@@ -165,8 +165,8 @@
               href: concepts-data-flow-monitoring.md
             - name: Gegevensstroomprestaties
               href: concepts-data-flow-performance.md
-            - name: Knooppunten verplaatsen
-              href: concepts-data-flow-move-nodes.md
+            - name: Graaf beheren
+              href: concepts-data-flow-manage-graph.md
             - name: Opbouwfunctie voor expressies
               href: concepts-data-flow-expression-builder.md
             - name: Expressietaal
@@ -648,6 +648,8 @@
           href: scenario-ssis-migration-ssisdb-mi.md
 - name: Naslaginformatie
   items:
+    - name: Script voor gegevensstroom
+      href: data-flow-script.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.datafactory
     - name: PowerShell

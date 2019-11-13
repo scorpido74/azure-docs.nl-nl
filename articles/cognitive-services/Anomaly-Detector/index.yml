@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/10/2019
   ms.author: aahi
-  ms.openlocfilehash: d073adfbc1b05bbd4d92f5cfb500184653444f4b
-  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+  ms.openlocfilehash: 4f7eca51cd4ec6995618b68bd376fa5f4f6268e4
+  ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 09/18/2019
-  ms.locfileid: "71086789"
+  ms.lasthandoff: 11/13/2019
+  ms.locfileid: "74013609"
 landingContent:
 - title: Over de Anomaly Detector-API
   linkLists:
@@ -39,7 +39,11 @@ landingContent:
       url: https://www.youtube.com/embed/ERTaAnwCarM
   - linkListType: reference
     links:
-    - text: Algoritmen die worden gebruikt voor anomaliedetectie (whitepaper)
+    - text: Inleiding tot de Azure Anomaly Detector-API
+      url: https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162
+    - text: Overzicht van het SR-CNN-algoritme
+      url: https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798
+    - text: Algoritmen die worden gebruikt voor anomaliedetectie (KDD-paper)
       url: https://arxiv.org/abs/1906.03821
 - title: Afwijkingen in uw gegevens detecteren
   linkLists:
@@ -54,7 +58,7 @@ landingContent:
     - text: Afwijkingen visualiseren met batchgewijs detecteren en Power BI
       url: tutorials/batch-anomaly-detection-powerbi.md
     - text: Afwijkingen in streaming-gegevens detecteren met behulp van Azure Databricks
-      url: tutorials/batch-anomaly-detection-powerbi.md
+      url: tutorials/anomaly-detection-streaming-databricks.md
   - linkListType: video
     links:
     - text: Detectie van afwijkingen in streaming-gegevens met behulp van Azure Databricks
