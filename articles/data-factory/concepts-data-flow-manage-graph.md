@@ -1,0 +1,48 @@
+---
+title: Grafieken voor gegevens stromen Azure Data Factory
+description: Werken met data factory data flow-grafieken
+author: kromerm
+ms.author: makromer
+ms.service: data-factory
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 38f85dea554000daf89689a311c091bc9796a658
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74015897"
+---
+# <a name="mapping-data-flow-graphs"></a>Grafieken voor gegevens stromen toewijzen
+
+Het ontwerp oppervlak voor het toewijzen van gegevens stromen is een constructie-Opper vlak waar u gegevens stromen van boven naar beneden maakt, van links naar rechts. Er is een werkset aan elke trans formatie gekoppeld met een plus teken (+). Richt u op uw bedrijfs logica in plaats van knoop punten te verbinden via randen in een vrije-vorm DAG-omgeving.
+
+Hieronder vindt u ingebouwde mechanismen voor het beheren van de gegevens stroom grafiek.
+
+## <a name="move-nodes"></a>Knooppunten verplaatsen
+
+![Aggregatie opties voor trans formatie](media/data-flow/agghead.png "aggregator-header")
+
+Zonder een paradigma voor slepen en neerzetten, de manier om een transformatie knooppunt te verplaatsen, is het wijzigen van de inkomende stroom. In plaats daarvan gaat u trans formaties verplaatsen door de "binnenkomende stroom" te wijzigen.
+
+## <a name="streams-of-data-inside-of-data-flow"></a>Gegevens stromen in gegevens stroom
+
+In Azure Data Factory gegevens stroom vertegenwoordigen streams de stroom van gegevens. In het deel venster trans formatie-instellingen ziet u het veld ' inkomende stroom '. Zo weet u welke binnenkomende gegevens stroom de trans formatie verfeedt. U kunt de fysieke locatie van uw transformatie knooppunt in de grafiek wijzigen door te klikken op de naam van de inkomende stroom en een andere gegevens stroom te selecteren. De huidige trans formatie en alle daaropvolgende transformaties voor die stroom worden vervolgens verplaatst naar de nieuwe locatie.
+
+Als u een trans formatie met een of meer transformaties verplaatst, wordt de nieuwe locatie in de gegevens stroom gekoppeld via een nieuwe vertakking.
+
+Als u geen daaropvolgende trans formaties hebt nadat het knoop punt dat u hebt geselecteerd, wordt alleen dat transformatie verplaatst naar de nieuwe locatie.
+
+## <a name="hide-graph-and-show-graph"></a>Grafiek verbergen en grafiek weer geven
+
+Er bevindt zich een knop aan de rechter kant van het onderste configuratie deel venster, waar u het onderste deel venster kunt uitbreiden naar het volledige scherm wanneer u aan transformatie configuraties werkt. Zo kunt u de knoppen Vorige en volgende gebruiken om door de configuraties van de grafiek te navigeren. Als u terug wilt gaan naar de grafiek weergave, klikt u op de knop omlaag en gaat u terug naar het scherm splitsen.
+
+## <a name="search-graph"></a>Zoeken in grafiek
+
+U kunt de grafiek doorzoeken met de zoek knop op het ontwerp oppervlak.
+
+![Zoeken](media/data-flow/search001.png "Zoeken in grafiek")
+
+## <a name="next-steps"></a>Volgende stappen
+
+Nadat u het ontwerp van de gegevens stroom hebt voltooid, schakelt u de knop fout opsporing in en test u deze in de foutopsporingsmodus rechtstreeks in de [Data flow Designer](concepts-data-flow-debug-mode.md) of de [fout opsporing voor de pijp lijn](control-flow-execute-data-flow-activity.md).

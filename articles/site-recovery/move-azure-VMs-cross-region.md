@@ -1,5 +1,5 @@
 ---
-title: Virtuele Azure IaaS-machines verplaatsen naar een andere Azure-regio met behulp van de Azure Site Recovery-service | Microsoft Docs
+title: Virtuele Azure-machines verplaatsen naar een andere regio met Azure Site Recovery
 description: Azure Site Recovery gebruiken om Azure IaaS-VM’s te verplaatsen van de ene Azure-regio naar een andere.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: ec78e4c260c2ca5e0469f9373f60d8bca29ada7f
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: e0d55b3661e7dbff1519691bd396a30b8c527010
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375722"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936057"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Virtuele Azure-machines verplaatsen naar een andere regio
 
@@ -80,11 +80,11 @@ In de volgende stappen worden Azure Site Recovery gebruikt voor het kopiëren va
 ### <a name="create-the-vault-in-any-region-except-the-source"></a>De kluis in een wille keurige regio maken, behalve de bron
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-2. Selecteer **een resource** > **beheer hulpprogramma's** > maken**back-up en site Recovery**.
+2. Selecteer **een resource maken** > - **beheer Hulpprogramma's** > **back-up en site Recovery**.
 3. Geef bij **naam**de beschrijvende naam **ContosoVMVault**op. Als u meer dan één abonnement hebt, selecteert u het gewenste abonnement.
 4. Maak een resourcegroep met de naam **ContosoRG**.
 5. Geef een Azure-regio op. Zie [Azure site Recovery prijs informatie](https://azure.microsoft.com/pricing/details/site-recovery/)als u de ondersteunde regio's wilt controleren.
-6. Voor Recovery Services kluizen selecteert u **overzicht** > **ConsotoVMVault** >  **+ repliceren**.
+6. Voor Recovery Services kluizen selecteert u **overzicht** > **ConsotoVMVault** > **en repliceren**.
 7. Selecteer voor **bron**de optie **Azure**.
 8. Voor **bron locatie**selecteert u de Azure-bron regio waar uw vm's momenteel worden uitgevoerd.
 9. Selecteer het Azure Resource Manager-implementatie model. Selecteer vervolgens het **bron abonnement** en de **resource groep bron**.
@@ -96,7 +96,7 @@ Site Recovery haalt een lijst op met de virtuele machines die zijn gekoppeld aan
 
 1. Selecteer de virtuele machine die u wilt verplaatsen en selecteer **OK**.
 2. Voor **instellingen**selecteert u **herstel na nood gevallen**.
-3. Selecteer bij**doel regio**voor **nood herstel** > configureren de doel regio waarnaar u wilt repliceren.
+3. Selecteer voor het **configureren van herstel na nood gevallen** > **doel regio**de doel regio waarnaar u wilt repliceren.
 4. Kies voor het gebruik van de standaard doel resources of die u vooraf hebt gemaakt.
 5. Selecteer **replicatie inschakelen** om de taak te starten.
 
@@ -107,11 +107,11 @@ Site Recovery haalt een lijst op met de virtuele machines die zijn gekoppeld aan
 ## <a name="test-the-configuration"></a>De configuratie testen
 
 
-1. Ga naar de kluis. Selecteer in **instellingen** > **gerepliceerde items**de virtuele machine die u wilt verplaatsen naar de doel regio. Selecteer vervolgens **failover testen**.
+1. Ga naar de kluis. Selecteer de virtuele machine die u wilt verplaatsen naar de doel regio in **instellingen** > **gerepliceerde items**. Selecteer vervolgens **failover testen**.
 2. Selecteer in **failover testen**het herstel punt dat u voor de failover wilt gebruiken:
 
-   - **Laatst verwerkt**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door de Site Recovery-service. Het tijdstempel wordt weergegeven. Er wordt geen tijd besteed aan het verwerken van gegevens. deze optie biedt daarom een lage herstel tijd (RTO).
-   - **Laatste toepassingsconsistente punt**: Failover van alle Vm's naar het meest recente toepassings consistente herstel punt. Het tijdstempel wordt weergegeven.
+   - **Laatst verwerkte**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door de Site Recovery-service. Het tijdstempel wordt weergegeven. Er wordt geen tijd besteed aan het verwerken van gegevens. deze optie biedt daarom een lage herstel tijd (RTO).
+   - **Nieuwste app-consistent**: failover van alle virtuele machines naar het meest recente toepassings consistente herstel punt. Het tijdstempel wordt weergegeven.
    - **Aangepast**: selecteer een herstelpunt.
 
 3. Selecteer het Azure-doelnetwerk waar u de Azure VM's naartoe wilt verplaatsen, om de configuratie te testen.

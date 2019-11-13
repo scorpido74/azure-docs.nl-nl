@@ -1,27 +1,22 @@
 ---
-title: Een toepassings gateway met externe verkeers omleiding maken-Azure CLI | Microsoft Docs
+title: Externe verkeers omleiding via CLI-Azure-toepassing gateway
 description: Meer informatie over het maken van een toepassings gateway die intern webverkeer omleidt naar de juiste pool met behulp van de Azure CLI.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/24/2018
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: e1fb25a9d5bfe6538d081169d163d7b280733cc1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: fc955b4959bb20628463f7699a0b66ec2b89a393
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382008"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011596"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Een toepassings gateway met externe omleiding maken met behulp van de Azure CLI
 
-U kunt de Azure CLI gebruiken voor het [](multiple-site-overview.md) configureren van omleiding van webverkeer wanneer u een [toepassings gateway](overview.md)maakt. In deze zelf studie configureert u een listener en regel voor het omleiden van webverkeer dat bij de toepassings gateway op een externe site arriveert.
+U kunt de Azure CLI gebruiken voor het configureren van [omleiding van webverkeer](multiple-site-overview.md) wanneer u een [toepassings gateway](overview.md)maakt. In deze zelf studie configureert u een listener en regel voor het omleiden van webverkeer dat bij de toepassings gateway op een externe site arriveert.
 
 In dit artikel leert u het volgende:
 
@@ -34,11 +29,11 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstartgids de versie Azure CLI 2.0.4 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze Quickstart gebruikmaken van Azure CLI versie 2.0.4 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group).
+Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met [az group create](/cli/azure/group).
 
 In het volgende voorbeeld wordt de resourcegroep *myResourceGroupAG* gemaakt op de locatie *eastus*.
 
@@ -93,7 +88,7 @@ Het kan enkele minuten duren voordat de toepassingsgateway is gemaakt. Nadat de 
 
 ### <a name="add-the-redirection-configuration"></a>De configuratie van de omleiding toevoegen
 
-Voeg de omleidings configuratie toe die verkeer van *www\.-consoto.org* naar de listener verzendt *voor\.www-contoso.com* naar de Application Gateway met [AZ Network Application-Gateway redirect-config Create ](/cli/azure/network/application-gateway/redirect-config).
+Voeg de omleidings configuratie toe die verkeer van *www\.consoto.org* naar de listener voor *www\.contoso.com* naar de Application Gateway verzendt met [AZ Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \

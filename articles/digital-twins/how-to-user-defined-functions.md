@@ -1,5 +1,5 @@
 ---
-title: Door de gebruiker gedefinieerde functies maken in azure Digital Apparaatdubbels | Microsoft Docs
+title: Door de gebruiker gedefinieerde functies maken-in azure Digital Apparaatdubbels | Microsoft Docs
 description: Het maken van door de gebruiker gedefinieerde functies, treffers en roltoewijzingen in azure Digital Apparaatdubbels.
 ms.author: alinast
 author: alinamstanciu
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5271b14ec008579d18a152a229b9768339927bb7
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4db6f0052c92d4532917a996eda82a27d97d3063
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888851"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009573"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Door de gebruiker gedefinieerde functies maken in azure Digital Apparaatdubbels
 

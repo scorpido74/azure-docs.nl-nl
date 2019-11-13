@@ -1,6 +1,6 @@
 ---
 title: Overzicht van verrijkingen van Azure IoT Hub-berichten
-description: Overzicht van verrijkingen van berichten voor Azure IoT Hub berichten
+description: In dit artikel worden de verrijkingen van een bericht weer gegeven. Dit geeft de IoT Hub de mogelijkheid om berichten te stem pelen met aanvullende informatie voordat de berichten naar het aangewezen eind punt worden verzonden.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 83114023eb35221bfa53e3ce4de8a861948c7a3a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177993"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005827"
 ---
-# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Verrijkingen van berichten voor IoT Hub berichten van apparaat-naar-Cloud (preview-versie)
+# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Verrijkingen van berichten voor IoT Hub berichten van apparaat-naar-Cloud
 
 *Verrijkingen* van berichten is de mogelijkheid van de IOT hub om berichten met aanvullende informatie af te *stem pelen* voordat de berichten naar het aangewezen eind punt worden verzonden. Een reden voor het gebruik van verrijkingen van berichten is het insluiten van gegevens die kunnen worden gebruikt voor het vereenvoudigen van de downstream-verwerking. Het verrijken van telemetriegegevens van een apparaat met een dubbele tag van een apparaat kan bijvoorbeeld de belasting van klanten verminderen om deze informatie te laten opleveren voor Device-dubbele API-aanroepen.
 
@@ -29,7 +29,7 @@ Een bericht verrijking heeft drie belang rijke elementen:
 
 * Een of meer [eind punten](iot-hub-devguide-endpoints.md) waarvoor de verrijking moet worden toegepast.
 
-De **sleutel** is een teken reeks. Een sleutel mag alleen alfanumerieke tekens bevatten of deze speciale tekens: afbreek streepjes (@no__t 0), onderstrepings teken (`_`) en punt (`.`).
+De **sleutel** is een teken reeks. Een sleutel mag alleen alfanumerieke tekens bevatten of deze speciale tekens: hyphen (`-`), onderstrepings teken (`_`) en punt (`.`).
 
 De **waarde** kan een van de volgende voor beelden zijn:
 
@@ -81,10 +81,6 @@ Zie de [zelf studie](tutorial-message-enrichments.md) over het gebruik van beric
 ## <a name="pricing"></a>Prijzen
 
 Verrijkingen van berichten zijn beschikbaar voor geen extra kosten. Op dit moment worden er kosten in rekening gebracht wanneer u een bericht naar een IoT Hub verzendt. Er wordt slechts één keer per bericht in rekening gebracht, zelfs als het bericht naar meerdere eind punten gaat.
-
-## <a name="availability"></a>Beschikbaarheid
-
-Deze functie is beschikbaar als preview-versie en is beschikbaar in alle regio's behalve VS-Oost, VS-West, Europa-west, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china)en [Azure Duitsland](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="next-steps"></a>Volgende stappen
 

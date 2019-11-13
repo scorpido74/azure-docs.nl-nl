@@ -2,7 +2,7 @@
 title: Rapport Risk ante aanmeldingen in de portal | Microsoft Docs
 description: Meer informatie over het rapport Riskante aanmeldingen in de Azure Active Directory-portal
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 10/28/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bb0cd2c98d0133b0eaffce1730fb9f7cb74bf60
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 3f19744e6c860ae315b681f5eb090cba23b153af
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043543"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008344"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Het rapport Riskante aanmeldingen in de Azure Active Directory-portal
 
@@ -32,7 +32,7 @@ Er zijn twee verschillende beveiligings rapporten die worden berekend op basis v
 
 - **Riskante aanmeldingen** - Een riskante aanmelding is een indicator van een aanmeldingspoging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikersaccount is.
 
-- **Gebruikers voor wie wordt aangegeven dat ze risico lopen** - Een riskante gebruiker is een indicator van een gebruikersaccount dat mogelijk is aangetast. 
+- **Gebruikers van wie wordt aangegeven dat ze risico lopen** - Een riskante gebruiker is een indicator van een gebruikersaccount dat mogelijk is aangetast. 
 
 ![Riskante aanmeldingen](./media/concept-risky-sign-ins/10.png)
 
@@ -42,7 +42,7 @@ Zie [How to configure the User Risk](../identity-protection/howto-user-risk-poli
 
 De rapporten met Risk ante aanmeldingen zijn beschikbaar voor gebruikers in de volgende rollen:
 
-- Beveiligings beheerder
+- Beveiligingsbeheerder
 - Globale beheerder
 - Beveiligings lezer
 

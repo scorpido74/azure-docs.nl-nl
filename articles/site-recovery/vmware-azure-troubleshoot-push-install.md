@@ -1,20 +1,20 @@
 ---
-title: Problemen met push-installatie van de Mobility-service oplossen bij het inschakelen van replicatie voor nood herstel | Microsoft Docs
-description: Problemen met de installatie van Mobility Services oplossen bij het inschakelen van replicatie voor herstel na nood gevallen
+title: Problemen met push-installatie van de Mobility-service met Azure Site Recovery f oplossen
+description: Problemen met de installatie van Mobility Services oplossen bij het inschakelen van replicatie voor herstel na nood gevallen met Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 09/11/2019
-ms.openlocfilehash: 4aa18379962c289f5094795988a247f4c7e35df2
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 3646499ad2104566cb82f3f26c6b55d05f84dc7d
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910645"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953780"
 ---
-# <a name="troubleshoot-mobility-service-push-installation-issues"></a>Problemen met push-installatie van Mobility service oplossen
+# <a name="troubleshoot-mobility-service-push-installation"></a>Problemen met push-installatie van Mobility service oplossen 
 
 De installatie van de Mobility-service is een belang rijke stap tijdens het inschakelen van de replicatie. Het slagen van deze stap is alleen afhankelijk van de vereisten van de vergadering en het werken met ondersteunde configuraties. De meest voorkomende fouten die u tijdens de installatie van de Mobility-service krijgt, zijn als volgt:
 
@@ -38,12 +38,12 @@ Wanneer u replicatie inschakelt, probeert Azure Site Recovery de installatie van
 * Voor Azure Site Recovery is een **hoofd** account of gebruikers account met **beheerders bevoegdheden** vereist om een push-installatie uit te voeren. Anders kan de push-installatie worden geblokkeerd op de bron machine.
   * Voor Windows (**fout 95107**) controleert u of het gebruikers account beheerders toegang, lokaal of domein, op de bron computer heeft.
   * Als u geen domein account gebruikt, moet u toegangs beheer voor externe gebruikers uitschakelen op de lokale computer.
-    * Als u toegangs beheer voor externe gebruikers wilt uitschakelen, voegt u onder HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System register sleutel een nieuwe DWORD toe: LocalAccountTokenFilterPolicy. Stel de waarde in op 1. Als u deze stap wilt uitvoeren, voert u de volgende opdracht uit vanaf de opdracht prompt:
+    * Als u toegangs beheer voor externe gebruikers wilt uitschakelen, voegt u onder HKEY_LOCAL_MACHINE register sleutel \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System een nieuwe DWORD: LocalAccountTokenFilterPolicy toe. Stel de waarde in op 1. Als u deze stap wilt uitvoeren, voert u de volgende opdracht uit vanaf de opdracht prompt:
 
          `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
   * Voor Linux (**fout 95108**), moet u het hoofd account kiezen voor een geslaagde installatie van de Mobility-agent. Daarnaast moeten SFTP-services worden uitgevoerd. SFTP-subsysteem en-wachtwoord verificatie inschakelen in het sshd_config-bestand:
     1. Meld u aan als root.
-    2. Ga naar het/etc/ssh/sshd_config-bestand en zoek de regel die begint met PasswordAuthentication.
+    2. Ga naar/etc/ssh/sshd_config-bestand, zoek de regel die begint met PasswordAuthentication.
     3. Verwijder de opmerking bij de regel en wijzig de waarde in Ja.
     4. Zoek de regel die begint met subsysteem en verwijder de opmerking over de regel.
     5. Start de sshd-service opnieuw.
@@ -62,7 +62,7 @@ Wanneer het instellen van een vertrouwens relatie tussen het primaire domein en 
 
 Als u de referenties van het gekozen gebruikers account wilt wijzigen, volgt u de instructies die [hier](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)worden gegeven.
 
-## <a name="login-failures-errorid-95519-95520-95521-95522"></a>Aanmeldings fouten (ErrorID: 95519, 95520, 95521, 95522)
+## <a name="login-failures-errorid-95519-95520-95521-95522"></a>Mislukte aanmeldingen (ErrorID: 95519, 95520, 95521, 95522)
 
 ### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>De referenties van het gebruikers account zijn uitgeschakeld (ErrorID: 95519)
 
@@ -80,9 +80,9 @@ Wijzig daarom de gekozen referenties door de instructies te volgen die [hier](vm
 
 ### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>Er zijn geen aanmeldings servers beschikbaar op de bron machine (ErrorID: 95521)
 
-Deze fout treedt op wanneer de aanmeldings servers niet beschikbaar zijn op de bron machine. Niet-beschik baarheid van aanmeldings servers leidt ertoe dat de aanmeldings aanvraag niet kan worden uitgevoerd. de Mobility-agent kan daarom niet worden geïnstalleerd. Zorg ervoor dat aanmeldings servers beschikbaar zijn op de bron machine en start de aanmeldings service voor geslaagde aanmelding. Raadpleeg het KB [139410](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available) -fout bericht voor gedetailleerde instructies: Er zijn momenteel geen aanmeldings servers beschikbaar.
+Deze fout treedt op wanneer de aanmeldings servers niet beschikbaar zijn op de bron machine. Niet-beschik baarheid van aanmeldings servers leidt ertoe dat de aanmeldings aanvraag niet kan worden uitgevoerd. de Mobility-agent kan daarom niet worden geïnstalleerd. Zorg ervoor dat aanmeldings servers beschikbaar zijn op de bron machine en start de aanmeldings service voor geslaagde aanmelding. Zie voor gedetailleerde instructies het KB [139410](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available) -fout bericht: er zijn momenteel geen aanmeldings servers beschikbaar.
 
-### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>Logon-service wordt niet uitgevoerd op de bron machine (ErrorID: 95522)
+### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>De aanmeldings service wordt niet uitgevoerd op de bron machine (ErrorID: 95522)
 
 De aanmeldings service wordt niet uitgevoerd op de bron machine en er is een fout opgetreden bij het aanmelden. Mobility agent kan daarom niet worden geïnstalleerd. Als u wilt oplossen, moet u ervoor zorgen dat de aanmeldings service wordt uitgevoerd op de bron computer voor een geslaagde aanmelding. Als u de aanmeldings service wilt starten, voert u de opdracht net start logon uit vanaf de opdracht prompt of start u de service NetLogon vanuit taak beheer.
 
@@ -97,9 +97,9 @@ De configuratie server/scale-out proces server probeert verbinding te maken met 
 * Bovendien, voor **Linux VM**,
   * Controleer of de meest recente OpenSSH, openssh-server en openssl-pakketten zijn geïnstalleerd.
   * Controleer en of Secure Shell (SSH) is ingeschakeld en wordt uitgevoerd op poort 22.
-  * SFTP-services moeten worden uitgevoerd. SFTP-subsysteem en-wachtwoord verificatie inschakelen in het sshd_config-bestand
+  * SFTP-services moeten worden uitgevoerd. Als u SFTP-subsysteem-en wachtwoord verificatie wilt inschakelen in het sshd_config bestand,
     * Meld u aan als root.
-    * Ga naar het/etc/ssh/sshd_config-bestand en zoek de regel die begint met PasswordAuthentication.
+    * Ga naar/etc/ssh/sshd_config-bestand, zoek de regel die begint met PasswordAuthentication.
     * Verwijder de opmerking bij de regel en wijzig de waarde in Ja
     * Zoek de regel die begint met subsysteem en verwijder de opmerking over de regel
     * Start de sshd-service opnieuw.
@@ -110,7 +110,7 @@ De configuratie server/scale-out proces server probeert verbinding te maken met 
 
 Deze fout treedt op wanneer het netwerk waarin de bron machine zich bevindt, niet is gevonden of is verwijderd of niet langer beschikbaar is. De enige manier om de fout op te lossen is door ervoor te zorgen dat het netwerk bestaat.
 
-## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Controle van bestands-en printer share services (ErrorID: 95105 & 95106)
+## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Controle van bestands-en printer deling-Services (ErrorID: 95105 & 95106)
 
 Controleer na de connectiviteits controle of de service voor bestands-en printer deling is ingeschakeld op de virtuele machine. Deze instellingen zijn vereist voor het kopiëren van de Mobility-agent op de bron machine.
 
@@ -121,7 +121,7 @@ Voor **windows 2008 R2 en eerdere versies**
   * Regels bestand en printer deling (NB-session-in) en bestands-en printer deling (SMB-in) zoeken. Voor elke regel klikt u met de rechter muisknop op de regel en klikt u vervolgens op **regel inschakelen**.
 * Als u het delen van bestanden met groepsbeleid wilt inschakelen,
   * Ga naar Start, typ gpmc. msc en zoeken.
-  * Open in het navigatie deel venster de volgende mappen: Beleid voor lokale computers, gebruikers configuratie, Beheersjablonen, Windows-onderdelen en delen van netwerken.
+  * Open in het navigatie deel venster de volgende mappen: beleid voor lokale computer, gebruikers configuratie, Beheersjablonen, Windows-onderdelen en delen van netwerken.
   * Dubbel klik in het detail venster op **voor komen dat gebruikers bestanden binnen hun profiel delen**. Als u de instelling groepsbeleid wilt uitschakelen en de gebruiker de mogelijkheid wilt bieden bestanden te delen, klikt u op uitgeschakeld. Klik op OK om uw wijzigingen op te slaan. Zie voor meer informatie over het [delen van bestanden in-of uitschakelen met Groepsbeleid](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
 
 Volg voor **latere versies**de instructies in [de Mobility-service installeren voor nood herstel van virtuele VMware-machines en fysieke servers](vmware-azure-install-mobility-service.md) om bestands-en printer deling in te scha kelen.
@@ -134,7 +134,7 @@ Nadat u de bestands-en printer services hebt gecontroleerd, schakelt u de WMI-se
 * Klik op instellingen wijzigen en klik vervolgens op het tabblad uitzonde ringen.
 * Schakel in het venster uitzonde ringen het selectie vakje voor Windows Management Instrumentation (WMI) in om WMI-verkeer via de firewall in te scha kelen. 
 
-U kunt ook WMI-verkeer via de firewall inschakelen vanaf de opdracht prompt. Gebruik de volgende opdracht`netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
+U kunt ook WMI-verkeer via de firewall inschakelen vanaf de opdracht prompt. Gebruik de volgende opdracht `netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
 Andere artikelen over het oplossen van problemen met WMI vindt u in de volgende artikelen.
 
 * [Eenvoudige WMI-tests](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
@@ -156,7 +156,7 @@ De opstart-en systeem partities/-volumes op verschillende schijven zijn vóór 9
 
 Een virtuele machine zonder een opstart schijf kan niet worden beveiligd. Dit is om ervoor te zorgen dat de virtuele machine probleemloos kan worden hersteld tijdens een failover-bewerking. Als er geen opstart schijf is, kan de computer niet worden opgestart na een failover. Zorg ervoor dat de virtuele machine een opstart schijf bevat en voer de bewerking opnieuw uit. Houd er ook rekening mee dat meerdere opstart schijven op dezelfde computer niet worden ondersteund.
 
-### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>Er zijn meerdere opstart schijven op de bron machine (ErrorID: 95311)
+### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>Meerdere opstart schijven aanwezig op de bron machine (ErrorID: 95311)
 
 Een virtuele machine met meerdere opstart schijven is geen [ondersteunde configuratie](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage).
 
@@ -164,14 +164,14 @@ Een virtuele machine met meerdere opstart schijven is geen [ondersteunde configu
 
 Vóór 9,20 versie werd een niet-ondersteunde configuratie van de hoofd partitie of het volume op meerdere schijven. Deze configuratie wordt ondersteund van [9,20-versie](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery). De meest recente versie gebruiken voor deze ondersteuning.
 
-## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>Het inschakelen van de beveiliging is mislukt als de apparaatnaam die wordt vermeld in de GRUB-configuratie in plaats van UUID (ErrorID: 95320)
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>Het inschakelen van de beveiliging is mislukt als de apparaatnaam die wordt vermeld in de GRUB-configuratie in plaats van de UUID (ErrorID: 95320)
 
 **Mogelijke oorzaak:** </br>
 De GRUB-configuratie bestanden ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" of "/etc/default/grub") bevatten mogelijk de waarde voor de **root** van de para meters en worden **hervat** als de werkelijke APPARAATNAMEN in plaats van uuid. Site Recovery is een UUID-benadering omdat de naam van apparaten kan veranderen tijdens het opnieuw opstarten van de virtuele machine, omdat VM mogelijk niet wordt bereikt met dezelfde naam als de failover, waardoor er problemen ontstaan. Bijvoorbeeld: </br>
 
 
 - De volgende regel is afkomstig uit het GRUB-bestand **/boot/grub2/grub.cfg**. <br>
-  *linux/boot/vmlinuz-3.12.49-11-default **root =/dev/sda2** $ {extra_cmdline} **Resume =/dev/sda1** begin = Silent quiet showopts*
+  *linux/boot/vmlinuz-3.12.49-11-default **root =/dev/sda2** $ {extra_cmdline} **Resume =/dev/sda1is** = Silent quiet showopts*
 
 
 - De volgende regel wordt uit het bestand WORMGATEN **/boot/grub/menu.lst**
@@ -183,7 +183,7 @@ Als u de vetgedrukte teken reeks hierboven ziet, heeft GRUB werkelijke apparaatn
 De apparaatnamen moeten worden vervangen door de bijbehorende UUID.<br>
 
 
-1. Zoek de UUID van het apparaat door de opdracht ' blkid \<device name > ' uit te voeren. Bijvoorbeeld:<br>
+1. Zoek de UUID van het apparaat door de opdracht ' blkid \<apparaatnaam > ' uit te voeren. Bijvoorbeeld:<br>
    ```
    blkid /dev/sda1
    /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
@@ -191,7 +191,7 @@ De apparaatnamen moeten worden vervangen door de bijbehorende UUID.<br>
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
    ```
 
-2. Vervang nu de naam van het apparaat door de bijbehorende uuid in de notatie zoals root =\<uuid = uuid >. Als we bijvoorbeeld de apparaatnaam vervangen door UUID voor de para meter root en resume die hierboven wordt genoemd in de bestanden "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" of "/etc/default/grub:, zien de regels in de bestanden er als volgt uit. <br>
+2. Vervang nu de naam van het apparaat door de bijbehorende UUID in de notatie zoals ' root = UUID =\<UUID > '. Als we bijvoorbeeld de apparaatnaam vervangen door UUID voor de para meter root en resume die hierboven wordt genoemd in de bestanden "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" of "/etc/default/grub:, zien de regels in de bestanden er als volgt uit. <br>
    *kernel/boot/vmlinuz-3.0.101-63-default **root = uuid = 62927e85-f7ba-40bc-9993-cc1feeb191e4** **Resume = uuid = 6f614b44-433b-431b-9ca1-4dd2f6f74f6b** begin = Silent crashkernel = 256M-: 128M showopts VGA = 0x314*
 3. De beveiliging opnieuw starten
 
@@ -279,7 +279,7 @@ Neem contact op met het [micro soft Windows-platform](https://aka.ms/Windows_Sup
 
 Wanneer het DCOM-probleem is opgelost, installeert u de Azure Site Recovery VSS-provider hand matig met behulp van de volgende opdracht:
  
-**C:\Program Files (x86) \Microsoft Azure site Recovery\agent. > ' C:\Program Files (x86) \Microsoft Azure site Recovery\agent\InMageVSSProvider_Install.cmd**
+**C:\Program Files (x86) \Microsoft Azure site Recovery\agent. > ' C:\Program Files (x86) \Microsoft Azure site Recovery\agent\ InMageVSSProvider_Install. cmd**
   
 Als toepassings consistentie niet essentieel is voor uw vereisten voor nood herstel, kunt u de installatie van de VSS-provider overs Laan. 
 
@@ -293,7 +293,7 @@ Als u de installatie van de Azure Site Recovery VSS-provider wilt overs Laan en 
    1. Open de installatie directory van de Azure Site Recovery Mobility-service op de locatie:
    
       C:\Program Files (x86) \Microsoft Azure site Recovery\agent.
-   2. Wijzig de Azure Site Recovery VSS-provider installatie scripts **nMageVSSProvider_Install** en **InMageVSSProvider_Uninstall. cmd** om altijd slagen door de volgende regels toe te voegen:
+   2. Wijzig de installatie scripts van de Azure Site Recovery VSS-provider **nMageVSSProvider_Install** en **InMageVSSProvider_Uninstall. cmd** om altijd slagen door de volgende regels toe te voegen:
     
       ```     
       rem @echo off
@@ -305,7 +305,7 @@ Als u de installatie van de Azure Site Recovery VSS-provider wilt overs Laan en 
 4. Wanneer de installatie is voltooid en naar de volgende **stap wordt verplaatst**, moet u de regels die u hebt toegevoegd, verwijderen.
 5. Als u de VSS-provider wilt installeren, opent u een opdracht prompt als beheerder en voert u de volgende opdracht uit:
    
-    **C:\Program Files (x86) \Microsoft Azure site Recovery\agent. > .\InMageVSSProvider_Install.cmd**
+    **C:\Program Files (x86) \Microsoft Azure site Recovery\agent. >. \ InMageVSSProvider_Install. cmd**
 
 9. Controleer of de ASR VSS-provider is geïnstalleerd als een service in Windows Services en open de component service MMC om te controleren of de ASR VSS-provider wordt weer gegeven.
 10. Als de VSS-provider niet kan worden geïnstalleerd, werkt u met CX om de machtigingen fouten in diagnostische CAPI2 op te lossen.
@@ -316,7 +316,7 @@ Dit probleem heeft tot gevolg dat de installatie van de Azure Site Recovery Mobi
  
 ### <a name="to-identify-the-issue"></a>Het probleem identificeren
 
-In het logboek op de configuratie server op C:\ProgramData\ASRSetupLogs\UploadedLogs\<datum/tijd > UA_InstallLogFile. log, vindt u de volgende uitzonde ring:
+In het logboek op de configuratie server op C:\ProgramData\ASRSetupLogs\UploadedLogs\<datum-tijd > UA_InstallLogFile. log, wordt de volgende uitzonde ring weer:
 
 COM+ kan niet communiceren met de micro soft-Distributed Transaction Coordinator (uitzonde ring van HRESULT: 0x8004E00F)
 
@@ -332,7 +332,7 @@ Als de installatie van de Mobility-agent mislukt, raadpleegt u de Logboeken onde
 Om het probleem op te lossen:
   
 1. Open het REGI ster met behulp van een REGI ster-editor, zoals Regedit. msc.
-2. Open het knoop punt HKEY_LOCAL_MACHINE\SYSTEM.
+2. Open het HKEY_LOCAL_MACHINE \SYSTEM-knoop punt.
 3. Zoek de besturings sets in het knoop punt systeem.
 4. Open elke set besturings elementen en controleer of de volgende Windows-Stuur Programma's aanwezig zijn:
 

@@ -1,18 +1,17 @@
 ---
-title: Over nood herstel van virtuele VMware-machines naar Azure met behulp van Azure Site Recovery | Microsoft Docs
+title: VMware-nood herstel met Azure Site Recovery
 description: Dit artikel bevat een overzicht van nood herstel van virtuele VMware-machines naar Azure met behulp van de Azure Site Recovery-service.
-author: raynew
+author: rayne-wiselman
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 9/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: dca8174caabf4799c338d780a78ba58f1af5a2f1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814323"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954395"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Over nood herstel van virtuele VMware-machines naar Azure
 
@@ -88,16 +87,16 @@ On-premises is wat u moet doen:
 Nadat u uw Azure-en on-premises infra structuur hebt geïmplementeerd, kunt u herstel na nood gevallen instellen.
 
 1. Bekijk de [architectuur van VMware naar Azure](vmware-azure-architecture.md)en de [fysieke naar Azure-architectuur](physical-azure-architecture.md)om inzicht te krijgen in de onderdelen die u moet implementeren. Er zijn een aantal onderdelen, dus is het belang rijk om te begrijpen hoe deze allemaal bij elkaar passen.
-2. **Bron omgeving**: Als eerste stap in de implementatie stelt u de replicatie bron omgeving in. U geeft op wat u wilt repliceren en waar u naar wilt repliceren.
-3. **Configuratie server**: U moet een configuratie server instellen in uw on-premises bron omgeving:
+2. **Bron omgeving**: als eerste stap in de implementatie stelt u de replicatie bron omgeving in. U geeft op wat u wilt repliceren en waar u naar wilt repliceren.
+3. **Configuratie server**: u moet een configuratie server instellen in uw on-premises bron omgeving:
     - De configuratie server is één on-premises computer. Voor nood herstel van VMware raden wij aan dat u deze implementeert als een VMware-VM die kan worden geïmplementeerd vanuit een download bare OVF-sjabloon.
     - De configuratie server coördineert de communicatie tussen on-premises en Azure
     - Een aantal andere onderdelen wordt uitgevoerd op de computer van de configuratie server.
         - De proces server ontvangt, optimaliseert en verzendt replicatie gegevens naar het cache-opslag account in Azure. Het behandelt ook de automatische installatie van de Mobility-service op computers die u wilt repliceren en voert automatische detectie van Vm's op VMware-servers uit.
         - Op de hoofddoelserver worden de replicatiegegevens tijdens de failback vanuit Azure afgehandeld.
     - Instellen omvat het registreren van de configuratie server in de kluis, het downloaden van MySQL-server en VMware-PowerCLI en het opgeven van de accounts die zijn gemaakt voor de automatische detectie en de installatie van de Mobility-service.
-4. **Doel omgeving**: U stelt uw doel-Azure-omgeving in door uw Azure-abonnement en netwerk instellingen op te geven.
-5. **Replicatie beleid**: U geeft op hoe replicatie moet plaatsvinden. Instellingen omvatten hoe vaak herstel punten worden gemaakt en opgeslagen, en of er app-consistente moment opnamen moeten worden gemaakt.
+4. **Doel omgeving**: u kunt uw doel-Azure-omgeving instellen door uw Azure-abonnement en netwerk instellingen op te geven.
+5. **Replicatie beleid**: u geeft op hoe replicatie moet plaatsvinden. Instellingen omvatten hoe vaak herstel punten worden gemaakt en opgeslagen, en of er app-consistente moment opnamen moeten worden gemaakt.
 6. **Schakel replicatie in**. U schakelt replicatie in voor on-premises machines. Als u een account hebt gemaakt voor het installeren van de Mobility-service, wordt deze geïnstalleerd wanneer u replicatie voor een machine inschakelt. 
 
 *Meer hulp nodig?*

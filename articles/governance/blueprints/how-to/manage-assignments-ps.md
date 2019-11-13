@@ -1,17 +1,14 @@
 ---
 title: Toewijzingen beheren met Power shell
 description: Meer informatie over het beheren van blauw druk-toewijzingen met de officiële Azure blauw drukken Power shell-module, AZ. blauw druk.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/30/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: ef9674165533ef3e4887bba68507344406ca128c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 98c2173568f65d029b00ca6c8b25d2195094a5e3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755926"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961611"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Toewijzingen beheren met Power shell
 
@@ -135,7 +132,7 @@ Als de blauw druk toewijzing nog niet bestaat, kunt u deze maken met de cmdlet `
   - Moet uniek zijn en niet al bestaan in **SubscriptionId**
 - **Blauw druk** [vereist]
   - Hiermee wordt de definitie van de blauw druk opgegeven die moet worden toegewezen
-  - @No__t_0 gebruiken om het referentie object op te halen
+  - `Get-AzBlueprint` gebruiken om het referentie object op te halen
 - **Locatie** [vereist]
   - Hiermee geeft u de regio voor het door het systeem toegewezen beheerde identiteits-en abonnements implementatie object op dat moet worden gemaakt in
 - **Abonnement** (optioneel)
@@ -171,7 +168,7 @@ Als de blauw druk toewijzing nog niet bestaat, kunt u deze maken met de cmdlet `
 
 ### <a name="example-1-provide-parameters"></a>Voor beeld 1: para meters opgeven
 
-In het volgende voor beeld wordt een nieuwe toewijzing gemaakt van versie 1,1 van de blauw druk definitie ' My-blauw ' die is opgehaald met `Get-AzBlueprint`, wordt de locatie van het beheerde identiteits-en toewijzings object ingesteld op ' westus2 ', worden de resources vergrendeld met _AllResourcesReadOnly_, en stelt de hash-tabellen voor zowel **para meter** -als **ResourceGroupParameter** in voor een specifiek abonnement dat wordt weer gegeven als `{subId}`:
+In het volgende voor beeld wordt een nieuwe toewijzing gemaakt van versie 1,1 van de blauw druk definitie ' My-blauw ' die is opgehaald met `Get-AzBlueprint`, wordt de locatie van het beheerde identiteits-en toewijzings object ingesteld op ' westus2 ', worden de resources met _AllResourcesReadOnly_vergrendeld en worden de hash-tabellen ingesteld voor zowel **para meter** -als **ResourceGroupParameter** op een specifiek abonnement dat wordt weer gegeven als `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -261,7 +258,7 @@ Zie [regels voor het bijwerken van toewijzingen](./update-existing-assignments.m
   - Wordt gebruikt voor het zoeken van de toewijzing die moet worden bijgewerkt, niet voor het wijzigen van de toewijzing
 - **Blauw druk** [vereist]
   - Hiermee geeft u de blauw druk definitie van de blauw druk toewijzen
-  - @No__t_0 gebruiken om het referentie object op te halen
+  - `Get-AzBlueprint` gebruiken om het referentie object op te halen
   - Wordt gebruikt voor het zoeken van de toewijzing die moet worden bijgewerkt, niet voor het wijzigen van de toewijzing
 - **Locatie** (optioneel)
   - Hiermee geeft u de regio voor het door het systeem toegewezen beheerde identiteits-en abonnements implementatie object op dat moet worden gemaakt in

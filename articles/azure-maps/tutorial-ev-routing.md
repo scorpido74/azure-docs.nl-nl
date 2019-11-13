@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9cc7fc1ba8c7f55700505ea8fca0dea4f836e333
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9628e34b752abc8d77225a612f9f6daaf02fcbf7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243285"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010937"
 ---
 # <a name="route-electric-vehicles-by-using-azure-notebooks-python"></a>Elektrische Voer tuigen routeren met behulp van Azure Notebooks (python)
 
@@ -41,13 +41,13 @@ Als u deze zelf studie wilt volt ooien, moet u eerst een Azure Maps-account make
 
 Als u een abonnement voor een Azure Maps account wilt maken in de prijs categorie S1, volgt u de instructies in [uw Azure Maps-account beheren](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account). 
 
-Als u de primaire abonnements sleutel voor uw account wilt ophalen, volgt u de instructies in [Zoek punten in de buurt met behulp van Azure Maps](./tutorial-search-location.md#getkey) .
+Als u de primaire abonnements sleutel voor uw account wilt ophalen, volgt u de instructies in [een account maken en uw sleutel ophalen](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-and-get-your-key).
 
 ## <a name="create-an-azure-notebook"></a>Een Azure-notebook maken
 
 Als u deze zelf studie wilt volgen, moet u een Azure notebook-project maken en het Jupyter-notebook bestand downloaden en uitvoeren. Het notitieblok bestand bevat de python-code, waarmee het scenario in deze zelf studie wordt geïmplementeerd. Ga als volgt te werk om een Azure notebook-project te maken en het Jupyter-notebook document ernaar te uploaden:
 
-1. Ga naar [Azure notebooks](https://notebooks.azure.com) en meld u aan. Zie [Quick Start: Meld u aan en stel een gebruikers-id in](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks)voor meer informatie.
+1. Ga naar [Azure notitieblokken](https://notebooks.azure.com) en meld u aan. Zie [Quick Start: Meld u aan en stel een gebruikers-id in](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks)voor meer informatie.
 1. Selecteer aan de bovenkant van de pagina met het open bare profiel **Mijn projecten**.
 
     ![De knop mijn projecten](./media/tutorial-ev-routing/myproject.png)
@@ -76,12 +76,12 @@ Om u te helpen beter inzicht te krijgen in de functionaliteit die in het notitie
 
   ![De knop uitvoeren](./media/tutorial-ev-routing/run.png)
 
-## <a name="install-project-level-packages"></a>Pakketten op project niveau installeren
+## <a name="install-project-level-packages"></a>Project-niveau pakketten installeren
 
 Als u de code in het notitie blok wilt uitvoeren, installeert u pakketten op project niveau door het volgende te doen:
 
 1. Down load het bestand [*Requirements. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) van de [Azure Maps Jupyter notebook repository](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)en upload het vervolgens naar uw project.
-1. Selecteer in het project dashboard **project instellingen**. 
+1. Selecteer in het projectdashboard **projectinstellingen**. 
 1. Selecteer in het deel venster **project instellingen** het tabblad **omgeving** en selecteer vervolgens **toevoegen**.
 1. Ga als volgt te werk onder **omgevings instellingen**:   
     a. Selecteer in de eerste vervolg keuzelijst **vereisten. txt**.  
@@ -281,7 +281,7 @@ display(Image(poiRangeMap))
 
 Nadat u hebt vastgesteld dat alle mogelijke laad zenders binnen het bereikbaar zijn, weet u zeker dat deze in een minimum tijd kunnen worden bereikt. 
 
-Met het volgende script wordt de Azure Maps [matrix routerings-API](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)aangeroepen, die wordt geretourneerd voor de locatie van het opgegeven Voer tuig, de reis tijd en afstand tot elk oplaad station. Het script in de volgende cel parseert het antwoord voor het vinden van het dichtstbijzijnde bereik bare opheffings station met betrekking tot tijd.
+Met het volgende script wordt de Azure Maps [matrix routerings-API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)aangeroepen, die wordt geretourneerd voor de locatie van het opgegeven Voer tuig, de reis tijd en afstand tot elk oplaad station. Het script in de volgende cel parseert het antwoord voor het vinden van het dichtstbijzijnde bereik bare opheffings station met betrekking tot tijd.
 
 Als u wilt zoeken naar het dichtstbijzijnde bereik dat kan worden bereikt, moet u het script uitvoeren in de volgende cel:
 
@@ -395,7 +395,7 @@ Zie voor het verkennen van de Azure Maps Api's die in deze zelf studie worden ge
 * [Zoeken in geometrie plaatsen](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
 * [Gegevens uploaden](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)
 * [Afbeelding van de kaart ophalen](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Route matrix plaatsen](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)
+* [Route matrix plaatsen](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Route beschrijving ophalen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
 Zie [Azure Maps rest api's](https://docs.microsoft.com/azure/azure-maps/#reference)voor een volledige lijst met Azure Maps rest api's.

@@ -1,19 +1,18 @@
 ---
-title: Herstel plannen gebruiken in nood herstel met Azure Site Recovery
+title: Over herstel plannen in Azure Site Recovery
 description: Meer informatie over het gebruik van herstel plannen voor herstel na nood gevallen met de Azure Site Recovery-service.
 author: rayne-wiselman
 manager: carmonm
-services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9e45787e7ae39b62605f5d8a54afd4ad95c9cca7
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 640f7258821718c5d406dd581d1f9c503e0d41c2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331902"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953875"
 ---
 # <a name="about-recovery-plans"></a>Over herstelplannen
 
@@ -84,7 +83,7 @@ U kunt een herstel plan gebruiken om een testfailover te activeren. Gebruik de v
 
     ![Scherm afbeelding van een voor beeld van een test herstel plan in Site Recovery](./media/recovery-plan-overview/rptest.png)
 
-## <a name="watch-the-video"></a>Bekijk de video
+## <a name="watch-the-video"></a>Video bekijken
 
 Bekijk een snelle voorbeeld video met een on-click failover voor een WordPress-app met twee lagen.
     

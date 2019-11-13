@@ -1,6 +1,6 @@
 ---
 title: 'Bewaking configureren: Azure Digital Apparaatdubbels | Microsoft Docs'
-description: Bewaking in azure Digital Apparaatdubbels configureren.
+description: Meer informatie over het configureren van opties voor bewaking en logboek registratie voor Azure Digital Apparaatdubbels.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7d81636bfb60c2d5fa059da01ac535e09b829f4
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 38d55df5f705aa3639540c4731c4c17c61c9b9ac
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949996"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005961"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Bewaking in azure Digital Apparaatdubbels configureren
 
@@ -40,17 +40,17 @@ Activiteiten logboek registratie voor Azure Digital Apparaatdubbels is standaard
 1. Uw Azure Digital Apparaatdubbels-exemplaar selecteren.
 1. **Activiteiten logboek** kiezen om het weergave paneel weer te geven:
 
-    [![Activity-logboek](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
+    [![activiteiten logboek](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
 
 Voor geavanceerde activiteiten logboek registratie:
 
 1. Selecteer de optie **Logboeken** om het **analyse van activiteitenlogboek overzicht**weer te geven:
 
-    [![Selection](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
+    [![selectie](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
 
 1. In het overzicht van de **analyse van activiteitenlogboek** vindt u een overzicht van essentiële logboek gegevens voor activiteiten:
 
-    [overzicht van ![Activity log Analytics]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
+    [overzicht van ![-activiteiten logboek analyse]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
 
 >[!TIP]
 >Gebruik **activiteiten logboeken** voor snelle inzichten in gebeurtenissen op abonnements niveau.
@@ -70,12 +70,12 @@ Diagnostische logboeken voor een exemplaar inschakelen:
 1. Breng de resource in Azure Portal.
 1. **Diagnostische instellingen**selecteren:
 
-    [![Diagnostic instellingen 1](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
+    [Diagnostische instellingen ![één](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
 1. Selecteer **diagnostiek inschakelen** om gegevens te verzamelen (indien niet eerder ingeschakeld).
 1. Vul de vereiste velden in en Selecteer hoe en waar de gegevens worden opgeslagen:
 
-    [![Diagnostic-instellingen twee](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
+    [Diagnostische instellingen ![twee](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
 
     Diagnostische logboeken worden vaak opgeslagen met [Azure File Storage](../storage/files/storage-files-deployment-guide.md) en worden gedeeld met [Azure monitor-logboeken](../azure-monitor/log-query/get-started-portal.md). U kunt beide opties selecteren.
 
@@ -99,15 +99,15 @@ Volledige logboek query's worden via Azure Monitor- [Logboeken](../azure-monitor
 1. Zoek naar **log Analytics** in het Azure Portal.
 1. Uw beschik bare **log Analytics werkruimte** -instanties worden weer geven. Kies één en selecteer de **Logboeken** die u wilt doorzoeken:
 
-    [![Log-analyse](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
+    [Log Analytics ![](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
 1. Als u nog geen exemplaar van **log Analytics-werk ruimte** hebt, kunt u een werk ruimte maken door de knop **toevoegen** te selecteren:
 
-    [![Create OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
+    [OMS ![maken](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
 Zodra uw **log Analytics werkruimte** -exemplaar is ingericht, kunt u krachtige query's gebruiken om vermeldingen in meerdere logboeken te vinden of om te zoeken met specifieke criteria met behulp van **logboek beheer**:
 
-   [![Log-beheer](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
+   [![logboek beheer](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
 Zie aan de slag [met query's](../azure-monitor/log-query/get-started-queries.md)voor meer informatie over krachtige query bewerkingen.
 
@@ -116,7 +116,7 @@ Zie aan de slag [met query's](../azure-monitor/log-query/get-started-queries.md)
 
 Azure Monitor logboeken bieden ook krachtige services voor fout meldingen en waarschuwingen, die kunnen worden weer gegeven door het selecteren van **problemen vaststellen en oplossen**:
 
-   [![Alert en fout meldingen](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
+   [Waarschuwingen en fout meldingen ![](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 
 >[!TIP]
 >Gebruik **log Analytics werk ruimte** om de logboek geschiedenis te doorzoeken op meerdere app-functionaliteiten, abonnementen of services.

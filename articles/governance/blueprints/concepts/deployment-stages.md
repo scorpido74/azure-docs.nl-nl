@@ -1,17 +1,14 @@
 ---
 title: Stappen in een blauwdrukimplementatie
 description: Meer informatie over de stappen die tijdens een implementatie door de Azure Blueprint services worden uitgevoerd.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 4645edde5163f1c8bca787416f5465e5a8f2d355
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: d0d97ed01c4ae2ef96da151e1ab4ddc13a4b1d3e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978524"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960523"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Stappen in een blauwdrukimplementatie
 

@@ -1,20 +1,19 @@
 ---
-title: Herstelanalyse uitvoeren voor on-premises machines naar Azure met Azure Site Recovery | Microsoft Docs
-description: U leert hier hoe u een herstelanalyse uitvoert van on-premises naar Azure met Azure Site Recovery
+title: Een nood herstel analyse uitvoeren op Azure met Azure Site Recovery
+description: Meer informatie over het uitvoeren van een nood herstel analyse van on-premises naar Azure, met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 14ef3bf8420acf03f5c8329c6c78834dbc16ae40
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 5bd9f5316f8b8799633de8c0c84c61424c0e4f4a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814273"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954423"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Noodherstelanalyse uitvoeren in Azure
 
@@ -81,13 +80,13 @@ Voer de failovertest als volgt uit:
 
 In sommige scenario's vereist de failover extra verwerking die circa acht tot tien minuten duurt. U zou langere failover-tijden kunnen waarnemen voor VMware Linux-computers, VMware-VM's waarop de DHCP-service niet is ingeschakeld, en VMware-VM's die niet de volgende opstartstuurprogramma’s hebben: storvsc, vmbus, storflt, intelide, atapi.
 
-## <a name="connect-after-failover"></a>Verbinden na failover
+## <a name="connect-after-failover"></a>Verbinding maken na failover
 
 Als u na een failover verbinding wilt maken met virtuele Azure-machines met behulp van RDP/SSH, [moet u verbinding maken](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover). Als u na de failover problemen ondervindt met de verbinding, volgt u de hand leiding voor het [oplossen van problemen](site-recovery-failover-to-azure-troubleshoot.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een failover en failback uitvoeren voor VMware](vmware-azure-tutorial-failover-failback.md)
-> [-vm's een failover en failback uitvoeren voor virtuele](hyper-v-azure-failover-failback-tutorial.md)
-> Hyper-V-machines[een failover en failback uitvoeren voor fysieke machines](physical-to-azure-failover-failback.md)
+> [Een failover en failback uitvoeren voor VMware-vm's](vmware-azure-tutorial-failover-failback.md)
+> [een failover en failback uitvoeren voor virtuele Hyper-V-](hyper-v-azure-failover-failback-tutorial.md) machines
+> [een failover en failback uitvoeren voor fysieke machines](physical-to-azure-failover-failback.md)

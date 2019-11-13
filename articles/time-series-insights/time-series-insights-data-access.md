@@ -1,6 +1,6 @@
 ---
-title: Beveiliging configureren voor toegang tot en beheer van Azure Time Series Insights preview | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u beveiliging en machtigingen configureert als beheer toegangs beleid en beleid voor gegevens toegang om Azure Time Series Insights preview te beveiligen.
+title: Beveiliging configureren om toegang tot gegevens te verlenen-Azure Time Series Insights preview | Microsoft Docs
+description: Meer informatie over het configureren van beveiliging, machtigingen en het beheren van beleid voor gegevens toegang in uw Azure Time Series Insights preview-omgeving.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d835916ab1a9d99149800a50690876080a8c5fd
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f49567b8060be2bf2a9ca2b8a1bdee23f58fdd6b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990153"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012689"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Gegevens toegang verlenen tot een omgeving
 
@@ -24,7 +24,7 @@ In dit artikel worden de twee typen Azure Time Series Insights preview-toegangs 
 
 ## <a name="sign-in-to-time-series-insights"></a>Aanmelden bij Time Series Insights
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 1. Zoek uw Time Series Insights omgeving. Voer `Time Series` in het **zoekvak** in. Selecteer de **Time Series-omgeving** in de zoek resultaten.
 1. Selecteer uw Time Series Insights-omgeving in de lijst.
 
@@ -34,11 +34,11 @@ Volg deze stappen om toegang tot gegevens toe te kennen voor een gebruikers-prin
 
 1. Selecteer **beleid voor gegevens toegang**en selecteer **+ toevoegen**.
 
-    [![Data-Access-One](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
+    [![Data-access-one](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
 
 1. Kies **gebruiker selecteren**. Zoek naar de gebruikers naam of het e-mail adres om de gebruiker te zoeken die u wilt toevoegen. Selecteer **selecteren** om de selectie te bevestigen.
 
-    [Data-Access![-twee](media/data-access/data-access-two.png)](media/data-access/data-access-two.png#lightbox)
+    [![Data-access-two](media/data-access/data-access-two.png)](media/data-access/data-access-two.png#lightbox)
 
 1. Kies **rol selecteren**. Kies de juiste Access-rol voor de gebruiker:
 
@@ -56,7 +56,7 @@ Volg deze stappen om toegang tot gegevens toe te kennen voor een gebruikers-prin
 
 1. Controleer of de pagina **Data Access policies** de gebruikers en de rollen voor elke gebruiker bevat.
 
-    [![gegevens toegang-vijf](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
+    [![Data-access-five](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
 
 ## <a name="provide-guest-access-from-another-aad-tenant"></a>Gast toegang bieden vanuit een andere AAD-Tenant
 
@@ -66,19 +66,19 @@ Volg deze stappen om gast toegang tot een Time Series Insights omgeving toe te k
 
 1. Selecteer **beleid voor gegevens toegang**en selecteer **+ uitnodigen**.
 
-    [![gegevens toegang-zes](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
+    [![Data-access-six](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
 
 1. Voer het e-mail adres in voor de gebruiker die u wilt uitnodigen. Dit e-mail adres moet worden gekoppeld aan Azure AD. U kunt desgewenst een persoonlijk bericht toevoegen aan de uitnodiging.
 
-    [![gegevens toegang-zeven](media/data-access/data-access-seven.png)](media/data-access/data-access-seven.png#lightbox)
+    [![Data-access-seven](media/data-access/data-access-seven.png)](media/data-access/data-access-seven.png#lightbox)
 
 1. Zoek naar de bevestigings ballon die op het scherm wordt weer gegeven.
 
-    [![Data-Access-acht](media/data-access/data-access-eight.png)](media/data-access/data-access-eight.png#lightbox)
+    [![Data-access-eight](media/data-access/data-access-eight.png)](media/data-access/data-access-eight.png#lightbox)
 
 1. Kies **gebruiker selecteren**. Zoek het e-mail adres van de gast gebruiker die u hebt uitgenodigd voor het zoeken van de gebruiker die u wilt toevoegen. **Selecteer** vervolgens de optie om de selectie te bevestigen.
 
-    [![gegevens toegang-negen](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
+    [![Data-access-nine](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
 
 1. Kies **rol selecteren**. Kies de juiste Access-rol voor de gast gebruiker:
 
@@ -88,21 +88,21 @@ Volg deze stappen om gast toegang tot een Time Series Insights omgeving toe te k
 
    Selecteer **OK** om de gewenste rol te bevestigen.
 
-    [![gegevens toegang-tien](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
+    [![Data-access-ten](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
 
 1. Selecteer **OK** op de pagina **gebruikersrol selecteren** .
 
 1. Controleer of de pagina **Data Access policies** de gast gebruiker en de rollen voor elke gast gebruiker bevat.
 
-    [![Data-Access-elf](media/data-access/data-access-eleven.png)](media/data-access/data-access-eleven.png#lightbox)
+    [![Data-access-eleven](media/data-access/data-access-eleven.png)](media/data-access/data-access-eleven.png#lightbox)
 
 1. Nu moet de gast gebruiker stappen volgen om toegang te krijgen tot de omgeving die zich bevindt in de Azure-Tenant waarnaar u deze hebt uitgenodigd. Eerst accepteren ze de uitnodiging die u ze hebt verzonden. Deze uitnodiging wordt via e-mail verzonden naar het e-mail adres dat u in stap 5 hebt gebruikt. Ze selecteren aan de **slag** om te accepteren.
 
-    [![Data-Access-12](media/data-access/data-access-twelve.png)](media/data-access/data-access-twelve.png#lightbox)
+    [![Data-access-twelve](media/data-access/data-access-twelve.png)](media/data-access/data-access-twelve.png#lightbox)
 
 1. Vervolgens accepteert de gast gebruiker de machtigingen die zijn gekoppeld aan de organisatie van de beheerder.
 
-    [![Data-Access-13](media/data-access/data-access-thirteen.png)](media/data-access/data-access-thirteen.png#lightbox)
+    [![Data-access-thirteen](media/data-access/data-access-thirteen.png)](media/data-access/data-access-thirteen.png#lightbox)
 
 1. Nadat de gast gebruiker is aangemeld bij het e-mail adres dat u hebt gebruikt om ze te uitnodigen, en ze de uitnodiging accepteren, gaat u naar insights.azure.com. Daarna selecteren ze de avatar naast hun e-mail adres in de rechter bovenhoek van het scherm.
 
@@ -110,7 +110,7 @@ Volg deze stappen om gast toegang tot een Time Series Insights omgeving toe te k
 
 1. Vervolgens selecteert de gast gebruiker uw Azure-Tenant in het vervolg keuzemenu van de map. Deze Tenant is het account waarmee u ze hebt uitgenodigd.
 
-    [![gegevens toegang-15](media/data-access/data-access-fifteen.png)](media/data-access/data-access-fifteen.png#lightbox)
+    [![Data-access-fifteen](media/data-access/data-access-fifteen.png)](media/data-access/data-access-fifteen.png#lightbox)
 
 Nadat de gast gebruiker uw Tenant heeft geselecteerd, zien ze de Time Series Insights omgeving waartoe u deze toegang hebt gegeven. Ze hebben nu alle mogelijkheden die zijn gekoppeld aan de rol die u hebt gegeven in **stap 5**.
 

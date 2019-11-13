@@ -3,7 +3,7 @@ title: Schema voor aanmeldings logboek in Azure Monitor | Microsoft Docs
 description: Beschrijf het schema voor logboek registratie van Azure AD voor gebruik in Azure Monitor
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4259a23778db175de2a0331e692e878df39d0a07
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 98157009b5a005d1d1f9efbe2f59bac1302cdb01
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895021"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014320"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Het schema voor logboek registraties van Azure AD interpreteren in Azure Monitor
 
@@ -145,24 +145,24 @@ In dit artikel wordt het Azure Active Directory (Azure AD)-aanmeldings logboek s
 
 | Veldnaam | Beschrijving |
 |------------|-------------|
-| Tijd | De datum en tijd, in UTC. |
+| Time | De datum en tijd, in UTC. |
 | ResourceId | Deze waarde is niet-toegewezen en u kunt dit veld veilig negeren.  |
 | OperationName | Voor aanmeldingen is deze waarde altijd *aanmeldings activiteit*. |
-| operationVersion | De REST API versie die door de client is aangevraagd. |
-| Category | Voor aanmeldingen is deze waarde altijd *Aanmelden*. | 
-| tenantId | De Tenant-GUID die is gekoppeld aan de logboeken. |
-| resultType | Het resultaat van de aanmeldings bewerking kan *slagen* of *mislukken*. | 
-| resultSignature | Bevat de fout code, indien aanwezig, voor de aanmeldings bewerking. |
-| resultDescription | Bevat de fout beschrijving voor de aanmeldings bewerking. |
+| OperationVersion | De REST API versie die door de client is aangevraagd. |
+| Categorie | Voor aanmeldingen is deze waarde altijd *Aanmelden*. | 
+| TenantId | De Tenant-GUID die is gekoppeld aan de logboeken. |
+| ResultType | Het resultaat van de aanmeldings bewerking kan *slagen* of *mislukken*. | 
+| ResultSignature | Bevat de fout code, indien aanwezig, voor de aanmeldings bewerking. |
+| ResultDescription | Bevat de fout beschrijving voor de aanmeldings bewerking. |
 | riskDetail | riskDetail | Biedt de ' reason ' achter een specifieke status van een Risk ante gebruiker, aanmelding of een risico detectie. De mogelijke waarden zijn: `none`, `adminGeneratedTemporaryPassword`, `userPerformedSecuredPasswordChange`, `userPerformedSecuredPasswordReset`, `adminConfirmedSigninSafe`, `aiConfirmedSigninSafe`, `userPassedMFADrivenByRiskBasedPolicy`, `adminDismissedAllRiskForUser`, `adminConfirmedSigninCompromised``unknownFutureValue`. De waarde `none` houdt in dat er geen actie is uitgevoerd voor de gebruiker of zich tot nu toe heeft aangemeld. <br>**Opmerking:** Voor de details van deze eigenschap is een Azure AD Premium P2-licentie vereist. Andere licenties retour neren de waarde `hidden`. |
 | riskEventTypes | riskEventTypes | Typen risico detectie die zijn gekoppeld aan de aanmelding. De mogelijke waarden zijn: `unlikelyTravel`, `anonymizedIPAddress`, `maliciousIPAddress`, `unfamiliarFeatures`, `malwareInfectedIPAddress`, `suspiciousIPAddress`, `leakedCredentials`, `investigationsThreatIntelligence`, `generic`en `unknownFutureValue`. |
 | riskLevelAggregated | riskLevel | Samengevoegd risico niveau. De mogelijke waarden zijn: `none`, `low`, `medium`, `high`, `hidden`en `unknownFutureValue`. De waarde `hidden` betekent dat de gebruiker of het aanmelden niet is ingeschakeld voor Azure AD Identity Protection. **Opmerking:** De Details voor deze eigenschap zijn alleen beschikbaar voor klanten met een Azure AD Premium P2. Alle andere klanten worden `hidden`geretourneerd. |
 | riskLevelDuringSignIn | riskLevel | Risico niveau tijdens het aanmelden. De mogelijke waarden zijn: `none`, `low`, `medium`, `high`, `hidden`en `unknownFutureValue`. De waarde `hidden` betekent dat de gebruiker of het aanmelden niet is ingeschakeld voor Azure AD Identity Protection. **Opmerking:** De Details voor deze eigenschap zijn alleen beschikbaar voor klanten met een Azure AD Premium P2. Alle andere klanten worden `hidden`geretourneerd. |
 | riskState | riskState | Hiermee wordt de status van de Risk ante gebruiker, het aanmelden of een risico detectie gerapporteerd. De mogelijke waarden zijn: `none`, `confirmedSafe`, `remediated`, `dismissed`, `atRisk`, `confirmedCompromised`, `unknownFutureValue`. |
-| durationMs |  Deze waarde is niet-toegewezen en u kunt dit veld veilig negeren. |
-| callerIpAddress | Het IP-adres van de client die de aanvraag heeft ingediend. | 
+| DurationMs |  Deze waarde is niet-toegewezen en u kunt dit veld veilig negeren. |
+| CallerIpAddress | Het IP-adres van de client die de aanvraag heeft ingediend. | 
 | CorrelationId | De optionele GUID die door de client wordt door gegeven. Deze waarde kan bijdragen aan de activiteiten aan de client zijde met bewerkingen aan de server zijde en is handig wanneer u Logboeken traceert die services omvatten. |
-| Identity | De identiteit van het token dat is gepresenteerd tijdens het maken van de aanvraag. Dit kan een gebruikers account, systeem account of Service-Principal zijn. |
+| Identiteit | De identiteit van het token dat is gepresenteerd tijdens het maken van de aanvraag. Dit kan een gebruikers account, systeem account of Service-Principal zijn. |
 | Niveau | Geeft het type bericht. Voor audit is het altijd *informatief*. |
 | Locatie | Hiermee wordt de locatie van de aanmeldings activiteit verstrekt. |
 | Eigenschappen | Een lijst met alle eigenschappen die aan aanmeldingen zijn gekoppeld. Zie [Microsoft Graph API-verwijzing](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)voor meer informatie. In dit schema worden dezelfde kenmerk namen gebruikt als voor de aanmeldings resource, voor de Lees baarheid.

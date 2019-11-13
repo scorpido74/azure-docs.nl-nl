@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: 59c888b1f18b1c9f700e1b79c4786a466f2c55fb
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ba49fc72fe07378d702b8c12fcdf77d5cebee9bb
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821969"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013092"
 ---
-# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Managed Disks gebruiken in Azure Resource Manager sjablonen
-
 In dit document wordt uitgelegd wat de verschillen zijn tussen beheerde en onbeheerde schijven bij het gebruik van Azure Resource Manager sjablonen voor het inrichten van virtuele machines. De voor beelden helpen u bij het bijwerken van bestaande sjablonen die gebruikmaken van niet-beheerde schijven naar beheerde schijven. Ter referentie gebruiken we de sjabloon [101-VM-Simple-Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) als richt lijn. U kunt de sjabloon weer geven met behulp van zowel [beheerde schijven](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) als een eerdere versie met behulp van [onbeheerde schijven](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) als u deze direct wilt vergelijken.
 
 ## <a name="unmanaged-disks-template-formatting"></a>Niet-beheerde schijven sjabloon opmaak
@@ -96,7 +94,7 @@ Met Azure Managed Disks wordt de schijf een resource op het hoogste niveau en ho
 
 ### <a name="default-managed-disk-settings"></a>Standaard instellingen voor beheerde schijven
 
-Als u een virtuele machine met Managed disks wilt maken, hoeft u de bron van het opslag account niet meer te maken en kunt u de resource van de virtuele machine als volgt bijwerken. Het `apiVersion` weerspiegelt `2017-03-30` en de `osDisk` en `dataDisks` niet langer verwijzen naar een specifieke URI voor de VHD. Wanneer u implementeert zonder extra eigenschappen op te geven, gebruikt de schijf een opslag type op basis van de grootte van de virtuele machine. Als u bijvoorbeeld een voor Premium geschikte VM-grootte (grootten met ' s ' in hun naam gebruikt, zoals Standard_D2s_v3), gebruikt het systeem Premium_LRS-opslag. Gebruik de SKU-instelling van de schijf om een opslag type op te geven. Als er geen naam is opgegeven, wordt de indeling van `<VMName>_OsDisk_1_<randomstring>` voor de besturingssysteem schijf en `<VMName>_disk<#>_<randomstring>` voor elke gegevens schijf gebruikt. Azure Disk Encryption is standaard uitgeschakeld. caching is lezen/schrijven voor de besturingssysteem schijf en geen voor gegevens schijven. U kunt in het onderstaande voor beeld zien dat er nog steeds een opslag account afhankelijk is, hoewel dit alleen geldt voor opslag van diagnostische gegevens en niet nodig is voor schijf opslag.
+Als u een virtuele machine met Managed disks wilt maken, hoeft u de bron van het opslag account niet meer te maken en kunt u de resource van de virtuele machine als volgt bijwerken. Het `apiVersion` weerspiegelt `2017-03-30` en de `osDisk` en `dataDisks` niet langer verwijzen naar een specifieke URI voor de VHD. Wanneer u implementeert zonder extra eigenschappen op te geven, gebruikt de schijf een opslag type op basis van de grootte van de virtuele machine. Als u bijvoorbeeld een VM-grootte gebruikt die geschikt is voor Premium (grootten met ' s ' in hun naam, zoals Standard_D2s_v3), gebruikt het systeem Premium_LRS opslag. Gebruik de SKU-instelling van de schijf om een opslag type op te geven. Als er geen naam is opgegeven, wordt de indeling van `<VMName>_OsDisk_1_<randomstring>` voor de besturingssysteem schijf en `<VMName>_disk<#>_<randomstring>` voor elke gegevens schijf gebruikt. Azure Disk Encryption is standaard uitgeschakeld. caching is lezen/schrijven voor de besturingssysteem schijf en geen voor gegevens schijven. U kunt in het onderstaande voor beeld zien dat er nog steeds een opslag account afhankelijk is, hoewel dit alleen geldt voor opslag van diagnostische gegevens en niet nodig is voor schijf opslag.
 
 ```json
 {

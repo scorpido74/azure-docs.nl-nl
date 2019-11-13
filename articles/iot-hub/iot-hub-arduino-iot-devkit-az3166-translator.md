@@ -1,60 +1,59 @@
 ---
-title: Maken van een IoT DevKit translator met behulp van Azure Functions en Cognitive Services | Microsoft Docs
-description: Gebruik van de microfoon op een IoT DevKit een voicemailbericht ontvangen en vervolgens met Azure Cognitive Services voor het verwerken van deze in de vertaalde tekst in het Engels
+title: Translator met Azure Functions, Cognitive Services, IoT-DevKit maken
+description: De microfoon gebruiken op een IoT-DevKit om een voicemail bericht te ontvangen en vervolgens Azure Cognitive Services te gebruiken voor het verwerken van de tekst in de Engelse taal
 author: liydu
-manager: jeffya
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
-ms.openlocfilehash: df7e7b426a8c85c8051d7f588c706a6f8811e183
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e840a1ae7161ea3e7b370889a1f0fb648ca120e
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60518906"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953360"
 ---
-# <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>IoT DevKit AZ3166 met Azure Functions en Cognitive Services gebruiken om te maken van een vertaler
+# <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>IoT DevKit AZ3166 met Azure Functions en Cognitive Services gebruiken om een taal vertaler te maken
 
-In dit artikel leert u hoe u IoT DevKit als een conversieprogramma voor taal met behulp van [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/). Deze records van uw stem en wordt omgezet in het Engelse tekst die wordt weergegeven op het scherm DevKit.
+In dit artikel leert u hoe u IoT DevKit als een taal conversie maakt met behulp van [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/). Het registreert uw stem en zet deze om in Engelse tekst die op het scherm DevKit wordt weer gegeven.
 
-De [MXChip IoT DevKit](https://aka.ms/iot-devkit) is een compatibele alles-in-een Arduino-bord met uitgebreide randapparatuur en sensoren. U kunt ontwikkelen voor met behulp van [Azure IoT-apparaat Workbench](https://aka.ms/iot-workbench) of [hulpprogramma's voor Azure IoT](https://aka.ms/azure-iot-tools) -uitbreidingspakket in Visual Studio Code. De [projecten catalogus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) bevat voorbeeldtoepassingen om u te helpen prototype IoT-oplossingen.
+[MXChip IOT DevKit](https://aka.ms/iot-devkit) is een alles-in-een Arduino-compatibel bord met rijke rand apparatuur en Sens oren. U kunt dit ontwikkelen met behulp van [Azure IOT Device Workbench](https://aka.ms/iot-workbench) of [Azure IOT tools](https://aka.ms/azure-iot-tools) Extension Pack in Visual Studio code. De [catalogus projecten](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) bevat voorbeeld toepassingen die u helpen bij het prototypen van IOT-oplossingen.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u wilt de stappen in deze zelfstudie hebt voltooid, moet u eerst de volgende taken uitvoeren:
+Voer eerst de volgende taken uit om de stappen in deze zelf studie uit te voeren:
 
-* Voorbereiden van uw DevKit met de volgende stappen in [IoT DevKit AZ3166 verbinding maken met Azure IoT Hub in de cloud](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
+* Bereid uw DevKit voor door de stappen in [Connect IOT DEVKIT AZ3166 te volgen op Azure IOT hub in de Cloud](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
 
-## <a name="create-azure-cognitive-service"></a>Azure Cognitive Service maken
+## <a name="create-azure-cognitive-service"></a>Een Azure cognitieve service maken
 
-1. Klik in de Azure-portal op **een resource maken** en zoek naar de **spraak**. Vul het formulier in om de spraak-Service te maken.
-  ![Spraakservice](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
+1. Klik in de Azure Portal op **een resource maken** en zoek naar **spraak**. Vul het formulier in om de spraak service te maken.
+  ![Speech-Service](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
 
-1. Ga naar de spraakservice u zojuist hebt gemaakt, klikt u op **sleutels** sectie om te kopiëren en noteer de **Key1** voor DevKit toegang tot deze.
-  ![Kopieer sleutels](media/iot-hub-arduino-iot-devkit-az3166-translator/copy-keys.png)
+1. Ga naar de spraak service die u zojuist hebt gemaakt, klik op de sectie **sleutels** om de **key1** voor DevKit toegang tot deze te kopiëren en te noteren.
+  sleutels ![kopiëren](media/iot-hub-arduino-iot-devkit-az3166-translator/copy-keys.png)
 
-## <a name="open-sample-project"></a>Open voorbeeldproject
+## <a name="open-sample-project"></a>Voorbeeld project openen
 
-1. Zorg ervoor dat uw IoT DevKit is **niet verbonden** op uw computer. VS Code eerst start, en vervolgens de DevKit verbinden met uw computer.
+1. Zorg ervoor dat uw IoT-DevKit **niet is verbonden** met uw computer. Start VS code eerst en sluit de DevKit aan op uw computer.
 
-1. Klik op `F1` om te openen de command palette, typ en selecteer **Azure IoT-apparaat Workbench: Voorbeelden openen...** . Selecteer vervolgens **IoT DevKit** als bord.
+1. Klik op `F1` om het opdracht palet te openen, typ en selecteer **Azure IOT Device Workbench: voor beelden openen...** . Selecteer vervolgens **IOT DevKit** as Board.
 
-1. Zoek in de pagina IoT Workbench voorbeelden **DevKit Translator** en klikt u op **Open voorbeeld**. Vervolgens selecteert het standaardpad voor het downloaden van de voorbeeldcode.
-  ![Open voorbeeld](media/iot-hub-arduino-iot-devkit-az3166-translator/open-sample.png)
+1. Ga in de pagina met IoT Workbench-voor beelden naar **DevKit Translator** en klik op voor **Beeld openen**. Selecteert vervolgens het standaardpad voor het downloaden van de voorbeeld code.
+  ![voorbeeld](media/iot-hub-arduino-iot-devkit-az3166-translator/open-sample.png) openen
 
-## <a name="use-speech-service-with-azure-functions"></a>Spraak-Service gebruiken met Azure Functions
+## <a name="use-speech-service-with-azure-functions"></a>Speech Service gebruiken met Azure Functions
 
-1. In VS Code, klikt u op `F1`, typt en selecteer **Azure IoT-apparaat Workbench: Azure-Services inrichten...** . ![Azure-services inrichten](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
+1. In VS code, klikt u op `F1`, typt en selecteert u **Azure IOT Device Workbench: Azure-Services inrichten...** . ![het inrichten van Azure-Services](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
 
-1. Volg de stappen voor het voltooien van het inrichten van Azure IoT Hub en Azure Functions.
-   ![Stappen voor inrichten](media/iot-hub-arduino-iot-devkit-az3166-translator/provision-steps.png)
+1. Volg de stappen voor het volt ooien van de inrichting van Azure IoT Hub en Azure Functions.
+   stappen voor ![inrichten](media/iot-hub-arduino-iot-devkit-az3166-translator/provision-steps.png)
 
-   Noteer de naam van het Azure IoT Hub-apparaat die u hebt gemaakt.
+   Noteer de naam van het Azure IoT Hub-apparaat dat u hebt gemaakt.
 
-1. Open `Functions\DevKitTranslatorFunction.cs` en bijwerken van de volgende regels code met de apparaatnaam en Speech Service-sleutel die u hebt genoteerd.
+1. Open `Functions\DevKitTranslatorFunction.cs` en werk de volgende regels code bij met de apparaatnaam en de Speech Service-sleutel die u hebt genoteerd.
    ```csharp
    // Subscription Key of Speech Service
    const string speechSubscriptionKey = "";
@@ -66,90 +65,90 @@ Als u wilt de stappen in deze zelfstudie hebt voltooid, moet u eerst de volgende
    const string deviceName = "";
    ```
 
-1. Klik op `F1`, typt en selecteer **Azure IoT-apparaat Workbench: Implementeren naar Azure...** . Als u VS Code wordt gevraagd om bevestiging voor opnieuw implementeren, klikt u op **Ja**.
-   ![Waarschuwing implementeren](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-warning.png)
+1. Klik op `F1`, typ en selecteer **Azure IOT Device Workbench: implementeren naar Azure...** . Als VS code vraagt om bevestiging voor het opnieuw implementeren, klikt u op **Ja**.
+   ](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-warning.png) waarschuwing ![implementeren
 
-1. Zorg ervoor dat de implementatie is gelukt.
-   ![Succes implementeren](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-success.png)
+1. Controleer of de implementatie is geslaagd.
+   ![implementatie is voltooid](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-success.png)
 
-1. In Azure portal, gaat u naar **Functions-Apps** sectie, zoek de Azure-functie-app zojuist hebt gemaakt. Klik op `devkit_translator`, klikt u vervolgens op **<> / functie-URL ophalen** om te kopiëren van de URL.
-   ![Functie-URL kopiëren](media/iot-hub-arduino-iot-devkit-az3166-translator/get-function-url.png)
+1. Ga in Azure Portal naar **functies apps** sectie en zoek de Azure function-app die u zojuist hebt gemaakt. Klik op `devkit_translator`en klik vervolgens op **</> functie-URL ophalen** om de URL te kopiëren.
+   functie-URL van ![kopiëren](media/iot-hub-arduino-iot-devkit-az3166-translator/get-function-url.png)
 
 1. Plak de URL in `azure_config.h` bestand.
-   ![Azure config](media/iot-hub-arduino-iot-devkit-az3166-translator/azure-config.png)
+   ![Azure-configuratie](media/iot-hub-arduino-iot-devkit-az3166-translator/azure-config.png)
 
    > [!NOTE]
-   > Als de functie-app niet goed werkt, controleert u deze [Veelgestelde vragen over](https://microsoft.github.io/azure-iot-developer-kit/docs/faq#compilation-error-for-azure-function) sectie om dit te verhelpen.
+   > Als de functie-app niet goed werkt, raadpleegt u deze sectie met [Veelgestelde vragen](https://microsoft.github.io/azure-iot-developer-kit/docs/faq#compilation-error-for-azure-function) om het probleem op te lossen.
 
-## <a name="build-and-upload-device-code"></a>Bouw en apparaatcode uploaden
+## <a name="build-and-upload-device-code"></a>Apparaatcode bouwen en uploaden
 
-1. Overschakelen van de DevKit naar **configuratiemodus** door:
-   * Houd **A**.
-   * Druk **opnieuw** knop.
+1. Schakel de DevKit over naar de **configuratie modus** :
+   * Houd **de**knop ingedrukt.
+   * Knop **opnieuw instellen** indrukken en loslaten.
 
-   U ziet het scherm wordt weergegeven de DevKit-ID en **configuratie**.
+   Het scherm wordt weer gegeven met de DevKit-ID en- **configuratie**.
 
-   ![Configuratiemodus DevKit](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
+   ![Configuratie modus DevKit](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
 
-1. Klik op `F1`, typt en selecteer **Azure IoT-apparaat Workbench: Configureren van apparaatinstellingen... > Config Apparaatverbindingsreeks**. Selecteer **Selecteer IoT Hub apparaat Connection String** te configureren op de DevKit.
-   ![Verbindingsreeks configureren](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string.png)
+1. Klik op `F1`, typ en selecteer **Azure IOT Device Workbench: Apparaatinstellingen configureren... Verbindings reeks voor configuratie apparaat >** . Selecteer **IOT hub apparaat verbindings reeks selecteren** om deze te configureren voor de DevKit.
+   connection string](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string.png) ![configureren
 
-1. U ziet de melding zodra deze voltooid.
-   ![Configureren van de connection string geslaagd](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string-success.png)
+1. U ziet de melding zodra deze is voltooid.
+   ![connection string geslaagde](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string-success.png) configureren
 
-1. Klik op `F1` Typ wederom en selecteer **Azure IoT-apparaat Workbench: Uploaden apparaatcode**. Het compileren wordt gestart en de code uploaden naar DevKit.
-   ![Apparaat uploaden](media/iot-hub-arduino-iot-devkit-az3166-translator/device-upload.png)
+1. Klik nogmaals op `F1`, typ en selecteer **Azure IOT Device Workbench: code van het apparaat uploaden**. De code wordt nu gecompileerd en geüpload naar DevKit.
+   ![apparaat uploaden](media/iot-hub-arduino-iot-devkit-az3166-translator/device-upload.png)
 
 ## <a name="test-the-project"></a>Het project testen
 
-Na de initialisatie van de app, volg de instructies op het scherm DevKit. De standaardtaal van de bron is Chinees.
+Volg de instructies in het scherm DevKit na de initialisatie van de app. De standaard taal voor de bron is Chinees.
 
-Selecteer een andere taal voor vertaling:
+Een andere taal voor de vertaling selecteren:
 
-1. Druk op een knop om setup te activeren.
+1. Druk op de knop om de installatie modus in te voeren.
 
-2. Druk op de knop B aan het startscherm van alle ondersteunde talen van de bron.
+2. Druk op de knop B om alle ondersteunde bron talen te schuiven.
 
-3. Druk op een knop om te bevestigen van uw keuze van taal van de bron.
+3. Druk op de knop om te bevestigen dat u de bron taal hebt gekozen.
 
-4. Knop B ingedrukt te houden terwijl spreken en loslaat B voor het starten van de vertaling.
+4. Houd de knop B ingedrukt terwijl u spreekt en klik vervolgens op de knop release B om de vertaling te initiëren.
 
-5. De vertaalde tekst in het Engels wordt weergegeven op het scherm.
+5. De vertaalde tekst in het Engels wordt weer gegeven op het scherm.
 
-![Blader naar de taal selecteren](media/iot-hub-arduino-iot-devkit-az3166-translator/select-language.jpg)
+![Schuiven om taal te selecteren](media/iot-hub-arduino-iot-devkit-az3166-translator/select-language.jpg)
 
-![Resultaat van de vertaling](media/iot-hub-arduino-iot-devkit-az3166-translator/translation-result.jpg)
+![Vertaal resultaat](media/iot-hub-arduino-iot-devkit-az3166-translator/translation-result.jpg)
 
-Op het scherm van het resultaat vertaling kunt u het volgende doen:
+In het scherm Vertaal resultaat kunt u het volgende doen:
 
-- Druk op knoppen A en B om te bladeren en selecteer de taal van de bron.
+- Druk op de knoppen A en B om de bron taal te schuiven en te selecteren.
 
-- Druk op de knop B om te communiceren. Als u wilt de stem verzenden en ophalen van de vertaalde tekst, laat u de B-knop.
+- Druk op de knop B om te praten. Als u de stem wilt verzenden en de tekst van de vertaling wilt ontvangen, laat u de B-knop los.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>How it works (Engelstalig artikel)
 
 ![mini-solution-voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
 
-De IoT DevKit registreert uw stem vervolgens plaatst een HTTP-aanvraag aan Azure Functions-trigger. Azure Functions-aanroepen de spraakomzetting cognitive service API voor het uitvoeren van de vertaling. Nadat Azure Functions de vertaalde tekst haalt, verzendt deze een C2D-bericht naar het apparaat. De vertaling wordt vervolgens weergegeven op het scherm.
+De IoT DevKit registreert uw stem en plaatst vervolgens een HTTP-aanvraag om Azure Functions te activeren. Azure Functions roept de cognitieve service speech Translator API aan om de vertaling uit te voeren. Nadat Azure Functions de tekst van de vertaling hebt opgehaald, wordt een C2D-bericht naar het apparaat verzonden. Vervolgens wordt de vertaling op het scherm weer gegeven.
 
 ## <a name="problems-and-feedback"></a>Problemen en feedback
 
-Als u problemen ondervindt, raadpleegt u de [IoT DevKit Veelgestelde vragen over](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) of contact opnemen met ons opnemen met behulp van de volgende kanalen:
+Als u problemen ondervindt, raadpleeg dan de [Veelgestelde vragen over IOT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) of neem contact op met de volgende kanalen:
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt geleerd over het gebruik van de IoT DevKit als een translator met behulp van Azure Functions en Cognitive Services. In deze instructies, hebt u geleerd hoe u:
+U hebt geleerd hoe u de IoT DevKit als een vertaler kunt gebruiken met behulp van Azure Functions en Cognitive Services. In deze procedure hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Gebruik Visual Studio Code-taak voor het automatiseren van de bepalingen van de cloud
-> * Verbindingsreeks voor Azure IoT-apparaat configureren
+> * Visual Studio code Task gebruiken om Cloud voorzieningen te automatiseren
+> * Azure IoT-apparaat connection string configureren
 > * De Azure-functie implementeren
-> * De vertaling van gesproken bericht testen
+> * De vertaling van spraak berichten testen
 
-Ga door naar de andere zelfstudies voor meer informatie:
+Ga naar de andere zelf studies voor meer informatie over:
 
 > [!div class="nextstepaction"]
-> [IoT DevKit AZ3166 verbinden met Azure IoT Remote Monitoring solution accelerator](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)
+> [Een verbinding maken tussen IoT DevKit AZ3166 en de oplossings versneller voor externe controle van Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)

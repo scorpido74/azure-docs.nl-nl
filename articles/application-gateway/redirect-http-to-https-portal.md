@@ -1,18 +1,18 @@
 ---
-title: Een toepassingsgateway maken met HTTP naar HTTPS-omleiding via Azure portal
+title: HTTP-naar-HTTPS-omleiding in portal-Azure-toepassing gateway
 description: Informatie over het maken van een toepassingsgateway met omgeleide verkeer van HTTP naar HTTPS met behulp van de Azure-portal.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/7/2018
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 17eef2fc2608ca4ccbabff8179cd63798d275582
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d67270896792ea506d2df04dcc3745a43d3d8251
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101454"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012869"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Een toepassingsgateway maken met HTTP naar HTTPS-omleiding via Azure portal
 
@@ -31,7 +31,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-In deze zelfstudie is moduleversie 1.0.0 van Azure PowerShell vereist of later om te maken van een certificaat en IIS te installeren. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). De opdrachten in deze zelfstudie, hebt u ook nodig om uit te voeren `Login-AzAccount` voor het maken van een verbinding met Azure.
+Voor deze zelf studie is de Azure PowerShell module versie 1.0.0 of hoger vereist voor het maken van een certificaat en het installeren van IIS. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). De opdrachten in deze zelfstudie, hebt u ook nodig om uit te voeren `Login-AzAccount` voor het maken van een verbinding met Azure.
 
 ## <a name="create-a-self-signed-certificate"></a>Een zelfondertekend certificaat maken
 

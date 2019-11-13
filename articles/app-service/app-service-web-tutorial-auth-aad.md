@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c82cad30fcc2aa80eea52ab13f60fc0c4da33cd1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 55ba5a193e15ac4e8bd83ac046deeac1f12d61d0
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471298"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961957"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Zelfstudie: Gebruikers eind-tot-eind verifiëren en autoriseren in Azure App Service
 
@@ -333,7 +333,7 @@ Meld u opnieuw aan bij `https://<front-end-app-name>.azurewebsites.net`. Klik op
 
 U moet nu net als eerder gegevens uit de back-end-app kunnen maken, lezen, bijwerken en verwijderen. Het enige verschil is dat beide apps nu worden beveiligd door App Service-verificatie en -autorisatie, waaronder de aanroepen tussen services.
 
-Gefeliciteerd! De servercode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
+Gefeliciteerd. De servercode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
 
 ## <a name="call-api-securely-from-browser-code"></a>API veilig vanuit browsercode aanroepen
 
@@ -401,7 +401,7 @@ $routeProvider.when("/Home", {
 }).otherwise({ redirectTo: "/Home" });
 ```
 
-Door deze wijziging wordt de toewijzing `revolve` toegevoegd, waarmee `/.auth/me` wordt aangeroepen en het toegangstoken ingesteld. Hiermee wordt gegarandeerd dat u over het toegangstoken beschikt voordat de controller `todoListCtrl` wordt geïnstantieerd. Op die manier bevatten alle API-aanroepen van de controller het token.
+Door deze wijziging wordt de toewijzing `resolve` toegevoegd, waarmee `/.auth/me` wordt aangeroepen en het toegangstoken ingesteld. Hiermee wordt gegarandeerd dat u over het toegangstoken beschikt voordat de controller `todoListCtrl` wordt geïnstantieerd. Op die manier bevatten alle API-aanroepen van de controller het token.
 
 ### <a name="deploy-updates-and-test"></a>Updates implementeren en tests uitvoeren
 
@@ -415,7 +415,7 @@ git push frontend master
 
 Ga opnieuw naar `https://<front-end-app-name>.azurewebsites.net`. U moet nu rechtstreeks in de Angular.js-app gegevens in de back-end kunnen maken, lezen, bijwerken en verwijderen.
 
-Gefeliciteerd! De clientcode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
+Gefeliciteerd. De clientcode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
 
 ## <a name="when-access-tokens-expire"></a>Wanneer de toegangstokens verlopen
 

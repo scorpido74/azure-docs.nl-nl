@@ -1,6 +1,6 @@
 ---
-title: Gegevens modellering in Azure Time Series Insights preview | Microsoft Docs
-description: Informatie over gegevens modellering in Azure Time Series Insights preview.
+title: Gegevens modellering in Preview-omgevingen-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over gegevens modellering in Azure Time Series Insights preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81c2c2af78f5f066e1b27e14fa774df04d7c5868
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: fb1bfb30d531f8b93489c8fc1dfbc6b8172339a3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063985"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006461"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Gegevens modellering in Azure Time Series Insights preview
 
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u kunt werken met Time Series-model in Azure
 
 Lees [Azure time series Insights preview Explorer](./time-series-insights-update-explorer.md)voor meer informatie over het gebruik van de update.
 
-## <a name="types"></a>Dergelijke
+## <a name="types"></a>Typen
 
 ### <a name="create-a-single-type"></a>Een enkel type maken
 
@@ -76,7 +76,7 @@ Lees [Azure time series Insights preview Explorer](./time-series-insights-update
 
 1. Voer de hiërarchie Details in en selecteer **maken**.
 
-    [![Details van Hieararchy en de knop maken](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
+    [Hiërarchie Details ![en de knop maken](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-hierarchies"></a>Bulksgewijs een of meer hiërarchieën uploaden
 
@@ -100,7 +100,7 @@ Lees [Azure time series Insights preview Explorer](./time-series-insights-update
 
     [knop verwijderen ![](media/v2-update-how-to-tsm/portal-twelve.png)](media/v2-update-how-to-tsm/portal-twelve.png#lightbox)
 
-## <a name="instances"></a>Exemplaren
+## <a name="instances"></a>exemplaren
 
 ### <a name="create-a-single-instance"></a>Een enkel exemplaar maken
 

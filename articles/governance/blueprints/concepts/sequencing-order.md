@@ -1,17 +1,14 @@
 ---
 title: Meer informatie over de volg orde van de implementatie volgorde
 description: Meer informatie over de levens cyclus die door de definitie van een blauw druk wordt doorgeleid en informatie over elke fase.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: bda7a6caea931a993a6ddd6731688792bf0b3948
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 87eff48f977f0308fea563090a44ff0b301909a9
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981019"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960437"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Meer informatie over de implementatie volgorde in azure-blauw drukken
 
@@ -47,7 +44,7 @@ Binnen elk **bron groeps** artefact wordt de volgende volg orde gebruikt voor ar
 
 Bij het opstellen van grote blauw drukken-definities kan het nodig zijn om resources in een specifieke volg orde te maken. Het meest voorkomende patroon van dit scenario is wanneer een blauw druk definitie verschillende Azure Resource Manager sjablonen bevat. Blauw drukken behandelt dit patroon door de volg orde van sequentiëren te definiëren.
 
-De volg orde wordt bereikt door een `dependsOn`-eigenschap in de JSON te definiëren. De definitie van de blauw druk, voor resource groepen en artefact objecten ondersteunen deze eigenschap. `dependsOn` is een teken reeks matrix van artefact namen waarvan het specifieke artefact moet worden gemaakt voordat deze wordt gemaakt.
+De volg orde wordt bereikt door een `dependsOn` eigenschap in de JSON te definiëren. De definitie van de blauw druk, voor resource groepen en artefact objecten ondersteunen deze eigenschap. `dependsOn` is een teken reeks matrix van artefact namen waarvan het specifieke artefact moet worden gemaakt voordat deze wordt gemaakt.
 
 > [!NOTE]
 > Wanneer u blauw drukken-objecten maakt, haalt elke artefact bron de naam van de bestands naam, indien [Power shell](/powershell/module/az.blueprint/new-azblueprintartifact)of het URL-eind punt wordt gebruikt als [rest API](/rest/api/blueprints/artifacts/createorupdate).
@@ -55,7 +52,7 @@ De volg orde wordt bereikt door een `dependsOn`-eigenschap in de JSON te defini�
 
 ### <a name="example---ordered-resource-group"></a>Voor beeld-bestelde resource groep
 
-Deze voor beeld-blauw druk definitie bevat een resource groep waarvoor een aangepaste volgorde voor volgorde bepaling is gedefinieerd door een waarde voor `dependsOn`, samen met een standaard resource groep, te declareren. In dit geval wordt het artefact met de naam **assignPolicyTags** verwerkt vóór de **bestelde-RG-** resource groep.
+Deze voor beeld-blauw druk definitie bevat een resource groep waarvoor een aangepaste volgorde voor sequentiëren is gedefinieerd door een waarde voor `dependsOn`te declareren, samen met een standaard resource groep. In dit geval wordt het artefact met de naam **assignPolicyTags** verwerkt vóór de **bestelde-RG-** resource groep.
 **Standard-RG** wordt verwerkt volgens de standaard volgorde voor sequentiëren.
 
 ```json

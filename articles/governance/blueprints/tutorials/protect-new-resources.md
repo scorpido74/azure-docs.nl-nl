@@ -1,17 +1,14 @@
 ---
 title: Nieuwe resources beveiligen met de vergren delingen van blauw drukken
 description: In deze zelf studie leert u hoe u de Azure blauw drukken-resource vergrendelings opties alleen-lezen kunt gebruiken en niet verwijderen om nieuwe geïmplementeerde resources te beveiligen.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/28/2019
 ms.topic: tutorial
-ms.service: blueprints
-ms.openlocfilehash: 2f66677df7cd1c6fbde9c0467b4d7f2094509ee8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e2adbb1e47222055753d4b3690646daa83b32bf1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297008"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960256"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Zelf studie: nieuwe resources beveiligen met Azure-blauw drukken resource vergrendelingen
 
@@ -158,7 +155,7 @@ Wanneer de definitie van de blauw druk is gepubliceerd, kunt u deze toewijzen aa
      |-|-|-|-|-|
      |Resource groep RGtoLock|Resourcegroep|Naam|TestingBPLocks|Hiermee definieert u de naam van de nieuwe resource groep waarop blauw drukken moet worden toegepast.|
      |Resource groep RGtoLock|Resourcegroep|Locatie|US - west 2|Hiermee definieert u de locatie van de nieuwe resource groep waarop blauw drukken moet worden toegepast.|
-     |Storage account|Resource Manager-sjabloon|storageAccountType (Storage account)|Standard_GRS|De opslag-SKU. De standaard waarde is _Standard_LRS_.|
+     |StorageAccount|Resource Manager-sjabloon|storageAccountType (StorageAccount)|Standard_GRS|De opslag-SKU. De standaard waarde is _Standard_LRS_.|
 
 1. Nadat u alle para meters hebt ingevoerd, selecteert u aan de onderkant van de pagina **toewijzen** .
 
@@ -190,7 +187,7 @@ De toewijzing maakt de resource groep _TestingBPLocks_ en het opslag account dat
 
 1. Selecteer de toewijzing weigeren en selecteer vervolgens de pagina **geweigerde machtigingen** aan de linkerkant.
 
-   De weiger toewijzing voor komt dat alle bewerkingen met de configuratie van de **\*** en de **actie** worden uitgevoerd, maar de lees toegang is toegestaan door de **\*/Lees** bewerking uit te **sluiten.**
+   De toewijzing weigeren voor komt dat alle bewerkingen met de configuratie van de **\*** en de **actie** worden uitgevoerd, maar biedt wel lees toegang door **\*/Read** uit te **sluiten.**
 
 1. Selecteer **TestingBPLocks-Access Control (IAM)** in de breadcrumb Azure Portal. Selecteer vervolgens de pagina **overzicht** aan de linkerkant en klik vervolgens op de knop **resource groep verwijderen** . Voer de naam **TestingBPLocks** in om het verwijderen te bevestigen en selecteer vervolgens **verwijderen** onder aan het deel venster.
 

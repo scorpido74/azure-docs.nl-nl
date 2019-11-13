@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 60d0425a7dbc532e856c7bf3c91065d2548c9b9a
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 45168c23964c735a4bd51ba11c2340d4ff95fed4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601395"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012426"
 ---
-# <a name="what-disk-types-are-available-in-azure"></a>Welke schijf typen zijn beschikbaar in azure?
-
 Azure Managed disks biedt momenteel vier schijf typen, elk type is gericht op specifieke klant scenario's.
 
 ## <a name="disk-comparison"></a>Vergelijking van schijven
@@ -27,9 +25,9 @@ De volgende tabel bevat een vergelijking van ultra schijven, Premium-schijven (S
 |---------|---------|---------|---------|---------|
 |Schijftype   |SSD   |SSD   |SSD   |HDD   |
 |Scenario   |I/o-intensieve workloads, zoals [SAP Hana](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), data bases in de bovenste laag (bijvoorbeeld SQL, Oracle) en andere trans acties met een zware werk belasting.   |Productie- en prestatiegevoelige workloads   |Webservers, lichte gebruikte zakelijke toepassingen en dev/test   |Back-ups, niet-kritiek, niet-regel matige toegang   |
-|Maximale schijf grootte   |65.536 gibibyte (GiB)    |32.767 GiB    |32.767 GiB   |32.767 GiB   |
-|Maximale door Voer   |2\.000-MiB/s    |900-MiB/s   |750-MiB/s   |500-MiB/s   |
-|Maximum aantal IOPS   |160.000    |20.000   |6\.000   |2\.000   |
+|Maximale schijf grootte   |65.536 gibibyte (GiB)    |32,767 GiB    |32,767 GiB   |32,767 GiB   |
+|Maximale door Voer   |2\.000-MiB/s    |900-MiB/s   |750 MiB/s   |500-MiB/s   |
+|Maximum aantal IOPS   |160.000    |20,000   |6,000   |2,000   |
 
 ## <a name="ultra-disk"></a>Ultra Disk
 
@@ -50,15 +48,15 @@ Enkele belang rijke mogelijkheden van ultra disk zijn:
 
 |Schijfgrootte (GiB)  |IOPS Cap  |Doorvoer limiet (MBps)  |
 |---------|---------|---------|
-|4     |1\.200         |300         |
-|8     |2\.400         |600         |
-|16     |4\.800         |1\.200         |
-|32     |9\.600         |2\.000         |
-|64     |19.200         |2\.000         |
-|128     |38.400         |2\.000         |
-|256     |76.800         |2\.000         |
-|512     |80.000         |2\.000         |
-|1024-65536 (grootten in dit bereik worden verhoogd in stappen van 1 TiB)     |160.000         |2\.000         |
+|4     |1,200         |300         |
+|8     |2,400         |600         |
+|16     |4,800         |1,200         |
+|32     |9\.600         |2,000         |
+|64     |19.200         |2,000         |
+|128     |38.400         |2,000         |
+|256     |76.800         |2,000         |
+|512     |80,000         |2,000         |
+|1024-65536 (grootten in dit bereik worden verhoogd in stappen van 1 TiB)     |160.000         |2,000         |
 
 ### <a name="ga-scope-and-limitations"></a>GA bereik en beperkingen
 

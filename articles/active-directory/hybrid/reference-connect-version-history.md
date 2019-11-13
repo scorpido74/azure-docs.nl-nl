@@ -2,26 +2,22 @@
 title: 'Azure AD Connect: release geschiedenis van versie | Microsoft Docs'
 description: In dit artikel vindt u een overzicht van alle releases van Azure AD Connect en Azure AD Sync
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
-editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52e15aa62043ba394ae6e8cfe2cc7f27709c7d33
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 893b617a965b0823b8d630e036d5d5f923647f8f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927445"
+ms.locfileid: "73944227"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -35,24 +31,23 @@ Onderwerp |  Details
 --------- | --------- |
 Stappen om een upgrade uit te voeren van Azure AD Connect | Verschillende methoden voor [het uitvoeren van een upgrade van een eerdere versie naar de nieuwste](how-to-upgrade-previous-version.md) Azure AD Connect versie.
 Vereiste machtigingen | Zie [accounts en machtigingen](reference-connect-accounts-permissions.md#upgrade)voor machtigingen die vereist zijn om een update toe te passen.
-
-Downloaden | [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+Download| [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Het uitgeven van een nieuwe versie van Azure AD Connect is een proces waarbij verschillende kwaliteitscontrole stappen nodig zijn om de werking van de service te waarborgen, terwijl we dit proces door lopen, het versie nummer van een nieuwe release en de release status wordt bijgewerkt om de meest recente status weer te geven.
 Hoewel we dit proces door lopen, wordt het versie nummer van de release weer gegeven met een ' X ' in de positie van het kleine release nummer, zoals in ' 1.3. X. 0 '. Dit betekent dat de release opmerkingen in dit document geldig zijn voor alle versies die beginnen met ' 1,3 '. Zodra het release proces is voltooid, wordt het versie nummer van de release bijgewerkt naar de meest recente versie en wordt de release status bijgewerkt naar ' vrijgegeven voor downloaden en automatische upgrade '.
-Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatische upgrade. De release status geeft aan of een release beschikbaar moet worden gesteld voor automatische upgrade of alleen voor down loads. Als automatische upgrade is ingeschakeld op uw Azure AD Connect server, wordt die server automatisch bijgewerkt naar de meest recente versie van Azure AD Connect die is uitgebracht voor automatische upgrade. Houd er rekening mee dat niet alle Azure AD Connect configuraties in aanmerking komen voor automatische upgrade. Volg deze link voor meer informatie over [automatische upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
+Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatische upgrade. De release status geeft aan of een release beschikbaar moet worden gesteld voor automatische upgrade of alleen voor down loads. Als automatische upgrade is ingeschakeld op uw Azure AD Connect server, wordt die server automatisch bijgewerkt naar de meest recente versie van Azure AD Connect die is uitgebracht voor automatische upgrade. Houd er rekening mee dat niet alle Azure AD Connect configuraties in aanmerking komen voor automatische upgrade. Volg deze link voor meer informatie over [automatische upgrade](how-to-connect-install-automatic-upgrade.md)
 
 ## <a name="14320"></a>1.4.32.0
 ### <a name="release-status"></a>Release status
-08/11/2019: uitgebracht voor downloaden. Niet beschikbaar voor automatische upgrade
+11/08/2019: uitgebracht voor downloaden. Niet beschikbaar voor automatische upgrade
 
 >[!IMPORTANT]
 >Als gevolg van een interne schema wijziging in deze versie van Azure AD Connect, als u configuratie-instellingen van ADFS-vertrouwens relatie beheert met MSOnline Power shell, moet u uw MSOnline Power shell-module bijwerken naar versie 1.1.183.57 of hoger
 ### <a name="fixed-issues"></a>Problemen opgelost
 
 Deze versie corrigeert een probleem met bestaande hybride Azure AD-apparaten die zijn toegevoegd. Deze release bevat een nieuwe regel voor het synchroniseren van apparaten waarmee dit probleem wordt verholpen.
-Houd er rekening mee dat deze regel wijziging ertoe kan leiden dat er verouderde apparaten van Azure AD worden verwijderd. Dit is geen oorzaak van bezorgdheid, omdat deze object objecten niet worden gebruikt door Azure AD tijdens de autorisatie van voorwaardelijke toegang. Voor sommige klanten kan het aantal apparaten dat wordt verwijderd via deze regel wijziging de drempel waarde voor verwijderen overschrijden. Als u het verwijderen van apparaatobject in azure AD overschrijdt, wordt de drempel waarde voor het verwijderen van het exporteren weer toegestaan. [Verwijderen van een stroom toestaan wanneer deze de drempel waarde voor verwijderen overschrijden](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sync-feature-prevent-accidental-deletes)
+Houd er rekening mee dat deze regel wijziging ertoe kan leiden dat er verouderde apparaten van Azure AD worden verwijderd. Dit is geen oorzaak van bezorgdheid, omdat deze object objecten niet worden gebruikt door Azure AD tijdens de autorisatie van voorwaardelijke toegang. Voor sommige klanten kan het aantal apparaten dat wordt verwijderd via deze regel wijziging de drempel waarde voor verwijderen overschrijden. Als u het verwijderen van apparaatobject in azure AD overschrijdt, wordt de drempel waarde voor het verwijderen van het exporteren weer toegestaan. [Verwijderen van een stroom toestaan wanneer deze de drempel waarde voor verwijderen overschrijden](how-to-connect-sync-feature-prevent-accidental-deletes.md)
 
 ## <a name="14250"></a>1.4.25.0
 
@@ -129,7 +124,7 @@ Onder bepaalde omstandigheden werden servers die automatisch zijn bijgewerkt naa
 
 ### <a name="fixed-issues"></a>Problemen opgelost 
 
-- Er is een beveiligingslek met betrekking tot misbruik van bevoegdheden opgelost dat bestaat in Microsoft Azure Active Directory Connect build 1.3.20.0.  Dit beveiligingslek kan onder bepaalde voor waarden ertoe leiden dat een aanvaller twee Power shell-cmdlets kan uitvoeren in de context van een bevoegd account en geprivilegieerde acties kan uitvoeren.  Met deze beveiligings update wordt het probleem opgelost door deze cmdlets uit te scha kelen. Zie voor meer informatie [beveiligings update](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1000).
+- Er is een beveiligingslek met betrekking tot misbruik van bevoegdheden opgelost dat bestaat in Microsoft Azure Active Directory Connect build 1.3.20.0.  Dit beveiligingslek kan onder bepaalde voor waarden ertoe leiden dat een aanvaller twee Power shell-cmdlets kan uitvoeren in de context van een bevoegd account en geprivilegieerde acties kan uitvoeren.  Met deze beveiligings update wordt het probleem opgelost door deze cmdlets uit te scha kelen. Zie voor meer informatie [beveiligings update](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000).
 
 ## <a name="13200"></a>1.3.20.0 
 
@@ -398,9 +393,9 @@ Status: is vrijgegeven om klanten te selecteren
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>Problemen opgelost
-* Corrigeer het tijd venster op de achtergrond taken voor de pagina partitie filtering wanneer u overschakelt naar de volgende pagina.
+* Los tijdvenster op achtergrondtaken voor pagina partities filteren wanneer u overschakelt naar de volgende pagina.
 
-* Er is een fout opgelost die de toegangs fout veroorzaakte tijdens de aangepaste ConfigDB-actie.
+* Een opgelost waardoor toegangsfout tijdens de aangepaste actie ConfigDB.
 
 * Er is een fout opgelost bij het herstellen van de time-out van de SQL-verbinding.
 
@@ -420,7 +415,7 @@ Status: is vrijgegeven om klanten te selecteren
 * Application Telemetry: de beheerder kan deze klasse gegevens in-of uitschakelen
 
 * Status gegevens van Azure AD-beheerder moeten de status Portal bezoeken om hun status instellingen te beheren.
-   Zodra het service beleid is gewijzigd, worden deze door de agents gelezen en afgedwongen.
+   Zodra de service-beleid is gewijzigd, wordt de agents lezen en deze toepassen.
 
 * De configuratie acties voor het terugschrijven van apparaten en een voortgangs balk voor het initialiseren van pagina's zijn toegevoegd
 
@@ -439,13 +434,13 @@ De volgende wijzigingen worden doorgevoerd:
 
 * Er is een nieuw hulp programma toegevoegd om synchronisatie problemen voor een specifiek object op te lossen. De functie is beschikbaar in de optie voor het oplossen van problemen met object synchronisatie van Azure AD Connect wizard problemen met aanvullende taken oplossen. Op dit moment controleert het hulp programma op het volgende:
 
-  * De UserPrincipalName van het gesynchroniseerde gebruikers object en het gebruikers account in de Azure AD-Tenant komen niet overeen.
-  * Als het object wordt gefilterd op basis van synchronisatie vanwege domein filtering
-  * Als het object wordt gefilterd op basis van synchronisatie vanwege het filteren van organisatie-eenheid (OE)
+  * UserPrincipalName komt niet overeen tussen gesynchroniseerde gebruikersobject en het gebruikersaccount in Azure AD-Tenant.
+  * Als het object is uitgesloten voor synchronisatie vanwege domein filteren
+  * Als het object is uitgesloten voor synchronisatie vanwege een organisatie-eenheid (OE) filteren
 
 * Er is een nieuw hulp programma toegevoegd voor het synchroniseren van de huidige wacht woord-hash die is opgeslagen in het on-premises Active Directory voor een specifiek gebruikers account.
 
-Voor het hulp programma is geen wachtwoord wijziging vereist. Deze optie is beschikbaar onder problemen met wachtwoord hash-synchronisatie oplossen van Azure AD Connect wizard problemen met aanvullende taak oplossen.
+Het hulpprogramma is niet vereist voor een wachtwoordwijziging. Deze optie is beschikbaar onder problemen met wachtwoord hash-synchronisatie oplossen van Azure AD Connect wizard problemen met aanvullende taak oplossen.
 
 
 
@@ -623,7 +618,7 @@ Status: september 05 2017
 * Wanneer Azure AD Connect-wachtwoord synchronisatie agent wordt gestart, wordt geprobeerd verbinding te maken met een bekend Azure AD-eind punt voor wachtwoord synchronisatie. Wanneer de verbinding is geslaagd, wordt deze omgeleid naar een regio-specifiek eind punt. Voorheen slaat de wachtwoord synchronisatie agent het regio-specifieke eind punt op in het cache geheugen totdat het opnieuw wordt gestart. Nu wordt de cache door de agent gewist en wordt opnieuw geprobeerd met het bekende eind punt als er een verbindings probleem met het regio-specifieke eind punt wordt aangetroffen. Met deze wijziging zorgt u ervoor dat wachtwoord synchronisatie een failover naar een ander regio-specifiek eind punt kan hebben wanneer het in de cache opgeslagen regio-specifieke eind punt niet meer beschikbaar is.
 * Voor het synchroniseren van wijzigingen vanuit een on-premises AD-forest is een AD DS-account vereist. U kunt (i) zelf het AD DS-account maken en de referentie voor Azure AD Connect opgeven, of (II) Geef de referenties van een ondernemings beheerder op en laat Azure AD Connect het AD DS-account voor u maken. Voorheen, (i) is de standaard optie in de wizard Azure AD Connect. Nu is (II) de standaard optie.
 
-### <a name="azure-ad-connect-health"></a>Azure AD Connect Health
+### <a name="azure-ad-connect-health"></a>Azure AD Connect Health (Engelstalig)
 
 #### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 * Er is ondersteuning toegevoegd voor Microsoft Azure Government Cloud en Microsoft Cloud Duitsland.
@@ -830,7 +825,7 @@ CBool(
     * Persoon: Distinguished name
 
   * De volgende kenmerken zijn toegevoegd aan het Azure AD-connector schema:
-    * Groep: OnPremisesSamAccountName
+    * Group: OnPremisesSamAccountName
     * Groep: NetBIOS-naam
     * Groep: DNS-
     * Gebruiker: OnPremisesDistinguishedName
@@ -1052,7 +1047,7 @@ Uitgebracht: november 2016
 * Er is een probleem opgelost waarbij de regels voor samen voegen niet opnieuw worden geëvalueerd wanneer een object in de connector ruimte gelijktijdig buiten het bereik valt voor één joinlijn en in bereik is voor een andere regel. Dit kan gebeuren als u twee of meer joinlijnen hebt waarvan de samenvoegings voorwaarden elkaar wederzijds uitsluiten.
 * Er is een probleem opgelost waarbij binnenkomende synchronisatie regels (vanuit Azure AD) die geen joinlijnen bevatten, niet worden verwerkt als ze een lagere prioriteits waarde hebben dan die regels voor samen voegen.
 
-**Rijke**
+**Verbeteringen**
 
 * Er is ondersteuning toegevoegd voor het installeren van Azure AD Connect op Windows Server 2016 Standard of hoger.
 * Er is ondersteuning toegevoegd voor het gebruik van SQL Server 2016 als de externe data base voor Azure AD Connect.
@@ -1071,7 +1066,7 @@ Uitgebracht: augustus 2016
 * Azure AD Connect wizard geeft niet de werkelijke wachtwoord synchronisatie en de configuratie van wacht woord terugschrijven weer wanneer de server zich in de faserings modus bevindt. Deze worden altijd weer gegeven als uitgeschakeld.
 * Configuratie wijzigingen in wachtwoord synchronisatie en wacht woord terugschrijven worden niet persistent gemaakt door Azure AD Connect wizard wanneer de server zich in de faserings modus bevindt.
 
-**Rijke**
+**Verbeteringen**
 
 * De cmdlet start-ADSyncSyncCycle is bijgewerkt om aan te geven of een nieuwe synchronisatie cyclus wel of niet kan worden gestart.
 * De cmdlet stop-ADSyncSyncCycle is toegevoegd om de synchronisatie cyclus en-bewerking te beëindigen. deze worden momenteel uitgevoerd.
@@ -1186,7 +1181,7 @@ Uitgebracht: november 2015
 
 **Nieuw ondersteund scenario:**
 
-* Ondersteunt meerdere on-premises Exchange-organisaties. Zie [hybride implementaties met meerdere Active Directory-forests](https://technet.microsoft.com/library/jj873754.aspx)voor meer informatie.
+* Ondersteunt meerdere on-premises Exchange-organisaties. Zie [hybride implementaties met meerdere Active Directory-forests](https://docs.microsoft.com/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150))voor meer informatie.
 
 **Opgeloste problemen:**
 
@@ -1279,7 +1274,7 @@ Uitgebracht: april 2015
 ## <a name="104850222"></a>1.0.485.0222
 Uitgebracht: februari 2015
 
-**Rijke**
+**Verbeteringen**
 
 * Verbeterde prestaties bij het importeren.
 

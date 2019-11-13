@@ -1,6 +1,6 @@
 ---
 title: Roltoewijzingen maken en beheren-Azure Digital Apparaatdubbels | Microsoft Docs
-description: Meer informatie over het maken en beheren van roltoewijzingen in azure Digital Apparaatdubbels.
+description: Meer informatie over het maken en beheren van roltoewijzingen binnen Azure Digital Apparaatdubbels.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 68714a06f72a522df0245d9c044bb6ff6557d52f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949827"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013957"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Roltoewijzingen in azure Digital Apparaatdubbels maken en beheren
 
@@ -36,12 +36,12 @@ Elke roltoewijzing voldoet aan de volgende definitie:
 
 In de volgende tabel wordt elk kenmerk beschreven:
 
-| Kenmerk | Name | Vereist | Type | Description |
+| Kenmerk | Naam | Vereist | Type | Beschrijving |
 | --- | --- | --- | --- | --- |
 | roleId | Roldefinitie-id | Ja | Tekenreeks | De unieke ID van de gewenste roltoewijzing. Zoek roldefinities en hun id door een query uit te zoeken naar de onderstaande systeem-API of-tabel. |
-| object-id | Object-id | Ja | Tekenreeks | Een Azure Active Directory-ID, Service-Principal object-ID of domein naam. Waaraan de roltoewijzing is toegewezen. De roltoewijzing moet worden ingedeeld volgens het bijbehorende type. Voor de `DomainName` objectIdType moet objectId beginnen met het `“@”`-teken. |
+| object-id | Object-id | Ja | Tekenreeks | Een Azure Active Directory-ID, Service-Principal object-ID of domein naam. Waaraan de roltoewijzing is toegewezen. De roltoewijzing moet worden ingedeeld volgens het bijbehorende type. Voor de `DomainName` objectIdType moet objectId beginnen met het `“@”` teken. |
 | objectIdType | Type object-id | Ja | Tekenreeks | Het soort object-id dat wordt gebruikt. Zie de **ondersteunde ObjectIdTypes** hieronder. |
-| path | Pad naar Space | Ja | Tekenreeks | Het volledige pad naar het `Space`-object. Een voorbeeld is `/{Guid}/{Guid}`. Als een id de roltoewijzing voor de hele grafiek vereist, geeft u `"/"` op. Met dit teken wordt de hoofdmap aangeduid, maar het gebruik ervan wordt afgeraden. Volg altijd het principe van minimale bevoegdheden. |
+| pad | Pad naar Space | Ja | Tekenreeks | Het volledige pad naar het `Space`-object. Een voorbeeld is `/{Guid}/{Guid}`. Als een id de roltoewijzing voor de hele grafiek vereist, geeft u `"/"`op. Met dit teken wordt de hoofdmap aangeduid, maar het gebruik ervan wordt afgeraden. Volg altijd het principe van minimale bevoegdheden. |
 | tenantId | Tenant-id | Varieert | Tekenreeks | In de meeste gevallen wordt de Tenant-ID van Azure Active Directory. Niet toegestaan voor `DeviceId` en `TenantId` ObjectIdTypes. Vereist voor `UserId` en `ServicePrincipalId` ObjectIdTypes. Optioneel voor de DomainName-ObjectIdType. |
 
 ### <a name="supported-role-definition-identifiers"></a>Definitie-id's van ondersteunde rollen
@@ -60,7 +60,7 @@ Voorheen werd het kenmerk **objectIdType** geïntroduceerd.
 
 Azure Digital Apparaatdubbels ondersteunt volledige bewerkingen voor *maken*, *lezen*en *verwijderen* voor roltoewijzingen. *Update* bewerkingen worden verwerkt door roltoewijzingen toe te voegen, roltoewijzingen te verwijderen of de knoop punten van de [ruimtelijke Intelligence-grafiek](./concepts-objectmodel-spatialgraph.md) te wijzigen waarvan de roltoewijzingen toegang krijgen.
 
-[eind punten van de toewijzing van @no__t 1Role](media/security-roles/roleassignments.png)](media/security-roles/roleassignments.png#lightbox)
+[eind punten voor roltoewijzing ![](media/security-roles/role-assignments.png)](media/security-roles/role-assignments.png#lightbox)
 
 De opgegeven Swagger-referentie documentatie bevat meer informatie over alle beschik bare API-eind punten, aanvraag bewerkingen en definities.
 
@@ -112,7 +112,7 @@ Met de volgende JSON-hoofd tekst:
 
 ### <a name="retrieve-all-roles"></a>Alle rollen ophalen
 
-[![System rollen](media/security-roles/system.png)](media/security-roles/system.png#lightbox)
+[![systeem rollen](media/security-roles/system-api.png)](media/security-roles/system-api.png#lightbox)
 
 Als u alle beschik bare rollen (roldefinities) wilt weer geven, maakt u een geverifieerde HTTP GET-aanvraag naar:
 
@@ -163,12 +163,12 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Parameter waarde** | **Vereist** |  **Type** |  **Beschrijving** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  Waar | Tekenreeks |   De objectId voor de gebruikers-id objectIdType. |
-| YOUR_PATH | Waar | Tekenreeks |   Het gekozen pad om de toegang voor te controleren. |
-| YOUR_ACCESS_TYPE |  Waar | Tekenreeks |   *Lezen*, *maken*, *bijwerken*of *verwijderen* |
-| YOUR_RESOURCE_TYPE | Waar | Tekenreeks |  *Apparaat*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *Extended type*, *eind punt*, *opslag*, *overeenkomst*, *Ontology*, *rapport*,  *RoleDefinition*, *sensor*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *systeem* , *UerDefinedFunction*, *User*, *UserBlobMetadata*of *UserExtendedProperty* |
+| YOUR_USER_ID |  True | Tekenreeks |   De objectId voor de gebruikers-id objectIdType. |
+| YOUR_PATH | True | Tekenreeks |   Het gekozen pad om de toegang voor te controleren. |
+| YOUR_ACCESS_TYPE |  True | Tekenreeks |   *Lezen*, *maken*, *bijwerken*of *verwijderen* |
+| YOUR_RESOURCE_TYPE | True | Tekenreeks |  *Apparaat*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *Extended type*, *eind punt* *, Keys*, *Matcher*, *Ontology*, *rapport*, *RoleDefinition*, *sensor*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *systeem*,  *UerDefinedFunction*, *User*, *UserBlobMetadata*of *UserExtendedProperty* |
 
-Een geslaagde aanvraag retourneert een Booleaanse waarde `true` of `false` om aan te geven of het toegangs type is toegewezen aan de gebruiker voor het gegeven pad en de opgegeven bron.
+Een geslaagde aanvraag retourneert een Booleaanse `true` of `false` om aan te geven of het toegangs type is toegewezen aan de gebruiker voor het gegeven pad en de opgegeven bron.
 
 ### <a name="get-role-assignments-by-path"></a>Roltoewijzingen ophalen op basis van pad
 
@@ -178,7 +178,7 @@ Als u alle roltoewijzingen voor een pad wilt ophalen, maakt u een geverifieerde 
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| Value | Vervangen door |
+| Waarde | Vervangen door |
 | --- | --- |
 | YOUR_PATH | Het volledige pad naar de ruimte |
 
@@ -240,7 +240,7 @@ Een geslaagde aanvraag retourneert een 201-reactie status samen met de **id** va
 
 De volgende voor beelden laten zien hoe u uw JSON-hoofd tekst kunt configureren in verschillende scenario's voor het toewijzen van rollen.
 
-* **Voor beeld**: Een gebruiker heeft beheerders toegang nodig tot een verdieping van een Tenant ruimte.
+* **Voor beeld**: een gebruiker heeft beheerders toegang nodig tot een verdieping van een Tenant.
 
    ```JSON
    {
@@ -252,7 +252,7 @@ De volgende voor beelden laten zien hoe u uw JSON-hoofd tekst kunt configureren 
    }
    ```
 
-* **Voor beeld**: Een toepassing voert test scenario's uit voor het intrekken van apparaten en Sens oren.
+* **Voor beeld**: een toepassing voert test Scenario's uit voor het intrekken van apparaten en Sens oren.
 
    ```JSON
    {
@@ -264,7 +264,7 @@ De volgende voor beelden laten zien hoe u uw JSON-hoofd tekst kunt configureren 
    }
     ```
 
-* **Voor beeld**: Alle gebruikers die deel uitmaken van een domein krijgen lees toegang voor Spaces, Sens oren en gebruikers. Deze toegang bevat de bijbehorende gerelateerde objecten.
+* **Voor beeld**: alle gebruikers die deel uitmaken van een domein, krijgen lees toegang voor ruimten, Sens oren en gebruikers. Deze toegang bevat de bijbehorende gerelateerde objecten.
 
    ```JSON
    {

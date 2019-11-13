@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b1287f9c7e946c7b4d035b2ad6301947ffad3cea
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 86d03e980a233a60e4f3a6541462264dae0862af
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522736"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005561"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium-opslag: ontwerpen voor hoge prestaties
-
 Dit artikel bevat richt lijnen voor het bouwen van toepassingen met hoge prestaties met behulp van Azure Premium Storage. U kunt de instructies in dit document gebruiken in combi natie met best practices voor prestaties die van toepassing zijn op technologieën die door uw toepassing worden gebruikt. Ter illustratie van de richt lijnen hebben we SQL Server uitgevoerd op Premium Storage als voor beeld in dit document gebruikt.
 
 Hoewel we prestatie scenario's voor de opslaglaag in dit artikel adresseren, moet u de toepassingslaag optimaliseren. Als u bijvoorbeeld als host fungeert voor een share point-Farm in azure Premium Storage, kunt u de SQL Server-voor beelden in dit artikel gebruiken om de database server te optimaliseren. Daarnaast optimaliseert u de webserver en toepassings server van de share point-farm om de meeste prestaties te verkrijgen.

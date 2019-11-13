@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: f733e29fc5fbce764fef9a713747d6793d2ebd43
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 62f298e0efb5c54efdcd15cf470ed4640f720058
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489310"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957846"
 ---
-# <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Maak en beheer herbruikbare omgevingen voor training en implementatie met Azure Machine Learning.
+# <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Omgevingen hergebruiken voor training & implementatie met Azure Machine Learning.
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel vindt u informatie over het maken en beheren van Azure Machine Learning [omgevingen](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) , zodat u de software afhankelijkheden van uw projecten kunt bijhouden en reproduceren tijdens het ontwikkelen.
@@ -198,7 +198,7 @@ Omgevingen beheren zodat u ze kunt bijwerken, volgen en opnieuw gebruiken in rek
 
 De omgeving wordt automatisch bij uw werk ruimte geregistreerd wanneer u een uitvoeren of een webservice implementeert. U kunt de omgeving ook hand matig registreren met de methode [REGI ster ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#register-workspace-) . Met deze bewerking wordt de omgeving omgezet in een entiteit die wordt bijgehouden en geversiond in de Cloud en kan worden gedeeld tussen werk ruimte gebruikers.
 
-Met de volgende code wordt de omgeving, `myenv`, geregistreerd bij de werk ruimte, `ws`.
+Met de volgende code wordt de omgeving, `myenv`, geregistreerd in de werk ruimte `ws`.
 
 ```python
 myenv.register(workspace=ws)
@@ -240,7 +240,7 @@ Als u een python-pakket versie van een bestaande omgeving wilt bijwerken, geeft 
 
 ### <a name="debug-the-image-build"></a>Fouten opsporen in de installatie kopie maken
 
-In dit voor beeld wordt de methode [Build ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#build-workspace-) gebruikt om een omgeving hand matig te maken als docker-installatie kopie, en worden de uitvoer logboeken gecontroleerd vanuit de installatie kopie met behulp van [wait_for_completion ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-). De ingebouwde installatie kopie wordt vervolgens weer gegeven onder de werk ruimte Azure Container Registry, wat nuttig is voor het opsporen van fouten.
+In dit voor beeld wordt de methode [Build ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#build-workspace-) gebruikt om een omgeving hand matig te maken als docker-installatie kopie, en worden de uitvoer logboeken gecontroleerd op basis van de installatie kopie met behulp van [wait_for_completion ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-). De ingebouwde installatie kopie wordt vervolgens weer gegeven onder de werk ruimte Azure Container Registry, wat nuttig is voor het opsporen van fouten.
 
 ```python
 from azureml.core import Image
@@ -252,14 +252,14 @@ build.wait_for_completion(show_output=True)
 
  Met de [DockerSection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) van de klasse Azure machine learning `Environments` kunt u het gast besturingssysteem waarmee uw training wordt uitgevoerd, gedetailleerd aanpassen en beheren.
 
-Wanneer u `enable` docker, bouwt de service een docker-installatie kopie en maakt een python-omgeving met uw specificaties binnen die docker-container. Dit biedt extra isolatie en reproduceer baarheid voor uw trainings uitvoeringen.
+Wanneer u docker `enable`, bouwt de service een docker-installatie kopie en maakt een python-omgeving met uw specificaties binnen die docker-container. Dit biedt extra isolatie en reproduceer baarheid voor uw trainings uitvoeringen.
 
 ```python
 # Creates the environment inside a Docker container.
 myenv.docker.enabled = True
 ```
 
-Als de docker-installatie kopie eenmaal is gemaakt, wordt deze standaard weer gegeven in de Azure Container Registry die aan de werk ruimte is gekoppeld.  De naam van de opslag plaats heeft de indeling *azureml/azureml_\<uuid\>* . Het onderdeel voor de unieke id (*uuid*) komt overeen met een hash die is berekend op basis van de configuratie van de omgeving. Hiermee kan de service bepalen of een installatie kopie die overeenkomt met de opgegeven omgeving al bestaat voor hergebruik.
+Als de docker-installatie kopie eenmaal is gemaakt, wordt deze standaard weer gegeven in de Azure Container Registry die aan de werk ruimte is gekoppeld.  De naam van de opslag plaats heeft de indeling *azureml_\<uuid\>* . Het onderdeel voor de unieke id (*uuid*) komt overeen met een hash die is berekend op basis van de configuratie van de omgeving. Hiermee kan de service bepalen of een installatie kopie die overeenkomt met de opgegeven omgeving al bestaat voor hergebruik.
 
 Daarnaast gebruikt de service automatisch een van de op Ubuntu Linux gebaseerde [basis installatie kopieën](https://github.com/Azure/AzureML-Containers)en installeert de opgegeven Python-pakketten. De basis installatie kopie heeft CPU-en GPU-versies. Azure Machine Learning detecteert automatisch welke versie moet worden gebruikt.
 
@@ -305,11 +305,11 @@ run = exp.submit(runconfig)
 
 Als u de omgeving niet opgeeft in de configuratie van de uitvoering, wordt door de service een standaard omgeving voor u gemaakt wanneer u de uitvoering verzendt.
 
-### <a name="train-with-an-estimator"></a>Train met een estimator
+### <a name="train-with-an-estimator"></a>Trainen met een estimator
 
 Als u een [Estimator](how-to-train-ml-models.md) voor training gebruikt, kunt u het Estimator-exemplaar gewoon rechtstreeks indienen, omdat het de omgeving en het reken doel al heeft ingekapseld.
 
-De volgende code maakt gebruik van een Estimator voor een training met één knoop punt dat wordt uitgevoerd op een externe Compute voor een scikit-leer model en gaat ervan uit dat een eerder gemaakt Compute-doel object, `compute_target` en Data Store-object, `ds`.
+De volgende code maakt gebruik van een Estimator voor een training met één knoop punt dat wordt uitgevoerd op een externe Compute voor een scikit-leer model en gaat ervan uit dat een eerder gemaakt Compute-doel object, `compute_target` en Data Store-object `ds`.
 
 ```python
 from azureml.train.estimator import Estimator
@@ -359,7 +359,7 @@ service = Model.deploy(
     deployment_config = deployment_config)
 ```
 
-## <a name="example-notebooks"></a>Voorbeeld notitieblokken
+## <a name="example-notebooks"></a>Voorbeeld-laptops
 
 In dit [voor beeld wordt het notitie blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) uitgebreid op concepten en methoden die in dit artikel worden getoond.
 

@@ -1,19 +1,19 @@
 ---
-title: Herstel na nood gevallen instellen voor on-premises virtuele Hyper-V-machines (zonder VMM) naar Azure met Site Recovery | Microsoft Docs
+title: Herstel na nood gevallen voor Hyper-V instellen met behulp van Azure Site Recovery
 description: Meer informatie over het instellen van herstel na nood gevallen van on-premises virtuele Hyper-V-machines (zonder VMM) naar Azure met behulp van Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/07/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 446c870ba60d7931fafb9f9b1c7e8fc017f60e4d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2270cd8ace347992f6a5a1166986b878404fc7fe
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933871"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954041"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Herstel na noodgevallen instellen voor on-premises Hyper-V-VM's naar Azure
 

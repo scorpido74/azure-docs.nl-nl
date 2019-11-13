@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9af85d8d9b181d619d8895542f142708626649d1
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 594534f64c984f4afb986d3366f388e412bde27c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620839"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961466"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -83,7 +83,7 @@ ELB | Ja | Ja
 Azure Traffic Manager | Ja | Ja
 Multi-NIC | Ja | Ja
 Reserved IP | Ja | Ja
-IPv6 | Ja | Ja
+IPv4 | Ja | Ja
 Bron-IP-adres behouden | Ja | Ja
 Azure Virtual Network Service-eind punten<br/> (zonder Azure Storage firewalls) | Ja | Ja
 Versneld netwerken | Nee | Nee
@@ -91,21 +91,21 @@ Versneld netwerken | Nee | Nee
 
 ## <a name="hyper-v-host-storage"></a>Opslag voor Hyper-V-host
 
-**Opslag** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
+**Storage** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | --- 
 NFS | N.v.t. | N.v.t.
 SMB 3.0 | Ja | Ja
 SAN (ISCSI) | Ja | Ja
-Meerdere paden (MPIO). Getest met:<br></br> Micro soft DSM, EMC PowerPath 5,7 SP4<br/><br/> EMC PowerPath-DSM voor CLARiiON | Ja | Ja
+Meerdere paden (MPIO). Getest met:<br></br> Micro soft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM voor CLARiiON | Ja | Ja
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM-gast opslag
 
-**Opslag** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
+**Storage** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | ---
 VMDK | N.v.t. | N.v.t.
 VHD/VHDX | Ja | Ja
 VM van de 2e generatie | Ja | Ja
-EFI/UEFI| Ja | Ja
+EFI/UEFI<br></br>De gemigreerde VM in azure wordt automatisch geconverteerd naar een BIOS-opstart-VM. Op de VM moet Windows Server 2012 en hoger worden uitgevoerd. De besturingssysteem schijf moet Maxi maal vijf partities of minder hebben en de grootte van de besturingssysteem schijf moet kleiner zijn dan 300 GB.| Ja | Ja
 Gedeelde cluster schijf | Nee | Nee
 Versleutelde schijf | Nee | Nee
 NFS | N.v.t. | N.v.t.
@@ -132,6 +132,7 @@ Cool Storage | Nee | Nee
 Hot Storage| Nee | Nee
 Blok-blobs | Nee | Nee
 Versleuteling op rest (SSE)| Ja | Ja
+Versleuteling in rust (CMK)| Nee | Nee
 Premium Storage | Ja | Ja
 Import/export-service | Nee | Nee
 Azure Storage-accounts waarvoor Firewall is ingeschakeld | Ja. Voor doel opslag en cache. | Ja. Voor doel opslag en cache.
@@ -161,7 +162,7 @@ VHD-grootte van gegevens schijf | Maxi maal 4.095 GB | De controle van vereisten
 Netwerk adapters | Meerdere netwerkadapters worden ondersteund |
 Gedeelde VHD | Niet ondersteund | De controle van vereisten mislukt als dit niet wordt ondersteund.
 FC-schijf | Niet ondersteund | De controle van vereisten mislukt als dit niet wordt ondersteund.
-Indeling van harde schijf | SCHIJVEN <br/><br/> INDELING | Site Recovery converteert VHDX automatisch naar VHD wanneer u een failover naar Azure voert. Wanneer u een failover naar on-premises doorvoert, blijven de virtuele machines de VHDX-indeling gebruiken.
+Indeling van harde schijf | VHD <br/><br/> VHDX | Site Recovery converteert VHDX automatisch naar VHD wanneer u een failover naar Azure voert. Wanneer u een failover naar on-premises doorvoert, blijven de virtuele machines de VHDX-indeling gebruiken.
 BitLocker | Niet ondersteund | BitLocker moet worden uitgeschakeld voordat u replicatie voor een virtuele machine inschakelt.
 VM-naam | 1 tot 63 tekens. Alleen letters, cijfers en afbreekstreepjes. De VM-naam moet beginnen en eindigen met een letter of cijfer. | Werk de waarde in de VM-eigenschappen in Site Recovery bij.
 VM-type | Generatie 1<br/><br/> Generatie 2: Windows | Virtuele machines van de tweede generatie met het type basis van het besturings systeem (met een of twee gegevens volumes, geformatteerd als VHDX) en minder dan 300 GB schijf ruimte worden ondersteund.<br></br>Vm's van de Linux-generatie 2 worden niet ondersteund. [Meer informatie](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|

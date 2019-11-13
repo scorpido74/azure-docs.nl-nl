@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub ontwikkelen voor beperkte apparaten met behulp van IoT Hub C SDK | Microsoft Docs
+title: Azure IoT Hub ontwikkelen voor beperkte apparaten met behulp van IoT Hub C SDK
 description: Hand leiding voor ontwikkel aars-richt lijnen voor het ontwikkelen met Azure IoT Sdk's voor beperkte apparaten.
 author: robinsh
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: robinsh
-ms.openlocfilehash: d69fe6b845d3af04e42ee91daa9359dcb9a88fc5
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a1918a99efcdcc5764140093ad422f7887ca3c88
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880973"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954702"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Ontwikkelen voor beperkte apparaten met behulp van de Azure IoT C-SDK
 
@@ -33,7 +33,7 @@ Volg deze [C SDK-installatie handleiding](https://github.com/Azure/azure-iot-sdk
 
 ### <a name="remove-additional-protocol-libraries"></a>Extra protocol bibliotheken verwijderen
 
-C SDK ondersteunt vandaag nog vijf protocollen: MQTT, MQTT via WebSocket, AMQPs, AMQP over WebSocket en HTTPS. De meeste scenario's vereisen een tot twee protocollen die worden uitgevoerd op een client. Daarom kunt u de Protocol bibliotheek die u niet gebruikt, verwijderen uit de SDK. Meer informatie over het kiezen van het juiste communicatie protocol voor uw scenario vindt u in [een IOT hub communicatie protocol kiezen](iot-hub-devguide-protocols.md). MQTT is bijvoorbeeld een licht gewicht protocol dat vaak beter geschikt is voor beperkte apparaten.
+C SDK ondersteunt nu vijf protocollen: MQTT, MQTT via WebSocket, AMQPs, AMQP via WebSocket en HTTPS. De meeste scenario's vereisen een tot twee protocollen die worden uitgevoerd op een client. Daarom kunt u de Protocol bibliotheek die u niet gebruikt, verwijderen uit de SDK. Meer informatie over het kiezen van het juiste communicatie protocol voor uw scenario vindt u in [een IOT hub communicatie protocol kiezen](iot-hub-devguide-protocols.md). MQTT is bijvoorbeeld een licht gewicht protocol dat vaak beter geschikt is voor beperkte apparaten.
 
 U kunt de AMQP-en HTTP-bibliotheken verwijderen met de volgende cmake-opdracht:
 

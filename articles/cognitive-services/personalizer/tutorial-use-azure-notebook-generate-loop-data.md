@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 669ebbf595629e8093c51d76b0816edeb5f80f93
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467241"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007606"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Zelf studie: persoonlijker gebruiken in azure notebook
 
@@ -29,11 +29,11 @@ De notebook selecteert een wille keurige gebruiker, tijdstip van de dag en het t
 
 |Klanten-context functies|Tijdstippen van de dag|Typen weer|
 |--|--|--|
-|Robert<br>Bob<br>Cathy<br>Dave|Ochtend<br>'S<br>'S avonds|Zon<br>Regen achtig<br>Besneeuwde| 
+|Els<br>Bob<br>Cathy<br>Dave|Ochtend<br>'S<br>'S avonds|Zon<br>Regen achtig<br>Besneeuwde| 
 
 Om persoonlijker te kunnen leren, is de juiste koffie selectie voor elke persoon, maar kent het _systeem_ ook meer informatie over de koffie.
 
-|Functies van de koffie actie|Typen Tempe ratuur|Plaatsen van oorsprong|Typen koffie|Biologische|
+|Functies van de koffie actie|Typen temperatuur|Plaatsen van oorsprong|Typen koffie|Biologische|
 |--|--|--|--|--|
 |Cappacino|Warm|Kenia|Donker|Biologische|
 |Koud Brew|Huizen|Brazilië|Licht|Biologische|
@@ -589,7 +589,7 @@ Als u een beter leer beleid wilt vinden op basis van uw gegevens naar de Rank AP
 1. Voer de vereiste gegevens van de evaluatie naam en het datum bereik voor de lus-evaluatie in. Het datum bereik moet alleen de dagen bevatten waarop u bent gericht voor uw evaluatie. 
     Open de pagina evaluaties van de persoonlijke resource ![in het Azure Portal. Selecteer evaluatie maken. Voer de naam van de evaluatie en het datum bereik in.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
-    Het doel van deze offline-evaluatie is om te bepalen of er een beter leer beleid is voor de functies en acties die in deze lus worden gebruikt. Zorg ervoor dat het **optimalisatie beleid** is ingeschakeld om het betere leer beleid te vinden.
+    Het doel van deze offline-evaluatie is om te bepalen of er een beter leer beleid is voor de functies en acties die in deze lus worden gebruikt. Zorg ervoor dat **Optimalisatie detectie** is ingeschakeld om het betere leer beleid te vinden.
 
 1. Selecteer **OK** om de evaluatie te starten. 
 1. Deze **evaluaties** pagina bevat een lijst met de nieuwe evaluatie versie en de huidige status. Afhankelijk van hoeveel gegevens u hebt, kan deze evaluatie enige tijd duren. U kunt na een paar minuten terugkeren naar deze pagina om de resultaten te bekijken. 

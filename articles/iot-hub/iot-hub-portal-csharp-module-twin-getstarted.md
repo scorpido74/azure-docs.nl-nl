@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met Azure IoT Hub-module-id's en moduledubbels (portal en .NET) | Microsoft Docs
+title: Id van de Azure IoT Hub-module &-module (Portal en .NET)
 description: Informatie over het maken van module-id's en het bijwerken van moduledubbels met de portal en .NET.
 author: robinsh
 manager: philmea
@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 395b1fd3301925db0607f775c6b7367979ba367b
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 289c269100eb6ab672bb8d60562c1fa77d8d091a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147422"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954608"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Aan de slag met IoT Hub-module-id's en moduledubbels met behulp van de portal en .NET
 
@@ -82,7 +82,7 @@ Voer de volgende stappen uit om een app te maken die de door de module dubbele g
 
 Module-identiteit en module dubbele is beschikbaar als open bare preview. Het is alleen beschikbaar in de IoT Hub voorlopige apparaat-Sdk's. Voer de volgende stappen uit om de app te installeren:
 
-1. Open in Visual Studio **tools** > **NuGet package manager** > **NuGet-pakketten beheren voor oplossing**.
+1. Open in Visual Studio **Tools** > **NuGet package manager** > **NuGet-pakketten beheren voor oplossing**.
 
 1. Selecteer **Bladeren**en selecteer vervolgens op **include Prerelease**. Zoek naar *micro soft. Azure. devices. client*. Selecteer de nieuwste versie en installeer deze.
 
@@ -94,11 +94,11 @@ Module-identiteit en module dubbele is beschikbaar als open bare preview. Het is
 
 U hebt de module connection string voor uw console-app nodig. Volg deze stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Navigeer naar uw IoT-hub en selecteer **IOT-apparaten**. Open **myFirstDevice** en u ziet dat **myFirstModule** is gemaakt.
 
-1. Selecteer **myFirstModule** onder **module**-identiteiten. Kopieer de **verbindings reeks (primaire sleutel)** in **module-identiteits gegevens**.
+1. Selecteer **myFirstModule** onder **module-identiteiten**. Kopieer de **verbindings reeks (primaire sleutel)** in **module-identiteits gegevens**.
 
     ![Details van de Azure Portal-module](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
 
@@ -106,7 +106,7 @@ U hebt de module connection string voor uw console-app nodig. Volg deze stappen:
 
 Voer de volgende stappen uit om uw app te maken:
 
-1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
+1. Voeg aan het begin van het bestand `using`Program.cs**de volgende** instructies toe:
 
   ```csharp
   using Microsoft.Azure.Devices.Client;

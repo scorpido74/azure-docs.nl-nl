@@ -1,6 +1,6 @@
 ---
-title: Uitgangen en eind punten in azure Digital Apparaatdubbels | Microsoft Docs
-description: Richt lijnen voor het maken van eind punten met Azure Digital Apparaatdubbels.
+title: Uitgangen en eind punten-Azure Digital Apparaatdubbels | Microsoft Docs
+description: Meer informatie over het maken en uituitgang van gebeurtenis eindpunten in azure Digital Apparaatdubbels.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,14 +8,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 33e8a6a281fbc6620a4608c7b0821b196043423e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822258"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010059"
 ---
-# <a name="egress-and-endpoints"></a>Uitgangen en eind punten
+# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Uitgangen en eind punten in azure Digital Apparaatdubbels
 
 Azure Digital Apparaatdubbels- *eind punten* vertegenwoordigen een bericht of gebeurtenis Broker binnen het Azure-abonnement van een gebruiker. Gebeurtenissen en berichten kunnen worden verzonden naar de onderwerpen over Azure Event Hubs, Azure Event Grid en Azure Service Bus.
 
@@ -50,9 +50,9 @@ Gebeurtenissen worden verzonden door IoT-objecten (zoals apparaten en Sens oren)
 | Kenmerk | Type | Beschrijving |
 | --- | --- | --- |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
-| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp. |
-| gegevens | object | Gebeurtenis gegevens die specifiek zijn voor de resource provider. |
-| Type | tekenreeks | Een van de geregistreerde gebeurtenis typen voor deze gebeurtenis bron. |
+| subject | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp. |
+| data | object | Gebeurtenis gegevens die specifiek zijn voor de resource provider. |
+| eventType | tekenreeks | Een van de geregistreerde gebeurtenis typen voor deze gebeurtenis bron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | dataVersion | tekenreeks | De schema versie van het gegevens object. De uitgever definieert de schema versie. |
 | metadataVersion | tekenreeks | De schema versie van de meta gegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid levert deze waarde. |

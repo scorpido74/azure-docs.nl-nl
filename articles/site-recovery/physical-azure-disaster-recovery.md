@@ -1,19 +1,18 @@
 ---
-title: Herstel na nood geval instellen op Azure voor fysieke on-premises servers met Azure Site Recovery
+title: Herstel na nood gevallen instellen van fysieke on-premises servers met Azure Site Recovery
 description: Meer informatie over het instellen van herstel na nood gevallen voor Azure voor on-premises Windows-en Linux-servers, met de Azure Site Recovery-service.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 55b375c1e98518a6c3bc2926030cfe072963216c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a298505779def353834c294f7b5a406720fdd46c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814554"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936171"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Herstel na nood gevallen naar Azure instellen voor on-premises fysieke servers
 
@@ -85,8 +84,8 @@ Stel een [Azure Storage-account](../storage/common/storage-quickstart-create-acc
 De Mobility-service moet worden geïnstalleerd op elke server die u wilt repliceren. Site Recovery installeert deze service automatisch wanneer u replicatie inschakelt voor de-server. Als u automatisch wilt installeren, moet u een account voorbereiden dat Site Recovery gebruikt voor toegang tot de server.
 
 - U kunt een domein-of lokaal account gebruiken
-- Als u voor Windows-Vm's geen domein account gebruikt, schakelt u toegangs beheer voor externe gebruikers op de lokale computer uit. Als u dit wilt doen, voegt u in het REGI ster onder **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**de DWORD-vermelding **LocalAccountTokenFilterPolicy**met de waarde 1 toe.
-- Als u de register vermelding wilt toevoegen om de instelling uit een CLI uit te scha kelen, typt u:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- Als u voor Windows-Vm's geen domein account gebruikt, schakelt u toegangs beheer voor externe gebruikers op de lokale computer uit. Als u dit wilt doen, voegt u in het REGI ster onder **HKEY_LOCAL_MACHINE \Software\Microsoft\Windows\CurrentVersion\Policies\System**de DWORD-vermelding **LocalAccountTokenFilterPolicy**met de waarde 1 toe.
+- Als u de register vermelding wilt toevoegen om de instelling uit te scha kelen vanuit een CLI, typt u: ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
 - Voor Linux moet het account hoofdmap zijn op de Linux-bron server.
 
 
@@ -100,17 +99,17 @@ Selecteer wat u wilt repliceren en waarnaar u het wilt repliceren.
 
 1. Klik op **Recovery Services-kluizen** > kluis.
 2. Klik in het resourcemenu op **Site Recovery** > **Infra structuur voorbereiden** > **Beveiligingsdoel**.
-3. Selecteer in **doel van beveiliging**de optie **naar Azure** > **niet gevirtualiseerd/Overig**.
+3. Selecteer in **doel van beveiliging**de optie **Azure** > **niet gevirtualiseerd/Overig**.
 
 ## <a name="set-up-the-source-environment"></a>De bronomgeving instellen
 
 Stel de configuratie server in, Registreer deze in de kluis en ontdek Vm's.
 
-1. Klik op **site Recovery** > **bron**voor het voorbereiden van de**infra structuur** > .
+1. Klik op **Site Recovery** > infra structuur > **bron**voor te **bereiden** .
 2. Als u geen configuratie server hebt, klikt u op **+ Configuratie server**.
 3. Controleer in **server toevoegen**of de **Configuratie server** wordt weer gegeven bij **server type**.
 4. Down load het installatie bestand voor de Site Recovery Unified Setup.
-5. Download de kluisregistratiesleutel. U hebt deze nodig wanneer u Unified Setup uitvoert. De sleutel blijft vijf dagen na het genereren ervan geldig.
+5. Download de registratiesleutel voor de kluis. U hebt deze nodig wanneer u Unified Setup uitvoert. De sleutel blijft vijf dagen na het genereren ervan geldig.
 
    ![Bron instellen](./media/physical-azure-disaster-recovery/source-environment.png)
 
@@ -158,7 +157,7 @@ Selecteer en controleer doelbronnen.
 4. Geef in **Bewaarperiode van het herstelpunt** op hoelang (in uren) de bewaarperiode voor elk herstelpunt is. Gerepliceerde VM’s kunnen worden hersteld naar een willekeurig punt in een tijdvenster. Voor computers die worden gerepliceerd naar Premium Storage, wordt een bewaarperiode van maximaal 24 uur ondersteund, en 72 uur voor computers die naar Standard Storage worden gerepliceerd.
 5. Geef in de frequentie van de **app-consistente moment opname**op hoe vaak (in minuten) er herstel punten moeten worden gemaakt met toepassings consistente moment opnamen. Klik op **OK** om het beleid te maken.
 
-    ![Replicatiebeleid](./media/physical-azure-disaster-recovery/replication-policy.png)
+    ![Beleid voor replicatie](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
 Het beleid wordt automatisch gekoppeld aan de configuratieserver. Standaard wordt automatisch een bijbehorend beleid gemaakt voor failback. Als het replicatie beleid bijvoorbeeld **rep-Policy** is **, wordt er een beleid voor** failbackbeleid gemaakt. Dit beleid wordt pas gebruikt als u een failback initieert vanuit Azure.
@@ -179,12 +178,12 @@ Schakel replicatie in voor elke server.
 7. Selecteer het Azure-netwerk en -subnet waarmee virtuele Azure-machines verbinding maken wanneer ze na een failover worden gemaakt.
 8. Selecteer **Nu configureren voor geselecteerde machines** om de netwerkinstelling toe te passen op alle machines die u voor beveiliging selecteert. Selecteer **Later configureren** om per machine een Azure-netwerk te selecteren. 
 9. Op **fysieke computers**en klik op **+ fysieke machine**. Geef de naam en het IP-adres op. Selecteer het besturings systeem van de computer die u wilt repliceren. Het duurt enkele minuten voordat de servers zijn gedetecteerd en worden weer gegeven. 
-10. Selecteer in **Eigenschappen** > **eigenschappen configureren**het account dat door de proces server wordt gebruikt om automatisch de Mobility-service op de computer te installeren.
+10. Selecteer in **eigenschappen** > **eigenschappen configureren**het account dat door de proces server wordt gebruikt om automatisch de Mobility-service op de computer te installeren.
 11. Controleer of het juiste replicatiebeleid is geselecteerd in **Replicatie-instellingen** > **Replicatie-instellingen configureren**. 
 12. Klik op **Replicatie inschakelen**. U kunt de voortgang van de taak **Beveiliging inschakelen** volgen via **Instellingen** > **Taken** > **Site Recovery-taken**. Nadat de taak **Beveiliging voltooien** is uitgevoerd, is de machine klaar voor een mogelijke failover.
 
 
-Als u de servers die u toevoegt wilt bewaken, kunt u de laatst gedetecteerde tijd voor ze controleren in **configuratie servers** > **laatste contact op**. Als u computers wilt toevoegen zonder te wachten op een geplande detectie tijd, markeert u de configuratie server (klik er niet op) en klikt u op **vernieuwen**.
+Als u de servers die u toevoegt wilt bewaken, kunt u de laatst gedetecteerde tijd voor ze controleren op **configuratie servers** > **laatste contact persoon op**. Als u computers wilt toevoegen zonder te wachten op een geplande detectie tijd, markeert u de configuratie server (klik er niet op) en klikt u op **vernieuwen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

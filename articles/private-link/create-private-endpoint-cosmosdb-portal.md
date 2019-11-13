@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sngun
-ms.openlocfilehash: 80a0a3440a7fb5d056d1d76fb9d82931721b6e16
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32595e561736b5f22f109d0caff1f3990300d2bc
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514210"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007333"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Privé verbinding maken met een Azure Cosmos-account met behulp van een persoonlijke Azure-koppeling
 
@@ -23,7 +23,7 @@ In dit artikel leert u hoe u een virtuele machine maakt in een virtueel Azure-ne
 
 Meld u aan bij de [Azure Portal.](https://portal.azure.com)
 
-## <a name="create-a-vm"></a>Een VM maken
+## <a name="create-a-vm"></a>Een virtuele machine maken
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
@@ -40,7 +40,7 @@ In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
     | Locatie | Selecteer **WestCentralUS**.|
-    | Subnet - Naam | Voer *mySubnet*in. |
+    | Subnet - naam | Voer *mySubnet*in. |
     | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
     |||
 
@@ -99,7 +99,7 @@ Maak een [Azure Cosmos SQL API-account](../cosmos-db/create-cosmosdb-resources-p
 
 ## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>Een persoonlijk eind punt maken voor uw Azure Cosmos-account
 
-Maak een persoonlijke koppeling voor uw Azure Cosmos-account zoals wordt beschreven in de [koppeling een persoonlijke verbinding maken met behulp van de sectie Azure Portal](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-link-using-the-azure-portal) van het gekoppelde artikel.
+Maak een persoonlijke koppeling voor uw Azure Cosmos-account zoals wordt beschreven in de [koppeling een persoonlijke verbinding maken met behulp van de sectie Azure Portal](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal) van het gekoppelde artikel.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Verbinding maken met een virtuele machine via internet
 
@@ -109,7 +109,7 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
+1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
 
 1. Open het gedownloade *RDP*-bestand.
 

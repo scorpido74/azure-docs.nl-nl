@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: d9c4169176707f98181f2a479e470cf89ff2e04f
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 25105847b7134b7119252a66ac7e8502771ce5db
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988238"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961284"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Streaming-eenheden begrijpen en aanpassen
 
@@ -62,10 +62,10 @@ Houd er rekening mee dat een taak met complexe query logica mogelijk een hoog SU
 
 Het gebruik van% voor een korte periode kan plotseling tot 0 worden terugvallen voordat u terugkeert naar de verwachte niveaus. Dit gebeurt als gevolg van tijdelijke fouten of door het systeem geïnitieerde upgrades. Het verhogen van het aantal streaming-eenheden voor een taak vermindert mogelijk het gebruik van SU% als uw query niet [volledig parallel](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)is.
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Stateful query logica in tijdelijke elementen
-Een van de unieke mogelijkheden van Azure Stream Analytics taak is het uitvoeren van stateful verwerking, zoals venster aggregaties, tijdelijke samen voegingen en tijdelijke analytische functies. Elk van deze opera tors houdt status informatie. De maximale venster grootte voor deze query-elementen is zeven dagen. 
+## <a name="stateful-query-logicin-temporal-elements"></a>Stateful querylogica in de tijdelijke elementen
+Een van de unieke mogelijkheid van Azure Stream Analytics-taak is stateful verwerking, zoals statische functies in vensters, tijdelijke joins en tijdelijke analytische functies uit te voeren. Elk van deze opera tors houdt status informatie. De maximale venster grootte voor deze query-elementen is zeven dagen. 
 
-Het tijdelijke venster-concept wordt in verschillende Stream Analytics query-elementen weer gegeven:
+Het concept tijdelijk venster wordt weergegeven in de verschillende elementen van de Stream Analytics-query:
 1. Statistische functies in Vensters: groeperen op Tumblingvenstertriggers, verspringen en schuif Vensters
 
 2. Tijdelijke samen voegingen: samen voegen met de functie DATEDIFF
@@ -86,7 +86,7 @@ In de volgende query is het nummer dat is gekoppeld aan `clusterid` bijvoorbeeld
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Om problemen te verhelpen die door hoge kardinaliteit in de vorige query zijn veroorzaakt, kunt u gebeurtenissen verzenden naar Event hub gepartitioneerd door `clusterid`en de query uitschalen door het systeem toe te staan elke invoer partitie afzonderlijk te verwerken met behulp **van partitie** . in het voor beeld hieronder:
+Als u problemen wilt oplossen die worden veroorzaakt door een hoge kardinaliteit in de vorige query, kunt u gebeurtenissen verzenden naar Event hub gepartitioneerd door `clusterid`en de query uitschalen door het systeem toe te staan elke invoer partitie afzonderlijk te verwerken met behulp van de **partitie** , zoals wordt weer gegeven in het volgende voor beeld:
 
    ```sql
    SELECT count(*) 
@@ -99,7 +99,7 @@ Wanneer de query is gepartitioneerd, wordt deze verspreid over verschillende kno
 Event hub-partities moeten worden gepartitioneerd door de groeperings sleutel om te voor komen dat een stap hoeft te worden verkleind. Zie [Event hubs Overview](../event-hubs/event-hubs-what-is-event-hubs.md)voor meer informatie. 
 
 ## <a name="temporal-joins"></a>Tijdelijke samen voegingen
-Het gebruikte geheugen (de grootte van de status) van een tijdelijke samen voeging is evenredig met het aantal gebeurtenissen in de tijdelijke wiggle ruimte van de samen voeging. Dit is een gebeurtenis invoer frequentie vermenigvuldigd met de grootte van de wiggle-ruimte. Met andere woorden, het geheugen dat door samen voegingen wordt gebruikt, is evenredig met het tijd bereik van DateDiff vermenigvuldigd op basis van het gemiddelde gebeurtenis aantal.
+Het gebruikte geheugen (de grootte van de status) van een tijdelijke koppeling is evenredig met het aantal gebeurtenissen in de tijdelijke wiggle ruimte van de samen voeging. Dit is een invoer frequentie van gebeurtenissen vermenigvuldigd met de Wiggle-kamer grootte. Met andere woorden, het geheugen dat door samen voegingen wordt gebruikt, is evenredig met het tijd bereik van DateDiff vermenigvuldigd op basis van het gemiddelde gebeurtenis aantal.
 
 Het aantal niet-overeenkomende gebeurtenissen in de samen voeging is van invloed op het geheugen gebruik voor de query. Met de volgende query wordt gezocht naar advertentieweergaven waarmee klikken worden gegenereerd:
 
@@ -139,7 +139,7 @@ Normaal gesp roken is een taak die is geconfigureerd met één streaming-eenheid
 
 Voor een taak met 6 streaming-eenheden hebt u mogelijk 4 of 8 partities nodig van de Event hub. Vermijd echter dat er te veel onnodige partities zijn, omdat dit een overmatig gebruik van resources veroorzaakt. Bijvoorbeeld een event hub met 16 partities of groter in een Stream Analytics-taak met 1 streaming-eenheid. 
 
-## <a name="reference-data"></a>Referentie gegevens 
+## <a name="reference-data"></a>Referentiegegevens 
 Referentie gegevens in ASA worden in het geheugen geladen voor snel opzoeken. Met de huidige implementatie houdt elke samenvoegings bewerking met referentie gegevens een kopie van de referentie gegevens in het geheugen bij, zelfs als u meerdere keren met dezelfde referentie gegevens samenvoegt. Voor query's met een **partitie door**heeft elke partitie een kopie van de referentie gegevens, waardoor de partities volledig zijn losgekoppeld. Met het vermenigvuldigings effect kan het geheugen gebruik snel zeer hoog worden als u met meerdere partities meerdere keren met referentie gegevens werkt.  
 
 ### <a name="use-of-udf-functions"></a>Gebruik van UDF-functies

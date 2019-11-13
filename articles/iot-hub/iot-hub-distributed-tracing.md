@@ -1,5 +1,5 @@
 ---
-title: Correlatie-Id's toevoegen aan IoT-berichten met gedistribueerde tracering (preview-versie)
+title: Correlatie-Id's toevoegen aan IoT-berichten met gedistribueerde tracering (vooraf)
 description: Meer informatie over het gebruik van de functie voor gedistribueerde tracering om IoT-berichten te traceren in de Azure-Services die door uw oplossing worden gebruikt.
 author: jlian
 manager: briz
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: a6e7d2dc9b6274c07fda011bff8ec9dc59f74f95
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 835a359d3b5781ad814e423e4a69e8d60379c97b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889448"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953157"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-apparaat-naar-Cloud-berichten traceren met gedistribueerde tracering (voor beeld)
 
@@ -263,10 +263,10 @@ AzureDiagnostics
 
 Voorbeeld logboeken, zoals weer gegeven door Log Analytics:
 
-| TimeGenerated | OperationName | Category | Niveau | CorrelationId | DurationMs | Eigenschappen |
+| TimeGenerated | OperationName | Categorie | Niveau | CorrelationId | DurationMs | Eigenschappen |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
-| 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "parentSpanId": "0144d2590aacd909"} |
+| 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
 | 2018-02-22T03:28:48.633 Z | DiagnosticIoTHubEgress | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType": "EventHub", "eind punt": "myEventHub", "parentSpanId": "0144d2590aacd909"} |
 
 Zie [Azure IOT hub Diagnostische logboeken](iot-hub-monitor-resource-health.md#distributed-tracing-preview)voor meer informatie over de verschillende soorten logboeken.

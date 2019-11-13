@@ -1,18 +1,18 @@
 ---
-title: On-premises Hyper-V-servers voorbereiden op herstel na nood geval van virtuele Hyper-V-machines naar Azure
-description: Meer informatie over het voorbereiden van on-premises Hyper-V-Vm's voor herstel na nood gevallen naar Azure met de Azure Site Recovery-service.
+title: Voorbereiden op herstel na nood geval voor virtuele Hyper-V-machines naar Azure met Azure Site Recovery
+description: Meer informatie over het voorbereiden van on-premises virtuele Hyper-V-machines voor herstel na nood gevallen naar Azure met Azure Site Recovery.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b17e42378daf51543a2664315f2971d15c288611
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813725"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953993"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>On-premises Hyper-V-servers voorbereiden op herstel na nood geval naar Azure
 
@@ -94,5 +94,5 @@ Na een failover kunt u toegang krijgen tot Azure-Vm's met hetzelfde IP-adres als
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Herstel na nood geval instellen op Azure voor hyper-v-vm's](tutorial-hyper-v-to-azure.md)
-> herstel[na nood geval instellen op Azure voor virtuele Hyper-v-machines in VMM-Clouds](tutorial-hyper-v-vmm-to-azure.md)
+> [Herstel na nood gevallen naar Azure instellen voor virtuele Hyper-v-machines](tutorial-hyper-v-to-azure.md)
+> herstel [na nood gevallen naar Azure instellen voor virtuele Hyper-v-machines in VMM-Clouds](tutorial-hyper-v-vmm-to-azure.md)

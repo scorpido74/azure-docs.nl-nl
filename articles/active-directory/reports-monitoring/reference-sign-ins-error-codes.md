@@ -3,7 +3,7 @@ title: Fout codes in de Azure Active Directory Portal | Microsoft Docs
 description: Naslaginformatie over foutcodes voor aanmeldactiviteitenrapporten.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 08/08/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bb7114611ce5c7eabb8124ad11db64d50e12946
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 84e9d484da1b59c456b30cf0b465ec6de5af77d1
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809823"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014298"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fout codes voor aanmeldings activiteiten rapport 
 
@@ -107,7 +107,7 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |50128|Ongeldige domein naam: er zijn geen Tenant gegevens gevonden in de aanvraag of geïmpliceerd door de verstrekte referenties.|
 |50129|Het apparaat is niet gekoppeld aan de werk **plek-koppelen** is vereist voor het registreren van het apparaat.|
 |50130|Claim waarde kan niet worden geïnterpreteerd als een bekende verificatie methode.|
-|50131|Wordt gebruikt in verschillende fout berichten voor voorwaardelijke toegang. Bijvoorbeeld Een slechte Windows-apparaatstatus, geblokkeerde aanvraag vanwege verdachte activiteit, beslissingen voor toegangsbeleid en beveiligingsbeleid.|
+|50131|Wordt gebruikt in verschillende fout berichten voor voorwaardelijke toegang. Voorbeeld: Een slechte Windows-apparaatstatus, geblokkeerde aanvraag vanwege verdachte activiteit, beslissingen voor toegangsbeleid en beveiligingsbeleid.|
 |50132|Referenties zijn om de volgende redenen ingetrokken:<ul><li>SSO-artefact is ongeldig of verlopen</li><li>Sessie is niet actueel genoeg voor toepassing</li><li>Een aanvraag voor stille aanmelding is verzonden, maar de gebruikerssessie met Azure AD is ongeldig of verlopen.</li></ul>|
 |50133|Sessie is ongeldig omdat het wachtwoord is verlopen of recent is gewijzigd.|
 |50135|Het wacht woord moet worden gewijzigd vanwege een account risico.|

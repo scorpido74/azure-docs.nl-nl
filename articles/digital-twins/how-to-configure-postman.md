@@ -1,6 +1,6 @@
 ---
-title: Postman configureren voor Azure Digital Apparaatdubbels | Microsoft Docs
-description: Postman configureren voor Azure Digital Apparaatdubbels.
+title: Postman-Azure Digital Apparaatdubbels configureren | Microsoft Docs
+description: Meer informatie over het configureren en gebruiken van Postman voor het testen van Azure Digital Apparaatdubbels-Api's.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 14e6a52f86586eaae019d9658c2f813a15fc3474
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 5a357a246f2ba6c294b107e447218f386623f5c5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949211"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014184"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postman configureren voor Azure Digital Apparaatdubbels
 
@@ -56,7 +56,7 @@ Configureer uw Azure Active Directory-app om de OAuth 2,0 impliciet-toekennings 
 
 1. Afhankelijk van de instellingen van uw organisatie moet u mogelijk extra stappen uitvoeren om beheerders toegang tot deze API te verlenen. Neem contact op met de beheerder voor meer informatie. Zodra de beheerders toegang is goedgekeurd, wordt de kolom **beheerder toestemming vereist** in het deel venster **API-machtigingen** weer gegeven, zoals in het volgende voor uw api's:
 
-    [![API-machtigingen toevoegen](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [goed keuring van ![-beheerder](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
 
 1. Selecteer **manifest** om het toepassings manifest voor uw app te openen. Stel *oauth2AllowImplicitFlow* in op `true`.
@@ -69,7 +69,7 @@ Configureer uw Azure Active Directory-app om de OAuth 2,0 impliciet-toekennings 
 
 1. Kopieer de **toepassings-id** van uw Azure Active Directory-app en bewaar deze. Dit wordt gebruikt in de volgende stappen.
 
-   [![Azure Active Directory-toepassings-ID](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
+   [Azure Active Directory toepassings-ID ![](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
 
 
 ## <a name="obtain-an-oauth-20-token"></a>Een OAuth 2,0-token verkrijgen
@@ -85,25 +85,25 @@ Postman instellen en configureren om een Azure Active Directory token te verkrij
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Name  | Vervangen door | Voorbeeld |
+    | Naam  | Vervangen door | Voorbeeld |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | De naam van uw Tenant of organisatie | `microsoft` |
 
 1. Selecteer het tabblad **autorisatie** , selecteer **OAuth 2,0**en selecteer vervolgens **nieuw toegangs Token ophalen**.
 
-    | Veld  | Value |
+    | Veld  | Waarde |
     |---------|---------|
     | Toekennings type | `Implicit` |
     | URL voor terugbellen | `https://www.getpostman.com/oauth2/callback` |
     | Verificatie-URL | Gebruik de **autorisatie-URL** uit **stap 2** |
     | Client-id | Gebruik de **toepassings-id** voor de app Azure Active Directory die is gemaakt of opnieuw is gebruikt in de vorige sectie |
-    | Scope | Leeg laten |
-    | State | Leeg laten |
-    | Clientverificatie | `Send as Basic Auth header` |
+    | Bereik | Leeg laten |
+    | Status | Leeg laten |
+    | Client verificatie | `Send as Basic Auth header` |
 
 1. De client moet er nu als volgt uitzien:
 
-    [voor beeld van ![Postman-client](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
+    [![postman client-voor beeld](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. Selecteer een **aanvraag token**.
 
@@ -119,14 +119,14 @@ Na het volt ooien van de vorige stappen, moet u na het uitvoeren van een geverif
 
 1. Voeg op het tabblad **koptekst** een sleutel inhoud van een HTTP-aanvraag header toe **-Type** met waarde `multipart/mixed`.
 
-   [![Content type multi part/Mixed](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
+   [![inhoudtype multi part/Mixed](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Serialisatie van niet-tekst gegevens in bestanden. JSON-gegevens worden opgeslagen als een JSON-bestand.
-1. Selecteer op het tabblad **hoofd tekst** `form-data`. 
-1. Voeg elk bestand toe door een **sleutel** naam toe te wijzen en `file` te selecteren.
+1. Selecteer `form-data`op het tabblad **hoofd tekst** . 
+1. Voeg elk bestand toe door een **sleutel** naam toe te wijzen en `file`te selecteren.
 1. Selecteer vervolgens elk bestand via de knop **bestand kiezen** .
 
-   [voor beeld van ![Postman-client](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
+   [![postman client-voor beeld](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
 
    >[!NOTE]
    > * De Postman-client vereist niet dat meerdelige segmenten een hand matig toegewezen **inhouds type** of **Content-Disposition**hebben.

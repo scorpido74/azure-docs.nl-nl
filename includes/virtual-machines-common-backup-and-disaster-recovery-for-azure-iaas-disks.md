@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ca55d49721f9c22f35ba79e819efa354a660d92a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9332079cd77c4dcc972059071165ba0631135b5c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302301"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012512"
 ---
-# <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Back-ups en herstel na nood gevallen voor Azure IaaS-schijven
-
 In dit artikel wordt uitgelegd hoe u back-ups en herstel na nood gevallen (DR) van IaaS virtual machines (Vm's) en schijven in azure plant. In dit document worden zowel beheerde als onbeheerde schijven beschreven.
 
 Eerst bieden we de ingebouwde mogelijkheden voor fout tolerantie in het Azure-platform dat bescherming biedt tegen lokale storingen. Vervolgens bespreken we de nood scenario's die niet volledig worden gedekt door de ingebouwde mogelijkheden. Er worden ook verschillende voor beelden van werkbelasting scenario's weer gegeven waarin verschillende back-ups en DR-overwegingen van toepassing kunnen zijn. Vervolgens worden mogelijke oplossingen voor de DR van IaaS-schijven gecontroleerd.
@@ -148,7 +146,7 @@ Gebruik de volgende stappen om back-ups van uw Vm's in te scha kelen met behulp 
 
     b. Klik in het menu **Recovery Services kluizen** op **toevoegen** en volg de stappen voor het maken van een nieuwe kluis in dezelfde regio als de virtuele machine. Als uw virtuele machine zich bijvoorbeeld in de regio vs West bevindt, kiest u voor de kluis West US.
 
-1.  Controleer de opslag replicatie voor de zojuist gemaakte kluis. Open de kluis onder **Recovery Services kluizen** en ga naar **Eigenschappen** > **back-upconfiguratie** > -**Update**. Zorg ervoor dat de optie **geo-redundante opslag** is standaard geselecteerd. Deze optie zorgt ervoor dat uw kluis automatisch wordt gerepliceerd naar een secundair Data Center. Uw kluis in West-VS wordt bijvoorbeeld automatisch gerepliceerd naar VS-Oost.
+1.  Controleer de opslag replicatie voor de zojuist gemaakte kluis. Open de kluis onder **Recovery Services kluizen** en ga naar **Eigenschappen** > **back-upconfiguratie** > **Update**. Zorg ervoor dat de optie **geo-redundante opslag** is standaard geselecteerd. Deze optie zorgt ervoor dat uw kluis automatisch wordt gerepliceerd naar een secundair Data Center. Uw kluis in West-VS wordt bijvoorbeeld automatisch gerepliceerd naar VS-Oost.
 
 1.  Configureer het back-upbeleid en selecteer de virtuele machine in dezelfde gebruikers interface.
 

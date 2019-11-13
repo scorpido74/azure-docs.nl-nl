@@ -1,21 +1,21 @@
 ---
-title: 'Zelfstudie: Een automatisch schalende, zoneredundante toepassingsgateway met een gereserveerde IP-adres maken met Azure PowerShell'
+title: 'Zelf studie: toegang tot webtoepassingen verbeteren-Azure-toepassing gateway'
 description: In deze zelfstudie leert u hoe u een automatisch schalende, zone-redundante toepassingsgateway met een gereserveerd IP-adres maakt met Azure PowerShell.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 2/14/2019
+ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8ee43a54df019b862d1f8698363d8b0a022bdcb4
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: e07fc34c7177e3a1dace34ab298b64dc3aa6a06a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947146"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011367"
 ---
-# <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Zelfstudie: een toepassingsgateway maken die de toegang tot de webtoepassing verbetert
+# <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Zelf studie: een toepassings gateway maken waarmee toegang tot webtoepassingen wordt verbeterd
 
 Als u als IT-beheerder betrokken bent bij het verbeteren van de toegang tot webtoepassingen, kunt u de toepassingsgateway zodanig optimaliseren dat de schaal ervan wordt aangepast aan de vraag van de klant en dat er meerdere beschikbaarheidszones worden bereikt. In deze zelfstudie wordt uitgelegd hoe u Azure Application Gateway-functies kunt configureren voor automatisch schalen, zone-redundantie en gereserveerde VIP's (statische IP). U maakt gebruik van Azure PowerShell-cmdlets en het Azure Resource Manager-implementatiemodel om het probleem op te lossen.
 
@@ -36,7 +36,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Voor deze zelfstudie moet u Azure PowerShell lokaal uitvoeren. U moet Azure PowerShell-moduleversie 1.0.0 of hoger is geïnstalleerd. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Connect-AzAccount` uit om een verbinding op te zetten met Azure.
+Voor deze zelfstudie moet u Azure PowerShell lokaal uitvoeren. U moet Azure PowerShell module versie 1.0.0 of hoger hebben geïnstalleerd. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Connect-AzAccount` uit om een verbinding op te zetten met Azure.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -58,7 +58,7 @@ New-AzResourceGroup -Name $rg -Location $location
 
 ## <a name="create-a-self-signed-certificate"></a>Een zelfondertekend certificaat maken
 
-Voor gebruik in de productie, moet u een geldig certificaat importeren dat is ondertekend door een vertrouwde provider. Voor deze zelfstudie maakt u een zelfondertekend certificaat met behulp van [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate). U kunt [Export-PfxCertificate ](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) gebruiken met de Thumbprint die is geretourneerd om een ​​PFX-bestand uit het certificaat te exporteren.
+Voor gebruik in de productie moet u een geldig certificaat importeren dat is ondertekend door een vertrouwde provider. Voor deze zelfstudie maakt u een zelfondertekend certificaat met behulp van [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate). U kunt [Export-PfxCertificate ](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) gebruiken met de Thumbprint die is geretourneerd om een ​​PFX-bestand uit het certificaat te exporteren.
 
 ```powershell
 New-SelfSignedCertificate `
@@ -180,7 +180,7 @@ $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-Gebruik Get-AzPublicIPAddress om het openbare IP-adres van de toepassingsgateway. Kopieer het openbare IP-adres of de DNS-naam en plak het adres of de naam in de adresbalk van de browser.
+Gebruik Get-AzPublicIPAddress om het open bare IP-adres van de toepassings gateway op te halen. Kopieer het openbare IP-adres of de DNS-naam en plak het adres of de naam in de adresbalk van de browser.
 
 `Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP`
 

@@ -11,44 +11,54 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a79c95d627bbdec3a91a1d048a48ff061b308ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cb0f373000d09cb387fb73eec344997381fe45d1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489359"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961666"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problemen met Azure Machine Learning Azure Kubernetes-service en Azure Container Instances-implementatie oplossen
 
 Meer informatie over het oplossen van veelvoorkomende docker-implementatie fouten met Azure Container Instances (ACI) en Azure Kubernetes service (AKS) met behulp van Azure Machine Learning.
 
-Bij het implementeren van een model in Azure Machine Learning, voert het systeem een aantal taken uit. De implementatie taken zijn:
+Bij het implementeren van een model in Azure Machine Learning, voert het systeem een aantal taken uit. De implementatietaken zijn:
 
-1. Registreer het model in het werkruimte model register.
+1. Registreer het model in de werkruimte model-register.
 
-2. Bouw een docker-installatie kopie, waaronder:
-    1. Down load het geregistreerde model uit het REGI ster. 
-    2. Maak een dockerfile met een python-omgeving op basis van de afhankelijkheden die u opgeeft in het yaml-bestand van de omgeving.
-    3. Voeg uw model bestanden toe en het Score script dat u in de dockerfile opgeeft.
-    4. Bouw een nieuwe docker-installatie kopie met behulp van de dockerfile.
-    5. Registreer de docker-installatie kopie met de Azure Container Registry die aan de werk ruimte is gekoppeld.
+2. Bouw een Docker-installatiekopie, met inbegrip van:
+    1. Download het geregistreerde model uit het register. 
+    2. Maak een docker-bestand, met een Python-omgeving op basis van de afhankelijkheden die u in de omgeving yaml-bestand opgeeft.
+    3. Uw modelbestanden en het scoring-script dat u opgeeft in de dockerfile toevoegen.
+    4. Bouw een nieuwe Docker-installatiekopie met behulp van het bestand dockerfile.
+    5. Registreer de Docker-installatiekopie met de Azure Container Registry die zijn gekoppeld aan de werkruimte.
 
     > [!IMPORTANT]
     > Afhankelijk van uw code wordt het maken van afbeeldingen automatisch uitgevoerd zonder uw invoer.
 
-3. Implementeer de docker-installatie kopie naar de Azure container instance-service (ACI) of naar de Azure Kubernetes-service (AKS).
+3. De Docker-installatiekopie implementeren naar Azure Container exemplaar (ACI)-service of naar Azure Kubernetes Service (AKS).
 
-4. Start een nieuwe container (of containers) in ACI of AKS. 
+4. Starten van een nieuwe container (of containers) in ACI of AKS. 
 
-Meer informatie over dit proces vindt u in de [ModelBeheer](concept-model-management-and-deployment.md) -inleiding.
+Meer informatie over dit proces in de [Modelbeheer](concept-model-management-and-deployment.md) inleiding.
+
+## <a name="prerequisites"></a>Vereisten
+
+* Een **Azure-abonnement**. Als u er nog geen hebt, probeer [dan de gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
+* De [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* De [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* De [cli-extensie voor Azure machine learning](reference-azure-machine-learning-cli.md).
+* Om lokaal fouten op te sporen, moet u een werkende docker-installatie op uw lokale systeem hebben.
+
+    Als u de docker-installatie wilt controleren, gebruikt u de opdracht `docker run hello-world` vanaf een Terminal of opdracht prompt. Raadpleeg de [docker-documentatie](https://docs.docker.com/)voor meer informatie over het installeren van docker of het oplossen van problemen met docker-fouten.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u een probleem ondervindt, moet u eerst de implementatie taak (eerder beschreven) opsplitsen in afzonderlijke stappen om het probleem te isoleren.
+Als u een probleem ondervindt, het eerste wat te doen is de Implementatietaak opdelen (vorige beschreven) in afzonderlijke stappen het probleem te isoleren.
 
-Het verbreken van de implementatie in taken is handig als u de API van de [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) -API of [webservice deploy_from_model ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) gebruikt, omdat beide functies de bovengenoemde stappen als één actie uitvoeren. Deze Api's zijn meestal handig, maar het helpt bij het opruimen van de stappen bij het oplossen van problemen door ze te vervangen door de onderstaande API-aanroepen.
+Het verbreken van de implementatie in taken is handig als u de API van de [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) -API of [webservice (web. deploy_from_model)](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) gebruikt, omdat beide functies de bovengenoemde stappen als één actie uitvoeren. Deze Api's zijn meestal handig, maar het helpt bij het opruimen van de stappen bij het oplossen van problemen door ze te vervangen door de onderstaande API-aanroepen.
 
-1. Registreer het model. Hier volgt een voor beeld van code:
+1. Registreer het model. Hier volgt een voorbeeld van code:
 
     ```python
     # register a model out of a run record
@@ -58,7 +68,7 @@ Het verbreken van de implementatie in taken is handig als u de API van de [webse
     model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
     ```
 
-2. Bouw de installatie kopie. Hier volgt een voor beeld van code:
+2. Bouw de installatiekopie. Hier volgt een voorbeeld van code:
 
     ```python
     # configure the image
@@ -73,7 +83,7 @@ Het verbreken van de implementatie in taken is handig als u de API van de [webse
     image.wait_for_creation(show_output=True)
     ```
 
-3. Implementeer de installatie kopie als service. Hier volgt een voor beeld van code:
+3. De installatiekopie implementeert als service. Hier volgt een voorbeeld van code:
 
     ```python
     # configure an ACI-based deployment
@@ -86,11 +96,11 @@ Het verbreken van de implementatie in taken is handig als u de API van de [webse
     aci_service.wait_for_deployment(show_output=True)    
     ```
 
-Als u het implementatie proces hebt onderverdeeld in afzonderlijke taken, kunnen we een aantal van de meest voorkomende fouten bekijken.
+Nadat u het implementatieproces in afzonderlijke taken hebt gesplitst, kunnen we kijken naar enkele van de meest voorkomende fouten.
 
-## <a name="image-building-fails"></a>Het maken van de installatie kopie mislukt
+## <a name="image-building-fails"></a>De installatiekopie van het bouwen van mislukt
 
-Als de docker-installatie kopie niet kan worden gebouwd, mislukt de aanroep van de [installatie kopie. wait_for_creation ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) of [service. wait_for_deployment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) met enkele fout berichten die een aantal aanwijzingen kunnen bieden. U kunt ook meer informatie over de fouten vinden in het build-logboek van de installatie kopie. Hieronder ziet u een voor beeld van een code waarin wordt weer gegeven hoe de logboek-URI voor de installatie kopie wordt gedetecteerd.
+Als de docker-installatie kopie niet kan worden gebouwd, mislukt de aanroep van de [installatie kopie. wait_for_creation ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) of [service. wait_for_deployment (](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) ) met enkele fout berichten die een aantal aanwijzingen kunnen bieden. U vindt ook meer informatie over de fouten van het logboek van de build installatiekopie. Hieronder wordt een voorbeeld van code waarin wordt beschreven hoe u voor het detecteren van het logboek-uri van de installatiekopie-build.
 
 ```python
 # if you already have the image object handy
@@ -104,7 +114,7 @@ for name, img in ws.images.items():
     print(img.name, img.version, img.image_build_log_uri)
 ```
 
-De URI van het installatie kopie logboek is een SAS-URL die verwijst naar een logboek bestand dat is opgeslagen in uw Azure Blob-opslag. Kopieer en plak de URI gewoon in een browser venster en u kunt het logboek bestand downloaden en weer geven.
+De uri van de installatiekopie-logboek is een SAS-URL die verwijst naar een logboekbestand die zijn opgeslagen in de Azure blob-opslag. Alleen kopiëren en plakken de uri in een browservenster en u kunnen downloaden en weergeven van het logboekbestand.
 
 ### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault toegangs beleid en Azure Resource Manager sjablonen
 
@@ -138,7 +148,7 @@ Headers: {'Date': 'Tue, 26 Feb 2019 17:47:53 GMT', 'Content-Type': 'application/
 Content: b'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}'
 ```
 
-__Cli__:
+__CLI__:
 ```text
 ERROR: {'Azure-cli-ml Version': None, 'Error': WebserviceException('Received bad response from Model Management Service:\nResponse Code: 500\nHeaders: {\'Date\': \'Tue, 26 Feb 2019 17:34:05
 GMT\', \'Content-Type\': \'application/json\', \'Transfer-Encoding\': \'chunked\', \'Connection\': \'keep-alive\', \'api-supported-versions\': \'2018-03-01-preview, 2018-11-19\', \'x-ms-client-request-id\':
@@ -155,9 +165,6 @@ Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen t
 ## <a name="debug-locally"></a>Lokaal fouten opsporen
 
 Als u problemen ondervindt bij het implementeren van een model naar ACI of AKS, kunt u het implementeren als een lokaal. Het gebruik van een lokaal maakt het gemakkelijker om problemen op te lossen. De docker-installatie kopie met het model wordt gedownload en gestart op het lokale systeem.
-
-> [!IMPORTANT]
-> Lokale implementaties vereisen een werkende docker-installatie op uw lokale systeem. Docker moet worden uitgevoerd voordat u een lokaal implementeert. Zie [https://www.docker.com/](https://www.docker.com/)voor meer informatie over het installeren en gebruiken van docker.
 
 > [!WARNING]
 > Lokale implementaties worden niet ondersteund voor productie scenario's.
@@ -227,7 +234,7 @@ Als u de service wilt verwijderen, gebruikt u [Delete ()](https://docs.microsoft
 
 ### <a id="dockerlog"></a>Het docker-logboek controleren
 
-U kunt de gedetailleerde docker-engine logboek berichten vanuit het Service object afdrukken. U kunt het logboek weer geven voor ACI-, AKS-en lokale implementaties. In het volgende voor beeld ziet u hoe u de logboeken afdrukt.
+U kunt gedetailleerde berichten voor Docker-engine van het serviceobject afdrukken. U kunt het logboek weer geven voor ACI-, AKS-en lokale implementaties. In het volgende voor beeld ziet u hoe u de logboeken afdrukt.
 
 ```python
 # if you already have the service object handy
@@ -237,15 +244,15 @@ print(service.get_logs())
 print(ws.webservices['mysvc'].get_logs())
 ```
 
-## <a name="service-launch-fails"></a>Starten van service mislukt
+## <a name="service-launch-fails"></a>Service starten mislukt
 
-Nadat de installatie kopie is gemaakt, probeert het systeem een container te starten met behulp van de implementatie configuratie. Als onderdeel van het opstart proces van de container wordt de functie `init()` in uw score script aangeroepen door het systeem. Als er niet-onderschepte uitzonde ringen in de `init()` functie worden weer gegeven, ziet u mogelijk de fout melding **CrashLoopBackOff** in het fout bericht.
+Nadat de installatie kopie is gemaakt, probeert het systeem een container te starten met behulp van de implementatie configuratie. Als onderdeel van de container starten van proces, de `init()` functie in uw scoring-script wordt aangeroepen door het systeem. Als er niet-onderschepte uitzonderingen in de `init()` functioneren, ziet u mogelijk **CrashLoopBackOff** fout in het foutbericht.
 
 Gebruik de informatie in de sectie [het docker-logbestand controleren](#dockerlog) om de logboeken te controleren.
 
-## <a name="function-fails-get_model_path"></a>De functie is mislukt: get_model_path ()
+## <a name="function-fails-get_model_path"></a>Functie mislukt: get_model_path()
 
-De functie [model. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) wordt vaak aangeroepen in de functie `init()` van het Score script, waarmee een model bestand of een map met model bestanden in de container kan worden gevonden. Als het model bestand of de map niet kan worden gevonden, mislukt de functie. De eenvoudigste manier om deze fout op te lossen is door de onderstaande python-code uit te voeren in de container shell:
+Vaak wordt de functie [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) in de functie `init()` aangeroepen om een model bestand of een map met model bestanden in de container te vinden. Als het model bestand of de map niet kan worden gevonden, mislukt de functie. De eenvoudigste manier om op te sporen van deze fout is om uit te voeren de volgende Python-code in de Container-shell:
 
 ```python
 from azureml.core.model import Model
@@ -254,13 +261,13 @@ logging.basicConfig(level=logging.DEBUG)
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
-In dit voor beeld wordt het lokale pad (ten opzichte van `/var/azureml-app`) afgedrukt in de container waarin uw score script het model bestand of de map verwacht te vinden. Vervolgens kunt u controleren of het bestand of de map inderdaad de verwachte locatie is.
+In dit voor beeld wordt het lokale pad (ten opzichte van `/var/azureml-app`) afgedrukt in de container waarin uw score script het model bestand of de map verwacht te vinden. Vervolgens kunt u controleren of het bestand of map inderdaad waarop is naar verwachting.
 
 Als het logboek registratie niveau wordt ingesteld op DEBUG, kan er extra informatie worden vastgelegd, wat nuttig kan zijn bij het identificeren van de fout.
 
-## <a name="function-fails-runinput_data"></a>De functie is mislukt: Run (input_data)
+## <a name="function-fails-runinput_data"></a>Functie mislukt: run(input_data)
 
-Als de service is geïmplementeerd, maar deze crasht wanneer u gegevens naar het Score-eind punt post, kunt u een fout melding toevoegen aan de functie `run(input_data)`, zodat er in plaats daarvan een gedetailleerd fout bericht wordt geretourneerd. Bijvoorbeeld:
+Als de service is geïmplementeerd, maar deze loopt vast bij het plaatsen van gegevens naar het scoring-eindpunt, kunt u fout-instructie in afvangen toevoegen uw `run(input_data)` functie zodat het gedetailleerde foutbericht wordt weergegeven in plaats daarvan retourneert. Bijvoorbeeld:
 
 ```python
 def run(input_data):
@@ -275,7 +282,7 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**Opmerking**: het retour neren van fout berichten van de `run(input_data)` aanroep moet alleen worden uitgevoerd voor fout opsporing. Uit veiligheids overwegingen moet u geen fout berichten op deze manier retour neren in een productie omgeving.
+**Houd er rekening mee**: retourneren foutmeldingen vanuit de `run(input_data)` aanroep moet worden gedaan voor het opsporen van fouten in doel alleen. Uit veiligheids overwegingen moet u geen fout berichten op deze manier retour neren in een productie omgeving.
 
 ## <a name="http-status-code-503"></a>HTTP-status code 503
 
@@ -325,8 +332,8 @@ In sommige gevallen moet u mogelijk interactief fouten opsporen in de python-cod
 
 > [!IMPORTANT]
 > Deze methode van fout opsporing werkt niet wanneer u `Model.deploy()` en `LocalWebservice.deploy_configuration` gebruikt voor het lokaal implementeren van een model. In plaats daarvan moet u een installatie kopie maken met behulp van de [ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) -klasse. 
->
-> Lokale implementaties vereisen een werkende docker-installatie op uw lokale systeem. Docker moet worden uitgevoerd voordat u een lokaal implementeert. Zie [https://www.docker.com/](https://www.docker.com/)voor meer informatie over het installeren en gebruiken van docker.
+
+Lokale implementaties vereisen een werkende docker-installatie op uw lokale systeem. Raadpleeg de [docker-documentatie](https://docs.docker.com/)voor meer informatie over het gebruik van docker.
 
 ### <a name="configure-development-environment"></a>De ontwikkelomgeving configureren
 
@@ -531,5 +538,5 @@ docker stop debug
 
 Meer informatie over implementatie:
 
-* [Implementeren en waar](how-to-deploy-and-where.md)
-* [Zelf studie: modellen trainen & implementeren](tutorial-train-models-with-aml.md)
+* [Over het implementeren en waar](how-to-deploy-and-where.md)
+* [Zelfstudie: Trainen en implementeren van modellen](tutorial-train-models-with-aml.md)

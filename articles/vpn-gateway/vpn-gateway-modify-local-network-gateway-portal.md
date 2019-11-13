@@ -1,6 +1,6 @@
 ---
-title: Het lokale netwerk gateway IP-adresvoorvoegsels en het VPN-Gateway-IP-adres wijzigen | Azure | Portal | Microsoft Docs
-description: Dit artikel begeleidt u bij het wijzigen van IP-adresvoorvoegsels voor uw lokale netwerkgateway met behulp van de Azure portal.
+title: 'VPN Gateway: Wijzig de IP-adres instellingen van de gateway: Azure Portal'
+description: In dit artikel vindt u instructies voor het wijzigen van IP-adres voorvoegsels voor uw lokale netwerk gateway met behulp van de Azure Portal.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,39 +15,39 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: 12f1f8bbcb103d0882059cadc12bc1a8b9d40bdb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a59f618536d44e838bf840264e70b0b2a43cced
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60419583"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014914"
 ---
-# <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Lokale instellingen netwerkgateway wijzigen met behulp van de Azure portal
+# <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Instellingen voor lokale netwerk gateway wijzigen met behulp van de Azure Portal
 
-Soms worden de instellingen voor uw lokale netwerkgateway AddressPrefix of GatewayIPAddress gewijzigd. Dit artikel ziet u hoe u uw instellingen van uw lokale netwerkgateway wijzigen. U kunt ook wijzigen van deze instellingen met een andere methode door een andere optie te selecteren in de volgende lijst:
+Soms worden de instellingen voor de AddressPrefix of GatewayIPAddress van uw lokale netwerk gateway gewijzigd. In dit artikel wordt beschreven hoe u de instellingen van uw lokale netwerk gateway wijzigt. U kunt deze instellingen ook met behulp van een andere methode wijzigen door een andere optie te selecteren in de volgende lijst:
 
-Voordat u de verbinding verwijdert, kunt u de configuratie voor uw verbindende apparaten om op te halen van de gedefinieerde PSK downloaden. Op die manier hoeft u te definiëren het aan de andere kant.
+Voordat u de verbinding verwijdert, kunt u de configuratie voor uw apparaten waarmee u verbinding maakt, downloaden om de gedefinieerde PSK te verkrijgen. Op die manier hoeft u deze niet aan de andere kant opnieuw te definiëren.
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
 > * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
-> * [Azure-CLI](vpn-gateway-modify-local-network-gateway-cli.md)
+> * [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 >
 >
 
 
-## <a name="ipaddprefix"></a>IP-adresvoorvoegsels wijzigen
+## <a name="ipaddprefix"></a>IP-adres voorvoegsels wijzigen
 
-Wanneer u IP-adresvoorvoegsels wijzigt, afhankelijk van de te volgen stappen of de gateway van uw lokale netwerk een verbinding heeft.
+Wanneer u IP-adres voorvoegsels wijzigt, zijn de stappen die u volgt, afhankelijk van het feit of de lokale netwerk gateway een verbinding heeft.
 
 [!INCLUDE [modify prefix](../../includes/vpn-gateway-modify-ip-prefix-portal-include.md)]
 
-## <a name="gwip"></a>IP-adres van de gateway wijzigen
+## <a name="gwip"></a>Het IP-adres van de gateway wijzigen
 
-Als van het VPN-apparaat waarmee u verbinding wilt maken het openbare IP-adres is gewijzigd, moet u de gateway van het lokale netwerk aanpassen met deze wijziging. Wanneer u het openbare IP-adres wijzigt, afhankelijk van de te volgen stappen of de gateway van uw lokale netwerk een verbinding heeft.
+Als van het VPN-apparaat waarmee u verbinding wilt maken het openbare IP-adres is gewijzigd, moet u de gateway van het lokale netwerk aanpassen met deze wijziging. Wanneer u het open bare IP-adres wijzigt, zijn de stappen die u volgt, afhankelijk van het feit of de lokale netwerk gateway een verbinding heeft.
 
 [!INCLUDE [modify gateway IP](../../includes/vpn-gateway-modify-lng-gateway-ip-portal-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt de gatewayverbinding controleren. Zie [een gatewayverbinding verifiëren](vpn-gateway-verify-connection-resource-manager.md).
+U kunt uw gateway verbinding controleren. Zie [een gateway verbinding controleren](vpn-gateway-verify-connection-resource-manager.md).

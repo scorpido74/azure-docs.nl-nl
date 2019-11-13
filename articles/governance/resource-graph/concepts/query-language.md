@@ -1,17 +1,14 @@
 ---
 title: Meer informatie over de query taal
 description: Hierin worden resource grafiek tabellen en de beschik bare Kusto-gegevens typen,-Opera tors en-functies die bruikbaar zijn met Azure resource Graph beschreven.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: d0ba3195aef246ff49042f61dcec0b4397b5dde6
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: baef46f4ba6f899c2c0a1392f87006223d75a4e1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622640"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959054"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Informatie over de query taal van Azure resource Graph
 
@@ -29,7 +26,7 @@ Resource grafiek biedt verschillende tabellen voor de gegevens die worden opgesl
 
 |Resource grafiek tabellen |Beschrijving |
 |---|---|
-|Bronnen |De standaard tabel als niets is gedefinieerd in de query. De resource typen en eigenschappen van Resource Manager zijn hier beschikbaar. |
+|Resources |De standaard tabel als niets is gedefinieerd in de query. De resource typen en eigenschappen van Resource Manager zijn hier beschikbaar. |
 |ResourceContainers |Inclusief een abonnement (in Preview--`Microsoft.Resources/subscriptions`) en resource groep (`Microsoft.Resources/subscriptions/resourcegroups`) en gegevens. |
 |AlertsManagementResources |Bevat resources met _betrekking_ tot `Microsoft.AlertsManagement`. |
 |SecurityResources |Bevat resources met _betrekking_ tot `Microsoft.Security`. |
@@ -78,12 +75,12 @@ Hier volgt een lijst met KQL-Opera tors die worden ondersteund door resource gra
 |[MV-uitvouwen](/azure/kusto/query/mvexpandoperator) |[Cosmos DB met specifieke schrijf locaties weer geven](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ maximum van 400 |
 |[ter](/azure/kusto/query/orderoperator) |[Een lijst van resources weergeven, gesorteerd op naam](../samples/starter.md#list-resources) |Synoniem van `sort` |
 |[project](/azure/kusto/query/projectoperator) |[Een lijst van resources weergeven, gesorteerd op naam](../samples/starter.md#list-resources) | |
-|[project-weg](/azure/kusto/query/projectawayoperator) |[Kolommen verwijderen uit resultaten](../samples/advanced.md#remove-column) | |
+|[project-away](/azure/kusto/query/projectawayoperator) |[Kolommen verwijderen uit resultaten](../samples/advanced.md#remove-column) | |
 |[acties](/azure/kusto/query/sortoperator) |[Een lijst van resources weergeven, gesorteerd op naam](../samples/starter.md#list-resources) |Synoniem van `order` |
 |[samenvatten](/azure/kusto/query/summarizeoperator) |[Azure-resources tellen](../samples/starter.md#count-resources) |Alleen de eerste vereenvoudigde pagina |
 |[take](/azure/kusto/query/takeoperator) |[Een lijst van alle openbare IP-adressen weergeven](../samples/starter.md#list-publicip) |Synoniem van `limit` |
 |[Boven](/azure/kusto/query/topoperator) |[De eerste vijf virtuele machines weergeven op naam en met hun type besturingssysteem](../samples/starter.md#show-sorted) | |
-|[Réunion](/azure/kusto/query/unionoperator) |[Resultaten van twee query's combi neren tot één resultaat](../samples/advanced.md#unionresults) |Eén tabel toegestaan: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[_kolom_ _naam `withsource=`tabel_.\] De limiet van 3 `union` poten in één query. Het oplossen van een benadering van `union` poot-tabellen is niet toegestaan. Kan worden gebruikt binnen één tabel of tussen de tabellen _resources_ en _ResourceContainers_ . |
+|[union](/azure/kusto/query/unionoperator) |[Resultaten van twee query's combi neren tot één resultaat](../samples/advanced.md#unionresults) |Eén tabel toegestaan: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[_kolom_ _naam `withsource=`tabel_.\] De limiet van 3 `union` poten in één query. Het oplossen van een benadering van `union` poot-tabellen is niet toegestaan. Kan worden gebruikt binnen één tabel of tussen de tabellen _resources_ en _ResourceContainers_ . |
 |[positie](/azure/kusto/query/whereoperator) |[Resources weergeven die opslag bevatten](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>Escape tekens
@@ -110,7 +107,7 @@ Sommige eigenschapnamen, zoals de namen die een `.` of `$`bevatten, moeten in de
 
   - **cmd** : sluit het `$` teken niet.
 
-  - **Power shell** - - ``` ` ```
+  - **PowerShell** - ``` ` ```
 
     Voorbeeld query waarmee het eigenschaps _\$type_ in Power shell wordt geescapet:
 

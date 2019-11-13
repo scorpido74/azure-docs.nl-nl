@@ -1,5 +1,5 @@
 ---
-title: Verifiëren en autoriseren met behulp van een API in Azure Time Series Insights | Microsoft Docs
+title: API-verificatie en-autorisatie-Azure Time Series Insights | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u verificatie en autorisatie configureert voor een aangepaste toepassing die de Azure Time Series Insights-API aanroept.
 ms.service: time-series-insights
 services: time-series-insights
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4fd68f770cbe48b15646ec41c0bf94be5e760a50
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 37a409ab28728fe40c5f054d5e9a40cb20774450
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990191"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007112"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Verificatie en autorisatie voor Azure Time Series Insights-API
 
@@ -105,7 +105,7 @@ In het volgende voor **stap 3**kunt u met behulp van de referenties van uw toepa
 
 In deze sectie worden algemene HTTP-aanvraag headers en-para meters beschreven die worden gebruikt om query's uit te voeren op de Time Series Insights GA en preview-Api's. API-specifieke vereisten worden uitgebreid beschreven in de documentatie over het [Time Series Insights rest API](https://docs.microsoft.com/rest/api/time-series-insights/).
 
-### <a name="authentication"></a>Verificatie
+### <a name="authentication"></a>Authentication
 
 Als u geverifieerde query's wilt uitvoeren op de [Time Series INSIGHTS rest api's](https://docs.microsoft.com/rest/api/time-series-insights/), moet er een geldig OAuth 2,0 Bearer-token worden door gegeven in de [autorisatie-header](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) met behulp van een rest C#-client naar keuze (Postman, java script,). 
 

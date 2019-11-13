@@ -1,5 +1,5 @@
 ---
-title: Een nood herstel analyse van virtuele Hyper-V-machines uitvoeren op een secundaire site met behulp van Azure Site Recovery | Microsoft Docs
+title: Een NHyper-V-nood herstel analyse uitvoeren op een secundaire site met Azure Site Recovery
 description: Meer informatie over het uitvoeren van een DR-analyse voor virtuele Hyper-V-machines in VMM-Clouds naar een secundair on-premises Data Center met behulp van Azure Site Recovery.
 author: rajani-janaki-ram
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: ef8504f3f79d23fa0d59493c06cfbe133e1c4113
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 444868f1716ae55f1851e50c057b172f5e3eb3d1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933464"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961398"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Een DR-analyse uitvoeren voor virtuele Hyper-V-machines naar een secundaire site
 

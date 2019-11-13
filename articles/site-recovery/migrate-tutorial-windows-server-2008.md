@@ -1,19 +1,19 @@
 ---
-title: On-premises Windows Server 2008-servers migreren naar Azure met Azure Site Recovery | Microsoft Docs
+title: Windows Server 2008-servers migreren naar Azure met Azure Site Recovery
 description: In dit artikel wordt beschreven hoe u on-premises Windows Server 2008-machines naar Azure migreert met behulp van Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d0d5c482e2faf5e4a2c2918a64bd56e4aa814323
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 20fe29a6588891c35520db01ac0403fb5b3a85d7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814494"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936143"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Servers waarop Windows Server 2008 wordt uitgevoerd, naar Azure migreren
 
@@ -147,7 +147,7 @@ U kunt een testfailover van de replicatieservers uitvoeren als de initiële repl
 
 Voer een [testfailover](tutorial-dr-drill-azure.md) naar Azure uit om te controleren of alles goed werkt.
 
-   ![Failover testen](media/migrate-tutorial-windows-server-2008/testfailover.png)
+   ![Testfailover](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
 ## <a name="migrate-to-azure"></a>Migreren naar Azure
@@ -167,4 +167,4 @@ Een failover uitvoeren voor de machines die u wilt migreren.
 
 
 > [!WARNING]
-> **Annuleer nooit een failover die in uitvoering is**: De replicatie van de server wordt gestopt voordat de failover start. Als u een failover die in voortgang is annuleert, wordt de failover gestopt, maar wordt de server niet meer gerepliceerd.
+> **Een failover wordt niet geannuleerd: de**Server replicatie wordt gestopt voordat de failover wordt gestart. Als u een failover die in voortgang is annuleert, wordt de failover gestopt, maar wordt de server niet meer gerepliceerd.

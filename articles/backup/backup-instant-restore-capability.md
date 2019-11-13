@@ -8,17 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: aad3ca34ab9db5ec910e70e70ba5a31afa94e417
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1faa8efc5cbb39f94a390a0cf32dd2cd1ef0793c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611978"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012115"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Profiteer van verbeterde prestaties voor back-up en herstel met Azure Backup functie voor direct terugzetten
 
 > [!NOTE]
-> Op basis van feedback van gebruikers wordt de naam van de **VM-back-upstack v2** gewijzigd in **direct herstellen** om Verwar ring met Azure stack functionaliteit te verminderen.<br/><br/> Alle Azure backup-gebruikers zijn nu bijgewerkt naar **direct herstellen**.
+> Op basis van feedback van gebruikers wordt de naam van de **VM-back-upstack v2** gewijzigd in **direct herstellen** om Verwar ring met Azure stack functionaliteit te verminderen.
+> Alle Azure backup-gebruikers zijn nu bijgewerkt naar **direct herstellen**.
 
 Het nieuwe model voor direct terugzetten biedt de volgende functie verbeteringen:
 
@@ -29,13 +30,12 @@ Het nieuwe model voor direct terugzetten biedt de volgende functie verbeteringen
 * De mogelijkheid om een niet-beheerde virtuele machine te gebruiken oorspronkelijke opslag accounts (per schijf) bij het herstellen. Deze mogelijkheid bestaat zelfs wanneer de virtuele machine schijven heeft die over verschillende opslag accounts worden gedistribueerd. Het versnelt de herstel bewerkingen voor een groot aantal verschillende VM-configuraties.
 * Voor back-ups van virtuele machines die gebruikmaken van Premium Storage, kunt u met direct terugzetten *50%* beschik bare ruimte toewijzen aan de totale toegewezen opslag ruimte. Dit is **alleen** vereist voor de eerste back-up. De 50% beschik bare ruimte is geen vereiste voor back-ups nadat de eerste back-up is voltooid.
 
-
 ## <a name="whats-new-in-this-feature"></a>Wat is er nieuw in deze functie
 
 Op dit moment bestaat de back-uptaak uit twee fasen:
 
-1.  Een VM-moment opname maken.
-2.  Een VM-moment opname overbrengen naar de Azure Recovery Services kluis.
+1. Een VM-moment opname maken.
+2. Een VM-moment opname overbrengen naar de Azure Recovery Services kluis.
 
 Een herstel punt wordt alleen als gemaakt beschouwd nadat de fasen 1 en 2 zijn voltooid. Als onderdeel van deze upgrade wordt een herstel punt gemaakt zodra de moment opname is voltooid. dit herstel punt van het momentopname type kan worden gebruikt om een herstel uit te voeren met dezelfde herstel stroom. U kunt dit herstel punt in de Azure Portal identificeren door ' moment opname ' te gebruiken als het herstel punt type en nadat de moment opname is overgebracht naar de kluis, wordt het herstel punt type gewijzigd in moment opname en kluis.
 
@@ -56,7 +56,7 @@ Moment opnamen worden standaard twee dagen bewaard. Met deze functie kan de hers
 
 ## <a name="cost-impact"></a>Impact op kosten
 
-De incrementele moment opnamen worden opgeslagen in het opslag account Vm's, dat wordt gebruikt voor direct herstel. Incrementele moment opname is de ruimte die wordt ingen Omen door een moment opname, is gelijk aan de ruimte die wordt ingen Omen door pagina's die zijn geschreven nadat de moment opname is gemaakt. Facturering is nog steeds beschikbaar voor de beschik bare ruimte per GB die wordt ingen Omen door de moment opname en de prijs per GB is hetzelfde als vermeld op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/managed-disks/).
+De incrementele moment opnamen worden opgeslagen in het opslag account van de virtuele machine, die wordt gebruikt voor direct herstel. Incrementele moment opname is de ruimte die wordt ingen Omen door een moment opname, is gelijk aan de ruimte die wordt ingen Omen door pagina's die zijn geschreven nadat de moment opname is gemaakt. Facturering is nog steeds beschikbaar voor de beschik bare ruimte per GB die wordt ingen Omen door de moment opname en de prijs per GB is hetzelfde als vermeld op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 >[!NOTE]
 > Het bewaren van moment opnamen is vastgesteld op 5 dagen voor wekelijks beleid.
@@ -75,34 +75,43 @@ In de Azure Portal ziet u een veld dat is toegevoegd op de Blade **back-upbeleid
 > Vanuit AZ Power shell version 1.6.0 kunt u de retentie periode voor het terugzetten van moment opnamen in het beleid bijwerken met behulp van Power shell
 
 ```powershell
-PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 $bkpPol.SnapshotRetentionInDays=5
-PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
-De standaard retentie van de moment opname voor elk beleid is ingesteld op 2 dagen. Gebruiker kan de waarde wijzigen in een minimum van 1 en een maximum van vijf dagen. Voor wekelijks beleid is de Bewaar termijn van de moment opname ingesteld op 5 dagen.
+
+De standaard retentie van de moment opname voor elk beleid is ingesteld op twee dagen. Gebruiker kan de waarde wijzigen in een minimum van 1 en Maxi maal vijf dagen. Voor wekelijks beleid is de Bewaar termijn van de moment opname ingesteld op vijf dagen.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
 ### <a name="what-are-the-cost-implications-of-instant-restore"></a>Wat zijn de kosten voor direct herstel?
+
 Moment opnamen worden samen met de schijven opgeslagen om bewerkingen voor het maken en terugzetten van herstel punten te versnellen. Als gevolg hiervan worden opslag kosten weer geven die overeenkomen met de retentie van de moment opname die is geselecteerd als onderdeel van het back-upbeleid van de VM.
 
-### <a name="in-premium-storage-accounts-do-the-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>In Premium Storage accounts nemen de moment opnamen die zijn gemaakt voor direct herstel punt, de limiet van 10 TB aan?
+### <a name="in-premium-storage-accounts-do-the-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>In Premium Storage accounts nemen de moment opnamen die zijn gemaakt voor het directe herstel punt de limiet van 10 TB aan?
+
 Ja, voor Premium Storage-accounts de moment opnamen die zijn gemaakt voor direct herstel punt nemen 10 TB aan toegewezen momentopname ruimte.
 
 ### <a name="how-does-the-snapshot-retention-work-during-the-five-day-period"></a>Hoe werkt de retentie van de moment opname tijdens de periode van vijf dagen?
+
 Elke dag wordt een nieuwe moment opname gemaakt, waarna er vijf afzonderlijke incrementele moment opnamen zijn. De grootte van de moment opname is afhankelijk van het gegevens verloop, die in de meeste gevallen ongeveer 2%-7% zijn.
 
 ### <a name="is-an-instant-restore-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Is een moment opname van direct terugzetten een incrementele moment opname of volledige moment opname?
+
 Moment opnamen die als onderdeel van de functie voor direct terugzetten worden gemaakt, zijn incrementele moment opnamen.
 
 ### <a name="how-can-i-calculate-the-approximate-cost-increase-due-to-instant-restore-feature"></a>Hoe kan ik de kosten toename benaderen als gevolg van de functie voor direct terugzetten?
+
 Dit is afhankelijk van het verloop van de virtuele machine. Bij een stabiele status kunt u aannemen dat de toename van de kosten = moment opname van de retentie periode per opslag kosten per GB voor de VM.
 
 ### <a name="if-the-recovery-type-for-a-restore-point-is-snapshot-and-vault-and-i-perform-a-restore-operation-which-recovery-type-will-be-used"></a>Als het herstel type voor een herstel punt ' moment opname en kluis ' is en er een herstel bewerking wordt uitgevoerd, welk herstel type wordt gebruikt?
+
 Als het herstel type ' moment opname en kluis ' is, wordt de herstel bewerking automatisch uitgevoerd vanaf de lokale moment opname, wat veel sneller is vergeleken met de herstel bewerking die vanuit de kluis wordt uitgevoerd.
 
 ### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-the-snapshot-tier1-retention-period"></a>Wat gebeurt er als ik de Bewaar periode van het herstel punt (laag 2) kleiner dan de retentie periode van de moment opname (Tier1)?
+
 Het nieuwe model staat het verwijderen van het herstel punt (Tier2) niet toe, tenzij de moment opname (Tier1) is verwijderd. Het is raadzaam om de Bewaar periode voor herstel punten (Tier2) te plannen die groter is dan de Bewaar periode voor de moment opname.
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Waarom is mijn moment opname na de ingestelde Bewaar periode in back-upbeleid al aanwezig?
+
 Als het herstel punt een moment opname heeft en de meest recente RP beschikbaar is, wordt deze bewaard tot het moment dat er een volgende geslaagde back-up is gemaakt. Dit is een voor beeld van het ontworpen beleid voor garbage collection (GC) dat ten minste één laatste RP verplicht is om altijd aanwezig te zijn in het geval dat alle back-ups verder mislukken als gevolg van een probleem in de virtuele machine. In normale scenario's worden RPs Maxi maal 24 uur na verloop van tijd opgeruimd.

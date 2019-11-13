@@ -1,17 +1,14 @@
 ---
 title: Gebruik para meters voor het maken van dynamische blauw drukken
 description: Meer informatie over statische en dynamische para meters en hoe u hiermee dynamische blauw drukken maakt.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 2bb38e0698d7504ba1bb139ca1bd5e3b14e5cdd4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: da0670bdc880c47c3b715dc8344896a6c695924c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981056"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960517"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dynamische blauw drukken via para meters maken
 
@@ -61,7 +58,7 @@ Een parameter waarde die in de definitie van een blauw druk is gedefinieerd, wor
 
 1. Klik op een bestaande blauw druk en klik vervolgens op **blauw drukken bewerken** of klik op **+ blauw druk maken** en vul de informatie in op het tabblad **basis beginselen** .
 
-1. Klik op **Next: Artefacten** of klik op het tabblad **artefacten** .
+1. Klik op **volgende: artefacten** of klik op het tabblad **artefacten** .
 
 1. Artefacten die zijn toegevoegd aan de blauw druk met parameter opties, worden **X van Y-para meters** weer gegeven in de kolom **para meters** . Klik op de rij artefacten om de artefact parameters te bewerken.
 
@@ -134,11 +131,11 @@ In het volgende REST API voor beeld wordt een functie toewijzings artefact gemaa
   }
   ```
 
-In dit voor beeld maakt de eigenschap **principalIds** gebruik van de para meter **eigen aren** blauw niveau met behulp van de waarde `[parameters('owners')]`. Het instellen van een para meter voor een artefact met behulp van een para meter op blauw niveau is nog steeds een voor beeld van een **statische para meter**. De para meter op het niveau van de blauw druk kan niet worden ingesteld tijdens de toewijzing van blauw drukken en is dezelfde waarde als elke toewijzing.
+In dit voor beeld maakt de eigenschap **principalIds** gebruik van de para meter **eigen aren** blauw niveau met behulp van een waarde van `[parameters('owners')]`. Het instellen van een para meter voor een artefact met behulp van een para meter op blauw niveau is nog steeds een voor beeld van een **statische para meter**. De para meter op het niveau van de blauw druk kan niet worden ingesteld tijdens de toewijzing van blauw drukken en is dezelfde waarde als elke toewijzing.
 
 ##### <a name="artifact-level-parameter"></a>Para meter voor artefact niveau
 
-Het maken van **statische para meters** voor een artefact is vergelijkbaar, maar heeft een rechte waarde in plaats van de functie `parameters()` te gebruiken. In het volgende voor beeld worden twee statische para meters, **tagName** en **tagValue**gemaakt. De waarde op elk wordt rechtstreeks gegeven en gebruikt geen functie aanroep.
+Het maken van **statische para meters** voor een artefact is vergelijkbaar, maar heeft een rechte waarde in plaats van de functie `parameters()`. In het volgende voor beeld worden twee statische para meters, **tagName** en **tagValue**gemaakt. De waarde op elk wordt rechtstreeks gegeven en gebruikt geen functie aanroep.
 
 - REST API-URI
 
@@ -184,7 +181,7 @@ Het tegenovergestelde van een statische para meter is een **dynamische para mete
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Dynamische para meters instellen van REST API
 
-Het instellen van **dynamische para meters** tijdens de toewijzing wordt uitgevoerd door de waarde rechtstreeks in te voeren. In plaats van een functie te gebruiken, zoals [para meters ()](../reference/blueprint-functions.md#parameters), is de opgegeven waarde een juiste teken reeks. Artefacten voor een resource groep worden gedefinieerd met een sjabloon naam, **naam**en **locatie** -eigenschappen. Alle andere para meters voor opgenomen artefacten worden gedefinieerd onder **para meters** met een **\<name @ no__t-3-en-** **sleutel paar** . Als de blauw druk is geconfigureerd voor een dynamische para meter die niet wordt opgegeven tijdens de toewijzing, mislukt de toewijzing.
+Het instellen van **dynamische para meters** tijdens de toewijzing wordt uitgevoerd door de waarde rechtstreeks in te voeren. In plaats van een functie te gebruiken, zoals [para meters ()](../reference/blueprint-functions.md#parameters), is de opgegeven waarde een juiste teken reeks. Artefacten voor een resource groep worden gedefinieerd met een sjabloon naam, **naam**en **locatie** -eigenschappen. Alle andere para meters voor opgenomen artefacten worden gedefinieerd in **para meters** met een **\<naam\>** en een sleutel paar **waarde** . Als de blauw druk is geconfigureerd voor een dynamische para meter die niet wordt opgegeven tijdens de toewijzing, mislukt de toewijzing.
 
 - REST API-URI
 

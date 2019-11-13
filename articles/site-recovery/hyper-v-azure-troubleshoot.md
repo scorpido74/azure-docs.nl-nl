@@ -1,5 +1,5 @@
 ---
-title: Problemen oplossen met Hyper-V naar Azure nood herstel met Azure Site Recovery | Microsoft Docs
+title: Problemen met herstel na nood gevallen voor Hyper-V oplossen met Azure Site Recovery
 description: Hierin wordt beschreven hoe u problemen met nood herstel kunt oplossen met Hyper-V naar Azure-replicatie met behulp van Azure Site Recovery
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 2cf43f8a235b112cfcf1fc6c9dba626a5a0c9b7e
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 0a3e5c922009353e4ba9ccab12cf70ea2b5992da
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828405"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961486"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Problemen met Hyper-V naar Azure-replicatie en-failover oplossen
 
@@ -26,7 +26,7 @@ Als u problemen ondervindt bij het inschakelen van beveiliging voor virtuele Hyp
 1. Controleer of uw Hyper-V-hosts en-Vm's voldoen aan alle [vereisten en voor waarden](hyper-v-azure-support-matrix.md).
 2. Als Hyper-V-servers zich in System Center Virtual Machine Manager-Clouds (VMM) bevinden, controleert u of u de [VMM-server](hyper-v-prepare-on-premises-tutorial.md#prepare-vmm-optional)hebt voor bereid.
 3. Controleer of de Hyper-V virtual machine Management-service wordt uitgevoerd op Hyper-V-hosts.
-4. Controleer op problemen die worden weer gegeven in het Hyper-V-VMMS\Admin-aanmelden bij de virtuele machine. Dit logboek bevindt zich in de >  **Logboeken toepassingen en services** **micro soft** > **Windows**.
+4. Controleer op problemen die worden weer gegeven in het Hyper-V-VMMS\Admin-aanmelden bij de virtuele machine. Dit logboek bevindt zich in de **Logboeken van toepassingen en Services** > **micro soft** > **Windows**.
 5. Controleer op de gast-VM of WMI is ingeschakeld en toegankelijk is.
    - [Meer informatie over](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) Basic WMI-tests.
    - [Problemen oplossen](https://aka.ms/WMiTshooting) WMI.
@@ -42,7 +42,7 @@ Problemen met eerste en doorlopende replicatie kunt u als volgt oplossen:
 1. Zorg ervoor dat u de [nieuwste versie](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx) van site Recovery Services uitvoert.
 2. Controleer of de replicatie is onderbroken:
    - Controleer de status van de virtuele machine in de console van Hyper-V-beheer.
-   - Als het kritiek is, klikt u met de rechter muisknop > op de virtuele machine > replicatie**weergave replicatie status**.
+   - Als het kritiek is, klikt u met de rechter muisknop op de virtuele machine > **replicatie** > **replicatie status weer geven**.
    - Als de replicatie is onderbroken, klikt u op **replicatie hervatten**.
 3. Controleer of de vereiste services worden uitgevoerd. Als dat niet het geval is, start u deze opnieuw.
     - Als u Hyper-V zonder VMM repliceert, controleert u of deze services worden uitgevoerd op de Hyper-V-host:
@@ -75,12 +75,12 @@ Beperkingen voor netwerk bandbreedte kunnen van invloed zijn op replicatie. Prob
 
 1. Als u de replicatie status wilt controleren, maakt u verbinding met de on-premises Hyper-V-beheer console, selecteert u de virtuele machine en controleert u de status.
 
-    ![Replicatiestatus](media/hyper-v-azure-troubleshoot/replication-health1.png)
+    ![Replicatie status](media/hyper-v-azure-troubleshoot/replication-health1.png)
     
 
 2. Klik op **replicatie status weer geven** om de details te bekijken:
 
-    - Als de replicatie is onderbroken, klikt u met de rechter muisknop op de virtuele machine > **replicatie** > **hervatten**.
+    - Als de replicatie is onderbroken, klikt u met de rechter muisknop op de virtuele machine > **replicatie** > **hervat de replicatie**.
     - Als een virtuele machine op een Hyper-V-host die is geconfigureerd in Site Recovery wordt gemigreerd naar een andere Hyper-V-host in hetzelfde cluster of op een zelfstandige computer, heeft dit geen invloed op de replicatie voor de virtuele machine. U kunt alleen controleren of de nieuwe Hyper-V-host voldoet aan alle vereisten en is geconfigureerd in Site Recovery.
 
 ## <a name="app-consistent-snapshot-issues"></a>Problemen met app-consistente moment opnamen
@@ -107,12 +107,12 @@ Een app-consistente moment opname is een tijdgebonden moment opname van de toepa
     ![Dynamische schijf](media/hyper-v-azure-troubleshoot/dynamic-disk.png)
     
 4. Controleer of er geen iSCSI-schijf is gekoppeld aan de virtuele machine. Nee, dit wordt niet ondersteund.
-5. Controleer of de back-upservice is ingeschakeld. Controleer of de functie is ingeschakeld in de**integratie Services**van **Hyper-V-instellingen** > .
+5. Controleer of de back-upservice is ingeschakeld. Controleer of deze is ingeschakeld in de **Hyper-V-instellingen** > **integratie Services**.
 6. Zorg ervoor dat er geen conflicten zijn met apps die VSS-moment opnamen maken. Als meerdere apps op hetzelfde moment een VSS-moment opname proberen te maken, kunnen er conflicten optreden. Als een back-uptoepassing bijvoorbeeld VSS-moment opnamen maakt wanneer Site Recovery door het replicatie beleid wordt gepland om een moment opname te maken.   
 7. Controleer of de virtuele machine een hoog verloop tempo ondervindt:
     - U kunt de dagelijkse gegevens wijzigings snelheid voor de gast-Vm's meten, met behulp van prestatie meter items op de Hyper-V-host. Schakel de volgende teller in om de wijzigings frequentie van gegevens te meten. Verzamel een voor beeld van deze waarde op de VM-schijven gedurende 5-15 minuten om het verloop van de VM op te halen.
-        - Rubriek "Hyper-V virtuele-opslag apparaat"
-        - Item Schrijf bewerkingen in bytes per seconde</br>
+        - Categorie: "Hyper-V virtuele-opslag apparaat"
+        - Teller: schrijf bewerkingen in bytes per seconde</br>
         - Dit verloop snelheid van gegevens wordt verhoogd of verloopt op hoog niveau, afhankelijk van de manier waarop de virtuele machine of de apps actief zijn.
         - Het gemiddelde gegevens verloop van de bron schijf is 2 MB/s voor de standaard opslag voor Site Recovery. [Meer informatie](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - Daarnaast kunt u de [schaalbaarheids doelen voor opslag controleren](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets).
@@ -123,34 +123,34 @@ Een app-consistente moment opname is een tijdgebonden moment opname van de toepa
 ### <a name="vss-failing-inside-the-hyper-v-host"></a>VSS mislukt in de Hyper-V-host
 
 1. Controleer de gebeurtenis logboeken op VSS-fouten en aanbevelingen:
-    - Open op de hyper-v-Hostserver het gebeurtenis logboek van de hyper-v-beheerder in **Logboeken** > -**toepassingen en-services** > **micro soft** > **Windows** > **Hyper-V** -Logboeken. >  **Beheerder**.
+    - Open op de Hyper-V-hostserver het gebeurtenis logboek van Hyper-V-beheer in **Logboeken** > **Logboeken toepassingen en services** > **micro soft** > **Windows** > **hyper-v** > **admin**.
     - Controleer of er gebeurtenissen zijn die fouten in de app-consistente moment opnamen aangeven.
-    - Een typische fout is: Hyper-V kan geen VSS-momentopnameset genereren voor de virtuele machine XYZ: Er is een niet-tijdelijke fout opgetreden in de schrijver. Het opnieuw starten van de VSS-service kan problemen oplossen als de service niet reageert. "
+    - Een typische fout is: ' Hyper-V kan geen VSS-momentopnameset genereren voor de virtuele machine ' XYZ ': er is een niet-tijdelijke fout opgetreden in de schrijver. Het opnieuw starten van de VSS-service kan problemen oplossen als de service niet reageert. "
 
 2. Als u VSS-moment opnamen voor de virtuele machine wilt genereren, controleert u of Hyper-V-integratie Services zijn geïnstalleerd op de virtuele machine en of de integratie service Backup (VSS) is ingeschakeld.
     - Controleer of de VSS-service/-daemons van Integration Services worden uitgevoerd op de gast en de status **OK** hebben.
-    - U kunt dit controleren vanuit een Power shell-sessie met verhoogde bevoegdheid op de Hyper-V-host met de opdracht **Get-VMIntegrationService-VMName\<VMName >-name VSS** u kunt deze informatie ook ophalen door u aan te melden bij de gast-VM. [Meer informatie](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - U kunt dit controleren vanuit een Power shell-sessie met verhoogde bevoegdheid op de Hyper-V-host met de opdracht **Get-VMIntegrationService-VMName\<VMName >-naam VSS** u kunt deze informatie ook ophalen door u aan te melden bij de gast-VM. [Meer informatie](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - Zorg ervoor dat de back-up/VSS-integratie Services op de virtuele machine worden uitgevoerd en de status in orde hebben. Als dat niet het geval is, start u deze services en de Hyper-V Volume Shadow Copy Request service op de Hyper-V-hostserver.
 
 ### <a name="common-errors"></a>Algemene fouten
 
 **Foutcode** | **Bericht** | **Details**
 --- | --- | ---
-**0x800700EA** | Hyper-V kan geen VSS-momentopnameset genereren voor de virtuele machine: Er zijn meer gegevens beschikbaar. (0x800700EA). Het genereren van VSS-moment opnamen kan mislukken als er een back-upbewerking wordt uitgevoerd.<br/><br/> De replicatie bewerking voor de virtuele machine is mislukt: Er zijn meer gegevens beschikbaar. " | Controleer of er een dynamische schijf is ingeschakeld op de virtuele machine. Nee, dit wordt niet ondersteund.
+**0x800700EA** | Hyper-V kan geen VSS-momentopnameset genereren voor de virtuele machine: er zijn meer gegevens beschikbaar. (0x800700EA). Het genereren van VSS-moment opnamen kan mislukken als er een back-upbewerking wordt uitgevoerd.<br/><br/> De replicatie bewerking voor de virtuele machine is mislukt: er zijn meer gegevens beschikbaar. | Controleer of er een dynamische schijf is ingeschakeld op de virtuele machine. Nee, dit wordt niet ondersteund.
 **0x80070032** | "Hyper-V-aanvrager van volume schaduw kopie kan geen verbinding maken met de virtuele machine <./VMname > omdat de versie niet overeenkomt met de versie die wordt verwacht door Hyper-V | Controleer of de meest recente Windows-updates zijn geïnstalleerd.<br/><br/> Voer een [upgrade uit](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) naar de nieuwste versie van Integration Services.
 
 
 
 ## <a name="collect-replication-logs"></a>Replicatie logboeken verzamelen
 
-Alle replicatie gebeurtenissen van Hyper-V worden vastgelegd in het Hyper-V-VMMS\Admin-logboek in **toepassingen en services** > **micro soft** > **Windows**. Daarnaast kunt u een analytisch logboek inschakelen voor de Hyper-V virtual machine Management-service, als volgt:
+Alle replicatie gebeurtenissen van Hyper-V worden vastgelegd in het Hyper-V-VMMS\Admin-logboek, dat zich bevindt in **Logboeken van toepassingen en Services** > **micro soft** > **Windows**. Daarnaast kunt u een analytisch logboek inschakelen voor de Hyper-V virtual machine Management-service, als volgt:
 
-1. Maak de logboeken voor analyse en fout opsporing zichtbaar in de Logboeken. Als u de logboeken beschikbaar wilt maken, klikt u in het logboeken op **weer** > geven**analyse logboeken en fout opsporing.** . Het analytische logboek wordt weer gegeven onder **Hyper-V-VMMS**.
+1. Maak de logboeken voor analyse en fout opsporing zichtbaar in de Logboeken. Als u de logboeken beschikbaar wilt maken, klikt u in de Logboeken op **weer geven** > **analyse en logboeken voor fout opsporing weer geven.** Het analytische logboek wordt weer gegeven onder **Hyper-V-VMMS**.
 2. Klik in het deel venster **acties** op **logboek inschakelen**. 
 
     ![Logboek inschakelen](media/hyper-v-azure-troubleshoot/enable-log.png)
     
-3. Nadat de functie is ingeschakeld, wordt deze weer gegeven in **prestatie meter**als een gebeurtenistraceersessie onder **gegevens verzamelaarsets**. 
+3. Nadat de functie is ingeschakeld, wordt deze weer gegeven in **prestatie meter** **als een gebeurtenistraceersessie** onder **gegevens verzamelaarsets**. 
 4. Als u de verzamelde gegevens wilt weer geven, stopt u de traceer sessie door het logboek uit te scha kelen. Sla het logboek op en open het opnieuw in Logboeken, of gebruik andere hulpprogram ma's om het te converteren naar vereist.
 
 
@@ -161,7 +161,7 @@ Alle replicatie gebeurtenissen van Hyper-V worden vastgelegd in het Hyper-V-VMMS
 **Toepassingen en service logboeken/micro soft/VirtualMachineManager/server/admin** (VMM-server) | Logboeken voor het oplossen van problemen met VMM.
 **Toepassingen en service logboeken/MicrosoftAzureRecoveryServices/replicatie** (Hyper-V-host) | Logboeken voor het oplossen van problemen met Microsoft Azure Recovery Services agents. 
 **Toepassingen en service logboeken/micro soft/Azure site Recovery/provider/operationeel** (Hyper-V-host)| Logboeken voor het oplossen van problemen met de Microsoft Azure Site Recovery-service.
-**Toepassingen en service logboeken/micro soft/Windows/Hyper-V-VMMS/admin** (Hyper-V-host) | Logboeken voor het oplossen van problemen met Hyper-V-VM-beheer.
+**Toepassingen en service logboeken/micro soft/Windows/hyper-v-VMMS/admin** (Hyper-V-host) | Logboeken voor het oplossen van problemen met Hyper-V-VM-beheer.
 
 ### <a name="log-collection-for-advanced-troubleshooting"></a>Logboek verzameling voor geavanceerde probleem oplossing
 

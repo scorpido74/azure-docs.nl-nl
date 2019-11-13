@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: bdcd7cbd24ca7023070585df46aa8cea7bdc70eb
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7716fba7a16b393143ffb9c97e7203e15bc07d82
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747286"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012943"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server installeren op Azure Stack
 
@@ -38,9 +38,9 @@ Azure Backup Server beveiligt de volgende Azure Stack werk belasting van virtuel
 | SQL Server 2016 | Database |
 | SQL Server 2014 | Database |
 | SQL Server 2012 SP1 | Database |
-| Share point 2016 | Farm, Data Base, front-end, webserver |
+| SharePoint 2016 | Farm, Data Base, front-end, webserver |
 | SharePoint 2013 | Farm, Data Base, front-end, webserver |
-| Share point 2010 | Farm, Data Base, front-end, webserver |
+| SharePoint 2010 | Farm, Data Base, front-end, webserver |
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Vereisten voor de Azure Backup Server omgeving
 
@@ -124,7 +124,7 @@ De instelling voor opslagreplicatie bewerken:
 
 ## <a name="download-azure-backup-server-installer"></a>Azure Backup Server-installatie programma downloaden
 
-Er zijn twee manieren om het Azure Backup Server-installatie programma te downloaden. U kunt het Azure Backup Server-installatie programma downloaden van het [micro soft Download centrum](https://www.microsoft.com/en-us/download/details.aspx?id=55269). U kunt Azure Backup Server Installer ook downloaden tijdens het configureren van een Recovery Services kluis. De volgende stappen helpen u bij het downloaden van het installatie programma van de Azure Portal tijdens het configureren van een Recovery Services kluis.
+Er zijn twee manieren om het Azure Backup Server-installatie programma te downloaden. U kunt het Azure Backup Server-installatie programma downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=55269). U kunt Azure Backup Server Installer ook downloaden tijdens het configureren van een Recovery Services kluis. De volgende stappen helpen u bij het downloaden van het installatie programma van de Azure Portal tijdens het configureren van een Recovery Services kluis.
 
 1. Meld u vanaf uw Azure Stack virtuele machine [aan bij uw Azure-abonnement in de Azure Portal](https://portal.azure.com/).
 2. Selecteer in het menu links **alle services**.

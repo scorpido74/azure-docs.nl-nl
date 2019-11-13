@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 058cf516fd8d10cef1e1c93e5493f8c19bdc679d
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3781b71237f97cfd004805846f7c30f8cfe9b9f5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607489"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013158"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -66,18 +66,16 @@ We willen ondersteuning voor de volgende besturings systemen toevoegen, dus zorg
 
 |OS|Vereiste licentie|
 |---|---|
-|Windows 10 Enter prise-meerdere sessies of Windows 10 Enter prise|Microsoft 365 E3, E5, a3, A5, F1, zakelijk<br>Windows E3, E5, a3, A5|
-|Windows 7 Enter prise |Microsoft 365 E3, E5, a3, A5, F1, zakelijk<br>Windows E3, E5, a3, A5|
+|Windows 10 Enter prise-meerdere sessies of Windows 10 Enter prise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
+|Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
 |Windows Server 2012 R2, 2016, 2019|RDS Client Access License (CAL) met Software Assurance|
 
 Uw infra structuur heeft de volgende zaken nodig om virtueel bureau blad van Windows te ondersteunen:
 
-* Een [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
-* Een Windows Server-Active Directory gesynchroniseerd met Azure Active Directory. Dit kan worden ingeschakeld via:
-  * Azure AD Connect
-  * Azure AD Domain Services
-     >[!NOTE]
-     >Als u Azure AD Domain Services gebruikt, moeten uw gebruikers afkomstig zijn van Azure Active Directory. Het gebruik van Azure AD Domain Services met gebruikers die vanuit Windows Server AD zijn gebrond, wordt momenteel niet ondersteund.
+* An [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+* Een Windows Server-Active Directory gesynchroniseerd met Azure Active Directory. U kunt dit configureren met een van de volgende opties:
+  * Azure AD Connect (voor hybride organisaties)
+  * Azure AD Domain Services (voor hybride of Cloud organisaties)
 * Een Azure-abonnement dat een virtueel netwerk bevat dat of die is verbonden met de Windows Server-Active Directory
   
 De virtuele machines van Azure die u maakt voor het virtuele bureau blad van Windows, moeten zijn:
@@ -92,7 +90,7 @@ De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, 
 
 * *. wvd.microsoft.com
 * *.blob.core.windows.net
-* *. core.windows.net
+* *.core.windows.net
 * *.servicebus.windows.net
 * prod.warmpath.msftcloudes.com
 * catalogartifact.azureedge.net
@@ -100,7 +98,7 @@ De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, 
 >[!NOTE]
 >Het openen van deze Url's is essentieel voor een betrouw bare implementatie van een virtueel bureau blad in Windows. Het blok keren van de toegang tot deze Url's wordt niet ondersteund en heeft invloed op de service functionaliteit. Deze Url's zijn alleen van toepassing op virtuele bureau blad-sites en-bronnen van Windows en bevatten geen URL'S voor andere services, zoals Azure AD.
 
-Virtueel bureau blad van Windows bestaat uit de Windows-Desk tops en-apps die u levert aan gebruikers en de beheer oplossing, die als een service op Azure wordt gehost door micro soft. Desk tops en apps kunnen worden geïmplementeerd op virtuele machines (Vm's) in elke Azure-regio, en de beheer oplossing en gegevens voor deze Vm's bevinden zich in de Verenigde Staten (VS Oost 2-regio). Dit kan ertoe leiden dat gegevens worden overgedragen naar de Verenigde Staten.
+Virtueel bureau blad van Windows bestaat uit de Windows-Desk tops en-apps die u levert aan gebruikers en de beheer oplossing, die als een service op Azure wordt gehost door micro soft. Desk tops en apps kunnen worden geïmplementeerd op virtuele machines (Vm's) in elke Azure-regio en de beheer oplossing en gegevens voor deze Vm's bevinden zich in de Verenigde Staten. Dit kan ertoe leiden dat gegevens worden overgedragen naar de Verenigde Staten.
 
 Zorg ervoor dat uw netwerk voldoet aan de volgende vereisten voor optimale prestaties:
 
@@ -117,14 +115,16 @@ De volgende Extern bureaublad-clients ondersteunen Windows virtueel bureau blad:
 
 ## <a name="supported-virtual-machine-os-images"></a>Ondersteunde installatie kopieën van besturings systemen voor virtuele machines
 
-Het virtuele bureau blad van Windows ondersteunt de volgende installatie kopieën van besturings systemen:
+Het virtuele bureau blad van Windows ondersteunt de volgende installatie kopieën van x64-besturings systemen:
 
 * Windows 10 Enter prise-meerdere sessies
 * Windows 10 Enter prise
-* Windows 7 Enter prise
+* Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
 * Windows Server 2012 R2
+
+Windows virtueel bureau blad biedt geen ondersteuning voor x86 (32-bits) installatie kopieën van besturings systemen.
 
 De beschik bare opties voor automatisering en implementatie zijn afhankelijk van het besturings systeem en de versie die u kiest, zoals wordt weer gegeven in de volgende tabel: 
 
@@ -134,7 +134,7 @@ De beschik bare opties voor automatisering en implementatie zijn afhankelijk van
 |Windows 10-meerdere sessies, versie 1809|Ja|Ja|Nee|Nee|Automatisch|
 |Windows 10 Enter prise, versie 1903|Ja|Ja|Ja|Ja|Automatisch|
 |Windows 10 Enter prise, versie 1809|Ja|Ja|Nee|Nee|Automatisch|
-|Windows 7 Enter prise|Ja|Ja|Nee|Nee|Handmatig|
+|Windows 7 Enterprise|Ja|Ja|Nee|Nee|Handmatig|
 |Windows Server 2019|Ja|Ja|Nee|Nee|Automatisch|
 |Windows Server 2016|Ja|Ja|Ja|Ja|Automatisch|
 |Windows Server 2012 R2|Ja|Ja|Nee|Nee|Automatisch|

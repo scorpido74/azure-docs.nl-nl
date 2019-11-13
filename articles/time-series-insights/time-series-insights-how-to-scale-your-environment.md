@@ -1,6 +1,6 @@
 ---
-title: Uw Azure Time Series Insights omgeving schalen | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u uw Azure Time Series Insights omgeving kunt schalen. Gebruik de Azure Portal om capaciteit toe te voegen of af te trekken binnen een prijs-SKU.
+title: Uw omgeving schalen-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over het schalen van uw Azure Time Series Insights-omgeving met behulp van de Azure Portal.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f03f5ed75c720c9b0daf30d721ef4d2aee9749c
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: b17cdb2ec27676d5d20d6f12bad309368fe32aa3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991166"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006810"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Uw Time Series Insights omgeving schalen
 
@@ -40,7 +40,7 @@ Het wijzigen van de SKU van de prijs categorie is echter niet toegestaan. Een om
 
 1. Pas de schuif regelaar **capaciteit** aan om de capaciteit te selecteren die voldoet aan de vereisten voor uw ingangs tarieven en opslag capaciteit. Let op de **ingangs rente**, **opslag capaciteit**en **geschatte kosten** update dynamisch om de impact van de wijziging weer te geven.
 
-   [Schuif regelaar![](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [Schuif regelaar ![](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
 
    U kunt ook het nummer van de capaciteits-multiplier in het tekstvak rechts van de schuif regelaar typen.
 

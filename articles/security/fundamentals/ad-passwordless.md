@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 0fbd8404e326ecc6fabef8c89991009809b1448b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 78f8b7097060f1091bfed30722c9ea456feed384
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820514"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007283"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Een wereld zonder wacht woorden met Azure Active Directory
 
@@ -24,7 +24,7 @@ Drie soorten aanvallen die vaak worden gebruikt om gebruikers accounts te manipu
 
 Dit artikel is het begin van uw reis om inzicht te krijgen in de oplossingen van micro soft met een wacht woord en om u te helpen bij het kiezen van een of meer van de volgende opties:
 
-* **Windows hello voor bedrijven**. In Windows 10 vervangt Windows hello voor bedrijven wacht woorden met sterke twee ledige verificatie op Pc's en mobiele apparaten. Deze verificatie bestaat uit een nieuw type gebruikers referentie dat is gekoppeld aan een apparaat en een biometrische of pincode gebruikt.
+* **Windows hello voor bedrijven**. In Windows 10 vervangt Windows hello voor bedrijven wacht woorden met sterke twee ledige verificatie op Pc's en mobiele apparaten. Deze verificatie bestaat uit een nieuw type gebruikers referentie dat is gekoppeld aan een apparaat en gebruikmaakt van biometrische herkenning of pincode.
 
 * **Aanmelding zonder wacht woord met Microsoft Authenticator**. De Microsoft Authenticator-app kan worden gebruikt om u aan te melden bij een Azure AD-account zonder een wacht woord te gebruiken. Net als de technologie van Windows hello voor bedrijven gebruikt de Microsoft Authenticator verificatie op basis van een sleutel om een gebruikers referentie in te scha kelen die is gekoppeld aan een apparaat en gebruikmaakt van biometrisch of pincode.
 

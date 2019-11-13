@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 789cc1d835024babb2482b2601503dbaf7247fc2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5b1e417ecd41f93d7919b67ebdd3faf32521d8a4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747421"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012916"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -185,14 +185,14 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de vers ge√
 
     Gebruik de volgende waarden voor de SSRS-configuratie:
     * Service account: ' ingebouwd account gebruiken ' moet netwerk service zijn
-    * URL van webservice: ' virtuele map ' moet worden ReportServer_<SQLInstanceName>
-    * Data Base: DATABASENAME moet Report Server $<SQLInstanceName>
-    * URL van webportal: ' virtuele map ' moet worden Reports_<SQLInstanceName>
+    * URL van webservice: ' virtuele map ' moet worden ReportServer_\<SQL Server >
+    * Data Base: DATABASENAME moet Report Server $\<-SQL->
+    * URL van webportal: ' virtuele map ' moet worden Reports_\<SQL Server >
 
     Meer [informatie](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) over de configuratie van SSRS.
 
     > [!NOTE]
-    > Licentie verlening voor SQL Server die als de Data Base voor MABS wordt gebruikt, is onderhevig aan [micro soft Online Services-voor waarden](https://www.microsoft.com/en-us/licensing/product-licensing/products) (OST). Volgens OST kunnen SQL Server gebundeld met MABS alleen worden gebruikt als de Data Base voor MABS.
+    > Licentie verlening voor SQL Server die als de Data Base voor MABS wordt gebruikt, is onderhevig aan [micro soft Online Services-voor waarden](https://www.microsoft.com/licensing/product-licensing/products) (OST). Volgens OST kunnen SQL Server gebundeld met MABS alleen worden gebruikt als de Data Base voor MABS.
 
 4. Geef een locatie op voor de installatie van Microsoft Azure Backup Server-bestanden en klik op **volgende**.
 
@@ -336,7 +336,7 @@ Gebruik de volgende stappen om MABS bij te werken:
    >
    > Sluit niet af terwijl uw SQL-exemplaar wordt ge√ºpgraded. Als u een upgrade uitvoert, wordt het SQL Reporting-exemplaar verwijderd en wordt een poging om MABS opnieuw te upgraden mislukt.
 
-   Belang rijke dingen die u moet weten:
+
 
    > [!IMPORTANT]
    >

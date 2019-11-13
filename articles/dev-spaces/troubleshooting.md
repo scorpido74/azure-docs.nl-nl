@@ -9,16 +9,16 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: e145c234c7fc0bc7b9263f40f22d3fd90c1b7250
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 0afdc0ac246e4cacbd4f45cca36c3c57b1c26e02
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064119"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005980"
 ---
-# <a name="troubleshooting-guide"></a>Probleemoplossingsgids
+# <a name="troubleshooting-guide"></a>Handleiding voor het oplossen van problemen
 
-Deze hand leiding bevat informatie over veelvoorkomende problemen die zich kunnen voordoen bij het gebruik van Azure dev Spaces.
+Deze handleiding bevat informatie over veelvoorkomende problemen die mogelijk hebt u bij het gebruik van Azure Dev spaties.
 
 Als u een probleem ondervindt bij het gebruik van Azure dev Spaces, maakt u een [probleem in de Azure dev Spaces github-opslag plaats](https://github.com/Azure/dev-spaces/issues).
 
@@ -26,9 +26,9 @@ Als u een probleem ondervindt bij het gebruik van Azure dev Spaces, maakt u een 
 
 Om problemen effectiever op te lossen, kan het helpen om meer gedetailleerde logboeken te maken voor beoordeling.
 
-Stel de omgevings variabele `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` in op 1 voor de Visual Studio-extensie. Zorg ervoor dat u Visual Studio opnieuw start om de omgevings variabele van kracht te laten worden. Wanneer deze functie is ingeschakeld, worden gedetailleerde logboeken naar uw `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` Directory geschreven.
+Voor de extensie voor Visual Studio, stelt u de `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` omgevingsvariabele op 1. Zorg ervoor dat opnieuw opstarten van Visual Studio voor de omgeving in te voeren. Wanneer deze functie is ingeschakeld, worden gedetailleerde logboeken naar uw `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` Directory geschreven.
 
-In de CLI kunt u meer informatie tijdens het uitvoeren van de opdracht uitvoeren met behulp van de `--verbose` switch. U kunt ook meer gedetailleerde logboeken bekijken in `%TEMP%\Azure Dev Spaces`. Op een Mac kan de map TEMP worden gevonden door `echo $TMPDIR` uit te voeren vanuit een Terminal venster. Op een Linux-computer wordt de map TEMP doorgaans `/tmp`.
+In de CLI, kunt u meer informatie tijdens de uitvoering van de opdracht uitvoeren met behulp van de `--verbose` overschakelen. U kunt ook meer gedetailleerde logboeken in Bladeren `%TEMP%\Azure Dev Spaces`. De map TEMP op een Mac te vinden door te voeren `echo $TMPDIR` vanuit een terminal-venster. Op een Linux-computer, de map TEMP is meestal `/tmp`.
 
 Azure dev Spaces werkt ook het beste bij het opsporen van fouten in één exemplaar of pod. Het `azds.yaml` bestand bevat een instelling, *replicaCount*, die het aantal peulen aangeeft dat Kubernetes voor uw service wordt uitgevoerd. Als u de *replicaCount* wijzigt om uw toepassing te configureren voor het uitvoeren van meerdere peulen voor een bepaalde service, wordt het fout opsporingsprogramma gekoppeld aan de eerste Pod, wanneer deze alfabetisch wordt weer gegeven. Het fout opsporingsprogramma koppelt aan een andere pod wanneer de oorspronkelijke pod wordt gerecycled, mogelijk als gevolg van onverwacht gedrag.
 
@@ -36,7 +36,7 @@ Azure dev Spaces werkt ook het beste bij het opsporen van fouten in één exempl
 
 ### <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Fout: kan de Azure dev Space-controller niet maken
 
-Mogelijk ziet u deze fout wanneer er iets mis gaat met het maken van de controller. Als het een tijdelijke fout is, verwijdert u de controller en maakt u deze opnieuw om het probleem op te lossen.
+U kunt deze fout tegenkomen wanneer er iets met het maken van de controller misgaat. Als het een tijdelijke fout is, verwijdert u de controller en maakt u deze opnieuw om het probleem op te lossen.
 
 U kunt ook proberen de controller te verwijderen:
 
@@ -52,7 +52,7 @@ Als u de CLI van Azure dev Spaces niet hebt geïnstalleerd, kunt u deze eerst in
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
-Het opnieuw maken van de controller kan worden uitgevoerd vanuit CLI of Visual Studio. Bekijk de [team ontwikkeling](quickstart-team-development.md) of [ontwikkel met .net core](quickstart-netcore-visualstudio.md) Quick starts voor voor beelden.
+De controller opnieuw kan worden gedaan in de CLI of Visual Studio. Bekijk de [team ontwikkeling](quickstart-team-development.md) of [ontwikkel met .net core](quickstart-netcore-visualstudio.md) Quick starts voor voor beelden.
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>De controller kan niet worden gemaakt vanwege een lengte van de naam van de controller
 
@@ -94,10 +94,14 @@ Ondanks het fout bericht bij het uitvoeren van `az aks use-dev-spaces` met een v
 
 U kunt dit probleem oplossen door uw installatie van [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) bij te werken naar 2.0.63 of hoger. Met deze update wordt het fout bericht opgelost dat wordt weer gegeven wanneer `az aks use-dev-spaces`wordt uitgevoerd. U kunt ook uw huidige versie van de Azure CLI en de Azure dev Spaces CLI blijven gebruiken.
 
+### <a name="aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>AKS-clusters met door API server geautoriseerde IP-adresbereiken ingeschakeld
+
+Als u met [API server geautoriseerde IP-adresbereiken](../aks/api-server-authorized-ip-ranges.md) hebt ingeschakeld voor uw AKS-cluster, moet u ook uw cluster [maken](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) of [bijwerken](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) om [extra bereiken op basis van uw regio toe te staan](https://github.com/Azure/dev-spaces/tree/master/public-ips).
+
 ## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Veelvoorkomende problemen bij het voorbereiden van het project voor Azure-ontwikkel ruimten
 
 ### <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Waarschuwing "Dockerfile kan niet worden gegenereerd als gevolg van niet-ondersteunde taal"
-Azure dev Spaces biedt systeem eigen C# ondersteuning voor en node. js. Wanneer u `azds prep` uitvoert in een map met code die is geschreven in een van deze talen, worden er door Azure dev Spaces automatisch een geschikte Dockerfile voor u gemaakt.
+Azure Dev opslagruimten biedt systeemeigen ondersteuning voor C# en Node.js. Wanneer u `azds prep` uitvoert in een map met code die is geschreven in een van deze talen, worden er door Azure dev Spaces automatisch een geschikte Dockerfile voor u gemaakt.
 
 U kunt nog steeds Azure dev-ruimten gebruiken met code geschreven in andere talen, maar u moet de Dockerfile hand matig maken voordat u `azds up` voor de eerste keer uitvoert.
 
@@ -112,7 +116,7 @@ Zodra er een geschikte Dockerfile aanwezig is, voert u `azds up` uit om uw toepa
 Wanneer `azds up`wordt uitgevoerd, wordt deze fout weer geven. Zowel `azds up` als `azds prep` moeten worden uitgevoerd vanuit de hoofd directory van het project dat u wilt uitvoeren in de ruimte van de ontwikkel aars.
 
 Dit probleem oplossen:
-1. Wijzig uw huidige map in de hoofdmap met uw service code. 
+1. Wijzig de huidige directory naar de hoofdmap met de servicecode van uw. 
 1. Als u geen _azds. yaml_ -bestand in de map code hebt, voert u `azds prep` uit om activa van docker-, Kubernetes-en Azure-ontwikkel aars te genereren.
 
 ### <a name="timeout-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Time-out bij wachten op build van container installatie kopie... stap met virtuele AKS-knoop punten
@@ -139,11 +143,11 @@ U kunt nog steeds een AKS-cluster gebruiken waarvoor de functie virtuele knoop p
 
 ### <a name="error-could-not-find-a-ready-tiller-pod-when-launching-dev-spaces"></a>Fout "kan geen kant-en-klare Tiller-pod vinden" bij het starten van dev Spaces
 
-Deze fout treedt op als de helm-client niet meer kan communiceren met de Tiller-pod die in het cluster wordt uitgevoerd.
+Deze fout treedt op als de Helm-client kan niet meer communiceren met de Tiller-pod uitgevoerd in het cluster.
 
 U kunt dit probleem oplossen door de agent knooppunten in het cluster opnieuw op te starten.
 
-### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>Fout ' release azds-\<id\>-\<spacenaam\>-servicenaam \<mislukt: Services '\> servicenaam\<' bestaat al ' of ' pull-toegang geweigerd voor\>ServiceName\>, opslag plaats bestaat niet of vereist ' docker aanmelding '
+### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>Fout ' release azds-\<id\>-\<spacenaam\>-servicenaam \<is mislukt: de services\> servicenaam\<al bestaan of pull-toegang geweigerd voor\>servicenaam \<, de opslag plaats bestaat niet of is vereist voor docker aanmelding\>
 
 Deze fouten kunnen zich voordoen als u direct helm-opdrachten (zoals `helm install`, `helm upgrade`of `helm delete`) combineert met de opdrachten voor dev Spaces (zoals `azds up` en `azds down`) binnen dezelfde dev-ruimte. Dit gebeurt omdat ontwikkel ruimten een eigen Tiller-exemplaar hebben, wat een conflict veroorzaakt met uw eigen Tiller-exemplaar dat wordt uitgevoerd in dezelfde dev-ruimte.
 
@@ -153,7 +157,7 @@ Stel dat u een helm opdracht gebruikt om uw hele toepassing uit te voeren in een
 
 ### <a name="existing-dockerfile-not-used-to-build-a-container"></a>Bestaande Dockerfile niet gebruikt voor het bouwen van een container
 
-Azure dev Spaces kunnen worden geconfigureerd om te verwijzen naar een specifieke _Dockerfile_ in uw project. Als er Azure dev Spaces worden gebruikt, wordt de _Dockerfile_ die u verwacht om uw containers te bouwen, mogelijk expliciet duidelijk te maken met Azure dev Spaces die Dockerfile moeten worden gebruikt. 
+Azure Dev opslagruimten kunnen worden geconfigureerd om te verwijzen naar een specifieke _Dockerfile_ in uw project. Als er Azure dev Spaces worden gebruikt, wordt de _Dockerfile_ die u verwacht om uw containers te bouwen, mogelijk expliciet duidelijk te maken met Azure dev Spaces die Dockerfile moeten worden gebruikt. 
 
 Om dit probleem op te lossen, opent u het _azds. yaml_ -bestand dat Azure-ontwikkel ruimten die in uw project zijn gegenereerd. Update *configuraties: ontwikkelen: Build: dockerfile* om te verwijzen naar de dockerfile die u wilt gebruiken. Bijvoorbeeld:
 
@@ -200,7 +204,7 @@ install:
 
 ### <a name="error-service-cannot-be-started"></a>Fout: de service kan niet worden gestart.
 
-Mogelijk ziet u deze fout wanneer uw service code niet kan worden gestart. De oorzaak is vaak in gebruikers code. Voor meer informatie over diagnostische gegevens kunt u gedetailleerdere logboek registratie inschakelen bij het starten van de service.
+U kunt deze fout tegenkomen wanneer de servicecode van uw niet kan worden gestart. De oorzaak is vaak in de gebruikerscode. Voor meer informatie over diagnostische gegevens kunt u gedetailleerdere logboek registratie inschakelen bij het starten van de service.
 
 Gebruik op de opdracht regel de `--verbose` om gedetailleerdere logboek registratie in te scha kelen. U kunt ook een uitvoer indeling opgeven met behulp van `--output`. Bijvoorbeeld:
 
@@ -210,10 +214,10 @@ azds up --verbose --output json
 
 In Visual Studio:
 
-1. Open de **Hulpprogram ma's > opties** en klik onder **projecten en oplossingen**op **bouwen en uitvoeren**.
-2. Wijzig de instellingen voor de **uitgebreide uitvoer van MSBuild-project compilatie** in **gedetailleerde** of **diagnose**.
+1. Open **Extra > opties** en klikt u onder **projecten en oplossingen**, kiest u **bouwen en uitvoeren**.
+2. Wijzig de instellingen voor **MSBuild-project build uitvoer uitgebreidheid** naar **gedetailleerd** of **diagnostische**.
 
-    ![Scherm afbeelding van opties dialoog venster](media/common/VerbositySetting.PNG)
+    ![Schermafbeelding van de opties in menu Extra](media/common/VerbositySetting.PNG)
 
 ### <a name="rerunning-a-service-after-controller-re-creation"></a>Een service opnieuw uitvoeren na het opnieuw maken van de controller
 
@@ -227,7 +231,7 @@ Helm install failed with exit code '1': Release "azds-33d46b-default-webapp1" do
 Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
 ```
 
-Deze fout treedt op omdat het verwijderen van de controller van de dev Spaces geen Services verwijdert die eerder door die controller zijn geïnstalleerd. Het opnieuw maken van de controller en poging om de services uit te voeren met de nieuwe controller mislukt, omdat de oude Services nog steeds aanwezig zijn.
+Deze fout treedt op omdat het verwijderen van de controller van de dev Spaces geen Services verwijdert die eerder door die controller zijn geïnstalleerd. De controller opnieuw te maken en vervolgens probeert om uit te voeren van de services met behulp van de nieuwe domeincontroller is mislukt omdat de oude services nog steeds voldaan is.
 
 Om dit probleem op te lossen, gebruikt u de opdracht `kubectl delete` om de oude Services hand matig uit uw cluster te verwijderen en voert u vervolgens dev Spaces opnieuw uit om de nieuwe services te installeren.
 
@@ -254,8 +258,8 @@ Deze fout treedt op omdat AKS-knoop punten een oudere versie van docker uitvoere
 
 ### <a name="error-required-tools-and-configurations-are-missing"></a>Fout: de vereiste hulpprogram ma's en configuraties ontbreken
 
-Deze fout kan optreden bij het starten van code: "[Azure dev Spaces] de vereiste hulpprogram ma's en configuraties voor Build en debug [project name] ontbreken."
-De fout betekent dat azds. exe zich niet in de omgevings variabele PATH bevindt, zoals in VS code wordt weer gegeven.
+Deze fout kan optreden bij het starten van VS Code: "[Azure Dev spaties] vereiste hulpprogramma's en configuraties om te bouwen en fouten opsporen in '[naam project]' ontbreken."
+De fout betekent dat azds.exe bevindt zich niet in de omgevingsvariabele PATH, zoals te zien is in VS Code.
 
 Start VS code vanuit een opdracht prompt waarbij de omgevings variabele PATH correct is ingesteld.
 
@@ -281,11 +285,11 @@ Deze fout wordt mogelijk weer gegeven bij het uitvoeren van het fout opsporingsp
 
 U kunt dit probleem oplossen door de [VS code-extensie voor Azure dev Spaces](get-started-netcore.md)te installeren.
 
-### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Fout ' ongeldige ' CWD-waarde '/src '. Het systeem kan het opgegeven bestand niet vinden. " of ' starten: programma '/src/[pad naar project binary] ' bestaat niet '
+### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Fout ' ongeldige ' CWD-waarde '/src '. Het systeem het opgegeven bestand vinden niet." of "starten: programma/src / [pad naar een binair project] bestaat niet"
 
-Deze fout wordt mogelijk weer gegeven bij het uitvoeren van het fout opsporingsprogramma voor Visual Studio-code. De VS code-extensie maakt standaard gebruik van `src` als werkmap voor het project in de container. Als u uw `Dockerfile` hebt bijgewerkt om een andere werkmap op te geven, wordt deze fout weer geven.
+Deze fout wordt mogelijk weer gegeven bij het uitvoeren van het fout opsporingsprogramma voor Visual Studio-code. De VS Code-extensie gebruikt standaard `src` als de werkmap voor het project voor de container. Als u hebt bijgewerkt uw `Dockerfile` om op te geven van een andere werkmap, mag u deze fout ziet.
 
-U kunt dit probleem oplossen door het `launch.json`-bestand onder de `.vscode` submap van de projectmap bij te werken. Wijzig de `configurations->cwd`-instructie zodanig dat deze verwijst naar dezelfde map als de `WORKDIR` die is gedefinieerd in de `Dockerfile`van uw project. Mogelijk moet u ook de `configurations->program`-instructie bijwerken.
+U kunt dit probleem oplossen door het `launch.json`-bestand onder de `.vscode` submap van de projectmap bij te werken. Wijzig de `configurations->cwd` richtlijn om te verwijzen naar dezelfde map als de `WORKDIR` gedefinieerd in van uw project `Dockerfile`. U moet mogelijk ook om bij te werken de `configurations->program` ook richtlijn.
 
 ### <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Fout: het pipe programma azds is onverwacht afgesloten met code 126. "
 
@@ -295,9 +299,9 @@ U kunt dit probleem oplossen door Visual Studio code te sluiten en opnieuw te op
 
 ### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Fout ' interne controle mislukt: Watch ENOSPC ' bij het toevoegen van fout opsporing aan een node. js-toepassing
 
-Deze fout treedt op wanneer het knoop punt waarop de Pod wordt uitgevoerd met de node. js-toepassing die u wilt koppelen met een fout opsporingsprogramma de waarde *FS. inotify. Max _user_watches* overschrijdt. In sommige gevallen is [de standaard waarde van *FS. inotify. Max _user_watches* mogelijk te klein om een fout opsporingsprogramma rechtstreeks aan een pod te koppelen](https://github.com/Azure/AKS/issues/772).
+Deze fout treedt op wanneer het knoop punt waarop de Pod wordt uitgevoerd met de node. js-toepassing die u wilt koppelen met een fout opsporingsprogramma de waarde *FS. inotify. max_user_watches* overschrijdt. In sommige gevallen is [de standaard waarde *FS. inotify. max_user_watches* mogelijk te klein om het toevoegen van een fout opsporingsprogramma rechtstreeks aan een pod te kunnen afhandelen](https://github.com/Azure/AKS/issues/772).
 
-Een tijdelijke oplossing voor dit probleem is om de waarde *FS. inotify. Max _user_watches* op elk knoop punt in het cluster te verhogen en het knoop punt opnieuw op te starten om de wijzigingen van kracht te laten worden.
+Een tijdelijke oplossing voor dit probleem is om de waarde *FS. inotify. max_user_watches* op elk knoop punt in het cluster te verhogen en het knoop punt opnieuw op te starten om de wijzigingen van kracht te laten worden.
 
 ## <a name="other-common-issues"></a>Andere veelvoorkomende problemen
 
@@ -307,7 +311,7 @@ Deze fout kan optreden als `azds.exe` niet is geïnstalleerd of niet juist is ge
 
 Dit probleem oplossen:
 
-1. Controleer de locatie% Program Files%/Microsoft SDKs\Azure\Azure dev Spaces CLI voor `azds.exe`. Als dat het geval is, voegt u die locatie toe aan de omgevings variabele PATH.
+1. Controleer de locatie% Program Files%/Microsoft SDKs\Azure\Azure dev Spaces CLI voor `azds.exe`. Als deze aanwezig is, moet u die locatie toevoegen aan de omgevingsvariabele PATH.
 2. Als `azds.exe` niet is geïnstalleerd, voert u de volgende opdracht uit:
 
     ```cmd
@@ -374,7 +378,7 @@ De RBAC-rol van de gebruiker voor de controller bijwerken:
     * Zoek bij *selecteren*naar de gebruiker aan wie u machtigingen wilt verlenen.
 1. Klik op *Opslaan*.
 
-### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Het omzetten van de DNS-naam voor een open bare URL die is gekoppeld aan een service dev Spaces is mislukt
+### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>DNS-naamomzetting voor een openbare URL die is gekoppeld aan een Dev-Spaces-service is mislukt
 
 U kunt een open bare URL-eind punt voor uw service configureren door de `--public`-Schakel optie op te geven voor de `azds prep` opdracht of door het selectie vakje `Publicly Accessible` in Visual Studio in te scha kelen. De open bare DNS-naam wordt automatisch geregistreerd wanneer u uw service in dev Spaces uitvoert. Als deze DNS-naam niet is geregistreerd, ziet u dat er *geen pagina kan worden weer gegeven* of dat de *site niet* in uw webbrowser kan worden bereikt wanneer u verbinding maakt met de open bare URL.
 
@@ -386,7 +390,7 @@ Dit probleem oplossen:
   azds list-uris
   ```
 
-* Als een URL de status in *behandeling* heeft, wordt er nog steeds ontwikkel ruimten gewacht totdat de DNS-registratie is voltooid. Soms duurt het enkele minuten voordat de registratie is voltooid. Met dev Spaces wordt ook een localhost-tunnel voor elke service geopend, die u kunt gebruiken tijdens het wachten op DNS-registratie.
+* Als een URL de status in *behandeling* heeft, wordt er nog steeds ontwikkel ruimten gewacht totdat de DNS-registratie is voltooid. Soms duurt een paar minuten voor de registratie te voltooien. Dev opslagruimten wordt ook geopend wanneer u een tunnel ' localhost ' voor elke service, die u gebruiken kunt tijdens het wachten op DNS-registratie.
 * Als een URL langer dan 5 minuten in *behandeling* is, kan dit wijzen op een probleem met de externe DNS-pod die het open bare eind punt maakt of de pod van de nginx ingress die het open bare eind punt ophaalt. Gebruik de volgende opdrachten om deze velden te verwijderen en AKS toe te staan om ze automatisch opnieuw te maken:
   ```console
   kubectl delete pod -n kube-system -l app=addon-http-application-routing-external-dns
@@ -395,18 +399,18 @@ Dit probleem oplossen:
 
 ### <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>Fout bericht: upstream Connect-fout of verbinding verbreken/opnieuw instellen vóór headers
 
-Deze fout kan optreden wanneer u probeert toegang te krijgen tot uw service. Bijvoorbeeld, wanneer u naar de URL van de service in een browser gaat. Deze fout betekent dat de container poort niet beschikbaar is. Dit kan de volgende oorzaken hebben:
+Mogelijk ziet u deze fout bij het openen van uw service. Bijvoorbeeld, wanneer u gaat naar de URL van de service in een browser. Deze fout betekent dat de container poort niet beschikbaar is. Dit kan de volgende oorzaken hebben:
 
-* De container wordt nog steeds gemaakt en geïmplementeerd. Dit probleem kan zich voordoen als u `azds up` uitvoert of als u de Debugger start en vervolgens probeert toegang te krijgen tot de container voordat deze is geïmplementeerd.
-* Poort configuratie is niet consistent in uw _Dockerfile_, helm-grafiek en server code waarmee een poort wordt geopend.
+* De container wordt nog steeds worden gebouwd en geïmplementeerd. Dit probleem kan zich voordoen als u uitvoeren `azds up` of het foutopsporingsprogramma start en vervolgens probeert te krijgen tot de container voordat deze is geïmplementeerd.
+* Poortconfiguratie van de is niet consistent zijn tussen uw _Dockerfile_, Helm-diagram en servercode die wordt een poort geopend.
 
 Dit probleem oplossen:
 
-1. Als de container wordt gebouwd/geïmplementeerd, kunt u 2-3 seconden wachten en de service opnieuw proberen toegang te krijgen. 
-1. Controleer de poort configuratie. De opgegeven poort nummers moeten **identiek** zijn in alle van de volgende assets:
-    * **Dockerfile:** Opgegeven door de `EXPOSE`-instructie.
-    * **[Helm grafiek](https://docs.helm.sh):** Opgegeven door de `externalPort` en `internalPort` waarden voor een service (vaak in een `values.yml`-bestand),
-    * Poorten die in toepassings code worden geopend, bijvoorbeeld in node. js: `var server = app.listen(80, function () {...}`
+1. Als de container gebouwd wordt/geïmplementeerd, kunt u wacht 2-3 seconden en probeer het opnieuw openen van de service. 
+1. Controleer de poortconfiguratie. De opgegeven poort nummers moeten **identiek** zijn in alle van de volgende assets:
+    * **Docker-bestand:** opgegeven door de `EXPOSE` instructie.
+    * **[Helm-diagram](https://docs.helm.sh):** opgegeven door de `externalPort` en `internalPort` waarden voor een service (vaak zich in een `values.yml` bestand),
+    * Eventuele poorten die worden geopend in de toepassingscode, bijvoorbeeld in Node.js: `var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>Het type of de naam van de naam ruimte ' MyLibrary ' is niet gevonden
 

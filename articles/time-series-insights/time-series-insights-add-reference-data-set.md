@@ -1,5 +1,5 @@
 ---
-title: Een set met referentie gegevens toevoegen aan uw Azure Time Series Insights omgeving | Microsoft Docs
+title: Een set referentie gegevens toevoegen aan uw omgeving-Azure Time Series Insights | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u een set met referentie gegevens kunt toevoegen om gegevens in uw Azure Time Series Insights omgeving uit te breiden.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3aca1f64d469ce228a4b2738c72c0b4bc1956051
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 31ae271a4ad6aa1370828640884a54eb2669804d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991277"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012726"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Maak een referentie gegevensverzameling voor uw Time Series Insights-omgeving met behulp van de Azure Portal
 
@@ -34,7 +34,7 @@ Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom wo
 
 ## <a name="add-a-reference-data-set"></a>Een set met referentie gegevens toevoegen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Zoek uw bestaande Azure Time Series Insights-omgeving. Selecteer **alle resources** in het menu aan de linkerkant van het Azure Portal. Selecteer uw Time Series Insights-omgeving.
 
@@ -44,11 +44,11 @@ Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom wo
 
 1. Vouw de omgevings kiezer uit in de Time Series Insights Explorer. Kies de actieve omgeving. Selecteer het pictogram referentie gegevens in de rechter bovenhoek van de Explorer-pagina.
 
-   [Referentie gegevens![toevoegen](media/add-reference-data-set/add-reference-data.png)](media/add-reference-data-set/add-reference-data.png#lightbox)
+   [Referentie gegevens ![toevoegen](media/add-reference-data-set/add-reference-data.png)](media/add-reference-data-set/add-reference-data.png#lightbox)
 
 1. Selecteer de knop **+ een gegevensset toevoegen** om een nieuwe gegevensset toe te voegen.
 
-   [gegevensset![toevoegen](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
+   [gegevensset ![toevoegen](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
 
 1. Kies op de pagina **nieuwe referentie gegevensgroep** de indeling van de gegevens:
 
@@ -66,11 +66,11 @@ Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom wo
 
    Plak bijvoorbeeld JSON array data: [![JSON-gegevens plakken](media/add-reference-data-set/json-data-pasted.png)](media/add-reference-data-set/json-data-pasted.png#lightbox)
 
-   Als er een fout optreedt bij het parseren van de gegevens waarden, wordt de fout rood weer gegeven aan de onderkant van de pagina, bijvoorbeeld `CSV parsing error, no rows extracted`.
+   Als er een fout optreedt bij het parseren van de gegevens waarden, wordt de fout rood weer gegeven aan de onderkant van de pagina, zoals `CSV parsing error, no rows extracted`.
 
 1. Zodra de gegevens zijn geparseerd, wordt een gegevens raster weer gegeven waarin de kolommen en rijen worden weer gegeven die de gegevens vertegenwoordigen.  Controleer het gegevens raster om te controleren of het juist is.
 
-   [Referentie gegevens![toevoegen](media/add-reference-data-set/parse-data.png)](media/add-reference-data-set/parse-data.png#lightbox)
+   [Referentie gegevens ![toevoegen](media/add-reference-data-set/parse-data.png)](media/add-reference-data-set/parse-data.png#lightbox)
 
 1. Bekijk elke kolom om te zien welk gegevens type wordt gebruikt en wijzig zo nodig het gegevens type.  Selecteer het gegevens type symbool in de kolomkop: **#** voor dubbele (numerieke gegevens), **t | F** voor Booleaanse waarde, of **ABC** voor teken reeks.
 

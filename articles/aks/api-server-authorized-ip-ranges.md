@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: mlearned
-ms.openlocfilehash: aa0cf1ef3f758d7aba4639d779bde90249d039cb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6fc1af356d035c4db73f761ce679f7ad16126d4f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815677"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013001"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Veilige toegang tot de API-server met behulp van geautoriseerde IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -21,7 +21,7 @@ In Kubernetes ontvangt de API-server aanvragen voor het uitvoeren van acties in 
 Dit artikel laat u zien hoe u met de API-server geautoriseerde IP-adresbereiken kunt beperken welke IP-adressen en CIDRs het beheer vlak kunnen hebben.
 
 > [!IMPORTANT]
-> Voor nieuwe clusters worden geautoriseerde IP-adresbereiken van de API-server alleen ondersteund op de *standaard* -SKU Load Balancer. Bestaande clusters met de *basis* -SKU Load Balancer en de geconfigureerde IP-adresbereiken van de API-server blijven werken zoals u dat wilt. Deze bestaande clusers kunnen ook worden bijgewerkt en blijven werken.
+> Voor nieuwe clusters worden geautoriseerde IP-adresbereiken van de API-server alleen ondersteund op de *standaard* -SKU Load Balancer. Bestaande clusters met de *basis* -SKU Load Balancer en de geconfigureerde IP-adresbereiken van de API-server blijven werken zoals u dat wilt. Deze bestaande clusters kunnen ook worden bijgewerkt en blijven werken.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 

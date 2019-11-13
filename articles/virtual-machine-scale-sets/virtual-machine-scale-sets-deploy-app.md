@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 996006c60e754437f8f863c7e7a72c929ed77f2c
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 0dc1c52e65090acd5f63d1b23d8da6f37e3cf567
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166212"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960728"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Uw toepassing implementeren op schaal sets voor virtuele machines
 
@@ -37,7 +37,7 @@ Om het configuratie beheer en de tijd voor het inrichten van een virtuele machin
 
 
 ## <a name="already-provisioned"></a>Een app met de aangepaste script extensie installeren
-Met de aangepaste scriptextensie kunnen scripts worden gedownload en uitgevoerd op virtuele machines in Azure. Deze uitbreiding is handig voor post-implementatieconfiguraties, software-installaties of andere configuratie-/beheertaken. Scripts kunnen worden gedownload uit Azure Storage of GitHub, of worden geleverd in Azure Portal tijdens de uitvoering van extensies. Zie de volgende zelf studies voor meer informatie over het maken en gebruiken van een aangepaste VM-installatie kopie met een schaalset:
+Met de aangepaste scriptextensie kunnen scripts worden gedownload en uitgevoerd op virtuele machines in Azure. Deze uitbreiding is handig voor post-implementatieconfiguraties, software-installaties of andere configuratie-/beheertaken. Scripts kunnen worden gedownload uit Azure Storage of GitHub, of worden geleverd in Azure Portal tijdens de uitvoering van extensies. Zie de volgende zelf studies voor meer informatie over het installeren van een app met een aangepaste script extensie:
 
 - [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
@@ -45,7 +45,7 @@ Met de aangepaste scriptextensie kunnen scripts worden gedownload en uitgevoerd 
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Een app installeren op een Windows-VM met Power shell DSC
-[Power shell desired state Configuration (DSC)](/powershell/scripting/dsc/overview/overview) is een beheer platform voor het definiëren van de configuratie van doel computers. DSC-configuraties bepalen wat er op een machine moet worden geïnstalleerd en hoe de host moet worden geconfigureerd. Een lokale Configuration Manager (LCM)-engine wordt uitgevoerd op elk doel knooppunt dat gevraagde acties verwerkt op basis van gepushte configuraties.
+[PowerShell Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) is een beheerplatform voor het definiëren van de configuratie van doelmachines. DSC-configuraties definiëren wat u wilt installeren op een computer en het configureren van de host. Een engine voor de lokale Configuration Manager (LCM) wordt uitgevoerd op elk doelknooppunt waarmee aangevraagde acties op basis van gepushte configuraties worden verwerkt.
 
 Met de Power shell DSC-extensie kunt u VM-exemplaren in een schaalset aanpassen met Power shell. Het volgende voor beeld:
 

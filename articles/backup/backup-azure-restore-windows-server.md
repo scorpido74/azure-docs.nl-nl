@@ -1,6 +1,6 @@
 ---
-title: Gegevens herstellen in azure naar een Windows-Server of Windows-computer
-description: Informatie over het herstellen van gegevens die zijn opgeslagen in azure naar een Windows-Server of Windows-computer.
+title: Gegevens herstellen in azure naar een Windows Server-Azure Backup
+description: In dit artikel vindt u informatie over het herstellen van gegevens die zijn opgeslagen in azure naar een Windows-Server of Windows-computer met de Microsoft Azure Recovery Services-agent (MARS).
 ms.reviewer: saurse
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.author: dacurwin
-ms.openlocfilehash: 4c0686fc72bfcafdfee650822aece15b8f3fb766
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 4d9ab47d83caadda9046481c15dfb6af18aee146
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210341"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012196"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Bestanden herstellen naar Windows met behulp van het Azure Resource Manager-implementatie model
 
@@ -25,7 +25,7 @@ In dit artikel wordt uitgelegd hoe u gegevens terugzet vanuit een back-upkluis. 
 Gebruik de functie voor direct terugzetten om een moment opname van een Beschrijf bare herstel punt te koppelen als een herstel volume. U kunt vervolgens het herstel volume verkennen en bestanden kopiëren naar een lokale computer, waarbij u bestanden selectief herstelt.
 
 > [!NOTE]
-> De [Update van januari 2017 Azure backup](https://support.microsoft.com/en-us/help/3216528?preview) is vereist als u direct terugzetten wilt gebruiken om gegevens te herstellen. Daarnaast moeten de back-upgegevens worden beveiligd in kluizen in de land instellingen die worden vermeld in het ondersteunings artikel. Raadpleeg de [Update van januari 2017 Azure backup](https://support.microsoft.com/en-us/help/3216528?preview) voor de meest recente lijst met land instellingen die ondersteuning bieden voor direct terugzetten.
+> De [Update van januari 2017 Azure backup](https://support.microsoft.com/help/3216528?preview) is vereist als u direct terugzetten wilt gebruiken om gegevens te herstellen. Daarnaast moeten de back-upgegevens worden beveiligd in kluizen in de land instellingen die worden vermeld in het ondersteunings artikel. Raadpleeg de [Update van januari 2017 Azure backup](https://support.microsoft.com/help/3216528?preview) voor de meest recente lijst met land instellingen die ondersteuning bieden voor direct terugzetten.
 >
 
 Gebruik direct terugzetten met Recovery Services kluizen in de Azure Portal. Als u gegevens in back-upkluizen hebt opgeslagen, zijn deze geconverteerd naar Recovery Services-kluizen. Als u direct terugzetten wilt gebruiken, downloadt u de MARS-update en volgt u de procedures die het direct terugzetten vermelden.
@@ -44,7 +44,7 @@ Als u een bestand per ongeluk hebt verwijderd en op dezelfde computer wilt herst
 
     ![Scherm opname van Azure Backup, waarbij gegevens herstellen is gemarkeerd](./media/backup-azure-restore-windows-server/recover.png)
 
-3. Selecteer op de pagina **aan** de slag de optie **deze server (`<server name>`)**  > om de gegevens op dezelfde server of computer te herstellen.
+3. Selecteer op de pagina **aan** de slag de optie **deze server (`<server name>`)**  > **volgende**om de gegevens op dezelfde server of computer te herstellen.
 
     ![Scherm afbeelding van de pagina aan de slag met de wizard gegevens herstellen](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
@@ -53,13 +53,13 @@ Als u een bestand per ongeluk hebt verwijderd en op dezelfde computer wilt herst
     ![Scherm afbeelding van de wizard gegevens herstellen Selecteer de pagina herstel modus](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
    > De optie voor het herstellen van afzonderlijke bestanden en mappen vereist .NET Framework 4.5.2 of hoger. Als u de optie **afzonderlijke bestanden en mappen** niet ziet, moet u .NET Framework bijwerken naar versie 4.5.2 of hoger en het opnieuw proberen.
-
+ 
    > [!TIP]
    > Met de optie **afzonderlijke bestanden en mappen** kunt u snel toegang krijgen tot de herstel punt gegevens. Het is geschikt voor het herstellen van afzonderlijke bestanden, met een totale grootte van niet meer dan 80 GB en biedt overdrachts-of kopieer snelheden van Maxi maal 6 MBps tijdens het herstel. De **volume** optie herstelt alle back-ups van gegevens in een opgegeven volume. Deze optie biedt snellere overdrachts snelheden (Maxi maal 60 MBps), die ideaal zijn voor het herstellen van grote hoeveel heden gegevens of volledige volumes.
 
 5. Selecteer op de pagina **volume en datum selecteren** het volume dat de bestanden en mappen bevat die u wilt herstellen.
 
-    Selecteer een herstel punt in de agenda. Vetgedrukte datums geven de beschik baarheid van ten minste één herstel punt aan. Als er meerdere herstel punten beschikbaar zijn binnen één datum, kiest u het specifieke herstel punt in de vervolg keuzelijst **tijd** .
+    Selecteer een herstel punt in de agenda. **Vetgedrukte** datums geven de beschik baarheid van ten minste één herstel punt aan. Als er meerdere herstel punten beschikbaar zijn binnen één datum, kiest u het specifieke herstel punt in de vervolg keuzelijst **tijd** .
 
     ![Scherm afbeelding van de wizard gegevens herstellen Selecteer de pagina volume en datum](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
 
@@ -71,30 +71,27 @@ Als u een bestand per ongeluk hebt verwijderd en op dezelfde computer wilt herst
 
     ![Scherm afbeelding van de wizard gegevens herstellen pagina bladeren en bestanden herstellen](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
-
 8. Kopieer in Windows Verkenner de bestanden en mappen die u wilt herstellen en plak ze op een lokale locatie op de server of computer. U kunt de bestanden rechtstreeks vanuit het herstel volume openen of streamen en controleren of u de juiste versies herstelt.
 
     ![Scherm opname van Windows Verkenner, met gemarkeerd kopiëren](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 
-
-9. Wanneer u klaar bent, selecteert u op de pagina **Bladeren en herstel bestanden** de optie ontkoppelen. Selecteer vervolgens **Ja** om te bevestigen dat u het volume wilt ontkoppelen.
+9. Wanneer u klaar bent, selecteert u op de pagina **Bladeren en herstel bestanden** de optie **ontkoppelen**. Selecteer vervolgens **Ja** om te bevestigen dat u het volume wilt ontkoppelen.
 
     ![Scherm afbeelding van de wizard gegevens herstellen pagina bladeren en bestanden herstellen](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Als u niet ontkoppelenselecteert, blijft het herstel volume gedurende 6 uur vanaf het moment waarop het is gekoppeld. De koppel tijd wordt echter Maxi maal 24 uur verlengd in het geval van een doorlopende bestands kopie. Er worden geen back-upbewerkingen uitgevoerd terwijl het volume is gekoppeld. Elke back-upbewerking die is gepland om te worden uitgevoerd op het moment dat het volume wordt gekoppeld, wordt uitgevoerd nadat het herstel volume is ontkoppeld.
+    > Als u niet **ontkoppelen**selecteert, blijft het herstel volume gedurende 6 uur vanaf het moment waarop het is gekoppeld. De koppel tijd wordt echter Maxi maal 24 uur verlengd in het geval van een doorlopende bestands kopie. Er worden geen back-upbewerkingen uitgevoerd terwijl het volume is gekoppeld. Elke back-upbewerking die is gepland om te worden uitgevoerd op het moment dat het volume wordt gekoppeld, wordt uitgevoerd nadat het herstel volume is ontkoppeld.
     >
 
-
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>Direct terugzetten gebruiken om gegevens naar een andere computer te herstellen
-Als uw hele server verloren is gegaan, kunt u nog steeds gegevens herstellen van Azure Backup naar een andere computer. De volgende stappen illustreren de werk stroom.
 
+Als uw hele server verloren is gegaan, kunt u nog steeds gegevens herstellen van Azure Backup naar een andere computer. De volgende stappen illustreren de werk stroom.
 
 Deze stappen omvatten de volgende terminologie:
 
 * *Bron machine* : de oorspronkelijke machine waarvan de back-up is gemaakt en die momenteel niet beschikbaar is.
 * *Doel computer* : de computer waarop de gegevens worden hersteld.
-* Voor beeld van de *kluis* : de Recovery Services kluis waarmee de bron computer en de doel computer zijn geregistreerd. <br/>
+* Voor beeld van de *kluis* : de Recovery Services kluis waarmee de bron computer en de doel computer zijn geregistreerd.
 
 > [!NOTE]
 > Back-ups kunnen niet worden hersteld naar een doel computer waarop een eerdere versie van het besturings systeem wordt uitgevoerd. U kunt bijvoorbeeld een back-up die is gemaakt van een Windows 7-computer herstellen op een computer met Windows 7 (of hoger). Een back-up die is gemaakt vanaf een Windows 8-computer, kan niet worden hersteld naar een computer met Windows 7.
@@ -117,7 +114,6 @@ Deze stappen omvatten de volgende terminologie:
 
     Als het kluis referentie bestand ongeldig is (of is verlopen), downloadt u een nieuw kluis referentie bestand van de voor beeld-kluis in de Azure Portal. Nadat u een geldige kluis referentie hebt verstrekt, wordt de naam van de bijbehorende back-upkluis weer gegeven.
 
-
 6. Selecteer op de pagina **back-upserver selecteren** de bron machine uit de lijst met weer gegeven computers en geef de wachtwoordzin op. Selecteer vervolgens **Volgende**.
 
     ![Scherm afbeelding van de wizard gegevens herstellen pagina back-upserver selecteren](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
@@ -128,7 +124,7 @@ Deze stappen omvatten de volgende terminologie:
 
 8. Selecteer op de pagina **volume en datum selecteren** het volume dat de bestanden en mappen bevat die u wilt herstellen.
 
-    Selecteer een herstel punt in de agenda. Vetgedrukte datums geven de beschik baarheid van ten minste één herstel punt aan. Als er meerdere herstel punten beschikbaar zijn binnen één datum, kiest u het specifieke herstel punt in de vervolg keuzelijst **tijd** .
+    Selecteer een herstel punt in de agenda. **Vetgedrukte** datums geven de beschik baarheid van ten minste één herstel punt aan. Als er meerdere herstel punten beschikbaar zijn binnen één datum, kiest u het specifieke herstel punt in de vervolg keuzelijst **tijd** .
 
     ![Scherm afbeelding van de wizard gegevens herstellen Selecteer de pagina volume en datum](./media/backup-azure-restore-windows-server/alternatemachine_selectvolumedate_instantrestore.png)
 
@@ -142,13 +138,14 @@ Deze stappen omvatten de volgende terminologie:
 
     ![Scherm opname van Windows Verkenner, met gemarkeerd kopiëren](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
-12. Wanneer u klaar bent, selecteert u op de pagina **Bladeren en herstel bestanden** de optie ontkoppelen. Selecteer vervolgens **Ja** om te bevestigen dat u het volume wilt ontkoppelen.
+12. Wanneer u klaar bent, selecteert u op de pagina **Bladeren en herstel bestanden** de optie **ontkoppelen**. Selecteer vervolgens **Ja** om te bevestigen dat u het volume wilt ontkoppelen.
 
     ![Scherm afbeelding van de wizard gegevens herstellen pagina bladeren en bestanden herstellen](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Als u niet ontkoppelenselecteert, blijft het herstel volume gedurende 6 uur vanaf het moment waarop het is gekoppeld. De koppel tijd wordt echter Maxi maal 24 uur verlengd in het geval van een doorlopende bestands kopie. Er worden geen back-upbewerkingen uitgevoerd terwijl het volume is gekoppeld. Elke back-upbewerking die is gepland om te worden uitgevoerd op het moment dat het volume wordt gekoppeld, wordt uitgevoerd nadat het herstel volume is ontkoppeld.
+    > Als u niet **ontkoppelen**selecteert, blijft het herstel volume gedurende 6 uur vanaf het moment waarop het is gekoppeld. De koppel tijd wordt echter Maxi maal 24 uur verlengd in het geval van een doorlopende bestands kopie. Er worden geen back-upbewerkingen uitgevoerd terwijl het volume is gekoppeld. Elke back-upbewerking die is gepland om te worden uitgevoerd op het moment dat het volume wordt gekoppeld, wordt uitgevoerd nadat het herstel volume is ontkoppeld.
     >
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Nu u uw bestanden en mappen hebt hersteld, kunt u [uw back-ups beheren](backup-azure-manage-windows-server.md).

@@ -1,19 +1,19 @@
 ---
-title: Herstel na noodgeval instellen voor een Azure IaaS-VM’s naar een secundaire Azure-regio
-description: Deze quickstart biedt de stappen die zijn vereist voor herstel na noodgeval van een Azure IaaS-VM tussen Azure-regio’s, met behulp van de Azure Site Recovery-service.
+title: Herstel na nood gevallen voor Azure VM instellen op een secundaire regio met Azure Site Recovery
+description: Stel snel herstel na nood gevallen in op een andere Azure-regio voor een Azure-VM met behulp van de Azure Site Recovery-service.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b06cae5bcb07831ba79b805802a7851c2b6ad2b3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91674d6335ae95993bcdd59250658d562302b1dc
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468003"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954132"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Herstel na noodgeval instellen naar een secundaire Azure-regio voor een Azure-VM        
 
@@ -28,7 +28,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
-Meld u aan bij de Azure-portal op https://portal.azure.com.
+Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Replicatie inschakelen voor de Azure-VM
 

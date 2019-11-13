@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 62657134775d21ad6aabdf8f02a1e001de0a6094
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 55a9cbcfdb9766c6adc6d10f975fa4d074ec3aaf
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176847"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011671"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Ontwikkelaars accounts autoriseren met behulp van Azure Active Directory B2C in azure API Management
 
@@ -87,11 +87,11 @@ Azure Active Directory B2C is een oplossing voor het beheer van Cloud identiteit
 
 ## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>Ontwikkelaars Portal-verificatie van Azure AD B2C-account toevoegen
 
-Als u aanmelden met AAD B2C wilt inschakelen in de ontwikkelaars Portal, moet u de widget **OAuth-knoppen** toevoegen aan het aanmeldings formulier.
+Meld u in de ontwikkelaars portal aan met AAD B2C is mogelijk met de widget **OAuth buttons** . De widget is al opgenomen op de aanmeldings pagina van de standaard inhoud van de ontwikkelaars Portal.
 
 ![Widget AAD-knoppen](./media/api-management-howto-aad/portal-oauth-widget.png)
 
-Hoewel een nieuw account automatisch wordt gemaakt wanneer een nieuwe gebruiker zich aanmeldt met AAD B2C, kunt u overwegen om dezelfde widget toe te voegen aan het registratie formulier.
+Hoewel een nieuw account automatisch wordt gemaakt wanneer een nieuwe gebruiker zich aanmeldt met AAD B2C, kunt u overwegen om dezelfde widget toe te voegen aan de registratie pagina.
 
 ## <a name="legacy-developer-portal---how-to-sign-up-with-azure-ad-b2c"></a>Verouderde ontwikkelaars Portal-aanmelden met Azure AD B2C
 
@@ -110,7 +110,7 @@ Hoewel een nieuw account automatisch wordt gemaakt wanneer een nieuwe gebruiker 
    > [!NOTE]
    > Als Azure Active Directory B2C de enige optie is die is ingeschakeld op het tabblad **identiteiten** in de Publisher-Portal, wordt u rechtstreeks omgeleid naar het beleid voor aanmelden.
 
-   ![ontwikkelaarsportal][api-management-howto-aad-b2c-dev-portal-b2c-options]
+   ![Ontwikkelaarsportal][api-management-howto-aad-b2c-dev-portal-b2c-options]
 
    Wanneer de aanmelding is voltooid, wordt u teruggeleid naar de ontwikkelaars Portal. U bent nu aangemeld bij de ontwikkelaars portal voor uw API Management service-exemplaar.
 

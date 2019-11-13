@@ -1,6 +1,6 @@
 ---
-title: Aanbevolen procedures voor het vorm geven van JSON in Azure Time Series Insights query's | Microsoft Docs
-description: Meer informatie over het verbeteren van de efficiëntie van Azure Time Series Insights query's.
+title: Aanbevolen procedures voor het vorm geven van JSON-Azure Time Series Insights query's | Microsoft Docs
+description: Meer informatie over het verbeteren van de Azure Time Series Insights efficiëntie van query's met behulp van vorm JSON.
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: article
 ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 09090354012d2cd3ba050ff9c94593947f27b006
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 386d10c8e4bd7d5f46d2081d5a26371fb37ff30f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990287"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007004"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>JSON van shape om query prestaties te maximaliseren 
 
@@ -30,7 +30,7 @@ In dit artikel vindt u richt lijnen voor het optimaliseren van de effectiviteit 
 
 Denk na over hoe u gebeurtenissen naar Time Series Insights verzendt. Dat wil zeggen dat u altijd:
 
-1. Verzend zo efficiënt mogelijk gegevens via het netwerk.
+1. gegevens zo efficiënt mogelijk via het netwerk verzenden.
 1. Zorg ervoor dat uw gegevens op een zodanige manier worden opgeslagen dat u aggregaties kunt uitvoeren die geschikt zijn voor uw scenario.
 1. Zorg ervoor dat u de Time Series Insights maximum eigenschaps limieten van hebt bereikt:
    - 600-eigenschappen (kolommen) voor S1-omgevingen.
@@ -42,11 +42,11 @@ Denk na over hoe u gebeurtenissen naar Time Series Insights verzendt. Dat wil ze
 De volgende richt lijnen helpen de best mogelijke query prestaties te garanderen:
 
 1. Gebruik geen dynamische eigenschappen, zoals een tag-ID, als eigenschaps naam. Dit gebruik draagt bij aan het bereiken van de maximum limiet voor eigenschappen.
-1. Geen onnodige eigenschappen verzenden. Als een query-eigenschap niet vereist is, kunt u deze het beste niet verzenden. Zo voor komt u opslag beperkingen.
+1. Geen overbodige eigenschappen niet verzenden. Als een query-eigenschap niet vereist is, kunt u deze het beste niet verzenden. Zo voor komt u opslag beperkingen.
 1. Gebruik [referentie gegevens](time-series-insights-add-reference-data-set.md) om te voor komen dat statische gegevens via het netwerk worden verzonden.
 1. Deel dimensie-eigenschappen over meerdere gebeurtenissen om gegevens efficiënter via het netwerk te verzenden.
-1. Gebruik geen geneste diepe matrix. Time Series Insights ondersteunt Maxi maal twee niveaus van geneste matrices die objecten bevatten. Time Series Insights worden matrices in de berichten samengevoegd in meerdere gebeurtenissen met eigenschaps waarde-paren.
-1. Als er slechts enkele maat regelen bestaan voor alle of de meeste gebeurtenissen, is het beter om deze metingen als afzonderlijke eigenschappen binnen hetzelfde object te verzenden. Als u ze afzonderlijk verzendt, vermindert het aantal gebeurtenissen en kunnen query's sneller worden uitgevoerd omdat er minder gebeurtenissen moeten worden verwerkt. Als er verschillende metingen zijn, minimaliseert het verzenden van deze als waarden in één eigenschap de mogelijkheid om de maximale eigenschaps limiet te bereiken.
+1. Gebruik geen grondige matrix nesten. Time Series Insights ondersteunt Maxi maal twee niveaus van geneste matrices die objecten bevatten. Time Series Insights worden matrices in de berichten samengevoegd in meerdere gebeurtenissen met eigenschaps waarde-paren.
+1. Als er slechts een paar metingen bestaan voor alle of de meeste gebeurtenissen, is het beter om het verzenden van deze metingen als afzonderlijke eigenschappen binnen hetzelfde object. Als u ze afzonderlijk verzendt, vermindert het aantal gebeurtenissen en kunnen query's sneller worden uitgevoerd omdat er minder gebeurtenissen moeten worden verwerkt. Als er verschillende metingen zijn, minimaliseert het verzenden van deze als waarden in één eigenschap de mogelijkheid om de maximale eigenschaps limiet te bereiken.
 
 ## <a name="example-overview"></a>Voor beeld-overzicht
 
@@ -97,22 +97,22 @@ Houd rekening met de volgende JSON-nettolading die wordt verzonden naar uw Time 
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
-   | FXXX | LIJN\_gegevens | EU |
-   | FYYY | LIJN\_gegevens | VS |
+   | FXXX | LINE\_DATA | EU |
+   | FYYY | LINE\_DATA | VS |
 
 * Time Series Insights gebeurtenis tabel na afvlakking:
 
-   | deviceId | messageId | deviceLocation | tijdstempel | reeks. Stroom verhouding FT3/s | reeks. Snelheid van de motor olie druk psi |
+   | deviceId | messageId | deviceLocation | tijdstempel | reeks. Stroom tarief ft3/s | reeks. Engine oliedruk psi |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | LIJN\_gegevens | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
-   | FXXX | LIJN\_gegevens | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
-   | FYYY | LIJN\_gegevens | VS | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
+   | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
+   | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
+   | FYYY | LINE\_DATA | VS | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
 > [!NOTE]
 > - De kolom **deviceId** fungeert als de kolomkop voor de verschillende apparaten in een vloot. Als u voor de **deviceId** -waarde een eigen eigenschaps naam instelt, wordt het totale aantal apparaten beperkt tot 595 (voor S1-omgevingen) of 795 (voor S2-omgevingen) met de andere vijf kolommen.
 > - Onnodige eigenschappen worden vermeden (bijvoorbeeld het merk-en model gegevens). Omdat de eigenschappen niet in de toekomst worden opgevraagd, is het mogelijk om de netwerk-en opslag efficiëntie te verbeteren.
 > - Referentie gegevens worden gebruikt om het aantal bytes dat via het netwerk wordt overgedragen te verminderen. De twee kenmerken **messageId** en **deviceLocation** worden gekoppeld met behulp van de sleutel eigenschap **deviceId**. Deze gegevens zijn gekoppeld aan de telemetriegegevens bij ingangs tijd en worden vervolgens opgeslagen in Time Series Insights voor het uitvoeren van query's.
-> - Er worden twee geneste lagen gebruikt. Dit is de maximale hoeveelheid nesten die door Time Series Insights wordt ondersteund. Het is essentieel om diep geneste matrices te voor komen.
+> - Er worden twee geneste lagen gebruikt. Dit is de maximale hoeveelheid nesten die door Time Series Insights wordt ondersteund. Het is essentieel om te voorkomen dat diep geneste matrices.
 > - Metingen worden als afzonderlijke eigenschappen binnen hetzelfde object verzonden, omdat er slechts enkele metingen zijn. Hier kunt u de **reeks. Flow-rate psi** en **serie. De FT3/s van de engine olie drukken** zijn unieke kolommen.
 
 ## <a name="scenario-two-several-measures-exist"></a>Scenario twee: er zijn verschillende metingen
@@ -165,23 +165,23 @@ Voor beeld van JSON-nettolading:
 
 * Referentie gegevens tabel met de sleutel eigenschappen **deviceId** en **Series. tagId**:
 
-   | deviceId | reeks. tagId | messageId | deviceLocation | type | teleenheid |
+   | deviceId | series.tagId | messageId | deviceLocation | type | teleenheid |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LIJN\_gegevens | EU | Stroom verhouding | FT3/s |
-   | FXXX | oilPressure | LIJN\_gegevens | EU | Olie druk van de motor | psi |
-   | FYYY | pumpRate | LIJN\_gegevens | VS | Stroom verhouding | FT3/s |
-   | FYYY | oilPressure | LIJN\_gegevens | VS | Olie druk van de motor | psi |
+   | FXXX | pumpRate | LINE\_DATA | EU | Stroom verhouding | ft3/s |
+   | FXXX | oilPressure | LINE\_DATA | EU | Olie druk van de motor | psi |
+   | FYYY | pumpRate | LINE\_DATA | VS | Stroom verhouding | ft3/s |
+   | FYYY | oilPressure | LINE\_DATA | VS | Olie druk van de motor | psi |
 
 * Time Series Insights gebeurtenis tabel na afvlakking:
 
-   | deviceId | reeks. tagId | messageId | deviceLocation | type | teleenheid | tijdstempel | reeks. waarde |
+   | deviceId | series.tagId | messageId | deviceLocation | type | teleenheid | tijdstempel | reeks. waarde |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LIJN\_gegevens | EU | Stroom verhouding | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | LIJN\_gegevens | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 34,7 |
-   | FXXX | pumpRate | LIJN\_gegevens | EU | Stroom verhouding | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | LIJN\_gegevens | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 49,2 |
-   | FYYY | pumpRate | LIJN\_gegevens | VS | Stroom verhouding | FT3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | LIJN\_gegevens | VS | Olie druk van de motor | psi | 2018-01-17T01:18:00Z | 22,2 |
+   | FXXX | pumpRate | LINE\_DATA | EU | Stroom verhouding | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | LINE\_DATA | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 34,7 |
+   | FXXX | pumpRate | LINE\_DATA | EU | Stroom verhouding | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | LINE\_DATA | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 49,2 |
+   | FYYY | pumpRate | LINE\_DATA | VS | Stroom verhouding | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | LINE\_DATA | VS | Olie druk van de motor | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 > [!NOTE]
 > - De kolommen **deviceId** en **Series. tagId** fungeren als de kolom koppen voor de verschillende apparaten en tags in een vloot. Als een eigen kenmerk wordt gebruikt, wordt de query beperkt tot 594 (voor S1-omgevingen) of 794 (voor S2-omgevingen) met het totale aantal apparaten met de andere zes kolommen.

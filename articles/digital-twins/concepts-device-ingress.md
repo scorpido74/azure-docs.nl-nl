@@ -1,6 +1,6 @@
 ---
 title: Connectiviteit van apparaten en inkomend telemetrie-Azure Digital Apparaatdubbels | Microsoft Docs
-description: Overzicht van het gebruik van een apparaat onboarding met Azure Digital Apparaatdubbels
+description: Meer informatie over hoe u verbinding maakt met een apparaat in azure Digital Apparaatdubbels.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 4e7a179980abb164754941f345d2ee9ae7f5c9de
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 529baf6a3eedf1d7490e8138642e90928a209876
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930393"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010130"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Apparaatconnectiviteit en inkomende telemetriegegevens
 
@@ -69,10 +69,10 @@ U kunt de bericht indeling en payload van uw apparaat aanpassen aan de behoeften
 
 | Naam van eigenschap | Waarde | Vereist | Beschrijving |
 |---|---|---|---|
-| **DigitalTwins-telemetrie** | 1.0 | Ja | Een constante waarde die een bericht identificeert aan het systeem. |
+| **DigitalTwins-Telemetry** | 1.0 | Ja | Een constante waarde die een bericht identificeert aan het systeem. |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | Ja | Een unieke id van de sensor die het **bericht**verzendt. Deze waarde moet overeenkomen met de eigenschap **HardwareId** van een object voor het systeem om het te verwerken. Bijvoorbeeld `00FF0643BE88-CO2`. |
 | **CreationTimeUtc** | `string` | Nee | Een datum reeks in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -notatie waarmee de steekproef tijd van de nettolading wordt geïdentificeerd. Bijvoorbeeld `2018-09-20T07:35:00.8587882-07:00`. |
-| **Correlatie** | `string` | Nee | Een UUID die wordt gebruikt voor het traceren van gebeurtenissen in het systeem. Bijvoorbeeld `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
+| **CorrelationId** | `string` | Nee | Een UUID die wordt gebruikt voor het traceren van gebeurtenissen in het systeem. Bijvoorbeeld `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
 ### <a name="send-your-message-to-digital-twins"></a>Uw bericht verzenden naar Digital Apparaatdubbels
 

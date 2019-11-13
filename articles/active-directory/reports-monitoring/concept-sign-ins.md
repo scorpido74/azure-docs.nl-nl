@@ -3,7 +3,7 @@ title: Aanmeldactiviteitenrapporten in Azure Active Directory Portal | Microsoft
 description: Ontdek de aanmeldactiviteitenrapporten in de Azure Active Directory Portal
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 10/28/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 553d882600203d0fa01cd876562d9ced7985d7a8
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 778353621491f912d3237900785e6dee17bf975e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043838"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014495"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Aanmeldactiviteitenrapporten in Azure Active Directory Portal
 
@@ -105,13 +105,13 @@ Met het filter **Toepassing** kunt u de naam van de gewenste toepassing opgeven.
 
 Met het filter **Aanmeldingsstatus** kunt u selecteren:
 
-- Alles
+- Alle
 - Geslaagd
 - Fout
 
 Met het filter voor **voorwaardelijke toegang** kunt u de CA-beleids status voor de aanmelding selecteren:
 
-- Alles
+- Alle
 - Niet toegepast
 - Geslaagd
 - Fout
@@ -144,7 +144,7 @@ Als u extra velden toevoegt aan uw aanmeldingsweergave, worden deze velden autom
         Office 2013, waarbij ADAL is ingeschakeld en gebruikmaakt van MAPI.
     - **Oude Office-clients**  
         Office 2013 in de standaard configuratie waarbij ADAL niet is ingeschakeld en gebruikmaakt van MAPI of Office 2016 waarbij ADAL is uitgeschakeld.
-    - **KEUZEMENU**  
+    - **POP**  
         Een legacy-mailclient die gebruikmaakt van POP3 om e-mail op te halen.
     - **SMTP**  
         Een verouderde e-mailclient die gebruikmaakt van SMTP om e-mail te verzenden.
@@ -153,7 +153,7 @@ Als u extra velden toevoegt aan uw aanmeldingsweergave, worden deze velden autom
 
 Klik op de **Download** optie om een CSV-of JSON-bestand te maken van de meest recente 250.000 records. Begin met [het downloaden van de gegevens van de aanmeldingen](quickstart-download-sign-in-report.md) als u wilt werken buiten de Azure Portal.  
 
-![Downloaden](./media/concept-sign-ins/71.png "Downloaden")
+![Downloaden](./media/concept-sign-ins/71.png "Download")
 
 > [!IMPORTANT]
 > Het aantal records dat u kunt downloaden, is beperkt door het [Bewaar beleid](reference-reports-data-retention.md)voor de Azure Active Directory-rapport.  
@@ -193,7 +193,7 @@ Door op een item te klikken, krijgt u meer informatie over de aanmelding:
 - Client
 - Locatie
 - IP-adres
-- Datum
+- Date
 - MFA vereist
 - Aanmeldingsstatus
 
@@ -222,7 +222,7 @@ De grafieken voor het gebruik van de app en wekelijkse aggregaties van aanmeldin
 
 Als u wilt, kunt u de focus instellen op een specifieke toepassing.
 
-![Rapportage](./media/concept-sign-ins/single-app-usage-graph.png "Reporting")
+![Rapportage](./media/concept-sign-ins/single-app-usage-graph.png "Rapportage")
 
 Als u op een dag in de appgebruikgrafiek klikt, ziet u een gedetailleerd overzicht van de aanmeldactiviteiten.
 

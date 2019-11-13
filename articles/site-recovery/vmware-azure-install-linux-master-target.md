@@ -1,5 +1,5 @@
 ---
-title: Een Linux-hoofddoel server installeren voor failback naar een on-premises site | Microsoft Docs
+title: Een hoofddoel server voor virtuele Linux VM-failback installeren met Azure Site Recovery
 description: Meer informatie over het instellen van een Linux-hoofddoel server voor failback naar een on-premises site tijdens nood herstel van virtuele VMware-machines naar Azure met Azure Site Recovery.
 author: mayurigupta13
 services: site-recovery
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904402"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954380"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Een Linux-hoofddoel server installeren voor failback
 Nadat u uw virtuele machines naar Azure hebt gefailovert, kunt u een failback uitvoeren voor de virtuele machines naar de on-premises site. Als u een failback wilt uitvoeren, moet u de virtuele machine opnieuw beveiligen van Azure naar de on-premises site. Voor dit proces hebt u een on-premises Master doel server nodig om het verkeer te ontvangen. 
@@ -44,7 +44,7 @@ Maak het hoofd doel in overeenstemming met de volgende richt lijnen voor het aan
 - **RAM**: 6 GB of meer
 - **Grootte van de besturingssysteem schijf**: 100 GB of meer (om besturings systeem te installeren)
 - **Aanvullende schijf grootte voor Bewaar station**: 1 TB
-- **CPU**-kernen: 4 kernen of meer
+- **CPU-kernen**: 4 kernen of meer
 
 De volgende Ubuntu-kernels worden ondersteund.
 
@@ -160,7 +160,7 @@ Als u de ID voor elke SCSI harde schijf in een virtuele Linux-machine wilt ophal
 
 3. Selecteer het tabblad **Opties** .
 
-4. Selecteer **Geavanceerd** > **Algemeen**in het linkerdeel venster en selecteer vervolgens de knop **configuratie parameters** in het rechter gedeelte van het scherm.
+4. Selecteer in het linkerdeel venster **Advanced** > **General**en selecteer vervolgens de knop **configuratie parameters** in het rechter gedeelte van het scherm.
 
     ![Configuratie parameter openen](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
@@ -244,7 +244,7 @@ Gebruik de volgende stappen om een Bewaar schijf te maken:
 
     ![ID voor meerdere paden](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Format teer het station en maak vervolgens een bestands systeem op het nieuwe station: **mkfs. ext4/dev/mapper/\<retentie schijf-id voor meerdere paden >** .
+3. Format teer het station en maak een bestands systeem op het nieuwe station: **mkfs. ext4/dev/mapper/\<retentie schijf-id voor meerdere paden >** .
     
     ![Bestandssysteem](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -261,7 +261,7 @@ Gebruik de volgende stappen om een Bewaar schijf te maken:
     
     Selecteer **Invoegen** om te beginnen met het bewerken van het bestand. Maak een nieuwe regel en voeg de volgende tekst toe. Bewerk de schijf-ID voor meerdere paden op basis van de gemarkeerde multipath ID van de vorige opdracht.
 
-    **/dev/mapper/\<retentie schijven multipath id >/mnt/retention ext4 RW 0 0**
+    **/dev/mapper/\<Bewaar schijven-id voor meerdere paden >/mnt/retention ext4 RW 0 0**
 
     Selecteer **ESC**en typ **: wq** (schrijven en sluiten) om het editor venster te sluiten.
 
@@ -340,7 +340,7 @@ Voer het installatie programma uit. Er wordt automatisch gedetecteerd dat de age
 `cat /usr/local/.vx_version`
 
 
-U ziet dat het versie veld het versie nummer van het hoofd doel bevat.
+U ziet dat het versie **veld het versie nummer** van het hoofd doel bevat.
 
 ## <a name="common-issues"></a>Algemene problemen
 

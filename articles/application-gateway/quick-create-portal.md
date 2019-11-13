@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 07/17/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 565620f477382ff81f854336dbee7bdb1ad06f01
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 781203cec8d85abd74aa439b5595e8d00ed36745
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469707"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961689"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Snelstart: Webverkeer omleiden met Azure Application Gateway - Azure Portal
 
@@ -65,7 +65,7 @@ Meld u met uw Azure-account aan bij [Azure Portal](https://portal.azure.com).
 
 1. Controleer op het tabblad **frontends** of het **frontend-IP-adres type** is ingesteld op **openbaar**. <br>U kunt de frontend-IP zo configureren dat deze openbaar of privé is volgens uw use-case. In dit voor beeld kiest u een openbaar frontend-IP.
    > [!NOTE]
-   > Voor de SKU van Application Gateway v2 kunt u alleen de **open bare** frontend-IP-configuratie kiezen. De persoonlijke frontend-IP-configuratie is op dit moment niet ingeschakeld voor deze v2-SKU.
+   > Voor de SKU van Application Gateway v2 kunt u alleen de **open bare** frontend-IP-configuratie kiezen. Alleen de persoonlijke frontend-IP-configuratie is momenteel niet ingeschakeld voor deze v2-SKU. U kunt zowel open bare als privé-frontend-IP-configuratie hebben.
 
 2. Kies **Nieuw maken** voor het **open bare IP-adres** en voer *myAGPublicIPAddress* in als naam voor het open bare IP-adres en selecteer vervolgens **OK**. 
 
@@ -196,7 +196,7 @@ In dit voor beeld installeert u IIS op de virtuele machines alleen om te control
 
 Het is niet nodig IIS te installeren om de toepassingsgateway te maken, maar u hebt het in deze quickstart geïnstalleerd om te controleren of het maken van de toepassingsgateway in Azure is geslaagd. Gebruik IIS om de toepassingsgateway te testen:
 
-1. Zoek het open bare IP-adres voor de toepassings gateway op de pagina **overzicht** .![neem het open bare IP-adres van de toepassings gateway](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) of u kunt **alle resources**selecteren, *myAGPublicIPAddress* invoeren in het zoekvak en het vervolgens selecteren in de zoek resultaten. Het openbare IP-adres wordt weergegeven op de pagina **Overzicht**.
+1. Zoek het open bare IP-adres voor de toepassings gateway op de pagina **overzicht**.Zoek het![Neem het open bare IP-](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) adres van de toepassings gateway op of u kunt **alle resources**selecteren, *myAGPublicIPAddress* invoeren in het zoekvak en deze vervolgens selecteren in de zoek resultaten. Het openbare IP-adres wordt weergegeven op de pagina **Overzicht**.
 2. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser.
 3. Controleer het antwoord. Een geldige reactie verifieert of de toepassings gateway is gemaakt en kan verbinding maken met de back-end.![Toepassingsgateway testen](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 

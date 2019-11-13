@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual WAN gebruiken om ExpressRoute-verbindingen met Azure en on-premises omgevingen te maken | Microsoft Docs
+title: 'Virtueel WAN van Azure: ExpressRoute-verbindingen maken'
 description: In deze zelfstudie leert u hoe u Azure Virtual WAN gebruikt om ExpressRoute-verbindingen met Azure en on-premises omgevingen te maken.
 services: virtual-wan
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 8ad86280eab3041667bf9d1713ae2b4bc82a4c9e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a394f93c5cc606c26ffa1cc64bf1d61617b05b8
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491582"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014929"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Zelf studie: een ExpressRoute-koppeling maken met behulp van Azure Virtual WAN
 

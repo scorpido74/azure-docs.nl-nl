@@ -1,7 +1,7 @@
 ---
 title: Toepassings instellingen-LUIS
 titleSuffix: Azure Cognitive Services
-description: Inzicht in toepassings instellingen voor language-informatie over apps.
+description: Toepassings instellingen voor Azure Cognitive Services Language-informatie over apps worden opgeslagen in de app en de portal.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 6d516590b90efd937789fa0847b707d2521f6459
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bae4f09b539e26ca8c0d4ce97999776dc0911601
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932580"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961778"
 ---
 # <a name="application-settings"></a>Toepassingsinstellingen
 
@@ -24,12 +24,12 @@ Deze toepassings instellingen worden opgeslagen in de [geëxporteerde](https://w
 
 |Instelling|Standaardwaarde|Opmerkingen|
 |--|--|--|
-|NormalizePunctuation|Waar|Hiermee verwijdert u interpunctie.|
-|NormalizeDiacritics|Waar|Diakritische tekens worden verwijderd.|
+|NormalizePunctuation|True|Hiermee verwijdert u interpunctie.|
+|NormalizeDiacritics|True|Diakritische tekens worden verwijderd.|
 
 ## <a name="diacritics-normalization"></a>Normalisatie van diakritische tekens 
 
-Schakel utterance normalisatie voor diakritische tekens in voor het JSON-app-bestand van uw `settings` Luis in de para meter.
+Schakel in de para meter `settings` utterance normalisatie voor diakritische tekens in voor het JSON-app-bestand van uw LUIS.
 
 ```JSON
 "settings": [
@@ -46,7 +46,7 @@ In de volgende uitingen ziet u hoe diakritische tekens worden genormaliseerd uit
 
 ### <a name="language-support-for-diacritics"></a>Taal ondersteuning voor diakritische tekens
 
-#### <a name="brazilian-portuguese-pt-br-diacritics"></a>Braziliaanse Portugees `pt-br` -diakritische tekens
+#### <a name="brazilian-portuguese-pt-br-diacritics"></a>Braziliaans-Portugees `pt-br` diakritische tekens
 
 |Diakritische tekens ingesteld op ONWAAR|Diakritische tekens ingesteld op True|
 |-|-|
@@ -64,7 +64,7 @@ In de volgende uitingen ziet u hoe diakritische tekens worden genormaliseerd uit
 |`ú`|`u`| 
 |||
 
-#### <a name="dutch-nl-nl-diacritics"></a>Nederlandstalige `nl-nl` diakritische tekens
+#### <a name="dutch-nl-nl-diacritics"></a>Nederlandse `nl-nl` diakritische tekens
 
 |Diakritische tekens ingesteld op ONWAAR|Diakritische tekens ingesteld op True|
 |-|-|
@@ -110,7 +110,7 @@ Dit omvat zowel Franse als Canadese subcultuuren.
 |`ö`|`o`| 
 |`ü`|`u`| 
 
-#### <a name="italian-it-it-diacritics"></a>Italiaanse `it-it` diakritische tekens
+#### <a name="italian-it-it-diacritics"></a>Italiaans `it-it` diakritische tekens
 
 |Diakritische tekens ingesteld op ONWAAR|Diakritische tekens ingesteld op True|
 |--|--|
@@ -125,7 +125,7 @@ Dit omvat zowel Franse als Canadese subcultuuren.
 |`ù`|`u`|
 |`ú`|`u`|
 
-#### <a name="spanish-es--diacritics"></a>Spaanse `es-` diakritische tekens
+#### <a name="spanish-es--diacritics"></a>Spaans `es-` diakritische tekens
 
 Dit omvat zowel de Spaanse als de Canadese Mexicaanse.
 
@@ -142,7 +142,7 @@ Dit omvat zowel de Spaanse als de Canadese Mexicaanse.
 
 ## <a name="punctuation-normalization"></a>Normalisatie van interpunctie
 
-Schakel utterance normalisatie in voor interpunctie naar het JSON-app-bestand van `settings` uw Luis in de para meter.
+Schakel utterance normalisatie in voor interpunctie naar het JSON-app-bestand van uw LUIS in de para meter `settings`.
 
 ```JSON
 "settings": [
@@ -150,16 +150,16 @@ Schakel utterance normalisatie in voor interpunctie naar het JSON-app-bestand va
 ] 
 ```
 
-In de volgende uitingen ziet u hoe diakritische items uitingen:
+In de volgende uitingen ziet u hoe interpunctie gevolgen heeft voor uitingen:
 
-|Waarbij diakritische tekens zijn ingesteld op False|Als diakritische tekens zijn ingesteld op True|
+|Met interpunctie ingesteld op ONWAAR|Met interpunctie ingesteld op True|
 |--|--|
 |`Hmm..... I will take the cappuccino`|`Hmm I will take the cappuccino`|
 |||
 
 ### <a name="punctuation-removed"></a>Verwijderde interpunctie
 
-De volgende interpunctie is verwijderd `NormalizePunctuation` met is ingesteld op waar.
+De volgende interpunctie wordt verwijderd met `NormalizePunctuation` is ingesteld op waar.
 
 |Leestekens|
 |--|

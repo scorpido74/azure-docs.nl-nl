@@ -1,5 +1,5 @@
 ---
-title: Een upgrade uitvoeren voor een Azure Service Fabric-cluster | Microsoft Docs
+title: Een Azure Service Fabric-cluster upgraden
 description: Meer informatie over het bijwerken van de versie of configuratie van een Azure Service Fabric-cluster.  In dit artikel wordt het instellen van de cluster update modus beschreven, het bijwerken van certificaten, het toevoegen van toepassings poorten, het uitvoeren van besturingssysteem patches en wat u kunt verwachten wanneer de upgrades worden uitgevoerd.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: atsenthi
-ms.openlocfilehash: 2c8465a3aba4a21efaa20a118807d739dd501b09
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 161c720fbcc9370aaf273b241e88a7184f47371b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599776"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013307"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Een Azure Service Fabric-cluster bijwerken en bijwerken
 
@@ -36,7 +36,7 @@ U kunt uw cluster zo instellen dat automatische infrastructuur upgrades worden o
 ## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>Infrastructuur upgrade gedrag tijdens automatische upgrades
 Micro soft onderhoudt de infrastructuur code en configuratie die wordt uitgevoerd in een Azure-cluster. We voeren een automatische bewaakte upgrade naar de software uit op basis van de behoeften. Deze upgrades kunnen code, configuratie of beide zijn. Om ervoor te zorgen dat uw toepassing geen gevolgen heeft voor of minimale gevolgen als gevolg van deze upgrades, voeren we de upgrades uit in de volgende fasen:
 
-### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>Fase 1: Een upgrade wordt uitgevoerd met alle cluster status beleidsregels
+### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>Fase 1: een upgrade wordt uitgevoerd met behulp van alle cluster status beleidsregels
 Tijdens deze fase gaan de upgrades één upgrade domein per keer door en worden de toepassingen die in het cluster worden uitgevoerd, zonder uitval tijd uitgevoerd. Het cluster status beleid (een combi natie van de status van het knoop punt en de status van alle toepassingen die in het cluster worden uitgevoerd) wordt tijdens de upgrade gerespecteerd.
 
 Als niet aan het status beleid van het cluster wordt voldaan, wordt de upgrade teruggedraaid. Vervolgens wordt er een e-mail bericht verzonden naar de eigenaar van het abonnement. Het e-mail bericht bevat de volgende informatie:
@@ -49,7 +49,7 @@ We proberen dezelfde upgrade nog een paar keer uit te voeren als er upgrades zij
 
 Als aan het cluster status beleid wordt voldaan, wordt de upgrade beschouwd als geslaagd en als voltooid gemarkeerd. Dit kan gebeuren tijdens de eerste upgrade of wanneer een upgrade opnieuw wordt uitgevoerd in deze fase. Er is geen e-mail bevestiging van een geslaagde uitvoering. Dit is om te voor komen dat u te veel e-mails verzendt: het ontvangen van een e-mail bericht moet worden gezien als een uitzonde ring op normaal. De meeste cluster upgrades worden verwacht zonder dat dit van invloed is op de beschik baarheid van uw toepassing.
 
-### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>Fase 2: Een upgrade wordt uitgevoerd door alleen een standaard status beleid te gebruiken
+### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>Fase 2: een upgrade wordt uitgevoerd door alleen een standaard status beleid te gebruiken
 Het status beleid in deze fase wordt zodanig ingesteld dat het aantal toepassingen dat in orde was aan het begin van de upgrade, hetzelfde blijft voor de duur van het upgrade proces. Net als bij fase 1 gaan de upgrades fase 2 één upgrade domein tegelijk door en worden de toepassingen die in het cluster werden uitgevoerd, zonder uitval tijd uitgevoerd. Het cluster status beleid (een combi natie van de status van het knoop punt en de status van alle toepassingen die in het cluster worden uitgevoerd) wordt gerespecteerd voor de duur van de upgrade.
 
 Als niet wordt voldaan aan de beleids regels voor de cluster status, wordt de upgrade teruggedraaid. Vervolgens wordt er een e-mail bericht verzonden naar de eigenaar van het abonnement. Het e-mail bericht bevat de volgende informatie:
@@ -62,7 +62,7 @@ We proberen dezelfde upgrade nog een paar keer uit te voeren als er upgrades zij
 
 Als aan het cluster status beleid wordt voldaan, wordt de upgrade beschouwd als geslaagd en als voltooid gemarkeerd. Dit kan gebeuren tijdens de eerste upgrade of wanneer een upgrade opnieuw wordt uitgevoerd in deze fase. Er is geen e-mail bevestiging van een geslaagde uitvoering.
 
-### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Fase 3: Een upgrade wordt uitgevoerd door middel van een agressief status beleid
+### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Fase 3: een upgrade wordt uitgevoerd door middel van een agressief status beleid
 Deze status beleidsregels in deze fase zijn gericht op het volt ooien van de upgrade, in plaats van de status van de toepassingen. Enkele cluster upgrades eindigen in deze fase. Als uw cluster deze fase krijgt, is er een goede kans dat uw toepassing een slechte status krijgt en/of de beschik baarheid verliest.
 
 Net als bij de andere twee fasen gaat fase 3-upgrades één upgrade domein per keer door.
@@ -104,7 +104,7 @@ De patch Orchestration Application (POA) is een Service Fabric-toepassing waarme
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het aanpassen van een aantal van de [service Fabric-cluster infrastructuur instellingen](service-fabric-cluster-fabric-settings.md)
-* Meer informatie over hoe u [uw cluster in-en](service-fabric-cluster-scale-up-down.md) uitschaalt
+* Meer informatie over hoe u [uw cluster in-en uitschaalt](service-fabric-cluster-scale-up-down.md)
 * Meer informatie over [toepassings upgrades](service-fabric-application-upgrade.md)
 
 <!--Image references-->

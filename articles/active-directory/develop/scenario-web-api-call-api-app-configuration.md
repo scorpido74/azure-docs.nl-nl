@@ -15,12 +15,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 529665a03d2203dcb501b59d7647f4390bdaeb78
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 5bae9f565dd37fbd3bcae38833662e13e0b7ac6d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936741"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960655"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Web-API voor het aanroepen van web-Api's-code configuratie
 
@@ -70,13 +70,13 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
 De methode AddAccountToCacheFromJwt () moet:
 
 - Instantiëren van een MSAL vertrouwelijke client toepassing.
-- Aanroep `AcquireTokenOnBehalf` voor het uitwisselen van het Bearer-token dat is verkregen door de client voor de Web-API, op basis van een Bearer-token voor dezelfde gebruiker, maar voor onze API om een downstream API aan te roepen.
+- Roep `AcquireTokenOnBehalf` aan voor het uitwisselen van het Bearer-token dat is verkregen door de client voor de Web-API, op basis van een Bearer-token voor dezelfde gebruiker, maar voor onze API om een downstream API aan te roepen.
 
 ### <a name="instantiate-a-confidential-client-application"></a>Een vertrouwelijke client toepassing instantiëren
 
-Deze stroom is alleen beschikbaar in de vertrouwelijke client stroom, zodat de beveiligde web-API client referenties (client Secret of Certificate) aan de [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) via `WithClientSecret` de `WithCertificate` of-methoden verstrekt. respectievelijk.
+Deze stroom is alleen beschikbaar in de vertrouwelijke client stroom, zodat de beveiligde web-API client referenties (client Secret of Certificate) naar de [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) via de methoden `WithClientSecret` of `WithCertificate` verschaft.
 
-![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
+![installatiekopie](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
 ```CSharp
 IConfidentialClientApplication app;
@@ -99,13 +99,13 @@ Dit geavanceerde scenario wordt beschreven in [client verklaringen](msal-net-cli
 
 ### <a name="how-to-call-on-behalf-of"></a>Namens aanroepen
 
-De aanroep namens een (OBO) wordt uitgevoerd door de methode [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) op de `IConfidentialClientApplication` interface aan te roepen.
+De aanroep namens een (OBO) wordt uitgevoerd door de [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) -methode aan te roepen op de `IConfidentialClientApplication`-interface.
 
-De `UserAssertion` is gebaseerd op het Bearer-token dat is ontvangen door de Web-API van de eigen clients. Er zijn [twee constructors](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet): één die een JWT Bearer-token gebruikt, en een van de verschillende soorten gebruikers verklaringen (een ander type beveiligings token, dat vervolgens wordt opgegeven in een extra para meter met de `assertionType`naam).
+De `UserAssertion` is gebaseerd op het Bearer-token dat is ontvangen door de Web-API van de eigen clients. Er zijn [twee constructors](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet): één die een JWT Bearer-token gebruikt, en een van de verschillende soorten gebruikers verklaringen (een ander type beveiligings token, dat vervolgens wordt opgegeven in een extra para meter met de naam `assertionType`).
 
-![image](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
+![installatiekopie](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
-In de praktijk wordt de OBO-stroom vaak gebruikt voor het verkrijgen van een token voor een downstream API en deze op te slaan in de cache van de MSAL.net-gebruikers token, zodat andere onderdelen van [](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) de Web-API ``AcquireTokenOnSilent`` later kunnen worden aangeroepen op de onderdrukkingen van om de downstream-api's aan te roepen. Deze aanroep heeft gevolgen voor het vernieuwen van de tokens, indien nodig.
+In de praktijk wordt de OBO-stroom vaak gebruikt voor het verkrijgen van een token voor een downstream API en deze op te slaan in de cache van de MSAL.NET-gebruikers token, zodat andere onderdelen van de Web-API later kunnen worden aangeroepen op de [onderdrukkingen](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) van ``AcquireTokenOnSilent`` om de downstream-api's aan te roepen. Deze aanroep heeft gevolgen voor het vernieuwen van de tokens, indien nodig.
 
 ```CSharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
@@ -140,6 +140,8 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
      }
 }
 ```
+
+U kunt ook een voor beeld zien van namens de stroom implementatie in [NodeJS en Azure functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61).
 
 ## <a name="protocol"></a>Protocol
 

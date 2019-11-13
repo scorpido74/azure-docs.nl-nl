@@ -3,7 +3,7 @@ title: Controleactiviteitenrapporten in Azure Active Directory Portal | Microsof
 description: Ontdek de controleactiviteitenrapporten in de Azure Active Directory Portal
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 07/17/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43c5849dcd037915a46de182064b3e630a663ec
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 8883e3ade7e5d52f3a62346bf8be51ac36042f82
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907184"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008528"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Controleactiviteitenrapporten in Azure Active Directory Portal 
 
@@ -42,7 +42,6 @@ In dit artikel vindt u een overzicht van het controle rapport.
 ## <a name="who-can-access-the-data"></a>Wie heeft er toegang tot de gegevens?
 
 * Gebruikers in **beveiligings beheerders**, **beveiligings lezer**, **Report Reader** of **Global Administrator** rollen
-* Daarnaast kunnen alle gebruikers (niet-beheerders) hun eigen aanmeldings activiteiten zien
 
 ## <a name="audit-logs"></a>Auditlogboeken
 
@@ -90,7 +89,7 @@ U kunt de controle gegevens filteren op de volgende velden:
 
 Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de volgende services selecteren:
 
-- Alles
+- Alle
 - Toegangsbeoordelingen
 - Account inrichten 
 - SSO van de toepassing
@@ -108,7 +107,7 @@ Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de vo
 
 Met het filter **categorie** kunt u een van de volgende filters selecteren:
 
-- Alles
+- Alle
 - AdministrativeUnit
 - ApplicationManagement
 - Authentication
@@ -131,7 +130,7 @@ U kunt de lijst met alle controle activiteiten ophalen met behulp van de Graph A
 
 Met het filter **status** kunt u filteren op basis van de status van een audit bewerking. De status kan een van de volgende zijn:
 
-- Alles
+- Alle
 - Geslaagd
 - Fout
 

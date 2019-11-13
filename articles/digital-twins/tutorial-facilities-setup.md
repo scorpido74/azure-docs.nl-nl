@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Digital Twins implementeren | Microsoft Docs'
+title: 'Zelf studie: een ruimtelijke grafiek implementeren-Azure Digital Apparaatdubbels | Microsoft Docs'
 description: In deze zelfstudie leert u stapsgewijs hoe u uw exemplaar van Azure Digital Twins implementeert en uw ruimtelijke resources configureert.
 services: digital-twins
 ms.author: alinast
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/17/2019
-ms.openlocfilehash: 54afe8ea67996562c88a2ade2ec16c4eaa89cdee
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 481e38df0855eddd7e050afad0fd0220b3c66690
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949735"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014073"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Zelfstudie: Azure Digital Apparaatdubbels preview implementeren en een ruimtelijke grafiek configureren
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Zelf studie: Azure Digital Apparaatdubbels preview implementeren en een ruimtelijke grafiek configureren
 
 U kunt de Azure Digital Apparaatdubbels preview-service gebruiken om mensen, plaatsen en apparaten samen te brengen in een samenhangend ruimtelijk systeem. Deze reeks zelfstudies laat zien hoe u Azure Digital Twins gebruikt voor het detecteren van ruimtebezetting met optimale omstandigheden qua temperatuur- en luchtkwaliteit. 
 
@@ -132,7 +132,7 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 ```
 
-Deze functie maakt gebruik van het bestand [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) in dezelfde map. Open dit bestand en bekijk de hiërarchie van een kantoorgebouw: *locatie*, *verdieping*, *gebied* en *ruimten*. Elk van deze fysieke ruimten kan *devices* en *sensors* bevatten. Elk vermelding heeft een vooraf gedefinieerde `type`&mdash;, bijvoorbeeld Verdieping, Ruimte.
+Deze functie maakt gebruik van het bestand [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) in dezelfde map. Open dit bestand en bekijk de hiërarchie van een kantoorgebouw, bestaande uit: *locatie*, *verdieping*, *gebied* en *ruimten*. Elk van deze fysieke ruimten kan *devices* en *sensors* bevatten. Elk vermelding heeft een vooraf gedefinieerde `type`&mdash;, bijvoorbeeld Verdieping, Ruimte.
 
 Het **yaml**-voorbeeldbestand bevat een ruimtelijke grafiek die gebruikmaakt van het Digital Twins-objectmodel `Default`. Dit model bevat algemene namen voor de meeste typen. Algemene namen zijn voldoende voor een gebouw. Voorbeelden hiervan zijn Temperatuur voor SensorDataType en Toewijzen voor SpaceBlobType. Een voorbeeld van een type ruimte is Ruimte met de subtypen Concentratieruimte, Vergaderruimte, enzovoort. 
 
@@ -144,13 +144,13 @@ Lees voor meer informatie over ruimtelijke grafieken en de objectmodellen [Inzic
 
 Het bestand **provisionSample.yaml** bevat de volgende knooppunten:
 
-- **resources**: het knooppunt `resources` maakt een Azure IoT Hub-resource om te communiceren met de apparaten in uw installatie. Een IoT-hub in het hoofdknooppunt van uw grafiek kan communiceren met alle apparaten en sensoren in uw grafiek.  
+- **resources**: het knooppunt `resources` maakt een IoT Hub-resource om te communiceren met de apparaten in uw installatie. Een IoT-hub in het hoofdknooppunt van uw grafiek kan communiceren met alle apparaten en sensoren in uw grafiek.  
 
 - **spaces**: in het Digital Twins-objectmodel worden de fysieke locaties vertegenwoordigd door `spaces`. Elke ruimte heeft een `Type`&mdash;, bijvoorbeeld een regio, locatie of klant&mdash;, en een gebruiksvriendelijke `Name`. Ruimten kunnen deel uitmaken van andere ruimten in een hiërarchische structuur. Het bestand provisionSample.yaml bevat een ruimtelijke grafiek van een denkbeeldig gebouw. Merk op dat ruimten van het type `Floor` logisch genest zijn in `Venue`, `Area` in een verdieping, en `Room`-knooppunten in een gebied. 
 
-- **devices**: ruimten kunnen `devices` bevatten. Dit zijn fysieke of virtuele entiteiten waarmee een aantal sensoren wordt beheerd. Een apparaat kan bijvoorbeeld het telefoonnummer van een gebruiker zijn of een Raspberry Pi-sensorpod, een gateway, enzovoort. In het denkbeeldige gebouw uit het voorbeeld bevat de ruimte **Focus Room** bijvoorbeeld het apparaat **Raspberry Pi 3 A1**. Elk apparaatknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die is vastgelegd in het voorbeeld. Als u dit voorbeeld wilt configureren in een productieomgeving, moet u deze waarden vervangen door de waarden van uw installatie.  
+- **devices**: ruimten kunnen `devices` bevatten. Dat zijn fysieke of virtuele entiteiten waarmee een aantal sensoren wordt beheerd. Een apparaat kan bijvoorbeeld het telefoonnummer van een gebruiker zijn of een Raspberry Pi-sensorpod, een gateway, enzovoort. In het denkbeeldige gebouw uit het voorbeeld bevat de ruimte **Focus Room** bijvoorbeeld het apparaat **Raspberry Pi 3 A1**. Elk apparaatknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die is vastgelegd in het voorbeeld. Als u dit voorbeeld wilt configureren in een productieomgeving, moet u deze waarden vervangen door de waarden van uw installatie.  
 
-- **sensors**: een apparaat kan meerdere `sensors` bevatten. Hiermee kunnen fysieke wijzigingen (bijvoorbeeld in temperatuur, beweging of accuniveau) worden gedetecteerd en vastgelegd. Elk sensorknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die hier is vastgelegd. Voor een werkelijke toepassing moet u deze vervangen door de unieke id's van de sensoren in uw installatie. Het bestand provisionSample.yaml bevat twee sensoren: een bewegingssensor (*Motion*) en een CO2-sensor (*CarbonDioxide*). Voeg, onder de regels voor de CO2-sensor, de volgende regels toe om een temperatuursensor (*Temperature*) toe te voegen. Merk op dat deze regels in provisionSample.yaml zijn opgegeven als commentaarregels. U kunt er coderegels van maken door het teken `#` aan het begin van elke regel te verwijderen. 
+- **sensoren**: een apparaat kan meerdere `sensors` bevatten. Hiermee kunnen fysieke wijzigingen (bijvoorbeeld in temperatuur, beweging of accuniveau) worden gedetecteerd en vastgelegd. Elk sensorknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die hier is vastgelegd. Voor een werkelijke toepassing moet u deze vervangen door de unieke id's van de sensoren in uw installatie. Het bestand provisionSample.yaml bevat twee sensoren: een bewegingssensor (*Motion*) en een CO2-sensor (*CarbonDioxide*). Voeg, onder de regels voor de CO2-sensor, de volgende regels toe om een temperatuursensor (*Temperature*) toe te voegen. Merk op dat deze regels in provisionSample.yaml zijn opgegeven als commentaarregels. U kunt er coderegels van maken door het teken `#` aan het begin van elke regel te verwijderen. 
 
     ```yaml
             - dataType: Temperature
@@ -179,4 +179,4 @@ Als u Azure Digital Twins niet verder wilt verkennen, kunt u de resources die in
 
 Ga voor meer informatie over het implementeren van aangepaste logica voor het bewaken van de omstandigheden in uw voorbeeldgebouw naar de volgende zelfstudie in de reeks: 
 > [!div class="nextstepaction"]
-> [Zelfstudie: uw gebouw inrichten en uw werkomstandigheden controleren](tutorial-facilities-udf.md)
+> [Zelfstudie: Uw gebouw inrichten en uw werkomstandigheden controleren](tutorial-facilities-udf.md)

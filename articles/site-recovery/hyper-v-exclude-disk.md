@@ -1,19 +1,18 @@
 ---
-title: Schijven uitsluiten van replicatie bij het instellen van herstel na noodgeval met de Azure Site Recovery-service | Microsoft Docs
-description: Beschrijft hoe u VM-schijven uitsluiten van replicatie tijdens herstel na noodgevallen naar Azure.
+title: Schijven uitsluiten van replicatie in nood herstel met Azure Site Recovery
+description: Hierin wordt beschreven hoe u VM-schijven uitsluiten van replicatie tijdens herstel na nood gevallen naar Azure.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 01/19/2019
+ms.date: 11/12/2019
 ms.author: mayg
-ms.openlocfilehash: f86ded99ef5280a4e6929c39a9fd323d1b61f6f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12304067e1a92559c2313fd7382f271249a8c784
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773892"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961439"
 ---
 # <a name="exclude-disks-from-replication"></a>Schijven uitsluiten van replicatie
 In dit artikel wordt beschreven hoe u schijven uitsluit van replicatie. Door schijven uit te sluiten, kunt u de verbruikte replicatiebandbreedte optimaliseren of de resources aan de doelzijde waarvan deze schijven gebruikmaken, optimaliseren.
@@ -60,7 +59,7 @@ We leggen het uitsluiten van schijven uit aan de hand van twee scenario's:
 - tempdb-schijf in SQL Server
 - Schijf van het wisselbestand (pagefile.sys)
 
-## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>Voorbeeld 1: De tempdb-schijf in SQL Server uitsluiten
+## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>Voorbeeld 1: de tempdb-schijf in SQL Server uitsluiten
 We gaan uit van een virtuele SQL Server-machine met een tempdb die kan worden uitgesloten.
 
 De naam van de virtuele schijf is SalesDB.
@@ -71,10 +70,10 @@ De schijven op de virtuele bronmachine zijn de volgende:
 **Schijfnaam** | **Gastbesturingssysteemschijf#** | **Stationsletter** | **Gegevenstype op de schijf**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Besturingssysteemschijf
-DB-Disk1| Disk1 | D:\ | SQL-systeemdatabase en gebruikersdatabase1
+DB-Disk1| Disk1 | D:\ | SQL-systeemdatabase en gebruikersdatabase 1
 DB-Disk2 (de schijf is uitgesloten van beveiliging) | Disk2 | E:\ | Tijdelijke bestanden
-DB-Disk3 (de schijf is uitgesloten van beveiliging) | Disk3 | F:\ | SQL-tempdb-database (mappad (F:\MSSQL\Data\) <br /> <br />Noteer het mappad voordat de failover.
-DB-Disk4 | Disk4 |G:\ |Gebruikersdatabase2
+DB-Disk3 (de schijf is uitgesloten van beveiliging) | Disk3 | F:\ | SQL-tempdb-database (mappad (F:\MSSQL\Data\) <br /> <br />Noteer het mappad voor failover.
+DB-Disk4 | Disk4 |G:\ |Gebruikersdatabase 2
 
 Omdat het gegevensverloop op twee schijven van de virtuele machine tijdelijk is, sluit u Disk2 en Disk3 uit van replicatie terwijl u de virtuele SalesDB-machine beveiligt. Azure Site Recovery repliceert deze schijven niet. Bij een failover zijn deze schijven niet aanwezig op de virtuele failover-machine in Azure.
 
@@ -83,9 +82,9 @@ De schijven op de virtuele Azure-machine na de failover zijn de volgende:
 **Gastbesturingssysteemschijf#** | **Stationsletter** | **Gegevenstype op de schijf**
 --- | --- | ---
 DISK0 | C:\ | Besturingssysteemschijf
-Disk1 | E:\ | Tijdelijke opslag<br /> <br />Azure voegt deze schijf en wijst de eerste beschikbare stationsletter toe.
-Disk2 | D:\ | SQL-systeemdatabase en gebruikersdatabase1
-Disk3 | G:\ | Gebruikersdatabase2
+Disk1 | E:\ | Tijdelijke opslag<br /> <br />Azure voegt deze schijf toe en wijst de eerste beschik bare stationsletter toe.
+Disk2 | D:\ | SQL-systeemdatabase en gebruikersdatabase 1
+Disk3 | G:\ | Gebruikersdatabase 2
 
 Omdat Disk2 en Disk3 zijn uitgesloten van de virtuele SalesDB-machine, is E: de eerste stationsletter in de lijst. Azure wijst E: toe aan het tijdelijke opslagvolume. De stationsletter is voor alle gerepliceerde schijven hetzelfde.
 
@@ -147,9 +146,9 @@ De configuratie van de Azure-VM-schijven in het vorige voorbeeld:
 **Gastbesturingssysteemschijf#** | **Stationsletter** | **Gegevenstype op de schijf**
 --- | --- | ---
 DISK0 | C:\ | Besturingssysteemschijf
-Disk1 | E:\ | Tijdelijke opslag<br /> <br />Azure voegt deze schijf en wijst de eerste beschikbare stationsletter toe.
-Disk2 | D:\ | SQL-systeemdatabase en gebruikersdatabase1
-Disk3 | G:\ | Gebruikersdatabase2
+Disk1 | E:\ | Tijdelijke opslag<br /> <br />Azure voegt deze schijf toe en wijst de eerste beschik bare stationsletter toe.
+Disk2 | D:\ | SQL-systeemdatabase en gebruikersdatabase 1
+Disk3 | G:\ | Gebruikersdatabase 2
 
 Wanneer er een failback naar de oorspronkelijke locatie wordt uitgevoerd, blijft de schijfconfiguratie voor de virtuele failback-machine hetzelfde als van de oorspronkelijke virtuele machine-schijf voor Hyper-V. Schijven die zijn uitgesloten van Hyper-V-site naar Azure, zijn beschikbaar op de virtuele failback-machine.
 
@@ -158,17 +157,17 @@ Schijven op de virtuele Hyper-V-machine (oorspronkelijke locatie) na de geplande
 **Schijfnaam** | **Gastbesturingssysteemschijf#** | **Stationsletter** | **Gegevenstype op de schijf**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 |   C:\ | Besturingssysteemschijf
-DB-Disk1 | Disk1 | D:\ | SQL-systeemdatabase en gebruikersdatabase1
+DB-Disk1 | Disk1 | D:\ | SQL-systeemdatabase en gebruikersdatabase 1
 DB-Disk2 (uitgesloten schijf) | Disk2 | E:\ | Tijdelijke bestanden
 DB-Disk3 (uitgesloten schijf) | Disk3 | F:\ | SQL-tempdb-database (mappad (F:\MSSQL\Data\)
-DB-Disk4 | Disk4 | G:\ | Gebruikersdatabase2
+DB-Disk4 | Disk4 | G:\ | Gebruikersdatabase 2
 
-## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>Voorbeeld 2: Schijf van het wisselbestand (pagefile.sys) uitsluiten
+## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>Voorbeeld 2: schijf van het wisselbestand (pagefile.sys) uitsluiten
 
 We gaan uit van een virtuele machine met een wisselbestandschijf die kan worden uitgesloten.
 Er zijn twee mogelijke situaties.
 
-### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>Geval 1: Het wisselbestand is geconfigureerd op de D:-schijf
+### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>Situatie 1: het wisselbestand is geconfigureerd op de D:-schijf
 Dit is de schijfconfiguratie:
 
 **Schijfnaam** | **Gastbesturingssysteemschijf#** | **Stationsletter** | **Gegevenstype op de schijf**
@@ -197,7 +196,7 @@ Dit zijn de instellingen voor het wisselbestand op de virtuele Azure-machine:
 
 ![Instellingen voor het wisselbestand op de virtuele Azure-machine](./media/hyper-v-exclude-disk/pagefile-on-Azure-vm-after-failover.png)
 
-### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Geval 2: Het wisselbestand is geconfigureerd op een ander station (met uitzondering van D:-schijf)
+### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Situatie 2: het wisselbestand is geconfigureerd op een ander station (met uitzondering van de D:-schijf)
 
 Dit is de schijfconfiguratie voor de virtuele bronmachine:
 

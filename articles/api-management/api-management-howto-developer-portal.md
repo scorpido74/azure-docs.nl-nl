@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1eef7b6505c4800acbe8aa69cf6f17eecc503aed
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6bf8c8690977ef1036c853d8c1c01a3a366b50df
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796025"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011483"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Overzicht van Azure API Management-ontwikkelaars Portal
 
@@ -27,7 +27,7 @@ In dit artikel worden de verschillen beschreven tussen zelf-hostende en beheerde
 
 > [!WARNING]
 > De nieuwe ontwikkelaars portal wordt momenteel geïmplementeerd naar API Management Services.
-> Als uw service nieuw is gemaakt of een Developer tier-service is, moet u de nieuwste versie al hebben. Anders kunt u problemen ondervinden (bijvoorbeeld met de publicatie functionaliteit). De implementatie van de functie wordt voltooid op maandag 11 november 2019.
+> Als uw service nieuw is gemaakt of een Developer tier-service is, moet u de nieuwste versie al hebben. Anders kunt u problemen ondervinden (bijvoorbeeld met de publicatie functionaliteit). De implementatie van de functie wordt verwacht door vrijdag november 22, 2019.
 >
 > [Meer informatie over het migreren van de preview-versie naar de algemeen beschik bare versie](#preview-to-ga) van de ontwikkelaars Portal.
 

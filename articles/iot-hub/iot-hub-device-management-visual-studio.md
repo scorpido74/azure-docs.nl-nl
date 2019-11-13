@@ -1,5 +1,5 @@
 ---
-title: Azure IoT-Apparaatbeheer met Cloud Explorer voor Visual Studio | Microsoft Docs
+title: Beheer van Azure IoT-apparaten met Visual Studio Cloud Explorer
 description: Gebruik de Cloud Explorer voor Visual Studio voor Azure IoT Hub Apparaatbeheer, met de juiste methoden en de gewenste beheer opties voor eigenschappen van de twee.
 author: shizn
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: e05ba421a4535e6e424e65a1f2271d19f9d9abf4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048683"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953186"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Cloud Explorer gebruiken voor Visual Studio voor Azure IoT Hub Apparaatbeheer
 
@@ -59,7 +59,7 @@ Het onderdeel Cloud Explorer van Visual Studio Installer voor Visual Studio 2017
 
 ## <a name="sign-in-to-access-your-hub"></a>Meld u aan om toegang te krijgen tot uw hub
 
-1. Selecteer in Visual Studio**Cloud Explorer** **weer geven** > om Cloud Explorer te openen.
+1. Selecteer in Visual Studio **weer gave** > **Cloud Explorer** om Cloud Explorer te openen.
 
 1. Selecteer het pictogram account beheer om uw abonnementen weer te geven.
 

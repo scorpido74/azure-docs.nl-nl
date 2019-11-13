@@ -1,22 +1,21 @@
 ---
-title: Een e-mail ontvangen wanneer de deur wordt geopend met behulp van de SendGrid-service en Azure Functions | Microsoft Docs
+title: E-mail verzenden wanneer de deur wordt geopend met Azure Functions
 description: Bewaak de magnetische sensor om te detecteren wanneer een deur wordt geopend en gebruik Azure Functions om een e-mail melding te verzenden.
 author: liydu
-manager: jeffya
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 6cbf3f906b511d9d76319f57f5508a2c584213cb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 23607b52f866bb7b0be760e49be7d62d1732d43c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484071"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954753"
 ---
-# <a name="door-monitor"></a>Monitor voor deur          
+# <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitor voor deuren: e-mail met Azure Functions en SendGrid verzenden wanneer een deur wordt geopend           
 
 De MXChip IoT DevKit bevat een ingebouwde magnetische sensor. In dit project detecteert u de aanwezigheid of afwezigheid van een sterk magnetisch veld met een nabijgelegen niveau, in dit geval afkomstig van een kleine, permanente magneet.
 

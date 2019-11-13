@@ -1,6 +1,6 @@
 ---
-title: De schaal van uw Azure Time Series Insights omgeving plannen | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u aanbevolen procedures volgt wanneer u een Azure Time Series Insights omgeving plant. Gebieden die worden gedekt zijn opslag capaciteit, gegevens retentie, ingangs capaciteit, bewaking en bedrijfs continuïteit en herstel na nood gevallen (BCDR).
+title: Uw GA-omgeving plannen-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over aanbevolen procedures voor het volgen van de planning van uw GA-omgeving.
 services: time-series-insights
 ms.service: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 649ff31e40bf612f1b70f81e895920f7fc21f082
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 2dd3b79e931464e83264433a923e9078b2f62525
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991245"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006961"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Uw Azure Time Series Insights GA-omgeving plannen
 
@@ -46,7 +46,7 @@ Houd rekening met de volgende kenmerken als u uw Time Series Insights omgeving v
 
 Standaard worden gegevens door Time Series Insights bewaard op basis van de hoeveelheid opslag ruimte die u hebt ingericht &#215; (eenheden van de hoeveelheid opslag per eenheid) en binnenkomend.
 
-## <a name="data-retention"></a>Gegevens bewaren
+## <a name="data-retention"></a>Bewaartijd van gegevens
 
 U kunt de instelling voor de **Bewaar tijd van gegevens** in uw Azure time series Insights omgeving wijzigen. U kunt Maxi maal 400 dagen retentie inschakelen. 
 
@@ -68,7 +68,7 @@ U kunt de Bewaar periode aanpassen en scha kelen tussen de twee modi op de confi
 
 1. Voer in het vak **tijdstip van bewaren van gegevens (in dagen)** een waarde in tussen 1 en 400.
 
-   [Bewaar![configureren](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
+   [Bewaar ![configureren](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
 
 > [!TIP]
 > Zie de [Bewaar periode configureren](./time-series-insights-how-to-configure-retention.md)voor meer informatie over het implementeren van een geschikt Bewaar beleid voor gegevens.

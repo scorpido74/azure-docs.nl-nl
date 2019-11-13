@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a8021885bf51ab6d44bc8576b9fdd69f1bdd270a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492716"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953710"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Zelf studie: exacte tekst-overeenkomende gegevens ophalen uit een utterance
 
@@ -49,7 +49,7 @@ Een entiteit List is een goede keuze voor dit type gegevens wanneer:
 
 * De gegevenswaarden deel uitmaken van een bekende set.
 * De set maximale [begrenzingen](luis-boundaries.md) van LUIS voor dit entiteitstype niet overschrijdt.
-* De tekst in de utterance is een exact overeenkomst met een synoniem of de canonieke naam. LUIS gebruikt de lijst alleen voor exact tekstovereenkomsten. Stammen, meervoudsvormen en andere varianten kunnen niet worden verwerkt met alleen een lijstentiteit. Hiervoor kunt u overwegen een [patroon](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) met de optionele tekstsyntaxis te gebruiken. 
+* De tekst in de utterance is een exact overeenkomst met een synoniem of de canonieke naam. LUIS gebruikt de lijst alleen voor exact tekstovereenkomsten. Stammen, meervoudsvormen en andere varianten kunnen niet worden verwerkt met alleen een lijstentiteit. Hiervoor kunt u overwegen een [patroon](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) met de optionele tekstsyntaxis te gebruiken. 
 
 ## <a name="create-a-new-app"></a>Een nieuwe app maken
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights preview vaststellen en problemen oplossen | Microsoft Docs
-description: Meer informatie over het vaststellen en oplossen van problemen met Azure Time Series Insights preview.
+title: Een voorbeeld omgeving diagnosticeren en problemen oplossen-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over het vaststellen en oplossen van problemen met een Azure Time Series Insights-voorbeeld omgeving.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b65edbd808abd6ff660ef00a8a680b4d3f0846c
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: df8300e84309a874faa4b1c06891a4c5b549fce6
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989886"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014784"
 ---
-# <a name="diagnose-and-troubleshoot"></a>Problemen vaststellen en oplossen
+# <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Een voorbeeld omgeving diagnosticeren en problemen oplossen
 
 In dit artikel vindt u een overzicht van enkele veelvoorkomende problemen die u kunt tegen komen wanneer u met uw Azure Time Series Insights-voorbeeld omgeving werkt. In het artikel worden ook mogelijke oorzaken en oplossingen voor elk probleem beschreven.
 
@@ -35,11 +35,11 @@ Er zijn verschillende veelvoorkomende redenen waarom u uw gegevens mogelijk niet
 
     Controleer of uw gebeurtenis bron, een Event Hub of een IoT-hub, gegevens ontvangt van uw tags of exemplaren. Als u wilt controleren, gaat u naar de overzichts pagina van uw resource in de Azure Portal.
 
-    [![dash board-inzichten](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
+    [![Dashboard-insights](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
 
 - De bron gegevens van uw gebeurtenis bevindt zich niet in JSON-indeling.
 
-    Time Series Insights ondersteunt alleen JSON-gegevens. Zie [ondersteunde JSON-shapes](./how-to-shape-query-json.md)voor json-voor beelden.
+    Time Series Insights ondersteunt alleen JSON-gegevens. Zie voor voorbeelden van JSON, [ondersteund JSON-vormen](./how-to-shape-query-json.md).
 
 - Er ontbreekt een vereiste machtiging voor de bron sleutel van uw gebeurtenis.
 
@@ -74,10 +74,10 @@ Mogelijk verzendt u gegevens zonder de tijd reeks-ID.
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Probleem: de eigenschaps naam van de tijds tempel van de gebeurtenis bron werkt niet
 
-Zorg ervoor dat de naam en de waarde voldoen aan de volgende regels:
+Zorg ervoor dat de naam en waarde aan de volgende regels voldoet:
 
 * De naam van de tijds tempel eigenschap is hoofdletter gevoelig.
-* De waarde van de tijds tempel eigenschap die afkomstig is van uw gebeurtenis bron als JSON-teken reeks heeft de indeling `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Een voor beeld van een dergelijke teken reeks is `“2008-04-12T12:53Z”`.
+* De waarde van de tijds tempel eigenschap die afkomstig is van uw gebeurtenis bron als JSON-teken reeks heeft de indeling `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Een voorbeeld van een tekenreeks is die is `“2008-04-12T12:53Z”`.
 
 De eenvoudigste manier om ervoor te zorgen dat de naam van de tijds tempel eigenschap wordt vastgelegd en correct werkt, is door de Time Series Insights preview Explorer te gebruiken. Gebruik in de Time Series Insights preview Explorer de grafiek om een periode te selecteren nadat u de naam van de tijds tempel eigenschap hebt ingesteld. Klik met de rechter muisknop op de selectie en selecteer de optie **gebeurtenissen verkennen** . De eerste kolomkop is de naam van de eigenschap time stamp. `($ts)` moet naast het woord `Timestamp`staan, in plaats van:
 
@@ -98,7 +98,7 @@ Als de tijds tempel eigenschap niet expliciet is opgegeven, wordt de IoT-hub van
 
    Time Series-modellen worden alleen ondersteund in omgevingen met betalen per gebruik. Zie [gegevens visualiseren in de Explorer](./time-series-insights-update-explorer.md)voor meer informatie over het openen van de S1-of S2-omgeving vanuit de time series Insights preview Explorer.
 
-   [Toegang![](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
+   [![Access](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
 
 - Mogelijk bent u niet gemachtigd om het model weer te geven en te bewerken.
 

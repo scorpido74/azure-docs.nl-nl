@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 48bf2cc3feb9ea3983200a2ef778669b5cfe36fa
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 842c7c81e3bf9615eb56d50ee2d6fce794845b6e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521590"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960697"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Azure Security Center integreren met Windows-beheer centrum
+# <a name="integrate-azure-security-center-with-windows-admin-center-preview"></a>Azure Security Center integreren met Windows-beheer centrum (preview-versie)
 
 Windows-beheer centrum is een beheer programma voor uw Windows-servers. Het is één locatie voor systeem beheerders om toegang te krijgen tot het meren deel van de meest gebruikte beheer hulpprogramma's. Vanuit het Windows-beheer centrum kunt u uw on-premises servers rechtstreeks op de Azure Security Center. U kunt vervolgens een samen vatting van uw beveiligings aanbevelingen en waarschuwingen rechtstreeks bekijken in de Windows-beheer centrum-ervaring.
 

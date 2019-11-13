@@ -1,6 +1,6 @@
 ---
-title: Bewaar termijn configureren in uw Azure Time Series Insights omgeving | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u de Bewaar periode in uw Azure Time Series Insights omgeving kunt configureren.
+title: Bewaar termijn configureren in uw omgeving-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over het configureren van Bewaar termijn in uw Azure Time Series Insights omgeving.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff4d326af691ae27894dc94d7581ba68951f090e
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: aa905d1686939346827d07419a62fd6f299387ec
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990062"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012601"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Bewaar periode in Time Series Insights configureren
 
@@ -34,9 +34,9 @@ Lees de informatie [over retentie in time series Insights](time-series-insights-
 
 ## <a name="configure-data-retention"></a>Gegevensretentie configureren
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-1. Zoek uw bestaande Time Series Insights-omgeving. Selecteer **alle resources** in het menu aan de linkerkant van het Azure Portal. Selecteer uw Time Series Insights-omgeving.
+1. Ga naar uw bestaande Time Series Insights-omgeving. Selecteer **alle resources** in het menu aan de linkerkant van het Azure Portal. Selecteer uw Time Series Insights-omgeving.
 
 1. Selecteer **configureren**onder de kop **instellingen** .
 

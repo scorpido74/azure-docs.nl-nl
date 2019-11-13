@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 9dc26e50e1c0f43e816e422f0fee91a246ea04a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e91a475c7fd7f207c8b38d3da8abe7affd668b2
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487598"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013505"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>Entiteiten en hun doel in LUIS
 
@@ -29,7 +29,7 @@ Er zijn twee typen entiteiten:
 
 Begin altijd met een door de machine geleerde entiteit, omdat dit het breedste bereik aan opties voor gegevens extractie biedt.
 
-## <a name="entity-compared-to-intent"></a>Entiteit vergeleken met intentie
+## <a name="entity-compared-to-intent"></a>Entiteit in vergelijking met opzet
 
 De entiteit vertegenwoordigt een gegevens concept in de utterance die u wilt uitpakken. 
 
@@ -41,7 +41,7 @@ Houd rekening met de volgende drie uitingen:
 |`Send Bob a present`|Bob, aanwezig|Bob is zeker belang rijk voor het volt ooien van de taak. Dit kan voldoende informatie bevatten of de bot moet wellicht verduidelijken wat de huidige is met een vervolg vraag.|
 |`Send Bob a box of chocolates.`|De twee belang rijke stukjes gegevens, Bob en het vak van chocolade, zijn belang rijk voor het volt ooien van de aanvraag van de gebruiker.|
 
-Een utterance kan veel entiteiten bevatten of helemaal geen. Een client toepassing heeft de entiteit _mogelijk_ nodig om de taak uit te voeren. 
+Een utterance kan bevatten veel entiteiten of geen helemaal. Een client toepassing heeft de entiteit _mogelijk_ nodig om de taak uit te voeren. 
 
 Ter vergelijking is de voor spelling van de intentie voor een utterance _vereist_ en vertegenwoordigt het hele utterance. LUIS vereist voor beeld-uitingen zijn opgenomen in een intentie. Als de primaire intentie van de utterance niet belang rijk is voor de client toepassing, voegt u alle uitingen toe aan de geen intentie. 
 
@@ -51,18 +51,18 @@ Het is niet vereist om de voorspelde intentie te gebruiken in de client toepassi
 
 ## <a name="entities-represent-data"></a>Entiteiten vertegenwoordigen gegevens
 
-Entiteiten zijn gegevens die u wilt ophalen uit de utterance. Dit kan een naam, datum, product naam of een wille keurige groep woorden zijn. 
+Entiteiten zijn gegevens die u wilt gebruiken om op te halen uit de utterance. Dit kan een naam, datum, naam van het product of een groep van woorden zijn. 
 
 |Utterance|Entiteit|Gegevens|
 |--|--|--|
-|3 tickets kopen voor New York|Vooraf gebouwd nummer<br>Locatie. doel|3<br>New York|
-|Een ticket van New York aan Londen kopen op 5 maart|Locatie. Origin<br>Locatie. doel<br>Prebuild datetimeV2|New York<br>Londen<br>5 maart 2018|
+|3 tickets naar de New York kopen|Vooraf gedefinieerde getal<br>Location.Destination|3<br>New York|
+|Een ticket van de New York naar Londen kopen op 5 maart|Location.Origin<br>Location.Destination<br>Vooraf gedefinieerde datetimeV2|New York<br>Londen<br>5 maart 2018|
 
-## <a name="entities-are-optional-but-highly-recommended"></a>Entiteiten zijn optioneel, maar worden nadrukkelijk aanbevolen
+## <a name="entities-are-optional-but-highly-recommended"></a>Entiteiten zijn optioneel, maar sterk aanbevolen
 
-Hoewel intenties vereist zijn, zijn entiteiten optioneel. U hoeft geen entiteiten te maken voor elk concept in uw app, maar alleen voor de toepassingen die vereist zijn voor het uitvoeren van een actie door de client toepassing. 
+Intents zijn vereist, zijn entiteiten optioneel. U hoeft geen entiteiten te maken voor elk concept in uw app, maar alleen voor de toepassingen die vereist zijn voor het uitvoeren van een actie door de client toepassing. 
 
-Als uw uitingen niet de details bevat die uw bot nodig heeft, hoeft u deze niet toe te voegen. Als uw app is gerijpt, kunt u deze later toevoegen. 
+Als uw uitingen geen details van die uw bot moet om door te gaan, hoeft u niet wilt toevoegen. Als uw app zich verder ontwikkelt, kunt u deze later toevoegen. 
 
 Als u niet zeker weet hoe u de informatie zou gebruiken, voegt u enkele algemene vooraf gedefinieerde entiteiten toe, zoals [datetimeV2](luis-reference-prebuilt-datetimev2.md), [rang telwoord](luis-reference-prebuilt-ordinal.md), [e-mail adres](luis-reference-prebuilt-email.md)en [telefoon nummer](luis-reference-prebuilt-phonenumber.md).
 
@@ -91,11 +91,11 @@ Kies de entiteit op basis van de manier waarop de gegevens moeten worden geëxtr
 
 |Entiteits type|Doel|
 |--|--|
-|[**Machine-geleerd**](#composite-entity)|Bovenliggende groepering van entiteiten, ongeacht het entiteits type. Door de machine geleerd entiteiten leren van de context in het utterance. Dit maakt variatie van de plaatsing in voor beeld uitingen aanzienlijk. |
-|[**Orderverzamellijst**](#list-entity)|Lijst met items en de bijbehorende synoniemen die zijn geëxtraheerd met **exact overeenkomende tekst**.|
-|[**Patroon. alle**](#patternany-entity)|Entiteit waarvan het einde van de entiteit moeilijk te bepalen is. |
-|[**Vooraf gedefinieerde**](#prebuilt-entity)|Al getraind voor het extra heren van specifieke soorten gegevens, zoals URL of e-mail. Sommige van deze vooraf gemaakte entiteiten worden gedefinieerd in het open source- [tekst](https://github.com/Microsoft/Recognizers-Text) project voor herkenning. Als uw specifieke cultuur of entiteit momenteel niet wordt ondersteund, draagt u bij aan het project.|
-|[**Reguliere expressie**](#regular-expression-entity)|Gebruikt reguliere expressie voor **exacte tekst overeenkomst**.|
+|[**Machine-geleerd**](tutorial-machine-learned-entity.md)|Bovenliggende groepering van entiteiten, ongeacht het entiteits type. Door de machine geleerd entiteiten leren van de context in het utterance. Dit maakt variatie van de plaatsing in voor beeld uitingen aanzienlijk. |
+|[**List**](reference-entity-list.md)|Lijst met items en de bijbehorende synoniemen die zijn geëxtraheerd met **exact overeenkomende tekst**.|
+|[**Pattern.any**](reference-entity-pattern-any.md)|Entiteit waarvan het einde van de entiteit moeilijk te bepalen is. |
+|[**Vooraf gedefinieerde**](luis-reference-prebuilt-entities.md)|Al getraind voor het extra heren van specifieke soorten gegevens, zoals URL of e-mail. Sommige van deze vooraf gemaakte entiteiten worden gedefinieerd in het open source- [tekst](https://github.com/Microsoft/Recognizers-Text) project voor herkenning. Als uw specifieke cultuur of de entiteit wordt momenteel niet ondersteund, dragen bij aan het project.|
+|[**Reguliere expressie**](reference-entity-regular-expression.md)|Gebruikt reguliere expressie voor **exacte tekst overeenkomst**.|
 
 ### <a name="entity-role-defines-context"></a>Entiteit rol definieert context
 
@@ -111,9 +111,9 @@ Er kunnen meerdere entiteiten in een utterance bestaan en kunnen worden geëxtra
 
 Als de utterance een lijst met locaties bevat, `I want to travel to Seattle, Cairo, and London.`, is dit een lijst waarin elk item geen andere betekenis heeft. 
 
-## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Als u meer dan het maximum aantal entiteiten wilt 
+## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Als u meer dan het maximum aantal entiteiten 
 
-Neem contact op met de ondersteuning als u meer nodig hebt dan de limiet. Als u dit wilt doen, verzamelt u gedetailleerde informatie over uw systeem, gaat u naar de [Luis](luis-reference-regions.md#luis-website) -website en selecteert u vervolgens **ondersteuning**. Als uw Azure-abonnement ondersteunings services bevat, neemt u contact op met de [technische ondersteuning van Azure](https://azure.microsoft.com/support/options/). 
+Neem contact op met de ondersteuning als u meer nodig hebt dan de limiet. Om dit te doen, verzamelt gedetailleerde informatie over uw systeem, gaat u naar de [LUIS](luis-reference-regions.md#luis-website) website, en selecteer vervolgens **ondersteuning**. Als uw Azure-abonnement voor ondersteuningsservices bevat, neem dan contact op met [technische ondersteuning van Azure](https://azure.microsoft.com/support/options/). 
 
 ## <a name="entity-prediction-status"></a>Status van de voor spelling van de entiteit
 
@@ -121,6 +121,6 @@ De LUIS-portal laat zien wanneer de entiteit, in een voor beeld utterance, een a
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Leer concepten over goede [uitingen](luis-concept-utterance.md). 
+Informatie over concepten over goede [uitingen](luis-concept-utterance.md). 
 
-Zie [entiteiten toevoegen](luis-how-to-add-entities.md) voor meer informatie over het toevoegen van entiteiten aan uw Luis-app.
+Zie [entiteiten toevoegen](luis-how-to-add-entities.md) voor meer informatie over entiteiten toevoegen aan uw LUIS-app.

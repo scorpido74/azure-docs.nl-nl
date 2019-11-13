@@ -1,27 +1,20 @@
 ---
-title: Met behulp van Azure Application Gateway met interne Load Balancer - PowerShell | Microsoft Docs
+title: Gebruiken met interne Load Balancer-Azure-toepassing gateway
 description: Op deze pagina vindt u instructies voor het maken, configureren, openen en verwijderen van een Azure-toepassingsgateway met een interne load balancer (ILB) voor Azure Resource Manager
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
-ms.assetid: 75cfd5a2-e378-4365-99ee-a2b2abda2e0d
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/23/2018
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 70b350e228785e47a41cb83ce0d80b93c8a601c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0dedb13bf7365e011eb3403fb7ec110a4290ec9
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135229"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012885"
 ---
-# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Een toepassingsgateway met een interne load balancer (ILB) maken
+# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Een toepassings gateway maken met een interne load balancer (ILB)
 
 Azure Application Gateway kan worden geconfigureerd met een internetgerichte VIP of met een intern eindpunt dat geen toegang heeft tot het internet. Dit heet ook wel een ILB-eindpunt (interne load balancer). Het is een goed idee om de gateway te configureren met een ILB als u interne line-of-business-toepassingen gebruikt die geen toegang hebben tot het internet. Ook is dit handig als u services en lagen gebruikt in een toepassing met meerdere lagen die zich binnen een beveiligingsgrens bevinden, en als deze toepassing geen toegang heeft tot het internet, maar er wel round-robinbelastingverdeling, sessiepersistentie of SSL-beëindiging (Secure Sockets Layer) vereist is.
 
@@ -31,17 +24,17 @@ In dit artikel worden de stappen beschreven voor het configureren van een toepas
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. Installeer de nieuwste versie van de Azure PowerShell-module door de [installatie-instructies](/powershell/azure/install-az-ps).
+1. Installeer de nieuwste versie van de module Azure PowerShell door de [installatie-instructies](/powershell/azure/install-az-ps)te volgen.
 2. U maakt een virtueel netwerk en een subnet voor de toepassingsgateway. Zorg ervoor dat er geen virtuele machines en cloudimplementaties zijn die gebruikmaken van het subnet. De toepassingsgateway moet afzonderlijk in een subnet van een virtueel netwerk staan.
 3. De servers die u voor gebruik van de toepassingsgateway configureert, moeten al bestaan in het virtuele netwerk of hier hun eindpunten hebben. Een andere optie is om er een openbaar IP- of VIP-adres aan toe te wijzen.
 
 ## <a name="what-is-required-to-create-an-application-gateway"></a>Wat is er vereist om een toepassingsgateway te maken?
 
-* **Back-endserverpool:** De lijst met IP-adressen van de back-endservers. De IP-adressen moeten ofwel deel uitmaken van het virtueel netwerk, maar zich bevinden in een ander subnet voor de toepassingsgateway, ofwel openbare IP-/VIP-adressen zijn.
-* **Instellingen van back-endserverpool:** Elke pool heeft instellingen, zoals voor de poort, het protocol en de op cookies gebaseerde affiniteit. Deze instellingen zijn gekoppeld aan een pool en worden toegepast op alle servers in de pool.
-* **Front-endpoort:** Dit is de openbare poort die in de toepassingsgateway wordt geopend. Het verkeer komt binnen via deze poort en wordt vervolgens omgeleid naar een van de back-endservers.
-* **Listener:** De listener beschikt over een front-endpoort, een protocol (Http of Https; deze zijn hoofdlettergevoelig), en de SSL-certificaatnaam (als SSL-offloading configureert).
-* **Regel:** De regel verbindt de listener met de back-endserverpool en definieert naar welke back-endserverpool het verkeer moet worden omgeleid wanneer dit bij een bepaalde listener aankomt. Momenteel wordt alleen de regel *basic* ondersteund. De regel *basic* is een vorm van round-robinbelastingverdeling.
+* **Back-endserverpool:** de lijst met IP-adressen van de back-endservers. De IP-adressen moeten ofwel deel uitmaken van het virtueel netwerk, maar zich bevinden in een ander subnet voor de toepassingsgateway, ofwel openbare IP-/VIP-adressen zijn.
+* **Back-endserverpoolinstellingen:** elke pool heeft instellingen, zoals voor de poort, het protocol en de op cookies gebaseerde affiniteit. Deze instellingen zijn gekoppeld aan een pool en worden toegepast op alle servers in de pool.
+* **Front-endpoort:** dit is de openbare poort die in de toepassingsgateway wordt geopend. Het verkeer komt binnen via deze poort en wordt vervolgens omgeleid naar een van de back-endservers.
+* **Listener:** de listener beschikt over een front-endpoort, een protocol (Http of Https; deze zijn hoofdlettergevoelig) en de SSL-certificaatnaam (als u SSL-offloading configureert).
+* **Regel:** de regel verbindt de listener met de back-endserverpool en definieert naar welke back-endserverpool het verkeer moet worden omgeleid wanneer dit bij een bepaalde listener aankomt. Momenteel wordt alleen de regel *basic* ondersteund. De regel *basic* is een vorm van round-robinbelastingverdeling.
 
 ## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
 
@@ -93,7 +86,7 @@ New-AzResourceGroup -Name appgw-rg -location "West US"
 
 Azure Resource Manager vereist dat er voor alle resourcegroepen een locatie wordt opgegeven. Deze locatie wordt gebruikt als de standaardlocatie voor resources in die resourcegroep. Zorg ervoor dat bij alle opdrachten voor het maken van een toepassingsgateway dezelfde resourcegroep wordt gebruikt.
 
-In het voorgaande voorbeeld wordt een resourcegroep met de naam 'appgw-rg' en de locatie VS-West' gemaakt.
+In het vorige voor beeld is er een resource groep gemaakt met de naam ' appgw-RG ' en de locatie ' West US '.
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Een virtueel netwerk en een subnet maken voor de toepassingsgateway
 
@@ -105,7 +98,7 @@ In het volgende voorbeeld ziet u hoe u een virtueel netwerk maakt met Resource M
 $subnetconfig = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 ```
 
-Deze stap wijst het netwerkadresbereik 10.0.0.0/24 toe aan een subnetvariabele om te worden gebruikt voor het maken van een virtueel netwerk.
+Met deze stap wordt het adres bereik 10.0.0.0/24 toegewezen aan een subnetische variabele die moet worden gebruikt om een virtueel netwerk te maken.
 
 ### <a name="step-2"></a>Stap 2
 
@@ -113,7 +106,7 @@ Deze stap wijst het netwerkadresbereik 10.0.0.0/24 toe aan een subnetvariabele o
 $vnet = New-AzVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnetconfig
 ```
 
-Deze stap maakt u een virtueel netwerk met de naam 'appgwvnet' in de resource group 'appgw-rg' voor de regio VS-West, waarbij het voorvoegsel 10.0.0.0/16 met het subnet 10.0.0.0/24.
+Met deze stap maakt u een virtueel netwerk met de naam ' appgwvnet ' in de resource groep ' appgw-RG ' voor de regio vs-West met het voor voegsel 10.0.0.0/16 met subnet 10.0.0.0/24.
 
 ### <a name="step-3"></a>Stap 3
 
@@ -121,7 +114,7 @@ Deze stap maakt u een virtueel netwerk met de naam 'appgwvnet' in de resource gr
 $subnet = $vnet.subnets[0]
 ```
 
-Deze stap wijst u het subnetobject toe aan de variabele $subnet voor de volgende stappen.
+Met deze stap wordt het subnetobject toegewezen aan de variabele $subnet voor de volgende stappen.
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Een configuratieobject voor de toepassingsgateway maken
 
@@ -131,7 +124,7 @@ Deze stap wijst u het subnetobject toe aan de variabele $subnet voor de volgende
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 ```
 
-Deze stap maakt u een toepassingsgateway IP-configuratie met de naam 'gatewayIP01'. Wanneer de toepassingsgateway wordt geopend, wordt er een IP-adres opgehaald via het geconfigureerde subnet en wordt het netwerkverkeer omgeleid naar de IP-adressen in de back-end-IP-pool. Onthoud dat elk exemplaar één IP-adres gebruikt.
+Met deze stap maakt u een IP-configuratie voor de toepassings gateway met de naam ' gatewayIP01 '. Wanneer de toepassingsgateway wordt geopend, wordt er een IP-adres opgehaald via het geconfigureerde subnet en wordt het netwerkverkeer omgeleid naar de IP-adressen in de back-end-IP-pool. Onthoud dat elk exemplaar één IP-adres gebruikt.
 
 ### <a name="step-2"></a>Stap 2
 
@@ -139,7 +132,7 @@ Deze stap maakt u een toepassingsgateway IP-configuratie met de naam 'gatewayIP0
 $pool = New-AzApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.1.1.8,10.1.1.9,10.1.1.10
 ```
 
-Deze stap configureert u de back-end IP-adresgroep met de naam 'pool01' met IP-adressen '10.1.1.8, 10.1.1.9, 10.1.1.10'. Dit zijn de IP-adressen waardoor het netwerkverkeer van het front-end-IP-eindpunt binnenkomt. U vervangt de bovenstaande IP-adressen met de IP-adreseindpunten van uw eigen toepassing.
+Met deze stap configureert u de back-end-IP-adres groep met de naam "pool01" met IP-adressen "10.1.1.8, 10.1.1.9, 10.1.1.10". Dit zijn de IP-adressen waardoor het netwerkverkeer van het front-end-IP-eindpunt binnenkomt. U vervangt de bovenstaande IP-adressen met de IP-adreseindpunten van uw eigen toepassing.
 
 ### <a name="step-3"></a>Stap 3
 
@@ -147,7 +140,7 @@ Deze stap configureert u de back-end IP-adresgroep met de naam 'pool01' met IP-a
 $poolSetting = New-AzApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-Deze stap configureert u netwerkverkeer van application gateway-instelling 'poolsetting01' voor de belasting met gelijke taakverdeling in de back-endpool.
+Met deze stap configureert u de instelling ' poolsetting01 ' voor de toepassings gateway voor het netwerk verkeer met gelijke taak verdeling in de back-end-pool.
 
 ### <a name="step-4"></a>Stap 4
 
@@ -155,7 +148,7 @@ Deze stap configureert u netwerkverkeer van application gateway-instelling 'pool
 $fp = New-AzApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 ```
 
-Deze stap configureert u de front-end-IP-poort met de naam 'frontendport01' voor de ILB.
+Met deze stap configureert u de front-end-IP-poort met de naam ' frontendport01 ' voor de ILB.
 
 ### <a name="step-5"></a>Stap 5
 
@@ -163,7 +156,7 @@ Deze stap configureert u de front-end-IP-poort met de naam 'frontendport01' voor
 $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name fipconfig01 -Subnet $subnet
 ```
 
-Deze stap maakt u de front-end-IP-configuratie met de naam 'fipconfig01' en associeert deze met een privé-IP-adres van een subnet voor de huidige virtueel netwerk.
+Met deze stap maakt u de front-end-IP-configuratie met de naam ' fipconfig01 ' en koppelt u deze aan een persoonlijk IP-adres uit het huidige subnet van het virtuele netwerk.
 
 ### <a name="step-6"></a>Stap 6
 
@@ -171,7 +164,7 @@ Deze stap maakt u de front-end-IP-configuratie met de naam 'fipconfig01' en asso
 $listener = New-AzApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 ```
 
-Deze stap maakt u een listener met de naam 'listener01' en koppelt u de front-endpoort aan de front-end-IP-configuratie.
+Met deze stap maakt u de listener ' listener01 ' en koppelt u de front-end-poort aan de front-end-IP-configuratie.
 
 ### <a name="step-7"></a>Stap 7
 
@@ -179,7 +172,7 @@ Deze stap maakt u een listener met de naam 'listener01' en koppelt u de front-en
 $rule = New-AzApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 ```
 
-Deze stap maakt u de load balancer-routeringsregel met de naam 'rule01"waarmee het gedrag van de load balancer worden geconfigureerd.
+Met deze stap maakt u de load balancer-routerings regel met de naam ' rule01 ' waarmee het load balancer gedrag wordt geconfigureerd.
 
 ### <a name="step-8"></a>Stap 8
 
@@ -187,24 +180,24 @@ Deze stap maakt u de load balancer-routeringsregel met de naam 'rule01"waarmee h
 $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 ```
 
-Deze stap configureert u de exemplaargrootte van de toepassingsgateway.
+Met deze stap configureert u de exemplaar grootte van de toepassings gateway.
 
 > [!NOTE]
-> De standaardwaarde voor de capaciteit is 2. Voor de Sku-naam, kunt u kiezen tussen Standard_Small, Standard_Medium en Standard_Large.
+> De standaard waarde voor capaciteit is 2. Voor SKU-naam kunt u kiezen tussen Standard_Small, Standard_Medium en Standard_Large.
 
 ## <a name="create-an-application-gateway-by-using-new-azureapplicationgateway"></a>Een toepassingsgateway maken met behulp van New-AzureApplicationGateway
 
-Hiermee maakt een toepassingsgateway met alle configuratie-items uit de bovenstaande stappen. In dit voorbeeld heeft de toepassingsgateway de naam appgwtest.
+Hiermee maakt u een toepassings gateway met alle configuratie-items uit de voor gaande stappen. In dit voorbeeld heeft de toepassingsgateway de naam appgwtest.
 
 ```powershell
 $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
-Deze stap maakt u een toepassingsgateway met alle configuratie-items uit de bovenstaande stappen. In dit voorbeeld heeft de toepassingsgateway de naam appgwtest.
+Met deze stap maakt u een toepassings gateway met alle configuratie-items uit de voor gaande stappen. In dit voorbeeld heeft de toepassingsgateway de naam appgwtest.
 
 ## <a name="delete-an-application-gateway"></a>Een toepassingsgateway verwijderen
 
-Als u wilt verwijderen van een application gateway, moet u de volgende stappen in volgorde uit:
+Als u een toepassings gateway wilt verwijderen, moet u de volgende stappen in de aangegeven volg orde uitvoeren:
 
 1. Gebruik de cmdlet `Stop-AzApplicationGateway` om de gateway te stoppen.
 2. Gebruik de cmdlet `Remove-AzApplicationGateway` om de gateway te verwijderen.
@@ -220,7 +213,7 @@ $getgw =  Get-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
 ### <a name="step-2"></a>Stap 2
 
-Gebruik `Stop-AzApplicationGateway` om de toepassingsgateway te stoppen. Dit voorbeeld laat zien de `Stop-AzApplicationGateway` cmdlet uit op de eerste regel weergegeven, gevolgd door de uitvoer.
+Gebruik `Stop-AzApplicationGateway` om de toepassingsgateway te stoppen. In dit voor beeld wordt de cmdlet `Stop-AzApplicationGateway` op de eerste regel weer gegeven, gevolgd door de uitvoer.
 
 ```powershell
 Stop-AzApplicationGateway -ApplicationGateway $getgw  

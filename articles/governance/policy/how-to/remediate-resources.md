@@ -1,17 +1,14 @@
 ---
 title: Niet-compatibele resources herstellen
 description: Deze hand leiding helpt u bij het herstellen van resources die niet compatibel zijn met beleids regels in Azure Policy.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/09/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 219a3c56f9e4e4c9e132fa759b017fac63ade766
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 53ca21e4b8a1f3e7973706acd10601593efc3448
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977994"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959505"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Herstellen van niet-compatibele resources met Azure Policy
 
@@ -25,7 +22,7 @@ Azure Policy maakt een beheerde identiteit voor elke toewijzing, maar moet infor
 ![Beheerde identiteit - ontbrekende functie](../media/remediate-resources/missing-role.png)
 
 > [!IMPORTANT]
-> Als een resource die is gewijzigd door **deployIfNotExists** of **Modify** zich buiten het bereik van de beleids toewijzing bevindt of als de sjabloon eigenschappen voor bronnen buiten het bereik van de beleids toewijzing opent, moet [de beheerde identiteit van de toewijzing het hand matig verlenen van toegang](#manually-configure-the-managed-identity) of de herstel implementatie mislukt.
+> Als een resource die is gewijzigd door **deployIfNotExists** of **Modify** zich buiten het bereik van de beleids toewijzing bevindt of als de sjabloon eigenschappen voor bronnen buiten het bereik van de beleids toewijzing heeft geopend, moet de beheerde identiteit van de toewijzing [hand matig worden verleend voor toegang](#manually-configure-the-managed-identity) of kan de herstel implementatie niet worden uitgevoerd.
 
 ## <a name="configure-policy-definition"></a>Beleidsdefinitie configureren
 
@@ -79,7 +76,7 @@ De `$assignment` variabele bevat nu de principal-ID van de beheerde identiteit, 
 
 ### <a name="grant-defined-roles-with-powershell"></a>Verleen gedefinieerd rollen met PowerShell
 
-De nieuwe beheerde identiteit moet replicatie via Azure Active Directory voltooien voordat deze de vereiste rollen kan worden verleend. Zodra de replicatie is voltooid, wordt in het volgende voor beeld de beleids definitie in `$policyDef` voor het **roleDefinitionIds** en wordt [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) gebruikt om de nieuwe beheerde identiteit toe te kennen aan de rollen.
+De nieuwe beheerde identiteit moet replicatie via Azure Active Directory voltooien voordat deze de vereiste rollen kan worden verleend. Zodra de replicatie is voltooid, wordt in het volgende voor beeld de beleids definitie in `$policyDef` voor de **roleDefinitionIds** herhaald en wordt [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) gebruikt om de nieuwe beheerde identiteit toe te kennen aan de rollen.
 
 ```azurepowershell-interactive
 # Use the $policyDef to get to the roleDefinitionIds array
@@ -160,7 +157,7 @@ Resources worden geïmplementeerd via een **herstel taak** worden toegevoegd aan
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Een herstel taak maken via Azure CLI
 
-Als u een **herstel taak** met Azure cli wilt maken, gebruikt u de `az policy remediation`-opdrachten. Vervang `{subscriptionId}` door uw abonnements-ID en `{myAssignmentId}` met uw **deployIfNotExists** of **Wijzig** de toewijzings-id van het beleid.
+Als u een **herstel taak** met Azure cli wilt maken, gebruikt u de `az policy remediation`-opdrachten. Vervang `{subscriptionId}` door uw abonnements-ID en `{myAssignmentId}` door de **deployIfNotExists** of **Wijzig** de toewijzings-id van het beleid.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -173,7 +170,7 @@ Zie voor andere herstel opdrachten en voor beelden [AZ Policy remediing](/cli/az
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>Een herstel taak maken via Azure PowerShell
 
-Als u een **herstel taak** met Azure PowerShell wilt maken, gebruikt u de `Start-AzPolicyRemediation`-opdrachten. Vervang `{subscriptionId}` door uw abonnements-ID en `{myAssignmentId}` met uw **deployIfNotExists** of **Wijzig** de toewijzings-id van het beleid.
+Als u een **herstel taak** met Azure PowerShell wilt maken, gebruikt u de `Start-AzPolicyRemediation`-opdrachten. Vervang `{subscriptionId}` door uw abonnements-ID en `{myAssignmentId}` door de **deployIfNotExists** of **Wijzig** de toewijzings-id van het beleid.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

@@ -1,5 +1,5 @@
 ---
-title: Periodieke back-ups maken en herstellen in azure Service Fabric | Microsoft Docs
+title: Periodieke back-ups maken en herstellen in azure Service Fabric
 description: Gebruik de periodieke back-up-en herstel functie van Service Fabric voor het inschakelen van periodieke gegevens back-ups van uw toepassings gegevens.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: d5d87f153b5835d5d2b38f380e5c77c03a68e1b5
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 43adb9f9d9989b39faa3af705a61ae8b0626a43e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928234"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005541"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Periodieke back-ups maken en herstellen in azure Service Fabric 
 > [!div class="op_single_selector"]

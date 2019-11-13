@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1def431bd24019c5f7d15cf7ac0e7550b85d17c4
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 5d2b43599c1e1f95f505d7987675e5fd40810fa4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176728"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012952"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Ontwikkel ontwikkelaars accounts met behulp van Azure Active Directory in azure API Management
 
@@ -32,7 +32,7 @@ Dit artikel laat u zien hoe u toegang tot de ontwikkelaars Portal kunt inschakel
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Ontwikkel ontwikkelaars accounts met behulp van Azure AD
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
 2. Selecteer ![pijl](./media/api-management-howto-aad/arrow.png).
 3. Typ **API** in het zoekvak.
 4. Selecteer **API Management Services**.
@@ -52,14 +52,14 @@ Dit artikel laat u zien hoe u toegang tot de ontwikkelaars Portal kunt inschakel
 12. Selecteer onder **beheren**de optie **app-registraties**.
 13. Selecteer **nieuwe registratie**. Stel op de pagina **een toepassing registreren** de volgende waarden in:
     
-* Stel **name** in op een duidelijke naam. bijvoorbeeld: *Developer-Portal*
+* Stel **name** in op een duidelijke naam. e.g., *developer-portal*
 * Stel **ondersteunde account typen** **in op accounts in deze directory van de organisatie**. 
 * Stel de **omleidings-URI** in op de waarde die u in stap 9 hebt ontvangen. 
 * Kies **registreren**. 
 
 14.  Nadat de toepassing is geregistreerd, kopieert u de **toepassings-id (client)** van de pagina **overzicht** . 
 15. Ga terug naar uw API Management-exemplaar. Plak in het venster **ID-provider toevoegen** de waarde van de **toepassing (client)** in het vak **client-id** .
-16. Ga terug naar de Azure AD-configuratie en selecteer **certificaten & geheimen** onder **beheren**. Selecteer de knop **Nieuw client geheim** . Voer een waarde in het veld **Beschrijving**in, selecteer een optie voor **verloopt** en kies **toevoegen**. Kopieer de waarde van het client geheim voordat u de pagina verlaat. U hebt deze nodig in de volgende stap. 
+16. Ga terug naar de Azure AD-configuratie en selecteer **certificaten & geheimen** onder **beheren**. Selecteer de knop **Nieuw client geheim** . Voer een waarde in het veld **Beschrijving**in, selecteer een optie voor **verloopt** en kies **toevoegen**. Kopieer de waarde van het client geheim voordat u de pagina verlaat. U hebt deze gegevens nodig in de volgende stap. 
 17. Selecteer onder **beheren**de optie **verificatie** en selecteer **id-tokens** onder **impliciete toekenning**
 18. Ga terug naar uw API Management-exemplaar en plak het geheim in het vak **client Secret** .
 
@@ -100,11 +100,11 @@ Gebruikers van het geconfigureerde Azure AD-exemplaar kunnen zich nu aanmelden b
 
 ## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> ontwikkelaars Portal-Azure AD-account verificatie toevoegen
 
-Als u aanmelden met AAD wilt inschakelen in de ontwikkelaars Portal, moet u de widget **OAuth-knoppen** toevoegen aan het aanmeldings formulier.
+In de ontwikkelaars Portal is aanmelden met AAD mogelijk met de widget **OAuth buttons** . De widget is al opgenomen op de aanmeldings pagina van de standaard inhoud van de ontwikkelaars Portal.
 
 ![Widget AAD-knoppen](./media/api-management-howto-aad/portal-oauth-widget.png)
 
-Hoewel een nieuw account automatisch wordt gemaakt wanneer een nieuwe gebruiker zich aanmeldt met AAD, kunt u overwegen om dezelfde widget toe te voegen aan het registratie formulier.
+Hoewel een nieuw account automatisch wordt gemaakt wanneer een nieuwe gebruiker zich aanmeldt met AAD, kunt u overwegen om dezelfde widget toe te voegen aan de registratie pagina.
 
 ## <a name="legacy-developer-portal---how-to-sign-in-with-azure-ad"></a>Verouderde ontwikkelaars Portal-aanmelden met Azure AD
 

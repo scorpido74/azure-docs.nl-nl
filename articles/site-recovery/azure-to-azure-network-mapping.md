@@ -1,18 +1,18 @@
 ---
-title: Virtuele netwerken tussen twee Azure-regio's in Azure Site Recovery toewijzen | Microsoft Docs
-description: Azure Site Recovery coördineert de replicatie, failover en het herstel van virtuele machines en fysieke servers. Meer informatie over failover naar Azure of naar een secundair Data Center.
+title: Virtuele netwerken tussen twee regio's in Azure Site Recovery toewijzen
+description: Meer informatie over het toewijzen van virtuele netwerken tussen twee Azure-regio's voor herstel na nood gevallen voor Azure VM met Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mayg
-ms.openlocfilehash: 687c21170c0397b89270e9c3a6af1e994c758179
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b8f0512f978f25ca196ad6e9a7a03243c47f0662
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331116"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954157"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Netwerk toewijzing en IP-adres Sering instellen voor VNets
 

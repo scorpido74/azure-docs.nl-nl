@@ -3,7 +3,7 @@ title: Detectie van Azure Active Directorye Risico's | Microsoft Docs
 description: Deze artice biedt een gedetailleerd overzicht van de risico detecties.
 services: active-directory
 keywords: identiteits beveiliging van Azure Active Directory, beveiliging, risico, risico niveau, beveiligings beleid
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 523ae8e1ba31a4fe2c9683007f717149dfdc3bc6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127323"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014467"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Detectie van Azure Active Directory-Risico's
 
@@ -29,7 +29,7 @@ Het overgrote deel van de beveiligings Risico's doen zich voor wanneer aanvaller
 
 Er zijn twee locaties waar u gerapporteerde risico detecties kunt bekijken:
 
- - **Azure AD Reporting** : risico detecties maken deel uit van de beveiligings rapporten van Azure AD. Voor meer informatie, zie het beveiligings rapport [gebruikers die risico](concept-user-at-risk.md) lopen, beveiligings rapport en [Risk ante](concept-risky-sign-ins.md)aanmeldingen.
+ - **Azure AD Reporting** : risico detecties maken deel uit van de beveiligings rapporten van Azure AD. Voor meer informatie, zie het beveiligings rapport [gebruikers die risico](concept-user-at-risk.md) lopen, beveiligings rapport en [Risk ante aanmeldingen](concept-risky-sign-ins.md).
 
  - **Azure AD Identity Protection** -risico detecties maken ook deel uit van de rapportage mogelijkheden van [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
@@ -74,7 +74,7 @@ Wanneer Cybercriminals geldige wacht woorden van legitieme gebruikers beveiligt,
 - Beveiligings teams bij micro soft
 - Andere vertrouwde bronnen 
 
-Wanneer de service gebruikers naam/wachtwoord paren ophaalt, worden ze gecontroleerd op basis van de huidige geldige referenties van AAD-gebruikers. Als er een overeenkomst wordt gevonden, betekent dit dat het wacht woord van een gebruiker is aangetast en dat er een gelekte **referentie risico detectie** wordt gemaakt.
+Wanneer de service gebruikers naam/wachtwoord paren ophaalt, worden ze gecontroleerd op basis van de huidige geldige referenties van AAD-gebruikers. Als er een overeenkomst wordt gevonden, betekent dit dat het wacht woord van een gebruiker is aangetast en dat er een **gelekte referentie risico detectie** wordt gemaakt.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Aanmeldingen vanaf anonieme IP-adressen
 
@@ -99,7 +99,7 @@ Dit type risico detectie identificeert aanmeldingen van apparaten die zijn geïn
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Aanmeldingen van IP-adressen met verdachte activiteit
 Met dit type risico detectie worden IP-adressen geïdentificeerd waarvan een groot aantal mislukte aanmeldings pogingen gedurende een korte periode in meerdere gebruikers accounts is gedetecteerd. Dit komt overeen met de verkeers patronen van IP-adressen die door aanvallers worden gebruikt. Dit is een sterke indicator die de accounts al of op het punt staan te worden aangetast. Dit is een machine learning-algoritme dat duidelijke fout-positieven negeert, zoals IP-adressen die regel matig worden gebruikt door andere gebruikers in de organisatie.  Het systeem heeft een initiële leer periode van 14 dagen waarin het aanmeldings gedrag van een nieuwe gebruiker en een nieuwe Tenant wordt ontdekt.
 
-## <a name="detection-type"></a>Detectietype
+## <a name="detection-type"></a>Detectie type
 
 De eigenschap detectie type is een indicator (**realtime** of **offline**) voor de detectie periode van een risico detectie. Op dit moment worden de meeste risico detecties tijdens een verwerkings bewerking offline gedetecteerd nadat de risico detectie is opgetreden.
 
@@ -123,7 +123,7 @@ Voor de typen risico detectie Azure Active Directory gedetecteerd, zijn de volge
 | [Aanmeldingen vanaf IP-adressen met verdachte activiteiten](#sign-ins-from-ip-addresses-with-suspicious-activity) | Offline|
 
 
-## <a name="risk-level"></a>Risiconiveau
+## <a name="risk-level"></a>Risico niveau
 
 De eigenschap risico niveau van een risico detectie is een indicator (**hoog**, **gemiddeld**of **laag**) voor de ernst en het vertrouwen van een risico detectie. Deze eigenschap helpt u bij het bepalen van de acties die u moet uitvoeren. 
 
@@ -131,11 +131,11 @@ De ernst van de risico detectie duidt op de sterkte van het signaal als voor spe
 
 Bijvoorbeeld: 
 
-* **Hoog**: Hoge betrouw baarheid en hoge risico detectie van de ernst. Deze gebeurtenissen zijn sterke indica toren die zijn aangetast door de identiteit van de gebruiker, en eventuele gebruikers accounts die van invloed zijn op de gebruiker, moeten onmiddellijk worden hersteld.
+* **Hoog**: hoge betrouw baarheid en hoge risico detectie van de ernst. Deze gebeurtenissen zijn sterke indica toren die zijn aangetast door de identiteit van de gebruiker, en eventuele gebruikers accounts die van invloed zijn op de gebruiker, moeten onmiddellijk worden hersteld.
 
-* **Gemiddeld**: Hoge Ernst, maar lager betrouwbaarheids risico detectie, of andersom. Deze gebeurtenissen zijn mogelijk riskant en eventuele gevolgen voor gebruikers accounts moeten worden hersteld.
+* **Medium**: hoge Ernst, maar lagere betrouwbaarheids Risico's, of andersom. Deze gebeurtenissen zijn mogelijk riskant en eventuele gevolgen voor gebruikers accounts moeten worden hersteld.
 
-* **Laag**: Lage betrouw baarheid en risico detectie met lage urgentie. Deze gebeurtenis vereist mogelijk geen directe actie, maar in combi natie met andere risico detecties kan een sterke indicatie worden geboden dat de identiteit is aangetast.
+* **Laag**: lage betrouw baarheid en risico detectie met lage urgentie. Deze gebeurtenis vereist mogelijk geen directe actie, maar in combi natie met andere risico detecties kan een sterke indicatie worden geboden dat de identiteit is aangetast.
 
 ![Risico niveau](./media/concept-risk-events/01.png)
 

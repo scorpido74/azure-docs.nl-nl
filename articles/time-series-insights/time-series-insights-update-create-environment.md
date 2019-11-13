@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een Azure Time Series Insights-voorbeeld omgeving instellen | Microsoft Docs'
-description: Informatie over hoe u een omgeving instelt in Azure Time Series Insights Preview.
+title: 'Zelf studie: een voorbeeld omgeving instellen-Azure Time Series Insights | Microsoft Docs'
+description: Meer informatie over het instellen van uw Azure Time Series Insights preview-omgeving.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 25571dbd87e4d01645a3a7a991588a3a943b3e4d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 2dd08af518be9b3fec84e756edf9532ef669f22f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719270"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012665"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Zelf studie: een Azure Time Series Insights-voorbeeld omgeving instellen
 

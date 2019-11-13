@@ -1,5 +1,5 @@
 ---
-title: Replicatie beleid voor nood herstel van VMware naar Azure configureren en beheren met Azure Site Recovery | Microsoft Docs
+title: Replicatie beleid voor nood herstel van VMware instellen met Azure Site Recovery | Microsoft Docs
 description: Hierin wordt beschreven hoe u replicatie-instellingen configureert voor VMware-nood herstel op Azure met Azure Site Recovery.
 author: sujayt
 manager: rochakm
@@ -7,17 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 019f9f2019619053f87a7923d656513a419d4675
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231437"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954329"
 ---
-# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Replicatie beleid voor nood herstel van VMware naar Azure configureren en beheren
+# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>Replicatie beleid configureren en beheren voor VMware-nood herstel
+
 In dit artikel wordt beschreven hoe u een replicatie beleid configureert wanneer u virtuele VMware-machines naar Azure repliceert met behulp van [Azure site Recovery](site-recovery-overview.md).
 
-## <a name="create-a-policy"></a>Een beleid maken
+## <a name="create-a-policy"></a>Beleid maken
 
 1. Selecteer **Beheren** > **Infrastructuur voor Site Recovery**.
 2. Selecteer in **voor VMware-en fysieke machines**, het **replicatie beleid**.
@@ -48,7 +49,7 @@ U kunt een replicatie beleid wijzigen nadat u het hebt gemaakt.
 - Als u gerepliceerde machines met een ander replicatie beleid wilt koppelen, moet u de beveiliging voor de relevante computers uitschakelen en opnieuw inschakelen.
 
 Bewerk een beleid als volgt:
-1. Selecteer**site Recovery** > **beleid**voor infrastructuur replicatie **beheren** > .
+1. Selecteer > **site Recovery-infra structuur** **beheren** > **replicatie beleid**.
 2. Selecteer het replicatie beleid dat u wilt wijzigen.
 3. Klik op **Instellingen bewerken**en werk de velden voor het bewaren van de RPO-drempel waarde/het herstel punt en de app-consistente moment opname frequentie in zoals vereist.
 4. Als u het genereren van toepassings consistentie punten wilt uitschakelen, kiest u waarde uit in de vervolg keuzelijst van de frequentie van de **app-consistente moment opname**van het veld.
@@ -59,6 +60,6 @@ Bewerk een beleid als volgt:
 ## <a name="disassociate-or-delete-a-replication-policy"></a>Een replicatie beleid ontkoppelen of verwijderen
 
 1. Kies het replicatie beleid.
-    a. Als u het beleid van de configuratie server wilt ontkoppelen, moet u ervoor zorgen dat het beleid niet door gerepliceerde machines wordt gebruikt. Klik vervolgens opontkoppelen.
+    a. Als u het beleid van de configuratie server wilt ontkoppelen, moet u ervoor zorgen dat het beleid niet door gerepliceerde machines wordt gebruikt. Klik **vervolgens op**ontkoppelen.
     b. Als u het beleid wilt verwijderen, moet u ervoor zorgen dat het niet is gekoppeld aan een configuratie server. Klik vervolgens op **verwijderen**. Het duurt 30-60 seconden om te verwijderen.
 2. Klik op **OK**.

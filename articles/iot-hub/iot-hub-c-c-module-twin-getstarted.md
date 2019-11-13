@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met de Azure IoT Hub-module identiteit en module dubbele (C) | Microsoft Docs
+title: Aan de slag met de identiteit van de Azure IoT Hub-module & de module dubbele (C)
 description: Meer informatie over het maken van module-identiteit en-update module, met behulp van IoT Sdk's voor C.
 author: chrissie926
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 9bc64a2eefbd268c5d7eae9b32a992ed29151f61
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: e33a7a1360a837df08725b2e592973b465dff38c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813841"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954230"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Aan de slag met IoT Hub module-identiteit en-module dubbele (C)
 
@@ -177,7 +177,7 @@ int main(void)
 }
 ```
 
-Met deze app maakt u een apparaat-id met de naam **myFirstDevice** en een module-ID met id **MyFirstModule** onder apparaat **myFirstDevice**. (Als deze module-id al in het id-register staat, haalt de code gewoon de bestaande modulegegevens op.) De app geeft vervolgens de primaire sleutel voor die identiteit weer. U gebruikt deze sleutel in de gesimuleerde module-app om verbinding te maken met uw IoT-hub.
+Met deze app maakt u een apparaat-id met de naam **myFirstDevice** en een module-ID met id **MyFirstModule** onder apparaat **myFirstDevice**. (Als deze module-ID al bestaat in het identiteits register, haalt de code gewoon de bestaande module gegevens op.) In de app wordt vervolgens de primaire sleutel voor die identiteit weer gegeven. U gebruikt deze sleutel in de gesimuleerde module-app om verbinding te maken met uw IoT-hub.
 
 > [!NOTE]
 > In het identiteitsregister van IoT Hub worden alleen apparaat- en module-id's opgeslagen waarmee veilig toegang tot de IoT-hub kan worden verkregen. In het identiteitsregister worden apparaat-id's en -sleutels opgeslagen die als beveiligingsreferenties worden gebruikt. In het identiteitsregister wordt ook een vlag ingeschakeld/uitgeschakeld voor elk apparaat opgeslagen die u kunt gebruiken om de toegang tot dat apparaat uit te schakelen. Als uw toepassing andere apparaatspecifieke metagegevens moet opslaan, moet deze een toepassingsspecifieke opslagmethode gebruiken. Er is geen vlag voor ingeschakeld/uitgeschakeld voor module-id's. Zie [IOT hub ontwikkelaars handleiding](iot-hub-devguide-identity-registry.md)voor meer informatie.
@@ -190,7 +190,7 @@ In deze sectie maakt u een C-app op uw gesimuleerde apparaat die de module dubbe
 
     ![Details van de Azure Portal-module](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **UpdateModuleTwinReportedProperties-app maken** Voeg de volgende `using` instructies toe boven aan het **Program.cs** -bestand:
+2. **UpdateModuleTwinReportedProperties-app maken** Voeg boven aan het **Program.cs** -bestand de volgende `using`-instructies toe:
 
     ```C
     #include <stdio.h>

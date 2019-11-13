@@ -1,5 +1,5 @@
 ---
-title: Een upgrade uitvoeren voor een Azure Service Fabric-cluster | Microsoft Docs
+title: De Azure Service Fabric-versie van een cluster upgraden
 description: Voer een upgrade uit voor de Service Fabric code en/of configuratie waarmee een Service Fabric cluster wordt uitgevoerd, met inbegrip van het instellen van de cluster update modus, het bijwerken van certificaten, het toevoegen van toepassings poorten, het uitvoeren van besturingssysteem patches, enzovoort. Wat kunt u verwachten wanneer de upgrades worden uitgevoerd?
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: atsenthi
-ms.openlocfilehash: 03fd5f2950349f0dc76021d28845e383c0ba6a64
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 067bf654928240ffe9651d4acf1933a81e631146
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599814"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013342"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>De Service Fabric versie van een cluster upgraden
 
@@ -121,7 +121,7 @@ Output:
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het aanpassen van een aantal van de [service Fabric-cluster infrastructuur instellingen](service-fabric-cluster-fabric-settings.md)
-* Meer informatie over hoe u [uw cluster in-en](service-fabric-cluster-scale-up-down.md) uitschaalt
+* Meer informatie over hoe u [uw cluster in-en uitschaalt](service-fabric-cluster-scale-up-down.md)
 * Meer informatie over [toepassings upgrades](service-fabric-application-upgrade.md)
 
 <!--Image references-->

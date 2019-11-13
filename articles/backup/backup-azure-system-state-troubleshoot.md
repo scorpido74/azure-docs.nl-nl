@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71a2b73ab3570539a566f708ea8b1a41963d4e81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: eb8bf1891f5ce96507c20e196d20ae499f30fe34
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747301"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012132"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problemen met de systeem status back-up oplossen
 
@@ -45,9 +45,9 @@ U wordt aangeraden de onderstaande validatie uit te voeren voordat u begint met 
 - Het herstellen van bestanden naar andere hardware met behulp van systeemstatusherstel wordt niet aanbevolen door Microsoft
 - Systeem status back-up biedt momenteel ondersteuning voor on-premises Windows-servers. deze functionaliteit is niet beschikbaar voor virtuele Azure-machines.
 
-## <a name="pre-requisite"></a>Vereiste
+## <a name="prerequisites"></a>Vereisten
 
-Voordat er problemen met de systeem status back-up met Azure Backup worden opgelost, voert u de onderstaande controle van de vereisten uit.  
+Voordat er problemen met de systeem status back-up met Azure Backup worden opgelost, moet u de onderstaande controle van vereisten uitvoeren.  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>Controleren of de Windows Server Back-up is geïnstalleerd
 
@@ -87,7 +87,7 @@ Voer de volgende stappen uit om Windows Server Back-up te installeren met behulp
 5. Klik op het tabblad **bevestiging** op **installeren** om het installatie proces te starten.
 6. Op het tabblad **resultaten** wordt weer gegeven dat de functie Windows Server back-up is geïnstalleerd op uw Windows-Server.
 
-    ![Daardoor](./media/backup-azure-system-state-troubleshoot/results.jpg)
+    ![Resultaat](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>Machtiging voor systeem volume gegevens
 

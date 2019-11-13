@@ -1,5 +1,5 @@
 ---
-title: Over de Azure Site Recovery Deployment Planner voor nood herstel van virtuele Hyper-V-machines naar Azure | Microsoft Docs
+title: Deployment Planner voor nood herstel via Hyper-V met Azure Site Recovery
 description: Meer informatie over de Azure Site Recovery Deployment Planner herstel na nood gevallen voor Hyper-V naar Azure.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 6e7da548eb2cc6e314d446270cc04d1c57be7ae3
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 72b1311227f5c9f9efc35b2940d3c843a21dc261
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618828"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954019"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Over de Azure Site Recovery Deployment Planner voor herstel na nood geval voor Hyper-V naar Azure
 
@@ -82,9 +82,9 @@ Aantal servers dat kan worden geprofileerd per exemplaar van de Azure Site Recov
 ## <a name="prerequisites"></a>Vereisten
 Het hulpprogramma heeft drie belangrijke fasen voor Hyper-V: lijst ophalen met de VM, profilering en generatie rapportage. Er is ook een voerde optie, waarmee alleen doorvoer wordt berekend. De vereisten voor de server waarop de verschillende fasen moeten worden uitgevoerd worden in de volgende tabel weergegeven:
 
-| Serververeiste | Description |
+| Serververeiste | Beschrijving |
 |---|---|
-|VM-lijst ophalen, profileren en meten van doorvoer |<ul><li>Besturingssysteem: Micro soft Windows Server 2016 of micro soft Windows Server 2012 R2 </li><li>Machine configuratie: 8 Vcpu's, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable voor Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internettoegang tot Azure vanaf deze server</li><li>Azure Storage-account</li><li>Beheerderstoegang op de server</li><li>Minimaal 100 GB vrije schijfruimte (uitgaande van 1000 virtuele machines met een gemiddelde van elk drie schijven, geprofileerd voor 30 dagen)</li><li>De virtuele machine waarop u de Azure Site Recovery ontwikkelingsplannertool uitvoert moet worden toegevoegd aan de TrustedHosts-lijst van alle Hyper-V-servers.</li><li>Alle Hyper-V-servers die moeten worden profileeerd, moeten worden toegevoegd aan de TrustedHosts-lijst van de client-VM vanaf waar het hulp programma wordt uitgevoerd. [Meer informatie voor het toevoegen van servers in de lijst TrustedHosts](#steps-to-add-servers-into-trustedhosts-list). </li><li> Het hulpprogramma moet met Beheerdersrechten worden uitgevoerd vanuit PowerShell of de opdrachtregelconsole op de client</ul></ul>|
+|VM-lijst ophalen, profileren en meten van doorvoer |<ul><li>Besturingssysteem: Microsoft Windows Server 2016 of Microsoft Windows Server 2012 R2 </li><li>Machineconfiguratie: 8 vCPU's, 16 GB RAM, 300 GB harde schijf</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable voor Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internettoegang tot Azure vanaf deze server</li><li>Azure Storage-account</li><li>Beheerderstoegang op de server</li><li>Minimaal 100 GB vrije schijfruimte (uitgaande van 1000 virtuele machines met een gemiddelde van elk drie schijven, geprofileerd voor 30 dagen)</li><li>De virtuele machine waarop u de Azure Site Recovery ontwikkelingsplannertool uitvoert moet worden toegevoegd aan de TrustedHosts-lijst van alle Hyper-V-servers.</li><li>Alle Hyper-V-servers die moeten worden profileeerd, moeten worden toegevoegd aan de TrustedHosts-lijst van de client-VM vanaf waar het hulp programma wordt uitgevoerd. [Meer informatie voor het toevoegen van servers in de lijst TrustedHosts](#steps-to-add-servers-into-trustedhosts-list). </li><li> Het hulpprogramma moet met Beheerdersrechten worden uitgevoerd vanuit PowerShell of de opdrachtregelconsole op de client</ul></ul>|
 | Rapporten genereren | Een Windows-pc of Windows-server met Microsoft Excel 2013 of hoger |
 | Gebruikersmachtigingen | Administrator-account voor toegang tot het Hyper-V cluster/de Hyper-V-host tijdens weergave van de VM's en profileringsbewerkingen.<br>Alle hosts die moeten worden geprofileerd dienen een administrator-account te hebben voor het account met dezelfde referenties, dat wil zeggen gebruikersnaam en wachtwoord
  |
@@ -110,12 +110,12 @@ Het hulpprogramma heeft drie belangrijke fasen voor Hyper-V: lijst ophalen met d
 Het hulpprogramma bevindt zich in een gecomprimeerde map. Hetzelfde hulpprogramma ondersteunt zowel VMware naar Azure als Hyper-V naar Azure herstel na noodgevallen. U kunt dit hulpprogramma ook gebruiken voor een Hyper-V-naar secundaire site noodherstelscenario maar negeer dan de infrastructuuradviezen voor Azure uit het rapport.
 
 1.  Kopieer de ZIP-map naar de Windows-server waarop u het hulpprogramma wilt uitvoeren. U kunt het hulpprogramma uitvoeren op een Windows Server 2012 R2 of Windows Server 2016. De server moet toegang tot het netwerk hebben om verbinding te kunnen maken met het Hyper-V-cluster of de Hyper-V-host met de virtuele machines die moeten worden geprofileerd. We raden dezelfde hardwareconfiguratie op de virtuele machine waar het hulpprogramma wordt uitgevoerd, als op die van de Hyper-V-server, die u wilt beveiligen. Een dergelijke configuratie zorgt ervoor dat de behaalde doorvoer die het hulpprogramma aangeeft, overeenkomt met de werkelijke doorvoer die Azure Site Recovery kan bereiken tijdens replicatie. De berekening van de doorvoer is afhankelijk van de beschikbare netwerkbandbreedte op de server en de hardwareconfiguratie van de server (CPU, opslag, enzovoort). De doorvoer wordt berekend door de server waarop het hulpprogramma wordt uitgevoerd naar Azure. Aangezien de hardwareconfiguratie van de server kan verschillen van die van de configuratieserver, is het bovendien mogelijk dat de berekende doorvoer onjuist is.
-De aanbevolen configuratie van de virtuele machine: 8 Vcpu's, 16 GB RAM, 300 GB harde schijf.
+De aanbevolen configuratie van de virtuele machine: 8 Vcpu, 16 GB RAM-geheugen, 300 GB harde schijf.
 
 1.  Pak de gecomprimeerde map uit.
 De map bevat meerdere bestanden en submappen. Het uitvoerbare bestand is ASRDeploymentPlanner.exe in de map op het hoogste niveau.
 
-Voorbeeld: Kopieer het ZIP-bestand naar station E:\ en pak het uit. E:\ASR Deployment Planner_v2.3.zip
+Voorbeeld: kopieer het ZIP-bestand naar station E:\ en pak het uit. E:\ASR Deployment Planner_v2.3.zip
 
 E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 

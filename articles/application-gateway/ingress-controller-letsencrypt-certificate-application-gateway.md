@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2e91a888d0dc98a4f94b956e15336d75291f733e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795923"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957972"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>Certificaten gebruiken met LetsEncrypt.org in Application Gateway voor AKS-clusters
 
@@ -130,8 +130,12 @@ Volg de onderstaande stappen om [CERT-Manager](https://docs.cert-manager.io) op 
     Na een paar seconden hebt u via de Application Gateway HTTPS-URL toegang tot de `guestbook`-service met het automatisch uitgegeven **staging** `Lets Encrypt`-certificaat.
     U ontvangt mogelijk een waarschuwing van een ongeldige certificerings instantie in uw browser. Het faserings certificaat wordt uitgegeven door `CN=Fake LE Intermediate X1`. Dit geeft aan dat het systeem werkt zoals verwacht en dat u klaar bent voor uw productie certificaat.
 
-4. Productie certificaat wanneer het staging-certificaat is ingesteld, kunt u overschakelen naar een productie server van Nederland:
+4. Productie certificaat
+
+    Zodra het faserings certificaat is geïnstalleerd, kunt u overschakelen naar een productie server:
     1. Vervang de tijdelijke aantekening van uw ingangs resource door: `certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
     1. Verwijder de bestaande staging-`ClusterIssuer` die u in de vorige stap hebt gemaakt en maak een nieuwe door de ACME-server te vervangen door de ClusterIssuer YAML hierboven met `https://acme-v02.api.letsencrypt.org/directory`
 
-5. Het verlopen van certificaten en de verlenging van het certificaat voordat het `Lets Encrypt` certificaat verloopt, wordt het certificaat in het Kubernetes-geheim archief automatisch door `cert-manager` bijgewerkt. Op dat moment wordt Application Gateway ingangs controller het bijgewerkte geheim toegepast dat wordt vermeld in de binnenkomende resources die worden gebruikt om de Application Gateway te configureren.
+5. Verlopen en verlengen van certificaten
+
+    Voordat het `Lets Encrypt` certificaat verloopt, wordt het certificaat in het Kubernetes-geheim archief automatisch door `cert-manager` bijgewerkt. Op dat moment wordt Application Gateway ingangs controller het bijgewerkte geheim toegepast dat wordt vermeld in de binnenkomende resources die worden gebruikt om de Application Gateway te configureren.

@@ -1,5 +1,5 @@
 ---
-title: Verbindings gebeurtenissen van apparaten best Ellen vanuit Azure IoT Hub met behulp van Azure Cosmos DB | Microsoft Docs
+title: Verbindings gebeurtenissen voor order apparaten fr Azure IoT Hub met Azure Cosmos DB
 description: In dit artikel wordt beschreven hoe u apparaat verbindings gebeurtenissen kunt ordenen en vastleggen vanuit Azure IoT Hub met behulp van Azure Cosmos DB om de nieuwste verbindings status te onderhouden
 services: iot-hub
 ms.service: iot-hub
@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: a020221d841682d1e18d2b728a732ec4dfc35ef3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 210c2e74305ba99b4ac3a12625d0b7f5fc47ba43
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67988286"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954256"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Verbindings gebeurtenissen van apparaten best Ellen vanuit Azure IoT Hub met behulp van Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Het Volg nummer is een teken reeks representatie van een hexadecimaal getal. U k
 
 * Een Active Azure Cosmos DB SQL-API-account. Zie [een database account](../cosmos-db/create-sql-api-java.md#create-a-database-account) voor een overzicht maken als u nog geen hebt gemaakt.
 
-* Een verzameling in uw data base. Zie [een verzameling toevoegen](../cosmos-db/create-sql-api-java.md#add-a-container) voor een overzicht. Wanneer u uw verzameling maakt, gebruikt `/id` u voor de partitie sleutel.
+* Een verzameling in uw data base. Zie [een verzameling toevoegen](../cosmos-db/create-sql-api-java.md#add-a-container) voor een overzicht. Wanneer u uw verzameling maakt, gebruikt u `/id` voor de partitie sleutel.
 
 * Een IoT Hub in Azure. Als u nog geen hub hebt gemaakt, leest u [Get started with IoT Hub](iot-hub-csharp-csharp-getstarted.md) (Aan de slag met IoT Hub) voor stapsgewijze instructies.
 
@@ -218,9 +218,9 @@ In de werk stroom van de logische app kunnen voor waarden specifieke acties word
 
 4. Vul de **cosmosdb-verbinding** in voor de naam van de **verbinding** en selecteer de vermelding in de tabel en selecteer vervolgens **maken**. U ziet het paneel **opgeslagen procedure uitvoeren** . Voer de waarden voor de velden in:
 
-   **Data Base-id**: Takenlijst
+   **Data Base-id**: ToDoList
 
-   **Verzamelings-id**: Items
+   **Verzamelings-id**: items
 
    **Sproc-id**: LatestDeviceConnectionState
 
@@ -232,7 +232,7 @@ In de werk stroom van de logische app kunnen voor waarden specifieke acties word
 
    ![actie voor logische app vullen](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
-7. Zorg ervoor dat boven aan het deel venster waarin wordt vermeld, onder **Selecteer een uitvoer van de vorige stappen**, of de **hoofd tekst** is geselecteerd.
+7. Zorg ervoor dat boven aan het deel venster waarinwordt vermeld, onder **Selecteer een uitvoer van de vorige stappen**, of de **hoofd tekst** is geselecteerd.
 
    ![logische app voor-elk invullen](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
 
@@ -290,7 +290,7 @@ Nu uw gebeurtenis abonnement is ingesteld, kunt u testen door verbinding te make
 
 2. Selecteer **+ toevoegen** boven aan het deel venster.
 
-3. Geef `Demo-Device-1` op voor **Apparaat-ID**.
+3. Geef **op voor**Apparaat-ID`Demo-Device-1`.
 
 4. Selecteer **Opslaan**.
 

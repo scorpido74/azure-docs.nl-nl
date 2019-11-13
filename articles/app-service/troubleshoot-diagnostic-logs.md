@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4f5344259767aaad9ed58ded1da86ae7ee3c03e7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 21600036302050aeea3e2ea989d86e18b208c087
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470106"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958049"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnostische logboek registratie inschakelen voor apps in Azure App Service
 ## <a name="overview"></a>Overzicht
@@ -26,7 +26,7 @@ Azure biedt ingebouwde diagnostische gegevens om te helpen bij het opsporen van 
 In dit artikel wordt gebruikgemaakt van de [Azure Portal](https://portal.azure.com) en Azure CLI voor het werken met Diagnostische logboeken. Zie [problemen met Azure in Visual Studio oplossen](troubleshoot-dotnet-visual-studio.md)voor meer informatie over het werken met Diagnostische logboeken met Visual Studio.
 
 > [!NOTE]
-> Naast de instructies voor logboek registratie in dit artikel, is er een nieuwe, geïntegreerde logboek registratie functie met Azure-bewaking. U vindt deze mogelijkheid op [de pagina logboeken en diagnostische instellingen (preview)](https://aka.ms/appsvcblog-azmon). 
+> Naast de instructies voor logboek registratie in dit artikel, is er een nieuwe, geïntegreerde logboek registratie functie met Azure-bewaking. Meer informatie over deze mogelijkheid vindt u in de sectie [Logboeken naar Azure monitor (preview) verzenden](#send-logs-to-azure-monitor-preview) . 
 >
 >
 
@@ -66,7 +66,7 @@ Selecteer het **niveau**of het niveau van de details die moeten worden vastgeleg
 
 | Niveau | Opgenomen categorieën |
 |-|-|
-|**Uitgeschakeld** | Geen |
+|**Uitgeschakeld** | None |
 |**Optreedt** | Fout, kritiek |
 |**Waarschuwing** | Waarschuwing, fout, kritiek|
 |**Gegevens** | Info, waarschuwing, fout, kritiek|
@@ -178,7 +178,28 @@ Voor Windows-apps bevat het ZIP-bestand de inhoud van de *D:\Home\LogFiles* -map
 | **Webserver logboeken** | */LogFiles/http/RawLogs/* | Bevat tekst bestanden die zijn ingedeeld met de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Deze informatie kan worden gelezen met een tekst editor of een hulp programma zoals [log parser](https://go.microsoft.com/fwlink/?LinkId=246619).<br/>App Service biedt geen ondersteuning voor de velden `s-computername`, `s-ip`of `cs-version`. |
 | **Implementatie logboeken** | */Logfiles/Git/* en */Deployments/* | Logboeken bevatten die zijn gegenereerd door de interne implementatie processen, evenals logboeken voor git-implementaties. |
 
+## <a name="send-logs-to-azure-monitor-preview"></a>Logboeken naar Azure Monitor verzenden (preview-versie)
+
+Met de nieuwe [integratie van Azure monitor](https://aka.ms/appsvcblog-azmon)kunt u [Diagnostische instellingen maken (preview)](https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html#create-a-diagnostic-setting) voor het verzenden van logboeken naar opslag Accounts, Event hubs en log Analytics. 
+
+> [!div class="mx-imgBorder"]
+> Diagnostische instellingen ![(preview)](media/troubleshoot-diagnostic-logs/diagnostic-settings-page.png)
+
+### <a name="supported-log-types"></a>Ondersteunde logboek typen
+
+De volgende tabel bevat de ondersteunde logboek typen en beschrijvingen: 
+
+| Logboek type | Windows-ondersteuning | Linux Support | Beschrijving |
+|-|-|-|
+| AppServiceConsoleLogs | TBA | Ja | Standaard uitvoer en standaard fout |
+| AppServiceHTTPLogs | Ja | Ja | Webserver logboeken |
+| AppServiceEnvironmentPlatformLogs | Ja | Ja | App Service Environment: schalen, configuratie wijzigingen en status logboeken|
+| AppServiceAuditLogs | Ja | Ja | Aanmeldings activiteiten via FTP en kudu |
+| AppServiceFileAuditLogs | TBA | TBA | Bestands wijzigingen via FTP en kudu |
+| AppServiceAppLogs | TBA | Java SE & Tomcat | Toepassings logboeken |
+
 ## <a name="nextsteps"></a> Volgende stappen
+* [Query's uitvoeren op Logboeken met Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 * [Azure App Service bewaken](web-sites-monitor.md)
 * [Problemen met Azure App Service oplossen in Visual Studio](troubleshoot-dotnet-visual-studio.md)
 * [App-Logboeken in HDInsight analyseren](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

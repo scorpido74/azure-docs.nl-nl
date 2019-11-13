@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 8b74621f2c5a9c91ece58c8118cd2bc952c3a464
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 0dd6c410040eea9eb4039ab5da183cc0b6799493
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809697"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005786"
 ---
-# <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Zelf studie: Azure IoT Hub-bericht verrijkingen gebruiken (preview-versie)
+# <a name="tutorial-using-azure-iot-hub-message-enrichments"></a>Zelf studie: verrijkingen van Azure IoT Hub-berichten gebruiken
 
 *Verrijkingen* van berichten is de mogelijkheid van de IOT hub om berichten met aanvullende informatie af te *stem pelen* voordat de berichten naar het aangewezen eind punt worden verzonden. Een reden voor het gebruik van verrijkingen van berichten is het insluiten van gegevens die kunnen worden gebruikt voor het vereenvoudigen van de downstream-verwerking. Het verrijken van telemetriegegevens van een apparaat met een dubbele tag van een apparaat kan bijvoorbeeld de belasting van klanten verminderen om deze informatie te laten opleveren voor Device-dubbele API-aanroepen. Zie het [overzicht van verrijkingen van berichten](iot-hub-message-enrichments-overview.md)voor meer informatie.
 
@@ -42,7 +42,7 @@ Hier volgen de taken die u moet uitvoeren om deze zelf studie te volt ooien:
 
 Down load [IOT Device simulatie](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) en pak deze uit. Deze opslag plaats bevat meerdere toepassingen, waaronder het account dat u gaat gebruiken om berichten te verzenden naar de IoT-hub.
 
-Deze down load bevat ook het script voor het maken van de resources die worden gebruikt voor het testen van de verrijkingen van berichten. Het script bevindt zich in/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli. U kunt het script nu bekijken en gebruiken. U kunt het script ook rechtstreeks vanuit het artikel kopiëren.
+Deze down load bevat ook het script voor het maken van de resources die worden gebruikt voor het testen van de verrijkingen van berichten. Het script bevindt zich in/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli. azcli. U kunt het script nu bekijken en gebruiken. U kunt het script ook rechtstreeks vanuit het artikel kopiëren.
 
 Wanneer u klaar bent om te testen, gebruikt u de toepassing Device simulatie van deze down load om een bericht te verzenden naar uw IoT-hub.
 
@@ -72,9 +72,9 @@ Dit zijn de resources die zijn gemaakt door het script. **Verrijkt** betekent da
 | Naam | Waarde |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
-| Container naam | Origineel  |
-| Container naam | geavanceerde  |
-| IoT-apparaatnaam | Contoso-test-apparaat |
+| container naam | Origineel  |
+| container naam | geavanceerde  |
+| IoT-apparaatnaam | Contoso-Test-Device |
 | IoT Hub naam | ContosoTestHubMsgEn |
 | Naam van opslag account | contosostorage |
 | eindpunt naam 1 | ContosoStorageEndpointOriginal |
@@ -251,7 +251,7 @@ Op dit moment worden de resources allemaal ingesteld en wordt de route ring geco
 
 2. Voeg deze waarden toe aan de lijst voor het ContosoStorageEndpointEnriched-eind punt.
 
-   | Naam | Waarde | Eind punt (vervolg keuzelijst) |
+   | Sleutel | Waarde | Eind punt (vervolg keuzelijst) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | deviceLocation | $twin. Tags. locatie | AzureStorageContainers > ContosoStorageEndpointEnriched |

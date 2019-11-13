@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery controleren met Azure Monitor-Logboeken (Log Analytics) | Microsoft Docs
+title: Azure Site Recovery controleren met Azure Monitor-logboeken
 description: Meer informatie over het bewaken van Azure Site Recovery met Azure Monitor-Logboeken (Log Analytics)
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/13/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 889fa3bee17aa3b0300431b058332c5ec10d9faf
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b5bf568e03d4949b8798dd2e0f4c2d8cbcbbe0c7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331921"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936091"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Site Recovery bewaken met Azure Monitor-logboeken
 
@@ -32,7 +32,7 @@ Het gebruik van Azure Monitor-logboeken met Site Recovery wordt ondersteund voor
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-U hebt het volgende nodig:
+Dit is wat u nodig hebt:
 
 - Ten minste één computer die wordt beveiligd in een Recovery Services kluis.
 - Een Log Analytics-werk ruimte om Site Recovery-logboeken op te slaan. [Meer informatie over](../azure-monitor/learn/quick-create-workspace.md) het instellen van een werk ruimte.
@@ -61,7 +61,7 @@ De Site Recovery logboeken beginnen met het feeden in een tabel (**AzureDiagnost
 U haalt gegevens op uit logboeken met behulp van logboek query's die zijn geschreven met de [Kusto-query taal](../azure-monitor/log-query/get-started-queries.md). In deze sectie vindt u enkele voor beelden van algemene query's die u kunt gebruiken voor Site Recovery bewaking.
 
 > [!NOTE]
-> Sommige voor beelden gebruiken **replicationProviderName_s** ingesteld op **A2A**. Hiermee worden virtuele Azure-machines opgehaald die worden gerepliceerd naar een secundaire Azure-regio met behulp van Site Recovery. In deze voor beelden kunt u **A2A** vervangen door **InMageAzureV2**als u on-premises virtuele VMware-machines of fysieke servers wilt ophalen die met site Recovery worden gerepliceerd naar Azure.
+> Enkele voor beelden gebruiken **replicationProviderName_s** ingesteld op **A2A**. Hiermee worden virtuele Azure-machines opgehaald die worden gerepliceerd naar een secundaire Azure-regio met behulp van Site Recovery. In deze voor beelden kunt u **A2A** vervangen door **InMageAzureV2**als u on-premises virtuele VMware-machines of fysieke servers wilt ophalen die met site Recovery worden gerepliceerd naar Azure.
 
 
 ### <a name="query-replication-health"></a>Status van query replicatie
@@ -223,7 +223,7 @@ AzureDiagnostics 
 U kunt Site Recovery waarschuwingen instellen op basis van Azure Monitor gegevens. Meer [informatie](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) over het instellen van logboek waarschuwingen. 
 
 > [!NOTE]
-> Sommige voor beelden gebruiken **replicationProviderName_s** ingesteld op **A2A**. Hiermee stelt u waarschuwingen in voor virtuele Azure-machines die worden gerepliceerd naar een secundaire Azure-regio. In deze voor beelden kunt u **A2A** vervangen door **InMageAzureV2** als u waarschuwingen wilt instellen voor on-premises virtuele VMware-machines of fysieke servers die worden gerepliceerd naar Azure.
+> Enkele voor beelden gebruiken **replicationProviderName_s** ingesteld op **A2A**. Hiermee stelt u waarschuwingen in voor virtuele Azure-machines die worden gerepliceerd naar een secundaire Azure-regio. In deze voor beelden kunt u **A2A** vervangen door **InMageAzureV2** als u waarschuwingen wilt instellen voor on-premises virtuele VMware-machines of fysieke servers die worden gerepliceerd naar Azure.
 
 ### <a name="multiple-machines-in-a-critical-state"></a>Meerdere computers met een kritieke status
 

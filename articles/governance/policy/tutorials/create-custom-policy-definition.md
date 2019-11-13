@@ -1,19 +1,16 @@
 ---
 title: Een aangepaste beleidsdefinitie maken
 description: Maak een aangepast beleid voor Azure Policy om aangepaste bedrijfsregels af te dwingen.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/23/2019
 ms.topic: tutorial
-ms.service: azure-policy
-ms.openlocfilehash: 240d0fa388fbdfdd3d29d735aed708a096440740
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 1a5be5a3e81dec6f4369e6b01dcda3d5de5f6dac
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980355"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959267"
 ---
-# <a name="tutorial-create-a-custom-policy-definition"></a>Zelfstudie: Een aangepaste beleidsdefinitie maken
+# <a name="tutorial-create-a-custom-policy-definition"></a>Zelf studie: een aangepaste beleids definitie maken
 
 Met een aangepaste beleidsdefinitie kunnen klanten hun eigen regels voor het gebruik van Azure definiëren. Deze regels worden vaak gebruikt voor het afdwingen van:
 
@@ -376,7 +373,7 @@ Het opstellen van de [beleidsregel](../concepts/definition-structure.md#policy-r
 - Dat het **type** van het opslagaccount **Microsoft.Storage/storageAccounts** is
 - Dat de eigenschap **supportsHttpsTrafficOnly** van het opslagaccount niet **true** is
 
-Omdat we willen dat beide instructies waar zijn, gebruiken we de [logische operator](../concepts/definition-structure.md#logical-operators) **allOf**. We geven de parameter **effectType** door aan het effect in plaats van een statische declaratie te maken. Onze voltooide regel ziet eruit zoals in dit voorbeeld:
+Omdat we willen dat beide instructies waar zijn, gebruiken we de **logische operator** [allOf](../concepts/definition-structure.md#logical-operators). We geven de parameter **effectType** door aan het effect in plaats van een statische declaratie te maken. Onze voltooide regel ziet eruit zoals in dit voorbeeld:
 
 ```json
 "if": {
@@ -443,7 +440,7 @@ Nu alle drie delen van het beleid zijn gedefinieerd, volgt hier de voltooide def
 
 De voltooide definitie kan worden gebruikt om een nieuw beleid te maken. Portal en elke SDK (Azure CLI, Azure PowerShell en REST API) accepteren de definitie op verschillende manieren; bekijk de opdrachten voor elk ervan om het juiste gebruik te valideren. Wijs het beleid vervolgens met behulp van het geparameteriseerde effect toe aan de juiste resources om de veiligheid van uw opslagaccounts te beheren.
 
-## <a name="review"></a>Controleren
+## <a name="review"></a>Beoordelen
 
 In deze zelfstudie hebt u de volgende taken uitgevoerd:
 

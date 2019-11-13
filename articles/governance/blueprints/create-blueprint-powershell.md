@@ -1,19 +1,16 @@
 ---
 title: Een blauw druk maken met Power shell
 description: Gebruik Azure-blauw drukken om artefacten te maken, te definiëren en te implementeren met behulp van de Power shell.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/21/2019
 ms.topic: quickstart
-ms.service: blueprints
-ms.openlocfilehash: 6a1ef5aece030ac359e9c5811c815bec5ed57d27
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 4cc181a7e0b07448d6dd538cfb1621d1efa43a80
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978515"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960429"
 ---
-# <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Quickstart: Een Azure Blueprint definiëren en toewijzen met Power shell
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Snelstartgids: een Azure Blueprint definiëren en toewijzen met Power shell
 
 Als u leert hoe u blauwdrukken in Azure maakt en toewijst, kunnen er algemene patronen worden gedefinieerd voor de ontwikkeling van herbruikbare en snel implementeerbare configuraties op basis van Resource Manager-sjablonen, beleid, beveiliging en meer. In deze zelfstudie leert u hoe u Azure Blueprints gebruikt om algemene taken uit te voeren met betrekking tot het maken, publiceren en toewijzen van een blauwdruk binnen uw organisatie, zoals:
 
@@ -33,7 +30,7 @@ Als deze nog niet is geïnstalleerd, volgt u de instructies in [add de module AZ
 
 ## <a name="create-a-blueprint"></a>Een blauwdruk maken
 
-De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaat uit het samenstellen van een blauwdruk uit de beschikbare resources. U maakt een blauwdruk met de naam MyBlueprint om de rol en de beleidstoewijzingen voor het abonnement te configureren. Vervolgens voegt u een resourcegroep en een Resource Manager-sjabloon toe en voegt u een roltoewijzing aan de resourcegroep toe.
+De eerste stap bij het definiëren van een standaardpatroon voor naleving is om een blauwdruk samen te stellen uit de beschikbare resources. U maakt een blauwdruk met de naam MyBlueprint om de rol en de beleidstoewijzingen voor het abonnement te configureren. Vervolgens voegt u een resourcegroep en een Resource Manager-sjabloon toe en voegt u een roltoewijzing aan de resourcegroep toe.
 
 > [!NOTE]
 > Wanneer u Power shell gebruikt, wordt het object _Blue Print_ eerst gemaakt. Voor elk _artefact_ dat wordt toegevoegd en parameters bevat, moeten de parameters vooraf worden gedefinieerd in de eerste _blauwdruk_.
@@ -314,9 +311,9 @@ De waarde voor `{BlueprintVersion}` is een reeks letters, cijfers en afbreekstre
 
 ## <a name="assign-a-blueprint"></a>Een blauwdruk toewijzen
 
-Zodra een blauw druk is gepubliceerd met Power shell, kan deze worden toegewezen aan een abonnement. Wijs de blauwdruk die u hebt gemaakt toe aan een van de abonnementen in uw beheergroephiërarchie. Als de blauwdruk is opgeslagen in een abonnement, kan deze alleen aan dat abonnement worden toegewezen. De para meter **blauw** drukken geeft aan welke blauw druk moet worden toegewezen. Als u de para meters naam, locatie, identiteit, vergren deling en blauw druk wilt opgeven, gebruikt u de overeenkomende Power shell-para meters voor de `New-AzBlueprintAssignment` cmdlet of geeft u deze op in het JSON-bestand **AssignmentFile**
+Zodra een blauw druk is gepubliceerd met Power shell, kan deze worden toegewezen aan een abonnement. Wijs de blauwdruk die u hebt gemaakt toe aan een van de abonnementen in uw beheergroephiërarchie. Als de blauwdruk is opgeslagen in een abonnement, kan deze alleen aan dat abonnement worden toegewezen. De para meter **blauw** drukken geeft aan welke blauw druk moet worden toegewezen. Als u de para meters naam, locatie, identiteit, vergren deling en blauw druk wilt opgeven, gebruikt u de overeenkomende Power shell-para meters op de `New-AzBlueprintAssignment` cmdlet of geeft u deze op in het JSON-bestand **AssignmentFile** .
 
-1. Voer de blauwdrukimplementatie uit door deze toe te wijzen aan een abonnement. Omdat de para meters voor **inzenders** en **eigen aren** een matrix moeten hebben met objectid's van de principals waaraan de roltoewijzing moet worden toegekend, gebruikt u [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) voor het verzamelen van de objectid's voor gebruik in de **AssignmentFile** voor uw eigen gebruikers, groepen of service-principals.
+1. Voer de blauwdrukimplementatie uit door deze toe te wijzen aan een abonnement. Als de para meters voor **inzenders** en **eigen aren** een matrix moeten hebben met objectid's van de principals waaraan de roltoewijzing moet worden toegekend, gebruikt u [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) voor het verzamelen van de objectid's voor gebruik in de **AssignmentFile** voor uw eigen gebruikers, groepen of service-principals.
 
    - JSON-bestand-blueprintAssignment. json
 
@@ -371,7 +368,7 @@ Zodra een blauw druk is gepubliceerd met Power shell, kan deze worden toegewezen
    - Door een gebruiker toegewezen beheerde identiteit
 
      Een blauwdruktoewijzing kan ook gebruikmaken van een [door een gebruiker toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md).
-     In dit geval wordt het **identiteits** gedeelte van het JSON-toewijzings bestand als volgt gewijzigd. Vervang `{tenantId}`, `{subscriptionId}`, `{yourRG}` en `{userIdentity}` door uw tenantId, subscriptionId, naam van de resource groep en de naam van uw door de gebruiker toegewezen beheerde identiteit.
+     In dit geval wordt het **identiteits** gedeelte van het JSON-toewijzings bestand als volgt gewijzigd. Vervang `{tenantId}`, `{subscriptionId}`, `{yourRG}`en `{userIdentity}` met uw tenantId, subscriptionId, naam van de resource groep en de naam van de door de gebruiker toegewezen beheerde identiteit.
 
      ```json
      "identity": {
@@ -390,7 +387,7 @@ Zodra een blauw druk is gepubliceerd met Power shell, kan deze worden toegewezen
 
 ## <a name="unassign-a-blueprint"></a>De toewijzing van een blauwdruk ongedaan maken
 
-U kunt een blauwdruk uit een abonnement verwijderen. Het verwijderen wordt vaak uitgevoerd als de artefactresources niet langer nodig zijn. Wanneer een blauwdruk wordt verwijderd, blijven de artefacten die als onderdeel van die blauwdruk zijn toegewezen, achter. Als u een blauw druk-toewijzing wilt verwijderen, gebruikt u de `Remove-AzBlueprintAssignment`-cmdlet:
+U kunt een blauwdruk uit een abonnement verwijderen. Het verwijderen wordt vaak uitgevoerd als de artefactresources niet langer nodig zijn. Wanneer een blauwdruk wordt verwijderd, worden de artefacten die als onderdeel van die blauwdruk zijn toegewezen, achtergelaten. Als u een blauw druk toewijzing wilt verwijderen, gebruikt u de cmdlet `Remove-AzBlueprintAssignment`:
 
 assignMyBlueprint
 

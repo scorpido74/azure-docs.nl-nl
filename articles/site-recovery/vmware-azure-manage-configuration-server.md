@@ -1,20 +1,19 @@
 ---
-title: De configuratie server voor nood herstel van VMware en fysieke servers beheren met Azure Site Recovery | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u een bestaande configuratie server beheert voor herstel na nood gevallen van virtuele VMware-machines en fysieke servers naar Azure met Azure Site Recovery.
+title: De configuratie server voor herstel na nood gevallen met Azure Site Recovery beheren
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 42e1e283736d8a1e3d4ece33c861185df2d72da7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791823"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954366"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>De configuratie server voor herstel na nood gevallen voor VMware VM beheren
+# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>De configuratie server voor nood herstel van virtuele VMware-machines/fysieke servers beheren
 
 U stelt een on-premises configuratie server in wanneer u [Azure site Recovery](site-recovery-overview.md) gebruikt voor herstel na nood gevallen van virtuele VMware-machines en fysieke servers naar Azure. De configuratie server coördineert de communicatie tussen on-premises VMware en Azure en beheert de gegevens replicatie. In dit artikel vindt u een overzicht van algemene taken voor het beheren van de configuratie server nadat deze is geïmplementeerd.
 
@@ -72,7 +71,7 @@ Als u het toevoegen van referenties tijdens de OVF-implementatie van de configur
 
 1. Nadat u [zich hebt aangemeld](#access-configuration-server), selecteert u referenties voor **virtuele machines beheren**.
 2. Klik op **referenties voor virtuele machines toevoegen**.
-    ![add-Mobility-referenties](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Voer de nieuwe referenties in en klik op **toevoegen**.
 
 U kunt ook referenties toevoegen via CSPSConfigtool. exe.
@@ -158,13 +157,13 @@ Voer als volgt een upgrade uit voor de server:
     ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Down load het installatie bestand voor de update naar de configuratie server.
 
-    ![Bijwerken](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![Update](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. Dubbel klik om het installatie programma uit te voeren.
 5. Het installatie programma detecteert de huidige versie die op de computer wordt uitgevoerd. Klik op **Ja** om de upgrade te starten.
 6. Wanneer de upgrade is voltooid, wordt de server configuratie gevalideerd.
 
-    ![Bijwerken](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![Update](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Klik op **volt ooien** om het installatie programma te sluiten.
 8. Raadpleeg onze [upgrade-richt lijnen](https://aka.ms/asr_vmware_upgrades)om de rest van de site Recovery onderdelen bij te werken.
@@ -189,19 +188,19 @@ Voer het installatie bestand als volgt uit:
 
 |Parameternaam| Type | Beschrijving| Waarden|
 |-|-|-|-|
-| /ServerMode|Verplicht|Hiermee wordt aangegeven of zowel de configuratieserver als de processerver moet worden geïnstalleerd, of alleen de processerver|CS<br>PS|
-|/InstallLocation|Verplicht|De map waarin de onderdelen worden geïnstalleerd| Een map op de computer|
-|/MySQLCredsFilePath|Verplicht|Het bestandspad waarin de referenties voor de MySQL-server worden opgeslagen|Het bestand moet de indeling hebben die hieronder wordt aangegeven|
-|/VaultCredsFilePath|Verplicht|Het pad naar het bestand met kluisreferenties|Geldig bestandspad|
-|/EnvType|Verplicht|Type omgeving dat u wilt beveiligen |VMware<br>NonVMware|
-|/PSIP|Verplicht|IP-adres van de NIC dat wordt gebruikt voor de overdracht van replicatiegegevens| Een geldig IP-adres|
-|/CSIP|Verplicht|Het IP-adres van de NIC waarop de configuratieserver luistert| Een geldig IP-adres|
-|/PassphraseFilePath|Verplicht|Het volledige pad naar het bestand met de wachtwoordzin|Geldig bestandspad|
+| /ServerMode|Vereist|Hiermee wordt aangegeven of zowel de configuratieserver als de processerver moet worden geïnstalleerd, of alleen de processerver|CS<br>PS|
+|/InstallLocation|Vereist|De map waarin de onderdelen worden geïnstalleerd| Een map op de computer|
+|/MySQLCredsFilePath|Vereist|Het bestandspad waarin de referenties voor de MySQL-server worden opgeslagen|Het bestand moet de indeling hebben die hieronder wordt aangegeven|
+|/VaultCredsFilePath|Vereist|Het pad naar het bestand met kluisreferenties|Geldig bestandspad|
+|/EnvType|Vereist|Type omgeving dat u wilt beveiligen |VMware<br>NonVMware|
+|/PSIP|Vereist|IP-adres van de NIC dat wordt gebruikt voor de overdracht van replicatiegegevens| Een geldig IP-adres|
+|/CSIP|Vereist|Het IP-adres van de NIC waarop de configuratieserver luistert| Een geldig IP-adres|
+|/PassphraseFilePath|Vereist|Het volledige pad naar het bestand met de wachtwoordzin|Geldig bestandspad|
 |/BypassProxy|Optioneel|Hiermee wordt aangegeven dat de configuratieserver zonder proxy verbinding moet maken met Azure|Deze waarde moet van Venu worden opgehaald|
 |/ProxySettingsFilePath|Optioneel|Proxy-instellingen (de standaardproxy vereist verificatie of een aangepaste proxy)|Het bestand moet de indeling hebben die hieronder wordt aangegeven|
 |DataTransferSecurePort|Optioneel|Poortnummer van de PSIP dat wordt gebruikt voor replicatiegegevens| Geldig poortnummer (standaardwaarde is 9433)|
 |/SkipSpaceCheck|Optioneel|Hiermee wordt aangegeven dat de controle op vrije ruimte in de cacheschijf moet worden overgeslagen| |
-|/AcceptThirdpartyEULA|Verplicht|Een vlag impliceert acceptatie van de gebruiksrechtovereenkomst van derden| |
+|/AcceptThirdpartyEULA|Vereist|Een vlag impliceert acceptatie van de gebruiksrechtovereenkomst van derden| |
 |/ShowThirdpartyEULA|Optioneel|Hiermee wordt de gebruiksrechtovereenkomst van derden weergegeven. Indien opgegeven als invoer, worden alle andere parameters genegeerd| |
 
 
@@ -291,7 +290,7 @@ Voor implementaties van de configuratie server vóór 2016 mei is certificaat ve
 
 ## <a name="refresh-configuration-server"></a>Configuratie server vernieuwen
 
-1. Ga in het Azure Portal naar **Recovery Services kluis** >  > **site Recovery infra structuur** te **beheren** > **voor VMware &** **configuratie servers**
+1. Ga in het Azure Portal naar **Recovery Services kluis** >  > **site Recovery infra structuur** te **beheren** > **voor VMware &** **configuratie servers** > 
 2. Klik op de configuratie server die u wilt vernieuwen.
 3. Klik op de Blade met details van de gekozen configuratie server op **meer** > **server vernieuwen**.
 4. Controleer de voortgang van de taak onder **Recovery Services kluis** > **bewaking** > **site Recovery taken**.

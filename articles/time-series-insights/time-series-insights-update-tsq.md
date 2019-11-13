@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights preview-gegevens query's weer geven | Microsoft Docs
-description: Azure Time Series Insights voorbeeld gegevens opvragen.
+title: Gegevens query's in Preview-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over Azure Time Series Insights preview gegevens query's.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: e660db5db3d1afc14a3c895e6786d1b6a8b82c13
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f44aa5c0a412dc53f4b1a5f127887257a1b0b550
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832412"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006317"
 ---
-# <a name="data-querying"></a>Query's uitvoeren op gegevens
+# <a name="data-querying-in-azure-time-series-insights-preview"></a>Gegevens query's in Azure Time Series Insights preview
 
 Met Azure Time Series Insights Preview kunnen gegevens query's worden doorzocht op gebeurtenissen en meta gegevens die zijn opgeslagen in de omgeving via open bare Surface-Api's. Deze Api's worden ook gebruikt in de [Time Series Insights preview Explorer](./time-series-insights-update-explorer.md).
 

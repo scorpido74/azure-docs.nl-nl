@@ -15,25 +15,20 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 247dee2cfbb00b185e941fde05c2198459a05e20
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 73dc95260e7beb306834d094957518f36106b0f4
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815743"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73945757"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Problemen met licentie toewijzing voor een groep in Azure Active Directory identificeren en oplossen
 
 Op groep gebaseerde licentie verlening in Azure Active Directory (Azure AD) introduceert het concept van gebruikers met een licentie fout status. In dit artikel bespreken we de redenen waarom gebruikers zich kunnen voordoen in deze status.
 
-Wanneer u licenties rechtstreeks aan afzonderlijke gebruikers toewijst, zonder gebruik te maken van groeps licenties, kan de toewijzings bewerking mislukken. Wanneer u bijvoorbeeld de Power shell-cmdlet `Set-MsolUserLicense` op een gebruikers systeem uitvoert, kan de cmdlet om verschillende redenen mislukken die betrekking hebben op bedrijfs logica. Er kan bijvoorbeeld een ontoereikend aantal licenties zijn of een conflict tussen twee service plannen die niet tegelijkertijd kunnen worden toegewezen. Het probleem wordt onmiddellijk aan u gemeld.
+Wanneer u licenties rechtstreeks aan afzonderlijke gebruikers toewijst, zonder gebruik te maken van groeps licenties, kan de toewijzings bewerking mislukken. Wanneer u bijvoorbeeld de Power shell-cmdlet `Set-MsolUserLicense` op een gebruikers systeem uitvoert, kan de cmdlet om een groot aantal redenen mislukken die betrekking hebben op bedrijfs logica. Er kan bijvoorbeeld een ontoereikend aantal licenties zijn of een conflict tussen twee service plannen die niet tegelijkertijd kunnen worden toegewezen. Het probleem wordt onmiddellijk aan u gemeld.
 
 Wanneer u gebruikmaakt van op groepen gebaseerde licentie verlening, kunnen dezelfde fouten optreden, maar deze worden op de achtergrond uitgevoerd terwijl de Azure AD-Service licenties toewijst. Daarom kunnen de fouten niet meteen naar u worden gecommuniceerd. In plaats daarvan worden ze vastgelegd op het gebruikers object en vervolgens gerapporteerd via de beheer Portal. De oorspronkelijke bedoeling van de licentie voor de gebruiker is nooit verloren gegaan, maar wordt vastgelegd in een fout status voor toekomstig onderzoek en oplossing.
-
-## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException in audit logboeken
-
-**Probleem:** Gebruiker heeft LicenseAssignmentAttributeConcurrencyException voor licentie toewijzing in audit Logboeken.
-Wanneer op groep gebaseerde licentie verlening probeert om gelijktijdige licentie toewijzing van dezelfde licentie voor een gebruiker te verwerken, wordt deze uitzonde ring op de gebruiker vastgelegd. Dit gebeurt meestal wanneer een gebruiker lid is van meer dan één groep met dezelfde toegewezen licentie. Er wordt door AZure AD opnieuw geprobeerd de gebruikers licentie te verwerken en het probleem op te lossen. Er is geen actie vereist van de klant om dit probleem op te lossen.
 
 ## <a name="find-license-assignment-errors"></a>Fouten bij licentie toewijzing zoeken
 
@@ -122,6 +117,11 @@ Nadat u de problemen met het proxy adres voor de betrokken gebruikers hebt opgel
 
 Bij het bijwerken van de licentie toewijzing voor een gebruiker wordt de berekening van het proxy adres geactiveerd, waarmee gebruikers kenmerken kunnen worden gewijzigd. Zie dit artikel over het invullen van het [kenmerk proxyAddresses in azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)om de exacte reden van de wijziging te begrijpen en het probleem op te lossen.
 
+## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException in audit logboeken
+
+**Probleem:** Gebruiker heeft LicenseAssignmentAttributeConcurrencyException voor licentie toewijzing in audit Logboeken.
+Wanneer op groep gebaseerde licentie verlening probeert om gelijktijdige licentie toewijzing van dezelfde licentie voor een gebruiker te verwerken, wordt deze uitzonde ring op de gebruiker vastgelegd. Dit gebeurt meestal wanneer een gebruiker lid is van meer dan één groep met dezelfde toegewezen licentie. Er wordt door AZure AD opnieuw geprobeerd de gebruikers licentie te verwerken en het probleem op te lossen. Er is geen actie vereist van de klant om dit probleem op te lossen.
+
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>Meer dan één product licentie toegewezen aan een groep
 
 U kunt meer dan één product licentie aan een groep toewijzen. U kunt bijvoorbeeld Office 365 Enter prise E3 en Enterprise Mobility + Security toewijzen aan een groep om alle inbegrepen services voor gebruikers eenvoudig in te scha kelen.
@@ -154,7 +154,7 @@ Om deze add-on-licentie toe te wijzen aan een groep, moeten we ervoor zorgen dat
 Het is ook mogelijk om een zelfstandige groep te maken die alleen de mini maal vereiste producten bevat om de invoeg toepassing te laten werken. Het kan worden gebruikt om alleen geselecteerde gebruikers te een licentie voor het invoeg product. Op basis van het vorige voor beeld wijst u de volgende producten toe aan dezelfde groep:
 
 - Office 365 Enter prise E3 met alleen het service abonnement Exchange Online (abonnement 2) ingeschakeld
-- Micro soft Workplace Analytics
+- Microsoft Workplace Analytics
 
 Vanaf nu hebben alle gebruikers die zijn toegevoegd aan deze groep één licentie van het E3-product en één licentie van het product van de werk plek-analyse gebruikt. Op hetzelfde moment kunnen deze gebruikers lid zijn van een andere groep die het volledige E3-product geeft, en ze gebruiken nog steeds slechts één licentie voor dat product.
 
@@ -180,6 +180,6 @@ Zie het volgende voor meer informatie over andere scenario's voor licentie behee
 * [Wat is op een groep gebaseerde licentie verlening in Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Licenties toewijzen aan een groep in Azure Active Directory](licensing-groups-assign.md)
 * [Gebruikers met een afzonderlijke licentie migreren naar licenties op basis van groepen in Azure Active Directory](licensing-groups-migrate-users.md)
-* [Gebruikers tussen product licenties migreren met op groepen gebaseerde licentie verlening in Azure Active Directory](licensing-groups-change-licenses.md)
+* [Het migreren van gebruikers tussen productlicenties groepsgebaseerde licentieverlening in Azure Active Directory gebruiken](licensing-groups-change-licenses.md)
 * [Aanvullende scenario’s voor Azure Active Directory-licenties op basis van groepen](licensing-group-advanced.md)
-* [Power shell-voor beelden voor op groep gebaseerde licentie verlening in Azure Active Directory](licensing-ps-examples.md)
+* [PowerShell-voorbeelden voor Groepslicenties in Azure Active Directory](licensing-ps-examples.md)

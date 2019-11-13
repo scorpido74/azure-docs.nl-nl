@@ -1,43 +1,43 @@
 ---
-title: De doelomgeving voor herstel na noodgevallen van on-premises fysieke servers naar Azure instellen | Microsoft-Docs
-description: Dit artikel wordt beschreven hoe u voor het instellen van het doel-Azure-omgeving voor herstel na noodgeval voor fysieke servers met Azure Site Recovery.
+title: De doel omgeving instellen voor fysieke servers in Azure Site Recovery
+description: In dit artikel wordt beschreven hoe u de Azure-doel omgeving instelt voor herstel na nood gevallen van fysieke servers met behulp van Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 41220ccdca945610d7d8ca87af0857114e2cef85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 685f04b27cd315b04ef5c45e155e825eebe2747b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60949068"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953904"
 ---
-# <a name="prepare-target-vmware-to-azure"></a>Doel (VMware naar Azure) voorbereiden
+# <a name="prepare-target-vmware-to-azure"></a>Doel voorbereiden (VMware naar Azure)
 
-In dit artikel wordt beschreven hoe u uw Azure-omgeving om te beginnen met het repliceren van fysieke servers (x 64) waarop Windows of Linux wordt uitgevoerd in Azure voorbereiden.
+In dit artikel wordt beschreven hoe u uw Azure-omgeving voorbereidt om te beginnen met het repliceren van fysieke servers (x64) waarop Windows of Linux wordt uitgevoerd in Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het artikel wordt ervan uitgegaan dat:
-- U kunt een Recovery Services-kluis ter bescherming van uw fysieke servers hebt gemaakt. Kunt u een Recovery Services-kluis uit de [Azure-portal](https://portal.azure.com "Azure-portal").
-- U hebt [instellen van uw on-premises omgeving](physical-azure-disaster-recovery.md) voor het repliceren van fysieke servers naar Azure.
+In het artikel wordt ervan uitgegaan:
+- U hebt een Recovery Services kluis gemaakt om uw fysieke servers te beschermen. U kunt een Recovery Services kluis maken op basis van de [Azure Portal](https://portal.azure.com "Azure-portal").
+- U hebt [uw on-premises omgeving ingesteld voor het repliceren van](physical-azure-disaster-recovery.md) fysieke servers naar Azure.
 
 ## <a name="prepare-target"></a>Doel voorbereiden
 
-Na het voltooien van de **stap 1: Selecteer beveiligingsdoel** en **stap 2: bron voorbereiden**, gaat u naar **stap 3: Doel**
+Na het volt ooien van de **stap 1: beveiligings doel selecteren** en **stap 2: bron voorbereiden**, gaat u naar **stap 3: doel**
 
 ![Doel voorbereiden](./media/physical-azure-set-up-target/prepare-target-physical-to-azure.png)
 
-1. **Abonnement:** Selecteer het abonnement dat u wilt repliceren van uw fysieke servers naar in de vervolgkeuzelijst.
-2. **Implementatiemodel:** Selecteer het implementatiemodel (klassiek of Resource Manager)
+1. **Abonnement:** Selecteer in de vervolg keuzelijst het abonnement waarnaar u de fysieke servers wilt repliceren.
+2. **Implementatie model:** Het implementatie model selecteren (klassiek of Resource Manager)
 
-Op basis van het gekozen implementatiemodel, wordt om ervoor te zorgen dat u hebt ten minste één compatibel opslagaccount en virtueel netwerk in het doelabonnement om te repliceren en failover uw fysieke servers naar een validatie uitgevoerd.
+Op basis van het gekozen implementatie model wordt een validatie uitgevoerd om ervoor te zorgen dat u ten minste één compatibel opslag account en een virtueel netwerk in het doel abonnement hebt om uw fysieke servers te repliceren en te failoveren naar.
 
-Nadat de validatie is voltooid, klikt u op OK om door te gaan met de volgende stap.
+Zodra de validaties zijn voltooid, klikt u op OK om naar de volgende stap te gaan.
 
-Als u geen een compatibele Resource Manager-opslagaccount of een virtueel netwerk hebt, kunt u maken door te klikken op de **+ Opslagaccount** of **+ netwerk** knoppen aan de bovenkant van de pagina.
+Als u geen compatibel Resource Manager-opslag account of virtueel netwerk hebt, kunt u er een maken door te klikken op het **+ opslag account** of **+ netwerk** knoppen boven aan de pagina.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Replicatie-instellingen configureren](vmware-azure-set-up-replication.md).
+[Configureer de replicatie-instellingen](vmware-azure-set-up-replication.md).

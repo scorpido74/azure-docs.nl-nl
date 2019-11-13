@@ -1,18 +1,18 @@
 ---
-title: Problemen met het upgraden van Microsoft Azure Site Recovery provider oplossen | Microsoft Docs
-description: Begrijpen en
+title: Problemen met de upgrade van de Microsoft Azure Site Recovery provider oplossen
+description: Veelvoorkomende problemen oplossen bij het upgraden van de Microsoft Azure Site Recovery provider
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 02/05/2019
+ms.date: 11/10/2019
 ms.author: raynew
-ms.openlocfilehash: 6bb8263e7291506be6af7d5af7eda5786274d73c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 73309103d422391aae3d72e3b0267d5d5a85515a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972636"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953756"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Problemen met het upgraden van de Microsoft Azure Site Recovery-provider oplossen
 
@@ -30,7 +30,7 @@ Voer de volgende stappen uit om een upgrade uit te voeren:
    1. Selecteer in de sectie Koppelingen naar momenteel ondersteunde update pakketten van de service- [updates in azure site Recovery](service-updates-how-to.md##links-to-currently-supported-update-rollups) -artikel de provider waarmee u een upgrade uitvoert.
    2. Ga op de pagina samen vouwen naar de sectie **informatie over updates** en down load het update pakket voor Microsoft Azure site Recovery Unified Setup.
 
-2. Open een opdracht prompt en navigeer naar de map waarnaar u het Unified Setup-bestand hebt gedownload. Pak de installatie bestanden uit met behulp van de volgende opdracht, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: &lt;folder pad voor de uitgepakte bestanden @ no__t-1.
+2. Open een opdracht prompt en navigeer naar de map waarnaar u het Unified Setup-bestand hebt gedownload. Pak de installatie bestanden uit met behulp van de volgende opdracht, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;mappad voor de uitgepakte bestanden&gt;.
     
     Van de voorbeeldopdracht:
 
@@ -48,12 +48,12 @@ De upgrade kan alleen worden uitgevoerd als de naam van de map van de derde part
 
 Om het probleem op te lossen.
 
-1. Start de REGI ster-editor (Regedit. exe) en open de HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10-vertakking.
-1. Inspecteer de `Build_Version` sleutel waarde. Als deze is ingesteld op de meest recente versie, vermindert u het versie nummer. Als de meest recente versie bijvoorbeeld 9,22 is. \* en de `Build_Version` sleutel ingesteld op die waarde, vervolgens vermindert u deze naar 9,21. \*.
+1. Start de REGI ster-editor (Regedit. exe) en open de vertakking HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
+1. Inspecteer de `Build_Version` sleutel waarde. Als deze is ingesteld op de meest recente versie, vermindert u het versie nummer. Bijvoorbeeld, als de meest recente versie 9,22 is.\* en de `Build_Version` sleutel ingesteld op die waarde, en verminder deze in 9,21.\*.
 1. Down load de nieuwste Microsoft Azure Site Recovery Unified Setup:
    1. Selecteer in de sectie Koppelingen naar momenteel ondersteunde update pakketten van de service- [updates in azure site Recovery](service-updates-how-to.md##links-to-currently-supported-update-rollups) -artikel de provider waarmee u een upgrade uitvoert.
    2. Ga op de pagina samen vouwen naar de sectie **informatie over updates** en down load het update pakket voor Microsoft Azure site Recovery Unified Setup.
-1. Open een opdracht prompt en navigeer naar de map waarnaar u het Unified Setup-bestand hebt gedownload en de Setup-bestanden uit de down load te halen met behulp van de volgende opdracht, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: &lt;folder pad voor de geëxtraheerde bestanden @ no__t-1.
+1. Open een opdracht prompt en navigeer naar de map waarnaar u het Unified Setup-bestand hebt gedownload en de Setup-bestanden uit de down load te halen met behulp van de volgende opdracht, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;mappad voor de uitgepakte bestanden&gt;.
 
     Van de voorbeeldopdracht:
 

@@ -1,19 +1,19 @@
 ---
-title: Een route tabel van een virtuele WAN-hub in azure maken naar NVA | Microsoft Docs
+title: 'Virtueel WAN: route tabel voor virtuele hub maken naar NVA: Azure PowerShell'
 description: Route tabel virtuele WAN-hub om verkeer naar een virtueel netwerk apparaat te sturen.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 18af56f6924484c6267871cf3fed34f80a8f12a4
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 2d8922084dbe30c2dbe494028f2e5a1497fb3759
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744701"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014997"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Een route tabel voor de virtuele hub maken om verkeer naar een virtueel netwerk apparaat te sturen
 
@@ -43,7 +43,7 @@ Controleer of u aan de volgende criteria hebt voldaan:
 5. Controleer of u 2 VNets al hebt gemaakt. Deze worden gebruikt als spoke VNets. Voor dit artikel zijn de VNet-spoke-adres ruimten 10.0.2.0/24 en 10.0.3.0/24. Zie [een virtueel netwerk maken met Power shell](../virtual-network/quick-create-powershell.md)als u meer informatie nodig hebt over het maken van een VNet.
 6. Zorg ervoor dat er geen virtuele netwerk gateways aanwezig zijn in een VNets.
 
-## <a name="signin"></a>1. Aanmelden
+## <a name="signin"></a>1. aanmelden
 
 Zorg ervoor dat u de meest recente versie van de Power shell-cmdlets voor Resource Manager installeert. Zie [How to install and configure Azure PowerShell](/powershell/azure/install-az-ps) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van de PowerShell-cmdlets. Dit is belangrijk omdat eerdere versies van de cmdlets niet de huidige waarden bevatten die u nodig hebt voor deze oefening.
 
@@ -63,7 +63,7 @@ Zorg ervoor dat u de meest recente versie van de Power shell-cmdlets voor Resour
    Select-AzSubscription -SubscriptionName "Name of subscription"
    ```
 
-## <a name="rg"></a>2. Resources maken
+## <a name="rg"></a>2. resources maken
 
 1. Maak een resourcegroep.
 
@@ -81,7 +81,7 @@ Zorg ervoor dat u de meest recente versie van de Power shell-cmdlets voor Resour
    New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -Location "West US"
    ```
 
-## <a name="connections"></a>3. Verbindingen maken
+## <a name="connections"></a>3. verbindingen maken
 
 Maak hub virtuele netwerk verbindingen van het indirecte spoke VNet en het DMZ VNet naar de virtuele hub.
 
@@ -95,7 +95,7 @@ Maak hub virtuele netwerk verbindingen van het indirecte spoke VNet en het DMZ V
   New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "westushub" -Name  "testvnetconnection3" -RemoteVirtualNetwork $remoteVirtualNetwork3
   ```
 
-## <a name="route"></a>4. Een virtuele hub-route maken
+## <a name="route"></a>4. Maak een virtuele hub-route
 
 Voor dit artikel zijn de indirecte spoke VNet-adres ruimten 10.0.2.0/24 en 10.0.3.0/24, en het privé IP-adres van DMZ NVA Network Interface is 10.0.4.5.
 
@@ -103,7 +103,7 @@ Voor dit artikel zijn de indirecte spoke VNet-adres ruimten 10.0.2.0/24 en 10.0.
 $route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.2.0/24", "10.0.3.0/24") -NextHopIpAddress "10.0.4.5"
 ```
 
-## <a name="applyroute"></a>5. Een route tabel voor de virtuele hub maken
+## <a name="applyroute"></a>5. een route tabel voor de virtuele hub maken
 
 Maak een route tabel voor de virtuele hub en pas de gemaakte route daar toe.
  
@@ -111,7 +111,7 @@ Maak een route tabel voor de virtuele hub en pas de gemaakte route daar toe.
 $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 ```
 
-## <a name="commit"></a>6. De wijzigingen door voeren
+## <a name="commit"></a>6. de wijzigingen door voeren
 
 Voer de wijzigingen door in de virtuele hub.
 

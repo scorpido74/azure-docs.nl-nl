@@ -4,18 +4,18 @@ description: Back-ups maken van SQL-data bases in azure-Vm's en deze herstellen 
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
-keywords: Azure Backup; SQL
+keywords: Azure Backup; SQL;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 229d960f7851b5fab8504b6c2a109bece6c7b31f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 34a8b27442fc3f755cbe33f61857aa13d3be700b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969099"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012822"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Back-up en herstel van SQL-data bases in azure Vm's met Power shell
 
@@ -24,6 +24,7 @@ In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om een bac
 In deze zelfstudie wordt het volgende uitgelegd:
 
 > [!div class="checklist"]
+>
 > * Stel Power shell in en registreer de Azure Recovery Services-provider.
 > * Maak een Recovery Services-kluis.
 > * Configureer de back-up voor SQL-data base in een virtuele Azure-machine.
@@ -270,8 +271,8 @@ Zodra de opzet van de automatische beveiliging is gegeven, wordt de query op de 
 
 Azure Backup kunt SQL Server-data bases die worden uitgevoerd op virtuele Azure-machines als volgt herstellen:
 
-1. Herstel naar een specifieke datum of tijd (naar de seconde) met behulp van back-ups van transactie Logboeken. Azure Backup bepaalt automatisch de juiste volledige differentiële back-up en de keten van logboek back-ups die moeten worden hersteld op basis van de geselecteerde tijd.
-2. Herstel een specifieke volledige of differentiële back-up om te herstellen naar een specifiek herstel punt.
+* Herstel naar een specifieke datum of tijd (naar de seconde) met behulp van back-ups van transactie Logboeken. Azure Backup bepaalt automatisch de juiste volledige differentiële back-up en de keten van logboek back-ups die moeten worden hersteld op basis van de geselecteerde tijd.
+* Herstel een specifieke volledige of differentiële back-up om te herstellen naar een specifiek herstel punt.
 
 Controleer de vereisten die [hier](restore-sql-database-azure-vm.md#prerequisites) worden vermeld voordat u SQL db's herstelt.
 
@@ -335,9 +336,9 @@ De bovenstaande uitvoer betekent dat de gebruiker kan herstellen naar een wille 
 
 In het geval van een SQL DB-terugzet bewerking worden de volgende herstel scenario's ondersteund.
 
-1. De back-up van de SQL-data base overschrijven met gegevens van een ander herstel punt-OriginalWorkloadRestore
-2. De SQL-data base herstellen als een nieuwe data base in hetzelfde SQL-exemplaar-AlternateWorkloadRestore
-3. De SQL-data base herstellen als een nieuwe data base in een ander SQL-exemplaar in een andere SQL-VM-AlternateWorkloadRestore
+* De back-up van de SQL-data base overschrijven met gegevens van een ander herstel punt-OriginalWorkloadRestore
+* De SQL-data base herstellen als een nieuwe data base in hetzelfde SQL-exemplaar-AlternateWorkloadRestore
+* De SQL-data base herstellen als een nieuwe data base in een ander SQL-exemplaar in een andere SQL-VM-AlternateWorkloadRestore
 
 Nadat u het relevante herstel punt (DISTINCT of log Point-in-time) hebt opgehaald, gebruikt u de cmdlet [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS om het herstel configuratie object op te halen conform het gewenste herstel plan.
 
@@ -560,12 +561,12 @@ Voor SQL always on-beschikbaarheids groepen, moet u [Alle knoop punten](#registe
 
 Laten we bijvoorbeeld uitgaan dat een SQL AG twee knoop punten heeft: ' SQL-Server-0 ' en ' SQL-Server-1 ' en 1 SQL AG DB. Wanneer beide knoop punten zijn geregistreerd en de gebruiker [de Beveilig bare items vermeld](#fetching-sql-dbs), worden de volgende onderdelen vermeld
 
-1. Een SQL AG-object: type Beveilig bare items als SQLAvailabilityGroup
-2. Een SQL AG DB-beveiligd item type als SQLDatabase
-3. SQL-Server-0: type Beveilig bare items als SQLInstance
-4. SQL-Server-1-beveiligbaar item type als SQLInstance
-5. Een standaard SQL-Db's (Master, model, msdb) onder SQL-Server-0-beveiligd item type als SQLDatabase
-6. Een standaard SQL-Db's (Master, model, msdb) onder SQL-Server-1-beveiligbaar item type als SQLDatabase
+* Een SQL AG-object: type Beveilig bare items als SQLAvailabilityGroup
+* Een SQL AG DB-beveiligd item type als SQLDatabase
+* SQL-Server-0: type Beveilig bare items als SQLInstance
+* SQL-Server-1-beveiligbaar item type als SQLInstance
+* Een standaard SQL-Db's (Master, model, msdb) onder SQL-Server-0-beveiligd item type als SQLDatabase
+* Een standaard SQL-Db's (Master, model, msdb) onder SQL-Server-1-beveiligbaar item type als SQLDatabase
 
 SQL-Server-0, SQL-Server-1 wordt ook weer gegeven als ' AzureVMAppContainer ' als [er back-upcontainers worden weer gegeven](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0).
 

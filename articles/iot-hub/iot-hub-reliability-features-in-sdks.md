@@ -1,5 +1,5 @@
 ---
-title: Connectiviteit en betrouw bare berichten beheren met behulp van Azure IoT Hub apparaat-Sdk's
+title: IoT Hub connectiviteit beheren & betrouw bare berichten over de apparaat-Sdk's
 description: Meer informatie over het verbeteren van de connectiviteit en communicatie van uw apparaten bij het gebruik van de Azure IoT Hub apparaat-Sdk's
 services: iot-hub
 author: robinsh
@@ -7,12 +7,12 @@ ms.author: robinsh
 ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
-ms.openlocfilehash: b5fe47bf066568960f9819a780a1281bedd1902b
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8774129b3a1d3c9a1095e7a7c478dd94086b5867
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999995"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954500"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Connectiviteit en betrouw bare berichten beheren met behulp van Azure IoT Hub apparaat-Sdk's
 
@@ -30,11 +30,11 @@ Implementatie details kunnen per taal verschillen. Zie de API-documentatie of sp
 
 * [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/retrypolicy.md)
 
-* [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
+* [Java-SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
 
 * [Node-SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
-* [Python-SDK](https://github.com/Azure/azure-iot-sdk-python) (Nog niet geïmplementeerde betrouw baarheid)
+* [Python-SDK](https://github.com/Azure/azure-iot-sdk-python) (nog niet geïmplementeerde betrouw baarheid)
 
 ## <a name="designing-for-resiliency"></a>Ontwerpen voor flexibiliteit
 
@@ -77,20 +77,20 @@ In de volgende stappen wordt het proces voor opnieuw proberen beschreven wanneer
 
 De Sdk's bieden drie beleids regels voor opnieuw proberen:
 
-* **Exponentiële back-off met jitter**: Dit standaard beleid voor opnieuw proberen is in de loop van de tijd zeer agressief, totdat het een maximale vertraging bereikt. Het ontwerp is gebaseerd op de [richt lijnen voor opnieuw proberen van Azure Architecture Center](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific). 
+* **Exponentiële back-off met jitter**: dit standaard beleid voor opnieuw proberen is agressief op het moment dat het wordt gestart en vertraagt totdat er een maximum vertraging wordt bereikt. Het ontwerp is gebaseerd op de [richt lijnen voor opnieuw proberen van Azure Architecture Center](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific). 
 
-* **Aangepaste nieuwe poging**: Voor sommige SDK-talen kunt u een aangepast beleid voor opnieuw proberen ontwerpen dat beter geschikt is voor uw scenario en het vervolgens in het RetryPolicy injecteren. Aangepaste nieuwe poging is niet beschikbaar op de C-SDK.
+* **Aangepaste nieuwe poging**: voor sommige SDK-talen kunt u een aangepast beleid voor opnieuw proberen ontwerpen dat beter geschikt is voor uw scenario en het vervolgens in het RetryPolicy injecteren. Aangepaste nieuwe poging is niet beschikbaar op de C-SDK.
 
-* **Geen nieuwe poging**: U kunt het beleid voor opnieuw proberen instellen op geen nieuwe poging, waardoor de logica voor opnieuw proberen wordt uitgeschakeld. De SDK probeert een keer verbinding te maken en een bericht te verzenden, ervan uitgaande dat de verbinding tot stand is gebracht. Dit beleid wordt doorgaans gebruikt in scenario's met betrekking tot band breedte of kosten. Als u deze optie kiest, gaan berichten die niet worden verzonden, verloren en kunnen ze niet worden hersteld.
+* **Geen nieuwe poging**: u kunt het beleid voor opnieuw proberen in te stellen op geen nieuwe poging, waardoor de logica voor opnieuw proberen wordt uitgeschakeld. De SDK probeert een keer verbinding te maken en een bericht te verzenden, ervan uitgaande dat de verbinding tot stand is gebracht. Dit beleid wordt doorgaans gebruikt in scenario's met betrekking tot band breedte of kosten. Als u deze optie kiest, gaan berichten die niet worden verzonden, verloren en kunnen ze niet worden hersteld.
 
 ### <a name="retry-policy-apis"></a>Beleids-Api's opnieuw proberen
 
    | SDK | Methode SetRetryPolicy | Beleids implementaties | Begeleiding bij implementatie |
    |-----|----------------------|--|--|
    |  C/iOS  | [IOTHUB_CLIENT_RESULT IoTHubClient_SetRetryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/2018-05-04/iothub_client/inc/iothub_client.h#L188)        | **Standaard**: [IOTHUB_CLIENT_RETRY_EXPONENTIAL_BACKOFF](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)<BR>**Aangepast:** beschik bare [retryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies) gebruiken<BR>**Geen nieuwe poging:** [IOTHUB_CLIENT_RETRY_NONE](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)  | [C/iOS-implementatie](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#)  |
-   | Java| [SetRetryPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclientconfig.setretrypolicy?view=azure-java-stable)        | **Standaard**: [Klasse ExponentialBackoffWithJitter](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)<BR>**Aangepast:** [RetryPolicy-interface](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/RetryPolicy.java) implementeren<BR>**Geen nieuwe poging:** [Klasse voor niet opnieuw proberen](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)  | [Java-implementatie](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md) |
-   | .NET| [DeviceClient.SetRetryPolicy](/dotnet/api/microsoft.azure.devices.client.deviceclient.setretrypolicy?view=azure-dotnet) | **Standaard**: [Klasse ExponentialBackoff](/dotnet/api/microsoft.azure.devices.client.exponentialbackoff?view=azure-dotnet)<BR>**Aangepast:** [IRetryPolicy-interface](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.iretrypolicy?view=azure-dotnet) implementeren<BR>**Geen nieuwe poging:** [Klasse voor niet opnieuw proberen](/dotnet/api/microsoft.azure.devices.client.noretry?view=azure-dotnet) | [C#verloop](https://github.com/Azure/azure-iot-sdk-csharp) | |
-   | Knooppunt| [setRetryPolicy](/javascript/api/azure-iot-device/client?view=azure-iot-typescript-latest) | **Standaard**: [Klasse ExponentialBackoffWithJitter](/javascript/api/azure-iot-common/exponentialbackoffwithjitter?view=azure-iot-typescript-latest)<BR>**Aangepast:** [RetryPolicy-interface](/javascript/api/azure-iot-common/retrypolicy?view=azure-iot-typescript-latest) implementeren<BR>**Geen nieuwe poging:** [Klasse voor niet opnieuw proberen](/javascript/api/azure-iot-common/noretry?view=azure-iot-typescript-latest) | [Knooppunt implementatie](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them) |
+   | Java| [SetRetryPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclientconfig.setretrypolicy?view=azure-java-stable)        | **Standaard**: [ExponentialBackoffWithJitter-klasse](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)<BR>**Aangepast:** [RetryPolicy-interface](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/RetryPolicy.java) implementeren<BR>**Geen nieuwe poging:** de [klasse niet opnieuw proberen](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)  | [Java-implementatie](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md) |
+   | .NET| [DeviceClient.SetRetryPolicy](/dotnet/api/microsoft.azure.devices.client.deviceclient.setretrypolicy?view=azure-dotnet) | **Standaard**: [ExponentialBackoff-klasse](/dotnet/api/microsoft.azure.devices.client.exponentialbackoff?view=azure-dotnet)<BR>**Aangepast:** [IRetryPolicy-interface](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.iretrypolicy?view=azure-dotnet) implementeren<BR>**Geen nieuwe poging:** de [klasse niet opnieuw proberen](/dotnet/api/microsoft.azure.devices.client.noretry?view=azure-dotnet) | [C#verloop](https://github.com/Azure/azure-iot-sdk-csharp) | |
+   | Knooppunt| [setRetryPolicy](/javascript/api/azure-iot-device/client?view=azure-iot-typescript-latest) | **Standaard**: [ExponentialBackoffWithJitter-klasse](/javascript/api/azure-iot-common/exponentialbackoffwithjitter?view=azure-iot-typescript-latest)<BR>**Aangepast:** [RetryPolicy-interface](/javascript/api/azure-iot-common/retrypolicy?view=azure-iot-typescript-latest) implementeren<BR>**Geen nieuwe poging:** de [klasse niet opnieuw proberen](/javascript/api/azure-iot-common/noretry?view=azure-iot-typescript-latest) | [Knooppunt implementatie](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them) |
    | Python| Binnenkort beschikbaar | Binnenkort beschikbaar | Binnenkort beschikbaar
 
 De volgende code voorbeelden illustreren deze stroom:
@@ -115,7 +115,7 @@ Als de service met een beperkings fout reageert, is het beleid voor opnieuw prob
      TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(5)); SetRetryPolicy(retryPolicy);
    ```
 
-Het mechanisme voor opnieuw proberen `DefaultOperationTimeoutInMilliseconds`stopt na, dat momenteel is ingesteld op 4 minuten.
+Het mechanisme voor opnieuw proberen stopt na `DefaultOperationTimeoutInMilliseconds`, dat momenteel is ingesteld op 4 minuten.
 
 #### <a name="other-languages-implementation-guidance"></a>Richt lijnen voor de implementatie van andere talen
 
@@ -125,11 +125,11 @@ Raadpleeg de volgende implementatie documenten voor code voorbeelden in andere t
 
 * [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/retrypolicy.md)
 
-* [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
+* [Java-SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
 
 * [Node-SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
-* [Python SDK](https://github.com/Azure/azure-iot-sdk-python)
+* [Python-SDK](https://github.com/Azure/azure-iot-sdk-python)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Azure Time Series Insights Explorer | Microsoft Docs'
-description: In deze Snelstartgids ziet u hoe u aan de slag kunt gaan met de Azure Time Series Insights Explorer in uw webbrowser om grote hoeveel heden IoT-gegevens te visualiseren. In dit artikel worden de belangrijkste functies van de verkenner van Azure Time Series Insights behandeld via een rondleiding in een demo-omgeving.
+title: 'Snelstartgids: Azure Time Series Insights Explorer-Azure Time Series Insights | Microsoft Docs'
+description: Meer informatie over hoe u aan de slag kunt gaan met de Azure Time Series Insights Explorer. Visualiseer grote volumes van IoT-gegevens en Tour functies van uw omgeving.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 09/23/2019
-ms.openlocfilehash: 156e95c88bc3c66890ba9c8baf9b281330b60186
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0253a46cd73679c7c2f50a1e37d26d67578e342e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990910"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006422"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Quickstart: Azure Time Series Insights verkennen
 
@@ -44,29 +44,29 @@ Deze Quick Start van Time Series Insights Explorer biedt een rond leiding door d
 
 1. Het **deel venster tijd selecteren** wordt weer gegeven. Gebruik dit venster om het tijdsbestek te selecteren dat u wilt visualiseren.
 
-   [deel venster![tijd selecteren](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
+   [deel venster ![tijd selecteren](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
 
 1. Selecteer een tijds bestek en sleep dit in de regio. Selecteer vervolgens **zoeken**.
 
-   [een tijds bestek![selecteren](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
+   [een tijds bestek ![selecteren](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
 
    U ziet in Time Series Insights een grafiek met een visualisatie voor het opgegeven tijdsbestek. U kunt verschillende acties uitvoeren in het lijn diagram. U kunt bijvoorbeeld filteren, vastmaken, sorteren en stapelen.
 
    Als u wilt terugkeren naar het **deel venster tijd**selecteren, selecteert u de pijl-omlaag zoals weer gegeven:
 
-   [Grafiek![](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
+   [Grafiek ![](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
 
 1. Selecteer **toevoegen** in het **deel venster voor waarden** om een nieuwe zoek term toe te voegen.
 
-   [item![toevoegen](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
+   [item ![toevoegen](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
 
 1. In de grafiek kunt u een regio selecteren, hier met de rechtermuisknop op klikken en vervolgens **Explore Events** selecteren.
 
-   [Gebeurtenissen![verkennen](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
+   [Gebeurtenissen ![verkennen](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
 
    Een raster van uw onbewerkte gegevens wordt weer gegeven in de regio die u wilt verkennen.
 
-   [Raster weergave![](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
+   [Raster weergave ![](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
 
 ## <a name="select-and-filter-data"></a>Gegevens selecteren en filteren
 

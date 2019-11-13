@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 270dbb24d851645ff7a7f0bcf5f78bfb95bcd095
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5ae97f18bb15b5ab2fe092a1e3b857ea3ef0aed0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604733"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012970"
 ---
 # <a name="aks-troubleshooting"></a>AKS problemen oplossen
 
@@ -45,7 +45,7 @@ Zie [IP-adres sering voor uw cluster plannen](configure-azure-cni.md#plan-ip-add
 Er kunnen verschillende redenen zijn waarom de pod in die modus vastloopt. U kunt het volgende bekijken:
 
 * De pod zelf, met behulp van `kubectl describe pod <pod-name>`.
-* De logboeken, door gebruik te maken van `kubectl log <pod-name>`.
+* De logboeken, met behulp van `kubectl log <pod-name>`.
 
 Zie [fouten opsporen in toepassingen](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)voor meer informatie over het oplossen van problemen met Pod.
 
@@ -59,7 +59,7 @@ De reden voor de waarschuwingen op het dash board is dat het cluster nu is inges
 
 ## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Ik kan geen verbinding maken met het dash board. Wat moet ik doen?
 
-De eenvoudigste manier om toegang te krijgen tot uw service buiten het cluster, is om `kubectl proxy` uit te voeren, welke proxy's aanvragen verzonden naar de lokale poort 8001 van de Kubernetes-API-server. Vanaf daar kan de API-server worden geproxyeerd voor uw service: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
+De eenvoudigste manier om toegang te krijgen tot uw service buiten het cluster is om `kubectl proxy`uit te voeren, welke proxy's aanvragen verzonden naar de lokale poort 8001 van de Kubernetes-API-server. Vanaf daar kan de API-server worden geproxyeerd voor uw service: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
 Als u het Kubernetes-dash board niet ziet, controleert u of de `kube-proxy` pod wordt uitgevoerd in de naam ruimte `kube-system`. Als de status niet wordt uitgevoerd, verwijdert u de Pod en wordt de computer opnieuw opgestart.
 
@@ -77,7 +77,7 @@ Mogelijk krijgt u deze fout omdat u de tags in de agent knooppunten in het AKS-c
 
 Deze fout treedt op wanneer clusters een mislukte status om meerdere redenen invoeren. Volg de onderstaande stappen om de status van het cluster fout op te lossen voordat u de eerder mislukte bewerking opnieuw probeert uit te voeren:
 
-1. De `upgrade`-en `scale`-bewerkingen mislukken totdat het cluster de status `failed` heeft. Veelvoorkomende basis problemen en oplossingen zijn:
+1. `upgrade` en `scale` bewerkingen mislukken totdat het cluster niet meer `failed` status heeft. Veelvoorkomende basis problemen en oplossingen zijn:
     * Schalen met **onvoldoende Compute-quota (CRP)** . U kunt dit oplossen door uw cluster eerst terug te schalen naar een stabiele doel status binnen het quotum. Voer vervolgens de volgende [stappen uit om een toename van het reken quotum aan te vragen](../azure-supportability/resource-manager-core-quotas-request.md) voordat u opnieuw opschaalt na de initiële quotum limieten.
     * Het schalen van een cluster met geavanceerde netwerken en **onvoldoende subnet-bronnen (netwerken)** . U kunt dit oplossen door uw cluster eerst terug te schalen naar een stabiele doel status binnen het quotum. Voer vervolgens [de volgende stappen uit om een verhoging van het resource quotum aan te vragen](../azure-resource-manager/resource-manager-quota-errors.md#solution) voordat u opnieuw opschaalt na de initiële quotum limieten.
 2. Zodra de onderliggende oorzaak van de upgrade fout is opgelost, moet uw cluster de status voltooid hebben. Als de status is gecontroleerd, voert u de oorspronkelijke bewerking opnieuw uit.
@@ -88,7 +88,7 @@ Deze fout treedt op wanneer clusters een mislukte status om meerdere redenen inv
 
 Het bijwerken en schalen van bewerkingen op een cluster met een groep met één knoop punt of een cluster met [meerdere knooppunt Pools](use-multiple-node-pools.md) sluiten elkaar wederzijds uit. U kunt geen cluster-of knooppunt groep tegelijkertijd bijwerken en schalen. In plaats daarvan moet elk bewerkings type worden voltooid voor de doel resource vóór de volgende aanvraag op dezelfde resource. Als gevolg hiervan zijn bewerkingen beperkt wanneer actieve upgrade of schaal bewerkingen worden uitgevoerd of geprobeerd en vervolgens worden mislukt. 
 
-Om het probleem op te lossen `az aks show -g myResourceGroup -n myAKSCluster -o table` om de gedetailleerde status van het cluster op te halen. Op basis van het resultaat:
+Om het probleem op te lossen `az aks show -g myResourceGroup -n myAKSCluster -o table` uit te voeren om de gedetailleerde status van het cluster op te halen. Op basis van het resultaat:
 
 * Als het cluster actief wordt bijgewerkt, wacht u totdat de bewerking wordt beëindigd. Als deze is geslaagd, voert u de bewerking opnieuw uit.
 * Als het upgraden van het cluster is mislukt, volgt u de stappen in de vorige sectie.
@@ -118,14 +118,15 @@ Volg de *voordat u begint* met de stappen in het juiste document om een AKS-clus
 
 Naam beperkingen worden geïmplementeerd door zowel het Azure-platform als de AKS. Als een resource naam of-para meter een van deze beperkingen uitbreekt, wordt er een fout bericht weer gegeven waarin u wordt gevraagd een andere invoer op te geven. De volgende algemene richt lijnen zijn van toepassing:
 
-* De naam van de resource groep AKS *MC_* combineert de naam van de resource groep en de resource naam. De automatisch gegenereerde syntaxis van `MC_resourceGroupName_resourceName_AzureRegion` mag niet langer zijn dan 80 tekens. Als dat nodig is, vermindert u de lengte van de naam van de resource groep of de AKS-cluster naam.
+* Cluster namen moeten 1-63 tekens lang zijn. De enige toegestane tekens zijn letters, cijfers, streepjes en onderstreping. Het eerste en laatste teken moeten een letter of cijfer zijn.
+* De naam van de resource groep AKS *MC_* een combi natie van de naam van de resource groep en de resource naam. De automatisch gegenereerde syntaxis van `MC_resourceGroupName_resourceName_AzureRegion` mag niet groter zijn dan 80 tekens. Als dat nodig is, vermindert u de lengte van de naam van de resource groep of de AKS-cluster naam.
 * De *dnsPrefix* moet beginnen en eindigen met alfanumerieke waarden. Geldige tekens zijn alfanumerieke waarden en afbreek streepjes (-). De *dnsPrefix* mag geen speciale tekens bevatten, zoals een punt (.).
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Ik ontvang fouten bij het maken, bijwerken, schalen, verwijderen of upgraden van een cluster. deze bewerking is niet toegestaan omdat er een andere bewerking wordt uitgevoerd.
 
 *Deze hulp bij het oplossen van problemen is gericht op aka.ms/aks-pending-operation*
 
-Cluster bewerkingen zijn beperkt wanneer er nog een eerdere bewerking wordt uitgevoerd. Gebruik de `az aks show -g myResourceGroup -n myAKSCluster -o table` opdracht om een gedetailleerde status van uw cluster op te halen. Gebruik uw eigen resource groep en AKS cluster naam waar nodig.
+Cluster bewerkingen zijn beperkt wanneer er nog een eerdere bewerking wordt uitgevoerd. Gebruik de opdracht `az aks show -g myResourceGroup -n myAKSCluster -o table` om een gedetailleerde status van uw cluster op te halen. Gebruik uw eigen resource groep en AKS cluster naam waar nodig.
 
 Op basis van de uitvoer van de cluster status:
 

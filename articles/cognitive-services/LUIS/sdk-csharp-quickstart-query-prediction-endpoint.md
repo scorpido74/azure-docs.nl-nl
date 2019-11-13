@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start C# : eind punt SDK-query Voorspellings-Luis'
 titleSuffix: Azure Cognitive Services
-description: Gebruik de C# SDK om een uiting van een gebruiker te verzenden naar LUIS en een voorspelling te ontvangen.
+description: In dit artikel wordt uitgelegd hoe u de C# SDK gebruikt om een gebruiker utterance te verzenden naar de Azure Cognitive Services Luis-toepassing en een voor spelling te ontvangen.
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: bd1fefa828aca71e3faa27f75a8c67a2f1539d52
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f4612f7b3f76cbbfc0deac98668770f92ff054bc
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837081"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953431"
 ---
 # <a name="quickstart-query-v2-prediction-endpoint-with-c-net-sdk"></a>Quick Start: een query v2-eind punt C# voor voor spelling met .NET SDK
 

@@ -1,6 +1,6 @@
 ---
-title: Het controleren en verminderen van de beperking in Azure Time Series Insights | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u prestatie problemen bewaken, diagnosticeert en verhelpt die latentie en beperking in Azure Time Series Insights veroorzaken.
+title: Het bewaken en verminderen van beperking-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over het bewaken, vaststellen en oplossen van prestatie problemen die latentie en beperking in Azure Time Series Insights veroorzaken.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4e82cdf43f568b6415cb7cb00ce0244654559b7d
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 7ea98baa9cb202e2584c18998c5ab96d1c1f9e5a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990147"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012646"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Beperking controleren en beperken om de latentie in Azure Time Series Insights te verminderen
 
@@ -48,11 +48,11 @@ Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie prob
 
 1. Het deel venster **regel maken** wordt weer gegeven. Selecteer **toevoegen** onder **voor waarde**.
 
-   [waarschuwing![toevoegen](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [waarschuwing ![toevoegen](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
 1. Vervolgens configureert u de exacte voor waarden voor de signaal logica.
 
-   [signaal logica![configureren](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
+   [signaal logica ![configureren](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
    Hier kunt u waarschuwingen configureren aan de hand van een van de volgende voor waarden:
 
@@ -74,7 +74,7 @@ Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie prob
 
 ## <a name="throttling-and-ingress-management"></a>Beperkings-en ingangs beheer
 
-* Als u een beperking hebt, ziet u een waarde voor de *tijds vertraging*van het ontvangen van berichten, met de melding dat u weet hoeveel seconden achter uw time series Insights-omgeving afkomstig zijn van de werkelijke tijd die het bericht in beslag neemt op de gebeurtenis bron (exclusief indexerings tijd van appx. 30-60 seconden).  
+* Als u een beperking hebt, ziet u een waarde voor de *tijds vertraging van ontvangen berichten*, met de melding dat u weet hoeveel seconden achter uw time series Insights-omgeving afkomstig zijn van de werkelijke tijd die het bericht in beslag neemt op de gebeurtenis bron (exclusief indexerings tijd van appx). 30-60 seconden).  
 
   De vertraging bij het *Ontvangen van berichten* van het aantal inkomende berichten moet ook een waarde hebben, zodat u kunt bepalen hoeveel achterstanden er achter u zijn.  De eenvoudigste manier om aan de slag te gaan is om de capaciteit van uw omgeving te verg Roten tot een grootte waardoor u het verschil kunt oplossen.  
 

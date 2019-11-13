@@ -18,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26ef28be328e01f8edcf898f123db55f262f286c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 3558e589004e0488e5b96b0e39bd3f5ceea69658
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803347"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013063"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Procedure: het domein van de uitgever van een toepassing (preview-versie) configureren
+# <a name="how-to-configure-an-applications-publisher-domain"></a>Procedure: het domein van de uitgever van een toepassing configureren
 
 Het domein van de uitgever van een toepassing wordt weer gegeven aan gebruikers op de [toestemming prompt van de toepassing](application-consent-experience.md) om gebruikers te laten weten waar hun gegevens worden verzonden. Multi tenant-toepassingen die na 21 mei 2019 zijn geregistreerd en die geen Publisher-domein hebben, worden weer gegeven als niet- **geverifieerd**. Toepassingen met meerdere tenants zijn toepassingen die ondersteuning bieden voor accounts buiten één organisatie Directory. u kunt bijvoorbeeld alle Azure AD-accounts ondersteunen of alle Azure AD-accounts en persoonlijke micro soft-accounts ondersteunen.
 
@@ -39,7 +39,7 @@ De volgende tabel bevat een overzicht van het standaard gedrag van de domein waa
 
 | Door tenants geverifieerde domeinen | Standaard waarde van het uitgevers domein |
 |-------------------------|----------------------------|
-| Null | Null |
+| null | null |
 | *. onmicrosoft.com | *. onmicrosoft.com |
 | -*. onmicrosoft.com<br/>-domain1.com<br/>-domain2.com (primair) | domain2.com |
 

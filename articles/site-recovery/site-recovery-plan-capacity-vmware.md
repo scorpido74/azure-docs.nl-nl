@@ -1,5 +1,5 @@
 ---
-title: Plan capaciteit en schalen voor nood herstel van VMware naar Azure met behulp van Azure Site Recovery | Microsoft Docs
+title: Capaciteit plannen voor VMware-nood herstel met Azure Site Recovery
 description: In dit artikel vindt u meer informatie over het plannen van capaciteit en schaal baarheid bij het instellen van herstel na nood gevallen van virtuele VMware-machines in azure met behulp van Azure Site Recovery.
 author: nsoneji
 manager: garavd
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 0bf1b34295d827124198206e743bc21d5f7eb904
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747896"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961361"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Capaciteit en schaling plannen voor nood herstel van VMware naar Azure
 
@@ -24,7 +24,7 @@ Als u meer wilt weten over Azure Site Recovery infrastructuur vereisten, verzame
 
 Site Recovery Deployment Planner biedt een rapport met volledige informatie over compatibele en niet-compatibele Vm's, schijven per VM en gegevens verloop per schijf. Het hulp programma geeft ook een overzicht van de vereisten voor de netwerk bandbreedte om te voldoen aan de doel-RPO en de Azure-infra structuur die is vereist voor een succes volle replicatie en testfailover.
 
-## <a name="capacity-considerations"></a>Capaciteits overwegingen
+## <a name="capacity-considerations"></a>Overwegingen voor capaciteit
 
 Onderdeel | Details
 --- | ---
@@ -42,7 +42,7 @@ CPU | Geheugen | Schijf grootte van cache | Gegevens wijzigings frequentie | Bev
 12 Vcpu's (2 sockets * 6 kernen \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB tot 1 TB | Gebruik om 100 te repliceren naar 150 machines.
 16 Vcpu's (2 sockets * 8 kernen \@ 2,5 GHz) | 32 GB | 1 TB | > 1 TB tot 2 TB | Gebruik om 151 te repliceren naar 200 machines.
 Implementeer een andere configuratie server met behulp van een [OVF-sjabloon](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template). | | | | Implementeer een nieuwe configuratie server als u meer dan 200 computers repliceert.
-Implementeer een andere [proces server](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | > 2 TB| Implementeer een nieuwe scale-out proces server als de totale dagelijkse wijzigings snelheid van gegevens groter is dan 2 TB.
+Implementeer een andere [proces server](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | >2 TB| Implementeer een nieuwe scale-out proces server als de totale dagelijkse wijzigings snelheid van gegevens groter is dan 2 TB.
 
 In deze configuraties:
 

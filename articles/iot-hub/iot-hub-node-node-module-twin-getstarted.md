@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met de Azure IoT Hub-module identiteit en module dubbele (node. js) | Microsoft Docs
+title: Beginnen met de identiteit van de Azure IoT Hub-module & de module dubbele (node. js)
 description: Meer informatie over het maken van module-identiteits-en update-modules, met behulp van IoT Sdk's voor node. js.
 author: wesmc7777
 manager: philmea
@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 0fc676fd32c585324bac0024655765ebd628385a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: bf80925a2dc5c6d06ba14fe1c0d72a2fc1f88d51
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165896"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953859"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Aan de slag met IoT Hub module identiteit en module dubbele (node. js)
 
@@ -56,10 +56,10 @@ In deze sectie maakt u een node. js-app die een apparaat-id en een module-ID maa
 
 2. Voer in de map eerst **NPM init-y** uit om een leeg pakket. json met de standaard waarden te maken. Dit is het project bestand voor uw code.
 
-3. Voer **NPM install-S Azure-iothub @ no__t-1modules-preview** uit om de Service-SDK in de submap **node_modules** te installeren.
+3. Voer **NPM install-S Azure-iothub\@modules-preview** uit om de Service-SDK in de submap **node_modules** te installeren.
 
     > [!NOTE]
-    > In de naam van de submap node_modules wordt de woord module gebruikt om "een knooppunt bibliotheek" te zeggen. De term hier heeft niets te maken met IoT Hub-modules.
+    > De naam van de submap node_modules gebruikt de Word-module om "een knooppunt bibliotheek" te zeggen. De term hier heeft niets te maken met IoT Hub-modules.
 
 4. Maak het volgende. js-bestand in de map. Noem het **toevoegen. js**. Kopieer en plak de hub connection string en de naam van de hub.
 
@@ -133,7 +133,7 @@ In deze sectie maakt u een node. js-app op uw gesimuleerde apparaat die de modul
 
    ![Details van de Azure Portal-module](./media/iot-hub-node-node-module-twin-getstarted/module-detail.png)
 
-2. Net als bij de bovenstaande stap maakt u een map voor uw apparaatcode en gebruikt u NPM om deze te initialiseren en de SDK van het apparaat te installeren (**NPM install-S Azure-IOT-Device-AMQP @ no__t-1modules-preview**).
+2. Net als bij de bovenstaande stap maakt u een map voor uw apparaatcode en gebruikt u NPM om deze te initialiseren en de SDK van het apparaat te installeren (**NPM install-S Azure-IOT-Device-amqp\@modules-preview**).
 
    > [!NOTE]
    > De NPM-installatie opdracht kan traag zijn. Het is een ogen blik dat u veel code uit de pakket opslagplaats haalt.

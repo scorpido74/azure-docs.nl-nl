@@ -1,5 +1,5 @@
 ---
-title: Over het gebruik van Azure ExpressRoute met Azure Site Recovery voor herstel na nood gevallen en migratie | Microsoft Docs
+title: Over het gebruik van ExpressRoute met Azure Site Recovery
 description: Hierin wordt beschreven hoe u Azure ExpressRoute gebruikt met de Azure Site Recovery-service voor herstel na nood gevallen en migratie.
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 97aea824fac60f8bed71971a416f12e8df0e5e64
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: dcc5105fcf2ad7b6a9f0695b3086dc2956a76a50
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333055"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954075"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure-ExpressRoute met Azure Site Recovery
 
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u Azure ExpressRoute kunt gebruiken met Azur
 
 ## <a name="expressroute-circuits"></a>ExpressRoute-circuits
 
-Een ExpressRoute-circuit vertegenwoordigt een logische verbinding tussen uw on-premises infra structuur en micro soft-Cloud Services via een connectiviteits provider. U kunt meerdere ExpressRoute-circuits best Ellen. Elk circuit kan zich in dezelfde of verschillende regio's bevindt en kan worden aangesloten op uw locatie via verschillende connectiviteits providers. Meer informatie over ExpressRoute-circuits [vindt u hier](../expressroute/expressroute-circuit-peerings.md).
+Een ExpressRoute-circuit vertegenwoordigt een logische verbinding tussen uw on-premises infrastructuur en Microsoft cloud-services via een connectiviteitsprovider. U kunt meerdere ExpressRoute-circuits bestellen. Elk circuit kan in de dezelfde of verschillende regio's, en kan worden verbonden met uw locatie via verschillende connectiviteitsproviders. Meer informatie over ExpressRoute-circuits [vindt u hier](../expressroute/expressroute-circuit-peerings.md).
 
 Er zijn meerdere routerings domeinen gekoppeld aan een ExpressRoute-circuit. Meer informatie over en vergelijkt u ExpressRoute-routerings [domeinen.](../expressroute/expressroute-circuit-peerings.md#peeringcompare)
 
@@ -46,7 +46,7 @@ Dit zorgt ervoor dat alleen replicatie verkeer via ExpressRoute loopt terwijl de
 
 Nadat de failover van virtuele machines of servers naar een virtueel Azure-netwerk is uitgevoerd, kunt u deze openen met behulp van [privé-peering](../expressroute/expressroute-circuit-peerings.md#privatepeering). 
 
-Het gecombineerde scenario wordt weer gegeven in het volgende diagram: ![On-premises-naar-Azure met ExpressRoute @ no__t-1
+Het gecombineerde scenario wordt weer gegeven in het volgende diagram: ![on-premises-naar-Azure met ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>Replicatie van Azure naar Azure met ExpressRoute
 

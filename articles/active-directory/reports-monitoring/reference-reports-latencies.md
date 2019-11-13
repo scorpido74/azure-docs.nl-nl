@@ -3,7 +3,7 @@ title: Azure Active Directory rapportage latenties | Microsoft Docs
 description: Meer informatie over de hoeveelheid tijd die nodig is voor het rapporteren van gebeurtenissen om weer te geven in uw Azure Portal
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 05/13/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce62a5059304fe83d933a46ae69f4b8e0c276ba7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127037"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007704"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Vertragingen bij rapportage Azure Active Directory
 
@@ -32,7 +32,7 @@ Latentie is de hoeveelheid tijd die nodig is voor het weer geven van Azure Activ
 
 Er zijn twee soorten activiteiten rapporten:
 
-- [](concept-sign-ins.md) Aanmeldingen: bevat informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers
+- [Aanmeldingen](concept-sign-ins.md) : bevat informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers
 - [Audit logboeken](concept-audit-logs.md) : bevat informatie over de systeem activiteit over gebruikers en groepen, beheerde toepassingen en Directory-activiteiten
 
 De volgende tabel bevat de latentie-informatie voor activiteiten rapporten. 
@@ -43,7 +43,7 @@ De volgende tabel bevat de latentie-informatie voor activiteiten rapporten.
 
 | Rapport | Latentie (95e percentiel) |Latentie (99e percentiel)|
 | :-- | --- | --- |
-| Controlelogboeken | 2 minuten  | 5 minuten  |
+| Auditlogboeken | 2 minuten  | 5 minuten  |
 | Aanmeldingen | 2 minuten  | 5 minuten |
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Hoe kan ik activiteiten gegevens weer geven na het verkrijgen van een Premium-licentie?
@@ -55,7 +55,7 @@ Als u al activiteiten gegevens met uw gratis licentie hebt, kunt u deze direct n
 Er zijn twee typen beveiligingsrapporten:
 
 - [Riskante aanmeldingen](concept-risky-sign-ins.md) - Een riskante aanmelding is een indicator van een aanmeldingspoging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikersaccount is. 
-- [Gebruikers voor wie wordt aangegeven dat ze risico lopen](concept-user-at-risk.md) - Een riskante gebruiker is een indicator van een gebruikersaccount dat mogelijk is aangetast. 
+- [Gebruikers van wie wordt aangegeven dat ze risico lopen](concept-user-at-risk.md) - Een riskante gebruiker is een indicator van een gebruikersaccount dat mogelijk is aangetast. 
 
 De volgende tabel bevat de latentie-informatie voor beveiligings rapporten.
 
@@ -64,7 +64,7 @@ De volgende tabel bevat de latentie-informatie voor beveiligings rapporten.
 | Gebruikers die risico lopen          | 5 minuten   | 15 minuten  | 2 uur  |
 | Riskante aanmeldingen         | 5 minuten   | 15 minuten  | 2 uur  |
 
-## <a name="risk-detections"></a>Risico detecties
+## <a name="risk-detections"></a>Risicodetectie
 
 Azure AD gebruikt adaptieve machine learning algoritmen en heuristiek om verdachte acties te detecteren die betrekking hebben op uw gebruikers accounts. Elke gedetecteerde verdachte actie wordt opgeslagen in een record met de naam **risico detectie**.
 

@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/12/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 178628db11b95fbd345e94111ebf15809da3fc35
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 55abdab6a427547ee8bd498500deee94b8f67453
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684300"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954730"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Zelf-Hostende IR configureren als proxy voor Azure-SSIS IR in ADF
 In dit artikel wordt beschreven hoe u SQL Server Integration Services (SSIS)-pakketten uitvoert op Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF) met een zelf-Hostende IR die is geconfigureerd als proxy.  Met deze functie kunt u toegang krijgen tot gegevens on-premises zonder [uw Azure-SSIS IR aan een virtueel netwerk te koppelen](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).  Dit is handig wanneer uw bedrijfs netwerk een overmatig complexe configuratie/beperkend beleid heeft waarmee u uw Azure-SSIS IR kunt injecteren.
@@ -87,10 +87,10 @@ De tweede faserings taken die op uw Azure-SSIS IR worden uitgevoerd, worden niet
 
 ## <a name="current-limitations"></a>Huidige beperkingen
 
-- Alleen OLEDB/plat file Connection-beheer en OLEDB/plat-bestands bronnen worden momenteel ondersteund. 
+- Alleen gegevensstroom taken met ODBC/OLEDB/plat bestands verbindings beheer en ODBC/OLEDB/plat bestands bronnen worden momenteel ondersteund. 
 - Alleen voor Azure Blob Storage gekoppelde services die zijn geconfigureerd met de **account sleutel**/**SAS URI**/**Service-Principal** -verificatie worden momenteel ondersteund.
 - Alleen zelf-Hostende IR die is ingericht onder dezelfde ADF als waar uw Azure-SSIS IR is ingericht, wordt momenteel ondersteund.
-- Het gebruik van SSIS-para meters/-variabelen in de eigenschappen van OLEDB/plat bestands bronnen en verbindings beheer wordt niet ondersteund.
+- Het gebruik van SSIS-para meters/-variabelen in de eigenschappen van ODBC/OLEDB/plat bestands bronnen en verbindings beheer wordt momenteel niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 Wanneer u uw zelf-Hostende IR als proxy voor uw Azure-SSIS IR hebt geconfigureerd, kunt u uw pakketten implementeren en uitvoeren om toegang te krijgen tot gegevens die on-premises worden uitgevoerd als de uitvoering van SSIS-pakket activiteiten in ADF-pijp lijnen. Zie [SSIS-pakketten uitvoeren als uitvoeren SSIS-pakket activiteiten in ADF-pijp lijnen ](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

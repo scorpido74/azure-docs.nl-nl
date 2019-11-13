@@ -7,20 +7,30 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 11/12/2019
 ms.custom: include file
-ms.openlocfilehash: 92b9a4754769566feb3658e07081e9fdae78fcfc
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 4ed5be09d952d4d64c269e3eaf698ad7a74fffdd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903875"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014130"
 ---
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-1. Selecteer op de start pagina **+ een resource maken**. Zoek naar **Digital apparaatdubbels**en selecteer **Digital apparaatdubbels**. Selecteer **Maken** om het implementatieproces te starten.
+1. Selecteer de balk aan de linkerkant en klik vervolgens op **een resource maken**. 
+
+   [![Vouw de balk aan de linkerkant uit en selecteer vervolgens + een resource maken](./media/create-digital-twins-portal/create-a-resource.png)](./media/create-digital-twins-portal/create-a-resource.png#lightbox)
+
+1. Zoek naar **Digital apparaatdubbels**en selecteer **Digital apparaatdubbels**. 
 
    [![selecties voor het maken van een nieuw digitaal Apparaatdubbels-exemplaar](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
+
+   U kunt ook **Internet of Things**selecteren en **Digital apparaatdubbels (preview)** selecteren.
+
+1. Selecteer **Maken** om het implementatieproces te starten.
+
+   [de implementatie van de resource ![maken en bevestigen](./media/create-digital-twins-portal/create-and-confirm-resource.png)](./media/create-digital-twins-portal/create-and-confirm-resource.png#lightbox)
 
 1. In het deelvenster **Digital Twins** voert u de volgende informatie in:
    * **Resourcenaam**: geef uw instantie van Digital Twins een unieke naam.
@@ -32,10 +42,18 @@ ms.locfileid: "73903875"
 
 1. Controleer uw Digital Twins-gegevens en selecteer **Maken**. Het kan een paar minuten duren voordat uw instantie van Digital Twins is gemaakt. U kunt de voortgang bewaken via het deelvenster **Meldingen**.
 
-1. Open het deelvenster **Overzicht** van de instantie van Digital Twins. Zoals u ziet, wordt er een koppeling weergegeven onder **Beheer API**.
+1. Open het deelvenster **Overzicht** van de instantie van Digital Twins. Zoals u ziet, wordt er een koppeling weergegeven onder **Beheer API**. De URL van de **beheer-API** is opgemaakt als: 
+   
+   ```URL
+   https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger
+   ```
+   
+   Deze URL leidt u naar de documentatie van de REST API van Azure Digital Twins, die van toepassing is op uw instantie. Zie [Het gebruik van Azure Digital Twins Swagger](../articles/digital-twins/how-to-use-swagger.md) voor informatie over hoe u deze API-documentatie dient te lezen en gebruiken. Kopieer de API-URL voor **beheer** en wijzig deze in deze indeling: 
+    
+   ```URL
+   https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/
+   ```
+    
+   Uw toepassing gebruikt de aangepaste URL als de basis-URL voor toegang tot uw instantie. Kopieer deze gewijzigde URL naar een tijdelijk bestand. U hebt deze URL nodig in de volgende sectie.
 
-   De indeling van de URL van de **Beheer API** is `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger`. Deze URL leidt u naar de documentatie van de REST API van Azure Digital Twins, die van toepassing is op uw instantie. Zie [Het gebruik van Azure Digital Twins Swagger](../articles/digital-twins/how-to-use-swagger.md) voor informatie over hoe u deze API-documentatie dient te lezen en gebruiken.
-
-    Kopieer en wijzig de **API** -URL voor beheer in deze indeling: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Uw toepassing gebruikt de aangepaste URL als de basis-URL voor toegang tot uw instantie. Kopieer deze gewijzigde URL naar een tijdelijk bestand. U hebt deze URL nodig in de volgende sectie.
-
-    [![-beheer-API](./media/create-digital-twins-portal/digital-twins-management-api.png)](./media/create-digital-twins-portal/digital-twins-management-api.png#lightbox)
+   [overzicht van ![-beheer-API](./media/create-digital-twins-portal/digital-twins-management-api.png)](./media/create-digital-twins-portal/digital-twins-management-api.png#lightbox)

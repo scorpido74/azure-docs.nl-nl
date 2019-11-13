@@ -1,5 +1,5 @@
 ---
-title: Mobiliteits agent op servers beheren voor herstel na nood gevallen van virtuele VMware-machines en fysieke servers met Azure Site Recovery | Microsoft Docs
+title: De Mobility-agent voor VMware/fysieke servers beheren met Azure Site Recovery
 description: Beheer de Mobility Service-agent voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure met behulp van de Azure Site Recovery-service.
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0a8b3a8bcfc2aa8270d7be140a94e5b83973f3e5
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972133"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953652"
 ---
-# <a name="manage-mobility-agent-on-protected-machines"></a>Mobiliteits agent op beveiligde computers beheren
+# <a name="manage-the-mobility-agent"></a>De Mobility-agent beheren 
 
 U kunt Mobility agent op uw server instellen wanneer u Azure Site Recovery gebruikt voor herstel na nood gevallen van virtuele VMware-machines en fysieke servers naar Azure. Mobiliteits agent coördineert de communicatie tussen uw beveiligde computer, configuratie server/scale-out proces server en beheert gegevens replicatie. In dit artikel vindt u een overzicht van algemene taken voor het beheren van de Mobility-agent nadat deze is geïmplementeerd.
 
@@ -53,7 +53,7 @@ Wanneer u Site Recovery hebt geïmplementeerd, kunt u een push-installatie van d
 
 Verwijder de gebruikers interface of een opdracht prompt.
 
-- **Vanuit de gebruikers interface**: Selecteer **Program ma's**in het configuratie scherm van de computer. Selecteer **Microsoft Azure site Recovery Mobility service/Master doel server** > **verwijderen**.
+- In de **gebruikers interface**: Selecteer in het configuratie scherm van de computer **Program ma's**. Selecteer **Microsoft Azure site Recovery Mobility service/Master doel server** > **verwijderen**.
 - **Vanaf een opdracht prompt**: Open een opdracht prompt venster als beheerder op de computer. Voer de volgende opdracht uit: 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"

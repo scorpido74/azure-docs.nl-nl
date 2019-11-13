@@ -1,17 +1,14 @@
 ---
 title: Blauw druk-definities importeren en exporteren met Power shell
 description: Meer informatie over het werken met uw blauw drukken-definities als code. Delen, broncode beheer en beheren met de opdrachten exporteren en importeren.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/03/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 30e734c99a87364acfba9a58d83fe9a377958607
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: ca756ed093d5d423f6f83e5ca3953a8ecfce7d5a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978448"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960369"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Blauw druk-definities importeren en exporteren met Power shell
 
@@ -24,7 +21,7 @@ Azure-blauw drukken kan volledig worden beheerd via Azure Portal. Als organisati
   - Automatische tests van blauw druk-definities in test omgevingen
   - Ondersteuning van pijp lijnen voor continue integratie en continue implementatie (CI/CD)
 
-Wat uw redenen zijn, het beheren van uw blauw drukken-definities als code biedt voor delen. In dit artikel wordt beschreven hoe u de opdrachten `Import-AzBlueprintWithArtifact` en `Export-AzBlueprintWithArtifact` gebruikt in de module [AZ. blauw](https://powershellgallery.com/packages/Az.Blueprint/) drukken.
+Wat uw redenen zijn, het beheren van uw blauw drukken-definities als code biedt voor delen. In dit artikel wordt beschreven hoe u de opdrachten `Import-AzBlueprintWithArtifact` en `Export-AzBlueprintWithArtifact` kunt gebruiken in de module [AZ. blauw](https://powershellgallery.com/packages/Az.Blueprint/) drukken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -43,7 +40,7 @@ Voordat u de blauw drukken gaat bekijken en importeren, bekijken we hoe de besta
 > [!IMPORTANT]
 > Als er geen waarde wordt door gegeven aan de para meter **name** van de cmdlet `Import-AzBlueprintWithArtifact`, wordt de naam van de map waarvan de definitie van de blauw druk is opgeslagen, gebruikt.
 
-Samen met de definitie van de blauw druk, die `blueprint.json` moet worden genoemd, zijn de artefacten waarvan de definitie van de blauw druk is samengesteld. Elk artefact moet zich in de submap met de naam `artifacts` bevindt.
+Samen met de definitie van de blauw druk, die `blueprint.json`moet heten, zijn de artefacten waarvan de definitie van de blauw druk is samengesteld. Elk artefact moet zich in de submap met de naam `artifacts`bevindt.
 Samen, de structuur van uw blauw druk-definitie als JSON-bestanden in mappen moet er als volgt uitzien:
 
 ```text
@@ -65,14 +62,14 @@ De stappen voor het exporteren van de definitie van de blauw druk zijn eenvoudig
 
 - **Blauw druk** [vereist]
   - Hiermee wordt de definitie van de blauw druk opgegeven
-  - @No__t-0 gebruiken om het referentie object op te halen
+  - `Get-AzBlueprint` gebruiken om het referentie object op te halen
 - **OutputPath** [vereist]
   - Hiermee geeft u het pad op voor het opslaan van de JSON-bestanden van de blauw druk op
   - De uitvoer bestanden bevinden zich in een submap met de naam van de definitie van de blauw druk
 - **Versie** (optioneel)
   - Hiermee geeft u de versie op die moet worden uitgevoerd als het referentie object **blauw** drukken verwijzingen naar meer dan één versie bevat.
 
-1. Een verwijzing naar de definitie van de blauw druk ophalen om uit het abonnement te exporteren, die als `{subId}` wordt weer gegeven:
+1. Een verwijzing naar de definitie van de blauw druk ophalen om te exporteren uit het abonnement, voorgesteld als `{subId}`:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -81,7 +78,7 @@ De stappen voor het exporteren van de definitie van de blauw druk zijn eenvoudig
    $bpDefinition = Get-AzBlueprint -SubscriptionId '{subId}' -Name 'MyBlueprint' -Version '1.1'
    ```
 
-1. Gebruik de `Export-AzBlueprintWithArtifact`-cmdlet voor het exporteren van de opgegeven definitie van blauw drukken:
+1. Gebruik de cmdlet `Export-AzBlueprintWithArtifact` om de opgegeven definitie van blauw drukken te exporteren:
 
    ```azurepowershell-interactive
    Export-AzBlueprintWithArtifact -Blueprint $bpDefinition -OutputPath 'C:\Blueprints'
@@ -105,7 +102,7 @@ Zie de [Azure Blueprint github opslag plaats](https://github.com/Azure/azure-blu
   - De abonnements-ID voor het opslaan van de definitie van de blauw druk op indien niet de huidige context standaard
   - U moet **ManagementGroupId** of **SubscriptionId** opgeven
 
-1. Gebruik de `Import-AzBlueprintWithArtifact`-cmdlet om de opgegeven definitie van blauw drukken te importeren:
+1. Gebruik de cmdlet `Import-AzBlueprintWithArtifact` om de opgegeven definitie van blauw drukken te importeren:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell

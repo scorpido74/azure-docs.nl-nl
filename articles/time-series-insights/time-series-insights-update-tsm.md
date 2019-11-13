@@ -1,6 +1,6 @@
 ---
-title: Time Series-model in Azure Time Series Insights preview | Microsoft Docs
-description: Meer informatie over Azure Time Series Insights time series-model.
+title: Time Series-model-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over time series-model in Azure Time Series Insights preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c9bface359df020cea0bfff8f82e25e25efbc47
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a550643640afeefeb4cf79e35265f13557b6ffb0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585236"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014697"
 ---
-# <a name="time-series-model"></a>Time Series-model
+# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Time Series-model in Azure Time Series Insights preview
 
 In dit artikel wordt beschreven hoe u een tijdreeks model, de mogelijkheden en het maken en bijwerken van uw eigen modellen in de Azure Time Series Insights voorbeeld omgeving kunt beginnen.
 
@@ -100,7 +100,7 @@ Instanties worden gedefinieerd door **timeSeriesId**, **typeId**, **name**, **De
 | --- | ---|
 | timeSeriesId | De UUID van de tijd reeks waaraan het exemplaar is gekoppeld. |
 | typeId | De UUID van het model van de tijd reeks waaraan het exemplaar is gekoppeld. Alle gedetecteerde nieuwe instanties worden standaard gekoppeld aan een standaard type.
-| naam | De eigenschap **name** is optioneel en is hoofdletter gevoelig. Als de **naam** niet beschikbaar is, wordt standaard **timeSeriesId**. Als er een naam wordt gegeven, is **timeSeriesId** nog steeds beschikbaar [.](time-series-insights-update-explorer.md#preview-well) |
+| name | De eigenschap **name** is optioneel en is hoofdletter gevoelig. Als de **naam** niet beschikbaar is, wordt standaard **timeSeriesId**. Als er een naam wordt gegeven, is **timeSeriesId** nog steeds beschikbaar [.](time-series-insights-update-explorer.md#preview-well) |
 | description | Een tekst beschrijving van het exemplaar. |
 | hierarchyIds | Hiermee definieert u de hiërarchieën waarvan het exemplaar deel uitmaakt. |
 | instanceFields | **instanceFields** zijn eigenschappen van een exemplaar en alle statische gegevens die een exemplaar definiëren. Ze definiëren waarden van hiërarchie-of niet-hiërarchie-eigenschappen, terwijl indexeren ook ondersteuning biedt voor het uitvoeren van zoek bewerkingen. |
@@ -147,7 +147,7 @@ Hiërarchieën worden gedefinieerd door de hiërarchie **-id**, **naam**en **bro
 | Eigenschap | Beschrijving |
 | ---| ---|
 | id | De unieke id voor de hiërarchie die wordt gebruikt, bijvoorbeeld wanneer u een exemplaar definieert. |
-| naam | Een teken reeks die wordt gebruikt om een naam op te geven voor de hiërarchie. |
+| name | Een teken reeks die wordt gebruikt om een naam op te geven voor de hiërarchie. |
 | source | Hiermee geeft u de organisatie hiërarchie of het pad op. Dit is een bovenliggende en onderliggende volg orde van de hiërarchie die gebruikers willen maken. De bovenliggende/onderliggende eigenschappen van het toewijzings exemplaar velden. |
 
 Hiërarchieën worden weer gegeven in JSON als:
@@ -239,9 +239,9 @@ De typen van de tijd reeks model worden gedefinieerd op basis van **id**, **naam
 | Eigenschap | Beschrijving |
 | ---| ---|
 | id | De UUID voor het type. |
-| naam | Een teken reeks die wordt gebruikt om een naam op te geven voor het type. |
+| name | Een teken reeks die wordt gebruikt om een naam op te geven voor het type. |
 | description | Een beschrijving van de teken reeks voor het type. |
-| Variabelen | Geef de variabelen op die zijn gekoppeld aan het type. |
+| variabelen | Geef de variabelen op die zijn gekoppeld aan het type. |
 
 Typen voldoen aan het volgende JSON-voor beeld:
 

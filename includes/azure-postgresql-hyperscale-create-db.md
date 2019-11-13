@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: fadbcf04f1cd474cf2d23963e88016d240272263
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71279884"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73991031"
 ---
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Een Azure Database for PostgreSQL-grootschalige maken (Citus)
 
 Volg deze stappen voor het maken van een Azure Database voor PostgreSQL-server:
 1. Klik in de linkerbovenhoek van Azure Portal op **Een resource maken**.
 2. Selecteer **Databases** op de pagina **Nieuw** en selecteer **Azure Database voor PostgreSQL** op de pagina **Databases**.
-3. Voor de implementatie optie klikt u op de knop **maken** onder **grootschalige (Citus)-Server groep-preview.**
+3. Voor de implementatie optie klikt u op de knop **maken** onder **grootschalige (Citus) Server groep.**
 4. Vul het formulier voor de gegevens van de nieuwe server als volgt in:
    - Resource groep: Klik op de koppeling **nieuwe maken** onder het tekstvak voor dit veld. Voer een naam in, zoals **myresourcegroup**.
    - Naam Server groep: Voer een unieke naam in voor de nieuwe server groep die ook wordt gebruikt voor een subdomein van de server.
@@ -38,12 +38,12 @@ Volg deze stappen voor het maken van een Azure Database voor PostgreSQL-server:
    > Het beheerders wachtwoord voor de server dat u hier opgeeft, is vereist voor aanmelding bij de server en de bijbehorende data bases. Onthoud of noteer deze informatie voor later gebruik.
 
 5. Klik op **Server groep configureren**. Laat de instellingen in die sectie ongewijzigd en klik op **Opslaan**.
-6. Klik op **Volgende: Netwerk >** aan de onderkant van het scherm.
+6. Klik op **volgende: netwerk >** aan de onderkant van het scherm.
 
 7. Klik op het tabblad **netwerken** op het keuze rondje **open bare eind punt** .
-   ![Openbaar eind punt geselecteerd](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)
+   ![geselecteerde open bare eind punt](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)
 8. Klik op de koppeling **+ huidige client-IP-adres toevoegen**.
-   ![Client-IP toegevoegd](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
+   client-IP-](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png) ![toegevoegd
 
    > [!NOTE]
    > De Azure PostgreSQL-server communiceert via poort 5432. Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 5432 mogelijk niet toegestaan door de firewall van uw netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 5432 openstelt.

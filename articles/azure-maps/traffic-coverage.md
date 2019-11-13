@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: f9a3c4875f01c650485034fe46f53bb5aa1fd75b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: cb7ebe5d9519f1a3967a29f4c883c420a892817f
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722653"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958007"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Dekking van Azure Maps verkeer
 
 Azure Maps biedt uitgebreide verkeers informatie in de vorm van verkeers **stromen** en **incidenten**. Deze gegevens kunnen worden gevisualiseerd op kaarten of worden gebruikt voor het genereren van slimmere routes die in de praktijk omstandigheden in handen zijn.
 
-Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle regio's. De volgende tabel bevat informatie over wat voor soort verkeers gegevens u kunt aanvragen vanuit elke regio: 
+Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle landen of regio's. De volgende tabel bevat informatie over wat voor soort verkeers gegevens u kunt aanvragen vanuit elk land of elke regio: 
 
 ## <a name="americas"></a>Noord- en Zuid-Amerika
 
@@ -43,7 +43,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 |---------|:---------:|:---------:|
 |Australië     |✓         |✓        |
 |Brunei   |✓         |✓        |
-|Hongkong SAR     |✓         |✓         |
+|Hong Kong SAR     |✓         |✓         |
 |India   |✓         |✓         |
 |Indonesië     |✓         |✓         |
 |Macau SAR     |✓         |✓         |
@@ -64,10 +64,10 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 |Oostenrijk     |✓         |✓         |
 |Belarus    |✓         |✓         |
 |België     |✓         |✓         |
-|Bosnië-Herzegovina    |✓         |✓         |
+|Bosnië en Herzegovina    |✓         |✓         |
 |Bulgarije     |✓         |✓         |
-|Kroatië (Hrvatska)     |✓         |✓         |
-|Tsjechische Republiek     |✓         |✓         |
+|Kroatië     |✓         |✓         |
+|Tsjechië     |✓         |✓         |
 |Denemarken     |✓         |✓         |
 |Estland     |         | ✓        |
 |Finland     |✓         |✓         |
@@ -111,7 +111,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 |\+ Gibraltar     |✓         |✓         |
 |\+ Guernsey & Jersey     |✓         |✓         |
 |\+ Isle of man     |✓         |✓         |
-|Vaticaanstad   |✓         |✓         |
+|Vaticaan stad   |✓         |✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Midden-Oosten en Afrika
@@ -128,7 +128,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 |Nigeria   |✓        |✓        |
 |Oman     |✓         |✓         |
 |Qatar     |✓         |✓         |
-|Saudi-Arabië     |✓         |✓         |
+|Saoedi-Arabië     |✓         |✓         |
 |Zuid-Afrika     |✓         |✓         |
 |Verenigde Arabische Emiraten  |✓         |✓         |
 

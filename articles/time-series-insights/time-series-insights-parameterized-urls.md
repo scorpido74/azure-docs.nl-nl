@@ -1,6 +1,6 @@
 ---
-title: Aangepaste weergaven van Share Azure Time Series Insights delen via geparameteriseerde URL's | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u geparameteriseerde URL's samenstelt in Azure Time Series Insights, zodat een aangepaste weergave eenvoudig kan worden gedeeld.
+title: Aangepaste weer gaven met geparametriseerde Url's delen-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over het ontwikkelen van geparametriseerde Url's in Azure Time Series Insights om eenvoudig aangepaste weer gaven te delen.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: e62455a0c8412a579c0fab9d7fabd6016f47dbf3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 145af35f8c36d7f4659c3937209cb0d4d5b221a3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991118"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006377"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Een aangepaste weergave delen via een geparameteriseerde URL
 
@@ -33,7 +33,7 @@ De parameter `environmentId=<guid>` geeft de id van de doelomgeving op. Het is e
 
 Een voorbeeld van de parameter voor omgevings-id is `?environmentId=10000000-0000-0000-0000-100000000108`.
 
-## <a name="time"></a>Tijd
+## <a name="time"></a>Time
 
 U kunt absolute of relatieve tijdwaarden opgeven met een geparameteriseerde URL.
 
@@ -69,7 +69,7 @@ Met de para meter `timeSeriesDefinitions=<collection of term objects>` worden de
 
 | Parameter | URL-item | Beschrijving |
 | --- | --- | --- |
-| **naam** | `\<string>` | De naam van het *onderdeel*. |
+| **De naam** | `\<string>` | De naam van het *onderdeel*. |
 | **splitBy** | `\<string>` | De naam van de kolom waarop moet worden *gesplitst*. |
 | **measureName** | `\<string>` | De kolomnaam van de *meting*. |
 | **predicaat** | `\<string>` | De *where*-component voor filteren aan de serverzijde. |
@@ -117,7 +117,7 @@ De onderstaande URL beschrijft en bouwt de weer gave Time Series Insights Explor
 
 De volledige weer gave (met inbegrip van de grafiek):
 
-[Grafiek weergave![](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
+[Grafiek weergave ![](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 

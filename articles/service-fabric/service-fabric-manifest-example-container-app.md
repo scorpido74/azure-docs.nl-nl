@@ -1,5 +1,5 @@
 ---
-title: Voor beelden van Azure Service Fabric container Application-manifesten | Microsoft Docs
+title: Voor beelden van Azure Service Fabric container toepassings manifest
 description: Meer informatie over het configureren van de toepassings-en service manifest instellingen voor een toepassing met meerdere containers Service Fabric.
 services: service-fabric
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: ece0b763a2dbe501b0f46d026c59e1294a448c59
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 2d79f7dbf492b9473bcff147891df308674a8cf0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650612"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013248"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Voorbeelden van toepassings- en servicemanifesten voor toepassingen met meerdere containers
 Hier volgen enkele voor beelden van de toepassings-en service manifesten voor een Service Fabric toepassing met meerdere containers. Het doel van deze voor beelden is om te laten zien welke instellingen beschikbaar zijn en hoe u deze kunt gebruiken. Deze toepassings-en service manifesten zijn gebaseerd op de voorbeeld manifesten van de [Windows Server 2016-container](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) .
@@ -28,7 +28,7 @@ De volgende functies worden weer gegeven:
 
 |Manifest|Functies|
 |---|---|
-|[Toepassingsmanifest](#application-manifest)| [omgevings variabelen negeren](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [container poort-naar-host-toewijzing configureren](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery), [container register verificatie configureren](service-fabric-get-started-containers.md#configure-container-repository-authentication), [resource](service-fabric-resource-governance.md)beheer, [isolatie modus instellen](service-fabric-get-started-containers.md#configure-isolation-mode), [build van besturings systeem opgeven-specifieke container installatie kopieën](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
+|[Toepassingsmanifest](#application-manifest)| [omgevings variabelen negeren](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [container poort-naar-host-toewijzing configureren](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery), [container register verificatie configureren](service-fabric-get-started-containers.md#configure-container-repository-authentication), [resource](service-fabric-resource-governance.md)beheer, [isolatie modus instellen](service-fabric-get-started-containers.md#configure-isolation-mode), [specifieke container installatie kopieën voor het besturings systeem opgeven](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
 |[FrontEndService-service manifest](#frontendservice-service-manifest)| [omgevings variabelen instellen](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [een eind punt configureren](service-fabric-get-started-containers.md#configure-communication), opdrachten door geven aan de container, [een certificaat importeren in een container](service-fabric-securing-containers.md)| 
 |[BackEndService-service manifest](#backendservice-service-manifest)|[omgevings variabelen instellen](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [een eind punt configureren, het](service-fabric-get-started-containers.md#configure-communication) [stuur programma voor het volume configureren](service-fabric-containers-volume-logging-drivers.md)| 
 
@@ -281,7 +281,7 @@ Hiermee wordt een service manifest geïmporteerd dat door de service ontwikkelaa
 Hiermee importeert u het service manifest op referentie. Het manifest bestand van de service (ServiceManifest. XML) moet momenteel aanwezig zijn in het build-pakket. Zie het [element ServiceManifestRef](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement) voor meer informatie.
 
 ### <a name="policies-element"></a>Element beleid
-Hierin worden de beleids regels (End-Point binding, Package sharing, run-as en Security Access) beschreven die moeten worden toegepast op het geïmporteerde service manifest. Zie policies (Engelstalig [](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement) ) voor meer informatie.
+Hierin worden de beleids regels (End-Point binding, Package sharing, run-as en Security Access) beschreven die moeten worden toegepast op het geïmporteerde service manifest. Zie [Policies](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement) (Engelstalig) voor meer informatie.
 
 ### <a name="servicepackageresourcegovernancepolicy-element"></a>ServicePackageResourceGovernancePolicy-element
 Definieert het bron beheer beleid dat wordt toegepast op het niveau van het hele service pakket. Zie het [element ServicePackageResourceGovernancePolicy](service-fabric-service-model-schema-elements.md#ServicePackageResourceGovernancePolicyElementServicePackageResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInServicePackageTypecomplexType) voor meer informatie.
@@ -351,7 +351,7 @@ Het uitvoer bare bestand dat is opgegeven met entry point is doorgaans de langlo
  Zie het [element ContainerHost](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType) voor meer informatie.
 
 ### <a name="imagename-element"></a>Element Imagenaam
-De opslag plaats en installatie kopie https://hub.docker.com op of Azure container Registry. Zie het [element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType) afbeeldings voor meer informatie.
+De opslag plaats en installatie kopie op https://hub.docker.com of Azure Container Registry. Zie het [element afbeeldings](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType) voor meer informatie.
 
 ### <a name="environmentvariables-element"></a>Omgevings variabelen-element
 U kunt omgevings variabelen door geven aan uw container of exe.  Zie het [element omgevings variabelen](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType) voor meer informatie.
@@ -395,7 +395,7 @@ Het uitvoer bare bestand dat is opgegeven met entry point is doorgaans de langlo
 Zie het [element ContainerHost](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType) voor meer informatie.
 
 ### <a name="imagename-element"></a>Element Imagenaam
-De opslag plaats en installatie kopie https://hub.docker.com op of Azure container Registry. Zie het [element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType) afbeeldings voor meer informatie.
+De opslag plaats en installatie kopie op https://hub.docker.com of Azure Container Registry. Zie het [element afbeeldings](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType) voor meer informatie.
 
 ### <a name="commands-element"></a>Opdrachten element
 Een door komma's gescheiden lijst met opdrachten door geven aan de container. Zie [opdrachten element](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType) voor meer informatie.

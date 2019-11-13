@@ -8,12 +8,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 10/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: eedb9d811e35d606f4d3e1df55d9303d68678b3c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1749fb4c27a1bfa3048ec0e35c8a09556b0e995b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478745"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007740"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
@@ -32,7 +32,7 @@ Voor [webtests met meerdere stappen](../../azure-monitor/app/availability-multis
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>De kosten voor het beheren van uw toepassing schatten 
 
-Als u Application Insights nog niet gebruikt, kunt u de [Azure monitor prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=monitor) gebruiken om de kosten van het gebruik van Application Insights te schatten. Begin met het invoeren van ' Azure Monitor ' in het zoekvak en klik op de resulterende Azure Monitor tegel. Schuif omlaag in de pagina naar Azure Monitor en selecteer Application Insights in de vervolg keuzelijst Type.  Hier kunt u het aantal GB aan gegevens invoeren dat u per maand verwacht te verzamelen, zodat de vraag is hoeveel gegevens Application Insights het verzamelen van uw toepassing. 
+Als u Application Insights nog niet gebruikt, kunt u de [Azure monitor prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=monitor) gebruiken om de kosten van het gebruik van Application Insights te schatten. Begin met het invoeren van ' Azure Monitor ' in het zoekvak en klik op de resulterende Azure Monitor tegel. Schuif omlaag in de pagina naar Azure Monitor en selecteer Application Insights in de vervolg keuzelijst Type.  Hier kunt u het aantal GB invoeren van de gegevens die u verwacht per maand te verzamelen. Daarom is de vraag hoeveel gegevens Application Insights het verzamelen van de controle van uw toepassing. 
 
 Er zijn twee benaderingen om dit op te lossen: gebruik van standaard bewaking en adaptieve steek proeven, die beschikbaar zijn in de ASP.NET-SDK, of schatting van uw waarschijnlijke gegevens opname op basis van wat andere vergelijk bare klanten hebben gezien.
 
@@ -124,7 +124,7 @@ dependencies
 Azure biedt een groot aantal handige functies in de hub [Azure Cost Management en facturering](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Zo kunt u met de functionaliteit ' cost analysis ' uw uitgaven voor Azure-resources weer geven. Door een filter toe te voegen op resource type (aan micro soft. Insights/onderdelen voor Application Insights), kunt u uw uitgaven bijhouden.
 
 Meer informatie over uw gebruik kan worden verkregen door het [gebruik van het Azure portal te downloaden](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal).
-In het gedownloade werk blad kunt u het gebruik per Azure-resource per dag bekijken. In dit Excel-werk blad kunt u het gebruik van uw Application Insights-resources vinden door eerst te filteren op de kolom meter categorie om "Application Insights" en "Log Analytics" weer te geven en vervolgens een filter toe te voegen aan de kolom ' instance ID ' die "bevat micro soft. Insights/onderdelen.  Het meeste Application Insights gebruik wordt gerapporteerd op meters van de meter categorie Log Analytics, omdat er één logboek back-end is voor alle Azure Monitor-onderdelen.  Alleen Application Insights bronnen in verouderde prijs categorieën en webtests met meerdere stappen worden gerapporteerd met een meter categorie van Application Insights.  Het gebruik wordt weer gegeven in de kolom verbruikte hoeveelheid en de eenheid voor elk item wordt weer gegeven in de kolom eenheid.  Meer informatie is beschikbaar om u te helpen [uw Microsoft Azure factuur te begrijpen](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
+In het gedownloade werk blad kunt u het gebruik per Azure-resource per dag bekijken. In dit Excel-werk blad kunt u het gebruik van uw Application Insights-resources vinden door eerst te filteren op de kolom meter categorie om "Application Insights" en "Log Analytics" weer te geven, en vervolgens een filter toe te voegen aan de kolom exemplaar-ID, dat is "bevat micro soft. Insights/Components".  Het meeste Application Insights gebruik wordt gerapporteerd op meters van de meter categorie Log Analytics, omdat er één logboek back-end is voor alle Azure Monitor-onderdelen.  Alleen Application Insights bronnen in verouderde prijs categorieën en webtests met meerdere stappen worden gerapporteerd met een meter categorie van Application Insights.  Het gebruik wordt weer gegeven in de kolom verbruikte hoeveelheid en de eenheid voor elk item wordt weer gegeven in de kolom eenheid.  Meer informatie is beschikbaar om u te helpen [uw Microsoft Azure factuur te begrijpen](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
 
 
 ## <a name="managing-your-data-volume"></a>Uw gegevens volume beheren 
@@ -157,9 +157,9 @@ U kunt het dagelijks volume kapje gebruiken om de verzamelde gegevens te beperke
 
 In plaats van de dagelijkse volume limiet te gebruiken, gebruikt u [steek proeven](../../azure-monitor/app/sampling.md) om het gegevens volume op het gewenste niveau af te stemmen. Gebruik het dagelijks kapje alleen als een ' laatste redmiddel ' voor het geval uw toepassing een grote grotere hoeveelheid telemetrie verstuurt.
 
-### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse gegevens limiet moet worden gedefinieerd
+### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse limiet voor gegevens definiëren
 
-Bekijk Application Insights gebruik en de geschatte kosten om inzicht te krijgen in de trend van de gegevens opname en wat het dagelijkse volume Cap is dat moet worden gedefinieerd. U moet er rekening mee houden, omdat u uw resources niet kunt bewaken nadat de limiet is bereikt. 
+Bekijk Application Insights gebruik en de geschatte kosten om inzicht te krijgen in de trend van de gegevens opname en wat het dagelijkse volume Cap is dat moet worden gedefinieerd. Deze moet worden overwogen zorgvuldig, omdat het niet mogelijk om te controleren van uw bronnen nadat de limiet is bereikt. 
 
 ### <a name="set-the-daily-cap"></a>Het dagelijks kapje instellen
 
@@ -195,7 +195,7 @@ Gebruik een [Analytics-query](analytics.md)om de werkelijke sampling frequentie 
 
 In elk bewaarde record geeft `itemCount` het aantal oorspronkelijke records dat het vertegenwoordigt. De waarde is gelijk aan 1 + het aantal eerder verwijderde records. 
 
-## <a name="change-the-data-retention-period"></a>De Bewaar periode voor gegevens wijzigen
+## <a name="change-the-data-retention-period"></a>Wijzigen van de bewaartermijn voor gegevens
 
 De standaard Bewaar periode voor Application Insights resources is 90 dagen. Er kunnen verschillende retentieperioden worden geselecteerd voor elke Application Insights-resource. De volledige set beschik bare Bewaar perioden is 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen. 
 
@@ -259,7 +259,7 @@ Omdat deze laag alleen van toepassing is op klanten met een Operations Managemen
 |:---------------------------------------|:----------------:|
 | 1 toepassing met 3 Azure App Service exemplaren en 1 virtuele server | 4 |
 | 3 toepassingen die worden uitgevoerd op 2 Vm's; de Application Insights resources voor deze toepassingen bevinden zich in hetzelfde abonnement en in de laag per knoop punt | 2 | 
-| 4 toepassingen waarvan de toepassingen Insights-resources zich in hetzelfde abonnement bevinden; elke toepassing die 2 instanties uitvoert gedurende 16-piek uren en 4 instanties gedurende 8 piek uren | 13,33 | 
+| 4 toepassingen waarvan de toepassingen Insights-resources zich in hetzelfde abonnement bevinden; elke toepassing die 2 instanties uitvoert gedurende 16-piek uren en 4 instanties gedurende 8 piek uren | 13.33 | 
 | Cloud Services met één werknemersrol en één webrol, elk met 2 exemplaren | 4 | 
 | Een Azure Service Fabric-cluster met 5 knoop punten met 50 micro Services; elke micro service die drie instanties uitvoert | 5|
 

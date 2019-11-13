@@ -1,19 +1,18 @@
 ---
-title: Virtuele Azure IaaS-machines verplaatsen tussen Azure Government en open bare regio's met de Azure Site Recovery-service | Microsoft Docs
-description: Gebruik Azure Site Recovery om Azure IaaS-Vm's te verplaatsen tussen Azure Government & open bare regio's.
-services: site-recovery
+title: Virtuele Azure-machines verplaatsen tussen overheid en open bare regio's met Azure Site Recovery
+description: Gebruik Azure Site Recovery om virtuele Azure-machines te verplaatsen tussen Azure Government en open bare regio's.
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: bff6268507c0d2ec0aa1eac0c7e2e9d2513ded58
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 2a749e9345fec0e91751641cd15805d7f7d62d95
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376127"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961415"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Virtuele Azure-machines verplaatsen tussen Azure Government en open bare regio's 
 
@@ -79,8 +78,8 @@ Stel een [Azure Storage-account](../storage/common/storage-quickstart-create-acc
 De Mobility-service moet worden geïnstalleerd op elke server die u wilt repliceren. Site Recovery installeert deze service automatisch wanneer u replicatie inschakelt voor de-server. Als u automatisch wilt installeren, moet u een account voorbereiden dat Site Recovery gebruikt voor toegang tot de server.
 
 - U kunt een domein-of lokaal account gebruiken
-- Als u voor Windows-Vm's geen domein account gebruikt, schakelt u toegangs beheer voor externe gebruikers op de lokale computer uit. Als u dit wilt doen, voegt u in het REGI ster onder **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**de DWORD-vermelding **LocalAccountTokenFilterPolicy**met de waarde 1 toe.
-- Als u de register vermelding wilt toevoegen om de instelling uit een CLI uit te scha kelen, typt u:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- Als u voor Windows-Vm's geen domein account gebruikt, schakelt u toegangs beheer voor externe gebruikers op de lokale computer uit. Als u dit wilt doen, voegt u in het REGI ster onder **HKEY_LOCAL_MACHINE \Software\Microsoft\Windows\CurrentVersion\Policies\System**de DWORD-vermelding **LocalAccountTokenFilterPolicy**met de waarde 1 toe.
+- Als u de register vermelding wilt toevoegen om de instelling uit te scha kelen vanuit een CLI, typt u: ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
 - Voor Linux moet het account hoofdmap zijn op de Linux-bron server.
 
 
@@ -115,19 +114,19 @@ De onderstaande stappen begeleiden u bij het gebruik van Azure Site Recovery om 
 3. Bij **Naam** geeft u de beschrijvende naam **ContosoVMVault** op. Als u meer dan één abonnement hebt, selecteert u het juiste abonnement.
 4. Maak een resourcegroep met de naam **ContosoRG**.
 5. Geef een Azure-regio op. Zie Geografische beschikbaarheid in [Prijsinformatie voor Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) om na te gaan welke regio's er worden ondersteund.
-6. Klik in Recovery Services kluizen op **overzicht** > **ConsotoVMVault** >  **+ repliceren**
-7. Selecteer **naar Azure** > **niet gevirtualiseerd/Overig**.
+6. Klik in Recovery Services kluizen op **overzicht** > **ConsotoVMVault** > **en repliceren**
+7. selecteer **Naar Azure** > **Niet gevirtualiseerde/overige**.
 
 ### <a name="set-up-the-configuration-server-to-discover-vms"></a>Stel de configuratie server in om virtuele machines te detecteren.
 
 
 Stel de configuratie server in, Registreer deze in de kluis en ontdek Vm's.
 
-1. Klik op **site Recovery** > **bron**voor het voorbereiden van de**infra structuur** > .
+1. Klik op **Site Recovery** > infra structuur > **bron**voor te **bereiden** .
 2. Als u geen configuratie server hebt, klikt u op **+ Configuratie server**.
 3. Controleer in **server toevoegen**of de **Configuratie server** wordt weer gegeven bij **server type**.
 4. Down load het installatie bestand voor de Site Recovery Unified Setup.
-5. Download de kluisregistratiesleutel. U hebt deze nodig wanneer u Unified Setup uitvoert. De sleutel blijft vijf dagen na het genereren ervan geldig.
+5. Download de registratiesleutel voor de kluis. U hebt deze nodig wanneer u Unified Setup uitvoert. De sleutel blijft vijf dagen na het genereren ervan geldig.
 
    ![Bron instellen](./media/physical-azure-disaster-recovery/source-environment.png)
 
@@ -175,7 +174,7 @@ Selecteer en controleer doelbronnen.
 4. Geef in **Bewaarperiode van het herstelpunt** op hoelang (in uren) de bewaarperiode voor elk herstelpunt is. Gerepliceerde VM’s kunnen worden hersteld naar een willekeurig punt in een tijdvenster. Voor computers die worden gerepliceerd naar Premium Storage, wordt een bewaarperiode van maximaal 24 uur ondersteund, en 72 uur voor computers die naar Standard Storage worden gerepliceerd.
 5. Geef in de frequentie van de **app-consistente moment opname**op hoe vaak (in minuten) er herstel punten moeten worden gemaakt met toepassings consistente moment opnamen. Klik op **OK** om het beleid te maken.
 
-    ![Replicatiebeleid](./media/physical-azure-disaster-recovery/replication-policy.png)
+    ![Beleid voor replicatie](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
 Het beleid wordt automatisch gekoppeld aan de configuratieserver. Standaard wordt automatisch een bijbehorend beleid gemaakt voor failback. Als het replicatie beleid bijvoorbeeld **rep-Policy** is **, wordt er een beleid voor** failbackbeleid gemaakt. Dit beleid wordt pas gebruikt als u een failback initieert vanuit Azure.
@@ -198,12 +197,12 @@ Het beleid wordt automatisch gekoppeld aan de configuratieserver. Standaard word
    > [!WARNING]
    > U moet het IP-adres invoeren van de virtuele Azure-machine die u wilt verplaatsen
 
-10. Selecteer in **Eigenschappen** > **eigenschappen configureren**het account dat door de proces server wordt gebruikt om automatisch de Mobility-service op de computer te installeren.
+10. Selecteer in **eigenschappen** > **eigenschappen configureren**het account dat door de proces server wordt gebruikt om automatisch de Mobility-service op de computer te installeren.
 11. Controleer of het juiste replicatiebeleid is geselecteerd in **Replicatie-instellingen** > **Replicatie-instellingen configureren**. 
 12. Klik op **Replicatie inschakelen**. U kunt de voortgang van de taak **Beveiliging inschakelen** volgen via **Instellingen** > **Taken** > **Site Recovery-taken**. Nadat de taak **Beveiliging voltooien** is uitgevoerd, is de machine klaar voor een mogelijke failover.
 
 
-Als u de servers die u toevoegt wilt bewaken, kunt u de laatst gedetecteerde tijd voor ze controleren in **configuratie servers** > **laatste contact op**. Als u computers wilt toevoegen zonder te wachten op een geplande detectie tijd, markeert u de configuratie server (klik er niet op) en klikt u op **vernieuwen**.
+Als u de servers die u toevoegt wilt bewaken, kunt u de laatst gedetecteerde tijd voor ze controleren op **configuratie servers** > **laatste contact persoon op**. Als u computers wilt toevoegen zonder te wachten op een geplande detectie tijd, markeert u de configuratie server (klik er niet op) en klikt u op **vernieuwen**.
 
 ## <a name="test-the-configuration"></a>De configuratie testen
 
@@ -211,8 +210,8 @@ Als u de servers die u toevoegt wilt bewaken, kunt u de laatst gedetecteerde tij
 1. Ga naar de kluis, klik in **Instellingen** > **Gerepliceerde items** op de virtuele machine die u wilt verplaatsen naar de doelregio. Klik op het pictogram **+Failover testen**.
 2. Selecteer in **Failover testen** een herstelpunt om voor de failover te gebruiken:
 
-   - **Laatst verwerkt**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door de Site Recovery-service. Het tijdstempel wordt weergegeven. Met deze optie wordt er geen tijd besteed aan het verwerken van gegevens, zodat er een lage RTO (Recovery Time Objective) is
-   - **Laatste toepassingsconsistente punt**: met deze optie wordt er een failover uitgevoerd van alle VM's naar het laatste toepassingsconsistente herstelpunt. Het tijdstempel wordt weergegeven.
+   - **Laatst verwerkte**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door de Site Recovery-service. Het tijdstempel wordt weergegeven. Met deze optie wordt er geen tijd besteed aan het verwerken van gegevens, zodat er een lage RTO (Recovery Time Objective) is
+   - **Laatste toepassingsconsistente punt**: met deze optie wordt er een failover uitgevoerd van alle VM’s naar het laatste toepassingsconsistente herstelpunt. Het tijdstempel wordt weergegeven.
    - **Aangepast**: selecteer een herstelpunt.
 
 3. Selecteer het Azure-doelnetwerk waar u de Azure VM's naartoe wilt verplaatsen, om de configuratie te testen. 
@@ -221,7 +220,7 @@ Als u de servers die u toevoegt wilt bewaken, kunt u de laatst gedetecteerde tij
    > We raden u aan om een afzonderlijk Azure VM-netwerk te gebruiken voor de testfailover en niet het productie netwerk waarin u de virtuele machines wilt verplaatsen die u uiteindelijk hebt ingesteld toen u replicatie inschakelde.
 
 4. Klik op **OK** om de verplaatsing te testen. Klik op de VM om de eigenschappen ervan te openen als u de voortgang wilt volgen. U kunt ook op de taak **Failover testen** klikken in kluisnaam > **Instellingen** > **Taken** > **Site Recovery-taken**.
-5. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in de Azure Portal > **Virtuele machines**. Controleer of de VM draait, de juiste grootte heeft en aangesloten is op het juiste netwerk.
+5. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in Azure Portal > **Virtuele machines**. Controleer of de VM draait, de juiste grootte heeft en aangesloten is op het juiste netwerk.
 6. Als u de VM wilt verwijderen die is gemaakt als onderdeel van de verplaatsingstest, klikt u op **Failovertest wissen** op het gerepliceerde item. Leg in **Notities** eventuele opmerkingen over de test vast en sla deze op.
 
 ## <a name="perform-the-move-to-the-target-region-and-confirm"></a>Voer de overstap naar de doelregio uit en bevestig dit.

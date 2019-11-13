@@ -1,5 +1,5 @@
 ---
-title: Vm's van Azure naar een on-premises site opnieuw beveiligen tijdens nood herstel van virtuele VMware-machines en fysieke servers | Microsoft Docs
+title: VMware-Vm's/fysieke servers opnieuw beveiligen met een on-premises site met Azure Site Recovery
 description: Na een failover naar Azure tijdens het herstel na nood gevallen van virtuele VMware-machines en fysieke servers, leert u hoe u een failback kunt uitvoeren van Azure naar de on-premises site.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: mayg
-ms.openlocfilehash: cf1ccdf953781ca9b9bd17152f2cf32677997d12
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3d5f38d940b99c6a74d784f174c91d4127353dc
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791808"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961348"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Machines opnieuw beveiligen en failback naar een on-premises site na een failover naar Azure
 

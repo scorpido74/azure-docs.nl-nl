@@ -1,71 +1,72 @@
 ---
-title: Netwerkinterfaces in Azure Site Recovery voor noodherstel van on-premises naar Azure beheren | Microsoft Docs
-description: Beschrijft hoe u voor het beheren van netwerkinterfaces voor noodherstel van on-premises naar Azure met Azure Site Recovery
+title: Netwerk adapters beheren voor on-premises nood herstel met Azure Site Recovery
+description: Hierin wordt beschreven hoe u netwerk interfaces beheert voor on-premises herstel na nood gevallen naar Azure met Azure Site Recovery
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 5d5dd7bc3f6b60c2f9d7c2179f2bd356ca101dc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61471747"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954592"
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Netwerkinterfaces van virtuele machines voor noodherstel van on-premises naar Azure beheren
-Een virtuele machine (VM) in Azure moet ten minste één netwerkinterface die is gekoppeld aan deze hebben. Er kan als veel netwerkinterfaces die zijn gekoppeld aan deze als de VM-grootte ondersteunt.
+# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>VM-netwerk interfaces beheren voor on-premises herstel na nood gevallen naar Azure
 
-Standaard worden de eerste netwerkinterface die is gekoppeld aan een virtuele machine van Azure wordt gedefinieerd als de primaire netwerkinterface. Alle andere netwerkinterfaces in de virtuele machine zijn secundaire netwerkinterfaces. Standaard wordt al het uitgaande verkeer van de virtuele machine ook verzonden van het IP-adres dat toegewezen aan de primaire IP-adresconfiguratie van de primaire netwerkinterface.
+Aan een virtuele machine (VM) in azure moet minstens één netwerk interface zijn gekoppeld. Er kunnen zoveel netwerk interfaces aan zijn gekoppeld als de VM-grootte ondersteunt.
 
-In een on-premises-omgeving hebben virtuele machines of servers meerdere netwerkinterfaces voor verschillende netwerken binnen de omgeving. Verschillende netwerken worden meestal gebruikt voor het uitvoeren van bepaalde bewerkingen, zoals upgrades, onderhoud en toegang tot internet. Wanneer u migratie of Failover-overschakeling uitvoeren naar Azure vanaf een on-premises-omgeving, houd er rekening mee dat netwerkinterfaces in dezelfde virtuele machine moeten allemaal zijn verbonden met hetzelfde virtuele netwerk.
+Standaard wordt de eerste netwerk interface die is gekoppeld aan een virtuele machine van Azure gedefinieerd als de primaire netwerk interface. Alle andere netwerk interfaces in de virtuele machine zijn secundaire netwerk interfaces. Standaard wordt al het uitgaande verkeer van de virtuele machine verzonden met het IP-adres dat is toegewezen aan de primaire IP-configuratie van de primaire netwerk interface.
 
-Azure Site Recovery maakt standaard, zoals veel netwerkinterfaces op een Azure-machine zijn verbonden met de on-premises server. Het maken van redundante netwerkinterfaces tijdens de migratie of failover door te bewerken van de netwerkinterface-instellingen onder de instellingen voor de gerepliceerde virtuele machine, kunt u voorkomen.
+In een on-premises omgeving kunnen virtuele machines of servers meerdere netwerk interfaces hebben voor verschillende netwerken binnen de omgeving. Verschillende netwerken worden meestal gebruikt voor het uitvoeren van specifieke bewerkingen, zoals upgrades, onderhoud en Internet toegang. Wanneer u migreert of een failover uitvoert naar Azure vanuit een on-premises omgeving, moet u er rekening mee gehouden dat netwerk interfaces in dezelfde virtuele machine allemaal moeten zijn verbonden met hetzelfde virtuele netwerk.
 
-## <a name="select-the-target-network"></a>Selecteer het doelnetwerk
+Azure Site Recovery maakt standaard net zoveel netwerk interfaces op een virtuele Azure-machine als die zijn verbonden met de on-premises server. U kunt voor komen dat u redundante netwerk interfaces maakt tijdens de migratie of failover door de instellingen voor de netwerk interface te bewerken onder de instellingen voor de gerepliceerde virtuele machine.
 
-Voor VMware en fysieke machines, en voor virtuele machines van Hyper-V (zonder System Center Virtual Machine Manager), kunt u het virtuele doelnetwerk voor afzonderlijke virtuele machines. Gebruik voor Hyper-V virtuele machines die worden beheerd met Virtual Machine Manager, [netwerktoewijzing](site-recovery-network-mapping.md) VM-netwerken die op een bronserver met Virtual Machine Manager toewijzen en doelnetwerken in Azure.
+## <a name="select-the-target-network"></a>Het doelnet netwerk selecteren
 
-1. Onder **gerepliceerde items** gerepliceerde item voor toegang tot de instellingen voor het gerepliceerde item selecteren in een Recovery Services-kluis.
+Voor VMware en fysieke machines en voor Hyper-V (zonder System Center Virtual Machine Manager) virtuele machines kunt u het virtuele doelnet werk voor afzonderlijke virtuele machines opgeven. Voor virtuele Hyper-V-machines die worden beheerd met Virtual Machine Manager, gebruikt u [netwerk toewijzing](site-recovery-network-mapping.md) om VM-netwerken te koppelen aan een virtuele bron machine Manager-server en doel-Azure-netwerken.
 
-2. Selecteer de **berekening en netwerk** tabblad voor toegang tot de instellingen voor het gerepliceerde item.
+1. Selecteer bij **gerepliceerde items** in een Recovery Services kluis een gerepliceerd item voor toegang tot de instellingen voor het gerepliceerde item.
 
-3. Onder **netwerkeigenschappen**, een virtueel netwerk kiezen uit de lijst met beschikbare netwerkinterfaces.
+2. Selecteer het tabblad **Compute en netwerk** om toegang te krijgen tot de netwerk instellingen voor het gerepliceerde item.
 
-    ![Netwerkinstellingen](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/compute-and-network.png)
+3. Kies onder **netwerk eigenschappen**een virtueel netwerk in de lijst met beschik bare netwerk interfaces.
 
-Wijzigen van het doelnetwerk is van invloed op alle netwerkinterfaces voor die specifieke virtuele machine.
+    ![Netwerk instellingen](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/compute-and-network.png)
 
-Voor Virtual Machine Manager-clouds, Netwerktoewijzingen is van invloed op alle virtuele machines en hun netwerkinterfaces.
+Het wijzigen van het doel netwerk is van invloed op alle netwerk interfaces voor die specifieke virtuele machine.
 
-## <a name="select-the-target-interface-type"></a>Selecteer het doeltype-interface
+Voor Virtual Machine Manager-Clouds wijzigt u netwerk toewijzing van invloed op alle virtuele machines en hun netwerk interfaces.
 
-Onder de **netwerkinterfaces** sectie van de **berekening en netwerk** deelvenster kunt u bekijken en bewerken van netwerkinterface-instellingen. Ook kunt u het doeltype van het netwerk-interface.
+## <a name="select-the-target-interface-type"></a>Het type doel interface selecteren
 
-- Een **primaire** netwerkinterface is vereist voor de failover.
-- Alle andere geselecteerde netwerkinterfaces, als een, **secundaire** netwerkinterfaces.
-- Selecteer **gebruik geen** uitsluiten van een netwerkinterface van maken na een failover.
+In het gedeelte **netwerk interfaces** van het deel venster **Compute en netwerk** kunt u instellingen voor netwerk interfaces weer geven en bewerken. U kunt ook het interface type van het doelnet doel opgeven.
 
-Wanneer u bij het inschakelen van replicatie, selecteert Site Recovery standaard alle gedetecteerde netwerkinterfaces op de on-premises server. Gemarkeerd als één **primaire** en alle andere als **secundaire**. Alle volgende interfaces toegevoegd aan de on-premises server zijn gemarkeerd **gebruik geen** standaard. Wanneer u meer netwerkinterfaces toevoegt, zorg ervoor dat de doelgrootte van de juiste virtuele machine van Azure voor alle vereiste netwerkinterfaces is geselecteerd.
+- Er is een **primaire** netwerk interface vereist voor failover.
+- Alle andere geselecteerde netwerk interfaces, indien aanwezig, zijn **secundaire** netwerk interfaces.
+- Selecteer **niet gebruiken** om het maken van een netwerk interface bij een failover uit te sluiten.
 
-## <a name="modify-network-interface-settings"></a>Netwerkinterface-instellingen wijzigen
+Wanneer u replicatie inschakelt, selecteert Site Recovery standaard alle gedetecteerde netwerk interfaces op de on-premises server. Er wordt één as **Primary** en alle andere als **secundair**gemarkeerd. Alle volgende interfaces die zijn toegevoegd op de on-premises server, worden **niet standaard gebruikt** . Wanneer u meer netwerk interfaces toevoegt, moet u ervoor zorgen dat de juiste doel grootte van de virtuele machine van Azure is geselecteerd voor alle vereiste netwerk interfaces.
 
-U kunt het subnet en IP-adres voor de netwerkinterfaces van een gerepliceerde item wijzigen. Als een IP-adres niet opgegeven is, wordt Site Recovery de eerstvolgende beschikbare IP-adres van het subnet toewijzen aan de netwerkinterface na een failover.
+## <a name="modify-network-interface-settings"></a>Instellingen voor netwerk interface wijzigen
 
-1. Selecteer een beschikbare netwerkinterface openen van de netwerkinterface-instellingen.
+U kunt het subnet en het IP-adres voor de netwerk interfaces van een gerepliceerd item wijzigen. Als er geen IP-adres is opgegeven, wijst Site Recovery het volgende beschik bare IP-adres van het subnet toe aan de netwerk interface bij failover.
 
-2. Kies de gewenste subnet uit de lijst met beschikbare subnetten.
+1. Selecteer een beschik bare netwerk interface om de netwerk interface-instellingen te openen.
 
-3. Voer het gewenste IP-adres (indien vereist).
+2. Kies het gewenste subnet in de lijst met beschik bare subnetten.
 
-    ![Netwerkinterface-instellingen](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/network-interface-settings.png)
+3. Voer het gewenste IP-adres in (indien nodig).
 
-4. Selecteer **OK** voltooit u de bewerking en terugkeren naar de **berekening en netwerk** deelvenster.
+    ![Netwerk interface-instellingen](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/network-interface-settings.png)
 
-5. Herhaal stappen 1-4 voor andere netwerkinterfaces.
+4. Selecteer **OK** om de bewerking te volt ooien en terug te gaan naar het deel venster **Compute en netwerk** .
 
-6. Selecteer **opslaan** alle wijzigingen op te slaan.
+5. Herhaal stap 1-4 voor andere netwerk interfaces.
+
+6. Selecteer **Opslaan** om alle wijzigingen op te slaan.
 
 ## <a name="next-steps"></a>Volgende stappen
-  [Meer informatie](../virtual-network/virtual-network-network-interface-vm.md) over netwerkinterfaces voor virtuele machines van Azure.
+  Meer [informatie](../virtual-network/virtual-network-network-interface-vm.md) over netwerk interfaces voor virtuele machines van Azure.

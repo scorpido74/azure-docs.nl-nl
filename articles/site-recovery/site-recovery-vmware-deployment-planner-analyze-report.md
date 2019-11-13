@@ -1,22 +1,22 @@
 ---
-title: Analyseer het Azure Site Recovery Deployment Planner rapport voor nood herstel van VMware naar Azure | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u het door de Azure Site Recovery Deployment Planner voor VMware nood herstel naar Azure gegenereerde rapport kunt analyseren.
+title: Analyseer het Deployment Planner rapport voor VMware-nood herstel met Azure Site Recovery
+description: In dit artikel wordt beschreven hoe u het door de herstel Deployment Planner gegenereerde rapport kunt analyseren voor VMware-nood herstel op Azure met behulp van Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: 4240e17320cc62dc1a0e74db2f40a452a63f2982
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: b6ac10b47a8bbc987eb1e338991100ee17eacd61
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690729"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961384"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analyseer het Azure Site Recovery Deployment Planner rapport voor VMware-nood herstel naar Azure
+# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analyseer het Deployment Planner rapport voor VMware-nood herstel naar Azure
 
-Het gegenereerde Microsoft Excel-rapport bevat de volgende bladen:
+Het gegenereerde Microsoft Excel-rapport bevat de volgende werkbladen:
 ## <a name="on-premises-summary"></a>Samenvatting on-premises
 Het werkblad Samenvatting on-premises biedt een overzicht van de geprofileerde VMware-omgeving.
 
@@ -122,9 +122,9 @@ In de openbare preview bevat het rapport geen informatie over de virtuele machin
 ![Aanbevolen VM-batchgrootte](media/site-recovery-vmware-deployment-planner-analyze-report/ir-batching-v2a.png)
 
 ### <a name="cost-estimation"></a>Kostenraming
-De grafiek toont de weergave Samenvatting van de geschatte totale noodherstel (DR) kosten voor Azure van uw gekozen doelregio en de valuta die u hebt opgegeven voor het genereren van rapporten.
+De grafiek toont de weergave Samenvatting van de geschatte totale kosten voor noodherstel (DR) voor Azure van de gekozen doelregio en de valuta die u hebt opgegeven voor het genereren van rapporten.
 
-![Kostenraming samenvatting](media/site-recovery-vmware-deployment-planner-analyze-report/cost-estimation-summary-v2a.png)
+![Samenvatting kostenramingen](media/site-recovery-vmware-deployment-planner-analyze-report/cost-estimation-summary-v2a.png)
 
 De samenvatting helpt u bij het begrijpen van de kosten die u nodig hebt om te betalen voor opslag, rekensnelheid, netwerk en licentie wanneer u alle compatibele virtuele machines naar Azure met Azure Site Recovery beveiligt. De kosten worden berekend op basis van compatibele virtuele machines en niet op basis van alle geprofileerde virtuele machines.  
 
@@ -139,7 +139,7 @@ U kunt de kosten maandelijks of jaarlijks weergeven. Meer informatie over [onder
 **Kosten voor DR-oefeningen**: de kosten die zullen worden gemaakt tijdens de testfailovers. Azure Site Recovery laat virtuele machines draaien tijdens de testfailover. De details voor DR-kosten zijn de kosten voor de berekenings- en opslagkosten van de actieve virtuele machines.
 
 **Azure-opslagkosten per maand-jaar** Dit toont de totale opslagkosten die zullen worden gemaakt voor premium en standard-opslag voor replicatie en details voor DR.
-Vindt u gedetailleerde kostenanalyse per virtuele machine in het blad [kostenraming](site-recovery-vmware-deployment-planner-cost-estimation.md).
+U vindt een gedetailleerde kostenanalyse per virtuele machine op het werkblad [Kostenraming](site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 ### <a name="growth-factor-and-percentile-values-used"></a>Groeifactor en gebruikte percentielwaarden
 Deze sectie onder aan het werkblad toont de percentielwaarde die voor alle prestatiemeteritems van de geprofileerde virtuele machines wordt gebruikt (standaard is dit het 95e percentiel), plus de groeifactor in procenten die in alle berekeningen wordt gebruikt (standaard 30%).
@@ -178,7 +178,7 @@ Het is mogelijk dat u om wat voor reden dan ook niet meer dan x Mbps bandbreedte
 
 **VM-naam**: de naam of het IP-adres van de virtuele machine dat wordt gebruikt in het bestand dat is opgegeven voor VMListFile wanneer een rapport wordt gegenereerd. Deze kolom bevat ook de schijven (VMDK's) die aan de virtuele machines zijn gekoppeld. Om onderscheid te maken tussen virtuele machines van vCenter met dubbele namen of IP-adressen, bevatten de namen de naam van de ESXi-host. De vermelde ESXi-host is de host waar de virtuele machine werd geplaatst op het moment van detectie door het hulpprogramma tijdens de profileringsperiode.
 
-**VM-compatibiliteit**: de mogelijke waarden zijn **Ja** en **Ja**\*. **Ja** \* is voor instanties waarin de virtuele machine geschikt is voor [Premium-ssd's](../virtual-machines/windows/disks-types.md). Het hoge geprofileerde verloop of de IOPS-schijf komt overeen met categorie P20 of P30, maar de grootte van de schijf zorgt ervoor dat P10 of P20 wordt toegewezen. Het opslagaccount bepaalt aan welk schijftype voor Premium Storage een schijf wordt toegewezen, op basis van de grootte. Bijvoorbeeld:
+**VM-compatibiliteit**: de mogelijke waarden zijn **Ja** en **Ja**\*. **Ja**\* is voor instanties waarin de virtuele machine geschikt is voor [Premium-ssd's](../virtual-machines/windows/disks-types.md). Het hoge geprofileerde verloop of de IOPS-schijf komt overeen met categorie P20 of P30, maar de grootte van de schijf zorgt ervoor dat P10 of P20 wordt toegewezen. Het opslagaccount bepaalt aan welk schijftype voor Premium Storage een schijf wordt toegewezen, op basis van de grootte. Bijvoorbeeld:
 * <128 GB is een P10.
 * 128 GB tot 256 GB is een P15
 * 256 GB tot 512 GB is een P20.
@@ -186,7 +186,7 @@ Het is mogelijk dat u om wat voor reden dan ook niet meer dan x Mbps bandbreedte
 * 1025 GB tot 2048 GB is een P40.
 * 2049 GB tot 4095 GB is een P50.
 
-Als de kenmerken van de workload van een schijf overeenkomen met de categorie P20 of P30, maar de schijf door grootte aan een lagere categorie schijftype voor Premium Storage wordt gekoppeld, markeert het hulpprogramma die virtuele machine als **Ja**\*. Het hulpprogramma adviseert ook om ofwel de grootte van de bronschijf te wijzigen zodat deze overeenkomt met het schijftype voor Premium Storage of de post-failover van het doelschijftype te wijzigen.
+Als de kenmerken van de workload van een schijf overeenkomen met de categorie P20 of P30, maar de schijf op grond van de grootte ervan aan een lagere categorie schijftype voor Premium Storage wordt gekoppeld, markeert het hulpprogramma die virtuele machine als **Ja**\*. Het hulpprogramma adviseert ook om ofwel de grootte van de bronschijf te wijzigen zodat deze overeenkomt met het schijftype voor Premium Storage of de post-failover van het doelschijftype te wijzigen.
 
 **Opslagtype**: Standard of Premium.
 
@@ -232,8 +232,6 @@ Als de kenmerken van de workload van een schijf overeenkomen met de categorie P2
 * De bron-IOPS is groter dan de ondersteunde IOPS-limiet voor opslag van 80.000 per schijf.
 
 * Het gemiddelde gegevens verloop overschrijdt de ondersteunde Site Recovery gegevens verloop limiet van 20 MB/s voor de gemiddelde I/O-grootte voor de schijf.
-
-* Het gemiddelde gegevensverloop overschrijdt de ondersteunde Site Recovery-limiet voor gegevensverloop van 25 MB/s voor de gemiddelde IO-grootte voor de VM (som van het verloop van alle schijven).
 
 * Het piekgegevensverloop voor alle schijven in de virtuele machine overschrijdt de maximaal ondersteunde limiet voor het piekgegevensverloop van Site Recovery van 54 MB/s per virtuele machine.
 

@@ -1,5 +1,5 @@
 ---
-title: Voer de Deployment Planner voor nood herstel van VMware uit met behulp van Azure Site Recovery
+title: Voer de Deployment Planner voor nood herstel van VMware met Azure Site Recovery uit
 description: In dit artikel wordt beschreven hoe u Azure Site Recovery Deployment Planner uitvoert voor VMware-herstel na nood gevallen naar Azure.
 author: mayurigupta13
 manager: rochakm
@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: 611213f6cf0f51a8b6c6f7f89a795b2daa94a38a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693203"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953288"
 ---
-# <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Voer de Azure Site Recovery Deployment Planner voor nood herstel van VMware naar Azure uit
+# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>De Deployment Planner voor nood herstel van VMware uitvoeren
 Dit artikel is de gebruikershandleiding voor de Azure Site Recovery-implementatieplanner voor productie-installaties van het type VMware-naar-Azure.
 
 

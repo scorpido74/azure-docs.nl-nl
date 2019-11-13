@@ -3,7 +3,7 @@ title: De weer gaven van log Analytics installeren en gebruiken | Microsoft Docs
 description: Meer informatie over het installeren en gebruiken van de log Analytics-weer gaven voor Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 2290de3c-2858-4da0-b4ca-a00107702e26
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00bca8bca19f9a71c4eeb639017845987682661f
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b17026e4cfbe69e36c8e459aa259fe16b1c9d80d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820908"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014423"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>De log Analytics-weer gaven voor Azure Active Directory installeren en gebruiken
 
@@ -51,7 +51,7 @@ Als u de log Analytics-weer gaven wilt gebruiken, hebt u het volgende nodig:
 
 2. Zodra u zich in de werk ruimte bevindt, selecteert u **werkruimte samenvatting**. De volgende drie weer gaven moeten worden weer gegeven:
 
-    * **Gebeurtenissen voor het inrichten van Azure AD-accounts**: deze weer gave bevat rapporten met betrekking tot het controleren van inrichtings activiteiten, zoals het aantal nieuwe gebruikers dat is ingericht en het inrichten van fouten, het aantal gebruikers dat is bijgewerkt en het bijwerken van fouten en het aantal gebruikers de inrichting en bijbehorende fouten worden ongedaan gemaakt.    
+    * **Gebeurtenissen voor het inrichten van Azure AD-accounts**: deze weer gave bevat rapporten met betrekking tot het controleren van inrichtings activiteiten, zoals het aantal nieuwe gebruikers dat is ingericht en het inrichten van fouten, het aantal gebruikers dat is bijgewerkt en het bijwerken van fouten en het aantal gebruikers dat is ingericht en de bijbehorende fouten.    
     * **Gebeurtenissen voor aanmeldingen**: deze weer gave bevat de meest relevante rapporten met betrekking tot het controleren van de aanmeldings activiteit, zoals aanmeldingen per toepassing, gebruiker, apparaat en een samen vatting van het aantal aanmeldingen in de loop van de tijd.
 
 3. Selecteer een van deze weer gaven om naar de afzonderlijke rapporten te gaan. U kunt ook waarschuwingen instellen voor een van de rapport parameters. Laten we bijvoorbeeld een waarschuwing instellen voor elke keer dat er een fout is opgetreden bij het aanmelden. Als u dit wilt doen, selecteert u eerst de weer gave voor de **aanmeldings gebeurtenissen** , selecteert u **aanmeldings fouten in een tijd** rapport en selecteert u vervolgens **Analytics** om de pagina Details te openen, met de daad werkelijke query achter het rapport. 

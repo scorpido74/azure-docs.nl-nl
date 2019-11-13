@@ -1,17 +1,14 @@
 ---
 title: Meer informatie over Azure Policy voor de Azure Kubernetes-service
 description: Meer informatie over hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters op de Azure Kubernetes-service.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 248f96b4385e97605986b53bd94fd83236ec8f08
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dbac1ee762066fb59cd57c04839666026a2bd89b
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480903"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959804"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Meer informatie over Azure Policy voor de Azure Kubernetes-service
 
@@ -126,7 +123,7 @@ Voordat u de invoeg toepassing in uw AKS-cluster installeert, moet de uitbrei di
 
 Zodra de vereisten zijn voltooid, installeert u de Azure Policy-invoeg toepassing in het AKS-cluster dat u wilt beheren.
 
-- Azure Portal
+- Azure-portal
 
   1. Start de AKS-service in de Azure Portal door op **alle services**te klikken en vervolgens op **Kubernetes Services**te zoeken en te selecteren.
 
@@ -209,7 +206,7 @@ Als u logboeken van gate keeper-containers wilt weer geven, volgt u de stappen i
 
 Als u de invoeg toepassing Azure Policy wilt verwijderen uit uw AKS-cluster, gebruikt u de Azure Portal of Azure CLI:
 
-- Azure Portal
+- Azure-portal
 
   1. Start de AKS-service in de Azure Portal door op **alle services**te klikken en vervolgens op **Kubernetes Services**te zoeken en te selecteren.
 

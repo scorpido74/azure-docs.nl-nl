@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een ruimte controleren met Azure Digital Twins | Microsoft Docs'
+title: 'Zelf studie: een ruimte bewaken-Azure Digital Apparaatdubbels | Microsoft Docs'
 description: Leer hoe u uw ruimtelijke resources kunt inrichten en de werkomstandigheden kunt bewaken met Azure Digital Twins door de stappen in deze zelfstudie te volgen.
 services: digital-twins
 ms.author: alinast
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.openlocfilehash: 74e3c46b2b1427c27923ed91846755797b8da690
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 4e7136c5689bf37e0ca1db33f4838373d59a0901
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949073"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013929"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Zelfstudie: Uw bedrijfs voorwaarden inrichten en bewaken met Azure Digital Apparaatdubbels preview
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Zelf studie: uw bouw-en bewakings voorwaarden inrichten met Azure Digital Apparaatdubbels preview
 
 In deze zelf studie wordt gedemonstreerd hoe u met Azure Digital Apparaatdubbels Preview uw Spaces bewaakt voor gewenste temperatuur omstandigheden en comfort niveau. Nadat u uw [voorbeeldgebouw hebt geconfigureerd](tutorial-facilities-setup.md), kunt u het gebouw inrichten en aangepaste functies uitvoeren voor uw sensorgegevens met behulp van de stappen in deze zelfstudie.
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-In deze zelfstudie wordt ervan uitgegaan dat u de [Azure Digital Twins-installatie hebt uitgevoerd](tutorial-facilities-setup.md). Voordat u doorgaat, moet u ervoor zorgen voor dat u beschikt over:
+In deze zelfstudie wordt ervan uitgegaan dat u de [Azure Digital Twins-installatie hebt uitgevoerd](tutorial-facilities-setup.md). Zorg er, vóórdat u doorgaat, voor dat u beschikt over:
 
 - Een [Azure-account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Een actief exemplaar van Digital Twins. 
@@ -54,7 +54,7 @@ Voeg de volgende matcher toe onder de bestaande matchers. Zorg ervoor dat de sle
         dataTypeValue: Temperature
 ```
 
-Met deze overeenkomst wordt de `SAMPLE_SENSOR_TEMPERATURE`-sensor gevolgd die u in [de eerste zelf studie](tutorial-facilities-setup.md)hebt toegevoegd. 
+Met deze overeenkomst wordt de `SAMPLE_SENSOR_TEMPERATURE` sensor gevolgd die u in [de eerste zelf studie](tutorial-facilities-setup.md)hebt toegevoegd. 
 
 ## <a name="create-a-user-defined-function"></a>Een door de gebruiker gedefinieerde functie maken
 
@@ -84,7 +84,7 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
         var temperatureThreshold = 78;
     ```
 
-    b. Voeg onder de opmerking `// Add your sensor variable here` de volgende regels toe na de instructie waarmee `var motionSensor` wordt gedefinieerd:
+    b. Voeg onder de opmerking `var motionSensor` de volgende regels toe na de instructie waarmee `// Add your sensor variable here` wordt gedefinieerd:
 
      ```JavaScript
         var temperatureSensor = otherSensors.find(function(element) {
@@ -92,7 +92,7 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
         });
     ```
 
-    c. Voeg onder de opmerking `// Add your sensor latest value here` de volgende regel toe na de instructie waarmee `var carbonDioxideValue` wordt gedefinieerd:
+    c. Voeg onder de opmerking `var carbonDioxideValue` de volgende regel toe na de instructie waarmee `// Add your sensor latest value here` wordt gedefinieerd:
 
     ```JavaScript
         var temperatureValue = getFloatValue(temperatureSensor.Value().Value);
@@ -185,7 +185,7 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
 
 1. Kopieer de waarde van de `ConnectionString` uit de uitvoer in het opdrachtvenster onder de sectie `Devices` naar het Klembord. U hebt deze waarde nodig om de apparaatverbinding in de volgende sectie te simuleren.
 
-    [![Provision-voor beeld](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
+    [voor beeld van ![inrichten](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 > [!TIP]
 > Als er tijdens het inrichtingsproces een foutbericht wordt weergegeven dat lijkt op 'De I/O-bewerking is afgebroken vanwege een afgesloten thread of een toepassingsaanvraag', moet u de opdracht opnieuw uitvoeren. Dit kan gebeuren als er een time-out van de HTTP-client heeft plaatsgevonden vanwege een netwerkprobleem.
@@ -204,9 +204,9 @@ In deze sectie gebruikt u het project met de naam *device-connectivity* in het v
 
 1. Open het bestand [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) in een editor en bewerk de volgende waarden:
 
-   a. **DeviceConnectionString**: wijs de waarde van `ConnectionString` toe in het uitvoervenster uit het vorige gedeelte. Kopieer de volledige tekenreeks (tussen de aanhalingstekens), zodat de simulator correct verbinding maakt met de IoT-hub.
+   a. **DeviceConnectionString**: wijs de waarde toe van `ConnectionString` in het uitvoervenster uit de vorige sectie. Kopieer de volledige tekenreeks (tussen de aanhalingstekens), zodat de simulator correct verbinding maakt met de IoT-hub.
 
-   b. **HardwareId** binnen de matrix **Sensors**: Omdat u gebeurtenissen simuleert van Sens oren die zijn ingericht voor uw Azure Digital Apparaatdubbels-exemplaar, moeten de hardware-ID en de namen van de Sens oren in dit bestand overeenkomen met het `sensors`-knoop punt van het *provisionSample. yaml* -bestand.
+   b. **HardwareId** binnen de **Sens oren** -matrix: omdat u gebeurtenissen simuleert van Sens oren die zijn ingericht naar uw Azure Digital apparaatdubbels-exemplaar, moeten de hardware-id en de namen van de Sens oren in dit bestand overeenkomen met het `sensors` knoop punt van het bestand *provisionSample. yaml* .
 
       Voeg een nieuwe vermelding voor de temperatuursensor toe. Het knoop punt **Sens oren** in *appSettings. json* moet er als volgt uitzien:
 
@@ -246,7 +246,7 @@ De door de gebruiker gedefinieerde functie wordt telkens uitgevoerd als uw insta
 
 In het uitvoervenster ziet u hoe de door de gebruiker gedefinieerde functie wordt uitgevoerd en gebeurtenissen van de apparaatsimulatie onderschept. 
 
-   [![Output voor de UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [![uitvoer voor de UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
 
 Als er aan de gecontroleerd voorwaarde wordt voldaan, stelt de door de gebruiker gedefinieerde functie de waarde van de ruimte in met het betreffende bericht, zoals we [eerder](#create-a-user-defined-function) hebben gezien. De functie `GetAvailableAndFreshSpaces` drukt het bericht op de console af.
 
@@ -266,7 +266,7 @@ Als u Azure Digital Twins niet verder wilt verkennen, kunt u de resources die in
 Nu de ruimten zijn ingericht en u een framework voor het activeren van aangepaste meldingen hebt gemaakt, kunt u doorgaan met een van de volgende zelfstudies:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Meldingen ontvangen uit uw Azure Digital Twins-ruimten met behulp van Logic Apps](tutorial-facilities-events.md)
+> [Zelfstudie: Meldingen ontvangen uit uw Azure Digital Twins-ruimten met behulp van logische apps](tutorial-facilities-events.md)
 
 > [!div class="nextstepaction"]
 > [Zelfstudie: Gebeurtenissen uit Azure Digital Twins-ruimten visualiseren en analyseren met Time Series Insights](tutorial-facilities-analyze.md)

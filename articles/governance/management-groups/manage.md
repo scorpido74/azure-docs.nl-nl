@@ -1,17 +1,14 @@
 ---
 title: Werken met uw beheer groepen-Azure governance
 description: Meer informatie over het weer geven, onderhouden, bijwerken en verwijderen van uw beheer groeps hiërarchie.
-author: rthorn17
-ms.service: governance
 ms.date: 05/22/2019
-ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 57695157119b81580777c0581adccb267e7e9faa
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 90f4bacf462ed5f2590f51d15b6b660057c51738
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255923"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960246"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Uw resources beheren met beheer groepen
 
@@ -29,7 +26,7 @@ U kunt de naam van de beheer groep wijzigen met behulp van de portal, Power shel
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer **alle services** > -**beheer groepen**.
+1. Selecteer **alle services** > - **beheer groepen**.
 
 1. Selecteer de beheer groep waarvan u de naam wilt wijzigen.
 
@@ -77,7 +74,7 @@ Als u een beheer groep wilt verwijderen, moet aan de volgende vereisten worden v
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer **alle services** > -**beheer groepen**.
+1. Selecteer **alle services** > - **beheer groepen**.
 
 1. Selecteer de beheer groep die u wilt verwijderen.
 
@@ -120,7 +117,7 @@ U kunt elke beheer groep weer geven waarop u een directe of overgenomen RBAC-rol
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer **alle services** > -**beheer groepen**.
+1. Selecteer **alle services** > - **beheer groepen**.
 
 1. De pagina beheer groeps hiërarchie wordt geladen. Op deze pagina vindt u een onderzoek van alle beheer groepen en abonnementen waartoe u toegang hebt. Als u de groeps naam selecteert, wordt een niveau in de hiërarchie omlaag genoteerd. De navigatie werkt hetzelfde als een Verkenner.
 
@@ -219,7 +216,7 @@ Als u wilt zien welke machtigingen u hebt in de Azure Portal, selecteert u de be
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer **alle services** > -**beheer groepen**.
+1. Selecteer **alle services** > - **beheer groepen**.
 
 1. Selecteer de beheer groep die u van plan bent het bovenliggende te zijn.
 
@@ -235,7 +232,7 @@ Als u wilt zien welke machtigingen u hebt in de Azure Portal, selecteert u de be
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer **alle services** > -**beheer groepen**.
+1. Selecteer **alle services** > - **beheer groepen**.
 
 1. Selecteer de beheer groep die u wilt plannen die het huidige bovenliggende item is.  
 
@@ -287,7 +284,7 @@ Wanneer u een bovenliggende beheer groep verplaatst, wordt de hiërarchie onder 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer **alle services** > -**beheer groepen**.
+1. Selecteer **alle services** > - **beheer groepen**.
 
 1. Selecteer de beheer groep die u van plan bent het bovenliggende te zijn.
 

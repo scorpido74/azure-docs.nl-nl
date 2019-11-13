@@ -1,5 +1,5 @@
 ---
-title: Implementatie van Azure Service Fabric-toepassing | Microsoft Docs
+title: Azure Service Fabric-implementatie met FabricClient
 description: Gebruik de FabricClient-Api's om toepassingen te implementeren en te verwijderen in Service Fabric.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: c04306b417c8e68f2e93c0e5e064f5873b00ddd5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cdb5ae4efbd4119422101eb8a05ce71e7b58d51f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599623"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013298"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Toepassingen implementeren en verwijderen met FabricClient
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ FabricClient fabricClient = new FabricClient();
 ```
 
 ## <a name="upload-the-application-package"></a>Het toepassings pakket uploaden
-Stel dat u een toepassing met de naam *mijn toepassing* in Visual Studio bouwt en inpakt. De naam van het toepassings type dat wordt weer gegeven in ApplicationManifest. XML is standaard ingesteld op ' MyApplicationType '.  Het toepassings pakket, dat het benodigde toepassings manifest, service manifesten en code/config/gegevens pakketten bevat, bevindt zich *in\&C:\users lt;&gt;gebruikers naam \Documents\Visual Studio 2019 \ Projects\MyApplication\ MyApplication\pkg\Debug*.
+Stel dat u een toepassing met de naam *mijn toepassing* in Visual Studio bouwt en inpakt. De naam van het toepassings type dat wordt weer gegeven in ApplicationManifest. XML is standaard ingesteld op ' MyApplicationType '.  Het toepassings pakket, dat het benodigde toepassings manifest, service manifesten en code/config/gegevens pakketten bevat, bevindt zich in *C:\Users\&lt; gebruikers naam&gt;\Documents\Visual Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug*.
 
 Als u het toepassings pakket uploadt, wordt het op een locatie die toegankelijk is voor de interne Service Fabric-onderdelen. Service Fabric controleert het toepassings pakket tijdens de registratie van het toepassings pakket. Als u het toepassings pakket echter lokaal wilt controleren (dat wil zeggen, voordat u dit uploadt), gebruikt u de cmdlet [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) .
 
@@ -132,23 +132,23 @@ De ImageStoreConnectionString is te vinden in het cluster manifest:
 Zie [de afbeeldings store Connection String](service-fabric-image-store-connection-string.md) voor aanvullende informatie over de archief-en installatie kopie-Archief Connection String.
 
 ### <a name="deploy-large-application-package"></a>Omvang rijk toepassings pakket implementeren
-Probleem: [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) Time-outs van API voor een groot toepassings pakket (volg orde van GB).
+Probleem: [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API time-out voor een groot toepassings pakket (volg orde van GB).
 Probeer:
-- Geef een grotere time- [](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) out op voor de `timeout` methode CopyApplicationPackage met de para meter. De time-out is standaard 30 minuten.
+- Geef een grotere time-out op voor de [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) -methode met `timeout`-para meter. De time-out is standaard 30 minuten.
 - Controleer de netwerk verbinding tussen de bron computer en het cluster. Als de verbinding langzaam is, kunt u overwegen om een computer met een betere netwerk verbinding te gebruiken.
 Als de client computer zich in een andere regio bevindt dan het cluster, kunt u overwegen om een client computer in een dichter of dezelfde regio als het cluster te gebruiken.
 - Controleer of u externe restricties kunt door lopen. Als het archief met installatie kopieën bijvoorbeeld is geconfigureerd voor het gebruik van Azure Storage, wordt het uploaden mogelijk beperkt.
 
-Probleem: Het upload pakket is voltooid, [](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) maar er is een time-out opgeProvisionApplicationAsync van de API. Probeer:
+Probleem: Upload pakket is voltooid, maar er is een time-out opgetreden voor de [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) -API. Meld
 - [Comprimeer het pakket](service-fabric-package-apps.md#compress-a-package) voordat u het kopieert naar het archief met installatie kopieën.
 De compressie vermindert de grootte en het aantal bestanden, waardoor de hoeveelheid verkeer wordt verminderd en het werk dat Service Fabric moet worden uitgevoerd. De upload bewerking kan langzamer verlopen (met name als u de compressie tijd opneemt), maar registratie en registratie van het toepassings type worden sneller uitgevoerd.
-- Geef een grotere time- [](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) out op voor `timeout` de ProvisionApplicationAsync-API met de para meter.
+- Geef een grotere time-out op voor de [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) -API met de `timeout`-para meter.
 
 ### <a name="deploy-application-package-with-many-files"></a>Een toepassings pakket met veel bestanden implementeren
-Probleem: [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) keer een time-out voor een toepassings pakket met veel bestanden (volg orde van duizenden).
+Probleem: [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) is een time-out voor een toepassings pakket met veel bestanden (volg orde van duizenden).
 Probeer:
 - [Comprimeer het pakket](service-fabric-package-apps.md#compress-a-package) voordat u het kopieert naar het archief met installatie kopieën. De compressie vermindert het aantal bestanden.
-- Geef een grotere time- [](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) out op `timeout` voor ProvisionApplicationAsync met de para meter.
+- Geef een grotere time-out op voor [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) met de para meter `timeout`.
 
 ## <a name="code-example"></a>Voorbeeld van code
 In het volgende voor beeld wordt een toepassings pakket naar de installatie kopie opslag gekopieerd en wordt het toepassings type ingericht. In het voor beeld wordt vervolgens een exemplaar van de toepassing gemaakt en een service-exemplaar gemaakt. Ten slotte verwijdert het voor beeld het toepassings exemplaar, wordt het toepassings type oningericht en wordt het toepassings pakket uit het archief met installatie kopieën verwijderd.

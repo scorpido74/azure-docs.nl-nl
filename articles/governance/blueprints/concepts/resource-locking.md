@@ -1,17 +1,14 @@
 ---
 title: Bron vergrendeling begrijpen
 description: Meer informatie over de vergrendelings opties voor het beveiligen van resources wanneer u een blauw druk toewijst.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 5c62fdb698dddf293d339904fd0c854052d636eb
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 754b9d7f73c6111abf7505e222a1ca5a8712ae45
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981047"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960470"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Meer informatie over het vergren delen van resources in azure-blauw drukken
 
@@ -19,15 +16,15 @@ Het maken van consistente omgevingen op schaal is alleen echt waardevol als er e
 
 ## <a name="locking-modes-and-states"></a>Vergrendelings modi en statussen
 
-Vergrendelings modus is van toepassing op de blauw druk-toewijzing en er zijn drie opties: **Vergren delen**, **alleen-lezen**of **niet verwijderen**. De vergrendelings modus wordt tijdens de toewijzing van een blauw druk geconfigureerd tijdens de implementatie van artefacten. Een andere vergrendelings modus kan worden ingesteld door de toewijzing van de blauw druk bij te werken.
+Vergrendelings modus is van toepassing op de blauw druk-toewijzing en er zijn drie opties: **niet vergren delen**, **alleen-lezen**of **niet verwijderen**. De vergrendelings modus wordt tijdens de toewijzing van een blauw druk geconfigureerd tijdens de implementatie van artefacten. Een andere vergrendelings modus kan worden ingesteld door de toewijzing van de blauw druk bij te werken.
 Vergrendelings modi kunnen echter niet buiten blauw drukken worden gewijzigd.
 
-Resources die zijn gemaakt door artefacten in een blauw druk-toewijzing, hebben vier statussen: **Niet vergrendeld**, **alleen-lezen**, **kan niet worden bewerkt/verwijderd**of **kan niet worden verwijderd**. Elk type artefact kan de status **niet vergrendeld** hebben. De volgende tabel kan worden gebruikt om de status van een resource te bepalen:
+Resources die zijn gemaakt door artefacten in een blauw druk-toewijzing, hebben vier statussen: **niet vergrendeld**, **alleen-lezen**, **niet bewerken/verwijderen**of **kan niet verwijderen**. Elk type artefact kan de status **niet vergrendeld** hebben. De volgende tabel kan worden gebruikt om de status van een resource te bepalen:
 
-|Modus|Bron type voor artefacten|State|Description|
+|Modus|Bron type voor artefacten|Status|Beschrijving|
 |-|-|-|-|
 |Niet vergren delen|*|Niet vergrendeld|Bronnen worden niet beveiligd door blauw drukken. Deze status wordt ook gebruikt voor resources die worden toegevoegd aan een **alleen-lezen** -of **verwijderings** artefact van een resource buiten een blauw druk-toewijzing.|
-|Alleen-lezen|Resource group|Kan niet bewerken/verwijderen|De resource groep is alleen-lezen en tags op de resource groep kunnen niet worden gewijzigd. **Niet-vergrendelde** resources kunnen worden toegevoegd, verplaatst, gewijzigd of verwijderd uit deze resource groep.|
+|Alleen-lezen|Resourcegroep|Kan niet bewerken/verwijderen|De resource groep is alleen-lezen en tags op de resource groep kunnen niet worden gewijzigd. **Niet-vergrendelde** resources kunnen worden toegevoegd, verplaatst, gewijzigd of verwijderd uit deze resource groep.|
 |Alleen-lezen|Niet-resource groep|Alleen-lezen|De resource kan op geen enkele manier worden gewijzigd: geen wijzigingen en kan niet worden verwijderd.|
 |Niet verwijderen|*|Kan niet verwijderen|De resources kunnen worden gewijzigd, maar kunnen niet worden verwijderd. **Niet-vergrendelde** resources kunnen worden toegevoegd, verplaatst, gewijzigd of verwijderd uit deze resource groep.|
 
@@ -56,8 +53,8 @@ De [Eigenschappen](../../../role-based-access-control/deny-assignments.md#deny-a
 
 |Modus |Machtigingen. acties |Machtigingen. intact |Principals [i]. Voert |ExcludePrincipals [i]. Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Alleen-lezen |**\*** |**\*/lezen** |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
-|Niet verwijderen |**\*/verwijderen** | |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
+|Alleen-lezen |**\*** |**\*/Read** |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
+|Niet verwijderen |**\*/Delete** | |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
 
 > [!IMPORTANT]
 > Met Azure Resource Manager worden de gegevens van de roltoewijzing Maxi maal 30 minuten in de cache opgeslagen. Als gevolg hiervan is het weigeren van de toewijzingen voor het weigeren van een actie op blauw drukken-resources mogelijk niet onmiddellijk volledig van kracht. Tijdens deze periode is het mogelijk om een resource te verwijderen die is bedoeld om te worden beveiligd door de vergren delingen van blauw drukken.

@@ -1,25 +1,25 @@
 ---
-title: 'Quickstart: gastgebruikers toevoegen in de Azure-portal - Azure Active Directory'
+title: 'Snelstartgids: gast gebruikers toevoegen in de Azure Portal-Azure Active Directory'
 description: Gebruik deze snelstart voor meer informatie over hoe Azure AD-beheerders B2B-gastgebruikers kunnen toevoegen in de Azure Portal en ga stapsgewijs door de werkstroom van de B2B-uitnodiging.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: quickstart
-ms.date: 07/02/2018
+ms.date: 11/12/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b91ec337a3237e1bde54b42463d97a803f113c7c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 064af4f54f3d3069c7e04a66cc7248dbfaa7ba0b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813139"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008559"
 ---
-# <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Quickstart: Gastgebruikers toevoegen in uw map van de Azure Portal
+# <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Snelstart: Gastgebruikers toevoegen in uw map van de Azure Portal
 
 U kunt iedereen uitnodigen om samen te werken met uw organisatie door ze toe te voegen aan uw map als een gastgebruiker. Vervolgens kunt u een e-mailbericht met een uitnodiging verzenden met een inwisselkoppeling of een directe koppeling verzenden naar een app die u wilt delen. Gastgebruikers kunnen zich aanmelden met hun eigen werk-, school- of sociale identiteiten.
 
@@ -40,15 +40,19 @@ Voor het voltooien van het scenario in deze zelfstudie hebt u het volgende nodig
 2. Selecteer de knop **Azure Active Directory** in het linkerdeelvenster.
 3.  Onder **Beheren**, selecteer **Gebruikers**.
 
-    ![Schermopname die laat zien waar u de optie gebruikers selecteren](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
+    ![Scherm opname van het selecteren van de optie gebruikers](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
 
 4.  Selecteer **Nieuwe gastgebruiker**.
 
-    ![Schermopname die laat zien waar u de nieuwe optie voor de Gast-gebruiker selecteren](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
+    ![Scherm opname waarin wordt weer gegeven waar u de optie nieuwe gast gebruiker wilt selecteren](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
 
-5.  Onder **Gebruikersnaam**, voer het e-mailadres van de externe gebruiker in. Onder **Een persoonlijk bericht invoegen bij de uitnodiging**, typt u een welkomstbericht. 
+5. Selecteer op de pagina **nieuwe gebruiker** de optie **gebruiker uitnodigen** en voeg vervolgens de gegevens van de gast gebruiker toe. 
 
-    ![Schermopname die laat zien waar u het bericht met gast gebruiker uitnodiging invoert](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
+   - **Naam.** De voor-en achternaam van de gast gebruiker.
+   - **E-mail adres (vereist)** . Het e-mail adres van de gast gebruiker.
+   - **Persoonlijk bericht (optioneel)** Neem een persoonlijk Welkomst bericht op voor de gast gebruiker.
+   - **Groepen**: u kunt de gast gebruiker toevoegen aan een of meer bestaande groepen of u kunt dit later doen.
+   - **Directory-rol**: als u Azure AD-beheerders machtigingen voor de gebruiker nodig hebt, kunt u deze toevoegen aan een Azure AD-rol. 
 
 6. Selecteer **Uitnodigen** voor het automatisch verzenden van de uitnodiging voor de gastgebruiker. Een melding wordt weergegeven in de rechterbovenhoek met het bericht **De gebruiker is uitgenodigd**. 
 7.  Nadat u de uitnodiging verzendt, wordt het gebruikersaccount automatisch toegevoegd aan de map als gast.
@@ -60,7 +64,7 @@ De Salesforce-app toevoegen aan uw testtenant en de test gastgebruiker toewijzen
 3.  Selecteer **Nieuwe toepassing**.
 4. Onder **Toevoegen vanuit de galerie**, zoek naar **Salesforce**, en selecteer dit.
 
-    ![Schermopname van het toevoegen van het zoekvak van de galerie](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
+    ![Scherm opname van het zoekvak van de galerie met het selectie vakje toevoegen](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
 5. Selecteer **Toevoegen**.
 6. Onder **Beheren**, selecteer **Eenmalige aanmelding**, en klik onder **Modus voor eenmalige aanmelding**, selecteer **Aanmelding met wachtwoord**, en klik op **Opslaan**.
 7. Onder **Beheren**, selecteer **Gebruikers en groepen** > **Gebruiker toevoegen** > **Gebruikers en groepen**.
@@ -72,11 +76,11 @@ Nu aanmelden als de gastgebruiker om de uitnodiging te zien.
 1.  Aanmelden bij uw test gastgebruiker e-mailaccount.
 2.  Zoeken in uw postvak In naar de e-mail "U bent uitgenodigd".
 
-    ![Schermopname van de B2B-uitnodiging per e-mail](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
+    ![Scherm opname van het e-mail adres voor B2B-uitnodiging](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
 
 3.  Selecteer **Aan de slag** in de hoofdtekst van de e-mail. Een pagina **Machtigingen controleren** opent in de browser. 
 
-    ![Schermopname van de pagina van de machtigingen controleren](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
+    ![Scherm opname met de pagina Machtigingen controleren](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
 
 4. Selecteer **Accepteren**. Het toegangsvenster wordt geopend met daarin de toepassingen die de gebruiker kan openen.
 

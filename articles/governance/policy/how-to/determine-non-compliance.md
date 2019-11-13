@@ -1,17 +1,14 @@
 ---
 title: Oorzaken van niet-naleving bepalen
 description: Wanneer een resource niet-compatibel is, zijn er veel mogelijke redenen. Meer informatie over de oorzaak van de niet-naleving.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/26/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 556a8029b9b5f831ac3ace7ed0fcc474fb2e262e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 6f113080ab84fe7d159766e6543ff61b28f4ead2
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978099"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959618"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Oorzaken van niet-naleving bepalen
 
@@ -21,7 +18,7 @@ Wanneer een Azure-resource wordt vastgesteld dat deze niet compatibel is met een
 > - [Compatibiliteits Details](#compliance-details)
 > - [Wijzigings overzicht (preview-versie)](#change-history)
 
-## <a name="compliance-details"></a>Nalevingsdetails
+## <a name="compliance-details"></a>Compatibiliteits Details
 
 Wanneer een bron niet compatibel is, zijn de compatibiliteits Details voor die bron beschikbaar op de pagina **naleving van beleid** . Het deel venster nalevings Details bevat de volgende informatie:
 
@@ -84,7 +81,7 @@ In deze details wordt uitgelegd waarom een resource momenteel niet compatibel is
 
 De volgende matrix wijst elke mogelijke _reden_ toe aan de verantwoordelijke [voor waarde](../concepts/definition-structure.md#conditions) in de beleids definitie:
 
-|Reason | Voorwaarde |
+|Reden | Voorwaarde |
 |-|-|
 |De huidige waarde moet de doel waarde als sleutel bevatten. |containsKey of **niet** notContainsKey |
 |De huidige waarde moet de doel waarde bevatten. |bevat of **niet** notContains |
@@ -114,7 +111,7 @@ Voor _auditIfNotExists_ -beleid in de categorie _gast configuratie_ kunnen er me
 
 Het is ook mogelijk dat u niet rechtstreeks toegang hebt tot de virtuele machine, maar u moet rapporteren waarom de virtuele machine _niet compatibel_is.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 Volg dezelfde stappen in de bovenstaande sectie voor het weer geven van nalevings Details van het beleid.
 
@@ -124,7 +121,7 @@ Klik in de weer gave **nalevings detail** venster op de koppeling **laatste geë
 
 Op de pagina **gast toewijzing** worden alle beschik bare nalevings details weer gegeven. Elke rij in de weer gave vertegenwoordigt een evaluatie die in de machine is uitgevoerd. In de kolom **reden** wordt een woord groep beschreven waarom de gast toewijzing _niet-compatibel_ is, weer gegeven. Als u bijvoorbeeld wachtwoord beleid controleert, wordt in de kolom **reden** tekst weer gegeven, inclusief de huidige waarde voor elke instelling.
 
-![Nalevingsdetails weergeven.](../media/determine-non-compliance/guestconfig-compliance-details.png)
+![Nalevings details weer geven](../media/determine-non-compliance/guestconfig-compliance-details.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -191,7 +188,7 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>Change-geschiedenis (preview-versie)
+## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>wijzigings overzicht (preview-versie)
 
 Als onderdeel van een nieuwe **open bare preview**zijn de laatste 14 dagen aan wijzigings geschiedenis beschikbaar voor alle Azure-resources die de verwijdering van de [volledige modus](../../../azure-resource-manager/complete-mode-deletion.md)ondersteunen. Wijzigings overzicht bevat details over wanneer een wijziging is gedetecteerd en een _visueel verschil_ voor elke wijziging. Een wijzigings detectie wordt geactiveerd wanneer de eigenschappen van de Resource Manager worden toegevoegd, verwijderd of gewijzigd.
 

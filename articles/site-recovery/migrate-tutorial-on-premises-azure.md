@@ -1,19 +1,19 @@
 ---
-title: On-premises machines migreren naar Azure met Azure Site Recovery
+title: On-premises machines migreren met Azure Site Recovery
 description: In dit artikel wordt beschreven hoe u on-premises VM en fysieke machines naar Azure migreert met behulp van Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/29/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5fa0f05f37164c24ba6441d0c4cb2abc59f331d7
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 24015810a295ef88b7d3e63bfc464ddddef6b55f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053054"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73939622"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>On-premises machines migreren naar Azure
 
@@ -21,7 +21,7 @@ ms.locfileid: "73053054"
 In dit artikel wordt beschreven hoe u on-premises machines naar Azure migreert met behulp van de [Azure site Recovery](site-recovery-overview.md). Over het algemeen wordt Site Recovery gebruikt voor het beheren en organiseren van herstel na nood gevallen van on-premises machines en Azure-Vm's. Het kan echter ook worden gebruikt voor migratie. Migratie maakt gebruik van dezelfde stappen als herstel na nood gevallen met één uitzonde ring. Bij een migratie is het uitvoeren van niet-werkende machines van uw on-premises site de laatste stap. In tegens telling tot herstel na nood gevallen kunt u geen failback naar on-premises uitvoeren in een migratie scenario.
 
 
-Deze zelfstudie laat u zien hoe u on-premises VM's en fysieke servers naar Azure migreert met Site Recovery. In deze zelfstudie leert u procedures om het volgende te doen:
+Deze zelfstudie laat u zien hoe u on-premises VM's en fysieke servers naar Azure migreert met Site Recovery. Procedures voor:
 
 > [!div class="checklist"]
 > * De bron-en doel omgeving voor migratie instellen
@@ -158,7 +158,7 @@ Enkele stappen kunnen worden geautomatiseerd als onderdeel van het migratieproce
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u on-premises virtuele machines naar virtuele Azure-machines gemigreerd. hierna
+In deze zelfstudie hebt u on-premises virtuele machines naar virtuele Azure-machines gemigreerd. Hierna
 
 > [!div class="nextstepaction"]
 > [Stel herstel na nood](azure-to-azure-replicate-after-migration.md) geval in voor een secundaire Azure-regio voor de Azure-vm's.

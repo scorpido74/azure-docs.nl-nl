@@ -3,17 +3,17 @@ title: Architecturale concepten in azure IoT Central | Microsoft Docs
 description: In dit artikel worden de belangrijkste concepten besproken die betrekking hebben op de architectuur van Azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/15/2019
+ms.date: 11/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cb2ca8fe227abd107daa60a0f7d31ba5dc4e7c1b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 66792d9d0a8b1cd72ef8f22481016a35f37a1597
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895330"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013842"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central-architectuur (preview-functies)
 
@@ -33,6 +33,68 @@ Apparaten wisselen gegevens uit met uw Azure IoT Central-toepassing. Een apparaa
 In azure IoT Central worden de gegevens die een apparaat kan uitwisselen met uw toepassing opgegeven in een sjabloon voor een apparaat. Zie [meta gegevens beheer](#metadata-management)voor meer informatie over Apparaatinstellingen.
 
 Raadpleeg [connectiviteit](overview-iot-central-get-connected.md)van apparaten voor meer informatie over de manier waarop apparaten verbinding maken met uw Azure IOT Central-toepassing.
+
+## <a name="azure-iot-edge-devices"></a>Azure IoT Edge-apparaten
+
+En apparaten die zijn gemaakt met behulp van de [Azure IOT sdk's](https://github.com/Azure/azure-iot-sdks), kunt u ook [Azure IOT edge apparaten](../../iot-edge/about-iot-edge.md) verbinden met een IOT Central-toepassing. Met IoT Edge kunt u Cloud Intelligence en aangepaste logica rechtstreeks uitvoeren op IoT-apparaten die worden beheerd door IoT Central. Met de IoT Edge runtime kunt u het volgende doen:
+
+- Workloads op het apparaat installeren en bijwerken.
+- IoT Edge beveiligings standaarden op het apparaat onderhouden.
+- Ervoor zorgen dat de IoT Edge-modules altijd worden uitgevoerd.
+- De status van de module aan de cloud rapporteren voor externe bewaking.
+- De communicatie tussen downstream bladknooppuntapparaten en een IoT Edge-apparaat, tussen modules op een IoT Edge-apparaat en tussen een IoT Edge-apparaat en de cloud beheren.
+
+![Azure IoT Central met Azure IoT Edge](./media/concepts-architecture/iotedge.png)
+
+IoT Central kunt de volgende mogelijkheden voor IoT Edge apparaten:
+
+- Device-sjablonen om de mogelijkheden van een IoT Edge apparaat te beschrijven, zoals:
+  - Upload functionaliteit voor het implementatie manifest, waarmee u een manifest voor een apparaat wagen kunt beheren.
+  - Modules die worden uitgevoerd op het IoT Edge apparaat.
+  - De telemetrie van elke module verzendt.
+  - De eigenschappen van elke module rapporteren.
+  - De opdrachten waarop elke module reageert, worden beantwoord.
+  - De relaties tussen een IoT Edge functionaliteits model en het functionaliteits model voor het downstream-apparaat.
+  - Cloud eigenschappen die niet op het IoT Edge apparaat zijn opgeslagen.
+  - Aanpassingen, Dash boards en formulieren die deel uitmaken van uw IoT Central-toepassing.
+
+  Zie de zelf studie [een IOT Edge-apparaatprofiel maken](./tutorial-define-edge-device-type.md) voor meer informatie.
+
+- De mogelijkheid om IoT Edge-apparaten op schaal in te richten met behulp van Azure IoT Device Provisioning Service
+- Regels en acties.
+- Aangepaste Dash boards en analyses.
+- Doorlopende gegevens export van telemetrie vanaf IoT Edge apparaten.
+
+### <a name="iot-edge-device-types"></a>IoT Edge typen apparaten
+
+IoT Central classificeert IoT Edge apparaattypen als volgt:
+
+- Blade apparaten. Een IoT Edge apparaat kan downstream Leaf-apparaten hebben, maar deze apparaten zijn niet ingericht in IoT Central.
+- Gateway apparaten met downstream-apparaten. Zowel het gateway apparaat als de downstream-apparaten zijn ingericht in IoT Central
+
+![Overzicht van IoT Central IoT Edge](./media/concepts-architecture/gatewayedge.png)
+
+### <a name="iot-edge-patterns"></a>IoT Edge patronen
+
+IoT Central ondersteunt de volgende IoT Edge patronen voor apparaten:
+
+#### <a name="iot-edge-as-leaf-device"></a>IoT Edge als blad apparaat
+
+![IoT Edge als blad apparaat](./media/concepts-architecture/edgeasleafdevice.png)
+
+Het IoT Edge apparaat is ingericht in IoT Central en downstream-apparaten en hun telemetrie wordt weer gegeven op het IoT Edge apparaat. Downstream-apparaten die zijn verbonden met het IoT Edge apparaat, zijn niet ingericht in IoT Central.
+
+#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity"></a>IoT Edge gateway apparaat verbonden met downstream-apparaten met identiteit
+
+![IoT Edge met downstream-apparaat-id](./media/concepts-architecture/edgewithdownstreamdeviceidentity.png)
+
+Het IoT Edge apparaat is ingericht in IoT Central samen met de downstream-apparaten die zijn verbonden met het IoT Edge apparaat. Runtime-ondersteuning voor het inrichten van downstream-apparaten via de gateway wordt momenteel niet ondersteund.
+
+#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity-provided-by-the-iot-edge-gateway"></a>IoT Edge gateway apparaat verbonden met downstream-apparaten met identiteit die is verschaft door de IoT Edge gateway
+
+![IoT Edge met het downstream-apparaat zonder identiteit](./media/concepts-architecture/edgewithoutdownstreamdeviceidentity.png)
+
+Het IoT Edge apparaat is ingericht in IoT Central samen met de downstream-apparaten die zijn verbonden met het IoT Edge apparaat. Runtime-ondersteuning van gateway die identiteit levert aan downstream-apparaten en het inrichten van downstream-apparaten wordt momenteel niet ondersteund. Als u uw eigen module voor identiteits vertalingen zet, kan IoT Central dit patroon ondersteunen.
 
 ## <a name="cloud-gateway"></a>Cloud gateway
 

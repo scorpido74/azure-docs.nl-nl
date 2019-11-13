@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0c3c88119c3d064326442881854920b411f5ed4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0e9f909aba11d35307e02a98a41ffa04e36e4db2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748385"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953130"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Azure Cosmos-containers en-data bases maken in de automatische test modus (preview)
 
@@ -24,7 +24,7 @@ Naast het hand matig inrichten van de door Voer kunt u nu Azure Cosmos-container
 
 U hoeft de ingerichte door Voer niet meer hand matig te beheren of om problemen met de snelheids beperking te verhelpen. Azure Cosmos-containers die zijn geconfigureerd in de modus voor automatische prototype, kunnen direct worden geschaald als reactie op de werk belasting zonder dat dit van invloed is op de beschik baarheid, latentie, door Voer of de prestaties van de werk belasting wereld wijd. Onder hoog gebruik kunnen Azure Cosmos-containers die zijn geconfigureerd in de modus voor automatische prototype omhoog of omlaag worden geschaald zonder dat dit van invloed is op de actieve bewerkingen.
 
-Bij het configureren van containers en data bases in de modus voor automatische prototypen, moet u de maximale door Voer opgeven `Tmax` niet worden overschreden. Containers kunnen vervolgens direct worden geschaald op basis van de behoeften van de werk belasting binnen het `0.1*Tmax < T < Tmax` bereik. Met andere woorden, containers en data bases worden direct geschaald op basis van de behoeften van de werk belasting, van slechts 10% van de maximale doorvoer waarde die u hebt geconfigureerd en tot de geconfigureerde maximale doorvoer waarde. U kunt de instelling voor de maximale door Voer (tmax) op de auto pilot-data base of container op elk gewenst moment wijzigen.
+Bij het configureren van containers en data bases in de modus voor automatische prototypen, moet u de maximale door Voer opgeven `Tmax` niet worden overschreden. Containers kunnen vervolgens direct worden geschaald op basis van de behoeften van de werk belasting binnen het `0.1*Tmax < T < Tmax` bereik. Met andere woorden, containers en data bases worden direct geschaald op basis van de behoeften van de werk belasting, van slechts 10% van de maximale doorvoer waarde die u hebt geconfigureerd en tot de geconfigureerde maximale doorvoer waarde. U kunt de instelling voor de maximale door Voer (tmax) op de auto pilot-data base of container op elk gewenst moment wijzigen. Met de optie auto pilot is de minimale door Voer van 400 RU/s per container of Data Base niet meer van toepassing.
 
 Tijdens de preview-versie van auto pilot, voor de opgegeven maximale door Voer voor de container of de data base, kan het systeem binnen de berekende opslag limiet werken. Als de opslag limiet wordt overschreden, wordt de maximale door Voer automatisch aangepast naar een hogere waarde. Wanneer u door Voer op database niveau gebruikt met de modus Automatische test, wordt het aantal containers dat in een Data Base is toegestaan berekend als: (0,001 * maximale door Voer). Als u bijvoorbeeld 20.000 auto pilot RU/s inricht, kan de data base 20 containers bevatten.
 

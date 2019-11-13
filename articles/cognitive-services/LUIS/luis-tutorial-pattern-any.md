@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 43ad6558b685d3959562be720f7494b3d2a7334e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c118a74e273e153746240465692b1c712bd25f47
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499430"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953610"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Zelf studie: vrije-vorm gegevens uitpakken met een patroon. elke entiteit
 
@@ -138,7 +138,7 @@ De entiteit Pattern.any extraheert entiteiten met verschillende lengten. Dit wer
 
 ## <a name="using-an-explicit-list"></a>Een expliciete lijst gebruiken
 
-Als u merkt dat het patroon, wanneer dit een Pattern.any bevat, entiteiten onjuist extraheert, gebruikt u een [expliciete lijst](luis-concept-patterns.md#explicit-lists) om dit probleem te verhelpen.
+Als u merkt dat het patroon, wanneer dit een Pattern.any bevat, entiteiten onjuist extraheert, gebruikt u een [expliciete lijst](reference-pattern-syntax.md#explicit-lists) om dit probleem te verhelpen.
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen

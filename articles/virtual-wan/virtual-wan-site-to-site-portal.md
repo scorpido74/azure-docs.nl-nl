@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual WAN gebruiken om een site-naar-site-verbinding te maken met Azure | Microsoft Docs
+title: 'Virtueel WAN van Azure: Maak site-naar-site-verbindingen'
 description: In deze zelfstudie leert u hoe u Azure Virtual WAN kunt gebruiken om een site-naar-site-VPN-verbinding te maken met Azure.
 services: virtual-wan
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 8824111edff23b8bdc93a64707cf5198288b3a6b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 82f662dd00805cf53c0581fb0a2b3322a0207a11
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489026"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005715"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Zelfstudie: Een site-naar-site-verbinding maken met Azure Virtual WAN
 
@@ -57,7 +57,7 @@ Ga in een browser naar het Azure Portal en meld u aan met uw Azure-account.
 2. Selecteer **virtueel WAN** in de resultaten. Klik op de pagina virtueel WAN op **maken** om de pagina WAN maken te openen.
 3. Vul op de pagina **WAN maken** op het tabblad **basis beginselen** de volgende velden in:
 
-   ![Virtual WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
+   ![Virtuele WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
 
    * **Abonnement** - selecteer het abonnement dat u wilt gebruiken.
    * **Resource groep** : nieuwe maken of bestaande gebruiken.

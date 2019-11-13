@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 2f24f5cacb8b6e115d7fe91c6ef0a7a333676ae1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e68ce5a198165c4187cbad9e86ce61f67694a82d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472838"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961591"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over Azure Kubernetes service (AKS)
 
@@ -64,11 +64,11 @@ AKS bouwt voort op een aantal Azure-infrastructuur resources, zoals schaal sets 
 Om deze architectuur in te scha kelen, omvat elke AKS-implementatie twee resource groepen:
 
 1. U maakt de eerste resource groep. Deze groep bevat alleen de Kubernetes-service resource. De resource provider AKS maakt automatisch de tweede resource groep tijdens de implementatie. Een voor beeld van de tweede resource groep is *MC_myResourceGroup_myAKSCluster_eastus*. Zie de volgende sectie voor meer informatie over het opgeven van de naam van deze tweede resource groep.
-1. De tweede resource groep, ook wel de *resource groep knoop punt*genoemd, bevat alle infrastructuur resources die zijn gekoppeld aan het cluster. Deze resources omvatten de Kubernetes-knoop punt-Vm's, virtuele netwerken en opslag. De resource groep van het knoop punt heeft standaard een naam zoals *MC_myResourceGroup_myAKSCluster_eastus*. AKS verwijdert automatisch de knooppunt resource wanneer het cluster wordt verwijderd. dit moet daarom alleen worden gebruikt voor resources die de levens cyclus van het cluster delen.
+1. De tweede resource groep, ook wel de *resource groep knoop punt*genoemd, bevat alle infrastructuur resources die zijn gekoppeld aan het cluster. Deze resources omvatten de Kubernetes-knoop punt-Vm's, virtuele netwerken en opslag. De resource groep van het knoop punt heeft standaard een naam als *MC_myResourceGroup_myAKSCluster_eastus*. AKS verwijdert automatisch de knooppunt resource wanneer het cluster wordt verwijderd. dit moet daarom alleen worden gebruikt voor resources die de levens cyclus van het cluster delen.
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Kan ik mijn eigen naam opgeven voor de resource groep van het AKS-knoop punt?
 
-Ja. AKS krijgt standaard de naam van de resource groep van het knoop punt *MC_resourcegroupname_clustername_location*, maar u kunt ook uw eigen naam opgeven.
+Ja. AKS krijgt standaard de naam van de knooppunt resource groep *MC_resourcegroupname_clustername_location*, maar u kunt ook uw eigen naam opgeven.
 
 Als u de naam van uw eigen resource groep wilt opgeven, installeert u de [AKS-preview][aks-preview-cli] Azure cli-extensie versie *0.3.2* of hoger. Wanneer u een AKS-cluster maakt met behulp van de opdracht [AZ AKS Create][az-aks-create] , gebruikt u de para meter *--node-Resource-Group* en geeft u een naam op voor de resource groep. Als u [een Azure Resource Manager-sjabloon gebruikt][aks-rm-template] om een AKS-cluster te implementeren, kunt u de naam van de resource groep definiëren met behulp van de eigenschap *nodeResourceGroup* .
 
@@ -129,7 +129,7 @@ In AKS kunt u de `maxPods` waarde instellen wanneer u het cluster maakt met behu
 | Azure-CNI | 30 | 250 |
 | Kubenet | 30 | 110 |
 
-Omdat AKS een beheerde service is, implementeren en beheren we invoeg toepassingen en peulen als onderdeel van het cluster. In het verleden kunnen gebruikers een `maxPods` waarde opgeven die lager is dan de waarde die het beheerde vereiste is om uit te voeren (bijvoorbeeld 30). AKS berekent nu het minimum aantal van het hoogste getal door gebruik te maken van de volgende formule: ((maxPods of (maxPods * vm_count)) > beheerde invoeg toepassing voor het gehele minimum.
+Omdat AKS een beheerde service is, implementeren en beheren we invoeg toepassingen en peulen als onderdeel van het cluster. In het verleden kunnen gebruikers een `maxPods` waarde opgeven die lager is dan de waarde die het beheerde vereiste is om uit te voeren (bijvoorbeeld 30). AKS berekent nu het minimum aantal van het hoogste getal door gebruik te maken van de volgende formule: ((maxPods of (maxPods * vm_count)) > beheerde invoeg toepassing voor het minimum.
 
 Gebruikers kunnen de minimale `maxPods` validatie niet overschrijven.
 
@@ -194,7 +194,6 @@ Geen AKS is een beheerde service en het bewerken van de IaaS-resources wordt nie
 [aks-regions]: ./quotas-skus-regions.md#region-availability
 [aks-upgrade]: ./upgrade-cluster.md
 [aks-cluster-autoscale]: ./autoscaler.md
-[virtual-kubelet]: virtual-kubelet.md
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration.md
 [node-updates-kured]: node-updates-kured.md

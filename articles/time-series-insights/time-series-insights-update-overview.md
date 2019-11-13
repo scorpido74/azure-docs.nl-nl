@@ -1,6 +1,6 @@
 ---
-title: 'Overzicht: Azure Time Series Insights preview | Microsoft Docs'
-description: Overzicht van Azure Time Series Insights (preview).
+title: 'Overzicht: wat is Azure Time Series Insights preview? -Azure Time Series Insights | Microsoft Docs'
+description: Meer informatie over belang rijke verbeteringen in Azure Time Series Insights preview.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 10/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 05f4c64adad184e761e2b5a01b8c033c024dbc49
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cde846152ff183db857b8a0549fafd24700ffff9
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585256"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014747"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Wat is Azure Time Series Insights preview?
 

@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met Azure IoT Hub module identity and module twin (.NET) | Microsoft Docs
+title: Aan de slag met de & module identiteit van Azure IoT Hub-module (.NET)
 description: Informatie over het maken van module-id's en het bijwerken van moduledubbels met IoT SDK's voor .NET.
 author: chrissie926
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.openlocfilehash: abf8b18d13e2990f053dd4273645dd7b9a324c77
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: e728d0ef8f52927687d56bd1d4c64f03c53ef401
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147745"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73947669"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Aan de slag met IoT Hub module-identiteit en-module twee (.NET)
 
@@ -53,7 +53,7 @@ Aan het eind van deze zelfstudie beschikt u over twee .NET-consoletoepassingen:
 
 In deze sectie maakt u een .NET-consoletoepassing op het gesimuleerde apparaat waarmee de gerapporteerde eigenschappen van de moduledubbel worden bijgewerkt.
 
-Voordat u begint, moet u uw module connection string ophalen. Meld u aan bij [Azure Portal](https://portal.azure.com/). Navigeer naar uw hub en selecteer **IOT-apparaten**. **MyFirstDevice**zoeken. Selecteer **myFirstDevice** om deze te openen en selecteer vervolgens **myFirstModule** om het te openen. Kopieer in **module-identiteits Details**de **verbindings reeks (primaire sleutel)** wanneer dit nodig is in de volgende procedure.
+Voordat u begint, moet u uw module connection string ophalen. Meld u aan bij de [Azure Portal](https://portal.azure.com/). Navigeer naar uw hub en selecteer **IOT-apparaten**. **MyFirstDevice**zoeken. Selecteer **myFirstDevice** om deze te openen en selecteer vervolgens **myFirstModule** om het te openen. Kopieer in **module-identiteits Details**de **verbindings reeks (primaire sleutel)** wanneer dit nodig is in de volgende procedure.
 
    ![Details van de Azure Portal-module](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
@@ -65,13 +65,13 @@ Voordat u begint, moet u uw module connection string ophalen. Meld u aan bij [Az
 
 1. Selecteer **maken** om het project te maken.
 
-1. Open in Visual Studio **tools** > **NuGet package manager** > **NuGet-pakketten beheren voor oplossing**. Selecteer het tabblad **Browse**.
+1. Open in Visual Studio **Tools** > **NuGet package manager** > **NuGet-pakketten beheren voor oplossing**. Selecteer het tabblad **Browse**.
 
 1. Zoek en selecteer **micro soft. Azure. devices. client**en selecteer vervolgens **installeren**.
 
     ![De huidige versie van de Azure IoT Hub .NET Service SDK installeren](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
-1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
+1. Voeg aan het begin van het bestand `using`Program.cs**de volgende** instructies toe:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -151,7 +151,7 @@ Voordat u begint, moet u uw module connection string ophalen. Meld u aan bij [Az
 
     In dit codevoorbeeld ziet u hoe u de gerapporteerde eigenschappen van de moduledubbel kunt ophalen en bijwerken met het AMQP-protocol. In de openbare preview-versie wordt alleen AMQP ondersteund voor moduledubbelbewerkingen.
 
-1. Desgewenst kunt u deze instructies toevoegen aan de methode **Main** om een gebeurtenis te verzenden naar IOT hub vanuit uw module. Plaats deze regels onder het `try catch` blok.
+1. Desgewenst kunt u deze instructies toevoegen aan de methode **Main** om een gebeurtenis te verzenden naar IOT hub vanuit uw module. Plaats deze regels onder het blok `try catch`.
 
     ```csharp
     Byte[] bytes = new Byte[2];

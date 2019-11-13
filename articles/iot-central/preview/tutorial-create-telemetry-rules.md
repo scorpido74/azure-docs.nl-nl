@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: df6c4afc0da50c5b4b32923f24370b9c959b1af7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6327ee8a1b0d52c933844670d9b8098c2c3c4f09
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929597"
+ms.locfileid: "73958149"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Zelf studie: een regel maken en meldingen instellen in uw Azure IoT Central-toepassing (preview-functies)
 
@@ -106,10 +106,6 @@ Kies de regel die u wilt in-of uitschakelen. Scha kelen tussen de knop **inschak
 ## <a name="enable-or-disable-a-rule-for-a-device"></a>Een regel voor een apparaat in-of uitschakelen
 
 Kies de regel die u wilt in-of uitschakelen. Voeg in de sectie **bereiken** een filter toe om een bepaald apparaat in de sjabloon op te nemen of uit te sluiten.
-
-## <a name="next-steps"></a>Volgende stappen
-
-Nu u hebt geleerd hoe u regels maakt in uw Azure IoT Central-toepassing, is de voorgestelde volgende stap meer informatie [over het beheren van uw apparaten](howto-manage-devices.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

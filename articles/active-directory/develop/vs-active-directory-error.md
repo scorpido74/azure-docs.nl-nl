@@ -1,5 +1,5 @@
 ---
-title: Fouten vaststellen met de Azure Active Directory verbonden service
+title: Fouten diagnosticeren met Azure Active Directory Connected-service
 description: Er is een incompatibel verificatie type gedetecteerd door de met Active Directory verbonden service
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e544942029532fdbe998c36917e688d70ce4ed5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 26f25daa01288959c38520f9713d35eb975d2df2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851981"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73941389"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Fouten diagnosticeren met de Azure Active Directory Connected-service
 
@@ -27,7 +27,7 @@ Als u de vorige verificatie code in een project correct wilt detecteren, moet he
 
 ## <a name="project-types"></a>Project typen
 
-De verbonden service controleert het type project dat u ontwikkelt zodat het de juiste verificatie logica kan injecteren in het project. Als er een controller is die van `ApiController` in het project is afgeleid, wordt het project beschouwd als een WebAPI-project. Als er alleen controllers zijn die zijn afgeleid van `MVC.Controller` in het project, wordt het project beschouwd als een MVC-project. De verbonden service biedt geen ondersteuning voor een ander project type.
+De verbonden service controleert het type project dat u ontwikkelt zodat het de juiste verificatie logica kan injecteren in het project. Als er een controller is die is afgeleid van `ApiController` in het project, wordt het project beschouwd als een WebAPI-project. Als er alleen controllers zijn die zijn afgeleid van `MVC.Controller` in het project, wordt het project beschouwd als een MVC-project. De verbonden service biedt geen ondersteuning voor een ander project type.
 
 ## <a name="compatible-authentication-code"></a>Compatibele verificatie code
 
@@ -54,7 +54,7 @@ Ten slotte probeert de verbonden service versies van verificatie code te detecte
 * Afzonderlijke gebruikers accounts
 * Organisatie-accounts
 
-Als u Windows-verificatie in een MVC-project wilt detecteren, zoekt `authentication` de verbonden het `web.config` element in uw bestand.
+Als u Windows-verificatie in een MVC-project wilt detecteren, zoekt de verbinding naar het `authentication`-element in uw `web.config` bestand.
 
 ```xml
 <configuration>
@@ -64,7 +64,7 @@ Als u Windows-verificatie in een MVC-project wilt detecteren, zoekt `authenticat
 </configuration>
 ```
 
-Als u Windows-verificatie in een web-API-project wilt detecteren, zoekt `IISExpressWindowsAuthentication` de verbonden service naar het `.csproj` element in het bestand van het project:
+Als u Windows-verificatie in een web-API-project wilt detecteren, zoekt de verbonden service naar het `IISExpressWindowsAuthentication`-element in het `.csproj`-bestand van het project:
 
 ```xml
 <Project>
@@ -74,7 +74,7 @@ Als u Windows-verificatie in een web-API-project wilt detecteren, zoekt `IISExpr
 </Project>
 ```
 
-Voor het detecteren van verificatie van afzonderlijke gebruikers accounts zoekt de verbonden service naar het pakket element `packages.config` in uw bestand.
+Voor het detecteren van verificatie van afzonderlijke gebruikers accounts zoekt de verbonden service naar het pakket element in uw `packages.config`-bestand.
 
 ```xml
 <packages>
@@ -82,7 +82,7 @@ Voor het detecteren van verificatie van afzonderlijke gebruikers accounts zoekt 
 </packages>
 ```
 
-Voor het detecteren van een oude vorm van verificatie van organisatie-accounts zoekt de verbonden service naar het volgende`web.config`-element in:
+De verbonden service zoekt naar het volgende element in`web.config`om een oude indeling voor organisatie-account verificatie te detecteren:
 
 ```xml
 <configuration>

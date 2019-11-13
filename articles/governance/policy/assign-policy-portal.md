@@ -1,17 +1,14 @@
 ---
 title: Beleid maken om resources te controleren met portal-Azure Policy
 description: Dit artikel helpt u met de stappen voor het maken van een beleidsdefinitie voor het identificeren van niet-compatibele resources.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: quickstart
-ms.service: azure-policy
-ms.openlocfilehash: 6433c5f90b56489e92ec76aab5c9a0d0c6aeb508
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: e517173c74cd3fd37b50d327d32b668422428315
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254823"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960174"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Snelstartgids: een beleids toewijzing maken om niet-compatibele resources te identificeren
 
@@ -78,9 +75,9 @@ Als een voorwaarde wordt geëvalueerd ten opzichte van uw bestaande resources en
 | **Resourcestatus** | **Effect** | **Beleidsevaluatie** | **Nalevingsstatus** |
 | --- | --- | --- | --- |
 | Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Niet-compatibel |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Naleving |
+| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Compatibel |
 | Nieuw | Controleren, AuditIfNotExist\* | True | Niet-compatibel |
-| Nieuw | Controleren, AuditIfNotExist\* | False | Naleving |
+| Nieuw | Controleren, AuditIfNotExist\* | False | Compatibel |
 
 \*Voor de acties Toevoegen, DeployIfNotExist en AuditIfNotExist moet de IF-instructie TRUE zijn.
 De acties vereisen ook dat de bestaansvoorwaarde FALSE is om niet-compatibel te zijn. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.

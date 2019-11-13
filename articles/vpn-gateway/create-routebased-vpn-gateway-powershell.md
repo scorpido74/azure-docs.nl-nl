@@ -1,24 +1,24 @@
 ---
-title: 'Maak een route gebaseerde Azure VPN-gateway: PowerShell | Microsoft Docs'
-description: Maak snel een op route gebaseerde VPN-Gateway met behulp van PowerShell
+title: 'Een op een route gebaseerde Azure VPN-gateway maken: Power shell | Microsoft Docs'
+description: Snel een op route gebaseerd VPN Gateway maken met behulp van Power shell
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3ad391aae72bec392ae75b333fc3bfc1ff3f95f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a1c34ea25c8ef4bdc3e75e18d6f4a603efc67d5
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66727321"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953831"
 ---
-# <a name="create-a-route-based-vpn-gateway-using-powershell"></a>Een op route gebaseerde VPN-gateway maken met behulp van PowerShell
+# <a name="create-a-route-based-vpn-gateway-using-powershell"></a>Een op een route gebaseerde VPN-gateway maken met behulp van Power shell
 
-Dit artikel helpt u snel een op route gebaseerde Azure VPN-gateway maken met behulp van PowerShell. Een VPN-gateway wordt gebruikt bij het maken van een VPN-verbinding met uw on-premises netwerk. U kunt ook een VPN-gateway gebruiken om VNets te verbinden.
+Dit artikel helpt u bij het snel maken van een op route gebaseerde Azure VPN-gateway met behulp van Power shell. Een VPN-gateway wordt gebruikt bij het maken van een VPN-verbinding met uw on-premises netwerk. U kunt ook een VPN-gateway gebruiken om verbinding te maken met VNets.
 
-De stappen in dit artikel maakt een VNet, een subnet, een gatewaysubnet en een op route gebaseerde VPN-gateway (virtuele netwerkgateway). Als het maken van de gateway is voltooid, kunt u vervolgens verbindingen maken. Deze stappen hebt u een Azure-abonnement nodig. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+In de stappen in dit artikel wordt een VNet, een subnet, een gateway-subnet en een op route gebaseerde VPN-gateway (virtuele netwerk gateway) gemaakt. Nadat het maken van de gateway is voltooid, kunt u verbindingen maken. Voor deze stappen is een Azure-abonnement vereist. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -34,7 +34,7 @@ New-AzResourceGroup -Name TestRG1 -Location EastUS
 
 ## <a name="vnet"></a>Een virtueel netwerk maken
 
-Maak een virtueel netwerk met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Het volgende voorbeeld wordt een virtueel netwerk met de naam **VNet1** in de **EastUS** locatie:
+Maak een virtueel netwerk met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In het volgende voor beeld wordt een virtueel netwerk met de naam **VNet1** gemaakt op de locatie **eastus** :
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -44,7 +44,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.1.0.0/16
 ```
 
-Maak een subnet configureren met de [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) cmdlet.
+Maak een subnet-configuratie met behulp van de cmdlet [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) .
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -53,16 +53,16 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-Stel de subnetconfiguratie voor het virtuele netwerk met de [Set AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) cmdlet.
+Stel de configuratie van het subnet voor het virtuele netwerk in met behulp van de cmdlet [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) .
 
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="gwsubnet"></a>Een gatewaysubnet toevoegen
+## <a name="gwsubnet"></a>Een gateway-subnet toevoegen
 
-Het gatewaysubnet bevat de gereserveerde IP-adressen die de virtuele-netwerkgatewayservices gebruik. Gebruik de volgende voorbeelden om toe te voegen een gateway-subnet:
+Het gateway-subnet bevat de gereserveerde IP-adressen die door de Gateway Services van het virtuele netwerk worden gebruikt. Gebruik de volgende voor beelden om een gateway-subnet toe te voegen:
 
 Stel een variabele in voor uw VNet.
 
@@ -70,27 +70,27 @@ Stel een variabele in voor uw VNet.
 $vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
 ```
 
-Maakt de gateway-subnet via de [toevoegen AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-azVirtualNetworkSubnetConfig) cmdlet.
+Maak het gateway-subnet met behulp van de cmdlet [add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-azVirtualNetworkSubnetConfig) .
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
 ```
 
-Stel de subnetconfiguratie voor het virtuele netwerk met de [Set AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) cmdlet.
+Stel de configuratie van het subnet voor het virtuele netwerk in met behulp van de cmdlet [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) .
 
 ```azurepowershell-interactive
-$virtualNetwork | Set-AzVirtualNetwork
+$vnet | Set-AzVirtualNetwork
 ```
 
-## <a name="PublicIP"></a>Vraag een openbaar IP-adres
+## <a name="PublicIP"></a>Een openbaar IP-adres aanvragen
 
-Een VPN-gateway moet een dynamisch toegewezen openbare IP-adres hebben. Wanneer u een verbinding met een VPN-gateway maakt, is dit het IP-adres dat u opgeeft. Gebruik het volgende voorbeeld om aan te vragen van een openbaar IP-adres:
+Een VPN-gateway moet een dynamisch toegewezen openbaar IP-adres hebben. Wanneer u een verbinding met een VPN-gateway maakt, is dit het IP-adres dat u opgeeft. Gebruik het volgende voor beeld om een openbaar IP-adres aan te vragen:
 
 ```azurepowershell-interactive
 $gwpip= New-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>De configuratie van gateway IP-adres maken
+## <a name="GatewayIPConfig"></a>De configuratie van het IP-adres van de gateway maken
 
 De gatewayconfiguratie bepaalt welk subnet en openbaar IP-adres moeten worden gebruikt. Gebruik het volgende voorbeeld om de gatewayconfiguratie te maken:
 
@@ -101,7 +101,7 @@ $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $s
 ```
 ## <a name="CreateGateway"></a>De VPN-gateway maken
 
-Het maken van een VPN-gateway kan tot 45 minuten of langer duren. Als de gateway is voltooid, kunt u een verbinding maken tussen uw virtuele netwerk en een ander VNet. Of maak een verbinding tussen uw virtuele netwerk en een on-premises locatie. Maak een VPN-gateway met de cmdlet [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway).
+Het maken van een VPN-gateway kan tot 45 minuten of langer duren. Zodra de gateway is voltooid, kunt u een verbinding maken tussen uw virtuele netwerk en een ander VNet. U kunt ook een verbinding maken tussen uw virtuele netwerk en een on-premises locatie. Maak een VPN-gateway met de cmdlet [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway).
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
@@ -109,15 +109,15 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -VpnType RouteBased -GatewaySku VpnGw1
 ```
 
-## <a name="viewgw"></a>De VPN-gateway weergeven
+## <a name="viewgw"></a>De VPN-gateway weer geven
 
-U ziet dat de VPN-gateway met behulp van de [Get-AzVirtualNetworkGateway](/powershell/module/az.network/Get-azVirtualNetworkGateway) cmdlet.
+U kunt de VPN-gateway weer geven met behulp van de cmdlet [Get-AzVirtualNetworkGateway](/powershell/module/az.network/Get-azVirtualNetworkGateway) .
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGateway -Name Vnet1GW -ResourceGroup TestRG1
 ```
 
-De uitvoer ziet er vergelijkbaar met het volgende voorbeeld:
+De uitvoer ziet er ongeveer uit als in dit voor beeld:
 
 ```
 Name                   : VNet1GW
@@ -162,15 +162,15 @@ BgpSettings            : {
      
 ```
 
-## <a name="viewgwpip"></a>Het openbare IP-adres weergeven
+## <a name="viewgwpip"></a>Het open bare IP-adres weer geven
 
-Als u het openbare IP-adres voor uw VPN-gateway, gebruikt u de [Get-AzPublicIpAddress](/powershell/module/az.network/Get-azPublicIpAddress) cmdlet.
+Als u het open bare IP-adres voor uw VPN-gateway wilt weer geven, gebruikt u de cmdlet [Get-AzPublicIpAddress](/powershell/module/az.network/Get-azPublicIpAddress) .
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1
 ```
 
-In het voorbeeldantwoord is de waarde van de IP-adres het openbare IP-adres.
+In het antwoord van het voor beeld is de waarde IpAddress het open bare IP-adres.
 
 ```
 Name                     : VNet1GWIP
@@ -209,9 +209,9 @@ Remove-AzResourceGroup -Name TestRG1
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zodra de gateway heeft gemaakt, kunt u een verbinding maken tussen uw virtuele netwerk en een ander VNet. Of maak een verbinding tussen uw virtuele netwerk en een on-premises locatie.
+Zodra de gateway is gemaakt, kunt u een verbinding maken tussen uw virtuele netwerk en een ander VNet. U kunt ook een verbinding maken tussen uw virtuele netwerk en een on-premises locatie.
 
 > [!div class="nextstepaction"]
-> [Maak een site-naar-site-verbinding](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
+> [Een site-naar-site-verbinding maken](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
 > [Een punt-naar-site-verbinding maken](vpn-gateway-howto-point-to-site-rm-ps.md)<br><br>
-> [Maak een verbinding met een ander VNet](vpn-gateway-vnet-vnet-rm-ps.md)
+> [Een verbinding met een ander VNet maken](vpn-gateway-vnet-vnet-rm-ps.md)

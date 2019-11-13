@@ -1,17 +1,14 @@
 ---
 title: Uw Azure-resources verkennen
 description: Meer informatie over het gebruik van de resource Graph-query taal om uw resources te verkennen en te ontdekken hoe ze zijn verbonden.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 58eb5abc9a8857b81ada65c96eb7deaaa5cc5aeb
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e489a4eafdbbd838c4850d67fcd8ec40f76f290c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622668"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959243"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Azure-resources verkennen met Resource Graph
 
@@ -168,7 +165,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Virtuele machines die zijn verbonden met Premium beheerde schijven
 
-Als we de details willen ophalen van voor Premium beheerde schijven die zijn gekoppeld aan deze virtuele **Standard_B2s** -machines, kunnen we de query uitbreiden om ons de bron-id van deze beheerde schijven te geven.
+Als we de details willen ophalen van voor Premium beheerde schijven die zijn gekoppeld aan deze **Standard_B2s** virtuele machines, kunnen we de query uitbreiden om ons de bron-id van deze beheerde schijven te geven.
 
 ```kusto
 Resources

@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72678a67b1bc9845eae2bca658f35a05c9bcf659
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f0399f084e663ab891d59384af263a7faac2f42e
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883981"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73943816"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in Azure Active Directory
 
@@ -47,7 +47,7 @@ Als u Application Proxy wilt gebruiken, hebt u een Windows-server nodig waarop W
 Om een hoge beschikbaarheid in uw productieomgeving te realiseren wordt aangeraden meer dan één Windows-server te gebruiken. Voor deze zelfstudie is één Windows-server toereikend.
 
 > [!IMPORTANT]
-> Als u de connector installeert op Windows Server 2019, is er een HTTP2-beperking. Voeg de volgende register sleutel toe en start de server opnieuw op om de connector op deze versie te kunnen gebruiken:
+> Als u de connector installeert op Windows Server 2019, is er een HTTP2-beperking. Een tijdelijke oplossing voor het gebruik van de connector op deze versie is het toevoegen van de volgende register sleutel en het opnieuw starten van de server. Opmerking: dit is een brede sleutel van het REGI ster van de machine. 
     ```
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
     ```

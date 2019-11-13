@@ -11,15 +11,16 @@ ms.date: 07/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 97077b9f72de8792e6aba1d72ff34b9185b2d998
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b91d22454d6023094f269b184c845047092b4fb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683810"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954269"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Gegevens in Azure Data Factory transformeren
 > [!div class="op_single_selector"]
+> * [Gegevens stroom toewijzen](data-flow-create.md)
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
@@ -34,7 +35,7 @@ ms.locfileid: "73683810"
 > * [.NET aangepast](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>Overzicht
-In dit artikel wordt uitgelegd hoe u activiteiten voor gegevens transformatie in Azure Data Factory kunt gebruiken om uw onbewerkte gegevens te transformeren en te verwerken in voor spellingen en inzichten. Een transformatie activiteit wordt uitgevoerd in een computer omgeving zoals Azure HDInsight-cluster of een Azure Batch. Het bevat koppelingen naar artikelen met gedetailleerde informatie over elke transformatie activiteit.
+In dit artikel wordt uitgelegd hoe u activiteiten voor gegevens transformatie in Azure Data Factory kunt gebruiken om uw onbewerkte gegevens te transformeren en te verwerken in voor spellingen en inzichten op schaal. Een transformatie activiteit wordt uitgevoerd in een computer omgeving, zoals Azure Databricks of Azure HDInsight. Het bevat koppelingen naar artikelen met gedetailleerde informatie over elke transformatie activiteit.
 
 Data Factory ondersteunt de volgende activiteiten voor gegevens transformatie die afzonderlijk kunnen worden toegevoegd aan [pijp lijnen](concepts-pipelines-activities.md) of moeten worden gekoppeld aan een andere activiteit.
 
@@ -49,6 +50,8 @@ Het toewijzen van gegevens stromen zijn visueel ontworpen gegevens transformatie
 Met Wrangling-gegevens stromen in Azure Data Factory kunt u de gegevens voorbereiding voor code gratis uitvoeren op de Cloud schaal. Wrangling-gegevens stromen kunnen worden geïntegreerd met [Power query online](https://docs.microsoft.com/power-query/) en maken Power query M-functies beschikbaar voor gegevens Wrangling op Cloud schaal via Spark-uitvoering. Zie [wrangling Data Flows](wrangling-data-flow-overview.md)(Engelstalig) voor meer informatie.
 
 ## <a name="external-transformations"></a>Externe transformaties
+
+U kunt desgewenst trans formaties hand matig coderen en zelf de externe Compute-omgeving beheren.
 
 ### <a name="hdinsight-hive-activity"></a>HDInsight Hive-activiteit
 De HDInsight Hive-activiteit in een Data Factory pijp lijn voert Hive-query's uit op uw eigen of op aanvraag gebaseerd HDInsight-cluster op basis van Windows/Linux. Zie het artikel [Hive-activiteit](transform-data-using-hadoop-hive.md) voor meer informatie over deze activiteit. 

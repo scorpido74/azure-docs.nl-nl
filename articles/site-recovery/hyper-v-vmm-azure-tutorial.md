@@ -1,18 +1,18 @@
 ---
-title: Herstel na nood gevallen instellen voor on-premises virtuele Hyper-V-machines in VMM-Clouds naar Azure met Site Recovery
+title: Herstel na nood gevallen voor Hyper-V (met VMM) instellen met behulp van Azure Site Recovery
 description: Meer informatie over het instellen van herstel na nood gevallen van on-premises virtuele Hyper-V-machines in System Center VMM-Clouds naar Azure met behulp van Site Recovery.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f686a02e363025daa5d0c3b3d4e53e07da636544
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fdf6d9674305ca13af51f3f7b97e0a40568738b6
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933826"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953975"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Herstel na nood gevallen instellen voor on-premises virtuele Hyper-V-machines in VMM-Clouds naar Azure
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 > Zelf studies laten u de eenvoudigste implementatie traject voor een scenario zien. Waar mogelijk wordt gebruikgemaakt van standaardopties en niet alle mogelijke instellingen en paden worden weergegeven. Raadpleeg de artikelen in de sectie **instructies** van de site Recovery- [documentatie](https://docs.microsoft.com/azure/site-recovery)voor gedetailleerde instructies.
 
 > [!WARNING]
-> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](scvmm-site-recovery-deprecation.md) te lezen voordat u doorgaat.
+> Ondersteuning voor herstel na nood gevallen van virtuele Hyper-V-machines met System Center VMM zal in de nabije toekomst worden afgeschaft. We raden u aan om de details van de [afschaffing](scvmm-site-recovery-deprecation.md) te lezen voordat u doorgaat.
 
 
 ## <a name="before-you-begin"></a>Voordat u begint

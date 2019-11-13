@@ -1,5 +1,5 @@
 ---
-title: Over netwerken in azure voor nood herstel met Azure met Azure Site Recovery | Microsoft Docs
+title: Over netwerken in nood herstel voor Azure VM met Azure Site Recovery
 description: Biedt een overzicht van netwerken voor replicatie van virtuele Azure-machines met behulp van Azure Site Recovery.
 services: site-recovery
 author: sujayt
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5c2cd96ccfa3a26a9009188ad424eefaaeb7ce48
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 09cd814ade25be438a17b83fb73e74b89c14e22f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906842"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954199"
 ---
-# <a name="about-networking-in-azure-to-azure-replication"></a>Over netwerken in azure naar Azure-replicatie
+# <a name="about-networking-in-azure-vm-disaster-recovery"></a>Over netwerken in nood herstel voor Azure VM
 
 
 
@@ -60,8 +60,8 @@ Als u een op IP gebaseerde firewall proxy gebruikt of NSG regels voor het behere
 - Alle IP-adresbereiken die overeenkomen met de opslag accounts in de bron regio
     - Maak een NSG-regel op basis van een [opslag service label](../virtual-network/security-overview.md#service-tags) voor de bron regio.
     - Sta deze adressen toe zodat gegevens kunnen worden geschreven naar het cache-opslag account van de VM.
-- Een op NSG [(Aad)-service codes](../virtual-network/security-overview.md#service-tags) gebaseerde regel voor Azure Active Directory het maken van toegang tot alle IP-adressen die overeenkomen met Aad toestaan
-    - Als er in de toekomst nieuwe adressen aan de Azure Active Directory (AAD) worden toegevoegd, moet u nieuwe NSG-regels maken.
+- Maak een [Azure Active Directory (AAD)-servicetag](../virtual-network/security-overview.md#service-tags) op basis van NSG-regel voor het toestaan van toegang tot alle IP-adressen die overeenkomen met AAD
+    - Als er nieuwe adressen worden toegevoegd aan de Azure Active Directory (AAD) in de toekomst, moet u nieuwe NSG-regels maken.
 - Site Recovery IP-adressen van service-eind punten: beschikbaar in een [XML-bestand](https://aka.ms/site-recovery-public-ips) en zijn afhankelijk van de doel locatie. 
 - We raden u aan de vereiste NSG-regels te maken op een test-NSG en te controleren of er geen problemen zijn voordat u de regels op een productie NSG maakt.
 

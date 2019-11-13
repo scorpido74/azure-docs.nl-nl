@@ -1,17 +1,14 @@
 ---
 title: Beleid voor het schrijven van matrix eigenschappen voor bronnen
 description: Meer informatie over het maken van matrix parameters, het maken van regels voor matrix taal expressies, het evalueren van de [*]-alias en het toevoegen van elementen aan een bestaande matrix met Azure Policy definitie regels.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 33607d790f564075623d6f61d1b7b8b70a119f98
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: f28cffcf928f9c4da6b2dae2a0811200397c1f0d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255806"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959718"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Beleid voor het schrijven van matrix eigenschappen op Azure-resources
 
@@ -19,7 +16,7 @@ Azure Resource Manager eigenschappen worden meestal gedefinieerd als teken reeks
 
 - Het type [definitie parameter](../concepts/definition-structure.md#parameters), om meerdere opties te bieden
 - Onderdeel van een [beleids regel](../concepts/definition-structure.md#policy-rule) met de voor waarden **in** of **notIn**
-- Onderdeel van een beleids regel die de [\[ @ no__t-2 @ no__t-3-alias](../concepts/definition-structure.md#understanding-the--alias) evalueert om specifieke scenario's te evalueren, zoals **geen**, **any**of **all**
+- Onderdeel van een beleids regel waarmee de [\[\*\] alias](../concepts/definition-structure.md#understanding-the--alias) wordt geëvalueerd om specifieke scenario's te evalueren, zoals **geen**, **een**of **alle**
 - In het [effect toevoegen](../concepts/effects.md#append) om te vervangen of toe te voegen aan een bestaande matrix
 
 In dit artikel wordt elk gebruik door Azure Policy beschreven en worden verschillende voorbeeld definities geboden.
@@ -105,7 +102,7 @@ Gebruik de volgende opdrachten om deze teken reeks te gebruiken voor elke SDK:
 ### <a name="array-conditions"></a>Matrix voorwaarden
 
 De beleids regel [voorwaarden](../concepts/definition-structure.md#conditions) die een _matrix_
--**type** para meter kan worden gebruikt met is beperkt tot `in` en `notIn`. Neem de volgende beleids definitie met voor waarde `equals` als voor beeld:
+**type** para meter kan worden gebruikt met is beperkt tot `in` en `notIn`. Neem de volgende beleids definitie met voor waarde `equals` als voor beeld:
 
 ```json
 {
@@ -137,11 +134,11 @@ Het maken van deze beleids definitie via de Azure Portal leidt tot een fout, zoa
 
 - "Het beleid {GUID} kan niet worden geparametriseerde vanwege validatie fouten. Controleer of de beleids parameters juist zijn gedefinieerd. Het evaluatie resultaat van de interne uitzonde ring van de taal expressie [para meters (' allowedLocations ')] ' is van het type ' matrix ', het verwachte type is ' String '. '
 
-Het verwachte **type** voor waarde `equals` is _teken reeks_. Omdat **allowedLocations** is gedefinieerd als **type** _matrix_, evalueert de beleids engine de expressie van de taal en genereert de fout. Met de `in` en de `notIn`-voor waarde verwacht de beleids engine de **type** _matrix_ in de taal expressie. U kunt dit fout bericht oplossen door `equals` te wijzigen in `in` of `notIn`.
+Het verwachte **type** voor waarde `equals` is _teken reeks_. Omdat **allowedLocations** is gedefinieerd als **type** _matrix_, evalueert de beleids engine de expressie van de taal en genereert de fout. Met de voor waarde `in` en `notIn` verwacht de beleids engine de **type** _matrix_ in de taal expressie. U kunt dit fout bericht oplossen door de `equals` te wijzigen in `in` of `notIn`.
 
 ### <a name="evaluating-the--alias"></a>De alias [*] evalueren
 
-Aliassen met **[\*]** die zijn gekoppeld aan hun naam, geven aan dat het **type** een _matrix_is. In plaats van de waarde van de volledige matrix te evalueren, kunt u met **[\*]** elk element van de matrix evalueren. Er zijn drie scenario's waarin de evaluatie per item kan worden gebruikt in: geen, alle en alle.
+Aliassen waaraan **[\*]** aan hun naam is gekoppeld, geven aan dat het **type** een _matrix_is. In plaats van de waarde van de volledige matrix te evalueren, kunt u met **[\*]** elk element van de matrix evalueren. Er zijn drie scenario's waarin de evaluatie per item kan worden gebruikt in: geen, alle en alle.
 
 De beleids engine activeert alleen het **effect** in **then** wanneer de **if** -regel als waar evalueert.
 Dit is belang rijk om inzicht te krijgen in de context van de manier waarop **[\*]** elk afzonderlijk element van de matrix evalueert.
@@ -180,7 +177,7 @@ De **ipRules** -matrix is als volgt voor de scenario tabel hieronder:
 ]
 ```
 
-Voor elk voor beeld hieronder, vervang `<field>` door `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`.
+Voor elk voor beeld hieronder, vervangt u `<field>` door `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`.
 
 De volgende resultaten zijn het resultaat van de combi natie van de voor waarde en de beleids regel voor het voor beeld en de matrix van bestaande waarden hierboven:
 
@@ -197,10 +194,10 @@ De volgende resultaten zijn het resultaat van de combi natie van de voor waarde 
 
 ## <a name="the-append-effect-and-arrays"></a>Het toevoeg effect en de arrays
 
-Het [effect toevoegen](../concepts/effects.md#append) werkt anders, afhankelijk van of het **veld details** een **[\*]** alias is of niet.
+Het [effect toevoegen](../concepts/effects.md#append) werkt anders, afhankelijk van of het **veld Details** een alias van **[\*]** is of niet.
 
-- Wanneer geen **[\*]-** alias is, wordt de volledige matrix vervangen door de eigenschap **Value**
-- Wanneer een **[\*]-** alias is toegevoegd, wordt de eigenschap **Value** aan de bestaande matrix toegevoegd of wordt de nieuwe matrix gemaakt
+- Wanneer geen **[\*]** -alias is, wordt de volledige matrix vervangen door de eigenschap **Value**
+- Wanneer een alias van het **[\*]** wordt toegevoegd, wordt de eigenschap **Value** aan de bestaande matrix toegevoegd of wordt de nieuwe matrix gemaakt
 
 Zie voor meer informatie de [Append-voor beelden](../concepts/effects.md#append-examples).
 

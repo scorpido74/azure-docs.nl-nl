@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 4680804017a9b08248bb41ff999c6ba6371e99c8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: aae502b350f2cf2e98849b2b6e25543516a0c547
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675917"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961840"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Trans formatie koppelen in gegevens stroom toewijzen
 
@@ -36,7 +36,7 @@ De rechter outer join retourneert alle rijen uit de juiste stroom en overeenkome
 
 ### <a name="full-outer"></a>Volledige outer join
 
-Volledige outer join alle kolommen en rijen van beide zijden met NULL-waarden voor kolommen worden niet met elkaar vergeleken.
+Volledige outer join alle kolommen en rijen van beide zijden met NULL-waarden voor kolommen die niet overeenkomen, worden uitgevoerd.
 
 ### <a name="cross-join"></a>Cross-koppeling
 

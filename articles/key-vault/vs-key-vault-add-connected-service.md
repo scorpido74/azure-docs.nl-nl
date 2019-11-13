@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 9331f13bd85d9df0d47f8fa9d0964974764691f7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4cbc4044b5d1270cecd1a271d2a1db02801650dd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815104"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012775"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault toevoegen aan uw web-app met behulp van Visual Studio Connected Services
 
@@ -25,7 +25,7 @@ Voor meer informatie over de wijzigingen die verbonden services in uw project ma
 ## <a name="prerequisites"></a>Vereisten
 
 - **Een Azure-abonnement**. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/pricing/free-trial/).
-- **Visual studio 2019 versie 16,3 Preview 1** of hoger, of **Visual Studio 2017 versie 15,7** met de **Web Development** -werk belasting geïnstalleerd. [Download nu](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- **Visual studio 2019 versie 16,3 Preview 1** of hoger, of **Visual Studio 2017 versie 15,7** met de **Web Development** -werk belasting geïnstalleerd. [Nu downloaden](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 - Voor ASP.NET (niet kern geheugens) met Visual Studio 2017 hebt u de ontwikkel Hulpprogramma's van .NET Framework 4.7.1 of hoger nodig, die niet standaard worden geïnstalleerd. Als u deze wilt installeren, start u het installatie programma van Visual Studio, kiest u **wijzigen**en kiest u vervolgens **afzonderlijke onderdelen**. Vouw vervolgens aan de rechter kant **ASP.net en web development**uit en kies **.NET Framework 4.7.1 Development tools** .
 - Een ASP.NET 4.7.1 of hoger, of ASP.NET Core 2,0-webproject geopend.
 
@@ -135,6 +135,21 @@ Verwijder de resourcegroep als u deze niet meer nodig hebt. Hiermee worden de Ke
 2. Selecteer **Resourcegroep verwijderen**.
 3. Voer in het vak **Typ de naam van de resource groep:** de naam van de resource groep in en selecteer **verwijderen**.
 
+## <a name="troubleshooting"></a>Problemen oplossen
+
+Als uw sleutel kluis wordt uitgevoerd op een andere Microsoft-account dan die waarvoor u bent aangemeld bij Visual Studio (de sleutel kluis wordt uitgevoerd op uw werk account, maar Visual Studio gebruikt uw privé-account), krijgt u een fout in uw Program.cs-bestand , dat Visual Studio geen toegang kan krijgen tot de sleutel kluis. Dit probleem oplossen:
+
+1. Ga naar de [Azure Portal](https://portal.azure.com) en open uw Key Vault.
+
+1. Kies **toegangs beleid**, vervolgens **toegangs beleid toevoegen**en kies het account waarmee u bent aangemeld als principal.
+
+1. Kies in Visual Studio de instellingen voor **bestands** > **accounts**.
+Selecteer **een account toevoegen** in het gedeelte **alle accounts** . Meld u aan met het account dat u hebt gekozen als principal van uw toegangs beleid.
+
+1. Kies **extra** > **Opties**en zoek naar **Azure-service verificatie**. Selecteer vervolgens het account dat u zojuist hebt toegevoegd aan Visual Studio.
+
+Wanneer u nu fouten opspoort in uw toepassing, maakt Visual Studio verbinding met het account waarop uw sleutel kluis zich bevindt.
+
 ## <a name="how-your-aspnet-core-project-is-modified"></a>Hoe uw ASP.NET Core project wordt gewijzigd
 
 In deze sectie worden de exacte wijzigingen in een ASP.NET-project geïdentificeerd wanneer u de Key Vault verbonden service toevoegt met behulp van Visual Studio.
@@ -145,7 +160,7 @@ Van invloed op het project bestand .NET-verwijzingen en NuGet-pakket verwijzinge
 
 | Type | Naslaginformatie |
 | --- | --- |
-| NuGet | Micro soft. AspNetCore. AzureKeyVault. HostingStartup |
+| NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
 
 ### <a name="added-files-for-aspnet-core"></a>Toegevoegde bestanden voor ASP.NET Core
 
@@ -181,10 +196,10 @@ Heeft betrekking op het project bestand .NET-verwijzingen en `packages.config` (
 
 | Type | Naslaginformatie |
 | --- | --- |
-| NET NuGet | Micro soft. Azure. sleutel kluis |
-| NET NuGet | Micro soft. Azure. WebKey |
-| NET NuGet | Microsoft.Rest.ClientRuntime |
-| NET NuGet | Microsoft.Rest.ClientRuntime.Azure |
+| .NET; NuGet | Microsoft.Azure.KeyVault |
+| .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |
+| .NET; NuGet | Microsoft.Rest.ClientRuntime |
+| .NET; NuGet | Microsoft.Rest.ClientRuntime.Azure |
 
 ### <a name="added-files-for-aspnet-framework"></a>Bestanden toegevoegd voor ASP.NET Framework
 

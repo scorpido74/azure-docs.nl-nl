@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3cd612200dc33fe37036146b00f52073403ecc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 929479f2816ef979edb26ba5aa00cf449c49b70a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852045"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73942173"
 ---
 # <a name="supported-account-types"></a>Ondersteunde accounttypen
 
@@ -41,7 +41,7 @@ In de Microsoft Azure open bare Cloud kunnen de meeste typen apps zich aanmelden
   - Met hun werk-of school-of persoonlijke Microsoft-account.
   - Met alleen persoonlijke Microsoft-account.
     > [!NOTE]
-    > Momenteel ondersteunt het micro soft-identiteits platform persoonlijke micro soft-accounts alleen door het registreren van een app voor **werk-of school-of micro soft-accounts**, en vervolgens het aanmelden in de code voor de toepassing beperken door een Azure AD-instantie op te geven. bij het bouwen van de toepassing, `https://login.onmicrosoftonline.com/consumers`zoals.
+    > Momenteel ondersteunt het micro soft-identiteits platform persoonlijke micro soft-accounts alleen door het registreren van een app voor **werk-of school-of micro soft-accounts**, en vervolgens het aanmelden in de code voor de toepassing beperken door een Azure AD-instantie op te geven bij het bouwen van de toepassing, zoals `https://login.microsoftonline.com/consumers`.
 
 - Als u een bedrijf naar consumenten schrijft, kunt u gebruikers ook aanmelden met hun sociale identiteit, met behulp van Azure AD B2C.
 

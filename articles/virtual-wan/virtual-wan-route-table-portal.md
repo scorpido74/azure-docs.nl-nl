@@ -1,87 +1,87 @@
 ---
-title: Een Azure virtuele WAN virtuele hub routetabel - Azure portal maken | Microsoft Docs
-description: Virtuele WAN virtuele hub routetabel sturen verkeer naar een virtueel netwerkapparaat met behulp van de portal.
+title: 'Virtueel WAN: route tabel voor virtuele hub maken naar NVA: Azure Portal'
+description: Route tabel virtuele WAN-hub voor het stuur verkeer naar een virtueel netwerk apparaat via de portal.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 2c8b3b4671fd14f9b10b8491861ae2c652f0188b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8f24b94226daffb769993c9f6659909fdff039b6
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60461651"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014989"
 ---
-# <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Maak een virtueel WAN hub routetabel voor NVA's: Azure Portal
+# <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Een route tabel voor virtuele WAN-hub maken voor Nva's: Azure Portal
 
-In dit artikel wordt beschreven hoe u verkeer van een hub naar een netwerk virtuele Appliance (NVA) sturen.
+In dit artikel wordt beschreven hoe u verkeer van een hub naar een virtueel netwerk apparaat (NVA) kunt sturen.
 
 ![Virtual WAN-diagram](./media/virtual-wan-route-table/vwanroute.png)
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Controleer of dat u voldoet aan de volgende criteria:
+Controleer of u aan de volgende criteria hebt voldaan:
 
-*  U hebt een Network Virtual Appliance (NVA). Een virtueel netwerkapparaat is een software van derden van uw keuze die doorgaans in een virtueel netwerk van Azure Marketplace is ingericht.
+*  U hebt een virtueel netwerk apparaat (NVA). Een virtueel netwerk apparaat is een software van derden van uw keuze die doorgaans wordt ingericht vanuit Azure Marketplace in een virtueel netwerk.
 
-    * Een privé IP-adres moet worden toegewezen aan de netwerkinterface van de NVA.
+    * Een privé-IP-adres moet worden toegewezen aan de NVA-netwerk interface.
 
-    * De NVA is niet geïmplementeerd in de virtuele hub. Worden moet geïmplementeerd in een apart VNet.
+    * De NVA is niet geïmplementeerd in de virtuele hub. Het moet worden geïmplementeerd in een afzonderlijk VNet.
 
-    *  De NVA-VNet kan een of meerdere virtuele netwerken zijn verbonden. In dit artikel verwijzen we naar de NVA-VNet als een 'indirecte knooppunt VNet'. Deze VNets kunnen worden verbonden met het VNet NVA met behulp van VNet-peering.
-*  U kunt VNets 2 hebt gemaakt. Ze worden gebruikt als knooppunt VNets.
+    *  Er zijn mogelijk een of meer virtuele netwerken verbonden aan het NVA VNet. In dit artikel verwijzen we naar het NVA VNet als een ' indirecte spoke-VNet '. Deze VNets kunnen worden verbonden met het NVA VNet met behulp van VNet-peering.
+*  U hebt 2 VNets gemaakt. Ze worden gebruikt als spoke VNets.
 
-    * Voor deze oefening worden de adresruimten van de VNet-knooppunt: VNet1: 10.0.2.0/24 en VNet2: 10.0.3.0/24. Als u informatie over het maken van een VNet, Zie [maken van een virtueel netwerk](../virtual-network/quick-create-portal.md).
+    * Voor deze oefening zijn de adres ruimten van de VNet-spoke: VNet1:10.0.2.0/24 en VNet2:10.0.3.0/24. Zie [een virtueel netwerk maken](../virtual-network/quick-create-portal.md)als u meer informatie nodig hebt over het maken van een VNet.
 
-    * Controleer of dat er zijn geen virtuele netwerkgateways in een van de VNets.
-    * Deze vnet's vereisen voor deze configuratie, niet een gatewaysubnet.
+    * Zorg ervoor dat er geen virtuele netwerk gateways aanwezig zijn in een van de VNets.
+    * Voor deze configuratie is voor deze VNets geen gateway-subnet vereist.
 
-## <a name="signin"></a>1. Aanmelden
+## <a name="signin"></a>1. aanmelden
 
 Open een browser, ga naar [Azure Portal](https://portal.azure.com) en meld u aan met uw Azure-account.
 
-## <a name="vwan"></a>2. Een virtueel WAN maken
+## <a name="vwan"></a>2. een virtueel WAN maken
 
-Maak een virtueel WAN. Voor deze oefening, kunt u de volgende waarden:
+Maak een virtueel WAN. Voor de doel einden van deze oefening kunt u de volgende waarden gebruiken:
 
 * **Virtuele WAN-naam:** myVirtualWAN
-* **Resourcegroep:** testRG
-* **Locatie:** US - west
+* **Resource groep:** testRG
+* **Locatie:** VS-West
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-## <a name="hub"></a>3. Een hub maken
+## <a name="hub"></a>3. een hub maken
 
-De hub maken. Voor deze oefening, kunt u de volgende waarden:
+Maak de hub. Voor de doel einden van deze oefening kunt u de volgende waarden gebruiken:
 
-* **Locatie:** US - west
+* **Locatie:** VS-West
 * **Naam:** westushub
-* **Privé-adresruimte van hub:** 10.0.1.0/24
+* **Privé-adres ruimte van hub:** 10.0.1.0/24
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
-## <a name="route"></a>4. Maken en toepassen van de routetabel van een hub
+## <a name="route"></a>4. een hub-route tabel maken en Toep assen
 
-De hub bijwerken met een routetabel hub. Voor deze oefening, kunt u de volgende waarden:
+De hub bijwerken met een route tabel van de hub. Voor de doel einden van deze oefening kunt u de volgende waarden gebruiken:
 
-* **Indirecte spoke VNet-adresruimten:** (VNet1 en VNet2) 10.0.2.0/24 en 10.0.3.0/24
-* **DMZ-NVA network interface privé IP-adres:** 10.0.4.5
+* **VNet-adres ruimten voor indirecte spaken:** (VNet1 en VNet2) 10.0.2.0/24 en 10.0.3.0/24
+* **Privé IP-adres van DMZ NVA Network Interface:** 10.0.4.5
 
 1. Navigeer naar uw virtuele WAN.
-2. Klik op de hub die u wilt maken van een routetabel.
-3. Klik op de **...** , en klik vervolgens op **bewerken virtuele hub**.
-4. Op de **bewerken virtuele hub** pagina, schuif naar beneden en selecteer het selectievakje **tabel gebruiken voor de routering van**.
-5. In de **als voorvoegsel voor bestemming** kolom de adresruimten toevoegen. In de **verzenden naar de volgende hop** kolom, het DMZ-NVA network interface particulier IP-adres toevoegen.
-6. Klik op **bevestigen** bijwerken van de hub-resource met de instellingen van de tabel.
+2. Klik op de hub waarvoor u een route tabel wilt maken.
+3. Klik op de **...** en klik vervolgens op **virtuele hub bewerken**.
+4. Schuif op de pagina **virtuele hub bewerken** omlaag en selecteer de selectie vakje **tabel gebruiken voor route ring**.
+5. Voeg in de kolom **als het voor voegsel** van de bestemming de adres ruimten toe. Voeg in de kolom **verzenden naar volgende hop** het privé IP-adres van de DMZ NVA-netwerk interface toe.
+6. Klik op **bevestigen** om de resource hub bij te werken met de instellingen van de route tabel.
 
-## <a name="connections"></a>5. De VNet-verbindingen maken
+## <a name="connections"></a>5. de VNet-verbindingen maken
 
-Maak een verbinding van elk indirecte knooppunt VNet (VNet1 en VNet2) naar de hub. Vervolgens maakt u een verbinding van de NVA-VNet naar de hub.
+Maak een verbinding van elke indirecte spoke VNet (VNet1 en VNet2) naar de hub. Maak vervolgens een verbinding van de NVA VNet naar de hub.
 
- Voor deze stap kunt u de volgende waarden:
+ Voor deze stap kunt u de volgende waarden gebruiken:
 
 | VNet-naam| Verbindingsnaam|
 | --- | --- |
@@ -89,7 +89,7 @@ Maak een verbinding van elk indirecte knooppunt VNet (VNet1 en VNet2) naar de hu
 | VNet2 | testconnection2 |
 | NVAVNet | testconnection3 |
 
-Herhaal de volgende procedure voor elke VNet waarmee u verbinding wilt maken.
+Herhaal de volgende procedure voor elk VNet dat u wilt verbinden.
 
 1. Klik op de pagina voor uw virtuele WAN op **Virtuele netwerkverbinding**.
 2. Klik op de pagina Virtuele netwerkverbinding op **+Verbinding toevoegen**.

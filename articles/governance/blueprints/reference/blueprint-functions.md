@@ -1,17 +1,14 @@
 ---
 title: Azure-blauw drukken-functies
 description: Hierin worden de functies beschreven die u kunt gebruiken met definities en toewijzingen van Azure-blauw drukken.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/15/2019
 ms.topic: reference
-ms.service: blueprints
-ms.openlocfilehash: a3021e79ddfb808db64896d79bb163d42236b295
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5f4948b55b8889094570574647b7a35ce08f5c12
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978387"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960314"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Functies voor gebruik met Azure-blauw drukken
 
@@ -24,7 +21,7 @@ De volgende functies worden ondersteund:
 - [parameters](#parameters)
 - [resourceGroup](#resourcegroup)
 - [resourceGroups](#resourcegroups)
-- [subscription](#subscription)
+- [abonnement](#subscription)
 
 ## <a name="artifacts"></a>artefacten
 
@@ -34,9 +31,9 @@ Retourneert een object met eigenschappen die zijn ingevuld met de uitvoer van de
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| artefactnaam |Ja |string |De naam van een blauw druk artefact. |
+| artefactnaam |Ja |tekenreeks |De naam van een blauw druk artefact. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -106,14 +103,14 @@ Een resource manager-sjabloon artefact met de ID _myTemplateArtifact_ die de vol
 
 Enkele voor beelden van het ophalen van gegevens uit het _myTemplateArtifact_ -voor beeld zijn:
 
-| Expressie | type | Value |
+| Expressie | Type | Waarde |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \[ "eerste", "tweede" \] |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Matrix | \[' First ', ' Second '\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Tekenreeks | instantie |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | Tekenreeks | ' mijn teken reeks waarde ' |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myProperty": "mijn waarde", "anotherProperty": True} |
 |`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Tekenreeks | ' mijn waarde ' |
-|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | Waar |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>concat
 
@@ -123,10 +120,10 @@ Combineert meerdere teken reeks waarden en retourneert de aaneengeschakelde teke
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| string1 |Ja |string |De eerste waarde voor samen voegen. |
-| aanvullende argumenten |Nee |string |Aanvullende waarden in sequentiële volg orde voor samen voeging |
+| string1 |Ja |tekenreeks |De eerste waarde voor samen voegen. |
+| aanvullende argumenten |Nee |tekenreeks |Aanvullende waarden in sequentiële volg orde voor samen voeging |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -148,9 +145,9 @@ Retourneert een waarde voor de para meter blauw druk. De opgegeven parameter naa
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ja |string |De naam van de para meter die moet worden geretourneerd. |
+| parameterName |Ja |tekenreeks |De naam van de para meter die moet worden geretourneerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -184,7 +181,7 @@ Definieer de para meter _principalIds_ in de definitie van de blauw druk:
 }
 ```
 
-Gebruik vervolgens _principalIds_ als het argument voor `parameters()` in een blauw druk-artefact:
+Gebruik vervolgens _principalIds_ als argument voor `parameters()` in een blauw druk-artefact:
 
 ```json
 {
@@ -240,7 +237,7 @@ Als u de locatie van de resource groep wilt gebruiken, stelt u in de blauw druk 
 }
 ```
 
-Gebruik vervolgens de functie `resourceGroup()` in de context van een blauw druk-artefact dat is gericht op een object voor de tijdelijke aanduiding van een resource groep. In dit voor beeld wordt het sjabloon artefact geïmplementeerd in de resource groep _NetworkingPlaceholder_ en worden para meter _resourceLocation_ dynamisch gevuld met de locatie van de resource groep _NetworkingPlaceholder_ naar de sjabloon. De locatie van de _NetworkingPlaceholder_ -resource groep is mogelijk statisch gedefinieerd voor de definitie van de blauw druk of dynamisch gedefinieerd tijdens de toewijzing. In beide gevallen wordt het sjabloon artefact gegeven met informatie als een para meter en gebruikt om de resources te implementeren op de juiste locatie.
+Gebruik vervolgens de functie `resourceGroup()` in de context van een blauw druk-artefact dat is gericht op een object voor de tijdelijke aanduiding van een resource groep. In dit voor beeld wordt het sjabloon artefact geïmplementeerd in de resource groep _NetworkingPlaceholder_ en worden para meter _resourceLocation_ dynamisch gevuld met de locatie van de resource groep _NetworkingPlaceholder_ voor de sjabloon. De locatie van de _NetworkingPlaceholder_ -resource groep is mogelijk statisch gedefinieerd voor de definitie van de blauw druk of dynamisch gedefinieerd tijdens de toewijzing. In beide gevallen wordt het sjabloon artefact gegeven met informatie als een para meter en gebruikt om de resources te implementeren op de juiste locatie.
 
 ```json
 {
@@ -269,9 +266,9 @@ Retourneert een object dat het opgegeven bron groeps artefact vertegenwoordigt. 
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| tijdelijke aanduiding |Ja |string |De naam van de tijdelijke aanduiding van het bron groeps artefact dat moet worden geretourneerd. |
+| tijdelijke aanduiding |Ja |tekenreeks |De naam van de tijdelijke aanduiding van het bron groeps artefact dat moet worden geretourneerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -302,7 +299,7 @@ Als u de locatie van de resource groep wilt gebruiken, stelt u in de blauw druk 
 }
 ```
 
-Gebruik vervolgens de functie `resourceGroups()` in de context van een blauw druk artefact om een verwijzing naar het object van de tijdelijke aanduiding voor de resource groep op te halen. In dit voor beeld wordt het sjabloon artefact geïmplementeerd buiten de resource groep _NetworkingPlaceholder_ en worden para meter _artifactLocation_ dynamisch gevuld met de locatie van de resource groep _NetworkingPlaceholder_ naar de sjabloon. De locatie van de _NetworkingPlaceholder_ -resource groep is mogelijk statisch gedefinieerd voor de definitie van de blauw druk of dynamisch gedefinieerd tijdens de toewijzing. In beide gevallen wordt het sjabloon artefact gegeven met informatie als een para meter en gebruikt om de resources te implementeren op de juiste locatie.
+Gebruik vervolgens de functie `resourceGroups()` van de context van een blauw druk artefact om een verwijzing naar het object voor de tijdelijke aanduiding van de resource groep op te halen. In dit voor beeld wordt het sjabloon artefact geïmplementeerd buiten de resource groep _NetworkingPlaceholder_ en worden para meter _artifactLocation_ dynamisch gevuld met de locatie van de resource groep _NetworkingPlaceholder_ voor de sjabloon. De locatie van de _NetworkingPlaceholder_ -resource groep is mogelijk statisch gedefinieerd voor de definitie van de blauw druk of dynamisch gedefinieerd tijdens de toewijzing. In beide gevallen wordt het sjabloon artefact gegeven met informatie als een para meter en gebruikt om de resources te implementeren op de juiste locatie.
 
 ```json
 {
@@ -323,7 +320,7 @@ Gebruik vervolgens de functie `resourceGroups()` in de context van een blauw dru
 }
 ```
 
-## <a name="subscription"></a>subscription
+## <a name="subscription"></a>abonnement
 
 `subscription()`
 

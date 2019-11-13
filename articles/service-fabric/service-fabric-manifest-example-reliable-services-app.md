@@ -1,5 +1,5 @@
 ---
-title: Voor beelden van Azure Service Fabric reliable Services-toepassings manifesten | Microsoft Docs
+title: Voor beelden van Azure Service Fabric reliable Services-toepassings manifest
 description: Meer informatie over het configureren van de toepassings-en service manifest instellingen voor een betrouw bare Services Service Fabric toepassing.
 services: service-fabric
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: a5678b4c4c0f7a9d8d3f3cf6e838580de2059a8f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 9cc79610b6dc9f9d2869a41e0b483168087368cc
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035641"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013228"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Voorbeelden van toepassings- en servicemanifesten voor betrouwbare services
 Hier volgen enkele voor beelden van de toepassings-en service manifesten voor een Service Fabric toepassing met een ASP.NET Core web-front-end en een stateful back-end. Het doel van deze voor beelden is om te laten zien welke instellingen beschikbaar zijn en hoe u deze kunt gebruiken. Deze toepassings-en service manifesten zijn gebaseerd op de [service Fabric .net Quick](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) start-manifesten.
@@ -27,7 +27,7 @@ De volgende functies worden weer gegeven:
 
 |Manifest|Functies|
 |---|---|
-|[Toepassingsmanifest](#application-manifest)| [resource governance](service-fabric-resource-governance.md), [een service uitvoeren als een lokaal beheerders account](service-fabric-application-runas-security.md), [een standaard beleid Toep assen op alle service code pakketten](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages), [gebruikers-en groeps-principals maken](service-fabric-application-runas-security.md), een gegevens pakket delen tussen service-instanties, overschrijf [service eind punten](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
+|[Toepassingsmanifest](#application-manifest)| [resource](service-fabric-resource-governance.md)beheer, [een service uitvoeren als een lokaal beheerders account](service-fabric-application-runas-security.md), [een standaard beleid Toep assen op alle service code pakketten](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages), [gebruikers-en groeps-principals maken](service-fabric-application-runas-security.md), een gegevens pakket delen tussen service-instanties, [service-eind punten overschrijven](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
 |FrontEndService-service manifest| [Een script uitvoeren bij het starten van de service](service-fabric-run-script-at-service-startup.md), [een HTTPS-eind punt definiëren](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
 |BackEndService-service manifest| [Een configuratie pakket declareren](service-fabric-application-and-service-manifests.md), [een gegevens pakket declareren](service-fabric-application-and-service-manifests.md), [een eind punt configureren](service-fabric-service-manifest-resources.md)| 
 
@@ -305,7 +305,7 @@ Het eind punt (en) dat moet worden overschreven. Zie het [element endpoints](ser
 Het eind punt dat is gedefinieerd in het service manifest om te overschrijven. Zie voor meer informatie [eindpunt element](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
 
 ### <a name="policies-element"></a>Element beleid
-Hierin worden de beleids regels (End-Point binding, Package sharing, run-as en Security Access) beschreven die moeten worden toegepast op het geïmporteerde service manifest. Zie policies (Engelstalig [](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement) ) voor meer informatie.
+Hierin worden de beleids regels (End-Point binding, Package sharing, run-as en Security Access) beschreven die moeten worden toegepast op het geïmporteerde service manifest. Zie [Policies](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement) (Engelstalig) voor meer informatie.
 
 ### <a name="servicepackageresourcegovernancepolicy-element"></a>ServicePackageResourceGovernancePolicy-element
 Definieert het bron beheer beleid dat wordt toegepast op het niveau van het hele service pakket. Zie het [element ServicePackageResourceGovernancePolicy](service-fabric-service-model-schema-elements.md#ServicePackageResourceGovernancePolicyElementServicePackageResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInServicePackageTypecomplexType) voor meer informatie.
@@ -338,7 +338,7 @@ Hiermee definieert u een stateless service. Zie het [element StatelessService](s
 Hierin worden de beveiligings-principals (gebruikers, groepen) beschreven die vereist zijn voor deze toepassing om services uit te voeren en bronnen te beveiligen. Er wordt verwezen naar principals in de secties van het beleid. Zie het [element principals](service-fabric-service-model-schema-elements.md#PrincipalsElementSecurityPrincipalsTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInEnvironmentTypecomplexType) voor meer informatie.
 
 ### <a name="groups-element"></a>Element groepen
-Declareert een set groepen als beveiligings-principals waarnaar kan worden verwezen in beleid. Groepen zijn handig als er meerdere gebruikers zijn voor verschillende service toegangs punten en er bepaalde algemene bevoegdheden moeten zijn die beschikbaar zijn op het groeps niveau. Zie voor meer informatie groups- [element](service-fabric-service-model-schema-elements.md#GroupsElementanonymouscomplexTypeComplexTypeDefinedInSecurityPrincipalsTypecomplexType)
+Declareert een set groepen als beveiligings-principals waarnaar kan worden verwezen in beleid. Groepen zijn handig als er meerdere gebruikers zijn voor verschillende service toegangs punten en er bepaalde algemene bevoegdheden moeten zijn die beschikbaar zijn op het groeps niveau. Zie voor meer informatie [Groups-element](service-fabric-service-model-schema-elements.md#GroupsElementanonymouscomplexTypeComplexTypeDefinedInSecurityPrincipalsTypecomplexType)
 
 ### <a name="group-element"></a>Groeps element
 Declareert een groep als een beveiligingsprincipal, waarnaar in het beleid kan worden verwezen. Zie voor meer informatie [groeps element](service-fabric-service-model-schema-elements.md#GroupElementanonymouscomplexTypeComplexTypeDefinedInGroupselement)
@@ -365,7 +365,7 @@ De systeem groep waaraan de gebruiker moet worden toegevoegd.  De systeem groep 
 De groep waaraan de gebruiker moet worden toegevoegd.  De groep moet worden gedefinieerd in de sectie groepen. Zie voor meer informatie [groeps element](service-fabric-service-model-schema-elements.md#GroupElementanonymouscomplexTypeComplexTypeDefinedInMemberOfelement)
 
 ### <a name="policies-element"></a>Element beleid
-Hierin wordt het beleid beschreven (logboek verzameling, standaard uitvoeren als, status en beveiliging) die op toepassings niveau moeten worden toegepast. Zie policies (Engelstalig [](service-fabric-service-model-schema-elements.md#PoliciesElementApplicationPoliciesTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInEnvironmentTypecomplexType) ) voor meer informatie.
+Hierin wordt het beleid beschreven (logboek verzameling, standaard uitvoeren als, status en beveiliging) die op toepassings niveau moeten worden toegepast. Zie [Policies](service-fabric-service-model-schema-elements.md#PoliciesElementApplicationPoliciesTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInEnvironmentTypecomplexType) (Engelstalig) voor meer informatie.
 
 ### <a name="defaultrunaspolicy-element"></a>DefaultRunAsPolicy-element
 Geef een standaard gebruikers account op voor alle service code pakketten waarvoor geen specifieke RunAsPolicy is gedefinieerd in de sectie ServiceManifestImport. Zie het [element DefaultRunAsPolicy](service-fabric-service-model-schema-elements.md#DefaultRunAsPolicyElementanonymouscomplexTypeComplexTypeDefinedInApplicationPoliciesTypecomplexType) voor meer informatie.
@@ -399,7 +399,7 @@ De naam van het uitvoer bare bestand.  Bijvoorbeeld ' MySetup. bat ' of ' MyServ
  Zie [argumenten element](service-fabric-service-model-schema-elements.md#ArgumentsElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType) voor meer informatie.
 
 ### <a name="workingfolder-element"></a>WorkingFolder-element
-De werkmap voor het proces in het code pakket op het cluster knooppunt waar de toepassing wordt geïmplementeerd. U kunt drie waarden opgeven: Werk (de standaard instelling), code package of code base. Code base Hiermee geeft u op dat de werkmap is ingesteld op de map waarin de EXE is gedefinieerd in het code pakket. Code package stelt de werkmap in als de hoofdmap van het code pakket, ongeacht waar de EXE is gedefinieerd in de map van het code pakket. Met werk wordt de werkmap ingesteld op een unieke map die op het knoop punt is gemaakt.  Deze map is hetzelfde voor het hele toepassings exemplaar. De werkmap van alle processen in de toepassing wordt standaard ingesteld op de werkmap van de toepassing. Dit is de plaats waar de processen de gegevens kunnen schrijven. Het schrijven van gegevens in het code pakket of de code basis wordt niet aanbevolen, omdat deze mappen kunnen worden gedeeld tussen verschillende toepassings exemplaren en kunnen worden verwijderd. Zie het [element WorkingFolder](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType) voor meer informatie.
+De werkmap voor het proces in het code pakket op het cluster knooppunt waar de toepassing wordt geïmplementeerd. U kunt drie waarden opgeven: werk (de standaard instelling), code package of code base. Code base Hiermee geeft u op dat de werkmap is ingesteld op de map waarin de EXE is gedefinieerd in het code pakket. Code package stelt de werkmap in als de hoofdmap van het code pakket, ongeacht waar de EXE is gedefinieerd in de map van het code pakket. Met werk wordt de werkmap ingesteld op een unieke map die op het knoop punt is gemaakt.  Deze map is hetzelfde voor het hele toepassings exemplaar. De werkmap van alle processen in de toepassing wordt standaard ingesteld op de werkmap van de toepassing. Dit is de plaats waar de processen de gegevens kunnen schrijven. Het schrijven van gegevens in het code pakket of de code basis wordt niet aanbevolen, omdat deze mappen kunnen worden gedeeld tussen verschillende toepassings exemplaren en kunnen worden verwijderd. Zie het [element WorkingFolder](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType) voor meer informatie.
 
 ### <a name="consoleredirection-element"></a>ConsoleRedirection-element
 
@@ -449,7 +449,7 @@ Het uitvoer bare bestand dat is opgegeven met entry point is doorgaans de langlo
 De naam van het uitvoer bare bestand.  Bijvoorbeeld ' MySetup. bat ' of ' MyServiceHost. exe '. Zie voor meer informatie [programma-element](service-fabric-service-model-schema-elements.md#ProgramElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="workingfolder-element"></a>WorkingFolder-element
-De werkmap voor het proces in het code pakket op het cluster knooppunt waar de toepassing wordt geïmplementeerd. U kunt drie waarden opgeven: Werk (de standaard instelling), code package of code base. Code base Hiermee geeft u op dat de werkmap is ingesteld op de map waarin de EXE is gedefinieerd in het code pakket. Code package stelt de werkmap in als de hoofdmap van het code pakket, ongeacht waar de EXE is gedefinieerd in de map van het code pakket. Met werk wordt de werkmap ingesteld op een unieke map die op het knoop punt is gemaakt.  Deze map is hetzelfde voor het hele toepassings exemplaar. De werkmap van alle processen in de toepassing wordt standaard ingesteld op de werkmap van de toepassing. Dit is de plaats waar de processen de gegevens kunnen schrijven. Het schrijven van gegevens in het code pakket of de code basis wordt niet aanbevolen, omdat deze mappen kunnen worden gedeeld tussen verschillende toepassings exemplaren en kunnen worden verwijderd. Zie het [element WorkingFolder](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType) voor meer informatie.
+De werkmap voor het proces in het code pakket op het cluster knooppunt waar de toepassing wordt geïmplementeerd. U kunt drie waarden opgeven: werk (de standaard instelling), code package of code base. Code base Hiermee geeft u op dat de werkmap is ingesteld op de map waarin de EXE is gedefinieerd in het code pakket. Code package stelt de werkmap in als de hoofdmap van het code pakket, ongeacht waar de EXE is gedefinieerd in de map van het code pakket. Met werk wordt de werkmap ingesteld op een unieke map die op het knoop punt is gemaakt.  Deze map is hetzelfde voor het hele toepassings exemplaar. De werkmap van alle processen in de toepassing wordt standaard ingesteld op de werkmap van de toepassing. Dit is de plaats waar de processen de gegevens kunnen schrijven. Het schrijven van gegevens in het code pakket of de code basis wordt niet aanbevolen, omdat deze mappen kunnen worden gedeeld tussen verschillende toepassings exemplaren en kunnen worden verwijderd. Zie het [element WorkingFolder](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType) voor meer informatie.
 
 ### <a name="configpackage-element"></a>ConfigPackage-element
 Declareert een map, met de naam van het kenmerk name, onder PackageRoot die een Settings. XML-bestand bevat. Dit bestand bevat secties van door de gebruiker gedefinieerde combi natie van sleutel waarden die het proces tijdens runtime kan lezen. Als er tijdens een upgrade alleen de ConfigPackage-versie is gewijzigd, wordt het proces dat wordt uitgevoerd, niet opnieuw gestart. In plaats daarvan wordt met een call back het proces gewaarschuwd dat de configuratie-instellingen zijn gewijzigd zodat ze dynamisch opnieuw kunnen worden geladen. Zie het [element ConfigPackage](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement) voor meer informatie.

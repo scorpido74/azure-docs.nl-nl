@@ -1,19 +1,19 @@
 ---
-title: On-premises VMware-servers voorbereiden op herstel van VMware-VM’s naar Azure na een noodgeval| Microsoft Docs
+title: Voorbereiden op een nood herstel van de VMware-VM met Azure Site Recovery
 description: Leer hoe u on-premises VMware-servers kunt voorbereiden op herstel naar Azure na een noodgeval met behulp van de Azure Site Recovery-service.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0f62ee1a79126f456b993c7caf2de3741637f710
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: c82f8130340dfc3848159a6f88db0a304a3ab149
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147808"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953751"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>On-premises VMware-servers voorbereiden op herstel naar Azure na een noodgeval
 
@@ -68,8 +68,8 @@ U bereidt het account als volgt voor:
 
 Bereid een domein of lokaal account met machtigingen voor om op de VM te installeren.
 
-- **Virtuele Windows-machines**: Als u op Windows-VM’s wilt installeren en u geen domeinaccount gebruikt, moet u toegangsbeheer voor externe gebruikers uitschakelen op de lokale computer. U doet dit door in het register > **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** de DWORD-vermelding **LocalAccountTokenFilterPolicy** met een waarde van 1 toe te voegen.
-- **Virtuele Linux-machines**: Voor installatie op Linux-VM’s bereidt u een superuser voor op de bron-Linux-server.
+- **Windows-VM’s**: als u wilt installeren op Windows-VM's en geen domeinaccount gebruikt, moet u toegangsbeheer voor externe gebruikers uitschakelen op de lokale computer. U doet dit door in het register > **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** de DWORD-vermelding **LocalAccountTokenFilterPolicy** met een waarde van 1 toe te voegen.
+- **Linux-VM's**: voor installatie op Linux-VM’s bereidt u een superuser voor op de Linux-server van de broncomputer.
 
 
 ## <a name="check-vmware-requirements"></a>Vereisten voor VMware controleren
@@ -116,5 +116,5 @@ Als u van plan bent om terug te gaan naar uw on-premises site, zijn er een aanta
 
 Herstel na nood gevallen instellen. Als u meerdere virtuele machines repliceert, plan capaciteit.
 > [!div class="nextstepaction"]
-> [Herstel na nood geval instellen op Azure voor VMware-vm's](vmware-azure-tutorial.md)
-> [capaciteits planning uitvoeren](site-recovery-deployment-planner.md).
+> [Stel herstel na nood geval in op Azure voor VMware-vm's](vmware-azure-tutorial.md)
+> [capaciteits planning uit te voeren](site-recovery-deployment-planner.md).

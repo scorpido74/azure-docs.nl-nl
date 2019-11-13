@@ -1,23 +1,22 @@
 ---
-title: Architectuur voor nood herstel van VMware/fysieke servers naar een secundaire site met Azure Site Recovery | Microsoft Docs
+title: Architectuur-nood herstel op basis van VMware/fysiek naar een secundaire site met Azure Site Recovery
 description: Dit artikel bevat een overzicht van de onderdelen en architectuur die worden gebruikt tijdens het herstel na nood gevallen van on-premises virtuele VMware-machines of fysieke Windows/Linux-servers naar een secundaire VMware-site met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 0c00e26e6c12835db96c192400c3fe8652534dd4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b0a46dcf8fe298494a53713f122b1bda8ce07e5e
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972115"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954580"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architectuur voor de replicatie van VMware/fysieke servers naar een secundaire on-premises site
 
-In dit artikel worden de architectuur en processen beschreven die worden gebruikt bij het instellen van herstel na nood gevallen, failover en het herstel van on-premises virtuele VMware-machines (Vm's) of fysieke Windows/Linux-servers naar een secundaire VMware-site met behulp van [Azure site Recovery ](site-recovery-overview.md).
+In dit artikel worden de architectuur en processen beschreven die worden gebruikt bij het instellen van herstel na nood gevallen, failover en herstel van on-premises virtuele VMware-machines (Vm's) of fysieke Windows/Linux-servers naar een secundaire VMware-site met behulp van [Azure site Recovery](site-recovery-overview.md).
 
 
 ## <a name="architectural-components"></a>Architectuuronderdelen
@@ -38,7 +37,7 @@ In dit artikel worden de architectuur en processen beschreven die worden gebruik
 2. Na de initiële replicatie verzendt de agent op elke machine deltareplicatiewijzigingen naar de processerver.
 3. De processerver optimaliseert de gegevens en brengt deze over naar de hoofddoelserver op de secundaire site. De configuratieserver beheert het replicatieproces.
 
-**Afbeelding 6: Replicatie van VMware naar VMware**
+**Afbeelding 6: replicatie van VMware naar VMware**
 
 ![VMware naar VMware](./media/site-recovery-components/vmware-to-vmware.png)
 

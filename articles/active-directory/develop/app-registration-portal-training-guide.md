@@ -1,6 +1,7 @@
 ---
-title: Trainings gids voor de registratie van portal-apps voor toepassings registratie-micro soft Identity platform | Azure
-description: App-registraties in de Azure Portal voor gebruikers die bekend zijn met de portal voor toepassings registratie
+title: Er wordt overgeschakeld van de portal voor toepassings registratie naar de nieuwe App-registraties ervaring in de Azure Portal
+titleSuffix: Microsoft identity platform
+description: Een inleiding tot de nieuwe app-registratie ervaring in de Azure Portal
 services: active-directory
 documentationcenter: ''
 author: archieag
@@ -17,14 +18,14 @@ ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1974616c0331203a803e4f13a19297940fb5d42e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 0e9c09ce2d997c58e2725c411fff0b87a0f5071b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905470"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013032"
 ---
-# <a name="training-guide-using-app-registrations-in-the-azure-portal-instead-of-application-registration-portal"></a>Trainings gids: App-registraties gebruiken in de Azure Portal in plaats van de portal voor toepassings registratie
+# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Er wordt overgeschakeld van de portal voor toepassings registratie naar de nieuwe App-registraties ervaring in de Azure Portal
 
 Er zijn veel verbeteringen aangebracht in de nieuwe [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring in de Azure Portal. Als u bekend bent met de apps.dev.microsoft.com-ervaring (Application Registration Portal) voor het registreren of beheren van geconvergeerde toepassingen, krijgt u in deze trainings gids de mogelijkheid om aan de slag te gaan met de nieuwe ervaring.
 
@@ -83,7 +84,7 @@ De nieuwe ervaring in het Azure Portal vertegenwoordigt deze functies in afzonde
 
 In de nieuwe ervaring zijn de namen van de **toepassings geheimen** gewijzigd in **Certificaten & geheimen**. Daarnaast worden **open bare sleutels** aangeduid als **certificaten** en **wacht woorden** worden aangeduid als **client geheimen**. We hebben ervoor gekozen deze functionaliteit niet meer in de nieuwe ervaring te plaatsen, dus u kunt geen nieuw sleutel paar meer genereren.
 
-## <a name="platformsauthentication---reply-urlsredirect-uris"></a>Platformen/authenticatie-antwoord-Url's/omleidings-Uri's
+## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformen/authenticatie: antwoord-Url's/omleidings-Uri's
 In de oude ervaring bevat een app platformen voor web, native en Web API voor het configureren van omleidings-Url's, afmeldings-URL en impliciete stroom.
 
 In de nieuwe ervaring zijn antwoord-Url's te vinden in de sectie app-\'s-verificatie. Daarnaast worden ze omleidings-Uri's genoemd en is de indeling voor omleidings-Uri's gewijzigd. Ze moeten worden gekoppeld aan een app-type (Web of open bare client-mobiel en desktop). [Meer informatie](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
@@ -111,7 +112,7 @@ In de nieuwe ervaring kunt u met manifest pagina de kenmerken van de app bewerke
 ## <a name="new-ui"></a>Nieuwe gebruikers interface
 Er is een nieuwe gebruikers interface voor eigenschappen die voorheen alleen kunnen worden ingesteld met behulp van de manifest editor of de API, of die niet bestaat.
 
--   Impliciete toekennings stroom (oauth2AllowImplicitFlow) vindt u op de verificatie pagina. In tegens telling tot de oude ervaring kunt u toegangs tokens of id-tokens inschakelen, of beide.
+-   Impliciete toekennings stroom (oauth2AllowImplicitFlow) vindt u op de verificatie pagina. In tegens telling tot de oude ervaring kunt u toegangs tokens of ID-tokens inschakelen, of beide.
 
 -   Bereiken die zijn gedefinieerd door deze API (oauth2Permissions) en geautoriseerde client toepassingen (preAuthorizedApplications) kunnen worden geconfigureerd via de pagina een API beschikbaar maken. Zie [deze Quick](quickstart-configure-app-expose-web-apis.md)start voor meer informatie over het configureren van een app om een web-API te zijn en machtigingen/bereiken beschikbaar te maken.
 

@@ -3,7 +3,7 @@ title: Azure Active Directory activiteiten Logboeken in Azure Monitor | Microsof
 description: Inleiding tot Azure Active Directory activiteiten Logboeken in Azure Monitor
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/22/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f62ad020d2ec3b5ab712f50dca2dddd3b981f098
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 46e29fff3308f35b16dbff2f9cead82abc222a5c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656471"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014506"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-activiteiten Logboeken in Azure Monitor
 
@@ -41,8 +41,8 @@ U kunt de activiteiten logboeken van Azure Active Directory (Azure AD) naar vers
 
 U kunt Azure AD-controle logboeken en aanmeldings logboeken door sturen naar uw Azure Storage-account, Event Hub, Azure Monitor Logboeken of aangepaste oplossing met behulp van deze functie. 
 
-* **Audit logboeken**: Het [rapport activiteiten van controle logboeken](concept-audit-logs.md) geeft u toegang tot de geschiedenis van elke taak die wordt uitgevoerd in uw Tenant.
-* **Aanmeld logboeken**: Met het [rapport aanmeldings activiteit](concept-sign-ins.md)kunt u bepalen wie de taken heeft uitgevoerd die worden gerapporteerd in de audit Logboeken.
+* **Auditlogboeken**: het [activiteitenrapport voor auditlogboeken](concept-audit-logs.md) biedt u toegang tot de geschiedenis van elke taak die in uw tenant is uitgevoerd.
+* **Aanmeldingslogboeken**: met het [activiteitenrapport voor aanmeldingen](concept-sign-ins.md) kunt u bepalen wie de taken heeft uitgevoerd die in het auditlogboek zijn gerapporteerd.
 
 > [!NOTE]
 > Auditlogboeken en aanmeldingslogboeken met betrekking tot B2C worden momenteel niet ondersteund.
@@ -78,10 +78,10 @@ De volgende tabel bevat een kostenraming, afhankelijk van de grootte van de tena
 
 | Logboekcategorie | Aantal gebruikers | Gebeurtenissen per dag | Gegevensvolume per maand (geschat) | Kosten per maand (geschat) | Kosten per jaar (geschat) |
 |--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
-| Controleren | 100,000 | 1,5&nbsp;miljoen | 90 GB | $ 1,93 | $ 23,12 |
-| Controleren | 1000 | 15,000 | 900 MB | $ 0,02 | $ 0,24 |
+| Controleren | 100.000 | 1,5&nbsp;miljoen | 90 GB | $ 1,93 | $ 23,12 |
+| Controleren | 1000 | 15.000 | 900 MB | $ 0,02 | $ 0,24 |
 | Aanmeldingen | 1000 | 34.800 | 4 GB | $ 0,13 | $ 1,56 |
-| Aanmeldingen | 100,000 | 15&nbsp;miljoen | 1,7 TB | $ 35,41 | $ 424,92 |
+| Aanmeldingen | 100.000 | 15&nbsp;miljoen | 1,7 TB | $ 35,41 | $ 424,92 |
  
 
 
@@ -102,7 +102,7 @@ De volgende tabel bevat een raming van de maandelijkse kosten voor een eenvoudig
 
 | Logboekcategorie | Aantal gebruikers | Gebeurtenissen per seconde | Gebeurtenissen met een interval van vijf minuten | Volume per interval | Berichten per interval | Berichten per maand | Kosten per maand (geschat) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
-| Controleren | 100,000 | 18 | 5400 | 10,8 MB | 43 | 371.520 | $ 10,83 |
+| Controleren | 100.000 | 18 | 5400 | 10,8 MB | 43 | 371.520 | $ 10,83 |
 | Controleren | 1000 | 0.1 | 52 | 104 kB | 1 | 8640 | $ 10,80 |
 | Aanmeldingen | 1000 | 178 | 53.400 | 106,8&nbsp;MB | 418 | 3\.611.520 | $ 11,06 |  
 
@@ -112,9 +112,9 @@ De volgende tabel bevat een raming van de maandelijkse kosten voor een eenvoudig
 
 | Logboekcategorie       | Aantal gebruikers | Gebeurtenissen per dag | Gebeurtenissen per maand (30 dagen) | Kosten per maand in USD (EST.) |
 | :--                | ---             | ---            | ---                        | --:                          |
-| Controle en aanmeldingen | 100,000         | 16.500.000     | 495.000.000                |  $1093,00                       |
-| Controleren              | 100,000         | 1\.500.000      | 45,000,000                 |  $246,66                     |
-| Aanmeldingen           | 100,000         | 15,000,000     | 450.000.000                |  $847,28                     |
+| Controle en aanmeldingen | 100.000         | 16.500.000     | 495.000.000                |  $1093,00                       |
+| Controleren              | 100.000         | 1\.500.000      | 45,000,000                 |  $246,66                     |
+| Aanmeldingen           | 100.000         | 15,000,000     | 450.000.000                |  $847,28                     |
 
 
 
@@ -131,43 +131,43 @@ Als u de kosten voor het beheren van de Azure Monitor logboeken wilt bekijken, r
 
 Deze sectie bevat antwoorden op veelgestelde vragen en bekende problemen met betrekking tot Azure AD-logboeken in Azure Monitor.
 
-**V: Welke logboeken zijn opgenomen?**
+**V: welke logboeken zijn opgenomen?**
 
-**A**: De logboeken en audit logboeken van de aanmeldings activiteiten zijn beide beschikbaar voor route ring via deze functie, hoewel B2C controle gebeurtenissen momenteel niet zijn opgenomen. Raadpleeg het [auditlogboekschema](reference-azure-monitor-audit-log-schema.md) en het [aanmeldingslogboekschema](reference-azure-monitor-sign-ins-log-schema.md) om uit te vinden welke typen logboeken en welke op functie gebaseerde logboeken momenteel worden ondersteund. 
-
----
-
-**V: Hoe snel na een actie worden de bijbehorende logboeken weer gegeven in mijn Event Hub?**
-
-**A**: De logboeken moeten binnen twee tot vijf minuten na het uitvoeren van de actie in uw Event Hub worden weer gegeven. Raadpleeg [Wat is Azure Event Hubs?](../../event-hubs/event-hubs-about.md) voor meer informatie over Event Hubs.
+**A:** zowel de aanmeldings- als de auditlogboeken zijn beschikbaar om via deze functie doorgestuurd te worden. Gebeurtenissen met betrekking tot B2C worden momenteel niet ondersteund. Raadpleeg het [auditlogboekschema](reference-azure-monitor-audit-log-schema.md) en het [aanmeldingslogboekschema](reference-azure-monitor-sign-ins-log-schema.md) om uit te vinden welke typen logboeken en welke op functie gebaseerde logboeken momenteel worden ondersteund. 
 
 ---
 
-**V: Hoe snel na een actie worden de bijbehorende logboeken weer gegeven in mijn opslag account?**
+**V: hoe snel na een actie de bijbehorende logboeken worden weer gegeven in mijn Event Hub?**
 
-**A**: Voor Azure Storage-accounts is de latentie een periode van 5 tot 15 minuten nadat de actie is uitgevoerd.
-
----
-
-**V: Wat gebeurt er als een beheerder de Bewaar periode van een diagnostische instelling wijzigt?**
-
-**A**: Het nieuwe Bewaar beleid wordt toegepast op Logboeken die na de wijziging zijn verzameld. Logboeken die worden verzameld voordat het beleid wordt gewijzigd, worden niet beïnvloed.
+**A:** : de logboeken zouden binnen twee tot vijf minuten nadat de actie is uitgevoerd zichtbaar moeten zijn in uw Event Hub. Raadpleeg [Wat is Azure Event Hubs?](../../event-hubs/event-hubs-about.md) voor meer informatie over Event Hubs.
 
 ---
 
-**V: Wat zijn de kosten voor het opslaan van mijn gegevens?**
+**V: hoe snel na een actie de bijbehorende logboeken worden weer gegeven in mijn opslag account?**
 
-**A**: De opslag kosten zijn afhankelijk van de grootte van uw logboeken en de retentie periode die u kiest. Raadpleeg de sectie [Opslaggrootte voor activiteitenlogboeken](#storage-size-for-activity-logs) voor een lijst van de geschatte kosten voor tenants. De kosten zijn afhankelijk van het aantal logboeken dat wordt gegenereerd.
-
----
-
-**V: Hoeveel kost het om mijn gegevens te streamen naar een Event Hub?**
-
-**A**: De kosten voor streaming zijn afhankelijk van het aantal berichten dat u per minuut ontvangt. In dit artikel wordt beschreven hoe de kosten worden berekend en vindt u een lijst met geschatte kosten, die zijn gebaseerd op het aantal berichten. 
+**A:** voor Azure-opslagaccounts ligt de latentie tussen de 5 en 15 minuten na het uitvoeren van een actie.
 
 ---
 
-**V: Hoe kan ik Azure AD-activiteiten logboeken integreren met mijn SIEM-systeem?**
+**V: wat gebeurt er als een beheerder de Bewaar periode van een diagnostische instelling wijzigt?**
+
+**A**: het nieuwe Bewaar beleid wordt toegepast op Logboeken die na de wijziging zijn verzameld. Logboeken die worden verzameld voordat het beleid wordt gewijzigd, worden niet beïnvloed.
+
+---
+
+**V: hoeveel kost het om mijn gegevens op te slaan?**
+
+**A:** de opslagkosten zijn afhankelijk van de grootte van uw logboeken en de door u gekozen bewaarperiode. Raadpleeg de sectie [Opslaggrootte voor activiteitenlogboeken](#storage-size-for-activity-logs) voor een lijst van de geschatte kosten voor tenants. De kosten zijn afhankelijk van het aantal logboeken dat wordt gegenereerd.
+
+---
+
+**V: hoeveel kost het om mijn gegevens naar een Event Hub te streamen?**
+
+**A:** de kosten voor het streamen zijn afhankelijk van het aantal berichten dat u per minuut ontvangt. In dit artikel wordt beschreven hoe de kosten worden berekend en vindt u een lijst met geschatte kosten, die zijn gebaseerd op het aantal berichten. 
+
+---
+
+**V: Hoe kan ik de Azure Active Directory-activiteitenlogboeken integreren in mijn SIEM-systeem?**
 
 **A**: U kunt dit op twee manieren doen:
 
@@ -177,27 +177,27 @@ Deze sectie bevat antwoorden op veelgestelde vragen en bekende problemen met bet
 
 ---
 
-**V: Welke SIEM-hulpprogram ma's worden momenteel ondersteund?** 
+**V: welke SIEM-hulpprogramma's worden momenteel ondersteund?** 
 
-**A**: Momenteel wordt Azure Monitor ondersteund door de logica [Splunk](tutorial-integrate-activity-logs-with-splunk.md), QRadar en [Sumo](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory). Raadpleeg [Azure-bewakingsgegevens streamen naar een Event Hub voor gebruik door een extern hulpprogramma](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md) voor meer informatie over hoe de connectors werken.
-
----
-
-**V: Hoe kan ik Azure AD-activiteiten logboeken integreren met mijn Splunk-exemplaar?**
-
-**A**: Stuur eerst [de Azure AD-activiteiten logboeken naar een event hub](quickstart-azure-monitor-stream-logs-to-event-hub.md)en volg de stappen om [activiteiten logboeken te integreren met Splunk](tutorial-integrate-activity-logs-with-splunk.md).
+**A**: Azure Monitor wordt momenteel ondersteund door [Splunk](tutorial-integrate-activity-logs-with-splunk.md), QRadar en [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory). Raadpleeg [Azure-bewakingsgegevens streamen naar een Event Hub voor gebruik door een extern hulpprogramma](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md) voor meer informatie over hoe de connectors werken.
 
 ---
 
-**V: Hoe kan ik Azure AD-activiteiten logboeken integreren met Sumo Logic?** 
+**V: Hoe kan ik de Azure Active Directory-activiteitenlogboeken integreren in mijn Splunk-exemplaar?**
 
-**A**: U moet eerst [de Azure AD-activiteiten logboeken naar een event hub routeren](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory)en vervolgens de stappen volgen om [de Azure AD-toepassing te installeren en de Dash boards in SumoLogic te bekijken](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards).
+**A**: [Routeer eerst de Azure Active Directory-activiteitenlogboeken naar een event hub](quickstart-azure-monitor-stream-logs-to-event-hub.md) en volg daarna de stappen in [Activiteitenlogboeken integreren met Splunk](tutorial-integrate-activity-logs-with-splunk.md).
 
 ---
 
-**V: Kan ik toegang krijgen tot de gegevens van een Event Hub zonder een extern SIEM-hulp programma te gebruiken?** 
+**V: Hoe kan ik de Azure Active Directory-activiteitenlogboeken integreren met Sumo Logic?** 
 
-**A**: Ja. U kunt de [Event Hubs-API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) gebruiken om de logboeken vanuit uw eigen aangepaste toepassing te bekijken. 
+**A**: [Routeer eerst de Azure Active Directory-activiteitenlogboeken naar een event hub](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory) en volg daarna de stappen in [De Azure Active Directory-toepassing installeren en de dashboards bekijken in SumoLogic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards).
+
+---
+
+**V: heb ik toegang tot de gegevens van Event Hub zonder een extern SIEM-hulpprogramma?** 
+
+**A:** ja. U kunt de [Event Hubs-API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) gebruiken om de logboeken vanuit uw eigen aangepaste toepassing te bekijken. 
 
 ---
 

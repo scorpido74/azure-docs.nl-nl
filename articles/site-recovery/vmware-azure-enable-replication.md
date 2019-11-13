@@ -1,137 +1,137 @@
 ---
-title: Schakel replicatie van VMware-VM's voor herstel na noodgevallen naar Azure met Azure Site Recovery | Microsoft-Docs
-description: In dit artikel wordt beschreven hoe u virtuele VMware-machines inschakelen voor replicatie naar Azure voor herstel na noodgevallen met behulp van Azure Site Recovery.
+title: Virtuele VMware-machines inschakelen voor herstel na nood geval met behulp van Azure Site Recovery
+description: In dit artikel wordt beschreven hoe u VMware-VM-replicatie inschakelt voor nood herstel met behulp van de Azure Site Recovery-service
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 3f4e4afb4d94a7b2e2a6b246a371cf6234577463
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 1cc1ee82b45ecab17e4bcfb3a909fc90b33a1545
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491733"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954437"
 ---
-# <a name="enable-replication-to-azure-for-vmware-vms"></a>Schakel replicatie naar Azure voor VMware-VM 's
+# <a name="enable-replication-to-azure-for-vmware-vms"></a>Replicatie naar Azure inschakelen voor virtuele VMware-machines
 
-In dit artikel wordt beschreven hoe u de replicatie van on-premises VMware-machines naar Azure inschakelt.
+In dit artikel wordt beschreven hoe u replicatie van on-premises virtuele VMware-machines naar Azure inschakelt.
 
 ## <a name="prerequisites"></a>Vereisten
 
 In dit artikel wordt ervan uitgegaan dat u hebt:
 
-- [Instellen van uw on-premises bronomgeving](vmware-azure-set-up-source.md).
-- [Uw doelomgeving in Azure instellen](vmware-azure-set-up-target.md).
+- [Stel uw on-premises bron omgeving in](vmware-azure-set-up-source.md).
+- [Stel uw doel omgeving in op Azure](vmware-azure-set-up-target.md).
 
 ## <a name="before-you-start"></a>Voordat u begint
-Als u virtuele VMware-machines repliceert, houd rekening met deze informatie:
+Houd rekening met de volgende informatie wanneer u virtuele VMware-machines repliceert:
 
-* Uw Azure-gebruikersaccount moet bepaalde [machtigingen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) replicatie van een nieuwe virtuele machine naar Azure in te schakelen.
-* VMware-VM's worden gedetecteerd om de 15 minuten. Duurt 15 minuten of langer voor virtuele machines in Azure portal worden weergegeven na de detectie. Detectie kan ook 15 minuten duren of langer wanneer u een nieuwe vCenter-server of vSphere-host toevoegt.
-* Duurt 15 minuten of langer voordat de wijzigingen op de virtuele machine (zoals VMware tools-installatie) in de portal worden bijgewerkt.
-* U kunt de tijd laatst gedetecteerd voor VMware-VM's controleren: Zie de **laatst Contact om** op de **configuratieservers** -pagina voor de vCenter-server/vSphere-host.
-* Als u wilt toevoegen van virtuele machines voor replicatie zonder te wachten totdat de geplande detectie, markeert u de configuratieserver (maar klik er niet op), en selecteer **vernieuwen**.
-* Wanneer u replicatie inschakelt als de virtuele machine wordt voorbereid, installeert de processerver automatisch de Azure Site Recovery Mobility-service op deze.
+* Uw Azure-gebruikers account moet bepaalde [machtigingen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) hebben om replicatie van een nieuwe virtuele machine naar Azure in te scha kelen.
+* VMware-Vm's worden elke 15 minuten gedetecteerd. Het kan 15 minuten of langer duren voordat Vm's worden weer gegeven in de Azure Portal na detectie. Detectie kan ook 15 minuten of langer duren wanneer u een nieuwe vCenter-Server of vSphere-host toevoegt.
+* Het kan 15 minuten of langer duren voor omgevings wijzigingen op de virtuele machine (zoals de installatie van VMware-hulpprogram ma's) die in de portal moeten worden bijgewerkt.
+* U kunt de laatst gedetecteerde tijd voor virtuele VMware-machines controleren: Raadpleeg het veld **laatste contact persoon bij** op de pagina **configuratie servers** voor de VCenter-server/vSphere-host.
+* Als u virtuele machines voor replicatie wilt toevoegen zonder te wachten op de geplande detectie, markeert u de configuratie server (maar klikt u er niet op) en selecteert u **vernieuwen**.
+* Wanneer u replicatie inschakelt en de virtuele machine is voor bereid, wordt de Azure Site Recovery Mobility-service automatisch door de proces server geïnstalleerd.
 
 ## <a name="enable-replication"></a>Replicatie inschakelen
 
-Voordat u de stappen in deze sectie, houd rekening met de volgende informatie:
-* Azure Site Recovery repliceert nu rechtstreeks naar beheerde schijven voor alle nieuwe replicaties. De processerver schrijft de replicatielogboeken naar een cache-opslagaccount in de doelregio. Deze logboeken worden gebruikt voor het maken van herstelpunten op beheerde replicaschijven die voor naamgeving van asrseeddisk hebben.
-* PowerShell-ondersteuning voor het repliceren naar managed disks is beschikbaar via [Az.RecoveryServices moduleversie 2.0.0 en hoger](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) 
-* Op het moment van failover, wordt het herstelpunt dat u gebruikt om de doel-beheerde schijf te maken.
-* Virtuele machines die eerder zijn geconfigureerd als u wilt repliceren naar doel storage-accounts worden niet beïnvloed.
-* Replicatie naar storage-accounts voor een nieuwe virtuele machine is alleen beschikbaar via een Representational State Transfer (REST) API en Powershell. Azure REST API versie 2016-08-10- of 2018-01-10 gebruiken voor het repliceren naar storage-accounts.
+Houd rekening met de volgende informatie voordat u de stappen in deze sectie volgt:
+* Azure Site Recovery wordt nu rechtstreeks gerepliceerd naar Managed disks voor alle nieuwe replicaties. De proces server schrijft replicatie logboeken naar een cache-opslag account in de doel regio. Deze logboeken worden gebruikt voor het maken van herstel punten in replica Managed disks met een naam Conventie van asrseeddisk.
+* Power Shell-ondersteuning voor het repliceren naar Managed disks is beschikbaar via [AZ. Recovery Services module versie 2.0.0 en hoger](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) 
+* Op het moment van de failover wordt het door u geselecteerde herstel punt gebruikt voor het maken van de doel-beheerde schijf.
+* Vm's die eerder zijn geconfigureerd om te worden gerepliceerd naar doel opslag accounts, worden niet beïnvloed.
+* Replicatie naar opslag accounts voor een nieuwe virtuele machine is alleen beschikbaar via een Representational State overdracht (REST) API en Power shell. Gebruik Azure REST API versie 2016-08-10 of 2018-01-10 voor replicatie naar opslag accounts.
 
-Volg onderstaande stappen op replicatie inschakelen:
-1. Ga naar **stap 2: Toepassing repliceren** > **bron**. Nadat u replicatie voor de eerste keer inschakelt, selecteert u **+ repliceren** in de kluis replicatie extra virtuele machines in te schakelen.
-2. In de **bron** pagina > **bron**, selecteer de configuratieserver.
-3. Voor **type Machine**, selecteer **virtuele Machines** of **fysieke Machines**.
-4. Selecteer in **vCenter/vSphere-hypervisor** de vCenter-server waarmee de vSphere-host wordt beheerd, of selecteer de host. Deze instelling is niet relevant als u bij het repliceren van fysieke computers.
-5. Selecteer de processerver. Als er geen extra processervers dat is gemaakt, zijn ingebouwde processerver van de configuratieserver is beschikbaar in de vervolgkeuzelijst. Status van de processerver wordt aangegeven aan de hand van aanbevolen limieten en andere parameters. Kies een processerver in orde. Een [kritieke](vmware-physical-azure-monitor-process-server.md#process-server-alerts) processerver kan niet worden gekozen. U kunt ofwel [problemen op te lossen](vmware-physical-azure-troubleshoot-process-server.md) de fouten **of** instellen van een [uitbreidbare processerver](vmware-azure-set-up-process-server-scale.md).
-    ![Replicatie bron venster inschakelen](media/vmware-azure-enable-replication/ps-selection.png)
+Volg de onderstaande stappen om de replicatie in te scha kelen:
+1. Ga naar **stap 2: toepassings** > **bron**repliceren. Nadat u replicatie voor de eerste keer hebt ingeschakeld, selecteert u **+ repliceren** in de kluis om replicatie in te scha kelen voor aanvullende virtuele machines.
+2. Selecteer de configuratie server in de **bron** pagina > **bron**.
+3. Selecteer bij **computer type** **virtual machines** of **fysieke machines**.
+4. Selecteer in **vCenter/vSphere-hypervisor** de vCenter-server waarmee de vSphere-host wordt beheerd, of selecteer de host. Deze instelling is niet relevant als u fysieke computers repliceert.
+5. Selecteer de proces server. Als er geen extra proces servers zijn gemaakt, is de ingebouwde proces server van de configuratie server beschikbaar in de vervolg keuzelijst. De integriteits status van elke proces server wordt aangegeven volgens de aanbevolen limieten en andere para meters. Kies een goede proces server. Er kan geen [essentiële](vmware-physical-azure-monitor-process-server.md#process-server-alerts) proces server worden gekozen. U kunt [problemen oplossen en](vmware-physical-azure-troubleshoot-process-server.md) de fouten oplossen **of** een [scale-out proces server](vmware-azure-set-up-process-server-scale.md)instellen.
+    ![het venster replicatie bron inschakelen](media/vmware-azure-enable-replication/ps-selection.png)
 
 > [!NOTE]
-> Van [9.24 versies](service-updates-how-to.md#links-to-currently-supported-update-rollups), extra waarschuwingen zijn geïntroduceerd ter verbetering van de statuswaarschuwingen van de processerver. Site Recovery-onderdelen op 9.24 versies of hoger voor een upgrade van alle waarschuwingen worden gegenereerd.
+> Van [9,24 versies](service-updates-how-to.md#links-to-currently-supported-update-rollups)worden extra waarschuwingen geïntroduceerd om de status waarschuwingen van de proces server te verbeteren. Upgrade Site Recovery-onderdelen naar 9,24-versies of hoger voor alle waarschuwingen die moeten worden gegenereerd.
 
-6. Voor **doel**, selecteer het abonnement en resource waar u de failover-virtuele machines maken. Kies het implementatiemodel dat u wilt gebruiken in Azure voor de failover-VM's.
-2. Selecteer het Azure-netwerk en subnet die de Azure VM's verbinding met na een failover maken. Het netwerk moet zich in dezelfde regio als de kluis van Site Recovery-service.
+6. Selecteer bij **doel**het abonnement en de resource groep waarin u de virtuele machines waarvoor een failover is uitgevoerd wilt maken. Kies het implementatie model dat u wilt gebruiken in azure voor de failover-Vm's die zijn mislukt.
+2. Selecteer het Azure-netwerk en-subnet waarmee de Azure-Vm's verbinding maken na een failover. Het netwerk moet zich in dezelfde regio bevinden als de Site Recovery service-kluis.
 
-   Selecteer **nu configureren voor geselecteerde machines** de netwerk-instellingen toepassen op alle virtuele machines die u hebt geselecteerd voor beveiliging. Selecteer **later configureren** om te selecteren van het Azure-netwerk per virtuele machine. Als u een netwerk hebt, moet u er een maken. Voor het maken van een netwerk met behulp van Azure Resource Manager selecteert **nieuw**. Selecteer een subnet, indien van toepassing, en selecteer vervolgens **OK**.
+   Selecteer **nu configureren voor geselecteerde machines** om de netwerk instelling toe te passen op alle virtuele machines die u voor beveiliging selecteert. Selecteer **later configureren** om het Azure-netwerk per virtuele machine te selecteren. Als u geen netwerk hebt, moet u er een maken. Als u een netwerk wilt maken met behulp van Azure Resource Manager, selecteert u **nieuwe maken**. Selecteer een subnet, indien van toepassing, en selecteer vervolgens **OK**.
    
-   ![Het doelvenster replicatie inschakelen](./media/vmware-azure-enable-replication/enable-rep3.png)
+   ![Venster replicatie doel inschakelen](./media/vmware-azure-enable-replication/enable-rep3.png)
 
-1. Voor **virtuele machines** > **virtuele machines selecteren**, selecteert u elke virtuele machine die u wilt repliceren. U kunt alleen virtuele machines waarvoor replicatie kan worden ingeschakeld selecteren. Selecteer vervolgens **OK**. Als u niet zien of een bepaalde virtuele machine selecteren, Zie [bronmachine niet wordt weergegeven in de Azure-portal](https://aka.ms/doc-plugin-VM-not-showing) om het probleem te verhelpen.
+1. Voor **virtuele machines** > **virtuele machines selecteren**selecteert u elke virtuele machine die u wilt repliceren. U kunt alleen virtuele machines selecteren waarvoor replicatie kan worden ingeschakeld. Selecteer vervolgens **OK**. Als u een bepaalde virtuele machine niet kunt zien of selecteren, Zie [bron machine wordt niet vermeld in de Azure Portal](https://aka.ms/doc-plugin-VM-not-showing) om het probleem op te lossen.
 
-    ![Virtuele machines selecteren-venster replicatie inschakelen](./media/vmware-azure-enable-replication/enable-replication5.png)
+    ![Replicatie inschakelen voor het venster virtuele machines selecteren](./media/vmware-azure-enable-replication/enable-replication5.png)
 
-1. Voor **eigenschappen** > **eigenschappen configureren**, selecteer het account dat de processerver wordt gebruikt voor het installeren van de Site Recovery Mobility service automatisch op de virtuele machine. Kies ook het type beheerde schijf om te repliceren naar op basis van uw gegevens verloop patronen.
-10. Standaard worden alle schijven van een virtuele bronmachine worden gerepliceerd. Als u wilt schijven uitsluiten van replicatie, schakelt u de **opnemen** selectievakje in voor alle schijven die u niet wilt repliceren. Selecteer vervolgens **OK**. Later kunt u eventueel extra eigenschappen instellen. Meer informatie over [schijven uitsluiten](vmware-azure-exclude-disk.md).
+1. Selecteer voor **eigenschappen** > **eigenschappen configureren**het account dat door de proces server wordt gebruikt om automatisch de site Recovery Mobility-service op de virtuele machine te installeren. Kies ook het type doel-beheerde schijf waarnaar moet worden gerepliceerd, op basis van uw gegevens verloop patronen.
+10. Standaard worden alle schijven van een virtuele bron machine gerepliceerd. Als u schijven wilt uitsluiten van replicatie, schakelt u het selectie vakje **opnemen** uit voor schijven die u niet wilt repliceren. Selecteer vervolgens **OK**. Later kunt u eventueel extra eigenschappen instellen. Meer informatie over het [uitsluiten van schijven](vmware-azure-exclude-disk.md).
 
-    ![Inschakelen replicatie eigenschappenvenster configureren](./media/vmware-azure-enable-replication/enable-replication6.png)
+    ![Het venster Eigenschappen voor replicatie configureren inschakelen](./media/vmware-azure-enable-replication/enable-replication6.png)
 
-1. Op **replicatie-instellingen** > **replicatie-instellingen configureren**, controleert u of het juiste replicatiebeleid is geselecteerd. U kunt de instellingen van replicatiebeleid op wijzigen **instellingen** > **replicatiebeleid** > ***beleidsnaam***  >  **Instellingen bewerken**. Wijzigingen die u aan een beleid van toepassing zijn ook van toepassing op replicerende en nieuwe virtual machines.
-1. Schakel **Multi-VM-consistentie** als u wilt verzamelen van virtuele machines in een replicatiegroep. Geef een naam voor de groep, en selecteer vervolgens **OK**.
+1. Controleer bij **replicatie-instellingen** > replicatie- **instellingen configureren**of het juiste replicatie beleid is geselecteerd. U kunt replicatie beleids instellingen wijzigen bij **instellingen** > **replicatie beleid** > ***beleids naam*** > **Instellingen bewerken**. Wijzigingen die u toepast op een beleid, zijn ook van toepassing op replicatie en nieuwe virtuele machines.
+1. Schakel **multi-VM-consistentie** in als u virtuele machines wilt verzamelen in een replicatie groep. Geef een naam op voor de groep en selecteer **OK**.
 
     > [!NOTE]
-    >    * Virtuele machines in een replicatiegroep tegelijkertijd gerepliceerd en gedeelde crash-consistente en app-consistente herstelpunten bij failover.
-    >    * Verzamelen van virtuele machines en fysieke servers samen zodat ze uw workloads. Inschakelen van multi-VM-consistentie kan van invloed zijn op de prestaties van de werkbelastingen. Doe dit alleen als de virtuele machines zijn dezelfde werkbelasting uitvoeren, en u consistentie.
+    >    * Virtuele machines in een replicatie groep worden samen gerepliceerd en hebben gedeelde crash-consistente en toepassings consistente herstel punten wanneer ze een failover uitvoeren.
+    >    * Verzamel Vm's en fysieke servers samen zodat ze uw workloads spie gelen. Het inschakelen van multi-VM-consistentie kan de prestaties van de werk belasting beïnvloeden. Doe dit alleen als de virtuele machines dezelfde werk belasting uitvoeren en u consistentie nodig hebt.
 
-    ![Venster replicatie inschakelen](./media/vmware-azure-enable-replication/enable-replication7.png)
+    ![Replicatie venster inschakelen](./media/vmware-azure-enable-replication/enable-replication7.png)
     
-1. Selecteer **Replicatie inschakelen**. U kunt de voortgang van volgen de **beveiliging inschakelen** taak op **instellingen** > **taken** > **Site Recovery-taken**. Na de **beveiliging voltooien** taak wordt uitgevoerd, wordt de virtuele machine is gereed voor failover.
+1. Selecteer **Replicatie inschakelen**. U kunt de voortgang van de taak **beveiliging inschakelen** volgen bij **instellingen** > **taken** > **site Recovery taken**. Nadat de taak **beveiliging volt ooien** is uitgevoerd, is de virtuele machine klaar voor failover.
 
 ## <a name="view-and-manage-vm-properties"></a>Eigenschappen van virtuele machines weergeven en beheren
 
-Controleer vervolgens of de eigenschappen van de virtuele bronmachine. Houd er rekening mee dat de Azure VM-naam voldoen moet aan de [vereisten voor virtuele Azure-machine](vmware-physical-azure-support-matrix.md#replicated-machines).
+Controleer vervolgens de eigenschappen van de virtuele bron machine. Houd er rekening mee dat de Azure VM-naam moet voldoen aan de vereisten van de [virtuele Azure-machine](vmware-physical-azure-support-matrix.md#replicated-machines).
 
-1. Ga naar **instellingen** > **gerepliceerde items**, en selecteer vervolgens de virtuele machine. De **Essentials** pagina bevat informatie over de instellingen en status van de virtuele machine.
+1. Ga naar **instellingen** > **gerepliceerde items**en selecteer de virtuele machine. Op de pagina **Essentials** vindt u informatie over de instellingen en status van de virtuele machine.
 1. In **Eigenschappen** kunt u de replicatie- en failoverinformatie van de virtuele machine weergeven.
-1. In **berekening en netwerk** > **Rekeneigenschappen**, kunt u meerdere VM-eigenschappen. 
+1. In **Compute en Network** > **compute properties**kunt u meerdere VM-eigenschappen wijzigen. 
 
-    ![Venster met eigenschappen van berekening en netwerk](./media/vmware-azure-enable-replication/vmproperties.png)
+    ![Venster Eigenschappen van Compute en netwerk](./media/vmware-azure-enable-replication/vmproperties.png)
 
-    * Azure VM-naam: Wijzig de naam om te voldoen aan vereisten voor Azure, indien nodig.
-    * Doel-VM-grootte of VM-type: De standaard-VM-grootte wordt gekozen op basis van een aantal parameters die het aantal schijven, NIC aantal, CPU-aantal kernen, geheugen en beschikbare VM-rol-grootten in Azure-doelregio opnemen. Azure Site Recovery kiest de eerste, beschikbare VM-grootte is dat voldoet aan alle criteria. U kunt een andere VM-grootte op basis van uw behoeften op elk gewenst moment voordat de failover selecteren. Houd er rekening mee dat de grootte van de VM-schijf is ook gebaseerd op de grootte van de bronschijf en kan alleen worden gewijzigd na een failover. Meer informatie over schijven en IOPS-tarieven op [schaalbaarheids- en prestatiedoelen voor VM-schijven op Windows](../virtual-machines/windows/disk-scalability-targets.md).
+    * Azure VM-naam: Wijzig de naam zo nodig om aan de vereisten van Azure te voldoen.
+    * Grootte van de doel-VM of het VM-type: de standaard grootte voor de virtuele machine wordt gekozen op basis van enkele para meters die het aantal schijven, het aantal NIC'S, het CPU-aantal, het geheugen en de beschik bare VM-rollen in de Azure-doel regio bevatten Azure Site Recovery kiest de eerste beschik bare VM-grootte die voldoet aan alle criteria. U kunt op elk gewenst moment een andere VM-grootte selecteren op basis van uw behoeften voordat de failover wordt uitgevoerd. Houd er rekening mee dat de grootte van de VM-schijf ook is gebaseerd op de grootte van de bron schijf en kan worden gewijzigd na een failover. Meer informatie over schijf grootten en IOPS-tarieven bij [schaal baarheid en prestatie doelen voor VM-schijven in Windows](../virtual-machines/windows/disk-scalability-targets.md).
 
-    *  Resourcegroep: U kunt een [resourcegroep](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines), uit die een virtuele machine een onderdeel van een post-failover wordt. U kunt deze instelling op elk gewenst moment voordat de failover te wijzigen. Na een failover, als u de virtuele machine naar een andere resourcegroep migreren, de beveiligingsinstellingen voor die virtuele machine worden verbroken.
-    * Beschikbaarheidsset: U kunt een [beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) als uw virtuele machine moet een onderdeel van een post-failover. Wanneer u een beschikbaarheidsset selecteert, houd rekening met de volgende informatie:
+    *  Resource groep: u kunt een [resource groep](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)selecteren, van waaruit een virtuele machine deel wordt van een post-failover. U kunt deze instelling op elk gewenst moment wijzigen vóór de failover. Als u na de failover een migratie van de virtuele machine naar een andere resource groep hebt, worden de beveiligings instellingen voor die virtuele machine verbroken.
+    * Beschikbaarheidsset: u kunt een [beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) selecteren als de virtuele machine deel moet uitmaken van een post-failover. Wanneer u een beschikbaarheidsset selecteert, houdt u de volgende informatie in acht:
 
-        * Alleen beschikbaarheidssets die deel uitmaken van de opgegeven resourcegroep worden weergegeven.  
-        * Virtuele machines die zich op verschillende virtuele netwerken mag niet een deel van dezelfde beschikbaarheidsset.
-        * Alleen virtuele machines van dezelfde grootte kunnen een deel uitmaken van een beschikbaarheidsset.
-1. U kunt ook informatie over het doelnetwerk, subnet en IP-adres dat toegewezen aan de Azure-VM toevoegen.
-2. In **schijven**, ziet u het besturingssysteem en gegevensschijven op de virtuele machine die wordt gerepliceerd.
+        * Alleen beschikbaarheids sets die bij de opgegeven resource groep horen, worden weer gegeven.  
+        * Vm's die zich op verschillende virtuele netwerken bevinden, kunnen geen deel uitmaken van dezelfde beschikbaarheidsset.
+        * Alleen virtuele machines met dezelfde grootte kunnen deel uitmaken van een beschikbaarheidsset.
+1. U kunt ook informatie toevoegen over het doelnet werken, het subnet en het IP-adres dat is toegewezen aan de Azure VM.
+2. In **schijven**ziet u het besturings systeem en de gegevens schijven op de virtuele machine die worden gerepliceerd.
 
-### <a name="configure-networks-and-ip-addresses"></a>Configureren van netwerken en IP-adressen
+### <a name="configure-networks-and-ip-addresses"></a>Netwerken en IP-adressen configureren
 
-U kunt het doel-IP-adres instellen. Als u geen adres opgeeft, betekent dit dat de virtuele failover-machine DHCP gebruikt. Als u een adres dat is niet beschikbaar na een failover hebt ingesteld, wordt de failover niet werkt. Als het adres in het testfailovernetwerk beschikbaar is, kunt u hetzelfde doel-IP-adres voor test-failover.
+U kunt het doel-IP-adres instellen. Als u geen adres opgeeft, wordt DHCP gebruikt voor de virtuele machine waarvoor een failover is uitgevoerd. Als u een adres instelt dat niet beschikbaar is op failover, werkt de failover niet. Als het adres beschikbaar is in het testfailover, kunt u hetzelfde doel-IP-adres gebruiken voor de testfailover.
 
-Het aantal netwerkadapters wordt bepaald door de grootte die u voor de doel-VM als volgt opgeeft:
+Het aantal netwerk adapters wordt bepaald door de grootte die u opgeeft voor de virtuele doel machine, als volgt:
 
-- Als het aantal adapters voor netwerkopname op de virtuele bronmachine kleiner dan of gelijk zijn aan het aantal adapters die zijn toegestaan voor de doel-VM-grootte is, heeft het doel hetzelfde aantal adapters als de bron.
-- Als het aantal adapters voor de virtuele bronmachine groter is dan het getal dat toegestaan voor de doel-VM-grootte, wordt het maximum gebruikt. Bijvoorbeeld, als een virtuele bronmachine twee netwerkadapters heeft en de doel-VM-grootte vier ondersteunt, heeft de virtuele doelmachine twee adapters. Als de bron-VM twee adapters heeft, maar de doelgrootte slechts één, heeft de doel-VM slechts één adapter.
-- Als de virtuele machine meerdere netwerkadapters heeft, wordt deze alle verbonden met hetzelfde netwerk. De eerste netwerkadapter die wordt weergegeven in de lijst wordt ook, de *standaard* netwerkadapter in de virtuele machine van Azure. 
+- Als het aantal netwerk adapters op de virtuele bron machine kleiner is dan of gelijk is aan het aantal adapters dat is toegestaan voor de grootte van de doel-VM, heeft het doel hetzelfde aantal adapters als de bron.
+- Als het aantal adapters voor de virtuele bron machine groter is dan het aantal dat is toegestaan voor de grootte van de doel-VM, wordt het maximum voor de doel grootte gebruikt. Als een virtuele bron machine bijvoorbeeld twee netwerk adapters heeft en de grootte van de doel-VM vier ondersteunt, heeft de virtuele doel machine twee adapters. Als de bron-VM twee adapters heeft, maar de doel grootte slechts een ondersteunt, heeft de doel-VM slechts één adapter.
+- Als de virtuele machine meerdere netwerk adapters heeft, worden deze allemaal verbonden met hetzelfde netwerk. De eerste adapter die wordt weer gegeven in de lijst wordt ook de *standaard* netwerk adapter in de virtuele machine van Azure. 
 
 ### <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
-Microsoft Software Assurance-klanten kunnen Azure Hybrid Benefit gebruiken om op te slaan op de kosten voor softwarelicenties voor Windows Server-computers die zijn gemigreerd naar Azure. Het voordeel is ook van toepassing op Azure-noodherstel. Als u geen in aanmerking komt, kunt u het voordeel toewijzen aan de virtuele machine die Site Recovery maakt als er een failover. Voer hiervoor de volgende stappen uit:
-1. Ga naar de **eigenschappen van de Computer en het netwerk** van de gerepliceerde virtuele machine.
-2. Wanneer u wordt gevraagd als u een Windows Server-licentie waarmee u in aanmerking voor Azure Hybrid Benefit hebt beantwoord.
-3. Bevestig dat u hebt een in aanmerking komende Windows Server-licentie met Software Assurance kunt u het voordeel van toepassing op de virtuele machine die na een failover worden gemaakt.
-4. Sla de instellingen voor de gerepliceerde virtuele machine.
+Klanten van micro soft-Software Assurance kunnen Azure Hybrid Benefit gebruiken om de licentie kosten voor Windows Server-computers die worden gemigreerd naar Azure, op te slaan. Het voor deel is ook van toepassing op herstel na nood gevallen van Azure. Als u in aanmerking komt, kunt u het voor deel toewijzen aan de virtuele machine die Site Recovery maakt als er een failover plaatsvindt. Voer hiervoor de volgende stappen uit:
+1. Ga naar de **computer-en netwerk eigenschappen** van de gerepliceerde virtuele machine.
+2. Antwoord wanneer u wordt gevraagd of u een Windows Server-licentie hebt waarmee u in aanmerking komt voor Azure Hybrid Benefit.
+3. Bevestig dat u een Windows Server-licentie met Software Assurance hebt die u kunt gebruiken om het voor deel toe te passen op de virtuele machine die tijdens de failover wordt gemaakt.
+4. Sla de instellingen voor de gerepliceerde virtuele machine op.
 
 Meer informatie over [Azure Hybrid Benefit](https://aka.ms/azure-hybrid-benefit-pricing).
 
-## <a name="resolve-common-issues"></a>Oplossen van veelvoorkomende problemen
+## <a name="resolve-common-issues"></a>Veelvoorkomende problemen oplossen
 
 * Elke schijf moet kleiner zijn dan 4 TB.
-* De besturingssysteemschijf moet een standaardschijf, niet een dynamische schijf.
-* De besturingssysteemgroep moet Windows en de opstartschijf moet kleiner zijn dan 300 GB voor generatie 2/UEFI-compatibele virtuele machines.
+* De besturingssysteem schijf moet een standaard schijf zijn, niet een dynamische schijf.
+* Voor virtuele machines van generatie 2/UEFI moet de besturingssysteem familie Windows zijn en moet de opstart schijf kleiner zijn dan 300 GB.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat de virtuele machine een beveiligde status bereikt, probeert u een [failover](site-recovery-failover.md) om te controleren of uw toepassing wordt weergegeven in Azure.
+Nadat de virtuele machine een beveiligde status heeft bereikt, probeert u een [failover](site-recovery-failover.md) om te controleren of uw toepassing wordt weer gegeven in Azure.
 
-* Meer informatie over het [opschonen van de instellingen voor registratie en bescherming](site-recovery-manage-registration-and-protection.md) replicatie uitschakelen.
-* Meer informatie over het [replicatie voor uw virtuele machines te automatiseren met behulp van Powershell](vmware-azure-disaster-recovery-powershell.md).
+* Meer informatie over het [opschonen van de registratie-en beveiligings instellingen](site-recovery-manage-registration-and-protection.md) om replicatie uit te scha kelen.
+* Meer informatie over het [automatiseren van replicatie voor uw virtuele machines met behulp van Power shell](vmware-azure-disaster-recovery-powershell.md).

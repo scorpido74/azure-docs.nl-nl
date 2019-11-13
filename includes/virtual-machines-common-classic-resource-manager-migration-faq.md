@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: c4f9334a91e99c92e74af060d84308a8aaccc6e7
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: c8629975d375dda32fdd9aee42b4ae09069a2049
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671254"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005416"
 ---
-# <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Veelgestelde vragen over de migratie van klassiek naar Azure Resource Manager
-
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Is dit migratieplan van invloed op mijn bestaande services en toepassingen die worden uitgevoerd op virtuele Azure-machines? 
 
 Nee. De VM's (klassiek) zijn volledig ondersteunde services met een algemene beschikbaarheid. U kunt deze resources blijven gebruiken om uw footprint in Microsoft Azure te vergroten.
@@ -47,26 +45,26 @@ Nee. Recent is het [verplaatsen van ExpressRoute-circuits van het klassieke naar
 
 ## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>Wat gebeurt er als ik op rollen gebaseerd toegangsbeheerbeleid heb geconfigureerd voor mijn klassieke IaaS-resources? 
 
-Tijdens de migratie worden de klassieke resources Resource Manager-resources. Daarom is het raadzaam dat u van plan de RBAC-beleid-updates die moeten bent worden uitgevoerd na de migratie.
+Tijdens de migratie worden de klassieke resources Resource Manager-resources. Daarom wordt u aangeraden de RBAC-beleids updates te plannen die moeten worden uitgevoerd na de migratie.
 
-## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Kan ik back-ups van mijn klassieke virtuele machines in een kluis. Kan ik mijn virtuele machines migreren van de klassieke modus naar de Resource Manager-modus en ze beschermen in een Recovery Services-kluis?
+## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Ik heb een back-up gemaakt van mijn klassieke virtuele machines in een kluis. Kan ik mijn virtuele machines migreren van de klassieke modus naar de Resource Manager-modus en ze beschermen in een Recovery Services-kluis?
 
-<a name="vault">Wanneer</a> u een virtuele machine verplaatsen van klassiek naar Resource Manager-modus, back-ups die vóór de migratie worden niet gemigreerd naar de onlangs gemigreerde Resource Manager-VM. Als u houden van uw back-ups van klassieke virtuele machines wilt, volgt u deze stappen vóór de migratie. 
+<a name="vault">Wanneer</a> u een virtuele machine van de klassieke naar de Resource Manager-modus verplaatst, worden back-ups die zijn gemaakt vóór de migratie, niet gemigreerd naar de zojuist gemigreerde Resource Manager-VM. Als u echter uw back-ups van klassieke Vm's wilt houden, volgt u deze stappen vóór de migratie. 
 
-1. In de Recovery Services-kluis, gaat u naar de **beveiligde Items** tabblad en selecteer de virtuele machine. 
-2. Klik op Stop de beveiliging. Laat de optie *Gekoppelde back-upgegevens verwijderen* **uitgeschakeld**.
+1. Ga in de Recovery Services kluis naar het tabblad **beveiligde items** en selecteer de virtuele machine. 
+2. Klik op beveiliging stoppen. Laat de optie *Gekoppelde back-upgegevens verwijderen* **uitgeschakeld**.
 
 > [!NOTE]
-> U wordt gefactureerd kosten van back-instantie totdat u de gegevens bewaren. Back-ups wordt aan de hand van bewaartermijn worden verwijderd. Laatste back-up is echter altijd bewaard totdat u expliciet back-upgegevens verwijdert. Het wordt aanbevolen om te controleren of de bewaartermijn van de virtuele machine en het activeren 'Back-upgegevens verwijderen' op het beveiligde item in de kluis zodra de bewaartermijn uitgevoerd is. 
+> De kosten voor back-upexemplaar worden in rekening gebracht tot u de gegevens behoudt. Back-upkopieën worden verwijderd volgens een Bewaar termijn. De laatste back-up wordt echter altijd bewaard totdat u de back-upgegevens expliciet verwijdert. U wordt aangeraden uw Bewaar termijn van de virtuele machine te controleren en ' back-upgegevens verwijderen ' te activeren voor het beveiligde item in de kluis wanneer de Bewaar termijn is overschreden. 
 >
 >
 
-De virtuele machine migreren naar Resource Manager-modus 
+Als u de virtuele machine wilt migreren naar de Resource Manager-modus, 
 
 1. Verwijder de back-up-/momentopname-extensie uit de VM.
 2. Migreer de virtuele machines van de klassieke modus naar de Resource Manager-modus. Zorg ervoor dat de opslagruimte en de netwerkgegevens die corresponderen met de virtuele machine, ook naar de Resource Manager-modus worden gemigreerd.
 
-Bovendien, als u back-up van de gemigreerde virtuele machine wilt, gaat u naar de VM-beheerblade op [back-up inschakelen](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
+Als u ook een back-up wilt maken van de gemigreerde virtuele machine, gaat u naar de Blade beheer van virtuele machines om [back-ups in te scha kelen](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Kan ik mijn abonnement of resources valideren om te ontdekken of ze geschikt zijn voor migratie? 
 
@@ -88,6 +86,6 @@ Alle resources waarvoor u expliciet namen opgeeft in het klassieke implementatie
 
 ExpressRoute-circuits met abonnementsoverstijgende autorisatielinks kunnen niet automatisch worden gemigreerd zonder downtime. Er is informatie beschikbaar over het uitvoeren van handmatige migratie. Zie [ExpressRoute-circuits en de bijbehorende virtuele netwerken van het klassieke naar het Resource Manager-implementatiemodel migreren](../articles/expressroute/expressroute-migration-classic-resource-manager.md) voor stappen en meer informatie.
 
-## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>Ik krijg het bericht *' virtuele machine rapporteert de algehele agentstatus niet gereed. Hence, the VM cannot be migrated. Zorg ervoor dat de VM-Agent is reporting overall agentstatus as Ready'* of *'virtuele machine bevat de extensie waarvan u de Status van de virtuele machine niet wordt gerapporteerd. Daarom kan kan niet deze virtuele machine worden gemigreerd."*
+## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>Ik heb het bericht *' de VM meldt de algehele agent status als niet gereed. Daarom kan de virtuele machine niet worden gemigreerd. Zorg ervoor dat de VM-agent de algehele agent status gereed rapporteert, of dat de VM een* *extensie bevat waarvan de status niet wordt gerapporteerd van de virtuele machine. Daarom kan deze virtuele machine niet worden gemigreerd. "*
 
 Dit bericht wordt weergegeven wanneer de VM geen uitgaande verbinding heeft met internet. De VM-agent maakt gebruik van een uitgaande verbinding om het Azure-opslagaccount te bereiken. Zo kan de agentstatus elke vijf minuten worden bijgewerkt.

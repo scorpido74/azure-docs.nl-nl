@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: danlep
-ms.openlocfilehash: 98bab18f9a8250b99410941a8f865fd7ec1c5fe0
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 38639f22457d923643e8de09cfbbb2fd7f4d2985
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931589"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007483"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Inhouds indelingen die worden ondersteund in Azure Container Registry
 
@@ -29,7 +29,7 @@ De volgende indelingen van de docker-container installatie kopieën worden onder
 
 ## <a name="oci-images"></a>OCI-afbeeldingen
 
-Azure Container Registry ondersteunt installatie kopieën die voldoen aan de indeling van het [opening container Initiative (OCI)-afbeelding](https://github.com/opencontainers/image-spec/blob/master/spec.md). Pakket indelingen zijn onder andere de indeling van de [enkelvouds afbeelding](https://www.sylabs.io/2018/03/sif-containing-your-containers/).
+Azure Container Registry ondersteunt installatie kopieën die voldoen aan de indeling van het [opening container Initiative (OCI)-afbeelding](https://github.com/opencontainers/image-spec/blob/master/spec.md). Pakket indelingen zijn onder andere de indeling van de [enkelvouds afbeelding](https://github.com/sylabs/sif).
 
 ## <a name="oci-artifacts"></a>OCI-artefacten
 

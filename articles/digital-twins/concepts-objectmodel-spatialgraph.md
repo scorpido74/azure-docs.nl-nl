@@ -1,5 +1,5 @@
 ---
-title: Meer informatie over Azure Digital Apparaatdubbels-object modellen en ruimtelijke Intelligence-grafiek | Microsoft Docs
+title: Inzicht krijgen in object modellen en ruimtelijke informatie grafiek-Azure Digital Apparaatdubbels | Microsoft Docs
 description: Gebruik Azure Digital Twins om relaties tussen mensen, plaatsen en apparaten te modelleren
 ms.author: alinast
 author: alinamstanciu
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.openlocfilehash: da345c0cf039e3cc2f7f8828a0769b6e65048571
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 85fb67248a69a2726fef99ebe4749d61807631e4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930417"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010088"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Meer informatie over Digital Apparaatdubbels-object modellen en ruimtelijke Intelligence-grafiek
 

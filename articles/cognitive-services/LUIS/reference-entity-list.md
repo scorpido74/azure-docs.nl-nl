@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 1757faf8ab2be0b62956b6939ee068929f9275a4
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 1307e6cfca0debe7623eb775c69527a74584033d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695241"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011993"
 ---
 # <a name="list-entity"></a>Lijstentiteit 
 
@@ -28,11 +28,36 @@ Een lijst entiteit is niet door de machine geleerd. Het is een overeenkomst exac
 * Zijn een bekende set.
 * Verandert niet vaak. Als u de lijst vaak wilt wijzigen of de lijst zelf wilt uitbreiden, is een eenvoudige entiteit met een woordgroepen lijst een betere keuze. 
 * De set maximale [begrenzingen](luis-boundaries.md) van LUIS voor dit entiteitstype niet overschrijdt.
-* De tekst in de utterance is een exact overeenkomst met een synoniem of de canonieke naam. LUIS gebruikt de lijst alleen voor exact tekstovereenkomsten. Fuzzy matching, hoofdletter ongevoeligheid, ontleding, meervouden en andere variaties worden niet opgelost met een lijst entiteit. Hiervoor kunt u overwegen een [patroon](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) met de optionele tekstsyntaxis te gebruiken.
+* De tekst in de utterance is een exact overeenkomst met een synoniem of de canonieke naam. LUIS gebruikt de lijst alleen voor exact tekstovereenkomsten. Fuzzy matching, hoofdletter ongevoeligheid, ontleding, meervouden en andere variaties worden niet opgelost met een lijst entiteit. Hiervoor kunt u overwegen een [patroon](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) met de optionele tekstsyntaxis te gebruiken.
 
 ![lijst met entiteiten](./media/luis-concept-entities/list-entity.png)
 
-## <a name="example-json"></a>Voorbeeld van JSON
+## <a name="example-json-to-import-into-list-entity"></a>Voor beeld. json om in lijst entiteit te importeren
+
+  U kunt waarden importeren in een bestaande lijst entiteit met behulp van de volgende JSON-indeling:
+
+  ```JSON
+  [
+      {
+          "canonicalForm": "Blue",
+          "list": [
+              "navy",
+              "royal",
+              "baby"
+          ]
+      },
+      {
+          "canonicalForm": "Green",
+          "list": [
+              "kelly",
+              "forest",
+              "avacado"
+          ]
+      }
+  ]  
+  ```
+
+## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
 Stel dat de app heeft een lijst met de naam `Cities`, zodat voor variaties in plaats van luchthaven (Sea-tac), luchthaven code (SEA), postcode (98101) en het netnummer telefoon (206) zoals plaatsnamen.
 
@@ -107,7 +132,7 @@ Dit is de JSON als `verbose=true` is ingesteld in de query reeks:
 
 * * * 
 
-|Data-object|De naam van de entiteit|Value|
+|Data-object|De naam van de entiteit|Waarde|
 |--|--|--|
 |Entiteit weer geven|`Cities`|`paris`|
 

@@ -8,23 +8,22 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: de2e33ceb182383d9529bfe41afffbbf28e1e493
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 40da2016026c8a7e02d1b243a783d01559e8c197
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671303"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005535"
 ---
-# <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Platform ondersteunde migratie van IaaS-resources van klassiek naar Azure Resource Manager
-In dit artikel wordt beschreven hoe u voor het migreren van infrastructuur als een service (IaaS)-resources van het klassieke naar Resource Manager-implementatiemodel en details van hoe u resources van de twee implementatiemodellen die naast elkaar worden gebruikt in uw abonnement met behulp van virtueel netwerk verbinden site-naar-site gateways. U kunt meer lezen over [Azure Resource Manager-functies en voordelen](../articles/azure-resource-manager/resource-group-overview.md). 
+In dit artikel wordt beschreven hoe u IaaS-resources (Infrastructure as a Service) migreert van het klassieke naar het Resource Manager-implementatie model en hoe u resources verbindt met de twee implementatie modellen die naast elkaar zijn opgenomen in uw abonnement met behulp van virtueel netwerk site-naar-site gateways. U kunt meer lezen over [Azure Resource Manager functies en voor delen](../articles/azure-resource-manager/resource-group-overview.md). 
 
 ## <a name="goal-for-migration"></a>Doel voor migratie
-Resource Manager kunt implementeren van complexe toepassingen via sjablonen, virtuele machines configureren met behulp van VM-extensies en bevat toegangsbeheer en tagging. Azure Resource Manager bevat schaalbare, parallelle implementatie voor virtuele machines in beschikbaarheidssets. Het nieuwe implementatiemodel biedt ook beheer van de levenscyclus van compute, netwerk en opslag onafhankelijk van elkaar. Er is ten slotte een focus over het inschakelen van beveiliging standaard bij het afdwingen van virtuele machines in een virtueel netwerk.
+Met Resource Manager kunt u complexe toepassingen implementeren via sjablonen, virtuele machines configureren met behulp van VM-extensies en toegangs beheer en tagging van het netwerk. Azure Resource Manager bevat schaal bare, parallelle implementatie voor virtuele machines in beschikbaarheids sets. Het nieuwe implementatie model biedt ook een levenscyclus beheer van compute, netwerk en opslag onafhankelijk. Ten slotte is er een focus op het inschakelen van beveiliging standaard met het afdwingen van virtuele machines in een virtueel netwerk.
 
-Bijna alle functies van het klassieke implementatiemodel worden ondersteund voor berekening, netwerk en opslag in Azure Resource Manager. Als u wilt profiteren van de nieuwe mogelijkheden in Azure Resource Manager, kunt u bestaande implementaties migreren uit het klassieke implementatiemodel.
+Bijna alle functies van het klassieke implementatie model worden ondersteund voor compute, netwerk en opslag onder Azure Resource Manager. Als u wilt profiteren van de nieuwe mogelijkheden van Azure Resource Manager, kunt u bestaande implementaties migreren vanuit het klassieke implementatie model.
 
-## <a name="supported-resources-for-migration"></a>Ondersteunde resources voor migratie
-Deze klassieke IaaS-resources worden ondersteund tijdens de migratie
+## <a name="supported-resources-for-migration"></a>Ondersteunde bronnen voor migratie
+Deze klassieke IaaS-bronnen worden tijdens de migratie ondersteund
 
 * Virtuele machines
 * Beschikbaarheidssets
@@ -32,103 +31,103 @@ Deze klassieke IaaS-resources worden ondersteund tijdens de migratie
 * Opslagaccounts
 * Virtuele netwerken
 * VPN-gateways
-* Express Route-Gateways _(in hetzelfde abonnement als het Virtueelnetwerk alleen)_
+* Express route-gateways _(in hetzelfde abonnement als alleen Virtual Network)_
 * Netwerkbeveiligingsgroepen
 * Routetabellen
 * Gereserveerde IP-adressen
 
-## <a name="supported-scopes-of-migration"></a>Ondersteunde scopes van de migratie
-Er zijn vier verschillende manieren om de migratie van Reken-, netwerk- en opslagresources te voltooien:
+## <a name="supported-scopes-of-migration"></a>Ondersteunde bereiken van migratie
+Er zijn vier verschillende manieren om de migratie van compute-, netwerk-en opslag bronnen te volt ooien:
 
 * [Migratie van virtuele machines (niet in een virtueel netwerk)](#migration-of-virtual-machines-not-in-a-virtual-network)
 * [Migratie van virtuele machines (in een virtueel netwerk)](#migration-of-virtual-machines-in-a-virtual-network)
-* [Migratie van storage-accounts](#migration-of-storage-accounts)
+* [Migratie van opslag accounts](#migration-of-storage-accounts)
 * [Migratie van niet-gekoppelde resources](#migration-of-unattached-resources)
 
 ### <a name="migration-of-virtual-machines-not-in-a-virtual-network"></a>Migratie van virtuele machines (niet in een virtueel netwerk)
-In het Resource Manager-implementatiemodel, beveiliging standaard afgedwongen voor uw toepassingen. Alle virtuele machines moeten zich in een virtueel netwerk in het Resource Manager-model. De Azure-platform wordt opnieuw opgestart (`Stop`, `Deallocate`, en `Start`) de virtuele machines als onderdeel van de migratie. U hebt twee opties voor de virtuele netwerken die de virtuele Machines worden gemigreerd naar:
+In het Resource Manager-implementatie model wordt de beveiliging van uw toepassingen standaard afgedwongen. Alle vm's moeten zich in een virtueel netwerk in het Resource Manager-model bestaan. Het Azure-platform wordt opnieuw opgestart (`Stop`, `Deallocate`en `Start`) de virtuele machines als onderdeel van de migratie. U hebt twee opties voor de virtuele netwerken waarnaar de Virtual Machines wordt gemigreerd:
 
-* U kunt het platform voor het maken van een nieuw virtueel netwerk en de virtuele machine migreren naar het nieuwe virtuele netwerk aanvragen.
+* U kunt het platform aanvragen om een nieuw virtueel netwerk te maken en de virtuele machine migreren naar het nieuwe virtuele netwerk.
 * U kunt de virtuele machine migreren naar een bestaand virtueel netwerk in Resource Manager.
 
 > [!NOTE]
-> In dit migratiebereik van zowel de beheerlaag bewerkingen en de data plane-bewerkingen mogelijk niet toegestaan voor een bepaalde periode tijdens de migratie.
+> In dit migratie bereik zijn de bewerkingen voor het beheer vlak en de gegevenslaag bewerkingen mogelijk niet toegestaan gedurende een bepaalde periode tijdens de migratie.
 >
 
 ### <a name="migration-of-virtual-machines-in-a-virtual-network"></a>Migratie van virtuele machines (in een virtueel netwerk)
-Voor de meeste configuraties van virtuele machine, wordt alleen de metagegevens migreren tussen het klassieke en Resource Manager-implementatiemodel. De onderliggende virtuele machines worden uitgevoerd op dezelfde hardware, in hetzelfde netwerk, en met dezelfde opslag. De bewerkingen van het beheervlak mogelijk niet toegestaan voor een bepaalde periode tijdens de migratie. De gegevenslaag blijft echter om te werken. Dat wil zeggen, de toepassingen uitvoeren op virtuele machines (klassiek) genereren geen uitvaltijd tijdens de migratie.
+Voor de meeste VM-configuraties wordt alleen de meta gegevens gemigreerd tussen het klassieke en het Resource Manager-implementatie model. De onderliggende Vm's worden uitgevoerd op dezelfde hardware, in hetzelfde netwerk en met dezelfde opslag. De bewerkingen op het beheer vlak zijn mogelijk niet toegestaan gedurende een bepaalde periode tijdens de migratie. Het gegevens vlak blijft echter gewoon werken. Dat wil zeggen dat uw toepassingen die worden uitgevoerd op virtuele machines (klassiek) geen uitval tijd ontstaan tijdens de migratie.
 
-De volgende configuraties worden momenteel niet ondersteund. Als er is ondersteuning toegevoegd in de toekomst enkele VM's in deze configuratie kan kosten voor downtime (Ga via stoppen, toewijzing ongedaan maken en bewerkingen van de virtuele machine opnieuw opstarten).
+De volgende configuraties worden momenteel niet ondersteund. Als er in de toekomst ondersteuning wordt toegevoegd, kan het zijn dat sommige Vm's in deze configuratie downtime kunnen oplopen (ga dan stoppen, toewijzing ongedaan maken en VM-bewerkingen opnieuw starten).
 
-* U hebt meer dan één beschikbaarheidsset in een enkele cloudservice.
-* U hebt een of meer beschikbaarheidssets en virtuele machines die zich niet in een beschikbaarheidsset in een enkele cloudservice.
+* U hebt meer dan één beschikbaarheidsset in één Cloud service.
+* U hebt een of meer beschikbaarheids sets en Vm's die zich niet in een beschikbaarheidsset bevinden in één Cloud service.
 
 > [!NOTE]
-> In dit migratiebereik zijn het beheervlak niet toegestaan voor een bepaalde periode tijdens de migratie. Voor bepaalde configuraties zoals eerder beschreven, data plane-uitval optreedt.
+> In dit migratie bereik is het beheer vlak mogelijk niet toegestaan gedurende een bepaalde periode tijdens de migratie. Voor bepaalde configuraties zoals eerder beschreven, treedt er downtime op het gegevens vlak op.
 >
 
-### <a name="migration-of-storage-accounts"></a>Migratie van storage-accounts
-Als u wilt toestaan dat naadloze migratie, kunt u resourcemanager-VM's implementeren in een klassiek opslagaccount. Met deze functie reken- en netwerkbronnen kunnen en onafhankelijk van storage-accounts moeten worden gemigreerd. Nadat u via uw virtuele Machines en Virtueelnetwerk migreert, moet u migreren via uw storage-accounts om het migratieproces te voltooien.
+### <a name="migration-of-storage-accounts"></a>Migratie van opslag accounts
+Als u naadloze migratie wilt toestaan, kunt u Resource Manager-Vm's implementeren in een klassiek opslag account. Met deze mogelijkheid kunnen Compute-en netwerk bronnen onafhankelijk van opslag accounts worden gemigreerd. Nadat u uw Virtual Machines en Virtual Network hebt gemigreerd, moet u uw opslag accounts migreren om het migratie proces te volt ooien.
 
-Als uw storage-account beschikt niet over alle gekoppelde schijven of de gegevens op virtuele Machines en alleen blobs, bestanden, tabellen en wachtrijen heeft kan de migratie naar Azure Resource Manager worden gedaan als een zelfstandige migratie zonder afhankelijkheden.
+Als uw opslag account geen gekoppelde schijven of Virtual Machines gegevens heeft en alleen blobs, bestanden, tabellen en wacht rijen bevat, kan de migratie naar Azure Resource Manager worden uitgevoerd als zelfstandige migratie zonder afhankelijkheden.
 
 > [!NOTE]
-> De Resource Manager-implementatiemodel beschikt niet over het concept van klassieke installatiekopieën en schijven. Wanneer het opslagaccount is gemigreerd, klassieke installatiekopieën en schijven, niet zichtbaar in de Resource Manager-stack, maar de back-ups VHD's blijven in de storage-account.
+> Het Resource Manager-implementatie model bevat niet het concept van klassieke installatie kopieën en schijven. Wanneer het opslag account is gemigreerd, zijn klassieke installatie kopieën en schijven niet zichtbaar in de stack van de Resource Manager, maar blijven de back-upvhd's in het opslag account.
 
-De volgende schermafbeeldingen laten zien hoe u een klassiek opslagaccount een upgrade uitvoert naar een Azure Resource Manager-opslagaccount met behulp van Azure portal:
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+In de volgende scherm afbeeldingen ziet u hoe u een klassiek opslag account bijwerkt naar een Azure Resource Manager Storage-account met behulp van Azure Portal:
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Ga naar uw opslagaccount.
-3. In de **instellingen** sectie, klikt u op **migreren naar ARM**.
-4. Klik op **valideren** migratie haalbaarheid bepalen.
-5. Als de validatie is geslaagd, klikt u op **voorbereiden** om een gemigreerde opslagaccount te maken.
-6. Type **Ja** om te bevestigen van de migratie en klik op **doorvoeren** de migratie te voltooien.
+3. Klik in de sectie **instellingen** op **migreren naar arm**.
+4. Klik op **valideren** om de haal baarheid van de migratie te bepalen.
+5. Als de validatie is geslaagd, klikt u op **voorbereiden** om een gemigreerde opslag account te maken.
+6. Typ **Ja** om de migratie te bevestigen en klik op **door voeren** om de migratie te volt ooien.
 
-    ![Storage-Account valideren](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
+    ![Opslag account valideren](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
     
-    ![Voorbereiden van de Storage-Account](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-2.png)
+    ![Opslag account voorbereiden](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-2.png)
     
-    ![Storage-Accountmigratie voltooien](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-3.png)
+    ![Migratie van opslag account volt ooien](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-3.png)
 
 ### <a name="migration-of-unattached-resources"></a>Migratie van niet-gekoppelde resources
-Storage-Accounts met geen bijbehorende schijven of virtuele Machines gegevens kunnen onafhankelijk worden gemigreerd.
+Opslag accounts zonder gekoppelde schijven of Virtual Machines gegevens kunnen onafhankelijk van zichzelf worden gemigreerd.
 
-Network Security Groups, routetabellen en gereserveerde IP-adressen die niet zijn gekoppeld aan alle virtuele Machines en virtuele netwerken kunnen ook onafhankelijk van elkaar worden gemigreerd.
+Netwerk beveiligings groepen, route tabellen & gereserveerde Ip's die niet aan een Virtual Machines en virtuele netwerken zijn gekoppeld, kunnen ook onafhankelijk van zichzelf worden gemigreerd.
 
 <br>
 
 ## <a name="unsupported-features-and-configurations"></a>Niet-ondersteunde functies en configuraties
-Sommige functies en configuraties worden momenteel niet ondersteund; de volgende secties beschrijven onze aanbevelingen.
+Sommige functies en configuraties worden momenteel niet ondersteund. in de volgende secties worden onze aanbevelingen rond hen beschreven.
 
 ### <a name="unsupported-features"></a>Niet-ondersteunde functies
-De volgende functies worden momenteel niet ondersteund. U kunt ervoor kiezen om deze instellingen verwijderen, het migreren van de virtuele machines en de instellingen in het Resource Manager-implementatiemodel vervolgens opnieuw inschakelen.
+De volgende functies worden momenteel niet ondersteund. U kunt deze instellingen desgewenst verwijderen, de virtuele machines migreren en vervolgens de instellingen opnieuw inschakelen in het Resource Manager-implementatie model.
 
 | Resourceprovider | Functie | Aanbeveling |
 | --- | --- | --- |
-| Compute | Niet-gekoppelde virtuele-machineschijven. | De VHD-blobs achter deze schijven worden gemigreerd als het Opslagaccount dat wordt gemigreerd |
-| Compute | Installatiekopieën van virtuele machines. | De VHD-blobs achter deze schijven worden gemigreerd als het Opslagaccount dat wordt gemigreerd |
-| Netwerk | Eindpunt-ACL's. | Verwijderen van de eindpunt-ACL's en probeer opnieuw de migratie. |
-| Netwerk | Application Gateway | De toepassingsgateway verwijderen voordat u begint met migratie en maakt de toepassingsgateway opnieuw zodra de migratie is voltooid. |
-| Netwerk | Virtuele netwerken met behulp van VNet-Peering. | Virtuele netwerken migreren naar Resource Manager en klik vervolgens op hetzelfde niveau. Meer informatie over [VNet-Peering](../articles/virtual-network/virtual-network-peering-overview.md). |
+| Compute | Niet-gekoppelde schijven van virtuele machines. | De VHD-blobs achter deze schijven worden gemigreerd wanneer het opslag account wordt gemigreerd. |
+| Compute | Installatie kopieën van virtuele machines. | De VHD-blobs achter deze schijven worden gemigreerd wanneer het opslag account wordt gemigreerd. |
+| Netwerk | Eind punt-Acl's. | Verwijder de eind punt-Acl's en voer de migratie opnieuw uit. |
+| Netwerk | Application Gateway | Verwijder de Application Gateway voordat u begint met de migratie en maak de Application Gateway opnieuw nadat de migratie is voltooid. |
+| Netwerk | Virtuele netwerken met VNet-peering. | Migreer Virtual Network naar Resource Manager en klik vervolgens op peer. Meer informatie over [VNet-peering](../articles/virtual-network/virtual-network-peering-overview.md). |
 
 ### <a name="unsupported-configurations"></a>Niet-ondersteunde configuraties
 De volgende configuraties worden momenteel niet ondersteund.
 
 | Service | Configuratie | Aanbeveling |
 | --- | --- | --- |
-| Resource Manager |Rollen gebaseerd toegangsbeheer (RBAC) voor klassieke resources |Omdat de URI van de resources is gewijzigd na migratie, is het raadzaam dat u van plan de RBAC-beleid-updates die moeten bent worden uitgevoerd na de migratie. |
-| Compute |Meerdere subnetten die zijn gekoppeld aan een virtuele machine |Werk de subnetconfiguratie om te verwijzen naar slechts één subnet. Mogelijk moet u een secundaire NIC's (die verwijst naar een ander subnet) verwijderen uit de VM en koppel deze opnieuw nadat de migratie is voltooid. |
-| Compute |Virtuele machines die deel uitmaken van een virtueel netwerk maar niet een expliciete subnet toegewezen |Eventueel kunt u de virtuele machine verwijderen. |
-| Compute |Virtuele machines met waarschuwingen, beleid voor automatisch schalen |De migratie hanteert en deze instellingen worden verwijderd. Het is raadzaam dat u uw omgeving evalueren voordat u de migratie. U kunt ook de instellingen voor meldingen configureren nadat de migratie is voltooid. |
-| Compute |XML-VM-extensies (BGInfo 1.*, Visual Studio-foutopsporing, Web Deploy en foutopsporing op afstand) |Dit wordt niet ondersteund. Het wordt aanbevolen dat u deze uitbreidingen van de virtuele machine om door te gaan migratie verwijderen of wordt deze automatisch verwijderd tijdens het migratieproces. |
-| Compute |Diagnostische gegevens over opstarten met Premium storage |Functie voor diagnostische gegevens over opstarten voor de virtuele machines uitschakelen voordat u doorgaat met de migratie. U kunt diagnostische gegevens over opstarten in het Resource Manager-stack opnieuw inschakelen nadat de migratie voltooid is. Bovendien moeten blobs die worden gebruikt voor schermafbeelding en seriële logboeken worden verwijderd, zodat u niet meer in rekening voor deze blobs gebracht worden. |
-| Compute | Cloudservices met web-/ werkrollen | Dit wordt momenteel niet ondersteund. |
-| Compute | Cloudservices met meer dan één beschikbaarheid instellen of meerdere beschikbaarheidssets. |Dit wordt momenteel niet ondersteund. Verplaats de virtuele Machines op dezelfde beschikbaarheidsset voordat u migreert. |
-| Compute | Virtuele machine met de extensie Azure Security Center | Azure Security Center worden extensies automatisch geïnstalleerd op uw virtuele Machines om te controleren van de beveiliging en alarmen. Deze uitbreidingen krijgen meestal automatisch geïnstalleerd als het Azure Security Center-beleid is ingeschakeld op het abonnement. Uitschakelen voor het migreren van de virtuele Machines, de security center-beleid voor het abonnement, waarbij het Security Center monitoring-extensie van de virtuele Machines wordt verwijderd. |
-| Compute | Virtuele machine met de back-up of momentopname-extensie | Deze uitbreidingen worden geïnstalleerd op een virtuele Machine geconfigureerd met de Azure Backup-service. Tijdens de migratie van deze virtuele machines wordt niet ondersteund, volgt u de instructies [hier](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault) te houden van back-ups die zijn uitgevoerd vóór de migratie.  |
-| Netwerk |Virtuele netwerken die virtuele machines en web-/ werkrollen bevatten. |Dit wordt momenteel niet ondersteund. Verplaats de Web/Worker-rollen met hun eigen Virtueelnetwerk voordat u migreert. Zodra het klassieke Virtueelnetwerk wordt gemigreerd, kan het gemigreerde Azure Resource Manager-netwerk worden gekoppeld aan het klassieke Virtueelnetwerk voor een vergelijkbare configuratie als voorheen.|
-| Netwerk | Klassieke Expressroute-circuits |Dit wordt momenteel niet ondersteund. Deze circuits moeten naar Azure Resource Manager worden gemigreerd voordat u begint met IaaS-migratie. Zie voor meer informatie, [verplaatsen van ExpressRoute-circuits van het klassieke naar het Resource Manager-implementatiemodel](../articles/expressroute/expressroute-move.md).|
-| Azure App Service |Virtuele netwerken met App Service-omgevingen |Dit wordt momenteel niet ondersteund. |
+| Resource Manager |Op rollen gebaseerde Access Control (RBAC) voor klassieke bronnen |Omdat de URI van de resources na de migratie is gewijzigd, is het raadzaam om de RBAC-beleids updates te plannen die na de migratie moeten plaatsvinden. |
+| Compute |Meerdere subnetten die zijn gekoppeld aan een virtuele machine |De configuratie van het subnet bijwerken zodat deze slechts naar één subnet verwijst. Hiervoor moet u mogelijk een secundaire NIC (die verwijst naar een ander subnet) verwijderen van de virtuele machine en deze opnieuw koppelen nadat de migratie is voltooid. |
+| Compute |Virtuele machines die deel uitmaken van een virtueel netwerk, maar waaraan geen expliciet subnet is toegewezen |U kunt de virtuele machine eventueel verwijderen. |
+| Compute |Virtuele machines met waarschuwingen, beleid voor automatisch schalen |De migratie gaat door en deze instellingen worden verwijderd. Het wordt ten zeerste aanbevolen om uw omgeving te evalueren voordat u de migratie gaat uitvoeren. U kunt de instellingen voor waarschuwingen ook opnieuw configureren nadat de migratie is voltooid. |
+| Compute |XML-VM-extensies (BGInfo 1. *, Visual Studio Debugger, Web Deploy en Remote Debug) |Dit wordt niet ondersteund. Het is raadzaam deze uitbrei dingen van de virtuele machine te verwijderen om de migratie voort te zetten of ze worden tijdens het migratie proces automatisch verwijderd. |
+| Compute |Diagnostische gegevens over opstarten met Premium-opslag |Schakel de functie voor diagnostische gegevens over opstarten voor de virtuele machines uit voordat u doorgaat met de migratie. U kunt Diagnostische gegevens over opstarten opnieuw inschakelen in de Resource Manager-stack nadat de migratie is voltooid. Daarnaast moeten de blobs die worden gebruikt voor scherm afbeeldingen en seriële logboeken worden verwijderd, zodat u niet langer in rekening wordt gebracht voor deze blobs. |
+| Compute | Cloud Services die web-of werk rollen bevatten | Dit wordt momenteel niet ondersteund. |
+| Compute | Cloud Services die meer dan één beschikbaarheidsset of meerdere beschikbaarheids sets bevatten. |Dit wordt momenteel niet ondersteund. Verplaats de Virtual Machines naar dezelfde beschikbaarheidsset voordat u de migratie uitvoert. |
+| Compute | VM met Azure Security Center extensie | Azure Security Center installeert automatisch extensies op uw Virtual Machines om de beveiliging te controleren en waarschuwingen te genereren. Deze uitbrei dingen worden meestal automatisch geïnstalleerd als het Azure Security Center beleid is ingeschakeld voor het abonnement. Als u de Virtual Machines wilt migreren, schakelt u het Security Center-beleid uit op het abonnement, waardoor de Security Center bewakings extensie uit de Virtual Machines wordt verwijderd. |
+| Compute | VM met back-up-of momentopname uitbreiding | Deze uitbrei dingen worden geïnstalleerd op een virtuele machine die is geconfigureerd met de Azure Backup-service. Hoewel de migratie van deze Vm's niet wordt ondersteund, volgt u de instructies [hier](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault) om back-ups te houden die zijn uitgevoerd vóór de migratie.  |
+| Netwerk |Virtuele netwerken die virtuele machines en web-en werk rollen bevatten |Dit wordt momenteel niet ondersteund. Verplaats de web-en werk rollen naar hun eigen Virtual Network voordat u de migratie uitvoert. Zodra de klassieke Virtual Network is gemigreerd, kan de gemigreerde Azure Resource Manager Virtual Network worden gekoppeld met de klassieke Virtual Network om Vergelijk bare configuratie te krijgen als voorheen.|
+| Netwerk | Klassieke Express route-circuits |Dit wordt momenteel niet ondersteund. Deze circuits moeten naar Azure Resource Manager worden gemigreerd voordat de migratie van IaaS wordt gestart. Zie [ExpressRoute-circuits verplaatsen van het klassieke naar het Resource Manager-implementatie model](../articles/expressroute/expressroute-move.md)voor meer informatie.|
+| Azure App Service |Virtuele netwerken die App Service omgevingen bevatten |Dit wordt momenteel niet ondersteund. |
 | Azure HDInsight |Virtuele netwerken die HDInsight-services bevatten |Dit wordt momenteel niet ondersteund. |
-| Microsoft Dynamics Lifecycle Services |Virtuele netwerken die virtuele machines die worden beheerd door Dynamics Lifecycle Services bevatten |Dit wordt momenteel niet ondersteund. |
-| Azure AD Domain Services |Virtuele netwerken met Azure AD Domain services |Dit wordt momenteel niet ondersteund. |
-| Azure API Management |Virtuele netwerken met Azure API Management-implementaties |Dit wordt momenteel niet ondersteund. Voor het migreren van het VNET IaaS, wijzigt u het VNET van de API Management-implementatie, dit een bewerking waarbij er geen uitvaltijd is. |
+| Micro soft Dynamics-levenscyclus Services |Virtuele netwerken die virtuele machines bevatten die worden beheerd door Dynamics levenscyclus Services |Dit wordt momenteel niet ondersteund. |
+| Azure AD Domain Services |Virtuele netwerken die Azure AD Domain Services bevatten |Dit wordt momenteel niet ondersteund. |
+| Azure API Management |Virtuele netwerken die Azure API Management-implementaties bevatten |Dit wordt momenteel niet ondersteund. Als u het IaaS VNET wilt migreren, wijzigt u het VNET van de API Management-implementatie. Dit is een niet-downtime-bewerking. |

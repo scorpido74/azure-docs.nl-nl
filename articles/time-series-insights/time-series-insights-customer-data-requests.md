@@ -1,6 +1,6 @@
 ---
-title: Functies voor het aanvragen van klant gegevens in Azure Time Series Insights | Microsoft Docs
-description: Samen vatting van Azure Time Series Insights functies voor gegevens aanvragen van de klant.
+title: Functies voor klant gegevens aanvragen-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over functies voor het aanvragen van klant gegevens in Azure Time Series Insights.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: ba883ec3ce8f8ca4491b8576e6633ba2837bb5b2
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: d134c7cbe220e6aa6b1471b50aa23e17d09734d5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990091"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007030"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Samen vatting van functies voor klant gegevens aanvragen
+# <a name="summary-of-customer-data-request-features"></a>Overzicht van de klant functies voor aanvraag
 
 Azure Time Series Insights is een beheerde Cloud service met opslag-, analyse-en visualisatie onderdelen waarmee u gemakkelijk miljarden gebeurtenissen tegelijkertijd kunt opnemen, opslaan, verkennen en analyseren.
 
@@ -28,7 +28,7 @@ Voor het weer geven, exporteren en verwijderen van persoonlijke gegevens die kun
 
 Azure Time Series Insights persoons gegevens worden beschouwd als gegevens die zijn gekoppeld aan beheerders en gebruikers van Time Series Insights. Time Series Insights slaat de Azure Active Directory object-ID van de gebruikers die toegang hebben tot de omgeving. In het Azure Portal worden e-mail adressen van gebruikers weer gegeven, maar deze e-mail adressen worden niet opgeslagen in Time Series Insights. ze worden dynamisch gezocht met behulp van de Azure Active Directory object-ID in Azure Active Directory.
 
-## <a name="deleting-customer-data"></a>Klant gegevens verwijderen
+## <a name="deleting-customer-data"></a>Verwijderen van klantgegevens
 
 Een Tenant beheerder kan klant gegevens verwijderen met behulp van de Azure Portal.
 
@@ -40,7 +40,7 @@ U kunt ook delete-bewerkingen uitvoeren op toegangs beleid met behulp van de RES
 
 Time Series Insights is geïntegreerd met de Blade beleid in de Azure Portal. Zowel Time Series Insights als de Blade beleid kunt u gebruiken om gebruikers gegevens weer te geven, te exporteren en te verwijderen die zijn opgeslagen in de service. Alle verwijderings acties die zijn uitgevoerd op de Blade beleid van de Azure Portal resulteert in het verwijderen van gebruikers gegevens in Time Series Insights. Als een gebruiker bijvoorbeeld een opgeslagen persoonlijke query heeft, wordt die query permanent verwijderd uit de Time Series Insights Explorer. Als de gebruiker een opgeslagen gedeelde query heeft, blijft de query behouden, maar worden de gebruikers gegevens definitief verwijderd. De volgende notitie bevat instructies voor het uitvoeren van deze taken.
 
-## <a name="exporting-customer-data"></a>Klant gegevens exporteren
+## <a name="exporting-customer-data"></a>Exporteren van gegevens van de klant
 
 Net als bij het verwijderen van gegevens kan een Tenant beheerder gegevens die zijn opgeslagen in Time Series Insights bekijken en exporteren vanuit de Blade beleid in de Azure Portal.
 

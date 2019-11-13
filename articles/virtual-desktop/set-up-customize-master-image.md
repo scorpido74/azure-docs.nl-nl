@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 7a0cce6b72240b95943fbece08cfbf61eaee3524
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891711"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013153"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Een VHD-hoofdinstallatiekopie voorbereiden en aanpassen
 
 In dit artikel leest u hoe u een installatie kopie van een virtuele harde schijf (VHD) voor het uploaden naar Azure voorbereidt, inclusief het maken van virtuele machines (Vm's) en het installeren van software. Deze instructies gelden voor een Windows-specifieke configuratie voor virtueel bureau blad die kan worden gebruikt met de bestaande processen van uw organisatie.
 
-## <a name="create-a-vm"></a>Een VM maken
+## <a name="create-a-vm"></a>Een virtuele machine maken
 
 Windows 10 Enter prise multi-session is beschikbaar in de galerie met installatie kopieën van Azure. Er zijn twee opties voor het aanpassen van deze installatie kopie.
 
@@ -101,28 +101,6 @@ Voer deze opdracht uit om een start indeling op te geven voor Windows 10-Pc's.
 
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
-```
-
-### <a name="configure-session-timeout-policies"></a>Sessietime-outbeleid configureren
-
-Externe-sessie beleidsregels kunnen worden afgedwongen op groepsbeleid niveau, omdat alle virtuele machines in een hostgroep deel uitmaken van dezelfde beveiligings groep.
-
-Beleid voor externe sessies configureren:
-
-1. Ga naar **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > extern bureaublad **sessiehost** > sessie **tijds limieten**.
-2. Selecteer in het deel venster aan de rechter kant het beleid **tijds limiet instellen voor actieve maar niet-actieve Extern bureaublad-services sessies** .
-3. Nadat het modale venster wordt weer gegeven, wijzigt u de beleids optie van **niet geconfigureerd** in **ingeschakeld** om het beleid te activeren.
-4. Stel de hoeveelheid tijd in het vervolg keuzemenu onder de beleids optie in op **3 uur**.
-
-U kunt beleid voor externe sessies ook hand matig configureren door de volgende opdrachten uit te voeren:
-
-```batch
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fResetBroken /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 10800000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDisconnectionTime /t REG_DWORD /d 5000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 10800000 /f
 ```
 
 ### <a name="set-up-time-zone-redirection"></a>Tijd zone-omleiding instellen

@@ -1,17 +1,14 @@
 ---
 title: Overzicht van Azure Management-Azure governance
 description: Overzicht van de gebieden van beheer voor Azure-toepassingen en bronnen met koppelingen naar inhoud op Azure-beheerhulpprogramma's.
-author: DCtheGeek
-ms.service: governance
-ms.topic: article
 ms.date: 12/06/2018
-ms.author: dacoulte
-ms.openlocfilehash: 2535b64380f67da440698c7577840d5319e6ca4f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: article
+ms.openlocfilehash: e85d5162146fb716ed9f846dc5a828d83c669627
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978554"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013910"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Overzicht van beheer Services in azure
 
@@ -27,7 +24,7 @@ Er is geen enkele Azure-service voldoet volledig aan de vereisten van een bepaal
 
 In de volgende gedeelten worden kort de diverse beheergebieden beschreven. Ook vindt u er koppelingen naar gedetailleerde inhoud over de belangrijkste Azure-services die voor deze gebieden bedoeld zijn.
 
-## <a name="monitor"></a>Controleren
+## <a name="monitor"></a>Bewaken
 
 Bewaken is het verzamelen en analyseren van gegevens om te controleren van de prestaties, status en beschikbaarheid van uw resources. Een strategie voor effectieve bewaking krijgt u inzicht in de bewerking van onderdelen en om te verhogen van de bedrijfstijd met meldingen. Lees een overzicht van bewaking die bevat informatie over de verschillende services gebruikt bij [bewaking van Azure-toepassingen en bronnen](../monitoring/monitoring-overview.md).
 

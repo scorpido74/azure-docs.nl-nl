@@ -1,18 +1,18 @@
 ---
-title: IP-adres Sering instellen om verbinding te maken met een secundaire on-premises site na een failover met Azure Site Recovery
+title: IP-adres Sering instellen na een failover naar een secundaire site met Azure Site Recovery
 description: Hierin wordt beschreven hoe u IP-adres Sering instelt voor het maken van verbinding met Vm's op een secundaire on-premises site na herstel na nood gevallen en failover met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: f158c6b71bb53d6b683577401e625e24808eb7eb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813680"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961430"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>IP-adres Sering instellen om verbinding te maken met een secundaire on-premises site na een failover
 
@@ -22,8 +22,8 @@ Nadat u een failover hebt uitgevoerd voor virtuele Hyper-V-machines in System Ce
 
 Na een failover zijn er een aantal manieren om IP-adres Sering te verwerken voor replica-Vm's: 
 
-- **Hetzelfde IP-adres behouden na failover**: In dit scenario heeft de gerepliceerde VM hetzelfde IP-adres als de primaire virtuele machine. Dit vereenvoudigt netwerk problemen na een failover, maar vereist een goed functioneren van de infra structuur.
-- **Gebruik een ander IP-adres na een failover**: In dit scenario krijgt de VM na een failover een nieuw IP-adres. 
+- **Hetzelfde IP-adres behouden na een failover**: in dit scenario heeft de gerepliceerde VM hetzelfde IP-adres als de primaire virtuele machine. Dit vereenvoudigt netwerk problemen na een failover, maar vereist een goed functioneren van de infra structuur.
+- **Een ander IP-adres gebruiken na een failover**: in dit scenario krijgt de VM na een failover een nieuw IP-adres. 
  
 
 ## <a name="retain-the-ip-address"></a>Het IP-adres behouden

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: c8aa3fb124420c933e17b0e9f7e52b7f114a7f61
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620421"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012909"
 ---
 # <a name="access-and-customize-developer-portal"></a>De ontwikkelaars Portal openen en aanpassen
 
@@ -38,7 +38,7 @@ Meer informatie over de ontwikkelaars Portal vindt u in het overzicht van de [Az
 
 > [!WARNING]
 > De ontwikkelaars portal wordt momenteel geïmplementeerd naar API Management Services.
-> Als uw service nieuw is gemaakt of een Developer tier-service is, moet u de nieuwste versie al hebben. Anders kunt u problemen ondervinden (bijvoorbeeld met de publicatie functionaliteit). De implementatie van de functie wordt voltooid op maandag 11 november 2019. 
+> Als uw service nieuw is gemaakt of een Developer tier-service is, moet u de nieuwste versie al hebben. Anders kunt u problemen ondervinden (bijvoorbeeld met de publicatie functionaliteit). De implementatie van de functie wordt verwacht door vrijdag november 22, 2019. 
 
 ## <a name="prerequisites"></a>Vereisten
 

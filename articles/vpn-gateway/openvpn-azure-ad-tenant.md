@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: alzam
-ms.openlocfilehash: 6730cad4f65648516769476740813c2e3384fe6a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bd8a9413efc4f2130bd71f15f0da2a605b8c03e1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837913"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960687"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Een Azure Active Directory-Tenant maken voor P2S OpenVPN-protocol verbindingen
 
@@ -54,7 +54,7 @@ Volg de stappen in [dit artikel](../active-directory/fundamentals/add-users-azur
 
 4. Geef vervolgens toestemming voor de beheerder. Kopieer en plak de URL die betrekking heeft op uw implementatie locatie in de adres balk van uw browser:
 
-    Openbaar
+    Public
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent
@@ -100,7 +100,7 @@ Volg de stappen in [dit artikel](../active-directory/fundamentals/add-users-azur
 9. Maak en down load het profiel door de volgende opdrachten uit te voeren. Wijzig de waarden voor-ResourcGroupName en-name zodat deze overeenkomen met uw eigen waarde.
 
     ```azurepowershell-interactive
-    $profile = New-AzVpnClientConfiguration -ResourceGroupName AADAuth -Name AADauthGW -AuthenticationMethod "EapTls"
+    $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"
     $PROFILE.VpnProfileSASUrl
     ```
 

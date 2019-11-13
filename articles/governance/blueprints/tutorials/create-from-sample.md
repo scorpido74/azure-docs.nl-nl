@@ -1,19 +1,16 @@
 ---
 title: Een omgeving maken op basis van een blauw druk-voor beeld
 description: Gebruik een voor beeld van een blauw druk om een blauw druk definitie te maken waarmee twee resource groepen worden ingesteld en waarmee een roltoewijzing voor elk wordt geconfigureerd.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/05/2019
 ms.topic: tutorial
-ms.service: blueprints
-ms.openlocfilehash: f3250052a7e26b5d8ef7cb1d411f9d9252089875
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: d23e9b7242c58e4da5fcfe5ef4d29d9f9df6f754
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980727"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960275"
 ---
-# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Zelfstudie: Een omgeving maken op basis van een blauw druk-voor beeld
+# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Zelf studie: een omgeving maken op basis van een voor beeld van een blauw druk
 
 Voorbeeld blauw drukken biedt voor beelden van wat u kunt doen met Azure-blauw drukken. Elk is een voor beeld met een specifieke intentie of doel, maar maakt zelf geen volledige omgeving. Elk is bedoeld als uitgangs punt om te verkennen met behulp van Azure-blauw drukken met verschillende combi Naties van opgenomen artefacten, ontwerpen en para meters.
 
@@ -42,10 +39,10 @@ Implementeer eerst het voor beeld van de blauw druk. Bij het importeren wordt ee
 
 1. Voer de _basis beginselen_ van het voor beeld van de blauw druk in:
 
-   - **Naam blauw druk**: Geef een naam op voor uw kopie van het voor beeld van de blauw druk. Voor deze zelf studie gebruiken we de naam _twee-RGS-with-Role-Assignments_.
-   - **Locatie van definitie**: Gebruik het weglatings teken en selecteer de beheer groep of het abonnement om uw kopie van het voor beeld op te slaan.
+   - **Blauw druk-naam**: Geef een naam op voor uw kopie van het voor beeld van de blauw druk. Voor deze zelf studie gebruiken we de naam _twee-RGS-with-Role-Assignments_.
+   - **Locatie van definitie**: gebruik het weglatings teken en selecteer de beheer groep of het abonnement om uw kopie van het voor beeld op te slaan.
 
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **Next: Artefacten @ no__t-0 aan de onderkant van de pagina.
+1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende: artefacten** aan de onderkant van de pagina.
 
 1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. In dit voor beeld worden twee resource groepen gedefinieerd, met weergave namen van _ProdRG_ en _PreProdRG_. De uiteindelijke naam en locatie van elke resource groep worden ingesteld tijdens de toewijzing van blauw drukken. De resource groep _ProdRG_ is toegewezen aan de rol _Inzender_ en de resource groep _PreProdRG_ is toegewezen aan de rollen _eigenaar_ en _lezers_ . De rollen die zijn toegewezen in de definitie zijn statisch, maar de gebruiker, de app of de groep waaraan de rol is toegewezen, wordt ingesteld tijdens de toewijzing van de blauw druk.
 
@@ -84,12 +81,12 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
    - Basics
 
      - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
-     - **Toewijzings naam**: De naam wordt vooraf ingevuld op basis van de naam van de definitie van de blauw druk.
+     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de definitie van de blauw druk.
      - **Locatie**: Selecteer een regio voor de beheerde identiteit die u wilt maken in. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
        Voor deze zelf studie selecteert u _VS Oost 2_.
-     - **Definitie van blauw druk-versie**: Kies de **gepubliceerde** versie _1,0_ van uw kopie van de definitie van de voorbeeld blauw drukken.
+     - **Definitie van blauw druk-versie**: Kies de **gepubliceerde** versie _1,0_ van uw kopie van de definitie van de voorbeeld blauw druk.
 
-   - Toewijzing vergrendelen
+   - Toewijzing vergren delen
 
      Selecteer de vergrendelings modus voor _alleen-lezen_ blauw drukken. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../concepts/resource-locking.md).
 
@@ -97,19 +94,19 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
      Wijzig de standaard optie _systeem toegewezen_ . Zie [Managed Identities](../../../active-directory/managed-identities-azure-resources/overview.md)(Engelstalig) voor meer informatie.
 
-   - Artefactparameters
+   - Artefact parameters
 
      De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Stel voor elk artefact de parameter waarde in op wat in de kolom **waarde** is gedefinieerd. Selecteer uw Azure-gebruikers account voor `{Your ID}`.
 
-     |Naam van het artefact|Type artefact|Parameternaam|Value|Description|
+     |Artefact naam|Type artefact|Parameternaam|Waarde|Beschrijving|
      |-|-|-|-|-|
-     |Resource groep ProdRG|Resource group|Name|ProductionRG|Hiermee definieert u de naam van de eerste resource groep.|
-     |Resource groep ProdRG|Resource group|Location|US - west 2|Hiermee stelt u de locatie van de eerste resource groep.|
-     |Inzender|Roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee definieert u welke gebruiker of groep de rol van _Inzender_ toewijzing moet verlenen binnen de eerste resource groep.|
-     |Resource groep PreProdRG|Resource group|Name|PreProductionRG|Hiermee definieert u de naam van de tweede resource groep.|
-     |Resource groep PreProdRG|Resource group|Location|US - west|Hiermee stelt u de locatie van de tweede resource groep in.|
-     |Eigenaar|Roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee definieert u welke gebruiker of groep de roltoewijzing van de _eigenaar_ binnen de tweede resource groep moet verlenen.|
-     |Lezers|Roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee definieert u welke gebruiker of groep de roltoewijzing van _lezers_ moet verlenen in de tweede resource groep.|
+     |Resource groep ProdRG|Resourcegroep|Naam|ProductionRG|Hiermee definieert u de naam van de eerste resource groep.|
+     |Resource groep ProdRG|Resourcegroep|Locatie|US - west 2|Hiermee stelt u de locatie van de eerste resource groep.|
+     |Inzender|Nieuwe roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee definieert u welke gebruiker of groep de rol van _Inzender_ toewijzing moet verlenen binnen de eerste resource groep.|
+     |Resource groep PreProdRG|Resourcegroep|Naam|PreProductionRG|Hiermee definieert u de naam van de tweede resource groep.|
+     |Resource groep PreProdRG|Resourcegroep|Locatie|US - west|Hiermee stelt u de locatie van de tweede resource groep in.|
+     |Eigenaar|Nieuwe roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee definieert u welke gebruiker of groep de roltoewijzing van de _eigenaar_ binnen de tweede resource groep moet verlenen.|
+     |Lezers|Nieuwe roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee definieert u welke gebruiker of groep de roltoewijzing van _lezers_ moet verlenen in de tweede resource groep.|
 
 1. Zodra alle para meters zijn ingevoerd, selecteert u aan de onderkant van de pagina **toewijzen** .
 
@@ -147,7 +144,7 @@ De toewijzing blauw drukken maakt en traceert de artefacten die in de definitie 
 
 1. Selecteer de toewijzing weigeren en selecteer vervolgens de pagina **geweigerde machtigingen** aan de linkerkant.
 
-   De weiger toewijzing verhindert alle bewerkingen met de configuratie van de **\*** en de **actie** , maar staat Lees toegang toe door de **\*/Lees** bewerking uit te **sluiten.**
+   De toewijzing weigeren voor komt dat alle bewerkingen met de configuratie van **\*** en de **actie** worden uitgevoerd, maar biedt Lees toegang door **\*/Read** uit te **sluiten.**
 
 1. Selecteer in de Azure Portal brood kruimel **PreProductionRG-Access Control (IAM)** . Selecteer vervolgens de pagina **overzicht** aan de linkerkant en klik vervolgens op de knop **resource groep verwijderen** . Voer de naam _PreProductionRG_ in om de verwijdering te bevestigen en selecteer **verwijderen** onder aan het deel venster.
 

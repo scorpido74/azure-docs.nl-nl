@@ -4,14 +4,14 @@ description: Gebruik Azure Resource Manager sjablonen om Azure Cosmos DB te make
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 11/08/2019
 ms.author: thvankra
-ms.openlocfilehash: 7c508d736c7c04cc6df2b42e0a90a2906052adbc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7b08ca98f25b079d831033b9393effd4ee4b65e3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835522"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961858"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Resource Manager sjablonen voor Azure Cosmos DB
 
@@ -29,8 +29,6 @@ De volgende tabellen bevatten koppelingen naar Azure Resource Manager sjablonen 
 |**Sjabloon**|**Beschrijving**|
 |---| ---|
 |[Een Azure Cosmos-account,-Data Base,-verzameling maken](manage-mongodb-with-resource-manager.md#create-resource) | Met deze sjabloon maakt u een account met Azure Cosmos DB-API voor MongoDB in twee regio's waarvoor multi-master is ingeschakeld. Het Azure Cosmos-account heeft twee containers die door Voer op database niveau delen. |
-|[Door Voer (RU/s) bijwerken voor een Data Base](manage-mongodb-with-resource-manager.md#database-ru-update) | Met deze sjabloon wordt de door Voer voor een data base in een MongoDB-API-account bijgewerkt. |
-|[De door Voer (RU/s) voor een verzameling bijwerken](manage-mongodb-with-resource-manager.md#collection-ru-update) | Met deze sjabloon wordt de door Voer voor een container in een MongoDB-API-account bijgewerkt. |
 
 ## <a name="cassandra-api"></a>Cassandra-API
 
@@ -43,17 +41,14 @@ De volgende tabellen bevatten koppelingen naar Azure Resource Manager sjablonen 
 |**Sjabloon**|**Beschrijving**|
 |---| ---|
 |[Een Azure Cosmos-account,-Data Base,-grafiek maken](manage-gremlin-with-resource-manager.md#create-resource) | Met deze sjabloon wordt een Gremlin-API-account gemaakt in twee regio's waarvoor multi-master is ingeschakeld. Het Azure Cosmos-account heeft twee grafieken die door Voer op database niveau delen. |
-|[Door Voer (RU/s) bijwerken voor een Data Base](manage-gremlin-with-resource-manager.md#database-ru-update) | Met deze sjabloon wordt de door Voer voor een data base in een Gremlin-API-account bijgewerkt. |
-|[De door Voer (RU/s) voor een grafiek bijwerken](manage-gremlin-with-resource-manager.md#graph-ru-update) | Met deze sjabloon wordt de door Voer voor een grafiek in een Gremlin-API-account bijgewerkt. |
 
 ## <a name="table-api"></a>Tabel-API
 
 |**Sjabloon**|**Beschrijving**|
 |---| ---|
 |[Een Azure Cosmos-account maken, tabel](manage-table-with-resource-manager.md#create-resource) | Met deze sjabloon maakt u een Table-API-account in twee regio's waarvoor multi-master is ingeschakeld. Het Azure Cosmos-account heeft één tabel. |
-|[De door Voer (RU/s) voor een tabel bijwerken](manage-table-with-resource-manager.md#table-ru-update) | Met deze sjabloon wordt de door Voer voor een tabel in een Table-API-account bijgewerkt. |
 
 > [!TIP]
 > Als u gedeelde door voer wilt inschakelen wanneer u Table-API gebruikt, schakelt u door Voer op account niveau in azure Portal.
 
-Zie [arm-Naslag informatie voor Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions) -pagina voor de referentie documentatie.
+Zie [Azure Resource Manager referentie voor Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions) pagina voor de referentie documentatie.

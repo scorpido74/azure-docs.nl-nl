@@ -1,6 +1,6 @@
 ---
-title: Gegevens verkennen met behulp van de Azure Time Series Insights Explorer | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u de Azure Time Series Insights Explorer in uw webbrowser kunt gebruiken om snel een algemene weer gave van uw big data te bekijken en uw IoT-omgeving te valideren.
+title: Gegevens verkennen met behulp van de Explorer-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over het gebruik van de Azure Time Series Insights Explorer om uw IoT-gegevens weer te geven.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 25f2c07678217b69699b881d53ee9d5f92f84be1
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: df895f99b64d30506bc9457fb5bdc54a2182b5fe
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990105"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012634"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
 
@@ -41,7 +41,7 @@ Azure Time Series Insights is een volledig beheerde service voor analyse, opslag
 
 Voordat u Time Series Insights Explorer kunt gebruiken, moet u het volgende doen:
 
-- Een Time Series Insights omgeving maken. Zie hoe u aan de [slag gaat met Time Series Insights](./time-series-insights-get-started.md)voor meer informatie.
+- Maak een Time Series Insights-omgeving. Zie hoe u aan de [slag gaat met Time Series Insights](./time-series-insights-get-started.md)voor meer informatie.
 - [Bied toegang](time-series-insights-data-access.md) tot uw account in de omgeving.
 - Voeg een [IOT-hub](time-series-insights-how-to-add-an-event-source-iothub.md) of [Event hub](time-series-insights-how-to-add-an-event-source-eventhub.md) gebeurtenis bron toe.
 
@@ -57,7 +57,7 @@ Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Time Ser
 
 1. Met het pictogram van de Azure-Cloud gaat u naar uw omgeving in het Azure Portal.
 
-   [Time Series Insights omgeving![](media/time-series-insights-explorer/explorer1.png)](media/time-series-insights-explorer/explorer1.png#lightbox)
+   [Time Series Insights omgeving ![](media/time-series-insights-explorer/explorer1.png)](media/time-series-insights-explorer/explorer1.png#lightbox)
 
 1. Vervolgens ziet u een grafiek met een telling van alle gebeurtenissen tijdens de geselecteerde tijds periode. Hier hebt u een aantal besturings elementen:
 
@@ -67,15 +67,15 @@ Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Time Ser
       - U kunt de stap interpolatie inschakelen, het minimum en maximum weer geven en de y-as van het configuratie scherm naast **meting**aanpassen. U kunt ook aanpassen of de weer gegeven gegevens een aantal, een gemiddelde of een som van de gegevens zijn.
       - U kunt Maxi maal vijf termen toevoegen die op dezelfde x-as worden weer gegeven. Gebruik de knop **kopiëren** om een extra term toe te voegen of selecteer **toevoegen** om een nieuwe term toe te voegen.
 
-        [Editor paneel voor![termen](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
+        [Editor paneel voor ![termen](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
 
-      - **Predikaat**: gebruik het predicaat om snel uw gebeurtenissen te filteren met behulp van de set operands die in de volgende tabel worden weer gegeven. Als u een zoek opdracht uitvoert door te selecteren of te klikken, wordt het predikaat automatisch bijgewerkt op basis van die zoek opdracht. Ondersteunde typen operanden zijn onder andere:
+      - **Predikaat**: gebruik het predicaat om snel uw gebeurtenissen te filteren met behulp van de set operands die in de volgende tabel worden weer gegeven. Als u een zoek opdracht uitvoert door te selecteren of te klikken, wordt het predikaat automatisch bijgewerkt op basis van die zoek opdracht. Ondersteunde Operandtypen zijn onder andere:
 
          |Bewerking  |Ondersteunde typen  |Opmerkingen  |
          |---------|---------|---------|
-         |`<`, `>`, `<=`, `>=`     |  Double, DateTime, time span       |         |
-         |`=`, `!=`, `<>`     | Teken reeks, BOOL, double, DateTime, time span, NULL        |         |
-         |IN     | Teken reeks, BOOL, double, DateTime, time span, NULL        |  Alle operanden moeten van hetzelfde type zijn of NULL-constante zijn.        |
+         |`<`, `>`, `<=`, `>=`     |  Double, DateTime, TimeSpan       |         |
+         |`=`, `!=`, `<>`     | String, Bool, Double, DateTime, TimeSpan NULL        |         |
+         |IN     | String, Bool, Double, DateTime, TimeSpan NULL        |  Alle operands moeten zijn van hetzelfde type of NULL-constante.        |
          |BIEDT     | Tekenreeks        |  Aan de rechter kant zijn alleen letterlijke teken reeksen van constanten toegestaan. Lege teken reeks en NULL zijn niet toegestaan.       |
 
       - **Voor beelden van query's**
@@ -94,7 +94,7 @@ Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Time Ser
 
 1. Gebruik het hulp programma **perspectief weergave** voor een gelijktijdige weer gave van Maxi maal vier unieke query's. De **perspectief weergave** knop bevindt zich in de rechter bovenhoek van de grafiek.
 
-   [Perspectief weergave![](media/time-series-insights-explorer/explorer4.png)](media/time-series-insights-explorer/explorer4.png#lightbox)
+   [Perspectief weergave ![](media/time-series-insights-explorer/explorer4.png)](media/time-series-insights-explorer/explorer4.png#lightbox)
 
 1. Bekijk een grafiek om uw gegevens visueel te verkennen en gebruik de hulp middelen voor **grafieken** :
 
@@ -104,11 +104,11 @@ Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Time Ser
     - In het filter gebied links van de grafiek ziet u alle weer gegeven gegevens reeksen en vervolgens de volg orde op waarde of naam. U kunt ook alle gegevens reeksen of vastgemaakte of niet-vastgemaakte reeksen weer geven. U kunt één gegevens reeks selecteren en de reeks splitsen op basis van een andere kolom, de reeks toevoegen als nieuwe term, alleen de geselecteerde reeks weer geven, de geselecteerde reeks uitsluiten, de reeks vastmaken of gebeurtenissen uit de geselecteerde reeks verkennen.
     - Wanneer u meerdere voor waarden tegelijk bekijkt, kunt u een stack stapelen, opstapelen, aanvullende gegevens over een gegevens reeks weer geven en dezelfde y-as voor alle termen gebruiken. Gebruik de knoppen in de rechter bovenhoek van de grafiek.
 
-    [hulp programma![grafiek](media/time-series-insights-explorer/explorer5.png)](media/time-series-insights-explorer/explorer5.png#lightbox)
+    [hulp programma ![grafiek](media/time-series-insights-explorer/explorer5.png)](media/time-series-insights-explorer/explorer5.png#lightbox)
 
 1. Gebruik de **heatmap** om snel unieke of afwijkende gegevens reeksen in een bepaalde query op te sporen. Er kan slechts één zoek term worden gevisualiseerd als een heatmap.
 
-    [![heatmap](media/time-series-insights-explorer/explorer6.png)](media/time-series-insights-explorer/explorer6.png#lightbox)
+    [![Heatmap](media/time-series-insights-explorer/explorer6.png)](media/time-series-insights-explorer/explorer6.png#lightbox)
 
 1. Wanneer u gebeurtenissen bekijkt door te selecteren of met de rechter muisknop te klikken, wordt het deel venster **gebeurtenissen** beschikbaar gesteld. Hier kunt u al uw onbewerkte gebeurtenissen zien en uw gebeurtenissen exporteren als JSON-of CSV-bestanden. Time Series Insights worden alle onbewerkte gegevens opgeslagen.
 
@@ -119,7 +119,7 @@ Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Time Ser
     - **Patronen**: met deze functie worden de meest statistische significante patronen in een geselecteerd gegevens gebied proactief geoppereerd. U hoeft geen duizenden gebeurtenissen te bekijken om te begrijpen welke patronen de meeste tijd en energie vereisen. Met Time Series Insights kunt u rechtstreeks naar deze statistisch significante patronen gaan om een analyse te blijven uitvoeren. Deze functie is ook handig voor het naslachten van historische gegevens.
     - **Kolom statistieken**: kolom statistieken bieden grafieken en tabellen die gegevens opsplitsen van elke kolom van de geselecteerde gegevens reeks over de geselecteerde time span.
 
-      [![statistieken](media/time-series-insights-explorer/explorer8.png)](media/time-series-insights-explorer/explorer8.png#lightbox)
+      [![STATS](media/time-series-insights-explorer/explorer8.png)](media/time-series-insights-explorer/explorer8.png#lightbox)
 
 U hebt nu de verschillende functies en opties zien die beschikbaar zijn in de Web-App van Time Series Insights Explorer.
 

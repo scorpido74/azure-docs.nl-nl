@@ -1,10 +1,10 @@
 ---
-title: Azure PowerShell-voorbeeldscript - verkeer routeren voor hoge beschikbaarheid van toepassingen | Microsoft Docs
-description: Azure PowerShell-voorbeeldscript - verkeer routeren voor hoge beschikbaarheid van toepassingen
+title: Verkeer routeren voor HA van toepassingen-Azure PowerShell-Traffic Manager
+description: 'Azure PowerShell-voorbeeld script: route verkeer voor hoge Beschik baarheid van toepassingen'
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
-manager: twooley
+manager: kumudD
 editor: ''
 tags: azure-infrastructure
 ms.assetid: ''
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: allensu
-ms.openlocfilehash: 1c04859e2fe8841eb679f0b3e22b54ce71f88230
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd81ef459d4b3a60d5da3dff9fff4119392ac8cd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050969"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014640"
 ---
-# <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Verkeer routeren voor hoge beschikbaarheid van toepassingen met behulp van Azure PowerShell
+# <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Verkeer routeren voor hoge Beschik baarheid van toepassingen met behulp van Azure PowerShell
 
-Dit script maakt u een resourcegroep, twee app service-abonnementen, twee web-apps, een traffic manager-profiel en twee traffic manager-eindpunten. Traffic Manager zorgt ervoor dat verkeer van de toepassing in één regio als de primaire regio, en naar de secundaire regio als de toepassing in de primaire regio niet beschikbaar is. Voordat u het script uitvoert, moet u de waarden MyWebApp, MyWebAppL1 en MyWebAppL2 op unieke waarden wijzigen in Azure. Nadat het script is uitgevoerd, kunt u de app in de primaire regio met de URL-mywebapp.trafficmanager.net openen.
+Met dit script maakt u een resource groep, twee app service-abonnementen, twee web-apps, een Traffic Manager-profiel en twee Traffic Manager-eind punten. Traffic Manager stuurt het verkeer naar de toepassing in één regio als de primaire regio, en naar de secundaire regio wanneer de toepassing in de primaire regio niet beschikbaar is. Voordat u het script uitvoert, moet u de waarden voor MyWebApp, MyWebAppL1 en MyWebAppL2 wijzigen in unieke waarden in Azure. Nadat het script is uitgevoerd, hebt u toegang tot de app in de primaire regio met de URL mywebapp.trafficmanager.net.
 
 Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](/powershell/azure) en voer vervolgens `Connect-AzAccount` uit om verbinding te maken met Azure.
 
@@ -52,9 +52,9 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 | Opdracht | Opmerkingen |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)  | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
-| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Hiermee maakt u een App Service-plan. Dit is vergelijkbaar met een serverfarm voor uw Azure-web-app. |
-| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Hiermee maakt u een Azure-web-app in de App Service-plan. |
-| [Set-AzResource](/powershell/module/az.resources/new-azresource) | Hiermee maakt u een Azure-web-app in de App Service-plan. |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Hiermee maakt u een App Service-plan. Dit is net als een server farm voor uw Azure-web-app. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Hiermee maakt u een Azure-web-app binnen het App Service-abonnement. |
+| [Set-AzResource](/powershell/module/az.resources/new-azresource) | Hiermee maakt u een Azure-web-app binnen het App Service-abonnement. |
 | [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) | Hiermee maakt u een Azure Traffic Manager-profiel. |
 | [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) | Hiermee voegt u een eindpunt toe aan een Azure Traffic Manager-profiel. |
 

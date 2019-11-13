@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 1059dd463529f4c357038225f2f9ef11d0092802
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679593"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953953"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>GPU-versnelling (graphics processing unit) configureren voor virtuele Windows-Bureau bladen
 
@@ -26,17 +26,14 @@ Azure biedt een aantal [geoptimaliseerde virtuele machine-grootten voor GPU](/az
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Een hostgroep maken, uw virtuele machine inrichten en een app-groep configureren
 
-Maak een nieuwe hostgroep met behulp van een virtuele machine met de grootte die u hebt geselecteerd. Zie voor instructies [Tutorial: Maak een hostgroep met Azure Marketplace @ no__t-0.
+Maak een nieuwe hostgroep met behulp van een virtuele machine met de grootte die u hebt geselecteerd. Zie [zelf studie: een hostgroep maken met Azure Marketplace](/azure/virtual-desktop/create-host-pools-azure-marketplace)voor instructies.
 
 Het virtuele bureau blad van Windows ondersteunt de weer gave en code ring van GPU-versnellen in de volgende besturings systemen:
 
 * Windows 10 versie 1511 of hoger
 * Windows Server 2016 of hoger
 
-U moet ook een app-groep configureren of de standaard bureau blad-app-groep (met de naam bureau blad-toepassings groep) gebruiken die automatisch wordt gemaakt wanneer u een nieuwe hostgroep maakt. Zie voor instructies [Tutorial: App-groepen beheren voor virtuele Windows-bureau blad @ no__t-0.
-
->[!NOTE]
->Windows virtueel bureau blad ondersteunt alleen het app-groeps type ' Desktop ' voor host-Pools met GPU-functionaliteit. App-groepen van het type RemoteApp worden niet ondersteund voor host-Pools waarvoor GPU is ingeschakeld.
+U moet ook een app-groep configureren of de standaard bureau blad-app-groep (met de naam bureau blad-toepassings groep) gebruiken die automatisch wordt gemaakt wanneer u een nieuwe hostgroep maakt. Zie [zelf studie: app-groepen beheren voor virtuele Windows-Bureau bladen](/azure/virtual-desktop/manage-app-groups)voor instructies.
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Ondersteunde grafische Stuur Programma's installeren in uw virtuele machine
 
@@ -52,7 +49,7 @@ Apps en Desk tops die worden uitgevoerd in configuraties met meerdere sessies wo
 
 1. Maak verbinding met het bureau blad van de virtuele machine met een account met lokale Administrator bevoegdheden.
 2. Open het menu Start en typ ' gpedit. msc ' om de groepsbeleid editor te openen.
-3. Navigeer in de structuur naar **computer configuratie** > **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad sessiemap** > **extern Sessie omgeving**.
+3. Navigeer in de structuur naar **computer configuratie** > **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > extern bureaublad **sessie host** > **externe sessie omgeving**.
 4. Beleid selecteren **Gebruik de standaard grafische hardware-adapter voor alle extern bureaublad-services sessies** en stel dit beleid in op **ingeschakeld** om GPU-rendering in de externe sessie in te scha kelen.
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU-versnelde frame codering configureren
@@ -77,7 +74,7 @@ Extern bureaublad codeert alle afbeeldingen die worden weer gegeven door apps en
 
 Voer een van de volgende handelingen uit om te controleren of apps de GPU gebruiken voor Rendering:
 
-* Gebruik het hulp programma `nvidia-smi` zoals beschreven in [installatie van stuur programma controleren](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) om te controleren op GPU-gebruik bij het uitvoeren van uw apps.
+* Gebruik het `nvidia-smi`-hulp programma zoals beschreven in [installatie van stuur programma controleren](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) om te controleren op GPU-gebruik bij het uitvoeren van uw apps.
 * In ondersteunde besturingssysteem versies kunt u taak beheer gebruiken om te controleren op GPU-gebruik. Selecteer de GPU op het tabblad prestaties om te zien of apps gebruikmaken van de GPU.
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>GPU-versneld frame codering controleren
@@ -86,8 +83,8 @@ Controleren of Extern bureaublad gebruikmaakt van GPU-versneld coderen:
 
 1. Maak verbinding met het bureau blad van de virtuele machine met behulp van de Windows-client voor virtueel bureau blad.
 2. Start de Logboeken en ga naar het volgende knoop punt: **Logboeken van toepassingen en Services** > **micro soft** > **Windows** > **RemoteDesktopServices-RdpCoreTS** > **operationeel**
-3. Zoek naar gebeurtenis-ID 170 om te bepalen of GPU-versneld coderen wordt gebruikt. Als ' AVC-hardware encoder is ingeschakeld: 1. vervolgens wordt GPU-code ring gebruikt.
-4. Zoek naar gebeurtenis-ID 162 om te bepalen of de AVC 444-modus wordt gebruikt. Als u ' AVC available: 1 initieel profiel: 2048 "vervolgens wordt het gebruik van AVC 444 gebruikt.
+3. Zoek naar gebeurtenis-ID 170 om te bepalen of GPU-versneld coderen wordt gebruikt. Als u ' AVC hardware encoder enabled: 1 ' ziet, wordt GPU-code ring gebruikt.
+4. Zoek naar gebeurtenis-ID 162 om te bepalen of de AVC 444-modus wordt gebruikt. Als u ' AVC available: 1 eerste profiel: 2048 ' ziet, wordt het gebruik van AVC 444 gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

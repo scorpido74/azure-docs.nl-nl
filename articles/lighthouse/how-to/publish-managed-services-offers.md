@@ -4,15 +4,15 @@ description: Meer informatie over het publiceren van een Managed Service-aanbod 
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 10/17/2019
+ms.date: 11/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 4b2ce1253fd4421b36105fdbae68c6e89173a3c6
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: ee8f0f88f1e60c6e8b5da34a165757694f52dcbb
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615466"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005398"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Een managed services-aanbod publiceren naar Azure Marketplace
 
@@ -81,10 +81,10 @@ Voeg ten slotte een of meer **autorisatie** vermeldingen toe aan uw abonnement. 
 
 Voor elke **autorisatie**moet u het volgende opgeven. U kunt vervolgens zo vaak als nodig **nieuwe autorisatie** selecteren om meer gebruikers en roldefinities toe te voegen.
 
-  - **Azure AD-object-id**: de Azure ad-id van een gebruiker, gebruikers groep of toepassing waaraan bepaalde machtigingen worden toegekend (zoals beschreven in de roldefinitie) voor de resources van uw klanten.
-  - **Weergave naam van Azure AD-object**: een beschrijvende naam om de klant te helpen het doel van deze autorisatie te begrijpen. De klant krijgt deze naam te zien bij het delegeren van resources.
-  - **Roldefinitie**: Selecteer een van de beschik bare ingebouwde Azure AD-rollen in de lijst. Met deze rol bepaalt u de machtigingen die de gebruiker in het veld ID van het **Azure AD-object** heeft op de resources van uw klanten. Zie voor beschrijvingen van deze rollen [ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) en [functie ondersteuning voor Azure delegated resource management](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)
-  - **Toewijs bare rollen**: dit is alleen vereist als u gebruikers toegangs beheerder hebt geselecteerd in de **roldefinitie** voor deze autorisatie. Als dat het geval is, moet u hier een of meer toewijs bare rollen toevoegen. De gebruiker in het **object-ID-veld van Azure AD** kan deze **toewijs bare rollen** toewijzen aan [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), wat vereist is om [beleid te implementeren dat kan worden hersteld](deploy-policy-remediation.md). Houd er rekening mee dat er geen andere machtigingen zijn gekoppeld aan de rol beheerder van gebruikers toegang voor deze gebruiker. Als u hier niet een of meer rollen selecteert, wordt er door uw inzending geen certificering door gegeven. (Als u geen beheerder voor gebruikers toegang hebt geselecteerd voor de roldefinitie van deze gebruiker, heeft dit veld geen effect.)
+- **Azure AD-object-id**: de Azure ad-id van een gebruiker, gebruikers groep of toepassing waaraan bepaalde machtigingen worden toegekend (zoals beschreven in de roldefinitie) voor de resources van uw klanten.
+- **Weergave naam van Azure AD-object**: een beschrijvende naam om de klant te helpen het doel van deze autorisatie te begrijpen. De klant krijgt deze naam te zien bij het delegeren van resources.
+- **Roldefinitie**: Selecteer een van de beschik bare ingebouwde Azure AD-rollen in de lijst. Met deze rol bepaalt u de machtigingen die de gebruiker in het veld ID van het **Azure AD-object** heeft op de resources van uw klanten. Zie voor beschrijvingen van deze rollen [ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) en [functie ondersteuning voor Azure delegated resource management](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)
+- **Toewijs bare rollen**: dit is alleen vereist als u gebruikers toegangs beheerder hebt geselecteerd in de **roldefinitie** voor deze autorisatie. Als dat het geval is, moet u hier een of meer toewijs bare rollen toevoegen. De gebruiker in het **object-ID-veld van Azure AD** kan deze **toewijs bare rollen** toewijzen aan [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), wat vereist is om [beleid te implementeren dat kan worden hersteld](deploy-policy-remediation.md). Houd er rekening mee dat er geen andere machtigingen zijn gekoppeld aan de rol beheerder van gebruikers toegang voor deze gebruiker. Als u hier niet een of meer rollen selecteert, wordt er door uw inzending geen certificering door gegeven. (Als u geen beheerder voor gebruikers toegang hebt geselecteerd voor de roldefinitie van deze gebruiker, heeft dit veld geen effect.)
 
 > [!TIP]
 > In de meeste gevallen moet u machtigingen toewijzen aan een Azure AD-gebruikers groep of Service-Principal, in plaats van aan een reeks afzonderlijke gebruikers accounts. Hiermee kunt u toegang voor afzonderlijke gebruikers toevoegen of verwijderen zonder dat u het plan hoeft bij te werken en opnieuw te publiceren wanneer uw toegangs vereisten veranderen. Zie voor aanvullende aanbevelingen [tenants, rollen en gebruikers in azure Lighthouse-scenario's](../concepts/tenants-users-roles.md).
@@ -143,62 +143,15 @@ Zodra u alle secties hebt voltooid, is de volgende stap het publiceren van de aa
 
 ## <a name="the-customer-onboarding-process"></a>Het onboarding-proces van de klant
 
-Wanneer een klant uw aanbieding toevoegt, kunnen ze [een of meer specifieke abonnementen of resource groepen delegeren](view-manage-service-providers.md#delegate-resources) die vervolgens voor het beheer van gedelegeerde resources van Azure worden uitgevoerd. Als een klant een aanbieding heeft geaccepteerd, maar nog geen resources heeft gedelegeerd, wordt op de pagina [**service providers**](view-manage-service-providers.md) van de Azure Portal een opmerking weer geven boven aan de **provider** . Als een gebruiker in de Tenant van de klant deze delegering niet kan uitvoeren, is het waarschijnlijk dat ze niet de rol van eigenaar voor het abonnement hebben. Om gebruikers te vinden die het abonnement kunnen delegeren, kan de gebruiker het abonnement selecteren in de Azure Portal, **toegangs beheer openen (IAM)** en [alle gebruikers met de rol eigenaar weer geven](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
+Nadat een klant uw aanbieding heeft toegevoegd, kunnen ze [een of meer specifieke abonnementen of resource groepen delegeren](view-manage-service-providers.md#delegate-resources), die vervolgens worden uitgevoerd voor het beheer van de gedelegeerde resources van Azure. Als een klant een aanbieding heeft geaccepteerd, maar nog geen resources heeft gedelegeerd, wordt op de pagina [**service providers**](view-manage-service-providers.md) van de Azure Portal een opmerking weer geven boven aan de **provider** .
 
-Voordat een abonnement (of resource groepen binnen een abonnement) kan worden opvolgd, moet het abonnement worden geautoriseerd voor onboarding door de resource provider **micro soft. ManagedServices** hand matig te registreren. Een gebruiker in de Tenant van de klant met de rol Inzender of eigenaar kan dit doen door de stappen te volgen die worden beschreven in [Azure resource providers en-typen](../../azure-resource-manager/resource-manager-supported-services.md).
+> [!IMPORTANT]
+> Delegering moet worden uitgevoerd door een niet-gast account in de Tenant van de klant waarvan de [eigenaar ingebouwde rol](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) heeft voor het abonnement (of de resource groepen bevat die worden uitgevoerd). Als u alle gebruikers wilt zien die het abonnement kunnen delegeren, kan een gebruiker in de Tenant van de klant het abonnement selecteren in de Azure Portal, **toegangs beheer openen (IAM)** en [alle gebruikers met de rol eigenaar weer geven](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
-De klant kan vervolgens controleren of het abonnement gereed is voor onboarding op een van de volgende manieren.
+Nadat de klant een abonnement (of een of meer resource groepen binnen een abonnement) heeft gedelegeerd, wordt de resource provider **micro soft. ManagedServices** geregistreerd voor dat abonnement en kunnen gebruikers in uw Tenant toegang krijgen tot de gedelegeerde resources volgens de autorisaties in uw aanbieding.
 
-### <a name="azure-portal"></a>Azure Portal
-
-1. Selecteer in de Azure Portal het abonnement.
-1. Selecteer **Resourceproviders**.
-1. Controleer of **micro soft. ManagedServices** als **geregistreerd**wordt weer gegeven.
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-De resultaten moeten er als volgt uitzien:
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-De resultaten moeten er als volgt uitzien:
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
+> [!NOTE]
+> Op dit moment kunnen abonnementen (of resource groepen binnen een abonnement) niet worden gedelegeerd als het abonnement gebruikmaakt van Azure Databricks. Als er al een abonnement (of resource groepen binnen een abonnement) is gedelegeerd, is het op dit moment niet mogelijk om Databricks-werk ruimten in dat abonnement te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

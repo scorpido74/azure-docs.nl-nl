@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-voorbeeldscript - verkeer routeren voor hoge beschikbaarheid van toepassingen | Microsoft Docs
-description: Azure CLI-voorbeeldscript - verkeer routeren voor hoge beschikbaarheid van toepassingen
+title: Verkeer routeren voor HA-toepassingen-Azure CLI-Traffic Manager
+description: Voor beeld van Azure CLI-script-verkeer routeren voor hoge Beschik baarheid van toepassingen
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: allensu
-ms.openlocfilehash: 2bf993dad3b9452424c5d3b450bf3908b38983c2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 02807d3773b5d27d59ab6b03a22f7637bae95aca
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050988"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006396"
 ---
-# <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Verkeer routeren voor hoge beschikbaarheid van toepassingen met behulp van Azure CLI
+# <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Verkeer routeren voor hoge Beschik baarheid van toepassingen met behulp van Azure CLI
 
-Dit script maakt u een resourcegroep, twee app service-abonnementen, twee web-apps, een traffic manager-profiel en twee traffic manager-eindpunten. Traffic Manager zorgt ervoor dat verkeer van de toepassing in één regio als de primaire regio, en naar de secundaire regio als de toepassing in de primaire regio niet beschikbaar is. Voordat u het script uitvoert, moet u de waarden MyWebApp, MyWebAppL1 en MyWebAppL2 op unieke waarden wijzigen in Azure. Nadat het script is uitgevoerd, kunt u de app in de primaire regio met de URL-mywebapp.trafficmanager.net openen.
+Met dit script maakt u een resource groep, twee app service-abonnementen, twee web-apps, een Traffic Manager-profiel en twee Traffic Manager-eind punten. Traffic Manager stuurt het verkeer naar de toepassing in één regio als de primaire regio, en naar de secundaire regio wanneer de toepassing in de primaire regio niet beschikbaar is. Voordat u het script uitvoert, moet u de waarden voor MyWebApp, MyWebAppL1 en MyWebAppL2 wijzigen in unieke waarden in Azure. Nadat het script is uitgevoerd, hebt u toegang tot de app in de primaire regio met de URL mywebapp.trafficmanager.net.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -37,7 +37,7 @@ Dit script maakt u een resourcegroep, twee app service-abonnementen, twee web-ap
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie 
 
-Nadat het voorbeeldscript is uitgevoerd, de volgende opdracht kan worden gebruikt om te verwijderen van de resourcegroep, de App Service-app en alle gerelateerde resources.
+Nadat het voorbeeld script is uitgevoerd, kan de volgende opdracht worden gebruikt om de resource groep, App Service-app en alle gerelateerde resources te verwijderen.
 
 ```azurecli
 az group delete --name myResourceGroup1 --yes
@@ -51,13 +51,13 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 | Opdracht | Opmerkingen |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | Hiermee maakt u een App Service-plan. Dit is vergelijkbaar met een serverfarm voor uw Azure-web-app. |
-| [AZ webapp web maken](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) | Hiermee maakt u een Azure-web-app in de App Service-plan. |
-| [AZ network traffic-manager-profiel maken](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Hiermee maakt u een Azure Traffic Manager-profiel. |
-| [AZ network traffic-manager-eindpunt maken](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Hiermee voegt u een eindpunt toe aan een Azure Traffic Manager-profiel. |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | Hiermee maakt u een App Service-plan. Dit is net als een server farm voor uw Azure-web-app. |
+| [AZ webapp web create](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) | Hiermee maakt u een Azure-web-app binnen het App Service-abonnement. |
+| [AZ Network Traffic-Manager profile Create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Hiermee maakt u een Azure Traffic Manager-profiel. |
+| [AZ Network Traffic-Manager endpoint Create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Hiermee voegt u een eindpunt toe aan een Azure Traffic Manager-profiel. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
-Als u meer App Service CLI-voorbeeldscripts vindt u de [documentatie Azure Networking](../cli-samples.md).
+Aanvullende App Service CLI-voorbeeld scripts vindt u in de [documentatie van Azure-netwerken](../cli-samples.md).

@@ -4,18 +4,18 @@ description: Hierin wordt beschreven hoe u kunt opgeven of u een volledige of in
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 10a9917d8ed763b133fbd33aedd16da399a224b2
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 762b0e74e8da20d1b48703385853765d5cc643af
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881644"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953230"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Implementatie modi Azure Resource Manager
 
-Wanneer u uw resources implementeert, geeft u op dat de implementatie een incrementele update of een volledige update is.  Het belangrijkste verschil tussen deze twee modi is hoe Resource Manager bestaande resources in de resource groep die zich niet in de sjabloon bevinden, afhandelt. De standaard modus is incrementeel.
+Wanneer u uw resources implementeert, geeft u op dat de implementatie een incrementele update of een volledige update is.  Het verschil tussen deze twee modi is hoe Resource Manager bestaande resources in de resource groep die zich niet in de sjabloon bevinden, afhandelt. De standaard modus is incrementeel.
 
 Voor beide modi probeert Resource Manager alle resources te maken die zijn opgegeven in de sjabloon. Als de resource al bestaat in de resource groep en de bijbehorende instellingen niet worden gewijzigd, wordt er geen bewerking voor die resource uitgevoerd. Als u de eigenschaps waarden voor een resource wijzigt, wordt de resource bijgewerkt met de nieuwe waarden. Als u de locatie of het type van een bestaande resource probeert bij te werken, mislukt de implementatie met een fout. Implementeer in plaats daarvan een nieuwe resource met de locatie of het type dat u nodig hebt.
 
@@ -26,6 +26,8 @@ In de volledige modus **verwijdert** Resource Manager resources die voor komen i
 Als uw sjabloon een resource bevat die niet is geïmplementeerd omdat de [voor waarde](conditional-resource-deployment.md) wordt geëvalueerd als onwaar, is het resultaat afhankelijk van de rest API versie die u gebruikt om de sjabloon te implementeren. Als u een eerdere versie dan 2019-05-10 gebruikt, wordt de resource **niet verwijderd**. Met 2019-05-10 of hoger wordt de resource **verwijderd**. Met de nieuwste versies van Azure PowerShell en Azure CLI verwijdert u de resource.
 
 Wees voorzichtig met het gebruik van de volledige modus met [Kopieer lussen](resource-group-create-multiple.md). Alle resources die niet zijn opgegeven in de sjabloon na het oplossen van de Kopieer-lus, worden verwijderd.
+
+Als u naar [meer dan één resource groep in een sjabloon](resource-manager-cross-resource-group-deployment.md)implementeert, kunnen resources in de resource groep die zijn opgegeven in de implementatie bewerking worden verwijderd. Resources in de secundaire resource groepen worden niet verwijderd.
 
 Er zijn een aantal verschillen in de manier waarop bron typen het verwijderen van de modus volt ooien verwerken. Bovenliggende resources worden automatisch verwijderd als ze niet worden gebruikt in een sjabloon die wordt geïmplementeerd in de modus voltooid. Sommige onderliggende resources worden niet automatisch verwijderd wanneer ze niet in de sjabloon staan. Deze onderliggende resources worden echter verwijderd als de bovenliggende resource wordt verwijderd. 
 

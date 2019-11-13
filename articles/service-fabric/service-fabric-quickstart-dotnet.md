@@ -1,5 +1,5 @@
 ---
-title: Een .NET-Linux-toepassing maken voor Service Fabric in Azure | Microsoft Docs
+title: Snel een .NET-app maken op Service Fabric in azure
 description: In deze snelstartgids maakt u een .NET-toepassing voor Azure met behulp van de voorbeeldtoepassing van de betrouwbare Service Fabric-services.
 services: service-fabric
 documentationcenter: .net
@@ -15,14 +15,14 @@ ms.workload: azure-vs
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 02c77d1a34a4dec8732b5fa2edb4d7a55e079c28
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: dfc8890d58763bd193f6a0b4137fc972d26beb9f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225196"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013221"
 ---
-# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Quickstart: Een .NET Reliable Services-toepassing implementeren voor Service Fabric
+# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Snelstart: Een .NET Reliable Services-toepassing maken voor Service Fabric
 
 Azure Service Fabric is een platform voor gedistribueerde systemen waarmee u schaalbare en betrouwbare microservices en containers implementeert en beheert.
 
@@ -41,7 +41,7 @@ Met behulp van deze toepassing leert u hoe u:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 1. [Installeer Visual Studio 2019](https://www.visualstudio.com/) met de **Azure development** -en **ASP.net-en Web Development** -workloads.
 2. [Git installeren](https://git-scm.com/)
@@ -102,7 +102,7 @@ Wanneer de implementatie is voltooid, start u een browser en opent u `http://loc
 
 ![Front-end van toepassing](./media/service-fabric-quickstart-dotnet/application-screenshot-new.png)
 
-U kunt nu een reeks stemmingsopties toevoegen en beginnen met het verzamelen van stemmen. De toepassing wordt uitgevoerd en alle gegevens worden in uw Service Fabric-cluster opgeslagen, zonder dat daarvoor een aparte database nodig is.
+U kunt nu een reeks stemmingsopties toevoegen en beginnen met het verzamelen van stemmen. De toepassing wordt uitgevoerd en alle gegevens worden opgeslagen in het Service Fabric-cluster, zonder dat hiervoor een aparte database nodig is.
 
 ## <a name="walk-through-the-voting-sample-application"></a>Stapsgewijs door de voorbeeldstemtoepassing gaan
 

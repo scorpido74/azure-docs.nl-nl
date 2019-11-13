@@ -3,7 +3,7 @@ title: Rapporten van gebruikers activiteiten zoeken in Azure Portal | Microsoft 
 description: Meer informatie over de Azure Active Directory activiteiten rapporten voor gebruikers in de Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7fdf8c17c8dcbdc8203cb46342c8474b3d9832f
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820920"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008217"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Activiteiten rapporten zoeken in de Azure Portal
 
@@ -52,12 +52,12 @@ U kunt Geavanceerd filteren in het controle rapport gebruiken om toegang te krij
 
 Categorieën zijn onder andere:
 
-- Alles
+- Alle
 - AdministrativeUnit
 - ApplicationManagement
-- Verificatie
+- Authentication
 - Autorisatie
-- Contact
+- Contactpersoon
 - Apparaat
 - Apparaatconfiguratie
 - DirectoryManagement
@@ -73,12 +73,12 @@ U kunt ook filteren op een specifieke service met behulp van het vervolg filter 
 
 Services omvatten:
 
-- Alles
+- Alle
 - Toegangsbeoordelingen
 - Account inrichten 
 - SSO van de toepassing
 - Verificatiemethoden
-- Business to consumer
+- B2C
 - Voorwaardelijke toegang
 - Hoofddirectory
 - Rechtenbeheer
@@ -86,7 +86,7 @@ Services omvatten:
 - Uitgenodigde gebruikers
 - PIM
 - Self-service voor groepsbeheer
-- Self-service voor wachtwoordbeheer
+- Selfservice voor wachtwoordbeheer
 - Gebruiksvoorwaarden
 
 ## <a name="sign-ins-report"></a>Aanmeldingenrapport 
@@ -147,15 +147,15 @@ U kunt rapporten over gedetecteerde risico detecties openen in het gedeelte **be
 
 #### <a name="symptoms"></a>Symptomen 
 
-Ik heb de activiteitenlogboeken (audit of aanmeldingen) gedownload en ik zie niet alle records voor de tijd die ik heb geselecteerd. Waarom? 
+Ik heb de activiteitenlogboeken (audit of aanmeldingen) gedownload en ik zie niet alle records voor de tijd die ik heb geselecteerd. Hoe komt dat? 
 
- ![Reporting](./media/troubleshoot-missing-data-download/01.png)
+ ![Rapportage](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>Oorzaak
 
 Wanneer u activiteiten Logboeken in de Azure Portal downloadt, beperken we de schaal tot 250000 records, gesorteerd op meest recente eerst. 
 
-#### <a name="resolution"></a>Resolutie
+#### <a name="resolution"></a>Oplossing
 
 U kunt gebruikmaken van [API's van Azure AD Reporting](concept-reporting-api.md) om maximaal een miljoen records op te halen.
 
@@ -165,7 +165,7 @@ U kunt gebruikmaken van [API's van Azure AD Reporting](concept-reporting-api.md)
 
 Ik heb enkele acties uitgevoerd in de Azure-portal en had verwacht de auditlogboeken voor deze acties te zien op de blade `Activity logs > Audit Logs`, maar ik kan ze niet vinden.
 
- ![Reporting](./media/troubleshoot-missing-audit-data/01.png)
+ ![Rapportage](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>Oorzaak
 
@@ -176,7 +176,7 @@ Acties worden niet direct weergegeven in de activiteitenlogboeken. In de onderst
 | Directorycontrole | &nbsp; | 2 minuten | 5 minuten |
 | Aanmeldingsactiviteit | &nbsp; | 2 minuten | 5 minuten | 
 
-#### <a name="resolution"></a>Resolutie
+#### <a name="resolution"></a>Oplossing
 
 Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het logboek. Als u de vermeldingen na twee uur nog steeds niet ziet, [maakt u een ondersteuningsticket aan](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) en dan gaan we aan de slag met het probleem.
 
@@ -186,7 +186,7 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 Ik heb me onlangs aangemeld bij de Azure-portal en dan zou ik hier eigenlijk vermeldingen voor moeten zien in de logboeken op de blade `Activity logs > Sign-ins`, maar ik kan ze niet vinden.
 
- ![Reporting](./media/troubleshoot-missing-audit-data/02.png)
+ ![Rapportage](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>Oorzaak
 
@@ -197,7 +197,7 @@ Acties worden niet direct weergegeven in de activiteitenlogboeken. In de onderst
 | Directorycontrole | &nbsp; | 2 minuten | 5 minuten |
 | Aanmeldingsactiviteit | &nbsp; | 2 minuten | 5 minuten | 
 
-#### <a name="resolution"></a>Resolutie
+#### <a name="resolution"></a>Oplossing
 
 Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het logboek. Als u de vermeldingen na twee uur nog steeds niet ziet, [maakt u een ondersteuningsticket aan](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) en dan gaan we aan de slag met het probleem.
 
@@ -205,9 +205,9 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 #### <a name="symptoms"></a>Symptomen
 
-Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Waarom? 
+Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Hoe komt dat? 
 
- ![Reporting](./media/troubleshoot-missing-audit-data/03.png)
+ ![Rapportage](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>Oorzaak
 
@@ -220,7 +220,7 @@ Afhankelijk van uw licentie bewaart Azure Active Directory Actions de activiteit
 
 Zie [Bewaarbeleid Azure Active Directory-rapporten](reference-reports-data-retention.md) voor meer informatie.  
 
-#### <a name="resolution"></a>Resolutie
+#### <a name="resolution"></a>Oplossing
 
 U hebt twee opties om de gegevens langer dan 30 dagen te bewaren. U kunt de [API's van de rapportagefunctie van Azure AD](concept-reporting-api.md) gebruiken om de gegevens via programmacode op te halen en op te slaan in een database. Een alternatief is om auditlogboeken te integreren in een SIEM-systeem van derden, zoals Splunk of SumoLogic.
 

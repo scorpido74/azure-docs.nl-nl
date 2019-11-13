@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 91dc87cd6bda93663fb4b4eae3d498ae56ba4b3e
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 5af73e166f3caa4997851ae4b17d8377550bf40a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169603"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961542"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problemen met & beperkingen van Azure Cloud Shell oplossen
 
@@ -36,7 +36,7 @@ Bekende oplossingen voor het oplossen van problemen in Azure Cloud Shell zijn on
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Cloud Shell uitschakelen in een vergrendelde netwerk omgeving
 
-- **Details**: beheerders kunnen de toegang tot Cloud shell voor hun gebruikers uitschakelen. Cloud Shell gebruikt toegang tot het domein `ux.console.azure.com`, dat kan worden geweigerd, waardoor alle toegang tot de entrypoints van Cloud Shell, waaronder portal.azure.com, shell.azure.com, Visual Studio code Azure-account extensie en docs.microsoft.com, wordt gestopt.
+- **Details**: beheerders kunnen de toegang tot Cloud shell voor hun gebruikers uitschakelen. Cloud Shell maakt gebruik van toegang tot het `ux.console.azure.com` domein, dat kan worden geweigerd, waardoor alle toegang tot de entrypoints van Cloud Shell, waaronder portal.azure.com, shell.azure.com, Visual Studio code Azure-account extensie en docs.microsoft.com, wordt gestopt.
 - **Oplossing**: Beperk de toegang tot `ux.console.azure.com` via netwerk instellingen tot uw omgeving. Het pictogram Cloud Shell blijft aanwezig in portal.azure.com, maar er wordt geen verbinding gemaakt met de service.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Opslag dialoogvenster-fout: 403 RequestDisallowedByPolicy
@@ -76,7 +76,7 @@ Bekende oplossingen voor het oplossen van problemen in Azure Cloud Shell zijn on
 > Virtuele Azure-machines moeten een openbaar gericht IP-adres hebben.
 
 - **Details**: vanwege de standaard Windows Firewall-instellingen voor WinRM, kan de gebruiker de volgende fout zien: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Oplossing**: Voer `Enable-AzVMPSRemoting` uit om alle aspecten van externe communicatie van Power shell op de doel computer in te scha kelen.
+- **Oplossing**: Voer `Enable-AzVMPSRemoting` uit om alle aspecten van externe communicatie met Power shell op de doel computer in te scha kelen.
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` werkt het resultaat niet bij in azure drive
 
@@ -87,13 +87,19 @@ Bekende oplossingen voor het oplossen van problemen in Azure Cloud Shell zijn on
 
 Azure Cloud Shell heeft de volgende bekende beperkingen:
 
+### <a name="quota-limitations"></a>Quotum beperkingen
+
+Azure Cloud Shell heeft een limiet van 20 gelijktijdige gebruikers per Tenant per regio. Als u probeert meer gelijktijdige sessies dan de limiet te openen, wordt de fout ' Tenant gebruiker boven quotum ' weer geven. Als u een rechtmatige nood zaak hebt om meer sessies te openen (bijvoorbeeld voor trainings sessies), neemt u contact op met de ondersteuning van uw verwachte gebruik om een quotum toename aan te vragen.
+
+Cloud Shell is beschikbaar als gratis service en is ontworpen om te worden gebruikt voor het configureren van uw Azure-omgeving, niet als een platform voor algemeen gebruik. Buitensporig geautomatiseerd gebruik kan worden beschouwd als schending van de Azure-Service voorwaarden en kan ertoe leiden dat Cloud Shell toegang wordt geblokkeerd.
+
 ### <a name="system-state-and-persistence"></a>Systeem status en persistentie
 
 De computer die uw Cloud Shell-sessie levert, is tijdelijk en wordt gerecycled nadat uw sessie 20 minuten niet actief is. Cloud Shell moet een Azure-bestands share worden gekoppeld. Als gevolg hiervan moet uw abonnement opslag bronnen kunnen instellen voor toegang tot Cloud Shell. Andere overwegingen zijn onder andere:
 
-- Bij gekoppelde opslag worden alleen wijzigingen in de map @no__t 0 bewaard. In bash wordt de map @no__t 0 ook bewaard.
+- Bij gekoppelde opslag worden alleen wijzigingen in de `clouddrive` Directory bewaard. In bash wordt uw `$HOME` Directory ook bewaard.
 - Azure-bestands shares kunnen alleen worden gekoppeld vanuit uw [toegewezen regio](persisting-shell-storage.md#mount-a-new-clouddrive).
-  - Voer `env` uit in bash om uw regio in te stellen als `ACC_LOCATION`.
+  - Voer in bash `env` uit om uw regio in te stellen als `ACC_LOCATION`.
 - Azure Files ondersteunt alleen lokaal redundante opslag en geografisch redundante opslag accounts.
 
 ### <a name="browser-support"></a>Browser ondersteuning
@@ -101,7 +107,7 @@ De computer die uw Cloud Shell-sessie levert, is tijdelijk en wordt gerecycled n
 Cloud Shell ondersteunt de nieuwste versies van de volgende browsers:
 
 - Microsoft Edge
-- Micro soft Internet Explorer
+- Microsoft Internet Explorer
 - Google Chrome
 - Mozilla Firefox
 - Apple Safari
@@ -117,7 +123,7 @@ Cloud Shell is bedoeld voor interactieve use-cases. Als gevolg hiervan worden la
 
 ### <a name="user-permissions"></a>Gebruikersmachtigingen
 
-Machtigingen worden ingesteld als gewone gebruikers zonder sudo-toegang. Een installatie buiten uw `$Home`-map wordt niet bewaard.
+Machtigingen worden ingesteld als gewone gebruikers zonder sudo-toegang. Een installatie buiten uw `$Home` Directory wordt niet bewaard.
 
 ## <a name="bash-limitations"></a>Bash-beperkingen
 
@@ -129,11 +135,11 @@ Wees voorzichtig bij het bewerken van. bashrc. Dit kan leiden tot onverwachte fo
 
 ### <a name="preview-version-of-azuread-module"></a>Preview-versie van de AzureAD-module
 
-Momenteel is `AzureAD.Standard.Preview`, een preview-versie van de .NET Standard-based module, beschikbaar. Deze module biedt dezelfde functionaliteit als `AzureAD`.
+Momenteel is `AzureAD.Standard.Preview`een preview-versie van .NET Standard-based module beschikbaar. Deze module biedt dezelfde functionaliteit als `AzureAD`.
 
-### <a name="sqlserver-module-functionality"></a>functionaliteit van de module `SqlServer`
+### <a name="sqlserver-module-functionality"></a>functionaliteit van `SqlServer`-module
 
-De module `SqlServer` die is opgenomen in Cloud Shell heeft alleen ondersteuning voor de Prerelease van Power shell core. Met name `Invoke-SqlCmd` is nog niet beschikbaar.
+De `SqlServer` module die is opgenomen in Cloud Shell heeft alleen ondersteuning voor de Prerelease van Power shell core. Met name `Invoke-SqlCmd` is nog niet beschikbaar.
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Standaard bestands locatie wanneer deze wordt gemaakt vanuit een Azure-station
 
@@ -145,7 +151,7 @@ Als de PSReadline-EditMode van de gebruiker is ingesteld op emacs, probeert de g
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>Grote tussen ruimte na het weer geven van de voortgangs balk
 
-Als een opdracht of gebruikers actie een voortgangs balk weergeeft, zoals een tab die in het station `Azure:` is voltooid, is het mogelijk dat de cursor niet op de juiste wijze is ingesteld en dat er een lege ruimte wordt weer gegeven waarin de voortgangs balk zich eerder bevond.
+Als een opdracht of gebruikers actie een voortgangs balk weergeeft, zoals een tabblad dat in het `Azure:` station is voltooid, is het mogelijk dat de cursor niet op de juiste wijze is ingesteld en dat er een lege ruimte wordt weer gegeven waarin de voortgangs balk zich eerder bevond.
 
 ### <a name="random-characters-appear-inline"></a>Wille keurige tekens worden inline weer gegeven
 
@@ -160,7 +166,7 @@ Azure Cloud Shell uw persoonlijke gegevens ernstig neemt, worden de gegevens die
 ### <a name="export"></a>Exporteren
 Voer de volgende opdrachten uit om de gebruikers instellingen te **exporteren** Cloud shell voor u opslaat, zoals de voorkeurs shell, de teken grootte en het letter type.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 2. Voer de volgende opdrachten uit in bash of Power shell:
 
 Bash
@@ -183,7 +189,7 @@ Voer de volgende opdrachten uit om uw gebruikers instellingen te **verwijderen**
 >[!Note]
 > Als u uw gebruikers instellingen verwijdert, wordt de daad werkelijke Azure Files share niet verwijderd. Ga naar uw Azure Files om deze actie te volt ooien.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 2. Voer de volgende opdrachten uit in bash of Power shell:
 
 Bash

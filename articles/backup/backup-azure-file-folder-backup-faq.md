@@ -7,18 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: c30b918be5e4185d6fb4fdd2fcfc47f8dd4d25ef
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: a77227aca70a48d625f9e20fff9c9fe7df87c000
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969170"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012139"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Veelgestelde vragen over het maken van back-ups van bestanden en mappen
 
 In dit artikel vindt u antwoorden op veelgestelde vragen Abound back-ups maken van bestanden en mappen met de Microsoft Azure Recovery Services-agent (MARS) in de [Azure backup](backup-overview.md) -service.
-
-## <a name="general"></a>Algemeen
 
 ## <a name="configure-backups"></a>Back-ups configureren
 
@@ -113,11 +111,11 @@ De grootte van de cachemap bepaalt de hoeveelheid gegevens waarvan u een back-up
 
 1. Voer deze opdracht uit in een opdracht prompt met verhoogde bevoegdheid om de back-upengine te stoppen:
 
-    ```PS C:\> Net stop obengine```
+    ```Net stop obengine```
 
 2. Als u de systeem status back-up hebt geconfigureerd, opent u schijf beheer en ontkoppelt u de schijven met namen in de indeling `"CBSSBVol_<ID>"`.
 3. Verplaats de bestanden niet. Kopieer in plaats daarvan de map met de cache ruimte naar een ander station dat voldoende ruimte heeft.
-4. Werk de volgende Register vermeldingen bij met het pad van de nieuwe cachemap.<br/>
+4. Werk de volgende Register vermeldingen bij met het pad van de nieuwe cachemap.
 
     | Registerpad | Registersleutel | Waarde |
     | --- | --- | --- |
@@ -126,9 +124,11 @@ De grootte van de cachemap bepaalt de hoeveelheid gegevens waarvan u een back-up
 
 5. Start de backup-engine opnieuw op bij een opdracht prompt met verhoogde bevoegdheid:
 
-    ```PS C:\> Net stop obengine```
+  ```command
+  Net stop obengine
 
-    ```PS C:\> Net start obengine```
+  Net start obengine
+  ```
 
 6. Voer een ad-hoc back-up uit. Nadat de back-up is voltooid met behulp van de nieuwe locatie, kunt u de oorspronkelijke cachemap verwijderen.
 

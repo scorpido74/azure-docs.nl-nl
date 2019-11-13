@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 9e1fe0e5bae462715a8cb2950cca100f0f409325
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: fa930d4ab420708e6abfdf1765703afbe20fa25e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718725"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958265"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-end status-en Diagnostische logboeken voor Application Gateway
 
@@ -33,7 +33,7 @@ Application Gateway biedt de mogelijkheid om de status van afzonderlijke leden v
 Het status rapport van de back-end weerspiegelt de uitvoer van de Application Gateway status test naar de back-end-exemplaren. Wanneer het zoeken is geslaagd en de back-end verkeer kan ontvangen, wordt het als gezond beschouwd. Anders wordt het beschouwd als een slechte status.
 
 > [!IMPORTANT]
-> Als er een netwerk beveiligings groep (NSG) op een Application Gateway-subnet aanwezig is, opent u poort bereik 65503-65534 in het subnet van het Application Gateway voor binnenkomend verkeer. Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Ze zijn beveiligd (vergrendeld) met Azure-certificaten. Zonder de juiste certificaten kunnen externe entiteiten, met inbegrip van de klanten van deze gateways, geen wijzigingen op deze eind punten initiëren.
+> Als er een netwerk beveiligings groep (NSG) op een Application Gateway-subnet aanwezig is, opent u poort bereik 65503-65534 voor v1 Sku's en 65200-65535 voor v2 Sku's op het Application Gateway-subnet voor binnenkomend verkeer. Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Ze zijn beveiligd (vergrendeld) met Azure-certificaten. Zonder de juiste certificaten kunnen externe entiteiten, met inbegrip van de klanten van deze gateways, geen wijzigingen op deze eind punten initiëren.
 
 
 ### <a name="view-back-end-health-through-the-portal"></a>Status van de back-end weer geven via de portal
@@ -160,19 +160,19 @@ Het toegangs logboek wordt alleen gegenereerd als u het hebt ingeschakeld op elk
 |Waarde  |Beschrijving  |
 |---------|---------|
 |instanceId     | Application Gateway exemplaar dat de aanvraag heeft verzonden.        |
-|Client     | Oorspronkelijk IP-adres voor de aanvraag.        |
+|clientIP     | Oorspronkelijk IP-adres voor de aanvraag.        |
 |clientPort     | Bron poort voor de aanvraag.       |
 |httpMethod     | De HTTP-methode die door de aanvraag wordt gebruikt.       |
 |requestUri     | De URI van de ontvangen aanvraag.        |
 |RequestQuery     | Door de **server gerouteerd**: het exemplaar van de back-end-pool dat de aanvraag heeft verzonden.</br>**X-AzureApplicationGateway-log-id**: correlatie-id die voor de aanvraag wordt gebruikt. Het kan worden gebruikt om problemen met verkeer op de back-endservers op te lossen. </br>**Server-status**: http-antwoord code die Application Gateway ontvangen van de back-end.       |
 |User agent     | Gebruikers agent van de header van de HTTP-aanvraag.        |
-|Http status     | Er is een HTTP-status code geretourneerd naar de client van Application Gateway.       |
+|httpStatus     | Er is een HTTP-status code geretourneerd naar de client van Application Gateway.       |
 |httpVersion     | HTTP-versie van de aanvraag.        |
 |receivedBytes     | Grootte van ontvangen pakket, in bytes.        |
 |sentBytes| Grootte van het verzonden pakket, in bytes.|
 |timeTaken| De tijds duur (in milliseconden) die nodig is voor het verwerken van een aanvraag en het antwoord op verzen ding. Dit wordt berekend als het interval van de tijd dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt naar het tijdstip waarop de bewerking voor het verzenden van het antwoord is voltooid. Het is belang rijk te weten dat het veld voor de duur doorgaans de tijd bevat dat de aanvraag-en antwoord pakketten via het netwerk onderweg zijn. |
 |sslEnabled| Hiermee wordt aangegeven of communicatie met de back-endservers gebruik maakt van SSL. Geldige waarden zijn in-en uitgeschakeld.|
-|hostsite| De hostnaam waarmee de aanvraag is verzonden naar de back-endserver. Als de hostnaam van de back-end wordt overschreven, wordt deze naam weer gegeven.|
+|host| De hostnaam waarmee de aanvraag is verzonden naar de back-endserver. Als de hostnaam van de back-end wordt overschreven, wordt deze naam weer gegeven.|
 |originalHost| De hostnaam waarmee de aanvraag is ontvangen door de Application Gateway van de client.|
 ```json
 {
@@ -204,12 +204,12 @@ Voor Application Gateway en WAF v2 bevatten de logboeken nog iets meer informati
 |Waarde  |Beschrijving  |
 |---------|---------|
 |instanceId     | Application Gateway exemplaar dat de aanvraag heeft verzonden.        |
-|Client     | Oorspronkelijk IP-adres voor de aanvraag.        |
+|clientIP     | Oorspronkelijk IP-adres voor de aanvraag.        |
 |clientPort     | Bron poort voor de aanvraag.       |
 |httpMethod     | De HTTP-methode die door de aanvraag wordt gebruikt.       |
 |requestUri     | De URI van de ontvangen aanvraag.        |
 |User agent     | Gebruikers agent van de header van de HTTP-aanvraag.        |
-|Http status     | Er is een HTTP-status code geretourneerd naar de client van Application Gateway.       |
+|httpStatus     | Er is een HTTP-status code geretourneerd naar de client van Application Gateway.       |
 |httpVersion     | HTTP-versie van de aanvraag.        |
 |receivedBytes     | Grootte van ontvangen pakket, in bytes.        |
 |sentBytes| Grootte van het verzonden pakket, in bytes.|
@@ -220,7 +220,7 @@ Voor Application Gateway en WAF v2 bevatten de logboeken nog iets meer informati
 |serverRouted| De back-endserver die Application Gateway naar verzendt.|
 |serverStatus| HTTP-status code van de back-endserver.|
 |serverResponseLatency| Latentie van het antwoord van de back-endserver.|
-|hostsite| Het adres dat wordt vermeld in de host-header van de aanvraag.|
+|host| Het adres dat wordt vermeld in de host-header van de aanvraag.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -261,9 +261,9 @@ Het prestatie logboek wordt alleen gegenereerd als u het hebt ingeschakeld op el
 |healthyHostCount     | Aantal gezonde hosts in de back-end-pool.        |
 |unHealthyHostCount     | Aantal beschadigde hosts in de back-end-pool.        |
 |requestCount     | Aantal geleverde aanvragen.        |
-|Periode | De gemiddelde latentie (in milliseconden) van aanvragen van het exemplaar naar de back-end die de aanvragen verzendt. |
+|periode | De gemiddelde latentie (in milliseconden) van aanvragen van het exemplaar naar de back-end die de aanvragen verzendt. |
 |failedRequestCount| Aantal mislukte aanvragen.|
-|Doorvoer| Gemiddelde door Voer sinds het laatste logboek, gemeten in bytes per seconde.|
+|throughput| Gemiddelde door Voer sinds het laatste logboek, gemeten in bytes per seconde.|
 
 ```json
 {
@@ -295,7 +295,7 @@ Het firewall logboek wordt alleen gegenereerd als u het hebt ingeschakeld voor e
 |Waarde  |Beschrijving  |
 |---------|---------|
 |instanceId     | Application Gateway exemplaar waarvoor de firewall gegevens worden gegenereerd. Voor een toepassings gateway met meerdere instanties is er één rij per exemplaar.         |
-|Client     |   Oorspronkelijk IP-adres voor de aanvraag.      |
+|clientIp     |   Oorspronkelijk IP-adres voor de aanvraag.      |
 |clientPort     |  Bron poort voor de aanvraag.       |
 |requestUri     | De URL van de ontvangen aanvraag.       |
 |ruleSetType     | Type regel instellingen. De beschik bare waarde is OWASP.        |
@@ -304,12 +304,12 @@ Het firewall logboek wordt alleen gegenereerd als u het hebt ingeschakeld voor e
 |message     | Gebruikers vriendelijk bericht voor de activerings gebeurtenis. Meer informatie vindt u in de sectie Details.        |
 |action     |  De actie die voor de aanvraag is uitgevoerd. Beschik bare waarden zijn geblokkeerd en toegestaan.      |
 |site     | De site waarvoor het logboek is gegenereerd. Momenteel wordt alleen globaal weer gegeven omdat regels globaal zijn.|
-|Nadere     | Details van de trigger gebeurtenis.        |
+|details informatie     | Details van de trigger gebeurtenis.        |
 |Details. bericht     | Beschrijving van de regel.        |
-|Details. gegevens     | Specifieke gegevens gevonden in de aanvraag die overeenkomen met de regel.         |
+|details.data     | Specifieke gegevens gevonden in de aanvraag die overeenkomen met de regel.         |
 |Details. bestand     | Configuratie bestand waarin de regel is opgenomen.        |
-|Details. regel     | Regel nummer in het configuratie bestand dat de gebeurtenis heeft geactiveerd.       |
-|Hostnaam   | De hostnaam of het IP-adres van de Application Gateway.    |
+|details.line     | Regel nummer in het configuratie bestand dat de gebeurtenis heeft geactiveerd.       |
+|hostnaam   | De hostnaam of het IP-adres van de Application Gateway.    |
 |transactionId  | De unieke ID voor een bepaalde trans actie waarmee meerdere regel schendingen kunnen worden gegroepeerd die binnen dezelfde aanvraag zijn opgetreden.   |
 
 ```json

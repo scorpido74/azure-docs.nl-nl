@@ -1,5 +1,5 @@
 ---
-title: Een bestaand uitvoerbaar bestand implementeren in azure Service Fabric | Microsoft Docs
+title: Een bestaand uitvoerbaar bestand verpakken naar Azure Service Fabric | Microsoft Docs
 description: Meer informatie over het verpakken van een bestaande toepassing als een uitvoerbaar gast bestand, zodat het kan worden geïmplementeerd in een Service Fabric cluster.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: atsenthi
-ms.openlocfilehash: 521c7a198d9085cdc93d325e63ad9d46cc4c7928
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: bd6984db67a8a7b9c38988558ada51e12d337f52
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599455"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013264"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Een bestaand uitvoerbaar bestand implementeren naar Service Fabric
 U kunt elk type code uitvoeren, zoals node. js, Java of C++ in azure service Fabric als een service. Service Fabric verwijst naar deze typen services als uitvoer bare gast bestanden.
@@ -33,7 +33,7 @@ Er zijn verschillende voor delen voor het uitvoeren van een uitvoerbaar gast bes
 * Status controle. Service Fabric status bewaking detecteert of een toepassing wordt uitgevoerd en bevat diagnostische gegevens als er een fout optreedt.   
 * Beheer van toepassings levenscyclus. Naast het bieden van upgrades zonder downtime, biedt Service Fabric automatisch terugdraaien naar de vorige versie als er een slechte status gebeurtenis is gerapporteerd tijdens een upgrade.    
 * Veebezetting. U kunt meerdere toepassingen uitvoeren in een cluster, waardoor de nood zaak van elke toepassing niet op eigen hardware hoeft te worden uitgevoerd.
-* Detectie Met behulp van REST kunt u de Service Fabric naamgevings service aanroepen om andere services in het cluster te vinden. 
+* Vind baarheid: met behulp van REST kunt u de Service Fabric naamgevings service aanroepen om andere services in het cluster te vinden. 
 
 ## <a name="samples"></a>Voorbeelden
 * [Voor beeld voor het verpakken en implementeren van een uitvoerbaar gast bestand](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
@@ -69,7 +69,7 @@ De Application Package root bevat het ApplicationManifest. XML-bestand dat de to
 * *Gegevens*. Dit is een extra Directory voor het opslaan van aanvullende lokale gegevens die de service mogelijk nodig heeft. Gegevens moeten worden gebruikt om alleen tijdelijke gegevens op te slaan. Service Fabric kopieert of repliceert geen wijzigingen naar de gegevensdirectory als de service opnieuw moet worden gevonden (bijvoorbeeld tijdens failover).
 
 > [!NOTE]
-> Als u deze niet nodig hebt `config` , `data` hoeft u de-en-mappen niet te maken.
+> U hoeft de `config` en `data` directory's niet te maken als u deze niet nodig hebt.
 >
 >
 

@@ -1,17 +1,14 @@
 ---
 title: Details van de structuur van de beleids toewijzing
 description: Beschrijft de beleids toewijzings definitie die door Azure Policy wordt gebruikt om beleids definities en-para meters te koppelen aan resources voor evaluatie.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: a75c64ebb6ba3eeffeccd98cf41365fe96218573
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 500e40b8d3a5943c7f64f5b190223cb1dc7b4c92
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255894"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960042"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-toewijzingsstructuur
 
@@ -19,7 +16,7 @@ Beleids toewijzingen worden gebruikt door Azure Policy om te definiëren welke r
 
 U gebruikt JSON om een beleids toewijzing te maken. De beleids toewijzing bevat elementen voor:
 
-- weergave naam
+- Weergavenaam
 - description
 - metagegevens
 - Afdwingings modus
@@ -52,7 +49,7 @@ Zo toont de volgende JSON een beleids toewijzing in de modus _DoNotEnforce_ met 
 
 Alle Azure Policy-voor beelden zijn Azure Policy-voor [beelden](../samples/index.md).
 
-## <a name="display-name-and-description"></a>Weergave naam en beschrijving
+## <a name="display-name-and-description"></a>Weergavenaam en beschrijving
 
 U gebruikt **DisplayName** en **Beschrijving** om de beleids toewijzing te identificeren en context te bieden voor het gebruik van de specifieke set resources. **DisplayName** heeft een maximale lengte van _128_ tekens en een **Beschrijving** van Maxi maal _512_ tekens.
 
@@ -64,8 +61,8 @@ Deze eigenschap heeft de volgende waarden:
 
 |Modus |JSON-waarde |Type |Hand matig herstellen |Vermelding in het activiteiten logboek |Beschrijving |
 |-|-|-|-|-|-|
-|Ingeschakeld |Standaard |string |Ja |Ja |Het beleids effect wordt afgedwongen tijdens het maken of bijwerken van de resource. |
-|Uitgeschakeld |DoNotEnforce |string |Ja |Nee | Het beleids effect wordt niet afgedwongen tijdens het maken of bijwerken van resources. |
+|Ingeschakeld |Standaard |tekenreeks |Ja |Ja |Het beleids effect wordt afgedwongen tijdens het maken of bijwerken van de resource. |
+|Uitgeschakeld |DoNotEnforce |tekenreeks |Ja |Nee | Het beleids effect wordt niet afgedwongen tijdens het maken of bijwerken van resources. |
 
 Als **enforcementMode** niet is opgegeven in een beleids-of initiatief definitie, wordt de _standaard_ waarde gebruikt. [Herstel taken](../how-to/remediate-resources.md) kunnen worden gestart voor [deployIfNotExists](./effects.md#deployifnotexists) -beleid, zelfs wanneer **enforcementMode** is ingesteld op _DoNotEnforce_.
 

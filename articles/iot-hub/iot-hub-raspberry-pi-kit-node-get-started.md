@@ -1,5 +1,5 @@
 ---
-title: 'Raspberry Pi naar Cloud (node. js): Verbind Raspberry Pi met Azure IoT Hub | Microsoft Docs'
+title: Raspberry Pi verbinden met Azure IoT Hub in de Cloud (node. js)
 description: Meer informatie over het instellen en verbinden van Raspberry Pi met Azure IoT Hub voor Raspberry pi voor het verzenden van gegevens naar het Azure-Cloud platform in deze zelf studie.
 author: wesmc7777
 manager: philmea
@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: 79e565668db661d02833d22d2ef619fc67708115
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 28897ca6f80632210032b7f800404fc921143adf
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266155"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954548"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi verbinden met Azure IoT Hub (node. js)
 
@@ -116,9 +116,9 @@ Bereid de microSD-kaart voor op de installatie van de Raspbian-installatie kopie
 
 1. Sluit pi aan op de monitor, het toetsen bord en de muis.
 
-2. Start Pi en meld u vervolgens aan bij Raspbian `pi` door gebruik te maken van `raspberry` de gebruikers naam en het wacht woord.
+2. Start Pi en meld u vervolgens aan bij Raspbian met `pi` als de gebruikers naam en `raspberry` als wacht woord.
 
-3. Klik op het pictogram Raspberry > **voor keuren** > **Raspberry Pi-configuratie**.
+3. Klik op het pictogram Raspberry > **preferences** > **Raspberry Pi Configuration**.
 
    ![Het menu Raspbian-voor keuren](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
@@ -179,10 +179,10 @@ Schakel pi in met behulp van de micro USB-kabel en de voeding. Gebruik de Ethern
 
    **Mac-en Ubuntu-gebruikers**
 
-   Gebruik de ingebouwde SSH-client op Ubuntu of macOS. Mogelijk moet u uitvoeren `ssh pi@<ip address of pi>` om pi via SSH te verbinden.
+   Gebruik de ingebouwde SSH-client op Ubuntu of macOS. Mogelijk moet `ssh pi@<ip address of pi>` worden uitgevoerd om pi via SSH te verbinden.
 
    > [!NOTE]
-   > De standaard gebruikersnaam is `pi` en het `raspberry`wacht woord.
+   > De standaard gebruikersnaam is `pi` en het wacht woord is `raspberry`.
 
 2. Installeer node. js en NPM naar uw pi.
 
@@ -223,13 +223,13 @@ Schakel pi in met behulp van de micro USB-kabel en de voeding. Gebruik de Ethern
    nano config.json
    ```
 
-   ![Configuratiebestand](./media/iot-hub-raspberry-pi-kit-node-get-started/6-config-file.png)
+   ![Configuratie bestand](./media/iot-hub-raspberry-pi-kit-node-get-started/6-config-file.png)
 
-   Dit bestand bevat twee items die u kunt configureren. De eerste is `interval`, waarmee het tijds interval (in milliseconden) wordt gedefinieerd tussen berichten die naar de cloud worden verzonden. De tweede is `simulatedData`, een Booleaanse waarde die aangeeft of gesimuleerde sensor gegevens moeten worden gebruikt.
+   Dit bestand bevat twee items die u kunt configureren. De eerste is `interval`, waarmee het tijds interval (in milliseconden) tussen berichten wordt gedefinieerd die naar de cloud worden verzonden. De tweede is `simulatedData`, een Booleaanse waarde die aangeeft of gesimuleerde sensor gegevens moeten worden gebruikt.
 
-   Als u **de sensor niet hebt**, stelt u `simulatedData` de waarde `true` in op om te zorgen dat de voorbeeld toepassing gesimuleerde sensor gegevens maakt en gebruikt.
+   Als u **de sensor niet hebt**, stelt u de `simulatedData` waarde in op `true` om te zorgen dat de voorbeeld toepassing gesimuleerde sensor gegevens maakt en gebruikt.
 
-   *Opmerking: Het I2C-adres dat in deze zelf studie wordt gebruikt, is standaard 0x77. Afhankelijk van uw configuratie kan het ook 0x76 zijn: als er een I2C-fout optreedt, probeert u de waarde te wijzigen in 118 en gaat u na of dit beter werkt. Als u wilt zien welk adres wordt gebruikt door uw sensor `sudo i2cdetect -y 1` , voert u uit in een shell op de Raspberry pi*
+   *Opmerking: het I2C-adres dat in deze zelf studie wordt gebruikt, is standaard 0x77. Afhankelijk van uw configuratie kan het ook 0x76 zijn: als er een I2C-fout optreedt, probeert u de waarde te wijzigen in 118 en gaat u na of dit beter werkt. Als u wilt zien welk adres wordt gebruikt door uw sensor, voert u `sudo i2cdetect -y 1` uit in een shell op de Raspberry pi*
 
 2. Sla het bestand op en sluit het af door Control-O te typen > > Control-X in te voeren.
 

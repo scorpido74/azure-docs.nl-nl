@@ -1,6 +1,6 @@
 ---
-title: Preview-use-cases Azure Time Series Insights | Microsoft Docs
-description: Meer informatie over Azure Time Series Insights preview-use cases.
+title: Preview-cases gebruiken-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over het gebruik van Azure Time Series Insights preview-cases.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: b2c1aec7f5b653824ab999da2706549e54d47e3a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 175fbf598ae2224d1e1ee0e9c9a3f9ba446965c3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492059"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014675"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights preview-cases gebruiken
 
@@ -66,7 +66,7 @@ Er zijn drie manieren om te communiceren met gegevens die zijn opgeslagen in Tim
 
 Gebruik Time Series Insights om de status, het gebruik en de prestaties van apparatuur op schaal te bewaken. Time Series Insights biedt een eenvoudige manier om de operationele efficiëntie te meten. Time Series Insights helpt bij het beheer van uiteenlopende en onvoorspelbare IoT-workloads, zonder de opname- en queryprestaties te verminderen.
 
-[Overzicht van ![](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![Overzicht](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 Streaming en doorlopende verwerking van gegevens die afkomstig zijn van operationele processen kunnen alle bedrijven omzetten als deze worden gecombineerd met de juiste technologie of oplossing. Vaak zijn deze oplossingen een combi natie van meerdere systemen. Ze maken het mogelijk om gegevens te verkennen en te analyseren die voortdurend worden gewijzigd, met name in de IoT-realm en een gemeen schappelijk patroon delen.
 

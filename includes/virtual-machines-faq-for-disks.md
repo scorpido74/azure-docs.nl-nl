@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 95fe5471789b66c253aa21d73433f5192cd01e6b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 92aa28c131d81c41d515762ac2a346048c143790
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612051"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008576"
 ---
-# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Veelgestelde vragen over Azure IaaS-VM-schijven en beheerde en onbeheerde Premium-schijven
-
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Managed Disks en Azure Premium-SSD-schijven.
 
 ## <a name="managed-disks"></a>Beheerde schijven
@@ -254,7 +252,7 @@ Zie [een virtuele machine maken op basis van een Windows-installatie kopie met S
 
 **Kan ik mijn bestaande schijven converteren naar Standard-SSD?**
 Ja, dat is mogelijk. Raadpleeg de [opslag voor Azure Managed disks converteren van Standard naar Premium en](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) omgekeerd voor de algemene richt lijnen voor het converteren van Managed disks. En gebruik de volgende waarde om het schijf type bij te werken naar Standard-SSD.
--Account type StandardSSD_LRS
+-AccountType StandardSSD_LRS
 
 **Wat is het voor deel van het gebruik van Standard-SSD schijven in plaats van HDD?**
 Standard-SSD schijven bieden betere latentie, consistentie, Beschik baarheid en betrouw baarheid in vergelijking met HDD-schijven. Werk belastingen van toepassingen worden veel soepeler uitgevoerd op Standard-SSD vanwege dat. Houd er rekening mee dat Premium-SSD schijven de aanbevolen oplossing zijn voor de meeste IO-intensieve productie workloads.
@@ -350,18 +348,6 @@ Nee. Maar als u een VHD exporteert naar een versleuteld opslag account van een v
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Premium-schijven: beheerd en onbeheerd
 
-**Welke regio's ondersteunen bursting-mogelijkheden voor de toepasselijke Premium SSD-schijf grootte?**
-
-De bursting-functie wordt momenteel ondersteund in azure West-Centraal vs.
-
-**Welke regio's zijn 4/8/16 beheerde schijf grootten (P1/P2/P3, E1/E2/E3) ondersteund in?**
-
-Deze nieuwe schijf grootten worden momenteel ondersteund in azure-West-Centraal vs.
-
-**Worden schijf grootten van P1/P2/P3 ondersteund voor onbeheerde schijven of pagina-blobs?**
-
-Nee, dit wordt alleen ondersteund op Premium-SSD Managed Disks. 
-
 **Als een virtuele machine gebruikmaakt van een grootte reeks die Premium-SSD schijven ondersteunt, zoals een DSv2, kan ik zowel Premium-als standaard gegevens schijven koppelen?** 
 
 Ja.
@@ -392,6 +378,22 @@ Er is geen nadeel van het gebruik van knippen op Azure-schijven op Premium-of St
 
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nieuwe schijf grootten: beheerd en onbeheerd
 
+**Welke regio's ondersteunen bursting-mogelijkheden voor de toepasselijke Premium SSD-schijf grootte?**
+
+De bursting-functie wordt momenteel ondersteund in azure West-Centraal vs.
+
+**Welke regio's zijn 4/8/16 beheerde schijf grootten (P1/P2/P3, E1/E2/E3) ondersteund in?**
+
+Deze nieuwe schijf grootten worden momenteel ondersteund in azure-West-Centraal vs.
+
+**Worden schijf grootten van P1/P2/P3 ondersteund voor onbeheerde schijven of pagina-blobs?**
+
+Nee, het wordt alleen ondersteund op Premium SSD Managed disks. 
+
+**Worden de schijf grootten E1/E2/E3 ondersteund voor onbeheerde schijven of pagina-blobs?**
+
+Nee, standaard SSD-beheerde schijven van elke grootte kunnen niet worden gebruikt met niet-beheerde schijven of pagina-blobs.
+
 **Wat is de grootste beheerde schijf grootte die wordt ondersteund voor besturings systeem en gegevens schijven?**
 
 Het partitie type dat door Azure wordt ondersteund voor een besturingssysteem schijf is de Master Boot Record (MBR). De MBR-indeling ondersteunt een schijf grootte van Maxi maal twee TiB. De maximale grootte die Azure ondersteunt voor een besturingssysteem schijf is 2 TiB. Azure biedt ondersteuning voor Maxi maal 32 TiB voor beheerde gegevens schijven in wereld wijd Azure, 4 TiB in azure soevereine Clouds.
@@ -408,7 +410,7 @@ De grootste grootte van de pagina-blob die door Azure wordt ondersteund, is 8 Ti
 
 U hoeft de bestaande Azure-hulpprogram ma's niet bij te werken om schijven groter dan 1 TiB te maken, te koppelen of te wijzigen. Als u uw VHD-bestand rechtstreeks van on-premises naar Azure wilt uploaden als pagina-BLOB of een niet-beheerde schijf, moet u de meest recente programma sets gebruiken die hieronder worden weer gegeven. Er worden alleen VHD-uploads ondersteund van Maxi maal 8 TiB.
 
-|Azure-hulpprogram ma's      | Ondersteunde versies                                |
+|Azure-hulpprogramma 's      | Ondersteunde versies                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Versie nummer 4.1.0: juni 2017 release of hoger|
 |Azure CLI v1     | Versie nummer 0.10.13: mogelijk 2017 release of hoger|

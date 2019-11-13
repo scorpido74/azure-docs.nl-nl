@@ -1,6 +1,6 @@
 ---
-title: Problemen opsporen, problemen oplossen en oplossen in Azure Time Series Insights | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u veelvoorkomende problemen die zich kunnen voordoen in uw Azure Time Series Insights omgeving kunt vaststellen, oplossen en verhelpen.
+title: Problemen diagnosticeren, problemen oplossen en oplossen-Azure Time Series Insights | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u veelvoorkomende problemen in uw Azure Time Series Insights omgeving kunt vaststellen en oplossen.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7c9dcdf43e819e20126f948fa08f4f8f476036ac
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: ca38ebb015552042591fb4cc6b7edfe99527e79f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991260"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007054"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Problemen in uw Time Series Insights omgeving diagnosticeren en oplossen
 
@@ -34,17 +34,17 @@ Er kunnen om verschillende redenen geen gegevens in de [Azure time series Insigh
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Oorzaak van een: gebeurtenis bron gegevens bevindt zich niet in JSON-indeling
 
-Azure Time Series Insights ondersteunt alleen JSON-gegevens. Zie [ondersteunde JSON-shapes](./how-to-shape-query-json.md)voor json-voor beelden.
+Azure Time Series Insights ondersteunt alleen JSON-gegevens. Zie voor voorbeelden van JSON, [ondersteund JSON-vormen](./how-to-shape-query-json.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Oorzaak B: er ontbreekt een vereiste machtiging voor de bron sleutel van de gebeurtenis
 
 * Voor een IoT-hub in azure IoT Hub moet u de sleutel opgeven die **service Connect** -machtigingen heeft. Een van de **iothubowner** -of **service** beleidsregels werkt, omdat beide machtigingen voor **service verbinding** hebben.
 
-   [verbindings machtigingen voor![IoT Hub-service](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [verbindings machtigingen voor ![IoT Hub-service](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
 * Voor een Event Hub in azure Event Hubs moet u de sleutel met de machtiging **Luis teren** opgeven. Een van de beleids regels voor **lezen** of **beheren** werkt, omdat deze beide over **Luister** machtigingen beschikken.
 
-   [Luister machtigingen voor de Event hub![](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [Luister machtigingen voor de Event hub ![](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Oorzaak C: de verleende consumenten groep is niet exclusief Time Series Insights
 
@@ -69,7 +69,7 @@ De beperkings limiet wordt afgedwongen op basis van het SKU-type en de capacitei
 
 In de volgende afbeelding ziet u een Time Series Insights omgeving met een SKU van S1 en een capaciteit van 3. Het kan 3.000.000 gebeurtenissen per dag inkomen.
 
-[huidige capaciteit van de SKU van![-omgeving](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[huidige capaciteit van de SKU van ![-omgeving](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
 Als voor beeld wordt ervan uitgegaan dat een omgeving berichten van een Event Hub opneemt. Het dagelijkse ingangs tempo is ~ 67.000 berichten. Dit aantal wordt elke minuut op ongeveer 46 berichten omgezet. 
 

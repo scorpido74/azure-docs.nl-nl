@@ -1,20 +1,20 @@
 ---
-title: Ondersteunings matrix voor herstel na nood gevallen van Azure-Vm's tussen Azure-regio's met Azure Site Recovery | Microsoft Docs
-description: Een overzicht van de vereisten en ondersteuning voor herstel na nood gevallen van virtuele Azure-machines van de ene regio naar de andere met Azure Site Recovery
+title: Ondersteunings matrix voor herstel na nood gevallen voor Azure VM met Azure Site Recovery
+description: Hiermee wordt een overzicht gegeven van de ondersteuning voor herstel na nood gevallen voor Azure Vm's naar een secundaire regio met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/26/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 726b7ebd21dadf0e179f2752a9783d63492cb4c3
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 881c41ea7a28e64d2840f4a92bd64fab5dbd12ba
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622457"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961515"
 ---
-# <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Ondersteuningsmatrix voor het repliceren van Azure-VM's van de ene naar de andere regio
+# <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteunings matrix voor herstel na nood geval voor Azure-VM'S tussen Azure-regio's
 
 In dit artikel vindt u een overzicht van de ondersteuning en vereisten voor herstel na nood gevallen van Azure-Vm's van de ene Azure-regio naar de andere, met behulp van de [Azure site Recovery](site-recovery-overview.md) -service.
 
@@ -25,7 +25,7 @@ In dit artikel vindt u een overzicht van de ondersteuning en vereisten voor hers
 --- | ---
 **Azure Portal** | Ondersteund.
 **PowerShell** | Ondersteund. [Meer informatie](azure-to-azure-powershell.md)
-**REST API** | Ondersteund.
+**REST-API** | Ondersteund.
 **CLI** | Momenteel niet ondersteund
 
 
@@ -102,7 +102,7 @@ Windows 7 (x64) met SP1 en hoger | Van versie 9.30. x. x (verwachte release vana
 
 **Besturingssysteem** | **Details**
 --- | ---
-Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, 8,0
+Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8,0](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)
 CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, 8,0
 Ubuntu 14,04 LTS-server | [Ondersteunde kernel-versies](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Ubuntu 16,04 LTS-server | [Ondersteunde kernel-versie](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Ubuntu-servers die gebruikmaken van verificatie op basis van wacht woorden en aanmelden en het pakket Cloud-init om Cloud-Vm's te configureren, hebben mogelijk een op wacht woord gebaseerde aanmelding uitgeschakeld bij failover (afhankelijk van de cloudinit-configuratie). Aanmelden op basis van wacht woorden kan opnieuw worden ingeschakeld op de virtuele machine door het wacht woord opnieuw in te stellen in het menu > ondersteuning voor het oplossen van problemen met de >-instellingen (van de VM waarvoor een failover is uitgevoerd in de Azure Portal.
@@ -110,9 +110,9 @@ Ubuntu 18,04 LTS-server | [Ondersteunde kernel-versie](#supported-ubuntu-kernel-
 Debian 7 | [Ondersteunde kernel-versies](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [Ondersteunde kernel-versies](#supported-debian-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4. [(Ondersteunde kernel-versies)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 11 | Pack<br/><br/> De upgrade van replicerende machines van SP3 naar SP4 wordt niet ondersteund. Als een gerepliceerde machine is bijgewerkt, moet u de replicatie uitschakelen en de replicatie opnieuw inschakelen na de upgrade.
+SUSE Linux Enterprise Server 11 | SP3<br/><br/> De upgrade van replicerende machines van SP3 naar SP4 wordt niet ondersteund. Als een gerepliceerde machine is bijgewerkt, moet u de replicatie uitschakelen en de replicatie opnieuw inschakelen na de upgrade.
 SUSE Linux Enterprise Server 11 | SP4
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7<br/><br/> Met de Red Hat compatibele kernel of een onherstelbare versie van de Enter prise kernel van 3, 4 & 5 (UEK3, UEK4, UEK5) 
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) <br/><br/> Met de Red Hat compatibele kernel of een onherstelbare versie van de Enter prise kernel van 3, 4 & 5 (UEK3, UEK4, UEK5) 
 
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Ondersteunde Ubuntu-kernel-versies voor virtuele Azure-machines
@@ -124,14 +124,15 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 14,04 LTS | 9,26 | 3.13.0-24-generic naar 3.13.0-170-generic,<br/>3.16.0-25-generic naar 3.16.0-77-generic,<br/>3.19.0-18-generic naar 3.19.0-80-generic,<br/>4.2.0-18-generic naar 4.2.0-42-generic,<br/>4.4.0-21-generic naar 4.4.0-148-generic,<br/>4.15.0-1023-Azure naar 4.15.0-1045-Azure |
 14,04 LTS | 9,25 | 3.13.0-24-algemeen naar 3.13.0-169-generic,<br/>3.16.0-25-generic naar 3.16.0-77-generic,<br/>3.19.0-18-generic naar 3.19.0-80-generic,<br/>4.2.0-18-generic naar 4.2.0-42-generic,<br/>4.4.0-21-generic naar 4.4.0-146-generic,<br/>4.15.0-1023-Azure naar 4.15.0-1042-Azure |
 |||
+16,04 LTS | [9,30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.4.0-21-generic naar 4.4.0-166-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-66-generic<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1061-Azure|
 16,04 LTS | 9,28 | 4.4.0-21-algemeen naar 4.4.0-159-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-58-generic<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1055-Azure|
 16,04 LTS | 9,27 | 4.4.0-21-generic naar 4.4.0-154-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-55-generic<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1051-Azure|
 16,04 LTS | 9,26 | 4.4.0-21-generic naar 4.4.0-148-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen tot 4.15.0-50-algemeen<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1045-Azure|
 16,04 LTS | 9,25 | 4.4.0-21-generic naar 4.4.0-146-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen tot 4.15.0-48-algemeen<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1042-Azure|
 16,04 LTS | 9,24 | 4.4.0-21-algemeen naar 4.4.0-143-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen tot 4.15.0-46-algemeen<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1040-Azure|
 |||
-18,04 LTS | [9,29](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 4.15.0-20-algemeen naar 4.15.0-64-algemeen </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-algemeen naar 5.0.0-29-generic </br> 4.15.0-1009-Azure naar 4.15.0-1037-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1020-Azure
-
+18,04 LTS | [9,29](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 4.15.0-20-algemeen naar 4.15.0-64-algemeen </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-algemeen naar 5.0.0-29-generic </br> 4.15.0-1009-Azure naar 4.15.0-1037-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1020-Azure|
+18,04 LTS | [9,30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.15.0-20-algemeen naar 4.15.0-66-algemeen </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-algemeen naar 5.0.0-32-algemeen </br> 4.15.0-1009-Azure naar 4.15.0-1037-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1023-Azure
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Ondersteunde Debian-kernel-versies voor virtuele Azure-machines
 
@@ -207,6 +208,7 @@ Redundantie | LRS en GRS worden ondersteund.<br/><br/> ZRS wordt niet ondersteun
 Coole en warme opslag | Niet ondersteund | VM-schijven worden niet ondersteund in coole en warme opslag
 Opslag ruimten | Ondersteund |
 Versleuteling op rest (SSE) | Ondersteund | SSE is de standaard instelling voor opslag accounts.   
+Versleuteling in rust (CMK) | Niet ondersteund |   
 Azure Disk Encryption (ADE) voor Windows-besturings systeem | Ondersteund voor virtuele machines met beheerde schijven. Vm's die niet-beheerde schijven gebruiken, worden niet ondersteund |
 Azure Disk Encryption (ADE) voor Linux-besturings systeem | Niet ondersteund |
 Hot add | Ondersteund | Het inschakelen van replicatie voor een gegevens schijf die u toevoegt aan een gerepliceerde Azure-VM wordt ondersteund voor virtuele machines die gebruikmaken van beheerde schijven.
@@ -220,7 +222,8 @@ RA-GRS | Ondersteund |
 ZRS | Niet ondersteund |
 Coole en warme opslag | Niet ondersteund | Schijven van virtuele machines worden niet ondersteund in coole en warme opslag
 Firewalls voor virtuele netwerken Azure Storage  | Ondersteund | Schakel [vertrouwde micro soft-Services toestaan](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)in als u de toegang tot het virtuele netwerk beperken tot opslag accounts.
-V2-opslag accounts voor algemeen gebruik (zowel warme als koud-tier) | Ja | De transactie kosten stijgen aanzienlijk vergeleken met de V1-opslag accounts voor algemeen gebruik
+V2-opslag accounts voor algemeen gebruik (zowel warme als koud-tier) | Ondersteund | De transactie kosten stijgen aanzienlijk vergeleken met de V1-opslag accounts voor algemeen gebruik
+Generatie 2 (UEFI-opstart) | Ondersteund
 
 >[!IMPORTANT]
 > Om prestatie problemen te voor komen, moet u ervoor zorgen dat u de schaal baarheid en prestatie doelen van de VM-schijf voor [Linux](../virtual-machines/linux/disk-scalability-targets.md) -of [Windows](../virtual-machines/windows/disk-scalability-targets.md) -vm's volgt. Als u de standaard instellingen gebruikt, Site Recovery de vereiste schijven en opslag accounts maken op basis van de configuratie van de bron. Als u uw eigen instellingen aanpast en selecteert, volgt u de schaal baarheid en prestaties van de schijf voor uw bron-Vm's.
@@ -232,7 +235,6 @@ De volgende tabel geeft een overzicht van Site Recovery limieten.
 - Deze limieten zijn gebaseerd op onze tests, maar uiteraard dekken niet alle mogelijke toepassings-I/O-combi Naties.
 - De werkelijke resultaten kunnen variëren op basis van de I/O-mix van de app.
 - Er zijn twee limieten die u moet overwegen: gegevens verloop per schijf en per gegevens verloop van de virtuele machine.
-- Als we bijvoorbeeld een Premium P20-schijf gebruiken zoals wordt beschreven in de onderstaande tabel, kan Site Recovery 5 MB aan verloop per schijf verwerken, met Maxi maal vijf schijven per VM, als gevolg van de limiet van 25 MB/s totale verloop per VM.
 
 **Opslag doel** | **Gemiddelde bron schijf-I/O** |**Gemiddeld gegevensverloop van bronschijf** | **Totale gegevensverloop van bronschijf per dag**
 ---|---|---|---

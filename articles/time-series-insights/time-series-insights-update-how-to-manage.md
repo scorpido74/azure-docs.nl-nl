@@ -1,6 +1,6 @@
 ---
-title: Azure time series preview inrichten en beheren | Microsoft Docs
-description: Meer informatie over het inrichten en beheren van Azure Time Series Insights preview.
+title: Een voorbeeld omgeving inrichten en beheren-Azure time series | Microsoft Docs
+description: Meer informatie over het inrichten en beheren van een Azure Time Series Insights preview-omgeving.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 47c96cb14f2e466d02d57f73fb2e66bc1f44a311
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f66925c20f6767286eb98a7f5fab180845da4c33
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989903"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014799"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Azure Time Series Insights preview inrichten en beheren
 
@@ -70,11 +70,11 @@ Een Azure Time Series Insights-voorbeeld omgeving maken:
      > [!TIP]
      > De time-outtijd van het bericht is mogelijk niet de beste geconfigureerde instelling voor gebruik in batch-gebeurtenis scenario's of scenario's voor het uploaden van historische gegevens. In dergelijke gevallen moet u controleren of u de beslissing hebt genomen of geen tijds tempel eigenschap wilt gebruiken.
 
-     [tabblad![gebeurtenis bron](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
+     [tabblad ![gebeurtenis bron](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
 
 1. Controleer of uw omgeving is ingericht met de instellingen die u wilt.
 
-    [tabblad![bekijken + maken](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
+    [tabblad ![bekijken + maken](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 ## <a name="manage-the-environment"></a>De omgeving beheren
 
