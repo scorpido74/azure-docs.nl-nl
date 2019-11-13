@@ -128,8 +128,6 @@
               href: virtual-nodes-cli.md
             - name: Azure Portal gebruiken
               href: virtual-nodes-portal.md
-        - name: Virtual Kubelet gebruiken
-          href: virtual-kubelet.md
         - name: Cluster Autoscaler gebruiken
           href: cluster-autoscaler.md
         - name: Beschikbaarheidszones gebruiken
