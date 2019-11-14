@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 48d58ac303a843c627067c9a0287628c35b65f66
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 15bf955d6055ed91b486d34cf9d805de34e9f8f5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019075"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074833"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Opslag toevoegen aan Azure Backup Server
 
@@ -27,13 +27,13 @@ Azure Backup Server v2 en hoger ondersteunt Modern Backup Storage die opslag bes
 
 Back-upserver v2 of hoger accepteert opslag volumes. Wanneer u een volume toevoegt, formatteert de back-upserver het volume naar een ReFS-bestands systeem dat Modern Backup Storage vereist. Om een volume toe te voegen en zo nodig uit te breiden, raden we u aan deze werk stroom te gebruiken:
 
-1.  Stel de back-upserver in op een virtuele machine.
-2.  Maak een volume op een virtuele schijf in een opslag groep:
-    1.  Voeg een schijf toe aan een opslag groep en maak een virtuele schijf met een eenvoudige indeling.
-    2.  Voeg extra schijven toe en breid de virtuele schijf uit.
-    3.  Maak volumes op de virtuele schijf.
-3.  Voeg de volumes toe aan de back-upserver.
-4.  Configureer werk belasting bewuste opslag.
+1. Stel de back-upserver in op een virtuele machine.
+2. Maak een volume op een virtuele schijf in een opslag groep:
+    1. Voeg een schijf toe aan een opslag groep en maak een virtuele schijf met een eenvoudige indeling.
+    2. Voeg extra schijven toe en breid de virtuele schijf uit.
+    3. Maak volumes op de virtuele schijf.
+3. Voeg de volumes toe aan de back-upserver.
+4. Configureer werk belasting bewuste opslag.
 
 ## <a name="create-a-volume-for-modern-backup-storage"></a>Een volume maken voor Modern Backup Storage
 
@@ -75,7 +75,7 @@ Met werkbelasting bewuste opslag kunt u de volumes selecteren waarmee bepaalde s
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-U kunt werkbelasting bewuste opslag instellen met behulp van de Power shell-cmdlet Update-DPMDiskStorage, waarmee de eigenschappen van een volume in de opslag groep op een Azure Backup Server worden bijgewerkt. 
+U kunt werkbelasting bewuste opslag instellen met behulp van de Power shell-cmdlet Update-DPMDiskStorage, waarmee de eigenschappen van een volume in de opslag groep op een Azure Backup Server worden bijgewerkt.
 
 Syntaxis
 
@@ -84,6 +84,7 @@ Syntaxis
 ```powershell
 Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-DatasourceType] <VolumeTag[]> ] [-Confirm] [-WhatIf] [ <CommonParameters>]
 ```
+
 De volgende scherm afbeelding toont de cmdlet Update-DPMDiskStorage in het Power shell-venster.
 
 ![De opdracht update-DPMDiskStorage in het Power shell-venster](./media/backup-mabs-add-storage/mabs-add-storage-8.png)
@@ -92,8 +93,8 @@ De wijzigingen die u aanbrengt met Power shell, worden weer gegeven in de Admini
 
 ![Schijven en volumes in de Administrator-console](./media/backup-mabs-add-storage/mabs-add-storage-9.png)
 
-
 ## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>Verouderde opslag migreren naar Modern Backup Storage
+
 Nadat u een upgrade hebt uitgevoerd naar of de back-upserver v2 hebt geïnstalleerd en het besturings systeem hebt bijgewerkt naar Windows Server 2016, moet u de beveiligings groepen bijwerken om Modern Backup Storage te gebruiken. Beveiligings groepen worden standaard niet gewijzigd. Ze blijven functioneren zoals ze voor het eerst zijn ingesteld.
 
 Het bijwerken van beveiligings groepen voor het gebruik van Modern Backup Storage is optioneel. Als u de beveiligings groep wilt bijwerken, stopt u de beveiliging van alle gegevens bronnen met behulp van de optie gegevens behouden. Voeg vervolgens de gegevens bronnen toe aan een nieuwe beveiligings groep.
@@ -116,15 +117,16 @@ Als u verouderde opslag met een back-upserver wilt gebruiken, moet u mogelijk sc
 
 Schijf opslag toevoegen:
 
-1. Selecteer **beheer** > Disk Storagetoevoegen > in de Administrator-console.
+1. Selecteer in de Administrator-console **beheer** > **Disk Storage** > **toevoegen**.
 
     ![Dialoog venster Disk Storage toevoegen](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
-4. Selecteer in het dialoog venster **Disk Storage toevoegen** de optie **schijven toevoegen**.
+2. Selecteer in het dialoog venster **Disk Storage toevoegen** de optie **schijven toevoegen**.
 
-5. Selecteer de schijven die u wilt toevoegen in de lijst met beschik bare schijven, selecteer **toevoegen**en selecteer vervolgens **OK**.
+3. Selecteer de schijven die u wilt toevoegen in de lijst met beschik bare schijven, selecteer **toevoegen**en selecteer vervolgens **OK**.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Nadat u de back-upserver installeert, leert u hoe u uw server voorbereidt of een werk belasting gaat beveiligen.
 
 - [Werk belastingen voor de back-upserver voorbereiden](backup-azure-microsoft-azure-backup.md)

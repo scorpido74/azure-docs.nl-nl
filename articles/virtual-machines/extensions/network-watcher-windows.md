@@ -1,5 +1,5 @@
 ---
-title: Extensie van virtuele machine voor Azure Network Watcher-agent voor Windows | Microsoft Docs
+title: Extensie van virtuele machine voor Azure Network Watcher-agent voor Windows
 description: Implementeer de Network Watcher-agent op virtuele Windows-machines met behulp van een extensie van een virtuele machine.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 77685fd6549906cfb050e12d53ec151c964fda42
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 998e160edce25b9d466a1db090abcefeb7870172
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084415"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073692"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Extensie van de virtuele machine van Network Watcher agent voor Windows
 
@@ -64,11 +64,11 @@ De volgende JSON toont het schema voor de uitbrei ding van de Network Watcher ag
 
 ### <a name="property-values"></a>Waarden van eigenschappen
 
-| Name | Waarde / voorbeeld |
+| Naam | Waarde / voorbeeld |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |
-| Type | NetworkWatcherAgentWindows |
+| type | NetworkWatcherAgentWindows |
 | typeHandlerVersion | 1.4 |
 
 
@@ -78,7 +78,7 @@ U kunt Azure VM-extensies implementeren met Azure Resource Manager sjablonen. U 
 
 ## <a name="powershell-deployment"></a>Power shell-implementatie
 
-Gebruik de `Set-AzVMExtension` opdracht om de extensie van de virtuele machine van Network Watcher agent te implementeren op een bestaande virtuele machine:
+Gebruik de opdracht `Set-AzVMExtension` om de extensie van de virtuele machine van Network Watcher agent te implementeren op een bestaande virtuele machine:
 
 ```powershell
 Set-AzVMExtension `
@@ -91,7 +91,7 @@ Set-AzVMExtension `
   -TypeHandlerVersion "1.4"
 ```
 
-## <a name="troubleshooting-and-support"></a>Probleemoplossing en ondersteuning
+## <a name="troubleshooting-and-support"></a>Problemen oplossen en ondersteuning
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 

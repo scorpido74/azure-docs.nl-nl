@@ -1,19 +1,20 @@
 ---
-title: 'Quick Start: end-to-end SSL-versleuteling configureren met Azure-toepassing gateway-Azure Portal | Microsoft Docs'
+title: End-to-end SSL-versleuteling configureren met behulp van de portal
+titleSuffix: Azure Application Gateway
 description: Meer informatie over het gebruik van de Azure Portal om een toepassings gateway te maken met end-to-end SSL-versleuteling.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: ba31b5ebf83edcd08060a2acc3b5639a521e2729
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: a878b966266bdd326db35d266bc14b2f81161e92
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243672"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075128"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>End-to-end SSL configureren met behulp van Application Gateway met de portal
 
@@ -60,7 +61,7 @@ Zie [SSL-beëindiging inschakelen tijdens het maken van een nieuwe toepassings g
 
    ![Certificaat toevoegen](./media/end-to-end-ssl-portal/addcert.png)
 
-   Voor Standard_v2-en WAF_v2-toepassings gateways moet u het basis certificaat van het back-endserver certificaat uploaden in. CER-indeling. Als het back-end-certificaat is uitgegeven door een bekende certificerings instantie (CA), kunt u het selectie vakje **goed bekend CA-certificaat gebruiken** selecteren en vervolgens geen certificaat uploaden.
+   Voor Standard_v2 en WAF_v2 toepassings gateways moet u het basis certificaat van het back-endserver certificaat uploaden in. CER-indeling. Als het back-end-certificaat is uitgegeven door een bekende certificerings instantie (CA), kunt u het selectie vakje **goed bekend CA-certificaat gebruiken** selecteren en vervolgens geen certificaat uploaden.
 
    ![Vertrouwd basis certificaat toevoegen](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
@@ -114,7 +115,7 @@ Als u de laatste optie kiest, moet u de stappen in de volgende procedure Toep as
 
    ![Certificaat toevoegen](./media/end-to-end-ssl-portal/addcert.png)
 
-   Voor Standard_v2-en WAF_v2-toepassings gateways moet u het basis certificaat van het back-endserver certificaat uploaden in. CER-indeling. Als het back-end-certificaat wordt uitgegeven door een bekende certificerings instantie, kunt u het selectie vakje **goed bekende CA-certificaat gebruiken** selecteren en vervolgens een certificaat niet uploaden.
+   Voor Standard_v2 en WAF_v2 toepassings gateways moet u het basis certificaat van het back-endserver certificaat uploaden in. CER-indeling. Als het back-end-certificaat wordt uitgegeven door een bekende certificerings instantie, kunt u het selectie vakje **goed bekende CA-certificaat gebruiken** selecteren en vervolgens een certificaat niet uploaden.
 
    ![Vertrouwd basis certificaat toevoegen](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 

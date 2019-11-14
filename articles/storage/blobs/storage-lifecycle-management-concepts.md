@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 5cf4689534a813d778c25a7a712b983aafe6f5a9
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 41e1228d127ddbbf0749036fc6f0129da1208bc7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881587"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077123"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>De levenscyclus van Azure Blob-opslag beheren
 
@@ -46,7 +46,7 @@ De functie levenscyclus beheer is beschikbaar in alle Azure-regio's.
 
 U kunt een beleid toevoegen, bewerken of verwijderen met een van de volgende methoden:
 
-* [Azure-portal](https://portal.azure.com)
+* [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [REST API's](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
@@ -65,7 +65,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Lijst weergave Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **alle resources** en selecteer vervolgens uw opslag account.
 
@@ -86,7 +86,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 9. Selecteer **toevoegen** om het nieuwe beleid toe te voegen.
 
 #### <a name="azure-portal-code-view"></a>Code weergave Azure Portal
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **alle resources** en selecteer vervolgens uw opslag account.
 
@@ -230,12 +230,12 @@ Een beleid is een verzameling regels:
 
 Elke regel in het beleid heeft verschillende para meters:
 
-| Parameternaam | Parameter type | Opmerkingen | Verplicht |
+| Parameternaam | Parameter type | Opmerkingen | Vereist |
 |----------------|----------------|-------|----------|
-| `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig.  Het moet uniek zijn binnen een beleid. | Waar |
-| `enabled`      | Booleaans | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | Onwaar | 
-| `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle`. | Waar |
-| `definition`   | Een object dat de levenscyclus regel definieert | Elke definitie bestaat uit een set filters en een Actieset. | Waar |
+| `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig.  Het moet uniek zijn binnen een beleid. | True |
+| `enabled`      | Booleaans | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | False | 
+| `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle`. | True |
+| `definition`   | Een object dat de levenscyclus regel definieert | Elke definitie bestaat uit een set filters en een Actieset. | True |
 
 ## <a name="rules"></a>Regels
 
@@ -295,7 +295,7 @@ Acties worden toegepast op de gefilterde blobs wanneer wordt voldaan aan de voor
 
 Levenscyclus beheer ondersteunt het trapsgewijs en verwijderen van blobs en het verwijderen van BLOB-moment opnamen. Definieer ten minste één actie voor elke regel op blobs of BLOB-moment opnamen.
 
-| Bewerking        | Basis-BLOB                                   | Momentopname      |
+| Actie        | Basis-BLOB                                   | Momentopname      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Ondersteuning voor blobs momenteel op warme laag         | Niet ondersteund |
 | tierToArchive | Ondersteuning voor blobs momenteel op warme of koud niveau | Niet ondersteund |
@@ -431,6 +431,9 @@ Voor gegevens die regel matig worden gewijzigd en geopend gedurende de levens du
 
 **Ik heb een nieuw beleid gemaakt, waarom worden de acties niet onmiddellijk uitgevoerd?**  
 Het platform voert het levenscyclus beleid eenmaal per dag uit. Nadat u een beleid hebt geconfigureerd, kan het tot 24 uur duren voordat bepaalde acties voor de eerste keer worden uitgevoerd.  
+
+**Hoe lang duurt het om de acties uit te voeren als ik een bestaand beleid bijwerk?**  
+Het bijgewerkte beleid duurt Maxi maal 24 uur. Zodra het beleid van kracht is, kan het tot 24 uur duren voordat de acties zijn uitgevoerd. Daarom kan het beleid tot 48 uur duren voordat het kan worden uitgevoerd.   
 
 **Ik heb een gearchiveerde BLOB hand matig opnieuw gehydrateerd, hoe voorkom ik dat deze tijdelijk weer naar de laag van het archief wordt verplaatst?**  
 Wanneer een BLOB wordt verplaatst van de ene toegangs laag naar een andere, verandert de tijd van de laatste wijziging niet. Als u een gearchiveerde BLOB hand matig opnieuw hebt gehydrateerd naar een warme laag, zou deze terug worden verplaatst naar de archief laag door de levenscyclus beheer-engine. Schakel de regel die van invloed is op deze BLOB tijdelijk uit om te voor komen dat deze opnieuw wordt gearchiveerd. Schakel de regel opnieuw in wanneer de BLOB veilig kan worden verplaatst naar de laag van het archief. U kunt ook de BLOB naar een andere locatie kopiëren als deze permanent of koud laag moet blijven.

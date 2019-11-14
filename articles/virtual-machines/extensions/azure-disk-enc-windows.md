@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Encryption voor Windows | Microsoft Docs
+title: Azure Disk Encryption voor Windows
 description: Hiermee worden Azure Disk Encryption geïmplementeerd op een virtuele Windows-machine met behulp van een extensie van een virtuele machine.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 056bd1293e0593a7fb7f9909cfd85043577686c4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8435663dcf92e2617ea2fe9218649e94243272d2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901339"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073212"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption voor Windows (micro soft. Azure. Security. AzureDiskEncryption)
 
@@ -132,30 +132,30 @@ Het 1,1-schema vereist `aadClientID` en `aadClientSecret` of `AADClientCertifica
 ```
 
 
-### <a name="property-values"></a>Eigenschaps waarden
+### <a name="property-values"></a>Waarden van eigenschappen
 
-| Naam | Waarde/voor beeld | Gegevenstype |
+| Naam | Waarde / voorbeeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| Uitgever | Micro soft. Azure. Security | string |
-| type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 1,1, 2,2 | string |
-| (1,1-schema) AADClientID | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | GPT | 
-| (1,1-schema) AADClientSecret | wachtwoord | string |
-| (1,1-schema) AADClientCertificate | vingerafdruk | string |
-| DiskFormatQuery | {"dev_path": "", "naam": "", "File_system": ""} | JSON-woorden lijst |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
-| KeyEncryptionAlgorithm | ' RSA-OAEP ', ' RSA-OAEP-256 ', ' RSA1_5 ' | string |
-| keyEncryptionKeyURL | url | string |
-| keyVaultURL | url | string |
-| Beschrijving Wachtzin | wachtwoord | string | 
-| sequenceVersion | unieke | string |
-| volumeType | Besturings systeem, gegevens, alle | string |
+| publisher | Microsoft.Azure.Security | tekenreeks |
+| type | AzureDiskEncryptionForLinux | tekenreeks |
+| typeHandlerVersion | 1,1, 2,2 | tekenreeks |
+| (1,1-schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (1,1-schema) AADClientSecret | wachtwoord | tekenreeks |
+| (1,1-schema) AADClientCertificate | thumbprint | tekenreeks |
+| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-woorden lijst |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | tekenreeks | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | tekenreeks |
+| KeyEncryptionKeyURL | url | tekenreeks |
+| KeyVaultURL | url | tekenreeks |
+| Beschrijving Passphrase | wachtwoord | tekenreeks | 
+| SequenceVersion | uniqueidentifier | tekenreeks |
+| VolumeType | Besturings systeem, gegevens, alle | tekenreeks |
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 Zie [een nieuwe versleutelde Windows-VM maken op basis van een galerie afbeelding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)voor een voor beeld van een sjabloon implementatie.
 
-## <a name="azure-cli-deployment"></a>Implementatie van Azure CLI
+## <a name="azure-cli-deployment"></a>Azure CLI-implementatie
 
 Instructies vindt u in de meest recente [documentatie van Azure cli](/cli/azure/vm/encryption?view=azure-cli-latest). 
 
@@ -167,7 +167,7 @@ Raadpleeg de [hand leiding](../../security/azure-security-disk-encryption-tsg.md
 
 ### <a name="support"></a>Ondersteuning
 
-Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/community/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
+Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnemen met de Azure-experts op het [forums voor Azure MSDN en Stack Overflow](https://azure.microsoft.com/support/community/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteuning van Azure site](https://azure.microsoft.com/support/options/) en selecteer Get-ondersteuning. Voor meer informatie over het gebruik van ondersteuning voor Azure, de [Veelgestelde vragen over Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [virtuele machines en functies voor Windows](features-windows.md)voor meer informatie over uitbrei dingen.

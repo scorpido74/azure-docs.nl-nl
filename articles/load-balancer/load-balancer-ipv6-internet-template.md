@@ -1,7 +1,7 @@
 ---
 title: Een Internet gerichte Load Balancer implementeren met IPv6-Azure-sjabloon
 titleSuffix: Azure Load Balancer
-description: IPv6-ondersteuning implementeren voor Azure Load Balancer en virtuele machines met taak verdeling.
+description: Meer informatie over het implementeren van IPv6-ondersteuning voor Azure Load Balancer en virtuele machines met taak verdeling met behulp van een Azure-sjabloon.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: e5cfc980387b63701fb3ff36e7fa8ac43800ecce
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f92011a6955398ef85e44fae1ce8f782cc9cc12c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048450"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076005"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Een Internet gerichte Load Balancer-oplossing met IPv6 implementeren met behulp van een sjabloon
 

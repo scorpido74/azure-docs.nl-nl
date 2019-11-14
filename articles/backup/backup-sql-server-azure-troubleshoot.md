@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: e4683547a7c305da3d3a3bc7a7d6a50f21ad46f2
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: e600fdb882294d14bb9f9216ac8d621ba5254170
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614403"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074720"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problemen met SQL Server database back-up oplossen met behulp van Azure Backup
 
@@ -31,7 +31,7 @@ Als u de beveiliging voor een SQL Server Data Base op een virtuele machine wilt 
 
 | Severity | Beschrijving | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|---|
-| Waarschuwing | De huidige instellingen voor deze data base bieden geen ondersteuning voor bepaalde back-uptypen die aanwezig zijn in het bijbehorende beleid. | <li>Alleen een volledige database back-upbewerking kan worden uitgevoerd op de hoofd database. U kunt geen differentiële back-up of transactie logboek back-up maken. </li> <li>Voor alle data bases in het eenvoudige herstel model is het maken van back-ups van transactie logboeken niet toegestaan.</li> | Wijzig de data base-instellingen zodanig dat alle back-uptypen in het beleid worden ondersteund. Of wijzig het huidige beleid zodat alleen de ondersteunde back-uptypen worden vermeld. Anders worden de niet-ondersteunde back-uptypen overgeslagen tijdens de geplande back-up of mislukt de back-uptaak voor ad hoc-back-ups.
+| Waarschuwing | De huidige instellingen voor deze data base bieden geen ondersteuning voor bepaalde back-uptypen die aanwezig zijn in het bijbehorende beleid. | <li>Alleen een volledige database back-upbewerking kan worden uitgevoerd op de hoofd database. U kunt geen differentiële back-up of transactie logboek back-up maken. </li> <li>Voor alle data bases in het eenvoudige herstel model is het maken van back-ups van transactie logboeken niet toegestaan.</li> | Wijzig de data base-instellingen zodanig dat alle back-uptypen in het beleid worden ondersteund. Of wijzig het huidige beleid zodat alleen de ondersteunde back-uptypen worden vermeld. Anders worden de niet-ondersteunde back-uptypen overgeslagen tijdens de geplande back-up of mislukt de back-uptaak voor back-ups op aanvraag.
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -50,7 +50,7 @@ Als u de beveiliging voor een SQL Server Data Base op een virtuele machine wilt 
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| Logboekketen is onderbroken. | Er wordt een back-up gemaakt van de data base of de virtuele machine via een andere back-upoplossing, waardoor de logboek keten wordt afgekapt.|<ul><li>Controleer of er een andere back-upoplossing of een ander script wordt gebruikt. Als dit het geval is, stopt u de andere back-upoplossing. </li><li>Als de back-up een ad-hoc logboek back-up is, activeert u een volledige back-up om een nieuwe logboek keten te starten. Voor geplande logboek back-ups is geen actie vereist omdat de Azure Backup-service automatisch een volledige back-up wordt geactiveerd om dit probleem op te lossen.</li>|
+| Logboekketen is onderbroken. | Er wordt een back-up gemaakt van de data base of de virtuele machine via een andere back-upoplossing, waardoor de logboek keten wordt afgekapt.|<ul><li>Controleer of er een andere back-upoplossing of een ander script wordt gebruikt. Als dit het geval is, stopt u de andere back-upoplossing. </li><li>Als de back-up een logboek back-up op aanvraag is, moet u een volledige back-up activeren om een nieuwe logboek keten te starten. Voor geplande logboek back-ups is geen actie vereist omdat de Azure Backup-service automatisch een volledige back-up wordt geactiveerd om dit probleem op te lossen.</li>|
 
 ### <a name="usererroropeningsqlconnection"></a>UserErrorOpeningSQLConnection
 
@@ -62,7 +62,7 @@ Als u de beveiliging voor een SQL Server Data Base op een virtuele machine wilt 
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| De eerste volledige back-up ontbreekt voor deze gegevens bron. | Volledige back-up ontbreekt voor de data base. Logboeken en differentiële back-ups zijn ouders van een volledige back-up. Zorg er dus voor dat u volledige back-ups maakt voordat u differentiële of logboek back-ups gaat activeren. | Activeer een volledige ad-hoc-back-up.   |
+| De eerste volledige back-up ontbreekt voor deze gegevens bron. | Volledige back-up ontbreekt voor de data base. Logboeken en differentiële back-ups zijn ouders van een volledige back-up. Zorg er dus voor dat u volledige back-ups maakt voordat u differentiële of logboek back-ups gaat activeren. | Activeer een volledige back-up op aanvraag.   |
 
 ### <a name="usererrorbackupfailedastransactionlogisfull"></a>UserErrorBackupFailedAsTransactionLogIsFull
 

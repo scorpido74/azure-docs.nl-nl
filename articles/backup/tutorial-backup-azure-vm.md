@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 1d2888c12cb9d17f1b144f539c312b8bc29f203a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c290e44d8bfecfbf57be8f8e1c596a294f077229
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014254"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074713"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Back-ups van virtuele Azure-machines maken met Power shell
 
@@ -88,7 +88,7 @@ Ga als volgt te werk om een back-up van de virtuele Azure-machine in deze zelf s
 
 1. Geef een container in de kluis op die uw back-upgegevens bevat met [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
 2. Elke VM voor back-up is een item. Als u een back-uptaak wilt starten, haalt u informatie op over de virtuele machine met [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
-3. Voer een ad hoc-back-up uit met[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem).
+3. Voer een back-up op aanvraag uit met[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem).
     * Met de eerste eerste back-uptaak wordt een volledig herstel punt gemaakt.
     * Na de eerste back-up worden met elke back-uptaak incrementele herstel punten gemaakt.
     * Incrementele herstelpunten zijn efficiënt qua opslag en tijd aangezien ze alleen wijzigingen bevatten die sinds de laatste back-up zijn doorgevoerd.

@@ -1,7 +1,7 @@
 ---
 title: Een interne Basic Load Balancer maken - Azure CLI
 titlesuffix: Azure Load Balancer
-description: Leer hoe u een interne load balancer maakt met behulp van Azure CLI
+description: In dit artikel leest u hoe u een interne load balancer maakt met behulp van Azure CLI
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: allensu
-ms.openlocfilehash: e38cc4e6da574e0c3be490cf5d9cd929624343e5
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8492ce820a31183b0b3078b1fb366c25a39b7639
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275457"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076069"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Een interne load balancer maken met Azure CLI om taken te verdelen over VM's
 
@@ -41,7 +41,7 @@ In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroupIL
 ```
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Maak met [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) in *myResourceGroup* een virtueel netwerk met de naam *myVnet* met een subnet met de naam *mySubnet*.
+Maak met *az network vnet create* een virtueel netwerk met de naam *myVnet* met een subnet met de naam *mySubnet* in [myResourceGroup](https://docs.microsoft.com/cli/azure/network/vnet).
 
 ```azurecli-interactive
   az network vnet create \
@@ -60,7 +60,7 @@ In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balance
 
 ### <a name="create-the-load-balancer"></a>Load balancer maken
 
-Maak een interne Load Balancer met [AZ Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) met de naam **myLoadBalancer** die een front-end-IP-configuratie met de naam **myFrontEnd**bevat, een back-end-pool met de naam **myBackEndPool** die is gekoppeld aan een privé-IP-adres * 10.0.0.7.
+Maak een interne Load Balancer met [AZ Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) met de naam **myLoadBalancer** die een front-end-IP-configuratie met de naam **myFrontEnd**bevat, een back-end-pool met de naam **myBackEndPool** die is gekoppeld aan een privé-IP-adres * * 10.0.0.7.
 
 ```azurecli-interactive
   az network lb create \
@@ -87,7 +87,7 @@ Een statustest controleert alle exemplaren van de virtuele machines om ervoor te
 
 ### <a name="create-the-load-balancer-rule"></a>Load balancer-regel maken
 
-Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) de regel *myHTTPRule* voor het luisteren naar poort 80 in de front-endgroep *myFrontEnd* en het verzenden van netwerkverkeer met gelijke taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
+Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met *az network lb rule create* de regel [myHTTPRule](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) voor het luisteren naar poort 80 in de front-endgroep *myFrontEnd* en het verzenden van netwerkverkeer met gelijke taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -104,7 +104,7 @@ Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenk
 
 ## <a name="create-servers-for-the-backend-address-pool"></a>Servers voor de back-end-adresgroep maken
 
-Voordat u enkele VM's implementeert en uw load balancer test, maakt u de ondersteunende virtuele-netwerkbronnen.
+Voordat u enkele VM's implementeert om uw load balancer te testen, maakt u de ondersteunende virtuele-netwerkbronnen.
 
 ### <a name="create-nics"></a>NIC's maken
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: a77227aca70a48d625f9e20fff9c9fe7df87c000
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c65c04a67b92642d3664293dd666236919142f12
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012139"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074200"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Veelgestelde vragen over het maken van back-ups van bestanden en mappen
 
@@ -130,7 +130,7 @@ De grootte van de cachemap bepaalt de hoeveelheid gegevens waarvan u een back-up
   Net start obengine
   ```
 
-6. Voer een ad-hoc back-up uit. Nadat de back-up is voltooid met behulp van de nieuwe locatie, kunt u de oorspronkelijke cachemap verwijderen.
+6. Een back-up op aanvraag uitvoeren. Nadat de back-up is voltooid met behulp van de nieuwe locatie, kunt u de oorspronkelijke cachemap verwijderen.
 
 ### <a name="where-should-the-cache-folder-be-located"></a>Waar moet de cachemap zich bevinden?
 

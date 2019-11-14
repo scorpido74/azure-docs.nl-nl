@@ -1,5 +1,5 @@
 ---
-title: Beheer taken automatiseren op virtuele machines van Azure met behulp van de SQL Server IaaS agent-extensie | Microsoft Docs
+title: Beheer taken automatiseren met de uitbrei ding IaaS agent
 description: In dit artikel wordt beschreven hoe u de SQL Server IaaS agent-extensie beheert, waarmee specifieke SQL Server beheer taken worden geautomatiseerd. Dit zijn onder andere automatische back-ups, automatische patching en integratie van Azure Key Vault.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,12 +16,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3240bb689447c16de8c62e9e8118b0b0df2b1ea3
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 9aae386e21df6711fc4984a7abfd34f418399f76
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259429"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034203"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Beheer taken automatiseren op virtuele machines van Azure met behulp van de SQL Server IaaS agent-extensie
 > [!div class="op_single_selector"]
@@ -38,7 +39,7 @@ Als u de klassieke versie van dit artikel wilt bekijken, raadpleegt u [SQL Serve
 ## <a name="supported-services"></a>Ondersteunde services
 De SQL Server IaaS agent-extensie ondersteunt de volgende beheer taken:
 
-| Beheer functie | Description |
+| Beheer functie | Beschrijving |
 | --- | --- |
 | **Automatische back-up SQL Server** |Automatiseert het plannen van back-ups voor alle data bases voor het standaard exemplaar of een [correct geïnstalleerd](virtual-machines-windows-sql-server-iaas-faq.md#administration) benoemd exemplaar van SQL Server op de virtuele machine. Zie [automatische back-up voor SQL Server in azure virtual machines (Resource Manager)](virtual-machines-windows-sql-automated-backup.md)voor meer informatie. |
 | **Automatische patching SQL Server** |Hiermee configureert u een onderhouds venster waarin belang rijke Windows-updates voor uw virtuele machine kunnen worden uitgevoerd, zodat u updates kunt voor komen tijdens piek tijden voor uw werk belasting. Zie voor meer informatie [automatische patching voor SQL Server in azure virtual machines (Resource Manager)](virtual-machines-windows-sql-automated-patching.md). |
@@ -76,7 +77,7 @@ Hier volgen de vereisten voor het gebruik van de SQL Server IaaS agent-extensie 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 
-##  <a name="installation"></a>Installatie
+##  <a name="installation"></a>Installeren
 De SQL Server IaaS-extensie wordt geïnstalleerd wanneer u uw SQL Server virtuele machine registreert bij de [resource provider](virtual-machines-windows-sql-register-with-resource-provider.md)van de SQL-VM. Indien nodig kunt u de SQL Server IaaS-agent hand matig installeren met behulp van de onderstaande Power shell-opdracht: 
 
   ```powershell-interactive
@@ -120,7 +121,7 @@ Met de vorige opdracht wordt bevestigd dat de agent is geïnstalleerd en algemen
     $sqlext.AutoBackupSettings
    ```
 
-## <a name="removal"></a>Verwijdering
+## <a name="removal"></a>Procedure
 In de Azure Portal, kunt u de uitbrei ding verwijderen door het beletsel teken te selecteren in het venster **extensies** van de eigenschappen van de virtuele machine. Selecteer vervolgens **Verwijderen**.
 
 ![De uitbrei ding van de SQL Server IaaS-agent in Azure Portal verwijderen](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)

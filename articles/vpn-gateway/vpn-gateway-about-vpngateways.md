@@ -1,19 +1,19 @@
 ---
-title: Azure VPN Gateway | Microsoft Docs
+title: Over Azure VPN Gateway
 description: Meer informatie over wat een VPN-gateway is en de manieren waarop u een VPN-gateway kunt gebruiken om verbinding te maken met virtuele netwerken in Azure. Inclusief IPsec/IKE-site-naar-site cross-premises- en VNet-naar-VNet-oplossingen, alsmede punt-naar-site-VPN.
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 10/31/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 82e9003036f67ecd3b3ecd7d8ab6cd434fcfc438
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58a92536510d2f434154169cbefff60487a422fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495689"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075447"
 ---
 # <a name="what-is-vpn-gateway"></a>Wat is VPN Gateway?
 
@@ -53,7 +53,10 @@ De volgende tabel kan u helpen bij het kiezen van de beste connectiviteitsoptie 
 
 ## <a name="gwsku"></a>Gateway-SKU's
 
-Wanneer u een virtuele netwerkgateway maakt, geeft u de gewenste gateway-SKU op. Selecteer de SKU die aan uw vereisten voldoet op basis van de typen werkbelasting, doorvoer, functies en SLA's. Zie het artikel [VPN gateway-Gateway-sku's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor meer informatie over Gateway-sku's, waaronder ondersteunde functies, productie en dev-test en configuratie stappen. Zie [werken met oudere sku's](vpn-gateway-about-skus-legacy.md)voor meer informatie over oudere sku's.
+Wanneer u een virtuele netwerkgateway maakt, geeft u de gewenste gateway-SKU op. Selecteer de SKU die aan uw vereisten voldoet op basis van de typen werkbelasting, doorvoer, functies en SLA's.
+
+* Zie het artikel [VPN gateway-Gateway-sku's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor meer informatie over Gateway-sku's, waaronder ondersteunde functies, productie en dev-test en configuratie stappen.
+* Zie [werken met oudere sku's](vpn-gateway-about-skus-legacy.md)voor meer informatie over oudere sku's.
 
 ### <a name="benchmark"></a>Gateway-SKU's per tunnel, verbinding en doorvoer
 
@@ -92,7 +95,6 @@ Dit type verbinding is een variatie op de site-naar-site-verbinding. U maakt mee
 Met een point-to-site-VPN-gatewayverbinding (P2S) kunt u vanaf een afzonderlijke clientcomputer een beveiligde verbinding maken met uw virtuele netwerk. Een P2S-verbinding wordt tot stand gebracht door deze te starten vanaf de clientcomputer. Deze oplossing is handig voor telewerkers die verbinding willen maken met een Azure VNet vanaf een externe locatie, zoals vanaf thuis of een conferentie. P2S-VPN is ook een uitstekende oplossing in plaats van een S2S-VPN wanneer u maar een paar clients hebt die verbinding moeten maken met een VNet.
 
 Bij P2S-verbindingen is er, in tegenstelling tot bij S2S-verbindingen, geen on-premises openbaar IP-adres en geen VPN-apparaat nodig. P2S-verbindingen kunnen worden gebruikt met S2S-verbindingen via dezelfde VPN-gateway, mits alle configuratievereisten voor beide verbindingen compatibel zijn. Voor meer informatie over point-to-site-verbindingen leest u [About Point-to-Site VPN](point-to-site-about.md) (Over point-to-site-VPN).
-
 
 ![Voorbeeld van een punt-naar-site-verbinding met Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/point-to-site.png)
 

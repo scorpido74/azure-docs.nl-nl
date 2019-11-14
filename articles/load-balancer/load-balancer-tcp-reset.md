@@ -1,7 +1,7 @@
 ---
 title: Load Balancer TCP opnieuw instellen bij inactief in azure
-titlesuffix: Azure Load Balancer
-description: Load Balancer met bidirectionele TCP eerste pakketten bij time-out voor inactiviteit
+titleSuffix: Azure Load Balancer
+description: In dit artikel vindt u informatie over Azure Load Balancer met bidirectionele TCP eerste pakketten bij time-out voor inactiviteit.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
 ms.author: allensu
-ms.openlocfilehash: 8485f4b6e8d4ff55de4930b3cfb7a07802cf1d41
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b37253f37043d902d33504b99401781eb1c761c5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274162"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075936"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer met TCP Reset bij niet-actief (open bare preview)
+# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer met opnieuw instellen van TCP bij inactiviteit (openbare preview)
 
 U kunt [Standard Load Balancer](load-balancer-standard-overview.md) gebruiken om een meer voorspel bare toepassings gedrag te maken voor uw SCENARIO'S door TCP reset in te scha kelen bij niet-actief voor een bepaalde regel. Het standaard gedrag van Load Balancer is het op de achtergrond neerzetten van stromen wanneer de time-out van een stroom niet actief is.  Als u deze functie inschakelt, worden Load Balancer bidirectionele TCP resets (TCP eerste pakket) verzonden naar time-out voor inactiviteit.  Hiermee wordt de eind punten van uw toepassing geïnformeerd dat er een time-out voor de verbinding is opgetreden. deze kan niet meer worden gebruikt.  Eind punten kunnen onmiddellijk een nieuwe verbinding tot stand brengen, indien nodig.
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 28a804a57a4113b22efd5274ad00b3a216b700aa
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 96a9940826570bd687fdef5726bdc103139f9902
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747042"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074665"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Back-ups maken van een SQL Server-data base in een Azure VM
 
@@ -23,7 +23,7 @@ In deze zelf studie wordt uitgelegd hoe u een back-up maakt van een SQL Server-D
 > * Een kluis maken en configureren.
 > * Databases detecteren en back-ups instellen.
 > * Automatische beveiliging van databases instellen.
-> * Voer een ad-hoc back-up uit.
+> * Een back-up op aanvraag uitvoeren.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -102,7 +102,7 @@ Detecteer databases die op de virtuele machine worden uitgevoerd.
 
     ![Bericht dat de implementatie is geslaagd](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-8. Azure Backup detecteert alle SQL Server-databases op de virtuele machine. Tijdens de detectie vindt de onderstaande plaats op de achtergrond:
+8. Azure Backup detecteert alle SQL Server-databases op de virtuele machine. Tijdens de detectie gebeurt het volgende op de achtergrond:
 
     * Azure Backup registreert de virtuele machine met de kluis voor een back-up van de werkbelasting. Van alle databases op de geregistreerde virtuele machine kan alleen op deze kluis een back-up worden gemaakt.
     * Azure Backup installeert de extensie **AzureBackupWindowsWorkload** op de virtuele machine. Er is geen agent geïnstalleerd op de SQL-database.
@@ -215,7 +215,7 @@ Ga als volgt te werk om een back-upbeleid te maken:
 
 14. Als u klaar bent met het bewerken van het back-upbeleid, selecteert u **OK**.
 
-## <a name="run-an-ad-hoc-backup"></a>Een ad-hoc back-up uitvoeren
+## <a name="run-an-on-demand-backup"></a>Een back-up op aanvraag uitvoeren
 
 1. Kies in uw Recovery Services kluis back-upitems.
 2. Klik op SQL in azure VM.
@@ -233,7 +233,7 @@ In deze zelfstudie hebt u Azure Portal gebruikt voor het volgende:
 > * Een kluis maken en configureren.
 > * Databases detecteren en back-ups instellen.
 > * Automatische beveiliging van databases instellen.
-> * Voer een ad-hoc back-up uit.
+> * Een back-up op aanvraag uitvoeren.
 
 Ga verder met de volgende zelfstudie in Azure om een virtuele machine te herstellen vanaf schijf.
 

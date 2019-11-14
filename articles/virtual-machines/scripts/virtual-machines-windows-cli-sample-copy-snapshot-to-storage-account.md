@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld van Azure CLI - Een momentopname kopiëren naar een opslagaccount in een andere regio | Microsoft Docs
+title: 'Azure CLI-voor beeld: een moment opname kopiëren naar een opslag account in een andere regio'
 description: 'Azure CLI-voorbeeldscript: exporteer/kopieer een momentopname als VHD naar een opslagaccount in dezelfde of een andere regio.'
 services: virtual-machines-windows
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 9a1e0058e440f9cea60361a8b6b64dd4c7ab789b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e9ba52357703238c35d31823462d9ff3bd04c87
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307458"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040047"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Een momentopname exporteren/kopiëren naar een opslagaccount in een andere regio met CLI
 
@@ -48,6 +48,6 @@ Dit script gebruikt de volgende opdrachten voor het genereren van de SAS-URI voo
 
 [Een beheerde schijf maken op basis van een VHD](virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
-Extra virtuele machines en beheerde schijven CLI-voorbeeldscripts vindt u de [documentatie voor Azure Windows VM's](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Meer informatie over de CLI-voorbeeld scripts voor virtuele machines en beheerde schijven vindt u in de documentatie van de [Azure Windows-VM](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

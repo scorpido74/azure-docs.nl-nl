@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: ec21c26c705dab94b15c1f76be5e62207b9f206f
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 6fc17f08db5951a3d693c7a5e3d5556d848d2efb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815672"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075046"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network ondersteuning configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. Een VNet is een privé netwerk in de Cloud. Wanneer een Azure-cache voor redis-exemplaar is geconfigureerd met een VNet, is het niet openbaar adresseerbaar en is deze alleen toegankelijk vanaf virtuele machines en toepassingen binnen het VNet. In dit artikel wordt beschreven hoe u ondersteuning voor virtuele netwerken kunt configureren voor een Premium Azure-cache voor een redis-exemplaar.
@@ -39,7 +39,7 @@ Virtual Network-ondersteuning (VNet) is geconfigureerd op de Blade **nieuwe Azur
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Zodra u een premium-prijs categorie hebt geselecteerd, kunt u redis VNet-integratie configureren door een VNet te selecteren dat zich in hetzelfde abonnement en dezelfde locatie als uw cache bevindt. Als u een nieuw VNet wilt gebruiken, maakt u het eerst door de stappen te volgen in [een virtueel netwerk maken met](../virtual-network/manage-virtual-network.md#create-a-virtual-network) behulp van de Azure portal of [een virtueel netwerk (klassiek) te maken met behulp van de Azure Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) en vervolgens terug te gaan naar de **nieuwe Azure-cache voor redis** -Blade om te maken en Configureer uw Premium-cache.
+Zodra u een premium-prijs categorie hebt geselecteerd, kunt u redis VNet-integratie configureren door een VNet te selecteren dat zich in hetzelfde abonnement en dezelfde locatie als uw cache bevindt. Als u een nieuw VNet wilt gebruiken, maakt u het eerst door de stappen te volgen in [een virtueel netwerk maken met](../virtual-network/manage-virtual-network.md#create-a-virtual-network) behulp van de Azure portal of [een virtueel netwerk (klassiek) te maken met behulp van de Azure Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) en vervolgens terug te keren naar de Blade **nieuwe Azure-cache voor redis** om uw Premium-cache te maken en te configureren.
 
 Als u het VNet voor uw nieuwe cache wilt configureren, klikt u op **Virtual Network** op de Blade **nieuwe Azure-cache voor redis** en selecteert u de gewenste vnet in de vervolg keuzelijst.
 
@@ -104,24 +104,27 @@ Wanneer Azure cache voor redis wordt gehost in een VNet, worden de poorten in de
 
 #### <a name="outbound-port-requirements"></a>Vereisten voor de uitgaande poort
 
-Er zijn zeven vereisten voor de uitgaande poort.
+Er zijn negen uitgaande poort vereisten.
 
 - Alle uitgaande verbindingen met internet kunnen worden gemaakt via een on-premises controle apparaat van een client.
 - Drie poorten sturen verkeer naar Azure-eind punten voor onderhoud Azure Storage en Azure DNS.
 - De resterende poortbereiken en voor interne redis-subnet communicatie. Er zijn geen subnet NSG-regels vereist voor de communicatie van interne redis-subnetten.
 
-| Poort (en) | Direction | Transport Protocol | Doel | Lokaal IP-adres | Extern IP-adres |
+| Poort (en) | Richting | Transport Protocol | Doel | Lokaal IP-adres | Extern IP-adres |
 | --- | --- | --- | --- | --- | --- |
-| 80, 443 |Uitgaande |TCP |Afhankelijkheden van redis op Azure Storage/PKI (Internet) | (Redis-subnet) |* |
-| 53 |Uitgaande |TCP/UDP |Redis-afhankelijkheden op DNS (Internet/VNet) | (Redis-subnet) | 168.63.129.16 en 169.254.169.254 <sup>1</sup> en een aangepaste DNS-server voor het subnet <sup>3</sup> |
-| 8443 |Uitgaande |TCP |Interne communicatie voor redis | (Redis-subnet) | (Redis-subnet) |
-| 10221-10231 |Uitgaande |TCP |Interne communicatie voor redis | (Redis-subnet) | (Redis-subnet) |
-| 20226 |Uitgaande |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
-| 13000-13999 |Uitgaande |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
-| 15000-15999 |Uitgaande |TCP |Interne communicatie voor redis en geo-replicatie | (Redis-subnet) |(Redis-subnet) (Geo-replica peer-subnet) |
-| 6379-6380 |Uitgaande |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
+| 80, 443 |Uitgaand |TCP |Afhankelijkheden van redis op Azure Storage/PKI (Internet) | (Redis-subnet) |* |
+| 443 | Uitgaand | TCP | Afhankelijkheid van redis op Azure Key Vault | (Redis-subnet) | AzureKeyVault <sup>1</sup> |
+| 53 |Uitgaand |TCP/UDP |Redis-afhankelijkheden op DNS (Internet/VNet) | (Redis-subnet) | 168.63.129.16 en 169.254.169.254 <sup>2</sup> en een aangepaste DNS-server voor het subnet <sup>3</sup> |
+| 8443 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) | (Redis-subnet) |
+| 10221-10231 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) | (Redis-subnet) |
+| 20226 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
+| 13000-13999 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
+| 15000-15999 |Uitgaand |TCP |Interne communicatie voor redis en geo-replicatie | (Redis-subnet) |(Redis-subnet) (Geo-replica peer-subnet) |
+| 6379-6380 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
 
-<sup>1</sup> deze IP-adressen die eigendom zijn van micro soft, worden gebruikt om de host-VM te adresseren die Azure DNS.
+<sup>1</sup> u kunt de service label ' AzureKeyVault ' gebruiken met netwerk beveiligings groepen van Resource Manager.
+
+<sup>2</sup> deze IP-adressen die eigendom zijn van micro soft, worden gebruikt om de host-VM te adresseren die Azure DNS.
 
 <sup>3</sup> niet nodig voor subnetten zonder aangepaste DNS-server, of nieuwere redis-caches die aangepaste DNS negeren.
 
@@ -133,9 +136,9 @@ Als u gebruikmaakt van georeplicatie tussen caches in virtuele netwerken van Azu
 
 Er zijn acht vereisten voor het poort bereik voor inkomend verkeer. Inkomende aanvragen in deze bereiken zijn ofwel inkomend van andere services die worden gehost in hetzelfde VNET of intern voor de communicatie van het redis-subnet.
 
-| Poort (en) | Direction | Transport Protocol | Doel | Lokaal IP-adres | Extern IP-adres |
+| Poort (en) | Richting | Transport Protocol | Doel | Lokaal IP-adres | Extern IP-adres |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |Inkomend |TCP |Client communicatie naar redis, Azure-taak verdeling | (Redis-subnet) | (Redis subnet), Virtual Network, Azure Load Balancer <sup>2</sup> |
+| 6379, 6380 |Inkomend |TCP |Client communicatie naar redis, Azure-taak verdeling | (Redis-subnet) | (Redis subnet), Virtual Network, Azure Load Balancer <sup>1</sup> |
 | 8443 |Inkomend |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
 | 8500 |Inkomend |TCP/UDP |Azure-taak verdeling | (Redis-subnet) |Azure Load Balancer |
 | 10221-10231 |Inkomend |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis subnet), Azure Load Balancer |
@@ -144,7 +147,7 @@ Er zijn acht vereisten voor het poort bereik voor inkomend verkeer. Inkomende aa
 | 16001 |Inkomend |TCP/UDP |Azure-taak verdeling | (Redis-subnet) |Azure Load Balancer |
 | 20226 |Inkomend |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
 
-<sup>2</sup> u kunt de service label ' AzureLoadBalancer ' (Resource Manager) (of ' AZURE_LOADBALANCER ' voor klassiek) gebruiken om de NSG-regels te ontwerpen.
+<sup>1</sup> u kunt de service label ' AzureLoadBalancer ' (Resource Manager) (of ' AZURE_LOADBALANCER ' voor klassiek) gebruiken om de NSG-regels te ontwerpen.
 
 #### <a name="additional-vnet-network-connectivity-requirements"></a>Aanvullende vereisten voor VNET-netwerk connectiviteit
 
@@ -170,7 +173,7 @@ Zodra de poort vereisten zijn geconfigureerd zoals beschreven in de vorige secti
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
-    Als het hulp programma `tcping` rapporteert dat de poort is geopend, is de cache beschikbaar voor verbinding van clients in het VNET.
+    Als het hulp programma `tcping` meldt dat de poort is geopend, is de cache beschikbaar voor verbinding van clients in het VNET.
 
   - Een andere manier om te testen is het maken van een test-cache-client (een eenvoudige console toepassing met stack Exchange. redis) die verbinding maakt met de cache en waarmee items uit de cache worden toegevoegd en opgehaald. Installeer de voor beeld-client toepassing op een virtuele machine die zich in hetzelfde VNET bevindt als de cache en voer deze uit om de connectiviteit met de cache te controleren.
 
@@ -189,7 +192,7 @@ Vermijd het gebruik van het IP-adres dat lijkt op het volgende connection string
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-Als u de DNS-naam niet kunt omzetten, bevatten sommige client bibliotheken configuratie opties, zoals `sslHost`, die worden geleverd door de stack Exchange. redis-client. Hierdoor kunt u de hostnaam die wordt gebruikt voor certificaat validatie negeren. Bijvoorbeeld:
+Als u de DNS-naam niet kunt omzetten, bevatten sommige client bibliotheken configuratie opties zoals `sslHost` die worden geleverd door de client stack Exchange. redis. Hierdoor kunt u de hostnaam die wordt gebruikt voor certificaat validatie negeren. Bijvoorbeeld:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 
@@ -254,4 +257,3 @@ Meer informatie over het gebruik van meer Premium-cache functies.
 [redis-cache-vnet-ip]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-ip.png
 
 [redis-cache-vnet-info]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-info.png
-

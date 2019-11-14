@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 2b1d3167828f2c2c49bb22580222fbd0e54d31d8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 53d7cb125f59491190aadb07755954ade78356fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813197"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075529"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analytics voor de commerciële Marketplace in het partner centrum
 
-Meer informatie over het openen van analytische rapporten in micro soft Partner Center voor het bewaken van de verkoop, het evalueren van prestaties en het optimaliseren van uw aanbiedingen op Marketplace. Als partner kunt u uw aanbiedingen volgen met behulp van de gegevens visualisatie en Insight-grafieken die worden ondersteund door het partner centrum en kunt u manieren vinden om uw verkoop te maximaliseren. Dankzij de verbeterde analyse hulpprogramma's kunt u de resultaten van prestaties verbeteren en betere relaties met uw klanten en wederverkopers onderhouden. 
+Meer informatie over het openen van analytische rapporten in micro soft Partner Center voor het bewaken van de verkoop, het evalueren van prestaties en het optimaliseren van uw aanbiedingen op Marketplace. Als partner kunt u uw aanbiedingen volgen met behulp van de gegevens visualisatie en Insight-grafieken die worden ondersteund door het partner centrum en kunt u manieren vinden om uw verkoop te maximaliseren. Dankzij de verbeterde analyse hulpprogramma's kunt u de resultaten van prestaties verbeteren en betere relaties met uw klanten en wederverkopers onderhouden.
 
 Open het dash board **[analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** onder commerciële Marketplace om toegang te krijgen tot de Partner Center Analytics-hulpprogram ma's.
 
@@ -26,7 +26,7 @@ Open het dash board **[analyseren](https://partner.microsoft.com/dashboard/comme
 |[Samenvatting](#summary-dashboard)|Grafieken, trends en waarden van statistische gegevens die Marketplace-activiteiten voor uw aanbiedingen samenvatten|
 |[Bestellingen](#orders-dashboard)|Informatie over uw orders in een grafische en download bare indeling|
 |[Hun](#customer-dashboard)|Informatie over uw klanten, met inbegrip van groei trends, gepresenteerd in een grafische en download bare indeling|
-|[Load](#downloads-dashboard)|Een lijst met uw download aanvragen in de afgelopen 30 dagen|
+|[Downloads](#downloads-dashboard)|Een lijst met uw download aanvragen in de afgelopen 30 dagen|
 |[Beoordelingen en beoordelingen](#ratings-and-reviews)| Informatie over beoordelingen en beoordelingen die uw klanten laten staan voor de aanbiedingen die ze hebben verkregen.
 
 ## <a name="summary-dashboard"></a>Samenvattings dashboard
@@ -141,7 +141,7 @@ In de grafiek **per Marketplace-licentie type** wordt een aantal maanden per maa
 - **Gefactureerd via Azure**: micro soft bewaart klanten namens u wanneer u ervoor kiest om [uw aanbieding via micro soft te verkopen](./create-new-saas-offer.md#sell-through-microsoft) met dit licentie type. Betalings typen zijn onder andere betalen per gebruik via credit card of het factureren van een onderneming.
 - **Bring your own License**: micro soft houdt geen klanten in rekening voor het gebruik van dit type Marketplace-aanbieding. Wordt weer gegeven als **[nu downloaden (gratis)](./create-new-saas-offer.md#get-it-now-free)** in Marketplace.
 - **Gratis**: micro soft houdt geen klanten in rekening voor het gebruik van dit type Marketplace-aanbieding. Vermeld als **[gratis proef versie](./create-new-saas-offer.md##free-trial-listing)** in Marketplace.
-- **Micro soft als wederverkoper**: bevat aanbiedingen die door micro soft-wederverkopers worden verkocht als onderdeel van het programma van de **[Cloud Solution Provider (CSP)](./create-new-saas-offer.md#csp-program-opt-in)** .
+- **Micro soft als wederverkoper**: bevat aanbiedingen die door micro soft-wederverkopers worden verkocht als onderdeel van het programma van de **[Cloud Solution Provider (CSP)](./create-new-saas-offer.md)** .
 
 ![Partner centrum Analyseer orders per licentie type](./media/analyze-license-type.png)
 
@@ -234,7 +234,7 @@ U ontvangt een pop-upmelding en een e-mail bericht met een koppeling naar het da
 
 ### <a name="dictionary-of-data-terms"></a>Woorden lijst met gegevens termen
 
-| Kenmerk naam | Rapporten | Definitie|
+| De naam van kenmerk | Rapporten | Definitie|
 |---|---|---|
 | Azure-licentie type | Klant, order | Het type licentie overeenkomst dat door klanten wordt gebruikt om Azure aan te schaffen. Ook wel bekend als Channel |
 | Azure-licentie type: Cloud Solution Provider | Klant, order | De eind klant schaft Azure en uw Marketplace-aanbieding aan via hun Cloud solution provider, die fungeert als uw wederverkoper.|
@@ -247,7 +247,7 @@ U ontvangt een pop-upmelding en een e-mail bericht met een koppeling naar het da
 | Klant plaats| Klant| De naam van de plaats van de klant. De stad kan afwijken van de plaats in het Azure-abonnement van een klant.||
 | Taal van klant communicatie  | Klant| De taal die door de klant wordt aanbevolen voor communicatie.||
 | Bedrijfs naam van klant | Klant, order | De bedrijfs naam die door de klant is verschaft. De naam kan afwijken van de plaats in het Azure-abonnement van een klant.|  |
-| Klant land | Klant, order | De land naam van de klant. Het land kan afwijken van het land van het Azure-abonnement van de klant.|  |
+| Land/regio van de klant | Klant, order | De land naam van de klant. Het land kan afwijken van het land van het Azure-abonnement van de klant.|  |
 | E-mail van klant| Klant| Het e-mail adres van de eind gebruiker. E-mail kan afwijken van het e-mail adres in het Azure-abonnement van een klant.||
 | Voor naam van klant| Klant| De naam van de klant. De naam kan afwijken van de naam die is opgenomen in het Azure-abonnement van de klant.| |
 | Klant-ID | Klant, order | De unieke id die aan een klant is toegewezen. Een klant heeft mogelijk geen of meer Azure Marketplace-abonnementen.|  |

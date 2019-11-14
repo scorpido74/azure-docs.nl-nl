@@ -6,18 +6,18 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 065f392f3089f4d6872cd39c6aaab2098afc6c90
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 8fe665ed9a9c580f5ce7d7bf43e71b9672a2bc5b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012153"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075031"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen
 
 In dit artikel wordt de structuur van een Azure Resource Manager sjabloon beschreven. Het biedt de verschillende secties van een sjabloon en de eigenschappen die beschikbaar zijn in deze secties.
 
-Dit artikel is bedoeld voor gebruikers die bekend zijn met Resource Manager-sjablonen. Het bevat gedetailleerde informatie over de structuur van de sjabloon. Zie [Azure Resource Manager sjablonen](template-deployment-overview.md)als u een sjabloon wilt maken.
+Dit artikel is bedoeld voor gebruikers die bekend zijn met Resource Manager-sjablonen. Het bevat gedetailleerde informatie over de structuur van de sjabloon. Zie [zelf studie: uw eerste Azure Resource Manager sjabloon maken en implementeren](template-tutorial-create-first-template.md)voor een stapsgewijze zelf studie waarin u door het proces van het maken van een sjabloon wordt geleid.
 
 ## <a name="template-format"></a>Sjabloon indeling
 
@@ -178,7 +178,7 @@ Bij het definiëren van een gebruikers functie gelden enkele beperkingen:
 
 Zie door de [gebruiker gedefinieerde functies in azure Resource Manager sjabloon](template-user-defined-functions.md)voor voor beelden van het gebruik van aangepaste functies.
 
-## <a name="resources"></a>Resources
+## <a name="resources"></a>Bronnen
 
 In de sectie Resources definieert u de resources die worden geïmplementeerd of bijgewerkt.
 

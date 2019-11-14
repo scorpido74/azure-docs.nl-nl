@@ -11,39 +11,39 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 00731d3520c98c3fd770dc411f6c5c940555fbe5
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f6a6f50a86dc58299a1c1b5994dd1d19cc915e6c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048589"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076886"
 ---
-# <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>SSL gebruiken om een t/m-Azure Machine Learning te beveiligen
+# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>SSL gebruiken om een webservice te beveiligen via Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel wordt beschreven hoe u een van de implementaties kunt beveiligen via Azure Machine Learning.
+Dit artikel laat u zien hoe u een webservice kunt beveiligen die via Azure Machine Learning wordt geïmplementeerd.
 
-U gebruikt [https](https://en.wikipedia.org/wiki/HTTPS) om de toegang tot s te beperken en de gegevens te beveiligen die door clients worden verzonden. HTTPS helpt de communicatie tussen een client en a te beveiligen door de communicatie tussen de twee te versleutelen. Versleuteling maakt gebruik van [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). TLS wordt soms nog steeds aangeduid als *Secure Sockets Layer* (SSL). Dit is de voorafgaande taak van TLS.
+U gebruikt [https](https://en.wikipedia.org/wiki/HTTPS) om de toegang tot webservices te beperken en de gegevens te beveiligen die door clients worden verzonden. Met HTTPS kunt u de communicatie tussen een client en een webservice beveiligen door de communicatie tussen de twee te versleutelen. Versleuteling maakt gebruik van [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). TLS wordt soms nog steeds aangeduid als *Secure Sockets Layer* (SSL). Dit is de voorafgaande taak van TLS.
 
 > [!TIP]
-> De Azure Machine Learning SDK gebruikt de term ' SSL ' voor eigenschappen die betrekking hebben op beveiligde communicatie. Dit betekent niet dat u geen gebruik maakt van *TLS*. SSL is slechts een vaker herken bare periode.
+> De Azure Machine Learning SDK gebruikt de term ' SSL ' voor eigenschappen die betrekking hebben op beveiligde communicatie. Dit betekent niet dat uw webservice geen gebruik maakt van *TLS*. SSL is slechts een vaker herken bare periode.
 
 TLS en SSL zijn beide afhankelijk van *digitale certificaten*, die u helpen bij het versleutelen en verifiëren van de identiteit. Zie de [open bare-sleutel infrastructuur](https://en.wikipedia.org/wiki/Public_key_infrastructure)van het Wikipedia-onderwerp voor meer informatie over de werking van digitale certificaten.
 
 > [!WARNING]
-> Als u geen HTTPS voor uw gebruikt, zijn gegevens die naar en van de service worden verzonden mogelijk zichtbaar voor anderen op internet.
+> Als u geen HTTPS gebruikt voor uw webservice, zijn gegevens die naar en van de service worden verzonden mogelijk zichtbaar voor anderen op internet.
 >
 > HTTPS zorgt er ook voor dat de client de authenticiteit van de server waarmee verbinding wordt gemaakt, verifieert. Deze functie beschermt clients tegen [man-in-the-Middle](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) -aanvallen.
 
-Dit is het algemene proces voor het beveiligen van een:
+Dit is het algemene proces voor het beveiligen van een webservice:
 
 1. Een domeinnaam krijgen.
 
 2. Een digitaal certificaat ophalen.
 
-3. Implementeren of bijwerken van met SSL ingeschakeld.
+3. De webservice implementeren of bijwerken met SSL ingeschakeld.
 
-4. Werk de DNS bij zodat deze verwijst naar de.
+4. Werkt u uw DNS om te verwijzen naar de webservice.
 
 > [!IMPORTANT]
 > Als u implementeert in azure Kubernetes service (AKS), kunt u uw eigen certificaat kopen of een certificaat gebruiken dat door micro soft wordt verschaft. Als u een certificaat van micro soft gebruikt, hoeft u geen domein naam of SSL-certificaat op te halen. Zie de sectie [SSL inschakelen en implementeren](#enable) in dit artikel voor meer informatie.
@@ -52,7 +52,7 @@ Er zijn kleine verschillen bij het beveiligen van s in verschillende [implementa
 
 ## <a name="get-a-domain-name"></a>Een domeinnaam krijgen
 
-Als u nog geen domein naam hebt, kunt u er een aanschaffen bij een *domein naam registratie*. Het proces en de prijs verschillen per registratie. De registratie service voorziet in hulpprogram ma's voor het beheren van de domein naam. U kunt deze hulpprogram ma's gebruiken om een Fully Qualified Domain Name (FQDN) (zoals www\.contoso.com) toe te wijzen aan het IP-adres dat als host fungeert voor uw.
+Als u nog geen domein naam hebt, kunt u er een aanschaffen bij een *domein naam registratie*. Het proces en de prijs verschillen per registratie. De registratie service voorziet in hulpprogram ma's voor het beheren van de domein naam. U kunt deze hulpprogram ma's gebruiken om een Fully Qualified Domain Name (FQDN) (zoals www\.contoso.com) toe te wijzen aan het IP-adres dat als host fungeert voor uw webservice.
 
 ## <a name="get-an-ssl-certificate"></a>Een SSL-certificaat ophalen
 
@@ -61,7 +61,7 @@ Er zijn veel manieren om een SSL-certificaat (digitaal certificaat) te verkrijge
 * Een **certificaat**. Het certificaat moet de volledige certificaat keten bevatten en moet ' PEM-encoded ' zijn.
 * Een **sleutel**. De sleutel moet ook worden PEM-gecodeerd.
 
-Wanneer u een certificaat aanvraagt, moet u de FQDN-namen opgeven van het adres dat u wilt gebruiken voor de (bijvoorbeeld www\.contoso.com). Het adres dat is gestempeld in het certificaat en het adres dat de clients gebruiken, worden vergeleken om de identiteit van de te controleren. Als deze adressen niet overeenkomen, wordt er een fout bericht weer gegeven.
+Wanneer u een certificaat aanvraagt, moet u de FQDN-namen opgeven van het adres dat u wilt gebruiken voor de webservice (bijvoorbeeld www\.contoso.com). Het adres dat is gestempeld in het certificaat en het adres dat de clients gebruiken, worden vergeleken om de identiteit van de webservice te controleren. Als deze adressen niet overeenkomen, wordt er een fout bericht weer gegeven.
 
 > [!TIP]
 > Als de certificerings instantie het certificaat en de sleutel niet kan leveren als met PEM gecodeerde bestanden, kunt u een hulp programma zoals [openssl](https://www.openssl.org/) gebruiken om de indeling te wijzigen.
@@ -76,7 +76,7 @@ Als u de service wilt implementeren (of opnieuw wilt implementeren) met SSL inge
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>Implementeren op AKS en veld-Programmeer bare poort matrix (FPGA)
 
   > [!NOTE]
-  > De informatie in deze sectie is ook van toepassing wanneer u een beveiligd voor de ontwerp functie implementeert. Als u niet bekend bent met het gebruik van de python-SDK, raadpleegt u [Wat is de Azure machine learning SDK voor python?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+  > De informatie in deze sectie is ook van toepassing wanneer u een beveiligde webservice voor de ontwerp functie implementeert. Als u niet bekend bent met het gebruik van de python-SDK, raadpleegt u [Wat is de Azure machine learning SDK voor python?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
 Wanneer u implementeert in AKS, kunt u een nieuw AKS-cluster maken of een bestaande toevoegen. Zie [een model implementeren in een Azure Kubernetes-service cluster](how-to-deploy-azure-kubernetes-service.md)voor meer informatie over het maken of koppelen van een cluster.
   
@@ -145,7 +145,7 @@ Zie [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/a
 
 ## <a name="update-your-dns"></a>Werkt u uw DNS
 
-Vervolgens moet u de DNS bijwerken zodat deze verwijst naar de.
+Vervolgens moet u uw DNS om te verwijzen naar de webservice bijwerken.
 
 + **Voor Container Instances:**
 
@@ -160,7 +160,7 @@ Vervolgens moet u de DNS bijwerken zodat deze verwijst naar de.
 
   Werk de DNS van het open bare IP-adres van de AKS-cluster op het tabblad **configuratie** onder **instellingen** in het linkerdeel venster. (Zie de volgende afbeelding.) Het open bare IP-adres is een resource type dat wordt gemaakt onder de resource groep die de AKS-agent knooppunten en andere netwerk bronnen bevat.
 
-  [![Azure Machine Learning: s beveiligen met SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: webservices beveiligen met SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>Het SSL-certificaat bijwerken
 
@@ -257,5 +257,5 @@ aks_target.update(update_config)
 
 ## <a name="next-steps"></a>Volgende stappen
 Leer hoe u het volgende doet:
-+ [Een machine learning model gebruiken dat is geïmplementeerd als een](how-to-consume-web-service.md)
++ [Een machine learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
 + [Veilig experimenten en demijnen uitvoeren in een virtueel Azure-netwerk](how-to-enable-virtual-network.md)

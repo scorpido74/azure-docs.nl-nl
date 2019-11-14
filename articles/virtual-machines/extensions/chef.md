@@ -1,5 +1,5 @@
 ---
-title: Chef-extensie voor Azure-Vm's | Microsoft Docs
+title: Chef-extensie voor Azure-Vm's
 description: Implementeer de chef-client op een virtuele machine met behulp van de VM-extensie chef.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: e82a5fefcc7f582df65d945735d9840fc3e49829
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169142"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073191"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-extensie voor Linux en Windows
 
@@ -36,7 +36,7 @@ De chef-VM-extensie vereist dat de virtuele doel machine is verbonden met intern
 
 ## <a name="extension-schema"></a>Extensieschema
 
-In de volgende JSON wordt het schema voor de VM-extensie chef weer gegeven. Voor de uitbrei ding zijn mini maal de URL van de chef-server, de naam van de validatie-client en de validatie sleutel voor de chef-server vereist. deze waarden zijn te vinden in het `knife.rb` bestand in Starter-Kit. zip dat wordt gedownload wanneer u [chef Automatiseer](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) of een zelfstandige chef- [Server](https://downloads.chef.io/chef-server)installeert. Omdat de validatie sleutel moet worden behandeld als gevoelige gegevens, moet deze worden geconfigureerd onder het **protectedSettings** -element, wat inhoudt dat deze alleen wordt ontsleuteld op de virtuele doel machine.
+In de volgende JSON wordt het schema voor de VM-extensie chef weer gegeven. Voor de uitbrei ding zijn mini maal de URL van de chef-server, de naam van de validatie-client en de validatie sleutel voor de chef-server vereist. deze waarden vindt u in het `knife.rb`-bestand in Starter-Kit. zip dat wordt gedownload wanneer u [chef Automatiseer](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) of een zelfstandige chef- [Server](https://downloads.chef.io/chef-server)installeert. Omdat de validatie sleutel moet worden behandeld als gevoelige gegevens, moet deze worden geconfigureerd onder het **protectedSettings** -element, wat inhoudt dat deze alleen wordt ontsleuteld op de virtuele doel machine.
 
 ```json
 {
@@ -67,26 +67,26 @@ In de volgende JSON wordt het schema voor de VM-extensie chef weer gegeven. Voor
 
 ### <a name="core-property-values"></a>Kern eigenschaps waarden
 
-| Name | Waarde / voorbeeld | Gegevenstype
+| Naam | Waarde / voorbeeld | Gegevenstype
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (datum) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | string |
-| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
+| publisher | `Chef.Bootstrap.WindowsAzure` | tekenreeks |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | tekenreeks |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Instellingen
 
-| Name | Waarde / voorbeeld | Gegevenstype | Vereist?
+| Naam | Waarde / voorbeeld | Gegevenstype | Vereist?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | J |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | J |
-| instellingen/runlist | `recipe[mycookbook::default]` | string | J |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | tekenreeks | J |
+| instellingen/runlist | `recipe[mycookbook::default]` | tekenreeks | J |
 
 ### <a name="protected-settings"></a>Beveiligde instellingen
 
-| Name | Voorbeeld | Gegevenstype | Vereist?
+| Naam | Voorbeeld | Gegevenstype | Vereist?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | J |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | tekenreeks | J |
 
 <!--
 ### Linux-specific settings
@@ -110,7 +110,7 @@ De JSON-configuratie voor een VM-extensie worden genest in de bron van de virtue
 
 ## <a name="azure-cli-deployment"></a>Azure CLI-implementatie
 
-De Azure CLI kan worden gebruikt om de chef-VM-extensie te implementeren op een bestaande virtuele machine. Vervang de **validation_key** door de inhoud van uw validatie sleutel (dit bestand als een `.pem` extensie).  Vervang **validation_client_name**, **chef_server_url** en **run_list** door deze waarden uit het `knife.rb` bestand in uw Start pakket.
+De Azure CLI kan worden gebruikt om de chef-VM-extensie te implementeren op een bestaande virtuele machine. Vervang de **validation_key** door de inhoud van uw validatie sleutel (dit bestand als een `.pem` extensie).  Vervang **validation_client_name**, **chef_server_url** en **run_list** door deze waarden uit het `knife.rb`-bestand in uw Start pakket.
 
 ```azurecli
 az vm extension set \
@@ -122,7 +122,7 @@ az vm extension set \
   --settings '{ "bootstrap_options": { "chef_server_url": "<chef_server_url>", "validation_client_name": "<validation_client_name>" }, "runlist": "<run_list>" }'
 ```
 
-## <a name="troubleshooting-and-support"></a>Probleemoplossing en ondersteuning
+## <a name="troubleshooting-and-support"></a>Problemen oplossen en ondersteuning
 
 Gegevens over de status van extensie-implementaties kunnen worden opgehaald uit de Azure-portal en met behulp van de Azure CLI. Als wilt zien de implementatiestatus van extensies voor een bepaalde virtuele machine, voert u de volgende opdracht uit met de Azure CLI.
 

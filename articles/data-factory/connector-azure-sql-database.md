@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren van of naar Azure SQL Database met behulp van Data Factory
-description: Informatie over het kopiëren van gegevens uit ondersteunde brongegevens archieven naar Azure SQL Database of van SQL Database naar ondersteunde Sink-gegevens archieven met behulp van Data Factory.
+title: Gegevens in Azure SQL Database kopiëren en transformeren met behulp van Data Factory
+description: Informatie over het kopiëren van gegevens van en naar Azure SQL Database en het transformeren van gegevens in Azure SQL Database met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,21 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 4ef47bc1064c095792a90ed69880106af77e9dfd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b899d9884a80a882ca03d3d970421227a48a3803
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681110"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075597"
 ---
-# <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Gegevens kopiëren van of naar Azure SQL Database met behulp van Azure Data Factory
+# <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Gegevens in Azure SQL Database kopiëren en transformeren met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Azure Data Factory die u gebruikt:"]
-> * [Versie 1](v1/data-factory-azure-sql-connector.md)
+> * [Versie 1:](v1/data-factory-azure-sql-connector.md)
 > * [Huidige versie](connector-azure-sql-database.md)
 
-In dit artikel wordt beschreven hoe u gegevens kopieert van en naar Azure SQL Database. Lees het [artikel Inleiding](introduction.md)voor meer informatie over Azure Data Factory.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van en naar Azure SQL Database, en om gegevens in Azure SQL Database te transformeren met behulp van gegevens stromen. Lees voor meer informatie over Azure Data Factory, de [inleidende artikel](introduction.md).
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
@@ -35,7 +35,7 @@ Deze Azure SQL Database-Connector wordt ondersteund voor de volgende activiteite
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)
 
-Deze Azure SQL Database-connector ondersteunt deze functies met name:
+Voor kopieer activiteit ondersteunt deze Azure SQL Database-Connector de volgende functies:
 
 - Kopiëren van gegevens met behulp van SQL-verificatie en Azure Active Directory (Azure AD) verificatie van het toepassings token met een service-principal of beheerde identiteiten voor Azure-resources.
 - Als bron, waarbij gegevens worden opgehaald met behulp van een SQL-query of een opgeslagen procedure.
@@ -54,20 +54,20 @@ Deze Azure SQL Database-connector ondersteunt deze functies met name:
 
 De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Azure Data Factory entiteiten die specifiek zijn voor een Azure SQL Database-Connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 
 Deze eigenschappen worden ondersteund voor een Azure SQL Database gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap **type** moet worden ingesteld op **AzureSqlDatabase**. | Ja |
-| connectionString | Geef de gegevens op die nodig zijn om verbinding te maken met het Azure SQL Database-exemplaar voor de **Connections Tring** -eigenschap. <br/>Markeer dit veld als **SecureString** om het veilig op te slaan in azure Data Factory. U kunt ook een wacht woord of Service-Principal-sleutel in Azure Key Vault plaatsen. Als de SQL-verificatie wordt uitgevoerd, haalt u de `password`-configuratie uit de connection string. Zie voor meer informatie het JSON-voor beeld dat volgt op de tabel en [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| servicePrincipalId | Geef de client-ID van de toepassing op. | Ja, wanneer u Azure AD-verificatie gebruikt met een Service-Principal |
-| servicePrincipalKey | Geef de sleutel van de toepassing op. Markeer dit veld als **SecureString** om het veilig op te slaan in azure Data Factory of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja, wanneer u Azure AD-verificatie gebruikt met een Service-Principal |
-| bouw | Geef de Tenant gegevens op, zoals de domein naam of Tenant-ID, waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja, wanneer u Azure AD-verificatie gebruikt met een Service-Principal |
+| connectionString | Geef de gegevens op die nodig zijn om verbinding te maken met het Azure SQL Database-exemplaar voor de **Connections Tring** -eigenschap. <br/>Markeer dit veld als **SecureString** om het veilig op te slaan in azure Data Factory. U kunt ook een wacht woord of Service-Principal-sleutel in Azure Key Vault plaatsen. Als de SQL-verificatie wordt uitgevoerd, haalt u de `password` configuratie uit de connection string. Zie voor meer informatie het JSON-voor beeld dat volgt op de tabel en [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| servicePrincipalId | Opgeven van de toepassing client-ID. | Ja, wanneer u Azure AD-verificatie gebruikt met een Service-Principal |
+| servicePrincipalKey | Geef de sleutel van de toepassing. Markeer dit veld als **SecureString** om het veilig op te slaan in azure Data Factory of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja, wanneer u Azure AD-verificatie gebruikt met een Service-Principal |
+| tenant | Geef de Tenant gegevens op, zoals de domein naam of Tenant-ID, waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja, wanneer u Azure AD-verificatie gebruikt met een Service-Principal |
 | connectVia | Deze [Integration runtime](concepts-integration-runtime.md) wordt gebruikt om verbinding te maken met het gegevens archief. U kunt de Azure Integration runtime of een zelf-hostende Integration runtime gebruiken als uw gegevens archief zich in een particulier netwerk bevindt. Als dat niet is opgegeven, wordt de standaard Azure Integration runtime gebruikt. | Nee |
 
-Raadpleeg de volgende secties over respectievelijk de vereisten en JSON-voor beelden voor verschillende verificatie typen:
+Verwijzen respectievelijk naar de volgende secties over de vereisten en JSON-voorbeelden, voor andere verificatietypen:
 
 - [SQL-verificatie](#sql-authentication)
 - [Verificatie van Azure AD-toepassings token: Service-Principal](#service-principal-authentication)
@@ -78,7 +78,7 @@ Raadpleeg de volgende secties over respectievelijk de vereisten en JSON-voor bee
 
 ### <a name="sql-authentication"></a>SQL-verificatie
 
-#### <a name="linked-service-example-that-uses-sql-authentication"></a>Voor beeld van een gekoppelde service dat gebruikmaakt van SQL-verificatie
+#### <a name="linked-service-example-that-uses-sql-authentication"></a>Voorbeeld van de gekoppelde service die gebruikmaakt van SQL-verificatie
 
 ```json
 {
@@ -132,21 +132,21 @@ Raadpleeg de volgende secties over respectievelijk de vereisten en JSON-voor bee
 
 Voer de volgende stappen uit om een Azure AD-toepassings token verificatie op basis van een service-principal te gebruiken:
 
-1. [Maak een Azure Active Directory-toepassing](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) vanuit de Azure Portal. Noteer de naam van de toepassing en de volgende waarden die de gekoppelde service definiëren:
+1. [Maak een Azure Active Directory-toepassing](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) vanuit de Azure Portal. Noteer de naam van de toepassing en de volgende waarden voor het definiëren van de gekoppelde service:
 
     - Toepassings-id
-    - Toepassings sleutel
+    - Toepassingssleutel
     - Tenant-id
 
 2. [Richt een Azure Active Directory beheerder](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) in voor uw Azure-SQL Server op de Azure portal als u dit nog niet hebt gedaan. De Azure AD-beheerder moet een Azure AD-gebruiker of Azure AD-groep zijn, maar kan geen Service-Principal zijn. Deze stap wordt uitgevoerd. in de volgende stap kunt u een Azure AD-identiteit gebruiken om een Inge sloten database gebruiker voor de service-principal te maken.
 
-3. [Maak Inge sloten database gebruikers](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) voor de Service-Principal. Maak verbinding met de data base van of naar waarnaar u gegevens wilt kopiëren met behulp van hulpprogram ma's als SQL Server Management Studio, met een Azure AD-identiteit die ten minste een machtiging voor een gebruiker heeft gewijzigd. Voer de volgende T-SQL uit: 
+3. [Maak Inge sloten database gebruikers](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) voor de Service-Principal. Maak verbinding met de data base van of naar waarnaar u gegevens wilt kopiëren met behulp van hulpprogram ma's als SQL Server Management Studio, met een Azure AD-identiteit die ten minste een machtiging voor een gebruiker heeft gewijzigd. Voer de volgende T-SQL: 
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. Verleen de Service-Principal machtigingen die voor SQL-gebruikers of anderen gelden. Voer de volgende code uit. Zie [dit document](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)voor meer opties.
+4. Verleen de Service-Principal machtigingen die voor SQL-gebruikers of anderen gelden. Voer de volgende code. Zie [dit document](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)voor meer opties.
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
@@ -155,7 +155,7 @@ Voer de volgende stappen uit om een Azure AD-toepassings token verificatie op ba
 5. Een Azure SQL Database gekoppelde service configureren in Azure Data Factory.
 
 
-#### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Voor beeld van een gekoppelde service die gebruikmaakt van Service-Principal-verificatie
+#### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Voorbeeld van de gekoppelde service die gebruikmaakt van verificatie van service-principal
 
 ```json
 {
@@ -182,7 +182,7 @@ Voer de volgende stappen uit om een Azure AD-toepassings token verificatie op ba
 }
 ```
 
-### <a name="managed-identity"></a>Beheerde identiteiten voor Azure-bronnen verificatie
+### <a name="managed-identity"></a> Beheerde identiteiten voor verificatie van de Azure-resources
 
 Een data factory kan worden gekoppeld aan een [beheerde identiteit voor Azure-resources](data-factory-service-identity.md) die de specifieke Data Factory vertegenwoordigt. U kunt deze beheerde identiteit voor Azure SQL Database authenticatie gebruiken. De aangewezen Factory heeft toegang tot en kopiëren van gegevens van of naar uw data base met behulp van deze identiteit.
 
@@ -190,13 +190,13 @@ Voer de volgende stappen uit om beheerde identiteits verificatie te gebruiken.
 
 1. [Richt een Azure Active Directory beheerder](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) in voor uw Azure-SQL Server op de Azure portal als u dit nog niet hebt gedaan. De Azure AD-beheerder kan een Azure AD-gebruiker of een Azure AD-groep zijn. Als u de groep toewijst met beheerde identiteit een beheerdersrol, slaat u stap 3 en 4 over. De beheerder heeft volledige toegang tot de data base.
 
-2. [Inge sloten database gebruikers maken](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) voor de Azure Data Factory beheerde identiteit. Maak verbinding met de data base van of naar waarnaar u gegevens wilt kopiëren met behulp van hulpprogram ma's als SQL Server Management Studio, met een Azure AD-identiteit die ten minste een machtiging voor een gebruiker heeft gewijzigd. Voer de volgende T-SQL uit: 
+2. [Inge sloten database gebruikers maken](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) voor de Azure Data Factory beheerde identiteit. Maak verbinding met de data base van of naar waarnaar u gegevens wilt kopiëren met behulp van hulpprogram ma's als SQL Server Management Studio, met een Azure AD-identiteit die ten minste een machtiging voor een gebruiker heeft gewijzigd. Voer de volgende T-SQL: 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. Verleen de Data Factory beheerde identiteit de benodigde machtigingen zoals u dat normaal doet voor SQL-gebruikers en anderen. Voer de volgende code uit. Zie [dit document](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)voor meer opties.
+3. Verleen de Data Factory beheerde identiteit de benodigde machtigingen zoals u dat normaal doet voor SQL-gebruikers en anderen. Voer de volgende code. Zie [dit document](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)voor meer opties.
 
     ```sql
     EXEC sp_addrolemember [role name], [your Data Factory name];
@@ -227,18 +227,18 @@ Voer de volgende stappen uit om beheerde identiteits verificatie te gebruiken.
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie [gegevens sets](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die door de Azure SQL Database-gegevensset worden ondersteund.
+Zie [gegevens sets](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. 
 
-De volgende eigenschappen worden ondersteund om gegevens te kopiëren van of naar Azure SQL Database:
+De volgende eigenschappen worden ondersteund voor Azure SQL Database-gegevensset:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap **type** van de DataSet moet worden ingesteld op **AzureSqlTable**. | Ja |
-| Schema | De naam van het schema. |Nee voor bron, ja voor Sink  |
-| tabel | De naam van de tabel/weer gave. |Nee voor bron, ja voor Sink  |
-| tableName | De naam van de tabel/weer gave met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik voor nieuwe werk belasting `schema` en `table`. | Nee voor bron, ja voor Sink |
+| schema | De naam van het schema. |Nee voor bron, Ja voor sink  |
+| table | De naam van de tabel/weer gave. |Nee voor bron, Ja voor sink  |
+| tableName | De naam van de tabel/weer gave met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en `table`voor nieuwe werk belasting. | Nee voor bron, Ja voor sink |
 
-#### <a name="dataset-properties-example"></a>Voor beeld van eigenschappen van gegevensset
+#### <a name="dataset-properties-example"></a>Voorbeeld van de gegevensset-eigenschappen
 
 ```json
 {
@@ -271,15 +271,15 @@ Als u gegevens wilt kopiëren uit Azure SQL Database, worden de volgende eigensc
 |:--- |:--- |:--- |
 | type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **AzureSqlSource**. Het type SqlSource wordt nog steeds ondersteund voor compatibiliteit met eerdere versies. | Ja |
 | sqlReaderQuery | Deze eigenschap maakt gebruik van de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `select * from MyTable`. | Nee |
-| sqlReaderStoredProcedureName | De naam van de opgeslagen procedure waarmee gegevens uit de bron tabel worden gelezen. De laatste SQL-instructie moet een instructie SELECT in de opgeslagen procedure zijn. | Nee |
-| storedProcedureParameters | Para meters voor de opgeslagen procedure.<br/>Toegestane waarden zijn naam-of waardeparen. De namen en het hoofdletter gebruik van para meters moeten overeenkomen met de namen en de behuizing van de opgeslagen procedure parameters. | Nee |
+| sqlReaderStoredProcedureName | De naam van de opgeslagen procedure die gegevens uit de brontabel leest. De laatste SQL-instructie moet een SELECT-instructie in de opgeslagen procedure. | Nee |
+| storedProcedureParameters | Parameters voor de opgeslagen procedure.<br/>Toegestane waarden zijn de naam of waarde-paren. De namen en het hoofdletter gebruik van para meters moeten overeenkomen met de namen en de behuizing van de opgeslagen procedure parameters. | Nee |
 
 **Punten om te noteren:**
 
 - Als **sqlReaderQuery** is opgegeven voor **AzureSqlSource**, voert de Kopieer activiteit deze query uit op basis van de Azure SQL database bron om de gegevens op te halen. U kunt ook een opgeslagen procedure opgeven door **sqlReaderStoredProcedureName** en **storedProcedureParameters** op te geven als voor de opgeslagen procedure para meters worden gebruikt.
 - Als u **sqlReaderQuery** of **sqlReaderStoredProcedureName**niet opgeeft, worden de kolommen die zijn gedefinieerd in de sectie ' Structure ' van de JSON van de gegevensset gebruikt voor het maken van een query. De query `select column1, column2 from mytable` worden uitgevoerd op basis van Azure SQL Database. Als de definitie van de gegevensset niet de structuur ' Structure ' bevat, worden alle kolommen geselecteerd in de tabel.
 
-#### <a name="sql-query-example"></a>Voor beeld van SQL-query
+#### <a name="sql-query-example"></a>Voorbeeld van de SQL-query
 
 ```json
 "activities":[
@@ -311,7 +311,7 @@ Als u gegevens wilt kopiëren uit Azure SQL Database, worden de volgende eigensc
 ]
 ```
 
-#### <a name="stored-procedure-example"></a>Voor beeld van opgeslagen procedure
+#### <a name="stored-procedure-example"></a>Voorbeeld van de opgeslagen procedure
 
 ```json
 "activities":[
@@ -347,7 +347,7 @@ Als u gegevens wilt kopiëren uit Azure SQL Database, worden de volgende eigensc
 ]
 ```
 
-### <a name="stored-procedure-definition"></a>Definitie van opgeslagen procedure
+### <a name="stored-procedure-definition"></a>Definitie van de opgeslagen procedure
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -376,13 +376,13 @@ Als u gegevens wilt kopiëren naar Azure SQL Database, worden de volgende eigens
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap **type** van de Sink voor kopieer activiteiten moet worden ingesteld op **AzureSqlSink**. Het type SqlSink wordt nog steeds ondersteund voor compatibiliteit met eerdere versies. | Ja |
-| writeBatchSize | Het aantal rijen dat *per batch*in de SQL-tabel moet worden ingevoegd.<br/> De toegestane waarde is een **geheel getal** (aantal rijen). Standaard bepaalt Azure Data Factory dynamisch de juiste Batch grootte op basis van de Rijgrootte. | Nee |
-| writeBatchTimeout | De wacht tijd waarna de batch INSERT-bewerking moet worden voltooid voordat er een time-out optreedt.<br/> De toegestane waarde is **time span**. Een voor beeld is ' 00:30:00 ' (30 minuten). | Nee |
-| preCopyScript | Geef een SQL-query op voor het uitvoeren van de Kopieer activiteit voordat u gegevens naar Azure SQL Database schrijft. Het wordt slechts één keer per Kopieer bewerking aangeroepen. Gebruik deze eigenschap om de vooraf geladen gegevens op te schonen. | Nee |
+| writeBatchSize | Het aantal rijen dat *per batch*in de SQL-tabel moet worden ingevoegd.<br/> De toegestane waarde is **geheel getal** (aantal rijen). Standaard bepaalt Azure Data Factory dynamisch de juiste Batch grootte op basis van de Rijgrootte. | Nee |
+| writeBatchTimeout | De wacht tijd waarna de batch INSERT-bewerking moet worden voltooid voordat er een time-out optreedt.<br/> De toegestane waarde is **timespan**. Een voor beeld is ' 00:30:00 ' (30 minuten). | Nee |
+| preCopyScript | Geef een SQL-query op voor het uitvoeren van de Kopieer activiteit voordat u gegevens naar Azure SQL Database schrijft. Het wordt slechts één keer per Kopieer bewerking aangeroepen. Gebruik deze eigenschap voor het opschonen van de vooraf geladen gegevens. | Nee |
 | sqlWriterStoredProcedureName | De naam van de opgeslagen procedure die definieert hoe bron gegevens in een doel tabel worden toegepast. <br/>Deze opgeslagen procedure wordt *per batch aangeroepen*. Voor bewerkingen die slechts één keer worden uitgevoerd en niets te doen met bron gegevens, bijvoorbeeld verwijderen of afkappen, gebruikt u de eigenschap `preCopyScript`. | Nee |
 | storedProcedureTableTypeParameterName |De parameter naam van het tabel type dat is opgegeven in de opgeslagen procedure.  |Nee |
 | sqlWriterTableType |De naam van het tabel type dat moet worden gebruikt in de opgeslagen procedure. Met de Kopieer activiteit worden de gegevens in een tijdelijke tabel met dit tabel type beschikbaar gemaakt. Met de opgeslagen procedure code kunt u vervolgens de gegevens samen voegen die worden gekopieerd met bestaande gegevens. |Nee |
-| storedProcedureParameters |Para meters voor de opgeslagen procedure.<br/>Toegestane waarden zijn naam-en waardeparen. Namen en hoofdletter gebruik van para meters moeten overeenkomen met de namen en de behuizing van de opgeslagen procedure parameters. | Nee |
+| storedProcedureParameters |Parameters voor de opgeslagen procedure.<br/>Toegestane waarden zijn naam-en waardeparen. Namen en hoofdlettergebruik van parameters moeten overeenkomen met de naam en het hoofdlettergebruik van de opgeslagen-procedureparameters. | Nee |
 | tableOption | Hiermee wordt aangegeven of de Sink-tabel automatisch moet worden gemaakt als deze niet bestaat op basis van het bron schema. Het automatisch maken van tabellen wordt niet ondersteund wanneer Sink de opgeslagen procedure opgeeft of een gefaseerde kopie is geconfigureerd in de Kopieer activiteit. Toegestane waarden zijn: `none` (standaard), `autoCreate`. |Nee |
 | disableMetricsCollection | Data Factory verzamelt metrische gegevens, zoals Azure SQL Database Dtu's voor het optimaliseren van Kopieer prestaties en aanbevelingen. Als u zich zorgen maakt over dit gedrag, geeft u `true` op om het uit te scha kelen. | Nee (standaard is `false`) |
 
@@ -538,7 +538,7 @@ In het volgende voor beeld ziet u hoe u een opgeslagen procedure gebruikt om een
     )
     ```
 
-2. Definieer in uw data base de opgeslagen procedure met de naam **SqlWriterStoredProcedureName**. De invoer gegevens van de opgegeven bron worden verwerkt en samen voegingen in de uitvoer tabel. De parameter naam van het tabel type in de opgeslagen procedure is hetzelfde als **TableName** gedefinieerd in de gegevensset.
+2. Definieer in uw data base de opgeslagen procedure met de naam **sqlWriterStoredProcedureName**. De invoer gegevens van de opgegeven bron worden verwerkt en samen voegingen in de uitvoer tabel. De parameter naam van het tabel type in de opgeslagen procedure is hetzelfde als **TableName** gedefinieerd in de gegevensset.
 
     ```sql
     CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -560,9 +560,9 @@ In het volgende voor beeld ziet u hoe u een opgeslagen procedure gebruikt om een
     ```json
     "sink": {
         "type": "AzureSqlSink",
-        "SqlWriterStoredProcedureName": "spOverwriteMarketing",
+        "sqlWriterStoredProcedureName": "spOverwriteMarketing",
         "storedProcedureTableTypeParameterName": "Marketing",
-        "SqlWriterTableType": "MarketingType",
+        "sqlWriterTableType": "MarketingType",
         "storedProcedureParameters": {
             "category": {
                 "value": "ProductA"
@@ -582,37 +582,37 @@ Wanneer gegevens worden gekopieerd van of naar Azure SQL Database, worden de vol
 | Azure SQL Database gegevens type | Azure Data Factory tussentijds gegevens type |
 |:--- |:--- |
 | bigint |Int64 |
-| waarde |Byte [] |
-| bitmask |Booleaans |
-| char |Teken reeks, char [] |
+| binary |Byte[] |
+| bit |Booleaans |
+| char |String, Char[] |
 | date |DateTime |
-| Datetime |DateTime |
-| DATETIME2 |DateTime |
-| Date time offset |Date time offset |
-| Komma |Komma |
-| FILESTREAM-kenmerk (varbinary (max)) |Byte [] |
+| Datum en tijd |DateTime |
+| datetime2 |DateTime |
+| Datetimeoffset |DateTimeOffset |
+| decimaal |decimaal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double-waarde |
-| image |Byte [] |
+| installatiekopie |Byte[] |
 | int |Int32 |
-| financieel |Komma |
-| nchar |Teken reeks, char [] |
-| ntext |Teken reeks, char [] |
-| 443 |Komma |
-| nvarchar |Teken reeks, char [] |
-| realistische |Enkelvoudig |
-| rowversion |Byte [] |
+| money |decimaal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |decimaal |
+| nvarchar |String, Char[] |
+| real |Enkelvoudig |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Komma |
+| smallmoney |decimaal |
 | sql_variant |Object |
-| tekst |Teken reeks, char [] |
-| tijd |Duur |
-| tijdstempel |Byte [] |
-| tinyint |DBCS |
-| unieke |GUID |
-| varbinary |Byte [] |
-| varchar |Teken reeks, char [] |
-| xml |indeling |
+| tekst |String, Char[] |
+| tijd |TimeSpan |
+| tijdstempel |Byte[] |
+| tinyint |Byte |
+| uniqueidentifier |GUID |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 >[!NOTE]
 > Voor gegevens typen die worden toegewezen aan het type van de tijdelijke decimalen, Azure Data Factory op dit moment de precisie Maxi maal 28 ondersteunen. Als u gegevens hebt die een grotere precisie hebben dan 28, kunt u overwegen om te converteren naar een teken reeks in SQL-query.

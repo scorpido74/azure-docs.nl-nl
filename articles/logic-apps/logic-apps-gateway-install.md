@@ -9,20 +9,20 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 6daf9351e48603824aa6cec30adb4a6b82349784
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ef46fce8609119777ef73cbe189d7a8ace662c91
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049044"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076939"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevens gateway voor Azure Logic Apps installeren
 
 Voordat u [verbinding kunt maken met on-premises gegevens bronnen vanuit Azure Logic apps](../logic-apps/logic-apps-gateway-connection.md), downloadt en installeert u de [on-premises gegevens gateway](https://aka.ms/on-premises-data-gateway-installer) op een lokale computer. De gateway werkt als een brug die snelle gegevens overdracht en versleuteling biedt tussen gegevens bronnen on-premises en uw Logic apps. U kunt dezelfde Gateway-installatie gebruiken met andere Cloud Services, zoals Power BI, energie automatisering, Power apps en Azure Analysis Services. Zie de volgende artikelen voor meer informatie over het gebruik van de gateway met deze services:
 
-* [On-premises gegevens gateway van micro soft Power BI](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [On-premises gegevens gateway van micro soft power apps](https://powerapps.microsoft.com/tutorials/gateway-management/)
-* [Power on-premises gegevens gateway automatiseren](/power-automate/gateway-reference)
+* [Micro soft power on-premises gegevens gateway automatiseren](/power-automate/gateway-reference)
+* [On-premises gegevens gateway van micro soft Power BI](/power-bi/service-gateway-onprem)
+* [On-premises gegevens gateway van micro soft power apps](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services on-premises gegevens gateway](../analysis-services/analysis-services-gateway.md)
 
 In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downloaden, installeren en instellen, zodat u toegang hebt tot on-premises gegevens bronnen van Azure Logic Apps. U kunt ook meer te weten komen over [de manier waarop de gegevens gateway](#gateway-cloud-service) verderop in dit onderwerp werkt. Zie [Wat is een on-premises gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)? voor meer informatie over de gateway.

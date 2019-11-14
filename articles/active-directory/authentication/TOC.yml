@@ -139,8 +139,6 @@
           href: howto-authentication-passwordless-security-key.md
         - name: Windows 10 zonder wachtwoord
           href: howto-authentication-passwordless-security-key-windows.md
-        - name: On-premises zonder wachtwoord
-          href: howto-authentication-passwordless-security-key-on-premises.md
         - name: Zonder wachtwoord aanmelden via telefoon
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello voor Bedrijven

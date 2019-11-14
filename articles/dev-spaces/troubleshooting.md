@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: 0afdc0ac246e4cacbd4f45cca36c3c57b1c26e02
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5d327dd1041172bc546b2e0cb5ec3a140f401d84
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005980"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072195"
 ---
 # <a name="troubleshooting-guide"></a>Handleiding voor het oplossen van problemen
 
@@ -94,9 +94,13 @@ Ondanks het fout bericht bij het uitvoeren van `az aks use-dev-spaces` met een v
 
 U kunt dit probleem oplossen door uw installatie van [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) bij te werken naar 2.0.63 of hoger. Met deze update wordt het fout bericht opgelost dat wordt weer gegeven wanneer `az aks use-dev-spaces`wordt uitgevoerd. U kunt ook uw huidige versie van de Azure CLI en de Azure dev Spaces CLI blijven gebruiken.
 
-### <a name="aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>AKS-clusters met door API server geautoriseerde IP-adresbereiken ingeschakeld
+### <a name="error-unable-to-reach-kube-apiserver"></a>Fout ' kan uitvoeren-apiserver niet bereiken '
 
-Als u met [API server geautoriseerde IP-adresbereiken](../aks/api-server-authorized-ip-ranges.md) hebt ingeschakeld voor uw AKS-cluster, moet u ook uw cluster [maken](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) of [bijwerken](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) om [extra bereiken op basis van uw regio toe te staan](https://github.com/Azure/dev-spaces/tree/master/public-ips).
+Mogelijk ziet u deze fout wanneer Azure dev Spaces geen verbinding kunnen maken met de API-server van uw AKS-cluster. 
+
+Als de toegang tot uw AKS-cluster-API-server is vergrendeld of als u de [API-server geautoriseerde IP-](../aks/api-server-authorized-ip-ranges.md) adresbereiken hebt ingeschakeld voor uw AKS-cluster, moet u ook uw cluster [maken](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) of [bijwerken](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) om [extra bereiken op basis van uw regio toe te staan](https://github.com/Azure/dev-spaces/tree/master/public-ips).
+
+Zorg ervoor dat de API-server beschikbaar is door kubectl-opdrachten uit te voeren. Als de API-server niet beschikbaar is, neemt u contact op met de AKS-ondersteuning en probeert u het opnieuw wanneer de API-server werkt.
 
 ## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Veelvoorkomende problemen bij het voorbereiden van het project voor Azure-ontwikkel ruimten
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 356eab6122272162f20e1516a9ef7f4ea0127084
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 20cdcfdd3795a7614c054ed96b82cc99fc2c5894
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049054"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068899"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Verbinding maken met on-premises gegevens bronnen vanuit Azure Logic Apps
 
@@ -27,9 +27,9 @@ In dit artikel wordt beschreven hoe u een Azure gateway-resource maakt voor een 
 
 Zie de volgende artikelen voor meer informatie over het gebruik van de gateway met andere services:
 
-* [On-premises gegevens gateway van micro soft Power BI](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Power on-premises gegevens gateway automatiseren](/power-automate/gateway-reference)
-* [On-premises gegevens gateway van micro soft power apps](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Micro soft power on-premises gegevens gateway automatiseren](/power-automate/gateway-reference)
+* [On-premises gegevens gateway van micro soft Power BI](/power-bi/service-gateway-onprem)
+* [On-premises gegevens gateway van micro soft power apps](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services on-premises gegevens gateway](../analysis-services/analysis-services-gateway.md)
 
 <a name="supported-connections"></a>
