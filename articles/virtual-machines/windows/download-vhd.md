@@ -1,5 +1,5 @@
 ---
-title: Een Windows-VHD downloaden vanuit Azure | Microsoft Docs
+title: Een Windows-VHD downloaden vanuit Azure
 description: Down load een Windows-VHD met behulp van de Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: c1c09382102045dd248b6771d8d0ea1ef090b6eb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c5891d7ea2b53ab3524cfff267e71b4f05779cfc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079623"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033595"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Een Windows-VHD downloaden vanuit Azure
 
@@ -31,11 +31,11 @@ Een VHD kan niet worden gedownload van Azure als deze is gekoppeld aan een actie
 
 Voer de volgende stappen uit om de VHD als een installatie kopie te gebruiken om andere Vm's te maken:
 
-1.  Meld u aan bij de [Azure-portal](https://portal.azure.com/) als u dat nog niet hebt gedaan.
+1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/) als u dat nog niet hebt gedaan.
 2.  [Maak verbinding met de virtuele machine](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 3.  Open het opdracht prompt venster op de virtuele machine als beheerder.
 4.  Wijzig de Directory in *%windir%\system32\sysprep* en voer Sysprep. exe uit.
-5.  Selecteer in het dialoog venster hulp programma voor systeem voorbereiding de optie **systeem out-of-Box Experience (OOBE) opgeven**en zorg ervoor dat generaliseren is geselecteerd.
+5.  Selecteer in het dialoog venster hulp programma voor systeem voorbereiding de optie **systeem out-of-Box Experience (OOBE) opgeven**en zorg ervoor dat **generaliseren** is geselecteerd.
 6.  Selecteer in afsluit opties de optie **Afsluiten**en klik vervolgens op **OK**. 
 
 Voer de volgende stappen uit om de VHD als schijf te gebruiken voor een nieuw exemplaar van een bestaande virtuele machine of gegevens schijf:

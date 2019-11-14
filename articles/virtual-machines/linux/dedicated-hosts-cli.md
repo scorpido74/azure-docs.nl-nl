@@ -1,5 +1,5 @@
 ---
-title: Geïmplementeerde Azure-hosts met de CLI | Microsoft Docs
+title: Met de CLI toegewezen Azure-hosts implementeren
 description: Implementeer Vm's op toegewezen hosts met behulp van de Azure CLI.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/29/2019
 ms.author: cynthn
-ms.openlocfilehash: 0c060e2ab94c0a57d4d4dc897702e115cfabd9a0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ece9967321cfca44b102d78722f0df3d8f980bdb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827291"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036406"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Preview: Vm's implementeren op toegewezen hosts met behulp van de Azure CLI
+# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Voor beeld: Vm's implementeren op toegewezen hosts met behulp van de Azure CLI
  
 
 Dit artikel begeleidt u bij het maken van een toegewezen Azure- [host](dedicated-hosts.md) voor het hosten van uw virtuele machines (vm's). 
 
-Zorg ervoor dat u Azure CLI-versie 2.0.70 of hoger hebt geïnstalleerd en dat u bent aangemeld bij een Azure `az login`-account met. 
+Zorg ervoor dat u Azure CLI-versie 2.0.70 of hoger hebt geïnstalleerd en u hebt aangemeld bij een Azure-account met behulp van `az login`. 
 
 > [!IMPORTANT]
 > Exclusieve Azure-hosts bevindt zich momenteel in de open bare preview.
@@ -33,7 +33,7 @@ Zorg ervoor dat u Azure CLI-versie 2.0.70 of hoger hebt geïnstalleerd en dat u 
 >
 > **Bekende preview-beperkingen**
 > - Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
-> - De eerste release van de preview-versie ondersteunt de volgende VM-serie: DSv3 en ESv3. 
+> - De eerste release van de preview-versie ondersteunt de volgende VM-reeksen: DSv3 en ESv3. 
  
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken 
@@ -239,7 +239,7 @@ U kunt een sjabloon exporteren als u nu een extra ontwikkel omgeving met dezelfd
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
-Met deze opdracht maakt `myDHResourceGroup.json` u het bestand in de huidige werkmap. Wanneer u een omgeving maakt op basis van deze sjabloon, wordt u gevraagd om alle resource namen. U kunt deze namen invullen in het sjabloon bestand door de `--include-parameter-default-value` para meter toe te voegen aan de `az group export` opdracht. Bewerk de JSON-sjabloon om de resource namen op te geven of maak een JSON-bestand waarin de resource namen worden opgegeven.
+Met deze opdracht maakt u het `myDHResourceGroup.json`-bestand in de huidige werkmap. Wanneer u een omgeving maakt op basis van deze sjabloon, wordt u gevraagd om alle resource namen. U kunt deze namen invullen in het sjabloon bestand door de para meter `--include-parameter-default-value` toe te voegen aan de `az group export` opdracht. Bewerk de JSON-sjabloon om de resource namen op te geven of maak een JSON-bestand waarin de resource namen worden opgegeven.
  
 Gebruik [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create)om een omgeving te maken op basis van uw sjabloon.
 

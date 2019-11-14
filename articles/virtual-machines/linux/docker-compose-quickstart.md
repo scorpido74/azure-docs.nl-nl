@@ -1,6 +1,6 @@
 ---
-title: Docker Compose gebruiken op een virtuele Linux-machine in Azure | Microsoft Docs
-description: Over het installeren en gebruiken van Docker en Compose op virtuele Linux-machines met de Azure CLI
+title: Docker-compositie gebruiken op een virtuele Linux-machine in azure
+description: Docker installeren en gebruiken en samen stellen op virtuele Linux-machines met de Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 29b9b2b7868a39b8e14a559b27f60f9e46bad565
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 4f2f12e0124743ad31e083cf4ece83bcb608bce0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667989"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036278"
 ---
-# <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Aan de slag met Docker en Compose om te definiëren en uitvoeren van een toepassing met meerdere containers in Azure
-Met [opstellen](https://github.com/docker/compose), u een eenvoudig tekstbestand gebruiken voor het definiëren van een toepassing die bestaat uit meerdere Docker-containers. U instellen uw toepassing in één opdracht dat alles is voor het implementeren van uw omgeving gedefinieerde vervolgens. Bijvoorbeeld: in dit artikel wordt beschreven hoe u snel een WordPress-blog met een back-end MariaDB SQL-database op een Ubuntu-VM instellen. U kunt ook opstellen voor het instellen van complexere toepassingen gebruiken.
+# <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Aan de slag met docker en samen stellen om een toepassing met meerdere containers te definiëren en uit te voeren in azure
+Met [opstellen](https://github.com/docker/compose)kunt u een eenvoudig tekst bestand gebruiken om een toepassing te definiëren die bestaat uit meerdere docker-containers. Vervolgens voert u uw toepassing in met één opdracht die alles doet om uw gedefinieerde omgeving te implementeren. Dit artikel laat bijvoorbeeld zien hoe u snel een WordPress-blog kunt instellen met een back-MariaDB SQL database op een Ubuntu-VM. U kunt ook samen stellen gebruiken om complexere toepassingen in te stellen.
 
-In dit artikel is laatste over het gebruik van 2/14/2019 getest door de [Azure Cloud Shell](https://shell.azure.com/bash) en de [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) versie 2.0.58.
+Dit artikel is voor het laatst getest op 2/14/2019 met behulp van de [Azure Cloud shell](https://shell.azure.com/bash) en de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) -versie 2.0.58.
 
 ## <a name="create-docker-host-with-azure-cli"></a>Docker-host maken met Azure CLI
-Installeer de meest recente [Azure CLI](/cli/azure/install-az-cli2) en aan te melden bij een Azure-account met [az login](/cli/azure/reference-index).
+Installeer de nieuwste [Azure cli](/cli/azure/install-az-cli2) en meld u aan bij een Azure-account met de opdracht [AZ login](/cli/azure/reference-index).
 
-Maak eerst een resourcegroep voor uw Docker-omgeving met [az-groep maken](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
+Maak eerst een resource groep voor uw docker-omgeving met [AZ Group Create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli-interactive
 az group create --name myDockerGroup --location eastus
 ```
 
-Maak een bestand met de naam *cloud-init.txt* en plak de volgende configuratie. Voer `sensible-editor cloud-init.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. 
+Maak een bestand met de naam *Cloud-init. txt* en plak de volgende configuratie. Voer `sensible-editor cloud-init.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. 
 
 ```yaml
 #include https://get.docker.com
 ```
 
-Maak een virtuele machine met [az vm create](/cli/azure/vm#az-vm-create). Gebruik de `--custom-data`-parameter om door te geven in uw cloud-init-configuratiebestand. Geef het volledige pad naar *cloud-init.txt* op als u het bestand buiten uw huidige werkmap hebt opgeslagen. Het volgende voorbeeld wordt een virtuele machine met de naam *myDockerVM* en open poort 80 voor webverkeer.
+Maak een virtuele machine met [az vm create](/cli/azure/vm#az-vm-create). Gebruik de `--custom-data`-parameter om door te geven in uw cloud-init-configuratiebestand. Geef het volledige pad naar *cloud-init.txt* op als u het bestand buiten uw huidige werkmap hebt opgeslagen. In het volgende voor beeld wordt een virtuele machine met de naam *myDockerVM* gemaakt en wordt poort 80 op webverkeer geopend.
 
 ```azurecli-interactive
 az vm create \
@@ -61,32 +61,32 @@ Het duurt enkele minuten voordat de virtuele machine wordt gemaakt, de pakketten
 
                  
 
-## <a name="install-compose"></a>Installeer opstellen
+## <a name="install-compose"></a>Opstellen installeren
 
 
-SSH naar uw nieuwe virtuele machine van de Docker-host. Geef uw eigen IP-adres.
+SSH naar uw nieuwe docker-host-VM. Geef uw eigen IP-adres op.
 
 ```bash
 ssh azureuser@10.10.111.11
 ```
 
-Installeer opstellen op de virtuele machine.
+Installeer opstellen op de VM.
 
 ```bash
 sudo apt install docker-compose
 ```
 
 
-## <a name="create-a-docker-composeyml-configuration-file"></a>Een docker-compose.yml-configuratiebestand maken
-Maak een `docker-compose.yml` configuratiebestand voor het definiëren van de Docker-containers uit te voeren op de virtuele machine. Het bestand geeft u de installatiekopie uit te voeren op elke container, die nodig zijn omgevingsvariabelen en afhankelijkheden, poorten en de koppelingen tussen containers. Zie voor meer informatie over yml bestand syntaxis [Compose verwijzing naar een bestand](https://docs.docker.com/compose/compose-file/).
+## <a name="create-a-docker-composeyml-configuration-file"></a>Een docker-Compose. yml-configuratie bestand maken
+Maak een `docker-compose.yml` configuratie bestand om de docker-containers te definiëren die op de virtuele machine moeten worden uitgevoerd. Het bestand geeft de installatie kopie op die moet worden uitgevoerd op elke container, de vereiste omgevings variabelen en afhankelijkheden, poorten en de koppelingen tussen containers. Zie voor meer informatie over de syntaxis van een yml-bestand de [Naslag informatie](https://docs.docker.com/compose/compose-file/)voor het opstellen van een bestand.
 
-Maak een *docker-compose.yml* bestand. Gebruik uw favoriete teksteditor enkele gegevens toevoegen aan het bestand. Het volgende voorbeeld wordt het bestand met een prompt voor `sensible-editor` om op te halen van een editor die u wilt gebruiken.
+Maak een *docker-Compose. yml* -bestand. Gebruik uw favoriete tekst editor om gegevens toe te voegen aan het bestand. In het volgende voor beeld wordt het bestand gemaakt met de vraag om `sensible-editor` een editor te kiezen die u wilt gebruiken.
 
 ```bash
 sensible-editor docker-compose.yml
 ```
 
-Plak het volgende voorbeeld in uw Docker Compose-bestand. Deze configuratie maakt gebruik van afbeeldingen uit de [DockerHub register](https://registry.hub.docker.com/_/wordpress/) WordPress (het open-source blogengines en inhoud management system) en een gekoppelde back-end MariaDB SQL-database installeren. Voer uw eigen *MYSQL_ROOT_PASSWORD*.
+Plak het volgende voor beeld in het bestand docker opstellen. Deze configuratie maakt gebruik van installatie kopieën uit het [DockerHub-REGI ster](https://registry.hub.docker.com/_/wordpress/) voor het installeren van WordPress (het open source-blog systeem en het inhouds beheersysteem) en een gekoppelde back-MariaDB SQL database. Voer uw eigen *MYSQL_ROOT_PASSWORD*in.
 
 ```yml
 wordpress:
@@ -102,14 +102,14 @@ db:
     MYSQL_ROOT_PASSWORD: <your password>
 ```
 
-## <a name="start-the-containers-with-compose"></a>Start de containers met opstellen
-In dezelfde map als uw *docker-compose.yml* -bestand, voert u de volgende opdracht uit (afhankelijk van uw omgeving, moet u mogelijk uitvoeren `docker-compose` met behulp van `sudo`):
+## <a name="start-the-containers-with-compose"></a>De containers starten met opstellen
+Voer in dezelfde map als uw *docker-Compose. yml* -bestand de volgende opdracht uit (afhankelijk van uw omgeving moet u mogelijk `docker-compose` uitvoeren met `sudo`):
 
 ```bash
 sudo docker-compose up -d
 ```
 
-Met deze opdracht start de Docker-containers die is opgegeven in *docker-compose.yml*. Het duurt een minuut of twee voor deze stap te voltooien. Hier ziet u uitvoer die vergelijkbaar is met het volgende:
+Met deze opdracht start u de docker-containers die zijn opgegeven in *docker-Compose. yml*. Het duurt enkele minuten voordat deze stap is voltooid. De uitvoer ziet er ongeveer als volgt uit:
 
 ```
 Creating wordpress_db_1...
@@ -118,7 +118,7 @@ Creating wordpress_wordpress_1...
 ```
 
 
-Typ om te controleren dat de containers zijn, `sudo docker-compose ps`. U ziet er ongeveer als:
+Als u wilt controleren of de containers zijn ingesteld, typt u `sudo docker-compose ps`. Als het goed is, ziet u er ongeveer als volgt uit:
 
 ```
         Name                       Command               State         Ports
@@ -127,12 +127,12 @@ azureuser_db_1          docker-entrypoint.sh mysqld      Up      3306/tcp
 azureuser_wordpress_1   docker-entrypoint.sh apach ...   Up      0.0.0.0:80->80/tcp
 ```
 
-U kunt nu verbinding maken met WordPress rechtstreeks op de virtuele machine op poort 80. Open een webbrowser en voer de naam van de IP-adres van uw virtuele machine. U ziet nu de WordPress startscherm, waar u kunt de installatie voltooien en aan de slag met de toepassing.
+U kunt nu rechtstreeks verbinding maken met WordPress op de VM op poort 80. Open een webbrowser en voer de IP-adres naam van uw virtuele machine in. U ziet nu het WordPress-start scherm, waar u de installatie kunt volt ooien en aan de slag gaat met de toepassing.
 
-![WordPress-startscherm](./media/docker-compose-quickstart/wordpressstart.png)
+![WordPress-start scherm](./media/docker-compose-quickstart/wordpressstart.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-* Bekijk de [Compose opdrachtregelreferentiewebpagina](https://docs.docker.com/compose/reference/) en [gebruikershandleiding](https://docs.docker.com/compose/) voor meer voorbeelden van het bouwen en implementeren van apps met meerdere containers.
-* Een Azure Resource Manager-sjabloon gebruiken uw eigen of één hebben bijgedragen uit de [community](https://azure.microsoft.com/documentation/templates/), voor het implementeren van een virtuele Azure-machine met Docker en een toepassing instellen met opstellen. Bijvoorbeeld, de [implementeren van een WordPress-blog met Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) sjabloon maakt gebruik van Docker en Compose WordPress snel implementeren met een MySQL-back-end op een Ubuntu-VM.
-* Probeer het integreren van Docker Compose met een Docker Swarm-cluster. Zie [Compose gebruiken met Swarm](https://docs.docker.com/compose/swarm/) voor scenario's.
+* Bekijk de [opdracht regel Naslag informatie](https://docs.docker.com/compose/reference/) en de [Gebruikers handleiding](https://docs.docker.com/compose/) voor meer voor beelden van het maken en implementeren van apps met meerdere containers.
+* Gebruik een Azure Resource Manager sjabloon, uw eigen of een bijdrage van de [Community](https://azure.microsoft.com/documentation/templates/), om een Azure VM te implementeren met docker en een toepassing die is ingesteld met opstellen. De [implementatie van een WordPress-blog met docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) -sjabloon maakt bijvoorbeeld gebruik van docker en samen om WordPress snel te implementeren met een MySQL-back-end op een Ubuntu-VM.
+* Probeer docker samen te integreren met een docker Swarm-cluster. Zie [opstellen gebruiken met Swarm](https://docs.docker.com/compose/swarm/) voor scenario's.
 

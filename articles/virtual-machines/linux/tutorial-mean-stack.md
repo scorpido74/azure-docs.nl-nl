@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Een MEAN-stack maken op een virtuele Linux-machine in Azure | Microsoft Docs
+title: 'Zelf studie: een gemiddelde stack maken op een virtuele Linux-machine in azure'
 description: In deze zelfstudie leert u hoe u een MongoDB-, Express-, AngularJS- en Node.js- (MEAN-)stack maakt op een virtuele Linux-machine in Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,19 +15,19 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5a1d1f738d8f32777bc4a6ea7d04fb0abf2accf7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 50ccf0d6db5a50f7dd89732bc870ced6bcf1c2d7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300802"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034405"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Zelfstudie: Een MongoDB-, Express-, AngularJS- en Node.js- (MEAN-)stack maken op een virtuele Linux-machine in Azure
 
-In deze zelfstudie leert u hoe u een MongoDB-, Express-, AngularJS- en Node.js- (MEAN-)stack op een virtuele Linux-machine implementeert in Azure. Met de door u gemaakt MEAN-stack kunt u boeken aan een database toevoegen, eruit verwijderen of erin vermelden. In deze zelfstudie leert u procedures om het volgende te doen:
+In deze zelfstudie leert u hoe u een MongoDB-, Express-, AngularJS- en Node.js- (MEAN-)stack op een virtuele Linux-machine implementeert in Azure. Met de door u gemaakt MEAN-stack kunt u boeken aan een database toevoegen, eruit verwijderen of erin vermelden. Procedures voor:
 
 > [!div class="checklist"]
-> * Een Linux VM maken
+> * Een Linux-VM maken
 > * Node.js installeren
 > * MongoDB installeren en de server instellen
 > * Express installeren en routes naar de server instellen
@@ -39,7 +39,7 @@ In deze zelf studie wordt gebruikgemaakt van de CLI binnen de [Azure Cloud shell
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 
-## <a name="create-a-linux-vm"></a>Een Linux VM maken
+## <a name="create-a-linux-vm"></a>Een Linux-VM maken
 
 Maak een resourcegroep met de opdracht [az group create](https://docs.microsoft.com/cli/azure/group) en maak een virtuele Linux-machine met de opdracht [az vm create](https://docs.microsoft.com/cli/azure/vm). Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
@@ -323,7 +323,7 @@ Met [MongoDB](https://www.mongodb.com) worden gegevens opgeslagen in flexibele J
     nodejs server.js
     ```
 
-2. Open in een webbrowser het adres dat u voor de VM hebt opgenomen. Bijvoorbeeld *http: \/-13.72.77.9:3300*. Er verschijnt een pagina die er ongeveer als volgt uitziet:
+2. Open in een webbrowser het adres dat u voor de VM hebt opgenomen. Bijvoorbeeld *http:\//13.72.77.9:3300*. Er verschijnt een pagina die er ongeveer als volgt uitziet:
 
     ![Boekrecord](media/tutorial-mean/meanstack-init.png)
 
@@ -342,7 +342,7 @@ Met [MongoDB](https://www.mongodb.com) worden gegevens opgeslagen in flexibele J
 In deze zelfstudie hebt u een webtoepassing gemaakt die boekrecords bijhoudt met behulp van een MEAN-stack op een VM in Linux. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Een Linux VM maken
+> * Een Linux-VM maken
 > * Node.js installeren
 > * MongoDB installeren en de server instellen
 > * Express installeren en routes naar de server instellen

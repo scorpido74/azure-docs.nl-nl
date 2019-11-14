@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-voorbeeldscript - Beheerde schijven kopiëren (verplaatsen) naar hetzelfde of een ander abonnement | Microsoft Docs
+title: Azure PowerShell-voorbeeldscript - Beheerde schijven kopiëren (verplaatsen) naar hetzelfde of een ander abonnement
 description: Azure PowerShell-voorbeeldscript - Beheerde schijven kopiëren (verplaatsen) naar hetzelfde of een ander abonnement
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: 71bf61f97599afee118f68bbc730c731f5b48406
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: e494770d182a74320237c447e9afc7f7d2665499
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749857"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039838"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Met PowerShell beheerde schijven kopiëren naar hetzelfde of een ander abonnement
 
@@ -48,7 +48,7 @@ In dit script worden de volgende opdrachten gebruikt om een nieuwe beheerde schi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Een virtuele machine maken op basis van een beheerde schijf](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[Een virtuele machine maken van een beheerde schijf](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
 Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
 

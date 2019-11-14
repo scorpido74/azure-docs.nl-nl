@@ -1,5 +1,5 @@
 ---
-title: 'Azure CLI-voorbeeldscript: de LAMP Stack implementeren in een virtuele-machineschaalset met gelijke taakverdeling | Microsoft Docs'
+title: Voor beeld van Azure CLI-script-de LAMP-stack implementeren in een Schaalset met virtuele machines met gelijke taak verdeling
 description: Gebruik een aangepaste scriptextensie om de LAMP Stack te implementeren in een VM-schaalset met gelijke taakverdeling op Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.custom: mvc
 ms.date: 04/05/2017
-ms.openlocfilehash: ffbece620ae038307d30ae3b330854280f09bd28
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 00aa744f09b7bcbbbc258b92a8fd5ab750e447c7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963247"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039101"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>De LAMP Stack implementeren in een VM-schaalset met gelijke taakverdeling
 
@@ -30,7 +30,7 @@ In dit voorbeeld maakt u een VM-schaalset en past u een extensie toe waarmee een
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/build-stack.sh "Create virtual machine scale set with LAMP stack")]
 
-## <a name="connect"></a>Verbinden
+## <a name="connect"></a>Verbinding maken
 
 Gebruik deze code om te zien hoe u verbinding maakt met uw virtuele machines en schaalset.
 
@@ -50,7 +50,7 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az vmss create](https://docs.microsoft.com/cli/azure/vmss) | Hiermee maakt u een VM-schaalset |
 | [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) | Een eindpunt met gelijke taakverdeling toevoegen |
 | [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension) | Hiermee maakt u de extensie voor het uitvoeren van het aangepaste script bij de implementatie van een virtuele machine. |
@@ -61,6 +61,6 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 U kunt extra CLI-scriptvoorbeelden voor virtuele machines vinden in de [Azure-documentatie voor Linux-VM's](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

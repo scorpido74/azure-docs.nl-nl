@@ -1,5 +1,5 @@
 ---
-title: Transparent Data Encryption voor Stretch Database-Azure inschakelen | Microsoft Docs
+title: Transparent Data Encryption voor Stretch Database inschakelen
 description: Transparent Data Encryption (TDE) inschakelen voor SQL Server Stretch Database in azure
 services: sql-server-stretch-database
 documentationcenter: ''
@@ -13,16 +13,17 @@ author: blazem-msft
 ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
-ms.openlocfilehash: 61f556476958484b78b9c3dff2583eb6db043637
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 465338bb793ad7b4fc406e9d1c073b9dc0dc06c8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "66003046"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034016"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Transparent Data Encryption (TDE) inschakelen voor Stretch Database in azure
 > [!div class="op_single_selector"]
-> * [Azure-portal](sql-server-stretch-database-encryption-tde.md)
+> * [Azure Portal](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
@@ -36,8 +37,8 @@ Ga als volgt te werk om TDE in te scha kelen voor een Azure-Data Base waarin de 
 
 1. Open de data base in de [Azure Portal](https://portal.azure.com)
 2. Klik op de Blade Data Base op de knop **instellingen**
-3. Selecteer de optie voor **transparante gegevens versleuteling**![][1]
-4. Selecteer de instelling **bij** en selecteer vervolgens **Opslaan** .
+3. Selecteer de optie voor **transparante gegevens versleuteling** ![][1]
+4. Selecteer de instelling **bij** en selecteer vervolgens **Opslaan**
    ![][2]
 
 ## <a name="disabling-encryption"></a>Versleuteling uitschakelen

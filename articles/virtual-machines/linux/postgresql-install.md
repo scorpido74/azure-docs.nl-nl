@@ -1,5 +1,5 @@
 ---
-title: PostgreSQL instellen op een Linux-VM | Microsoft Docs
+title: PostgreSQL instellen op een virtuele Linux-machine
 description: Meer informatie over het installeren en configureren van PostgreSQL op een virtuele Linux-machine in azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 7fc8cb7c07dd27cd42dc4c6a7e0a576f0efe04e0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f6d521c7003583228990c80a90c1454821f584d3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091724"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035270"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>PostgreSQL installeren en configureren op Azure
 PostgreSQL is een geavanceerde open source-data base, vergelijkbaar met Oracle en DB2. Het bevat bedrijfs klare functies, zoals volwaardige naleving, betrouw bare transactionele verwerking en gelijktijdigheids beheer met meerdere versies. Het biedt ook ondersteuning voor standaarden zoals ANSI SQL en SQL/MED (waaronder Foreign data-wrappers voor Oracle, MySQL, MongoDB en vele andere). Het is zeer uitbreidbaar met ondersteuning voor meer dan 12 procedurele talen, EGINNEN-en concept indexen, ondersteuning voor ruimtelijke gegevens en meerdere NoSQL functies voor JSON of op sleutel waarde gebaseerde toepassingen.
@@ -91,7 +91,7 @@ Maak verbinding met de virtuele Linux-machine die u hebt gemaakt via PuTTy. Als 
    > Uit veiligheids overwegingen gebruikt PostgreSQL een niet-hoofd gebruiker om de data base te initialiseren, te starten of af te sluiten.
    > 
    > 
-4. Bewerk het *bash_profile* -bestand door de onderstaande opdrachten in te voeren. Deze regels worden toegevoegd aan het einde van het *bash_profile* -bestand:
+4. Bewerk het *bash_profile* bestand door de onderstaande opdrachten in te voeren. Deze regels worden toegevoegd aan het einde van het *bash_profile* -bestand:
    
         cat >> ~/.bash_profile <<EOF
         export PGPORT=1999
@@ -105,7 +105,7 @@ Maak verbinding met de virtuele Linux-machine die u hebt gemaakt via PuTTy. Als 
         alias rm='rm -i'
         alias ll='ls -lh'
         EOF
-5. Voer het *bash_profile* -bestand uit:
+5. Voer het *bash_profile* bestand uit:
    
         $ source .bash_profile
 6. Valideer uw installatie met behulp van de volgende opdracht:
@@ -125,7 +125,7 @@ Maak verbinding met de virtuele Linux-machine die u hebt gemaakt via PuTTy. Als 
    
     De volgende uitvoer wordt weer gegeven:
 
-![image](./media/postgresql-install/no1.png)
+![installatiekopie](./media/postgresql-install/no1.png)
 
 ## <a name="set-up-postgresql"></a>PostgreSQL instellen
 <!--    [postgres@ test ~]$ exit -->
@@ -142,7 +142,7 @@ Wijzig twee variabelen in het/etc/init.d/postgresql-bestand. Het voor voegsel wo
 
     # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 
-![image](./media/postgresql-install/no2.png)
+![installatiekopie](./media/postgresql-install/no2.png)
 
 Wijzig het bestand om het uit te voeren:
 
@@ -158,7 +158,7 @@ Controleer of het eind punt van PostgreSQL zich op:
 
 In dat geval moet de volgende uitvoer worden weergegeven:
 
-![image](./media/postgresql-install/no3.png)
+![installatiekopie](./media/postgresql-install/no3.png)
 
 ## <a name="connect-to-the-postgres-database"></a>Verbinding maken met de post gres-data base
 Opnieuw overschakelen naar de post gres-gebruiker:
@@ -189,11 +189,11 @@ U hebt nu een tabel met vier kolommen met de volgende kolom namen en beperkingen
 
 Als uw tabel is gemaakt, ziet u het volgende:
 
-![image](./media/postgresql-install/no4.png)
+![installatiekopie](./media/postgresql-install/no4.png)
 
 U kunt ook de tabel structuur controleren met behulp van de volgende opdracht:
 
-![image](./media/postgresql-install/no5.png)
+![installatiekopie](./media/postgresql-install/no5.png)
 
 ### <a name="add-data-to-a-table"></a>Gegevens toevoegen aan een tabel
 Voeg eerst gegevens in een rij in:
@@ -202,7 +202,7 @@ Voeg eerst gegevens in een rij in:
 
 U ziet deze uitvoer:
 
-![image](./media/postgresql-install/no6.png)
+![installatiekopie](./media/postgresql-install/no6.png)
 
 U kunt ook een paar personen toevoegen aan de tabel. Hier volgen enkele opties, of u kunt uw eigen instellingen maken:
 
@@ -219,7 +219,7 @@ Gebruik de volgende opdracht om een tabel weer te geven:
 
 De uitvoer is:
 
-![image](./media/postgresql-install/no7.png)
+![installatiekopie](./media/postgresql-install/no7.png)
 
 ### <a name="delete-data-in-a-table"></a>Gegevens in een tabel verwijderen
 Gebruik de volgende opdracht om gegevens in een tabel te verwijderen:
@@ -228,7 +228,7 @@ Gebruik de volgende opdracht om gegevens in een tabel te verwijderen:
 
 Hiermee verwijdert u alle gegevens in de rij ' Johan '. De uitvoer is:
 
-![image](./media/postgresql-install/no8.png)
+![installatiekopie](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>Gegevens in een tabel bijwerken
 Gebruik de volgende opdracht om gegevens in een tabel bij te werken. Voor deze versie heeft zand bevestigd dat ze deel nemen, dus zullen we de RSVP wijzigen van ' N ' in ' Y ':
