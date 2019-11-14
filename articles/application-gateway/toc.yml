@@ -229,8 +229,6 @@
       href: migrate-v1-v2.md
 - name: Naslaginformatie
   items:
-    - name: CRS-regels
-      href: application-gateway-crs-rulegroups-rules.md
     - name: Inkomend verkeer voor AKS-aantekeningen
       href: ingress-controller-annotations.md
     - name: Azure-CLI

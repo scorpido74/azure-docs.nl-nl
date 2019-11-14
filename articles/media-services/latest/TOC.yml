@@ -109,7 +109,7 @@
     - name: Inhoudsbeveiliging
       items:
         - name: Dynamische versleuteling en sleutellevering
-          displayName: 'content protection, streaming protocols, encryption types, content protection, PlayReady, Widevine, FairPlay'
+          displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
         - name: Een multi-DRM-systeem ontwerpen
           displayName: 'drm, access control'
