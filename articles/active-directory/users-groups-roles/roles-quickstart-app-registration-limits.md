@@ -1,26 +1,26 @@
 ---
-title: Een afzonderlijke machtiging verlenen voor het overschrijden van de beperkingen op app-registraties-Azure Active Directory | Microsoft Docs
-description: Wijs een aangepaste rol toe voor het verlenen van onbeperkte app-registraties in de Azure AD-Active Directory.
+title: Limieten voor het maken van app-registraties verwijderen-Azure AD | Microsoft Docs
+description: Een aangepaste rol toewijzen voor het verlenen van onbeperkte app-registraties in de Azure AD-Active Directory
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c91de3de743d168bea207f27fb162486ea625a63
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 12803e2f65e17155e8bbcaf4842789adc101b0dd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026279"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024397"
 ---
-# <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Quickstart: Toestemming geven voor het maken van onbeperkte app-registraties
+# <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Snelstartgids: machtiging verlenen voor het maken van onbeperkte app-registraties
 
 In deze Quick Start maakt u een aangepaste rol met machtigingen voor het maken van een onbeperkt aantal app-registraties en vervolgens wijst u die rol toe aan een gebruiker. De toegewezen gebruiker kan vervolgens de Azure AD-Portal, Azure AD Power shell, Azure AD Graph API of de Microsoft Graph-API gebruiken om toepassings registraties te maken. In tegens telling tot de ingebouwde rol ontwikkelaar van de toepassing verleent deze aangepaste rol de mogelijkheid om een onbeperkt aantal toepassings registraties te maken. De ontwikkelaar van de toepassing verleent de mogelijkheid, maar het totale aantal gemaakte objecten is beperkt tot 250 om te voor komen dat [het object quotum voor het hele directory](directory-service-limits-restrictions.md)wordt bereikt.
 
@@ -32,7 +32,7 @@ De rol van de meest bevoegde rol is vereist voor het maken en toewijzen van aang
 
 ## <a name="create-a-new-custom-role-using-the-azure-ad-portal"></a>Een nieuwe aangepaste rol maken met behulp van de Azure AD-Portal
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) with privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
 1. Selecteer **Azure Active Directory**, selecteer **rollen en beheerders**en selecteer vervolgens **nieuwe aangepaste rol**.
 
     ![Rollen maken of bewerken op de pagina rollen en beheerders](./media/roles-create-custom/new-custom-role.png)
@@ -49,7 +49,7 @@ De rol van de meest bevoegde rol is vereist voor het maken en toewijzen van aang
 
 ### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>De rol toewijzen aan een gebruiker met behulp van de Azure AD-Portal
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) with privileged Role Administrator of Global Administrator Permissions in uw Azure AD-organisatie.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met privileged Role Administrator of Global Administrator Permissions in uw Azure AD-organisatie.
 1. Selecteer **Azure Active Directory** en selecteer vervolgens **rollen en beheerders**.
 1. Selecteer de rol maker van de toepassing registreren en selecteer **toewijzing toevoegen**.
 1. Selecteer de gewenste gebruiker en klik op **selecteren** om de gebruiker aan de rol toe te voegen.
@@ -63,8 +63,8 @@ Klaar! In deze Quick Start hebt u een aangepaste rol gemaakt met de machtiging o
 
 Er zijn twee machtigingen beschikbaar voor het verlenen van de mogelijkheid om toepassings registraties te maken, elk met verschillende gedragingen.
 
-- micro soft. Directory/toepassingen/createAsOwner: Als u deze machtiging toewijst, wordt de maker toegevoegd als de eerste eigenaar van de gemaakte app-registratie en wordt de gemaakte app-registratie geteld voor het quotum van 250 gemaakte objecten van de maker.
-- micro soft. map/applicationPolicies/maken: Als u deze machtigingen toewijst, wordt de maker niet toegevoegd als de eerste eigenaar van de gemaakte app-registratie en wordt de gemaakte app-registratie niet meegeteld op basis van het 250 gemaakte object quota van de maker. Gebruik deze machtiging aandachtig door, omdat er niets is dat de toegewezen persoon app-registraties kan maken totdat de quotum op Directory niveau is bereikt. Als beide machtigingen zijn toegewezen, heeft deze machtiging voor rang.
+- micro soft. Directory/Applications/createAsOwner: als u deze machtigingen toewijst, wordt de maker toegevoegd als de eerste eigenaar van de gemaakte app-registratie en wordt de gemaakte app-registratie geteld voor het quotum van 250 gemaakte objecten van de maker.
+- micro soft. Directory/applicationPolicies/create: als u deze machtiging toewijst, wordt de maker niet toegevoegd als de eerste eigenaar van de gemaakte app-registratie en wordt de gemaakte app-registratie niet meegeteld voor het 250 gemaakte object quota van de maker. Gebruik deze machtiging aandachtig door, omdat er niets is dat de toegewezen persoon app-registraties kan maken totdat de quotum op Directory niveau is bereikt. Als beide machtigingen zijn toegewezen, heeft deze machtiging voor rang.
 
 ## <a name="create-a-custom-role-using-azure-ad-powershell"></a>Een aangepaste rol maken met behulp van Azure AD Power shell
 

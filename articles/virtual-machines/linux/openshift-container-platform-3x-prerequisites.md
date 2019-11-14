@@ -1,5 +1,5 @@
 ---
-title: Open Shift container platform 3,11 in azure-vereisten | Microsoft Docs
+title: Open Shift container platform 3,11 in azure-vereisten
 description: Vereisten voor het implementeren van open Shift container platform 3,11 in Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 0b7eaaf68c1b0907b6d687b823ef71a7c9bd0102
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 069561c4bed55bf6021b594d693e076ef8d313bd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882402"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035477"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Algemene vereisten voor het implementeren van open Shift container platform 3,11 in azure
 
@@ -79,7 +79,7 @@ az keyvault create --resource-group keyvaultrg --name keyvault \
 ```
 
 ## <a name="create-an-ssh-key"></a>Een SSH-sleutel maken 
-Er is een SSH-sleutel nodig om de toegang tot het open Shift-cluster te beveiligen. Een SSH-sleutel paar maken met behulp van de `ssh-keygen`-opdracht (op Linux of macOS):
+Er is een SSH-sleutel nodig om de toegang tot het open Shift-cluster te beveiligen. Een SSH-sleutel paar maken met behulp van de `ssh-keygen` opdracht (op Linux of macOS):
  
  ```bash
 ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
@@ -139,7 +139,7 @@ Zie [een Azure-service-principal maken met Azure cli](https://docs.microsoft.com
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Vereisten die alleen van toepassing zijn op de Resource Manager-sjabloon
 
-Er moeten geheimen worden gemaakt voor de persoonlijke SSH-sleutel (**sshPrivateKey**), Azure AD client Secret (**aadClientSecret**), open Shift admin password (**OpenshiftPassword**) en Red Hat Subscription Manager-wacht woord of activerings code ( **rhsmPasswordOrActivationKey**).  Als er aangepaste SSL-certificaten worden gebruikt, moeten er bovendien zes extra geheimen worden gemaakt: **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**en  **masterkeyfile**.  Deze para meters worden uitgebreid beschreven.
+Er moeten geheimen worden gemaakt voor de persoonlijke SSH-sleutel (**sshPrivateKey**), Azure AD client Secret (**aadClientSecret**), open Shift admin password (**OpenshiftPassword**) en Red Hat Subscription manager password of Activation Key (**rhsmPasswordOrActivationKey**).  Als er aangepaste SSL-certificaten worden gebruikt, moeten er bovendien zes extra geheimen worden gemaakt: **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**en **masterkeyfile**.  Deze para meters worden uitgebreid beschreven.
 
 De sjabloon verwijst naar specifieke geheime namen, dus u **moet** de vetgedrukte namen gebruiken die hierboven worden vermeld (hoofdletter gevoelig).
 

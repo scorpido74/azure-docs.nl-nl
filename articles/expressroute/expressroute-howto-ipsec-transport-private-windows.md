@@ -1,5 +1,5 @@
 ---
-title: 'IPsec-transportmodus voor Windows-hosts privé-peering configureren: ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute privé-peering: IPsec-transport modus configureren-Windows-hosts'
 description: Klik hier voor meer informatie over het inschakelen van IPsec-transportmodus tussen Azure Windows VM's en on-premises Windows-hosts via ExpressRoute persoonlijke peering met behulp van groepsbeleidsobjecten en organisatie-eenheden.
 services: expressroute
 author: fabferri
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
-ms.openlocfilehash: d728980517988e2dc39be4e4b64d20157a1aef54
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366924"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022013"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>IPsec-transportmodus voor ExpressRoute-privépeering configureren
 
@@ -43,17 +43,17 @@ Dit diagram toont de IPsec-tunnels tijdens de overdracht in het ExpressRoute-pri
 ### <a name="working-with-ipsec-policy"></a>Werken met IPsec-beleid
 
 In Windows is versleuteling gekoppeld aan een IPsec-beleid. IPsec-beleid bepaalt welke IP-verkeer is beveiligd en het beveiligingsmechanisme toegepast op de IP-pakketten.
-**IPSec-beleid** zijn samengesteld uit de volgende items: **Filteren van een lijst met**, **filteracties**, en **beveiligingsregels**.
+**IPSec-beleid** zijn samengesteld uit de volgende items: **lijsten voor het Filter**, **filteracties**, en **beveiligingsregels**.
 
 Bij het configureren van IPsec-beleid, is het belangrijk om te begrijpen van de volgende terminologie voor IPsec-beleid:
 
-* **IPSec-beleid:** Een verzameling van regels. Slechts één beleid kan worden actieve ('toegewezen') op een bepaald moment. Elk beleid kan hebben een of meer regels, die allemaal tegelijkertijd actief kan zijn. Een computer slechts één actieve IPSec-beleid kan worden toegewezen op basis van tijd. Echter, binnen het IPsec-beleid kunt u meerdere acties die kunnen worden uitgevoerd in verschillende situaties. Elke set van IPsec-regels is gekoppeld aan de lijst van een filter dat betrekking heeft op het type netwerkverkeer waarop de regel van toepassing is.
+* **IPsec-beleid:** een verzameling van regels. Slechts één beleid kan worden actieve ('toegewezen') op een bepaald moment. Elk beleid kan hebben een of meer regels, die allemaal tegelijkertijd actief kan zijn. Een computer slechts één actieve IPSec-beleid kan worden toegewezen op basis van tijd. Echter, binnen het IPsec-beleid kunt u meerdere acties die kunnen worden uitgevoerd in verschillende situaties. Elke set van IPsec-regels is gekoppeld aan de lijst van een filter dat betrekking heeft op het type netwerkverkeer waarop de regel van toepassing is.
 
-* **Lijsten met filters:** Lijsten met filters zijn bundel van een of meer filters. Een lijst kan meerdere filters bevatten. Filter wordt gedefinieerd als de communicatie is toegestaan, beveiligd of geblokkeerd op basis van de IP-adresbereiken, protocollen, of zelfs bepaalde poorten. Elk filter overeenkomt met een bepaalde set voorwaarden. bijvoorbeeld: pakketten verzonden vanuit een bepaald subnet naar een bepaalde computer op een specifieke doelpoort. Wanneer netwerkomstandigheden overeenkomt met een of meer van deze filters, wordt de lijst met filters wordt geactiveerd. Elk filter wordt gedefinieerd binnen een specifiek filter-lijst. Filters kunnen niet worden gedeeld tussen de lijsten met filters. Een lijst met bepaalde filters kan echter worden opgenomen in verschillende IPsec-beleid. 
+* **Een lijst met filteren:** filterlijsten zijn bundel van een of meer filters. Een lijst kan meerdere filters bevatten. Filter wordt gedefinieerd als de communicatie is toegestaan, beveiligd of geblokkeerd op basis van de IP-adresbereiken, protocollen, of zelfs bepaalde poorten. Elk filter overeenkomt met een bepaalde set voorwaarden. bijvoorbeeld: pakketten verzonden vanuit een bepaald subnet naar een bepaalde computer op een specifieke doelpoort. Wanneer netwerkomstandigheden overeenkomt met een of meer van deze filters, wordt de lijst met filters wordt geactiveerd. Elk filter wordt gedefinieerd binnen een specifiek filter-lijst. Filters kunnen niet worden gedeeld tussen de lijsten met filters. Een lijst met bepaalde filters kan echter worden opgenomen in verschillende IPsec-beleid. 
 
-* **Filteracties:** Een eenvoudige beveiligingsmethode definieert een reeks beveiligingsalgoritmen, protocollen, en sleutel van een computer biedt tijdens de onderhandelingen IKE. Filteracties zijn lijsten met beveiligingsmethoden, gerangschikt in volgorde van voorkeur.  Wanneer een computer wordt onderhandeld over een IPsec-sessie, accepteert of voorstellen op basis van de beveiligingsinstellingen die zijn opgeslagen in de lijst met acties van filter verzendt.
+* **Filteracties:** een beveiligingsmethode definieert een reeks beveiligingsalgoritmen, protocollen, en sleutel van een computer biedt tijdens de onderhandelingen IKE. Filteracties zijn lijsten met beveiligingsmethoden, gerangschikt in volgorde van voorkeur.  Wanneer een computer wordt onderhandeld over een IPsec-sessie, accepteert of voorstellen op basis van de beveiligingsinstellingen die zijn opgeslagen in de lijst met acties van filter verzendt.
 
-* **Beveiligingsregels:** Regels bepalen hoe en wanneer een beleid voor IPSec-communicatie beveiligt. Hierbij **filterlijst** en **filteracties** te maken van een IPsec-regel voor het bouwen van de IPsec-verbinding. Elk beleid kan hebben een of meer regels, die allemaal tegelijkertijd actief kan zijn. Elke regel bevat een lijst met IP-filters en een verzameling van beveiligingsacties die na een overeenkomst met de filterlijst plaatsvinden:
+* **Beveiligingsregels:** regels bepalen hoe en wanneer een beleid voor IPSec-communicatie beveiligt. Hierbij **filterlijst** en **filteracties** te maken van een IPsec-regel voor het bouwen van de IPsec-verbinding. Elk beleid kan hebben een of meer regels, die allemaal tegelijkertijd actief kan zijn. Elke regel bevat een lijst met IP-filters en een verzameling van beveiligingsacties die na een overeenkomst met de filterlijst plaatsvinden:
   * IP-filteracties
   * Verificatiemethoden
   * Instellingen voor IP-tunnel
@@ -93,13 +93,13 @@ Zorg ervoor dat u voldoet aan de volgende vereisten:
 
 * **Domeinnaam:** ipsectest.com
 
-* **ORGANISATIE-EENHEID:** IPSecOU
+* **Organisatie-eenheid:** IPSecOU
 
 * **On-premises Windows-computer:** host1
 
 * **Azure Windows VM's:** vm1, vm2
 
-## <a name="creategpo"></a>1. Een groepsbeleidsobject maken
+## <a name="creategpo"></a>1. een groeps beleidsobject maken
 
 1. Voor het maken van een nieuw GPO dat is gekoppeld aan een organisatie-eenheid, open de module Groepsbeleidsbeheer en Ga naar de organisatie-eenheid waaraan het groepsbeleidsobject wordt gekoppeld. In het voorbeeld wordt de organisatie-eenheid met de naam **IPSecOU**. 
 
@@ -111,7 +111,7 @@ Zorg ervoor dat u voldoet aan de volgende vereisten:
 
    [![11]][11]
 
-## <a name="enablelink"></a>2. Koppeling naar het groepsbeleidsobject inschakelen
+## <a name="enablelink"></a>2. Schakel de groeps beleidsobject koppeling in
 
 Als u wilt het groepsbeleidsobject van toepassing op de organisatie-eenheid, het groepsbeleidsobject moet niet alleen worden gekoppeld aan de organisatie-eenheid, maar de koppeling moet ook worden ingeschakeld.
 
@@ -120,7 +120,7 @@ Als u wilt het groepsbeleidsobject van toepassing op de organisatie-eenheid, het
 
    [![12]][12]
 
-## <a name="filteraction"></a>3. De IP-filteractie definiëren
+## <a name="filteraction"></a>3. de IP-filter actie definiëren
 
 1. In de vervolgkeuzelijst met de rechtermuisknop op **IP-beveiligingsbeleid op Active Directory**, en klik vervolgens op **beheren IP-filter een lijst met en acties te filteren...** .
 
@@ -151,14 +151,14 @@ Als u wilt het groepsbeleidsobject van toepassing op de organisatie-eenheid, het
 
    [![23]][23]
 
-## <a name="filterlist1"></a>4. Definieer een IP-filterlijst
+## <a name="filterlist1"></a>4. een IP-filter lijst definiëren
 
 Maak een filterlijst met versleutelde HTTP-verkeer met bestemmingspoort 8080.
 
 1. Gebruiken om te komen welke typen verkeer moeten worden versleuteld, een **IP-filterlijst**. In de **IP-filterlijsten beheren** tabblad **toevoegen** om toe te voegen een nieuwe lijst met IP-filter.
 
    [![24 uur per dag]][24 uur per dag]
-2. In de **naam:** veld, typt u een naam op voor uw lijst met IP-filter. Bijvoorbeeld, **azure-on-HTTP8080**. Klik vervolgens op **toevoegen**.
+2. In de **naam:** veld, typt u een naam op voor uw lijst met IP-filter. Bijvoorbeeld, **azure-on-HTTP8080**. Klik vervolgens op **Toevoegen**.
 
    [![25]][25]
 3. Op de **beschrijving van het IP-Filter en gespiegelde eigenschap** weergeeft, schakelt **gespiegeld**. De instelling van de gespiegelde komt overeen met pakketten naar in beide richtingen, waarmee voor communicatie in twee richtingen. Klik op **Volgende**.
@@ -188,7 +188,7 @@ Maak een filterlijst met versleutelde HTTP-verkeer met bestemmingspoort 8080.
 
    [![32]][32]
 
-## <a name="filterlist2"></a>5. De lijst met IP-filter bewerken
+## <a name="filterlist2"></a>5. de IP-filter lijst bewerken
 
 U moet een tweede IP-filter voor het versleutelen van verkeer in de tegengestelde richting (van de host van de on-premises naar de Azure-VM) van hetzelfde type. Het proces voor het instellen van het nieuwe filter is de hetzelfde proces dat u hebt gebruikt voor het instellen van het eerste IP-filter. De enige verschillen zijn het Bronsubnet en bestemming subnet.
 
@@ -207,7 +207,7 @@ U moet een tweede IP-filter voor het versleutelen van verkeer in de tegengesteld
 
 Als versleuteling vereist tussen een on-premises locatie en een Azure-subnet is voor het beveiligen van een toepassing, in plaats van de bestaande IP-filterlijst wijzigen kunt u in plaats daarvan een nieuwe lijst met IP-filter toevoegen. 2 IP koppelen filter een lijst met de dezelfde IPSec-beleid meer flexibiliteit biedt omdat een specifieke lijst met een IP-filter kan worden gewijzigd of verwijderd op elk gewenst moment zonder enige impact op de andere IP-filter weergegeven.
 
-## <a name="ipsecpolicy"></a>6. Een IPsec-beveiligingsbeleid maken 
+## <a name="ipsecpolicy"></a>6. een IPsec-beveiligings beleid maken 
 
 Maak een IPSec-beleid met beveiligingsregels.
 
@@ -224,7 +224,7 @@ Maak een IPSec-beleid met beveiligingsregels.
 
    [![40]][40]
 
-## <a name="editipsec"></a>7. De IPsec-beveiligingsbeleid bewerken
+## <a name="editipsec"></a>7. het IPsec-beveiligings beleid bewerken
 
 Toevoegen aan het IPsec-beleid de **IP-filterlijst** en **filteractie** die u eerder hebt geconfigureerd.
 
@@ -252,7 +252,7 @@ Toevoegen aan het IPsec-beleid de **IP-filterlijst** en **filteractie** die u ee
 6. Selecteer de bestaande filteractie **myEncryption** die u eerder hebt gemaakt.
 
    [![46]][46]
-7. Windows ondersteunt vier verschillende soorten verificatie: Kerberos, certificaten, NTLMv2 en vooraf gedeelde sleutel. Omdat we met domein-hosts werken, selecteer **Active Directory-standaard (Kerberos V5-protocol)** , en klik vervolgens op **volgende**.
+7. Windows ondersteunt vier verschillende soorten verificaties: Kerberos, certificaten, NTLMv2 en vooraf gedeelde sleutel. Omdat we met domein-hosts werken, selecteer **Active Directory-standaard (Kerberos V5-protocol)** , en klik vervolgens op **volgende**.
 
    [![47]][47]
 8. Het nieuwe beleid wordt gemaakt van de beveiligingsregel: **azure-on-HTTP8080**. Klik op **OK**.
@@ -261,7 +261,7 @@ Toevoegen aan het IPsec-beleid de **IP-filterlijst** en **filteractie** die u ee
 
 Het IPsec-beleid is vereist voor alle HTTP-verbindingen op de bestemmingspoort 8080 gebruik van IPsec-transportmodus. Omdat HTTP een niet-versleutelde tekst-protocol is, met het beveiligingsbeleid ingeschakeld zorgt ervoor dat gegevens worden versleuteld wanneer het wordt overgedragen via het ExpressRoute-privépeering. IP-beveiligingsbeleid voor Active Directory is complexer om te configureren dan Windows Firewall met geavanceerde beveiliging, maar het is toegestaan voor meer aanpassing van de IPsec-verbinding.
 
-## <a name="assigngpo"></a>8. De IPsec-GPO toewijzen aan de organisatie-eenheid
+## <a name="assigngpo"></a>8. Wijs het IPsec-groeps beleidsobject toe aan de OE
 
 1. Bekijk het beleid. Het beveiligingsbeleid van de groep is gedefinieerd, maar nog niet zijn toegewezen.
 

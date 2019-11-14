@@ -1,58 +1,58 @@
 ---
-title: Weergeven en toewijzen van beheerder rolmachtigingen - Azure Active Directory | Microsoft Docs
-description: U kunt nu zien en beheren van leden van de rol van een Azure AD-beheerder in de portal. Voor diegenen die vaak roltoewijzingen beheren.
+title: Machtigingen voor beheerdersrol weer geven en toewijzen-Azure AD | Microsoft Docs
+description: U kunt nu leden van een Azure AD-beheerdersrol weer geven en beheren in de portal. Voor degenen die regel matig roltoewijzingen beheren.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20842c8c644a351b59322569661abf82bb524449
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ac62a4f318690a1e8156d619c82e9b936973159
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60472590"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027887"
 ---
-# <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Weergeven en toewijzen van beheerdersrollen in Azure Active Directory
+# <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Beheerders rollen in Azure Active Directory weer geven en toewijzen
 
-U kunt nu zien en beheren van alle leden van de beheerdersrollen in de Azure Active Directory-portal. Als u vaak roltoewijzingen beheren, kunt u deze ervaring wordt waarschijnlijk liever. En als u zich ooit afgevraagd "Wat de heid moeten deze rollen echt doen?", ziet u een gedetailleerde lijst met machtigingen voor elk van de Azure AD-beheerdersrollen.
+U kunt nu alle leden van de beheerders rollen weer geven en beheren in de Azure Active Directory Portal. Als u regel matig roltoewijzingen beheert, hebt u waarschijnlijk de voor keur. En als u ooit hebt gevraagd wat de bedoeling is dat deze rollen echt doen, kunt u een gedetailleerde lijst met machtigingen voor elk van de Azure AD-beheerders rollen weer geven.
 
-## <a name="view-all-roles"></a>Alle rollen weergeven
+## <a name="view-all-roles"></a>Alle rollen weer geven
 
-Selecteer in Azure Active Directory, **rollen en beheerders** om te zien van de lijst met alle beschikbare rollen. 
+Selecteer in Azure Active Directory de optie **rollen en beheerders** om de lijst met alle beschik bare rollen weer te geven. 
 
-Klik op het weglatingsteken aan de rechterkant van elke rij de gedetailleerde beschrijving van de rol te openen.
+Klik op het weglatings teken rechts van elke rij om de gedetailleerde beschrijving van de functie te openen.
 
-![lijst met rollen in Azure AD-portal](./media/directory-manage-roles-portal/role-list.png)
+![lijst met rollen in de Azure AD-Portal](./media/directory-manage-roles-portal/role-list.png)
 
-## <a name="view-my-roles"></a>Mijn rollen weergeven
+## <a name="view-my-roles"></a>Mijn rollen weer geven
 
-Het is gemakkelijk om uw eigen machtigingen ook weer te geven. Selecteer **uw rol** op de **rollen en beheerders** pagina om te bekijken van de functies die momenteel aan u zijn toegewezen.
+U kunt ook eenvoudig uw eigen machtigingen weer geven. Selecteer **uw rol** op de pagina **rollen en beheerders** om de rollen weer te geven die momenteel aan u zijn toegewezen.
 
-## <a name="view-assignments-for-a-role"></a>Toewijzingen voor een rol weergeven
+## <a name="view-assignments-for-a-role"></a>Toewijzingen voor een rol weer geven
 
-Klik op een rol om de gebruikers die zijn toegewezen aan de rol weer te geven. U kunt selecteren **beheren in PIM** voor aanvullende beheermogelijkheden. Privileged Role Administrators "Permanent" kunt wijzigen (altijd actief in de rol) toewijzingen aan 'In aanmerking komende' (in de rol alleen als er verhoogde). Als u geen PIM hebt, kunt u nog steeds selecteren **beheren in PIM** om u te registreren voor een proefversie. Privileged Identity Management is vereist een [Azure AD Premium P2-licentieabonnement](../privileged-identity-management/subscription-requirements.md).
+Klik op een rol om de gebruikers weer te geven die aan de rol zijn toegewezen. U kunt **beheren in PIM** selecteren voor extra beheer mogelijkheden. Beheerders van geprivilegieerde rollen kunnen de toewijzingen ' permanent ' (altijd actief in de rol) wijzigen in in aanmerking komende (in de rol alleen bij verhoogde bevoegdheid). Als u geen PIM hebt, kunt u nog steeds **beheren in PIM** selecteren om u aan te melden voor een proef versie. Voor Privileged Identity Management is een [Azure AD Premium P2-licentie plan](../privileged-identity-management/subscription-requirements.md)vereist.
 
-![lijst met leden van de rol van beheerder](./media/directory-manage-roles-portal/member-list.png)
+![lijst met leden van een beheerdersrol](./media/directory-manage-roles-portal/member-list.png)
 
-Als u een globale beheerder of een beheerder met bevoorrechte rol bent, kunt u eenvoudig toevoegen of verwijderen leden, de lijst filteren, of Selecteer een lid om te zien van hun actieve rollen toegewezen krijgen.
+Als u een globale beheerder of een beheerder van een bevoegde rol bent, kunt u eenvoudig leden toevoegen of verwijderen, de lijst filteren of een lid selecteren om hun actieve toegewezen rollen te zien.
 
-## <a name="view-a-users-role-permissions"></a>Machtigingen van de rol van een gebruiker weergeven
+## <a name="view-a-users-role-permissions"></a>De rolmachtigingen van een gebruiker weer geven
 
-Wanneer u de leden van een rol bekijkt, selecteert u **beschrijving** om te zien van de volledige lijst met machtigingen die zijn verleend door de roltoewijzing. De pagina bevat koppelingen naar relevante documentatie aan u te helpen bij het beheren van directory-rollen.
+Wanneer u de leden van een rol bekijkt, selecteert u **Beschrijving** om de volledige lijst met machtigingen te zien die zijn verleend door de roltoewijzing. De pagina bevat koppelingen naar relevante documentatie om u te helpen bij het beheren van Directory rollen.
 
-![lijst met machtigingen voor de rol van beheerder](./media/directory-manage-roles-portal/role-description.png)
+![lijst met machtigingen voor een beheerdersrol](./media/directory-manage-roles-portal/role-description.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* U kunt delen met ons op de [forum van Azure AD-beheerdersrollen](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
-* Zie voor meer informatie over de functies en de toewijzing van de rol beheerder [beheerdersrollen toewijzen](directory-assign-admin-roles.md).
-* Zie voor gedetailleerde bevoegdheden voor standaard een [vergelijking van de standaard Gast en lid gebruikersmachtigingen](../fundamentals/users-default-permissions.md).
+* U kunt graag delen met ons op het [forum van Azure AD-beheerders](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+* Zie [beheerders rollen toewijzen](directory-assign-admin-roles.md)voor meer informatie over functies en de toewijzing van beheerdersrol.
+* Zie voor standaard gebruikers machtigingen een [vergelijking van de standaard machtigingen voor gast-en gebruikers rechten](../fundamentals/users-default-permissions.md).

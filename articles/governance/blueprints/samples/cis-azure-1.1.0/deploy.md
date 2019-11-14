@@ -1,17 +1,14 @@
 ---
 title: Voor beeld van CIS Microsoft Azure basis Bench Mark-blauw drukken-stappen implementeren
 description: Implementeer stappen voor het voor beeld van de CIS Microsoft Azure Stichtings-Bench Mark, inclusief blauw drukken-artefact parameter Details.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/14/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 2c270d228d806c5715819ea380f2c5f9967fbd38
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e33a7788d9d7a13cb7f8df3f6663bf009b685169
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586570"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038380"
 ---
 # <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Het voor beeld van het CIS Microsoft Azure Stichtings-Bench Mark implementeren
 
@@ -65,7 +62,7 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
-   - Basisbeginselen
+   - Basics
 
      - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
      - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.

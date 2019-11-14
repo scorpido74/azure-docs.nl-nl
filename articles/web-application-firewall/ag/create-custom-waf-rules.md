@@ -1,18 +1,19 @@
 ---
-title: Aangepaste regels voor Azure Web Application firewall (WAF) v2 maken en gebruiken
+title: Aangepaste v2-regels maken en gebruiken
+titleSuffix: Azure Web Application Firewall
 description: Dit artikel bevat informatie over het maken van aangepaste regels voor Web Application firewall (WAF) v2 in Azure-toepassing gateway.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/04/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: d8ba105e15a825b6b53d941ed2f3847fa597d538
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4efa60a48a540efdd835b106afa5872057ae3d53
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516654"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046420"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Aangepaste regels voor Web Application firewall v2 maken en gebruiken op Application Gateway
 
@@ -25,7 +26,7 @@ In dit artikel ziet u een aantal voor beelden van aangepaste regels die u kunt m
 
 ![WAF inschakelen][fig1]
 
-## <a name="example-1"></a>Voor beeld 1
+## <a name="example-1"></a>Voorbeeld 1
 
 U weet dat er een bot is met de naam *evilbot* die u wilt blok keren om uw website te verkennen. In dit geval blokkeert u de *evilbot* van de gebruikers agent in de aanvraag headers.
 
@@ -125,7 +126,7 @@ En de bijbehorende JSON:
   }
 ```
 
-### <a name="example-2"></a>Voor beeld 2
+### <a name="example-2"></a>Voorbeeld 2
 
 U wilt verkeer van de VS toestaan met de operator geomatch:
 
@@ -174,7 +175,7 @@ En de bijbehorende JSON:
 
 
 
-## <a name="example-3"></a>Voor beeld 3
+## <a name="example-3"></a>Voorbeeld 3
 
 U alle aanvragen van IP-adressen in het bereik 198.168.5.0/24 wilt blok keren.
 

@@ -1,5 +1,5 @@
 ---
-title: SQL Server VM verplaatsen naar een andere regio binnen Azure met Azure Site Recovery Services | Microsoft Docs
+title: Verplaats de virtuele machine naar een andere regio (Azure Site Recovery)
 description: Meer informatie over hoe u uw SQL Server virtuele machine vanuit de ene regio naar de andere kunt migreren in Azure.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,12 +14,13 @@ ms.workload: iaas-sql-server
 ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 063876316c92780d061388283a55c7f50dd3d78a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3b84119cdcc1bb7e8603de64e3d23c69dac70cc3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100526"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022295"
 ---
 # <a name="move-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery-services"></a>SQL Server VM verplaatsen naar een andere regio binnen Azure met Azure Site Recovery Services
 
@@ -27,10 +28,10 @@ In dit artikel leert u hoe u Azure Site Recovery kunt gebruiken om uw SQL Server
 
 Als u een SQL Server VM naar een andere regio wilt verplaatsen, moet u het volgende doen:
 1. [**Voorbereiden**](#prepare-to-move): Controleer of de bron SQL Server virtuele machine en de doel regio adequaat zijn voor bereid voor de verplaatsing. 
-1. [**Configureren**](#configure-azure-site-recovery-vault): Als u uw SQL Server-VM wilt verplaatsen, moet dit een gerepliceerd object binnen de Azure Site Recovery kluis zijn. U moet uw SQL Server-VM toevoegen aan de Azure Site Recovery kluis. 
-1. [**Testen**](#test-move-process): Voor het migreren van de SQL Server-VM moet het uitvoeren van een failover van de bron regio naar de gerepliceerde doel regio worden uitgevoerd. Om ervoor te zorgen dat het proces wordt verplaatst, moet u eerst testen of uw SQL Server virtuele machine een failover naar de doel regio kan uitvoeren. Op deze manier kunt u alle problemen weer geven en voor komen wanneer u de daad werkelijke verplaatsing uitvoert. 
-1. [**Verplaatsen**](#move-the-sql-server-vm): Zodra de testfailover is voltooid en u weet dat u veilig bent om uw SQL Server virtuele machine te migreren, kunt u de virtuele machine verplaatsen naar de doel regio. 
-1. [](#clean-up-source-resources)Opschonen: Als u facturerings kosten wilt voor komen, verwijdert u de SQL Server virtuele machine uit de kluis en overbodige resources die resteren in de resource groep. 
+1. [**Configureren**](#configure-azure-site-recovery-vault): het verplaatsen van uw SQL Server VM vereist dat het een gerepliceerd object binnen de Azure site Recovery kluis is. U moet uw SQL Server-VM toevoegen aan de Azure Site Recovery kluis. 
+1. [**Testen**](#test-move-process): het migreren van de SQL Server VM vereist een failover van de bron regio naar de gerepliceerde doel regio. Om ervoor te zorgen dat het proces wordt verplaatst, moet u eerst testen of uw SQL Server virtuele machine een failover naar de doel regio kan uitvoeren. Op deze manier kunt u alle problemen weer geven en voor komen wanneer u de daad werkelijke verplaatsing uitvoert. 
+1. [**Verplaatsen**](#move-the-sql-server-vm): zodra de testfailover is voltooid en u weet dat u veilig bent om uw SQL Server virtuele machine te migreren, kunt u de virtuele machine verplaatsen naar de doel regio. 
+1. [**Opschonen**](#clean-up-source-resources): als u facturerings kosten wilt voor komen, verwijdert u de SQL Server virtuele machine uit de kluis en overbodige resources die resteren in de resource groep. 
 
 ## <a name="verify-prerequisites"></a>Vereisten verifiëren 
 
@@ -78,7 +79,7 @@ De volgende stappen laten zien hoe u Azure Site Recovery kunt gebruiken om gegev
 1. Op het tabblad **basis beginselen** onder **Project Details**maakt u een nieuwe resource groep in de doel regio of selecteert u een bestaande resource groep in de doel regio. 
 1. Geef onder **Details van exemplaar**een naam op voor uw kluis en selecteer vervolgens uw doel **regio** in de vervolg keuzelijst. 
 1. Selecteer **controleren + maken** om uw Recovery Services kluis te maken. 
-1. Selecteer **alle services** in de linkerbovenhoek van het navigatie deel venster en typ `recovery services`in het zoekvak. 
+1. Selecteer **alle services** in de linkerbovenhoek van het navigatie deel venster en typ `recovery services`in het vak zoeken. 
 1. Eventueel Selecteer de ster naast **Recovery Services kluizen** om deze toe te voegen aan uw snelle navigatie balk. 
 1. Selecteer **Recovery Services-kluizen** en selecteer vervolgens de Recovery Services kluis die u hebt gemaakt. 
 1. Selecteer in het deel venster **overzicht** de optie **repliceren**. 
@@ -113,7 +114,7 @@ De volgende stappen laten zien hoe u Azure Site Recovery kunt gebruiken om het v
    ![Voortgang van testen van testfailover controleren](media/virtual-machines-windows-sql-move-to-new-region/monitor-failover-test-job.png)
 
 1. Wanneer de test is voltooid, gaat u naar **virtuele machines** in de portal en bekijkt u de nieuwe virtuele machine. Zorg ervoor dat de SQL Server virtuele machine wordt uitgevoerd, de juiste grootte heeft en is verbonden met het juiste netwerk. 
-1. Verwijder de virtuele machine die is gemaakt als onderdeel van de test, omdat de **failover** -optie grijs wordt weer gegeven tot de failover-test resources zijn opgeschoond. Ga terug naar de kluis, selecteer **gerepliceerde items**, selecteer de SQL Server VM en selecteer vervolgens **testfailover**opschonen. Leg alle waarnemingen vast die zijn gekoppeld aan de test in de sectie **notities** en schakel het selectie **vakje in naast testen is voltooid. Virtuele machines**voor testfailover verwijderen. Selecteer **OK** om de resources na de test op te schonen. 
+1. Verwijder de virtuele machine die is gemaakt als onderdeel van de test, omdat de **failover** -optie grijs wordt weer gegeven tot de failover-test resources zijn opgeschoond. Ga terug naar de kluis, selecteer **gerepliceerde items**, selecteer de SQL Server VM en selecteer vervolgens **testfailover opschonen**. Leg alle waarnemingen vast die zijn gekoppeld aan de test in de sectie **notities** en schakel het selectie vakje in naast **testen is voltooid. Virtuele machines voor testfailover verwijderen**. Selecteer **OK** om de resources na de test op te schonen. 
 
    ![items opschonen na failover-test](media/virtual-machines-windows-sql-move-to-new-region/cleanup-test-items.png)
 
@@ -122,7 +123,7 @@ De volgende stappen laten zien hoe u de SQL Server VM van de bron regio kunt ver
 
 1. Ga naar de **Recovery Services** kluis, selecteer **gerepliceerde items**, selecteer de virtuele machine en selecteer vervolgens **failover**. 
 
-   ![Failover starten](media/virtual-machines-windows-sql-move-to-new-region/initiate-failover.png)
+   ![Failover initiëren](media/virtual-machines-windows-sql-move-to-new-region/initiate-failover.png)
 
 1. Selecteer het **meest recente toepassings consistente** herstel punt onder **herstel punt**. 
 1. Schakel het selectie vakje in naast **de computer afsluiten voordat de failover wordt gestart**. Site Recovery probeert de bron-VM af te sluiten voordat de failover wordt geactiveerd. Failover wordt voortgezet, zelfs als afsluiten mislukt. 
@@ -133,7 +134,7 @@ De volgende stappen laten zien hoe u de SQL Server VM van de bron regio kunt ver
 1. Registreer uw SQL Server-VM met de resource provider van de SQL-VM om de beheer baarheid van **virtuele SQL-machines** in te scha kelen in de Azure Portal en functies die zijn gekoppeld aan de resource provider. Zie [SQL Server VM registreren bij SQL VM resource provider](virtual-machines-windows-sql-register-with-rp.md)voor meer informatie. 
 
   > [!WARNING]
-  > SQL Server consistentie van gegevens wordt alleen gegarandeerd met app-consistente moment opnamen. De **laatste** verwerkte moment opname kan niet worden gebruikt voor SQL Server failover, omdat een moment opname van een crash herstel niet kan garanderen SQL Server consistentie van de gegevens. 
+  > SQL Server consistentie van gegevens wordt alleen gegarandeerd met app-consistente moment opnamen. De **laatste verwerkte** moment opname kan niet worden gebruikt voor SQL Server failover, omdat een moment opname van een crash herstel niet kan garanderen SQL Server consistentie van de gegevens. 
 
 ## <a name="clean-up-source-resources"></a>Bron resources opschonen
 Als u facturerings kosten wilt voor komen, verwijdert u de SQL Server virtuele machine uit de kluis en verwijdert u overbodige gekoppelde resources. 

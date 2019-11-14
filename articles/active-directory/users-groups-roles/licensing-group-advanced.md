@@ -1,26 +1,26 @@
 ---
-title: Aanvullende scenario's op basis van een groeps licentie-Azure Active Directory | Microsoft Docs
+title: Aanvullende scenario's voor licentie verlening op basis van een groep-Azure AD | Microsoft Docs
 description: Meer scenario's voor het Azure Active Directory van groeps licenties
 services: active-directory
 keywords: Azure AD-licenties
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/27/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cfdb8b979d20b77bcbf2f6b0d17855dfa0ac817
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034135"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025950"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenario's, beperkingen en bekende problemen met behulp van groepen voor het beheren van licenties in Azure Active Directory
 
@@ -28,7 +28,7 @@ Gebruik de volgende informatie en voor beelden om een beter inzicht te krijgen i
 
 ## <a name="usage-location"></a>Gebruiks locatie
 
-Sommige services van Microsoft zijn niet op alle locaties beschikbaar. Voordat een licentie aan een gebruiker kan worden toegewezen, moet de beheerder de eigenschap **gebruiks locatie** opgeven voor de gebruiker. In [de Azure Portal](https://portal.azure.com)kunt u gebruiks locatie opgeven in **gebruikers** &gt; **profiel** &gt; **instellingen**.
+Sommige services van Microsoft zijn niet op alle locaties beschikbaar. Voordat een licentie aan een gebruiker kan worden toegewezen, moet de beheerder de eigenschap **gebruiks locatie** opgeven voor de gebruiker. In [de Azure Portal](https://portal.azure.com)kunt u gebruiks locatie opgeven in de **gebruikers** &gt; **profiel** &gt; **instellingen**.
 
 Voor het toewijzen van een groeps licentie neemt de locatie van de map over van alle gebruikers waarvoor een gebruiks locatie is opgegeven. Als u gebruikers op meerdere locaties hebt, moet u ervoor zorgen dat deze correct in uw gebruikers bronnen worden weer gegeven voordat u gebruikers toevoegt aan groepen met licenties.
 
@@ -70,7 +70,7 @@ Voor dit voor beeld wijzigt u één gebruiker en stelt u de extensionAttribute1 
 
 Een gebruiker kan lid zijn van meerdere groepen met licenties. Hier volgen enkele dingen die u moet overwegen:
 
-- Meerdere licenties voor hetzelfde product kunnen elkaar overlappen, waardoor alle ingeschakelde services worden toegepast op de gebruiker. In het volgende voor beeld ziet u twee licentie groepen: *E3 basis Services* bevat de kern services die eerst moeten worden geïmplementeerd, voor alle gebruikers. En *E3 Extended Services* bevat extra services (Sway en planner) om alleen voor bepaalde gebruikers te implementeren. In dit voor beeld is de gebruiker toegevoegd aan beide groepen:
+- Meerdere licenties voor hetzelfde product kunnen elkaar overlappen, waardoor alle ingeschakelde services worden toegepast op de gebruiker. In het volgende voor beeld ziet u twee licentie groepen: *E3 basis Services* bevat de Foundation-Services die eerst moeten worden geïmplementeerd, voor alle gebruikers. En *E3 Extended Services* bevat extra services (Sway en planner) om alleen voor bepaalde gebruikers te implementeren. In dit voor beeld is de gebruiker toegevoegd aan beide groepen:
 
   ![Scherm opname van ingeschakelde Services](./media/licensing-group-advanced/view-enabled-services.png)
 
@@ -130,7 +130,7 @@ U kunt een Power shell-script gebruiken om te controleren of gebruikers een lice
 
 1. Voer de `connect-msolservice`-cmdlet uit om uw Tenant te verifiëren en er verbinding mee te maken.
 
-2. `Get-MsolAccountSku` kan worden gebruikt voor het detecteren van alle ingerichte product licenties in de Tenant.
+2. `Get-MsolAccountSku` kunnen worden gebruikt voor het detecteren van alle ingerichte product licenties in de Tenant.
 
    ![Scherm afbeelding van de cmdlet Get-Msolaccountsku](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
@@ -179,7 +179,7 @@ Wanneer een licentie wordt gewijzigd voor een groep, gaat Azure AD de wijziginge
    > ```
 
 3. Stel de volgende filters in om het volledige logboek voor de verwerking van een groep te bekijken, inclusief alle gebruikers wijzigingen:
-   - **Gestart door (actor)** : "Microsoft Azure AD op groep gebaseerde licentie verlening"
+   - **Gestart door (actor)** : "Microsoft Azure AD op groeps gebaseerde licentie verlening"
    - **Datum bereik** (optioneel): aangepast bereik voor wanneer u een specifieke groep hebt gestart en de verwerking hebt voltooid
 
 In deze voorbeeld uitvoer ziet u het begin van de verwerking, alle resulterende gebruikers wijzigingen en de eind datum van de verwerking.
@@ -193,7 +193,7 @@ In deze voorbeeld uitvoer ziet u het begin van de verwerking, alle resulterende 
 
 Het is niet mogelijk om een groep te verwijderen waaraan een actieve licentie is toegewezen. Een beheerder kan een groep verwijderen die niet kan leiden tot het feit dat er licenties worden verwijderd voor gebruikers. Daarom moeten de licenties eerst uit de groep worden verwijderd voordat deze kunnen worden verwijderd.
 
-Wanneer u een groep in de Azure Portal probeert te verwijderen, ziet u mogelijk een fout melding als de volgende: ![Screenshot-groep verwijderen is mislukt @ no__t-1
+Wanneer u een groep in de Azure Portal probeert te verwijderen, ziet u mogelijk een fout melding als: ![verwijderen van de scherm opname is mislukt](./media/licensing-group-advanced/groupdeletionfailed.png)
 
 Ga naar het tabblad **licenties** van de groep en controleer of er licenties zijn toegewezen. Zo ja, verwijdert u deze licenties en probeert u de groep opnieuw te verwijderen.
 

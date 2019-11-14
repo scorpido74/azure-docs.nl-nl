@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
-ms.date: 08/06/2018
+ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 44f45c53a12c7ac73c3de3f2734f024cb9bc6dd5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: fa1179e55a4826450d30351be0a905efb059780b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899989"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031016"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profiel Web-apps die worden uitgevoerd op een virtuele machine van Azure of een schaalset voor virtuele machines met behulp van Application Insights Profiler
 
@@ -89,15 +89,15 @@ Er is nog geen manier om de Application Insights Profiler sink in te stellen van
 
     ![Controleren of de WAD-extensie is geïnstalleerd][wadextension]
 
-1. Zoek de VM-extensie voor diagnostische gegevens voor uw VM. Vouw uw resource groep, micro soft. Compute informatie, de naam van de virtuele machine en de extensies uit.  
+2. Zoek de VM-extensie voor diagnostische gegevens voor uw VM. Ga naar [https://resources.azure.com](https://resources.azure.com). Vouw uw resource groep, micro soft. Compute informatie, de naam van de virtuele machine en de extensies uit.  
 
     ![Ga naar WAD config in Azure Resource Explorer][azureresourceexplorer]
 
-1. Voeg de Application Insights Profiler-Sink toe aan het knoop punt SinksConfig onder WadCfg. Als u nog geen SinksConfig-sectie hebt, moet u er mogelijk een toevoegen. Zorg ervoor dat u de juiste Application Insights iKey in uw instellingen opgeeft. U moet in de rechter bovenhoek overschakelen op lezen/schrijven in de modus Verkenner en op de knop ' bewerken ' drukken.
+3. Voeg de Application Insights Profiler-Sink toe aan het knoop punt SinksConfig onder WadCfg. Als u nog geen SinksConfig-sectie hebt, moet u er mogelijk een toevoegen. Zorg ervoor dat u de juiste Application Insights iKey in uw instellingen opgeeft. U moet in de rechter bovenhoek overschakelen op lezen/schrijven in de modus Verkenner en op de knop ' bewerken ' drukken.
 
     ![Application Insights Profiler Sink toevoegen][resourceexplorersinksconfig]
 
-1. Wanneer u klaar bent met het bewerken van de configuratie, drukt u op put. Als de put is gelukt, wordt er een groen vinkje weer gegeven in het midden van het scherm.
+4. Wanneer u klaar bent met het bewerken van de configuratie, drukt u op put. Als de put is gelukt, wordt er een groen vinkje weer gegeven in het midden van het scherm.
 
     ![Put-aanvraag verzenden om wijzigingen toe te passen][resourceexplorerput]
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 51a51e63f1d45d67cda63d4491a3bac572434dc0
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: a35cf935d990dbb61f440d2592d59d21f33a2ae8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991915"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037245"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Toegangs beheer in Azure Data Lake Storage Gen2
 
@@ -23,9 +23,9 @@ Azure Data Lake Storage Gen2 implementeert een model voor toegangs beheer dat zo
 
 ## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
-RBAC gebruikt roltoewijzingen om effectief machtigingen sets toe te passen op *beveiligings*-principals. Een beveiligingsprincipal is een object dat een gebruiker, groep, Service-Principal of beheerde identiteit vertegenwoordigt die is gedefinieerd in azure Active Directory (AD) dat toegang tot Azure-resources aanvraagt.
+RBAC gebruikt roltoewijzingen om effectief machtigingen sets toe te passen op *beveiligings-principals*. Een *beveiligingsprincipal is een object dat een gebruiker* , groep, Service-Principal of beheerde identiteit vertegenwoordigt die is gedefinieerd in azure Active Directory (AD) dat toegang tot Azure-resources aanvraagt.
 
-Normaal gesp roken zijn deze Azure-resources beperkt tot resources op het hoogste niveau (bijvoorbeeld: Azure Storage-accounts). In het geval van Azure Storage, en dus Azure Data Lake Storage Gen2, is dit mechanisme uitgebreid naar de container bron (bestands systeem).
+Normaal gesp roken zijn deze Azure-resources beperkt tot resources op het hoogste niveau (bijvoorbeeld: Azure Storage accounts). In het geval van Azure Storage, en dus Azure Data Lake Storage Gen2, is dit mechanisme uitgebreid naar de container bron (bestands systeem).
 
 Zie voor meer informatie over het toewijzen van rollen aan beveiligings-principals in het bereik van uw opslag account [toegang verlenen aan Azure Blob en gegevens wachtrij met RBAC in het Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
@@ -36,7 +36,7 @@ Hoewel het gebruik van RBAC-roltoewijzingen een krachtig mechanisme is om toegan
 Wanneer aan een beveiligingsprincipal RBAC-gegevens machtigingen worden verleend via een [ingebouwde rol](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)of via een aangepaste rol, worden deze machtigingen eerst geëvalueerd op basis van de autorisatie van een aanvraag. Als de aangevraagde bewerking wordt geautoriseerd door de RBAC-toewijzingen van de beveiligingsprincipal, wordt de autorisatie onmiddellijk opgelost en worden er geen extra ACL-controles uitgevoerd. Als de beveiligingsprincipal geen RBAC-toewijzing heeft of de bewerking van de aanvraag niet overeenkomt met de toegewezen machtiging, worden er ook ACL'S-controles uitgevoerd om te bepalen of de beveiligings-principal gemachtigd is om de aangevraagde bewerking uit te voeren.
 
 > [!NOTE]
-> Als aan de beveiligingsprincipal de ingebouwde roltoewijzing voor de BLOB-gegevens eigenaar is toegewezen, wordt de beveiligingsprincipal beschouwd als een *super gebruiker* en krijgt hij volledige toegang tot alle muteren-bewerkingen, inclusief het instellen van de eigenaar van een directory of en de Acl's voor mappen en bestanden waarvoor ze niet de eigenaar zijn. Toegang voor Super gebruikers is de enige geautoriseerde manier om de eigenaar van een resource te wijzigen.
+> Als aan de beveiligingsprincipal de ingebouwde roltoewijzing voor de BLOB-gegevens eigenaar is toegewezen, wordt de beveiligingsprincipal beschouwd als een *super gebruiker* en krijgt hij volledige toegang tot alle muteren-bewerkingen, inclusief het instellen van de eigenaar van een map of bestand, evenals de acl's voor mappen en bestanden waarvoor ze niet de eigenaar zijn. Toegang voor Super gebruikers is de enige geautoriseerde manier om de eigenaar van een resource te wijzigen.
 
 ## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Gedeelde sleutel-en Shared Access Signature-verificatie (SAS)
 
@@ -61,10 +61,10 @@ Zie een van de volgende artikelen voor het instellen van machtigingen voor besta
 |Als u dit hulp programma wilt gebruiken:    |Zie dit artikel:    |
 |--------|-----------|
 |Azure Opslagverkenner    |[Machtigingen voor bestanden en mapniveau instellen met behulp van Azure Storage Explorer met Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)|
-|REST-API    |[Pad-bijwerken](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|REST API    |[Pad-bijwerken](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
-> Als de beveiligingsprincipal een *service* -principal is, is het belang rijk dat u de object-id van de Service-Principal gebruikt en niet de object-id van de gerelateerde app-registratie. Als u de object-ID van de Service-Principal wilt ophalen, opent u de Azure CLI en `az ad sp show --id <Your App ID> --query objectId`gebruikt u deze opdracht:. Zorg ervoor dat u de `<Your App ID>` tijdelijke aanduiding vervangt door de app-id van de app-registratie.
+> Als de beveiligingsprincipal een *service* -principal is, is het belang rijk dat u de object-id van de Service-Principal gebruikt en niet de object-id van de gerelateerde app-registratie. Als u de object-ID van de Service-Principal wilt ophalen, opent u de Azure CLI en gebruikt u deze opdracht: `az ad sp show --id <Your App ID> --query objectId`. Zorg ervoor dat u de tijdelijke aanduiding `<Your App ID>` vervangt door de App-ID van de app-registratie.
 
 ### <a name="types-of-access-control-lists"></a>Typen toegangs beheer lijsten
 
@@ -83,14 +83,14 @@ Zowel toegangs-Acl's als standaard-Acl's hebben dezelfde structuur.
 
 De machtigingen voor een container object zijn **lezen**, **schrijven**en **uitvoeren**en kunnen worden gebruikt voor bestanden en mappen, zoals wordt weer gegeven in de volgende tabel:
 
-|            |    File     |   Directory |
+|            |    Bestand     |   Directory |
 |------------|-------------|----------|
 | **Lezen (L)** | Kan de inhoud van een bestand lezen | Moet worden **gelezen** en **uitgevoerd** om de inhoud van de map weer te geven |
 | **Schrijven (S)** | Kan schrijven of toevoegen aan een bestand | **Schrijven** en **uitvoeren** is vereist om onderliggende items in een map te maken |
 | **Uitvoeren (U)** | Betekent niets in de context van Data Lake Storage Gen2 | Vereist om de onderliggende items van een map door te bladeren |
 
 > [!NOTE]
-> Als u machtigingen verleent met behulp van alleen Acl's (geen RBAC) en u een Service-Principal Lees-of schrijf toegang tot een bestand verleent, moet u de Service-Principal **uitvoer** machtigingen verlenen aan de container en aan elke map in de hiërarchie van mappen die leiden naar het bestand.
+> Als u machtigingen verleent met behulp van alleen Acl's (geen RBAC) en vervolgens een beveiligings-principal Lees-of schrijf toegang wilt verlenen voor een bestand, moet u de beveiligings-principal **uitvoerings** machtigingen voor de container geven en aan elke map in de hiërarchie van mappen die tot het bestand leiden.
 
 #### <a name="short-forms-for-permissions"></a>Korte formulieren voor machtigingen
 
@@ -154,8 +154,8 @@ In de POSIX Acl's is elke gebruiker gekoppeld aan een *primaire groep*. Bijvoorb
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>De groep die eigenaar is toewijzen aan een nieuw bestand of nieuwe map
 
-* Voor **Beeld 1**: De hoofdmap '/'. Deze map wordt gemaakt wanneer een Data Lake Storage Gen2-container wordt gemaakt. In dit geval wordt de groep die eigenaar is ingesteld op de gebruiker die de container heeft gemaakt als deze is uitgevoerd met behulp van OAuth. Als de container is gemaakt met behulp van gedeelde sleutel, een account-SAS of een service-SA'S, wordt de groep eigenaar en eigenaar ingesteld op **$superuser**.
-* **Case 2** (Elk ander geval): Wanneer een nieuw item wordt gemaakt, wordt de groep die eigenaar is, gekopieerd van de bovenliggende map.
+* Voor **Beeld 1**: de hoofdmap '/'. Deze map wordt gemaakt wanneer een Data Lake Storage Gen2-container wordt gemaakt. In dit geval wordt de groep die eigenaar is ingesteld op de gebruiker die de container heeft gemaakt als deze is uitgevoerd met behulp van OAuth. Als de container is gemaakt met behulp van gedeelde sleutel, een account-SAS of een service-SA'S, wordt de groep eigenaar en eigenaar ingesteld op **$superuser**.
+* Voor **Beeld 2** (elk ander geval): wanneer een nieuw item wordt gemaakt, wordt de groep die eigenaar is gekopieerd van de bovenliggende map.
 
 ##### <a name="changing-the-owning-group"></a>De groep die eigenaar is wijzigen
 
@@ -309,7 +309,7 @@ Er wordt een GUID weer gegeven als de vermelding een gebruiker vertegenwoordigt 
 
 Wanneer u Acl's voor service-principals definieert, is het belang rijk dat u de object-ID (OID) van de *Service-Principal* gebruikt voor de app-registratie die u hebt gemaakt. Het is belang rijk te weten dat geregistreerde apps een afzonderlijke service-principal hebben in de specifieke Azure AD-Tenant. Geregistreerde apps hebben een OID die zichtbaar is in de Azure Portal, maar de *Service-Principal* heeft een andere (andere) OID.
 
-Als u de OID wilt ophalen voor de service-principal die overeenkomt met een app-registratie `az ad sp show` , kunt u de opdracht gebruiken. Geef de toepassings-ID op als de para meter. Hier volgt een voor beeld voor het verkrijgen van de OID voor de service-principal die overeenkomt met een app-registratie met App ID = 18218b12-1895-43e9-ad80-6e8fc1ea88ce. Voer de volgende opdracht uit in de Azure CLI:
+Als u de OID wilt ophalen voor de service-principal die overeenkomt met een app-registratie, kunt u de opdracht `az ad sp show` gebruiken. Geef de toepassings-ID op als de para meter. Hier volgt een voor beeld voor het verkrijgen van de OID voor de service-principal die overeenkomt met een app-registratie met App ID = 18218b12-1895-43e9-ad80-6e8fc1ea88ce. Voer de volgende opdracht uit in de Azure CLI:
 
 ```
 $ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId

@@ -1,54 +1,53 @@
 ---
-title: Eigenschappen van meerdere interactie - Azure Active Directory-tenant | Microsoft Docs
-description: Uw Azure Active-tenant-tenants inzicht hebt in uw tenants als volledig onafhankelijke resource beheren
+title: Kenmerken van de interactie tussen meerdere tenants-Azure AD | Microsoft Docs
+description: Uw Azure Active Tenant-tenants beheren door te zien wat uw tenants zijn als volledig onafhankelijke resources
 services: active-tenant
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 01/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45f48b6d8ef29d14606f18d4ccee77bd742a670a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0ce791ee3536b9ab07605787209e59b7e5d60126
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60470069"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026297"
 ---
-# <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Inzicht in hoe meerdere Azure Active Directory-tenants gebruiken
+# <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Meer informatie over hoe meerdere Azure Active Directory tenants werken
 
-In Azure Active Directory (Azure AD), wordt elke tenant een volledig onafhankelijke resource: een peer die logisch onafhankelijk van andere tenants die u beheert. Er is geen bovenliggende / onderliggende relatie tussen tenants. Deze onafhankelijkheid tussen tenants omvat resourceonafhankelijkheid, beheeronafhankelijkheid en synchronisatieonafhankelijkheid.
+In Azure Active Directory (Azure AD) is elke Tenant een volledig onafhankelijke resource: een peer die logisch onafhankelijk is van de andere tenants die u beheert. Er is geen bovenliggende/onderliggende relatie tussen tenants. Deze onafhankelijkheid tussen tenants omvat bron onafhankelijkheid, administratieve onafhankelijkheid en synchronisatie onafhankelijkheid.
 
-## <a name="resource-independence"></a>Resourceonafhankelijkheid
-* Als u maakt of een resource in één tenant verwijdert, heeft dit geen invloed op alle bronnen in een andere tenant, gedeeltelijke met uitzondering van externe gebruikers. 
-* Als u een van uw domeinnamen met één tenant gebruikt, kan deze niet worden gebruikt met een andere tenant.
+## <a name="resource-independence"></a>Resource onafhankelijkheid
+* Als u een resource in een Tenant maakt of verwijdert, heeft dit geen invloed op resources in een andere Tenant, met een gedeeltelijke uitzonde ring van externe gebruikers. 
+* Als u een van uw domein namen met één Tenant gebruikt, kan deze niet worden gebruikt met een andere Tenant.
 
-## <a name="administrative-independence"></a>Beheeronafhankelijkheid
-Als een beheergebruiker van de tenant 'Contoso' een testtenant 'Test', klikt u vervolgens maakt:
+## <a name="administrative-independence"></a>Beheer onafhankelijkheid
+Als een gebruiker die geen beheerder is van de Tenant contoso, een test Tenant maken, dan:
 
-* Standaard wordt de gebruiker die een tenant maakt toegevoegd als een externe gebruiker in deze nieuwe tenant en de rol globale beheerder in deze tenant is toegewezen.
-* De beheerders van de tenant 'Contoso' hebben geen directe beheerdersrechten voor de tenant 'Test', tenzij een beheerder van 'Test' ze deze bevoegdheden verleent. Beheerders van 'Contoso' kunnen echter toegang tot de tenant 'Test' beheren, als ze het gebruikersaccount dat wordt gemaakt van 'Test'.
-* Als u toevoegen/verwijderen een beheerdersrol voor een gebruiker in één tenant, de wijziging heeft geen invloed op de beheerdersrollen die de gebruiker in een andere tenant heeft.
+* De gebruiker die een Tenant maakt, wordt standaard toegevoegd als een externe gebruiker in die nieuwe Tenant en heeft de rol van globale beheerder toegewezen in die Tenant.
+* De Administrators van de Tenant contoso hebben geen directe beheerders bevoegdheden voor de test van de Tenant, tenzij een beheerder van ' test ' hen deze bevoegdheden verleent. Beheerders van ' Contoso ' kunnen echter de toegang tot de Tenant testen door te controleren of de gebruikers account die ' test ' heeft gemaakt.
+* Als u een beheerdersrol voor een gebruiker toevoegt aan of verwijdert uit een Tenant, is de wijziging niet van invloed op de beheerders rollen die de gebruiker in een andere Tenant heeft.
 
-## <a name="synchronization-independence"></a>Synchronisatieonafhankelijkheid
-U kunt elke Azure AD-tenant onafhankelijk zodanig gegevens worden gesynchroniseerd vanuit één exemplaar van een configureren:
+## <a name="synchronization-independence"></a>Synchronisatie onafhankelijkheid
+U kunt elke Azure AD-Tenant onafhankelijk configureren om gegevens op te halen die zijn gesynchroniseerd vanuit één exemplaar van ofwel:
 
-* Het hulpprogramma Azure AD Connect om gegevens te synchroniseren met één AD-forest.
-* De Azure Active tenant Connector voor Forefront Identity Manager, om gegevens te synchroniseren met een of meer on-premises-forests en/of niet-Azure AD-gegevensbronnen.
+* Het hulp programma Azure AD Connect om gegevens te synchroniseren met één AD-forest.
+* De Azure Active Tenant connector voor Forefront Identity Manager, om gegevens te synchroniseren met een of meer on-premises forests en/of niet-Azure AD-gegevens bronnen.
 
-## <a name="add-an-azure-ad-tenant"></a>Een Azure AD-tenant toevoegen
-Als u wilt toevoegen een Azure AD-tenant in Azure portal, moet u zich aanmelden bij [de Azure-portal](https://portal.azure.com) met een account dat een globale beheerder van Azure AD, en aan de linkerkant, selecteert u **nieuw**.
+## <a name="add-an-azure-ad-tenant"></a>Een Azure AD-Tenant toevoegen
+Als u een Azure AD-Tenant wilt toevoegen aan de Azure Portal, meldt u zich aan bij [de Azure Portal](https://portal.azure.com) met een account dat een globale Azure AD-beheerder is en selecteert u op de linkerkant **Nieuw**.
 
 > [!NOTE]
-> In tegenstelling tot andere Azure-resources zijn uw tenants geen onderliggende resources van een Azure-abonnement. Als uw Azure-abonnement is geannuleerd of verlopen, kunt u nog steeds toegang tot de gegevens van uw tenant met behulp van Azure PowerShell, de Azure Graph API of de Microsoft 365-beheercentrum. U kunt ook [een ander abonnement koppelen aan de tenant](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> In tegens telling tot andere Azure-resources zijn uw tenants geen onderliggende resources van een Azure-abonnement. Als uw Azure-abonnement is geannuleerd of verlopen, hebt u nog steeds toegang tot uw Tenant gegevens met behulp van Azure PowerShell, de Azure Graph API of het Microsoft 365 beheer centrum. U kunt ook [een ander abonnement koppelen aan de Tenant](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een breed overzicht van Azure AD-licentieverlening problemen en aanbevolen procedures, [wat is Azure Active-tenant-licentieverlening?](../fundamentals/active-directory-licensing-whatis-azure-portal.md).
+Zie [Wat is Azure Active Tenant Licensing?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)voor een uitgebreid overzicht van Azure AD-licentie problemen en aanbevolen procedures.

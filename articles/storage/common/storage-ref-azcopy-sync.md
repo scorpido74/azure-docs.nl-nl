@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8b4ab0e44f2432056c9c94061c59c99c89a6407d
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9bfe88c34c78d18f2f5aefb8ae6946b9786030ad
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513415"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023499"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -35,6 +35,13 @@ De synchronisatie opdracht wijkt af van de Kopieer opdracht op verschillende man
 2. Wanneer u synchroniseert tussen virtuele mappen, voegt u een slash toe aan het pad (Zie voor beelden) als er een blob is met dezelfde naam als een van de virtuele mappen.
 3. Als de vlag ' deleteDestination ' is ingesteld op ' True ' of ' prompt ', worden de bestanden en blobs die niet aanwezig zijn in de bron, door synchronisatie verwijderd.
 
+## <a name="related-conceptual-articles"></a>Gerelateerde conceptuele artikelen
+
+- [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
+- [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
+- [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
+- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
+
 ### <a name="advanced"></a>Geavanceerd
 
 Als u geen bestands extensie opgeeft, detecteert AzCopy automatisch het inhouds type van de bestanden bij het uploaden van vanaf de lokale schijf, op basis van de bestands extensie of inhoud (als er geen extensie is opgegeven).
@@ -48,7 +55,7 @@ De ingebouwde opzoek tabel is klein, maar op UNIX wordt deze uitgebreid met de M
 In Windows worden MIME-typen geëxtraheerd uit het REGI ster.
 
 ```azcopy
-azcopy sync [flags]
+azcopy sync <source> <destination> [flags]
 ```
 
 ## <a name="examples"></a>Voorbeelden

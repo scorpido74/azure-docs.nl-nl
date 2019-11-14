@@ -1,24 +1,24 @@
 ---
-title: Aangepaste machtigingen voor de beheerdersrol voor het beheer van app-registratie-Azure Active Directory | Microsoft Docs
+title: Beschik bare machtigingen voor aangepaste beheerdersrol-Azure AD | Microsoft Docs
 description: Aangepaste machtigingen voor de beheerdersrol voor het delegeren van identiteits beheer.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ebffbc1c451404d93383a483eecdd4a25acf6b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d6156857202c1cca94df6d70ec2059daf55178f1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928621"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025148"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Subtypen en machtigingen voor toepassings registratie in Azure Active Directory
 
@@ -52,7 +52,7 @@ Maak machtigingen verlenen toegang tot de **nieuwe registratie** opdracht.
 
 Er zijn twee machtigingen beschikbaar voor het verlenen van de mogelijkheid om app-registraties te verwijderen:
 
-#### <a name="microsoftdirectoryapplicationsdelete"></a>micro soft. Directory/toepassingen/verwijderen
+#### <a name="microsoftdirectoryapplicationsdelete"></a>microsoft.directory/applications/delete
 
 Biedt de mogelijkheid om app-registraties te verwijderen, ongeacht subtype; dat wil zeggen, zowel single tenant-als multi tenant-toepassingen.
 
@@ -91,7 +91,7 @@ Hiermee wordt toegang verleend om de standaard toepassings registratie-eigenscha
 
 Hiermee worden dezelfde machtigingen verleend als voor micro soft. Directory/toepassingen/standaard/lezen, maar alleen voor toepassingen met één Tenant.
 
-### <a name="update"></a>Bijwerken
+### <a name="update"></a>Update
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>micro soft. Directory/toepassingen/allProperties/update
 
@@ -101,7 +101,7 @@ De mogelijkheid om alle eigenschappen voor toepassingen met één map en meerder
 
 Verleent dezelfde machtigingen als micro soft. Directory/Applications/allProperties/update, maar alleen voor toepassingen met één Tenant.
 
-#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>micro soft. Directory/toepassingen/publiek/update
+#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>microsoft.directory/applications/audience/update
 
 De mogelijkheid om de ondersteunde signInAudience-eigenschap (account type) bij te werken voor toepassingen met één map en meerdere mappen.
 
@@ -111,7 +111,7 @@ De mogelijkheid om de ondersteunde signInAudience-eigenschap (account type) bij 
 
 Hiermee worden dezelfde machtigingen verleend als voor micro soft. Directory/toepassingen/publiek/update, maar alleen voor toepassingen met één Tenant.
 
-#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>micro soft. Directory/toepassingen/verificatie/bijwerken
+#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>microsoft.directory/applications/authentication/update
 
 De mogelijkheid om de eigenschappen van de antwoord-URL, afmeldings-URL, impliciete stroom en uitgevers domein bij te werken in toepassingen met één Tenant en multi tenant. Verleent toegang tot alle velden op de pagina verificatie van toepassings registratie, met uitzonde ring van ondersteunde account typen:
 
@@ -121,7 +121,7 @@ De mogelijkheid om de eigenschappen van de antwoord-URL, afmeldings-URL, implici
 
 Hiermee worden dezelfde machtigingen verleend als voor micro soft. Directory/toepassingen/verificatie/update, maar alleen voor toepassingen met één Tenant.
 
-#### <a name="microsoftdirectoryapplicationsbasicupdate"></a>micro soft. Directory/toepassingen/basis/bijwerken
+#### <a name="microsoftdirectoryapplicationsbasicupdate"></a>microsoft.directory/applications/basic/update
 
 De mogelijkheid om de naam, het logo, de URL van de Home page, de URL van de service en de URL voor de privacyverklaring van een enkele Tenant en multi tenant-toepassingen bij te werken. Verleent toegang tot alle velden op de pagina huismerk gegevens van toepassings registratie:
 
@@ -131,7 +131,7 @@ De mogelijkheid om de naam, het logo, de URL van de Home page, de URL van de ser
 
 Verleent dezelfde machtigingen als micro soft. Directory/Applications/Basic/update, maar alleen voor toepassingen met één Tenant.
 
-#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>micro soft. Directory/toepassingen/referenties/bijwerken
+#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>microsoft.directory/applications/credentials/update
 
 De mogelijkheid om de certificaten en eigenschappen van client geheimen bij te werken in toepassingen met één Tenant en multi tenant. Verleent toegang tot alle velden op de pagina certificaten voor toepassings registratie & geheimen:
 
@@ -141,7 +141,7 @@ De mogelijkheid om de certificaten en eigenschappen van client geheimen bij te w
 
 Hiermee worden dezelfde machtigingen verleend als voor micro soft. Directory/toepassingen/referenties/update, maar alleen voor toepassingen met één directory.
 
-#### <a name="microsoftdirectoryapplicationsownersupdate"></a>micro soft. Directory/toepassingen/eigen aren/bijwerken
+#### <a name="microsoftdirectoryapplicationsownersupdate"></a>microsoft.directory/applications/owners/update
 
 De mogelijkheid om de eigenschap owner bij te werken voor één Tenant en multi tenant. Verleent toegang tot alle velden op de pagina eigen aars van toepassings registratie:
 
@@ -151,7 +151,7 @@ De mogelijkheid om de eigenschap owner bij te werken voor één Tenant en multi 
 
 Hiermee worden dezelfde machtigingen verleend als voor micro soft. Directory/toepassingen/eigen aren/bijwerken, maar alleen voor toepassingen met één Tenant.
 
-#### <a name="microsoftdirectoryapplicationspermissionsupdate"></a>micro soft. Directory/toepassingen/machtigingen/bijwerken
+#### <a name="microsoftdirectoryapplicationspermissionsupdate"></a>microsoft.directory/applications/permissions/update
 
 De mogelijkheid om de gedelegeerde machtigingen, toepassings machtigingen, geautoriseerde client toepassingen, vereiste machtigingen te wijzigen en toestemming eigenschappen te verlenen voor toepassingen met één Tenant en multi tenant. De mogelijkheid om toestemming uit te voeren wordt niet verleend. Verleent toegang tot alle velden in de API-machtigingen voor toepassings registratie en maakt een API-pagina beschikbaar:
 

@@ -1,6 +1,6 @@
 ---
-title: Linux Azure VM-installatiekopieën maken met Packer | Microsoft Docs
-description: Informatie over het maken van installatiekopieën van virtuele Linux-machines in Azure met Packer
+title: Linux Azure VM-installatie kopieën maken met Packer
+description: Meer informatie over het gebruik van Packer voor het maken van installatie kopieën van virtuele Linux-machines in azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: 4dcf6f2e26a2cc589e350ee2b40c10b85786d4be
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a9f0750908123c236596683ec2ad6de505c46213
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671771"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036951"
 ---
-# <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Hoe u Linux-installatiekopieën voor virtuele machines maken in Azure met Packer
-Elke virtuele machine (VM) in Azure is gemaakt op basis van een installatiekopie die u de Linux-distributie en de versie van het besturingssysteem definieert. Installatiekopieën kunnen bevatten vooraf geïnstalleerde toepassingen en configuraties. De Azure Marketplace bevat vele installatiekopieën die eerste en derde partij voor de meest voorkomende distributies en omgevingen met toepassingen, of kunt u uw eigen aangepaste installatiekopieën die zijn afgestemd op uw behoeften. Dit artikel wordt uitgelegd hoe u met het open-source-hulpprogramma [Packer](https://www.packer.io/) om te definiëren en maken van aangepaste installatiekopieën in Azure.
+# <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Hoe kan ik met behulp van Packer installatie kopieën voor virtuele Linux-machines maken in azure?
+Elke virtuele machine (VM) in azure wordt gemaakt op basis van een installatie kopie die de Linux-distributie-en besturingssysteem versie definieert. Installatie kopieën kunnen vooraf geïnstalleerde toepassingen en configuraties bevatten. De Azure Marketplace biedt veel kopieën van de eerste en derde partij voor de meeste gang bare distributies en toepassings omgevingen, of u kunt uw eigen aangepaste installatie kopieën maken die zijn afgestemd op uw behoeften. In dit artikel wordt beschreven hoe u met behulp van de open source tool [Packer](https://www.packer.io/) aangepaste installatie kopieën in azure definieert en bouwt.
 
 > [!NOTE]
-> Azure heeft nu een service, Azure Image Builder (preview), voor het definiëren en het maken van uw eigen aangepaste installatiekopieën. Azure Image Builder is gebouwd op Packer, zodat u ook uw bestaande Packer provisioner shellscripts met het gebruiken kunt. Als u wilt aan de slag met Azure Image Builder, Zie [een Linux-VM maken met Azure Image Builder](image-builder.md).
+> Azure heeft nu een service, Azure Image Builder (preview), voor het definiëren en maken van uw eigen aangepaste installatie kopieën. Azure Image Builder is gebaseerd op Packer, dus u kunt zelfs uw bestaande scripts voor de inrichtings functie van de pakket shell gebruiken. Zie [een virtuele Linux-machine met Azure Image Builder maken](image-builder.md)om aan de slag te gaan met Azure Image Builder.
 
 
-## <a name="create-azure-resource-group"></a>Azure-resourcegroep maken
-Tijdens het bouwproces maakt Packer tijdelijke Azure-resources zoals het samenstellen van de bron-VM. Om vast te leggen die bron-VM voor gebruik als een installatiekopie, moet u een resourcegroep definiëren. De uitvoer van het bouwproces Packer wordt opgeslagen in deze resourcegroep.
+## <a name="create-azure-resource-group"></a>Een Azure-resource groep maken
+Tijdens het bouw proces maakt verpakker tijdelijke Azure-resources tijdens het maken van de bron-VM. Als u wilt dat de bron-VM als een installatie kopie wordt gebruikt, moet u een resource groep definiëren. De uitvoer van het pakket voor het maken van pakketten wordt opgeslagen in deze resource groep.
 
 Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
@@ -40,15 +40,15 @@ az group create -n myResourceGroup -l eastus
 
 
 ## <a name="create-azure-credentials"></a>Azure-referenties maken
-Packer verifieert met Azure met behulp van een service-principal. Een Azure service-principal is een beveiligings-id die u met apps, services en automatiseringsprogramma's, zoals Packer gebruiken kunt. U bepaalt en definiëren van de machtigingen over welke bewerkingen die de service-principal in Azure uitvoeren kunt.
+De verpakker wordt geverifieerd met Azure met behulp van een service-principal. Een Azure-Service-Principal is een beveiligings identiteit die u kunt gebruiken met apps, services en Automation-hulpprogram ma's, zoals Packer. U beheert en definieert de machtigingen voor de bewerkingen die de Service-Principal in azure kan uitvoeren.
 
-Een service-principal met maken [az ad sp create-for-rbac](/cli/azure/ad/sp) en de uitvoer van de referenties die Packer moet:
+Een service-principal maken met [AZ AD SP create-for-RBAC](/cli/azure/ad/sp) en de referenties uitvoeren die door de verpakker worden vereist:
 
 ```azurecli
 az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, tenant_id: tenant }"
 ```
 
-Een voorbeeld van de uitvoer in de voorgaande opdrachten is als volgt:
+Een voor beeld van de uitvoer van de voor gaande opdrachten is als volgt:
 
 ```azurecli
 {
@@ -58,28 +58,28 @@ Een voorbeeld van de uitvoer in de voorgaande opdrachten is als volgt:
 }
 ```
 
-Om te worden geverifieerd bij Azure, moet u ook uw Azure-abonnement-id met [az account show](/cli/azure/account):
+Als u zich wilt verifiëren bij Azure, moet u ook uw Azure-abonnements-ID verkrijgen met [AZ account show](/cli/azure/account):
 
 ```azurecli
 az account show --query "{ subscription_id: id }"
 ```
 
-U gebruikt de uitvoer van deze twee opdrachten in de volgende stap.
+In de volgende stap gebruikt u de uitvoer van deze twee opdrachten.
 
 
-## <a name="define-packer-template"></a>Packer sjabloon definiëren
-Als u wilt maken van installatiekopieën, kunt u een sjabloon maken als een JSON-bestand. In de sjabloon definieert u builders en provisioners die het werkelijke bouwproces worden uitgevoerd. Packer heeft een [provisioner voor Azure](https://www.packer.io/docs/builders/azure.html) die kunt u definiëren van Azure-resources, zoals de service principal-referenties die zijn gemaakt in de voorgaande stap.
+## <a name="define-packer-template"></a>Pakket sjabloon definiëren
+Als u installatie kopieën wilt maken, maakt u een sjabloon als een JSON-bestand. In de sjabloon definieert u bouwers en inrichtings die het werkelijke bouw proces uitvoeren. De verpakker heeft een [inrichtings functie voor Azure](https://www.packer.io/docs/builders/azure.html) waarmee u Azure-resources kunt definiëren, zoals de referenties van de service-principal die in de voor gaande stap zijn gemaakt.
 
-Maak een bestand met de naam *ubuntu.json* en plak de volgende inhoud. Voer uw eigen waarden voor het volgende:
+Maak een bestand met de naam *Ubuntu. json* en plak de volgende inhoud. Voer uw eigen waarden in voor het volgende:
 
 | Parameter                           | Waar u kunt verkrijgen |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | Eerste regel van de uitvoer van `az ad sp` maakopdracht - *appId* |
-| *client_secret*                     | Line-of uitvoer van tweede `az ad sp` maakopdracht - *wachtwoord* |
-| *tenant_id*                         | Derde regel van uitvoer van `az ad sp` maakopdracht - *tenant* |
+| *client_id*                         | Eerste regel van de uitvoer van `az ad sp` opdracht- *AppID* maken |
+| *client_secret*                     | Tweede regel van uitvoer van `az ad sp` opdracht- *wacht woord* maken |
+| *tenant_id*                         | Derde regel van uitvoer van `az ad sp` opdracht- *Tenant* maken |
 | *subscription_id*                   | Uitvoer van `az account show` opdracht |
-| *managed_image_resource_group_name* | Naam van de resourcegroep die u hebt gemaakt in de eerste stap |
-| *managed_image_name*                | Naam voor de installatiekopie van het beheerde schijf die is gemaakt |
+| *managed_image_resource_group_name* | De naam van de resource groep die u in de eerste stap hebt gemaakt |
+| *managed_image_name*                | Naam voor de beheerde schijf installatie kopie die wordt gemaakt |
 
 
 ```json
@@ -123,23 +123,23 @@ Maak een bestand met de naam *ubuntu.json* en plak de volgende inhoud. Voer uw e
 }
 ```
 
-Deze sjabloon maakt een installatiekopie van een Ubuntu 16.04 LTS, NGINX wordt geïnstalleerd en deprovisions van de virtuele machine.
+Met deze sjabloon maakt u een installatie kopie van Ubuntu 16,04 LTS, installeert u NGINX en maakt u de voorzieningen van de virtuele machine on.
 
 > [!NOTE]
-> Als u wilt op de sjabloon de gebruikersreferenties inrichten uitbreiden, aanpassen van de opdracht provisioner die de Azure-agent te lezen deprovisions `-deprovision` in plaats van `deprovision+user`.
-> De `+user` vlag verwijdert alle gebruikersaccounts uit de bron-VM.
+> Als u deze sjabloon uitbreidt om gebruikers referenties in te richten, past u de inrichtings opdracht waarmee de Azure-agent wordt ingericht om `-deprovision` te lezen in plaats van `deprovision+user`.
+> Met de vlag `+user` worden alle gebruikers accounts verwijderd van de bron-VM.
 
 
-## <a name="build-packer-image"></a>Packer-installatiekopie bouwen
-Als u nog niet geïnstalleerd op uw lokale computer, Packer hebt [volgt u de installatie-instructies Packer](https://www.packer.io/docs/install/index.html).
+## <a name="build-packer-image"></a>Installatie kopie van Builder
+Als u Packer nog niet op uw lokale computer hebt geïnstalleerd, [volgt u de installatie-instructies van de verpakking](https://www.packer.io/docs/install/index.html).
 
-Bouw de installatiekopie door op te geven uw Packer sjabloonbestand als volgt:
+Bouw de installatie kopie door het pakket sjabloon bestand als volgt op te geven:
 
 ```bash
 ./packer build ubuntu.json
 ```
 
-Een voorbeeld van de uitvoer in de voorgaande opdrachten is als volgt:
+Een voor beeld van de uitvoer van de voor gaande opdrachten is als volgt:
 
 ```bash
 azure-arm output will be in this color.
@@ -200,11 +200,11 @@ ManagedImageName: myPackerImage
 ManagedImageLocation: eastus
 ```
 
-Het duurt een paar minuten voor Packer bouwen van de virtuele machine, het uitvoeren van de provisioners en het opschonen van de implementatie.
+Het duurt enkele minuten voordat de virtuele machine door de pakket functie wordt gebouwd, de inrichtingen worden uitgevoerd en de implementatie is opschoont.
 
 
-## <a name="create-vm-from-azure-image"></a>Virtuele machine maken van installatiekopieën van Azure
-U kunt nu een virtuele machine maken door uw installatiekopie met [az vm maken](/cli/azure/vm). Geef de afbeelding die u hebt gemaakt met de `--image` parameter. Het volgende voorbeeld wordt een virtuele machine met de naam *myVM* van *myPackerImage* en worden SSH-sleutels gegenereerd als deze nog niet bestaan:
+## <a name="create-vm-from-azure-image"></a>Een VM maken op basis van een Azure-installatie kopie
+U kunt nu een VM maken op basis van uw installatie kopie met [AZ VM Create](/cli/azure/vm). Geef de installatie kopie op die u hebt gemaakt met de para meter `--image`. In het volgende voor beeld wordt een virtuele machine met de naam *myVM* van *myPackerImage* gemaakt en worden SSH-sleutels gegenereerd als deze nog niet bestaan:
 
 ```azurecli
 az vm create \
@@ -215,9 +215,9 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Als u maken van virtuele machines in een andere resourcegroep of een andere regio dan uw Packer-installatiekopie wilt, geeft u de afbeeldings-ID in plaats van de naam van installatiekopie. U vindt de afbeeldings-ID met [az image show](/cli/azure/image#az-image-show).
+Als u Vm's wilt maken in een andere resource groep of regio dan uw pakket afbeelding, geeft u de installatie kopie-ID op in plaats van de naam van de installatie kopie. U kunt de afbeeldings-ID verkrijgen met [AZ Image Show](/cli/azure/image#az-image-show).
 
-Het duurt een paar minuten om de VM te maken. Nadat de virtuele machine is gemaakt, noteer de `publicIpAddress` weergegeven door de Azure CLI. Dit adres wordt gebruikt voor toegang tot de NGINX-site via een webbrowser.
+Het duurt enkele minuten om de virtuele machine te maken. Zodra de VM is gemaakt, noteert u de `publicIpAddress` die worden weer gegeven door de Azure CLI. Dit adres wordt gebruikt om toegang te krijgen tot de NGINX-site via een webbrowser.
 
 Open poort 80 via internet met [az vm open-port](/cli/azure/vm) zodat beveiligd webverkeer uw virtuele machine kan bereiken:
 
@@ -228,11 +228,11 @@ az vm open-port \
     --port 80
 ```
 
-## <a name="test-vm-and-nginx"></a>Testen van de virtuele machine en NGINX
-Nu kunt u een webbrowser openen en `http://publicIpAddress` in de adresbalk invoeren. Geef uw eigen openbare IP-adres op uit het creatieproces van de virtuele machine proces. De standaard-NGINX-pagina wordt weergegeven zoals in het volgende voorbeeld:
+## <a name="test-vm-and-nginx"></a>VM en NGINX testen
+Nu kunt u een webbrowser openen en `http://publicIpAddress` in de adresbalk invoeren. Geef uw eigen openbare IP-adres op uit het creatieproces van de virtuele machine proces. De standaard NGINX-pagina wordt weer gegeven, zoals in het volgende voor beeld:
 
 ![Standaardsite van NGINX](./media/build-image-with-packer/nginx.png) 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-U kunt ook bestaande Packer provisioner scripts met [Azure Image Builder](image-builder.md).
+U kunt ook bestaande pakket inrichtings scripts gebruiken met [Azure Image Builder](image-builder.md).

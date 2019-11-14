@@ -7,18 +7,21 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 02/06/2019
-ms.openlocfilehash: 98e256dbdc6993ee1aeb8e2ac26809ef849edb91
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b11671f20a7e3e6053f90a884777b31196232a38
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932897"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048313"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants"></a>Azure-activiteiten logboeken verzamelen in Azure Monitor over Azure Active Directory tenants
 
+> [!NOTE]
+> U kunt het activiteiten logboek nu verzamelen in een Log Analytics-werk ruimte met behulp van een diagnostische instelling, vergelijkbaar met de manier waarop u bron logboeken verzamelt. Zie [Azure-activiteiten logboeken verzamelen en analyseren in log Analytics werk ruimte in azure monitor](activity-log-collect.md).
+
 In dit artikel wordt stapsgewijs beschreven hoe u Azure-activiteiten Logboeken kunt verzamelen in een Log Analytics-werk ruimte in Azure Monitor met behulp van de Azure Log Analytics Data Collector-connector voor Logic Apps. Gebruik het proces in dit artikel wanneer u logboeken naar een werk ruimte in een andere Azure Active Directory Tenant wilt verzenden. Als u bijvoorbeeld een aanbieder van beheerde services bent, wilt u mogelijk activiteitenlogboeken verzamelen uit een abonnement van een klant en opslaan in een Log Analytics-werkruimte in uw eigen abonnement.
 
-Als de Log Analytics werk ruimte zich in hetzelfde Azure-abonnement of in een ander abonnement bevindt, maar in dezelfde Azure Active Directory, gebruikt u de stappen in de [Azure-activiteiten Logboeken in log Analytics-werk ruimte verzamelen en analyseren in azure monitor](activity-log-collect.md) om Azure te verzamelen Activiteiten Logboeken.
+Als de Log Analytics werk ruimte zich in hetzelfde Azure-abonnement of in een ander abonnement bevindt, maar in dezelfde Azure Active Directory, gebruikt u de stappen in de [Azure-activiteiten Logboeken in log Analytics-werk ruimte verzamelen en analyseren in azure monitor](activity-log-collect.md) om Azure-activiteiten logboeken te verzamelen.
 
 ## <a name="overview"></a>Overzicht
 
@@ -52,7 +55,7 @@ Hieronder volgen de vereisten voor de Azure-resources die in dit scenario worden
 
    ![Nieuwe event hub Marketplace](media/collect-activity-logs-subscriptions/marketplace-new-event-hub.png)
 
-3. Voer onder **Naamruimte maken** een nieuwe naamruimte in of selecteer een bestaande. In het systeem wordt onmiddellijk gecontroleerd of de naam beschikbaar is.
+3. Voer onder **Naamruimte maken** een nieuwe naamruimte in of selecteer een bestaande. Er wordt onmiddellijk gecontroleerd of de naam beschikbaar is.
 
    ![afbeelding van dialoogvenster event hub maken](media/collect-activity-logs-subscriptions/create-event-hub1.png)
 
@@ -288,7 +291,7 @@ De [Azure log Analytics Data Collector](https://docs.microsoft.com/connectors/az
 
    ![De actie Gegevens verzenden van Log Analytics toevoegen aan logische apps](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
-3. Voer een naam in voor uw verbinding en plak deze in de **Werkruimte-id** en **Werkruimtesleutel** voor uw Log Analytics-werkruimte.  Klik op **Maken**.
+3. Voer een naam in voor uw verbinding en plak deze in de **Werkruimte-id** en **Werkruimtesleutel** voor uw Log Analytics-werkruimte.  Klik op **Create**.
 
    ![De actie Verbinding van Log Analytics toevoegen aan logische apps](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 
