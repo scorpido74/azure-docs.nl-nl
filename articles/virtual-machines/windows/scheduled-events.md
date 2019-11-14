@@ -1,5 +1,5 @@
 ---
-title: Scheduled Events voor virtuele Windows-machines in azure | Microsoft Docs
+title: Scheduled Events voor virtuele Windows-machines in azure
 description: Geplande gebeurtenissen met behulp van de Azure meta data-service voor op uw virtuele Windows-machines.
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 087f27b3857363c0b5f244ecd52ebd64105626b5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7889ee66ec80ee0b77b92efc5755e1a84a5cbf04
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102406"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073286"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events voor Windows-Vm's
 
@@ -44,7 +44,7 @@ Veel toepassingen kunnen profiteren van de tijd om het onderhoud van virtuele ma
 Het gebruik van Scheduled Events uw toepassing kan detecteren wanneer er onderhoud wordt uitgevoerd en taken activeren om de impact te beperken. Door geplande gebeurtenissen in te scha kelen krijgt de virtuele machine een minimale hoeveelheid tijd voordat de onderhouds activiteit wordt uitgevoerd. Zie de sectie gebeurtenis planning hieronder voor meer informatie.
 
 Scheduled Events bevat gebeurtenissen in de volgende use-cases:
-- [Onderhoud van platform gestart](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates) (bijvoorbeeld VM opnieuw opstarten, Livemigratie of geheugen behoud updates voor host)
+- Door het [platform geïnitieerd onderhoud](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates) (bijvoorbeeld VM opnieuw opstarten, Livemigratie of geheugen behoud van updates voor host)
 - Gedegradeerde hardware
 - Door de gebruiker geïnitieerd onderhoud (bijvoorbeeld het opnieuw starten van een gebruiker of opnieuw implementeren van een VM)
 - [VM-verwijdering met lage prioriteit](https://azure.microsoft.com/blog/low-priority-scale-sets) in schaal sets
@@ -54,7 +54,7 @@ Scheduled Events bevat gebeurtenissen in de volgende use-cases:
 Azure meta data service geeft informatie weer over het uitvoeren van Virtual Machines met behulp van een REST-eind punt dat toegankelijk is vanuit de VM. De informatie is beschikbaar via een niet-routeerbaar IP-adres, zodat het niet buiten de virtuele machine wordt weer gegeven.
 
 ### <a name="endpoint-discovery"></a>Eindpunt detectie
-Voor VNET ingeschakelde Vm's is de meta gegevens service beschikbaar vanuit een statisch niet-routeerbaar IP `169.254.169.254`-adres. Het volledige eind punt voor de meest recente versie van Scheduled Events is: 
+Voor VNET ingeschakelde Vm's is de meta gegevens service beschikbaar vanaf een statisch niet-routeerbaar IP-adres, `169.254.169.254`. Het volledige eind punt voor de meest recente versie van Scheduled Events is: 
 
  > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
 
@@ -63,11 +63,11 @@ Als de virtuele machine niet is gemaakt binnen een Virtual Network, zijn de stan
 ### <a name="version-and-region-availability"></a>Beschik baarheid van versie en regio
 Er is een versie van de Scheduled Events-service. Versies zijn verplicht en de huidige versie is `2017-11-01`.
 
-| Version | Release type | Regions | Releaseopmerkingen | 
+| Versie | Release type | Regio's | Releaseopmerkingen | 
 | - | - | - | - |
-| 2017-11-01 | Algemene beschikbaarheid | Alle | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' preempt ' voor VM-verwijdering met lage prioriteit<br> | 
-| 2017-08-01 | Algemene beschikbaarheid | Alle | <li> Achterliggend onderstrepings teken verwijderd uit resource namen voor IaaS-Vm's<br><li>Er is een vereiste voor de meta gegevens header afgedwongen voor alle aanvragen | 
-| 2017-03-01 | Preview | Alle |<li>Eerste release
+| 2017-11-01 | Algemene beschikbaarheid | Alles | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' preempt ' voor VM-verwijdering met lage prioriteit<br> | 
+| 2017-08-01 | Algemene beschikbaarheid | Alles | <li> Achterliggend onderstrepings teken verwijderd uit resource namen voor IaaS-Vm's<br><li>Er is een vereiste voor de meta gegevens header afgedwongen voor alle aanvragen | 
+| 2017-03-01 | Preview | Alles |<li>Eerste release
 
 > [!NOTE] 
 > Eerdere Preview-versies van geplande gebeurtenissen die {nieuwste} worden ondersteund als de API-versie. Deze indeling wordt niet meer ondersteund en zal in de toekomst worden afgeschaft.
@@ -80,17 +80,17 @@ Scheduled Events is uitgeschakeld voor uw service als deze niet 24 uur een aanvr
 ### <a name="user-initiated-maintenance"></a>Door de gebruiker geïnitieerd onderhoud
 Door de gebruiker geïnitieerd onderhoud van virtuele machines via de Azure Portal, API, CLI of Power shell resulteert in een geplande gebeurtenis. Hierdoor kunt u de logica voor onderhouds voorbereiding in uw toepassing testen en kan uw toepassing voorbereiden op door de gebruiker geïnitieerde onderhouds werkzaamheden.
 
-Als u een virtuele machine opnieuw opstart, wordt een gebeurtenis met `Reboot`het type gestart. Als u een virtuele machine opnieuw implementeert, wordt er een `Redeploy`gebeurtenis met het type.
+Als u een virtuele machine opnieuw opstart, wordt een gebeurtenis gepland met het type `Reboot`. Als u een virtuele machine opnieuw implementeert, wordt een gebeurtenis met het type `Redeploy`.
 
 ## <a name="using-the-api"></a>De API gebruiken
 
 ### <a name="headers"></a>Headers
-Wanneer u een query uitvoert op de metadata service, moet u `Metadata:true` de header opgeven om ervoor te zorgen dat de aanvraag niet per ongeluk is omgeleid. De `Metadata:true` header is vereist voor alle aanvragen voor geplande gebeurtenissen. Als u de header in de aanvraag niet opneemt, resulteert dit in een antwoord op de Metadata Service.
+Wanneer u een query uitvoert op de Metadata Service, moet u de header-`Metadata:true` opgeven om ervoor te zorgen dat de aanvraag niet per ongeluk is omgeleid. De `Metadata:true`-header is vereist voor alle aanvragen voor geplande gebeurtenissen. Als u de header in de aanvraag niet opneemt, resulteert dit in een antwoord op de Metadata Service.
 
 ### <a name="query-for-events"></a>Query's uitvoeren op gebeurtenissen
 U kunt een query uitvoeren voor Scheduled Events door eenvoudigweg de volgende aanroep te nemen:
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Powershell
 ```
 curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @{"Metadata"="true"}
 ```
@@ -115,13 +115,13 @@ Als er geplande gebeurtenissen zijn, bevat het antwoord een matrix met gebeurten
 De DocumentIncarnation is een ETag en biedt een eenvoudige manier om te controleren of de nettolading van de gebeurtenissen sinds de laatste query is gewijzigd.
 
 ### <a name="event-properties"></a>Gebeurtenis eigenschappen
-|Eigenschap  |  Description |
+|Eigenschap  |  Beschrijving |
 | - | - |
 | Gebeurtenis-id | De wereld wijde unieke id voor deze gebeurtenis. <br><br> Voorbeeld: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Dit heeft invloed op deze gebeurtenis. <br><br> Gegevens <br><ul><li> `Freeze`: De virtuele machine is gepland om enkele seconden te worden onderbroken. De CPU-en netwerk verbinding wordt mogelijk onderbroken, maar er is geen invloed op het geheugen of geopende bestanden. <li>`Reboot`: De virtuele machine is ingepland voor opnieuw opstarten (niet-permanent geheugen gaat verloren). <li>`Redeploy`: De virtuele machine is ingepland om te worden verplaatst naar een ander knoop punt (tijdelijke schijven gaan verloren). <li>`Preempt`: De virtuele machine met lage prioriteit wordt verwijderd (tijdelijke schijven gaan verloren).|
-| ResourceType | Het type resource dat door deze gebeurtenis wordt beïnvloed. <br><br> Gegevens <ul><li>`VirtualMachine`|
-| Resources| Lijst met resources die van invloed zijn op deze gebeurtenis. Dit is gegarandeerd dat machines van Maxi maal één [update domein](manage-availability.md)worden opgenomen, maar mag niet alle computers in de UD bevatten. <br><br> Voorbeeld: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
-| Gebeurtenis status | De status van deze gebeurtenis. <br><br> Gegevens <ul><li>`Scheduled`: Deze gebeurtenis is gepland om te beginnen na het tijdstip dat is `NotBefore` opgegeven in de eigenschap.<li>`Started`: Deze gebeurtenis is gestart.</ul> Er `Completed` wordt nooit een of meer statussen opgegeven; de gebeurtenis wordt niet meer geretourneerd wanneer de gebeurtenis is voltooid.
+| EventType | Dit heeft invloed op deze gebeurtenis. <br><br> Waarden: <br><ul><li> `Freeze`: de virtuele machine is gepland om enkele seconden te worden onderbroken. De CPU-en netwerk verbinding wordt mogelijk onderbroken, maar er is geen invloed op het geheugen of geopende bestanden. <li>`Reboot`: de virtuele machine is gepland voor opnieuw opstarten (niet-permanent geheugen gaat verloren). <li>`Redeploy`: de virtuele machine is ingepland om te worden verplaatst naar een ander knoop punt (tijdelijke schijven gaan verloren). <li>`Preempt`: de virtuele machine met lage prioriteit wordt verwijderd (tijdelijke schijven gaan verloren).|
+| ResourceType | Het type resource dat door deze gebeurtenis wordt beïnvloed. <br><br> Waarden: <ul><li>`VirtualMachine`|
+| Bronnen| Lijst met resources die van invloed zijn op deze gebeurtenis. Dit is gegarandeerd dat machines van Maxi maal één [update domein](manage-availability.md)worden opgenomen, maar mag niet alle computers in de UD bevatten. <br><br> Voorbeeld: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| Gebeurtenis status | De status van deze gebeurtenis. <br><br> Waarden: <ul><li>`Scheduled`: deze gebeurtenis is gepland om te starten na het tijdstip dat is opgegeven in de eigenschap `NotBefore`.<li>`Started`: deze gebeurtenis is gestart.</ul> Er wordt nooit `Completed` of een vergelijk bare status gegeven; de gebeurtenis wordt niet meer geretourneerd wanneer de gebeurtenis is voltooid.
 | NotBefore| Tijdstip waarna deze gebeurtenis kan worden gestart. <br><br> Voorbeeld: <br><ul><li> Ma, 19 sep 2016 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>Gebeurtenissen plannen
@@ -130,7 +130,7 @@ Elke gebeurtenis wordt een minimale tijd in de toekomst gepland op basis van het
 |EventType  | Minimale kennisgeving |
 | - | - |
 | Kering| 15 minuten |
-| Opnieuw starten | 15 minuten |
+| Opnieuw opstarten | 15 minuten |
 | Opnieuw implementeren | 10 minuten |
 | Preempt | 30 seconden |
 
@@ -141,13 +141,13 @@ Geplande gebeurtenissen worden verzonden naar:
  - Alle Virtual Machines in een Beschikbaarheidsset      
  - Alle Virtual Machines in een plaatsings groep met schaal sets.         
 
-Daarom moet u het `Resources` veld in de gebeurtenis controleren om te bepalen welke vm's worden beïnvloed. 
+Daarom moet u het `Resources` veld in de gebeurtenis controleren om te bepalen welke Vm's worden beïnvloed. 
 
 ### <a name="starting-an-event"></a>Een gebeurtenis starten 
 
-Zodra u een aanstaande gebeurtenis hebt geleerd en de logica hebt voltooid om het probleem op te starten, kunt u de openstaande `POST` gebeurtenis goed keuren door een aanroep `EventId`van de meta gegevens service uit te voeren met de. Dit geeft aan dat Azure de minimale meldings tijd kan verkorten (indien mogelijk). 
+Zodra u een aanstaande gebeurtenis hebt geleerd en de logica hebt voltooid om het probleem op te starten, kunt u de openstaande gebeurtenis goed keuren door een `POST` de meta gegevens service met de `EventId`aan te roepen. Dit geeft aan dat Azure de minimale meldings tijd kan verkorten (indien mogelijk). 
 
-Hieronder vindt u de JSON die wordt verwacht `POST` in de aanvraag tekst. De aanvraag moet een lijst met `StartRequests`bevatten. Elk `StartRequest` bevat de `EventId` voor de gebeurtenis die u wilt versnellen:
+Hieronder wordt de JSON verwacht in de hoofd tekst van de `POST` aanvraag. De aanvraag moet een lijst met `StartRequests`bevatten. Elke `StartRequest` bevat de `EventId` voor de gebeurtenis die u wilt versnellen:
 ```
 {
     "StartRequests" : [
@@ -158,13 +158,13 @@ Hieronder vindt u de JSON die wordt verwacht `POST` in de aanvraag tekst. De aan
 }
 ```
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Powershell
 ```
 curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
 ```
 
 > [!NOTE] 
-> Door een gebeurtenis te bevestigen, kan de gebeurtenis `Resources` in de gebeurtenis worden voortgezet, niet alleen de virtuele machine die de gebeurtenis erkent. U kunt er daarom voor kiezen om een leider te selecteren voor het coördineren van de bevestiging. Dit kan zo eenvoudig zijn als `Resources` de eerste computer in het veld.
+> Door een gebeurtenis te bevestigen, kan de gebeurtenis worden voortgezet voor alle `Resources` in de gebeurtenis, niet alleen de virtuele machine die de gebeurtenis erkent. U kunt er daarom voor kiezen om een leider te selecteren voor het coördineren van de bevestiging. Dit kan zo eenvoudig zijn als de eerste computer in het `Resources` veld.
 
 
 ## <a name="powershell-sample"></a>Voorbeeld van PowerShell 

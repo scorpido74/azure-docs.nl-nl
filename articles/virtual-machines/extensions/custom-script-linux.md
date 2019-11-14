@@ -1,5 +1,5 @@
 ---
-title: Aangepaste scripts uitvoeren op Linux-Vm's in azure | Microsoft Docs
+title: Aangepaste scripts uitvoeren op Linux-Vm's in azure
 description: Configuratie taken voor Linux-VM'S automatiseren met behulp van de aangepaste script extensie v2
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: akjosh
-ms.openlocfilehash: 86c05519e7027ec8b7434919bf43f9b4602b0300
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 87826b5bec4294ce45355ab0cfc4df373895563b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789961"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073232"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Gebruik de aangepaste script extensie versie 2 van Azure met virtuele Linux-machines
 De aangepaste script extensie versie 2 downloadt en voert scripts uit op virtuele machines van Azure. Deze uitbrei ding is handig voor configuratie na de implementatie, software-installatie of een andere configuratie/beheer taak. U kunt scripts downloaden van Azure Storage of een andere toegankelijke Internet locatie, of u kunt deze opgeven voor de runtime van de uitbrei ding. 
@@ -70,7 +70,7 @@ De configuratie van de aangepaste script extensie bevat dingen als de script loc
 
 U kunt gevoelige gegevens in een beveiligde configuratie opslaan, die zijn versleuteld en alleen worden ontsleuteld in de virtuele machine. De beveiligde configuratie is handig wanneer de uitvoering-opdracht geheimen bevat zoals een wacht woord.
 
-Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in de configuratie van de instellingen voor beveiligde extensies. De beveiligde instellings gegevens voor de Azure VM-extensie zijn versleuteld en worden alleen ontsleuteld op de virtuele doel machine.
+Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in de configuratie van de instellingen voor beveiligde extensies. Azure-VM-extensie beveiligde instellingsgegevens versleuteld en alleen op de virtuele doelmachine worden ontsleuteld.
 
 ```json
 {
@@ -104,21 +104,21 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 }
 ```
 
-### <a name="property-values"></a>Eigenschaps waarden
+### <a name="property-values"></a>Waarden van eigenschappen
 
-| Naam | Waarde/voor beeld | Gegevenstype | 
+| Naam | Waarde / voorbeeld | Gegevenstype | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
-| Uitgever | Micro soft. compute. Extensions | string |
-| type | CustomScript | string |
+| publisher | Microsoft.Compute.Extensions | tekenreeks |
+| type | CustomScript | tekenreeks |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (bijvoorbeeld) | https://github.com/MyProject/Archive/MyPythonScript.py | matrix |
-| commandToExecute (bijvoorbeeld) | python MyPythonScript.py \<mijn-param1 > | string |
-| uit | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | string |
-| skipDos2Unix (bijvoorbeeld) | onwaar | booleaans |
-| tijds tempel (bijvoorbeeld) | 123456789 | 32-bits geheel getal |
-| storageAccountName (bijvoorbeeld) | examplestorageacct | string |
-| storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | string |
+| commandToExecute (bijvoorbeeld) | python MyPythonScript.py \<mijn-param1 > | tekenreeks |
+| uit | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | tekenreeks |
+| skipDos2Unix (bijvoorbeeld) | false | booleaans |
+| timestamp (bijvoorbeeld) | 123456789 | 32-bits geheel getal |
+| storageAccountName (bijvoorbeeld) | examplestorageacct | tekenreeks |
+| storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | tekenreeks |
 
 ### <a name="property-value-details"></a>Details van eigenschaps waarde
 * `skipDos2Unix`: (optioneel, Booleaans) overs Laan dos2unix conversie van bestands-Url's of script bestanden op basis van een script.
@@ -201,7 +201,7 @@ CustomScript maakt gebruik van de volgende algoritme om een script uit te voeren
 
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
-Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sjablonen. Het JSON-schema dat in de vorige sectie wordt beschreven, kan worden gebruikt in een Azure Resource Manager sjabloon voor het uitvoeren van de aangepaste script extensie tijdens het implementeren van een Azure Resource Manager sjabloon. Een voorbeeld sjabloon met de aangepaste script extensie vindt u hier, [github](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
+Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Het JSON-schema dat in de vorige sectie wordt beschreven, kan worden gebruikt in een Azure Resource Manager sjabloon voor het uitvoeren van de aangepaste script extensie tijdens het implementeren van een Azure Resource Manager sjabloon. Een voorbeeld sjabloon met de aangepaste script extensie vindt u hier, [github](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 
 ```json
@@ -235,7 +235,7 @@ Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sja
 >[!NOTE]
 >Deze eigenschaps namen zijn hoofdletter gevoelig. Als u implementatie problemen wilt voor komen, gebruikt u de namen zoals hier wordt weer gegeven.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-CLI
 Wanneer u Azure CLI gebruikt om de aangepaste script extensie uit te voeren, moet u een configuratie bestand of-bestanden maken. U moet mini maal ' commandToExecute ' hebben.
 
 ```azurecli

@@ -1,5 +1,5 @@
 ---
-title: Standard Load Balancer met zonegebonden-frontend-Azure CLI
+title: Standard Load Balancer met zonegebonden open bare IP-adres-front-end-Azure CLI
 titleSuffix: Azure Load Balancer
 description: Meer informatie over het maken van een openbaar Standard Load Balancer met een open bare IP-adres van zonegebonden met behulp van Azure CLI
 services: load-balancer
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: allensu
-ms.openlocfilehash: 5e6dd06cf43b0eb5389597dcedbc323f4c035333
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: b9c3a88df6801566bc927cfc18fda0adfa05a5ae
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048347"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076035"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Een Standard Load Balancer met zonegebonden frontend maken met behulp van Azure CLI
+#  <a name="create-a-standard-load-balancer-with-zonal-public-ip-address-frontend-using-azure-cli"></a>Een Standard Load Balancer met een open bare IP-adres van zonegebonden maken met behulp van Azure CLI
 
 In dit artikel wordt beschreven hoe u een openbaar [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) maakt met een zonegebonden-frontend met behulp van een openbaar IP-adres. In dit scenario geeft u een bepaald gebied op voor uw front-end- en back-endinstanties om uw gegevenspad en resources op één lijn te brengen met een specifieke zone.
 

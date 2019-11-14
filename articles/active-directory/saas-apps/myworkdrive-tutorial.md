@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 03998d214c1fb977741976eca7b878d0c6b577aa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160389"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074073"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Zelf studie: MyWorkDrive integreren met Azure Active Directory
 
@@ -100,9 +100,17 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 ### <a name="configure-myworkdrive-sso"></a>MyWorkDrive SSO configureren
 
-1. Meld u in een ander browser venster aan bij MyWorkDrive als een beveiligings beheerder.
+1. Als u de configuratie wilt automatiseren in MyWorkDrive, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-2. Op de MyWorkDrive-server in het deel venster beheer klikt u op **Enter prise** en voert u de volgende stappen uit:
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+
+1. Nadat u de extensie aan de browser hebt toegevoegd, klikt u op **Setup MyWorkDrive** gaat u naar de MyWorkDrive-toepassing. Geef de beheerders referenties op om u aan te melden bij MyWorkDrive. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-4 geautomatiseerd.
+
+    ![Configuratie van Setup](common/setup-sso.png)
+
+1. Als u MyWorkDrive hand matig wilt instellen in een ander browser venster, meldt u zich aan bij MyWorkDrive als een beveiligings beheerder.
+
+1. Op de MyWorkDrive-server in het deel venster beheer klikt u op **Enter prise** en voert u de volgende stappen uit:
 
     ![De Beheerder](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
 
@@ -125,7 +133,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam Julia S
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `Britta Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `BrittaSimon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `BrittaSimon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
 

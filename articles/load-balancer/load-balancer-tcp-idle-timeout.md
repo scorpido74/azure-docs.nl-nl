@@ -1,7 +1,7 @@
 ---
-title: Load Balancer TCP-time-out voor inactiviteit in azure configureren
-titlesuffix: Azure Load Balancer
-description: Load Balancer TCP-time-out voor inactiviteit configureren
+title: load balancer TCP-time-out voor inactiviteit in azure configureren
+titleSuffix: Azure Load Balancer
+description: In dit artikel vindt u informatie over het configureren van Azure Load Balancer TCP-time-out voor inactiviteit.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: b3df1ead7a3164ffd9a4b4acf8820d0f5b82cee3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 530bfbe85a564b3dd517e14df819586dee332a78
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274170"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076968"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Instellingen voor time-out voor TCP-inactiviteit configureren voor Azure Load Balancer
 
@@ -26,7 +26,7 @@ ms.locfileid: "68274170"
 
 In de standaard configuratie heeft Azure Load Balancer een time-outinstellingen voor inactiviteit van vier minuten. Als een periode van inactiviteit langer is dan de time-outwaarde, is er geen garantie dat de TCP-of HTTP-sessie tussen de client en de Cloud service wordt bewaard.
 
-Wanneer de verbinding is gesloten, kan uw client toepassing het volgende fout bericht ontvangen: "De onderliggende verbinding is gesloten: Een verbinding waarvan wordt verwacht dat deze actief blijft, werd gesloten door de server.
+Wanneer de verbinding wordt gesloten, kan uw client toepassing het volgende fout bericht ontvangen: ' de onderliggende verbinding is gesloten: er is een verbinding die naar verwachting wordt gehouden door de server verbroken. '
 
 Een veelvoorkomende procedure is het gebruik van een TCP-Keep-Alive. Deze procedure houdt de verbinding gedurende een langere periode actief. Zie voor meer informatie deze [.net-voor beelden](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Als Keep-Alive is ingeschakeld, worden pakketten verzonden tijdens peri Oden van inactiviteit op de verbinding. Deze Keep-Alive-pakketten zorgen ervoor dat de waarde voor de time-out voor inactiviteit nooit wordt bereikt en de verbinding gedurende een lange periode wordt bewaard.
 
@@ -113,7 +113,7 @@ De. cscfg-wijzigingen voor de time-outinstelling voor open bare Ip's zijn:
 
 ## <a name="rest-api-example"></a>REST API-voor beeld
 
-U kunt de time-out voor TCP-inactiviteit configureren met behulp van de Service Management-API. Zorg ervoor dat de `x-ms-version` header is ingesteld op versie `2014-06-01` of hoger. De configuratie van de opgegeven invoer eindpunten met gelijke taak verdeling bijwerken op alle virtuele machines in een implementatie.
+U kunt de time-out voor TCP-inactiviteit configureren met behulp van de Service Management-API. Zorg ervoor dat de `x-ms-version`-header is ingesteld op versie `2014-06-01` of hoger. De configuratie van de opgegeven invoer eindpunten met gelijke taak verdeling bijwerken op alle virtuele machines in een implementatie.
 
 ### <a name="request"></a>Aanvraag
 

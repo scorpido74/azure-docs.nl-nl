@@ -1,7 +1,7 @@
 ---
 title: De gegevens kwaliteit van de Custom Speech speech-service controleren
 titleSuffix: Azure Cognitive Services
-description: Custom Speech biedt hulp middelen waarmee u de herkennings kwaliteit van een model visueel kunt controleren door audio gegevens te vergelijken met het bijbehorende herkennings resultaat. Vanuit de Custom Speech Portal kunt u geüploade audio afspelen en bepalen of het gegeven herkennings resultaat juist is.  Met dit hulp programma kunt u snel de kwaliteit van het spraak-naar-tekst model van uw basis lijn of een getraind aangepast model controleren zonder dat u audio gegevens hoeft te transcriberen.
+description: Custom Speech biedt hulp middelen waarmee u de herkennings kwaliteit van een model visueel kunt controleren door audio gegevens te vergelijken met het bijbehorende herkennings resultaat. U kunt geüploade audio afspelen en bepalen of het gegeven herkennings resultaat juist is.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0b5f064204c5bca35ccb1a628cb06978180c318c
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: cf0deffb6fe484f7e3ee38b95f285bb4b7cc809c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801460"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072566"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech gegevens controleren
 
@@ -37,24 +37,24 @@ Volg deze instructies om een test te maken:
 3. Klik op **test toevoegen**.
 4. Selecteer **kwaliteit controleren (alleen audio gegevens)** . Geef de test een naam, beschrijving en selecteer uw audio gegevensset.
 5. Selecteer Maxi maal twee modellen die u wilt testen.
-6. Klik op **Create**.
+6. Klik op **Maken**.
 
 Nadat een test is gemaakt, kunt u de modellen naast elkaar vergelijken.
 
 ## <a name="side-by-side-model-comparisons"></a>Vergelijking van modellen naast elkaar
 
-Wanneer de test status is *geslaagd*, klikt u op de naam van het test item om de details van de test te bekijken. Deze detail pagina bevat een lijst met alle uitingen in uw gegevensset, waarmee de herkennings resultaten van de twee modellen naast de transcriptie van de verzonden gegevensset worden aangegeven.
+Wanneer de test status is _geslaagd_, klikt u op de naam van het test item om de details van de test te bekijken. Deze detail pagina bevat een lijst met alle uitingen in uw gegevensset, waarmee de herkennings resultaten van de twee modellen naast de transcriptie van de verzonden gegevensset worden aangegeven.
 
 Als u de gelijktijdige vergelijking wilt controleren, kunt u verschillende fout typen met inbegrip van invoegen, verwijderen en vervangen. Als u naar de audio luistert en de herkennings resultaten in elke kolom vergelijkt (met transcriptie en de resultaten van twee spraak-naar-tekst modellen), kunt u bepalen welk model aan uw behoeften voldoet en waar verbeteringen nodig zijn.
 
-Het inspecteren van kwaliteits testen is nuttig om te controleren of de kwaliteit van een spraakherkennings eindpunt voldoende is voor een toepassing.  Volg de instructies in [evalueren nauw keurigheid](how-to-custom-speech-evaluate-data.md)voor een objectieve maat regel voor nauw keurigheid, voor het vereisen van getranscribeerde audio.
+Het inspecteren van kwaliteits testen is nuttig om te controleren of de kwaliteit van een spraakherkennings eindpunt voldoende is voor een toepassing. Volg de instructies in [evalueren nauw keurigheid](how-to-custom-speech-evaluate-data.md)voor een objectieve maat regel voor nauw keurigheid, voor het vereisen van getranscribeerde audio.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uw gegevens evalueren](how-to-custom-speech-evaluate-data.md)
-* [Uw model trainen](how-to-custom-speech-train-model.md)
-* [Uw model implementeren](how-to-custom-speech-deploy-model.md)
+- [Uw gegevens evalueren](how-to-custom-speech-evaluate-data.md)
+- [Uw model trainen](how-to-custom-speech-train-model.md)
+- [Uw model implementeren](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Test gegevens voorbereiden voor Custom Speech](how-to-custom-speech-test-data.md)
+- [Test gegevens voorbereiden voor Custom Speech](how-to-custom-speech-test-data.md)

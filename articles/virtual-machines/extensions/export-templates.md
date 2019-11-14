@@ -1,5 +1,5 @@
 ---
-title: Azure-resource groepen exporteren die VM-extensies bevatten | Microsoft Docs
+title: Azure-resource groepen exporteren die VM-extensies bevatten
 description: Exporteer Resource Manager-sjablonen die de extensies van de virtuele machine bevatten.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 652ed732a7fe8f08e48aba6fc4bd1b52164d1fa0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169059"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073129"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Resource groepen exporteren die VM-extensies bevatten
 
@@ -78,7 +78,7 @@ Wanneer de resource groep wordt geëxporteerd, wordt er één sjabloon parameter
 
 Omdat voor elke beveiligde instelling een set vereiste eigenschappen is opgegeven, moet er een lijst met deze eigenschappen worden verzameld. Elke para meter van de configuratie van de beveiligde instellingen vindt u in het [Azure Resource Manager schema op github](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json). Dit schema bevat alleen de parameter sets voor de uitbrei dingen die worden vermeld in de sectie Overzicht van dit document. 
 
-Zoek in het schema opslagplaats de gewenste extensie, voor dit voor beeld `IaaSDiagnostics`. Zodra het uitbrei ding `protectedSettings` object is gevonden, noteert u de para meters. In het voor beeld van `IaasDiagnostic` de uitbrei ding zijn `storageAccountName`de para `storageAccountKey`meters `storageAccountEndPoint`vereist, en.
+Zoek in de schema opslagplaats de gewenste uitbrei ding, voor dit voor beeld `IaaSDiagnostics`. Zodra de uitbrei dingen `protectedSettings` object is gevonden, noteert u de para meters. In het voor beeld van de uitbrei ding `IaasDiagnostic` zijn de para meters vereist `storageAccountName`, `storageAccountKey`en `storageAccountEndPoint`.
 
 ```json
 "protectedSettings": {
@@ -104,9 +104,9 @@ Zoek in het schema opslagplaats de gewenste extensie, voor dit voor beeld `IaaSD
 
 ### <a name="step-3---re-create-the-protected-configuration"></a>Stap 3: de beveiligde configuratie opnieuw maken
 
-Zoek in het geëxporteerde sjabloon naar `protectedSettings` het geëxporteerde object met beveiligde instellingen en vervang dit door een nieuwe. met daarin de vereiste extensie parameters en een waarde voor elk item.
+Zoek op de geëxporteerde sjabloon naar `protectedSettings` en vervang het object met de geëxporteerde beveiligde instelling door een nieuwe, met daarin de vereiste extensie parameters en een waarde voor elk item.
 
-In het voor beeld van `IaasDiagnostic` de uitbrei ding ziet de configuratie van de nieuwe beveiligde instelling eruit als in het volgende voor beeld:
+In het voor beeld van de uitbrei ding `IaasDiagnostic`, ziet de configuratie van de nieuwe beveiligde instelling eruit als in het volgende voor beeld:
 
 ```json
 "protectedSettings": {
@@ -148,9 +148,9 @@ De uiteindelijke extensie resource ziet er ongeveer uit als in het volgende voor
 }
 ```
 
-Als u sjabloon parameters gebruikt om eigenschaps waarden op te geven, moeten deze worden gemaakt. Bij het maken van sjabloon parameters voor beveiligde instellings waarden, moet u `SecureString` ervoor zorgen dat gevoelige waarden worden beveiligd met behulp van het parameter type. Zie [Azure Resource Manager sjablonen ontwerpen](../../resource-group-authoring-templates.md)voor meer informatie over het gebruik van para meters.
+Als u sjabloon parameters gebruikt om eigenschaps waarden op te geven, moeten deze worden gemaakt. Bij het maken van sjabloon parameters voor beveiligde instellings waarden, moet u ervoor zorgen dat gevoelige waarden worden beveiligd met het parameter type `SecureString`. Zie [Azure Resource Manager sjablonen ontwerpen](../../resource-group-authoring-templates.md)voor meer informatie over het gebruik van para meters.
 
-In het voor beeld van `IaasDiagnostic` de uitbrei ding worden de volgende para meters gemaakt in de sectie para meters van de Resource Manager-sjabloon.
+In het voor beeld van de uitbrei ding `IaasDiagnostic` worden de volgende para meters gemaakt in de sectie para meters van de Resource Manager-sjabloon.
 
 ```json
 "storageAccountName": {

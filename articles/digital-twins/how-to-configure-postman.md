@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 5a357a246f2ba6c294b107e447218f386623f5c5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/13/2019
+ms.openlocfilehash: 8967b61115d2e2e644dea93cb236f8a7cdfcfcbd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014184"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072301"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postman configureren voor Azure Digital Apparaatdubbels
 
@@ -58,14 +58,9 @@ Configureer uw Azure Active Directory-app om de OAuth 2,0 impliciet-toekennings 
 
     [goed keuring van ![-beheerder](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
+1. Configureer een tweede **omleidings-URI** naar `https://www.getpostman.com/oauth2/callback`.
 
-1. Selecteer **manifest** om het toepassings manifest voor uw app te openen. Stel *oauth2AllowImplicitFlow* in op `true`.
-
-    [![Azure Active Directory impliciete stroom](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
-
-1. Configureer een **antwoord-URL** naar `https://www.getpostman.com/oauth2/callback`.
-
-    [![Azure Active Directory antwoord-URL](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
+    [een omleidings-URI voor postman ![toevoegen](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
 1. Kopieer de **toepassings-id** van uw Azure Active Directory-app en bewaar deze. Dit wordt gebruikt in de volgende stappen.
 
@@ -106,10 +101,6 @@ Postman instellen en configureren om een Azure Active Directory token te verkrij
     [![postman client-voor beeld](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. Selecteer een **aanvraag token**.
-
-    >[!TIP]
-    >Als het fout bericht ' OAuth 2 kan niet worden voltooid ' wordt weer gegeven, gaat u als volgt te werk:
-    > * Sluit de Postman en open deze opnieuw en probeer het opnieuw.
   
 1. Schuif omlaag en selecteer **token gebruiken**.
 
@@ -117,13 +108,13 @@ Postman instellen en configureren om een Azure Active Directory token te verkrij
 
 Na het volt ooien van de vorige stappen, moet u na het uitvoeren van een geverifieerde HTTP meerdelige POST-aanvraag:
 
-1. Voeg op het tabblad **koptekst** een sleutel inhoud van een HTTP-aanvraag header toe **-Type** met waarde `multipart/mixed`.
+1. Voeg op het tabblad **headers** het **inhouds type http-** aanvraag header toe met waarde `multipart/mixed`.
 
    [![inhoudtype multi part/Mixed](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Serialisatie van niet-tekst gegevens in bestanden. JSON-gegevens worden opgeslagen als een JSON-bestand.
 1. Selecteer `form-data`op het tabblad **hoofd tekst** . 
-1. Voeg elk bestand toe door een **sleutel** naam toe te wijzen en `file`te selecteren.
+1. Voeg elk bestand toe door een **sleutel** naam toe te wijzen en `File`te selecteren.
 1. Selecteer vervolgens elk bestand via de knop **bestand kiezen** .
 
    [![postman client-voor beeld](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
@@ -133,7 +124,7 @@ Na het volt ooien van de vorige stappen, moet u na het uitvoeren van een geverif
    > * U hoeft deze headers niet voor elk onderdeel op te geven.
    > * U moet `multipart/mixed` of een ander toepasselijk **type inhoud** voor de hele aanvraag selecteren.
 
-1. Selecteer ten slotte **verzenden** om uw multi part HTTP POST-aanvraag te verzenden.
+1. Selecteer ten slotte **verzenden** om uw multi part HTTP POST-aanvraag te verzenden. Een status code van `200` of `201` geeft een geslaagde aanvraag aan. U ziet ook het juiste antwoord bericht.
 
 ## <a name="next-steps"></a>Volgende stappen
 

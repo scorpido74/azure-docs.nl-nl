@@ -1,5 +1,5 @@
 ---
-title: Een onbeheerde installatie kopie maken van een gegeneraliseerde VM in azure | Microsoft Docs
+title: Een onbeheerde installatie kopie maken van een gegeneraliseerde VM in azure
 description: Maak een unmanged-installatie kopie van een gegeneraliseerde Windows-VM die u kunt gebruiken om meerdere exemplaren van een virtuele machine in azure te maken.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: b0277e07f67b3f9124dc0e27b20e3d49e0d2f6e9
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f25968fb74f0f10b1d498866c036dd04d4d5d134
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749208"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073380"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Een installatie kopie van een niet-beheerde virtuele machine maken op basis van een Azure-VM
 

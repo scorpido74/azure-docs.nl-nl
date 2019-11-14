@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: jgao
-ms.openlocfilehash: 8d2b818846eeae44ffe05b4546a333510c638621
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4c0fd0968ce52e50a9171eecb3dfaebd1e2a4c46
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196151"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075019"
 ---
 # <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Visual Studio code gebruiken om Azure Resource Manager sjablonen te maken
 
@@ -24,7 +24,7 @@ Visual Studio code ondersteunt MacOS, Windows en Linux.  Het kan worden geïnsta
 ## <a name="install-resource-manager-tools-extension"></a>De Resource Manager-Hulpprogram Ma's-extensie installeren
 
 1. Open Visual Studio Code.
-1. Selecteer **uitbrei dingen** in het menu links. Of Selecteer in het menu **weer gave** de optie uitbrei **dingen** om het deel venster uitbrei dingen te openen.
+1. Selecteer **uitbrei dingen** in het menu links. Of Selecteer in het menu **weer gave** de optie **uitbrei dingen** om het deel venster uitbrei dingen te openen.
 
     ![De extensie van Visual Studio code Resource Manager-Hulpprogram Ma's installeren](./media/resource-manager-tools-vs-code/resource-manager-visual-studio-code-tools-extension.png)
 1. Zoek naar **Resource Manager**.
@@ -70,7 +70,7 @@ Bij het aanwijzen van de functie namen, toont de uitbrei ding de hand tekening H
 
 ### <a name="go-to-definition-for-variable-and-parameter-references"></a>Ga naar definitie voor variabele-en parameter verwijzingen
 
-U kunt naar de definitie gaan met **CTRL + klikken**of met behulp van het context menu zoals weer gegeven in de scherm afbeelding: ![Visual Studio code Resource Manager-hulpprogram ma's uitbrei dingen naar definitie](./media/resource-manager-tools-vs-code/resource-manager-tools-extension-context-menu.png)
+U kunt naar de definitie gaan met **CTRL + klikken**of met behulp van het context menu, zoals wordt weer gegeven in de scherm afbeelding: ![Visual Studio code Resource Manager tools Extensions Ga naar definition](./media/resource-manager-tools-vs-code/resource-manager-tools-extension-context-menu.png)
 
 U kunt de definitie openen aan de zijkant met **CTRL + ALT + Klik**.
 
@@ -121,5 +121,5 @@ De waarschuwingen zijn onder andere:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure Resource Manager Overview](./resource-group-overview.md)voor meer informatie over Resource Manager en Resource Manager-sjablonen.
-- Als u een Snelstartgids wilt door lopen met Visual Studio code, [raadpleegt u Quick Start: Azure Resource Manager sjablonen maken met Visual Studio code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)
+- Zie [zelf studie: uw eerste Azure Resource Manager sjabloon maken en implementeren](template-tutorial-create-first-template.md)voor meer informatie over het maken van Azure Resource Manager sjablonen.
+- Als u een Snelstartgids wilt door lopen met Visual Studio code, raadpleegt u [Quick Start: Azure Resource Manager sjablonen maken met Visual Studio code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)

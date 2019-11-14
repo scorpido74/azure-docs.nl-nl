@@ -1,31 +1,24 @@
 ---
-title: Een aangepaste test-Azure-toepassing-gateway maken-Azure Portal | Microsoft Docs
+title: Een aangepaste test maken met behulp van de portal
+titleSuffix: Azure Application Gateway
 description: Meer informatie over het maken van een aangepaste test voor Application Gateway met behulp van de portal
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 33fd5564-43a7-4c54-a9ec-b1235f661f97
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/14/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 18799d928f7239eea311aa39159bfa0b5416ca1a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 15daf47a1cb44635932311e60b3690af9ff58677
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821076"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074611"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Een aangepaste test maken voor Application Gateway met behulp van de portal
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -41,7 +34,7 @@ Tests worden in een proces in twee stappen geconfigureerd via de portal. De eers
 
 ### <a name="createprobe"></a>Test eigenschappen invoeren
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich aanmelden voor een [gratis proef versie van één maand](https://azure.microsoft.com/free)
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich aanmelden voor een [gratis proef versie van één maand](https://azure.microsoft.com/free)
 
 2. Klik in het deel venster favorieten Azure Portal op alle resources. Klik in de Blade alle resources op de toepassings gateway. Als het abonnement dat u hebt geselecteerd, al verschillende resources heeft, kunt u partners.contoso.net invoeren in de filter op naam... voor eenvoudige toegang tot de toepassingsgateway.
 
@@ -90,7 +83,7 @@ Tests worden in een proces in twee stappen geconfigureerd via de portal. De eers
 
 ### <a name="createprobe"></a>De test maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich aanmelden voor een [gratis proef versie van één maand](https://azure.microsoft.com/free)
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich aanmelden voor een [gratis proef versie van één maand](https://azure.microsoft.com/free)
 
 2. Selecteer **alle resources**in het deel venster favorieten Azure Portal. Selecteer de toepassings gateway op de pagina **alle resources** . Als het abonnement dat u hebt geselecteerd, al verschillende resources heeft, kunt u partners.contoso.net invoeren in de filter op naam... voor eenvoudige toegang tot de toepassingsgateway.
 

@@ -1,21 +1,22 @@
 ---
-title: 'Snelstart: webverkeer omleiden met Azure Application Gateway - Azure PowerShell | Microsoft Docs'
+title: 'Quick Start: direct webverkeer met Power shell'
+titleSuffix: Azure Application Gateway
 description: Meer informatie over het gebruik van Azure PowerShell voor het maken van een Azure-toepassing gateway waarmee webverkeer wordt doorgestuurd naar virtuele machines in een back-end-groep.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 07/17/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a55f602833cacd27cd82adafd888c67c544564c2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: d5b0ebc2d1b64dd4be677c38de30af7f7a954637
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359971"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075105"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>Quickstart: Webverkeer omleiden met Azure Application Gateway - Azure PowerShell
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Snelstartgids: webverkeer omleiden met Azure-toepassing gateway met behulp van Azure PowerShell
 
 In deze Quick start ziet u hoe u Azure PowerShell kunt gebruiken om snel een toepassings gateway te maken.  Nadat u de toepassings gateway hebt gemaakt, test u deze om er zeker van te zijn dat deze correct werkt. Met Azure-toepassing gateway stuurt u het webverkeer van uw toepassing naar specifieke bronnen door listeners toe te wijzen aan poorten, regels te maken en resources toe te voegen aan een back-end-groep. Voor het gemak maakt dit artikel gebruik van een eenvoudige configuratie met een openbaar front-end-IP, een basis-listener voor het hosten van één site op deze toepassings gateway, twee virtuele machines die worden gebruikt voor de back-end-pool en een regel voor basis routering van aanvragen.
 
@@ -34,7 +35,7 @@ Als u ervoor kiest om Azure PowerShell lokaal te installeren en te gebruiken, mo
 1. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). 
 2. Voer `Login-AzAccount` uit om een verbinding met Azure tot stand te brengen.
 
-### <a name="resource-group"></a>Resource group
+### <a name="resource-group"></a>Resourcegroep
 
 In Azure kunt u verwante resources toewijzen aan een resourcegroep. U kunt een bestaande resource groep gebruiken of een nieuwe maken. In dit voor beeld maakt u een nieuwe resource groep met de cmdlet [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) als volgt: 
 

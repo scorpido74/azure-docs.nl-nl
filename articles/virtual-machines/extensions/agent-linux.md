@@ -1,5 +1,5 @@
 ---
-title: Overzicht van Azure Linux VM-agent | Microsoft Docs
+title: Overzicht van Azure Linux VM-agent
 description: Meer informatie over het installeren en configureren van Linux-agent (waagent) voor het beheren van de interactie van uw virtuele machine met de Azure Fabric-controller.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8bc28c7454296f32dda09894ad3dca2f4fae99b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169159"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073858"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Meer informatie over het gebruik van de Azure Linux-agent
 
@@ -48,7 +48,7 @@ De Microsoft Azure Linux-agent (waagent) beheert Linux & FreeBSD-inrichting en V
   * Zorgt voor de stabiliteit van de netwerk interface naam
 * **Kernel**
   
-  * Hiermee configureert u virtuele NUMA (uitschakelen voor kernel`2.6.37`<)
+  * Hiermee configureert u virtuele NUMA (uitschakelen voor kernel <`2.6.37`)
   * Gebruikt Hyper-V entropie voor/dev/random
   * Hiermee configureert u SCSI-time-outs voor het hoofd apparaat (dit kan extern zijn)
 * **Diagnostics**
@@ -60,7 +60,7 @@ De Microsoft Azure Linux-agent (waagent) beheert Linux & FreeBSD-inrichting en V
 * **VM-extensie**
   
   * Het inbrengen van het onderdeel dat is geschreven door micro soft en partners in Linux VM (IaaS) om software-en configuratie automatisering in te scha kelen
-  * VM-extensie referentie-implementatie op[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * Implementatie van VM-extensie referentie op [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Communicatie
 De informatie stroom van het platform naar de agent vindt plaats via twee kanalen:
@@ -72,7 +72,7 @@ De informatie stroom van het platform naar de agent vindt plaats via twee kanale
 De volgende systemen zijn getest en bekend bij het werken met de Azure Linux-agent:
 
 > [!NOTE]
-> Deze lijst kan afwijken van de officiële lijst met ondersteunde systemen op het Microsoft Azure-platform, zoals hier wordt beschreven:[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> Deze lijst kan afwijken van de officiële lijst met ondersteunde systemen op het Microsoft Azure-platform, zoals hier wordt beschreven: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -100,19 +100,19 @@ De Linux-agent is afhankelijk van sommige systeem pakketten om goed te kunnen fu
 * Netwerk hulpprogramma's: IP-route
 * Kernel-ondersteuning voor het koppelen van UDF-bestandssysteem.
 
-## <a name="installation"></a>Installatie
+## <a name="installation"></a>Installeren
 Installatie met behulp van een RPM-of een DEB-pakket uit de opslag plaats van uw distributie pakket is de voorkeurs methode voor het installeren en upgraden van de Azure Linux-agent. Alle [gewaarmerkte distributie providers](../linux/endorsed-distros.md) integreren het Azure Linux-agent pakket in hun installatie kopieën en opslag plaatsen.
 
 Raadpleeg de documentatie in de [Azure Linux-agent opslag plaats op github](https://github.com/Azure/WALinuxAgent) voor geavanceerde installatie opties, zoals het installeren van bron of naar aangepaste locaties of voor voegsels.
 
 ## <a name="command-line-options"></a>Opdracht regel opties
 ### <a name="flags"></a>Vlaggen
-* uitgebreide Uitgebreider van opgegeven opdracht verhogen
-* verkopers Interactieve bevestiging voor sommige opdrachten overs Laan
+* uitgebreid: Verhoog de uitgebreide waarde van de opgegeven opdracht
+* geforceerd: interactieve bevestiging voor sommige opdrachten overs Laan
 
 ### <a name="commands"></a>Opdrachten
-* Help: Een lijst met de ondersteunde opdrachten en vlaggen.
-* inrichting Probeer het systeem op te schonen en maak het geschikt voor opnieuw inrichten. De volgende bewerking wordt verwijderd:
+* Help: geeft een lijst van de ondersteunde opdrachten en vlaggen.
+* inrichting opheffen: Probeer het systeem op te schonen en maak het geschikt voor opnieuw inrichten. De volgende bewerking wordt verwijderd:
   
   * Alle SSH-host-sleutels (indien ingericht. RegenerateSshHostKeyPair is ' y ' in het configuratie bestand)
   * Naam server-configuratie in/etc/resolv.conf
@@ -125,11 +125,11 @@ Raadpleeg de documentatie in de [Azure Linux-agent opslag plaats op github](http
 > 
 > 
 
-* inrichting opheffen + gebruiker: Voert de volledige inrichting uit (boven) en verwijdert ook de laatste ingerichte gebruikers account (verkregen door/var/lib/waagent) en de bijbehorende gegevens. Deze para meter wordt gebruikt bij het ongedaan maken van de inrichting van een installatie kopie die eerder is ingericht op Azure, zodat deze kan worden vastgelegd en opnieuw kan worden gebruikt.
-* Versie: Hiermee wordt de versie van waagent weer gegeven
-* serialconsole: Hiermee configureert u GRUB om ttyS0 (de eerste seriële poort) als opstart console te markeren. Dit zorgt ervoor dat de opstart chassis-logboeken van de kernel worden verzonden naar de seriële poort en beschikbaar worden gesteld voor fout opsporing.
-* daemon Voer waagent uit als een daemon om de interactie met het platform te beheren. Dit argument is opgegeven voor waagent in het waagent init-script.
-* starten Waagent uitvoeren als een achtergrond proces
+* inrichting opheffen + gebruiker: voert de volledige inrichting uit (boven) en verwijdert ook de laatste ingerichte gebruikers account (verkregen door/var/lib/waagent) en de bijbehorende gegevens. Deze para meter wordt gebruikt bij het ongedaan maken van de inrichting van een installatie kopie die eerder is ingericht op Azure, zodat deze kan worden vastgelegd en opnieuw kan worden gebruikt.
+* versie: geeft de versie van waagent
+* serialconsole: configureert GRUB om ttyS0 (de eerste seriële poort) als opstart console te markeren. Dit zorgt ervoor dat de opstart chassis-logboeken van de kernel worden verzonden naar de seriële poort en beschikbaar worden gesteld voor fout opsporing.
+* daemon: Voer waagent uit als een daemon om de interactie met het platform te beheren. Dit argument is opgegeven voor waagent in het waagent init-script.
+* starten: Voer waagent uit als achtergrond proces
 
 ## <a name="configuration"></a>Configuratie
 Een configuratie bestand (/etc/waagent.conf) regelt de acties van waagent. Hieronder ziet u een voor beeld van een configuratie bestand:
@@ -170,7 +170,7 @@ Default: y
 Hiermee kan de gebruiker de inrichtings functionaliteit in de agent in-of uitschakelen. Geldige waarden zijn "y" of "n". Als het inrichten is uitgeschakeld, worden de SSH-host en de gebruikers sleutels in de installatie kopie behouden en wordt de configuratie die is opgegeven in de Azure-inrichtings-API genegeerd.
 
 > [!NOTE]
-> De `Provisioning.Enabled` para meter wordt standaard ingesteld op ' n ' op Ubuntu Cloud-installatie kopieën die gebruikmaken van Cloud-init voor het inrichten.
+> De para meter `Provisioning.Enabled` wordt standaard ingesteld op ' n ' voor Ubuntu-Cloud installatie kopieën die gebruikmaken van Cloud-init voor het inrichten.
 > 
 > 
 
@@ -343,6 +343,6 @@ Ubuntu Cloud-installatie kopieën maken gebruik van [Cloud-init](https://launchp
 
 * Raadpleeg de volgende bronnen voor meer informatie over het configureren van het koppel punt voor de bron schijf en het wisselen van ruimte op Ubuntu Cloud installatie kopieën tijdens het inrichten:
   
-  * [Ubuntu Wiki: Swap partities configureren](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu-wiki: swap-partities configureren](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Aangepaste gegevens injecteren in een virtuele Azure-machine](../windows/classic/inject-custom-data.md)
 

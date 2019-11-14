@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: Een load balancer van het type Basic maken - Azure PowerShell'
-titlesuffix: Azure Load Balancer
-description: In deze snelstart vindt u meer informatie over het maken van een Basic Load Balancer met behulp PowerShell
+title: 'Quick Start: een basis Load Balancer-Azure PowerShell maken'
+titleSuffix: Azure Load Balancer
+description: Met deze Snelstartgids kunt u aan de slag gaan met het maken van een basis Load Balancer met behulp van Power shell.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 378904b139edb7fe5d7c4376102ca6b153d84fb6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 0743c1aff07014e83d72c43bdf85ad2d36f31d0a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129081"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075989"
 ---
 # <a name="get-started"></a>Snelstart: Een openbare load balancer maken met behulp van Azure PowerShell
 
@@ -57,9 +57,9 @@ $publicIP = New-AzPublicIpAddress `
 
 In deze sectie configureert u het front-end-IP-adres en de back-endadresgroep voor de load balancer en maakt u vervolgens de Basic Load Balancer.
 
-### <a name="create-front-end-ip"></a>Het front-end-IP-adres maken
+### <a name="create-front-end-ip"></a>Maak een front-end IP-adres
 
-Maak een front-end-IP-adres met [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). In het volgende voorbeeld wordt een front-end-IP-configuratie met de naam *myFrontEnd* gemaakt en wordt het adres *myPublicIP* eraan gekoppeld:
+Maak een front-end IP-adres met [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). In het volgende voorbeeld wordt een front-end-IP-configuratie met de naam *myFrontEnd* gemaakt en wordt het adres *myPublicIP* eraan gekoppeld:
 
 ```azurepowershell-interactive
 $frontendIP = New-AzLoadBalancerFrontendIpConfig `
@@ -170,7 +170,7 @@ $vnet = New-AzVirtualNetwork `
 
 ### <a name="create-network-security-group"></a>Netwerkbeveiligingsgroep maken
 
-Maak een netwerkbeveiligingsgroep om binnenkomende verbindingen met uw virtuele netwerk te definiëren.
+Maak een netwerkbeveiligingsgroep om de binnenkomende verbindingen met uw virtuele netwerk te definiëren.
 
 #### <a name="create-a-network-security-group-rule-for-port-3389"></a>Een netwerkbeveiligingsgroepsregel maken voor poort 3389
 
@@ -268,7 +268,7 @@ Stel een beheerdersnaam en -wachtwoord voor de VM’s in met [Get-Credential](ht
 $cred = Get-Credential
 ```
 
-Nu kunt u de VM’s maken met [New-AzVM](/powershell/module/az.compute/new-azvm). In het volgende voorbeeld worden twee VM's en de vereiste onderdelen van het virtuele netwerk gemaakt als deze nog niet bestaan. In dit voor beeld worden de Nic's (*VM1* en *VM2*) die zijn gemaakt in de vorige stap, automatisch toegewezen aan virtuele machines *VM1* en *VM2* , aangezien ze identieke namen hebben en hetzelfde virtuele netwerk (*myVnet*) toegewezen hebben en subnet (*mySubnet*). Omdat de Nic's zijn gekoppeld aan de back-end-groep van de load balancer, worden de Vm's bovendien automatisch toegevoegd aan de back-end-groep.
+Nu kunt u de VM’s maken met [New-AzVM](/powershell/module/az.compute/new-azvm). In het volgende voorbeeld worden twee VM's en de vereiste onderdelen van het virtuele netwerk gemaakt als deze nog niet bestaan. In dit voor beeld worden de Nic's (*VM1* en *VM2*) die zijn gemaakt in de vorige stap, automatisch toegewezen aan virtuele machines *VM1* en *VM2* , aangezien ze identieke namen hebben en hetzelfde virtuele netwerk (*myVnet*) en subnet (*mySubnet*) hebben toegewezen. Omdat de Nic's zijn gekoppeld aan de back-end-groep van de load balancer, worden de Vm's bovendien automatisch toegevoegd aan de back-end-groep.
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -319,7 +319,7 @@ Installeer IIS als volgt met een aangepaste webpagina op beide back-end-VM's:
           Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
     ```
 5. Sluit de RDP-verbinding met *myVM1*.
-6. **Maak een RDP-verbinding op uw lokale machine** met *myVM2* door `mstsc /v:PublicIpAddress:4222` de opdracht uit te voeren en herhaal stap 4 voor *VM2*.
+6. **Maak een RDP-verbinding op uw lokale machine** met *myVM2* door `mstsc /v:PublicIpAddress:4222` opdracht uit te voeren en herhaal stap 4 voor *VM2*.
 
 ## <a name="test-load-balancer"></a>Load balancer testen
 Haal het openbare IP-adres van uw load balancer op met [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). In het volgende voorbeeld wordt het IP-adres opgehaald voor het eerder gemaakte *myPublicIP*:

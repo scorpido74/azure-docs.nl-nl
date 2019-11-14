@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: 049b09f7927da2cc841130a0adeaa90768037db8
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 756fd720b468681b8ea31dc867cfdb6e44c0bb0a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903213"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074996"
 ---
 # <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services agent-back-ups beheren met behulp van de Azure Backup-Service
 
@@ -209,4 +209,4 @@ Als u de beveiliging hebt gestopt terwijl u de gegevens behoudt en hebt besloten
 ## <a name="next-steps"></a>Volgende stappen
 
 - Raadpleeg de [ondersteunings matrix voor Mars](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)voor meer informatie over ondersteunde scenario's en beperkingen.
-- Meer informatie over het [Bewaar gedrag van ad hoc-back-upbeleid](backup-configure-vault.md#ad-hoc-backup-policy-retention-behavior).
+- Meer informatie over het [Bewaar gedrag van back-upbeleid op aanvraag](backup-configure-vault.md#on-demand-backup-policy-retention-behavior).

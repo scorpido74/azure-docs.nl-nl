@@ -1,7 +1,7 @@
 ---
-title: Een Azure-load balancer maken met behulp van de REST API
-titlesuffix: Azure Load Balancer
-description: Informatie over het maken van een Azure Load Balancer met behulp van REST-API.
+title: Een load balancer maken met behulp van REST API
+titleSuffix: Azure Load Balancer
+description: In dit artikel leert u hoe u een Azure Load Balancer maakt met behulp van REST API.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,32 +13,32 @@ ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: ae8fb4494d27d0c145963c9b32757bdb802e0cc7
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b8acf1faff17f657999769216f71cfb5fa6e3181
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275547"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077082"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Een Azure Basic Load Balancer maken met REST-API
 
-Een Azure Load Balancer verdeelt nieuwe binnenkomende stromen die op de load balancer-frontend naar de exemplaren van de back-end-groep op basis van regels en tests binnenkomen. De Load Balancer is beschikbaar in twee Sku's: Basic en Standard. Aan het verschil tussen de twee versies van de SKU [Load Balancer-SKU vergelijkingen](load-balancer-overview.md#skus).
+Een Azure Load Balancer verdeelt nieuwe binnenkomende stromen die op de load balancer-frontend naar de exemplaren van de back-end-groep op basis van regels en tests binnenkomen. De Load Balancer is beschikbaar in twee SKU's: Basic en Standard. Aan het verschil tussen de twee versies van de SKU [Load Balancer-SKU vergelijkingen](load-balancer-overview.md#skus).
  
 Deze instructies wordt beschreven hoe het maken van een Azure Basic Load Balancer met [REST API van Azure](/rest/api/azure/) om te helpen bij de inkomende saldoaanvraag op meerdere virtuele machines binnen een virtueel Azure-netwerk. Volledige naslaginformatie en extra voorbeelden zijn beschikbaar in de [naslaginformatie over de Azure Load Balancer REST](/rest/api/load-balancer/).
  
-## <a name="build-the-request"></a>De aanvraag voor het samenstellen
+## <a name="build-the-request"></a>De aanvraag maken
 Gebruik de volgende HTTP PUT-aanvraag te maken van een nieuwe Azure Basic Load Balancer.
  ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}?api-version=2018-02-01
   ```
 ### <a name="uri-parameters"></a>URI-parameters
 
-|Name  |In  |Vereist |Type |Description |
+|Naam  |In  |Vereist |Type |Beschrijving |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  path       |  True       |   string      |  De referenties van het abonnement die unieke identificatie van de Microsoft Azure-abonnement. De abonnements-ID maakt deel uit van de URI voor elke Serviceaanroep.      |
-|resourceGroupName     |     path    | True        |  string       |   De naam van de resourcegroep.     |
-|loadBalancerName     |  path       |      True   |    string     |    De naam van de load balancer.    |
-|api-version    |   query     |  True       |     string    |  Client-API-versie.      |
+|subscriptionId   |  pad       |  True       |   tekenreeks      |  De referenties van het abonnement die unieke identificatie van de Microsoft Azure-abonnement. De abonnements-ID maakt deel uit van de URI voor elke Serviceaanroep.      |
+|resourceGroupName     |     pad    | True        |  tekenreeks       |   De naam van de resourcegroep.     |
+|loadBalancerName     |  pad       |      True   |    tekenreeks     |    De naam van de load balancer.    |
+|api-version    |   query     |  True       |     tekenreeks    |  Client-API-versie.      |
 
 
 
@@ -46,12 +46,12 @@ Gebruik de volgende HTTP PUT-aanvraag te maken van een nieuwe Azure Basic Load B
 
 Is de enige vereiste parameter `location`. Als u geen definieert de *SKU* versie, een Basic Load Balancer wordt standaard gemaakt.  Gebruik [optionele parameters](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body) om aan te passen van de load balancer.
 
-| Name | Type | Description |
+| Naam | Type | Beschrijving |
 | :--- | :--- | :---------- |
-| location | string | Resourcelocatie. Een huidige lijst met locaties met behulp van de [lijst met locaties](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) bewerking. |
+| locatie | tekenreeks | Resourcelocatie. Een huidige lijst met locaties met behulp van de [lijst met locaties](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) bewerking. |
 
 
-## <a name="example-create-and-update-a-basic-load-balancer"></a>Voorbeeld: Een basis Load Balancer maken en bijwerken
+## <a name="example-create-and-update-a-basic-load-balancer"></a>Voorbeeld: Maken en bijwerken van een Basic Load Balancer
 
 In dit voorbeeld moet u eerst een Basic Load Balancer, samen met de daarbij behorende bronnen maken. Vervolgens configureert u de load balancer-resources die zijn een front-end-IP-configuratie, een back-endadresgroep, een load balancing-regel, een statustest en een binnenkomende NAT-regel.
 

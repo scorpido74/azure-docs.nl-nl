@@ -1,7 +1,7 @@
 ---
 title: Beschik baarheid van scenario-spraak service
 titleSuffix: Azure Cognitive Services
-description: Verwijzing voor regio's van de spraak service.
+description: De Speech SDK biedt een groot aantal scenario's met verschillende programmeer talen en omgevingen. Niet alle scenario's zijn nog beschikbaar in alle programmeer talen of in alle omgevingen. Hieronder vindt u de beschik baarheid van elk scenario.
 services: cognitive-services
 author: chrisbasoglu
 manager: xdh
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 6ec31df7cef8391728eae7845f64f55bb1c6466a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 02632e5bc84c7406ce3a42eb4be71cf6aaf75c15
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491346"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075761"
 ---
 # <a name="scenario-availability"></a>Beschik baarheid scenario
 
-De Speech Service SDK bevat verschillende scenario's voor een groot aantal programmeer talen en omgevingen.  Niet alle scenario's zijn momenteel beschikbaar in alle programmeer talen of in alle omgevingen.  Hieronder vindt u de beschik baarheid van elk scenario.
+De Speech SDK biedt een groot aantal scenario's met verschillende programmeer talen en omgevingen. Niet alle scenario's zijn nog beschikbaar in alle programmeer talen of in alle omgevingen. Hieronder vindt u de beschik baarheid van elk scenario.
 
 - **Spraak herkenning (SR), woordgroepen lijst, intentie, vertaling en on-premises containers**
   - Alle programmeer talen/omgevingen met een pijl koppeling <img src="media/index/link.jpg" height="15" width="15"></img> in de tabel Quick Start [hier](https://aka.ms/csspeech).

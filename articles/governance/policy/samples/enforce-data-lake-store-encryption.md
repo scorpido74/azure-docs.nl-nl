@@ -1,17 +1,14 @@
 ---
 title: 'Voorbeeld: versleuteling vereisen voor Data Lake Store'
 description: Deze voorbeeldbeleidsdefinitie vereist dat een Data Lake Store-versleuteling is ingeschakeld.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: 9cee9f2d94f822679acee0813471e271a38a38e3
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: a8ed66e9b07e1fc15c8a1a3c8c33f0e218eb62b3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977196"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74070662"
 ---
 # <a name="sample---require-data-lake-store-encryption"></a>Voorbeeld - Data Lake Store-versleuteling vereisen
 

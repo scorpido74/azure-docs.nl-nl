@@ -1,5 +1,5 @@
 ---
-title: Uitbrei ding van NVIDIA GPU-stuur programma-Azure Windows-Vm's | Microsoft Docs
+title: Uitbrei ding van NVIDIA GPU-stuur programma-Azure Windows-Vm's
 description: Microsoft Azure-uitbrei ding voor het installeren van NVIDIA GPU-Stuur Programma's op virtuele machines met N-serie Compute die Windows uitvoeren.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
-ms.openlocfilehash: 13a7189d9758fd6d1e7daac38e948e1b482a019b
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: c388f433327b5328483f10fbef637a6fdfd08832
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686780"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073024"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Uitbrei ding voor NVIDIA GPU-stuur programma voor Windows
 
@@ -35,11 +35,11 @@ Er is ook een uitbrei ding beschikbaar om NVIDIA GPU-Stuur Programma's te instal
 
 Deze extensie ondersteunt de volgende OSs:
 
-| Distributie | Version |
+| Distributie | Versie |
 |---|---|
-| Windows 10 | Core |
-| Windows Server 2016 | Core |
-| Windows Server 2012 R2 | Core |
+| Windows 10 | Kern |
+| Windows Server 2016 | Kern |
+| Windows Server 2012 R2 | Kern |
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
@@ -69,13 +69,13 @@ In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Eigenschappen
 
-| Name | Waarde / voorbeeld | Gegevenstype |
+| Naam | Waarde / voorbeeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| type | NvidiaGpuDriverWindows | string |
+| publisher | Microsoft.HpcCompute | tekenreeks |
+| type | NvidiaGpuDriverWindows | tekenreeks |
 | typeHandlerVersion | 1.2 | int |
 
 
@@ -163,7 +163,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | :---: | --- | --- |
 | 0 | Bewerking is voltooid |
 | 1 | De bewerking is voltooid. Opnieuw opstarten is vereist. |
-| 100 | De bewerking wordt niet ondersteund of kan niet worden voltooid. | Mogelijke oorzaken: De Power shell-versie wordt niet ondersteund, de VM-grootte is geen VM van de N-serie, fout bij het downloaden van gegevens. Controleer de logboek bestanden om de oorzaak van de fout te achterhalen. |
+| 100 | De bewerking wordt niet ondersteund of kan niet worden voltooid. | Mogelijke oorzaken: de Power shell-versie wordt niet ondersteund, de VM-grootte is geen VM van de N-serie, fout bij het downloaden van gegevens. Controleer de logboek bestanden om de oorzaak van de fout te achterhalen. |
 | 240, 840 | Time-out van bewerking. | Probeer het opnieuw. |
 | -1 | Uitzonde ring opgetreden. | Controleer de logboek bestanden om de oorzaak van de uitzonde ring te bepalen. |
 | -5x | De bewerking is onderbroken omdat opnieuw opstarten in behandeling is. | Start de VM opnieuw op. De installatie wordt voortgezet nadat de computer opnieuw is opgestart. Uninstall moet hand matig worden aangeroepen. |

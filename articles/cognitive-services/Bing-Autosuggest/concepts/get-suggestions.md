@@ -1,7 +1,7 @@
 ---
 title: Zoektermen voorstellen met de Bing Automatische suggesties-API
 titleSuffix: Azure Cognitive Services
-description: Lees hier hoe u de Automatische suggestie-API voor Bing gebruikt.
+description: In dit artikel wordt het concept beschreven van het Voorst Ellen van query termen met behulp van de Automatische suggestie-API voor Bing en de impact van de query lengte op relevantie.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: cee4f68b734f0c2bec9fd629986ba7f6559f207e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 060dbd29ee4ddb78e8ae9b2ed4e7814da3c4eebf
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882451"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072890"
 ---
 # <a name="suggesting-query-terms"></a>Querytermen voorstellen
 

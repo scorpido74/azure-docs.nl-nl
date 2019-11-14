@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2b951c6660143b1bd2f6502a5441aec3ba8d71e1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e8f162b9dc84b863c54d92313307ef4abca76ebb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792844"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074225"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Op schaal controleren met behulp van Azure Monitor
 
@@ -209,7 +209,7 @@ De standaard grafieken bieden u Kusto query's voor basis scenario's waarop u waa
 De diagnostische gegevens van de kluis worden naar de Log Analytics-werk ruimte gepompt met enige vertraging. Elke gebeurtenis arriveert in de Log Analytics werk ruimte van *20 tot 30 minuten* nadat deze is gepusht vanuit de Recovery Services kluis. Hier vindt u meer informatie over de vertraging:
 
 - In alle oplossingen worden de ingebouwde waarschuwingen van de back-upservice gepusht zodra ze zijn gemaakt. Deze worden doorgaans weer gegeven in de Log Analytics-werk ruimte na 20 tot 30 minuten.
-- In alle oplossingen worden ad hoc-back-uptaken en herstel taken gepusht zodra deze zijn *voltooid*.
+- In alle oplossingen worden back-uptaken op aanvraag en herstel taken gepusht zodra deze zijn *voltooid*.
 - Voor alle oplossingen behalve SQL backup worden geplande back-uptaken gepusht zodra deze zijn *voltooid*.
 - Voor SQL backup, omdat logboek back-ups om de 15 minuten kunnen worden uitgevoerd, worden de gegevens voor alle voltooide geplande back-uptaken, inclusief logboeken, batches en elke 6 uur gepusht.
 - Voor alle oplossingen worden andere gegevens, zoals het back-upitem, het beleid, de herstel punten, de opslag, enzovoort, ten minste *één keer per dag* gepusht.

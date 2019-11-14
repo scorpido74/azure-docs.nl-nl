@@ -1,7 +1,7 @@
 ---
 title: DHCPv6 configureren voor virtuele Linux-machines
 titlesuffix: Azure Load Balancer
-description: Klik hier voor meer informatie over het DHCPv6 configureren voor virtuele Linux-machines.
+description: In dit artikel vindt u informatie over het configureren van DHCPv6 voor Linux-Vm's.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: 3e987b6718ead6b7014ec302d1a186dabef11126
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 1eea6d71b06bac47dcc4fdca9302ee937e0fd54d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274914"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077034"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>DHCPv6 configureren voor virtuele Linux-machines
 
@@ -64,7 +64,7 @@ Neem een *dhcp6: True* -instructie op voor elke Ethernet-interface in uw configu
             eno1:
               dhcp6: true
 
-Tijdens het vroegtijdig opstarten schrijft het netplan ' netwerk renderer ' de configuratie naar/run van het beheer van apparaten naar de opgegeven netwerk-daemon voor naslag informatie over netplan. https://netplan.io/reference Zie.
+Tijdens het vroegtijdig opstarten schrijft het netplan ' netwerk renderer ' de configuratie naar/run van het beheer van apparaten naar de opgegeven netwerk-daemon voor naslag informatie over netplan, zie https://netplan.io/reference.
  
 ## <a name="debian"></a>Debian
 

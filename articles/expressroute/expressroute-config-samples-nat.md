@@ -1,5 +1,5 @@
 ---
-title: Voorbeelden van routerconfiguratie - NAT - Azure ExpressRoute | Microsoft Docs
+title: 'Azure ExpressRoute: voor beelden van router configuratie-NAT'
 description: Deze pagina bevat voorbeelden van routerconfiguratie voor Cisco en Juniper-routers.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: ccee0f0c01119ebbfb5ba9c5980ee006a555a399
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367605"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072116"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Voorbeelden van routerconfiguratie instellen en beheren van NAT
 
@@ -83,7 +82,7 @@ NAT-opdrachten:
 
 
 ## <a name="juniper-srx-series-routers"></a>Juniper SRX reeks routers
-### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Redundante Ethernet-interfaces voor het cluster maken
+### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. redundante Ethernet-interfaces maken voor het cluster
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -115,7 +114,7 @@ NAT-opdrachten:
     }
 
 
-### <a name="2-create-two-security-zones"></a>2. Twee beveiligingszones maken
+### <a name="2-create-two-security-zones"></a>2. Maak twee beveiligings zones
 * Zone voor het interne netwerk en Untrust Zone voor netwerk extern gerichte Randrouters vertrouwen
 * Juiste interfaces toewijzen aan de zones
 * Op de interfaces-services toestaan
@@ -123,7 +122,7 @@ NAT-opdrachten:
     beveiliging {zones {beveiligingszone vertrouwensrelatie {-inkomende-hostverkeer {-systeemservices {ping;                   } protocollen {bgp;                   interfaces}} {reth0.100;               }}-beveiligingszone Untrust {-inkomende-hostverkeer {-systeemservices {ping;                   } protocollen {bgp;                   interfaces}} {reth1.100;               }           }       }   }
 
 
-### <a name="3-create-security-policies-between-zones"></a>3. Beveiligingsbeleid tussen zones maken
+### <a name="3-create-security-policies-between-zones"></a>3. beveiligings beleidsregels maken tussen zones
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -213,10 +212,10 @@ NAT-opdrachten:
            }
        }
 
-### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. BGP voor het adverteren van selectieve voorvoegsels in beide richtingen configureren
-Kijk voor voorbeelden in [Routing voorbeelden](expressroute-config-samples-routing.md) pagina.
+### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Configureer BGP voor het adverteren van selectieve voor voegsels in elke richting
+Raadpleeg voor beelden op de pagina [routerings configuratie voorbeelden](expressroute-config-samples-routing.md) .
 
-### <a name="6-create-policies"></a>6. Beleidsregels maken
+### <a name="6-create-policies"></a>6. beleids regels maken
     routing-options {
                   autonomous-system <Customer-ASN>;
     }

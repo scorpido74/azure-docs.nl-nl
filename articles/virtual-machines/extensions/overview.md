@@ -1,5 +1,5 @@
 ---
-title: Extensies en functies van virtuele Azure-machines | Microsoft Docs
+title: Extensies en functies van virtuele Azure-machines
 description: Meer informatie over Azure VM-extensies en hoe u deze kunt gebruiken met Azure virtual machines
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/12/2019
 ms.author: akjosh
-ms.openlocfilehash: deb49267a262705370e48e150cc5ed6c4dc04247
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: bf17f499c1e8339a1e9abb13cffd5e35c390f564
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168882"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072982"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Extensies en functies van virtuele Azure-machines
 Azure virtual machine-uitbrei dingen zijn kleine toepassingen die configuratie-en automatiserings taken na de implementatie bieden op Azure-Vm's. u kunt bestaande installatie kopieën gebruiken en deze vervolgens aanpassen als onderdeel van uw implementaties, zodat u het bedrijf van aangepaste installatie kopie maken.

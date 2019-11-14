@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3c451d1bd77fa1cec85a9d42b5d4d3d819b2d19a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 7339ef136639ceaaacb1c416c147155c7ce659f8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210356"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074164"
 ---
 # <a name="recovery-services-vaults-overview"></a>Overzicht van Recovery Services kluizen
 
@@ -26,17 +26,18 @@ Als u nog steeds back-upkluizen hebt, worden deze automatisch bijgewerkt naar Re
 
 Recovery Services kluizen zijn gebaseerd op het Azure Resource Manager model van Azure, terwijl back-upkluizen zijn gebaseerd op het Azure Service Manager model. Wanneer u een back-upkluis bijwerkt naar een Recovery Services kluis, blijven de back-upgegevens intact tijdens en na het upgrade proces. Recovery Services kluizen bieden functies die niet beschikbaar zijn voor back-upkluizen, zoals:
 
-- **Verbeterde mogelijkheden voor het beveiligen van back-upgegevens**: Met Recovery Services kluizen biedt Azure Backup beveiligings mogelijkheden voor het beveiligen van Cloud back-ups. Met de beveiligings functies kunt u uw back-ups beveiligen en veilig gegevens herstellen, zelfs als er inbreuk is gemaakt op de productie-en back-upservers. [Meer informatie](backup-azure-security-feature.md)
+- **Verbeterde mogelijkheden voor het beveiligen van back-upgegevens**: met Recovery Services kluizen biedt Azure backup beveiligings mogelijkheden voor het beveiligen van Cloud back-ups. Met de beveiligings functies kunt u uw back-ups beveiligen en veilig gegevens herstellen, zelfs als er inbreuk is gemaakt op de productie-en back-upservers. [Meer informatie](backup-azure-security-feature.md)
 
-- **Centrale bewaking voor uw hybride IT-omgeving**: Met Recovery Services kluizen kunt u niet alleen uw [Azure IaaS-vm's](backup-azure-manage-vms.md) bewaken, maar ook uw [on-premises assets](backup-azure-manage-windows-server.md#manage-backup-items) vanuit een centrale Portal. [Meer informatie](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
+- **Centrale bewaking voor uw hybride IT-omgeving**: met Recovery Services kluizen kunt u niet alleen uw [Azure IaaS-vm's](backup-azure-manage-vms.md) , maar ook uw [on-premises assets](backup-azure-manage-windows-server.md#manage-backup-items) van een centrale Portal bewaken. [Meer informatie](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **Access Control op basis van rollen (RBAC)** : RBAC biedt nauw keurig beheer van toegangs beheer in Azure. [Azure biedt verschillende ingebouwde rollen](../role-based-access-control/built-in-roles.md)en Azure backup heeft drie [ingebouwde rollen voor het beheren van herstel punten](backup-rbac-rs-vault.md). Recovery Services kluizen zijn compatibel met RBAC, waarmee back-up-en herstel toegang wordt beperkt tot de gedefinieerde set gebruikers rollen. [Meer informatie](backup-rbac-rs-vault.md)
+- **Op rollen gebaseerd Access Control (RBAC)** : RBAC biedt nauw keurig beheer van toegangs beheer in Azure. [Azure biedt verschillende ingebouwde rollen](../role-based-access-control/built-in-roles.md)en Azure backup heeft drie [ingebouwde rollen voor het beheren van herstel punten](backup-rbac-rs-vault.md). Recovery Services kluizen zijn compatibel met RBAC, waarmee back-up-en herstel toegang wordt beperkt tot de gedefinieerde set gebruikers rollen. [Meer informatie](backup-rbac-rs-vault.md)
 
-- **Alle configuraties van Azure virtual machines beveiligen**: Recovery Services kluizen beveiligen Vm's op basis van Resource Manager, zoals Premium-schijven, Managed Disks en versleutelde Vm's. Als u een back-upkluis bijwerkt naar een Recovery Services kluis, hebt u de mogelijkheid om uw op Service Manager gebaseerde Vm's te upgraden naar op Resource Manager gebaseerde Vm's. Tijdens de upgrade van de kluis kunt u uw op Service Manager gebaseerde VM-herstel punten behouden en de beveiliging configureren voor de bijgewerkte virtuele machines (Resource Manager-ingeschakeld). [Meer informatie](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
+- **Alle configuraties van Azure virtual machines beveiligen**: Recovery Services kluizen beveiligen vm's op basis van Resource Manager, zoals Premium-schijven, Managed disks en versleutelde vm's. Als u een back-upkluis bijwerkt naar een Recovery Services kluis, hebt u de mogelijkheid om uw op Service Manager gebaseerde Vm's te upgraden naar op Resource Manager gebaseerde Vm's. Tijdens de upgrade van de kluis kunt u uw op Service Manager gebaseerde VM-herstel punten behouden en de beveiliging configureren voor de bijgewerkte virtuele machines (Resource Manager-ingeschakeld). [Meer informatie](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **Direct herstellen voor IaaS-vm's**: Met Recovery Services kluizen kunt u bestanden en mappen herstellen vanaf een IaaS-VM zonder de hele virtuele machine te herstellen, waardoor de herstel tijd sneller kan worden uitgevoerd. Direct terugzetten voor IaaS Vm's is beschikbaar voor virtuele Windows-en Linux-machines. [Meer informatie](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **Direct herstellen voor IaaS-vm's**: met Recovery Services kluizen kunt u bestanden en mappen van een IaaS-VM herstellen zonder de volledige VM te herstellen, waardoor de herstel tijden sneller zijn. Direct terugzetten voor IaaS Vm's is beschikbaar voor virtuele Windows-en Linux-machines. [Meer informatie](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Uw Recovery Services-kluizen beheren in de portal
+
 Het maken en beheren van Recovery Services kluizen in de Azure Portal is eenvoudig, omdat de back-upservice in andere Azure-Services kan worden geïntegreerd. Deze integratie betekent dat u een Recovery Services kluis kunt maken of beheren *in de context van de doel service*. Als u bijvoorbeeld de herstel punten voor een virtuele machine wilt weer geven, selecteert u uw virtuele machine en klikt u op **back-up** in het menu bewerkingen.
 
 ![Recovery Services-kluis Details VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
@@ -55,25 +56,28 @@ De volgende secties bevatten koppelingen naar artikelen met uitleg over het gebr
 > Recovery Services kluis kan niet worden gemaakt met dezelfde naam als deze binnen 24 uur is verwijderd. Gebruik een andere resource naam of kies een andere resource groep of probeer het na 24 uur opnieuw.
 
 ### <a name="back-up-data"></a>Back-up van gegevens
+
 - [Een back-up maken van een Azure VM](backup-azure-vms-first-look-arm.md)
 - [Back-up maken van een Windows-Server of Windows-werk station](backup-try-azure-backup-in-10-mins.md)
 - [Back-ups maken van DPM-workloads naar Azure](backup-azure-dpm-introduction.md)
 - [Maak een back-up van werk belastingen met behulp van Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 
 ### <a name="manage-recovery-points"></a>Herstel punten beheren
+
 - [Back-ups van Azure-VM'S beheren](backup-azure-manage-vms.md)
 - [Bestanden en mappen beheren](backup-azure-manage-windows-server.md)
 
 ### <a name="restore-data-from-the-vault"></a>Gegevens uit de kluis herstellen
+
 - [Afzonderlijke bestanden van een Azure-VM herstellen](backup-azure-restore-files-from-vm.md)
 - [Een Azure-VM herstellen](backup-azure-arm-restore-vms.md)
 
 ### <a name="secure-the-vault"></a>De kluis beveiligen
+
 - [Back-upgegevens voor de cloud in Recovery Services kluizen beveiligen](backup-azure-security-feature.md)
 
-
-
 ## <a name="next-steps"></a>Volgende stappen
+
 Gebruik de volgende artikelen om:</br>
 [Back-up maken van een IaaS-VM](backup-azure-arm-vms-prepare.md)</br>
 [Een back-up maken van een Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>

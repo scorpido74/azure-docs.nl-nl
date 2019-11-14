@@ -1,19 +1,19 @@
 ---
-title: SSL-beleid configureren op Azure-toepassing gateway-Power shell
+title: SSL-beleid configureren met Power shell
+titleSuffix: Azure Application Gateway
 description: Dit artikel bevat instructies voor het configureren van SSL-beleid op Azure-toepassing gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 12/3/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 5c881a42cdd6fd76c591cf12b341fd777d18baea
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 105b0b3e40e6e9433ee456914cd5babc1d17d036
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018254"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075236"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>SSL-beleids versies en coderings suites op Application Gateway configureren
 
@@ -23,7 +23,7 @@ Meer informatie over het configureren van SSL-beleids versies en coderings suite
 
 ## <a name="get-available-ssl-options"></a>Beschik bare SSL-opties ophalen
 
-De `Get-AzApplicationGatewayAvailableSslOptions` cmdlet bevat een lijst met beschik bare vooraf gedefinieerde beleids regels, beschik bare coderings suites en protocol versies die kunnen worden geconfigureerd. In het volgende voor beeld ziet u een voorbeeld uitvoer van het uitvoeren van de cmdlet.
+De cmdlet `Get-AzApplicationGatewayAvailableSslOptions` biedt een lijst met beschik bare vooraf gedefinieerde beleids regels, beschik bare coderings suites en protocol versies die kunnen worden geconfigureerd. In het volgende voor beeld ziet u een voorbeeld uitvoer van het uitvoeren van de cmdlet.
 
 ```
 DefaultPolicy: AppGwSslPolicy20150501
@@ -73,9 +73,9 @@ AvailableProtocols:
 
 ## <a name="list-pre-defined-ssl-policies"></a>Vooraf gedefinieerde SSL-beleids regels weer geven
 
-Application Gateway wordt geleverd met drie vooraf gedefinieerde beleids regels die kunnen worden gebruikt. Deze `Get-AzApplicationGatewaySslPredefinedPolicy` beleids regels worden opgehaald met de cmdlet. Elk beleid heeft verschillende protocol versies en coderings suites ingeschakeld. Deze vooraf gedefinieerde beleids regels kunnen worden gebruikt om snel een SSL-beleid te configureren op uw toepassings gateway. Standaard **AppGwSslPolicy20150501** is geselecteerd als er geen specifiek SSL-beleid is gedefinieerd.
+Application Gateway wordt geleverd met drie vooraf gedefinieerde beleids regels die kunnen worden gebruikt. Met de cmdlet `Get-AzApplicationGatewaySslPredefinedPolicy` worden deze beleids regels opgehaald. Elk beleid heeft verschillende protocol versies en coderings suites ingeschakeld. Deze vooraf gedefinieerde beleids regels kunnen worden gebruikt om snel een SSL-beleid te configureren op uw toepassings gateway. Standaard **AppGwSslPolicy20150501** is geselecteerd als er geen specifiek SSL-beleid is gedefinieerd.
 
-De volgende uitvoer is een voor beeld van `Get-AzApplicationGatewaySslPredefinedPolicy`het uitvoeren van.
+De volgende uitvoer is een voor beeld van het uitvoeren van `Get-AzApplicationGatewaySslPredefinedPolicy`.
 
 ```
 Name: AppGwSslPolicy20150501
@@ -110,7 +110,7 @@ CipherSuites:
 
 Wanneer u een aangepast SSL-beleid configureert, geeft u de volgende para meters door: Policy type, MinProtocolVersion, CipherSuite en toepassings gateway. Als u probeert andere para meters door te geven, krijgt u een fout melding bij het maken of bijwerken van de Application Gateway. 
 
-In het volgende voor beeld wordt een aangepast SSL-beleid ingesteld voor een toepassings gateway. Hiermee wordt de minimale Protocol versie ingesteld `TLSv1_1` op en worden de volgende coderings suites ingeschakeld:
+In het volgende voor beeld wordt een aangepast SSL-beleid ingesteld voor een toepassings gateway. Hiermee wordt de minimale Protocol versie ingesteld op `TLSv1_1` en worden de volgende coderings suites ingeschakeld:
 
 * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256

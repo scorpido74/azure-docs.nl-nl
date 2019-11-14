@@ -1,143 +1,140 @@
 ---
-title: Azure cross-netwerkverbinding | Microsoft Docs
-description: Deze pagina wordt een toepassingsscenario voor cross-netwerkverbinding en de oplossing op basis van de Azure VPN-functies beschreven.
-documentationcenter: na
-services: networking
+title: Connectiviteit tussen meerdere netwerken van Azure
+description: Op deze pagina wordt een toepassings scenario beschreven voor cross-netwerk connectiviteit en oplossingen op basis van Azure-netwerk functies.
+services: expressroute
 author: rambk
-manager: tracsman
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 04/03/2019
 ms.author: rambala
-ms.openlocfilehash: 3bc189cf269084fdb26f141a36755c96554cad7b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e503dc2b4ae8773ebfedc7a9b73bc5ea93dd9d5a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866006"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076753"
 ---
 # <a name="cross-network-connectivity"></a>Onderlinge netwerkconnectiviteit
 
-Fabrikam, Inc. is een grote fysieke aanwezigheid en Azure-implementatie in VS-Oost. Fabrikam is back-end-connectiviteit tussen de on-premises en Azure-implementaties via ExpressRoute. Contoso Ltd. heeft op dezelfde manier een aanwezigheid en een Azure-implementatie in VS-West. Contoso heeft een back-end-connectiviteit tussen de on-premises en Azure-implementaties via ExpressRoute.  
+Fabrikam Inc. heeft een grote fysieke aanwezigheid en Azure-implementatie in VS-Oost. Fabrikam heeft back-end-connectiviteit tussen de on-premises en Azure-implementaties via ExpressRoute. Op dezelfde manier heeft Contoso Ltd. een aanwezigheids-en Azure-implementatie in VS West. Contoso heeft een back-end-verbinding tussen de on-premises en Azure-implementaties via ExpressRoute.  
 
-Fabrikam Inc. acquires Contoso Ltd. Na de fusie wil Fabrikam interconnect de netwerken. De volgende afbeelding ziet u het scenario:
+Fabrikam Inc. verwerft Contoso Ltd. Na de fusie wil Fabrikam de netwerken verbinden. In de volgende afbeelding ziet u het scenario:
 
  [![1]][1]
 
-De onderbroken pijlen in het midden van de bovenstaande afbeelding geven aan de gewenste netwerk onderlinge verbindingen. Er zijn drie typen cross verbindingen nodig: Fabrikam en Contoso-VNets cross-verbinding van 1), 2) tussen regionale on-premises en vnet's verbindt cross (die is Fabrikam on-premises netwerk verbinden met Contoso VNet en Contoso on-premises netwerk verbinden met Fabrikam-VNet), en (3) Fabrikam en Contoso on-premises netwerk cross-verbinding maken. 
+De onderbroken pijlen in het midden van de bovenstaande afbeelding geven de gewenste netwerk verbindingen aan. Met name zijn er drie typen cross-Connections gewenst: 1) Fabrikam en contoso VNets Cross Connect, 2) Cross-premises lokale en VNets cross connects (dat wil zeggen fabrikam on-premises netwerk verbinden met Contoso VNet en contoso verbinding maken) on-premises netwerk naar fabrikam VNet) en 3) Fabrikam en on-premises netwerk Kruis verbinding van contoso. 
 
-De volgende tabel ziet u de routetabel van de persoonlijke peering van het ExpressRoute van Contoso Ltd., voordat de fusie.
+In de volgende tabel ziet u de route tabel van de persoonlijke peering van de ExpressRoute van Contoso Ltd. vóór de fusie.
 
 [![2]][2]
 
-De volgende tabel ziet u de effectieve routes van een virtuele machine in de Contoso-abonnement, voordat de fusie. Per van de tabel is de virtuele machine op het VNet op de hoogte van de VNet-adresruimte en de on-premises-netwerk van Contoso, naast de standaardwaarden. 
+De volgende tabel bevat de efficiënte routes van een virtuele machine in het contoso-abonnement, vóór de fusie. De virtuele machine op het VNet is in de tabel op de hoogte van de VNet-adres ruimte en het on-premises netwerk van contoso, onafhankelijk van de standaard waarden. 
 
 [![4]][4]
 
-De volgende tabel ziet u de routetabel van de persoonlijke peering van het ExpressRoute van Fabrikam Inc., voordat de fusie.
+De volgende tabel toont de route tabel van de privé-peering van de ExpressRoute van Fabrikam Inc. vóór de fusie.
 
 [![3]][3]
 
-De volgende tabel ziet u de effectieve routes van een virtuele machine in het Fabrikam-abonnement voordat u de fusie. Per van de tabel is de virtuele machine op het VNet op de hoogte van de VNet-adresruimte en Fabrikam on-premises netwerk, naast de standaardwaarden.
+De volgende tabel toont de efficiënte routes van een virtuele machine in het fabrikam-abonnement, vóór de fusie. De virtuele machine op het VNet is in de tabel op de hoogte van de VNet-adres ruimte en het on-premises netwerk van Fabrikam, onafhankelijk van de standaard waarden.
 
 [![5]][5]
 
-In dit artikel gaat via Stapsgewijze instructies en informatie over het bereiken van de gewenste meerdere verbindingen met de volgende functies van Azure-netwerk:
+In dit artikel gaan we stapsgewijs door en bespreken hoe u de gewenste cross-verbindingen kunt maken met behulp van de volgende Azure-netwerk functies:
 
 * [Peering op virtueel netwerk][Virtual network peering] 
-* [Virtueel netwerk ExpressRoute-verbinding][connection]
-* [Globaal bereik][Global Reach] 
+* [Verbinding met virtuele netwerk ExpressRoute][connection]
+* [Global Reach][Global Reach] 
 
-## <a name="cross-connecting-vnets"></a>Cross-VNets verbinden
+## <a name="cross-connecting-vnets"></a>VNets Kruis verbinding maken
 
-Peering op virtueel netwerk (VNet-peering) biedt de meest optimale en de beste prestaties van het netwerk bij het verbinden van twee virtuele netwerken. VNet-peering ondersteunt twee Vnetten binnen de dezelfde Azure-regio (vaak genoemd VNet-peering) en in twee verschillende Azure-regio's (vaak genoemd wereldwijde VNet-peering). 
+Virtual Network-peering (VNet-peering) biedt de meest optimale en beste netwerk prestaties wanneer u twee virtuele netwerken verbindt. VNet-peering ondersteunt peering van twee VNets in dezelfde Azure-regio (ook wel VNet-peering genoemd) en in twee verschillende Azure-regio's (ook wel wereld wijde VNet-peering genoemd). 
 
-We gaan configureren globale VNet-peering tussen de VNets in Contoso en Fabrikam-Azure-abonnementen. Voor informatie over het maken van het virtuele netwerk-peering tussen twee virtuele netwerken kunt u vinden [maken van een virtueel netwerk-peering] [ Configure VNet peering] artikel.
+Laten we globaal VNet-peering configureren tussen de VNets in contoso en fabrikam Azure-abonnementen. Zie het artikel [peering van een virtueel netwerk maken][Configure VNet peering] voor informatie over het maken van de peering van het virtuele netwerk tussen twee virtuele netwerken.
 
-De volgende afbeelding toont de netwerkarchitectuur na het configureren van wereldwijde VNet-peering.
+In de volgende afbeelding ziet u de netwerk architectuur na het configureren van globale VNet-peering.
 
 [![6]][6]
 
-De volgende tabel ziet de routes bekend zijn in het Contoso-abonnement VM. Let op het laatste item van de tabel. Dit item is het resultaat van tussen de virtuele netwerken met elkaar verbinden.
+De volgende tabel bevat de routes die bekend zijn bij de VM van het contoso-abonnement. Let op de laatste vermelding van de tabel. Dit item is het resultaat van het cross verbinden van de virtuele netwerken.
 
 [![7]][7]
 
-De volgende tabel ziet de routes bekend zijn in het abonnement Fabrikam VM. Let op het laatste item van de tabel. Dit item is het resultaat van tussen de virtuele netwerken met elkaar verbinden.
+In de volgende tabel ziet u de routes die bekend zijn bij de werk-VM van Fabrikam-abonnement. Let op de laatste vermelding van de tabel. Dit item is het resultaat van het cross verbinden van de virtuele netwerken.
 
 [![8]][8]
 
-VNet-peering rechtstreeks koppelt twee virtuele netwerken (Zie er zijn geen volgende hop voor *VNetGlobalPeering* vermelding in de bovenstaande twee tabellen)
+VNet-peering koppelt rechtstreeks twee virtuele netwerken (zie er is geen volgende hop voor *VNetGlobalPeering* -vermelding in de bovenstaande twee tabellen)
 
-## <a name="cross-connecting-vnets-to-the-on-premises-networks"></a>Cross-VNets verbinden met de on-premises netwerken
+## <a name="cross-connecting-vnets-to-the-on-premises-networks"></a>Verbinding maken tussen VNets en de on-premises netwerken
 
-We kunnen een ExpressRoute-circuit verbinding maken met meerdere virtuele netwerken. Zie [abonnement en Servicelimieten] [ Subscription limits] voor het maximum aantal virtuele netwerken die kunnen worden verbonden met een ExpressRoute-circuit. 
+We kunnen een ExpressRoute-circuit verbinden met meerdere virtuele netwerken. Zie de [abonnements-en service limieten][Subscription limits] voor het maximum aantal virtuele netwerken dat kan worden verbonden met een ExpressRoute-circuit. 
 
-Laten we verbinden met Fabrikam ExpressRoute-circuit tot Contoso abonnement VNet en op dezelfde manier Contoso ExpressRoute-circuit Fabrikam abonnement VNet om in te schakelen tussen connectiviteit tussen virtuele netwerken en de on-premises netwerken. Voor een virtueel netwerk verbinding met een ExpressRoute-circuit in een ander abonnement, moeten we het maken en gebruiken van een autorisatie.  Zie het artikel: [Een virtueel netwerk verbinden met een ExpressRoute-circuit][Connect-ER-VNet].
+We gaan verbinding maken met het ExpressRoute-circuit van Fabrikam met het VNet-abonnement van Contoso en een soortgelijk ExpressRoute-circuit van Contoso naar het VNet-abonnement van Fabrikam om tussen virtuele netwerken en de on-premises netwerken over te scha kelen. Als u een virtueel netwerk wilt verbinden met een ExpressRoute-circuit in een ander abonnement, moeten we een autorisatie maken en gebruiken.  Zie het artikel: [een virtueel netwerk verbinden met een ExpressRoute-circuit][Connect-ER-VNet].
 
-De volgende afbeelding ziet u de netwerkarchitectuur na het configureren van de ExpressRoute cross-connectiviteit naar de virtuele netwerken.
+In de volgende afbeelding ziet u de netwerk architectuur na het configureren van de ExpressRoute-Kruis verbinding met de virtuele netwerken.
 
 [![9]][9]
 
-De volgende tabel ziet u de routetabel van de persoonlijke peering van het ExpressRoute van Contoso Ltd., na meerdere virtuele netwerken verbinden met de on-premises netwerken via ExpressRoute. Zie dat de routetabel bevat routes die behoren tot de virtuele netwerken.
+In de volgende tabel ziet u de route tabel van de persoonlijke peering van de ExpressRoute van Contoso Ltd., nadat u virtuele netwerken met elkaar hebt verbonden met de on-premises netwerken via ExpressRoute. Zie dat de route tabel routes bevat die deel uitmaken van de virtuele netwerken.
 
 [![10]][10]
 
-De volgende tabel ziet u de routetabel van de persoonlijke peering van het ExpressRoute van Fabrikam Inc., na meerdere virtuele netwerken verbinden met de on-premises netwerken via ExpressRoute. Zie dat de routetabel bevat routes die behoren tot de virtuele netwerken.
+In de volgende tabel ziet u de route tabel van de persoonlijke peering van de ExpressRoute van Fabrikam Inc., nadat u virtuele netwerken met elkaar hebt verbonden met de on-premises netwerken via ExpressRoute. Zie dat de route tabel routes bevat die deel uitmaken van de virtuele netwerken.
 
-[![11]][11]
+[![9]][11]
 
-De volgende tabel ziet de routes bekend zijn in het Contoso-abonnement VM. Let op de *gateway van virtueel netwerk* vermeldingen van de tabel. De virtuele machine ziet routes voor zowel de on-premises netwerken.
+De volgende tabel bevat de routes die bekend zijn bij de VM van het contoso-abonnement. Let op de gateway vermeldingen van het *virtuele netwerk* van de tabel. De virtuele machine ziet routes voor de on-premises netwerken.
 
 [![12]][12]
 
-De volgende tabel ziet de routes bekend zijn in het abonnement Fabrikam VM. Let op de *gateway van virtueel netwerk* vermeldingen van de tabel. De virtuele machine ziet routes voor zowel de on-premises netwerken.
+In de volgende tabel ziet u de routes die bekend zijn bij de werk-VM van Fabrikam-abonnement. Let op de gateway vermeldingen van het *virtuele netwerk* van de tabel. De virtuele machine ziet routes voor de on-premises netwerken.
 
 [![13]][13]
 
 >[!NOTE]
->In een knooppunt de Fabrikam en/of Contoso-abonnementen die u kunt ook hebben VNets naar de respectieve hub VNet (een hub en spoke-ontwerp wordt niet weergegeven in de architectuurdiagrammen in dit artikel). De cross-verbindingen tussen de hub VNet-gateways met ExpressRoute kunnen ook communicatie tussen Oost en West-hubs en knooppunten.
+>In de abonnementen Fabrikam en/of Contoso kunt u ook spoke VNets naar het respectieve hub VNet (een hub-en spoke-ontwerp wordt niet geïllustreerd in de architectuur diagrammen in dit artikel). Door de Kruis verbindingen tussen de hub VNet-gateways naar ExpressRoute wordt ook communicatie tussen Oost-en West-hubs en spokes toegestaan.
 >
 
-## <a name="cross-connecting-on-premises-networks"></a>Cross-verbinding maakt on-premises netwerken
+## <a name="cross-connecting-on-premises-networks"></a>Cross-premises verbinding maken met netwerk
 
-Globaal bereik ExpressRoute biedt connectiviteit tussen on-premises-netwerken die zijn verbonden met andere ExpressRoute-circuits. We gaan configureren globaal bereik tussen Contoso en Fabrikam ExpressRoute-circuits. Omdat de ExpressRoute-circuits zich in verschillende abonnementen bevinden, moet het maken en gebruiken van een autorisatie. Zie [ExpressRoute globaal bereik configureren] [ Configure Global Reach] artikel voor stapsgewijze instructies.
+ExpressRoute Global Reach biedt connectiviteit tussen on-premises netwerken die zijn verbonden met verschillende ExpressRoute-circuits. Laten we Global Reach configureren tussen Contoso en fabrikam ExpressRoute-circuits. Omdat de ExpressRoute-circuits zich in verschillende abonnementen bevinden, moeten we een autorisatie maken en gebruiken. Zie [Configure ExpressRoute Global Reach][Configure Global Reach] article (Engelstalig) voor stapsgewijze instructies.
 
-De volgende afbeelding toont de netwerkarchitectuur na het configureren van globaal bereik.
+In de volgende afbeelding ziet u de netwerk architectuur na het configureren van Global Reach.
 
-[![14]][14]
+[![15]][14]
 
-De volgende tabel ziet u de routetabel van de persoonlijke peering van het ExpressRoute van Contoso Ltd., na het configureren van globaal bereik. Zie dat de routetabel bevat routes die behoren tot zowel de on-premises netwerken. 
+In de volgende tabel ziet u de route tabel van de persoonlijke peering van de ExpressRoute van Contoso Ltd., na het configureren van Global Reach. Zie dat de route tabel routes bevat die deel uitmaken van de on-premises netwerken. 
 
 [![15]][15]
 
-De volgende tabel ziet u de routetabel van de persoonlijke peering van het ExpressRoute van Fabrikam Inc., na het configureren van globaal bereik. Zie dat de routetabel bevat routes die behoren tot zowel de on-premises netwerken.
+In de volgende tabel ziet u de route tabel van de persoonlijke peering van de ExpressRoute van Fabrikam Inc. na het configureren van Global Reach. Zie dat de route tabel routes bevat die deel uitmaken van de on-premises netwerken.
 
-[![16]][16]
+[![18]][16]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Veelgestelde vragen over virtuele netwerken][VNet-FAQ]voor verdere vragen over VNet-peering en VNet-peering. Zie [Veelgestelde vragen over ExpressRoute] [ ER-FAQ] voor verdere vragen over ExpressRoute en virtuele netwerkverbinding.
+Zie [Veelgestelde vragen over virtuele netwerken][VNet-FAQ]voor verdere vragen over VNet en vnet-peering. Zie [Veelgestelde vragen over ExpressRoute][ER-FAQ] voor meer vragen over de connectiviteit van ExpressRoute en het virtuele netwerk.
 
-Wereldwijd bereik wordt geïmplementeerd op basis van land/regio door land/regio. Als u wilt zien als globaal bereik is beschikbaar in de landen/regio's die u wilt, Zie [ExpressRoute globaal bereik][Global Reach].
+Global Reach wordt op basis van land/regio in een land/regio uitgerold. Zie [ExpressRoute Global Reach][Global Reach]als u wilt weten of Global Reach beschikbaar is in de gewenste landen/regio's.
 
 <!--Image References-->
-[1]: ./media/cross-network-connectivity/premergerscenario.png "scenario van de toepassing"
-[2]: ./media/cross-network-connectivity/contosoexr-rt-premerger.png "Contoso ExpressRoute routetabel vóór de fusie"
-[3]: ./media/cross-network-connectivity/fabrikamexr-rt-premerger.png "Fabrikam ExpressRoute routetabel vóór de fusie"
-[4]: ./media/cross-network-connectivity/contosovm-routes-premerger.png "Contoso VM routes vóór de fusie"
-[5]: ./media/cross-network-connectivity/fabrikamvm-routes-premerger.png "Fabrikam VM routes vóór de fusie"
-[6]: ./media/cross-network-connectivity/vnet-peering.png "de architectuur na de VNet-peering"
-[7]: ./media/cross-network-connectivity/contosovm-routes-peering.png "Contoso VM routes na de VNet-peering"
-[8]: ./media/cross-network-connectivity/fabrikamvm-routes-peering.png "Fabrikam VM routes na de VNet-peering"
-[9]: ./media/cross-network-connectivity/exr-x-connect.png "de architectuur na expressroutes waaraan cross-verbinding"
-[10]: ./media/cross-network-connectivity/contosoexr-rt-xconnect.png "Contoso ExpressRoute routetabel na meerdere verbindende ExR en VNets"
-[11]: ./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png "Fabrikam ExpressRoute routetabel na meerdere verbindende ExR en VNets"
-[12]: ./media/cross-network-connectivity/contosovm-routes-xconnect.png "routes Contoso VM na het maken van verbinding ExR en VNets tussen"
-[13]: ./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png "routes Fabrikam VM na het maken van verbinding ExR en VNets tussen"
-[14]: ./media/cross-network-connectivity/globalreach.png "de architectuur na het configureren van globaal bereik"
-[15]: ./media/cross-network-connectivity/contosoexr-rt-gr.png "Contoso ExpressRoute routetabel na globaal bereik"
-[16]: ./media/cross-network-connectivity/fabrikamexr-rt-gr.png "Fabrikam ExpressRoute route table after Global Reach"
+[1]: ./media/cross-network-connectivity/premergerscenario.png "het toepassings scenario"
+[2]: ./media/cross-network-connectivity/contosoexr-rt-premerger.png "Contoso ExpressRoute-route tabel vóór fusie"
+[3]: ./media/cross-network-connectivity/fabrikamexr-rt-premerger.png "fabrikam ExpressRoute-route tabel vóór fusie"
+[4]: ./media/cross-network-connectivity/contosovm-routes-premerger.png "Contoso VM-routes vóór fusie"
+[5]: ./media/cross-network-connectivity/fabrikamvm-routes-premerger.png "routes voor de fabrikam-VM vóór fusie"
+[6]: ./media/cross-network-connectivity/vnet-peering.png "de architectuur na VNet-peering"
+[7]: ./media/cross-network-connectivity/contosovm-routes-peering.png "Contoso-VM-routes na VNet-peering"
+[8]: ./media/cross-network-connectivity/fabrikamvm-routes-peering.png "fabrikam-VM-routes na VNet-peering"
+[9]: ./media/cross-network-connectivity/exr-x-connect.png "de architectuur na expressroutes waaraan-Kruis verbinding"
+[10]: ./media/cross-network-connectivity/contosoexr-rt-xconnect.png "Contoso ExpressRoute-route tabel na cross-verbinding maken met ExR en VNets"
+[11]: ./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png "fabrikam ExpressRoute-route tabel na cross-verbinding maken met ExR en VNets"
+[12]: ./media/cross-network-connectivity/contosovm-routes-xconnect.png "Contoso-VM-routes na Kruis verbinding maken met ExR en VNets"
+[13]: ./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png "fabrikam-VM-routes na Kruis verbinding ExR en VNets"
+[14]: ./media/cross-network-connectivity/globalreach.png "de architectuur na het configureren van Global Reach"
+[15]: ./media/cross-network-connectivity/contosoexr-rt-gr.png "Contoso ExpressRoute-route tabel na Global Reach"
+[16]: ./media/cross-network-connectivity/fabrikamexr-rt-gr.png "fabrikam ExpressRoute-route tabel na Global Reach"
 
 <!--Link References-->
 [Virtual network peering]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

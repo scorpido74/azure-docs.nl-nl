@@ -1,19 +1,20 @@
 ---
-title: 'Zelfstudie: Een toepassingsgateway maken met een omleiding op basis van een URL-pad - Azure CLI'
+title: 'Zelf studie: op URL-pad gebaseerde omleiding via CLI'
+titleSuffix: Azure Application Gateway
 description: In deze zelfstudie leert u hoe u een toepassingsgateway kunt maken met verkeer dat is omgeleid op basis van een URL-pad, met behulp van Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 7/30/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b2a06e47eec52d860aecdd2d9b57310cce5aeb27
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 23ddbdc62b2592a8fbfb7cdccaca52cbfe9aee62
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315941"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074429"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Zelfstudie: Een toepassingsgateway maken met een omleiding op basis van een URL-pad met behulp van Azure CLI
 
@@ -41,7 +42,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group).
+Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met [az group create](/cli/azure/group).
 
 In het volgende voorbeeld wordt de resourcegroep *myResourceGroupAG* gemaakt op de locatie *eastus*.
 
@@ -231,7 +232,7 @@ az network application-gateway rule create \
   --address-pool appGatewayBackendPool
 ```
 
-## <a name="create-virtual-machine-scale-sets"></a>Schaalsets voor virtuele machines maken
+## <a name="create-virtual-machine-scale-sets"></a>Virtuele-machineschaalset maken
 
 In dit voorbeeld maakt u drie virtuele-machineschaalsets die ondersteuning bieden voor de drie back-endpools die u hebt gemaakt. De schaalsets die u maakt, hebben de namen *myvmss1*, *myvmss2* en *myvmss3*. Elke schaalset bevat twee exemplaren van virtuele machines waarop u NGINX installeert.
 
@@ -283,7 +284,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-Gebruik [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) om het openbare IP-adres van de toepassingsgateway op te halen. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. `http://40.121.222.19`Zoals, `http://40.121.222.19:8080/images/test.htm`,, `http://40.121.222.19:8080/video/test.htm`of. `http://40.121.222.19:8081/images/test.htm`
+Gebruik [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) om het openbare IP-adres van de toepassingsgateway op te halen. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Zoals, `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`, `http://40.121.222.19:8080/video/test.htm`of `http://40.121.222.19:8081/images/test.htm`.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -295,15 +296,15 @@ az network public-ip show \
 
 ![Basis-URL testen in de toepassingsgateway](./media/tutorial-url-redirect-cli/application-gateway-nginx.png)
 
-Wijzig de URL in http://&lt;IP-adres&gt;: 8080/images/test.html, waarbij u het IP- &lt;adres voor het&gt;IP-adres vervangt. het volgende voor beeld zou er als volgt moeten uitzien:
+Wijzig de URL in http://&lt;IP-adres&gt;: 8080/images/test.html, waarbij u het IP-adres voor &lt;IP-adres&gt;vervangt, en u zou er ongeveer als volgt moeten uitzien:
 
 ![Afbeeldingen-URL in toepassingsgateway testen](./media/tutorial-url-redirect-cli/application-gateway-nginx-images.png)
 
-Wijzig de URL in http://&lt;IP-adres&gt;: 8080/video/test.html, waarbij u het IP- &lt;adres voor het&gt;IP-adres vervangt. het volgende voor beeld zou er als volgt moeten uitzien:
+Wijzig de URL in http://&lt;IP-adres&gt;: 8080/video/test.html, waarbij u het IP-adres voor &lt;IP-adres&gt;vervangt, en u zou er ongeveer als volgt moeten uitzien:
 
 ![Video-URL testen in de toepassingsgateway](./media/tutorial-url-redirect-cli/application-gateway-nginx-video.png)
 
-Wijzig nu&lt;de URL in http://IP-adres&gt;: 8081/images/test.htm, waarbij u het IP-adres &lt;voor het IP&gt;-adres vervangt, en u ziet dat verkeer teruggeleid naar de back-end van de installatie kopieën op http://&lt;IP-adres&gt;: 8080/afbeeldingen.
+Wijzig nu de URL in http://&lt;IP-adres&gt;: 8081/images/test.htm, waarbij u het IP-adres voor &lt;IP-adres&gt;vervangt, en u ziet dat verkeer wordt omgeleid naar de back-endadresgroep van de installatie kopieën op http://&lt;IP-adres&gt;: 8080/image.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

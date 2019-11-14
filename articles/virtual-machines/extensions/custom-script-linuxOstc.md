@@ -1,5 +1,5 @@
 ---
-title: Aangepaste scripts uitvoeren op Linux-Vm's in azure | Microsoft Docs
+title: Aangepaste scripts uitvoeren op Linux-Vm's in azure
 description: Configuratie taken voor Linux-VM'S automatiseren met behulp van de aangepaste script extensie v1
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: e5ef1bde9420104b596c22837048b054f918b3cc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b7dbabf5be8b1f223f6e39f294b9d7022b83c4f8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092627"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073185"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Gebruik de aangepaste script extensie versie 1 van Azure met virtuele Linux-machines
 
@@ -37,7 +37,7 @@ Er zijn twee aangepaste Linux-script uitbreidingen:
 
 * Versie 2: micro soft. Azure. Extensions. CustomScript
 
-Wijzig in plaats daarvan nieuwe en bestaande implementaties om de nieuwe versie ([micro soft. Azure. Extensions. CustomScript](custom-script-linux.md)) te gebruiken. De nieuwe versie is bedoeld als vervanging van een vervolg keuzelijst. Daarom is de migratie zo eenvoudig als het wijzigen van de naam en versie, u hoeft de configuratie van de extensie niet te wijzigen.
+Wijzig in plaats daarvan nieuwe en bestaande implementaties om de nieuwe versie ([micro soft. Azure. Extensions. CustomScript](custom-script-linux.md)) te gebruiken. De nieuwe versie is bedoeld als kant-en-klare vervanging. Voor de migratie hoeft u slechts de naam en versie te wijzigen. De configuratie van de extensie hoeft niet te worden gewijzigd.
 
 ### <a name="operating-system"></a>Besturingssysteem
 
@@ -69,7 +69,7 @@ Als uw script zich op een lokale server bevindt, moet u mogelijk nog steeds extr
 * Zorg ervoor dat de scripts geen gebruikers invoer vereisen wanneer ze worden uitgevoerd.
 * Er is 90 minuten om het script uit te voeren, wat langer resulteert in een mislukte inrichting van de uitbrei ding.
 * Start de computer niet opnieuw op in het script, waardoor er problemen zijn met andere uitbrei dingen die worden geïnstalleerd en na het opnieuw opstarten. de uitbrei ding wordt na het opnieuw opstarten niet voortgezet. 
-* Hebt u een script dat een herstart veroorzaakt? Installeer dan toepassingen en voer scripts uit etc. U moet de herstart plannen met behulp van een cron-taak of gebruikmaken van hulpprogram ma's zoals DSC, of chef, puppet-extensies.
+* Als u een script hebt dat ertoe leidt dat de computer opnieuw wordt opgestart, installeert u toepassingen en voert u scripts, enz. U moet de herstart plannen met behulp van een cron-taak of gebruikmaken van hulpprogram ma's zoals DSC, of chef, puppet-extensies.
 * De uitbrei ding voert slechts één script uit, als u een script wilt uitvoeren op elke keer dat u opstart, dan kunt u een [Cloud-init-installatie kopie](../linux/using-cloud-init.md) gebruiken en een script [per opstart](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) module gebruiken. U kunt ook het script gebruiken om een systeem-service-eenheid te maken.
 * Als u wilt plannen wanneer een script wordt uitgevoerd, moet u de extensie gebruiken om een cron-taak te maken.
 * Wanneer het script wordt uitgevoerd, ziet u alleen de extensiestatus 'overgang maken' van de Azure-portal of CLI. Als u meer frequente status updates van een actief script wilt, moet u uw eigen oplossing maken.
@@ -118,17 +118,17 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 ### <a name="property-values"></a>Waarden van eigenschappen
 
-| Name | Waarde / voorbeeld | Gegevenstype |
+| Naam | Waarde / voorbeeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.OSTCExtensions | string |
-| Type | CustomScriptForLinux | string |
+| publisher | Microsoft.OSTCExtensions | tekenreeks |
+| type | CustomScriptForLinux | tekenreeks |
 | typeHandlerVersion | 1.5 | int |
-| fileUris (bijvoorbeeld) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (bijvoorbeeld) | python MyPythonScript.py \<My-param1\> | string |
-| enableInternalDNSCheck | true | boolean |
-| storageAccountName (bijvoorbeeld) | examplestorageacct | string |
-| storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| fileUris (bijvoorbeeld) | https://github.com/MyProject/Archive/MyPythonScript.py | matrix |
+| commandToExecute (bijvoorbeeld) | python MyPythonScript.py \<mijn-param1\> | tekenreeks |
+| enableInternalDNSCheck | true | booleaans |
+| storageAccountName (bijvoorbeeld) | examplestorageacct | tekenreeks |
+| storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | tekenreeks |
 
 ### <a name="property-value-details"></a>Details van eigenschaps waarde
 
@@ -260,7 +260,7 @@ az vm extension set
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Wanneer de aangepaste script extensie wordt uitgevoerd, wordt het script gemaakt of gedownload in een directory die er ongeveer als volgt uitziet. De uitvoer van de opdracht wordt ook opgeslagen in deze `stdout` map `stderr` en in bestanden.
+Wanneer de aangepaste script extensie wordt uitgevoerd, wordt het script gemaakt of gedownload in een directory die er ongeveer als volgt uitziet. De uitvoer van de opdracht wordt ook opgeslagen in deze map in `stdout` en `stderr`-bestanden.
 
 ```bash
 /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux-<version>/download/1
@@ -295,7 +295,7 @@ Enkele punten om te noteren:
 
 1. Wanneer de opdracht wordt uitgevoerd, wordt ingeschakeld.
 1. Down load is gekoppeld aan het downloaden van het CustomScript-extensie pakket van Azure, niet de script bestanden die zijn opgegeven in fileUris.
-1. U kunt ook zien naar welk logboek bestand deze wordt geschreven`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
+1. U kunt ook zien met welk logboek bestand deze wordt geschreven naar `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
 
 Ga vervolgens als volgt te werk om het logboek bestand te controleren:
 

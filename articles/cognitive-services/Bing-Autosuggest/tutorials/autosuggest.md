@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: Resultaten van automatische suggesties ophalen met behulp van Automatische suggestie-API voor Bing'
+title: 'Zelf studie: resultaten van automatische suggesties ophalen met behulp van Automatische suggestie-API voor Bing'
 titleSuffix: Azure Cognitive Services
-description: In deze zelfstudie leert u hoe u Bing Automatische suggesties gebruikt.
+description: In deze zelf studie maakt u een webpagina waarmee gebruikers een query kunnen uitvoeren op de Automatische suggestie-API voor Bing en de query resultaten worden weer gegeven.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: d208187b7ba61fc0d217cef05a1bda559ca0c42b
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 1408faf09ef8950fb0d86f8a036269da2963e3d4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996792"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072844"
 ---
-# <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Zelfstudie: Zoek suggesties op een webpagina ophalen
+# <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Zelf studie: Zoek suggesties op een webpagina ophalen
 
 In deze zelfstudie bouwen we een webpagina waarmee gebruikers aanvragen kunnen versturen naar de Automatische suggestie-API voor Bing.
 
-In deze zelfstudie ontdekt u hoe u:
+In deze handleiding ontdekt u hoe u:
 
 > [!div class="checklist"]
 > - Een eenvoudige query verstuurt naar de Automatische suggestie-API voor Bing

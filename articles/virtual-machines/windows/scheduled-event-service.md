@@ -1,5 +1,5 @@
 ---
-title: Geplande gebeurtenissen controleren voor uw Windows-Vm's in azure | Microsoft Docs
+title: Geplande gebeurtenissen controleren voor uw Windows-Vm's in azure
 description: Meer informatie over het bewaken van uw virtuele Azure-machines voor geplande gebeurtenissen.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: d090fb52beb266f006e69688c09f66412f1fe8c2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1cda07c18e4f5ef2a8c00b6a275f22ecc0935751
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376200"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073315"
 ---
 # <a name="monitoring-scheduled-events"></a>Bewakings Scheduled Events
 
@@ -61,7 +61,7 @@ New-AzVm `
 
 Down load het zip-bestand van de installatie van het project vanuit [github](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
 
-Maak verbinding met **myCollectorVM** en kopieer het zip-bestand naar de virtuele machine en pak alle bestanden uit. Open een Power shell-prompt op de virtuele machine. Verplaats de prompt naar de map met `SchService.ps1`, bijvoorbeeld: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`, en stel de service in.
+Maak verbinding met **myCollectorVM** en kopieer het zip-bestand naar de virtuele machine en pak alle bestanden uit. Open een Power shell-prompt op de virtuele machine. Verplaats uw prompt naar de map met `SchService.ps1`, bijvoorbeeld: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`en stel de service in.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -81,7 +81,7 @@ Valideer de status van de service en zorg ervoor dat deze wordt uitgevoerd.
 .\SchService.ps1 -status  
 ```
 
-Dit moet `Running` retour neren.
+Dit moet `Running`retour neren.
 
 De service begint nu elke 10 seconden te pollen voor geplande gebeurtenissen en keurt de gebeurtenissen goed om het onderhoud te versnellen.  Bevriezen, opnieuw opstarten, opnieuw implementeren en voor rang nemen gebeurtenissen vastgelegd door het plannen van gebeurtenissen. U kunt het script uitbreiden om enkele oplossingen te activeren voordat u de gebeurtenis goedkeurt.
 
@@ -157,9 +157,9 @@ Zodra de gebeurtenissen naar Log Analytics zijn gepusht, kunt u de volgende [que
 
     ![De query opslaan](./media/notifications/save-query.png)
 
-1. Selecteer **nieuwe waarschuwings regel**. 
+1. Selecteer **Nieuwe waarschuwingsregel**. 
 1. Op de pagina **regel maken** , moet u `collectorworkspace` als **resource**laten staan.
-1. Onder **voor waarde**selecteert u de vermelding *wanneer de zoek opdracht van het klant logboek <login undefined> is*. De pagina **signaal logica configureren** wordt geopend.
+1. Onder **voor waarde**selecteert u de vermelding *wanneer het zoeken naar Logboeken van de klant <login undefined>is* . De pagina **signaal logica configureren** wordt geopend.
 1. Voer bij **drempel waarde** *0* in en selecteer vervolgens **gereed**.
 1. Onder **acties**, selecteer **actie groep maken**. De pagina **actie groep toevoegen** wordt geopend.
 1. Typ *myActionGroup*in de naam van de **actie groep**.

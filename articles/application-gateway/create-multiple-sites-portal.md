@@ -1,5 +1,6 @@
 ---
-title: 'Zelf studie: een toepassings gateway maken die als host fungeert voor meerdere websites met behulp van de Azure Portal'
+title: 'Zelf studie: meerdere websites hosten met behulp van de Azure Portal'
+titleSuffix: Azure Application Gateway
 description: In deze zelf studie leert u hoe u een toepassings gateway maakt die als host fungeert voor meerdere websites met behulp van de Azure Portal.
 services: application-gateway
 author: vhorne
@@ -7,12 +8,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: victorh
-ms.openlocfilehash: 3b6818d68b62b574e49817b574450625c231506c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833578"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075155"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Zelf studie: een toepassings gateway maken en configureren om meerdere websites te hosten met behulp van de Azure Portal
 
@@ -21,7 +22,7 @@ U kunt de Azure Portal gebruiken om [het hosten van meerdere websites te configu
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een Application Gateway maken
+> * Een toepassingsgateway maken
 > * Virtuele machines maken voor back-endservers
 > * Back-endservers maken met de back-endservers
 > * Back-endlisteners maken
@@ -36,7 +37,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Meld u aan bij Azure Portal op [https://portal.azure.com](https://portal.azure.com)
 
-## <a name="create-an-application-gateway"></a>Een Application Gateway maken
+## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
 
 1. Selecteer **Een resource maken** in het linkermenu van de Azure-portal. Het venster **Nieuw** wordt weergegeven.
 

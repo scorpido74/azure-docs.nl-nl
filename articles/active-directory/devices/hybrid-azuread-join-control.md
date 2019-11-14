@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc5c85aaa3c2128b10ba2e6f9c45a66b44593202
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d67a73ca47811e7275a6f2177573e10a09b230df
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809220"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073614"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Gecontroleerde validatie van hybride Azure AD-deelname
 
@@ -33,7 +33,7 @@ Voor een gecontroleerde validatie van hybride Azure AD-deelname op Windows huidi
 1. Wis de SCP-vermelding (Service Connection Point) van Active Directory (AD) als deze bestaat
 1. Register instelling aan client zijde voor SCP op computers die lid zijn van een domein configureren met behulp van een groepsbeleid-object (GPO)
 1. Als u AD FS gebruikt, moet u ook de register instelling aan de client zijde voor SCP op uw AD FS-server configureren met behulp van een groeps beleidsobject  
-
+1. Mogelijk moet u ook de [synchronisatie opties](../hybrid/how-to-connect-post-installation.md#additional-tasks-available-in-azure-ad-connect) in azure AD Connect aanpassen om Device Synchronization in te scha kelen. 
 
 
 ### <a name="clear-the-scp-from-ad"></a>De SCP uit AD wissen
@@ -82,7 +82,7 @@ Gebruik het volgende voor beeld om een groepsbeleid-object (GPO) te maken om een
 Als u AD FS gebruikt, moet u eerst SCP aan de client zijde configureren met behulp van de bovenstaande instructies, maar het groeps beleidsobject koppelen aan uw AD FS-servers. Het SCP-object definieert de bron van de autoriteit voor object apparaatobject. Het kan on-premises of Azure AD zijn. Wanneer dit is geconfigureerd voor AD FS, wordt de bron voor object apparaten ingesteld als Azure AD.
 
 > [!NOTE]
-> Als u het SCP aan client zijde op uw AD FS-servers niet configureert, wordt de bron voor apparaat-id's als on-premises beschouwd en als u het apparaat terugschrijft, wordt AD FS gestart met het verwijderen van Device-objecten uit de on-premises geregistreerde container van het apparaat na een vastgestelde periode.
+> Als u SCP aan client zijde op uw AD FS-servers niet configureert, wordt de bron voor apparaat-id's als on-premises beschouwd. ADFS begint vervolgens met het verwijderen van de apparaten uit de on-premises map na de opgegeven periode die is gedefinieerd in het kenmerk ' MaximumInactiveDays ' van de ADFS-apparaatregistratie. AD FS-apparaatregistratie kunnen worden gevonden met behulp van de [cmdlet Get-AdfsDeviceRegistration](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps).
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Gecontroleerde validatie van hybride Azure AD-deelname op Windows-apparaten op het lagere niveau
 

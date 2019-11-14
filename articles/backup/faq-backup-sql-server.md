@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7d09e7839356c040e6632ef728cc579abaa17268
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: d9272aa4a46a5835558be8c695b62ec0770e3827
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968354"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074067"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Veelgestelde vragen over SQL Server-data bases die worden uitgevoerd op een back-up van Azure VM
 
@@ -74,7 +74,7 @@ Nee. Succesvolle back-uptaken maken geen waarschuwingen. Er worden alleen waarsc
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Kan ik geplande back-uptaken weer geven in het menu back-uptaken?
 
-In het menu **back-uptaak** worden alleen ad-hoc back-uptaken weer gegeven. Gebruik voor een geplande taak [bewaking met behulp van Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
+In het menu **back-uptaak** worden alleen back-uptaken op aanvraag weer gegeven. Gebruik voor een geplande taak [bewaking met behulp van Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>Worden toekomstige data bases automatisch toegevoegd voor back-up?
 

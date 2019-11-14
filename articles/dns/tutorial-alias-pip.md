@@ -1,20 +1,20 @@
 ---
-title: 'Zelfstudie: Een Azure DNS-aliasrecord maken, zodat deze naar een openbaar Azure-IP-adres verwijst.'
+title: 'Zelf studie: een alias record voor Azure DNS maken om te verwijzen naar een openbaar IP-adres van Azure'
 description: In deze zelfstudie leert u hoe u een Azure DNS-aliasrecord zo configureert dat deze naar een openbaar Azure-IP-adres verwijst.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: victorh
-ms.openlocfilehash: 7dcbfdaf00b0e628541cfd1a3b79df8cf8334ed3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 81dfbe5f46116d263c4a04d6178437a2c8bc1185
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61430610"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072130"
 ---
-# <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Zelfstudie: Een alias-record om te verwijzen naar een openbaar IP-adres van Azure configureren 
+# <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Zelfstudie: Een aliasrecord zo configureren dat deze naar een openbaar Azure-IP-adres verwijst 
 
 In deze zelfstudie leert u het volgende:
 
@@ -30,7 +30,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 ## <a name="prerequisites"></a>Vereisten
 U moet een beschikbare domeinnaam hebben die u in Azure DNS kunt hosten om te testen. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
 
-Zie voor instructies voor het hosten van uw domein in Azure DNS [zelfstudie: Uw domein hosten in Azure DNS](dns-delegate-domain-azure-dns.md) voor meer informatie.
+Zie voor instructies voor het hosten van uw domein in Azure DNS [Zelfstudie: Uw domein in Azure DNS hosten](dns-delegate-domain-azure-dns.md).
 
 Het voorbeelddomein dat wordt gebruikt voor deze zelfstudie is contoso.com, maar u moet uw eigen domeinnaam gebruiken.
 
@@ -56,7 +56,7 @@ Installeren IIS op **Web01**.
 
 1. Maak verbinding met **Web-01** en meld u aan.
 2. Selecteer op het dashboard **Serverbeheer** de optie **Functies en onderdelen toevoegen**.
-3. Selecteer drie keer **Volgende**. Selecteer op de pagina **Serverfuncties** de optie **Webserver (IIS)**.
+3. Selecteer drie keer **Volgende**. Selecteer op de pagina **Serverfuncties** de optie **Webserver (IIS)** .
 4. Selecteer **Onderdelen toevoegen** en selecteer **Volgende**.
 5. Selecteer viermaal **Volgende** en selecteer vervolgens **Installeren**. Deze procedure duurt een paar minuten.
 6. Nadat de installatie is voltooid, selecteert u **Sluiten**.

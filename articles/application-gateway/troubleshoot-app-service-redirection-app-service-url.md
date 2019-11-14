@@ -1,18 +1,19 @@
 ---
-title: Problemen met de Azure-toepassing-gateway met App Service omleiden naar App Service URL
+title: Problemen met omleiding naar App Service-URL oplossen
+titleSuffix: Azure Application Gateway
 description: Dit artikel bevat informatie over het oplossen van het probleem met de omleiding wanneer Azure-toepassing gateway wordt gebruikt met Azure App Service
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: ef2bbf8804e96a3e25f053d189c6d85bfa845b0b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d43efd6dbd344f666c23b1ad4414ceb29992e996
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833180"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074484"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Problemen met App Service oplossen in Application Gateway
 

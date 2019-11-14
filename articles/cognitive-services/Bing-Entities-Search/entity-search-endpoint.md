@@ -1,7 +1,7 @@
 ---
 title: Het Bing Entiteiten zoeken-API-eind punt
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het Bing Entiteiten zoeken-API-eind punt en het verzenden van aanvragen.
+description: De Bing Entiteiten zoeken-API heeft één eind punt dat entiteiten uit het web retourneert op basis van een query. Deze Zoek resultaten worden geretourneerd in JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 9d08091d0ea6869d13e294e60454f85a84f672ad
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e7f5af42d0bb0079746cc9e64b621adfebd565d1
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424050"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072658"
 ---
 # <a name="bing-entity-search-api-endpoint"></a>Bing Entiteiten zoeken-API-eind punt
 
@@ -24,7 +24,7 @@ De Bing Entiteiten zoeken-API heeft één eind punt dat entiteiten uit het web r
 
 ## <a name="get-entity-results-from-the-endpoint"></a>Entiteits resultaten ophalen van het eind punt
 
-Als u entiteits resultaten wilt ophalen met behulp van `GET` de **Bing API**, verzendt u een aanvraag naar het volgende eind punt. Gebruik [kopteksten](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) en [query parameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) om uw zoek opdracht aan te passen. Zoek opdrachten kunnen worden verzonden met behulp van de `?q=` para meter.
+Als u entiteits resultaten wilt ophalen met behulp van de **Bing API**, stuurt u een `GET` aanvraag naar het volgende eind punt. Gebruik [kopteksten](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) en [query parameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) om uw zoek opdracht aan te passen. Zoek opdrachten kunnen worden verzonden met behulp van de para meter `?q=`.
 
 ```cURL
  GET https://api.cognitive.microsoft.com/bing/v7.0/entities

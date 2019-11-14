@@ -1,5 +1,5 @@
 ---
-title: Voorbeelden van routerconfiguratie - Azure ExpressRoute | Microsoft Docs
+title: 'Azure ExpressRoute: voor beelden van router configuraties'
 description: Deze pagina bevat de router van config-voorbeelden voor Cisco en Juniper-routers.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 2d7fb060896de8df266489451a11ba343760c747
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c37dadeb669fb88f858b5487379828a8dddec6c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367469"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076671"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Voorbeelden van routerconfiguratie instellen en beheren van Routering
 Deze pagina bevat interface en routering voorbeelden van configuraties voor IOS-XE van Cisco en Juniper MX reeks routers bij het werken met ExpressRoute. Deze zijn bedoeld om te worden voorbeelden voor alleen richtlijnen en mogen niet worden gebruikt als is. U kunt werken met de leverancier van uw zijn beschikbaar met de juiste configuraties voor uw netwerk. 
@@ -33,7 +32,7 @@ Voorbeelden van routerconfiguratie hieronder gelden voor alle peerings. Beoordel
 ## <a name="cisco-ios-xe-based-routers"></a>Cisco IOS-XE op basis van routers
 De voorbeelden in deze sectie zijn van toepassing op elke router met de IOS-XE-OS-familie.
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. Interfaces en onderliggende interfaces configureren
+### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. interfaces en Subinterfaces configureren
 U moet een sub-interface per in elke router die u verbinding met Microsoft maakt-peering. Een sub-interface kan worden geïdentificeerd met een VLAN-ID of een gestapelde combinatie van een VLAN-id's en een IP-adres.
 
 **Dot1Q interfacedefinitie**
@@ -52,7 +51,7 @@ In dit voorbeeld bevat de interfacedefinitie van de onderliggende voor een onder
      encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
      ip address <IPv4_Address><Subnet_Mask>
 
-### <a name="2-setting-up-ebgp-sessions"></a>2. Instellen van eBGP-sessies
+### <a name="2-setting-up-ebgp-sessions"></a>2. instellen van eBGP-sessies
 U moet een BGP-sessie met Microsoft voor elke peering instellen. Het onderstaande voorbeeld kunt u het instellen van een BGP-sessie met Microsoft. Als het IPv4-adres dat u hebt gebruikt voor uw sub-interface a.b.c.d is, worden de IP-adres van de BGP-neighbor (Microsoft) a.b.c.d+1. Het laatste achttal werd van de BGP-neighbor IPv4-adres wordt altijd een even getal zijn.
 
     router bgp <Customer_ASN>
@@ -64,7 +63,7 @@ U moet een BGP-sessie met Microsoft voor elke peering instellen. Het onderstaand
      exit-address-family
     !
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Instellen van voorvoegsels voor wel worden geadverteerd via de BGP-sessie
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. het instellen van voor voegsels die worden geadverteerd via de BGP-sessie
 U kunt uw router voor het adverteren van select voorvoegsels naar Microsoft configureren. U kunt doen met behulp van het voorbeeld hieronder.
 
     router bgp <Customer_ASN>
@@ -77,7 +76,7 @@ U kunt uw router voor het adverteren van select voorvoegsels naar Microsoft conf
      exit-address-family
     !
 
-### <a name="4-route-maps"></a>4. Route wordt toegewezen
+### <a name="4-route-maps"></a>4. route kaarten
 Kunt u route-kaarten en voorvoegsel geeft een lijst te filteren voorvoegsels doorgegeven in uw netwerk. U kunt het voorbeeld hieronder gebruiken om de taak te volbrengen. Zorg ervoor dat u geschikte voorvoegsel een lijst met setup hebt.
 
     router bgp <Customer_ASN>
@@ -98,7 +97,7 @@ Kunt u route-kaarten en voorvoegsel geeft een lijst te filteren voorvoegsels doo
 ## <a name="juniper-mx-series-routers"></a>Juniper MX reeks routers
 De voorbeelden in deze sectie zijn van toepassing op alle routers Juniper MX-serie.
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. Interfaces en onderliggende interfaces configureren
+### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. interfaces en Subinterfaces configureren
 
 **Dot1Q interfacedefinitie**
 
@@ -133,7 +132,7 @@ In dit voorbeeld bevat de interfacedefinitie van de onderliggende voor een onder
         }                                   
     }                           
 
-### <a name="2-setting-up-ebgp-sessions"></a>2. Instellen van eBGP-sessies
+### <a name="2-setting-up-ebgp-sessions"></a>2. instellen van eBGP-sessies
 U moet een BGP-sessie met Microsoft voor elke peering instellen. Het onderstaande voorbeeld kunt u het instellen van een BGP-sessie met Microsoft. Als het IPv4-adres dat u hebt gebruikt voor uw sub-interface a.b.c.d is, worden de IP-adres van de BGP-neighbor (Microsoft) a.b.c.d+1. Het laatste achttal werd van de BGP-neighbor IPv4-adres wordt altijd een even getal zijn.
 
     routing-options {
@@ -149,7 +148,7 @@ U moet een BGP-sessie met Microsoft voor elke peering instellen. Het onderstaand
         }                                   
     }
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Instellen van voorvoegsels voor wel worden geadverteerd via de BGP-sessie
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. het instellen van voor voegsels die worden geadverteerd via de BGP-sessie
 U kunt uw router voor het adverteren van select voorvoegsels naar Microsoft configureren. U kunt doen met behulp van het voorbeeld hieronder.
 
     policy-options {
@@ -174,7 +173,7 @@ U kunt uw router voor het adverteren van select voorvoegsels naar Microsoft conf
     }
 
 
-### <a name="4-route-maps"></a>4. Route wordt toegewezen
+### <a name="4-route-maps"></a>4. route kaarten
 Kunt u route-kaarten en voorvoegsel geeft een lijst te filteren voorvoegsels doorgegeven in uw netwerk. U kunt het voorbeeld hieronder gebruiken om de taak te volbrengen. Zorg ervoor dat u geschikte voorvoegsel een lijst met setup hebt.
 
     policy-options {

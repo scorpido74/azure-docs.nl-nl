@@ -1,7 +1,7 @@
 ---
 title: Bing Aangepaste zoekopdrachten-eindpunt
 titleSuffix: Azure Cognitive Services
-description: Samen vatting van het Bing Custom Search-API-eind punt.
+description: Maak aangepaste zoek functies voor onderwerpen die u bevalt. Gebruikers zien Zoek resultaten die zijn afgestemd op de inhoud die ze bezorgen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: e3b544d8d655b653383cc999de233e2163433d85
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 03ec22caedd4e317b9e1fe781dc3d983febc7a6d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405074"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072791"
 ---
 # <a name="custom-search"></a>Aangepast zoeken
 Met Bing Aangepaste zoekopdrachten kunt u op maat gemaakte zoekervaringen maken voor onderwerpen die u interesseren. Uw gebruikers zien dan zoekresultaten die zijn afgestemd op de inhoud die ze interessant vinden in plaats van dat ze door pagina's met zoekresultaten moeten bladeren die niet-relevante inhoud bevatten.
 
 ## <a name="custom-search-endpoint"></a>Aangepast Zoek eindpunt
-Als u resultaten wilt ophalen met behulp van `GET` de Bing Custom Search-API, stuurt u een aanvraag naar het volgende eind punt. Gebruik de para meters headers en URL om verdere specificaties te definiëren.
+Als u resultaten wilt ophalen met behulp van de Bing Custom Search-API, stuurt u een `GET` aanvraag naar het volgende eind punt. Gebruik de para meters headers en URL om verdere specificaties te definiëren.
 
-Endpoints Retourneert Zoek suggesties als JSON-resultaten die relevant zijn voor de invoer van de gebruiker `?q=""`die is gedefinieerd door.
+Eind punt: retourneert Zoek suggesties als JSON-resultaten die relevant zijn voor de invoer van de gebruiker die is gedefinieerd door `?q=""`.
 ```  
  GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search  
 ```

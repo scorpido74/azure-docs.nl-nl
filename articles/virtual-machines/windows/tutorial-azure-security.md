@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Security Center gebruiken voor virtuele Windows-machines in Azure | Microsoft Docs'
+title: Zelf studie-Azure Security Center gebruiken voor Windows-Vm's in azure
 description: In deze zelfstudie krijgt u informatie over de functies van Azure Security Center die helpen uw virtuele Windows-machines in Azure te beschermen en te beveiligen.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,24 +15,24 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e65e9670facdfcbf9d1aac04fa25ee53996a9c4b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6b763d08dc898566bfe0d7a28bf6471d4edf4c59
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100313"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064956"
 ---
-# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Zelfstudie: Azure Security Center gebruiken om virtuele Windows-machines te bewaken
+# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Zelfstudie: Azure Security Center gebruiken om virtuele Windows-machines te controleren
 
 Met Azure Security Center kunt u meer inzicht krijgen in de beveiliging van uw Azure-resources. Security Center biedt geïntegreerde beveiligingsbewaking. De service kan bedreigingen detecteren die anders misschien onopgemerkt blijven. In deze zelfstudie krijgt u meer informatie over Azure Security Center en leert u het volgende te doen:
 
 > [!div class="checklist"]
-> * Gegevensverzameling instellen
+> * Gegevensverzameling kunt instellen
 > * Beveiligingsbeleid kunt instellen
 > * Problemen met de configuratiestatus kunt weergeven en oplossen
-> * Gedetecteerde bedreigingen kunt controleren
+> * Gedetecteerde bedreigingen controleren
 
-## <a name="security-center-overview"></a>Overzicht van Security Center
+## <a name="security-center-overview"></a>Security Center-overzicht
 
 Security Center identificeert mogelijke configuratieproblemen voor virtuele machine (VM's) en gerichte beveiligingsrisico's. Dit kan het volgende omvatten: virtuele machines waarbij netwerkbeveiligingsgroepen ontbreken, niet-versleutelde schijven en RDP-beveiligingsaanvallen (Remote Desktop Protocol). De informatie wordt op het Security Center-dashboard in duidelijke grafieken weergegeven.
 
@@ -130,7 +130,7 @@ In deze zelfstudie hebt u Azure Security Center ingesteld en vervolgens VM's in 
 > * Gegevensverzameling kunt instellen
 > * Beveiligingsbeleid kunt instellen
 > * Problemen met de configuratiestatus kunt weergeven en oplossen
-> * Gedetecteerde bedreigingen kunt controleren
+> * Gedetecteerde bedreigingen controleren
 
 Ga verder met de volgende zelfstudie als u wilt weten hoe u een SQL&#92;IIS&#92;.NET-stack op een combinatie van twee virtuele Windows-machines kunt installeren.
 

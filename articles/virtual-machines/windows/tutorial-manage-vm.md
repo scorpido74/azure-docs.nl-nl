@@ -1,5 +1,5 @@
 ---
-title: "Zelfstudie: Windows-VM's maken en beheren met de Azure PowerShell | Microsoft Docs"
+title: "Zelf studie: Windows-Vm's maken en beheren met Azure PowerShell"
 description: In deze zelfstudie leert u hoe u Azure PowerShell gebruikt voor het maken en beheren van virtuele Windows-machines in Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,22 +15,22 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0c60cd335e9d280d59fd872d1d0724f2eabd3afb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c48d5e514d854568043d001a22411b6a67f79e6a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101579"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067816"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Zelfstudie: Windows-VM's maken en beheren met Azure PowerShell
 
-Virtuele machines in Azure bieden een volledig geconfigureerde en flexibele computeromgeving. Deze zelfstudie bevat informatie over basisconcepten voor het implementeren van virtuele Azure-machines (VM's), zoals het selecteren van een VM-grootte, het selecteren van een VM-installatiekopie en het implementeren van een VM. In deze zelfstudie leert u procedures om het volgende te doen:
+Virtuele machines in Azure bieden een volledig geconfigureerde en flexibele computeromgeving. Deze zelfstudie bevat informatie over basisconcepten voor het implementeren van virtuele Azure-machines (VM's), zoals het selecteren van een VM-grootte, het selecteren van een VM-installatiekopie en het implementeren van een VM. Procedures voor:
 
 > [!div class="checklist"]
 > * Een virtuele machine maken en verbinding maken met een virtuele machine
 > * VM-installatiekopieën selecteren en gebruiken
 > * Specifieke VM-grootten weergeven en gebruiken
-> * De grootte van een virtuele machine wijzigen
+> * De grootte van een VM wijzigen
 > * De status van een virtuele machine weergeven en begrijpen
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
@@ -180,7 +180,7 @@ De grootte van een VM bepaalt de hoeveelheid rekenresources, zoals CPU, GPU en g
 
 In de volgende tabel zijn grootten gecategoriseerd in use-cases.  
 
-| type                     | Veelgebruikte grootten           |    Description       |
+| Type                     | Veelgebruikte grootten           |    Beschrijving       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Algemeen doel](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Evenwichtige CPU-geheugenverhouding. Ideaal voor ontwikkelen/testen en in kleine tot middelgrote toepassingen en gegevensoplossingen.  |
 | [Geoptimaliseerde rekenkracht](sizes-compute.md)   | Fsv2          | Hoge CPU-geheugenverhouding. Goed voor middelgrootte verkeerstoepassingen, netwerkapparatuur en batchprocessen.        |
@@ -197,7 +197,7 @@ Als u een lijst wilt weergeven met de VM-grootten die beschikbaar zijn in een be
 Get-AzVMSize -Location "EastUS"
 ```
 
-## <a name="resize-a-vm"></a>De grootte van een virtuele machine wijzigen
+## <a name="resize-a-vm"></a>De grootte van een VM wijzigen
 
 Nadat een virtuele machine is geïmplementeerd, kan de grootte ervan worden gewijzigd om meer of minder resources toe te wijzen.
 
@@ -241,13 +241,13 @@ Start-AzVM `
 Een Azure VM kan op een van de vele energiestatussen worden ingesteld. 
 
 
-| Energiestatus | Description
+| Energiestatus | Beschrijving
 |----|----|
 | Starten | De virtuele machine die wordt gestart. |
-| Wordt uitgevoerd | De virtuele machine die wordt uitgevoerd. |
+| In uitvoering | De virtuele machine die wordt uitgevoerd. |
 | Stoppen | De virtuele machine die wordt gestopt. |
 | Gestopt | De virtuele machine is gestopt. Virtuele machines met de status Gestopt genereren nog steeds rekenkosten.  |
-| De toewijzing wordt ongedaan gemaakt | De VM waarvan de toewijzing ongedaan wordt gemaakt. |
+| Vrijgeven | De VM waarvan de toewijzing ongedaan wordt gemaakt. |
 | Toewijzing ongedaan gemaakt | Geeft aan dat de VM is verwijderd uit de hypervisor, maar nog steeds beschikbaar is in het besturingsvenster. Virtuele machines met de status `Deallocated` genereren geen rekenkosten. |
 | - | De energiestatus van de VM is onbekend. |
 
@@ -311,7 +311,7 @@ In deze zelfstudie hebt u geleerd over basistaken voor het maken en beheren van 
 > * Een virtuele machine maken en verbinding maken met een virtuele machine
 > * VM-installatiekopieën selecteren en gebruiken
 > * Specifieke VM-grootten weergeven en gebruiken
-> * De grootte van een virtuele machine wijzigen
+> * De grootte van een VM wijzigen
 > * De status van een virtuele machine weergeven en begrijpen
 
 In de volgende zelfstudie leert u meer over VM-schijven.  

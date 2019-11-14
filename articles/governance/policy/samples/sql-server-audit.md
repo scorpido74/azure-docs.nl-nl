@@ -1,17 +1,14 @@
 ---
 title: Voorbeeld - Auditinstellingen SQL Server controleren
 description: Deze voorbeeldbeleidsdefinitie voert een controle uit op de controle-instellingen van SQL Server met auditIfNotExists.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: c548d1e0e9f21f482a0cfc4b19c482e040d7f298
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 5a0d758bd96937ca443d434b76d22aaefc618687
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980373"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069794"
 ---
 # <a name="sample---audit-sql-server-audit-settings"></a>Voorbeeld - Auditinstellingen SQL Server controleren
 

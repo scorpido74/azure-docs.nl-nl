@@ -1,7 +1,6 @@
 ---
 title: Problemen met Azure Load Balancer oplossen
-titlesuffix: Azure Load Balancer
-description: Bekende problemen met Azure Load Balancer oplossen
+description: Meer informatie over het oplossen van bekende problemen met Azure Load Balancer.
 services: load-balancer
 documentationcenter: na
 author: chadmath
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 4e0e3cf6067467947bcb799a915a93d1bb342ea1
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: d1c10fa8267131f13d3148ace6c97218a18fd494
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154927"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076911"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Problemen met Azure Load Balancer oplossen
 
@@ -29,7 +28,7 @@ Deze pagina bevat informatie over het oplossen van problemen met veelgestelde vr
 - Vm's achter de Load Balancer reageren niet op status controles 
 - Vm's achter de Load Balancer reageren niet op het verkeer op de geconfigureerde poort
 
-## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Duid Vm's achter de Load Balancer reageren niet op status controles
+## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Symptoom: Vm's achter de Load Balancer reageren niet op status controles
 Voor de back-endservers die deel uitmaken van de load balancerset, moeten ze de controle van de test door geven. Zie [informatie over Load Balancer probe](load-balancer-custom-probe-overview.md)(Engelstalig) voor meer informatie over status controles. 
 
 De Load Balancer Vm's van de back-end-groep reageren mogelijk niet op de tests om een van de volgende redenen: 
@@ -44,7 +43,7 @@ De Load Balancer Vm's van de back-end-groep reageren mogelijk niet op de tests o
 
 U kunt dit probleem oplossen door u aan te melden bij de deelnemende Vm's en te controleren of de status van de virtuele machine in orde is en om te reageren op **PsPing** of **TCPing** van een andere virtuele machine in de groep. Als de virtuele machine niet in orde is of niet kan reageren op de test, moet u het probleem oplossen en de VM weer herstellen naar een goede status voordat deze kan deel nemen aan de taak verdeling.
 
-### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-the-probe-port"></a>Oorzaak 2: Load Balancer VM van de back-end-pool luistert niet op de test poort
+### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-the-probe-port"></a>Oorzaak 2: het Load Balancer VM van de back-end-groep luistert niet op de test poort
 Als de virtuele machine in orde is, maar niet op de test reageert, kan het zijn dat de test poort niet op de deelnemende virtuele machine is geopend of dat de virtuele machine niet op die poort luistert.
 
 **Validatie en oplossing**
@@ -66,7 +65,7 @@ Als de firewall op de virtuele machine de test poort blokkeert, of een of meer n
 * Als een van deze regels het test verkeer blokkeert, verwijdert u de regels en configureert u deze opnieuw om het test verkeer toe te staan.  
 * Test of de VM nu heeft gereageerd op de status controles. 
 
-### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>Oorzaak 4: Andere onjuiste configuratie in Load Balancer
+### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>Oorzaak 4: andere onjuiste configuratie in Load Balancer
 Als alle voor gaande oorzaken correct worden gevalideerd en opgelost en de back-end-VM nog steeds niet reageert op de status test, kunt u hand matig testen op connectiviteit en een aantal traceringen verzamelen om inzicht te krijgen in de connectiviteit.
 
 **Validatie en oplossing**
@@ -81,7 +80,7 @@ Als alle voor gaande oorzaken correct worden gevalideerd en opgelost en de back-
     - Controleer of de test pakketten worden afgedwongen voor een andere bestemming (mogelijk via UDR-instellingen) voordat de load balancer wordt bereikt. Dit kan ervoor zorgen dat het verkeer nooit de back-end-VM bereikt. 
 * Wijzig het test type (bijvoorbeeld HTTP in TCP) en configureer de bijbehorende poort in de Acl's voor netwerk beveiligings groepen en de firewall om te controleren of het probleem wordt veroorzaakt door de configuratie van de test reactie. Zie [configuratie endpoint Load Balancing Health probe](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/)(Engelstalig) voor meer informatie over Health probe configuratie.
 
-## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Duid Vm's achter Load Balancer reageren niet op verkeer op de geconfigureerde gegevens poort
+## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Symptoom: Vm's achter Load Balancer reageren niet op verkeer op de geconfigureerde gegevens poort
 
 Als een virtuele machine in de back-end wordt weer gegeven als in orde en reageert op de status tests, maar nog steeds niet deelneemt aan de taak verdeling, of niet reageert op het gegevens verkeer, kan dit een van de volgende oorzaken hebben: 
 * Load Balancer VM van de back-end-pool luistert niet op de gegevens poort 
@@ -95,11 +94,11 @@ Als een virtuele machine niet reageert op het gegevens verkeer, komt dit mogelij
 **Validatie en oplossing**
 
 1. Meld u aan bij de back-end-VM. 
-2. Open een opdracht prompt en voer de volgende opdracht uit om te controleren of er een toepassing luistert op de  gegevens poort: netstat-a 
+2. Open een opdracht prompt en voer de volgende opdracht uit om te controleren of er een toepassing luistert op de gegevens poort:  netstat-a 
 3. Als de poort niet wordt vermeld met de status Luis TEREn, configureert u de juiste listener-poort 
 4. Als de poort is gemarkeerd als luistert, controleert u de doel toepassing op die poort voor mogelijke problemen. 
 
-### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Oorzaak 2: De netwerk beveiligings groep blokkeert de poort op de Load Balancer back-end-VM-groep  
+### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Oorzaak 2: de netwerk beveiligings groep blokkeert de poort op de Load Balancer back-end-VM-groep  
 
 Als een of meer netwerk beveiligings groepen die zijn geconfigureerd op het subnet of op de virtuele machine, de bron-IP of poort blokkeert, kan de virtuele machine niet reageren.
 
@@ -110,7 +109,7 @@ Als een of meer netwerk beveiligings groepen die zijn geconfigureerd op het subn
 * Als een van de regels het verkeer blokkeert, moet u deze regels verwijderen en opnieuw configureren om het gegevens verkeer toe te staan.  
 * Test of de VM nu heeft gereageerd op de status controles.
 
-### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Oorzaak 3: Toegang tot de Load Balancer vanaf dezelfde VM en netwerk interface 
+### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Oorzaak 3: toegang tot de Load Balancer vanaf dezelfde VM en netwerk interface 
 
 Als uw toepassing die wordt gehost in de back-end-VM van een Load Balancer probeert toegang te krijgen tot een andere toepassing die wordt gehost op dezelfde back-end-VM via dezelfde netwerk interface, is dit een niet-ondersteund scenario. 
 
@@ -118,7 +117,7 @@ Als uw toepassing die wordt gehost in de back-end-VM van een Load Balancer probe
 * Configureer afzonderlijke Vm's van de back-end-groep per toepassing. 
 * Configureer de toepassing in dual NIC-Vm's zodat elke toepassing een eigen netwerk interface en IP-adres gebruikt. 
 
-### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Oorzaak 4: Toegang tot de interne Load Balancer frontend van de deelnemende Load Balancer back-end-VM-groep
+### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Oorzaak 4: toegang tot de interne Load Balancer-frontend van de deelnemende Load Balancer back-end-VM-groep
 
 Als er een intern Load Balancer is geconfigureerd in een VNet en een van de back-end-Vm's van de deel nemer probeert toegang te krijgen tot de interne Load Balancer frontend, kunnen er fouten optreden wanneer de stroom wordt toegewezen aan de oorspronkelijke virtuele machine. Dit scenario wordt niet ondersteund. Lees de [beperkingen](load-balancer-overview.md#limitations) voor een gedetailleerde discussie.
 

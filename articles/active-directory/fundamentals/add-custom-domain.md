@@ -8,102 +8,111 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 10/25/2019
 ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3f90e594e69c58364b699299964273ce371e525
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561720"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073532"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>De naam van uw aangepaste domein met behulp van de Azure Active Directory-portal toevoegen
-Elke nieuwe Azure AD-tenant wordt geleverd met een initiële domeinnaam *domainname*. onmicrosoft.com. U niet wijzigen of verwijderen van de initiële domeinnaam, maar u kunt de namen van uw organisatie toevoegen aan de lijst. Door aangepaste domein namen toe te voegen, kunt u gebruikers namen maken die bekend zijn bij uw gebruikers, zoals *Alain\@contoso.com*.
+
+Elke nieuwe Azure AD-Tenant wordt geleverd met een initiële domein naam, *\<domainname >. onmicrosoft. com*. U kunt de initiële domein naam niet wijzigen of verwijderen, maar de namen van uw organisatie toevoegen. Door aangepaste domein namen toe te voegen, kunt u gebruikers namen maken die bekend zijn bij uw gebruikers, zoals *alain\@contoso.com*.
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Voordat u een aangepaste domeinnaam toevoegen kunt, moet u de domeinnaam van uw maken met een domeinregistrar. Zie voor een erkende domeinregistrar [ICANN-Accredited Registrars](https://www.icann.org/registrar-reports/accredited-list.html).
+
+Voordat u een aangepaste domein naam kunt toevoegen, maakt u uw domein naam met een domein registratie service. Zie voor een erkende domeinregistrar [ICANN-Accredited Registrars](https://www.icann.org/registrar-reports/accredited-list.html).
 
 ## <a name="create-your-directory-in-azure-ad"></a>Maken van uw directory in Azure AD
-Nadat u uw domeinnaam hebt ontvangen, kunt u uw eerste Azure AD-directory maken.
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com/) voor uw directory, met behulp van een account met de **eigenaar** rol voor het abonnement en selecteer vervolgens **Azure Active Directory**. Zie voor meer informatie over rollen van abonnement [klassiek abonnement beheerder functies, Azure RBAC-rollen en Azure AD-beheerdersrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles).
+Nadat u uw domeinnaam hebt ontvangen, kunt u uw eerste Azure AD-directory maken. Meld u aan bij de Azure Portal voor uw directory met een account met de rol **eigenaar** voor het abonnement.
 
-    ![Azure Portal scherm met de optie Azure AD](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+Uw nieuwe map maken met de volgende stappen in [maken van een nieuwe tenant voor uw organisatie](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization).
 
-    >[!TIP]
-    > Als u van plan bent om uw on-premises Windows Server AD te federeren met Azure AD, moet u het selectievakje **Ik wil dit domein configureren voor eenmalige aanmelding met mijn lokale Active Directory** inschakelen wanneer u het hulpprogramma Azure AD Connect uitvoert om uw directory's te synchroniseren. Daarnaast moet u dezelfde domeinnaam registreren die u selecteert voor het federeren met uw on-premises directory in de stap **Azure AD-domein** in de wizard. [In deze instructies](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation) ziet u hoe die stap van de wizard eruitziet. Als u het hulpprogramma Azure AD Connect niet hebt, kunt u het [hier](https://go.microsoft.com/fwlink/?LinkId=615771) downloaden.
+>[!IMPORTANT]
+>De persoon die de tenant maakt, wordt automatisch de globale beheerder voor de tenant. De globale beheerder kunt u extra beheerders toevoegen aan de tenant.
 
-2. Uw nieuwe map maken met de volgende stappen in [maken van een nieuwe tenant voor uw organisatie](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization).
+Zie [Azure RBAC-rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)voor meer informatie over abonnements rollen.
 
-    >[!Important]
-    >De persoon die de tenant maakt, wordt automatisch de globale beheerder voor de tenant. De globale beheerder kunt u extra beheerders toevoegen aan de tenant.
+>[!TIP]
+> Als u van plan bent om uw on-premises Windows Server AD te hosten met Azure AD, moet u de optie **Ik wil dit domein configureren voor eenmalige aanmelding met mijn lokale Active Directory** wanneer u het Azure AD Connect-hulp programma uitvoert om uw mappen te synchroniseren.
+>
+> Daarnaast moet u dezelfde domeinnaam registreren die u selecteert voor het federeren met uw on-premises directory in de stap **Azure AD-domein** in de wizard. Zie [controleren of het Azure AD-domein is geselecteerd voor Federatie](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)om te zien wat de installatie lijkt te zijn. Als u het hulp programma Azure AD Connect niet hebt, kunt u [het hier downloaden](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 ## <a name="add-your-custom-domain-name-to-azure-ad"></a>Uw aangepaste domeinnaam toevoegen aan Azure AD
+
 Nadat u uw directory hebt gemaakt, kunt u uw aangepaste domeinnaam toevoegen.
 
-1. Selecteer **aangepaste-domeinnamen**, en selecteer vervolgens **aangepast domein toevoegen**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met het account van een globale administrator voor de map.
+
+1. Zoek en selecteer *Azure Active Directory* op elke pagina. Selecteer vervolgens **aangepaste domein namen** > **aangepast domein toe te voegen**.
 
     ![Pagina aangepaste domein namen, met weer gegeven aangepast domein toevoegen](media/add-custom-domain/add-custom-domain.png)
 
-2. Geef nieuwe domeinnaam van uw organisatie in de **aangepaste domeinnaam** vak (bijvoorbeeld _contoso.com_), en selecteer vervolgens **domein toevoegen**.
-
-    De niet-geverifieerd domein is toegevoegd en de **Contoso** pagina wordt weergegeven waarin u uw DNS-gegevens.
-
-    >[!Important]
-    >U moet opnemen .com, .net of andere op het hoogste niveau extensie voor deze goed te laten werken.
+1. Voer in **aangepaste domein naam**de nieuwe naam van uw organisatie in, in dit voor beeld *contoso.com*. Selecteer **Add domain**.
 
     ![Pagina aangepaste domein namen, met de pagina aangepaste domein toevoegen](media/add-custom-domain/add-custom-domain-blade.png)
 
-4. Kopieer de DNS-gegevens van de **Contoso** pagina. Bijvoorbeeld, MS = ms64983159.
+    >[!IMPORTANT]
+    >U moet *. com*, *.net*of een andere extensie op het hoogste niveau gebruiken om dit goed te laten werken.
+
+    Het niet-geverifieerde domein is toegevoegd. De pagina **contoso.com** wordt weer gegeven met uw DNS-gegevens. Sla deze informatie op. U hebt deze later nodig om een TXT-record te maken om DNS te configureren.
 
     ![Contoso-pagina met DNS-vermelding informatie](media/add-custom-domain/contoso-blade-with-dns-info.png)
 
 ## <a name="add-your-dns-information-to-the-domain-registrar"></a>Uw DNS-gegevens toevoegen aan de domeinregistrar
-Nadat u uw aangepaste domeinnaam aan Azure AD toevoegen, moet u terug naar uw domeinregistrar en de Azure AD DNS-gegevens uit het gekopieerde TXT-bestand toevoegen. Het maken van dit TXT-record voor uw domein 'controleert of' eigendom van de domeinnaam van uw.
 
--  Ga terug naar uw domein registratie, maak een nieuwe TXT-record voor uw domein op basis van de gekopieerde DNS-gegevens, stel de **TTL** (time to Live) in op 3600 seconden (60 minuten) en sla de gegevens op.
+Nadat u uw aangepaste domeinnaam aan Azure AD toevoegen, moet u terug naar uw domeinregistrar en de Azure AD DNS-gegevens uit het gekopieerde TXT-bestand toevoegen. Als u deze TXT-record voor uw domein maakt, wordt het eigendom van uw domein naam gecontroleerd.
 
-    >[!Important]
-    >U kunt zoveel domeinnamen als u wilt registreren. Elk domein wordt echter een eigen TXT-record opgehaald uit Azure AD. Wees voorzichtig bij het invoeren van de informatie van de TXT-bestanden op de domeinregistrar. Als u de verkeerde invoeren of dubbele gegevens per ongeluk hebt, hebt u wachten totdat de TTL-waarde een optreedt (60 minuten) time-out voordat u het opnieuw kunt proberen.
+Ga terug naar uw domein registratie service en maak een nieuwe TXT-record voor uw domein op basis van de gekopieerde DNS-gegevens. Stel de TTL (time to Live) in op 3600 seconden (60 minuten) en sla de record op.
+
+>[!IMPORTANT]
+>U kunt zoveel domeinnamen als u wilt registreren. Elk domein wordt echter een eigen TXT-record opgehaald uit Azure AD. Wees voorzichtig wanneer u de gegevens van het TXT-bestand invoert bij het domein registratie service. Als u de verkeerde of dubbele gegevens per ongeluk opgeeft, moet u wachten tot de TTL-tijd (60 minuten) voordat u het opnieuw kunt proberen.
 
 ## <a name="verify-your-custom-domain-name"></a>Controleer of de naam van uw aangepaste domein
-Nadat u uw aangepaste domeinnaam hebt geregistreerd, moet u controleren of dat de parameter is geldig zijn in Azure AD. Het doorgeven van uw domeinregistrar is Azure AD kan momentopname of het kan wel duren tot een paar dagen, afhankelijk van uw domeinregistrar.
 
-### <a name="to-verify-your-custom-domain-name"></a>Om te controleren of uw aangepaste domeinnaam
+Nadat u uw aangepaste domein naam hebt geregistreerd, moet u ervoor zorgen dat deze geldig is in azure AD. De doorgifte van uw domein registratie voor Azure AD kan onmiddellijk worden uitgevoerd, maar het kan enkele dagen duren, afhankelijk van uw domein registratie.
+
+Voer de volgende stappen uit om uw aangepaste domein naam te verifiëren:
+
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met het account van een globale administrator voor de map.
 
-2. Selecteer **Azure Active Directory**, en selecteer vervolgens **aangepaste-domeinnamen**.
+1. Zoek en selecteer *Azure Active Directory* op een wille keurige pagina en selecteer vervolgens **aangepaste domein namen**.
 
-3. Op de **Fabrikam - aangepaste-domeinnamen** pagina, selecteert u de aangepaste domeinnaam **Contoso**.
+1. In **aangepaste domein namen**selecteert u de naam van het aangepaste domein. In dit voor beeld selecteert u **contoso.com**.
 
     ![Fabrikam - aangepast domein namen pagina, met contoso gemarkeerd](media/add-custom-domain/custom-blade-with-contoso-highlighted.png)
 
-4. Op de **Contoso** weergeeft, schakelt **controleren** om te controleren of uw aangepaste domein juist is geregistreerd en is geldig voor Azure AD.
+1. Op de pagina **contoso.com** selecteert u **verifiëren** om er zeker van te zijn dat uw aangepaste domein juist is geregistreerd en geldig is voor Azure AD.
 
     ![Contoso-pagina met DNS-vermeldingsgegevens en de knop controleren](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
 
 Nadat u uw aangepaste domein naam hebt geverifieerd, kunt u uw TXT-of MX-verificatie bestand verwijderen.
 
 ## <a name="common-verification-issues"></a>Veelvoorkomende problemen met verificatie
-- Als Azure AD een aangepaste domeinnaam niet verifiëren kan, probeert u de volgende suggesties:
-  - **Wacht ten minste een uur en probeer het opnieuw**. DNS-records moeten worden doorgegeven voordat Azure AD kunt controleren of dat het domein en dit proces kunnen een uur of langer duren.
 
-  - **Zorg ervoor dat de DNS-record klopt.** Ga terug naar de site domein naam registrar en zorg ervoor dat de vermelding wordt weergegeven, en dat deze overeenkomt met de DNS-vermeldingsgegevens geleverd door Azure AD.
+Als Azure AD een aangepaste domeinnaam niet verifiëren kan, probeert u de volgende suggesties:
 
-    Als u de record op de site registrar niet bijwerken, moet u de vermelding delen met iemand die de juiste machtigingen voor de vermelding toevoegen en controleer of dat deze juist is.
+- **Wacht ten minste een uur en probeer het opnieuw**. DNS-records moeten zijn doorgegeven voordat Azure AD het domein kan verifiëren. Dit proces kan een uur of langer duren.
 
-- **Zorg ervoor dat de domeinnaam niet al wordt gebruikt in een andere directory.** De naam van een domein kan alleen worden geverifieerd in een bepaalde map, wat betekent dat als de domeinnaam van uw is momenteel geverifieerd in een andere directory, het kan ook worden geverifieerd in de nieuwe map. U lost dit probleem duplicatie, moet u de domeinnaam verwijderen uit de oude map. Zie voor meer informatie over het verwijderen van domeinnamen [aangepaste domeinnamen beheren](../users-groups-roles/domains-manage.md).
+- **Zorg ervoor dat de DNS-record klopt.** Ga terug naar de registratie site van de domein naam. Zorg ervoor dat de vermelding daar staat en dat deze overeenkomt met de DNS-invoer gegevens die door Azure AD worden verstrekt.
 
-- **Zorg ervoor dat u hebt geen niet-beheerde Power BI-tenants.** Als uw gebruikers hebt geactiveerd Power BI via self-service-aanmelding en die een niet-beheerde tenant voor uw organisatie zijn gemaakt, moet u via management als een beheerder intern of extern uitvoeren met behulp van PowerShell. Zie voor meer informatie over hoe u een niet-beheerde directory overnemen, [een niet-beheerde directory overnemen als in Azure Active Directory-beheerder](../users-groups-roles/domains-admin-takeover.md).
+  Als u de record op de registratie site niet kunt bijwerken, deelt u de vermelding met iemand die gemachtigd is om de vermelding toe te voegen en controleert u of deze juist is.
+
+- **Zorg ervoor dat de domeinnaam niet al wordt gebruikt in een andere directory.** Een domein naam kan alleen in één Directory worden geverifieerd. Als uw domein naam momenteel in een andere Directory is geverifieerd, kan deze ook niet worden geverifieerd in de nieuwe map. U lost dit probleem duplicatie, moet u de domeinnaam verwijderen uit de oude map. Zie voor meer informatie over het verwijderen van domeinnamen [aangepaste domeinnamen beheren](../users-groups-roles/domains-manage.md).
+
+- **Zorg ervoor dat u hebt geen niet-beheerde Power BI-tenants.** Als uw gebruikers hebt geactiveerd Power BI via self-service-aanmelding en die een niet-beheerde tenant voor uw organisatie zijn gemaakt, moet u via management als een beheerder intern of extern uitvoeren met behulp van PowerShell. Zie [Een niet-beheerde directory overnemen als beheerder in Azure Active Directory](../users-groups-roles/domains-admin-takeover.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Een andere globale beheerder toevoegen aan uw directory. Zie [rollen en beheerders toewijzen](active-directory-users-assign-role-azure-portal.md)voor meer informatie.
 
-- Gebruikers toevoegen aan uw domein, Zie [How to add of delete users](add-users-azure-active-directory.md).
+- Gebruikers toevoegen aan uw domein. Zie [hoe gebruikers toevoegen of verwijderen](add-users-azure-active-directory.md)voor meer informatie.
 
 - De gegevens van uw domein naam in Azure AD beheren. Zie [aangepaste domein namen beheren](../users-groups-roles/domains-manage.md)voor meer informatie.
 

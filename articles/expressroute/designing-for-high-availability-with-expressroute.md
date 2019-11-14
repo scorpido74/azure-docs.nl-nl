@@ -1,21 +1,18 @@
 ---
-title: Ontwerpen voor hoge Beschik baarheid met Azure ExpressRoute | Microsoft Docs
+title: 'Azure ExpressRoute: ontwerpen voor hoge Beschik baarheid'
 description: Deze pagina bevat architectuur aanbevelingen voor hoge Beschik baarheid tijdens het gebruik van Azure ExpressRoute.
-documentationcenter: na
-services: networking
+services: expressroute
 author: rambk
-manager: tracsman
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 06/28/2019
 ms.author: rambala
-ms.openlocfilehash: 4984b30daf6170873cad9472bfed2d879af57efe
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4c3c6ae5fbdd91e6e44438be7fef2a3a91564a34
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67466649"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076686"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Ontwerpen voor hoge Beschik baarheid met ExpressRoute
 
@@ -54,7 +51,7 @@ Als u de primaire en secundaire verbindingen van een ExpressRoute-circuit in de 
 
 Micro soft-peering is ontworpen voor communicatie tussen open bare eind punten. On-premises privé-eind punten zijn dus netwerk adressen vertaald (gecommuniceerd) met het open bare IP-adres van de klant of het partner netwerk voordat ze communiceren via micro soft-peering. Ervan uitgaande dat u de primaire en secundaire verbindingen in de modus actief-actief gebruikt, waar en hoe u NAT een invloed heeft op hoe snel u een fout in een van de ExpressRoute-verbindingen herstelt. Er worden twee verschillende NAT-opties geïllustreerd in de volgende afbeelding:
 
-[![3D]][3]
+[![3]][3]
 
 In de optie 1 wordt NAT toegepast na het splitsen van het verkeer tussen de primaire en secundaire verbindingen van de ExpressRoute. Om aan de stateful-vereisten van NAT te voldoen, worden onafhankelijke NAT-Pools gebruikt tussen de primaire en secundaire apparaten, zodat het retour verkeer zou aankomen op hetzelfde edge-apparaat via de stroom egressed.
 
@@ -87,8 +84,8 @@ In dit artikel wordt uitgelegd hoe u een hoge Beschik baarheid van een ExpressRo
 Zie [ontwerpen voor herstel na nood gevallen met persoonlijke ExpressRoute-peering][DR]voor het ontwerp van overwegingen bij het bouwen van geo-redundante netwerk connectiviteit met micro soft backbone. Dit kan van invloed zijn op een hele regio.
 
 <!--Image References-->
-[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "aanbevolen manier om verbinding te maken met ExpressRoute"
-[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "meest optimale connectiviteit voor laatste mijl"
+[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "Aanbevolen manier om verbinding te maken met ExpressRoute"
+[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "De meest optimale connectiviteit voor de laatste mijl"
 [3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png "NAT-opties"
 
 

@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: ee1bd413894ff5c12883279ccd8a9e9eac3c1790
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c84a4472789430524cbf5ff3f1ae24ea10d342b9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048789"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066881"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Push meldingen met Azure Notification Hubs: veelgestelde vragen
 
@@ -30,9 +30,7 @@ ms.locfileid: "74048789"
 
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>Wat is de resource structuur van Notification Hubs?
 
-Azure Notification Hubs heeft twee resource niveaus: hubs en naam ruimten. Een hub is een enkele push bron die de verschillende platform push informatie van één app kan bevatten. Een naam ruimte is een verzameling hubs in één regio.
-
-De aanbevolen toewijzing komt overeen met één naam ruimte met één app. Binnen een naam ruimte kunt u een productie-hub hebben die werkt met uw productie-app, een test-hub die werkt met uw test-app, enzovoort.
+Azure Notification Hubs heeft twee resource niveaus: hubs en naam ruimten. Een hub is een enkele push bron die de verschillende platform push informatie van één app kan bevatten. Een naam ruimte is een verzameling hubs in één regio. De aanbevolen toewijzing komt overeen met één naam ruimte met één app. Binnen een naam ruimte kunt u een productie-hub hebben die werkt met uw productie-app, een test-hub die werkt met uw test-app, enzovoort.
 
 ### <a name="what-is-the-price-model-for-notification-hubs"></a>Wat is het prijs model voor Notification Hubs?
 
@@ -45,7 +43,7 @@ De meest recente prijs informatie vindt u op de pagina met [Notification hubs pr
 Functies van de Standard-laag:
 
 * **Uitgebreide telemetrie**: u kunt notification hubs per bericht-telemetrie gebruiken om Push aanvragen en platform Notification System feedback voor fout opsporing bij te houden.
-* **Multitenancy**: u kunt werken met platform Notification System referenties op een niveau van de naam ruimte. Met deze optie kunt u eenvoudig tenants splitsen in hubs binnen dezelfde naam ruimte.
+* **Multitenancy: u**kunt werken met platform Notification System referenties op een niveau van de naam ruimte. Met deze optie kunt u eenvoudig tenants splitsen in hubs binnen dezelfde naam ruimte.
 * **Geplande push**: u kunt plannen dat er op elk moment meldingen worden verzonden.
 * **Bulk bewerkingen**: Hiermee schakelt u de functionaliteit voor het exporteren/importeren van gegevens in, zoals wordt beschreven in het document [registraties exporteren/importeren] .
 
@@ -54,7 +52,7 @@ Functies van de Standard-laag:
 Voor de lagen basis en Standard Notification Hubs kunnen correct geconfigureerde toepassingen Push meldingen verzenden of registratie beheer bewerkingen ten minste 99,9 procent van de tijd uitvoeren. Ga voor meer informatie over de SLA naar de pagina [Notification hubs Sla](https://azure.microsoft.com/support/legal/sla/notification-hubs/) .
 
 > [!NOTE]
-> Omdat push meldingen afhankelijk zijn van platform meldings systemen van derden (zoals Apple APNS en Google FCM), is er geen SLA-garantie voor het leveren van deze berichten. Nadat Notification Hubs de batches naar platform notification Systems (SLA) hebt verzonden, is het de verantwoordelijkheid van de platform meldings systemen voor het leveren van de pushes (geen SLA Guaranteed).
+> Omdat push meldingen afhankelijk zijn van platform meldings systemen van derden, zoals de service van Apple Push Notification Services (APNs) en Google Firebase Cloud Messa ging (FCM), is er geen SLA-garantie voor het leveren van deze berichten. Nadat Notification Hubs de batches naar platform notification Systems (SLA) hebt verzonden, is het de verantwoordelijkheid van de platform meldings systemen voor het leveren van de pushes (geen SLA Guaranteed).
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Wilt u de hub of naam ruimte Hoe kan ik upgraden of downgrade uitvoeren naar een andere laag?
 
@@ -75,13 +73,7 @@ Push meldingen worden ondersteund voor [IOS](notification-hubs-ios-apple-push-no
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Ondersteunt u SMS-berichten, e-mail berichten of webmeldingen?
 
-Notification Hubs is hoofd zakelijk ontworpen voor het verzenden van meldingen naar mobiele apps. Het biedt geen mogelijkheden voor e-mail of tekst berichten. Platforms van derden die deze mogelijkheden bieden, kunnen echter worden geïntegreerd met Notification Hubs om systeem eigen push meldingen te verzenden met behulp van [Mobile apps].
-
-Notification Hubs biedt ook geen bezorgings service voor push meldingen in de browser. Klanten kunnen deze functie implementeren met behulp van Signa lering boven op de ondersteunde platformen aan de server zijde. 
-
-### <a name="how-are-mobile-apps-and-azure-notification-hubs-related-and-when-do-i-use-them"></a>Hoe worden Mobile Apps en hoe werken Azure Notification Hubs en wanneer kan ik deze gebruiken?
-
-Als u een bestaande back-end voor een mobiele app hebt en u alleen de mogelijkheid wilt toevoegen om Push meldingen te verzenden, kunt u Azure Notification Hubs gebruiken. Als u een volledig nieuwe back-end voor uw mobiele app wilt instellen, kunt u overwegen de Mobile Apps functie van Azure App Service te gebruiken. Een mobiele app richt automatisch een notification hub in, zodat u eenvoudig push meldingen kunt verzenden vanuit de back-end van de mobiele app. Prijzen voor Mobile Apps omvatten de basis kosten voor een notification hub. U betaalt alleen wanneer u de inbegrepen pushes overschrijdt. Ga naar de pagina met [Prijzen van app-services] voor meer informatie over de kosten.
+Notification Hubs verzendt meldingen naar apparaten met mobiele apps. Het biedt geen mogelijkheden voor e-mail of tekst berichten. Notification Hubs biedt ook geen bezorgings service voor push meldingen in de browser. Klanten kunnen deze functie implementeren met behulp van Signa lering boven op de ondersteunde platformen aan de server zijde. 
 
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>Hoeveel apparaten kan ik ondersteunen als ik push meldingen verzend via Notification Hubs?
 
@@ -94,7 +86,7 @@ Als u ondersteuning nodig hebt voor meer dan 10.000.000 geregistreerde apparaten
 Afhankelijk van de geselecteerde laag, wordt Azure Notification Hubs automatisch geschaald op basis van het aantal meldingen dat door het systeem wordt uitgevoerd.
 
 > [!NOTE]
-> De totale gebruiks kosten kunnen toenemen op basis van het aantal push meldingen dat wordt geleverd. Zorg ervoor dat u op de hoogte bent van de limieten voor lagen die worden beschreven op de pagina met [Notification hubs prijzen] .
+> De totale gebruiks kosten kunnen toenemen op basis van het aantal verzonden push meldingen. Zorg ervoor dat u op de hoogte bent van de limieten voor lagen die worden beschreven op de pagina met [Notification hubs prijzen] .
 
 Onze klanten gebruiken Notification Hubs om dagelijks miljoenen push meldingen te verzenden. U hoeft niets te doen om het bereik van uw push meldingen te schalen, zolang u Azure Notification Hubs gebruikt.
 
@@ -135,7 +127,7 @@ Naam ruimten kunnen worden gebruikt voor implementatie groepering. Ze kunnen ook
 
 #### <a name="geo-distribution"></a>Geo-distributie
 
-Geo-distributie is niet altijd kritiek in scenario's voor push meldingen. Verschillende PNSes (bijvoorbeeld APNS of FCM) die push meldingen naar apparaten leveren, worden niet gelijkmatig gedistribueerd.
+Geo-distributie is niet altijd kritiek in scenario's voor push meldingen. Verschillende PNSes (bijvoorbeeld APNs of FCM) die push meldingen naar apparaten leveren, worden niet gelijkmatig gedistribueerd.
 
 Als u een toepassing hebt die wereld wijd wordt gebruikt, kunt u hubs maken in verschillende naam ruimten door de Notification Hubs-service te gebruiken in verschillende Azure-regio's over de hele wereld.
 
@@ -157,7 +149,7 @@ Alle meldingen worden door de PNS van het platform bezorgd aan de doel apparaten
 Alle verbindingen, van de afzender naar de Azure-Notification Hubs naar de PNS, gebruiken HTTPS.
 
 > [!NOTE]
-> De payload van berichten wordt niet op enigerlei wijze door Azure Notification Hubs geregistreerd.
+> De payload van berichten wordt niet door Azure Notification Hubs geregistreerd.
 
 Als u gevoelige nettoladingen wilt verzenden, kunt u het beste een beveiligd push patroon gebruiken. De afzender levert een ping-melding met een bericht-id aan het apparaat zonder de gevoelige nettolading. Wanneer de app op het apparaat de payload ontvangt, roept de app een beveiligde API rechtstreeks aan om de bericht gegevens op te halen. Ga voor een hand leiding voor het implementeren van dit patroon naar de pagina [Notification Hubs Secure push-zelf studie] .
 
@@ -207,9 +199,8 @@ U kunt ook programmatisch toegang krijgen tot metrische gegevens. Raadpleeg voor
 - [Metrische gegevens en activiteiten logboeken voor een resource ophalen](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
 - [Azure monitoring REST API-overzicht](../azure-monitor/platform/rest-api-walkthrough.md)
 
-
 > [!NOTE]
-> Geslaagde meldingen betekenen gewoon dat push meldingen zijn bezorgd bij de externe PNS (bijvoorbeeld APNS voor Apple of FCM voor Google). Het is de verantwoordelijkheid van de PNS om de meldingen te leveren aan doel apparaten. Normaal gesp roken worden door de PNS geen metrische gegevens over levering aan derden blootgesteld.  
+> Geslaagde meldingen betekenen gewoon dat push meldingen zijn bezorgd bij de externe PNS (bijvoorbeeld APNs voor iOS en macOS of FCM voor Android-apparaten). Het is de verantwoordelijkheid van de PNS om de meldingen te leveren aan doel apparaten. Normaal gesp roken worden door de PNS geen metrische gegevens over levering aan derden blootgesteld.  
 
 [Azure Portal]: https://portal.azure.com
 [Notification Hubs prijzen]: https://azure.microsoft.com/pricing/details/notification-hubs/
@@ -226,5 +217,4 @@ U kunt ook programmatisch toegang krijgen tot metrische gegevens. Raadpleeg voor
 [Registraties exporteren/importeren]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
-[Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
-[Prijzen van app-services]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

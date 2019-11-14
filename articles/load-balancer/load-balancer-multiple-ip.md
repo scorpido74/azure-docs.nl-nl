@@ -1,7 +1,7 @@
 ---
 title: Taak verdeling op meerdere IP-configuraties-Azure Portal
-titlesuffix: Azure Load Balancer
-description: Taak verdeling over de primaire en secundaire IP-configuraties.
+titleSuffix: Azure Load Balancer
+description: In dit artikel vindt u informatie over de taak verdeling over de primaire en secundaire IP-configuraties met behulp van de Azure Portal.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: dbf8cdd326d3e1c8f32f6dc2bd3486146993e06b
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4bf74986462ecb2659505f8a1261b9b24aba3fee
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274740"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077010"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Taak verdeling op meerdere IP-configuraties met behulp van de Azure Portal
 
@@ -58,7 +58,7 @@ Zie [een virtuele machine met meerdere Nic's maken met behulp van Power shell](.
 
 Voer de volgende stappen uit om het scenario te vervolledigen dat in dit artikel wordt beschreven.
 
-### <a name="step-1-configure-the-secondary-nics"></a>Stap 1: De secundaire Nic's configureren
+### <a name="step-1-configure-the-secondary-nics"></a>Stap 1: de secundaire Nic's configureren
 
 Voor elke virtuele machine in uw virtuele netwerk voegt u de IP-configuratie voor de secundaire NIC toe:  
 
@@ -82,13 +82,13 @@ Voor elke virtuele machine in uw virtuele netwerk voegt u de IP-configuratie voo
 
 Nadat de tweede IP-configuratie voor de secundaire NIC is voltooid, wordt deze weer gegeven onder de instellingen voor de **IP-** configuratie voor de desbetreffende NIC.
 
-### <a name="step-2-create-the-load-balancer"></a>Stap 2: Load balancer maken
+### <a name="step-2-create-the-load-balancer"></a>Stap 2: De load balancer maken
 
 Maak uw load balancer voor de configuratie:
 
 1. Blader naar de Azure Portal: https://portal.azure.com. Meld u aan met uw Azure-account.
 
-2. Selecteer in de linkerbovenhoek van het scherm **een resource** > maken**netwerk** > **Load Balancer**. Selecteer vervolgens **maken**.
+2. Selecteer in de linkerbovenhoek van het scherm **een resource maken** > **netwerk** > **Load Balancer**. Selecteer vervolgens **maken**.
 
 3. Typ onder **Load Balancer maken**een naam voor uw Load Balancer. In dit scenario gebruiken we de naam **mylb**.
 
@@ -98,7 +98,7 @@ Maak uw load balancer voor de configuratie:
 
 De implementatie van de load balancer wordt gestart. Het kan een paar minuten duren voordat de implementatie is voltooid. Nadat de implementatie is voltooid, wordt de load balancer als resource weer gegeven in de resource groep.
 
-### <a name="step-3-configure-the-front-end-ip-pool"></a>Stap 3: De front-end-IP-adres groep configureren
+### <a name="step-3-configure-the-front-end-ip-pool"></a>Stap 3: de front-end-IP-adres groep configureren
 
 Configureer voor elke website (contoso.com en fabrikam.com) de front-end-IP-adres groep op uw load balancer:
 
@@ -130,7 +130,7 @@ Configureer voor elke website (contoso.com en fabrikam.com) de front-end-IP-adre
 
 Nadat de front-end-pool is geconfigureerd, worden de IP-adressen weer gegeven onder de **IP-configuratie-** instellingen van uw Load Balancer frontend. 
     
-### <a name="step-4-configure-the-back-end-pool"></a>Stap 4: De back-end-pool configureren
+### <a name="step-4-configure-the-back-end-pool"></a>Stap 4: de back-end-pool configureren
 
 Configureer voor elke website (contoso.com en fabrikam.com) de back-end-adres groep op uw load balancer:
         
@@ -156,7 +156,7 @@ Configureer voor elke website (contoso.com en fabrikam.com) de back-end-adres gr
 
 Nadat de back-end-pool is geconfigureerd, worden de adressen weer gegeven onder de instellingen voor de **back-endadresgroep** van Load Balancer.
 
-### <a name="step-5-configure-the-health-probe"></a>Stap 5: De status test configureren
+### <a name="step-5-configure-the-health-probe"></a>Stap 5: de status test configureren
 
 Configureer een status test voor uw load balancer:
 
@@ -168,7 +168,7 @@ Configureer een status test voor uw load balancer:
 
 4. Typ een naam voor de status test (bijvoorbeeld **http**). Selecteer **OK**.
 
-### <a name="step-6-configure-load-balancing-rules"></a>Stap 6: Taakverdelingsregels configureren
+### <a name="step-6-configure-load-balancing-rules"></a>Stap 6: taakverdelings regels configureren
 
 Configureer voor elke website (contoso.com en fabrikam.com) de taakverdelings regels:
     

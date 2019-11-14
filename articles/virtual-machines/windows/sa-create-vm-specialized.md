@@ -1,5 +1,5 @@
 ---
-title: Een VM maken op basis van een gespecialiseerde schijf in azure | Microsoft Docs
+title: Een VM maken op basis van een gespecialiseerde schijf in azure
 description: Maak een nieuwe virtuele machine door een speciale niet-beheerde schijf te koppelen in het Resource Manager-implementatie model.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: cdbf55aae52cec9df1ba34cbeb34c67b8e5fc5d0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: d887ef2ef74bb433d6e8ae7f53cd0b77f5948303
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749201"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073353"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Een virtuele machine maken op basis van een gespecialiseerde VHD in een opslag account
 

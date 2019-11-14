@@ -1,5 +1,5 @@
 ---
-title: Prestaties optimaliseren op virtuele machines uit de Azure Lsv2-serie-opslag | Microsoft Docs
+title: Prestaties optimaliseren op virtuele machines uit de Azure Lsv2-serie-opslag
 description: Meer informatie over het optimaliseren van de prestaties van uw oplossing op de virtuele machines uit de Lsv2-serie.
 services: virtual-machines-windows
 author: laurenhughes
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 5728afe8195a8f25e5aafcb815b0c61558b32547
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a14e38cd93e7d6273282e209db8ce83ec99f16db
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101787"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068167"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimaliseer de prestaties van de virtuele machines uit de Lsv2-serie
 
@@ -39,7 +39,7 @@ Vm's uit de Lsv2-serie gebruiken AMD EYPC™ server-processors op basis van de m
 
 * Lsv2-gebruikers moeten niet vertrouwen op de NUMA-gegevens van het apparaat (alle 0) die in de virtuele machine zijn gerapporteerd voor gegevens stations om de NUMA-affiniteit voor hun apps te bepalen. De aanbevolen manier om de prestaties te verbeteren is als dat mogelijk is om werk belastingen over Cpu's te spreiden. 
 
-* De Maxi maal ondersteunde wachtrij diepte per I/O-wachtrij paar voor Lsv2 VM NVMe-apparaat is 1024 (VS. I3 wachtrij diepte 32-limiet van Amazon). Lsv2 gebruikers moeten de werk belasting van hun (synthetische) benchmarking beperken tot de wachtrij diepte 1024 of lager om te voor komen dat de wachtrij vol is voor waarden, waardoor de prestaties kunnen worden verminderd.
+* De Maxi maal ondersteunde wachtrij diepte per I/O-wachtrij paar voor Lsv2 VM NVMe-apparaat is 1024 (VS. Amazon i3 wachtrij diepte 32-limiet). Lsv2 gebruikers moeten de werk belasting van hun (synthetische) benchmarking beperken tot de wachtrij diepte 1024 of lager om te voor komen dat de wachtrij vol is voor waarden, waardoor de prestaties kunnen worden verminderd.
 
 ## <a name="utilizing-local-nvme-storage"></a>Lokale NVMe-opslag gebruiken
 

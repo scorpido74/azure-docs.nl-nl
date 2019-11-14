@@ -1,22 +1,23 @@
 ---
-title: Toegangs logboeken, prestatie logboeken, status van back-end en metrische gegevens voor Azure-toepassing gateway bewaken
+title: Back-end-en Diagnostische logboeken
+titleSuffix: Azure Application Gateway
 description: Meer informatie over het inschakelen en beheren van toegangs logboeken en prestatie logboeken voor Azure-toepassing gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: fa930d4ab420708e6abfdf1765703afbe20fa25e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 448e5bf798f5b1c3006888f846722e54fec46ef8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958265"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075301"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-end status-en Diagnostische logboeken voor Application Gateway
 
-Als u Azure-toepassing gateway gebruikt, kunt u resources op de volgende manieren controleren:
+U kunt op de volgende manieren Azure-toepassing gateway bronnen bewaken:
 
 * [Status van de back-end](#back-end-health): Application Gateway biedt de mogelijkheid om de status van de servers in de back-endservers te bewaken via de Azure Portal en via Power shell. U kunt ook de status van de back-endservers vinden via de diagnostische logboeken voor prestaties.
 
@@ -263,7 +264,7 @@ Het prestatie logboek wordt alleen gegenereerd als u het hebt ingeschakeld op el
 |requestCount     | Aantal geleverde aanvragen.        |
 |periode | De gemiddelde latentie (in milliseconden) van aanvragen van het exemplaar naar de back-end die de aanvragen verzendt. |
 |failedRequestCount| Aantal mislukte aanvragen.|
-|throughput| Gemiddelde door Voer sinds het laatste logboek, gemeten in bytes per seconde.|
+|Doorvoer| Gemiddelde door Voer sinds het laatste logboek, gemeten in bytes per seconde.|
 
 ```json
 {

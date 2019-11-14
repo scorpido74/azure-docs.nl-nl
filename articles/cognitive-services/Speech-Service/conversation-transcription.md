@@ -1,7 +1,7 @@
 ---
 title: 'Wat is een conversatie transcriptie (preview): spraak service'
 titleSuffix: Azure Cognitive Services
-description: Conversation transcriptie is een oplossing voor spraak naar tekst waarmee spraak herkenning, de identificatie van de spreker en de toewijzing van zinnen aan elke spreker (ook wel bekend als diarization) worden gecombineerd om te voorzien in realtime en/of asynchrone transcriptie van elke enger. Met gesprek transcriptie maakt u conversaties voor iedereen, zoals deel nemers die doof en slechthorend zijn.
+description: Conversation transcriptie is een oplossing voor spraak naar tekst waarmee spraak herkenning, de identificatie van de spreker en de toewijzing van zinnen aan elke spreker (ook wel bekend als diarization) worden gecombineerd om te voorzien in realtime en/of asynchrone transcriptie van elke enger.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: f4b7591d5ddb138db0abbdb673cadc6afd71f315
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0c15b053028bd707159a632c98faaea8b9954a9b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608028"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075851"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>Wat is een conversatie transcriptie (preview)?
 
@@ -44,7 +44,7 @@ Als u vergaderingen voor iedereen wilt maken, zoals deel nemers die doof en slec
 
 Deel nemers aan het vergaderen kunnen zich richten op de vergadering en moeten notities maken op het gesprek transcriptie. Deel nemers kunnen actief gebruikmaken van de vergadering en snel opvolgen tijdens de volgende stappen, waarbij de transcriptie wordt gebruikt in plaats van notities te maken en mogelijk iets te missen tijdens de vergadering.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 
 Dit is een overzicht op hoog niveau van de werking van de conversatie transcriptie.
 

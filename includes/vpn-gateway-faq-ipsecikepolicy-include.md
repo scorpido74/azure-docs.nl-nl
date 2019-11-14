@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6fa1912e80a98c98f058931708e191d0fff5bc66
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 345822847ddd60794cd912ccb52c14f6e240cd66
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799790"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075419"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Wordt het aangepaste beleid voor IPsec/IKE op alle Azure VPN Gateway-SKU's ondersteund?
-Het aangepaste beleid voor IPsec/IKE wordt ondersteund op Azure VPN-gateways **VpnGw1, VpnGw2, VpnGw3, Standard** en **HighPerformance**. De **basis**-SKU wordt **niet** ondersteund.
+Aangepaste IPsec/IKE-beleid wordt ondersteund op alle Azure Sku's, met uitzonde ring van de basis-SKU.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Hoeveel beleidsregels kan ik opgeven voor een verbinding?
 U kunt maar ***één*** beleidscombinatie opgeven voor een bepaalde verbinding.
@@ -27,22 +27,22 @@ Nee, u moet alle algoritmen en parameters opgeven voor zowel IKE (Main Mode) en 
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>Wat zijn de algoritmen en belangrijkste sterke punten die in het aangepaste beleid worden ondersteund?
 De volgende tabel bevat de ondersteunde cryptografische algoritmen en sleutelsterkten die door klanten kunnen worden geconfigureerd. U moet voor elk veld een optie selecteren.
 
-| **IPsec/IKEv1, IKEv2**  | **Opties**                                                                   |
-| ---                     | ---                                                                           |
-| IKEv1, IKEv2-versleuteling | AES256, AES192, AES128, DES3, DES                                             |
-| IKEv1, IKEv2-integriteit  | SHA384, SHA256, SHA1, MD5                                                     |
-| DH-groep                | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, geen  |
-| IPsec-versleuteling        | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, geen      |
-| IPsec-integriteit         | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
-| PFS-groep               | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, geen                              |
-| QM SA-levensduur          | Seconden (geheel getal; **min. 300** /standaard 27000 seconden)<br>KB (geheel getal; **min. 1024**/standaard 102400000 KB) |
-| Verkeersselector        | UsePolicyBasedTrafficSelectors ($True/$False; standaard $False)                 |
-|                         |                                                                               |
+| **IPsec/IKEv2**  | **Opties**                                                                   |
+| ---              | ---                                                                           |
+| IKEv2-versleuteling | AES256, AES192, AES128, DES3, DES                                             |
+| IKEv2-integriteit  | SHA384, SHA256, SHA1, MD5                                                     |
+| DH-groep         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, geen |
+| IPsec-versleuteling | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, geen      |
+| IPsec-integriteit  | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
+| PFS-groep        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, geen                              |
+| QM SA-levensduur   | Seconden (geheel getal; **min. 300** /standaard 27000 seconden)<br>KB (geheel getal; **min. 1024**/standaard 102400000 KB)           |
+| Verkeersselector | UsePolicyBasedTrafficSelectors ($True/$False; standaard $False)                 |
+|                  |                                                                               |
 
 > [!IMPORTANT]
 > 1. DHGroup2048 en PFS2048 zijn hetzelfde als Diffie-Hellman-groep **14** in IKE en IPsec PFS. Zie [Diffie-Hellman-groepen](#DH) voor de volledige toewijzingen.
 > 2. Voor GCMAES-algoritmen moet u de hetzelfde GCMAES-algoritme en dezelfde lengte van de sleutel voor de IPsec-codering en -integriteit opgeven.
-> 3. De levens duur van de SA-hoofd modus van IKEv1 en IKEv2 wordt 28.800 seconden op de Azure VPN-gateways vastgesteld.
+> 3. De levens duur van de SA-hoofd modus van IKEv2 wordt 28.800 seconden op de Azure VPN-gateways vastgesteld.
 > 4. De QM SA-levensduur is een optionele parameter. Als niets is opgegeven, worden de standaardwaarden 27.000 seconden (7,5 uur) en 102400000 kilobytes (102 GB) gebruikt.
 > 5. UsePolicyBasedTrafficSelector is een optieparameter voor de verbinding. Zie het volgende FAQ-item voor 'UsePolicyBasedTrafficSelectors'
 

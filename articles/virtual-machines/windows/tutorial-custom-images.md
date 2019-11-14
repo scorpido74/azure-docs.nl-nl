@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Aangepaste VM-installatiekopieën maken met Azure PowerShell | Microsoft Docs
+title: 'Zelf studie: aangepaste VM-installatie kopieën maken met Azure PowerShell'
 description: In deze zelfstudie leert u hoe u Azure PowerShell gebruikt om een aangepaste installatiekopie van een virtuele machine te maken in Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 58f7e530008303f16f2d015e29e60e95480cab2c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 906ac3b28a512a866e712cefda4355ad901c258d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390570"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064717"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Zelfstudie: Een aangepaste installatiekopie van een Azure-VM maken met Azure PowerShell
 
-Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopieën, maar u kunt deze zelf maken. Aangepaste installatiekopieën kunnen worden gebruikt als een bootstrap voor implementaties en zorgen voor consistentie tussen verschillende virtuele machines. In deze zelfstudie maakt u uw eigen aangepaste installatiekopie van een virtuele Azure-machine met behulp van PowerShell. In deze zelfstudie leert u procedures om het volgende te doen:
+Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopieën, maar u kunt deze zelf maken. Aangepaste installatiekopieën kunnen worden gebruikt als een bootstrap voor implementaties en zorgen voor consistentie tussen verschillende virtuele machines. In deze zelfstudie maakt u uw eigen aangepaste installatiekopie van een virtuele Azure-machine met behulp van PowerShell. Procedures voor:
 
 > [!div class="checklist"]
 > * Systeem voorbereiden en virtuele machines generaliseren

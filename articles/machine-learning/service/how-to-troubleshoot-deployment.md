@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb0f373000d09cb387fb73eec344997381fe45d1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: dab79f1d63a20e12f148766db5fcc3fc313a1f3a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961666"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076896"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problemen met Azure Machine Learning Azure Kubernetes-service en Azure Container Instances-implementatie oplossen
 
@@ -164,12 +164,12 @@ Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen t
 
 ## <a name="debug-locally"></a>Lokaal fouten opsporen
 
-Als u problemen ondervindt bij het implementeren van een model naar ACI of AKS, kunt u het implementeren als een lokaal. Het gebruik van een lokaal maakt het gemakkelijker om problemen op te lossen. De docker-installatie kopie met het model wordt gedownload en gestart op het lokale systeem.
+Als u problemen ondervindt bij het implementeren van een model naar ACI of AKS, kunt u het implementeren als een lokale webservice. Het gebruik van een lokale webservice maakt het gemakkelijker om problemen op te lossen. De docker-installatie kopie met het model wordt gedownload en gestart op het lokale systeem.
 
 > [!WARNING]
-> Lokale implementaties worden niet ondersteund voor productie scenario's.
+> Lokale web service-implementaties worden niet ondersteund voor productie scenario's.
 
-Als u lokaal wilt implementeren, wijzigt u de code in `LocalWebservice.deploy_configuration()` om een implementatie configuratie te maken. Gebruik vervolgens `Model.deploy()` om de service te implementeren. In het volgende voor beeld wordt een model (opgenomen in de `model` variabele) geïmplementeerd als een lokaal:
+Als u lokaal wilt implementeren, wijzigt u de code in `LocalWebservice.deploy_configuration()` om een implementatie configuratie te maken. Gebruik vervolgens `Model.deploy()` om de service te implementeren. In het volgende voor beeld wordt een model (opgenomen in de `model` variabele) geïmplementeerd als een lokale webservice:
 
 ```python
 from azureml.core.model import InferenceConfig, Model
@@ -180,14 +180,14 @@ inference_config = InferenceConfig(runtime="python",
                                    entry_script="score.py",
                                    conda_file="myenv.yml")
 
-# Create a local deployment, using port 8890 for the  endpoint
+# Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
 service = Model.deploy(
     ws, "mymodel", [model], inference_config, deployment_config)
 # Wait for the deployment to complete
 service.wait_for_deployment(True)
-# Display the port that the  is available on
+# Display the port that the web service is available on
 print(service.port)
 ```
 
@@ -297,7 +297,7 @@ Er zijn twee dingen die u kunnen helpen bij het voor komen van 503-status codes:
     > [!IMPORTANT]
     > Met deze wijziging worden er geen replica's *meer gemaakt.* In plaats daarvan worden ze gemaakt met een lagere drempel waarde voor het gebruik. In plaats van te wachten totdat de service 70% wordt gebruikt, kan het wijzigen van de waarde in 30% ertoe leiden dat er replica's worden gemaakt wanneer er sprake is van 30%.
     
-    Als de huidige maximum replica's al worden gebruikt en u nog steeds 503 status codes ziet, verhoogt u de `autoscale_max_replicas` waarde om het maximale aantal replica's te verhogen.
+    Als de webservice de huidige maximum replica's al gebruikt en u nog steeds 503-status codes ziet, verhoogt u de `autoscale_max_replicas` waarde om het maximale aantal replica's te verhogen.
 
 * Wijzig het minimale aantal replica's. Het verg Roten van de minimale replica's biedt een grotere pool voor het afhandelen van de binnenkomende pieken.
 
@@ -333,7 +333,7 @@ In sommige gevallen moet u mogelijk interactief fouten opsporen in de python-cod
 > [!IMPORTANT]
 > Deze methode van fout opsporing werkt niet wanneer u `Model.deploy()` en `LocalWebservice.deploy_configuration` gebruikt voor het lokaal implementeren van een model. In plaats daarvan moet u een installatie kopie maken met behulp van de [ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) -klasse. 
 
-Lokale implementaties vereisen een werkende docker-installatie op uw lokale systeem. Raadpleeg de [docker-documentatie](https://docs.docker.com/)voor meer informatie over het gebruik van docker.
+Voor lokale web service-implementaties is een werkende docker-installatie op uw lokale systeem vereist. Raadpleeg de [docker-documentatie](https://docs.docker.com/)voor meer informatie over het gebruik van docker.
 
 ### <a name="configure-development-environment"></a>De ontwikkelomgeving configureren
 

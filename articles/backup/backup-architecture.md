@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: e072923c2c8b1d8e5bb281a5bcff992b25289b4d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d914c2988b5f28940021de24dcfe1183c68b15cc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888489"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074351"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -134,7 +134,7 @@ Azure-Vm's hebben Internet toegang nodig voor besturings opdrachten. Als u een b
     - De MARS-agent gebruikt alleen de Windows-systeem schrijf bewerking voor het vastleggen van de moment opname.
     - Omdat de agent geen VSS-schrijvers van toepassingen gebruikt, worden er geen app-consistente moment opnamen vastgelegd.
 1. Na het maken van de moment opname met VSS, maakt de MARS-agent een virtuele harde schijf (VHD) in de cachemap die u hebt opgegeven tijdens het configureren van de back-up. De agent slaat ook de controle sommen voor elk gegevens blok op.
-1. Incrementele back-ups worden uitgevoerd volgens het schema dat u opgeeft, tenzij u een ad-hoc back-up uitvoert.
+1. Incrementele back-ups worden uitgevoerd volgens het schema dat u opgeeft, tenzij u een back-up op aanvraag uitvoert.
 1. In incrementele back-ups worden gewijzigde bestanden geïdentificeerd en wordt een nieuwe VHD gemaakt. De VHD wordt gecomprimeerd en versleuteld en vervolgens naar de kluis verzonden.
 1. Nadat de incrementele back-up is voltooid, wordt de nieuwe VHD samengevoegd met de VHD die is gemaakt na de initiële replicatie. Deze samengevoegde VHD bevat de meest recente status om te vergelijken voor continue back-ups.
 
@@ -148,7 +148,7 @@ Azure-Vm's hebben Internet toegang nodig voor besturings opdrachten. Als u een b
     - Met DPM-MABS kunt u back-upvolumes, shares, bestanden en mappen beveiligen. U kunt ook de systeem status van een computer beveiligen (bare metal) en u kunt specifieke apps beveiligen met app-Aware back-upinstellingen.
 1. Wanneer u de beveiliging voor een machine of app in DPM-MABS instelt, selecteert u een back-up naar de lokale MABS/DPM-schijf voor kortetermijnbeveiliging en naar Azure voor online beveiliging. U geeft ook op wanneer de back-up naar de lokale DPM-MABS-opslag moet worden uitgevoerd en wanneer de online back-up naar Azure moet worden uitgevoerd.
 1. Op de schijf van de beveiligde werk belasting wordt een back-up gemaakt op de lokale MABS/DPM-schijven volgens het schema dat u hebt opgegeven.
-4. Er wordt een back-up van de DPM-MABS-schijven gemaakt op de kluis door de MARS-agent die wordt uitgevoerd op de DPM/MABS-server.
+1. Er wordt een back-up van de DPM-MABS-schijven gemaakt op de kluis door de MARS-agent die wordt uitgevoerd op de DPM/MABS-server.
 
 ![Back-ups van machines en workloads die worden beveiligd door DPM of MABS](./media/backup-architecture/architecture-dpm-mabs.png)
 

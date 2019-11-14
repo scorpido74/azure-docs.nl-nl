@@ -1,5 +1,5 @@
 ---
-title: Extensie-handler voor desired state Configuration van Azure | Microsoft Docs
+title: Extensie-handler voor desired state Configuration van Azure
 description: Een Power shell DSC-configuratie op een Azure-VM uploaden en Toep assen met behulp van DSC-extensie
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: ee5a6c732bcb48cd347b8d87b95d2896d7230a08
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092380"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073792"
 ---
 # <a name="powershell-dsc-extension"></a>Power shell DSC-extensie
 
@@ -97,34 +97,34 @@ De volgende JSON toont het schema voor het gedeelte instellingen van de DSC-uitb
 
 ### <a name="property-values"></a>Waarden van eigenschappen
 
-| Name | Waarde / voorbeeld | Gegevenstype |
+| Naam | Waarde / voorbeeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 10-01-2018 | date |
-| publisher | Microsoft.Powershell.DSC | string |
-| type | DSC | string |
+| publisher | Microsoft.Powershell.DSC | tekenreeks |
+| type | DSC | tekenreeks |
 | typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Eigenschaps waarden van instellingen
 
-| Name | Gegevenstype | Description
+| Naam | Gegevenstype | Beschrijving
 | ---- | ---- | ---- |
-| settings.wmfVersion | string | Hiermee geeft u de versie op van het Windows Management Framework dat op uw virtuele machine moet worden geïnstalleerd. Als u deze eigenschap instelt op ' meest recente ', wordt de meest recente versie van WMF geïnstalleerd. De enige huidige mogelijke waarden voor deze eigenschap zijn ' 4,0 ', ' 5,0 ' en ' meest recent '. Deze mogelijke waarden zijn onderhevig aan updates. De standaard waarde is ' meest recent '. |
-| settings.configuration.url | string | Hiermee geeft u de URL-locatie van waaruit u uw DSC-configuratie-zip-bestand wilt downloaden. Als voor de opgegeven URL een SAS-token voor toegang is vereist, moet u de eigenschap protectedSettings. configurationUrlSasToken instellen op de waarde van uw SAS-token. Deze eigenschap is vereist als instellingen. Configuration. script en/of settings. Configuration. functie zijn gedefinieerd.
-| settings.configuration.script | string | Hiermee geeft u de bestands naam op van het script dat de definitie van uw DSC-configuratie bevat. Dit script moet zich in de hoofdmap van het zip-bestand bevindt dat is gedownload van de URL die is opgegeven door de eigenschap Configuration. URL. Deze eigenschap is vereist als instellingen. Configuration. URL en/of settings. Configuration. script zijn gedefinieerd.
-| settings.configuration.function | string | Hiermee geeft u de naam van uw DSC-configuratie op. De configuratie met de naam moet zijn opgenomen in het script dat is gedefinieerd door Configuration. script. Deze eigenschap is vereist als instellingen. Configuration. URL en/of settings. Configuration. functie zijn gedefinieerd.
-| settings.configurationArguments | Collection | Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap wordt niet versleuteld.
-| settings.configurationData.url | string | Hiermee geeft u de URL op waaruit uw pds1-bestand (configuratie gegevens) moet worden gedownload om te worden gebruikt als invoer voor uw DSC-configuratie. Als voor de opgegeven URL een SAS-token voor toegang is vereist, moet u de eigenschap protectedSettings. configurationDataUrlSasToken instellen op de waarde van uw SAS-token.
-| Settings. privacy. dataEnabled | string | Hiermee wordt de verzameling telemetrie in-of uitgeschakeld. De enige mogelijke waarden voor deze eigenschap zijn ' Enable ', ' Disable ', ' of ' $null. Als u deze eigenschap leeg of null laat, wordt telemetrie ingeschakeld
+| settings.wmfVersion | tekenreeks | Hiermee geeft u de versie op van het Windows Management Framework dat op uw virtuele machine moet worden geïnstalleerd. Als u deze eigenschap instelt op ' meest recente ', wordt de meest recente versie van WMF geïnstalleerd. De enige huidige mogelijke waarden voor deze eigenschap zijn ' 4,0 ', ' 5,0 ' en ' meest recent '. Deze mogelijke waarden zijn onderhevig aan updates. De standaard waarde is ' meest recent '. |
+| settings.configuration.url | tekenreeks | Hiermee geeft u de URL-locatie van waaruit u uw DSC-configuratie-zip-bestand wilt downloaden. Als voor de opgegeven URL een SAS-token voor toegang is vereist, moet u de eigenschap protectedSettings. configurationUrlSasToken instellen op de waarde van uw SAS-token. Deze eigenschap is vereist als instellingen. Configuration. script en/of settings. Configuration. functie zijn gedefinieerd.
+| settings.configuration.script | tekenreeks | Hiermee geeft u de bestands naam op van het script dat de definitie van uw DSC-configuratie bevat. Dit script moet zich in de hoofdmap van het zip-bestand bevindt dat is gedownload van de URL die is opgegeven door de eigenschap Configuration. URL. Deze eigenschap is vereist als instellingen. Configuration. URL en/of settings. Configuration. script zijn gedefinieerd.
+| settings.configuration.function | tekenreeks | Hiermee geeft u de naam van uw DSC-configuratie op. De configuratie met de naam moet zijn opgenomen in het script dat is gedefinieerd door Configuration. script. Deze eigenschap is vereist als instellingen. Configuration. URL en/of settings. Configuration. functie zijn gedefinieerd.
+| settings.configurationArguments | Verzameling | Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap wordt niet versleuteld.
+| settings.configurationData.url | tekenreeks | Hiermee geeft u de URL op waaruit uw pds1-bestand (configuratie gegevens) moet worden gedownload om te worden gebruikt als invoer voor uw DSC-configuratie. Als voor de opgegeven URL een SAS-token voor toegang is vereist, moet u de eigenschap protectedSettings. configurationDataUrlSasToken instellen op de waarde van uw SAS-token.
+| Settings. privacy. dataEnabled | tekenreeks | Hiermee wordt de verzameling telemetrie in-of uitgeschakeld. De enige mogelijke waarden voor deze eigenschap zijn ' Enable ', ' Disable ', ' of ' $null. Als u deze eigenschap leeg of null laat, wordt telemetrie ingeschakeld
 | settings.advancedOptions.forcePullAndApply | Bool | Deze instelling is ontworpen om de ervaring van het werken met de uitbrei ding voor het registreren van knoop punten met Azure Automation DSC te verbeteren.  Als de waarde is `$true`, wacht de uitbrei ding op de eerste uitvoering van de configuratie die wordt opgehaald uit de service voordat het succes/de fout wordt geretourneerd.  Als de waarde is ingesteld op $false, verwijst de status die door de uitbrei ding wordt geretourneerd alleen naar of het knoop punt is geregistreerd met Azure Automation status configuratie is geslaagd en de knooppunt configuratie niet wordt uitgevoerd tijdens de registratie.
-| settings.advancedOptions.downloadMappings | Collection | Definieert alternatieve locaties voor het downloaden van afhankelijkheden, zoals WMF en .NET
+| settings.advancedOptions.downloadMappings | Verzameling | Definieert alternatieve locaties voor het downloaden van afhankelijkheden, zoals WMF en .NET
 
 ### <a name="protected-settings-property-values"></a>Eigenschaps waarden voor beveiligde instellingen
 
-| Name | Gegevenstype | Description
+| Naam | Gegevenstype | Beschrijving
 | ---- | ---- | ---- |
-| protectedSettings.configurationArguments | string | Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap wordt versleuteld. |
-| protectedSettings.configurationUrlSasToken | string | Hiermee geeft u het SAS-token voor toegang tot de URL die is gedefinieerd door Configuration. URL. Deze eigenschap wordt versleuteld. |
-| protectedSettings.configurationDataUrlSasToken | string | Hiermee geeft u het SAS-token voor toegang tot de URL die is gedefinieerd door configurationData. URL. Deze eigenschap wordt versleuteld. |
+| protectedSettings.configurationArguments | tekenreeks | Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap wordt versleuteld. |
+| protectedSettings.configurationUrlSasToken | tekenreeks | Hiermee geeft u het SAS-token voor toegang tot de URL die is gedefinieerd door Configuration. URL. Deze eigenschap wordt versleuteld. |
+| protectedSettings.configurationDataUrlSasToken | tekenreeks | Hiermee geeft u het SAS-token voor toegang tot de URL die is gedefinieerd door configurationData. URL. Deze eigenschap wordt versleuteld. |
 
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie

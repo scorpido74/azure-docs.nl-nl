@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 90f69371457bbfe37789b12971343f738ff35e8e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e873980ce7aab1c5454a28e88df24bdb189c4860
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639717"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074849"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Back-up inschakelen wanneer u een Azure-VM maakt
 
@@ -52,11 +52,8 @@ Als u nog niet bent aangemeld bij uw account, meldt u zich aan bij de [Azure Por
 
       ![Standaard back-upbeleid](./media/backup-during-vm-creation/daily-policy.png)
 
-
 > [!NOTE]
-> Azure Backup service maakt een afzonderlijke resource groep (met uitzonde ring van de resource groep van de VM) voor het opslaan van de moment opname, met de naamgevings indeling **AzureBackupRG_geography_number** (voor beeld: AzureBackupRG_northeurope_1). De gegevens in deze resource groep worden bewaard gedurende de duur in dagen zoals opgegeven in de sectie *onmiddellijke herstel momentopname bewaren* van het back-upbeleid van Azure virtual machine.  Het Toep assen van een vergren deling op deze resource groep kan leiden tot back-upfouten.<br>
-Deze resource groep moet ook worden uitgesloten van de beperkingen van namen/Tags als een beperkings beleid het maken van resource punt verzamelingen in dat geval voor back-upfouten blokkeert.
-
+> Azure Backup service maakt een afzonderlijke resource groep (met uitzonde ring van de resource groep van de VM) voor het opslaan van de moment opname, met de naamgevings indeling **AzureBackupRG_geography_number** (voor beeld: AzureBackupRG_northeurope_1). De gegevens in deze resource groep worden bewaard gedurende de duur in dagen zoals opgegeven in de sectie *onmiddellijke herstel momentopname bewaren* van het back-upbeleid van Azure virtual machine.  Het Toep assen van een vergren deling op deze resource groep kan leiden tot back-upfouten. <br> Deze resource groep moet ook worden uitgesloten van de beperkingen van namen/Tags als een beperkings beleid het maken van resource punt verzamelingen in dat geval voor back-upfouten blokkeert.
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Een back-up starten na het maken van de VM
 
@@ -73,8 +70,6 @@ Nadat de VM is gemaakt, gaat u als volgt te werk:
 
 In de vorige stappen wordt uitgelegd hoe u de Azure Portal kunt gebruiken om een virtuele machine te maken en te beveiligen in een Recovery Services kluis. Als u een of meer Vm's snel wilt implementeren en wilt beveiligen in een Recovery Services kluis, raadpleegt u de sjabloon [een Windows VM implementeren en back-up inschakelen](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/).
 
-
-
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u uw VM hebt beveiligd, leert u hoe u deze kunt beheren en herstellen.
@@ -82,4 +77,4 @@ Nu u uw VM hebt beveiligd, leert u hoe u deze kunt beheren en herstellen.
 - [Vm's beheren en controleren](backup-azure-manage-vms.md)
 - [VM herstellen](backup-azure-arm-restore-vms.md)
 
-Als u problemen ondervindt [](backup-azure-vms-troubleshoot.md) , raadpleegt u de hand leiding voor het oplossen van problemen.
+Als u problemen ondervindt, [raadpleegt](backup-azure-vms-troubleshoot.md) u de hand leiding voor het oplossen van problemen.

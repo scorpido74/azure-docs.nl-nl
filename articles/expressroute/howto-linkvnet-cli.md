@@ -1,5 +1,5 @@
 ---
-title: 'Een virtueel netwerk koppelen aan een ExpressRoute-circuit: CLI: Azure| Microsoft Docs'
+title: 'Azure-ExpressRoute: een VNet koppelen aan het circuit: CLI'
 description: In dit artikel wordt beschreven hoe u virtuele netwerken (VNets) koppelen aan ExpressRoute-circuits met behulp van de Resource Manager-implementatiemodel en de CLI.
 services: expressroute
 author: cherylmc
@@ -7,14 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.reviewer: anzaman
-ms.custom: seodec18
-ms.openlocfilehash: d858c83fb6669e5348b4256931e080656be0ebad
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a8814030e6c4345227ec05ea1554104e0b21efbc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621063"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076545"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Een virtueel netwerk verbinden met een ExpressRoute-circuit met behulp van CLI
 
@@ -23,7 +21,7 @@ Dit artikel helpt u virtuele netwerken (VNets) koppelen aan Azure ExpressRoute-c
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
-> * [Azure-CLI](howto-linkvnet-cli.md)
+> * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video - Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (klassiek)](expressroute-howto-linkvnet-classic.md)
 > 
@@ -155,10 +153,10 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 Het bereik van de *RoutingWeight* is 0 tot en met 32.000. De standaardwaarde is 0.
 
 ## <a name="configure-expressroute-fastpath"></a>ExpressRoute FastPath configureren 
-U kunt inschakelen [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) als uw ExpressRoute-circuit zich op [ExpressRoute Direct](expressroute-erdirect-about.md) en uw gateway virtuele newtork Ultra-Performance of ErGw3AZ. FastPath verbetert gegevens pad preformance zoals pakketten per seconde en verbindingen per seconde tussen uw on-premises netwerk en het virtuele netwerk. 
+U kunt [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) inschakelen als uw ExpressRoute-circuit zich op [ExpressRoute direct](expressroute-erdirect-about.md) bevindt en uw virtuele netwerk-gateway zeer presteert of ErGw3AZ. FastPath verbetert de preformiteit van het gegevenspad, zoals pakketten per seconde, en verbindingen per seconde tussen uw on-premises netwerk en het virtuele netwerk. 
 
 > [!NOTE] 
-> Als u al een virtuele netwerkverbinding hebben maar nog niet hebt ingeschakeld FastPath die u wilt verwijderen van de verbinding van het virtuele netwerk en een nieuw wachtwoord maken. 
+> Als u al een virtuele netwerk verbinding hebt, maar FastPath nog niet hebt ingeschakeld, moet u de virtuele netwerk verbinding verwijderen en een nieuwe maken. 
 > 
 >  
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Standard Load Balancer en Beschikbaarheidszones
-titlesuffix: Azure Load Balancer
-description: Load Balancer van het type Standard en beschikbaarheidszones
+titleSuffix: Azure Load Balancer
+description: Met dit leer traject kunt u aan de slag met Azure Standard Load Balancer en Beschikbaarheidszones.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 925e7857d337f7f2fd501e4e4467c05952b0da65
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 63a7db6e7078df978f47a6d53ea82df83c22c800
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882948"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076988"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer van het type Standard en beschikbaarheidszones
 
@@ -37,7 +37,7 @@ In de context van beschikbaarheids zones worden het gedrag en de eigenschappen v
 
 Zowel de open bare als de interne Load Balancer ondersteunings zone-redundante en zonegebonden-scenario's en beide kunnen verkeer omleiden naar alle zones, indien nodig (*Kruis zone taak verdeling*). 
 
-### <a name="frontend"></a>Front-end
+### <a name="frontend"></a>Front
 
 Een Load Balancer frontend is een front-end-IP-configuratie die verwijst naar een open bare IP-adres of een privé-IP-adres binnen het subnet van een virtuele netwerk bron.  Het vormt het eind punt met gelijke taak verdeling waar uw service wordt weer gegeven.
 
@@ -88,7 +88,7 @@ Het volgende fragment is een afbeelding voor het definiëren van een zone-redund
                 ],
 ```
 
-De aan-fragmenten zijn geen complete sjablonen, maar zijn bedoeld om te laten zien hoe u de eigenschappen van beschikbaarheids zones kunt weer geven.  U moet deze instructies opnemen in uw sjablonen.
+De voor gaande fragmenten zijn niet volledig sjablonen, maar zijn bedoeld om te laten zien hoe u de eigenschappen van beschikbaarheids zones kunt weer geven.  U moet deze instructies opnemen in uw sjablonen.
 
 #### <a name="optional-zone-isolation"></a>Optionele zone isolatie
 
@@ -165,7 +165,7 @@ Dezelfde zone-redundante en zonegebonden eigenschappen zijn van toepassing op [u
 
 Het algoritme voor de toewijzing van de SNAT-poort is hetzelfde met of zonder beschikbaarheids zones.
 
-### <a name="health-probes"></a>Tests
+### <a name="health-probes"></a>Statuscontroles
 
 De bestaande definities voor de Health-tests blijven behouden, zonder beschikbaarheids zones.  We hebben echter het status model op een infrastructuur niveau uitgebreid. 
 
@@ -200,7 +200,7 @@ Vermijd onbedoelde afhankelijkheden voor meerdere zones, waardoor de beschik baa
   - Als er een storing optreedt in een zone, begrijpt uw end-to-end-service dit en als de status verloren gaat, hoe kunt u deze herstellen?
   - Wanneer een zone wordt geretourneerd, weet uw toepassing hoe u veilig kunt convergeren?
 
-Bekijk de [ontwerp patronen voor Azure](https://docs.microsoft.com/azure/architecture/patterns/) -Clouds om de flexibiliteit van uw toepassing te verbeteren tot fouten.
+Bekijk de [ontwerp patronen voor Azure-Clouds](https://docs.microsoft.com/azure/architecture/patterns/) om de flexibiliteit van uw toepassing te verbeteren tot fouten.
 
 ### <a name="zonalityguidance"></a>Zone-redundant versus zonegebonden
 
@@ -208,7 +208,7 @@ Zone-redundante kan een eenvoud bieden met een zone-neutraal-optie en tegelijker
 
 Zonegebonden kunnen een expliciete garantie voor een zone bieden, waarbij lotgevallen expliciet wordt gedeeld met de status van de zone. Het maken van een Load Balancer-regel met een zonegebonden IP-adres-front-end of zonegebonden intern Load Balancer front-end kan heel wenselijk zijn, vooral als uw gekoppelde bron een zonegebonden virtuele machine in dezelfde zone is.  Het is ook mogelijk dat uw toepassing expliciete kennis nodig heeft over welke zone een resource in de tussen tijd bevindt en dat u de beschik baarheid in afzonderlijke zones expliciet wilt controleren.  U kunt ervoor kiezen om meerdere zonegebonden-frontends beschikbaar te maken voor een end-to-end-service die wordt gedistribueerd over zones (dat wil zeggen, per zone zonegebonden-front-end voor meerdere zonegebonden virtuele-machine schaal sets).  En als uw zonegebonden-front-end een openbaar IP-adres zijn, kunt u deze meerdere zonegebonden-front-ends gebruiken om uw service met [Traffic Manager](../traffic-manager/traffic-manager-overview.md)aan te bieden.  U kunt ook meerdere zonegebonden-frontends gebruiken voor het verkrijgen van informatie over zone status en prestaties met behulp van bewakings oplossingen van derden en de algehele service bieden met een zone-redundante front-end. U moet alleen zonegebonden-resources met zonegebonden-front-end-toepassingen die zijn afgestemd op dezelfde zone, en potentieel schadelijke cross-zone scenario's voor zonegebonden bronnen vermijden.  Zonegebonden-resources bestaan alleen in regio's waar beschikbaarheids zones bestaan.
 
-Er zijn geen algemene richt lijnen die een betere keuze is dan de andere, zonder de service architectuur te weten.  Bekijk de [ontwerp patronen voor Azure](https://docs.microsoft.com/azure/architecture/patterns/) -Clouds om de flexibiliteit van uw toepassing te verbeteren tot fouten.
+Er zijn geen algemene richt lijnen die een betere keuze is dan de andere, zonder de service architectuur te weten.  Bekijk de [ontwerp patronen voor Azure-Clouds](https://docs.microsoft.com/azure/architecture/patterns/) om de flexibiliteit van uw toepassing te verbeteren tot fouten.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -219,4 +219,4 @@ Er zijn geen algemene richt lijnen die een betere keuze is dan de andere, zonder
 - Meer informatie over [Standard Load Balancer](load-balancer-standard-overview.md)
 - Meer informatie over het [laden van virtuele machines binnen een zone met behulp van een Standard Load Balancer met een zonegebonden](load-balancer-standard-public-zonal-cli.md) -front-end
 - Meer informatie over het verdelen [van virtuele machines over zones met behulp van een Standard Load Balancer met een zone-redundante front-end](load-balancer-standard-public-zone-redundant-cli.md)
-- Meer informatie over [ontwerp patronen voor Azure](https://docs.microsoft.com/azure/architecture/patterns/) -Clouds voor het verbeteren van de tolerantie van uw toepassing tot fout scenario's.
+- Meer informatie over [ontwerp patronen voor Azure-Clouds](https://docs.microsoft.com/azure/architecture/patterns/) voor het verbeteren van de tolerantie van uw toepassing tot fout scenario's.

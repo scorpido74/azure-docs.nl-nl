@@ -1,5 +1,5 @@
 ---
-title: De Azure Linux-agent bijwerken vanuit GitHub | Microsoft Docs
+title: De Azure Linux-agent bijwerken vanuit GitHub
 description: Meer informatie over het bijwerken van de Azure Linux-agent voor uw virtuele Linux-machine in azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: akjosh
-ms.openlocfilehash: 1ae3c3a74d1a46a98fa6676e18ffe71a4d6937a1
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 2215136c02d9cf967e0184af7588ce8d48362009
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168767"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072942"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>De Azure Linux-agent op een virtuele machine bijwerken
 
@@ -351,7 +351,7 @@ sudo systemctl restart waagent.service
 
 ## <a name="oracle-6-and-7"></a>Oracle 6 en 7
 
-Zorg ervoor dat de `Addons` opslag plaats is ingeschakeld voor Oracle Linux. Kies voor het bewerken van `/etc/yum.repos.d/public-yum-ol6.repo`het bestand (Oracle Linux 6 `/etc/yum.repos.d/public-yum-ol7.repo`) of `enabled=1` (Oracle Linux) en wijzig de `enabled=0` regel in onder **[ol6_addons]** of **[ol7_addons]** in dit bestand.
+Zorg ervoor dat de `Addons` opslagplaats is ingeschakeld voor Oracle Linux. Kies voor het bewerken van het bestand `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) of `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux) en wijzig de regel `enabled=0` in `enabled=1` onder **[ol6_addons]** of **[ol7_addons]** in dit bestand.
 
 Als u de nieuwste versie van de Azure Linux-agent wilt installeren, typt u:
 
@@ -389,15 +389,15 @@ Typ vervolgens:
 sudo yum update WALinuxAgent
 ```
 
-Normaal gesp roken hoeft u alleen maar de volgende stappen uit https://github.com te voeren als u deze om een bepaalde reden rechtstreeks wilt installeren.
+Normaal gesp roken hoeft u alleen maar de volgende stappen https://github.com uit te voeren, als u deze om een bepaalde reden rechtstreeks wilt installeren.
 
 
 ## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>De Linux-agent bijwerken wanneer er geen agent pakket bestaat voor distributie
 
-Wget installeren (er zijn enkele distributies die niet standaard worden geïnstalleerd, zoals Red Hat, CentOS en Oracle Linux versie 6,4 en 6,5) door te typen `sudo yum install wget` op de opdracht regel.
+Installeer wget (er zijn enkele distributies die niet standaard worden geïnstalleerd, zoals Red Hat, CentOS en Oracle Linux versie 6,4 en 6,5) door `sudo yum install wget` te typen op de opdracht regel.
 
-### <a name="1-download-the-latest-version"></a>1. De nieuwste versie downloaden
-Open [de release van de Azure Linux-agent in github](https://github.com/Azure/WALinuxAgent/releases) op een webpagina en ontdek het meest recente versie nummer. (U kunt uw huidige versie vinden door te `waagent --version`typen.)
+### <a name="1-download-the-latest-version"></a>1. down load de nieuwste versie
+Open [de release van de Azure Linux-agent in github](https://github.com/Azure/WALinuxAgent/releases) op een webpagina en ontdek het meest recente versie nummer. (U kunt uw huidige versie vinden door `waagent --version`te typen.)
 
 #### <a name="for-version-22x-or-later-type"></a>Voor versie 2.2. x of hoger typt u:
 ```bash
@@ -414,10 +414,10 @@ unzip v2.2.14.zip
 cd WALinuxAgent-2.2.14
 ```
 
-### <a name="2-install-the-azure-linux-agent"></a>2. De Azure Linux-agent installeren
+### <a name="2-install-the-azure-linux-agent"></a>2. de Azure Linux-agent installeren
 
 #### <a name="for-version-22x-use"></a>Gebruik voor versie 2.2. x het volgende:
-Het is mogelijk dat u het pakket `setuptools` eerst moet installeren. Zie [hier](https://pypi.python.org/pypi/setuptools). Voer vervolgens
+Het is mogelijk dat u het pakket `setuptools` eerst moet [installeren.](https://pypi.python.org/pypi/setuptools) Voer vervolgens
 
 ```bash
 sudo python setup.py install
@@ -444,7 +444,7 @@ Uitvoeren inschakelen:
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="3-restart-the-waagent-service"></a>3. De waagent-service opnieuw starten
+### <a name="3-restart-the-waagent-service"></a>3. Start de waagent-service opnieuw
 Voor de meeste Linux-distributies:
 
 ```bash
@@ -463,7 +463,7 @@ Gebruik voor CoreOS:
 sudo systemctl restart waagent
 ```
 
-### <a name="4-confirm-the-azure-linux-agent-version"></a>4. De versie van de Azure Linux-agent bevestigen
+### <a name="4-confirm-the-azure-linux-agent-version"></a>4. Controleer de versie van de Azure Linux-agent
     
 ```bash
 waagent -version

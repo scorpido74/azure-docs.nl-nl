@@ -1,7 +1,7 @@
 ---
 title: Veelgestelde vragen over de spraak-naar-tekst service in azure
 titleSuffix: Azure Cognitive Services
-description: Krijg antwoorden op de populairste vragen over de spraak-naar-tekst service.
+description: Krijg antwoorden op veelgestelde vragen over de spraak-naar-tekst service.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 2d0a05c763b21b0cf22a724f9a5faa9d70b5b557
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f03a937aff17c6ee622f3b5ab6045f912b51bbf2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010649"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072582"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Veelgestelde vragen over spraak naar tekst
 
@@ -25,7 +25,7 @@ Als u in deze veelgestelde vragen geen antwoorden op uw vragen kunt vinden, kunt
 
 **V: wat is het verschil tussen een basislijn model en een aangepaste spraak op het tekst model?**
 
-**A**: een basislijn model is getraind met behulp van gegevens van micro soft en is al geïmplementeerd in de Cloud.  U kunt een aangepast model gebruiken om een model aan te passen aan een specifieke omgeving met specifieke omgevings ruis of-taal. In fabrieks-, auto-of geluids-en geluids eigen straten is een aangepast akoestisch model vereist. Voor onderwerpen als biologie, natuur kunde, radiology, product namen en aangepaste acroniemen zou een aangepast taal model nodig zijn.
+**A**: een basislijn model is getraind met behulp van gegevens van micro soft en is al geïmplementeerd in de Cloud. U kunt een aangepast model gebruiken om een model aan te passen aan een specifieke omgeving met specifieke omgevings ruis of-taal. In fabrieks-, auto-of geluids-en geluids eigen straten is een aangepast akoestisch model vereist. Voor onderwerpen als biologie, natuur kunde, radiology, product namen en aangepaste acroniemen zou een aangepast taal model nodig zijn.
 
 **V: waar kan ik beginnen als ik een basis lijn model wil gebruiken?**
 
@@ -123,13 +123,13 @@ of
 
 **A**: de huidige limiet voor een gegevensset is 2 GB. De limiet wordt veroorzaakt door de beperking van de grootte van een bestand voor HTTP-upload.
 
-**V: kan ik mijn tekst bestanden opzip zodat ik een groter tekst bestand kan uploaden?** 
+**V: kan ik mijn tekst bestanden opzip zodat ik een groter tekst bestand kan uploaden?**
 
 **A**: Nee. Op dit moment zijn alleen niet-gecomprimeerde tekst bestanden toegestaan.
 
 **V: het gegevens rapport geeft aan dat er mislukte uitingen zijn. Wat is het probleem?**
 
-**A**: een mislukte upload van 100 procent van de uitingen in een bestand is geen probleem. Als het meren deel van de uitingen in een akoestische of taal-gegevensset (bijvoorbeeld meer dan 95 procent) is geïmporteerd, kan de gegevensset bruikbaar zijn. We raden u echter aan om te begrijpen waarom de uitingen is mislukt en de problemen op te lossen. De meest voorkomende problemen, zoals opmaak fouten, zijn gemakkelijk te herstellen. 
+**A**: een mislukte upload van 100 procent van de uitingen in een bestand is geen probleem. Als het meren deel van de uitingen in een akoestische of taal-gegevensset (bijvoorbeeld meer dan 95 procent) is geïmporteerd, kan de gegevensset bruikbaar zijn. We raden u echter aan om te begrijpen waarom de uitingen is mislukt en de problemen op te lossen. De meest voorkomende problemen, zoals opmaak fouten, zijn gemakkelijk te herstellen.
 
 ## <a name="creating-an-acoustic-model"></a>Een akoestische model maken
 
@@ -139,11 +139,11 @@ of
 
 **V: welke gegevens moet ik verzamelen?**
 
-**A**: gegevens verzamelen die zich zo dicht mogelijk bij het toepassings scenario behoren en het gebruik van de aanvraag. De gegevens verzameling moet overeenkomen met de doel toepassing en gebruikers in termen van apparaten, omgevingen en typen sprekers. Over het algemeen moet u zo veel mogelijk gegevens verzamelen uit een groot aantal luid sprekers. 
+**A**: gegevens verzamelen die zich zo dicht mogelijk bij het toepassings scenario behoren en het gebruik van de aanvraag. De gegevens verzameling moet overeenkomen met de doel toepassing en gebruikers in termen van apparaten, omgevingen en typen sprekers. Over het algemeen moet u zo veel mogelijk gegevens verzamelen uit een groot aantal luid sprekers.
 
 **V: hoe kan ik akoestische gegevens verzamelen?**
 
-**A**: u kunt een zelfstandige toepassing voor het verzamelen van gegevens maken of de software voor het opnemen van audio gebruiken. U kunt ook een versie van uw toepassing maken die de audio gegevens registreert en vervolgens de gegevens gebruikt. 
+**A**: u kunt een zelfstandige toepassing voor het verzamelen van gegevens maken of de software voor het opnemen van audio gebruiken. U kunt ook een versie van uw toepassing maken die de audio gegevens registreert en vervolgens de gegevens gebruikt.
 
 **V: moet ik de aanpassings gegevens zelf detranscriberen?**
 
@@ -167,7 +167,7 @@ of
 
 **A**: in de resultaten ziet u een vergelijking tussen het basis model en het model dat u hebt aangepast. U moet zich richten op het basis model om aanpassing van de voor keur te maken.
 
-**V: Hoe kan ik de WER van een basis model te bepalen zodat ik kan zien of er een verbetering is opgetreden?** 
+**V: Hoe kan ik de WER van een basis model te bepalen zodat ik kan zien of er een verbetering is opgetreden?**
 
 **A**: de resultaten van de offline test tonen de nauw keurigheid van het aangepaste model en de verbetering van de basis lijn.
 
@@ -179,21 +179,21 @@ of
 
 **V: kan ik gewoon een lijst met woorden uploaden?**
 
-**A**: als u een lijst met woorden uploadt, worden de woorden toegevoegd aan de vocabulaire, maar wordt het systeem niet leren hoe de woorden doorgaans worden gebruikt. Door volledige of gedeeltelijke uitingen (zinnen of zinsdelen te bieden van dingen die gebruikers waarschijnlijk zeggen), kan het taal model de nieuwe woorden en hoe ze worden gebruikt, leren. Het aangepaste taal model is niet alleen geschikt voor het toevoegen van nieuwe woorden aan het systeem, maar ook voor het aanpassen van de kans op bekende woorden voor uw toepassing. Het bieden van een volledige uitingen helpt het systeem beter te leren. 
+**A**: als u een lijst met woorden uploadt, worden de woorden toegevoegd aan de vocabulaire, maar wordt het systeem niet leren hoe de woorden doorgaans worden gebruikt. Door volledige of gedeeltelijke uitingen (zinnen of zinsdelen te bieden van dingen die gebruikers waarschijnlijk zeggen), kan het taal model de nieuwe woorden en hoe ze worden gebruikt, leren. Het aangepaste taal model is niet alleen geschikt voor het toevoegen van nieuwe woorden aan het systeem, maar ook voor het aanpassen van de kans op bekende woorden voor uw toepassing. Het bieden van een volledige uitingen helpt het systeem beter te leren.
 
 ## <a name="tenant-model-custom-speech-with-office-365-data"></a>Tenant model (Custom Speech met Office 365-gegevens)
 
 **V: welke informatie is opgenomen in het Tenant model en hoe wordt het gemaakt?**
 
-**A:** Een Tenant model wordt samengesteld op basis van e-mail berichten en documenten van [open bare groepen](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) die door iedereen in uw organisatie kunnen worden bekeken. 
- 
+**A:** Een Tenant model wordt samengesteld op basis van e-mail berichten en documenten van [open bare groepen](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) die door iedereen in uw organisatie kunnen worden bekeken.
+
 **V: welke spraak ervaring zijn verbeterd door het Tenant model?**
 
-**A:** Wanneer het Tenant model is ingeschakeld, gemaakt en gepubliceerd, wordt het gebruikt voor het verbeteren van de herkenning van bedrijfs toepassingen die zijn gebouwd met behulp van spraak service; Hiermee wordt ook een AAD-token van de gebruiker door gegeven dat het lidmaatschap van de onderneming aangeeft.
+**A:** Wanneer het Tenant model is ingeschakeld, gemaakt en gepubliceerd, wordt het gebruikt voor het verbeteren van de herkenning van bedrijfs toepassingen die zijn gebouwd met behulp van spraak service; Er wordt ook een AAD-token van de gebruiker door gegeven dat het lidmaatschap van de onderneming aangeeft.
 
 De spraak ervaring die is ingebouwd in Office 365, zoals dicteer-en Power Point-ondertiteling, wordt niet gewijzigd wanneer u een Tenant model maakt voor uw speech service-toepassingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Problemen oplossen](troubleshooting.md)
-* [Releaseopmerkingen](releasenotes.md)
+- [Problemen oplossen](troubleshooting.md)
+- [Releaseopmerkingen](releasenotes.md)

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3781ac1be547f6733417c4f0cae9f3e8681ea9e8
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 800acb622a54ae922300d4c1b188f7ec19f5a95f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969235"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074253"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Back-ups van Azure-VM'S beheren met Azure Backup-Service
 
@@ -34,7 +34,7 @@ U kunt back-ups beheren met behulp van het dash board en door in te zoomen op af
 
 Vm's op het kluis dashboard weer geven:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Klik in het menu hub op **Bladeren**. Typ in de lijst met resources **Recovery Services**. Terwijl u typt, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Recovery Services kluizen**.
 
     ![Een Recovery Services-kluis maken](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
@@ -60,7 +60,7 @@ Vm's op het kluis dashboard weer geven:
 
 Een back-upbeleid beheren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Open het kluis dashboard.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/). Open het kluis dashboard.
 2. Selecteer **Azure virtual machines**op de tegel **Back-upitems** .
 
     ![De tegel back-upitems openen](./media/backup-azure-manage-vms/contoso-vault-1606.png)
@@ -167,9 +167,9 @@ Er zijn twee manieren om de back-upgegevens van een VM te verwijderen:
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Back-upitem waarbij primaire gegevens bron niet meer bestaat
 
-* Als Azure-Vm's die zijn geconfigureerd voor Azure backup, worden verwijderd of verplaatst zonder de beveiliging te stoppen, mislukken de back-uptaken van geplande back-uptaken en op aanvraag (ad-hoc) met de fout UserErrorVmNotFoundV2. De pre-controle van de back-up wordt alleen als kritiek weer gegeven voor mislukte ad-hoc back-uptaken (mislukte geplande taken worden niet weer gegeven).
+* Als Azure-Vm's die zijn geconfigureerd voor Azure backup, worden verwijderd of verplaatst zonder de beveiliging te stoppen, mislukken de back-uptaken van geplande back-uptaken en op aanvraag (ad-hoc) met de fout UserErrorVmNotFoundV2. De pre-controle van de back-up wordt alleen als kritiek weer gegeven voor mislukte back-uptaken op aanvraag (mislukte geplande taken worden niet weer gegeven).
 * Deze back-upitems blijven actief in het systeem dat voldoet aan het back-up-en bewaar beleid dat door de gebruiker is ingesteld. De back-upgegevens voor deze Azure-Vm's worden bewaard volgens het Bewaar beleid. De verlopen herstel punten (met uitzonde ring van het laatste herstel punt) worden gereinigd op basis van de Bewaar termijn die in het back-upbeleid is ingesteld.
-* Gebruikers wordt aangeraden de back-upitems te verwijderen waarin de primaire gegevens bron niet meer bestaat om extra kosten te voor komen, als het back-upbestand/de gegevens voor de verwijderings resources niet langer vereist zijn omdat het laatste herstel punt permanent wordt behouden en de gebruiker wordt gefactureerd als volgens de prijzen voor back-ups die van toepassing zijn.
+* Gebruikers wordt aangeraden om de back-upitems te verwijderen waar de primaire gegevens bron niet meer bestaat om extra kosten te voor komen. als het back-upbestand/de gegevens voor de verwijderings resources niet langer zijn vereist, wordt het laatste herstel punt permanent bewaard en wordt de gebruiker in rekening gebracht volgens de prijzen voor back-ups die van toepassing zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 

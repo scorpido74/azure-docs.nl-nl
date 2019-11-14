@@ -1,7 +1,7 @@
 ---
 title: Tekst-naar-spraak-spraak service
 titleSuffix: Azure Cognitive Services
-description: De functie voor tekst naar spraak in de speech-service is een functie waarmee u uw toepassingen, hulpprogram ma's of apparaten tekst kunt converteren naar natuurlijke menselijke-achtige gesynthesizerde spraak. Kies uit standaard-en Neural stemmen of maak uw eigen aangepaste spraak die uniek is voor uw product of merk. 75 + standaard stemmen zijn verkrijgbaar in meer dan 45 talen en land instellingen en vijf Neural stemmen zijn beschikbaar in vier talen en land instellingen.
+description: Met de functie voor tekst naar spraak in de speech-service kunt u uw toepassingen, hulpprogram ma's of apparaten gebruiken om tekst te converteren naar natuurlijke menselijke-achtige gesynthesizerde spraak. Kies vooraf ingestelde stemmen of maak uw eigen aangepaste stem.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: d3d4777d54e3ef6b20ab0ac0f0890da958411297
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d233f63879326f05cafb873d2a0243543b00c6b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468677"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075709"
 ---
 # <a name="what-is-text-to-speech"></a>Wat is tekst-naar-spraak?
 
 Tekst-naar-spraak van Azure speech Services is een service waarmee u uw toepassingen, hulpprogram ma's of apparaten tekst kunt converteren naar natuurlijke menselijke-achtige, gesynthesizerde spraak. Kies uit standaard-en Neural stemmen of maak uw eigen aangepaste spraak die uniek is voor uw product of merk. 75 + standaard stemmen zijn verkrijgbaar in meer dan 45 talen en land instellingen en vijf Neural stemmen zijn beschikbaar in vier talen en land instellingen. Zie [ondersteunde talen](language-support.md#text-to-speech)voor een volledige lijst.
 
 Met de tekst-naar-spraak-technologie kunnen makers van inhoud op verschillende manieren communiceren met hun gebruikers. Tekst-naar-spraak kan de toegankelijkheid verbeteren door gebruikers de mogelijkheid te bieden om te communiceren met inhoud audibly. Of de gebruiker een visuele waardevermindering, een leer bare handicap of navigatie-informatie vereist tijdens het besturings element, tekst-naar-spraak, een bestaande ervaring kan verbeteren. Tekst-naar-spraak is ook een waardevolle invoeg toepassing voor spraak bots en spraak assistenten.
-
 
 Door gebruik te maken van SSML (Speech synthese Markup Language), een op XML gebaseerde Markup-taal, kunnen ontwikkel aars die de tekst naar spraak-service gebruiken, opgeven hoe invoer tekst wordt omgezet in gesynthesizerde spraak. Met SSML kunt u de hoogte, de uitspraak, de spreek snelheid, het volume en meer aanpassen. Zie [SSML](#speech-synthesis-markup-language-ssml)voor meer informatie.
 
@@ -54,10 +53,10 @@ Alle tekst invoer die wordt verzonden naar de service tekst naar spraak moet zij
 
 Wanneer u de service tekst naar spraak gebruikt, wordt u gefactureerd voor elk teken dat naar spraak wordt geconverteerd, inclusief Lees tekens. Hoewel het SSML-document zelf niet factureerbaar is, worden optionele elementen die worden gebruikt voor het aanpassen van de manier waarop de tekst naar spraak wordt geconverteerd, zoals fonemen en pitch, geteld als factureer bare tekens. Hier volgt een lijst met wat factureerbaar is:
 
-* Tekst die wordt door gegeven aan de service tekst naar spraak in de SSML-hoofd tekst van de aanvraag
-* Alle aantekeningen in het tekst veld van de aanvraag tekst in de SSML-indeling, met uitzonde ring van `<speak>`-en `<voice>`-Tags
-* Letters, lees tekens, spaties, tabs, opmaak en alle spatie tekens
-* Elk code punt dat in Unicode is gedefinieerd
+- Tekst die wordt door gegeven aan de service tekst naar spraak in de SSML-hoofd tekst van de aanvraag
+- Alle aantekeningen in het tekst veld van de aanvraag tekst in de SSML-indeling, met uitzonde ring van `<speak>`-en `<voice>`-Tags
+- Letters, lees tekens, spaties, tabs, opmaak en alle spatie tekens
+- Elk code punt dat in Unicode is gedefinieerd
 
 Zie [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)voor gedetailleerde informatie.
 
@@ -68,16 +67,16 @@ Zie [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/spe
 
 In deze tabel worden de belangrijkste functies voor tekst naar spraak weer gegeven:
 
-| Toepassing | SDK | REST |
-|----------|-----|------|
-| Zet tekst om in spraak. | Ja | Ja |
-| Upload gegevens sets voor stem aanpassing. | Nee | Ja\* |
-| Spraak lettertype modellen maken en beheren. | Nee | Ja\* |
-| Implementaties van spraak lettertype maken en beheren. | Nee | Ja\* |
-| Stem lettertype testen maken en beheren. | Nee | Ja\* |
-| Abonnementen beheren. | Nee | Ja\* |
+| Toepassing                                  | SDK | REST  |
+| ----------------------------------------- | --- | ----- |
+| Zet tekst om in spraak.                   | Ja | Ja   |
+| Upload gegevens sets voor stem aanpassing.     | Nee  | Ja\* |
+| Spraak lettertype modellen maken en beheren.      | Nee  | Ja\* |
+| Implementaties van spraak lettertype maken en beheren. | Nee  | Ja\* |
+| Stem lettertype testen maken en beheren.       | Nee  | Ja\* |
+| Abonnementen beheren.                     | Nee  | Ja\* |
 
-\* *deze services zijn beschikbaar via het CRIS.ai-eind punt. Zie [Swagger-verwijzing](https://westus.cris.ai/swagger/ui/index). Deze aangepaste spraak training en beheer-Api's implementeren beperking waarbij aanvragen worden beperkt tot 25 per vijf seconden, terwijl de spraakherkennings-API zelf de beperking implementeert, waardoor er Maxi maal 200 aanvragen per seconde worden toegestaan. Wanneer er een beperking optreedt, wordt u gewaarschuwd via bericht headers.*
+\*_deze services zijn beschikbaar via het CRIS.ai-eind punt. Zie [Swagger-verwijzing](https://westus.cris.ai/swagger/ui/index). Deze aangepaste spraak training en beheer-Api's implementeren beperking waarbij aanvragen worden beperkt tot 25 per vijf seconden, terwijl de spraakherkennings-API zelf de beperking implementeert, waardoor er Maxi maal 200 aanvragen per seconde worden toegestaan. Wanneer er een beperking optreedt, wordt u gewaarschuwd via bericht headers._
 
 ## <a name="get-started-with-text-to-speech"></a>Aan de slag met tekst-naar-spraak
 
@@ -85,9 +84,9 @@ We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit t
 
 ### <a name="sdk-quickstarts"></a>SDK-Quick starts
 
-| Quick Start (SDK) | Platform | API-verwijzing |
-|------------|----------|---------------|
-| [C#, .NET core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Door](https://aka.ms/csspeech/csharpref) |
+| Quick Start (SDK) | Platform | API-naslaginformatie |
+| ---------------- | -------- | ------------- |
+| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)  | Windows | [Door](https://aka.ms/csspeech/csharpref) |
 | [C#.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Door](https://aka.ms/csspeech/csharpref) |
 | [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Door](https://aka.ms/csspeech/csharpref) |
 | [C#, Eenheid](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=unity) | Windows, Android | [Door](https://aka.ms/csspeech/csharpref) |
@@ -97,15 +96,15 @@ We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit t
 | [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=android) | Android | [Door](https://aka.ms/csspeech/javaref) |
 | [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-macos.md) | macOS | [Door](https://aka.ms/csspeech/objectivecref) |
 | [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-ios.md) | iOS | [Door](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-macos.md) | macOS | [Door](https://aka.ms/csspeech/objectivecref) |
+| Swift (~/articles/Cognitive-Services/Speech-Service/QuickStarts/text-to-speech-langs/Swift-MacOS.MD | macOS | [Door](https://aka.ms/csspeech/objectivecref) |
 | [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-ios.md) | iOS | [Door](https://aka.ms/csspeech/objectivecref) |
 | [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python) | Window, Linux, macOS | [Door](https://aka.ms/csspeech/pythonref) |
 
 ### <a name="rest-quickstarts"></a>REST-Quick starts
 
 | Snelstartgids (REST) | Platform | API-verwijzing |
-|------------|----------|---------------|
-| [C#, .NET core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Door](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| ----------------- | -------- | ------------- |
+| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Door](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Node.js](quickstart-nodejs-text-to-speech.md) | Venster, macOS, Linux | [Door](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Python](quickstart-python-text-to-speech.md) | Venster, macOS, Linux | [Door](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 
@@ -113,18 +112,18 @@ We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit t
 
 Voorbeeld code voor tekst-naar-spraak is beschikbaar op GitHub. Deze voor beelden hebben betrekking op conversie van tekst naar spraak in de populairste programmeer talen.
 
-* [Voor beelden van tekst naar spraak (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-* [Voor beelden van tekst naar spraak (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+- [Voor beelden van tekst naar spraak (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [Voor beelden van tekst naar spraak (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
 ## <a name="reference-docs"></a>Referentiedocumenten
 
-* [Speech-SDK](speech-sdk-reference.md)
-* [SDK voor spraak apparaten](speech-devices-sdk.md)
-* [REST API: spraak naar tekst](rest-speech-to-text.md)
-* [REST API: tekst-naar-spraak](rest-text-to-speech.md)
-* [REST API: batch transcriptie en-aanpassing](https://westus.cris.ai/swagger/ui/index)
+- [Speech-SDK](speech-sdk-reference.md)
+- [SDK voor spraak apparaten](speech-devices-sdk.md)
+- [REST API: spraak naar tekst](rest-speech-to-text.md)
+- [REST API: tekst-naar-spraak](rest-text-to-speech.md)
+- [REST API: batch transcriptie en-aanpassing](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een gratis abonnement op spraak Services ontvangen](get-started.md)
-* [Aangepaste spraak lettertypen maken](how-to-customize-voice-font.md)
+- [Een gratis abonnement op spraak Services ontvangen](get-started.md)
+- [Aangepaste spraakstijlen maken](how-to-customize-voice-font.md)

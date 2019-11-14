@@ -1,7 +1,7 @@
 ---
 title: Wat is Bing Automatische suggesties?
 titleSuffix: Azure Cognitive Services
-description: Lees hier hoe u de Automatische suggestie-API voor Bing gebruikt.
+description: De Bing Automatische suggesties-API retourneert een lijst met voorgestelde query's op basis van de gedeeltelijke queryreeks in het zoekvak.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 13606fa5a58106575648a39e5074507f5d3bf471
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5b1e4cc8dfc89d6dcc5d29a368e089402b284352
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405386"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072878"
 ---
 # <a name="what-is-bing-autosuggest"></a>Wat is Bing Automatische suggesties?
 
@@ -23,7 +23,7 @@ Als uw toepassing query's verstuurt naar een van de API's van Bing Search, kunt 
 
 ## <a name="bing-autosuggest-api-features"></a>Functies van de Bing Automatische suggesties-API
 
-| Functie                                                                                                                                                                                 | Description                                                                                                                                                            |
+| Functie                                                                                                                                                                                 | Beschrijving                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Zoektermen in realtime voorstellen](concepts/get-suggestions.md) | Verbeter uw app-ervaring met de Automatische suggesties-API om voorgestelde zoektermen weer te geven wanneer deze worden getypt. |
 

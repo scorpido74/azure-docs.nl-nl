@@ -1,19 +1,19 @@
 ---
-title: Azure Resource Manager-sjablonen
-description: Hierin wordt beschreven hoe u Azure Resource Manager sjablonen gebruikt voor het implementeren van resources.
+title: Overzicht van Azure Resource Manager sjablonen
+description: Beschrijft de voor delen van het gebruik van Azure Resource Manager sjablonen voor het implementeren van resources.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 956450e5a47e4d0e16de44b6bc72c6cb24d05889
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71300156"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074388"
 ---
-# <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
+# <a name="azure-resource-manager-templates-overview"></a>Overzicht van Azure Resource Manager sjablonen
 
 Dankzij de overstap naar de Cloud hebben veel teams flexibele ontwikkelings methoden aangenomen. Deze teams lopen snel uit. Ze moeten herhaaldelijk hun oplossingen implementeren in de Cloud en weten dat hun infra structuur een betrouw bare status heeft. Omdat de infra structuur is opgenomen in het iteratieve proces, is de verdeling tussen bewerkingen en ontwikkeling verdwenen. Teams moeten de infra structuur en toepassings code beheren via een uniform proces.
 
@@ -41,7 +41,7 @@ Als u probeert te kiezen tussen het gebruik van Resource Manager-sjablonen en ee
 
 * **Bijgehouden implementaties**: In het Azure Portal kunt u de implementatie geschiedenis bekijken en informatie ophalen over de sjabloon implementatie. U kunt de geïmplementeerde sjabloon zien, de parameter waarden die zijn door gegeven en uitvoer waarden. Andere infra structuur als code services worden niet bijgehouden via de portal.
 
-   ![Implementatie geschiedenis](./media/template-deployment-overview/deployment-history.png)
+   ![Implementatiegeschiedenis](./media/template-deployment-overview/deployment-history.png)
 
 * **Beleid als code**: [Azure Policy](../governance/policy/overview.md) is een beleid als code raamwerk waarmee governance wordt geautomatiseerd. Als u Azure-beleid gebruikt, wordt het door voeren van beleid uitgevoerd op niet-compatibele resources wanneer deze via sjablonen worden geïmplementeerd.
 
@@ -125,5 +125,6 @@ Zie [Using linked templates with Azure Resource Manager](resource-group-linked-t
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* Zie [zelf studie: uw eerste Azure Resource Manager sjabloon maken en implementeren](template-tutorial-create-first-template.md)voor een stapsgewijze zelf studie waarin u door het proces van het maken van een sjabloon wordt geleid.
 * Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager-sjablonen](resource-group-authoring-templates.md)voor meer informatie over de eigenschappen in sjabloon bestanden.
 * Zie [Snelstartgids: Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md)voor meer informatie over het exporteren van sjablonen.

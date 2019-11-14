@@ -1,5 +1,5 @@
 ---
-title: Uitbrei ding van NVIDIA GPU-stuur programma-Azure Linux-Vm's | Microsoft Docs
+title: Uitbrei ding van NVIDIA GPU-stuur programma-Azure Linux-Vm's
 description: Microsoft Azure-extensie voor het installeren van NVIDIA GPU-Stuur Programma's op virtuele machines met een N-serie en Linux.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 83646c0b11bf558f667b29271a27d31e5489c157
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6ea61acfc2db3c8f1f5c9c0ac8da8f19897d441e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174014"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073732"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Uitbrei ding van NVIDIA GPU-stuur programma voor Linux
 
@@ -26,8 +26,8 @@ ms.locfileid: "71174014"
 
 Met deze uitbrei ding worden NVIDIA GPU-Stuur Programma's geïnstalleerd op Vm's uit de Linux N-serie. Afhankelijk van de VM-familie installeert de uitbrei ding CUDA of GRID-Stuur Programma's. Wanneer u NVIDIA-Stuur Programma's installeert met behulp van deze uitbrei ding, accepteert u de voor waarden van de [gebruiksrecht overeenkomst](https://go.microsoft.com/fwlink/?linkid=874330)van de NVIDIA en gaat u ermee akkoord. Tijdens het installatie proces kan de virtuele machine opnieuw worden opgestart om de installatie van het stuur programma te volt ooien.
 
-Instructies voor de hand matige installatie van de Stuur Programma's en de huidige ondersteunde [versies](
-https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)zijn hier beschikbaar.
+Instructies voor de hand matige installatie van de Stuur Programma's en de huidige ondersteunde versies zijn [hier](
+https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)beschikbaar.
 Er is ook een uitbrei ding beschikbaar om NVIDIA GPU-Stuur Programma's te installeren op Vm's uit de [Windows N-serie](hpccompute-gpu-windows.md).
 
 ## <a name="prerequisites"></a>Vereisten
@@ -36,7 +36,7 @@ Er is ook een uitbrei ding beschikbaar om NVIDIA GPU-Stuur Programma's te instal
 
 Deze extensie ondersteunt de volgende OS distributies, afhankelijk van de ondersteuning van Stuur Programma's voor een specifieke versie van het besturings systeem.
 
-| Distributie | Version |
+| Distributie | Versie |
 |---|---|
 | Linux: Ubuntu | 16,04 LTS, 18,04 LTS |
 | Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
@@ -70,24 +70,24 @@ In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Eigenschappen
 
-| Name | Waarde / voorbeeld | Gegevenstype |
+| Naam | Waarde / voorbeeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| type | NvidiaGpuDriverLinux | string |
+| publisher | Microsoft.HpcCompute | tekenreeks |
+| type | NvidiaGpuDriverLinux | tekenreeks |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Instellingen
 
 Alle instellingen zijn optioneel. Standaard wordt de kernel niet bijgewerkt als deze niet is vereist voor de installatie van het stuur programma, installeert u het meest recente ondersteunde stuur programma en de CUDA Toolkit (indien van toepassing).
 
-| Name | Description | Default Value | Geldige waarden | Gegevenstype |
+| Naam | Beschrijving | Default Value | Geldige waarden | Gegevenstype |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | De kernel bijwerken, zelfs als deze niet vereist is voor installatie van Stuur Programma's | false | true, false | boolean |
-| driverVersion | NV Versie van GRID-stuur programma<br> NC/ND: CUDA Toolkit-versie. De meest recente Stuur Programma's voor de gekozen CUDA worden automatisch geïnstalleerd. | latest | YRASTER ' 430,30 ', ' 418,70 ', ' 410,92 ', ' 410,71 ', ' 390,75 ', ' 390,57 ', ' 390,42 '<br> CUDA "10.0.130", "9.2.88", "9.1.85" | string |
-| installCUDA | Installeer de CUDA Toolkit. Alleen relevant voor virtuele machines van de NC/ND-serie. | true | true, false | boolean |
+| updateOS | De kernel bijwerken, zelfs als deze niet vereist is voor installatie van Stuur Programma's | false | waar of ONWAAR | booleaans |
+| driverVersion | NV: raster versie van het stuur programma<br> NC/ND: CUDA Toolkit-versie. De meest recente Stuur Programma's voor de gekozen CUDA worden automatisch geïnstalleerd. | nieuwste | RASTER: ' 430,30 ', ' 418,70 ', ' 410,92 ', ' 410,71 ', ' 390,75 ', ' 390,57 ', ' 390,42 '<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | tekenreeks |
+| installCUDA | Installeer de CUDA Toolkit. Alleen relevant voor virtuele machines van de NC/ND-serie. | true | waar of ONWAAR | booleaans |
 
 
 ## <a name="deployment"></a>Implementatie
@@ -175,7 +175,7 @@ Extensie uitvoering uitvoer wordt vastgelegd in het volgende bestand:
 
 ### <a name="exit-codes"></a>Afsluit codes
 
-| Afsluitcode | Betekenis | Mogelijke actie |
+| Afsluit code | Betekenis | Mogelijke actie |
 | :---: | --- | --- |
 | 0 | Bewerking is voltooid |
 | 1 | Onjuist gebruik van uitbrei ding | Uitvoer logboek van uitvoering controleren |

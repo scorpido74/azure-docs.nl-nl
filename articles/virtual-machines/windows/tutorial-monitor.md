@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: virtuele Windows-machines bewaken in azure | Microsoft Docs'
+title: 'Zelf studie: virtuele Windows-machines bewaken in azure'
 description: In deze zelf studie leert u hoe u de prestatie-en gedetecteerde toepassings onderdelen kunt bewaken die op uw virtuele Windows-machines worden uitgevoerd.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: a2f4083841c801db3edf1b2838b8d3271b700731
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 13e5cc9ee45cf230668ef7a7cbe85b6437044643
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71680062"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064761"
 ---
-# <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Zelfstudie: Een virtuele Windows-machine bewaken in azure
+# <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Zelf studie: een virtuele Windows-machine bewaken in azure
 
 Azure monitoring gebruikt agenten voor het verzamelen van opstart-en prestatie gegevens van Azure-Vm's, het opslaan van deze gegevens in azure Storage en het toegankelijk maken via de portal, de Azure PowerShell module en Azure CLI. Geavanceerde bewaking wordt geleverd met Azure Monitor voor VM's door metrische gegevens over prestaties te verzamelen, toepassings onderdelen te detecteren die op de virtuele machine zijn geïnstalleerd en die prestatie grafieken en afhankelijkheids kaarten bevatten.
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Diagnostische gegevens over opstarten op een VM inschakelen
-> * Diagnostische gegevens over opstarten weergeven
+> * Diagnostische gegevens over opstarten bekijken
 > * Metrische gegevens over de VM-host weergeven
 > * Azure Monitor voor VM's inschakelen
 > * Metrische gegevens over de prestaties van de virtuele machine weer geven
@@ -62,7 +62,7 @@ New-AzVm `
 
 Het duurt enkele minuten voordat de bronnen en virtuele machine zijn gemaakt.
 
-## <a name="view-boot-diagnostics"></a>Diagnostische gegevens over opstarten weergeven
+## <a name="view-boot-diagnostics"></a>Diagnostische gegevens over opstarten bekijken
 
 Als virtuele Windows-machines opstarten, legt de agent voor diagnostische opstartgegevens schermuitvoer vast voor het oplossen van problemen. Deze mogelijkheid is standaard ingeschakeld. De vastgelegde scherm afbeeldingen worden opgeslagen in een Azure-opslag account, dat ook standaard wordt gemaakt.
 
@@ -141,7 +141,7 @@ In deze zelf studie hebt u de prestaties van uw VM geconfigureerd en bekeken. U 
 > [!div class="checklist"]
 > * Een resourcegroep en VM maken
 > * Diagnostische gegevens over opstarten op de virtuele machine inschakelen
-> * Diagnostische gegevens over opstarten weergeven
+> * Diagnostische gegevens over opstarten bekijken
 > * Metrische gegevens over de host weergeven
 > * Azure Monitor voor VM's inschakelen
 > * Metrische gegevens over de VM weergeven

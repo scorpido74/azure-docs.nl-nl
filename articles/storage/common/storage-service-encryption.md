@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 42c674e236d769d48f6f17fc43494ac006219a8a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: cfac7fdbbdbf06ae74385fbc33e61d11cb99ff87
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795700"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066319"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage versleuteling voor Data-at-rest
 
 Azure Storage worden uw gegevens automatisch versleuteld wanneer deze persistent worden gemaakt in de Cloud. Versleuteling beschermt uw gegevens en helpt u om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Gegevens in Azure Storage worden transparant versleuteld en ontsleuteld met 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de krach tigste blok cijfers die beschikbaar zijn en is compatibel met FIPS 140-2. Azure Storage versleuteling lijkt op BitLocker-versleuteling in Windows.
 
-Azure Storage versleuteling is ingeschakeld voor alle nieuwe en bestaande opslag accounts en kan niet worden uitgeschakeld. Omdat uw gegevens standaard worden beveiligd, hoeft u uw code of toepassingen niet te wijzigen om Azure Storage versleuteling te benutten.
+Azure Storage versleuteling is ingeschakeld voor alle nieuwe opslag accounts en kan niet worden uitgeschakeld. Omdat uw gegevens standaard worden beveiligd, hoeft u uw code of toepassingen niet te wijzigen om Azure Storage versleuteling te benutten.
 
 Opslag accounts worden versleuteld, ongeacht hun prestatie niveau (Standard of Premium) of implementatie model (Azure Resource Manager of klassiek). Alle Azure Storage redundantie opties ondersteunen versleuteling en alle kopieën van een opslag account worden versleuteld. Alle Azure Storage bronnen worden versleuteld, waaronder blobs, schijven, bestanden, wacht rijen en tabellen. Alle meta gegevens van objecten worden ook versleuteld.
 
@@ -40,10 +40,10 @@ De volgende tabel vergelijkt de opties voor sleutel beheer voor Azure Storage ve
 |                                        |    Door micro soft beheerde sleutels                             |    Door de klant beheerde sleutels                                                                                                                        |    Door de klant verschafte sleutels                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    Bewerkingen voor versleuteling/ontsleuteling    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    Azure Storage services ondersteund    |    Alle                                                |    Blob-opslag, Azure Files                                                                                                               |    Blob Storage                                                                  |
+|    Azure Storage services ondersteund    |    Alles                                                |    Blob-opslag, Azure Files                                                                                                               |    Blob Storage                                                                  |
 |    Sleutel opslag                         |    Micro soft-sleutel archief    |    Azure Key Vault                                                                                                                              |    Azure Key Vault of een ander sleutel archief                                                                 |
 |    Verantwoordelijkheid voor sleutel rotatie         |    Microsoft                                          |    Klant                                                                                                                                     |    Klant                                                                      |
-|    Sleutel gebruik                           |    Microsoft                                          |    Azure Portal, opslag Resource provider REST API, Azure Storage beheer Bibliotheken, Power shell, CLI        |    Azure Storage REST API (Blob Storage), Azure Storage client bibliotheken    |
+|    Sleutelgebruik                           |    Microsoft                                          |    Azure Portal, opslag Resource provider REST API, Azure Storage beheer Bibliotheken, Power shell, CLI        |    Azure Storage REST API (Blob Storage), Azure Storage client bibliotheken    |
 |    Sleutel toegang                          |    Alleen micro soft                                     |    Micro soft, klant                                                                                                                    |    Alleen klant                                                                 |
 
 In de volgende secties worden de opties voor sleutel beheer in meer detail beschreven.
@@ -194,7 +194,7 @@ public static void UploadBlobWithClientKey(CloudBlobContainer container)
 
 ## <a name="azure-storage-encryption-versus-disk-encryption"></a>Azure Storage versleuteling versus schijf versleuteling
 
-Met Azure Storage versleuteling worden alle Azure Storage-accounts en de resources die ze bevatten versleuteld, met inbegrip van de pagina-blobs die back-ups van virtuele machines van Azure maken. Bovendien kunnen virtuele machine schijven van Azure worden versleuteld met [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md). Azure Disk Encryption maakt gebruik van een industrie standaard [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) in Windows en [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) op Linux om versleutelings oplossingen op basis van besturings systemen te bieden die zijn geïntegreerd met Azure Key Vault.
+Azure Storage versleuteling versleutelt de pagina-blobs die back-ups maken van virtuele machines van Azure. Daarnaast kunnen alle schijven van virtuele machines van Azure, met inbegrip van lokale tijdelijke schijven, eventueel worden versleuteld met [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md). Azure Disk Encryption maakt gebruik van een industrie standaard [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) in Windows en [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) op Linux om versleutelings oplossingen op basis van besturings systemen te bieden die zijn geïntegreerd met Azure Key Vault.
 
 ## <a name="next-steps"></a>Volgende stappen
 

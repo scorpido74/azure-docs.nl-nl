@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: e7aa951634dffcafc20f198f85c15f5ac954fe58
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 61736d4f7e6b17c6037837bfdfe6d9cb8a00c5f6
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609058"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076871"
 ---
 # <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>Vooruitbetalen voor Azure Database for MariaDB Compute-resources met gereserveerde capaciteit
 
@@ -32,7 +32,7 @@ Meer informatie over hoe zakelijke klanten en betalen per gebruik-klanten in rek
 
 De grootte van de reserve ring moet worden gebaseerd op de totale reken tijd die wordt gebruikt door het bestaande of binnenkort geïmplementeerde data base-exemplaar binnen een bepaalde regio en met dezelfde prestatie-laag en hardwarematige generatie.</br>
 
-Stel bijvoorbeeld dat u een algemeen doel, GEN5-32 vCore MariaDB-data base, en twee geoptimaliseerd voor geheugen, GEN5 – 16 vCore MariaDB-data bases, uitvoert. Verder is het van plan dat u in de volgende maand een extra algemeen doel, GEN5-32 vCore elastische pool en één geoptimaliseerd voor geheugen, GEN5 – 16 vCore-database server, moet implementeren. Stel dat u weet dat u deze resources ten minste één jaar nodig hebt. In dit geval moet u een 64 (2x32)-vCores aanschaffen, een reserve ring van 1 jaar voor een algemene doel einde van de data base-GEN5 en een 48 (2x16 + 16) vCore 1 jaar reserve ring voor single data base Optimized-GEN5
+Stel bijvoorbeeld dat u een algemeen doel, GEN5-32 vCore MariaDB-data base, en twee geoptimaliseerd voor geheugen, GEN5 – 16 vCore MariaDB-data bases, uitvoert. Verder moet u in de volgende maand een extra algemeen doel, GEN5-32 vCore-database server en één geoptimaliseerd voor geheugen, GEN5-16 vCore-database server, implementeren. Stel dat u weet dat u deze resources ten minste één jaar nodig hebt. In dit geval moet u een 64 (2x32)-vCores aanschaffen, een reserve ring van 1 jaar voor een algemene doel einde van de data base-GEN5 en een 48 (2x16 + 16) vCore 1 jaar reserve ring voor single data base Optimized-GEN5
 
 
 ## <a name="buy-azure-database-for-mariadb-reserved-capacity"></a>Azure Database for MariaDB gereserveerde capaciteit kopen
@@ -58,7 +58,7 @@ In de volgende tabel worden de vereiste velden beschreven.
 | Termijn | Één jaar
 | Aantal | De hoeveelheid reken resources die worden aangeschaft in de Azure Database for MariaDB gereserveerde capaciteits reservering. De hoeveelheid is een aantal vCores in de geselecteerde Azure-regio en-prestatie-laag die worden gereserveerd en de facturerings korting krijgt. Als u bijvoorbeeld werkt met of plant om een Azure Database for MariaDB servers uit te voeren met de totale reken capaciteit van GEN5 16 vCores in de regio VS-Oost, zou u de hoeveelheid instellen op 16 om het voor deel van alle servers te maximaliseren.
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Reserveringen annuleren, ruilen of terugbetalen
+## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
 
 Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfservice voor omruiling en terugbetaling van Azure-reserveringen](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund) voor meer informatie.
 
@@ -82,4 +82,4 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 * [Korting op Azure-reserveringen begrijpen](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
 * [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mariadb)
 * [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [Azure-reserveringen in het CSP-programma (Cloud Solution Provider) van het Partnercentrum](https://docs.microsoft.com/partner-center/azure-reservations)
+* [Azure-reserveringen in CSP-programma (Cloud Solution Provider) van partnercentrum](https://docs.microsoft.com/partner-center/azure-reservations)

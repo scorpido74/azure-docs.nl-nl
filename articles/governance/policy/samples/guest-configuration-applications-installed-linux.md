@@ -1,17 +1,14 @@
 ---
 title: "Voor beeld: ontbrekende toepassingen op Linux Vm's controleren"
 description: In dit voor beeld van een gast configuratie-initiatief en definities wordt gecontroleerd of de opgegeven toepassingen niet in virtuele Linux-machines zijn geïnstalleerd.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 05/02/2019
-ms.author: dacoulte
-ms.openlocfilehash: 5f4d4f4c1102c4409d891bb20b54788dc8ed40ee
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.topic: sample
+ms.openlocfilehash: 0789b7f408c1f3eea000bfb2fc21ddf5feff790c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255739"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076214"
 ---
 # <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Voor beeld: controleren of opgegeven toepassingen niet zijn geïnstalleerd in Linux Vm's
 
@@ -46,7 +43,7 @@ Het initiatief wordt gemaakt door de **audit** -en **deployIfNotExists** definit
 
 |Naam |Type |Beschrijving |
 |---|---|---|
-|applicationName |Tekenreeks |Toepassings namen. Voor beeld: python, Power shell of een door komma's gescheiden lijst zoals python, Power shell. Gebruik \* voor joker tekens, zoals ' Power @ no__t-1 '. |
+|applicationName |Tekenreeks |Toepassings namen. Voor beeld: python, Power shell of een door komma's gescheiden lijst zoals python, Power shell. Gebruik \* voor het vergelijken van joker tekens, zoals ' Power\*'. |
 
 Bij het maken van een toewijzing via PowerShell of Azure CLI kunnen de parameterwaarden worden doorgegeven als JSON in een tekenreeks of via een bestand met `-PolicyParameter` (PowerShell) of `--params` (Azure CLI).
 PowerShell ondersteunt ook `-PolicyParameterObject`, waarvoor de cmdlet een hashtabel met naam/waardeparen moet ontvangen waarin **Name** de parameternaam is en **Value** is de enkelvoudige waarde of matrix met waarden die tijdens toewijzing wordt doorgegeven.
@@ -79,20 +76,20 @@ De **deployIfNotExists** -beleids definitie definieert de Azure-installatie kopi
 
 |Uitgever |Aanbieding |SKU |
 |-|-|-|
-|OpenLogic |CentOS @ no__t-0 |Alles behalve 6 @ no__t-0 |
-|RedHat |RHEL |Alles behalve 6 @ no__t-0 |
+|OpenLogic |CentOS\* |Alles behalve 6\* |
+|RedHat |RHEL |Alles behalve 6\* |
 |RedHat |Osa | Alles |
-|credativ |Debian | Alle behalve 7 @ no__t-0 |
-|SuSE |SLES @ no__t-0 |Alle behalve 11 @ no__t-0 |
-|Canonical| UbuntuServer |Alle behalve 12 @ no__t-0 |
-|micro soft-dsvm |Linux-Data-Science-VM-Ubuntu |Alles |
-|micro soft-dsvm |azureml |Alles |
-|Cloudera |cloudera-CentOS-OS |Alles behalve 6 @ no__t-0 |
-|Cloudera |cloudera-altus-CentOS-OS |Alles |
-|micro soft-Ads |Linux @ no__t-0 |Alles |
-|micro soft-AKS |Alles |Alles |
+|credativ |Debian | Alles behalve 7\* |
+|SUSE |SLES\* |Alle behalve 11\* |
+|Canonical| UbuntuServer |Alle behalve 12\* |
+|microsoft-dsvm |linux-data-science-vm-ubuntu |Alles |
+|microsoft-dsvm |azureml |Alles |
+|cloudera |cloudera-centos-os |Alles behalve 6\* |
+|cloudera |cloudera-altus-CentOS-OS |Alles |
+|microsoft-ads |linux\* |Alles |
+|microsoft-aks |Alles |Alles |
 |AzureDatabricks |Alles |Alles |
-|qubole-Inc |Alles |Alles |
+|qubole-inc |Alles |Alles |
 |datastax |Alles |Alles |
 |Couch base |Alles |Alles |
 |scalegrid |Alles |Alles |
@@ -107,16 +104,16 @@ Nadat de **controle** -en **deployIfNotExists** definities zijn gemaakt in de po
 
 ### <a name="create-copy-of-audit-definition"></a>Kopie maken van audit definitie
 
-[![Deploy het voor beeld van het beleid naar azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
-[![Deploy het voor beeld van het beleid naar Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[![het voor beeld van het beleid implementeren naar azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[![het voor beeld van het beleid implementeren naar Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
 
 Als u met deze knoppen via de portal implementeert, wordt er een kopie van de definitie van het **controle** beleid gemaakt.
 Zonder de gekoppelde **deployIfNotExists** -beleids definitie werkt de gast configuratie niet goed.
 
 ### <a name="create-copy-of-deployifnotexists-definition"></a>Een kopie maken van de deployIfNotExists-definitie
 
-[![Deploy het voor beeld van het beleid naar azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
-[![Deploy het voor beeld van het beleid naar Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[![het voor beeld van het beleid implementeren naar azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[![het voor beeld van het beleid implementeren naar Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
 
 Als u met deze knoppen via de portal implementeert, wordt er een kopie gemaakt van de **deployIfNotExists** -beleids definitie. Zonder de definitie van het gekoppelde **controle** beleid werkt de gast configuratie niet goed.
 
@@ -228,7 +225,7 @@ Remove-AzPolicyDefinition -Id $definition
 
 ### <a name="azure-powershell-explanation"></a>Toelichting van Azure PowerShell
 
-De scripts voor implementeren en verwijderen gebruiken de volgende opdrachten. Elke opdracht in de volgende tabel is een koppeling naar opdrachtspecifieke documentatie:
+De scripts voor implementeren en verwijderen gebruiken de volgende opdrachten. Elke opdracht in onderstaande tabel is een link naar opdracht-specifieke documentatie:
 
 | Opdracht | Opmerkingen |
 |---|---|

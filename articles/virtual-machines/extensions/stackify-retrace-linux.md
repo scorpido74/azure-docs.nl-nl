@@ -1,5 +1,5 @@
 ---
-title: Stackify-extensie voor Azure Linux-agent opnieuw traceren | Microsoft Docs
+title: Uitbrei ding van Azure Linux-agent Stackify opnieuw traceren
 description: Implementeer de Stackify-Linux-agent op een virtuele Linux-machine.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
-ms.openlocfilehash: 2278f1bef3a72408b097f9a2d676931fd07369f4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173973"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073645"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify-extensie voor Linux-agent opnieuw traceren
 
@@ -43,7 +43,7 @@ Deze uitbrei ding biedt een installatiepad voor de Linux-agent voor opnieuw trac
 
 De retrace-agent kan worden uitgevoerd met deze Linux-distributies
 
-| Distributie | Version |
+| Distributie | Versie |
 |---|---|
 | Ubuntu | 16,04 LTS, 14,04 LTS, 16,10 en 17,04 |
 | Debian | 7,9 + en 8.2 +, 9 |
@@ -54,14 +54,14 @@ De retrace-agent kan worden uitgevoerd met deze Linux-distributies
 
 De Stackify-agent extensie voor Linux vereist dat de virtuele doel machine is verbonden met internet. 
 
-Mogelijk moet u uw netwerk configuratie aanpassen om verbindingen met Stackify toe te staan. https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall Zie voor meer informatie. 
+U moet mogelijk uw netwerk configuratie aanpassen om verbindingen met Stackify toe te staan. Zie https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewallvoor meer informatie. 
 
 
 ## <a name="extension-schema"></a>Extensieschema
 
 ---
 
-In de volgende JSON wordt het schema voor de uitbrei ding Stackify retrace agent weer gegeven. Voor de uitbrei `environment` ding `activationKey`is de and vereist.
+In de volgende JSON wordt het schema voor de uitbrei ding Stackify retrace agent weer gegeven. De uitbrei ding vereist de `environment` en `activationKey`.
 
 ```json
     {
@@ -95,7 +95,7 @@ De JSON voor een extensie van een virtuele machine kan worden genest in de resou
 
 In het volgende voor beeld wordt ervan uitgegaan dat de Linux-uitbrei ding Stackify retrace is genest in de resource van de virtuele machine. Bij het nesten van de extensie bron wordt de JSON in het object ' resources ': [] van de virtuele machine geplaatst.
 
-Voor de uitbrei `environment` ding `activationKey`is de and vereist.
+De uitbrei ding vereist de `environment` en `activationKey`.
 
 ```json
     {
@@ -150,9 +150,9 @@ Bij het plaatsen van de JSON-extensie in de hoofdmap van de sjabloon, naam van d
 
 ## <a name="powershell-deployment"></a>Power shell-implementatie
 
-De `Set-AzVMExtension` opdracht kan worden gebruikt voor het implementeren van de extensie van de virtuele machine van de Linux-agent Stackify naar een bestaande virtuele machine. Voordat u de opdracht uitvoert, moeten de open bare en persoonlijke configuraties worden opgeslagen in een Power shell-Hash-tabel.
+De `Set-AzVMExtension`-opdracht kan worden gebruikt voor het implementeren van de extensie van de virtuele machine van de Linux-agent Stackify naar een bestaande virtuele machine. Voordat u de opdracht uitvoert, moeten de open bare en persoonlijke configuraties worden opgeslagen in een Power shell-Hash-tabel.
 
-Voor de uitbrei `environment` ding `activationKey`is de and vereist.
+De uitbrei ding vereist de `environment` en `activationKey`.
 
 ```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
@@ -173,7 +173,7 @@ Set-AzVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
 
 Het Azure CLI-hulp programma kan worden gebruikt voor het implementeren van de extensie van de virtuele machine van de Linux-agent Stackify naar een bestaande virtuele machine.  
 
-Voor de uitbrei `environment` ding `activationKey`is de and vereist.
+De uitbrei ding vereist de `environment` en `activationKey`.
 
 ```azurecli
 az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --name 'StackifyLinuxAgentExtension' --protected-settings '{"activationKey":"myActivationKey"}' --settings '{"environment":"myEnvironment"}'  --resource-group 'myResourceGroup' --vm-name 'myVmName'
@@ -198,4 +198,4 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 110 | Fout uitschakelen | Service verwijderen is mislukt |
 | 120 | Fout bij verwijderen | Stoppen van service mislukt |
 
-Als u meer hulp nodig hebt, kunt u contact opnemen https://support.stackify.com met de Stackify-ondersteuning in.
+Als u meer hulp nodig hebt, kunt u contact opnemen met Stackify-ondersteuning op https://support.stackify.com.

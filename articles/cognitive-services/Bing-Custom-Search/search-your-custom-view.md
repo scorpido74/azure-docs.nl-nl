@@ -1,7 +1,7 @@
 ---
 title: Een aangepaste weer gave zoeken-Bing Aangepaste zoekopdrachten
 titleSuffix: Azure Cognitive Services
-description: Hierin wordt beschreven hoe u een aangepaste weer gave van het web zoekt.
+description: Nadat u uw aangepaste zoek ervaring hebt geconfigureerd, kunt u deze testen vanuit de Bing Aangepaste zoekopdrachten Portal.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: maheshb
-ms.openlocfilehash: 814f57d4011823da80e53cce41ffcb523fc0bf1b
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: f04bfc306a89c7bb6caf3f928f5fdfec66358649
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405001"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072747"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Uw Bing Aangepaste zoekopdrachten-exemplaar aanroepen vanuit de portal
 
@@ -31,19 +31,19 @@ Als u een zoek query wilt maken, voert u de parameter waarden voor uw eind punt 
 Hieronder vindt u enkele belang rijke para meters:
 
 
-|Parameter  |Description  |
+|Parameter  |Beschrijving  |
 |---------|---------|
-|Query’s uitvoeren     | De zoek term waarnaar moet worden gezocht. Alleen beschikbaar voor eind punten voor web-, afbeeldings-, video-en automatische suggesties |
+|Query's uitvoeren     | De zoek term waarnaar moet worden gezocht. Alleen beschikbaar voor eind punten voor web-, afbeeldings-, video-en automatische suggesties |
 |Aangepaste configuratie-ID | De configuratie-ID van het geselecteerde exemplaar van de aangepaste zoek actie. Dit veld is alleen-lezen. |
 |Market     | De markt waarvan de resultaten afkomstig zijn. Alleen beschikbaar voor web-, afbeeldings-, video-en gehoste UI-eind punten.        |
-|Abonnementssleutel | De abonnements sleutel die moet worden getest. U kunt een sleutel selecteren in de vervolg keuzelijst of hand matig invoeren.          |
+|Abonnements sleutel | De abonnements sleutel die moet worden getest. U kunt een sleutel selecteren in de vervolg keuzelijst of hand matig invoeren.          |
 
 Als u op **extra para meters** klikt, worden de volgende para meters zichtbaar  
 
-|Parameter  |Description  |
+|Parameter  |Beschrijving  |
 |---------|---------|
 |Safe Search     | Een filter dat wordt gebruikt om webpagina's te filteren op inhoud voor volwassenen. Alleen beschikbaar voor web-, afbeeldings-, video-en gehoste UI-eind punten.        |
-|Taal van de gebruikers interface    | De taal die wordt gebruikt voor teken reeksen van de gebruikers interface. Als u bijvoorbeeld installatie kopieën en Video's in de gehoste gebruikers interface  inschakelt, wordt in de afbeeldings-en **video** tabbladen de opgegeven taal gebruikt.        |
+|Taal van de gebruikers interface    | De taal die wordt gebruikt voor teken reeksen van de gebruikers interface. Als u bijvoorbeeld installatie kopieën en Video's in de gehoste gebruikers interface inschakelt, wordt in de **afbeeldings** -en **video** tabbladen de opgegeven taal gebruikt.        |
 |Count     | Het aantal Zoek resultaten dat in het antwoord moet worden geretourneerd. Alleen beschikbaar voor web-, afbeeldings-en video-eind punten.         |
 |Offset    | Het aantal Zoek resultaten dat moet worden overgeslagen voordat resultaten worden geretourneerd. Alleen beschikbaar voor web-, afbeeldings-en video-eind punten.        |
     

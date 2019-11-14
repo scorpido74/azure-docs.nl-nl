@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/08/2019
+ms.date: 11/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d092dcf6fa9942f7b3283d1d77157b1f291a5062
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 7f9d1198a0faca8eed2ca5d3f3ee89ac9019d657
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905052"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073909"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -120,6 +120,7 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 
 ## <a name="change-log"></a>Wijzigingenlogboek
+- 11/12/2019: release van [hoge Beschik baarheid voor SAP NetWeaver op Windows met Azure NetApp files (SMB)](high-availability-guide-windows-netapp-files-smb.md)
 - 11/08/2019: wijzigingen in de [maximale Beschik baarheid van SAP Hana op virtuele machines van Azure op SuSE Linux Enterprise Server](sap-hana-high-availability.md), [SAP Hana systeem replicatie op Azure virtual machine (vm's) instellen](sap-hana-high-availability-rhel.md), [Azure virtual machines hoge Beschik baarheid voor sap netweaver op SuSE Linux Enterprise Server voor sap-toepassingen](high-availability-guide-suse.md), Azure virtual machines hoge Beschik baarheid voor SAP netweaver op SuSE Linux Enterprise Server [met Azure NetApp files](high-availability-guide-suse-netapp-files.md), Azure virtual machines hoge Beschik baarheid voor SAP [NetWeaver op Red Hat Enterprise Linux ](high-availability-guide-rhel.md) [Azure virtual machines hoge beschik BAARHEID voor SAP NetWeaver op Red Hat Enterprise Linux met Azure NetApp files](high-availability-guide-rhel-netapp-files.md), [hoge Beschik baarheid voor NFS op virtuele machines in azure op SuSE Linux Enterprise Server](high-availability-guide-suse-nfs.md), [GlusterFS op Azure-Vm's in Red Hat Enterprise Linux voor SAP netweaver](high-availability-guide-rhel-glusterfs.md) om Azure Standard Load Balancer aan te bevelen  
 - 11/08/2019: wijzigingen in de [SAP-werk belasting planning en implementatie controlelijst](sap-deployment-checklist.md) voor het verduidelijken van de aanbeveling voor versleuteling  
 - 11/04/2019: wijzigingen in het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](high-availability-guide-suse-pacemaker.md) om het cluster rechtstreeks te maken met unicast-configuratie  

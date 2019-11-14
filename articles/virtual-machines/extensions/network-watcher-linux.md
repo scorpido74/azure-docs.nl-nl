@@ -1,5 +1,5 @@
 ---
-title: Extensie van virtuele machine voor Azure Network Watcher agent voor Linux | Microsoft Docs
+title: Extensie van virtuele machine voor Azure Network Watcher agent voor Linux
 description: Implementeer de Network Watcher-agent op de virtuele Linux-machine met behulp van een extensie voor virtuele machines.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: b59e4c570032bdd3341dc7d519f23f4cd86984c7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c04b27ab4a8ea53e09ca3a133d6aef6457fe1526
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084446"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073038"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Extensie van virtuele machine voor Network Watcher agent voor Linux
 
@@ -35,7 +35,7 @@ In dit artikel vindt u meer informatie over de ondersteunde platforms en impleme
 
 De uitbrei ding voor de Network Watcher-agent kan worden geconfigureerd voor de volgende Linux-distributies:
 
-| Distributie | Version |
+| Distributie | Versie |
 |---|---|
 | Ubuntu | 12+ |
 | Debian | 7 en 8 |
@@ -75,11 +75,11 @@ De volgende JSON toont het schema voor de uitbrei ding van de Network Watcher ag
 
 ### <a name="property-values"></a>Waarden van eigenschappen
 
-| Name | Waarde / voorbeeld |
+| Naam | Waarde / voorbeeld |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |
-| Type | NetworkWatcherAgentLinux |
+| type | NetworkWatcherAgentLinux |
 | typeHandlerVersion | 1.4 |
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
@@ -103,7 +103,7 @@ In het volgende voor beeld wordt de VM-extensie Network Watcher agent geïmpleme
 az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name NetworkWatcherAgentLinux --publisher Microsoft.Azure.NetworkWatcher --version 1.4
 ```
 
-## <a name="troubleshooting-and-support"></a>Probleemoplossing en ondersteuning
+## <a name="troubleshooting-and-support"></a>Problemen oplossen en ondersteuning
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 

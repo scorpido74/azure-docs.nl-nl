@@ -1,21 +1,22 @@
 ---
-title: Snelstart - Webverkeer omleiden met Azure Application Gateway - Azure CLI | Microsoft Docs
+title: 'Quick Start: direct webverkeer via CLI'
+titleSuffix: Azure Application Gateway
 description: Meer informatie over het gebruik van de Azure CLI om een Azure-toepassing gateway te maken waarmee webverkeer wordt doorgestuurd naar virtuele machines in een back-end-groep.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: dd68f4a565c28f1dbac7e94442a8f8231af01328
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: de1f30d949509ab48999d0080ccc4df74321ce01
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314900"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075205"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Quickstart: Webverkeer omleiden met Azure Application Gateway - Azure CLI
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Snelstart: webverkeer omleiden met Azure Application Gateway - Azure CLI
 
 In deze Quick start ziet u hoe u Azure CLI gebruikt om een toepassings gateway te maken.  Nadat u de toepassings gateway hebt gemaakt, test u deze om er zeker van te zijn dat deze correct werkt. Met Azure-toepassing gateway stuurt u het webverkeer van uw toepassing naar specifieke bronnen door listeners toe te wijzen aan poorten, regels te maken en resources toe te voegen aan een back-end-groep. In dit artikel wordt gebruikgemaakt van een eenvoudige configuratie met een openbaar front-end-IP, een basis-listener voor het hosten van één site op de toepassings gateway, twee virtuele machines die worden gebruikt voor de back-end-pool en een regel voor basis routering van aanvragen.
 
@@ -29,7 +30,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u Azure CLI versie 2.0.4 of hoger nodig. Voer **az --version** uit om de versie te zoeken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) voor meer informatie over installeren en upgraden.
 
-### <a name="resource-group"></a>Resource group
+### <a name="resource-group"></a>Resourcegroep
 
 In Azure kunt u verwante resources toewijzen aan een resourcegroep. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group#az-group-create). 
 
@@ -159,11 +160,11 @@ az network application-gateway create \
 
 Het kan tot 30 minuten duren om de toepassingsgateway te maken in Azure. Wanneer deze is gemaakt, kunt u de volgende instellingen bekijken in het gedeelte **Instellingen** van de pagina **Toepassingsgateway**:
 
-- **appGatewayBackendPool**: Staat op de pagina **back-endpools**. Hier is te zien wat de vereiste back-endpool is.
-- **appGatewayBackendHttpSettings**: Staat op de pagina **HTTP-instellingen**. Hier wordt aangegeven dat de toepassingsgateway voor communicatie gebruikmaakt van poort 80 en het HTTP-protocol.
-- **appGatewayHttpListener**: Staat op de **pagina Listeners**. Hier staat wat de standaard-listener is die aan **appGatewayBackendPool** is gekoppeld.
-- **appGatewayFrontendIP**: Staat op de pagina **Front-end-IP-configuraties**. Hiermee wordt *myAGPublicIPAddress* aan **appGatewayHttpListener** toegewezen.
-- **rule1**: Staat op de pagina **Regels**. Hier wordt aangegeven welke standaardrouteringsregel aan **appGatewayHttpListener** is gekoppeld.
+- **appGatewayBackendPool**: bevindt zich op de pagina met **Back-upgroepen** . Hier is te zien wat de vereiste back-endpool is.
+- **appGatewayBackendHttpSettings**: bevindt zich op de pagina **http-instellingen** . Hier wordt aangegeven dat de toepassingsgateway voor communicatie gebruikmaakt van poort 80 en het HTTP-protocol.
+- **appGatewayHttpListener**: bevindt zich op de **pagina listeners**. Hier staat wat de standaard-listener is die aan **appGatewayBackendPool** is gekoppeld.
+- **appGatewayFrontendIP**: bevindt zich op de pagina **frontend IP-configuraties** . Hiermee wordt *myAGPublicIPAddress* aan **appGatewayHttpListener** toegewezen.
+- **firewallregel1**: bevindt zich op de pagina **regels** . Hier wordt aangegeven welke standaardrouteringsregel aan **appGatewayHttpListener** is gekoppeld.
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 

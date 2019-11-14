@@ -1,5 +1,5 @@
 ---
-title: Een Windows-VM maken en beheren in azure met behulp van python | Microsoft Docs
+title: Een Windows-VM maken en beheren in azure met behulp van python
 description: Meer informatie over het gebruik van python voor het maken en beheren van een Windows-VM in Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: fcbf4e054359534f924b401f2f42e1d4c33890be
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1686e86600fb28165ae44e7ca6c0c406dfa26d72
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102484"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065602"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows-Vm's maken en beheren in azure met behulp van python
 
-Een [virtuele machine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) van Azure heeft verschillende ondersteunende Azure-resources nodig. In dit artikel wordt beschreven hoe u VM-resources maakt, beheert en verwijdert met behulp van python. In deze zelfstudie leert u procedures om het volgende te doen:
+Een [virtuele machine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) van Azure heeft verschillende ondersteunende Azure-resources nodig. In dit artikel wordt beschreven hoe u VM-resources maakt, beheert en verwijdert met behulp van python. Procedures voor:
 
 > [!div class="checklist"]
 > * Een Visual Studio-project maken
@@ -39,8 +39,8 @@ Het duurt ongeveer 20 minuten om deze stappen uit te voeren.
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
 
 1. Als u dat nog niet hebt gedaan, installeert u [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Selecteer **python-ontwikkeling** op de pagina workloads en klik vervolgens op **installeren**. In de samen vatting ziet u dat **Python 3 64-bits (3.6.0)** automatisch voor u wordt geselecteerd. Als u Visual Studio al hebt geïnstalleerd, kunt u de python-workload toevoegen met behulp van de Visual Studio Launcher.
-2. Klik na het installeren en starten van Visual Studio op **bestand** > **Nieuw** > **project**.
-3. Klik op **sjablonen** > **python** > python-**toepassing**, Voer *myPythonProject* in als de naam van het project, selecteer de locatie van het project en klik vervolgens op **OK**.
+2. Nadat u Visual Studio hebt geïnstalleerd en gestart, klikt u op **bestand** > **nieuwe** > **project**.
+3. Klik op **sjablonen** > **python** > **python-toepassing**, Voer *myPythonProject* in als de naam van het project, selecteer de locatie van het project en klik vervolgens op **OK**.
 
 ## <a name="install-packages"></a>Pakketten installeren
 
@@ -439,7 +439,7 @@ U kunt een virtuele machine stoppen en alle instellingen behouden, maar er nog s
         compute_client.virtual_machines.power_off(GROUP_NAME, VM_NAME)
     ```
 
-    Als u de toewijzing van de virtuele machine ongedaan wilt maken, wijzigt u de power_off-aanroep naar deze code:
+    Als u de toewijzing van de virtuele machine ongedaan wilt maken, wijzigt u de power_off aanroep van deze code:
 
     ```python
     compute_client.virtual_machines.deallocate(GROUP_NAME, VM_NAME)
@@ -470,7 +470,7 @@ U kunt een virtuele machine stoppen en alle instellingen behouden, maar er nog s
 
 ### <a name="resize-the-vm"></a>Grootte van de virtuele machine wijzigen
 
-Veel aspecten van de implementatie moeten worden overwogen bij het bepalen van de grootte van de virtuele machine. Zie [VM](sizes.md)-grootten voor meer informatie.
+Veel aspecten van de implementatie moeten worden overwogen bij het bepalen van de grootte van de virtuele machine. Zie [VM-grootten](sizes.md)voor meer informatie.
 
 1. Als u de grootte van de virtuele machine wilt wijzigen, voegt u deze functie toe na de variabelen in het. py-bestand:
 
@@ -565,7 +565,7 @@ Omdat er in rekening worden gebracht voor resources die worden gebruikt in azure
 
 1. Klik op **starten** in Visual Studio om de console toepassing uit te voeren.
 
-2. Druk op **Enter** nadat de status van elke resource is geretourneerd. In de status informatie ziet u een geslaagde inrichtings status. Nadat de virtuele machine is gemaakt, hebt u de mogelijkheid om alle resources die u maakt, te verwijderen. Voordat u op **Enter** drukt om resources te verwijderen, kunt u een paar minuten duren om te controleren of de Azure Portal is gemaakt. Als u de Azure Portal hebt geopend, moet u de Blade wellicht vernieuwen om nieuwe resources weer te geven.  
+2. Druk op **Enter** nadat de status van elke resource is geretourneerd. In de status informatie ziet u een **geslaagde** inrichtings status. Nadat de virtuele machine is gemaakt, hebt u de mogelijkheid om alle resources die u maakt, te verwijderen. Voordat u op **Enter** drukt om resources te verwijderen, kunt u een paar minuten duren om te controleren of de Azure Portal is gemaakt. Als u de Azure Portal hebt geopend, moet u de Blade wellicht vernieuwen om nieuwe resources weer te geven.  
 
     Het duurt ongeveer vijf minuten voordat deze console toepassing volledig van begin tot eind kan worden uitgevoerd. Het kan enkele minuten duren voordat de toepassing is voltooid voordat alle resources en de resource groep zijn verwijderd.
 

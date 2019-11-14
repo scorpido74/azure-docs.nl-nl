@@ -1,5 +1,5 @@
 ---
-title: Network Performance Monitor configureren voor ExpressRoute-circuits - Azure | Microsoft Docs
+title: 'Azure ExpressRoute: NPM voor circuits configureren'
 description: Configureer cloud-gebaseerde netwerk (NPM) voor Azure ExpressRoute-circuits controleren. Dit bevat informatie over bewaking via ExpressRoute-privépeering en Microsoft-peering.
 services: expressroute
 author: cherylmc
@@ -7,17 +7,16 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 180075f13be2cc2507a78e3d10a67a49a0c0cb12
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54fa3dcbfbbcb3153f81407a9bc9b52511405390
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60840030"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076594"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Netwerkprestatiemeter configureren voor ExpressRoute
 
-Dit artikel helpt u bij het configureren van een extensie voor Network Performance Monitor voor het controleren van ExpressRoute. (Netwerkprestatiemeter) is een cloud-gebaseerde Netwerkcontrole-oplossing waarmee connectiviteit tussen Azure-cloud-implementaties en on-premises locaties (filialen, enzovoort) worden gecontroleerd. NPM is onderdeel van Azure Monitor-Logboeken. NPM biedt een uitbreiding voor ExpressRoute waarmee u het bewaken van prestaties van het netwerk via ExpressRoute-circuits die zijn geconfigureerd voor gebruik van persoonlijke peering of Microsoft-peering. Wanneer u NPM voor ExpressRoute configureren, kunt u netwerkproblemen identificeren en oplossen detecteren. Deze service is ook beschikbaar voor Azure Government-Cloud.
+Dit artikel helpt u bij het configureren van een extensie voor Network Performance Monitor voor het controleren van ExpressRoute. Netwerkprestatiemeter (NPM) is een cloudoplossing voor netwerkcontrole die de connectiviteit controleert tussen implementaties in de Azure-cloud en on-premises locaties (filialen, enzovoort). NPM is een onderdeel van Azure Monitor-logboeken. NPM biedt een uitbreiding voor ExpressRoute waarmee u netwerkprestaties kunt controleren via ExpressRoute-circuits die zijn geconfigureerd voor het gebruik van persoonlijke peering of Microsoft-peering. Wanneer u NPM configureert voor ExpressRoute, kunt u netwerkproblemen detecteren om te identificeren en op te lossen. Deze service is ook beschikbaar voor Azure Government-Cloud.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -40,11 +39,11 @@ U kunt:
 Monitoring agents zijn geïnstalleerd op meerdere servers, zowel on-premises en in Azure. De agents met elkaar communiceren, maar geen gegevens verzenden, ze TCP-handshake pakketten verzenden. De communicatie tussen de agents kan Azure de netwerktopologie en pad van het verkeer kan worden toegewezen.
 
 1. Een NPM-werkruimte maken. Dit is hetzelfde als een Log Analytics-werkruimte.
-2. Installeren en configureren van softwareagents. (Als u alleen controleren via Microsoft-Peering wilt, u hoeft niet te installeren en configureren van softwareagents.): 
+2. Software-agents installeren en configureren. (Als u alleen wilt bewaken over micro soft-peering, hoeft u geen software-agents te installeren en te configureren.): 
     * Installatie monitoring-agents op de on-premises servers en de Azure VM's (voor persoonlijke peering).
     * Instellingen configureren op de monitoring agentservers om toe te staan de bewakingsagents om te communiceren. (Open firewallpoorten, enz.)
 3. Configureer regels voor network security group (NSG) om toe te staan de monitoring agent is geïnstalleerd op Azure Virtual machines om te communiceren met on-premises monitoring-agents.
-4. Stel als volgt controleren: Voer automatisch ontdekken en te beheren welke netwerken zijn zichtbaar in de NPM.
+4. Controle instellen: Voer automatisch ontdekken en te beheren welke netwerken zijn zichtbaar in de NPM.
 
 Als u al van Network Performance Monitor gebruikmaakt voor het bewaken van andere objecten of services, en u al werkruimte in een van de ondersteunde regio's hebt, kunt u stap 1 en stap 2 overslaan en beginnen met de configuratie met stap 3.
 
@@ -60,7 +59,7 @@ Een werkruimte maken in het abonnement waaraan de VNets koppelen aan het Express
 
    ![portal](./media/how-to-npm/3.png)<br><br>
 2. Aan de onderkant van de belangrijkste **Network Performance Monitor** pagina, klikt u op **maken** openen **Network Performance Monitor - de nieuwe oplossing maken** pagina. Klik op **Log Analytics-werkruimte - Selecteer een werkruimte** de werkruimten-pagina te openen. Klik op **+ nieuwe werkruimte maken** om de pagina van de werkruimte te openen.
-3. Op de **Log Analytics-werkruimte** weergeeft, schakelt **nieuw**, klikt u vervolgens de volgende instellingen configureren:
+3. Selecteer op de pagina **log Analytics werk ruimte** de optie **nieuwe maken**en configureer de volgende instellingen:
 
    * Log Analytics-werkruimte: Typ een naam voor uw werkruimte.
    * Abonnement: als u meerdere abonnementen hebt, kiest u het abonnement die u wilt koppelen aan de nieuwe werkruimte.
@@ -78,9 +77,9 @@ Een werkruimte maken in het abonnement waaraan de VNets koppelen aan het Express
 
    ![aanvullende configuratie](./media/how-to-npm/5.png)
 
-## <a name="agents"></a>Stap 2: Agents installeren en configureren
+## <a name="agents"></a>Stap 2: Installeren en configureren van agents
 
-### <a name="download"></a>2.1: Download het installatiebestand van de agent
+### <a name="download"></a>2.1: de agent setup-bestand downloaden
 
 1. Ga naar de **algemene instellingen die u** tabblad van de **configuratie van netwerkprestaties** -pagina voor uw resource. Klik op de agent die overeenkomt met de processor van de server van de **Log Analytics-Agents installeren** uit en download het setup-bestand.
 2. Kopieer vervolgens de **werkruimte-ID** en **primaire sleutel** naar Kladblok.
@@ -88,7 +87,7 @@ Een werkruimte maken in het abonnement waaraan de VNets koppelen aan het Express
 
    ![PowerShell-script](./media/how-to-npm/7.png)
 
-### <a name="installagent"></a>2.2: Een bewakingsagent installeren op elke controleserver (op elke VNET die u wilt bewaken)
+### <a name="installagent"></a>2.2: een monitoring agent installeren op elke controleserver (op elke VNET die u wilt bewaken)
 
 Het is raadzaam dat u ten minste twee agents op elke zijde van de ExpressRoute-verbinding voor redundantie (bijvoorbeeld on-premises Azure vnet's installeren). De agent moet worden geïnstalleerd op een Windows Server (2008 SP1 of hoger). Bewaking van ExpressRoute-circuits met behulp van Windows Desktop OS en Linux-besturingssysteem wordt niet ondersteund. Gebruik de volgende stappen uit om agents te installeren:
    
@@ -100,7 +99,7 @@ Het is raadzaam dat u ten minste twee agents op elke zijde van de ExpressRoute-v
 2. Klik op de pagina **Welkom** op **Volgende**.
 3. Op de **licentievoorwaarden** pagina, lees de gebruiksrechtovereenkomst en klik vervolgens op **ik ga akkoord**.
 4. Op de **doelmap** pagina, wijzigen of desgewenst de standaardinstallatiemap en klik vervolgens op **volgende**.
-5. Op de **installatieopties voor Agent** pagina die u kunt kiezen om de agent verbinden met Azure Monitor-Logboeken of Operations Manager. Of u kunt de opties leeg laten als u wilt configureren van de agent later opnieuw. Nadat u uw selection(s), klikt u op **volgende**.
+5. Op de pagina **installatie opties voor agent** kunt u ervoor kiezen om de agent te verbinden met Azure monitor Logboeken of Operations Manager. Of u kunt de opties leeg laten als u wilt configureren van de agent later opnieuw. Nadat u uw selection(s), klikt u op **volgende**.
 
    * Als u wilt verbinding maken met **Azure Log Analytics**, plak de **werkruimte-ID** en **Werkruimtesleutel** (primaire sleutel) die u in Kladblok in de vorige sectie hebt gekopieerd. Klik op **Volgende**.
 
@@ -113,7 +112,7 @@ Het is raadzaam dat u ten minste twee agents op elke zijde van de ExpressRoute-v
      ![Account](./media/how-to-npm/10.png)
 6. Op de **gereed voor installatie** pagina, Controleer uw keuzes en klik vervolgens op **installeren**.
 7. Klik op de pagina **Configuratie voltooid** op **Voltooien**.
-8. Als u klaar bent, is de Microsoft Monitoring Agent wordt weergegeven in het Configuratiescherm. U kunt de configuratie controleren en verifiëren dat de agent is verbonden met Azure Monitor-Logboeken. Wanneer verbinding is gemaakt, wordt de agent een bericht weergegeven: **De Microsoft Monitoring Agent verbonden is met de Microsoft Operations Management Suite service**.
+8. Als u klaar bent, is de Microsoft Monitoring Agent wordt weergegeven in het Configuratiescherm. U kunt uw configuratie daar controleren en controleren of de agent is verbonden met Azure Monitor Logboeken. Wanneer verbinding is gemaakt, de agent wordt een bericht weergegeven: **The Microsoft Monitoring Agent verbonden is met de Microsoft Operations Management Suite service**.
 
 9. Herhaal deze procedure voor elke VNET die u nodig hebt om te worden bewaakt.
 
@@ -137,11 +136,11 @@ U kunt eenvoudig controleren of uw agents communiceren.
 1. Open op een server met de monitoring agent, de **Configuratiescherm**.
 2. Open de **Microsoft Monitoring Agent**.
 3. Klik op de **Azure Log Analytics** tabblad.
-4. In de **Status** kolom ziet u dat de agent is verbonden met Azure Monitor-Logboeken.
+4. In de kolom **status** ziet u dat de agent is verbonden met het Azure monitor Logboeken.
 
    ![status](./media/how-to-npm/12.png)
 
-### <a name="firewall"></a>2.5: Open de firewallpoorten op de monitoring agentservers
+### <a name="firewall"></a>2.5: open de firewallpoorten op de monitoring agentservers
 
 Als u wilt het TCP-protocol gebruiken, moet u de firewall-poorten om ervoor te zorgen dat de bewakingsagents kunnen communiceren openen.
 
@@ -197,7 +196,7 @@ Voor persoonlijke peering wanneer detectie is voltooid, ziet u regels voor wordt
 2. Schakel het selectievakje **statuscontrole inschakelen voor deze peering**.
 3. Kies de bewaking voorwaarden. U kunt aangepaste drempelwaarden voor het genereren van health-gebeurtenissen door te typen drempelwaarden instellen. Wanneer de waarde van de voorwaarde hoger dan de geselecteerde drempelwaarde voor het geselecteerde netwerk/subnet-paar gaat, wordt een statusgebeurtenis wordt gegenereerd.
 4. Klik op de ON-PREMISES AGENTS **Agents toevoegen** om toe te voegen van de on-premises servers van waaruit u wilt bewaken van de privé-peering verbinding. Zorg ervoor dat u alleen agents die zijn verbonden met het Microsoft-service-eindpunt dat u hebt opgegeven in de sectie voor stap 2 kiezen. De on-premises-agents moet kunnen bereiken van het eindpunt met de ExpressRoute-verbinding.
-5. De instellingen niet opslaan.
+5. Sla de instellingen op.
 6. Na het inschakelen van de regels en selecteren van de waarden en de agents die u wilt bewaken, is er een wachttijd van ongeveer 30 tot 60 minuten voor de waarden om te beginnen met het invullen van en de **ExpressRoute-controle** tegels beschikbaar.
 
 ### <a name="microsoft-peering"></a>Microsoft-peering
@@ -216,7 +215,7 @@ Voor Microsoft-peering, klikt u op de Microsoft-peering verbindingen die u wilt 
 3. Schakel het selectievakje **statuscontrole inschakelen voor deze peering**.
 4. Kies de bewaking voorwaarden. U kunt aangepaste drempelwaarden voor het genereren van health-gebeurtenissen door te typen drempelwaarden instellen. Wanneer de waarde van de voorwaarde hoger dan de geselecteerde drempelwaarde voor het geselecteerde netwerk/subnet-paar gaat, wordt een statusgebeurtenis wordt gegenereerd.
 5. Klik op de ON-PREMISES AGENTS **Agents toevoegen** om toe te voegen van de on-premises servers van waaruit u wilt bewaken van de Microsoft-peering verbinding. Zorg ervoor dat u alleen agents die zijn verbonden met de Microsoft-service-eindpunten die u hebt opgegeven in de sectie voor stap 2 kiezen. De on-premises-agents moet kunnen bereiken van het eindpunt met de ExpressRoute-verbinding.
-6. De instellingen niet opslaan.
+6. Sla de instellingen op.
 7. Na het inschakelen van de regels en selecteren van de waarden en de agents die u wilt bewaken, is er een wachttijd van ongeveer 30 tot 60 minuten voor de waarden om te beginnen met het invullen van en de **ExpressRoute-controle** tegels beschikbaar.
 
 ## <a name="explore"></a>Stap 6: Bewaking tegels weergeven

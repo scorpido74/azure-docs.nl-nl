@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren van en naar Azure SQL Data Warehouse met behulp van Azure Data Factory
-description: Informatie over het kopiëren van gegevens uit ondersteunde bron archieven naar Azure SQL Data Warehouse of van SQL Data Warehouse naar ondersteunde Sink-archieven met behulp van Data Factory.
+title: Gegevens in Azure SQL Data Warehouse kopiëren en transformeren met behulp van Azure Data Factory
+description: Informatie over het kopiëren van gegevens van en naar Azure SQL Data Warehouse en het transformeren van gegevens in Azure SQL Data Warehouse met behulp van Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,21 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: b64bfd046a42a630e7913c45213053e84377a037
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4d08a388e98283ff7bf05e938d7b8c48b7065074
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681152"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076772"
 ---
-# <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens kopiëren van of naar Azure SQL Data Warehouse met behulp van Azure Data Factory 
+# <a name="copy-and-transform-data-in-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens in Azure SQL Data Warehouse kopiëren en transformeren met behulp van Azure Data Factory 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Version1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [Huidige versie](connector-azure-sql-data-warehouse.md)
 
-In dit artikel wordt beschreven hoe u gegevens kopieert van en naar Azure SQL Data Warehouse. Lees het [artikel Inleiding](introduction.md)voor meer informatie over Azure Data Factory.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van en naar Azure SQL Data Warehouse, en om gegevens in Azure Data Lake Storage Gen2 te transformeren met behulp van gegevens stromen. Lees voor meer informatie over Azure Data Factory, de [inleidende artikel](introduction.md).
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
@@ -35,50 +35,50 @@ Deze Azure SQL Data Warehouse-connector wordt ondersteund voor de volgende activ
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)
 
-Deze Azure SQL Data Warehouse-connector ondersteunt deze functies met name:
+Voor kopieer activiteit ondersteunt deze Azure SQL Data Warehouse-connector de volgende functies:
 
-- Gegevens kopiëren met behulp van SQL-verificatie en Azure Active Directory (Azure AD) verificatie van het toepassings token met een service-principal of beheerde identiteiten voor Azure-resources.
-- Haal als bron gegevens op met behulp van een SQL-query of opgeslagen procedure.
-- Laad gegevens door middel van poly base of bulksgewijs invoegen als sink. We raden poly base aan voor betere Kopieer prestaties.
+- Gegevens kopiëren met behulp van SQL-verificatie en tokenverificatie van Azure Active Directory (Azure AD)-toepassing met een service-principal of beheerde identiteiten voor Azure-resources.
+- Als een bron ophalen van gegevens met behulp van een SQL-query of een opgeslagen procedure.
+- Als een sink gegevens laden met behulp van PolyBase of een bulksgewijs invoegen. We raden PolyBase voor betere kopieerprestaties.
 
 > [!IMPORTANT]
-> Als u gegevens kopieert met behulp van Azure Data Factory Integration Runtime, configureert u een [Azure SQL Server-firewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) zodat Azure-Services toegang hebben tot de server.
-> Als u gegevens kopieert met behulp van een zelf-hostende Integration runtime, configureert u de Azure SQL Server-firewall zodanig dat het juiste IP-bereik is toegestaan. Dit bereik bevat het IP-adres van de computer dat wordt gebruikt om verbinding te maken met Azure SQL Database.
+> Als u gegevens kopiëren met behulp van Azure Data Factory Integration Runtime, configureert u een [Azure SQL-serverfirewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) zodat Azure-services toegang hebben tot de server.
+> Als u gegevens kopiëren met behulp van de zelf-hostende integratieruntime, configureert u de firewall van de Azure SQL-server zodat het juiste IP-adresbereik. Dit bereik omvat IP van de machine die wordt gebruikt om te verbinden met Azure SQL Database.
 
 ## <a name="get-started"></a>Aan de slag
 
 > [!TIP]
-> Gebruik poly Base om gegevens te laden in Azure SQL Data Warehouse om de beste prestaties te krijgen. De sectie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) bevat details. Zie voor een overzicht met een use-case [1 TB in Azure SQL Data Warehouse onder 15 minuten laden met Azure Data Factory](load-azure-sql-data-warehouse.md).
+> Voor het bereiken van optimale prestaties, gebruikt u PolyBase om gegevens te laden in Azure SQL Data Warehouse. De [gebruik PolyBase om gegevens te laden in Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sectie vindt u informatie. Zie voor een overzicht met een use case [1 TB laden in Azure SQL Data Warehouse minder dan 15 minuten met Azure Data Factory](load-azure-sql-data-warehouse.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-De volgende secties bevatten informatie over eigenschappen die Data Factory entiteiten definiëren die specifiek zijn voor een Azure SQL Data Warehouse-connector.
+De volgende secties bevatten meer informatie over eigenschappen die specifieke Data Factory-entiteiten met een Azure SQL Data Warehouse-connector definiëren.
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 
 De volgende eigenschappen worden ondersteund voor een Azure SQL Data Warehouse gekoppelde service:
 
 | Eigenschap            | Beschrijving                                                  | Vereist                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | type                | De eigenschap type moet worden ingesteld op **AzureSqlDW**.             | Ja                                                          |
-| connectionString    | Geef de gegevens op die nodig zijn om verbinding te maken met het Azure SQL Data Warehouse-exemplaar voor de **Connections Tring** -eigenschap. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook het wacht woord/de sleutel van de Service-Principal in Azure Key Vault plaatsen, en als de SQL-verificatie de `password` configuratie uit de connection string haalt. Zie het JSON-voor beeld onder de tabel en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja                                                          |
-| servicePrincipalId  | Geef de client-ID van de toepassing op.                         | Ja, wanneer u Azure AD-verificatie gebruikt met een service-principal. |
-| servicePrincipalKey | Geef de sleutel van de toepassing op. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja, wanneer u Azure AD-verificatie gebruikt met een service-principal. |
-| bouw              | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja, wanneer u Azure AD-verificatie gebruikt met een service-principal. |
-| connectVia          | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of een zelf-hostende Integration runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | Nee                                                           |
+| connectionString    | Geef de informatie die nodig zijn voor het verbinding maken met de Azure SQL Data Warehouse-exemplaar voor de **connectionString** eigenschap. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook het wacht woord/de sleutel van de Service-Principal in Azure Key Vault plaatsen, en als de SQL-verificatie de `password` configuratie uit de connection string haalt. Zie het JSON-voor beeld onder de tabel en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja                                                          |
+| servicePrincipalId  | Opgeven van de toepassing client-ID.                         | Ja, als u Azure AD-verificatie met een service-principal. |
+| servicePrincipalKey | Geef de sleutel van de toepassing. Dit veld markeren als een SecureString Bewaar deze zorgvuldig in Data Factory, of [verwijzen naar een geheim opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja, als u Azure AD-verificatie met een service-principal. |
+| tenant              | De tenantgegevens (domain name of tenant-ID) opgeven in uw toepassing zich bevindt. U kunt het ophalen van de muis in de rechterbovenhoek van de Azure-portal. | Ja, als u Azure AD-verificatie met een service-principal. |
+| connectVia          | De [integratieruntime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. U kunt Azure Integration Runtime of een zelf-hostende integratieruntime gebruiken (als het gegevensarchief bevindt zich in een particulier netwerk). Als niet is opgegeven, wordt de standaard Azure Integration Runtime. | Nee                                                           |
 
-Raadpleeg de volgende secties over respectievelijk de vereisten en JSON-voor beelden voor verschillende verificatie typen:
+Verwijzen respectievelijk naar de volgende secties over de vereisten en JSON-voorbeelden, voor andere verificatietypen:
 
 - [SQL-verificatie](#sql-authentication)
-- Verificatie van Azure AD-toepassings token: [Service-Principal](#service-principal-authentication)
-- Verificatie van Azure AD-toepassings tokens: [beheerde identiteiten voor Azure-resources](#managed-identity)
+- Azure AD-toepassing-tokenverificatie: [Service-principal](#service-principal-authentication)
+- Azure AD-toepassing-tokenverificatie: [beheerde identiteiten voor een Azure-resources](#managed-identity)
 
 >[!TIP]
->Als u de fout code ' UserErrorFailedToConnectToSqlServer ' hebt gevonden en het bericht ' de sessie limiet voor de data base is XXX is bereikt. ', voegt u `Pooling=false` toe aan uw connection string en probeert u het opnieuw.
+>Als u fout met foutcode als "UserErrorFailedToConnectToSqlServer" bereikt en wordt weergegeven, zoals 'de sessielimiet voor de database is XXX en is bereikt.', toe te voegen `Pooling=false` met de verbindingstekenreeks en probeer het opnieuw.
 
 ### <a name="sql-authentication"></a>SQL-verificatie
 
-#### <a name="linked-service-example-that-uses-sql-authentication"></a>Voor beeld van een gekoppelde service dat gebruikmaakt van SQL-verificatie
+#### <a name="linked-service-example-that-uses-sql-authentication"></a>Voorbeeld van de gekoppelde service die gebruikmaakt van SQL-verificatie
 
 ```json
 {
@@ -130,32 +130,32 @@ Raadpleeg de volgende secties over respectievelijk de vereisten en JSON-voor bee
 
 ### <a name="service-principal-authentication"></a>Verificatie van service-principal
 
-Voer de volgende stappen uit om verificatie van Azure AD-toepassings tokens op basis van de service-principal te gebruiken:
+Volg deze stappen voor het gebruik van service-principal op basis van Azure AD-toepassing-tokenverificatie:
 
-1. **[Maak een Azure Active Directory-toepassing](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)** vanuit de Azure Portal. Noteer de naam van de toepassing en de volgende waarden die de gekoppelde service definiëren:
+1. **[Maak een Azure Active Directory-toepassing](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)**  vanuit Azure portal. Noteer de naam van de toepassing en de volgende waarden voor het definiëren van de gekoppelde service:
 
     - Toepassings-id
-    - Toepassings sleutel
+    - Toepassingssleutel
     - Tenant-id
 
-2. **[Richt een Azure Active Directory beheerder](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** in voor uw Azure SQL-Server op de Azure portal als u dit nog niet hebt gedaan. De Azure AD-beheerder kan een Azure AD-gebruiker of een Azure AD-groep zijn. Als u de groep toewijst met beheerde identiteit een beheerdersrol, slaat u stap 3 en 4 over. De beheerder heeft volledige toegang tot de data base.
+2. **[Een Azure Active Directory-beheerder inrichten](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  voor uw Azure SQL-server in Azure portal als u dat nog niet hebt gedaan. De Azure AD-beheerder kan een Azure AD-gebruiker of een Azure AD-groep zijn. Als u de groep toewijst met beheerde identiteit een beheerdersrol, slaat u stap 3 en 4 over. De beheerder heeft volledige toegang tot de database.
 
-3. **[Maak Inge sloten database gebruikers](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** voor de Service-Principal. Maak verbinding met het Data Warehouse van of naar waarnaar u gegevens wilt kopiëren met behulp van hulpprogram ma's als SSMS, met een Azure AD-identiteit die ten minste een gebruikers machtiging heeft gewijzigd. Voer de volgende T-SQL uit:
+3. **[Maak ingesloten databasegebruikers](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  voor de service-principal. Verbinding maken met het datawarehouse uit of die u kopiëren van gegevens wilt met behulp van hulpprogramma's zoals SSMS, met een Azure AD-identiteit ten minste heeft de machtiging ALTER elke gebruiker. Voer de volgende T-SQL:
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Verleen de Service-Principal machtigingen die** voor SQL-gebruikers of anderen gelden. Voer de volgende code uit of Raadpleeg [hier](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)meer opties. Als u poly Base wilt gebruiken om de gegevens te laden, leest u de [vereiste database machtiging](#required-database-permission).
+4. **De service-principal die nodig is machtigingen verlenen** zoals u gewend voor SQL-gebruikers of voor anderen bent. Voer de volgende code uit of Raadpleeg [hier](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)meer opties. Als u poly Base wilt gebruiken om de gegevens te laden, leest u de [vereiste database machtiging](#required-database-permission).
 
     ```sql
     EXEC sp_addrolemember db_owner, [your application name];
     ```
 
-5. **Een Azure SQL Data Warehouse gekoppelde service configureren** in azure Data Factory.
+5. **Configureren van een Azure SQL Data Warehouse gekoppelde service** in Azure Data Factory.
 
 
-#### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Voor beeld van een gekoppelde service die gebruikmaakt van Service-Principal-verificatie
+#### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Voorbeeld van de gekoppelde service die gebruikmaakt van verificatie van service-principal
 
 ```json
 {
@@ -182,15 +182,15 @@ Voer de volgende stappen uit om verificatie van Azure AD-toepassings tokens op b
 }
 ```
 
-### <a name="managed-identity"></a>Beheerde identiteiten voor Azure-bronnen verificatie
+### <a name="managed-identity"></a> Beheerde identiteiten voor verificatie van de Azure-resources
 
-Een data factory kan worden gekoppeld aan een [beheerde identiteit voor Azure-resources](data-factory-service-identity.md) die de specifieke Factory vertegenwoordigt. U kunt deze beheerde identiteit voor Azure SQL Data Warehouse authenticatie gebruiken. De aangewezen Factory heeft toegang tot en kopiëren van gegevens van of naar uw data warehouse met behulp van deze identiteit.
+Een data factory, kan worden gekoppeld aan een [beheerde identiteit voor de Azure-resources](data-factory-service-identity.md) die staat voor de specifieke factory. U kunt deze beheerde identiteit voor Azure SQL Data Warehouse authenticatie gebruiken. De aangewezen factory kunt openen en gegevens kopiëren van of naar uw data warehouse met behulp van deze identiteit.
 
 Als u beheerde identiteits verificatie wilt gebruiken, voert u de volgende stappen uit:
 
-1. **[Richt een Azure Active Directory beheerder](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** in voor uw Azure SQL-Server op de Azure portal als u dit nog niet hebt gedaan. De Azure AD-beheerder kan een Azure AD-gebruiker of een Azure AD-groep zijn. Als u de groep toewijst met beheerde identiteit een beheerdersrol, slaat u stap 3 en 4 over. De beheerder heeft volledige toegang tot de data base.
+1. **[Een Azure Active Directory-beheerder inrichten](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  voor uw Azure SQL-server in Azure portal als u dat nog niet hebt gedaan. De Azure AD-beheerder kan een Azure AD-gebruiker of een Azure AD-groep zijn. Als u de groep toewijst met beheerde identiteit een beheerdersrol, slaat u stap 3 en 4 over. De beheerder heeft volledige toegang tot de database.
 
-2. **[Inge sloten database gebruikers maken](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** voor de Data Factory beheerde identiteit. Maak verbinding met het Data Warehouse van of naar waarnaar u gegevens wilt kopiëren met behulp van hulpprogram ma's als SSMS, met een Azure AD-identiteit die ten minste een gebruikers machtiging heeft gewijzigd. Voer de volgende T-SQL uit. 
+2. **[Inge sloten database gebruikers maken](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** voor de Data Factory beheerde identiteit. Verbinding maken met het datawarehouse uit of die u kopiëren van gegevens wilt met behulp van hulpprogramma's zoals SSMS, met een Azure AD-identiteit ten minste heeft de machtiging ALTER elke gebruiker. Voer de volgende T-SQL. 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
@@ -202,7 +202,7 @@ Als u beheerde identiteits verificatie wilt gebruiken, voert u de volgende stapp
     EXEC sp_addrolemember db_owner, [your Data Factory name];
     ```
 
-5. **Een Azure SQL Data Warehouse gekoppelde service configureren** in azure Data Factory.
+5. **Configureren van een Azure SQL Data Warehouse gekoppelde service** in Azure Data Factory.
 
 **Voorbeeld:**
 
@@ -227,18 +227,18 @@ Als u beheerde identiteits verificatie wilt gebruiken, voert u de volgende stapp
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die door de Azure SQL Data Warehouse-gegevensset worden ondersteund.
+Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. 
 
-De volgende eigenschappen worden ondersteund om gegevens te kopiëren van of naar Azure SQL Data Warehouse:
+De volgende eigenschappen worden ondersteund voor Azure SQL Data Warehouse-gegevensset:
 
 | Eigenschap  | Beschrijving                                                  | Vereist                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| type      | De eigenschap **type** van de DataSet moet worden ingesteld op **AzureSqlDWTable**. | Ja                         |
-| Schema | De naam van het schema. |Nee voor bron, ja voor Sink  |
-| tabel | De naam van de tabel/weer gave. |Nee voor bron, ja voor Sink  |
-| tableName | De naam van de tabel/weer gave met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik voor nieuwe werk belasting `schema` en `table`. | Nee voor bron, ja voor Sink |
+| type      | De **type** eigenschap van de gegevensset moet worden ingesteld op **AzureSqlDWTable**. | Ja                         |
+| schema | De naam van het schema. |Nee voor bron, Ja voor sink  |
+| table | De naam van de tabel/weer gave. |Nee voor bron, Ja voor sink  |
+| tableName | De naam van de tabel/weer gave met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en `table`voor nieuwe werk belasting. | Nee voor bron, Ja voor sink |
 
-#### <a name="dataset-properties-example"></a>Voor beeld van eigenschappen van gegevensset
+#### <a name="dataset-properties-example"></a>Voorbeeld van de gegevensset-eigenschappen
 
 ```json
 {
@@ -259,27 +259,27 @@ De volgende eigenschappen worden ondersteund om gegevens te kopiëren van of naa
 }
 ```
 
-## <a name="copy-activity-properties"></a>Eigenschappen van Kopieer activiteit
+## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Azure SQL Data Warehouse bron en Sink.
+Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Azure SQL Data Warehouse-bron en sink.
 
-### <a name="azure-sql-data-warehouse-as-the-source"></a>Azure SQL Data Warehouse als bron
+### <a name="azure-sql-data-warehouse-as-the-source"></a>Azure SQL Data Warehouse als de bron
 
-Als u gegevens wilt kopiëren uit Azure SQL Data Warehouse, stelt u de eigenschap **type** in de bron van de Kopieer activiteit in op **SqlDWSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
+Om gegevens te kopiëren van Azure SQL Data Warehouse, stel de **type** eigenschap in de bron van Kopieeractiviteit naar **SqlDWSource**. De volgende eigenschappen worden ondersteund in de Kopieeractiviteit **bron** sectie:
 
 | Eigenschap                     | Beschrijving                                                  | Vereist |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| type                         | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **SqlDWSource**. | Ja      |
-| sqlReaderQuery               | Gebruik de aangepaste SQL-query om gegevens te lezen. Voor beeld: `select * from MyTable`. | Nee       |
-| sqlReaderStoredProcedureName | De naam van de opgeslagen procedure waarmee gegevens uit de bron tabel worden gelezen. De laatste SQL-instructie moet een instructie SELECT in de opgeslagen procedure zijn. | Nee       |
-| storedProcedureParameters    | Para meters voor de opgeslagen procedure.<br/>Toegestane waarden zijn naam-of waardeparen. Namen en hoofdletter gebruik van para meters moeten overeenkomen met de namen en de behuizing van de opgeslagen procedure parameters. | Nee       |
+| type                         | De **type** eigenschap van de Kopieeractiviteit-bron moet worden ingesteld op **SqlDWSource**. | Ja      |
+| sqlReaderQuery               | Gebruik de aangepaste SQL-query om gegevens te lezen. Voorbeeld: `select * from MyTable`. | Nee       |
+| sqlReaderStoredProcedureName | De naam van de opgeslagen procedure die gegevens uit de brontabel leest. De laatste SQL-instructie moet een SELECT-instructie in de opgeslagen procedure. | Nee       |
+| storedProcedureParameters    | Parameters voor de opgeslagen procedure.<br/>Toegestane waarden zijn de naam of waarde-paren. Namen en hoofdlettergebruik van parameters moeten overeenkomen met de naam en het hoofdlettergebruik van de opgeslagen-procedureparameters. | Nee       |
 
-### <a name="points-to-note"></a>Punten om te noteren
+### <a name="points-to-note"></a>Die u moet weten
 
-- Als de **sqlReaderQuery** is opgegeven voor de **SqlSource**, voert de Kopieer activiteit deze query uit op basis van de Azure SQL Data Warehouse bron om de gegevens op te halen. U kunt ook een opgeslagen procedure opgeven. Geef de **sqlReaderStoredProcedureName** en **storedProcedureParameters** op als voor de opgeslagen procedure para meters worden gebruikt.
-- Als u **sqlReaderQuery** of **sqlReaderStoredProcedureName**niet opgeeft, worden de kolommen die in het gedeelte **structuur** van de JSON van de gegevensset zijn gedefinieerd, gebruikt om een query te maken. `select column1, column2 from mytable` worden uitgevoerd op Azure SQL Data Warehouse. Als de definitie van de gegevensset niet de **structuur**heeft, worden alle kolommen geselecteerd in de tabel.
+- Als de **sqlReaderQuery** is opgegeven voor de **SqlSource**, de Kopieeractiviteit deze query wordt uitgevoerd op basis van de bron van de Azure SQL Data Warehouse de gegevens op te halen. Of u kunt een opgeslagen procedure opgeven. Geef de **sqlReaderStoredProcedureName** en **storedProcedureParameters** als de opgeslagen procedure parameters nodig heeft.
+- Als u niet of opgeven **sqlReaderQuery** of **sqlReaderStoredProcedureName**, de kolommen die zijn gedefinieerd in de **structuur** sectie van de gegevensset JSON worden gebruikt om een query maken. `select column1, column2 from mytable` wordt uitgevoerd op Azure SQL Data Warehouse. Als de definitie van de gegevensset niet over de **structuur**, alle kolommen zijn geselecteerd uit de tabel.
 
-#### <a name="sql-query-example"></a>Voor beeld van SQL-query
+#### <a name="sql-query-example"></a>Voorbeeld van de SQL-query
 
 ```json
 "activities":[
@@ -311,7 +311,7 @@ Als u gegevens wilt kopiëren uit Azure SQL Data Warehouse, stelt u de eigenscha
 ]
 ```
 
-#### <a name="stored-procedure-example"></a>Voor beeld van opgeslagen procedure
+#### <a name="stored-procedure-example"></a>Voorbeeld van de opgeslagen procedure
 
 ```json
 "activities":[
@@ -347,7 +347,7 @@ Als u gegevens wilt kopiëren uit Azure SQL Data Warehouse, stelt u de eigenscha
 ]
 ```
 
-### <a name="stored-procedure-definition"></a>Definitie van opgeslagen procedure
+### <a name="stored-procedure-definition"></a>Definitie van de opgeslagen procedure
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -366,26 +366,26 @@ END
 GO
 ```
 
-### <a name="azure-sql-data-warehouse-as-sink"></a>Azure SQL Data Warehouse als Sink
+### <a name="azure-sql-data-warehouse-as-sink"></a> Azure SQL Data Warehouse als sink
 
-Als u gegevens wilt kopiëren naar Azure SQL Data Warehouse, stelt u het sink-type in de Kopieer activiteit in op **SqlDWSink**. De volgende eigenschappen worden ondersteund in het gedeelte **sink** van de Kopieer activiteit:
+Om gegevens te kopiëren naar Azure SQL Data Warehouse, stelt u het sink-type in de Kopieeractiviteit naar **SqlDWSink**. De volgende eigenschappen worden ondersteund in de Kopieeractiviteit **sink** sectie:
 
 | Eigenschap          | Beschrijving                                                  | Vereist                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| type              | De eigenschap **type** van de Sink voor kopieer activiteiten moet worden ingesteld op **SqlDWSink**. | Ja                                           |
-| allowPolyBase     | Hiermee wordt aangegeven of poly Base moet worden gebruikt, indien van toepassing, in plaats van het BULKINSERT-mechanisme. <br/><br/> U wordt aangeraden gegevens in SQL Data Warehouse te laden met poly base. Zie de sectie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) voor beperkingen en Details.<br/><br/>Toegestane waarden zijn **True** en **False** (standaard). | Nee                                            |
-| polyBaseSettings  | Een groep eigenschappen die kan worden opgegeven wanneer de eigenschap **allowPolybase** is ingesteld op **True**. | Nee                                            |
-| rejectValue       | Hiermee geeft u het aantal of percentage rijen op dat kan worden afgewezen voordat de query mislukt.<br/><br/>Meer informatie over de afwijzings opties van poly Base vindt u in de sectie argumenten van een [externe tabel maken (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx). <br/><br/>Toegestane waarden zijn 0 (standaard), 1, 2, enzovoort. | Nee                                            |
-| rejectType        | Hiermee wordt aangegeven of de **rejectValue** -optie een letterlijke waarde of een percentage is.<br/><br/>Toegestane waarden zijn **Value** (standaard) en **percentage**. | Nee                                            |
-| rejectSampleValue | Bepaalt het aantal rijen dat moet worden opgehaald voordat poly base het percentage geweigerde rijen opnieuw berekent.<br/><br/>Toegestane waarden zijn 1, 2, enzovoort. | Ja, als de **rejectType** een **percentage**is. |
-| useTypeDefault    | Hiermee geeft u op hoe ontbrekende waarden in tekst bestanden met scheidings tekens moeten worden verwerkt wanneer poly base gegevens ophaalt uit het tekst bestand.<br/><br/>Meer informatie over deze eigenschap vindt u in de sectie argumenten in [externe BESTANDS indeling maken (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Toegestane waarden zijn **True** en **False** (standaard).<br><br> | Nee                                            |
-| writeBatchSize    | Het aantal rijen dat in de SQL-tabel **per batch**moet worden ingevoegd. Is alleen van toepassing als poly Base niet wordt gebruikt.<br/><br/>De toegestane waarde is een **geheel getal** (aantal rijen). Standaard bepaalt Data Factory dynamisch de juiste Batch grootte op basis van de Rijgrootte. | Nee                                            |
-| writeBatchTimeout | Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt. Is alleen van toepassing als poly Base niet wordt gebruikt.<br/><br/>De toegestane waarde is **time span**. Voor beeld: "00:30:00" (30 minuten). | Nee                                            |
-| preCopyScript     | Geef een SQL-query op die moet worden uitgevoerd voordat er gegevens naar Azure SQL Data Warehouse worden geschreven in elke uitvoering. Gebruik deze eigenschap om de vooraf geladen gegevens op te schonen. | Nee                                            |
+| type              | De **type** eigenschap van de Copy-activiteit-sink moet zijn ingesteld op **SqlDWSink**. | Ja                                           |
+| allowPolyBase     | Hiermee wordt aangegeven of het gebruik van PolyBase, indien van toepassing, in plaats van het mechanisme voor BULKINSERT. <br/><br/> Het is raadzaam om gegevens te laden in SQL Data Warehouse met behulp van PolyBase. Zie de [gebruik PolyBase om gegevens te laden in Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sectie voor beperkingen en meer informatie.<br/><br/>Toegestane waarden zijn **waar** en **False** (standaard). | Nee                                            |
+| polyBaseSettings  | Een groep met eigenschappen die kunnen worden opgegeven wanneer de **allowPolybase** eigenschap is ingesteld op **waar**. | Nee                                            |
+| rejectValue       | Hiermee geeft u het getal of het percentage van de rijen die kunnen worden afgewezen voordat de query is mislukt.<br/><br/>Meer informatie over de PolyBase-weigeringsopties in de sectie argumenten van [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx). <br/><br/>Toegestane waarden zijn 0 (standaardinstelling), 1, 2, enzovoort. | Nee                                            |
+| rejectType        | Hiermee geeft u op of de **rejectValue** optie is een letterlijke waarde of een percentage.<br/><br/>Toegestane waarden zijn **waarde** (standaard) en **Percentage**. | Nee                                            |
+| rejectSampleValue | Bepaalt het aantal rijen om op te halen voordat PolyBase berekent het percentage van geweigerde rijen opnieuw.<br/><br/>Toegestane waarden zijn 1, 2, enzovoort. | Ja, als de **rejectType** is **percentage**. |
+| useTypeDefault    | Hiermee geeft u ontbrekende waarden in de tekstbestanden verwerken als PolyBase worden gegevens opgehaald uit het tekstbestand.<br/><br/>Meer informatie over deze eigenschap in de sectie argumenten [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Toegestane waarden zijn **waar** en **False** (standaard).<br><br> | Nee                                            |
+| writeBatchSize    | Het aantal rijen dat in de SQL-tabel **per batch**moet worden ingevoegd. Geldt alleen wanneer PolyBase wordt niet gebruikt.<br/><br/>De toegestane waarde is **geheel getal** (aantal rijen). Standaard bepaalt Data Factory dynamisch de juiste Batch grootte op basis van de Rijgrootte. | Nee                                            |
+| writeBatchTimeout | Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt. Is alleen van toepassing als poly Base niet wordt gebruikt.<br/><br/>De toegestane waarde is **timespan**. Voorbeeld: "00: 30:00 ' (30 minuten). | Nee                                            |
+| preCopyScript     | Geef een SQL-query voor de Kopieeractiviteit om uit te voeren voordat het schrijven van gegevens in Azure SQL Data Warehouse in elke uitvoering. Gebruik deze eigenschap voor het opschonen van de vooraf geladen gegevens. | Nee                                            |
 | tableOption | Hiermee wordt aangegeven of de Sink-tabel automatisch moet worden gemaakt als deze niet bestaat op basis van het bron schema. Het automatisch maken van tabellen wordt niet ondersteund wanneer de gefaseerde kopie is geconfigureerd in de Kopieer activiteit. Toegestane waarden zijn: `none` (standaard), `autoCreate`. |Nee |
 | disableMetricsCollection | Data Factory verzamelt metrische gegevens, zoals SQL Data Warehouse Dwu's voor het optimaliseren van Kopieer prestaties en aanbevelingen. Als u zich zorgen maakt over dit gedrag, geeft u `true` op om het uit te scha kelen. | Nee (standaard is `false`) |
 
-#### <a name="sql-data-warehouse-sink-example"></a>Voor beeld van SQL Data Warehouse Sink
+#### <a name="sql-data-warehouse-sink-example"></a>SQL Data Warehouse sink-voorbeeld
 
 ```json
 "sink": {
@@ -401,32 +401,32 @@ Als u gegevens wilt kopiëren naar Azure SQL Data Warehouse, stelt u het sink-ty
 }
 ```
 
-Meer informatie over het gebruik van poly Base om SQL Data Warehouse in de volgende sectie efficiënt te laden.
+Meer informatie over het gebruik van PolyBase te laden efficiënt SQL Data Warehouse in de volgende sectie.
 
-## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Poly Base gebruiken voor het laden van gegevens in Azure SQL Data Warehouse
+## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Gebruik van PolyBase om gegevens te laden in Azure SQL Data Warehouse
 
-Het gebruik van [poly base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) is een efficiënte manier om een grote hoeveelheid gegevens te laden in Azure SQL data warehouse met een hoge door voer. U ziet een grote toename in de door voer door poly Base te gebruiken in plaats van het standaard BULKINSERT-mechanisme. Zie voor een overzicht met een use-case [1 TB laden in Azure SQL Data Warehouse](v1/data-factory-load-sql-data-warehouse.md).
+Met behulp van [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) is een efficiënte manier om een grote hoeveelheid gegevens in Azure SQL Data Warehouse laden met hoge doorvoer. Met behulp van PolyBase in plaats van het standaardmechanisme voor BULKINSERT ziet u een grote toename in de doorvoer. Zie voor een overzicht met een use case [1 TB laden in Azure SQL Data Warehouse](v1/data-factory-load-sql-data-warehouse.md).
 
-* Als uw bron gegevens zich in **Azure Blob, Azure data Lake Storage gen1 of Azure data Lake Storage Gen2**bevindt en de **indeling poly base-compatibel is**, kunt u de Kopieer activiteit gebruiken om direct poly Base te activeren, zodat Azure SQL Data Warehouse de gegevens van de bron kan ophalen. Zie voor meer informatie **[direct kopiëren met poly base](#direct-copy-by-using-polybase)** .
-* Als uw brongegevens archief en-indeling niet oorspronkelijk worden ondersteund door poly Base, gebruikt u in plaats daarvan de functie **[voor gefaseerde kopie door gebruik te maken van poly base](#staged-copy-by-using-polybase)** . De functie voor gefaseerd kopiëren biedt u ook een betere door voer. De gegevens worden automatisch geconverteerd naar een indeling die compatibel is met poly base. En de gegevens worden opgeslagen in Azure Blob Storage. Vervolgens worden de gegevens geladen in SQL Data Warehouse.
+* Als uw bron gegevens zich in **Azure Blob, Azure data Lake Storage gen1 of Azure data Lake Storage Gen2**bevindt en de **indeling poly base-compatibel is**, kunt u de Kopieer activiteit gebruiken om direct poly Base te activeren, zodat Azure SQL Data Warehouse de gegevens van de bron kan ophalen. Zie voor meer informatie,  **[directe kopiëren met behulp van PolyBase](#direct-copy-by-using-polybase)** .
+* Als de bron-gegevensopslag en -indeling wordt niet oorspronkelijk ondersteund door PolyBase, gebruikt u de **[gefaseerd kopiëren met behulp van PolyBase](#staged-copy-by-using-polybase)** functie in plaats daarvan. De functie gefaseerd kopiëren biedt u ook betere doorvoer. De gegevens wordt automatisch geconverteerd in PolyBase-compatibele indeling. En de gegevens worden opgeslagen in Azure Blob-opslag. Vervolgens worden de gegevens in SQL Data Warehouse geladen.
 
 >[!TIP]
 >Meer informatie over [Best practices voor het gebruik van poly base](#best-practices-for-using-polybase).
 
-### <a name="direct-copy-by-using-polybase"></a>Direct kopiëren door poly Base te gebruiken
+### <a name="direct-copy-by-using-polybase"></a>Directe kopiëren met behulp van PolyBase
 
-SQL Data Warehouse poly Base ondersteunt direct Azure Blob, Azure Data Lake Storage Gen1 en Azure Data Lake Storage Gen2. Als uw bron gegevens voldoen aan de criteria die in deze sectie worden beschreven, gebruikt u poly Base om rechtstreeks vanuit het brongegevens archief naar Azure SQL Data Warehouse te kopiëren. Als dat niet het geval is, gebruikt u de [gefaseerde kopie met poly base](#staged-copy-by-using-polybase).
+SQL Data Warehouse poly Base ondersteunt direct Azure Blob, Azure Data Lake Storage Gen1 en Azure Data Lake Storage Gen2. Als uw bron gegevens voldoen aan de criteria die in deze sectie worden beschreven, gebruikt u poly Base om rechtstreeks vanuit het brongegevens archief naar Azure SQL Data Warehouse te kopiëren. Gebruik anders [gefaseerd kopiëren met behulp van PolyBase](#staged-copy-by-using-polybase).
 
 > [!TIP]
 > Als u gegevens efficiënt wilt kopiëren naar SQL Data Warehouse, kunt u meer te weten komen uit [Azure Data Factory het nog eenvoudiger en handig maken om inzichten van gegevens te ontdekken wanneer u data Lake Store met SQL Data Warehouse gebruikt](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
 
-Als niet aan de vereisten wordt voldaan, worden de instellingen door Azure Data Factory gecontroleerd en wordt automatisch teruggeleid naar het BULKINSERT-mechanisme voor het verplaatsen van gegevens.
+Als aan de vereisten zijn niet voldaan, wordt Azure Data Factory controleert of de instellingen en automatisch terugvalt op het mechanisme BULKINSERT voor de verplaatsing van gegevens.
 
 1. De **gekoppelde bron service** heeft de volgende typen en verificatie methoden:
 
     | Ondersteund type brongegevens archief                             | Ondersteund type bron verificatie                        |
     | :----------------------------------------------------------- | :---------------------------------------------------------- |
-    | [Azure-Blob](connector-azure-blob-storage.md)                | Verificatie van account sleutels, beheerde identiteits verificatie |
+    | [Azure Blob](connector-azure-blob-storage.md)                | Verificatie van account sleutels, beheerde identiteits verificatie |
     | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | Verificatie van service-principal                            |
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Verificatie van account sleutels, beheerde identiteits verificatie |
 
@@ -441,7 +441,7 @@ Als niet aan de vereisten wordt voldaan, worden de instellingen door Azure Data 
    4. `nullValue` is standaard ingeschakeld of is ingesteld op een **lege teken reeks** (""), en `treatEmptyAsNull` is standaard ingesteld op True.
    5. `encodingName` is standaard ingesteld op of **UTF-8**.
    6. `quoteChar`, `escapeChar`en `skipLineCount` zijn niet opgegeven. Poly base-ondersteuning koptekst rij overs Laan, die als `firstRowAsHeader` in ADF kan worden geconfigureerd.
-   7. `compression` kan **geen compressie**, **gzip**of **Deflate**zijn.
+   7. `compression` kan **geen compressie**, **GZip**, of **Deflate**.
 
 3. Als uw bron een map is, moet `recursive` in de Kopieer activiteit worden ingesteld op True.
 
@@ -482,9 +482,9 @@ Als niet aan de vereisten wordt voldaan, worden de instellingen door Azure Data 
 ]
 ```
 
-### <a name="staged-copy-by-using-polybase"></a>Gefaseerde kopie door gebruik te maken van poly base
+### <a name="staged-copy-by-using-polybase"></a>Gefaseerd kopiëren met behulp van PolyBase
 
-Als uw bron gegevens niet voldoen aan de criteria in de vorige sectie, schakelt u het kopiëren van gegevens in via een tussentijds faserings-Azure Blob Storage-instantie. Het kan geen Azure-Premium Storage zijn. In dit geval voert Azure Data Factory automatisch trans formaties uit op de gegevens om te voldoen aan de vereisten voor gegevens formaat van poly base. Vervolgens wordt poly base gebruikt voor het laden van gegevens in SQL Data Warehouse. Ten slotte ruimt de app de tijdelijke gegevens op uit de Blob-opslag. Zie [gefaseerde kopie](copy-activity-performance.md#staged-copy) voor meer informatie over het kopiëren van gegevens via een staging-exemplaar voor Azure Blob Storage.
+Wanneer de brongegevens niet voldoet aan de criteria in de vorige sectie, gegevens kopiëren via een exemplaar tussentijdse staging Azure Blob-opslag inschakelen Azure Premium Storage kan niet. In dit geval Azure Data Factory wordt automatisch uitgevoerd transformaties op de gegevens om te voldoen aan de vereisten voor het opmaken van gegevens van PolyBase. Vervolgens deze gebruikmaakt van PolyBase om gegevens te laden in SQL Data Warehouse. Ten slotte opschonen het van uw tijdelijke gegevens uit de blob-opslag. Zie [gefaseerd kopiëren](copy-activity-performance.md#staged-copy) voor meer informatie over het kopiëren van gegevens via een gefaseerde installatie exemplaar van de Azure Blob-opslag.
 
 Als u deze functie wilt gebruiken, maakt u een [gekoppelde azure Blob Storage-service](connector-azure-blob-storage.md#linked-service-properties) die verwijst naar het Azure Storage-account met de tussenliggende Blob-opslag. Geef vervolgens de `enableStaging` en `stagingSettings` eigenschappen voor de Kopieer activiteit op, zoals wordt weer gegeven in de volgende code.
 
@@ -528,25 +528,25 @@ Als u deze functie wilt gebruiken, maakt u een [gekoppelde azure Blob Storage-se
 ]
 ```
 
-## <a name="best-practices-for-using-polybase"></a>Aanbevolen procedures voor het gebruik van poly base
+## <a name="best-practices-for-using-polybase"></a>Aanbevolen procedures voor het gebruik van PolyBase
 
-In de volgende secties worden aanbevolen procedures beschreven, naast die in [Aanbevolen procedures voor Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-best-practices.md).
+De volgende secties vindt u aanbevolen procedures naast die worden vermeld in [aanbevolen procedures voor Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-best-practices.md).
 
-### <a name="required-database-permission"></a>Vereiste database machtiging
+### <a name="required-database-permission"></a>Machtiging vereist database
 
-Als u poly Base wilt gebruiken, moet de gebruiker die gegevens laadt in SQL Data Warehouse de [machtiging ' besturings element '](https://msdn.microsoft.com/library/ms191291.aspx) hebben voor de doel database. Een manier om dat te doen, is om de gebruiker toe te voegen als een lid van de rol **db_owner** . Meer informatie over hoe u dit doet in het [overzicht van SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization).
+Voor het gebruik van PolyBase, moet de gebruiker die gegevens in SQL Data Warehouse laadt hebben ["bevoegdheid"](https://msdn.microsoft.com/library/ms191291.aspx) voor de doeldatabase. Één manier om te realiseren dat is het toevoegen van de gebruiker als lid van de **db_owner** rol. Leer hoe u dat doen in de [overzicht van SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization).
 
-### <a name="row-size-and-data-type-limits"></a>Limieten voor Rijgrootte en gegevens typen
+### <a name="row-size-and-data-type-limits"></a>Typ limieten rijgrootte en gegevens
 
-Poly base-belastingen zijn beperkt tot rijen die kleiner zijn dan 1 MB. Het kan niet worden gebruikt om te laden naar VARCHR (MAX), NVARCHAR (MAX) of VARBINARY (MAX). Zie [SQL Data Warehouse service-capaciteits limieten](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)voor meer informatie.
+PolyBase-loads zijn beperkt tot de rijen die kleiner is dan 1 MB. Het kan niet worden gebruikt om te laden naar VARCHR (MAX), NVARCHAR (MAX) of VARBINARY (MAX). Zie voor meer informatie, [capaciteitslimieten voor SQL Data Warehouse-service](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
 
-Als de bron gegevens rijen hebben die groter zijn dan 1 MB, wilt u de bron tabellen wellicht verticaal splitsen in meerdere kleinen. Zorg ervoor dat de maximale grootte van elke rij de limiet niet overschrijdt. De kleinere tabellen kunnen vervolgens worden geladen door poly Base te gebruiken en samen te voegen in Azure SQL Data Warehouse.
+Wanneer de brongegevens rijen die groter is dan 1 MB bevat, is het raadzaam om te splitsen verticaal de brontabellen in verschillende kleine netwerken. Zorg ervoor dat de maximale grootte van elke rij de limiet niet overschrijdt. De kleinere tabellen kunnen vervolgens worden geladen met behulp van PolyBase en samengevoegd in Azure SQL Data Warehouse.
 
 Voor gegevens met een brede kolom kunt u ook gebruikmaken van niet-poly Base om de gegevens te laden met behulp van ADF, door de instelling ' poly base toestaan ' uit te scha kelen.
 
-### <a name="sql-data-warehouse-resource-class"></a>Resource klasse SQL Data Warehouse
+### <a name="sql-data-warehouse-resource-class"></a>SQL Data Warehouse resourceklasse
 
-Wijs een grotere resource klasse toe aan de gebruiker die gegevens laadt in SQL Data Warehouse via Poly Base om de best mogelijke door voer te krijgen.
+Voor het bereiken van de best mogelijke doorvoer, een grotere resourceklasse aan de gebruiker die gegevens in SQL Data Warehouse met PolyBase laadt te toewijzen.
 
 ### <a name="polybase-troubleshooting"></a>Poly base-probleem oplossing
 
@@ -558,21 +558,21 @@ Als de bron gegevens in tekst indeling of andere niet-poly base-compatibele arch
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
-De oplossing bestaat uit het opheffen van de selectie van de optie**type standaard gebruiken**(als onwaar) in Sink voor kopieer activiteit-> poly base-instellingen. '[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
-)' is een poly base-systeem eigen configuratie, waarmee wordt aangegeven hoe ontbrekende waarden in tekst bestanden met scheidings tekens moeten worden verwerkt wanneer poly base gegevens ophaalt uit het tekst bestand. 
+De oplossing bestaat uit het opheffen van de selectie van de optie**type standaard gebruiken**(als onwaar) in Sink voor kopieer activiteit-> poly base-instellingen. "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
+)" is een poly base systeem eigen configuratie, waarmee wordt aangegeven hoe ontbrekende waarden in tekst bestanden met scheidings tekens moeten worden verwerkt wanneer poly base gegevens ophaalt uit het tekst bestand. 
 
 **`tableName` in Azure SQL Data Warehouse**
 
-De volgende tabel bevat voor beelden van de manier waarop u de eigenschap **TableName** in de JSON-gegevensset kunt opgeven. Er worden verschillende combi Naties van schema-en tabel namen weer gegeven.
+De volgende tabel bevat voorbeelden van hoe u de **tableName** eigenschap in de JSON-gegevensset. Hier ziet u verschillende combinaties van schema- en tabelnamen.
 
-| DB-schema | Tabelnaam | **TableName** JSON-eigenschap               |
+| DB-Schema | Tabelnaam | **tableName** JSON-eigenschap               |
 | --------- | ---------- | ----------------------------------------- |
-| dbo       | MyTable    | MyTable of dbo. MyTable of [dbo]. MyTable |
-| dbo1      | MyTable    | dbo1. MyTable of [dbo1]. MyTable          |
-| dbo       | Mijn. table   | [Mijn. table] of [dbo]. [Mijn. tabel]            |
-| dbo1      | Mijn. table   | [dbo1]. [Mijn. tabel]                         |
+| dbo       | MyTable    | MyTable of dbo.MyTable of [dbo].[MyTable] |
+| dbo1      | MyTable    | dbo1.MyTable of [dbo1].[MyTable]          |
+| dbo       | My.Table   | [My.Table] of [dbo].[My.Table]            |
+| dbo1      | My.Table   | [dbo1].[My.Table]                         |
 
-Als de volgende fout wordt weer gegeven, is het probleem mogelijk de waarde die u hebt opgegeven voor de eigenschap **TableName** . Zie de voor gaande tabel voor de juiste manier om waarden op te geven voor de JSON-eigenschap **TableName** .
+Als u de volgende fout ziet, is het probleem mogelijk de waarde die u hebt opgegeven voor de **tableName** eigenschap. Zie de voorgaande tabel voor de juiste manier om op te geven van de waarden voor de **tableName** JSON-eigenschap.
 
 ```
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
@@ -580,54 +580,54 @@ Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account
 
 **Kolommen met standaard waarden**
 
-Op dit moment accepteert de functie poly base in Data Factory alleen hetzelfde aantal kolommen als in de doel tabel. Een voor beeld is een tabel met vier kolommen waarvan een van deze is gedefinieerd met een standaard waarde. De invoer gegevens moeten nog vier kolommen hebben. Een invoer-gegevensset met drie kolommen resulteert in een fout die vergelijkbaar is met het volgende bericht:
+Op dit moment accepteert de PolyBase-functie in Data Factory alleen een hetzelfde aantal kolommen in de doeltabel. Een voorbeeld is een tabel met vier kolommen waarin een van deze met de standaardwaarde is gedefinieerd. De ingevoerde gegevens moet nog steeds vier kolommen hebben. Een invoergegevensset drie kolommen levert een fout die vergelijkbaar is met het volgende bericht:
 
 ```
 All columns of the table must be specified in the INSERT BULK statement.
 ```
 
-De NULL-waarde is een speciale vorm van de standaard waarde. Als de kolom null-waarden bevat, kunnen de invoer gegevens in de BLOB voor die kolom leeg zijn. Maar dit kan niet ontbreken in de invoer gegevensset. Poly base voegt NULL in voor ontbrekende waarden in Azure SQL Data Warehouse.
+De waarde NULL is een speciale vorm van de standaardwaarde. Als de kolom toegestaan is, is de ingevoerde gegevens in de blob voor die kolom kan niet leeg zijn. Maar deze niet meer worden ontbreekt in de invoergegevensset. PolyBase voegt NULL voor ontbrekende waarden in Azure SQL Data Warehouse.
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschappen van gegevens stroom toewijzen
 
 Meer informatie over de [bron transformatie](data-flow-source.md) en [sink-trans formatie](data-flow-sink.md) in de toewijzing van gegevens stroom.
 
-## <a name="data-type-mapping-for-azure-sql-data-warehouse"></a>Toewijzing van gegevens type voor Azure SQL Data Warehouse
+## <a name="data-type-mapping-for-azure-sql-data-warehouse"></a>De gegevenstypetoewijzing voor Azure SQL Data Warehouse
 
-Wanneer u gegevens van of naar Azure SQL Data Warehouse kopieert, worden de volgende toewijzingen gebruikt van Azure SQL Data Warehouse gegevens typen om tussenliggende gegevens typen te Azure Data Factory. Zie [schema-en gegevens type toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieer activiteiten het bron schema en het gegevens type aan de Sink toewijzen.
+Wanneer u gegevens van of naar Azure SQL Data Warehouse kopieert, worden de volgende toewijzingen van Azure SQL Data Warehouse-gegevenstypen gebruikt om Azure Data Factory tussentijdse gegevenstypen. Zie [schema en gegevens typt toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe Copy Activity in het schema en de gegevens van een brontype toegewezen aan de sink.
 
 >[!TIP]
 >Raadpleeg de [tabel gegevens typen in Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-tables-data-types.md) artikel over ondersteunde gegevens typen van SQL DW en de tijdelijke oplossingen voor niet-ondersteunde.
 
-| Azure SQL Data Warehouse gegevens type    | Data Factory tussentijds gegevens type |
+| Azure SQL Data Warehouse-gegevenstype    | Data Factory tussentijdse gegevenstype |
 | :------------------------------------ | :----------------------------- |
 | bigint                                | Int64                          |
-| waarde                                | Byte []                         |
-| bitmask                                   | Booleaans                        |
-| char                                  | Teken reeks, char []                 |
+| binary                                | Byte[]                         |
+| bit                                   | Booleaans                        |
+| char                                  | String, Char[]                 |
 | date                                  | DateTime                       |
-| Datetime                              | DateTime                       |
-| DATETIME2                             | DateTime                       |
-| Date time offset                        | Date time offset                 |
-| Komma                               | Komma                        |
-| FILESTREAM-kenmerk (varbinary (max)) | Byte []                         |
+| Datum en tijd                              | DateTime                       |
+| datetime2                             | DateTime                       |
+| Datetimeoffset                        | DateTimeOffset                 |
+| decimaal                               | decimaal                        |
+| FILESTREAM attribute (varbinary(max)) | Byte[]                         |
 | Float                                 | Double-waarde                         |
-| image                                 | Byte []                         |
+| installatiekopie                                 | Byte[]                         |
 | int                                   | Int32                          |
-| financieel                                 | Komma                        |
-| nchar                                 | Teken reeks, char []                 |
-| 443                               | Komma                        |
-| nvarchar                              | Teken reeks, char []                 |
-| realistische                                  | Enkelvoudig                         |
-| rowversion                            | Byte []                         |
+| money                                 | decimaal                        |
+| nchar                                 | String, Char[]                 |
+| numeric                               | decimaal                        |
+| nvarchar                              | String, Char[]                 |
+| real                                  | Enkelvoudig                         |
+| rowversion                            | Byte[]                         |
 | smalldatetime                         | DateTime                       |
 | smallint                              | Int16                          |
-| smallmoney                            | Komma                        |
-| tijd                                  | Duur                       |
-| tinyint                               | DBCS                           |
-| unieke                      | GUID                           |
-| varbinary                             | Byte []                         |
-| varchar                               | Teken reeks, char []                 |
+| smallmoney                            | decimaal                        |
+| tijd                                  | TimeSpan                       |
+| tinyint                               | Byte                           |
+| uniqueidentifier                      | GUID                           |
+| varbinary                             | Byte[]                         |
+| varchar                               | String, Char[]                 |
 
 ## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
@@ -638,4 +638,4 @@ Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer info
 Als u meer wilt weten over de eigenschappen, controleert u de [GetMetadata-activiteit](control-flow-get-metadata-activity.md) 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md##supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.
+Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de Kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven en indelingen](copy-activity-overview.md##supported-data-stores-and-formats).

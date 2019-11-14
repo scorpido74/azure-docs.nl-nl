@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7440859748a613f7d6af751974e07289175ed7ac
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: b9a292d06ce68d211b5c758e287f2935411c6f12
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968369"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074768"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Back-ups van SQL Server-data bases beheren en bewaken
 
@@ -42,7 +42,7 @@ Omdat logboek back-ups om de 15 minuten worden uitgevoerd, kan het lastig zijn o
 
 Database back-upwaarschuwingen bewaken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **waarschuwingen en gebeurtenissen**op het kluis dashboard.
 
@@ -117,7 +117,7 @@ U kunt verschillende typen back-ups op aanvraag uitvoeren:
 - Differentiële back-up
 - Logboekback-up
 
-Wanneer u de Bewaar periode voor een volledige back-up wilt opgeven, wordt de Bewaar termijn voor de volledige back-up van ad-hoc automatisch ingesteld op 45 dagen vanaf de huidige tijd.
+Wanneer u de Bewaar periode voor een volledige back-up wilt opgeven, wordt het Bewaar bereik voor volledige back-up op aanvraag automatisch ingesteld op 45 dagen vanaf de huidige tijd.
 
 Zie [SQL Server back-uptypen](backup-architecture.md#sql-server-backup-types)voor meer informatie.
 

@@ -1,10 +1,9 @@
 ---
-title: Meerdere frontends voor Azure Load Balancer
-titlesuffix: Azure Load Balancer
-description: Overzicht van meerdere frontends op Azure Load Balancer
+title: Meerdere frontends-Azure Load Balancer
+description: Met dit leer traject gaat u aan de slag met een overzicht van meerdere frontends op Azure Load Balancer
 services: load-balancer
 documentationcenter: na
-author: chkuhtz
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -12,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
-ms.author: chkuhtz
-ms.openlocfilehash: b109e87a8fcbef0bfca356c83716509ebc6cecd4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: allensu
+ms.openlocfilehash: 58309133a46e32f409a0414be71791de73db9bed
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884215"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075954"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Meerdere frontends voor Azure Load Balancer
 
@@ -30,7 +29,7 @@ Wanneer u een Azure Load Balancer definieert, zijn een front-end-en een back-end
 
 De volgende tabel bevat enkele voor beelden van frontend-configuraties:
 
-| Front-end | IP-adres | protocol | port |
+| Front | IP-adres | protocol | poort |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -48,13 +47,13 @@ Met Azure Load Balancer kunt u beide regel typen op dezelfde load balancer confi
 
 We verkennen deze scenario's nog verder door te beginnen met het standaard gedrag.
 
-## <a name="rule-type-1-no-backend-port-reuse"></a>Regel type #1: Geen backend-poort opnieuw gebruiken
+## <a name="rule-type-1-no-backend-port-reuse"></a>Regel type #1: geen backend-poort opnieuw gebruiken
 
 ![Meerdere frontend-afbeelding met groene en paarse front-end](./media/load-balancer-multivip-overview/load-balancer-multivip.png)
 
 In dit scenario worden de front-ends als volgt geconfigureerd:
 
-| Front-end | IP-adres | protocol | port |
+| Front | IP-adres | protocol | poort |
 | --- | --- | --- | --- |
 | ![groen front-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![paarse front-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -66,11 +65,11 @@ We definiëren twee regels:
 | Regel | Kaart-front-end | Naar back-end-groep |
 | --- | --- | --- |
 | 1 |![groen front-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 2 |![VIP'S](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 De volledige toewijzing in Azure Load Balancer is nu als volgt:
 
-| Regel | IP-adres voor front-end | protocol | port | Bestemming | port |
+| Regel | Frontend-IP-adres | protocol | poort | Bestemming | poort |
 | --- | --- | --- | --- | --- | --- |
 | ![groene regel](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |IP-adres van DIP |80 |
 | ![paarse regel](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |IP-adres van DIP |81 |
@@ -104,21 +103,21 @@ Voor dit scenario heeft elke VM in de back-end-pool drie netwerk interfaces:
 
 Laten we uitgaan van dezelfde frontend-configuratie als in het vorige scenario:
 
-| Front-end | IP-adres | protocol | port |
+| Front | IP-adres | protocol | poort |
 | --- | --- | --- | --- |
 | ![groen front-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![paarse front-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
 We definiëren twee regels:
 
-| Regel | Front-end | Toewijzen aan back-end-groep |
+| Regel | Front | Toewijzen aan back-end-groep |
 | --- | --- | --- |
 | 1 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (in VM1 en VM2) |
 | 2 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (in VM1 en VM2) |
 
 De volgende tabel bevat de volledige toewijzing in de load balancer:
 
-| Regel | IP-adres voor front-end | protocol | port | Bestemming | port |
+| Regel | Frontend-IP-adres | protocol | poort | Bestemming | poort |
 | --- | --- | --- | --- | --- | --- |
 | ![groene regel](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |hetzelfde als frontend (65.52.0.1) |hetzelfde als frontend (80) |
 | ![paarse regel](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |hetzelfde als frontend (65.52.0.2) |hetzelfde als frontend (80) |

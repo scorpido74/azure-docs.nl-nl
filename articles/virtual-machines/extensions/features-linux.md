@@ -1,5 +1,5 @@
 ---
-title: Azure VM-extensies en-functies voor Linux | Microsoft Docs
+title: Azure VM-extensies en-functies voor Linux
 description: Meer informatie over de uitbrei dingen die beschikbaar zijn voor virtuele machines van Azure, gegroepeerd op wat ze bieden of verbeteren.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: f66ec2ea9d0c042b698db1725980e981a27a55d0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169013"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073749"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Extensies en functies van virtuele machines voor Linux
 
@@ -85,7 +85,7 @@ U kunt de volgende methoden gebruiken om een uitbrei ding uit te voeren op basis
 
 ### <a name="azure-cli"></a>Azure-CLI
 
-Azure VM-extensies kunnen worden uitgevoerd op basis van een bestaande virtuele machine met de opdracht [AZ VM extension set](/cli/azure/vm/extension#az-vm-extension-set) . In het volgende voor beeld wordt de aangepaste script extensie uitgevoerd op een virtuele machine met de naam *myVM* in een resource groep met de naam *myResourceGroup*. Vervang de naam van de resource groep, de VM-naam en het script dat\/wordt uitgevoerd (https:/RAW.githubusercontent.com/me/project/Hello.sh) door uw eigen gegevens. 
+Azure VM-extensies kunnen worden uitgevoerd op basis van een bestaande virtuele machine met de opdracht [AZ VM extension set](/cli/azure/vm/extension#az-vm-extension-set) . In het volgende voor beeld wordt de aangepaste script extensie uitgevoerd op een virtuele machine met de naam *myVM* in een resource groep met de naam *myResourceGroup*. Vervang de naam van de resource groep, de VM-naam en het script dat wordt uitgevoerd (https:\//raw.githubusercontent.com/me/project/hello.sh) door uw eigen gegevens. 
 
 ```azurecli
 az vm extension set `
@@ -105,7 +105,7 @@ info:    Executing command vm extension set
 info:    vm extension set command OK
 ```
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 VM-extensies kunnen worden toegepast op een bestaande virtuele machine via de Azure Portal. Selecteer de virtuele machine in de portal, kies **uitbrei dingen**en selecteer vervolgens **toevoegen**. Kies de gewenste uitbrei ding in de lijst met beschik bare uitbrei dingen en volg de instructies in de wizard.
 
@@ -241,7 +241,7 @@ Wanneer de agent is geïnstalleerd, wordt er een bovenliggende daemon gemaakt. D
 
 Het bovenliggende proces kan niet automatisch worden bijgewerkt. Het bovenliggende item kan alleen worden bijgewerkt door een update van een distributie-pakket.
 
-Als u wilt controleren welke versie u gebruikt, controleert `waagent` u het volgende:
+Als u wilt controleren welke versie u gebruikt, controleert u de `waagent` als volgt:
 
 ```bash
 waagent --version
@@ -336,7 +336,7 @@ De volgende stappen voor probleem oplossing zijn van toepassing op alle VM-exten
 
 1. Als u het logboek van de Linux-agent wilt controleren, bekijkt u de activiteit wanneer uw extensie is ingericht in */var/log/waagent.log*
 
-2. Raadpleeg de logboeken van de daad werkelijke extensie voor meer informatie over *\</var/log/Azure/-extensie >*
+2. Raadpleeg de logboeken van de daad werkelijke extensie voor meer informatie over */var/log/azure/\<extensie >*
 
 3. Raadpleeg de sectie extensie-specifieke documentatie voor het oplossen van problemen met fout codes, bekende problemen etc.
 
@@ -403,7 +403,7 @@ U kunt een uitbrei ding ook als volgt verwijderen in de Azure Portal:
 
 ## <a name="common-vm-extension-reference"></a>Naslag informatie over algemene VM-extensies
 
-| Extensienaam | Description | Meer informatie |
+| Extensie naam | Beschrijving | Meer informatie |
 | --- | --- | --- |
 | Aangepaste script extensie voor Linux |Scripts uitvoeren op een virtuele Azure-machine |[Aangepaste script extensie voor Linux](custom-script-linux.md) |
 | VM-extensie voor toegang |Toegang tot een virtuele Azure-machine herstellen |[VM-extensie voor toegang](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

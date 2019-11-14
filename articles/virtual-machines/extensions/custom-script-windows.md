@@ -1,5 +1,5 @@
 ---
-title: Aangepaste script extensie voor Azure voor Windows | Microsoft Docs
+title: Aangepaste script extensie voor Azure voor Windows
 description: Windows VM-configuratie taken automatiseren met behulp van de aangepaste script extensie
 services: virtual-machines-windows
 manager: carmonm
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: c0c160d9fc2fcfb8da004d02baae1dd410620cbb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b3c355219fcbebc5fda38c33d6eb7f9126b3b2b8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204196"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073828"
 ---
 # <a name="custom-script-extension-for-windows"></a>Aangepaste script extensie voor Windows
 
@@ -106,17 +106,17 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 ### <a name="property-values"></a>Waarden van eigenschappen
 
-| Name | Waarde / voorbeeld | Gegevenstype |
+| Naam | Waarde / voorbeeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute | string |
-| type | CustomScriptExtension | string |
+| publisher | Microsoft.Compute | tekenreeks |
+| type | CustomScriptExtension | tekenreeks |
 | typeHandlerVersion | 1.9 | int |
-| fileUris (bijvoorbeeld) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
+| fileUris (bijvoorbeeld) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | matrix |
 | timestamp (bijvoorbeeld) | 123456789 | 32-bits geheel getal |
-| commandToExecute (bijvoorbeeld) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
-| storageAccountName (bijvoorbeeld) | examplestorageacct | string |
-| storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| commandToExecute (bijvoorbeeld) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | tekenreeks |
+| storageAccountName (bijvoorbeeld) | examplestorageacct | tekenreeks |
+| storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | tekenreeks |
 
 >[!NOTE]
 >Deze eigenschaps namen zijn hoofdletter gevoelig. Als u implementatie problemen wilt voor komen, gebruikt u de namen zoals hier wordt weer gegeven.
@@ -125,8 +125,8 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 * `commandToExecute`: (**vereist**, teken reeks) het ingangs punt script dat moet worden uitgevoerd. Gebruik dit veld als uw opdracht geheimen bevat zoals wacht woorden of als uw fileUris gevoelig zijn.
 * `fileUris`: (optioneel, teken reeks matrix) de Url's voor bestanden die moeten worden gedownload.
-* `timestamp`(optioneel, 32-bits geheel getal) gebruik dit veld alleen om een opnieuw uitvoeren van het script te activeren door de waarde van dit veld te wijzigen.  Een gehele waarde is acceptabel; de waarde mag alleen gelijk zijn aan die van de vorige.
-* `storageAccountName`: (optioneel, String) de naam van het opslag account. Als u opslag referenties opgeeft, moeten `fileUris` alle url's voor Azure-blobs zijn.
+* `timestamp` (optioneel, 32-bits geheel getal) gebruik dit veld alleen om een opnieuw uitvoeren van het script te activeren door de waarde van dit veld te wijzigen.  Een gehele waarde is acceptabel; de waarde mag alleen gelijk zijn aan die van de vorige.
+* `storageAccountName`: (optioneel, String) de naam van het opslag account. Als u opslag referenties opgeeft, moeten alle `fileUris` Url's voor Azure-blobs zijn.
 * `storageAccountKey`: (optioneel, String) de toegangs sleutel van het opslag account
 
 De volgende waarden kunnen worden ingesteld in de open bare of beveiligde instellingen. de uitbrei ding weigert de configuratie, waarbij de waarden hieronder worden ingesteld in de open bare en beveiligde instellingen.
@@ -141,12 +141,12 @@ Open bare instellingen worden in ongecodeerde tekst verzonden naar de virtuele m
 
 Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Het JSON-schema, dat in de vorige sectie wordt beschreven, kan worden gebruikt in een Azure Resource Manager sjabloon voor het uitvoeren van de aangepaste script extensie tijdens de implementatie. In de volgende voor beelden ziet u hoe u de aangepaste script extensie gebruikt:
 
-* [Zelfstudie: Extensies voor virtuele machines implementeren met Azure Resource Manager sjablonen](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
+* [Zelf studie: extensies voor virtuele machines implementeren met Azure Resource Manager sjablonen](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
 * [Toepassing met twee lagen implementeren in Windows en Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
 
 ## <a name="powershell-deployment"></a>Power shell-implementatie
 
-De `Set-AzVMCustomScriptExtension` opdracht kan worden gebruikt om de aangepaste script extensie toe te voegen aan een bestaande virtuele machine. Zie [set-AzVMCustomScriptExtension](/powershell/module/az.compute/set-azvmcustomscriptextension)voor meer informatie.
+De opdracht `Set-AzVMCustomScriptExtension` kan worden gebruikt om de aangepaste script extensie toe te voegen aan een bestaande virtuele machine. Zie [set-AzVMCustomScriptExtension](/powershell/module/az.compute/set-azvmcustomscriptextension)voor meer informatie.
 
 ```powershell
 Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
@@ -157,11 +157,11 @@ Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
     -Name DemoScriptExtension
 ```
 
-## <a name="additional-examples"></a>Aanvullende voorbeelden
+## <a name="additional-examples"></a>Aanvullende voor beelden
 
 ### <a name="using-multiple-scripts"></a>Meerdere scripts gebruiken
 
-In dit voor beeld hebt u drie scripts die worden gebruikt voor het bouwen van uw server. De **commandToExecute** roept het eerste script aan. vervolgens hebt u opties om te zien hoe de andere worden aangeroepen. U kunt bijvoorbeeld een hoofd script hebben dat de uitvoering beheert, met de juiste fout afhandeling, logboek registratie en status beheer. De scripts worden gedownload naar de lokale machine voor het uitvoeren van. `1_Add_Tools.ps1` U kunt bijvoorbeeld aanroepen `2_Add_Features.ps1` door toe te `.\2_Add_Features.ps1` voegen aan het script en dit proces herhalen voor de andere scripts die u `$settings`in definieert.
+In dit voor beeld hebt u drie scripts die worden gebruikt voor het bouwen van uw server. De **commandToExecute** roept het eerste script aan. vervolgens hebt u opties om te zien hoe de andere worden aangeroepen. U kunt bijvoorbeeld een hoofd script hebben dat de uitvoering beheert, met de juiste fout afhandeling, logboek registratie en status beheer. De scripts worden gedownload naar de lokale machine voor het uitvoeren van. In `1_Add_Tools.ps1` kunt u bijvoorbeeld `2_Add_Features.ps1` aanroepen door `.\2_Add_Features.ps1` toe te voegen aan het script en dit proces te herhalen voor de andere scripts die u in `$settings`definieert.
 
 ```powershell
 $fileUri = @("https://xxxxxxx.blob.core.windows.net/buildServer1/1_Add_Tools.ps1",
@@ -225,7 +225,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 Als u de aangepaste script extensie op klassieke Vm's wilt implementeren, kunt u de Azure Portal of de klassieke Azure PowerShell-cmdlets gebruiken.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 Navigeer naar uw klassieke VM-resource. Selecteer **extensies** onder **instellingen**.
 
@@ -273,17 +273,17 @@ De opgegeven bestanden worden gedownload naar de volgende map op de virtuele doe
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
 
-waar `<n>` is een decimaal geheel getal. Dit kan veranderen tussen de uitvoeringen van de uitbrei ding.  De `1.*` waarde komt overeen met de werkelijke `typeHandlerVersion` , huidige waarde van de extensie.  De daad werkelijke map kan bijvoorbeeld zijn `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
+waarbij `<n>` een decimaal geheel getal is, wat kan veranderen tussen uitvoeringen van de uitbrei ding.  De `1.*` waarde komt overeen met de werkelijke waarde voor de huidige `typeHandlerVersion` van de extensie.  De daad werkelijke map kan bijvoorbeeld `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`zijn.  
 
-Wanneer de `commandToExecute` opdracht wordt uitgevoerd, wordt deze map door de extensie ingesteld ( `...\Downloads\2`bijvoorbeeld) als de huidige werkmap. Dit proces zorgt ervoor dat relatieve paden kunnen worden gebruikt om de bestanden te vinden `fileURIs` die via de eigenschap zijn gedownload. Zie de onderstaande tabel voor voor beelden.
+Bij het uitvoeren van de `commandToExecute` opdracht, wordt deze map door de extensie ingesteld (bijvoorbeeld `...\Downloads\2`) als de huidige werkmap. Dit proces zorgt ervoor dat relatieve paden kunnen worden gebruikt om de bestanden te vinden die worden gedownload via de eigenschap `fileURIs`. Zie de onderstaande tabel voor voor beelden.
 
-Omdat het absolute Download traject na verloop van tijd kan variëren, is het beter om te kiezen voor relatieve script-en `commandToExecute` bestands paden in de teken reeks, indien mogelijk. Bijvoorbeeld:
+Omdat het absolute pad van de down load mogelijk na verloop van tijd kan verschillen, is het beter om te kiezen voor relatieve script-en bestands paden in de `commandToExecute` teken reeks, indien mogelijk. Bijvoorbeeld:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""
 ```
 
-Padgegevens na het eerste URI-segment worden bewaard voor bestanden die worden gedownload `fileUris` via de eigenschappen lijst.  Zoals in de onderstaande tabel wordt weer gegeven, worden gedownloade bestanden toegewezen in submappen voor downloaden om de structuur `fileUris` van de waarden weer te geven.  
+Padgegevens na het eerste URI-segment worden bewaard voor bestanden die worden gedownload via de `fileUris` eigenschappen lijst.  Zoals in de onderstaande tabel wordt weer gegeven, worden gedownloade bestanden toegewezen in submappen voor downloaden om de structuur van de `fileUris` waarden weer te geven.  
 
 #### <a name="examples-of-downloaded-files"></a>Voor beelden van gedownloade bestanden
 

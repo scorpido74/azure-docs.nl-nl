@@ -1,5 +1,5 @@
 ---
-title: Een moment opname van een VHD maken in azure | Microsoft Docs
+title: Een moment opname van een VHD maken in azure
 description: Meer informatie over het maken van een kopie van een virtuele Azure-machine die u kunt gebruiken als back-up of voor problemen oplossen.
 documentationcenter: ''
 author: roygara
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 74ef55fe9a0a6603bd43d68b6b8557dce1bca921
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b564e20ca8aa5acd7fbd4ea69ac2b1cd72e66d5e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749144"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075340"
 ---
 # <a name="create-a-snapshot"></a>Een momentopname maken
 

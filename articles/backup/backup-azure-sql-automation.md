@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 34a8b27442fc3f755cbe33f61857aa13d3be700b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 85d6b9e00798926bee2d5050767ba47512fc9e86
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012822"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074116"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Back-up en herstel van SQL-data bases in azure Vm's met Power shell
 
@@ -460,7 +460,7 @@ $endDate = (Get-Date).AddDays(60).ToUniversalTime()
 Backup-AzRecoveryServicesBackupItem -Item $bkpItem -BackupType Full -EnableCompression -VaultId $targetVault.ID -ExpiryDateTimeUTC $endDate
 ````
 
-De ad hoc-back-upopdracht retourneert een taak die moet worden bijgehouden.
+De opdracht back-up op aanvraag retourneert een taak die moet worden bijgehouden.
 
 ````powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -541,13 +541,13 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 Het is belang rijk te weten dat Azure Backup door de gebruiker geactiveerde taken in SQL backup alleen wilt bijhouden. Geplande back-ups (inclusief back-ups van Logboeken) zijn niet zichtbaar in portal/Power shell. Als er echter geplande taken mislukken, wordt er een [back-upwaarschuwing](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) gegenereerd en weer gegeven in de portal. [Gebruik Azure monitor](backup-azure-monitoring-use-azuremonitor.md) om alle geplande taken en andere relevante informatie bij te houden.
 
-Gebruikers kunnen ad hoc/door de gebruiker geactiveerde bewerkingen volgen met de JobID die wordt geretourneerd in de [uitvoer](#on-demand-backup) van asynchrone taken, zoals back-up. Gebruik de cmdlet [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS om de taak en de bijbehorende details bij te houden.
+Gebruikers kunnen op aanvraag/door gebruiker geactiveerde bewerkingen volgen met de JobID die wordt geretourneerd in de [uitvoer](#on-demand-backup) van asynchrone taken, zoals back-up. Gebruik de cmdlet [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS om de taak en de bijbehorende details bij te houden.
 
 ````powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID
 ````
 
-Gebruik de cmdlet [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS om de lijst met ad hoc-taken en hun status van Azure backup-service op te halen. In het volgende voor beeld worden alle actieve SQL-taken geretourneerd.
+Gebruik de cmdlet [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS om de lijst met taken op aanvraag en hun status van Azure backup service op te halen. In het volgende voor beeld worden alle actieve SQL-taken geretourneerd.
 
 ```powershell
 Get-AzRecoveryServicesBackupJob -Status InProgress -BackupManagementType AzureWorkload
@@ -570,4 +570,4 @@ Laten we bijvoorbeeld uitgaan dat een SQL AG twee knoop punten heeft: ' SQL-Serv
 
 SQL-Server-0, SQL-Server-1 wordt ook weer gegeven als ' AzureVMAppContainer ' als [er back-upcontainers worden weer gegeven](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0).
 
-Haal alleen de relevante SQL database op voor het [inschakelen van back-ups](#configuring-backup) en de AD- [cmdlets](#restore-sql-dbs) voor [adhoc-back-ups](#on-demand-backup) en herstellen.
+Haal alleen de relevante SQL database op voor het [inschakelen van back-ups](#configuring-backup) en het maken van back-ups [op aanvraag](#on-demand-backup) en het [herstellen van PS-cmdlets](#restore-sql-dbs) .

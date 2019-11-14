@@ -16,12 +16,12 @@ ms.date: 04/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: c9754c1d7fee5af13de6176dbf8a1ca6e57a71eb
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 3aaa99caca461d4b8e339cf4c1f7847adef4027a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213166"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076852"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Problemen met verwijderde meldingen in azure Notification Hubs vaststellen
 
@@ -33,7 +33,7 @@ Het is essentieel om eerst te begrijpen hoe Notification Hubs meldingen naar een
 
 In een typische meldings stroom verzenden wordt het bericht verzonden vanuit de *back-end* van de toepassing naar notification hubs. Notification Hubs alle registraties verwerkt. Het houdt rekening met de geconfigureerde Tags en label expressies om doelen te bepalen. Doelen zijn de registraties die de push melding moeten ontvangen. Deze registraties kunnen een van de volgende ondersteunde platforms omvatten: Android, Baidu (Android-apparaten in China), Fire OS (Amazon) iOS, Windows en Windows Phone.
 
-Met de ingestelde doelen Notification Hubs push meldingen naar de *service voor push meldingen* voor het platform van het apparaat. Voor beelden zijn de Apple Push Notification Service (APNs) voor Apple en Firebase Cloud Messa ging (FCM) voor Google. Notification Hubs pusht meldingen over meerdere batches van registraties. De verificatie wordt uitgevoerd met de respectieve Push Notification Service, op basis van de referenties die u hebt ingesteld in de Azure Portal, onder **Notification hub configureren**. De Push Notification service stuurt de meldingen vervolgens door naar de respectievelijke *client apparaten*.
+Met de ingestelde doelen Notification Hubs push meldingen naar de *service voor push meldingen* voor het platform van het apparaat. Voor beelden zijn de Apple Push Notification Service (APNs) voor iOS en macOS, en Firebase Cloud Messa ging (FCM) voor Android-apparaten. Notification Hubs pusht meldingen over meerdere batches van registraties. De verificatie wordt uitgevoerd met de respectieve Push Notification Service, op basis van de referenties die u hebt ingesteld in de Azure Portal, onder **Notification hub configureren**. De Push Notification service stuurt de meldingen vervolgens door naar de respectievelijke *client apparaten*.
 
 Het laatste gedeelte van de meldings levering ligt tussen de push meldingen service van het platform en het apparaat. De bezorging van een melding kan mislukken in een van de vier fasen van het push meldings proces (client, back-end van toepassing, Notification Hubs en de Push Notification Service van het platform). Zie [Overzicht van Notification Hubs]voor meer informatie over de notification hubs architectuur.
 
@@ -103,7 +103,7 @@ Elke batch wordt verzonden naar de Push Notification Service, die op zijn beurt 
 
 In dit geval wordt de fout registratie verwijderd uit de data base. Vervolgens wordt de meldings levering voor de rest van de apparaten in die batch opnieuw geprobeerd.
 
-Als u meer informatie wilt over de mislukte bezorgings poging voor een registratie, kunt u de notification hubs rest [-api's per bericht-telemetrie gebruiken: Ontvang een telemetrie](https://msdn.microsoft.com/library/azure/mt608135.aspx) -meldings bericht en [PNS feedback](https://msdn.microsoft.com/library/azure/mt705560.aspx). Zie de [rest-voor beeld verzenden](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)voor een voorbeeld code.
+Als u meer informatie wilt over de mislukte bezorgings poging voor een registratie, kunt u de Notification Hubs REST-Api's [per bericht-telemetrie gebruiken: Ontvang een telemetrie-meldings bericht](https://msdn.microsoft.com/library/azure/mt608135.aspx) en [PNS feedback](https://msdn.microsoft.com/library/azure/mt705560.aspx). Zie de [rest-voor beeld verzenden](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)voor een voorbeeld code.
 
 ## <a name="push-notification-service-issues"></a>Problemen met Push Notification Service
 
@@ -115,7 +115,7 @@ Als een Push Notification Service een melding probeert af te leveren maar het ap
 
 In elke app wordt slechts één recente melding opgeslagen. Als er meerdere meldingen worden verzonden terwijl een apparaat offline is, zorgt elke nieuwe melding ervoor dat de laatste wordt verwijderd. Het *bewaren van de* nieuwste melding heet samen voegen in APNs en *samengevouwen* in FCM. (FCM gebruikt een samenvouw sleutel.) Wanneer het apparaat lange tijd offline blijft, worden meldingen die voor het apparaat zijn opgeslagen, verwijderd. Zie [overzicht van APNs] en [Over FCM-berichten]voor meer informatie.
 
-Met Notification Hubs kunt u een samenvoegings sleutel door geven via een HTTP-header met behulp van de algemene SendNotification-API. U kunt bijvoorbeeld voor de .NET SDK gebruiken `SendNotificationAsync`. De SendNotification-API accepteert ook HTTP-headers die worden door gegeven aan de respectieve Push Notification Service.
+Met Notification Hubs kunt u een samenvoegings sleutel door geven via een HTTP-header met behulp van de algemene SendNotification-API. Voor de .NET-SDK gebruikt u bijvoorbeeld `SendNotificationAsync`. De SendNotification-API accepteert ook HTTP-headers die worden door gegeven aan de respectieve Push Notification Service.
 
 ## <a name="self-diagnosis-tips"></a>Tips voor zelf diagnose
 
@@ -125,9 +125,9 @@ Hier vindt u de paden voor het vaststellen van de hoofd oorzaak van verwijderde 
 
 #### <a name="push-notification-service-developer-portal"></a>Service ontwikkelaars portal voor push meldingen ####
 
-Controleer de referenties in de respectieve Push Notification Service Developer-Portal (APNs, FCM, Windows Notification Service, enzovoort). Zie [Zelfstudie: Meldingen verzenden naar Universeel Windows-platform-apps met behulp van Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
+Controleer de referenties in de respectieve Push Notification Service Developer-Portal (APNs, FCM, Windows Notification Service, enzovoort). Zie [zelf studie: meldingen verzenden naar universeel Windows-platform-apps met behulp van Azure notification hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification)voor meer informatie.
 
-#### <a name="azure-portal"></a>Azure Portal ####
+#### <a name="azure-portal"></a>Azure-portal ####
 
 Ga naar het tabblad **toegangs beleid** in het Azure Portal om de referenties te controleren en te vergelijken met de gegevens die u hebt verkregen via de Push Notification Service-ontwikkelaars Portal.
 
@@ -145,22 +145,22 @@ U kunt alle registraties in uw hub weer geven en beheren. De registraties kunnen
 
 Klik met de rechter muisknop op de notification hub in **Server Explorer**en selecteer **diagnose**. 
 
-![Visual Studio Server Explorer: Diagnose menu](./media/notification-hubs-diagnosing/diagnose-menu.png)
+![Visual Studio Server Explorer: diagnose menu](./media/notification-hubs-diagnosing/diagnose-menu.png)
 
 U ziet de volgende pagina:
 
-![Visual Studio: Pagina diagnosticeren](./media/notification-hubs-diagnosing/diagnose-page.png)
+![Visual Studio: diagnose van de pagina](./media/notification-hubs-diagnosing/diagnose-page.png)
 
 Schakel over naar **de pagina apparaatregistratie:**
 
-![Visual Studio: Apparaatregistratie](./media/notification-hubs-diagnosing/VSRegistrations.png)
+![Visual Studio: apparaatregistratie](./media/notification-hubs-diagnosing/VSRegistrations.png)
 
 U kunt de pagina **verzenden testen** gebruiken om een bericht voor een test melding te verzenden:
 
-![Visual Studio: Verzenden testen](./media/notification-hubs-diagnosing/test-send-vs.png)
+![Visual Studio: verzenden testen](./media/notification-hubs-diagnosing/test-send-vs.png)
 
 > [!NOTE]
-> Gebruik Visual Studio om alleen registraties te bewerken tijdens ontwikkeling/testen en met een beperkt aantal registraties. Als u uw registraties in bulk wilt bewerken, kunt u overwegen de registratie functionaliteit voor exporteren en importeren te [gebruiken, zoals beschreven in How to: Registraties in bulk](https://msdn.microsoft.com/library/dn790624.aspx)exporteren en wijzigen.
+> Gebruik Visual Studio om alleen registraties te bewerken tijdens ontwikkeling/testen en met een beperkt aantal registraties. Als u uw registraties in bulk wilt bewerken, kunt u overwegen om de registratie functionaliteit voor exporteren en importeren te gebruiken die wordt beschreven in [How to: registraties bulksgewijs exporteren en wijzigen](https://msdn.microsoft.com/library/dn790624.aspx).
 
 #### <a name="service-bus-explorer"></a>Service Bus Explorer ####
 
@@ -168,7 +168,7 @@ Veel klanten gebruiken [Service Bus Explorer](https://github.com/paolosalvatori/
 
 ### <a name="verify-message-notifications"></a>Bericht meldingen controleren
 
-#### <a name="azure-portal"></a>Azure Portal ####
+#### <a name="azure-portal"></a>Azure-portal ####
 
 Als u een test melding naar uw clients wilt verzenden zonder dat er een back-up van een service wordt uitgevoerd, selecteert u onder **ondersteuning en probleem oplossing**de optie **Test verzenden**.
 
@@ -196,7 +196,7 @@ Als uw melding niet op het client apparaat arriveert, is er mogelijk een fout op
 
 U kunt de eigenschap [EnableTestSend] gebruiken om inzicht te krijgen in service fouten van push meldingen. Deze eigenschap wordt automatisch ingeschakeld wanneer u test berichten verzendt vanuit de portal of de Visual Studio-client. U kunt deze eigenschap gebruiken om gedetailleerde informatie over fout opsporing en ook via Api's te bekijken. Op dit moment kunt u het gebruiken in de .NET SDK. Deze wordt uiteindelijk toegevoegd aan alle client-Sdk's.
 
-Als u de `EnableTestSend` eigenschap met de rest-aanroep wilt gebruiken, voegt u een query reeks parameter met de naam *test* toe aan het einde van uw verzend oproep. Bijvoorbeeld:
+Als u de eigenschap `EnableTestSend` met de REST-aanroep wilt gebruiken, voegt u een query reeks parameter met de naam *test* toe aan het einde van uw verzend oproep. Bijvoorbeeld:
 
 ```text
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
@@ -212,9 +212,9 @@ var result = await hub.SendWindowsNativeNotificationAsync(toast);
 Console.WriteLine(result.State);
 ```
 
-Aan het einde van de uitvoering, `result.State` staat `Enqueued`er gewoon. De resultaten bieden geen inzicht in wat er is gebeurd met uw push melding.
+Aan het einde van de uitvoering `result.State` u gewoon `Enqueued`. De resultaten bieden geen inzicht in wat er is gebeurd met uw push melding.
 
-Daarna kunt u de `EnableTestSend` Booleaanse eigenschap gebruiken. Gebruik de `EnableTestSend` eigenschap terwijl u `NotificationHubClient` initialiseert om een gedetailleerde status te krijgen over Push Notification Service-fouten die optreden wanneer de melding wordt verzonden. De verzend oproep heeft extra tijd nodig om te retour neren, omdat het eerst moet Notification Hubs om de melding aan de Push Notification Service te kunnen leveren.
+Vervolgens kunt u de eigenschap Boolean van `EnableTestSend` gebruiken. Gebruik de eigenschap `EnableTestSend` tijdens het initialiseren van `NotificationHubClient` om een gedetailleerde status te krijgen over Push Notification Service-fouten die optreden wanneer de melding wordt verzonden. De verzend oproep heeft extra tijd nodig om te retour neren, omdat het eerst moet Notification Hubs om de melding aan de Push Notification Service te kunnen leveren.
 
 ```csharp
     bool enableTestSend = true;
@@ -241,11 +241,11 @@ The Token obtained from the Token Provider is wrong
 Dit bericht geeft aan dat de referenties die zijn geconfigureerd in Notification Hubs ongeldig zijn of dat er een probleem is met de registraties in de hub. Verwijder deze registratie en laat de client de registratie opnieuw maken voordat het bericht wordt verzonden.
 
 > [!NOTE]
-> Het gebruik van `EnableTestSend` de eigenschap is zwaar beperkt. Gebruik deze optie alleen in een ontwikkel-en test omgeving en met een beperkt aantal registraties. Debug-meldingen worden naar slechts 10 apparaten verzonden. Er is ook een limiet voor het verwerken van debug-verzen dingen, 10 per minuut.
+> Het gebruik van de eigenschap `EnableTestSend` is zwaar beperkt. Gebruik deze optie alleen in een ontwikkel-en test omgeving en met een beperkt aantal registraties. Debug-meldingen worden naar slechts 10 apparaten verzonden. Er is ook een limiet voor het verwerken van debug-verzen dingen, 10 per minuut.
 
 ### <a name="review-telemetry"></a>Telemetrie controleren ###
 
-#### <a name="azure-portal"></a>Azure Portal ####
+#### <a name="azure-portal"></a>Azure-portal ####
 
 In de portal kunt u een snel overzicht krijgen van alle activiteiten in uw notification hub.
 

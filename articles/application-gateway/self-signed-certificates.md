@@ -1,5 +1,6 @@
 ---
-title: Een zelfondertekend certificaat van Azure-toepassing gateway genereren met een aangepaste basis-CA
+title: Zelfondertekend certificaat genereren met een aangepaste basis-CA
+titleSuffix: Azure Application Gateway
 description: Meer informatie over het genereren van een zelfondertekend certificaat van Azure-toepassing gateway met een aangepaste basis certificerings instantie
 services: application-gateway
 author: vhorne
@@ -7,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 84a46e66bb6c36950a84fbeb2dacc3a8d6bcc241
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fb3d2e70d9485c63d6de156abe9d192afa818814
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833372"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075074"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Een zelfondertekend certificaat van Azure-toepassing gateway genereren met een aangepaste basis-CA
 
@@ -23,7 +24,7 @@ Application Gateway vertrouwt het certificaat van uw website standaard als dit i
 > [!NOTE]
 > Zelfondertekende certificaten worden niet standaard vertrouwd en kunnen lastig zijn om te onderhouden. Ze kunnen ook verouderde hash-en coderings suites gebruiken die mogelijk niet sterk zijn. Voor betere beveiliging koopt u een certificaat dat is ondertekend door een bekende certificerings instantie.
 
-In dit artikel leert u het volgende:
+In dit artikel leert u hoe u:
 
 - Uw eigen aangepaste certificerings instantie maken
 - Een zelfondertekend certificaat maken dat is ondertekend door uw aangepaste certificerings instantie
@@ -178,7 +179,7 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 Als u het certificaat in Application Gateway wilt uploaden, moet u het. CRT-certificaat exporteren naar een. CER-indeling basis-64-code ring. Omdat CRT de open bare sleutel in de indeling base-64 bevat, kunt u de bestands extensie alleen wijzigen van. CRT naar. cer. 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 Als u het vertrouwde basis certificaat wilt uploaden vanuit de portal, selecteert u de **http-instellingen** en kiest u het **https** -protocol.
 

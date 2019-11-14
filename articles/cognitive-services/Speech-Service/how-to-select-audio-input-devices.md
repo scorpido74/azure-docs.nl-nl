@@ -1,7 +1,7 @@
 ---
 title: Een audio-invoer apparaat selecteren met de Speech SDK-Speech-Service
 titleSuffix: Azure Cognitive Services
-description: Ontdek hoe u audio-invoerapparaten kunt selecteren in de Speech-SDK.
+description: Meer informatie over het selecteren van audio-invoer apparaten inC++de C#Speech SDK (, Python, objectief-C, Java, java script) door de id's te verkrijgen van de audio apparaten die zijn verbonden met een systeem.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 8324f9fccbe46cf6fc0ce297aac29b0d8025b078
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 967e4fbc5484c152867fe5558040631d21e6c0b3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562722"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072441"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Een audio-invoerapparaat selecteren met de Speech-SDK
 
@@ -46,7 +46,8 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```JavaScript
 audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
->[!Note]
+
+> [!Note]
 > Het gebruik van de microfoon is niet beschikbaar voor Java script dat wordt uitgevoerd in node. js
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Id's van audioapparaten onder Windows voor bureaublad-toepassingen
@@ -374,7 +375,7 @@ maakt het gebruik van een Bluetooth-headset voor een spraakgestuurde app mogelij
 
 ## <a name="audio-device-ids-in-javascript"></a>Audio apparaat-Id's in Java script
 
-In Java script kan de methode [MediaDevices. enumerateDevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) worden gebruikt om de media apparaten te inventariseren en een apparaat-id te `fromMicrophone(...)`vinden die moet worden door gegeven.
+In Java script kan de methode [MediaDevices. enumerateDevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) worden gebruikt om de media apparaten te inventariseren en een apparaat-id te vinden die moet worden door gegeven aan `fromMicrophone(...)`.
 
 ## <a name="next-steps"></a>Volgende stappen
 

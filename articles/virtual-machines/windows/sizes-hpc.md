@@ -1,5 +1,5 @@
 ---
-title: Azure Windows VM-grootten-HPC | Microsoft Docs
+title: Azure Windows VM-grootten-HPC
 description: Geeft een lijst van de verschillende beschik bare grootten voor virtuele Windows High Performance Computing-machines in Azure. Bevat informatie over het aantal Vcpu's, gegevens schijven en Nic's en de opslag doorvoer en netwerk bandbreedte voor grootten in deze serie.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: 0c5398caf85566f78c7ebe9e8ba114a53d2f6271
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e96c74eb4b9b96459bb5de7db2faeb47ed99a82e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088526"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065443"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>High Performance Compute-VM-grootten
 
@@ -73,7 +73,7 @@ Azure biedt verschillende opties voor het maken van clusters van Windows HPC-Vm'
 
 * **Virtuele machines** : implementeer de met RDMA geschikte HPC-vm's in dezelfde beschikbaarheidsset (wanneer u het Azure Resource Manager-implementatie model gebruikt). Als u het klassieke implementatie model gebruikt, implementeert u de virtuele machines in dezelfde Cloud service. 
 
-* **Virtuele-machine schaal sets** : in een schaalset voor virtuele machines moet u ervoor zorgen dat u de implementatie beperkt tot één plaatsings groep. Stel bijvoorbeeld in een resource manager-sjabloon de `singlePlacementGroup` eigenschap in op. `true` 
+* **Virtuele-machine schaal sets** : in een schaalset voor virtuele machines moet u ervoor zorgen dat u de implementatie beperkt tot één plaatsings groep. Stel bijvoorbeeld in een resource manager-sjabloon de eigenschap `singlePlacementGroup` in op `true`. 
 
 * **Mpi tussen virtuele machines** : als er een mpi-communicatie nodig is tussen virtuele machines (vm's), moet u ervoor zorgen dat de vm's zich in dezelfde beschikbaarheidsset of op dezelfde schaalset van de virtuele machine bevinden.
 
@@ -81,7 +81,7 @@ Azure biedt verschillende opties voor het maken van clusters van Windows HPC-Vm'
 
 * **Azure batch** : maak een [Azure batch](/azure/batch/) groep om mpi-workloads uit te voeren op Windows Server Compute-knoop punten. Zie voor meer informatie [gebruik van RDMA-compatibele of GPU-ingeschakelde instanties in batch-Pools](../../batch/batch-pool-compute-intensive-sizes.md). Zie ook het [batch Shipyard](https://github.com/Azure/batch-shipyard) -project, voor het uitvoeren van op containers gebaseerde workloads op batch.
 
-* **Micro soft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) bevat een runtime-omgeving voor MS-mpi die gebruikmaakt van het Azure RDMA-netwerk wanneer het is geïmplementeerd op RDMA-compatibele Windows-vm's. Zie voor beelden van implementaties [een Windows RDMA-cluster met HPC Pack instellen voor het uitvoeren van MPI-toepassingen](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+* **Micro soft HPC pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) bevat een runtime-omgeving voor MS-mpi die gebruikmaakt van het Azure RDMA-netwerk wanneer het is geïmplementeerd op RDMA-compatibele Windows-vm's. Zie voor beelden van implementaties [een Windows RDMA-cluster met HPC Pack instellen voor het uitvoeren van MPI-toepassingen](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="other-sizes"></a>Andere grootten
 - [Algemeen doel](sizes-general.md)

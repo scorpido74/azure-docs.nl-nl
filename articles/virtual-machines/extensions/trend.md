@@ -1,5 +1,5 @@
 ---
-title: Trend Micro diepe beveiliging op een VM installeren | Microsoft Docs
+title: Trend Micro diepe beveiliging op een virtuele machine installeren
 description: In dit artikel wordt beschreven hoe u Trend Micro beveiliging kunt installeren en configureren op een virtuele machine die is gemaakt met het klassieke implementatie model in Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: 14ef0a94cb8b2b735b3dc02cf5ccdcc65a6c1beb
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: a9f99d418d572c14a7cdd7975483cf39f0707cba
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168798"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072988"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Trend Micro Deep Security installeren en configureren als een service op een Windows VM
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
@@ -54,7 +54,7 @@ Wanneer u de Blade **instellingen** van de wizard krijgt, voert u de volgende st
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>Installeer de grondige beveiligings agent op een bestaande virtuele machine
 Als u de agent wilt installeren op een bestaande virtuele machine, hebt u de volgende items nodig:
 
-* De Azure PowerShell module versie 0.8.2 of nieuwer, geïnstalleerd op uw lokale computer. U kunt de versie van Azure PowerShell die u hebt geïnstalleerd controleren met behulp van de opdracht **Get-module Azure | indeling-Table versie** . Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor instructies en een koppeling naar de meest recente versie. Meld u aan bij uw Azure- `Add-AzureAccount`abonnement met.
+* De Azure PowerShell module versie 0.8.2 of nieuwer, geïnstalleerd op uw lokale computer. U kunt de versie van Azure PowerShell die u hebt geïnstalleerd controleren met behulp van de opdracht **Get-module Azure | indeling-Table versie** . Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor instructies en een koppeling naar de meest recente versie. Meld u aan bij uw Azure-abonnement met behulp van `Add-AzureAccount`.
 * De VM-agent die is geïnstalleerd op de virtuele doel machine.
 
 Controleer eerst of de VM-agent al is geïnstalleerd. Vul de naam van de Cloud service en de virtuele machine in en voer de volgende opdrachten uit op de opdracht prompt op beheerders niveau Azure PowerShell. Vervang alles binnen de aanhalings tekens, met inbegrip van de <-en > teken.
@@ -81,7 +81,7 @@ Het duurt enkele minuten voordat de agent wordt gestart wanneer deze is geïnsta
 * Een voor beeld van een [Windows Power shell-script](https://go.microsoft.com/fwlink/?LinkId=404100) voor het configureren van de virtuele machine
 * [Instructies](https://go.microsoft.com/fwlink/?LinkId=404099) voor het voor beeld
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 [Aanmelden bij een virtuele machine met Windows Server]
 
 [Azure VM-extensies en-functies]

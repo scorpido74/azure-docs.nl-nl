@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: b344af71eac04cc355ba157e18d9de9d84a9cc63
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 50db82206bbc0b98dcc80bd504022799011697d4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969088"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074122"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
 
@@ -29,7 +29,7 @@ Dit artikel bevat probleemoplossings stappen die u kunnen helpen bij het oplosse
 
 De Azure VM-agent is mogelijk gestopt, verouderd, in een inconsistente status of niet geïnstalleerd en voor komen dat Azure Backup Service moment opnamen kan activeren.  
 
-- Als de VM-agent is gestopt of niet consistent is, start u **de agent opnieuw** en voert u de back-upbewerking opnieuw uit (probeer een ad-hoc back-up). Zie [Windows vm's](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) of [Linux-vm's](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)voor stappen om de agent opnieuw te starten.
+- Als de VM-agent is gestopt of niet consistent is, start u **de agent opnieuw** en voert u de back-upbewerking opnieuw uit (probeer een back-up op aanvraag uit te voeren). Zie [Virtuele Windows-machines](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) of [Virtuele Linux-machines](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) voor stappen om de agent opnieuw te starten.
 - Als de VM-agent niet is geïnstalleerd of is verouderd, installeert u de VM-agent en voert u de back-upbewerking opnieuw uit. Zie [Windows vm's](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) of [Linux-vm's](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)voor stappen om de agent te installeren of bij te werken.  
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError: kan niet communiceren met de VM-agent voor de status van de moment opname
@@ -58,7 +58,7 @@ Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en 
 Aanbevolen actie:<br>
 U kunt dit probleem oplossen door de vergren deling van de resource groep van de virtuele machine te verwijderen en de bewerking opnieuw uit te voeren om het opschonen te activeren.
 > [!NOTE]
-> Backup-service maakt een afzonderlijke resource groep dan de resource groep van de virtuele machine om de herstel punt verzameling op te slaan. Klanten wordt aangeraden de resource groep die is gemaakt voor gebruik door de back-upservice niet te vergren delen. De naamgevings indeling van de resource groep die is gemaakt door de back-upservice is: AzureBackupRG_`<Geo>`_`<number>` voor beeld: AzureBackupRG_northeurope_1
+> Backup-service maakt een afzonderlijke resource groep dan de resource groep van de virtuele machine om de herstel punt verzameling op te slaan. Klanten wordt aangeraden de resource groep die is gemaakt voor gebruik door de back-upservice niet te vergren delen. De naamgevings indeling van de resource groep die is gemaakt door de back-upservice is: AzureBackupRG_`<Geo>`_`<number>` bijvoorbeeld: AzureBackupRG_northeurope_1
 
 **Stap 1: [de vergren deling van de resource groep voor het herstel punt verwijderen](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Stap 2: [herstel punt verzameling opschonen](#clean_up_restore_point_collection)**<br>
@@ -213,7 +213,7 @@ Verwijder de extensie om ervoor te zorgen dat de VMSnapshot-extensie opnieuw wor
 De uitbrei ding verwijderen:
 
 1. Ga in het [Azure Portal](https://portal.azure.com/)naar de virtuele machine waarop een back-up is mislukt.
-2. **Instellingen**selecteren.
+2. Selecteer **instellingen**.
 3. Selecteer **Extensies**.
 4. Selecteer **Vmsnapshot-extensie**.
 5. Selecteer **verwijderen**.
@@ -224,8 +224,8 @@ Bij het uitvoeren van deze stappen wordt de extensie opnieuw geïnstalleerd tijd
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Vergren deling van de resource groep herstel punt verwijderen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Ga naar de **optie alle resources**en selecteer de resource groep voor de verzameling van herstel punten in de volgende notatie AzureBackupRG_`<Geo>`_`<number>`.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+2. Ga naar **alle resources optie**, selecteer de resource groep voor de verzameling van herstel punten in de volgende indeling AzureBackupRG_`<Geo>`_`<number>`.
 3. Selecteer in de sectie **instellingen** de optie **vergren** delen om de vergren delingen weer te geven.
 4. Als u de vergren deling wilt verwijderen, selecteert u het weglatings teken en klikt u op **verwijderen**.
 
@@ -239,22 +239,22 @@ Als u de resource groep van de virtuele machine of de virtuele machine zelf verw
 
 Volg een van de volgende methoden om de herstel punten op te schonen:<br>
 
-- [Herstel punt verzameling opschonen door ad hoc-back-up uit te voeren](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
+- [Herstel punt verzameling opschonen door back-ups op aanvraag uit te voeren](#clean-up-restore-point-collection-by-running-on-demand-backup)<br>
 - [Herstel punt verzameling opschonen van Azure Portal](#clean-up-restore-point-collection-from-azure-portal)<br>
 
-#### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Herstel punt verzameling opschonen door ad hoc-back-up uit te voeren
+#### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>Herstel punt verzameling opschonen door back-ups op aanvraag uit te voeren
 
-Nadat u de vergren deling hebt verwijderd, activeert u een ad-hoc/hand matige back-up. Dit zorgt ervoor dat de herstel punten automatisch worden opgeruimd. Deze ad hoc/Manual-bewerking wordt verwacht voor de eerste keer mislukt. het zorgt er echter voor dat automatisch opschonen in plaats van het hand matig verwijderen van herstel punten. Na het opschonen van de volgende geplande back-up is geslaagd.
+Nadat u de vergren deling hebt verwijderd, moet u een back-up op aanvraag starten. Dit zorgt ervoor dat de herstel punten automatisch worden opgeruimd. Verwacht dat deze on-demand-bewerking de eerste keer mislukt. het zorgt er echter voor dat automatisch opschonen in plaats van het hand matig verwijderen van herstel punten. Na het opschonen van de volgende geplande back-up is geslaagd.
 
 > [!NOTE]
-> Automatische opschoning gebeurt na enkele uren na het activeren van de ad-hoc/hand matige back-up. Als uw geplande back-up nog steeds mislukt, probeert u de verzameling met herstel punten hand matig te verwijderen met behulp van de stappen die [hier](#clean-up-restore-point-collection-from-azure-portal)worden beschreven.
+> Automatische opschoning gebeurt na enkele uren dat de back-up op aanvraag wordt geactiveerd. Als uw geplande back-up nog steeds mislukt, probeert u de verzameling met herstel punten hand matig te verwijderen met behulp van de stappen die [hier](#clean-up-restore-point-collection-from-azure-portal)worden beschreven.
 
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Herstel punt verzameling opschonen van Azure Portal <br>
 
 Voer de volgende stappen uit om de verzameling met herstel punten hand matig te wissen, die niet is gewist vanwege de vergren deling van de resource groep:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Klik in het menu **hub** op **alle resources**, selecteer de resource groep met de volgende indeling AzureBackupRG_`<Geo>`_`<number>` waar de virtuele machine zich bevindt.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+2. Klik in het menu **hub** op **alle resources**en selecteer de resource groep met de volgende indeling AzureBackupRG_`<Geo>`_`<number>` waar de virtuele machine zich bevindt.
 
     ![Vergren deling verwijderen](./media/backup-azure-arm-vms-prepare/resource-group.png)
 

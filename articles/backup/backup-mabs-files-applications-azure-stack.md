@@ -1,5 +1,5 @@
 ---
-title: Back-ups maken van bestanden in Azure Stack Vm's
+title: Back-ups maken van bestanden in Azure Stack Vm's-Azure Backup
 description: Gebruik Azure Backup voor het maken van back-ups en het herstellen van Azure Stack bestanden en toepassingen naar uw Azure Stack omgeving.
 ms.reviewer: adigan
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: d9e7aaca99e551e17e8b4be5ef6146a19e44355f
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: dc498e08509280b0dcd19cb1556a3c5a152f6d97
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210210"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074096"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Back-up van bestanden en toepassingen in Azure Stack
 
@@ -45,19 +45,19 @@ Als u Azure Backup Server wilt configureren voor het beveiligen van bestanden in
 
     ![Wizard nieuwe beveiligings groep wordt geopend](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. **Klik+** in het scherm **groeps leden selecteren** om de lijst met subitems uit te vouwen. Voor alle items die u wilt beveiligen, schakelt u het selectie vakje in. Wanneer alle items zijn geselecteerd, klikt u op **volgende**.
+3. Klik in het scherm **groeps leden selecteren** op **+** om de lijst met subitems uit te vouwen. Voor alle items die u wilt beveiligen, schakelt u het selectie vakje in. Wanneer alle items zijn geselecteerd, klikt u op **volgende**.
 
     ![Wizard nieuwe beveiligings groep wordt geopend](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    Micro soft raadt aan om alle gegevens die een beveiligings beleid zullen delen, in één beveiligings groep te plaatsen. Voor volledige informatie over het plannen en implementeren van beveiligings groepen raadpleegt u het artikel over System Center DPM en implementeert u [beveiligings groepen](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
+    Micro soft raadt aan om alle gegevens die een beveiligings beleid zullen delen, in één beveiligings groep te plaatsen. Voor volledige informatie over het plannen en implementeren van beveiligings groepen raadpleegt u het artikel over System Center DPM en [implementeert u beveiligings groepen](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
 
 4. Typ in het scherm **methode voor gegevens beveiliging selecteren** een naam voor de beveiligings groep. Schakel het selectie vakje in **die ik op kortetermijnbeveiliging wil gebruiken met:** en **Ik wil online beveiliging**. Klik op **Volgende**.
 
     ![Wizard nieuwe beveiligings groep wordt geopend](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    Als u **wilt selecteren wat ik wil online beveiliging**, moet u eerst een **kortetermijnbeveiliging-beveiliging selecteren met behulp van:** Schijf. Azure Backup Server is niet beveiligd op tape, dus schijf is de enige keuze voor beveiliging op korte termijn.
+    Als u **wilt selecteren wat ik wil online beveiliging**, moet u eerst kiezen voor **kortetermijnbeveiliging op basis van:** schijf. Azure Backup Server is niet beveiligd op tape, dus schijf is de enige keuze voor beveiliging op korte termijn.
 
-5. Geef in het scherm doel stellingen voor de **korte termijn** op hoe lang de herstel punten die op schijf moeten worden bewaard en wanneer u incrementele back-ups wilt opslaan. Klik op **Volgende**.
+5. Geef in het scherm **doel stellingen voor de korte termijn** op hoe lang de herstel punten die op schijf moeten worden bewaard en wanneer u incrementele back-ups wilt opslaan. Klik op **Volgende**.
 
     > [!IMPORTANT]
     > Bewaar op Azure Backup Server gekoppelde schijven meer dan vijf dagen **geen** back-upgegevens.
@@ -98,7 +98,7 @@ Gebruik Azure Backup Server-console om gegevens op uw virtuele machine te herste
 
 2. In de kalender in het gedeelte herstel punten geven de vetgedrukte datums een beschik bare herstel punten weer. Selecteer de datum die u wilt herstellen.
 
-3. Selecteer in het deel venster herstelbaar **item** het item dat u wilt herstellen.
+3. Selecteer in het deel venster **herstelbaar item** het item dat u wilt herstellen.
 
 4. Klik in het deel venster **acties** op **herstellen** om de wizard herstellen te openen.
 

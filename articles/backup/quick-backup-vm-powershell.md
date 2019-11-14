@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 268cac453ed68903c73b597ffeff2569c13e9db7
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 741c6c1f937988dcce41603417a1bc7dc95091cb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747078"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073982"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Een back-up van een virtuele machine maken in Azure met PowerShell
 
@@ -106,18 +106,18 @@ Schakel back-up als volgt in:
 
 ## <a name="start-a-backup-job"></a>Een back-uptaak starten
 
-Back-ups worden uitgevoerd volgens de planning die is opgegeven in het back-upbeleid. U kunt ook een ad hoc-back-up uitvoeren:
+Back-ups worden uitgevoerd volgens de planning die is opgegeven in het back-upbeleid. U kunt ook een back-up op aanvraag uitvoeren:
 
 - Met de eerste eerste back-uptaak wordt een volledig herstel punt gemaakt.
 - Na de eerste back-up worden met elke back-uptaak incrementele herstel punten gemaakt.
 - Incrementele herstelpunten zijn efficiënt qua opslag en tijd aangezien ze alleen wijzigingen bevatten die sinds de laatste back-up zijn doorgevoerd.
 
-Als u een ad hoc-back-up wilt uitvoeren, gebruikt u de [back-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
+Als u een back-up op aanvraag wilt uitvoeren, gebruikt u de [back-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
 
 - U geeft een container op in de kluis die uw back-upgegevens bevat met [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer).
 - Elke VM voor back-up wordt als een item beschouwd. Als u een back-uptaak wilt starten, haalt u informatie op over de virtuele machine met [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
 
-Voer een ad hoc-back-uptaak als volgt uit:
+Voer een back-uptaak op aanvraag als volgt uit:
 
 1. Geef de container op, haal de VM-informatie op en voer de back-up uit.
 

@@ -1,7 +1,7 @@
 ---
 title: Zoeken naar GIF-afbeeldingen met behulp van de Bing Afbeeldingen zoeken-API
 titleSuffix: Azure Cognitive Services
-description: Gebruik de Bing Afbeeldingen zoeken-API om te zoeken naar GIF-afbeeldingen op het web.
+description: Met de Bing Afbeeldingen zoeken-API kunt u ook op het hele web zoeken naar de meest relevante GIF-afbeeldingen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a8c9afa618df468e038c80f72713b12c7f6ee226
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ad33b5a28728a8e7f9c0a70ff81ea5a9e65624bd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882295"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072642"
 ---
 # <a name="search-for-gif-images"></a>Zoeken naar GIF-afbeeldingen 
 
@@ -26,7 +26,7 @@ De volgende URL is een query voor GIF-afbeeldingen met animatie.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 ```
-De [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) para meter bepaalt de zoek termen.  In de vorige query wordt `animatedGif` ook de [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) -filter parameter opgegeven.
+De [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) para meter bepaalt de zoek termen.  In de vorige query wordt ook `animatedGif` opgegeven met behulp van de filter parameter [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) .
 
 Als u voor beelden van resultaten wilt weer geven, gebruikt u de volgende URL om bing.com te zoeken.
 ```
@@ -41,8 +41,8 @@ Voor meer informatie over query parameters en-opties raadpleegt u de [afbeelding
 
 - U kunt [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) -en [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) -para meters opgeven. We raden u aan de instelling maxFileSize = 2000000 in te stellen als meren deel van de gif's in onze index onder 2 MB.  Zo kunt u de grootte van de gegevens beheren als de band breedte een probleem is, zoals in mobiele mobiel scenario's.
 - Om de waargenomen prestaties te verbeteren, moet u eerst de miniatuur laden voordat u de bron-URL laadt.  
-- Voor de ervaring van de eerste uitvoering of de landings pagina waar u nog geen gebruikers query hebt, kunt u proberen om met behulp van onze trending GIF-Zoek opdrachten te helpen van de API voor trending- [afbeeldingen](trending-images.md).
-- Er zijn drie instellingen voor de para meter [SafeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) .  Met `strict` de optie wordt inhoud voor volwassenen geblokkeerd.
+- Voor de ervaring van de eerste uitvoering of de landings pagina waar u nog geen gebruikers query hebt, kunt u proberen om met behulp van onze trending GIF-Zoek opdrachten te helpen van de [API voor trending-afbeeldingen](trending-images.md).
+- Er zijn drie instellingen voor de para meter [SafeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) .  Met de optie `strict` wordt inhoud voor volwassenen geblokkeerd.
 - Zie [MKT](supported-countries-markets.md) voor een volledige lijst met ondersteunde talen en locaties.
 - *AnimatedGifHttps* retourneert alleen bewegende GIF-afbeeldingen uit een https-adres. Voor de beveiliging is voor veel toepassingen verbinding met externe webkoppelingen via HTTPS vereist. Voor de Apple App Store is bijvoorbeeld een verbinding met webservices via HTTPS vereist, waarmee gebruikers gegevens tijdens de overdracht veilig worden versleuteld.
 
@@ -50,7 +50,7 @@ Voor meer informatie over query parameters en-opties raadpleegt u de [afbeelding
 
 ## <a name="example-search-for-animated-gif-using-java"></a>Voor beeld van een animatie naar een geanimeerde GIF met Java
 
-De volgende URL zoekt naar GIF-afbeeldingen met animatie:`q=interesting`
+De volgende URL zoekt naar GIF-afbeeldingen met animatie: `q=interesting`
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 
@@ -208,5 +208,5 @@ De code haalt de volgende resultaten op als JSON-objecten:
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Snelstart voor C#](quickstarts/csharp.md)
+- [Snelstartgids voor C#](quickstarts/csharp.md)
 - [Zelf studie Afbeeldingen zoeken toepassing met één pagina](tutorial-bing-image-search-single-page-app.md)

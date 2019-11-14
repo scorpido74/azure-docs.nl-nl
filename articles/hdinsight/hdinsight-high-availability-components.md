@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 8aeef72c23f3ed40a7f187c976c67c2ae117189a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958484"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069632"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Services met hoge Beschik baarheid die worden ondersteund door Azure HDInsight
 
@@ -50,7 +50,7 @@ Micro soft biedt ondersteuning voor de vier Apache-Services in de volgende tabel
 
 | Service | Clusterknooppunten | Cluster typen | Doel |
 |---|---|---|---|
-| Apache Ambari-server| Actieve hoofd knooppunt | Alle | Bewaakt en beheert het cluster.|
+| Apache Ambari-server| Actieve hoofd knooppunt | Alles | Bewaakt en beheert het cluster.|
 | Tijdlijn server van de toepassing voor Apache-GARENs | Actieve hoofd knooppunt | Alle behalve Kafka | Onderhoudt fout opsporingsgegevens over garen taken die op het cluster worden uitgevoerd.|
 | Taak geschiedenis server voor Hadoop-MapReduce | Actieve hoofd knooppunt | Alle behalve Kafka | Onderhoudt gegevens van fout opsporing voor MapReduce-taken.|
 | Apache livy | Actieve hoofd knooppunt | Spark | Maakt eenvoudige interactie met een Spark-cluster mogelijk via een REST-interface |
@@ -123,7 +123,7 @@ Het tweede Zookeeper-quorum is onafhankelijk van het eerste quorum, zodat de act
 
 HDInsight-clusters op basis van Apache Hadoop 2,4 of hoger ondersteunen ondersteuning voor GARENs met hoge Beschik baarheid. Er zijn twee ResourceManagers, RM1 en RM2, die respectievelijk worden uitgevoerd op hoofd knooppunt 0 en hoofd knooppunt 1. Net als NameNode is garen-Resource Manager ook geconfigureerd voor automatische failover. Er wordt automatisch een andere resource manager gekozen om actief te zijn wanneer de huidige actieve Resource Manager uitvalt of niet meer reageert.
 
-GARENs van de Resource Manager maakt gebruik van de Inge sloten *ActiveStandbyElector* als fout detector en Leader. In tegens telling tot HDFS NodeManager heeft garen-Resource Manager geen afzonderlijke ZKFC-daemon nodig. De actieve Resource Manager schrijft de statussen naar Apache Zookeeper.
+GARENs van de Resource Manager maakt gebruik van de Inge sloten *ActiveStandbyElector* als fout detector en Leader. In tegens telling tot HDFS NameNode heeft garen-Resource Manager geen afzonderlijke ZKFC-daemon nodig. De actieve Resource Manager schrijft de statussen naar Apache Zookeeper.
 
 De hoge Beschik baarheid van de garen-Resource Manager is onafhankelijk van NameNode en andere HDInsight HA-Services. De actieve Resource Manager kan niet worden uitgevoerd op de actieve hoofd knooppunt of de hoofd knooppunt waarop de actieve NameNode wordt uitgevoerd. Zie [hoge Beschik baarheid in de Resource Manager](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/ResourceManagerHA.html)voor meer informatie over de hoge beschik BAARHEID van garen-Resource Manager.
 

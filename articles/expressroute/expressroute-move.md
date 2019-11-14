@@ -1,5 +1,5 @@
 ---
-title: 'Circuits verplaatsen van klassiek naar Resource Manager - ExpressRoute: Azure | Microsoft Docs'
+title: 'ExpressRoute: circuits van het klassieke naar het Azure Resource Manager verplaatsen'
 description: Overzicht van het overbruggen van het klassieke implementatiemodel en het Resource Manager-implementatiemodel.
 services: expressroute
 author: ganesr
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
-ms.custom: seodec18
-ms.openlocfilehash: dfa2bbc735a79555da0421f64ca644adbd7a1701
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f232e1e8a1f7121b047a846fc2c614b48e757f76
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60363822"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076643"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute-circuits verplaatsen van het klassieke naar het Resource Manager-implementatiemodel
 Dit artikel bevat een overzicht van wat het betekent om een Azure ExpressRoute-circuit te verplaatsen van het klassieke naar het Azure Resource Manager-implementatiemodel.

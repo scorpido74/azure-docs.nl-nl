@@ -1,7 +1,7 @@
 ---
 title: Speech SDK logging-Speech Service
 titleSuffix: Azure Cognitive Services
-description: Schakel logboek registratie in de Speech SDK in.
+description: Meer informatie over het inschakelen van logboek registratie in de speechC++SDK C#(,, Python, objectief-C, Java).
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 31ff21e33860f75d91d01e80e3ee77bd7192f780
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 58f6c97ac819947f84735bc0bc4c125b43db58dc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559485"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075801"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Logboek registratie inschakelen in de Speech SDK
 
-Logboek registratie in bestand is een optionele functie voor de spraak-SDK. Tijdens het vastleggen van de ontwikkeling biedt aanvullende informatie en diagnostische gegevens van de kern onderdelen van de Speech SDK. U kunt deze inschakelen door de eigenschap `Speech_LogFilename` in te stellen voor een spraak configuratie object op de locatie en de naam van het logboek bestand. Logboek registratie wordt globaal geactiveerd zodra een herkenner is gemaakt op basis van die configuratie en kan later niet worden uitgeschakeld. U kunt de naam van een logboek bestand niet wijzigen tijdens een actieve logboek registratie sessie.
+Logboek registratie in bestand is een optionele functie voor de spraak-SDK. Tijdens het vastleggen van de ontwikkeling biedt aanvullende informatie en diagnostische gegevens van de kern onderdelen van de Speech SDK. U kunt deze inschakelen door de eigenschap `Speech_LogFilename` in te stellen op een spraak configuratie object op de locatie en naam van het logboek bestand. Logboek registratie wordt globaal geactiveerd zodra een herkenner is gemaakt op basis van die configuratie en kan later niet worden uitgeschakeld. U kunt de naam van een logboek bestand niet wijzigen tijdens een actieve logboek registratie sessie.
 
 > [!NOTE]
 > Logboek registratie is beschikbaar sinds Speech SDK versie 1.4.0 in alle ondersteunde spraak SDK-programmeer talen, met uitzonde ring van Java script.
 
 ## <a name="sample"></a>Voorbeeld
 
-De naam van het logboek bestand is opgegeven voor een configuratie object. Als voor `SpeechConfig` beeld wordt aangenomen dat u een instantie hebt gemaakt met de naam `config`:
+De naam van het logboek bestand is opgegeven voor een configuratie object. Als u de `SpeechConfig` als voor beeld neemt, wordt ervan uitgegaan dat u een instantie hebt gemaakt met de naam `config`:
 
 ```csharp
 config.SetProperty(PropertyId.Speech_LogFilename, "LogfilePathAndName");
@@ -51,13 +51,13 @@ config.set_property(speechsdk.PropertyId.Speech_LogFilename, "LogfilePathAndName
 U kunt een herkenner maken op basis van het configuratie object. Hiermee wordt logboek registratie ingeschakeld voor alle kenmerken.
 
 > [!NOTE]
-> Als u een `SpeechSynthesizer` van het configuratie object maakt, wordt logboek registratie niet ingeschakeld. Als logboek registratie is ingeschakeld, ontvangt u ook diagnostische gegevens van de `SpeechSynthesizer`.
+> Als u een `SpeechSynthesizer` maakt op basis van het configuratie object, wordt logboek registratie niet ingeschakeld. Als logboek registratie is ingeschakeld, ontvangt u ook diagnostische gegevens van de `SpeechSynthesizer`.
 
 ## <a name="create-a-log-file-on-different-platforms"></a>Een logboek bestand maken op verschillende platformen
 
 Voor Windows of Linux kan het logboek bestand zich in elk pad bevinden waarvoor de gebruiker schrijf machtigingen heeft. Schrijf machtigingen voor bestandssysteem locaties in andere besturings systemen kunnen standaard worden beperkt of beperkt.
 
-### <a name="universal-windows-platform-uwp"></a>Universeel Windows-platform (UWP)
+### <a name="universal-windows-platform-uwp"></a>UWP (Universal Windows Platform)
 
 UWP-toepassingen moeten logboek bestanden op een van de toepassings gegevens locaties (lokaal, roaming of tijdelijk) worden geplaatst. Een logboek bestand kan worden gemaakt in de map van de lokale toepassing:
 
@@ -79,9 +79,9 @@ File logFile = new File(dir, "logfile.txt");
 config.setProperty(PropertyId.Speech_LogFilename, logFile.getAbsolutePath());
 ```
 
-Met de bovenstaande code wordt een logboek bestand opgeslagen in de externe opslag in de hoofdmap van een toepassingsspecifiek Directory. Een gebruiker heeft toegang tot het bestand met de bestands beheerder (meestal `Android/data/ApplicationName/logfile.txt`in). Het bestand wordt verwijderd wanneer de installatie van de toepassing ongedaan wordt gemaakt.
+Met de bovenstaande code wordt een logboek bestand opgeslagen in de externe opslag in de hoofdmap van een toepassingsspecifiek Directory. Een gebruiker heeft toegang tot het bestand met bestands beheer (meestal in `Android/data/ApplicationName/logfile.txt`). Het bestand wordt verwijderd wanneer de installatie van de toepassing ongedaan wordt gemaakt.
 
-U moet ook een machtiging `WRITE_EXTERNAL_STORAGE` aanvragen in het manifest bestand:
+U moet ook `WRITE_EXTERNAL_STORAGE`-machtiging aanvragen in het manifest bestand:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="...">
@@ -104,7 +104,7 @@ NSString *filePath = [
 [speechConfig setPropertyTo:filePath byId:SPXSpeechLogFilename];
 ```
 
-Als u toegang wilt krijgen tot een gemaakt bestand, voegt u `Info.plist` de onderstaande eigenschappen toe aan de eigenschappen lijst van de toepassing:
+Als u toegang wilt krijgen tot een gemaakt bestand, voegt u de onderstaande eigenschappen toe aan de eigenschappen lijst van de `Info.plist` van de toepassing:
 
 ```xml
 <key>UIFileSharingEnabled</key>
