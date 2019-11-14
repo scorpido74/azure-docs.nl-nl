@@ -1,5 +1,5 @@
 ---
-title: Community tools-klassieke resources verplaatsen naar Azure Resource Manager | Microsoft Docs
+title: Community tools-klassieke resources naar Azure Resource Manager verplaatsen
 description: In dit artikel worden de hulpprogram ma's die door de community zijn verschaft, gecatalogiseerd voor het migreren van IaaS-resources van klassiek naar het implementatie model van Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 2b5d218812878db6fb110c043afffd2f9a2d344d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a4a7ed6d57e72deb7f49895935e522e65e18f7d9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102663"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033319"
 ---
 # <a name="community-tools-to-migrate-iaas-resources-from-classic-to-azure-resource-manager"></a>Community-programma’s voor de migratie van IaaS-resources van klassiek naar Azure Resource Manager
 In dit artikel worden de hulpprogram ma's die door de community zijn verschaft, gecatalogiseerd om hulp te bieden bij de migratie van IaaS-resources van klassiek naar het Azure Resource Manager-implementatie model.
@@ -41,7 +41,7 @@ Dit is een verzameling hulpprogram ma's die zijn gemaakt als onderdeel van onder
 [Koppeling naar de documentatie van het hulp programma](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
 ## <a name="migaz"></a>migAz
-migAz is een extra optie voor het migreren van een volledige set klassieke IaaS-resources naar Azure Resource Manager IaaS-resources. De migratie kan plaatsvinden binnen hetzelfde abonnement of tussen verschillende abonnementen en abonnements typen (bijvoorbeeld: CSP-abonnementen).
+migAz is een extra optie voor het migreren van een volledige set klassieke IaaS-resources naar Azure Resource Manager IaaS-resources. De migratie kan plaatsvinden binnen hetzelfde abonnement of tussen verschillende abonnementen en abonnements typen (bijvoorbeeld CSP-abonnementen).
 
 [Koppeling naar de documentatie van het hulp programma](https://github.com/Azure/migAz)
 

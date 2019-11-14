@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld van Azure CLI-script - Een virtuele machine maken door een beheerde schijf te koppelen als besturingssysteemschijf | Microsoft Docs
+title: Voorbeeld van Azure CLI-script - Een virtuele machine maken door een beheerde schijf te koppelen als besturingssysteemschijf
 description: Voorbeeld van Azure CLI-script - Een virtuele machine maken door een beheerde schijf te koppelen als besturingssysteemschijf
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 3ec3d152864ab8caf9f0c68966b6d4f8fd9e64dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05263df1327eff49d0c9ec84316447ba563695ca
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301913"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039162"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>Een virtuele machine maken met behulp van een bestaande beheerde besturingssysteemschijf met CLI
 
@@ -56,6 +56,6 @@ Dit script gebruikt de volgende opdrachten voor het opvragen van de eigenschappe
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Hiermee maakt u een virtuele machine die gebruikmaakt van een beheerde besturingssysteemschijf. |
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 U kunt extra CLI-scriptvoorbeelden voor virtuele machines vinden in de [Azure-documentatie voor Linux-VM's](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

@@ -8,16 +8,23 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 2422b16eb89ef6f1a6a1eb703d88f0ff2b76422e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 27c06656d95c5165b33b6056a3cf3b554f0e5469
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514731"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034118"
 ---
 # <a name="azcopy-jobs"></a>azcopy jobs
 
 Subopdrachten met betrekking tot het beheren van taken.
+
+## <a name="related-conceptual-articles"></a>Gerelateerde conceptuele artikelen
+
+- [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
+- [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
+- [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
+- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Voorbeelden
 

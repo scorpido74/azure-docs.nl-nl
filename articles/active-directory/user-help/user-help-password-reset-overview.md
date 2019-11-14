@@ -1,5 +1,5 @@
 ---
-title: Overzicht van het wacht woord voor uw eigen werk of school opnieuw instellen-Azure Active Directory | Microsoft Docs
+title: Overzicht van het wacht woord voor uw eigen werk of school opnieuw instellen-Azure AD
 description: Een lijst met koppelingen naar artikelen over het registreren en opnieuw instellen van uw werk-of school wachtwoord zonder beheerders assistentie.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15fbc526822f3b6659bc190ee67c6c17ff96b067
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 57d14ac3cbce6880604ad44b6aa71998ed061c10
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160602"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028496"
 ---
 # <a name="reset-your-own-work-or-school-password-overview"></a>Overzicht van het wacht woord voor uw eigen werk of school opnieuw instellen
 
@@ -34,5 +34,5 @@ Raadpleeg de volgende artikelen voor gedetailleerde informatie en instructies ov
 
 |Artikel |Beschrijving |
 |------|------------|
-| [Registreren voor Self-service voor wachtwoord herstel](active-directory-passwords-reset-register.md) ] Instructies voor het verifiëren van uw verificatie methoden en registreren voor selfservice voor het opnieuw instellen van wacht woorden, zodat u uw eigen wacht woord opnieuw kunt instellen.|
-| [Uw wacht woord opnieuw instellen](active-directory-passwords-update-your-own-password.md) ] Instructies voor het opnieuw instellen of ontgrendelen van uw wacht woord voor een werk-of school account.|
+| [Registreren voor de selfservice voor wachtwoordherstel](active-directory-passwords-reset-register.md) | Instructies voor het verifiëren van uw verificatie methoden en registreren voor selfservice voor het opnieuw instellen van wacht woorden, zodat u uw eigen wacht woord opnieuw kunt instellen. |
+| [Uw wachtwoord opnieuw instellen](active-directory-passwords-update-your-own-password.md) | Instructies voor het opnieuw instellen of ontgrendelen van uw wacht woord voor een werk-of school account. |

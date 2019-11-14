@@ -1,5 +1,5 @@
 ---
-title: Een gegevens schijf koppelen aan een virtuele Windows-machine in azure met behulp van Power shell | Microsoft Docs
+title: Een gegevens schijf koppelen aan een virtuele Windows-machine in azure met behulp van Power shell
 description: Een nieuwe of bestaande gegevens schijf koppelen aan een virtuele Windows-machine met behulp van Power shell met het Resource Manager-implementatie model.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: ebdaa9aafa884a266ef8cf8d75d1d5fb326c690e
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ce995a84d2290845e83416caf9c8b0004242eed4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300648"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033692"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Een gegevens schijf koppelen aan een virtuele Windows-machine met Power shell
 
@@ -20,7 +20,7 @@ Dit artikel laat u zien hoe u met behulp van Power shell zowel nieuwe als bestaa
 
 Lees eerst de volgende tips:
 
-* De grootte van de virtuele machine bepaalt hoeveel gegevens schijven u kunt bijvoegen. Zie [grootten voor virtuele machines](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie.
+* De grootte van de virtuele machine bepaalt hoeveel gegevens schijven u kunt bijvoegen. Zie voor meer informatie, [grootten voor virtuele machines](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Als u Premium Ssd's wilt gebruiken, moet u een [VM-type met Premium-opslag capaciteit](sizes-memory.md)hebben, zoals de virtuele machine van de DS-serie of GS-serie.
 
 In dit artikel wordt Power shell gebruikt in de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.

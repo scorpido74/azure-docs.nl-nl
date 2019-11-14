@@ -1,5 +1,5 @@
 ---
-title: Vm's migreren naar Resource Manager met behulp van Azure CLI | Microsoft Docs
+title: Vm's migreren naar Resource Manager met behulp van Azure CLI
 description: In dit artikel wordt de door het platform ondersteunde migratie van resources van klassiek naar Azure Resource Manager behandeld met behulp van Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 7af101b036e8e40a14ad5d9931cc897cb1758ea0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 69107052d84f28dfd08f59dec40ea66eca79ecaa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082787"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035780"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>IaaS-resources van klassiek naar Azure Resource Manager migreren met behulp van Azure CLI
 In deze stappen ziet u hoe u de opdracht regel interface (CLI) van Azure kunt gebruiken om IaaS-resources (Infrastructure as a Service) te migreren van het klassieke implementatie model naar het Azure Resource Manager-implementatie model. Voor het artikel is de [klassieke Azure-cli](../../cli-install-nodejs.md)vereist. Omdat Azure CLI alleen van toepassing is op Azure Resource Manager-resources, kan deze niet worden gebruikt voor deze migratie.
@@ -34,7 +34,7 @@ Hier volgt een stroom diagram om de volg orde te bepalen waarin de stappen moete
 
 ![Schermafbeelding van de migratiestappen](../windows/media/migration-classic-resource-manager/migration-flow.png)
 
-## <a name="step-1-prepare-for-migration"></a>Stap 1: Voorbereiden op migratie
+## <a name="step-1-prepare-for-migration"></a>Stap 1: voorbereiden op migratie
 Hier volgen enkele aanbevolen procedures voor het evalueren van de migratie van IaaS-resources van klassiek naar Resource Manager:
 
 * Lees de [lijst met niet-ondersteunde configuraties of functies](../windows/migration-classic-resource-manager-overview.md). Als u virtuele machines hebt die niet-ondersteunde configuraties of functies gebruiken, raden wij u aan te wachten tot de ondersteuning van de functie/configuratie wordt aangekondigd. U kunt deze functie ook verwijderen of van die configuratie verplaatsen om migratie mogelijk te maken als deze aan uw behoeften voldoet.
@@ -47,7 +47,7 @@ Hier volgen enkele aanbevolen procedures voor het evalueren van de migratie van 
 > 
 > 
 
-## <a name="step-2-set-your-subscription-and-register-the-provider"></a>Stap 2: Uw abonnement instellen en de provider registreren
+## <a name="step-2-set-your-subscription-and-register-the-provider"></a>Stap 2: uw abonnement instellen en de provider registreren
 Voor migratie scenario's moet u uw omgeving instellen voor klassieke en Resource Manager. [Installeer Azure cli](../../cli-install-nodejs.md) en [Selecteer uw abonnement](/cli/azure/authenticate-azure-cli).
 
 Meld u aan bij uw account.
@@ -61,7 +61,7 @@ Selecteer het Azure-abonnement met behulp van de volgende opdracht.
 > [!NOTE]
 > Registratie is een eenmalige stap, maar deze moet eenmaal worden uitgevoerd voordat u de migratie uitvoert. Zonder registratie wordt het volgende fout bericht weer gegeven 
 > 
-> *Onjuiste aanvraag Het abonnement is niet geregistreerd voor migratie.* 
+> *Onjuiste aanvraag: het abonnement is niet geregistreerd voor migratie.* 
 > 
 > 
 
@@ -73,12 +73,12 @@ Wacht vijf minuten totdat de registratie is voltooid. U kunt de status van de go
 
     azure provider show Microsoft.ClassicInfrastructureMigrate
 
-Schakel de CLI nu over `asm` naar de modus.
+Schakel de CLI nu over naar de `asm` modus.
 
     azure config mode asm
 
 ## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>Stap 3: Zorg ervoor dat u voldoende Azure Resource Manager virtuele-Vcpu's in de Azure-regio van uw huidige implementatie of VNET hebt
-Voor deze stap moet u overschakelen naar `arm` de modus. Doe dit met de volgende opdracht.
+Voor deze stap moet u overschakelen naar de `arm` modus. Doe dit met de volgende opdracht.
 
 ```
 azure config mode arm
@@ -90,12 +90,12 @@ U kunt de volgende CLI-opdracht gebruiken om het huidige aantal Vcpu's te contro
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 ```
 
-Zodra u klaar bent met het controleren van deze stap, kunt u terugschakelen naar `asm` de modus.
+Nadat u deze stap hebt gecontroleerd, kunt u teruggaan naar de `asm` modus.
 
     azure config mode asm
 
 
-## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>Stap 4: Optie 1: virtuele machines in een Cloud service migreren
+## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>Stap 4: optie 1-virtuele machines in een Cloud service migreren
 Bekijk de lijst met Cloud Services met behulp van de volgende opdracht en kies vervolgens de Cloud service die u wilt migreren. Als de virtuele machines in de Cloud service zich in een virtueel netwerk bevinden of als ze beschikken over web-en werk rollen, wordt er een fout bericht weer gegeven.
 
     azure service list
@@ -120,7 +120,7 @@ Als u wilt migreren naar een bestaand virtueel netwerk in het Resource Manager-i
 
     azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
 
-Nadat de voor bereiding is voltooid, kunt u de uitgebreide uitvoer bekijken om de migratie status van de vm's op te halen en ervoor te zorgen dat deze `Prepared` zich in de staat bevinden.
+Nadat de voor bereiding is voltooid, kunt u de uitgebreide uitvoer bekijken om de migratie status van de Vm's op te halen en ervoor te zorgen dat deze zich in de `Prepared` status bevinden.
 
     azure vm show <vmName> -vv
 
@@ -134,7 +134,7 @@ Als de voor bereide configuratie goed lijkt, kunt u de resources door lopen en d
 
 
 
-## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>Stap 4: Optie 2: virtuele machines in een virtueel netwerk migreren
+## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>Stap 4: optie 2-virtuele machines in een virtueel netwerk migreren
 Kies het virtuele netwerk dat u wilt migreren. Houd er rekening mee dat als het virtuele netwerk web-of werk rollen of Vm's met niet-ondersteunde configuraties bevat, een validatie fout bericht wordt weer gegeven.
 
 Gebruik de volgende opdracht om alle virtuele netwerken in het abonnement op te halen.
@@ -165,7 +165,7 @@ Als de voor bereide configuratie goed lijkt, kunt u de resources door lopen en d
 
     azure network vnet commit-migration <virtualNetworkName>
 
-## <a name="step-5-migrate-a-storage-account"></a>Stap 5: Een opslag account migreren
+## <a name="step-5-migrate-a-storage-account"></a>Stap 5: een opslag account migreren
 Wanneer u klaar bent met het migreren van de virtuele machines, raden we u aan om het opslag account te migreren.
 
 Bereid het opslag account voor op de migratie met behulp van de volgende opdracht

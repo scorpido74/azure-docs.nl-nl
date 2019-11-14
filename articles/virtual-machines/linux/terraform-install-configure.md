@@ -1,5 +1,5 @@
 ---
-title: Terraform installeren en configureren om Azure-resources in te richten | Microsoft Docs
+title: Terraform installeren en configureren om Azure-resources in te richten
 description: Meer informatie over het installeren en configureren van terraform voor het maken van Azure-resources
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: cd3c8d7d862788f626356b4cfcdccccca36227b3
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: efba440448ac912b7656eeab017eef947ab25e95
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168731"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034690"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Terraform installeren en configureren om Azure-resources in te richten
  
@@ -35,7 +35,7 @@ Terraform wordt standaard geïnstalleerd in de [Cloud shell](/azure/terraform/te
 
 Als u terraform wilt installeren, [downloadt](https://www.terraform.io/downloads.html) u het juiste pakket voor uw besturings systeem naar een afzonderlijke installatiemap. De down load bevat één uitvoerbaar bestand, waarvoor u ook een globaal pad moet definiëren. Ga naar [deze webpagina](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux)voor instructies over het instellen van het pad in Linux en Mac. Ga naar [deze webpagina](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows)voor instructies over het instellen van het pad in Windows.
 
-Controleer de configuratie van het pad `terraform` met de opdracht. Er wordt een lijst met beschik bare terraform-opties weer gegeven, zoals in de volgende voorbeeld uitvoer:
+Controleer de configuratie van het pad met de `terraform` opdracht. Er wordt een lijst met beschik bare terraform-opties weer gegeven, zoals in de volgende voorbeeld uitvoer:
 
 ```console
 azureuser@Azure:~$ terraform
@@ -52,7 +52,7 @@ Als u meerdere Azure-abonnementen hebt, moet u eerst een query uitvoeren op uw a
 az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 ```
 
-Als u een geselecteerd abonnement wilt gebruiken, stelt u het abonnement voor deze sessie in met [AZ account set](/cli/azure/account#az-account-set). Stel de `SUBSCRIPTION_ID` omgevings variabele in op de waarde van het `id` geretourneerde veld van het abonnement dat u wilt gebruiken:
+Als u een geselecteerd abonnement wilt gebruiken, stelt u het abonnement voor deze sessie in met [AZ account set](/cli/azure/account#az-account-set). Stel de omgevings variabele `SUBSCRIPTION_ID` in om de waarde van het geretourneerde `id` veld van het abonnement dat u wilt gebruiken, op te slaan:
 
 ```azurecli-interactive
 az account set --subscription="${SUBSCRIPTION_ID}"
@@ -64,7 +64,7 @@ U kunt nu een service-principal maken voor gebruik met terraform. Gebruik [AZ AD
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
 ```
 
-Uw `appId`, `password`, ,`sp_name` en`tenant` worden geretourneerd. Noteer de `appId` en `password`.
+Uw `appId`, `password`, `sp_name`en `tenant` worden geretourneerd. Noteer de `appId` en `password`.
 
 ## <a name="configure-terraform-environment-variables"></a>Terraform-omgevings variabelen configureren
 
@@ -117,7 +117,7 @@ De uitvoer lijkt op die in het volgende voorbeeld:
 Terraform has been successfully initialized!
 ```
 
-U kunt een voor beeld bekijken van de acties die worden uitgevoerd door `terraform plan`het terraform-script met. Wanneer u klaar bent om de resource groep te maken, past u het terraform-plan als volgt toe:
+U kunt een voor beeld bekijken van de acties die worden uitgevoerd door het terraform-script met `terraform plan`. Wanneer u klaar bent om de resource groep te maken, past u het terraform-plan als volgt toe:
 
 ```bash
 terraform apply

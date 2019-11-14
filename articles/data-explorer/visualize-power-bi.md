@@ -1,20 +1,20 @@
 ---
-title: 'Zelfstudie: Visualiseer gegevens uit Azure Data Explorer in Power BI'
+title: 'Zelfstudie: gegevens visualiseren van Azure Data Explorer in Power BI'
 description: In deze zelfstudie leert u hoe u verbinding met Azure Data Explorer kunt maken in Power BI om uw gegevens te visualiseren.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 70a06b75db9ff49222c2de4aa78519b32d863478
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec1579792a6e247bf49946bb8609a626154fbd46
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60774835"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037359"
 ---
-# <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Zelfstudie: Visualiseer gegevens uit Azure Data Explorer in Power BI
+# <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Zelfstudie: gegevens visualiseren van Azure Data Explorer in Power BI
 
 Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. Power BI is een business analytics-oplossing waarmee u uw gegevens kunt visualiseren en de gegevens kunt delen in uw organisatie. In deze zelfstudie leert u hoe u visuele elementen kunt genereren in Azure Data Explorer. Vervolgens maakt u via Power BI verbinding met Azure Data Explorer, stelt u een rapport samen op basis van voorbeeldgegevens en publiceert u het rapport in de Power BI-service.
 
@@ -219,7 +219,7 @@ Als u het rapport dat u hebt gemaakt niet wilt houden, kunt u gewoon het bestand
 
 1. Schuif onder **Mijn werkruimte** omlaag naar **RAPPORTEN** en zoek **storm-events**.
 
-1. Selecteer het weglatingsteken (**. . .**) naast **storm-events** en selecteer vervolgens **VERWIJDEREN**.
+1. Selecteer het weglatingsteken ( **. . .** ) naast **storm-events** en selecteer vervolgens **VERWIJDEREN**.
 
     ![Rapport verwijderen](media/visualize-power-bi/remove-report.png)
 

@@ -1,6 +1,6 @@
 ---
-title: 'Een virtueel netwerk koppelen aan een circuit-ExpressRoute: Azure Portal | Microsoft Docs'
-description: Een VNet verbinden met een Azure ExpressRoute-Circuit. Procedures.
+title: 'ExpressRoute: een VNet koppelen aan een circuit: Azure Portal'
+description: Verbind een VNet met een Azure ExpressRoute-circuit. Procedures.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 6185540340bba4299eb9307432480c91d531779a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088906"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022194"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Een virtueel netwerk verbinden met een ExpressRoute-circuit met behulp van de portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
-> * [Azure-CLI](howto-linkvnet-cli.md)
+> * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video - Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (klassiek)](expressroute-howto-linkvnet-classic.md)
 > 
@@ -71,7 +71,7 @@ U kunt een ExpressRoute-circuit delen voor meerdere abonnementen. De afbeelding 
 
 - Elk van de kleinere clouds binnen de grote cloud wordt gebruikt voor abonnementen die deel uitmaken van verschillende afdelingen binnen een organisatie.
 - Elk van de afdelingen binnen de organisatie kan hun eigen abonnement gebruiken voor het implementeren van hun services, maar ze kunnen een enkel ExpressRoute-circuit terugverbinding maken met uw on-premises netwerk delen.
-- Eén afdeling (in dit voor beeld: IT) kan eigenaar zijn van het ExpressRoute-circuit. Andere abonnementen binnen de organisatie kunnen gebruiken voor de ExpressRoute-circuit en de machtigingen die zijn gekoppeld aan het circuit, met inbegrip van abonnementen die zijn gekoppeld aan andere Azure Active Directory-tenants en de Enterprise Agreement-inschrijvingen.
+- Één afdeling (in dit voorbeeld: IT) kunt eigenaar van het ExpressRoute-circuit. Andere abonnementen binnen de organisatie kunnen gebruiken voor de ExpressRoute-circuit en de machtigingen die zijn gekoppeld aan het circuit, met inbegrip van abonnementen die zijn gekoppeld aan andere Azure Active Directory-tenants en de Enterprise Agreement-inschrijvingen.
 
   > [!NOTE]
   > Connectiviteit en de bandbreedte kosten in rekening gebracht voor het toegewezen circuit wordt toegepast op de eigenaar van het ExpressRoute-circuit. Alle virtuele netwerken delen de dezelfde bandbreedte.
@@ -120,7 +120,7 @@ De gebruiker circuit moet de resource-ID en een autorisatiesleutel van de circui
 3. Zorg ervoor dat de **verbindingstype** is ingesteld op 'ExpressRoute'.
 4. Vul de details en klik vervolgens op **OK** op de pagina van de basisprincipes.
 
-   ![Grondbeginselen van pagina](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
+   ![De pagina Basisinformatie](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. In de **instellingen** pagina, selecteer de **gateway van virtueel netwerk** en controleer de **autorisatie inwisselen** selectievakje.
 6. Voer de **autorisatiesleutel** en de **URI van Peercircuit** en geef een naam op voor de verbinding. Klik op **OK**. De **URI van het peer circuit** is de resource-id van het ExpressRoute-circuit (dat u kunt vinden onder het instellingen venster Eigenschappen van het ExpressRoute-circuit).
 

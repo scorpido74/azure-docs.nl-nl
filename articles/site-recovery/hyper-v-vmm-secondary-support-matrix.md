@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 7711ebaaddccd68d4322c1d3ebdd049a57bc709b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 76b34e11bba00105792ac5163c5163184c185e09
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686162"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039624"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Ondersteunings matrix voor herstel na nood gevallen van virtuele Hyper-V-machines naar een secundaire site
 
@@ -22,7 +22,7 @@ In dit artikel wordt een overzicht gegeven van wat er wordt ondersteund wanneer 
 > U kunt alleen repliceren naar een secundaire site wanneer uw Hyper-V-hosts worden beheerd in VMM-Clouds.
 
 > [!WARNING]
-> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](scvmm-site-recovery-deprecation.md) te lezen voordat u doorgaat.
+> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](site-to-site-deprecation.md) te lezen voordat u doorgaat.
 
 
 ## <a name="host-servers"></a>Hostservers
@@ -58,7 +58,7 @@ Alleen Linux-machines met de volgende opslag kunnen worden gerepliceerd:
 --- | --- 
 Host-NIC-koppeling | Ja 
 Host-VLAN | Ja 
-Host-IPv4 | Ja 
+Host - IPv4 | Ja 
 Host-IPv6 | Nee 
 Gast-VM-NIC-koppeling | Nee
 Gast-VM-IPv4 | Ja

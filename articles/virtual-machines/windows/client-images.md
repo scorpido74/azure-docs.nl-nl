@@ -1,5 +1,5 @@
 ---
-title: Windows-client installatie kopieën in azure gebruiken | Microsoft Docs
+title: Windows-client installatie kopieën in azure gebruiken
 description: De voor delen van Visual Studio-abonnementen gebruiken om Windows 7, Windows 8 of Windows 10 in azure te implementeren voor dev/test-scenario's
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: dbb771351ee774a7fea33e5aaad3ae4d0c70f8b1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 812e6d251943d4418666f221ad8b5d2b6e501736
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079903"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039501"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-client gebruiken in azure voor ontwikkel-en test scenario's
 U kunt Windows 7, Windows 8 of Windows 10 Enter prise (x64) gebruiken in azure voor ontwikkel-en test scenario's met de juiste Visual Studio (voorheen MSDN)-abonnement. In dit artikel vindt u een overzicht van de vereisten voor het uitvoeren van Windows 7, Windows 8,1, Windows 10 Enter prise in Azure en het gebruik van de volgende Azure Gallery-installatie kopieën.
@@ -27,7 +27,7 @@ U kunt Windows 7, Windows 8 of Windows 10 Enter prise (x64) gebruiken in azure v
 
 > [!NOTE]
 > Zie voor een installatie kopie van Windows 10 Pro en Windows 10 Pro N in azure Gallery [hoe u Windows 10 op Azure implementeert met multi tenant-hosting rechten](windows-desktop-multitenant-hosting-deployment.md)
->![Pro Image Details van de Azure Portal](./media/client-images/windows-client-pro-images.png) 
+>![Pro Image-Details van de Azure Portal](./media/client-images/windows-client-pro-images.png) 
 >
 
 ## <a name="subscription-eligibility"></a>Abonnements geschiktheid
@@ -41,7 +41,7 @@ De volgende tabel bevat informatie over de aanbieding-Id's die in aanmerking kom
 | Naam van aanbieding | Nummer van de aanbieding | Beschik bare client installatie kopieën |
 |:--- |:---:|:---:|
 | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/) |0023P |Windows 10 |
-| [MPN-abonnees (Visual Studio Enter prise)](https://azure.microsoft.com/offers/ms-azr-0029p/) |0029P |Windows 10 |
+| [Visual Studio Enterprise (MPN)-abonnees](https://azure.microsoft.com/offers/ms-azr-0029p/) |0029P |Windows 10 |
 | [Visual Studio Professional-abonnees](https://azure.microsoft.com/offers/ms-azr-0059p/) |0059P |Windows 10 |
 | [Visual Studio test Professional-abonnees](https://azure.microsoft.com/offers/ms-azr-0060p/) |0060P |Windows 10 |
 | [Visual Studio Premium met MSDN (voor deel)](https://azure.microsoft.com/offers/ms-azr-0061p/) |0061P |Windows 10 |
@@ -56,7 +56,7 @@ Als u uw aanbiedings-ID niet weet, kunt u deze op een van de volgende twee manie
 
   ![Details van de aanbiedings-ID van de Azure Portal](./media/client-images/offer-id-azure-portal.png) 
 
-- U kunt ook op **facturering** klikken en vervolgens op uw abonnements-id klikken. De aanbiedings-ID wordt weer gegeven in het facturerings venster.
+- U kunt ook op **facturering** klikken en vervolgens op uw abonnements-id klikken. De aanbiedings-ID wordt weer gegeven in het *facturerings* venster.
 
 U kunt ook de aanbiedings-ID weer geven op het [tabblad abonnementen](https://account.windowsazure.com/Subscriptions) van de Azure-account portal:
 

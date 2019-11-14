@@ -1,5 +1,5 @@
 ---
-title: MySQL installeren op een OpenSUSE-VM in azure | Microsoft Docs
+title: MySQL installeren op een OpenSUSE-VM in azure
 description: Meer informatie over het installeren van MySQL op een virtuele OpenSUSE Linux-machine in Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 223a5a5b77ded9eb26a5cf3f0003bc9d393615db
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d5f2ef2d82cbcced6202ad2c09f23dd734d373b3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300853"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035584"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>MySQL op een a virtuele machine met OpenSUSE Linux installeren in Azure
 
@@ -36,7 +36,7 @@ Maak eerst een resource groep. In dit voor beeld heeft de resource groep de naam
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Maak de virtuele machine. In dit voor beeld heeft de virtuele machine de naam *myVM* en de VM-grootte *Standard_D2s_v3*, maar u moet de [VM-grootte](sizes.md) kiezen die het meest geschikt is voor uw werk belasting.
+Maak de virtuele machine. In dit voor beeld heeft de virtuele machine de naam *myVM* en is de VM-grootte *Standard_D2s_v3*, maar u moet de [VM-grootte](sizes.md) kiezen die het meest geschikt is voor uw werk belasting.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -102,7 +102,7 @@ sudo reboot
 
 ## <a name="mysql-password"></a>MySQL-wacht woord
 
-Na de installatie is het MySQL-hoofd wachtwoord standaard leeg. Voer het script **MySQL @ no__t-1secure @ no__t-2installation** uit om MySQL te beveiligen. Het script vraagt u om het MySQL-hoofd wachtwoord te wijzigen, anonieme gebruikers accounts te verwijderen, aanmelden bij externe hoofdmap uit te scha kelen, test databases te verwijderen en de tabel met bevoegdheden opnieuw te laden. 
+Na de installatie is het MySQL-hoofd wachtwoord standaard leeg. Voer de **mysql\_secure\_-installatie** script uit om MySQL te beveiligen. Het script vraagt u om het MySQL-hoofd wachtwoord te wijzigen, anonieme gebruikers accounts te verwijderen, aanmelden bij externe hoofdmap uit te scha kelen, test databases te verwijderen en de tabel met bevoegdheden opnieuw te laden. 
 
 Nadat de server opnieuw is opgestart, moet u opnieuw SSH naar de VM.
 

@@ -1,5 +1,5 @@
 ---
-title: Tijd synchronisatie voor virtuele Linux-machines in azure | Microsoft Docs
+title: Tijd synchronisatie voor virtuele Linux-machines in azure
 description: Tijd synchronisatie voor virtuele Linux-machines.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 7e23b71edd05154f3c19a097ebf92c690426c777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e5d68a31db3797f9919d044eed284d0d09052390
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100787"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034649"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Tijd synchronisatie voor virtuele Linux-machines in azure
 
@@ -35,7 +35,7 @@ Azure wordt ondersteund door een infra structuur waarop Windows Server 2016 word
 
 Nauw keurigheid van de klok van een computer wordt aangegeven hoe dicht de computer klok is tot de UTC-tijd (Coordinated Universal Time). UTC wordt gedefinieerd door een multi nationaal voor beeld van nauw keurige atomische klokken die in 300 jaar slechts voor één seconde kunnen worden uitgeschakeld. Maar voor het lezen van UTC is echter gespecialiseerde hardware vereist. Tijd servers worden in plaats daarvan gesynchroniseerd naar UTC en zijn toegankelijk vanaf andere computers om te voorzien in schaal baarheid en robuustheid. Elke computer beschikt over een time-synchronisatie service die weet op welke tijd servers moet worden gebruikt en controleert periodiek of de computer klok moet worden gecorrigeerd en de tijd indien nodig wordt aangepast. 
 
-Azure-hosts worden gesynchroniseerd met interne micro soft-tijd servers die hun tijd van micro soft-apparaten met stratum 1 innemen, met GPS-antennes. Virtuele machines in azure kunnen afhankelijk zijn van hun host om de nauw keurige tijd(hosttijd) op te geven voor de virtuele machine, of de VM kan rechtstreeks tijd ophalen van een tijd server of een combi natie van beide. 
+Azure-hosts worden gesynchroniseerd met interne micro soft-tijd servers die hun tijd van micro soft-apparaten met stratum 1 innemen, met GPS-antennes. Virtuele machines in azure kunnen afhankelijk zijn van hun host om de nauw keurige tijd (*hosttijd*) op te geven voor de virtuele machine, of de VM kan rechtstreeks tijd ophalen van een tijd server of een combi natie van beide. 
 
 Op zelfstandige hardware leest het Linux-besturings systeem alleen de hardware-klok van de host bij het opstarten. Daarna wordt de klok onderhouden met behulp van de interrupt-timer in de Linux-kernel. In deze configuratie wordt de klok na verloop van tijd overgeschakeld. In nieuwere Linux-distributies in azure kunnen Vm's de VMICTimeSync-provider gebruiken, opgenomen in de LIS (Linux Integration Services), om regel matig een query uit te lopen op klok updates van de host.
 
@@ -148,7 +148,7 @@ Als zowel de chrony-als de TimeSync-bronnen tegelijkertijd zijn ingeschakeld, ku
 
 ### <a name="systemd"></a>gesystemeerd 
 
-Op Ubuntu en SUSE-tijd synchronisatie wordt geconfigureerd [](https://www.freedesktop.org/wiki/Software/systemd/)met behulp van systemed. Zie [tijd synchronisatie](https://help.ubuntu.com/lts/serverguide/NTP.html)voor meer informatie over Ubuntu. Zie voor meer informatie over SUSE sectie 4.5.8 in [SuSE Linux Enterprise Server 12 SP3-Release opmerkingen](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
+Op Ubuntu en SUSE-tijd synchronisatie wordt geconfigureerd met behulp van [systemed](https://www.freedesktop.org/wiki/Software/systemd/). Zie [tijd synchronisatie](https://help.ubuntu.com/lts/serverguide/NTP.html)voor meer informatie over Ubuntu. Zie voor meer informatie over SUSE sectie 4.5.8 in [SuSE Linux Enterprise Server 12 SP3-Release opmerkingen](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: Planning voor de migratie van IaaS-resources van klassiek naar Azure Resource Manager | Microsoft Docs
+title: Planning voor de migratie van IaaS-resources van klassiek naar Azure Resource Manager
 description: Planning voor de migratie van IaaS-resources van klassiek naar Azure Resource Manager
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 840d7b9534124a4fcc93962e8329dc6ce2bdf1a4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2c0f4924c41b36c306d4e6b9286105662744c4da
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749341"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033226"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planning voor de migratie van IaaS-resources van klassiek naar Azure Resource Manager
 Hoewel Azure Resource Manager veel fantastische functies biedt, is het van essentieel belang om uw migratie traject te plannen om ervoor te zorgen dat alles goed gaat. Bij het plannen van de tijd zorgt u ervoor dat er geen problemen optreden tijdens het uitvoeren van migratie activiteiten.
@@ -125,7 +125,7 @@ De volgende problemen zijn in veel van de grotere migraties ontdekt. Dit is geen
   - Load balancers
   - Openbare IP-adressen
   - Statische open bare Ip's
-  - Cores
+  - Kerngeheugens
   - Netwerkbeveiligingsgroepen
   - Routetabellen
 

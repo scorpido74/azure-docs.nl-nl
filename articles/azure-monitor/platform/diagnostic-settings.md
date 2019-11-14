@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: c1b7f81c62217d9e113f3293a8f351d908a6a576
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b90e5ccf38e95d33c4b5b6f3b8da0e91a4facb5a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887270"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023746"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure
 [Platform logboeken](resource-logs-overview.md) in azure bieden gedetailleerde informatie over diagnostische gegevens en controle voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. In dit artikel vindt u informatie over het maken en configureren van diagnostische instellingen voor het verzamelen van platform logboeken op verschillende locaties.
@@ -42,7 +42,8 @@ Platform logboeken kunnen worden verzonden naar de doelen in de volgende tabel. 
 | [Azure Storage-account](resource-logs-collect-storage.md) | Het archiveren van logboeken naar een Azure Storage-account is handig voor controle, statische analyses of back-ups. |
 
 
-
+> [!IMPORTANT]
+> Azure Data Lake Storage Gen2-accounts worden momenteel niet ondersteund als doel voor Diagnostische instellingen, zelfs als ze kunnen worden weer gegeven als een geldige optie in de Azure Portal.
 
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Diagnostische instellingen maken in Azure Portal
 U kunt Diagnostische instellingen configureren in de Azure Portal in het menu Azure Monitor of in het menu voor de resource.
@@ -55,13 +56,13 @@ U kunt Diagnostische instellingen configureren in de Azure Portal in het menu Az
 
     ![Diagnostische instellingen](media/diagnostic-settings/menu-resource.png)
 
-2. Als er geen instellingen bestaan op de resource die u hebt geselecteerd, wordt u gevraagd een instelling te maken. Klik op **Diagnostische gegevens inschakelen**.
+2. Als er geen instellingen zijn op de resource hebt u geselecteerd, wordt u gevraagd om een instelling te maken. Klik op **Diagnostische gegevens inschakelen**.
 
-   ![Diagnostische instelling toevoegen-geen bestaande instellingen](media/diagnostic-settings/add-setting.png)
+   ![Diagnostische instelling - er zijn geen bestaande instellingen toevoegen](media/diagnostic-settings/add-setting.png)
 
    Als er bestaande instellingen zijn voor de resource, ziet u een lijst met instellingen die al zijn geconfigureerd. Klik op **Diagnostische instelling toevoegen** om een nieuwe instelling of **Bewerk instelling** toe te voegen die u kunt bewerken. Elke instelling kan niet meer dan één van de doel typen hebben.
 
-   ![Diagnostische instelling toevoegen-bestaande instellingen](media/diagnostic-settings/edit-setting.png)
+   ![Diagnostische instelling - bestaande instellingen toevoegen](media/diagnostic-settings/edit-setting.png)
 
 3. Geef een naam op voor uw instelling als deze nog niet aanwezig is.
 4. Schakel het selectie vakje voor elke bestemming in om de logboeken te verzenden. Klik op **configureren** om de instellingen op te geven, zoals wordt beschreven in de volgende tabel.
@@ -72,9 +73,9 @@ U kunt Diagnostische instellingen configureren in de Azure Portal in het menu Az
     | Storage-account | De naam van het opslag account. |
     | Event hub-naamruimte | De naam ruimte waar de Event Hub wordt gemaakt (als dit uw eerste keer is dat streaming-logboeken zijn) of gestreamd naar (als er al resources zijn die de logboek categorie naar deze naam ruimte streamen).
     | Naam van Event Hub | Geef eventueel een Event Hub naam op voor het verzenden van alle gegevens in de instelling. Als u geen naam opgeeft, wordt er een Event Hub voor elke logboek categorie gemaakt. Als u meerdere categorieën verzendt, wilt u mogelijk een naam opgeven om het aantal gemaakte Event hubs te beperken. Zie [Azure Event hubs quota's en limieten](../../event-hubs/event-hubs-quotas.md) voor meer informatie. |
-    | Naam van de Event hub-beleid | Hiermee worden de machtigingen gedefinieerd die het streaming-mechanisme heeft. |
+    | De naam van een Event hub-beleid | Hiermee worden de machtigingen gedefinieerd die het streaming-mechanisme heeft. |
 
-    ![Diagnostische instelling toevoegen-bestaande instellingen](media/diagnostic-settings/setting-details.png)
+    ![Diagnostische instelling - bestaande instellingen toevoegen](media/diagnostic-settings/setting-details.png)
 
 5. Schakel het selectie vakje in voor elk van de gegevens categorieën die u naar de opgegeven doelen wilt verzenden. Als u de optie voor het **archiveren naar een opslag account**hebt geselecteerd, moet u ook de [Bewaar periode](resource-logs-collect-storage.md#data-retention)opgeven.
 

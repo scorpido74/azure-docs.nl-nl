@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Een virtuele Linux-machine met cloud-init aanpassen in Azure | Microsoft Docs
+title: Zelf studie-een virtuele Linux-machine aanpassen met Cloud-init in azure
 description: In deze zelf studie leert u hoe u Cloud-init en Key Vault kunt gebruiken om Linux-Vm's aan te passen wanneer ze voor het eerst in Azure worden opgestart
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8bc396611f2e6f611de5a41de9525ba71287b363
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 27c7e32f081003ac236c6d1405eb3512f6c4433c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595111"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034643"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Zelfstudie - Cloud-init gebruiken voor het aanpassen van een virtuele Linux-machine in Azure bij de eerste keer dat die wordt opgestart
 
@@ -42,7 +42,7 @@ Cloud-init werkt ook in distributies. U gebruikt bijvoorbeeld niet **apt-get ins
 
 Samen met onze partners willen we cloud-init opnemen en werkend krijgen in de installatiekopieën die zij aan Azure leveren. De volgende tabel geeft een overzicht van de huidige beschikbaarheid van cloud-init op Azure-platforminstallatiekopieën:
 
-| Uitgever | Aanbieding | SKU | Version | Cloud-init gereed |
+| Uitgever | Aanbieding | SKU | Versie | cloud-init gereed |
 |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |18.04-LTS |nieuwste |ja | 
 |Canonical |UbuntuServer |16.04-LTS |nieuwste |ja | 
@@ -130,7 +130,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ```
 
 ## <a name="test-web-app"></a>Web-app testen
-U kunt nu een webbrowser openen en http invoeren *: \/ \/ \<publicIpAddress >* in de adres balk. Geef uw eigen openbare IP-adres op uit het creatieproces van de virtuele machine proces. De Node.js-app wordt weergegeven zoals in het volgende voorbeeld:
+U kunt nu een webbrowser openen en http invoeren *:\/\/\<publicIpAddress >* in de adres balk. Geef uw eigen openbare IP-adres op uit het creatieproces van de virtuele machine proces. De Node.js-app wordt weergegeven zoals in het volgende voorbeeld:
 
 ![Actieve NGINX-site weergeven](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -261,7 +261,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>De beveiligde web-app testen
-U kunt nu een webbrowser openen en https invoeren *: \/ \/ \<publicIpAddress >* in de adres balk. Geef uw eigen openbare IP-adres op zoals weergegeven in de uitvoer tijdens het maken van de vorige VM. Als u een zelfondertekend certificaat gebruikt, aanvaardt u de beveiligingswaarschuwing:
+U kunt nu een webbrowser openen en https invoeren *:\/\/\<publicIpAddress >* in de adres balk. Geef uw eigen openbare IP-adres op zoals weergegeven in de uitvoer tijdens het maken van de vorige VM. Als u een zelfondertekend certificaat gebruikt, aanvaardt u de beveiligingswaarschuwing:
 
 ![Beveiligingswaarschuwing voor web browser accepteren](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

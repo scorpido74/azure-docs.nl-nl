@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: virtuele Linux-machines bewaken in azure | Microsoft Docs'
+title: 'Zelf studie: virtuele Linux-machines bewaken in azure'
 description: In deze zelf studie leert u hoe u de prestatie-en gedetecteerde toepassings onderdelen kunt bewaken die op uw virtuele Linux-machines worden uitgevoerd.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 9c6458eea2b1352e7d13ea6691eac4498182ecd3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: eb3f73f3ceb27bec05d4e2e88877ea398de7cdf5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "71680076"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034372"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Zelf studie: een virtuele Linux-machine bewaken in azure
 
@@ -129,13 +129,13 @@ Als u de bewaking van uw Azure-VM met Azure Monitor voor VM's wilt inschakelen:
 
 1. Klik in Azure Portal op **Resourcegroepen**, selecteer **myResourceGroupMonitor** en selecteer vervolgens **myVM** in de lijst met resources.
 
-2. Selecteer op de pagina VM, in de sectie **bewaking** , de optie **inzichten (preview)** .
+2. Op de pagina virtuele machine in de **bewaking** sectie, selecteer **inzichten (preview)** .
 
-3. Selecteer **nu proberen**op de pagina **inzichten (preview)** .
+3. Op de **inzichten (preview)** weergeeft, schakelt **Probeer nu**.
 
-    ![Azure Monitor voor VM's inschakelen voor een VM](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Azure Monitor voor virtuele machines voor een virtuele machine inschakelen](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
 
-4. Als u een bestaande Log Analytics-werk ruimte in hetzelfde abonnement hebt, selecteert u op de pagina **Azure monitor Insights voorbereiden** .  
+4. Op de **Azure Monitor Insights voorbereiden** pagina, hebt u een bestaande Log Analytics-werkruimte in hetzelfde abonnement, selecteert u deze in de vervolgkeuzelijst.  
 
     De lijst preselecteert de standaard werkruimte en de locatie waar de virtuele machine in het abonnement is geïmplementeerd. 
 
@@ -144,7 +144,7 @@ Als u de bewaking van uw Azure-VM met Azure Monitor voor VM's wilt inschakelen:
 
 Nadat u bewaking hebt ingeschakeld, moet u mogelijk enkele minuten wachten voordat u de metrische gegevens voor prestaties voor de virtuele machine kunt weer geven.
 
-![Verwerking van de implementatie van Azure Monitor voor VM's-bewaking inschakelen](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Azure Monitor inschakelen voor virtuele machines verwerking van de implementatie controleren](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="view-vm-performance-metrics"></a>Metrische gegevens over de prestaties van de virtuele machine weer geven
 
@@ -152,7 +152,7 @@ Azure Monitor voor VM's bevat een reeks prestatie diagrammen die gericht zijn op
 
 1. Klik in Azure Portal op **Resourcegroepen**, selecteer **myResourceGroupMonitor** en selecteer vervolgens **myVM** in de lijst met resources.
 
-2. Selecteer op de pagina VM, in de sectie **bewaking** , de optie **inzichten (preview)** .
+2. Op de pagina virtuele machine in de **bewaking** sectie, selecteer **inzichten (preview)** .
 
 3. Selecteer het tabblad **prestaties** .
 

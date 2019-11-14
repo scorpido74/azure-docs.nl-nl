@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f782c5abe611086baae5d2ad71bc38516039a231
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 3470e27f64a672db0165b0132996db91a1447c08
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796059"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033970"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Toegang tot meerdere protocollen op Azure Data Lake Storage
 
@@ -49,6 +49,7 @@ De items die in deze tabel worden weer gegeven, worden na verloop van tijd gewij
 |---|---|
 |[Cool-Access-laag](storage-blob-storage-tiers.md)|Algemeen beschikbaar|
 |BLOB Sdk's |Algemeen beschikbaar|
+|BLOB REST Api's|Algemeen beschikbaar|
 |[PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Algemeen beschikbaar|
 |[CLI](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Algemeen beschikbaar|
 |[Diagnostische logboeken](../common/storage-analytics-logging.md)| Preview|

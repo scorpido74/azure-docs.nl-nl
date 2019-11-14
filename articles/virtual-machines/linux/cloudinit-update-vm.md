@@ -1,6 +1,6 @@
 ---
-title: Cloud-init gebruiken om te werken en -pakketten installeren op een Linux-VM in Azure | Microsoft Docs
-description: Hoe u cloud-init gebruiken om te werken en pakketten worden geïnstalleerd in een Linux-VM tijdens het maken van met de Azure CLI
+title: Cloud-init gebruiken voor het bijwerken en installeren van pakketten in een virtuele Linux-machine in azure
+description: Cloud-init gebruiken voor het bijwerken en installeren van pakketten in een Linux-VM tijdens het maken met de Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,20 +14,20 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: rclaus
-ms.openlocfilehash: cff3ce47d7421b70a49161dddadd05b3f3878a04
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ddea412598e02be7d71d5a3efafa444a5dc19e8c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668170"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036732"
 ---
-# <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Cloud-init gebruiken om te werken en te installeren pakketten in een Linux-VM in Azure
-In dit artikel leest u hoe u [cloud-init](https://cloudinit.readthedocs.io) om bij te werken van pakketten op een Linux virtuele machine (VM) of virtuele-machineschaalset ingesteld (VMSS) bij het inrichten van de tijd in Azure. Deze cloud-init-scripts uitvoeren op de eerste keer opstarten nadat de resources zijn ingericht met Azure. Zie voor meer informatie over hoe cloud-init systeemeigen in Azure en de ondersteunde Linux-distributies werkt [cloud-init-overzicht](using-cloud-init.md)
+# <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Cloud-init gebruiken voor het bijwerken en installeren van pakketten in een virtuele Linux-machine in azure
+Dit artikel laat u zien hoe u [Cloud-init](https://cloudinit.readthedocs.io) kunt gebruiken om pakketten bij te werken op een virtuele Linux-machine (VM) of virtuele-machine schaal sets (VMSS) bij het inrichten van de tijd in Azure. Deze Cloud-init-scripts worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure. Zie [Cloud-init Overview](using-cloud-init.md) (Engelstalig) voor meer informatie over hoe Cloud-init standaard werkt in Azure en de ondersteunde Linux-distributies
 
-## <a name="update-a-vm-with-cloud-init"></a>Bijwerken van een virtuele machine met cloud-init
-Uit veiligheidsoverwegingen kunt u een virtuele machine om toe te passen van de meest recente updates op de eerste keer opstarten configureren. Als u cloud-init werkt met verschillende Linux-distributies, is het niet nodig om op te geven `apt` of `yum` voor de package manager. In plaats daarvan, definieert u `package_upgrade` en laat het cloud-init-proces bepalen van het juiste mechanisme voor de distro die in gebruik. Deze werkstroom kunt u de dezelfde cloud-init-scripts gebruiken voor distributies.
+## <a name="update-a-vm-with-cloud-init"></a>Een virtuele machine bijwerken met Cloud-init
+Uit veiligheids overwegingen kunt u een virtuele machine configureren om de meest recente updates bij de eerste keer opstarten toe te passen. Als Cloud-init werkt in verschillende Linux-distributies, hoeft u geen `apt` of `yum` op te geven voor de package manager. In plaats daarvan definieert u `package_upgrade` en laat het Cloud-init-proces het juiste mechanisme bepalen voor de distributie die in gebruik zijn. Met deze werk stroom kunt u dezelfde Cloud-init-scripts gebruiken voor distributies.
 
-Als u wilt het upgradeproces in actie zien, maakt u een bestand in uw huidige shell met de naam *cloud_init_upgrade.txt* en plak de volgende configuratie. In dit voorbeeld maakt u het bestand in de Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor cloud_init_upgrade.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 gebruiken de **nano** editor. Zorg ervoor dat het hele cloud-init-bestand correct is gekopieerd, met name de eerste regel.  
+Als u het upgrade proces in actie wilt zien, maakt u een bestand in uw huidige shell met de naam *cloud_init_upgrade. txt* en plakt u de volgende configuratie. In dit voor beeld maakt u het bestand in het Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor cloud_init_upgrade.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 om de **nano** -editor te gebruiken. Zorg ervoor dat het hele Cloud-init-bestand correct wordt gekopieerd, met name de eerste regel.  
 
 ```yaml
 #cloud-config
@@ -36,13 +36,13 @@ packages:
 - httpd
 ```
 
-Voordat u deze installatiekopie implementeert, moet u een resourcegroep maken met de [az-groep maken](/cli/azure/group) opdracht. Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
+Voordat u deze installatie kopie implementeert, moet u een resource groep maken met de opdracht [AZ Group Create](/cli/azure/group) . Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak nu een virtuele machine met [az vm maken](/cli/azure/vm) en geef het cloud-init-bestand met `--custom-data cloud_init_upgrade.txt` als volgt:
+Maak nu een virtuele machine met [AZ VM Create](/cli/azure/vm) en geef het bestand Cloud-init met `--custom-data cloud_init_upgrade.txt` als volgt op:
 
 ```azurecli-interactive 
 az vm create \
@@ -53,19 +53,19 @@ az vm create \
   --generate-ssh-keys 
 ```
 
-SSH naar het openbare IP-adres van uw virtuele machine wordt weergegeven in de uitvoer van de voorgaande opdracht. Voer uw eigen **publicIpAddress** als volgt:
+SSH naar het open bare IP-adres van uw virtuele machine, weer gegeven in de uitvoer van de voor gaande opdracht. Voer uw eigen **publicIpAddress** als volgt in:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Het pakket met beheerprogramma en controleren op updates uitgevoerd.
+Voer het hulp programma pakket beheer uit en controleer op updates.
 
 ```bash
 sudo yum update
 ```
 
-Cloud-init gecontroleerd en updates worden geïnstalleerd bij het opstarten, mogen er geen aanvullende updates worden toegepast.  U ziet het updateproces, aantal gewijzigde pakketten, evenals de installatie van `httpd` door uit te voeren `yum history` en controleer de uitvoer die vergelijkbaar is met de onderstaande.
+Als Cloud-init is ingeschakeld voor en geïnstalleerde updates bij het opstarten, moeten er geen aanvullende updates worden toegepast.  U ziet het update proces, het aantal gewijzigde pakketten en de installatie van `httpd` door `yum history` uit te voeren en de uitvoer te controleren zoals hieronder.
 
 ```bash
 Loaded plugins: fastestmirror, langpacks
@@ -77,9 +77,9 @@ ID     | Command line             | Date and time    | Action(s)      | Altered
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor extra cloud-init-voorbeelden van wijzigingen in de configuratie, Zie de volgende:
+Zie het volgende voor meer voor beelden van configuratie wijzigingen in de Cloud-init:
  
-- [Een aanvullende Linux-gebruiker toevoegen aan een virtuele machine](cloudinit-add-user.md)
-- [Uitvoeren van een pakketbeheerder voor het bijwerken van bestaande pakketten bij de eerste keer opstarten](cloudinit-update-vm.md)
-- [Wijzigen van de lokale VM-hostnaam](cloudinit-update-vm-hostname.md) 
-- [Het installatiepakket voor een toepassing, het bijwerken van configuratiebestanden en het invoeren van sleutels](tutorial-automate-vm-deployment.md)
+- [Een extra Linux-gebruiker toevoegen aan een VM](cloudinit-add-user.md)
+- [Een pakket beheer programma uitvoeren om bestaande pakketten bij de eerste keer opstarten bij te werken](cloudinit-update-vm.md)
+- [Lokale hostnaam van VM wijzigen](cloudinit-update-vm-hostname.md) 
+- [Een toepassings pakket installeren, configuratie bestanden bijwerken en sleutels invoeren](tutorial-automate-vm-deployment.md)

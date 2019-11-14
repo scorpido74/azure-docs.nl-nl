@@ -1,5 +1,5 @@
 ---
-title: 'ARP-tabellen ophalen-probleem oplossing-ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: ARP-tabellen ophalen-problemen oplossen'
 description: Op deze pagina vindt u instructies voor het ophalen van de ARP-tabellen voor een ExpressRoute-circuit
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: e35020923405ec072ac9c42093752ec5a9290824
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2410465052bd9ff83090c6f7122ffab2855af1d0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748158"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033433"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>ARP-tabellen ophalen in het Resource Manager-implementatie model
 > [!div class="op_single_selector"]
@@ -178,5 +178,5 @@ of
   * Route samenvatting ophalen om de status van BGP-sessies te bepalen 
   * Route tabel ophalen om te bepalen welke voor voegsels worden geadverteerd via ExpressRoute
 * Gegevens overdracht valideren door bytes in/uit te bekijken
-* Open een ondersteunings ticket met [micro soft ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) als u nog steeds problemen ondervindt.
+* Open een ondersteuningsticket met [Microsoft ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) als u nog steeds problemen ondervindt.
 

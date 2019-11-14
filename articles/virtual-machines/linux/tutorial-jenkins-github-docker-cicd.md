@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Een ontwikkelingspijplijn maken in Azure met Jenkins | Microsoft Docs
+title: Zelf studie-een ontwikkelings pijplijn maken in azure met Jenkins
 description: Zelfstudie - In deze zelfstudie leert u hoe u een virtuele Jenkins-machine maakt in Azure die bij elke codedoorvoer gegevens ophaalt vanuit GitHub en een nieuwe Docker-container compileert voor het uitvoeren van uw app.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 875285b6a168d9aa9820d660d9c366a36545d319
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6b755ac015095e537134f1ff5c076c23a432ec91
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299419"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034490"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Zelfstudie: Een infrastructuur voor ontwikkeling maken op een virtuele Linux-machine in Azure met Jenkins, GitHub en Docker
 

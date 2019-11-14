@@ -1,24 +1,24 @@
 ---
-title: Een voor beeld van Azure-beheerders rollen met aanpas bare machtigingen-Azure Active Directory | Microsoft Docs
+title: Aangepaste beheerders rollen in Azure Active Directory | Microsoft Docs
 description: Preview van aangepaste Azure AD-rollen voor het delegeren van identiteits beheer. Azure-rollen beheren in de Azure Portal, Power shell of Graph API.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26e77fdf6e10e53f5acc0271986700c98fa690d
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e5c7919dcc89e34831cb4cae7921b60b35eb4c69
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772554"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024965"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Aangepaste beheerders rollen in Azure Active Directory (preview-versie)
 
@@ -34,14 +34,14 @@ Het verlenen van machtigingen met aangepaste Azure AD-rollen is een proces in tw
 
 Wanneer u de roldefinitie hebt gemaakt, kunt u deze toewijzen aan een gebruiker door een roltoewijzing te maken. Een roltoewijzing verleent de gebruiker de machtigingen in een roldefinitie op een opgegeven bereik. Met dit proces met twee stappen kunt u een definitie van één rol maken en deze meerdere keren toewijzen aan verschillende bereiken. Een bereik definieert de set Azure AD-resources waartoe het rolinstantie toegang heeft. Het meest voorkomende bereik is het hele organisatie bereik (organisatiebreed). Een aangepaste rol kan worden toegewezen in het bereik van de organisatie, wat inhoudt dat het Role-lid over de rolmachtigingen beschikt over alle resources in het bedrijf. Een aangepaste rol kan ook worden toegewezen in een object bereik. Een voor beeld van een object bereik is één toepassing. Dezelfde rol kan worden toegewezen aan één gebruiker voor alle toepassingen in de organisatie en vervolgens aan een andere gebruiker met een bereik van alleen de app voor onkosten rapporten van contoso.  
 
-Ingebouwde en aangepaste rollen van Azure AD worden toegepast op concepten die vergelijkbaar [zijn met toegangs beheer op basis van rollen](../../role-based-access-control/overview.md). Het [verschil tussen deze twee op rollen gebaseerde toegangs beheer systemen](../../role-based-access-control/rbac-and-directory-admin-roles.md) is dat Azure RBAC de toegang tot Azure-resources, zoals virtuele machines of opslag, beheert met Azure resource management en aangepaste rollen van Azure AD de toegang tot Azure AD-resources beheren Graph API gebruiken. Beide systemen maken gebruik van het concept van functie definities en roltoewijzingen.
+Ingebouwde en aangepaste rollen van Azure AD worden toegepast op concepten die vergelijkbaar [zijn met toegangs beheer op basis van rollen](../../role-based-access-control/overview.md). Het [verschil tussen deze twee op rollen gebaseerde toegangs beheer systemen](../../role-based-access-control/rbac-and-directory-admin-roles.md) is dat Azure RBAC de toegang tot Azure-resources, zoals virtuele machines of opslag, beheert met Azure resource management en aangepaste rollen van Azure AD de toegang tot Azure AD-resources met behulp van Graph API beheren. Beide systemen maken gebruik van het concept van functie definities en roltoewijzingen.
 
 ### <a name="role-assignments"></a>Roltoewijzingen
 
 Een roltoewijzing is het object dat een functie definitie koppelt aan een gebruiker in een bepaald bereik om toegang tot Azure AD-bronnen te verlenen. Toegang wordt verleend door een roltoewijzing te maken en toegang kan worden ingetrokken door een roltoewijzing te verwijderen. Op basis van zijn kernen bestaat een roltoewijzing uit drie elementen:
 
 - Gebruiker (een persoon die een gebruikers profiel heeft in Azure Active Directory)
-- Roldefinitie
+- Roldefinitie ophalen
 - Bron bereik
 
 U kunt [roltoewijzingen maken](roles-create-custom.md) met behulp van de Azure Portal, Azure AD Power shell of graph API. U kunt ook [de toewijzingen voor een aangepaste rol weer geven](roles-view-assignments.md#view-the-assignments-of-a-role).
@@ -54,14 +54,14 @@ Het volgende diagram toont een voorbeeld van een roltoewijzing. In dit voor beel
 
 Een beveiligingsprincipal vertegenwoordigt de gebruiker die toegang moet krijgen tot Azure AD-resources. Een *gebruiker* is een persoon die een gebruikers profiel heeft in azure Active Directory.
 
-### <a name="role"></a>Role
+### <a name="role"></a>Rol
 
 Een roldefinitie of rol is een verzameling machtigingen. Met een roldefinitie worden de bewerkingen weer gegeven die kunnen worden uitgevoerd op Azure AD-resources, zoals maken, lezen, bijwerken en verwijderen. Er zijn twee soorten rollen in azure AD:
 
 - Ingebouwde rollen die door micro soft zijn gemaakt, kunnen niet worden gewijzigd.
 - Aangepaste rollen die door uw organisatie zijn gemaakt en beheerd.
 
-### <a name="scope"></a>Scope
+### <a name="scope"></a>Bereik
 
 Een bereik is de beperking van toegestane acties voor een bepaalde Azure AD-resource als onderdeel van een roltoewijzing. Wanneer u een rol toewijst, kunt u een bereik opgeven waarmee de beheerder de toegang tot een specifieke resource beperkt. Als u bijvoorbeeld een ontwikkelaar een aangepaste rol wilt verlenen, maar alleen een bepaalde toepassings registratie wilt beheren, kunt u de specifieke toepassings registratie als een bereik in de roltoewijzing toevoegen.
 

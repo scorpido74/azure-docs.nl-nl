@@ -1,5 +1,5 @@
 ---
-title: SSH-sleutels gebruiken met Windows voor Linux Vm's | Microsoft Docs
+title: SSH-sleutels gebruiken met Windows voor virtuele Linux-machines
 description: Meer informatie over het genereren en gebruiken van SSH-sleutels op een Windows-computer om verbinding te maken met een virtuele Linux-machine in Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: e8e63f2c916153b5d43267869d7bc5be8fa646c0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e01fb23bbf1720f7d8df9c269373c1b8dc3ec75c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081980"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034811"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-sleutels gebruiken met Windows op Azure
 
@@ -43,7 +43,7 @@ Andere veelgebruikte Windows SSH-clients die u lokaal kunt installeren, zijn opg
 
 U kunt de SSH-hulpprogram ma's die beschikbaar zijn in bash ook gebruiken in de [Azure Cloud shell](../../cloud-shell/overview.md). 
 
-* Open Cloud shell in uw webbrowser op [https://shell.azure.com](https://shell.azure.com) of in de [Azure Portal](https://portal.azure.com). 
+* Toegang tot Cloud Shell in uw webbrowser op [https://shell.azure.com](https://shell.azure.com) of in de [Azure Portal](https://portal.azure.com). 
 * Toegang Cloud Shell als een Terminal vanuit Visual Studio code door de extensie van het [Azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)te installeren.
 
 ## <a name="create-an-ssh-key-pair"></a>Een SSH-sleutelpaar maken
@@ -51,17 +51,17 @@ In de volgende secties worden twee opties beschreven voor het maken van een SSH-
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>SSH-sleutels maken met ssh-keygen
 
-Als u een opdracht shell uitvoert in Windows die ssh-client hulpprogramma's ondersteunt (of als u Azure Cloud shell gebruikt), maakt u een SSH- `ssh-keygen` sleutel paar met behulp van de opdracht. Typ de volgende opdracht en beantwoord de prompts. Als er een SSH-sleutel paar op de gekozen locatie bestaat, worden deze bestanden overschreven. 
+Als u een opdracht shell uitvoert in Windows die SSH-client hulpprogramma's ondersteunt (of als u Azure Cloud Shell gebruikt), maakt u een SSH-sleutel paar met behulp van de `ssh-keygen` opdracht. Typ de volgende opdracht en beantwoord de prompts. Als er een SSH-sleutel paar op de gekozen locatie bestaat, worden deze bestanden overschreven. 
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
-Zie de volgende stappen voor meer informatie over [](mac-create-ssh-keys.md) het maken [](create-ssh-keys-detailed.md) van SSH-sleutels met behulp `ssh-keygen`van.
+Zie [de volgende](mac-create-ssh-keys.md) [stappen voor](create-ssh-keys-detailed.md) het maken van SSH-sleutels met behulp van `ssh-keygen`voor meer informatie over achtergronden en gegevens.
 
 ### <a name="create-ssh-keys-with-puttygen"></a>SSH-sleutels maken met PuTTYgen
 
-Als u liever een GUI-hulp programma gebruikt om SSH-sleutels te maken, kunt u de PuTTYgen-sleutel generator gebruiken, opgenomen in het pakket voor het [downloaden](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)van putty. 
+Als u liever een GUI-hulp programma gebruikt om SSH-sleutels te maken, kunt u de PuTTYgen-sleutel generator gebruiken, opgenomen in het pakket voor het [downloaden van putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). 
 
 Een SSH RSA-sleutel paar maken met PuTTYgen:
 
@@ -81,13 +81,13 @@ Een SSH RSA-sleutel paar maken met PuTTYgen:
 
     ![Bestand met persoonlijke sleutel voor PuTTy opslaan](./media/ssh-from-windows/save-ppk-file.png)
 
-    Als u de persoonlijke sleutel in de OpenSSH-indeling wilt opslaan, selecteert u in de indeling van de persoonlijke sleutel die door > veel SSH-clients wordt gebruikt, de**export OpenSSH-sleutel**conversies.
+    Als u de persoonlijke sleutel in de OpenSSH-indeling wilt opslaan, selecteert u **conversies** > **OpenSSH sleutel exporteren**in de indeling van de persoonlijke sleutel die wordt gebruikt door veel SSH-clients.
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Een open bare SSH-sleutel opgeven bij het implementeren van een virtuele machine
 
 Als u een virtuele Linux-machine wilt maken die gebruikmaakt van SSH-sleutels voor verificatie, geeft u uw open bare SSH-sleutel op wanneer u de virtuele machine maakt met behulp van de Azure Portal of andere methoden
 
-In het volgende voor beeld ziet u hoe u deze open bare sleutel kopieert en plakt in de Azure Portal wanneer u een virtuele Linux-machine maakt. De open bare sleutel wordt normaal gesp roken opgeslagen in de map ~/.ssh/authorized_key op de nieuwe virtuele machine.
+In het volgende voor beeld ziet u hoe u deze open bare sleutel kopieert en plakt in de Azure Portal wanneer u een virtuele Linux-machine maakt. De open bare sleutel wordt doorgaans opgeslagen in de map ~/.ssh/authorized_key op de nieuwe virtuele machine.
 
    ![Open bare sleutel gebruiken bij het maken van een virtuele machine in de Azure Portal](./media/ssh-from-windows/use-public-key-azure-portal.png)
 
@@ -109,7 +109,7 @@ Als de virtuele machine gebruikmaakt van het just-in-time-toegangs beleid, moet 
 
 ### <a name="connect-with-putty"></a>Verbinding maken met PuTTy
 
-Als u het putty- [Download pakket](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) hebt geïnstalleerd en eerder een putty persoonlijke sleutel bestand (. ppk) hebt gegenereerd, kunt u verbinding maken met een virtuele Linux-machine met PuTTY.
+Als u het [putty-download pakket](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) hebt geïnstalleerd en eerder een putty persoonlijke sleutel bestand (. ppk) hebt gegenereerd, kunt u verbinding maken met een virtuele Linux-machine met PuTTY.
 
 1. Start PuTTy.
 
@@ -117,7 +117,7 @@ Als u het putty- [Download pakket](https://www.chiark.greenend.org.uk/~sgtatham/
 
     ![Nieuwe PuTTy-verbinding openen](./media/ssh-from-windows/putty-new-connection.png)
 
-3. Selecteer de categorie **verbindings** > -**SSH** > -**verificatie** . Blader naar en selecteer uw persoonlijke sleutel voor PuTTy (. ppk-bestand):
+3. Selecteer de categorie **verbinding** > **SSH** - > **auth** . Blader naar en selecteer uw persoonlijke sleutel voor PuTTy (. ppk-bestand):
 
     ![Selecteer uw persoonlijke sleutel voor de validatie van de PuTTy](./media/ssh-from-windows/putty-auth-dialog.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Back-ups maken van virtuele Linux-machines in Azure Portal | Microsoft Docs
+title: 'Zelf studie: een back-up maken van virtuele Linux-machines in de Azure Portal'
 description: In deze zelfstudie leert u hoe u Azure Portal gebruikt om uw virtuele Linux-machines te beschermen met Azure Backup.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 890d4ab0dcbaa814b4ce3365025e4c35e4ba4c6b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2a53086b959f5b93d17d307a59682a44fe1f33a8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103544"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034587"
 ---
-# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Zelfstudie: Back-ups maken en herstellen van bestanden voor virtuele Linux-machines in azure
+# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Zelfstudie: Back-ups maken en bestanden herstellen voor virtuele Linux-machines in Azure
 
 U kunt uw gegevens beschermen door regelmatig back-ups te maken. Azure Backup maakt herstelpunten die worden opgeslagen in geografisch redundante Recovery Services-kluizen. Wanneer u vanaf een herstelpunt herstelt, kunt u de hele VM of specifieke bestanden herstellen. In dit artikel wordt uitgelegd hoe u een enkel bestand herstelt naar een Linux-VM waarop nginx wordt uitgevoerd. Als u nog geen VM hebt om te gebruiken, kunt u er een maken met behulp van de [Linux-quickstart](quick-create-cli.md). In deze zelfstudie leert u het volgende:
 
@@ -43,7 +43,7 @@ Wanneer de gegevensoverdracht is voltooid, wordt de momentopname verwijderd en w
 ## <a name="create-a-backup"></a>Een back-up maken
 U plant als volgt een dagelijkse back-up naar een Recovery Services-kluis:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Selecteer **Virtuele machines** in het menu aan de linkerkant. 
 3. Selecteer in de lijst de virtuele machine waarvan u een back-up wilt maken.
 4. Klik in de sectie **Instellingen** van de VM-blade op **Back-up**. De blade **Back-up inschakelen** wordt geopend.
@@ -93,8 +93,8 @@ In dit voorbeeld laten we zien hoe u de standaard-nginx-webpagina herstelt /var/
 7. Selecteer de VM in de lijst.
 8. Klik in de sectie **Instellingen** van de VM-blade op **Back-up**. De blade **Back-up** wordt geopend. 
 9. Selecteer in het menu boven aan de blade de optie **Bestandsherstel**. De blade **Bestandsherstel** wordt geopend.
-10. In **stap 1: Selecteer herstel punt**, selecteer een herstel punt in de vervolg keuzelijst.
-11. In **stap 2: Script downloaden om bestanden**te zoeken en te herstellen, klikt u op de knop uitvoerbaar **bestand downloaden** . Sla het gedownloade bestand op de lokale computer op.
+10. Selecteer in **Stap 1: Herstelpunt selecteren** een herstelpunt in de vervolgkeuzelijst.
+11. Klik in **Stap 2: Script downloaden om naar bestanden te zoeken en ze te herstellen** op de knop **Uitvoerbaar bestand downloaden**. Sla het gedownloade bestand op de lokale computer op.
 7. Klik op **Script downloaden** om het scriptbestand lokaal te downloaden.
 8. Open een Bash-prompt en type het volgende, waarbij u *Linux_myVM_05-05-2017.sh* vervangt door het juiste pad en de juiste bestandsnaam voor het script dat u hebt gedownload, *azureuser* vervangt door de gebruikersnaam voor de VM en *13.69.75.209* vervangt door het openbare IP-adres voor de VM.
     
@@ -155,7 +155,7 @@ In dit voorbeeld laten we zien hoe u de standaard-nginx-webpagina herstelt /var/
 
     ![Standaard-nginx-webpagina](./media/tutorial-backup-vms/nginx-working.png)
 
-18. Ga op de lokale computer terug naar het browser tabblad voor de Azure Portal en in **stap 3: De schijven ontkoppelen na het** herstel klikt u op de knop **schijven ontkoppelen** . Als u deze stap vergeet uit te voeren, wordt de verbinding met het koppelpunt na 12 uur automatisch verbroken. Na deze 12 uur moet u een nieuw script downloaden voor het maken van een nieuw koppelpunt.
+18. Ga op de lokale computer terug naar het browsertabblad voor Azure Portal en klik in **Stap 3: De schijven ontkoppelen na het herstel** op de knop **Schijven ontkoppelen**. Als u deze stap vergeet uit te voeren, wordt de verbinding met het koppelpunt na 12 uur automatisch verbroken. Na deze 12 uur moet u een nieuw script downloaden voor het maken van een nieuw koppelpunt.
 
 
 ## <a name="next-steps"></a>Volgende stappen

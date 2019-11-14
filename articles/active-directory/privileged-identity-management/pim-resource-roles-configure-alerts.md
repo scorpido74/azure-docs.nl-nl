@@ -4,23 +4,23 @@ description: Meer informatie over het configureren van beveiligings waarschuwing
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f191eac841bd9f79844a09cd25725de7ea8b154
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f0b938dc808d9b02ad4105d85a5b3125135c51d6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895779"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023075"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Beveiligings waarschuwingen configureren voor Azure-resource rollen in Privileged Identity Management
 
@@ -36,13 +36,13 @@ Selecteer een waarschuwing om een rapport weer te geven met een lijst met de geb
 
 ## <a name="alerts"></a>Waarschuwingen
 
-| Waarschuwing | Ernst | Trigger | Aanbeveling |
+| Waarschuwing | Severity | Trigger | Aanbeveling |
 | --- | --- | --- | --- |
 | **Te veel eigen aren toegewezen aan een resource** |Middelgroot |Te veel gebruikers hebben de rol van eigenaar. |Controleer de gebruikers in de lijst en wijs een aantal toe aan minder privilegede rollen. |
 | **Er zijn te veel permanente eigen aren toegewezen aan een resource** |Middelgroot |Te veel gebruikers zijn permanent toegewezen aan een rol. |Controleer de gebruikers in de lijst en wijs een aantal opnieuw toe om te activeren voor het gebruik van rollen. |
 | **Dubbele rol gemaakt** |Middelgroot |Meerdere rollen hebben hetzelfde criterium. |Gebruik slechts één van deze rollen. |
 
-### <a name="severity"></a>Ernst
+### <a name="severity"></a>Severity
 
 - **Hoog**: vereist direct actie vanwege een beleids schending. 
 - **Medium**: vereist geen onmiddellijke actie, maar signaleert een mogelijke beleids schending.

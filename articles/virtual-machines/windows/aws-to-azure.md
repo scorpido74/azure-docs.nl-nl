@@ -1,5 +1,5 @@
 ---
-title: Een Windows AWS-Vm's verplaatsen naar Azure | Microsoft Docs
+title: Een Windows AWS-Vm's verplaatsen naar Azure
 description: Verplaats een Amazon Web Services (AWS) EC2 Windows-exemplaar naar een virtuele machine van Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 31f6ffc4f114039e0c53c1994f8c4364dea18298
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9bd01f24ac2cada02f51089d238519cd6c7e0248
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089507"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039273"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Een Windows-VM verplaatsen van Amazon Web Services (AWS) naar een virtuele machine van Azure
 
@@ -47,7 +47,7 @@ U kunt zowel gegeneraliseerde als gespecialiseerde Vhd's uploaden naar Azure. El
 
 Exporteer het EC2-exemplaar naar een VHD in een Amazon S3-Bucket. Volg de stappen in het artikel in de Amazon-documentatie om [een exemplaar te exporteren als een virtuele machine met behulp van import/export van de VM](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) en voer de opdracht [Create-instance-export-Task](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) uit om het EC2-exemplaar te exporteren naar een VHD-bestand. 
 
-Het geëxporteerde VHD-bestand wordt opgeslagen in de Amazon S3-Bucket die u opgeeft. De basis syntaxis voor het exporteren van de VHD vindt u hieronder. Vervang de tekst \<van de tijdelijke aanduiding tussen vier Kante haken > met uw gegevens.
+Het geëxporteerde VHD-bestand wordt opgeslagen in de Amazon S3-Bucket die u opgeeft. De basis syntaxis voor het exporteren van de VHD vindt u hieronder. Vervang de tekst van de tijdelijke aanduiding door \<haakjes > met uw gegevens.
 
 ```
 aws ec2 create-instance-export-task --instance-id <instanceID> --target-environment Microsoft \

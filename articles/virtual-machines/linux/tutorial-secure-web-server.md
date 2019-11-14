@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een Linux-webserver beveiligen met SSL-certificaten in Azure | Microsoft Docs'
+title: Zelf studie-een Linux-webserver beveiligen met SSL-certificaten in azure
 description: In deze zelfstudie leert u hoe u Azure CLI gebruikt om een virtuele Linux-machine waarop de NGINX-webserver wordt uitgevoerd, te beveiligen met SSL-certificaten die zijn opgeslagen in Azure Key Vault.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 39ffdbab61e1371c6660fe08c5a59ba1ced16fc8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: dc327abae7210d5432896fe1f0688cc405ddade6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300780"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034337"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Zelfstudie: Een webserver op een virtuele Linux-machine in Azure beveiligen met SSL-certificaten die zijn opgeslagen in Key Vault
 Om webservers te beveiligen, kan een Secure Sockets Layer (SSL)-certificaat worden gebruikt voor het versleutelen van internetverkeer. Deze SSL-certificaten kunnen worden opgeslagen in Azure Key Vault en beveiligde implementaties van certificaten aan virtuele Linux-machines (VM's) in Azure toestaan. In deze zelfstudie leert u het volgende:
@@ -136,7 +136,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>Testen van de beveiligde web-app
-U kunt nu een webbrowser openen en https invoeren *: \/ @ no__t-2 @ no__t-3publicIpAddress >* in de adres balk. Geef uw eigen openbare IP-adres op uit het creatieproces van de virtuele machine proces. Als u een zelfondertekend certificaat gebruikt, aanvaardt u de beveiligingswaarschuwing:
+U kunt nu een webbrowser openen en https invoeren *:\/\/\<publicIpAddress >* in de adres balk. Geef uw eigen openbare IP-adres op uit het creatieproces van de virtuele machine proces. Als u een zelfondertekend certificaat gebruikt, aanvaardt u de beveiligingswaarschuwing:
 
 ![Beveiligingswaarschuwing voor web browser accepteren](./media/tutorial-secure-web-server/browser-warning.png)
 

@@ -9,13 +9,13 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 11/08/2019
-ms.openlocfilehash: efa5ede4937a2a7f48f9d64f06b78c6343345ad6
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 11/12/2019
+ms.openlocfilehash: d9a88a40a85ce4be9222f45d3bce53e91346040b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903807"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039362"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Snelstart: beschikbare ruimten zoeken met behulp van Azure Digital Twins
 
@@ -83,11 +83,11 @@ De ruimtelijke grafiek wordt ingericht met behulp van het bestand [provisionSamp
 
 1. De inrichtingsstap kan enkele minuten duren. Er wordt ook een IoT Hub binnen uw Digital Twins-exemplaar ingericht. Het inrichten blijft doorlopen totdat de status van de IoT Hub gelijk is aan `Running`.
 
-    [voor beeld van ![inrichten](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png#lightbox)
+    [![de voor beeld-status = actief inrichten](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
 
 1. Aan het einde van de uitvoering, kopieert u de `ConnectionString` van het apparaat voor gebruik in de voorbeeldapparaatsimulator. Kopieer alleen de tekenreeks die wordt beschreven in deze afbeelding.
 
-    [de connection string ![kopiëren](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
+    [de connection string ![kopiëren](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png)](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png#lightbox)
 
     >[!TIP]
     > U kunt de ruimtelijke grafiek bekijken en aanpassen met de [Graph Viewer voor Azure Digital Twins](https://github.com/Azure/azure-digital-twins-graph-viewer).
@@ -120,20 +120,20 @@ Het sensorvoorbeeld simuleert willekeurige gegevenswaarden voor twee sensoren. D
 1. Bekijk deze opdrachtprompt en de opdrachtprompt voor sensorgegevens naast elkaar.
 
     Met de opdracht prompt voor sensor gegevens worden gesimuleerde bewegings-en kooldioxyde-gegevens naar digitale-Apparaatdubbels elke vijf seconden verzonden. Met de andere opdracht prompt wordt de grafiek in realtime gelezen om beschik bare ruimten met verse lucht te ontdekken op basis van wille keurige gesimuleerde gegevens. Een van deze voorwaarden wordt bijna in realtime weergegeven op basis van de sensorgegevens die de laatste keer zijn verzonden:
-   - Beschikbare ruimten met frisse lucht.
-   - Ruimte bezet of slechte luchtkwaliteit in de ruimte.
+   - `Room is available and air is fresh`
+   - `Room is not available or air quality is poor`
 
      [![beschik bare ruimten met nieuwe lucht ophalen](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
 
 Open [Visual Studio code](https://code.visualstudio.com/Download) met het code werkruimte project in `digital-twins-samples-csharp`als u wilt weten wat er is gebeurd in deze Snelstartgids en welke api's werden genoemd. Gebruik de volgende opdracht:
 
-```plaintext
+```cmd
 <path>\occupancy-quickstart\src>code ..\..\digital-twins-samples.code-workspace
 ```
 
 In de zelfstudies wordt diep op de code ingegaan. U komt te weten hoe u configuratiegegevens kunt wijzigen en welke API's worden aangeroepen. Ga voor meer informatie over beheer-API's naar de pagina van Digital Twins Swagger:
 
-```plaintext
+```URL
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 

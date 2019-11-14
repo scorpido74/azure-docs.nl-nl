@@ -1,24 +1,24 @@
 ---
 title: Gegevens visualiseren vanuit Azure Data Explorer met behulp van Grafana
-description: In deze procedure leert u hoe u Azure Data Explorer kunt instellen als een gegevens bron voor Grafana en vervolgens gegevens kunt visualiseren vanuit een voor beeld van een cluster.
+description: In dit artikel leert u hoe u Azure Data Explorer instelt als gegevens bron voor Grafana en vervolgens gegevens visualert vanuit een voorbeeld cluster.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 6/30/2019
-ms.openlocfilehash: f1eb9fb0d81d1e9cdf3dd8628a6d7ad1f0ccce92
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/13/2019
+ms.openlocfilehash: a1c52007ea86ca0812c4a73a92ce81db6ddadc7b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582011"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038044"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Gegevens visualiseren vanuit Azure Data Explorer in Grafana
 
-Grafana is een analyse platform dat u in staat stelt om gegevens op te vragen en te visualiseren en vervolgens Dash boards te maken en te delen op basis van uw visualisaties. Grafana biedt een Azure Data Explorer- *invoeg toepassing*waarmee u verbinding kunt maken met en visualiseren van gegevens van Azure Data Explorer. In dit artikel leert u hoe u Azure Data Explorer kunt instellen als gegevens bron voor Grafana en vervolgens gegevens kunt visualiseren vanuit een voor beeld van een cluster.
+Grafana is een analyse platform dat u in staat stelt om gegevens op te vragen en te visualiseren en vervolgens Dash boards te maken en te delen op basis van uw visualisaties. Grafana biedt een Azure Data Explorer- *invoeg toepassing*waarmee u verbinding kunt maken met en visualiseren van gegevens van Azure Data Explorer. In dit artikel leert u hoe u Azure Data Explorer instelt als gegevens bron voor Grafana en vervolgens gegevens visualert vanuit een voorbeeld cluster.
 
-Met behulp van de volgende video kunt u leren hoe u de Azure Data Explorer-invoeg toepassing van Grafana gebruikt, hoe u Azure Data Explorer instelt als gegevens bron voor Grafana en vervolgens gegevens visualiseren. 
+Gebruik de volgende video om te leren hoe u de Azure Data Explorer-invoeg toepassing van Grafana gebruikt, hoe u Azure Data Explorer instelt als gegevens bron voor Grafana en vervolgens gegevens visualiseren. 
 
 > [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
 
@@ -26,7 +26,7 @@ U kunt [de gegevens bron ook configureren](#configure-the-data-source) en [gegev
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt het volgende nodig om deze procedure uit te voeren:
+U hebt het volgende nodig om dit artikel te volt ooien:
 
 * [Grafana-versie 5.3.0 of hoger](https://docs.grafana.org/installation/) voor uw besturings systeem
 
@@ -56,10 +56,10 @@ Wanneer de Service-Principal is toegewezen aan de rol *viewers* , geeft u nu eig
 
     ![Verbindingseigenschappen](media/grafana/connection-properties.png)
 
-    | Grafana-gebruikers interface | Azure Portal | Azure-CLI |
+    | Grafana-gebruikers interface | Azure-portal | Azure-CLI |
     | --- | --- | --- |
     | Abonnements-id | ABONNEMENTS-ID | SubscriptionId |
-    | Tenant-id | Map-ID | bouw |
+    | Tenant-id | Map-ID | tenant |
     | Client-id | Toepassings-id | appId |
     | Clientgeheim | Wachtwoord | wachtwoord |
     | | | |
@@ -111,8 +111,26 @@ Nu u klaar bent met het configureren van Azure Data Explorer als gegevens bron v
 
 1. Selecteer in het bovenste menu het pictogram opslaan: ![Het pictogram Save](media/grafana/save-icon.png).
 
+## <a name="create-alerts"></a>Waarschuwingen maken
+
+1. Selecteer in het dash board start **meldingen** > **meldings kanalen** om een nieuw meldings kanaal te maken
+
+    ![meldings kanaal maken](media/grafana/create-notification-channel.png)
+
+1. Maak een nieuw **meldings kanaal**en **Sla**het op.
+
+    ![Nieuw meldings kanaal maken](media/grafana/new-notification-channel-adx.png)
+
+1. Selecteer in de vervolg keuzelijst **bewerken** in het **dash board**.
+
+    ![Selecteer Bewerken in dash board](media/grafana/edit-panel-4-alert.png)
+
+1. Selecteer het pictogram waarschuwings klok om het deel venster **waarschuwing** te openen. Selecteer **waarschuwing maken**. Voer de volgende eigenschappen in het deel venster **waarschuwing** uit.
+
+    ![waarschuwings eigenschappen](media/grafana/alert-properties.png)
+
+1. Selecteer het pictogram **dash board opslaan** om uw wijzigingen op te slaan.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Query's schrijven voor Azure Data Explorer](write-queries.md)
-
-* [Zelf studie: gegevens visualiseren vanuit Azure Data Explorer in Power BI](visualize-power-bi.md)

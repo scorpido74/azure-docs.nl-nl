@@ -1,5 +1,5 @@
 ---
-title: Azure seriële console voor SysRq-en NMI-aanroepen | Microsoft Docs
+title: Azure seriële console voor SysRq-en NMI-aanroepen
 description: Met behulp van seriële console voor SysRq-en NMI-aanroepen in azure virtual machines.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,25 +13,25 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 81fb9f99f4f7e4f77b39855445639369f65f0966
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5eba50e7cfc00c081622972ca09f305b34c19c47
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091314"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035000"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Seriële console gebruiken voor SysRq-en NMI-aanroepen
 
 ## <a name="system-request-sysrq"></a>Systeem aanvraag (SysRq)
 Een SysRq is een reeks sleutels die worden begrepen door de Linux-bewerkings systeem-kernel, waarmee een reeks vooraf gedefinieerde acties kan worden geactiveerd. Deze opdrachten worden vaak gebruikt bij het oplossen van problemen met de virtuele machine of het herstel kan niet worden uitgevoerd via een traditioneel beheer (bijvoorbeeld als de VM niet reageert). Met de SysRq-functie van Azure Serial console wordt op het drukken van de SysRq-sleutel en de tekens die op een fysiek toetsen bord zijn ingevoerd, gesimuleerd.
 
-Zodra de SysRq-reeks is geleverd, bepaalt de kernel configuratie hoe het systeem reageert. Voor informatie over het in-en uitschakelen van SYSRQ, raadpleegt u de [tekst](https://aka.ms/kernelorgsysreqdoc) | voor de *SYSRQ-beheerders handleiding* .[](https://aka.ms/linuxsysrq)  
+Zodra de SysRq-reeks is geleverd, bepaalt de kernel configuratie hoe het systeem reageert. Voor informatie over het in-en uitschakelen van SysRq, raadpleegt u de SYSRQ voor de *Beheerders handleiding* [tekst](https://aka.ms/kernelorgsysreqdoc) | [prijs verlaging](https://aka.ms/linuxsysrq).  
 
 De Azure Serial console kan worden gebruikt om een SysRq te verzenden naar een virtuele Azure-machine met behulp van het toetsenbord pictogram in de onderstaande opdracht balk.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
-Als u de opdracht ' SysRq verzenden ' kiest, wordt er een dialoog venster geopend, waarmee u algemene SysRq-opties kunt opgeven, of een reeks SysRq-opdrachten die in het dialoog venster zijn ingevoerd.  Op die manier kunnen reeksen SysRq een bewerking op hoog niveau uitvoeren, zoals veilig opnieuw opstarten met behulp van `REISUB`:.
+Als u de opdracht ' SysRq verzenden ' kiest, wordt er een dialoog venster geopend, waarmee u algemene SysRq-opties kunt opgeven, of een reeks SysRq-opdrachten die in het dialoog venster zijn ingevoerd.  Op die manier kunnen reeksen SysRq een bewerking op hoog niveau uitvoeren, zoals veilig opnieuw opstarten met behulp van: `REISUB`.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
@@ -51,7 +51,7 @@ Als u de SysReq-configuratie permanent wilt maken, kunt u het volgende doen om a
 ### <a name="command-keys"></a>Opdracht sleutels 
 Vanuit de SysRq-beheer handleiding hierboven:
 
-|Opdracht| Function
+|Opdracht| Functie
 | ------| ----------- |
 |``b``  |   Het systeem wordt onmiddellijk opnieuw opgestart zonder de schijven te synchroniseren of te ontkoppelen.
 |``c``  |   Voert een systeem crash uit door een verwijzing naar een NULL-aanwijzer. Er wordt een crash dump genomen als deze is geconfigureerd.
@@ -59,16 +59,16 @@ Vanuit de SysRq-beheer handleiding hierboven:
 |``e``  |   Een SIGTERM verzenden naar alle processen, met uitzonde ring van init.
 |``f``  |   Roept de oom-Killer aan om een geheugen Hog proces af te breken, maar niet in paniek als niets kan worden afgebroken.
 |``g``  |   Gebruikt door KGDB (kernel debugger)
-|``h``  |   De Help wordt weer gegeven (een andere sleutel dan die hier wordt vermeld, maar ``h`` is gemakkelijk te onthouden:-)
+|``h``  |   Hiermee wordt Help weer gegeven (voor elke andere sleutel dan die hier wordt vermeld, wordt de Help weer gegeven, maar ``h`` is gemakkelijk te onthouden:-)
 |``i``  |    Een SIGKILL verzenden naar alle processen, met uitzonde ring van init.
 |``j``  |    Alleen het ontdooien:-bestands systeem dat door de FIFREEZE IOCTL is geblokkeerd.
-|``k``  |    Met de beveiligde Toegangs toets (SAK) worden alle Program ma's op de huidige virtuele console afbreken. OPMERKING: Zie belang rijke opmerkingen hieronder in de sectie SAK.
+|``k``  |    Met de beveiligde Toegangs toets (SAK) worden alle Program ma's op de huidige virtuele console afbreken. Opmerking: Zie belang rijke opmerkingen hieronder in de sectie SAK.
 |``l``  |    Toont een stack-backtrace voor alle actieve Cpu's.
 |``m``  |    Dumpt de huidige geheugen gegevens naar uw-console.
 |``n``  |    Wordt gebruikt om RT-taken goed te kunnen uitvoeren
 |``o``  |    Het systeem wordt afgesloten (indien geconfigureerd en ondersteund).
 |``p``  |    Hiermee worden de huidige kassa's en vlaggen voor uw console gedumpt.
-|``q``  |    Zal per CPU-lijst van alle gehrtimerseerde (maar geen normale timer_list timers) dumpen en gedetailleerde informatie over alle clockevent-apparaten.
+|``q``  |    Zal per CPU-lijst van alle gehrtimerseerde (maar niet normale timer_list timers) dumpen en gedetailleerde informatie over alle clockevent-apparaten.
 |``r``  |    Hiermee schakelt u de modus voor onbewerkte toetsaanslagen uit en stelt u deze in op XLATE.
 |``s``  |    Er wordt geprobeerd om alle gekoppelde bestands systemen te synchroniseren.
 |``t``  |    Er wordt een lijst met huidige taken en de bijbehorende informatie naar uw console gedumpt.
@@ -79,7 +79,7 @@ Vanuit de SysRq-beheer handleiding hierboven:
 |``x``  |    Wordt gebruikt door de xmon-interface op PPC/powerpc-platforms. Algemene PMU-registers weer geven op sparc64. Alle TLB-vermeldingen op MIPS dumpen.
 |``y``  |    Globale CPU-registers weer geven [SPARC-64-specifiek]
 |``z``  |    De ftrace-buffer dumpen
-|``0``-``9`` | Hiermee stelt u het logboek niveau van de console in, waarbij wordt beheerd welke kernel-berichten worden afgedrukt op uw-console. (``0``dit kan bijvoorbeeld zodanig zijn dat alleen nood berichten, zoals een paniek of een bestand, het naar uw-console zou kunnen maken.)
+|``0``-``9`` | Hiermee stelt u het logboek niveau van de console in, waarbij wordt beheerd welke kernel-berichten worden afgedrukt op uw-console. (``0``worden bijvoorbeeld zodanig gemaakt dat alleen nood berichten, zoals paniek of de webserver, het naar uw-console zouden maken.)
 
 ### <a name="distribution-specific-documentation"></a>Distributie-specifieke documentatie ###
 Zie de onderstaande koppelingen voor distributie-specifieke documentatie over SysRq en stappen voor het configureren van Linux voor het maken van een crash dump bij het ontvangen van een SysRq ' crash '.
@@ -110,7 +110,7 @@ Voor Linux-systemen die sysctl ondersteunen voor het configureren van kernel-par
 1. Sysctl opnieuw opstarten of bijwerken door uit te voeren <br>
     `sysctl -p`
 
-Zie voor meer informatie over Linux-kernel- `unknown_nmi_panic`configuraties `panic_on_io_nmi`, inclusief `panic_on_unrecovered_nmi`, en: [Documentatie voor/proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Zie de onderstaande koppelingen voor distributie-specifieke documentatie over NMI en stappen voor het configureren van Linux voor het maken van een crash dump bij het ontvangen van een NMI.
+Zie voor meer informatie over Linux-kernel-configuraties, waaronder `unknown_nmi_panic`, `panic_on_io_nmi`en `panic_on_unrecovered_nmi`: [documentatie voor/proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Zie de onderstaande koppelingen voor distributie-specifieke documentatie over NMI en stappen voor het configureren van Linux voor het maken van een crash dump bij het ontvangen van een NMI.
  
 ### <a name="ubuntu"></a>Ubuntu 
  - [Kernel-crash dump](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)

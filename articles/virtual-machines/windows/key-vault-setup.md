@@ -1,5 +1,5 @@
 ---
-title: Key Vault instellen voor Windows-Vm's in Azure Resource Manager | Microsoft Docs
+title: Key Vault instellen voor Windows-Vm's in Azure Resource Manager
 description: Key Vault instellen voor gebruik met een virtuele machine van Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: 225ce9fcbb18aa374f413e8e237c911c85cc77a6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: a64163da1dee2bceb567436dc18ba0fa5274cfcb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999356"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038213"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Key Vault instellen voor virtuele machines in Azure Resource Manager
 
@@ -56,7 +56,7 @@ Voer vervolgens de volgende opdracht uit om Key Vault in te scha kelen voor gebr
     az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
 ## <a name="use-templates-to-set-up-key-vault"></a>Sjablonen gebruiken om Key Vault in te stellen
-Wanneer u een sjabloon gebruikt, moet u de `enabledForDeployment` eigenschap instellen op `true` voor de Key Vault resource.
+Wanneer u een sjabloon gebruikt, moet u de eigenschap `enabledForDeployment` instellen op `true` voor de Key Vault resource.
 
     {
       "type": "Microsoft.KeyVault/vaults",

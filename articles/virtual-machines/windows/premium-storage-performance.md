@@ -1,5 +1,5 @@
 ---
-title: "Azure Premium Storage: ontwerpen voor prestaties op Windows-Vm's | Microsoft Docs"
+title: "Azure Premium Storage: ontwerpen voor prestaties op Windows-Vm's "
 description: Ontwerp krachtige toepassingen met Azure Premium Storage. Premium Storage biedt schijf ondersteuning met hoge prestaties en lage latentie voor I/O-intensieve workloads die worden uitgevoerd op Azure Virtual Machines.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 073b0f0b0078f8e1159fad5e4eb6a70543c81700
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 584c69f4079eeebf04a0e40021bfc843b40e8b1b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012368"
+ms.locfileid: "74032961"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium-opslag: ontwerpen voor hoge prestaties
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]

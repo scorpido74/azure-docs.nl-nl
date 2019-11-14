@@ -1,5 +1,5 @@
 ---
-title: Extern bureaublad gebruiken voor een virtuele Linux-machine in azure | Microsoft Docs
+title: Extern bureaublad gebruiken voor een virtuele Linux-machine in azure
 description: Meer informatie over het installeren en configureren van Extern bureaublad (xrdp) om verbinding te maken met een virtuele Linux-machine in azure met grafische hulpprogram ma's
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 96f1f98f95bb726864553c81245e250cf907fb05
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 8631b05bc42df86ef6865bf2a07c0e3deaaad2fe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961544"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034280"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure
 Virtuele Linux-machines (Vm's) in Azure worden meestal beheerd vanaf de opdracht regel met behulp van een SSH-verbinding (Secure Shell). Wanneer u geen ervaring hebt met Linux of voor snelle probleemoplossings scenario's, is het gebruik van extern bureau blad mogelijk eenvoudiger. In dit artikel wordt beschreven hoe u een desktop-omgeving ([xfce](https://www.xfce.org)) en extern bureau blad ([xrdp](https://www.xrdp.org)) installeert en configureert voor uw virtuele Linux-machine met behulp van het Resource Manager-implementatie model.
@@ -34,7 +34,7 @@ Voor dit artikel is een bestaande Ubuntu 18,04 LTS-VM vereist in Azure. Als u ee
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Een desktop omgeving installeren op uw virtuele Linux-machine
 Voor de meeste Linux-Vm's in Azure is geen bureaublad omgeving standaard geïnstalleerd. Virtuele Linux-machines worden vaak beheerd met SSH-verbindingen in plaats van een desktop omgeving. Er zijn verschillende desktop omgevingen in Linux die u kunt kiezen. Afhankelijk van uw keuze van de bureaublad omgeving, kan het één tot 2 GB aan schijf ruimte verbruiken en vijf tot tien minuten duren om alle vereiste pakketten te installeren en te configureren.
 
-In het volgende voor beeld wordt de licht gewicht [xfce4](https://www.xfce.org/) Desktop Environment geïnstalleerd op een Ubuntu 18,04 LTS-VM. Opdrachten voor andere distributies variëren enigszins `yum` per Red Hat Enterprise Linux, configureren van de juiste `selinux` regels of gebruiken `zypper` om te installeren op Suse, bijvoorbeeld).
+In het volgende voor beeld wordt de licht gewicht [xfce4](https://www.xfce.org/) Desktop Environment geïnstalleerd op een Ubuntu 18,04 LTS-VM. Opdrachten voor andere distributies variëren enigszins (gebruik `yum` om te installeren op Red Hat Enterprise Linux en juiste `selinux` regels te configureren, of gebruik `zypper` om te installeren op SUSE.
 
 Eerst SSH naar uw VM. In het volgende voor beeld wordt verbinding gemaakt met de virtuele machine met de naam *myvm.westus.cloudapp.Azure.com* met de gebruikers naam van *azureuser*. Gebruik uw eigen waarden:
 
@@ -44,7 +44,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 Zie [SSH-sleutels gebruiken met Windows](ssh-from-windows.md)als u Windows gebruikt en meer informatie wilt over het gebruik van SSH.
 
-Installeer vervolgens xfce met behulp van `apt` de volgende opties:
+Installeer vervolgens als volgt xfce met `apt`:
 
 ```bash
 sudo apt-get update
@@ -106,7 +106,7 @@ Als uw lokale RDP-client gebruikmaakt van verificatie op netwerk niveau (NLA), m
 
 
 ## <a name="troubleshoot"></a>Problemen oplossen
-Als u geen verbinding kunt maken met uw virtuele Linux-machine met behulp van een extern bureaublad-client, gebruikt `netstat` u de virtuele Linux-machine om te controleren of uw virtuele machine op de volgende wijze naar RDP-verbindingen luistert:
+Als u geen verbinding kunt maken met uw virtuele Linux-machine met behulp van een Extern bureaublad-client, gebruikt u `netstat` op uw virtuele Linux-machine om te controleren of uw VM als volgt luistert naar RDP-verbindingen:
 
 ```bash
 sudo netstat -plnt | grep rdp

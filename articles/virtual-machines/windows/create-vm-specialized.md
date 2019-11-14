@@ -1,5 +1,5 @@
 ---
-title: Een Windows-VM maken op basis van een gespecialiseerde VHD in azure | Microsoft Docs
+title: Een Windows-VM maken op basis van een gespecialiseerde VHD in azure
 description: Maak een nieuwe Windows-VM door een speciale beheerde schijf te koppelen als de besturingssysteem schijf met behulp van het Resource Manager-implementatie model.
 services: virtual-machines-windows
 author: cynthn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: be773779b25a32a5904012ae31950b18c33341dc
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ac18056f9bfdf22c55b5effac810b8c24ab4d81d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553427"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033862"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Een Windows-VM maken op basis van een gespecialiseerde schijf met behulp van Power shell
 
@@ -226,7 +226,7 @@ Als u communicatie met de virtuele machine in het virtuele netwerk wilt inschake
 
 ### <a name="set-the-vm-name-and-size"></a>De naam en grootte van de virtuele machine instellen
 
-In dit voor beeld wordt de naam van de virtuele machine ingesteld op *myVM* en de VM-grootte op *Standard_A2*.
+In dit voor beeld wordt de naam van de virtuele machine ingesteld op *myVM* en de VM-grootte *Standard_A2*.
 
 ```powershell
 $vmName = "myVM"

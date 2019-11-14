@@ -1,6 +1,6 @@
 ---
-title: Persoonlijke apparaten in een organisatienetwerk - Azure Active Directory registreren | Microsoft Docs
-description: Informatie over het registreren van uw persoonlijke apparaat op het netwerk van uw organisatie, zodat u krijgt beveiligde resources van uw organisatie tot toegang.
+title: Persoonlijke apparaten registreren op het netwerk van een organisatie-Azure AD
+description: Meer informatie over het registreren van uw persoonlijke apparaat op het netwerk van uw organisatie, zodat u toegang hebt tot de beveiligde bronnen van uw organisatie.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -14,63 +14,63 @@ ms.author: lizross
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 041c8bb6b4de2bbe2cbeb4c1a89e452239ae57bd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 879fa55df422e6039c6830e25e43637fc31b8037
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473674"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028492"
 ---
-# <a name="register-your-personal-device-on-your-organizations-network"></a>Registreren van uw persoonlijke apparaat op het netwerk van uw organisatie
-Registreer uw persoonlijke apparaat (meestal een telefoon of tablet) op het netwerk van uw organisatie. Nadat het apparaat is geregistreerd, is het mogelijk zijn voor toegang tot beperkte resources van uw organisatie.
+# <a name="register-your-personal-device-on-your-organizations-network"></a>Uw persoonlijke apparaat registreren op het netwerk van uw organisatie
+Registreer uw persoonlijke apparaat (meestal een telefoon of Tablet) op het netwerk van uw organisatie. Nadat het apparaat is geregistreerd, heeft het toegang tot de beperkte resources van uw organisatie.
 
 >[!Note]
->In dit artikel wordt een Windows-apparaat voor demonstratiedoeleinden te gebruiken, maar u kunt ook de iOS-, Android- of macOS-apparaten registreren.
+>In dit artikel wordt een Windows-apparaat gebruikt voor demonstratie doeleinden, maar u kunt ook apparaten met iOS, Android of macOS registreren.
 
-## <a name="what-happens-when-you-register-your-device"></a>Wat gebeurt er wanneer u uw apparaat registreren
-Terwijl u bent bezig met het registreren van uw apparaat op het netwerk van uw organisatie, wordt de volgende acties uitgevoerd:
+## <a name="what-happens-when-you-register-your-device"></a>Wat gebeurt er wanneer u uw apparaat registreert
+Wanneer u uw apparaat registreert op het netwerk van uw organisatie, zullen de volgende acties optreden:
 
-- Uw apparaat op het netwerk van uw organisatie wordt geregistreerd door Windows.
+- Windows registreert uw apparaat in het netwerk van uw organisatie.
 
-- (Optioneel) op basis van de mogelijkheden van uw organisatie, u mogelijk gevraagd voor het instellen van verificatie via een [multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) of [beveiligingsgegevens](user-help-security-info-overview.md).
+- Afhankelijk van de keuzes van uw organisatie wordt u mogelijk gevraagd om verificatie in twee stappen in te stellen met behulp van [multi-factor Authentication](multi-factor-authentication-end-user-first-time.md) of [beveiligings gegevens](user-help-security-info-overview.md).
 
-- (Optioneel) op basis van de mogelijkheden van uw organisatie, u mogelijk worden automatisch geregistreerd bij beheer van mobiele apparaten, zoals Microsoft Intune. Zie voor meer informatie over het inschrijven in Microsoft Intune [uw apparaat inschrijven bij Intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
+- U kunt eventueel, op basis van de keuzes van uw organisatie, automatisch worden inge schreven bij Mobile Device Management, zoals Microsoft Intune. Zie [uw apparaat inschrijven bij intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all)voor meer informatie over het inschrijven van Microsoft intune.
 
-- Gaat u door het proces aanmelden met behulp van de gebruikersnaam en het wachtwoord voor uw werk of school-account.
+- U gaat door met de gebruikers naam en het wacht woord voor uw werk-of school account.
 
-## <a name="to-register-your-windows-device"></a>Om uw Windows-apparaat te registreren
+## <a name="to-register-your-windows-device"></a>Uw Windows-apparaat registreren
 
-Volg deze stappen voor het registreren van uw persoonlijke apparaat in uw netwerk.
+Volg deze stappen om uw persoonlijke apparaat te registreren in uw netwerk.
 
-1. Open **instellingen**, en selecteer vervolgens **Accounts**.
+1. Open **instellingen**en selecteer vervolgens **accounts**.
 
-    ![Accounts in het scherm instellingen](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
+    ![Accounts op het scherm instellingen](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Selecteer **toegang tot werk of school**, en selecteer vervolgens **Connect** uit de **toegang tot werk of school** scherm.
+2. Selecteer **toegang tot werk of school**en selecteer vervolgens **verbinding maken** in het scherm **toegang werk of school** .
 
-    ![Toegang tot werk- of schoolaccount scherm met de optie verbinding maken is gemarkeerd](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
+    ![Het scherm toegang tot werk of school met de optie verbinding maken gemarkeerd](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
-3. Op de **toevoegen van een account voor werk of school** scherm, typt u in uw e-mailadres voor uw werk of school-account en selecteer vervolgens **volgende**. Bijvoorbeeld alain@contoso.com.
+3. Typ in het scherm **een werk-of school account toevoegen** uw e-mail adres voor uw werk-of school account en selecteer vervolgens **volgende**. Bijvoorbeeld alain@contoso.com.
 
-4. Meld u aan bij uw werk- of schoolaccount en selecteer vervolgens **aanmelden**.
+4. Meld u aan bij uw werk-of school account en selecteer **Aanmelden**.
 
-5. Voltooi de rest van het registratieproces, met inbegrip van uw verzoek voor identiteitverificatie goed te keuren (als u verificatie in twee stappen gebruiken) en het instellen van Windows Hello (indien nodig).
+5. Voltooi de rest van het registratie proces, inclusief het goed keuren van uw aanvraag voor identiteits verificatie (als u verificatie in twee stappen gebruikt) en het instellen van Windows hello (indien nodig).
 
-## <a name="to-verify-that-youre-registered"></a>Om te controleren of u bent geregistreerd
-U kunt ervoor zorgen dat u bent geregistreerd door te kijken op uw instellingen.
+## <a name="to-verify-that-youre-registered"></a>Controleren of u bent geregistreerd
+U kunt ervoor zorgen dat u bent geregistreerd door te kijken naar uw instellingen.
 
-1. Open **instellingen**, en selecteer vervolgens **Accounts**.
+1. Open **instellingen**en selecteer vervolgens **accounts**.
 
-    ![Accounts in het scherm instellingen](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
+    ![Accounts op het scherm instellingen](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Selecteer **toegang tot werk of school**, en zorg ervoor dat u uw werk- of schoolaccount ziet.
+2. Selecteer **toegang tot werk of school**en zorg ervoor dat u uw werk-of school account ziet.
 
-    ![Toegang tot werk- of schoolaccount scherm met verbonden contoso-account](./media/user-help-register-device-on-network/register-device-setup-verify.png)
+    ![Het scherm werk of school openen met verbonden contoso-account](./media/user-help-register-device-on-network/register-device-setup-verify.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat u uw persoonlijke apparaat aan het netwerk van uw organisatie hebt geregistreerd, kunt u moet toegang hebben tot de meeste van uw resources.
+Nadat u uw persoonlijke apparaat hebt geregistreerd bij het netwerk van uw organisatie, kunt u toegang krijgen tot de meeste resources.
 
-- Als uw organisatie wil dat u uw apparaat werken, raadpleegt u [uw werk-apparaat toevoegen aan het netwerk van uw organisatie](user-help-join-device-on-network.md).
+- Als uw organisatie u wil toevoegen aan uw werk apparaat, raadpleegt u [uw werk apparaat toevoegen aan het netwerk van uw organisatie](user-help-join-device-on-network.md).
 
 
 

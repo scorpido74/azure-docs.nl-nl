@@ -1,85 +1,85 @@
 ---
-title: Self-serviceregistratie voor via e-mail geverifieerde gebruikersaccounts - Azure Active Directory | Microsoft Docs
-description: Aanmelding via selfservice gebruiken in een tenant Azure Active Directory (Azure AD)
+title: Selfservice registratie voor door e-mail geverifieerde gebruikers-Azure AD | Microsoft Docs
+description: Aanmelden via self-service gebruiken in een Azure Active Directory-Tenant (Azure AD)
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d949b746f05eb440f5ae28f683dfc838217ab47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 953837e22cdd3ba8a54d702eac61461739db82d2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956508"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027640"
 ---
-# <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Wat is selfservice Meld u aan voor Azure Active Directory?
+# <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Wat is een self-service registratie voor Azure Active Directory?
 
-In dit artikel wordt uitgelegd hoe u self-service-aanmelding gebruiken voor het vullen van een organisatie in Azure Active Directory (Azure AD). Als u wilt een domeinnaam overnemen van een niet-beheerde Azure AD-organisatie, Zie [overnemen van een niet-beheerde adreslijst als administrator](domains-admin-takeover.md).
+In dit artikel wordt uitgelegd hoe u Self-Service-aanmelding kunt gebruiken om een organisatie te vullen in Azure Active Directory (Azure AD). Als u een domein naam wilt overnemen uit een niet-beheerde Azure AD-organisatie, raadpleegt u een niet- [beheerde Directory als Administrator overnemen](domains-admin-takeover.md).
 
-## <a name="why-use-self-service-sign-up"></a>Waarom self-service-aanmelding gebruiken?
-* Breng uw klanten naar services die ze sneller willen
-* Aanbiedingen op basis van een e-mailadres voor een service maken
-* E-mailadres op basis van aanmelding stromen maken waarmee snel gebruikers te maken met behulp van hun e-mailadres werk gemakkelijk te onthouden aliassen identiteiten
-* Een zelf-Self-service gemaakte Azure AD-directory kan worden omgezet in een beheerde adreslijst die kan worden gebruikt voor andere services
+## <a name="why-use-self-service-sign-up"></a>Waarom gebruik maken van self-service registratie?
+* Klanten sneller op de gewenste services ontvangen
+* Op e-mail gebaseerde aanbiedingen voor een service maken
+* Op e-mail gebaseerde aanmeldings stromen maken waarmee gebruikers snel identiteiten kunnen maken met behulp van hun gemakkelijk te onthouden werk-e-mail aliassen
+* Een door selfservice gemaakte Azure AD-Directory kan worden omgezet in een beheerde map die kan worden gebruikt voor andere services
 
-## <a name="terms-and-definitions"></a>Termen en definities
-* **Self-service-aanmelding**: Dit is de methode waarmee een gebruiker zich aanmeldt voor een service in de cloud en heeft een identiteit die automatisch voor ze zijn gemaakt in Azure AD op basis van hun e-maildomein.
-* **Niet-beheerde Azure AD-directory**: Dit is de map waar deze identiteit is gemaakt. Een niet-beheerde adreslijst is een map die geen globale beheerder heeft.
-* **Via e-mail geverifieerde gebruiker**: Dit is een type gebruikersaccount in Azure AD. Een gebruiker met een automatisch gemaakt nadat het aanmelden voor een aanbieding selfservice staat bekend als een gebruiker via e-mail geverifieerde identiteit. Een gebruiker via e-mail geverifieerde reguliere lid is van een map die is gemarkeerd met creationmethod = EmailVerified.
+## <a name="terms-and-definitions"></a>Voor waarden en definities
+* **Aanmelden voor selfservice**: dit is de methode waarmee een gebruiker zich aanmeldt voor een Cloud service en die automatisch een identiteit heeft gemaakt in azure AD op basis van hun e-mail domein.
+* Niet- **beheerde Azure AD-adres lijst**: dit is de map waarin de identiteit is gemaakt. Een onbeheerde map is een map zonder globale beheerder.
+* Door **e-mail geverifieerde gebruiker**: dit is een type gebruikers account in azure AD. Een gebruiker met een identiteit die automatisch is gemaakt nadat u zich hebt aangemeld voor een self-service aanbieding, wordt een door e-mail geverifieerde gebruiker genoemd. Een door e-mail geverifieerde gebruiker is een standaard lid van een map die is gelabeld met creationmethod = EmailVerified.
 
-## <a name="how-do-i-control-self-service-settings"></a>Hoe beheers ik selfservice-instellingen
-Beheerders hebben nu twee besturingselementen voor selfservice. Ze kunnen bepalen of:
+## <a name="how-do-i-control-self-service-settings"></a>Instellingen voor Self-service voor Hoe kan ik besturings element?
+Beheerders hebben vandaag nog twee selfservice besturings elementen. Ze kunnen bepalen of:
 
-* Gebruikers kunnen deelnemen aan de directory via e-mail
-* Gebruikers kunnen zelf een licentie voor toepassingen en services
+* Gebruikers kunnen lid worden van de map via e-mail
+* Gebruikers kunnen zichzelf een licentie voor toepassingen en services
 
-### <a name="how-can-i-control-these-capabilities"></a>Hoe kan ik deze functies bepalen?
-Een beheerder kan deze mogelijkheden met de volgende parameters van de Azure AD-cmdlet Set-MsolCompanySettings configureren:
+### <a name="how-can-i-control-these-capabilities"></a>Hoe kan ik deze mogelijkheden beheren?
+Een beheerder kan deze mogelijkheden configureren met de volgende para meters van de Azure AD-cmdlet Set-MsolCompanySettings:
 
-* **AllowEmailVerifiedUsers** bepaalt of een gebruiker kunt maken of lid worden van een map. Als u deze parameter op $false instelt, kan er geen gebruiker via e-mail geverifieerde Neem deel aan de directory.
-* **AllowAdHocSubscriptions** Hiermee bepaalt u de mogelijkheid voor gebruikers om uit te voeren van de self-service-aanmelding. Als u deze parameter op $false instelt, kan er geen gebruiker self-service-aanmelding kunt uitvoeren.
+* **AllowEmailVerifiedUsers** bepaalt of een gebruiker een map kan maken of toevoegen. Als u die para meter instelt op $false, kan geen door e-mail geverifieerde gebruiker lid worden van de map.
+* Met **AllowAdHocSubscriptions** bepaalt u de mogelijkheid voor gebruikers om selfservice registratie uit te voeren. Als u die para meter instelt op $false, kan geen enkele gebruiker aanmelden met selfservice service uitvoeren.
   
-AllowEmailVerifiedUsers en AllowAdHocSubscriptions zijn hele adreslijst-instellingen die kunnen worden toegepast op een beheerde of onbeheerde map. Hier volgt een voorbeeld waarin:
+AllowEmailVerifiedUsers en AllowAdHocSubscriptions zijn instellingen voor de hele directory die kunnen worden toegepast op een beheerde of onbeheerde map. Hier volgt een voor beeld waarin:
 
-* Beheren van een map met een geverifieerde domeinnaam bijvoorbeeld contoso.com
-* U B2B-samenwerking vanuit een andere map gebruiken om uit te nodigen van een gebruiker die nog niet bestaat (userdoesnotexist@contoso.com) in de basismap van contoso.com
-* De basismap heeft de AllowEmailVerifiedUsers ingeschakeld
+* U beheert een directory met een geverifieerd domein, zoals contoso.com
+* U maakt gebruik van B2B-samen werking vanuit een andere Directory om een gebruiker die nog niet bestaat (userdoesnotexist@contoso.com) uit te nodigen in de hoofdmap van contoso.com
+* De AllowEmailVerifiedUsers is ingeschakeld op de basismap
 
-Als de vorige voorwaarden voldaan wordt, klikt u vervolgens een gebruiker lid wordt gemaakt in de basismap en een gastgebruiker B2B is gemaakt in de uitnodigende map.
+Als aan de voor waarden wordt voldaan, wordt een lid van de gebruiker in de basismap gemaakt en wordt een B2B-gast gebruiker gemaakt in de uitgenodigde map.
 
-Flow en PowerApps proefversie registraties niet wordt beheerd door de **AllowAdHocSubscriptions** instelling. Raadpleeg voor meer informatie de volgende artikelen:
+De aanmeldingen voor de proef versie van flow en PowerApps worden niet beheerd door de **AllowAdHocSubscriptions** -instelling. Raadpleeg voor meer informatie de volgende artikelen:
 
-* [Hoe kan ik voorkomen dat mijn bestaande gebruikers Power BI gaan gebruiken?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
-* [Flow in uw organisatie Q & A](https://docs.microsoft.com/flow/organization-q-and-a)
+* [Hoe kan ik voor komen dat mijn bestaande gebruikers Power BI gebruiken?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
+* [De stroom in uw organisatie Q & A](https://docs.microsoft.com/flow/organization-q-and-a)
 
-### <a name="how-do-the-controls-work-together"></a>Hoe de besturingselementen werken samen?
-Deze twee parameters kunnen in combinatie worden gebruikt voor het definiëren van meer nauwkeurige controle over self-service-aanmelding. Bijvoorbeeld, de volgende opdracht uit, kunnen gebruikers om uit te voeren van selfservice aanmelding, maar alleen als deze gebruikers hebben al een account in Azure AD (met andere woorden, gebruikers die een worden gemaakt via e-mail geverifieerde account moet eerst niet uitvoeren self-service-aanmelding):
+### <a name="how-do-the-controls-work-together"></a>Hoe werken de besturings elementen samen?
+Deze twee para meters kunnen worden gebruikt in combi natie met het definiëren van nauw keurigere controle over self-service registratie. Met de volgende opdracht kunnen gebruikers zich bijvoorbeeld aanmelden voor selfservice registratie, maar alleen als deze gebruikers al een account hebben in azure AD (met andere woorden, gebruikers die een e-mail account moeten maken dat eerst moet worden gemaakt, kan niet zelf een aanmelding uitvoeren):
 
 ```powershell
     Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
 ```
 
-Het volgende stroomdiagram wordt uitgelegd voor de verschillende combinaties van deze parameters en de resulterende voorwaarden voor de directory en de self-service-aanmelding.
+In het volgende diagram ziet u de verschillende combi Naties voor deze para meters en de resulterende voor waarden voor de Directory en self-service registratie.
 
-![Stroomdiagram van selfservice aanmelding besturingselementen](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
+![stroom diagram van self-service registratie besturings elementen](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
-Zie voor meer informatie en voorbeelden van het gebruik van deze parameters [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
+Zie [set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)voor meer informatie en voor beelden van het gebruik van deze para meters.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een aangepaste domeinnaam toevoegen aan Azure AD](../fundamentals/add-custom-domain.md)
+* [Een aangepaste domein naam toevoegen aan Azure AD](../fundamentals/add-custom-domain.md)
 * [Azure PowerShell installeren en configureren](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure-cmdlet-naslaginformatie](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
-* [Sluit uw werk of school-account in een niet-beheerde adreslijst](users-close-account.md)
+* [Uw werk-of school account sluiten in een niet-beheerde map](users-close-account.md)

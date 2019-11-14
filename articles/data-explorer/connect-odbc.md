@@ -1,75 +1,75 @@
 ---
-title: Verbinding maken met Azure Data Explorer met behulp van ODBC
-description: In dit artikel leert u hoe u voor het instellen van een verbinding Open Database Connectivity (ODBC) naar Azure Data Explorer.
+title: Verbinding maken met Azure Data Explorer met ODBC
+description: In dit artikel leert u hoe u een Open Database Connectivity (ODBC)-verbinding kunt instellen met Azure Data Explorer.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/30/2019
-ms.openlocfilehash: 65795b5b4dea8d2cdeecf5f78f9de751f275dac0
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 1b2e7a79eb932f5b971dda1d5d51b650789394db
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537595"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034019"
 ---
-# <a name="connect-to-azure-data-explorer-with-odbc"></a>Verbinding maken met Azure Data Explorer met behulp van ODBC
+# <a name="connect-to-azure-data-explorer-with-odbc"></a>Verbinding maken met Azure Data Explorer met ODBC
 
-Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is een algemeen geaccepteerde application programming interface (API) voor toegang tot de database. ODBC gebruiken vanaf toepassingen waarvoor een specifieke connector geen verbinding maken met Azure Data Explorer.
+Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is een algemeen geaccepteerde Application Programming Interface (API) voor toegang tot de data base. Gebruik ODBC om verbinding te maken met Azure Data Explorer van toepassingen die geen specifieke connector hebben.
 
-Achter de schermen toepassingen aanroepen in de interface ODBC-functies die zijn geïmplementeerd in de database-specifieke modules met de naam *stuurprogramma's*. Azure Data Explorer ondersteunt een subset van de SQL Server-communicatieprotocol ([MS-TDS](/azure/kusto/api/tds/)), zodat deze het ODBC-stuurprogramma voor SQL Server kunt gebruiken.
+Achter de schermen worden toepassingen aangeroepen in de ODBC-interface, die zijn geïmplementeerd in data base-specifieke modules die *Stuur Programma's*worden genoemd. Azure Data Explorer ondersteunt een subset van het SQL Server Communication Protocol ([MS-TDS](/azure/kusto/api/tds/)), zodat het ODBC-stuur programma voor SQL Server kan worden gebruikt.
 
-Met behulp van de volgende video, kunt u informatie om een ODBC-verbinding te maken. 
+Met behulp van de volgende video kunt u leren hoe u een ODBC-verbinding maakt. 
 
 > [!VIDEO https://www.youtube.com/embed/qA5wxhrOwog]
 
-U kunt ook [configureren van de ODBC-gegevensbron](#configure-the-odbc-data-source) zoals hieronder aangegeven. 
+U kunt ook [de ODBC-gegevens bron configureren](#configure-the-odbc-data-source) zoals hieronder wordt beschreven. 
 
-In het artikel leert u hoe u het SQL Server ODBC-stuurprogramma gebruiken zodat u kunt verbinding maken met Azure Data Explorer vanuit elke toepassing die ondersteuning biedt voor ODBC. 
+In het artikel leest u hoe u het ODBC-stuur programma van SQL Server gebruikt, zodat u verbinding kunt maken met Azure Data Explorer vanuit elke toepassing die ODBC ondersteunt. 
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig:
 
-* [Microsoft ODBC-stuurprogramma voor SQL Server-versie 17.2.0.1 of hoger](/sql/connect/odbc/download-odbc-driver-for-sql-server) voor uw besturingssysteem.
+* [Micro soft ODBC-stuur programma voor SQL Server versie 17.2.0.1 of hoger](/sql/connect/odbc/download-odbc-driver-for-sql-server) voor uw besturings systeem.
 
-## <a name="configure-the-odbc-data-source"></a>De ODBC-gegevensbron configureren
+## <a name="configure-the-odbc-data-source"></a>De ODBC-gegevens bron configureren
 
-Volg deze stappen voor het configureren van een ODBC-gegevensbron met behulp van het ODBC-stuurprogramma voor SQL Server.
+Volg deze stappen voor het configureren van een ODBC-gegevens bron met behulp van het ODBC-stuur programma voor SQL Server.
 
-1. Zoek in Windows, *ODBC-gegevensbronnen*, en opent u de desktop-app voor ODBC-gegevensbronnen.
+1. Zoek in Windows naar *ODBC-gegevens bronnen*en open de ODBC-gegevens bronnen bureau blad-app.
 
 1. Selecteer **Toevoegen**.
 
     ![Gegevensbron toevoegen](media/connect-odbc/add-data-source.png)
 
-1. Selecteer **ODBC-stuurprogramma 17 voor SQL Server** vervolgens **voltooien**.
+1. Selecteer **ODBC-stuur programma 17 voor SQL Server** klik vervolgens op **volt ooien**.
 
-    ![Selecteer stuurprogramma](media/connect-odbc/select-driver.png)
+    ![Stuur programma selecteren](media/connect-odbc/select-driver.png)
 
-1. Voer een naam en beschrijving voor de verbinding en het cluster dat u wilt verbinden, selecteer vervolgens **volgende**. De URL in het formulier moet cluster  *\<ClusterName\>.\< Regio\>. kusto.windows.net*.
+1. Voer een naam en beschrijving in voor de verbinding en het cluster waarmee u verbinding wilt maken en selecteer vervolgens **volgende**. De cluster-URL moet de notatie *\<clustername\>hebben.\<regio\>. kusto.Windows.net*.
 
     ![Server selecteren](media/connect-odbc/select-server.png)
 
-1. Selecteer **Active Directory geïntegreerde** vervolgens **volgende**.
+1. Selecteer **Active Directory geïntegreerd** , vervolgens **volgende**.
 
-    ![Geïntegreerd met Active Directory](media/connect-odbc/active-directory-integrated.png)
+    ![Active Directory geïntegreerd](media/connect-odbc/active-directory-integrated.png)
 
-1. Vervolgens selecteert u de database met de voorbeeldgegevens **volgende**.
+1. Selecteer de data base met de voorbeeld gegevens en vervolgens op **volgende**.
 
-    ![Standaard-database wijzigen](media/connect-odbc/change-default-database.png)
+    ![Standaard database wijzigen](media/connect-odbc/change-default-database.png)
 
-1. In het volgende scherm laat u alle opties als standaardwaarden Selecteer **voltooien**.
+1. Geef in het volgende scherm alle opties op als standaard waarden en selecteer vervolgens **volt ooien**.
 
-1. Selecteer **gegevensbron testen**.
+1. Selecteer **gegevens bron testen**.
 
-    ![Gegevensbron testen](media/connect-odbc/test-data-source.png)
+    ![Gegevens bron testen](media/connect-odbc/test-data-source.png)
 
-1. Controleren of de test is geslaagd Selecteer **OK**. Als de test is mislukt, controleert u de waarden die u hebt opgegeven in de vorige stappen en zorg ervoor dat u hebt onvoldoende machtigingen om te verbinden met het cluster.
+1. Controleer of de test is geslaagd en selecteer **OK**. Als de test mislukt, controleert u de waarden die u in de vorige stappen hebt opgegeven en zorgt u ervoor dat u voldoende machtigingen hebt om verbinding te maken met het cluster.
 
-    ![Test is voltooid](media/connect-odbc/test-succeeded.png)
+    ![Test geslaagd](media/connect-odbc/test-succeeded.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Verbinding maken met Azure Data Explorer vanaf Tableau](tableau.md)
+* [Verbinding maken met Azure Data Explorer vanuit tableau](tableau.md)

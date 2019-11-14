@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 9e8dbbd40259c7a71f252d0d6e93dd6f135973de
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 3ee7879475801660b5200dddca88a0a81b2b6b9b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513539"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034146"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy jobs resume
 
@@ -24,6 +24,13 @@ Hiermee wordt de bestaande taak hervat met de opgegeven taak-ID.
 ```azcopy
 azcopy jobs resume [jobID] [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>Gerelateerde conceptuele artikelen
+
+- [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
+- [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
+- [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
+- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Opties
 

@@ -1,5 +1,5 @@
 ---
-title: Klassieke Resources migreren naar Azure Resource Manager-overzicht | Microsoft Docs
+title: Klassieke Resources migreren naar Azure Resource Manager-overzicht
 description: In dit artikel wordt de door het platform ondersteunde migratie van resources van klassiek naar Azure Resource Manager behandeld
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: kasing
-ms.openlocfilehash: 604d5950bd438a856e2a5b5544296a609477b25e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 4852f719f48947ad3b7b94a9419e6b1bab3bda2b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005515"
+ms.locfileid: "74033264"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Door het platform ondersteunde migratie van IaaS-resources van klassiek naar Azure Resource Manager
 [!INCLUDE [virtual-machines-common-migration-faq](../../../includes/virtual-machines-common-classic-resource-manager-migration-overview.md)]

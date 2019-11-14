@@ -1,5 +1,5 @@
 ---
-title: Overzicht van virtuele Linux-machines in Azure | Microsoft Docs
+title: Overzicht van virtuele Linux-machines in azure
 description: Hier vindt u informatie over Azure Compute, Storage en netwerkservices voor gebruik met virtuele Linux-machines.
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
@@ -14,19 +14,19 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 14ed21efec47e15663724bd782ad931903fb8f13
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: dc0145e23b940f6aca9021186254b966592f343d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082426"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035347"
 ---
 # <a name="azure-and-linux"></a>Azure en Linux
 Microsoft Azure is een groeiende verzameling geïntegreerde, openbare cloudservices, waaronder analyses, virtuele machines, databases, mobiele toepassingen, netwerken, opslag en het web&mdash;ideaal voor het hosten van uw oplossingen.  Microsoft Azure biedt een schaalbaar platform waarvoor u alleen betaalt voor wat u gebruikt, wanneer u dat gebruikt - zonder dat u hoeft te investeren in on-premises hardware.  Azure is klaar om uw oplossingen op te schalen wanneer u daar ook klaar, welke schaal u ook nodig hebt om te voorzien in de behoeften van uw klanten.
 
 Als u bekend met de verschillende functies van AWS van Amazon, kunt u het document [AWS voor vergelijking van Azure-services](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) doornemen.
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>Regio's
 Resources van Microsoft Azure worden verdeeld over verschillende geografische regio's over de hele wereld.  Een 'regio' vertegenwoordigt meerdere datacenters in één geografisch gebied. Momenteel (augustus 2018) zijn er voor Azure wereldwijd 42 regio's algemeen beschikbaar. Er zijn bovendien 12 nieuwe regio's aangekondigd, waarmee Azure in meer wereldwijde regio’s beschikbaar is dan enige andere cloudprovider. Op de volgende pagina ziet u een bijgewerkte lijst met bestaande en aangekondigde regio's:
 
 * [Azure-regio's](https://azure.microsoft.com/regions/)
@@ -86,7 +86,7 @@ Microsoft werkt nauw samen met partners om ervoor te zorgen dat de beschikbare i
 ## <a name="getting-started-with-linux-on-azure"></a>Aan de slag met Linux in Azure
 Als u met Azure aan de slag wilt gaan, hebt u het volgende nodig: een Azure-account, de Azure CLI en een combinatie van een openbare en een persoonlijke SSH-sleutel.
 
-### <a name="sign-up-for-an-account"></a>Registreren voor een account
+### <a name="sign-up-for-an-account"></a>Aanmelden voor een account
 Het eerste wat u moet doen, is een Azure-account maken.  Ga naar [deze pagina](https://azure.microsoft.com/pricing/free-trial/) om direct te beginnen.
 
 ### <a name="install-the-cli"></a>De CLI installeren

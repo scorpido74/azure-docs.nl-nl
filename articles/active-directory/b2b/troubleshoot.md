@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 05/25/2017
+ms.date: 11/12/2019
 tags: active-directory
 ms.author: mimart
 author: v-miegge
@@ -15,12 +15,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6449644f98280d75363f737be11f8e8b824cab36
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6aee049f91aaa071595ab42e9bb4d6b2f5e8616d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795186"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021843"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Problemen oplossen Azure Active Directory B2B-samen werking
 
@@ -94,6 +94,10 @@ Om dit probleem op te lossen, moet u de afgebroken Tenant overnemen. Raadpleeg e
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Een gast gebruiker met een just-in-time-of virus-Tenant kan het wacht woord niet opnieuw instellen
 
 Als de identiteits Tenant een just-in-time (JIT) of virale Tenant is (wat betekent dat het een afzonderlijke, niet-beheerde Azure-Tenant is), kan alleen de gast gebruiker het wacht woord opnieuw instellen. Soms neemt een organisatie het [beheer van virale tenants over](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) die worden gemaakt wanneer werk nemers hun werk-e-mail adressen gebruiken om zich aan te melden voor services. Nadat de organisatie een virale Tenant heeft overgenomen, kan alleen een beheerder in die organisatie het wacht woord van de gebruiker opnieuw instellen of SSPR inschakelen. Als dat nodig is, kunt u, als de uitnodigende organisatie, het gast gebruikers account uit uw Directory verwijderen en een uitnodiging opnieuw verzenden.
+
+## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>Een gast gebruiker kan de AzureAD Power shell v1-module niet gebruiken
+
+Met ingang van 18 november 2019 kunnen gast gebruikers in uw directory (gedefinieerd als gebruikers accounts waarvan de eigenschap **User type** gelijk is aan **gast**) worden geblokkeerd voor het gebruik van de AzureAD Power shell v1-module. Als een gebruiker verdergaat, moet deze lid zijn van een gebruiker (waarbij **User type** gelijk is aan **lid**) of gebruikmaken van de AzureAD Power shell V2-module.
 
 ## <a name="next-steps"></a>Volgende stappen
 

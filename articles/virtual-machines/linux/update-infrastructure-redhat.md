@@ -1,5 +1,5 @@
 ---
-title: Red Hat Update Infrastructure | Microsoft Docs
+title: Update-infrastructuur voor Red Hat
 description: Meer informatie over Red Hat Update Infrastructure voor on-demand Red Hat Enterprise Linux-instanties in Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: 6b332af53f421230b3fb5401e525bd77c5e87ed9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b19ccad5254418092446aaf781d49fa7edf0e4f4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081391"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034311"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure voor on-demand Red Hat Enterprise Linux-machines in Azure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) kunt u cloudproviders, zoals Azure, voor het spiegelen van de inhoud van Red Hat gehoste opslagplaats, aangepaste opslagplaatsen maken met Azure-specifieke inhoud en het beschikbaar maken voor virtuele machines door eindgebruikers.
@@ -40,13 +40,13 @@ Informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL vindt u
 
 ## <a name="image-update-behavior"></a>Gedrag van installatie kopie-updates
 
-Met ingang van 2019 april biedt Azure RHEL installatie kopieën die zijn verbonden met EUS-opslag plaatsen (Extended update support) standaard en RHEL installatie kopieën die standaard worden aangesloten op de normale (niet-EUS) opslag plaatsen. Meer informatie over RHEL EUS vindt u in de documentatie van de [versie levenscyclus](https://access.redhat.com/support/policy/updates/errata) van Red Hat en de [Eus-documentatie](https://access.redhat.com/articles/rhel-eus). Het standaard gedrag van `sudo yum update` is afhankelijk van de RHEL-installatie kopie die u hebt ingericht, omdat verschillende installatie kopieën zijn verbonden met verschillende opslag plaatsen.
+Met ingang van 2019 april biedt Azure RHEL installatie kopieën die zijn verbonden met EUS-opslag plaatsen (Extended update support) standaard en RHEL installatie kopieën die standaard worden aangesloten op de normale (niet-EUS) opslag plaatsen. Meer informatie over RHEL EUS vindt u in de documentatie van de [versie levenscyclus](https://access.redhat.com/support/policy/updates/errata) van Red Hat en de [Eus-documentatie](https://access.redhat.com/articles/rhel-eus). Het standaard gedrag van `sudo yum update` varieert, afhankelijk van de RHEL-installatie kopie die u hebt ingericht, omdat verschillende installatie kopieën zijn verbonden met verschillende opslag plaatsen.
 
-Voor een volledige lijst met installatie kopieën `az vm image list --publisher redhat --all` voert u uit met behulp van de Azure cli.
+Voor een volledige lijst met installatie kopieën voert u `az vm image list --publisher redhat --all` uit met behulp van de Azure CLI.
 
 ### <a name="images-connected-to-non-eus-repositories"></a>Afbeeldingen die zijn verbonden met niet-EUS-opslag plaatsen
 
-Als u een virtuele machine inricht vanuit een RHEL-installatie kopie die is verbonden met niet-EUS-opslag plaatsen, wordt u bijgewerkt naar de meest recente `sudo yum update`RHEL-versie wanneer u uitvoert. Als u bijvoorbeeld een virtuele machine inricht vanuit een RHEL 7,4 payg-installatie `sudo yum update`kopie en uitvoert, hebt u een RHEL 7,7 VM (de meest recente secundaire versie in de RHEL7-serie).
+Als u een virtuele machine inricht vanuit een RHEL-installatie kopie die is verbonden met niet-EUS-opslag plaatsen, wordt u bijgewerkt naar de meest recente RHEL-versie wanneer u `sudo yum update`uitvoert. Als u bijvoorbeeld een virtuele machine inricht vanuit een RHEL 7,4 PAYG-installatie kopie en `sudo yum update`uitvoert, hebt u een RHEL 7,7 VM (de meest recente secundaire versie in de RHEL7-serie).
 
 Installatie kopieën die zijn verbonden met niet-EUS-opslag plaatsen, bevatten geen secundair versie nummer in de SKU. De SKU is het derde element in de URN (volledige naam van de afbeelding). Zo worden alle volgende installatie kopieën gekoppeld aan niet-EUS-opslag plaatsen:
 
@@ -63,7 +63,7 @@ Houd er rekening mee dat de Sku's 7-LVM of 7-RAW zijn. De secundaire versie word
 
 ### <a name="images-connected-to-eus-repositories"></a>Installatie kopieën die zijn verbonden met EUS-opslag plaatsen
 
-Als u een virtuele machine inricht vanuit een RHEL-installatie kopie die is verbonden met EUS-opslag plaatsen, wordt u niet bijgewerkt naar de meest recente `sudo yum update`secundaire versie van RHEL wanneer u uitvoert. De installatie kopieën die zijn verbonden met EUS-opslag plaatsen, zijn ook versie-vergrendeld op hun specifieke secundaire versie.
+Als u een virtuele machine inricht vanuit een RHEL-installatie kopie die is verbonden met EUS-opslag plaatsen, wordt u niet bijgewerkt naar de meest recente secundaire versie van RHEL wanneer u `sudo yum update`uitvoert. De installatie kopieën die zijn verbonden met EUS-opslag plaatsen, zijn ook versie-vergrendeld op hun specifieke secundaire versie.
 
 Afbeeldingen die zijn verbonden met EUS-opslag plaatsen, bevatten een secundair versie nummer in de SKU. Zo worden alle volgende installatie kopieën gekoppeld aan EUS-opslag plaatsen:
 
@@ -108,7 +108,7 @@ Gebruik de volgende instructies om een RHEL-VM te vergren delen naar een bepaald
     ```
 
     >[!NOTE]
-    > Met de bovenstaande instructie wordt de RHEL-secundaire release vergrendeld op de huidige secundaire release. Voer een specifieke kleine release in als u een upgrade wilt uitvoeren en wilt vergren delen naar een latere secundaire versie die niet het meest recent is. Uw RHEL- `echo 7.5 > /etc/yum/vars/releasever` versie wordt bijvoorbeeld vergrendeld op RHEL 7,5
+    > Met de bovenstaande instructie wordt de RHEL-secundaire release vergrendeld op de huidige secundaire release. Voer een specifieke kleine release in als u een upgrade wilt uitvoeren en wilt vergren delen naar een latere secundaire versie die niet het meest recent is. `echo 7.5 > /etc/yum/vars/releasever` wordt uw RHEL-versie bijvoorbeeld vergren delen met RHEL 7,5
 
 1. Uw RHEL-VM bijwerken
     ```bash
@@ -167,15 +167,15 @@ Als u verder beperken van toegang van RHEL betalen per gebruik virtuele machines
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>Verlopen RHUI-clientcertificaat op een virtuele machine bijwerken
 
-Als u een oudere RHEL-VM-installatie kopie gebruikt, bijvoorbeeld RHEL 7,4 (installatie kopie urn `RedHat:RHEL:7.4:7.4.2018010506`:), treden er connectiviteits problemen op RHUI vanwege een nu-verlopen SSL-client certificaat. De fout die u ziet, kan eruitzien _als "SSL-peer heeft uw certificaat afgewezen als verlopen"_ of _"fout: Kan de meta gegevens van de opslag plaats (repomd. XML) niet ophalen voor de opslag plaats:... Controleer het pad en probeer het opnieuw_. Als u dit probleem wilt verhelpen, moet u het RHUI-client pakket op de VM bijwerken met de volgende opdracht:
+Als u een oudere RHEL-VM-installatie kopie gebruikt, bijvoorbeeld RHEL 7,4 (afbeelding URN: `RedHat:RHEL:7.4:7.4.2018010506`), worden er connectiviteits problemen met RHUI veroorzaakt door een nu-verlopen SSL-client certificaat. De fout die u ziet, kan er als volgt uitzien: _"SSL-peer heeft uw certificaat afgewezen als verlopen"_ of _"fout: kan de meta gegevens van de opslag plaats (repomd. XML) niet ophalen voor de opslag plaats... Controleer het pad en probeer het opnieuw_. Als u dit probleem wilt verhelpen, moet u het RHUI-client pakket op de VM bijwerken met de volgende opdracht:
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 ```
 
-U kunt ook het `sudo yum update` client certificaat pakket bijwerken (afhankelijk van uw RHEL-versie), ondanks dat er fouten met het ' verlopen SSL-certificaat ' worden weer geven voor andere opslag plaatsen. Als deze update is geslaagd, moet de normale connectiviteit met andere RHUI-opslag plaatsen worden hersteld, zodat u kunt worden uitgevoerd `sudo yum update` .
+Het uitvoeren van `sudo yum update` kan ook het client certificaat pakket bijwerken (afhankelijk van uw RHEL-versie), ondanks dat er fouten met de fout ' verlopen SSL-certificaat ' worden weer geven voor andere opslag plaatsen. Als deze update is geslaagd, moet de normale connectiviteit met andere RHUI-opslag plaatsen worden hersteld. u kunt `sudo yum update` nu uitvoeren.
 
-Als er een 404-fout optreedt tijdens het uitvoeren `yum update`van een, voert u de volgende handelingen uit om de yum-cache te vernieuwen:
+Als u een 404-fout uitvoert tijdens het uitvoeren van een `yum update`, kunt u het volgende proberen om uw yum-cache te vernieuwen:
 ```bash
 sudo yum clean all;
 sudo yum makecache

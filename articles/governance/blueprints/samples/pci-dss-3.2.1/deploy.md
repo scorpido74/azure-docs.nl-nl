@@ -1,18 +1,14 @@
 ---
 title: Voor beeld van PCI-DSS v 3.2.1 blauw drukken-stappen implementeren
 description: Implementeer stappen voor het voor beeld van de betalings kaart branche gegevens beveiliging standaard v 3.2.1 blauw druk, inclusief blauw druk-artefact parameter Details.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: b765782adfa5fd63bc270ad28b74cf3bd1ca1d4a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b29a1a66b7407558769e506deed5e65f7ecb064c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163046"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037260"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Het voor beeld van een PCI-DSS v 3.2.1-blauw versie implementeren
 
@@ -66,7 +62,7 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
-   - Basisbeginselen
+   - Basics
 
      - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
      - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
@@ -111,7 +107,7 @@ Nu u de stappen voor het implementeren van het voor beeld van het PCI-DSS v 3.2.
 > [PCI-DSS v 3.2.1 blauw druk-overzicht](./index.md)
 > [PCI-DSS v 3.2.1 blauw druk-besturings element toewijzing](./control-mapping.md)
 
-Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
+Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: LAMP implementeren op een virtuele Linux-machine in Azure | Microsoft Docs'
+title: 'Zelf studie: LAMP implementeren op een virtuele Linux-machine in azure'
 description: In deze zelfstudie leert u hoe de LAMP-stack installeert op een virtuele Linux-machine in Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 893fba20af12bbbeeab2f0393177cd6f0daa6452
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3b1f4ef9d4e36c35cc72716125392aaff05eab6d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299430"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034475"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Zelfstudie: Een LAMP-webserver installeren op een virtuele Linux-machine in Azure
 
@@ -67,7 +67,7 @@ Als Apache is geïnstalleerd en poort 80 is geopend voor de VM, is de webserver 
 ![Standaardpagina van Apache][3]
 
 
-### <a name="verify-and-secure-mysql"></a>MySQL controleren en beveiligen
+### <a name="verify-and-secure-mysql"></a>MySQL verifiëren en beveiligen
 
 Controleer de versie van MySQL met de volgende opdracht (let op de hoofdletter `V` van de parameter):
 

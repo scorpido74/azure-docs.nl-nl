@@ -1,18 +1,18 @@
 ---
-title: Problemen met de Web Application Firewall voor Azure-toepassing gateway oplossen
+title: Problemen oplossen-Azure Web Application firewall
 description: Dit artikel bevat informatie over het oplossen van problemen met Web Application firewall (WAF) voor Azure-toepassing gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/22/2019
+ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: fff50417bd7944e125ce1d7c1e1ae52ec22f806f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 33c85752903edd618044ccbab06aff7df9a791da
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516563"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046196"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Problemen met Web Application firewall (WAF) voor Azure-toepassing gateway oplossen
 
@@ -148,7 +148,7 @@ Als u een weloverwogen beslissing wilt nemen over het afhandelen van een vals-po
 
 Een voor deel van het gebruik van een uitsluitings lijst is dat alleen een specifiek deel van een aanvraag wordt uitgeschakeld. Dit betekent echter dat een specifieke uitsluiting van toepassing is op alle verkeer dat via uw WAF wordt door gegeven, omdat het een globale instelling is. Dit kan bijvoorbeeld leiden tot een probleem als *1 = 1* een geldige aanvraag is in de hoofd tekst van een bepaalde app, maar niet voor andere. Een ander voor deel is dat u kunt kiezen tussen hoofd tekst, kopteksten en cookies die moeten worden uitgesloten als aan een bepaalde voor waarde wordt voldaan, in plaats van de hele aanvraag uit te sluiten.
 
-Soms zijn er gevallen waarin specifieke para meters worden door gegeven aan de WAF op een manier die mogelijk niet intuïtief is. Er is bijvoorbeeld een token dat wordt door gegeven wanneer wordt geverifieerd met behulp van Azure Active Directory. Dit token, *__RequestVerificationToken*, wordt doorgaans door gegeven als een aanvraag cookie. In sommige gevallen waarin cookies zijn uitgeschakeld, wordt dit token ook door gegeven als een aanvraag kenmerk of "ARG". Als dit gebeurt, moet u ervoor zorgen dat *__RequestVerificationToken* ook als **aanvraag kenmerk naam** wordt toegevoegd aan de uitsluitings lijst.
+Soms zijn er gevallen waarin specifieke para meters worden door gegeven aan de WAF op een manier die mogelijk niet intuïtief is. Er is bijvoorbeeld een token dat wordt door gegeven wanneer wordt geverifieerd met behulp van Azure Active Directory. Dit token *__RequestVerificationToken*, meestal worden door gegeven als een aanvraag cookie. In sommige gevallen waarin cookies zijn uitgeschakeld, wordt dit token ook door gegeven als een aanvraag kenmerk of "ARG". Als dit het geval is, moet u ervoor zorgen dat *__RequestVerificationToken* wordt toegevoegd aan de uitsluitings lijst ook als **aanvraag kenmerk naam** .
 
 ![Uitzonderingen](../media/web-application-firewall-troubleshoot/exclusion-list.png)
 

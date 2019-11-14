@@ -1,26 +1,25 @@
 ---
-title: Zelfstudie voor het toevoegen/verwijderen van gebruikers en dynamische groepslidmaatschappen in Azure Active Directory
+title: Gebruikers toevoegen aan een dynamische groep-zelf studie-Azure AD | Microsoft Docs
 description: In deze zelfstudie gebruikt u groepen met gebruikerslidmaatschapsregels voor het automatisch toevoegen of verwijderen van gebruikers
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1429841ca1376d67c7372f36bd35694afd4cd7ce
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102629"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027110"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Zelfstudie: Automatisch groepsleden toevoegen of verwijderen
 
@@ -44,9 +43,9 @@ U bent niet verplicht licenties aan de gebruikers toe te wijzen om ze op te neme
 
 Eerst maakt u een groep voor uw gastgebruikers, die alle afkomstig zijn van één partnerbedrijf. Omdat zij speciale licenties nodig hebben, is het vaak efficiënter om een groep te maken voor dit doel.
 
-1. Meld u aan bij de Azure Portal https://portal.azure.com) (met een account dat de globale beheerder is voor uw Tenant.
+1. Meld u aan bij de Azure Portal (https://portal.azure.com) met een account dat de globale beheerder is voor uw Tenant.
 2. Selecteer **Azure Active Directory** > **Groepen** > **Nieuwe groep**.
-   ![Selecteer een opdracht voor het starten van een nieuwe groep](./media/groups-dynamic-tutorial/new-group.png)
+   ![opdracht selecteren om een nieuwe groep te starten](./media/groups-dynamic-tutorial/new-group.png)
 3. Ga als volgt te werk op de blade **Groep**:
   
    * Selecteer **beveiliging** als het groeps type.

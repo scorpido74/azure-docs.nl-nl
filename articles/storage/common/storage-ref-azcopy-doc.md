@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b11d831be847716d4edfac4f9a0725e07a60c52a
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: d071517377053e8f4f22ad00966e2be688b0d486
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513866"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74029861"
 ---
 # <a name="azcopy-doc"></a>azcopy doc
 
@@ -28,6 +28,13 @@ Standaard worden de bestanden opgeslagen in een map met de naam ' doc ' in de hu
 ```azcopy
 azcopy doc [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>Gerelateerde conceptuele artikelen
+
+- [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
+- [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
+- [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
+- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Opties
 

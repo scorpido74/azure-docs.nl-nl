@@ -1,30 +1,29 @@
 ---
-title: Beheerders overname van een onbeheerde map-Azure Active Directory | Microsoft Docs
-description: Het overnemen van een DNS-domein naam in een niet-beheerde map (Shadow Tenant) in Azure Active Directory.
+title: Beheerders overname van een onbeheerde Directory-Azure AD | Microsoft Docs
+description: Het overnemen van een DNS-domein naam in een onbeheerde Azure AD-organisatie (Shadow-Tenant).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 08/01/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44276c911768f588064245c37a1284adeda8138f
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 7a0697e151c50b9722fef908eeb2c7498503b8c0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315729"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027375"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Een niet-beheerde Directory als beheerder overnemen in Azure Active Directory
 
-In dit artikel worden twee manieren beschreven om een DNS-domein naam te nemen in een onbeheerde map in Azure Active Directory (Azure AD). Wanneer een selfservice-gebruiker zich registreert voor een cloudservice die gebruikmaakt van Azure AD, wordt deze toegevoegd aan een niet-beheerde Azure AD-adreslijst op basis van het e-maildomein. Zie [Wat is self-service-aanmelding voor Azure Active Directory?](directory-self-service-signup.md) voor meer informatie over selfservice of virus registratie voor een service.
+In dit artikel worden twee manieren beschreven om een DNS-domein naam te nemen in een onbeheerde map in Azure Active Directory (Azure AD). Wanneer een selfservice-gebruiker zich registreert voor een cloudservice die gebruikmaakt van Azure AD, wordt deze toegevoegd aan een niet-beheerde Azure AD-adreslijst op basis van het e-maildomein. Zie [Wat is self-service-aanmelding voor Azure Active Directory?](directory-self-service-signup.md) voor meer informatie over selfservice of ' virale ' aanmelding voor een service.
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Bepaal hoe u wilt overnemen van een niet-beheerde map
 Tijdens het proces van overname door een beheerder kunt u eigendom bewijzen, zoals beschreven in [Een aangepaste domeinnaam toevoegen aan Azure AD](../fundamentals/add-custom-domain.md). In de volgende secties wordt de ervaring voor de beheerder gedetailleerder uitgelegd, maar hier volgt een samenvatting:
@@ -64,7 +63,7 @@ Wanneer u de voor gaande stappen hebt voltooid, bent u nu de globale beheerder v
   
    ![de domein naam verwijderen uit Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Als u gebruikers of groepen in Office 365 hebt die verwijzen naar de verwijderde domein naam, moet u de naam ervan wijzigen in het domein. onmicrosoft.com. Als u de domein naam geforceerd verwijdert, worden alle gebruikers automatisch hernoemd, in dit voor beeld *naar\@gebruikers fourthcoffeexyz.onmicrosoft.com*.
+5. Als u gebruikers of groepen in Office 365 hebt die verwijzen naar de verwijderde domein naam, moet u de naam ervan wijzigen in het domein. onmicrosoft.com. Als u de domein naam geforceerd verwijdert, worden alle gebruikers automatisch hernoemd, in dit voor beeld naar *gebruikers\@fourthcoffeexyz.onmicrosoft.com*.
   
 6. Meld u aan bij het [Azure AD-beheer centrum](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat de globale beheerder is voor de Azure AD-Tenant.
   
@@ -73,7 +72,7 @@ Wanneer u de voor gaande stappen hebt voltooid, bent u nu de globale beheerder v
    ![het domein is geverifieerd als toegevoegd aan Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Gebruikers van Power BI-of Azure Rights Management-service met licenties die zijn toegewezen in de Office 365-Tenant, moeten hun Dash boards opslaan als de domein naam wordt verwijderd. Ze moeten zich aanmelden met een gebruikers naam zoals *de\@gebruiker fourthcoffeexyz.onmicrosoft.com* in plaats van de *gebruiker\@fourthcoffee. xyz*.
+> Gebruikers van Power BI-of Azure Rights Management-service met licenties die zijn toegewezen in de Office 365-Tenant, moeten hun Dash boards opslaan als de domein naam wordt verwijderd. Ze moeten zich aanmelden met een gebruikers naam als *gebruiker\@fourthcoffeexyz.onmicrosoft.com* in plaats van *gebruikers\@fourthcoffee. xyz*.
 
 ## <a name="external-admin-takeover"></a>Externe beheerder overname
 
@@ -83,7 +82,7 @@ Wanneer u het eigendom van de domein naam controleert, wordt de domein naam van 
 
 - Gebruikers
 - Abonnementen
-- Licentietoewijzingen
+- Licentie toewijzingen
 
 ### <a name="support-for-external-admin-takeover"></a>Ondersteuning voor externe beheerders overname
 Externe beheerders overname wordt ondersteund door de volgende onlineservices:
@@ -105,7 +104,7 @@ U kunt eventueel de [optie **ForceTakeover** ](#azure-ad-powershell-cmdlets-for-
 
 #### <a name="more-information-about-rms-for-individuals"></a>Meer informatie over RMS voor personen
 
-Wanneer de onbeheerde Tenant zich in dezelfde regio bevindt als de Tenant waarvan u de eigenaar bent, worden de automatisch gemaakte [Azure Information Protection-Tenant sleutel](/azure/information-protection/plan-implement-tenant-key) en de [standaard beveiligings sjablonen](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) ook verplaatst voor [RMS voor personen](/azure/information-protection/rms-for-individuals)met de domein naam.
+Wanneer de onbeheerde Tenant zich in dezelfde regio bevindt als de Tenant waarvan u de eigenaar [bent, worden](/azure/information-protection/rms-for-individuals)de automatisch gemaakte [Azure Information Protection Tenant sleutel](/azure/information-protection/plan-implement-tenant-key) en [standaard beveiligings sjablonen](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) ook met de domein naam verplaatst.
 
 De sleutel en sjablonen worden niet verplaatst wanneer de onbeheerde Tenant zich in een andere regio bevindt. Als de onbeheerde Tenant zich bijvoorbeeld in Europa bevindt en de organisatie waarvan u de eigenaar bent, bevindt zich in Noord-Amerika.
 

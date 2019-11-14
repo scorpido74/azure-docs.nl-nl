@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 95f2dbdbb34ff349d14be430b4e5a4fa84df0f5a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78693dceaac119279b1c1d06a6c3a18cc4fdb485
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581491"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033942"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -57,7 +57,7 @@ De volgende tabel bevat alle andere functies en hulpprogram ma's die nog niet wo
 | **Beheer beleid voor Azure Blob Storage levenscyclus** | Alle toegangs lagen worden ondersteund. De Access-laag voor het archief is momenteel beschikbaar als preview-versie. Het verwijderen van BLOB-moment opnamen wordt nog niet ondersteund. |
 | **Azure-Content Delivery Network (CDN)** | Nog niet ondersteund|
 | **Azure Search** |Ondersteund (preview-versie)|
-| **Azure-opslagverkenner** | Versie-specifieke ondersteuning <br><br>Gebruik alleen versie `1.6.0` of hoger. <br>Versie `1.6.0` is beschikbaar als [gratis down load](https://azure.microsoft.com/features/storage-explorer/).|
+| **Azure-opslagverkenner** | Versie-specifieke ondersteuning <br><br>Gebruik alleen versies `1.6.0` via `1.10.0`. <br> Versie `1.10.0` is beschikbaar als [gratis down load](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). Versie `1.11.0` wordt nog niet ondersteund.|
 | **BLOB-container-Acl's** |Nog niet ondersteund|
 | **Blobfuse** |Nog niet ondersteund|
 | **Aangepaste domeinen** |Nog niet ondersteund|

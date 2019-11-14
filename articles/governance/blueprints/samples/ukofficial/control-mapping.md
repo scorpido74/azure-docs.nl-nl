@@ -1,18 +1,14 @@
 ---
 title: Voor beelden van UK officiële & UK NHS blauw drukken-controle toewijzing
 description: De toewijzing van de voor beelden van het Verenigd Konink rijk-en UK-NHS blauw drukken. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: e86c7040e94553b032b565e282639047a1ed8750
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5ba7cf481276b236c9299e660acb9668feeea683
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162958"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037772"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Controle van de toewijzing van de voor beelden van het Verenigd Konink rijk en UK NHS blauw drukken
 
@@ -48,7 +44,7 @@ Als u wilt weten waar uw Azure-resources mogelijk niet-optimale cryptografische 
 
 ## <a name="52-vulnerability-management"></a>Beheer van beveiligings problemen 5,2
 
-Deze blauw druk helpt u bij het beheren van beveiligings problemen met informatie systemen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die ontbrekende eindpunt beveiliging controleren, ontbrekende systeem updates, kwets bare besturings systemen, SQL-beveiligings problemen en virtuele computer lekken. Deze inzichten bieden real-time informatie over de beveiligings status van uw geïmplementeerde resources en kunnen u helpen bij het bepalen van herstel acties.
+Deze blauw druk helpt u bij het beheren van beveiligings lekken met informatie door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die ontbrekende eindpunt beveiliging controleren, ontbrekende systeem updates, kwets baarheid van het besturings systeem, SQL-beveiligings problemen en beveiligings problemen met virtuele machines. Deze inzichten bieden real-time informatie over de beveiligings status van uw geïmplementeerde resources en kunnen u helpen bij het bepalen van herstel acties.
 
 - Ontbrekende Endpoint Protection in Azure Security Center controleren
 - Systeem updates moeten worden geïnstalleerd op uw computers
@@ -67,7 +63,7 @@ Deze blauw druk helpt u bij het beveiligen van informatie systeem assets door [A
 
 ## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 veilig gebruikers beheer/10 identiteit en verificatie
 
-Azure implementeert op rollen gebaseerd toegangs beheer (RBAC) om u te helpen bij het beheren van de toegang tot resources in Azure. Met behulp van de Azure Portal kunt u controleren wie toegang heeft tot Azure-resources en de bijbehorende machtigingen. Deze blauw druk helpt u om toegangs rechten te beperken en te beheren door [Azure Policy](../../../policy/overview.md) definities toe te wijzen voor het controleren van externe accounts met de machtigingen eigenaar en/of lezen/schrijven met eigenaar, lees-en/of schrijf machtigingen die geen multi-factor verificatie ingeschakeld.
+Azure implementeert op rollen gebaseerd toegangs beheer (RBAC) om u te helpen bij het beheren van de toegang tot resources in Azure. Met behulp van de Azure Portal kunt u controleren wie toegang heeft tot Azure-resources en de bijbehorende machtigingen. Deze blauw druk helpt u om toegangs rechten te beperken en te beheren door [Azure Policy](../../../policy/overview.md) definities toe te wijzen voor het controleren van externe accounts met de machtigingen eigenaar en/of lezen/schrijven, en voor accounts met de machtigingen eigenaar, lezen en/of schrijven waarvoor multi-factor Authentication niet is ingeschakeld.
 
 - MFA moet zijn ingeschakeld voor accounts met eigenaars machtigingen voor uw abonnement
 - MFA moet zijn ingeschakeld voor accounts met schrijf machtigingen voor uw abonnement
@@ -124,7 +120,7 @@ Behalve met het gebruik van meer dan 25 beleids regels voor het juiste veilige g
 
 ## <a name="12-secure-service-administration"></a>12 beheer van beveiligde services
 
-Azure implementeert op rollen gebaseerd toegangs beheer (RBAC) om u te helpen bij het beheren van de toegang tot resources in Azure. Met behulp van de Azure Portal kunt u controleren wie toegang heeft tot Azure-resources en de bijbehorende machtigingen. Deze blauw druk helpt u om privileged Access Rights te beperken en te beheren door vijf [Azure Policy](../../../policy/overview.md) definities toe te wijzen om externe accounts te controleren met eigenaar en/of schrijf machtigingen en accounts met eigenaar en/of schrijf machtigingen die geen multi-factor Authentication is ingeschakeld.
+Azure implementeert op rollen gebaseerd toegangs beheer (RBAC) om u te helpen bij het beheren van de toegang tot resources in Azure. Met behulp van de Azure Portal kunt u controleren wie toegang heeft tot Azure-resources en de bijbehorende machtigingen. Deze blauw druk helpt u om privileged Access Rights te beperken en te beheren door vijf [Azure Policy](../../../policy/overview.md) definities toe te wijzen om externe accounts te controleren met eigenaar en/of schrijf machtigingen en accounts met de eigenaar en/of schrijf machtigingen waarvoor multi-factor Authentication niet is ingeschakeld.
 
 Systemen die worden gebruikt voor het beheer van een Cloud service hebben zeer bevoorrechte toegang tot de betreffende service. Hun inbreuk zou aanzienlijke gevolgen hebben, zoals de mogelijkheid om beveiligings controles over te slaan en grote hoeveel heden gegevens te stelen of te manipuleren. De methoden die door de beheerders van de service provider worden gebruikt om de operationele service te beheren, moeten worden ontworpen om het risico van misbruik dat de beveiliging van de service ondervindt, te beperken. Als dit principe niet is geïmplementeerd, kan een aanvaller de middelen gebruiken om beveiligings controles over te slaan en grote hoeveel heden gegevens te stelen of te manipuleren.
 
@@ -156,8 +152,8 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 - Controle moet worden ingeschakeld voor geavanceerde instellingen voor gegevens beveiliging op SQL Server
 - Diagnostische instelling voor controleren
 - Controle-instellingen op SQL server-niveau controleren
-- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
-- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
+- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
+- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
 - Network Watcher implementeren bij het maken van virtuele netwerken
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -165,10 +161,10 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 Nu u de controle toewijzing van het Verenigd Konink rijk-en UK-NHS blauw drukken hebt bekeken, gaat u naar de volgende artikelen voor meer informatie over het overzicht en hoe u dit voor beeld implementeert:
 
 > [!div class="nextstepaction"]
-> [UK-officiële en UK NHS blauw drukken-overzicht](./index.md)
+> [UK-officiële en UK NHS-blauw drukken-overzicht](./index.md)
 > [UK-officiële en UK NHS blauw drukken-stappen implementeren](./deploy.md)
 
-Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
+Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

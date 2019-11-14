@@ -1,5 +1,5 @@
 ---
-title: Migreren van AWS en andere platforms naar Managed Disks in azure | Microsoft Docs
+title: Migreren van AWS en andere platforms naar Managed Disks in azure
 description: Maak Vm's in azure met behulp van Vhd's die zijn geüpload uit andere Clouds, zoals AWS of andere virtualisatieoplossingen en profiteer van Azure Managed Disks.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4611efa8767094ea8f92dac584a5610811947620
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: dbce2969ccb508c2bf3ee33730d0b112caa45c9e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102589"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033051"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migreren van Amazon Web Services (AWS) en andere platforms naar Managed Disks in azure
 
@@ -54,7 +54,7 @@ In deze sectie kunt u de beste beslissing nemen over VM-en schijf typen.
 
 Als u van plan bent om te migreren van niet-beheerde schijven naar Managed disks, moet u er rekening mee houden dat gebruikers met de rol [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) de VM-grootte niet kunnen wijzigen (zoals vóór de conversie). De reden hiervoor is dat de gebruiker van de virtuele machines van het besturings systeem de machtiging micro soft. Compute/disks/write moet hebben voor Vm's met Managed disks.
 
-### <a name="location"></a>Location
+### <a name="location"></a>Locatie
 
 Kies een locatie waar Azure Managed Disks beschikbaar zijn. Als u migreert naar Premium Managed Disks, moet u er ook voor zorgen dat Premium-opslag beschikbaar is in de regio waar u naar wilt migreren. Zie [Azure-Services per regio](https://azure.microsoft.com/regions/#services) voor actuele informatie over beschik bare locaties.
 

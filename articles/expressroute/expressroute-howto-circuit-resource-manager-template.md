@@ -1,26 +1,26 @@
 ---
-title: 'Een ExpressRoute-circuit maken-Resource Manager-sjabloon: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute-sjabloon: een ExpressRoute-circuit maken'
 description: Een ExpressRoute-circuit maken, inrichten, verwijderen en de inrichting ervan opheffen.
-services: expressroute;azure-resource-manager
+services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: cherylmc
 ms.reviewer: ganesr
-ms.openlocfilehash: 103c61b6ad244bf4b140f897c070ce5bfd54cded
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: d6d9a3b472e2a40bfacf25a0b8fe0accb7d62cb8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849217"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031974"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Een ExpressRoute-circuit maken met behulp van Azure Resource Manager sjabloon
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
-> * [Azure-CLI](howto-circuit-cli.md)
+> * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager-sjabloon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video - Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klassiek)](expressroute-howto-circuit-classic.md)

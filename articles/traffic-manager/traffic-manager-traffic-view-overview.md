@@ -1,6 +1,6 @@
 ---
 title: Verkeersweergave in azure Traffic Manager
-description: Inleiding tot Traffic Manager Verkeersweergave
+description: In deze inleiding leert u hoe Traffic Manager Traffic View werkt.
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 5b451378fcc14106cb8731a89bcf6ccf415d0a92
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 1cdad5873ea0f6d2fab129aef7be012ea11e8a60
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035451"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023249"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager Verkeersweergave
 
@@ -64,7 +64,7 @@ De Azure-regio's waarin de eind punten zich bevinden, worden weer gegeven als bl
 
 ## <a name="tabular-listing-and-raw-data-download"></a>Lijst met tabellaire en onbewerkte gegevens downloaden
 
-U kunt de Verkeersweergave gegevens weer geven in een tabel indeling in Azure Portal. Er is een vermelding voor elk IP/eind punt van de DNS-resolver met het IP-adres van de DNS-resolver, de naam en geografische locatie van de Azure-regio waarin het eind punt zich bevindt (indien beschikbaar), het volume aan aanvragen dat is gekoppeld aan deze DNS-resolver dat eind punt en de representatieve latentie die is gekoppeld aan eind gebruikers die de DNS gebruiken (indien beschikbaar). U kunt de Verkeersweergave gegevens ook downloaden als een CSV-bestand dat kan worden gebruikt als onderdeel van een analytische werk stroom van uw keuze.
+U kunt de Verkeersweergave gegevens weer geven in een tabel indeling in Azure Portal. Er is een vermelding voor elk IP/eind punt van de DNS-resolver met het IP-adres van de DNS-resolver, de naam en geografische locatie van de Azure-regio waarin het eind punt zich bevindt (indien beschikbaar), het volume van aanvragen dat is gekoppeld aan de DNS-resolver voor dat eind punt en de representatieve latentie die aan eind gebruikers wordt gekoppeld met die DNS U kunt de Verkeersweergave gegevens ook downloaden als een CSV-bestand dat kan worden gebruikt als onderdeel van een analytische werk stroom van uw keuze.
 
 ## <a name="billing"></a>Billing
 

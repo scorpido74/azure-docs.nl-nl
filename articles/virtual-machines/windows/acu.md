@@ -1,5 +1,5 @@
 ---
-title: Overzicht van de Azure Compute-eenheid | Microsoft Docs
+title: Overzicht van de Azure Compute-eenheid
 description: Overzicht van het concept van de Azure-reken eenheden voor Windows. De ACU biedt een manier om de CPU-prestaties in azure Sku's te vergelijken.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: jonbeck
-ms.openlocfilehash: 7a9bd3bcfc0c3f1d77b5f7cf8d56254543e2eede
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e977196e5a42eeca66fa64e17eb6e53f28a78720
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103291"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033695"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure Compute-eenheid (ACU)
 

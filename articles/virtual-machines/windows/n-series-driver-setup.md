@@ -1,5 +1,5 @@
 ---
-title: Setup van het GPU-stuur programma voor Azure N-Series voor Windows | Microsoft Docs
+title: Setup van het GPU-stuur programma voor Azure N-Series voor Windows
 description: NVIDIA GPU-Stuur Programma's instellen voor virtuele machines uit de N-serie met Windows Server of Windows in azure
 services: virtual-machines-windows
 author: cynthn
@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92ebd34c20e3733971593344925dcb566a1bf912
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 9f6286f0a9c15b8089ff5ce9d6f3879b40aceaef
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207370"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033167"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>NVIDIA GPU-Stuur Programma's installeren op Vm's met N-serie waarop Windows wordt uitgevoerd 
 
@@ -27,7 +27,7 @@ Als u gebruik wilt maken van de GPU-mogelijkheden van virtuele machines uit de A
 
 Als u ervoor kiest om GPU-Stuur Programma's hand matig te installeren, worden in dit artikel ondersteunde besturings systemen, stuur Programma's en installatie-en verificatie stappen beschreven. Informatie over hand matige installatie van Stuur Programma's is ook beschikbaar voor [Linux-vm's](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Zie [GPU Windows VM](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)-grootten voor basis specificaties, opslag capaciteit en schijf Details. 
+Zie [GPU Windows VM-grootten](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor basis specificaties, opslag capaciteit en schijf Details. 
 
 [!INCLUDE [virtual-machines-n-series-windows-support](../../../includes/virtual-machines-n-series-windows-support.md)]
 

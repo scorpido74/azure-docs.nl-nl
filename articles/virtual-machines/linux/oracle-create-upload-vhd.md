@@ -1,5 +1,5 @@
 ---
-title: Een Oracle Linux VHD maken en uploaden | Microsoft Docs
+title: Een Oracle Linux VHD maken en uploaden
 description: Meer informatie over het maken en uploaden van een virtuele harde schijf (VHD) van Azure die een Oracle Linux besturings systeem bevat.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: ede12520fc6db089aea2d22b02dc32e72496830c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 16f3bc9e70f8fac6ab28318e1654742a2c3b76a1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082460"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035377"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Een virtuele Oracle Linux-machine voor Azure voorbereiden
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -36,7 +36,7 @@ In dit artikel wordt ervan uitgegaan dat u al een Oracle Linux besturings systee
 * NUMA wordt niet ondersteund voor grotere VM-grootten vanwege een fout in de Linux-kernel-versies onder 2.6.37. Dit probleem heeft voornamelijk betrekking op distributies met behulp van de upstream Red Hat 2.6.32 kernel. Door de hand matige installatie van de Azure Linux-agent (waagent) wordt NUMA automatisch uitgeschakeld in de GRUB-configuratie voor de Linux-kernel. Meer informatie hierover vindt u in de volgende stappen.
 * Configureer geen swap partitie op de besturingssysteem schijf. De Linux-agent kan worden geconfigureerd voor het maken van een wissel bestand op de tijdelijke bron schijf.  Meer informatie hierover vindt u in de volgende stappen.
 * Alle Vhd's op Azure moeten een virtuele grootte hebben die is afgestemd op 1 MB. Wanneer u van een onbewerkte schijf naar VHD converteert, moet u ervoor zorgen dat de onbewerkte schijf grootte een meervoud van 1MB is vóór de conversie. Zie [installatie notities voor Linux](create-upload-generic.md#general-linux-installation-notes) voor meer informatie.
-* Zorg ervoor dat de `Addons` opslag plaats is ingeschakeld. Bewerk het bestand `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) of `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) en wijzig de regel `enabled=0` naar `enabled=1` onder **[ol6_addons]** of **[ol7_addons]** in dit bestand.
+* Zorg ervoor dat de `Addons` opslagplaats is ingeschakeld. Bewerk het bestand `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) of `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) en wijzig de regel `enabled=0` in `enabled=1` onder **[ol6_addons]** of **[ol7_addons]** in dit bestand.
 
 ## <a name="oracle-linux-64"></a>Oracle Linux 6.4 +
 U moet specifieke configuratie stappen in het besturings systeem uitvoeren om de virtuele machine in azure uit te voeren.
@@ -48,11 +48,11 @@ U moet specifieke configuratie stappen in het besturings systeem uitvoeren om de
         # sudo rpm -e --nodeps NetworkManager
    
     **Opmerking:** Als het pakket nog niet is geïnstalleerd, mislukt deze opdracht met een fout bericht. Dit is normaal gedrag.
-4. Maak in de `/etc/sysconfig/` map een bestand met de naam **netwerk** dat de volgende tekst bevat:
+4. Maak een bestand met de naam **netwerk** in de map `/etc/sysconfig/` die de volgende tekst bevat:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-5. Maak een bestand met de naam **ifcfg-eth0** in de `/etc/sysconfig/network-scripts/` map met de volgende tekst:
+5. Maak een bestand met de naam **ifcfg-eth0** in de map `/etc/sysconfig/network-scripts/` die de volgende tekst bevat:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -83,7 +83,7 @@ U moet specifieke configuratie stappen in het besturings systeem uitvoeren om de
    
    Grafisch en stil opstarten zijn niet handig in een cloud omgeving waar alle logboeken moeten worden verzonden naar de seriële poort.
    
-   De `crashkernel` optie kan desgewenst worden geconfigureerd, maar houd er rekening mee dat met deze para meter de hoeveelheid beschikbaar geheugen in de virtuele machine 128 MB of meer wordt verminderd, wat kan leiden tot problemen met de kleinere VM-grootten.
+   De optie `crashkernel` kan eventueel worden geconfigureerd, maar houd er rekening mee dat met deze para meter de hoeveelheid beschikbaar geheugen in de VM met 128 MB of meer wordt verminderd, wat kan leiden tot een probleem met de kleinere VM-grootten.
 10. Zorg ervoor dat de SSH-server is geïnstalleerd en geconfigureerd om te starten bij het opstarten.  Dit is doorgaans de standaard instelling.
 11. Installeer de Azure Linux-agent door de volgende opdracht uit te voeren. De meest recente versie is 2.0.15.
     
@@ -121,11 +121,11 @@ Het voorbereiden van een virtuele machine voor Oracle Linux 7 voor Azure lijkt v
 
 1. Selecteer de virtuele machine in Hyper-V-beheer.
 2. Klik op **verbinding maken** om een console venster voor de virtuele machine te openen.
-3. Maak in de `/etc/sysconfig/` map een bestand met de naam **netwerk** dat de volgende tekst bevat:
+3. Maak een bestand met de naam **netwerk** in de map `/etc/sysconfig/` die de volgende tekst bevat:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-4. Maak een bestand met de naam **ifcfg-eth0** in de `/etc/sysconfig/network-scripts/` map met de volgende tekst:
+4. Maak een bestand met de naam **ifcfg-eth0** in de map `/etc/sysconfig/network-scripts/` die de volgende tekst bevat:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -147,7 +147,7 @@ Het voorbereiden van een virtuele machine voor Oracle Linux 7 voor Azure lijkt v
    
         # sudo yum clean all
         # sudo yum -y update
-9. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u dit wilt doen, opent u '/etc/default/grub ' in een tekst `GRUB_CMDLINE_LINUX` editor en bewerkt u de para meter, bijvoorbeeld:
+9. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u dit wilt doen, opent u '/etc/default/grub ' in een tekst editor en bewerkt u de para meter `GRUB_CMDLINE_LINUX`, bijvoorbeeld:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -157,7 +157,7 @@ Het voorbereiden van een virtuele machine voor Oracle Linux 7 voor Azure lijkt v
    
    Grafisch en stil opstarten zijn niet handig in een cloud omgeving waar alle logboeken moeten worden verzonden naar de seriële poort.
    
-   De `crashkernel` optie kan desgewenst worden geconfigureerd, maar houd er rekening mee dat met deze para meter de hoeveelheid beschikbaar geheugen in de virtuele machine 128 MB of meer wordt verminderd, wat kan leiden tot problemen met de kleinere VM-grootten.
+   De optie `crashkernel` kan eventueel worden geconfigureerd, maar houd er rekening mee dat met deze para meter de hoeveelheid beschikbaar geheugen in de VM met 128 MB of meer wordt verminderd, wat kan leiden tot een probleem met de kleinere VM-grootten.
 10. Zodra u klaar bent met het bewerken van '/etc/default/grub ', voert u de volgende opdracht uit om de grub-configuratie opnieuw samen te stellen:
     
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg

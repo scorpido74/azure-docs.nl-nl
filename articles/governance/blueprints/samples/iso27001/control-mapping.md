@@ -1,17 +1,14 @@
 ---
 title: ISO 27001 blauw druk-voor beeld-beheer toewijzing
 description: Bepaal de toewijzing van het ISO 27001-blauw druk-voor beeld. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: f187bf5a77f756bbc6293a14e1873d13788d3929
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6d77573a37c27aba96bace1f6d228ac892b0ecd9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162474"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038337"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>De toewijzing van het ISO 27001 blauw druk-voor beeld bepalen
 
@@ -50,7 +47,7 @@ Informatie over resources die in strijd zijn met deze beleids regels, kan u help
 
 ## <a name="a923-management-of-privileged-access-rights"></a>A. 9.2.3 beheer van privileged Access Rights
 
-Deze blauw druk helpt u om privileged Access Rights te beperken en te beheren door vier [Azure Policy](../../../policy/overview.md) definities toe te wijzen om externe accounts te controleren met eigenaar en/of schrijf machtigingen en accounts met eigenaar en/of schrijf machtigingen die geen multi-factor Authentication is ingeschakeld. Azure implementeert op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot Azure-resources. Met deze blauw druk worden ook drie Azure Policy definities toegewezen om het gebruik van Azure Active Directory-verificatie voor SQL-servers en Service Fabric te controleren. Met behulp van Azure Active Directory-verificatie kunt u eenvoudig beheer van machtigingen en gecentraliseerd identiteits beheer van database gebruikers en andere micro soft-Services. Deze blauw druk wijst ook een Azure Policy definitie toe om het gebruik van aangepaste RBAC-regels te controleren. Als u wilt weten waar aangepaste RBAC-regels worden geïmplementeerd, kunt u controleren of de juiste implementatie nodig is, omdat aangepaste RBAC-regels fout gevoelig zijn.
+Deze blauw druk helpt u om privileged Access Rights te beperken en te beheren door vier [Azure Policy](../../../policy/overview.md) definities toe te wijzen om externe accounts te controleren met eigenaar en/of schrijf machtigingen en accounts met eigenaar en/of schrijf machtigingen waarvoor multi-factor Authentication niet is ingeschakeld. Azure implementeert op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot Azure-resources. Met deze blauw druk worden ook drie Azure Policy definities toegewezen om het gebruik van Azure Active Directory-verificatie voor SQL-servers en Service Fabric te controleren. Met behulp van Azure Active Directory-verificatie kunt u eenvoudig beheer van machtigingen en gecentraliseerd identiteits beheer van database gebruikers en andere micro soft-Services. Deze blauw druk wijst ook een Azure Policy definitie toe om het gebruik van aangepaste RBAC-regels te controleren. Als u wilt weten waar aangepaste RBAC-regels worden geïmplementeerd, kunt u controleren of de juiste implementatie nodig is, omdat aangepaste RBAC-regels fout gevoelig zijn.
 
 - \[preview\]: controle accounts met eigenaars machtigingen waarvoor geen MFA is ingeschakeld voor een abonnement
 - \[preview\]: audit accounts met schrijf machtigingen waarvoor geen MFA is ingeschakeld voor een abonnement
@@ -173,7 +170,7 @@ Adaptief toepassings beheer is een oplossing van Azure Security Center waarmee u
 
 ## <a name="a1261-management-of-technical-vulnerabilities"></a>A. 12.6.1 beheer van technische beveiligings problemen
 
-Deze blauw druk helpt u bij het beheren van beveiligings problemen met informatie systemen door vijf [Azure Policy](../../../policy/overview.md) definities toe te wijzen die ontbrekende systeem updates, besturingssysteem problemen met het besturings systeem, SQL-beveiligings problemen en virtuele-machine-beveiligings problemen bewaken in Azure Security Center. Azure Security Center biedt rapportage mogelijkheden waarmee u real-time inzicht kunt krijgen in de beveiligings status van geïmplementeerde Azure-resources.
+Deze blauw druk helpt u bij het beheren van beveiligings problemen met informatie systemen door vijf [Azure Policy](../../../policy/overview.md) definities toe te wijzen waarmee ontbrekende systeem updates, besturingssysteem problemen met het besturings systeem, SQL-beveiligings problemen en beveiligings problemen met virtuele machines in azure Security Center worden bewaakt. Azure Security Center biedt rapportage mogelijkheden waarmee u real-time inzicht kunt krijgen in de beveiligings status van geïmplementeerde Azure-resources.
 
 - \[preview-\]: ontbrekende Endpoint Protection in Azure Security Center monitor
 - \[preview\]: ontbrekende systeem updates controleren in Azure Security Center
@@ -211,7 +208,7 @@ Nu u de toewijzing van het besturings element van de ISO 27001-blauw druk hebt g
 > [Iso 27001 blauw druk-overzicht](./index.md)
 > [ISO 27001 blauw druk-stappen implementeren](./deploy.md)
 
-Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
+Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.
