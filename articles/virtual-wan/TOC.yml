@@ -8,7 +8,7 @@
   items:
     - name: Een site-naar-site-verbinding maken
       href: virtual-wan-site-to-site-portal.md
-    - name: Punt-naar-site-verbindingen maken
+    - name: Gebruikers-VPN-verbindingen (punt-naar-site) maken
       href: virtual-wan-point-to-site-portal.md
     - name: Een ExpressRoute-verbinding maken
       href: virtual-wan-expressroute-portal.md
@@ -20,36 +20,38 @@
       href: virtual-wan-ipsec.md
     - name: Architectuur
       items:
+        - name: Migreren naar Virtual WAN
+          href: migrate-from-hub-spoke-topology.md
         - name: Wereldwijde architectuur voor doorvoernetwerk
           href: virtual-wan-global-transit-network-architecture.md
         - name: Office 365-controlelaag in Virtual WAN
           href: virtual-wan-office365-overview.md
 - name: Handleidingen
   items:
-    - name: Een virtuele WAN-SKU upgraden
-      href: upgrade-virtual-wan.md
-    - name: Migreren naar virtueel WAN
-      href: migrate-from-hub-spoke-topology.md
-    - name: Een VPN-verbinding maken via privé-peering met ExpressRoute
-      href: vpn-over-expressroute.md
-    - name: Een virtuele netwerkgateway verbinden met een virtual WAN
+    - name: Virtuele netwerkgateway verbinden met een virtual WAN
       href: connect-virtual-network-gateway-vwan.md
     - name: Globale VNet-peering configureren
       href: global-peering-vnet.md
+    - name: VPN-verbinding maken via ExpressRoute
+      href: vpn-over-expressroute.md
+    - name: Een virtuele WAN-SKU upgraden
+      href: upgrade-virtual-wan.md
     - name: Aangepast IPsec-beleid configureren
       href: virtual-wan-custom-ipsec-portal.md
-    - name: Certificaten configureren voor gebruikers-VPN
+    - name: Certificaten configureren voor een gebruikers-VPN (punt-naar-site)
       href: certificates-point-to-site.md
-    - name: Verkeer routeren van een virtuele hub naar een NVA
-      items:
-        - name: Azure Portal
-          href: virtual-wan-route-table-portal.md
-        - name: Azure PowerShell
-          href: virtual-wan-route-table.md
-    - name: Efficiënte routes voor virtuele hubs weergeven
-      href: effective-routes-virtual-hub.md
-    - name: Automatisering voor Virtual WAN-partners
+    - name: Automatisering configureren (Virtual WAN-partners)
       href: virtual-wan-configure-automation-providers.md
+    - name: Routering configureren
+      items:
+        - name: Verkeer routeren van een virtuele hub naar een NVA
+          items:
+            - name: Azure Portal
+              href: virtual-wan-route-table-portal.md
+            - name: Azure PowerShell
+              href: virtual-wan-route-table.md
+        - name: Efficiënte routes voor virtuele hubs weergeven
+          href: effective-routes-virtual-hub.md
 - name: Naslaginformatie
   items:
     - name: Azure PowerShell

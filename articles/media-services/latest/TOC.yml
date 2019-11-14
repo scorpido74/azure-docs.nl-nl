@@ -138,6 +138,8 @@
         - name: Tijdsverschuiving en live-naar-VOD
           displayName: 'archive, dvr'
           href: live-event-cloud-dvr.md
+        - name: Live transcriptie
+          href: live-transcription.md
         - name: Vergelijking van functies
           href: live-event-types-comparison.md
         - name: Staten en facturering

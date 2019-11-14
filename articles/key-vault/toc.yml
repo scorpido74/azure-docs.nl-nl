@@ -114,6 +114,8 @@
           href: key-vault-group-permissions-for-apps.md
     - name: Key Vault-meldingen routeren met Event Grid
       href: event-grid-tutorial.md
+    - name: Integreren met Azure Policy
+      href: azure-policy.md
     - name: Logboekregistratie voor Azure Key Vault
       href: key-vault-logging.md
     - name: Toegang achter firewalls
