@@ -1,5 +1,5 @@
 ---
-title: FQDN maken voor een virtuele Linux-machine in de Azure Portal | Microsoft Docs
+title: FQDN maken voor een virtuele Linux-machine in de Azure Portal
 description: Meer informatie over het maken van een FQDN-naam (Fully Qualified Domain Name) voor een virtuele machine op basis van een resource manager in de Azure Portal.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7309f4be43c6b653f261e5de5fbe3e638e83294
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3d30f5a60bf19e9185d992b973414f58942f9954
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082445"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035295"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Een Fully Qualified Domain Name maken in de Azure Portal voor een Linux-VM
 
@@ -31,7 +31,7 @@ In dit artikel wordt ervan uitgegaan dat u al een virtuele machine hebt gemaakt.
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-U kunt nu extern verbinding maken met de virtuele machine met behulp van deze `ssh azureuser@mydns.westus.cloudapp.azure.com`DNS-naam, zoals bij.
+U kunt nu extern verbinding maken met de virtuele machine met behulp van deze DNS-naam, zoals bij `ssh azureuser@mydns.westus.cloudapp.azure.com`.
 
 ## <a name="next-steps"></a>Volgende stappen
 Nu uw VM een open bare IP-en DNS-naam heeft, kunt u algemene toepassings raamwerken of-services implementeren, zoals nginx, MongoDB, docker, enzovoort.

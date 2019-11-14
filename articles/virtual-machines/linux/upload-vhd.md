@@ -1,5 +1,5 @@
 ---
-title: Een aangepaste Linux-VM uploaden of kopiëren met Azure CLI | Microsoft Docs
+title: Een aangepaste Linux-VM uploaden of kopiëren met Azure CLI
 description: Een aangepaste virtuele machine uploaden of kopiëren met behulp van het Resource Manager-implementatie model en de Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 6cc01266bb6e7f122868257e8a5b9e88e78dddea
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 95486208f52b2faa2fbb3db5bf1ef968c330dab6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553498"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034290"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Een virtuele Linux-machine maken op basis van een aangepaste schijf met de Azure CLI
 
@@ -51,7 +51,7 @@ Als u de volgende stappen wilt uitvoeren, moet u:
 
 - Zorg ervoor dat de nieuwste [Azure cli](/cli/azure/install-az-cli2) is geïnstalleerd en dat u bent aangemeld bij een Azure-account met [AZ login](/cli/azure/reference-index#az-login).
 
-Vervang in de volgende voor beelden voorbeeld parameter namen met uw eigen waarden, zoals `myResourceGroup`, `mystorageaccount` en `mydisks`.
+Vervang in de volgende voor beelden voorbeeld parameter namen met uw eigen waarden, zoals `myResourceGroup`, `mystorageaccount`en `mydisks`.
 
 <a id="prepimage"> </a>
 

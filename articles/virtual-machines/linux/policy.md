@@ -1,5 +1,5 @@
 ---
-title: Beveiliging afdwingen met beleids regels op virtuele Linux-machines in azure | Microsoft Docs
+title: Beveiliging afdwingen met beleids regels op virtuele Linux-machines in azure
 description: Een beleid Toep assen op een virtuele machine met Azure Resource Manager Linux
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: c0399044e1776d10a70cf4bcb1dca8d87e4981c7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ab48430ae4d6585c908b53017122096175abac3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091580"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035323"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Beleids regels Toep assen op virtuele Linux-machines met Azure Resource Manager
 Door gebruik te maken van beleids regels kan een organisatie verschillende conventies en regels voor de hele onderneming afdwingen. Afdwinging van het gewenste gedrag kan het risico verkleinen en bijdragen aan het succes van de organisatie. In dit artikel wordt beschreven hoe u Azure Resource Manager-beleid kunt gebruiken om het gewenste gedrag voor de Virtual Machines van uw organisatie te definiëren.

@@ -1,5 +1,5 @@
 ---
-title: 'Route filters configureren voor micro soft-peering-ExpressRoute: Azure CLI | Microsoft Docs'
+title: 'ExpressRoute: route filters-micro soft-peering: Azure CLI'
 description: In dit artikel wordt beschreven hoe u routefilters voor Microsoft-Peering met behulp van Azure CLI configureren
 services: expressroute
 author: anzaman
@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman
-ms.openlocfilehash: f60bf8de33cd9552bf7c903f4c8921d50e911643
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c3c50a005e119890fb17fcf7b3114a747bbe34bf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123338"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033420"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Route filters voor micro soft-peering configureren: Azure-CLI
+# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Routefilters voor Microsoft-peering configureren: Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
-> * [Azure-CLI](how-to-routefilter-cli.md)
+> * [Azure CLI](how-to-routefilter-cli.md)
 > 
 
 Met routefilters kunt u een subset van ondersteunde services gebruiken via Microsoft-peering. De stappen in dit artikel kunt u configureren en beheren van routefilters voor ExpressRoute-circuits.
@@ -90,32 +90,32 @@ Selecteer het abonnement waarvoor u wenst te maken van een ExpressRoute-circuit.
 az account set --subscription "<subscription ID>"
 ```
 
-## <a name="prefixes"></a>Stap 1: Een lijst met voor voegsels en BGP Community-waarden ophalen
+## <a name="prefixes"></a>Stap 1: Een lijst met voorvoegsels en BGP-Communitywaarden ophalen
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. Een overzicht van BGP-Communitywaarden
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. een lijst met BGP Community-waarden ophalen
 
 Gebruik de volgende cmdlet om de lijst met BGP-Communitywaarden die zijn gekoppeld aan services die toegankelijk zijn via Microsoft-peering en de lijst met voorvoegsels die zijn gekoppeld aan deze te verkrijgen:
 
 ```azurecli-interactive
 az network route-filter rule list-service-communities
 ```
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Maak een lijst van de waarden die u wilt gebruiken
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Maak een lijst met de waarden die u wilt gebruiken
 
 Maak een lijst van BGP-Communitywaarden die u wilt gebruiken in de routefilter.
 
-## <a name="filter"></a>Stap 2: Een route filter en een filter regel maken
+## <a name="filter"></a>Stap 2: Maak een routefilter en een filterregel
 
 Een routefilter kan slechts één regel, en de regel moet van het type 'Toestaan'. Deze regel kan een lijst met BGP-Communitywaarden die zijn gekoppeld aan deze hebben.
 
-### <a name="1-create-a-route-filter"></a>1. Een routefilter maken
+### <a name="1-create-a-route-filter"></a>1. een route filter maken
 
-Maak eerst de routefilter. De opdracht `az network route-filter create` maakt alleen een resource voor een route filter. Nadat u de resource gemaakt, moet u vervolgens een regel maken en koppelen aan het object route-filter. Voer de volgende opdracht om een route-filter-resource te maken:
+Maak eerst de routefilter. Met de opdracht `az network route-filter create` wordt alleen een resource voor een route filter gemaakt. Nadat u de resource gemaakt, moet u vervolgens een regel maken en koppelen aan het object route-filter. Voer de volgende opdracht om een route-filter-resource te maken:
 
 ```azurecli-interactive
 az network route-filter create -n MyRouteFilter -g MyResourceGroup
 ```
 
-### <a name="2-create-a-filter-rule"></a>2. Een filterregel maken
+### <a name="2-create-a-filter-rule"></a>2. een filter regel maken
 
 Voer de volgende opdracht om een nieuwe regel te maken:
  
@@ -123,7 +123,7 @@ Voer de volgende opdracht om een nieuwe regel te maken:
 az network route-filter rule create --filter-name MyRouteFilter -n CRM --communities 12076:5040 --access Allow -g MyResourceGroup
 ```
 
-## <a name="attach"></a>Stap 3: Het route filter koppelen aan een ExpressRoute-circuit
+## <a name="attach"></a>Stap 3: De routefilter koppelen aan een ExpressRoute-circuit
 
 Voer de volgende opdracht uit om de routefilter koppelen aan het ExpressRoute-circuit:
 

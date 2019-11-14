@@ -1,18 +1,18 @@
 ---
-title: Zelf studie-een toepassings gateway maken met een Web Application firewall-Azure Portal
+title: 'Zelf studie: maken met portal-web application firewall'
 description: In deze zelf studie leert u hoe u een toepassings gateway met een Web Application Firewall maakt met behulp van de Azure Portal.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: d439703f1637282c73cd960923733460502c55bc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68a9f051bf3d59cbf32377cb503e9ded0a54d5e9
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501706"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049225"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Zelf studie: een toepassings gateway maken met een firewall voor webtoepassingen met behulp van de Azure Portal
 

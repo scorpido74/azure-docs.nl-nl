@@ -1,6 +1,6 @@
 ---
-title: Cloud-init gebruiken voor een bash-script uitvoeren in een Linux-VM op Azure | Microsoft Docs
-description: Hoe u cloud-init gebruiken voor een bash-script uitvoeren in een Linux-VM tijdens het maken van met de Azure CLI
+title: Cloud-init gebruiken om een bash-script uit te voeren in een virtuele Linux-machine in azure
+description: Cloud-init gebruiken om een bash-script uit te voeren in een Linux-VM tijdens het maken met de Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,35 +14,35 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 7a7d771023fabf8746ecb771e71a563daa5cb130
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 0e18b740b9b656236bd1958dd191bc9b02283d67
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668305"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036804"
 ---
-# <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Cloud-init gebruiken voor het uitvoeren van een bash-script in een Linux-VM in Azure
-In dit artikel leest u hoe u [cloud-init](https://cloudinit.readthedocs.io) om uit te voeren een bestaand bash-script op een Linux-machine (VM) of virtuele-machineschaalsets (VMSS) bij het inrichten van de tijd in Azure. Deze cloud-init-scripts uitvoeren op de eerste keer opstarten nadat de resources zijn ingericht met Azure. Zie voor meer informatie over hoe cloud-init systeemeigen in Azure en de ondersteunde Linux-distributies werkt [cloud-init-overzicht](using-cloud-init.md)
+# <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Cloud-init gebruiken om een bash-script uit te voeren in een virtuele Linux-machine in azure
+Dit artikel laat u zien hoe u [Cloud-init](https://cloudinit.readthedocs.io) kunt gebruiken om een bestaand bash-script uit te voeren op een virtuele Linux-machine (VM) of virtuele-machine schaal sets (VMSS) bij het inrichten van de tijd in Azure. Deze Cloud-init-scripts worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure. Zie [Cloud-init Overview](using-cloud-init.md) (Engelstalig) voor meer informatie over hoe Cloud-init standaard werkt in Azure en de ondersteunde Linux-distributies
 
-## <a name="run-a-bash-script-with-cloud-init"></a>Een bash-script uitvoeren met cloud-init
-Met cloud-init die u niet wilt dat uw bestaande scripts omzetten in een cloudconfiguratie, accepteert cloud-init meerdere invoertypen, waarbij een van een bash-script is.
+## <a name="run-a-bash-script-with-cloud-init"></a>Een bash-script uitvoeren met Cloud-init
+Met Cloud-init hoeft u uw bestaande scripts niet te converteren naar een Cloud-config. Cloud-init accepteert meerdere invoer typen, een van de bash-scripts.
 
-Als u de Azure Linux Custom Script Extension hebt met uw scripts uit te voeren, kunt u ze voor het gebruik van cloud-init kunt migreren. Echter-extensies van Azure hebt geïntegreerd met rapporteren aan de waarschuwing op fouten van het script, mislukt de implementatie van een cloud-init-installatiekopie niet als het script is mislukt.
+Als u de Azure-extensie voor aangepast script voor Linux hebt gebruikt om uw scripts uit te voeren, kunt u deze migreren voor het gebruik van Cloud-init. Azure-extensies hebben echter geïntegreerde rapportage om waarschuwingen te ontvangen voor script fouten, een Cloud-init-installatie kopie kan niet worden geïmplementeerd als het script is mislukt.
 
-Als u wilt deze functionaliteit in actie zien, maakt u een eenvoudige bash-script voor het testen van. Als de cloud-init `#cloud-config` bestand, met dit script moet zich lokaal op waarop u de Azure CLI-opdrachten voor het inrichten van uw virtuele machine wordt uitgevoerd.  In dit voorbeeld maakt u het bestand in de Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor simple_bash.sh` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 gebruiken de **nano** editor. Zorg ervoor dat het hele cloud-init-bestand correct is gekopieerd, met name de eerste regel.  
+Als u deze functionaliteit in actie wilt zien, maakt u een eenvoudig bash-script om te testen. Net als het Cloud-init `#cloud-config`-bestand moet dit script lokaal zijn waar u de AzureCLI-opdrachten uitvoert om uw virtuele machine in te richten.  In dit voor beeld maakt u het bestand in het Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor simple_bash.sh` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 om de **nano** -editor te gebruiken. Zorg ervoor dat het hele Cloud-init-bestand correct wordt gekopieerd, met name de eerste regel.  
 
 ```bash
 #!/bin/sh
 echo "this has been written via cloud-init" + $(date) >> /tmp/myScript.txt
 ```
 
-Voordat u deze installatiekopie implementeert, moet u een resourcegroep maken met de [az-groep maken](/cli/azure/group) opdracht. Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
+Voordat u deze installatie kopie implementeert, moet u een resource groep maken met de opdracht [AZ Group Create](/cli/azure/group) . Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak nu een virtuele machine met [az vm maken](/cli/azure/vm) en geef de bash-script-bestand met `--custom-data simple_bash.sh` als volgt:
+Maak nu een virtuele machine met [AZ VM Create](/cli/azure/vm) en geef het bash-script bestand op met `--custom-data simple_bash.sh` als volgt:
 
 ```azurecli-interactive 
 az vm create \
@@ -52,23 +52,23 @@ az vm create \
   --custom-data simple_bash.sh \
   --generate-ssh-keys 
 ```
-## <a name="verify-bash-script-has-run"></a>Controleer of de bash-script is uitgevoerd
-SSH naar het openbare IP-adres van uw virtuele machine wordt weergegeven in de uitvoer van de voorgaande opdracht. Voer uw eigen **publicIpAddress** als volgt:
+## <a name="verify-bash-script-has-run"></a>Controleren of het bash-script is uitgevoerd
+SSH naar het open bare IP-adres van uw virtuele machine, weer gegeven in de uitvoer van de voor gaande opdracht. Voer uw eigen **publicIpAddress** als volgt in:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Wijzig in het **map/Tmp** directory en controleer of dat myScript.txt-bestand bestaat en de juiste tekst binnen het heeft.  Als dit niet het geval is, kunt u controleren de **/var/log/cloud-init.log** voor meer informatie.  Zoeken naar de volgende vermelding:
+Ga naar de map **map/tmp** en controleer of het bestand myscript. txt bestaat en of de juiste tekst erin voor komt.  Als dat niet het geval is, kunt u de **/var/log/Cloud-init.log** controleren voor meer informatie.  Zoek naar de volgende vermelding:
 
 ```bash
 Running config-scripts-user using lock Running command ['/var/lib/cloud/instance/scripts/part-001']
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor extra cloud-init-voorbeelden van wijzigingen in de configuratie, Zie de volgende:
+Zie het volgende voor meer voor beelden van configuratie wijzigingen in de Cloud-init:
  
-- [Een aanvullende Linux-gebruiker toevoegen aan een virtuele machine](cloudinit-add-user.md)
-- [Uitvoeren van een pakketbeheerder voor het bijwerken van bestaande pakketten bij de eerste keer opstarten](cloudinit-update-vm.md)
-- [Wijzigen van de lokale VM-hostnaam](cloudinit-update-vm-hostname.md) 
-- [Het installatiepakket voor een toepassing, het bijwerken van configuratiebestanden en het invoeren van sleutels](tutorial-automate-vm-deployment.md)
+- [Een extra Linux-gebruiker toevoegen aan een VM](cloudinit-add-user.md)
+- [Een pakket beheer programma uitvoeren om bestaande pakketten bij de eerste keer opstarten bij te werken](cloudinit-update-vm.md)
+- [Lokale hostnaam van VM wijzigen](cloudinit-update-vm-hostname.md) 
+- [Een toepassings pakket installeren, configuratie bestanden bijwerken en sleutels invoeren](tutorial-automate-vm-deployment.md)

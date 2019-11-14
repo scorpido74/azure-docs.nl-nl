@@ -1,31 +1,31 @@
 ---
-title: Gebruikers met een afzonderlijke licentie toevoegen aan een groeps licentie-Azure Active Directory | Microsoft Docs
+title: Gebruikers met directe licenties toevoegen aan groeps licenties-Azure AD | Microsoft Docs
 description: Migratie van afzonderlijke gebruikers licenties naar een groeps licentie met behulp van Azure Active Directory
 services: active-directory
 keywords: Azure AD-licenties
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/26/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ec9c05a7e7d594c64a450fe64e5bb0e0d1b7d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 6c06d81f2f3f6cee781889d05ae08a1fd125df52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034748"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025684"
 ---
 # <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Gebruikers met afzonderlijke licenties migreren naar groepen voor licentie verlening
 
-Mogelijk hebt u bestaande licenties die zijn geïmplementeerd voor gebruikers in de organisaties via ' directe toewijzing '; dat wil zeggen, met behulp van Power shell-scripts of andere hulpprogram ma's om afzonderlijke gebruikers licenties toe te wijzen. Voordat u begint met het gebruik van groeps licenties voor het beheren van licenties in uw organisatie, kunt u dit migratie plan gebruiken om bestaande oplossingen naadloos te vervangen door op groepen gebaseerde licentie verlening.
+Mogelijk hebt u bestaande licenties die zijn geïmplementeerd voor gebruikers in de organisaties via directe toewijzing; dat wil zeggen, met behulp van Power shell-scripts of andere hulpprogram ma's om afzonderlijke gebruikers licenties toe te wijzen. Voordat u begint met het gebruik van groeps licenties voor het beheren van licenties in uw organisatie, kunt u dit migratie plan gebruiken om bestaande oplossingen naadloos te vervangen door op groepen gebaseerde licentie verlening.
 
 Het belangrijkste voor deel is dat u een situatie moet vermijden waarbij de migratie naar op groep gebaseerde licentie verlening ertoe leidt dat gebruikers de momenteel toegewezen licenties tijdelijk kwijt raken. Elk proces dat kan leiden tot het verwijderen van licenties moet worden vermeden om het risico te verwijderen dat gebruikers de toegang tot services en hun gegevens verliezen.
 

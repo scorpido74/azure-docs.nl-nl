@@ -1,5 +1,5 @@
 ---
-title: Poorten openen voor een virtuele machine met behulp van de Azure Portal | Microsoft Docs
+title: Poorten openen voor een virtuele machine met behulp van de Azure Portal
 description: Meer informatie over het openen van een poort/het maken van een eind punt naar uw Windows-VM met behulp van het Resource Manager-implementatie model in azure Portal
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: f9edee7a0ff19a536d0ea719ede6d0cd2e9d6ac7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe9b0f590dbb728a54ac66fcaa49bf3d00417e41
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102634"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033113"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Poorten openen voor een virtuele machine met de Azure Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -75,7 +75,7 @@ De laatste stap bestaat uit het koppelen van uw netwerkbeveiligingsgroep aan een
 
 ## <a name="additional-information"></a>Aanvullende informatie
 
-U kunt [de stappen in dit artikel ook uitvoeren](nsg-quickstart-powershell.md)met behulp van Azure PowerShell.
+U kunt [de stappen in dit artikel ook uitvoeren met behulp van Azure PowerShell](nsg-quickstart-powershell.md).
 
 Met de opdrachten die in dit artikel worden beschreven, kunt u snel verkeer ontvangen dat naar uw virtuele machine stroomt. Netwerk beveiligings groepen bieden veel fantastische functies en granulatie voor het beheren van de toegang tot uw resources. Zie [netwerk verkeer filteren met een netwerk beveiligings groep](../../virtual-network/tutorial-filter-network-traffic.md)voor meer informatie.
 

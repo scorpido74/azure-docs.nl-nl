@@ -1,25 +1,25 @@
 ---
-title: Toegang verlenen aan andere beheerders voor het beheren van PIM-Azure Active Directory | Microsoft Docs
+title: Toegang verlenen voor het beheren van PIM-Azure Active Directory | Microsoft Docs
 description: Meer informatie over het verlenen van toegang aan andere instanties om Azure AD Privileged Identity Management (PIM) te beheren.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60c0e1bfd457137ddfb8f3ae81fc9044098c1f8d
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 7424e92f8520d13137b6ac8787523095058a005f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809069"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022116"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-privileged-identity-management"></a>Toegang verlenen aan andere beheerders om Privileged Identity Management te beheren
 
@@ -32,7 +32,7 @@ Zorg ervoor dat er altijd ten minste twee gebruikers in een rol voor geprivilegi
 
 ## <a name="grant-access-to-manage-pim"></a>Toegang verlenen voor het beheren van PIM
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Open **privileged Identity Management**in azure AD.
 
@@ -70,7 +70,7 @@ Zorg ervoor dat er altijd ten minste twee gebruikers in een rol voor geprivilegi
 
 Zorg er altijd voor dat er nog mini maal twee gebruikers aan zijn toegewezen voordat u iemand verwijdert uit de beheerderrol.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**.
 

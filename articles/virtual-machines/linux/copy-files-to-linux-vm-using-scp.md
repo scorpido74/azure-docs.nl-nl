@@ -1,5 +1,5 @@
 ---
-title: Bestanden verplaatsen naar en van virtuele machines van Azure Linux met SCP | Microsoft Docs
+title: Bestanden verplaatsen naar en van virtuele machines van Azure Linux met SCP
 description: Bestanden veilig verplaatsen van en naar een virtuele Linux-machine in azure met behulp van SCP en een SSH-sleutel paar.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 56b264b61976607a3afdaa7a6ec7dc5da2091aba
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: d78a8e59a55718048df2022cec75c7a2b56f1a6b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173936"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036587"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Bestanden verplaatsen van en naar een virtuele Linux-machine met behulp van SCP
 
@@ -48,9 +48,9 @@ Als voor beeld wordt een Azure-configuratie bestand naar een virtuele Linux-mach
 
 ## <a name="ssh-key-pair-authentication"></a>Verificatie van SSH-sleutel paar
 
-SCP gebruikt SSH voor de transportlaag. SSH verwerkt de verificatie op de doelhost en verplaatst het bestand in een versleutelde tunnel die standaard wordt meegeleverd met SSH. Voor SSH-verificatie kunnen gebruikers namen en wacht woorden worden gebruikt. De open bare en persoonlijke sleutel verificatie van SSH wordt echter aanbevolen als een beveiligings best practice. Nadat de verbinding is geverifieerd door de SSH, begint SCP het bestand te kopiëren. Door gebruik te maken `~/.ssh/config` van een juist geconfigureerde en open bare en persoonlijke SSH-sleutel, kan de SCP-verbinding tot stand worden gebracht door alleen een server naam (of IP-adres) te gebruiken. Als u slechts één SSH-sleutel hebt, wordt deze in de `~/.ssh/` directory gezocht en wordt deze standaard gebruikt om u aan te melden bij de virtuele machine.
+SCP gebruikt SSH voor de transportlaag. SSH verwerkt de verificatie op de doelhost en verplaatst het bestand in een versleutelde tunnel die standaard wordt meegeleverd met SSH. Voor SSH-verificatie kunnen gebruikers namen en wacht woorden worden gebruikt. De open bare en persoonlijke sleutel verificatie van SSH wordt echter aanbevolen als een beveiligings best practice. Nadat de verbinding is geverifieerd door de SSH, begint SCP het bestand te kopiëren. Als u een goed geconfigureerde `~/.ssh/config` en open bare en persoonlijke SSH-sleutels gebruikt, kan de SCP-verbinding tot stand worden gebracht door alleen een server naam (of IP-adres) te gebruiken. Als u slechts één SSH-sleutel hebt, wordt deze in de `~/.ssh/` directory gezocht en wordt deze standaard gebruikt om u aan te melden bij de virtuele machine.
 
-Zie [SSH-sleutels maken](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor `~/.ssh/config` meer informatie over het configureren van open bare en persoonlijke sleutels voor SSH.
+Zie [SSH-sleutels maken](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie over het configureren van uw `~/.ssh/config` en open bare en persoonlijke SSH-sleutels.
 
 ## <a name="scp-a-file-to-a-linux-vm"></a>Een bestand aan een virtuele Linux-machine SCP
 
@@ -72,7 +72,7 @@ Met de volgende opdracht kopieert u bestanden in de map */Home/azureuser/logs/* 
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-De `-r` cli-vlag geeft SCP de opdracht om de bestanden en mappen recursief te kopiëren van het punt van de map die wordt vermeld in de Command.  U ziet ook dat de syntaxis van de opdracht regel op een `cp` Kopieer opdracht lijkt.
+De vlag `-r` cli geeft SCP de opdracht om de bestanden en mappen recursief te kopiëren uit het punt van de map die wordt vermeld in de Command.  U ziet ook dat de syntaxis van de opdracht regel lijkt op een `cp` copy-opdracht.
 
 ## <a name="next-steps"></a>Volgende stappen
 

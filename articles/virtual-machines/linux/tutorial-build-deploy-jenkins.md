@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - CI/CD van Jenkins voor Azure VM's met Azure DevOps Services | Microsoft Docs
+title: Zelf studie-CI/CD van Jenkins naar Azure Vm's met Azure DevOps Services
 description: In deze zelfstudie leert u hoe u continue integratie (CI) en continue implementatie (CD) van een Node.js-app kunt instellen met Jenkins voor Azure VM's vanuit Release Management in Visual Studio Team Services of Microsoft Team Foundation Server
 author: tomarchermsft
 manager: jpconnock
@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 42e1ede7c762fef1f33436ea4c757b0c0531a8f2
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 734b0a516d4a9fe882545dd5cde5a57d8af719cb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828428"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034573"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Zelfstudie: Uw app implementeren voor Linux Virtual Machines in Azure met Jenkins en Azure DevOps Services
 
@@ -25,7 +25,7 @@ Continue integratie en continue implementatie vormen een pijplijn waarmee u uw c
 
 In deze zelfstudie gebruikt u Jenkins om een Node.js-web-app te maken. Vervolgens gebruikt u Azure DevOps om deze te implementeren
 
-naar een [implementatiegroep](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups/index?view=vsts) die virtuele Linux-machines (VM's) bevat. In deze zelfstudie leert u procedures om het volgende te doen:
+naar een [implementatiegroep](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups/index?view=vsts) die virtuele Linux-machines (VM's) bevat. Procedures voor:
 
 > [!div class="checklist"]
 > * De voorbeeld-app downloaden.
@@ -67,7 +67,7 @@ Maak een fork van deze app en noteer de locatie (URL) voor gebruik in latere sta
 
 ## <a name="configure-jenkins-plug-ins"></a>Jenkins-invoegtoepassingen configureren
 
-Eerst moet u twee Jenkins-invoegtoepassingen configureren: **NodeJS** en **VS Team Services Continuous Deployment**.
+Eerst moet u twee Jenkins-invoegtoepassingen configureren: **NodeJS** en **Continue implementatie van VS Team Services**.
 
 1. Open uw Jenkins-account en selecteer **Jenkins beheren**.
 2. Selecteer op de pagina **Jenkins beheren** de optie **Invoegtoepassingen beheren**.
@@ -168,7 +168,7 @@ De release-pijplijn in Azure Pipelines maken:
 5. Open in uw browser de URL van een van de servers die u hebt toegevoegd aan de implementatiegroep. Typ bijvoorbeeld **http://{ip-adres-van-uw-server}** .
 6. Ga naar de Git-bronopslagplaats en wijzig de inhoud van de kop **h1** in het bestand app/views/index.jade met gewijzigde tekst.
 7. Voer uw wijziging door.
-8. Na een paar minuten ziet u dat er een nieuwe release is gemaakt op de pagina **Releases** van Azure DevOps. Open de release om te zien welke implementatie wordt uitgevoerd. Gefeliciteerd!
+8. Na een paar minuten ziet u dat er een nieuwe release is gemaakt op de pagina **Releases** van Azure DevOps. Open de release om te zien welke implementatie wordt uitgevoerd. Gefeliciteerd.
 
 ## <a name="troubleshooting-the-jenkins-plugin"></a>Problemen met de Jenkins-invoegtoepassing oplossen
 

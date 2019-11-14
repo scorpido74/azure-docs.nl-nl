@@ -1,5 +1,5 @@
 ---
-title: Virtuele netwerken en virtuele Windows-machines in Azure | Microsoft Docs
+title: Virtuele netwerken en virtuele Windows-machines in Azure
 description: Meer informatie over netwerken met betrekking tot de basistechnieken van het maken van virtuele Windows-machines in Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 60ae9796a5e9ac8a15296b5d11099e4a5fe39e6a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 105a91d8bfddeae3ed12c4ebb5b761d5989b91a2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089138"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033096"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Virtuele netwerken en virtuele machines in azure 
 

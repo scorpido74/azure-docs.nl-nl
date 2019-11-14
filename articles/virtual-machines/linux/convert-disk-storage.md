@@ -1,5 +1,5 @@
 ---
-title: Azure Managed disks-opslag converteren van Standard naar Premium of Premium naar Standard | Microsoft Docs
+title: Azure Managed disks-opslag converteren van Standard naar Premium of Premium naar Standard
 description: Het converteren van Azure Managed disks-opslag van Standard naar Premium of Premium naar Standard met behulp van de Azure CLI.
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 59293ac300b6774b55d3909773b110f14bb43119
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: abd3c7112a70850d137f77d28e83c60916a96ea3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696096"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036621"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure Managed disks-opslag converteren van Standard naar Premium of Premium naar Standard
 
@@ -131,7 +131,7 @@ az vm start --ids $vmId
 
 Volg deze stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Selecteer de VM in de lijst met **virtuele machines**.
 3. Als de virtuele machine niet is gestopt, selecteert u **stoppen** boven in het deel venster VM- **overzicht** en wacht u totdat de virtuele machine is gestopt.
 4. Selecteer in het deel venster voor de VM de optie **schijven** in het menu.

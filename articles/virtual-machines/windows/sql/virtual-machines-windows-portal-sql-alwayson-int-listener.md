@@ -1,5 +1,5 @@
 ---
-title: Een SQL Server beschikbaarheids groep-listener maken in azure virtual machines | Microsoft Docs
+title: Listeners voor de beschikbaarheids groep configureren & load balancer (Azure Portal)
 description: Stapsgewijze instructies voor het maken van een listener voor een always on-beschikbaarheids groep voor SQL Server op virtuele machines in azure
 services: virtual-machines
 documentationcenter: na
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: c9c8379787619608421256120139f07c8dbd8d14
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: aefd7a55090da7f55404d6f551ab61268582ff5a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102244"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039651"
 ---
-# <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Een load balancer configureren voor een always on-beschikbaarheids groep in azure
+# <a name="configure-a-load-balancer-for-an-availability-group-on-azure-sql-server-vms"></a>Een load balancer configureren voor een beschikbaarheids groep op Azure SQL Server Vm's
 In dit artikel wordt uitgelegd hoe u een load balancer maakt voor een SQL Server AlwaysOn-beschikbaarheids groep in azure virtual machines die worden uitgevoerd met Azure Resource Manager. Een beschikbaarheids groep vereist een load balancer wanneer de SQL Server exemplaren zich op Azure virtual machines bevinden. Met de load balancer wordt het IP-adres voor de beschikbaarheids groep-listener opgeslagen. Als een beschikbaarheids groep meerdere regio's omvat, moet elke regio een load balancer hebben.
 
 Als u deze taak wilt volt ooien, moet u beschikken over een SQL Server-beschikbaarheids groep die is geïmplementeerd op virtuele machines van Azure die worden uitgevoerd met Resource Manager. Beide SQL Server virtuele machines moeten deel uitmaken van dezelfde beschikbaarheidsset. U kunt de [micro soft-sjabloon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) gebruiken om automatisch de beschikbaarheids groep te maken in Resource Manager. Met deze sjabloon wordt automatisch een intern load balancer voor u gemaakt. 
@@ -49,7 +50,7 @@ In dit gedeelte van de taak gaat u als volgt te werk:
 > 
 > 
 
-### <a name="step-1-create-the-load-balancer-and-configure-the-ip-address"></a>Stap 1: Het load balancer maken en het IP-adres configureren
+### <a name="step-1-create-the-load-balancer-and-configure-the-ip-address"></a>Stap 1: de load balancer maken en het IP-adres configureren
 Maak eerst de load balancer. 
 
 1. Open in de Azure Portal de resource groep die de SQL Server virtuele machines bevat. 
@@ -62,24 +63,24 @@ Maak eerst de load balancer.
 
 5. Configureer in het dialoog venster **Load Balancer maken** de Load Balancer als volgt:
 
-   | Instelling | Value |
+   | Instelling | Waarde |
    | --- | --- |
-   | **Name** |Een tekst naam die de load balancer vertegenwoordigt. Bijvoorbeeld **sqlLB**. |
-   | **Type** |**Intern**: De meeste implementaties gebruiken een interne load balancer, waarmee toepassingen binnen hetzelfde virtuele netwerk verbinding kunnen maken met de beschikbaarheids groep.  </br> **Extern**: Hiermee kunnen toepassingen via een open bare Internet verbinding verbinding maken met de beschikbaarheids groep. |
+   | **Naam** |Een tekst naam die de load balancer vertegenwoordigt. Bijvoorbeeld **sqlLB**. |
+   | **Type** |**Intern**: de meeste implementaties gebruiken een interne Load Balancer, waarmee toepassingen binnen hetzelfde virtuele netwerk verbinding kunnen maken met de beschikbaarheids groep.  </br> **Extern**: Hiermee kunnen toepassingen verbinding maken met de beschikbaarheids groep via een open bare Internet verbinding. |
    | **Virtueel netwerk** |Selecteer het virtuele netwerk waarin de SQL Server exemplaren zich bevinden. |
    | **Subnet** |Selecteer het subnet waarin de SQL Server exemplaren zich bevinden. |
    | **Toewijzing van IP-adres** |**Storing** |
-   | **Privé-IP-adres** |Geef een beschikbaar IP-adres op in het subnet. Gebruik dit IP-adres wanneer u een listener op het cluster maakt. In een Power shell-script, verderop in dit artikel, gebruikt u dit `$ILBIP` adres voor de variabele. |
+   | **Privé-IP-adres** |Geef een beschikbaar IP-adres op in het subnet. Gebruik dit IP-adres wanneer u een listener op het cluster maakt. In een Power shell-script, verderop in dit artikel, gebruikt u dit adres voor de variabele `$ILBIP`. |
    | **Abonnement** |Als u meerdere abonnementen hebt, kan dit veld worden weer gegeven. Selecteer het abonnement dat u aan deze resource wilt koppelen. Het is normaal gesp roken hetzelfde abonnement als alle resources voor de beschikbaarheids groep. |
    | **Resourcegroep** |Selecteer de resource groep waarvan de SQL Server exemplaren zich bevinden. |
-   | **Location** |Selecteer de Azure-locatie waar de SQL Server exemplaren zich bevinden. |
+   | **Locatie** |Selecteer de Azure-locatie waar de SQL Server exemplaren zich bevinden. |
 
 6. Klik op **Create**. 
 
 Azure maakt de load balancer. De load balancer hoort bij een specifiek netwerk, subnet, resource groep en locatie. Nadat de taak door Azure is voltooid, controleert u de load balancer-instellingen in Azure. 
 
-### <a name="step-2-configure-the-back-end-pool"></a>Stap 2: De back-end-pool configureren
-Azure roept de back-end-back-mailadres groep aan. In dit geval is de back-end-pool de adressen van de twee SQL Server exemplaren in uw beschikbaarheids groep. 
+### <a name="step-2-configure-the-back-end-pool"></a>Stap 2: de back-end-pool configureren
+Azure roept de back-end *-back-* mailadres groep aan. In dit geval is de back-end-pool de adressen van de twee SQL Server exemplaren in uw beschikbaarheids groep. 
 
 1. Klik in de resource groep op het load balancer dat u hebt gemaakt. 
 
@@ -95,11 +96,11 @@ Azure roept de back-end-back-mailadres groep aan. In dit geval is de back-end-po
 
 7. Nadat u de beschikbaarheidsset hebt gekozen, klikt u op **de virtuele machines kiezen**, selecteert u de twee virtuele machines die als host fungeren voor de SQL Server exemplaren in de beschikbaarheids groep en klikt u vervolgens op **selecteren**. 
 
-8. Klik op **OK** om de Blades voor het **kiezen van virtuele machines**te sluiten en de back- **endadresgroep toe**te voegen. 
+8. Klik op **OK** om de Blades voor het **kiezen van virtuele machines**te sluiten en de **back-endadresgroep toe te voegen**. 
 
 De instellingen voor de back-end-adres groep worden door Azure bijgewerkt. Uw beschikbaarheidsset heeft nu een groep van twee SQL Server exemplaren.
 
-### <a name="step-3-create-a-probe"></a>Stap 3: Een test maken
+### <a name="step-3-create-a-probe"></a>Stap 3: een test maken
 De test definieert hoe Azure controleert welke van de SQL Server exemplaren momenteel eigenaar is van de beschikbaarheids groep-listener. Azure controleert de service op basis van het IP-adres op een poort die u opgeeft bij het maken van de test.
 
 1. Klik op de Blade load balancer **instellingen** op **status controles**. 
@@ -108,9 +109,9 @@ De test definieert hoe Azure controleert welke van de SQL Server exemplaren mome
 
 3. Configureer de test op de Blade **test toevoegen** . Gebruik de volgende waarden om de test te configureren:
 
-   | Instelling | Value |
+   | Instelling | Waarde |
    | --- | --- |
-   | **Name** |Een tekst naam die de test weergeeft. Bijvoorbeeld **SQLAlwaysOnEndPointProbe**. |
+   | **Naam** |Een tekst naam die de test weergeeft. Bijvoorbeeld **SQLAlwaysOnEndPointProbe**. |
    | **Protocol** |**TCP** |
    | **Poort** |U kunt elke beschik bare poort gebruiken. Bijvoorbeeld *59999*. |
    | **Interval** |*5* |
@@ -125,7 +126,7 @@ De test definieert hoe Azure controleert welke van de SQL Server exemplaren mome
 
 Azure maakt de test en gebruikt deze om te testen welke SQL Server instantie de listener voor de beschikbaarheids groep heeft.
 
-### <a name="step-4-set-the-load-balancing-rules"></a>Stap 4: De taakverdelings regels instellen
+### <a name="step-4-set-the-load-balancing-rules"></a>Stap 4: de taakverdelings regels instellen
 De taakverdelings regels configureren hoe de load balancer verkeer naar de SQL Server-instanties routeert. Voor deze load balancer schakelt u Direct Server Return in, omdat slechts een van de twee SQL Server exemplaren de listener-resource van de beschikbaarheids groep tegelijk heeft.
 
 1. Klik op de Blade load balancer **instellingen** op taakverdelings **regels**. 
@@ -134,12 +135,12 @@ De taakverdelings regels configureren hoe de load balancer verkeer naar de SQL S
 
 3. Configureer op de Blade taakverdelings **regels toevoegen** de taakverdelings regel. Gebruik de volgende instellingen: 
 
-   | Instelling | Value |
+   | Instelling | Waarde |
    | --- | --- |
-   | **Name** |Een tekst naam die de taakverdelings regels vertegenwoordigt. Bijvoorbeeld **SQLAlwaysOnEndPointListener**. |
+   | **Naam** |Een tekst naam die de taakverdelings regels vertegenwoordigt. Bijvoorbeeld **SQLAlwaysOnEndPointListener**. |
    | **Protocol** |**TCP** |
    | **Poort** |*1433* |
-   | **Backend-poort** |*1433*. Deze waarde wordt genegeerd omdat deze regel **zwevend IP-adres (direct server return)** gebruikt. |
+   | **Backend-poort** |*1433*. deze waarde wordt genegeerd omdat deze regel een **zwevend IP-adres (direct server return)** gebruikt. |
    | **Probe** |Gebruik de naam van de test die u hebt gemaakt voor deze load balancer. |
    | **Sessie persistentie** |**Geen** |
    | **Time-out voor inactiviteit (minuten)** |*4* |
@@ -166,7 +167,7 @@ De volgende stap is het configureren van de listener op het cluster en het onlin
 
 2. De listener online zetten.
 
-### <a name="step-5-create-the-availability-group-listener-on-the-failover-cluster"></a>Stap 5: De listener voor de beschikbaarheids groep maken op het failovercluster
+### <a name="step-5-create-the-availability-group-listener-on-the-failover-cluster"></a>Stap 5: de beschikbaarheids groep-listener maken op het failovercluster
 In deze stap maakt u hand matig de beschikbaarheids groep-listener in Failoverclusterbeheer en SQL Server Management Studio.
 
 [!INCLUDE [ag-listener-configure](../../../../includes/virtual-machines-ag-listener-configure.md)]
@@ -177,7 +178,7 @@ Als de cluster bronnen en afhankelijkheden correct zijn geconfigureerd, kunt u d
 
 1. Start SQL Server Management Studio en maak vervolgens verbinding met de primaire replica.
 
-2. Ga naar AlwaysOn-beschikbaarheids**groepen** > voor de beschikbaarheids**groep**met **hoge Beschik baarheid** > .  
+2. Ga naar AlwaysOn- **beschikbaarheids groepen** voor **hoge beschik baarheid** >  > listeners voor de **beschikbaarheids groep**.  
     U ziet nu de naam van de listener die u hebt gemaakt in Failoverclusterbeheer. 
 
 3. Klik met de rechter muisknop op de naam van de listener en klik vervolgens op **Eigenschappen**.
@@ -220,9 +221,9 @@ Ga als volgt te werk om een IP-adres toe te voegen aan een load balancer met de 
 
 7. Voeg een status test toe met behulp van de volgende instellingen:
 
-   |Instelling |Value
+   |Instelling |Waarde
    |:-----|:----
-   |**Name** |Een naam om de test te identificeren.
+   |**Naam** |Een naam om de test te identificeren.
    |**Protocol** |TCP
    |**Poort** |Een ongebruikte TCP-poort, die op alle virtuele machines beschikbaar moet zijn. Het kan niet voor andere doel einden worden gebruikt. Er kunnen niet twee listeners gebruikmaken van dezelfde test poort. 
    |**Interval** |De hoeveelheid tijd tussen de test pogingen. Gebruik de standaard waarde (5).
@@ -234,18 +235,18 @@ Ga als volgt te werk om een IP-adres toe te voegen aan een load balancer met de 
 
 10. Configureer de nieuwe regel voor taak verdeling met behulp van de volgende instellingen:
 
-    |Instelling |Value
+    |Instelling |Waarde
     |:-----|:----
-    |**Name** |Een naam om de taakverdelings regel te identificeren. 
+    |**Naam** |Een naam om de taakverdelings regel te identificeren. 
     |**Frontend-IP-adres** |Selecteer het IP-adres dat u hebt gemaakt. 
     |**Protocol** |TCP
     |**Poort** |Gebruik de poort die de SQL Server exemplaren gebruiken. Een standaard exemplaar gebruikt poort 1433, tenzij u deze hebt gewijzigd. 
     |**Backend-poort** |Gebruik dezelfde waarde als **poort**.
     |**Back-end-groep** |De groep die de virtuele machines bevat met de SQL Server exemplaren. 
     |**Status test** |Kies de test die u hebt gemaakt.
-    |**Sessie persistentie** |Geen
+    |**Sessie persistentie** |None
     |**Time-out voor inactiviteit (minuten)** |Standaard (4)
-    |**Zwevend IP (Direct Server Return)** | Enabled
+    |**Zwevend IP (Direct Server Return)** | Ingeschakeld
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>De beschikbaarheids groep configureren voor het gebruik van het nieuwe IP-adres
 
@@ -275,7 +276,7 @@ Nadat u de beschikbaarheids groep hebt geconfigureerd voor het gebruik van het n
 Als een beschikbaarheids groep deelneemt aan een gedistribueerde beschikbaarheids groep, heeft de load balancer een extra regel nodig. Deze regel slaat de poort op die wordt gebruikt door de gedistribueerde beschikbaarheids groep-listener.
 
 >[!IMPORTANT]
->Deze stap is alleen van toepassing als de beschikbaarheids groep deelneemt aan een gedistribueerde [beschikbaarheids groep](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups). 
+>Deze stap is alleen van toepassing als de beschikbaarheids groep deelneemt aan een [gedistribueerde beschikbaarheids groep](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups). 
 
 1. Maak op elke server die deel uitmaakt van de gedistribueerde beschikbaarheids groep, een regel voor binnenkomend verkeer op de TCP-poort van de gedistribueerde beschikbaarheids groep. In veel voor beelden maakt documentatie gebruik van 5022. 
 
@@ -283,18 +284,18 @@ Als een beschikbaarheids groep deelneemt aan een gedistribueerde beschikbaarheid
 
 1. Maak de taakverdelings regel met de volgende instellingen:
 
-   |Instelling |Value
+   |Instelling |Waarde
    |:-----|:----
-   |**Name** |Een naam voor het identificeren van de taakverdelings regel voor de gedistribueerde beschikbaarheids groep. 
+   |**Naam** |Een naam voor het identificeren van de taakverdelings regel voor de gedistribueerde beschikbaarheids groep. 
    |**Frontend-IP-adres** |Gebruik hetzelfde frontend-IP-adres als de beschikbaarheids groep.
    |**Protocol** |TCP
-   |**Poort** |5022-de poort voor de [eind punt-listener](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)van de gedistribueerde beschikbaarheids groep.</br> Dit kan elke beschik bare poort zijn.  
+   |**Poort** |5022-de poort voor de [eind punt-listener van de gedistribueerde beschikbaarheids groep](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Dit kan elke beschik bare poort zijn.  
    |**Backend-poort** | 5022-gebruik dezelfde waarde als **poort**.
    |**Back-end-groep** |De groep die de virtuele machines bevat met de SQL Server exemplaren. 
    |**Status test** |Kies de test die u hebt gemaakt.
-   |**Sessie persistentie** |Geen
+   |**Sessie persistentie** |None
    |**Time-out voor inactiviteit (minuten)** |Standaard (4)
-   |**Zwevend IP (Direct Server Return)** | Enabled
+   |**Zwevend IP (Direct Server Return)** | Ingeschakeld
 
 Herhaal deze stappen voor de load balancer voor de andere beschikbaarheids groepen die deel uitmaken van de gedistribueerde beschikbaarheids groepen.
 

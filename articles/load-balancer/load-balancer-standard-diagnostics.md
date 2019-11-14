@@ -1,6 +1,5 @@
 ---
-title: Diagnostische gegevens over Azure Standard Load Balancer met metrische gegevens, waarschuwingen en resource status
-titlesuffix: Azure Load Balancer
+title: Diagnostische gegevens met metrische gegevens, waarschuwingen en resource status-Azure Standard Load Balancer
 description: Gebruik de beschik bare metrische gegevens, waarschuwingen en informatie over de resource status om uw Azure-Standard Load Balancer te diagnosticeren.
 services: load-balancer
 documentationcenter: na
@@ -13,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: b241f753c0de6e14282c679c5aec3c32be68e348
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: ff42c6e9bd3c25721d2b77e49c2dd98a3eebdb43
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516254"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048731"
 ---
-# <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostische gegevens Standard Load Balancer met metrische gegevens, waarschuwingen en resource status
+# <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnose van Standard Load Balancer met metrische gegevens, meldingen en status van resources
 
 Azure Standard Load Balancer maakt de volgende diagnostische mogelijkheden beschikbaar:
 
-* **Multi-dimensionale metrische gegevens en waarschuwingen**: Biedt nieuwe multi-dimensionale diagnostische mogelijkheden via [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) voor standaard Load Balancer configuraties. U kunt uw standaard load balancer-resources bewaken, beheren en problemen oplossen.
+* **Multi-dimensionale metrische gegevens en waarschuwingen**: voorziet in nieuwe multi-dimensionale diagnostische mogelijkheden via [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) voor standaard Load Balancer configuraties. U kunt uw standaard load balancer-resources bewaken, beheren en problemen oplossen.
 
-* **Status van resources**: De Load Balancer pagina in de Azure Portal en de Resource Health pagina (onder monitor) geven de sectie Resource Health voor Standard Load Balancer zichtbaar. 
+* **Resource status**: de Load Balancer pagina in de Azure Portal en de resource Health pagina (onder monitor) geven de sectie Resource Health voor Standard Load Balancer zichtbaar. 
 
 Dit artikel bevat een korte rond leiding door deze mogelijkheden en biedt manieren om ze te gebruiken voor Standard Load Balancer.
 
@@ -36,7 +35,7 @@ Azure Load Balancer voorziet in nieuwe multidimensionale metrische gegevens via 
 
 De verschillende Standard Load Balancer configuraties bieden de volgende metrische gegevens:
 
-| Gegevens | Resourcetype | Description | Aanbevolen aggregatie |
+| Gegevens | Resourcetype | Beschrijving | Aanbevolen aggregatie |
 | --- | --- | --- | --- |
 | Beschik baarheid van gegevenspad (VIP-Beschik baarheid)| Open bare en interne load balancer | Standard Load Balancer doorlopend het gegevenspad vanuit een gebied naar de load balancer front-end, die helemaal naar de SDN-stack gaat die uw virtuele machine ondersteunt. Zolang de gezonde instanties blijven bestaan, volgt de meting hetzelfde pad als het verkeer met gelijke taak verdeling van uw toepassing. Het gegevenspad dat door uw klanten wordt gebruikt, wordt ook gevalideerd. De meting is onzichtbaar voor uw toepassing en heeft geen invloed op andere bewerkingen.| Average |
 | Health probe status (DIP-Beschik baarheid) | Open bare en interne load balancer | Standard Load Balancer maakt gebruik van een gedistribueerde status-probing-service die de status van uw toepassings eindpunt bewaakt volgens de configuratie-instellingen. Deze metriek levert een gefilterde weer gave van een aggregatie of per eind punt van elk eind punt van de instantie in de load balancer groep. U kunt zien hoe Load Balancer de status van uw toepassing weergeeft, zoals wordt aangegeven door de configuratie van uw Health probe. |  Average |
@@ -58,7 +57,7 @@ De metrische gegevens voor uw Standard Load Balancer resources weer geven:
 
     ![Metrische gegevens voor Standard Load Balancer](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
 
-    *Afbeelding: Metrische gegevens over gegevenspad voor Standard Load Balancer*
+    *Afbeelding: metrische gegevens voor de beschik baarheid van gegevenspaden voor Standard Load Balancer*
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Via Api's multi-dimensionale metrieken ophalen
 
@@ -76,12 +75,12 @@ De metrische gegevens voor VIP-Beschik baarheid beschrijft de status van het geg
 Om de beschik baarheid van het gegevenspad voor uw Standard Load Balancer-resources te verkrijgen:
 1. Zorg ervoor dat de juiste load balancer resource is geselecteerd. 
 2. Selecteer in de vervolg keuzelijst **metrische** **gegevens beschik baarheid gegevenspaden**. 
-3. Selecteer in de vervolg keuzelijst aggregatie de optie **Gem**. 
+3. Selecteer in de vervolg keuzelijst **aggregatie** de optie **Gem**. 
 4. Daarnaast voegt u een filter op het frontend-IP-adres of de frontend-poort toe als de dimensie met het vereiste front-end-IP-adres of de front-end-poort en groepeert u deze op basis van de geselecteerde dimensie.
 
 ![VIP-zoeken](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
 
-*Afbeelding: Details van de front-end van Load Balancer-frontend*
+*Afbeelding: Details van het Load Balancer van de front-end zoeken*
 
 De metriek wordt gegenereerd door een actieve, in-band meting. Een probing-service binnen de regio is van het verkeer voor de meting. De service wordt geactiveerd zodra u een implementatie met een open bare front-end maakt en deze blijft totdat u de front-end verwijdert. 
 
@@ -91,7 +90,7 @@ De VIP-Beschik baarheid mislukt om de volgende redenen:
 - Uw implementatie heeft geen gezonde Vm's in de back-end-pool. 
 - Er is een storing in de infra structuur opgetreden.
 
-Voor diagnostische doel einden kunt u de metrische gegevens over de beschik baarheid van het gegevenspad [samen met de status prob](#vipavailabilityandhealthprobes)gebruiken.
+Voor diagnostische doel einden kunt u de [metrische gegevens over de beschik baarheid van het gegevenspad samen met de status prob](#vipavailabilityandhealthprobes)gebruiken.
 
 Gebruik **gemiddelde** als de aggregatie voor de meeste scenario's.
 
@@ -121,7 +120,7 @@ Statistieken voor de SNAT-verbinding ophalen:
 
 ![SNAT-verbinding](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
-*Afbeelding: Aantal Load Balancer SNAT-verbindingen*
+*Afbeelding: aantal Load Balancer SNAT-verbindingen*
 
 
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>Hoe kan ik controleren op inkomende/uitgaande Verbindings pogingen voor mijn service?
@@ -132,7 +131,7 @@ Gebruik **totaal** als de aggregatie voor de meeste scenario's.
 
 ![SYN-verbinding](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
-*Afbeelding: Aantal Load Balancer SYN*
+*Afbeelding: aantal Load Balancer SYN*
 
 
 #### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>Het gebruik van mijn netwerk bandbreedte Hoe kan ik controleren? 
@@ -149,7 +148,7 @@ Statistieken voor byte of pakket aantal ophalen:
 
 ![Aantal bytes](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
-*Afbeelding: Aantal Load Balancer bytes*
+*Afbeelding: aantal Load Balancer bytes*
 
 #### <a name = "vipavailabilityandhealthprobes"></a>Hoe kan ik een diagnose van mijn load balancer-implementatie?
 
@@ -161,7 +160,7 @@ U kunt een stap verder nemen en metrische gegevens over VIP-Beschik baarheid geb
 
 ![De metrische gegevens voor de beschik baarheid van data-en status tests combi neren](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
 
-*Afbeelding: De metrische gegevens voor de beschik baarheid van data-en status tests combi neren*
+*Afbeelding: de metrische gegevens voor de beschik baarheid van data-en status waarden worden gecombineerd*
 
 In het diagram wordt de volgende informatie weer gegeven:
 - De infra structuur waarop uw Vm's worden gehost, is niet beschikbaar en 0 procent aan het begin van de grafiek. Later is de infra structuur in orde en zijn de Vm's bereikbaar en zijn er meer dan één virtuele machine in de back-end geplaatst. Deze informatie wordt aangegeven door de blauwe tracering van de beschik baarheid van gegevenspaden (VIP-Beschik baarheid), die later is 100 procent. 
@@ -174,30 +173,30 @@ Met de grafiek kunnen klanten de implementatie zelf oplossen zonder dat ze hoeve
 De integriteits status voor de Standard Load Balancer bronnen wordt weer gegeven via de bestaande **resource status** onder **monitor > Service Health**.
 
 De status van uw open bare Standard Load Balancer-resources weer geven:
-1. Selecteer **monitor** > **service Health**.
+1. Selecteer > **service Health** **bewaken** .
 
    ![Pagina bewaken](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
-   *Afbeelding: De Service Health koppeling op Azure Monitor*
+   *Afbeelding: de Service Health koppeling op Azure Monitor*
 
 2. Selecteer **resource Health**en controleer of de **abonnements-id** en het **resource type = Load Balancer** zijn geselecteerd.
 
-   ![Integriteitsstatus van de resource](./media/load-balancer-standard-diagnostics/LBHealth3.png)
+   ![Status van resource status](./media/load-balancer-standard-diagnostics/LBHealth3.png)
 
-   *Afbeelding: Resource selecteren voor status weergave*
+   *Afbeelding: resource selecteren voor status weergave*
 
 3. Selecteer in de lijst de Load Balancer resource om de historische status weer te geven.
 
     ![Status van Load Balancer](./media/load-balancer-standard-diagnostics/LBHealth4.png)
 
-   *Afbeelding: Status weergave van Load Balancer resource*
+   *Afbeelding: Load Balancer resource status weer geven*
  
 De verschillende statussen van de bron en de bijbehorende beschrijvingen worden weer gegeven in de volgende tabel: 
 
-| Integriteitsstatus van de resource | Description |
+| Status van resource status | Beschrijving |
 | --- | --- |
 | Beschikbaar | Uw standaard load balancer resource is in orde en beschikbaar. |
-| Niet beschikbaar | Uw standaard load balancer resource is niet in orde. De status vaststellen door **Azure monitor** > **metrische gegevens**te selecteren.<br>(Niet-*beschik bare* status kan ook betekenen dat de resource niet is verbonden met uw standaard Load Balancer.) |
+| Niet beschikbaar | Uw standaard load balancer resource is niet in orde. De status vaststellen door **Azure Monitor** > **metrieken**te selecteren.<br>(Niet-*beschik bare* status kan ook betekenen dat de resource niet is verbonden met uw standaard Load Balancer.) |
 | Onbekend | De resource status voor de standaard load balancer resource is nog niet bijgewerkt.<br>(*Onbekende* status kan ook betekenen dat de bron niet is verbonden met uw standaard Load Balancer.)  |
 
 ## <a name="next-steps"></a>Volgende stappen

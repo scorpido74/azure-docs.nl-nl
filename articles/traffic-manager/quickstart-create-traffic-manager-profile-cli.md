@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een Traffic Manager profiel maken voor een hoge Beschik baarheid van toepassingen met behulp van Azure CLI'
+title: 'Snelstartgids: een profiel maken voor de HA van toepassingen-Azure CLI-Azure Traffic Manager'
 description: In dit Quick Start-artikel wordt beschreven hoe u een Traffic Manager profiel maakt om een Maxi maal beschik bare webtoepassing te bouwen.
 services: traffic-manager
 author: asudbring
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: allensu
-ms.openlocfilehash: dc7e555eb95cf88ecf57a6df4999672bb721b8cf
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 8b8880e10f9b920a2ec077d4cc4c2239e6ea7438
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620588"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034207"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Quickstart: Een Traffic Manager profiel maken voor een Maxi maal beschik bare webtoepassing met behulp van Azure CLI
+# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Snelstartgids: een Traffic Manager-profiel maken voor een Maxi maal beschik bare webtoepassing met behulp van Azure CLI
 
 In deze quickstart wordt beschreven hoe u een Traffic Manager-profiel maakt die hoge beschikbaarheid van uw webtoepassing biedt.
 
@@ -48,7 +48,7 @@ In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* 
 
 Maak een Traffic Manager profiel met [AZ Network Traffic-Manager profile Create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) waarmee gebruikers verkeer wordt omgeleid op basis van de eindpunt prioriteit.
 
-Vervang in het volgende voor beeld **< probestands naam >** met een unieke Traffic Manager profiel naam.
+Vervang in het volgende voor beeld **< profile_name >** met een unieke Traffic Manager profiel naam.
 
 ```azurecli-interactive
 
@@ -71,7 +71,7 @@ Voor deze quickstart moeten twee exemplaren van een webtoepassing worden geïmpl
 ### <a name="create-web-app-service-plans"></a>Web app service-abonnementen maken
 Maak Web app service-plannen met behulp van [AZ appservice plan Create](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) voor de twee exemplaren van de webtoepassing die u in twee verschillende Azure-regio's gaat implementeren.
 
-Vervang in het volgende voor beeld **< appspname_eastus >** en **< appspname_westeurope >** door een unieke app service plan naam
+Vervang in het volgende voor beeld **< appspname_eastus >** en **< appspname_westeurope** > met een unieke app service plan naam
 
 ```azurecli-interactive
 
@@ -91,7 +91,7 @@ az appservice plan create \
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>Een web-app maken in het app service-plan
 Maak twee exemplaren van de webtoepassing met [AZ webapp maken](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) in de app service plannen in het *VS-Oost* en *Europa-West* Azure-regio's.
 
-Vervang in het volgende voor beeld **< app1name_eastus >** en **< app2name_westeurope >** door een unieke app-naam en vervang **< appspname_eastus >** en **< appspname_westeurope >** met de naam die u hebt gebruikt voor het maken van de App Service plannen in de vorige sectie.
+Vervang in het volgende voor beeld **< app1name_eastus >** en **< app2name_westeurope** > met een unieke app-naam en vervang **<** appspname_eastus > en **<** appspname_westeurope > met de naam die u hebt gebruikt om de app service plannen in de vorige sectie te maken.
 
 ```azurecli-interactive
 
@@ -115,7 +115,7 @@ Voeg de twee Web Apps als Traffic Manager eind punten met [AZ Network Traffic-Ma
 
 Als het primaire eindpunt niet beschikbaar is, wordt het verkeer automatisch naar het failover-eindpunt gerouteerd.
 
-Vervang in het volgende voor beeld **< app1name_eastus >** en **< app2name_westeurope >** met de namen van de apps die u voor elke regio hebt gemaakt in de vorige sectie, vervang **< appspname_eastus >** en **< appspname_ Europa West >** met de naam die wordt gebruikt voor het maken van de app service plannen in de vorige sectie en vervang < profilecode **>** door de profiel naam die in de vorige sectie wordt gebruikt. 
+Vervang in het volgende voor beeld **< app1name_eastus >** en **< app2name_westeurope** > met de namen van de apps die u voor elke regio hebt gemaakt in de vorige sectie, vervang **<** appspname_eastus > en **<** appspname_westeurope > met de naam die wordt gebruikt voor het maken van de App Service plannen in de vorige sectie en vervang **<** profile_name > met de profiel naam die in de vorige sectie wordt gebruikt. 
 
 **VS-Oost-eind punt**
 
@@ -170,7 +170,7 @@ az network traffic-manager endpoint create \
 
 In deze sectie controleert u de domeinnaam van uw Traffic Manager-profiel. Tevens configureert u het primaire eindpunt zodanig dat het niet beschikbaar is. Ten slotte kunt u zien dat de web-app nog steeds beschikbaar is. Dat komt omdat Traffic Manager het verkeer naar het failover-eindpunt stuurt.
 
-Vervang in het volgende voor beeld **< app1name_eastus >** en **< app2name_westeurope >** met de namen van de apps die u voor elke regio hebt gemaakt in de vorige sectie, vervang **< appspname_eastus >** en **< appspname_ Europa West >** met de naam die wordt gebruikt voor het maken van de app service plannen in de vorige sectie en vervang < profilecode **>** door de profiel naam die in de vorige sectie wordt gebruikt.
+Vervang in het volgende voor beeld **< app1name_eastus >** en **< app2name_westeurope** > met de namen van de apps die u voor elke regio hebt gemaakt in de vorige sectie, vervang **<** appspname_eastus > en **<** appspname_westeurope > met de naam die wordt gebruikt voor het maken van de App Service plannen in de vorige sectie en vervang **<** profile_name > met de profiel naam die in de vorige sectie wordt gebruikt.
 
 ### <a name="determine-the-dns-name"></a>DNS-naam bepalen
 

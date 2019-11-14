@@ -1,10 +1,10 @@
 ---
-title: De controle geschiedenis voor Azure AD-rollen in PIM-Azure Active Directory weer geven | Microsoft Docs
+title: Controle rapport voor Azure AD-rollen weer geven in PIM-Azure AD | Microsoft Docs
 description: Meer informatie over het weer geven van de controle geschiedenis voor Azure AD-rollen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aa1c5121c723148884584ca3f00522c1c459859
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 7c4a157d8d5bcd281ca9fee488e58c455034e898
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808998"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022068"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>De controle geschiedenis voor Azure AD-rollen in PIM weer geven
 
@@ -45,9 +45,9 @@ Volg deze stappen om de controle geschiedenis voor Azure AD-rollen weer te geven
 
     | Kolom | Beschrijving |
     | --- | --- |
-    | Tijd | Wanneer de actie is uitgevoerd. |
+    | Time | Wanneer de actie is uitgevoerd. |
     | Aanvrager | Gebruiker die de functie activeert of wijzigt. Als de waarde **Azure System**is, controleert u de controle geschiedenis van Azure voor meer informatie. |
-    | Bewerking | Acties die door de aanvrager worden uitgevoerd. Acties kunnen toewijzen, intrekken, activeren, deactiveren of AddedOutsidePIM bevatten. |
+    | Actie | Acties die door de aanvrager worden uitgevoerd. Acties kunnen toewijzen, intrekken, activeren, deactiveren of AddedOutsidePIM bevatten. |
     | Lid | Gebruiker die een rol activeert of toewijst. |
     | Rol | De rol die is toegewezen of geactiveerd door de gebruiker. |
     | Redeneren | Tekst die tijdens de activering is ingevoerd in het veld reden. |

@@ -1,5 +1,5 @@
 ---
-title: SQL Server-beschikbaarheids groepen-Azure Virtual Machines-overzicht | Microsoft Docs
+title: Overzicht van beschikbaarheids groepen
 description: In dit artikel worden SQL Server-beschikbaarheids groepen op virtuele machines van Azure geïntroduceerd.
 services: virtual-machines
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: d89e25b6a39649bb8421fd32b8842c3c76807268
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8119990ab4ab4a918e325976092100086a547aa4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102153"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037498"
 ---
-# <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Introductie van SQL Server AlwaysOn-beschikbaarheids groepen op virtuele machines van Azure #
+# <a name="introducing-sql-server-availability-groups-on-azure-virtual-machines"></a>Introductie van SQL Server-beschikbaarheids groepen op virtuele machines van Azure
 
 In dit artikel worden SQL Server-beschikbaarheids groepen in azure Virtual Machines geïntroduceerd. 
 
@@ -35,14 +36,14 @@ Het belangrijkste verschil voor een beschikbaarheids groep in azure Virtual Mach
 
 Daarnaast wordt in een Azure IaaS VM-gast-failovercluster aanbevolen één NIC per server (cluster knooppunt) en één subnet. Een Azure-netwerk maakt gebruikt van fysieke redundantie, waardoor extra NIC's en subnetten overbodig zijn voor een gastcluster voor een Azure IaaS-VM. Hoewel het clustervalidatierapport een waarschuwing zal bevatten dat de knooppunten alleen bereikbaar zijn in één netwerk, kan deze waarschuwing zonder problemen worden genegeerd in het geval van failover-gastclusters voor een Azure IaaS-VM. 
 
-Om redundantie en maximale Beschik baarheid te verbeteren, moeten de SQL Server Vm's zich in [](virtual-machines-windows-portal-sql-availability-group-prereq.md#create-availability-sets)dezelfde beschikbaarheidsset bevinden of in verschillende [beschikbaarheids zones](/azure/availability-zones/az-overview). 
+Om redundantie en maximale Beschik baarheid te verbeteren, moeten de SQL Server Vm's zich in dezelfde [beschikbaarheidsset](virtual-machines-windows-portal-sql-availability-group-prereq.md#create-availability-sets)bevinden of in verschillende [beschikbaarheids zones](/azure/availability-zones/az-overview). 
 
 |  | Windows Server-versie | SQL Server versie | SQL Server-editie | Configuratie van WSFC-quorum | DR met meerdere regio's | Ondersteuning voor meerdere subnetten | Ondersteuning voor een bestaande AD | DR met meerdere zones met dezelfde regio | Ondersteuning voor dist-AG zonder AD-domein | Ondersteuning voor VERD-AG zonder cluster |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
 | [SQL-VM-CLI](virtual-machines-windows-sql-availability-group-cli.md) | 2016 | 2017 </br>2016   | Ent | Cloudwitness | Nee | Ja | Ja | Ja | Nee | Nee |
 | [Quick Start-sjablonen](virtual-machines-windows-sql-availability-group-quickstart-template.md) | 2016 | 2017</br>2016  | Ent | Cloudwitness | Nee | Ja | Ja | Ja | Nee | Nee |
 | [Portal sjabloon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) | 2016 </br>2012 R2 | 2016</br>2014 | Ent | Bestandsshare | Nee | Nee | Nee | Nee | Nee | Nee |
-| [Handmatig](virtual-machines-windows-portal-sql-availability-group-prereq.md) | Alle | Alle | Alle | Alle | Ja | Ja | Ja | Ja | Ja | Ja |
+| [Handmatig](virtual-machines-windows-portal-sql-availability-group-prereq.md) | Alles | Alles | Alles | Alles | Ja | Ja | Ja | Ja | Ja | Ja |
 | &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
 
 Raadpleeg deze zelf studies wanneer u klaar bent om een SQL Server-beschikbaarheids groep te maken in azure Virtual Machines.

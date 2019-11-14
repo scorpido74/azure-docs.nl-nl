@@ -1,5 +1,5 @@
 ---
-title: VM-grootten van Azure Linux-versnelde compute | Microsoft Docs
+title: VM-grootten van Azure Linux-versnelde compute
 description: Geeft een lijst van de verschillende geoptimaliseerde GPU-grootten die beschikbaar zijn voor virtuele Linux-machines in Azure. Bevat informatie over het aantal Vcpu's, gegevens schijven en Nic's en de opslag doorvoer en netwerk bandbreedte voor grootten in deze serie.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: ed8af91701a5ed77636bb86e8798981f37546f23
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 983e85dc0ebefb27804c0f3a794360def6050ba9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082139"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034908"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Grootte van door GPU geoptimaliseerde virtuele machines
 
@@ -37,7 +37,7 @@ Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren,
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-* U mag geen X-server of andere systemen installeren die `Nouveau` gebruikmaken van het stuur programma op Ubuntu NC-vm's. Voordat u NVIDIA GPU-Stuur Programma's installeert, moet u `Nouveau` het stuur programma uitschakelen.  
+* U mag geen X-server of andere systemen installeren die gebruikmaken van het `Nouveau`-stuur programma op Ubuntu NC-Vm's. Voordat u NVIDIA GPU-Stuur Programma's installeert, moet u het `Nouveau`-stuur programma uitschakelen.  
 
 ## <a name="other-sizes"></a>Andere grootten
 - [Algemeen doel](sizes-general.md)

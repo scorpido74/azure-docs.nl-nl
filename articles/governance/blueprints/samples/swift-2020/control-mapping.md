@@ -1,17 +1,14 @@
 ---
 title: Voor beeld-SWIFT CSP-CSCF v2020 blauw druk-besturings element toewijzing
 description: De toewijzing van de SWIFT CSP-CSCF v2020 blauw druk-voor beeld. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 8ef32a2cf385c052437c5e5cbd7c95077a262e83
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0e5b45ec86acbe7c55aed0aa1611f499316e9118
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163005"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037830"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>De toewijzing van de SWIFT CSP-CSCF v2020 blauw druk-voor beeld
 
@@ -80,7 +77,7 @@ Met deze blauw druk kunt u externe toegang bewaken en beheren door [Azure Policy
 - Onbeperkte netwerk toegang tot opslag accounts controleren
 - Fout opsporing op afstand moet worden uitgeschakeld voor de API-app
 - Fout opsporing op afstand moet worden uitgeschakeld voor functie-app
-- Externe fout opsporing moet worden uitgeschakeld voor webtoepassing
+- Foutopsporing op afstand moet worden uitgeschakeld voor Web-App
 
 ## <a name="13-and-64-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>1,3 en 6,4 inhoud van audit records | Gecentraliseerd beheer van geplande controle record inhoud
 
@@ -88,9 +85,9 @@ Logboek gegevens die door Azure Monitor worden verzameld, worden opgeslagen in e
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
+- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
+- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
 
 ## <a name="22-27-and-64-response-to-audit-processing-failures"></a>2,2, 2,7 en 6,4 antwoord op mislukte controle verwerking
 
@@ -106,9 +103,9 @@ Logboek gegevens die door Azure Monitor worden verzameld, worden opgeslagen in e
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
+- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
+- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
 
 ## <a name="13-22-27-64-and-65a-audit-generation"></a>1,3, 2,2, 2,7, 6,4 en 6.5 een audit generatie
 
@@ -116,9 +113,9 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
+- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
+- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
 - Diagnostische instelling voor controleren
 - Controle-instellingen op SQL server-niveau controleren
 - Geavanceerde gegevensbeveiliging moet zijn ingeschakeld op uw SQL-servers
@@ -229,10 +226,10 @@ Deze blauw druk helpt u om het vertrouwelijke en de integriteit van verzonden in
 - De API-app mag alleen toegankelijk zijn via HTTPS
 - Controle resultaten weer geven van Windows-webservers die geen beveiligde communicatie protocollen gebruiken
 - Vereisten implementeren voor het controleren van Windows-webservers die geen beveiligde communicatie protocollen gebruiken
-- functie-app mag alleen toegankelijk zijn via HTTPS
+- Functie-App moet alleen toegankelijk zijn via HTTPS
 - Alleen beveiligde verbindingen met uw Redis Cache moeten worden ingeschakeld
 - Beveiligde overdracht naar opslag accounts moet zijn ingeschakeld
-- Webtoepassing mag alleen toegankelijk zijn via HTTPS
+- Web-App moet alleen toegankelijk zijn via HTTPS
 
 ## <a name="22-23-25-41-and-27-protection-of-information-at-rest--cryptographic-protection"></a>2,2, 2,3, 2,5, 4,1 en 2,7 beveiliging van informatie in rust | Cryptografische beveiliging
 
@@ -275,9 +272,9 @@ Deze blauw druk helpt u bij het controleren van uw systeem door logboek registra
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
+- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
+- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
 - Geavanceerde gegevensbeveiliging moet zijn ingeschakeld op uw SQL-servers
 - Geavanceerde instellingen voor gegevens beveiliging voor SQL Server moeten een e-mail adres bevatten voor het ontvangen van beveiligings waarschuwingen
 - Diagnostische logboeken in Azure Stream Analytics moeten worden ingeschakeld
@@ -303,7 +300,7 @@ Nu u de toewijzing van het besturings element van de SWIFT CSP-CSCF v2020 blauw 
 > [Swift CSP-CSCF v2020 blauw druk-overzicht](./index.md)
 > [Swift CSP-CSCF v2020 blauw druk-implementatie stappen](./deploy.md)
 
-Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
+Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

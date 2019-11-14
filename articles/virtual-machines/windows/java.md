@@ -1,5 +1,5 @@
 ---
-title: Een virtuele Azure-machine maken en beheren met Java | Microsoft Docs
+title: Een virtuele Azure-machine maken en beheren met Java
 description: Gebruik Java en Azure Resource Manager voor het implementeren van een virtuele machine en alle ondersteunende bronnen.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: fa6c5115663d770f561764356129448af878668b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bf0f2928bd7cbac08a2a887481f19b3acb99f6fa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103021"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039725"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Virtuele Windows-machines maken en beheren in azure met behulp van Java
 
-Een [virtuele machine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) van Azure heeft verschillende ondersteunende Azure-resources nodig. In dit artikel wordt beschreven hoe u VM-resources maakt, beheert en verwijdert met behulp van Java. In deze zelfstudie leert u procedures om het volgende te doen:
+Een [virtuele machine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) van Azure heeft verschillende ondersteunende Azure-resources nodig. In dit artikel wordt beschreven hoe u VM-resources maakt, beheert en verwijdert met behulp van Java. Procedures voor:
 
 > [!div class="checklist"]
 > * Een Maven-project maken
@@ -51,7 +51,7 @@ Het duurt ongeveer 20 minuten om deze stappen uit te voeren.
 
 ## <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
-1. Open in `testAzureApp` de map het `pom.xml` bestand en voeg de opbouw configuratie toe aan &lt;project&gt; om het bouwen van uw toepassing in te scha kelen:
+1. Open in de map `testAzureApp` het `pom.xml`-bestand en voeg de bouw configuratie toe aan &lt;project&gt; om het bouwen van uw toepassing in te scha kelen:
 
     ```xml
     <build>
@@ -120,7 +120,7 @@ Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een 
 
 ### <a name="create-the-authorization-file"></a>Het autorisatie bestand maken
 
-1. Maak een bestand met `azureauth.properties` de naam en voeg deze eigenschappen toe:
+1. Maak een bestand met de naam `azureauth.properties` en voeg deze eigenschappen toe:
 
     ```
     subscription=<subscription-id>
@@ -133,7 +133,7 @@ Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een 
     graphURL=https://graph.windows.net/
     ```
 
-    De **&lt;abonnements-id&gt;** vervangen door de id van **&lt;&gt;** uw abonnement, de toepassings-id met de Active Directory toepassings-id, **&lt;verificatie sleutel met&gt;** de toepassings sleutel en **&lt;Tenant-id&gt;** met de Tenant-id.
+    Vervang **&lt;abonnement-id&gt;** door uw abonnements-id, **&lt;toepassings-id&gt;** met de Active Directory toepassings-id, **&lt;verificatie sleutel&gt;** met de toepassings sleutel en **&lt;Tenant-id&gt;** met de Tenant-id.
 
 2. Sla het bestand op.
 3. Stel een omgevings variabele met de naam AZURE_AUTH_LOCATION in uw shell in met het volledige pad naar het verificatie bestand.
@@ -418,7 +418,7 @@ input.nextLine();
 
 ### <a name="resize-the-vm"></a>Grootte van de virtuele machine wijzigen
 
-Veel aspecten van de implementatie moeten worden overwogen bij het bepalen van de grootte van de virtuele machine. Zie [VM](sizes.md)-grootten voor meer informatie.  
+Veel aspecten van de implementatie moeten worden overwogen bij het bepalen van de grootte van de virtuele machine. Zie [VM-grootten](sizes.md)voor meer informatie.  
 
 Als u de grootte van de virtuele machine wilt wijzigen, voegt u deze code toe aan het blok try in de methode Main:
 

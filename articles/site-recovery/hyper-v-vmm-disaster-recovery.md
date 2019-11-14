@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b0fa4dbc336067ee3e3b2baa49ec872f65a3154b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d3fe578444b99cc7f8c762ae9e96766ca10aa305
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933531"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039678"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Herstel na noodgevallen instellen voor Hyper-V-VM's naar een secundaire on-premises site
 
@@ -30,7 +30,7 @@ In dit artikel wordt uitgelegd hoe u herstel na noodgevallen naar een secundaire
 > * Replicatie inschakelen voor een VM
 
 > [!WARNING]
-> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](scvmm-site-recovery-deprecation.md) te lezen voordat u doorgaat.
+> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](site-to-site-deprecation.md) te lezen voordat u doorgaat.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,7 +41,7 @@ Vereisten om dit scenario te voltooien:
 - Controleren of de virtuele machines die u wilt repliceren voldoen aan [ondersteuning voor gerepliceerde machines](hyper-v-vmm-secondary-support-matrix.md#replicated-vm-support).
 - VMM-servers voorbereiden op netwerktoewijzing.
 
-### <a name="prepare-for-network-mapping"></a>Voorbereiden op netwerkkoppeling
+### <a name="prepare-for-network-mapping"></a>Voorbereiden op netwerktoewijzing
 
 Bij [netwerktoewijzing](hyper-v-vmm-network-mapping.md) worden on-premises VMM-netwerken met virtuele machines toegewezen aan bron- en doelclouds. Bij toewijzing gebeurt het volgende:
 
@@ -106,7 +106,7 @@ Installeer de Azure Site Recovery-provider op de VMM-servers en detecteer en reg
 8. Selecteer in **Registratiesleutel** de sleutel die u hebt gedownload en naar de VMM-server hebt gekopieerd.
 9. De coderingsinstelling is niet relevant in dit scenario. 
 10. Geef in **Servernaam** een beschrijvende naam op om de VMM-server in de kluis te identificeren. Geef in een cluster de VMM-clusterrolnaam op.
-11. Geef bij **Cloudmetagegevens synchroniseren** aan of u metagegevens voor alle clouds op de VMM-server wilt synchroniseren. Deze actie hoeft op elke server slechts één keer te worden uitgevoerd. Als u niet alle clouds wilt synchroniseren, laat u deze instelling uitgeschakeld. U kunt elke cloud afzonderlijk synchroniseren in de cloudeigenschappen in de VMM-console.
+11. Geef bij **Cloudmetagegevens synchroniseren** aan of u metagegevens voor alle clouds op de VMM-server wilt synchroniseren. Deze actie hoeft op elke server slechts één keer worden uitgevoerd. Als u niet alle clouds wilt synchroniseren, laat u deze instelling uitgeschakeld. U kunt elke cloud afzonderlijk synchroniseren in de cloudeigenschappen in de VMM-console.
 12. Klik op **Volgende** om het proces te voltooien. Na de registratie worden door Site Recovery metagegevens van de VMM-server opgehaald. De server wordt weergegeven in **Servers** > **VMM-servers** in de kluis.
 13. Selecteer nadat de server wordt weergegeven in de kluis in **Bron** > **Bron voorbereiden** de VMM-server en selecteer de cloud waarin de Hyper-V-host zich bevindt. Klik vervolgens op **OK**.
 
@@ -118,7 +118,7 @@ Selecteer de VMM-doelserver en -cloud:
 1. Klik op **Infrastructuur voorbereiden** > **Doel**, en selecteer de VMM-doelserver.
 2. VMM-clouds die zijn gesynchroniseerd met Site Recovery worden weergegeven. Selecteer de doelcloud.
 
-   ![Kiezen](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Doel](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Een replicatiebeleid instellen

@@ -1,17 +1,14 @@
 ---
 title: Voor beeld van Canada Federal PBMM Blues-Control-toewijzing
 description: De toewijzing van de voor beelden van Canada Federal PBMM blauw drukken. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/04/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: e74d3328e1ed41a7184569d30cc46ae7cd29a5ba
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0be73497de36ac3c11637b80a492ab0a8558206d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163511"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039712"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>De toewijzing van het voor beeld van Canada Federal PBMM blauw drukken
 
@@ -93,7 +90,7 @@ Deze blauw druk helpt u bij het bewaken en beheren van externe toegang door [Azu
 - Onbeperkte netwerk toegang tot opslag accounts controleren
 - Fout opsporing op afstand moet worden uitgeschakeld voor de API-app
 - Fout opsporing op afstand moet worden uitgeschakeld voor functie-app
-- Externe fout opsporing moet worden uitgeschakeld voor webtoepassing
+- Foutopsporing op afstand moet worden uitgeschakeld voor Web-App
 
 ## <a name="au-3-2-content-of-audit-records"></a>AU-3 (2) inhoud van audit records
 
@@ -101,9 +98,9 @@ Logboek gegevens die door Azure Monitor worden verzameld, worden opgeslagen in e
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
-- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
-- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
+- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
+- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
+- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-5-antwoord op mislukte controle verwerking
 
@@ -120,9 +117,9 @@ Logboek gegevens die door Azure Monitor worden verzameld, worden opgeslagen in e
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
-- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
-- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
+- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
+- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
+- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
 
 ## <a name="au-12-audit-generation"></a>Generatie van AU-12-audit
 
@@ -130,9 +127,9 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
-- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
-- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
+- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
+- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
+- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
 - Diagnostische instelling voor controleren
 - Controle-instellingen op SQL server-niveau controleren
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
@@ -244,9 +241,9 @@ Deze blauw druk helpt u om het vertrouwelijke en de integriteit van verzonden in
 - De API-app mag alleen toegankelijk zijn via HTTPS
 - Windows-webservers controleren die geen protocollen voor beveiligde communicatie gebruiken
 - Vereisten implementeren voor het controleren van Windows-webservers die geen beveiligde communicatie protocollen gebruiken
-- functie-app mag alleen toegankelijk zijn via HTTPS
+- Functie-App moet alleen toegankelijk zijn via HTTPS
 - Alleen beveiligde verbindingen met uw Redis Cache moeten worden ingeschakeld
-- Webtoepassing mag alleen toegankelijk zijn via HTTPS
+- Web-App moet alleen toegankelijk zijn via HTTPS
 - Beveiligde overdracht naar opslag accounts moet zijn ingeschakeld
 
 ## <a name="sc-28-1-protection-of-information-at-rest"></a>SC-28 (1) bescherming van informatie bij rust
@@ -294,9 +291,9 @@ Deze blauw druk helpt u bij het controleren van uw systeem door logboek registra
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
-- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
-- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
+- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
+- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
+- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
 - Geavanceerde gegevensbeveiliging moet zijn ingeschakeld op uw SQL-servers
 - Geavanceerde gegevens beveiliging implementeren op SQL-servers
@@ -314,9 +311,9 @@ U hebt de beheer toewijzing van het voor beeld van Canada Federal PBMM Blue geco
 
 > [!div class="nextstepaction"]
 > [Canada Federal PBMM Blue blauw-overzicht](./control-mapping.md)
-> [Canada Federal PBMM blauw druk-implementatie stappen](./deploy.md)
+> [Canada federale PBMM blauw druk-implementatie stappen](./deploy.md)
 
-Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
+Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

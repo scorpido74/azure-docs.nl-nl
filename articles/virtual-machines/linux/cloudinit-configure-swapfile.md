@@ -1,5 +1,5 @@
 ---
-title: Cloud-init gebruiken voor het configureren van een swap-partitie op een Linux-VM | Microsoft Docs
+title: Cloud-init gebruiken voor het configureren van een swap-partitie op een Linux-VM
 description: Cloud-init gebruiken voor het configureren van een swap-partitie in een Linux-VM tijdens het maken met de Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: d8ce12b931b6a30fa375588b73a1140ed4697c2f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fad73a7dbed9351d684ef2464cf2fa6fa3489290
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640773"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036757"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Cloud-init gebruiken voor het configureren van een swap-partitie op een Linux-VM
 Dit artikel laat u zien hoe u [Cloud-init](https://cloudinit.readthedocs.io) kunt gebruiken om de swap-partitie te configureren voor diverse Linux-distributies. De swap-partitie is traditioneel geconfigureerd door de Linux-agent (WALA) op basis van welke distributies een vereiste is.  Dit document bevat een overzicht van het proces voor het bouwen van de wissel partitie op aanvraag tijdens de inrichtings tijd met behulp van Cloud-init.  Zie [Cloud-init Overview](using-cloud-init.md) (Engelstalig) voor meer informatie over hoe Cloud-init standaard werkt in Azure en de ondersteunde Linux-distributies
@@ -54,7 +54,7 @@ Voordat u deze installatie kopie implementeert, moet u een resource groep maken 
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak nu een virtuele machine met [AZ VM Create](/cli/azure/vm) en geef het bestand Cloud-init op `--custom-data cloud_init_swappart.txt` met de volgende opties:
+Maak nu een virtuele machine met [AZ VM Create](/cli/azure/vm) en geef het bestand Cloud-init met `--custom-data cloud_init_swappart.txt` als volgt op:
 
 ```azurecli-interactive 
 az vm create \

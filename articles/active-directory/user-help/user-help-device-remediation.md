@@ -1,6 +1,6 @@
 ---
-title: De fout 'U kunt daar niet komen vanaf hier' - Azure Active Directory oplossen | Microsoft Docs
-description: Los de mogelijke redenen waarom u het foutbericht 'U kunt daar niet komen vanaf hier krijgt'.
+title: "Oplossingen voor de fout ' u kunt hier geen toegang krijgen ': Azure AD"
+description: Zoek mogelijke oplossingen voor de reden waarom u het fout bericht ' u kunt geen van de hier geen toegang krijgen ' krijgt.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -14,60 +14,61 @@ ms.author: lizross
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a317680a39d4594aacdf84ccdf963bb84bfbf07b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d6385343ed26e5043e1491529fd2454caff4d04
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473777"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028563"
 ---
-# <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>Mogelijke redenen voor het foutbericht 'U kunt daar niet komen vanaf hier'
-Tijdens het openen van de interne web-apps of services van uw organisatie, krijgt u mogelijk een foutbericht dat aangeeft dat deze, **u daar niet komen vanaf hier**. Dit bericht betekent dat uw organisatie een beleid in plaats dat voorkomt dat uw apparaat toegang tot resources van uw organisatie heeft gezet. Hoewel u ontstaat mogelijk contact opnemen met de Helpdesk als dit probleem wilt oplossen, vindt hier u enkele dingen die u kunt eerst proberen.
+# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>Mogelijke oplossingen voor het fout bericht ' u kunt geen van deze hier ophalen '
 
-## <a name="make-sure-youre-using-a-supported-browser"></a>Zorg ervoor dat u een ondersteunde browser
-Als u de **u daar niet komen vanaf hier** bericht waarin wordt gemeld dat u wilt toegang krijgen tot uw organisatie sites vanuit een niet-ondersteunde browser, controleert u welke browser die u uitvoert.
+Bij het openen van de interne web-apps of-services van uw organisatie wordt mogelijk een fout bericht weer gegeven waarin wordt vermeld dat **u hier niet kunt komen**. Dit bericht betekent dat uw organisatie een beleid heeft ingesteld dat voor komt dat uw apparaat toegang heeft tot de resources van uw organisatie. Hoewel het mogelijk is om contact op te nemen met de Help Desk om dit probleem op te lossen, kunt u het beste het eerst proberen.
 
-![Foutbericht weergegeven die betrekking hebben op ondersteuning van de browser](media/user-help-device-remediation/browser-version.png)
+## <a name="make-sure-youre-using-a-supported-browser"></a>Zorg ervoor dat u een ondersteunde browser gebruikt
+Als u het **volgende** bericht krijgt dat u de sites van uw organisatie probeert te openen vanuit een niet-ondersteunde browser, controleert u de browser die u gebruikt.
 
-U lost dit probleem, moet u installeren en uitvoeren van een ondersteunde browser, op basis van uw besturingssysteem. Als u Windows 10, wordt de ondersteunde browsers ook Microsoft Edge, Internet Explorer en Google Chrome. Als u een ander besturingssysteem gebruikt, kunt u de volledige lijst van controleren [ondersteunde browsers](../conditional-access/technical-reference.md#supported-browsers).
+![Fout bericht met betrekking tot browser ondersteuning](media/user-help-device-remediation/browser-version.png)
 
-## <a name="make-sure-youre-using-a-supported-operating-system"></a>Zorg ervoor dat u een ondersteund besturingssysteem
-Zorg ervoor dat u een ondersteunde versie van het besturingssysteem uitvoert, met inbegrip van:
+Om dit probleem op te lossen, moet u een ondersteunde browser installeren en uitvoeren, op basis van uw besturings systeem. Als u met Windows 10 werkt, bevatten de ondersteunde browsers micro soft Edge, Internet Explorer en Google Chrome. Als u een ander besturings systeem gebruikt, kunt u de volledige lijst met [ondersteunde browsers](../conditional-access/technical-reference.md#supported-browsers)controleren.
 
-- **Windows-Client.** Windows 7 of hoger.
+## <a name="make-sure-youre-using-a-supported-operating-system"></a>Zorg ervoor dat u een ondersteund besturings systeem gebruikt
+Zorg ervoor dat u een ondersteunde versie van het besturings systeem gebruikt, met inbegrip van:
 
-- **Windows Server.** Windows Server 2008 R2 of hoger.
+- **Windows-client.** Windows 7 of hoger.
 
-- **Mac OS.** Mac OS X of hoger
+- **Windows-Server.** Windows Server 2008 R2 of hoger.
 
-- **Android en iOS.** Meest recente versie van Android en iOS mobiele besturingssystemen
+- **macOS.** macOS X of hoger
 
-U lost dit probleem, moet u installeren en uitvoeren van een ondersteund besturingssysteem.
+- **Android en iOS.** Nieuwste versie van Android-en iOS Mobile-besturings systemen
 
-## <a name="make-sure-your-device-is-joined-to-your-network"></a>Zorg ervoor dat het apparaat is gekoppeld aan uw netwerk
-Als u de **u daar niet komen vanaf hier** bericht waarin wordt gemeld dat uw apparaat-compatibel is met toegangsbeleid van uw organisatie, zorg ervoor dat u hebt uw apparaat toegevoegd aan het netwerk van uw organisatie.
+U kunt dit probleem oplossen door een ondersteund besturings systeem te installeren en uit te voeren.
 
-![Foutbericht weergegeven die betrekking hebben op of u in uw netwerk bent](media/user-help-device-remediation/network-version.png)
+## <a name="make-sure-your-device-is-joined-to-your-network"></a>Controleer of het apparaat is gekoppeld aan uw netwerk
+Als u het volgende bericht krijgt dat het apparaat **niet** aan de eisen van het toegangs beleid van uw organisatie voldoet, moet u ervoor zorgen dat uw apparaat is verbonden met het netwerk van uw organisatie.
 
-### <a name="to-check-whether-your-device-is-joined-to-your-network"></a>Om te controleren of het apparaat is gekoppeld aan uw netwerk
-1. Aanmelden bij Windows met uw werk- of schoolaccount. Bijvoorbeeld alain@contoso.com.
+![Fout bericht met betrekking tot de vraag of u zich in het netwerk bevindt](media/user-help-device-remediation/network-version.png)
 
-2. Verbinding maken met het netwerk van uw organisatie via een virtueel particulier netwerk (VPN) of DirectAccess.
+### <a name="to-check-whether-your-device-is-joined-to-your-network"></a>Controleren of het apparaat is gekoppeld aan uw netwerk
+1. Meld u aan bij Windows met uw werk-of school account. Bijvoorbeeld alain@contoso.com.
 
-3. Nadat u verbonden bent, drukt u op de **Windows-logotoets + l drukken** uw apparaat te vergrendelen.
+2. Maak verbinding met het netwerk van uw organisatie via een virtueel particulier netwerk (VPN) of DirectAccess.
 
-4. Ontgrendel uw apparaat met uw werk of school-account en probeer het vervolgens toegang tot de problematische app of service opnieuw.
+3. Nadat u verbinding hebt gemaakt, drukt u op de **Windows-logo toets + L** om uw apparaat te vergren delen.
 
-    Als u ziet de **u daar niet komen vanaf hier** foutbericht opnieuw uit, selecteer de **meer details** koppelen en vervolgens contact op met uw Helpdesk met de details.
+4. Ontgrendel uw apparaat met behulp van uw werk-of school account en probeer opnieuw toegang te krijgen tot de problematische app of service.
 
-### <a name="to-join-your-device-to-your-network"></a>Uw apparaat koppelen aan uw netwerk
-Als uw apparaat niet is gekoppeld aan het netwerk van uw organisatie, kunt u een van twee dingen doen:
+    Als u het fout bericht **u kunt niet meer ophalen** ziet, selecteert u de koppeling **meer details** en neemt u contact op met de Help Desk voor meer informatie.
 
-- **Lid worden van uw apparaat werken.** Toevoegen aan het netwerk van uw organisatie eigendom van het werk Windows 10-apparaat, zodat u toegang hebben tot mogelijk beperkte resources. Zie voor meer informatie en stapsgewijze instructies [uw werk-apparaat toevoegen aan het netwerk van uw organisatie](user-help-join-device-on-network.md).
+### <a name="to-join-your-device-to-your-network"></a>Uw apparaat toevoegen aan uw netwerk
+Als uw apparaat niet is toegevoegd aan het netwerk van uw organisatie, kunt u een van de volgende twee dingen doen:
 
-- **Registreer uw persoonlijke apparaat voor het werk.** Registreer uw persoonlijke apparaat, doorgaans een telefoon of tablet, op het netwerk van uw organisatie. Nadat het apparaat is geregistreerd, deze toegang heeft tot beperkte resources van uw organisatie. Zie voor meer informatie en stapsgewijze instructies [registreren van uw persoonlijke apparaat op het netwerk van uw organisatie](user-help-register-device-on-network.md).
+- **Word lid van uw werk apparaat.** Voeg uw werkend Windows 10-apparaat toe aan het netwerk van uw organisatie, zodat u mogelijk beperkte bronnen kunt openen. Zie [uw werk apparaat lid maken van het netwerk van uw organisatie](user-help-join-device-on-network.md)voor meer informatie en stapsgewijze instructies.
+
+- **Registreer uw persoonlijke apparaat voor werk.** Registreer uw persoonlijke apparaat, meestal een telefoon of Tablet, op het netwerk van uw organisatie. Nadat het apparaat is geregistreerd, kan het toegang krijgen tot de beperkte bronnen van uw organisatie. Zie [uw persoonlijke apparaat registreren op het netwerk van uw organisatie](user-help-register-device-on-network.md)voor meer informatie en stapsgewijze instructies.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Wat is de MyApps-portal?](active-directory-saas-access-panel-introduction.md)
+- [Wat is de MyApps-Portal?](active-directory-saas-access-panel-introduction.md)
 
 - [Aanmelden met uw telefoon, niet met uw wachtwoord](user-help-auth-app-sign-in.md)

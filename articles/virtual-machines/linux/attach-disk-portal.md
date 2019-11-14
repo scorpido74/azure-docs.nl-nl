@@ -1,5 +1,5 @@
 ---
-title: Een gegevens schijf koppelen aan een virtuele Linux-machine | Microsoft Docs
+title: Een gegevens schijf koppelen aan een virtuele Linux-machine
 description: Gebruik de portal om een nieuwe of bestaande gegevens schijf te koppelen aan een virtuele Linux-machine.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f63648f63d6154b89f641cdc4d2657e0396a8c66
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 78604a4f6fd5a6bcd21d0adc80c1c60278068836
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036366"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037053"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Een gegevens schijf koppelen aan een virtuele Linux-machine met behulp van de portal 
 Dit artikel laat u zien hoe u met de Azure Portal zowel nieuwe als bestaande schijven kunt koppelen aan een virtuele Linux-machine. U kunt ook [een gegevens schijf koppelen aan een virtuele Windows-machine in de Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -33,7 +33,7 @@ Lees de volgende tips voordat u schijven aan uw virtuele machine koppelt:
 
 
 ## <a name="find-the-virtual-machine"></a>De virtuele machine zoeken
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Klik op **virtual machines**in het menu links.
 3. Selecteer de virtuele machine in de lijst.
 4. Klik op **schijven**op de pagina virtuele machines in **Essentials**.
@@ -79,7 +79,7 @@ Om uw nieuwe schijf te partitioneren, te Format teren en te koppelen, zodat uw v
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-Wanneer u bent verbonden met uw virtuele machine, kunt u een schijf koppelen. Zoek eerst de schijf met `dmesg` (de methode die u gebruikt om de nieuwe schijf te detecteren). In het volgende voor beeld wordt dmesg gebruikt om te filteren op *SCSI* -schijven:
+Wanneer u bent verbonden met uw virtuele machine, kunt u een schijf koppelen. Zoek eerst de schijf met behulp van `dmesg` (de methode die u gebruikt om uw nieuwe schijf te detecteren) kan verschillen. In het volgende voor beeld wordt dmesg gebruikt om te filteren op *SCSI* -schijven:
 
 ```bash
 dmesg | grep SCSI
@@ -103,13 +103,13 @@ Als u een bestaande schijf gebruikt die gegevens bevat, gaat u door met het kopp
 > [!NOTE]
 > Het is raadzaam om de meest recente versies van fdisk of een deel daarvan te gebruiken die beschikbaar zijn voor uw distributie.
 
-Partitioneer de schijf met `fdisk`. Als de schijf grootte 2 tebibytes (Tib) of groter is, moet u GPT-partitionering gebruiken `parted` om GPT-partitionering uit te voeren. Als de grootte van de schijf onder 2TiB is, kunt u MBR-of GPT-partitionering gebruiken. Maak een primaire schijf op partitie 1 en accepteer de andere standaard waarden. In het volgende voor beeld `fdisk` wordt het proces op */dev/SDC*gestart:
+Partitioneer de schijf met `fdisk`. Als de schijf grootte 2 tebibytes (TiB) of groter is, moet u GPT-partitionering gebruiken. u kunt `parted` gebruiken om GPT-partitionering uit te voeren. Als de grootte van de schijf onder 2TiB is, kunt u MBR-of GPT-partitionering gebruiken. Maak een primaire schijf op partitie 1 en accepteer de andere standaard waarden. In het volgende voor beeld wordt het `fdisk` proces op */dev/SDC*gestart:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Gebruik de `n` opdracht om een nieuwe partitie toe te voegen. In dit voor beeld kiezen `p` we ook voor een primaire partitie en accepteren we de rest van de standaard waarden. De uitvoer ziet er ongeveer uit als in het volgende voor beeld:
+Gebruik de opdracht `n` om een nieuwe partitie toe te voegen. In dit voor beeld kiezen we ook `p` voor een primaire partitie en de rest van de standaard waarden te accepteren. De uitvoer ziet er ongeveer uit als in het volgende voor beeld:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -131,7 +131,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Druk de partitie tabel af door `p` te typen en `w` vervolgens te gebruiken om de tabel naar schijf te schrijven en af te sluiten. De uitvoer moet er ongeveer uitzien als in het volgende voor beeld:
+Druk de partitie tabel af door `p` te typen en vervolgens `w` te gebruiken om de tabel naar schijf te schrijven en af te sluiten. De uitvoer moet er ongeveer uitzien als in het volgende voor beeld:
 
 ```bash
 Command (m for help): p
@@ -153,7 +153,7 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-Schrijf nu een bestands systeem naar de partitie met de `mkfs` opdracht. Geef het type bestands systeem en de naam van het apparaat op. In het volgende voor beeld wordt een *ext4* -bestands systeem gemaakt op de */dev/sdc1* -partitie die in de voor gaande stappen is gemaakt:
+Schrijf nu een bestands systeem naar de partitie met de opdracht `mkfs`. Geef het type bestands systeem en de naam van het apparaat op. In het volgende voor beeld wordt een *ext4* -bestands systeem gemaakt op de */dev/sdc1* -partitie die in de voor gaande stappen is gemaakt:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -184,7 +184,7 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 ### <a name="mount-the-disk"></a>De schijf koppelen
-Maak een map om het bestands systeem met `mkdir`te koppelen. In het volgende voor beeld maakt u een map op */datadrive*:
+Maak een map om het bestands systeem met behulp van `mkdir`te koppelen. In het volgende voor beeld maakt u een map op */datadrive*:
 
 ```bash
 sudo mkdir /datadrive
@@ -196,7 +196,7 @@ Gebruik `mount` om het bestands systeem vervolgens te koppelen. In het volgende 
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Om ervoor te zorgen dat het station automatisch na het opnieuw opstarten opnieuw wordt gekoppeld, moet het worden toegevoegd aan het *bestand/etc/fstab* -bestand. Het wordt ook ten zeerste aanbevolen om de UUID (Universally Unique IDentifier) in *bestand/etc/fstab* te gebruiken om te verwijzen naar het station in plaats van alleen de naam van het apparaat (zoals */dev/sdc1*). Als het besturings systeem tijdens het opstarten een schijf fout detecteert, voor komt u dat de onjuiste schijf wordt gekoppeld aan een bepaalde locatie. De resterende gegevens schijven worden vervolgens toegewezen aan dezelfde apparaat-Id's. Als u de UUID van het nieuwe station wilt zoeken, `blkid` gebruikt u het hulp programma:
+Om ervoor te zorgen dat het station automatisch na het opnieuw opstarten opnieuw wordt gekoppeld, moet het worden toegevoegd aan het *bestand/etc/fstab* -bestand. Het wordt ook ten zeerste aanbevolen om de UUID (Universally Unique IDentifier) in *bestand/etc/fstab* te gebruiken om te verwijzen naar het station in plaats van alleen de naam van het apparaat (zoals */dev/sdc1*). Als het besturings systeem tijdens het opstarten een schijf fout detecteert, voor komt u dat de onjuiste schijf wordt gekoppeld aan een bepaalde locatie. De resterende gegevens schijven worden vervolgens toegewezen aan dezelfde apparaat-Id's. Als u de UUID van het nieuwe station wilt zoeken, gebruikt u het hulp programma `blkid`:
 
 ```bash
 sudo -i blkid
@@ -235,12 +235,12 @@ Sommige Linux-kernels ondersteunen bewerkingen voor het verwijderen/ontkoppelen 
 
 Er zijn twee manieren om ondersteuning voor het verkleinen van de virtuele Linux-machine in te scha kelen. Zoals gebruikelijk, raadpleegt u de distributie voor de aanbevolen benadering:
 
-* Gebruik de `discard` koppelings optie in *bestand/etc/fstab*, bijvoorbeeld:
+* Gebruik de optie voor het koppelen van `discard` in *bestand/etc/fstab*, bijvoorbeeld:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* In sommige gevallen kan de `discard` optie invloed hebben op de prestaties. U kunt de `fstrim` opdracht ook hand matig uitvoeren vanaf de opdracht regel of deze toevoegen aan uw crontab om regel matig uit te voeren:
+* In sommige gevallen heeft de optie `discard` mogelijk gevolgen voor de prestaties. U kunt ook de `fstrim` opdracht hand matig uitvoeren vanaf de opdracht regel of deze toevoegen aan uw crontab om regel matig uit te voeren:
   
     **Ubuntu**
   

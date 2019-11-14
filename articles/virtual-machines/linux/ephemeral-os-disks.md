@@ -1,6 +1,6 @@
 ---
-title: Tijdelijke besturingssysteemschijven voor Azure Linux Virtual Machines | Microsoft Docs
-description: Meer informatie over kortstondige besturingssysteemschijven voor virtuele Azure-machines.
+title: Tijdelijke besturingssysteem schijven voor Azure Linux Virtual Machines
+description: Meer informatie over tijdelijke besturingssysteem schijven voor virtuele Azure-machines.
 services: virtual-machines-linux
 author: cynthn
 manager: gwallace
@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a318743876761a3a9b68d40fd963f43a527f0c7a
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 806ca1b0e2ed7bca674b45fc309d486ab6db7bc4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67805883"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036240"
 ---
-# <a name="ephemeral-os-disks-for-azure-vms"></a>Tijdelijke besturingssysteemschijven voor virtuele Azure-machines
+# <a name="ephemeral-os-disks-for-azure-vms"></a>Tijdelijke besturingssysteem schijven voor virtuele Azure-machines
 
 [!INCLUDE [virtual-machines-common-ephemeral](../../../includes/virtual-machines-common-ephemeral.md)]
  
 ## <a name="next-steps"></a>Volgende stappen
-U kunt een virtuele machine maken met een kortstondige OS schijf met de [Azure CLI](https://docs.microsoft.com/cli/azure/vm#az-vm-create).
+U kunt een virtuele machine maken met een tijdelijke besturingssysteem schijf met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/vm#az-vm-create).
 

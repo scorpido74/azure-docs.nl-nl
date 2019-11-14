@@ -1,18 +1,14 @@
 ---
 title: Voor beeld van CAF Foundation-blauw druk-stappen implementeren
 description: Implementeer de stappen van het voor beeld van de CAF Foundation-blauw druk.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
-ms.service: blueprints
-ms.custom: fasttrack-new
-ms.openlocfilehash: a7daf460e65c294b464f9a5deb5d9676b762c5f7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ad5d7ce2fb895032f9ae5d19ee6d2978830ccc89
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163589"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038486"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Het Microsoft Cloud-acceptatie raamwerk implementeren voor het voor beeld van Azure Foundation blauw drukken
 
@@ -66,7 +62,7 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
-   - Basisbeginselen
+   - Basics
        - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
      - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
        Wijzig indien nodig of sluit af.
@@ -110,7 +106,7 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 |Toegestane Sku's voor virtuele machines|Beleidstoewijzing|Policy_Allowed-VM-Sku's|Toegestane Sku's voor virtuele machines|
 |CostCenter-TAG toevoegen aan resource groepen|Beleidstoewijzing|Policy_CostCenter_Tag|CostCenter-label en de bijbehorende waarde uit de resource groep toevoegen|
 |Bron typen die u niet wilt toestaan in uw omgeving|Beleidstoewijzing|Beleid _Allowed-bron typen|Welke Azure-resources u in uw omgeving wilt toestaan|
-|Key Vault implementeren|Resource Manager-sjabloon|KV-AccessPolicy|**Vergrendeld** : Azure AD-groep of-gebruiker <Object ID> om machtigingen te verlenen aan Key Vault|
+|Key Vault implementeren|Resource Manager-sjabloon|KV-AccessPolicy|**Vergrendeld** : Azure AD-groep of-gebruiker <Object ID> om machtigingen te verlenen voor in Key Vault|
 |Log Analytics implementeren|Resource Manager-sjabloon|LogAnalytics_DataRetention|**Vergrendeld** : aantal dagen dat gegevens worden bewaard in log Analytics|
 |Log Analytics implementeren|Resource Manager-sjabloon|LogAnalytics_Location|**Vergrendelde** regio die wordt gebruikt bij het maken van de werk ruimte|
 
@@ -121,7 +117,7 @@ Nu u de stappen voor het implementeren van het voor beeld van de CAF Foundation-
 > [!div class="nextstepaction"]
 > [CAF Foundation blauw druk-overzicht](./index.md)
 
-Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
+Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

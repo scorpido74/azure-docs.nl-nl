@@ -1,5 +1,5 @@
 ---
-title: Virtuele Windows-machines maken en beheren in azure die meerdere Nic's gebruiken | Microsoft Docs
+title: Virtuele Windows-machines maken en beheren in azure die gebruikmaken van meerdere Nic's
 description: Meer informatie over het maken en beheren van een Windows-VM waaraan meerdere Nic's zijn gekoppeld met behulp van Azure PowerShell-of Resource Manager-sjablonen.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: f7f4e65253e0fc160da4d343115e9115abfab808
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0e826442c816f83c875b907bbf3054793ebb382a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749310"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033137"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Een virtuele Windows-machine met meerdere Nic's maken en beheren
 Aan virtuele machines (Vm's) in azure kunnen meerdere Nic's (virtuele netwerk interface kaarten) zijn gekoppeld. Een veelvoorkomend scenario is om verschillende subnetten te hebben voor de connectiviteit van front-end-en back-end. U kunt meerdere Nic's aan een virtuele machine koppelen aan meerdere subnetten, maar deze subnetten moeten zich allemaal in hetzelfde virtuele netwerk (vNet) bevinden. In dit artikel vindt u informatie over het maken van een VM waaraan meerdere Nic's zijn gekoppeld. U leert ook hoe u Nic's kunt toevoegen aan of verwijderen uit een bestaande virtuele machine. Verschillende [VM-grootten](sizes.md) ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig.
@@ -29,7 +29,7 @@ Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waar
 
  
 
-## <a name="create-a-vm-with-multiple-nics"></a>Een virtuele machine met meerdere NIC's maken
+## <a name="create-a-vm-with-multiple-nics"></a>Een VM met meerdere NIC's maken
 Maak eerst een resource groep. In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
 
 ```powershell

@@ -1,6 +1,6 @@
 ---
-title: Transparante gegevensversleuteling inschakelt voor Stretch Database TSQL - Azure | Microsoft Docs
-description: Transparent Data Encryption (TDE) voor SQL Server Stretch Database op Azure TSQL inschakelen
+title: Transparent Data Encryption inschakelen voor Stretch Database (T-SQL)
+description: Transparent Data Encryption (TDE) inschakelen voor SQL Server Stretch Database op Azure TSQL
 services: sql-server-stretch-database
 documentationcenter: ''
 ms.assetid: 27753d91-9ca2-4d47-b34d-b5e2c2f029bb
@@ -13,49 +13,50 @@ author: blazem-msft
 ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
-ms.openlocfilehash: 9718db18ea675fa744262f0736aff3c07732e1d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 6f1f5f55348069dbfe11b4d5857d93f8ba8c9b19
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002876"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033956"
 ---
-# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Transparent Data Encryption (TDE) inschakelen voor Stretch Database in Azure (Transact-SQL)
+# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Transparent Data Encryption (TDE) inschakelen voor Stretch Database op Azure (Transact-SQL)
 > [!div class="op_single_selector"]
 > * [Azure Portal](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
 
-Transparante gegevensversleuteling (TDE) helpt te beschermen tegen de dreiging van schadelijke activiteiten door het uitvoeren van real-time versleuteling en ontsleuteling van de database, gekoppelde back-ups en transactielogboekbestanden in rust zonder wijzigingen aan de toepassing.
+Met Transparent Data Encryption (TDE) kunt u zich beschermen tegen de dreiging van schadelijke activiteiten door real-time versleuteling en ontsleuteling van de data base, gekoppelde back-ups en transactie logboek bestanden in rust te brengen zonder dat de toepassing hoeft te worden gewijzigd.
 
-De opslag van een volledige database versleutelt TDE met behulp van een symmetrische sleutel met de naam de databaseversleutelingssleutel. De versleutelingssleutel van de database wordt beveiligd door een ingebouwde servercertificaat. Het certificaat van de ingebouwde is uniek voor elke Azure-server. Microsoft draait automatisch deze certificaten ten minste elke 90 dagen. Zie voor een algemene beschrijving van TDE [TDE (Transparent Data Encryption)].
+TDE versleutelt de opslag van een volledige data base met behulp van een symmetrische sleutel die de database versleutelings sleutel wordt genoemd. De database versleutelings sleutel wordt beveiligd door een ingebouwd server certificaat. Het ingebouwde server certificaat is uniek voor elke Azure-server. Micro soft roteert deze certificaten ten minste elke 90 dagen automatisch. Zie [TDE (Transparent Data Encryption)]voor een algemene beschrijving van TDe.
 
-## <a name="enabling-encryption"></a>Versleuteling is ingeschakeld
-Als u wilt TDE inschakelen voor een Azure-database die de gegevens opslaat gemigreerd van een Stretch-functionaliteit van SQL Server-database, het volgende doen:
+## <a name="enabling-encryption"></a>Versleuteling inschakelen
+Ga als volgt te werk om TDE in te scha kelen voor een Azure-Data Base waarin de gegevens worden opgeslagen die zijn gemigreerd vanuit een SQL Server Data Base met stretch-functionaliteit:
 
-1. Verbinding maken met de *master* database op de Azure-server die als host fungeert voor de database met behulp van een aanmelding die een beheerder of lid zijn van de **dbmanager** rol in de hoofddatabase
-2. Voer de volgende instructie voor het versleutelen van de database uit.
+1. Verbinding maken met de *hoofd* database op de Azure-server die als host fungeert voor de data base met behulp van een aanmelding die een beheerder is of een lid van de **DBManager** -rol in de hoofd database
+2. Voer de volgende instructie uit om de data base te versleutelen.
 
 ```sql
 ALTER DATABASE [database_name] SET ENCRYPTION ON;
 ```
 
-## <a name="disabling-encryption"></a>Als u versleuteling uitschakelt
-Als u wilt TDE uitschakelen voor een Azure-database die de gegevens opslaat gemigreerd van een Stretch-functionaliteit van SQL Server-database, het volgende doen:
+## <a name="disabling-encryption"></a>Versleuteling uitschakelen
+Ga als volgt te werk om TDE uit te scha kelen voor een Azure-Data Base waarin de gegevens worden opgeslagen die zijn gemigreerd vanuit een SQL Server Data Base met stretch-functionaliteit:
 
-1. Verbinding maken met de *master* database met behulp van een aanmelding die een beheerder of lid zijn van de **dbmanager** rol in de hoofddatabase
-2. Voer de volgende instructie voor het versleutelen van de database uit.
+1. Verbinding maken met de *hoofd* database met behulp van een aanmelding die een beheerder is of een lid van de **DBManager** -rol in de hoofd database
+2. Voer de volgende instructie uit om de data base te versleutelen.
 
 ```sql
 ALTER DATABASE [database_name] SET ENCRYPTION OFF;
 ```
 
-## <a name="verifying-encryption"></a>Controleren van versleuteling
-Om te controleren of de status voor schijfversleuteling voor een Azure-database die de gegevens opslaat gemigreerd van een Stretch-functionaliteit van SQL Server-database, moet u de volgende dingen doen:
+## <a name="verifying-encryption"></a>Versleuteling controleren
+Ga als volgt te werk om de versleutelings status te controleren voor een Azure-Data Base waarin de gegevens worden opgeslagen die zijn gemigreerd vanuit een SQL Server Data Base met stretch-functionaliteit:
 
-1. Verbinding maken met de *master* of exemplaar in de database met behulp van een aanmelding die een beheerder of lid zijn van de **dbmanager** rol in de hoofddatabase
-2. Voer de volgende instructie voor het versleutelen van de database uit.
+1. Verbinding maken met de *Master* -of instance-data base met behulp van een aanmelding die een beheerder is of een lid van de **DBManager** -rol in de hoofd database
+2. Voer de volgende instructie uit om de data base te versleutelen.
 
 ```sql
 SELECT
@@ -65,7 +66,7 @@ FROM
     sys.databases;
 ```
 
-Een resultaat van ```1``` geeft aan dat een versleutelde database ```0``` geeft aan dat een niet-versleutelde database.
+Een resultaat van ```1``` geeft een versleutelde data base aan ```0``` duidt op een niet-versleutelde data base.
 
 <!--Anchors-->
 [TDE (Transparent Data Encryption)]: https://msdn.microsoft.com/library/bb934049.aspx

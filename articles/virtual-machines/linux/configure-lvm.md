@@ -1,5 +1,5 @@
 ---
-title: LVM configureren op een virtuele machine met Linux | Microsoft Docs
+title: LVM configureren op een virtuele machine met Linux
 description: Meer informatie over het configureren van LVM op Linux in Azure.
 services: virtual-machines-linux
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: szark
 ms.subservice: disks
-ms.openlocfilehash: 1ab545edf9b45e37082509452a858a154b361251
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f2774f0037d2655071b605c0cbcdf8122e66f6e7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083824"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036672"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>LVM configureren op een virtuele Linux-machine in azure
 In dit document wordt beschreven hoe u Logical Volume Manager (LVM) configureert in uw virtuele Azure-machine. LVM kan worden gebruikt op de besturingssysteem schijf of gegevens schijven in azure-Vm's, maar in de meeste Cloud installatie kopieën is LVM niet geconfigureerd op de besturingssysteem schijf. Met de volgende stappen wordt de nadruk gelegd op het configureren van LVM voor uw gegevens schijven.
@@ -59,14 +59,14 @@ Normaal gesp roken wilt u met twee of meer lege gegevens schijven beginnen wanne
     sudo zypper install lvm2
     ```
 
-    Op SLES11 moet u ook bewerken `/etc/sysconfig/lvm` en instellen `LVM_ACTIVATED_ON_DISCOVERED` op ' inschakelen ':
+    Op SLES11 moet u ook `/etc/sysconfig/lvm` bewerken en `LVM_ACTIVATED_ON_DISCOVERED` instellen op ' inschakelen ':
 
     ```sh   
     LVM_ACTIVATED_ON_DISCOVERED="enable" 
     ```
 
 ## <a name="configure-lvm"></a>LVM configureren
-In deze hand leiding wordt ervan uitgegaan dat u drie gegevens schijven hebt gekoppeld, waarnaar wordt verwezen `/dev/sdc`als `/dev/sdd` , `/dev/sde`en. Deze paden komen mogelijk niet overeen met de namen van schijf paden in uw VM. U kunt '`sudo fdisk -l`' of een vergelijk bare opdracht uitvoeren om een lijst met beschik bare schijven weer te geven.
+In deze hand leiding wordt ervan uitgegaan dat u drie gegevens schijven hebt aangesloten, waarnaar wordt verwezen als `/dev/sdc`, `/dev/sdd` en `/dev/sde`. Deze paden komen mogelijk niet overeen met de namen van schijf paden in uw VM. U kunt '`sudo fdisk -l`' of een vergelijk bare opdracht uitvoeren om een lijst met beschik bare schijven weer te geven.
 
 1. De fysieke volumes voorbereiden:
 
@@ -77,14 +77,14 @@ In deze hand leiding wordt ervan uitgegaan dat u drie gegevens schijven hebt gek
     Physical volume "/dev/sde" successfully created
     ```
 
-2. Maak een volume groep. In dit voor beeld wordt de volume groep `data-vg01`aangeroepen:
+2. Maak een volume groep. In dit voor beeld roept u de volume groep `data-vg01`:
 
     ```bash    
     sudo vgcreate data-vg01 /dev/sd[cde]
     Volume group "data-vg01" successfully created
     ```
 
-3. Maak een of meer logische volumes. Met de onderstaande opdracht maakt u één logisch volume met de `data-lv01` naam om de hele volume groep te beslaan, maar het is ook mogelijk om meerdere logische volumes in de volume groep te maken.
+3. Maak een of meer logische volumes. Met de onderstaande opdracht maakt u één logisch volume met de naam `data-lv01` om de hele volume groep te bezorgen, maar is het ook haalbaar om meerdere logische volumes in de volume groep te maken.
 
     ```bash   
     sudo lvcreate --extents 100%FREE --stripes 3 --name data-lv01 data-vg01
@@ -98,11 +98,11 @@ In deze hand leiding wordt ervan uitgegaan dat u drie gegevens schijven hebt gek
     ```
    
    > [!NOTE]
-   > Met SLES11 `-t ext3` in plaats van ext4. SLES11 biedt alleen ondersteuning voor alleen-lezen toegang tot ext4-bestands systemen.
+   > Met SLES11 wordt `-t ext3` gebruikt in plaats van ext4. SLES11 biedt alleen ondersteuning voor alleen-lezen toegang tot ext4-bestands systemen.
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Het nieuwe bestands systeem toevoegen aan bestand/etc/fstab
 > [!IMPORTANT]
-> Het onjuist bewerken van `/etc/fstab` het bestand kan resulteren in een systeem dat niet kan worden opgestart. Als dat niet het geval is, raadpleegt u de documentatie van de distributie voor informatie over het correct bewerken van dit bestand. Het wordt ook aanbevolen om een back-up `/etc/fstab` van het bestand te maken voordat u het bewerkt.
+> Het onjuist bewerken van het `/etc/fstab` bestand kan resulteren in een systeem dat niet kan worden opgestart. Als dat niet het geval is, raadpleegt u de documentatie van de distributie voor informatie over het correct bewerken van dit bestand. U wordt ook aangeraden een back-up van het `/etc/fstab`-bestand te maken voordat u het bewerkt.
 
 1. Maak het gewenste koppel punt voor het nieuwe bestands systeem, bijvoorbeeld:
 
@@ -124,7 +124,7 @@ In deze hand leiding wordt ervan uitgegaan dat u drie gegevens schijven hebt gek
     ```bash    
     /dev/data-vg01/data-lv01  /data  ext4  defaults  0  2
     ```   
-    Vervolgens kunt u opslaan en `/etc/fstab`sluiten.
+    Sla `/etc/fstab`op en sluit het af.
 
 4. Test of de `/etc/fstab` vermelding juist is:
 
@@ -132,9 +132,9 @@ In deze hand leiding wordt ervan uitgegaan dat u drie gegevens schijven hebt gek
     sudo mount -a
     ```
 
-    Als met deze opdracht een fout bericht wordt weer gegeven, controleert u `/etc/fstab` de syntaxis in het bestand.
+    Als met deze opdracht een fout bericht wordt weer gegeven, controleert u de syntaxis van het `/etc/fstab`-bestand.
    
-    Voer de `mount` volgende opdracht uit om te controleren of het bestands systeem is gekoppeld:
+    Voer vervolgens de `mount` opdracht uit om te controleren of het bestands systeem is gekoppeld:
 
     ```bash    
     mount
@@ -142,9 +142,9 @@ In deze hand leiding wordt ervan uitgegaan dat u drie gegevens schijven hebt gek
     /dev/mapper/data--vg01-data--lv01 on /data type ext4 (rw)
     ```
 
-5. Beschrijving Failsafe-opstart parameters in`/etc/fstab`
+5. Beschrijving Failsafe opstart parameters in `/etc/fstab`
    
-    Veel distributies bevatten de `nobootwait` para meters of `nofail` Mount die kunnen worden toegevoegd aan `/etc/fstab` het bestand. Met deze para meters kunnen fouten optreden bij het koppelen van een bepaald bestands systeem, waardoor het Linux-systeem kan blijven opstarten, zelfs als het RAID-bestands systeem niet goed kan worden gekoppeld. Raadpleeg de documentatie van uw distributie voor meer informatie over deze para meters.
+    Veel distributies bevatten de `nobootwait`-of `nofail` koppel parameters die kunnen worden toegevoegd aan het `/etc/fstab` bestand. Met deze para meters kunnen fouten optreden bij het koppelen van een bepaald bestands systeem, waardoor het Linux-systeem kan blijven opstarten, zelfs als het RAID-bestands systeem niet goed kan worden gekoppeld. Raadpleeg de documentatie van uw distributie voor meer informatie over deze para meters.
    
     Voor beeld (Ubuntu):
 
@@ -157,13 +157,13 @@ Sommige Linux-kernels ondersteunen bewerkingen voor het verwijderen/ontkoppelen 
 
 Er zijn twee manieren om ondersteuning voor het verkleinen van de virtuele Linux-machine in te scha kelen. Zoals gebruikelijk, raadpleegt u de distributie voor de aanbevolen benadering:
 
-- Gebruik de `discard` optie koppelen in `/etc/fstab`, bijvoorbeeld:
+- Gebruik de optie voor het koppelen van `discard` in `/etc/fstab`, bijvoorbeeld:
 
     ```bash 
     /dev/data-vg01/data-lv01  /data  ext4  defaults,discard  0  2
     ```
 
-- In sommige gevallen kan `discard` de optie invloed hebben op de prestaties. U kunt de `fstrim` opdracht ook hand matig uitvoeren vanaf de opdracht regel of deze toevoegen aan uw crontab om regel matig uit te voeren:
+- In sommige gevallen kunnen de `discard`-optie prestatie implicaties hebben. U kunt ook de `fstrim` opdracht hand matig uitvoeren vanaf de opdracht regel of deze toevoegen aan uw crontab om regel matig uit te voeren:
 
     **Ubuntu**
 

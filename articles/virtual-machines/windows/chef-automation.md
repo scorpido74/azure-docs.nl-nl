@@ -1,5 +1,5 @@
 ---
-title: Implementatie van virtuele Azure-machines met chef | Microsoft Docs
+title: Implementatie van virtuele Azure-machines met chef
 description: Meer informatie over hoe u chef kunt gebruiken voor automatische implementatie en configuratie van virtuele machines op Microsoft Azure
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: 5cbf53da5a0af0a511350b9f30153e2fefe72dcf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 58642cdbf164523390d5e4925290b43f6c05549b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080100"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039546"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Implementatie van virtuele Azure-machine automatiseren met Chef
 
@@ -36,7 +36,7 @@ In het volgende diagram ziet u de chef-architectuur op hoog niveau.
 
 ![][2]
 
-Chef heeft drie belangrijkste architectuur onderdelen: Chef-server, chef-client (node) en chef-werk station.
+Chef heeft drie belangrijkste architectuur onderdelen: chef-server, chef-client (knoop punt) en chef-werk station.
 
 De chef-server is het beheer punt en er zijn twee opties voor de chef-server: een gehoste oplossing of een on-premises oplossing.
 
@@ -78,7 +78,7 @@ In deze hand leiding wordt ervan uitgegaan dat u zich aanmeldt voor gehoste chef
 
 Als u nog geen chef-server gebruikt, kunt u het volgende doen:
 
-* Meld u aan voor gehoste [chef](https://manage.chef.io/signup). Dit is de snelste manier om aan de slag te gaan met chef.
+* Meld u aan voor [gehoste chef](https://manage.chef.io/signup). Dit is de snelste manier om aan de slag te gaan met chef.
 * Installeer een zelfstandige chef-server op een Linux-computer, gevolgd door de [installatie-instructies](https://docs.chef.io/install_server.html) van [chef docs](https://docs.chef.io/).
 
 ### <a name="creating-a-hosted-chef-account"></a>Een gehoste chef-account maken
@@ -97,7 +97,7 @@ Als uw organisatie eenmaal is gemaakt, downloadt u het Start pakket.
 > Als er een waarschuwing wordt weer gegeven dat de sleutels opnieuw moeten worden ingesteld, is het raadzaam om door te gaan omdat er nog geen bestaande infra structuur is geconfigureerd.
 >
 
-Het zip-bestand van de start Kit bevat de configuratie bestanden en gebruikers sleutels `.chef` van uw organisatie in de Directory.
+Dit zip-bestand voor de start Kit bevat de configuratie bestanden en gebruikers sleutels van uw organisatie in de `.chef` Directory.
 
 De `organization-validator.pem` moet afzonderlijk worden gedownload, omdat het een persoonlijke sleutel is en persoonlijke sleutels niet op de chef-server mogen worden opgeslagen. In [chef beheren](https://manage.chef.io/), gaat u naar de sectie beheer en selecteert u validatie sleutel opnieuw instellen, die een bestand bevat dat u afzonderlijk kunt downloaden. Sla het bestand op in c:\chef.
 
@@ -149,7 +149,7 @@ Voeg de volgende gegevens toe aan uw mes. rb:
 
 validation_client_name "myorg-validator"
 
-validation_key "#{current_dir}/myorg.pem"
+validation_key "# {current_dir}/myorg.pem"
 
 knife[:azure_tenant_id] =         "0000000-1111-aaaa-bbbb-222222222222"
 
@@ -193,9 +193,9 @@ knife[:azure_client_secret] = "#1234p$wdchef19"
 [Down load en installeer](https://downloads.chef.io/chef-workstation/) vervolgens chef-werk station.
 Installeer chef workstation op de standaard locatie. Deze installatie kan enkele minuten duren.
 
-Op het bureau blad ziet u een ' catch Weight Power shell ', een omgeving die is geladen met het hulp programma dat u nodig hebt voor interactie met de chef-producten. Met de Power shell catch Weight worden nieuwe ad hoc-opdrachten `chef-run` beschikbaar gemaakt, zoals traditionele chef cli-opdrachten, `chef`zoals. Bekijk de geïnstalleerde versie van chef Workstation en de chef-hulpprogram `chef -v`ma's met. U kunt ook de versie van uw werk station controleren door ' about chef Workstation ' te selecteren in de chef-werk station-app.
+Op het bureau blad ziet u een ' catch Weight Power shell ', een omgeving die is geladen met het hulp programma dat u nodig hebt voor interactie met de chef-producten. Met de Power shell catch Weight worden nieuwe ad hoc-opdrachten beschikbaar gemaakt, zoals `chef-run`, evenals traditionele chef CLI-opdrachten, zoals `chef`. Bekijk de geïnstalleerde versie van chef Workstation en de chef-hulpprogram ma's met `chef -v`. U kunt ook de versie van uw werk station controleren door ' about chef Workstation ' te selecteren in de chef-werk station-app.
 
-`chef --version`Er moet iets als resultaat worden geretourneerd:
+`chef --version` moet er ongeveer als volgt uitzien:
 
 ```
 Chef Workstation: 0.4.2
@@ -277,7 +277,7 @@ Voer de volgende opdracht uit om de sjabloon te genereren:
 
     chef generate template webserver Default.htm
 
-Navigeer naar het `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` bestand. Bewerk het bestand door een eenvoudige HTML-code voor ' Hallo wereld ' toe te voegen en sla het bestand op.
+Navigeer naar het `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb`-bestand. Bewerk het bestand door een eenvoudige HTML-code voor ' Hallo wereld ' toe te voegen en sla het bestand op.
 
 ## <a name="upload-the-cookbook-to-the-chef-server"></a>De Cookbook naar de chef-server uploaden
 In deze stap maakt u een kopie van de Cookbook die u hebt gemaakt op de lokale computer en uploadt u deze naar de door chef gehoste server. Nadat het Cookbook is geüpload, wordt het weer gegeven op het tabblad **beleid** .
@@ -309,7 +309,7 @@ Vervolgens wordt een voor beeld van de opdracht weer gegeven.
     -r "recipe[webserver]"
 
 
-Met het bovenstaande voor beeld maakt u een virtuele machine met Windows Server 2016 die is geïnstalleerd in de regio vs-West. Vervang uw specifieke variabelen door en voer uit.
+Met het bovenstaande voor beeld maakt u Standard_DS2_v2 een virtuele machine met Windows Server 2016 die is geïnstalleerd in de regio vs-West. Vervang uw specifieke variabelen door en voer uit.
 
 > [!NOTE]
 > Via de opdracht regel Automatiseer ik ook mijn regels voor het eindpunt netwerk met behulp van de para meter – TCP-eind punten. Ik heb poorten 80 en 3389 geopend om toegang te geven tot de webpagina en de RDP-sessie.

@@ -1,5 +1,5 @@
 ---
-title: Maak een Windows-VM op basis van een gespecialiseerde VHD in de Azure Portal | Microsoft Docs
+title: Een Windows-VM maken op basis van een gespecialiseerde VHD in de Azure Portal
 description: Maak een nieuwe Windows-VM op basis van een VHD in het Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: d79cefa9adec403ebbb5105351d2909eac9d02a4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 587acd37f465dda7e514b595f8451afe3d259dea
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390492"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039148"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Een virtuele machine maken op basis van een VHD met behulp van de Azure Portal
 

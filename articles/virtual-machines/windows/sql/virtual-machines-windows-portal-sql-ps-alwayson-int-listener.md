@@ -1,5 +1,5 @@
 ---
-title: Listeners voor Always on-beschikbaarheids groep configureren – Microsoft Azure | Microsoft Docs
+title: Listeners voor de beschikbaarheids groep configureren & load balancer (Power shell)
 description: Configureer listeners voor de beschikbaarheids groep op het Azure Resource Manager model met behulp van een interne load balancer met een of meer IP-adressen.
 services: virtual-machines
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: 7d6427e88960ec3ff550affb1624dd82e561a6bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 83910c2209b5d3d3d67578ae41afb902bc885171
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102178"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037460"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Een of meer listeners voor Always on-beschikbaarheids groep configureren-Resource Manager
 In dit onderwerp wordt beschreven hoe u:
@@ -57,28 +58,28 @@ Als u de toegang met een Azure-netwerk beveiligings groep wilt beperken, moet u 
 
 ## <a name="determine-the-load-balancer-sku-required"></a>Bepalen welke load balancer SKU vereist is
 
-[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) is beschikbaar in twee sku's: Basic & Standard. De standaard load balancer wordt aanbevolen. Als de virtuele machines zich in een beschikbaarheidsset bevinden, is basis load balancer toegestaan. Standaard load balancer vereist dat alle IP-adressen van de virtuele machine standaard IP-adressen gebruiken.
+[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) is beschikbaar in 2 Sku's: Basic & Standard. De standaard load balancer wordt aanbevolen. Als de virtuele machines zich in een beschikbaarheidsset bevinden, is basis load balancer toegestaan. Standaard load balancer vereist dat alle IP-adressen van de virtuele machine standaard IP-adressen gebruiken.
 
 De huidige [micro soft-sjabloon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) voor een beschikbaarheids groep maakt gebruik van een basis Load Balancer met basis-IP-adressen.
 
-In de voor beelden in dit artikel wordt een standaard load balancer opgegeven. In de voor beelden bevat `-sku Standard`het script.
+In de voor beelden in dit artikel wordt een standaard load balancer opgegeven. In de voor beelden bevat het script `-sku Standard`.
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
-Als u een basis Load Balancer wilt maken `-sku Standard` , verwijdert u de regel waarmee de Load Balancer wordt gemaakt. Bijvoorbeeld:
+Als u een basis load balancer wilt maken, verwijdert u `-sku Standard` van de regel waarmee de load balancer wordt gemaakt. Bijvoorbeeld:
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
 ```
 
-## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Voorbeeld script: Een interne load balancer maken met Power shell
+## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Voorbeeld script: een interne load balancer maken met Power shell
 
 > [!NOTE]
 > Als u uw beschikbaarheids groep hebt gemaakt met de [micro soft-sjabloon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), is de interne Load Balancer al gemaakt.
 
-Met het volgende Power shell-script maakt u een interne load balancer, configureert u de taakverdelings regels en stelt u een IP-adres voor de load balancer. Als u het script wilt uitvoeren, opent u Windows PowerShell ISE en plakt u het script in het Script-venster. Gebruik `Connect-AzAccount` om u aan te melden bij Power shell. Als u meerdere Azure-abonnementen hebt, `Select-AzSubscription` gebruikt u om het abonnement in te stellen. 
+Met het volgende Power shell-script maakt u een interne load balancer, configureert u de taakverdelings regels en stelt u een IP-adres voor de load balancer. Als u het script wilt uitvoeren, opent u Windows PowerShell ISE en plakt u het script in het Script-venster. Gebruik `Connect-AzAccount` om u aan te melden bij Power shell. Als u meerdere Azure-abonnementen hebt, gebruikt u `Select-AzSubscription` om het abonnement in te stellen. 
 
 ```powershell
 # Connect-AzAccount
@@ -128,7 +129,7 @@ foreach($VMName in $VMNames)
     }
 ```
 
-## <a name="Add-IP"></a>Voorbeeld script: Een IP-adres aan een bestaande load balancer toevoegen met Power shell
+## <a name="Add-IP"></a>Voorbeeld script: een IP-adres aan een bestaande load balancer toevoegen met Power shell
 Als u meer dan één beschikbaarheids groep wilt gebruiken, voegt u een extra IP-adres toe aan de load balancer. Elk IP-adres vereist een eigen taakverdelings regel, test poort en front poort.
 
 De front-end-poort is de poort die door toepassingen wordt gebruikt om verbinding te maken met het SQL Server-exemplaar. IP-adressen voor verschillende beschikbaarheids groepen kunnen dezelfde front-end-poort gebruiken.
@@ -188,7 +189,7 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. Start SQL Server Management Studio en maak verbinding met de primaire replica.
 
-1. Navigeer naar | AlwaysOn-beschikbaarheids**groepen** | voor Beschik baarheid van de beschikbaarheids**groep**. 
+1. Navigeer naar AlwaysOn- **beschikbaarheids groepen** voor **hoge beschik baarheid** |  | listeners voor de **beschikbaarheids groep**. 
 
 1. U ziet nu de naam van de listener die u hebt gemaakt in Failoverclusterbeheer. Klik met de rechter muisknop op de naam van de listener en klik op **Eigenschappen**.
 

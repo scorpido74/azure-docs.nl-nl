@@ -1,5 +1,5 @@
 ---
-title: Optimaliseer uw virtuele Linux-machine in azure | Microsoft Docs
+title: Uw Linux VM optimaliseren voor Azure
 description: Meer informatie over de optimalisatie tips om ervoor te zorgen dat u uw virtuele Linux-machine hebt ingesteld voor optimale prestaties in azure
 keywords: virtuele Linux-machine, virtuele machine Linux, Ubuntu Virtual Machine
 services: virtual-machines-linux
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: eb5ef067d4c9be4debd1bdc98ac4eb57a89d1100
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ea0d284b8220e4f8bc7bc1b91684654b32da7065
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091686"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035391"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Uw Linux VM optimaliseren voor Azure
 Het maken van een virtuele Linux-machine (VM) is eenvoudig vanuit de opdracht regel of vanuit de portal. In deze zelf studie ziet u hoe u ervoor kunt zorgen dat u deze hebt ingesteld om de prestaties van het Microsoft Azure platform te optimaliseren. In dit onderwerp wordt een Ubuntu-Server-VM gebruikt, maar u kunt ook virtuele Linux-machine maken met behulp van [uw eigen installatie kopieën als sjablonen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -37,9 +37,9 @@ Op basis van de VM-grootte kunt u Maxi maal 16 extra schijven op a-Series, 32-sc
 
 Als u de hoogste IOps wilt benutten op Premium Storage schijven waarop de cache-instellingen zijn ingesteld op **alleen-lezen** of op **geen**, moet u **belemmeringen** uitschakelen bij het koppelen van het bestands systeem in Linux. U hebt geen obstakels nodig omdat de schrijf bewerkingen naar Premium Storage schijven duurzaam zijn voor deze cache-instellingen.
 
-* Als u **reiserFS**gebruikt, schakelt u belemmeringen uit met behulp van de optie `barrier=none` voor het koppelen (voor het `barrier=flush`inschakelen van belemmeringen)
-* Als u **ext3/ext4**gebruikt, schakelt u belemmeringen uit met de `barrier=0` optie voor het koppelen (voor `barrier=1`het inschakelen van belemmeringen)
-* Als u **xfs**gebruikt, schakelt u belemmeringen uit met de `nobarrier` optie voor het koppelen (voor het inschakelen `barrier`van barrières gebruikt u de optie)
+* Als u **reiserFS**gebruikt, schakelt u belemmeringen uit met behulp van de koppelings optie `barrier=none` (gebruik voor het inschakelen van belemmeringen `barrier=flush`)
+* Als u **ext3/ext4**gebruikt, schakelt u belemmeringen uit met behulp van de optie voor het koppelen van `barrier=0` (gebruik `barrier=1`voor het inschakelen van belemmeringen)
+* Als u **xfs**gebruikt, schakelt u belemmeringen uit met behulp van de koppelings optie `nobarrier` (gebruik voor het inschakelen van barrières de optie `barrier`)
 
 ## <a name="unmanaged-storage-account-considerations"></a>Overwegingen voor onbeheerd opslag account
 De standaard actie bij het maken van een virtuele machine met Azure CLI is het gebruik van Azure Managed Disks.  Deze schijven worden verwerkt door het Azure-platform en vereisen geen voor bereiding of locatie om ze op te slaan.  Voor niet-beheerde schijven is een opslag account vereist en er zijn een aantal extra prestatie overwegingen.  Zie voor meer informatie over beheerde schijven [overzicht Azure Managed Disks](../windows/managed-disks-overview.md).  De volgende sectie geeft een overzicht van de prestatie overwegingen alleen wanneer u niet-beheerde schijven gebruikt.  De standaard en Aanbevolen opslag oplossing is om beheerde schijven te gebruiken.
@@ -50,7 +50,7 @@ Bij het verwerken van werk belastingen met hoge IOps en als u standaard opslag v
  
 
 ## <a name="your-vm-temporary-drive"></a>Het tijdelijke VM-station
-Wanneer u een virtuele machine maakt, biedt Azure standaard een besturingssysteem schijf ( **/dev/sda**) en een tijdelijke schijf ( **/dev/sdb**).  Alle extra schijven die u toevoegt, worden weer gegeven als **/dev/SDC**, **/dev/sdd**, **/dev/SDE** , enzovoort. Alle gegevens op de tijdelijke schijf ( **/dev/sdb**) zijn niet duurzaam en kunnen verloren gaan als voor specifieke gebeurtenissen, zoals het wijzigen van de grootte van de VM, opnieuw implementeren of onderhoud, het opnieuw opstarten van uw VM wordt afgedwongen.  De grootte en het type van de tijdelijke schijf zijn gerelateerd aan de VM-grootte die u tijdens de implementatie hebt gekozen. Alle virtuele machines van de Premium-grootte (DS-, G-en DS_V2-serie) het tijdelijke station worden ondersteund door een lokale SSD voor extra prestaties van Maxi maal 48k IOps. 
+Wanneer u een virtuele machine maakt, biedt Azure standaard een besturingssysteem schijf ( **/dev/sda**) en een tijdelijke schijf ( **/dev/sdb**).  Alle extra schijven die u toevoegt, worden weer gegeven als **/dev/SDC**, **/dev/sdd**, **/dev/SDE** , enzovoort. Alle gegevens op de tijdelijke schijf ( **/dev/sdb**) zijn niet duurzaam en kunnen verloren gaan als voor specifieke gebeurtenissen, zoals het wijzigen van de grootte van de VM, opnieuw implementeren of onderhoud, het opnieuw opstarten van uw VM wordt afgedwongen.  De grootte en het type van de tijdelijke schijf zijn gerelateerd aan de VM-grootte die u tijdens de implementatie hebt gekozen. Alle virtuele machines van de Premium-grootte (DS, G en DS_V2 serie) het tijdelijke station worden ondersteund door een lokale SSD voor extra prestaties van Maxi maal 48k IOps. 
 
 ## <a name="linux-swap-partition"></a>Linux-wisselende partitie
 Als uw Azure-VM afkomstig is van een Ubuntu-of CoreOS-installatie kopie, kunt u CustomData gebruiken om een Cloud-config naar Cloud-init te verzenden. Als u [een aangepaste Linux-installatie kopie hebt geüpload](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) die gebruikmaakt van Cloud-init, kunt u ook swap-partities configureren met Cloud-init.
@@ -59,14 +59,14 @@ In Ubuntu-Cloud installatie kopieën moet u Cloud-init gebruiken om de swap-part
 
 Voor installatie kopieën die geen ondersteuning voor Cloud-init hebben, hebben VM-installatie kopieën die zijn geïmplementeerd vanuit Azure Marketplace een Linux-VM-agent geïntegreerd met het besturings systeem. Met deze agent kan de virtuele machine communiceren met verschillende Azure-Services. Als u een standaard installatie kopie van Azure Marketplace hebt geïmplementeerd, moet u het volgende doen om de instellingen voor Linux-wissel bestand correct te configureren:
 
-Zoek en wijzig twee vermeldingen in het **/etc/waagent.conf** -bestand. Ze bepalen het bestaan van een toegewezen wissel bestand en grootte van het wissel bestand. De para meters die u moet controleren `ResourceDisk.EnableSwap` , zijn en`ResourceDisk.SwapSizeMB` 
+Zoek en wijzig twee vermeldingen in het **/etc/waagent.conf** -bestand. Ze bepalen het bestaan van een toegewezen wissel bestand en grootte van het wissel bestand. De para meters die u moet controleren, zijn `ResourceDisk.EnableSwap` en `ResourceDisk.SwapSizeMB` 
 
 Zorg ervoor dat de para meters de volgende instellingen hebben om een geschikt schijf en een gekoppeld wissel bestand in te scha kelen:
 
 * ResourceDisk.EnableSwap=Y
 * ResourceDisk. SwapSizeMB = {grootte in MB om te voldoen aan uw behoeften} 
 
-Nadat u de wijziging hebt aangebracht, moet u de waagent opnieuw opstarten of de Linux-VM opnieuw opstarten om deze wijzigingen weer te geven.  U weet dat de wijzigingen zijn geïmplementeerd en dat er een wissel bestand is gemaakt wanneer u de `free` opdracht gebruikt om de beschik bare ruimte weer te geven. In het volgende voor beeld wordt een wissel bestand van 512 MB gemaakt als gevolg van het wijzigen van het bestand **waagent. conf** :
+Nadat u de wijziging hebt aangebracht, moet u de waagent opnieuw opstarten of de Linux-VM opnieuw opstarten om deze wijzigingen weer te geven.  U weet dat de wijzigingen zijn geïmplementeerd en dat er een wissel bestand is gemaakt wanneer u de opdracht `free` gebruikt om de beschik bare ruimte weer te geven. In het volgende voor beeld wordt een wissel bestand van 512 MB gemaakt als gevolg van het wijzigen van het bestand **waagent. conf** :
 
 ```bash
 azuseruser@myVM:~$ free

@@ -1,5 +1,5 @@
 ---
-title: Azure Windows VM-grootten van de B-serie | Microsoft Docs
+title: Azure Windows VM-grootten van de B-serie
 description: Beschrijft de B-serie van de afbreekbaar Azure VM-grootten.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/07/2017
 ms.author: ayshak
-ms.openlocfilehash: 1757b513d7b5451cd22b82bedef7c4ec48906edf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f5493cbfa0b325f7cd731fb1d3774fd1eb4a574f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103269"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039254"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Grootte van de B-serie bebreekbaar virtuele machines
 

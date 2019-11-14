@@ -1,6 +1,6 @@
 ---
-title: Azure VM-installatiekopie voorbereiden voor gebruik met cloud-init | Microsoft Docs
-description: De installatiekopie van een bestaande virtuele Azure-machine voorbereiden voor implementatie met cloud-init
+title: Azure VM-installatie kopie voorbereiden voor gebruik met Cloud-init
+description: Een bestaande installatie kopie van een Azure-VM voorbereiden voor implementatie met Cloud-init
 services: virtual-machines-linux
 documentationcenter: ''
 author: danis
@@ -14,21 +14,21 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: 1f9f6042b52c722280a8227754960ffb270e94b8
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a75bceebe584522ee999f86664b8afb9fa00f17b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668254"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036752"
 ---
-# <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Een bestaande installatiekopie van Linux virtuele Azure-machine voorbereiden voor gebruik met cloud-init
-Dit artikel ziet u hoe u een bestaande virtuele Azure-machine voorbereiden voor het opnieuw geïmplementeerde zijn en klaar voor gebruik van cloud-init. De afbeelding kan worden gebruikt om een nieuwe virtuele machine of virtuele-machineschaalsets - die allebei kan vervolgens verder worden aangepast door cloud-init tijdens de implementatie te implementeren.  Deze cloud-init-scripts uitvoeren op de eerste keer opstarten nadat de resources zijn ingericht met Azure. Zie voor meer informatie over hoe cloud-init systeemeigen in Azure en de ondersteunde Linux-distributies werkt [cloud-init-overzicht](using-cloud-init.md)
+# <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Een bestaande installatie kopie van een virtuele Linux Azure-machine voorbereiden voor gebruik met Cloud-init
+In dit artikel wordt beschreven hoe u een bestaande virtuele machine van Azure maakt en deze bereidt om te worden geïmplementeerd en klaar is om Cloud-init te gebruiken. De resulterende afbeelding kan worden gebruikt om een nieuwe virtuele machine of virtuele-machine schaal sets te implementeren. deze kan vervolgens worden aangepast door Cloud-init tijdens de implementatie.  Deze Cloud-init-scripts worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure. Zie [Cloud-init Overview](using-cloud-init.md) (Engelstalig) voor meer informatie over hoe Cloud-init standaard werkt in Azure en de ondersteunde Linux-distributies
 
 ## <a name="prerequisites"></a>Vereisten
-Dit document wordt ervan uitgegaan dat u al een actieve Azure virtuele machine waarop een ondersteunde versie van de Linux-besturingssysteem wordt uitgevoerd. U hebt al geconfigureerd met de machine aan de behoeften van uw behoeften, de vereiste modules geïnstalleerd, de vereiste updates verwerkt en getest om te controleren of deze voldoet aan uw vereisten. 
+In dit document wordt ervan uitgegaan dat u al een actieve virtuele machine van Azure hebt waarop een ondersteunde versie van het Linux-besturings systeem wordt uitgevoerd. U hebt de machine al geconfigureerd voor uw behoeften, alle benodigde modules geïnstalleerd, alle vereiste updates verwerkt en deze getest om te controleren of deze voldoet aan uw vereisten. 
 
-## <a name="preparing-rhel-76--centos-76"></a>Voorbereiden 7.6 RHEL / CentOS 7,6
-U moet SSH aan bij uw Linux-VM en voer de volgende opdrachten om te kunnen installeren van cloud-init.
+## <a name="preparing-rhel-76--centos-76"></a>RHEL 7,6/CentOS 7,6 voorbereiden
+U moet SSH in uw virtuele Linux-machine en de volgende opdrachten uitvoeren om Cloud-init te kunnen installeren.
 
 ```bash
 sudo yum makecache fast
@@ -36,13 +36,13 @@ sudo yum install -y gdisk cloud-utils-growpart
 sudo yum install - y cloud-init 
 ```
 
-Update de `cloud_init_modules` in sectie `/etc/cloud/cloud.cfg` om op te nemen van de volgende modules:
+Werk de sectie `cloud_init_modules` in `/etc/cloud/cloud.cfg` bij, zodat deze de volgende modules bevat:
 ```bash
 - disk_setup
 - mounts
 ```
 
-Hier volgt een voorbeeld van wat een algemene `cloud_init_modules` sectie ziet eruit als.
+Hier ziet u een voor beeld van een `cloud_init_modules` sectie voor algemeen gebruik.
 ```bash
 cloud_init_modules:
  - migrator
@@ -59,7 +59,7 @@ cloud_init_modules:
  - users-groups
  - ssh
 ```
-Een aantal taken met betrekking tot inrichting en de afhandeling van tijdelijke schijven moet worden bijgewerkt `/etc/waagent.conf`. Voer de volgende opdrachten om bij te werken van de toepasselijke instellingen. 
+Een aantal taken met betrekking tot het inrichten en het verwerken van tijdelijke schijven moeten worden bijgewerkt in `/etc/waagent.conf`. Voer de volgende opdrachten uit om de juiste instellingen bij te werken. 
 ```bash
 sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
 sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
@@ -68,23 +68,23 @@ sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.co
 cloud-init clean
 ```
 
-Alleen Azure als een gegevensbron voor de Azure Linux Agent toestaan door het maken van een nieuw bestand `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` met behulp van een editor naar keuze met de volgende regel:
+Alleen Azure toestaan als gegevens bron voor de Azure Linux-agent door een nieuw bestand te maken `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` met een editor van uw keuze met de volgende regel:
 
 ```bash
 # Azure Data Source config
 datasource_list: [ Azure ]
 ```
 
-Als uw bestaande Azure-installatiekopie een wisselbestand geconfigureerd heeft en u wilt wijzigen van de configuratie van het bestand wisselen voor nieuwe installatiekopieën van cloud-init gebruiken, moet u het bestaande swap-bestand te verwijderen.
+Als voor uw bestaande Azure-installatie kopie een wissel bestand is geconfigureerd en u de wissel bestands configuratie voor nieuwe installatie kopieën wilt wijzigen met Cloud-init, moet u het bestaande wissel bestand verwijderen.
 
-Voor Red Hat op basis van installatiekopieën - Volg de instructies in de volgende Red Hat document waarin wordt uitgelegd hoe u [verwijderen van het wisselbestand](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/swap-removing-file).
+Voor Red Hat-gebaseerde installatie kopieën: Volg de instructies in het volgende Red Hat-document waarin wordt uitgelegd hoe u [het wissel bestand verwijdert](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/swap-removing-file).
 
-CentOS-installatiekopieën met wisselbestand ingeschakeld, kunt u de volgende opdracht om het uitschakelen van het wisselbestand uitvoeren:
+Voor CentOS-installatie kopieën waarvoor swapfile is ingeschakeld, kunt u de volgende opdracht uitvoeren om de swapfile uit te scha kelen:
 ```bash
 sudo swapoff /mnt/resource/swapfile
 ```
 
-Zorg ervoor dat de verwijzing van het wisselbestand is verwijderd uit het `/etc/fstab` -dit ziet er ongeveer als in het volgende:
+Zorg ervoor dat de swapfile-verwijzing is verwijderd uit `/etc/fstab`-het moet er ongeveer uitzien als in de volgende uitvoer:
 ```text
 # /etc/fstab
 # Accessible filesystems, by reference, are maintained under '/dev/disk'
@@ -94,31 +94,31 @@ UUID=99cf66df-2fef-4aad-b226-382883643a1c / xfs defaults 0 0
 UUID=7c473048-a4e7-4908-bad3-a9be22e9d37d /boot xfs defaults 0 0
 ```
 
-U kunt de volgende opdracht uitvoeren om ruimte te maken en verwijderen van het wisselbestand:
+Als u ruimte wilt besparen en het wissel bestand wilt verwijderen, kunt u de volgende opdracht uitvoeren:
 ```bash
 rm /mnt/resource/swapfile
 ```
-## <a name="extra-step-for-cloud-init-prepared-image"></a>Een extra stap voor cloud-init voorbereide installatiekopie
+## <a name="extra-step-for-cloud-init-prepared-image"></a>Extra stap voor voor bereide installatie kopie Cloud-init
 > [!NOTE]
-> Als uw installatiekopie eerder is een **cloud-init** afbeelding voorbereid en geconfigureerd, moet u de volgende stappen uit.
+> Als uw installatie kopie eerder een **Cloud-init-** voor bereide en geconfigureerde installatie kopie was, moet u de volgende stappen uitvoeren.
 
-De volgende drie opdrachten worden alleen gebruikt als de virtuele machine aanpassen om te worden van een nieuwe gespecialiseerde broninstallatiekopie eerder is ingericht door cloud-init.  U hoeft niet te deze uitvoeren als uw installatiekopie is geconfigureerd met behulp van de Azure Linux Agent.
+De volgende drie opdrachten worden alleen gebruikt als de virtuele machine die u wilt aanpassen een nieuwe gespecialiseerde bron installatie kopie eerder is ingericht door Cloud-init.  U hoeft deze niet uit te voeren als uw installatie kopie is geconfigureerd met behulp van de Azure Linux-agent.
 
 ```bash
 sudo cloud-init clean --logs
 sudo waagent -deprovision+user -force
 ```
 
-## <a name="finalizing-linux-agent-setting"></a>Linux-Agent wordt voltooid instellen 
-Alle Azure-platform-installatiekopieën hebben de Azure Linux Agent is geïnstalleerd, ongeacht als deze is geconfigureerd met cloud-init of niet.  Voer de volgende opdracht om te voltooien van de inrichting van de gebruiker van de Linux-machine. 
+## <a name="finalizing-linux-agent-setting"></a>De Linux-agent instelling volt ooien 
+Voor alle installatie kopieën van het Azure-platform is de Azure Linux-agent geïnstalleerd, ongeacht of deze is geconfigureerd door Cloud-init of niet.  Voer de volgende opdracht uit om het ongedaan maken van de inrichting van de gebruiker van de Linux-computer te volt ooien. 
 
 ```bash
 sudo waagent -deprovision+user -force
 ```
 
-Zie voor meer informatie over de opdrachten van Azure Linux Agent inrichting, het [Azure Linux Agent](../extensions/agent-linux.md) voor meer informatie.
+Raadpleeg de [Azure Linux-agent](../extensions/agent-linux.md) voor meer informatie over de Azure Linux-agent voor het ongedaan maken van de inrichting.
 
-Sluit de SSH-sessie af en klik vanuit de bash-shell en voer de volgende Azure CLI-opdrachten toewijzing ongedaan maken, het generaliseren en het maken van een nieuwe Azure-VM-installatiekopie.  Vervang `myResourceGroup` en `sourceVmName` met de juiste informatie zetten op basis van uw sourceVM.
+Sluit de SSH-sessie af en voer vanuit uw bash-shell de volgende AzureCLI-opdrachten uit om de toewijzing op te heffen, te generaliseren en een nieuwe Azure VM-installatie kopie te maken.  Vervang `myResourceGroup` en `sourceVmName` door de relevante informatie die overeenkomt met uw sourceVM.
 
 ```bash
 az vm deallocate --resource-group myResourceGroup --name sourceVmName
@@ -127,9 +127,9 @@ az image create --resource-group myResourceGroup --name myCloudInitImage --sourc
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor extra cloud-init-voorbeelden van wijzigingen in de configuratie, Zie de volgende:
+Zie het volgende voor meer voor beelden van configuratie wijzigingen in de Cloud-init:
  
-- [Een aanvullende Linux-gebruiker toevoegen aan een virtuele machine](cloudinit-add-user.md)
-- [Uitvoeren van een pakketbeheerder voor het bijwerken van bestaande pakketten bij de eerste keer opstarten](cloudinit-update-vm.md)
-- [Wijzigen van de lokale VM-hostnaam](cloudinit-update-vm-hostname.md) 
-- [Het installatiepakket voor een toepassing, het bijwerken van configuratiebestanden en het invoeren van sleutels](tutorial-automate-vm-deployment.md)
+- [Een extra Linux-gebruiker toevoegen aan een VM](cloudinit-add-user.md)
+- [Een pakket beheer programma uitvoeren om bestaande pakketten bij de eerste keer opstarten bij te werken](cloudinit-update-vm.md)
+- [Lokale hostnaam van VM wijzigen](cloudinit-update-vm-hostname.md) 
+- [Een toepassings pakket installeren, configuratie bestanden bijwerken en sleutels invoeren](tutorial-automate-vm-deployment.md)

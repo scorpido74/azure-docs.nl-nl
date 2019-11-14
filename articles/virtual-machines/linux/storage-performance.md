@@ -1,5 +1,5 @@
 ---
-title: Prestaties optimaliseren op virtuele machines uit de Azure Lsv2-serie-opslag | Microsoft Docs
+title: Prestaties optimaliseren op virtuele machines uit de Azure Lsv2-serie-opslag
 description: Meer informatie over het optimaliseren van de prestaties van uw oplossing op de virtuele machines uit de Lsv2-serie.
 services: virtual-machines-linux
 author: laurenhughes
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: ea64a4274eda947aebf0f693657c17a120bec560
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8d99f63ae084b4f1dae3c0125420eaecf5655e2d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081790"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034756"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimaliseer de prestaties van de virtuele machines uit de Lsv2-serie
 
@@ -45,7 +45,7 @@ Vm's uit de Lsv2-serie gebruiken AMD EYPC™ server-processors op basis van de m
 
 * Lsv2-gebruikers moeten niet vertrouwen op de NUMA-gegevens van het apparaat (alle 0) die in de virtuele machine zijn gerapporteerd voor gegevens stations om de NUMA-affiniteit voor hun apps te bepalen. De aanbevolen manier om de prestaties te verbeteren is als dat mogelijk is om werk belastingen over Cpu's te spreiden.
 
-* De Maxi maal ondersteunde wachtrij diepte per I/O-wachtrij paar voor Lsv2 VM NVMe-apparaat is 1024 (VS. I3 wachtrij diepte 32-limiet van Amazon). Lsv2 gebruikers moeten de werk belasting van hun (synthetische) benchmarking beperken tot de wachtrij diepte 1024 of lager om te voor komen dat de wachtrij vol is voor waarden, waardoor de prestaties kunnen worden verminderd.
+* De Maxi maal ondersteunde wachtrij diepte per I/O-wachtrij paar voor Lsv2 VM NVMe-apparaat is 1024 (VS. Amazon i3 wachtrij diepte 32-limiet). Lsv2 gebruikers moeten de werk belasting van hun (synthetische) benchmarking beperken tot de wachtrij diepte 1024 of lager om te voor komen dat de wachtrij vol is voor waarden, waardoor de prestaties kunnen worden verminderd.
 
 ## <a name="utilizing-local-nvme-storage"></a>Lokale NVMe-opslag gebruiken
 
@@ -93,20 +93,20 @@ Zie [back-up en herstel na nood gevallen voor Azure IaaS-schijven](backup-and-di
 * **Leidt een enkele NVMe-schijf fout tot gevolg dat alle Vm's op de host mislukken?**  
    Als er een schijf fout op het hardware-knoop punt wordt gedetecteerd, heeft de hardware de status mislukt. Als dit gebeurt, worden alle Vm's op het knoop punt automatisch ongedaan gemaakt en verplaatst naar een gezond knoop punt. Voor virtuele machines uit de Lsv2-serie betekent dit dat de gegevens van de klant op het knoop punt waarvoor een storing optreedt, ook veilig worden gewist en opnieuw moeten worden gemaakt door de klant op het nieuwe knoop punt. Zoals genoteerd, worden de gegevens op het knoop punt waarvoor een storing optreedt proactief met de virtuele machines verplaatst wanneer ze worden overgebracht naar een ander knoop punt voordat Livemigratie op Lsv2 beschikbaar wordt.
 
-* **Moet ik aanpassingen aanbrengen voor rq_affinity voor prestaties?**  
-   De instelling rq_affinity is een kleine aanpassing bij het gebruik van de absolute maximale invoer/uitvoer-bewerkingen per seconde (IOPS). Als alles goed werkt, probeert u rq_affinity in te stellen op 0 om te zien of het een verschil is.
+* **Moet ik aanpassingen aanbrengen voor de prestaties van rq_affinity?**  
+   De instelling rq_affinity is een kleine aanpassing bij het gebruik van de absolute maximum invoer/uitvoer-bewerkingen per seconde (IOPS). Als alles goed werkt, probeert u rq_affinity in te stellen op 0 om te zien of het een verschil is.
 
-* **Moet ik de blk_mq-instellingen wijzigen?**  
-   RHEL/CentOS 7. x maakt automatisch gebruik van BLK-MQ voor de NVMe-apparaten. Er zijn geen configuratie wijzigingen of-instellingen nodig. De instelling scsi_mod. use _blk_mq is alleen van toepassing op SCSI en is gebruikt tijdens de preview-versie van Lsv2, omdat de NVMe-apparaten op de gast-Vm's werden weer gegeven als SCSI-apparaten. Op dit moment zijn de NVMe-apparaten zichtbaar als NVMe-apparaten, zodat de BLK-MQ-instelling voor SCSI niet van belang is.
+* **Moet ik de blk_mq instellingen wijzigen?**  
+   RHEL/CentOS 7. x maakt automatisch gebruik van BLK-MQ voor de NVMe-apparaten. Er zijn geen configuratie wijzigingen of-instellingen nodig. De instelling scsi_mod. use_blk_mq is alleen voor SCSI en is gebruikt tijdens de preview-versie van Lsv2, omdat de NVMe-apparaten op de gast-Vm's werden weer gegeven als SCSI-apparaten. Op dit moment zijn de NVMe-apparaten zichtbaar als NVMe-apparaten, zodat de BLK-MQ-instelling voor SCSI niet van belang is.
 
 * **Moet ik "fio" wijzigen?**  
-   Als u een maximum aantal IOPS wilt krijgen met een hulp programma voor prestatie meting zoals ' fio ' in de VM-grootten L64v2 en L80v2, stelt u ' rq_affinity ' in op 0 op elk NVMe-apparaat.  Met deze opdracht regel wordt bijvoorbeeld ' rq_affinity ' ingesteld op nul voor alle 10 NVMe-apparaten in een L80v2-VM:
+   Als u maximum aantal IOPS wilt bereiken met een hulp programma voor prestatie meting zoals ' fio ' in de VM-grootten L64v2 en L80v2, stelt u ' rq_affinity ' in op 0 op elk NVMe-apparaat.  Met deze opdracht regel wordt bijvoorbeeld ' rq_affinity ' ingesteld op nul voor alle 10 NVMe-apparaten in een L80v2-VM:
 
    ```console
    for i in `seq 0 9`; do echo 0 >/sys/block/nvme${i}n1/queue/rq_affinity; done
    ```
 
-   Houd er ook rekening mee dat de beste prestaties worden verkregen wanneer I/O rechtstreeks wordt uitgevoerd op alle onbewerkte NVMe-apparaten zonder partitioneren, geen bestands systemen, geen RAID 0-configuratie, enzovoort. Voordat u een test sessie start, moet u ervoor zorgen dat de configuratie de status bekend/schoon `blkdiscard` maakt door op elk NVMe-apparaat uit te voeren.
+   Houd er ook rekening mee dat de beste prestaties worden verkregen wanneer I/O rechtstreeks wordt uitgevoerd op alle onbewerkte NVMe-apparaten zonder partitioneren, geen bestands systemen, geen RAID 0-configuratie, enzovoort. Voordat u een test sessie start, moet u ervoor zorgen dat de configuratie de status bekend/schoon heeft door `blkdiscard` op elk van de NVMe-apparaten uit te voeren.
    
 ## <a name="next-steps"></a>Volgende stappen
 

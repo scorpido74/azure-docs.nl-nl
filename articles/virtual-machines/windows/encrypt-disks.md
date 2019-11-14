@@ -1,5 +1,5 @@
 ---
-title: Schijven versleutelen op een Windows-VM in azure | Microsoft Docs
+title: Schijven versleutelen op een Windows-VM in azure
 description: Virtuele schijven op een Windows-VM versleutelen voor een betere beveiliging met behulp van Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 73f38760153a6e1db5621801282c71216b3e8560
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 096fe779c077424b01df3ead5965cb799866a03b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749433"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033532"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Virtuele schijven op een Windows-VM versleutelen
 Virtuele schijven in azure kunnen worden versleuteld voor verbeterde beveiliging en naleving van de virtuele machine (VM). Schijven worden versleuteld met behulp van cryptografische sleutels die zijn beveiligd in een Azure Key Vault. U kunt deze cryptografische sleutels beheren en het gebruik ervan controleren. In dit artikel wordt beschreven hoe u virtuele schijven op een Windows-VM versleutelt met behulp van Azure PowerShell. U kunt ook [virtuele Linux-machines versleutelen](../linux/disk-encryption-overview.md).

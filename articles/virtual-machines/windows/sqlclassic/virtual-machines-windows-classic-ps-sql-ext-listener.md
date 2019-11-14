@@ -1,5 +1,5 @@
 ---
-title: Een externe listener configureren voor AlwaysOn-beschikbaarheids groepen | Microsoft Docs
+title: Een externe listener configureren voor beschikbaarheids groepen
 description: In deze zelf studie wordt u begeleid bij het maken van een always on-beschikbaarheids groep-listener in azure die extern toegankelijk is met behulp van het open bare virtuele IP-adres van de bijbehorende Cloud service.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 78881830d4e558daaad6e1929b30287e2731fb1b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d2dce6875ec39810a81bb5ae454d953a7b7ab0a9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100413"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032724"
 ---
-# <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Een externe listener configureren voor AlwaysOn-beschikbaarheids groepen in azure
+# <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Een externe listener configureren voor beschikbaarheids groepen op Azure SQL Server Vm's
 > [!div class="op_single_selector"]
 > * [Interne listener](../classic/ps-sql-int-listener.md)
 > * [Externe listener](../classic/ps-sql-ext-listener.md)
@@ -31,7 +32,7 @@ ms.locfileid: "70100413"
 In dit onderwerp wordt beschreven hoe u een listener kunt configureren voor een AlwaysOn-beschikbaarheids groep die extern toegankelijk is op internet. Dit wordt mogelijk gemaakt door het **open bare VIP-adres (virtuele IP)** van de Cloud service te koppelen aan de listener.
 
 > [!IMPORTANT] 
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
 
 Uw beschikbaarheids groep kan replica's bevatten die alleen on-premises zijn, alleen Azure, of die zowel on-premises als Azure omvatten voor hybride configuraties. Azure-replica's kunnen zich in dezelfde regio of in meerdere regio's bevinden met meerdere virtuele netwerken (VNets). In de onderstaande stappen wordt ervan uitgegaan dat u al [een beschikbaarheids groep hebt geconfigureerd](../classic/portal-sql-alwayson-availability-groups.md) , maar geen listener hebt geconfigureerd.
 
@@ -126,7 +127,7 @@ Als u toegang wilt krijgen tot de listener van buiten het virtuele netwerk, moet
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-In tegens telling tot het vorige voor beeld moet SQL-verificatie worden gebruikt, omdat de aanroeper geen Windows-verificatie via internet kan gebruiken. Zie [AlwaysOn-beschikbaarheids groep in azure VM voor meer informatie: Scenario's](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)voor client connectiviteit. Wanneer u SQL-verificatie gebruikt, moet u dezelfde aanmelding op beide replica's maken. Zie aanmeldingen [toewijzen of opgenomen SQL database gebruiker om verbinding te maken met andere replica's en te koppelen aan beschikbaarheids databases](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)voor meer informatie over het oplossen van problemen met aanmeldingen met beschikbaarheids groepen.
+In tegens telling tot het vorige voor beeld moet SQL-verificatie worden gebruikt, omdat de aanroeper geen Windows-verificatie via internet kan gebruiken. Zie AlwaysOn- [beschikbaarheids groep in azure VM: client connectiviteits scenario's](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)voor meer informatie. Wanneer u SQL-verificatie gebruikt, moet u dezelfde aanmelding op beide replica's maken. Zie [aanmeldingen toewijzen of opgenomen SQL database gebruiker om verbinding te maken met andere replica's en te koppelen aan beschikbaarheids databases](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)voor meer informatie over het oplossen van problemen met aanmeldingen met beschikbaarheids groepen.
 
 Als de always on-replica's zich in verschillende subnetten bevinden, moeten clients **MultisubnetFailover = True** opgeven in de Connection String. Dit resulteert in een parallelle verbinding en probeert replica's in de verschillende subnetten. Houd er rekening mee dat dit scenario een permanente implementatie van een beschikbaarheids groep voor meerdere regio's omvat.
 

@@ -1,5 +1,5 @@
 ---
-title: Implementeer Azure dedicated hosts met behulp van de Azure Portal | Microsoft Docs
+title: Implementeer uw eigen Azure-hosts met behulp van de Azure Portal
 description: Implementeer Vm's op toegewezen hosts met behulp van de Azure Portal.
 services: virtual-machines-linux
 author: cynthn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 03d8b5353a2dc9840c8231978243e7f94a5bff56
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 296c43c7c1345c67cc5b83749272e56c122ee535
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700390"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036431"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-portal"></a>Preview: Vm's implementeren op toegewezen hosts met behulp van de portal
+# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-portal"></a>Voor beeld: Vm's implementeren op toegewezen hosts met behulp van de portal
 
 Dit artikel begeleidt u bij het maken van een toegewezen Azure- [host](dedicated-hosts.md) voor het hosten van uw virtuele machines (vm's). 
 
@@ -35,11 +35,11 @@ Dit artikel begeleidt u bij het maken van een toegewezen Azure- [host](dedicated
 1. Voor de grootte selecteert u **grootte wijzigen**. Kies in de lijst met beschik bare grootten een van de Esv3-reeksen, zoals **Standard E2s v3**. Mogelijk moet u het filter wissen om alle beschik bare grootten weer te geven.
 1. Selecteer onder **Administrator-account** **Openbare SSH-sleutel**, typ uw gebruikersnaam en plak uw openbare sleutel in het tekstvak. Verwijder eventuele voorloop- en volgspaties van uw openbare sleutel.
 
-    ![Beheerdersaccount](./media/quick-create-portal/administrator-account.png)
+    ![Administrator-account](./media/quick-create-portal/administrator-account.png)
 
 1. Onder **Binnenkomende poort regels** > **open bare binnenkomende poorten**kiest u **geselecteerde poorten toestaan** en selecteert u **SSH (22)** in de vervolg keuzelijst. 
 1. Selecteer boven aan de pagina het tabblad **Geavanceerd** en selecteer in de sectie **host** *MyHostGroup* voor **hostgroep** en *myHost* voor de **host**. 
-    ![Hostgroep en host selecteren](./media/dedicated-hosts-portal/advanced.png)
+    hostgroep en host ![selecteren](./media/dedicated-hosts-portal/advanced.png)
 1. Laat de resterende standaardwaarden staan ​​en selecteer vervolgens de knop **Beoordelen en maken** aan de onderkant van de pagina.
 1. Wanneer u het bericht ziet dat de validatie is voltooid, selecteert u **maken**.
 

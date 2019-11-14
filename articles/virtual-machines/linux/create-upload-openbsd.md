@@ -1,5 +1,5 @@
 ---
-title: Een OpenBSD VM-installatie kopie maken en uploaden naar Azure | Microsoft Docs
+title: Een OpenBSD VM-installatie kopie maken en uploaden naar Azure
 description: Meer informatie over het maken en uploaden van een virtuele harde schijf (VHD) die het OpenBSD-besturings systeem bevat om een virtuele Azure-machine te maken met behulp van Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 53acab4128d01c92c54c8c01a5e611d313e617d4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ee15836906eef0b9205691f9a6003cea0b9fae80
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083565"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036454"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Een OpenBSD-schijf kopie maken en uploaden naar Azure
 In dit artikel wordt beschreven hoe u een virtuele harde schijf (VHD) die het OpenBSD-besturings systeem bevat maakt en uploadt. Nadat u het hebt geüpload, kunt u dit als uw eigen installatie kopie gebruiken om een virtuele machine (VM) in azure te maken via Azure CLI.
@@ -55,7 +55,7 @@ Voer de volgende procedures uit op de virtuele machine waarop u het OpenBSD-best
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. De `root` gebruiker is standaard uitgeschakeld op virtuele machines in Azure. Gebruikers kunnen opdrachten uitvoeren met verhoogde bevoegdheden met behulp van `doas` de opdracht op OpenBSD VM. DOAS is standaard ingeschakeld. Zie [DOAS. conf](https://man.openbsd.org/doas.conf.5)voor meer informatie. 
+4. De `root` gebruiker is standaard uitgeschakeld op virtuele machines in Azure. Gebruikers kunnen opdrachten met verhoogde bevoegdheden uitvoeren met behulp van de opdracht `doas` op OpenBSD VM. DOAS is standaard ingeschakeld. Zie [DOAS. conf](https://man.openbsd.org/doas.conf.5)voor meer informatie. 
 
 5. Installeer en configureer de vereisten voor de Azure-agent als volgt:
 
@@ -148,7 +148,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>Een VM maken op basis van uw VHD
-U kunt een virtuele machine maken met een [voorbeeld script](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) of rechtstreeks met [AZ VM Create](/cli/azure/vm). Als u de OpenBSD-VHD die u hebt geüpload `--image` wilt opgeven, gebruikt u de para meter als volgt:
+U kunt een virtuele machine maken met een [voorbeeld script](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) of rechtstreeks met [AZ VM Create](/cli/azure/vm). Als u de OpenBSD-VHD die u hebt geüpload wilt opgeven, gebruikt u de para meter `--image` als volgt:
 
 ```azurecli
 az vm create \

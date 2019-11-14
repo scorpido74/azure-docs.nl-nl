@@ -1,5 +1,5 @@
 ---
-title: Azure seriële console voor GRUB en de modus voor één gebruiker | Microsoft Docs
+title: Azure seriële console voor GRUB en de modus voor één gebruiker
 description: Met behulp van seriële console voor grub in azure virtual machines.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: cce4e558331cad0045772f53f7fc3c78aeed2bb7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 87f16ec615c8b47c93745b33be12d3acd6d9177a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082206"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035040"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Seriële console gebruiken voor toegang tot de GRUB en de modus voor één gebruiker
 GRUB is de GRand Unified Bootloader. Vanuit GRUB kunt u de opstart configuratie wijzigen om onder andere de modus voor één gebruiker op te starten.
@@ -35,7 +35,7 @@ Voor toegang tot GRUB moet u de virtuele machine opnieuw opstarten terwijl de Bl
 U moet ervoor zorgen dat GRUB is ingeschakeld op uw virtuele machine om toegang te kunnen krijgen tot de modus voor één gebruiker. Afhankelijk van uw distributie is het mogelijk dat er een bepaalde installatie wordt uitgevoerd om ervoor te zorgen dat GRUB is ingeschakeld. Distributie-specifieke informatie is hieronder beschikbaar.
 
 ### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>Start uw VM opnieuw op om toegang te krijgen tot GRUB in de seriële console
-Het opnieuw opstarten van uw VM met de Blade seriële console open kan worden uitgevoerd met `'b'` een SYSRQ-opdracht als [SYSRQ](./serial-console-nmi-sysrq.md) is ingeschakeld, of door te klikken op de knop opnieuw opstarten op de Blade overzicht (Open de virtuele machine in een nieuw browser tabblad om opnieuw op te starten zonder de Blade seriële console te sluiten ). Volg de distributie-specifieke instructies hieronder voor meer informatie over wat u kunt verwachten van GRUB wanneer u de computer opnieuw opstart.
+Het opnieuw opstarten van uw VM met de Blade seriële console open kan worden uitgevoerd met een SysRq `'b'` opdracht als [SYSRQ](./serial-console-nmi-sysrq.md) is ingeschakeld, of door te klikken op de knop opnieuw opstarten op de Blade overzicht (Open de virtuele machine in een nieuw browser tabblad om opnieuw op te starten zonder de Blade seriële console te sluiten). Volg de distributie-specifieke instructies hieronder voor meer informatie over wat u kunt verwachten van GRUB wanneer u de computer opnieuw opstart.
 
 ## <a name="general-single-user-mode-access"></a>Algemene toegang tot de modus voor één gebruiker
 Er zijn mogelijk hand matige toegang tot de modus voor één gebruiker nodig in situaties waarin u geen account met wachtwoord verificatie hebt geconfigureerd. U moet de GRUB-configuratie wijzigen om de modus voor één gebruiker hand matig in te voeren. Als u dit hebt gedaan, raadpleegt u de modus voor één gebruiker gebruiken om een wacht woord opnieuw in te stellen of toe te voegen voor verdere instructies.
@@ -44,15 +44,15 @@ In gevallen waarin de virtuele machine niet kan worden opgestart, wordt door dis
 
 ### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>De modus voor één gebruiker gebruiken om een wacht woord opnieuw in te stellen of toe te voegen
 Als u zich in de modus voor één gebruiker bevindt, gaat u als volgt te werk om een nieuwe gebruiker toe te voegen met sudo-bevoegdheden:
-1. Uitvoeren `useradd <username>` om een gebruiker toe te voegen
-1. Uitvoeren `sudo usermod -a -G sudo <username>` om de nieuwe gebruikers hoofd bevoegdheden te verlenen
-1. Gebruiken `passwd <username>` om het wacht woord voor de nieuwe gebruiker in te stellen. U kunt zich vervolgens aanmelden als de nieuwe gebruiker
+1. `useradd <username>` uitvoeren om een gebruiker toe te voegen
+1. Voer `sudo usermod -a -G sudo <username>` uit om de nieuwe bevoegdheden van de gebruiker root te verlenen
+1. Gebruik `passwd <username>` om het wacht woord voor de nieuwe gebruiker in te stellen. U kunt zich vervolgens aanmelden als de nieuwe gebruiker
 
 ## <a name="access-for-red-hat-enterprise-linux-rhel"></a>Toegang voor Red Hat Enterprise Linux (RHEL)
 RHEL gaat automatisch naar de modus voor één gebruiker als deze niet normaal kan worden opgestart. Als u echter geen hoofd toegang hebt ingesteld voor de modus voor één gebruiker, hebt u geen hoofd wachtwoord en kunt u zich niet aanmelden. Er is een tijdelijke oplossing (Zie ' hand matig toegang tot de modus voor één gebruiker maken ' hieronder), maar u kunt het voor stel het eerst gebruiken om toegang tot de hoofdmap in te stellen.
 
 ### <a name="grub-access-in-rhel"></a>GRUB-toegang in RHEL
-RHEL wordt geleverd met GRUB ingeschakeld. Als u grub wilt invoeren, start u `sudo reboot` de VM opnieuw op en drukt u op een wille keurige toets. Het scherm GRUB wordt weer gegeven.
+RHEL wordt geleverd met GRUB ingeschakeld. Als u GRUB wilt invoeren, start u de VM opnieuw op met `sudo reboot` en drukt u op een toets. Het scherm GRUB wordt weer gegeven.
 
 > Opmerking: Red Hat biedt ook documentatie voor opstarten in de herstel modus, de nood herstel modus, de foutopsporingsmodus en het opnieuw instellen van het hoofd wachtwoord. [Klik hier om het te openen](https://aka.ms/rhel7grubterminal).
 
@@ -62,10 +62,10 @@ Voor de modus voor één gebruiker in RHEL moet de hoofd gebruiker zijn ingescha
 1. Meld u aan bij het Red Hat-systeem via SSH
 1. Overschakelen naar hoofdmap
 1. Wacht woord voor hoofd gebruiker inschakelen 
-    * `passwd root`(een sterk wacht woord instellen)
+    * `passwd root` (een sterk wacht woord instellen)
 1. Controleren of de hoofd gebruiker zich alleen kan aanmelden via ttyS0
-    * `edit /etc/ssh/sshd_config`Zorg ervoor dat PermitRootLogIn is ingesteld op Nee
-    * `edit /etc/securetty file`aanmelden via ttyS0 alleen toestaan 
+    * `edit /etc/ssh/sshd_config` en zorg ervoor dat PermitRootLogIn is ingesteld op Nee
+    * `edit /etc/securetty file` alleen aanmelden via ttyS0 toestaan 
 
 Als het systeem wordt opgestart in de modus voor één gebruiker, kunt u zich aanmelden via het hoofd wachtwoord.
 
@@ -76,10 +76,10 @@ Als u GRUB en toegang tot de hoofdmap hebt ingesteld met de bovenstaande instruc
 
 1. Druk op ESC tijdens het opnieuw starten van de virtuele machine om GRUB in te voeren
 1. Druk in GRUB op ' e ' om het geselecteerde besturings systeem te bewerken waarop u wilt opstarten (doorgaans de eerste regel)
-1. Zoek de kernel-regel-in Azure. dit begint met`linux16`
+1. Zoek de kernel-regel-in Azure. dit begint met `linux16`
 1. Druk op CTRL + E om naar het einde van de regel te gaan
-1. Voeg het volgende toe aan het einde van de regel:`systemd.unit=rescue.target`
-    * Hiermee wordt u opgestart naar de modus voor één gebruiker. Als u de nood herstel modus wilt gebruiken, `systemd.unit=emergency.target` voegt u aan het einde van de regel toe, in plaats van`systemd.unit=rescue.target`
+1. Voeg het volgende toe aan het einde van de regel: `systemd.unit=rescue.target`
+    * Hiermee wordt u opgestart naar de modus voor één gebruiker. Als u de nood herstel modus wilt gebruiken, voegt u `systemd.unit=emergency.target` toe aan het einde van de regel in plaats van `systemd.unit=rescue.target`
 1. Druk op CTRL + X om af te sluiten en opnieuw op te starten met de toegepaste instellingen
 1. U wordt gevraagd om het beheerders wachtwoord voordat de modus voor één gebruiker kan worden opgegeven. Dit is het wacht woord dat u hebt gemaakt in de bovenstaande instructies    
 
@@ -88,28 +88,28 @@ Als u GRUB en toegang tot de hoofdmap hebt ingesteld met de bovenstaande instruc
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>De modus voor één gebruiker opgeven zonder dat het hoofd account is ingeschakeld in RHEL
 Als u de bovenstaande stappen niet hebt door lopen om de hoofd gebruiker in te scha kelen, kunt u uw basis wachtwoord nog steeds opnieuw instellen. Gebruik de volgende instructies:
 
-> Opmerking: Als u SELinux gebruikt, moet u ervoor zorgen dat u de aanvullende stappen hebt uitgevoerd die worden beschreven in [](https://aka.ms/rhel7grubterminal) de Red Hat-documentatie wanneer u het basis wachtwoord opnieuw instelt.
+> Opmerking: als u SELinux gebruikt, moet u ervoor zorgen dat u de aanvullende stappen hebt uitgevoerd die [hier](https://aka.ms/rhel7grubterminal) worden beschreven in de Red Hat-documentatie wanneer u het basis wachtwoord opnieuw instelt.
 
 1. Druk op ESC tijdens het opnieuw starten van de virtuele machine om GRUB in te voeren
 1. Druk in GRUB op ' e ' om het geselecteerde besturings systeem te bewerken waarop u wilt opstarten (doorgaans de eerste regel)
-1. Zoek de kernel-regel-in Azure. dit begint met`linux16`
-1. Voeg `rd.break` aan het einde van de regel toe, zodat er ruimte is voor `rd.break` (Zie het onderstaande voor beeld)
-    - Hiermee wordt het opstart proces onderbroken voordat het besturings element wordt `initramfs` door `systemd`gegeven van naar, zoals beschreven in de documentatie van Red Hat [hier](https://aka.ms/rhel7rootpassword).
+1. Zoek de kernel-regel-in Azure. dit begint met `linux16`
+1. Voeg `rd.break` toe aan het einde van de regel en zorg ervoor dat er ruimte is voor `rd.break` (Zie het onderstaande voor beeld)
+    - Hiermee wordt het opstart proces onderbroken voordat het besturings element wordt door gegeven van `initramfs` naar `systemd`, zoals beschreven in de documentatie van Red Hat [hier](https://aka.ms/rhel7rootpassword).
 1. Druk op CTRL + X om af te sluiten en opnieuw op te starten met de toegepaste instellingen
 1. Zodra u de computer hebt opgestart, wordt u in de nood herstel modus met een alleen-lezen bestands systeem verwijderd. Voer `mount -o remount,rw /sysroot` in de shell in om het hoofd bestands systeem opnieuw te koppelen met de machtigingen lezen/schrijven
-1. Wanneer u de modus voor één gebruiker opstart, typt `chroot /sysroot` u in om over `sysroot` te scha kelen naar de jailbroken
-1. U bent nu het hoofd. U kunt uw basis wachtwoord opnieuw instellen `passwd` met en vervolgens de bovenstaande instructies gebruiken om de modus voor één gebruiker in te voeren. Typ `reboot -f` om opnieuw op te starten wanneer u klaar bent.
+1. Wanneer u de modus voor één gebruiker opstart, typt u `chroot /sysroot` om over te scha kelen naar de `sysroot` jailbroken
+1. U bent nu het hoofd. U kunt uw basis wachtwoord opnieuw instellen met `passwd` en vervolgens de bovenstaande instructies gebruiken om de modus voor één gebruiker in te voeren. Typ `reboot -f` om opnieuw op te starten nadat u klaar bent.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
-> Opmerking: Door de bovenstaande instructies uit te voeren, gaat u naar de nood-shell, zodat u ook taken zoals `fstab`bewerken kunt uitvoeren. De algemeen geaccepteerde suggestie is het opnieuw instellen van uw basis wachtwoord en gebruiken om de modus voor één gebruiker in te voeren. 
+> Opmerking: door de bovenstaande instructies uit te voeren, gaat u naar de nood shell, zodat u ook taken zoals het bewerken van `fstab`kunt uitvoeren. De algemeen geaccepteerde suggestie is het opnieuw instellen van uw basis wachtwoord en gebruiken om de modus voor één gebruiker in te voeren. 
 
 
 ## <a name="access-for-centos"></a>Toegang voor CentOS
 Net als Red Hat Enterprise Linux vereist de modus voor één gebruiker in CentOS GRUB en moet de hoofd gebruiker worden ingeschakeld. 
 
 ### <a name="grub-access-in-centos"></a>GRUB-toegang in CentOS
-CentOS wordt geleverd met GRUB ingeschakeld. Als u grub wilt invoeren, start u `sudo reboot` de VM opnieuw op en drukt u op een wille keurige toets. Het scherm GRUB wordt weer gegeven.
+CentOS wordt geleverd met GRUB ingeschakeld. Als u GRUB wilt invoeren, start u de VM opnieuw op met `sudo reboot` en drukt u op een toets. Het scherm GRUB wordt weer gegeven.
 
 ### <a name="single-user-mode-in-centos"></a>Modus voor één gebruiker in CentOS
 Volg de instructies voor RHEL hierboven om de modus voor één gebruiker in CentOS in te scha kelen.
@@ -124,15 +124,15 @@ Standaard worden in Ubuntu-afbeeldingen niet automatisch het scherm GRUB weer ge
 1. Open `/etc/default/grub.d/50-cloudimg-settings.cfg` in een tekst editor naar keuze
 1. Wijzig de `GRUB_TIMEOUT` waarde in een andere waarde dan nul
 1. Open `/etc/default/grub` in een tekst editor naar keuze
-1. Commentaar toevoegen aan `GRUB_HIDDEN_TIMEOUT=1` de regel
+1. Commentaar toevoegen aan de `GRUB_HIDDEN_TIMEOUT=1` lijn
 1. Voer `sudo update-grub` uit.
 
 ### <a name="single-user-mode-in-ubuntu"></a>Modus voor één gebruiker in Ubuntu
 Ubuntu gaat automatisch naar de modus voor één gebruiker als deze niet normaal kan worden opgestart. Gebruik de volgende instructies om de modus voor één gebruiker hand matig in te voeren:
 
 1. Druk vanuit GRUB op ' e ' om de opstart vermelding (de Ubuntu-vermelding) te bewerken.
-1. Zoek naar de regel die begint met `linux`en zoek naar`ro`
-1. `single` Erna`ro`toevoegen, zodat er ruimte is voor en na`single`
+1. Zoek naar de regel die begint met `linux`en zoek vervolgens naar `ro`
+1. `single` toevoegen na `ro`, zodat er ruimte is voor en na `single`
 1. Druk op CTRL + X om opnieuw op te starten met deze instellingen en voer de modus voor één gebruiker in
 
 ## <a name="access-for-coreos"></a>Toegang voor CoreOS
@@ -145,7 +145,7 @@ Om toegang te krijgen tot GRUB, drukt u op een wille keurige toets wanneer de vi
 CoreOS gaat automatisch naar de modus voor één gebruiker als deze niet normaal kan worden opgestart. Gebruik de volgende instructies om de modus voor één gebruiker hand matig in te voeren:
 1. Druk vanuit GRUB op ' e ' om de opstart vermelding te bewerken
 1. Zoek naar de regel die begint met `linux$`. Er moet 2 zijn ingekapseld in verschillende if/else-componenten
-1. Toevoegen `coreos.autologin=ttyS0` aan het einde van beide `linux$` regels
+1. `coreos.autologin=ttyS0` toevoegen aan het einde van beide `linux$` regels
 1. Druk op CTRL + X om opnieuw op te starten met deze instellingen en voer de modus voor één gebruiker in
 
 ## <a name="access-for-suse-sles"></a>Toegang voor SUSE SLES
@@ -154,13 +154,13 @@ Nieuwere installatie kopieën van SLES 12 SP3 + bieden toegang via de seriële c
 ### <a name="grub-access-in-suse-sles"></a>GRUB-toegang in SUSE SLES
 GRUB-toegang in SLES vereist configuratie van bootloader via YaST. Volg hiervoor de volgende instructies:
 
-1. SSH in uw SLES-VM en `sudo yast bootloader`Voer uit. Gebruik de `tab` sleutel- `enter` , sleutel-en PIJL toetsen om door het menu te navigeren. 
-1. Navigeer naar `Kernel Parameters`en controleer `Use serial console`. 
-1. Toevoegen `serial --unit=0 --speed=9600 --parity=no` aan de-console argumenten
+1. SSH in uw SLES-VM en voer `sudo yast bootloader`uit. Gebruik de `tab` sleutel, `enter` sleutel en PIJL toetsen om door het menu te navigeren. 
+1. Ga naar `Kernel Parameters`en controleer `Use serial console`. 
+1. `serial --unit=0 --speed=9600 --parity=no` toevoegen aan de-console argumenten
 
 1. Druk op F10 om uw instellingen op te slaan en af te sluiten
 1. Als u GRUB wilt invoeren, start u de virtuele machine opnieuw op en drukt u op een wille keurige toets tijdens de opstart procedure om GRUB op het scherm
-    - De standaardtime-outwaarde voor GRUB is 1S. U kunt dit wijzigen door de `GRUB_TIMEOUT` variabele in te wijzigen in`/etc/default/grub`
+    - De standaardtime-outwaarde voor GRUB is 1S. U kunt dit wijzigen door de `GRUB_TIMEOUT` variabele in `/etc/default/grub` te wijzigen
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
@@ -168,22 +168,22 @@ GRUB-toegang in SLES vereist configuratie van bootloader via YaST. Volg hiervoor
 Als SLES niet normaal kan worden opgestart, wordt u automatisch verwijderd naar de nood situatie. Gebruik de volgende instructies om de nood-shell hand matig in te voeren:
 
 1. Druk vanuit GRUB op ' e ' om de opstart vermelding (de SLES-vermelding) te bewerken.
-1. Zoek naar de kernel-regel die wordt gestart met`linux`
-1. Toevoegen `systemd.unit=emergency.target` aan het einde van de regel
+1. Zoek naar de kernel-regel die wordt gestart met `linux`
+1. `systemd.unit=emergency.target` toevoegen aan het einde van de regel
 1. Druk op CTRL + X om opnieuw op te starten met deze instellingen en voer nood herstel in
-   > Houd er rekening mee dat u met een _alleen-lezen_ bestands systeem in een nood geval wordt verwijderd. Als u wijzigingen wilt aanbrengen in bestanden, moet u het bestands systeem opnieuw koppelen met de machtigingen lezen/schrijven. Als u dit wilt doen `mount -o remount,rw /` , voert u de shell in
+   > Houd er rekening mee dat u met een _alleen-lezen_ bestands systeem in een nood geval wordt verwijderd. Als u wijzigingen wilt aanbrengen in bestanden, moet u het bestands systeem opnieuw koppelen met de machtigingen lezen/schrijven. Als u dit wilt doen, voert u `mount -o remount,rw /` in de shell in
 
 ## <a name="access-for-oracle-linux"></a>Toegang voor Oracle Linux
 Net als Red Hat Enterprise Linux vereist de modus voor één gebruiker in Oracle Linux GRUB en de hoofd gebruiker moeten worden ingeschakeld. 
 
 ### <a name="grub-access-in-oracle-linux"></a>GRUB toegang in Oracle Linux
-Oracle Linux is GRUB ingeschakeld. Als u grub wilt invoeren, start u `sudo reboot` de VM opnieuw op en drukt u op ESC. Het scherm GRUB wordt weer gegeven.
+Oracle Linux is GRUB ingeschakeld. Als u GRUB wilt invoeren, start u de VM opnieuw op met `sudo reboot` en drukt u op ESC. Het scherm GRUB wordt weer gegeven.
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Modus voor één gebruiker in Oracle Linux
 Volg de instructies voor RHEL hierboven om de modus voor één gebruiker in Oracle Linux in te scha kelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 * De documentatie pagina voor de hoofd console Linux bevindt zich [hier](serial-console.md).
-* Seriële console gebruiken voor [NMI-en SYSRQ](serial-console-nmi-sysrq.md) -aanroepen
+* Seriële console gebruiken voor [NMI-en SYSRQ-aanroepen](serial-console-nmi-sysrq.md)
 * De seriële console is ook beschikbaar voor virtuele [Windows](../windows/serial-console.md) -machines
 * Meer informatie over [Diagnostische gegevens over opstarten](boot-diagnostics.md)

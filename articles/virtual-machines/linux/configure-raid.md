@@ -1,5 +1,5 @@
 ---
-title: Software-RAID configureren op een virtuele machine met Linux | Microsoft Docs
+title: Software-RAID configureren op een virtuele machine met Linux
 description: Meer informatie over het gebruik van mdadm voor het configureren van RAID op Linux in Azure.
 services: virtual-machines-linux
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: d0658af090d9a3f39bee69f5103a78a329fe189c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bc53ed3e3a7fd988464b9100df654920d5589596
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083794"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036665"
 ---
 # <a name="configure-software-raid-on-linux"></a>Software-RAID configureren onder Linux
 Het is een veelvoorkomend scenario voor het gebruik van software-RAID op virtuele Linux-machines in azure om meerdere gekoppelde gegevens schijven als één RAID-apparaat te presen teren. Dit kan meestal worden gebruikt om de prestaties te verbeteren en een betere door voer te bieden ten opzichte van het gebruik van slechts één schijf.
@@ -48,7 +48,7 @@ Er zijn twee of meer lege gegevens schijven nodig voor het configureren van een 
 ## <a name="create-the-disk-partitions"></a>De schijf partities maken
 In dit voor beeld maken we een enkele schijf partitie op/dev/SDC. De nieuwe schijf partitie krijgt de naam/dev/sdc1.
 
-1. Beginnen `fdisk` met het maken van partities
+1. `fdisk` starten om te beginnen met het maken van partities
 
     ```bash
     sudo fdisk /dev/sdc
@@ -82,7 +82,7 @@ In dit voor beeld maken we een enkele schijf partitie op/dev/SDC. De nieuwe schi
     Partition number (1-4): 1
     ```
 
-1. Selecteer het begin punt van de nieuwe partitie of druk `<enter>` op de standaard waarde om de partitie aan het begin van de beschik bare ruimte op het station te plaatsen:
+1. Selecteer het begin punt van de nieuwe partitie of druk op `<enter>` om de standaard waarde te accepteren om de partitie aan het begin van de beschik bare ruimte op het station te plaatsen:
 
     ```bash   
     First cylinder (1-1305, default 1):
@@ -96,7 +96,7 @@ In dit voor beeld maken we een enkele schijf partitie op/dev/SDC. De nieuwe schi
     Using default value 1305
     ```
 
-1. Wijzig vervolgens de ID en hetype van de partitie van de standaard-id ' 83 ' (Linux) naar de id ' FD ' (Linux RAID auto):
+1. Wijzig vervolgens de **id en het**ype van de partitie van de standaard-id ' 83 ' (Linux) naar de id ' FD ' (Linux RAID auto):
 
     ```bash  
     Command (m for help): t
@@ -112,7 +112,7 @@ In dit voor beeld maken we een enkele schijf partitie op/dev/SDC. De nieuwe schi
     ```
 
 ## <a name="create-the-raid-array"></a>De RAID-matrix maken
-1. In het volgende voor beeld wordt ' Stripe ' (RAID level 0) drie partities op drie afzonderlijke gegevens schijven (sdc1, sdd1, sde1).  Na het uitvoeren van deze opdracht wordt een nieuw RAID-apparaat met de naam **/dev/md127** gemaakt. Als deze gegevens schijven eerder deel uitmaken van een andere verouderde RAID-matrix, kan het nodig zijn `--force` om de para `mdadm` meter toe te voegen aan de opdracht:
+1. In het volgende voor beeld wordt ' Stripe ' (RAID level 0) drie partities op drie afzonderlijke gegevens schijven (sdc1, sdd1, sde1).  Na het uitvoeren van deze opdracht wordt een nieuw RAID-apparaat met de naam **/dev/md127** gemaakt. Als deze gegevens schijven eerder deel uitmaken van een andere verouderde RAID-matrix, kan het nodig zijn om de para meter `--force` toe te voegen aan de `mdadm` opdracht:
 
     ```bash  
     sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
@@ -154,7 +154,7 @@ In dit voor beeld maken we een enkele schijf partitie op/dev/SDC. De nieuwe schi
     ```bash
     sudo mkdir /data
     ```
-1. Bij het bewerken van bestand/etc/fstab moet de **uuid** worden gebruikt om te verwijzen naar het bestands systeem in plaats van de naam van het apparaat.  Gebruik het `blkid` hulp programma om de UUID voor het nieuwe bestands systeem te bepalen:
+1. Bij het bewerken van bestand/etc/fstab moet de **uuid** worden gebruikt om te verwijzen naar het bestands systeem in plaats van de naam van het apparaat.  Gebruik het hulp programma `blkid` om de UUID voor het nieuwe bestands systeem te bepalen:
 
     ```bash   
     sudo /sbin/blkid
@@ -184,7 +184,7 @@ In dit voor beeld maken we een enkele schijf partitie op/dev/SDC. De nieuwe schi
 
     Als met deze opdracht een fout bericht wordt weer gegeven, controleert u de syntaxis in het bestand/etc/fstab-bestand.
    
-    Voer de `mount` volgende opdracht uit om te controleren of het bestands systeem is gekoppeld:
+    Voer vervolgens de `mount` opdracht uit om te controleren of het bestands systeem is gekoppeld:
 
     ```bash   
     mount
@@ -196,7 +196,7 @@ In dit voor beeld maken we een enkele schijf partitie op/dev/SDC. De nieuwe schi
    
     **fstab-configuratie**
    
-    Veel distributies bevatten de `nobootwait` para meters of `nofail` Mount die kunnen worden toegevoegd aan het bestand/etc/fstab-bestand. Met deze para meters kunnen fouten optreden bij het koppelen van een bepaald bestands systeem, waardoor het Linux-systeem kan blijven opstarten, zelfs als het RAID-bestands systeem niet goed kan worden gekoppeld. Raadpleeg de documentatie van uw distributie voor meer informatie over deze para meters.
+    Veel distributies bevatten de `nobootwait`-of `nofail` koppel parameters die kunnen worden toegevoegd aan het bestand/etc/fstab-bestand. Met deze para meters kunnen fouten optreden bij het koppelen van een bepaald bestands systeem, waardoor het Linux-systeem kan blijven opstarten, zelfs als het RAID-bestands systeem niet goed kan worden gekoppeld. Raadpleeg de documentatie van uw distributie voor meer informatie over deze para meters.
    
     Voor beeld (Ubuntu):
 
@@ -206,26 +206,26 @@ In dit voor beeld maken we een enkele schijf partitie op/dev/SDC. De nieuwe schi
 
     **Linux-opstart parameters**
    
-    Naast de bovenstaande para meters, kan de kernel-`bootdegraded=true`para meter het systeem laten opstarten, zelfs als de RAID wordt waargenomen als beschadigd of gedegradeerd, bijvoorbeeld als een gegevens station per ongeluk van de virtuele machine wordt verwijderd. Dit kan standaard ook leiden tot een niet-opstartbaar systeem.
+    Naast de bovenstaande para meters kan het systeem door de kernel-para meter "`bootdegraded=true`" worden gestart, zelfs als de RAID wordt waargenomen als beschadigd of gedegradeerd, bijvoorbeeld als een gegevens station per ongeluk van de virtuele machine wordt verwijderd. Dit kan standaard ook leiden tot een niet-opstartbaar systeem.
    
-    Raadpleeg de documentatie van uw distributie voor het correct bewerken van kernel-para meters. In veel distributies (CentOS, Oracle Linux, SLES 11) kunnen deze para meters bijvoorbeeld hand matig worden toegevoegd aan het`/boot/grub/menu.lst`bestand.  Op Ubuntu kunt u deze para meter toevoegen aan `GRUB_CMDLINE_LINUX_DEFAULT` de variabele op '/etc/default/grub '.
+    Raadpleeg de documentatie van uw distributie voor het correct bewerken van kernel-para meters. In veel distributies (CentOS, Oracle Linux, SLES 11) kunnen deze para meters bijvoorbeeld hand matig worden toegevoegd aan het bestand`/boot/grub/menu.lst`.  Op Ubuntu kunt u deze para meter toevoegen aan de variabele `GRUB_CMDLINE_LINUX_DEFAULT` op '/etc/default/grub '.
 
 
 ## <a name="trimunmap-support"></a>Ondersteuning voor knippen/ontkoppelen
 Sommige Linux-kernels ondersteunen bewerkingen voor het verwijderen/ontkoppelen van ongebruikte blokken op de schijf. Deze bewerkingen zijn voornamelijk handig in de standaard opslag om Azure te informeren dat verwijderde pagina's niet meer geldig zijn en kunnen worden verwijderd. Bij het verwijderen van pagina's kunnen kosten worden bespaard als u grote bestanden maakt en deze vervolgens verwijdert.
 
 > [!NOTE]
-> RAID kan geen opdrachten voor negeren geven als de segment grootte voor de matrix is ingesteld op kleiner dan de standaard waarde (512 KB). Dit komt doordat de granulariteit van de toewijzing op de host ook 512 KB is. Als u de segment grootte van de matrix hebt gewijzigd via `--chunk=` de para meter van de mdadm, kunnen aanvragen voor knippen/opheffen door de kernel worden genegeerd.
+> RAID kan geen opdrachten voor negeren geven als de segment grootte voor de matrix is ingesteld op kleiner dan de standaard waarde (512 KB). Dit komt doordat de granulariteit van de toewijzing op de host ook 512 KB is. Als u de segment grootte van de matrix hebt gewijzigd via de `--chunk=` para meter van de mdadm, kunnen aanvragen voor knippen/opheffen door de kernel worden genegeerd.
 
 Er zijn twee manieren om ondersteuning voor het verkleinen van de virtuele Linux-machine in te scha kelen. Zoals gebruikelijk, raadpleegt u de distributie voor de aanbevolen benadering:
 
-- Gebruik de `discard` optie koppelen in `/etc/fstab`, bijvoorbeeld:
+- Gebruik de optie voor het koppelen van `discard` in `/etc/fstab`, bijvoorbeeld:
 
     ```bash
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,discard  0  2
     ```
 
-- In sommige gevallen kan `discard` de optie invloed hebben op de prestaties. U kunt de `fstrim` opdracht ook hand matig uitvoeren vanaf de opdracht regel of deze toevoegen aan uw crontab om regel matig uit te voeren:
+- In sommige gevallen kunnen de `discard`-optie prestatie implicaties hebben. U kunt ook de `fstrim` opdracht hand matig uitvoeren vanaf de opdracht regel of deze toevoegen aan uw crontab om regel matig uit te voeren:
 
     **Ubuntu**
 

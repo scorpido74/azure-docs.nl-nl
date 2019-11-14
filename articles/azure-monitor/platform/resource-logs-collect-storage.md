@@ -8,18 +8,23 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 8a1802f0f24ba5ccad3ec1c45f3baa29dfe6909f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 306f6cb0b50b7befcbf51e6164a5da887d35616e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262555"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030878"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure-resource logboeken archiveren in een opslag account
 [Resource logboeken](resource-logs-overview.md) in azure bieden uitgebreide, frequente gegevens over de interne werking van een Azure-resource. In dit artikel wordt beschreven hoe u bron logboeken verzamelt naar een Azure-opslag account om gegevens te bewaren voor archivering.
 
 ## <a name="prerequisites"></a>Vereisten
 U moet [een Azure Storage-account maken](../../storage/common/storage-quickstart-create-account.md) als u er nog geen hebt. Het opslag account hoeft zich niet in hetzelfde abonnement te betreden als de resource waarmee logboeken worden verzonden zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen.
+
+
+> [!IMPORTANT]
+> Azure Data Lake Storage Gen2-accounts worden momenteel niet ondersteund als doel voor Diagnostische instellingen, zelfs als ze kunnen worden weer gegeven als een geldige optie in de Azure Portal.
+
 
 Gebruik geen bestaand opslag account met andere, niet-bewakings gegevens die erin zijn opgeslagen, zodat u de toegang tot bewakings gegevens beter kunt beheren. Als u ook het [activiteiten logboek](activity-logs-overview.md) archiveert naar een opslag account, kunt u ervoor kiezen om hetzelfde opslag account te gebruiken om alle bewakings gegevens op een centrale locatie te bewaren.
 

@@ -1,5 +1,5 @@
 ---
-title: Aanmelden bij een virtuele Linux-machine met Azure Active Directory referenties | Microsoft Docs
+title: Aanmelden bij een virtuele Linux-machine met Azure Active Directory referenties
 description: Meer informatie over het maken en configureren van een virtuele Linux-machine om u aan te melden met Azure Active Directory-verificatie.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a67d3a9fb74b1a4f07fc4995c268bb40a84834f7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327095"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035929"
 ---
-# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Preview: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
+# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Voor beeld: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
 
 Als u de beveiliging van virtuele Linux-machines (Vm's) in azure wilt verbeteren, kunt u integreren met Azure Active Directory (AD)-verificatie. Wanneer u Azure AD-verificatie voor Linux-Vm's gebruikt, beheert en afdwingt u de mogelijkheid om toegang tot de Vm's toe te staan of te weigeren. In dit artikel wordt beschreven hoe u een virtuele Linux-machine maakt en configureert voor het gebruik van Azure AD-verificatie.
 
@@ -48,7 +48,7 @@ Er zijn veel voor delen van het gebruik van Azure AD-verificatie om u aan te mel
 
 De volgende Linux-distributies worden momenteel ondersteund tijdens de preview-versie van deze functie:
 
-| Distributie | Version |
+| Distributie | Versie |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
@@ -106,8 +106,8 @@ De *provisioningState* van *geslaagd* wordt weer gegeven zodra de uitbrei ding i
 
 Met het beleid voor Access Control op basis van rollen (RBAC) van Azure wordt bepaald wie zich kan aanmelden bij de virtuele machine. Er worden twee RBAC-rollen gebruikt voor het autoriseren van de VM-aanmelding:
 
-- Aanmelding voor de beheerder van de **virtuele machine**: Gebruikers met deze rol kunnen zich aanmelden bij een virtuele machine van Azure met Windows-beheerders-of Linux-hoofd gebruikers bevoegdheden.
-- **Gebruikers aanmelding voor de virtuele machine**: Gebruikers met deze rol die is toegewezen, kunnen zich aanmelden bij een virtuele machine van Azure met gewone gebruikers bevoegdheden.
+- Aanmelding van de beheerder van de **virtuele machine**: gebruikers met deze rol kunnen zich aanmelden bij een virtuele Azure-machine met Windows-beheerders-of Linux-hoofd gebruikers bevoegdheden.
+- **Gebruikers aanmelding van de virtuele machine**: gebruikers met deze rol die is toegewezen, kunnen zich aanmelden bij een virtuele Azure-machine met gewone gebruikers bevoegdheden.
 
 > [!NOTE]
 > Als u een gebruiker wilt toestaan zich via SSH aan te melden bij de VM, moet u zich aanmelden voor de beheerder van de *virtuele machine* of de gebruiker aanmeldt voor de *virtuele machine* . Een Azure-gebruiker met de rol *eigenaar* of *Inzender* die is toegewezen aan een virtuele machine, is niet automatisch gemachtigd om zich via SSH aan te melden bij de VM.
@@ -139,30 +139,30 @@ Bekijk eerst het open bare IP-adres van uw virtuele machine met [AZ VM show](/cl
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Meld u aan bij de virtuele machine van Azure Linux met uw Azure AD-referenties. Met `-l` de para meter kunt u uw eigen Azure ad-account adres opgeven. Vervang het voorbeeld account door eigen. De account adressen moeten in alle kleine letters worden ingevoerd. Vervang het voor beeld-IP-adres door het open bare IP-adres van uw virtuele machine uit de vorige opdracht.
+Meld u aan bij de virtuele machine van Azure Linux met uw Azure AD-referenties. Met de para meter `-l` kunt u uw eigen Azure AD-account adres opgeven. Vervang het voorbeeld account door eigen. De account adressen moeten in alle kleine letters worden ingevoerd. Vervang het voor beeld-IP-adres door het open bare IP-adres van uw virtuele machine uit de vorige opdracht.
 
 ```azurecli-interactive
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-U wordt gevraagd om u aan te melden bij Azure AD met een code voor eenmalig gebruik [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)op. Kopieer de code voor eenmalig gebruik en plak deze in de aanmeldings pagina van het apparaat.
+U wordt gevraagd om u aan te melden bij Azure AD met een code voor eenmalig gebruik op [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin). Kopieer de code voor eenmalig gebruik en plak deze in de aanmeldings pagina van het apparaat.
 
 Wanneer u hierom wordt gevraagd, voert u uw Azure AD-aanmeldings referenties in op de aanmeldings pagina. 
 
-Het volgende bericht wordt weer gegeven in de webbrowser wanneer u de verificatie hebt uitgevoerd:`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
+Het volgende bericht wordt weer gegeven in de webbrowser wanneer u de verificatie hebt uitgevoerd: `You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
 Sluit het browser venster, ga terug naar de SSH-prompt en druk op **Enter** . 
 
-U bent nu aangemeld bij de virtuele machine van Azure Linux met de rolmachtigingen zoals toegewezen, zoals de *VM-gebruiker* of de *VM-beheerder*. Als aan uw gebruikers account de rol van de beheerder van de *virtuele machine* is toegewezen `sudo` , kunt u gebruiken om opdrachten uit te voeren waarvoor hoofd bevoegdheden zijn vereist.
+U bent nu aangemeld bij de virtuele machine van Azure Linux met de rolmachtigingen zoals toegewezen, zoals de *VM-gebruiker* of de *VM-beheerder*. Als aan uw gebruikers account de rol van de beheerder van de *virtuele machine* is toegewezen, kunt u `sudo` gebruiken om opdrachten uit te voeren waarvoor hoofd bevoegdheden zijn vereist.
 
 ## <a name="sudo-and-aad-login"></a>Sudo en AAD-aanmelding
 
-De eerste keer dat u sudo uitvoert, wordt u gevraagd om een tweede keer te verifiëren. Als u niet opnieuw wilt verifiëren om sudo uit te voeren, kunt u het sudo-bestand `/etc/sudoers.d/aad_admins` bewerken en deze regel vervangen:
+De eerste keer dat u sudo uitvoert, wordt u gevraagd om een tweede keer te verifiëren. Als u niet opnieuw wilt verifiëren om sudo uit te voeren, kunt u uw sudo-bestand bewerken `/etc/sudoers.d/aad_admins` en deze regel vervangen:
 
 ```bash
 %aad_admins ALL=(ALL) ALL
 ```
-met deze regel:
+Met deze regel:
 
 ```bash
 %aad_admins ALL=(ALL) NOPASSWD:ALL
@@ -173,7 +173,7 @@ met deze regel:
 
 Enkele veelvoorkomende fouten wanneer u probeert te SSHen met Azure AD-referenties, zijn geen RBAC-rollen toegewezen en herhaalde prompts om zich aan te melden. Gebruik de volgende secties om deze problemen te verhelpen.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>Toegang geweigerd: De RBAC-rol is niet toegewezen
+### <a name="access-denied-rbac-role-not-assigned"></a>De toegang is geweigerd: de RBAC-rol is niet toegewezen
 
 Als het volgende fout bericht wordt weer gegeven op de SSH-prompt, controleert u of u RBAC-beleid hebt geconfigureerd voor de virtuele machine die de gebruiker de *aanmeldings naam* van de beheerder of de gebruiker van de *virtuele* machine verleent:
 
@@ -190,7 +190,7 @@ Access denied
 
 Als u de verificatie stap in een webbrowser hebt voltooid, wordt u mogelijk onmiddellijk gevraagd om u opnieuw aan te melden met een nieuwe code. Deze fout wordt meestal veroorzaakt door een conflict tussen de aanmeldings naam die u hebt opgegeven bij de SSH-prompt en het account waarmee u zich hebt aangemeld bij Azure AD. U kunt dit probleem als volgt oplossen:
 
-- Controleer of de aanmeldings naam die u hebt opgegeven bij de SSH-prompt juist is. Een type fout in de aanmeldings naam kan ertoe leiden dat de aanmeldings naam die u hebt opgegeven bij de SSH-prompt en het account waarmee u zich hebt aangemeld bij Azure AD overeenkomen. U hebt bijvoorbeeld *azuresuer\@contoso.onmicrosoft.com* in plaats van *azureuser\@contoso.onmicrosoft.com*getypt.
+- Controleer of de aanmeldings naam die u hebt opgegeven bij de SSH-prompt juist is. Een type fout in de aanmeldings naam kan ertoe leiden dat de aanmeldings naam die u hebt opgegeven bij de SSH-prompt en het account waarmee u zich hebt aangemeld bij Azure AD overeenkomen. U hebt bijvoorbeeld *azuresuer\@contoso.onmicrosoft.com* getypt in plaats van *azureuser\@contoso.onmicrosoft.com*.
 - Als u meerdere gebruikers accounts hebt, moet u ervoor zorgen dat u in het browser venster geen ander gebruikers account opgeeft wanneer u zich aanmeldt bij Azure AD.
 - Linux is een hoofdletter gevoelig besturings systeem. Er is een verschil tussen 'Azureuser@contoso.onmicrosoft.com' en 'azureuser@contoso.onmicrosoft.com', wat kan leiden tot een niet-overeenkomend. Zorg ervoor dat u de UPN opgeeft met de juiste hoofdletter gevoeligheid bij de SSH-prompt.
 

@@ -1,5 +1,5 @@
 ---
-title: Implementeer Azure dedicated hosts met behulp van de Azure PowerShell | Microsoft Docs
+title: Implementeer uw eigen Azure-hosts met behulp van de Azure PowerShell
 description: Implementeer Vm's op toegewezen hosts met behulp van Azure PowerShell.
 services: virtual-machines-windows
 author: cynthn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 1dcea4f56d778b0e6320634286a25d478c78a5bc
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261696"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033356"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Preview: Vm's implementeren op toegewezen hosts met behulp van de Azure PowerShell
+# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Voor beeld: Vm's implementeren op toegewezen hosts met behulp van de Azure PowerShell
 
 Dit artikel begeleidt u bij het maken van een toegewezen Azure- [host](dedicated-hosts.md) voor het hosten van uw virtuele machines (vm's). 
 
@@ -42,7 +42,7 @@ Install-Module -Name PowerShellGet -Repository PSGallery -Force
 >
 > **Bekende preview-beperkingen**
 > - Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
-> - De eerste release van de preview-versie ondersteunt de volgende VM-serie: DSv3 en ESv3. 
+> - De eerste release van de preview-versie ondersteunt de volgende VM-reeksen: DSv3 en ESv3. 
 
 
 
@@ -115,7 +115,7 @@ New-AzVM `
 
 ## <a name="check-the-status-of-the-host"></a>Controleer de status van de host
 
-U kunt de status van de host controleren en het aantal virtuele machines dat u nog steeds kunt implementeren op [](/powershell/module/az.compute/get-azhost) de host met `-InstanceView` behulp van GetAzHost met de para meter.
+U kunt de status van de host controleren en het aantal virtuele machines dat u nog steeds kunt implementeren op de host met behulp van [GetAzHost](/powershell/module/az.compute/get-azhost) met de para meter `-InstanceView`.
 
 ```
 Get-AzHost `

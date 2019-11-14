@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 7e4eb8f7f9077ce04ee8138580a836637b89cf8c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 15beb8d3e326f04f1ae61c26f00e9428d95f6bc4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835602"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031375"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Wat is er nieuw in de Text Analytics-API?
 
@@ -29,22 +29,22 @@ De volgende versie van named entity Recognition (NER) is nu beschikbaar voor ope
     * Telefoonnummer
     * IP-adres
 
-* Een nieuw eind punt voor het herkennen van entiteits typen van persoonlijke gegevens (alleen Engels)
-* Afzonderlijke eind punten voor entiteits herkenning en entiteits koppeling.
+* Een [Nieuw eind punt](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) voor het herkennen van entiteits typen van persoonlijke gegevens (alleen Engels)
+* Afzonderlijke eind punten voor [entiteits herkenning]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) en [entiteits koppeling]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
 
-Koppeling van entiteit ondersteunt Engels en Spaans. NER taal ondersteuning varieert per entiteits type. Zie de onderstaande koppeling voor meer informatie. 
+Koppeling van entiteit ondersteunt Engels en Spaans. NER taal ondersteuning varieert per entiteits type. 
 
 > [!div class="nextstepaction"]
 > [Meer informatie over named entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview)
 
 ## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>Open bare preview van Sentimentanalyse v3-oktober 2019
 
-De volgende versie van Sentimentanalyse is nu beschikbaar voor open bare preview en biedt aanzienlijke verbeteringen in de nauw keurigheid en Details van de tekst categorisatie en Score van de API. Daarnaast vindt u het volgende:
+De [volgende versie van sentimentanalyse](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) is nu beschikbaar voor open bare preview en biedt aanzienlijke verbeteringen in de nauw keurigheid en Details van de tekst categorisatie en Score van de API. Daarnaast vindt u het volgende:
 
 * Automatische labeling voor verschillende gevoel in tekst.
 * Sentiment analyse en uitvoer op het niveau van een document en zin. 
 
-Het biedt ondersteuning voor Engels (`en`), Japans (`ja`) vereenvoudigd Chinees (`zh-Hans`), traditioneel Chinees (`zh-Hant`), Frans (`fr`), Italiaans (`it`), Spaans (`es`), Nederlands (`nl`), Portugees (`pt`) en Duits (`de`), en is beschikbaar in de volgende regio's: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`en `West US 2`.
+Het biedt ondersteuning voor Engels (`en`), Japans (`ja`) vereenvoudigd Chinees (`zh-Hans`), traditioneel Chinees (`zh-Hant`), Frans (`fr`), Italiaans (`it`), Spaans (`es`), Nederlands (`nl`), Portugees (`pt`) en Duits (`de`), en is beschikbaar in de volgende regio's: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`en `West US 2`. 
 
 > [!div class="nextstepaction"]
 > [Meer informatie over Sentimentanalyse v3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)

@@ -1,17 +1,14 @@
 ---
 title: Voor beeld van ISO 27001 ASE/SQL workload blauw drukken-stappen implementeren
 description: Implementeer stappen van het voor beeld van de ISO 27001 App Service Environment/SQL Database werk belasting blauw druk, inclusief de para meters voor de artefact parameter.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 4836287f5308ffb11bf145b715dfd6f73672c038
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: edcf9920f3a65c182240da735b1883b3d67da650
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163456"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032143"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Het voor beeld van de ISO 27001 App Service Environment/SQL Database werk belasting blauw druk implementeren
 
@@ -73,7 +70,7 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
-   - Basisbeginselen
+   - Basics
 
      - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
      - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
@@ -116,7 +113,7 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 |-|-|-|-|
 |Log Analytics resource groep|Resourcegroep|Naam|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-log-rg` om de resource groep uniek te maken.|
 |Log Analytics resource groep|Resourcegroep|Locatie|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
-|Log Analytics sjabloon|Resource Manager-sjabloon|Serviceniveau|Hiermee stelt u de laag van de Log Analytics-werk ruimte. De standaard waarde is _PerNode_.|
+|Log Analytics sjabloon|Resource Manager-sjabloon|Servicelaag|Hiermee stelt u de laag van de Log Analytics-werk ruimte. De standaard waarde is _PerNode_.|
 |Log Analytics sjabloon|Resource Manager-sjabloon|Bewaar periode logboek in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
 |Log Analytics sjabloon|Resource Manager-sjabloon|Locatie|De regio die wordt gebruikt voor het maken van de Log Analytics-werk ruimte. De standaard waarde is _VS-West 2_.|
 |Netwerk resource groep|Resourcegroep|Naam|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-net-rg` om de resource groep uniek te maken.|
@@ -136,7 +133,7 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 |Azure SQL Database resource groep|Resourcegroep|Naam|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-azsql-rg` om de resource groep uniek te maken.|
 |Azure SQL Database resource groep|Resourcegroep|Locatie|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
 |Azure SQL Database sjabloon|Resource Manager-sjabloon|Gebruikers naam van Azure SQL Server beheerder|Gebruikers naam voor de Azure-SQL Server. Moet overeenkomen met dezelfde eigenschaps waarde in **Key Vault sjabloon**. De standaard waarde is _SQL-admin-user_.|
-|Azure SQL Database sjabloon|Resource Manager-sjabloon|Wacht woord voor Azure SQL Server-beheerder (Key Vault Resource-ID)|De resource-ID van de Key Vault. Gebruik '/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv ' en vervang `{subscriptionId}` door uw abonnements-ID en `{orgName}` door de naam blauw druk van de **organisatie** bepaalde.|
+|Azure SQL Database sjabloon|Resource Manager-sjabloon|Wacht woord voor Azure SQL Server-beheerder (Key Vault Resource-ID)|De resource-ID van de Key Vault. Gebruik '/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv ' en vervang `{subscriptionId}` door uw abonnements-ID en `{orgName}` met de para meter voor de naam blauw druk van de **organisatie** .|
 |Azure SQL Database sjabloon|Resource Manager-sjabloon|Beheerders wachtwoord voor Azure SQL Server (Key Vault geheime naam)|De gebruikers naam van de SQL Server beheerder. Moet overeenkomen met de waarde in **Key Vault sjabloon** eigenschap **Azure SQL Server gebruikers naam**van de beheerder.|
 |Azure SQL Database sjabloon|Resource Manager-sjabloon|Bewaar periode logboek in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
 |Azure SQL Database sjabloon|Resource Manager-sjabloon|AAD-beheer object-ID|AAD-object-ID van de gebruiker die wordt toegewezen als een Active Directory beheerder. Geen standaard waarde en mag niet leeg zijn. Als u deze waarde wilt vinden in de Azure Portal, zoekt en selecteert u ' gebruikers ' onder _Services_. Gebruik het vak _naam_ om te filteren op de account naam en selecteer dat account. Selecteer op de pagina _gebruikers profiel_ het pictogram ' Klik om te kopiëren ' naast de _object-id_.|
@@ -152,10 +149,10 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 Nu u de stappen voor het implementeren van het voor beeld van de werk belasting van ISO 27001 App Service Environment/SQL Database workload hebt bekeken, gaat u naar de volgende artikelen voor meer informatie over de architectuur en de beheer toewijzing:
 
 > [!div class="nextstepaction"]
-> [Blauw druk voor ISO 27001 app service Environment/SQL database werk belasting-overzicht](./index.md)
-> [ISO 27001 app service Environment/SQL database werk belasting blauw druk-besturings element toewijzing](./control-mapping.md)
+> [Blauw druk voor iso 27001 app service Environment/SQL database werk belasting-overzicht](./index.md)
+> [ISO 27001 app service Environment/SQL database werk belasting blauw druk-beheer](./control-mapping.md)
 
-Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
+Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

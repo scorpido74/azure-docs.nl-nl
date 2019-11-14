@@ -1,18 +1,14 @@
 ---
 title: Voor beeld van PCI-DSS v 3.2.1 blauw druk-beheer
 description: Bepaal de toewijzing van het voor beeld van de betalings kaart branche gegevens beveiliging standaard v 3.2.1-blauw druk op Azure Policy en RBAC.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: c1e04cb2bfd5ae532b556ed53d585aae90c312e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d3e72f923ea3d752d829731d1f741bda090ae9fd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163060"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037267"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>De toewijzing van het voor beeld van het PCI-DSS v 3.2.1-blauw druk
 
@@ -34,8 +30,8 @@ Deze blauw druk helpt u bij het beheren en best uren van netwerken door [Azure P
 
 Deze blauw druk helpt u bij het afdwingen van uw beleid met het gebruik van cryptograph-besturings elementen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die specifieke cryptograph-besturings elementen afdwingen en het gebruik van zwakke cryptografische instellingen te controleren. Als u wilt weten waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maat regelen nemen om ervoor te zorgen dat bronnen worden geconfigureerd in overeenstemming met uw informatie beveiligings beleid. Met name de beleids regels die door deze blauw druk worden toegewezen, vereisen transparante gegevens versleuteling voor SQL-data bases. controleren op ontbrekende versleuteling voor opslag accounts en Automation-account variabelen. Er zijn ook beleids regels voor het controleren van onbeveiligde verbindingen met opslag accounts, functie-apps, WebApp, API Apps en Redis Cache en het controleren van niet-versleutelde Service Fabric communicatie.
 
-- functie-app mag alleen toegankelijk zijn via HTTPS
-- Webtoepassing mag alleen toegankelijk zijn via HTTPS
+- Functie-App moet alleen toegankelijk zijn via HTTPS
+- Web-App moet alleen toegankelijk zijn via HTTPS
 - De API-app mag alleen toegankelijk zijn via HTTPS
 - Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld
 - Schijf versleuteling moet worden toegepast op virtuele machines
@@ -48,7 +44,7 @@ Deze blauw druk helpt u bij het afdwingen van uw beleid met het gebruik van cryp
 
 ## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 en 11.2.1 beveiligings problemen met scannen en systeem updates
 
-Deze blauw druk helpt u bij het beheren van beveiligings problemen met informatie systemen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen waarmee ontbrekende systeem updates, besturingssysteem problemen met het besturings systeem, SQL-beveiligings problemen en beveiligings problemen met virtuele machines in Azure worden bewaakt Security Center. Azure Security Center biedt rapportage mogelijkheden waarmee u real-time inzicht kunt krijgen in de beveiligings status van geïmplementeerde Azure-resources.
+Deze blauw druk helpt u bij het beheren van beveiligings problemen met informatie systemen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen waarmee ontbrekende systeem updates, besturingssysteem problemen met het besturings systeem, SQL-beveiligings problemen en beveiligings problemen met virtuele machines in azure Security Center worden bewaakt. Azure Security Center biedt rapportage mogelijkheden waarmee u real-time inzicht kunt krijgen in de beveiligings status van geïmplementeerde Azure-resources.
 
 - Ontbrekende Endpoint Protection in Azure Security Center controleren
 - Standaard micro soft IaaSAntimalware-extensie voor Windows Server implementeren
@@ -67,7 +63,7 @@ Als er slechts één eigenaar van een Azure-abonnement is, is er geen administra
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3,2, 7.2.1, 8.3.1. a en 8.3.1. b beheer van privileged Access Rights
 
-Deze blauw druk helpt u om privileged Access Rights te beperken en te beheren door [Azure Policy](../../../policy/overview.md) definities toe te wijzen voor het controleren van externe accounts met de machtigingen eigenaar, schrijven en/of lezen en voor werknemers accounts met eigenaar en/of schrijf machtigingen die geen multi-factor Authentication is ingeschakeld. Azure implementeert op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot Azure-resources. Als u wilt weten waar aangepaste RBAC-regels worden geïmplementeerd, kunt u controleren of de juiste implementatie nodig is, omdat aangepaste RBAC-regels fout gevoelig zijn. Deze blauw druk wijst ook [Azure Policy](../../../policy/overview.md) definities toe om het gebruik van Azure Active Directory-verificatie voor SQL-servers te controleren. Het gebruik van Azure Active Directory verificatie vereenvoudigt het beheer van machtigingen en Centraliseer het identiteits beheer van database gebruikers en andere micro soft  
+Deze blauw druk helpt u om privileged Access Rights te beperken en te beheren door [Azure Policy](../../../policy/overview.md) definities toe te wijzen voor het controleren van externe accounts met de machtigingen eigenaar, schrijven en/of lezen en voor werknemers accounts met eigenaar en/of schrijf machtigingen waarvoor geen multi-factor Authentication is ingeschakeld. Azure implementeert op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot Azure-resources. Als u wilt weten waar aangepaste RBAC-regels worden geïmplementeerd, kunt u controleren of de juiste implementatie nodig is, omdat aangepaste RBAC-regels fout gevoelig zijn. Deze blauw druk wijst ook [Azure Policy](../../../policy/overview.md) definities toe om het gebruik van Azure Active Directory-verificatie voor SQL-servers te controleren. Het gebruik van Azure Active Directory verificatie vereenvoudigt het beheer van machtigingen en Centraliseer het identiteits beheer van database gebruikers en andere micro soft  
 Onderzoeksservices.
  
 - Externe accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
@@ -134,7 +130,7 @@ Nu u de controle toewijzing van de PCI-DSS v 3.2.1-blauw druk hebt gecontroleerd
 > [PCI-DSS v 3.2.1 blauw druk-overzicht](./index.md)
 > [PCI-DSS v 3.2.1 blauw druk-implementatie stappen](./deploy.md)
 
-Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
+Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

@@ -1,6 +1,6 @@
 ---
-title: 'Een gateway toevoegen aan een Azure VNet voor ExpressRoute: Portal | Microsoft Docs'
-description: Dit artikel begeleidt u bij het toevoegen van een gateway van virtueel netwerk met een bestaande Resource Manager VNet voor ExpressRoute.
+title: 'Azure ExpressRoute: een gateway toevoegen aan een VNet: Portal'
+description: Dit artikel helpt u bij het toevoegen van een virtuele netwerk gateway aan een al gemaakte Resource Manager VNet voor ExpressRoute met behulp van de Azure Portal.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 68376751a3c673b2d89d028312f992aec40d4dee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 87b656f0ef999b3b15a89476f5cba4c4fcfc2b1e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60365649"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037384"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Een virtuele netwerkgateway configureren voor ExpressRoute met behulp van de Azure-portal
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ U vindt een [Video](https://azure.microsoft.com/documentation/videos/azure-expre
 2. Klik in de sectie **Instellingen** van de blade VNet op **Subnetten** om de blade Subnetten uit te vouwen.
 3. Klik op de blade **Subnetten** op **+Gatewaysubnet** om de blade **Subnet toevoegen** te openen. 
    
-    ![Het gatewaysubnet toevoegen](./media/expressroute-howto-add-gateway-portal-resource-manager/addgwsubnet.png "Het gatewaysubnet toevoegen")
+    ![Het gateway-subnet toevoegen](./media/expressroute-howto-add-gateway-portal-resource-manager/addgwsubnet.png "Voeg het gatewaysubnet toe")
 
 
 4. Als **naam** voor het subnet wordt automatisch de waarde GatewaySubnet ingevuld. Deze waarde is vereist. Zonder deze waarde wordt het subnet niet in Azure als het gatewaysubnet herkend. Pas de automatisch ingevulde waarden voor de **Adressenreeks** aan overeenkomstig uw configuratievereisten. We raden aan een gatewaysubnet maken met een/27 of groter (/ 26/25 enz.). Klik vervolgens op **OK** opslaan van de waarden en het gatewaysubnet maken.
@@ -65,15 +65,15 @@ U vindt een [Video](https://azure.microsoft.com/documentation/videos/azure-expre
 1. Klik in de portal aan de linkerkant op **+** en typ 'Gateway van virtueel netwerk' in het zoekvak. Klik op het zoekresultaat **Gateway van het virtuele netwerk**. Klik onder aan de blade **Gateway van het virtuele netwerk** op **Maken**. Hiermee opent u de blade **Gateway van het virtuele netwerk maken**.
 2. Vul op de blade **Gateway van het virtuele netwerk maken** de waarden in voor de gateway van het virtuele netwerk.
 
-    ![Velden van de blade Gateway van het virtuele netwerk maken](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "Velden van de blade Gateway van het virtuele netwerk maken")
-3. **Naam**: Naam van uw gateway. Deze mag niet gelijk zijn aan de naam van het gateway-subnet. Het is de naam van het gateway-object dat u maakt.
-4. **Gatewaytype**: Selecteer **ExpressRoute**.
-5. **SKU**: Selecteer de gateway-SKU in de vervolgkeuzelijst.
-6. **Locatie**: Wijzig het veld **Locatie** om naar de locatie van het virtuele netwerk te verwijzen. Als de locatie niet verwijst naar de regio waarin het virtuele netwerk zich bevindt, wordt het virtuele netwerk niet weergegeven in de vervolgkeuzelijst Een virtueel netwerk kiezen.
+    ![Blade velden voor virtuele netwerk gateway maken](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "Velden van de blade Gateway van het virtuele netwerk maken")
+3. **Naam**: naam van uw gateway. Deze mag niet gelijk zijn aan de naam van het gateway-subnet. Het is de naam van het gateway-object dat u maakt.
+4. **Gateway van het type**: Selecteer **ExpressRoute**.
+5. **SKU**: selecteer de gateway-SKU in de vervolgkeuzelijst.
+6. **Locatie**: wijzig de **locatie** om naar de locatie van het virtuele netwerk te verwijzen. Als de locatie niet verwijst naar de regio waarin het virtuele netwerk zich bevindt, wordt het virtuele netwerk niet weergegeven in de vervolgkeuzelijst Een virtueel netwerk kiezen.
 7. Kies het virtuele netwerk waaraan u deze gateway wilt toevoegen. Klik op **Virtueel netwerk** om de blade **Een virtueel netwerk kiezen** te openen. Selecteer het VNet. Als u uw VNet niet ziet, moet u controleren of het veld **Locatie** verwijst naar de regio waarin het virtuele netwerk zich bevindt.
 9. Kies een openbaar IP-adres. Klik op **Openbaar IP-adres** om de blade **Openbaar IP-adres kiezen** te openen. Klik op **+Nieuwe maken** om de blade **Openbaar IP-adres maken** te openen. Geef een naam op voor uw openbare IP-adres. Met deze blade maakt u een openbaar IP-adresobject waaraan een openbaar IP-adres dynamisch wordt toegewezen. Klik op **OK** om uw wijzigingen in deze blade op te slaan.
-10. **Abonnement**: Controleer of het juiste abonnement is geselecteerd.
-11. **Resourcegroep**: Deze instelling wordt bepaald door het Virtueelnetwerk dat u selecteert.
+10. **Abonnement**: controleer of het juiste abonnement is geselecteerd.
+11. **Resourcegroep**: deze instelling wordt bepaald door het virtuele netwerk dat u selecteert.
 12. Wijzig de **locatie** niet nadat u de voorgaande instellingen hebt opgegeven.
 13. Controleer de instellingen. Als u wilt dat uw gateway op het dashboard wordt weergegeven, kunt u onderaan op de blade **Vastmaken aan dashboard** selecteren.
 14. Klik op **Aanmaken** om de gateway aan te maken. De instellingen worden gevalideerd en de gateway wordt geïmplementeerd. Het maken van de gateway van virtueel netwerk kan tot 45 minuten duren om uit te voeren.

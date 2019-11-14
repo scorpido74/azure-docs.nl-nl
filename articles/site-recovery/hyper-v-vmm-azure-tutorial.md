@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fdf6d9674305ca13af51f3f7b97e0a40568738b6
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 0c570702e4c3899ef2847883e6fc8649e603a787
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953975"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039692"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Herstel na nood gevallen instellen voor on-premises virtuele Hyper-V-machines in VMM-Clouds naar Azure
 
@@ -32,8 +32,6 @@ In deze zelfstudie leert u het volgende:
 > [!NOTE]
 > Zelf studies laten u de eenvoudigste implementatie traject voor een scenario zien. Waar mogelijk wordt gebruikgemaakt van standaardopties en niet alle mogelijke instellingen en paden worden weergegeven. Raadpleeg de artikelen in de sectie **instructies** van de site Recovery- [documentatie](https://docs.microsoft.com/azure/site-recovery)voor gedetailleerde instructies.
 
-> [!WARNING]
-> Ondersteuning voor herstel na nood gevallen van virtuele Hyper-V-machines met System Center VMM zal in de nabije toekomst worden afgeschaft. We raden u aan om de details van de [afschaffing](scvmm-site-recovery-deprecation.md) te lezen voordat u doorgaat.
 
 
 ## <a name="before-you-begin"></a>Voordat u begint

@@ -1,5 +1,5 @@
 ---
-title: Internetdomein van een bedrijf naar een Azure Traffic Manager-domeinnaam
+title: Een Internet domein naar Traffic Manager-Azure-Traffic Manager verwijzen
 description: Aan de hand van dit artikel kunt u een domeinnaam van uw bedrijf laten wijzen naar een Traffic Manager-domeinnaam.
 services: traffic-manager
 author: asudbring
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: allensu
-ms.openlocfilehash: cd99d8829a8a7bb57b6affe98c1257eaa3ea8ce7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb656e5a8185951d203ed10ed819ff5ef11e8071
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070972"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038051"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Het internetdomein van een bedrijf naar een Traffic Manager-domein laten wijzen
 
@@ -25,7 +25,7 @@ Om de naam `www.contoso.com` bijvoorbeeld te laten verwijzen naar de Traffic Man
 
     www.contoso.com IN CNAME contoso.trafficmanager.net
 
-Alle aanvragen voor *www\.contoso.com* worden doorgestuurd naar *contoso.trafficmanager.net*.
+Alle verkeers aanvragen naar *www\.contoso.com* worden doorgestuurd naar *contoso.trafficmanager.net*.
 
 > [!IMPORTANT]
 > U kunt niet naar domeinen op het tweede niveau wijzen, zoals *contoso.com* op het Traffic Manager-domein. DNS-protocolstandaarden staan geen CNAME-records toe voor domeinnamen van het tweede niveau.

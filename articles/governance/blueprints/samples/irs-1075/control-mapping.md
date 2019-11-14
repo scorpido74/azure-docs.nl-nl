@@ -1,17 +1,14 @@
 ---
 title: Voor beeld van IRS 1075 blauw druk-controle toewijzing
 description: De toewijzing van het voor beeld van IRS 1075-blauw druk controleren. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/07/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: faaa16cb69ec7aaeb88696b3094b426b208a9939
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b56e1a2c8a71e3bb7927dc487e0c2f1e7709d413
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161390"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032213"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>De toewijzing van het voor beeld van IRS 1075 blauw druk controleren
 
@@ -84,7 +81,7 @@ Deze blauw druk helpt u bij het bewaken en beheren van externe toegang door [Azu
 - Onbeperkte netwerk toegang tot opslag accounts controleren
 - Fout opsporing op afstand moet worden uitgeschakeld voor de API-app
 - Fout opsporing op afstand moet worden uitgeschakeld voor functie-app
-- Externe fout opsporing moet worden uitgeschakeld voor webtoepassing
+- Foutopsporing op afstand moet worden uitgeschakeld voor Web-App
 
 ## <a name="9313-au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>9.3.1.3 AU-3 (2) inhoud van audit records | Gecentraliseerd beheer van geplande controle record inhoud
 
@@ -92,11 +89,11 @@ Logboek gegevens die door Azure Monitor worden verzameld, worden opgeslagen in e
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
+- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
 - \[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
+- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
+- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
 
 ## <a name="9335-au-5-response-to-audit-processing-failures"></a>9.3.3.5 AU-5-reactie op fouten bij de controle verwerking
 
@@ -113,11 +110,11 @@ Logboek gegevens die door Azure Monitor worden verzameld, worden opgeslagen in e
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
+- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
 - \[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
+- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
+- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
 
 ## <a name="93311-au-12-audit-generation"></a>9.3.3.11 AU-12-audit genereren
 
@@ -125,11 +122,11 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
+- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
 - \[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
+- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
+- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
 - Diagnostische instelling voor controleren
 - Controle-instellingen op SQL server-niveau controleren
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
@@ -250,10 +247,10 @@ Deze blauw druk helpt u om het vertrouwelijke en de integriteit van verzonden in
 - De API-app mag alleen toegankelijk zijn via HTTPS
 - Windows-webservers controleren die geen protocollen voor beveiligde communicatie gebruiken
 - Vereisten implementeren voor het controleren van Windows-webservers die geen beveiligde communicatie protocollen gebruiken
-- functie-app mag alleen toegankelijk zijn via HTTPS
+- Functie-App moet alleen toegankelijk zijn via HTTPS
 - Alleen beveiligde verbindingen met uw Redis Cache moeten worden ingeschakeld
 - Beveiligde overdracht naar opslag accounts moet zijn ingeschakeld
-- Webtoepassing mag alleen toegankelijk zijn via HTTPS
+- Web-App moet alleen toegankelijk zijn via HTTPS
 
 ## <a name="93166-sc-28-1-protection-of-information-at-rest--cryptographic-protection"></a>9.3.16.6 SC-28 (1) beveiliging van informatie in rust | Cryptografische beveiliging
 
@@ -300,11 +297,11 @@ Deze blauw druk helpt u bij het controleren van uw systeem door logboek registra
 
 - \[preview\]: Log Analytics agent-implementatie controleren-VM-installatie kopie (OS) niet vermeld
 - \[preview\]: Log Analytics agent implementatie controleren in VMSS-VM-installatie kopie (OS) niet vermeld
-- \[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport
+- \[Preview-versie\]: Audit Log Analytics-werkruimte voor VM - probleem melden
 - \[preview\]: Log Analytics agent voor Linux VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren
+- \[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
-- \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
+- \[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
 - Geavanceerde gegevensbeveiliging moet zijn ingeschakeld op uw SQL-servers
 - Geavanceerde gegevens beveiliging implementeren op SQL-servers
@@ -329,7 +326,7 @@ Nu u de controle toewijzing van de 1075 blauw druk hebt gecontroleerd, gaat u na
 > [!div class="nextstepaction"]
 > [Blauw druk van IRS 1075-overzicht](./index.md)
 
-Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
+Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

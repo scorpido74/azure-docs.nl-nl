@@ -1,5 +1,5 @@
 ---
-title: 'Route filters voor micro soft-peering configureren: Azure ExpressRoute-Portal | Microsoft Docs'
+title: 'ExpressRoute: route filters-micro soft-peering: Azure Portal'
 description: In dit artikel wordt beschreven hoe u routefilters voor Microsoft-peering met behulp van de Azure-portal configureren.
 services: expressroute
 author: ganesr
@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: c49b1fa1e2e8421146f5d5012de983c14934c23c
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 0b8e06ad5688374e5ab4aaa72d8485e6da797afe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122942"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037443"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Route filters voor micro soft-peering configureren: Azure Portal
+# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Routefilters voor Microsoft-peering configureren: Azure portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
-> * [Azure-CLI](how-to-routefilter-cli.md)
+> * [Azure CLI](how-to-routefilter-cli.md)
 > 
 
 Met routefilters kunt u een subset van ondersteunde services gebruiken via Microsoft-peering. De stappen in dit artikel kunt u configureren en beheren van routefilters voor ExpressRoute-circuits.
@@ -71,21 +71,21 @@ Voordat u begint met de configuratie, moet u voldoen aan de volgende criteria:
  - U moet een actieve Microsoft-peering. Volg de instructies op [maken en de peering-configuratie wijzigen](expressroute-howto-routing-portal-resource-manager.md)
 
 
-## <a name="prefixes"></a>Stap 1: Een lijst met voor voegsels en BGP Community-waarden ophalen
+## <a name="prefixes"></a>Stap 1: Een lijst met voorvoegsels en BGP-Communitywaarden ophalen
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. Een overzicht van BGP-Communitywaarden
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. een lijst met BGP Community-waarden ophalen
 
 BGP-Communitywaarden die zijn gekoppeld aan services die toegankelijk zijn via Microsoft-peering is beschikbaar in de [routeringsvereisten voor ExpressRoute](expressroute-routing.md) pagina.
 
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Maak een lijst van de waarden die u wilt gebruiken
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Maak een lijst met de waarden die u wilt gebruiken
 
 Maak een lijst met de [BGP-Community-waarden](expressroute-routing.md#bgp) die u wilt gebruiken in het route filter. 
 
-## <a name="filter"></a>Stap 2: Een route filter en een filter regel maken
+## <a name="filter"></a>Stap 2: Maak een routefilter en een filterregel
 
 Een routefilter kan slechts één regel, en de regel moet van het type 'Toestaan'. Deze regel kan een lijst met BGP-Communitywaarden die zijn gekoppeld aan deze hebben.
 
-### <a name="1-create-a-route-filter"></a>1. Een routefilter maken
+### <a name="1-create-a-route-filter"></a>1. een route filter maken
 U kunt een routefilter maken door de optie om een nieuwe resource te maken. Klik op **een resource maken** > **netwerken** > **RouteFilter**, zoals wordt weergegeven in de volgende afbeelding:
 
 ![Een routefilter maken](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
@@ -94,7 +94,7 @@ U moet de routefilter plaatsen in een resourcegroep.
 
 ![Een routefilter maken](./media/how-to-routefilter-portal/CreateRouteFilter.png)
 
-### <a name="2-create-a-filter-rule"></a>2. Een filterregel maken
+### <a name="2-create-a-filter-rule"></a>2. een filter regel maken
 
 U kunt toevoegen en bijwerken van regels door het tabblad van de regel beheren voor uw routefilter te selecteren.
 
@@ -106,7 +106,7 @@ U kunt de services selecteren waarmee u verbinding wilt maken in de vervolg keuz
 ![Een routefilter maken](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
-## <a name="attach"></a>Stap 3: Het route filter koppelen aan een ExpressRoute-circuit
+## <a name="attach"></a>Stap 3: De routefilter koppelen aan een ExpressRoute-circuit
 
 U kunt het route filter koppelen aan een circuit door de knop circuit toevoegen te selecteren en het ExpressRoute-circuit te selecteren in de vervolg keuzelijst.
 

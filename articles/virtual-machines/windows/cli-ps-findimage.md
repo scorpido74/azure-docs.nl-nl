@@ -1,5 +1,5 @@
 ---
-title: Windows VM-installatie kopieën selecteren in azure | Microsoft Docs
+title: Windows VM-installatie kopieën selecteren in azure
 description: Gebruik Azure PowerShell om de uitgever, aanbieding, SKU en versie te bepalen voor VM-installatie kopieën van Marketplace.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 32264fc6c58dd1cb6c1514af1c07391ab0e9193d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2388b51c8103b6bcbae0c32d3c4d78a176caf282
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749582"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039541"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Windows VM-installatie kopieën zoeken in azure Marketplace met Azure PowerShell
 
@@ -38,10 +38,10 @@ In deze tabel ziet u een subset van beschik bare Sku's voor de aangegeven uitgev
 | Uitgever | Aanbieding | Sku |
 |:--- |:--- |:--- |
 | MicrosoftWindowsServer |WindowsServer |2019-Data Center |
-| MicrosoftWindowsServer |WindowsServer |2019-Data Center-core |
+| MicrosoftWindowsServer |WindowsServer |2019-Datacenter-Core |
 | MicrosoftWindowsServer |WindowsServer |2019-Data Center-met-containers |
-| MicrosoftWindowsServer |WindowsServer |2016-Data Center |
-| MicrosoftWindowsServer |WindowsServer |2016-Data Center-Server-Core |
+| MicrosoftWindowsServer |WindowsServer |2016-Datacenter |
+| MicrosoftWindowsServer |WindowsServer |2016-Datacenter-Server-Core |
 | MicrosoftWindowsServer |WindowsServer |2016-Data Center-met-containers |
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |

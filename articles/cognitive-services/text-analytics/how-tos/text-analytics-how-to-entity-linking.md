@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 11/12/2019
 ms.author: aahi
-ms.openlocfilehash: b139f473bb20dbecde75c3b08dd92371849f096e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 5933c7ec56ded971e4daf96ea6d4302c04921f2f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835669"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031429"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Benoemde entiteits herkenning gebruiken in Text Analytics
 
@@ -33,7 +33,7 @@ Named entity Recognition (NER) is de mogelijkheid om verschillende entiteiten in
 
 ## <a name="named-entity-recognition-v3-public-preview"></a>Named entity Recognition v3 open bare preview
 
-De [volgende versie van named entity Recognition](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c7/console) is nu beschikbaar voor open bare preview. Het biedt updates voor zowel entiteits koppelingen als benoemde entiteits herkenning. 
+De [volgende versie van named entity Recognition]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) is nu beschikbaar voor open bare preview. Het biedt updates voor zowel entiteits koppelingen als benoemde entiteits herkenning. 
 
 :::row:::
     :::column span="":::
@@ -71,7 +71,7 @@ De [volgende versie van named entity Recognition](https://cognitiveusw2ppe.porta
     :::column-end:::
 :::row-end:::
 
-### <a name="entity-types"></a>Entiteits typen
+### <a name="entity-types"></a>Entiteitstypen
 
 Named entity Recognition V3 biedt uitgebreide detectie over meerdere typen. Op dit moment kan NER v3 de volgende categorieën entiteiten herkennen. Zie het artikel type met de [naam entiteit](../named-entity-types.md) voor een gedetailleerde lijst met ondersteunde entiteiten en talen.
 
@@ -101,23 +101,23 @@ Entiteit koppelen
 
 | Type  | SubType | Voorbeeld |
 |:-----------   |:------------- |:---------|
-| Person        | N.v.t.\*         | ' Jeff ', ' Bill Gates '     |
+| Person        | N.v.t.\*         | "Jeff", "Bill Gates"     |
 | Locatie      | N.v.t.\*         | Redmond, Washington; Parijs  |
-| Organisatie  | N.v.t.\*         | Microsoft   |
-| Aantal      | Aantal        | 6, zes     |
+| Organisatie  | N.v.t.\*         | "Microsoft"   |
+| Aantal      | Aantal        | "6", "six"     |
 | Aantal      | Percentage    | 50%, vijftig procent|
 | Aantal      | Rangtelwoord       | 2e, tweede     |
 | Aantal      | Leeftijd           | "90 dag oud", "30 jaar oud"    |
 | Aantal      | Valuta      | $ 10,99     |
 | Aantal      | Dimensie     | 10 mijl, 40 cm     |
 | Aantal      | Temperatuur   | 32 graden    |
-| Datum/tijd      | N.v.t.\*         | 18:30 uur, 4 februari 2012      |
-| Datum/tijd      | Datum          | 2 mei 2017, 05-02-2017   |
-| Datum/tijd      | Time          | "8 a.m.", "8:00"  |
-| Datum/tijd      | Datumbereik     | 2 mei tot 5 mei    |
-| Datum/tijd      | Tijdsbereik     | 18.00 uur tot 19.00 uur     |
-| Datum/tijd      | Duur      | 1 minuut en 45 seconden   |
-| Datum/tijd      | Set           | elke dinsdag     |
+| DateTime      | N.v.t.\*         | 18:30 uur, 4 februari 2012      |
+| DateTime      | Date          | 2 mei 2017, 05-02-2017   |
+| DateTime      | Time          | "8 a.m.", "8:00"  |
+| DateTime      | Datumbereik     | 2 mei tot 5 mei    |
+| DateTime      | Tijdsbereik     | 18.00 uur tot 19.00 uur     |
+| DateTime      | Duur      | 1 minuut en 45 seconden   |
+| DateTime      | Instellen           | elke dinsdag     |
 | URL           | N.v.t.\*         | "https:\//www.bing.com"    |
 | Email         | N.v.t.\*         | "support@contoso.com" |
 

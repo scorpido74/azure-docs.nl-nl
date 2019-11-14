@@ -1,5 +1,5 @@
 ---
-title: Gratis Marketplace-aanbieding van open Shift container platform 3,11 in azure implementeren | Microsoft Docs
+title: Gratis Marketplace-aanbieding van open Shift container platform 3,11 implementeren in azure
 description: Implementeer een zelf beheerd Marketplace-aanbod van open Shift container platform 3,11 in Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: d5028ff6378fec5939aee3218071fe6f4eb1e843
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 20a17e52064c5beb09ce4db5815ddd6faf7cbcba
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791618"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035526"
 ---
 # <a name="configure-prerequisites"></a>Vereisten configureren
 
@@ -89,7 +89,7 @@ Voer waarden in voor de invoer parameters en klik op **OK**.
 | Nieuwe of bestaande Virtual Network | Een nieuw vNet maken (standaard) of een bestaand vNet gebruiken |
 | Standaard CIDR-instellingen kiezen of IP-bereik (CIDR) aanpassen | Accepteer standaard CIDR-bereiken of selecteer **aangepast IP-bereik** en voer aangepaste CIDR-gegevens in.  Met de standaard instellingen wordt vNet gemaakt met CIDR van 10.0.0.0/14, hoofd-subnet met 10.1.0.0/16, infra structuur subnet met 10.2.0.0/16 en Compute en CNS-subnet met 10.3.0.0/16 |
 | Naam van de resource groep Key Vault | De naam van de resource groep die de Key Vault bevat |
-| Key Vault naam | De naam van de Key Vault die het geheim bevat met de persoonlijke SSH-sleutel.  Alleen alfanumerieke tekens en streepjes zijn toegestaan en moeten tussen de 3 en 24 tekens lang zijn |
+| Key Vault-naam | De naam van de Key Vault die het geheim bevat met de persoonlijke SSH-sleutel.  Alleen alfanumerieke tekens en streepjes zijn toegestaan en moeten tussen de 3 en 24 tekens lang zijn |
 | Geheime naam | De naam van het geheim dat de persoonlijke SSH-sleutel bevat.  Alleen alfanumerieke tekens en streepjes zijn toegestaan |
 
    ![Blade aanbod infrastructuur](media/openshift-marketplace-self-managed/ocp-inframain.png)  

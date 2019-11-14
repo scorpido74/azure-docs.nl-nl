@@ -1,5 +1,5 @@
 ---
-title: Poorten naar een VM openen met behulp van Azure PowerShell | Microsoft Docs
+title: Poorten naar een virtuele machine openen met Azure PowerShell
 description: Meer informatie over het openen van een poort/het maken van een eind punt voor uw Windows-VM met behulp van de Azure Resource Manager-implementatie modus en Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: cd5aab6934e2f9692411e09046722cd59ad5e6a8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3577c97b55baebe08ca4020b0c570160d551dfd3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089102"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033076"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Poorten en eind punten openen voor een virtuele machine in azure met behulp van Power shell
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]

@@ -1,66 +1,66 @@
 ---
-title: Azure Application Gateway ongeldige Gateway (502) oplossen
-description: Meer informatie over het oplossen van fouten in Application Gateway 502
+title: Problemen met slechte gateway fouten oplossen-Azure-toepassing gateway
+description: Meer informatie over het oplossen van problemen met Application Gateway 502
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/25/2019
+ms.date: 11/14/2019
 ms.author: amsriva
-ms.openlocfilehash: 2a1c7e480e896da6852949c9d765d17290e4e9ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: baf1eccdd6fe910bd98e8b39ef29b7bd8e88a7d5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64697168"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048159"
 ---
-# <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Het oplossen van fouten over ongeldige gateways in Application Gateway
+# <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Problemen met ongeldige gateway fouten in Application Gateway oplossen
 
-Informatie over het oplossen van fouten over ongeldige gateways (502) ontvangen bij het gebruik van Azure Application Gateway.
+Informatie over het oplossen van problemen met slechte gateway (502) die worden ontvangen bij het gebruik van Azure-toepassing gateway.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Overzicht
 
-Na het configureren van een application gateway, een van de fouten die mogelijk worden weergegeven is ' Serverfout: 'Serverfout: 502 - De webserver heeft een ongeldig antwoord ontvangen terwijl deze fungeerde als gateway of proxyserver.' Deze fout kan optreden voor de volgende belangrijke redenen:
+Na het configureren van een toepassings gateway is een van de fouten die u ziet ' server fout: 502-webserver heeft een ongeldig antwoord ontvangen terwijl deze als gateway of proxy server wordt ingezet '. Deze fout kan de volgende oorzaken hebben:
 
-* NSG, UDR en aangepaste DNS wordt geblokkeerd door de toegang tot de back-endpoolleden.
-* Back-end-VM's of exemplaren van virtuele-machineschaalset zijn niet reageert op de standaard-statustest.
-* Ongeldige of onjuiste configuratie van aangepaste statustests.
-* Azure Application-Gateway [back-end-pool is niet geconfigureerd of lege](#empty-backendaddresspool).
-* Geen van de virtuele machines of -exemplaren in [virtuele-machineschaalset in orde zijn](#unhealthy-instances-in-backendaddresspool).
-* [Problemen met time-outperiode of connectiviteit aanvragen](#request-time-out) met aanvragen van gebruikers.
+* NSG, UDR of Custom DNS blokkeert de toegang tot back-end-groeps leden.
+* Back-end-Vm's of exemplaren van virtuele-machine schaal sets reageren niet op de standaard status test.
+* Ongeldige of onjuiste configuratie van aangepaste status controles.
+* De [back-end-pool van Azure-toepassing gateway is niet geconfigureerd of is leeg](#empty-backendaddresspool).
+* Geen van de Vm's of exemplaren in een [schaalset voor virtuele machines is in orde](#unhealthy-instances-in-backendaddresspool).
+* [Time-out of verbindings problemen](#request-time-out) met gebruikers aanvragen aanvragen.
 
-## <a name="network-security-group-user-defined-route-or-custom-dns-issue"></a>Network Security Group, User Defined Route of aangepaste DNS-probleem
+## <a name="network-security-group-user-defined-route-or-custom-dns-issue"></a>Netwerk beveiligings groep, door de gebruiker gedefinieerde route of aangepast DNS-probleem
 
 ### <a name="cause"></a>Oorzaak
 
-Als de toegang tot de back-end is geblokkeerd vanwege een NSG, UDR en aangepaste DNS, kunnen de back-endpool application gateway-instanties niet bereiken. Dit zorgt ervoor dat de test mislukt, wat resulteert in 502 fouten.
+Als de toegang tot de back-end wordt geblokkeerd vanwege een NSG-, UDR-of aangepaste DNS-exemplaar, kunnen de Application Gateway-instanties de back-end-pool niet bereiken. Dit veroorzaakt test fouten, wat resulteert in 502-fouten.
 
-De NSG/UDR kan worden gebruikt in het subnet van de gateway of het subnet waarin de toepassings-VM's zijn geïmplementeerd.
+De NSG/UDR kan aanwezig zijn in het subnet van de toepassings gateway of in het subnet waar de virtuele machines van de toepassing worden geïmplementeerd.
 
-Op deze manier kan de aanwezigheid van een aangepaste DNS-server in het VNet ook problemen veroorzaken. Een FQDN-naam gebruikt voor back-endpoolleden mogelijk niet correct opgelost door de gebruiker geconfigureerde DNS-server voor het VNet.
+Op dezelfde manier kan de aanwezigheid van een aangepaste DNS in het VNet ook problemen veroorzaken. Een FQDN die wordt gebruikt voor leden van de back-end-groep wordt mogelijk niet correct omgezet door de door de gebruiker geconfigureerde DNS-server voor het VNet.
 
 ### <a name="solution"></a>Oplossing
 
-NSG, UDR en DNS-configuratie valideren door te gaan via de volgende stappen uit:
+Valideer de NSG-, UDR-en DNS-configuratie door de volgende stappen uit te voeren:
 
-* Controleer nsg's die zijn gekoppeld aan het subnet van de gateway. Zorg ervoor dat de communicatie met de back-end wordt niet geblokkeerd.
-* Controleer de UDR die zijn gekoppeld aan het subnet van de gateway. Zorg ervoor dat de UDR wordt niet worden gebruikt voor het routeren van verkeer van het back endsubnet. Controleer bijvoorbeeld voor de routering van virtuele apparaten of standaardroutes worden geadverteerd voor het subnet van de gateway via ExpressRoute/VPN-netwerk.
+* Controleer de Nsg's die zijn gekoppeld aan het Application Gateway-subnet. Zorg ervoor dat de communicatie met de back-end niet wordt geblokkeerd.
+* Controleer de UDR die zijn gekoppeld aan het Application Gateway-subnet. Zorg ervoor dat de UDR geen verkeer doorstuurt van het back-end-subnet. Controleer bijvoorbeeld op route ring naar virtuele netwerk apparaten of standaard routes die worden geadverteerd naar het subnet van de toepassings gateway via ExpressRoute/VPN.
 
 ```azurepowershell
 $vnet = Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName
 Get-AzVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
 ```
 
-* Effectieve NSG en route met de back-end van de virtuele machine controleren
+* Effectief NSG controleren en routeren met de back-end-VM
 
 ```azurepowershell
 Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
 Get-AzEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
 ```
 
-* Controleer de aanwezigheid van aangepaste DNS-server in het VNet. DNS kan worden gecontroleerd door te kijken details van de VNet-eigenschappen in de uitvoer.
+* Controleer de aanwezigheid van aangepaste DNS-server in het VNet. DNS kan worden gecontroleerd door Details van de VNet-eigenschappen in de uitvoer te bekijken.
 
 ```json
 Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName 
@@ -70,71 +70,71 @@ DhcpOptions            : {
                            ]
                          }
 ```
-Als dat aanwezig is, zorgt u ervoor dat de DNS-server de back-end-poollid Fully Qualified Domain Name correct kan omzetten.
+Als dat het geval is, moet u ervoor zorgen dat de DNS-server de FQDN van het back-endadresgroep correct kan omzetten.
 
-## <a name="problems-with-default-health-probe"></a>Problemen met de statustest standaard
+## <a name="problems-with-default-health-probe"></a>Problemen met de standaard status test
 
 ### <a name="cause"></a>Oorzaak
 
-502 fouten kunnen ook worden vaak indicatoren dat de standaard-statustest back-end VM's niet kan bereiken.
+502-fouten kunnen ook regel matige indica toren zijn die de standaard status test geen back-end-Vm's kan bereiken.
 
-Wanneer een toepassingsgateway-exemplaar is ingericht, configureert het automatisch een standaard-statustest aan elke BackendAddressPool met behulp van eigenschappen van de BackendHttpSetting. Er is geen gebruikersinvoer is vereist voor het instellen van deze test. Met name wanneer een regel voor taakverdeling is geconfigureerd, wordt een koppeling gemaakt tussen een BackendHttpSetting en een BackendAddressPool. Een standaard-test is geconfigureerd voor elk van deze koppelingen en de application gateway start een periodieke statuscontroles Controleer de verbinding voor elke instantie die in de BackendAddressPool op de poort is opgegeven in het element BackendHttpSetting. 
+Wanneer een instantie van de toepassings gateway is ingericht, configureert deze automatisch een standaard status test op elke BackendAddressPool met behulp van de eigenschappen van de BackendHttpSetting. Er is geen gebruikers invoer vereist om deze test in te stellen. In het bijzonder, wanneer een taakverdelings regel is geconfigureerd, wordt een koppeling gemaakt tussen een BackendHttpSetting en een BackendAddressPool. Een standaard test wordt voor elk van deze koppelingen geconfigureerd en de toepassings gateway start een regel voor een periodieke status controle van de verbinding met elk exemplaar in het BackendAddressPool op de poort die is opgegeven in het BackendHttpSetting-element. 
 
-De volgende tabel bevat de waarden die zijn gekoppeld aan de standaard-statustest:
+De volgende tabel geeft een lijst van de waarden die zijn gekoppeld aan de standaard status test:
 
-| Test-eigenschap | Value | Description |
+| Probe-eigenschap | Waarde | Beschrijving |
 | --- | --- | --- |
-| WebTest-URL |`http://127.0.0.1/` |URL-pad |
-| Interval |30 |Testinterval in seconden |
-| Time-out |30 |Test time-out in seconden |
-| Drempelwaarde voor onjuiste status |3 |Aantal nieuwe pogingen-test. De back-endserver is gemarkeerd omlaag nadat het aantal opeenvolgende fouten de drempelwaarde voor onjuiste status heeft bereikt. |
+| Test-URL |`http://127.0.0.1/` |URL-pad |
+| Interval |30 |Test interval in seconden |
+| Time-out |30 |Time-out van de test in seconden |
+| Drempel waarde voor onjuiste status |3 |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
 
 ### <a name="solution"></a>Oplossing
 
-* Zorg ervoor dat een standaard-site is geconfigureerd en op 127.0.0.1 luistert.
-* Als BackendHttpSetting Hiermee geeft u een andere poort dan 80, moet u de standaard-site geconfigureerd om te luisteren op poort.
-* De aanroep van `http://127.0.0.1:port` moet de resultaatcode van een HTTP 200 retourneren. Dit moet worden geretourneerd in de 30 seconden time-outperiode.
-* Zorg ervoor dat de poort die is geconfigureerd geopend is en dat er zijn geen firewallregels of Azure-Netwerkbeveiligingsgroepen, dit blokkeren van binnenkomend of uitgaand verkeer op de poort die is geconfigureerd.
-* Als Azure klassieke virtuele machines of Cloud Service met een FQDN-naam of een openbaar IP-adres wordt gebruikt, zorg ervoor dat de bijbehorende [eindpunt](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) wordt geopend.
-* Als de virtuele machine is geconfigureerd via Azure Resource Manager en buiten de VNet waar de application gateway is geïmplementeerd, een [Network Security Group](../virtual-network/security-overview.md) moet worden geconfigureerd voor toegang op de gewenste poort.
+* Zorg ervoor dat er een standaard site is geconfigureerd en luistert op 127.0.0.1.
+* Als BackendHttpSetting een andere poort dan 80 opgeeft, moet de standaard site worden geconfigureerd om op die poort te Luis teren.
+* De aanroep van `http://127.0.0.1:port` moet een HTTP-resultaat code van 200 retour neren. Dit moet binnen de time-outperiode van 30 seconden worden geretourneerd.
+* Zorg ervoor dat de geconfigureerde poort is geopend en dat er geen firewall regels of Azure-netwerk beveiligings groepen zijn, die inkomend of uitgaand verkeer op de geconfigureerde poort blok keren.
+* Als Azure Classic Vm's of Cloud service wordt gebruikt met een FQDN of een openbaar IP-adres, moet u ervoor zorgen dat het bijbehorende [eind punt](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) wordt geopend.
+* Als de virtuele machine is geconfigureerd via Azure Resource Manager en zich buiten het VNet bevindt waarin de toepassings gateway is geïmplementeerd, moet er een [netwerk beveiligings groep](../virtual-network/security-overview.md) worden geconfigureerd om toegang toe te staan op de gewenste poort.
 
-## <a name="problems-with-custom-health-probe"></a>Problemen met aangepaste statustest
+## <a name="problems-with-custom-health-probe"></a>Problemen met een aangepaste status test
 
 ### <a name="cause"></a>Oorzaak
 
-Aangepaste statustests kunnen extra flexibiliteit om de standaard probing gedrag. Wanneer u aangepaste tests, kunt u het testinterval, de URL, het pad voor het testen van en het aantal mislukte antwoorden om te accepteren voordat u markeert de instantie van de back-end-pool als niet in orde.
+Aangepaste status tests bieden extra flexibiliteit voor het standaard gedrag van probings. Wanneer u aangepaste tests gebruikt, kunt u het test interval, de URL, het pad dat moet worden getest en het aantal mislukte antwoorden dat moet worden geaccepteerd, configureren voordat het exemplaar van de back-end-groep als beschadigd wordt gemarkeerd.
 
-De volgende aanvullende eigenschappen zijn toegevoegd:
+De volgende aanvullende eigenschappen worden toegevoegd:
 
-| Test-eigenschap | Description |
+| Probe-eigenschap | Beschrijving |
 | --- | --- |
-| Name |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in de back-end-HTTP-instellingen. |
-| Protocol |Het protocol dat wordt gebruikt voor het verzenden van de test. De test wordt gebruikt voor het protocol dat is gedefinieerd in de back-end-HTTP-instellingen |
-| Host |De naam van de host voor het verzenden van de test. Alleen van toepassing wanneer meerdere locaties is geconfigureerd op de application gateway. Dit wijkt af van de VM-hostnaam. |
-| Pad |Relatief pad van de test. Ongeldig pad begint met '/'. De test wordt verzonden naar \<protocol\>://\<host\>:\<poort\>\<pad\> |
-| Interval |Testinterval in seconden. Dit is het tijdsinterval tussen twee opeenvolgende tests. |
-| Time-out |Test time-out in seconden. Als een geldige reactie is niet binnen deze time-outperiode ontvangen is, wordt de test is gemarkeerd als mislukt. |
-| Drempelwaarde voor onjuiste status |Aantal nieuwe pogingen-test. De back-endserver is gemarkeerd omlaag nadat het aantal opeenvolgende fouten de drempelwaarde voor onjuiste status heeft bereikt. |
+| Naam |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in back-end-HTTP-instellingen. |
+| Protocol |Het protocol dat wordt gebruikt om de test te verzenden. De test gebruikt het protocol dat is gedefinieerd in de back-end-HTTP-instellingen |
+| Host |De hostnaam voor het verzenden van de test. Alleen van toepassing wanneer meerdere locaties op de toepassings gateway zijn geconfigureerd. Dit wijkt af van de naam van de VM-host. |
+| Pad |Het relatieve pad van de test. Het geldige pad wordt gestart vanaf/. De test wordt verzonden naar \<protocol\>://\<host\>:\<poort\>\<pad\> |
+| Interval |Test interval in seconden. Dit is het tijds interval tussen twee opeenvolgende tests. |
+| Time-out |Time-out van de test (in seconden). Als er binnen deze time-outperiode geen geldig antwoord wordt ontvangen, wordt de test als mislukt gemarkeerd. |
+| Drempel waarde voor onjuiste status |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
 
 ### <a name="solution"></a>Oplossing
 
-Controleer of de Statustest voor de aangepaste correct als de voorgaande tabel is geconfigureerd. Naast de voorgaande stappen voor probleemoplossing, zorg er ook voor het volgende:
+Controleer of de aangepaste status test correct is geconfigureerd als de voor gaande tabel. Naast de voor gaande stappen voor probleem oplossing moet u ook rekening houden met het volgende:
 
-* Zorg ervoor dat de test correct is opgegeven als per de [handleiding](application-gateway-create-probe-ps.md).
-* Als de application gateway is geconfigureerd voor een enkele site, wordt standaard de Host naam moet worden opgegeven als `127.0.0.1`, tenzij anders is geconfigureerd in aangepaste test.
-* Zorg ervoor dat een aanroep naar http://\<host\>:\<poort\>\<pad\> retourneert de resultaatcode van een HTTP 200.
-* Zorg ervoor dat Interval, time-out en UnhealtyThreshold binnen een acceptabel prestatiebereik.
-* Als u met behulp van een HTTPS-test, zorg ervoor dat de back-endserver zijn vereist om SNI door het configureren van een fallback-certificaat op de back endserver zelf.
+* Zorg ervoor dat de test juist is opgegeven volgens de [hand leiding](application-gateway-create-probe-ps.md).
+* Als de toepassings gateway voor één site is geconfigureerd, moet de hostnaam standaard worden opgegeven als `127.0.0.1`, tenzij anders geconfigureerd in de aangepaste test.
+* Zorg ervoor dat een aanroep van http://\<host\>:\<poort\>\<pad\> retourneert een HTTP-resultaat code van 200.
+* Zorg ervoor dat interval, time-out en UnhealtyThreshold binnen de aanvaard bare bereiken vallen.
+* Als u een HTTPS-test gebruikt, moet u ervoor zorgen dat de back-endserver geen SNI vereist door een terugval certificaat te configureren op de back-endserver zelf.
 
-## <a name="request-time-out"></a>Time-out voor aanvraag
+## <a name="request-time-out"></a>Time-out van aanvraag
 
 ### <a name="cause"></a>Oorzaak
 
-Wanneer een aanvraag wordt ontvangen, wordt de toepassingsgateway de geconfigureerde regels toegepast op de aanvraag en stuurt deze naar een exemplaar van de back-end-pool. Deze wacht gedurende een configureerbare tijdsinterval voor een reactie van de back-end-exemplaar. Dit interval is standaard **20** seconden. Als de application gateway geen een reactie van de back-endtoepassing in dit interval ontvangen biedt, wordt de aanvraag van de gebruiker een 502-fout.
+Wanneer een gebruikers aanvraag wordt ontvangen, past de toepassings gateway de geconfigureerde regels toe op de aanvraag en stuurt deze door naar een exemplaar van de back-end-pool. Er wordt gewacht op een configureerbaar tijds interval voor een reactie van het back-end-exemplaar. Dit interval is standaard **20** seconden. Als de toepassings gateway in dit interval geen reactie van een back-endtoepassing ontvangt, krijgt de gebruikers aanvraag een 502-fout.
 
 ### <a name="solution"></a>Oplossing
 
-Application Gateway kunt u deze instelling via de BackendHttpSetting, die vervolgens kan worden toegepast op verschillende groepen wilt configureren. Verschillende back-end-pools kunnen hebben verschillende BackendHttpSetting en een andere aanvraag time-out geconfigureerd.
+Met Application Gateway kunt u deze instelling configureren via de BackendHttpSetting, die vervolgens kan worden toegepast op verschillende groepen. Andere back-endservers kunnen verschillende BackendHttpSetting hebben en een andere time-out voor de aanvraag is geconfigureerd.
 
 ```azurepowershell
     New-AzApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
@@ -144,17 +144,17 @@ Application Gateway kunt u deze instelling via de BackendHttpSetting, die vervol
 
 ### <a name="cause"></a>Oorzaak
 
-Als de application gateway heeft geen virtuele machines of virtuele-machineschaalset geconfigureerd in de back-end-adresgroep, wordt elke klantaanvraag niet omleiden en verzendt een ongeldige gateway-fout.
+Als er in de back-end-adres groep geen Vm's of virtuele-machine schaal sets zijn geconfigureerd voor de toepassings gateway, kan er geen klant aanvraag worden doorgestuurd en wordt er een fout met een ongeldige gateway verzonden.
 
 ### <a name="solution"></a>Oplossing
 
-Zorg ervoor dat de back-end-adresgroep niet leeg zijn. Dit kan worden gedaan via PowerShell, CLI of -portal.
+Zorg ervoor dat de back-end-adres groep niet leeg is. U kunt dit doen via Power shell, CLI of portal.
 
 ```azurepowershell
 Get-AzApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
 ```
 
-De uitvoer van de vorige cmdlet moet niet-lege back-end-adresgroep bevatten. Het volgende voorbeeld ziet twee groepen geretourneerd die zijn geconfigureerd met een FQDN-naam of een IP-adressen voor de back-end-VM's. De Inrichtingsstatus van de BackendAddressPool moet 'geslaagd'.
+De uitvoer van de voor gaande cmdlet moet een niet-lege back-end-adres groep bevatten. In het volgende voor beeld ziet u twee groepen die zijn geretourneerd die zijn geconfigureerd met een FQDN-of IP-adres voor de back-end-Vm's. De inrichtings status van de BackendAddressPool moet ' geslaagd ' zijn.
 
 BackendAddressPoolsText:
 
@@ -182,17 +182,17 @@ BackendAddressPoolsText:
 }]
 ```
 
-## <a name="unhealthy-instances-in-backendaddresspool"></a>Exemplaren in BackendAddressPool
+## <a name="unhealthy-instances-in-backendaddresspool"></a>Beschadigde instanties in BackendAddressPool
 
 ### <a name="cause"></a>Oorzaak
 
-Als alle instanties van BackendAddressPool niet in orde zijn, klikt u vervolgens de application gateway beschikt niet over een back-end-to-route gebruikersaanvraag tot. Dit kan ook het geval zijn wanneer back-end-exemplaren in orde zijn, maar niet de vereiste toepassing geïmplementeerd hoeft.
+Als alle instanties van BackendAddressPool een slechte status hebben, heeft de toepassings gateway geen back-end om de gebruikers aanvraag naar te sturen. Dit kan ook het geval zijn wanneer back-end-exemplaren in orde zijn, maar niet de vereiste toepassing hebben geïmplementeerd.
 
 ### <a name="solution"></a>Oplossing
 
-Zorg ervoor dat de exemplaren in orde zijn en de toepassing correct is geconfigureerd. Controleer als de back-endexemplaren op een ping naar een andere virtuele machine in hetzelfde VNet reageren kunnen. Als met een openbaar eindpunt is geconfigureerd, controleert u of dat de aanvraag van een browser naar de webtoepassing wordt onderhouden.
+Zorg ervoor dat de instanties in orde zijn en dat de toepassing correct is geconfigureerd. Controleer of de back-end-exemplaren kunnen reageren op een ping van een andere virtuele machine in hetzelfde VNet. Als het is geconfigureerd met een openbaar eind punt, moet u ervoor zorgen dat een browser aanvraag voor de webtoepassing service is.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als de voorgaande stappen het probleem niet verhelpen, opent u een [ondersteuningsticket](https://azure.microsoft.com/support/options/).
+Als de voor gaande stappen het probleem niet verhelpen, opent u een [ondersteunings ticket](https://azure.microsoft.com/support/options/).
 

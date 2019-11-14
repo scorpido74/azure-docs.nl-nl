@@ -1,5 +1,5 @@
 ---
-title: Een SQL Server virtuele machine maken in Azure PowerShell (klassiek) | Microsoft Docs
+title: Een klassieke SQL Server-VM maken (Power shell)
 description: Bevat stappen en Power shell-scripts voor het maken van een Azure-VM met SQL Server galerie installatie kopieën van virtuele machines. In dit onderwerp wordt gebruikgemaakt van de klassieke implementatie modus.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,19 +14,20 @@ ms.workload: iaas-sql-server
 ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a4c7c29736cdd80ef7ebe413a377aba630d61858
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8757b634b76867a2d5ccce3dcfdc9d66ef25c25e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101870"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032736"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Een SQL Server virtuele machine inrichten met behulp van Azure PowerShell (klassiek)
 
 In dit artikel worden de stappen beschreven voor het maken van een SQL Server virtuele machine in azure met behulp van de Power shell-cmdlets.
 
 > [!IMPORTANT] 
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
 
 Voor de Resource Manager-versie van dit onderwerp raadpleegt [u een SQL Server virtuele machine inrichten met behulp van Azure PowerShell Resource Manager](../sql/virtual-machines-windows-ps-sql-create.md).
 
@@ -77,7 +78,7 @@ Uw SQL Server virtuele machine wordt gehost in een Cloud service die een specifi
    ```
 
    > [!NOTE]
-   > Als u een nieuw opslag account nodig hebt, maakt u eerst een naam voor het opslag account met een kleine letters met de opdracht New-AzureStorageAccount, zoals in het volgende voor beeld:`New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
+   > Als u een nieuw opslag account nodig hebt, maakt u eerst een naam voor het opslag account met een kleine letters met de opdracht New-AzureStorageAccount, zoals in het volgende voor beeld: `New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
 
 4. Wijs de naam van het doel opslag account toe aan de **$staccount**. Gebruik vervolgens **set-abonnement** om het abonnement en het huidige opslag account in te stellen.
 

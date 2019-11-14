@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Azure Security Center gebruiken voor virtuele Linux-machines in Azure | Microsoft Docs
+title: Zelf studie-Azure Security Center gebruiken voor Linux-Vm's in azure
 description: In deze zelfstudie krijgt u informatie over de functies van Azure Security Center die helpen uw virtuele Linux-machines in Azure te beschermen en te beveiligen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,24 +15,24 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0ac5c95fa51ca5032f5d3e057af2064f872ea15c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4046aac5e8362bf315eca11d9cd96a6e862e2c55
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081714"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034608"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Zelfstudie: Azure Security Center gebruiken om virtuele Linux-machines te controleren
 
 Met Azure Security Center kunt u meer inzicht krijgen in de beveiliging van uw Azure-resources. Security Center biedt geïntegreerde beveiligingsbewaking. De service kan bedreigingen detecteren die anders misschien onopgemerkt blijven. In deze zelfstudie krijgt u meer informatie over Azure Security Center en leert u het volgende te doen:
  
 > [!div class="checklist"]
-> * Gegevensverzameling instellen
+> * Gegevensverzameling kunt instellen
 > * Beveiligingsbeleid kunt instellen
 > * Problemen met de configuratiestatus kunt weergeven en oplossen
-> * Gedetecteerde bedreigingen kunt controleren
+> * Gedetecteerde bedreigingen controleren
 
-## <a name="security-center-overview"></a>Overzicht van Security Center
+## <a name="security-center-overview"></a>Security Center-overzicht
 
 Security Center identificeert mogelijke configuratieproblemen voor virtuele machine (VM's) en gerichte beveiligingsrisico's. Dit kan het volgende omvatten: virtuele machines waarbij netwerkbeveiligingsgroepen ontbreken, niet-versleutelde schijven en RDP-beveiligingsaanvallen (Remote Desktop Protocol). De informatie wordt op het Security Center-dashboard in duidelijke grafieken weergegeven.
 
@@ -129,7 +129,7 @@ In deze zelfstudie hebt u Azure Security Center ingesteld en vervolgens VM's in 
 > * Gegevensverzameling kunt instellen
 > * Beveiligingsbeleid kunt instellen
 > * Problemen met de configuratiestatus kunt weergeven en oplossen
-> * Gedetecteerde bedreigingen kunt controleren
+> * Gedetecteerde bedreigingen controleren
 
 Ga naar de volgende zelfstudie voor meer informatie over het maken van een CI/CD-pijplijn met Jenkins, GitHub en Docker.
 

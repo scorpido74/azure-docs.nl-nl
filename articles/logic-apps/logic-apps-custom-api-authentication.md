@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: ecec237eab42cf434ab8627ebdf9b1e34f3ab3f1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fb9f986c2711e0cbc8ac3facd073f1a72f46043d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838129"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039134"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Beveiligde aanroepen van aangepaste Api's van Azure Logic Apps
 
@@ -202,8 +202,8 @@ Open de definitie van de logische app in de code weergave, ga naar de **http-** 
 
 | Eigenschap | Vereist | Beschrijving | 
 | -------- | -------- | ----------- | 
-| bouw | Ja | De GUID voor de Azure AD-Tenant | 
-| gericht | Ja | De GUID voor de doel resource waartoe u toegang wilt krijgen, wat de client-ID is van de toepassings identiteit voor uw web-app of API-app | 
+| tenant | Ja | De GUID voor de Azure AD-Tenant | 
+| audience | Ja | De GUID voor de doel resource waartoe u toegang wilt krijgen, wat de client-ID is van de toepassings identiteit voor uw web-app of API-app | 
 | clientId | Ja | De GUID voor de client die toegang vraagt, de client-ID van de toepassings identiteit voor uw logische app | 
 | geheim | Ja | De sleutel of het wacht woord van de toepassings-id voor de client die het toegangs token aanvraagt | 
 | type | Ja | Het verificatie type. Voor ActiveDirectoryOAuth-verificatie is de waarde `ActiveDirectoryOAuth`. | 
@@ -251,12 +251,12 @@ Neem de volgende eigenschappen op in de sectie **autorisatie** :
 } 
 ```
 
-| Eigenschap | Vereist | Beschrijving | 
-| -------- | -------- | ----------- | 
-| type | Ja | Het verificatie type. Voor SSL-client certificaten moet de waarde `ClientCertificate`zijn. | 
-| wachtwoord | Ja | Het wacht woord voor toegang tot het client certificaat (PFX-bestand) | 
-| pfx | Ja | De met base64 gecodeerde inhoud van het client certificaat (PFX-bestand) | 
-|||| 
+| Eigenschap | Vereist | Beschrijving |
+| -------- | -------- | ----------- |
+| `type` | Ja | Het verificatie type. Voor SSL-client certificaten moet de waarde `ClientCertificate`zijn. |
+| `password` | Nee | Het wacht woord voor toegang tot het client certificaat (PFX-bestand) |
+| `pfx` | Ja | De met base64 gecodeerde inhoud van het client certificaat (PFX-bestand) |
+||||
 
 <a name="basic"></a>
 

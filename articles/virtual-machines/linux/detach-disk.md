@@ -1,5 +1,5 @@
 ---
-title: Een gegevens schijf loskoppelen van een virtuele Linux-machine-Azure | Microsoft Docs
+title: Een gegevens schijf loskoppelen van een virtuele Linux-machine-Azure
 description: Leer hoe u een gegevens schijf loskoppelt van een virtuele machine in azure met behulp van Azure CLI of de Azure Portal.
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e026617db4da58c12a454000f6d97f8b6843e95d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695868"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036371"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Een gegevens schijf loskoppelen van een virtuele Linux-machine
 
@@ -82,7 +82,7 @@ In dit voor beeld moet de volgende regel worden verwijderd uit het *bestand/etc/
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
-Gebruiken `umount` om de schijf te ontkoppelen. In het volgende voor beeld wordt de */dev/sdc1* -partitie losgekoppeld van het */datadrive* -koppel punt:
+Gebruik `umount` om de schijf te ontkoppelen. In het volgende voor beeld wordt de */dev/sdc1* -partitie losgekoppeld van het */datadrive* -koppel punt:
 
 ```bash
 sudo umount /dev/sdc1 /datadrive
@@ -109,7 +109,7 @@ De schijf blijft in de opslag, maar is niet meer gekoppeld aan een virtuele mach
 2. Selecteer de virtuele machine met de gegevens schijf die u wilt loskoppelen en klik op **stoppen** om de toewijzing van de VM ongedaan te maken.
 3. Selecteer **schijven**in het deel venster virtuele machine.
 4. Selecteer boven in het deel venster **schijven** de optie **bewerken**.
-5. Klik in het deel venster **schijven** helemaal rechts van de gegevens schijf die u wilt loskoppelen op de ![knop knop afbeelding](./media/detach-disk/detach.png) loskoppelen.
+5. Klik in het deel venster **schijven** helemaal rechts van de gegevens schijf die u wilt loskoppelen op de knop ![loskoppelen](./media/detach-disk/detach.png) knop loskoppelen.
 5. Nadat de schijf is verwijderd, klikt u boven aan het deel venster op opslaan.
 6. Klik in het deel venster virtuele machine op **overzicht** en klik vervolgens op de knop **Start** boven aan het deel venster om de VM opnieuw op te starten.
 

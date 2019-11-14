@@ -1,5 +1,5 @@
 ---
-title: Schaalbaarheids-en prestatie doelen voor VM-schijven op Linux-Microsoft Azure | Microsoft Docs
+title: Schaalbaarheids-en prestatie doelen voor VM-schijven op Linux-Microsoft Azure
 description: Meer informatie over de schaalbaarheids-en prestatie doelen voor virtuele machine schijven die zijn gekoppeld aan Vm's waarop Linux wordt uitgevoerd.
 author: roygara
 ms.author: rogarana
@@ -7,18 +7,18 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 5c1bdecdfc755db530be71a09b18542ade4519c5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 8bc355c4658ae3f410fb8852008752cf4497751d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695887"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036341"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Schaalbaarheids-en prestatie doelen voor VM-schijven in Linux
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-Zie [VM](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) -grootten voor Linux voor meer informatie.
+Zie [VM-grootten voor Linux](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) voor meer informatie.
 
 ## <a name="managed-virtual-machine-disks"></a>Beheerde schijven van virtuele machines
 

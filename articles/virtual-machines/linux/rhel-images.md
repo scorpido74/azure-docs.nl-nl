@@ -1,5 +1,5 @@
 ---
-title: Installatie kopieën Red Hat Enterprise Linux in azure | Microsoft Docs
+title: Installatie kopieën Red Hat Enterprise Linux in azure
 description: Meer informatie over Red Hat Enterprise Linux installatie kopieën in Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: c11ce31913baa8c638e94bdf92ef622cd8899e03
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: eaabe9da20c22dd3e4d924887adcbc7081857e91
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764306"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035122"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Installatie kopieën Red Hat Enterprise Linux in azure
 In dit artikel worden beschik bare installatie kopieën van Red Hat Enterprise Linux (RHEL) in de Azure Marketplace beschreven, samen met beleids regels rondom hun naam en bewaar periode.
@@ -42,7 +42,7 @@ az vm image list --publisher RedHat --all
 ## <a name="naming-convention"></a>Naamgevings Conventie
 VM-installatie kopieën in azure zijn ingedeeld op uitgever, aanbieding, SKU en versie. De combi natie van Publisher: aanbieding: SKU: version is de afbeelding URN en identificeert de afbeelding die moet worden gebruikt.
 
-`RedHat:RHEL:7-RAW:7.6.2018103108` Verwijst bijvoorbeeld naar een RHEL 7,6 RAW-gepartitioneerde afbeelding die is gebouwd op 31 oktober 2018.
+`RedHat:RHEL:7-RAW:7.6.2018103108` verwijst bijvoorbeeld naar een RHEL 7,6 RAW-gepartitioneerde afbeelding die is gebouwd op 31 oktober 2018.
 
 Hieronder ziet u een voor beeld van het maken van een RHEL 7,6 VM.
 ```azurecli-interactive
@@ -52,7 +52,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:7.6
 ### <a name="the-latest-moniker"></a>De ' meest recente ' moniker
 Azure REST API staat het gebruik van moniker "nieuwste" toe voor versie in plaats van de specifieke versie. Als u ' nieuwste ' gebruikt, wordt de meest recente beschik bare installatie kopie ingericht voor de gegeven Uitgever, aanbieding en SKU.
 
-`RedHat:RHEL:7-RAW:latest` Verwijst bijvoorbeeld naar de meest recente onbewerkte afbeelding van de RHEL 7-familie.
+`RedHat:RHEL:7-RAW:latest` verwijst bijvoorbeeld naar de meest recente onbewerkte afbeelding van de RHEL 7-familie.
 
 ```azurecli-interactive
 az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:latest --no-wait
@@ -64,7 +64,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 ### <a name="current-naming-convention"></a>Huidige naamgevings Conventie
 Alle momenteel gepubliceerde RHEL-installatie kopieën maken gebruik van het betalen per gebruik-model en zijn verbonden met de [Red Hat Update infrastructure (RHUI) in azure](https://aka.ms/rhui-update). Er is een nieuwe naamgevings Conventie aangenomen voor installatie kopieën van de RHEL-7-serie waarin het schema voor schijf partitionering (RAW, LVM) is opgegeven in de SKU in plaats van de versie. De versie van de RHEL-installatie kopie bevat 7-RAW of 7-LVM. De naam van de RHEL 6-familie is op dit moment niet gewijzigd.
 
-Er zijn twee soorten RHEL 7 Image Sku's in deze naamgevings Conventie: Sku's met een lijst met de secundaire versie en Sku's die dat niet zijn. Als u een 7-RAW-of 7-LVM-SKU wilt gebruiken, kunt u de secundaire versie van RHEL opgeven die u in de versie wilt implementeren. Als u de nieuwste versie kiest, wordt de meest recente kleine release van RHEL ingericht.
+Er zijn twee soorten image-Sku's van RHEL 7 in deze naamgevings Conventie: Sku's met een lijst met de secundaire versie en Sku's die niet worden vermeld. Als u een 7-RAW-of 7-LVM-SKU wilt gebruiken, kunt u de secundaire versie van RHEL opgeven die u in de versie wilt implementeren. Als u de nieuwste versie kiest, wordt de meest recente kleine release van RHEL ingericht.
 
 >[!NOTE]
 > In de RHEL voor SAP-set installatie kopieën blijft de versie van RHEL vast. Als zodanig bevat hun naam Conventie een bepaalde versie in de SKU.
@@ -88,7 +88,7 @@ Zo ziet u mogelijk de volgende 2 RHEL 7,4-installatie kopieën beschikbaar:
 RedHat:RHEL:7-RAW:7.4.2018010506
 RedHat:RHEL:7.4:7.4.2019041718
 ```
-In dit geval `RedHat:RHEL:7.4:7.4.2019041718` wordt standaard gekoppeld aan Eus-opslag plaatsen en `RedHat:RHEL:7-RAW:7.4.2018010506` wordt standaard aan niet-Eus-opslag plaatsen gekoppeld.
+In dit geval wordt `RedHat:RHEL:7.4:7.4.2019041718` standaard aan EUS-opslag plaatsen gekoppeld en wordt `RedHat:RHEL:7-RAW:7.4.2018010506` standaard aan niet-EUS-opslag plaatsen gekoppeld.
 
 ### <a name="for-customers-that-dont-want-to-use-eus-images"></a>Voor klanten die geen EUS-installatie kopieën willen gebruiken:
 Als u een installatie kopie die is verbonden met EUS standaard niet wilt gebruiken, implementeert u een installatie kopie die geen secundair versie nummer in de SKU bevat.
@@ -106,7 +106,7 @@ Secundaire versie |Voor beeld van een EUS-afbeelding              |EUS-status   
 RHEL 7,4      |RedHat:RHEL:7.4:7.4.2019041718 | Afbeeldingen die zijn gepubliceerd 2019 april en hoger, worden standaard EUS|
 RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | Afbeeldingen die zijn gepubliceerd 2019 juni en hoger, worden standaard EUS |
 RHEL 7,6      |RedHat:RHEL:7.6:7.6.2019052206 | Afbeeldingen die zijn gepubliceerd, zijn mogelijk 2019 en hoger EUS standaard  |
-RHEL 8,0      |N/A                            | Geen EUS beschikbaar voor Red Hat                               |
+RHEL 8,0      |N.v.t.                            | Geen EUS beschikbaar voor Red Hat                               |
 
 
 ## <a name="list-of-rhel-images-available"></a>Lijst met beschik bare RHEL-installatie kopieën
@@ -147,7 +147,7 @@ De RHEL 7-familie van installatie kopieën en de RHEL 6-familie van installatie 
 U vindt numerieke Sku's in de volledige lijst met installatie kopieën. Micro soft en Red Hat maken nieuwe numerieke Sku's wanneer een nieuwe kleine versie wordt geleverd.
 
 ### <a name="other-available-offers-and-skus"></a>Andere beschik bare aanbiedingen en Sku's
-De volledige lijst met beschik bare aanbiedingen en Sku's kan extra installatie kopieën bevatten, behalve wat wordt vermeld in de bovenstaande tabel `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`, bijvoorbeeld. Deze aanbiedingen kunnen worden gebruikt om ondersteuning te bieden voor specifieke Marketplace-oplossingen, of ze kunnen worden gepubliceerd voor voor beelden en test doeleinden. Ze kunnen op elk gewenst moment zonder waarschuwing worden gewijzigd of verwijderd. Gebruik deze niet, tenzij hun aanwezigheid openbaar is gemaakt door micro soft of Red Hat.
+De volledige lijst met beschik bare aanbiedingen en Sku's kan extra installatie kopieën bevatten, behalve wat wordt vermeld in de bovenstaande tabel, bijvoorbeeld `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`. Deze aanbiedingen kunnen worden gebruikt om ondersteuning te bieden voor specifieke Marketplace-oplossingen, of ze kunnen worden gepubliceerd voor voor beelden en test doeleinden. Ze kunnen op elk gewenst moment zonder waarschuwing worden gewijzigd of verwijderd. Gebruik deze niet, tenzij hun aanwezigheid openbaar is gemaakt door micro soft of Red Hat.
 
 ## <a name="publishing-policy"></a>Publicatie beleid
 Micro soft en Red Hat update-installatie kopieën als nieuwe secundaire versies worden uitgebracht, indien nodig om specifieke CVEs te verhelpen of voor incidentele configuratie wijzigingen/-updates. We streven ernaar bijgewerkte installatie kopieën zo snel mogelijk te leveren, binnen drie werk dagen na een release of Beschik baarheid van een CVE-oplossing.

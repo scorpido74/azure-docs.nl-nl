@@ -1,5 +1,5 @@
 ---
-title: Voor beeld van een Azure-infrastructuur scenario | Microsoft Docs
+title: Voor beeld van een Azure-infrastructuur scenario
 description: Meer informatie over de belangrijkste richt lijnen voor het ontwerpen en implementeren van een voorbeeld infrastructuur in Azure.
 documentationcenter: ''
 services: virtual-machines-linux
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 71b0dd15d183f3209c7424c537dde1e3df29d097
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cf63db18dac5fa202bbf339723c6555c4acb2ca2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083128"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036037"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Voor beeld van een Azure-infrastructuur scenario voor Linux-Vm's
 In dit artikel wordt uitgelegd hoe u een voorbeeld toepassings infrastructuur bouwt. We beschrijven een infra structuur voor een eenvoudige on line Store waarin alle richt lijnen en beslissingen over naam conventies, beschikbaarheids sets, virtuele netwerken en load balancers worden gecombineerd en de virtuele machines (Vm's) daad werkelijk worden geïmplementeerd.
@@ -71,14 +71,14 @@ Omdat het virtuele netwerk niet de actieve connectiviteit met het on-premises ne
 
 Ze hebben een virtueel netwerk in de Cloud gemaakt met de volgende instellingen met behulp van de Azure Portal:
 
-* Naam: AZOS-USE-VN01
-* Locatie: US - oost 2
+* Name: AZOS-USE-VN01
+* Locatie: VS-Oost 2
 * Adres ruimte van virtueel netwerk: 10.0.0.0/8
 * Eerste subnet:
-  * Naam: FrontEnd
+  * Naam: front-end
   * Adres ruimte: 10.0.1.0/24
 * Tweede subnet:
-  * Naam: BackEnd
+  * Naam: back-end
   * Adres ruimte: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Beschikbaarheidssets

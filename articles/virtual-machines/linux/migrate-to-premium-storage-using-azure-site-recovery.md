@@ -1,6 +1,6 @@
 ---
-title: Uw virtuele Linux-machines migreren naar Azure Premium Storage met Azure Site Recovery | Microsoft Docs
-description: Uw bestaande virtuele machines migreren naar Azure Premium Storage met behulp van Site Recovery. Premium Storage biedt ondersteuning voor schijven voor hoge prestaties en lage latentie voor I/O-intensieve werkbelastingen op Azure Virtual Machines.
+title: Migreer uw Linux-Vm's naar Azure Premium Storage met Azure Site Recovery
+description: Migreer uw bestaande virtuele machines naar Azure Premium Storage met behulp van Site Recovery. Premium Storage biedt schijf ondersteuning met hoge prestaties en lage latentie voor I/O-intensieve workloads die worden uitgevoerd op Azure Virtual Machines.
 services: virtual-machines-linux,storage
 cloud: Azure
 author: luywang
@@ -10,217 +10,217 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: ffcc2f46a30569979879ff302cde1e3b146d3b50
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8c299869da003d8dc4e9ac111ba8c5e8bb27345
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543554"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035834"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migreren naar Premium Storage met behulp van Azure Site Recovery
 
-[Azure premium SSD's](disks-types.md) biedt ondersteuning voor hoge prestaties en lage latentie schijven voor virtuele machines (VM's) die I/O-intensieve workloads worden uitgevoerd. Deze handleiding helpt u de VM-schijven van een standaardopslagaccount migreren naar premium storage-account met behulp van [Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
+[Azure Premium ssd's](disks-types.md) biedt hoogwaardige schijf ondersteuning met lage latentie voor virtuele machines (vm's) die I/O-intensieve workloads uitvoeren. Deze hand leiding helpt u bij het migreren van uw VM-schijven vanuit een Standard-opslag account naar een Premium Storage-account met behulp van [Azure site Recovery](../../site-recovery/site-recovery-overview.md).
 
-Site Recovery is een Azure-service die aan uw strategie voor bedrijfscontinuïteit en herstel na noodgevallen bijdraagt door de replicatie van fysieke on-premises servers en virtuele machines in de cloud (Azure) of naar een secundair datacenter te organiseren. Als er uitval optreedt op uw primaire locatie, schakelt u over naar de secundaire locatie om toepassingen en workloads beschikbaar te houden. U een failback naar de primaire locatie wanneer deze weer normaal functioneren. 
+Site Recovery is een Azure-service die bijdraagt aan uw strategie voor bedrijfs continuïteit en herstel na nood gevallen door de replicatie van on-premises fysieke servers en virtuele machines naar de Cloud (Azure) of naar een secundair Data Center te organiseren. Als er uitval optreedt op uw primaire locatie, voert u een failover uit naar de secundaire locatie om toepassingen en workloads beschikbaar te houden. U kunt een failback uitvoeren naar de primaire locatie wanneer deze naar een normale bewerking wordt geretourneerd. 
 
-Site Recovery biedt testfailovers ter ondersteuning van noodhersteloefeningen zonder gevolgen voor productie-omgevingen. U kunt failovers uitvoeren met minimaal gegevensverlies (afhankelijk van de replicatiefrequentie) bij onverwachte noodsituaties. In het scenario van de migratie naar Premium Storage, kunt u de [failover in Site Recovery](../../site-recovery/site-recovery-failover.md) doel schijven migreren naar premium storage-account.
+Site Recovery voorziet in testfailover voor het ondersteunen van herstel na nood gevallen zonder dat dit van invloed is op productie omgevingen. U kunt failovers uitvoeren met mini maal gegevens verlies (afhankelijk van de replicatie frequentie) voor onverwachte rampen. In het scenario voor de migratie naar Premium Storage kunt u de [failover in site Recovery](../../site-recovery/site-recovery-failover.md) gebruiken om doel schijven te migreren naar een Premium Storage-account.
 
-Het is raadzaam om eerst te migreren naar Premium Storage met behulp van Site Recovery omdat deze optie minimale downtime biedt. Deze optie voorkomt ook de handmatige uitvoering van kopiëren van schijven en het maken van nieuwe virtuele machines. Site Recovery wordt systematisch uw schijven kopiëren en nieuwe virtuele machines maken tijdens de failover. 
+U wordt aangeraden naar Premium Storage te migreren met behulp van Site Recovery, omdat deze optie minimale downtime biedt. Deze optie voor komt ook dat de hand matige uitvoering van het kopiëren van schijven en het maken van nieuwe Vm's wordt voor komen. Site Recovery worden uw schijven systematisch gekopieerd en worden tijdens de failover nieuwe Vm's gemaakt. 
 
-Site Recovery ondersteunt een aantal soorten failovers met minimale of geen downtime. Als u wilt uw uitvaltijd plannen en een schatting maken van gegevensverlies, Zie de [typen failover in Site Recovery](../../site-recovery/site-recovery-failover.md). Als u [voorbereidingen voor het verbinding maken met virtuele Azure-machines na een failover](../../site-recovery/vmware-walkthrough-overview.md), moet u kunnen verbinding maken met de Azure-VM met behulp van RDP na een failover.
+Site Recovery ondersteunt een aantal typen failover met minimale of geen downtime. Als u uw downtime wilt plannen en gegevens verlies wilt schatten, raadpleegt u de [typen failover in site Recovery](../../site-recovery/site-recovery-failover.md). Als u [na een failover verbinding maakt met Azure-vm's](../../site-recovery/vmware-walkthrough-overview.md), moet u na de failover verbinding maken met de Azure-VM met behulp van RDP.
 
-![Diagram van herstel na noodgevallen][1]
+![Diagram voor nood herstel][1]
 
-## <a name="azure-site-recovery-components"></a>Azure Site Recovery-onderdelen
+## <a name="azure-site-recovery-components"></a>Azure Site Recovery onderdelen
 
-Deze Site Recovery-onderdelen zijn relevant voor dit scenario voor migratie:
+Deze Site Recovery onderdelen zijn relevant voor dit migratie scenario:
 
-* **Configuratieserver** is een Azure-VM die coördineert de communicatie en processen voor replicatie en het herstel van gegevens beheert. Op deze virtuele machine, uitvoeren van een enkele setup-bestand voor het installeren van de configuratieserver en een extra onderdeel met de naam een processerver als replicatiegateway. Meer informatie over [vereisten voor configuratieserver](../../site-recovery/vmware-walkthrough-overview.md). Instellen van de configuratieserver slechts één keer, en u kunt deze gebruiken voor alle migraties om dezelfde regio bevinden.
+* **Configuratie server** is een Azure-VM die communicatie coördineert en gegevens replicatie en herstel processen beheert. Op deze VM voert u één installatie bestand uit om de configuratie server en een extra onderdeel, een proces server genaamd, te installeren als replicatie gateway. Meer informatie over de vereisten voor de [Configuratie server](../../site-recovery/vmware-walkthrough-overview.md). U hoeft de configuratie server slechts één keer in te stellen en u kunt deze gebruiken voor alle migraties naar dezelfde regio.
 
-* **Processerver** replicatiegateway is die: 
+* De **proces server** is een replicatie gateway die: 
 
-  1. Ontvangt replicatiegegevens van bron-VM's.
-  2. Optimaliseert de gegevens met caching, compressie en codering.
-  3. Verzendt de gegevens naar een opslagaccount. 
+  1. Hiermee worden replicatie gegevens van de bron-Vm's ontvangen.
+  2. Optimaliseert de gegevens met caching, compressie en versleuteling.
+  3. Hiermee worden de gegevens naar een opslag account verzonden. 
 
-  Ook push-installatie van de mobility-service op de bron-VM's worden verwerkt en wordt automatische detectie van de bron-VM's uitgevoerd. De standaard-processerver is geïnstalleerd op de configuratieserver. U kunt aanvullende zelfstandige processervers als u de schaal van uw implementatie wilt implementeren. Meer informatie over [aanbevolen procedures voor processerverimplementatie](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/) en [implementeren extra processervers](../../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers). Instellen van de processerver slechts één keer, en u kunt deze gebruiken voor alle migraties om dezelfde regio bevinden.
+  Ook wordt de push-installatie van de Mobility-service naar de bron-Vm's afgehandeld en wordt automatische detectie van bron-Vm's uitgevoerd. De standaard proces server is geïnstalleerd op de configuratie server. U kunt aanvullende, zelfstandige proces servers implementeren om uw implementatie te schalen. Meer informatie over [Aanbevolen procedures voor de implementatie van proces](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/) servers en het [implementeren van extra proces servers](../../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers). U hoeft de proces server slechts één keer in te stellen en u kunt deze gebruiken voor alle migraties naar dezelfde regio.
 
-* **Mobility-service** is een onderdeel dat is geïmplementeerd op elke standard Virtuele machine die u wilt repliceren. Het schrijven van gegevens op de standaard virtuele machine worden vastgelegd en ze doorstuurt naar de processerver. Meer informatie over [vereisten voor de machines gerepliceerd](../../site-recovery/vmware-walkthrough-overview.md).
+* **Mobility service** is een onderdeel dat is geïmplementeerd op elke standaard-VM die u wilt repliceren. Hiermee worden gegevens geschreven op de standaard-VM vastgelegd en doorgestuurd naar de proces server. Meer informatie over de vereisten voor de [gerepliceerde machine](../../site-recovery/vmware-walkthrough-overview.md).
 
-Deze afbeelding ziet u hoe deze onderdelen werken:
+In deze afbeelding ziet u hoe deze onderdelen communiceren:
 
-![Interactie van Site Recovery-onderdelen][15]
+![Interactie van Site Recovery onderdelen][15]
 
 > [!NOTE]
-> Site Recovery biedt geen ondersteuning voor de migratie van schijven met opslagruimten.
+> Site Recovery biedt geen ondersteuning voor de migratie van schijven met opslag ruimten.
 
-Zie voor extra onderdelen voor andere scenario's, [scenarioarchitectuur](../../site-recovery/vmware-walkthrough-overview.md).
+Zie [scenario Architecture](../../site-recovery/vmware-walkthrough-overview.md)voor aanvullende onderdelen voor andere scenario's.
 
-## <a name="azure-essentials"></a>Azure essentials
+## <a name="azure-essentials"></a>Azure Essentials
 
-Dit zijn de vereisten voor Azure voor dit scenario voor migratie:
+Dit zijn de Azure-vereisten voor dit migratie scenario:
 
 * Een Azure-abonnement.
-* Een Azure premium storage-account voor het opslaan van gerepliceerde gegevens.
-* Een Azure-netwerk waarmee virtuele machines verbinding maken wanneer ze na een failover worden gemaakt. Het Azure-netwerk moet zich in dezelfde regio bevinden als het account dat in die Site Recovery wordt uitgevoerd.
-* Azure standard storage-account voor het opslaan van replicatielogboeken. Dit kan hetzelfde opslagaccount voor de VM-schijven die worden gemigreerd zijn.
+* Een Azure Premium-opslag account voor het opslaan van gerepliceerde gegevens.
+* Een virtueel Azure-netwerk waarmee Vm's verbinding maken wanneer ze tijdens de failover worden gemaakt. Het virtuele Azure-netwerk moet zich in dezelfde regio bevinden als waar Site Recovery worden uitgevoerd.
+* Een Azure Standard-opslag account voor het opslaan van replicatie Logboeken. Dit kan hetzelfde opslag account zijn voor de VM-schijven die worden gemigreerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Krijg inzicht in de relevante migratie scenario-onderdelen in de vorige sectie.
-* Plannen van uw uitvaltijd door te leren over [failover in Site Recovery](../../site-recovery/site-recovery-failover.md).
+* Meer informatie over de relevante migratie scenario onderdelen in de voor gaande sectie.
+* Plan uw downtime door te leren over [failover in site Recovery](../../site-recovery/site-recovery-failover.md).
 
-## <a name="setup-and-migration-steps"></a>Stappen voor installatie en migratie
+## <a name="setup-and-migration-steps"></a>Installatie-en migratie stappen
 
-U kunt Site Recovery gebruiken voor het migreren van Azure IaaS VM's tussen regio's of binnen dezelfde regio bevinden. De volgende instructies zijn geschikt voor dit scenario voor migratie van het artikel [repliceren virtuele VMware-machines of fysieke servers naar Azure](../../site-recovery/vmware-walkthrough-overview.md). Volg de koppelingen voor gedetailleerde stappen naast de instructies in dit artikel.
+U kunt Site Recovery gebruiken om virtuele Azure IaaS-machines te migreren tussen regio's of binnen dezelfde regio. De volgende instructies zijn afgestemd op dit migratie scenario van het artikel [replicatie van virtuele VMware-machines of fysieke servers naar Azure](../../site-recovery/vmware-walkthrough-overview.md). Volg de koppelingen voor gedetailleerde stappen naast de instructies in dit artikel.
 
-### <a name="step-1-create-a-recovery-services-vault"></a>Stap 1: Een Recovery Services-kluis maken
+### <a name="step-1-create-a-recovery-services-vault"></a>Stap 1: een Recovery Services kluis maken
 
 1. Open de [Azure Portal](https://portal.azure.com).
-2. Selecteer **een resource maken** > **Management** > **back-up** en **Site Recovery (OMS)** . U kunt ook selecteren **Bladeren** > **Recovery Services-kluis** > **toevoegen**. 
-3. Een regio die virtuele machines worden gerepliceerd naar opgeven. Selecteer de regio waar uw bron-VM's en de bron-opslagaccounts zijn voor migratie in dezelfde regio. 
+2. Selecteer **een resource maken** > **beheer** > **back-up** en **site Recovery (OMS)** . U kunt ook **bladeren** > **Recovery Services kluis** selecteren > **toevoegen**. 
+3. Geef een regio op waarnaar Vm's worden gerepliceerd. Voor het doel van de migratie in dezelfde regio selecteert u de regio waar uw bron-Vm's en bron opslag accounts zijn. 
 
-### <a name="step-2-choose-your-protection-goals"></a>Stap 2: Uw beveiligingsdoelstellingen kiezen 
+### <a name="step-2-choose-your-protection-goals"></a>Stap 2: Kies uw beveiligings doelen 
 
-1. Open op de virtuele machine waarop u wilt installeren van de configuratieserver, de [Azure-portal](https://portal.azure.com).
-2. Ga naar **Recovery Services-kluizen** > **instellingen** > **siteherstel** > **stap 1: infrastructuur voorbereiden** > **Beveiligingsdoel.**
+1. Open de [Azure Portal](https://portal.azure.com)op de virtuele machine waarop u de configuratie server wilt installeren.
+2. Ga naar **Recovery Services kluizen** > **instellingen** > **site Recovery** > **stap 1: infra structuur voorbereiden** > **beschermings doel**.
 
-   ![Bladeren naar het deelvenster beveiliging doel][2]
+   ![Bladeren naar het deel venster beveiligings doelstelling][2]
 
-3. Onder **beveiligingsdoel**, selecteer in de eerste vervolgkeuzelijst met **naar Azure**. Selecteer in de tweede vervolgkeuzelijst met **niet gevirtualiseerd / Overig**, en selecteer vervolgens **OK**.
+3. Selecteer onder **beveiligings doel**in de vervolg keuzelijst de optie **Azure**. Selecteer in de tweede vervolg keuzelijst **niet gevirtualiseerd/Overig**en selecteer vervolgens **OK**.
 
-   ![Doel-deelvenster beveiliging met ingevuld vakken][3]
+   ![Deel venster beveiligings doelstelling met ingevulde vakken][3]
 
-### <a name="step-3-set-up-the-source-environment-configuration-server"></a>Stap 3: Instellen van de bronomgeving (configuratieserver)
+### <a name="step-3-set-up-the-source-environment-configuration-server"></a>Stap 3: de bron omgeving instellen (configuratie server)
 
-1. Download **geïntegreerde Setup van Azure Site Recovery** en de kluisregistratiesleutel door te gaan naar de **infrastructuur voorbereiden** > **bron voorbereiden**  >  **-Server toevoegen** deelvensters. 
+1. Down load **Azure site Recovery Unified Setup** en de kluis registratie sleutel door naar het deel venster **infra structuur voorbereiden** > **bron voorbereiden** > **server toevoegen** te gaan. 
  
-   U moet de kluisregistratiesleutel de geïntegreerde setup uit te voeren. De sleutel blijft vijf dagen na het genereren ervan geldig.
+   U hebt de kluis registratie sleutel nodig om de geïntegreerde installatie uit te voeren. De sleutel blijft vijf dagen na het genereren ervan geldig.
 
-   ![Bladeren naar het deelvenster Server toevoegen][4]
+   ![Bladeren naar het deel venster server toevoegen][4]
 
-2. In de **-Server toevoegen** in het deelvenster een configuratieserver toevoegen.
+2. Voeg een configuratie server toe in het deel venster **server toevoegen** .
 
-   ![Deelvenster van de Server toevoegen met de configuratieserver geselecteerd][5]
+   ![Deel venster server toevoegen met configuratie server geselecteerd][5]
 
-3. Voer op de virtuele machine die u als de configuratieserver gebruikt, geïntegreerde Setup voor het installeren van de configuratieserver en de processerver. U kunt [stapsgewijs door de schermafbeeldingen](../../site-recovery/vmware-walkthrough-overview.md) om de installatie te voltooien. U kunt verwijzen naar de volgende schermafbeeldingen voor stappen die zijn opgegeven voor dit scenario voor migratie.
+3. Op de virtuele machine die u als configuratie server gebruikt, voert u Unified Setup uit om de configuratie server en de proces server te installeren. U kunt [de scherm afbeeldingen door](../../site-recovery/vmware-walkthrough-overview.md) lopen om de installatie te volt ooien. U kunt de volgende scherm afbeeldingen raadplegen voor de stappen die zijn opgegeven voor dit migratie scenario.
 
-   1. In **voordat u begint**, selecteer **de configuratieserver en processerver installeren**.
+   1. In **voordat u begint**, selecteert u **de configuratie server en proces server installeren**.
 
-      ![Voordat u begint met pagina][6]
+      ![Voordat u begint met de pagina][6]
 
-   2. In **registratie**, bladeren en selecteer de registratiesleutel die u hebt gedownload van de kluis.
+   2. Blader in **registratie**en selecteer de registratie sleutel die u hebt gedownload van de kluis.
 
-      ![Pagina voor de registratie][7]
+      ![Registratie pagina][7]
 
-   3. Selecteer bij **Details van de omgeving** of u virtuele VMware-machines wilt repliceren. Kies voor dit migratiescenario **Nee**.
+   3. Selecteer bij **Details van de omgeving** of u virtuele VMware-machines wilt repliceren. Kies **Nee**in dit migratie scenario.
 
-      ![Pagina met Details van omgeving][8]
+      ![Pagina omgevings Details][8]
 
-4. Nadat de installatie voltooid is, doet u het volgende de **Microsoft Azure Site Recovery-configuratieserver** venster:
+4. Nadat de installatie is voltooid, gaat u als volgt te werk in het venster **Microsoft Azure site Recovery configuratie server** :
  
-   1. Gebruik de **Accounts beheren** tabblad om te maken van het account dat Site Recovery kunt gebruiken voor automatische detectie. (In het scenario over het beveiligen van fysieke computers, het instellen van het account is niet relevant, maar u hebt ten minste één account om in te schakelen op een van de volgende stappen nodig. In dit geval kunt u naam het account en wachtwoord als willekeurig.) 
-   2. Gebruik de **kluis registratie** tabblad voor het uploaden van het kluisreferentiebestand.
+   1. Gebruik het tabblad **accounts beheren** om het account te maken dat site Recovery kan gebruiken voor automatische detectie. (In het scenario voor het beveiligen van fysieke computers is het instellen van het account niet relevant, maar u hebt ten minste één account nodig om een van de volgende stappen uit te voeren. In dit geval kunt u de naam van het account en het wacht woord opgeven.) 
+   2. Gebruik het tabblad **kluis registratie** om het kluis referentie bestand te uploaden.
 
-      ![Tabblad Kluisregistratie][9]
+      ![Tabblad kluis registratie][9]
 
-### <a name="step-4-set-up-the-target-environment"></a>Stap 4: De doelomgeving instellen
+### <a name="step-4-set-up-the-target-environment"></a>Stap 4: de doel omgeving instellen
 
-Selecteer **infrastructuur voorbereiden** > **doel**, en geef het implementatiemodel dat u wilt gebruiken voor virtuele machines na een failover. U kunt ervoor kiezen **klassieke** of **Resource Manager**, afhankelijk van uw scenario.
+Selecteer **infra structuur voorbereiden** > **doel**en geef het implementatie model op dat u wilt gebruiken voor vm's na een failover. U kunt **klassiek** of **Resource Manager**kiezen, afhankelijk van uw scenario.
 
-![Doel-deelvenster][10]
+![Doel venster][10]
 
 Site Recovery controleert of u een of meer compatibele Azure-opslagaccounts en -netwerken hebt. 
 
 > [!NOTE]
-> Als u een premium storage-account voor gerepliceerde gegevens gebruikt, moet u een extra standard-opslagaccount instellen voor het opslaan van replicatielogboeken.
+> Als u een Premium-opslag account gebruikt voor gerepliceerde gegevens, moet u een extra Standard-opslag account instellen om de replicatie logboeken op te slaan.
 
-### <a name="step-5-set-up-replication-settings"></a>Stap 5: Replicatie-instellingen instellen
+### <a name="step-5-set-up-replication-settings"></a>Stap 5: replicatie-instellingen instellen
 
-Om te bevestigen dat uw configuratieserver is gekoppeld aan het replicatiebeleid dat u hebt gemaakt, gaat u als volgt [replicatie-instellingen instellen](../../site-recovery/vmware-walkthrough-overview.md).
+Als u wilt controleren of uw configuratie server is gekoppeld aan het replicatie beleid dat u hebt gemaakt, volgt u [replicatie-instellingen instellen](../../site-recovery/vmware-walkthrough-overview.md).
 
-### <a name="step-6-plan-capacity"></a>Stap 6: Capaciteit plannen
+### <a name="step-6-plan-capacity"></a>Stap 6: capaciteit plannen
 
-1. Gebruik de [Capaciteitsplanner](../../site-recovery/site-recovery-capacity-planner.md) nauwkeurig te schatten netwerkbandbreedte, opslag en andere vereisten voor uw behoeften. 
-2. Wanneer u klaar bent, selecteert u **Ja, heb ik gedaan** in **hebt u plannen van capaciteit?** .
+1. Gebruik de [capaciteits planner](../../site-recovery/site-recovery-capacity-planner.md) voor een nauw keurige schatting van de netwerk bandbreedte, opslag en andere vereisten om te voldoen aan uw replicatie behoeften. 
+2. Als u klaar bent, selecteert u **Ja, ik heb dit gedaan** in **hebt u de capaciteits planning voltooid?** .
 
-   ![Vak voor het bevestigen dat u voltooid capaciteitsplanning][11]
+   ![Vak om te bevestigen dat u de capaciteits planning hebt voltooid][11]
 
-### <a name="step-7-install-the-mobility-service-and-enable-replication"></a>Stap 7: De mobility-service installeren en inschakelen van replicatie
+### <a name="step-7-install-the-mobility-service-and-enable-replication"></a>Stap 7: de Mobility-service installeren en replicatie inschakelen
 
-1. U kunt kiezen om [push-installatie](../../site-recovery/vmware-walkthrough-overview.md) aan uw bron-VM's of aan [de mobiliteitsservice handmatig installeren](../../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md) op uw bron-VM's. Hier vindt u de vereiste van de installatie en het pad van het installatieprogramma voor het handmatig pushen in de onderstaande koppeling. Als u een handmatige installatie uitvoert, moet u mogelijk een interne IP-adres gebruiken om te bepalen van de configuratieserver.
+1. U kunt ervoor kiezen om de installatie naar de bron-Vm's te [pushen](../../site-recovery/vmware-walkthrough-overview.md) of [de Mobility-service hand matig te installeren](../../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md) op de bron-vm's. U vindt de vereiste van het pushen van de installatie en het pad van het hand matige installatie programma in de meegeleverde koppeling. Als u een hand matige installatie uitvoert, moet u mogelijk een intern IP-adres gebruiken om de configuratie server te vinden.
 
-   ![Pagina met Configuration Server Details][12]
+   ![Pagina Details van de configuratie server][12]
 
-   De failover-VM heeft twee tijdelijke schijven: één van de primaire virtuele machine en de andere gemaakt tijdens het inrichten van de virtuele machine in de herstelregio voor. Als u wilt uitsluiten van de tijdelijke schijf voordat u replicatie, de mobility-service te installeren voordat u replicatie inschakelt. Zie voor meer informatie over het uitsluiten van de tijdelijke schijf, [schijven uitsluiten van replicatie](../../site-recovery/vmware-walkthrough-overview.md).
+   De failover-VM heeft twee tijdelijke schijven: een van de primaire virtuele machine en de andere die is gemaakt tijdens het inrichten van de virtuele machine in de herstel regio. Als u de tijdelijke schijf vóór replicatie wilt uitsluiten, installeert u de Mobility-service voordat u replicatie inschakelt. Zie [schijven uitsluiten van replicatie](../../site-recovery/vmware-walkthrough-overview.md)voor meer informatie over het uitsluiten van de tijdelijke schijf.
 
 2. Schakel als volgt replicatie in:
-   1. Selecteer **toepassing repliceren** > **bron**. Wanneer u replicatie voor de eerste keer inschakelt, selecteer **+ repliceren** in de kluis replicatie voor aanvullende machines in te schakelen.
-   2. Instellen in stap 1, **bron** als de processerver.
-   3. Geef in stap 2, het implementatiemodel na failover, een premium storage-account om naar te migreren, een standaardopslagaccount voor het opslaan van Logboeken en een virtueel netwerk niet kunnen worden.
-   4. In stap 3 toevoegen beveiligde virtuele machines door IP-adres. (Mogelijk moet u een interne IP-adres te zoeken.)
-   5. In stap 4, door de eigenschappen te configureren door het selecteren van de accounts die u eerder hebt ingesteld op de processerver.
-   6. In stap 5, kies het replicatiebeleid dat u eerder hebt gemaakt in ' stap 5: Instellen van replicatie-instellingen."
+   1. Selecteer **toepassing repliceren** > **bron**. Nadat u de replicatie voor de eerste keer hebt ingeschakeld, selecteert u **+ repliceren** in de kluis om replicatie in te scha kelen voor aanvullende machines.
+   2. In stap 1 stelt u de **bron** in als uw proces server.
+   3. Geef in stap 2 het implementatie model na failover op, een Premium-opslag account om te migreren naar, een Standard-opslag account om logboeken op te slaan en een virtueel netwerk te laten mislukken.
+   4. Voeg in stap 3 beveiligde Vm's toe op IP-adres. (Mogelijk hebt u een intern IP-adres nodig om ze te vinden.)
+   5. Configureer de eigenschappen in stap 4 door de accounts te selecteren die u eerder op de proces server hebt ingesteld.
+   6. Kies in stap 5 het replicatie beleid dat u eerder hebt gemaakt in ' stap 5: replicatie-instellingen instellen '.
    7. Selecteer **OK**.
 
    > [!NOTE]
-   > Wanneer een Azure-VM is de toewijzing ongedaan gemaakt en opnieuw hebt gestart, is er geen garantie dat het hetzelfde IP-adres krijgt. Als het IP-adres van de server-/ processerver voor configuratie of de beveiligde Azure-VM's wordt gewijzigd, werkt de replicatie in dit scenario mogelijk niet correct.
+   > Wanneer de toewijzing van een Azure-VM ongedaan wordt gemaakt en opnieuw wordt gestart, is er geen garantie dat het hetzelfde IP-adres krijgt. Als het IP-adres van de configuratie Server/proces server of de beveiligde Azure-Vm's wordt gewijzigd, werkt de replicatie in dit scenario mogelijk niet goed.
 
-   ![Inschakelen van replicatie deelvenster met de bron geselecteerd][13]
+   ![Het deel venster replicatie inschakelen met de geselecteerde bron][13]
 
-Bij het ontwerpen van uw Azure Storage-omgeving, wordt u aangeraden dat u afzonderlijke storage-accounts voor elke virtuele machine in een beschikbaarheidsset gebruiken. We raden u aan de aanbevolen procedure in de storage-laag naar [gebruik meerdere opslagaccounts voor elke beschikbaarheidsset](../linux/manage-availability.md). Distributie van VM-schijven naar meerdere opslagaccounts voor het verbeteren van de beschikbaarheid en de i/o verdeeld over de infrastructuur van Azure storage.
+Wanneer u uw Azure Storage-omgeving ontwerpt, raden we u aan om afzonderlijke opslag accounts voor elke virtuele machine in een beschikbaarheidsset te gebruiken. U wordt aangeraden de best practice in de opslaglaag te volgen om [meerdere opslag accounts voor elke beschikbaarheidsset te gebruiken](../linux/manage-availability.md). Het distribueren van VM-schijven naar meerdere opslag accounts helpt u bij het verbeteren van de beschik baarheid van opslag en het distribueren van de I/O over de Azure-opslag infrastructuur.
 
-Als uw VM's in een beschikbaarheidsset, in plaats van de schijven van alle virtuele machines repliceren naar een opslagaccount, sterk aangeraden meerdere keren voor meerdere virtuele machines migreren. Op die manier kunnen de virtuele machines in dezelfde beschikbaarheidsset deel niet één opslagaccount. Gebruik de **inschakelen replicatie** deelvenster kunt u een doel-opslagaccount instellen voor elke virtuele machine, één voor één.
+Als uw Vm's zich in een beschikbaarheidsset bevinden, kunt u het beste meerdere Vm's meerdere keren migreren in plaats van schijven van alle Vm's te repliceren naar één opslag account. Op die manier delen de virtuele machines in dezelfde beschikbaarheidsset niet één opslag account. Gebruik het deel venster **replicatie inschakelen** voor het instellen van een bestemmings opslag account voor elke virtuele machine, één per keer.
  
-U kunt een implementatiemodel na failover op basis van uw behoeften. Als u Azure Resource Manager als uw na een failover-implementatiemodel, kunt u een failover uitvoert voor een virtuele machine (Resource Manager) voor een VM (Resource Manager) of kunt u een failover uitvoert voor een virtuele machine (klassiek) met een virtuele machine (Resource Manager).
+U kunt een implementatie model na failover kiezen op basis van uw behoeften. Als u Azure Resource Manager opgeeft als uw implementatie model na failover, kunt u een failover uitvoeren voor een virtuele machine (Resource Manager) naar een VM (Resource Manager) of kunt u een failover uitvoeren voor een virtuele machine (klassiek) naar een virtuele machine (Resource Manager).
 
-### <a name="step-8-run-a-test-failover"></a>Stap 8: Een testfailover uitvoeren
+### <a name="step-8-run-a-test-failover"></a>Stap 8: een testfailover uitvoeren
 
-Als u wilt controleren of de replicatie voltooid is, selecteer uw exemplaar van Site Recovery en selecteer vervolgens **instellingen** > **gerepliceerde Items**. U ziet de status en het percentage van het replicatieproces. 
+Als u wilt controleren of de replicatie is voltooid, selecteert u uw Site Recovery-exemplaar en selecteert u **instellingen** > **gerepliceerde items**. U ziet de status en het percentage van het replicatie proces. 
 
-Na de initiële replicatie is voltooid, voert een testfailover uit voor het valideren van uw replicatiestrategie voor. Zie voor gedetailleerde stappen van een testfailover [een testfailover uitvoeren in Site Recovery](../../site-recovery/vmware-walkthrough-overview.md). 
+Nadat de initiële replicatie is voltooid, voert u een testfailover uit om uw replicatie strategie te valideren. Zie [een Testfailover uitvoeren in site Recovery](../../site-recovery/vmware-walkthrough-overview.md)voor gedetailleerde stappen van een testfailover. 
 
 > [!NOTE]
-> Voordat u een failover uitvoert, controleert u uw VM's en replicatiestrategie voldoen aan de vereisten. Zie voor meer informatie over het uitvoeren van een testfailover [Testfailover naar Azure in Site Recovery](../../site-recovery/site-recovery-test-failover-to-azure.md).
+> Voordat u een failover uitvoert, moet u ervoor zorgen dat uw Vm's en replicatie strategie voldoen aan de vereisten. Voor meer informatie over het uitvoeren van een testfailover raadpleegt [u testfailover naar Azure in site Recovery](../../site-recovery/site-recovery-test-failover-to-azure.md).
 
-U ziet de status van uw test-failover in **instellingen** > **taken** > *YOUR_FAILOVER_PLAN_NAME*. In het deelvenster ziet u een uitsplitsing van de stappen en geslaagde/mislukte resultaten. Als de testfailover is mislukt bij elke stap, selecteert u de stap om te controleren of het foutbericht. 
+U kunt de status van uw testfailover bekijken in **instellingen** > **taken** > *YOUR_FAILOVER_PLAN_NAME*. In het deel venster ziet u een overzicht van de stappen en geslaagde/mislukte resultaten. Als de testfailover in een wille keurige stap mislukt, selecteert u de stap om het fout bericht te controleren. 
 
-### <a name="step-9-run-a-failover"></a>Stap 9: Een failover uitvoeren
+### <a name="step-9-run-a-failover"></a>Stap 9: een failover uitvoeren
 
-Nadat de test is failover voltooid, wordt een failover uitvoeren om te migreren van uw schijven naar Premium Storage en de VM-exemplaren repliceren. Volg de gedetailleerde stappen in [een failover uitvoeren](../../site-recovery/site-recovery-failover.md#run-a-failover). 
+Nadat de testfailover is voltooid, voert u een failover uit om uw schijven naar Premium Storage te migreren en de VM-exemplaren te repliceren. Volg de gedetailleerde stappen in [een failover uitvoeren](../../site-recovery/site-recovery-failover.md#run-a-failover). 
 
-Zorg ervoor dat u selecteert **VM's af en de nieuwste gegevens synchroniseren**. Deze optie geeft aan dat Site Recovery beveiligde virtuele machines afsluiten en de gegevens te synchroniseren, zodat de meest recente versie van de gegevens wordt een failover moet proberen. Als u deze optie niet selecteert of als de poging mislukt, worden de failover van de meest recente beschikbare herstelpunt voor de virtuele machine. 
+Zorg ervoor dat u **Afsluiten vm's selecteert en de meest recente gegevens synchroniseert**. Met deze optie geeft u op dat Site Recovery moet proberen om de beveiligde Vm's af te sluiten en de gegevens te synchroniseren, zodat er een failover wordt uitgevoerd voor de nieuwste versie van de gegevens. Als u deze optie niet selecteert of als de poging mislukt, is de failover van het meest recente beschik bare herstel punt voor de virtuele machine. 
 
-Site Recovery maakt u een VM-exemplaar waarvan het type hetzelfde als of vergelijkbaar met een Premium Storage-compatibele VM is. U kunt de prestaties en de prijs van verschillende VM-exemplaren controleren door te gaan naar [prijzen van virtuele Machines in Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) of [prijzen van Linux virtuele Machines](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+Site Recovery maakt een VM-exemplaar waarvan het type hetzelfde is als of vergelijkbaar is met een virtuele machine die Premium Storage ondersteunt. U kunt de prestaties en prijs van verschillende VM-exemplaren controleren door te gaan naar [Windows virtual machines prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) of [Linux virtual machines prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 ## <a name="post-migration-steps"></a>Stappen na de migratie
 
-1. **Gerepliceerde VM's aan de beschikbaarheidsset indien van toepassing configureren**. Site Recovery biedt geen ondersteuning voor migratie van VM's, samen met de beschikbaarheidsset. Afhankelijk van de implementatie van uw gerepliceerde virtuele machine, moet u een van de volgende handelingen:
-   * Voor een virtuele machine die zijn gemaakt via het klassieke implementatiemodel: De virtuele machine toevoegen aan de beschikbaarheidsset in de Azure-portal. Ga voor gedetailleerde stappen naar [een bestaande virtuele machine toevoegen aan een beschikbaarheidsset](../linux/classic/configure-availability-classic.md).
-   * Voor een virtuele machine die via het Resource Manager-implementatiemodel zijn gemaakt: De configuratie van de virtuele machine op te slaan en vervolgens verwijderen en opnieuw maken van de virtuele machines in de beschikbaarheidsset. Om dit te doen, gebruikt u het script op [ingesteld Azure Resource Manager VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). Voordat u dit script uitvoert, controleert u de beperkingen en plan uw downtime.
+1. **Configureer gerepliceerde vm's naar de beschikbaarheidsset, indien van toepassing**. Site Recovery biedt geen ondersteuning voor het migreren van Vm's samen met de beschikbaarheidsset. Voer een van de volgende handelingen uit, afhankelijk van de implementatie van uw gerepliceerde VM:
+   * Voor een virtuele machine die is gemaakt via het klassieke implementatie model: Voeg de virtuele machine toe aan de beschikbaarheidsset in de Azure Portal. Ga voor gedetailleerde stappen naar [een bestaande virtuele machine toevoegen aan een beschikbaarheidsset](../linux/classic/configure-availability-classic.md).
+   * Voor een virtuele machine die is gemaakt via het Resource Manager-implementatie model: Sla uw configuratie van de virtuele machine op en verwijder de virtuele machines in de beschikbaarheidsset. Gebruik hiervoor het script op [set Azure Resource Manager-beschikbaarheidsset voor de virtuele machine](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). Voordat u dit script uitvoert, moet u de beperkingen controleren en uw downtime plannen.
 
-2. **Verwijderen van oude VM's en schijven**. Zorg ervoor dat de Premium-schijven consistent met bronschijven zijn en dat de nieuwe VM's uit te dezelfde functie als de bron-VM's voeren. Verwijderen van de virtuele machine en verwijder de schijven van de bron-storage-accounts in Azure portal. Als er een probleem is in dat de schijf is niet verwijderd, zelfs als u de virtuele machine verwijderd, raadpleegt u [oplossen van fouten bij het verwijderen van het storage-resource](storage-resource-deletion-errors.md).
+2. **Oude vm's en schijven verwijderen**. Zorg ervoor dat de Premium-schijven consistent zijn met de bron schijven en dat de nieuwe Vm's dezelfde functie uitvoeren als de bron-Vm's. Verwijder de virtuele machine en verwijder de schijven uit uw bron opslag accounts in de Azure Portal. Zie [problemen met het verwijderen van opslag resources oplossen](storage-resource-deletion-errors.md)als er een probleem is waarbij de schijf niet wordt verwijderd, ook al hebt u de virtuele machine verwijderd.
 
-3. **Opschonen van de Azure Site Recovery-infrastructuur**. Als u Site Recovery is niet meer nodig hebt, kunt u de infrastructuur opschonen. Gerepliceerde items, de configuratieserver en het beleid voor herstel verwijderen en verwijder vervolgens de Azure Site Recovery-kluis.
+3. **Reinig de Azure site Recovery-infra structuur**. Als Site Recovery niet meer nodig is, kunt u de infra structuur ervan opschonen. Verwijder gerepliceerde items, de configuratie server en het herstel beleid en verwijder vervolgens de Azure Site Recovery kluis.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-* [Bewaken en problemen oplossen van beveiliging voor virtuele machines en fysieke servers](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
-* [Microsoft Azure Site Recovery-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
+* [Beveiliging van virtuele machines en fysieke servers controleren en problemen oplossen](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
+* [Microsoft Azure Site Recovery forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor specifieke scenario's voor migratie van virtuele machines, de volgende bronnen:
+Raadpleeg de volgende bronnen voor specifieke scenario's voor het migreren van virtuele machines:
 
-* [Azure virtuele Machines migreren tussen Opslagaccounts](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Een Linux virtuele harde schijf uploaden](upload-vhd.md)
-* [Migreren van virtuele Machines van Amazon AWS naar Microsoft Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
+* [Azure Virtual Machines migreren tussen opslag accounts](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
+* [Een virtuele harde schijf met Linux uploaden](upload-vhd.md)
+* [Virtual Machines migreren van Amazon AWS naar Microsoft Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
-Zie ook de volgende bronnen voor meer informatie over Azure Storage en Azure Virtual Machines:
+Raadpleeg ook de volgende bronnen voor meer informatie over Azure Storage en Azure Virtual Machines:
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Selecteer een schijftype voor IaaS-VM 's](disks-types.md)
+* [Selecteer een schijf type voor IaaS Vm's](disks-types.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

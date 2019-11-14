@@ -1,10 +1,9 @@
 ---
-title: Beheer kosten effectief voor SQL Server op virtuele machines van Azure | Microsoft Docs
+title: Prijs informatie & het beheren van kosten
 description: Biedt aanbevolen procedures voor het kiezen van het juiste SQL Server prijs model voor de virtuele machine.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -15,14 +14,15 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 604f18fe2fbf4d8b4f3778817455d92a2811620b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 076d6fc387aaee85a1cd407fa48e7347ff185ef4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028625"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038866"
 ---
-# <a name="pricing-guidance-for-sql-server-azure-vms"></a>Prijs informatie voor SQL Server Azure-Vm's
+# <a name="pricing-guidance-for-azure-sql-server-vms"></a>Prijs informatie voor Azure SQL Server Vm's
 
 Dit artikel bevat richt lijnen voor de prijs informatie voor [SQL Server virtuele machines](virtual-machines-windows-sql-server-iaas-overview.md) in Azure. Er zijn verschillende opties die van invloed zijn op de kosten. het is belang rijk dat u de juiste afbeelding kiest die de kosten in balans brengt met bedrijfs vereisten.
 
@@ -58,7 +58,7 @@ Als u een niet-lichte productie werk belasting hebt, gebruikt u een van de volge
 |-----|-----|
 | Web | Kleine websites |
 | Standard | Kleine tot middel grote werk belastingen |
-| Zakelijk | Grote of bedrijfskritische workloads|
+| Enterprise | Grote of bedrijfskritische workloads|
 
 U hebt twee opties om te betalen voor SQL Server licenties voor deze edities: u *betaalt per gebruik* of *u kunt uw eigen licentie (BYOL) meenemen*.
 
@@ -111,7 +111,7 @@ U wordt aangeraden uw eigen SQL-licentie te halen via License Mobility.
 
 Als u BYOL wilt gebruiken met een SQL Server-VM, moet u een licentie hebben voor SQL Server Standard of ENTER prise en [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1), een vereiste optie via sommige volume licentie Programma's en een optionele aankoop met anderen. Het prijs niveau dat door de volume licentie Programma's wordt gegeven, is afhankelijk van het type overeenkomst en het aantal en of de toezeg ging naar SQL Server. Maar als vuist regel biedt uw eigen licentie voor continue productie werkbelastingen de volgende voor delen:
 
-| BYOL voor deel | Description |
+| BYOL voor deel | Beschrijving |
 |-----|-----|
 | **Kosten besparingen** | De [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) biedt een besparing van maxi maal 55%. Zie voor meer informatie [switching licentie model](virtual-machines-windows-sql-ahb.md) |
 | **Gratis passieve secundaire replica** | Een ander voor deel van het meebrengen van uw eigen licentie is de [gratis licentie voor één passieve secundaire replica](https://azure.microsoft.com/pricing/licensing-faq/) per SQL Server voor hoge Beschik baarheid. Dit is de helft van de licentie kosten van een Maxi maal beschik bare SQL Server implementatie (bijvoorbeeld met behulp van AlwaysOn-beschikbaarheids groepen). De rechten om de passieve secundaire uit te voeren, worden verschaft via de Software Assurance-voor delen van failover-servers. |

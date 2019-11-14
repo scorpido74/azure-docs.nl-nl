@@ -1,5 +1,5 @@
 ---
-title: Inleiding tot FreeBSD in azure | Microsoft Docs
+title: Inleiding tot FreeBSD op Azure
 description: Meer informatie over het gebruik van virtuele FreeBSD-machines in azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: c1ac7a0310eda032b45fb57cea95ba38b753ef1d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: d243806d619aa6d7328220eae53804d734737489
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695349"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036111"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Inleiding tot FreeBSD op Azure
 Dit artikel bevat een overzicht van het uitvoeren van een FreeBSD-virtuele machine in Azure.
@@ -59,7 +59,7 @@ sudo rm /usr/local/bin/python 
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
-Tijdens de installatie wordt u gevraagd `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)` op te vragen. Als u `y` beantwoordt en `/etc/rc.conf` als `a path to an rc file to update` opgeeft, kunt u aan het probleem `ERROR: [Errno 13] Permission denied` voldoen. Als u dit probleem wilt oplossen, moet u het schrijf recht toekennen aan de huidige gebruiker op het bestand `etc/rc.conf`.
+Tijdens de installatie wordt u gevraagd `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`. Als u `y` beantwoordt en `/etc/rc.conf` als `a path to an rc file to update`invoert, kunt u aan het probleem `ERROR: [Errno 13] Permission denied`. Als u dit probleem wilt oplossen, moet u het schrijf recht toekennen aan de huidige gebruiker op basis van het bestand `etc/rc.conf`.
 
 Nu kunt u zich aanmelden bij Azure en uw FreeBSD-VM maken. Hieronder ziet u een voor beeld van het maken van een FreeBSD 11,0-VM. U kunt ook de para meter `--public-ip-address-dns-name` toevoegen met een wereld wijd unieke DNS-naam voor een nieuw, gemaakt openbaar IP-adres. 
 

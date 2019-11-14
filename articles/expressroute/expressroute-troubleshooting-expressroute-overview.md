@@ -1,5 +1,5 @@
 ---
-title: 'Connectiviteit controleren-ExpressRoute-probleemoplossings gids: Azure | Microsoft Docs'
+title: 'Azure-ExpressRoute: Controleer de connectiviteit-probleemoplossings gids'
 description: Op deze pagina vindt u instructies voor het oplossen van problemen en het valideren van end-to-end-connectiviteit van een ExpressRoute-circuit.
 services: expressroute
 author: rambk
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: c5001e884047fc6078faf3a8de0e45b7e30e1038
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580300"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033791"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Connectiviteit ExpressRoute controleren
 Dit artikel helpt u bij het controleren en oplossen van problemen met ExpressRoute-connectiviteit. Met ExpressRoute wordt een on-premises netwerk uitgebreid naar de micro soft-Cloud via een particuliere verbinding die meestal wordt vereenvoudigd door een connectiviteits provider. Voor ExpressRoute-connectiviteit is traditioneel drie afzonderlijke netwerk zones vereist:
@@ -289,7 +289,7 @@ Een voorbeeld uitvoer van de opdracht voor een niet-bestaande peering is:
     StatusCode: 400
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de volgende koppelingen voor meer informatie of hulp:
+Raadpleeg de volgende koppelingen voor meer informatie en hulp:
 
 - [Microsoft Ondersteuning][Support]
 - [Een ExpressRoute-circuit maken en wijzigen][CreateCircuit]

@@ -1,6 +1,6 @@
 ---
-title: Ondersteuning voor SQL Server 2008 en SQL Server 2008 R2 met Azure uitbreiden
-description: Meer informatie over het uitbreiden van de ondersteuning voor SQL Server 2008 en SQL Server 2008 R2 door uw SQL Server-exemplaar te migreren naar Azure, of om uitgebreide ondersteuning te kopen om instanties on-premises te blijven gebruiken.
+title: Ondersteuning voor SQL Server 2008 & 2008 R2 uitbreiden
+description: Breid ondersteuning uit voor SQL Server 2008 en SQL Server 2008 R2 door uw SQL Server-exemplaar te migreren naar Azure, of om uitgebreide ondersteuning te kopen om instanties on-premises te blijven gebruiken.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 93e0032cd283eda034519ca29a0e1cf501b5cde6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d1b3961b61d45718e726b31ec406445b202a0adf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100456"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034180"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Ondersteuning voor SQL Server 2008 en SQL Server 2008 R2 met Azure uitbreiden
 
@@ -37,9 +38,9 @@ Klanten die zich op SQL Server 2008 bevinden, moeten zelf een installatie of upg
 Voor installatie kopieën die via Azure Marketplace worden geïmplementeerd, wordt de SQL IaaS-extensie vooraf geïnstalleerd. De SQL IaaS-uitbrei ding is een vereiste voor flexibele licenties en automatische patching. Klanten die zelf geïnstalleerde Vm's implementeren, moeten de SQL IaaS-extensie hand matig installeren. De SQL IaaS-extensie wordt niet ondersteund in Windows Server 2008.
 
 > [!NOTE]
-> Hoewel de SQL Server Blades **maken** en **beheren** met de SQL Server 2008 R2-installatie kopie in de Azure Portal worden gebruikt, worden de volgende functies _niet ondersteund_: Automatische back-ups, integratie van Azure Key Vault, R-Services en opslag configuratie.
+> Hoewel de SQL Server Blades **maken** en **beheren** met de SQL Server 2008 R2-installatie kopie in de Azure Portal worden gebruikt, worden de volgende functies _niet ondersteund_: automatische back-ups, Azure Key Vault integratie, R Services en opslag configuratie.
 
-## <a name="licensing"></a>Licenties
+## <a name="licensing"></a>Licentieverlening
 Betalen per gebruik SQL Server 2008 R2-implementaties kunnen worden omgezet in [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Als u een op Software Assurance (SA) gebaseerde licentie wilt converteren naar betalen per gebruik, moeten klanten zich registreren bij de [resource provider](virtual-machines-windows-sql-register-with-resource-provider.md)van de SQL-VM. Na deze registratie is het SQL-licentie type onderling verwisselbaar tussen Azure Hybrid Benefit en betalen per gebruik.
@@ -59,13 +60,13 @@ SQL Server vereist toepassings consistente Azure Site Recovery moment opnamen om
 
 De [database Migration service](/azure/dms/dms-overview) is een optie voor klanten als ze worden gemigreerd van on-premises naar een virtuele Azure-machine door SQL Server te upgraden naar versie 2012 of hoger.
 
-## <a name="disaster-recovery"></a>Herstel na noodgeval
+## <a name="disaster-recovery"></a>Herstel na noodgevallen
 
 Oplossingen voor nood herstel voor EOS SQL Server op een Azure VM zijn als volgt:
 
-- **SQL Server-back-ups**: Gebruik Azure Backup om uw EOS-SQL Server te beschermen tegen Ransomware, onbedoeld verwijderen en beschadiging. De oplossing is momenteel als preview-versie beschikbaar voor EOS-SQL Server en ondersteunt SQL Server 2008 en 2008 R2 die worden uitgevoerd op Windows 2008 R2 SP1. Zie [dit artikel](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2)voor meer informatie.
-- **Logboek verzending**: U kunt een back-upreplica van het logboek maken in een andere zone of Azure-regio met doorlopende herstel bewerkingen om de RTO te verminderen. U moet de verzen ding van het logboek hand matig configureren.
-- **Azure Site Recovery**: U kunt uw virtuele machine repliceren tussen zones en regio's via Azure Site Recovery replicatie. SQL Server vereist app-consistente moment opnamen om herstel in het geval van een ramp te garanderen. Azure Site Recovery biedt een minimale RPO van 1 uur en een periode van twee uur (plus SQL Server herstel tijd) RTO voor EOS SQL Server herstel na nood gevallen.
+- **SQL Server back-ups**: gebruik Azure backup om uw EOS SQL Server te beschermen tegen Ransomware, onbedoeld verwijderen en beschadiging. De oplossing is momenteel als preview-versie beschikbaar voor EOS-SQL Server en ondersteunt SQL Server 2008 en 2008 R2 die worden uitgevoerd op Windows 2008 R2 SP1. Zie [dit artikel](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2)voor meer informatie.
+- **Logboek verzending**: u kunt een back-upreplica van het logboek maken in een andere zone of Azure-regio met doorlopende herstel bewerkingen om de RTO te verminderen. U moet de verzen ding van het logboek hand matig configureren.
+- **Azure site Recovery**: u kunt uw virtuele machine repliceren tussen zones en regio's via Azure site Recovery replicatie. SQL Server vereist app-consistente moment opnamen om herstel in het geval van een ramp te garanderen. Azure Site Recovery biedt een minimale RPO van 1 uur en een periode van twee uur (plus SQL Server herstel tijd) RTO voor EOS SQL Server herstel na nood gevallen.
 
 ## <a name="security-patching"></a>Beveiligings patches
 Uitgebreide beveiligings updates voor SQL Server Vm's worden geleverd via de Microsoft Update kanalen nadat de SQL Server VM is geregistreerd bij de [resource provider](virtual-machines-windows-sql-register-with-resource-provider.md)van de SQL-VM. Patches kunnen hand matig of automatisch worden gedownload.

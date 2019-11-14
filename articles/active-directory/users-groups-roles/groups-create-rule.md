@@ -1,25 +1,25 @@
 ---
-title: Een dynamische groep maken en de status controleren-Azure Active Directory | Microsoft Docs
+title: Een dynamische groep maken en de status controleren-Azure AD | Microsoft Docs
 description: Een regel voor groepslid maatschap maken in de Azure Portal, status controleren.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343acce228c38e38152fc2ea9d8fe0a59d8254d4
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: c487ed02abda652a384f2f295c3edac4b56fc654
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193947"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027246"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Een dynamische groep maken en de status controleren
 
@@ -35,7 +35,7 @@ Hier volgen enkele voor beelden van geavanceerde regels of syntaxis voor het mak
 - Regel met meer dan vijf expressies
 - De regel voor directe rapporten
 - De [prioriteit van Opera tors](groups-dynamic-membership.md#operator-precedence) instellen
-- [Regels met complexe expressies](groups-dynamic-membership.md#rules-with-complex-expressions); bijvoorbeeld`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [Regels met complexe expressies](groups-dynamic-membership.md#rules-with-complex-expressions); bijvoorbeeld `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > De opbouw functie voor regels kan mogelijk geen regels weer geven die zijn gemaakt in het tekstvak. Mogelijk wordt er een bericht weer gegeven wanneer de regel functie de regel niet kan weer geven. De opbouw functie voor regels wijzigt niet de ondersteunde syntaxis, validatie of verwerking van dynamische groeps regels op enigerlei wijze.
@@ -70,23 +70,23 @@ Wanneer een nieuwe Office 365-groep wordt gemaakt, wordt een welkomst-e-mail mel
 
 ## <a name="check-processing-status-for-a-rule"></a>De verwerkings status controleren voor een regel
 
-U kunt de verwerkings status van lidmaatschap en de datum van laatste update voor de groep zien.
+U kunt de verwerkings status van lidmaatschap en de datum van laatste update **voor de groep** zien.
   
   ![weer gave van de status van de dynamische groep](./media/groups-create-rule/group-status.png)
 
-De volgende status berichten kunnen worden weer gegeven voor de verwerkings status van lidmaatschappen:
+De volgende status berichten kunnen worden weer gegeven voor de **verwerkings status van lidmaatschappen** :
 
-- **Evalueren**:  De groeps wijziging is ontvangen en de updates worden geëvalueerd.
-- **Verwerken**: De updates worden verwerkt.
-- **Update voltooid**: De verwerking is voltooid en alle toepasselijke updates zijn uitgevoerd.
-- **Verwerkings fout**:  De verwerking kan niet worden voltooid vanwege een fout bij het evalueren van de lidmaatschaps regel.
-- **Update onderbroken**: Updates voor dynamische lidmaatschaps regel zijn onderbroken door de beheerder. MembershipRuleProcessingState is ingesteld op ' paused '.
+- **Evalueren**: de groeps wijziging is ontvangen en de updates worden geëvalueerd.
+- **Verwerken**: updates worden verwerkt.
+- **Update voltooid**: verwerking is voltooid en alle toepasselijke updates zijn aangebracht.
+- **Verwerkings fout**: verwerking kan niet worden voltooid vanwege een fout bij het evalueren van de lidmaatschaps regel.
+- **Update onderbroken**: updates van dynamische lidmaatschaps regel zijn onderbroken door de beheerder. MembershipRuleProcessingState is ingesteld op ' paused '.
 
 De volgende status berichten kunnen worden weer gegeven voor het lidmaatschap van de **laatste bijgewerkte** status:
 
-- &lt;**Datum en tijd**&gt;: De laatste keer dat het lidmaatschap is bijgewerkt.
-- Wordt **uitgevoerd**: Updates worden momenteel uitgevoerd.
-- **Onbekend**: De tijd van de laatste update kan niet worden opgehaald. De groep is mogelijk nieuw.
+- &lt;**datum en tijd**&gt;: de laatste keer dat het lidmaatschap is bijgewerkt.
+- Wordt **uitgevoerd**: updates worden momenteel uitgevoerd.
+- **Onbekend**: de tijd van de laatste update kan niet worden opgehaald. De groep is mogelijk nieuw.
 
 Als er een fout optreedt tijdens het verwerken van de lidmaatschaps regel voor een specifieke groep, wordt er een waarschuwing weer gegeven boven aan de **pagina overzicht** voor de groep. Als er in behandeling zijnde dynamische lidmaatschaps updates voor alle groepen in de Tenant meer dan 24 uur kunnen worden verwerkt, wordt een waarschuwing weer gegeven aan de bovenkant van **alle groepen**.
 

@@ -1,5 +1,5 @@
 ---
-title: Een virtuele Azure-machine maken en beheren C# met | Microsoft Docs
+title: Een virtuele Azure-machine maken en beheren metC#
 description: Gebruik C# en Azure Resource Manager voor het implementeren van een virtuele machine en alle ondersteunende resources.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: c6d092889deec934f1db1f1c93c06aa0dc217df5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe838ade7a65161efaeb60b9e4d8de17a7080da1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079593"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032792"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Virtuele Windows-machines maken en beheren in azure met behulp vanC# #
 
-Een [virtuele machine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) van Azure heeft verschillende ondersteunende Azure-resources nodig. In dit artikel wordt beschreven hoe u VM-resources kunt maken C#, beheren en verwijderen met. In deze zelfstudie leert u procedures om het volgende te doen:
+Een [virtuele machine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) van Azure heeft verschillende ondersteunende Azure-resources nodig. In dit artikel wordt beschreven hoe u VM-resources kunt maken C#, beheren en verwijderen met. Procedures voor:
 
 > [!div class="checklist"]
 > * Een Visual Studio-project maken
@@ -59,7 +59,7 @@ Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een 
 
 ### <a name="create-the-authorization-file"></a>Het autorisatie bestand maken
 
-1. Klik in Solution Explorer met de rechter muisknop op *myDotnetProject* > **Nieuw item** **toevoegen** > en selecteer vervolgens **tekst bestand** in *visuele C# items*. Noem het bestand *azureauth. Properties*en klik vervolgens op **toevoegen**.
+1. Klik in Solution Explorer met de rechter muisknop op *myDotnetProject* >  ** > nieuw item** **toe te voegen** en selecteer vervolgens **tekst bestand** in *visuele C# items*. Noem het bestand *azureauth. Properties*en klik vervolgens op **toevoegen**.
 2. Voeg deze autorisatie-eigenschappen toe:
 
     ```
@@ -73,10 +73,10 @@ Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een 
     graphURL=https://graph.windows.net/
     ```
 
-    De **&lt;abonnements-id&gt;** vervangen door de id van **&lt;&gt;** uw abonnement, de toepassings-id met de Active Directory toepassings-id, **&lt;verificatie sleutel met&gt;** de toepassings sleutel en **&lt;Tenant-id&gt;** met de Tenant-id.
+    Vervang **&lt;abonnement-id&gt;** door uw abonnements-id, **&lt;toepassings-id&gt;** met de Active Directory toepassings-id, **&lt;verificatie sleutel&gt;** met de toepassings sleutel en **&lt;Tenant-id&gt;** met de Tenant-id.
 
 3. Sla het bestand azureauth. Properties op. 
-4. Stel in Windows een omgevings variabele in met de naam AZURE_AUTH_LOCATION met het volledige pad naar het autorisatie bestand dat u hebt gemaakt. U kunt bijvoorbeeld de volgende Power shell-opdracht gebruiken:
+4. Stel een omgevings variabele in Windows met de naam AZURE_AUTH_LOCATION met het volledige pad naar het autorisatie bestand dat u hebt gemaakt. U kunt bijvoorbeeld de volgende Power shell-opdracht gebruiken:
 
     ```
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
@@ -349,7 +349,7 @@ Console.ReadLine();
 
 ### <a name="resize-the-vm"></a>Grootte van de virtuele machine wijzigen
 
-Veel aspecten van de implementatie moeten worden overwogen bij het bepalen van de grootte van de virtuele machine. Zie [VM](sizes.md)-grootten voor meer informatie.  
+Veel aspecten van de implementatie moeten worden overwogen bij het bepalen van de grootte van de virtuele machine. Zie [VM-grootten](sizes.md)voor meer informatie.  
 
 Als u de grootte van de virtuele machine wilt wijzigen, voegt u deze code toe aan de methode Main:
 

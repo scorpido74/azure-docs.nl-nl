@@ -1,5 +1,5 @@
 ---
-title: Azure File Storage koppelen op Linux Vm's met behulp van SMB | Microsoft Docs
+title: Azure File Storage koppelen aan linux-Vm's met behulp van SMB
 description: Azure File Storage koppelen op Linux Vm's met behulp van SMB met de Azure CLI
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: effe1169fb531abd3fe8a206f2baf83380fcd28f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0918cfda81be93982c1ca6eccce0c116ac65ca28
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828403"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035664"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Azure File Storage koppelen aan linux-Vm's met behulp van SMB
 
@@ -39,9 +39,9 @@ Maak een resource groep met de naam *myResourceGroup* op de locatie *VS-Oost* .
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Een opslagaccount maken
 
-Maak een nieuw opslag account in de resource groep die u hebt gemaakt met [AZ Storage account create](/cli/azure/storage/account). In dit voor beeld wordt een opslag account gemaakt met de naam *mySTORAGEACCT @ no__t-1random number >* en wordt de naam van dat opslag account in de variabele **STORAGEACCT**geplaatst. Namen van opslag accounts moeten uniek zijn, met behulp van `$RANDOM` voegt een getal toe aan het einde om het uniek te maken.
+Maak een nieuw opslag account in de resource groep die u hebt gemaakt met [AZ Storage account create](/cli/azure/storage/account). In dit voor beeld wordt een opslag account gemaakt met de naam *mySTORAGEACCT\<wille keurig getal >* en wordt de naam van dat opslag account in de variabele **STORAGEACCT**geplaatst. Namen van opslag accounts moeten uniek zijn. met `$RANDOM` wordt een getal aan het einde toegevoegd om het uniek te maken.
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -69,7 +69,7 @@ STORAGEKEY=$(az storage account keys list \
 
 Maak de bestands opslag share met [AZ Storage share Create](/cli/azure/storage/share). 
 
-Share namen moeten bestaan uit kleine letters, cijfers en enkele afbreek streepjes, maar mogen niet beginnen met een koppel teken. Zie [Shares, mappen, bestanden en metagegevens een naam geven en hiernaar verwijzen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) voor meer informatie over de naamgeving van bestandsshares en bestanden.
+Share namen moeten bestaan uit kleine letters, cijfers en enkele afbreek streepjes, maar mogen niet beginnen met een koppel teken. Zie [Naming and Referencing Shares, Directories, Files, and Metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) (Shares, mappen, bestanden en metagegevens een naam geven en hiernaar verwijzen) voor meer informatie over de naamgeving van bestandsshares en bestanden.
 
 In dit voor beeld wordt een share gemaakt met de naam *MyShare* met een GiB-quotum van 10. 
 
@@ -99,7 +99,7 @@ Koppel de Azure-bestands share aan de lokale map.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
-De bovenstaande opdracht gebruikt de [koppelings](https://linux.die.net/man/8/mount) opdracht voor het koppelen van de Azure-bestands share en opties die specifiek zijn voor [CIFS](https://linux.die.net/man/8/mount.cifs). Met name de opties file_mode en dir_mode stellen bestanden en mappen in op machtiging `0777`. De machtiging @no__t 0 biedt Lees-, schrijf-en uitvoer machtigingen voor alle gebruikers. U kunt deze machtigingen wijzigen door de waarden te vervangen door andere [CHMOD-machtigingen](https://en.wikipedia.org/wiki/Chmod). U kunt ook andere [CIFS](https://linux.die.net/man/8/mount.cifs) -opties gebruiken, zoals GID of UID. 
+De bovenstaande opdracht gebruikt de [koppelings](https://linux.die.net/man/8/mount) opdracht voor het koppelen van de Azure-bestands share en opties die specifiek zijn voor [CIFS](https://linux.die.net/man/8/mount.cifs). Met name de opties file_mode en dir_mode stellen bestanden en mappen in op machtigingen `0777`. De machtiging `0777` biedt Lees-, schrijf-en uitvoer machtigingen voor alle gebruikers. U kunt deze machtigingen wijzigen door de waarden te vervangen door andere [CHMOD-machtigingen](https://en.wikipedia.org/wiki/Chmod). U kunt ook andere [CIFS](https://linux.die.net/man/8/mount.cifs) -opties gebruiken, zoals GID of UID. 
 
 
 ## <a name="persist-the-mount"></a>De koppeling persistent maken

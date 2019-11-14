@@ -1,5 +1,5 @@
 ---
-title: Pakket filter van FreeBSD gebruiken om een firewall te maken in azure | Microsoft Docs
+title: Pakket filter van FreeBSD gebruiken om een firewall te maken in azure
 description: Meer informatie over het implementeren van een NAT-firewall met de PF van FreeBSD in Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 8f06762fd84767ac4c6dfce67d547a1f311afcba
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5daceeb2c8f2497288c7891dbe3fb3e0771b2ed5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083242"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036099"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Het pakket filter van FreeBSD gebruiken om een beveiligde firewall te maken in azure
 In dit artikel wordt beschreven hoe u een NAT-firewall implementeert met behulp van het pakket filter van FreeBSD via Azure Resource Manager sjabloon voor een algemeen webserver scenario.
@@ -34,13 +34,13 @@ Met de Azure Resource Manager sjabloon wordt een virtuele FreeBSD-machine ingest
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Implementeren via Azure CLI
-U hebt de nieuwste [Azure cli](/cli/azure/install-az-cli2) geïnstalleerd en u moet zijn aangemeld bij een Azure-account met behulp van [AZ login](/cli/azure/reference-index). Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voor beeld wordt de naam `myResourceGroup` van een `West US` resource groep gemaakt op de locatie.
+U hebt de nieuwste [Azure cli](/cli/azure/install-az-cli2) geïnstalleerd en u moet zijn aangemeld bij een Azure-account met behulp van [AZ login](/cli/azure/reference-index). Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voor beeld wordt de naam van een resource groep `myResourceGroup` op de `West US` locatie.
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-Implementeer vervolgens de sjabloon [PF-FreeBSD-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) met [AZ Group Deployment Create](/cli/azure/group/deployment). Down load [azuredeploy. para meters. json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) onder hetzelfde pad en Definieer uw eigen resource waarden, `adminPassword`zoals `networkPrefix`, en `domainNamePrefix`. 
+Implementeer vervolgens de sjabloon [PF-FreeBSD-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) met [AZ Group Deployment Create](/cli/azure/group/deployment). Down load [azuredeploy. para meters. json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) onder hetzelfde pad en Definieer uw eigen resource waarden, zoals `adminPassword`, `networkPrefix`en `domainNamePrefix`. 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \
@@ -48,7 +48,7 @@ az group deployment create --resource-group myResourceGroup --name myDeploymentN
     --parameters '@azuredeploy.parameters.json' --verbose
 ```
 
-Na ongeveer vijf minuten krijgt u de gegevens van `"provisioningState": "Succeeded"`. Vervolgens kunt u met behulp van het open bare IP-adres of de FQDN-naam van de frontend-VM (NAT) naar de front-end-VM (NAT) of toegang tot nginx-webserver in een browser. In het volgende voor beeld worden de FQDN en het open bare IP-adres weer gegeven die zijn toegewezen `myResourceGroup` aan de frontend-VM (NAT) in de resource groep. 
+Na ongeveer vijf minuten krijgt u de informatie over `"provisioningState": "Succeeded"`. Vervolgens kunt u met behulp van het open bare IP-adres of de FQDN-naam van de frontend-VM (NAT) naar de front-end-VM (NAT) of toegang tot nginx-webserver in een browser. In het volgende voor beeld worden de FQDN en het open bare IP-adres weer gegeven die zijn toegewezen aan de frontend-VM (NAT) in de `myResourceGroup` resource groep. 
 
 ```azurecli
 az network public-ip list --resource-group myResourceGroup

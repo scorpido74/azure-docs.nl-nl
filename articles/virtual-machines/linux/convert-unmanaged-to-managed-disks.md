@@ -1,5 +1,5 @@
 ---
-title: Een virtuele Linux-machine in azure converteren van niet-beheerde schijven naar beheerde schijven-Azure Managed Disks | Microsoft Docs
+title: Een virtuele Linux-machine in azure converteren van niet-beheerde schijven naar beheerde schijven-Azure Managed Disks
 description: Een Linux-VM van niet-beheerde schijven converteren naar beheerde schijven met behulp van Azure CLI in het Resource Manager-implementatie model
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: a0157e75d0c8d2c2493792bcd8d30a856f8072b6
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 5464dd2ab2ab7c783945cc068a1347d7ef9ad3ab
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696078"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036610"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Een virtuele Linux-machine van niet-beheerde schijven converteren naar beheerde schijven
 
@@ -30,19 +30,19 @@ In dit artikel wordt beschreven hoe u Vm's kunt converteren met behulp van de Az
 ## <a name="convert-single-instance-vms"></a>Vm's met één exemplaar converteren
 In deze sectie wordt beschreven hoe u virtuele Azure-machines met één exemplaar converteert van niet-beheerde schijven naar beheerde schijven. (Als uw Vm's zich in een beschikbaarheidsset bevinden, raadpleegt u de volgende sectie.) U kunt dit proces gebruiken om de virtuele machines van de niet-beheerde schijven van Premium (SSD) te converteren naar Premium Managed disks of van standaard schijven (HDD) op standaard beheerde schijven.
 
-1. De toewijzing van de virtuele machine ongedaan maken met behulp van [AZ VM deallocate](/cli/azure/vm). `myVM` In het volgende voor beeld wordt de toewijzing van de virtuele machine met de `myResourceGroup`naam in de resource groep met de naam:
+1. De toewijzing van de virtuele machine ongedaan maken met behulp van [AZ VM deallocate](/cli/azure/vm). In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam `myVM` in de resource groep met de naam `myResourceGroup`ongedaan gemaakt:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-2. Converteer de VM naar Managed disks met behulp van [AZ VM Convert](/cli/azure/vm). Met het volgende proces wordt de VM `myVM`met de naam, met inbegrip van de besturingssysteem schijf en alle gegevens schijven, geconverteerd:
+2. Converteer de VM naar Managed disks met behulp van [AZ VM Convert](/cli/azure/vm). Met het volgende proces wordt de virtuele machine met de naam `myVM`geconverteerd, met inbegrip van de besturingssysteem schijf en alle gegevens schijven:
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-3. Start de virtuele machine na de conversie naar Managed disks met behulp van [AZ VM start](/cli/azure/vm). In het volgende voor beeld wordt de `myVM` virtuele machine gestart met de `myResourceGroup`naam in de resource groep met de naam.
+3. Start de virtuele machine na de conversie naar Managed disks met behulp van [AZ VM start](/cli/azure/vm). In het volgende voor beeld wordt de virtuele machine met de naam `myVM` in de resource groep met de naam `myResourceGroup`gestart.
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -54,7 +54,7 @@ Als de virtuele machines die u wilt converteren naar Managed disks zich in een b
 
 U moet de toewijzing van alle virtuele machines in de beschikbaarheidsset ongedaan maken voordat u de beschikbaarheidsset converteert. Plan om alle Vm's te converteren naar Managed disks nadat de beschikbaarheidsset zelf is geconverteerd naar een beheerde beschikbaarheidsset. Vervolgens start u alle Vm's en gaat u als normaal werken.
 
-1. Een lijst met alle virtuele machines in een beschikbaarheidsset met behulp van [AZ VM Availability-set list](/cli/azure/vm/availability-set). In het volgende voor beeld ziet u alle virtuele machines in `myAvailabilitySet` de beschikbaarheidsset met de `myResourceGroup`naam in de resource groep met de naam:
+1. Een lijst met alle virtuele machines in een beschikbaarheidsset met behulp van [AZ VM Availability-set list](/cli/azure/vm/availability-set). In het volgende voor beeld worden alle virtuele machines in de beschikbaarheidsset met de naam `myAvailabilitySet` in de resource groep met de naam `myResourceGroup`weer gegeven:
 
     ```azurecli
     az vm availability-set show \
@@ -64,13 +64,13 @@ U moet de toewijzing van alle virtuele machines in de beschikbaarheidsset ongeda
         --output table
     ```
 
-2. De toewijzing van alle Vm's ongedaan maken met behulp van [AZ VM deallocate](/cli/azure/vm). `myVM` In het volgende voor beeld wordt de toewijzing van de virtuele machine met de `myResourceGroup`naam in de resource groep met de naam:
+2. De toewijzing van alle Vm's ongedaan maken met behulp van [AZ VM deallocate](/cli/azure/vm). In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam `myVM` in de resource groep met de naam `myResourceGroup`ongedaan gemaakt:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-3. Converteer de beschikbaarheidsset met behulp van [AZ VM Availability-set Convert](/cli/azure/vm/availability-set). In het volgende voor beeld wordt de beschikbaarheidsset geconverteerd met de `myAvailabilitySet` naam `myResourceGroup`in de resource groep met de naam:
+3. Converteer de beschikbaarheidsset met behulp van [AZ VM Availability-set Convert](/cli/azure/vm/availability-set). In het volgende voor beeld wordt de beschikbaarheidsset met de naam `myAvailabilitySet` in de resource groep met de naam `myResourceGroup`geconverteerd:
 
     ```azurecli
     az vm availability-set convert \
@@ -78,13 +78,13 @@ U moet de toewijzing van alle virtuele machines in de beschikbaarheidsset ongeda
         --name myAvailabilitySet
     ```
 
-4. Converteer alle Vm's naar Managed disks met behulp van [AZ VM Convert](/cli/azure/vm). Met het volgende proces wordt de VM `myVM`met de naam, met inbegrip van de besturingssysteem schijf en alle gegevens schijven, geconverteerd:
+4. Converteer alle Vm's naar Managed disks met behulp van [AZ VM Convert](/cli/azure/vm). Met het volgende proces wordt de virtuele machine met de naam `myVM`geconverteerd, met inbegrip van de besturingssysteem schijf en alle gegevens schijven:
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-5. Start alle Vm's na de conversie naar Managed disks met behulp van [AZ VM start](/cli/azure/vm). In het volgende voor beeld wordt de `myVM` VM gestart met de naam `myResourceGroup`in de resource groep met de naam:
+5. Start alle Vm's na de conversie naar Managed disks met behulp van [AZ VM start](/cli/azure/vm). In het volgende voor beeld wordt de virtuele machine met de naam `myVM` in de resource groep met de naam `myResourceGroup`gestart:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -94,7 +94,7 @@ U moet de toewijzing van alle virtuele machines in de beschikbaarheidsset ongeda
 
 U kunt ook niet-beheerde schijven converteren naar Managed disks met behulp van de Azure Portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Selecteer de virtuele machine in de lijst met virtuele machines in de portal.
 3. Selecteer in de Blade voor de virtuele machine **schijven** in het menu.
 4. Selecteer boven aan de Blade **schijven** **migreren naar Managed disks**.

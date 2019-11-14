@@ -1,5 +1,5 @@
 ---
-title: Inrichtings handleiding voor Windows SQL Server Vm's in de Azure Portal | Microsoft Docs
+title: Een virtuele machine inrichten met Azure Portal
 description: In deze hand leiding worden de opties beschreven voor het maken van virtuele machines met Windows SQL Server 2017 in de Azure Portal.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,12 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1e0bc4647476cd5c6aa0f38456ef8890b4ddcaa5
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 68fda45038da48660da0c29787b3a86e00d9b129
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828783"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033592"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Een virtuele machine met Windows SQL Server inrichten in de Azure Portal
 
@@ -38,7 +39,7 @@ Wanneer u een SQL Server virtuele machine maakt, kunt u een van de verschillende
 
 1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
 1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie weer geven door **Details weer geven**te selecteren. 
-1. Typ `2017` in het zoekvak van de SQL Server-installatie kopie op de tegel **virtuele SQL-machines** en selecteer vervolgens **Free SQL Server-licentie: SQL Server 2017 Developer op Windows Server 2016 @ no__t-0 in de vervolg keuzelijst. 
+1. Typ `2017` in het zoekvak van de SQL Server-installatie kopie op de tegel **SQL virtual machines** en selecteer vervolgens **gratis SQL Server licentie: SQL Server 2017 Developer op Windows Server 2016** uit de vervolg keuzelijst. 
 
 
    ![SQL VM-installatie kopie selecteren](media/virtual-machines-windows-portal-sql-server-provision/select-sql-vm-image-portal.png)
@@ -55,7 +56,7 @@ Wanneer u een SQL Server virtuele machine maakt, kunt u een van de verschillende
 1. Selecteer **Maken**.
 
 
-## <a name="1-configure-basic-settings"></a>1. Basisinstellingen configureren
+## <a name="1-configure-basic-settings"></a>1. basis instellingen configureren
 
 
 Geef op het tabblad **basis beginselen** de volgende informatie op:
@@ -63,7 +64,7 @@ Geef op het tabblad **basis beginselen** de volgende informatie op:
 * Controleer onder **Project Details**of het juiste abonnement is geselecteerd. 
 *  In de sectie **resource groep** selecteert u een bestaande resource groep in de lijst of kiest u **nieuwe maken** om een nieuwe resource groep te maken. Een resourcegroep is een verzameling verwante resources in Azure (virtuele machines, opslagaccounts, virtuele netwerken enz.). 
 
-    ![Subscription](media/quickstart-sql-vm-create-portal/basics-project-details.png)
+    ![Abonnement](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
   > [!NOTE]
   > Het is een goed idee om een nieuwe resourcegroep te maken als u het gebruik van SQL Server in Azure alleen wilt testen of hier meer over te weten wilt komen. Als u klaar bent met testen, verwijdert u gewoon de resourcegroep. De virtuele machine en alle resources die aan de resourcegroep zijn gekoppeld, worden dan automatisch verwijderd. Zie voor meer informatie over resourcegroepen [Overzicht van Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md).
@@ -73,24 +74,24 @@ Geef op het tabblad **basis beginselen** de volgende informatie op:
     1. Voer een unieke **naam voor de virtuele machine**in.  
     1. Kies een locatie voor uw **regio**. 
     1. Voor het doel van deze hand leiding, behoud de **beschikbaarheids opties** ingesteld op _geen infra structuur-redundantie vereist_. Zie [Beschik baarheid](../../windows/availability.md)voor meer informatie over beschikbaarheids opties. 
-    1. Selecteer_in de lijst met **installatie kopieën** gratis SQL Server licentie: SQL Server 2017-ontwikkelaar op Windows Server_2016.  
+    1. Selecteer in de lijst met **installatie kopieën** _gratis SQL Server licentie: SQL Server 2017 Developer op Windows Server 2016_.  
     1. Kies voor het wijzigen van de **grootte** voor de **grootte** van de virtuele machine en selecteer de **a2 Basic** -aanbieding. Zorg ervoor dat u uw resources opschoont nadat u klaar bent met deze om te voor komen dat er onverwachte kosten in rekening worden gebracht. Zie [Performance best practices for SQL Server in Azure Virtual Machines (Best practices voor optimale prestaties van SQL Server in Azure Virtual Machines)](virtual-machines-windows-sql-performance.md) voor de aanbevolen machinegrootten en configuratie voor productieworkloads.
 
-    ![Exemplaardetails](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
+    ![Exemplaar Details](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
 > De geschatte maandelijkse kosten die worden weergegeven in het venster **Grootte kiezen**, zijn niet inclusief de kosten voor SQL Server-licentieverlening. Deze schatting is alleen de kosten van de virtuele machine. Voor de Express-en Developer-edities van SQL Server is deze schatting de totale geschatte kosten. Zie de [pagina met prijzen voor virtuele Windows-machines](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) en selecteer de gewenste editie van SQL server. Zie ook de [richt lijnen voor prijzen voor SQL Server Azure-vm's](virtual-machines-windows-sql-server-pricing-guidance.md) en- [grootten voor virtuele machines](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 * Geef onder **Administrator-account**een gebruikers naam en wacht woord op. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../../windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
-   ![Beheerdersaccount](media/quickstart-sql-vm-create-portal/basics-administrator-account.png)
+   ![Administrator-account](media/quickstart-sql-vm-create-portal/basics-administrator-account.png)
 
 * Onder **Binnenkomende poort regels**kiest u **geselecteerde poorten toestaan** en selecteert u vervolgens **RDP (3389)** in de vervolg keuzelijst. 
 
    ![Regels voor binnenkomende poort](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
 
 
-## <a name="2-configure-optional-features"></a>2. Optionele functies configureren
+## <a name="2-configure-optional-features"></a>2. optionele functies configureren
 
 ### <a name="disks"></a>Disks
 
@@ -121,13 +122,13 @@ Configureer uw netwerk opties op het tabblad **netwerk** .
 
 Configureer bewaking en automatisch afsluiten op het tabblad **bewaking** . 
 
-* Azure schakelt **Diagnostische gegevens over opstarten** standaard in met hetzelfde opslag account dat is opgegeven voor de virtuele machine. U kunt deze instellingen hier wijzigen en ook diagnostische gegevens van het **besturings systeem**inschakelen. 
+* Azure schakelt **Diagnostische gegevens over opstarten** standaard in met hetzelfde opslag account dat is opgegeven voor de virtuele machine. U kunt deze instellingen hier wijzigen en ook **Diagnostische gegevens van het besturings systeem**inschakelen. 
 * U kunt ook de door het **systeem toegewezen beheerde identiteit** inschakelen en automatisch **Afsluiten** op dit tabblad. 
 
 ![Instellingen voor SQL-VM-beheer](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-management.png)
 
 
-## <a name="3-configure-sql-server-settings"></a>3. SQL Server-instellingen configureren
+## <a name="3-configure-sql-server-settings"></a>3. Configureer de SQL Server instellingen
 
 Configureer op het tabblad **SQL Server instellingen** specifieke instellingen en optimalisaties voor SQL Server. De instellingen die u kunt configureren voor SQL Server omvatten het volgende:
 
@@ -176,22 +177,22 @@ Als u SQL Server-verificatie inschakelt, geeft u een **Aanmeldingsnaam** en een 
 Als u SQL Server-verificatie niet inschakelt, kunt u het lokale beheerdersaccount op de virtuele machine gebruiken om verbinding te maken met het SQL Server-exemplaar.
 
 
-### <a name="azure-key-vault-integration"></a>Integratie van Azure Key Vault
+### <a name="azure-key-vault-integration"></a>Integratie van Azure Sleutelkluis
 
 Als u beveiligings geheimen wilt opslaan in azure voor versleuteling, selecteert u **SQL Server instellingen**en schuift u omlaag naar **Azure Key kluis-integratie**. Selecteer **inschakelen** en vul de aangevraagde informatie in. 
 
-![Integratie van Azure Key Vault](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-akv.png)
+![Integratie van Azure Sleutelkluis](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-akv.png)
 
 De volgende tabel bevat de vereiste parameters voor het configureren van de Azure Sleutelkluis-integratie.
 
 | PARAMETER | BESCHRIJVING | VOORBEELD |
 | --- | --- | --- |
-| **Key Vault-URL** |De locatie van de sleutelkluis. |https:\//contosokeyvault.Vault.Azure.net/ |
+| **Key Vault-URL** |De locatie van de sleutelkluis. |https:\/-contosokeyvault.vault.azure.net/ |
 | **Principal-naam** |Principal-naam voor de Azure Active Directory-service. Deze naam wordt ook wel aangeduid als de Client-ID. |fde2b411-33d5-4e11-af04eb07b669ccf2 |
 | **Principal-geheim** |Principal-geheim voor de Azure Active Directory-service. Dit geheim wordt ook wel aangeduid als het Clientgeheim. |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
-| **Referentienaam** |**Referentie naam**: Azure-integratie maakt een referentie binnen SQL Server zodat de virtuele machine toegang heeft tot de sleutel kluis. Kies een naam voor deze referentie. |mycred1 |
+| **Referentienaam** |**Referentienaam**: de Azure Sleutelkluis-integratie maakt een referentie in SQL Server, zodat de virtuele machine toegang heeft tot de sleutelkluis. Kies een naam voor deze referentie. |mycred1 |
 
-Zie voor meer informatie [Integratie van Azure Sleutelkluis configureren voor SQL Server op Azure-VM's](virtual-machines-windows-ps-sql-keyvault.md).
+Zie voor meer informatie [Integratie van Azure Key Vault configureren voor SQL Server op Azure-VM's](virtual-machines-windows-ps-sql-keyvault.md).
 
 ### <a name="storage-configuration"></a>Opslagconfiguratie
 
@@ -209,12 +210,12 @@ Selecteer onder **Opslag geoptimaliseerd voor** een van de volgende opties:
 
 U kunt ervoor kiezen de waarden standaard te laten staan of u kunt de opslag topologie hand matig aanpassen aan uw IOPS-behoeften. Zie [opslag configuratie](virtual-machines-windows-sql-server-storage-configuration.md)voor meer informatie. 
 
-### <a name="sql-server-license"></a>SQL Server-licentie
+### <a name="sql-server-license"></a>SQL Server licentie
 Als u een Software Assurance-klant bent, kunt u de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) gebruiken om uw eigen SQL Server licentie te nemen en op te slaan op resources. 
 
 ![SQL VM-licentie](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-license.png)
 
-### <a name="automated-patching"></a>Automatische toepassing van patches
+### <a name="automated-patching"></a>Automatisch patchen
 
 **Automatisch patchen** is standaard ingeschakeld. Met automatisch patchen kan Azure automatisch een patch uitvoeren voor SQL Server en het besturingssysteem. Geef een dag van de week, een tijd en een periode op voor een onderhoudssessie. Azure voert de patch uit tijdens deze onderhoudssessie. Het onderhoudsschema maakt voor de tijd gebruik van de landinstellingen van de virtuele machine. Als u niet wilt dat Azure een automatische patch uitvoert voor SQL Server en het besturingssysteem, klikt u op **Uitschakelen**.  
 
@@ -246,7 +247,7 @@ Zie voor meer informatie [Automatische back-up voor SQL Server in Azure Virtual 
 U hebt de mogelijkheid om SQL Server R Services in te scha kelen [(geavanceerde analyse)](/sql/advanced-analytics/r/sql-server-r-services/). Met deze optie kunt u geavanceerde analyses gebruiken met SQL Server 2017. Selecteer **inschakelen** in het venster **SQL Server instellingen** .
 
 
-## <a name="4-review--create"></a>4. Controleren en maken
+## <a name="4-review--create"></a>4. controleren en maken
 
 Bekijk op het tabblad **controleren en maken** de samen vatting en selecteer **maken** om SQL Server, resource groep en resources te maken die zijn opgegeven voor deze virtuele machine.
 

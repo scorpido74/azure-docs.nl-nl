@@ -1,83 +1,83 @@
 ---
-title: LinkedIn-voor het delen van gegevens van verbindingen en toestemming - Azure Active Directory-account | Microsoft Docs
-description: Wordt uitgelegd hoe de gegevens via Microsoft-apps in Azure Active Directory voor het delen van LinkedIn-integratie
+title: LinkedIn-gegevens delen en toestemming-Azure Active Directory | Microsoft Docs
+description: Hierin wordt uitgelegd hoe LinkedIn-Integratie gegevens deelt via micro soft-apps in Azure Active Directory
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e6e24f4e726e25ae65ecceaeb161f8e16d61721
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a21c986ccfe96bae5d341e0ba2ee6622d998d076
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60469631"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025398"
 ---
-# <a name="linkedin-account-connections-data-sharing-and-consent"></a>Gegevensdeling voor LinkedIn account verbindingen en toestemming
+# <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn-account verbindingen gegevens delen en toestemming
 
-U kunt gebruikers in uw organisatie Active Directory (Azure AD) toe te staan verbinding maken met hun Microsoft-werk- of schoolaccount met hun LinkedIn-account. Nadat een gebruiker verbinding hun accounts, zijn informatie en hoogtepunten van LinkedIn beschikbaar in bepaalde Microsoft-apps en services. Gebruikers kunnen ook hun netwerkervaring verwachten op LinkedIn worden verbeterd en verrijkt met informatie van Microsoft.
+U kunt gebruikers in uw Active Directory-organisatie (Azure AD) in staat stellen om toestemming te geven om hun werk-of school account van micro soft te verbinden met hun LinkedIn-account. Nadat een gebruiker zijn of haar accounts heeft verbonden, zijn de informatie en de hooglichten van LinkedIn beschikbaar in sommige micro soft-apps en-services. Gebruikers kunnen ook verwachten dat hun netwerk ervaring op LinkedIn wordt verbeterd en verrijkt met informatie van micro soft.
 
-LinkedIn-gegevens in Microsoft-apps en -services wilt bekijken, moeten gebruikers toestemming geven voor het verbinding maken met hun eigen Microsoft en LinkedIn-accounts. Gebruikers wordt gevraagd naar hun accounts koppelen de eerste keer dat ze op iemands LinkedIn om informatie te zien op een Profielkaart in Outlook, OneDrive of SharePoint Online. LinkedIn-accountverbindingen zijn niet volledig ingeschakeld voor uw gebruikers totdat ze toestemming geven de ervaring en hun accounts koppelen.
+Voor het weer geven van LinkedIn-gegevens in micro soft-apps en-services moeten gebruikers toestemming hebben om hun eigen micro soft-en LinkedIn-accounts te verbinden. Gebruikers wordt gevraagd verbinding te maken met hun accounts de eerste keer dat ze op een profiel kaart in Outlook, OneDrive of share point online klikken om de LinkedIn-gegevens te zien. LinkedIn-account verbindingen zijn niet volledig ingeschakeld voor uw gebruikers tot ze toestemming geven voor de ervaring en verbinding maken met hun accounts.
 
 [!INCLUDE [active-directory-gdpr-note](../../../includes/gdpr-hybrid-note.md)]
 
-## <a name="benefits-of-sharing-linkedin-information"></a>Voordelen van het delen van gegevens van LinkedIn
+## <a name="benefits-of-sharing-linkedin-information"></a>Voor delen van het delen van LinkedIn-gegevens
 
-Toegang tot de gegevens van LinkedIn binnen Microsoft-apps en services maakt het gemakkelijker voor uw gebruikers te verbinden, betrekken en professionele relaties bouwen met collega's, klanten en partners binnen en buiten uw organisatie. Nieuwe gebruikers kunnen krijgen op weg te helpen sneller door verbinding te maken met collega's, meer informatie over deze en eenvoudige toegang tot meer informatie. Hier volgt een voorbeeld van hoe LinkedIn-informatie wordt weergegeven op de Profielkaart in Microsoft-apps:
+Door toegang te krijgen tot LinkedIn-gegevens in micro soft-apps en-services kunt u uw gebruikers helpen bij het maken, gebruiken en samen stellen van professionele relaties met collega's, klanten en partners binnen en buiten uw organisatie. Nieuwe gebruikers kunnen sneller aan de slag gaan door verbinding te maken met collega's, meer over hen te leren en gemakkelijk meer informatie te krijgen. Hier volgt een voor beeld van hoe LinkedIn-informatie wordt weer gegeven op de profiel kaart in micro soft-apps:
 
-![In uw organisatie LinkedIn-integratie inschakelen](./media/linkedin-user-consent/display-example.png)
+![LinkedIn-integratie inschakelen in uw organisatie](./media/linkedin-user-consent/display-example.png)
 
-## <a name="enable-and-announce-linkedin-integration"></a>Inschakelen en LinkedIn-integratie aankondigen
+## <a name="enable-and-announce-linkedin-integration"></a>LinkedIn-integratie inschakelen en aankondigen
 
-U moet een Azure Active Directory-beheerder voor het beheren van de instelling voor uw organisatie. U kunt deze inschakelen voor alle gebruikers, of voor een specifieke set gebruikers.
+U moet een Azure Active Directory beheerder zijn om de instelling voor uw organisatie te beheren. U kunt deze inschakelen voor alle gebruikers of voor een specifieke set gebruikers.
 
-1. Als u wilt in- of uitschakelen van de integratie, volg de stappen in [instemmen met LinkedIn-integratie voor uw Azure AD-organisatie](linkedin-integration.md).
-2. Wanneer u de LinkedIn-integratie in uw organisatie aankondigen, wijst u uw gebruikers de veelgestelde vragen over [LinkedIn-gegevens in Microsoft-apps en services](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Het artikel vindt u informatie over waar LinkedIn-informatie wordt weergegeven, hoe u verbinding maakt accounts en meer.
+1. Als u de integratie wilt in-of uitschakelen, volgt u de stappen in [toestemming geven aan LinkedIn-integratie voor uw Azure AD-organisatie](linkedin-integration.md).
+2. Wanneer u de LinkedIn-integratie in uw organisatie aankondigt, wijst u uw gebruikers aan de veelgestelde vragen over [LinkedIn-gegevens in micro soft-apps en-services](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Het artikel bevat informatie over waar LinkedIn-gegevens worden weer gegeven, hoe ze verbinding kunnen maken met accounts, en meer.
 
-## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Gebruiker toestemming geven voor toegang tot gegevens in Microsoft en LinkedIn
+## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Toestemming van de gebruiker voor toegang tot gegevens in micro soft en LinkedIn
 
-Gegevens die toegankelijk is vanuit LinkedIn is niet permanent opgeslagen in Microsoft-services. Gegevens die toegankelijk is vanuit Microsoft is niet permanent opgeslagen met LinkedIn, met uitzondering van de contactpersonen. Microsoft Contacts worden opgeslagen op LinkedIn totdat gebruikers verwijderen, zoals beschreven in [geïmporteerde contactpersonen verwijderen uit de LinkedIn](https://www.linkedin.com/help/linkedin/answer/43377).
+Gegevens die worden geopend vanuit LinkedIn, worden niet permanent opgeslagen in micro soft-Services. Gegevens die worden geopend vanuit micro soft, worden niet permanent opgeslagen met LinkedIn, met uitzonde ring van contact personen. Micro soft-contact personen worden op LinkedIn opgeslagen totdat gebruikers ze verwijderen, zoals wordt beschreven in [geïmporteerde contact personen verwijderen van LinkedIn](https://www.linkedin.com/help/linkedin/answer/43377).
 
-Wanneer gebruikers hun accounts koppelen, zijn informatie en inzichten op basis van LinkedIn beschikbaar in bepaalde Microsoft-apps, zoals de Profielkaart. Gebruikers kunnen ook hun netwerkervaring verwachten op LinkedIn worden verbeterd en verrijkt met informatie van Microsoft.
-Wanneer gebruikers in uw organisatie verbinding maken met hun Microsoft- en LinkedIn werk of school-accounts, zijn deze twee opties:
+Wanneer gebruikers verbinding maken met hun accounts, zijn informatie en inzichten van LinkedIn beschikbaar in sommige micro soft-apps, zoals de profiel kaart. Gebruikers kunnen ook verwachten dat hun netwerk ervaring op LinkedIn wordt verbeterd en verrijkt met informatie van micro soft.
+Wanneer gebruikers in uw organisatie hun LinkedIn-en micro soft work-of school-account verbinden, hebben ze twee opties:
 
-* Machtigen voor gegevens worden geopend vanaf beide accounts. Dit betekent dat ze voor hun Microsoft machtigen- of werkaccount voor toegang tot gegevens van hun LinkedIn-account en voor [hun LinkedIn-account om toegang te krijgen tot gegevens uit hun Microsoft-werk- of schoolaccount](https://www.linkedin.com/help/linkedin/answer/84077).
-* Toestemming geven om alleen de LinkedIn-gegevens worden geopend door hun Microsoft werken en schoolaccount.
+* Toestemming geven om gegevens te openen vanuit beide accounts. Dit betekent dat ze toestemming geven voor hun micro soft-of werk account om toegang te krijgen tot gegevens van hun LinkedIn-account, en voor [hun LinkedIn-account om toegang te krijgen tot gegevens van hun werk-of school account van micro soft](https://www.linkedin.com/help/linkedin/answer/84077).
+* Geef alleen toegang tot de LinkedIn-gegevens door hun micro soft-werk-en school account.
 
-Gebruikers kunnen verbinding verbreken accounts en machtigingen voor gegevenstoegang op elk gewenst moment verwijderen en [gebruikers kunnen bepalen hoe hun eigen LinkedIn-profiel wordt weergegeven](https://www.linkedin.com/help/linkedin/answer/83), met inbegrip van of het profiel kan worden weergegeven in de Microsoft-apps.
+Gebruikers kunnen accounts verbinding verbreken en de toegangs machtigingen voor gegevens op elk gewenst moment verwijderen, en [gebruikers kunnen bepalen hoe hun eigen LinkedIn-profiel wordt weer gegeven](https://www.linkedin.com/help/linkedin/answer/83), met inbegrip van of het profiel kan worden weer gegeven in micro soft-apps.
 
-### <a name="linkedin-account-data"></a>Gegevens van LinkedIn-account
+### <a name="linkedin-account-data"></a>LinkedIn-account gegevens
 
-Als u verbinding maakt met uw Microsoft en LinkedIn-accounts, kunt u LinkedIn om te zorgen dat de volgende gegevens naar Microsoft toestaan:
+Wanneer u uw micro soft-en LinkedIn-accounts verbindt, staat u toe dat LinkedIn de volgende gegevens aan micro soft verstrekt:
 
-* Profielgegevens: geldt voor LinkedIn-identiteit, contactgegevens en de informatie die u met anderen delen op uw [LinkedIn-profiel](https://www.linkedin.com/help/linkedin/answer/15493).
-* Gegevens interesseert - interesses op LinkedIn, bevat, zoals mensen en -onderwerpen die u volgt, cursussen groepen, en u inhoud, zoals en delen.
-* Abonnementen data - bevat abonnementen op LinkedIn-toepassingen en services samen met de bijbehorende gegevens. 
-* Gegevens van de verbindingen: bevat de [LinkedIn-netwerk](https://www.linkedin.com/help/linkedin/answer/110) met inbegrip van profielen en contactgegevens van uw verbindingen 1e graden.
+* Profiel gegevens: bevat de LinkedIn-identiteit, de contact gegevens en de informatie die u met anderen deelt in uw [LinkedIn-profiel](https://www.linkedin.com/help/linkedin/answer/15493).
+* Belangen gegevens: bevat interesses op LinkedIn, zoals mensen en onderwerpen die u volgt, cursussen groepen en inhoud die u wilt en delen.
+* Abonnementen gegevens: bevat abonnementen op LinkedIn-toepassingen en-services, samen met de bijbehorende gegevens. 
+* Verbindingen gegevens: bevat uw [LinkedIn-netwerk](https://www.linkedin.com/help/linkedin/answer/110) , inclusief profielen en contact gegevens van uw verbindingen met een 1e graad.
 
-Gegevens die toegankelijk is vanuit LinkedIn is niet permanent opgeslagen in Microsoft-services. Zie voor meer informatie over de Microsoft-gebruik van persoonlijke gegevens, de [privacyverklaring van Microsoft](https://privacy.microsoft.com/privacystatement/).
+Gegevens die worden geopend vanuit LinkedIn, worden niet permanent opgeslagen in micro soft-Services. Zie de [privacyverklaring van micro soft](https://privacy.microsoft.com/privacystatement/)voor meer informatie over het gebruik van persoonlijke gegevens van micro soft.
 
-### <a name="microsoft-work-or-school-account-data"></a>Microsoft werk of school-accountgegevens
+### <a name="microsoft-work-or-school-account-data"></a>Gegevens van micro soft-werk-of school account
 
-Als u verbinding maakt met uw Microsoft en LinkedIn-accounts, kunt u Microsoft voor de volgende gegevens voor LinkedIn toestaan:
+Wanneer u uw micro soft-en LinkedIn-accounts verbindt, stelt u micro soft in staat om de volgende gegevens te verstrekken aan LinkedIn:
 
-* Profielgegevens: bevat informatie zoals uw voornaam, laatste naam, profielfoto, e-mailadres, beheer en mensen die u beheert.
-* Agenda-gegevens - vergaderingen bevat in je agenda's, hun tijden, locaties en contactgegevens van deelnemers. Informatie over de vergadering, zoals agenda, inhoud of aan de wensen van titel is niet opgenomen in de agendagegevens.
-* Gegevens interesseert: bevat het belang dat is gekoppeld aan uw account, op basis van uw gebruik van Microsoft-services, zoals Cortana en Bing voor bedrijven.
-* Abonnementen data - omvat abonnementen die worden geleverd door uw organisatie naar Microsoft-apps en services, zoals Office 365.
-* Contactpersonen van gegevens: bevat lijsten met contactpersonen in Outlook, Skype en andere Microsoft-account-services, met inbegrip van de contactgegevens voor mensen die u vaak communiceren of samenwerken met. Contactpersonen periodiek geïmporteerd, worden opgeslagen, en die worden gebruikt door LinkedIn, bijvoorbeeld verbindingen voorstellen, helpen bij het organiseren van contactpersonen en updates over contactpersonen weergeven.
+* Profiel gegevens: bevat informatie zoals uw voor naam, achternaam, profiel foto, e-mail adres, Manager en personen die u beheert.
+* Agenda gegevens: bevat vergaderingen in uw agenda's, hun tijden, locaties en contact gegevens van deel nemers. Informatie over de vergadering, zoals agenda, inhoud of titel van de vergadering, is niet opgenomen in de agenda gegevens.
+* Belangen gegevens: bevat de interesses die zijn gekoppeld aan uw account, op basis van uw gebruik van micro soft-Services, zoals Cortana en Bing voor bedrijven.
+* Abonnementen gegevens: bevat abonnementen die door uw organisatie worden geleverd aan micro soft-apps en-services, zoals Office 365.
+* Gegevens van contact personen: bevat contact lijsten in Outlook, Skype en andere Microsoft-account services, met inbegrip van de contact gegevens voor personen met wie u regel matig communiceert of waarmee u samenwerkt. Contact personen worden regel matig geïmporteerd, opgeslagen en gebruikt door LinkedIn, bijvoorbeeld om verbindingen voor te stellen, contact personen te organiseren en updates over contact personen weer te geven.
 
-Gegevens die toegankelijk is vanuit Microsoft is niet permanent opgeslagen met LinkedIn, met uitzondering van de contactpersonen. Microsoft Contacts worden opgeslagen op LinkedIn totdat deze gebruikers verwijderen. Meer informatie over [geïmporteerde contactpersonen verwijderen uit de LinkedIn](https://www.linkedin.com/help/linkedin/answer/43377).
+Gegevens die worden geopend vanuit micro soft, worden niet permanent opgeslagen met LinkedIn, met uitzonde ring van contact personen. Micro soft-contact personen worden op LinkedIn opgeslagen totdat gebruikers ze verwijderen. Meer informatie over het [verwijderen van geïmporteerde contact personen van LinkedIn](https://www.linkedin.com/help/linkedin/answer/43377).
 
-Zie voor meer informatie over de LinkedIn-gebruik van persoonlijke gegevens, de [LinkedIn-privacybeleid](https://www.linkedin.com/legal/privacy-policy). Voor LinkedIn-services, overdracht van gegevens en opslag, gegevens uit de Europese Unie naar de Verenigde Staten en weer kan stromen en uw privacy is beveiligd zoals beschreven in [gegevensoverdracht van de Europese Unie](https://www.linkedin.com/help/linkedin/answer/62533).
+Zie het [LinkedIn-privacybeleid](https://www.linkedin.com/legal/privacy-policy)voor meer informatie over het gebruik van persoonlijke gegevens van LinkedIn. Voor LinkedIn-Services, gegevens overdracht en opslag kunnen gegevens van de Europese Unie naar het Verenigde Staten en terug worden gestroomd en wordt uw privacy beschermd zoals beschreven in [gegevens overdrachten van de Europese Unie](https://www.linkedin.com/help/linkedin/answer/62533).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [LinkedIn in Microsoft-toepassingen met uw werk of school-account](https://www.linkedin.com/help/linkedin/answer/84077)
+* [LinkedIn in micro soft-toepassingen met uw werk-of school account](https://www.linkedin.com/help/linkedin/answer/84077)

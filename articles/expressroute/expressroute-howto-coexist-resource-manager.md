@@ -1,6 +1,6 @@
 ---
-title: 'ExpressRoute-en site-naar-site-VPN-verbindingen configureren-naast elkaar: Power shell: Azure | Microsoft Docs'
-description: Configureer ExpressRoute en een site-naar-site-VPN-verbinding die naast Power shell kan worden gebruikt voor het Resource Manager-model.
+title: 'ExpressRoute en S2S VPN-verbindingen configureren: Azure PowerShell'
+description: Configureer ExpressRoute en Site-naar-Site VPN-verbindingen die samen kan bestaan voor het Resource Manager-model met behulp van PowerShell.
 services: expressroute
 author: charwen
 ms.service: expressroute
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 8a89c5121d5010245ce16cade921bb96346fcbf5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: e25d6ff0bf0c27926040fcfe190724a666713a05
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748317"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031750"
 ---
-# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>ExpressRoute-en site-naar-site-verbindingen configureren met Power shell
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>ExpressRoute en Site-naar-Site-verbindingen configureren met behulp van PowerShell
 > [!div class="op_single_selector"]
 > * [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell - Klassiek](expressroute-howto-coexist-classic.md)
@@ -29,7 +29,7 @@ Configuratie van gelijktijdige site-naar-site-VPN- en ExpressRoute-verbindingen 
 * U kunt een site-naar-site-VPN configureren als een beveiligd failoverpad voor ExpressRoute. 
 * U kunt ook site-naar-site-VPN's gebruiken om verbinding te maken met sites die niet zijn verbonden via ExpressRoute. 
 
-In dit artikel worden de stappen beschreven voor het configureren van beide scenario's. Dit artikel is van toepassing op het Resource Manager-implementatiemodel en maakt gebruik van PowerShell. U kunt deze scenario's ook configureren met behulp van de Azure Portal, hoewel de documentatie nog niet beschikbaar is. U kunt eerst een van beide gateways configureren. Normaal gesp roken maakt u geen uitval tijd bij het toevoegen van een nieuwe gateway of gateway verbinding.
+In dit artikel worden de stappen beschreven voor het configureren van beide scenario's. Dit artikel is van toepassing op het Resource Manager-implementatiemodel en maakt gebruik van PowerShell. U kunt ook deze scenario's met behulp van Azure portal, hoewel documentatie nog niet beschikbaar is. U kunt de gateway eerst configureren. Er worden normaal gesproken geen downtime gebracht bij het toevoegen van een nieuwe gateway of de gatewayverbinding.
 
 >[!NOTE]
 >Als u een site-naar-site-VPN wilt maken via een ExpressRoute-circuit, raadpleegt u [dit artikel](site-to-site-vpn-over-microsoft-peering.md).
@@ -243,7 +243,7 @@ De cmdlets die u voor deze configuratie gebruikt, kunnen enigszins afwijken van 
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>Punt-naar-site-configuratie toevoegen aan de VPN-gateway
 
-U kunt de onderstaande stappen volgen om punt-naar-site-configuratie toe te voegen aan uw VPN-gateway in een compatibiliteits installatie. Als u het VPN-basis certificaat wilt uploaden, moet u Power shell lokaal op uw computer installeren of de Azure Portal gebruiken.
+U kunt de stappen hieronder om het punt-naar-Site-configuratie toevoegen aan uw VPN-gateway in een co-existentie-instellingen op te volgen. Als u het VPN-basis certificaat wilt uploaden, moet u Power shell lokaal op uw computer installeren of de Azure Portal gebruiken.
 
 1. Voeg een VPN-clientadresgroep toe.
 

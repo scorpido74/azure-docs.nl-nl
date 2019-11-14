@@ -1,5 +1,5 @@
 ---
-title: Azure-ondersteuning voor virtuele machines van generatie 2 | Microsoft Docs
+title: Azure-ondersteuning voor virtuele machines van de 2e generatie
 description: Overzicht van Azure-ondersteuning voor virtuele machines van de 2e generatie
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: b5cc4a511d6347d28a1737932c1b4b5b768d3fc4
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 7747d1b5e2b18ddf02403ad21fe875c498e43820
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891561"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036057"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -53,7 +53,7 @@ Virtuele machines van de eerste generatie worden ondersteund door alle VM-groott
 
 Vm's van generatie 2 ondersteunen de volgende installatie kopieën van Marketplace:
 
-* Windows Server 2019 Data Center
+* Windows Server 2019 Datacenter
 * Windows Server 2016 Datacenter
 * Windows Server 2012 R2 Datacenter
 * Windows Server 2012 Datacenter
@@ -102,7 +102,7 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 
 In de Azure Portal of Azure CLI kunt u virtuele machines van de tweede generatie maken op basis van een Marketplace-installatie kopie die ondersteuning biedt voor UEFI-opstart bewerkingen.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 
 Installatie kopieën van de tweede generatie voor Windows en SLES zijn opgenomen in dezelfde server aanbieding als de gen1-installatie kopieën. Wat het betekent voor een stroom perspectief is dat, u selecteert de aanbieding en de SKU in de portal voor uw VM. Als de SKU zowel installatie kopieën van de 1e 1 als de tweede generatie ondersteunt, kunt u een virtuele machine van de tweede generatie maken op het tabblad *Geavanceerd* in de stroom voor het maken van de virtuele machine.
 

@@ -1,5 +1,5 @@
 ---
-title: Een virtuele Linux-machine in een zone maken met Azure CLI | Microsoft Docs
+title: Een virtuele Linux-machine in een zone maken met Azure CLI
 description: Een virtuele Linux-machine maken in een beschikbaarheids zone met de Azure CLI
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: e732693a63b3c866dc767e98bbe298474286f178
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1cb8222b5e7bf2efee36673f9b80738500345754
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173883"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036566"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Een virtuele Linux-machine maken in een beschikbaarheids zone met de Azure CLI
 
@@ -75,13 +75,13 @@ De resource groep wordt opgegeven bij het maken of wijzigen van een virtuele mac
 
 Maak een virtuele machine met de opdracht [az vm create](/cli/azure/vm). 
 
-Wanneer u een virtuele machine maakt, zijn er diverse opties beschikbaar zoals besturingssysteeminstallatiekopie, schijfgrootte en beheerdersreferenties. In dit voorbeeld wordt een virtuele machine gemaakt met de naam *myVM* waarop Ubuntu-server wordt uitgevoerd. De virtuele machine wordt gemaakt in beschikbaarheids zone *1*. De virtuele machine wordt standaard gemaakt in de *Standard_DS1_v2* -grootte.
+Wanneer u een virtuele machine maakt, zijn er diverse opties beschikbaar zoals besturingssysteeminstallatiekopie, schijfgrootte en beheerdersreferenties. In dit voorbeeld wordt een virtuele machine gemaakt met de naam *myVM* waarop Ubuntu-server wordt uitgevoerd. De virtuele machine wordt gemaakt in beschikbaarheids zone *1*. De virtuele machine wordt standaard gemaakt in de *Standard_DS1_v2* grootte.
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 --image UbuntuLTS --generate-ssh-keys --zone 1
 ```
 
-Het maken van de virtuele machine kan een paar minuten duren. Wanneer de virtuele machine is gemaakt, biedt de Azure CLI informatie over de virtuele machine. Noteer de `zones` waarde die de beschikbaarheids zone aangeeft waarin de virtuele machine wordt uitgevoerd. 
+Het maken van de virtuele machine kan een paar minuten duren. Wanneer de virtuele machine is gemaakt, biedt de Azure CLI informatie over de virtuele machine. Noteer de `zones` waarde, waarmee de beschikbaarheids zone wordt aangegeven waarin de virtuele machine wordt uitgevoerd. 
 
 ```azurecli 
 {

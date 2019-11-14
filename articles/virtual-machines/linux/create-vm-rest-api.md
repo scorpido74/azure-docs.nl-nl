@@ -1,5 +1,5 @@
 ---
-title: Een virtuele Linux-machine maken met de Azure-REST API | Microsoft Docs
+title: Een virtuele Linux-machine maken met de Azure-REST API
 description: Meer informatie over het maken van een virtuele Linux-machine in azure die gebruikmaakt van Managed Disks-en SSH-verificatie met Azure REST API.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 9851305bdaa2f214e0d00eda3235068cac2ea980
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c1010bf4bde01920449e9252de563d79bfc61997
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083476"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036432"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Maak een virtuele Linux-machine die gebruikmaakt van SSH-verificatie met de REST API
 
@@ -35,7 +35,7 @@ Voordat u de aanvraag maakt en indient, hebt u het volgende nodig:
 
 * De `{subscription-id}` voor uw abonnement
   * Als u meerdere abonnementen hebt, raadpleegt u [werken met meerdere abonnementen](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
-* Een `{resourceGroupName}` die u eerder hebt gemaakt
+* Een `{resourceGroupName}` u eerder hebt gemaakt
 * Een [virtuele netwerk interface](../../virtual-network/virtual-network-network-interface.md) in dezelfde resource groep
 * Een SSH-sleutel paar (u kunt [een nieuw abonnement genereren](mac-create-ssh-keys.md) als u er geen hebt)
 
@@ -47,14 +47,14 @@ Als u een virtuele machine wilt maken of bijwerken, gebruikt u de volgende *put*
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2017-12-01
 ```
 
-`{subscription-id}` Naast de para meters `{resourceGroupName}` en moet u het `{vmName}` (`api-version` optioneel) opgeven, maar dit artikel is getest met `api-version=2017-12-01`.
+Naast de para meters `{subscription-id}` en `{resourceGroupName}` moet u de `{vmName}` opgeven (`api-version` is optioneel, maar dit artikel is getest met `api-version=2017-12-01`)
 
 De volgende headers zijn vereist:
 
-| Aanvraag header   | Description |
+| Aanvraagheader   | Beschrijving |
 |------------------|-----------------|
-| *Inhouds type:*  | Vereist. Ingesteld op `application/json`. |
-| *Authorization:* | Vereist. Ingesteld op een geldig `Bearer` [toegangs token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Content-Type:*  | Vereist. Ingesteld op `application/json`. |
+| *Authorization:* | Vereist. Ingesteld op een geldig `Bearer` [toegangstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 Voor algemene informatie over het werken met REST API-aanvragen raadpleegt u [onderdelen van een rest API aanvraag/antwoord](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -62,16 +62,16 @@ Voor algemene informatie over het werken met REST API-aanvragen raadpleegt u [on
 
 De volgende algemene definities worden gebruikt voor het bouwen van een aanvraag tekst:
 
-| Name                       | Vereist | Type                                                                                | Description  |
+| Naam                       | Vereist | Type                                                                                | Beschrijving  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | Waar     | string                                                                              | Resourcelocatie. |
-| name                       |          | string                                                                              | Naam voor de virtuele machine. |
+| locatie                   | True     | tekenreeks                                                                              | Resourcelocatie. |
+| name                       |          | tekenreeks                                                                              | Naam voor de virtuele machine. |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Hiermee geeft u de hardware-instellingen voor de virtuele machine op. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Hiermee geeft u de opslag instellingen voor de schijven van de virtuele machine. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Hiermee geeft u de instellingen van het besturings systeem voor de virtuele machine. |
 | properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Hiermee geeft u de netwerk interfaces van de virtuele machine. |
 
-Hieronder ziet u een voor beeld van een aanvraag tekst. Zorg ervoor dat u de naam van de virtuele `{computerName}` machine `{name}` opgeeft in de para meters en de naam van de netwerk `networkInterfaces`interface die u hebt gemaakt `path`onder, uw gebruikers naam in `adminUsername` en en het *open bare* gedeelte van uw SSH sleutel paar (in bijvoorbeeld `~/.ssh/id_rsa.pub`) in. `keyData` Andere para meters die u mogelijk wilt `location` wijzigen `vmSize`, zijn en.  
+Hieronder ziet u een voor beeld van een aanvraag tekst. Zorg ervoor dat u de naam van de virtuele machine opgeeft in de para meters `{computerName}` en `{name}`, de naam van de netwerk interface die u hebt gemaakt onder `networkInterfaces`, uw gebruikers naam in `adminUsername` en `path`en het *open bare* gedeelte van uw SSH-sleutel paar (bijvoorbeeld `~/.ssh/id_rsa.pub`) in `keyData`. Andere para meters die u mogelijk wilt wijzigen, zijn `location` en `vmSize`.  
 
 ```json
 {
@@ -132,11 +132,11 @@ Zie voor een volledige lijst van de beschik bare definities in de hoofd tekst va
 
 U kunt de client van uw voor keur gebruiken voor het verzenden van deze HTTP-aanvraag. U kunt ook een [hulp programma in de browser](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) gebruiken door te klikken op de knop **Probeer het opnieuw** .
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Antwoorden
 
 Er zijn twee geslaagde reacties voor de bewerking om een virtuele machine te maken of bij te werken:
 
-| Name        | Type                                                                              | Description |
+| Naam        | Type                                                                              | Beschrijving |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 gemaakt | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Gemaakt     |
@@ -157,6 +157,6 @@ Zie voor meer informatie over REST API reacties [het antwoord bericht verwerken]
 Zie het volgende voor meer informatie over de Azure REST Api's of andere beheer Programma's, zoals Azure CLI of Azure PowerShell:
 
 - [REST API Azure Compute-provider](/rest/api/compute/)
-- [Aan de slag met Azure REST API](/rest/api/azure/)
-- [Azure-CLI](/cli/azure/)
+- [Aan de slag gaan met Azure REST API](/rest/api/azure/)
+- [Azure CLI](/cli/azure/)
 - [Module Azure PowerShell](/powershell/azure/overview)

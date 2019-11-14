@@ -1,5 +1,5 @@
 ---
-title: Problemen met de implementatie van open Shift container platform 3,11 in azure oplossen | Microsoft Docs
+title: Problemen met de implementatie van open Shift container platform 3,11 in azure oplossen
 description: Problemen met de implementatie van open Shift container platform 3,11 in azure oplossen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 4301d81a4d14c36c34d29a54bc146bc8985dfc00
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 1915cce1878b9b7ec058c13167e03c3c318f3668
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392759"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035496"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Problemen met de implementatie van open Shift container platform 3,11 in azure oplossen
 
@@ -41,9 +41,9 @@ SSH naar de ansible Playbook-host. Voor de OKD-sjabloon (versie 3,9 en eerder) g
 
 ## <a name="log-files"></a>Logboekbestanden
 
-De logboek bestanden (stderr en stdout) voor de host-voorbereidings scripts bevinden zich in `/var/lib/waagent/custom-script/download/0` op alle hosts. Als er een fout is opgetreden tijdens de voor bereiding van de host, bekijkt u deze logboek bestanden om de fout te bepalen.
+De logboek bestanden (stderr en stdout) voor de voorbereidings scripts voor de host bevinden zich in `/var/lib/waagent/custom-script/download/0` op alle hosts. Als er een fout is opgetreden tijdens de voor bereiding van de host, bekijkt u deze logboek bestanden om de fout te bepalen.
 
-Als de voorbereidings scripts met succes worden uitgevoerd, moeten de logboek bestanden in de map `/var/lib/waagent/custom-script/download/1` van de ansible Playbook-host worden onderzocht. Als de fout is opgetreden tijdens de werkelijke installatie van open Shift, wordt de fout weer gegeven in het stdout-bestand. Gebruik deze informatie om contact op te nemen met de ondersteuning voor verdere ondersteuning.
+Als de voorbereidings scripts met succes zijn uitgevoerd, moeten de logboek bestanden in de map `/var/lib/waagent/custom-script/download/1` van de ansible Playbook-host worden onderzocht. Als de fout is opgetreden tijdens de werkelijke installatie van open Shift, wordt de fout weer gegeven in het stdout-bestand. Gebruik deze informatie om contact op te nemen met de ondersteuning voor verdere ondersteuning.
 
 Voorbeeld uitvoer
 

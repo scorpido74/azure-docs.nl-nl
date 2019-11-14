@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 20f325ff64581396f5f7ab2ce05a2479cdb45118
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1ce21ea6042bbe1191edede13f80455c8e669f3b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933546"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030203"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architectuur van Hyper-V naar Azure voor herstel na nood gevallen
 
@@ -38,9 +38,6 @@ De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onder
 
 ![Architectuur](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
-
-> [!WARNING]
-> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](scvmm-site-recovery-deprecation.md) te lezen voordat u doorgaat.
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>Architectuur onderdelen-Hyper-V met VMM
 

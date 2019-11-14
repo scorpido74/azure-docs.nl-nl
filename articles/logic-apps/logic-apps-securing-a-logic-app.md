@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 2177ba8b3864e8d453a097b391a18ebbbb5baa11
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 57bea93fd03dc19caa1ce29a34a40bc3cff06209
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499926"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039064"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -36,7 +36,7 @@ Hier volgen de manieren waarop u de toegang tot dit trigger type kunt beveiligen
 
 * [Hand tekeningen voor gedeelde toegang genereren](#sas)
 * [Inkomende IP-adressen beperken](#restrict-inbound-ip-addresses)
-* [Azure Active Directory, OAuth of andere beveiliging toevoegen](#add-authentication)
+* [Azure Active Directory OAuth of andere beveiliging toevoegen](#add-authentication)
 
 <a name="sas"></a>
 
@@ -163,9 +163,9 @@ Als u de [implementatie van Logic apps automatiseert met behulp van Resource Man
 
 <a name="add-authentication"></a>
 
-### <a name="add-azure-active-directory-oauth-or-other-security"></a>Azure Active Directory, OAuth of andere beveiliging toevoegen
+### <a name="add-azure-active-directory-oauth-or-other-security"></a>Azure Active Directory OAuth of andere beveiliging toevoegen
 
-Als u meer autorisatie protocollen wilt toevoegen aan uw logische app, kunt u overwegen de [Azure API Management](../api-management/api-management-key-concepts.md) -service te gebruiken. Deze service helpt u uw logische app beschikbaar te maken als een API en biedt uitgebreide bewaking, beveiliging, beleid en documentatie voor elk eind punt. API Management kunt een openbaar of persoonlijk eind punt beschikbaar maken voor uw logische app. U kunt vervolgens Azure Active Directory, OAuth, Certificate of andere beveiligings standaarden gebruiken om toegang tot het eind punt te verlenen. Wanneer API Management een aanvraag ontvangt, stuurt de service de aanvraag naar uw logische app, worden ook de nodige trans formaties of beperkingen door lopen. Als u uw logische app alleen API Management activeren, kunt u de instellingen voor het binnenkomende IP-adres bereik van uw logische app gebruiken.
+Als u meer autorisatie protocollen wilt toevoegen aan uw logische app, kunt u overwegen de [Azure API Management](../api-management/api-management-key-concepts.md) -service te gebruiken. Deze service helpt u uw logische app beschikbaar te maken als een API en biedt uitgebreide bewaking, beveiliging, beleid en documentatie voor elk eind punt. API Management kunt een openbaar of persoonlijk eind punt beschikbaar maken voor uw logische app. Als u toegang tot dit eind punt wilt verlenen, kunt u [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication), [client certificaat](#client-certificate-authentication)of andere beveiligings standaarden gebruiken om toegang tot het eind punt te verlenen. Wanneer API Management een aanvraag ontvangt, stuurt de service de aanvraag naar uw logische app, worden ook de nodige trans formaties of beperkingen door lopen. Als u uw logische app alleen API Management activeren, kunt u de instellingen voor het binnenkomende IP-adres bereik van uw logische app gebruiken.
 
 <a name="secure-operations"></a>
 
@@ -361,7 +361,7 @@ Hier volgen enkele [aandachtspunten om te controleren](#obfuscation-consideratio
 
 Als u in verschillende omgevingen implementeert, kunt u de waarden in uw werk stroom definitie parameterizingen die variëren op basis van deze omgevingen. Op die manier kunt u hardcoded gegevens voor komen door een [Azure Resource Manager sjabloon](../azure-resource-manager/template-deployment-overview.md) te gebruiken om uw logische app te implementeren, gevoelige gegevens te beschermen door beveiligde para meters te definiëren en deze gegevens als afzonderlijke invoer door te geven via de [para meters van de sjabloon](../azure-resource-manager/template-parameters.md) met behulp van een [parameter bestand](../azure-resource-manager/resource-manager-parameter-files.md).
 
-Als u bijvoorbeeld HTTP-acties verifieert met [Azure Active Directory](#azure-active-directory-oauth-authentication), kunt u de para meters definiëren en beveiligen die de client-id en het client geheim accepteren die worden gebruikt voor verificatie. Als u deze para meters in uw logische app wilt definiëren, gebruikt u de sectie `parameters` in de werk stroom definitie van de logische app en de Resource Manager-sjabloon voor implementatie. Als u parameter waarden wilt verbergen die u niet wilt weer geven bij het bewerken van de logische app of de weer gave van de uitvoerings geschiedenis, definieert u de para meters met behulp van de `securestring` of `secureobject` type en gebruikt u indien nodig code ring. Para meters van dit type worden niet geretourneerd met de resource definitie en zijn niet toegankelijk wanneer de resource wordt weer gegeven na de implementatie. Als u tijdens runtime toegang wilt krijgen tot deze parameter waarden, gebruikt u de `@parameters('<parameter-name>')` expressie in de definitie van uw werk stroom. Deze expressie wordt alleen geëvalueerd tijdens runtime en wordt beschreven door de [taal van de werk stroom definitie](../logic-apps/logic-apps-workflow-definition-language.md).
+Als u bijvoorbeeld HTTP-acties met [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication)verifieert, kunt u de para meters definiëren en beveiligen die de client-id en het client geheim accepteren die worden gebruikt voor verificatie. Als u deze para meters in uw logische app wilt definiëren, gebruikt u de sectie `parameters` in de werk stroom definitie van de logische app en de Resource Manager-sjabloon voor implementatie. Als u parameter waarden wilt verbergen die u niet wilt weer geven bij het bewerken van de logische app of de weer gave van de uitvoerings geschiedenis, definieert u de para meters met behulp van de `securestring` of `secureobject` type en gebruikt u indien nodig code ring. Para meters van dit type worden niet geretourneerd met de resource definitie en zijn niet toegankelijk wanneer de resource wordt weer gegeven na de implementatie. Als u tijdens runtime toegang wilt krijgen tot deze parameter waarden, gebruikt u de `@parameters('<parameter-name>')` expressie in de definitie van uw werk stroom. Deze expressie wordt alleen geëvalueerd tijdens runtime en wordt beschreven door de [taal van de werk stroom definitie](../logic-apps/logic-apps-workflow-definition-language.md).
 
 > [!NOTE]
 > Als u een para meter gebruikt in een aanvraag header of hoofd tekst, is die para meter mogelijk zichtbaar wanneer u de uitvoerings geschiedenis van de logische app en uitgaande HTTP-aanvraag weergeeft. Zorg ervoor dat u ook uw beleids regels voor inhouds toegang dienovereenkomstig instelt. U kunt ook een afkorting [gebruiken om](#obfuscate) invoer en uitvoer in de uitvoerings geschiedenis te verbergen. Autorisatie headers worden nooit weer gegeven via invoer of uitvoer. Dus als er een geheim wordt gebruikt, kan dat geheim niet worden opgehaald.
@@ -573,7 +573,17 @@ Hier volgen enkele manieren waarop u eind punten kunt beveiligen die oproepen of
 
 * Verificatie toevoegen aan uitgaande aanvragen.
 
-  Wanneer u werkt met een HTTP-trigger of actie die uitgaande aanroepen uitvoert, zoals HTTP, HTTP + Swagger of webhook, kunt u verificatie toevoegen aan de aanvraag die wordt verzonden door uw logische app. U kunt bijvoorbeeld basis verificatie, verificatie van client certificaten, [Active Directory OAuth](../active-directory/develop/about-microsoft-identity-platform.md) -verificatie of een beheerde identiteit gebruiken. Zie [verificatie toevoegen aan uitgaande oproepen](#add-authentication-outbound) verderop in dit onderwerp voor meer informatie.
+  Wanneer u werkt met een HTTP-trigger of actie die uitgaande aanroepen uitvoert, zoals HTTP, HTTP + Swagger of webhook, kunt u verificatie toevoegen aan de aanvraag die wordt verzonden door uw logische app. U kunt bijvoorbeeld de volgende verificatie typen gebruiken:
+
+  * [Basisverificatie](#basic-authentication)
+
+  * [Verificatie van client certificaten](#client-certificate-authentication)
+
+  * [Active Directory OAuth-verificatie](#azure-active-directory-oauth-authentication)
+
+  * [Beheerde identiteits verificatie](#managed-identity-authentication)
+  
+  Zie [verificatie toevoegen aan uitgaande oproepen](#add-authentication-outbound) verderop in dit onderwerp voor meer informatie.
 
 * Beperk de toegang tot IP-adressen van logische apps.
 
@@ -650,7 +660,7 @@ Als de optie [client certificaat](../active-directory/authentication/active-dire
 |---------------------|-----------------|----------|-------|-------------|
 | **Verificatie** | `type` | Ja | **Client certificaat** <br>of <br>`ClientCertificate` | Het verificatie type dat moet worden gebruikt voor client certificaten voor Secure Sockets Layer (SSL). Zelfondertekende certificaten worden ondersteund, maar zelfondertekende certificaten voor SSL worden niet ondersteund. |
 | **Pfx** | `pfx` | Ja | <*encoded-pfx-bestand-inhoud*> | De met base64 gecodeerde inhoud van een PFX-bestand (Personal Information Exchange) |
-| **Wachtwoord** | `password`| Ja | <*wacht woord voor pfx-bestand*> | Het wacht woord voor toegang tot het PFX-bestand |
+| **Wachtwoord** | `password`| Zie beschrijving | <*wacht woord voor pfx-bestand*> | Het wacht woord voor toegang tot het PFX-bestand. <p><p>**Opmerking**: deze eigenschaps waarde is vereist wanneer u werkt in de ontwerp functie voor logische apps en is *niet* vereist wanneer u in de code weergave werkt. |
 |||||
 
 Wanneer u [beveiligde para meters](#secure-action-parameters) gebruikt voor het afhandelen en beveiligen van gevoelige informatie, bijvoorbeeld in een [Azure Resource Manager sjabloon voor het automatiseren van de implementatie](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), kunt u expressies gebruiken om toegang te krijgen tot deze parameter waarden tijdens runtime. In dit voor beeld van een HTTP-actie definitie geeft u de verificatie `type` als `ClientCertificate` en gebruikt u de [functie para meters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) om de parameter waarden op te halen:
@@ -687,7 +697,7 @@ Als de optie [OAuth Active Directory](../active-directory/develop/about-microsof
 
 | Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
-| **Verificatie** | `type` | Ja | **Active Directory OAuth** <br>of <br>`ActiveDirectoryOAuth` | Het verificatie type dat moet worden gebruikt. Het [OAuth 2,0-protocol](../active-directory/develop/v2-overview.md)wordt momenteel gevolgd door Logic apps. |
+| **Verificatie** | `type` | Ja | **Active Directory OAuth** <br>of <br>`ActiveDirectoryOAuth` | Het verificatietype te gebruiken. Het [OAuth 2,0-protocol](../active-directory/develop/v2-overview.md)wordt momenteel gevolgd door Logic apps. |
 | **Bouw** | `tenant` | Ja | *Tenant-id* van <> | De Tenant-ID voor de Azure AD-Tenant |
 | **Gericht** | `audience` | Ja | <> voor de goed keuring van *resources* | De resource die u wilt gebruiken voor autorisatie, bijvoorbeeld `https://management.core.windows.net/` |
 | **Client ID** | `clientId` | Ja | <*client-ID*> | De client-ID voor de app die autorisatie aanvraagt |

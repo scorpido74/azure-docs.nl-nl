@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen over virtuele Windows-machines in azure | Microsoft Docs
+title: Veelgestelde vragen over virtuele Windows-machines in azure
 description: Hierin vindt u antwoorden op enkele veelgestelde vragen over virtuele Windows-machines die zijn gemaakt met het Resource Manager-model.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 95b7644ab8e0254a53eb4a0872a5af98a0894aec
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0ebf4049827a4abd9cfcb2eda354d0c796cbdbdb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839240"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039176"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Veelgestelde vragen over Windows Virtual Machines
 In dit artikel worden enkele veelgestelde vragen over virtuele Windows-machines die zijn gemaakt in azure, behandeld met het Resource Manager-implementatie model. Voor de Linux-versie van dit onderwerp raadpleegt u [Veelgestelde vragen over Linux virtual machines](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -116,7 +116,7 @@ De volgende wacht woorden zijn niet toegestaan:
     <tr>
         <td>abc@123</td>
         <td>iloveyou!</td>
-        <td>P @ $ $w 0rd</td>
+        <td>P@ $ $w 0rd</td>
         <td>P@ssw0rd</td>
         <td>P@ssword123</td>
     </tr>

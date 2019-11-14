@@ -1,5 +1,5 @@
 ---
-title: Meld u aan met verificatie in twee stappen of beveiligings gegevens-Azure Active Directory | Microsoft Docs
+title: Meld u aan met uw identiteits verificatie gegevens-Azure AD
 description: Meer informatie over hoe u zich kunt aanmelden met behulp van de verschillende methoden voor identiteits verificatie in Security info.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.date: 07/18/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b20ea1131ceda0527ed35d1a1082d05f25da6bac
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1c79e82680ae81137ee4164e88e62235f934565a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382302"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028510"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Meld u aan met verificatie in twee stappen of beveiligings gegevens
 
@@ -91,7 +91,7 @@ Als u om de een of andere reden uw primaire aanmeldings methode niet kunt gebrui
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over beveiligings informatie vindt u in het overzichts artikel [Security info (preview)](user-help-security-info-overview.md) .
+- Meer informatie over beveiligings informatie vindt u in het [overzichts artikel Security info (preview)](user-help-security-info-overview.md) .
 
 - Meer informatie over verificatie in twee stappen vindt u in het artikel [verificatie overzicht in twee stappen](user-help-two-step-verification-overview.md) .
 

@@ -1,6 +1,6 @@
 ---
-title: Een gegevensschijf toevoegen aan de Linux-VM met de Azure CLI | Microsoft Docs
-description: Leer hoe u een permanente gegevensschijf toevoegen aan uw Linux-VM met de Azure CLI
+title: Een gegevens schijf toevoegen aan een Linux-VM met behulp van Azure CLI
+description: Meer informatie over het toevoegen van een permanente gegevens schijf aan uw virtuele Linux-machine met Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: roygara
@@ -16,20 +16,20 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 1c8d4d2b26b356c524523d73d53fd641eef5f3cb
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 5d7ec2cbbc5cc1bf8bdc87d7f82a965b3bc8c267
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465827"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037110"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Een schijf toevoegen aan een virtuele Linux-machine
-Dit artikel ziet u hoe u een permanente schijf koppelen aan uw virtuele machine zodat u kunt uw gegevens - behouden, zelfs als uw virtuele machine is ingericht vanwege onderhoud vergroten of verkleinen.
+In dit artikel wordt beschreven hoe u een permanente schijf aan uw virtuele machine koppelt, zodat u uw gegevens kunt bewaren, zelfs als uw virtuele machine opnieuw wordt ingericht door onderhoud of het wijzigen van de grootte.
 
 
-## <a name="attach-a-new-disk-to-a-vm"></a>Een nieuwe schijf koppelen aan een virtuele machine
+## <a name="attach-a-new-disk-to-a-vm"></a>Een nieuwe schijf koppelen aan een VM
 
-Als u een nieuwe, lege gegevensschijf toevoegen op de virtuele machine wilt, gebruikt u de [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) opdracht met de `--new` parameter. Als uw virtuele machine in een Beschikbaarheidszone is, wordt de schijf wordt automatisch gemaakt in dezelfde regio bevindt als de virtuele machine. Zie voor meer informatie, [overzicht van Beschikbaarheidszones](../../availability-zones/az-overview.md). Het volgende voorbeeld wordt een schijf met de naam *myDataDisk* dat wil zeggen 50 Gb in grootte:
+Als u een nieuwe, lege gegevens schijf wilt toevoegen aan uw VM, gebruikt u de opdracht [AZ VM Disk attach](/cli/azure/vm/disk?view=azure-cli-latest) met de para meter `--new`. Als uw virtuele machine zich in een beschikbaarheids zone bevindt, wordt de schijf automatisch gemaakt in dezelfde zone als de virtuele machine. Zie [overzicht van Beschikbaarheidszones](../../availability-zones/az-overview.md)voor meer informatie. In het volgende voor beeld wordt een schijf gemaakt met de naam *myDataDisk* met een grootte van 50 GB:
 
 ```azurecli
 az vm disk attach \
@@ -42,7 +42,7 @@ az vm disk attach \
 
 ## <a name="attach-an-existing-disk"></a>Een bestaande schijf koppelen
 
-Als u wilt een bestaande schijf koppelen, de schijf-ID zoeken en geef de ID op door de [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) opdracht. De volgende voorbeeldquery's voor een schijf met de naam *myDataDisk* in *myResourceGroup*, koppelt u deze aan de virtuele machine met de naam *myVM*:
+Als u een bestaande schijf wilt koppelen, zoekt u de schijf-ID en geeft u de ID door aan de opdracht [AZ VM Disk attach](/cli/azure/vm/disk?view=azure-cli-latest) . In het volgende voor beeld wordt een query uitgevoerd voor een schijf met de naam *myDataDisk* in *myResourceGroup*, waarna deze wordt gekoppeld aan de virtuele machine met de naam *myVM*:
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
@@ -50,15 +50,15 @@ diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 az vm disk attach -g myResourceGroup --vm-name myVM --name $diskId
 ```
 
-## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Verbinding maken met de Linux-VM naar de nieuwe schijf koppelen
+## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Verbinding maken met de Linux-VM om de nieuwe schijf te koppelen
 
-Om te partitioneren, formatteren en koppel de nieuwe schijf, zodat uw Linux-VM kan worden gebruikt, SSH in uw virtuele machine. Zie voor meer informatie [SSH gebruiken met Linux op Azure](mac-create-ssh-keys.md). Het volgende voorbeeld maakt verbinding met een virtuele machine met de openbare DNS-vermelding van *mypublicdns.westus.cloudapp.azure.com* met de gebruikersnaam *azureuser*:
+Om uw nieuwe schijf te partitioneren, te Format teren en te koppelen, zodat uw virtuele Linux-machine deze kan gebruiken, SSH in uw VM. Zie voor meer informatie [SSH gebruiken met Linux op Azure](mac-create-ssh-keys.md). In het volgende voor beeld wordt verbinding gemaakt met een virtuele machine met de open bare DNS-vermelding van *mypublicdns.westus.cloudapp.Azure.com* met de gebruikers naam *azureuser*:
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-Eenmaal verbinding hebben met uw virtuele machine, u kunt een schijf koppelen. Zoek eerst de schijf met `dmesg` (de methode die u gebruikt voor het detecteren van de nieuwe schijf kan variëren). Het volgende voorbeeld wordt dmesg om te filteren op *SCSI* schijven:
+Wanneer u bent verbonden met uw virtuele machine, kunt u een schijf koppelen. Zoek eerst de schijf met behulp van `dmesg` (de methode die u gebruikt om uw nieuwe schijf te detecteren) kan verschillen. In het volgende voor beeld wordt dmesg gebruikt om te filteren op *SCSI* -schijven:
 
 ```bash
 dmesg | grep SCSI
@@ -75,15 +75,15 @@ De uitvoer lijkt op die in het volgende voorbeeld:
 ```
 
 > [!NOTE]
-> Het wordt aanbevolen dat u de meest recente versies van fdisk gebruiken of die gescheiden beschikbaar zijn voor uw distributie.
+> Het is raadzaam om de meest recente versies van fdisk of een deel daarvan te gebruiken die beschikbaar zijn voor uw distributie.
 
-Hier *sdc* is de schijf die we willen. Partitioneer de schijf met `parted`, als de schijfgrootte 2 tebibytes (TiB is) of groter en vervolgens moet u GPT-partitionering, als deze onder 2TiB, kunt u partitioneren MBR of GPT gebruiken. Als u partitioneren MBR, kunt u `fdisk`. Een primaire schijf op partitie 1 maken en de andere standaardwaarden te accepteren. Het volgende voorbeeld wordt de `fdisk` op */dev/sdc*:
+Hier is *Dit SDC* de schijf die u wilt. De schijf partitioneren met `parted`als de schijf grootte 2 tebibytes (TiB) of groter is dan moet u GPT-partitionering gebruiken, als deze zich onder 2TiB bevindt, dan kunt u gebruikmaken van MBR-of GPT-partitionering. Als u gebruik maakt van MBR-partities, kunt u `fdisk`gebruiken. Maak een primaire schijf op partitie 1 en accepteer de andere standaard waarden. In het volgende voor beeld wordt het `fdisk` proces op */dev/SDC*gestart:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Gebruik de `n` opdracht voor het toevoegen van een nieuwe partitie. In dit voorbeeld wordt er ook voor kiezen `p` voor een primaire partitie en de rest van de standaardwaarden accepteren. De uitvoer is vergelijkbaar met het volgende voorbeeld:
+Gebruik de opdracht `n` om een nieuwe partitie toe te voegen. In dit voor beeld kiezen we ook `p` voor een primaire partitie en de rest van de standaard waarden te accepteren. De uitvoer ziet er ongeveer uit als in het volgende voor beeld:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -105,7 +105,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-De partitietabel afdrukken door te typen `p` en gebruik vervolgens `w` te schrijven in de tabel schijf en af te sluiten. De uitvoer moet eruitzien zoals in het volgende voorbeeld:
+Druk de partitie tabel af door `p` te typen en vervolgens `w` te gebruiken om de tabel naar schijf te schrijven en af te sluiten. De uitvoer moet er ongeveer uitzien als in het volgende voor beeld:
 
 ```bash
 Command (m for help): p
@@ -126,12 +126,12 @@ The partition table has been altered!
 Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
-Gebruik de onderstaande opdracht voor het bijwerken van de kernel:
+Gebruik de onderstaande opdracht om de kernel bij te werken:
 ```
 partprobe 
 ```
 
-Schrijf u nu een bestandssysteem naar de partitie met de `mkfs` opdracht. Geef het type bestandssysteem en de naam van het apparaat. Het volgende voorbeeld wordt een *ext4* bestandssysteem op het */dev/sdc1* partitie die is gemaakt in de voorgaande stappen:
+Schrijf nu een bestands systeem naar de partitie met de opdracht `mkfs`. Geef het type bestands systeem en de naam van het apparaat op. In het volgende voor beeld wordt een *ext4* -bestands systeem gemaakt op de */dev/sdc1* -partitie die in de voor gaande stappen is gemaakt:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -162,25 +162,25 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-Maak nu een map voor het koppelen van het bestandssysteem via `mkdir`. Het volgende voorbeeld wordt een map op */datadrive*:
+Maak nu een directory voor het koppelen van het bestands systeem met behulp van `mkdir`. In het volgende voor beeld maakt u een map op */datadrive*:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Gebruik `mount` vervolgens koppelen van het bestandssysteem. Hiermee koppelt u het volgende voorbeeld de */dev/sdc1* partitie op de */datadrive* koppelpunt:
+Gebruik `mount` om het bestands systeem vervolgens te koppelen. In het volgende voor beeld wordt de */dev/sdc1* -partitie gekoppeld aan het */datadrive* -koppel punt:
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Om ervoor te zorgen dat het station na het opnieuw opstarten automatisch wordt gekoppeld, moet deze worden toegevoegd aan de */etc/fstab* bestand. Het is ook ten zeerste aanbevolen dat de UUID (Universally Unique IDentifier) wordt gebruikt in */etc/fstab* om te verwijzen naar de schijf in plaats van alleen de naam van het apparaat (zoals */dev/sdc1*). Als het besturingssysteem wordt een fout gedetecteerd tijdens het opstarten, voorkomt met behulp van de UUID de onjuiste schijf is gekoppeld aan een bepaalde locatie. Resterende gegevensschijven kan vervolgens worden toegewezen die dezelfde apparaat-id's. Als u zoekt de UUID van het nieuwe station, gebruiken de `blkid` hulpprogramma:
+Om ervoor te zorgen dat het station automatisch na het opnieuw opstarten opnieuw wordt gekoppeld, moet het worden toegevoegd aan het *bestand/etc/fstab* -bestand. Het wordt ook ten zeerste aanbevolen om de UUID (Universally Unique IDentifier) in *bestand/etc/fstab* te gebruiken om te verwijzen naar het station in plaats van alleen de naam van het apparaat (zoals */dev/sdc1*). Als het besturings systeem tijdens het opstarten een schijf fout detecteert, voor komt u dat de onjuiste schijf wordt gekoppeld aan een bepaalde locatie. De resterende gegevens schijven worden vervolgens toegewezen aan dezelfde apparaat-Id's. Als u de UUID van het nieuwe station wilt zoeken, gebruikt u het hulp programma `blkid`:
 
 ```bash
 sudo blkid
 ```
 
-De uitvoer lijkt op het volgende voorbeeld:
+De uitvoer ziet er ongeveer uit als in het volgende voor beeld:
 
 ```bash
 /dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
@@ -189,38 +189,38 @@ De uitvoer lijkt op het volgende voorbeeld:
 ```
 
 > [!NOTE]
-> Onjuist bewerken van de **/etc/fstab** bestand kan leiden tot een systeem opgestart. Als u niet zeker, verwijzen naar de distributie van documentatie voor meer informatie over hoe u dit bestand goed te bewerken. Het verdient ook dat er een back-up van het bestand/etc/fstab voordat u bewerkt wordt gemaakt.
+> Het onjuist bewerken van het **bestand/etc/fstab** -bestand kan resulteren in een systeem dat niet kan worden opgestart. Als dat niet het geval is, raadpleegt u de documentatie van de distributie voor informatie over het correct bewerken van dit bestand. U wordt ook aangeraden een back-up van het bestand/etc/fstab-bestand te maken voordat u het bewerkt.
 
-Open vervolgens de */etc/fstab* bestand in een teksteditor als volgt:
+Open vervolgens het *bestand/etc/fstab* -bestand in een tekst editor als volgt:
 
 ```bash
 sudo vi /etc/fstab
 ```
 
-In dit voorbeeld gebruikt u de UUID-waarde voor de */dev/sdc1* apparaat dat is gemaakt in de vorige stappen, en het koppelpunt van */datadrive*. Voeg de volgende regel toe aan het einde van de */etc/fstab* bestand:
+In dit voor beeld gebruikt u de UUID-waarde voor het */dev/sdc1* -apparaat dat is gemaakt in de vorige stappen en de koppel punt van */datadrive*. Voeg de volgende regel toe aan het einde van het *bestand/etc/fstab* -bestand:
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
 > [!NOTE]
-> Later een gegevensschijf verwijderen zonder te bewerken van fstab kan ervoor zorgen dat de virtuele machine niet kunnen worden opgestart. De meeste distributies bieden ofwel de *nofail* en/of *nobootwait* fstab-opties. Deze opties kunt een systeem om op te starten, zelfs als de schijf koppelen bij het opstarten is mislukt. De documentatie van uw distributie voor meer informatie over deze parameters.
+> Later het verwijderen van een gegevens schijf zonder het bewerken van fstab kan ertoe leiden dat de virtuele machine niet kan worden opgestart. De meeste distributies bieden de opties *nobootwait* *en/* of fstab. Met deze opties kan een systeem worden opgestart zelfs als de schijf niet kan worden gekoppeld tijdens het opstarten. Raadpleeg de documentatie van uw distributie voor meer informatie over deze para meters.
 >
-> De *nofail* optie zorgt ervoor dat de virtuele machine wordt gestart, zelfs als het bestandssysteem beschadigd is of de schijf niet bij het opstarten bestaat. Zonder deze optie kunnen optreden gedrag zoals beschreven in [niet kan SSH naar Linux-VM vanwege FSTAB-fouten](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
+> De *niet-werkende* optie zorgt ervoor dat de VM wordt gestart, zelfs als het bestands systeem beschadigd is of wanneer de schijf niet aanwezig is tijdens het opstarten. Zonder deze optie kunt u zich voordoen als beschreven in [kan niet SSH-naar-Linux-VM wegens FSTAB-fouten](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
 >
-> Een seriële Console van het Azure-VM kan worden gebruikt voor toegang tot de console met uw virtuele machine als fstab wijzigen heeft geresulteerd in een opstartfout. Meer informatie vindt u in de [seriële Console documentatie](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux).
+> De seriële Azure VM-console kan worden gebruikt voor toegang tot de console van uw virtuele machine als het wijzigen van fstab een opstart fout heeft veroorzaakt. Meer informatie vindt u in de [documentatie van de seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux).
 
-### <a name="trimunmap-support-for-linux-in-azure"></a>TRIM/UNMAP ondersteuning voor Linux in Azure
-Sommige Linux kernels ondersteund TRIM/UNMAP bewerkingen voor het negeren van niet-gebruikte blokken op de schijf. Deze functie is vooral handig in de standard-opslag om te informeren over Azure die pagina's verwijderd niet langer geldig zijn en kunnen worden verwijderd en geld kunt besparen als u grote bestanden maakt en ze vervolgens te verwijderen.
+### <a name="trimunmap-support-for-linux-in-azure"></a>Ondersteuning voor Linux in azure bijsnijden/ontkoppelen
+Sommige Linux-kernels ondersteunen bewerkingen voor het verwijderen/ontkoppelen van ongebruikte blokken op de schijf. Deze functie is vooral nuttig in de standaard opslag om Azure te informeren dat verwijderde pagina's niet meer geldig zijn en kunnen worden verwijderd en geld kunnen besparen als u grote bestanden maakt en deze vervolgens verwijdert.
 
-Er zijn twee manieren om in te schakelen TRIM ondersteuning in uw Linux-VM. Raadpleeg uw distributie zoals gewoonlijk voor de aanbevolen aanpak:
+Er zijn twee manieren om ondersteuning voor het verkleinen van de virtuele Linux-machine in te scha kelen. Zoals gebruikelijk, raadpleegt u de distributie voor de aanbevolen benadering:
 
-* Gebruik de `discard` koppelen in de optie */etc/fstab*, bijvoorbeeld:
+* Gebruik de optie voor het koppelen van `discard` in *bestand/etc/fstab*, bijvoorbeeld:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* In sommige gevallen kan de `discard` optie prestaties gevolgen kan hebben. U kunt ook uitvoeren de `fstrim` handmatig vanaf de opdrachtregel de opdracht of toe te voegen aan uw crontab regelmatig wordt uitgevoerd:
+* In sommige gevallen heeft de optie `discard` mogelijk gevolgen voor de prestaties. U kunt ook de `fstrim` opdracht hand matig uitvoeren vanaf de opdracht regel of deze toevoegen aan uw crontab om regel matig uit te voeren:
 
     **Ubuntu**
 
@@ -242,5 +242,5 @@ Er zijn twee manieren om in te schakelen TRIM ondersteuning in uw Linux-VM. Raad
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Om ervoor te zorgen voor uw Linux-VM correct is geconfigureerd, Controleer de [optimaliseren de prestaties van uw Linux-machine](optimization.md) aanbevelingen.
-* Uw opslagcapaciteit uitbreiden door extra schijven toe te voegen en [RAID configureren](configure-raid.md) voor extra prestaties.
+* Bekijk de aanbevelingen voor het [optimaliseren van uw Linux-machine](optimization.md) om ervoor te zorgen dat uw Linux-VM correct is geconfigureerd.
+* Breid uw opslag capaciteit uit door extra schijven toe te voegen en [RAID te configureren](configure-raid.md) voor extra prestaties.

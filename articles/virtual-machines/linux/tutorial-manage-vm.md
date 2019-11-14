@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Virtuele Linux-machines maken en beheren met de Azure CLI | Microsoft Docs'
+title: 'Zelf studie: virtuele Linux-machines maken en beheren met de Azure CLI'
 description: In deze zelfstudie leert u hoe u Azure CLI gebruikt voor het maken en beheren van virtuele Linux-machines in Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,22 +15,22 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 11c12058229a2eadfdc3834d311c085c2365b17d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b7660d2bcb6f2bb8b738ed92401937c0b988fef2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300789"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034418"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Zelfstudie: Virtuele Linux-machines maken en beheren met de Azure CLI
 
-Virtuele machines in Azure bieden een volledig geconfigureerde en flexibele computeromgeving. Deze zelfstudie bevat informatie over basisconcepten voor het implementeren van virtuele Azure-machines, zoals het selecteren van een VM-grootte, het selecteren van een VM-installatiekopie en het implementeren van een virtuele machine. In deze zelfstudie leert u procedures om het volgende te doen:
+Virtuele machines in Azure bieden een volledig geconfigureerde en flexibele computeromgeving. Deze zelfstudie bevat informatie over basisconcepten voor het implementeren van virtuele Azure-machines, zoals het selecteren van een VM-grootte, het selecteren van een VM-installatiekopie en het implementeren van een virtuele machine. Procedures voor:
 
 > [!div class="checklist"]
 > * Een virtuele machine maken en verbinding maken met een virtuele machine
 > * VM-installatiekopieën selecteren en gebruiken
 > * Specifieke VM-grootten weergeven en gebruiken
-> * De grootte van een virtuele machine wijzigen
+> * De grootte van een VM wijzigen
 > * De status van een virtuele machine weergeven en begrijpen
 
 In deze zelf studie wordt gebruikgemaakt van de CLI binnen de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.
@@ -158,8 +158,8 @@ In de volgende tabel zijn grootten gecategoriseerd in use-cases.
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Algemeen doel](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Evenwichtige CPU-geheugenverhouding. Ideaal voor ontwikkelen/testen en in kleine tot middelgrote toepassingen en gegevensoplossingen.  |
 | [Geoptimaliseerde rekenkracht](sizes-compute.md)   | Fsv2          | Hoge CPU-geheugenverhouding. Goed voor middelgrootte verkeerstoepassingen, netwerkapparatuur en batchprocessen.        |
-| [Geoptimaliseerd geheugen](sizes-memory.md)    | Esv3, Ev3, M, DSv2, dv2  | Hoge geheugen-kernverhouding. Uiterst geschikt voor relationele-databases, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
-| [Geoptimaliseerde opslag](sizes-storage.md)      | Lsv2, ls              | Snelle doorvoer van schijfgegevens en IO. Ideaal voor big data-, SQL- en NoSQL-databases.                                                         |
+| [Geoptimaliseerd geheugen](sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Hoge geheugen-kernverhouding. Uiterst geschikt voor relationele-databases, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
+| [Geoptimaliseerde opslag](sizes-storage.md)      | Lsv2, Ls              | Snelle doorvoer van schijfgegevens en IO. Ideaal voor big data-, SQL- en NoSQL-databases.                                                         |
 | [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Gespecialiseerde VM's bedoeld voor intensieve grafische rendering en videobewerking.       |
 | [Hoge prestaties](sizes-hpc.md) | H        | Onze krachtigste CPU-VM's met optionele netwerkinterfaces (RDMA) voor hoge doorvoer. |
 
@@ -208,7 +208,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-### <a name="resize-a-vm"></a>De grootte van een virtuele machine wijzigen
+### <a name="resize-a-vm"></a>De grootte van een VM wijzigen
 
 Nadat een virtuele machine is geïmplementeerd, kan de grootte ervan worden gewijzigd om meer of minder resources toe te wijzen. U kunt de huidige grootte van een virtuele machine weergeven met [az vm show](/cli/azure/vm):
 
@@ -253,10 +253,10 @@ Een Azure VM kan op een van de vele energiestatussen worden ingesteld. Deze stat
 
 | Energiestatus | Beschrijving
 |----|----|
-| Starting | Geeft aan dat de virtuele machine wordt gestart. |
+| Starten | Geeft aan dat de virtuele machine wordt gestart. |
 | In uitvoering | Geeft aan dat de virtuele machine wordt uitgevoerd. |
-| Stopping | Geeft aan dat de virtuele machine wordt gestopt. | 
-| Stopped | Geeft aan dat de virtuele machine is gestopt. Virtuele machines met de status Gestopt genereren nog steeds rekenkosten.  |
+| Stoppen | Geeft aan dat de virtuele machine wordt gestopt. | 
+| Gestopt | Geeft aan dat de virtuele machine is gestopt. Virtuele machines met de status Gestopt genereren nog steeds rekenkosten.  |
 | Vrijgeven | Geeft aan dat de toewijzing van de virtuele machine ongedaan wordt gemaakt. |
 | Toewijzing ongedaan gemaakt | Geeft aan dat de virtuele machine is verwijderd uit de hypervisor maar nog steeds beschikbaar is in het vlak van het besturingselement. Virtuele machines met de status Toewijzing ongedaan gemaakt genereren geen rekenkosten. |
 | - | Geeft aan dat de Aan-/uitstatus van de virtuele machine onbekend is. |
@@ -320,7 +320,7 @@ In deze zelfstudie hebt u geleerd over basistaken voor het maken en beheren van 
 > * Een virtuele machine maken en verbinding maken met een virtuele machine
 > * VM-installatiekopieën selecteren en gebruiken
 > * Specifieke VM-grootten weergeven en gebruiken
-> * De grootte van een virtuele machine wijzigen
+> * De grootte van een VM wijzigen
 > * De status van een virtuele machine weergeven en begrijpen
 
 In de volgende zelfstudie leert u meer over VM-schijven.  

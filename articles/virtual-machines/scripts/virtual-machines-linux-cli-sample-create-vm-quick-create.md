@@ -1,5 +1,5 @@
 ---
-title: 'Azure CLI-voorbeeldscript: snel een virtuele Linux-machine maken | Microsoft Docs'
+title: 'Azure CLI-voorbeeldscript: snel een virtuele Linux-machine maken'
 description: 'Azure CLI-voorbeeldscript: snel een virtuele Linux-machine maken'
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fb7280c842b4f2fc4e763fadd9bea077fc5eeeb9
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 918a2724580e5c20de6f83d03dbd8e9593e84e2e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709483"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037720"
 ---
 # <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
-Dit script maakt een virtuele Azure-machine met een Ubuntu-besturingssysteem en bijbehorende netwerkresources. Nadat het script is uitgevoerd, hebt u via SSH toegang tot de virtuele machine.
+Dit script maakt een virtuele Azure-machine met een Ubuntu-besturingssysteem en bijbehorende netwerkresources. Nadat het script is uitgevoerd, hebt u toegang tot de virtuele machine via SSH.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -45,7 +45,7 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtuele machine en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -55,6 +55,6 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 U kunt extra CLI-scriptvoorbeelden voor virtuele machines vinden in de [Azure-documentatie voor Linux-VM's](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

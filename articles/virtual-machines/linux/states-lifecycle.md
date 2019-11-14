@@ -1,5 +1,5 @@
 ---
-title: Levens cyclus en statussen van een virtuele Linux-machine in azure | Microsoft Docs
+title: Levens cyclus en statussen van een virtuele Linux-machine in azure
 description: Overzicht van de levens cyclus van een virtuele Linux-machine in azure, met inbegrip van beschrijvingen van de verschillende statussen die een VM op elk gewenst moment kan hebben.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: ba78990402ebe5dc29e50bf98a795e728cec7996
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1ddd245b03d8886d686daba34a00c63ec64ffb07
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081872"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034770"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Levens cyclus en statussen van virtuele machines
 
