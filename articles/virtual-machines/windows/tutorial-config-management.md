@@ -1,5 +1,5 @@
 ---
-title: Zelf studie-configuratie van virtuele Windows-machines beheren in azure | Microsoft Docs
+title: Zelf studie-configuratie van virtuele Windows-machines beheren in azure
 description: In deze zelf studie leert u hoe u wijzigingen kunt identificeren en pakket updates kunt beheren op een virtuele Windows-machine
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 13a9534920f936287109a451b542c81a007c3a4c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d97323f1916ee46e6b1f8d4ca8723b950baca39c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027899"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064805"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Zelf studie: wijzigingen bewaken en een virtuele Windows-machine bijwerken in azure
 
@@ -94,7 +94,7 @@ Kies in het venster **updatebeheer inschakelen** de log Analytics werk ruimte en
 Een van de volgende vereiste onderdelen die ontbreken tijdens het voorbereiden worden automatisch toegevoegd:
 
 * [Log Analytics](../../log-analytics/log-analytics-overview.md)-werkruimte
-* [Automation](../../automation/automation-offering-get-started.md)
+* [Automatisering](../../automation/automation-offering-get-started.md)
 * Een [hybride runbook worker](../../automation/automation-hybrid-runbook-worker.md), dat is ingeschakeld op de VM
 
 Nadat de oplossing is ingeschakeld, wordt het venster **Update beheer** geopend. Configureer de locatie, Log Analytics werk ruimte en het Automation-account dat moet worden gebruikt en selecteer vervolgens **inschakelen**. Als deze opties grijs worden weer gegeven, is er een andere automatiserings oplossing voor de virtuele machine ingeschakeld en moet de werk ruimte en het Automation-account van de oplossing worden gebruikt.
@@ -196,7 +196,7 @@ Selecteer op de VM de optie **Inventaris** onder **BEWERKINGEN**. Op het tabblad
 
 Selecteer in het venster **Wijzigingen bijhouden** op uw VM de optie **activiteiten logboek beheren** om het deel venster **activiteiten logboek van Azure** te openen. Selecteer **verbinding maken** om wijzigingen bijhouden te verbinden met het Azure-activiteiten logboek voor uw VM.
 
-Nadat Wijzigingen bijhouden is ingeschakeld, gaat u naar het deel venster **overzicht** voor uw VM en selecteert u **stoppen** om de virtuele machine te stoppen. Wanneer u daarom wordt gevraagd, selecteert u **Ja** om de VM te stoppen. Nadat de toewijzing van de virtuele machine ongedaan is gemaakt, selecteert u **starten** om de VM opnieuw op te starten.
+Nadat Wijzigingen bijhouden is ingeschakeld, gaat u naar het deel venster **overzicht** voor uw VM en selecteert u **stoppen** om de virtuele machine te stoppen. Wanneer u daarom wordt gevraagd, selecteert u **Ja** om de virtuele machine te stoppen. Nadat de toewijzing van de virtuele machine ongedaan is gemaakt, selecteert u **starten** om de VM opnieuw op te starten.
 
 Wanneer een virtuele machine wordt gestopt en opnieuw wordt gestart, wordt een gebeurtenis geregistreerd in het activiteiten logboek. Ga terug naar het deel venster voor het **bijhouden van wijzigingen** en selecteer het tabblad **gebeurtenissen** onder aan het deel venster. Na een tijdje worden de gebeurtenissen weer gegeven in de grafiek en in de tabel. U kunt elke gebeurtenis selecteren om gedetailleerde informatie voor die gebeurtenis weer te geven.
 

@@ -1,5 +1,5 @@
 ---
-title: Een Windows-VM maken op basis van een sjabloon in azure | Microsoft Docs
+title: Een Windows-VM maken op basis van een sjabloon in azure
 description: Gebruik een resource manager-sjabloon en Power shell om eenvoudig een nieuwe Windows-VM te maken.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e1f50753f155d1583de3a1e8426975e1b0d6aee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 99e292930414ae027c9cbbf3a901d550041899d2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102521"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065555"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Een virtuele Windows-machine maken op basis van een resource manager-sjabloon
 
@@ -60,7 +60,7 @@ New-AzResourceGroupDeployment `
 
 Als u ervoor kiest om de Power shell lokaal te installeren en te gebruiken in plaats van vanuit de Azure Cloud shell, is voor deze zelf studie de module Azure PowerShell vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
-In het vorige voor beeld hebt u een sjabloon opgegeven die is opgeslagen in GitHub. U kunt ook een sjabloon downloaden of maken en het lokale pad opgeven met de `--template-file` para meter.
+In het vorige voor beeld hebt u een sjabloon opgegeven die is opgeslagen in GitHub. U kunt ook een sjabloon downloaden of maken en het lokale pad opgeven met de para meter `--template-file`.
 
 Hier volgen enkele aanvullende bronnen:
 

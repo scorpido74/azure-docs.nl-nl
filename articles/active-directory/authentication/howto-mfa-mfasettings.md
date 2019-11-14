@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ea89af780df72b97fef553cf79b84c4b28da05
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4932089b7315f2756f3760b252c7257868f640fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569877"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066043"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication-instellingen configureren
 
 Dit artikel helpt u bij het beheren van Multi-Factor Authentication instellingen in de Azure Portal. Het omvat diverse onderwerpen waarmee u optimaal gebruik kunt gaan van Azure Multi-Factor Authentication. Niet alle functies zijn beschikbaar in elke versie van Azure Multi-Factor Authentication.
 
-U kunt via de Azure Portal toegang krijgen tot de instellingen met betrekking tot Azure Multi-Factor Authentication door te bladeren **Azure Active Directory** > **MFA**.
+U kunt via de Azure Portal toegang krijgen tot de instellingen met betrekking tot Azure Multi-Factor Authentication door te bladeren **Azure Active Directory** > **Security** > **MFA**.
 
 ![Azure Portal-Azure AD-Multi-Factor Authentication-instellingen](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -62,7 +62,7 @@ Gebruik de functie _blok keren en blok_ keren van gebruikers om te voor komen da
 ### <a name="block-a-user"></a>Een gebruiker blok keren
 
 1. Meld u als beheerder aan bij [Azure Portal](https://portal.azure.com).
-2. Blader naar **Azure Active Directory** > **MFA** > **blok keren/deblokkeren van gebruikers**.
+2. Blader naar **Azure Active Directory** > **beveiliging** > **MFA** > **gebruikers blok keren of deblokkeren**.
 3. Selecteer **toevoegen** om een gebruiker te blok keren.
 4. Selecteer de **replicatie groep**. Voer de gebruikers naam voor de geblokkeerde gebruiker in als **gebruikers naam\@Domain.com**. Voer een opmerking in het veld **reden** in.
 5. Selecteer **toevoegen** om het blok keren van de gebruiker te volt ooien.
@@ -70,7 +70,7 @@ Gebruik de functie _blok keren en blok_ keren van gebruikers om te voor komen da
 ### <a name="unblock-a-user"></a>Deblokkeren van een gebruiker
 
 1. Meld u als beheerder aan bij [Azure Portal](https://portal.azure.com).
-2. Blader naar **Azure Active Directory** > **MFA** > **blok keren/deblokkeren van gebruikers**.
+2. Blader naar **Azure Active Directory** > **beveiliging** > **MFA** > **gebruikers blok keren of deblokkeren**.
 3. Selecteer **blok kering** in de kolom **actie** naast de gebruiker om de blok kering op te heffen.
 4. Voer een opmerking in het veld **reden voor blok kering opheffen** in.
 5. Selecteer **blok kering opheffen** om het blok keren van de gebruiker te volt ooien.
@@ -82,7 +82,7 @@ Configureer de functie _fraude waarschuwing_ zodat uw gebruikers frauduleuze pog
 ### <a name="turn-on-fraud-alerts"></a>Fraude waarschuwingen inschakelen
 
 1. Meld u als beheerder aan bij [Azure Portal](https://portal.azure.com).
-2. Ga naar **Azure Active Directory** > **MFA** > **fraude waarschuwing**.
+2. Ga naar **Azure Active Directory** > **beveiliging** > **MFA** > **fraude waarschuwing**.
 3. Stel de instelling **gebruikers toestaan voor het indienen van fraude waarschuwingen** **in op aan**.
 4. Selecteer **Opslaan**.
 
@@ -124,7 +124,7 @@ U kunt uw eigen opnamen of begroetingen gebruiken voor verificatie in twee stapp
 Voordat u begint, moet u rekening houden met de volgende beperkingen:
 
 * De ondersteunde bestands indelingen zijn. WAV en. mp3.
-* De maximale bestands grootte is 5 MB.
+* De maximale bestands grootte is 1 MB.
 * Verificatie berichten moeten korter dan 20 seconden zijn. Berichten van meer dan 20 seconden kunnen ervoor zorgen dat de verificatie mislukt. De gebruiker reageert mogelijk niet voordat het bericht is voltooid en er wordt een time-out van de verificatie uitgevoerd.
 
 ### <a name="custom-message-language-behavior"></a>Taal gedrag aangepaste berichten
@@ -145,7 +145,7 @@ Als er bijvoorbeeld slechts één aangepast bericht is, met een taal van het Dui
 ### <a name="set-up-a-custom-message"></a>Een aangepast bericht instellen
 
 1. Meld u als beheerder aan bij [Azure Portal](https://portal.azure.com).
-1. Blader naar **Azure Active Directory** > **MFA** > **instellingen voor telefoon gesprek**.
+1. Ga naar **Azure Active Directory** > **beveiliging** > **MFA** > **instellingen voor telefoon gesprek**.
 1. Selecteer **begroeting toevoegen**.
 1. Kies het type begroeting.
 1. Kies de taal.
@@ -184,7 +184,7 @@ Met de functie _eenmalig overs Laan_ kan een gebruiker één keer verifiëren zo
 ### <a name="create-a-one-time-bypass"></a>Eenmalige bypass maken
 
 1. Meld u als beheerder aan bij [Azure Portal](https://portal.azure.com).
-2. Ga naar **Azure Active Directory** > **MFA** > **eenmalig overs Laan**.
+2. Ga naar **Azure Active Directory** > **beveiliging** > **MFA** > **eenmalig overs Laan**.
 3. Selecteer **Toevoegen**.
 4. Selecteer, indien nodig, de replicatie groep voor de bypass.
 5. Voer de gebruikers naam in als **gebruikers naam\@Domain.com**. Voer het aantal seconden in dat de bypass moet duren. Voer de reden voor het overs laan in.
@@ -193,7 +193,7 @@ Met de functie _eenmalig overs Laan_ kan een gebruiker één keer verifiëren zo
 ### <a name="view-the-one-time-bypass-report"></a>Het eenmalige bypass-rapport weer geven
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-2. Ga naar **Azure Active Directory** > **MFA** > **eenmalig overs Laan**.
+2. Ga naar **Azure Active Directory** > **beveiliging** > **MFA** > **eenmalig overs Laan**.
 
 ## <a name="caching-rules"></a>Regels voor opslaan in cache
 
@@ -205,7 +205,7 @@ U kunt een tijds periode instellen voor het toestaan van verificatie pogingen na
 ### <a name="set-up-caching"></a>Caching instellen
 
 1. Meld u als beheerder aan bij [Azure Portal](https://portal.azure.com).
-2. Ga naar **Azure Active Directory** > **MFA** > **cache regels**.
+2. Ga naar **Azure Active Directory** > **beveiliging** > **MFA** > **regels voor opslaan in de cache**.
 3. Selecteer **Toevoegen**.
 4. Selecteer het **cache type** in de vervolg keuzelijst. Voer het maximum aantal **cache seconden in**.
 5. Selecteer indien nodig een verificatie type en geef een toepassing op.
@@ -213,9 +213,11 @@ U kunt een tijds periode instellen voor het toestaan van verificatie pogingen na
 
 ## <a name="mfa-service-settings"></a>Instellingen voor MFA-service
 
-Instellingen voor app-wacht woorden, vertrouwde IP-adressen, verificatie opties en onthoud multi-factor Authentication voor Azure Multi-Factor Authentication zijn te vinden in service-instellingen. U kunt toegang krijgen tot de service-instellingen via de Azure Portal door te bladeren naar **Azure Active Directory** > **MFA** > **aan de slag** > **configuratie** > **Extra op de cloud gebaseerde MFA-instellingen**.
+Instellingen voor app-wacht woorden, vertrouwde IP-adressen, verificatie opties en onthoud multi-factor Authentication voor Azure Multi-Factor Authentication zijn te vinden in service-instellingen. U kunt toegang krijgen tot de service-instellingen via de Azure Portal door te bladeren naar **Azure Active Directory** > **beveiliging** > **MFA** > **aan de slag** > **configuratie** > **Extra op de cloud gebaseerde MFA-instellingen**.
 
 ![Service-instellingen van Azure Multi-Factor Authentication](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
+
+De vertrouwde IP-adresbereiken kunnen privé of openbaar zijn.
 
 ## <a name="app-passwords"></a>App-wachtwoorden
 

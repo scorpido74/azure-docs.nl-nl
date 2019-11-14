@@ -1,11 +1,11 @@
 ---
-title: Gebruik Azure Load Balancer status tests om te schalen en hoge Beschik baarheid te bieden voor uw service
-titlesuffix: Azure Load Balancer
-description: Informatie over het gebruik van statuscontroles instanties achter Load Balancer bewaken
+title: Status tests voor het schalen en leveren van HA voor uw service
+titleSuffix: Azure Load Balancer
+description: In dit artikel leest u hoe u status tests kunt gebruiken om exemplaren achter Azure Load Balancer te controleren
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: d9873c4d8d4ca2b74532706f079c7384bf38db42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fdc7254b4c6e798c0f32f5fac3575474ed6ec1d0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033825"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077079"
 ---
 # <a name="load-balancer-health-probes"></a>Status van Load Balancer testen
 
@@ -240,7 +240,7 @@ Als u meerdere interfaces op de virtuele machine hebt, moet u zorgen dat u de te
 
 Schakel TCP- [tijds tempels](https://tools.ietf.org/html/rfc1323)niet in.  Het inschakelen van TCP-tijds tempels kan ertoe leiden dat status controles mislukken omdat TCP-pakketten worden verwijderd door de TCP-stack van het gast besturingssysteem van de virtuele machine, wat leidt tot Load Balancer het respectievelijke eind punt wordt gemarkeerd.  TCP-tijds tempels worden standaard ingeschakeld voor beveiligde VM-installatie kopieën en moeten worden uitgeschakeld.
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 Zowel open bare als interne [Standard Load Balancer](load-balancer-standard-overview.md) geven per eind punt en back-end-eindpunt status de waarde met meerdere dimensies via Azure monitor. Deze metrische gegevens kunnen worden gebruikt door andere Azure-Services of partner toepassingen. 
 

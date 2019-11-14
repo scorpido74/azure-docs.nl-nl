@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Virtuele Azure-machines beheren met Azure PowerShell | Microsoft Docs'
+title: 'Zelf studie: Azure virtual machines beheren met Azure PowerShell'
 description: In deze zelfstudie leert u hoe u Azure PowerShell gebruikt voor het beheren van virtuele Azure-machines door RBAC, beleid, vergrendelingen en tags toe te passen
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 3a0821885361fa4781c75b0ed4caa71f9fda37a1
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9f806c6790c953d86cf7fe99daf40c17a43d2d35
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749120"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067947"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Zelf studie: meer informatie over het beheer van virtuele Windows-machines met Azure PowerShell
 
@@ -46,7 +46,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 De resourcegroep is momenteel leeg.
 
-## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
+## <a name="role-based-access-control"></a>Toegangsbeheer op basis van rollen
 
 U wilt er zeker van zijn dat gebruikers in uw organisatie het juiste toegangsniveau tot deze resources hebben. U wilt gebruikers geen onbeperkte toegang verlenen, maar u moet er ook voor zorgen dat ze hun werk kunnen doen. Met [toegangsbeheer op basis van rollen](../../role-based-access-control/overview.md) kunt u beheren welke gebruikers gemachtigd zijn specifieke acties binnen een bepaald bereik uit te voeren.
 
@@ -138,7 +138,7 @@ New-AzVm -ResourceGroupName "myResourceGroup" `
 
 Nadat de implementatie is voltooid, kunt u meer beheerinstellingen toepassen op de oplossing.
 
-## <a name="lock-resources"></a>Resources vergrendelen
+## <a name="lock-resources"></a>Bronnen vergrendelen
 
 Met [resourcevergrendelingen](../../azure-resource-manager/resource-group-lock-resources.md) voorkomt u dat gebruikers in uw organisatie per ongeluk kritieke bronnen wijzigen of verwijderen. In tegenstelling tot toegangsbeheer op basis van rollen wordt met resourcevergrendelingen een beperking toegepast op alle gebruikers en rollen. U kunt de vergrendeling instellen op *CanNotDelete* of *ReadOnly*.
 

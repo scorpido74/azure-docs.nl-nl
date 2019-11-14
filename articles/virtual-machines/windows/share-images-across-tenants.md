@@ -1,5 +1,5 @@
 ---
-title: Galerie-installatie kopieën delen via tenants in azure | Microsoft Docs
+title: Galerie-installatie kopieën delen via tenants in azure
 description: Meer informatie over het delen van VM-installatie kopieën in azure-tenants met behulp van de galerie met gedeelde afbeeldingen.
 services: virtual-machines-windows
 author: cynthn
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: cynthn
-ms.openlocfilehash: 6bf627b5456cbd878580d7b346536c98a513ca6a
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 9b7e7066f186017b7cc4408cd4f7edcc7e5f0dcd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903696"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065518"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Galerie-VM-installatie kopieën delen in azure-tenants
 
