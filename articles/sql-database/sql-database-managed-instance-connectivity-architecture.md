@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 0c21271eb19a8fd69cb42e30c6a45bd3af9a5600
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1f5f5f2064baa4b2821ccb7b9a2237e6aeeb86f5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820483"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048762"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Connectiviteits architectuur voor een beheerd exemplaar in Azure SQL Database
 
@@ -96,7 +96,7 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="mandatory-inbound-security-rules"></a>Verplichte regels voor binnenkomende beveiliging
 
-| Naam       |Poort                        |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Actie|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |beheer  |9000, 9003, 1438, 1440, 1452|TCP     |Alle              |MI-SUBNET  |Toestaan |
 |mi_subnet   |Alle                         |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -104,13 +104,13 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="mandatory-outbound-security-rules"></a>Verplichte uitgaande beveiligings regels
 
-| Naam       |Poort          |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort          |Protocol|Bron           |Doel|Actie|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
 
 > [!IMPORTANT]
-> Zorg ervoor dat er slechts één binnenkomende regel is voor poorten 9000, 9003, 1438, 1440, 1452 en één uitgaande regel voor poorten 80, 443, 12000. Het inrichten van beheerde instanties via Azure Resource Manager implementaties mislukt als de regels voor binnenkomend en uitgaand verkeer voor elke poort afzonderlijk zijn geconfigureerd. Als deze poorten zich in afzonderlijke regels bevinden, mislukt de implementatie met fout code `VnetSubnetConflictWithIntendedPolicy`
+> Zorg ervoor dat er slechts één binnenkomende regel is voor poorten 9000, 9003, 1438, 1440, 1452 en één uitgaande regel voor poorten 443, 12000. Het inrichten van beheerde instanties via Azure Resource Manager implementaties mislukt als de regels voor binnenkomend en uitgaand verkeer voor elke poort afzonderlijk zijn geconfigureerd. Als deze poorten zich in afzonderlijke regels bevinden, mislukt de implementatie met fout code `VnetSubnetConflictWithIntendedPolicy`
 
 \* MI-SUBNET verwijst naar het IP-adres bereik voor het SUBNET in de vorm 10. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.
 
@@ -127,22 +127,22 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
 |Mi-13-96-13-nexthop-Internet|13.96.0.0/13|Internet|
 |Mi-13-104-14-nexthop-Internet|13.104.0.0/14|Internet|
-|Mi-20-8-nexthop-Internet|20.0.0.0/8|Internet|
+|mi-20-8-nexthop-internet|20.0.0.0/8|Internet|
 |Mi-23-96-13-nexthop-Internet|23.96.0.0/13|Internet|
 |Mi-40-64-10-nexthop-Internet|40.64.0.0/10|Internet|
 |Mi-42-159-16-nexthop-Internet|42.159.0.0/16|Internet|
 |Mi-51-8-nexthop-Internet|51.0.0.0/8|Internet|
-|Mi-52-8-nexthop-Internet|52.0.0.0/8|Internet|
+|mi-52-8-nexthop-internet|52.0.0.0/8|Internet|
 |Mi-64-4-18-nexthop-Internet|64.4.0.0/18|Internet|
 |Mi-65-52-14-nexthop-Internet|65.52.0.0/14|Internet|
 |Mi-66-119-144-20-nexthop-Internet|66.119.144.0/20|Internet|
 |Mi-70-37-17-nexthop-Internet|70.37.0.0/17|Internet|
 |Mi-70-37-128-18-nexthop-Internet|70.37.128.0/18|Internet|
-|Mi-91-190-216-21-nexthop-Internet|91.190.216.0/21|Internet|
+|mi-91-190-216-21-nexthop-internet|91.190.216.0/21|Internet|
 |Mi-94-245-64-18-nexthop-Internet|94.245.64.0/18|Internet|
-|Mi-103-9-8-22-nexthop-Internet|103.9.8.0/22|Internet|
+|mi-103-9-8-22-nexthop-internet|103.9.8.0/22|Internet|
 |Mi-103-25-156-22-nexthop-Internet|103.25.156.0/22|Internet|
-|Mi-103-36-96-22-nexthop-Internet|103.36.96.0/22|Internet|
+|mi-103-36-96-22-nexthop-internet|103.36.96.0/22|Internet|
 |Mi-103-255-140-22-nexthop-Internet|103.255.140.0/22|Internet|
 |Mi-104-40-13-nexthop-Internet|104.40.0.0/13|Internet|
 |Mi-104-146-15-nexthop-Internet|104.146.0.0/15|Internet|
@@ -175,11 +175,11 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 |Mi-192-32-16-nexthop-Internet|192.32.0.0/16|Internet|
 |Mi-192-48-225-24-nexthop-Internet|192.48.225.0/24|Internet|
 |Mi-192-84-159-24-nexthop-Internet|192.84.159.0/24|Internet|
-|Mi-192-84-160-23-nexthop-Internet|192.84.160.0/23|Internet|
+|mi-192-84-160-23-nexthop-internet|192.84.160.0/23|Internet|
 |Mi-192-100-102-24-nexthop-Internet|192.100.102.0/24|Internet|
 |Mi-192-100-103-24-nexthop-Internet|192.100.103.0/24|Internet|
 |Mi-192-197-157-24-nexthop-Internet|192.197.157.0/24|Internet|
-|Mi-193-149-64-19-nexthop-Internet|193.149.64.0/19|Internet|
+|mi-193-149-64-19-nexthop-internet|193.149.64.0/19|Internet|
 |Mi-193-221-113-24-nexthop-Internet|193.221.113.0/24|Internet|
 |Mi-194-69-96-19-nexthop-Internet|194.69.96.0/19|Internet|
 |Mi-194-110-197-24-nexthop-Internet|194.110.197.0/24|Internet|
@@ -192,24 +192,24 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 |Mi-199-103-122-24-nexthop-Internet|199.103.122.0/24|Internet|
 |Mi-199-242-32-20-nexthop-Internet|199.242.32.0/20|Internet|
 |Mi-199-242-48-21-nexthop-Internet|199.242.48.0/21|Internet|
-|Mi-202-89-224-20-nexthop-Internet|202.89.224.0/20|Internet|
-|Mi-204-13-120-21-nexthop-Internet|204.13.120.0/21|Internet|
-|Mi-204-14-180-22-nexthop-Internet|204.14.180.0/22|Internet|
+|mi-202-89-224-20-nexthop-internet|202.89.224.0/20|Internet|
+|mi-204-13-120-21-nexthop-internet|204.13.120.0/21|Internet|
+|mi-204-14-180-22-nexthop-internet|204.14.180.0/22|Internet|
 |Mi-204-79-135-24-nexthop-Internet|204.79.135.0/24|Internet|
 |Mi-204-79-179-24-nexthop-Internet|204.79.179.0/24|Internet|
 |Mi-204-79-181-24-nexthop-Internet|204.79.181.0/24|Internet|
 |Mi-204-79-188-24-nexthop-Internet|204.79.188.0/24|Internet|
 |Mi-204-79-195-24-nexthop-Internet|204.79.195.0/24|Internet|
-|Mi-204-79-196-23-nexthop-Internet|204.79.196.0/23|Internet|
+|mi-204-79-196-23-nexthop-internet|204.79.196.0/23|Internet|
 |Mi-204-79-252-24-nexthop-Internet|204.79.252.0/24|Internet|
 |Mi-204-152-18-23-nexthop-Internet|204.152.18.0/23|Internet|
-|Mi-204-152-140-23-nexthop-Internet|204.152.140.0/23|Internet|
+|mi-204-152-140-23-nexthop-internet|204.152.140.0/23|Internet|
 |Mi-204-231-192-24-nexthop-Internet|204.231.192.0/24|Internet|
-|Mi-204-231-194-23-nexthop-Internet|204.231.194.0/23|Internet|
-|Mi-204-231-197-24-nexthop-Internet|204.231.197.0/24|Internet|
-|Mi-204-231-198-23-nexthop-Internet|204.231.198.0/23|Internet|
-|Mi-204-231-200-21-nexthop-Internet|204.231.200.0/21|Internet|
-|Mi-204-231-208-20-nexthop-Internet|204.231.208.0/20|Internet|
+|mi-204-231-194-23-nexthop-internet|204.231.194.0/23|Internet|
+|mi-204-231-197-24-nexthop-internet|204.231.197.0/24|Internet|
+|mi-204-231-198-23-nexthop-internet|204.231.198.0/23|Internet|
+|mi-204-231-200-21-nexthop-internet|204.231.200.0/21|Internet|
+|mi-204-231-208-20-nexthop-internet|204.231.208.0/20|Internet|
 |Mi-204-231-236-24-nexthop-Internet|204.231.236.0/24|Internet|
 |Mi-205-174-224-20-nexthop-Internet|205.174.224.0/20|Internet|
 |Mi-206-138-168-21-nexthop-Internet|206.138.168.0/21|Internet|
@@ -218,11 +218,11 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 |Mi-207-68-128-18-nexthop-Internet|207.68.128.0/18|Internet|
 |Mi-208-68-136-21-nexthop-Internet|208.68.136.0/21|Internet|
 |Mi-208-76-44-22-nexthop-Internet|208.76.44.0/22|Internet|
-|Mi-208-84-21-nexthop-Internet|208.84.0.0/21|Internet|
-|Mi-209-240-192-19-nexthop-Internet|209.240.192.0/19|Internet|
+|mi-208-84-21-nexthop-internet|208.84.0.0/21|Internet|
+|mi-209-240-192-19-nexthop-internet|209.240.192.0/19|Internet|
 |Mi-213-199-128-18-nexthop-Internet|213.199.128.0/18|Internet|
-|Mi-216-32-180-22-nexthop-Internet|216.32.180.0/22|Internet|
-|Mi-216-220-208-20-nexthop-Internet|216.220.208.0/20|Internet|
+|mi-216-32-180-22-nexthop-internet|216.32.180.0/22|Internet|
+|mi-216-220-208-20-nexthop-internet|216.220.208.0/20|Internet|
 ||||
 
 Daarnaast kunt u vermeldingen aan de route tabel toevoegen om verkeer met on-premises privé-IP-adresbereiken als bestemming te routeren via de gateway van het virtuele netwerk of het virtuele netwerk apparaat (NVA).
@@ -251,7 +251,7 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte regels voor binnenkomende beveiliging met configuratie van geaidede subnetten 
 
-| Naam       |Poort                        |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Actie|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |beheer  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI-SUBNET  |Toestaan |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI-SUBNET  |Toestaan |
@@ -261,7 +261,7 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte uitgaande beveiligings regels met een service-aided subnet-configuratie 
 
-| Naam       |Poort          |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort          |Protocol|Bron           |Doel|Actie|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -321,13 +321,13 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 |Mi-66-119-144-20-nexthop-Internet|66.119.144.0/20|Internet|
 |Mi-70-37-17-nexthop-Internet|70.37.0.0/17|Internet|
 |Mi-70-37-128-18-nexthop-Internet|70.37.128.0/18|Internet|
-|Mi-91-190-216-21-nexthop-Internet|91.190.216.0/21|Internet|
+|mi-91-190-216-21-nexthop-internet|91.190.216.0/21|Internet|
 |Mi-94-245-64-18-nexthop-Internet|94.245.64.0/18|Internet|
-|Mi-103-9-8-22-nexthop-Internet|103.9.8.0/22|Internet|
+|mi-103-9-8-22-nexthop-internet|103.9.8.0/22|Internet|
 |Mi-103-25-156-24-nexthop-Internet|103.25.156.0/24|Internet|
 |Mi-103-25-157-24-nexthop-Internet|103.25.157.0/24|Internet|
 |Mi-103-25-158-23-nexthop-Internet|103.25.158.0/23|Internet|
-|Mi-103-36-96-22-nexthop-Internet|103.36.96.0/22|Internet|
+|mi-103-36-96-22-nexthop-internet|103.36.96.0/22|Internet|
 |Mi-103-255-140-22-nexthop-Internet|103.255.140.0/22|Internet|
 |Mi-104-40-13-nexthop-Internet|104.40.0.0/13|Internet|
 |Mi-104-146-15-nexthop-Internet|104.146.0.0/15|Internet|
@@ -375,11 +375,11 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 |Mi-192-32-16-nexthop-Internet|192.32.0.0/16|Internet|
 |Mi-192-48-225-24-nexthop-Internet|192.48.225.0/24|Internet|
 |Mi-192-84-159-24-nexthop-Internet|192.84.159.0/24|Internet|
-|Mi-192-84-160-23-nexthop-Internet|192.84.160.0/23|Internet|
+|mi-192-84-160-23-nexthop-internet|192.84.160.0/23|Internet|
 |Mi-192-100-102-24-nexthop-Internet|192.100.102.0/24|Internet|
 |Mi-192-100-103-24-nexthop-Internet|192.100.103.0/24|Internet|
 |Mi-192-197-157-24-nexthop-Internet|192.197.157.0/24|Internet|
-|Mi-193-149-64-19-nexthop-Internet|193.149.64.0/19|Internet|
+|mi-193-149-64-19-nexthop-internet|193.149.64.0/19|Internet|
 |Mi-193-221-113-24-nexthop-Internet|193.221.113.0/24|Internet|
 |Mi-194-69-96-19-nexthop-Internet|194.69.96.0/19|Internet|
 |Mi-194-110-197-24-nexthop-Internet|194.110.197.0/24|Internet|
@@ -392,24 +392,24 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 |Mi-199-103-122-24-nexthop-Internet|199.103.122.0/24|Internet|
 |Mi-199-242-32-20-nexthop-Internet|199.242.32.0/20|Internet|
 |Mi-199-242-48-21-nexthop-Internet|199.242.48.0/21|Internet|
-|Mi-202-89-224-20-nexthop-Internet|202.89.224.0/20|Internet|
-|Mi-204-13-120-21-nexthop-Internet|204.13.120.0/21|Internet|
-|Mi-204-14-180-22-nexthop-Internet|204.14.180.0/22|Internet|
+|mi-202-89-224-20-nexthop-internet|202.89.224.0/20|Internet|
+|mi-204-13-120-21-nexthop-internet|204.13.120.0/21|Internet|
+|mi-204-14-180-22-nexthop-internet|204.14.180.0/22|Internet|
 |Mi-204-79-135-24-nexthop-Internet|204.79.135.0/24|Internet|
 |Mi-204-79-179-24-nexthop-Internet|204.79.179.0/24|Internet|
 |Mi-204-79-181-24-nexthop-Internet|204.79.181.0/24|Internet|
 |Mi-204-79-188-24-nexthop-Internet|204.79.188.0/24|Internet|
 |Mi-204-79-195-24-nexthop-Internet|204.79.195.0/24|Internet|
-|Mi-204-79-196-23-nexthop-Internet|204.79.196.0/23|Internet|
+|mi-204-79-196-23-nexthop-internet|204.79.196.0/23|Internet|
 |Mi-204-79-252-24-nexthop-Internet|204.79.252.0/24|Internet|
 |Mi-204-152-18-23-nexthop-Internet|204.152.18.0/23|Internet|
-|Mi-204-152-140-23-nexthop-Internet|204.152.140.0/23|Internet|
+|mi-204-152-140-23-nexthop-internet|204.152.140.0/23|Internet|
 |Mi-204-231-192-24-nexthop-Internet|204.231.192.0/24|Internet|
-|Mi-204-231-194-23-nexthop-Internet|204.231.194.0/23|Internet|
-|Mi-204-231-197-24-nexthop-Internet|204.231.197.0/24|Internet|
-|Mi-204-231-198-23-nexthop-Internet|204.231.198.0/23|Internet|
-|Mi-204-231-200-21-nexthop-Internet|204.231.200.0/21|Internet|
-|Mi-204-231-208-20-nexthop-Internet|204.231.208.0/20|Internet|
+|mi-204-231-194-23-nexthop-internet|204.231.194.0/23|Internet|
+|mi-204-231-197-24-nexthop-internet|204.231.197.0/24|Internet|
+|mi-204-231-198-23-nexthop-internet|204.231.198.0/23|Internet|
+|mi-204-231-200-21-nexthop-internet|204.231.200.0/21|Internet|
+|mi-204-231-208-20-nexthop-internet|204.231.208.0/20|Internet|
 |Mi-204-231-236-24-nexthop-Internet|204.231.236.0/24|Internet|
 |Mi-205-174-224-20-nexthop-Internet|205.174.224.0/20|Internet|
 |Mi-206-138-168-21-nexthop-Internet|206.138.168.0/21|Internet|
@@ -418,11 +418,11 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 |Mi-207-68-128-18-nexthop-Internet|207.68.128.0/18|Internet|
 |Mi-208-68-136-21-nexthop-Internet|208.68.136.0/21|Internet|
 |Mi-208-76-44-22-nexthop-Internet|208.76.44.0/22|Internet|
-|Mi-208-84-21-nexthop-Internet|208.84.0.0/21|Internet|
-|Mi-209-240-192-19-nexthop-Internet|209.240.192.0/19|Internet|
+|mi-208-84-21-nexthop-internet|208.84.0.0/21|Internet|
+|mi-209-240-192-19-nexthop-internet|209.240.192.0/19|Internet|
 |Mi-213-199-128-18-nexthop-Internet|213.199.128.0/18|Internet|
-|Mi-216-32-180-22-nexthop-Internet|216.32.180.0/22|Internet|
-|Mi-216-220-208-20-nexthop-Internet|216.220.208.0/20|Internet|
+|mi-216-32-180-22-nexthop-internet|216.32.180.0/22|Internet|
+|mi-216-220-208-20-nexthop-internet|216.220.208.0/20|Internet|
 ||||
 
 \* MI-SUBNET verwijst naar het IP-adres bereik voor het SUBNET in de vorm 10. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.

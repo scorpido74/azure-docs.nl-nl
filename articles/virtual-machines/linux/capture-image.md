@@ -1,5 +1,5 @@
 ---
-title: Een installatie kopie van een virtuele Linux-machine in azure vastleggen met behulp van Azure CLI | Microsoft Docs
+title: Een installatie kopie van een virtuele Linux-machine in azure vastleggen met behulp van Azure CLI
 description: Leg een installatie kopie vast van een Azure-VM die moet worden gebruikt voor grootschalige implementaties met behulp van de Azure CLI.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 0767031ff6eee59de6cf447464328f66c50ef71a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ed7d45fb9148bd441a3798c48be8b25e1da2b8c1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552790"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036908"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Een installatie kopie van een virtuele machine of VHD maken
 
@@ -53,7 +53,7 @@ Eerst moet u de inrichting van de virtuele machine ongedaan maken met behulp van
     sudo waagent -deprovision+user
     ```
    > [!NOTE]
-   > Voer deze opdracht alleen uit op een virtuele machine die u vastlegt als een installatie kopie. Met deze opdracht wordt niet gegarandeerd dat de installatie kopie van alle gevoelige informatie wordt gewist of geschikt is voor herdistributie. Met de para meter `+user` wordt ook het laatste ingerichte gebruikers account verwijderd. Gebruik alleen `-deprovision` om de referenties van het gebruikers account in de virtuele machine te blijven gebruiken.
+   > Voer deze opdracht alleen uit op een virtuele machine die u vastlegt als een installatie kopie. Met deze opdracht wordt niet gegarandeerd dat de installatie kopie van alle gevoelige informatie wordt gewist of geschikt is voor herdistributie. Met de para meter `+user` wordt ook het laatste ingerichte gebruikers account verwijderd. Gebruik alleen `-deprovision`om de referenties van het gebruikers account in de virtuele machine te blijven gebruiken.
  
 3. Voer **y** in om door te gaan. U kunt de para meter `-force` toevoegen om deze bevestigings stap te voor komen.
 4. Nadat de opdracht is voltooid, voert u **Afsluiten** in om de SSH-client te sluiten.  De virtuele machine wordt nog steeds uitgevoerd.

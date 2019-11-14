@@ -1,12 +1,12 @@
 ---
-title: Overzicht van gebruikers, groepen, licentieverlening en rollen - Azure Active Directory | Microsoft Docs
+title: Overzicht van gebruikers, groepen, licenties en functies-Azure AD | Microsoft Docs
 description: De relatie tussen gebruikers en toegewezen licenties, beheerdersrollen, groepslidmaatschap in Azure Active Directory
 keywords: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 01/28/2019
+ms.date: 11/08/2019
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2053ad07e555cc04cea714524141068f1404796
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a647f4a5f051ec89bb82b6e7f89dcb677c95371
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083897"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027743"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Gebruikers, groepen, licentieverlening en rollen voor grote organisaties
 
@@ -52,7 +52,7 @@ Veel grote organisaties willen opties om hun gebruikers voldoende bevoegdheden t
 
  Rolnaam | Overzicht van bevoegdheden
  --------- | -------------------
- **Toepassingsbeheerder** | Kan bedrijfstoepassingen en toepassingsregistraties toevoegen en beheren en de proxyinstellingen van een toepassing configureren. Beheerders kunnen beleid voor voorwaardelijke toegang en apparaten weergeven, maar ze niet te beheren.
+ **Toepassingsbeheerder** | Kan bedrijfstoepassingen en toepassingsregistraties toevoegen en beheren en de proxyinstellingen van een toepassing configureren. Toepassings beheerders kunnen beleids regels voor voorwaardelijke toegang en apparaten weer geven, maar niet beheren.
  **Beheerder van de cloudtoepassing** | Kan bedrijfstoepassingen en bedrijfsapp-registraties toevoegen en beheren. Deze rol heeft alle bevoegdheden van de toepassingsbeheerder behalve dat een gebruiker met deze rol geen instellingen van de toepassingsproxy kan beheren.
 **Toepassingsontwikkelaar** | Kan toepassingsregistraties toevoegen en beheren maar kan geen bedrijfstoepassingen beheren of de proxyinstellingen van een toepassing configureren.
 

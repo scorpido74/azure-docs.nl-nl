@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 335e3c3ddabbf5bc267458fc1c55fef0e551583e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d4dedf2f90baa5eae005f47719e67bd8e97d8490
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833783"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039025"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limieten en configuratie-informatie voor Azure Logic Apps
 
@@ -77,11 +77,11 @@ Dit zijn de limieten voor het uitvoeren van een enkele logische app:
 
 | Naam | Limiet | Opmerkingen |
 | ---- | ----- | ----- |
-| Gelijktijdigheid van triggers | * Onbeperkt wanneer het gelijktijdigheids beheer is uitgeschakeld <p><p>* 25 is de standaard limiet wanneer het gelijktijdigheids beheer is ingeschakeld. Dit kan niet ongedaan worden gemaakt nadat u het besturings element inschakelt. U kunt de standaard waarde van 1 tot en met 50 wijzigen. | Deze limiet beschrijft het hoogste aantal logische app-exemplaren dat tegelijkertijd kan worden uitgevoerd of parallel. <p><p>**Opmerking**: wanneer gelijktijdigheid is ingeschakeld, is de limiet van SplitOn signficantly gereduceerd tot 100 items voor het [debatchiseren van matrices](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). Als het aantal items deze limiet overschrijdt, wordt de SplitOn-functionaliteit uitgeschakeld. <p><p>Als u de standaard limiet wilt wijzigen in een waarde tussen 1 en 50, raadpleegt u de [gelijktijdige overschrijding](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) van de trigger of [trigger instanties opeenvolgend](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Gelijktijdigheid van triggers | * Onbeperkt wanneer het gelijktijdigheids beheer is uitgeschakeld <p><p>* 25 is de standaard limiet wanneer het gelijktijdigheids beheer is ingeschakeld. Dit kan niet ongedaan worden gemaakt nadat u het besturings element inschakelt. U kunt de standaard waarde van 1 tot en met 50 wijzigen. | Deze limiet beschrijft het hoogste aantal logische app-exemplaren dat tegelijkertijd kan worden uitgevoerd of parallel. <p><p>**Opmerking**: wanneer gelijktijdigheid is ingeschakeld, is de limiet voor SplitOn beperkt tot 100 items voor het [debatchiseren van matrices](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Als u de standaard limiet wilt wijzigen in een waarde tussen 1 en 50, raadpleegt u de [gelijktijdige overschrijding](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) van de trigger of [trigger instanties opeenvolgend](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Maximum aantal wachtende uitvoeringen | Wanneer het gelijktijdigheids beheer is ingeschakeld, is het minimum aantal wachtende uitvoeringen 10 plus het aantal gelijktijdige uitvoeringen (gelijktijdigheid van triggers). U kunt het maximum aantal tot 100 wijzigen, inclusief. | Deze limiet beschrijft het hoogste aantal logische app-exemplaren dat kan worden uitgevoerd als het maximum aantal gelijktijdige exemplaren van de logische app al wordt uitgevoerd. <p><p>Zie de limiet voor het uitvoeren van een [wacht](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. |
 | Elementen van foreach-matrix | 100.000 | Deze limiet beschrijft het hoogste aantal matrix items dat voor elke lus kan worden verwerkt. <p><p>Als u grotere matrices wilt filteren, kunt u de [query actie](../connectors/connectors-native-query.md)gebruiken. |
 | Gelijktijdigheid van foreach | 20 is de standaard limiet wanneer het gelijktijdigheids beheer is uitgeschakeld. U kunt de standaard waarde van 1 tot en met 50 wijzigen. | Deze limiet is het hoogste aantal ' for each '-herhalingen die tegelijkertijd kunnen worden uitgevoerd, of parallel. <p><p>Als u de standaard limiet wilt wijzigen in een waarde tussen 1 en 50, raadpleegt u [wijzigen voor elke "gelijktijdige overschrijding](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) " of [voert u "voor elke" sequentieel uit](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
-| SplitOn items | * 100.000 zonder activerings gelijktijdigheid <p><p>* 100 met gelijktijdigheid van triggers | Voor triggers die een matrix retour neren, kunt u een expressie opgeven die gebruikmaakt van een eigenschap SplitOn die de [matrix items in meerdere workflowexemplaren voor verwerking splitst of opsplitst](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) , in plaats van een foreach-lus te gebruiken. Deze expressie verwijst naar de matrix die moet worden gebruikt voor het maken en uitvoeren van een workflowexemplaar voor elk matrix item. <p><p>**Opmerking**: wanneer gelijktijdigheid is ingeschakeld, wordt de SplitOn-limiet significanly gereduceerd. Als het aantal items deze limiet overschrijdt, wordt SplitOn uitgeschakeld. |
+| SplitOn items | * 100.000 zonder activerings gelijktijdigheid <p><p>* 100 met gelijktijdigheid van triggers | Voor triggers die een matrix retour neren, kunt u een expressie opgeven die gebruikmaakt van een eigenschap SplitOn die de [matrix items in meerdere workflowexemplaren voor verwerking splitst of opsplitst](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) , in plaats van een foreach-lus te gebruiken. Deze expressie verwijst naar de matrix die moet worden gebruikt voor het maken en uitvoeren van een workflowexemplaar voor elk matrix item. <p><p>**Opmerking**: wanneer gelijktijdigheid is ingeschakeld, is de limiet van SplitOn beperkt tot 100 items. |
 | Tot iteraties | 5\.000 | |
 ||||
 
@@ -96,10 +96,10 @@ Dit zijn de limieten voor een definitie van een enkele logische app:
 | Naam | Limiet | Opmerkingen |
 | ---- | ----- | ----- |
 | Actie: uitvoeringen per 5 minuten | 100.000 is de standaard limiet, maar 300.000 is de maximum limiet. | Als u de standaard limiet wilt wijzigen, raadpleegt u [uw logische app uitvoeren in de modus voor hoge door Voer](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), die in preview is. Of u kunt de werk belasting indien nodig verdelen over meerdere logische apps. |
-| Actie: gelijktijdige uitgaande oproepen | ~ 2.500 | U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |
-| Runtime-eind punt: gelijktijdige binnenkomende oproepen | ~ 1.000 | U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |
-| Runtime-eind punt: Lees oproepen per vijf minuten  | 60.000 | U kunt de werk belasting naar meerdere apps distribueren als dat nodig is. |
-| Runtime-eind punt: aanroepen aanroepen per 5 minuten | 45.000 | U kunt de werk belasting naar meerdere apps distribueren als dat nodig is. |
+| Actie: gelijktijdige uitgaande oproepen | ~2,500 | U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |
+| Runtime-eind punt: gelijktijdige binnenkomende oproepen | ~1,000 | U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |
+| Runtime-eind punt: Lees oproepen per vijf minuten  | 60,000 | U kunt de werk belasting naar meerdere apps distribueren als dat nodig is. |
+| Runtime-eind punt: aanroepen aanroepen per 5 minuten | 45,000 | U kunt de werk belasting naar meerdere apps distribueren als dat nodig is. |
 | Inhouds doorvoer per 5 minuten | 600 MB | U kunt de werk belasting naar meerdere apps distribueren als dat nodig is. |
 ||||
 
@@ -131,7 +131,7 @@ Azure Logic Apps ondersteunt schrijf bewerkingen, met inbegrip van invoeg acties
 
 Dit zijn de limieten voor een enkele HTTP-aanvraag of een synchrone connector aanroep:
 
-#### <a name="timeout"></a>Out
+#### <a name="timeout"></a>Time-out
 
 Sommige connector bewerkingen maken asynchrone aanroepen of Luis teren naar webhook-aanvragen, zodat de time-out voor deze bewerkingen mogelijk langer is dan deze limieten. Zie de technische Details voor de specifieke connector en ook [werk stroom triggers en acties](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)voor meer informatie.
 
@@ -214,7 +214,7 @@ Dit zijn de limieten voor het aantal artefacten voor elke laag van de integratie
 | EDI-handels overeenkomsten | 10 | 1 | 1000 |
 | EDI-handels partners | 25 | 2 | 1000 |
 | Kaarten | 25 | 500 | 1000 |
-| Schema 's | 25 | 500 | 1000 |
+| Schema's | 25 | 500 | 1000 |
 | Assembly's | 10 | 25 | 1000 |
 | Certificaten | 25 | 2 | 1000 |
 | Batch configuraties | 5 | 1 | 50 |
@@ -233,10 +233,10 @@ Dit zijn de limieten voor het aantal artefacten voor elke laag van de integratie
 
 | Runtime-eind punt | Limiet | Opmerkingen |
 |------------------|-------|-------|
-| Lees aanroepen per 5 minuten | 60.000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
-| Aanroepen starten per 5 minuten | 45.000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
-| Tracerings aanroepen per 5 minuten | 45.000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
-| Gelijktijdige aanroepen blok keren | ~ 1.000 | U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |
+| Lees aanroepen per 5 minuten | 60,000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
+| Aanroepen starten per 5 minuten | 45,000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
+| Tracerings aanroepen per 5 minuten | 45,000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
+| Gelijktijdige aanroepen blok keren | ~1,000 | U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |
 ||||
 
 <a name="b2b-protocol-limits"></a>
@@ -247,7 +247,7 @@ Dit zijn de limieten voor de bericht grootte die van toepassing zijn op B2B-prot
 
 | Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
-| AS2 | v2-100 MB<br>v1-50 MB | v2-200 MB <br>v1-50 MB | Van toepassing op decoderen en coderen |
+| AS2 | v2-100 MB<br>v1 - 50 MB | v2-200 MB <br>v1 - 50 MB | Van toepassing op decoderen en coderen |
 | X12 | 50 MB | 50 MB | Van toepassing op decoderen en coderen |
 | EDIFACT | 50 MB | 50 MB | Van toepassing op decoderen en coderen |
 ||||
@@ -316,7 +316,7 @@ De IP-adressen die Azure Logic Apps gebruikt voor binnenkomende en uitgaande aan
 | India - west | 104.211.157.237, 104.211.164.25, 104.211.164.112, 104.211.165.81 |
 | US - west | 13.91.252.184, 52.160.90.237, 138.91.188.137, 157.56.160.212 |
 | US - west 2 | 13.66.128.68, 13.66.224.169, 52.183.30.10, 52.183.39.67 |
-| VK - zuid | 51.140.78.71, 51.140.79.109, 51.140.84.39, 51.140.155.81 |
+| Verenigd Koninkrijk Zuid | 51.140.78.71, 51.140.79.109, 51.140.84.39, 51.140.155.81 |
 | Verenigd Koninkrijk West | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
 | | |
 
@@ -352,7 +352,7 @@ De IP-adressen die Azure Logic Apps gebruikt voor binnenkomende en uitgaande aan
 | India - west | 104.211.154.7, 104.211.154.59, 104.211.156.153, 104.211.158.123, 104.211.158.127, 104.211.162.205, 104.211.164.80, 104.211.164.136 | 104.211.146.224 - 104.211.146.239, 104.211.189.218 |
 | US - west | 40.83.164.80, 40.118.244.241, 40.118.241.243, 52.160.92.112, 104.42.38.32, 104.42.49.145, 157.56.162.53, 157.56.167.147 | 40.112.243.160 - 40.112.243.175, 104.42.122.49 |
 | US - west 2 | 13.66.201.169, 13.66.210.167, 13.66.246.219, 13.77.149.159, 52.175.198.132, 52.183.29.132, 52.183.30.169 | 13.66.140.128 - 13.66.140.143, 52.183.78.157 |
-| VK - zuid | 51.140.28.225, 51.140.73.85, 51.140.74.14, 51.140.78.44, 51.140.137.190, 51.140.142.28, 51.140.153.135, 51.140.158.24 | 51.140.148.0 - 51.140.148.15, 51.140.80.51 |
+| Verenigd Koninkrijk Zuid | 51.140.28.225, 51.140.73.85, 51.140.74.14, 51.140.78.44, 51.140.137.190, 51.140.142.28, 51.140.153.135, 51.140.158.24 | 51.140.148.0 - 51.140.148.15, 51.140.80.51 |
 | Verenigd Koninkrijk West | 51.141.45.238, 51.141.47.136, 51.141.54.185, 51.141.112.112, 51.141.113.36, 51.141.114.77, 51.141.118.119, 51.141.119.63 | 51.140.211.0 - 51.140.211.15, 51.141.47.105 |
 ||||
 

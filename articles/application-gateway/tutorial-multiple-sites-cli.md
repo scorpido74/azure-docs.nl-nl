@@ -1,23 +1,24 @@
 ---
-title: Een toepassingsgateway maken waarop meerdere websites worden gehost - Azure CLI
+title: Meerdere websites hosten met CLI
+titleSuffix: Azure Application Gateway
 description: Informatie over het maken van een toepassingsgateway waarop meerdere websites worden gehost met Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: eceb380112002ef951d6d5e74998d944da01bd7a
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0a92d0f7d17f6bb83efbe94434c25072975dbe57
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688240"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047358"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Een toepassingsgateway maken waarop meerdere websites worden gehost met Azure CLI
 
-U kunt Azure CLI gebruiken om [het hosten van meerdere websites](multiple-site-overview.md) te configureren als u een [toepassingsgateway maakt](overview.md). In dit artikel definieert u back-end-adres groepen met behulp van virtuele machines met schaal sets. Vervolgens configureert u listeners en regels op basis van domeinen waarvan u eigenaar bent om er zeker van te zijn dat webverkeer bij de juiste servers in de pools binnenkomen. In dit artikel wordt ervan uitgegaan dat u beschikt over meerdere domeinen en gebruikmaakt van voor beelden van *www\.-contoso.com* en *www\.-fabrikam.com*.
+U kunt Azure CLI gebruiken om [het hosten van meerdere websites](multiple-site-overview.md) te configureren als u een [toepassingsgateway maakt](overview.md). In dit artikel definieert u back-end-adres groepen met behulp van virtuele machines met schaal sets. Vervolgens configureert u listeners en regels op basis van domeinen waarvan u eigenaar bent om er zeker van te zijn dat webverkeer bij de juiste servers in de pools binnenkomen. In dit artikel wordt ervan uitgegaan dat u beschikt over meerdere domeinen en gebruikmaakt van voor beelden van *www\.contoso.com* en *www\.fabrikam.com*.
 
 In dit artikel leert u het volgende:
 
@@ -41,7 +42,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group).
+Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met [az group create](/cli/azure/group).
 
 In het volgende voorbeeld wordt de resourcegroep *myResourceGroupAG* gemaakt op de locatie *eastus*.
 
@@ -77,7 +78,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>De toepassingsgateway maken
 
-U kunt [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) gebruiken om de toepassingsgateway te maken. Als u een toepassingsgateway met de Azure CLI maakt, geeft u configuratiegegevens op, zoals capaciteit, SKU en HTTP-instellingen. De toepassingsgateway wordt toegewezen aan *myAGSubnet* en *myAGPublicIPAddress*, die u zojuist hebt gemaakt. 
+U kunt [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) gebruiken om de toepassingsgateway te maken. Als u met de Azure CLI een toepassingsgateway maakt, geeft u configuratiegegevens op, zoals capaciteit, SKU en HTTP-instellingen. De toepassingsgateway wordt toegewezen aan *myAGSubnet* en *myAGPublicIPAddress*, die u eerder hebt gemaakt. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -169,7 +170,7 @@ az network application-gateway rule delete \
   --resource-group myResourceGroupAG
 ```
 
-## <a name="create-virtual-machine-scale-sets"></a>Schaalsets voor virtuele machines maken
+## <a name="create-virtual-machine-scale-sets"></a>Virtuele-machineschaalset maken
 
 In dit voorbeeld maakt u drie schaalsets voor virtuele machines die ondersteuning bieden voor de drie back-end-pools in de toepassingsgateway. De schaalsets die u maakt, hebben de namen *myvmss1*, *myvmss2* en *myvmss3*. Elke schaalset bevat twee instanties van virtuele machines waarop u IIS installeert.
 
@@ -221,7 +222,7 @@ done
 
 ## <a name="create-a-cname-record-in-your-domain"></a>Een CNAME-record in uw domein maken
 
-Als de toepassingsgateway met het bijbehorende IP-adres is gemaakt, kunt u het DNS-adres ophalen en dit gebruiken om een CNAME-record in uw domein te maken. Gebruik [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) om het DNS-adres van de toepassingsgateway op te halen. Kopieer de waarde *fqdn* van DNSSettings en gebruik deze als de waarde van de CNAME-record die u maakt. 
+Als de toepassingsgateway met het bijbehorende openbare IP-adres is gemaakt, kunt u het DNS-adres ophalen en dit gebruiken om een CNAME-record in uw domein te maken. Gebruik [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) om het DNS-adres van de toepassingsgateway op te halen. Kopieer de waarde *fqdn* van DNSSettings en gebruik deze als de waarde van de CNAME-record die u maakt. 
 
 ```azurecli-interactive
 az network public-ip show \

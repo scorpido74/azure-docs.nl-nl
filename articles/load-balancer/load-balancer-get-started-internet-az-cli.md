@@ -1,11 +1,11 @@
 ---
-title: Een Load Balancer maken met zone-redundante front-end-Azure CLI
-titlesuffix: Azure Load Balancer
+title: Een load balancer maken met zone-redundante front-end-Azure CLI
+titleSuffix: Azure Load Balancer
 description: Meer informatie over het maken van een openbaar Standard Load Balancer met een zone-redundante open bare IP-adres frontend met behulp van Azure CLI
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: allensu
-ms.openlocfilehash: 2dcd7d2cffa567307e1d6eb4326a379bc2d409be
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d5dd2dc04f4307c810fdc673286505f6001491ec
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275176"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048356"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-cli"></a>Een Standard Load Balancer maken met zone-redundante front met behulp van Azure CLI
 

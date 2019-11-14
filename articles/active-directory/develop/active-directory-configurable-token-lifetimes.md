@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23cdf7887d6d0812a9e991580e2095b603a4b4df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 021d0c19ecc4bf63861bf95d99b6ba6b8e910220
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473941"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046557"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Configureer bare levens duur van tokens in Azure Active Directory (preview-versie)
 
@@ -53,11 +53,11 @@ Clients gebruiken toegangs tokens om toegang te krijgen tot een beveiligde bron.
 
 ### <a name="saml-tokens"></a>SAML-tokens
 
-SAML-tokens worden gebruikt door veel op internet gebaseerde SAAS-toepassingen en worden verkregen met behulp van het SAML2-protocol eindpunt van Azure Active Directory.  Ze worden ook gebruikt door toepassingen die gebruikmaken van WS-Federation.    De standaard levensduur van het token is 1 uur. Na en toepassingen perspectief de geldigheids periode van het token wordt opgegeven door de NotOnOrAfter-waarde van de < voor waarden... > element in het token.  Na de geldigheids periode van het token moet de client een nieuwe verificatie aanvraag initiëren, die vaak wordt vervuld zonder interactief aanmelden als gevolg van de sessie token voor eenmalige aanmelding (SSO).
+SAML-tokens worden gebruikt door veel op internet gebaseerde SAAS-toepassingen en worden verkregen met behulp van het SAML2-protocol eindpunt van Azure Active Directory. Ze worden ook gebruikt door toepassingen die gebruikmaken van WS-Federation. De standaard levensduur van het token is 1 uur. Vanuit het oogpunt van een toepassing wordt de geldigheids periode van het token opgegeven door de NotOnOrAfter-waarde van het element `<conditions …>` in het token. Nadat de geldigheids periode van het token is beëindigd, moet de client een nieuwe verificatie aanvraag initiëren, die vaak wordt vervuld zonder interactief aanmelden als gevolg van de sessie token voor eenmalige aanmelding (SSO).
 
-De waarde van NotOnOrAfter kan worden gewijzigd met behulp van de para meter AccessTokenLifetime in een TokenLifetimePolicy.  Deze wordt ingesteld op de levens duur die in het beleid is geconfigureerd, plus een klok scheefheid factor van vijf minuten.
+De waarde van NotOnOrAfter kan worden gewijzigd met behulp van de para meter `AccessTokenLifetime` in een `TokenLifetimePolicy`. Deze wordt ingesteld op de levens duur die in het beleid is geconfigureerd, plus een klok scheefheid factor van vijf minuten.
 
-Houd er rekening mee dat de bevestiging van de NotOnOrAfter die is opgegeven in het <SubjectConfirmationData>-element niet wordt beïnvloed door de configuratie van de levens duur van het token. 
+Houd er rekening mee dat de bevestiging van de NotOnOrAfter die is opgegeven in het `<SubjectConfirmationData>`-element niet wordt beïnvloed door de configuratie van de levens duur van het token. 
 
 ### <a name="refresh-tokens"></a>Tokens vernieuwen
 
@@ -66,7 +66,7 @@ Wanneer een client een toegangs token verkrijgt om toegang te krijgen tot een be
 Het is belang rijk om onderscheid te maken tussen vertrouwelijke clients en open bare clients, omdat dit van invloed is op hoe lang vernieuwings tokens kunnen worden gebruikt. Zie [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1)voor meer informatie over verschillende typen clients.
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Levens duur van tokens met vertrouwelijke client vernieuwings tokens
-Vertrouwelijke clients zijn toepassingen die een client wachtwoord (geheim) veilig kunnen opslaan. Ze kunnen bewijzen dat aanvragen afkomstig zijn van de beveiligde client toepassing en niet van een schadelijke actor. Een web-app is bijvoorbeeld een vertrouwelijke client omdat hiermee een client geheim kan worden opgeslagen op de webserver. Het wordt niet weer gegeven. Omdat deze stromen veiliger zijn, is de standaard levensduur van vernieuwings tokens die aan deze stromen worden verleend `until-revoked`, kan niet worden gewijzigd met behulp van beleid en wordt niet ingetrokken bij het opnieuw instellen van het wacht woord.
+Vertrouwelijke clients zijn toepassingen die een client wachtwoord (geheim) veilig kunnen opslaan. Ze kunnen bewijzen dat aanvragen afkomstig zijn van de beveiligde client toepassing en niet van een schadelijke actor. Een web-app is bijvoorbeeld een vertrouwelijke client omdat hiermee een client geheim kan worden opgeslagen op de webserver. Het wordt niet weer gegeven. Omdat deze stromen veiliger zijn, is de standaard levensduur van vernieuwings tokens die aan deze stromen worden verleend, `until-revoked`, kan niet worden gewijzigd met behulp van beleid en wordt niet ingetrokken voor het opnieuw instellen van het wacht woord.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Levens duur van tokens met open bare client vernieuwings tokens
 
@@ -95,10 +95,10 @@ Beleid voor levens duur van tokens is een type beleids object dat de levens duur
 | --- | --- | --- | --- | --- | --- |
 | Levens duur van toegangs token |AccessTokenLifetime<sup>2</sup> |Toegangs tokens, ID-tokens, SAML2-tokens |1 uur |10 minuten |1 dag |
 | Maximum aantal inactieve tijd voor het vernieuwen van token |MaxInactiveTime |Tokens vernieuwen |90 dagen |10 minuten |90 dagen |
-| Maximum leeftijd van het token voor eenmalige vernieuwing |MaxAgeSingleFactor |Tokens vernieuwen (voor alle gebruikers) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
-| Maximum leeftijd van multi-factor Refresh-token |MaxAgeMultiFactor |Tokens vernieuwen (voor alle gebruikers) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
-| Maximum leeftijd van het token voor één factor-sessie |MaxAgeSessionSingleFactor |Sessie tokens (permanent en niet permanent) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
-| Maximale leeftijds duur multi-factor Session-token |MaxAgeSessionMultiFactor |Sessie tokens (permanent en niet permanent) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
+| Maximum leeftijd van het token voor eenmalige vernieuwing |MaxAgeSingleFactor |Tokens vernieuwen (voor alle gebruikers) |Until-revoked |10 minuten |Until-revoked<sup>1</sup> |
+| Maximum leeftijd van multi-factor Refresh-token |MaxAgeMultiFactor |Tokens vernieuwen (voor alle gebruikers) |Until-revoked |10 minuten |Until-revoked<sup>1</sup> |
+| Maximum leeftijd van het token voor één factor-sessie |MaxAgeSessionSingleFactor |Sessie tokens (permanent en niet permanent) |Until-revoked |10 minuten |Until-revoked<sup>1</sup> |
+| Maximale leeftijds duur multi-factor Session-token |MaxAgeSessionMultiFactor |Sessie tokens (permanent en niet permanent) |Until-revoked |10 minuten |Until-revoked<sup>1</sup> |
 
 * <sup>1</sup>365 dagen is de maximale expliciete lengte die voor deze kenmerken kan worden ingesteld.
 * <sup>2</sup> Om ervoor te zorgen dat de webclient van micro soft teams werkt, wordt aanbevolen om AccessTokenLifetime meer dan 15 minuten te houden voor micro soft-teams.
@@ -108,7 +108,7 @@ Beleid voor levens duur van tokens is een type beleids object dat de levens duur
 | --- | --- | --- |
 | De maximale leeftijd van het vernieuwings token (uitgegeven voor federatieve gebruikers met onvoldoende intrekkings gegevens<sup>1</sup>) |Tokens vernieuwen (uitgegeven voor federatieve gebruikers met onvoldoende intrekkings gegevens<sup>1</sup>) |12 uur |
 | De maximale inactieve tijd voor het vernieuwen van het token (uitgegeven voor vertrouwelijke clients) |Tokens vernieuwen (uitgegeven voor vertrouwelijke clients) |90 dagen |
-| Maximale leeftijd van het vernieuwings token (uitgegeven voor vertrouwelijke clients) |Tokens vernieuwen (uitgegeven voor vertrouwelijke clients) |Until-ingetrokken |
+| Maximale leeftijd van het vernieuwings token (uitgegeven voor vertrouwelijke clients) |Tokens vernieuwen (uitgegeven voor vertrouwelijke clients) |Until-revoked |
 
 * <sup>1</sup> Federatieve gebruikers die onvoldoende intrekkings gegevens hebben, zijn gebruikers die het kenmerk ' LastPasswordChangeTimestamp ' niet hebben gesynchroniseerd. Deze gebruikers krijgen dit korte maximum leeftijd omdat AAD niet kan verifiëren wanneer tokens worden ingetrokken die zijn gekoppeld aan een oude referentie (zoals een wacht woord dat is gewijzigd) en om ervoor te zorgen dat de gebruiker en de bijbehorende tokens nog steeds goed zijn  Draag. Om deze ervaring te verbeteren, moeten Tenant beheerders ervoor zorgen dat ze het kenmerk ' LastPasswordChangeTimestamp ' synchroniseren (dit kan worden ingesteld voor het gebruikers object met behulp van Power shell of via AADSync).
 
@@ -124,7 +124,7 @@ Zie [Application and Service Principal Objects in azure Active Directory](app-ob
 
 De geldigheid van een token wordt geëvalueerd op het moment dat het token wordt gebruikt. Het beleid met de hoogste prioriteit voor de toepassing die wordt geopend, treedt in werking.
 
-Alle TimeSpans die hier worden gebruikt, zijn ingedeeld C# op basis van het [span](/dotnet/api/system.timespan) -object-D. uu: mm: SS.  80 dagen en 30 minuten zouden `80.00:30:00` zijn.  De voor loop-D kan worden verwijderd als de waarde nul is, dus 90 minuten zou `00:90:00` zijn.  
+Alle TimeSpans die hier worden gebruikt, zijn ingedeeld C# op basis van het [span](/dotnet/api/system.timespan) -object-D. uu: mm: SS.  80 dagen en 30 minuten worden `80.00:30:00`.  De voorloop D kan worden verwijderd als de waarde nul is, dus 90 minuten `00:90:00`.  
 
 > [!NOTE]
 > Hier volgt een voorbeeld scenario.
@@ -222,7 +222,7 @@ In de volgende voor beelden maakt, bijwerkt, koppelt en verwijdert u beleid voor
 Voer de volgende stappen uit om aan de slag te gaan:
 
 1. Down load de nieuwste [open bare preview-versie van Azure AD Power shell-module](https://www.powershellgallery.com/packages/AzureADPreview).
-2. Voer de `Connect`-opdracht uit om u aan te melden bij uw Azure AD-beheerders account. Voer deze opdracht telkens uit wanneer u een nieuwe sessie start.
+2. Voer de `Connect` opdracht uit om u aan te melden bij uw Azure AD-beheerders account. Voer deze opdracht telkens uit wanneer u een nieuwe sessie start.
 
     ```powershell
     Connect-AzureAD -Confirm

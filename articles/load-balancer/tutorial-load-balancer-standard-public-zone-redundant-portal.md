@@ -1,5 +1,5 @@
 ---
-title: "Zelfstudie: Load Balancer VM's over beschikbaarheidszones - Azure Portal | Microsoft Docs"
+title: "Zelf studie: taak verdeling van Vm's over beschikbaarheids zones-Azure Portal"
 titlesuffix: Azure Load Balancer
 description: Deze zelfstudie laat zien hoe u met behulp van Azure Portal een standaard Load Balancer kunt maken met een zone-redundante frontend voor de taakverdeling van VM's over beschikbaarheidszones
 services: load-balancer
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 5b024321a18c6dec4f56a7cbc12c5a8fa748f903
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 2079ec95b582ed724583112f7af4865af66eef9d
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273480"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048872"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Zelfstudie: Met behulp van Azure Portal taakverdeling uitvoeren van virtuele machines over beschikbaarheidszones met een standaard Load Balancer
 
-Taakverdeling zorgt voor een hogere beschikbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines. In deze zelfstudie leert u stapsgewijs hoe u een openbare Standard Load Balancer maakt die de taakverdeling van VM's over beschikbaarheidszones regelt. Hiermee kunt u uw apps en gegevens beschermen tegen het onwaarschijnlijke risico van een storing of het verloren gaan van een heel datacenter. Met zone-redundantie kunnen een of meer beschikbaarheidszones mislukken en overleeft het gegevenspad zolang één zone in de regio een goede status behoudt. In deze zelfstudie leert u procedures om het volgende te doen:
+Taakverdeling zorgt voor een hogere beschikbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines. In deze zelfstudie leert u stapsgewijs hoe u een openbare Standard Load Balancer maakt die de taakverdeling van VM's over beschikbaarheidszones regelt. Hiermee kunt u uw apps en gegevens beschermen tegen het onwaarschijnlijke risico van een storing of het verloren gaan van een heel datacenter. Met zone-redundantie kunnen een of meer beschikbaarheidszones mislukken en overleeft het gegevenspad zolang één zone in de regio een goede status behoudt. Procedures voor:
 
 > [!div class="checklist"]
 > * Een Load Balancer van het type Standard maken
@@ -54,14 +54,14 @@ Standard Load Balancer biedt alleen ondersteuning voor een standaard, openbaar I
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
-    | Subscription               | Selecteer uw abonnement.    |    
-    | Resource group         | Selecteer **Nieuwe maken** en typ *MyResourceGroupLBAZ* in het tekstvak.|
-    | Name                   | *myLoadBalancer*                                   |
+    | Abonnement               | Selecteer uw abonnement.    |    
+    | Resourcegroep         | Selecteer **Nieuwe maken** en typ *MyResourceGroupLBAZ* in het tekstvak.|
+    | Naam                   | *myLoadBalancer*                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
-    | type          | Selecteer **Openbaar**.                                        |
+    | Type          | Select **Openbaar**.                                        |
     | SKU           | selecteer **Standaard**.                          |
     | Openbaar IP-adres | Selecteer **Nieuw maken**. |
-    | Naam openbaar IP-adres              | Typ *myPublicIP* in het tekstvak.   |
+    | Naam openbare IP-adres              | Typ *myPublicIP* in het tekstvak.   |
     |Beschikbaarheidszone| Selecteer **Zone-redundant**.    |
    
 
@@ -82,7 +82,7 @@ Maak een virtueel netwerk voor het implementeren van uw back-endservers.
 
 ## <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 
-Maak een netwerkbeveiligingsgroep om binnenkomende verbindingen met uw virtuele netwerk te definiëren.
+Maak een netwerkbeveiligingsgroep om de binnenkomende verbindingen met uw virtuele netwerk te definiëren.
 
 1. Klik linksboven in het scherm op **Een resource maken**, typ *Netwerkbeveiligingsgroep* in het zoekvak en klik op **Maken** op de pagina Netwerkbeveiligingsgroep.
 2. Voer deze waarden in op de pagina Netwerkbeveiligingsgroep maken:

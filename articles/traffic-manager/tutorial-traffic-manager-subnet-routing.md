@@ -1,5 +1,5 @@
 ---
-title: Routerings verkeer van het subnet configureren-Azure Traffic Manager
+title: 'Zelf studie: subnet-verkeer routering configureren-Azure Traffic Manager'
 description: In dit artikel wordt uitgelegd hoe u Traffic Manager kunt configureren om verkeer van subnetten van gebruikers naar specifieke eindpunten te routeren.
 services: traffic-manager
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: allensu
-ms.openlocfilehash: 79a8712dbe54446214f3c094a1377efea4defcce
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c2fbb4a85347c8ee68376069474add865cc06c43
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014572"
+ms.locfileid: "74048812"
 ---
-# <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Verkeer naar specifieke eindpunten routeren met Traffic Manager op basis van subnets van gebruiker
+# <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Zelf studie: direct verkeer naar specifieke eind punten op basis van het subnet van de gebruiker met behulp van Traffic Manager
 
 In dit artikel wordt beschreven hoe u de verkeersrouteringsmethode op basis van subnetten kunt configureren. Met de **Subnet**-verkeersrouteringsmethode kunt u een reeks IP-adresbereiken aan specifieke eindpunten koppelen als een aanvraag door Traffic Manager wordt ontvangen; de methode inspecteert het bron-IP-adres van de aanvraag en retourneert het eindpunt dat daar aan is gekoppeld.
 

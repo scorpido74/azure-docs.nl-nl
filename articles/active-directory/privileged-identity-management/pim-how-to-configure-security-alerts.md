@@ -1,25 +1,25 @@
 ---
-title: Beveiligings waarschuwingen configureren voor Azure AD-rollen in PIM-Azure Active Directory | Microsoft Docs
-description: Meer informatie over het configureren van beveiligings waarschuwingen voor Azure AD-rollen in Azure AD Privileged Identity Management (PIM).
+title: Beveiligings waarschuwingen voor Azure AD-rollen in PIM-Azure AD | Microsoft Docs
+description: Beveiligings waarschuwingen configureren voor Azure AD-rollen Privileged Identity Management in Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e188ef651f6fe539932cf1670f914e8b57564567
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: e05502b40f7f917526b2514d83dcc58636ac06f3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809084"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023043"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Beveiligings waarschuwingen configureren voor Azure AD-rollen in Privileged Identity Management
 
@@ -57,12 +57,12 @@ In deze sectie vindt u alle beveiligings waarschuwingen voor Azure AD-rollen, sa
 | **Preventie** | [Vereis MFA vereisen](pim-how-to-change-default-settings.md) voor elke rol.  |
 | **Actie voor het verkleinen van de portal** | Hiermee wordt multi-factor Authentication vereist voor de activering van de bevoorrechte rol. |
 
-### <a name="the-tenant-doesnt-have-azure-ad-premium-p2"></a>De Tenant heeft geen Azure AD Premium P2
+### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>De organisatie heeft geen Azure AD Premium P2
 
 | | |
 | --- | --- |
 | **Ernst** | Laag |
-| **Waarom krijg ik deze waarschuwing?** | De huidige Tenant heeft geen Azure AD Premium P2. |
+| **Waarom krijg ik deze waarschuwing?** | De huidige Azure AD-organisatie heeft geen Azure AD Premium P2. |
 | **Hoe kunt u het probleem oplossen?** | Lees de informatie over [Azure AD-edities](../fundamentals/active-directory-whatis.md). Voer een upgrade uit naar Azure AD Premium P2. |
 
 ### <a name="potential-stale-accounts-in-a-privileged-role"></a>Mogelijke verlopen accounts in een geprivilegieerde rol
@@ -107,7 +107,7 @@ In deze sectie vindt u alle beveiligings waarschuwingen voor Azure AD-rollen, sa
 | **Waarom krijg ik deze waarschuwing?** | Meerdere activeringen naar dezelfde bevoorrechte rol door dezelfde gebruiker is een aantekening van een aanval. |
 | **Hoe kunt u het probleem oplossen?** | Controleer de gebruikers in de lijst en zorg ervoor dat de [activerings duur](pim-how-to-change-default-settings.md) voor de bijbehorende rol lang genoeg is ingesteld om hun taken uit te voeren. |
 | **Preventie** | Zorg ervoor dat de [activerings duur](pim-how-to-change-default-settings.md) voor geprivilegieerde rollen lang genoeg is ingesteld voor gebruikers om hun taken uit te voeren.</br>[Multi-factor Authentication vereisen](pim-how-to-change-default-settings.md) voor geprivilegieerde rollen met accounts die worden gedeeld door meerdere beheerders. |
-| **Actie voor het verkleinen van de portal** | N/A |
+| **Actie voor het verkleinen van de portal** | N.v.t. |
 | **Trigger** | Wordt geactiveerd als een gebruiker dezelfde geprivilegieerde rol meerdere keren binnen een opgegeven periode activeert. U kunt zowel de tijds periode als het aantal activeringen configureren. |
 | **Periode activering verlenging** | Met deze instelling geeft u in dagen, uren, minuten en seconden de periode op die u wilt gebruiken voor het bijhouden van verdachte vernieuwingen. |
 | **Aantal activerings verlengingen** | Met deze instelling bepaalt u het aantal activeringen, van 2 tot 100, op basis waarvan u een melding wilt ontvangen binnen het tijds bestek dat u hebt gekozen. U kunt deze instelling wijzigen door de schuif regelaar te verplaatsen of door een getal in het tekstvak te typen. |

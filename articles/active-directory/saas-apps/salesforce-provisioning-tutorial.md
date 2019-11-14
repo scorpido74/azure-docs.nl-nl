@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64de004a1d9b3aa011c447fdded51658582586b0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f095c962f08ab0207ffc51d1c898570d9be7ea9a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "68825772"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047241"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Zelf studie: Sales Force configureren voor het automatisch inrichten van gebruikers
 
@@ -96,7 +96,7 @@ Het doel van deze sectie is het maken van een overzicht van het inschakelen van 
 
 10. Kopieer het token, ga naar uw Azure AD-venster en plak dit in het veld **geheime token** .
 
-11. De **URL** van de Tenant moet worden ingevoerd als het exemplaar van Sales Force zich in de Sales Force Government-Cloud bevindt. Anders is het optioneel. Voer de URL van de Tenant in met de indeling ' https://\<your-instance \>. my.salesforce.com ', waarbij u \<your-instantie \> vervangt door de naam van uw Sales Force-exemplaar.
+11. De **URL** van de Tenant moet worden ingevoerd als het exemplaar van Sales Force zich in de Sales Force Government-Cloud bevindt. Anders is het optioneel. Voer de URL van de Tenant in met de indeling ' https://\<your-instance\>. my.salesforce.com, waarbij u \<uw-instantie\> vervangt door de naam van uw Sales Force-exemplaar.
 
 12. Klik in het Azure Portal op **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw Sales Force-app.
 
@@ -106,7 +106,7 @@ Het doel van deze sectie is het maken van een overzicht van het inschakelen van 
 
 15. Selecteer in de sectie toewijzingen de optie **Azure Active Directory gebruikers synchroniseren met Sales Force.**
 
-16. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Sales Force. Houd er rekening mee dat de kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om te voldoen aan de gebruikers accounts in Sales Force voor bijwerk bewerkingen. Selecteer de knop Opslaan om eventuele wijzigingen door te voeren.
+16. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Sales Force. Houd er rekening mee dat de kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om te voldoen aan de gebruikers accounts in Sales Force voor bijwerk bewerkingen. Selecteer de knop Opslaan om door te voeren van eventuele wijzigingen.
 
 17. Als u de Azure AD-inrichtings service voor Sales Force wilt inschakelen, wijzigt **u de** **inrichtings status** in in het gedeelte instellingen
 
@@ -117,7 +117,10 @@ Het doel van deze sectie is het maken van een overzicht van het inschakelen van 
 
 Hiermee start u de initiële synchronisatie van gebruikers en/of groepen die zijn toegewezen aan Sales Force in de sectie gebruikers en groepen. Houd er rekening mee dat het uitvoeren van de eerste synchronisatie langer duurt dan volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden, zolang de service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen te volgen voor het inrichtings logboek, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtings service in uw Sales Force-app.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
+
+## <a name="common-issues"></a>Algemene problemen
+* De standaard kenmerk toewijzing voor het inrichten van Sales Force bevat de SingleAppRoleAssignments-expressie voor het inrichten van gebruikers rollen in Sales Force. Zorg ervoor dat de gebruikers niet meerdere rollen hebben toegewezen aan de toepassing omdat de kenmerk toewijzing alleen ondersteuning biedt voor het inrichten van één rol. 
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

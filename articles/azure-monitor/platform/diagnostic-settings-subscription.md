@@ -7,12 +7,12 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 10/31/2019
-ms.openlocfilehash: 9f8783dc6d3c14b086364639b60273dbae626cee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6104a8b01cc9fca5ff8de973e7fc2af77cda8515
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587977"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048210"
 ---
 # <a name="collect-azure-activity-log-with-diagnostic-settings-preview"></a>Azure-activiteiten logboek met Diagnostische instellingen verzamelen (preview-versie)
 Het [Azure-activiteiten logboek](activity-logs-overview.md) is een [platform logboek](platform-logs-overview.md) dat inzicht biedt in gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. Tot nu toe hebt u een logboek profiel gemaakt voor het verzenden van activiteiten logboek vermeldingen naar [een event hub of een opslag account](activity-log-export.md) en een connector gebruikt om deze te verzamelen in een [log Analytics-werk ruimte](activity-log-collect.md).
@@ -22,6 +22,8 @@ U kunt nu een verzameling van het Azure-activiteiten logboek configureren met be
 - Consistente methode voor het verzamelen van alle platform Logboeken.
 - Verzamel activiteiten logboek over meerdere abonnementen en tenants.
 - Filter verzameling om alleen logboeken voor bepaalde categorieën te verzamelen.
+- Verzamel alle activiteiten logboek categorieën. Sommige categorieën worden niet verzameld met de vorige methode.
+- Snellere latentie voor opname van Logboeken. De vorige methode heeft ongeveer 15 minuten latentie terwijl Diagnostische instellingen meer dan 1 minuut toevoegen.
 
 ## <a name="considerations"></a>Overwegingen
 Houd rekening met de volgende details van de verzameling activiteiten logboeken met Diagnostische instellingen voordat u deze functie inschakelt.
@@ -55,7 +57,7 @@ Diagnostische instellingen verzamelen dezelfde gegevens als de vorige methoden d
 
 De volgende eigenschappen zijn verwijderd:
 
-- Activity status
+- ActivityStatus
 - ActivitySubstatus
 - OperationName
 - ResourceProvider 

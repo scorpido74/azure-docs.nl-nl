@@ -1,18 +1,18 @@
 ---
-title: Firewall regels voor webtoepassingen aanpassen in Azure-toepassing gateway-Azure CLI
+title: Regels aanpassen met CLI-Azure Web Application firewall
 description: Dit artikel bevat informatie over het aanpassen van de firewall regels voor webtoepassingen in Application Gateway met de Azure CLI.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/23/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 58cc339e8f849a71fb01973e99dba936f6b53a8c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e8aaa9458619bc937c5bb11c450f3197b92f451
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516940"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048532"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-cli"></a>Firewall regels voor web-apps aanpassen met behulp van Azure CLI
 

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f05e732e11fb9cd88d4671528d551c68e448a8d7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685475"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049118"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Richt lijnen voor het ontwerpen van gedistribueerde tabellen in Azure SQL Data Warehouse
 Aanbevelingen voor het ontwerpen van op hash gedistribueerde en Round Robin gedistribueerde tabellen in Azure SQL Data Warehouse.
@@ -60,7 +60,7 @@ Overweeg het gebruik van round-robin distributie voor uw tabel in de volgende sc
 
 - Als u aan de slag gaat als eenvoudig begin punt omdat dit de standaard waarde is
 - Als er geen duidelijke samenvoegings sleutel is
-- Als er geen goede kolom kandidaat is voor hash-distributie van de tabel
+- Als er geen geschikte kandidaten kolom is voor de hash die de tabel distribueert
 - Als de tabel geen algemene koppelings sleutel met andere tabellen deelt
 - Als de samen voeging minder significant is dan andere samen voegingen in de query
 - Wanneer de tabel een tijdelijke faserings tabel is
@@ -218,6 +218,6 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 Als u een gedistribueerde tabel wilt maken, gebruikt u een van de volgende instructies:
 
 - [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE als selecteren (Azure SQL Data Warehouse](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

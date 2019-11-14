@@ -9,24 +9,16 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 09/24/2019
-ms.openlocfilehash: 7e67b9e1c611d14b78db53f8662fb4e1f493a8df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 1ed57e30273c9ba3feb110e0e5acbd3bcc7ffd40
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990172"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74062871"
 ---
-> [!IMPORTANT]
-> * De Blade nieuw **Azure Active Directory** > **app-registraties** vervangt de blade verouderde **Azure Active Directory** > **App-registraties (verouderd)** mogelijk 2019.
-> * App-registraties gemaakt of weer gegeven in de verouderde Blade wordt automatisch weer gegeven in de nieuwe blade.
-> * Voor uitgebreide informatie over het migreren naar de nieuwe Azure-app registratie-ervaring raadpleegt u de [Azure-app registraties-trainings handleiding](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide) en [Azure Active Directory Quick](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)start.
-
 1. Selecteer in de [Azure Portal](https://ms.portal.azure.com/) **Azure Active Directory** > **app-registraties** > **nieuwe registratie**.
 
    [![nieuwe toepassings registratie in Azure Active Directory](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
-
-   > [!TIP]
-   > In het nieuwe Azure Active Directory deel venster app-registratie kunt u de weer gegeven apps filteren door in eigendom zijnde **toepassingen**te selecteren.
 
     Uw app wordt hier weer gegeven nadat u deze hebt geregistreerd.
 
@@ -36,7 +28,7 @@ ms.locfileid: "72990172"
 
 1. Belang rijk Azure Active Directory app-gegevens worden weer gegeven op de Blade **overzicht** van de lijst met apps. Selecteer uw app onder **toepassingen in eigendom**en klik vervolgens op **overzicht**.
 
-   [de toepassings-ID![kopiëren](media/time-series-insights-aad-registration/active-directory-copy-application-id.png)](media/time-series-insights-aad-registration/active-directory-copy-application-id.png#lightbox)
+   [de toepassings-ID ![kopiëren](media/time-series-insights-aad-registration/active-directory-copy-application-id.png)](media/time-series-insights-aad-registration/active-directory-copy-application-id.png#lightbox)
 
    Kopieer de **client-id** die moet worden gebruikt in uw client toepassing.
 

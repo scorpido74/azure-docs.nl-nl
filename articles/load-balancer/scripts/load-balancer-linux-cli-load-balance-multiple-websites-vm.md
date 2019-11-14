@@ -1,5 +1,5 @@
 ---
-title: 'CLI-voorbeeld: Taakverdelingen maken voor meerdere websites met de Azure CLI | Microsoft Docs'
+title: Taak verdeling meerdere websites-Azure CLI-Azure Load Balancer
 description: In dit Azure CLI-voorbeeldscript ziet u hoe u taken van meerdere websites kunt verdelen naar dezelfde virtuele machine
 services: load-balancer
 documentationcenter: load-balancer
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 63897da887230da74aaaddc464549e9c06ed9543
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 54258b5129e9804bfba4cc51f0d18770b8486280
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273870"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048941"
 ---
-# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI-voorbeeldscript: Taakverdeling instellen voor meerdere websites
+# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI-scriptvoorbeeld: Taakverdelingen maken voor meerdere websites
 
 In dit Azure CLI-scriptvoorbeeld wordt een virtueel netwerk gemaakt met twee virtuele machines (VM) die lid zijn van een beschikbaarheidsset. Een load balancer stuurt verkeer voor twee afzonderlijke IP-adressen door naar de twee virtuele machines. Nadat het script is uitgevoerd, kunt u webserversoftware implementeren op de virtuele machines en meerdere websites hosten, elk met een eigen IP-adres.
 
@@ -49,7 +49,7 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | Hiermee maakt u een virtueel Azure-netwerk en -subnet. |
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-create) | Hiermee maakt u een openbaar IP-adres met een statisch IP-adres en een bijbehorende DNS-naam. |
 | [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#az-network-lb-create) | Hiermee maakt u een Azure-load balancer. |
@@ -65,6 +65,6 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 Aanvullende CLI-voorbeeldscripts voor netwerken vindt u in de [Documentatie met een overzicht van Azure-netwerken](../cli-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

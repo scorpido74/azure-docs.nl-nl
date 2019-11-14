@@ -1,5 +1,5 @@
 ---
-title: Multi-factor Authentication (MFA) en Privileged Identity Management-Azure Active Directory | Microsoft Docs
+title: MFA of twee ledige en Privileged Identity Management-Azure AD | Microsoft Docs
 description: Meer informatie over hoe Azure AD Privileged Identity Management (PIM) multi-factor Authentication (MFA) valideert.
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/31/2018
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aa58c354198e648227b9b0b43d1f60546f87d32
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 6df593909c3ae5962e413eb84e64196fade0326b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063069"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022140"
 ---
 # <a name="multi-factor-authentication-and-privileged-identity-management"></a>Multi-factor Authentication en Privileged Identity Management
 
@@ -36,7 +36,7 @@ Er zijn twee opties voor het valideren van multi-factor Authentication wanneer e
 
 De eenvoudigste optie is afhankelijk van Azure Multi-Factor Authentication voor gebruikers die een geprivilegieerde rol activeren. Om dit te doen, moet u eerst controleren of deze gebruikers een licentie hebben, indien nodig en zijn geregistreerd voor Azure Multi-Factor Authentication. Zie voor meer informatie over het implementeren van Azure Multi-Factor Authentication [Azure-multi-factor Authentication in de Cloud implementeren](../authentication/howto-mfa-getstarted.md). Het wordt aanbevolen, maar niet vereist, dat u Azure AD configureert om multi-factor Authentication af te dwingen voor deze gebruikers wanneer ze zich aanmelden. Dit komt doordat de multi-factor Authentication-controles door Privileged Identity Management zichzelf worden uitgevoerd.
 
-Als gebruikers on-premises verifiëren, kunt u er ook voor zorgen dat uw ID-provider verantwoordelijk is voor multi-factor Authentication. Als u bijvoorbeeld AD Federation Services hebt geconfigureerd om verificatie op basis van Smart Cards te vereisen voordat u toegang krijgt tot Azure AD, kunt u [cloud resources beveiligen met azure multi-factor Authentication en AD FS](../authentication/howto-mfa-adfs.md) bevat instructies voor het configureren van AD FS claims verzenden naar Azure AD. Wanneer een gebruiker probeert een rol te activeren, accepteert Privileged Identity Management dat multi-factor Authentication al is gevalideerd voor de gebruiker nadat het de juiste claims heeft ontvangen.
+Als gebruikers on-premises verifiëren, kunt u er ook voor zorgen dat uw ID-provider verantwoordelijk is voor multi-factor Authentication. Als u bijvoorbeeld AD Federation Services hebt geconfigureerd om verificatie op basis van Smart Cards te vereisen voordat u toegang krijgt tot Azure AD, kunt u [cloud resources beveiligen met azure multi-factor Authentication en AD FS](../authentication/howto-mfa-adfs.md) bevat instructies voor het configureren van AD FS voor het verzenden van claims naar Azure AD. Wanneer een gebruiker probeert een rol te activeren, accepteert Privileged Identity Management dat multi-factor Authentication al is gevalideerd voor de gebruiker nadat het de juiste claims heeft ontvangen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

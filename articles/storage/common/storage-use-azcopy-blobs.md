@@ -8,12 +8,12 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 78e3f1d4f457e041d386ac7754d089b8b3635b08
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f5aafbb22ecbff416d90aa5b98eb027c33872b35
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686649"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048541"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Gegevens overdragen met AzCopy en Blob Storage
 
@@ -49,7 +49,7 @@ Zie [azcopy maken](storage-ref-azcopy-make.md)voor gedetailleerde naslag documen
 
 U kunt de azcopy-opdracht [kopiëren](storage-ref-azcopy-copy.md) gebruiken om bestanden en mappen te uploaden van uw lokale computer.
 
-Deze sectie bevat de volgende voor beelden:
+Deze sectie bevat de volgende voorbeelden:
 
 > [!div class="checklist"]
 > * Bestand uploaden
@@ -143,7 +143,7 @@ De opties `--include-pattern` en `--exclude-pattern` zijn alleen van toepassing 
 
 U kunt de azcopy-opdracht [kopiëren](storage-ref-azcopy-copy.md) gebruiken om blobs, directory's en containers te downloaden naar uw lokale computer.
 
-Deze sectie bevat de volgende voor beelden:
+Deze sectie bevat de volgende voorbeelden:
 
 > [!div class="checklist"]
 > * Bestand downloaden
@@ -237,7 +237,7 @@ AzCopy maakt gebruik van [server-naar-server-](https://docs.microsoft.com/rest/a
 > - U moet een SAS-token toevoegen aan elke bron-URL. Als u autorisatie referenties opgeeft met behulp van Azure Active Directory (AD), kunt u de SAS-token alleen weglaten van de doel-URL.
 >-  Premium Block Blob Storage-accounts bieden geen ondersteuning voor toegangs lagen. Laat de Access-laag van een BLOB uit de Kopieer bewerking weg door de `s2s-preserve-access-tier` in te stellen op `false` (bijvoorbeeld: `--s2s-preserve-access-tier=false`).
 
-Deze sectie bevat de volgende voor beelden:
+Deze sectie bevat de volgende voorbeelden:
 
 > [!div class="checklist"]
 > * Een BLOB kopiëren naar een ander opslag account
@@ -275,7 +275,7 @@ Zie [azcopy Copy](storage-ref-azcopy-copy.md)voor gedetailleerde naslag document
 
 |    |     |
 |--------|-----------|
-| **Syntaxis** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/?<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive'` |
+| **Syntaxis** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/?<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
 | **Voorbeeld** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
 
 ## <a name="synchronize-files"></a>Bestanden synchroniseren

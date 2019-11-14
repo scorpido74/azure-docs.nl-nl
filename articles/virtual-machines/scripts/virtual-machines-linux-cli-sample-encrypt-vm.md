@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld van Azure CLI-script - Een virtuele Linux-machine versleutelen | Microsoft Docs
+title: Voorbeeld van Azure CLI-script - Een virtuele Linux-machine versleutelen
 description: Voorbeeld van Azure CLI-script - Een virtuele Linux-machine versleutelen
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 16bbd4031c851a950af0f3c0fe98ebdd24b183df
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 26d453adb4ded59de162fda0ae62322399fa4d9a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709437"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040277"
 ---
 # <a name="encrypt-a-linux-virtual-machine-in-azure"></a>Virtuele Linux-machine versleutelen in Azure
 
@@ -61,6 +61,6 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 U kunt extra CLI-scriptvoorbeelden voor virtuele machines vinden in de [Azure-documentatie voor Linux-VM's](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

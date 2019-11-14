@@ -7,14 +7,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 514dcf05eaa37bd338ef6359977b9a5508838459
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a53694f97da144f3932efe39941d3f22ef739c7b
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932868"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048214"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-activiteiten Logboeken in Log Analytics werk ruimte in Azure Monitor verzamelen en analyseren
+
+> [!NOTE]
+> U kunt het activiteiten logboek nu verzamelen in een Log Analytics-werk ruimte met behulp van een diagnostische instelling, vergelijkbaar met de manier waarop u bron logboeken verzamelt. Zie [Azure-activiteiten logboeken verzamelen en analyseren in log Analytics werk ruimte in azure monitor](activity-log-collect.md).
+
 Het [Azure-activiteiten logboek](activity-logs-overview.md) biedt inzicht in gebeurtenissen op abonnements niveau die in uw Azure-abonnement zijn opgetreden. In dit artikel wordt beschreven hoe u het activiteiten logboek in een Log Analytics-werk ruimte verzamelt en hoe u de Analyse van activiteitenlogboek [bewakings oplossing](../insights/solutions.md)gebruikt, waarmee logboek query's en-weer gaven worden geboden voor het analyseren van deze gegevens. 
 
 Het verbinden van het activiteiten logboek met een Log Analytics-werk ruimte biedt de volgende voor delen:
@@ -36,7 +40,7 @@ Gebruik de volgende procedure om het activiteiten logboek te verbinden met uw Lo
 1. Selecteer in de sectie **werkruimte gegevens bronnen** van het menu van de werk ruimte **Azure-activiteiten logboek**.
 1. Klik op het abonnement dat u wilt verbinden.
 
-    ![Werkruimten](media/activity-log-export/workspaces.png)
+    ![Workspaces](media/activity-log-export/workspaces.png)
 
 1. Klik op **verbinden** om het activiteiten logboek in het abonnement te verbinden met de geselecteerde werk ruimte. Als het abonnement al is verbonden met een andere werk ruimte, klikt u eerst op **verbinding verbreken** om de verbinding te verbreken.
 
@@ -54,19 +58,19 @@ Gebruik de procedure in [een bewakings oplossing installeren](../insights/soluti
 ### <a name="use-the-solution"></a>De oplossing gebruiken
 Bewakings oplossingen zijn toegankelijk via het menu **monitor** in de Azure Portal. Selecteer **meer** in het gedeelte **inzichten** om de **overzichts** pagina te openen met de oplossings tegels. De tegel **activiteiten logboeken van Azure** bevat een telling van het aantal **AzureActivity** -records in uw werk ruimte.
 
-![Tegel Azure-activiteiten logboeken](media/collect-activity-logs/azure-activity-logs-tile.png)
+![Azure-activiteitenlogboeken tegel](media/collect-activity-logs/azure-activity-logs-tile.png)
 
 
 Klik op de tegel **Azure-activiteiten logboeken** om de weer gave **Azure-activiteiten logboeken** te openen. De weer gave bevat de visualisatie onderdelen in de volgende tabel. Elk onderdeel bevat Maxi maal 10 items die overeenkomen met de criteria van die onderdelen voor het opgegeven tijds bereik. U kunt een logboek query uitvoeren waarmee alle overeenkomende records worden geretourneerd door te klikken op **Alles bekijken** onder aan het onderdeel.
 
-![Dash board Azure-activiteiten logboeken](media/collect-activity-logs/activity-log-dash.png)
+![Azure-activiteitenlogboeken-dashboard](media/collect-activity-logs/activity-log-dash.png)
 
 | Visualisatie onderdeel | Beschrijving |
 | --- | --- |
-| Azure-activiteiten logboek vermeldingen | Toont een staaf diagram van de bovenste Azure-activiteiten logboek vermeldingen records voor het datum bereik dat u hebt geselecteerd, en toont een lijst met de Top 10 van aanroepen van de activiteit. Klik op het staaf diagram om een logboek zoekopdracht voor `AzureActivity` uit te voeren. Klik op een beller-item om een zoek opdracht in Logboeken uit te voeren waarin alle activiteiten logboek vermeldingen voor dat item worden geretourneerd. |
-| Activiteiten logboeken op status | Toont een ring diagram voor de Azure-activiteiten logboek status voor het geselecteerde datum bereik en een lijst met de top tien status records. Klik op de grafiek om een logboek query voor `AzureActivity | summarize AggregatedValue = count() by ActivityStatus` uit te voeren. Klik op een status item om een logboek zoekopdracht uit te voeren waarin alle activiteiten logboek vermeldingen voor die status record worden geretourneerd. |
-| Activiteiten logboeken per resource | Toont het totale aantal resources met activiteiten logboeken en een lijst met de bovenste tien resources met record aantallen voor elke resource. Klik op het gedeelte totaal om een zoek opdracht van het logboek uit te voeren voor `AzureActivity | summarize AggregatedValue = count() by Resource`, waarin alle Azure-resources worden weer gegeven die beschikbaar zijn voor de oplossing. Klik op een resource om een logboek query uit te voeren voor het retour neren van alle activiteiten records voor die bron. |
-| Activiteiten logboeken per resource provider | Toont het totale aantal resource providers dat activiteiten logboeken produceert en een lijst met de top tien. Klik op het gedeelte totaal om een logboek query uit te voeren voor `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`, waarin alle Azure-resource providers worden weer gegeven. Klik op een resource provider om een logboek query uit te voeren voor het retour neren van alle activiteiten records voor de provider. |
+| Vermeldingen in het Azure-activiteit | Toont een staaf diagram van de bovenste Azure-activiteiten logboek vermeldingen records voor het datum bereik dat u hebt geselecteerd, en toont een lijst met de Top 10 van aanroepen van de activiteit. Klik op het staafdiagram voor het uitvoeren van een logboekzoekopdracht voor `AzureActivity`. Klik op een beller-item om een zoek opdracht in Logboeken uit te voeren waarin alle activiteiten logboek vermeldingen voor dat item worden geretourneerd. |
+| Activiteitenlogboeken op Status | Toont een ring diagram voor de Azure-activiteiten logboek status voor het geselecteerde datum bereik en een lijst met de top tien status records. Klik op de grafiek om een logboek query voor `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`uit te voeren. Klik op een status item om een logboek zoekopdracht uit te voeren waarin alle activiteiten logboek vermeldingen voor die status record worden geretourneerd. |
+| Activiteitenlogboeken per Resource | Toont het totale aantal resources met activiteiten logboeken en een lijst met de bovenste tien resources met record aantallen voor elke resource. Klik op het totale aantal gebied voor het uitvoeren van een logboekzoekopdracht voor `AzureActivity | summarize AggregatedValue = count() by Resource`, waarin alle Azure-resources beschikbaar zijn voor de oplossing wordt getoond. Klik op een resource om een logboek query uit te voeren voor het retour neren van alle activiteiten records voor die bron. |
+| Activiteitenlogboeken door de Resourceprovider | Toont het totale aantal resource providers dat activiteiten logboeken produceert en een lijst met de top tien. Klik op het gedeelte totaal om een logboek query uit te voeren voor `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`, waarin alle Azure-resource providers worden weer gegeven. Klik op een resource provider om een logboek query uit te voeren voor het retour neren van alle activiteiten records voor de provider. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

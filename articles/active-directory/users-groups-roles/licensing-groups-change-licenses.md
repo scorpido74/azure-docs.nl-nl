@@ -1,27 +1,27 @@
 ---
-title: Licentie toewijzingen wijzigen voor gebruikers en groepen-Azure Active Directory | Microsoft Docs
-description: Beschrijft het aanbevolen proces voor het migreren van gebruikers binnen een groep naar verschillende service licenties (Office 365 Enter prise E1 en E3) met behulp van groeps licenties
+title: Licentie plannen voor gebruikers en groepen wijzigen-Azure AD | Microsoft Docs
+description: Gebruikers binnen een groep migreren naar verschillende service plannen met behulp van groeps licenties in Azure Active Directory
 services: active-directory
 keywords: Azure AD-licenties
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/27/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7212983470e71ff6d7c1c33de142767ecf38d1f
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: bf2f04e1728f94c89bddcc31c287cc017a79020f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034002"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025906"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Licentie toewijzingen voor een gebruiker of groep in Azure Active Directory wijzigen
 

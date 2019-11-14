@@ -1,5 +1,5 @@
 ---
-title: De Azure CLI gebruiken om een AlwaysOn-beschikbaarheids groep te configureren voor SQL Server op een virtuele Azure-machine
+title: Een beschikbaarheids groep configureren (Azure CLI)
 description: Gebruik de Azure CLI om het Windows-failovercluster, de beschikbaarheids groep-listener en de interne load balancer op een SQL Server VM in azure te maken.
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 58174704051709a720950ac51591a1d53b9d01bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: a6600af353daf2bfa7b49196f48ba5b60e6c45fb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100571"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022371"
 ---
 # <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>De Azure CLI gebruiken om een AlwaysOn-beschikbaarheids groep te configureren voor SQL Server op een virtuele Azure-machine
 In dit artikel wordt beschreven hoe u de [Azure cli](/cli/azure/sql/vm?view=azure-cli-latest/) gebruikt om een Windows-failovercluster te implementeren, SQL Server vm's toe te voegen aan het cluster en de interne Load Balancer en listener te maken voor een always on-beschikbaarheids groep. De implementatie van de AlwaysOn-beschikbaarheids groep wordt nog steeds hand matig uitgevoerd via SQL Server Management Studio (SSMS). 
@@ -37,7 +38,7 @@ U hebt de volgende account machtigingen nodig voor het configureren van de Alway
 - Een bestaand domein gebruikers account met een machtiging voor het **maken van computer objecten** in het domein. Een domein beheerders account heeft bijvoorbeeld doorgaans voldoende machtigingen (bijvoorbeeld: account@domain.com). _Dit account moet ook lid zijn van de lokale groep Administrators op elke virtuele machine om het cluster te maken._
 - Het domein gebruikers account waarmee de SQL Server-service wordt beheerd. 
  
-## <a name="step-1-create-a-storage-account-as-a-cloud-witness"></a>Stap 1: Een opslag account maken als een cloudwitness
+## <a name="step-1-create-a-storage-account-as-a-cloud-witness"></a>Stap 1: een opslag account maken als een cloudwitness
 Het cluster heeft een opslag account nodig om te fungeren als de cloudwitness. U kunt elk bestaand opslag account gebruiken of u kunt een nieuw opslag account maken. Als u een bestaand opslag account wilt gebruiken, gaat u verder met de volgende sectie. 
 
 Met het volgende code fragment wordt het opslag account gemaakt: 
@@ -51,9 +52,9 @@ az storage account create -n <name> -g <resource group name> -l <region ex:eastu
 ```
 
 >[!TIP]
-> Mogelijk wordt de fout `az sql: 'vm' is not in the 'az sql' command group` weer geven als u een verouderde versie van de Azure cli gebruikt. Down load de [nieuwste versie van Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) om deze fout te verhelpen.
+> U ziet mogelijk de fout `az sql: 'vm' is not in the 'az sql' command group` als u een verouderde versie van de Azure CLI gebruikt. Down load de [nieuwste versie van Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) om deze fout te verhelpen.
 
-## <a name="step-2-define-windows-failover-cluster-metadata"></a>Stap 2: Meta gegevens van Windows-failovercluster definiëren
+## <a name="step-2-define-windows-failover-cluster-metadata"></a>Stap 2: meta gegevens van het Windows-failovercluster definiëren
 De opdracht groep Azure CLI [AZ SQL VM Group](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) beheert de meta gegevens van de WSFC-service (Windows Server failover cluster) die als host fungeert voor de beschikbaarheids groep. De meta gegevens van het cluster omvatten de Active Directory domein, cluster accounts, opslag accounts die moeten worden gebruikt als de cloudwitness en SQL Server versie. Gebruik [AZ SQL VM Group Create](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) om de meta gegevens voor WSFC te definiëren, zodat wanneer de eerste SQL Server virtuele machine wordt toegevoegd, het cluster wordt gemaakt zoals gedefinieerd. 
 
 Het volgende code fragment definieert de meta gegevens voor het cluster:
@@ -74,7 +75,7 @@ az sql vm group create -n <cluster name> -l <region ex:eastus> -g <resource grou
 ```
 
 ## <a name="step-3-add-sql-server-vms-to-the-cluster"></a>Stap 3: SQL Server Vm's toevoegen aan het cluster
-Als u de eerste SQL Server VM toevoegt aan het cluster, wordt het cluster gemaakt. Met de opdracht [AZ SQL VM add-to-Group](https://docs.microsoft.com/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-add-to-group) maakt u het cluster met de naam die u eerder hebt opgegeven, installeert u de cluster functie op de SQL Server-vm's en voegt u deze toe aan het cluster. Met het volgende gebruik `az sql vm add-to-group` van de opdracht voegt u meer SQL Server vm's toe aan het zojuist gemaakte cluster. 
+Als u de eerste SQL Server VM toevoegt aan het cluster, wordt het cluster gemaakt. Met de opdracht [AZ SQL VM add-to-Group](https://docs.microsoft.com/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-add-to-group) maakt u het cluster met de naam die u eerder hebt opgegeven, installeert u de cluster functie op de SQL Server-vm's en voegt u deze toe aan het cluster. Met het volgende gebruik van de `az sql vm add-to-group` opdracht voegt u meer SQL Server Vm's toe aan het zojuist gemaakte cluster. 
 
 Met het volgende code fragment wordt het cluster gemaakt en wordt de eerste SQL Server VM hieraan toegevoegd: 
 
@@ -92,13 +93,13 @@ az sql vm add-to-group -n <VM2 Name> -g <Resource Group Name> --sqlvm-group <clu
 ```
 Gebruik deze opdracht om andere SQL Server Vm's toe te voegen aan het cluster. Wijzig alleen de `-n` para meter voor de naam van de SQL Server-VM. 
 
-## <a name="step-4-create-the-availability-group"></a>Stap 4: De beschikbaarheids groep maken
+## <a name="step-4-create-the-availability-group"></a>Stap 4: de beschikbaarheids groep maken
 Maak de beschikbaarheids groep hand matig zoals u dat gewoonlijk zou doen met behulp van [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [Power shell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell)of [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql). 
 
 >[!IMPORTANT]
 > Maak op dit moment *geen* listener, omdat dit wordt gedaan via de Azure cli in de volgende secties.  
 
-## <a name="step-5-create-the-internal-load-balancer"></a>Stap 5: De interne load balancer maken
+## <a name="step-5-create-the-internal-load-balancer"></a>Stap 5: de interne load balancer maken
 
 Voor de always on-beschikbaarheids groep-listener is een intern exemplaar van Azure Load Balancer vereist. De interne load balancer biedt een ' zwevend ' IP-adres voor de beschikbaarheids groep-listener die snellere failover en opnieuw verbinden mogelijk maakt. Als de SQL Server Vm's in een beschikbaarheids groep deel uitmaken van dezelfde beschikbaarheidsset, kunt u een basis load balancer gebruiken. Anders moet u een standaard load balancer gebruiken.  
 
@@ -119,17 +120,17 @@ az network lb create --name sqlILB -g <resource group name> --sku Standard `
 >[!IMPORTANT]
 > De open bare IP-resource voor elke SQL Server virtuele machine moet een standaard-SKU hebben om compatibel te zijn met de standaard load balancer. Als u de SKU van de open bare IP-resource van de virtuele machine wilt bepalen, gaat u naar de **resource groep**, selecteert u de resource voor het **open bare IP-adres** voor de gewenste SQL Server VM en zoekt u de waarde onder **SKU** in het deel venster **overzicht** .  
 
-## <a name="step-6-create-the-availability-group-listener"></a>Stap 6: De listener voor de beschikbaarheids groep maken
+## <a name="step-6-create-the-availability-group-listener"></a>Stap 6: de listener voor de beschikbaarheids groep maken
 Nadat u de beschikbaarheids groep hand matig hebt gemaakt, kunt u de listener maken met behulp van [AZ SQL VM AG-listener](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create). 
 
-De *resource-id* van het subnet is `/subnets/<subnetname>` de waarde van toegevoegd aan de resource-id van de virtuele netwerk resource. De resource-ID van het subnet identificeren:
+De *resource-id* van het subnet is de waarde van `/subnets/<subnetname>` toegevoegd aan de resource-id van de virtuele netwerk resource. De resource-ID van het subnet identificeren:
    1. Ga naar de resource groep in de [Azure Portal](https://portal.azure.com). 
    1. Selecteer de bron van het virtuele netwerk. 
    1. Selecteer **Eigenschappen** in het deel venster **instellingen** . 
-   1. Identificeer de bron-id voor het virtuele netwerk en `/subnets/<subnetname>` Voeg deze toe aan het einde om de resource-id van het subnet te maken. Bijvoorbeeld:
-      - De resource-ID van uw virtuele netwerk is:`/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
-      - De naam van het subnet is:`default`
-      - De ID van uw subnet-bron is daarom:`/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`
+   1. Identificeer de bron-ID voor het virtuele netwerk en voeg `/subnets/<subnetname>` toe aan het einde om de resource-ID van het subnet te maken. Bijvoorbeeld:
+      - De resource-ID van uw virtuele netwerk is: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
+      - De naam van het subnet is: `default`
+      - De ID van uw subnet-bron is daarom: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`
 
 
 Met het volgende code fragment wordt de beschikbaarheids groep-listener gemaakt:

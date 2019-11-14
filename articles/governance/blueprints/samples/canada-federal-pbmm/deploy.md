@@ -1,18 +1,14 @@
 ---
 title: Voor beeld van Canada Federal PBMM Blue Print-stappen implementeren
 description: Implementeer stappen voor het voor beeld van de Canada Federal PBMM blauw druk, inclusief blauw druk artefact parameter Details.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/05/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 22806f497283c1885446eadd5f444dacf3769c12
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 788c52ee9a2bf9a0a2c506c2a34d221ff08bd0af
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163319"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038419"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>De voor beelden van de Canada Federal PBMM-blauw druk implementeren
 
@@ -66,7 +62,7 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
 
 1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
-   - Basisbeginselen
+   - Basics
 
      - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
      - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
@@ -97,10 +93,10 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
 Artefact naam|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|\[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren |Beleidstoewijzing |Log Analytics-werk ruimte voor Linux Vm's |Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
-|\[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren |Beleidstoewijzing |Optioneel: lijst met VM-installatie kopieën met ondersteund Linux-besturings systeem om toe te voegen aan het bereik |Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: `[]` |
-|\[preview\]: Log Analytics-agent implementeren voor Windows-Vm's |Beleidstoewijzing |Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik |Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: `[]` |
-|\[preview\]: Log Analytics-agent implementeren voor Windows-Vm's |Beleidstoewijzing |Log Analytics-werk ruimte voor Windows-Vm's |Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
+|\[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren |Beleidstoewijzing |Log Analytics-werk ruimte voor Linux Vm's |Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
+|\[Preview-versie\]: Log Analytics-Agent voor Linux-VM's implementeren |Beleidstoewijzing |Optioneel: lijst met VM-installatie kopieën met ondersteund Linux-besturings systeem om toe te voegen aan het bereik |Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: `[]` |
+|\[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren |Beleidstoewijzing |Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik |Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: `[]` |
+|\[Preview-versie\]: Log Analytics-Agent voor Windows-VM's implementeren |Beleidstoewijzing |Log Analytics-werk ruimte voor Windows-Vm's |Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
 |\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Werk ruimte-ID Log Analytics waarvoor Vm's moeten worden geconfigureerd |Dit is de ID (GUID) van de Log Analytics-werk ruimte waarvoor de Vm's moeten worden geconfigureerd. |
 |\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Lijst met resource typen waarvoor Diagnostische logboeken moeten zijn ingeschakeld |Lijst met resource typen om te controleren of de diagnostische logboek instelling niet is ingeschakeld. Acceptabele waarden zijn te vinden in [Azure monitor Diagnostische logboeken schema's](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type). |
 |\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Groep Administrators |Gegroepeerd. Voorbeeld: `Administrator; myUser1; myUser2` |
@@ -119,7 +115,7 @@ Nu u de stappen voor het implementeren van het voor beeld van Canada Federal PBM
 > [Canada Federal PBMM blauw drukken-overzicht](./index.md)
 > [Canada Federal PBMM blauw drukken-controle toewijzing](./control-mapping.md)
 
-Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
+Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

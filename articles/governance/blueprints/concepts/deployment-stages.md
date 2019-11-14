@@ -1,14 +1,14 @@
 ---
 title: Stappen in een blauwdrukimplementatie
 description: Meer informatie over de stappen die tijdens een implementatie door de Azure Blueprint services worden uitgevoerd.
-ms.date: 03/14/2019
+ms.date: 11/13/2019
 ms.topic: conceptual
-ms.openlocfilehash: d0d97ed01c4ae2ef96da151e1ab4ddc13a4b1d3e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b329613e4e4954a1ea1452017a6e6c8b7343f2d3
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960523"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048619"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Stappen in een blauwdrukimplementatie
 
@@ -25,7 +25,7 @@ De implementatie van blauw druk wordt geactiveerd door een blauw druk aan een ab
 
 ## <a name="blueprints-granted-owner-rights"></a>Blauw drukken met eigendoms rechten
 
-De service-principal van Azure Blauwten krijgt eigendoms rechten voor het toegewezen abonnement of de abonnementen. Met de verleende rol kunnen blauw drukken de door het [systeem toegewezen beheerde identiteit](../../../active-directory/managed-identities-azure-resources/overview.md)maken en later intrekken.
+De service-principal van Azure Blauwsen krijgt eigendoms rechten voor het toegewezen abonnement of de abonnementen wanneer een door het [systeem toegewezen beheerde](../../../active-directory/managed-identities-azure-resources/overview.md) identiteit wordt gebruikt. Met de verleende rol kunnen blauw drukken de door het **systeem toegewezen** beheerde identiteit maken en later intrekken. Als u een door de **gebruiker toegewezen** beheerde identiteit gebruikt, wordt de service-principal van Azure blauw niet ontvangen en heeft deze geen eigenaars rechten voor het abonnement.
 
 De rechten worden automatisch verleend als de toewijzing wordt uitgevoerd via de portal. Als de toewijzing echter wordt uitgevoerd via de REST API, moet het verlenen van de rechten worden uitgevoerd met een afzonderlijke API-aanroep. De Azure Blueprint AppId is `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, maar de Service-Principal is afhankelijk van de Tenant. Gebruik [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) en rest endpoint [servicePrincipals](/graph/api/resources/serviceprincipal) om de Service-Principal op te halen. Ken vervolgens het Azure-blauw drukken toe aan de rol van _eigenaar_ via de [Portal](../../../role-based-access-control/role-assignments-portal.md), de [Azure cli](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [rest API](../../../role-based-access-control/role-assignments-rest.md)of een [Resource Manager-sjabloon](../../../role-based-access-control/role-assignments-template.md).
 
@@ -35,7 +35,7 @@ De blauw drukken-service implementeert de resources niet rechtstreeks.
 
 Een gebruiker, groep of Service-Principal wijst een blauw druk toe aan een abonnement. Het toewijzings object bestaat op het abonnements niveau waar de blauw druk is toegewezen. Resources die zijn gemaakt door de implementatie, worden niet uitgevoerd in de context van de implementatie-entiteit.
 
-Tijdens het maken van de blauw druk-toewijzing wordt het type [beheerde identiteit](../../../active-directory/managed-identities-azure-resources/overview.md) geselecteerd. De standaard waarde is een door het **systeem toegewezen** beheerde identiteit. Een door de **gebruiker toegewezen** beheerde identiteit kan worden gekozen. Wanneer u een door de **gebruiker toegewezen** beheerde identiteit gebruikt, moet u deze definiëren en machtigingen verlenen voordat de blauw druk-toewijzing wordt gemaakt.
+Tijdens het maken van de blauw druk-toewijzing wordt het type [beheerde identiteit](../../../active-directory/managed-identities-azure-resources/overview.md) geselecteerd. De standaard waarde is een door het **systeem toegewezen** beheerde identiteit. Een door de **gebruiker toegewezen** beheerde identiteit kan worden gekozen. Wanneer u een door de **gebruiker toegewezen** beheerde identiteit gebruikt, moet u deze definiëren en machtigingen verlenen voordat de blauw druk-toewijzing wordt gemaakt. Beide ingebouwde rollen van de operator [eigenaar](../../../role-based-access-control/built-in-roles.md#owner) en [blauw](../../../role-based-access-control/built-in-roles.md#blueprint-operator) drukken hebben de benodigde `blueprintAssignment/write` machtiging om een toewijzing te maken die gebruikmaakt van een door de **gebruiker toegewezen** beheerde identiteit.
 
 ## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Optionele-blauw drukken maakt door het systeem toegewezen beheerde identiteit
 

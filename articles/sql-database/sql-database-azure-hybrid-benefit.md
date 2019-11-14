@@ -8,20 +8,22 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/08/2019
-ms.openlocfilehash: 17252f6544ee56647315dc44ace4db3e3abe9726
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/13/2019
+ms.openlocfilehash: 4aab699ff0141b648066fae0de445c4467be7509
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821877"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048394"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
-In de ingerichte Compute-laag van het op vCore gebaseerde aankoop model kunt u uw bestaande licenties uitwisselen voor kortings tarieven op SQL Database met behulp van [Azure Hybrid Benefit voor SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Met dit voor deel van Azure kunt u tot wel 30% besparen op Azure SQL Database met behulp van uw on-premises SQL Server licenties met Software Assurance.
+In de ingerichte Compute-laag van het op vCore gebaseerde aankoop model kunt u uw bestaande licenties uitwisselen voor kortings tarieven op SQL Database met behulp van [Azure Hybrid Benefit voor SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Met dit voor deel van Azure kunt u tot wel 30% besparen op Azure SQL Database met behulp van uw on-premises SQL Server licenties met Software Assurance. 
+
+> [!NOTE]
+> Voor het wijzigen van Azure Hybrid Benefit is geen uitval tijd vereist.
 
 ![koers](./media/sql-database-service-tiers/pricing.png)
-
 
 ## <a name="choose-a-license-model"></a>Een licentie model kiezen
 
@@ -49,8 +51,6 @@ U kunt uw licentie model kiezen of wijzigen met behulp van de Azure Portal of do
   - [Data bases-bijwerken](https://docs.microsoft.com/rest/api/sql/databases/update)
   - [Beheerde instanties: maken of bijwerken](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
   - [Beheerde instanties-bijwerken](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
-
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

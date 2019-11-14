@@ -1,5 +1,5 @@
 ---
-title: 'Azure Notification Hubs: Veelgestelde vragen | Microsoft Docs'
+title: 'Azure Notification Hubs: veelgestelde vragen (FAQ) | Microsoft Docs'
 description: Veelgestelde vragen over het ontwerpen/implementeren van oplossingen op Notification Hubs
 services: notification-hubs
 documentationcenter: mobile
@@ -13,18 +13,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 5de8c9523e05411a4751766c836b8e99ebb977c1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.lastreviewed: 11/13/2019
+ms.openlocfilehash: ee1bd413894ff5c12883279ccd8a9e9eac3c1790
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213144"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048789"
 ---
-# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Push meldingen met Azure Notification Hubs: Veelgestelde vragen
+# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Push meldingen met Azure Notification Hubs: veelgestelde vragen
 
 ## <a name="general"></a>Algemeen
 
@@ -38,16 +38,16 @@ De aanbevolen toewijzing komt overeen met één naam ruimte met één app. Binne
 
 De meest recente prijs informatie vindt u op de pagina met [Notification hubs prijzen] . Notification Hubs wordt in rekening gebracht op het niveau van de naam ruimte. (Zie ' wat is de resource structuur van Notification Hubs? ' voor de definitie van een naam ruimte. Notification Hubs biedt drie lagen:
 
-* **Gratis**: Deze laag is een goed uitgangs punt voor het verkennen van push mogelijkheden. Het wordt niet aanbevolen voor productie-apps. U krijgt 500-apparaten en 1.000.000 pushes per naam ruimte per maand, zonder service level agreement SLA-garantie.
-* **Basis**: Deze laag (of de Standard-laag) wordt aanbevolen voor kleinere productie-apps. U krijgt 200.000-apparaten en 10.000.000 pushes per naam ruimte per maand als basis lijn.
-* **Standaard**: Deze laag wordt aanbevolen voor middel grote tot grootschalige productie-apps. U krijgt 10.000.000-apparaten en 10.000.000 pushes per naam ruimte per maand als basis lijn. Inclusief uitgebreide telemetrie (aanvullende gegevens over de geleverde push status).
+* **Gratis**: deze laag is een goed uitgangs punt voor het verkennen van push mogelijkheden. Het wordt niet aanbevolen voor productie-apps. U krijgt 500-apparaten en 1.000.000 pushes per naam ruimte per maand, zonder service level agreement SLA-garantie.
+* **Basis**: deze laag (of de Standard-laag) wordt aanbevolen voor kleinere productie-apps. U krijgt 200.000-apparaten en 10.000.000 pushes per naam ruimte per maand als basis lijn.
+* **Standaard**: deze laag wordt aanbevolen voor middel grote tot grootschalige productie-apps. U krijgt 10.000.000-apparaten en 10.000.000 pushes per naam ruimte per maand als basis lijn. Inclusief uitgebreide telemetrie (aanvullende gegevens over de geleverde push status).
 
 Functies van de Standard-laag:
 
-* **Rijke telemetrie**: U kunt Notification Hubs per bericht-telemetrie gebruiken om Push aanvragen en Platform Notification System feedback voor fout opsporing bij te houden.
-* **Multitenancy**: U kunt werken met Platform Notification System referenties op een niveau van de naam ruimte. Met deze optie kunt u eenvoudig tenants splitsen in hubs binnen dezelfde naam ruimte.
-* **Geplande push**: U kunt plannen dat er op elk moment meldingen worden verzonden.
-* **Bulk bewerkingen**: Hiermee schakelt u de functionaliteit voor het exporteren/importeren van registraties in, zoals beschreven in het document [registraties exporteren/importeren] .
+* **Uitgebreide telemetrie**: u kunt notification hubs per bericht-telemetrie gebruiken om Push aanvragen en platform Notification System feedback voor fout opsporing bij te houden.
+* **Multitenancy**: u kunt werken met platform Notification System referenties op een niveau van de naam ruimte. Met deze optie kunt u eenvoudig tenants splitsen in hubs binnen dezelfde naam ruimte.
+* **Geplande push**: u kunt plannen dat er op elk moment meldingen worden verzonden.
+* **Bulk bewerkingen**: Hiermee schakelt u de functionaliteit voor het exporteren/importeren van gegevens in, zoals wordt beschreven in het document [registraties exporteren/importeren] .
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Wat is de Notification Hubs SLA?
 
@@ -58,7 +58,7 @@ Voor de lagen basis en Standard Notification Hubs kunnen correct geconfigureerde
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Wilt u de hub of naam ruimte Hoe kan ik upgraden of downgrade uitvoeren naar een andere laag?
 
-Ga naar de **[Azure-portal]**  > **Notification hubs naam ruimten** of **Notification hubs**. Selecteer de resource die u wilt bijwerken en ga naar de **prijs categorie**. Houd rekening met de volgende vereisten:
+Ga naar het **[Azure Portal]**  > **Notification hubs naam ruimten** of **Notification hubs**. Selecteer de resource die u wilt bijwerken en ga naar de **prijs categorie**. Houd rekening met de volgende vereisten:
 
 * De bijgewerkte prijs categorie is van toepassing op *alle* hubs in de naam ruimte waarmee u werkt.
 * Als het aantal apparaten de limiet overschrijdt van de laag die u wilt downgradeen, moet u apparaten verwijderen voordat u een downgrade uitvoert.
@@ -183,9 +183,13 @@ Als u niet beschikt over een back-end wanneer de app wordt gestart op doel appar
 
 Er wordt een tijds periode weer gegeven wanneer apparaten met niet-geopende apps geen meldingen ontvangen.
 
+### <a name="is-all-of-my-data-stored-in-encrypted-form"></a>Zijn alle gegevens in een versleutelde vorm opgeslagen?
+
+Azure Notification Hubs versleutelt alle klant gegevens op rest met uitzonde ring van registratie codes. Daarom moet u geen persoonlijke of vertrouwelijke gegevens opslaan met behulp van tags.
+
 ### <a name="is-there-audit-log-capability"></a>Is er sprake van een controle logboek mogelijkheid?
 
-Ja. Met alle Notification Hubs-beheer bewerkingen wordt het Azure-activiteiten logboek bijgewerkt, waar het wordt weer gegeven in de [Azure-portal]. Het Azure-activiteiten logboek biedt inzicht in de bewerkingen die worden uitgevoerd op resources in uw abonnementen. Met het activiteiten logboek kunt u bepalen wat, wie en wanneer een schrijf bewerking (PUT, POST, DELETE) voor de resources in uw abonnement is uitgevoerd. U kunt ook de status van de bewerkingen en andere relevante eigenschappen begrijpen. Indien. het activiteiten logboek bevat geen lees bewerking (GET).
+Ja. Met alle Notification Hubs-beheer bewerkingen wordt het Azure-activiteiten logboek bijgewerkt, waar het wordt weer gegeven in de [Azure Portal]. Het Azure-activiteiten logboek biedt inzicht in de bewerkingen die worden uitgevoerd op resources in uw abonnementen. Met het activiteiten logboek kunt u bepalen wat, wie en wanneer een schrijf bewerking (PUT, POST, DELETE) voor de resources in uw abonnement is uitgevoerd. U kunt ook de status van de bewerkingen en andere relevante eigenschappen begrijpen. Indien. het activiteiten logboek bevat geen lees bewerking (GET).
 
 ## <a name="monitoring-and-troubleshooting"></a>Bewaking en probleem oplossing
 
@@ -195,7 +199,7 @@ Azure Notification Hubs biedt verschillende functies voor het oplossen van probl
 
 ### <a name="what-telemetry-features-are-available"></a>Welke telemetrie-functies zijn beschikbaar?
 
-Met Azure Notification Hubs kunt u telemetrie-gegevens weer geven in de [Azure-portal]. Details van de metrische gegevens zijn beschikbaar op de pagina metrische gegevens van [Notification Hubs metrische gegevens] .
+Met Azure Notification Hubs kunt u telemetrie-gegevens weer geven in de [Azure Portal]. Details van de metrische gegevens zijn beschikbaar op de pagina metrische gegevens van [Notification Hubs metrische gegevens] .
 
 U kunt ook programmatisch toegang krijgen tot metrische gegevens. Raadpleeg voor meer informatie de volgende artikelen:
 
@@ -207,7 +211,7 @@ U kunt ook programmatisch toegang krijgen tot metrische gegevens. Raadpleeg voor
 > [!NOTE]
 > Geslaagde meldingen betekenen gewoon dat push meldingen zijn bezorgd bij de externe PNS (bijvoorbeeld APNS voor Apple of FCM voor Google). Het is de verantwoordelijkheid van de PNS om de meldingen te leveren aan doel apparaten. Normaal gesp roken worden door de PNS geen metrische gegevens over levering aan derden blootgesteld.  
 
-[Azure-portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [Notification Hubs prijzen]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [Notification Hubs REST-Api's]: https://msdn.microsoft.com/library/azure/dn530746.aspx
@@ -220,7 +224,7 @@ U kunt ook programmatisch toegang krijgen tot metrische gegevens. Raadpleeg voor
 [Notification Hubs probleem oplossing]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [Notification Hubs metrische gegevens]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Registraties exporteren/importeren]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
-[Azure-portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
 [Prijzen van app-services]: https://azure.microsoft.com/pricing/details/app-service/

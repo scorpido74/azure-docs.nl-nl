@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: a8deb7933bb19745bbe4c3b3a209c19c9cc712bd
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6daf9351e48603824aa6cec30adb4a6b82349784
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796312"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049044"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevens gateway voor Azure Logic Apps installeren
 
@@ -22,7 +22,7 @@ Voordat u [verbinding kunt maken met on-premises gegevens bronnen vanuit Azure L
 
 * [On-premises gegevens gateway van micro soft Power BI](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 * [On-premises gegevens gateway van micro soft power apps](https://powerapps.microsoft.com/tutorials/gateway-management/)
-* [Power on-premises gegevens gateway automatiseren](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Power on-premises gegevens gateway automatiseren](/power-automate/gateway-reference)
 * [Azure Analysis Services on-premises gegevens gateway](../analysis-services/analysis-services-gateway.md)
 
 In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downloaden, installeren en instellen, zodat u toegang hebt tot on-premises gegevens bronnen van Azure Logic Apps. U kunt ook meer te weten komen over [de manier waarop de gegevens gateway](#gateway-cloud-service) verderop in dit onderwerp werkt. Zie [Wat is een on-premises gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)? voor meer informatie over de gateway.

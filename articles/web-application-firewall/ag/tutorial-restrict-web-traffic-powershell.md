@@ -1,18 +1,19 @@
 ---
-title: Webverkeer beperken met een Web Application firewall-Azure PowerShell
+title: Webverkeer beperken met Power shell
+titleSuffix: Azure Web Application Firewall
 description: Meer informatie over het beperken van webverkeer met een Web Application firewall op een toepassings gateway met behulp van Azure PowerShell.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.topic: overview
-ms.openlocfilehash: b96065b6551f604cfd817a00e6a39cec37c71377
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.topic: conceptual
+ms.openlocfilehash: a57c5b155f7ab00f781236cfceea59a4277ff06a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502280"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046278"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Firewall voor webtoepassingen inschakelen met behulp van Azure PowerShell
 
@@ -124,7 +125,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>De standaard-listener en regel maken
 
-Een listener is vereist om de toepassingsgateway in te schakelen om het verkeer op de juiste manier te routeren naar de back-end-adrespools. In dit voorbeeld maakt u een eenvoudige listener die luistert naar verkeer op de basis-URL. 
+Een listener is vereist om de toepassingsgateway in te schakelen om het verkeer op de juiste manier te routeren naar de back-end-adrespools. In dit voorbeeld maakt u een basis-listener die luistert naar verkeer op de basis-URL. 
 
 Maak een listener met de naam *mydefaultListener* met behulp van [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) met de front-end-configuratie en de frontend-poort die u eerder hebt gemaakt. Er is een regel vereist, zodat de listener weet welke back-endpool moet worden gebruikt voor binnenkomend verkeer. Maak een basis regel met de naam *firewallregel1* met behulp van [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
@@ -174,7 +175,7 @@ $appgw = New-AzApplicationGateway `
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Een virtuele-machineschaalset maken
 
-In dit voorbeeld maakt u een virtuele-machineschaalset om de back-endpool in de toepassingsgateway van servers te voorzien. U wijst de schaalset toe aan de back-endpool wanneer u de IP-instellingen configureert.
+In dit voorbeeld maakt u een virtuele-machineschaalset om servers op te geven voor de back-endpool in de toepassingsgateway. U wijst de schaalset toe aan de back-endpool wanneer u de IP-instellingen configureert.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `

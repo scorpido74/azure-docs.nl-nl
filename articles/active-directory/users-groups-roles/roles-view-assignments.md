@@ -1,24 +1,24 @@
 ---
-title: Machtigingen voor beheerdersrol weer geven in het beheer centrum-Azure Active Directory | Microsoft Docs
+title: Aangepaste roltoewijzingen weer geven in de Azure AD-Portal | Microsoft Docs
 description: U kunt nu leden van een Azure AD-beheerdersrol weer geven en beheren in het Azure AD-beheer centrum.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbe3b0218b73649d40f27d17ee2c7de2853c6b7c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d989a515a1a3c1dc12ca357a3ab2126e78800ffa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025548"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024421"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Aangepaste roltoewijzingen in Azure Active Directory weer geven
 
@@ -31,7 +31,7 @@ In dit artikel wordt beschreven hoe u aangepaste rollen kunt weer geven die u he
 
 In deze procedure wordt beschreven hoe u toewijzingen van een rol met bereik voor de hele organisatie weergeeft.
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) with privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
 1. Selecteer **Azure Active Directory**, selecteer **rollen en beheerders**en selecteer vervolgens een rol om deze te openen en de eigenschappen ervan weer te geven.
 1. Selecteer **toewijzingen** om de toewijzingen voor de rol weer te geven.
 
@@ -104,7 +104,7 @@ HTTP/1.1 200 OK
 
 In deze sectie wordt beschreven hoe u toewijzingen van een rol met een bereik met één toepassing weergeeft. Deze functie is momenteel beschikbaar als openbare preview-versie.
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) with privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
 1. Selecteer **app-registraties**en selecteer vervolgens de app-registratie om de eigenschappen ervan weer te geven. Mogelijk moet u **alle toepassingen** selecteren om de volledige lijst van app-registraties in uw Azure AD-organisatie weer te geven.
 
     ![App-registraties maken of bewerken op de App-registraties pagina](./media/roles-create-custom/appreg-all-apps.png)

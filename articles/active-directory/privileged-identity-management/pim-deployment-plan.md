@@ -1,25 +1,25 @@
 ---
-title: Privileged Identity Management implementeren (PIM)-Azure Active Directory | Microsoft Docs
+title: Privileged Identity Management implementeren (PIM)-Azure AD | Microsoft Docs
 description: Hierin wordt beschreven hoe u de implementatie van Azure AD Privileged Identity Management (PIM) plant.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/08/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1263d494ff26ff6ab87d39bc864271f14457b3
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: eef096322c8a8cfbf1618447529d46f6fbfd13b1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756269"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021854"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management implementeren (PIM)
 
@@ -44,7 +44,7 @@ Azure AD Privileged Identity Management helpt u bij het beheren van geprivilegie
 
 **Kosten verlagen** : kosten verlagen door inefficiëntie, menselijke fout en beveiligings problemen te elimineren door privileged Identity Management correct te implementeren. Het netto resultaat is een vermindering van Cyber-misdrijven die zijn gekoppeld aan bevoorrechte identiteiten, die kostbaar en moeilijk te herstellen zijn. Privileged Identity Management helpt uw organisatie ook de kosten te verlagen die zijn gekoppeld aan de controle van toegangs gegevens wanneer het gaat om te voldoen aan de regels en standaarden.
 
-Zie [Wat is Azure AD privileged Identity Management?](pim-configure.md)voor meer informatie.
+Zie voor meer informatie, [wat is Azure AD Privileged Identity Management?](pim-configure.md).
 
 ### <a name="licensing-requirements"></a>Licentie vereisten
 
@@ -75,7 +75,7 @@ Zie [terminologie](pim-configure.md#terminology)voor meer informatie.
 1. Zodra de gebruiker zijn of haar rol heeft geactiveerd, krijgt deze de rol voor een vooraf geconfigureerde tijds periode.
 1. Beheerders kunnen een geschiedenis van alle Privileged Identity Management activiteiten in het audit logboek weer geven. Ze kunnen hun Azure AD-organisaties ook verder beveiligen en voldoen aan de naleving met behulp van Privileged Identity Management-functies, zoals toegangs beoordelingen en waarschuwingen.
 
-Zie [Wat is Azure AD privileged Identity Management?](pim-configure.md)voor meer informatie.
+Zie voor meer informatie, [wat is Azure AD Privileged Identity Management?](pim-configure.md).
 
 ### <a name="roles-that-can-be-managed-by-privileged-identity-management"></a>Rollen die kunnen worden beheerd door Privileged Identity Management
 
@@ -99,7 +99,7 @@ De volgende sectie helpt u bij het identificeren van alle belanghebbenden die be
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Belanghebbenden: Privileged Identity Management voor Azure AD-rollen
 
-| Naam | Rol | Bewerking |
+| Naam | Rol | Actie |
 | --- | --- | --- |
 | Naam en e-mail adres | **Identiteits architect of Azure Global-beheerder**<br/>Een vertegenwoordiger van het team voor identiteits beheer dat verantwoordelijk is voor het bepalen van de manier waarop deze wijziging wordt afgestemd op de infra structuur voor identiteits beheer in uw organisatie. | SO/R/I |
 | Naam en e-mail adres | **Eigenaar van service/regel beheer**<br/>Een vertegenwoordiger van de IT-eigen aars van een service of een groep services. Ze zijn belang rijk voor het nemen van beslissingen en het helpen bij het inrollen van Privileged Identity Management voor hun team. | SO/R/I |
@@ -109,7 +109,7 @@ De volgende sectie helpt u bij het identificeren van alle belanghebbenden die be
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Belanghebbenden: Privileged Identity Management voor Azure-resource rollen
 
-| Naam | Rol | Bewerking |
+| Naam | Rol | Actie |
 | --- | --- | --- |
 | Naam en e-mail adres | **Eigenaar van abonnement/resource**<br/>Een vertegenwoordiger van de IT-eigen aars van elk abonnement of resource dat u wilt implementeren Privileged Identity Management voor | SO/R/I |
 | Naam en e-mail adres | **Eigenaar van beveiliging**<br/>Een vertegenwoordiger van het beveiligings team dat zich kan afmelden dat het plan voldoet aan de beveiligings vereisten van uw organisatie. | SO/R |
@@ -189,14 +189,14 @@ Het is belang rijk om de beveiliging van Azure AD-rollen met het grootste aantal
 1. Skype voor bedrijven-beheerder
 
 > [!TIP]
-> : heavy_check_mark: **micro soft raadt** u aan om al uw globale beheerders en beveiligings beheerders te beheren met behulp van privileged Identity Management als een eerste stap wanneer ze het meest schadelijk kunnen zijn voor het geval dat er is aangetast.
+> : heavy_check_mark: **micro soft raadt** u aan om al uw globale beheerders en beveiligings beheerders te beheren door gebruik te maken van privileged Identity Management als een eerste stap, aangezien ze het meest schadelijk kunnen zijn voor het geval dat er is aangetast.
 
 Het is belang rijk om te bepalen welke gegevens en machtigingen het meest gevoelig zijn voor uw organisatie. Een voor beeld hiervan is het mogelijk dat sommige organisaties hun Power BI beheerdersrol of hun rol team beheerder met Privileged Identity Management willen beveiligen, omdat ze de mogelijkheid hebben om toegang te krijgen tot gegevens en/of kern werk stromen te wijzigen.
 
 Als er rollen zijn waaraan gast gebruikers zijn toegewezen, zijn ze met name kwetsbaar voor aanvallen.
 
 > [!TIP]
-> : heavy_check_mark: **micro soft raadt** u aan alle rollen met gast gebruikers te beheren met privileged Identity Management om het risico te verminderen dat is gekoppeld aan gast gebruikers accounts.
+> : heavy_check_mark: **micro soft raadt** u aan om alle rollen met gast gebruikers te beheren met privileged Identity Management om het risico te verminderen dat is gekoppeld aan gast gebruikers accounts.
 
 Lees functies zoals de Directory Reader, Message Center Reader en Security Reader worden soms minder belang rijk vergeleken met andere rollen, aangezien ze geen schrijf machtiging hebben. Er zijn echter ook enkele klanten die deze rollen beschermen, omdat aanvallers die toegang tot deze accounts hebben verkregen, mogelijk gevoelige gegevens kunnen lezen, zoals persoonlijk identificeer bare informatie (PII). Houd rekening met het volgende wanneer u wilt bepalen of lezer-rollen in uw organisatie moeten worden beheerd met Privileged Identity Management.
 
@@ -210,21 +210,21 @@ Wanneer u besluit welke roltoewijzingen moeten worden beheerd met Privileged Ide
 Als u een globale beheerder bent die problemen ondervindt bij het bepalen welke abonnementen/resources het belangrijkst zijn, moet u contact opnemen met de eigen aren van het abonnement in uw organisatie voor het verzamelen van een lijst met resources die worden beheerd door elk abonnement. Vervolgens moet u samen met de eigen aars van het abonnement de resources groeperen op basis van het Ernst niveau, in het geval dat ze zijn aangetast (laag, gemiddeld, hoog). U moet de prioriteit van resources beheren met Privileged Identity Management op basis van dit niveau.
 
 > [!TIP]
-> : heavy_check_mark: **micro soft raadt** u aan om te werken met abonnements-en resource-eigen aren van essentiële services om privileged Identity Management-werk stroom in te stellen voor alle rollen binnen gevoelige abonnementen/resources.
+> : heavy_check_mark: **micro soft raadt** u aan om te werken met abonnements-en resource-eigen aren van essentiële services om privileged Identity Management werk stroom in te stellen voor alle rollen binnen gevoelige abonnementen/resources.
 
 Privileged Identity Management voor Azure-resources ondersteunt tijdgebonden service accounts. U dient service accounts precies hetzelfde te behandelen als hoe u een normaal gebruikers account zou behandelen.
 
 Voor abonnementen/resources die niet zo belang rijk zijn, hoeft u Privileged Identity Management voor alle rollen niet in te stellen. U moet echter wel de beheerders rollen eigenaar en gebruikers toegang beveiligen met Privileged Identity Management.
 
 > [!TIP]
-> : heavy_check_mark: **micro soft raadt** u aan om eigenaars rollen en beheerders rollen van alle abonnementen/resources met behulp van privileged Identity Management te beheren.
+> : heavy_check_mark: **micro soft raadt** u aan om eigenaar-rollen en beheerders rollen van alle abonnementen/resources te beheren met behulp van privileged Identity Management.
 
 ### <a name="decide-which-role-assignments-should-be-permanent-or-eligible"></a>Beslissen welke roltoewijzingen permanent of in aanmerking komen
 
 Wanneer u de lijst met rollen die door Privileged Identity Management moeten worden beheerd, hebt vastgesteld, moet u bepalen welke gebruikers de in aanmerking komende rol en de permanent actieve rol moeten krijgen. Permanente actieve rollen zijn de normale rollen die worden toegewezen via Azure Active Directory en Azure-resources, terwijl in aanmerking komende rollen alleen kunnen worden toegewezen in Privileged Identity Management.
 
 > [!TIP]
-> : heavy_check_mark: **micro soft raadt** u aan om permanent actieve toewijzingen te hebben voor zowel Azure AD-rollen als Azure-resource rollen, met uitzonde ring van de aanbevolen twee verhouds [accounts voor nood gevallen](../users-groups-roles/directory-emergency-access.md), die de permanente Rol van globale beheerder.
+> : heavy_check_mark: **micro soft raadt** u aan om permanent actieve toewijzingen te hebben voor zowel Azure AD-rollen als Azure-resource rollen, met uitzonde ring van de aanbevolen twee verhouds [toegangs accounts](../users-groups-roles/directory-emergency-access.md), die de permanente globale beheerdersrol moeten hebben.
 
 Hoewel we de permanente beheerder aanraden, is het soms moeilijk voor organisaties om dit meteen te bereiken. Hier volgen enkele dingen die u moet overwegen bij het nemen van deze beslissing:
 
@@ -243,16 +243,16 @@ Voordat u uw Privileged Identity Management-oplossing implementeert, is het vers
 | Rol | MFA vereisen | Melding | Incident ticket | Goed keuring vereisen | Fiatteur | Activerings duur | Permanente beheerder |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Globale beheerder | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere globale beheerders | 1 uur | Accounts voor toegang in nood gevallen |
-| Exchange-beheerder | :heavy_check_mark: | :heavy_check_mark: | BxDxH | BxDxH | Geen | 2 uur | Geen |
-| Helpdesk beheerder | BxDxH | BxDxH | :heavy_check_mark: | BxDxH | Geen | 8 uur | Geen |
+| Exchange-beheerder | :heavy_check_mark: | :heavy_check_mark: | BxDxH | BxDxH | None | 2 uur | None |
+| Helpdesk beheerder | BxDxH | BxDxH | :heavy_check_mark: | BxDxH | None | 8 uur | None |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Privileged Identity Management instellingen voor Azure-resource rollen
 
 | Rol | MFA vereisen | Melding | Goed keuring vereisen | Fiatteur | Activerings duur | Actieve beheerder | Actieve verval datum | Verval datum in aanmerking komend |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Eigenaar van kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere eigen aars van het abonnement | 1 uur | Geen | n.v.t. | 3 maand |
-| Gebruikers toegangs beheerder van minder kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | BxDxH | Geen | 1 uur | Geen | n.v.t. | 3 maand |
-| Inzender voor virtuele machines | BxDxH | :heavy_check_mark: | BxDxH | Geen | 3 uur | Geen | n.v.t. | 6 maanden |
+| Eigenaar van kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere eigen aars van het abonnement | 1 uur | None | N.v.t. | 3 maand |
+| Gebruikers toegangs beheerder van minder kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | BxDxH | None | 1 uur | None | N.v.t. | 3 maand |
+| Inzender voor virtuele machines | BxDxH | :heavy_check_mark: | BxDxH | None | 3 uur | None | N.v.t. | 6 maanden |
 
 In de volgende tabel worden de instellingen beschreven.
 
@@ -261,7 +261,7 @@ In de volgende tabel worden de instellingen beschreven.
 | Rol | De naam van de rol waarvoor u de instellingen wilt definiëren. |
 | MFA vereisen | Of de in aanmerking komende gebruiker MFA moet uitvoeren voordat de rol wordt geactiveerd.<br/><br/> : heavy_check_mark: **micro soft raadt** u aan MFA af te dwingen voor alle beheerders rollen, met name als de rollen gast gebruikers hebben. |
 | Melding | Als deze eigenschap is ingesteld op True, wordt een e-mail melding door de beheerder van de bevoegde rol en de beveiligings beheerder in de organisatie ontvangen wanneer een in aanmerking komende gebruiker de rol activeert.<br/><br/>**Opmerking:** Sommige organisaties hebben geen e-mail adres dat is gekoppeld aan hun beheerders accounts. Als u deze e-mail meldingen wilt ontvangen, moet u een alternatief e-mail adres instellen, zodat beheerders deze e-mail berichten ontvangen. |
-| Incident ticket | Hiermee wordt aangegeven of de in aanmerking komende gebruiker een incident ticket nummer moet vastleggen wanneer hun rol wordt geactiveerd. Deze instelling helpt een organisatie bij het identificeren van elke activering met een intern incident nummer om ongewenste activeringen te beperken.<br/><br/> : heavy_check_mark: **micro soft raadt** aan om te profiteren van de ticket nummers van een incident om privileged Identity Management te koppelen aan uw interne systeem. Dit is met name handig voor goed keurders die context nodig hebben voor de activering. |
+| Incident ticket | Hiermee wordt aangegeven of de in aanmerking komende gebruiker een incident ticket nummer moet vastleggen wanneer hun rol wordt geactiveerd. Deze instelling helpt een organisatie bij het identificeren van elke activering met een intern incident nummer om ongewenste activeringen te beperken.<br/><br/> : heavy_check_mark: **micro soft raadt** u aan om te profiteren van de ticket nummers van een incident om privileged Identity Management te koppelen aan uw interne systeem. Dit is met name handig voor goed keurders die context nodig hebben voor de activering. |
 | Goed keuring vereisen | Hiermee wordt aangegeven of de in aanmerking komende gebruiker goed keuring moet krijgen om de rol te activeren.<br/><br/> : heavy_check_mark: **micro soft raadt** u aan om goed keuring in te stellen voor rollen met de meeste machtigingen. Op basis van gebruiks patronen van alle Privileged Identity Management klanten, globale beheerder, gebruikers beheerder, Exchange-beheerder, beveiligings beheerder en wachtwoord beheerder zijn de meest voorkomende rollen met goedkeurings instellingen. |
 | Fiatteur | Als goed keuring is vereist voor het activeren van de in aanmerking komende rol, vermeldt u de personen die de aanvraag moeten goed keuren. Privileged Identity Management stelt de fiatteur standaard in op alle gebruikers die een bevoegde rol beheerder zijn, ongeacht of ze permanent of in aanmerking komen.<br/><br/>**Opmerking:** Als een gebruiker in aanmerking komt voor een Azure AD-rol en een goed keurder van de rol, kunnen ze zichzelf niet goed keuren.<br/><br/> : heavy_check_mark: **micro soft adviseert** dat u goed keurders kiest voor degenen die het belangrijkst zijn voor de specifieke rol en de frequente gebruikers in plaats van een globale beheerder. |
 | Activerings duur | De tijds duur dat een gebruiker wordt geactiveerd in de rol voordat deze verloopt. |
@@ -279,14 +279,14 @@ De kern van de juiste planning is de basis waarop u een toepassing kunt implemen
 Gebruik deze sectie om een set gebruikers en of groepen gebruikers te identificeren om de implementatie te valideren. Op basis van de instellingen die u hebt geselecteerd in het gedeelte planning, identificeert u de gebruikers die u wilt testen voor elke rol.
 
 > [!TIP]
-> : heavy_check_mark: **micro soft raadt** u aan om service-eigen aren van elke Azure AD-rol de test gebruikers te maken, zodat ze vertrouwd kunnen raken met het proces en een interne advocator moeten worden voor de implementatie.
+> : heavy_check_mark: **micro soft raadt** u aan om service-eigen aren van elke Azure AD-rol de test gebruikers te maken, zodat ze vertrouwd kunnen raken met het proces en een interne advocator worden voor de implementatie.
 
 In deze tabel identificeert u de test gebruikers waarmee wordt gecontroleerd of de instellingen voor elke rol werken.
 
 | Rolnaam | Gebruikers testen |
 | --- | --- |
-| &lt;Role naam &gt; | &lt;Users om de rol te testen &gt; |
-| &lt;Role naam &gt; | &lt;Users om de rol te testen &gt; |
+| &lt;rolnaam&gt; | &lt;gebruikers om de rol te testen&gt; |
+| &lt;rolnaam&gt; | &lt;gebruikers om de rol te testen&gt; |
 
 ### <a name="test-implementation"></a>Implementatie testen
 
@@ -338,7 +338,7 @@ Wanneer u Privileged Identity Management implementeert, worden er extra stappen 
 - Contact gegevens of koppeling naar Help Desk voor problemen met PIM
 
 > [!TIP]
-> : heavy_check_mark: **micro soft raadt** u aan om de tijd in te stellen met uw Help Desk/ondersteunings team om de werk stroom van de privileged Identity Management te door lopen (als uw organisatie een intern it-ondersteunings team heeft). Geef ze de juiste documenten en uw contact gegevens.
+> : heavy_check_mark: **micro soft raadt** u aan om de tijd in te stellen met uw Help Desk/ondersteunings team om deze via de privileged Identity Management werk stroom te door lopen (als uw organisatie een intern it-ondersteunings team heeft). Geef ze de juiste documenten en uw contact gegevens.
 
 ### <a name="move-to-production"></a>Verplaatsen naar productie
 
@@ -350,7 +350,7 @@ Als Privileged Identity Management niet naar wens werkt in de productie omgeving
 
 #### <a name="azure-ad-roles"></a>Azure AD-rollen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 1. Open **Azure AD privileged Identity Management**.
 1. Klik op **Azure AD-rollen** en klik vervolgens op **rollen**.
 1. Voor elke rol die u hebt geconfigureerd, klikt u op het weglatings teken ( **...** ) voor alle gebruikers met een in aanmerking komende toewijzing.
@@ -358,7 +358,7 @@ Als Privileged Identity Management niet naar wens werkt in de productie omgeving
 
 #### <a name="azure-resource-roles"></a>Azure-resourcerollen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 1. Open **Azure AD privileged Identity Management**.
 1. Klik op **Azure-resources** en klik vervolgens op een abonnement of resource die u wilt terugzetten.
 1. Klik op **rollen**.
@@ -373,7 +373,7 @@ Het implementeren van Privileged Identity Management in productie is een belang 
 
 Gebruik de ingebouwde waarschuwings functionaliteit van Privileged Identity Management om uw Tenant beter te beveiligen. Zie [Security Alerts](pim-how-to-configure-security-alerts.md#security-alerts)(Engelstalig) voor meer informatie. Deze waarschuwingen omvatten: beheerders die geen geprivilegieerde rollen gebruiken, de rollen worden toegewezen buiten Privileged Identity Management, worden de rollen te vaak geactiveerd. Als u uw organisatie volledig wilt beveiligen, moet u de lijst met waarschuwingen regel matig door lopen en de problemen oplossen. U kunt uw waarschuwingen op de volgende manier weer geven en herstellen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 1. Open **Azure AD privileged Identity Management**.
 1. Klik op **Azure AD-rollen** en klik vervolgens op **waarschuwingen**.
 

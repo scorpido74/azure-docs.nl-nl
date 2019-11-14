@@ -1,11 +1,11 @@
 ---
 title: Een Internet gerichte Load Balancer implementeren met IPv6-Azure-sjabloon
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: IPv6-ondersteuning implementeren voor Azure Load Balancer en virtuele machines met taak verdeling.
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6, Azure load balancer, dual stack, openbaar IP, systeem eigen IPv6, mobiel, IOT
+keywords: IPv6-, azure-load balancer, dual-stack, openbaar IP-adres, systeemeigen IPv6-, mobiele, iot
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: bfecb2a57cf5f086b6c9f99c50b857c8c1183e3e
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: e5cfc980387b63701fb3ff36e7fa8ac43800ecce
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025590"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048450"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Een Internet gerichte Load Balancer-oplossing met IPv6 implementeren met behulp van een sjabloon
 
@@ -29,12 +29,12 @@ ms.locfileid: "73025590"
 > * [Sjabloon](load-balancer-ipv6-internet-template.md)
 
 
->[! Opmerking: wijziging in Aanbevolen procedures voor IPv6] in dit artikel wordt een inleidende IPv6-functie beschreven waarmee Basic load balancers zowel IPv4-als IPv6-connectiviteit kan bieden.  Uitgebreide IPv6-connectiviteit is nu beschikbaar met [IPv6 voor Azure VNETs](../virtual-network/ipv6-overview.md) , die IPv6-connectiviteit integreert met uw virtuele netwerken en die belang rijke functies bevat, zoals regels voor IPv6-netwerk beveiligings groepen, door IPv6 door de gebruiker gedefinieerde route ring, IPv6 Basic en Standaard taak verdeling en meer.  IPv6 voor Azure VNETs is de aanbevolen best practice voor IPv6-toepassingen in Azure. 
+>[! Opmerking: wijziging in Aanbevolen procedures voor IPv6] in dit artikel wordt een inleidende IPv6-functie beschreven waarmee Basic load balancers zowel IPv4-als IPv6-connectiviteit kan bieden.  Uitgebreide IPv6-connectiviteit is nu beschikbaar met [IPv6 voor Azure VNETs](../virtual-network/ipv6-overview.md) , die IPv6-connectiviteit integreert met uw virtuele netwerken en die belang rijke functies bevat, zoals regels voor IPv6-netwerk beveiligings groepen, door IPv6 door de gebruiker gedefinieerde route ring, IPv6-basis en standaard taak verdeling en meer.  IPv6 voor Azure VNETs is de aanbevolen best practice voor IPv6-toepassingen in Azure. 
 >Zie [IPv6 voor Azure VNET-sjabloon implementatie](../virtual-network/ipv6-configure-standard-load-balancer-template-json.md)
 
 Azure Load Balancer is een Layer-4 (TCP, UDP) load balancer. De load balancer biedt hoge beschikbaarheid bij het verdelen van inkomend verkeer over gezonde service-exemplaren in cloudservices of virtuele machines in een load balancer-set. Azure Load Balancer kan deze services ook toepassen op meerdere poorten, meerdere IP-adressen of allebei.
 
-## <a name="example-deployment-scenario"></a>Voor beeld van implementatie scenario
+## <a name="example-deployment-scenario"></a>Voorbeeldscenario voor implementatie
 
 In het volgende diagram ziet u de taakverdelings oplossing die wordt geïmplementeerd met behulp van de voorbeeld sjabloon die in dit artikel wordt beschreven.
 

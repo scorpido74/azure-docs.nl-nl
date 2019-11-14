@@ -1,10 +1,11 @@
 ---
-title: Beheerders accounts voor nood toegang beheren-Azure Active Directory | Microsoft Docs
+title: Beheerders accounts voor nood toegang beheren-Azure AD | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u accounts voor toegang tot nood gevallen kunt gebruiken om te voor komen dat uw Azure Active Directory-organisatie (Azure AD) per ongeluk wordt vergrendeld.
 services: active-directory
 author: markwahl-msft
+manager: daveba
 ms.author: curtand
-ms.date: 09/09/2019
+ms.date: 11/08/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -12,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04016df86a9bed06f2cbb79d459b10486a9b7d67
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772437"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028131"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Accounts voor nood toegang beheren in azure AD
 
@@ -38,7 +39,7 @@ Een organisatie moet mogelijk een account voor nood toegang gebruiken in de volg
 
 ## <a name="create-emergency-access-accounts"></a>Nood toegangs accounts maken
 
-Maak twee of meer nood toegangs accounts. Deze accounts moeten alleen Cloud accounts zijn die het \*onmicrosoft.com-domein gebruiken en die niet federatief of gesynchroniseerd zijn vanuit een on-premises omgeving.
+Maak twee of meer nood toegangs accounts. Deze accounts moeten alleen Cloud accounts zijn die het \*. onmicrosoft.com-domein gebruiken en die niet federatief of gesynchroniseerd zijn vanuit een on-premises omgeving.
 
 Bij het configureren van deze accounts moet aan de volgende vereisten worden voldaan:
 
@@ -51,7 +52,7 @@ Bij het configureren van deze accounts moet aan de volgende vereisten worden vol
 
 Om het risico te verkleinen dat een aanval wordt veroorzaakt door een wacht woord, raadt Azure AD u aan om multi-factor Authentication voor alle afzonderlijke gebruikers te vereisen. Deze groep bevat beheerders en alle andere (bijvoorbeeld financiële functionarissen) waarvan het aangetaste account een belang rijke invloed zou hebben.
 
-Ten minste één van uw accounts voor toegang in nood gevallen moet echter niet hetzelfde multi-factor Authentication-mechanisme hebben als uw andere niet-nood-accounts. Dit geldt ook voor multi-factor Authentication-oplossingen van derden. Als u een beleid voor voorwaardelijke toegang hebt om [multi-factor Authentication te vereisen voor elke beheerder](../authentication/howto-mfa-userstates.md) van Azure AD en andere SaaS-apps (Software as a Service), moet u nood toegangs accounts uitsluiten van deze vereiste en configureren in plaats daarvan een ander mechanisme. Bovendien moet u ervoor zorgen dat de accounts geen multi-factor Authentication-beleid per gebruiker hebben.
+Ten minste één van uw accounts voor toegang in nood gevallen moet echter niet hetzelfde multi-factor Authentication-mechanisme hebben als uw andere niet-nood-accounts. Dit geldt ook voor multi-factor Authentication-oplossingen van derden. Als u een beleid voor voorwaardelijke toegang hebt om [multi-factor Authentication te vereisen voor elke beheerder](../authentication/howto-mfa-userstates.md) van Azure AD en andere SaaS-apps (Software as a Service), moet u nood toegangs accounts uit deze vereiste uitsluiten en in plaats daarvan een ander mechanisme configureren. Bovendien moet u ervoor zorgen dat de accounts geen multi-factor Authentication-beleid per gebruiker hebben.
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>Ten minste één account uitsluiten van beleid voor voorwaardelijke toegang
 
@@ -100,8 +101,8 @@ Organisaties moeten de activiteiten voor aanmelding en controle logboeken van de
 
     1. Onder **waarschuwings logica**voert u het volgende in:
 
-        - Op basis van: Aantal resultaten
-        - Operator: Groter dan
+        - Op basis van: aantal resultaten
+        - Operator: groter dan
         - Drempel waarde: 0
 
     1. Onder **geëvalueerd op basis van**selecteert u de **periode (in minuten)** voor hoe lang de query moet worden uitgevoerd en de **frequentie (in minuten)** voor hoe vaak de query moet worden uitgevoerd. De frequentie moet kleiner dan of gelijk aan de periode zijn.

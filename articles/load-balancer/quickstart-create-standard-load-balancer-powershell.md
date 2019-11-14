@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Een Standard Load Balancer maken - Azure PowerShell'
-titlesuffix: Azure Load Balancer
-description: In deze snelstart vindt u meer informatie over het maken van een Standard Load Balancer met behulp PowerShell
+title: 'Snelstartgids: een Standard Load Balancer-Azure PowerShell maken'
+titleSuffix: Azure Load Balancer
+description: In deze Quick start ziet u hoe u een Standard Load Balancer maakt met behulp van Azure PowerShell
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 0e00728e091a7d7d96cb624135519b17524d2227
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b387df5049fff2cb17e8d0758f1cf5fd8f0d0853
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274113"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049114"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Quickstart: Een Standard Load Balancer maken met Azure PowerShell
+# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Snelstartgids: een Standard Load Balancer maken met behulp van Azure PowerShell
 
 In deze snelstart vindt u meer informatie over het maken van een Standard Load Balancer met behulp Azure PowerShell. Als u de load balancer wilt testen, implementeert u drie virtuele machines (Vm's) met Windows Server en taak verdeling van een web-app tussen de Vm's. Zie [Wat is Standard Load Balancer](load-balancer-standard-overview.md) voor meer informatie over Standard Load Balancer.
 
@@ -196,7 +196,7 @@ $RdpPublicIP_3 = New-AzPublicIpAddress `
 
 ```
 ### <a name="create-network-security-group"></a>Netwerkbeveiligingsgroep maken
-Maak een netwerkbeveiligingsgroep om binnenkomende verbindingen met uw virtuele netwerk te definiëren.
+Maak een netwerkbeveiligingsgroep om de binnenkomende verbindingen met uw virtuele netwerk te definiëren.
 
 #### <a name="create-a-network-security-group-rule-for-port-3389"></a>Een netwerkbeveiligingsgroepsregel maken voor poort 3389
 Maak een netwerkbeveiligingsgroepsregel die RDP-verbindingen via poort 3389 toestaat met [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
@@ -298,7 +298,7 @@ Het duurt enkele minuten om de drie Vm's te maken en te configureren.
 
 Installeer IIS als volgt met een aangepaste webpagina op beide back-end-VM's:
 
-1. Haal de open bare IP-adressen van de drie `Get-AzPublicIPAddress`vm's op met behulp van.
+1. Haal de open bare IP-adressen van de drie Vm's op met behulp van `Get-AzPublicIPAddress`.
 
    ```azurepowershell
      $vm1_rdp_ip = (Get-AzPublicIPAddress -ResourceGroupName $rgName -Name "RdpPublicIP_1").IpAddress

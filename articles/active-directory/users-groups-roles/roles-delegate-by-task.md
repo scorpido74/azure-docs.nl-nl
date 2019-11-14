@@ -1,11 +1,10 @@
 ---
-title: Rollen met beperkte bevoegdheden delegeren per beheerder taak-Azure Active Directory | Microsoft Docs
+title: Rollen delegeren per beheer taak-Azure Active Directory | Microsoft Docs
 description: Rollen voor het delegeren van identiteits taken in Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
@@ -15,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5933fdd9932bd8c13ab0f231d677ce06112662ed
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: b8ccd98553b06ef3fcd2241c8223889c0a86e331
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169761"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024658"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Beheerders rollen per beheer taak in Azure Active Directory
 
@@ -39,7 +38,7 @@ Toepassingsproxy uitschakelen | Toepassings beheerder |
 Connector service downloaden | Toepassings beheerder | 
 Alle configuratie lezen | Toepassings beheerder | 
 
-## <a name="b2c"></a>Business to consumer
+## <a name="b2c"></a>B2C
 
 Taak | Minst geprivilegieerde rol | Aanvullende rollen
 ---- | --------------------- | ----------------
@@ -73,7 +72,7 @@ Taak | Minst geprivilegieerde rol | Aanvullende rollen
 ---- | --------------------- | ----------------
 Eigenschappen van het bedrijf configureren | Globale beheerder | 
 
-## <a name="connect"></a>Connect
+## <a name="connect"></a>Verbinding maken
 
 Taak | Minst geprivilegieerde rol | Aanvullende rollen
 ---- | --------------------- | ----------------
@@ -171,13 +170,13 @@ Eigenschappen van groep bijwerken | Groeps eigenaar ([Zie documentatie](https://
 
 Taak | Minst geprivilegieerde rol | Aanvullende rollen
 ---- | --------------------- | ----------------
-Waarschuwings meldingen configureren| Beveiligings beheerder | 
-MFA-beleid configureren en in-of uitschakelen| Beveiligings beheerder | 
-Beleid voor aanmeldings Risico's configureren en in-of uitschakelen| Beveiligings beheerder | 
-Beleid voor gebruikers Risico's configureren en in-of uitschakelen | Beveiligings beheerder | 
-Wekelijkse samen vattingen configureren | Beveiligings beheerder| 
-Alle risico detecties verwijderen | Beveiligings beheerder | 
-Probleem oplossen of negeren | Beveiligings beheerder | 
+Waarschuwings meldingen configureren| Beveiligingsbeheerder | 
+MFA-beleid configureren en in-of uitschakelen| Beveiligingsbeheerder | 
+Beleid voor aanmeldings Risico's configureren en in-of uitschakelen| Beveiligingsbeheerder | 
+Beleid voor gebruikers Risico's configureren en in-of uitschakelen | Beveiligingsbeheerder | 
+Wekelijkse samen vattingen configureren | Beveiligingsbeheerder| 
+Alle risico detecties verwijderen | Beveiligingsbeheerder | 
+Probleem oplossen of negeren | Beveiligingsbeheerder | 
 Alle configuratie lezen | Beveiligings lezer | 
 Alle risico detecties lezen | Beveiligings lezer | 
 Lees lekken | Beveiligings lezer | 
@@ -251,7 +250,7 @@ Melding configureren | Globale beheerder |
 On-premises integratie configureren | Globale beheerder |
 Eigenschappen voor het opnieuw instellen van wacht woorden configureren | Gebruikers beheerder | Globale beheerder
 Registratie configureren | Globale beheerder |
-Alle configuratie lezen | Beveiligings beheerder | Gebruikers beheerder |
+Alle configuratie lezen | Beveiligingsbeheerder | Gebruikers beheerder |
 
 ## <a name="privileged-identity-management"></a>Privileged identity management
 
@@ -316,7 +315,7 @@ Risk ante aanmeldingen lezen | Beveiligings lezer |
 
 Taak | Minst geprivilegieerde rol | Aanvullende rollen
 ---- | --------------------- | ----------------
-Alle gebeurtenissen sluiten | Beveiligings beheerder | 
+Alle gebeurtenissen sluiten | Beveiligingsbeheerder | 
 Alle configuratie lezen | Beveiligings lezer | 
 Gebruikers lezen die zijn gemarkeerd voor risico | Beveiligings lezer | 
 

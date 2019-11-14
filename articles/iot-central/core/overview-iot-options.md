@@ -9,18 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: f57d36f6f24aab44d13ea07d8706bf40b7dcf552
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2ec6e1d00d331a7bb8dd7182dd4b0c91dd3d25a7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958159"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049097"
 ---
 # <a name="compare-azure-iot-central-and-azure-iot-options"></a>Opties van Azure IoT Central vergelijken met die van Azure IoT
 
 Microsoft Azure IoT Central en Azure IoT bieden verschillende opties voor het bouwen van een IoT-oplossing. Deze opties zijn geschikt voor verschillende klantvereisten:
 
-* [Azure IoT Central](overview-iot-central.md) is een SaaS-oplossing (Software as a Service) die gebruikmaakt van een op modellen gebaseerde benadering waarmee u hoogwaardige IoT-oplossingen kunt bouwen zonder kennis van het ontwikkelen van cloudoplossingen.
+* [Azure IOT Central](overview-iot-central.md) is een IOT-toepassings platform dat gebruikmaakt van een op modellen gebaseerde benadering waarmee u IOT-oplossingen op bedrijfs niveau kunt bouwen zonder dat er expertise is voor het ontwikkelen van cloud oplossingen.
 
 * [Azure IoT-oplossingsversnellers](https://docs.microsoft.com/azure/iot-accelerators/) is een verzameling geavanceerde [oplossingsversnellers](../../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md), gebouwd op Azure PaaS (Platform as a Service), waarmee u sneller aangepaste IoT-oplossingen kunt ontwikkelen.
 
@@ -39,10 +39,10 @@ Het kiezen van uw Azure IoT-product is een belangrijk onderdeel van het plannen 
 
 De volgende tabel geeft een overzicht van de belangrijkste verschillen tussen IoT-oplossingsversnellers en Azure IoT Central, om u te helpen de juiste oplossing voor uw vereisten te kiezen:
 
-|     | Azure IoT Central | Accelerators voor Azure IoT-oplossing |
+|     | Azure IoT Central | Azure IoT-oplossingsversnellers |
 | --- | ----------- | --------- |
 | Primair gebruik                      | Kortere time-to-market voor eenvoudige IoT-oplossingen waarvoor geen uitgebreide serviceaanpassing is vereist.                                                    | Snellere ontwikkeling van een aangepaste IoT-oplossing die maximale flexibiliteit nodig heeft.                                                                                                                             |
-| Toegang tot onderliggende PaaS-services | SaaS. Omdat het een volledig beheerde oplossing is, worden de onderliggende services niet weergegeven.                                                                                            | U hebt toegang tot de onderliggende Azure-services om deze te beheren of indien nodig te vervangen.                                                                                                                    |
+| Toegang tot onderliggende PaaS-services | Omdat het een volledig beheerde oplossing is, worden de onderliggende services niet weergegeven.                                                                                            | U hebt toegang tot de onderliggende Azure-services om deze te beheren of indien nodig te vervangen.                                                                                                                    |
 | Flexibiliteit                        | Gemiddeld. U kunt de ingebouwde browsergebaseerde gebruikerservaring gebruiken om het oplossingsmodel en aspecten van de gebruikersinterface aan te passen. De infrastructuur kan niet worden aangepast, omdat de verschillende onderdelen niet worden weergegeven. | Hoog. De code voor de microservices is open-source en u kunt deze op elke gewenste manier wijzigen. Daarnaast kunt u de implementatie-infrastructuur aanpassen.                                               |
 | Kennisniveau                        | Laag. U heeft modelleerervaring nodig om de oplossing aan te passen. Ervaring met codering is niet vereist.                                                                          | Gemiddeld-hoog. U heeft ervaring met Java of .NET nodig om de back-end van de oplossing aan te passen. U heeft ervaring met JavaScript nodig om de visualisatie aan te passen.                                                                       |
 | Benodigde ervaring             | Toepassingssjablonen en apparaatsjablonen bieden vooraf samengestelde modellen. Kan in enkele minuten worden geïmplementeerd.                                                                                                  | Vooraf geconfigureerde oplossingen implementeren algemene IoT-scenario's. Kan in enkele minuten worden geïmplementeerd.                                                                                                                            |

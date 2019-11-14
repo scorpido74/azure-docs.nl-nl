@@ -1,26 +1,25 @@
 ---
-title: Machtigingen voor het maken en beheren van de toepassings beheerder delegeren-Azure Active Directory | Microsoft Docs
+title: Machtigingen voor het beheer van de toepassings beheerder delegeren-Azure AD | Microsoft Docs
 description: Machtigingen verlenen voor toegang tot beheer van toepassingen in Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d5a29ca7ed4eb23c2e0edd4d39cc2920e779acb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 461ee1fc73448f16ba68850d6137fb396c658abd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025508"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024859"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Machtigingen voor app-registratie in Azure Active Directory delegeren
 
@@ -61,8 +60,8 @@ In sommige gevallen bevatten bedrijfs toepassingen die zijn gemaakt in de toepas
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Een eigenaar toewijzen aan een bedrijfs toepassing
 
-1. Meld u aan bij [uw Azure AD-organisatie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) with een account die in aanmerking komt voor de toepassings beheerder of de beheerder van de Cloud toepassing voor de organisatie.
-1. Selecteer op de [pagina App-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)@no__t 1for de organisatie een app om de overzichts pagina voor de app te openen.
+1. Meld u aan bij [uw Azure AD-organisatie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat in aanmerking komt voor de toepassings beheerder of de beheerder van de Cloud toepassing voor de organisatie.
+1. Selecteer op de [pagina App-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) voor de organisatie een app om de overzichts pagina voor de app te openen.
 1. Selecteer **eigen aars** om de lijst met eigen aars voor de app weer te geven.
 1. Selecteer **toevoegen** om een of meer eigen aars te selecteren die u aan de app wilt toevoegen.
 
@@ -75,8 +74,8 @@ In sommige gevallen bevatten bedrijfs toepassingen die zijn gemaakt in de toepas
 
 Azure AD heeft een aantal ingebouwde beheerders rollen voor het verlenen van toegang tot het beheren van de configuratie in azure AD voor alle toepassingen. Deze rollen zijn de aanbevolen manier om IT-experts toegang te geven tot het beheren van brede toepassings configuratie machtigingen zonder dat ze toegang hoeven te verlenen tot het beheren van andere delen van Azure AD die niet gerelateerd zijn aan de configuratie van de toepassing.
 
-- Toepassings beheerder: Gebruikers met deze rol kunnen alle aspecten van bedrijfs toepassingen, toepassings registraties en toepassings proxy-instellingen maken en beheren. Deze rol verleent ook de mogelijkheid om toestemming te geven aan gedelegeerde machtigingen en toepassings machtigingen, met uitzonde ring van Microsoft Graph en Azure AD Graph. Gebruikers die aan deze rol zijn toegewezen, worden niet toegevoegd als eigen aren bij het maken van nieuwe toepassings registraties of zakelijke toepassingen.
-- Cloud toepassings beheerder: Gebruikers met deze rol hebben dezelfde machtigingen als de rol toepassings beheerder, met uitzonde ring van de mogelijkheid om toepassings proxy te beheren. Gebruikers die aan deze rol zijn toegewezen, worden niet toegevoegd als eigen aren bij het maken van nieuwe toepassings registraties of zakelijke toepassingen.
+- Toepassings beheerder: gebruikers met deze rol kunnen alle aspecten van bedrijfs toepassingen, toepassings registraties en toepassings proxy-instellingen maken en beheren. Deze rol verleent ook de mogelijkheid om toestemming te geven aan gedelegeerde machtigingen en toepassings machtigingen, met uitzonde ring van Microsoft Graph en Azure AD Graph. Gebruikers die aan deze rol zijn toegewezen, worden niet toegevoegd als eigen aren bij het maken van nieuwe toepassings registraties of zakelijke toepassingen.
+- Cloud toepassings beheerder: gebruikers met deze rol hebben dezelfde machtigingen als de rol van toepassings beheerder, met uitzonde ring van de mogelijkheid om toepassings proxy te beheren. Gebruikers die aan deze rol zijn toegewezen, worden niet toegevoegd als eigen aren bij het maken van nieuwe toepassings registraties of zakelijke toepassingen.
 
 Zie [beschik bare rollen](directory-assign-admin-roles.md#available-roles)voor meer informatie en om de beschrijving voor deze rollen weer te geven.
 

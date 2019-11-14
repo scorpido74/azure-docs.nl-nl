@@ -1,6 +1,6 @@
 ---
 title: Wat is Azure IoT Central? | Microsoft Docs
-description: Azure IoT Central is een end-to-end SaaS-oplossing die u kunt gebruiken om uw aangepaste IoT-oplossing te bouwen en te beheren. In dit artikel vindt u een overzicht van de functies van Azure IoT Central.
+description: Azure IoT Central is een IoT-toepassings platform dat het maken van IoT-oplossingen vereenvoudigt. In dit artikel vindt u een overzicht van de functies van Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/26/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 0cb3ac836569c782d7b7d84917af276567e89c86
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 30e7b4c39c24f4271c53f7a9f8940e4fb3c2e298
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957704"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048658"
 ---
 <!---
 Purpose of an Overview article: 

@@ -1,41 +1,42 @@
 ---
-title: Azure Log Analytics gebruiken voor het onderzoeken van Application Gateway Web Application Firewall-logboeken
-description: In dit artikel laat u zien hoe u Azure Log Analytics kunt gebruiken om te controleren van Application Gateway Web Application Firewall-logboeken
+title: WAF-logboeken onderzoeken met behulp van Azure Log Analytics
+titleSuffix: Azure Application Gateway
+description: In dit artikel wordt beschreven hoe u Azure Log Analytics kunt gebruiken om Application Gateway Web Application firewall-logboeken te onderzoeken
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 7/10/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: aa867e33ef0faa96b6a66a9075a3a5b8b0b0bca4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9fe4462a71852e5f66268f798f6f0418f2dd39c4
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712174"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048103"
 ---
-# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Log Analytics gebruiken voor het onderzoeken van Application Gateway Web Application Firewall-logboeken
+# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Logboekanalyse gebruiken om Web Application Firewall-logboeken van Application Gateway te onderzoeken
 
-Nadat uw Application Gateway WAF ingeschakeld is, kunt u Logboeken om te controleren wat er gebeurt bij elke aanvraag inschakelen. Firewall-logboeken geven inzicht in wat de WAF is geëvalueerd, die overeenkomt met en blokkeren. Met Log Analytics, kunt u de gegevens in de firewall-logboeken te geven van nog meer inzichten bekijken. Zie voor meer informatie over het maken van een Log Analytics-werkruimte [een Log Analytics-werkruimte maken in Azure portal](../azure-monitor/learn/quick-create-workspace.md). Zie voor meer informatie over de logboeken-query's, [overzicht van het logboek query's in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+Zodra uw Application Gateway WAF operationeel is, kunt u Logboeken inschakelen om te controleren wat er met elke aanvraag gebeurt. Firewall logboeken bieden inzicht in wat de WAF is te evalueren, vergelijken en blok keren. Met Log Analytics kunt u de gegevens in de logboeken van de firewall bekijken om nog meer inzichten te geven. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../azure-monitor/learn/quick-create-workspace.md)voor meer informatie over het maken van een log Analytics-werk ruimte. Zie [overzicht van logboek query's in azure monitor](../azure-monitor/log-query/log-query-overview.md)voor meer informatie over logboek query's.
 
 ## <a name="import-waf-logs"></a>WAF-logboeken importeren
 
-Zie voor informatie over het importeren van uw firewall-Logboeken in Log Analytics [Back-endstatus, diagnostische logboeken en metrische gegevens voor Application Gateway](application-gateway-diagnostics.md#diagnostic-logging). Wanneer u de firewall-Logboeken in uw Log Analytics-werkruimte hebt, kunt u gegevens bekijken, query's schrijven, visualisaties maken en deze toevoegen aan uw portal-dashboard.
+Als u uw firewall-logboeken wilt importeren in Log Analytics, raadpleegt u de [back-end-status, Diagnostische logboeken en metrische gegevens voor Application Gateway](application-gateway-diagnostics.md#diagnostic-logging). Wanneer u de firewall Logboeken in uw Log Analytics-werk ruimte hebt, kunt u gegevens weer geven, query's schrijven, visualisaties maken en deze toevoegen aan uw portal-dash board.
 
-## <a name="explore-data-with-examples"></a>Verken gegevens met voorbeelden
+## <a name="explore-data-with-examples"></a>Gegevens verkennen met voor beelden
 
-Als u wilt de onbewerkte gegevens weergeven in de firewall-logboek, kunt u de volgende query uitvoeren:
+Als u de onbewerkte gegevens in het firewall logboek wilt weer geven, kunt u de volgende query uitvoeren:
 
 ```
 AzureDiagnostics 
 | where ResourceProvider == "MICROSOFT.NETWORK" and Category == "ApplicationGatewayFirewallLog"
 ```
 
-Dit ziet eruit als de volgende query uit:
+Dit ziet er ongeveer uit als de volgende query:
 
-![Log Analytics-query](media/log-analytics/log-query.png)
+![Log Analytics query](media/log-analytics/log-query.png)
 
-U kunt inzoomen op de gegevens en grafieken uitgezet of visualisaties maken hier. Zie de volgende query's als uitgangspunt:
+U kunt inzoomen op de gegevens en grafieken tekenen of visualisaties maken. Bekijk de volgende query's als uitgangs punt:
 
 ### <a name="matchedblocked-requests-by-ip"></a>Overeenkomende/geblokkeerde aanvragen per IP
 
@@ -46,7 +47,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="matchedblocked-requests-by-uri"></a>Overeenkomende/geblokkeerde aanvragen via een URI
+### <a name="matchedblocked-requests-by-uri"></a>Overeenkomende/geblokkeerde aanvragen per URI
 
 ```
 AzureDiagnostics
@@ -55,7 +56,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="top-matched-rules"></a>Bovenste overeenkomende regels
+### <a name="top-matched-rules"></a>Bovenaan overeenkomende regels
 
 ```
 AzureDiagnostics
@@ -65,7 +66,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="top-five-matched-rule-groups"></a>Top vijf overeenkomende regelgroepen
+### <a name="top-five-matched-rule-groups"></a>Bovenste vijf overeenkomende regel groepen
 
 ```
 AzureDiagnostics
@@ -75,12 +76,12 @@ AzureDiagnostics
 | render piechart
 ```
 
-## <a name="add-to-your-dashboard"></a>Toevoegen aan uw dashboard
+## <a name="add-to-your-dashboard"></a>Toevoegen aan uw dash board
 
-Als u een query maakt, kunt u deze kunt toevoegen aan uw dashboard.  Selecteer de **vastmaken aan dashboard** in de rechterbovenhoek van de log analytics-werkruimte. Met de vorige vier query's vastgemaakt aan een dashboard voorbeeld, maar dit is de gegevens die u in een oogopslag kunt zien:
+Wanneer u een query hebt gemaakt, kunt u deze toevoegen aan uw dash board.  Selecteer in de rechter bovenhoek van de log Analytics-werk ruimte de optie **vastmaken aan dash board** . Met de vorige vier query's die zijn vastgemaakt aan een voorbeeld dashboard, zijn dit de gegevens die u in een oogopslag kunt zien:
 
 ![Dashboard](media/log-analytics/dashboard.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Back-endstatus, diagnostische logboeken en metrische gegevens voor Application Gateway](application-gateway-diagnostics.md)
+[Back-end-status, Diagnostische logboeken en metrische gegevens voor Application Gateway](application-gateway-diagnostics.md)

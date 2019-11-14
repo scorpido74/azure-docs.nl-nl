@@ -1,22 +1,23 @@
 ---
-title: Het oplossen van problemen met Azure Application Gateway-sessie-affiniteit
-description: Dit artikel bevat informatie over het oplossen van problemen van de sessie-affiniteit in Azure Application Gateway
+title: Problemen met sessie affiniteit oplossen
+titleSuffix: Azure Application Gateway
+description: Dit artikel bevat informatie over het oplossen van problemen met sessie affiniteit in Azure-toepassing gateway
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 66f61b5d6fcb86ed93e4dbae802ae7a80613c83d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f14521c15c3497bed4ffbeba44cb5d78ee4df7b
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66397836"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047990"
 ---
-# <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Oplossen van problemen met Azure Application Gateway-sessie-affiniteit
+# <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Problemen met de Azure-toepassing gateway sessie affiniteit oplossen
 
-Informatie over het diagnosticeren en oplossen van problemen van de sessie-affiniteit met Azure Application Gateway.
+Meer informatie over het vaststellen en oplossen van problemen met sessie affiniteit met Azure-toepassing gateway.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -25,186 +26,186 @@ Informatie over het diagnosticeren en oplossen van problemen van de sessie-affin
 
 De functie Sessieaffiniteit op basis van cookies is handig als u een gebruikerssessie op dezelfde server wilt behouden. Met behulp van de gatewaybeheerde cookies kan de Application Gateway het daarop volgende verkeer van een gebruikerssessie naar dezelfde server leiden voor verwerking. Dit is belangrijk wanneer de sessiestatus lokaal wordt opgeslagen op de server voor een gebruikerssessie.
 
-## <a name="possible-problem-causes"></a>Mogelijk probleem oorzaken
+## <a name="possible-problem-causes"></a>Mogelijke probleem oorzaken
 
-Het probleem in het onderhouden van cookies gebaseerde sessieaffiniteit kan komen doordat de volgende belangrijke redenen:
+Het probleem bij het onderhouden van sessie affiniteit op basis van cookies kan optreden als gevolg van de volgende hoofd oorzaken:
 
-- De instelling 'cookies gebaseerde affiniteit' is niet ingeschakeld
-- Cookies gebaseerde affiniteit kan niet worden verwerkt door uw toepassing
-- Toepassing gebruikt cookies gebaseerde affiniteit maar nog steeds venster tussen back-endservers aanvragen
+- Instelling voor affiniteit op basis van cookies is niet ingeschakeld
+- Uw toepassing kan de op cookies gebaseerde affiniteit niet afhandelen
+- De toepassing maakt gebruik van affiniteit op basis van cookies, maar aanvragen worden nog steeds stuiteren tussen back-endservers
 
-### <a name="check-whether-the-cookie-based-affinity-setting-is-enabled"></a>Controleer of de instelling 'cookies gebaseerde affiniteit' is ingeschakeld
+### <a name="check-whether-the-cookie-based-affinity-setting-is-enabled"></a>Controleer of de instelling voor de affiniteit op basis van cookies is ingeschakeld
 
-Soms optreden de sessie-affiniteit problemen wanneer u bent vergeten om in te schakelen van de instelling 'Cookies op basis van affiniteit'. Om te bepalen of u de instelling 'Cookies op basis van affiniteit' op het tabblad HTTP-instellingen in de Azure-portal hebt ingeschakeld, volgt u de instructies:
+Soms kunnen er problemen optreden met de sessie affiniteit wanneer u vergeet de instelling ' op cookie gebaseerd ' in te scha kelen. Volg de instructies om te bepalen of u de instelling ' op cookie gebaseerde affiniteit ' hebt ingeschakeld op het tabblad HTTP-instellingen in de Azure Portal:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-2. In de **linkernavigatiebalk** deelvenster, klikt u op **alle resources**. Klik op de naam van de application gateway in de blade alle resources. Als het abonnement dat u geselecteerd, al verschillende resources heeft, kunt u de naam van de application gateway in de **filteren op naam...** voor eenvoudige toegang tot de toepassingsgateway.
+2. Klik in het **linker navigatie** deel venster op **alle resources**. Klik op de naam van de toepassings gateway op de Blade alle resources. Als het abonnement dat u hebt geselecteerd, al verschillende resources heeft, kunt u de naam van de toepassings gateway opgeven in het **filter op naam...** voor eenvoudige toegang tot de toepassingsgateway.
 
-3. Selecteer **HTTP-instellingen** tabblad onder **instellingen**.
+3. Selecteer het tabblad **http-instellingen** onder **instellingen**.
 
-   ![problemen oplossen-sessie-affiniteit-problemen met-1](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-1.png)
+   ![problemen oplossen-sessie affiniteit-problemen-1](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-1.png)
 
-4. Klik op **appGatewayBackendHttpSettings** aan de rechterkant om te controleren of u hebt geselecteerd **ingeschakeld** voor op cookies gebaseerde affiniteit.
+4. Klik op **appGatewayBackendHttpSettings** aan de rechter kant om te controleren of u **ingeschakeld** hebt voor de affiniteit op basis van cookies.
 
-   ![troubleshoot-session-affinity-issues-2](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-2.jpg)
+   ![problemen oplossen-sessie-affiniteit-problemen-2](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-2.jpg)
 
 
 
-U kunt ook controleren met de waarde van de '**CookieBasedAffinity**' is ingesteld op *ingeschakeld*onder '**backendHttpSettingsCollection**"met behulp van een van de volgende methoden:
+U kunt ook controleren of de waarde '**CookieBasedAffinity**' is ingesteld op *ingeschakeld*onder '**backendHttpSettingsCollection**' door een van de volgende methoden te gebruiken:
 
-- Voer [Get-AzApplicationGatewayBackendHttpSetting](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting) in PowerShell
-- Zoek in het JSON-bestand met de Azure Resource Manager-sjabloon
+- [Get-AzApplicationGatewayBackendHttpSetting](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting) uitvoeren in Power shell
+- Bekijk het JSON-bestand met behulp van de sjabloon Azure Resource Manager
 
 ```
 "cookieBasedAffinity": "Enabled", 
 ```
 
-### <a name="the-application-cannot-handle-cookie-based-affinity"></a>Cookies gebaseerde affiniteit kan niet worden verwerkt door de toepassing
+### <a name="the-application-cannot-handle-cookie-based-affinity"></a>De toepassing kan de op cookies gebaseerde affiniteit niet afhandelen
 
 #### <a name="cause"></a>Oorzaak
 
-De application gateway kan alleen op basis van sessie-affiniteit uitvoeren met behulp van een cookie.
+De toepassings gateway kan alleen op sessies gebaseerde affiniteit uitvoeren met behulp van een cookie.
 
 #### <a name="workaround"></a>Tijdelijke oplossing
 
-Als de toepassing niet kan cookies gebaseerde affiniteit verwerken, moet u een externe of interne azure load balancer of een andere oplossing van derden gebruiken.
+Als de toepassing geen affiniteit op basis van cookies kan verwerken, moet u een externe of interne Azure-load balancer of een andere oplossing van derden gebruiken.
 
-### <a name="application-is-using-cookie-based-affinity-but-requests-still-bouncing-between-back-end-servers"></a>Toepassing gebruikt cookies gebaseerde affiniteit maar nog steeds venster tussen back-endservers aanvragen
+### <a name="application-is-using-cookie-based-affinity-but-requests-still-bouncing-between-back-end-servers"></a>De toepassing maakt gebruik van affiniteit op basis van cookies, maar aanvragen worden nog steeds stuiteren tussen back-endservers
 
 #### <a name="symptom"></a>Symptoom
 
-U kunt de instelling van de cookies gebaseerde affiniteit hebt ingeschakeld, wanneer u toegang de toepassingsgateway tot met behulp van een korte naam-URL in Internet Explorer, bijvoorbeeld: [ http://website ](http://website/) , de aanvraag is nog steeds venster tussen back-endservers.
+U hebt de instelling voor affiniteit op basis van cookies ingeschakeld, wanneer u toegang krijgt tot de Application Gateway met behulp van een korte naam-URL in Internet Explorer, bijvoorbeeld: [http://website](http://website/) , de aanvraag is nog steeds stuiteren tussen back-endservers.
 
-Volg de instructies voor het identificeren van dit probleem:
+Volg de instructies om dit probleem te identificeren:
 
-1. Een foutopsporingsprogramma web tracering uitvoeren op de 'Client' die verbinding met de toepassing achter de Gateway(We are using Fiddler in this example) toepassing maakt.
-    **Tip** als u niet hoe u de Fiddler gebruikt weet, controleert u de optie '**ik wil netwerkverkeer verzamelen en analyseren met behulp van web foutopsporingsprogramma**' aan de onderkant.
+1. Neem een webdebugger tracering op de client, die verbinding maakt met de toepassing achter de Application Gateway (we gebruiken Fiddler in dit voor beeld).
+    **Tip** Als u niet weet hoe u de Fiddler moet gebruiken, schakelt u de optie '**Ik wil netwerk verkeer verzamelen en analyseren met Web debugger**' onderaan.
 
-2. Controleren en analyseren van de sessielogboeken, om te bepalen of de cookies die is opgegeven door de client de details van de ARRAffinity hebben. Als u de details van ARRAffinity, zoals niet vinden "**ARRAffinity =** *ARRAffinityValue*' binnen de cookie is ingesteld, die aangeeft dat de client is niet met behulp van de cookie SH beantwoorden die wordt geleverd door de Application Gateway.
+2. Controleer en analyseer de sessie Logboeken om te bepalen of de cookies van de client de ARRAffinity-details hebben. Als u de details van de ARRAffinity, zoals "**ARRAffinity =** *ARRAffinityValue*" niet in de cookieset vindt, betekent dit dat de client niet antwoordt op de ARRA cookie, die wordt opgegeven door de Application Gateway.
     Bijvoorbeeld:
 
     ![problemen oplossen-sessie-affiniteit-problemen-3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
-    ![troubleshoot-session-affinity-issues-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
+    ![problemen oplossen-sessie-affiniteit-problemen-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
 
-U blijft de toepassing probeert in te stellen van de cookie bij elke aanvraag, totdat het antwoord.
+De toepassing blijft proberen de cookie op elke aanvraag in te stellen totdat het antwoord wordt ontvangen.
 
 #### <a name="cause"></a>Oorzaak
 
-Dit probleem treedt op omdat Internet Explorer en andere browsers mogelijk niet opslaan in of de cookie wordt gebruikt met een URL voor een korte naam.
+Dit probleem doet zich voor omdat Internet Explorer en andere browsers de cookie niet kunnen opslaan of gebruiken met een korte naam-URL.
 
 #### <a name="resolution"></a>Oplossing
 
-U kunt dit probleem oplossen door via een FQDN toegang te zoeken tot Application Gateway. Gebruik bijvoorbeeld [ http://website.com ](https://website.com/) of [ http://appgw.website.com ](http://appgw.website.com/) .
+U kunt dit probleem oplossen door via een FQDN toegang te zoeken tot Application Gateway. Gebruik bijvoorbeeld [http://website.com](https://website.com/) of [http://appgw.website.com](http://appgw.website.com/) .
 
-## <a name="additional-logs-to-troubleshoot"></a>Extra Logboeken om op te lossen
+## <a name="additional-logs-to-troubleshoot"></a>Aanvullende Logboeken om problemen op te lossen
 
-U kunt extra logboeken te verzamelen en analyseren ze voor het oplossen van de problemen verwante cookies gebaseerde sessieaffiniteit
+U kunt aanvullende logboeken verzamelen en deze analyseren om de problemen te verhelpen die betrekking hebben op cookie-gebaseerde sessie affiniteit
 
-### <a name="analyze-application-gateway-logs"></a>Application Gateway-logboekbestanden analyseren
+### <a name="analyze-application-gateway-logs"></a>Application Gateway-logboeken analyseren
 
-Volg de instructies voor het verzamelen van de Application Gateway-Logboeken:
+Volg de instructies om de Application Gateway-logboeken te verzamelen:
 
 Logboekregistratie inschakelen via de Azure-portal
 
-1. In de [Azure-portal](https://portal.azure.com/), vindt uw resource en klik vervolgens op **diagnostische logboeken**.
+1. Zoek in het [Azure Portal](https://portal.azure.com/)uw resource en klik vervolgens op **Diagnostische logboeken**.
 
-   Voor Application Gateway zijn de drie logboeken beschikbaar: Toegang tot logboek, prestatielogboek, Firewall-logboek
+   Voor Application Gateway zijn drie logboeken beschikbaar: toegangs logboek, prestatie logboek, firewall logboek
 
-2. Klik op te starten om gegevens te verzamelen, **diagnostische gegevens inschakelen**.
+2. Klik op **diagnostiek inschakelen**om gegevens te verzamelen.
 
-   ![troubleshoot-session-affinity-issues-5](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-5.png)
+   ![problemen oplossen-sessie-affiniteit-problemen-5](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-5.png)
 
-3. De **diagnostische instellingen** blade bevat de instellingen voor de diagnostische logboeken. In dit voorbeeld worden de logboeken met Log Analytics opgeslagen. Klik op **configureren** onder **Log Analytics** om in te stellen van uw werkruimte. U kunt ook Event Hubs en een opslagaccount gebruiken om de diagnostische logboeken op te slaan.
+3. De Blade **instellingen voor diagnostische gegevens** bevat de instellingen voor de diagnostische Logboeken. In dit voor beeld slaat Log Analytics de logboeken op. Klik op **configureren** onder **log Analytics** om uw werk ruimte in te stellen. U kunt ook Event Hubs en een opslagaccount gebruiken om de diagnostische logboeken op te slaan.
 
    ![problemen oplossen-sessie-affiniteit-problemen-6](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-6.png)
 
-4. Bevestig de instellingen en klik vervolgens op **opslaan**.
+4. Bevestig de instellingen en klik vervolgens op **Opslaan**.
 
-   ![troubleshoot-session-affinity-issues-7](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-7.png)
+   ![problemen oplossen-sessie-affiniteit-problemen-7](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-7.png)
 
-#### <a name="view-and-analyze-the-application-gateway-access-logs"></a>De toegang tot Application Gateway logboeken bekijken en analyseren
+#### <a name="view-and-analyze-the-application-gateway-access-logs"></a>De Application Gateway Access-logboeken weer geven en analyseren
 
-1. Selecteer in de Azure-portal onder de weergave van de resource Application Gateway, **diagnoselogboeken** in de **bewaking** sectie.
+1. Selecteer in de Azure Portal onder de Application Gateway resource weergave **Diagnostische logboeken** in het gedeelte **bewaking** .
 
-   ![troubleshoot-session-affinity-issues-8](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-8.png)
+   ![problemen oplossen-sessie-affiniteit-problemen-8](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-8.png)
 
-2. Selecteer aan de rechterkant '**ApplicationGatewayAccessLog**' in de vervolgkeuzelijst onder **categorieën aanmelden.**  
+2. Klik aan de rechter kant op '**ApplicationGatewayAccessLog**' in de vervolg keuzelijst onder **logboek categorieën.**  
 
-   ![troubleshoot-session-affinity-issues-9](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-9.png)
+   ![problemen oplossen-sessie-affiniteit-problemen-9](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-9.png)
 
-3. In de lijst Toegangslogboek Application-Gateway op het logboek dat u wilt analyseren en te exporteren en vervolgens de JSON-bestand exporteren.
+3. Klik in de Application Gateway Access-logboek lijst op het logboek dat u wilt analyseren en exporteren, en exporteer vervolgens het JSON-bestand.
 
-4. Het JSON-bestand dat u hebt geëxporteerd in stap 3 naar CSV-bestand te converteren en ze weergeven in Excel, Power BI of een ander hulpmiddel voor gegevensvisualisatie.
+4. Converteer het JSON-bestand dat u in stap 3 hebt geëxporteerd naar een CSV-bestand en bekijk ze in Excel, Power BI of een ander hulp programma voor gegevens visualisatie.
 
 5. Controleer de volgende gegevens:
 
-- **Client-IP**: dit is het client-IP-adres van de client die verbinding maakt.
-- **Enterpriseclient** -dit is de bronpoort van de client die verbinding maakt voor de aanvraag.
-- **RequestQuery** – dit geeft aan dat de doelserver dat de aanvraag is ontvangen.
-- **Server-Routed**: Back-end-pool-exemplaar dat de aanvraag is ontvangen.
-- **X-AzureApplicationGateway-LOG-ID**: Correlatie-ID die wordt gebruikt voor de aanvraag. Het kan worden gebruikt voor het oplossen van problemen met verkeer op de back-endservers. Bijvoorbeeld: X-AzureApplicationGateway-CACHE-hits = 0 & SERVER doorgestuurd = 10.0.2.4.
+- **Client**: dit is het IP-adres van de client van de client die verbinding maakt.
+- **ClientPort** : dit is de bron poort van de client die verbinding maakt voor de aanvraag.
+- **RequestQuery** : Dit geeft de doel server aan waarop de aanvraag is ontvangen.
+- **Server-gerouteerd**: exemplaar van back-end-pool dat de aanvraag is ontvangen.
+- **X-AzureApplicationGateway-log-id**: correlatie-id die voor de aanvraag wordt gebruikt. Het kan worden gebruikt om problemen met verkeer op de back-endservers op te lossen. Bijvoorbeeld: X-AzureApplicationGateway-CACHE-HIT = 0 & SERVER ROUTEed = 10.0.2.4.
 
-  - **SERVER-STATUS**: HTTP-responscode die Application Gateway van de back-end ontvangen.
+  - **Server-status**: http-antwoord code die Application Gateway ontvangen van de back-end.
 
-  ![troubleshoot-session-affinity-issues-11](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-11.png)
+  ![problemen oplossen-sessie-affiniteit-problemen-11](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-11.png)
 
-Als u twee items afkomstig zijn uit dezelfde client-IP en poort van de Client, en ze worden verzonden naar dezelfde back-end server ziet, betekent dit dat de Application Gateway correct geconfigureerd.
+Als u ziet dat er twee items afkomstig zijn uit dezelfde client en client poort en worden deze naar dezelfde back-endserver verzonden, betekent dit dat de Application Gateway correct is geconfigureerd.
 
-Als u twee items afkomstig zijn uit dezelfde client-IP en poort van de Client, en ze worden verzonden naar de andere back-endservers ziet, betekent dit dat de aanvraag is venster tussen back-endservers, selecteer "**toepassing gebruik maakt van cookies gebaseerde affiniteit maar aanvragen nog steeds venster tussen back-endservers**'onder aan het oplossen van dit probleem.
+Als u ziet dat er twee items afkomstig zijn uit dezelfde client-en client poort, en ze worden verzonden naar de verschillende back-endservers, betekent dit dat de aanvraag wordt gestuiterd tussen back-endservers, de optie**toepassing maakt gebruik van op cookies gebaseerde affiniteit, maar aanvragen die nog steeds tussen back-endservers worden gestuiterd**, onderaan om de problemen op te lossen.
 
-### <a name="use-web-debugger-to-capture-and-analyze-the-http-or-https-traffics"></a>Web foutopsporingsprogramma kunt vastleggen en analyseren van de HTTP of HTTPS-verkeer
+### <a name="use-web-debugger-to-capture-and-analyze-the-http-or-https-traffics"></a>Webdebugger gebruiken om de HTTP-of HTTPS-verkeer vast te leggen en te analyseren
 
-Web-foutopsporingsprogramma's, zoals Fiddler, kunt u fouten opsporen in web-apps door het vastleggen van netwerkverkeer tussen Internet en de test. Deze hulpprogramma's kunnen u inkomende en uitgaande gegevens controleren zoals de browser ontvangt/verzendt deze. Fiddler, heeft in dit voorbeeld de HTTP-replay-optie waarmee u client-side-problemen met web-apps, met name voor verificatie van het type van het probleem op te lossen.
+Hulpprogram ma's voor fout opsporing, zoals Fiddler, kunnen u helpen bij het opsporen van fouten in webtoepassingen door netwerk verkeer tussen het internet en de test computers vast te leggen. Met deze hulpprogram ma's kunt u inkomende en uitgaande gegevens controleren wanneer de browser deze ontvangt/verzendt. Fiddler, in dit voor beeld, beschikt over de optie HTTP replay die u kan helpen bij het oplossen van problemen aan de client zijde met webtoepassingen, met name voor verificatie soort problemen.
 
-Gebruik het foutopsporingsprogramma web van uw keuze. In dit voorbeeld gebruiken we Fiddler vastleggen en analyseren van http of https-verkeer, volg de instructies:
+Gebruik de webdebugger van uw keuze. In dit voor beeld gebruiken we Fiddler om http-of HTTPS-verkeer vast te leggen en te analyseren, volgt u de instructies:
 
-1. Download het hulpprogramma Fiddler op <https://www.telerik.com/download/fiddler>.
+1. Down load het Fiddler-hulp programma op <https://www.telerik.com/download/fiddler>.
 
     > [!NOTE]
-    > Kies Fiddler4 als de computer vastleggen .NET 4 zijn geïnstalleerd heeft. Kies anders Fiddler2.
+    > Kies Fiddler4 als op de opname computer .NET 4 is geïnstalleerd. Kies anders Fiddler2.
 
-2. Klik met de rechtermuisknop op het uitvoerbare bestand van de installatie en uitvoeren als beheerder om te installeren.
+2. Klik met de rechter muisknop op het uitvoer bare installatie programma en voer als Administrator uit om de installatie uit te voeren.
 
     ![problemen oplossen-sessie-affiniteit-problemen-12](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
 
-3. Wanneer u Fiddler opent, moet het automatisch starten vastleggen van verkeer (Let op het vastleggen op kleine links-corner). Druk op F12 te starten of stoppen van verkeer vastleggen.
+3. Wanneer u Fiddler opent, wordt het vastleggen van verkeer automatisch gestart (Let op de opname in de linkerbenedenhoek). Druk op F12 om het vastleggen van verkeer te starten of te stoppen.
 
-    ![troubleshoot-session-affinity-issues-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
+    ![problemen oplossen-sessie-affiniteit-problemen-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
-4. Waarschijnlijk, kunt u geïnteresseerd in het versleutelde HTTPS-verkeer, en kunt u decodering van HTTPS inschakelen door het selecteren van **extra** > **Fiddler opties**, en schakel het selectievakje ' **ontsleutelen HTTPS-verkeer**'.
+4. Waarschijnlijk bent u geïnteresseerd in het ontsleutelen van HTTPS-verkeer en kunt u HTTPS-ontsleuteling inschakelen door **extra** > **Opties Fiddler**te selecteren en het selectie vakje **HTTPS-verkeer versleutelen**in te scha kelen.
 
     ![problemen oplossen-sessie-affiniteit-problemen-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
-5. U kunt vorige niet-gerelateerde sessies voordat u het probleem te reproduceren door te klikken op verwijderen **X** (pictogram) > **Alles verwijderen** als volgt schermafbeelding: 
+5. U kunt vorige niet-gerelateerde sessies verwijderen voordat u het probleem reproduceert door te klikken op **X** (pictogram) > **Alles verwijderen** als scherm afbeelding: 
 
-    ![troubleshoot-session-affinity-issues-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
+    ![problemen oplossen-sessie-affiniteit-problemen-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
-6. Nadat u het probleem hebt gereproduceerd, sla van het bestand voor revisie door het selecteren van **bestand** > **opslaan** > **alle sessies...** . 
+6. Wanneer u het probleem hebt opgelost, slaat u het bestand voor controle op door **bestand** te selecteren >  > alle sessies op te **slaan** **..** . 
 
     ![problemen oplossen-sessie-affiniteit-problemen-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 
-7. Controleren en analyseren van de sessielogboeken om te bepalen wat het probleem is.
+7. Controleer en analyseer de sessie Logboeken om te bepalen wat het probleem is.
 
-    Voor voorbeelden:
+    Voor voor beelden:
 
-- **Voorbeeld A:** U vindt een sessielogboek die de aanvraag wordt verzonden vanaf de client, en deze naar het openbare IP-adres van de Application Gateway, klikt u op dit logboek om de details weer te geven.  Aan de rechterkant is gegevens in het vak onder wat de Application Gateway naar de client worden geretourneerd. Selecteer het tabblad 'RAW' en bepalen of de client ontvangt een '**Set-Cookie: ARRAffinity =** *ARRAffinityValue*. " Als er geen cookie, sessie-affiniteit is niet ingesteld of de Application Gateway cookie terug naar de client wordt niet toegepast.
+- **Voor beeld A:** U vindt een sessie logboek dat de aanvraag van de client wordt verzonden en gaat naar het open bare IP-adres van de Application Gateway, klikt u op dit logboek om de details weer te geven.  Aan de rechter kant ziet u de gegevens in het onderste vak wat het Application Gateway naar de client retourneert. Selecteer het tabblad RAW en bepaal of de client een '**set-cookie: ARRAffinity =** *ARRAffinityValue*' ontvangt. Als er geen cookie is, wordt sessie affiniteit niet ingesteld, of wordt de Application Gateway geen cookie opnieuw op de client toegepast.
 
    > [!NOTE]
-   > Deze waarde ARRAffinity is de cookie-id, die de Application Gateway wordt ingesteld voor de client worden verzonden naar een specifieke back-end-server.
+   > Deze ARRAffinity waarde is de cookie-id, die de Application Gateway stelt dat de client naar een bepaalde back-endserver moet worden verzonden.
 
-   ![troubleshoot-session-affinity-issues-17](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
+   ![problemen oplossen-sessie-affiniteit-problemen-17](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
 
-- **Voorbeeld B:** De volgende sessielogboek gevolgd door de vorige is de client reageert terug naar de Application Gateway, die de ARRAAFFINITY heeft ingesteld. Als de ARRAffinity cookie-id overeenkomt met, moet het pakket worden verzonden naar dezelfde back-end-server die eerder is gebruikt. Controleer de volgende verschillende regels http-communicatie mogelijk is om te zien of van de client ARRAffinity cookie wordt gewijzigd.
+- **Voor beeld B:** Het volgende sessie logboek gevolgd door het vorige is de client reageert terug te vallen op de Application Gateway, die de ARRAAFFINITY heeft ingesteld. Als de ARRAffinity cookie-id overeenkomt, moet het pakket worden verzonden naar dezelfde back-endserver die eerder is gebruikt. Controleer de volgende verschillende regels http-communicatie om te controleren of de ARRAffinity cookie van de client wordt gewijzigd.
 
-   ![troubleshoot-session-affinity-issues-18](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
+   ![problemen oplossen-sessie-affiniteit-problemen-18](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
 
 > [!NOTE]
-> Voor de dezelfde sessie van de communicatie moet de cookie niet als u wilt wijzigen. Schakel het selectievakje boven aan de rechterkant, selecteert u "Cookies" tabblad om te zien of de client met behulp van de cookie is en dat deze wordt teruggestuurd naar de Application Gateway. Zo niet, in de browser van de client is niet te houden en het gebruik van de cookie voor conversaties. Soms kan de client zich bevinden.
+> Voor dezelfde communicatie sessie moet het cookie niet worden gewijzigd. Schakel het bovenste vak aan de rechter kant in, selecteer het tabblad ' cookies ' om te zien of de client de cookie gebruikt en terugstuurt naar de Application Gateway. Als dat niet het geval is, houdt de client browser geen gebruik van de cookie voor conversaties. Soms is de client mogelijk.
 
  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als de voorgaande stappen het probleem niet verhelpen, opent u een [ondersteuningsticket](https://azure.microsoft.com/support/options/).
+Als de voor gaande stappen het probleem niet oplossen, opent u een [ondersteunings ticket](https://azure.microsoft.com/support/options/).

@@ -1,23 +1,18 @@
 ---
-title: Een toepassings gateway maken met interne omleiding-Azure PowerShell | Microsoft Docs
+title: Interne omleiding met Power shell-Azure-toepassing gateway
 description: Meer informatie over het maken van een toepassings gateway die intern webverkeer omleidt naar de juiste back-endserver van servers met behulp van Azure Power shell.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/23/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 2fcfac582000056a1ef82e8fe5dcaed99dfee068
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 5ef10623ad50488df03302ba61121cca086d010e
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835024"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047375"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Een toepassings gateway met een interne omleiding maken met behulp van Azure PowerShell
 
@@ -114,7 +109,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-first-listener-and-rule"></a>De eerste listener en regel maken
 
-Een listener is nodig om de toepassingsgateway in staat te stellen het verkeer op de juiste manier naar de back-endpool door te sturen. In deze zelfstudie maakt u twee listeners voor de twee domeinen. In dit voor beeld worden listeners gemaakt voor de domeinen *www.contoso.com* en *www\.contoso.org*.
+Een listener is vereist om de toepassingsgateway in te schakelen om het verkeer op de juiste manier naar de back-endpool door te sturen. In deze zelfstudie maakt u twee listeners voor de twee domeinen. In dit voor beeld worden listeners gemaakt voor de domeinen *www.contoso.com* en *www\.contoso.org*.
 
 Maak de eerste listener met de naam *contosoComListener* met behulp van [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) met de front-end-configuratie en de frontend-poort die u eerder hebt gemaakt. Er is een regel vereist, zodat de listener weet welke back-endpool moet worden gebruikt voor binnenkomend verkeer. Maak een basis regel met de naam *contosoComRule* met behulp van [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
@@ -290,7 +285,7 @@ Update-AzVmss `
 
 ## <a name="create-cname-record-in-your-domain"></a>CNAME-record in uw domein maken
 
-Als de toepassingsgateway met het bijbehorende IP-adres is gemaakt, kunt u het DNS-adres ophalen en dit gebruiken om een CNAME-record in uw domein te maken. U kunt [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) gebruiken om het DNS-adres van de toepassings gateway op te halen. Kopieer de waarde *fqdn* van DNSSettings en gebruik deze als de waarde van de CNAME-record die u maakt. Het gebruik van A-records wordt niet aanbevolen, omdat de VIP kan veranderen wanneer de toepassingsgateway opnieuw wordt gestart.
+Als de toepassingsgateway met het bijbehorende openbare IP-adres is gemaakt, kunt u het DNS-adres ophalen en dit gebruiken om een CNAME-record in uw domein te maken. U kunt [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) gebruiken om het DNS-adres van de toepassings gateway op te halen. Kopieer de waarde *fqdn* van DNSSettings en gebruik deze als de waarde van de CNAME-record die u maakt. Het gebruik van A-records wordt niet aanbevolen, omdat de VIP kan veranderen wanneer de toepassingsgateway opnieuw wordt gestart.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

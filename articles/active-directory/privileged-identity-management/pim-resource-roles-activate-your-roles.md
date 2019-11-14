@@ -1,26 +1,26 @@
 ---
-title: Mijn Azure-resource rollen activeren in PIM-Azure Active Directory | Microsoft Docs
+title: Azure-resource rollen activeren in PIM-Azure AD | Microsoft Docs
 description: Meer informatie over het activeren van uw Azure-resource rollen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e2062ece84676e0af37c79cf25d8662f186ab0a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d35c81f7bb478d91bd207327ea37c80aa1778142
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808977"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023155"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Mijn Azure-resource rollen in Privileged Identity Management activeren
 
@@ -32,7 +32,7 @@ Dit artikel is voor leden die hun Azure-resource functie moeten activeren in Pri
 
 Wanneer u een Azure-resource functie moet uitvoeren, kunt u de activering aanvragen met de navigatie optie **mijn rollen** in privileged Identity Management.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**. Zie voor meer informatie over het toevoegen van de Privileged Identity Management tegel aan uw dash board [beginnen met privileged Identity Management](pim-getting-started.md).
 

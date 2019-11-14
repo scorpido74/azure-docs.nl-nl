@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fa7ee6663aae24451af195de4a8225c7a6b351e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 24b9b120240ffc6f7dd2252d12c9f8af2bcfafbc
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647151"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049176"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Gegevens drift (preview) detecteren in gegevens sets
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -75,7 +75,7 @@ Met behulp van Azure Machine Learning wordt de gegevens drift bewaakt via data s
 
 Voor de doel-DataSet moet de `timeseries` Trait worden ingesteld door de time stamp-kolom op te geven van een kolom in de gegevens of een virtuele kolom die is afgeleid van het pad patroon van de bestanden. Dit kan worden gedaan met behulp van de python-SDK of Azure Machine Learning Studio. Een kolom met een ' fijne korrel ' tijds tempel moet worden opgegeven om `timeseries` eigenschappen toe te voegen aan de gegevensset. Als uw gegevens zijn gepartitioneerd in mapstructuur met tijd gegevens, zoals {JJJJ/MM/DD}, kunt u een virtuele kolom maken met de patroon instelling pad en instellen als de tijds tempel "grof korrels" om het belang van de tijd reeks functionaliteit te verbeteren. 
 
-#### <a name="python-sdk"></a>Python SDK
+#### <a name="python-sdk"></a>Python-SDK
 
 De methode [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) van de klasse [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) definieert de time stamp-kolom voor de gegevensset. 
 
@@ -146,8 +146,8 @@ Deze instellingen zijn voor de bewaakte pijp lijn van de geplande gegevensset di
 | ------- | ----------- | ---- | ------- |
 | Inschakelen | Het schema in-of uitschakelen voor de monitor pijplijn van de gegevensset | Schakel deze optie uit om historische gegevens te analyseren met de instelling backfill. De functie kan worden ingeschakeld nadat de monitor voor de gegevensset is gemaakt. | Ja | 
 | Latentie | Tijd, in uren, duurt het om gegevens in de gegevensset te ontvangen. Als het bijvoorbeeld drie dagen duurt voordat de gegevens in de gegevensset van de SQL-Data Base zijn Inge kapseld, stelt u de latentie in op 72. | Kan niet worden gewijzigd nadat de monitor voor de gegevensset is gemaakt | Nee | 
-| E-mail adressen | E-mail adressen voor waarschuwingen op basis van schending van de drempel waarde voor het percentage gegevens drift. | E-mail berichten worden verzonden via Azure Monitor. | Ja | 
-| Spreek | Drempel waarde voor het percentage gegevens drift voor e-mail waarschuwingen. | Verdere waarschuwingen en gebeurtenissen kunnen worden ingesteld op veel andere metrische gegevens in de gekoppelde Application Insights resource van de werk ruimte. | Ja | 
+| E-mailadressen | E-mail adressen voor waarschuwingen op basis van schending van de drempel waarde voor het percentage gegevens drift. | E-mail berichten worden verzonden via Azure Monitor. | Ja | 
+| Drempelwaarde | Drempel waarde voor het percentage gegevens drift voor e-mail waarschuwingen. | Verdere waarschuwingen en gebeurtenissen kunnen worden ingesteld op veel andere metrische gegevens in de gekoppelde Application Insights resource van de werk ruimte. | Ja | 
 
 ### <a name="backfill-settings"></a>Backfill-instellingen
 
@@ -179,7 +179,7 @@ De resulterende gegevensset-monitor wordt weer gegeven in de lijst. Selecteer de
 
 ### <a name="from-python-sdk"></a>Van python-SDK
 
-Raadpleeg de [documentatie van PYTHON SDK voor meer informatie over gegevens drift](https://aka.ms/datadriftapi) . 
+Raadpleeg de [documentatie van PYTHON SDK voor meer informatie over gegevens drift](/python/api/azureml-datadrift/azureml.datadrift) . 
 
 Hier volgt een voor beeld van het maken van een DataSet-monitor met behulp van de python-SDK
 
@@ -321,7 +321,7 @@ Kolommen, of functies, worden in de gegevensset geclassificeerd als categorische
 | Onderdeel type | Gegevenstype | Voorwaarde | Beperkingen | 
 | ------------ | --------- | --------- | ----------- |
 | Categorische gegevens | teken reeks, BOOL, int, float | Het aantal unieke waarden in de functie is kleiner dan 100 en minder dan 5% van het aantal rijen. | NULL wordt beschouwd als een eigen categorie. | 
-| Cijfer | int, float | Van een numeriek gegevens type en voldoet niet aan de voor waarden voor een categorische-functie. | De functie is verwijderd als > 15% van de waarden null zijn. | 
+| Numerieke | int, float | Van een numeriek gegevens type en voldoet niet aan de voor waarden voor een categorische-functie. | De functie is verwijderd als > 15% van de waarden null zijn. | 
 
 ## <a name="next-steps"></a>Volgende stappen
 

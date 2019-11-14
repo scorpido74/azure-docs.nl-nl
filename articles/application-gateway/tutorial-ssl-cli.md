@@ -1,23 +1,23 @@
 ---
-title: Een toepassingsgateway maken met SSL-beëindiging - Azure CLI
+title: SSL-beëindiging met CLI-Azure-toepassing gateway
 description: Leer hoe u een toepassingsgateway maakt en een certificaat voor SSL-beëindiging toevoegt met behulp van de Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d6df504d46a829298d0fff8d69b05019c26baa75
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 3f98aabb9459e4895243eec7f3d759d5a2ee88c6
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688134"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047329"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Een toepassingsgateway maken met SSL-beëindiging met behulp van de Azure CLI
 
-U kunt de Azure CLI gebruiken om een [toepassings gateway](overview.md) te maken met een certificaat voor [SSL-beëindiging](ssl-overview.md). Voor back-endservers kunt u een schaalset voor [virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) gebruiken. In dit voorbeeld bevat de schaalset twee virtuele-machine-instanties die zijn toegevoegd aan de standaard back-endpool van de toepassingsgateway.
+U kunt de Azure CLI gebruiken om een [toepassings gateway](overview.md) te maken met een certificaat voor [SSL-beëindiging](ssl-overview.md). Voor back-endservers kunt u een [schaalset voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) gebruiken. In dit voorbeeld bevat de schaalset twee virtuele-machine-instanties die zijn toegevoegd aan de standaard back-endpool van de toepassingsgateway.
 
 In dit artikel leert u het volgende:
 
@@ -53,7 +53,7 @@ Voer het wachtwoord voor het certificaat in. In dit voorbeeld wordt *Azure123456
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group).
+Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met [az group create](/cli/azure/group).
 
 In het volgende voorbeeld wordt de resourcegroep *myResourceGroupAG* gemaakt op de locatie *eastus*.
 
@@ -89,7 +89,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>De toepassingsgateway maken
 
-U kunt [az network application-gateway create](/cli/azure/network/application-gateway) gebruiken om de toepassingsgateway te maken. Als u een toepassingsgateway met de Azure CLI maakt, geeft u configuratiegegevens op, zoals capaciteit, SKU en HTTP-instellingen. 
+U kunt [az network application-gateway create](/cli/azure/network/application-gateway) gebruiken om de toepassingsgateway te maken. Als u met de Azure CLI een toepassingsgateway maakt, geeft u configuratiegegevens op, zoals capaciteit, SKU en HTTP-instellingen. 
 
 De toepassingsgateway wordt toegewezen aan *myAGSubnet* en *myAGPublicIPAddress*, die u eerder hebt gemaakt. In dit voorbeeld koppelt u het certificaat dat u hebt gemaakt aan het wachtwoord als u de toepassingsgateway maakt. 
 

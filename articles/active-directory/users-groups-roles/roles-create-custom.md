@@ -1,24 +1,24 @@
 ---
-title: Een aangepaste rol maken en toewijzen in azure AD-op rollen gebaseerd toegangs beheer-Azure Active Directory | Microsoft Docs
+title: Aangepaste rollen maken in azure AD-op rollen gebaseerd toegangs beheer | Microsoft Docs
 description: Aangepaste Azure AD-rollen maken en toewijzen met resource bereik op Azure Active Directory resources.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1a5aee1be7580956c32947e9bda7e2928a006c3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c2cb19c82f8c19bf87eeef755adb5756b2452512
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026394"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025279"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Een aangepaste rol maken en toewijzen in Azure Active Directory
 
@@ -30,8 +30,8 @@ U kunt aangepaste rollen maken op het tabblad [rollen en beheerders](https://por
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Een nieuwe aangepaste rol maken voor het verlenen van toegang voor het beheren van app-registraties
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) with privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
-1. Selecteer **Azure Active Directory** > -**rollen en-beheerders** > **nieuwe aangepaste rol**.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
+1. Selecteer **Azure Active Directory** > **rollen en beheerders** > **nieuwe aangepaste rol**.
 
    ![Rollen maken of bewerken op de pagina rollen en beheerders](./media/roles-create-custom/new-custom-role.png)
 
@@ -40,11 +40,11 @@ U kunt aangepaste rollen maken op het tabblad [rollen en beheerders](https://por
    ![Geef een naam en beschrijving op voor een aangepaste rol op het tabblad basis beginselen](./media/roles-create-custom/basics-tab.png)
 
 1. Selecteer op het tabblad **machtigingen** de machtigingen die nodig zijn voor het beheren van basis eigenschappen en referentie-eigenschappen van app-registraties. Zie [subtypen voor toepassings registratie en machtigingen in azure Active Directory](./roles-custom-available-permissions.md)voor een gedetailleerde beschrijving van elke machtiging.
-   1. Voer eerst ' referenties ' in de zoek balk in en selecteer de machtiging `microsoft.directory/applications/credentials/update`.
+   1. Voer eerst "referenties" in de zoek balk in en selecteer de `microsoft.directory/applications/credentials/update` machtiging.
 
       ![De machtigingen voor een aangepaste rol selecteren op het tabblad Machtigingen](./media/roles-create-custom/permissions-tab.png)
 
-   1. Voer vervolgens ' Basic ' in de zoek balk in, selecteer de machtiging `microsoft.directory/applications/basic/update` en klik vervolgens op **volgende**.
+   1. Voer vervolgens ' Basic ' in de zoek balk in, selecteer de `microsoft.directory/applications/basic/update` machtiging en klik vervolgens op **volgende**.
 1. Controleer op het tabblad **controleren en maken** de machtigingen en selecteer **maken**.
 
 Uw aangepaste rol wordt weer gegeven in de lijst met beschik bare rollen die moeten worden toegewezen.

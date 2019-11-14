@@ -1,25 +1,25 @@
 ---
-title: Een toegangs beoordeling van Azure AD-rollen in PIM-Azure Active Directory volt ooien | Microsoft Docs
+title: De toegangs beoordeling van Azure AD-rollen in PIM volt ooien-Azure AD | Microsoft Docs
 description: Meer informatie over het uitvoeren van een toegangs beoordeling van Azure AD-rollen in Azure AD Privileged Identity Management (PIM) en het weer geven van de resultaten
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 197abc0642d6abf1278a75c2101c195cafeb53b2
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: fe2d85d605b9ee418a5709ddcdb448c56be1d918
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809142"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022286"
 ---
 # <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Een toegangs beoordeling van Azure AD-rollen in Privileged Identity Management volt ooien
 
@@ -45,7 +45,7 @@ Als er een toegangs beoordeling is ingesteld zodat gebruikers zichzelf kunnen be
 
 Alle toegangs beoordelingen hebben een eind datum, maar u kunt de knop **stoppen** gebruiken om deze te volt ooien. Als een of meer gebruikers nog niet zijn gecontroleerd, kunnen ze niet meer nadat u de beoordeling hebt gestopt. U kunt een beoordeling niet opnieuw starten nadat deze is gestopt.
 
-### <a name="apply"></a>Aanvragen
+### <a name="apply"></a>Toepassen
 
 Wanneer een toegangs beoordeling is voltooid, omdat u de eind datum hebt bereikt of hand matig hebt gestopt, implementeert de knop **Toep assen** het resultaat van de controle. Als de toegang van een gebruiker bij de controle is geweigerd, is dit de stap die de roltoewijzing verwijdert.  
 

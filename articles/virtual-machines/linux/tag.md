@@ -1,5 +1,5 @@
 ---
-title: Een Azure Linux-virtuele machine coderen | Microsoft Docs
+title: Een Azure Linux-virtuele machine coderen
 description: Meer informatie over het coderen van een virtuele Azure Linux-machine die is gemaakt in azure met behulp van het Resource Manager-implementatie model.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: c232fc80ea63cd2e1d37bc380fb09c512bb7a517
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cabebee7b10ef86486fb8296df44845429d7ebbe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081917"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034728"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Een virtuele Linux-machine in azure labelen
 In dit artikel worden verschillende manieren beschreven om een virtuele Linux-machine in azure te labelen via het Resource Manager-implementatie model. Tags zijn door de gebruiker gedefinieerde sleutel/waarde-paren die rechtstreeks kunnen worden geplaatst op een resource of resource groep. Azure ondersteunt momenteel Maxi maal 15 Tags per resource en resource groep. Labels kunnen worden geplaatst op een resource op het moment dat ze worden gemaakt of worden toegevoegd aan een bestaande resource. Let op: Tags worden alleen ondersteund voor resources die zijn gemaakt via het Resource Manager-implementatie model.
@@ -36,7 +36,7 @@ U kunt alle eigenschappen van een bepaalde virtuele machine, inclusief de tags, 
 az vm show --resource-group MyResourceGroup --name MyTestVM
 ```
 
-Als u een nieuwe VM-tag wilt toevoegen via de Azure CLI, kunt `azure vm update` u de opdracht gebruiken samen met de para meter tag **--set**:
+Als u een nieuwe VM-tag wilt toevoegen via de Azure CLI, kunt u de opdracht `azure vm update` gebruiken, samen met de para meter tag **--set**:
 
 ```azurecli
 az vm update \

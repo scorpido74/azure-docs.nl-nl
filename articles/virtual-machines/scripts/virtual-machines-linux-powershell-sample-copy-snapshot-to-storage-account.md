@@ -1,5 +1,5 @@
 ---
-title: 'Azure PowerShell-voorbeeldscript: momentopname exporteren/kopiëren als VHD naar een opslagaccount in een andere regio | Microsoft Docs'
+title: 'Azure PowerShell-voorbeeld script: moment opname exporteren/kopiëren als VHD naar een opslag account in een andere regio'
 description: 'Azure PowerShell-voorbeeldscript: momentopname exporteren/kopiëren als VHD naar een opslagaccount in een andere regio'
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 7c721c10bd02824247df71abea4e037678fd5584
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c1ad520aadf8b2bafa9fdd03333e50b47612fa49
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749965"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040189"
 ---
 # <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Beheerde momentopnamen exporteren/kopiëren als VHD naar een opslagaccount in een andere regio met PowerShell
 
@@ -50,7 +50,7 @@ Dit script gebruikt de volgende opdrachten voor het genereren van de SAS-URI voo
 
 [Een beheerde schijf maken op basis van een VHD](virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Een virtuele machine maken op basis van een beheerde schijf](./virtual-machines-linux-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Een virtuele machine maken van een beheerde schijf](./virtual-machines-linux-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
 

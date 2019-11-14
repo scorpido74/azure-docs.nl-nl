@@ -1,31 +1,31 @@
 ---
-title: Power shell-voor beelden voor het beheren van groepen en het terugschrijven van groeps voorbeelden naar on-premises-Azure Active Directory | Microsoft Docs
+title: Power shell v2-voor beelden voor het beheren van groepen-Azure AD | Microsoft Docs
 description: Op deze pagina vindt u Power shell-voor beelden voor het beheren van uw groepen in Azure Active Directory
 keywords: Azure AD, Azure Active Directory, Power shell, groepen, groeps beheer
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e22baabda901a34f624cf27c25037ff3ba94e90
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1aa696ccaecc24df700315962c1f01f3a298c56c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381842"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026694"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory versie 2-cmdlets voor groeps beheer
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
-> * [PowerShell](groups-settings-v2-cmdlets.md)
+> - [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
 
@@ -60,7 +60,7 @@ Voordat u groepen kunt gaan beheren met Azure AD Power shell-cmdlets, moet u uw 
     PS C:\Windows\system32> Connect-AzureAD
 ```
 
-De cmdlet vraagt u om de referenties die u wilt gebruiken voor toegang tot uw Directory. In dit voor beeld gebruiken karen@drumkit.onmicrosoft.com we om toegang te krijgen tot de demo Directory. De cmdlet retourneert een bevestiging om weer te geven dat de sessie is verbonden met uw map:
+De cmdlet vraagt u om de referenties die u wilt gebruiken voor toegang tot uw Directory. In dit voor beeld gebruiken we karen@drumkit.onmicrosoft.com om toegang te krijgen tot de demo Directory. De cmdlet retourneert een bevestiging om weer te geven dat de sessie is verbonden met uw map:
 
 ```powershell
     Account                       Environment Tenant
@@ -199,7 +199,7 @@ Als u groepen uit uw Directory wilt verwijderen, gebruikt u de cmdlet Remove-Azu
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b
 ```
 
-## <a name="manage-group-membership"></a>Groepslidmaatschap beheren
+## <a name="manage-group-membership"></a>Groepslid maatschap beheren
 
 ### <a name="add-members"></a>Leden toevoegen
 
@@ -270,7 +270,7 @@ Het maken van groepen uitschakelen voor gebruikers die geen beheerder zijn:
    PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
    ```
   
-2. Als deze wordt `UsersPermissionToCreateGroupsEnabled : True`geretourneerd, kunnen gebruikers die geen beheerder zijn, groepen maken. U kunt deze functie als volgt uitschakelen:
+2. Als deze `UsersPermissionToCreateGroupsEnabled : True`retourneert, kunnen gebruikers die geen beheerder zijn, groepen maken. U kunt deze functie als volgt uitschakelen:
   
    ```powershell 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
@@ -316,9 +316,9 @@ Wanneer een groep wordt gemaakt, kan de eind gebruiker met bepaalde eind punten 
 * hostmaster
 * majordomo
 * beheerder
-* basis
+* Basis
 * veilig
-* beveiliging
+* security
 * ssl-admin
 * Webmaster
 
@@ -330,11 +330,11 @@ Office 365-groepen worden gemaakt en beheerd in de Cloud. Met de back-upfunctie 
 
 Raadpleeg de documentatie voor de [Azure AD Connect Sync-Service](../hybrid/how-to-connect-syncservice-features.md)voor meer informatie.
 
-Het terugschrijven van Office 365-groep is een open bare preview-functie van Azure Active Directory (Azure AD) en is beschikbaar in elk betaald licentie abonnement voor Azure AD. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)-previews voor een aantal juridische informatie over voor beelden.
+Het terugschrijven van Office 365-groep is een open bare preview-functie van Azure Active Directory (Azure AD) en is beschikbaar in elk betaald licentie abonnement voor Azure AD. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor een aantal juridische informatie over voor beelden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt meer Azure Active Directory Power shell-documentatie vinden op [Azure Active Directory](/powershell/azure/install-adv2?view=azureadps-2.0)-cmdlets.
+U kunt meer Azure Active Directory Power shell-documentatie vinden op [Azure Active Directory-cmdlets](/powershell/azure/install-adv2?view=azureadps-2.0).
 
 * [Managing access to resources with Azure Active Directory groups](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context) (Toegang tot resources beheren met Azure Active Directory-groepen)
-* [Uw on-premises identiteiten integreren met Azure Active Directory](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

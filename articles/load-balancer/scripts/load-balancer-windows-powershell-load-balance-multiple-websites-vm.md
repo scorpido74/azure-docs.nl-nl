@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell-voorbeeld: taakverdelingen maken voor meerdere websites met de Azure PowerShell | Microsoft Docs'
+title: Taak verdeling meerdere websites-Azure PowerShell-Azure Load Balancer
 description: In dit Azure PowerShell-voorbeeldscript ziet u hoe u taken van meerdere websites kunt verdelen naar dezelfde virtuele machine
 services: load-balancer
 documentationcenter: load-balancer
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 098d300efc0b151d07b087959750a209c392872f
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 82bd8a82418bad44786f009c75d742fcc0fc66e7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273614"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048895"
 ---
-# <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Azure PowerShell-voorbeeldscript: Taakverdeling instellen voor meerdere websites
+# <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Azure PowerShell-scriptvoorbeeld: taakverdeling maken voor meerdere websites
 
 In dit Azure PowerShell-scriptvoorbeeld wordt een virtueel netwerk gemaakt met twee virtuele machines (VM) die lid zijn van een beschikbaarheidsset. Een load balancer stuurt verkeer voor twee afzonderlijke IP-adressen door naar de twee virtuele machines. Nadat het script is uitgevoerd, kunt u webserversoftware implementeren op de virtuele machines en meerdere websites hosten, elk met een eigen IP-adres.
 
@@ -50,7 +50,7 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | Hiermee maakt u een Azure-beschikbaarheidsset om hoge beschikbaarheid te bieden. |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Hiermee maakt u een subnetconfiguratie. Deze configuratie wordt gebruikt bij het maken van het virtueel netwerk. |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Hiermee maakt u een virtueel netwerk. |

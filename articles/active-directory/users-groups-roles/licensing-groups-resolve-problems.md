@@ -1,26 +1,26 @@
 ---
-title: Oplossen van problemen met licentie toewijzing voor een groep-Azure Active Directory | Microsoft Docs
+title: Problemen met de toewijzing van groeps licenties oplossen-Azure Active Directory | Microsoft Docs
 description: Licentie toewijzings problemen identificeren en oplossen wanneer u gebruikmaakt van Azure Active Directory op groep gebaseerde licentie verlening
 services: active-directory
 keywords: Azure AD-licenties
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 09/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73dc95260e7beb306834d094957518f36106b0f4
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: ddfc4bf7ed3bdf214a44a5dfe03259d32b2f3f94
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73945757"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025699"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Problemen met licentie toewijzing voor een groep in Azure Active Directory identificeren en oplossen
 

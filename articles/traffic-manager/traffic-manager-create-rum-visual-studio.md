@@ -1,6 +1,6 @@
 ---
-title: Real-User-metingen naar Azure Traffic Manager met Visual Studio Mobile Center | Microsoft Docs
-description: Instellen van uw mobiele toepassing ontwikkeld met behulp van Visual Studio Mobile Center voor het verzenden van Real-User-metingen naar Traffic Manager
+title: Real-user-metingen met Visual Studio Mobile Center-Azure Traffic Manager
+description: Stel uw mobiele toepassing in die is ontwikkeld met behulp van Visual Studio Mobile Center om Real-user-metingen te verzenden naar Traffic Manager
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
@@ -13,55 +13,55 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 95207cea5988a22b0b3caa23be39b481f9fd687b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 734049a45eca2688b2ad309ee3245bbb7bf152de
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071259"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040324"
 ---
-# <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Over het verzenden van Real-User-metingen naar Traffic Manager met Visual Studio Mobile Center
+# <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Real-user-metingen verzenden naar Traffic Manager met Visual Studio Mobile Center
 
-U kunt instellen van uw mobiele toepassing ontwikkeld met behulp van Visual Studio Mobile Center voor het verzenden van Real-User-metingen naar Traffic Manager door de stappen te volgen:
+U kunt uw mobiele toepassing die is ontwikkeld met behulp van Visual Studio Mobile Center zo instellen dat u Real-user-metingen naar Traffic Manager kunt verzenden door de volgende stappen te volgen:
 
 >[!NOTE]
-> Echte Gebruikersmetingen verzenden naar Traffic manager wordt op dit moment alleen ondersteund voor Android.
+> Het verzenden van Real-user-metingen naar Traffic Manager wordt momenteel alleen ondersteund voor Android.
 
-Voor het configureren van Real User Measurements, moet u een sleutel ophalen en uw app instrumenteren met het pakket uitvoeren.
+Als u Real-user-metingen wilt configureren, moet u een sleutel en instrument voor uw app verkrijgen met het RUM-pakket.
 
-## <a name="step-1-obtain-a-key"></a>Stap 1: Een sleutel ophalen
+## <a name="step-1-obtain-a-key"></a>Stap 1: een sleutel verkrijgen
     
-De metingen die u maakt en verzonden naar Traffic Manager van uw clienttoepassing worden aangeduid met de service met een unieke tekenreeks, de sleutel echte gebruiker metingen (RUM) genoemd. U kunt een uitvoeren met behulp van Azure portal, een REST-API-sleutel ophalen of met behulp van de PowerShell / CLI-interfaces.
+De metingen die u onderneemt en naar Traffic Manager verzendt vanuit uw client toepassing, worden geïdentificeerd door de service met een unieke teken reeks, de Real-user-metingen (RUM) sleutel genoemd. U kunt een RUM-sleutel ophalen met behulp van de Azure Portal, een REST API of door gebruik te maken van de Power shell/CLI-interfaces.
 
-Als u de RUM-sleutel met behulp van Azure portal met behulp van de volgende procedure:
-1. Vanuit een browser, moet u zich aanmelden bij de Azure-portal. Als u nog een account hebt, kunt u zich aanmelden voor een gratis proefversie van één maand.
-2. Zoek in de zoekbalk van de portal, de naam van het Traffic Manager-profiel dat u wilt wijzigen en klik vervolgens op het Traffic Manager-profiel in de resultaten die de weergegeven.
-3. Klik in de pagina Traffic Manager-profiel op **Real User Measurements** onder **instellingen**.
-4. Klik op **sleutel genereren** om een nieuwe RUM-sleutel te maken.
+Gebruik de volgende procedure om de sleutel RUM te verkrijgen met Azure Portal:
+1. Meld u aan bij de Azure Portal vanuit een browser. Als u nog geen account hebt, kunt u zich aanmelden voor een gratis proef versie van één maand.
+2. Zoek in de zoek balk van de portal naar de naam van het Traffic Manager profiel dat u wilt wijzigen en klik vervolgens op het Traffic Manager profiel in de resultaten die worden weer gegeven.
+3. Klik op **real-User-metingen** onder **instellingen**op de pagina Profiel Traffic Manager.
+4. Klik op **sleutel genereren** om een nieuwe sleutel rum te maken.
         
-   ![Real User Measurements sleutel genereren](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+   ![Real-user-metingen sleutel genereren](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **Afbeelding 1: Real-User-metingen genereren**
+   **Afbeelding 1: genereren van sleutels Real-user-metingen**
 
-5. De pagina wordt weergegeven de RUM-sleutel die wordt gegenereerd en een JavaScript-codefragment die moeten worden ingesloten in de HTML-pagina.
+5. Op de pagina worden de gegenereerde RUM-sleutel en een Java script-code fragment weer gegeven dat moet worden inge sloten in de HTML-pagina.
  
-   ![JavaScript-code voor Real User Measurements sleutel](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
+   ![Java script-code voor Real-user-metingen sleutel](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
 
-   **Afbeelding 2: Real-User Meetsleutel en meting JavaScript**
+   **Afbeelding 2: Real-user-metingen Key en meting java script**
  
-6. Klik op de **kopie** knop om te kopiëren van de sleutel RUM. 
+6. Klik op de knop **kopiëren** om de sleutel rum te kopiëren. 
 
-## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Stap 2: Instrumenteer uw app met het uitvoeren van Mobile Center SDK-pakket
+## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Stap 2: uw app instrumenteren met het RUM-pakket van de Mobile Center SDK
 
-Als u geen ervaring met Visual Studio Mobile Center, gaat u naar de [website](https://mobile.azure.com). Zie voor gedetailleerde instructies voor het SDK-integratie [aan de slag met de Android SDK](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android).
+Als u niet bekend bent met Visual Studio Mobile Center, gaat u naar de bijbehorende [website](https://mobile.azure.com). Zie [aan de slag met de Android-SDK](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android)voor meer informatie over de integratie van de SDK.
 
-Voer de volgende procedure voor het gebruik van Real User Measurements:
+Als u Real-user-metingen wilt gebruiken, voert u de volgende procedure uit:
 
 1.  De SDK toevoegen aan het project
 
-    Tijdens de Preview-versie van de ATM-RUM SDK moet u expliciet verwijzen naar de pakketopslagplaats.
+    Tijdens de preview-versie van de ATM RUM SDK moet u expliciet verwijzen naar de pakket opslagplaats.
 
-    In uw **App/build.gradle** bestand en voeg de volgende regels:
+    Voeg in uw **app/build. gradle** -bestand de volgende regels toe:
 
     ```groovy
     repositories {
@@ -70,7 +70,7 @@ Voer de volgende procedure voor het gebruik van Real User Measurements:
         }
     }
     ```
-    In uw **App/build.gradle** bestand en voeg de volgende regels:
+    Voeg in uw **app/build. gradle** -bestand de volgende regels toe:
 
     ```groovy
     dependencies {
@@ -80,16 +80,16 @@ Voer de volgende procedure voor het gebruik van Real User Measurements:
     }
     ```
 
-2. Start de SDK
+2. De SDK starten
 
-    Openen van de belangrijkste activiteitklasse van uw app en voeg de volgende importinstructies toe:
+    Open de belangrijkste activiteiten klasse van uw app en voeg de volgende import instructies toe:
 
     ```java
     import com.microsoft.azure.mobile.MobileCenter;
     import com.microsoft.azure.mobile.rum.RealUserMeasurements;
     ```
 
-    Zoek de `onCreate` callback in hetzelfde bestand en voeg de volgende code toe:
+    Zoek naar de `onCreate`-call back in hetzelfde bestand en voeg de volgende code toe:
 
     ```java
     RealUserMeasurements.setRumKey("<Your RUM Key>");
@@ -97,10 +97,10 @@ Voer de volgende procedure voor het gebruik van Real User Measurements:
     ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [Real User Measurements](traffic-manager-rum-overview.md)
-- Informatie over [hoe Traffic Manager werkt](traffic-manager-overview.md)
-- Meer informatie over [Mobile Center](https://docs.microsoft.com/mobile-center/)
-- [Meld u](https://mobile.azure.com) voor Mobile Center
-- Meer informatie over de [routeringsmethoden voor verkeer](traffic-manager-routing-methods.md) ondersteund door Traffic Manager
-- Meer informatie over het [een Traffic Manager-profiel maken](traffic-manager-create-profile.md)
+- Meer informatie over [real-User-metingen](traffic-manager-rum-overview.md)
+- Meer informatie [over de werking van Traffic Manager](traffic-manager-overview.md)
+- Meer informatie over [mobiel centrum](https://docs.microsoft.com/mobile-center/)
+- [Registreren](https://mobile.azure.com) voor mobiel centrum
+- Meer informatie over de [routerings methoden voor verkeer](traffic-manager-routing-methods.md) die door Traffic Manager worden ondersteund
+- Meer informatie over het [maken van een Traffic Manager profiel](traffic-manager-create-profile.md)
 

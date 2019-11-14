@@ -4,12 +4,12 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: b150cad22528234286fa7939bf7055e8312ed361
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 3086d15ba541aa7f08f983dac4bc363f43248a9e
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229334"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74062874"
 ---
 ## <a name="webapi-project"></a>WebAPI-project
 1. Open in Visual Studio het **project appbackend** -project dat u hebt gemaakt in de zelf studie **gebruikers melden** .
@@ -36,10 +36,11 @@ ms.locfileid: "68229334"
 
             public Notification CreateNotification(string payload)
             {
-                var notification = new Notification() {
-                Id = notifications.Count,
-                Payload = payload,
-                Read = false
+                var notification = new Notification
+                {
+                    Id = notifications.Count,
+                    Payload = payload,
+                    Read = false
                 };
 
                 notifications.Add(notification);
@@ -88,8 +89,8 @@ ms.locfileid: "68229334"
         }
 
 
-Houd er rekening `Post` mee dat de methode nu geen pop-upmelding verzendt. Er wordt een onbewerkte melding verzonden die alleen de meldings-ID en geen gevoelige inhoud bevat. Zorg er ook voor dat u de verzend bewerking bijwerkt voor de platforms waarvoor u geen referenties hebt geconfigureerd op uw notification hub, omdat deze fouten zullen veroorzaken.
+Houd er rekening mee dat de methode `Post` nu geen pop-upmelding verzendt. Er wordt een onbewerkte melding verzonden die alleen de meldings-ID en geen gevoelige inhoud bevat. Zorg er ook voor dat u de verzend bewerking bijwerkt voor de platforms waarvoor u geen referenties hebt geconfigureerd op uw notification hub, omdat deze fouten zullen veroorzaken.
 
 1. Nu gaan we deze app opnieuw implementeren op een Azure-website om deze toegankelijk te maken vanaf alle apparaten. Klik met de rechtermuisknop op het project **AppBackend** en selecteer **Publiceren**.
-2. Selecteer de Azure-website als uw publicatie doel. Meld u aan met uw Azure-account en selecteer een bestaande of nieuwe website en noteer de eigenschap **doel-URL** op het tabblad **verbinding** . Naar deze URL wordt verderop in deze zelfstudie verwezen als uw *back-endeindpunt*. Klik op **Publish**.
+2. Selecteer de Azure-website als uw publicatie doel. Meld u aan met uw Azure-account en selecteer een bestaande of nieuwe website en noteer de eigenschap **doel-URL** op het tabblad **verbinding** . Verderop in deze zelf studie wordt naar deze URL verwezen als *back-end-eind punt* . Klik op **Publish**.
 

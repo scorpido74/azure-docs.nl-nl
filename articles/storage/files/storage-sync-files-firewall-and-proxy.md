@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5d2770c3f51c05354ff331fe8de723fb6ebd5c65
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f37c54699329f43a5bbdd5c4543ae3a7b2166f5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498414"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048832"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- en firewallinstellingen van Azure File Sync
 Azure File Sync maakt verbinding met uw on-premises servers met Azure Files, waarbij functies voor multi-site synchronisatie en Cloud lagen worden ingeschakeld. Als zodanig moet een on-premises server zijn verbonden met internet. Een IT-beheerder moet het beste pad bepalen dat de server kan bereiken in azure Cloud Services.
@@ -94,9 +94,9 @@ In de volgende tabel worden de vereiste domeinen voor communicatie beschreven:
 | **Azure Resource Manager** | https://management.azure.com | https://management.usgovcloudapi.net | Elke gebruikers aanroep (zoals Power shell) gaat naar/via deze URL, met inbegrip van de eerste registratie aanroep van de server. |
 | **Azure Active Directory** | https://login.windows.net<br>https://login.microsoftonline.com | https://login.microsoftonline.us | Azure Resource Manager-aanroepen moeten worden uitgevoerd door een geverifieerde gebruiker. Deze URL wordt gebruikt voor gebruikers verificatie. |
 | **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | Als onderdeel van de implementatie van Azure File Sync wordt een Service-Principal in de Azure Active Directory van het abonnement gemaakt. Deze URL wordt gebruikt voor die. Deze principal wordt gebruikt voor het delegeren van een minimale set rechten voor de Azure File Sync-Service. De gebruiker die de eerste installatie van Azure File Sync uitvoert, moet een geverifieerde gebruiker zijn met de bevoegdheid eigenaar van het abonnement. |
-| **Azure Storage** | &ast;. core.windows.net | &ast;. core.usgovcloudapi.net | Wanneer een bestand door de server wordt gedownload, voert de server de gegevens efficiënter uit wanneer deze rechtstreeks met de Azure-bestands share in het opslag account communiceren. De server heeft een SAS-sleutel die alleen toegang tot de doel bestands shares toestaat. |
-| **Azure File Sync** | &ast;. one.microsoft.com<br>&ast;. afs.azure.net | &ast;. afs.azure.us | Na de eerste registratie van de server ontvangt de server een regionale URL voor het Azure File Sync service-exemplaar in die regio. De-server kan de URL gebruiken om rechtstreeks en efficiënt te communiceren met het exemplaar dat de synchronisatie afhandelt. |
-| **Micro soft PKI** | https://www.microsoft.com/pki/mscorp<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp<br><http://ocsp.msocsp.com> | Zodra de Azure File Sync-agent is geïnstalleerd, wordt de PKI-URL gebruikt voor het downloaden van tussenliggende certificaten die nodig zijn om te communiceren met de Azure File Sync-Service en de Azure-bestands share. De OCSP-URL wordt gebruikt om de status van een certificaat te controleren. |
+| **Azure Storage** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | Wanneer een bestand door de server wordt gedownload, voert de server de gegevens efficiënter uit wanneer deze rechtstreeks met de Azure-bestands share in het opslag account communiceren. De server heeft een SAS-sleutel die alleen toegang tot de doel bestands shares toestaat. |
+| **Azure File Sync** | &ast;.one.microsoft.com<br>&ast;. afs.azure.net | &ast;.afs.azure.us | Na de eerste registratie van de server ontvangt de server een regionale URL voor het Azure File Sync service-exemplaar in die regio. De-server kan de URL gebruiken om rechtstreeks en efficiënt te communiceren met het exemplaar dat de synchronisatie afhandelt. |
+| **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Zodra de Azure File Sync-agent is geïnstalleerd, wordt de PKI-URL gebruikt voor het downloaden van tussenliggende certificaten die nodig zijn om te communiceren met de Azure File Sync-Service en de Azure-bestands share. De OCSP-URL wordt gebruikt om de status van een certificaat te controleren. |
 
 > [!Important]
 > Als verkeer naar &ast;. one.microsoft.com wordt toegestaan, kan verkeer naar meer dan alleen de synchronisatie service van de server mogelijk zijn. Er zijn veel meer micro soft-services beschikbaar onder subdomeinen.
@@ -107,33 +107,33 @@ Voor bedrijfs continuïteit en herstel na nood gevallen (BCDR) kunt u uw Azure-b
 
 | Cloud  | Regio | URL van het primaire eind punt | Gekoppelde regio | Detectie-URL |
 |--------|--------|----------------------|---------------|---------------|
-| Openbaar |Australië - oost | https:\/-kailani-aue.one.microsoft.com | Australië - zuidoost | https:\/-tm-kailani-aue.one.microsoft.com |
-| Openbaar |Australië - zuidoost | https:\/-kailani-aus.one.microsoft.com | Australië - oost | https:\/-tm-kailani-aus.one.microsoft.com |
-| Openbaar | Brazilië - zuid | https:\/-brazilsouth01.afs.azure.net | US - zuid-centraal | https:\/-tm-brazilsouth01.afs.azure.net |
-| Openbaar | Canada - centraal | https:\/-kailani-cac.one.microsoft.com | Canada - oost | https:\/-tm-kailani-cac.one.microsoft.com |
-| Openbaar | Canada - oost | https:\/-kailani-cae.one.microsoft.com | Canada - centraal | https:\/-tm-kailani.cae.one.microsoft.com |
-| Openbaar | India - centraal | https:\/-kailani-cin.one.microsoft.com | India - zuid | https:\/-tm-kailani-cin.one.microsoft.com |
-| Openbaar | US - centraal | https:\/-kailani-cus.one.microsoft.com | US - oost 2 | https:\/-tm-kailani-cus.one.microsoft.com |
-| Openbaar | Azië - oost | https:\/-kailani11.one.microsoft.com | Azië - zuidoost | https:\/-tm-kailani11.one.microsoft.com |
-| Openbaar | US - oost | https:\/-kailani1.one.microsoft.com | US - west | https:\/-tm-kailani1.one.microsoft.com |
-| Openbaar | US - oost 2 | https:\/-kailani-ess.one.microsoft.com | US - centraal | https:\/-tm-kailani-ess.one.microsoft.com |
-| Openbaar | Japan - Oost | https:\/-japaneast01.afs.azure.net | Japan - west | https:\/-tm-japaneast01.afs.azure.net |
-| Openbaar | Japan - west | https:\/-japanwest01.afs.azure.net | Japan - Oost | https:\/-tm-japanwest01.afs.azure.net |
-| Openbaar | Korea - centraal | https:\/-koreacentral01.afs.azure.net/ | Korea - zuid | https:\/-tm-koreacentral01.afs.azure.net/ |
-| Openbaar | Korea - zuid | https:\/-koreasouth01.afs.azure.net/ | Korea - centraal | https:\/-tm-koreasouth01.afs.azure.net/ |
-| Openbaar | VS - noord-centraal | https:\/-northcentralus01.afs.azure.net | US - zuid-centraal | https:\/-tm-northcentralus01.afs.azure.net |
-| Openbaar | Europa - noord | https:\/-kailani7.one.microsoft.com | Europa -west | https:\/-tm-kailani7.one.microsoft.com |
-| Openbaar | US - zuid-centraal | https:\/-southcentralus01.afs.azure.net | VS - noord-centraal | https:\/-tm-southcentralus01.afs.azure.net |
-| Openbaar | India - zuid | https:\/-kailani-sin.one.microsoft.com | India - centraal | https:\/-tm-kailani-sin.one.microsoft.com |
-| Openbaar | Azië - zuidoost | https:\/-kailani10.one.microsoft.com | Azië - oost | https:\/-tm-kailani10.one.microsoft.com |
-| Openbaar | VK - zuid | https:\/-kailani-uks.one.microsoft.com | Verenigd Koninkrijk West | https:\/-tm-kailani-uks.one.microsoft.com |
-| Openbaar | Verenigd Koninkrijk West | https:\/-kailani-ukw.one.microsoft.com | VK - zuid | https:\/-tm-kailani-ukw.one.microsoft.com |
-| Openbaar | US - west-centraal | https:\/-westcentralus01.afs.azure.net | US - west 2 | https:\/-tm-westcentralus01.afs.azure.net |
-| Openbaar | Europa -west | https:\/-kailani6.one.microsoft.com | Europa - noord | https:\/-tm-kailani6.one.microsoft.com |
-| Openbaar | US - west | https:\/-kailani.one.microsoft.com | US - oost | https:\/-tm-kailani.one.microsoft.com |
-| Openbaar | US - west 2 | https:\/-westus201.afs.azure.net | US - west-centraal | https:\/-tm-westus201.afs.azure.net |
+| Public |Australië - oost | https:\/-kailani-aue.one.microsoft.com | Australië - zuidoost | https:\/-tm-kailani-aue.one.microsoft.com |
+| Public |Australië - zuidoost | https:\/-kailani-aus.one.microsoft.com | Australië - oost | https:\/-tm-kailani-aus.one.microsoft.com |
+| Public | Brazilië - zuid | https:\//brazilsouth01.afs.azure.net | US - zuid-centraal | https:\/-tm-brazilsouth01.afs.azure.net |
+| Public | Canada - midden | https:\/-kailani-cac.one.microsoft.com | Canada - oost | https:\/-tm-kailani-cac.one.microsoft.com |
+| Public | Canada - oost | https:\/-kailani-cae.one.microsoft.com | Canada - midden | https:\/-tm-kailani.cae.one.microsoft.com |
+| Public | India - centraal | https:\/-kailani-cin.one.microsoft.com | India - zuid | https:\/-tm-kailani-cin.one.microsoft.com |
+| Public | US - centraal | https:\/-kailani-cus.one.microsoft.com | US - oost 2 | https:\/-tm-kailani-cus.one.microsoft.com |
+| Public | Azië - oost | https:\//kailani11.one.microsoft.com | Azië - zuidoost | https:\/-tm-kailani11.one.microsoft.com |
+| Public | US - oost | https:\//kailani1.one.microsoft.com | US - west | https:\/-tm-kailani1.one.microsoft.com |
+| Public | US - oost 2 | https:\/-kailani-ess.one.microsoft.com | US - centraal | https:\/-tm-kailani-ess.one.microsoft.com |
+| Public | Japan - oost | https:\/-japaneast01.afs.azure.net | Japan - west | https:\/-tm-japaneast01.afs.azure.net |
+| Public | Japan - west | https:\/-japanwest01.afs.azure.net | Japan - oost | https:\/-tm-japanwest01.afs.azure.net |
+| Public | Korea - centraal | https:\/-koreacentral01.afs.azure.net/ | Korea - zuid | https:\/-tm-koreacentral01.afs.azure.net/ |
+| Public | Korea - zuid | https:\//koreasouth01.afs.azure.net/ | Korea - centraal | https:\//tm-koreasouth01.afs.azure.net/ |
+| Public | US - noord-centraal | https:\/-northcentralus01.afs.azure.net | US - zuid-centraal | https:\/-tm-northcentralus01.afs.azure.net |
+| Public | Europa - noord | https:\/-kailani7.one.microsoft.com | Europa -west | https:\/-tm-kailani7.one.microsoft.com |
+| Public | US - zuid-centraal | https:\/-southcentralus01.afs.azure.net | US - noord-centraal | https:\/-tm-southcentralus01.afs.azure.net |
+| Public | India - zuid | https:\/-kailani-sin.one.microsoft.com | India - centraal | https:\/-tm-kailani-sin.one.microsoft.com |
+| Public | Azië - zuidoost | https:\/-kailani10.one.microsoft.com | Azië - oost | https:\/-tm-kailani10.one.microsoft.com |
+| Public | Verenigd Koninkrijk Zuid | https:\/-kailani-uks.one.microsoft.com | Verenigd Koninkrijk West | https:\/-tm-kailani-uks.one.microsoft.com |
+| Public | Verenigd Koninkrijk West | https:\/-kailani-ukw.one.microsoft.com | Verenigd Koninkrijk Zuid | https:\/-tm-kailani-ukw.one.microsoft.com |
+| Public | US - west-centraal | https:\/-westcentralus01.afs.azure.net | US - west 2 | https:\/-tm-westcentralus01.afs.azure.net |
+| Public | Europa -west | https:\//kailani6.one.microsoft.com | Europa - noord | https:\/-tm-kailani6.one.microsoft.com |
+| Public | US - west | https:\//kailani.one.microsoft.com | US - oost | https:\/-tm-kailani.one.microsoft.com |
+| Public | US - west 2 | https:\/-westus201.afs.azure.net | US - west-centraal | https:\//tm-westus201.afs.azure.net |
 | Overheid | VS (overheid) - Arizona | https:\/-usgovarizona01.afs.azure.us | VS (overheid) - Texas | https:\/-tm-usgovarizona01.afs.azure.us |
-| Overheid | VS (overheid) - Texas | https:\/-usgovtexas01.afs.azure.us | VS (overheid) - Arizona | https:\/-tm-usgovtexas01.afs.azure.us |
+| Overheid | VS (overheid) - Texas | https:\//usgovtexas01.afs.azure.us | VS (overheid) - Arizona | https:\//tm-usgovtexas01.afs.azure.us |
 
 - Als u lokaal redundante (LRS) of zone redundante (ZRS) opslag accounts gebruikt, hoeft u alleen de URL in te scha kelen die wordt weer gegeven onder URL van het primaire eind punt.
 

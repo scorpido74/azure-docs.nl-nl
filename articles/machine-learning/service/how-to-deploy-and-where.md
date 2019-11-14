@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 4a0736267ca00b67f35abc7cf263e7cf19543d81
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6ab01cf42dac280e64470355f7ea5804cad669d7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932132"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048805"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen met Azure Machine Learning implementeren
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -194,7 +194,7 @@ Het script bevat twee functies die het model laden en uitvoeren:
 
 * `init()`: deze functie laadt meestal het model in een globaal object. Deze functie wordt slechts één keer uitgevoerd wanneer de docker-container voor uw webservice wordt gestart.
 
-* `run(input_data)`: deze functie maakt gebruik van het model voor het voors pellen van een waarde op basis van de invoer gegevens. Invoer en uitvoer van de run worden meestal JSON gebruikt voor serialisatie en deserialisatie. U kunt ook werken met onbewerkte binaire gegevens. U kunt de gegevens transformeren voordat u deze naar het model verzendt of voordat u deze naar de client stuurt.
+* `run(input_data)`: Met deze functie maakt gebruik van het model om te voorspellen van een waarde op basis van de ingevoerde gegevens. Invoer en uitvoer van de run worden meestal JSON gebruikt voor serialisatie en deserialisatie. U kunt ook werken met onbewerkte binaire gegevens. U kunt de gegevens transformeren voordat u deze naar het model verzendt of voordat u deze naar de client stuurt.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Model bestanden zoeken in uw invoer script
 
@@ -233,7 +233,7 @@ Wanneer u een model registreert, geeft u een model naam op die wordt gebruikt vo
 Wanneer u een model registreert, geeft u het een naam. De naam komt overeen met de locatie waar het model lokaal of tijdens de service-implementatie wordt geplaatst.
 
 > [!IMPORTANT]
-> Als u automatische machine learning hebt gebruikt om een model te trainen, wordt een `model_id` waarde gebruikt als de naam van het model. Zie [Azure-MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment) op github voor een voor beeld van het registreren en implementeren van een model dat is getraind met automatische machine learning.
+> Als u automatische machine learning hebt gebruikt om een model te trainen, wordt een `model_id` waarde gebruikt als de naam van het model. Zie [Azure-MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features) op github voor een voor beeld van het registreren en implementeren van een model dat is getraind met automatische machine learning.
 
 In het volgende voor beeld wordt een pad geretourneerd naar één bestand met de naam `sklearn_mnist_model.pkl` (dat is geregistreerd met de name `sklearn_mnist`):
 
@@ -375,8 +375,8 @@ def run(data):
 
 Zie de volgende scripts voor meer voor beelden:
 
-* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
-* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
+* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
+* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
 * [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
 * [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
 
@@ -572,7 +572,7 @@ Zie [AZ ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/
 Zie de volgende documenten voor meer informatie:
 
 * [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [Profiel ()](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
+* [Profiel ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
 * [Schema voor de configuratie van het Afleidings bestand](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Implementeren naar doel
@@ -584,7 +584,7 @@ Implementatie maakt gebruik van de configuratie-implementatie configuratie voor 
 Als u een model lokaal wilt implementeren, moet docker op uw lokale computer zijn geïnstalleerd.
 
 #### <a name="using-the-sdk"></a>De SDK gebruiken
-
+zzs
 ```python
 from azureml.core.webservice import LocalWebservice, Webservice
 
@@ -853,7 +853,7 @@ SDK
 model_path = Model(ws,'mymodel').download()
 ```
 
-CLI
+CLI:
 ```azurecli-interactive
 az ml model download --model-id mymodel:1 --target-dir model_folder
 ```
@@ -1137,8 +1137,8 @@ Opmerking: deze afhankelijkheden zijn opgenomen in de vooraf opgebouwde sklearn-
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een geïmplementeerde webservice wilt verwijderen, gebruikt u `service.delete()`.
-Als u een geregistreerd model wilt verwijderen, gebruikt u `model.delete()`.
+Als u wilt verwijderen van een geïmplementeerde webservice, gebruikt u `service.delete()`.
+Als u wilt een geregistreerde model verwijderen, gebruikt u `model.delete()`.
 
 Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) en [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)voor meer informatie.
 
@@ -1146,7 +1146,7 @@ Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/pyth
 
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [Problemen met implementatie oplossen](how-to-troubleshoot-deployment.md)
-* [Azure Machine Learning webservices beveiligen met SSL](how-to-secure-web-service.md)
+* [Azure Machine Learning-webservices met SSL beveiligde](how-to-secure-web-service.md)
 * [Een Azure Machine Learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)

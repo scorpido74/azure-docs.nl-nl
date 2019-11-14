@@ -1,18 +1,19 @@
 ---
-title: Certificaten die vereist zijn voor White List-back-ends in Azure-toepassing gateway
-description: In dit artikel vindt u voor beelden van hoe een SSL-certificaat kan worden geconverteerd naar een verificatie certificaat en een vertrouwd basis certificaat dat vereist is voor White List back-end-instanties in Azure-toepassing gateway
+title: Vereiste certificaten voor het toestaan van back-endservers
+titleSuffix: Azure Application Gateway
+description: In dit artikel vindt u voor beelden van hoe een SSL-certificaat kan worden geconverteerd naar een verificatie certificaat en een vertrouwd basis certificaat dat vereist is voor het toestaan van back-end-instanties in Azure-toepassing gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: ae1ac3df3da4e5c25e5538f0e8cc4cd12f9186c6
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 48944c513bd075e3859503fdadc4001261dc8c4a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774778"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048174"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Certificaten maken om de back-end met Azure-toepassing gateway toe te staan
 
@@ -47,7 +48,7 @@ Exporteer vanuit uw SSL-certificaat het bestand met de open bare sleutel. CER (n
 
    ![De persoonlijke sleutel niet exporteren](./media/certificates-for-backend-authentication/notprivatekey.png)
 
-4. Selecteer op de pagina **Bestandsindeling voor export** de optie **Met Base64 gecodeerde X.509 (.CER)** en klik op **Volgende**.
+4. Selecteer op de pagina **Bestandsindeling voor export** de optie **Met Base64 gecodeerde X.509 (*.CER)** en klik op **Volgende**.
 
    ![Base-64-code ring](./media/certificates-for-backend-authentication/base64.png)
 

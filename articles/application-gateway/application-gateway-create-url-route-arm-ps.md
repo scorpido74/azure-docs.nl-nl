@@ -1,18 +1,19 @@
 ---
-title: Maak een toepassings gateway met behulp van op URL-pad gebaseerde routerings regels-Azure PowerShell | Microsoft Docs
+title: Op URL-pad gebaseerde routerings regels met behulp van Power shell
+titleSuffix: Azure Application Gateway
 description: Meer informatie over het maken van op URL-pad gebaseerde routerings regels voor een toepassings gateway en een schaalset voor virtuele machines met behulp van Azure PowerShell.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: ebe09e2c10bed1779d9189755f66bbea9bca1d43
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: e7934ba0b33bff7ffb8e89e7b56c5b998a232289
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306257"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048056"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Maak een toepassings gateway met behulp van op URL-pad gebaseerde routerings regels met Azure PowerShell
 
@@ -107,9 +108,9 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
   -RequestTimeout 120
 ```
 
-### <a name="create-the-default-listener-and-rule"></a>Standaardlistener en -regel maken
+### <a name="create-the-default-listener-and-rule"></a>De standaard-listener en regel maken
 
-Als u de toepassingsgateway wilt inschakelen om het verkeer op de juiste manier naar de back-endpool te routeren, is een listener vereist. In deze zelfstudie maakt u twee listeners. De eerste basis-listener die u maakt, luistert naar verkeer op de basis-URL. De tweede listener die u maakt, luistert naar verkeer op specifieke URL's.
+Een listener is vereist om de toepassingsgateway in te schakelen om het verkeer op de juiste manier naar de back-endpool door te sturen. In deze zelfstudie maakt u twee listeners. De eerste basis-listener die u maakt, luistert naar verkeer op de basis-URL. De tweede listener die u maakt, luistert naar verkeer op specifieke URL's.
 
 Maak de standaard-listener met de naam *myDefaultListener* met behulp van [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) met de front-end-configuratie en de frontend-poort die u eerder hebt gemaakt. Er is een regel vereist, zodat de listener weet welke back-endpool moet worden gebruikt voor binnenkomend verkeer. Maak een basis regel met de naam *firewallregel1* met behulp van [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
@@ -345,7 +346,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-U kunt [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) gebruiken om het open bare IP-adres van de toepassings gateway op te halen. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Zoals, `http://52.168.55.24` `http://52.168.55.24:8080/images/test.htm`, of .`http://52.168.55.24:8080/video/test.htm`
+U kunt [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) gebruiken om het open bare IP-adres van de toepassings gateway op te halen. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Zoals, `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`of `http://52.168.55.24:8080/video/test.htm`.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -353,7 +354,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Basis-URL testen in de toepassingsgateway](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-Wijzig de URL naar `http://<ip-address>:8080/video/test.htm`, vervang uw IP-adres voor `<ip-address>`en u ziet iets als het volgende voor beeld:
+Wijzig de URL naar `http://<ip-address>:8080/video/test.htm`, vervang uw IP-adres voor `<ip-address>`en u ziet iets als in het volgende voor beeld:
 
 ![Afbeeldingen-URL in toepassingsgateway testen](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 

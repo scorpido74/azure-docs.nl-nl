@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 05/16/2017
 ms.author: allensu
-ms.openlocfilehash: 99768afa9de22767d73576143a5c747be6a3bef9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 183599fccfad1806faae3cb90de225d388b77da8
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013372"
+ms.locfileid: "74049239"
 ---
-# <a name="route-traffic-for-high-availability-of-applications"></a>Verkeer routeren voor hoge Beschik baarheid van toepassingen
+# <a name="route-traffic-for-high-availability-of-applications---azure-powershell"></a>Verkeer routeren voor hoge Beschik baarheid van toepassingen-Azure PowerShell
 
 Met dit script maakt u een resource groep, twee app service-abonnementen, twee web-apps, een Traffic Manager-profiel en twee Traffic Manager-eind punten. Traffic Manager stuurt het verkeer naar de toepassing in één regio als de primaire regio, en naar de secundaire regio wanneer de toepassing in de primaire regio niet beschikbaar is. Voordat u het script uitvoert, moet u de waarden voor MyWebApp, MyWebAppL1 en MyWebAppL2 wijzigen in unieke waarden in Azure. Nadat het script is uitgevoerd, hebt u toegang tot de app in de primaire regio met de URL mywebapp.trafficmanager.net.
 

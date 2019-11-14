@@ -1,20 +1,21 @@
 ---
-title: Firewall regels voor webtoepassingen aanpassen in Azure-toepassing gateway-Power shell
+title: Regels aanpassen met Power shell
+titleSuffix: Azure Web Application Firewall
 description: Dit artikel bevat informatie over het aanpassen van de firewall regels voor webtoepassingen in Application Gateway met Power shell.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/23/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 2930204cd322f3a8ba25eb6f3455a51f1d3d2ee9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 55eea15da8c3a10b0421ff1576082d6b42fc7c56
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516953"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048510"
 ---
-# <a name="customize-web-application-firewall-rules-through-powershell"></a>Firewall regels voor Web Application aanpassen via Power shell
+# <a name="customize-web-application-firewall-rules-using-powershell"></a>Firewall regels voor web-apps aanpassen met behulp van Power shell
 
 De Azure-toepassing gateway Web Application firewall (WAF) biedt beveiliging voor webtoepassingen. Deze beveiligingen worden verzorgd door de OWASP (open Web Application Security project) kern regelset (CRS). Sommige regels kunnen valse positieven veroorzaken en werkelijk verkeer blok keren. Daarom biedt Application Gateway de mogelijkheid om regel groepen en regels aan te passen. Zie voor meer informatie over de specifieke regel groepen en regels de [lijst met CRS-regel groepen en-regels voor Web Application firewall](application-gateway-crs-rulegroups-rules.md).
 

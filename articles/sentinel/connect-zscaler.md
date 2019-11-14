@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe7ba0f6daec0b85ec73611ba4e48d72f16146e3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45351cc29b2b7028863aff06ab5a511674604d6f
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515133"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048957"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>Verbinding maken met Zscaler Internet toegang tot Azure Sentinel
 
@@ -106,7 +106,7 @@ In deze stap moet u de Linux-computer selecteren die zal fungeren als een proxy 
     - Poort = 514
     - Indeling = CEF
     - IP-adres: Zorg ervoor dat u de CEF-berichten verzendt naar het IP-adres van de virtuele machine die u voor dit doel hebt toegewezen.
- Zie de [Zscaler Azure Sentinel-integratie handleiding](https://aka.ms/ZscalerCEFInstructions)voor meer informatie.
+ Zie de [implementatie handleiding voor Zscaler en Azure](https://aka.ms/ZscalerCEFInstructions)voor meer informatie.
  
    > [!NOTE]
    > Deze oplossing ondersteunt syslog RFC 3164 of RFC 5424.

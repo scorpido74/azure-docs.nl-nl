@@ -1,5 +1,5 @@
 ---
-title: Algemene Power shell-opdrachten voor virtuele Azure-netwerken | Microsoft Docs
+title: Algemene Power shell-opdrachten voor virtuele Azure-netwerken
 description: Algemene Power shell-opdrachten waarmee u aan de slag kunt gaan met het maken van een virtueel netwerk en de bijbehorende resources voor Vm's.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: d7ab705291b8705994aed96f1d270f792e4b2fb0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3abde706ddff297094c7fbb1579b534894b349d2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102528"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032921"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Algemene Power shell-opdrachten voor virtuele Azure-netwerken
 
@@ -45,7 +45,7 @@ Sommige variabelen kunnen nuttig zijn wanneer u meer dan een van de opdrachten i
 | Een test maken |$healthProbe = [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) -name "myProbe"-RequestPath ' healthProbe. aspx '-protocol http-poort 80-IntervalInSeconds 15-ProbeCount 2<BR><BR>Bevat status tests die worden gebruikt om de beschik baarheid van exemplaren van virtuele machines in de back-end-adres groep te controleren. |
 | Een taakverdelings regel maken |$lbRule = [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80<BR><BR>Bevat regels die een open bare poort op de load balancer toewijzen aan een poort in de back-end-adres groep. |
 | Een binnenkomende NAT-regel maken |$inboundNATRule = [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) -name "myInboundRule1"-FrontendIpConfiguration $FrontendIP-protocol TCP-FrontendPort 3441-BackendPort 3389<BR><BR>Bevat regels die een open bare poort op de load balancer toewijzen aan een poort voor een specifieke virtuele machine in de back-end-adres groep. |
-| Een load balancer maken |$loadBalancer = [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) -ResourceGroupName $MyResourceGroup-name "myLoadBalancer"-location $location-FrontendIpConfiguration $FrontendIP-InboundNatRule $InboundNATRule-LoadBalancingRule $LbRule-BackendAddressPool $ beAddressPool-test $healthProbe |
+| Een load balancer maken |$loadBalancer = [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) -ResourceGroupName $MyResourceGroup-name "myLoadBalancer"-location $location-FrontendIpConfiguration $FrontendIP-InboundNatRule $InboundNATRule-LoadBalancingRule $LbRule-BackendAddressPool $BeAddressPool-probe $healthProbe |
 | Een netwerk interface maken |$nic 1 = [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) -ResourceGroupName $MyResourceGroup-name "myNIC"-location $location-PrivateIpAddress xx. X. X. X-subnet $subnet 2-LoadBalancerBackendAddressPool $loadBalancer. BackendAddressPools [0]-LoadBalancerInboundNatRule $loadBalancer. InboundNatRules [0]<BR><BR>Maak een netwerk interface met behulp van het open bare IP-adres en het subnet van het virtuele netwerk dat u eerder hebt gemaakt. |
 
 ## <a name="get-information-about-network-resources"></a>Informatie over netwerk bronnen ophalen

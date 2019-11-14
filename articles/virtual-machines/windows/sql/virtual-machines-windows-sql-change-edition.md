@@ -1,5 +1,5 @@
 ---
-title: Een in-place upgrade van een SQL Server-editie op een virtuele Azure-machine uitvoeren | Microsoft Docs
+title: In-place upgrade van SQL Server Edition
 description: Meer informatie over het wijzigen van de editie van uw SQL Server-VM in Azure.
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 06/26/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eec2e588b1c2b03e9880dad0848b8213bf5fa449
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 1db45097b0416b680571cb47ec1d9b52f9275c43
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100512"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022206"
 ---
 # <a name="perform-an-in-place-upgrade-of-a-sql-server-edition-on-an-azure-vm"></a>Een in-place upgrade van een SQL Server-editie op een virtuele Azure-machine uitvoeren
 
@@ -28,7 +29,7 @@ De versie van SQL Server wordt bepaald door de product code en wordt opgegeven m
 
 Als u de versie van SQL Server hebt bijgewerkt met behulp van het installatie medium nadat u zich hebt geregistreerd bij de resource provider van de SQL-VM, moet u de eigenschap SQL Server Edition van de SQL-VM-resource als volgt instellen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
 1. Ga naar uw SQL Server virtuele machine bron. 
 1. Selecteer **configureren**onder **instellingen**. Selecteer vervolgens de gewenste versie van SQL Server in de vervolg keuzelijst onder **editie**. 
 

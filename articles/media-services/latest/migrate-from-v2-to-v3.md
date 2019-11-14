@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 003cc54a07455118969a2dd497e9b963c03f68f2
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: fb36387764efbdaa1ad3d164ba419bee49770871
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099493"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049008"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3
 
@@ -38,7 +38,7 @@ Als u op dit moment een video service hebt ontwikkeld voor de [oudere Media Serv
 *  v3 is gebaseerd op een geïntegreerde API-gebied dat functionaliteit voor zowel beheer als bewerkingen beschikbaar stelt die is gebouwd op Azure Resource Manager. Azure Resource Manager sjablonen kunnen worden gebruikt voor het maken en implementeren van trans formaties, streaming-eind punten, Live-gebeurtenissen en meer.
 * [OpenAPI-specificatie (voorheen Swagger-document genoemd)](https://aka.ms/ams-v3-rest-sdk) .
     Beschrijft het schema voor alle service onderdelen, inclusief code ring op basis van een bestand.
-* Sdk's beschikbaar voor [.net](https://aka.ms/ams-v3-dotnet-ref), .net core, [node. js](https://aka.ms/ams-v3-nodejs-ref), [python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref)en Ruby.
+* Sdk's beschikbaar voor [.net](https://aka.ms/ams-v3-dotnet-ref), .net core, [node. js](/javascript/api/overview/azure/mediaservices/management), [python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref)en Ruby.
 * [Azure cli](https://aka.ms/ams-v3-cli-ref) -integratie voor eenvoudige script ondersteuning.
 
 ### <a name="new-features"></a>Nieuwe functies
@@ -101,7 +101,7 @@ De V3 API heeft de volgende functie hiaten ten opzichte van de v2 API. Het sluit
 
 In de volgende tabel ziet u de code verschillen tussen v2 en v3 voor algemene scenario's.
 
-|Scenario|V2-API|V3-API|
+|Scenario|V2 API|V3 API|
 |---|---|---|
 |Een Asset maken en een bestand uploaden |[v2 .NET-voor beeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET-voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Een taak indienen|[v2 .NET-voor beeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET-voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Laat zien hoe u eerst een trans formatie maakt en vervolgens een taak verzendt.|

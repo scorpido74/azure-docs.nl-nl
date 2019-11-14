@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: een openbare Basic Load Balancer maken met behulp van de Azure-portal'
-titlesuffix: Azure Load Balancer
+title: 'Snelstartgids: een open bare basis Load Balancer maken-Azure Portal'
+titleSuffix: Azure Load Balancer
 description: In deze snelstart vindt u informatie over het maken van een openbare Basic Load Balancer via Azure Portal.
 services: load-balancer
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 9819111c8264493648233f40252db4fb4410aaf1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 3cbb4271909cf739dc3ce13712e388f2fc8e20a5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274088"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048690"
 ---
-# <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Quickstart: Een Basic load balancer maken met behulp van de Microsoft Azure-portal
+# <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Quick Start: een basis Load Balancer maken met behulp van de Azure Portal
 
 Taakverdeling zorgt voor een hogere beschikbaarheid en betere schaalbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines (VM's). U kunt de Azure-portal gebruiken om een load balancer te maken en verkeer over virtuele machines te verdelen. In deze quickstart wordt beschreven hoe u een load balancer, back-endservers en netwerkresources kunt maken in de prijscategorie Basic.
 
@@ -37,13 +37,13 @@ Maak eerst een openbare basis load balancer met behulp van de portal. De naam en
 1. Klik linksboven in het scherm op **Een resource maken** > **Netwerken** > **Load balancer**.
 2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer vervolgens **Controleren + maken**:
 
-    | Instelling                 | Value                                              |
+    | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
-    | Subscription               | Selecteer uw abonnement.    |    
-    | Resource group         | Selecteer **Nieuwe maken** en typ *MyResourceGroupLB* in het tekstvak.|
-    | Name                   | *myLoadBalancer*                                   |
+    | Abonnement               | Selecteer uw abonnement.    |    
+    | Resourcegroep         | Selecteer **Nieuwe maken** en typ *MyResourceGroupLB* in het tekstvak.|
+    | Naam                   | *myLoadBalancer*                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
-    | type          | Selecteer **Openbaar**.                                        |
+    | Type          | Select **Openbaar**.                                        |
     | SKU           | Selecteer **Basic**.                          |
     | Openbaar IP-adres | Selecteer **Nieuw maken**. |
     | Naam openbare IP-adres              | *MyPublicIP*   |
@@ -63,8 +63,8 @@ Vervolgens maakt u een virtueel netwerk en twee virtuele machines voor de back-e
 1. In het deelvenster **Virtueel netwerk maken** typt of selecteert u de volgende waarden:
    
    - **Naam**: typ *MyVnet*.
-   - **ResourceGroup**: selecteer in de vervolgkeuzelijst **Bestaande selecteren** de optie **MyResourceGroupLB**. 
-   - **Subnet** > **Naam**: typ *myBackendSubnet*.
+   - **Resourcegroep**: selecteer in de vervolgkeuzelijst **Selecteer een bestaande** de optie **MyResourceGroupLB**. 
+   - **Subnet** > **Naam**: typ *MyBackendSubnet*.
    
 1. Selecteer **Maken**.
 
@@ -75,7 +75,7 @@ Vervolgens maakt u een virtueel netwerk en twee virtuele machines voor de back-e
 1. Selecteer **Een resource maken** > **Compute** > **Windows Server 2016 Datacenter** linksboven in de portal. 
    
 1. In **Een virtuele machine maken** typt of selecteert u de volgende waarden op het tabblad **Basisinformatie**:
-   - **Abonnement** > **Resourcegroep**: selecteer in de vervolgkeuzelijst de optie **MyResourceGroupLB**.
+   - **Abonnement** > **Resourcegroep**: selecteer **MyResourceGroupLB** in de vervolgkeuzelijst.
    - **Instantiedetails** > **Naam van virtuele machine**: typ *MyVM1*.
    - **Instantiedetails** > **Beschikbaarheidsopties**: 
      1. Selecteer **Beschikbaarheidsset** in de vervolgkeuzelijst. 
@@ -86,7 +86,7 @@ Vervolgens maakt u een virtueel netwerk en twee virtuele machines voor de back-e
    Zorg ervoor dat de volgende opties zijn geselecteerd:
    - **Virtueel netwerk**: **MyVnet**
    - **Subnet**: **MyBackendSubnet**
-   - **Openbare IP**: **MyVM1-ip**
+   - **Public IP**: **MyVM1-ip**
    
    Als u een nieuwe netwerkbeveiligingsgroep (NSG) wilt maken, een soort firewall, selecteert u onder **Netwerkbeveiligingsgroep** de optie **Geavanceerd**. 
    1. Selecteer in het veld **Netwerkbeveiligingsgroep configureren** de optie **Nieuwe maken**. 
@@ -113,7 +113,7 @@ In deze sectie maakt u regels voor de netwerkbeveiligingsgroep (NSG) voor de VM'
    - **Bron**: selecteer **Servicetag**.  
    - **Bronservicetag**: selecteer **Internet**. 
    - **Poortbereiken van doel**: typ *80*.
-   - **Protocol**: selecteer **TCP**. 
+   - **Protocol**: selecteer **TCP** . 
    - **Actie**: selecteer **Toestaan**.  
    - **Prioriteit**: typ *100*. 
    - **Naam**: typ *MyHTTPRule*. 
@@ -145,8 +145,8 @@ De load balancer gebruikt een backend-adresgroep om verkeer te distribueren over
    
 1. Op de pagina **Een back-endpool toevoegen** typt of selecteert u de volgende waarden:
    
-   - **Naam**: typ *MyBackEndPool*.
-   - **Gekoppeld aan**: Selecteer **Beschikbaarheidsset** in de vervolgkeuzelijst.
+   - **Naam**: typ *MyBackendPool*.
+   - **Gekoppeld aan**: selecteer in de vervolgkeuzelijst **Beschikbaarheidsset**.
    - **Beschikbaarheidsset**: selecteer **MyAvailabilitySet**.
    
 1. Selecteer **Een doel-netwerk-IP-configuratie toevoegen**. 
@@ -198,11 +198,11 @@ De load balancer-regel met de naam **myLoadBalancerRuleWeb** luistert op poort 8
 1. Op de pagina **Load balancer-regel toevoegen** typt of selecteert u de volgende waarden:
    
    - **Naam**: typ *MyLoadBalancerRule*.
-   - **IP-adres voor front-end:** typ *LoadBalancerFrontend*.
-   - **Protocol**: selecteer **TCP**.
+   - **Frontend-IP-adres**: typ *LoadBalancerFrontEnd*.
+   - **Protocol**: selecteer **TCP** .
    - **Poort**: typ *80*.
    - **Back-endpoort**: typ *80*.
-   - **Back-end-pool**: selecteer **MyBackEndPool**.
+   - **Back-endpool**: selecteer **MyBackendPool**.
    - **Statustest**: selecteer **MyHealthProbe**. 
    
 1. Selecteer **OK**.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 87dbd7ab4d75150d09a8c26db50ce2e3b1a085db
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 1ddb947e9bcbdde655b5c83cffb67e8fc13d9d0e
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930246"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048682"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Een algemene client toepassing verbinden met uw Azure IoT Central-toepassing (node. js)
 
@@ -30,7 +30,9 @@ U hebt het volgende nodig om de stappen in dit artikel uit te voeren:
 
 ## <a name="create-a-device-template"></a>Een sjabloon voor een apparaat maken
 
-In uw Azure IoT Central-toepassing hebt u een sjabloon nodig met de volgende metingen, apparaateigenschappen, instellingen en opdrachten:
+In uw Azure IoT Central-toepassing hebt u een sjabloon nodig met de volgende metingen, apparaateigenschappen, instellingen en opdrachten.
+
+Zie voor meer informatie over geldige eigenschapnamen de [indeling Tags en eigenschappen](../../iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format).
 
 ### <a name="telemetry-measurements"></a>Telemetrische metingen
 
@@ -40,7 +42,7 @@ Voeg de volgende telemetrie toe op de pagina **metingen** :
 | ------------ | ----------- | ----- | --- | --- | -------------- |
 | Temperatuur  | temperatuur | F     | 60  | 110 | 0              |
 | Vochtigheid     | vochtigheid    | %     | 0   | 100 | 0              |
-| Tegen     | pressure    | 0,4   | 80  | 110 | 0              |
+| Tegen     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
 > Het gegevens type van de telemetrie-meting is een getal met drijvende komma.

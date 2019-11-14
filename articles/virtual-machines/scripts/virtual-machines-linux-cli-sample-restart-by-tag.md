@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-voorbeeldscript - Virtuele machines opnieuw opstarten | Microsoft Docs
+title: Voor beeld van Azure CLI-script-Vm's opnieuw opstarten
 description: Azure CLI-voorbeeldscript - Virtuele machines opnieuw opstarten op label en op id
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 78e646887a0e595589b9d0cc794029dcd4be91ca
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 5545fc07bd7b30225bcaf01eee8f10a141cd8d57
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841399"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040256"
 ---
 # <a name="restart-vms"></a>Virtuele machines opnieuw opstarten
 
@@ -61,7 +61,7 @@ Twee van de machines krijgen een label.
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/restart-by-tag/provision.sh "Provision the VMs")]
 
-### <a name="wait"></a>Wachten
+### <a name="wait"></a>Wait
 
 Met dit script wordt elke 20 seconden gecontroleerd wat de status van het inrichten is totdat alle drie de virtuele machines zijn ingericht, of totdat het inrichten van een van de machines is mislukt.
 
@@ -87,7 +87,7 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Hiermee maakt u de virtuele machines.  |
 | [az vm list](https://docs.microsoft.com/cli/azure/vm) | Gebruik deze opdracht met `--query` om te controleren of de virtuele machines zijn ingericht voordat ze opnieuw worden opgestart en om vervolgens de id's op te vragen van de virtuele machines die opnieuw moeten worden opgestart. |
 | [az resource list](https://docs.microsoft.com/cli/azure/vm) | Gebruik deze opdracht met `--query` om de id's op te vragen van de virtuele machines met het label. |
@@ -96,6 +96,6 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 U kunt extra CLI-scriptvoorbeelden voor virtuele machines vinden in de [Azure-documentatie voor Linux-VM's](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

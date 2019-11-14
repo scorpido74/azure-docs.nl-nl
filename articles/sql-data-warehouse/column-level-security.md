@@ -11,16 +11,16 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 605dfadaf4cd1686b124b120151e6a88a43f1a68
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 34172e313b537d59287a424683ea1555cbba9b99
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693081"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049162"
 ---
 # <a name="column-level-security"></a>Beveiliging op kolom niveau
 Met beveiliging op kolom niveau (CLS) kunnen klanten de toegang tot database tabel kolommen beheren op basis van de uitvoerings context of het groepslid maatschap van de gebruiker.
-
+Bijwerken naar onderstaande video: omdat deze video is gepost, is de [beveiliging op rijniveau](https://docs.microsoft.com/en-us/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) ook beschikbaar in SQL Data Warehouse. 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 
 CLS vereenvoudigt het ontwerp en de code ring van beveiliging in uw toepassing. Met CLS kunt u beperkingen voor kolom toegang implementeren om gevoelige gegevens te beveiligen. Bijvoorbeeld, om ervoor te zorgen dat specifieke gebruikers alleen toegang hebben tot bepaalde kolommen van een tabel die relevant is voor hun afdeling. De logica van de toegangs beperking bevindt zich in de database laag, in plaats van dat de gegevens in een andere toepassingslaag worden verwijderd. De-data base past de toegangs beperkingen toe telkens wanneer de toegang tot de gegevens vanuit een wille keurige laag wordt gestart. Deze beperking zorgt ervoor dat uw beveiligings systeem betrouwbaarder en robuuster is door de surface area van uw algehele beveiligings systeem te verminderen. Daarnaast elimineert CLS de nood zaak van de introductie van weer gaven om kolommen uit te filteren voor het opleggen van toegangs beperkingen voor de gebruikers.

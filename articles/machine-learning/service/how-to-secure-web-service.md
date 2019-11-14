@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1021ad1983f78252d924a5d3cb674419732d66e
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 00731d3520c98c3fd770dc411f6c5c940555fbe5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932060"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048589"
 ---
 # <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>SSL gebruiken om een t/m-Azure Machine Learning te beveiligen
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ TLS en SSL zijn beide afhankelijk van *digitale certificaten*, die u helpen bij 
 
 Dit is het algemene proces voor het beveiligen van een:
 
-1. Haal een domein naam op.
+1. Een domeinnaam krijgen.
 
 2. Een digitaal certificaat ophalen.
 
@@ -50,7 +50,7 @@ Dit is het algemene proces voor het beveiligen van een:
 
 Er zijn kleine verschillen bij het beveiligen van s in verschillende [implementatie doelen](how-to-deploy-and-where.md).
 
-## <a name="get-a-domain-name"></a>Een domein naam ophalen
+## <a name="get-a-domain-name"></a>Een domeinnaam krijgen
 
 Als u nog geen domein naam hebt, kunt u er een aanschaffen bij een *domein naam registratie*. Het proces en de prijs verschillen per registratie. De registratie service voorziet in hulpprogram ma's voor het beheren van de domein naam. U kunt deze hulpprogram ma's gebruiken om een Fully Qualified Domain Name (FQDN) (zoals www\.contoso.com) toe te wijzen aan het IP-adres dat als host fungeert voor uw.
 
@@ -67,7 +67,7 @@ Wanneer u een certificaat aanvraagt, moet u de FQDN-namen opgeven van het adres 
 > Als de certificerings instantie het certificaat en de sleutel niet kan leveren als met PEM gecodeerde bestanden, kunt u een hulp programma zoals [openssl](https://www.openssl.org/) gebruiken om de indeling te wijzigen.
 
 > [!WARNING]
-> Gebruik *zelfondertekende* certificaten alleen voor ontwikkeling. Gebruik deze niet in productie omgevingen. Zelfondertekende certificaten kunnen problemen veroorzaken in uw client toepassingen. Zie de documentatie voor de netwerk bibliotheken die uw client toepassing gebruikt voor meer informatie.
+> Gebruik *zelfondertekende* certificaten alleen voor ontwikkeling. Gebruik deze niet in productie omgevingen. Zelfondertekende certificaten kunnen leiden tot problemen in uw client toepassingen. Zie de documentatie voor de netwerk bibliotheken die uw client toepassing gebruikt voor meer informatie.
 
 ## <a id="enable"></a>SSL inschakelen en implementeren
 
@@ -85,7 +85,7 @@ Wanneer u implementeert in AKS, kunt u een nieuw AKS-cluster maken of een bestaa
 
 De **enable_ssl** -methode kan gebruikmaken van een certificaat dat door micro soft wordt verschaft of een certificaat dat u aanschaft.
 
-  * Wanneer u een certificaat van micro soft gebruikt, moet u de para meter *leaf_domain_label* gebruiken. Met deze para meter wordt de DNS-naam voor de service gegenereerd. Met de waarde ' myservice ' wordt bijvoorbeeld de domein naam ' myservice\<zes wille keurige tekens >.\<azureregio >. cloudapp. Azure. com ', waarbij \<azureregio > de regio is waarin de service is opgenomen. U kunt desgewenst de para meter *overwrite_existing_domain* gebruiken om de bestaande *leaf_domain_label*te overschrijven.
+  * Wanneer u een certificaat van micro soft gebruikt, moet u de para meter *leaf_domain_label* gebruiken. Met deze para meter wordt de DNS-naam voor de service gegenereerd. Bijvoorbeeld: met de waarde contoso wordt de domein naam ' contoso\<zes-wille keurige tekens > gemaakt.\<azureregio >. cloudapp. Azure. com ', waarbij \<azureregio > de regio is waarin de service is opgenomen. U kunt desgewenst de para meter *overwrite_existing_domain* gebruiken om de bestaande *leaf_domain_label*te overschrijven.
 
     Als u de service wilt implementeren (of opnieuw wilt implementeren) met SSL ingeschakeld, stelt u de para meter *ssl_enabled* in op ' True ', waar dit van toepassing is. Stel de para meter *ssl_certificate* in op de waarde van het *certificaat* bestand. Stel de *ssl_key* in op de waarde van het *sleutel* bestand.
 
@@ -98,11 +98,19 @@ De **enable_ssl** -methode kan gebruikmaken van een certificaat dat door micro s
     from azureml.core.compute import AksCompute
     # Config used to create a new AKS cluster and enable SSL
     provisioning_config = AksCompute.provisioning_configuration()
-    provisioning_config.enable_ssl(leaf_domain_label = "myservice")
+    # Leaf domain label generates a name using the formula
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  where "######" is a random series of characters
+    provisioning_config.enable_ssl(leaf_domain_label = "contoso")
+
+
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
-    attach_config.enable_ssl(leaf_domain_label = "myservice")
+    # Leaf domain label generates a name using the formula
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  where "######" is a random series of characters
+    attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
   * Wanneer u *een certificaat gebruikt dat u hebt aangeschaft*, gebruikt u de para meters *ssl_cert_pem_file*, *ssl_key_pem_file*en *ssl_cname* . In het volgende voor beeld ziet u hoe u *. pem* -bestanden kunt gebruiken om een configuratie te maken die gebruikmaakt van een SSL-certificaat dat u hebt aangeschaft:
@@ -135,7 +143,7 @@ aci_config = AciWebservice.deploy_configuration(
 
 Zie [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)voor meer informatie.
 
-## <a name="update-your-dns"></a>Uw DNS bijwerken
+## <a name="update-your-dns"></a>Werkt u uw DNS
 
 Vervolgens moet u de DNS bijwerken zodat deze verwijst naar de.
 

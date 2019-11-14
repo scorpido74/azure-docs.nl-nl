@@ -1,34 +1,34 @@
 ---
-title: Groeps instellingen configureren met behulp van Power shell-Azure Active Directory | Microsoft Docs
+title: Groeps instellingen configureren met behulp van Power shell-Azure AD | Microsoft Docs
 description: De instellingen voor groepen beheren met Azure Active Directory-cmdlets
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18fbaad8ce15ab4eb9a08d5edc273098e7fb372e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 6a1b900d4a67390ae867d770c3b984c43fd501b5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263958"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026761"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory cmdlets voor het configureren van groepsinstellingen
-Dit artikel bevat instructies voor het gebruik van Azure Active Directory (Azure AD) Power shell-cmdlets om groepen te maken en bij te werken. Deze inhoud is alleen van toepassing op Office 365-groepen (ook wel Unified groups genoemd). 
+
+Dit artikel bevat instructies voor het gebruik van Azure Active Directory (Azure AD) Power shell-cmdlets om groepen te maken en bij te werken. Deze inhoud is alleen van toepassing op Office 365-groepen (ook wel Unified groups genoemd).
 
 > [!IMPORTANT]
 > Voor sommige instellingen is een Azure Active Directory Premium P1-licentie vereist. Zie de tabel met [sjabloon instellingen](#template-settings) voor meer informatie.
 
-Voor meer informatie over het voor komen van niet-beheerders gebruikers om beveiligings groepen te maken, stelt u @ no__t-0 in zoals beschreven in [set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
+Stel `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` in, zoals beschreven in [set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)voor meer informatie over het voor komen van gebruikers die geen beheerder zijn om beveiligings groepen te maken.
 
 Instellingen voor Office 365-groepen worden geconfigureerd met behulp van een instellingen object en een SettingsTemplate-object. In eerste instantie ziet u geen instellingen objecten in uw directory, omdat uw directory is geconfigureerd met de standaard instellingen. Als u de standaard instellingen wilt wijzigen, moet u een nieuw instellingen object maken met behulp van een instellingen sjabloon. Instellingen sjablonen worden gedefinieerd door micro soft. Er zijn verschillende instellingen sjablonen. Als u de instellingen voor de Office 365-groep voor uw Directory wilt configureren, gebruikt u de sjabloon groep. Unified. Als u de instellingen voor de Office 365-groep wilt configureren voor één groep, gebruikt u de sjabloon met de naam groep. Unified. Guest. Deze sjabloon wordt gebruikt voor het beheren van gast toegang tot een Office 365-groep. 
 
@@ -116,7 +116,7 @@ Dit zijn de instellingen die zijn gedefinieerd in de groep. Unified SettingsTemp
 |  <ul><li>EnableGroupCreation<li>Type: Booleaans<li>Standaard: True |De vlag die aangeeft of het maken van een Office 365-groep is toegestaan in de map door niet-beheerders gebruikers. Voor deze instelling is geen Azure Active Directory Premium P1-licentie vereist.|
 |  <ul><li>GroupCreationAllowedGroupId<li>Type: String<li>Standaard: |GUID van de beveiligings groep waarvoor de leden Office 365-groepen mogen maken, zelfs wanneer EnableGroupCreation = = false. |
 |  <ul><li>UsageGuidelinesUrl<li>Type: String<li>Standaard: |Een koppeling naar de richt lijnen voor groeps gebruik. |
-|  <ul><li>ClassificationDescriptions<li>Type: String<li>Standaard: | Een door komma's gescheiden lijst met classificatie beschrijvingen. De waarde van ClassificationDescriptions is alleen geldig in deze indeling:<br>$setting ["ClassificationDescriptions"] = "classificatie: beschrijving, classificatie: beschrijving"<br>waarbij classificatie overeenkomt met de teken reeksen in de ClassificationList.|
+|  <ul><li>ClassificationDescriptions<li>Type: String<li>Standaard: | Een door komma's gescheiden lijst met classificatie beschrijvingen. De waarde van ClassificationDescriptions is alleen geldig in deze indeling:<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>waarbij classificatie overeenkomt met de teken reeksen in de ClassificationList.|
 |  <ul><li>DefaultClassification<li>Type: String<li>Standaard: | De classificatie die moet worden gebruikt als de standaard classificatie voor een groep als er geen is opgegeven.|
 |  <ul><li>PrefixSuffixNamingRequirement<li>Type: String<li>Standaard: | Een teken reeks met een maximale lengte van 64 tekens die de naamgevings Conventie definieert die voor Office 365-groepen is geconfigureerd. Zie [een naamgevings beleid afdwingen voor Office 365-groepen](groups-naming-policy.md)voor meer informatie. |
 | <ul><li>CustomBlockedWordsList<li>Type: String<li>Standaard: | Een door komma's gescheiden teken reeks van zinsdelen die gebruikers niet mogen gebruiken in groeps namen of aliassen. Zie [een naamgevings beleid afdwingen voor Office 365-groepen](groups-naming-policy.md)voor meer informatie. |
@@ -284,7 +284,7 @@ Met deze stap worden de instellingen op mapniveau verwijderd, die van toepassing
 ## <a name="cmdlet-syntax-reference"></a>Naslag informatie over de cmdlet-syntaxis
 U kunt meer Azure Active Directory Power shell-documentatie vinden op [Azure Active Directory-cmdlets](/powershell/azure/install-adv2?view=azureadps-2.0).
 
-## <a name="additional-reading"></a>Aanvullende Lees bewerkingen
+## <a name="additional-reading"></a>Meer lezen
 
 * [Managing access to resources with Azure Active Directory groups](../fundamentals/active-directory-manage-groups.md) (Toegang tot resources beheren met Azure Active Directory-groepen)
-* [Uw on-premises identiteiten integreren met Azure Active Directory](../hybrid/whatis-hybrid-identity.md)
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](../hybrid/whatis-hybrid-identity.md)

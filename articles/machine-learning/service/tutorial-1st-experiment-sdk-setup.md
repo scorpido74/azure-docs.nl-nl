@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 59844c5989abb03bbe5134c83c9653290c17d0a9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b2434102e0355d5c26c501588c360f74eb98404d
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582481"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049143"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Zelf studie: aan de slag met het maken van uw eerste ML-experiment met de python-SDK
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -81,7 +81,7 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
 
 1. Selecteer op de bovenste balk een werk blad-VM die u wilt gebruiken om het notitie blok uit te voeren. Deze Vm's zijn vooraf geconfigureerd met alles wat u nodig hebt om Azure Machine Learning uit te voeren. U kunt een virtuele machine selecteren die wordt gemaakt door een gebruiker van uw werk ruimte. 
 
-1. Als er geen Vm's worden gevonden, selecteert u **+ Compute toevoegen** om de virtuele machine te maken.
+1. Als er geen Vm's worden gevonden, selecteert u **+ virtuele machine toevoegen** om de virtuele machine te maken. 
 
     1. Wanneer u een virtuele machine maakt, moet u een naam opgeven.  De naam moet tussen 2 en 16 tekens lang zijn. Geldige tekens zijn letters, cijfers en het-teken, en moeten ook uniek zijn binnen uw Azure-abonnement.
 

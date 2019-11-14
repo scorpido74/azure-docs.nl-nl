@@ -1,25 +1,25 @@
 ---
-title: Instellingen voor Azure AD-functies configureren in Privileged Identity Management-Azure Active Directory | Microsoft Docs
+title: Instellingen voor Azure AD-functies configureren in PIM-Azure AD | Microsoft Docs
 description: Meer informatie over het configureren van instellingen voor Azure AD-functies in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cff298e24ac185767e6290e396818ccece7b9b55
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ee99a8e75fe8da85b1cf82623ed110991db24b66
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809148"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021800"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Instellingen voor Azure AD-functies configureren in Privileged Identity Management
 
@@ -65,7 +65,7 @@ Zie [e-mail meldingen in privileged Identity Management](pim-email-notifications
 
 Gebruik de switch **incident/aanvraag ticket** om in aanmerking komende beheerders te vragen om een ticket nummer op te nemen wanneer ze hun rol activeren. Met deze procedure kunt u toegangs controles voor rollen effectiever uitvoeren.
 
-## <a name="multi-factor-authentication"></a>Meervoudige verificatie
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Gebruik de schakel optie **multi-factor Authentication** om op te geven of gebruikers hun identiteit moeten verifiëren met MFA voordat ze hun rollen kunnen activeren. Ze hoeven hun identiteit slechts eenmaal per sessie te verifiëren, niet elke keer dat ze een rol activeren. Er zijn twee tips die u moet onthouden wanneer u MFA inschakelt:
 

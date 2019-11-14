@@ -1,26 +1,26 @@
 ---
-title: Een toegangs beoordeling van Azure-resource rollen in Privileged Identity Management-Azure Active Directory volt ooien | Microsoft Docs
-description: Meer informatie over het volt ooien van een toegangs beoordeling van Azure-resource rollen in Azure AD Privileged Identity Management (PIM).
+title: De toegangs beoordeling van Azure-resource rollen in PIM volt ooien-Azure AD | Microsoft Docs
+description: Meer informatie over het volt ooien van een toegangs beoordeling van Azure resource roles Privileged Identity Management in Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6761d1d6aea796e0cca708676f69c47328642cc2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 9e45249245aaab97070b7e774d4b6bab6827bdc9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895817"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021982"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Een toegangs beoordeling van Azure-resource rollen in Privileged Identity Management volt ooien
 
@@ -50,9 +50,9 @@ Alle toegangs beoordelingen hebben een eind datum. Selecteer **stoppen** om de b
 
 ### <a name="reset"></a>Opnieuw instellen
 
-U kunt een toegangs beoordeling opnieuw instellen om alle beslissingen te verwijderen die erop zijn gemaakt. Nadat u een toegangs beoordeling opnieuw hebt ingesteld, worden alle gebruikers gemarkeerd als niet-gecontroleerd.
+U kunt een toegangs beoordeling opnieuw instellen om alle beslissingen te verwijderen die erop zijn gemaakt. Nadat u een toegangs beoordeling opnieuw hebt ingesteld, worden alle gebruikers gemarkeerd als niet opnieuw gecontroleerd.
 
-### <a name="apply"></a>Aanvragen
+### <a name="apply"></a>Toepassen
 
 Wanneer een toegangs beoordeling is voltooid, selecteert u **Toep assen** om het resultaat van de beoordeling te implementeren. Als de toegang van een gebruiker bij de controle is geweigerd, wordt met deze stap de roltoewijzing verwijderd.  
 

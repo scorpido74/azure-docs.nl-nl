@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 2f46ebcabd98c7a8c3376157c72da9ec5ed424a4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce82a2cc4cc936d2e0a7a8b82cbc0ed7e5c6eb52
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935229"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048652"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Wat is Azure Internet of Things (IoT)?
 
@@ -101,11 +101,11 @@ Met behulp van een analytische service worden de binnenkomende gegevens gescand 
 
 Door deze IoT-oplossing te implementeren werd het mogelijk voor het bedrijf om de koeien snel te controleren en behandelen. Zo hoeft men minder vaak naar de dieren te rijden om ze te controleren, en dat bespaart het bedrijf veel geld. Zie [Microsoft Technical Case Studies for IoT](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured) (technische casestudy's voor IoT van Microsoft) voor meer praktijkvoorbeelden van het gebruik van IoT door bedrijven. 
 
-## <a name="iot-services"></a>IoT Services
+## <a name="iot-services"></a>IoT-services
 
 Er zijn meerdere IoT-services in Azure en het kan moeilijk zijn om te bepalen welke u wilt gebruiken. Sommige services, zoals IoT Central en de IoT-oplossingsverbeteringen, bevatten sjablonen waarmee u uw eigen oplossing kunt maken zodat u snel aan de slag kunt met IoT. U kunt uw eigen oplossingen ook helemaal zelf ontwikkelen met behulp van andere services. Het hangt er maar net vanaf hoeveel hulp en controle u wilt. Hier volgt een lijst met de beschikbare services en waarvoor u ze kunt gebruiken.
 
-1. [**IOT Central**](../iot-central/core/overview-iot-central.md): dit is een SaaS-oplossing waarmee u uw IOT-apparaten kunt verbinden, bewaken en beheren. Selecteer om te beginnen een sjabloon voor uw type apparaat, en maak en test een IoT Central-basistoepassing die de operators van het apparaat gaan gebruiken. Met de IoT Central-toepassing kunt u de apparaten ook bewaken en nieuwe apparaten inrichten. Deze service is geschikt voor eenvoudige IoT-oplossingen waarvoor geen uitgebreide serviceaanpassing is vereist. 
+1. [**IOT Central**](../iot-central/core/overview-iot-central.md): dit is een IOT-toepassings platform dat het maken van IOT-oplossingen vereenvoudigt en helpt de belasting en kosten van IOT-beheer bewerkingen en-ontwikkeling te verminderen. Selecteer om te beginnen een sjabloon voor uw type apparaat, en maak en test een IoT Central-basistoepassing die de operators van het apparaat gaan gebruiken. Met de IoT Central-toepassing kunt u de apparaten ook bewaken en nieuwe apparaten inrichten. Deze service is geschikt voor eenvoudige IoT-oplossingen waarvoor geen uitgebreide serviceaanpassing is vereist.
 
 2. [**IoT-oplossingsverbeteringen**](/azure/iot-suite): dit is een verzameling van PaaS-oplossingen waarmee u de ontwikkeling van uw IoT-oplossing kunt versnellen. U begint met een vooraf gedefinieerde IoT-oplossing en past die vervolgens volledig naar wens aan. U moet beschikken over Java- of .NET-vaardigheden om de back-end aan te passen, en over JavaScript-vaardigheden om de visualisatie aan te passen. 
 

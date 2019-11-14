@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ab0d3aac6944e331223d91eb98b50b3308be12c3
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 567110b2e0429930720abf6af5f2727e4ad9d3bb
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797632"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048280"
 ---
 # <a name="troubleshooting"></a>Problemen oplossen
 
@@ -251,7 +251,7 @@ Zoek in het dash board van de resource groep naar het opslag account (datahublog
 
 **Betekenis**: de configuratie van de Azure AD-App-registratie is niet juist uitgevoerd.  
 
-**Corrigerende actie**: vraag de IT-beheerder (met lees toegang voor de Tenant) om het [script](https://aka.ms/PPCreateAADappregistration) te gebruiken voor het genereren van de registratie van de Azure AD-app. Dit script neemt ook automatisch de configuratie stappen. alsook  
+**Corrigerende actie**: vraag de IT-beheerder (met lees toegang voor de Tenant) om het [script](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) te gebruiken voor het genereren van de registratie van de Azure AD-app. Dit script neemt ook automatisch de configuratie stappen.
 
 **Fout**: kan geen nieuwe Active Directory toepassing "dummy" maken in deze Tenant: er bestaat al een ander object met dezelfde waarde voor de eigenschaps-id-uri's
 

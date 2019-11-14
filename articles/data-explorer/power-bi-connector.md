@@ -3,16 +3,16 @@ title: Gegevens visualiseren met de Azure Data Explorer-connector voor Power BI
 description: 'In dit artikel leert u hoe u een van de drie opties kunt gebruiken voor het visualiseren van gegevens in Power BI: de Power BI-connector voor Azure Data Explorer.'
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a2ec179321c5d9cb6e9627e397fcb6ae09dc82ed
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349138"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024215"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Gegevens visualiseren met de Azure Data Explorer-connector voor Power BI
 

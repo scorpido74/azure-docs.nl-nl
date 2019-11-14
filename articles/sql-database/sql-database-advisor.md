@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
-ms.date: 12/19/2018
-ms.openlocfilehash: fb7ba90724a98a34adf4aa279eefc8e3d7a63bf3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/12/2019
+ms.openlocfilehash: a113ea3fd4828a498d1f53ea7604df7bc8588eb5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811392"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048410"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Prestatie aanbevelingen voor SQL Database
 
@@ -25,6 +25,17 @@ Azure SQL Database leren en aanpassen met uw toepassing. Het biedt aangepaste aa
 > [!TIP]
 > [Automatisch afstemmen](sql-database-automatic-tuning.md) is de aanbevolen methode voor het automatisch afstemmen van een aantal van de meest voorkomende prestatie problemen met de data base. [Query performance Insights](sql-database-query-performance.md) is de aanbevolen methode voor basis vereisten voor de bewaking van de prestaties van Azure SQL database. [Azure SQL-analyse](../azure-monitor/insights/azure-sql.md) is de aanbevolen methode voor geavanceerde bewaking van database prestaties op schaal, met ingebouwde intelligentie voor het oplossen van problemen met automatische prestaties.
 >
+
+## <a name="performance-recommendations-options"></a>Opties voor prestatie aanbevelingen
+
+Beschik bare opties voor prestatie aanbeveling Azure SQL Database zijn:
+
+| Aanbevolen prestatie | Ondersteuning voor één data base en gepoolde data base | Ondersteuning voor instance data base |
+| :----------------------------- | ----- | ----- |
+| **Aanbevelingen voor Create Index** : Hiermee wordt het maken van indexen aanbevolen die de prestaties van uw werk belasting kunnen verbeteren. | Ja | Nee | 
+| **Aanbevelingen voor drop index** : Aanbevolen wordt om dagelijks overbodige en dubbele indexen te verwijderen, met uitzonde ring van unieke indexen en indexen die gedurende een lange periode niet zijn gebruikt (> 90 dagen). Houd er rekening mee dat deze optie niet compatibel is met toepassingen die gebruikmaken van partitie switches en index hints. Het verwijderen van niet-gebruikte indexen wordt niet ondersteund voor Premium-en Bedrijfskritiek-service lagen. | Ja | Nee |
+| **Aanbevelingen voor para meters query's (preview)** : beveelt geforceerde parametrization aan wanneer u een of meer query's hebt die voortdurend worden gecompileerd, maar wel met hetzelfde query-uitvoerings plan. | Ja | Nee |
+| **Aanbevelingen voor het oplossen van schema problemen (preview)** : aanbevelingen voor schema correctie worden weer gegeven wanneer de SQL database-service een afwijking van het aantal aan schema gerelateerde SQL-fouten in het SQL database ondervindt. Micro soft maakt momenteel geen aanbevelingen voor het oplossen van schema problemen. | Ja | Nee |
 
 ## <a name="create-index-recommendations"></a>Aanbevelingen voor index maken
 SQL Database bewaakt voortdurend de query's die worden uitgevoerd en identificeert de indexen waarmee de prestaties kunnen worden verbeterd. Wanneer er voldoende betrouw baarheid is dat een bepaalde index ontbreekt, wordt een nieuwe aanbeveling voor **Create Index** gemaakt.
@@ -50,8 +61,7 @@ Naast het detecteren van ontbrekende indexen analyseert SQL Database voortdurend
 
 De aanbevelingen voor het verwijderen van de index passeren ook de verificatie na de implementatie. Als de prestaties verbeteren, is het impact rapport beschikbaar. Als de prestaties afnemen, wordt de aanbeveling hersteld.
 
-
-## <a name="parameterize-queries-recommendations"></a>Aanbevelingen voor para meters query's
+## <a name="parameterize-queries-recommendations-preview"></a>Aanbevelingen voor para meters-query's (preview-versie)
 Aanbevelingen voor *para meters-query's* worden weer gegeven wanneer u een of meer query's hebt die voortdurend worden gecompileerd, maar wel met hetzelfde query-uitvoerings plan. Met deze voor waarde wordt een kans gemaakt om geforceerde parameterisering toe te passen. Met geforceerde parameterisering kunnen query plannen in de cache worden opgeslagen en opnieuw worden gebruikt, waardoor de prestaties worden verbeterd en het resource gebruik wordt verminderd. 
 
 Elke query die wordt uitgegeven op basis van SQL Server moet eerst worden gecompileerd voor het genereren van een uitvoerings plan. Elk gegenereerd plan wordt toegevoegd aan de plannings cache. Volgende uitvoeringen van dezelfde query kunnen dit plan opnieuw gebruiken uit de cache, waardoor er geen verdere compilatie meer nodig is. 

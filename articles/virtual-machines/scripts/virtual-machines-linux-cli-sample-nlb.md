@@ -1,5 +1,5 @@
 ---
-title: 'Azure CLI-voorbeeldscript: een virtuele Linux-machine met NLB maken | Microsoft Docs'
+title: 'Azure CLI-voorbeeldscript: een virtuele Linux-machine met NLB maken'
 description: 'Azure CLI-voorbeeldscript: een virtuele Linux-machine met NLB maken'
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2e9b536ae6c7056348ac964a2c85ccd698a80ae4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 858151a0803ba86aeca91f35e3e6f30394bf8ea8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709374"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040258"
 ---
 # <a name="create-a-highly-available-vm"></a>Een virtuele machines met maximale beschikbaarheid maken
 
@@ -65,6 +65,6 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 U kunt extra CLI-scriptvoorbeelden voor virtuele machines vinden in de [Azure-documentatie voor Linux-VM's](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

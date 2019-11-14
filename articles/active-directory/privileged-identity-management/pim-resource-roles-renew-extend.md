@@ -1,10 +1,10 @@
 ---
-title: De toewijzingen van Azure-resource rollen uitbreiden of vernieuwen in Privileged Identity Management-Azure Active Directory | Microsoft Docs
+title: Azure-resource roltoewijzingen vernieuwen in PIM-Azure AD | Microsoft Docs
 description: Meer informatie over het uitbreiden of vernieuwen van toewijzingen voor Azure-resource rollen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edfe6a545aa9acae8045e9c9756fc2711504d75d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 577c028582bc3b23d13e71522bb83db558065ee2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895557"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022914"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-privileged-identity-management"></a>De toewijzingen van Azure-resource rollen in Privileged Identity Management uitbreiden of vernieuwen
 
@@ -43,7 +43,7 @@ De volgende stappen beschrijven het proces voor het aanvragen, oplossen of het b
 
 ### <a name="self-extend-expiring-assignments"></a>Verlopende toewijzingen automatisch uitbreiden
 
-Gebruikers of groepen die aan een rol zijn toegewezen, kunnen verlopende roltoewijzingen rechtstreeks vanuit het **in aanmerking komende** of **actieve** tabblad op de pagina **mijn rollen** van een resource en op de pagina **mijn rollen op het hoogste niveau van** de privileged Identity Management Portal uitbreiden . Gebruikers of groepen kunnen aanvragen om in aanmerking komende en actieve (toegewezen) rollen uit te breiden die in de komende 14 dagen verlopen.
+Gebruikers of groepen die aan een rol zijn toegewezen, kunnen verlopende roltoewijzingen rechtstreeks vanuit het **in aanmerking komende** of **actieve** tabblad op de pagina **mijn rollen** van een resource en op de pagina **mijn rollen op het hoogste niveau van** de privileged Identity Management Portal verlengen. Gebruikers of groepen kunnen aanvragen om in aanmerking komende en actieve (toegewezen) rollen uit te breiden die in de komende 14 dagen verlopen.
 
 ![Azure-resources: mijn rollen pagina lijst met in aanmerking komende rollen met een actie kolom](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-ui.png)
 

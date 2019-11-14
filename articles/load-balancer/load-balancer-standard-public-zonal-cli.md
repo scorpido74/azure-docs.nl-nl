@@ -1,6 +1,6 @@
 ---
-title: Een Standard Load Balancer met zonegebonden frontend maken met behulp van Azure CLI
-titlesuffix: Azure Load Balancer
+title: Standard Load Balancer met zonegebonden-frontend-Azure CLI
+titleSuffix: Azure Load Balancer
 description: Meer informatie over het maken van een openbaar Standard Load Balancer met een open bare IP-adres van zonegebonden met behulp van Azure CLI
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: allensu
-ms.openlocfilehash: 7da41456a4f4bb88d402d27b42b31f6d4adfa7f6
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 5e6dd06cf43b0eb5389597dcedbc323f4c035333
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274305"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048347"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Een Standard Load Balancer met zonegebonden frontend maken met behulp van Azure CLI
 
@@ -64,7 +64,7 @@ az network public-ip create \
 ## <a name="create-azure-standard-load-balancer"></a>Azure-Standard Load Balancer maken
 In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balancer kunt maken en configureren:
 - een front-end IP-pool die het binnenkomende netwerkverkeer op de load balancer ontvangt.
-- een back-end IP-pool waar de front-endpool het netwerkverkeer op de load balancer heen stuurt.
+- een back-end-IP-pool waar de front-end-pool het netwerkverkeer op de load balancer naartoe stuurt.
 - een statustest die de status van de back-end-VM-exemplaren vaststelt.
 - een load balancer-regel die bepaalt hoe het verkeer over de VM's wordt verdeeld.
 
@@ -95,7 +95,7 @@ az network lb probe create \
 ```
 
 ## <a name="create-load-balancer-rule-for-port-80"></a>load balancer regel maken voor poort 80
-Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) de regel *myLoadBalancerRuleWeb* voor het luisteren naar poort 80 in de front-endpool *myFrontEndPool* en het verzenden van netwerkverkeer met evenredige taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt.
+Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met *az network lb rule create* de regel [myLoadBalancerRuleWeb](/cli/azure/network/lb/rule#az-network-lb-rule-create) voor het luisteren naar poort 80 in de front-endpool *myFrontEnd* en het verzenden van netwerkverkeer met evenredige taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt.
 
 ```azurecli-interactive
 az network lb rule create \
@@ -111,7 +111,7 @@ az network lb rule create \
 ```
 
 ## <a name="configure-virtual-network"></a>Virtueel netwerk configureren
-Voordat u enkele VM's implementeert en uw load balancer test, maakt u de ondersteunende virtuele-netwerkbronnen.
+Voordat u enkele VM's implementeert om uw load balancer te testen, maakt u de ondersteunende virtuele-netwerkbronnen.
 
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 

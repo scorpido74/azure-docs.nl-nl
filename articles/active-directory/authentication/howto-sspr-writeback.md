@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a16ad3c571086a73a2aae192fb2d00bce4d5f9
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 9e12fe38ba69f6ac8f27130e01baff0c358aa409
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808153"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021763"
 ---
 # <a name="how-to-configure-password-writeback"></a>Instructies: wacht woord terugschrijven configureren
 
@@ -99,7 +99,7 @@ Voer de volgende stappen uit om de juiste machtigingen voor het terugschrijven v
     * **PwdLastSet schrijven**
 9. Selecteer **Toep assen/OK** om de wijzigingen toe te passen en geopende dialoog vensters te sluiten.
 
-Omdat de bron van de autoriteit on-premises is, is het beleid voor wachtwoord complexiteit van toepassing op dezelfde verbonden gegevens bron. Zorg ervoor dat u het bestaande groeps beleid voor minimale wachtwoord lengte hebt gewijzigd. Het groeps beleid mag niet worden ingesteld op 1, wat betekent dat het wacht woord mini maal een dag oud moet zijn voordat het kan worden bijgewerkt. U moet ervoor zorgen dat deze is ingesteld op 0. Deze instellingen vindt u in `gpmc.msc` onder **computer configuratie > beleid > Windows-instellingen > beveiligings instellingen > account beleid**. Voer `gpupdate /force` uit om ervoor te zorgen dat de wijzigingen van kracht worden. 
+Omdat de bron van de autoriteit on-premises is, is het beleid voor wachtwoord complexiteit van toepassing op dezelfde verbonden gegevens bron. Zorg ervoor dat u het bestaande groeps beleid voor ' minimale wachtwoord duur ' hebt gewijzigd. Het groeps beleid mag niet worden ingesteld op 1, wat betekent dat het wacht woord mini maal een dag oud moet zijn voordat het kan worden bijgewerkt. U moet ervoor zorgen dat deze is ingesteld op 0. Deze instellingen vindt u in `gpmc.msc` onder **computer configuratie > beleid > Windows-instellingen > beveiligings instellingen > account beleid**. Voer `gpupdate /force` uit om ervoor te zorgen dat de wijzigingen van kracht worden. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
