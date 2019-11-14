@@ -1,5 +1,5 @@
 ---
-title: 'Azure PowerShell-voorbeeldscript: een beheerde schijf maken op basis van een momentopname | Microsoft Docs'
+title: 'Azure PowerShell-voorbeeldscript: een beheerde schijf maken op basis van een momentopname'
 description: 'Azure PowerShell-voorbeeldscript: een beheerde schijf maken op basis van een momentopname'
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 5ccff2a503994a4c1001148c371a007c63b13106
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: da6c9d376c432580d8d0765f5c3288fcdfe0abff
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748758"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037176"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>Een beheerde schijf maken met PowerShell op basis van een momentopname
 
@@ -47,7 +47,7 @@ Dit script gebruikt de volgende opdrachten om een beheerde schijf te maken op ba
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Een virtuele machine maken op basis van een beheerde schijf](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[Een virtuele machine maken van een beheerde schijf](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
 Zie voor meer informatie over de Azure PowerShell-module de [documentatie van Azure PowerShell](/powershell/azure/overview).
 

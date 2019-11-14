@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 444868f1716ae55f1851e50c057b172f5e3eb3d1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4a1b5f804986d2bda85980d01cdaaa130d86b50d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961398"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039740"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Een DR-analyse uitvoeren voor virtuele Hyper-V-machines naar een secundaire site
 
@@ -22,7 +22,7 @@ In dit artikel wordt beschreven hoe u een DR-analyse (nood herstel) uitvoert voo
 U voert een testfailover uit om uw replicatie strategie te valideren en een DR-analyse uit te voeren zonder gegevens verlies of downtime. Een testfailover heeft geen invloed op de doorlopende replicatie of in uw productie omgeving. 
 
 > [!WARNING]
-> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](scvmm-site-recovery-deprecation.md) te lezen voordat u doorgaat.
+> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](site-to-site-deprecation.md) te lezen voordat u doorgaat.
 
 
 ## <a name="how-do-test-failovers-work"></a>Hoe werkt testfailover?

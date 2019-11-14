@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: bac784ea3050111184e2908fe5656a1d16545a99
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 8d7db428d7f71383abf5425d7cc1ddbbab3b7a52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231015"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037882"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Live streamen met Azure Media Services v3
 
@@ -27,7 +27,7 @@ Met Azure Media Services kunt u live gebeurtenissen aan uw klanten leveren via d
 - Een camera die wordt gebruikt om de live-gebeurtenis vast te leggen.<br/>Bekijk voor het instellen van ideeën de [eenvoudige en draag bare video versnellings configuratie voor Video's]( https://link.medium.com/KNTtiN6IeT).
 
     Als u geen toegang hebt tot een camera, kunnen hulpprogram ma's zoals [Wirecast](https://www.telestream.net/wirecast/overview.htm) worden gebruikt voor het genereren van een live-feed vanuit een video bestand.
-- Een live video encoder dat signalen van een camera (of een ander apparaat, zoals een laptop) converteert naar een bijdrage toevoer die naar Media Services wordt verzonden. De bijdrage feed kan signalen bevatten die gerelateerd zijn aan advertenties, zoals SCTE-35 markeringen.<br/>Zie voor een lijst met de aanbevolen code ring voor live [](recommended-on-premises-live-encoders.md)streaming. Bekijk ook deze blog: [Live streamen van productie met IB](https://link.medium.com/ttuwHpaJeT).
+- Een live video encoder dat signalen van een camera (of een ander apparaat, zoals een laptop) converteert naar een bijdrage toevoer die naar Media Services wordt verzonden. De bijdrage feed kan signalen bevatten die gerelateerd zijn aan advertenties, zoals SCTE-35 markeringen.<br/>Zie voor een lijst met de aanbevolen code ring voor live [streaming.](recommended-on-premises-live-encoders.md) Bekijk ook deze blog: [productie van live streams met IB](https://link.medium.com/ttuwHpaJeT).
 - Onderdelen in Media Services waarmee u de live-gebeurtenis kunt opnemen, bekijken, versleutelen, coderen en verzenden naar uw klanten, of naar een CDN voor verdere distributie.
 
 In dit artikel vindt u een overzicht en richt lijnen voor live streamen met Media Services en koppelingen naar andere relevante artikelen.
@@ -41,7 +41,7 @@ Met Media Services kunt u gebruikmaken van [dynamische pakketten](dynamic-packag
 
 ## <a name="dynamic-encryption"></a>Dynamische versleuteling
 
-Dynamische versleuteling biedt u de mogelijkheid om uw Live of on-demand inhoud dynamisch te versleutelen met AES-128 of een van de drie primaire Digital Rights Management (DRM)-systemen: Micro soft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM (PlayReady, Widevine en FairPlay) licenties voor geautoriseerde clients. Zie [dynamische versleuteling](content-protection-overview.md)voor meer informatie.
+Dynamische versleuteling biedt u de mogelijkheid om uw Live of on-demand inhoud dynamisch te versleutelen met AES-128 of een van de drie belangrijkste Digital Rights Management (DRM)-systemen: micro soft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM (PlayReady, Widevine en FairPlay) licenties voor geautoriseerde clients. Zie [dynamische versleuteling](content-protection-overview.md)voor meer informatie.
 
 ## <a name="dynamic-manifest"></a>Dynamisch manifest
 
@@ -61,7 +61,14 @@ Wanneer u de gebeurtenis Pass-Through **Live**gebruikt, vertrouwt u met uw on-pr
 
 ![live encoding](./media/live-streaming/live-encoding.svg)
 
-Wanneer u Cloud codering met Media Services gebruikt, configureert u uw on-premises Live coderings programma voor het verzenden van een video met één bitsnelheid als de contributie invoer (Maxi maal 32Mbps aggregatie) naar de live gebeurtenis (met RTMP of gefragmenteerd-MP4 invoer Protocol). Met de live-gebeurtenis wordt de inkomende single-bitrate stream gedecodeerd naar [meerdere bitrate video streams](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) met verschillende resoluties om de levering te verbeteren en deze beschikbaar te maken voor levering aan apparaten via industrie standaard protocollen zoals MPEG-Dash, Apple HTTP Live Streaming (HLS) en micro soft Smooth Streaming. 
+Wanneer u Cloud codering met Media Services gebruikt, configureert u uw on-premises Live coderings programma voor het verzenden van een video met één bitsnelheid als de contributie invoer (Maxi maal 32Mbps aggregatie) naar de live gebeurtenis (met RTMP of gefragmenteerd-MP4 invoer Protocol). De live-gebeurtenis transcodeert de binnenkomende single-bitrate stream in [meerdere bitrate video streams](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) met verschillende resoluties om de levering te verbeteren en maakt deze beschikbaar voor levering aan het afspelen van apparaten via industrie standaard protocollen zoals MPEG-Dash, Apple http live streaming (HLS) en micro soft Smooth streaming. 
+
+### <a name="live-transcription"></a>Live-transcriptie
+
+Live transcriptie is een functie die u kunt gebruiken met Live-gebeurtenissen die door Pass-Through of Live-code ring zijn. Zie [Live transcriptie](live-transcription.md)voor meer informatie. Als deze functie is ingeschakeld, gebruikt de service de functie voor [spraak-naar-tekst](../../cognitive-services/speech-service/speech-to-text.md) van Cognitive Services om de gesp roken woorden in de binnenkomende audio naar tekst te transcriberen. Deze tekst wordt vervolgens beschikbaar gesteld voor levering en video en audio in MPEG-DASH-en HLS-protocollen.
+
+> [!NOTE]
+> Live transcriptie is momenteel beschikbaar als preview-functie in VS-West 2.
 
 ## <a name="live-streaming-workflow"></a>Werk stroom voor live streamen
 
@@ -75,7 +82,7 @@ Als u inzicht wilt krijgen in de werk stroom voor live streamen in Media Service
 
 1. Controleer in uw Media Services-account of het **streaming-eind punt** (origin) wordt uitgevoerd. 
 2. Een [live gebeurtenis](live-events-outputs-concept.md)maken. <br/>Wanneer u de gebeurtenis maakt, kunt u opgeven dat deze automatisch moet worden gestart. U kunt ook de gebeurtenis starten wanneer u klaar bent om te streamen.<br/> Wanneer auto start is ingesteld op True, wordt de live-gebeurtenis direct na het maken gestart. De facturering begint zodra de live-gebeurtenis wordt gestart. U moet expliciet Stop aanroepen in de resource van de livegebeurtenis om verdere facturering stop te zetten. Zie [Live Event states and billing](live-event-states-billing.md) (Statussen en facturering voor livegebeurtenissen) voor meer informatie.
-3. Haal de opname-URL ('s) op en configureer uw on-premises Encoder voor het gebruik van de URL om de contributie feed te verzenden.<br/>Bekijk [Aanbevolen Live](recommended-on-premises-live-encoders.md)coderings Programma's.
+3. Haal de opname-URL ('s) op en configureer uw on-premises Encoder voor het gebruik van de URL om de contributie feed te verzenden.<br/>Bekijk [Aanbevolen Live coderings](recommended-on-premises-live-encoders.md)Programma's.
 4. Haal de Preview-URL op en gebruik deze om te controleren of de invoer van het coderings programma daad werkelijk wordt ontvangen.
 5. Maak een nieuw **Asset** -object. 
 
