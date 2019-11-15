@@ -1,0 +1,14 @@
+- name: Azure
+  tocHref: /azure
+  topicHref: /azure/index
+  items:
+    - name: Beheer
+      tocHref: /azure/governance
+      topicHref: /azure/governance
+      items:
+        - name: Beleid
+          tocHref: /azure/lighthouse
+          topicHref: /azure/governance/policy
+        - name: Beleid
+          tocHref: /azure/azure-monitor
+          topicHref: /azure/governance/policy
