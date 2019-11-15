@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 325de36f3aa480847bc647827260f7f65765b5d7
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: beef37b0ece9cf57c86927b9f57d85ad4a25dbd1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103751"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73746314"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Eigendom van de facturering van een Azure-abonnement overdragen aan een ander account
 
@@ -34,7 +34,7 @@ Als u een EA-klant (Enterprise Agreement) bent, kan uw ondernemingsbeheerder het
 
 1. Zoek naar **kostenbeheer en facturering**.
 
-   ![Schermopname van de zoekopdracht in de Azure Portal](./media/billing-subscription-transfer/billing-search-cost-management-billing.png)
+   ![Schermopname van de zoekopdracht in de Azure-portal](./media/billing-subscription-transfer/billing-search-cost-management-billing.png)
 
 1. Selecteer in het linkerdeelvenster **Abonnementen**. Afhankelijk van de toegangsmogelijkheden moet u mogelijk een factureringsbereik en vervolgens **Abonnementen** of **Azure-abonnementen** selecteren.
 
@@ -202,6 +202,10 @@ Uw account is verantwoordelijk voor de betaling van het gebruik dat wordt gerapp
 ### <a name="can-i-use-a-different-payment-method"></a>Kan ik een andere betalingswijze gebruiken?
 
 Ja. Wanneer u de overdrachtsaanvraag accepteert, kunt u een bestaande betalingswijze selecteren die aan uw account is gekoppeld of een nieuwe betalingswijze toevoegen.
+
+### <a name="how-can-i-transfer-ownership-of-my-enterprise-agreement-ea-subscription-account-ownership-if-the-original-account-owner-is-no-longer-with-the-organization"></a>Hoe kan ik het accounteigendom van mijn EA-abonnement (Enterprise Agreement) overdragen als de eigenaar van het oorspronkelijke account niet langer voor de organisatie werkt?
+
+De Enterprise-beheerder kan het eigendom voor elk account bijwerken, zelfs nadat de eigenaar van het oorspronkelijke account niet langer deel uitmaakt van de organisatie. Ze kunnen dit doen door de instructies te volgen voor [het overdragen van het accounteigendom voor alle abonnementen](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) in de EA-portal.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

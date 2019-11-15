@@ -5,18 +5,18 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a002f5a1657454ff5048ab695e62eccd268a5891
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499243"
+ms.locfileid: "73580095"
 ---
 # <a name="what-are-azure-reservations"></a>Wat zijn Azure-reserveringen?
 
-Met behulp van Azure-reserveringen kunt u geld besparen omdat u zich vastlegt voor één of drie jaar aan rekencapaciteit van virtuele machines, SQL Database, Azure Cosmos DB-doorvoer of andere Azure-resources. Door u vast te leggen krijgt u korting op de resources die u gebruikt. Met reserveringen kunt u een aanzienlijke vermindering van kosten voor rekenkracht van virtuele machines, SQL Database, Azure Cosmos DB en andere resources realiseren van wel 72% vergeleken met prijzen voor betalen per gebruik. Reserveringen voorzien in een korting op de factuur en zijn niet van invloed op de runtime-status van uw resources.
+Met behulp van Azure-reserveringen kunt u geld besparen omdat u een abonnement voor één of drie jaar neemt voor virtuele machines, Azure Blob Storage of Azure Data Lake Storage Gen2, rekencapaciteit van een SQL Database, Azure Cosmos DB-doorvoer of andere Azure-resources. Door u vast te leggen krijgt u korting op de resources die u gebruikt. Met reserveringen kunt u tot wel 72% besparen op uw resourcekosten ten opzichte van de prijzen voor betalen per gebruik. Reserveringen voorzien in een korting op de factuur en zijn niet van invloed op de runtime-status van uw resources.
 
 U kunt vooraf of maandelijks voor een reservering betalen. De totale kosten van betalingen vooraf en per maand voor reserveringen zijn hetzelfde en u hoeft ook geen toeslag te betalen wanneer u voor maandelijks betalen kiest. Maandelijkse betaling is beschikbaar voor Azure-reserveringen, niet voor producten van derden.
 
@@ -24,13 +24,14 @@ U kunt een reservering kopen via [Azure Portal](https://ms.portal.azure.com/?mic
 
 ## <a name="why-buy-a-reservation"></a>Redenen om een reservering te kopen
 
-Als u virtuele machines, Azure Cosmos DB of SQL-databases hebt die gedurende een lange periode worden uitgevoerd en u een reservering koopt, profiteert u van de meest rendabele optie. Wanneer u bijvoorbeeld continu vier instanties van een service uitvoert zonder een reservering te gebruiken, wordt u gefactureerd met tarieven voor betalen per gebruik. Wanneer u een reservering voor die resources koopt, krijgt u direct korting op de reservering. De resources worden niet langer gefactureerd met de tarieven voor betalen per gebruik.
+Als u virtuele machines, Blob Storage-gegevens, Azure Cosmos DB of SQL-databases hebt die veel capaciteit of doorvoer gebruiken of die gedurende een lange periode worden uitgevoerd, profiteert u van de meest rendabele optie wanneer u een reservering koopt. Wanneer u bijvoorbeeld continu vier instanties van een service uitvoert zonder een reservering te gebruiken, wordt u gefactureerd met tarieven voor betalen per gebruik. Wanneer u een reservering voor die resources koopt, krijgt u direct korting op de reservering. De resources worden niet langer gefactureerd met de tarieven voor betalen per gebruik.
 
 ## <a name="charges-covered-by-reservation"></a>Kosten die onder de reservering vallen
 
 Service-abonnementen:
 
 - **Gereserveerde VM-instantie**: een reservering dekt alleen de rekenkosten van de virtuele machine. Aanvullende software-, netwerk- of opslagkosten vallen hier niet onder.
+- **Gereserveerde Azure Storage-capaciteit**: onder een reservering valt de opslagcapaciteit voor standaardopslagaccounts voor Blob Storage of Azure Data Lake Gen2 Storage. De tarieven voor bandbreedte of transacties vallen niet onder de reservering.
 - **Gereserveerde Azure Cosmos DB-capaciteit**: onder een reservering valt de doorvoer die voor uw resources is ingericht. De opslag- en netwerkkosten vallen hier niet onder.
 - **Gereserveerde SQL Database-vCore**: alleen de rekenkosten worden opgenomen in een reservering. De licentie wordt afzonderlijk gefactureerd.
 - **SQL Data Warehouse**: onder een reservering valt het cDWU-gebruik. Een reservering omvat geen opslag- en netwerkkosten die samenhangen met het gebruik van SQL Data Warehouse.
@@ -134,6 +135,7 @@ Wanneer u een reservering koopt, kan de korting ook worden toegepast op andere i
 Service-abonnementen:
 
 - Gereserveerde VM-instanties: Wanneer u de reservering koopt en **Geoptimaliseerd voor flexibiliteit van de instantiegrootte** selecteert, hangt de kortingsdekking af van de VM-grootte die u selecteert. De reservering kan worden toegepast op de VM-grootten in de groep met series van dezelfde grootte. Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) voor meer informatie.
+- Gereserveerde Azure Storage-capaciteit: U kunt gereserveerde capaciteit voor standaard Azure Storage-accounts aanschaffen in eenheden van 100 TiB of 1 PiB per maand. Gereserveerde Azure Storage-capaciteit is in alle regio's, voor elke toegangslaag (dynamisch, statisch of archief) en voor elke replicatieoptie (LRS, GRS of ZRS) beschikbaar.
 - Gereserveerde capaciteit voor SQL Database: De kortingsdekking hangt af van de prestatielaag die u kiest. Zie [Begrip van de manier waarop Azure-reserveringskorting wordt toegepast](billing-understand-reservation-charges.md) voor meer informatie.
 - Gereserveerde Azure Cosmos DB-capaciteit: De kortingsdekking hangt af van de ingerichte doorvoer. Zie [Begrip van de manier waarop Azure Cosmos DB-reserveringskorting wordt toegepast](billing-understand-cosmosdb-reservation-charges.md) voor meer informatie.
 

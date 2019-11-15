@@ -4,16 +4,16 @@ description: In dit artikel wordt uitgelegd hoe Azure EA-klanten Azure EA Portal
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 11/07/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 1882b283f376a1bb8706132263c83e1a24ec0705
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 567beb9de0c0a8039d774270bdf61a7db437091e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900927"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888377"
 ---
 # <a name="get-started-with-the-azure-ea-portal"></a>Aan de slag met de Azure EA Portal
 
@@ -205,7 +205,8 @@ U kunt op **Ander account toevoegen** klikken om nog een account toe te voegen o
 Eigendom van het account controleren:
 
 1. Meld u aan bij Azure EA Portal.
-2. Controleer het accounteigendom door de status weer te geven. De status wordt gewijzigd van **In behandeling** in **Begin-/einddatum**. De Begin-/einddatum is de datum waarop de gebruiker zich voor het eerst heeft aangemeld en de einddatum van de overeenkomst.
+1. Controleer het accounteigendom door de status weer te geven. De status wordt gewijzigd van **In behandeling** in **Begin-/einddatum**. De Begin-/einddatum is de datum waarop de gebruiker zich voor het eerst heeft aangemeld en de einddatum van de overeenkomst.
+1. Zodra het pop-upbericht Waarschuwing wordt weergegeven, moet een eigenaar van het account op **Doorgaan** klikken om het account te activeren wanneer deze zich voor de eerste keer bij Azure EA-portal aanmeldt.
 
 
 ## <a name="change-account-owner"></a>Accounteigenaar wijzigen
@@ -220,7 +221,7 @@ Belangrijke punten voor het overdragen van gebruikersaccountgegevens:
 - Overdrachten van een Microsoft-account naar een ander Microsoft-account worden ondersteund. Het doelaccount moet een geldig Azure Commerce-account zijn om als geldig doel voor overdrachten te fungeren. Voor nieuwe accounts wordt u gevraagd een Azure Commerce-account te maken wanneer u zich aanmeldt bij de Azure EA Portal. Voor bestaande accounts moet u eerst een nieuw Azure-abonnement maken voordat het account kan worden overgedragen.
 - Zodra u een abonnementsoverdracht hebt voltooid, wordt de eigenaar van het account door Microsoft bijgewerkt.
 
-RBAC-beleid:
+Beleidsregels voor op rollen gebaseerd toegangsbeheer:
 
 - Alleen bij Azure-abonnementsoverdrachten tussen twee organisatie-id's in dezelfde tenant blijven het bestaande RBAC-beleid van Azure (op rollen gebaseerd toegangsbeheer) en de roltoewijzingen voor servicebeheerder en co-beheerder behouden. Andere abonnementsoverdrachten leiden ertoe dat uw RBAC-beleid en de roltoewijzingen voor servicebeheerder en co-beheerder verloren gaan. Beleidsregels en beheerdersrollen kunnen niet worden overgedragen naar andere mappen. Servicebeheerders worden bijgewerkt naar eigenaar van het doelaccount.
 - Wanneer u abonnementsoverdrachten tussen twee organisatie-id's in dezelfde tenant uitvoert, blijven het RBAC-beleid en de bestaande servicebeheerders- en co-beheerdersrollen bewaard.
@@ -284,28 +285,76 @@ Het kan tot 24 uur duren voordat nieuwe abonnementen worden weergegeven in de li
 - [Abonnementsgegevens bewerken](https://account.azure.com/Subscriptions)
 - [Abonnementsservices beheren](https://portal.azure.com/#home)
 
-## <a name="transfer-pay-as-you-go-subscription-to-ea-subscription"></a>Een abonnement op gebruiksbasis overdragen naar een EA-abonnement
+## <a name="transfer-ea-subscription-to-pay-as-you-go-subscription"></a>Een EA-abonnement overdragen naar een abonnement op gebruiksbasis
 
-Als u een afzonderlijk abonnement dat wordt betaald naar gebruik, wilt overdragen naar een EA-abonnement, moet u een nieuwe ondersteuningsaanvraag maken in Azure Portal. Als u een ondersteuningsaanvraag wilt maken, klikt u in het gedeelte Help en ondersteuning op **+ Nieuwe ondersteuningsaanvraag** .
+Als u een EA-abonnement wilt overdragen naar afzonderlijk abonnement dat wordt betaald naar gebruik, moet u een nieuwe ondersteuningsaanvraag maken in Azure EA-portal. Als u een ondersteuningsaanvraag wilt maken, klikt u in het gedeelte Help en ondersteuning op **+ Nieuwe ondersteuningsaanvraag** .
 
+## <a name="associate-an-existing-account-with-your-pay-as-you-go-subscription"></a>Een bestaand account koppelen aan uw abonnement dat wordt betaald per gebruik
+
+Als u al over een bestaand Microsoft Azure-account in de Microsoft Azure-portal beschikt, voert u het bijbehorende Microsoft-account of een werk- of schoolaccount in om dit aan uw Enterprise Agreement-inschrijving te koppelen.
+
+### <a name="associate-an-existing-account"></a>Een bestaand account koppelen
+
+1. Klik in Enterprise Portal op **Beheren**.
+1. Klik op het tabblad **Account**.
+1. Klik op **+Een account toevoegen**.
+1. Voer het Microsoft-account of het werk- of schoolaccount in dat aan het bestaande account is gekoppeld.
+1. Bevestig het Microsoft-account of het werk- of schoolaccount dat aan het bestaande account is gekoppeld.
+1. Geef een naam op die u wilt gebruiken om dit account te identificeren in de rapportfunctie.
+1. Klik op **Add**.
+1. U kunt nog een account toevoegen door nogmaals de optie **+Een account toevoegen** te selecteren, of keer terug naar de startpagina door op de knop **Beheerder** te klikken.
+1. Als u klikt om de pagina **Account** te openen, wordt het zojuist toegevoegde account weergegeven met de status **In behandeling**.
+
+### <a name="confirm-account-ownership"></a>Eigendom van het account bevestigen
+
+1. Meld u aan met het e-mailaccount dat is gekoppeld aan het Microsoft-account of het werk- of schoolaccount dat u hebt opgegeven.
+1. Open de e-mailmelding met de titel _Invitation to Activate your Account on the Microsoft Azure Service from Microsoft Volume Licensing_ (Uitnodiging voor het activeren van uw account in de Microsoft Azure-service van Microsoft Volume Licensing).
+1. Klik op de koppeling **Log into the Microsoft Azure Enterprise Portal** (Aanmelden bij Microsoft Azure Enterprise Portal) in de uitnodiging.
+1. Klik op **Aanmelden**.
+1. Voer uw Microsoft-account of werk- of schoolaccount en wachtwoord in om u aan te melden en te bevestigen dat u eigenaar van het account bent.
+
+### <a name="azure-marketplace"></a>Azure Marketplace
+
+Hoewel de meeste abonnementen vanuit een omgeving waarin wordt betaald per gebruik, worden omgezet naar Enterprise Azure, geldt dit niet voor Azure Marketplace-services. Als u in één weergave alle abonnementen en kosten wilt kunnen zien, is het raadzaam de Azure Marketplace-services aan Enterprise Portal toe te voegen:
+
+1. Klik in het linkernavigatievenster op **Beheren**.
+1. Klik op het **tabblad Inschrijving**.
+1. Bekijk de sectie Inschrijvingsdetails.
+1. Klik rechts naast het veld Azure Marketplace op het potloodpictogram om de functie in te schakelen en druk op **Opslaan**.
+
+De accounteigenaar kan nu Azure Marketplace-abonnementen aanschaffen die hij of zij voorheen als abonnementen met betalen per gebruik in eigendom had.
+
+Zodra nieuwe Azure Marketplace-abonnementen onder uw inschrijving zijn geactiveerd, worden Marketplace-abonnementen opgezegd die in de betalen per gebruik-omgeving zijn gemaakt. Dit is een essentiële stap om ervoor te zorgen dat uw Marketplace-abonnementen geen slechte status krijgen wanneer uw betaalmiddel voor betalen per gebruik-abonnementen verloopt.
+
+### <a name="msdn"></a>MSDN
+
+MSDN-abonnementen worden automatisch omgezet naar MSDN Dev/Test; eventueel bestaand geldtegoed op de EA-aanbieding gaat verloren.
+
+### <a name="azure-in-open"></a>Azure in Open
+
+Wanneer u een Azure in Open-abonnement koppelt aan een EA, raakt u niet-verbruikte Azure in Open-tegoeden kwijt. Om mogelijk verlies van tegoeden te voorkomen, is het raadzaam alle tegoeden van een Azure in Open-abonnement te verbruiken voordat het account aan een EA wordt toegevoegd.  
+
+### <a name="accounts-with-support-subscriptions"></a>Accounts met ondersteuningsabonnementen
+
+Let op: wanneer u bestaande accounts aan Enterprise Portal toevoegt waaraan een ondersteuningsabonnement is gekoppeld (en waar niet ook al een EA-ondersteuningsabonnement aan is gekoppeld), wordt het MOSA-ondersteuningsabonnement niet automatisch overgedragen en zult u de ondersteuning opnieuw moeten aanschaffen in EA. Tot het einde van de volgende maand wordt nog een respijtperiode gehanteerd waarin nog ondersteuning wordt geboden, zodat u meer tijd hebt om ondersteuning opnieuw te bestellen.
 
 ## <a name="view-usage-summary-and-download-reports"></a>Gebruiksoverzicht weergeven en rapporten downloaden
 
 Ondernemingsbeheerders kunnen een overzicht van hun gebruiksgegevens, verbruikte financiële toezegging en de kosten voor aanvullend gebruik in Azure EA Portal weergeven. De kosten worden weergegeven op overzichtsniveau voor alle accounts en abonnementen.
 
-Gedetailleerd gebruik voor specifieke accounts weergeven
+U kunt als volgt gedetailleerd gebruik voor specifieke accounts weergeven:
 
 Download het rapport Gebruiksgegevens. Klik op **Rapporten** en klik vervolgens op het tabblad **Gebruiksgegevens downloaden**. Klik in de lijst met rapporten op **Downloaden** voor het maandelijkse rapport dat u wilt downloaden.
 
 Het rapport bevat geen toepasselijke belastingen. Er duurt maximaal acht uur voordat het gebruik wordt weergegeven in het rapport.
 
-Rapporten en grafieken met het gebruiksoverzicht weergeven:
+U kunt als volgt rapporten en grafieken met het gebruiksoverzicht weergeven:
 
 1. Ga naar Azure EA Portal en klik in het navigatiegedeelte aan de linkerkant op **Rapporten** en bekijk het tabblad **Gebruiksoverzicht**.  
-  ![](./media/billing-ea-portal-get-started/create-ea-view usage-summary-and-download-reports.png)
+  ![Gebruiksoverzicht maken en weergeven en rapporten downloaden](./media/billing-ea-portal-get-started/create-ea-view-usage-summary-and-download-reports.png)
 2. Selecteer een toezeggingstermijn.
 3. Schakel in de rechterbovenhoek van de pagina tussen **M** (Maandelijks) en **A** (Aangepast) om het **Gebruiksoverzicht** weer te geven met een aangepaste begin- en einddatum.  
-  ![](./media/billing-ea-portal-get-started/create-ea-view-usage-summary-and-download-reports-custom-view.png)
+  ![Gebruiksoverzicht maken en weergeven en rapporten downloaden in aangepaste weergave](./media/billing-ea-portal-get-started/create-ea-view-usage-summary-and-download-reports-custom-view.png)
 4. Selecteer een periode of maand in de grafiek om aanvullende gegevens weer te geven.
 5. De grafiek toont het MoM-gebruik (maand over maand), uitgesplitst in ingezet voor gebruik, te veel in rekening gebrachte service, afzonderlijke gefactureerde kosten en Marketplace-kosten.
 6. Filter de geselecteerde maand onder de grafiek op afdelingen, accounts en abonnementen.
@@ -346,10 +395,151 @@ Hier volgt een video waarin wordt uitgelegd hoe u gebruiksgegevens downloadt:
 
 >[!VIDEO https://www.youtube.com/embed/eY797htT1qg]
 
-## <a name="schedule-an-onboarding-call"></a>Een telefonisch onboardinggesprek plannen
+### <a name="advanced-report-download"></a>Geavanceerde rapporten downloaden
 
-Als u een persoonlijke onboardingsessie met een klant wilt plannen, kunt u een ondersteuningsaanvraag indienen via [Azure EA Portal Support](https://support.microsoft.com/supportrequestform/e114582c-4e51-af46-10b1-1f0cc141e133). Selecteer **Onboarding** als **Probleemcategorie**.
+Als u rapporten wilt maken voor specifieke datumbereiken of accounts, kunt u geavanceerde rapporten downloaden. Met ingang van 30 augustus 2016 is de indeling van het uitvoerbestand gewijzigd van .xlsx naar .csv, zodat er grotere recordsets mogelijk zijn.
+
+1. Selecteer **Geavanceerde rapporten downloaden**.
+1. Selecteer **Geldig datumbereik**.
+1. Selecteer **Geldige accounts**.
+1. Selecteer **Gebruiksgegevens aanvragen**.
+1. Druk op de knop **Vernieuwen** totdat de rapportstatus wordt bijgewerkt naar **Downloaden**.
+1. Download het rapport.
+
+## <a name="ea-term-glossary"></a>Woordenlijst met EA-terminologie
+
+- **Account**: Een organisatie-eenheid in Azure EA Portal die wordt gebruikt voor het beheren van abonnementen en rapporten.
+- **Accounteigenaar**: De persoon die is geïdentificeerd om abonnementen en servicebeheerders in Microsoft Azure te beheren. Ze kunnen gebruiksgegevens van dit account en de bijbehorende abonnementen bekijken.
+- **Aanpassingsabonnement**: Eén abonnement voor één jaar of een uniform abonnement onder de aangepaste inschrijving.
+- **Toezegging**: Toezegging van een jaarlijks bedrag voor Microsoft Azure-services, tegen een gereduceerd toezeggingstarief voor het gebruik ten opzichte van deze vooruitbetaling.
+- **Afdelingsbeheerder**: De aangewezen persoon/personen voor het beheren van afdelingen, het maken van nieuwe accounts en accounteigenaren, het bekijken van gebruiksgegevens voor de afdelingen die ze beheren en het weergeven van de kosten bij het verlenen van machtigingen.
+- **Inschrijvingsnummer**: Een unieke id die door Microsoft wordt verleend om de specifieke inschrijving te identificeren die aan een Enterprise Agreement is gekoppeld.
+- **Zakelijke beheerder**: De aangewezen persoon/personen om afdelingen en afdelingseigenaren en accounts en accounteigenaren te beheren in Microsoft Azure. Ze beschikken over de mogelijkheid om zakelijk beheerders te beheren en gebruiksgegevens, gefactureerde hoeveelheden en niet-gefactureerde kosten te bekijken voor alle accounts en abonnementen die aan de Enterprise-inschrijving zijn gekoppeld.
+- **Enterprise Agreement**: Een Microsoft-licentieovereenkomst voor klanten met gecentraliseerde aankoopmogelijkheden die hun gehele organisatie willen standaardiseren naar Microsoft-technologie en een informatietechnologie-infrastructuur handhaven op een standaard van Microsoft-software.
+- **Enterprise Agreement-inschrijving**: Een inschrijving in het Enterprise Agreement-programma, zodat er gebruik kan worden gemaakt van grote volumes Microsoft-producten tegen een gereduceerd tarief.
+- **Microsoft-account**: Een op het web gebaseerde service waarmee gebruikers op deelnemende sites kunnen worden geverifieerd met één set referenties.
+- **Aanpassing van de Microsoft Azure Enterprise-inschrijving (aanpassing van inschrijving)** : Een aanpassing die is ondertekend door een onderneming, die deze toegang geeft tot Microsoft Azure als onderdeel van de Enterprise-inschrijving.
+- **Azure EA Portal**: De portal die door onze Enterprise-klanten wordt gebruikt voor het beheren van hun Microsoft Azure-accounts en hun bijbehorende abonnementen.
+- **Hoeveelheid verbruikte resources**: De verbruikte hoeveelheid van een afzonderlijke Microsoft Azure-service in één maand.
+- **Servicebeheerder**: De persoon die toegang heeft tot abonnementen en ontwikkelingsprojecten in de ontwikkelaarsportal en deze kan beheren.
+- **Abonnement**: Staat voor een Azure EA Portal-abonnement en fungeert als container voor Microsoft Azure-services die door dezelfde servicebeheerder worden beheerd.
+- **Werk- of schoolaccount**: Voor organisaties die Active Directory met federatie hebben ingesteld voor de cloud en waarbij alle accounts zich in één tenant bevinden.
+
+### <a name="enrollment-statuses"></a>Statussen van inschrijving:
+
+- **In behandeling**: De inschrijvingsbeheerder moet zich aanmelden bij Azure EA Portal. Zodra de beheerder zich heeft aangemeld, schakelt de inschrijving over tot de status Actief.
+- **Actief**: De inschrijving is Actief en accounts en abonnementen kunnen in Azure EA Portal worden gemaakt. De inschrijving blijft actief tot de einddatum van de Enterprise Agreement.
+- **Onbeperkte verlengde termijn**: Een onbeperkte verlengde termijn wordt toegekend nadat de einddatum van de Enterprise Agreement is verstreken. Hiermee kunnen EA-klanten die zich voor de verlengde termijn hebben aangemeld aan het einde van hun Enterprise Agreement onbeperkt gebruik blijven maken van Azure. Voordat de Enterprise Agreement-einddatum van de EA-inschrijving is bereikt, moet de inschrijvingsbeheerder bepalen of de inschrijving moet worden verlengd door extra financiële toezeggingen te doen, moet worden overgestapt naar een nieuwe inschrijving, een migratie naar het Microsoft Online Subscription Program (MOSP) moet worden uitgevoerd of alle services die aan de inschrijving zijn gekoppeld, moeten worden uitgeschakeld.
+- **Verlopen**: De EA-klant heeft zich afgemeld voor de verlengde termijn en de Enterprise Agreement-einddatum van de EA-inschrijving is bereikt. De inschrijving verloopt en alle gekoppelde services worden uitgeschakeld.
+- **Overgedragen**: Inschrijvingen waarvan de bijbehorende accounts en services zijn overgedragen naar een nieuwe inschrijving, worden weergegeven met de status Overgedragen. Let op: inschrijvingen worden niet automatisch overgedragen als er tijdens het verlengen een nieuw inschrijvingsnummer wordt gegenereerd. Het voorafgaande inschrijvingsnummer moet worden opgenomen in de verlengingsaanvraag van de klant om een automatische overdracht mogelijk te maken.
+
+## <a name="get-started-on-azure-ea-faq"></a>Veelgestelde vragen om aan de slag te gaan met Azure EA
+
+In dit document vindt u meer informatie over gangbare vragen die klanten ons tijdens het onboardingproces stellen.  
+
+### <a name="can-i-associate-my-existing-azure-account-to-enterprise-enrollment"></a>Kan ik mijn bestaande Azure-account aan een Enterprise-inschrijving koppelen?
+
+Ja, dat is mogelijk. Belangrijk: alle Azure-abonnementen waarvan u de accounteigenaar bent, worden naar uw Enterprise Agreement omgezet. Dit is inclusief abonnementen waarvoor maandelijks tegoed wordt gebruikt (bijvoorbeeld Visual Studio, AzurePass, MPN, BizSpark, enzovoort). Dit betekent dat u hierdoor ook uw maandelijkse tegoed verliest.
+
+### <a name="i-accidentally-associated-my-existing-azure-account-with-enterprise-enrollment-as-a-result-i-lost-my-monthly-credit-is-it-possible-to-get-my-monthly-credit-back"></a>Ik heb mijn bestaande Azure-account per ongeluk aan een Enterprise-inschrijving gekoppeld. Hierdoor ben ik mijn maandelijkse tegoed kwijtgeraakt. Is het mogelijk om mijn maandelijkse tegoed terug te krijgen?
+
+Als u uw afzonderlijke Azure-tegoed voor uw Visual Studio-abonnement wilt herstellen nadat u zich als een EA-accounteigenaar hebt geverifieerd en voor EA dezelfde aanmelding als voor uw Visual Studio-abonnement hebt gebruikt, moet u een van de volgende acties uitvoeren:
+1. Verwijder alle Azure-abonnementen waarvan deze accounteigenaar de eigenaar is, verwijder de accounteigenaar uit EA Portal en zorg ervoor dat deze persoon zich opnieuw aanmeldt voor zijn of haar afzonderlijke Azure-voordelen via Visual Studio.
+ OF
+1. Verwijder de Visual Studio-abonnee van de beheersite in VLSC en wijs het abonnement opnieuw toe. Laat de abonnee hierbij een andere aanmelding gebruiken. Vervolgens kan de abonnee zich opnieuw aanmelden voor zijn of haar afzonderlijke Azure-voordelen via Visual Studio.
+
+### <a name="what-type-of-subscription-should-i-create"></a>Welk type abonnement moet ik maken?
+
+EA Portal biedt twee abonnementstypen voor zakelijke klanten:
+
+- Microsoft Azure Enterprise is ideaal voor:
+  - Gebruik in elke productieomgeving
+  - Beste prijzen op basis van uitgaven aan infrastructuur
+  - Kijk op https://azure.microsoft.com/pricing/enterprise-agreement/ voor meer informatie
+- Enterprise Dev/Test is ideaal voor:
+  - Alle werkbelastingen voor ontwikkelen en testen van het team
+  - Gemiddelde tot intensieve individuele werkbelastingen voor ontwikkelen en testen
+  - Toegang tot speciale MSDN-installatiekopieën en voorkeurstarieven voor services
+  - Kijk op https://azure.microsoft.com/offers/ms-azr-0148p/ voor meer informatie
+
+### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Is het mogelijk om het eigendom van een abonnement over te dragen aan een ander account?
+
+Ja, het is mogelijk om het eigendom van een abonnement over te dragen aan een ander account. Als aan account A bijvoorbeeld drie abonnementen zijn gekoppeld, kan de bedrijfsbeheerder één abonnement naar account B, één naar account C en één naar account D overdragen, of alle abonnementen naar account E overdragen.
+
+Ga naar EA en klik op Beheren > Account en beweeg de muisaanwijzer over **Account** (uiterst rechts). U ziet de opties Eigendom overdragen (portretpictogram) en Abonnement overdragen (lijstpictogram).
+
+Deze optie is alleen zichtbaar voor actieve accounts.
+
+### <a name="i-see-subscription-name-defaults-to-offer-name-should-i-change-the-subscription-name-to-something-meaningful-to-my-organization"></a>Ik zie dat de naam van het abonnement standaard wordt ingesteld op de naam van de aanbieding. Moet ik de abonnementsnaam wijzigen in iets dat voor mijn organisatie handig is?
+
+Elk abonnement dat wordt gemaakt, krijgt standaard het gekozen aanbiedingstype. Het wordt aanbevolen de abonnementsnaam te wijzigen in een naam waardoor u het abonnement gemakkelijk kunt traceren.
+
+**U kunt de naam als volgt wijzigen:**
+1. Meld u aan bij [https://account.windowsazure.com](https://account.windowsazure.com).
+1. Klik op de lijst met abonnementen.
+1. Selecteer Abonnement.
+1. Klik op het pictogram **Abonnement beheren**.
+1. Bewerk de abonnementsgegevens.
+
+### <a name="how-can-i-track-cost-incurred-by-cost-center"></a>Hoe kan ik de kosten bijhouden die door de Kostenplaats zijn gemaakt?
+
+Als u kosten van de Kostenplaats wilt bijhouden, moet u de Kostenplaats op een van de volgende niveaus definiëren:
+- Afdeling
+- Account
+- Abonnement
+
+Op basis van uw behoeften kunt u dezelfde Kostenplaats gebruiken om het gebruik en de kosten bij te houden die aan een specifieke Kostenplaats zijn gekoppeld.
+
+Als u bijvoorbeeld kosten wilt bijhouden voor een speciaal project waaraan meerdere afdelingen hebben gewerkt, kunt u de Kostenplaats op abonnementsniveau gebruiken om het gebruik en de kosten bij te houden.
+
+U kunt de Kostenplaats niet op serviceniveau definiëren. Als u het gebruik op serviceniveau wilt bijhouden, kunt u de functie Taggen gebruiken (deze is beschikbaar op serviceniveau).
+
+### <a name="how-do-i-track-usage-and-spend-by-different-departments-in-my-organization"></a>Hoe kan ik het gebruik en de uitgaven van de verschillende afdelingen in mijn organisatie bijhouden?
+
+U kunt binnen uw EA-inschrijving net zoveel afdelingen maken als u nodig hebt. Zorg ervoor dat abonnementen niet met meerdere afdelingen worden gedeeld, om het gebruik goed te kunnen bijhouden.
+
+Zodra de afdeling en het abonnement zijn gemaakt, ziet u dat het gebruiksrapport wordt gevuld met informatie waarmee u de gebruiksgegevens kunt bijhouden en kosten/onkosten kunt beheren op afdelingsniveau.
+
+Ook kunt u toegang krijgen tot de gebruiksgegevens via gedetailleerde API-informatie; er is voorbeeldcode beschikbaar op [https://ea.azure.com/helpdocs/reportingAPI](https://ea.azure.com/helpdocs/reportingAPI).
+
+### <a name="can-i-set-the-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>Kan ik het bestedingsquotum instellen en meldingen krijgen zodra ik mijn limiet benader?
+
+U kunt het bestedingsquotum op afdelingsniveau instellen. U krijgt dan van het systeem automatisch een melding wanneer u 50%, 75%, 90% en 100% van het door u gedefinieerde quotum hebt bereikt.
+
+Klik op de afdeling waaraan u een bestedingsquotum wilt toevoegen en klik op het pictogram voor bewerken om uw bestedingsquotum te definiëren. Klik op **Opslaan** om de details op te slaan.
+
+### <a name="i-used-resource-groups-rgs-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>Ik heb resourcegroepen (RG's) gebruikt om RBAC te implementeren en het gebruik bij te houden. Hoe kan ik de bijbehorende gebruiksgegevens bekijken?
+
+Als informatie zoals resourcegroepen en tags zijn gebruikt, wordt dit bijgehouden op serviceniveau. Deze informatie is beschikbaar in het uitgebreide downloadbare gebruiksbestand (CSV) dat u kunt downloaden via Azure EA Portal [https://ea.azure.com/report/downloadusage](https://ea.azure.com/report/downloadusage).
+
+Ook kunt u toegang krijgen tot de gebruiksgegevens via gedetailleerde API-informatie. Voorbeeldcode is beschikbaar op [https://ea.azure.com/helpdocs/reportingAPI](https://ea.azure.com/helpdocs/reportingAPI).
+
+U kunt alleen tags toepassen op resources die ondersteuning bieden voor Resource Manager-bewerkingen. Als u een virtuele machine, virtueel netwerk of opslag hebt gemaakt via het klassieke implementatiemodel (zoals via de klassieke portal), kunt u geen tag op die resource toepassen. U moet deze resources opnieuw implementeren via de Resource Manager om tags te ondersteunen. Tags worden wel door alle andere resources ondersteund.
+
+### <a name="can-i-perform-analyses-using-power-bi"></a>Kan ik een analyse uitvoeren met behulp van Power BI?
+
+Ja. Met het Microsoft Azure Enterprise-inhoudspakket voor Power BI kunt u snel het Azure-verbruik voor uw Enterprise-inschrijving importeren en analyseren. Ontdek welke afdeling, welk account of welk abonnement het hoogste verbruik had, welke service het meest is gebruikt door uw organisatie of houd uitgave- en gebruikstrends bij.
+
+**Ga naar de Power BI-website:**
+
+ 1. Meld u aan met een geldig werk- of schoolaccount.
+    - U kunt hetzelfde werk- of schoolaccount gebruiken of een ander werk- of schoolaccount dan het account dat u hebt gebruikt voor toegang tot de inschrijving via Azure EA Portal.
+ 1. Kies het volgende op het dashboard met services:
+    - de tegel Microsoft Azure Enterprise.
+    - Klik op **Verbinden**.
+ 1. Kies het volgende op het scherm Verbinding maken met Azure Enterprise:
+    - URL voor Azure-omgeving: [https://ea.azure.com](https://ea.azure.com).
+    - Aantal maanden: kies een aantal tussen 1 en 36.
+    - Inschrijvingsnummer: voer het inschrijvingsnummer in.
+    - Klik op **Volgende**.
+ 1. Voer in het vak Verificatiesleutel de API-sleutel in. U kunt de API-sleutel ophalen in Azure EA Portal. Klik daar op het tabblad Gebruiksgegevens downloaden op de optie **API-toegangssleutel**.
+    - Kopieer de sleutel en plak deze in het vak Accountsleutel.
+    - Het duurt ongeveer 5 tot 30 minuten voordat de gegevens in Power BI worden geladen. Dit hangt af van de grootte van de gegevensset.
+
+Power BI-rapportage is beschikbaar voor rechtstreekse EA-klanten, partners en indirecte klanten die factureringsgegevens kunnen zien.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 - Azure EA Portal-beheerders moeten [Beheer van Azure EA Portal](billing-ea-portal-administration.md) lezen voor meer informatie over algemene beheertaken.
 - Zie [Problemen met toegang tot Azure EA Portal oplossen](billing-ea-portal-troubleshoot.md) als u hulp nodig hebt met het oplossen van problemen met Azure EA Portal.
+- Zie [Azure EA Onboarding Guide](https://ea.azure.com/api/v3Help/v2AzureEAOnboardingGuide) voor een onboardinghandleiding voor Azure EA.

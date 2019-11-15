@@ -5,7 +5,7 @@ metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
   title: 'Documentatie voor Bing Visual Search-API -zelfstudies, quickstarts, API-verwijzingen'
   titleSuffix: Azure Cognitive Services
-  description: Meer informatie over het gebruik van de Bing Visual Search-API om inzichten over een afbeelding te verkrijgen.
+  description: 'Upload een afbeelding of geef een afbeeldings-URL en de API op, zodat we een aantal details ervan kunnen vaststellen, waaronder visueel vergelijkbare afbeeldingen, winkelbronnen en webpagina''s.'
   services: cognitive-services
   author: swhite-msft
   manager: nitinme
