@@ -1,5 +1,5 @@
 ---
-title: 'REST zelf studie: een AI-verrijkings pijplijn bouwen om tekst en structuur van JSON-blobs te extra heren'
+title: 'Zelf studie: tekst en structuur van JSON-blobs extra heren'
 titleSuffix: Azure Cognitive Search
 description: Neem een voor beeld van tekst extractie en natuurlijke taal verwerking over inhoud in JSON-blobs met behulp van Postman en de Azure Cognitive Search REST-Api's.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: cb05d85c32d7eaed002d3e3bacbe7fdbd17310eb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790197"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113655"
 ---
-# <a name="tutorial-add-structure-to-unstructured-content-with-ai-enrichment"></a>Zelf studie: structuur toevoegen aan ' ongestructureerde inhoud ' met AI-verrijking
+# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Zelf studie: tekst en structuur van JSON-blobs in azure extra heren met REST-Api's (Azure Cognitive Search)
 
-Als u ongestructureerde tekst-of afbeeldings inhoud hebt, kan een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) u helpen bij het extra heren van informatie en het maken van nieuwe inhoud die nuttig is voor Zoek opdrachten in volledige tekst of kennis analyse. Hoewel een pijp lijn afbeeldings bestanden (JPG, PNG, TIFF) kan verwerken, is deze zelf studie gericht op inhoud op basis van een woord, waarbij taal detectie en tekst analyse worden toegepast voor het maken van nieuwe velden en informatie die u kunt gebruiken in query's, facetten en filters.
+Als u ongestructureerde tekst-of afbeeldings inhoud in Azure Blob-opslag hebt, kan een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) u helpen bij het extra heren van informatie en het maken van nieuwe inhoud die nuttig is voor Zoek opdrachten in volledige tekst of kennis analyse. Hoewel een pijp lijn afbeeldings bestanden (JPG, PNG, TIFF) kan verwerken, is deze zelf studie gericht op inhoud op basis van een woord, waarbij taal detectie en tekst analyse worden toegepast voor het maken van nieuwe velden en informatie die u kunt gebruiken in query's, facetten en filters.
 
 > [!div class="checklist"]
 > * Begin met hele documenten (ongestructureerde tekst) zoals PDF, MD, DOCX en PPTX in Azure Blob-opslag.
@@ -100,7 +100,7 @@ Net als bij Azure Blob-opslag neemt het even de tijd om de toegangs sleutel te v
 
 1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en haal de naam van uw zoek service op in de pagina **overzicht** van de zoek service. U kunt uw service naam bevestigen door de URL van het eind punt te controleren. Als uw eind punt-URL is `https://mydemo.search.windows.net`, wordt uw service naam `mydemo`.
 
-2. In **instellingen** > **sleutels**, een beheerders sleutel ophalen voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+2. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
     Haal ook de query sleutel op. Het is een best practice voor het uitgeven van query aanvragen met alleen-lezen toegang.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 57965b0326171f37d33aeae02080c8887c3acf23
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4077187fe04e3be914a6f7fba84c03df1b79d06a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072080"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108391"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Een logische app als API importeren
 
@@ -33,7 +33,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
--   Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
+-   Lees de volgende snelstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 -   Zorg ervoor dat er een logische app in uw abonnement aanwezig is waarmee een HTTP-eindpunt zichtbaar wordt gemaakt. Raadpleeg [Werkstromen met HTTP-eindpunten activeren](../logic-apps/logic-apps-http-endpoint.md) voor meer informatie
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
@@ -43,7 +43,7 @@ In dit artikel leert u het volgende:
 1. Selecteer **API's** bij **API MANAGEMENT**.
 2. Selecteer **logische app** uit de lijst **Nieuwe API toevoegen**.
 
-    ![Logische app](./media/import-logic-app-as-api/logic-app-api.png)
+    ![Logische apps](./media/import-logic-app-as-api/logic-app-api.png)
 
 3. Klik op **Bladeren** om de lijst met Logic apps met de http-trigger in uw abonnement weer te geven. (Houd er rekening mee dat Logic Apps zonder HTTP-trigger niet wordt weer gegeven in de lijst.)
 4. Selecteer de app. API Management vindt de Swagger die is gekoppeld aan de geselecteerde app, haalt deze op en importeert deze.
@@ -59,7 +59,7 @@ In dit artikel leert u het volgende:
 
 7. Selecteer **Maken**.
 
-## <a name="test-the-imported-api-in-the-azure-portal"></a>De geïmporteerde API in het Azure Portal testen
+## <a name="test-the-api-in-the-azure-portal"></a>De API testen in Azure Portal
 
 Bewerkingen kunnen rechtstreeks vanuit Azure Portal worden aangeroepen. Dit is een handige manier om de bewerkingen van een API te bekijken en te testen.
 
@@ -72,22 +72,6 @@ Bewerkingen kunnen rechtstreeks vanuit Azure Portal worden aangeroepen. Dit is e
 4. Druk op **Verzenden**.
 
     Back-end reageert met **200 OK** en enkele gegevens.
-
-## <a name="call-operation"> </a>Een bewerking aanroepen vanuit de ontwikkelaarsportal
-
-Bewerkingen kunnen ook worden aangeroepen vanuit de **ontwikkelaarsportal** om API's te testen.
-
-1. Selecteer de API die u hebt gemaakt in de stap voor het importeren en publiceren van een back-end-API.
-2. Selecteer de **ontwikkelaarsportal**.
-
-    De site voor de ontwikkelaarsportal wordt geopend.
-
-3. Selecteer de **API** die u hebt gemaakt.
-4. Klik op de bewerking die u wilt testen.
-5. Druk op **Proberen**.
-6. Druk op **Verzenden**.
-
-    Nadat een bewerking is aangeroepen, worden in de ontwikkelaarsportal de **antwoordstatus**, de **antwoordheaders** en eventuele **antwoordinhoud** weergegeven.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

@@ -1,22 +1,22 @@
 ---
-title: Een geofence maken met behulp van Azure Maps | Microsoft Docs
-description: Stel een geofence in met behulp van Azure Maps.
+title: 'Zelf studie: een geofence maken met behulp van Azure Maps'
+description: 'Zelf studie: een geofence instellen met behulp van Azure Maps.'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694931"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107095"
 ---
-# <a name="set-up-a-geofence-by-using-azure-maps"></a>Een geofence instellen met behulp van Azure Maps
+# <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Zelf studie: een geofence instellen met behulp van Azure Maps
 
 In deze zelfstudie doorloopt u de basisstappen voor het instellen van geofence met behulp van Azure Maps. Het scenario in deze zelfstudie helpt bouwopzichters om mogelijke gevaarlijke machines te bewaken die zich buiten het aangewezen bouwterrein begeven. Op een bouwterrein staan dure machines en gelden strenge voorschriften. Doorgaans moet de apparatuur op het bouwterrein blijven en mag deze het terrein niet zonder toestemming verlaten.
 
@@ -154,13 +154,13 @@ Open de Postman-app en volg de volgende stappen om de geofence van de bouwplaats
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Kopieer uw status-URI en voeg `subscription-key` een para meter toe met de waarde van uw Azure Maps account abonnements sleutel. De URI-indeling voor de status moet er als volgt uitzien:
+6. Kopieer uw status-URI en voeg een `subscription-key` para meter toe met de waarde van de abonnements sleutel van uw Azure Maps-account. De URI-indeling voor de status moet er als volgt uitzien:
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-7. Als u de wilt `udId` weer geven, opent u een nieuw tabblad in de app postman en selecteert u HTTP-methode ophalen op het tabblad opbouw functie en maakt u een GET-aanvraag op de status-URI. Als het uploaden van uw gegevens is geslaagd, ontvangt u een udId in de antwoord tekst. Kopieer de udId voor later gebruik.
+7. Als u de wilt `udId`, opent u een nieuw tabblad in de app postman en selecteert u HTTP-methode ophalen op het tabblad opbouw functie en maakt u een GET-aanvraag op de status-URI. Als het uploaden van uw gegevens is geslaagd, ontvangt u een udId in de antwoord tekst. Kopieer de udId voor later gebruik.
 
    ```JSON
    {

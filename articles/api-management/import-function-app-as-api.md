@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 7e9215d7250628ed9177e097d127a1554a1f0ea0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0c4a95669eea1b98baea5f9a866598e000c0923c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073356"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107841"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Een Azure-functie-app als API importeren in Azure API Management
 
@@ -74,7 +74,7 @@ Voer de volgende stappen uit om een nieuwe API te maken vanuit een Azure-functie
 
     ![Toevoegen vanuit functie-app](./media/import-function-app-as-api/add-06.png)
 
-8. Klik op **Create**.
+8. Klik op **Maken**.
 
 ## <a name="append-azure-function-app-to-api"></a> Een Azure-functie-app toevoegen aan een bestaande API
 
@@ -106,7 +106,7 @@ Voer de volgende stappen uit om de Azure-functie-app toe te voegen aan een besta
 
     ![Toevoegen vanuit functie-app](./media/import-function-app-as-api/add-05.png)
 
-8. Klik op **importeren**.
+8. Klik op **Import**.
 
     ![Toevoegen vanuit functie-app](./media/import-function-app-as-api/append-04.png)
 
@@ -142,7 +142,7 @@ Navigeer naar uw Azure API Management-exemplaar en selecteer **Benoemde waarden*
 
 ![Toevoegen vanuit functie-app](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-in-azure-portal"></a> De nieuwe API Management-API testen in Azure Portal
+## <a name="test-in-azure-portal"></a>De nieuwe API in het Azure Portal testen
 
 U kunt bewerkingen rechtstreeks vanuit Azure Portal aanroepen. In Azure Portal kunt u de bewerkingen van een API gemakkelijk bekijken en testen.  
 
@@ -157,26 +157,6 @@ U kunt bewerkingen rechtstreeks vanuit Azure Portal aanroepen. In Azure Portal k
 4. Selecteer **Verzenden**.
 
     Back-end reageert met **200 OK** en enkele gegevens.
-
-## <a name="test-in-developer-portal"></a> Een bewerking aanroepen vanuit de ontwikkelaarsportal
-
-U kunt ook bewerkingen aanroepen vanuit de ontwikkelaarsportal om API's te testen. 
-
-1. Selecteer de API die u hebt gemaakt in Een back-end-API importeren en publiceren.
-
-2. Selecteer **Ontwikkelaarsportal**.
-
-    De site voor de ontwikkelaarsportal wordt geopend.
-
-3. Selecteer de **API** die u hebt gemaakt.
-
-4. Selecteer de bewerking die u wilt testen.
-
-5. Selecteer **Probeer het nu**.
-
-6. Selecteer **Verzenden**.
-    
-    Nadat een bewerking is aangeroepen, worden in de ontwikkelaarsportal de **antwoordstatus**, de **antwoordheaders** en eventuele **antwoordinhoud** weergegeven.
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 

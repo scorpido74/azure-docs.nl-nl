@@ -1,19 +1,19 @@
 ---
-title: Maak een zonne-straf bewakings-app met IoT Central | Microsoft Docs
-description: Meer informatie over het maken van een zonne-paneel toepassing met behulp van Azure IoT Central-toepassings sjablonen.
+title: 'Zelf studie: een zonne-straf bewakings-app maken met IoT Central'
+description: 'Zelf studie: informatie over het maken van een zonne-paneel toepassing met behulp van Azure IoT Central-toepassings sjablonen.'
 author: op-ravi
 ms.author: omravi
-ms.date: 10/23/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c560c7e298dabbb5a3c31d90e0d48d0d63cfac5f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 5560cb31e31f7cf33ac8ae71d649e88be3dbb6e6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581521"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112503"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Zelf studie: de sjabloon voor het bewaken van het zonne deel venster maken en door lopen 
 
@@ -31,7 +31,7 @@ Deze zelf studie leidt u door het proces van het maken van de toepassing voor he
 Als u geen abonnement hebt, [maakt u een account voor een gratis proef versie](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Vereisten
-- Geen
+- None
 - Azure-abonnement wordt aanbevolen, maar is niet vereist voor het uitproberen
 
 

@@ -1,19 +1,19 @@
 ---
 title: C#zelf studie over de paginering van zoek resultaten
 titleSuffix: Azure Cognitive Search
-description: Deze zelf studie is gebaseerd op het project ' uw eerste app-Azure Cognitive Search maken ', met de keuze uit twee soorten paginering. In de eerste gebruikt u een bereik met pagina nummer knoppen, evenals de knoppen eerste, volgende, vorige en laatste pagina. Het tweede wissel systeem gebruikt oneindig schuiven, geactiveerd door een verticale schuif balk naar de ondergrens te verplaatsen.
+description: In deze zelf studie wordt gedemonstreerd hoe de zoek resultaten worden gepagineerd. Het wordt gebouwd op basis van een bestaand project in hotels, met de knoppen voor de eerste, de volgende, de vorige, de laatste en de genummerde knop. Een tweede wissel systeem gebruikt oneindig schuiven, geactiveerd door een verticale schuif balk te verplaatsen naar de ondergrens.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 935e6d43cf77d94b485d55eb4bc5eb517bf802a0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 04f8229a86fbd8fbd5404997926412e760e74973
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794007"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113764"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#zelf studie: paginering van zoek resultaten-Azure Cognitive Search
 
@@ -471,7 +471,7 @@ Als u oneindig schuiven wilt implementeren, begint u met het project voordat een
 
 ### <a name="handle-the-next-action"></a>De volgende actie afhandelen
 
-Er zijn slechts drie acties die moeten worden verzonden naar de controller: de eerste keer dat de app wordt uitgevoerd, waarmee **index ()** wordt aangeroepen, de eerste zoek opdracht van de gebruiker, die **index (model)** aanroept, en vervolgens de volgende aanroepen voor meer resultaten via **volgende (model)** .
+Er zijn slechts drie acties die moeten worden verzonden naar de controller: de eerste keer dat de app wordt uitgevoerd, waarmee **index ()** wordt aangeroepen, de eerste zoek opdracht van de gebruiker, die **index (model)** aanroept en vervolgens de volgende aanroepen voor meer resultaten via **volgende (model)** .
 
 1. Open het bestand van de start controller en verwijder de methode **RunQueryAsync** uit de oorspronkelijke zelf studie.
 

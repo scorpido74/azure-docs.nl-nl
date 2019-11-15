@@ -1,5 +1,5 @@
 ---
-title: 'Python-zelf studie: Cognitive Services aanroepen in een AI-pijp lijn'
+title: "Zelf studie: een vakkennisset maken in python met behulp van REST-Api's"
 titleSuffix: Azure Cognitive Search
 description: Bekijk een voor beeld van het uitpakken van gegevens, natuurlijke taal en afbeelding AI-verwerking in azure Cognitive Search met behulp van een Jupyter python-notebook. Geëxtraheerde gegevens worden geïndexeerd en eenvoudig geopend door de query.
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: bb36ae551c48fc53756933e78ff0212f8ec1cdeb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1e404998c8f49852248a754e7134f439dcdf5b04
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790209"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113675"
 ---
-# <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-cognitive-search-enrichment-pipeline"></a>Python-zelf studie: Cognitive Services-API's aanroepen in een Azure Cognitive Search-verrijkings pijplijn
+# <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Zelf studie: een AI-verrijkings pijplijn maken met behulp van REST en python
 
 In deze zelf studie leert u de mechanismen voor het verrijken van de programmering van gegevens in azure Cognitive Search met *cognitieve vaardig heden*. Vaardig heden worden ondersteund door NLP (natuurlijke taal verwerking) en mogelijkheden voor de analyse van installatie kopieën in Cognitive Services. Via de vaardig heden-compositie en-configuratie kunt u tekst-en tekst representaties van een afbeelding of gescand document bestand extra heren. U kunt ook taal, entiteiten, sleutel zinnen en meer detecteren. Het resultaat is uitgebreide aanvullende inhoud in een zoek index die is gemaakt met AI-verrijkingen in een indexerings pijplijn. 
 
@@ -58,7 +58,7 @@ Als u met uw Azure Cognitive Search-service wilt communiceren, hebt u de service
 
 1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
-1. In **instellingen** > **sleutels**, een beheerders sleutel ophalen voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
 ![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
 

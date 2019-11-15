@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d83db424ee6e9a009353ca568232b38260883a4c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4e8097eeb07420bee4ba30eb0fedbe5d4db2db9d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793608"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113321"
 ---
-# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-cognitive-search-indexers"></a>C#Zelf studie: een Azure SQL database verkennen met Azure Cognitive Search Indexeer functies
+# <a name="c-tutorial-import-azure-sql-database-using-azure-cognitive-search-indexers"></a>C#Zelf studie: Azure SQL database importeren met Azure Cognitive Search Indexeer functies
 
 Meer informatie over hoe u een Indexeer functie kunt configureren voor het extra heren van Doorzoek bare gegevens uit een Azure-voor beeld-SQL database. [Indexeer functies](search-indexer-overview.md) zijn een onderdeel van Azure Cognitive Search voor het verkennen van externe gegevens bronnen, het vullen van een [zoek index](search-what-is-an-index.md) met inhoud. Van alle Indexeer functies is de Indexeer functie voor Azure SQL Database het meest gebruikte. 
 
@@ -54,7 +54,7 @@ REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel n
 
 1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
-1. In **instellingen** > **sleutels**, een beheerders sleutel ophalen voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
 ![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
 

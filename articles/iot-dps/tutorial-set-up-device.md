@@ -1,22 +1,22 @@
 ---
-title: Apparaat instellen voor Azure IoT Hub Device Provisioning Service
-description: Apparaat instellen om in te richten via IoT Hub Device Provisioning Service tijdens het fabriceren van het apparaat
+title: 'Zelf studie: apparaat instellen voor Azure IoT Hub Device Provisioning Service'
+description: 'Zelf studie: een apparaat instellen om in te richten via de IoT Hub Device Provisioning Service tijdens het proces van de productie van het apparaat'
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d5a4f6c7d7d19ced4f2cd9ff21b00e58703f795e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e7f6151968fb14d44f1e330fb6ddc06fabad3ee6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65911694"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112755"
 ---
-# <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Een apparaat instellen om in te richten met behulp van IoT Hub Device Provisioning Service
+# <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Zelf studie: een apparaat instellen voor inrichten met behulp van de Azure IoT Hub Device Provisioning Service
 
 In de vorige zelfstudie hebt u geleerd hoe u Azure IoT Hub Device Provisioning Service kunt instellen om apparaten automatisch in te richten in uw IoT-hub. In deze zelfstudie ziet u hoe u uw apparaat kunt instellen tijdens het fabriceren van het apparaat, en ervoor zorgt dat het automatisch kan worden ingericht met IoT Hub. Uw apparaat wordt ingericht op basis van het bijbehorende [Attestation-mechanisme](concepts-device.md#attestation-mechanism) na de eerste keer opstarten en verbinden met de inrichtingsservice. Deze zelfstudie bestaat uit de volgende taken:
 
@@ -27,7 +27,7 @@ In de vorige zelfstudie hebt u geleerd hoe u Azure IoT Hub Device Provisioning S
 
 Voor deze zelfstudie wordt ervan uitgegaan dat u al een Device Provisioning Service-instantie en een IoT-hub hebt gemaakt met behulp van de instructies in de vorige zelfstudie [Cloudresources instellen](tutorial-set-up-cloud.md).
 
-In deze zelfstudie wordt gebruikgemaakt van de [Azure IoT SDKs and libraries for C](https://github.com/Azure/azure-iot-sdk-c)-opslagplaats (Azure IoT SDK’s en bibliotheken voor C), die de SDK van de Device Provisioning Service-client voor C bevat. De SDK biedt momenteel ondersteuning voor TPM en X.509 voor apparaten die worden uitgevoerd in Windows- of Ubuntu-implementaties. In deze zelfstudie is gebaseerd op gebruik van een Windows-ontwikkeling-client, die ook wordt ervan uitgegaan basic vaardigheden met Visual Studio dat. 
+In deze zelfstudie wordt gebruikgemaakt van de [Azure IoT SDKs and libraries for C](https://github.com/Azure/azure-iot-sdk-c)-opslagplaats (Azure IoT SDK’s en bibliotheken voor C), die de SDK van de Device Provisioning Service-client voor C bevat. De SDK biedt momenteel ondersteuning voor TPM en X.509 voor apparaten die worden uitgevoerd in Windows- of Ubuntu-implementaties. Deze zelf studie is gebaseerd op het gebruik van een Windows Development-client, die ook basis kennis van Visual Studio afneemt. 
 
 Als u niet bekend bent met het proces van automatische inrichting, bekijkt u de [Concepten voor automatische inrichting](concepts-auto-provisioning.md) voordat u verdergaat. 
 
@@ -36,16 +36,16 @@ Als u niet bekend bent met het proces van automatische inrichting, bekijkt u de 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 of hoger met de [' bureaubladontwikkeling met C++'](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) werkbelasting ingeschakeld.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 of hoger met de [' Desktop C++Development '](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) -werk belasting ingeschakeld.
 * Meest recente versie van [Git](https://git-scm.com/download/) geïnstalleerd.
 
 
 
 ## <a name="build-a-platform-specific-version-of-the-sdk"></a>Een platformspecifieke versie van de SDK bouwen
 
-De SDK van de Device Provisioning Service-client helpt u bij het implementeren van de software voor apparaatregistratie. Maar voordat u deze kunt gebruiken, moet u een versie van de SDK bouwen die specifiek is voor uw ontwikkelclientplatform en attestation- mechanisme. In deze zelfstudie bouwt u een SDK die gebruikmaakt van Visual Studio op een Windows-ontwikkelplatform, voor een ondersteund type attestation:
+De SDK van de Device Provisioning Service-client helpt u bij het implementeren van de software voor apparaatregistratie. Maar voordat u deze kunt gebruiken, moet u een versie van de SDK bouwen die specifiek is voor uw ontwikkelclientplatform en attestation- mechanisme. In deze zelf studie bouwt u een SDK die gebruikmaakt van Visual Studio op een Windows-ontwikkel platform voor een ondersteund type Attestation:
 
-1. Download de [CMake-bouwsysteem](https://cmake.org/download/).
+1. Down load het [cmake build-systeem](https://cmake.org/download/).
 
     Het is belangrijk dat de vereisten voor Visual Studio met (Visual Studio en de workload Desktopontwikkeling met C++) op uw computer zijn geïnstalleerd **voordat** de `CMake`-installatie wordt gestart. Zodra aan de vereisten is voldaan en de download is geverifieerd, installeert u het CMake-bouwsysteem.
 
@@ -96,8 +96,8 @@ Afhankelijk van of u de SDK bouwt om gebruik te maken van attestation voor een f
 
 - Voor een X.509-apparaat moet u de certificaten verkrijgen die aan uw apparaten zijn verleend. Door de inrichtingsservice worden twee typen inschrijvingsvermeldingen beschikbaar gemaakt die de toegang voor apparaten beheren met behulp van het X.509-attestation-mechanisme. Welke certificaten u nodig hebt, is afhankelijk van het type inschrijving dat u gaat gebruiken.
 
-    1. Afzonderlijke inschrijvingen: Registratie voor een specifiek één apparaat. Dit type inschrijvingsvermelding vereist [leaf-certificaten voor eindentiteiten](concepts-security.md#end-entity-leaf-certificate).
-    1. Registreren van groepen: Dit type vermelding voor apparaatinschrijving tussenliggende vereist of basiscertificaten. Zie [Apparaattoegang tot de inrichtingsservice beheren met X.509-certificaten](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates) voor meer informatie.
+    1. Afzonderlijke inschrijvingen: inschrijving voor één specifiek apparaat. Dit type inschrijvingsvermelding vereist [leaf-certificaten voor eindentiteiten](concepts-security.md#end-entity-leaf-certificate).
+    1. Registratiegroepen: voor dit type inschrijvingsvermelding zijn tussenliggende certificaten of basiscertificaten vereist. Zie [Apparaattoegang tot de inrichtingsservice beheren met X.509-certificaten](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates) voor meer informatie.
 
 ### <a name="simulated-devices"></a>Gesimuleerde apparaten
 
@@ -128,9 +128,9 @@ Afhankelijk van of u de SDK bouwt om gebruik te maken van attestation voor een g
 
   1. In het deelvenster *Solution Explorer* van Visual Studio gaat u naar de map **Inrichten\_Extra**. Klik met de rechtermuisknop op het**dice\_device\_enrollment**-project en selecteer **Set as Startup Project**. 
   
-  1. Voer de oplossing uit met behulp van een van de twee opdrachten Start in het menu Debug. Voer in het uitvoervenster **i** in voor individuele registratie wanneer hierom wordt gevraagd. In het uitvoervenster wordt een lokaal gegenereerd X.509-certificaat weergegeven voor uw gesimuleerde apparaat. Kopieer de uitvoer naar Klembord vanaf *-----BEGIN CERTIFICATE-----* tot en met de eerste *-----END CERTIFICATE-----*, en zorg ervoor dat deze beide regels ook zijn opgenomen. U hebt alleen het eerste certificaat uit het uitvoervenster nodig.
+  1. Voer de oplossing uit met behulp van een van de twee opdrachten Start in het menu Debug. Voer in het uitvoervenster **i** in voor individuele registratie wanneer hierom wordt gevraagd. In het uitvoervenster wordt een lokaal gegenereerd X.509-certificaat weergegeven voor uw gesimuleerde apparaat. Kopieer de uitvoer naar Klembord vanaf *-----BEGIN CERTIFICATE-----* tot en met de eerste *-----END CERTIFICATE-----* , en zorg ervoor dat deze beide regels ook zijn opgenomen. U hebt alleen het eerste certificaat uit het uitvoervenster nodig.
  
-  1. Maak een bestand met de naam **_X509testcert.pem_**, open het in een teksteditor naar keuze en kopieer de inhoud van het Klembord naar dit bestand. Sla het bestand op. U gebruikt dit bestand later voor apparaatinschrijving. Wanneer de registratiesoftware wordt uitgevoerd, maakt deze gebruik van hetzelfde certificaat tijdens de automatische inrichting.    
+  1. Maak een bestand met de naam **_X509testcert.pem_** , open het in een teksteditor naar keuze en kopieer de inhoud van het Klembord naar dit bestand. Sla het bestand op. U gebruikt dit bestand later voor apparaatinschrijving. Wanneer de registratiesoftware wordt uitgevoerd, maakt deze gebruik van hetzelfde certificaat tijdens de automatische inrichting.    
 
 Deze beveiligingsartefacten zijn vereist tijdens de inschrijving van het apparaat voor Device Provisioning Service. De inrichtingsservice wacht tot het apparaat op enig moment later is opgestart en verbonden met de service. Als het apparaat voor de eerste keer wordt opgestart, communiceert de Client SDK-logica met de chip (of simulator) om de beveiligingsartefacten te extraheren uit het apparaat, en wordt de registratie bij Device Provisioning Service geverifieerd. 
 
@@ -141,7 +141,7 @@ De laatste stap is het schrijven van een registratietoepassing die gebruikmaakt 
 > [!NOTE]
 > Voor deze stap wordt ervan uitgegaan dat u een gesimuleerd apparaat gebruikt, gerealiseerd door het uitvoeren van een SDK-voorbeeldtoepassing voor registratie vanuit uw werkstation. Dezelfde concepten zijn echter van toepassing als u een registratietoepassing bouwt die moet worden geïmplementeerd op een fysiek apparaat. 
 
-1. Selecteer in Azure Portal de blade **Overzicht** voor Device Provisioning Service en kopieer de waarde bij **_Id-bereik_**. Het *Id-bereik* wordt gegenereerd met de service en is gegarandeerd uniek. Het is onveranderbaar en wordt gebruikt als een unieke identificatie van de registratie-id's.
+1. Selecteer in Azure Portal de blade **Overzicht** voor Device Provisioning Service en kopieer de waarde bij **_Id-bereik_** . Het *Id-bereik* wordt gegenereerd met de service en is gegarandeerd uniek. Het is onveranderbaar en wordt gebruikt als een unieke identificatie van de registratie-id's.
 
     ![Device Provisioning Service-eindpuntgegevens uit de portalblade extraheren](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 

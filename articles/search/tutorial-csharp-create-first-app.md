@@ -1,19 +1,19 @@
 ---
 title: C#zelf studie voor het maken van uw eerste app
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het maken van uw eerste stapsgewijze zoek opdracht voor apps. De zelf studie biedt een koppeling naar een werkende app op GitHub en het volledige proces voor het helemaal zelf bouwen van de app. Meer informatie over de essentiële onderdelen van Azure Cognitive Search.
+description: Meer informatie over het maken van C# een stap-voor-stap voor de eerste Zoek toepassing. De zelf studie biedt een koppeling naar een werkende app op GitHub en het volledige proces voor het helemaal zelf bouwen van de app. Meer informatie over de essentiële onderdelen van Azure Cognitive Search.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 3f234a11aeaf7af4e47fb0cf6310ecd68d35e4da
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fc3d9d52ca6eb3d35138323908c73eb0d09cf519
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794135"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112226"
 ---
 # <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C#zelf studie: uw eerste app-Azure-Cognitive Search maken
 

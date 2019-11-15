@@ -1,5 +1,5 @@
 ---
-title: Gegevens exporteren en inzichten visualiseren in azure IoT Central | Microsoft Docs
+title: 'Zelf studie: gegevens exporteren en inzichten visualiseren in azure IoT Central'
 description: In deze zelf studie leert u hoe u gegevens exporteert uit IoT Central en inzichten kunt visualiseren in een Power BI dash board.
 services: iot-central
 ms.service: iot-central
@@ -10,13 +10,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: dobett
 author: dominicbetts
-ms.date: 10/22/2019
-ms.openlocfilehash: 0cf1c6e926b2406d960762a9d597b28a17f6c316
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.date: 11/12/2019
+ms.openlocfilehash: ce775f207eaa5df05900ea2e5b6d9fbeab4dc878
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615286"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112872"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Zelf studie: gegevens exporteren uit Azure IoT Central en inzichten in Power BI visualiseren
 
@@ -58,7 +58,7 @@ Voordat u de app voor het controleren van de detail handel kunt configureren voo
 
 1. Selecteer in de Azure Portal **een resource maken** in de linkerbovenhoek van het scherm.
 1. Voer _Event hubs_in **de Marketplace zoeken**in en druk op **Enter**.
-1. Selecteer op de pagina **Event hubs** **maken**.
+1. Op de **Event Hubs** weergeeft, schakelt **maken**.
 1. Voer op de pagina **naam ruimte maken** de volgende stappen uit:
     * Voer een unieke naam in voor de naam ruimte, zoals _yournaam-Retail-Store-Analysis_. Het systeem controleert of deze naam beschikbaar is.
     * Kies de prijs categorie **Basic** .
@@ -384,7 +384,7 @@ Selecteer de **code weergave**om de logica toe te voegen aan het ontwerp van de 
     * Selecteer het **tijds tempel** veld en selecteer vervolgens **x-opt-enqueuedtime** in de lijst met **dynamische inhoud** .
     * Selecteer het veld **vochtigheid** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **vochtigheids graad**.
     * Selecteer het veld **Tempe ratuur** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **Tempe ratuur**.
-    * Selecteer **Opslaan** om uw wijzigingen op te slaan. De actie voor de **zone 1 omgeving** ziet eruit als in de volgende scherm afbeelding: ![Zone 1 omgeving](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-1-action.png)
+    * Selecteer **opslaan** uw wijzigingen op te slaan. De actie voor de **zone 1 omgeving** ziet eruit als in de volgende scherm afbeelding: ![Zone 1 omgeving](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-1-action.png)
 1. Selecteer de actie voor de **zone 2 omgeving** en selecteer **een actie toevoegen**.
 1. Voer in **Zoek verbindingslijnen en**-acties **Power bi**in en druk vervolgens op **Enter**.
 1. Selecteer de actie **rijen aan een gegevensset toevoegen (preview)** .
@@ -396,7 +396,7 @@ Selecteer de **code weergave**om de logica toe te voegen aan het ontwerp van de 
     * Selecteer het **tijds tempel** veld en selecteer vervolgens **x-opt-enqueuedtime** in de lijst met **dynamische inhoud** .
     * Selecteer het veld **vochtigheid** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **vochtigheids graad**.
     * Selecteer het veld **Tempe ratuur** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **Tempe ratuur**.
-    Selecteer **Opslaan** om uw wijzigingen op te slaan.  De actie voor de **zone 2 omgeving** ziet eruit als in de volgende scherm afbeelding: ![Zone 2 omgeving](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-2-action.png)
+    Selecteer **opslaan** uw wijzigingen op te slaan.  De actie voor de **zone 2 omgeving** ziet eruit als in de volgende scherm afbeelding: ![Zone 2 omgeving](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-2-action.png)
 1. Selecteer de actie **bezetting** en selecteer vervolgens de actie **overschakelen op interface-id** .
 1. Selecteer de actie voor de **woning tijd interface** en selecteer **een actie toevoegen**.
 1. Voer in **Zoek verbindingslijnen en**-acties **Power bi**in en druk vervolgens op **Enter**.
@@ -409,7 +409,7 @@ Selecteer de **code weergave**om de logica toe te voegen aan het ontwerp van de 
     * Selecteer het **tijds tempel** veld en selecteer vervolgens **x-opt-enqueuedtime** in de lijst met **dynamische inhoud** .
     * Selecteer het veld **woning tijd 1** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **DwellTime1**.
     * Selecteer het veld **woning tijd 2** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **DwellTime2**.
-    * Selecteer **Opslaan** om uw wijzigingen op te slaan. De actie voor de **woning tijd interface** ziet eruit als in de volgende scherm afbeelding: ![bezetting actie](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-1.png)
+    * Selecteer **opslaan** uw wijzigingen op te slaan. De actie voor de **woning tijd interface** ziet eruit als in de volgende scherm afbeelding: ![bezetting actie](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-1.png)
 1. Selecteer de actie voor het **aantal personen** in de interface en selecteer **een actie toevoegen**.
 1. Voer in **Zoek verbindingslijnen en**-acties **Power bi**in en druk vervolgens op **Enter**.
 1. Selecteer de actie **rijen aan een gegevensset toevoegen (preview)** .
@@ -421,7 +421,7 @@ Selecteer de **code weergave**om de logica toe te voegen aan het ontwerp van de 
     * Selecteer het **tijds tempel** veld en selecteer vervolgens **x-opt-enqueuedtime** in de lijst met **dynamische inhoud** .
     * Selecteer het veld **wachtrij lengte 1** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **count1**.
     * Selecteer het veld **wachtrij lengte 2** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **count2**.
-    * Selecteer **Opslaan** om uw wijzigingen op te slaan. De actie voor het **aantal personen** in de interface ziet eruit als in de volgende scherm afbeelding: ![bezetting actie](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-2.png)
+    * Selecteer **opslaan** uw wijzigingen op te slaan. De actie voor het **aantal personen** in de interface ziet eruit als in de volgende scherm afbeelding: ![bezetting actie](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-2.png)
 
 De logische app wordt automatisch uitgevoerd. Als u de status van elke uitvoering wilt zien, gaat u naar de **overzichts** pagina voor de logische app in de Azure portal:
 
@@ -484,11 +484,11 @@ Voeg vier kaart tegels toe om de lengte en de duur van de wachtrij voor de twee 
 
 Wijzig de grootte van de tegels op het dash board en rang Schik deze opnieuw op de volgende scherm afbeelding:
 
-![Power BI dash board](./media/tutorial-in-store-analytics-visualize-insights-pnp/pbi-dashboard.png)
+![Power BI-dashboard](./media/tutorial-in-store-analytics-visualize-insights-pnp/pbi-dashboard.png)
 
 U kunt een aantal extra grafische resources toevoegen om het dash board verder aan te passen:
 
-![Power BI dash board](./media/tutorial-in-store-analytics-visualize-insights-pnp/pbi-dashboard-graphics.png)
+![Power BI-dashboard](./media/tutorial-in-store-analytics-visualize-insights-pnp/pbi-dashboard-graphics.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

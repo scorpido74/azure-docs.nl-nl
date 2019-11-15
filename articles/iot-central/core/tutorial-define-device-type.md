@@ -1,20 +1,20 @@
 ---
-title: Een nieuw apparaattype definiëren in Azure IoT Central | Microsoft Docs
+title: 'Zelf studie: een nieuw apparaattype definiëren in azure IoT Central'
 description: Deze zelfstudie laat zien hoe u als bouwer een nieuw apparaattype kunt definiëren in uw Azure IoT Central-toepassing. U definieert de telemetrie, de status, de eigenschappen en de instellingen voor uw type.
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/07/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: ee1f461f14a46031e3fa9d62a6dceae55d892613
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3d79e710f2c71d96179ab8774ee89c90cb462ca4
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955569"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112351"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Zelfstudie: Een nieuw apparaattype definiëren in uw Azure IoT Central-toepassing
 
@@ -152,7 +152,7 @@ Gebruik gebeurtenissen voor het definiëren van point-in-time-gegevens die door 
      | -------------------- | -----------       |
      | Weergavenaam         | Storing ventilatormotor   |
      | Veldnaam           | storingventilatormotor       |
-     | Ernst             | Fout             |
+     | Severity             | Fout             |
 
      Selecteer **Opslaan**om de gebeurtenis definitie op te slaan:
 
@@ -193,7 +193,7 @@ U kunt status gebruiken om de status van het apparaat of een onderdeel ervan in 
      | Waarde                | 1                 |
      | Weergavelabel        | Actief         |
      | Waarde                | 0                 |
-     | Weergavelabel        | Stopped           |
+     | Weergavelabel        | Gestopt           |
 
      Selecteer **Opslaan**om de definitie van de status meting op te slaan:
 
@@ -265,7 +265,7 @@ U gebruikt *toepassingseigenschappen* om gegevens over uw apparaat in de toepass
     | -------------------- | -------------------- |
     | Weergavenaam         | Locatie             |
     | Veldnaam           | location             |
-    | Initiële waarde        | Seattle, WA, Verenigde Staten          |
+    | Initiële waarde        | Seattle, WA          |
     | Beschrijving          | Locatie apparaat      |
 
     Laat andere velden op de standaardwaarde staan.
@@ -364,7 +364,7 @@ Nu u uw apparaatsjabloon **Aangesloten airconditioner** hebt gedefinieerd kunt u
     | ------------ | ----------- |
     | Titel        | Temperatuur |
     | Tijdsbereik   | Afgelopen 30 minuten |
-    | Maateenheden     | Tempe ratuur (Selecteer **zicht baarheid** naast **Tempe ratuur**) |
+    | Metingen     | Tempe ratuur (Selecteer **zicht baarheid** naast **Tempe ratuur**) |
 
     ![Lijndiagraminstellingen](./media/tutorial-define-device-type/linechartsettings.png)
 
@@ -376,7 +376,7 @@ Nu u uw apparaatsjabloon **Aangesloten airconditioner** hebt gedefinieerd kunt u
     | ------------ | ----------- |
     | Titel        | Gebeurtenissen ventilatormotor |
     | Tijdsbereik   | Afgelopen 30 minuten |
-    | Maateenheden     | Fout in ventilator motor (Selecteer **zicht baarheid** naast **ventilator motor fout**) |
+    | Metingen     | Fout in ventilator motor (Selecteer **zicht baarheid** naast **ventilator motor fout**) |
 
     ![Instellingen voor gebeurtenis grafieken](./media/tutorial-define-device-type/dashboardeventchartsetting.png)
 
@@ -388,7 +388,7 @@ Nu u uw apparaatsjabloon **Aangesloten airconditioner** hebt gedefinieerd kunt u
     | ------------ | ----------- |
     | Titel        | Ventilatormodus |
     | Tijdsbereik   | Afgelopen 30 minuten |
-    | Maateenheden | Ventilator modus (Selecteer **zicht baarheid** naast **ventilator modus**) |
+    | Metingen | Ventilator modus (Selecteer **zicht baarheid** naast **ventilator modus**) |
 
     ![Lijndiagraminstellingen](./media/tutorial-define-device-type/dashboardstatechartsetting.png)
 
@@ -411,11 +411,11 @@ Nu u uw apparaatsjabloon **Aangesloten airconditioner** hebt gedefinieerd kunt u
 
 1. U ziet nu gesimuleerde gegevens voor uw aangesloten airconditioner in het dashboard. U kunt de tegels en indeling voor het dashboard bewerken:
 
-    ![Bekijk het dashboard](./media/tutorial-define-device-type/dashboard.png)
+    ![Dashboard weergeven](./media/tutorial-define-device-type/dashboard.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 <!-- Repeat task list from intro -->
 > [!div class="nextstepaction"]

@@ -1,21 +1,21 @@
 ---
-title: Omgeving-Machine Learning instellen op Azure IoT Edge | Microsoft Docs
-description: Bereid uw omgeving voor op de ontwikkeling en implementatie van modules voor machine learning aan de rand.
+title: 'Zelf studie: omgevings Machine Learning instellen op Azure IoT Edge'
+description: 'Zelf studie: uw omgeving voorbereiden voor het ontwikkelen en implementeren van modules voor machine learning aan de rand.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1db94e683a0dfb3b60b12bc5ac205c766d405d0a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 2ea4248ebaedd318e4112e41169f72bc80b1120f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299830"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114068"
 ---
-# <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Zelfstudie: Een omgeving instellen voor machine learning op IoT Edge
+# <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Zelf studie: een omgeving instellen voor machine learning op IoT Edge
 
 > [!NOTE]
 > Dit artikel maakt deel uit van een reeks voor een zelf studie over het gebruik van Azure Machine Learning op IoT Edge. Als u rechtstreeks in dit artikel hebt gearriveerd, raden we u aan om te beginnen met het [eerste artikel](tutorial-machine-learning-edge-01-intro.md) in de reeks voor de beste resultaten.
@@ -77,8 +77,8 @@ De map DevVM bevat de bestanden die nodig zijn om een virtuele machine van Azure
     ```
 
     * Wanneer u hierom wordt gevraagd, geeft u de volgende informatie op:
-      * **Azure-abonnements-id**: Uw abonnements-ID, die u kunt vinden in de Azure Portal
-      * **Naam van resource groep**: De naam van een nieuwe of bestaande resource groep in azure
+      * **Azure-abonnements-id**: uw abonnements-id, die u kunt vinden in de Azure Portal
+      * **Naam van resource groep**: de naam van een nieuwe of bestaande resource groep in azure
       * **Locatie**: Kies een Azure-locatie waar de virtuele machine wordt gemaakt. Bijvoorbeeld westus2 of northeurope. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor meer informatie.
       * **AdminUsername**: Geef een naam op voor het beheerders account dat u wilt maken en gebruiken op de virtuele machine.
       * **AdminPassword**: Stel een wacht woord in voor het beheerders account op de virtuele machine.
@@ -87,7 +87,7 @@ De map DevVM bevat de bestanden die nodig zijn om een virtuele machine van Azure
 
     * U wordt gevraagd zich aan te melden bij Azure.
 
-    * Het script bevestigt de gegevens voor het maken van de virtuele machine. Druk `y` op `Enter` of om door te gaan.
+    * Het script bevestigt de gegevens voor het maken van de virtuele machine. Druk op `y` of `Enter` om door te gaan.
 
 Het script wordt gedurende enkele minuten uitgevoerd, omdat de volgende stappen worden uitgevoerd:
 
@@ -102,7 +102,7 @@ Het script wordt gedurende enkele minuten uitgevoerd, omdat de volgende stappen 
 
 Om u te helpen kosten te verlagen, is de virtuele machine gemaakt met een schema voor automatische afsluiting dat is ingesteld op 1900 PST. Mogelijk moet u deze timing bijwerken, afhankelijk van uw locatie en planning. De afsluit planning bijwerken:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 2. Ga naar de virtuele machine in de resource groep die u in de vorige sectie hebt gegeven.
 
@@ -118,7 +118,7 @@ Nu u een virtuele machine hebt gemaakt, moet u de installatie van de benodigde s
 
 1. Het script voor het maken van een virtuele machine heeft een RDP-bestand op uw bureau blad gemaakt.
 
-2. Dubbel klik op het bestand met de naam  **\<Azure VM name\>. RDP**.
+2. Dubbel klik op het bestand met de naam\<naam van de **Azure-VM\>. RDP**.
 
 3. Er wordt een dialoog venster weer gegeven met de melding dat de uitgever van de externe verbinding onbekend is. Klik op het selectie vakje **niet opnieuw vragen voor verbindingen met deze computer** en selecteer vervolgens **verbinding maken**.
 
@@ -130,7 +130,7 @@ Nu u een virtuele machine hebt gemaakt, moet u de installatie van de benodigde s
 
 Nu u verbinding hebt gemaakt met de ontwikkel machine, voegt u een aantal nuttige uitbrei dingen toe aan Visual Studio code om de ontwikkelings ervaring eenvoudiger te maken.
 
-1. Navigeer in een Power shell-venster naar **C\\:\\source\\IoTEdgeAndMlSample DevVM**.
+1. Navigeer in een Power shell-venster naar **C:\\source\\IoTEdgeAndMlSample\\DevVM**.
 
 2. Toestaan dat scripts worden uitgevoerd op de virtuele machine door te typen.
 
@@ -182,7 +182,7 @@ In deze sectie gebruikt u een script om een Azure IoT hub en een Azure Storage-a
     ```
 
     * U wordt gevraagd zich aan te melden bij Azure.
-    * Het script bevestigt de gegevens voor het maken van uw hub en opslag account. Druk `y` op `Enter` of om door te gaan.
+    * Het script bevestigt de gegevens voor het maken van uw hub en opslag account. Druk op `y` of `Enter` om door te gaan.
 
 Het uitvoeren van het script duurt ongeveer twee minuten. Zodra het script is voltooid, wordt de naam van de hub en het opslag account uitgevoerd.
 
@@ -202,7 +202,7 @@ Als onderdeel van het maken van de IoT-hub, heeft het script dat we in de vorige
 
 1. Onder **Blob Storage**selecteert u **turbofanDeviceStorage**.
 
-1. Houd er rekening mee dat dit eind punt verwijst naar een BLOB-container met de naam **devicedata** in het opslag account dat in de laatste stap is gemaakt. Dit is het **\<unieke achtervoegsel\>iotedgeandml**.
+1. Houd er rekening mee dat dit eind punt verwijst naar een BLOB-container met de naam **devicedata** in het opslag account dat in de laatste stap is gemaakt, met de naam **iotedgeandml\<unieke achtervoegsel\>** .
 
 1. Houd er ook rekening mee dat de indeling van de **BLOB-bestands naam** is gewijzigd van de standaard indeling naar in plaats daarvan de partitie als laatste element in de naam te plaatsen. Deze indeling is handiger voor de bestands bewerkingen die we gaan uitvoeren met Azure Notebooks verderop in de zelf studie.
 

@@ -1,22 +1,22 @@
 ---
-title: Zoeken met Azure Maps | Microsoft Docs
-description: Zoeken naar nuttige plaatsen in de buurt met behulp van Azure Maps
+title: 'Zelf studie: zoeken met Azure Maps'
+description: 'Zelf studie: zoeken in een nabijgelegen punt met Azure Maps'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 03/07/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8945ccef1dd44570f4f59c7c91c2fe05b222c5bb
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 86ba98bfb4003a723cfaaf2d1c51301314ca47cf
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576931"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109508"
 ---
-# <a name="search-nearby-points-of-interest-using-azure-maps"></a>Zoeken naar nuttige plaatsen in de buurt met behulp van Azure Maps
+# <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Zelf studie: interessante punten zoeken met behulp van Azure Maps
 
 Deze zelfstudie laat zien hoe u een account van Azure Maps instelt en vervolgens de API's van Maps gebruikt om te zoeken naar een nuttige plaats. In deze zelfstudie leert u het volgende:
 

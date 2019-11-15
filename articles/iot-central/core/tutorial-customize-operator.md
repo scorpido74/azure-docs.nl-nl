@@ -1,19 +1,19 @@
 ---
-title: De operatorweergaven aanpassen in Azure IoT Central | Microsoft Docs
-description: Pas de operatorweergaven in uw Azure IoT Central-toepassing aan.
+title: 'Zelf studie: de weer gaven van de operator in azure IoT Central aanpassen'
+description: 'Zelf studie: als opbouw functie past u de weer gaven van de operator aan in uw Azure IoT Central-toepassing.'
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 07/09/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 60e76a1a1d48aaafa8b9aa6b581e8634b1e47836
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d835ce5a1cbdcbd9741c775c4e9bd2eea7c803d7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956955"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112336"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Zelfstudie: de operatorweergave van Azure IoT Central aanpassen
 

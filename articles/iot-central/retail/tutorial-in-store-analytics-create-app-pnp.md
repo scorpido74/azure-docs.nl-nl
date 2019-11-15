@@ -1,5 +1,5 @@
 ---
-title: Een in-Store-Analytics-toepassing maken in azure IoT Central | Microsoft Docs
+title: 'Zelf studie: een in-Store Analytics-toepassing maken in azure IoT Central'
 description: In deze zelf studie ziet u hoe u een retail-toepassing in-Store Analytics maakt in IoT Central. U maakt deze en past deze toe en voegt sensor apparaten toe.
 services: iot-central
 ms.service: iot-central
@@ -10,13 +10,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: timlt
 author: timlt
-ms.date: 10/03/2019
-ms.openlocfilehash: b0d2617983a7ee1702e8871a2c6bfc5f0511656f
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.date: 11/12/2019
+ms.openlocfilehash: 071d432ba2769705213cb98cee644b64e9e81b6e
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890683"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112900"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Zelf studie: een in-Store Analytics-toepassing maken in azure IoT Central
 
@@ -186,7 +186,7 @@ Voor het `humidity` type telemetrie brengt u de volgende wijzigingen aan:
 
 1. Wijzig de optie **semantisch type** van *geen* in *vochtigheid*.  Stel eventueel schema waarden in voor het type telemetrie van de vochtigheid in de uitgevouwen schema weergave. Met schema-instellingen kunt u gedetailleerde validatie vereisten maken voor de gegevens die uw Sens oren volgen. U kunt bijvoorbeeld minimum-en maximum waarden voor het besturings bereik instellen voor een bepaalde interface.
 
-1. Selecteer **Opslaan** om uw wijzigingen op te slaan.
+1. Selecteer **opslaan** uw wijzigingen op te slaan.
 
     ![Aanpassing van Azure IoT Central RuuviTag-Apparaatbeheer](./media/tutorial-in-store-analytics-create-app-pnp/ruuvitag-device-template-customize.png)
 

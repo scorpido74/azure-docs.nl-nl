@@ -27,9 +27,9 @@
         - name: PHP gebruiken
           href: quickstarts/php.md
         - name: Go gebruiken
-          href: quickstarts/php.md
+          href: quickstarts/go.md
         - name: Ruby gebruiken
-          href: quickstarts/php.md
+          href: quickstarts/ruby.md
 - name: Zelfstudies
   items:
     - name: Power BI integreren om klantenfeedback te analyseren

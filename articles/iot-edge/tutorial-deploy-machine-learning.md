@@ -1,20 +1,20 @@
 ---
-title: Azure Machine Learning implementeren op een apparaat-Azure IoT Edge | Microsoft Docs
+title: 'Zelf studie: Azure Machine Learning implementeren op een apparaat-Azure IoT Edge'
 description: In deze zelf studie maakt u een Azure Machine Learning model en implementeert u het als een module op een edge-apparaat
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/16/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 28e5e09ea64f7ac1272e8ed126d5b4153b952c1d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2d56d434fbdaf8c05c4d4db75bffb65468a5bc42
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494031"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114029"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Zelfstudie: Azure Machine Learning implementeren als een IoT Edge-module (preview)
 
@@ -48,7 +48,7 @@ Een Azure IoT Edge-apparaat:
 
 Cloudresources:
 
-* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
+* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een Azure Machine Learning-werkruimte. Volg de instructies in [het Azure Portal gebruiken om aan de slag te gaan met Azure machine learning](../machine-learning/service/quickstart-get-started.md) om er een te maken en te leren hoe u deze kunt gebruiken.
    * Noteer de naam van de werk ruimte, de resource groep en de abonnements-ID. Deze waarden zijn allemaal beschikbaar in het overzicht van de werk ruimte in de Azure Portal. U gebruikt deze waarden later in de zelf studie om een Azure-notebook te verbinden met uw werkruimte resources. 
 
@@ -70,7 +70,7 @@ In deze sectie converteert u getrainde machine learning model bestanden en naar 
 
    ![Uitvoeren op gratis compute](./media/tutorial-deploy-machine-learning/run-on-free-compute.png)
 
-6. Open het bestand **aml_config/config. json** .
+6. Open het **aml_config/config.json** -bestand.
 
 7. Bewerk het configuratie bestand om de waarden voor uw Azure-abonnements-ID, een resource groep in uw abonnement en uw Azure Machine Learning werkruimte naam op te nemen. U kunt al deze waarden ophalen uit de sectie **overzicht** van uw werk ruimte in Azure. 
 

@@ -1,19 +1,19 @@
 ---
-title: Aangepaste modules maken en implementeren-Machine Learning op Azure IoT Edge | Microsoft Docs
-description: Maak en implementeer IoT Edge modules waarmee gegevens van Blade apparaten worden verwerkt via een machine learning model en vervolgens de inzichten naar IoT Hub kunnen verzenden.
+title: 'Zelf studie: aangepaste modules maken en implementeren-Machine Learning op Azure IoT Edge'
+description: 'Zelf studie: IoT Edge modules maken en implementeren waarmee gegevens worden verwerkt van blad apparaten via een machine learning model en vervolgens de inzichten naar IoT Hub verzenden.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 731abdde2160c16123ed648b5e552e9e62378438
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7bfe620510d5ff88a20c518be1f4dd1fb422daa2
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494005"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106562"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Zelf studie: aangepaste IoT Edge-modules maken en implementeren
 
@@ -22,7 +22,7 @@ ms.locfileid: "73494005"
 
 In dit artikel maken we drie IoT Edge modules die berichten van Leaf-apparaten ontvangen, de gegevens via uw machine learning model uitvoeren en inzichten vervolgens naar IoT Hub door sturen.
 
-IoT Edge hub vereenvoudigt module naar module communicatie. Als u de IoT Edge hub als Message Broker gebruikt, blijven de modules onafhankelijk van elkaar. Modules hoeven alleen de invoer op te geven waarop de berichten worden geaccepteerd en de uitvoer waarnaar ze berichten schrijven.
+IoT Edge hub vereenvoudigt module naar module communicatie. Als u de IoT Edge hub als Message Broker gebruikt, blijven de modules onafhankelijk van elkaar. Modules hoeft alleen te geven van de invoer waarop ze berichten en de uitvoer waaraan ze berichten schrijven accepteren.
 
 We willen dat het IoT Edge-apparaat vier dingen doet voor ons:
 

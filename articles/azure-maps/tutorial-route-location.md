@@ -1,22 +1,22 @@
 ---
-title: Route zoeken met Azure Maps | Microsoft Docs
-description: Zoeken naar een nuttige plaats met Azure Maps
+title: 'Zelf studie: route zoeken met Azure Maps'
+description: 'Zelf studie: route naar een nuttige plaats met behulp van Azure Maps'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 03/07/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 52355a8896f4891e99d07e2b4106cede77a1f8df
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: c9e407b271fd77397723ee49f530339847096749
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916211"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106632"
 ---
-# <a name="route-to-a-point-of-interest-using-azure-maps"></a>Zoeken naar een nuttige plaats met Azure Maps
+# <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Zelf studie: route naar een nuttige plaats met behulp van Azure Maps
 
 Deze zelfstudie laat zien hoe u uw Azure Maps-account en de Route Service SDK gebruikt om de route naar uw nuttige plaats te vinden. In deze zelfstudie leert u het volgende:
 
@@ -83,7 +83,7 @@ Gebruik de volgende stappen voor het maken van een statische HTML-pagina, ingesl
 
     U ziet dat de HTML-header de CSS- en JavaScript-bronbestanden bevat, gehost door de Azure Map Control-bibliotheek. Let op de gebeurtenis `onload` in het hoofdtekstgedeelte van de pagina. Deze zorgt ervoor dat de functie `GetMap` wordt aangeroepen nadat het hoofdtekstgedeelte van de pagina is geladen. Deze functie bevat de inline JavaScript-code voor toegang tot de API's van Azure Maps. 
 
-3. Voeg de volgende JavaScript-code toe aan de functie `GetMap`. Vervang de teken `<Your Azure Maps Key>` reeks door de primaire sleutel die u hebt gekopieerd uit uw Maps-account.
+3. Voeg de volgende JavaScript-code toe aan de functie `GetMap`. Vervang de teken reeks `<Your Azure Maps Key>` door de primaire sleutel die u hebt gekopieerd uit uw Maps-account.
 
     ```JavaScript
    //Instantiate a map object
@@ -139,9 +139,9 @@ In deze zelfstudie wordt een eenvoudige route weergegeven met behulp van een sym
     });
     ```
     
-    In de gebeurtenis `ready` -handler Maps wordt een gegevens bron gemaakt voor het opslaan van de route lijn en de begin-en eind punten. Er wordt een lijnlaag gemaakt en aan de gegevensbron gekoppeld waarmee wordt gedefinieerd hoe de routelijn wordt weergegeven. De routelijn wordt weergegeven met een blauwe schaduw met een breedte van 5 pixels, en afgeronde verbindingen en eindstukken. Als u de laag toevoegt aan de kaart, wordt een tweede parameter met de waarde `'labels'` doorgegeven. Hiermee wordt bepaald dat deze laag onder de kaartlabels wordt weergegeven. Zo kunt u er zeker van zijn dat de routelijnen de straatlabels niet bedekken. Er wordt een symboollaag gemaakt en aan de gegevensbron gekoppeld. Deze laag geeft aan hoe de begin- en eindpunten worden weergegeven. In dit geval zijn er expressies toegevoegd om de afbeelding van het pictogram en de tekstlabelgegevens op te halen uit de eigenschappen van elk puntobject. 
+    In de gebeurtenis-handler Maps `ready` wordt een gegevens bron gemaakt voor het opslaan van de route lijn en de begin-en eind punten. Er wordt een lijnlaag gemaakt en aan de gegevensbron gekoppeld waarmee wordt gedefinieerd hoe de routelijn wordt weergegeven. De routelijn wordt weergegeven met een blauwe schaduw met een breedte van 5 pixels, en afgeronde verbindingen en eindstukken. Als u de laag toevoegt aan de kaart wordt een tweede parameter met de waarde `'labels'` doorgegeven. Hiermee wordt bepaald dat deze laag onder de kaartlabels wordt weergegeven. Zo kunt u er zeker van zijn dat de routelijnen de straatlabels niet bedekken. Er wordt een symboollaag gemaakt en aan de gegevensbron gekoppeld. Deze laag geeft aan hoe de begin- en eindpunten worden weergegeven. In dit geval zijn er expressies toegevoegd om de afbeelding van het pictogram en de tekstlabelgegevens op te halen uit de eigenschappen van elk puntobject. 
     
-2. Voor deze zelfstudie stelt u Microsoft in als beginpunt en een benzinestation in Seattle als eindpunt. Voeg de volgende `ready` code toe aan de gebeurtenis-handler voor Maps.
+2. Voor deze zelfstudie stelt u Microsoft in als beginpunt en een benzinestation in Seattle als eindpunt. Voeg de volgende code toe in de gebeurtenis-handler Maps `ready`.
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end points of the route.
@@ -189,9 +189,9 @@ In deze sectie wordt uitgelegd hoe u Azure Maps route Service-API kunt gebruiken
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   Hiermee maakt u `SubscriptionKeyCredentialPolicy` een voor de verificatie van HTTP-aanvragen voor Azure Maps met de abonnements sleutel. `SubscriptionKeyCredential` De `atlas.service.MapsURL.newPipeline()` neemt in het `SubscriptionKeyCredential` beleid en maakt een [pijplijn](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) instantie. De `routeURL` vertegenwoordigt een URL om [route](https://docs.microsoft.com/rest/api/maps/route) bewerkingen te Azure Maps.
+   De `SubscriptionKeyCredential` maakt een `SubscriptionKeyCredentialPolicy` voor het verifiëren van HTTP-aanvragen om te Azure Maps met de abonnements sleutel. De `atlas.service.MapsURL.newPipeline()` neemt in het `SubscriptionKeyCredential` beleid en maakt een [pijplijn](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) instantie. De `routeURL` vertegenwoordigt een URL voor het Azure Maps van [route](https://docs.microsoft.com/rest/api/maps/route) bewerkingen.
 
-2. Nadat u referenties en de URL hebt ingesteld, voegt u de volgende Java script-code toe om de route van het begin tot het eind punt te maken. De `routeURL` Azure Maps route service vraagt om de route beschrijving te berekenen. Een verzameling geojson-functies uit het antwoord wordt vervolgens geëxtraheerd met behulp van de `geojson.getFeatures()` methode en toegevoegd aan de gegevens bron.
+2. Nadat u referenties en de URL hebt ingesteld, voegt u de volgende Java script-code toe om de route van het begin tot het eind punt te maken. De `routeURL` vraagt de Azure Maps route service om de route beschrijving te berekenen. Een verzameling geojson-functies uit het antwoord wordt vervolgens geëxtraheerd met behulp van de `geojson.getFeatures()` methode en aan de gegevens bron toegevoegd.
 
     ```JavaScript
     //Start and end point input to the routeURL

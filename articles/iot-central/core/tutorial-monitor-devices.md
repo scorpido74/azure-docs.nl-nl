@@ -1,20 +1,20 @@
 ---
-title: Uw apparaten bewaken in Azure IoT Central | Microsoft Docs
-description: Gebruik als operator uw Azure IoT Central-toepassing om uw apparaten te bewaken.
+title: 'Zelf studie: uw apparaten bewaken in azure IoT Central'
+description: 'Zelf studie: als operator gebruikt u uw Azure IoT Central-toepassing om uw apparaten te bewaken.'
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/09/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 78f0c8cf9efd8b264da3c1d80c8baeb9f03016cc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: db3a9a6ba51394a0473f64a2ccede97e5283bba1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955443"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106566"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Zelfstudie: Azure IoT Central gebruiken om uw apparaten te bewaken
 
@@ -73,7 +73,7 @@ Gebruik de pagina **Instellingen** om de doeltemperatuur van het apparaat te wij
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="nextstepaction"]
 > * Een melding ontvangen

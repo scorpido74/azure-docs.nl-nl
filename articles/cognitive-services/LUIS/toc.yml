@@ -337,8 +337,6 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2092087'
         - name: REST API's voor V2-voorspelling
           href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
-        - name: REST-API voor V3-eindpunt
-          href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
         - name: HTTP-codes
           displayName: '400, 401, 403, 409, 410, 414, 429'
           href: luis-reference-response-codes.md

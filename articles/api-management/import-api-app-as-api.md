@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 484621668b582953d49c366336a49970d82c3fbf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bf4039b661ac7e0ee9630b86b9e15d1388991431
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073266"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108499"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Een API-app importeren als API
 
@@ -32,7 +32,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
++ Lees de volgende snelstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 + Zorg ervoor dat er een API-app in uw abonnement aanwezig is. Zie [App Service-documentatie](https://docs.microsoft.com/azure/app-service/) voor meer informatie
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
@@ -58,7 +58,7 @@ In dit artikel leert u het volgende:
     * **Onbeperkt**   
 7. Selecteer **Maken**.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>De nieuwe APIM API testen in Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API in het Azure Portal testen
 
 Bewerkingen kunnen rechtstreeks vanuit Azure Portal worden aangeroepen. Dit is een handige manier om de bewerkingen van een API te bekijken en te testen.  
 
@@ -70,21 +70,6 @@ Bewerkingen kunnen rechtstreeks vanuit Azure Portal worden aangeroepen. Dit is e
 1. Druk op **Verzenden**.
 
     Back-end reageert met **200 OK** en enkele gegevens.
-
-## <a name="call-operation"> </a>Een bewerking aanroepen vanuit de ontwikkelaarsportal
-
-Bewerkingen kunnen ook worden aangeroepen vanuit de **ontwikkelaarsportal** om API's te testen. 
-
-1. Selecteer de API die u hebt gemaakt in de stap voor het importeren en publiceren van een back-end-API.
-2. Selecteer de **ontwikkelaarsportal**.
-
-    De site voor de ontwikkelaarsportal wordt geopend.
-3. Selecteer de **API** die u hebt gemaakt.
-4. Klik op de bewerking die u wilt testen.
-5. Druk op **Proberen**.
-6. Druk op **Verzenden**.
-    
-    Nadat een bewerking is aangeroepen, worden in de ontwikkelaarsportal de **antwoordstatus**, de **antwoordheaders** en eventuele **antwoordinhoud** weergegeven.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

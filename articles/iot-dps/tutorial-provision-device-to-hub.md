@@ -1,24 +1,24 @@
 ---
-title: Een apparaat inrichten met behulp van Azure IoT Hub Device Provisioning Service | Microsoft Docs
-description: Uw apparaat inrichten in een enkele IoT-hub met behulp van IoT Hub Device Provisioning Service
+title: 'Zelf studie: een apparaat inrichten met behulp van Azure IoT Hub Device Provisioning Service'
+description: 'Zelf studie: uw apparaat inrichten voor één IoT-hub met behulp van Azure IoT Hub Device Provisioning Service'
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/12/2018
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9ff134b0747e78773c95fac7ceab4cddd61c601d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: be0b926b6beae2cb339ca232d2b792f50834d801
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60706264"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112053"
 ---
-# <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Het apparaat inrichten in een IoT-hub met behulp van IoT Hub Device Provisioning Service
+# <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Zelf studie: het apparaat inrichten voor een IoT-hub met behulp van de Azure-IoT Hub Device Provisioning Service
 
-In de vorige zelfstudie hebt u geleerd hoe u een apparaat kunt instellen om verbinding te maken met Device Provisioning Service. In deze zelfstudie leert u hoe u deze service gebruikt om uw apparaat in te richten voor één IoT-hub. U gebruikt daarvoor automatische inrichting **_inschrijvingslijsten_**. In deze zelfstudie ontdekt u hoe u:
+In de vorige zelfstudie hebt u geleerd hoe u een apparaat kunt instellen om verbinding te maken met Device Provisioning Service. In deze zelfstudie leert u hoe u deze service gebruikt om uw apparaat in te richten voor één IoT-hub. U gebruikt daarvoor automatische inrichting **_inschrijvingslijsten_** . In deze handleiding ontdekt u hoe u:
 
 > [!div class="checklist"]
 > * Het apparaat inschrijven
@@ -43,7 +43,7 @@ In deze stap worden de unieke beveiligingsartefacten van het apparaat toegevoegd
       [![Inschrijvingsgegevens voor TPM in de portal](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - Voor X.509-apparaten hebt u het volgende nodig:
-    - Het [certificaat dat is verleend aan de X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)-chip of -simulatie, in de vorm van een *.pem*- of *.cer*-bestand. Voor een afzonderlijke inschrijving moet u de per-apparaat gebruiken *ondertekend certificaat* voor het X.509-systeem voor Registratiegroepen, u moet gebruiken de *basiscertificaat*. 
+    - Het [certificaat dat is verleend aan de X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)-chip of -simulatie, in de vorm van een *.pem*- of *.cer*-bestand. Voor afzonderlijke inschrijving moet u het *certificaat* per apparaat gebruiken voor uw X. 509-systeem, terwijl u voor inschrijvings groepen het *basis certificaat*moet gebruiken. 
 
       [![Afzonderlijke inschrijving voor X.509-attestation toevoegen in de portal](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 

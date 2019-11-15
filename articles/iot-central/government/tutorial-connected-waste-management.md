@@ -1,18 +1,18 @@
 ---
-title: Een verbonden afval beheer-app maken met Azure IoT Central | Microsoft Docs
-description: Leer hoe u een verbonden afval beheer toepassing maakt met behulp van Azure IoT Central toepassings sjablonen.
+title: 'Zelf studie: een verbonden afval beheer-app maken met Azure IoT Central'
+description: 'Zelf studie: meer informatie over het maken van een verbonden afval beheer toepassing met behulp van Azure IoT Central-toepassings sjablonen.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: fa2ea8cdf5148d27b025c62fbeec512ceac0943e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 38da444779a56f39d4119f3797ddb5bd2f31aeae
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890812"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112638"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Zelf studie: een verbonden afval beheer toepassing maken in IoT Central
 
@@ -67,7 +67,7 @@ Een nieuwe Azure IoT Central-toepassing voor het beheer van verbonden afval make
 
 6. U hebt nu een verbonden afval beheer-app gemaakt met behulp van de sjabloon voor het **beheer van verbonden afval**van Azure IOT Central. 
 
-Gefeliciteerd! Uw zojuist gemaakte toepassing wordt geleverd met vooraf geconfigureerd:
+Gefeliciteerd. Uw zojuist gemaakte toepassing wordt geleverd met vooraf geconfigureerd:
 * Voor beeld-operator dashboards
 * Voor beeld van vooraf gedefinieerde gekoppelde afval lade-sjablonen voor apparaten
 * Gesimuleerde gekoppelde afval bakken-apparaten

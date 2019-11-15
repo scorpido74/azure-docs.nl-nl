@@ -1,19 +1,19 @@
 ---
-title: Een app voor het bijhouden van water verbruik maken met Azure IoT Central | Microsoft Docs
-description: Meer informatie over het maken van een toepassing voor het controleren van water verbruik met behulp van Azure IoT Central-toepassings sjablonen.
+title: 'Zelf studie: een water-bewakings-app maken met behulp van Azure IoT Central'
+description: 'Zelf studie: meer informatie over het maken van een toepassing voor het controleren van water verbruik met behulp van Azure IoT Central-toepassings sjablonen.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 09/24/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d79c4585d9764e2cc5cebd679372a97946479396
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 0b100e0bebc7c5b26449e396650da5434334075d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889158"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112618"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Zelf studie: een toepassing voor het controleren van water verbruik maken in IoT Central
 
@@ -68,7 +68,7 @@ Voor het maken van een nieuwe Azure IoT Central-bewakings toepassing voor water 
 
 6. U hebt nu een water bewakings-app gemaakt met behulp van de Azure IoT Central **water bewakings** sjabloon.
 
-Gefeliciteerd! U bent klaar met het maken van de bewakings toepassing voor water kwaliteit, die wordt geleverd met vooraf geconfigureerde:
+Gefeliciteerd. U bent klaar met het maken van de bewakings toepassing voor water kwaliteit, die wordt geleverd met vooraf geconfigureerde:
 * Voor beeld-operator dashboards
 * Voor beeld van vooraf gedefinieerde water stroom-en klep-Apparaatinstellingen
 * Gesimuleerde water stroom-en slimme kleppen apparaten

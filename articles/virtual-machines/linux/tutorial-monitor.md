@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: eb3f73f3ceb27bec05d4e2e88877ea398de7cdf5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 4d338708b143c88f8f416185e351531e74963bba
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034372"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112001"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Zelf studie: een virtuele Linux-machine bewaken in azure
 
@@ -133,7 +133,7 @@ Als u de bewaking van uw Azure-VM met Azure Monitor voor VM's wilt inschakelen:
 
 3. Op de **inzichten (preview)** weergeeft, schakelt **Probeer nu**.
 
-    ![Azure Monitor voor virtuele machines voor een virtuele machine inschakelen](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Azure Monitor voor virtuele machines voor een virtuele machine inschakelen](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
 4. Op de **Azure Monitor Insights voorbereiden** pagina, hebt u een bestaande Log Analytics-werkruimte in hetzelfde abonnement, selecteert u deze in de vervolgkeuzelijst.  
 

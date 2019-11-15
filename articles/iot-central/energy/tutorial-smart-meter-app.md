@@ -1,19 +1,19 @@
 ---
-title: Een Smart meter Analytics-App maken met IoT Central | Microsoft Docs
-description: Meer informatie over het maken van een toepassing voor slimme meter bewaking met behulp van Azure IoT Central-toepassings sjablonen.
+title: 'Zelf studie: een slimme meter analyse-app maken met IoT Central'
+description: 'Zelf studie: informatie over het maken van een toepassing voor slimme meter bewaking met behulp van Azure IoT Central-toepassings sjablonen.'
 author: op-ravi
 ms.author: omravi
-ms.date: 10/23/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c7bb35e7de6400a0fad13845a3faa38ad21b6de7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a73f4d75811a384eb822d1f8594a22506509d560
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581242"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112534"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Zelf studie: de sjabloon voor het bewakings programma voor slimme meters maken en door lopen 
 
@@ -30,7 +30,7 @@ In deze zelf studie wordt u begeleid bij het maken van de toepassing voor het co
 Als u geen abonnement hebt, [maakt u een account voor een gratis proef versie](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Vereisten
-- Geen
+- None
 - Azure-abonnement wordt aanbevolen, maar is niet vereist voor het uitproberen
 
 ## <a name="create-a-smart-meter-monitoring-app"></a>Een app maken om slimme meters te bewaken 

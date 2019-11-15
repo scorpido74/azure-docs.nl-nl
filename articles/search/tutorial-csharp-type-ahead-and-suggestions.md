@@ -1,19 +1,19 @@
 ---
 title: C#zelf studie over automatisch aanvullen en suggesties
 titleSuffix: Azure Cognitive Search
-description: Deze zelf studie bouwt voort op het project Zoek resultaten pagineren-Azure Cognitive Search om automatisch aanvullen en suggesties toe te voegen. Het doel is een rijkere gebruikers ervaring. Meer informatie over het combi neren van een vervolg keuzelijst met suggesties met inline automatisch aanvullen.
+description: In deze zelf studie ziet u hoe u automatisch aanvullen en suggesties kunt gebruiken voor het verzamelen van de invoer van zoek termen van gebruikers met een vervolg keuzelijst. Het is gebaseerd op een bestaand Hotels-project.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 959ae749f9ab8a025ec9c78d75640e2108868372
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b542476ac1c9b6d4368d97eb4db76518eb2dba03
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786506"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114560"
 ---
 # <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C#zelf studie: automatisch aanvullen en suggesties toevoegen-Azure Cognitive Search
 
@@ -80,7 +80,7 @@ De functie voor automatisch aanvullen, die wordt aangeroepen in het bovenstaande
     </head>
     ```
 
-2. We moeten ook een regel verwijderen, of een opmerking uit nemen, die verwijst naar jQuery in het _Layout. cshtml-bestand (in de **weer gaven/gedeelde** map). Zoek de volgende regels en check de eerste script regel uit zoals weer gegeven. Met deze wijziging wordt het conflicteren van verwijzingen naar jQuery voor komen.
+2. We moeten ook een regel verwijderen, of een opmerking uit nemen, die verwijst naar jQuery in het bestand _Layout. cshtml (in de **weer gaven/gedeelde** map). Zoek de volgende regels en check de eerste script regel uit zoals weer gegeven. Met deze wijziging wordt het conflicteren van verwijzingen naar jQuery voor komen.
 
     ```html
     <environment include="Development">
@@ -311,7 +311,7 @@ Er zijn bibliotheken die deze functionaliteit bieden. dit wordt vaak ' inline-au
 
     Boven aan de lijst met **resultaten** wordt één optie voor automatisch aanvullen weer gegeven, gevolgd door alle suggesties.
 
-2. In de weer gave implementeren we eerst een truc, zodat een lichtgrijs woord voor automatisch aanvullen wordt weer gegeven onder vetgedrukte tekst die door de gebruiker wordt ingevoerd. HTML bevat relatieve positionering voor dit doel. Wijzig de **TextBoxFor** -instructie (en de bijbehorende omliggende &lt;div&gt;-instructies) naar het volgende, waarbij het tweede zoekvak **onder ons** normale Zoek venster rechts wordt genoemd. Dit zoekvak 39 pixels van de standaard locatie.
+2. In de weer gave implementeren we eerst een truc, zodat een lichtgrijs woord voor automatisch aanvullen wordt weer gegeven onder vetgedrukte tekst die door de gebruiker wordt ingevoerd. HTML bevat relatieve positionering voor dit doel. Wijzig de **TextBoxFor** -instructie (en de bijbehorende omliggende &lt;div&gt;-instructies) naar het volgende. Als u dit zoekvak 39 pixels uit de standaard locatie haalt **, wordt het** tweede zoekvak direct onder ons normale Zoek venster vermeld.
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">
@@ -433,7 +433,7 @@ Er zijn bibliotheken die deze functionaliteit bieden. dit wordt vaak ' inline-au
     </script>
     ```
 
-    Let op het slimme gebruik van de **interval** functie om de onderliggende tekst te wissen wanneer deze niet meer overeenkomt met wat de gebruiker typt en ook om dezelfde case (boven of onder) in te stellen als de gebruiker typt ("PA" komt overeen met "PA", "PA", "PA" bij het zoeken) , zodat de overlappende tekst netter is.
+    Let op het slimme gebruik van de **interval** functie voor het wissen van de onderliggende tekst wanneer deze niet meer overeenkomt met wat de gebruiker typt en ook om dezelfde case (boven of onder elkaar) in te stellen als de gebruiker typt ("PA" komt overeen met "PA", "PA", "PA" bij het zoeken), zodat de overlappende tekst er netjes uitziet.
 
     Lees de opmerkingen in het script om een uitgebreidere uitleg te krijgen.
 

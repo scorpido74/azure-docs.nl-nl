@@ -1,20 +1,20 @@
 ---
-title: Regels en acties configureren in Azure IoT Central | Microsoft Docs
+title: 'Zelf studie: regels en acties in azure IoT Central configureren'
 description: Deze zelfstudie laat u zien hoe u als bouwer op telemetrie gebaseerde regels en acties in uw Azure IoT Central-toepassing kunt configureren.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 06/09/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 5358563de9f35d2cef74a32cb1794de418066810
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9c2c8c1bacf4abfa775747a03d2a4a6121b67714
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955793"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106591"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Zelfstudie: Regels en acties voor uw apparaat configureren in Azure IoT Central
 
@@ -55,7 +55,7 @@ Voer voordat u begint de zelfstudie [Een nieuw apparaattype definiëren in uw to
     | Naam                                         | Waarschuwing temperatuur airconditioner |
     | Regel inschakelen voor alle apparaten van deze sjabloon | Aan                                |
     | Voorwaarde                                    | Temperatuur is hoger dan 32    |
-    | Aggregatie                                  | Geen                              |
+    | Aggregatie                                  | None                              |
 
     ![Voorwaarde temperatuurregel](media/tutorial-configure-rules/temperaturerule.png)
 
@@ -73,7 +73,7 @@ Wanneer u een regel definieert, definieert u ook een actie die moet worden uitge
 
     | Instelling   | Waarde                          |
     | --------- | ------------------------------ |
-    | Tot        | Uw e-mailadres             |
+    | Handeling        | Uw e-mailadres             |
     | Opmerkingen     | De temperatuur van de airconditioner heeft de drempelwaarde overschreden. |
 
     > [!NOTE]
@@ -92,7 +92,7 @@ Kort nadat u de regel hebt opgeslagen, wordt deze actief. Wanneer aan de voorwaa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 <!-- Repeat task list from intro -->
 > [!div class="nextstepaction"]

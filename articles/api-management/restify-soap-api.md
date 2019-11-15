@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: e1534a562c81fc92fdf0c21452458c51b10f0bc9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a2bec6401ae3ac53f46e92e9be38abf57a92163d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074224"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108097"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>Een SOAP-API importeren en deze converteren naar REST
 
@@ -32,7 +32,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
+Lees de volgende snelstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -49,7 +49,7 @@ Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-s
 
 5. Druk op tab.
 
-    De volgende velden worden gevuld met de informatie uit de SOAP-API: Weergave naam, naam en beschrijving.
+    De volgende velden worden gevuld met de gegevens van de SOAP API: Weergavenaam, Naam, Beschrijving.
 6. Voeg een achtervoegsel toe van de URL voor de API. Het achtervoegsel is een naam die deze specifieke API in dit APIM-exemplaar identificeert. Hij moet uniek zijn in dit APIM-exemplaar.
 9. Publiceer de API door deze aan een product te koppelen. In dit geval wordt het product *onbeperkt* gebruikt.  Als u wilt dat de API wordt gepubliceerd en beschikbaar is voor ontwikkelaars, kunt u deze toevoegen aan een product. U kunt dit doen tijdens het maken van de API of het later instellen.
 
@@ -61,7 +61,7 @@ Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-s
     * **Onbeperkt**   
 10. Selecteer **Maken**.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>De nieuwe APIM API testen in Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API in het Azure Portal testen
 
 Bewerkingen kunnen rechtstreeks vanuit Azure Portal worden aangeroepen. Dit is een handige manier om de bewerkingen van een API te bekijken en te testen.  
 
@@ -73,21 +73,6 @@ Bewerkingen kunnen rechtstreeks vanuit Azure Portal worden aangeroepen. Dit is e
 1. Druk op **Verzenden**.
 
     Back-end reageert met **200 OK** en enkele gegevens.
-
-## <a name="call-operation"> </a>Een bewerking aanroepen vanuit de ontwikkelaarsportal
-
-Bewerkingen kunnen ook worden aangeroepen vanuit de **ontwikkelaarsportal** om API's te testen. 
-
-1. Selecteer de API die u hebt gemaakt in de stap voor het importeren en publiceren van een back-end-API.
-2. Selecteer de **ontwikkelaarsportal**.
-
-    De site voor de ontwikkelaarsportal wordt geopend.
-3. Selecteer de **API** die u hebt gemaakt.
-4. Klik op de bewerking die u wilt testen.
-5. Druk op **Proberen**.
-6. Druk op **Verzenden**.
-    
-    Nadat een bewerking is aangeroepen, worden in de ontwikkelaarsportal de **antwoordstatus**, de **antwoordheaders** en eventuele **antwoordinhoud** weergegeven.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

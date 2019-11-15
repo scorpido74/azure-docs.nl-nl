@@ -1,25 +1,25 @@
 ---
-title: Een apparaat inrichten met behulp van Azure IoT Hub Device Provisioning Service (.NET) | Microsoft Docs
-description: Uw apparaat inrichten in een enkele IoT-hub met behulp van IoT Hub Device Provisioning Service (.NET)
+title: 'Zelf studie: een apparaat inrichten met behulp van Azure IoT Hub Device Provisioning Service (.NET)'
+description: 'Zelf studie: uw apparaat inrichten voor één IoT-hub met behulp van Azure IoT Hub Device Provisioning Service (.NET)'
 author: wesmc7777
 ms.author: wesmc
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 4a6a074c3f677023928fefa5c09eb305b5441dfe
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 02995549590f6f53feff92fe45bfb6cc3d543334
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303978"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112813"
 ---
-# <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Het apparaat registreren bij een IoT-hub met behulp van IoT Hub Device Provisioning Service-client (.NET)
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Zelf studie: het apparaat inschrijven bij een IoT-hub met behulp van de Azure IoT Hub Provisioning Service-client (.NET)
 
-In de vorige zelfstudie hebt u geleerd hoe u een apparaat kunt instellen om verbinding te maken met Device Provisioning Service. In deze zelfstudie leert u hoe u deze service gebruikt om uw apparaat in te richten voor één IoT-hub. U gebruikt daarvoor zowel **_Individuele registratie_** als **_Registratiegroepen_** . In deze zelfstudie ontdekt u hoe u:
+In de vorige zelfstudie hebt u geleerd hoe u een apparaat kunt instellen om verbinding te maken met Device Provisioning Service. In deze zelfstudie leert u hoe u deze service gebruikt om uw apparaat in te richten voor één IoT-hub. U gebruikt daarvoor zowel **_Individuele registratie_** als **_Registratiegroepen_** . In deze handleiding ontdekt u hoe u:
 
 > [!div class="checklist"]
 > * Het apparaat inschrijven
@@ -64,7 +64,7 @@ Er zijn twee manieren om het apparaat te registreren bij Device Provisioning Ser
 
 1. Selecteer in het venster **NuGet Package Manager** de optie **Bladeren** en zoek naar **microsoft.azure.devices.provisioning.service**. Selecteer de vermelding en klik op **Installeren** om het pakket **Microsoft.Azure.Devices.Provisioning.Service** te installeren en de gebruiksvoorwaarden te accepteren. Met deze procedure worden het NuGet-pakket van de [Azure IoT Device Provisioning Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) en de bijbehorende afhankelijkheden gedownload en geïnstalleerd. Ook worden verwijzingen hiernaar toegevoegd.
 
-1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
+1. Voeg aan het begin van het bestand `using`Program.cs**de volgende** instructies toe:
    
     ```csharp
     using Microsoft.Azure.Devices.Provisioning.Service;
@@ -130,7 +130,7 @@ Er zijn twee manieren om het apparaat te registreren bij Device Provisioning Ser
     Console.ReadLine();
     ```
         
-1. Klik in Solution Explorer van Visual Studio met de rechtermuisknop op uw oplossing en klik op **Set StartUp Projects...** . Selecteer **Single startup project** en selecteer het project **DeviceProvisioning** in de vervolgkeuzelijst.  
+1. Klik in Visual Studio Solution Explorer met de rechter muisknop op uw oplossing en klik vervolgens op **opstart projecten instellen...** . Selecteer **één opstart project**en selecteer vervolgens het project **DeviceProvisioning** in de vervolg keuzelijst.  
 
 1. Voer de app voor het .NET-apparaat **DeviceProvisiong** uit. Deze moet de inrichting van het apparaat instellen: 
 
@@ -147,7 +147,7 @@ Wanneer het apparaat is ingeschreven, ziet u dat deze in de portal als volgt wor
 
 1. Open in de Solution Explorer van Visual Studio het project **DeviceProvisioning** dat eerder is gemaakt. 
 
-1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
+1. Voeg aan het begin van het bestand `using`Program.cs**de volgende** instructies toe:
     
     ```csharp
     using System.Security.Cryptography.X509Certificates;

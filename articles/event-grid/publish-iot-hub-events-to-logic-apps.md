@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps triggeren met IoT Hub-gebeurtenissen | Microsoft Docs
-description: Leer hoe u de functie voor het routeren van gebeurtenissen van Azure Event Grid gebruikt voor het maken van geautomatiseerde processen om acties van Azure Logic Apps uit te voeren op basis van IoT Hub-gebeurtenissen.
+title: 'Zelf studie: IoT Hub gebeurtenissen gebruiken om Azure Logic Apps te activeren'
+description: 'Zelf studie: de service voor gebeurtenis routering van Azure Event Grid gebruiken om geautomatiseerde processen te maken om Azure Logic Apps acties uit te voeren op basis van IoT Hub gebeurtenissen.'
 services: iot-hub
 documentationcenter: ''
 author: kgremban
@@ -10,16 +10,16 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 11/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 9c84e1a62ad8b67e398c62074c390711f4b0be28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e003cb650b0589ab43c984850838c56cbbf1ff2f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60823775"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106771"
 ---
-# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Zelfstudie: E-mailmeldingen over gebeurtenissen van Azure IoT Hub verzenden met Logic Apps
+# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Zelf studie: e-mail meldingen over Azure IoT Hub-gebeurtenissen verzenden met Logic Apps
 
 Azure Event Grid maakt het mogelijk om te reageren op gebeurtenissen in IoT Hub door acties in zakelijke toepassingen verderop in de werkstroom te activeren.
 
@@ -128,8 +128,8 @@ Acties zijn stappen die worden uitgevoerd nadat de trigger de werkstroom van de 
 5. Meld u aan bij uw e-mailaccount als dat wordt gevraagd. 
 
 6. Stel de e-mailsjabloon samen. 
-   * **Aan**: Voer het e-mailadres in waarop u de e-mailmeldingen wilt ontvangen. Gebruik voor deze zelfstudie een e-mailaccount dat toegankelijk is voor testdoeleinden. 
-   * **Onderwerp** en **Hoofdtekst**: Typ hier het onderwerp en de tekst voor uw e-mail. Selecteer JSON-eigenschappen in het selectiehulpmiddel om dynamische inhoud op te nemen op basis van gegevens van gebeurtenissen.  
+   * **Aan**: voer het e-mailadres in waarop u de e-mailmeldingen wilt ontvangen. Gebruik voor deze zelfstudie een e-mailaccount dat toegankelijk is voor testdoeleinden. 
+   * **Onderwerp** en **Hoofdtekst**: typ hier het onderwerp en de tekst voor uw e-mail. Selecteer JSON-eigenschappen in het selectiehulpmiddel om dynamische inhoud op te nemen op basis van gegevens van gebeurtenissen.  
 
    Uw e-mailsjabloon ziet er nu misschien uit als in dit voorbeeld:
 
@@ -162,12 +162,12 @@ In deze sectie configureert u de IoT-hub voor het publiceren van gebeurtenissen 
    ![Nieuw gebeurtenisabonnement maken](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 4. Maak het gebeurtenisabonnement met de volgende waarden: 
-   * **Gebeurtenistype**: Schakel Abonneren op alle gebeurtenistypen uit en selecteer **Het apparaat is gemaakt** in het menu.
-   * **Eindpuntdetails**: Selecteer Eindpunttype als **Webhook**, klik op Eindpunt selecteren, plak de URL die u hebt gekopieerd in uw logische app en bevestig uw selectie.
+   * **Gebeurtenistype**: schakel Abonneren op alle gebeurtenistypen uit en selecteer **Het apparaat is gemaakt** in het menu.
+   * **Eindpuntdetails**: selecteer Eindpunttype als **Webhook**, klik op Eindpunt selecteren, plak de URL die u hebt gekopieerd in uw logische app en bevestig uw selectie.
 
      ![eindpunt-URL selecteren](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-   * **Gebeurtenisabonnementdetails**: Geef een beschrijvende naam op en selecteer **Gebeurtenisrasterschema**
+   * **Gebeurtenisabonnementdetails**: geef een beschrijvende naam op en selecteer **Gebeurtenisrasterschema**.
 
    Als u klaar bent, moet het formulier er als volgt uitzien: 
 
@@ -177,8 +177,8 @@ In deze sectie configureert u de IoT-hub voor het publiceren van gebeurtenissen 
 
 6. Maak de volgende filters:
 
-   * **Onderwerp begint met**: Voer `devices/Building1_` in om te filteren op apparaatgebeurtenissen in gebouw 1.
-   * **Onderwerp eindigt met**: Voer `_Temperature` in om te filteren op apparaatgebeurtenissen die te maken hebben met temperatuur.
+   * **Onderwerp begint met**: voer `devices/Building1_` in om te filteren op apparaatgebeurtenissen in gebouw 1.
+   * **Onderwerp eindigt met**: voer `_Temperature` in om te filteren op apparaatgebeurtenissen die te maken hebben met temperatuur.
 
 5. Selecteer **Maken** om het gebeurtenisabonnement op te slaan.
 
@@ -188,7 +188,7 @@ Test de logische app door een nieuw apparaat te maken om zo een e-mail voor meld
 
 1. Selecteer **IoT-apparaten** in de IoT-hub. 
 2. Selecteer **Toevoegen**.
-3. Geef `Building1_Floor1_Room1_Temperature` op voor **Apparaat-ID**.
+3. Geef **op voor**Apparaat-ID`Building1_Floor1_Room1_Temperature`.
 4. Selecteer **Opslaan**. 
 5. U kunt meerdere apparaten met verschillende apparaat-id's toevoegen om de filters voor het gebeurtenisabonnement te testen. Probeer deze voorbeelden: 
    * Building1_Floor1_Room1_Light

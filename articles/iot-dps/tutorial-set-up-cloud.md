@@ -1,21 +1,21 @@
 ---
-title: Cloud instellen voor Azure IoT Hub Device Provisioning Service in portal | Microsoft Docs
-description: Stel de cloud resources in voor het inrichten van apparaten in het [Azure Portal](https://portal.azure.com) met behulp van de IOT hub Device PROVISIONING service (DPS)
+title: 'Zelf studie: Cloud instellen voor Azure-IoT Hub Device Provisioning Service in Portal'
+description: 'Zelf studie: de cloud resources voor het inrichten van apparaten instellen in het [Azure Portal](https://portal.azure.com) met behulp van de IOT hub Device PROVISIONING service (DPS)'
 author: wesmc7777
 ms.author: wesmc
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f0e61f264ac0e6a4a2306bc94234811b38941bb5
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e91627f934357cd67965ea8880db37ff9bfb3fb2
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888758"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112790"
 ---
-# <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Cloudresources configureren voor apparaatinrichting met de IoT Hub Device Provisioning Service
+# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Zelf studie: cloud resources configureren voor het inrichten van apparaten met de IoT Hub Device Provisioning Service
 
 In deze zelfstudie wordt beschreven hoe u de cloud instelt voor automatische apparaatinrichting met de IoT Hub Device Provisioning Service. In deze zelfstudie leert u het volgende:
 
@@ -45,10 +45,10 @@ Volg deze stappen om een nieuwe instantie van een Device Provisioning Service te
     
    | Instelling       | Voorgestelde waarde | Beschrijving | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | **Naam** | Een unieke naam | -- | 
+   | **Name** | Een unieke naam | -- | 
    | **Abonnement** | Uw abonnement  | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
    | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
-   | **Locatie** | Een geldige locatie | Zie [Azure-regio's](https://azure.microsoft.com/regions/) voor informatie over regio's. |   
+   | **Location** | Een geldige locatie | Zie [Azure-regio's](https://azure.microsoft.com/regions/) voor informatie over regio's. |   
 
    ![Basisinformatie over Device Provisioning Service invoeren op de portal](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
@@ -76,7 +76,7 @@ De volgende stap bestaat uit het koppelen van de Device Provisioning Service en 
 
 2. Klik op de pagina Device Provisioning Service op **Gekoppelde IoT-hubs**.
 
-3. Klik op **Toevoegen**.
+3. Klik op **Add**.
 
 4. Voer op de pagina **Koppeling toevoegen aan IoT-hub** de volgende gegevens in en klik op **Opslaan**:
 

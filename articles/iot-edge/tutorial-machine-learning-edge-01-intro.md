@@ -1,109 +1,109 @@
 ---
-title: Gedetailleerd overzicht van Machine Learning in Azure IoT Edge | Microsoft Docs
-description: Een op hoog niveau zelfstudie laat zien hoe u via de verschillende taken die nodig zijn voor het maken van een end-to-end voor machine learning op het edge-scenario.
+title: 'Zelf studie: gedetailleerd overzicht van Machine Learning op Azure IoT Edge'
+description: Een hoogwaardige zelf studie die de verschillende taken doorloopt die nodig zijn om een end-to-end-, machine learning te maken in het rand scenario.
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 916e48752431be41ff150c2ac84e66eb1e98e81f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057748"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106505"
 ---
-# <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Zelfstudie: Een end-to-end-oplossing met behulp van Azure Machine Learning en IoT Edge
+# <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Zelf studie: een end-to-end oplossing met Azure Machine Learning en IoT Edge
 
-IoT-toepassingen willen vaak, profiteren van de intelligente cloud en de intelligente edge. In deze zelfstudie helpen wij u bij een machine learning-model met gegevens die worden verzameld van IoT-apparaten in de cloud, training dat model implementeert naar IoT Edge, onderhouden en regelmatig verfijnen van het model.
+Vaak willen IoT-toepassingen profiteren van de intelligente Cloud en de intelligente Edge. In deze zelf studie wordt u begeleid bij het trainen van een machine learning model met gegevens die zijn verzameld van IoT-apparaten in de Cloud, waarbij u dat model implementeert om te IoT Edge en het model regel matig te onderhouden en te verfijnen.
 
-Het primaire doel van deze zelfstudie is om te introduceren de verwerking van IoT-gegevens met machine learning, specifiek voor het edge-apparaten. Terwijl we veel aspecten van een algemene machine learning-werkstroom touch, is in deze zelfstudie niet bedoeld als diepgaande Inleiding tot machine learning. Als een aanvraag in-punt, probeer we niet te maken van een uiterst geoptimaliseerde model van de use-case-we doen net voldoende ter illustratie van het proces voor het maken en gebruiken van een levensvatbare model voor de verwerking van de IoT-gegevens.
+Het belangrijkste doel van deze zelf studie is het introduceren van de verwerking van IoT-gegevens met machine learning, met name aan de rand. Hoewel we veel aspecten van een algemene machine learning werk stroom aanraken, is deze zelf studie niet bedoeld als een diep gaande Inleiding tot machine learning. Als in punt wordt niet geprobeerd een model met hoge betrouw baarheid te maken voor de use-case. we doen net genoeg om het proces van het maken en gebruiken van een levensvatbaar model voor IoT-gegevens verwerking te illustreren.
 
-## <a name="target-audience-and-roles"></a>Doelgroep en rollen
+## <a name="target-audience-and-roles"></a>Doel groep en-rollen
 
-Deze reeks artikelen is bedoeld voor ontwikkelaars zonder eerdere ervaring in IoT-ontwikkeling- of machine learning. Gebruik machine learning-aan de rand moet kennis van hoe u verbinding maken met een breed scala van technologieën. Daarom bestaat deze zelfstudie uit een volledige end-to-end scenario om te demonstreren op één manier lid worden van deze technologieën bij elkaar voor een IoT-oplossing. In een omgeving met echte, kunnen deze taken worden verdeeld over verschillende personen met verschillende specialisaties. Bijvoorbeeld, ontwikkelaars zou zich richten op het apparaat of cloud-code, terwijl gegevenswetenschappers de analytics-modellen ontworpen. Om in te schakelen op een afzonderlijke ontwikkelaar van deze zelfstudie te voltooien, zijn er aanvullende richtlijnen met inzichten zijn beschikbaar en koppelingen naar meer informatie die we hopen dat u voldoende zijn om te begrijpen wat is wordt voltooid, en daarom is.
+Deze set artikelen is bedoeld voor ontwikkel aars zonder eerdere ervaring in IoT-ontwikkeling of machine learning. Voor de implementatie van machine learning aan de rand is kennis nodig van het aansluiten van een breed scala aan technologieën. Deze zelf studie bevat daarom een volledig end-to-end-scenario om te laten zien hoe u deze technologieën samen kunt koppelen aan een IoT-oplossing. In een praktijk omgeving kunnen deze taken worden verdeeld over verschillende personen met verschillende specials. Ontwikkel aars richten zich bijvoorbeeld op het apparaat of de Cloud code, terwijl gegevens wetenschappers de analyse modellen hebben ontworpen. Om ervoor te zorgen dat een individuele ontwikkelaar deze zelf studie kan volt ooien, hebben we aanvullende richt lijnen gegeven met inzichten en koppelingen naar meer informatie die we nodig hebben om te begrijpen wat er gebeurt, en waarom.
 
-U kunt ook samen met collega's met verschillende rollen samen de zelfstudie volgen om uw volledige kennis over te dragen, en meer als team hoe dingen bij elkaar passen.
+U kunt ook samen werken met collega's van verschillende rollen om de zelf studie te volgen, uw volledige expertise over te brengen en als een team te leren hoe ze bij elkaar passen.
 
-In beide gevallen geeft elk artikel in deze zelfstudie om te zien van de lezer, de rol van de gebruiker. Deze rollen zijn onder andere:
+In beide gevallen wordt in elk artikel in deze zelf studie de rol van de gebruiker weer gegeven om te helpen bij het richten van de lezer (s). Deze rollen zijn onder andere:
 
-* Ontwikkeling van cloud (met inbegrip van een cloud-ontwikkelaars die werken in een DevOps-capaciteit)
+* Cloud ontwikkeling (inclusief een Cloud ontwikkelaar die werkt in een DevOps-capaciteit)
 * Gegevensanalyse
 
-## <a name="use-case-predictive-maintenance"></a>Toepassing: Voorspellend onderhoud
+## <a name="use-case-predictive-maintenance"></a>Use-case: voor speld onderhoud
 
-We in dit scenario gebaseerd op een use-case weergegeven op de Conferentie op Prognostics en Health Management (PHM08) in 2008. Het doel is om de resterende levensduur (RUL) van een set turbofan vliegtuig-engines. Deze gegevens is gegenereerd met behulp van C-MAPSS, de commerciële versie van de software MAPSS (modulaire Aero Propulsion System simulatie). Deze software biedt een flexibel turbofan engine simulatie omgeving om te simuleren eenvoudig de status, controle en engine-parameters.
+We zijn op dit scenario gebaseerd op een gebruiks voorbeeld dat wordt gepresenteerd in de conferentie over Prognostics and Health Management (PHM08) in 2008. Het doel is om de resterende nuttige levens duur (resterende levens duur) van een set turbofan vliegtuig motoren te voors pellen. Deze gegevens zijn gegenereerd met C-kaarten, de commerciële versie van MAPS (modulair Aero-voortstuwing systeem simulatie) software. Deze software biedt een flexibele turbofan-engine simulatie omgeving waarmee u de status, controle en Engine-para meters eenvoudig kunt simuleren.
 
-De gegevens die worden gebruikt in deze zelfstudie is afkomstig uit de [Turbofan engine verslechtering van de simulatie data set](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
+De gegevens die in deze zelf studie worden gebruikt, worden opgehaald uit de [turbofan engine-simulatie gegevensverzameling](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
 
-Uit het bestand Leesmij-bestand:
+In het Leesmij-bestand:
 
-***Experimentele Scenario***
+***Experimentele scenario***
 
-*Data-sets bestaan uit meerdere multidimensionale tijdreeksen. Elke set gegevens verder wordt onderverdeeld in trainings- en testset subsets. Elke tijdreeksen afkomstig is van een andere engine – dat wil zeggen, de gegevens kunnen worden beschouwd als te worden van een wagenpark engines van hetzelfde type. Elke motor begint met verschillende graden van de eerste slijtage en productie-variant is onbekend voor de gebruiker. Deze slijtage en variatie wordt beschouwd als normale, dat wil zeggen, deze wordt niet beschouwd als een fouttoestand. Er zijn drie operationele instellingen waarvoor een aanzienlijke invloed op de prestaties van de engine. Deze instellingen zijn ook opgenomen in de gegevens. De gegevens is besmet met sensor ruis.*
+*Gegevens sets bestaan uit meerdere multidimensionale-tijd reeksen. Elke gegevensset wordt verder onderverdeeld in trainings-en test subsets. Elke tijd reeks is afkomstig van een andere engine, dat wil zeggen dat de gegevens kunnen worden beschouwd als een vloot van engines van hetzelfde type. Elke engine begint met een afwijkende mate van eerste slijtage en productie variaties die voor de gebruiker onbekend zijn. Deze slijtage en variant worden normaal gezien, dat wil zeggen, niet als een probleem voorwaarde. Er zijn drie operationele instellingen die een aanzienlijk effect hebben op de prestaties van de engine. Deze instellingen zijn ook opgenomen in de gegevens. De gegevens worden verontreinigd met sensor ruis.*
 
-*De engine functioneert normaal aan het begin van elke tijdreeksen en ontwikkelt een storing op een bepaald moment tijdens de reeks. In de trainingsset groeit de fout in grootte tot systeemfout is opgetreden. In de test is ingesteld eindigt de tijdreeksen enige tijd voordat systeemfout is opgetreden. Het doel van de concurrentie is om te voorspellen van het aantal resterende operationele cycli vóór de fout in de test is ingesteld, dat wil zeggen, het aantal operationele cycli na de laatste cyclus waarop de engine blijft werken. Ook een vector van true resterende bruikbare levensduur (RUL) waarden opgegeven voor de testgegevens.*
+*De engine werkt normaal aan het begin van elke tijd reeks en ontwikkelt een fout op een bepaald moment tijdens de serie. In de Trainingsset wordt de fout in omvang verg root tot systeem storingen. In de testset eindigt de tijd serie enige tijd voordat de systeem fout is opgetreden. Het doel van de concurrentie is het voors pellen van het aantal resterende operationele cycli vóór het mislukken van de testset, d.w.z. het aantal operationele cycli na de laatste cyclus dat de engine actief blijft. Daarnaast hebt u ook een vector gegeven van de resterende levens duur-waarden (waar resterende nuttige levens duur) voor de test gegevens.*
 
-Omdat de gegevens is gepubliceerd voor een competitie, zijn verschillende methoden voor het afleiden van machine learning-modellen onafhankelijk van elkaar gepubliceerd. Wij vinden dat voorbeelden studie kan handig zijn in meer informatie over het proces en redeneren die betrokken zijn bij het maken van een specifieke machine learning-model. Zie bijvoorbeeld:
+Omdat de gegevens zijn gepubliceerd voor een competitie, zijn verschillende benaderingen voor het afleiden van machine learning modellen onafhankelijk gepubliceerd. We hebben vastgesteld dat de studie voorbeelden nuttig zijn bij het maken van een specifiek machine learning model. Zie bijvoorbeeld:
 
-[Vliegtuig engine fout voorspellingsmodel](https://github.com/jancervenka/turbofan_failure) door GitHub gebruiker jancervenka.
+[Voorspellings model voor de vliegtuig motor](https://github.com/jancervenka/turbofan_failure) door github User jancervenka.
 
-[Degradatie van de turbofan engine](https://github.com/hankroark/Turbofan-Engine-Degradation) door GitHub gebruiker hankroark.
+[Degradatie van turbofan-engine](https://github.com/hankroark/Turbofan-Engine-Degradation) door github User hankroark.
 
-## <a name="process"></a>Process
+## <a name="process"></a>Proces
 
-De volgende afbeelding ziet u de ruwe stappen die we in deze zelfstudie volgen:
+In de onderstaande afbeelding ziet u de ruwe stappen die we in deze zelf studie volgen:
 
-![Architectuurdiagram voor processtappen](media/tutorial-machine-learning-edge-01-intro/tutorial-steps-overview.png)
+![Architectuur diagram voor proces stappen](media/tutorial-machine-learning-edge-01-intro/tutorial-steps-overview.png)
 
-1. **Trainingsgegevens verzamelen**: Het proces wordt gestart door trainingsgegevens te verzamelen. In sommige gevallen worden gegevens heeft al zijn verzameld en is beschikbaar in een database of in de vorm van gegevensbestanden. In andere gevallen, met name voor IoT-scenario's, moet de gegevens worden verzameld van IoT-apparaten en sensoren en opgeslagen in de cloud.
+1. **Trainings gegevens verzamelen**: het proces begint met het verzamelen van trainings gegevens. In sommige gevallen zijn gegevens al verzameld en beschikbaar in een Data Base, of in de vorm van gegevens bestanden. In andere gevallen, met name voor IoT-scenario's, moeten de gegevens worden verzameld van IoT-apparaten en Sens oren en worden opgeslagen in de Cloud.
 
-   Er wordt ervan uitgegaan dat u een verzameling van turbofan-engines, geen hebt, zodat de projectbestanden bevatten een eenvoudige apparaatsimulator waarmee de gegevens van de NASA-apparaat naar de cloud verzendt.
+   We gaan ervan uit dat u geen verzameling turbofan-engines hebt, zodat de project bestanden een eenvoudige Device Simulator bevatten die de gegevens van de NASA-apparaten naar de Cloud verzendt.
 
-1. **Gegevens voorbereiden**. In de meeste gevallen moet de onbewerkte gegevens verzameld van apparaten en sensoren voorbereiding voor machine learning. Deze stap kan betrekking hebben op gegevens opschonen, gegevens formatteren of sleutel te ' injecteren ' aanvullende informatie machine learning kunt uitschakelen.
+1. **Gegevens voorbereiden**. In de meeste gevallen vereisen de onbewerkte gegevens die worden verzameld van apparaten en Sens oren, voor bereiding voor machine learning. Deze stap kan het opschonen van gegevens, het opnieuw Format teren van gegevens of de voor verwerking van extra informatie omvatten machine learning kan worden uitgeschakeld.
 
-   Voor onze gegevens vliegtuig engine machine omvat gegevensvoorbereiding het berekenen van de expliciete time fout bij tijden voor elk gegevenspunt in de steekproef op basis van de werkelijke opmerkingen over de gegevens. Deze informatie kunt de machine learning-algoritme voor het vinden van correlatie tussen de werkelijke sensor data patronen en de verwachte resterende levensduur van de engine. Deze stap is zeer domeinspecifieke.
+   Voor de computer gegevens van onze vliegtuig motor moeten gegevens voorbereiding een expliciete time-to-failure tijd berekenen voor elk gegevens punt in het voor beeld op basis van de werkelijke waarnemingen van de gegevens. Met deze informatie kan het machine learning-algoritme correlaties tussen de werkelijke sensor gegevens patronen en de verwachte resterende levens duur van de engine vinden. Deze stap is zeer specifiek voor een domein.
 
-1. **Een machine learning-model bouwt**. Op basis van de voorbereide gegevens, kunnen we nu experimenteren met andere machine learning-algoritmen en parameteriseringen trainen van modellen en de resultaten met elkaar vergelijken.
+1. **Bouw een machine learning model**. Op basis van de voor bereide gegevens kunnen we nu experimenteren met verschillende machine learning algoritmen en parameterizations om modellen te trainen en de resultaten met elkaar te vergelijken.
 
-   In dit geval vergelijken we voor het testen van de voorspelde resultaten berekend door het model met de werkelijke resultaten waargenomen in een verzameling van engines. In Azure Machine Learning, kunnen we de verschillende iteraties van modellen die we in een model-register maken beheren.
+   In dit geval vergelijken we het voorspelde resultaat dat door het model is berekend met het reële resultaat dat is waargenomen voor een set engines. In Azure Machine Learning kunnen we de verschillende herhalingen van modellen die we in een model register maken, beheren.
 
-1. **Het model implementeren**. Zodra we een model dat voldoet aan onze criteria voor succes hebben, kunnen we overstappen naar de implementatie. Dat omvat het overschrijven van het model in een web service-app die kan worden ingevoerd met gegevens met behulp van REST-aanroepen en het retourneren van resultaten van de analyse. De service-web-app wordt vervolgens verpakt in een docker-container op zijn beurt kan worden geïmplementeerd in de cloud of als een IoT Edge-module. In dit voorbeeld richten we op IoT Edge-implementatie.
+1. **Implementeer het model**. Zodra we een model hebben dat voldoet aan onze criteria voor succes, kunnen we overstappen op de implementatie. Hiervoor moet u het model inpakken in een webservice-app die kan worden ingevoerd met gegevens met behulp van REST-aanroepen en analyse resultaten retour neren. De web service-app wordt vervolgens ingepakt in een docker-container, die op zijn beurt kan worden geïmplementeerd in de Cloud of als een IoT Edge module. In dit voor beeld is de implementatie gericht op het IoT Edge.
 
-1. **Onderhouden en het model te verfijnen**. Ons werk is niet uitgevoerd wanneer het model is geïmplementeerd. In veel gevallen willen we doorgaan met het verzamelen van gegevens en deze gegevens periodiek te uploaden naar de cloud. We kunnen deze gegevens vervolgens gebruiken opnieuw trainen en het model, die we vervolgens op IoT Edge implementeren kunt verfijnen.
+1. **Het model onderhouden en verfijnen**. Het werk wordt niet uitgevoerd wanneer het model is geïmplementeerd. In veel gevallen willen we door gaan met het verzamelen van gegevens en deze gegevens periodiek uploaden naar de Cloud. We kunnen deze gegevens vervolgens gebruiken om ons model opnieuw te trainen en te verfijnen. Dit kan vervolgens opnieuw worden geïmplementeerd voor IoT Edge.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt de zelfstudie hebt voltooid, moet u toegang tot een Azure-abonnement waarin u bevoegd bent om resources te maken. Aantal van de services die worden gebruikt in deze zelfstudie rekening Azure kosten in gebracht. Als u nog geen Azure-abonnement, u mogelijk aan de slag met een [gratis Azure-Account](https://azure.microsoft.com/offers/ms-azr-0044p/).
+Als u de zelf studie wilt volt ooien, moet u toegang hebben tot een Azure-abonnement waarin u de benodigde rechten hebt om resources te maken. Voor diverse services die in deze zelf studie worden gebruikt, worden Azure-kosten in rekening gebracht. Als u nog geen Azure-abonnement hebt, kunt u aan de slag met een [gratis Azure-account](https://azure.microsoft.com/offers/ms-azr-0044p/).
 
-U moet ook een virtuele machine met PowerShell is geïnstalleerd waar u scripts om in te stellen van een virtuele Machine van Azure als uw ontwikkelcomputer kunt uitvoeren.
+U hebt ook een machine nodig waarop Power shell is geïnstalleerd, waar u scripts kunt uitvoeren om een virtuele Azure-machine in te stellen als uw ontwikkel machine.
 
-In dit document gebruiken we de volgende set hulpprogramma's:
+In dit document gebruiken we de volgende set hulpprogram ma's:
 
 * Een Azure IoT hub voor het vastleggen van gegevens
 
-* Azure-laptops als onze belangrijkste front-end voor het voorbereiden van gegevens en machine learning experimenten. Python code uitvoeren in een notitieblok in een subset van de voorbeeldgegevens is een uitstekende manier om snel iteratieve en interactieve doorlooptijd tijdens de gegevensvoorbereiding van. Jupyter-notebooks kunnen ook worden gebruikt om voor te bereiden scripts om uit te voeren op schaal in een compute-back-end.
+* Azure Notebooks als de belangrijkste front-end voor het voorbereiden van gegevens en machine learning experimenten. Het uitvoeren van python-code in een notebook op een subset van de voorbeeld gegevens is een uitstekende manier om snel iteratieve en interactieve verwerkings tijd te verkrijgen tijdens de voor bereiding van gegevens. Jupyter-notebooks kunnen ook worden gebruikt om scripts voor te bereiden die op schaal worden uitgevoerd in een compute-back-end.
 
-* Azure Machine Learning als een back-end voor machine learning op schaal en voor machine learning-installatiekopie genereren. Wij station de Azure Machine Learning back-end met behulp van scripts hebt voorbereid en getest in Jupyter-notebooks.
+* Azure Machine Learning als back-end voor machine learning op schaal en voor het genereren van machine learning installatie kopie. We sturen de Azure Machine Learning back-end met behulp van scripts die zijn voor bereid en getest in Jupyter-notebooks.
 
-* Azure IoT Edge voor de toepassing uit de cloud van de installatiekopie van een machine learning
+* Azure IoT Edge voor een off-Cloud toepassing van een machine learning installatie kopie
 
-Er zijn natuurlijk, andere opties beschikbaar. In bepaalde scenario's, bijvoorbeeld kunnen IoT Central worden gebruikt als een alternatief zonder code om vast te leggen van eerste training van IoT-apparaten.
+Er zijn uiteraard andere opties beschikbaar. In bepaalde scenario's kan IoT Central bijvoorbeeld worden gebruikt als alternatief voor het vastleggen van de eerste trainings gegevens van IoT-apparaten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie is onderverdeeld in de volgende secties:
+Deze zelf studie is onderverdeeld in de volgende secties:
 
-1. Stel uw ontwikkelcomputer en Azure-services.
-2. Genereer het trainen van gegevens voor de machine learning-module.
-3. Trainen en implementeren van de machine learning-module.
-4. Een IoT Edge-apparaat om te fungeren als een transparante gateway configureren.
-5. Maken en implementeren van IoT Edge-modules.
+1. Stel uw ontwikkel machine en Azure-Services in.
+2. Genereer de trainings gegevens voor de module machine learning.
+3. Train en implementeer de machine learning-module.
+4. Een IoT Edge apparaat configureren dat als transparante gateway fungeert.
+5. IoT Edge modules maken en implementeren.
 6. Gegevens verzenden naar uw IoT Edge-apparaat.
 
-Doorgaan met het volgende artikel voor het instellen van een ontwikkelcomputer en Azure-resources inrichten.
+Ga door naar het volgende artikel om een ontwikkel machine in te stellen en Azure-resources in te richten.
 
 > [!div class="nextstepaction"]
-> [Instellen van een omgeving voor machine learning op IoT Edge](tutorial-machine-learning-edge-02-prepare-environment.md)
+> [Een omgeving instellen voor machine learning op IoT Edge](tutorial-machine-learning-edge-02-prepare-environment.md)

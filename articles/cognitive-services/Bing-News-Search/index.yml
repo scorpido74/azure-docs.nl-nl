@@ -4,7 +4,7 @@ title: Documentatie voor Bing Nieuws zoeken-API
 metadata:
   title: 'Documentatie voor Bing Nieuws zoeken-API -zelfstudies, quickstarts, API-verwijzingen'
   titleSuffix: Azure Cognitive Services
-  description: Lees hoe u de Bing Nieuws zoeken-API gebruikt om op internet te zoeken naar nieuws.
+  description: Met de Bing Nieuws zoeken-API kunt u de zoekfunctionaliteit voor nieuws van Bing in uw toepassingen gebruiken.
   services: cognitive-services
   author: aahill
   manager: nitinme

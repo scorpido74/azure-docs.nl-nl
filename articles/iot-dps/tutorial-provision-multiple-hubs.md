@@ -1,22 +1,22 @@
 ---
-title: De Azure IoT Hub Device Provisioning-service gebruiken om apparaten in te richten op IoT-hubs met gelijke taakverdeling | Microsoft Docs
-description: De device Provisioning Service voor automatische apparaatinrichting voor IoT-hubs met gelijke taakverdeling in Azure Portal
+title: 'Zelf studie: Azure IoT Hub Device Provisioning Service gebruiken om apparaten in te richten voor IoT-hubs met gelijke taak verdeling'
+description: 'Zelf studie: inrichting van Device Provisioning Service automatisch inrichten voor IoT-hubs met gelijke taak verdeling in azure Portal'
 author: sethmanheim
 ms.author: sethm
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8ed1b128fc2663cfc09c40f001bd0b14663a728e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6cd5dcb1fd96ac0fda75bf89dcf7259695cf971d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486013"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112780"
 ---
-# <a name="provision-devices-across-load-balanced-iot-hubs"></a>Apparaten inrichten in IoT-hubs met gelijke taakverdeling
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Zelf studie: apparaten inrichten voor IoT-hubs met gelijke taak verdeling
 
 In deze zelfstudie kunt u zien hoe u apparaten kunt inrichten voor meerdere IoT-hubs met gelijke taakverdeling met behulp van de Device Provisioning Service. In deze zelfstudie leert u het volgende:
 
@@ -64,7 +64,7 @@ Koppel de Device Provisioning Service en IoT Hub zodat de Device Provisioning Se
 
 1. Klik op de pagina **Alle resources** op de Device Provisioning Service die u eerder hebt gemaakt.
 2. Klik op de pagina Device Provisioning Service op **Gekoppelde IoT-hubs**.
-3. Klik op **Toevoegen**.
+3. Klik op **Add**.
 4. Geef op de pagina **Koppeling toevoegen aan IoT-hub** met behulp van de keuzerondjes aan of de gekoppelde IoT-hub zich in het huidige abonnement of in een ander abonnement bevindt. Kies vervolgens de naam van de IoT-hub in het vak **IoT-hub**.
 5. Klik op **Opslaan**.
 
