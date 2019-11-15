@@ -1,142 +1,142 @@
 ---
-title: Overzicht van ondersteuning voor meerdere tenants voor herstel na noodgevallen voor VMware-VM naar Azure (CSP) met behulp van Azure Site Recovery | Microsoft Docs
-description: Biedt een overzicht van Azure Site Recovery-ondersteuning voor noodherstel VMWare naar Azure in een omgeving met meerdere tenants (CSP)-programma.
+title: Nood herstel met meerdere tenants voor VMware VM met Azure Site Recovery
+description: Hierin wordt een overzicht gegeven van Azure Site Recovery ondersteuning voor VMWare-herstel na nood gevallen naar Azure in een multi tenant-omgeving (CSP).
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718064"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083996"
 ---
-# <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Overzicht van ondersteuning voor meerdere tenants voor VMware naar Azure met CSP een noodgeval
+# <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Overzicht van ondersteuning voor meerdere tenants voor VMware-nood herstel naar Azure met CSP
 
-[Azure Site Recovery](site-recovery-overview.md) biedt ondersteuning voor omgevingen met meerdere tenants voor tenant-abonnementen. Het ondersteunt ook meerdere tenants voor tenant-abonnementen die worden gemaakt en beheerd via het programma Microsoft Cloud Solution Provider (CSP).
+[Azure site Recovery](site-recovery-overview.md) ondersteunt omgevingen met meerdere tenants voor Tenant abonnementen. Het ondersteunt ook multitenancy voor Tenant abonnementen die worden gemaakt en beheerd via het Microsoft Cloud Solution Provider-programma (CSP).
 
-Dit artikel bevat een overzicht van de implementatie en beheer van meerdere tenants replicatie van VMware naar Azure.
+Dit artikel bevat een overzicht van het implementeren en beheren van multi tenant-VMware naar Azure-replicatie.
 
 ## <a name="multi-tenant-environments"></a>Omgevingen met meerdere tenants
 
-Er zijn drie belangrijke modellen voor meerdere tenants:
+Er zijn drie belang rijke multi tenant-modellen:
 
-* **Gedeelde Services-hostingprovider (HSP)** : De partner is eigenaar van de fysieke infrastructuur, en maakt gebruik van gedeelde resources (vCenter, datacenters, fysieke opslag, enzovoort) voor het hosten van meerdere tenant-VM's op dezelfde infrastructuur. De partner herstel na noodgevallen management als een beheerde service kunt opgeven of de tenant eigenaar kan herstel na noodgevallen als een oplossing voor de selfservice.
+* **Shared Hosting Services provider (HSP)** : de partner is eigenaar van de fysieke infra structuur en maakt gebruik van gedeelde bronnen (vCenter, data centers, fysieke opslag, enzovoort) om meerdere Tenant-vm's te hosten op dezelfde infra structuur. De partner kan herstel na nood gevallen bieden als een beheerde service, of de Tenant kan eigenaar zijn van herstel na nood gevallen als self-service oplossing.
 
-* **Toegewezen Hosting serviceprovider**: De partner is eigenaar van de fysieke infrastructuur, maar toegewezen resources (meerdere vCenters, fysieke gegevensopslag, enzovoort) gebruikt voor het hosten van elke tenant-VM's op een aparte infrastructuur. De partner herstel na noodgevallen management als een beheerde service kunt opgeven of de tenant eigenaar kan het als een oplossing voor de selfservice.
+* **Toegewezen hosting services-provider**: de partner is eigenaar van de fysieke infra structuur, maar gebruikt toegewezen resources (meerdere vCenter, fysieke gegevens opslag, enzovoort) om de vm's van elke Tenant op een afzonderlijke infra structuur te hosten. De partner kan beheer voor herstel na nood geval bieden als een beheerde service, of de Tenant kan eigenaar zijn van het bedrijf als self-service oplossing.
 
-* **Managed serviceprovider (MSP)** : De klant is eigenaar van de fysieke infrastructuur die als host fungeert voor de virtuele machines en de partner biedt inschakelen voor herstel na noodgevallen en beheer.
+* **MSP (Managed Services provider)** : de klant is eigenaar van de fysieke infra structuur die als host fungeert voor de vm's en de partner biedt ondersteuning voor herstel na nood gevallen en beheer.
 
-## <a name="shared-hosting-services-provider-hsp"></a>Gedeeld-hosting services serviceprovider (HSP)
+## <a name="shared-hosting-services-provider-hsp"></a>Shared-Hosting Services provider (HSP)
 
-De andere twee scenario's zijn subsets van het scenario gedeeld-hosting, en ze gebruiken dezelfde principes. De verschillen worden aan het einde van de gedeelde-hosting richtlijnen beschreven.
+De andere twee scenario's zijn subsets van het scenario met gedeelde hosting en gebruiken dezelfde principes. De verschillen worden beschreven aan het einde van de richt lijnen voor gedeeld gebruik.
 
-De algemene vereiste in een scenario met meerdere tenants is dat tenants geïsoleerd worden moeten. Een tenant moet niet kunnen zien wat een andere tenant is gehost. Deze vereiste is niet zo belangrijk als het zich in een omgeving met selfservice, waar deze kan essentieel zijn in een omgeving beheerd door een partner. In dit artikel wordt ervan uitgegaan dat de isolatie van tenants vereist is.
+De basis vereiste in een scenario met meerdere tenants is dat tenants moeten worden geïsoleerd. Een Tenant mag niet kunnen nagaan wat een andere Tenant heeft gehost. In een omgeving die door een partner wordt beheerd, is deze vereiste niet zo belang rijk als in een self-service omgeving, waar dit kritiek kan zijn. In dit artikel wordt ervan uitgegaan dat Tenant isolatie is vereist.
 
-De architectuur wordt weergegeven in het volgende diagram.
+De architectuur wordt weer gegeven in het volgende diagram.
 
-![Gedeelde HSP met een VMware vCenter](./media/vmware-azure-multi-tenant-overview/shared-hosting-scenario.png)  
+![Gedeelde HSP met één vCenter](./media/vmware-azure-multi-tenant-overview/shared-hosting-scenario.png)  
 
-**Gedeeld-hosting met een vCenter-server**
+**Shared-hosting met één vCenter-Server**
 
-In het diagram heeft elke klant een afzonderlijke beheerserver. Deze configuratie tenant toegang beperkt tot tenant-specifieke virtuele machines en tenantisolatie maakt. VMware VM-replicatie maakt gebruik van de configuratieserver voor virtuele machines detecteren en de installatie van agents. Voor omgevingen met meerdere tenants, met de toevoeging van het beperken van de VM-detectie met behulp van toegangsbeheer voor vCenter gelden dezelfde principes.
+In het diagram heeft elke klant een afzonderlijke beheer server. Deze configuratie beperkt Tenant toegang tot Tenant-specifieke Vm's en schakelt Tenant isolatie in. VMware VM-replicatie maakt gebruik van de configuratie server om Vm's te detecteren en agents te installeren. Dezelfde principes zijn van toepassing op omgevingen met meerdere tenants, met toevoeging van het beperken van de detectie van VM'S met behulp van vCenter-toegangs beheer.
 
-De gegevensvereiste-isolatie betekent dat alle infrastructuur voor gevoelige informatie (zoals toegangsreferenties) niet openbaar te maken voor tenants blijft. Daarom is het raadzaam dat alle onderdelen van de beheerserver onder de exclusieve controle van de partner blijven. De management server-onderdelen zijn:
+De vereiste gegevens isolatie houdt in dat alle gevoelige infrastructuur gegevens (zoals toegangs referenties) niet worden vrijgegeven voor tenants. Daarom is het raadzaam dat alle onderdelen van de beheer server blijven gelden onder het exclusieve beheer van de partner. De onderdelen van de beheer server zijn:
 
 * Configuratieserver
-* Processerver
-* Hoofddoelserver
+* Proces server
+* Hoofddoel server
 
-Een afzonderlijke scale-out processerver is ook onder beheer van de partner.
+Een afzonderlijke scale-out proces server staat ook onder het besturings element van de partner.
 
-## <a name="configuration-server-accounts"></a>Configuratie-serveraccounts
+## <a name="configuration-server-accounts"></a>Configuratie Server accounts
 
-Elke configuratieserver in het scenario met meerdere tenants gebruikt twee accounts:
+Elke configuratie server in het scenario met meerdere tenants maakt gebruik van twee accounts:
 
-- **account voor toegang tot vCenter**: Dit account wordt gebruikt voor het detecteren van tenant-VM's. VCenter toegangsmachtigingen worden toegewezen aan deze heeft. Om te voorkomen van toegang lekken, is het raadzaam dat partners in het configuratiehulpprogramma van deze referenties zelf invoert.
+- **vCenter-toegangs account**: dit account wordt gebruikt om Tenant-vm's te detecteren. Hieraan zijn vCenter-toegangs machtigingen toegewezen. Om toegangs lekken te voor komen, raden we u aan deze referenties zelf in het configuratie programma in te voeren.
 
-- **Virtuele machine toegangsaccount**: Dit account wordt gebruikt voor het installeren van de Mobility-service-agent op de tenant-VM's, met een automatische push. Dit is meestal een domeinaccount die een tenant aan een partner kan leveren, of een account dat de partner direct kunt beheren. Als een tenant niet de gegevens rechtstreeks delen met de partner, kunnen ze Voer de referenties via tijdelijke toegang met de configuratieserver. Of met de hulp van de partner, kunnen ze de Mobility-service-agent handmatig installeren.
+- **Toegangs account voor de virtuele machine**: dit account wordt gebruikt om de Mobility Service-agent te installeren op Tenant-vm's, met een automatische push. Normaal gesp roken is het een domein account dat een Tenant kan leveren aan een partner of een account dat door de partner rechtstreeks kan worden beheerd. Als een Tenant de gegevens niet rechtstreeks met de partner wil delen, kunnen ze de referenties invoeren via beperkte toegang tot de configuratie server. Of, met hulp van de partner, kunnen ze de Mobility Service-agent hand matig installeren.
 
-## <a name="vcenter-account-requirements"></a>accountvereisten voor vCenter
+## <a name="vcenter-account-requirements"></a>vereisten voor vCenter-account
 
-De configuratieserver configureren met een account met een speciale rol zijn toegewezen.
+Configureer de configuratie server met een account waaraan een speciale rol is toegewezen.
 
-- De roltoewijzing moet worden toegepast op de vCenter-toegangsaccount voor elk object vCenter en worden niet doorgegeven aan de onderliggende objecten. Deze configuratie zorgt ervoor dat de isolatie van tenants, omdat toegang doorgifte in onbedoelde toegang tot andere objecten resulteren kan.
+- De roltoewijzing moet worden toegepast op het vCenter-toegangs account voor elk vCenter-object en niet worden door gegeven aan de onderliggende objecten. Deze configuratie zorgt voor isolatie van de Tenant, omdat het door geven van toegang kan leiden tot onbedoelde toegang tot andere objecten.
 
-    ![Het doorgeven naar de onderliggende objecten-optie](./media/vmware-azure-multi-tenant-overview/assign-permissions-without-propagation.png)
+    ![De optie door geven naar onderliggende objecten](./media/vmware-azure-multi-tenant-overview/assign-permissions-without-propagation.png)
 
-- De alternatieve methode is het toewijzen van het gebruikersaccount en de rol op het datacenter-object, en het doorgeven ervan aan de onderliggende objecten. Geef het account een **geen toegang** rol voor ieder object (zoals virtuele machines die deel uitmaken van andere tenants) die moeten toegankelijk is voor een bepaalde tenant. Deze configuratie is het omslachtig. Besturingselementen voor toegang per ongeluk beschikbaar worden gemaakt omdat elke nieuwe onderliggend object is ook automatisch toegang die overgenomen van het bovenliggende item. Daarom raden wij aan dat u de eerste benadering.
+- De alternatieve methode is het toewijzen van het gebruikers account en de rol aan het Data Center-object en het door geven van deze aan de onderliggende objecten. Vervolgens geeft u voor elk object (zoals Vm's die deel uitmaken van andere tenants) het account **geen toegang tot** een bepaalde Tenant. Deze configuratie is omslachtig. Het biedt onbedoelde toegangs controles, omdat voor elk nieuw onderliggend object ook automatisch toegang wordt verleend die wordt overgenomen van de bovenliggende. Daarom wordt u aangeraden de eerste benadering te gebruiken.
 
 ### <a name="create-a-vcenter-account"></a>Een vCenter-account maken
 
-1. Een nieuwe rol maken door het klonen van de vooraf gedefinieerde *alleen-lezen* rol, en wijs hieraan een handige naam (zoals Azure_Site_Recovery, zoals wordt weergegeven in dit voorbeeld).
-2. De volgende machtigingen toewijzen aan deze rol:
+1. Maak een nieuwe rol door de vooraf gedefinieerde *alleen-lezen* rol te klonen en geef deze vervolgens een handige naam (zoals Azure_Site_Recovery, zoals wordt weer gegeven in dit voor beeld).
+2. Wijs de volgende machtigingen toe aan deze rol:
 
-   * **Gegevensopslag**: Toewijzen van ruimte, bladeren gegevensopslag, bestandsbewerkingen op laag niveau, bestand, updatebestanden voor de virtuele machine verwijderen
-   * **Netwerk**: Netwerk toewijzen
-   * **Resource**: Virtuele machine toewijzen aan resourcegroep, VM uitgeschakeld migreren, ingeschakelde VM migreren
-   * **Tasks**: Taak, Update-taak maken
-   * **VM - configuratie**: Alle
-   * **VM - interactie** > beantwoorden vraag, apparaatverbinding, CD configureren media, diskettes configureren, uitschakelen, inschakelen, VMware-hulpprogramma's installeren
-   * **VM - inventarisatie** > maken op basis van bestaande, maak een nieuwe, registreren, registratie opheffen
-   * **VM - inrichting** > downloaden van de virtuele machine toestaan, toestaan virtuele machine bestanden uploaden
-   * **VM - beheer van momentopnamen** > momentopnamen verwijderen
+   * **Data Store**: ruimte toewijzen, bladeren in gegevens opslag, Bestands bewerkingen op laag niveau, bestand verwijderen, bestanden van virtuele machines bijwerken
+   * **Netwerk**: netwerk toewijzen
+   * **Resource**: een virtuele machine toewijzen aan een resource groep, een uitgeschakelde VM migreren, ingeschakelde VM migreren
+   * **Taken**: taak maken, taak bijwerken
+   * **VM-configuratie**: alle
+   * **VM-interactie** > antwoord vraag, apparaat-verbinding, CD-media configureren, diskette media configureren, uitschakelen, inschakelen, VMware-hulpprogram ma's installeren
+   * **Vm-inventaris** > maken op basis van bestaande, nieuwe maken, registreren, registratie opheffen
+   * **VM-inrichting > het** downloaden van virtuele machines toestaan, het uploaden van bestanden van virtuele machines toestaan
+   * **Beheer van virtuele machine-moment opnamen** > moment opnamen verwijderen
 
-       ![Het dialoogvenster rol bewerken](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
+       ![Het dialoog venster rol bewerken](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
 
-3. Toegangsniveaus op de vCenter-account (gebruikt in de tenant-configuratieserver) voor verschillende objecten als volgt toewijzen:
+3. U kunt als volgt toegangs niveaus toewijzen aan het vCenter-account (dat wordt gebruikt in de Tenant configuratie server) voor verschillende objecten:
 
 >| Object | Rol | Opmerkingen |
 >| --- | --- | --- |
->| vCenter | Alleen-lezen | Vereist alleen vCenter om toegang te verlenen voor het beheren van verschillende objecten. U kunt deze machtiging verwijderen als het account nooit worden opgegeven voor een tenant of gebruikt voor alle bewerkingen op de vCenter. |
+>| vCenter | Alleen-lezen | Alleen vereist voor het toestaan van toegang tot vCenter voor het beheren van verschillende objecten. U kunt deze machtiging verwijderen als het account nooit aan een Tenant wordt door gegeven of wordt gebruikt voor beheer bewerkingen in de vCenter. |
 >| Datacenter | Azure_Site_Recovery |  |
->| Host- en -hostcluster | Azure_Site_Recovery | Opnieuw zorgt ervoor dat toegang op objectniveau, zodat alleen toegankelijk hosts tenant-VM's voor failover- en na de failback hebben. |
->| Gegevensopslag en gegevensopslag-cluster | Azure_Site_Recovery | Hetzelfde als de voorgaande. |
+>| Host-en hostcluster | Azure_Site_Recovery | Zorg ervoor dat de toegang zich op het niveau van het object bevindt, zodat alleen toegankelijke hosts Tenant-Vm's hebben vóór failover en na failback. |
+>| Data Store-en Data Store-cluster | Azure_Site_Recovery | Hetzelfde als voor gaande. |
 >| Netwerk | Azure_Site_Recovery |  |
->| Beheerserver | Azure_Site_Recovery | Omvat toegang tot alle onderdelen (CS-, PS- en MT) buiten de CS-machine. |
->| Tenant-VM 's | Azure_Site_Recovery | Zorgt ervoor dat een nieuwe tenant-VM's van een bepaalde tenant ook deze toegang krijgen, of ze zich niet kunnen worden gedetecteerd via Azure portal. |
+>| -Beheer server | Azure_Site_Recovery | Biedt toegang tot alle onderdelen (CS, PS en MT) buiten de CS-computer. |
+>| Tenant-Vm's | Azure_Site_Recovery | Zorgt ervoor dat nieuwe Tenant-Vm's van een bepaalde Tenant deze toegang krijgen, of ze kunnen niet worden gedetecteerd via de Azure Portal. |
 
-De toegang tot het vCenter is nu voltooid. Deze stap wordt voldaan aan de vereiste minimale machtigingen voor het failbackbewerkingen worden voltooid. U kunt deze machtigingen ook gebruiken met uw bestaande beleidsregels. Uw bestaande machtigingen zijn ingesteld op de machtigingen van de rol van stap 2, gedetailleerde eerder alleen wijzigen.
+De toegang tot het vCenter-account is nu voltooid. Deze stap voldoet aan de minimale vereiste machtigingen voor het volt ooien van de failback-bewerkingen. U kunt deze toegangs machtigingen ook gebruiken met uw bestaande beleids regels. Wijzig uw bestaande machtigingen die zijn ingesteld om rolmachtigingen van stap 2 toe te voegen, zoals eerder is beschreven.
 
 ### <a name="failover-only"></a>Alleen failover
-Om te beperken van bewerkingen voor noodherstel accountpagina alleen failover (dat wil zeggen, zonder failback mogelijkheden), gebruikt u de vorige procedure, met de volgende uitzonderingen:
+Als u herstel bewerkingen voor nood gevallen wilt beperken tot alleen failover (dat wil zeggen, zonder failback-mogelijkheden), gebruikt u de vorige procedure, met de volgende uitzonde ringen:
 
-- In plaats van het toewijzen van de *Azure_Site_Recovery* rol aan het account van de toegang tot vCenter toewijzen alleen een *alleen-lezen* rol aan dit account. Deze machtigingengroep kunt VM-replicatie en failover en failback niet mogelijk.
-- Alle andere items in het vorige proces is blijft. Zorg ervoor dat de isolatie van tenants en VM-detectie te beperken, is elke machtiging nog steeds op het objectniveau van het alleen worden toegewezen en niet doorgegeven aan de onderliggende objecten.
+- Wijs in plaats van de *Azure_Site_Recovery* rol toe te wijzen aan het vCenter-toegangs account alleen een alleen *-lezen* rol toe aan dat account. Deze machtigingenset staat VM-replicatie en-failover toe en staat geen failback toe.
+- Alle andere stappen in het voor gaande proces blijven ongewijzigd. Om Tenant isolatie te garanderen en de detectie van VM'S te beperken, wordt elke machtiging nog steeds toegewezen op het niveau van het object en niet door gegeven aan onderliggende objecten.
 
-### <a name="deploy-resources-to-the-tenant-subscription"></a>Resources implementeren op het tenantabonnement
+### <a name="deploy-resources-to-the-tenant-subscription"></a>Resources implementeren voor het Tenant abonnement
 
-1. Maak een resourcegroep in Azure portal, en implementeert u een Recovery Services-kluis per het normale proces.
-2. Download de kluisregistratiesleutel.
-3. Registreer de CS voor de tenant met behulp van de kluisregistratiesleutel.
-4. Voer de referenties voor de twee toegangsaccounts, het account voor toegang tot de vCenter-server en het account voor toegang tot de virtuele machine.
+1. Maak een resource groep op de Azure Portal en implementeer vervolgens een Recovery Services kluis volgens het gebruikelijke proces.
+2. Download de registratiesleutel voor de kluis.
+3. Registreer de CS voor de Tenant met behulp van de kluis registratie sleutel.
+4. Voer de referenties in voor de twee toegangs accounts, het account voor toegang tot de vCenter-Server en het account voor toegang tot de virtuele machine.
 
-    ![Accounts van server configuration Manager](./media/vmware-azure-multi-tenant-overview/config-server-account-display.png)
+    ![Beheer configuratie Server accounts](./media/vmware-azure-multi-tenant-overview/config-server-account-display.png)
 
 ### <a name="register-servers-in-the-vault"></a>Servers in de kluis registreren
 
-1. In de Azure-portal, in de kluis die u eerder hebt gemaakt, registreert u de vCenter-server met de configuratieserver met behulp van de vCenter-account dat u hebt gemaakt.
-2. Het 'Infrastructuur voorbereiden'-proces te voltooien voor Site Recovery per het normale proces.
-3. De virtuele machines zijn nu gereed om te worden gerepliceerd. Controleer of dat alleen van de tenant-VM's worden weergegeven **repliceren** > **virtuele machines selecteren**.
+1. In de Azure Portal, in de kluis die u eerder hebt gemaakt, registreert u de vCenter-Server bij de configuratie server met behulp van het vCenter-account dat u hebt gemaakt.
+2. Voltooi het proces voor het voorbereiden van de infra structuur voor Site Recovery volgens het gebruikelijke proces.
+3. De virtuele machines zijn nu klaar om te worden gerepliceerd. Controleer of alleen de Vm's van de Tenant worden weer gegeven in **repliceren** > **Selecteer virtuele machines**.
 
 ## <a name="dedicated-hosting-solution"></a>Toegewezen hosting oplossing
 
-Zoals in het volgende diagram wordt weergegeven, is het architectuur verschil in een specifieke oplossing voor hosting van elke tenant infrastructuur is ingesteld voor de tenant alleen.
+Zoals in het volgende diagram wordt weer gegeven, is het verschil tussen de architectuur van een toegewezen hosting oplossing dat de infra structuur van elke Tenant alleen voor die Tenant is ingesteld.
 
-![architectuur-gedeeld-hsp](./media/vmware-azure-multi-tenant-overview/dedicated-hosting-scenario.png)  
-**Scenario met hosting met meerdere vCenters toegewezen**
+![architectuur: Shared-HSP](./media/vmware-azure-multi-tenant-overview/dedicated-hosting-scenario.png)  
+**Toegewijd hosting scenario met meerdere vCenter**
 
-## <a name="managed-service-solution"></a>Beheerde service-oplossing
+## <a name="managed-service-solution"></a>Beheerde service oplossing
 
-Zoals in het volgende diagram wordt weergegeven, is het architectuur verschil in een beheerde service-oplossing van elke tenant infrastructuur is ook fysiek gescheiden is van andere tenants infrastructuur. In dit scenario bestaat meestal wanneer de tenant eigenaar is van de infrastructuur en wil dat de oplossingsprovider van een voor het beheren van herstel na noodgevallen.
+Zoals in het volgende diagram wordt weer gegeven, is het verschil in de architectuur van een beheerde service dat de infra structuur van elke Tenant ook fysiek wordt gescheiden van de infra structuur van andere tenants. Dit scenario bestaat meestal wanneer de Tenant eigenaar is van de infra structuur en wil dat een oplossings provider nood herstel beheert.
 
-![architectuur-gedeeld-hsp](./media/vmware-azure-multi-tenant-overview/managed-service-scenario.png)  
-**Beheerde service-scenario met meerdere vCenters**
+![architectuur: Shared-HSP](./media/vmware-azure-multi-tenant-overview/managed-service-scenario.png)  
+**Beheerd service scenario met meerdere vCenter**
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Meer informatie](site-recovery-role-based-linked-access-control.md) over op rollen gebaseerd toegangsbeheer in Site Recovery.
-- Meer informatie over het [herstel na noodgevallen van virtuele VMware-machines naar Azure instellen](vmware-azure-tutorial.md).
-- Meer informatie over [multitenancy met CSP voor virtuele VMWare-machines](vmware-azure-multi-tenant-csp-disaster-recovery.md).
+- Meer [informatie](site-recovery-role-based-linked-access-control.md) over op rollen gebaseerd toegangs beheer in site Recovery.
+- Meer informatie over het [instellen van herstel na nood gevallen van virtuele VMware-machines in azure](vmware-azure-tutorial.md).
+- Meer informatie over [multitenancy met CSP voor VMware-vm's](vmware-azure-multi-tenant-csp-disaster-recovery.md).

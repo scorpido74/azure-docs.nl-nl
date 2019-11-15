@@ -1,205 +1,203 @@
 ---
-title: Herstel na noodgevallen instellen voor Active Directory en DNS met Azure Site Recovery | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u een oplossing voor noodherstel voor Active Directory en DNS met Azure Site Recovery implementeren.
-services: site-recovery
-documentationcenter: ''
+title: Herstel na nood gevallen met Azure Site Recovery instellen Active Directory/DNS
+description: In dit artikel wordt beschreven hoe u een nood herstel oplossing implementeert voor Active Directory en DNS met Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 58e360bb355c7faf9608b00dd65b14f27aca4367
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c1f85217db12b60cdcd8ea0bdb65792b8d02648
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038719"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084585"
 ---
-# <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Herstel na noodgevallen instellen voor Active Directory en DNS
+# <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Herstel na nood geval instellen voor Active Directory en DNS
 
-Zakelijke toepassingen zoals SharePoint, Dynamics AX en SAP, is afhankelijk van Active Directory en DNS-infrastructuur te laten functioneren. Bij het instellen van herstel na noodgevallen voor toepassingen, moet u vaak herstellen Active Directory en DNS voordat u andere toepassingsonderdelen, om te controleren of de functionaliteit van de juiste toepassing kunt herstellen.
+Zakelijke toepassingen, zoals share point, Dynamics AX en SAP, zijn afhankelijk van Active Directory en een DNS-infra structuur die goed werkt. Wanneer u herstel na nood gevallen instelt voor toepassingen, moet u vaak Active Directory en DNS herstellen voordat u andere toepassings onderdelen herstelt, om ervoor te zorgen dat de functionaliteit van de toepassing correct werkt.
 
-U kunt [Site Recovery](site-recovery-overview.md) te maken van een herstelplan na noodgevallen voor Active Directory. Wanneer een onderbreking optreedt, kunt u een failover starten. U kunt Active Directory van en die worden uitgevoerd in een paar minuten hebben. Als u kunt Active Directory voor meerdere toepassingen hebt geïmplementeerd op de primaire site, bijvoorbeeld kunt voor SharePoint en SAP, u failover uitvoeren voor de volledige site. U kunt eerst een failover Active Directory met behulp van Site Recovery. Failover vervolgens naar de andere toepassingen, met behulp van toepassingsspecifieke herstelplannen.
+U kunt [site Recovery](site-recovery-overview.md) gebruiken om een herstel plan voor nood gevallen voor Active Directory te maken. Als er een onderbreking optreedt, kunt u een failover initiëren. U kunt binnen enkele minuten Active Directory actief zijn. Als u Active Directory hebt geïmplementeerd voor meerdere toepassingen op uw primaire site, bijvoorbeeld voor share point en SAP, wilt u mogelijk een failover uitvoeren voor de volledige site. U kunt een failover uitvoeren voor Active Directory met behulp van Site Recovery. Failover de andere toepassingen vervolgens met behulp van toepassingsspecifieke herstel plannen.
 
-In dit artikel wordt uitgelegd hoe u een oplossing voor noodherstel voor Active Directory maken. Het bevat de vereisten en instructies voor failover. U moet bekend zijn met Active Directory- en Site Recovery voordat u begint.
+In dit artikel wordt uitgelegd hoe u een nood herstel oplossing voor Active Directory maakt. Het bevat vereisten en failover-instructies. Voordat u begint, moet u bekend zijn met Active Directory en Site Recovery.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u naar Azure repliceert, [Azure-resources voorbereiden](tutorial-prepare-azure.md), met inbegrip van een abonnement, een Azure Virtual Network, een storage-account en een Recovery Services-kluis.
+* Als u repliceert naar Azure, [bereidt u Azure-resources](tutorial-prepare-azure.md)voor, met inbegrip van een abonnement, een Azure Virtual Network, een opslag account en een Recovery Services kluis.
 * Raadpleeg de [ondersteuningsvereisten](site-recovery-support-matrix-to-azure.md) voor alle onderdelen.
 
-## <a name="replicate-the-domain-controller"></a>De domeincontroller worden gerepliceerd
+## <a name="replicate-the-domain-controller"></a>De domein controller repliceren
 
-- U moet de replicatie van Site Recovery, op ten minste één virtuele machine die als host fungeert voor een domeincontroller of DNS instellen.
-- Als u meerdere domeincontrollers in uw omgeving hebt, moet u ook instellen van een extra domeincontroller op de doelsite. De extra domeincontroller kan zijn in Azure of in een secundaire on-premises datacenter.
-- Als u slechts een paar toepassingen en één domeincontroller hebt, kunt u een failover wordt uitgevoerd de gehele site. In dit geval wordt u aangeraden Site Recovery voor het repliceren van de domeincontroller met de doelsite (ofwel in Azure of in een secundaire on-premises datacenter). U kunt de dezelfde gerepliceerde domeincontroller of DNS-virtuele machine voor [testfailover](#test-failover-considerations).
-- - Als u veel toepassingen en meer dan één domeincontroller in uw omgeving hebt, of als u van plan bent failover wilt uitvoeren voor enkele toepassingen op een tijdstip, naast het repliceren van de domain controller virtuele machine met Site Recovery, is het raadzaam dat u instelt om een Extra domeincontroller op de doelsite (ofwel in Azure of in een secundaire on-premises datacenter). Voor [testfailover](#test-failover-considerations), kunt u de domeincontroller die gerepliceerd door Site Recovery kunt gebruiken. Voor de failover, kunt u de extra domeincontroller op de doelsite.
+- U moet Site Recovery replicatie instellen op ten minste één virtuele machine die als host fungeert voor een domein controller of DNS.
+- Als u meerdere domein controllers in uw omgeving hebt, moet u ook een extra domein controller op de doel site instellen. De extra domein controller kan zich in azure of in een secundair on-premises Data Center bevindt.
+- Als u slechts een paar toepassingen en één domein controller hebt, wilt u mogelijk een failover uitvoeren voor de hele site tegelijk. In dit geval kunt u het beste Site Recovery gebruiken om de domein controller te repliceren naar de doel site (in azure of in een secundair on-premises Data Center). U kunt dezelfde gerepliceerde domein controller of DNS-virtuele machine gebruiken [voor een testfailover.](#test-failover-considerations)
+- - Als u veel toepassingen en meer dan één domein controller in uw omgeving hebt, of als u van plan bent om een failover uit te voeren voor een aantal toepassingen tegelijk, wordt u aangeraden de virtuele machine van de domein controller te repliceren met Site Recovery, maar u kunt ook het beste een extra domein controller op de doel site (in azure of in een secundair on-premises Data Center). Voor [een testfailover kunt](#test-failover-considerations)u een domein controller gebruiken die wordt gerepliceerd door site Recovery. Voor failover kunt u de extra domein controller op de doel site gebruiken.
 
-## <a name="enable-protection-with-site-recovery"></a>Schakel de beveiliging met Site Recovery
+## <a name="enable-protection-with-site-recovery"></a>Beveiliging met Site Recovery inschakelen
 
-Site Recovery kunt u de virtuele machine die als host fungeert voor de domeincontroller of DNS beveiligen.
+U kunt Site Recovery gebruiken om de virtuele machine te beveiligen die als host fungeert voor de domein controller of DNS.
 
-### <a name="protect-the-vm"></a>De VM te beveiligen
-De domeincontroller die wordt gerepliceerd met behulp van Site Recovery wordt gebruikt voor [testfailover](#test-failover-considerations). Zorg ervoor dat het voldoet aan de volgende vereisten:
+### <a name="protect-the-vm"></a>De virtuele machine beveiligen
+De domein controller die wordt gerepliceerd met behulp van Site Recovery wordt [gebruikt voor de testfailover.](#test-failover-considerations) Zorg ervoor dat het voldoet aan de volgende vereisten:
 
-1. De domeincontroller is een algemene catalogusserver.
-2. De domeincontroller moet de eigenaar van de FSMO-rol voor rollen die nodig zijn tijdens een test-failover. Anders wordt deze rollen moet worden [overgenomen](https://aka.ms/ad_seize_fsmo) na de failover.
+1. De domein controller is een globale catalogus server.
+2. De domein controller moet de eigenaar van de FSMO-rol zijn voor rollen die nodig zijn tijdens een testfailover. Als dat niet het geval is, moeten deze rollen worden [overgenomen](https://aka.ms/ad_seize_fsmo) na de failover.
 
-### <a name="configure-vm-network-settings"></a>VM-netwerkinstellingen configureren
-Voor de virtuele machine die als host fungeert voor de domeincontroller of DNS-server, in Site Recovery, configureert u netwerkinstellingen onder de **berekening en netwerk** instellingen van de gerepliceerde virtuele machine. Dit zorgt ervoor dat de virtuele machine is gekoppeld aan het juiste netwerk na een failover.
+### <a name="configure-vm-network-settings"></a>VM-netwerk instellingen configureren
+Voor de virtuele machine die als host fungeert voor de domein controller of DNS, in Site Recovery netwerk instellingen configureren onder de **berekenings-en netwerk** instellingen van de gerepliceerde virtuele machine. Dit zorgt ervoor dat de virtuele machine na een failover aan het juiste netwerk is gekoppeld.
 
-## <a name="protect-active-directory"></a>Protect Active Directory
+## <a name="protect-active-directory"></a>Active Directory beveiligen
 
 ### <a name="site-to-site-protection"></a>Site-naar-site-beveiliging
-Maak een domeincontroller op de secundaire site. Wanneer u de server naar een domeincontroller promoveert, moet u de naam van het domein dat wordt gebruikt op de primaire site opgeven. U kunt de **Active Directory: Sites en Services** module voor het configureren van instellingen op de site-koppeling-object waaraan de sites worden toegevoegd. Instellingen configureren op een site-koppeling, kunt u bepalen wanneer er replicatie plaatsvindt tussen twee of meer sites, en hoe vaak vindt plaats. Zie voor meer informatie, [replicatie tussen sites plannen](https://technet.microsoft.com/library/cc731862.aspx).
+Maak een domein controller op de secundaire site. Wanneer u de server naar een rol domein controller promo veren, geeft u de naam op van hetzelfde domein dat wordt gebruikt op de primaire site. U kunt de module **Active Directory sites en services** gebruiken om instellingen te configureren voor het site koppelings object waaraan de sites worden toegevoegd. Door instellingen op een site koppeling te configureren, kunt u bepalen wanneer replicatie tussen twee of meer sites plaatsvindt, en hoe vaak deze plaatsvindt. Zie [replicatie plannen tussen sites](https://technet.microsoft.com/library/cc731862.aspx)voor meer informatie.
 
-### <a name="site-to-azure-protection"></a>Site-naar-Azure-beveiliging
-Maak eerst een domeincontroller in een Azure-netwerk. Wanneer u de server naar een domeincontroller promoveert, moet u de dezelfde domeinnaam die wordt gebruikt op de primaire site opgeven.
+### <a name="site-to-azure-protection"></a>Beveiliging van site-naar-Azure
+Maak eerst een domein controller in een virtueel Azure-netwerk. Wanneer u de server naar een rol domein controller promo veren, geeft u dezelfde domein naam op als voor de primaire site.
 
-Configureer vervolgens opnieuw de DNS-server voor het virtuele netwerk voor gebruik van de DNS-server in Azure.
+Configureer vervolgens de DNS-server voor het virtuele netwerk opnieuw voor het gebruik van de DNS-server in Azure.
 
 ![Azure-netwerk](./media/site-recovery-active-directory/azure-network.png)
 
 ### <a name="azure-to-azure-protection"></a>Azure-naar-Azure-beveiliging
-Maak eerst een domeincontroller in een Azure-netwerk. Wanneer u de server naar een domeincontroller promoveert, moet u de dezelfde domeinnaam die wordt gebruikt op de primaire site opgeven.
+Maak eerst een domein controller in een virtueel Azure-netwerk. Wanneer u de server naar een rol domein controller promo veren, geeft u dezelfde domein naam op als voor de primaire site.
 
-Configureer vervolgens opnieuw de DNS-server voor het virtuele netwerk voor gebruik van de DNS-server in Azure.
+Configureer vervolgens de DNS-server voor het virtuele netwerk opnieuw voor het gebruik van de DNS-server in Azure.
 
-## <a name="test-failover-considerations"></a>Testfailover-overwegingen
-Om te voorkomen dat invloed op werkbelastingen voor productie, optreedt test-failover in een netwerk dat is geïsoleerd van het productienetwerk.
+## <a name="test-failover-considerations"></a>Overwegingen voor testfailover
+Om te voor komen dat er gevolgen zijn voor de werk belasting van de productie, treedt er een testfailover op in een netwerk dat is geïsoleerd van het productie netwerk.
 
-De meeste toepassingen vereist de aanwezigheid van een domeincontroller of een DNS-server. Daarom voordat de toepassing een failover uitvoert, moet u een domeincontroller in het geïsoleerde netwerk moet worden gebruikt voor test-failover. De eenvoudigste manier om dit te doen is met Site Recovery voor het repliceren van een virtuele machine die als host fungeert voor een domeincontroller of DNS. Voer een testfailover van de domain controller virtuele machine voordat u een testfailover van het herstelplan te gaan voor de toepassing uitvoert. Hier ziet hoe u dat doen:
+De meeste toepassingen moeten de aanwezigheid van een domein controller of een DNS-server hebben. Daarom moet u voordat de toepassing een failover uitvoeren een domein controller in het geïsoleerde netwerk maken die voor testfailover moet worden gebruikt. De eenvoudigste manier om dit te doen is door Site Recovery te gebruiken voor het repliceren van een virtuele machine die als host fungeert voor een domein controller of DNS. Voer vervolgens een testfailover van de virtuele machine van de domein controller uit voordat u een testfailover uitvoert van het herstel plan voor de toepassing. U doet dit als volgt:
 
-1. Gebruik Site Recovery naar [repliceren](vmware-azure-tutorial.md) de virtuele machine die als host fungeert voor de domeincontroller of DNS.
-2. Maak een geïsoleerd netwerk. Een virtueel netwerk die u in Azure maakt is geïsoleerd van andere netwerken standaard. U wordt aangeraden dat u hetzelfde IP-adresbereik gebruiken voor dit netwerk die u in uw productienetwerk gebruiken. Geen site-naar-site beschikbaar is op dit netwerk inschakelen.
-3. Geef een DNS-IP-adres in het geïsoleerde netwerk. Gebruik het IP-adres dat u verwacht dat de DNS-virtuele machine om op te halen. Als u naar Azure repliceert, geeft u het IP-adres voor de virtuele machine die wordt gebruikt voor failover. In de gerepliceerde virtuele machine, het IP-adres invoeren in de **berekening en netwerk** instellingen, selecteer de **doel-IP** instellingen.
+1. Gebruik Site Recovery om de virtuele machine te [repliceren](vmware-azure-tutorial.md) die als host fungeert voor de domein controller of DNS.
+2. Een geïsoleerd netwerk maken. Elk virtueel netwerk dat u in azure maakt, is standaard geïsoleerd van andere netwerken. U wordt aangeraden hetzelfde IP-adres bereik te gebruiken voor dit netwerk dat u gebruikt in uw productie netwerk. Schakel geen site-naar-site-connectiviteit in op dit netwerk.
+3. Geef een DNS IP-adres op in het geïsoleerde netwerk. Gebruik het IP-adres dat u verwacht dat de virtuele DNS-machine wordt opgehaald. Als u repliceert naar Azure, geeft u het IP-adres op voor de virtuele machine die wordt gebruikt voor failover. Als u het IP-adres wilt invoeren, selecteert u in de **berekening-en netwerk** instellingen van de gerepliceerde virtuele machine de **doel-IP-** instellingen.
 
-    ![Testen met Azure-netwerk](./media/site-recovery-active-directory/azure-test-network.png)
+    ![Azure-test netwerk](./media/site-recovery-active-directory/azure-test-network.png)
 
     > [!TIP]
-    > Site Recovery probeert te maken van virtuele testmachines in een subnet met dezelfde naam en met behulp van de IP-adres dat opgegeven in de **berekening en netwerk** instellingen van de virtuele machine. Als een subnet met dezelfde naam is niet beschikbaar in de Azure-netwerk dat opgegeven voor de testfailover, wordt de virtuele testmachine wordt gemaakt in het alfabet eerste subnet.
+    > Site Recovery probeert virtuele test machines te maken in een subnet met dezelfde naam en met behulp van hetzelfde IP-adres dat is opgenomen in de **reken-en netwerk** instellingen van de virtuele machine. Als een subnet met dezelfde naam niet beschikbaar is in het virtuele netwerk van Azure dat wordt weer gegeven voor testfailover, wordt de virtuele test machine in het alfabetisch eerste subnet gemaakt.
     >
-    > Als het doel-IP-adres deel van het geselecteerde subnet uitmaakt, wordt Site Recovery probeert te maken van de virtuele testmachine van de failover met behulp van de doel-IP-adres. Als het doel-IP-adres maakt geen deel uit van het geselecteerde subnet, worden de virtuele testmachine van de failover wordt gemaakt met behulp van het volgende beschikbare IP-adres in het geselecteerde subnet.
+    > Als het doel-IP-adres deel uitmaakt van het geselecteerde subnet, Site Recovery probeert de virtuele testfailover te maken met behulp van het doel-IP-adres. Als het doel-IP-adres niet deel uitmaakt van het geselecteerde subnet, wordt de virtuele test machine gemaakt met behulp van het volgende beschik bare IP-adres in het geselecteerde subnet.
     >
     >
 
-### <a name="test-failover-to-a-secondary-site"></a>Test-failover naar een secundaire site
+### <a name="test-failover-to-a-secondary-site"></a>Failover naar een secundaire site testen
 
-1. Als u naar een andere on-premises site repliceert en het gebruik van DHCP, [DNS en DHCP-instellen voor test-failover](hyper-v-vmm-test-failover.md#prepare-dhcp).
-2. Voer een failovertest uit van de virtuele machine van de domain controller die wordt uitgevoerd in de geïsoleerde netwerk. Gebruik de meest recente beschikbare *toepassingsconsistent* herstelpunt van de domain controller virtuele machine te doen de testfailover.
-3. Voert een testfailover uit voor het herstelplan bevat virtuele machines die de toepassing wordt uitgevoerd.
-4. Wanneer de test is voltooid, *opschonen van de testfailover* op de virtuele machine van de domain controller. Deze stap worden verwijderd van de domeincontroller die is gemaakt voor test-failover.
-
-
-### <a name="remove-references-to-other-domain-controllers"></a>Verwijzingen naar andere domeincontrollers verwijderen
-Wanneer u een testfailover hebt gestart, niet alle domeincontrollers in het testnetwerk opnemen. Als u wilt verwijderen verwijzingen naar andere domeincontrollers die aanwezig zijn in uw productieomgeving, moet u mogelijk [overnemen van FSMO-Active Directory-rollen](https://aka.ms/ad_seize_fsmo) en [metagegevens opruimen](https://technet.microsoft.com/library/cc816907.aspx) voor domeincontrollers ontbreekt .
+1. Als u repliceert naar een andere on-premises site en u DHCP gebruikt, [stelt u DNS en DHCP in voor](hyper-v-vmm-test-failover.md#prepare-dhcp)de testfailover.
+2. Voer een testfailover uit van de virtuele machine van de domein controller die wordt uitgevoerd in het geïsoleerde netwerk. Gebruik het meest recente beschik bare *toepassings consistente* herstel punt van de virtuele machine van de domein controller om de testfailover uit te voeren.
+3. Voer een testfailover uit voor het herstel plan dat virtuele machines bevat waarop de toepassing wordt uitgevoerd.
+4. Wanneer het testen is voltooid, moet u de testfailover op de virtuele machine van de domein controller *opschonen* . Met deze stap wordt de domein controller verwijderd die is gemaakt voor de testfailover.
 
 
-### <a name="issues-caused-by-virtualization-safeguards"></a>Problemen veroorzaakt door de veiligheidsmaatregelen voor virtualisatie
+### <a name="remove-references-to-other-domain-controllers"></a>Verwijzingen naar andere domein controllers verwijderen
+Wanneer u een testfailover initieert, neemt u niet alle domein controllers op in het test netwerk. Als u verwijzingen naar andere domein controllers die in uw productie omgeving bestaan wilt verwijderen, moet u mogelijk [FSMO-Active Directory rollen overnemen](https://aka.ms/ad_seize_fsmo) en [meta gegevens opruimen](https://technet.microsoft.com/library/cc816907.aspx) voor ontbrekende domein controllers.
+
+
+### <a name="issues-caused-by-virtualization-safeguards"></a>Problemen die worden veroorzaakt door veiligheids maatregelen voor virtualisatie
 
 > [!IMPORTANT]
-> Enkele van de configuraties die worden beschreven in deze sectie zijn niet standaard configuraties met een domeincontroller. Als u niet dat deze wijzigingen aanbrengen in een productie-domeincontroller wilt, kunt u een domeincontroller die toegewezen voor Site Recovery te gebruiken voor test-failover. Deze alleen wijzigingen aanbrengen op die domeincontroller.  
+> Enkele van de configuraties die in deze sectie worden beschreven, zijn geen standaard configuraties voor domein controllers. Als u deze wijzigingen niet wilt aanbrengen in een productie domein controller, kunt u een domein controller maken die is toegewezen voor Site Recovery voor het gebruik van een testfailover. Breng deze wijzigingen alleen aan in die domein controller.  
 >
 >
 
-Vanaf Windows Server 2012, [extra veiligheidsmaatregelen zijn ingebouwd in Active Directory Domain Services (AD DS)](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Met deze beveiligingen bescherming van gevirtualiseerde domeincontrollers op basis van USN-terugdraaiacties als de onderliggende hypervisor-platform ondersteunt **VM-GenerationID**. Azure ondersteunt **VM-GenerationID**. Domeincontrollers met Windows Server 2012 of later op Azure virtuele machines hebben als gevolg hiervan, deze aanvullende veiligheidsmaatregelen nemen.
+Vanaf Windows Server 2012 [zijn extra beveiligingen ingebouwd in Active Directory Domain Services (AD DS)](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Met deze beveiligings maatregelen kunt u gevirtualiseerde domein controllers beveiligen tegen USN-terugdraai acties als het onderliggende Hyper Visor platform **VM-GenerationID**ondersteunt. Azure biedt ondersteuning voor **VM-GenerationID**. Daarom hebben domein controllers met Windows Server 2012 of hoger op virtuele machines van Azure deze extra beveiliging.
 
 
-Wanneer **VM-GenerationID** opnieuw wordt ingesteld, de **InvocationID** waarde van de AD DS-database is ook opnieuw instellen. Bovendien de RID-groep is verwijderd en sysvol-map is gemarkeerd als niet-bindende. Zie voor meer informatie, [Inleiding tot virtualisatie van Active Directory Domain Services](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) en [veilig virtualiseren DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
+Wanneer de **VM-GenerationID** opnieuw wordt ingesteld, wordt de **InvocationID** -waarde van de AD DS data base ook opnieuw ingesteld. Daarnaast wordt de RID-groep verwijderd en wordt de map SYSVOL gemarkeerd als niet-gemachtigd. Zie [Inleiding tot Active Directory Domain Services virtualisatie en het](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) [veilig virtualiseren van DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/)voor meer informatie.
 
-Failover wordt uitgevoerd naar Azure kan leiden tot **VM-GenerationID** opnieuw in te stellen. Opnieuw instellen van **VM-GenerationID** aanvullende veiligheidsmaatregelen nemen wordt geactiveerd wanneer de domain controller virtuele machine wordt gestart in Azure. Dit kan leiden tot een *aanzienlijke vertraging* kunt aanmelden bij de virtuele machine van de domain controller.
+Failover naar Azure kan ertoe leiden dat **VM-GenerationID** opnieuw wordt ingesteld. Als u de virtuele machine opnieuw instelt, worden er extra beveiligingen geactiveerd wanneer de domein controller **-** VM wordt gestart in Azure. Dit kan leiden tot een *aanzienlijke vertraging* in de mogelijkheid om u aan te melden bij de virtuele machine van de domein controller.
 
-Omdat deze domeincontroller alleen in een test-failover gebruikt wordt, veiligheidsmaatregelen voor virtualisatie niet noodzakelijk. Om ervoor te zorgen dat de **VM-GenerationID** waarde voor de virtuele machine van de domain controller niet wijzigen, kunt u de waarde van de volgende DWORD naar **4** in de lokale domeincontroller:
+Omdat deze domein controller alleen wordt gebruikt in een testfailover, zijn er geen veiligheids maatregelen voor virtualisatie nodig. Om ervoor te zorgen dat de **VM-GenerationID-** waarde voor de virtuele machine van de domein controller niet verandert, kunt u de waarde van de volgende DWORD wijzigen in **4** op de on-premises domein controller:
 
 
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gencounter\Start`
 
 
-#### <a name="symptoms-of-virtualization-safeguards"></a>Symptomen van veiligheidsmaatregelen voor virtualisatie
+#### <a name="symptoms-of-virtualization-safeguards"></a>Symptomen van de beveiliging van virtualisatie
 
-Als de virtualisatiebeveiliging geactiveerd na een testfailover, ziet u mogelijk een of meer van de volgende symptomen:  
+Als de beveiliging van de virtualisatie wordt geactiveerd na een testfailover, ziet u mogelijk een of meer van de volgende symptomen:  
 
-* De **GenerationID** waarde wijzigingen.
+* De waarde van **GenerationID** wordt gewijzigd.
 
     ![Wijziging van generatie-ID](./media/site-recovery-active-directory/Event2170.png)
 
-* De **InvocationID** waarde wijzigingen.
+* De waarde van **InvocationID** wordt gewijzigd.
 
-    ![Wijziging van de aanroep-ID](./media/site-recovery-active-directory/Event1109.png)
+    ![Wijziging van aanroepen-ID](./media/site-recovery-active-directory/Event1109.png)
 
-* Map SYSVOL en NETLOGON-shares zijn niet beschikbaar.
+* SYSVOL-map en NETLOGON-shares zijn niet beschikbaar.
 
-    ![Sysvol-map delen](./media/site-recovery-active-directory/sysvolshare.png)
+    ![Share SYSVOL-map](./media/site-recovery-active-directory/sysvolshare.png)
 
-    ![NtFrs sysvol-map](./media/site-recovery-active-directory/Event13565.png)
+    ![Map NtFrs SYSVOL](./media/site-recovery-active-directory/Event13565.png)
 
-* DFSR-databases worden verwijderd.
+* DFSR-data bases worden verwijderd.
 
-    ![DFSR-databases zijn verwijderd](./media/site-recovery-active-directory/Event2208.png)
+    ![DFSR-data bases zijn verwijderd](./media/site-recovery-active-directory/Event2208.png)
 
 
-### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Domeincontroller oplossen tijdens de testfailover oplossen
+### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Problemen met de domein controller oplossen tijdens een testfailover
 
 > [!IMPORTANT]
-> Sommige van de configuraties die worden beschreven in deze sectie zijn niet standaard configuraties met een domeincontroller. Als u niet dat deze wijzigingen aanbrengen in een productie-domeincontroller wilt, kunt u een domeincontroller die toegewezen voor Site Recovery-test-failover. Breng de wijzigingen alleen voor die specifieke domeincontroller.  
+> Enkele van de configuraties die in deze sectie worden beschreven, zijn geen standaard configuraties voor domein controllers. Als u deze wijzigingen niet wilt aanbrengen in een productie domein controller, kunt u een domein controller maken die is toegewezen voor Site Recovery testfailover. Breng de gewenste wijzigingen aan in die specifieke domein controller.  
 >
 >
 
-1. Voer bij de opdrachtprompt de volgende opdracht om te controleren of de map sysvol en NETLOGON-map worden gedeeld:
+1. Voer bij de opdracht prompt de volgende opdracht uit om te controleren of de map SYSVOL en NETLOGON worden gedeeld:
 
     `NET SHARE`
 
-2. Voer de volgende opdracht uit om ervoor te zorgen dat de domeincontroller goed werkt bij de opdrachtprompt:
+2. Voer bij de opdracht prompt de volgende opdracht uit om ervoor te zorgen dat de domein controller goed werkt:
 
     `dcdiag /v > dcdiag.txt`
 
-3. Zoek de volgende tekst in het uitvoerlogboek voor. De tekst wordt bevestigd dat de domeincontroller correct werkt.
+3. Zoek in het uitvoer logboek naar de volgende tekst. De tekst bevestigt dat de domein controller goed werkt.
 
-    * "doorgegeven test connectiviteit"
-    * "doorgegeven test reclame"
-    * "doorgegeven test MachineAccount"
+    * geslaagde test connectiviteit
+    * "geslaagde test advertenties"
+    * "test MachineAccount geslaagd"
 
-Als de vorige voorwaarden wordt voldaan, is het waarschijnlijk dat de domeincontroller correct werkt. Als dat niet het geval is, kunt u de volgende stappen:
+Als aan de voor waarden wordt voldaan, is het waarschijnlijk dat de domein controller goed werkt. Als dat niet het geval is, voert u de volgende stappen uit:
 
-1. Voer een terugzetbewerking van de domeincontroller. Houd rekening met de volgende informatie:
-    * Hoewel u kunt beter geen [FRS-replicatie](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), als u FRS-replicatie, volgt u de stappen voor een bindende terugzetbewerking. Het proces wordt beschreven in [met behulp van de registersleutel BurFlags om opnieuw te initialiseren van File Replication-Service](https://support.microsoft.com/kb/290762).
+1. Een bindende terugzet bewerking uitvoeren voor de domein controller. Houd de volgende informatie in acht:
+    * Hoewel we geen [FRS-replicatie](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/)aanraden, kunt u, als u FRS-replicatie gebruikt, de stappen voor een bindende terugzet bewerking volgen. Het proces wordt beschreven in [met behulp van de register sleutel BurFlags om de File Replication-service opnieuw te initialiseren](https://support.microsoft.com/kb/290762).
 
-        Zie het blogbericht voor meer informatie over BurFlags [D2 en D4: Wat is het voor? ](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
-    * Als u replicatie voor DFS-replicatie gebruikt, moet u de stappen voor een bindende terugzetbewerking uitvoeren. Het proces wordt beschreven in [een bindende en niet-bindende synchronisatie van DFSR gerepliceerd sysvol-map (zoals ' D4/D2' voor FRS) afdwingen](https://support.microsoft.com/kb/2218556).
+        Zie voor meer informatie over BurFlags het blog bericht [D2 en D4: wat is het voor?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
+    * Als u DFSR-replicatie gebruikt, voltooit u de stappen voor een bindende terugzet bewerking. Het proces wordt beschreven in [een bindende en niet-bindende synchronisatie afdwingen voor de DFSR-gerepliceerde SYSVOL-map (zoals "D4/D2" voor FRS)](https://support.microsoft.com/kb/2218556).
 
-        U kunt ook de PowerShell-functies gebruiken. Zie voor meer informatie, [DFSR-SYSVOL gezaghebbende/niet-bindende terugzetbewerking PowerShell functies](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
+        U kunt ook de Power shell-functies gebruiken. Zie voor meer informatie [DFSR-SYSVOL gezaghebbend/niet-bindende terugzet Power shell-functies](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
 
-2. De initiële synchronisatie-vereiste omzeilen door de volgende registersleutel in te stellen **0** in de lokale domeincontroller. Als de DWORD-waarde niet bestaat, kunt u deze onder de **Parameters** knooppunt.
+2. U kunt de eerste synchronisatie vereiste overs Laan door de volgende register sleutel in te stellen op **0** in de on-premises domein controller. Als de DWORD niet bestaat, kunt u deze maken onder het knoop punt **para meters** .
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
-    Zie voor meer informatie, [oplossen van DNS-gebeurtenis-ID 4013: De DNS-server kan niet worden geladen is AD geïntegreerde DNS-zones](https://support.microsoft.com/kb/2001093).
+    Zie voor meer informatie [problemen met de DNS-gebeurtenis-ID 4013 oplossen: de DNS-server kan AD geïntegreerde DNS-zones niet laden](https://support.microsoft.com/kb/2001093).
 
-3. De vereiste dat een globale-catalogusserver beschikbaar zijn voor het valideren van de gebruikersaanmelding uitschakelen. Om dit te doen, in de on-premises domeincontroller, kunt u de volgende registersleutel instellen op **1**. Als de DWORD-waarde niet bestaat, kunt u deze onder de **Lsa** knooppunt.
+3. De vereiste uitschakelen dat een globale catalogus server beschikbaar is voor het valideren van de aanmelding van de gebruiker. Om dit te doen, stelt u op de on-premises domein controller de volgende register sleutel in op **1**. Als de DWORD niet bestaat, kunt u deze maken onder het **LSA** -knoop punt.
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
-    Zie voor meer informatie, [uitschakelen van de vereiste dat een globale-catalogusserver beschikbaar zijn voor het valideren van gebruikersaanmeldingen](https://support.microsoft.com/kb/241789).
+    Zie [de vereiste uitschakelen dat een globale-catalogus server beschikbaar is voor het valideren van gebruikers aanmeldingen](https://support.microsoft.com/kb/241789)voor meer informatie.
 
-### <a name="dns-and-domain-controller-on-different-machines"></a>DNS- en domeincontroller op verschillende computers
+### <a name="dns-and-domain-controller-on-different-machines"></a>DNS en domein controller op verschillende computers
 
-Als u de domeincontroller en DNs op dezelfde virtuele machine, kunt u deze procedure overslaan.
+Als u de domein controller en DNs op dezelfde VM uitvoert, kunt u deze procedure overs Laan.
 
 
-Als DNS bevindt zich niet op dezelfde virtuele machine als de domeincontroller, moet u een DNS-VM voor de testfailover maken. U kunt een nieuwe DNS-server gebruiken en de vereiste zones maken. Als uw Active Directory-domein contoso.com is, kunt u bijvoorbeeld een DNS-zone maken met de naam contoso.com. De items die overeenkomen met de Active Directory moeten worden bijgewerkt in DNS als volgt:
+Als DNS zich niet op dezelfde VM bevindt als de domein controller, moet u een DNS-VM maken voor de testfailover. U kunt een nieuwe DNS-server gebruiken en alle vereiste zones maken. Als uw Active Directory domein bijvoorbeeld contoso.com is, kunt u een DNS-zone maken met de naam contoso.com. De vermeldingen die overeenkomen met Active Directory moeten als volgt in DNS worden bijgewerkt:
 
-1. Zorg ervoor dat deze instellingen voldaan is voordat een andere virtuele machine in het herstelplan wordt gestart:
-   * De zone moet de naam achter de naam van de hoofdmap forest.
-   * De zone moet bestandsondersteuning.
-   * De zone moet worden ingeschakeld voor veilige en niet beveiligde updates.
-   * De conflictoplosser van de virtuele machine die als host fungeert voor de domeincontroller moet verwijzen naar het IP-adres van de DNS-virtuele machine.
+1. Zorg ervoor dat deze instellingen aanwezig zijn voordat een andere virtuele machine in het herstel plan wordt gestart:
+   * De zone moet de naam van de hoofd naam van het forest hebben.
+   * De zone moet worden ondersteund door een bestand.
+   * De zone moet zijn ingeschakeld voor beveiligde en niet-beveiligde updates.
+   * De resolver van de virtuele machine die als host fungeert voor de domein controller moet verwijzen naar het IP-adres van de virtuele DNS-machine.
 
-2. Voer de volgende opdracht uit op de virtuele machine die als host fungeert voor de domeincontroller:
+2. Voer de volgende opdracht uit op de VM die als host fungeert voor de domein controller:
 
     `nltest /dsregdns`
 
-3. Voer de volgende opdrachten voor het toevoegen van een zone op de DNS-server en een vermelding voor de zone toevoegen aan DNS niet-beveiligde updates toestaan:
+3. Voer de volgende opdrachten uit om een zone toe te voegen aan de DNS-server, niet-beveiligde updates toe te staan en een vermelding voor de zone toe te voegen aan DNS:
 
     `dnscmd /zoneadd contoso.com  /Primary`
 
@@ -210,4 +208,4 @@ Als DNS bevindt zich niet op dezelfde virtuele machine als de domeincontroller, 
     `dnscmd /config contoso.com /allowupdate 1`
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [enterprise werklasten beveiligen met Azure Site Recovery](site-recovery-workload.md).
+Meer informatie over het [beveiligen van zakelijke workloads met Azure site Recovery](site-recovery-workload.md).

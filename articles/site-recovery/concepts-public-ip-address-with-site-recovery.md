@@ -1,6 +1,6 @@
 ---
-title: Openbare IP-adressen gebruiken na een failover met Azure Site Recovery | Microsoft Docs
-description: Beschrijft hoe u voor het instellen van openbare IP-adressen met Azure Site Recovery en Azure Traffic Manager voor de migratie en herstel na noodgevallen
+title: Open bare IP-adressen toewijzen na een failover met Azure Site Recovery
+description: Hierin wordt beschreven hoe u open bare IP-adressen instelt met Azure Site Recovery en Azure Traffic Manager voor herstel na nood gevallen en migratie
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -8,52 +8,52 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 1f20818f0b899eede9fff05d71e98c8bffb94b0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1f3ffa6fc90fc0cab0217d1b71907342f2dbd0d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101936"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084239"
 ---
-# <a name="set-up-public-ip-addresses-after-failover"></a>Openbare IP-adressen instellen na een failover
+# <a name="set-up-public-ip-addresses-after-failover"></a>Open bare IP-adressen instellen na failover
 
 Door openbare IP-adressen te gebruiken, zijn internetbronnen in staat inkomende communicatie voor Azure-resources te verwerken. Openbare IP-adressen maken het ook mogelijk dat Azure-resources uitgaande communicatie naar internet en openbare Azure-services kunnen afhandelen via een IP-adres dat is toegewezen aan de resource.
-- Binnenkomende communicatie via Internet tot de resource, zoals Azure Virtual Machines (VM), Application Gateways voor Azure, Azure Load Balancers, Azure VPN-Gateways en anderen. U kunt nog steeds met de communiceren met enkele resources, zoals virtuele machines, via Internet, als een virtuele machine geen openbaar IP-adres toegewezen, als de virtuele machine deel uit van een back-end-pool van load balancer maakt, en de load balancer een openbaar IP-adres wordt toegewezen.
-- Uitgaande verbinding met Internet via een voorspelbare IP-adres. Een virtuele machine kan bijvoorbeeld communiceren uitgaand naar het Internet zonder een openbaar IP-adres toegewezen aan deze, maar het adres is vertaald door Azure op een onvoorspelbare openbare adres, standaard-netwerkadres. Een openbaar IP-adres toewijzen aan een resource, kunt u weten welk IP-adres wordt gebruikt voor de uitgaande verbindingen. Hoewel voorspelbare, kunt het adres wijzigen, afhankelijk van de gekozen methode voor het toewijzen. Zie voor meer informatie, [een openbaar IP-adres maken](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address). Zie voor meer informatie over uitgaande verbindingen van Azure-resources, [uitleg over uitgaande verbindingen](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Inkomende communicatie van het internet naar de resource, zoals Azure Virtual Machines (VM), Azure-toepassing gateways, Azure load balancers, Azure VPN-gateways en anderen. U kunt nog steeds communiceren met sommige resources, zoals Vm's, van het Internet, als aan een virtuele machine geen openbaar IP-adres is toegewezen, mits de virtuele machine deel uitmaakt van een load balancer back-end-pool en aan de load balancer een openbaar IP-adres is toegewezen.
+- Uitgaande verbinding met internet met behulp van een voorspelbaar IP-adres. Een virtuele machine kan bijvoorbeeld uitgaand verkeer naar Internet communiceren zonder dat hieraan een openbaar IP-adres is toegewezen, maar het adres is standaard het netwerk adres dat door Azure wordt vertaald naar een onvoorspelbaar openbaar adres. Door een openbaar IP-adres toe te wijzen aan een resource kunt u bepalen welk IP-adres wordt gebruikt voor de uitgaande verbinding. Het adres kan echter wel worden gewijzigd, afhankelijk van de gekozen toewijzings methode. Zie [een openbaar IP-adres maken](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)voor meer informatie. Zie [begrijpen van uitgaande verbindingen](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over uitgaande verbindingen van Azure-resources.
 
-In Azure Resource Manager, een openbaar IP-adres is een resource die zijn eigen eigenschappen heeft. U kunt sommige resources aan een openbare IP-adresresource koppelen, zoals:
+In Azure Resource Manager is een openbaar IP-adres een bron met eigen eigenschappen. U kunt sommige resources aan een openbare IP-adresresource koppelen, zoals:
 
 * Netwerkinterfaces van virtuele machines
 * Internetgerichte load balancers
 * VPN-gateways
 * Toepassingsgateways
 
-Dit artikel wordt beschreven hoe u openbare IP-adressen met Site Recovery kunt gebruiken.
+In dit artikel wordt beschreven hoe u open bare IP-adressen kunt gebruiken met Site Recovery.
 
-## <a name="public-ip-address-assignment-using-recovery-plan"></a>Openbare IP-adrestoewijzing met behulp van het herstelplan
+## <a name="public-ip-address-assignment-using-recovery-plan"></a>Toewijzing van openbaar IP-adres met herstel plan
 
-Openbare IP-adres van de productietoepassing **kunnen niet worden behouden bij failover**. Workloads naar gebracht als onderdeel van failover-proces moet een openbaar IP-Azure-resource beschikbaar in de doelregio worden toegewezen. Deze stap kan worden gedaan handmatig of met herstelplannen is geautomatiseerd. Een herstelplan verzamelt machines in herstelgroepen. Hiermee kunt u voor het definiëren van een systematische herstelproces. U kunt een plan voor herstel gebruiken om op te leggen volgorde, en de acties die nodig zijn bij elke stap automatiseren met behulp van Azure Automation-runbooks voor failover naar Azure of scripts.
+Het open bare IP-adres van de productie toepassing **kan niet worden bewaard tijdens de failover**. Werk belastingen die worden geladen als onderdeel van het failoverproces, moeten een open bare Azure IP-resource toewijzen die beschikbaar is in de doel regio. Deze stap kan hand matig worden uitgevoerd of wordt geautomatiseerd met herstel plannen. Met een herstel plan worden computers in herstel groepen verzameld. U kunt hiermee een systematisch herstel proces definiëren. U kunt een herstel plan gebruiken om een order in te stellen en de acties te automatiseren die nodig zijn bij elke stap, met Azure Automation runbooks voor failover naar Azure of scripts.
 
 De installatie is als volgt:
-- Maak een [herstelplan](../site-recovery/site-recovery-create-recovery-plans.md#create-a-recovery-plan) en groeperen van uw workloads zo nodig in het plan.
-- Het plan aanpassen door het toevoegen van een stap voor het koppelen van een openbare IP-adres met [Azure Automation-runbooks](../site-recovery/site-recovery-runbook-automation.md#customize-the-recovery-plan) scripts na een failover via virtuele machine.
+- Maak een [herstel plan](../site-recovery/site-recovery-create-recovery-plans.md#create-a-recovery-plan) en groepeer zo nodig uw werk belastingen in het plan.
+- Pas het plan aan door een stap toe te voegen om een openbaar IP-adres toe te voegen met [Azure Automation runbooks](../site-recovery/site-recovery-runbook-automation.md#customize-the-recovery-plan) -scripts aan de virtuele machine waarvoor een failover is uitgevoerd.
 
  
-## <a name="public-endpoint-switching-with-dns-level-routing"></a>Openbaar eindpunt overschakelen met DNS-niveau routering
+## <a name="public-endpoint-switching-with-dns-level-routing"></a>Open bare eindpunt wisseling met DNS-niveau routering
 
-Met Azure Traffic Manager kunnen DNS-niveau routering tussen de eindpunten en kunnen u helpen bij [waardoor uw RTO's](../site-recovery/concepts-traffic-manager-with-site-recovery.md#recovery-time-objective-rto-considerations) voor herstel na noodgevallen. 
+Azure Traffic Manager maakt route ring op DNS-niveau tussen eind punten mogelijk en kan u helpen bij [het rto's](../site-recovery/concepts-traffic-manager-with-site-recovery.md#recovery-time-objective-rto-considerations) van een Dr-scenario. 
 
 Meer informatie over failover-scenario's met Traffic Manager:
-1. [On-premises naar Azure failover](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) met Traffic Manager 
-2. [Azure naar Azure failover](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) met Traffic Manager 
+1. [Failover van on-premises naar Azure](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) met Traffic Manager 
+2. [Failover van Azure naar Azure](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) met Traffic Manager 
 
 De installatie is als volgt:
-- Maak een [Traffic Manager-profiel](../traffic-manager/traffic-manager-create-profile.md).
-- Met behulp van de **prioriteit** routeringsmethode maakt twee eindpunten: **primaire** voor bron en **Failover** voor Azure. **Primaire** prioriteit 1 is toegewezen en **Failover** prioriteit 2 is toegewezen.
-- De **primaire** eindpunt mag [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) of [externe](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) afhankelijk van of uw bronomgeving binnen of buiten Azure.
-- De **Failover** -eindpunt is gemaakt als een **Azure** eindpunt. Gebruik een **statisch openbaar IP-adres** zoals dit gestart worden externe internetgerichte eindpunt voor Traffic Manager in de gebeurtenis na noodgevallen.
+- Maak een [Traffic Manager profiel](../traffic-manager/traffic-manager-create-profile.md).
+- Met de routerings methode **prioriteit** maakt u twee eind punten – **primair** voor de bron en **failover** voor Azure. **Primaire** is toegewezen aan prioriteit 1 en **failover** krijgt prioriteit 2.
+- Het **primaire** eind punt kan [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) of [extern](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) zijn, afhankelijk van het feit of uw bron omgeving zich binnen of buiten Azure bevindt.
+- Het **failover** -eind punt wordt gemaakt als een **Azure** -eind punt. Gebruik een **statisch openbaar IP-adres** omdat dit een extern Facing-eind punt is voor Traffic manager in de nood geval.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [Traffic Manager met Azure Site Recovery](../site-recovery/concepts-traffic-manager-with-site-recovery.md)
-- Meer informatie over Traffic Manager [routeringsmethoden](../traffic-manager/traffic-manager-routing-methods.md).
-- Meer informatie over [herstelplannen](site-recovery-create-recovery-plans.md) toepassing failover wilt automatiseren.
+- Meer informatie over [Traffic Manager met Azure site Recovery](../site-recovery/concepts-traffic-manager-with-site-recovery.md)
+- Meer informatie over Traffic Manager [routerings methoden](../traffic-manager/traffic-manager-routing-methods.md).
+- Meer informatie over [herstel plannen](site-recovery-create-recovery-plans.md) voor het automatiseren van de failover van de toepassing.

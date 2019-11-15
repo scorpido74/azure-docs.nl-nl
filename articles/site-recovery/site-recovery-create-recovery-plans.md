@@ -1,18 +1,18 @@
 ---
-title: Herstel plannen maken en aanpassen voor nood herstel met behulp van Azure Site Recovery
+title: Herstel plannen maken/aanpassen in Azure Site Recovery
 description: Meer informatie over het maken en aanpassen van herstel plannen voor herstel na nood gevallen met behulp van de Azure Site Recovery-service.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 2ca44ffd26e1b87dd201ed6f274791eadfeb0737
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9bb5a1a3aa0c2a4681ddecb5e20df41d481755ec
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814399"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084508"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Herstel plannen maken en aanpassen
 
@@ -52,7 +52,7 @@ U maakt extra groepen en voegt machines toe aan verschillende groepen, zodat u p
 
 ## <a name="add-a-script-or-manual-action"></a>Een script of hand matige actie toevoegen
 
-U kunt een herstel plan aanpassen door een script of hand matige actie toe te voegen. Houd rekening met het volgende:
+U kunt een herstel plan aanpassen door een script of hand matige actie toe te voegen. Opmerking:
 
 - Als u repliceert naar Azure, kunt u Azure Automation-runbooks integreren in uw herstel plan. [Meer informatie](site-recovery-runbook-automation.md).
 - Als u virtuele Hyper-V-machines repliceert die worden beheerd door System Center VMM, kunt u een script maken op de on-premises VMM-server en dit toevoegen aan het herstel plan.
@@ -77,7 +77,7 @@ U kunt een herstel plan aanpassen door een script of hand matige actie toe te vo
     1. Typ een naam voor de actie en voer de actie-instructies in. De persoon die de failover uitvoert, ziet deze instructies.
     1. Geef op of u de hand matige actie wilt toevoegen voor alle typen failover (testen, failover, geplande failover (indien van toepassing)). Klik vervolgens op **OK**.
 4. Als u een script wilt toevoegen, gaat u als volgt te werk:
-    1. Als u een VMM-script wilt toevoegen, selecteert u **failover naar VMM-script**en typt u bij **pad naar script** het relatieve pad naar de share. Als de share zich bijvoorbeeld bevindt op \\ \<VMMServerName > \MSSCVMMLibrary\RPScripts, geeft u het pad op: \RPScripts\RPScript.ps1.
+    1. Als u een VMM-script wilt toevoegen, selecteert u **failover naar VMM-script**en typt u bij **pad naar script** het relatieve pad naar de share. Als de share zich bijvoorbeeld bevindt op \\\<VMMServerName > \MSSCVMMLibrary\RPScripts, geeft u het pad op: \RPScripts\RPScript.PS1.
     1. Als u een Azure Automation-boek wilt toevoegen, geeft u het **Azure Automation account** op waarin het runbook zich bevindt en selecteert u het juiste **Azure-runbook-script**.
 5. Voer een testfailover van het herstel plan uit om ervoor te zorgen dat het script werkt zoals verwacht.
 

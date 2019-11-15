@@ -1,5 +1,5 @@
 ---
-title: Quick start voor Azure C# IOT hub Device streams voor SSH en RDP (preview) | Microsoft Docs
+title: Quick start voor Azure C# IOT hub Device streams voor SSH en RDP
 description: In deze Quick Start voert u twee voorbeeld C# toepassingen uit die ssh-en RDP-scenario's voor een IOT hub apparaat stroom mogelijk maken.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: d84a20a554308e1705c304a18062a4a1d762a72b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d131e0112070dcc60e601b2859e8c9df8d40764a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901435"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084353"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Quick Start: SSH en RDP via een IoT Hub Device stream inschakelen met behulp van een C# proxy toepassing (preview-versie)
 
@@ -26,7 +26,7 @@ Microsoft Azure IoT Hub biedt momenteel ondersteuning voor het streamen van appa
 
 In dit artikel wordt eerst de installatie van SSH (met behulp van poort 22) beschreven en wordt beschreven hoe u de installatie poort van RDP wijzigt. Omdat apparaatversleuteling een toepassings-en protocol-neutraal zijn, kan hetzelfde voor beeld worden gewijzigd om andere soorten toepassings verkeer te kunnen verwerken. Bij deze wijziging wordt doorgaans alleen de communicatie poort gewijzigd die wordt gebruikt door de beoogde toepassing.
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>Hoe werkt het?
 
 In de volgende afbeelding ziet u hoe de lokale en service-Local proxy toepassingen in dit voor beeld end-to-end-connectiviteit mogelijk maken tussen de SSH-client en SSH-daemon-processen. We gaan ervan uit dat de daemon wordt uitgevoerd op hetzelfde apparaat als de toepassing voor de lokale proxy van het apparaat.
 
@@ -51,7 +51,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 * De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
 
-  * VS - centraal
+  * US - centraal
   * Centrale VS-EUAP
   * Azië - zuidoost
   * Europa - noord
@@ -190,7 +190,7 @@ Console-uitvoer aan de service zijde (de service-Local proxy-toepassing luistert
 
 ![Service-lokale uitvoer van proxy toepassing](./media/quickstart-device-streams-proxy-csharp/service-console-output.png)
 
-Console-uitvoer op de apparaat-Local proxy toepassing, die verbinding maakt met de SSH-daemon op IP-nummer *: 22*:
+Console-uitvoer op de apparaat-lokale proxy toepassing, die verbinding maakt met de SSH-daemon op *iP_address: 22*:
 
 ![Apparaat-lokale proxy toepassing uitvoer](./media/quickstart-device-streams-proxy-csharp/device-console-output.png)
 

@@ -1,5 +1,5 @@
 ---
-title: De configuratie server voor VMware-nood herstel implementeren met Azure Site Recovery | Microsoft Docs
+title: De configuratie server in Azure Site Recovery implementeren
 description: In dit artikel wordt beschreven hoe u een configuratie server implementeert voor VMware-nood herstel met Azure Site Recovery
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 92b51b3955833bac6f87457a19e4d6359600a25a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f2e9387af3c5922ec5eb0dded3d0d1d4bcee6a01
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747865"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084148"
 ---
 # <a name="deploy-a-configuration-server"></a>Een configuratieserver implementeren
 
@@ -79,7 +79,7 @@ U moet een gebruiker hebben met een van de volgende machtigingen die zijn ingest
 8. In **Klaar om te voltooien** doet u het volgende:
 
     * Selecteer **Inschakelen na de implementatie** > **Voltooien** om de VM in te stellen met de standaardinstellingen.
-    * Als u een extra netwerk interface wilt toevoegen, schakelt u het selectie vakje **na de implementatie**uit en selecteert u vervolgens **volt ooien**. Standaard wordt de configuratieserversjabloon met één NIC geïmplementeerd. Na de implementatie kunt u meer NIC’s toevoegen.
+    * Als u wilt toevoegen een extra netwerkinterface, schakelt u **inschakelen na de implementatie**, en selecteer vervolgens **voltooien**. Standaard wordt de configuratieserversjabloon met één NIC geïmplementeerd. Na de implementatie kunt u meer NIC’s toevoegen.
 
 > [!IMPORTANT]
 > Wijzig geen resource configuraties, zoals geheugen, kernen en CPU-beperkingen, of wijzig of verwijder geïnstalleerde services of bestanden op de configuratie server na de implementatie. Deze typen wijzigingen zijn van invloed op de registratie van de configuratie server met Azure-Services en de prestaties van de configuratie server.

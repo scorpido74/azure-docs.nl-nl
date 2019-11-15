@@ -1,5 +1,5 @@
 ---
-title: 'Circuit configuratie werk stromen-ExpressRoute: Azure| Microsoft Docs'
+title: 'Azure ExpressRoute: werk stromen voor circuit configuratie'
 description: Deze pagina bevat de werkstromen voor het configureren van ExpressRoute-circuit en -peerings
 services: expressroute
 author: cherylmc
@@ -7,15 +7,14 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 1e0f4d356bb6addf735bf148a80e6be3ca550c8f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ae6c2b7257ee6a8184f3a5bb002f24cb75a86d67
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123385"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083327"
 ---
-# <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute-werkstromen voor circuitinrichting en -statussen
+# <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute-werkstromen voor circuitinrichting en circuittoestanden
 Deze pagina vindt u de inrichting en configuratie van werkstromen op hoog niveau routering-service.
 
 ![circuit-werkstroom](./media/expressroute-workflows/expressroute-circuit-workflow.png)

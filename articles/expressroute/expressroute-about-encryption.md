@@ -1,5 +1,5 @@
 ---
-title: Over versleuteling-Azure ExpressRoute | Microsoft Docs
+title: 'Azure ExpressRoute: over versleuteling'
 description: Meer informatie over ExpressRoute-versleuteling.
 services: expressroute
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: b452fccf2ae0915592420bdda3a47fef43eba9a8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b8e9748360b22cd1c693b2c601024c0824ffb483
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72788698"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083610"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute-versleuteling
  

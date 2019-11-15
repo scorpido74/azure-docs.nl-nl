@@ -1,19 +1,18 @@
 ---
-title: Azure Site Recovery probleem oplossing voor Azure-naar-Azure-replicatie fouten | Microsoft Docs
+title: Problemen met Azure VM-replicatie in Azure Site Recovery oplossen
 description: Los fouten op bij het repliceren van virtuele Azure-machines voor herstel na nood gevallen.
-services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: asgang
-ms.openlocfilehash: baf7a21d04e8f9bcf86c67abde302a558dfba01c
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: b3c459c0eaac98a1cb704b4346153f77ec974188
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910385"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084930"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Replicatie fouten van Azure naar Azure-VM oplossen
 
@@ -81,7 +80,7 @@ Omdat SuSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
 1. Als het certificaat van de Symantec-basis certificerings instantie niet wordt gevonden, voert u de volgende opdracht uit om het bestand te downloaden. Controleer op eventuele fouten en volg de aanbevolen acties voor netwerk fouten.
 
-    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
+    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem-O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
 
 1. Controleer of het Baltimore basis-CA-certificaat aanwezig is:
 
@@ -89,17 +88,17 @@ Omdat SuSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
 1. Als het basis-CA-certificaat van de Baltimore niet wordt gevonden, voert u deze opdracht uit om het certificaat te downloaden:
 
-    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root. pem**
+    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem-O Baltimore_CyberTrust_Root. pem**
 
-1. Controleer of het DigiCert_Global_Root_CA-certificaat aanwezig is:
+1. Controleer of het DigiCert_Global_Root_CA certificaat aanwezig is:
 
     **# ls DigiCert_Global_Root_CA. pem**
 
 1. Als de DigiCert_Global_Root_CA niet wordt gevonden, voert u de volgende opdrachten uit om het certificaat te downloaden:
 
-    **# wget http://www.digicert.com/CACerts/DigiCertGlobalRootCA.crt**
+    **# wget- http://www.digicert.com/CACerts/DigiCertGlobalRootCA.crt**
 
-    **# openssl x509-in DigiCertGlobalRootCA. CRT: informatie over PEM-out DigiCert_Global_Root_CA. pem**
+    **# openssl x509-in DigiCertGlobalRootCA. CRT: de PEM van der-out-out informeren DigiCert_Global_Root_CA. pem**
 
 1. Voer het opnieuw hash-script uit om de certificaat onderwerp-hashes bij te werken voor de zojuist gedownloade certificaten:
 
@@ -137,15 +136,15 @@ Omdat SuSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
         `-rw-r--r-- 1 root root 1380 Jun  5  2014 DigiCert_Global_Root_CA.pem`
 
-1. Maak een kopie van het bestand VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem met de bestands naam b204d74a. 0:
+1. Maak een kopie van het bestand VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem met de naam b204d74a. 0:
 
     **# CP VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem b204d74a. 0**
 
-1. Maak een kopie van het bestand Baltimore_CyberTrust_Root. pem met de bestands naam 653b494a. 0:
+1. Maak een kopie van het bestand Baltimore_CyberTrust_Root. pem met de naam 653b494a. 0:
 
     **# CP Baltimore_CyberTrust_Root. pem 653b494a. 0**
 
-1. Maak een kopie van het bestand DigiCert_Global_Root_CA. pem met de bestands naam 3513523f. 0:
+1. Maak een kopie van het bestand DigiCert_Global_Root_CA. pem met de naam 3513523f. 0:
 
     **# CP DigiCert_Global_Root_CA. pem 3513523f. 0**
 
@@ -155,7 +154,7 @@ Omdat SuSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
         **# ls-l 653b494a. 0 b204d74a. 0 3513523f. 0**
 
-    - Output
+    - Uitvoer
 
         `-rw-r--r-- 1 root root 1774 Jan  8 09:52 3513523f.0`
 
@@ -167,7 +166,7 @@ Omdat SuSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
 Voor een goede werking van Site Recovery replicatie is uitgaande verbinding van de VM vereist voor specifieke Url's of IP-adresbereiken. Als uw VM zich achter een firewall bevindt of regels voor network security group (NSG) gebruikt voor het beheren van uitgaande connectiviteit, kunt u een van deze problemen kan tegenkomen.
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Probleem 1: Kan de virtuele machine van Azure niet registreren met Site Recovery (fout code 151195)
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Probleem 1: de virtuele Azure-machine kan niet worden geregistreerd met Site Recovery (fout code 151195)
 
 #### <a name="possible-cause"></a>Mogelijke oorzaak 
 
@@ -177,13 +176,13 @@ Dit probleem treedt het meest op tijdens de herbeveiliging, wanneer u de virtuel
 
 #### <a name="fix-the-problem"></a>Het probleem wordt opgelost
 
-Als u een aangepaste DNS gebruikt, moet u ervoor zorgen dat de DNS-server toegankelijk is vanuit de regio voor herstel na nood gevallen. Als u wilt weten of u een aangepaste DNS-server hebt, gaat u op de virtuele machine naar *nood herstel netwerk* > **DNS-servers**.
+Als u een aangepaste DNS gebruikt, moet u ervoor zorgen dat de DNS-server toegankelijk is vanuit de regio voor herstel na nood gevallen. Als u wilt weten of u een aangepaste DNS-server hebt, gaat u op de VM naar *nood herstel netwerk* > **DNS-servers**.
 
 ![Lijst met aangepaste DNS-servers](./media/azure-to-azure-troubleshoot-errors/custom_dns.PNG)
 
-Probeer toegang tot de DNS-server van de virtuele machine. Als de server niet toegankelijk is, kunt u deze toegankelijk maken door een failover van de DNS-server uit te voeren of door de regel van de site te maken tussen het DR-netwerk en de DNS.
+Probeer vanaf de virtuele machine toegang te krijgen tot de DNS-server. Als de server niet toegankelijk is, kunt u deze toegankelijk maken door een failover van de DNS-server uit te voeren of door de regel van de site te maken tussen het DR-netwerk en de DNS.
 
-### <a name="issue-2-site-recovery-configuration-failed-error-code-151196"></a>Probleem 2: Configuratie van Site Recovery is mislukt (fout code 151196)
+### <a name="issue-2-site-recovery-configuration-failed-error-code-151196"></a>Probleem 2: configuratie van Site Recovery is mislukt (fout code 151196)
 
 #### <a name="possible-cause"></a>Mogelijke oorzaak
 
@@ -197,7 +196,7 @@ Als u Azure NSG-regels of firewall proxy gebruikt voor het beheren van uitgaande
 > [!NOTE]
 > Als Vm's achter een *standaard* interne Load Balancer, heeft de Load Balancer standaard geen toegang tot Office 365 IP-bereiken (dat wil zeggen, login.microsoftonline.com). Wijzig het interne load balancer type in *Basic* of maak een uitgaande toegang zoals beschreven in het artikel [taak verdeling en regels voor uitgaande verbindingen configureren](https://aka.ms/lboutboundrulescli).
 
-### <a name="issue-3-site-recovery-configuration-failed-error-code-151197"></a>Probleem 3: Configuratie van Site Recovery is mislukt (fout code 151197)
+### <a name="issue-3-site-recovery-configuration-failed-error-code-151197"></a>Probleem 3: configuratie van Site Recovery is mislukt (fout code 151197)
 
 #### <a name="possible-cause"></a>Mogelijke oorzaak
 
@@ -207,7 +206,7 @@ Er kan geen verbinding tot stand worden gebracht met Site Recovery service-eind 
 
 Voor Site Recovery is toegang tot [site Recovery IP-bereiken](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)vereist, afhankelijk van de regio. Zorg ervoor dat de vereiste IP-bereiken toegankelijk zijn vanaf de virtuele machine.
 
-### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-an-on-premises-proxy-server-error-code-151072"></a>Probleem 4: Replicatie van Azure naar Azure is mislukt wanneer het netwerk verkeer via een on-premises proxy server loopt (fout code 151072)
+### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-an-on-premises-proxy-server-error-code-151072"></a>Probleem 4: Azure-naar-Azure-replicatie is mislukt wanneer het netwerk verkeer via een on-premises proxy server gaat (fout code 151072)
 
 #### <a name="possible-cause"></a>Mogelijke oorzaak
 
@@ -220,7 +219,7 @@ De Mobility Service-agent detecteert de proxy-instellingen van Internet Explorer
 Als u de proxy alleen voor de Mobility-service wilt instellen, kunt u de proxy gegevens opgeven in het bestand ProxyInfo. conf op de volgende locaties:
 
 - **Linux**:/usr/local/InMage/config/
-- **Windows**: C:\ProgramData\Microsoft Azure Site Recovery\Config
+- **Windows**: C:\ProgramData\Microsoft Azure site Recovery\Config
 
 In ProxyInfo. conf geeft u de proxy-instellingen op in de volgende initialisatie-bestands indeling:
 
@@ -253,7 +252,7 @@ Een nieuwe schijf die is gekoppeld aan de virtuele machine moet worden geïnitia
 
 Zorg ervoor dat de gegevens schijven zijn geïnitialiseerd en voer de bewerking vervolgens opnieuw uit.
 
-- **Windows**: [Een nieuwe schijf koppelen en initialiseren](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
+- **Windows**: [een nieuwe schijf koppelen en initialiseren](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
 
 - **Linux**: [Initialiseer een nieuwe gegevens schijf in Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 
@@ -272,14 +271,14 @@ Als u de replicatie status van de virtuele machine weer in orde wilt maken, kunt
 
 #### <a name="to-protect-the-disks"></a>De schijven beveiligen
 
-1. Ga naar **gerepliceerde items** > *VM-naam* > **schijven**.
+1. Ga naar **gerepliceerde Items** > *VM-naam* > **schijven**.
 1. Selecteer de niet-beveiligde schijf en selecteer vervolgens **replicatie inschakelen**:
 
     ![Replicatie op VM-schijven inschakelen](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
 
 #### <a name="to-dismiss-the-warning"></a>De waarschuwing negeren
 
-1. Ga naar de*VM-naam*van de **gerepliceerde items** > .
+1. Ga naar **gerepliceerde items** > *VM-naam*.
 1. Selecteer de waarschuwing in het gedeelte **overzicht** en selecteer vervolgens **OK**.
 
     ![Waarschuwing nieuwe schijf negeren](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
@@ -294,7 +293,7 @@ U kunt deze waarschuwing negeren als u deze virtuele machine nooit opnieuw wilt 
 > Als u het opschonen niet doet:
 >
 > - Wanneer u replicatie inschakelt met behulp van de Recovery Services kluis, wordt de virtuele machine niet weer gegeven.
-> - Als u de **virtuele machine** > probeert te beveiligen met behulp van de**instellingen** > voor**herstel na nood**geval, mislukt de bewerking met het bericht ' de replicatie kan niet worden ingeschakeld vanwege de bestaande verouderde bron koppelingen op de VM.
+> - Als u de **virtuele machine** probeert te beveiligen met behulp van de **instellingen** voor de > voor het maken van een > **herstel na nood gevallen**, mislukt de bewerking met het bericht ' de replicatie kan niet worden ingeschakeld vanwege de bestaande verlopen bron koppelingen op de virtuele machine '.
 
 ### <a name="fix-the-problem"></a>Het probleem wordt opgelost
 
@@ -336,17 +335,17 @@ Een verouderde configuratie kan optreden op een Azure-VM als u replicatie voor d
 
 ## <a name="unable-to-see-the-azure-vm-or-resource-group-for-the-selection-in-the-enable-replication-job"></a>De Azure-VM of resource groep kan niet worden weer geven voor de selectie in de taak replicatie inschakelen
 
-### <a name="cause-1-the-resource-group-and-source-virtual-machine-are-in-different-locations"></a>Oorzaak 1: De resource groep en de virtuele bron machine bevinden zich op verschillende locaties
+### <a name="cause-1-the-resource-group-and-source-virtual-machine-are-in-different-locations"></a>Oorzaak 1: de resource groep en de virtuele bron machine bevinden zich op verschillende locaties
 
 Site Recovery moeten de resource groep en de virtuele machines van de bron regio momenteel op dezelfde locatie zijn. Als dat niet het geval is, kunt u de virtuele machine of resource groep niet vinden wanneer u probeert beveiliging toe te passen.
 
-Als tijdelijke oplossing kunt u de replicatie van de virtuele machine inschakelen in plaats van de Recovery Services kluis. Ga naar > deeigenschappen > van de bron-VM**nood herstel** en schakel de replicatie in.
+Als tijdelijke oplossing kunt u de replicatie van de virtuele machine inschakelen in plaats van de Recovery Services kluis. Ga naar de > **Eigenschappen** van de **bron-VM** > **nood herstel te herstellen** en de replicatie in te scha kelen.
 
-### <a name="cause-2-the-resource-group-is-not-part-of-the-selected-subscription"></a>Oorzaak 2: De resource groep maakt geen deel uit van het geselecteerde abonnement
+### <a name="cause-2-the-resource-group-is-not-part-of-the-selected-subscription"></a>Oorzaak 2: de resource groep maakt geen deel uit van het geselecteerde abonnement
 
 U kunt de resource groep mogelijk niet vinden op het moment van de beveiliging als de resource groep geen deel uitmaakt van het geselecteerde abonnement. Zorg ervoor dat de resource groep deel uitmaakt van het abonnement dat u gebruikt.
 
-### <a name="cause-3-stale-configuration"></a>Oorzaak 3: Verouderde configuratie
+### <a name="cause-3-stale-configuration"></a>Oorzaak 3: verouderde configuratie
 
 Mogelijk ziet u de virtuele machine die u wilt inschakelen voor replicatie als er een verouderde Site Recovery configuratie op de virtuele machine van Azure is gebleven. Dit probleem kan optreden als u replicatie voor de Azure-VM hebt ingeschakeld met behulp van Site Recovery en vervolgens:
 
@@ -369,11 +368,11 @@ Mogelijk ziet u de virtuele machine die u wilt inschakelen voor replicatie als e
 
 ## <a name="unable-to-select-a-virtual-machine-for-protection"></a>Kan geen virtuele machine voor beveiliging selecteren
 
-### <a name="cause-1-the-virtual-machine-has-an-extension-installed-in-a-failed-or-unresponsive-state"></a>Oorzaak 1: De virtuele machine heeft een uitbrei ding die is geïnstalleerd met een mislukte of niet-reagerende status
+### <a name="cause-1-the-virtual-machine-has-an-extension-installed-in-a-failed-or-unresponsive-state"></a>Oorzaak 1: de virtuele machine heeft een uitbrei ding die is geïnstalleerd met een mislukte of niet-reagerende status
 
-Ga naar**extensies** voor **virtuele machines** > -**instellingen** > en controleer op uitbrei dingen met de status mislukt. Verwijder een mislukte uitbrei ding en probeer het opnieuw om de virtuele machine te beveiligen.
+Ga naar **virtuele machines** > **instellingen** > **extensies** en controleer op uitbrei dingen met de status mislukt. Verwijder een mislukte uitbrei ding en probeer het opnieuw om de virtuele machine te beveiligen.
 
-### <a name="cause-2-the-vms-provisioning-state-is-not-valid"></a>Oorzaak 2: De inrichtings status van de virtuele machine is niet geldig
+### <a name="cause-2-the-vms-provisioning-state-is-not-valid"></a>Oorzaak 2: de inrichtings status van de virtuele machine is niet geldig
 
 Zie de stappen voor probleem oplossing in [de inrichtings status van de virtuele machine is niet geldig](#the-vms-provisioning-state-is-not-valid-error-code-150019), verderop in dit artikel.
 
@@ -394,21 +393,21 @@ Als u de replicatie op de virtuele machine wilt inschakelen, moet de inrichtings
 
 ## <a name="unable-to-select-target-vm-network-selection-tab-is-unavailable"></a>Kan geen doel-VM selecteren (het tabblad netwerk selectie is niet beschikbaar)
 
-### <a name="cause-1-your-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>Oorzaak 1: Uw virtuele machine is gekoppeld aan een netwerk dat al is toegewezen aan een doelnet netwerk
+### <a name="cause-1-your-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>Oorzaak 1: uw VM is gekoppeld aan een netwerk dat al is toegewezen aan een doelnet netwerk
 
 Als de bron-VM deel uitmaakt van een virtueel netwerk en een andere VM van hetzelfde virtuele netwerk al is toegewezen aan een netwerk in de doel resource groep, is de vervolg keuzelijst voor het selecteren van het netwerk niet beschikbaar (grijs weer gegeven) standaard.
 
 ![De lijst met netwerk selectie is niet beschikbaar](./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png)
 
-### <a name="cause-2-you-previously-protected-the-vm-by-using-site-recovery-and-then-you-disabled-the-replication"></a>Oorzaak 2: U hebt de virtuele machine eerder beveiligd door gebruik te maken van Site Recovery en vervolgens de replicatie uit te scha kelen
+### <a name="cause-2-you-previously-protected-the-vm-by-using-site-recovery-and-then-you-disabled-the-replication"></a>Oorzaak 2: u hebt de virtuele machine eerder beveiligd met Site Recovery en vervolgens de replicatie uitgeschakeld
 
-Als u de replicatie van een virtuele machine uitschakelt, wordt de netwerk toewijzing niet verwijderd. De toewijzing moet worden verwijderd uit de Recovery Services kluis waar de virtuele machine is beveiligd. Ga naar *Recovery Services kluis* > **site Recovery infrastructuur** > **netwerk toewijzing**.
+Als u de replicatie van een virtuele machine uitschakelt, wordt de netwerk toewijzing niet verwijderd. De toewijzing moet worden verwijderd uit de Recovery Services kluis waar de virtuele machine is beveiligd. Ga naar *Recovery Services kluis* > **Site Recovery infra structuur** > **netwerk toewijzing**.
 
-![Netwerktoewijzing verwijderen](./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png)
+![Netwerk toewijzing verwijderen](./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png)
 
 Het doelnet-netwerk dat tijdens de installatie van nood herstel is geconfigureerd, kan na de eerste installatie worden gewijzigd nadat de virtuele machine is beveiligd:
 
-![Netwerkkoppeling wijzigen](./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png)
+![Netwerk toewijzing wijzigen](./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png)
 
 Houd er rekening mee dat het wijzigen van de netwerk toewijzing van invloed is op alle beveiligde Vm's die dezelfde netwerk toewijzing gebruiken.
 
@@ -456,7 +455,7 @@ De volgende voor beelden zijn regels uit GRUB-bestanden waarbij apparaatnamen (v
 
 - Bestands/boot/grub2/grub.cfg
 
-  > linux/boot/vmlinuz-3.12.49-11-default **root =/dev/sda2** $ {extra_cmdline} **Resume =/dev/sda1** begin = Silent quiet showopts
+  > linux/boot/vmlinuz-3.12.49-11-default **root =/dev/sda2** $ {extra_cmdline} **Resume =/dev/sda1is** = Silent quiet showopts
 
 - Bestand:/boot/grub/menu.lst
 
@@ -476,7 +475,7 @@ Vervang elke naam van het apparaat door de bijbehorende UUID:
     /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. Vervang de naam van het apparaat door de bijbehorende uuid in de indelingen **root = uuid**=*uuid* en **Resume = uuid**=*uuid.* De regel van/boot/grub/menu.lst (eerder besproken) ziet er bijvoorbeeld als volgt uit:
+1. Vervang de naam van het apparaat door de bijbehorende UUID in de indelingen **root = uuid**=*uuid* en **Resume = uuid**=*uuid*. De regel van/boot/grub/menu.lst (eerder besproken) ziet er bijvoorbeeld als volgt uit:
 
     > kernel/boot/vmlinuz-3.0.101-63-default **root = uuid = 62927e85-f7ba-40bc-9993-cc1feeb191e4** **Resume = uuid = 6f614b44-433b-431b-9ca1-4dd2f6f74f6b** begin = Silent crashkernel = 256M-: 128M showopts VGA = 0x314
 
@@ -490,7 +489,7 @@ De GRUB-configuratie bestanden (/boot/grub/menu.lst,/boot/grub/grub.cfg,/boot/gr
 
 - Bestand:/boot/grub2/grub.cfg op RHEL7:
 
-    > linux16/vmlinuz-3.10.0-957.EL7.x86_64 root =/dev/mapper/rhel_mup--rhel7u6-root ro crashkernel = 128M\@64M **rd. lvm. lv = rootvg/root RD. lvm. lv = rootvg/swap** rhgb stille lang = en_US. UTF-8
+    > linux16/vmlinuz-3.10.0-957.EL7. x86_64 root =/dev/mapper/rhel_mup--rhel7u6-root ro crashkernel = 128M\@64M **rd. lvm. lv = rootvg/root RD. lvm. lv = rootvg/swap** RHGB quiet LANG = en_US. UTF-8
 
 - Bestand:/etc/default/grub op RHEL7:
 
@@ -498,7 +497,7 @@ De GRUB-configuratie bestanden (/boot/grub/menu.lst,/boot/grub/grub.cfg,/boot/gr
 
 - Bestand:/boot/grub/menu.lst op RHEL6:
 
-    > kernel/vmlinuz-2.6.32-754.el6.x86_64 ro root = UUID = 36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG = en_US. UTF-8 rd_NO_MD SYSFONT = latarcyrheb-sun16 crashkernel = auto **rd_LVM_LV = rootvg/lv_root** KEYBOARDTYPE = PC-tabel = US **rd_LVM_LV = rootvg/lv_swap** rd_NO_DM rhgb quiet
+    > kernel/vmlinuz-2.6.32-754.el6. x86_64 ro root = UUID = 36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG = en_US. UTF-8 rd_NO_MD SYSFONT = latarcyrheb-sun16 crashkernel = auto **rd_LVM_LV = rootvg/lv_root** KEYBOARDTYPE = PC-tabel = US **rd_LVM_LV = rootvg/lv_swap** rd_NO_DM rhgb quiet
 
 In elk voor beeld ziet u het deel in vet dat de GRUB twee LVM-apparaten moet detecteren met de namen ' root ' en ' swap ' van de volume groep ' rootvg '.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 60ef89308eceeb8ae74caba7230f1dc9c6940f47
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 72abfef1f86fe47eb7817241a674741f56817f24
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469108"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082708"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -121,7 +121,7 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17,04    | `zesty`     |
-    | Ubuntu 16.04/Linux licht 18    | `xenial`  |
+    | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
 
 1. Start de APT-bron update:
 
@@ -177,12 +177,19 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 | Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
-| **`--csx`** | Initialiseert een C# script-project (. CSX). U moet in volgende opdrachten `--csx` opgeven. |
+| **`--csharp`**<br/> **`--dotnet`** | Initialiseert een [ C# Class Library-project (. cs)](functions-dotnet-class-library.md). |
+| **`--csx`** | Initialiseert een [ C# script-project (. CSX)](functions-reference-csharp.md). U moet in volgende opdrachten `--csx` opgeven. |
 | **`--docker`** | Maak een Dockerfile voor een container met behulp van een basis installatie kopie op basis van de gekozen `--worker-runtime`. Gebruik deze optie wanneer u van plan bent om te publiceren naar een aangepaste Linux-container. |
+| **`--docker-only`** |  Hiermee wordt een Dockerfile toegevoegd aan een bestaand project. Hiermee wordt u gevraagd om de werk nemer-runtime als deze niet is opgegeven of ingesteld in Local. settings. json. Gebruik deze optie wanneer u van plan bent een bestaand project te publiceren naar een aangepaste Linux-container. |
 | **`--force`** | Initialiseer het project zelfs wanneer er bestaande bestanden in het project aanwezig zijn. Deze instelling overschrijft bestaande bestanden met dezelfde naam. Andere bestanden in de projectmap worden niet beïnvloed. |
-| **`--no-source-control -n`** | Hiermee wordt voor komen dat een Git-opslag plaats standaard wordt gemaakt in versie 1. x. In versie 2. x wordt de Git-opslag plaats standaard niet gemaakt. |
+| **`--java`**  | Initialiseert een [Java-project](functions-reference-java.md). |
+| **`--javascript`**<br/>**`--node`**  | Initialiseert een [Java script-project](functions-reference-node.md). |
+| **`--no-source-control`**<br/>**`-n`** | Hiermee wordt voor komen dat een Git-opslag plaats standaard wordt gemaakt in versie 1. x. In versie 2. x wordt de Git-opslag plaats standaard niet gemaakt. |
+| **`--powershell`**  | Initialiseert een [Power Shell-project](functions-reference-powershell.md). |
+| **`--python`**  | Initialiseert een [python-project](functions-reference-python.md). |
 | **`--source-control`** | Hiermee wordt bepaald of een Git-opslag plaats wordt gemaakt. Een opslag plaats wordt standaard niet gemaakt. Als `true`, wordt er een opslag plaats gemaakt. |
-| **`--worker-runtime`** | Hiermee stelt u de taal runtime voor het project in. Ondersteunde waarden zijn `dotnet`, `node` (Java script), `java`en `python`. Wanneer deze niet is ingesteld, wordt u gevraagd uw runtime te kiezen tijdens de initialisatie. |
+| **`--typescript`**  | Initialiseert een [type script-project](functions-reference-node.md#typescript). |
+| **`--worker-runtime`** | Hiermee stelt u de taal runtime voor het project in. Ondersteunde waarden zijn: `csharp`, `dotnet`, `java`, `javascript`,`node` (Java script), `powershell`, `python`en `typescript`. Wanneer deze niet is ingesteld, wordt u gevraagd uw runtime te kiezen tijdens de initialisatie. |
 
 > [!IMPORTANT]
 > Versie 2. x van de kern hulpprogramma's maakt standaard functie-app-projecten voor .NET runtime als [ C# class-projecten](functions-dotnet-class-library.md) (. csproj). Deze C# projecten, die kunnen worden gebruikt met Visual Studio of Visual Studio code, worden gecompileerd tijdens het testen en bij het publiceren naar Azure. Als u in plaats daarvan dezelfde C# script bestanden (. CSX) wilt maken en gebruiken die zijn gemaakt in versie 1. x en in de portal, moet u de para meter `--csx` toevoegen wanneer u functies maakt en implementeert.
@@ -196,7 +203,7 @@ Deze instellingen worden standaard niet automatisch gemigreerd wanneer het proje
 De waarden van de functie-app-instellingen kunnen ook in uw code worden gelezen als omgevings variabelen. Zie de sectie omgevings variabelen van deze taalspecifieke naslag onderwerpen voor meer informatie:
 
 * [C#vooraf gecompileerde](functions-dotnet-class-library.md#environment-variables)
-* [C#script (. CSX)](functions-reference-csharp.md#environment-variables)
+* [C# script (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -302,7 +309,7 @@ In versie 2. x van de runtime varieert de start opdracht, afhankelijk van de taa
 func start --build
 ```
 
-#### <a name="javascript"></a>Javascript
+#### <a name="javascript"></a>JavaScript
 
 ```command
 func start
@@ -465,11 +472,11 @@ De volgende publicatie opties worden alleen ondersteund in versie 2. x:
 | **`--list-included-files`** | Geeft een lijst weer van bestanden die zijn gepubliceerd, die zijn gebaseerd op het. funcignore-bestand. |
 | **`--nozip`** | Hiermee schakelt u de standaard `Run-From-Package` modus uit. |
 | **`--build-native-deps`** | Slaat de map voor het genereren van wielen op tijdens het publiceren van python-functie-apps. |
-| **`--build [-b]`** | Voert een build-actie uit wanneer deze wordt geïmplementeerd in een Linux-functie-app. (accepteert: extern, lokaal) |
+| **`--build`**<br/>**`-b`** | Voert een build-actie uit wanneer deze wordt geïmplementeerd in een Linux-functie-app. Accepteert: `remote` en `local`. |
 | **`--additional-packages`** | Lijst met pakketten die moeten worden geïnstalleerd bij het bouwen van systeem eigen afhankelijkheden. Bijvoorbeeld: `python3-dev libevent-dev`. |
 | **`--force`** | Verificatie vooraf publiceren in bepaalde scenario's negeren. |
 | **`--csx`** | Publiceer een C# script-project (. CSX). |
-| **`--no-build`** | Sla het bouwen van DOTNET-functies over. |
+| **`--no-build`** | Maak geen .NET Class Library-functies. |
 | **`--dotnet-cli-params`** | Bij het publiceren C# van gecompileerde (. csproj)-functies roept de kern hulpprogramma's ' DotNet build--output bin/Publish ' aan. Alle para meters die aan dit worden door gegeven, worden toegevoegd aan de opdracht regel. |
 
 ### <a name="deployment-custom-container"></a>Implementatie (aangepaste container)
@@ -523,5 +530,5 @@ Azure Functions Core Tools is [open source en wordt gehost op github](https://gi
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-['AzureWebJobsStorage']: functions-app-settings.md#azurewebjobsstorage
+[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
 [uitbreidings bundels]: functions-bindings-register.md#extension-bundles

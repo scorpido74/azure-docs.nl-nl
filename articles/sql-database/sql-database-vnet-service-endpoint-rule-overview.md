@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
-ms.date: 08/27/2019
-ms.openlocfilehash: f171181aa56287561aba3159f5039f70165dc8ab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: faf3573178693ec806000eb89ce7a975955d61b9
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807514"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084118"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Service-eind punten en-regels voor virtuele netwerken gebruiken voor database servers
 
@@ -108,7 +108,7 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 Azure Storage heeft dezelfde functie geïmplementeerd waarmee u de connectiviteit met uw Azure Storage-account kunt beperken. Als u ervoor kiest om deze functie te gebruiken met een Azure Storage account dat door Azure SQL Server wordt gebruikt, kunt u problemen ondervinden. Hierna volgt een lijst en bespreking van Azure SQL Database-en Azure SQL Data Warehouse-functies die van invloed zijn op dit onderwerp.
 
-### <a name="azure-sql-data-warehouse-polybase"></a>Azure SQL Data Warehouse poly base
+### <a name="azure-sql-data-warehouse-polybase"></a>Azure SQL Data Warehouse PolyBase
 
 Poly Base wordt vaak gebruikt voor het laden van gegevens in Azure SQL Data Warehouse van Azure Storage-accounts. Als het Azure Storage account waarvan u gegevens wilt laden, alleen toegang heeft tot een set VNet-subnetten, wordt de connectiviteit van poly Base naar het account verbroken. Volg de onderstaande stappen voor het inschakelen van zowel poly base import-als export scenario's met Azure SQL Data Warehouse verbinding maken met Azure Storage die zijn beveiligd met VNet:
 
@@ -197,13 +197,11 @@ Verbindings fout 40914 is gekoppeld aan *regels voor virtuele netwerken*, zoals 
 
 ### <a name="error-40615"></a>Fout 40615
 
-*Bericht tekst:* Kan de server{0}die door de aanmelding is aangevraagd, niet openen. De client met het IP-adres {1} is niet gemachtigd om toegang te krijgen tot de server.
+*Bericht tekst:* Kan de server{0}die door de aanmelding is aangevraagd, niet openen. De client met het IP-adres{1}heeft geen toegang tot de server.
 
 *Fout beschrijving:* De client probeert verbinding te maken vanaf een IP-adres dat niet is gemachtigd om verbinding te maken met de Azure SQL Database Server. Op de firewall van de server is geen regel voor IP-adressen ingesteld die een client toestemming geeft om vanaf het opgegeven IP-adres te communiceren met de SQL-database.
 
 *Fout oplossing:* Voer het IP-adres van de client in als een IP-regel. Doe dit met behulp van het deelvenster Firewall in de Azure Portal.
-
-[Hier][sql-database-develop-error-messages-419g] wordt een lijst met verschillende SQL Database-foutberichten gedocumenteerd.
 
 <a name="anchor-how-to-by-using-firewall-portal-59j" />
 
@@ -273,7 +271,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 
 <a name="anchor-how-to-links-60h" />
 
-## <a name="related-articles"></a>Verwante artikelen
+## <a name="related-articles"></a>Verwante artikelen:
 
 - [Azure Virtual Network-Service-eind punten][vm-virtual-network-service-endpoints-overview-649d]
 - [Firewall regels op server-en database niveau Azure SQL Database][sql-db-firewall-rules-config-715d]
@@ -302,8 +300,6 @@ De regel functie voor virtuele netwerken voor Azure SQL Database is eind septemb
 [rbac-what-is-813s]:../role-based-access-control/overview.md
 
 [sql-db-firewall-rules-config-715d]: sql-database-firewall-configure.md
-
-[sql-database-develop-error-messages-419g]: sql-database-develop-error-messages.md
 
 [sql-db-vnet-service-endpoint-rule-powershell-md-52d]: sql-database-vnet-service-endpoint-rule-powershell.md
 

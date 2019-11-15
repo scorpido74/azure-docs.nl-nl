@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c9dbc24aa93b1f2c89b23120abb018c920835d8d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 612da322e0d248f9b0000c8f0006893b87b74e44
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69896986"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084646"
 ---
 # <a name="introduction-to-azure-storage"></a>Kennismaking met Azure Storage
 
@@ -29,10 +29,10 @@ Azure Storage is Microsoft's cloudoplossing bedoeld voor scenario's voor gegeven
 
 Azure Storage omvat deze gegevensservices:
 
-- [Azure-blobs](../blobs/storage-blobs-introduction.md): Een in hoge mate schaalbaar objectarchief voor tekst en binaire gegevens.
-- [Azure-bestanden](../files/storage-files-introduction.md): Beheerde bestandsshares voor implementaties in de cloud of on-premises.
-- [Azure-wachtrijen](../queues/storage-queues-introduction.md): Een berichtenarchief voor betrouwbare uitwisseling van berichten tussen toepassingsonderdelen. 
-- [Azure-tabellen](../tables/table-storage-overview.md): Een NoSQL-archief voor schemaloze opslag van gestructureerde gegevens.
+- [Azure Blobs](../blobs/storage-blobs-introduction.md): een in hoge mate schaalbaar objectarchief voor tekst en binaire gegevens.
+- [Azure Files](../files/storage-files-introduction.md): beheerde bestandsshares voor implementaties in de cloud of on-premises.
+- [Azure Queues](../queues/storage-queues-introduction.md): een berichtenarchief voor betrouwbare uitwisseling van berichten tussen toepassingsonderdelen. 
+- [Azure Tables](../tables/table-storage-overview.md): een NoSQL-archief voor schemaloze opslag van gestructureerde gegevens.
 
 Elke service kan worden geopend via een opslagaccount. Zie [Een opslagaccount maken](storage-quickstart-create-account.md) om aan de slag te gaan.
 
@@ -78,7 +78,7 @@ Stel dat u uw klanten in de gelegenheid wilt stellen om afbeeldingen te uploaden
 
 Raadpleeg de [Inleiding tot Azure Queues](../queues/storage-queues-introduction.md) voor meer informatie over Azure Queues.
 
-## <a name="table-storage"></a>Tabelopslag
+## <a name="table-storage"></a>Table Storage
 
 Azure Table Storage maakt nu deel uit van Cosmos DB. Voor documentatie over Azure Table Storage raadpleegt u [Overzicht van Azure Table Storage](../tables/table-storage-overview.md). Naast de bestaande Azure Table Storage-service is er een nieuwe Azure Cosmos DB tabel-API die voor doorvoer geoptimaliseerde tabellen, wereldwijde distributie en automatische secundaire indexen biedt. Bekijk [Azure Cosmos DB: tabel-API](https://aka.ms/premiumtables) voor meer informatie en om de nieuwe premium versie uit te proberen.
 
@@ -102,7 +102,7 @@ Elke aanvraag voor Azure Storage moet worden geautoriseerd. Azure Storage onders
 
 - **Integratie van Azure Active Directory (Azure AD) voor Blob-en wachtrij gegevens.** Azure Storage ondersteunt verificatie en autorisatie met Azure AD voor de BLOB-en Queue-Services via op rollen gebaseerd toegangs beheer (RBAC). Het is raadzaam aanvragen met Azure AD te autoriseren voor superieure beveiliging en gebruiks gemak. Zie [toegang tot Azure-blobs en-wacht rijen toestaan met Azure Active Directory](storage-auth-aad.md)voor meer informatie.
 - **Azure AD-autorisatie via SMB voor Azure Files (preview).** Azure Files ondersteunt autorisatie op basis van een identiteit via SMB (Server Message Block) via Azure Active Directory Domain Services. Uw virtuele Windows-machines (Vm's) die lid zijn van een domein hebben toegang tot Azure-bestands shares met behulp van Azure AD-referenties. Zie [overzicht van Azure Active Directory autorisatie via SMB voor Azure files (preview)](../files/storage-files-active-directory-overview.md)voor meer informatie.
-- **Autorisatie met gedeelde sleutel.** De Azure Storage Blob-, Queue-en Table-Services en de Azure Files ondersteunen autorisatie met gedeelde sleutel. een client die gebruikmaakt van gedeelde sleutel, geeft een header door elke aanvraag die is ondertekend met de toegangs sleutel voor het opslag account. Zie autoriseren [met gedeelde sleutel](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)voor meer informatie.
+- **Autorisatie met gedeelde sleutel.** De Azure Storage Blob-, Queue-en Table-Services en de Azure Files ondersteunen autorisatie met gedeelde sleutel. een client die gebruikmaakt van gedeelde sleutel, geeft een header door elke aanvraag die is ondertekend met de toegangs sleutel voor het opslag account. Zie [autoriseren met gedeelde sleutel](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)voor meer informatie.
 - **Autorisatie met behulp van Shared Access signatures (SAS).** Een Shared Access Signature (SAS) is een teken reeks met een beveiligings token dat kan worden toegevoegd aan de URI voor een opslag resource. Met het beveiligings token worden beperkingen, zoals machtigingen en het toegangs interval ingekapseld. Raadpleeg [using Shared Access signatures (SAS)](storage-sas-overview.md)voor meer informatie.
 - **Anonieme toegang tot containers en blobs.** Een container en de bijbehorende blobs zijn mogelijk openbaar beschikbaar. Wanneer u opgeeft dat een container of BLOB openbaar is, kan iedereen deze anoniem lezen. Er is geen verificatie vereist. Zie [Manage anonymous read access to containers and blobs](../blobs/storage-manage-access-to-resources.md) (Anonieme leestoegang tot containers en blobs beheren) voor meer informatie.
 
@@ -143,7 +143,7 @@ Azure Storage-resources zijn toegankelijk voor elke taal waarvoor HTTP/HTTPS-aan
 - [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [Azure Storage-client bibliotheek voor .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [Azure Storage-client bibliotheek voor Java/Android](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Azure Storage-client bibliotheek voor node. js](https://docs.microsoft.com/javascript/api/azure-storage)
+- [Azure Storage-client bibliotheek voor node. js](https://docs.microsoft.com/javascript/api/overview/azure/storage)
 - [Client bibliotheek voor python Azure Storage](https://github.com/Azure/azure-storage-python)
 - [Client bibliotheek voor PHP Azure Storage](https://github.com/Azure/azure-storage-php)
 - [Azure Storage-client bibliotheek voor ruby](https://github.com/Azure/azure-storage-ruby)

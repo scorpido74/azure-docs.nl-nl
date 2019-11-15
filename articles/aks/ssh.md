@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: e0b7154e3c4d6a6f493aac93ffcbcc424a67c300
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d855e7a65b7e1ad24dcfc4fe6a6d5e02f9004bb0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932315"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089547"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Verbinding maken met de cluster knooppunten van SSH naar Azure Kubernetes service (AKS) voor onderhoud of probleem oplossing
 
@@ -37,14 +37,16 @@ Als u de schaalset voor virtuele machines wilt configureren op basis van SSH-toe
 Gebruik de opdracht [AZ AKS show][az-aks-show] om de naam van de resource groep van uw AKS-cluster op te halen en vervolgens de opdracht [AZ vmss List][az-vmss-list] om de naam van uw schaalset op te halen.
 
 ```azurecli-interactive
-$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
-In het bovenstaande voor beeld wordt de naam van de cluster resource groep voor de *myAKSCluster* in *MyResourceGroup* toegewezen aan *CLUSTER_RESOURCE_GROUP*. In het voor beeld wordt *CLUSTER_RESOURCE_GROUP* gebruikt om de naam van de schaalset weer te geven en toe te wijzen aan *SCALE_SET_NAME*.  
+In het bovenstaande voor beeld wordt de naam van de cluster resource groep voor de *myAKSCluster* in *myResourceGroup* toegewezen aan *CLUSTER_RESOURCE_GROUP*. In het voor beeld wordt *CLUSTER_RESOURCE_GROUP* gebruikt om de naam van de schaalset weer te geven en toe te wijzen aan *SCALE_SET_NAME*.  
 
-> [!NOTE]
-> SSH-sleutels kunnen momenteel alleen worden toegevoegd aan linux-knoop punten met behulp van de Azure CLI. Als u via SSH verbinding wilt maken met een Windows Server-knoop punt, gebruikt u de SSH-sleutels die zijn opgegeven tijdens het maken van het AKS-cluster en slaat u de volgende reeks opdrachten op voor het toevoegen van uw open bare SSH-sleutel. U hebt nog steeds het IP-adres nodig van het knoop punt dat u wilt oplossen. dit wordt weer gegeven in de laatste opdracht van deze sectie. U kunt ook [verbinding maken met Windows Server-knoop punten met RDP-verbindingen (Remote Desktop Protocol)][aks-windows-rdp] in plaats van SSH te gebruiken.
+> [!IMPORTANT]
+> Op dit moment moet u de SSH-sleutels voor uw AKS-clusters op basis van virtuele machines alleen bijwerken met behulp van de Azure CLI.
+> 
+> Voor Linux-knoop punten kunnen SSH-sleutels momenteel alleen worden toegevoegd met behulp van de Azure CLI. Als u via SSH verbinding wilt maken met een Windows Server-knoop punt, gebruikt u de SSH-sleutels die zijn opgegeven tijdens het maken van het AKS-cluster en slaat u de volgende reeks opdrachten op voor het toevoegen van uw open bare SSH-sleutel. U hebt nog steeds het IP-adres nodig van het knoop punt dat u wilt oplossen. dit wordt weer gegeven in de laatste opdracht van deze sectie. U kunt ook [verbinding maken met Windows Server-knoop punten met RDP-verbindingen (Remote Desktop Protocol)][aks-windows-rdp] in plaats van SSH te gebruiken.
 
 Als u uw SSH-sleutels wilt toevoegen aan de knoop punten in een schaalset voor virtuele machines, gebruikt u de opdracht [AZ vmss extension set][az-vmss-extension-set] en [AZ vmss update-instances][az-vmss-update-instances] .
 
@@ -62,7 +64,7 @@ az vmss update-instances --instance-ids '*' \
     --name $SCALE_SET_NAME
 ```
 
-In het bovenstaande voor beeld worden de variabelen *CLUSTER_RESOURCE_GROUP* en *SCALE_SET_NAME* van de vorige opdrachten gebruikt. In het bovenstaande voor beeld wordt ook *~/.ssh/id_rsa.pub* als locatie voor uw open bare SSH-sleutel gebruikt.
+In het bovenstaande voor beeld worden de variabelen *CLUSTER_RESOURCE_GROUP* en *SCALE_SET_NAME* van de vorige opdrachten gebruikt. In het bovenstaande voor beeld wordt ook *~/.ssh/id_rsa. pub* gebruikt als locatie voor uw open bare SSH-sleutel.
 
 > [!NOTE]
 > De gebruikers naam voor de AKS-knoop punten is standaard *azureuser*.
@@ -94,11 +96,11 @@ Als u het AKS-cluster op basis van Beschik baarheid van virtuele machines wilt c
 Gebruik de opdracht [AZ AKS show][az-aks-show] om de naam van de resource groep van uw AKS-cluster op te halen en vervolgens de opdracht [AZ VM List][az-vm-list] om de naam van de virtuele machine van het Linux-knoop punt van uw cluster weer te geven.
 
 ```azurecli-interactive
-$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-In het bovenstaande voor beeld wordt de naam van de cluster resource groep voor de *myAKSCluster* in *MyResourceGroup* toegewezen aan *CLUSTER_RESOURCE_GROUP*. In het voor beeld wordt *CLUSTER_RESOURCE_GROUP* gebruikt om de naam van de virtuele machine weer te geven. In de voorbeeld uitvoer ziet u de naam van de virtuele machine: 
+In het bovenstaande voor beeld wordt de naam van de cluster resource groep voor de *myAKSCluster* in *myResourceGroup* toegewezen aan *CLUSTER_RESOURCE_GROUP*. In het voor beeld wordt *CLUSTER_RESOURCE_GROUP* gebruikt om de naam van de virtuele machine weer te geven. In de voorbeeld uitvoer ziet u de naam van de virtuele machine: 
 
 ```
 Name                      ResourceGroup                                  Location
@@ -116,7 +118,7 @@ az vm user update \
     --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-In het bovenstaande voor beeld worden de variabele *CLUSTER_RESOURCE_GROUP* en de naam van de virtuele machine van het knoop punt uit de vorige opdrachten gebruikt. In het bovenstaande voor beeld wordt ook *~/.ssh/id_rsa.pub* als locatie voor uw open bare SSH-sleutel gebruikt. U kunt ook de inhoud van uw open bare SSH-sleutel gebruiken in plaats van een pad op te geven.
+In het bovenstaande voor beeld worden de *CLUSTER_RESOURCE_GROUP* variabele en de naam van de virtuele machine van het knoop punt uit de vorige opdrachten gebruikt. In het bovenstaande voor beeld wordt ook *~/.ssh/id_rsa. pub* gebruikt als locatie voor uw open bare SSH-sleutel. U kunt ook de inhoud van uw open bare SSH-sleutel gebruiken in plaats van een pad op te geven.
 
 > [!NOTE]
 > De gebruikers naam voor de AKS-knoop punten is standaard *azureuser*.
@@ -127,7 +129,7 @@ Nadat u uw open bare SSH-sleutel aan de virtuele machine van het knoop punt hebt
 az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-In het bovenstaande voor beeld wordt de variabele *CLUSTER_RESOURCE_GROUP* in de vorige opdrachten gebruikt. In de volgende voorbeeld uitvoer ziet u de privé-IP-adressen van de AKS-knoop punten:
+In het bovenstaande voor beeld wordt gebruikgemaakt van de variabele *CLUSTER_RESOURCE_GROUP* die in de vorige opdrachten is ingesteld. In de volgende voorbeeld uitvoer ziet u de privé-IP-adressen van de AKS-knoop punten:
 
 ```
 VirtualMachine            PrivateIPAddresses
@@ -150,7 +152,7 @@ Als u een SSH-verbinding met een AKS-knoop punt wilt maken, voert u een helper-p
     >
     > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
-1. Zodra de terminal sessie is verbonden met de container, installeert u een SSH- `apt-get`client met behulp van:
+1. Zodra de terminal sessie is verbonden met de container, installeert u een SSH-client met behulp van `apt-get`:
 
     ```console
     apt-get update && apt-get install openssh-client -y
@@ -173,7 +175,7 @@ Als u een SSH-verbinding met een AKS-knoop punt wilt maken, voert u een helper-p
     kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
     ```
 
-1. Ga terug naar de terminal sessie naar uw container, werk de machtigingen voor de `id_rsa` gekopieerde persoonlijke SSH-sleutel zo in dat deze alleen-lezen is:
+1. Ga terug naar de terminal sessie naar uw container, werk de machtigingen voor de gekopieerde `id_rsa` persoonlijke SSH-sleutel zo in dat deze alleen-lezen is:
 
     ```console
     chmod 0600 id_rsa
@@ -204,7 +206,7 @@ Als u een SSH-verbinding met een AKS-knoop punt wilt maken, voert u een helper-p
 
 ## <a name="remove-ssh-access"></a>SSH-toegang verwijderen
 
-Wanneer u klaar `exit` bent, wordt de SSH `exit` -sessie en vervolgens de interactieve container sessie uitgevoerd. Wanneer deze container sessie wordt gesloten, wordt de pod die wordt gebruikt voor SSH-toegang uit het AKS-cluster verwijderd.
+Als u klaar bent, `exit` u de SSH-sessie en vervolgens `exit` de interactieve container sessie. Wanneer deze container sessie wordt gesloten, wordt de pod die wordt gebruikt voor SSH-toegang uit het AKS-cluster verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

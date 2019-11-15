@@ -14,19 +14,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: c319b3e53f550e56fbf4f655cb9cfa43326f9c72
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: fd31528325ddbe913333bc228fc3847242abcd24
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882427"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083757"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Bewegingen detecteren met Azure Media Analytics
-
-> [!IMPORTANT]
-> Bekijk de [pensioen plannen](media-services-analytics-overview.md#retirement-plans) van sommige media processors.
-
+ 
 ## <a name="overview"></a>Overzicht
+
 Met de **Azure Media Motion detector** media processor (MP) kunt u op efficiënte wijze gedeelten van interesses identificeren binnen een andere, lange en niet-gebeurtenisloze video. Bewegings detectie kan worden gebruikt voor statische camera beelden om secties van de video te identificeren waar beweging optreedt. Er wordt een JSON-bestand gegenereerd met een meta gegevens met tijds tempels en het grens gebied waarin de gebeurtenis plaatsvond.
 
 Deze technologie is gericht op beveiligings videofeeds en kan bewegingen in relevante gebeurtenissen categoriseren en fout-positieven, zoals scha duwen en belichtings veranderingen. Op deze manier kunt u beveiligings waarschuwingen genereren op basis van camera feeds zonder spam met eindeloze irrelevante gebeurtenissen, terwijl u de momenten van belang stelling van lange bewakings Video's kunt ophalen.
@@ -46,9 +44,9 @@ U kunt de volgende para meters gebruiken:
 
 | Naam | Opties | Beschrijving | Standaard |
 | --- | --- | --- | --- |
-| sensitivityLevel |Teken reeks: laag, gemiddeld, hoog |Hiermee stelt u het gevoeligheids niveau in waarmee bewegingen worden gerapporteerd. Stel dit in op het aanpassen van het aantal fout-positieven. |drager |
+| sensitivityLevel |String:'low', 'medium', 'high' |Hiermee stelt u het gevoeligheids niveau in waarmee bewegingen worden gerapporteerd. Stel dit in op het aanpassen van het aantal fout-positieven. |drager |
 | frameSamplingValue |Positief geheel getal |Hiermee stelt u de frequentie in waarmee algoritmen worden uitgevoerd. 1 is gelijk aan elk frame, 2 betekent elk tweede frame, enzovoort. |1 |
-| detectLightChange |Boolean: ' True ', ' false ' |Hiermee wordt ingesteld of lichte wijzigingen worden gerapporteerd in de resultaten |Terecht |
+| detectLightChange |Boolean:'true', 'false' |Hiermee wordt ingesteld of lichte wijzigingen worden gerapporteerd in de resultaten |Terecht |
 | mergeTimeThreshold |XS-time: uu: mm: SS<br/>Voor beeld: 00:00:03 |Hiermee geeft u het tijd venster op tussen bewegings gebeurtenissen waarbij twee gebeurtenissen worden gecombineerd en gerapporteerd als 1. |00:00:00 |
 | detectionZones |Een matrix met detectie zones:<br/>-De detectie zone is een matrix van drie of meer punten<br/>-Punt is een x-en y-coördinaat van 0 tot 1. |Hiermee wordt de lijst met veelhoek detectie zones beschreven die moeten worden gebruikt.<br/>Resultaten worden gerapporteerd met de zones als een ID, waarbij de eerste een id is: 0 |Eén zone, die het hele frame bedekt. |
 
@@ -99,13 +97,13 @@ In de volgende tabel worden elementen van het JSON-uitvoer bestand beschreven.
 
 | Element | Beschrijving |
 | --- | --- |
-| versie |Dit verwijst naar de versie van de video-API. De huidige versie is 2. |
-| lijnen |' Ticks ' per seconde van de video. |
+| version |Dit verwijst naar de versie van de video-API. De huidige versie is 2. |
+| timescale |' Ticks ' per seconde van de video. |
 | offset |De tijds verschuiving voor tijds tempels in Ticks. In versie 1,0 van video-Api's is dit altijd 0. Deze waarde kan worden gewijzigd in toekomstige scenario's die worden ondersteund. |
 | snelheid |Aantal frames per seconde video. |
 | breedte, hoogte |Verwijst naar de breedte en hoogte van de video in pixels. |
 | start |Het tijds tempel van de begin datum in Ticks. |
-| Hebben |De lengte van de gebeurtenis, in Ticks. |
+| duration |De lengte van de gebeurtenis, in Ticks. |
 | interval |Het interval van elke vermelding in de gebeurtenis, in Ticks. |
 | events |Elk gebeurtenis fragment bevat de beweging die binnen die tijds duur is gedetecteerd. |
 | type |In de huidige versie is dit altijd ' 2 ' voor algemene beweging. Dit label biedt video-Api's de flexibiliteit voor het categoriseren van bewegingen in toekomstige versies. |
