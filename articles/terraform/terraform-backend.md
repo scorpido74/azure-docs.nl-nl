@@ -6,26 +6,26 @@ author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: cb85897e0a7d281eca4ad3f42e8ef28c9e3fdb7b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 374936c39221d79d59fc8a54dc2bc4a49800240d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833531"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078566"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>Zelf studie: terraform-status opslaan in Azure Storage
 
-De terraform-status wordt gebruikt voor het afstemmen van geïmplementeerde resources met terraform-configuraties. Status kan terraform weten wat Azure-resources kunnen toevoegen, bijwerken of verwijderen. Standaard wordt de terraform-status lokaal opgeslagen bij het uitvoeren van de `terraform apply` opdracht. Deze configuratie is niet ideaal om de volgende redenen:
+De terraform-status wordt gebruikt voor het afstemmen van geïmplementeerde resources met terraform-configuraties. Status kan terraform weten wat Azure-resources kunnen toevoegen, bijwerken of verwijderen. Standaard wordt de terraform-status lokaal opgeslagen wanneer u de opdracht `terraform apply` uitvoert. Deze configuratie is niet ideaal om de volgende redenen:
 
-- De lokale status werkt niet goed in een team of een samenwerkings omgeving
-- De status terraform kan gevoelige informatie bevatten
-- Als u de status lokaal opslaat, neemt de kans op onbedoeld verwijderen toe
+- De lokale status werkt niet goed in een team of een samenwerkings omgeving.
+- De status terraform kan gevoelige informatie bevatten.
+- Als u de status lokaal opslaat, neemt de kans op onbedoeld verwijderen toe.
 
 Terraform ondersteunt het persistent maken van status in externe opslag. Een dergelijke ondersteunde back-end is Azure Storage. Dit document bevat informatie over het configureren en gebruiken van Azure Storage voor dit doel einde.
 
 ## <a name="configure-storage-account"></a>Opslag account configureren
 
-Voordat u Azure Storage als back-end gebruikt, moet u een opslag account maken. Het opslag account kan worden gemaakt met de Azure Portal, Power shell, de Azure CLI of terraform zelf. Gebruik het volgende voor beeld om het opslag account te configureren met de Azure CLI.
+Voordat u Azure Storage als een back-end gebruikt, moet u een opslag account maken. Het opslag account kan worden gemaakt met de Azure Portal, Power shell, de Azure CLI of terraform zelf. Gebruik het volgende voor beeld om het opslag account te configureren met de Azure CLI.
 
 ```azurecli
 #!/bin/bash
@@ -51,18 +51,18 @@ echo "container_name: $CONTAINER_NAME"
 echo "access_key: $ACCOUNT_KEY"
 ```
 
-Noteer de naam van het opslag account, de container naam en de toegangs sleutel voor opslag. Deze waarden zijn nodig bij het configureren van de externe status.
+Noteer de naam van het opslag account, de container naam en de toegangs sleutel voor opslag. Deze waarden zijn nodig wanneer u de externe status configureert.
 
-## <a name="configure-state-backend"></a>Status back-end configureren
+## <a name="configure-state-back-end"></a>Back-end van de status configureren
 
-De back-end van de terraform-status wordt geconfigureerd bij het uitvoeren van de `terraform init` opdracht. de volgende gegevens zijn vereist voor het configureren van de status back-end:
+De back-end van de terraform-status wordt geconfigureerd wanneer u de opdracht `terraform init` uitvoert. De volgende gegevens zijn vereist voor het configureren van de back-end van de status:
 
-- storage_account_name: de naam van het Azure Storage-account.
-- container_name-de naam van de BLOB-container.
-- sleutel-de naam van het status archief bestand dat moet worden gemaakt.
-- access_key-de toegangs sleutel voor opslag.
+- **storage_account_name**: de naam van het Azure Storage-account.
+- **container_name**: de naam van de BLOB-container.
+- **sleutel**: de naam van het status archief bestand dat moet worden gemaakt.
+- **access_key**: de toegangs sleutel voor opslag.
 
-Elk van deze waarden kan worden opgegeven in het configuratie bestand van de terraform of op de opdracht regel, maar het is raadzaam om een omgevings variabele te gebruiken voor de `access_key`. Als u een omgevings variabele gebruikt, voor komt u dat de sleutel naar de schijf wordt geschreven.
+Elk van deze waarden kan worden opgegeven in het configuratie bestand terraform of op de opdracht regel. We raden u aan een omgevings variabele voor de `access_key` waarde te gebruiken. Als u een omgevings variabele gebruikt, voor komt u dat de sleutel naar de schijf wordt geschreven.
 
 Maak een omgevings variabele met de naam `ARM_ACCESS_KEY` met de waarde van de toegangs sleutel Azure Storage.
 
@@ -76,7 +76,7 @@ Als u de toegangs sleutel voor het Azure Storage account verder wilt beveiligen,
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)
 ```
 
-Als u terraform wilt configureren voor het gebruik van de back-end, moet u de volgende stappen uitvoeren:
+De volgende stappen moeten worden uitgevoerd om terraform te configureren voor het gebruik van de back-end:
 - Neem een `backend` configuratie blok op met een type `azurerm`.
 - Voeg een `storage_account_name`-waarde toe aan het configuratie blok.
 - Voeg een `container_name`-waarde toe aan het configuratie blok.
@@ -104,15 +104,15 @@ Initialiseer de configuratie door de volgende stappen uit te voeren:
 1. Voer de opdracht `terraform init` uit.
 1. Voer de opdracht `terraform apply` uit.
 
-U kunt nu het status bestand vinden in de Azure Storage Blob.
+U kunt nu het status bestand vinden in de blob van Azure Storage.
 
 ## <a name="state-locking"></a>Status vergren delen
 
 Azure Storage-blobs worden automatisch vergrendeld vóór elke bewerking die de status schrijft. Met dit patroon worden gelijktijdige status bewerkingen voor komen, wat kan leiden tot beschadiging. 
 
-Zie [status locking](https://www.terraform.io/docs/state/locking.html) (Engelstalig) in de documentatie van terraform voor meer informatie.
+Zie [status vergrendeling](https://www.terraform.io/docs/state/locking.html) in de terraform-documentatie voor meer informatie.
 
-De vergren deling kan worden weer gegeven bij het controleren van de BLOB via de Azure Portal of andere Azure-beheer Programma's.
+U kunt de vergren deling zien wanneer u de BLOB bestudeert via de Azure Portal of andere Azure-beheer hulpprogramma's.
 
 ![Azure-Blob met vergren deling](media/terraform-backend/lock.png)
 

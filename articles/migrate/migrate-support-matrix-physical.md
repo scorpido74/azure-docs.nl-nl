@@ -7,14 +7,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 902e89305aa24e8cbb6d2dd84d6a61c710d11637
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 55ada93e6a77dd7e31640988bad95034f77c90dd
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715372"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091896"
 ---
-# <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Ondersteunings matrix voor de evaluatie en migratie van fysieke servers
+# <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Ondersteuningsmatrix voor evaluatie en migratie van fysieke servers
 
 U kunt de [Azure migrate-service](migrate-overview.md) gebruiken voor het beoordelen en migreren van machines naar de Microsoft Azure Cloud. In dit artikel vindt u een overzicht van de ondersteunings instellingen en beperkingen voor het beoordelen en migreren van on-premises fysieke servers.
 
@@ -28,7 +28,7 @@ De tabel bevat een overzicht van de ondersteunde scenario's voor fysieke servers
 
 **Implementatie** | **Details***
 --- | ---
-**On-premises fysieke servers beoordelen** | [Stel](tutorial-prepare-physical.md) uw eerste beoordeling in.
+**On-premises fysieke servers beoordelen** | [Stel](tutorial-prepare-physical.md) uw eerste beoordeling in.<br/><br/> [Voer](tutorial-assess-physical.md) een evaluatie uit.
 **Fysieke servers migreren naar Azure** | [Probeer](tutorial-migrate-physical-virtual-machines.md) de migratie naar Azure uit te proberen.
 
 
@@ -37,12 +37,12 @@ De tabel bevat een overzicht van de ondersteunde scenario's voor fysieke servers
 **Ondersteuning** | **Details**
 --- | ---
 **Azure-machtigingen** | U hebt machtigingen voor Inzender of eigenaar nodig in het abonnement om een Azure Migrate project te maken.
-**Fysieke servers** | Evalueer Maxi maal 250 fysieke servers in één project. U kunt meerdere projecten in een Azure-abonnement hebben. Een project kan bestaan uit fysieke servers, virtuele VMware-machines en virtuele Hyper-V-machines, tot aan de evaluatie limieten.
+**Fysieke servers** | Evalueer Maxi maal 35.000 fysieke servers in één project. U kunt meerdere projecten in een Azure-abonnement hebben. Een project kan bestaan uit fysieke servers, virtuele VMware-machines en virtuele Hyper-V-machines, tot aan de evaluatie limieten.
 **Geografie** | U kunt Azure Migrate projecten maken in een aantal geographs. Hoewel u projecten in specifieke geografische grafieken kunt maken, kunt u machines voor andere doel locaties evalueren of migreren. De Geografie van het project wordt alleen gebruikt om de gedetecteerde meta gegevens op te slaan.
 
   **Geografie** | **Opslag locatie van meta gegevens**
   --- | ---
-  Azure Government | VS (overheid) - Virginia
+  Azure Government | US Gov - Virginia
   Azië en Stille Oceaan | Azië Azië-oost of Zuidoost
   Australië | Australië-oost of Australië-zuidoost
   Brazilië | Brazilië - zuid
@@ -66,7 +66,7 @@ De tabel bevat een overzicht van de ondersteunde scenario's voor fysieke servers
 | :-------------------       | :------------------- |
 | **Fysieke server implementatie**       | De fysieke server kan zelfstandig of in een cluster worden geïmplementeerd. |
 | **Machtigingen**           | **Windows:** Stel een lokale gebruikers account in op alle Windows-servers die u wilt toevoegen in de detectie. Het gebruikers account moet worden toegevoegd aan deze groepen-Extern bureaublad gebruikers, prestatie meter gebruikers en prestatie logboek gebruikers. <br/> **Linux:** U hebt een hoofd account nodig op de Linux-servers die u wilt detecteren. |
-| **Besturingssysteem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -en [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -besturings systemen die worden ondersteund door Azure. |
+| **Besturingssysteem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -en [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -besturings systemen worden ondersteund, met uitzonde ring van het volgende:<br/> Windows Server 2003 <br/> SUSE Linux|
 
 
 ## <a name="assessment-appliance-requirements"></a>Beoordeling-vereisten voor apparaten
@@ -75,9 +75,9 @@ Voor evaluatie voert Azure Migrate een licht gewicht in voor het detecteren van 
 
 | **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
-| **Implementatie van het apparaat**   |  U implementeert het apparaat op een fysieke server of virtuele machine.<br/>  Op de hostcomputer moet Windows Server 2012 R2 of later worden uitgevoerd.<br/> De host moet voldoende ruimte hebben om 16 GB RAM-geheugen, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte toe te wijzen en een externe switch voor de apparaat-VM.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en Internet toegang.
+| **Implementatie van het apparaat**   |  U implementeert het apparaat op een fysieke server of een virtuele machine.<br/>  Op de hostcomputer moet Windows Server 2012 R2 of later worden uitgevoerd.<br/> De host moet voldoende ruimte hebben om 16 GB RAM-geheugen, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte toe te wijzen en een externe switch voor de apparaat-VM.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en Internet toegang.
 | **Azure Migrate project**  |  Een apparaat kan worden gekoppeld aan een enkel project.<br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> U kunt Maxi maal 35.000 computers in een project evalueren.
-| **Detectie**              | Eén apparaat kan Maxi maal 200 servers detecteren.
+| **Detectie**              | Eén apparaat kan Maxi maal 250 servers detecteren.
 | **Beoordelings groep**       | U kunt Maxi maal 35.000 computers in één groep toevoegen.
 | **Evaluatie**             | U kunt Maxi maal 35.000 computers in één evaluatie evalueren.
 
@@ -95,7 +95,7 @@ Voor het beoordelen van Vm's heeft het Azure Migrate-apparaat Internet verbindin
 --- | ---
 *.portal.azure.com | Navigeren naar de Azure Portal
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Meld u aan bij uw Azure-abonnement
-*.microsoftonline.com <br/> *. microsoftonline-p.com | Het maken van Azure Active Directory-toepassingen voor het apparaat aan service communicatie.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Het maken van Azure Active Directory-toepassingen voor het apparaat aan service communicatie.
 management.azure.com | Het maken van Azure Active Directory-toepassingen voor het apparaat aan service communicatie.
 dc.services.visualstudio.com | Logboekregistratie en bewaking
 *.vault.azure.net | Geheimen in Azure Key Vault beheren bij de communicatie tussen het apparaat en de service.
