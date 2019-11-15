@@ -27,6 +27,7 @@ sections:
           - html: <a href="/azure/spatial-anchors/concepts/anchor-relationships-way-finding">Relaties tussen ankers en wegwijzers.</a>
           - html: <a href="/azure/spatial-anchors/concepts/guidelines-effective-anchor-experiences">Richtlijnen voor ervaringen.</a>
           - html: <a href="/azure/spatial-anchors/concepts/logging-diagnostics">Logboekregistratie en diagnostische gegevens.</a>
+          - html: <a href="/azure/spatial-anchors/concepts/coarse-reloc">Coarse-relokalisatie.</a>
   - title: QuickStarts van vijf minuten
     items:
       - type: paragraph

@@ -24,6 +24,8 @@
 - name: Concepten
   expanded: true
   items:
+    - name: Best practices voor app-beheer
+      href: application-management-fundamentals.md
     - name: Cloud-apps en eenmalige aanmelding
       items:
         - name: Integratie van een cloud-app plannen

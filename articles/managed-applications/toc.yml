@@ -75,6 +75,8 @@
           href: key-vault-access.md
         - name: Implementeren met beheerde identiteit
           href: publish-managed-identity.md
+        - name: Implementeren met meldingen
+          href: publish-notifications.md
     - name: Consumenten
       items:
         - name: Beheerde toepassing bewaken

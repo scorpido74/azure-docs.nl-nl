@@ -145,6 +145,8 @@
       href: how-to-send-additional-data.md
     - name: Problemen oplossen
       href: how-to-troubleshoot-dps.md
+    - name: Communiceren met uw DPS met MQTT-protocol
+      href: iot-dps-mqtt-support.md
 - name: Naslaginformatie
   items:
     - name: REST-API

@@ -496,7 +496,7 @@
           href: sql-database-active-geo-replication-portal.md
         - name: Azure SQL Data Sync instellen
           href: sql-database-get-started-sql-data-sync.md
-        - name: Elastische pool aan een failovergroep toevoegen
+        - name: Een elastische pool aan een failovergroep toevoegen
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: Beveiliging configureren
           href: sql-database-security-tutorial.md

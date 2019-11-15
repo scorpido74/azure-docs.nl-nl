@@ -180,6 +180,8 @@
       items:
         - name: Azure Data Factory
           items:
+            - name: Integratie met Data Factory
+              href: data-factory-integration.md
             - name: Gegevens bulkgewijs kopiëren met een Azure Data Factory-sjabloon
               href: data-factory-template.md
             - name: Besturingsopdrachten uitvoeren met Azure Data Factory
